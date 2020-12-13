@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c18ee43eefe9c6cf9cba7f4e8f6c3fd3f55bba5a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684919"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368698"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -396,9 +396,9 @@ A [szemantikai keresés](/sql/relational-databases/search/semantic-search-sql-se
 
 Az SQL felügyelt példányában lévő csatolt kiszolgálók korlátozott számú célt támogatnak:
 
-- A támogatott célok a következők: SQL felügyelt példány, SQL Database, Azure szinapszis SQL és SQL Server példányok. 
+- A támogatott célok: SQL felügyelt példány, SQL Database, Azure szinapszis SQL [Server](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) nélküli és dedikált készletek, valamint SQL Server példányok. 
 - A csatolt kiszolgálók nem támogatják az elosztott írható tranzakciókat (MS DTC).
-- A nem támogatott célok a fájlok, a Analysis Services és az egyéb RDBMS. Próbálja meg a natív CSV-importálást használni az Azure Blob Storage használatával `BULK INSERT` vagy a `OPENROWSET` fájl importálása alternatívájaként.
+- A nem támogatott célok a fájlok, a Analysis Services és az egyéb RDBMS. Próbálja meg natív CSV-importálást használni az Azure Blob Storage használatával `BULK INSERT` vagy a `OPENROWSET` fájlok importálása helyett, vagy töltsön le fájlokat egy [kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/).
 
 Műveletek: 
 
@@ -406,11 +406,12 @@ Műveletek:
 - `sp_dropserver` egy csatolt kiszolgáló eldobása esetén támogatott. Lásd: [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - A `OPENROWSET` függvényt csak SQL Server példányokon lehet lekérdezéseket végrehajtani. Lehetnek felügyelt, helyszíni vagy virtuális gépek. Lásd: [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
 - A `OPENDATASOURCE` függvényt csak SQL Server példányokon lehet lekérdezéseket végrehajtani. Lehetnek felügyelt, helyszíni vagy virtuális gépek. `SQLNCLI`Szolgáltatóként csak a, `SQLNCLI11` , és `SQLOLEDB` értékek támogatottak. Például: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Lásd: [index](/sql/t-sql/functions/opendatasource-transact-sql).
-- A csatolt kiszolgálók nem használhatók a hálózati megosztásokból származó fájlok (Excel, CSV) olvasásához. Próbáljon meg olyan [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) vagy [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) használni, amely CSV-fájlokat olvas be az Azure Blob Storageból. A kérelmek nyomon követése az [SQL felügyelt példányának visszajelzési elemében](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
+- A csatolt kiszolgálók nem használhatók a hálózati megosztásokból származó fájlok (Excel, CSV) olvasásához. Próbáljon meg olyan [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file), [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) , amely CSV-fájlokat olvas az Azure Blob Storageból vagy egy olyan [csatolt kiszolgálóról, amely a szinapszis Analytics kiszolgáló nélküli SQL-készletére hivatkozik](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/). A kérelmek nyomon követése az [SQL felügyelt példányának visszajelzési elemében](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
 
 ### <a name="polybase"></a>PolyBase
 
-Az egyetlen támogatott külső forrás a RDBMS, a Azure SQL Database és az egyéb Azure SQL felügyelt példányok esetében. További információ [a következőről: Base](/sql/relational-databases/polybase/polybase-guide).
+Az egyetlen elérhető külső forrás a RDBMS (nyilvános előzetes verzió) az Azure SQL Database-be, az Azure SQL felügyelt példányára és az Azure szinapszis-készletre. Olyan [külső táblát is használhat, amely a szinapszis Analytics kiszolgáló nélküli SQL-készletére hivatkozik](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) , és ez megkerülő megoldásként szolgál az Azure Storage-ból közvetlenül beolvasott Base külső táblákhoz. Az Azure SQL felügyelt példányában a kapcsolódó kiszolgálókat a [szinapszis Analytics szolgáltatásban található kiszolgáló nélküli SQL-készletbe](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) , illetve az Azure Storage-beli adatSQL serverk olvasásához használhatja.
+További információ [a következőről: Base](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikáció
 

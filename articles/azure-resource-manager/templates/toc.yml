@@ -52,7 +52,7 @@
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blokklánc
           items:
-            - name: Blokklánc
+            - name: Blockchain
               href: ../../blockchain/service/create-member-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Compute
           items:
@@ -515,6 +515,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: További források
   items:
+    - name: Fejlessze a készségeit a Microsoft Learnnel
+      href: /learn/paths/deploy-manage-resource-manager-templates/
     - name: Azure gyorsindítási sablonok
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure-ütemterv

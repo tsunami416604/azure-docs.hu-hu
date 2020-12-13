@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: b783366958380f391dc76583c42988badc9915c8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 12/12/2020
+ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056480"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368630"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Azure Portal
 
-Az **adatimportálás** varázsló egy olyan Azure Portal eszköz, amely végigvezeti egy keresési index létrehozásán, így percek alatt írhat érdekes lekérdezéseket. 
+Hozza létre első indexét az **adatimportálás** varázsló használatával, valamint egy beépített minta adatforrást, amely fiktív szállodai adataiból áll. A varázsló végigvezeti a keresési index (Hotels-Sample-index) létrehozásán, hogy percek alatt írjon érdekes lekérdezéseket. 
 
-A varázsló emellett a mesterséges intelligenciával kapcsolatos oldalakat is tartalmaz, így szövegeket és struktúrát nyerhet a képfájlokból és a strukturálatlan szövegből. Az AI-val végzett tartalomkezelés magában foglalja az optikai karakterfelismerést (OCR), a kulcs kifejezését és az entitás kinyerését, valamint a képelemzést.
+Bár ebben a rövid útmutatóban nem fogja használni a beállításokat, a varázsló tartalmaz egy oldalt az AI-bővítéshez, így szöveget és struktúrát tud kinyerni a képfájlokból és a strukturálatlan szövegből. Az AI-bővítést is tartalmazó hasonló bemutatóért lásd [: gyors útmutató: kognitív Készségkészlet létrehozása](cognitive-search-quickstart-blob.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,11 +49,11 @@ Ebben az oktatóanyagban egy beépített minta-adathalmazt használunk, amely az
 
 1. [Keresse meg a keresési szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) , és az Áttekintés lapon kattintson az **adatok importálása** gombra a parancssorban a keresési index létrehozásához és feltöltéséhez.
 
-   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Indexek, indexelő és adatforrások listája":::
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Adatok importálása parancs":::
 
-1. A varázslóban kattintson a **Kapcsolódás**az  >  **adatmintákhoz**  >  **Hotels-Sample**elemre. Ez az adatforrás beépített. Ha saját adatforrást hozott létre, meg kell adnia a nevet, a típust és a kapcsolódási adatokat. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
+1. A varázslóban kattintson a **Kapcsolódás** az  >  **adatmintákhoz**  >  **Hotels-Sample** elemre. Ez az adatforrás beépített. Ha saját adatforrást hozott létre, meg kell adnia a nevet, a típust és a kapcsolódási adatokat. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
 
-   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Indexek, indexelő és adatforrások listája":::
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Minta adatkészlet kiválasztása":::
 
 1. Folytassa a következő oldallal.
 
@@ -63,7 +63,7 @@ A varázsló támogatja egy AI-bővítési [folyamat](cognitive-search-concept-i
 
 Most kihagyjuk ezt a lépést, és közvetlenül a cél- **index testreszabásához**.
 
-   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Indexek, indexelő és adatforrások listája":::
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="A kognitív képességek lépés kihagyása":::
 
 > [!TIP]
 > Egy rövid [útmutatóban vagy oktatóanyagban](cognitive-search-tutorial-blob.md) [egy AI](cognitive-search-quickstart-blob.md) -indexelési példát is megadhat.
@@ -76,18 +76,18 @@ A mezők adattípusokkal és attribútumokkal rendelkeznek. A fent látható jel
 
 * **Lekérhető**: azt jelenti, hogy a mező a keresési eredmények listájában jelenik meg. Az egyes mezők kikapcsolási korlátként való megjelöléséhez törölje ezt a jelölőnégyzetet, például a csak szűrési kifejezésekben használt mezőknél.
 * A **kulcs** az egyedi dokumentum azonosítója. Mindig sztring, és kötelező megadni.
-* **Szűrhető**, **rendezhető**és rendszerezhető annak meghatározása, hogy a mezők szűrő, rendezés **vagy csiszolt** navigációs szerkezetben vannak-e használva.
+* **Szűrhető**, **rendezhető** és rendszerezhető annak meghatározása, hogy a mezők szűrő, rendezés **vagy csiszolt** navigációs szerkezetben vannak-e használva.
 * **Kereshető**: azt jelenti, hogy a mező szerepel a teljes szöveges keresésben. A sztringek kereshetők. A numerikus és logikai mezőket gyakran nem kereshetőként jelölik meg.
 
 A tárolási követelmények nem változnak a kijelölés eredményeként. Ha például több mezőben állítja be a lekérdezhető **attribútumot** , a tárolási követelmények nem lépnek fel.
 
-Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonosítókat keresve, amelyeket felhasználhat a kulcsmező alapjaként. A *karakterláncok* **beolvasható** és **kereshetők**. *Az egész számok* lekérhető **,** **szűrhető**, **rendezhető**és **sokrétű**lehet.
+Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonosítókat keresve, amelyeket felhasználhat a kulcsmező alapjaként. A *karakterláncok* **beolvasható** és **kereshetők**. *Az egész számok* lekérhető **,** **szűrhető**, **rendezhető** és **sokrétű** lehet.
 
-1. Fogadja el az alapértelmezett beállításokat. 
+1. Fogadja el az alapértelmezett beállításokat.
 
    Ha a varázslót Másodszor futtatja egy meglévő szálláshely-adatforrás használatával, az index nem lesz alapértelmezett attribútumokkal konfigurálva. A jövőbeli importálások attribútumait manuálisan kell kiválasztani. 
 
-   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Indexek, indexelő és adatforrások listája":::
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Generált szállodák indexe":::
 
 2. Folytassa a következő oldallal.
 
@@ -100,15 +100,15 @@ Ez az objektum egy végrehajtható folyamatot határoz meg. Azt is megteheti, ho
 
 Kattintson a **Submit (Küldés** ) gombra az indexelő létrehozásához és egyidejű futtatásához.
 
-  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Indexek, indexelő és adatforrások listája":::
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Hotels indexelő":::
 
 ## <a name="monitor-progress"></a>Figyelési folyamat
 
-A varázslónak el kell végeznie az indexelő lista listáját, ahol nyomon követheti a folyamat előrehaladását. Az önnavigációhoz lépjen az Áttekintés lapra, és kattintson az **Indexelő**elemre.
+A varázslónak el kell végeznie az indexelő lista listáját, ahol nyomon követheti a folyamat előrehaladását. Az önnavigációhoz lépjen az Áttekintés lapra, és kattintson az **Indexelő** elemre.
 
 Több percet is igénybe vehet, amíg a portál frissíti az oldalt, de az újonnan létrehozott indexelő megjelenik a listában, amelynek állapota "folyamatban" vagy sikeres, valamint az indexelt dokumentumok száma.
 
-   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Indexek, indexelő és adatforrások listája":::
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Indexelő állapotüzenete":::
 
 ## <a name="view-the-index"></a>Az index megtekintése
 
@@ -116,13 +116,13 @@ A szolgáltatás fő lapja az Azure Cognitive Search szolgáltatásban létrehoz
 
 Várjon, amíg frissül a portál oldala. Néhány perc elteltével az indexnek a dokumentumok száma és a tárterület mérete alapján kell megjelennie.
 
-   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Indexek, indexelő és adatforrások listája":::
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Indexek listája a szolgáltatás irányítópultján":::
 
 Ebből a listából rákattinthat az imént létrehozott *Hotels-Sample* indexre, és megtekintheti az index sémát. és opcionálisan hozzáadhat új mezőket. 
 
 A **mezők** lap az index sémát jeleníti meg. Görgessen a lista aljára, és adjon meg egy új mezőt. A legtöbb esetben nem módosíthatja a meglévő mezőket. A meglévő mezők fizikai ábrázolással rendelkeznek az Azure Cognitive Searchban, ezért nem módosíthatók, még a kódban sem. Egy meglévő mező alapvető módosításához hozzon létre egy új indexet, és vidd az eredetit.
 
-   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Indexek, indexelő és adatforrások listája":::
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="példa indexdefinícióra":::
 
 Egyéb szerkezetek, például pontozási profilok és CORS-paraméterek, bármikor hozzáadhatók.
 
@@ -140,15 +140,15 @@ A **Search Explorer** csak [REST API kérelmek](/rest/api/searchservice/search-d
 
 1. A parancssávon kattintson a **Keresési ablak** elemre.
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Indexek, indexelő és adatforrások listája":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Keresési ablak parancs":::
 
-2. Az **index** legördülő menüben válassza a  *Hotels-Sample-index*lehetőséget. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2020-06-30).
+2. Az **index** legördülő menüben válassza a  *Hotels-Sample-index* lehetőséget. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2020-06-30).
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Indexek, indexelő és adatforrások listája":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Index és API-parancsok":::
 
-3. A keresősáv alatt illessze be az alábbi lekérdezési karakterláncokat, és kattintson a **Keresés**gombra.
+3. A keresősáv alatt illessze be az alábbi lekérdezési karakterláncokat, és kattintson a **Keresés** gombra.
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Indexek, indexelő és adatforrások listája":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Lekérdezési karakterlánc és Keresés gomb":::
 
 ## <a name="example-queries"></a>Példa a lekérdezésekre
 
@@ -188,14 +188,14 @@ Az értékkorlátozó szűrők megjelennek a keresési kérésekben. A facet par
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Példa (hatókörszűkítéssel korlátozva): `search=*&facet=Category&$top=2`
 
-* A **search=*** egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például azt szeretné, hogy egy aspektusban lévő navigációs struktúra az index összes szállodájának álljon.
-* A **facet** paraméter olyan navigációs szerkezetet ad vissza, amelyet továbbíthat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben a kategóriák egy *kategóriának*megfelelő mezőn alapulnak. Nincs összesítés az Azure Cognitive Searchban, de megközelítheti az összesítést a használatával `facet` , amely az egyes kategóriákban lévő dokumentumok számát adja meg.
+* a **Search =** _ egy üres keresés. Az üres keresések mindenben keresnek. Az üres lekérdezések elküldésének egyik oka a teljes dokumentumkészlet szűrése vagy értékkorlátozása lehet. Például azt szeretné, hogy egy aspektusban lévő navigációs struktúra az index összes szállodájának álljon.
+_ a **facet** olyan navigációs szerkezetet ad vissza, amelyet átadhat egy felhasználói felületi vezérlőnek. Kategóriákat és egy számot ad vissza. Ebben az esetben a kategóriák egy *kategóriának* megfelelő mezőn alapulnak. Nincs összesítés az Azure Cognitive Searchban, de megközelítheti az összesítést a használatával `facet` , amely az egyes kategóriákban lévő dokumentumok számát adja meg.
 
 * A **$top=2** paraméter két dokumentumot ad vissza, így bemutatja, hogy a `top` használatával csökkentheti és növelheti is az eredményeket.
 
 #### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Példa (a numerikus értékekre korlátozva): `search=spa&facet=Rating`
 
-* Ez a lekérdezés az értékelés dimenziója, a *Spa*szöveges keresésekor. A *minősítés* kifejezése egy dimenzióként adható meg, mert a mező lekérhető, szűrhető, és az indexben látható, valamint a benne foglalt értékek (numerikus, 1 – 5) alapján kategorizálható a listák csoportjaiba.
+* Ez a lekérdezés az értékelés dimenziója, a *Spa* szöveges keresésekor. A *minősítés* kifejezése egy dimenzióként adható meg, mert a mező lekérhető, szűrhető, és az indexben látható, valamint a benne foglalt értékek (numerikus, 1 – 5) alapján kategorizálható a listák csoportjaiba.
 
 * Csak a szűrhető mezők értéke korlátozható. Csak a lekérdezhető mezők adhatók vissza az eredményekben.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: keithp
-ms.openlocfilehash: 61a9fcc5490c20383a2ae7d5c57b7fda7567c643
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 1f349931fb479be3b3ba936b3d0a665427357f29
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095151"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369038"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -277,8 +277,8 @@ A dedikált HSM szolgáltatás a Thales hálózati Luna HSM 7 berendezéseket is
   * RC5
   * CAST
   * Kivonatoló/Message Digest/HMAC: SHA-1, SHA-2, SM3
-  * Kulcs származtatása: SP800-108 számláló üzemmód
-  * Kulcs becsomagolása: SP800-38F
+  * Kulcs származtatása: SP 800-108 számláló üzemmód
+  * Fő körbefuttatás: SP 800 – 38F
   * Véletlenszám-generálás: FIPS 140-2 jóváhagyott DRBG (SP 800-90 CTR mód), amely megfelel a BSI DRG. 4
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>K: a dedikált HSM FIPS 140-2 3. szint érvényesítve van?

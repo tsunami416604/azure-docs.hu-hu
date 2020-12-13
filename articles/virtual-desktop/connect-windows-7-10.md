@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287338"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368715"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Kapcsolódás a Windows asztali ügyféllel
 
@@ -32,7 +32,7 @@ Válassza ki azt az ügyfelet, amely megfelel a Windows-verziójának:
 
 Telepítheti az aktuális felhasználóhoz tartozó ügyfelet, amely nem követeli meg a rendszergazdai jogosultságokat, vagy a rendszergazda telepítheti és konfigurálhatja az ügyfelet, hogy az eszköz összes felhasználója hozzáférhessen.
 
-A telepítést követően a-ügyfél a Start menüből indítható el **Távoli asztal**keresésével.
+A telepítést követően a-ügyfél a Start menüből indítható el **Távoli asztal** keresésével.
 
 > [!IMPORTANT]
 > A Windows virtuális asztal nem támogatja a RemoteApp-és asztali kapcsolatok (RADC) ügyfelet vagy a Távoli asztali kapcsolat (MSTSC) ügyfelet.
@@ -46,7 +46,7 @@ A munkaterületekre kétféleképpen lehet előfizetni. Az ügyfél megpróbálh
 
 ### <a name="subscribe-with-a-user-account"></a>Előfizetés felhasználói fiókkal
 
-1. Az ügyfél főoldalán válassza az **előfizetés**lehetőséget.
+1. Az ügyfél főoldalán válassza az **előfizetés** lehetőséget.
 2. Ha a rendszer kéri, jelentkezzen be a felhasználói fiókjával.
 3. Az erőforrások megjelennek a kapcsolatok központjában, és a munkaterület szerint vannak csoportosítva.
 
@@ -55,9 +55,9 @@ A munkaterületekre kétféleképpen lehet előfizetni. Az ügyfél megpróbálh
 
 ### <a name="subscribe-with-a-url"></a>Előfizetés URL-címmel
 
-1. Az ügyfél főoldalán válassza az **előfizetés URL-lel**lehetőséget.
+1. Az ügyfél főoldalán válassza az **előfizetés URL-lel** lehetőséget.
 2. Adja meg a munkaterület URL-címét vagy e-mail-címét:
-   - Ha a **munkaterület URL-címét**használja, használja a rendszergazda által megadott címet. Ha a Windows virtuális asztalról fér hozzá az erőforrásokhoz, a következő URL-címek egyikét használhatja:
+   - Ha a **munkaterület URL-címét** használja, használja a rendszergazda által megadott címet. Ha a Windows virtuális asztalról fér hozzá az erőforrásokhoz, a következő URL-címek egyikét használhatja:
      - Windowsos virtuális asztal (klasszikus): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows rendszerű virtuális asztal: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
      - Windows rendszerű virtuális asztal (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
@@ -69,3 +69,5 @@ A munkaterületekre kétféleképpen lehet előfizetni. Az ügyfél megpróbálh
 ## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Windows asztali ügyfél használatáról, tekintse meg [a Windows asztali ügyfélprogram használatának első lépéseivel foglalkozó](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)témakört.
+
+Ha Ön rendszergazda, aki a Windows asztal használatának részletes ismertetését érdekli, tekintse meg a [Windows asztali ügyfél a rendszergazdák számára](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin)című témakört.

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349129"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368738"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -70,7 +70,7 @@ A megosztott átviteli sebességű adatbázis manuális átviteli sebességgel s
 * Az adatbázison/100-ben kiépített legmagasabb RU/s
 * 400 + MAX (tárolók száma-25, 0) * 100 RU/s
 
-Példa: tegyük fel, hogy rendelkezik egy, a 400 RU/s, 15 GB tárterülettel és 10 tárolóval kiépített adatbázissal. A minimális RU/s érték `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Ha az adatbázisban 30 tároló található, a minimális RU/s érték `400 + MAX(30 - 5, 0) * 100 RU/s` = 900 ru/s. 
+Példa: tegyük fel, hogy rendelkezik egy, a 400 RU/s, 15 GB tárterülettel és 10 tárolóval kiépített adatbázissal. A minimális RU/s érték `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Ha az adatbázisban 30 tároló található, a minimális RU/s érték `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
 
 **Megjegyzés:** ha a tároló vagy az adatbázis több mint 1 TB adatmennyiséget tartalmaz, előfordulhat, hogy a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" program](set-throughput.md#high-storage-low-throughput-program)használatára.
 
@@ -270,7 +270,7 @@ A következő táblázat felsorolja az [ingyenes szintű fiókok Azure Cosmos db
 
   A fentiek mellett a [fiókra vonatkozó korlátok](#per-account-limits) az ingyenes szintű fiókok esetében is érvényesek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Cosmos DB alapvető fogalmak [globális eloszlásáról](distribute-data-globally.md) , [particionálásáról](partitioning-overview.md) és kiosztott [átviteli sebességéről](request-units.md).
 

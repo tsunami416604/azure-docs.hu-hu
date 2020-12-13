@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: networking
 author: anavinahar
 ms.service: networking
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9751bd082947e66b3fc5ea47448857558301a1e7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329493"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366361"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager
 A következő korlátozások csak a **Azure Resource Manager** régiónként felügyelt hálózati erőforrások esetében érvényesek. Megtudhatja, hogyan [tekintheti meg az aktuális erőforrás-használatot az előfizetési korlátok](../articles/networking/check-usage-against-limits.md)alapján.
@@ -73,7 +73,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Hálózati adapterek szabályai (a hálózati adapter összes IP-címe között) | 300                           |
 | Előtér-IP-konfigurációk              | 600                           |
 | Háttérbeli készlet mérete                       | 1 000 IP-konfiguráció, egyetlen virtuális hálózat |
-| Háttérbeli erőforrások száma Load Balancer <sup> 1<sup> | 150                   |
+| Háttérbeli erőforrások száma Load Balancer <sup> 1<sup> | 250                   |
 | Magas rendelkezésre állású portok                 | 1/belső előtér       |
 | Kimenő szabályok száma Load Balancer        | 600                           |
 | Terheléselosztó virtuális gépenként                   | 2 (1 nyilvános és 1 belső)   |

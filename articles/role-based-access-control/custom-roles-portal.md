@@ -6,18 +6,16 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.openlocfilehash: 9ab6561b1dc0e8b977fc69d259c5f26366f355ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481329"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369226"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Egyéni Azure-szerepkörök létrehozása vagy módosítása az Azure Portal segítségével
 
@@ -31,14 +29,12 @@ Egyéni szerepkörök létrehozásához a következőkre lesz szüksége:
 
 ## <a name="step-1-determine-the-permissions-you-need"></a>1. lépés: a szükséges engedélyek meghatározása
 
-Az Azure-ban több ezer engedély található, amelyeket esetleg belefoglalhat az egyéni szerepkörbe. Az alábbi négy módszer segítségével határozhatja meg az egyéni szerepkörhöz hozzáadni kívánt engedélyeket:
+Az Azure-ban több ezer engedély található, amelyeket esetleg belefoglalhat az egyéni szerepkörbe. Íme néhány módszer, amelyek segítségével meghatározhatja az egyéni szerepkörhöz hozzáadni kívánt engedélyeket:
 
-| Módszer | Leírás |
-| --- | --- |
-| Megtekintheti a meglévő szerepköröket | Megtekintheti a meglévő szerepköröket, hogy megtudja, milyen engedélyek vannak használatban. További információ: [Beépített Azure-szerepkörök](built-in-roles.md). |
-| Engedélyek keresése kulcsszó alapján | Ha a Azure Portal használatával hoz létre egyéni szerepkört, az engedélyek kulcsszava alapján is megkereshetők. Megkeresheti például a *virtuális gépet* vagy a *Számlázási* engedélyeket. Ezt a keresési funkciót a [4. lépés: engedélyek című szakasza](#step-4-permissions)tárgyalja. |
-| Az összes engedély letöltése | Amikor létrehoz egy egyéni szerepkört a Azure Portal használatával, letöltheti az összes engedélyt CSV-fájlként, majd megkeresheti a fájlt. Az **engedélyek hozzáadása** panelen kattintson a minden engedély **letöltése** gombra az összes engedély letöltéséhez. További információ az engedélyek hozzáadása panelen: [4. lépés: engedélyek](#step-4-permissions). |
-| A dokumentumok engedélyeinek megtekintése | A rendelkezésre álló engedélyeket [Azure Resource Manager erőforrás-szolgáltatói műveleteknél](resource-provider-operations.md)tekintheti meg. |
+- Tekintse meg a meglévő [beépített szerepköröket](built-in-roles.md).
+- Sorolja fel azokat az Azure-szolgáltatásokat, amelyekhez hozzáférést szeretne biztosítani.
+- Határozza meg az [Azure-szolgáltatásokhoz hozzárendelt erőforrás-szolgáltatókat](../azure-resource-manager/management/azure-services-resource-providers.md). A keresési módszert a [4. lépés: engedélyek című szakasza](#step-4-permissions)írja le.
+- Keresse meg az [elérhető engedélyeket](resource-provider-operations.md) a felvenni kívánt engedélyek megkereséséhez. A keresési módszert a [4. lépés: engedélyek című szakasza](#step-4-permissions)írja le.
 
 ## <a name="step-2-choose-how-to-start"></a>2. lépés: a kezdési módjának kiválasztása
 
@@ -58,7 +54,7 @@ Ha egy meglévő szerepkör nem rendelkezik a szükséges engedélyekkel, akkor 
 
 1. Keressen olyan szerepkört, amelyet klónozottként szeretne használni, például a számlázási olvasó szerepkört.
 
-1. A sor végén kattintson a három pontra (**...**), majd a **klónozás**elemre.
+1. A sor végén kattintson a három pontra (**...**), majd a **klónozás** elemre.
 
     ![Klónozási helyi menü](./media/custom-roles-portal/clone-menu.png)
 
@@ -72,7 +68,7 @@ Ha szeretné, az alábbi lépéseket követve elindíthat egy egyéni szerepkör
 
 1. A Azure Portal nyisson meg egy előfizetést vagy erőforráscsoportot, amelyhez az egyéni szerepkört hozzá szeretné rendelni, majd nyissa meg a **hozzáférés-vezérlés (iam)** lehetőséget.
 
-1. Kattintson a **Hozzáadás** , majd az **Egyéni szerepkör hozzáadása**elemre.
+1. Kattintson a **Hozzáadás** , majd az **Egyéni szerepkör hozzáadása** elemre.
 
     ![Egyéni szerepkör hozzáadása menü](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -136,17 +132,17 @@ Ha szeretné, megadhatja a legtöbb egyéni szerepkör-értéket egy JSON-fájlb
     
 1. A Azure Portal nyissa meg a **hozzáférés-vezérlés (iam)** lapot.
 
-1. Kattintson a **Hozzáadás** , majd az **Egyéni szerepkör hozzáadása**elemre.
+1. Kattintson a **Hozzáadás** , majd az **Egyéni szerepkör hozzáadása** elemre.
 
     ![Egyéni szerepkör hozzáadása menü](./media/custom-roles-portal/add-custom-role-menu.png)
 
     Ekkor megnyílik az egyéni szerepkörök szerkesztője.
 
-1. Az alapbeállítások lap alapkonfiguráció **engedélyei**területén válassza az **Indítás a JSON-ból**lehetőséget.
+1. Az alapbeállítások lap alapkonfiguráció **engedélyei** területén válassza az **Indítás a JSON-ból** lehetőséget.
 
 1. A fájl kiválasztása mező mellett kattintson a mappa gombra a Megnyitás párbeszédpanel megnyitásához.
 
-1. Válassza ki a JSON-fájlt, majd kattintson a **Megnyitás**gombra.
+1. Válassza ki a JSON-fájlt, majd kattintson a **Megnyitás** gombra.
 
 1. Folytassa a [3. lépéssel: alapjaival](#step-3-basics).
 
@@ -174,7 +170,7 @@ Kövesse az alábbi lépéseket az egyéni szerepkörhöz tartozó engedélyek h
 
 1. Az engedélyek hozzáadásához kattintson az **engedélyek hozzáadása** elemre az engedélyek hozzáadása ablaktábla megnyitásához.
 
-    Ez a panel felsorolja a különböző kategóriákba csoportosított összes rendelkezésre álló engedélyt a kártya formátumában. Mindegyik kategória egy *erőforrás-szolgáltatót*jelöl, amely az Azure-erőforrásokat ellátó szolgáltatás.
+    Ez a panel felsorolja a különböző kategóriákba csoportosított összes rendelkezésre álló engedélyt a kártya formátumában. Mindegyik kategória egy *erőforrás-szolgáltatót* jelöl, amely az Azure-erőforrásokat ellátó szolgáltatás.
 
 1. Az **engedély keresése** mezőbe írjon be egy karakterláncot az engedélyek megkereséséhez. A számlázással kapcsolatos engedélyek megkereséséhez például keressen rá a *számla* kifejezésre.
 
@@ -188,7 +184,7 @@ Kövesse az alábbi lépéseket az egyéni szerepkörhöz tartozó engedélyek h
 
     ![Engedélyek listájának hozzáadása](./media/custom-roles-portal/add-permissions-list.png)
 
-1. Ha az adatsíkon érvényes engedélyeket keres, kattintson az **adatműveletek**lehetőségre. Ellenkező esetben hagyja meg **a műveletek váltógomb** beállítást a felügyeleti síkon érvényes engedélyek listázásához. További információ a felügyeleti sík és az adatsík közötti különbségekről: [felügyeleti és adatműveletek](role-definitions.md#management-and-data-operations).
+1. Ha az adatsíkon érvényes engedélyeket keres, kattintson az **adatműveletek** lehetőségre. Ellenkező esetben hagyja meg **a műveletek váltógomb** beállítást a felügyeleti síkon érvényes engedélyek listázásához. További információ a felügyeleti sík és az adatsík közötti különbségekről: [felügyeleti és adatműveletek](role-definitions.md#management-and-data-operations).
 
 1. Ha szükséges, frissítse a keresési karakterláncot, hogy tovább pontosítsa a keresést.
 
@@ -261,7 +257,7 @@ A **hozzárendelhető hatókörök** lapon adhatja meg, hogy az egyéni szerepk�
 
 A **JSON** lapon megtekintheti a JSON-ban formázott egyéni szerepkört. Ha szeretné, közvetlenül is szerkesztheti a JSON-t. Ha helyettesítő karaktert () szeretne hozzáadni `*` , ezt a fület kell használnia.
 
-1. A JSON szerkesztéséhez kattintson a **Szerkesztés**gombra.
+1. A JSON szerkesztéséhez kattintson a **Szerkesztés** gombra.
 
     ![Egyéni szerepkört mutató JSON-lap](./media/custom-roles-portal/json.png)
 
@@ -269,7 +265,7 @@ A **JSON** lapon megtekintheti a JSON-ban formázott egyéni szerepkört. Ha sze
 
     Ha a JSON formátuma nem megfelelő, akkor egy piros szaggatott vonal és egy kijelző jelenik meg a függőleges csatornán.
 
-1. A Szerkesztés befejezése után kattintson a **Mentés**gombra.
+1. A Szerkesztés befejezése után kattintson a **Mentés** gombra.
 
 ## <a name="step-7-review--create"></a>7. lépés: felülvizsgálat + létrehozás
 
@@ -289,7 +285,7 @@ A **felülvizsgálat + létrehozás** lapon áttekintheti az egyéni szerepkör 
 
     ![Felülvizsgálat + létrehozási hiba](./media/custom-roles-portal/review-create-error.png)
 
-1. Tekintse meg az új egyéni szerepkört a **szerepkörök** listájában. Ha nem látja az egyéni szerepkört, kattintson a **frissítés**gombra.
+1. Tekintse meg az új egyéni szerepkört a **szerepkörök** listájában. Ha nem látja az egyéni szerepkört, kattintson a **frissítés** gombra.
 
      Néhány percet is igénybe vehet, amíg az egyéni szerepkör mindenhol megjelenik.
 
@@ -303,7 +299,7 @@ Az alábbi lépéseket követve megtekintheti az egyéni szerepköröket.
 
 1. A **Type (típus** ) listában válassza a **CustomRole** lehetőséget, hogy csak az egyéni szerepköröket lássuk.
 
-    Ha most hozta létre az egyéni szerepkört, és nem jelenik meg a listában, kattintson a **frissítés**gombra.
+    Ha most hozta létre az egyéni szerepkört, és nem jelenik meg a listában, kattintson a **frissítés** gombra.
 
     ![Egyéni szerepkörök listája](./media/custom-roles-portal/custom-role-list.png)
 
@@ -311,7 +307,7 @@ Az alábbi lépéseket követve megtekintheti az egyéni szerepköröket.
 
 1. A cikk korábbi részében leírtak szerint nyissa meg az egyéni szerepkörök listáját.
 
-1. Kattintson a frissíteni kívánt egyéni szerepkör három pontra (**...**), majd a **Szerkesztés**elemre. Vegye figyelembe, hogy a beépített szerepkörök nem frissíthetők.
+1. Kattintson a frissíteni kívánt egyéni szerepkör három pontra (**...**), majd a **Szerkesztés** elemre. Vegye figyelembe, hogy a beépített szerepkörök nem frissíthetők.
 
     Az egyéni szerepkör a szerkesztőben nyílik meg.
 
@@ -329,7 +325,7 @@ Az alábbi lépéseket követve megtekintheti az egyéni szerepköröket.
 
 1. Távolítson el minden olyan szerepkör-hozzárendelést, amely az egyéni szerepkört használja.
 
-1. Kattintson a törölni kívánt egyéni szerepkör három pontra (**...**), majd a **Törlés**gombra.
+1. Kattintson a törölni kívánt egyéni szerepkör három pontra (**...**), majd a **Törlés** gombra.
 
     ![Képernyőkép, amely megjeleníti a törlésre kiválasztható egyéni szerepkörök listáját.](./media/custom-roles-portal/delete-menu.png)
 
@@ -339,4 +335,4 @@ Az alábbi lépéseket követve megtekintheti az egyéni szerepköröket.
 
 - [Oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell használatával](tutorial-custom-role-powershell.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)
-- [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md)
+- [Azure erőforrás-szolgáltatói műveletek](resource-provider-operations.md)

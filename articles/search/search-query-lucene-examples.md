@@ -9,222 +9,212 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: ae4dd8b82e40b46da52a1b1f396569fda1dfea2b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 406233fd93ca76a683cf9f9a9e857de9099705ef
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694626"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368545"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>A "teljes" Lucene keresési szintaxis használata (speciális lekérdezések az Azure Cognitive Searchban)
 
-Az Azure Cognitive Search-lekérdezések létrehozásakor lecserélheti az alapértelmezett [egyszerű lekérdezés-elemzőt](query-simple-syntax.md) az [Azure Cognitive Search több expanzív Lucene-lekérdezési elemzője](query-lucene-syntax.md) segítségével, hogy speciális és speciális lekérdezési definíciókat lehessen kialakítani. 
+Az Azure Cognitive Search-lekérdezések létrehozásakor lecserélheti az alapértelmezett [egyszerű lekérdezés-elemzőt](query-simple-syntax.md) az Azure Cognitive Search nagyobb teljesítményű [Lucene-lekérdezési elemzője](query-lucene-syntax.md) segítségével, így speciális és speciális lekérdezési definíciókat hozhat létre. 
 
-A Lucene-elemző támogatja az összetett lekérdezési szerkezeteket, például a mezők hatókörű lekérdezéseket, a zavaros keresést, a Infix és az utótag helyettesítő karakteres keresését, a közelségi keresést, a kifejezés növelését és a reguláris kifejezések keresését. További feldolgozási követelmények is elérhetők, ezért érdemes lehet valamivel több végrehajtási időt várnia. Ebben a cikkben áttekintheti a teljes szintaxis használatakor elérhető lekérdezési műveleteket bemutató példákat.
+A Lucene-elemző támogatja az összetett lekérdezési szerkezeteket, például a mezők hatókörű lekérdezéseket, a zavaros keresést, a Infix és az utótag helyettesítő karakteres keresését, a közelségi keresést, a kifejezés növelését és a reguláris kifejezések keresését. További feldolgozási követelmények is elérhetők, ezért érdemes lehet valamivel több végrehajtási időt várnia. Ebben a cikkben áttekintheti a lekérdezési műveleteket bemutató példákat a teljes szintaxis alapján.
 
 > [!Note]
 > A teljes Lucene lekérdezési szintaxison keresztül engedélyezett speciális lekérdezési szerkezetek közül sok nem kerül [szöveg-elemzésre](search-lucene-query-architecture.md#stage-2-lexical-analysis), ami meglepő lehet, ha az eredmény vagy a morfológiai elemzéshez. A lexikális analízis csak teljes feltételekkel (lekérdezés vagy kifejezéses lekérdezés) hajtható végre. Hiányos kifejezésekkel rendelkező lekérdezések (előtag-lekérdezés, helyettesítő karakteres lekérdezés, regex lekérdezés, fuzzy lekérdezés) közvetlenül a lekérdezési fában lesznek hozzáadva, az elemzési szakasz megkerülésével. Az egyetlen, a részleges lekérdezési feltételeken végrehajtott átalakítás lowercasing. 
 >
 
-## <a name="formulate-requests-in-postman"></a>Kérelmek összeállítása a Poster-ban
+## <a name="nyc-jobs-examples"></a>NYC-feladatok – példák
 
-Az alábbi példákban a [New York OpenData Initiative City](https://opendata.cityofnewyork.us/) által biztosított adatkészletek alapján elérhető feladatokat tartalmazó NYC-feladatok keresési indexét használjuk. Ezek az adathalmazok nem tekintendők aktuálisnak vagy teljesnek. Az index a Microsoft által biztosított sandbox-szolgáltatáson alapul, ami azt jelenti, hogy a lekérdezések kipróbálásához nincs szükség Azure-előfizetésre vagy Azure-Cognitive Searchra.
+Az alábbi példák a [New York-i OpenData kezdeményezés](https://nycopendata.socrata.com/)által biztosított adatkészletek alapján elérhető feladatokat tartalmazó [NYC-feladatok keresési indexét](https://azjobsdemo.azurewebsites.net/) használják. Ezek az adathalmazok nem tekintendők aktuálisnak vagy teljesnek. Az index a Microsoft által biztosított sandbox-szolgáltatáson alapul, ami azt jelenti, hogy a lekérdezések kipróbálásához nincs szükség Azure-előfizetésre vagy Azure-Cognitive Searchra.
 
-A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenértékű eszközre van szükség. További információ: [Ismerkedés a REST-ügyfelekkel](search-get-started-rest.md).
+Mi a teendő, ha a Poster vagy egy azzal egyenértékű eszköz a HTTP-kérelem közzétételéhez a GET vagy a POST szolgáltatásban. Ha nem ismeri ezeket az eszközöket, tekintse meg a gyors útmutató [: az Azure Cognitive Search REST API megismerése](search-get-started-rest.md)című témakört.
 
-### <a name="set-the-request-header"></a>A kérelem fejlécének beállítása
+## <a name="set-up-the-request"></a>A kérelem beállítása
 
-1. A kérelem fejlécében állítsa be a **Content-Type értéket a következőre** : `application/json` .
+1. A kérelem fejlécének a következő értékekkel kell rendelkeznie:
 
-2. Adjon hozzá egy **API-kulcsot**, és állítsa be a következő sztringre: `252044BE3886FE4A8E3BAA4F595114BB` . Ez egy lekérdezési kulcs a NYC-feladatok indexét futtató sandbox Search szolgáltatáshoz.
+   | Kulcs | Érték |
+   |-----|-------|
+   | Content-Type | `application/json`|
+   | API-kulcs  | `252044BE3886FE4A8E3BAA4F595114BB` </br> (ez a tényleges lekérdezési API-kulcs a NYC-feladatok indexét üzemeltető sandbox keresési szolgáltatáshoz) |
 
-A kérelem fejlécének megadását követően újra felhasználhatja azt a jelen cikk összes lekérdezéséhez, csak a **Search =** sztringet felcserélve. 
+1. A művelet beállítása a következőre: **`GET`** .
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-header.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
+1. Az URL-cím beállítása **`https://azs-playground.search.windows.net/indexes/nycjobs/docs/search=*&api-version=2020-06-30&queryType=full`**
 
-### <a name="set-the-request-url"></a>A kérelem URL-címének beállítása
+   + Az index dokumentumok gyűjteménye minden kereshető tartalmat tartalmaz. A kérelem fejlécében megadott lekérdezési API-kulcs csak olyan olvasási műveletekhez használható, amelyek a dokumentumok gyűjteményét célozzák meg.
 
-A kérelem egy GET parancs, amely az Azure Cognitive Search végpontot és a keresési karakterláncot tartalmazó URL-címmel párosítva van.
+   + **`$count=true`** a keresési feltételeknek megfelelő dokumentumok számát adja vissza. Üres keresési sztring esetén a szám az index összes dokumentuma lesz (körülbelül 2558 a NYC-feladatok esetében).
 
-  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Poster-kérelem fejlécének beolvasása" border="false":::
+   + **`search=*`** egy meghatározatlan lekérdezés, amely null vagy üres kereséssel egyenértékű. Ez nem különösen hasznos, de ez a legegyszerűbb keresési lehetőség, amely az index összes lekérdezhető mezőjét megjeleníti az összes értékkel együtt.
 
-Az URL-összeállítás a következő elemekből áll:
+   + **`queryType=full`** meghívja a teljes Lucene-elemzőt.
 
-+ **`https://azs-playground.search.windows.net/`** Az Azure Cognitive Search fejlesztői csapata által karbantartott sandbox keresési szolgáltatás. 
-+ **`indexes/nycjobs/`** a New York Jobs index a szolgáltatás indexek gyűjteményében. A kéréshez a szolgáltatás nevét és indexét is meg kell adni.
-+ **`docs`** az összes kereshető tartalmat tartalmazó dokumentumok gyűjteménye. A kérelem fejlécében megadott lekérdezési API-kulcs csak olyan olvasási műveleteken működik, amelyek a dokumentumok gyűjteményét célozzák meg.
-+ **`api-version=2020-06-30`** Beállítja az API-verziót, amely minden kérelem esetében kötelező paraméter.
-+ **`search=*`** a lekérdezési karakterlánc, amely a kezdeti lekérdezésben null értékű, és az első 50 eredményt adja vissza (alapértelmezés szerint).
+1. Ellenőrzési lépésként illessze be a következő kérelmet a GET mezőbe, és kattintson a **Küldés** gombra. Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza.
 
-## <a name="send-your-first-query"></a>Az első lekérdezés elküldése
+   ```http
+   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*&queryType=full
+   ```
 
-Ellenőrzési lépésként illessze be a következő kérelmet a GET mezőbe, és kattintson a **Küldés** gombra. Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza. A rendszer a teljes dokumentumot adja vissza, ami lehetővé teszi az összes mező és az összes érték megtekintését.
+### <a name="how-to-invoke-full-lucene-parsing"></a>A teljes Lucene-elemzés meghívása
 
-Illessze be ezt az URL-címet egy REST-ügyfélbe érvényesítési lépésként, és tekintse meg a dokumentum szerkezetét.
+A Hozzáadás **`queryType=full`** gombra kattintva meghívja a teljes lekérdezési szintaxist, felülbírálva az alapértelmezett egyszerű lekérdezési szintaxist. A cikkben szereplő összes példa megadja a **`queryType=full`** keresési paramétert, amely azt jelzi, hogy a teljes szintaxist a Lucene lekérdezés-elemző kezeli. 
 
-  ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*
-  ```
-
-A lekérdezési karakterlánc ( **`search=*`** ) nem meghatározott keresés, amely egyenértékű null vagy üres kereséssel. Ez a legegyszerűbb keresési lehetőség.
-
-Opcionálisan hozzáadhatja **`$count=true`** az URL-címet a keresési feltételeknek megfelelő dokumentumok számának visszaadásához. Üres keresési sztring esetén ez az indexben található összes dokumentum (körülbelül 2800 a NYC-feladatok esetében).
-
-## <a name="how-to-invoke-full-lucene-parsing"></a>A teljes Lucene-elemzés meghívása
-
-Adja hozzá a **queryType = Full** parancsot a teljes lekérdezési szintaxis meghívásához, felülbírálva az alapértelmezett egyszerű lekérdezési szintaxist. 
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&search=*
+```http
+POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "full",
+    "search": "*"
+}
 ```
-
-A cikkben szereplő összes példa megadja a **queryType = teljes** keresési paramétert, amely azt jelzi, hogy a teljes szintaxist a Lucene lekérdezés-elemzője kezeli. 
 
 ## <a name="example-1-query-scoped-to-a-list-of-fields"></a>1. példa: a lekérdezés hatóköre a mezők listájára terjed ki
 
-Ez az első példa nem Lucene, de az első alapvető lekérdezési koncepció bevezetéséhez vezetünk: a mező hatóköre. Ez a példa a teljes lekérdezést és a választ csak néhány konkrét mezőre vonatkozik. Az olvasható JSON-válaszok szerkezetének ismerete fontos, ha az eszköz Poster vagy Search Explorer. 
+Ez az első példa nem elemző-specifikus, de az első alapvető lekérdezési koncepció bevezetéséhez vezetünk: a tárolás. Ebben a példában a lekérdezés-végrehajtás és a válasz is csak néhány konkrét mezőre van korlátozva. Az olvasható JSON-válaszok szerkezetének ismerete fontos, ha az eszköz Poster vagy Search Explorer. 
 
-A rövidség kedvéért a lekérdezés csak a *business_title* mezőt célozza meg, és csak az üzleti címeket adja vissza. A **searchFields** paraméter csak a business_title mezőre korlátozza a lekérdezés végrehajtását, és **kiválasztja** , hogy mely mezők szerepeljenek a válaszban.
-
-### <a name="search-expression"></a>Kifejezés keresése
+Ez a lekérdezés csak a (z) *business_title* a-ben **`searchFields`** , a **`select`** válaszban a paraméterrel megegyező mezőben megadott értékkel.
 
 ```http
-&search=*&searchFields=business_title&$select=business_title
-```
-
-Itt ugyanaz a lekérdezés, amelyben több mező található a vesszővel tagolt listában.
-
-```http
-search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
-```
-
-A vesszők utáni szóközök nem kötelezőek.
-
-> [!Tip]
-> Ha az alkalmazás kódjából REST API használ, ne felejtsen el URL-kódolású paramétereket (például `$select` és `searchFields` ).
-
-### <a name="full-url"></a>Teljes URL-cím
-
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
+POST https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "full",
+    "search": "*",
+    "searchFields": "business_title",
+    "select": "business_title"
+}
 ```
 
 A lekérdezésre adott válasznak az alábbi képernyőképhez hasonlóan kell kinéznie.
 
   ![Poster-minta válasza pontszámokkal](media/search-query-lucene-examples/postman-sample-results.png)
 
-Lehetséges, hogy észrevette a keresési pontszámot a válaszban. 1 egységes pontszám akkor fordul elő, ha nincs rangsor, vagy mert a keresés nem teljes szöveges keresés, vagy nem lett alkalmazva. A feltétel nélküli null kereséshez a sorok tetszőleges sorrendben jönnek vissza. A tényleges keresési feltételek befoglalásakor a keresési pontszámok jelentős értékekre lesznek kialakítva.
+Lehetséges, hogy észrevette a keresési pontszámot a válaszban. **1** egységes pontszám akkor fordul elő, ha nincs rangsor, vagy mert a keresés nem teljes szöveges keresést tartalmaz, vagy ha nem adtak meg feltételeket. Üres keresés esetén a sorok tetszőleges sorrendben jönnek vissza. A tényleges feltételek belefoglalásakor a keresési pontszámok jelentős értékekre lesznek kialakítva.
 
 ## <a name="example-2-fielded-search"></a>2. példa: mező szerinti keresés
 
-A teljes Lucene szintaxisa támogatja az egyes keresési kifejezések adott mezőhöz való hatókörét. Ez a példa olyan üzleti címeket keres, amelyek a legfelső szintűek, de nem a Junior kifejezéssel rendelkeznek.
-
-### <a name="search-expression"></a>Kifejezés keresése
+A teljes Lucene szintaxisa támogatja az egyes keresési kifejezések adott mezőhöz való hatókörét. Ez a példa olyan üzleti címeket keres, amelyek a legfelső szintűek, de nem a Junior kifejezéssel rendelkeznek. Több mezőt is megadhat a és a használatával.
 
 ```http
-$select=business_title&search=business_title:(senior NOT junior)
+POST /indexes/nycjobs/docs?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "full",
+    "search": "business_title:(senior NOT junior) AND posting_type:external",
+    "searchFields": "business_title, posting_type",
+    "select": "business_title, posting_type"
+}
 ```
 
-Itt ugyanaz a lekérdezés több mezővel.
-
-```http
-$select=business_title, posting_type&search=business_title:(senior NOT junior) AND posting_type:external
-```
-
-### <a name="full-url"></a>Teljes URL-cím
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
-```
+A lekérdezésre adott válasznak a következő képernyőképhez hasonlóan kell kinéznie (posting_type nem látható).
 
   :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Poster-minta válaszának keresési kifejezése" border="false":::
 
-A **mezőnév: searchExpression** szintaxissal megadhat egy mezőhöz tartozó keresési műveletet, ahol a keresési kifejezés lehet egyetlen szó vagy kifejezés, vagy egy összetettebb kifejezés zárójelben, opcionálisan logikai operátorokkal. Néhány példa a következőkre:
+A keresési kifejezés lehet egyetlen szó vagy kifejezés, vagy egy összetettebb kifejezés zárójelben, opcionálisan logikai operátorokkal. Néhány példa a következőkre:
 
-- `business_title:(senior NOT junior)`
-- `state:("New York" OR "New Jersey")`
-- `business_title:(senior NOT junior) AND posting_type:external`
++ `business_title:(senior NOT junior)`
++ `state:("New York" OR "New Jersey")`
++ `business_title:(senior NOT junior) AND posting_type:external`
 
-Ügyeljen arra, hogy az idézőjelek között több karakterláncot is helyezzen el, ha azt szeretné, hogy mindkét sztring egyetlen entitásként legyen kiértékelve, mivel ebben az esetben két különböző helyet keres a `state` mezőben. Győződjön meg arról is, hogy az operátor olyan tőkésített, ahogyan a nem és a és a is látható.
+Ügyeljen arra, hogy az idézőjelek között több karakterláncot is helyezzen el, ha azt szeretné, hogy mindkét sztring egyetlen entitásként legyen kiértékelve, mivel ebben az esetben két különböző helyet keres a `state` mezőben. Az eszköztől függően előfordulhat, hogy el kell menekülnie ( `\` ) az idézőjeleket. 
 
 A **mezőnév: searchExpression** mezőben megadott mezőnek kereshető mezőnek kell lennie. További részletekért lásd: [create index (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index) .
 
 > [!NOTE]
-> A fenti példában nem volt szükség a paraméter használatára, `searchFields` mert a lekérdezés egyes részeihez explicit módon meg van adva a mező neve. Azonban továbbra is használhatja a `searchFields` paramétert, ha olyan lekérdezést szeretne futtatni, amelyben bizonyos részek hatóköre egy adott mezőre vonatkozik, a REST pedig több mezőre is vonatkozhat. Például a lekérdezés `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` `senior NOT junior` csak a `business_title` mezőhöz igazodik, míg a "külső" értékkel egyezik a `posting_type` mezővel. A Mezőnév mezőben megadott mezőnév **: a searchExpression** mindig elsőbbséget élvez a `searchFields` paraméterrel szemben, ezért ebben a példában nem kell belefoglalni `business_title` a `searchFields` paraméterbe.
+> A fenti példában a paraméter ki **`searchFields`** van hagyva, mert a lekérdezés egyes részei explicit módon vannak megadva. Azonban továbbra is használhatja, **`searchFields`** Ha a lekérdezés több részből áll (using és utasítások). Például a lekérdezés `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` `senior NOT junior` csak a `business_title` mezőhöz igazodik, míg a "külső" értékkel egyezik a `posting_type` mezővel. A mező megadott neve `fieldName:searchExpression` mindig elsőbbséget élvez **`searchFields`** , ezért ebben a példában a kihagyható `business_title` **`searchFields`** .
 
 ## <a name="example-3-fuzzy-search"></a>3. példa: fuzzy keresés
 
 A teljes Lucene szintaxisa támogatja a zavaros keresést, és a hasonló szerkezettel rendelkező feltételek egyeztetését is. A zavaros kereséshez fűzze hozzá a tilde `~` szimbólumot egyetlen szó végén egy opcionális paraméterrel, egy 0 és 2 közötti értéket, amely megadja a szerkesztési távolságot. Például a `blue~` `blue~1` kék, a blues és a ragasztó is visszatérhet.
 
-### <a name="search-expression"></a>Kifejezés keresése
-
 ```http
-searchFields=business_title&$select=business_title&search=business_title:asosiate~
+POST /indexes/nycjobs/docs?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "full",
+    "search": "business_title:asosiate~",
+    "searchFields": "business_title",
+    "select": "business_title"
+}
 ```
 
-A kifejezések nem támogatottak közvetlenül, de egy kifejezés összetevő részeinél megadható egy homályos egyezés.
+A kifejezések nem támogatottak közvetlenül, de a több részből álló kifejezések minden egyes időszakában megadható egy fuzzy egyezés, például: `search=business_title:asosiate~ AND comm~` .  Az alábbi képernyőképen a válasz tartalmazza a *közösségi munkatárs* egyezését.
 
-```http
-searchFields=business_title&$select=business_title&search=business_title:asosiate~ AND comm~ 
-```
-
-
-### <a name="full-url"></a>Teljes URL-cím
-
-Ez a lekérdezés a "hozzárendelés" kifejezéssel rendelkező feladatokat keresi meg (szándékosan hibásan írt):
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
-```
-  ![Fuzzy keresési válasz](media/search-query-lucene-examples/fuzzysearch.png)
-
+  :::image type="content" source="media/search-query-lucene-examples/fuzzysearch.png" alt-text="Fuzzy keresési válasz" border="false":::
 
 > [!Note]
-> A zavaros lekérdezések [elemzése](search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Hiányos kifejezésekkel rendelkező lekérdezések (előtag-lekérdezés, helyettesítő karakteres lekérdezés, regex lekérdezés, fuzzy lekérdezés) közvetlenül a lekérdezési fában lesznek hozzáadva, az elemzési szakasz megkerülésével. Az egyetlen, hiányos lekérdezési feltételeken végrehajtott átalakítás lowercasing.
+> A zavaros lekérdezések [elemzése](search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Hiányos kifejezésekkel rendelkező lekérdezések (előtag-lekérdezés, helyettesítő karakteres lekérdezés, regex lekérdezés, fuzzy lekérdezés) közvetlenül a lekérdezési fában lesznek hozzáadva, az elemzési szakasz megkerülésével. Az egyetlen, a részleges lekérdezési feltételeken végrehajtott átalakítás lowercasing.
 >
 
 ## <a name="example-4-proximity-search"></a>4. példa: a közelség keresése
+
 A közelségi keresések megkeresik a dokumentumokban egymáshoz közeli kifejezéseket. Szúrjon be egy "~" szimbólumot egy kifejezés végén, majd a közelségi határt létrehozó szavak számát. Például a "Hotel Airport" ~ 5 megkeresi a (z) és a repülőtér használati feltételeit egy dokumentumban lévő, egymástól eltérő 5 szóból.
 
-### <a name="search-expression"></a>Kifejezés keresése
+Ez a lekérdezés megkeresi a "vezető" és az "elemző" kifejezéseket, ahol az egyes kifejezéseket nem több szó választja el, és az idézőjelek megmaradnak ( `\"` ) a kifejezés megőrzése érdekében:
 
 ```http
-searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
+POST /indexes/nycjobs/docs?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "full",
+    "search": "business_title:\"senior analyst\"~1",
+    "searchFields": "business_title",
+    "select": "business_title"
+}
 ```
 
-### <a name="full-url"></a>Teljes URL-cím
+A lekérdezésre adott válasznak a következő képernyőképhez hasonlóan kell kinéznie 
 
-Ebben a lekérdezésben a "vezető elemző" kifejezéssel rendelkező feladatok esetében, ha az elválasztó karakter nem több, mint egy szó:
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
-```
   :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Közelségi lekérdezés" border="false":::
 
-Próbálkozzon újra a "vezető elemző" kifejezés közötti szavak eltávolításával. Figyelje meg, hogy a lekérdezés 8 dokumentumot ad vissza, az előző lekérdezés esetében pedig 10.
+Próbálja ki újra, kiküszöbölve a távolságot ( `~0` ) a "vezető elemző" kifejezés között. Figyelje meg, hogy a lekérdezés 8 dokumentumot ad vissza, az előző lekérdezés esetében pedig 10.
 
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
+```http
+POST /indexes/nycjobs/docs?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "full",
+    "search": "business_title:\"senior analyst\"~0",
+    "searchFields": "business_title",
+    "select": "business_title"
+}
 ```
 
 ## <a name="example-5-term-boosting"></a>5. példa: a kifejezés fokozása
-A kifejezés növelése arra utal, hogy a dokumentum rangsorolása magasabb, ha a megnövelt kifejezést tartalmazza, a kifejezést nem tartalmazó dokumentumokhoz képest. Egy kifejezés növeléséhez használja a "^" karaktert, a Symbol értéket a keresett kifejezés végén (a szám). 
 
-### <a name="full-urls"></a>Teljes URL-címek
+A kifejezés növelése arra utal, hogy a dokumentum rangsorolása magasabb, ha a megnövelt kifejezést tartalmazza, a kifejezést nem tartalmazó dokumentumokhoz képest. Egy kifejezés növeléséhez használja a kalapot, a `^` szimbólumot a keresett kifejezés végén lévő kiemelés faktor (a szám) karakterrel.
 
 Ebben az "előtt" lekérdezésben keressen feladatokat a *számítógép-elemző* kifejezéssel, és figyelje meg, hogy a *számítógépek és az* *elemzők* között nincs találat, de a *számítógép* -feladatok még a találatok elején vannak.
 
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
+```http
+POST /indexes/nycjobs/docs?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "full",
+    "search": "business_title:computer analyst",
+    "searchFields": "business_title",
+    "select": "business_title"
+}
 ```
-  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="Kiemelési idő" border="false":::
 
-Az "After" lekérdezésben ismételje meg a keresést, ez az idő fokozza az eredményeket az *elemző* kifejezéssel a *számítógép* kifejezése alatt, ha a két szó nem létezik. 
+Az "After" lekérdezésben ismételje meg a keresést, ez az idő fokozza az eredményeket az *elemző* kifejezéssel a *számítógép* kifejezése alatt, ha a két szó nem létezik. A lekérdezés egy olvasható verziója `search=business_title:computer analyst^2` . A Poster-on való működőképes lekérdezés a következőként `^2` van kódolva: `%5E2` .
 
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
+```http
+POST /indexes/nycjobs/docs?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "full",
+    "search": "business_title:computer analyst%5e2",
+    "searchFields": "business_title",
+    "select": "business_title"
+}
 ```
-A fenti lekérdezés egy olvasható verziója `search=business_title:computer analyst^2` . Egy működőképes lekérdezés esetén a `^2` kódolása a következőként történik `%5E2` :, ami nehezebben látható.
+
+A lekérdezésre adott válasznak az alábbi képernyőképhez hasonlóan kell kinéznie.
 
   :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Kiemelési időszak" border="false":::
 
@@ -234,62 +224,66 @@ Vegyünk egy pontozási profilt, amely fellendíti a egyezéseket egy adott mez�
 
 A faktor szintjének beállításakor minél magasabb a növelési tényező, annál nagyobb a kifejezés, mint a többi keresési kifejezéshez képest. Alapértelmezés szerint a Boost faktor 1. Bár a Boost faktornak pozitívnak kell lennie, kevesebb, mint 1 (például 0,2).
 
-
 ## <a name="example-6-regex"></a>6. példa: regex
 
 A reguláris kifejezéses keresés a "/" perjelek közötti, a [regexp osztályban](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)dokumentált tartalom alapján keres egyezést.
 
-### <a name="search-expression"></a>Kifejezés keresése
-
 ```http
-searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
+POST /indexes/nycjobs/docs?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "full",
+    "search": "business_title:/(Sen|Jun)ior/",
+    "searchFields": "business_title",
+    "select": "business_title"
+}
 ```
 
-### <a name="full-url"></a>Teljes URL-cím
-
-Ebben a lekérdezésben keressen olyan feladatokat, amelyek a Senior vagy a Junior kifejezéssel rendelkeznek: `search=business_title:/(Sen|Jun)ior/` .
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
-```
+A lekérdezésre adott válasznak az alábbi képernyőképhez hasonlóan kell kinéznie.
 
   :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Regex-lekérdezés" border="false":::
 
 > [!Note]
-> A regex-lekérdezések [elemzése](./search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Az egyetlen, hiányos lekérdezési feltételeken végrehajtott átalakítás lowercasing.
+> A regex-lekérdezések [elemzése](./search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Az egyetlen, a részleges lekérdezési feltételeken végrehajtott átalakítás lowercasing.
 >
 
 ## <a name="example-7-wildcard-search"></a>7. példa: helyettesítő karakteres keresés
+
 Az általánosan felismerhető szintaxist használhatja több ( \* ) vagy szimpla (?) karakteres helyettesítő karakteres kereséshez. Vegye figyelembe, hogy a Lucene-lekérdezés elemzője egyetlen kifejezéssel támogatja a szimbólumok használatát, nem pedig egy kifejezést.
 
-### <a name="search-expression"></a>Kifejezés keresése
+Ebben a lekérdezésben keressen olyan feladatokat, amelyek tartalmazzák a "PROG" előtagot, amely magában foglalja az üzleti címeket a programozási és programozói feltételekkel. A `*` Keresés első karaktere nem használható a vagy a `?` szimbólumként.
 
 ```http
-searchFields=business_title&$select=business_title&search=business_title:prog*
+POST /indexes/nycjobs/docs?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "full",
+    "search": "business_title:prog*",
+    "searchFields": "business_title",
+    "select": "business_title"
+}
 ```
 
-### <a name="full-url"></a>Teljes URL-cím
+A lekérdezésre adott válasznak az alábbi képernyőképhez hasonlóan kell kinéznie.
 
-Ebben a lekérdezésben keressen olyan feladatokat, amelyek tartalmazzák a "PROG" előtagot, amely magában foglalja az üzleti címeket a programozási és programozói feltételekkel. Nem használhat * vagy? a szimbólum a keresés első karaktere.
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
-```
   :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Helyettesítő karakteres lekérdezés" border="false":::
 
 > [!Note]
-> A helyettesítő karakteres lekérdezések [elemzése](./search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Az egyetlen, hiányos lekérdezési feltételeken végrehajtott átalakítás lowercasing.
+> A helyettesítő karakteres lekérdezések [elemzése](./search-lucene-query-architecture.md#stage-2-lexical-analysis)nem történik meg. Az egyetlen, a részleges lekérdezési feltételeken végrehajtott átalakítás lowercasing.
 >
 
 ## <a name="next-steps"></a>Következő lépések
-Próbálja megadni a Lucene lekérdezés-elemzőjét a kódban. A következő hivatkozások ismertetik, hogyan állíthat be keresési lekérdezéseket a .NET-hez és a REST APIhoz. A hivatkozások az alapértelmezett egyszerű szintaxist használják, így a **queryType** megadásához alkalmaznia kell a cikkből megtanult tudnivalókat.
 
-* [Az index lekérdezése a .NET SDK használatával](./search-get-started-dotnet.md)
-* [Az index lekérdezése a REST API használatával](./search-get-started-powershell.md)
+Próbálja meg megadni a lekérdezéseket a kódban. Az alábbi hivatkozások azt ismertetik, hogyan állíthat be keresési lekérdezéseket az Azure SDK-k használatával.
+
++ [Az index lekérdezése a .NET SDK használatával](search-get-started-dotnet.md)
++ [Az index lekérdezése a Python SDK használatával](search-get-started-python.md)
++ [Az index lekérdezése a JavaScript SDK használatával](search-get-started-javascript.md)
 
 A szintaxissal, a lekérdezési architektúrával és a példákkal kapcsolatban a következő hivatkozásokban találhat további tudnivalókat:
 
-+ [Példák egyszerű szintaxisú lekérdezésekre](search-query-simple-examples.md)
++ [Példák a speciális lekérdezések kiépítési Lucene](search-query-lucene-examples.md)
 + [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
-+ [Egyszerű lekérdezési szintaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Teljes Lucene lekérdezési szintaxis](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Egyszerű lekérdezési szintaxis](query-simple-syntax.md)
++ [Teljes Lucene lekérdezési szintaxis](query-lucene-syntax.md)
++ [Szűrési szintaxis](search-query-odata-filter.md)

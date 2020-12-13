@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 133be436853ee8c2b04df2f943368513108b226b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c0c3a452c93b88483ac7027405665c26ceab8183
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444284"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368508"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>A Azure IoT Edge futtatókörnyezet és az architektúrájának ismertetése
 
@@ -81,7 +81,7 @@ Az IoT Edge hub nem a helyileg futó IoT Hub teljes verziója. IoT Edge hub csen
 
 A IoT Edge-megoldás által használt sávszélesség csökkentése érdekében a IoT Edge hub azt optimalizálja, hogy hány tényleges kapcsolat legyen elérhető a felhőben. IoT Edge hub logikai kapcsolatot létesít a modulok vagy az alárendelt eszközök között, és egyetlen fizikai kapcsolattal kombinálja őket a felhővel. A folyamat részletei transzparensek a megoldás többi részén. Az ügyfelek úgy gondolják, hogy saját kapcsolattal rendelkeznek a felhővel, annak ellenére, hogy mindegyiket ugyanazon a kapcsolaton keresztül küldik el. Az IoT Edge hub a AMQP vagy a MQTT protokoll használatával kommunikálhat a felhővel, az alsóbb szintű eszközök által használt protokolloktól függetlenül. Az IoT Edge hub azonban jelenleg csak a logikai kapcsolatok egyetlen fizikai kapcsolatba való egyesítését támogatja, ha a AMQP használja a felsőbb rétegbeli protokollként és a Multiplexing képességekkel. A AMQP az alapértelmezett felsőbb rétegbeli protokoll.
 
-![IoT Edge hub a fizikai eszközök és a IoT Hub közötti átjáró.](./media/iot-edge-runtime/Gateway.png)
+![IoT Edge hub a fizikai eszközök és a IoT Hub közötti átjáró.](./media/iot-edge-runtime/gateway-communication.png)
 
 IoT Edge hub képes megállapítani, hogy csatlakozik-e IoT Hubhoz. Ha a kapcsolat megszakad, IoT Edge hub üzeneteket ment helyileg, vagy két különálló frissítést. A kapcsolatok újbóli létrehozása után szinkronizálja az összes adatforrást. Az ehhez az ideiglenes gyorsítótárhoz használt helyet az IoT Edge hub-modul Twin-moduljának egyik tulajdonsága határozza meg. A gyorsítótár mérete nem megengedett, és addig nő, amíg az eszköz tárolókapacitással rendelkezik. További információ: [Offline képességek](offline-capabilities.md).
 
@@ -94,7 +94,7 @@ IoT Edge hub megkönnyíti a modul kommunikációját. IoT Edge hub használata 
 
 ![IoT Edge hub elősegíti a modul – modul kommunikációt](./media/iot-edge-runtime/module-endpoints.png)
 
-Az IoT Edge hubhoz való adatküldéshez egy modul hívja meg a SendEventAsync metódust. Az első argumentum azt adja meg, hogy melyik kimenetre kell elküldeni az üzenetet. A következő pseudocode üzenetet küld a **output1** :
+Az IoT Edge hubhoz való adatküldéshez egy modul hívja meg a SendEventAsync metódust. Az első argumentum azt adja meg, hogy melyik kimenetre kell elküldeni az üzenetet. A következő pseudocode üzenetet küld a **output1**:
 
    ```csharp
    ModuleClient client = await ModuleClient.CreateFromEnvironmentAsync(transportSettings);
@@ -112,7 +112,7 @@ A ModuleClient osztályról és a hozzá tartozó kommunikációs módszerekről
 
 A megoldás fejlesztői feladata azoknak a szabályoknak a meghatározása, amelyek meghatározzák, hogy IoT Edge hub hogyan továbbít üzeneteket a modulok között. Az útválasztási szabályok a felhőben vannak meghatározva, és leküldve IoT Edge hubhoz a moduljában. A IoT Hub útvonalakhoz tartozó szintaxis a Azure IoT Edge moduljai közötti útvonalak definiálására szolgál. További információkért lásd: [modulok központi telepítése és útvonalak létrehozása IoT Edgeban](module-composition.md).
 
-![A modulok közötti útvonalak IoT Edge hub-on keresztül haladnak](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![A modulok közötti útvonalak IoT Edge hub-on keresztül haladnak](./media/iot-edge-runtime/module-endpoints-routing.png)
 ::: moniker-end
 
 <!-- <1.2> -->
@@ -134,7 +134,7 @@ Az IoT Edge hub két közvetítői mechanizmust támogat:
 
 Az első közvetítő mechanizmus ugyanazt az útválasztási funkciót használja, mint a IoT Hub annak meghatározásához, hogy az üzenetek hogyan legyenek átadva az eszközök vagy modulok között. Az első eszközök vagy modulok határozzák meg, hogy mely bemeneteken fogadják el az üzeneteket, valamint azokat a kimeneteket, amelyekhez üzeneteket írnak. Ezt követően a megoldás fejlesztője üzeneteket továbbíthat a forrás, például a kimenetek és a célhely között, például a bemeneteket, és lehetséges szűrőket is használhat.
 
-![A modulok közötti útvonalak IoT Edge hub-on keresztül haladnak](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![A modulok közötti útvonalak IoT Edge hub-on keresztül haladnak](./media/iot-edge-runtime/module-endpoints-routing.png)
 
 Az útválasztást az Azure IoT Device SDK-val készített eszközök vagy modulok használhatják a AMQP vagy a MQTT protokoll használatával. Az üzenetküldési IoT Hub primitívek, például a telemetria, a közvetlen metódusok, a C2D, az ikrek, de a felhasználó által definiált témakörökkel való kommunikáció nem támogatott.
 
@@ -235,10 +235,10 @@ A IoT Edge ügynök óránként gyűjti a telemetria, és minden 24 órában egy
 
 Ha szeretné letiltani a futásidejű telemetria az eszközökről, két módon teheti meg a következőket:
 
-* Állítsa a `SendRuntimeQualityTelemetry` környezeti változót `false` a **edgeAgent** , vagy
+* Állítsa a `SendRuntimeQualityTelemetry` környezeti változót `false` a **edgeAgent**, vagy
 * Az üzembe helyezés során törölje a Azure Portal kapcsolót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure IoT Edge-modulok ismertetése](iot-edge-modules.md)
 * [Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben](module-composition.md)

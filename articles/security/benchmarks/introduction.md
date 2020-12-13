@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32aa64a9343a8e3c62af4322b3320b28ce805064
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328258"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369191"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Az Azure Security teljesítményteszt bemutatása
 
@@ -24,10 +24,10 @@ A Microsoft úgy találta, hogy a *biztonsági referenciaértékek* használatá
 Az Azure biztonsági teljesítményteszt olyan nagy hatású biztonsági javaslatokat tartalmaz, amelyek segítségével biztonságossá teheti az Azure-ban használt szolgáltatásokat:
 
 - **Biztonsági vezérlők**: ezek a javaslatok általánosan érvényesek az Azure-bérlő és az Azure-szolgáltatások között. Mindegyik javaslat azonosítja azon érdekelt felek listáját, akik általában részt vesznek a teljesítményteszt megtervezésében, jóváhagyásában vagy megvalósításában. 
-- **Szolgáltatás**alapkonfigurációi: ezek a vezérlők az egyes Azure-szolgáltatásokra vonatkoznak, hogy javaslatokat szolgáltassanak a szolgáltatás biztonsági beállításairól.
+- **Szolgáltatás** alapkonfigurációi: ezek a vezérlők az egyes Azure-szolgáltatásokra vonatkoznak, hogy javaslatokat szolgáltassanak a szolgáltatás biztonsági beállításairól.
 
 ## <a name="implement-the-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt implementálása
-- **Tervezze** meg az Azure biztonsági teljesítményteszt megvalósítását a vállalati vezérlők és a szolgáltatás-specifikus alapkonfigurációk [dokumentációjának](overview.md) áttekintésével, hogy megtervezze a vezérlési keretrendszert, és hogy miként képezi le a CIS (Controls v 7.1) és a NIST (SP800-53) keretrendszerhez hasonló útmutatást.
+- **Tervezze** meg az Azure biztonsági teljesítményteszt megvalósítását a vállalati vezérlők és a szolgáltatás-specifikus alapkonfigurációk [dokumentációjának](overview.md) áttekintésével, hogy megtervezze a vezérlési keretrendszert, és hogy miként képezi le a CIS (Controls v 7.1) és a NIST (SP 800-53) keretrendszerhez hasonló útmutatást.
 - Az Azure biztonsági teljesítményteszt-állapotának (és más vezérlők) megfelelőségének **monitorozása** a Azure Security Center [szabályozási megfelelőségi irányítópult](../../security-center/security-center-compliance-dashboard.md)használatával.
 - **Hozzon létre guardrails** a biztonságos konfigurációk automatizálásához és az Azure biztonsági teljesítményteszt (és a szervezeten belüli egyéb követelmények) megfelelőségének érvényesítéséhez az Azure tervrajzokkal és Azure Policyával.
  

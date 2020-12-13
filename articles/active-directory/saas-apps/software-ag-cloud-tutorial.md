@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/20/2020
+ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 144263835e129c3571dcc5c2f8e8bde03dca9a0e
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602019"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369344"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Software AG Cloud-nal
 
@@ -101,7 +101,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -145,15 +145,12 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Software A
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
+Ebben a szakaszban a következő lehetőséggel tesztelheti az Azure AD egyszeri bejelentkezési konfigurációját. 
 
-* Feltételezve, hogy a Microsoft Azure szolgáltatóként van konfigurálva a Software AG-felhőben, navigáljon, `www.softwareag.cloud` és kattintson a Bejelentkezés gombra, és adja meg a környezet nevét. A következő képernyőn kattintson a "bejelentkezés <IDP NAME> " hivatkozásra, és adja meg a hitelesítő adatokat. A hitelesítés után a rendszer bejelentkezik, és átveszi a Software AG Cloud kezdőlapjára.
+Feltételezve, hogy a Microsoft Azure szolgáltatóként van konfigurálva a Software AG-felhőben, navigáljon, `www.softwareag.cloud` és kattintson a Bejelentkezés gombra, és adja meg a környezet nevét. A következő képernyőn kattintson a "bejelentkezés <IDP NAME> " hivatkozásra, és adja meg a hitelesítő adatokat. A hitelesítés után a rendszer bejelentkezik, és átveszi a Software AG Cloud kezdőlapjára.
 
-* Lépjen közvetlenül a Software AG Felhőbeli bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+## <a name="next-steps"></a>Következő lépések
 
-* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Software AG Cloud csempére kattint, a rendszer átirányítja a Software AG Felhőbeli bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) használatába
+A Software AG Cloud konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 
-## <a name="next-steps"></a>További lépések
-
-A Software AG Cloud konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

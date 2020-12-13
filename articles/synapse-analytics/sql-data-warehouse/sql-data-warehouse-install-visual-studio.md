@@ -12,12 +12,12 @@ ms.subservice: sql-dw
 ms.date: 05/11/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ab0188fa44eeb09e3981b8e1809832948963d47
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 456d7eb0cabd7ebede6415e3ce92d7403ecef7ef
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511641"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368754"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Ismerkedés a Visual Studio 2019-cel
 
@@ -45,8 +45,8 @@ Előfordulhat, hogy a szinapszis SQL-hez tartozó szolgáltatás kiadásai nem t
   - [Támogatási jegy vagy szavazás](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) beküldése a támogatott funkció beszerzéséhez.
 - [Azonosító oszlopot](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql-identity-property?view=sql-server-ver15) tartalmazó táblák
 - Bizonyos T-SQL-funkciók, például:
-   - A GROUP záradékon *belül* a [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql?view=sqlallproducts-allversions) string függvényben.
+   - A GROUP záradékon *belül* a [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql) string függvényben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már rendelkezik a SSDT legújabb verziójával, készen áll az SQL-készlethez való [kapcsolódásra](sql-data-warehouse-query-visual-studio.md) .

@@ -5,12 +5,12 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: a90bb90c90206ffe00f8b4f2d035c0ea844b5c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a5872f94a2d267ed2a0e17815e84cec5b02c613
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611673"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368103"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Oktatóanyag: csatolt sablon üzembe helyezése
 
@@ -32,11 +32,11 @@ A Storage-fiók erőforrását egy csatolt sablonba is elkülönítheti:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-A fő sablon a következő sablon.  A Kiemelt **Microsoft. Resources/Deployments** objektum egy csatolt sablon meghívását mutatja be. A csatolt sablon nem tárolható helyi fájlként vagy olyan fájlként, amely csak a helyi hálózaton érhető el. Csak olyan URI-értéket adhat meg, amely *http* vagy *HTTPS protokollt*is tartalmaz. A Resource Managernek képesnek kell lennie hozzáférni a sablonhoz. Az egyik lehetőség, hogy a csatolt sablont egy Storage-fiókba helyezi, és az adott elemhez tartozó URI-t használja. Az URI-t egy paraméterrel kell átadni a sablonnak. Tekintse meg a kijelölt paraméter definícióját.
+A fő sablon a következő sablon. A Kiemelt `Microsoft.Resources/deployments` objektum egy csatolt sablon meghívását mutatja be. A csatolt sablon nem tárolható helyi fájlként vagy olyan fájlként, amely csak a helyi hálózaton érhető el. Csak olyan URI-értéket adhat meg, amely tartalmazza a vagy a elemet `HTTP` `HTTPS` . A Resource Managernek képesnek kell lennie hozzáférni a sablonhoz. Az egyik lehetőség, hogy a csatolt sablont egy Storage-fiókba helyezi, és az adott elemhez tartozó URI-t használja. Az URI-t egy paraméterrel kell átadni a sablonnak. Tekintse meg a kijelölt paraméter definícióját.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-Mentse a fő sablon egy példányát a helyi számítógépre a. JSON kiterjesztéssel, például azuredeploy.jsbe. Nem kell mentenie a csatolt sablon másolatát.  A csatolt sablon a GitHub-adattárból egy Storage-fiókba lesz átmásolva.
+Mentse a fő sablon egy példányát a helyi számítógépre a _. JSON_ kiterjesztéssel, például _azuredeploy.jsbe_. Nem kell mentenie a csatolt sablon másolatát. A csatolt sablon a GitHub-adattárból egy Storage-fiókba lesz átmásolva.
 
 ## <a name="store-the-linked-template"></a>A csatolt sablon tárolása
 
@@ -45,7 +45,7 @@ A következő PowerShell-szkript létrehoz egy Storage-fiókot, létrehoz egy t�
 Válassza a **kipróbálás-ez** lehetőséget a Cloud Shell megnyitásához, válassza a **Másolás** lehetőséget a PowerShell-parancsfájl másolásához, majd kattintson a jobb gombbal a rendszerhéj ablaktáblára a parancsfájl beillesztéséhez:
 
 > [!IMPORTANT]
-> A Storage-fiókok nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket használjon. A névnek egyedinek kell lennie. A sablonban a Storage-fiók neve a projekt neve a "Store" hozzáfűzéssel, a projekt nevének pedig 3 – 11 karakterből kell állnia. Így a projekt nevének meg kell felelnie a Storage-fiók nevének, és kevesebb, mint 11 karakterből áll.
+> A Storage-fiókok nevének 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket használjon. A névnek egyedinek kell lennie. A sablonban a Storage-fiók neve a projekt neve, amely a **tároló** hozzáfűzésével van ellátva, a projekt nevének pedig 3 – 11 karakterből kell állnia. Így a projekt nevének meg kell felelnie a Storage-fiók nevének, és kevesebb, mint 11 karakterből áll.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -93,7 +93,7 @@ Ha privát sablont szeretne üzembe helyezni egy Storage-fiókban, állítson be
 Ha még nem hozta létre az erőforráscsoportot, tekintse meg az [erőforráscsoport létrehozása](./deployment-tutorial-local-template.md#create-resource-group)című témakört.
 
 > [!NOTE]
-> Az alábbi Azure CLI-kódban a-d dátum paraméter nem lehet a macOS-ben Érvénytelen argumentum. Így a macOS-felhasználók számára a-v + 2H-t kell használnia a macOS-es terminálon, hogy az aktuális idő 2 óra legyen.
+> Az alábbi Azure CLI-kódban a `date` paraméter a `-d` MacOS-ben Érvénytelen argumentum. Így a macOS-felhasználók számára, hogy a macOS-ben a terminálon 2 órát vegyen fel az aktuális időpontra, használja a parancsot `-v+2H` .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -174,9 +174,9 @@ Az erőforráscsoport törlésével törölje az üzembe helyezett erőforrások
 3. Válassza ki az erőforráscsoport nevét.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Megtanulta, hogyan helyezhet üzembe egy csatolt sablont. A következő oktatóanyagban megtudhatja, hogyan hozhat létre egy DevOp folyamatot egy sablon üzembe helyezéséhez.
+Megtanulta, hogyan helyezhet üzembe egy csatolt sablont. A következő oktatóanyagban megtudhatja, hogyan hozhat létre egy DevOps folyamatot egy sablon üzembe helyezéséhez.
 
 > [!div class="nextstepaction"]
 > [Folyamat létrehozása](./deployment-tutorial-pipeline.md)

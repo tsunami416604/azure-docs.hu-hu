@@ -6,12 +6,12 @@ ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8dc625237c03cf38f9fe2eb0446c55dcf96f5f3a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b6257161017afc9dab692c43fcc64e5d961a90ba
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106767"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368426"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Oktatóanyag: paraméterek használata az ARM-sablon üzembe helyezéséhez
 
@@ -51,7 +51,7 @@ Ismét hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt _
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Ez a fájl az éles környezethez tartozó paraméter-fájl. Figyelje meg, hogy **Standard_GRSt** használ a Storage-fiókhoz, és megnevezi az erőforrásokat a **contoso** előtaggal, és beállítja a környezeti címkét az **éles** _környezetben_ . Valós éles környezetben érdemes lehet olyan app Service-t használni, amely nem ingyenes, de továbbra is ezt az SKU-t fogjuk használni ehhez az oktatóanyaghoz.
+Ez a fájl az éles környezethez tartozó paraméter-fájl. Figyelje meg, hogy **Standard_GRSt** használ a Storage-fiókhoz, és megnevezi az erőforrásokat egy **contoso** -előtaggal, és beállítja a `Environment` címkét **éles környezetbe**. Valós éles környezetben érdemes lehet olyan app Service-t használni, amely nem ingyenes, de továbbra is ezt az SKU-t fogjuk használni ehhez az oktatóanyaghoz.
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 

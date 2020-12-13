@@ -8,43 +8,11 @@
   items:
     - name: Bejelentkezés és felhasználói azonosító beállítása
       href: quickstart-sign-in-azure-notebooks.md
-    - name: Notebook létrehozása és megosztása
-      href: quickstart-create-share-jupyter-notebook.md
-    - name: Notebook klónozása
-      href: quickstart-clone-jupyter-notebook.md
-    - name: Helyi Jupyter notebook migrálása
-      href: quickstart-migrate-local-jupyter-notebook.md
-    - name: Egyéni környezet használata
-      href: quickstart-create-jupyter-notebook-project-environment.md
     - name: A projekt exportálása
       href: quickstart-export-jupyter-notebook-project.md
-- name: Oktatóanyagok
-  items:
-    - name: Notebook létrehozása és futtatása
-      href: tutorial-create-run-jupyter-notebook.md
-- name: Példák
-  items:
-    - name: Mintanotebookok
-      href: azure-notebooks-samples.md
 - name: Alapelvek
   items:
     - name: Fiókok
       href: azure-notebooks-user-account.md
     - name: Profilok
       href: azure-notebooks-user-profile.md
-- name: Útmutatók
-  items:
-    - name: Projektek létrehozása és klónozása
-      href: create-clone-jupyter-notebooks.md
-    - name: Projektek kezelése és konfigurálása
-      href: configure-manage-azure-notebooks-projects.md
-    - name: Csomagok telepítése notebookokban
-      href: install-packages-jupyter-notebook.md
-    - name: Diavetítés bemutatása
-      href: present-jupyter-notebooks-slideshow.md
-    - name: Adatfájlok használata
-      href: work-with-project-data-files.md
-    - name: Adatforrások elérése
-      href: access-data-resources-jupyter-notebooks.md
-    - name: A Data Science Virtual Machine használata
-      href: use-data-science-virtual-machine.md

@@ -7,34 +7,34 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701048"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368868"
 ---
 # <a name="security-control-v2-data-protection"></a>Biztonság-vezérlés v2: Adatvédelem
 
 Az adatvédelem magában foglalja az adatvédelem inaktív állapotban, továbbításkor és a jogosult hozzáférési mechanizmusok útján történő felügyeletét. Ez magában foglalja a bizalmas adategységek felderítését, osztályozását, védelmének és figyelését a hozzáférés-vezérlés, a titkosítás és az Azure-beli naplózás használatával.
 
-## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: bizalmas adatok felderítése, osztályozása és címkézése
+## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Bizalmas adatok felderítése, besorolása és címkézése
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | DP-1 | 13,1, 14,5, 14,7 | SC-28 |
 
 Felderítheti, osztályozhatja és címkézheti a bizalmas adatokat, így megtervezheti a megfelelő vezérlőket, hogy biztosítsa a bizalmas adatok tárolását, feldolgozását és biztonságos továbbítását a szervezet technológiai rendszereinek segítségével. 
 
-Az Azure-ban, a helyszínen, az Office 365-on és más helyeken található Office-dokumentumokban található bizalmas információkhoz használja a Azure Information Protection (és a hozzá tartozó ellenőrzési eszközt). 
+Az Azure-ban, a helyszínen, az Office 365-ben és máshol lévő Office-dokumentumokban található bizalmas információkhoz használja az Azure Information Protectiont (és a hozzá tartozó vizsgálati eszközt). 
 
-Az Azure SQL Information Protection használatával segítséget nyújthat az Azure SQL-adatbázisokban tárolt adatok besorolásában és címkézésében.
+Az Azure SQL Information Protection segítséget nyújthat az Azure SQL-adatbázisokban tárolt adatok besorolásában és címkézésében.
 
-- [Bizalmas adatok címkézése Azure Information Protection használatával](/azure/information-protection/what-is-information-protection) 
+- [Bizalmas információk címkézése az Azure Information Protection használatával](/azure/information-protection/what-is-information-protection) 
 
-- [Az Azure SQL-adatfelderítés megvalósítása](../../azure-sql/database/data-discovery-and-classification-overview.md)
+- [Az Azure SQL-adatfelderítés implementálása](../../azure-sql/database/data-discovery-and-classification-overview.md)
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -44,23 +44,23 @@ Az Azure SQL Information Protection használatával segítséget nyújthat az Az
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-## <a name="dp-2-protect-sensitive-data"></a>DP-2: bizalmas adatok védelme
+## <a name="dp-2-protect-sensitive-data"></a>DP-2: A bizalmas adatok védelme
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | DP-2 | 13,2, 2,10 | SC-7, AC-4 |
 
 A bizalmas adatok védelme az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC), a hálózat-alapú hozzáférés-vezérlés és az Azure-szolgáltatások adott vezérlői (például az SQL és más adatbázisok titkosítása) használatával. 
 
-A konzisztens hozzáférés-vezérlés biztosításához a hozzáférés-vezérlés összes típusát a vállalati szegmentálási stratégiához kell igazítani. A nagyvállalati szegmentálási stratégiát is tájékoztatni kell a bizalmas vagy üzleti szempontból kritikus fontosságú adatok és rendszerek helyéről.
+A következetes hozzáférés-vezérlés biztosításához a hozzáférés-vezérlés összes típusát a vállalati szegmentálási stratégiához kell igazítani. A vállalati szegmentálási stratégiát a bizalmas vagy üzleti szempontból kritikus fontosságú adatok és rendszerek helyének tudatában kell kialakítani.
 
-A Microsoft által felügyelt mögöttes platform esetében a Microsoft az összes vásárlói tartalmat bizalmasként kezeli, és védelmet nyújt az ügyfelek adatvesztése és a kitettség ellen. Annak biztosítása érdekében, hogy az Azure-beli ügyféladatok biztonságban maradjanak, a Microsoft néhány alapértelmezett adatvédelmi vezérlőt és képességet alkalmazott.
+A Microsoft által felügyelt mögöttes platformon a Microsoft az összes ügyféltartalmat bizalmasként kezeli, és védelmet nyújt az ügyfelek adatainak elvesztése és mások általi hozzáférése ellen. Ahhoz, hogy az ügyféladatok az Azure-on belül biztonságban maradjanak, a Microsoft implementált néhány alapértelmezett adatvédelmi vezérlőt és képességet.
 
 - [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)
 
-- [Az ügyfelek adatvédelmének megismerése az Azure-ban](../fundamentals/protection-customer-data.md)
+- [Az ügyféladatok Azure-beli védelmének ismertetése](../fundamentals/protection-customer-data.md)
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -70,25 +70,25 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-## <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3: a bizalmas adatok jogosulatlan átvitelének figyelése
+## <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3: Bizalmas adatok jogosulatlan átvitelének monitorozása
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | DP-3 | 13,3 | AC-4, SI-4 |
 
-Az adatok jogosulatlan átvitelének figyelése a nagyvállalati láthatóságon és a vezérlésen kívüli helyszíneken. Ez általában olyan rendellenes tevékenységek (nagy vagy szokatlan átvitelek) figyelését jelenti, amelyek jogosulatlan adatkiszűrése jelezhetnek. 
+Az adatok jogosulatlan átvitelének figyelése a nagyvállalati láthatóságon és a vezérlésen kívüli helyszíneken. Ez általában az olyan rendellenes tevékenységek (nagy méretű vagy szokatlan átvitelek) monitorozását jelenti, amelyek jogosulatlan adatkiszivárogtatást jelezhetnek. 
 
-Az Azure Storage komplex veszélyforrások elleni védelem (ATP) és az Azure SQL ATP riasztást tud adni a bizalmas adatok jogosulatlan átvitelét jelző információk rendellenes átviteléről. 
+Az Azure Storage Advanced Threat Protection (ATP) és az Azure SQL ATP riasztást küldhet olyan rendellenes információátvitelekről, amelyek bizalmas adatok jogosulatlan átvitelét jelezhetik. 
 
-Az Azure Information Protection (felügyeleti rendszer) a besorolt és címkézett információk figyelési funkcióit biztosítja. 
+Az Azure Information Protection (AIP) a besorolt és címkézett információk monitorozását teszi lehetővé. 
 
-Ha az adatveszteség-megelőzés (DLP) megfelelőségéhez szükség van, egy gazdagép-alapú DLP-megoldás használatával kikényszerítheti a nyomozót és/vagy a megelőző ellenőrzéseket az kiszűrése megakadályozása érdekében.
+Ha az adatveszteség-megelőzési (data loss prevention, DLP) megfelelőséghez szükséges, egy gazdagépalapú DLP-megoldással észlelési és/vagy megelőzési célú vezérlőket kényszeríthet ki az adatok kiszivárogtatásának megakadályozása érdekében.
 
 - [Az Azure SQL ATP engedélyezése](../../azure-sql/database/threat-detection-overview.md)
 
 - [Az Azure Storage ATP engedélyezése](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -98,9 +98,9 @@ Ha az adatveszteség-megelőzés (DLP) megfelelőségéhez szükség van, egy ga
 
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-## <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: bizalmas adatok titkosítása az átvitel során
+## <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: Bizalmas információk átvitel közbeni titkosítása
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | DP-4 | 14,4 | SC-8 |
 
@@ -116,7 +116,7 @@ Alapértelmezés szerint az Azure titkosítást biztosít az Azure-adatközponto
 
 - [Kettős titkosítás az Azure-beli adatforgalomban](../fundamentals/double-encryption.md#data-in-transit)
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -128,9 +128,9 @@ Alapértelmezés szerint az Azure titkosítást biztosít az Azure-adatközponto
 
 - [Adatbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-data-security)
 
-## <a name="dp-5-encrypt-sensitive-data-at-rest"></a>DP-5: bizalmas adatok titkosítása a nyugalmi állapotban
+## <a name="dp-5-encrypt-sensitive-data-at-rest"></a>DP-5: Inaktív bizalmas adatok titkosítása
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | DP-5 | 14,8 | SC-28, SC-12 |
 
@@ -138,7 +138,7 @@ A hozzáférés-vezérlés kiegészítéseként a REST-adatok védelme a "sávon
 
 Az Azure alapértelmezés szerint az inaktív adatok titkosítását biztosítja. A szigorúan bizalmas adatok esetében lehetősége van arra, hogy az összes Azure-erőforráson további titkosítást hajtsanak végre, ahol elérhetők. Az Azure alapértelmezés szerint kezeli a titkosítási kulcsokat, az Azure azonban lehetőséget biztosít a saját kulcsok (az ügyfél által felügyelt kulcsok) kezelésére bizonyos Azure-szolgáltatásokhoz.
 
-- [A inaktív adatok titkosításának megismerése az Azure-ban](../fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services)
+- [Inaktív adatok Azure-ban való titkosításának ismertetése](../fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services)
 
 - [Az ügyfél által felügyelt titkosítási kulcsok konfigurálása](../../storage/common/customer-managed-keys-configure-key-vault.md)
 
@@ -146,7 +146,7 @@ Az Azure alapértelmezés szerint az inaktív adatok titkosítását biztosítja
 
 - [Inaktív adatok az Azure-ban – Rest kettős titkosítás](../fundamentals/double-encryption.md#data-at-rest)
 
-**Felelősség**: megosztott
+**Felelősség**: Megosztott
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 

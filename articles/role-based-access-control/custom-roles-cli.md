@@ -14,19 +14,19 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84984184"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369140"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése az Azure CLI-vel
 
 > [!IMPORTANT]
 > A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ez a cikk azt ismerteti, hogyan lehet egyéni szerepköröket listázni, létrehozni, frissíteni vagy törölni az Azure CLI használatával.
 
@@ -146,7 +146,7 @@ Egyéni szerepkör létrehozásához használja [az az role definition Create](/
 az role definition create --role-definition {roleDefinition}
 ```
 
-Az alábbi példa egy *Virtuálisgép-kezelő*nevű egyéni szerepkört hoz létre. Ez az egyéni szerepkör hozzáférést rendel a *Microsoft. számítás*, a *Microsoft. Storage*és a *Microsoft. Network* erőforrás-szolgáltatók összes olvasási műveletéhez, és hozzáférést rendel a virtuális gépek indításához, újraindításához és figyeléséhez. Ez az egyéni szerepkör két előfizetésben is használható. Ez a példa egy JSON-fájlt használ bemenetként.
+Az alábbi példa egy *Virtuálisgép-kezelő* nevű egyéni szerepkört hoz létre. Ez az egyéni szerepkör hozzáférést rendel a *Microsoft. számítás*, a *Microsoft. Storage* és a *Microsoft. Network* erőforrás-szolgáltatók összes olvasási műveletéhez, és hozzáférést rendel a virtuális gépek indításához, újraindításához és figyeléséhez. Ez az egyéni szerepkör két előfizetésben is használható. Ez a példa egy JSON-fájlt használ bemenetként.
 
 vmoperator.jsbekapcsolva
 
@@ -240,8 +240,8 @@ A következő példa törli a *virtuális gép operátorának* egyéni szerepkö
 az role definition delete --name "Virtual Machine Operator"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: egyéni Azure-szerepkör létrehozása az Azure CLI használatával](tutorial-custom-role-cli.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)
-- [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md)
+- [Azure erőforrás-szolgáltatói műveletek](resource-provider-operations.md)

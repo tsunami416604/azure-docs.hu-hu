@@ -121,5 +121,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all'
     - name: Termékkel kapcsolatos visszajelzés
       href: 'https://feedback.azure.com/forums/922753'

@@ -9,14 +9,14 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
-ms.openlocfilehash: 76eedaabf52cf2d56b2feaa6dc2748c25bf7696c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b483ffc480f9ad750f8d9901d6bec382db2378c2
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424298"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368919"
 ---
-# <a name="key-types-algorithms-and-operations"></a>Kulcshasználat, algoritmusok és műveletek
+# <a name="key-types-algorithms-and-operations"></a>Kulcstípusok, algoritmusok és műveletek
 
 A Key Vault kétféle erőforrástípust támogat: a tárolókat és a felügyelt HSM. Mindkét erőforrás típusa különböző titkosítási kulcsokat támogat. Ha szeretné megtekinteni az egyes erőforrástípusok által támogatott típusú kulcsokat, tekintse meg a [kulcsok](about-keys.md)című témakört.
 
@@ -66,9 +66,9 @@ A következő táblázat a kulcstárolók és a támogatott algoritmusok összef
 -   **RSNULL** – lásd: [RFC2437](https://tools.ietf.org/html/rfc2437), speciális használati eset, hogy bizonyos TLS-forgatókönyvek engedélyezve legyenek.  
 
 ##  <a name="symmetric-key-algorithms"></a>Szimmetrikus kulcsú algoritmusok
-- **AES-kW** -AES-kulcs becsomagolása ( [RFC3394](https://tools.ietf.org/html/rfc3394)).
-- **AES-GCM** -AES titkosítás a Galois Counter mode-ban ( [NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
-- **AES-CBC** -AES titkosítás titkosított blokkos láncolási módban ( [NIST SP800-38a](https://csrc.nist.gov/publications/sp800))
+- **AES-kW** -AES-kulcs becsomagolása ([RFC3394](https://tools.ietf.org/html/rfc3394)).
+- **AES-GCM** -AES titkosítás a Galois Counter mode-ban ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800))
+- **AES-CBC** -AES titkosítás titkosított blokkos láncolási módban ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800))
 
 > [!NOTE] 
 > A jelenlegi AES-GCM implementáció és a megfelelő API-k kísérleti jellegűek. A megvalósítás és az API-k jelentősen megváltozhatnak a jövőbeli iterációk során. 
@@ -77,23 +77,23 @@ A következő táblázat a kulcstárolók és a támogatott algoritmusok összef
 
 A felügyelt HSM a következő műveleteket támogatja a legfontosabb objektumokon:  
 
--   **Létrehozás** : lehetővé teszi, hogy az ügyfél Key Vaultban hozzon létre egy kulcsot. A kulcs értékét Key Vault és tárolja a rendszer, és az nem jelenik meg a-ügyfél számára. Az aszimmetrikus kulcsok a Key Vaultben hozhatók létre.  
--   **Importálás** : lehetővé teszi, hogy az ügyfél egy meglévő kulcsot importáljon Key Vaultba. Az aszimmetrikus kulcsok a JWK-konstrukción belül számos különböző csomagolási módszer használatával importálhatók Key Vaultba. 
--   **Frissítés** : lehetővé teszi, hogy az ügyfél megfelelő engedélyekkel módosítsa a korábban a Key Vault belül tárolt kulcs metaadatait (fő attribútumait).  
--   **Törlés** : lehetővé teszi, hogy az ügyfél megfelelő engedélyekkel törölje a kulcsot a Key Vaultból.  
--   **Lista** : lehetővé teszi az ügyfél számára az adott Key Vault összes kulcsának listázását.  
--   **Verziók listázása** : lehetővé teszi az ügyfél számára egy adott kulcs összes verziójának listázását egy adott Key Vaultban.  
--   **Get** : lehetővé teszi, hogy az ügyfél lekérje egy adott kulcs nyilvános részeit egy Key Vault.  
--   **Biztonsági mentés** : kulcs exportálása védett űrlapon.  
--   **Restore** : importál egy előzőleg biztonsági mentésre szolgáló kulcsot.  
+-   **Létrehozás**: lehetővé teszi, hogy az ügyfél Key Vaultban hozzon létre egy kulcsot. A kulcs értékét Key Vault és tárolja a rendszer, és az nem jelenik meg a-ügyfél számára. Az aszimmetrikus kulcsok a Key Vaultben hozhatók létre.  
+-   **Importálás**: lehetővé teszi, hogy az ügyfél egy meglévő kulcsot importáljon Key Vaultba. Az aszimmetrikus kulcsok a JWK-konstrukción belül számos különböző csomagolási módszer használatával importálhatók Key Vaultba. 
+-   **Frissítés**: lehetővé teszi, hogy az ügyfél megfelelő engedélyekkel módosítsa a korábban a Key Vault belül tárolt kulcs metaadatait (fő attribútumait).  
+-   **Törlés**: lehetővé teszi, hogy az ügyfél megfelelő engedélyekkel törölje a kulcsot a Key Vaultból.  
+-   **Lista**: lehetővé teszi az ügyfél számára az adott Key Vault összes kulcsának listázását.  
+-   **Verziók listázása**: lehetővé teszi az ügyfél számára egy adott kulcs összes verziójának listázását egy adott Key Vaultban.  
+-   **Get**: lehetővé teszi, hogy az ügyfél lekérje egy adott kulcs nyilvános részeit egy Key Vault.  
+-   **Biztonsági mentés**: kulcs exportálása védett űrlapon.  
+-   **Restore**: importál egy előzőleg biztonsági mentésre szolgáló kulcsot.  
 
 További tudnivalókért tekintse [meg a Key Vault REST API dokumentációjában található főbb műveleteket](/rest/api/keyvault).  
 
 Miután létrehozta a kulcsot a Key Vaultban, a következő titkosítási műveletek végezhetők el a kulcs használatával:  
 
--   **Aláírás és ellenőrzés** : szigorúan ez a művelet "aláírási kivonat" vagy "kivonat ellenőrzése", mivel Key Vault nem támogatja a tartalom kivonatolását az aláírás létrehozása részeként. Az alkalmazásoknak a helyileg aláírandó adatokat kell megadniuk, majd Key Vault aláírni a kivonatot. Az aláírt kivonatok ellenőrzése olyan alkalmazások kényelmi művelete, amelyek esetleg nem férnek hozzá a [nyilvános] kulcsfontosságú anyagokhoz. Az alkalmazások legjobb teljesítményének ELLENŐRZÉSéhez helyileg kell végrehajtani a műveleteket.  
--   **Kulcs titkosítása/becsomagolása** : Key Vault tárolt kulcs egy másik kulcs, jellemzően egy szimmetrikus tartalom titkosítási kulcsa (CEK) elleni védelemre használható. Ha a kulcs Key Vault aszimmetrikus, a rendszer a kulcs titkosítását használja. Például az RSA-OAEP és a WRAPKEY/UNWRAPKEY műveletek egyenértékűek a TITKOSÍTÁSsal/VISSZAFEJTÉSsel. Ha a kulcs Key Vault szimmetrikus, a rendszer a kulcs-körbefuttatást használja. Például: AES-KW. A WRAPKEY művelet olyan alkalmazások számára használható, amelyek esetleg nem férnek hozzá a [nyilvános] kulcshoz. Az alkalmazások legjobb teljesítményéhez helyileg kell végrehajtani a WRAPKEY műveleteket.  
--   **Titkosítás és visszafejtés** : Key Vaultban tárolt egyik kulcs használható egyetlen adatblokk titkosítására vagy visszafejtésére. A blokk méretét a kulcs típusa és a kiválasztott titkosítási algoritmus határozza meg. A titkosító művelet kényelmi célokat szolgál olyan alkalmazások számára, amelyek esetleg nem férnek hozzá a [nyilvános] kulcshoz. A legjobb teljesítmény érdekében a titkosítási műveleteket helyileg kell végrehajtani.  
+-   **Aláírás és ellenőrzés**: szigorúan ez a művelet "aláírási kivonat" vagy "kivonat ellenőrzése", mivel Key Vault nem támogatja a tartalom kivonatolását az aláírás létrehozása részeként. Az alkalmazásoknak a helyileg aláírandó adatokat kell megadniuk, majd Key Vault aláírni a kivonatot. Az aláírt kivonatok ellenőrzése olyan alkalmazások kényelmi művelete, amelyek esetleg nem férnek hozzá a [nyilvános] kulcsfontosságú anyagokhoz. Az alkalmazások legjobb teljesítményének ELLENŐRZÉSéhez helyileg kell végrehajtani a műveleteket.  
+-   **Kulcs titkosítása/becsomagolása**: Key Vault tárolt kulcs egy másik kulcs, jellemzően egy szimmetrikus tartalom titkosítási kulcsa (CEK) elleni védelemre használható. Ha a kulcs Key Vault aszimmetrikus, a rendszer a kulcs titkosítását használja. Például az RSA-OAEP és a WRAPKEY/UNWRAPKEY műveletek egyenértékűek a TITKOSÍTÁSsal/VISSZAFEJTÉSsel. Ha a kulcs Key Vault szimmetrikus, a rendszer a kulcs-körbefuttatást használja. Például: AES-KW. A WRAPKEY művelet olyan alkalmazások számára használható, amelyek esetleg nem férnek hozzá a [nyilvános] kulcshoz. Az alkalmazások legjobb teljesítményéhez helyileg kell végrehajtani a WRAPKEY műveleteket.  
+-   **Titkosítás és visszafejtés**: Key Vaultban tárolt egyik kulcs használható egyetlen adatblokk titkosítására vagy visszafejtésére. A blokk méretét a kulcs típusa és a kiválasztott titkosítási algoritmus határozza meg. A titkosító művelet kényelmi célokat szolgál olyan alkalmazások számára, amelyek esetleg nem férnek hozzá a [nyilvános] kulcshoz. A legjobb teljesítmény érdekében a titkosítási műveleteket helyileg kell végrehajtani.  
 
 Habár az aszimmetrikus kulcsokat használó WRAPKEY/UNWRAPKEY feleslegesnek tűnhet (mivel a művelet a TITKOSÍTÁShoz/VISSZAFEJTÉShez egyenértékű), a különböző műveletek használata fontos. A különbségtétel a művelet szemantikai és engedélyezési elkülönítését, valamint a szolgáltatás által támogatott más típusú kulcsok egységességét biztosítja.  
 
@@ -107,20 +107,20 @@ A JWK-objektumokkal kapcsolatos további információkért lásd a [JSON webkulc
 
 A fő elemek mellett a következő attribútumok is megadhatók. JSON-kérelemben az attribútumok kulcsszó és a kapcsos zárójelek ({"}") szükségesek, még akkor is, ha nincsenek megadva attribútumok.  
 
-- *engedélyezve* : logikai, nem kötelező, az alapértelmezett érték **true (igaz** ). Megadja, hogy a kulcs engedélyezve van-e, és használható-e titkosítási műveletekhez. Az *engedélyezett* attribútum a *NBF* és az *exp* együttes használata esetén használatos. Ha a *NBF* és az *exp* közötti művelet történik, akkor csak akkor lesz *engedélyezve* , ha a beállítás értéke **true (igaz** ). Az *NBF*  /  *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat.
-- *NBF* : IntDate, nem kötelező, alapértelmezés szerint most. A *NBF* (nem előtte) attribútum azt az időpontot határozza meg, ameddig a kulcs nem használható a titkosítási műveletekhez, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat. A *NBF* attribútum feldolgozásához az aktuális dátumnak és időpontnak a *NBF* attribútumban felsorolt nem korábbi dátummal és időponttal kell rendelkeznie. Előfordulhat, hogy a Key Vault némi mozgásteret biztosít, amely általában legfeljebb néhány percet vesz igénybe, hogy az óra döntse. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
-- *exp* : IntDate, nem kötelező, az alapértelmezett érték a "Forever". Az *exp* (lejárati idő) attribútum azt a lejárati időt határozza meg, amely után a kulcs nem használható a titkosítási művelethez, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat. Az *exp* attribútum feldolgozásához szükséges, hogy az aktuális dátumnak és időpontnak az *exp* attribútumban felsorolt lejárati dátum/idő előtt kell lennie. Előfordulhat, hogy a Key Vault némi mozgásteret biztosít, amely jellemzően nem csupán néhány percet vesz igénybe, hogy az óra döntse. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
+- *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Megadja, hogy a kulcs engedélyezve van-e, és használható-e titkosítási műveletekhez. Az *engedélyezett* attribútum a *NBF* és az *exp* együttes használata esetén használatos. Ha a *NBF* és az *exp* közötti művelet történik, akkor csak akkor lesz *engedélyezve* , ha a beállítás értéke **true (igaz**). Az *NBF*  /  *exp* ablakon kívüli műveletek automatikusan le lesznek tiltva, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat.
+- *NBF*: IntDate, nem kötelező, alapértelmezés szerint most. A *NBF* (nem előtte) attribútum azt az időpontot határozza meg, ameddig a kulcs nem használható a titkosítási műveletekhez, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat. A *NBF* attribútum feldolgozásához az aktuális dátumnak és időpontnak a *NBF* attribútumban felsorolt nem korábbi dátummal és időponttal kell rendelkeznie. Előfordulhat, hogy a Key Vault némi mozgásteret biztosít, amely általában legfeljebb néhány percet vesz igénybe, hogy az óra döntse. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
+- *exp*: IntDate, nem kötelező, az alapértelmezett érték a "Forever". Az *exp* (lejárati idő) attribútum azt a lejárati időt határozza meg, amely után a kulcs nem használható a titkosítási művelethez, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat. Az *exp* attribútum feldolgozásához szükséges, hogy az aktuális dátumnak és időpontnak az *exp* attribútumban felsorolt lejárati dátum/idő előtt kell lennie. Előfordulhat, hogy a Key Vault némi mozgásteret biztosít, amely jellemzően nem csupán néhány percet vesz igénybe, hogy az óra döntse. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
 
 További írásvédett attribútumok is szerepelnek a legfontosabb attribútumokat tartalmazó válaszokban:  
 
-- *Létrehozva* : IntDate, nem kötelező. A *létrehozott* attribútum azt jelzi, hogy mikor jött létre a kulcs ezen verziója. Az érték null értékű az attribútum hozzáadása előtt létrehozott kulcsok esetében. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
-- *frissítve* : IntDate, nem kötelező. A *frissített* attribútum azt jelzi, hogy a kulcs ezen verziója frissítve lett-e. Az érték null értékű azon kulcsok esetében, amelyek utolsó frissítése az attribútum hozzáadása előtt történt. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
+- *Létrehozva*: IntDate, nem kötelező. A *létrehozott* attribútum azt jelzi, hogy mikor jött létre a kulcs ezen verziója. Az érték null értékű az attribútum hozzáadása előtt létrehozott kulcsok esetében. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
+- *frissítve*: IntDate, nem kötelező. A *frissített* attribútum azt jelzi, hogy a kulcs ezen verziója frissítve lett-e. Az érték null értékű azon kulcsok esetében, amelyek utolsó frissítése az attribútum hozzáadása előtt történt. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
 
 A IntDate és más adattípusokkal kapcsolatos további információkért lásd: [a kulcsok, a titkok és a tanúsítványok: [adattípusok](../general/about-keys-secrets-certificates.md#data-types).
 
 ### <a name="date-time-controlled-operations"></a>Dátum-idő vezérelt műveletek
 
-A *NBF* exp ablakon kívül még nem érvényes és lejárt kulcsok  /  *exp* is használhatók a **visszafejtéshez** , a **kicsomagoláshoz** és a műveletek **ellenőrzéséhez** (nem ad vissza 403, tiltott). A még nem érvényes állapot használatának indoklása az éles használat előtt a kulcs tesztelésének engedélyezése. A lejárt állapot használatának indoklása a helyreállítási műveletek engedélyezése a kulcs érvényessége után létrehozott adatokon. Emellett letilthatja a hozzáférést egy kulcshoz Key Vault szabályzatok használatával, vagy az *engedélyezett* kulcs attribútum **hamis értékre** való frissítésével.
+A *NBF* exp ablakon kívül még nem érvényes és lejárt kulcsok  /   is használhatók a **visszafejtéshez**, a **kicsomagoláshoz** és a műveletek **ellenőrzéséhez** (nem ad vissza 403, tiltott). A még nem érvényes állapot használatának indoklása az éles használat előtt a kulcs tesztelésének engedélyezése. A lejárt állapot használatának indoklása a helyreállítási műveletek engedélyezése a kulcs érvényessége után létrehozott adatokon. Emellett letilthatja a hozzáférést egy kulcshoz Key Vault szabályzatok használatával, vagy az *engedélyezett* kulcs attribútum **hamis értékre** való frissítésével.
 
 Az adattípusokkal kapcsolatos további információkért lásd az [adattípusokat](../general/about-keys-secrets-certificates.md#data-types)ismertető témakört.
 
@@ -140,30 +140,30 @@ A Key Vault által felügyelt kulcsok hozzáférés-vezérlését a kulcsok tár
 A következő engedélyek adhatók meg felhasználónkénti vagy egyszerű szolgáltatás alapján a tárolóban található kulcsok hozzáférés-vezérlési bejegyzésében. Ezek az engedélyek szorosan tükrözik a Key objektumon engedélyezett műveleteket.  Egy egyszerű szolgáltatáshoz való hozzáférés biztosítása a Key vaultban egy egyszeri művelet, amely minden Azure-előfizetésnél azonos marad. Azt is megteheti, hogy tetszőleges számú tanúsítványt telepít. 
 
 - A kulcskezelő műveletekhez szükséges engedélyek
-  - *Letöltés* : olvassa el a kulcs nyilvános részét, valamint annak attribútumait
-  - *lista* : a Key vaultban tárolt kulcsok kulcsait vagy verzióit sorolja fel.
-  - *frissítés* : a kulcsok attribútumainak frissítése
-  - *Létrehozás* : új kulcsok létrehozása
-  - *Importálás* : kulcs importálása Key vaultba
-  - *Törlés* : a kulcs objektum törlése
-  - *helyreállítás* : törölt kulcs helyreállítása
-  - *biztonsági mentés* : kulcs biztonsági mentése kulcstartóban
-  - *visszaállítás* : a biztonsági másolatban szereplő kulcs visszaállítása a kulcstartóba
+  - *Letöltés*: olvassa el a kulcs nyilvános részét, valamint annak attribútumait
+  - *lista*: a Key vaultban tárolt kulcsok kulcsait vagy verzióit sorolja fel.
+  - *frissítés*: a kulcsok attribútumainak frissítése
+  - *Létrehozás*: új kulcsok létrehozása
+  - *Importálás*: kulcs importálása Key vaultba
+  - *Törlés*: a kulcs objektum törlése
+  - *helyreállítás*: törölt kulcs helyreállítása
+  - *biztonsági mentés*: kulcs biztonsági mentése kulcstartóban
+  - *visszaállítás*: a biztonsági másolatban szereplő kulcs visszaállítása a kulcstartóba
 
 - Titkosítási műveletekhez szükséges engedélyek
-  - *Visszafejtés* : a kulcs használatával egy bájtos sorozatot nem lehet védelemmel ellátni.
-  - *titkosítás* : a kulcs használatával tetszőleges bájtos sorozatot biztosíthat.
-  - *unwrapKey* : a kulcs használata a burkolt szimmetrikus kulcsok feloldásához
-  - *wrapKey* : a kulcs használatával egy szimmetrikus kulcs védhető
-  - *ellenőrzés* : a kulcs használata a kivonatoló ellenőrzéséhez  
-  - *aláírás* : kivonatok aláírásához használja a kulcsot
+  - *Visszafejtés*: a kulcs használatával egy bájtos sorozatot nem lehet védelemmel ellátni.
+  - *titkosítás*: a kulcs használatával tetszőleges bájtos sorozatot biztosíthat.
+  - *unwrapKey*: a kulcs használata a burkolt szimmetrikus kulcsok feloldásához
+  - *wrapKey*: a kulcs használatával egy szimmetrikus kulcs védhető
+  - *ellenőrzés*: a kulcs használata a kivonatoló ellenőrzéséhez  
+  - *aláírás*: kivonatok aláírásához használja a kulcsot
     
 - Jogosultsági szintű műveletek engedélyei
-  - *kiürítés* : törölt kulcs kiürítése (végleges törlése)
+  - *kiürítés*: törölt kulcs kiürítése (végleges törlése)
 
 A kulcsok használatával kapcsolatos további információkért tekintse meg [a Key Vault REST API-referenciával](/rest/api/keyvault)foglalkozó témakörben található főbb műveleteket. Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Tudnivalók a Key Vaultról](../general/overview.md)
 - [A Managed HSM ismertetése](../managed-hsm/overview.md)
 - [Információ a titkos kulcsokról](../secrets/about-secrets.md)

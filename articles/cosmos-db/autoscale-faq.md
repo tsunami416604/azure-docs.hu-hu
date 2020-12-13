@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/10/2020
-ms.openlocfilehash: 58e7d54750da86b8a700a4f2195bc4cfa012ae4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 12/11/2020
+ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092687"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368579"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Gyakori kérdések a kiosztott átviteli sebességről Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Az egyszeri írási régió fiókjaiban az automatikus skálázási sebesség 10
 A több írási régióval rendelkező fiókok esetében az automatikus skálázási sebesség 100 RU/s-nál ugyanaz, mint a standard (manuális) kiosztott több írási régió átviteli sebessége. A számlán a meglévő több írási régió mérőszáma jelenik meg. Mivel a díjszabások azonosak, ha az autoscale-t használja, ugyanazt a mennyiséget fogja látni, mint a standard átviteli sebességgel.
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>Működik az autoskálázás a fenntartott kapacitással?
-Igen. Ha a több írási régióval rendelkező fiókok számára fenntartott kapacitást vásárol, az autoskálázási erőforrások foglalási kedvezményét a rendszer 1,5 * arányban, az [adott régió aránya](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)alapján alkalmazza. 
+Igen. Ha a fenntartott kapacitást egyszeri írási régióval rendelkező fiókok számára vásárolja meg, az autoskálázási erőforrásokra vonatkozó foglalási kedvezményt a rendszer 1,5 * arányban alkalmazza az [adott régió aránya](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)alapján. 
 
 A többszörös írási régió számára fenntartott kapacitás ugyanúgy működik, mint az automatikus skálázás és a standard (manuális) kiosztott átviteli sebesség. [Azure Cosmos db fenntartott kapacitás](cosmos-db-reserved-capacity.md)
 
@@ -109,9 +109,9 @@ Ha a maximális ru/mp növelésére vonatkozó kérést küld, attól függően,
 #### <a name="lowering-the-max-rus"></a>A maximális RU/mp csökkentése
 Ha csökkenti a maximális RU/s értéket, a minimális érték a következőre állítható:, a `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` legközelebbi 1000 ru/s értékre kerekítve. 
 
-Példa #1: tegyük fel, hogy rendelkezik egy, a 20 000 RU/s maximális RU/s értékkel rendelkező, autoskálázási tárolóval (2000-20 000 RU/s) és 50 GB tárhellyel. A legalacsonyabb, minimális értékre állíthatja a maximális RU/s értéket: MAX (4000, 20 000/10, **50 * 100** ) = 5000 ru/s (skála a 500-5000 ru/s között).
+Példa #1: tegyük fel, hogy rendelkezik egy, a 20 000 RU/s maximális RU/s értékkel rendelkező, autoskálázási tárolóval (2000-20 000 RU/s) és 50 GB tárhellyel. A legalacsonyabb, minimális értékre állíthatja a maximális RU/s értéket: MAX (4000, 20 000/10, **50 * 100**) = 5000 ru/s (skála a 500-5000 ru/s között).
 
-Példa #2: tegyük fel, hogy rendelkezik egy, a 100 000 RU/s és 100 GB méretű maximális RU/s értékkel rendelkező autoskálázási tárolóval. Mostantól legfeljebb 150 000 RU/s méretig méretezheti a maximális RU/s-t (a 15 000-150 000 RU/s közötti skálán). A legalacsonyabb, minimális érték, amellyel most már beállíthatja a maximális RU/s értéket: MAX (4000, **150 000/10** , 100 * 100) = 15 000 ru/s (skála a 1500-15 000 ru/s között). 
+Példa #2: tegyük fel, hogy rendelkezik egy, a 100 000 RU/s és 100 GB méretű maximális RU/s értékkel rendelkező autoskálázási tárolóval. Mostantól legfeljebb 150 000 RU/s méretig méretezheti a maximális RU/s-t (a 15 000-150 000 RU/s közötti skálán). A legalacsonyabb, minimális érték, amellyel most már beállíthatja a maximális RU/s értéket: MAX (4000, **150 000/10**, 100 * 100) = 15 000 ru/s (skála a 1500-15 000 ru/s között). 
 
 Megosztott átviteli sebességű adatbázis esetén, ha csökkenti a maximális RU/s értéket, a minimális érték a következőre állítható be: `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))` , a legközelebbi 1000 ru/s értékre kerekítve.  
 

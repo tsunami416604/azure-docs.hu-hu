@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: bf4d0a845b7f26c82ba3940d6613a33bcacf9187
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5734591bfc48469eacc1ad39cbb89f3850bfc8c
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448334"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97367066"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Helyreállítás sikertelen Azure Stack Edge Pro GPU-eszközről 
 
@@ -35,12 +35,12 @@ Kérje le az eszközön a sikertelenül mentett konfigurációs adatokat. Ezt az
 
 A következő lépésekkel konfigurálhatja a helyettesítő eszközt:
 
-1. Gyűjtse össze a [központi telepítési ellenőrzőlistában](azure-stack-edge-gpu-deploy-checklist.md)szükséges adatokat. Az előző eszköz konfigurációjától mentett adatokat kell használnia. 
+1. Gyűjtse össze a [központi telepítési ellenőrzőlistában](azure-stack-edge-gpu-deploy-checklist.md)szükséges adatokat. Használhatja az előző eszköz konfigurációjától mentett adatokat. 
 1. Rendeljen egy olyan új eszközt, amelynek a konfigurációja nem sikerült.  Rendelés elhelyezéséhez [hozzon létre egy új Azure stack Edge-erőforrást](azure-stack-edge-gpu-deploy-prep.md#) a Azure Portalban.
 1. Az eszköz [kicsomagolása](azure-stack-edge-gpu-deploy-install.md#unpack-the-device), [rack csatlakoztatása](azure-stack-edge-gpu-deploy-install.md#rack-the-device) és [kábele](azure-stack-edge-gpu-deploy-install.md#cable-the-device). 
 1. [Kapcsolódjon az eszköz helyi felhasználói felületéhez](azure-stack-edge-gpu-deploy-connect.md).
-1. Konfigurálja a hálózatot a régi eszközhöz használt IP-címek használatával. Ez lekicsinyíti a környezetben használt összes ügyfélgépre gyakorolt hatást. Lásd: a [hálózati beállítások konfigurálása](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
-1. Rendelje hozzá ugyanazt az eszköznév és DNS-tartományt a régi eszközként. Ezzel biztosíthatja, hogy az ügyfelek ugyanazt az eszköznév használatával beszéljenek az új eszközhöz. Lásd: az [eszköz beállításának konfigurálása](azure-stack-edge-gpu-deploy-set-up-device-update-time.md).
+1. Konfigurálja a hálózatot a régi eszközhöz használt IP-címek használatával. Ha ugyanazt az IP-címet használja, az a környezetben használt összes ügyfélgépre kihatással csökken. Lásd: a [hálózati beállítások konfigurálása](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
+1. Rendelje hozzá ugyanazt az eszköznév és DNS-tartományt a régi eszközként. Így az ügyfelek ugyanazzal az eszközzel használhatják az új eszközt. Lásd: az [eszköz beállításának konfigurálása](azure-stack-edge-gpu-deploy-set-up-device-update-time.md).
 1. Konfigurálja a tanúsítványokat az új eszközön ugyanúgy, mint a régi eszköz esetében. Ne feledje, hogy az új eszköz új csomópont-sorozatszámmal rendelkezik. Ha saját tanúsítványait használta a régi eszközön, új csomópont-tanúsítványt kell beszereznie. Lásd: [tanúsítványok konfigurálása](azure-stack-edge-gpu-deploy-configure-certificates.md).
 1. Szerezze be az aktiválási kulcsot a Azure Portal és aktiválja az új eszközt. Lásd: [az eszköz aktiválása](azure-stack-edge-gpu-deploy-activate.md).
 
@@ -53,7 +53,7 @@ Az alábbi lépéseket követve állíthatja vissza az eszközön lévő Felhőb
 1. A korábban a hibás eszközön létrehozott megosztási névvel rendelkező [megosztásokat is hozzáadhat](azure-stack-edge-j-series-manage-shares.md#add-a-share) . Győződjön meg arról, hogy a megosztások létrehozásakor a **blob Container** a **meglévő lehetőség használatára** van beállítva, majd válassza ki az előző eszközzel használt tárolót.
 1. [Adja hozzá](azure-stack-edge-j-series-manage-users.md#add-a-user) az előző eszközhöz hozzáféréssel rendelkező felhasználókat.
 1. [Adja hozzá](azure-stack-edge-j-series-manage-storage-accounts.md#add-an-edge-storage-account) a korábban az eszközön található megosztásokhoz társított Storage-fiókokat. Edge Storage-fiókok létrehozásakor válasszon egy meglévő tárolóból, és mutasson arra a tárolóra, amely az előző eszközön leképezett Azure Storage-fiókra van leképezve. Az eszközön az előző eszköz Edge Storage-fiókjába írt összes adatait a rendszer feltöltötte a hozzárendelt Azure Storage-fiók kiválasztott tárolójába.
-1. [A megosztási adatok frissítése](azure-stack-edge-j-series-manage-shares.md#refresh-shares) az Azure-ból. Ez lekéri a meglévő tároló összes Felhőbeli adatait a megosztásokra.
+1. [A megosztási adatok frissítése](azure-stack-edge-j-series-manage-shares.md#refresh-shares) az Azure-ból. Ezzel lekéri a meglévő tároló összes Felhőbeli adatait a megosztásokra.
 
 ## <a name="restore-edge-local-shares"></a>Peremhálózati helyi megosztások visszaállítása
 
@@ -62,12 +62,13 @@ A lehetséges eszköz meghibásodására való felkészüléshez lehetséges, ho
 | Külső gyártótól származó szoftverek           | Hivatkozás a megoldásra                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | [https://www.cohesity.com/solution/cloud/azure/](https://www.cohesity.com/solution/cloud/azure/) <br> Részletekért vegye fel a kapcsolatot az adatkapcsolattal.          |
-| CommVault                      | https://www.commvault.com/azure <br> A részletekért forduljon a CommVault. |
-| Veritas                        | http://veritas.com/azure <br> Részletekért forduljon a Veritashez.   |
+| CommVault                      | [https://www.commvault.com/azure](https://www.commvault.com/azure) <br> A részletekért forduljon a CommVault. |
+| Veritas                        | [http://veritas.com/azure](http://veritas.com/azure) <br> Részletekért forduljon a Veritashez.   |
+| Veeam                          | [https://www.veeam.com/kb4041](https://www.veeam.com/kb4041) <br> A részletekért forduljon a Veeam. |
 
 Miután a helyettesítő eszköz teljesen konfigurálva van, engedélyezze az eszközt a helyi tároláshoz. 
 
-A helyi megosztásokból származó adatok helyreállításához kövesse az alábbi lépéseket: 
+A helyi megosztásokból származó adatok helyreállításához kövesse az alábbi lépéseket:
 
 1. [Állítsa be a számítást az eszközön](azure-stack-edge-gpu-deploy-configure-compute.md).
 1. [Helyi megosztást adjon](azure-stack-edge-j-series-manage-shares.md#add-a-local-share) vissza.
@@ -79,12 +80,13 @@ A lehetséges eszköz meghibásodására való felkészüléshez előfordulhat, 
 
 
 
-| Biztonsági mentési megoldások        | Támogatott operációs rendszer   | Hivatkozás                                                                |
+| Biztonsági mentési megoldások        | Támogatott operációs rendszer   | Referencia                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Microsoft Azure Recovery Services (MARS) ügynök a Azure Backup | Windows        | [A MARS-ügynök ismertetése](../backup/backup-azure-about-mars.md)    |
-| Cohesity                | Windows, Linux | [Rövid Microsoft Azure integrációs, biztonsági mentési és helyreállítási megoldás](https://www.cohesity.com/solution/cloud/azure) <br>Részletekért vegye fel a kapcsolatot az adatkapcsolattal.                          |
-| CommVault               | Windows, Linux | https://www.commvault.com/azure <br> A részletekért forduljon a CommVault.
-| Veritas                 | Windows, Linux | http://veritas.com/azure <br> Részletekért forduljon a Veritashez.                    |
+| Cohesity                | Windows, Linux | [Microsoft Azure integráció, biztonsági mentési & helyreállítási megoldás rövid](https://www.cohesity.com/solution/cloud/azure) <br>Részletekért vegye fel a kapcsolatot az adatkapcsolattal.                          |
+| CommVault               | Windows, Linux | [https://www.commvault.com/azure](https://www.commvault.com/azure) <br> A részletekért forduljon a CommVault.
+| Veritas                 | Windows, Linux | [https://vox.veritas.com/t5/Protection/Protecting-Azure-Stack-edge-with-NetBackup/ba-p/883370](https://vox.veritas.com/t5/Protection/Protecting-Azure-Stack-edge-with-NetBackup/ba-p/883370) <br> Részletekért forduljon a Veritashez.                    |
+| Veeam                   | Windows, Linux | [https://www.veeam.com/kb4041](https://www.veeam.com/kb4041) <br> A részletekért forduljon a Veeam. |
 
 Miután a helyettesítő eszköz teljesen konfigurálva van, újra üzembe helyezheti a virtuális gépeket a korábban használt virtuálisgép-lemezképpel. 
 
@@ -94,6 +96,10 @@ A virtuális gépek adatainak helyreállításához kövesse az alábbi lépése
 1. Telepítse a választható adatvédelmi megoldást a virtuális gépre.
 1. Futtassa a választható adatvédelmi megoldás által biztosított helyreállítási eljárást. Lásd az előző táblázat hivatkozásait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="restore-a-kubernetes-deployment"></a>Kubernetes-telepítés visszaállítása
+
+Ha a Kubernetes üzembe helyezését az Azure arc használatával végezte el, az üzemelő példány nem tolerálható eszköz meghibásodása után visszaállítható. Az `git` alkalmazás definícióját tároló adattárból újra kell telepítenie a Customer Application/containers szolgáltatást. [Információk a Kubernetes Azure arc-beli üzembe helyezéséről](./azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)<!--Original text: Kubernetes deployments can be restored from a non-tolerated failure with the device when deployed with Azure Arc. Customer application/containers deployed onto a Kubernetes on Azure Stack Edge via Azure Arc can be redeployed from the git repository where the application definition is. Here is a link to the article to deploy Kubernetes with Arc -->
+ 
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan adhat [vissza Azure stack Edge Pro-eszközt](azure-stack-edge-return-device.md).

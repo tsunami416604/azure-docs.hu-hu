@@ -5,14 +5,14 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 12/11/2020
 ms.custom: seo-nov-2020
-ms.openlocfilehash: aaedca5acf7861db05f0ec724e05449316379829
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337542"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368664"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása az autoscale átviteli sebességgel
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,7 +59,7 @@ Az autoskálázás maximális átviteli sebességének belépési pontja `Tmax` 
 
 ## <a name="enable-autoscale-on-existing-resources"></a>Az autoskálázás engedélyezése meglévő erőforrásokon
 
-A [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) használatával engedélyezheti az autoskálázást egy meglévő adatbázison vagy tárolón. Az automatikus méretezés és a standard (manuális) kiépített átviteli sebesség között bármikor válthat. További információért tekintse meg ezt a [dokumentációt](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) . Jelenleg az összes API esetében csak az Azure Portal használhatja az autoskálázást a meglévő erőforrásokon.
+A [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), [Azure Resource Manager sablon](how-to-provision-autoscale-throughput.md#azure-resource-manager), [CLI](how-to-provision-autoscale-throughput.md#azure-cli) vagy [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) használatával engedélyezheti az autoskálázást egy meglévő adatbázison vagy tárolón. Az automatikus méretezés és a standard (manuális) kiépített átviteli sebesség között bármikor válthat. További információért tekintse meg ezt a [dokumentációt](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) .
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Átviteli sebesség és tárolási korlátok az autoskálázáshoz
 
@@ -80,7 +80,7 @@ További részletekért tekintse meg ezt a [dokumentációt](how-to-choose-offer
 | **Díjszabás** | A manuálisan kiosztott RU/mp óradíjat kell fizetnie a [Standard (manuális) ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óránkénti díjszabás alapján. | A legmagasabb RU/s esetében óránkénti fizetést kell fizetnie, a rendszer pedig az órán belül felskálázást. <br/><br/> Az egyszeri írási régió fiókjai esetében óradíjban kell fizetnie az RU/s esetében, az [autoscale ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óradíjat használva. <br/><br/>Több írási régióval rendelkező fiókok esetében az autoskálázás díjmentes. Az óránkénti átviteli sebességért kell fizetnie, ugyanazzal a [többrégiós írási ru/s](https://azure.microsoft.com/pricing/details/cosmos-db/)óradíjat használva. |
 | **Legmegfelelőbb a számítási feladatok típusaihoz** |  Kiszámítható és stabil számítási feladatok|   Kiszámíthatatlan és változó számítási feladatok  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az [autoscale – gyakori kérdések](autoscale-faq.md)című szakaszt.
 * Megtudhatja, hogyan [választhat a manuális és az automatikus skálázási sebesség közül](how-to-choose-offer.md).

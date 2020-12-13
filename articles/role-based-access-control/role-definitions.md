@@ -15,12 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3640fecbe1138e46fd0d36975691740bc669dd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511636"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369259"
 ---
 # <a name="understand-azure-role-definitions"></a>Az Azure szerepkör-definíciók ismertetése
 
@@ -28,7 +28,7 @@ Ha meg szeretné ismerni, hogyan működik az Azure-szerepkör, vagy saját Azur
 
 ## <a name="role-definition"></a>Szerepkör-definíció
 
-A *szerepkör-definíció* engedélyek gyűjteménye. Ezt néha csak *szerepkörnek*nevezzük. A szerepkör-definíció a végrehajtható műveletek listáját tartalmazza (például olvasás, írás és törlés). Azokat a műveleteket is listázhatja, amelyek ki vannak zárva az engedélyezett műveletekről vagy az alapul szolgáló adatokkal kapcsolatos műveletekről.
+A *szerepkör-definíció* engedélyek gyűjteménye. Ezt néha csak *szerepkörnek* nevezzük. A szerepkör-definíció a végrehajtható műveletek listáját tartalmazza (például olvasás, írás és törlés). Azokat a műveleteket is listázhatja, amelyek ki vannak zárva az engedélyezett műveletekről vagy az alapul szolgáló adatokkal kapcsolatos műveletekről.
 
 Az alábbi példa a szerepkör-definíciók tulajdonságait mutatja be a Azure PowerShell használatával történő megjelenítéskor:
 
@@ -335,8 +335,8 @@ A beépített szerepkörök `AssignableScopes` a gyökérszintű hatókörre () 
 
 További információ az `AssignableScopes` Egyéni szerepkörökről: [Egyéni Azure-szerepkörök](custom-roles.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Beépített Azure-szerepkörök](built-in-roles.md)
 * [Egyéni Azure-szerepkörök](custom-roles.md)
-* [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md)
+* [Azure erőforrás-szolgáltatói műveletek](resource-provider-operations.md)

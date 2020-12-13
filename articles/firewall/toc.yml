@@ -87,8 +87,6 @@
     - name: Diagnosztikai naplók monitorozása
       href: firewall-diagnostics.md
       displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
-    - name: Azure Monitor-naplók
-      href: log-analytics-samples.md
     - name: Azure Firewall-munkafüzet
       href: firewall-workbook.md
 - name: Referencia

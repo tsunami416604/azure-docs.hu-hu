@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1ed477c6cf069dbb402e5bda9c1f48f7bc208f18
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698801"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368885"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Security Control v2: biztonsági mentés és helyreállítás
 
@@ -20,7 +20,7 @@ A biztonsági mentés és helyreállítás kiterjed a vezérlőkre, így biztos�
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: rendszeres automatikus biztonsági mentések biztosítása
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | BR-1 | 10.1 | CP-2, CP4, CP-6, CP-9 |
 
@@ -34,9 +34,9 @@ A magasabb szintű védelem érdekében engedélyezheti a Geo-redundáns tárol�
 
 - [A Azure Backup engedélyezése](../../backup/index.yml)
 
-- [A régiók közötti visszaállítás engedélyezése](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
+- [Hogyan engedélyezhető a régiók közötti visszaállítás?](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -50,7 +50,7 @@ A magasabb szintű védelem érdekében engedélyezheti a Geo-redundáns tárol�
 
 ## <a name="br-2-encrypt-backup-data"></a>BR-2: biztonsági mentési adataik titkosítása
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | BR – 2 | 10,2 | CP-9 |
 
@@ -68,7 +68,7 @@ A biztonsági másolatok és az ügyfelek által felügyelt kulcsok elleni véde
 
 - [Biztonsági funkciók a hibrid biztonsági mentések elleni védelemhez](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -78,9 +78,9 @@ A biztonsági másolatok és az ügyfelek által felügyelt kulcsok elleni véde
 
 - [Incidens előkészítése](/azure/cloud-adoption-framework/organize/cloud-security-incident-preparation)
 
-## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3: az összes biztonsági mentés ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
+## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3: Az összes biztonsági másolat és az ügyfelek által kezelt kulcsok ellenőrzése
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | BR – 3 | 10,3 | CP-4, CP-9 |
 
@@ -90,7 +90,7 @@ Rendszeres időközönként végezze el a biztonsági mentés adatvisszaállít�
 
 - [Key Vault kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -98,17 +98,17 @@ Rendszeres időközönként végezze el a biztonsági mentés adatvisszaállít�
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4: az elveszett kulcsok kockázatának enyhítése
+## <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4: A kulcsok elvesztésével járó kockázat csökkentése
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | BR – 4 | 10,4 | CP-9 |
 
-Győződjön meg arról, hogy rendelkezik olyan mértékekkel, amelyek megakadályozzák a kulcsok elvesztését és helyreállítását. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze a Azure Key Vault a védelem lágy törlését és kiürítését.  
+Győződjön meg arról, hogy rendelkezik olyan mértékekkel, amelyek megakadályozzák a kulcsok elvesztését és helyreállítását. Engedélyezze a helyreállítható törlést és a végleges törléssel szembeni védelmet az Azure Key Vaultban, hogy megvédje a kulcsokat a véletlen vagy rosszindulatú törléssel szemben.  
 
-- [A védelem lágy törlésének és kiürítésének engedélyezése a Key Vaultban](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
+- [Helyreállítható törlés és a végleges törléssel szembeni védelem engedélyezése kulcstartóban](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 

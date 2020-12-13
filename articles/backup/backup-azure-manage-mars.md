@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kezelheti és figyelheti Microsoft Azure Recove
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145569"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368596"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services-(MARS-) ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -21,7 +21,7 @@ A biztonsági mentési szabályzat módosításakor hozzáadhat új elemeket, el
 
 - **Elemek hozzáadása** ezt a lehetőséget csak új elemek biztonsági mentéshez való hozzáadásához használja. Meglévő elemek eltávolításához használja az **elemek eltávolítása** vagy a **kizárási beállítások** lehetőséget.  
 - **Elemek eltávolítása** ezzel a beállítással távolíthatja el az elemeket a biztonsági mentésből.
-  - A **kizárási beállítások** használatával **távolítsa el**a köteten belüli összes elemet az elemek eltávolítása helyett.
+  - A **kizárási beállítások** használatával **távolítsa el** a köteten belüli összes elemet az elemek eltávolítása helyett.
   - Egy kötet összes kijelölésének törlésével a rendszer a legutóbbi biztonsági mentés időpontjában megőrzi az elemek régi biztonsági másolatait, a módosítás hatóköre nélkül.
   - Ha újra kiválasztja ezeket az elemeket, a rendszer az első teljes biztonsági mentést és az új házirend-módosításokat nem alkalmazza a régi biztonsági másolatokra.
   - A teljes kötet kijelölésének megszüntetése megőrzi a korábbi biztonsági mentést az adatmegőrzési szabályzat módosításának hatóköre nélkül.
@@ -29,15 +29,15 @@ A biztonsági mentési szabályzat módosításakor hozzáadhat új elemeket, el
 
 ### <a name="add-new-items-to-existing-policy"></a>Új elemek hozzáadása meglévő szabályzathoz
 
-1. A **műveletek**területen válassza a **biztonsági mentés időzítése**elemet.
+1. A **műveletek** területen válassza a **biztonsági mentés időzítése** elemet.
 
     ![Windows Server biztonsági mentés ütemezése](./media/backup-configure-vault/schedule-first-backup.png)
 
-2. A **házirend-elem kiválasztása** lapon válassza **a fájlok és mappák biztonsági mentésének módosítása** lehetőséget, majd kattintson a **tovább**gombra.
+2. A **házirend-elem kiválasztása** lapon válassza **a fájlok és mappák biztonsági mentésének módosítása** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![Házirend-elemek kiválasztása](./media/backup-azure-manage-mars/select-policy-items.png)
 
-3. A **biztonsági mentés módosítása vagy leállítása** lapon válassza a módosítások elvégzése **a biztonsági másolatok vagy időpontok számára** lehetőséget, és kattintson a **tovább**gombra.
+3. A **biztonsági mentés módosítása vagy leállítása** lapon válassza a módosítások elvégzése **a biztonsági másolatok vagy időpontok számára** lehetőséget, és kattintson a **tovább** gombra.
 
     ![Biztonsági mentés módosítása vagy időzítése](./media/backup-azure-manage-mars/modify-schedule-backup.png)
 
@@ -55,19 +55,19 @@ A biztonsági mentési szabályzat módosításakor hozzáadhat új elemeket, el
 
 Kizárási szabályok hozzáadásával kihagyhatja azokat a fájlokat és mappákat, amelyeket nem szeretne biztonsági mentésre készíteni. Ezt az új szabályzat definiálásakor vagy egy meglévő szabályzat módosításakor teheti meg.
 
-1. A Műveletek ablaktáblában válassza a **biztonsági mentés időzítése**elemet. Lépjen a **biztonsági mentés elemre** , és válassza a **kizárási beállítások**lehetőséget.
+1. A Műveletek ablaktáblában válassza a **biztonsági mentés időzítése** elemet. Lépjen a **biztonsági mentés elemre** , és válassza a **kizárási beállítások** lehetőséget.
 
     ![Kizárási beállítások](./media/backup-azure-manage-mars/select-exclusion-settings.png)
 
-2. A **kizárási beállítások**területen válassza a **kizárás hozzáadása**elemet.
+2. A **kizárási beállítások** területen válassza a **kizárás hozzáadása** elemet.
 
     ![Kizárás hozzáadása](./media/backup-azure-manage-mars/add-exclusion.png)
 
-3. A **kizárni kívánt elemek kiválasztásával**tallózzon a fájlokhoz és mappákhoz, és válassza ki azokat az elemeket, amelyeket ki szeretne zárni, majd válassza **az OK**gombot.
+3. A **kizárni kívánt elemek kiválasztásával** tallózzon a fájlokhoz és mappákhoz, és válassza ki azokat az elemeket, amelyeket ki szeretne zárni, majd válassza **az OK** gombot.
 
     ![Válassza ki a kizárandó elemeket](./media/backup-azure-manage-mars/select-items-exclude.png)
 
-4. Alapértelmezés szerint a kijelölt mappákban lévő összes **almappa** ki van zárva. Ezt megváltoztathatja az **Igen** vagy a **nem**lehetőség kiválasztásával. A kizárni kívánt fájltípusokat a lent látható módon szerkesztheti és adhatja meg:
+4. Alapértelmezés szerint a kijelölt mappákban lévő összes **almappa** ki van zárva. Ezt megváltoztathatja az **Igen** vagy a **nem** lehetőség kiválasztásával. A kizárni kívánt fájltípusokat a lent látható módon szerkesztheti és adhatja meg:
 
     ![Almappák típusának kiválasztása](./media/backup-azure-manage-mars/subfolders-type.png)
 
@@ -75,7 +75,7 @@ Kizárási szabályok hozzáadásával kihagyhatja azokat a fájlokat és mappá
 
 ### <a name="remove-items-from-existing-policy"></a>Elemek eltávolítása meglévő házirendből
 
-1. A Műveletek ablaktáblában válassza a **biztonsági mentés időzítése**elemet. Lépjen a **biztonsági mentés elemre**. A listából válassza ki azokat a fájlokat és mappákat, amelyeket el szeretne távolítani a biztonsági mentési ütemtervből, majd válassza az **elemek eltávolítása**lehetőséget.
+1. A Műveletek ablaktáblában válassza a **biztonsági mentés időzítése** elemet. Lépjen a **biztonsági mentés elemre**. A listából válassza ki azokat a fájlokat és mappákat, amelyeket el szeretne távolítani a biztonsági mentési ütemtervből, majd válassza az **elemek eltávolítása** lehetőséget.
 
     ![Válassza ki az eltávolítandó elemeket](./media/backup-azure-manage-mars/select-items-remove.png)
 
@@ -103,30 +103,30 @@ A fájlok és mappák biztonsági mentése kétféleképpen állítható le:
 1. Nyissa meg a MARS felügyeleti konzolját, lépjen a **műveletek ablaktáblára**, és **válassza a biztonsági mentés időzítése elemet**.
 
     ![Biztonsági mentés ütemezett kiválasztása](./media/backup-azure-manage-mars/mars-actions.png)
-1. A **házirend kiválasztása** lapon válassza a **fájlok és mappák biztonsági mentésének ütemezett módosítása** lehetőséget, majd kattintson a **tovább**gombra.
+1. A **házirend kiválasztása** lapon válassza a **fájlok és mappák biztonsági mentésének ütemezett módosítása** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![Házirend elemének kiválasztása](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. Az **ütemezett biztonsági mentés módosítása vagy leállítása** lapon válassza a **Leállítás ezzel a biztonsági mentési ütemezéssel lehetőséget, de a tárolt biztonsági mentéseket tartsa meg, amíg újra nem aktiválja az ütemezést**. Ezután válassza a **tovább**lehetőséget.
+1. Az **ütemezett biztonsági mentés módosítása vagy leállítása** lapon válassza a **Leállítás ezzel a biztonsági mentési ütemezéssel lehetőséget, de a tárolt biztonsági mentéseket tartsa meg, amíg újra nem aktiválja az ütemezést**. Ezután válassza a **tovább** lehetőséget.
 
     ![Állítsa le az ütemezett biztonsági mentést.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. Az **ütemezett biztonsági mentés szüneteltetése**lapon tekintse át az információkat, majd kattintson a **Befejezés gombra**.
+1. Az **ütemezett biztonsági mentés szüneteltetése** lapon tekintse át az információkat, majd kattintson a **Befejezés gombra**.
 
     ![Ütemezett biztonsági mentés szüneteltetése.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. A **biztonsági mentés**állapotának módosítása lapon győződjön meg arról, hogy az ütemezett biztonsági mentés szüneteltetése sikeres, és a Befejezés gombra kattintva válassza a **Bezárás** lehetőséget.
+1. A **biztonsági mentés** állapotának módosítása lapon győződjön meg arról, hogy az ütemezett biztonsági mentés szüneteltetése sikeres, és a Befejezés gombra kattintva válassza a **Bezárás** lehetőséget.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Védelem leállítása és biztonsági másolatok törlése
 
-1. Nyissa meg a MARS felügyeleti konzolját, lépjen a **műveletek** ablaktáblára, és válassza a **biztonsági mentés időzítése**elemet.
-2. Az **ütemezett biztonsági mentés módosítása vagy leállítása** lapon válassza a **Leállítás a biztonsági mentési ütemezés használatával lehetőséget, és törölje az összes tárolt biztonsági**mentést. Ezután válassza a **tovább**lehetőséget.
+1. Nyissa meg a MARS felügyeleti konzolját, lépjen a **műveletek** ablaktáblára, és válassza a **biztonsági mentés időzítése** elemet.
+2. Az **ütemezett biztonsági mentés módosítása vagy leállítása** lapon válassza a **Leállítás a biztonsági mentési ütemezés használatával lehetőséget, és törölje az összes tárolt biztonsági** mentést. Ezután válassza a **tovább** lehetőséget.
 
     ![Ütemezett biztonsági mentés módosítása vagy leállítása.](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 
-3. Az **ütemezett biztonsági mentés leállítása** lapon válassza a **Befejezés**lehetőséget.
+3. Az **ütemezett biztonsági mentés leállítása** lapon válassza a **Befejezés** lehetőséget.
 
     ![Ütemezett biztonsági mentés leállítása és a Befejezés kiválasztása](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. A rendszer felszólítja, hogy adjon meg egy biztonsági PIN-kódot (személyes azonosító számot), amelyet manuálisan kell előkészítenie. Ehhez először jelentkezzen be a Azure Portalba.
-5. Nyissa meg **Recovery Services**tároló  >  **beállításai**  >  **tulajdonságokat**.
-6. A **biztonsági PIN-kód**területen válassza a **készítés**elemet. Másolja ezt a PIN-kódot. A PIN-kód csak öt percig érvényes.
+5. Nyissa meg **Recovery Services** tároló  >  **beállításai**  >  **tulajdonságokat**.
+6. A **biztonsági PIN-kód** területen válassza a **készítés** elemet. Másolja ezt a PIN-kódot. A PIN-kód csak öt percig érvényes.
 7. A felügyeleti konzolon illessze be a PIN-kódot, majd kattintson **az OK gombra**.
 
     ![Biztonsági PIN-kód létrehozása.](./media/backup-azure-delete-vault/security-pin.png)
@@ -141,16 +141,16 @@ A helyszíni biztonsági mentési elemek törlését követően kövesse a port�
 
 Ha leállította a védelmet, miközben megtartja az adatvédelmet, és úgy döntött, hogy folytatja a védelmet, akkor a biztonsági mentési szabályzat módosításával újból engedélyezheti a biztonsági mentést.
 
-1. A **műveletek** lapon válassza az **ütemezett biztonsági mentés**lehetőséget.
-1. Válassza a **biztonsági mentési ütemterv újbóli engedélyezése lehetőséget. A biztonsági másolati elemeket vagy az időpontokat is módosíthatja** , és a **tovább**gombra kattintva.<br>
+1. A **műveletek** lapon válassza az **ütemezett biztonsági mentés** lehetőséget.
+1. Válassza a **biztonsági mentési ütemterv újbóli engedélyezése lehetőséget. A biztonsági másolati elemeket vagy az időpontokat is módosíthatja** , és a **tovább** gombra kattintva.<br>
 
     ![Biztonsági mentési ütemterv újbóli engedélyezése](./media/backup-azure-manage-mars/re-enable-policy-next.png)
-1. A **biztonsági mentés elemek kijelölése**területen válassza a **tovább**lehetőséget.
+1. A **biztonsági mentés elemek kijelölése** területen válassza a **tovább** lehetőséget.
 
     ![Biztonsági mentésre kijelölt elemek kiválasztása](./media/backup-azure-manage-mars/re-enable-next.png)
-1. A **biztonsági mentés**időpontjának megadása lapon adja meg a biztonsági mentés ütemtervét, és kattintson a **Tovább gombra**.
-1. A **megőrzési szabály kiválasztása**területen adja meg a megőrzési időtartamot, majd kattintson a **Tovább gombra**.
-1. Végül a **megerősítő** képernyőn tekintse át a szabályzat részleteit, és válassza a **Befejezés**lehetőséget.
+1. A **biztonsági mentés** időpontjának megadása lapon adja meg a biztonsági mentés ütemtervét, és kattintson a **Tovább gombra**.
+1. A **megőrzési szabály kiválasztása** területen adja meg a megőrzési időtartamot, majd kattintson a **Tovább gombra**.
+1. Végül a **megerősítő** képernyőn tekintse át a szabályzat részleteit, és válassza a **Befejezés** lehetőséget.
 
 ## <a name="re-generate-passphrase"></a>Jelszó újbóli előállítása
 
@@ -158,7 +158,7 @@ A hitelesítő adatok titkosítására és visszafejtésére szolgálnak a helys
 
 1. A Mars-ügynök konzolján lépjen a **műveletek ablaktáblára**, és  >  **módosítsa a tulajdonságok** >. Ezután nyissa meg a **titkosítás lapot**.<br>
 1. Válassza a **jelszó módosítása** jelölőnégyzetet.<br>
-1. Adjon meg egy új jelszót, vagy válassza a **jelszó létrehozása**lehetőséget.
+1. Adjon meg egy új jelszót, vagy válassza a **jelszó létrehozása** lehetőséget.
 1. Az új jelszó mentéséhez kattintson a **Tallózás** gombra.
 
     ![Jelszó előállítása.](./media/backup-azure-manage-mars/passphrase.png)
@@ -189,6 +189,19 @@ A MARS biztonsági mentési szabályzatának kezelése a MARS-konzolon, és nem 
   1. Telepítse az ügynököt, és regisztrálja újra ugyanazon a tárolón és ugyanazzal a jelszóval
   1. Indítsa el a MARS-ügyfelet, hogy az igényeinek megfelelően kiterjessze a megőrzési időtartamot
 - Az újonnan visszaállított, a MARStal védett gép továbbra is készít biztonsági mentést.  
+
+## <a name="configuring-antivirus-for-the-mars-agent"></a>A víruskereső konfigurálása a MARS-ügynökhöz
+
+Javasoljuk, hogy a víruskereső szoftverhez a következő konfigurációt a MARS-ügynök működésével való ütközés elkerülése érdekében.
+
+1. **Elérési út kizárása**: a teljesítmény és a lehetséges ütközések romlásának elkerülése érdekében zárja ki az alábbi elérési utakat a víruskereső szoftver valós idejű figyelésével:
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` és almappák
+    1. **Üres mappa**: Ha a kaparós mappa nem a szabványos helyen található, adja hozzá a kivételekhez is.  A mappa helyének meghatározásához [szükséges lépéseket itt találja](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible) .
+1. **Bináris Kizárások hozzáadása**: Ha el szeretné kerülni a biztonsági mentési és a konzol tevékenységeinek romlását, zárja ki a következő bináris fájlokat a víruskereső szoftver valós idejű figyelésével:
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
+
+>[!NOTE]
+>Az elérési utak kizárása azonban elegendő a legtöbb víruskereső szoftverhez, némelyik továbbra is zavarhatja a MARS-ügynök műveleteit. Ha váratlan hibák merülnek fel, távolítsa el ideiglenesen a víruskereső szoftvert, és figyelje meg, hogy a probléma leáll-e. Ha ez megoldja a problémát, forduljon a víruskereső szoftver gyártójához, és kérjen segítséget a termék megfelelő konfigurációjával.
 
 ## <a name="next-steps"></a>Következő lépések
 

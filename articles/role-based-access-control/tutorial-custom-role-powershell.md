@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735589"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369242"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell használatával
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Egyéni szerepkörök frissítése
 > * Egyéni szerepkörök törlése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -51,7 +51,7 @@ Jelentkezzen be [Azure PowerShellba](/powershell/azure/authenticate-azureps).
 
 Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy beépített szerepkört szerkeszt át.
 
-1. A PowerShellben használja a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) parancsot a Microsoft. support erőforrás-szolgáltató műveleteinek listájának lekéréséhez. Érdemes megismerkedni az engedélyek létrehozására szolgáló műveletekkel. Az összes műveletet tartalmazó listát az [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md#microsoftsupport) témakörében is megtekintheti.
+1. A PowerShellben használja a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) parancsot a Microsoft. support erőforrás-szolgáltató műveleteinek listájának lekéréséhez. Érdemes megismerkedni az engedélyek létrehozására szolgáló műveletekkel. Az [Azure erőforrás-szolgáltató műveleteivel](resource-provider-operations.md#microsoftsupport)kapcsolatos összes művelet listáját is megtekintheti.
 
     ```azurepowershell
     Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize
@@ -274,7 +274,7 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, vagy használja a
 
 1. Ha rendszer megerősítést kér, írja be a következőt: **Y**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni Azure-szerepkörök létrehozása vagy frissítése Azure PowerShell használatával](custom-roles-powershell.md)

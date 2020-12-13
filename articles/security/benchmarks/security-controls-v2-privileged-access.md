@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f6c990b3ce5edaab4d2ce6600c0291272058e092
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367482"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369293"
 ---
 # <a name="security-control-v2-privileged-access"></a>Security Control v2: emelt szintű hozzáférés
 
 Az emelt szintű hozzáférés kiterjed az Azure-bérlőhöz és-erőforrásokhoz való rendszerjogosultságú hozzáférések elleni védelemre. Ez számos vezérlőelemet tartalmaz a felügyeleti modell, a rendszergazdai fiókok és a privilegizált hozzáférésű munkaállomások szándékos és véletlen kockázattal szembeni megóvására.
 
-## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: magas jogosultsági szintű felhasználók elleni védelem és korlátozás
+## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Emelt jogosultságú felhasználók védelme és korlátozása
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | PA-1 | 4,3, 4,8 | AC-2 |
 
@@ -32,15 +32,15 @@ Korlátozza a magas jogosultságú felhasználói fiókok számát, és emelt sz
 
 Megjegyzés: Előfordulhat, hogy más kritikus szerepkörökre is szükség van, amelyeket akkor kell alkalmaznia, ha egyéni szerepköröket használ bizonyos jogosultsági szintű engedélyekkel társítva. Emellett előfordulhat, hogy hasonló vezérlőket szeretne alkalmazni a kritikus fontosságú üzleti eszközök rendszergazdai fiókjára.  
 
-Az Azure-erőforrásokhoz és az Azure AD-hez az Azure AD Privileged Identity Management (PIM) használatával engedélyezheti az igény szerinti (JIT) jogosultságú hozzáférést. A JIT ideiglenes engedélyeket biztosít a Kiemelt feladatok végrehajtásához, ha a felhasználóknak szükségük van rá. A PIM biztonsági riasztásokat is létrehozhat, ha az Azure AD-szervezetben gyanús vagy nem biztonságos tevékenység van.
+Az Azure AD Privileged Identity Management (PIM) használatával engedélyezheti az Azure-erőforrások és az Azure AD igény szerinti (just-in-time, JIT) jogosultságú hozzáférését. A JIT ideiglenes engedélyeket biztosít az érintett feladatok végrehajtásához, csak annyi időre, ameddig a felhasználóknak erre szükségük van. A PIM biztonsági riasztásokat is képes kiadni, amikor gyanús vagy nem biztonságos tevékenységeket észlel az Azure AD-szervezetben.
 
-- [Rendszergazdai szerepkör engedélyei az Azure AD-ben](../../active-directory/roles/permissions-reference.md)
+- [Rendszergazdai szerepköri engedélyek az Azure AD-ben](../../active-directory/roles/permissions-reference.md)
 
-- [Azure Privileged Identity Management biztonsági riasztások használata](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
+- [Az Azure Privileged Identity Management biztonsági riasztásainak használata](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](../../active-directory/roles/security-planning.md)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -52,9 +52,9 @@ Az Azure-erőforrásokhoz és az Azure AD-hez az Azure AD Privileged Identity Ma
 
 - [Biztonsági műveletek](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: az üzleti szempontból kritikus fontosságú rendszerek rendszergazdai hozzáférésének korlátozása
+## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: Az üzletileg kritikus rendszerek rendszergazdai elérésének korlátozása
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | PA-2 | 13,2, 2,10 | AC-2, SC-3, SC-7 |
 
@@ -70,7 +70,7 @@ Győződjön meg arról, hogy az e-mail-, a böngészési és a termelékenység
 
 - [Azure-előfizetés rendszergazdái](../../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -80,9 +80,9 @@ Győződjön meg arról, hogy az e-mail-, a böngészési és a termelékenység
 
 - [Biztonsági architektúra](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
+## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: Felhasználói hozzáférés rendszerességének áttekintése és egyeztetése
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | PA-3 | 4,1, 16,9, 16,10 | AC-2 |
 
@@ -93,9 +93,9 @@ Megjegyzés: egyes Azure-szolgáltatások támogatják a helyi felhasználókat 
 
 - [Azure-beli erőforrás-szerepkörök hozzáférési felülvizsgálatának létrehozása Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md)
 
-- [Az Azure AD-identitás és a hozzáférési felülvizsgálatok használata](../../active-directory/governance/access-reviews-overview.md)
+- [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../../active-directory/governance/access-reviews-overview.md)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -105,18 +105,18 @@ Megjegyzés: egyes Azure-szolgáltatások támogatják a helyi felhasználókat 
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: vészhelyzeti hozzáférés beállítása az Azure AD-ben
+## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: Vészhelyzeti hozzáférés beállítása az Azure AD-ben
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | PA-4 | 16 | AC-2, CP-2 |
 
-Ha nem szeretné megakadályozni, hogy véletlenül kizárja az Azure AD-szervezetét, állítson be egy vészhelyzeti hozzáférési fiókot a hozzáféréshez, ha a normál rendszergazdai fiókok nem használhatók. A vészhelyzeti hozzáférési fiókok általában magas jogosultsággal rendelkeznek, és nem rendelhetők hozzá konkrét személyekhez. A vészhelyzeti hozzáférési fiókok olyan vészhelyzeti vagy "break Glass" forgatókönyvekre korlátozódnak, amelyekben nem használhatók normál rendszergazdai fiókok.
-Győződjön meg arról, hogy a vészhelyzeti hozzáférési fiókokhoz tartozó hitelesítő adatok (például jelszó, tanúsítvány vagy intelligens kártya) biztonságosak és ismertek, csak azokra a személyekre, akik jogosultak arra, hogy csak vészhelyzetben használják őket.
+Ha nem szeretné megakadályozni, hogy véletlenül kizárja az Azure AD-szervezetét, állítson be egy vészhelyzeti hozzáférési fiókot a hozzáféréshez, ha a normál rendszergazdai fiókok nem használhatók. A vészhelyzeti hozzáférési fiókok általában magas szintű jogosultságokkal rendelkeznek, és nem ajánlott azokat egyes személyekhez társítani. A vészhelyzeti hozzáférési fiókok csak az olyan vészhelyzeti esetekre valók, amikor a normál rendszergazdai fiókok nem használhatók.
+Érdemes biztosítani, hogy a vészhelyzeti hozzáférési fiókok hitelesítő adatai (például jelszó, tanúsítvány vagy intelligens kártya) biztonságos helyen vannak tárolva, amelyet csak azok ismernek, akik jogosultak azokat használni, kizárólag vészhelyzet esetén.
 
 - [Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben](../../active-directory/roles/security-emergency-access.md)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -130,7 +130,7 @@ Győződjön meg arról, hogy a vészhelyzeti hozzáférési fiókokhoz tartozó
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5: a jogosultságok kezelésének automatizálása
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | PA-5 | 16 | AC-2, AC-5, PM-10 |
 
@@ -139,7 +139,7 @@ Az Azure AD-jogosultságok kezelési funkciói segítségével automatizálhatja
 
 - [Mi az Azure AD-jogosultságok kezelése?](../../active-directory/governance/entitlement-management-overview.md)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -149,19 +149,19 @@ Az Azure AD-jogosultságok kezelési funkciói segítségével automatizálhatja
 
 - [Biztonsági megfelelőség kezelése](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-6-use-privileged-access-workstations"></a>PA-6: emelt szintű hozzáférésű munkaállomások használata
+## <a name="pa-6-use-privileged-access-workstations"></a>PA-6: Emelt szintű hozzáférésű munkaállomások használata
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | PA-6 | 4,6, 11,6, 12,12 | AC-2, SC-3, SC-7 |
 
-A biztonságos, elkülönített munkaállomások kritikus fontosságúak a bizalmas szerepkörök, például a rendszergazdák, a fejlesztők és a kritikus fontosságú szolgáltatók biztonsága szempontjából. A biztonságos felhasználói munkaállomásokat és/vagy az Azure Bastion-t a felügyeleti feladatokhoz használhatja. A biztonságos és felügyelt felhasználói munkaállomás felügyeleti feladatokhoz való telepítéséhez Azure Active Directory, a Microsoft Defender komplex veszélyforrások elleni védelem (ATP) és/vagy Microsoft Intune használható. A biztonságos munkaállomások központilag felügyelhetők a biztonságos konfiguráció kikényszerítéséhez, beleértve az erős hitelesítést, a szoftver-és a hardver-alapterveket, valamint a korlátozott logikai és hálózati hozzáférést is. 
+A biztonságos, elkülönített munkaállomások kritikus fontosságúak a bizalmas szerepkörök, például a rendszergazdák, a fejlesztők és a kritikus fontosságú szolgáltatók biztonsága szempontjából. A biztonságos felhasználói munkaállomásokat és/vagy az Azure Bastion-t a felügyeleti feladatokhoz használhatja. Az Azure Active Directory, a Microsoft Defender Advanced Threat Protection (ATP) és/vagy a Microsoft Intune használatával biztonságos és felügyelt felhasználói munkaállomásokat helyezhet üzembe a rendszergazdai tevékenységekhez. A biztonságos munkaállomások központilag felügyelhetők a biztonságos konfiguráció kikényszerítéséhez, beleértve az erős hitelesítést, a szoftver-és a hardver-alapterveket, valamint a korlátozott logikai és hálózati hozzáférést is. 
 
 - [Az emelt szintű hozzáférésű munkaállomások ismertetése](../../active-directory/devices/concept-azure-managed-workstation.md)
 
-- [Emelt szintű hozzáférési munkaállomás üzembe helyezése](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [Emelt szintű hozzáférésű munkaállomás üzembe helyezése](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -171,22 +171,22 @@ A biztonságos, elkülönített munkaállomások kritikus fontosságúak a bizal
 
 - [Identitás-és kulcskezelő](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
-## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: csak elég felügyelet (a legalacsonyabb jogosultsági elv) követése
+## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: A Just Enough Administration (legkisebb jogosultsági alapelv) követése
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | PA-7 | 14,6 | AC-2, AC-3, SC-3 |
 
 Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi az Azure-erőforrások hozzáférésének kezelését a szerepkör-hozzárendeléseken keresztül. Ezeket a szerepköröket hozzárendelheti a felhasználókhoz, a csoport egyszerű szolgáltatásaihoz és a felügyelt identitásokhoz. Bizonyos erőforrásokhoz előre definiált beépített szerepkörök tartoznak, és ezeket a szerepköröket leltározott vagy lekérdezheti olyan eszközökkel, mint például az Azure CLI, a Azure PowerShell és a Azure Portal. Az erőforrásokhoz az Azure RBAC-on keresztül hozzárendelt jogosultságokat mindig a szerepkörök által igényelt értékekre kell korlátozni. A korlátozott jogosultságok kiegészítik a Azure AD Privileged Identity Management (PIM) igény szerinti (JIT) megközelítését, és ezeket a jogosultságokat rendszeresen felül kell vizsgálni.
-A beépített szerepkörök használatával lefoglalhatja az engedélyt, és szükség esetén csak egyéni szerepkört hozhat létre. 
+A beépített szerepkörökkel engedélyeket oszthat ki, és csak akkor kell egyéni szerepköröket létrehoznia, ha szükséges. 
 
 - [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md)
 
 - [Az Azure RBAC konfigurálása](../../role-based-access-control/role-assignments-portal.md)
 
-- [Az Azure AD-identitás és a hozzáférési felülvizsgálatok használata](../../active-directory/governance/access-reviews-overview.md)
+- [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](../../active-directory/governance/access-reviews-overview.md)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -200,7 +200,7 @@ A beépített szerepkörök használatával lefoglalhatja az engedélyt, és sz�
 
 ## <a name="pa-8-choose-approval-process-for-microsoft-support"></a>PA-8: a Microsoft támogatási szolgálatának jóváhagyási folyamatának kiválasztása 
 
-| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
+| Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP 800-53 R4 azonosító (k) |
 |--|--|--|--|
 | PA-8 | 16 | AC-2, AC-3, AC-4 |
 
@@ -208,7 +208,7 @@ Olyan esetekben, amikor a Microsoftnak hozzá kell férnie az ügyféladatok el�
 
 - [A Ügyfélszéf megismerése](../fundamentals/customer-lockbox-overview.md)
 
-**Felelősség**: ügyfél
+**Felelősség**: Ügyfél
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 

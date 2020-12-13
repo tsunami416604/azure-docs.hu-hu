@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: baf2734c2f3c4de86b75a20239ecf7440c61a632
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 0cad8fcdf58f4827f28b40550ae93e607e0c0858
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96534046"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369004"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Dedikált SQL-készlet (korábban SQL DW) az Azure szinapszis Analytics kibocsátási megjegyzésekben
 
@@ -59,7 +59,7 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 | Szolgáltatások fejlesztése | Részletek |
 | --- | --- |
 |**Számítási feladatok kezelése – portál felhasználói élmény**|A felhasználók a Azure Portal használatával konfigurálhatják és kezelhetik a munkaterhelés-kezelési beállításokat. Lehetőség van a [munkaterhelés-csoportok](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal) és a számítási [feladatok besorolására](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) is.|
-|**Továbbfejlesztett tábla-hozzárendelések katalógus nézete**|Az új katalógus nézet [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) leképezi az állandó felhasználói táblák **object_ids** a fizikai táblázat neveként.|
+|**Továbbfejlesztett tábla-hozzárendelések katalógus nézete**|Az új katalógus nézet [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql) leképezi az állandó felhasználói táblák **object_ids** a fizikai táblázat neveként.|
 
 ## <a name="july-2020"></a>2020. július
 
@@ -219,7 +219,7 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 |**Jelentős hibák**|CETAS a DW2000 adattárházában található kisméretű erőforrás-osztályokba – ez a javítás helyesen azonosítja a null hivatkozást a külső tábla létrehozása a Parquet-kód elérési útjára.<br/><br/>Az azonosító oszlop értéke elvész bizonyos CTAS műveletekben – előfordulhat, hogy egy azonosító oszlop értéke nem marad meg, ha CTASed egy másik táblára. [Blogban](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/)jelentett jelentés.<br/><br/>Belső hiba bizonyos esetekben, amikor egy munkamenet leáll, miközben egy lekérdezés még fut – ez a javítás elindítja a InvalidOperationException, ha a lekérdezés még fut.<br/><br/>(2018 novemberében üzembe helyezett) Az ügyfelek a ADLS (Gen1) használatával több kisebb fájl betöltésére tett kísérlet során az optimálisnál rosszabb teljesítményt tapasztalnak. – A HRE biztonsági jogkivonat ellenőrzése során a rendszerteljesítmény szűk keresztmetszetű volt. A biztonsági tokenek gyorsítótárazásának engedélyezésével a teljesítménnyel kapcsolatos problémák csökkenthetők. |
 | | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [dedikált SQL-készlet létrehozása (korábban SQL DW)](create-data-warehouse-portal.md)
 
