@@ -155,6 +155,25 @@
           href: identity-provider-wechat.md
         - name: Weibo
           href: identity-provider-weibo.md
+    - name: Felhasználói felület testreszabása
+      items:
+        - name: Felhasználó által megadott adatok konfigurálása
+          href: configure-user-input.md
+        - name: A felhasználói felület testreszabása vállalati arculattal
+          href: company-branding.md
+        - name: A felhasználói felület testreszabása HTML-sablonnal
+          href: customize-ui-with-html.md
+        - name: JavaScript és oldalelrendezések
+          href: javascript-and-page-layout.md
+        - name: Nyelv testreszabása
+          href: language-customization.md
+        - name: Jelszó bonyolultsága
+          href: password-complexity.md
+        - name: E-mailes ellenőrzés letiltása
+          href: disable-email-verification.md
+        - name: MFA engedélyezése
+          href: multi-factor-authentication.md
+          displayName: multi-factor auth
     - name: Felhasználói folyamat
       items:
         - name: Folyamat létrehozása
@@ -167,21 +186,6 @@
               href: user-flow-self-service-password-reset.md
         - name: Feltételes hozzáférés hozzáadása
           href: conditional-access-user-flow.md
-        - name: Felhasználói felület testreszabása
-          items:
-            - name: A felhasználói felület testreszabása
-              href: customize-ui-overview.md
-            - name: JavaScript és oldalelrendezések
-              href: user-flow-javascript-overview.md
-            - name: Nyelv testreszabása
-              href: user-flow-language-customization.md
-            - name: Jelszó bonyolultsága
-              href: user-flow-password-complexity.md
-            - name: E-mailes ellenőrzés letiltása
-              href: user-flow-disable-email-verification.md
-            - name: MFA engedélyezése
-              href: custom-policy-multi-factor-authentication.md
-              displayName: multi-factor auth
         - name: Jogkivonatok és munkamenet-kezelés
           items:
             - name: Jogkivonatok konfigurálása
@@ -219,29 +223,13 @@
             - name: Telefonos regisztráció és bejelentkezés
               href: phone-authentication.md
               displayName: 'otp, passwordless, phone number'
-        - name: Felhasználói felület testreszabása
+        - name: Egyéni e-mail-cím ellenőrzése
           items:
-            - name: Felhasználó által megadott adatok konfigurálása
-              href: custom-policy-configure-user-input.md
-              displayName: 'ui, ux'
-            - name: A felhasználói felület testreszabása
-              href: custom-policy-ui-customization.md
-              displayName: 'ux, input, cors, html, css'
-            - name: Nyelv testreszabása
-              href: custom-policy-localization.md
-            - name: Egyéni e-mail-cím ellenőrzése
-              items:
-                - name: Mailjet
-                  href: custom-email-mailjet.md
-                - name: SendGrid
-                  href: custom-email-sendgrid.md
-              displayName: verification
-            - name: E-mailes ellenőrzés letiltása
-              href: custom-policy-disable-email-verification.md
-            - name: JavaScript engedélyezése
-              href: javascript-samples.md
-            - name: Jelszó bonyolultsága
-              href: custom-policy-password-complexity.md
+            - name: Mailjet
+              href: custom-email-mailjet.md
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+          displayName: verification
         - name: Jogkivonatok és munkamenet-kezelés
           items:
             - name: Jogkivonatok testreszabása

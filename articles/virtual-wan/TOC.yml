@@ -141,6 +141,8 @@
           href: howto-firewall.md
         - name: A privát kapcsolat csatlakoztathatóságának konfigurálása
           href: howto-private-link.md
+        - name: Erőforrásokhoz való hozzáférés kezelése – küllőn lévő virtuális hálózat pont–hely kapcsolattal
+          href: manage-secure-access-resources-spoke-p2s.md
     - name: Figyelés
       items:
         - name: Naplók és mérőszámok

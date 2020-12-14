@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: Közös dokumentáció
   items:
+    - name: Adatbázis üzembe helyezése
+      items:
+        - name: GitHub Actions
+          href: how-to-deploy-github-action.md
     - name: Áttelepítés
       items:
         - name: Adatok migrálása a pg_dump és a pg_restore használatával
@@ -202,6 +206,8 @@
               displayName: 'query store, performance, optimize, recommendations'
         - name: Alkalmazásfejlesztés
           items:
+            - name: Ajánlott eljárások
+              href: application-best-practices.md
             - name: Adatkapcsolattárak
               href: concepts-connection-libraries.md
               displayName: 'libraries, drivers'
@@ -416,10 +422,16 @@
               href: flexible-server/connect-python.md
     - name: Oktatóanyagok
       items:
-        - name: Webalkalmazás létrehozása a virtuális hálózatban
-          href: flexible-server/tutorial-webapp-server-vnet.md
-        - name: Django-alkalmazás üzembe helyezése
-          href: flexible-server/tutorial-django-app-service-postgres.md
+        - name: Buildelés AKS-szel
+          items:
+            - name: Python-alkalmazás üzembe helyezés a Kubernetesen
+              href: flexible-server/tutorial-django-aks-database.md
+        - name: Buildelés az App Services használatával
+          items:
+            - name: Webalkalmazás létrehozása a virtuális hálózatban
+              href: flexible-server/tutorial-webapp-server-vnet.md
+            - name: Django-alkalmazás üzembe helyezése az App Service-ben
+              href: flexible-server/tutorial-django-app-service-postgres.md
     - name: Alapelvek
       items:
         - name: Kiszolgálók
@@ -466,6 +478,8 @@
               href: flexible-server/how-to-manage-server-portal.md
             - name: Azure CLI
               href: flexible-server/how-to-manage-server-cli.md
+            - name: Útmutató a csatlakozáshoz és a lekérdezéshez
+              href: flexible-server/how-to-connect-query-guide.md
         - name: Ütemezett karbantartás
           items:
             - name: Azure Portal

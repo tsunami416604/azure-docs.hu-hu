@@ -333,8 +333,10 @@
           href: spark-job.md
         - name: A GPU-k használata
           href: gpu-cluster.md
-        - name: Az Azure Database for PostgreSQL használata
-          href: ../postgresql/concepts-aks.md
+        - name: Alkalmazás buildelése a PostgreSQL-lel
+          href: ../postgresql/flexible-server/tutorial-django-aks-database.md
+        - name: Alkalmazás buildelése a MySQL-lel
+          href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
         - name: Az Azure API Management használata
           href: ../api-management/api-management-kubernetes.md

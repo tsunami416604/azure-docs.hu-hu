@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: Közös dokumentáció
   items:
+    - name: Adatbázis üzembe helyezése
+      items:
+        - name: GitHub Actions
+          href: quickstart-mysql-github-actions.md
     - name: Áttelepítés
       items:
         - name: Adatok migrálása a mysqldump vagy a phpmyadmin használatával
@@ -88,8 +92,6 @@
               href: connect-cpp.md
             - name: Indítás
               href: connect-go.md
-            - name: GitHub Actions
-              href: quickstart-mysql-github-actions.md
     - name: Oktatóanyagok
       items:
         - name: Adatbázis tervezése

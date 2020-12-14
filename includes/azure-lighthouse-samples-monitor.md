@@ -5,15 +5,15 @@ services: lighthouse
 author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 03/30/2020
+ms.date: 12/11/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: be8aae6308e712449402b002576974743bc125ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0056e18b6cb3aad2a4504bbe20b3b3421793489e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80986628"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356267"
 ---
 Ezek a minták bemutatják, hogyan hozhat létre riasztásokat az Azure Monitor használatával az Azure által delegált erőforrás-kezeléshez előkészített előfizetésekhez.
 
@@ -23,3 +23,4 @@ Ezek a minták bemutatják, hogyan hozhat létre riasztásokat az Azure Monitor 
 | [alert-using-actiongroup](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/alert-using-actiongroup) | Ez a sablon létrehoz egy Azure-riasztást, és csatlakoztatja azt egy meglévő műveletcsoporthoz.|
 | [multiple-loganalytics-alerts](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/multiple-loganalytics-alerts) | Több naplóriasztást hoz létre Kusto-lekérdezések alapján.|
 | [delegation-alert-for-customer](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegation-alert-for-customer) | Üzembe helyez egy riasztást a bérlőben, ha a felhasználó előfizetést delegál a kezelést végző bérlő számára.|
+| [workbook-activitylogs-by-domain](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) | Megjeleníti a különböző előfizetések Azure-tevékenységnaplóit a naplók tartománynév alapján történő szűrését lehetővé tevő lehetőséggel. |

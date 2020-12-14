@@ -39,6 +39,8 @@
       href: template-samples.md
 - name: Alapelvek
   items:
+    - name: Alapelvek és ajánlott eljárások
+      href: concepts-and-best-practices.md
     - name: Az üzletmenet folytonossága
       href: virtual-network-disaster-recovery-guidance.md
     - name: Kapcsolatok
