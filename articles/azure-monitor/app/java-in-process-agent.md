@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4b29e5375c10fc3c1aaa203df720fdd24090d11e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601135"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371883"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>A Java Code unapplication monitoring Azure monitor Application Insights
 
@@ -125,7 +125,7 @@ További részletek: [konfigurációs beállítások](./java-standalone-config.m
 * Log4j (beleértve a MDC tulajdonságokat)
 * SLF4J/Logback (beleértve a MDC-tulajdonságokat)
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 * Mikrométer (beleértve a Spring boot indítószerkezet metrikáit)
 * JMX metrikák
@@ -143,13 +143,13 @@ Az alábbi táblázat a jelenleg támogatott egyéni telemetria-típusokat jelen
 
 |                     | Mikrométer | Log4j, logback, JUL | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Egyéni események**   |            |                     |  Igen    |
-| **Egyéni metrikák**  |  Igen       |                     |  Igen    |
-| **Függőségek**    |            |                     |  Igen    |
-| **Kivételek**      |            |  Igen                |  Igen    |
-| **Lapok nézetei**      |            |                     |  Igen    |
-| **Kérelmek**        |            |                     |  Igen    |
-| **Hívásláncok**          |            |  Igen                |  Igen    |
+| **Egyéni események**   |            |                     |  Yes    |
+| **Egyéni metrikák**  |  Igen       |                     |  Yes    |
+| **Függőségek**    |            |                     |  Yes    |
+| **Kivételek**      |            |  Igen                |  Yes    |
+| **Lapok nézetei**      |            |                     |  Yes    |
+| **Kérelmek**        |            |                     |  Yes    |
+| **Hívásláncok**          |            |  Igen                |  Yes    |
 
 Jelenleg nem tervezzük Application Insights 3,0-es SDK kiadását.
 
@@ -186,17 +186,17 @@ A Log4j, a Logback és a Java. util. Logging automatikusan lett kialakítva, és
 Alapértelmezés szerint a rendszer csak akkor gyűjti a naplózást, ha a naplózás az adatok szintjén vagy felett van elvégezve.
 A szint módosításához tekintse meg a [konfigurációs beállításokat](./java-standalone-config.md#auto-collected-logging) .
 
-Ha egyéni dimenziókat szeretne csatolni a naplókhoz, használhatja a [Log4j 1 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), a [Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)vagy a [Logback MDC](http://logback.qos.ch/manual/mdc.html), és a Application Insights Java 3,0 automatikusan rögzíti ezeket a MDC-tulajdonságokat egyéni dimenzióként a nyomkövetési és kivételi telemetria.
+Ha egyéni dimenziókat szeretne csatolni a naplókhoz, használhatja a [Log4j 1,2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), a [Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)vagy a [Logback MDC](http://logback.qos.ch/manual/mdc.html), és a Application Insights Java 3,0 automatikusan rögzíti ezeket a MDC tulajdonságokat egyéni dimenzióként a nyomkövetési és kivételi telemetria.
 
 ### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Egyéni telemetria küldése Application Insights Java 2. x SDK használatával
 
-Vegye fel az `applicationinsights-core-2.6.0.jar` alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
+Vegye fel az `applicationinsights-core-2.6.2.jar` alkalmazást az alkalmazásba (az összes 2. x verziót támogatja Application Insights Java 3,0, de érdemes a legújabbat használni, ha van ilyen választása):
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-core</artifactId>
-  <version>2.6.0</version>
+  <version>2.6.2</version>
 </dependency>
 ```
 
@@ -214,7 +214,7 @@ static final TelemetryClient telemetryClient = new TelemetryClient();
 telemetryClient.trackEvent("WinGame");
 ```
 
-##### <a name="metrics"></a>Mérőszámok
+##### <a name="metrics"></a>Metrikák
 
 ```java
 telemetryClient.trackMetric("queueLength", 42.0);

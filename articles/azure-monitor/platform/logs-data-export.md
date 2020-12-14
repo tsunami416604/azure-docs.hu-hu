@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 4155cda1e1de6f15aefa6d5fc960988eba15068d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309834"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371968"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -48,7 +48,7 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 > [!NOTE]
 > Log Analytics az adatexportálás olyan hozzáfűzési blobként írja az adatot, amely jelenleg előzetes verzióban érhető el a Azure Data Lake Storage Gen2. A tárolóba való exportálás konfigurálása előtt meg kell nyitnia egy támogatási kérést. A kérelemhez használja a következő adatokat.
 > - Problématípus: Technikai
-> - Előfizetés: az Ön előfizetése
+> - Előfizetés: Az Ön előfizetése
 > - Szolgáltatás: Data Lake Storage Gen2
 > - Erőforrás: az erőforrás neve
 > - Összefoglalás: előfizetés-regisztráció kérése Log Analytics adatexportálásból származó adatok fogadásához.
@@ -58,7 +58,7 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 ## <a name="data-completeness"></a>Az adatteljesség
 Az adatexportálás továbbra is újra próbálkozik az adatok küldésével akár 30 percig, ha a cél nem érhető el. Ha a 30 perc elteltével sem érhető el, akkor a rendszer elveti az adatvesztést, amíg a célhely elérhetővé nem válik.
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Költségek
 Az adatexportálási szolgáltatáshoz jelenleg nem számítunk fel további díjakat. Az adatexportálás díjszabása a jövőben lesz bejelentve, és a számlázás megkezdése előtt megjelenő értesítés. Ha úgy dönt, hogy az adatexportálást a felmondási időszak után is használja, akkor a díjszabást a vonatkozó díjak alapján számítjuk fel.
 
 ## <a name="export-destinations"></a>Célhelyek exportálása
@@ -122,6 +122,10 @@ Az adatexportálási szabály a táblák egy adott célhelyére exportálandó a
 
 N/A
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az alábbi CLI-paranccsal megtekintheti a munkaterületen lévő táblákat. Ez segíthet a kívánt táblák másolásában és az adatexportálási szabályban való felvételében.
@@ -133,13 +137,22 @@ az monitor log-analytics workspace table list -resource-group resourceGroupName 
 A következő parancs használatával hozzon létre egy adatexportálási szabályt egy Storage-fiókhoz a parancssori felület használatával.
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountId
+$storageAccountResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountResourceId
 ```
 
-A következő parancs használatával hozzon létre egy adatexportálási szabályt egy Event hub-hoz a parancssori felület használatával.
+A következő parancs használatával hozzon létre egy adatexportálási szabályt egy Event hub-hoz a parancssori felület használatával. Minden táblához külön Event hub jön létre.
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
+$eventHubsNamespacesResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesResourceId
+```
+
+A következő parancs használatával hozzon létre egy adatexportálási szabályt egy adott Event hubhoz a CLI használatával. Az összes tábla a megadott Event hub-névre lesz exportálva. 
+
+```azurecli
+$eventHubResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name/eventHubName/eventhub-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubResourceId
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -205,9 +218,13 @@ Az alábbi példa egy Event hub REST-kérelmére szolgál, ahol az Event hub nev
 ```
 ---
 
-## <a name="view-data-export-configuration"></a>Adatexportálási konfiguráció megtekintése
+## <a name="view-data-export-rule-configuration"></a>Adatexportálási szabály konfigurációjának megtekintése
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 N/A
 
@@ -231,6 +248,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="disable-an-export-rule"></a>Exportálási szabály letiltása
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 N/A
 
@@ -272,6 +293,10 @@ Content-type: application/json
 
 N/A
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az alábbi parancs használatával törölhet egy adatexportálási szabályt a parancssori felület használatával.
@@ -295,6 +320,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 N/A
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 A következő parancs használatával tekintheti meg a munkaterület összes adatexportálási szabályát a parancssori felület használatával.
@@ -315,7 +344,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>Nem támogatott táblák
 Ha az adatexportálási szabály nem támogatott táblát tartalmaz, akkor a konfiguráció sikeres lesz, de a rendszer nem exportálja az adott táblára vonatkozó adatvesztést. Ha a tábla később támogatott, akkor a rendszer az adott időpontban exportálja az adatforrásokat.
 
-Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, a hiba miatt sikertelen lesz. ```Table <tableName> does not exist in the workspace.```
+Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, akkor a "táblázat nem <tableName> létezik a munkaterületen" hibaüzenet jelenik meg.
 
 
 ## <a name="supported-tables"></a>Támogatott táblák
@@ -496,6 +525,6 @@ A támogatott táblázatok jelenleg az alább megadott értékekre korlátozódn
 | WVDManagement | |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az exportált adatok lekérdezése az Azure Adatkezelőból](azure-data-explorer-query-storage.md).

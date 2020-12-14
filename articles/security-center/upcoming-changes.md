@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/09/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 9bdda9b78e103f02d91c81cb3dc28c957d313436
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 8734c43ecb92faf37f1d95b1a24d1c99db3e86d5
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95321455"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371917"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -31,7 +31,11 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 
 ## <a name="planned-changes"></a>Tervezett változások
 
-Jelenleg nincsenek olyan fontos változások, amelyek előzetes értesítést igényelnek. 
+### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Nem alkalmazható" erőforrások, amelyeket "megfelelőként" kell jelenteni Azure Policy értékelésekben
+
+**Változás becsült dátuma:** Január 2021
+
+Jelenleg a javaslathoz kiértékelt és a **nem** megfelelőnek talált erőforrások megjelennek a Azure Policy nem megfelelőként. Egyetlen felhasználói művelet sem változtathatja meg a "megfelelő" állapotot. Ebből a tervezett változásból a rendszer "megfelelőként" fogja jelenteni a jobb érthetőség érdekében.
 
 
 ## <a name="next-steps"></a>Következő lépések

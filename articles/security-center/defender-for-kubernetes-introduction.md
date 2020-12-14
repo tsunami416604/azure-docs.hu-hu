@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a815295c4f2ab78cbd3aff82949d7c28197afd82
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a0dd00709dbe8a1b0e037fe22750adea7e071162
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791919"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97372002"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Bevezetés az Azure Defender for Kubernetes használatába
 
@@ -31,7 +31,7 @@ Ha engedélyezi az [Azure Defender for Servers](defender-for-servers-introductio
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|A **Kubernetes készült Azure Defender** számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
 |Szükséges szerepkörök és engedélyek:|A **biztonsági rendszergazda** figyelmen kívül hagyhatja a riasztásokat.<br>A **biztonsági olvasó** megtekintheti az eredményeket.|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Kínai gov<br>![No](./media/icons/no-icon.png) US Gov, egyéb gov|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Milyen előnyökkel jár az Azure Defender for Kubernetes?

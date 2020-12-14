@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/21/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a02c30423ab3c6de87eac7d34b5f0004e54a8d5d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 28d47b61bce7e154da6c6adb4b74e2b5cf1f3f3d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957809"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371849"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Milyen SAP-szoftvert támogatnak az Azure-beli üzemelő példányok?
 Ez a cikk azt ismerteti, hogyan tudhatja meg, hogy milyen SAP-szoftverek támogatottak az Azure-környezetekben, valamint hogy a szükséges operációs rendszerek és az adatbázis-kezelők milyen kiadásokkal rendelkeznek.
@@ -82,6 +82,12 @@ Az Azure-ban támogatott operációs rendszer, Oracle adatbázis-kezelői kiadá
 - A nem Unicode típusú SAP rendszerek csak a Windows vendég operációs rendszert futtató alkalmazás-kiszolgálókon támogatottak. Az adatbázis-kezelő rendszer vendég operációs rendszere lehet Oracle Linux vagy Windows. Ennek a korlátozásnak az oka az SAP-termék rendelkezésre állási mátrixának (PAM) ellenőrzésekor látható. A Oracle Linux esetében az SAP soha nem jelent meg Unicode-alapú SAP-kerneleket
 
 A megcélzott Azure-infrastruktúrával támogatott adatbázis-kezelői kiadások ismeretében ellenőriznie kell az SAP-termékek rendelkezésre állási mátrixát, hogy támogatott-e a futtatni kívánt SAP-termék kiadása. 
+
+## <a name="oracle-linux"></a>Oracle Linux
+Oracle Linux a legjelentősebb feltett kérdés, hogy az SAP támogatja-e a Oracle Linux szerves részét képező Red Hat kernelt is. Részletekért olvassa el az [SAP-támogatási megjegyzés #1565179](https://launchpad.support.sap.com/#/notes/1565179).
+
+## <a name="other-database-than-sap-hana"></a>Más adatbázis, mint SAP HANA
+A nem HANA-adatbázisok SAP-munkaterheléshez való támogatását az [SAP-támogatási megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533)ismerteti.
 
 
 ## <a name="sap-hana-support"></a>SAP HANA támogatás
@@ -145,5 +151,5 @@ Az SAP Hybris kereskedelmi platformjának támogatása az Azure-ban részletesen
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az [Azure Virtual Machines tervezésének és megvalósításának](./planning-guide.md) következő lépéseinek elolvasása az SAP NetWeaver-ban

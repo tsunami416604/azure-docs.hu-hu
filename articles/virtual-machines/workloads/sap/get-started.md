@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/26/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e07876f9e28e7f3245f2524b5ef5da08de085ec1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 75ea3eec50516c9ba08504dd149d4bd08f8abbb6
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486470"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371934"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -47,6 +47,8 @@ Ha konkrét kérdései vannak, egy adott dokumentumra vagy folyamatra fogunk rá
 - Az Azure-szolgáltatások, az Azure-beli virtuálisgép-típusok és az Azure Storage-szolgáltatások a különböző Azure-régiókban érhetők el, a helyhez tartozó [termékek pedig régiónként](https://azure.microsoft.com/global-infrastructure/services/) 
 - Támogatott-e a harmadik féltől származó keret, HA a Windows és a pacemaker is működik? Tekintse meg az [SAP-támogatási Megjegyzés](https://launchpad.support.sap.com/#/notes/1928533) alsó részét #1928533
 - Mi a legjobb megoldás az Azure Storage számára a forgatókönyvhöz? [Az Azure Storage-típusok](./planning-guide-storage.md) beolvasása SAP számítási feladatokhoz
+- Az SAP támogatja az Oracle Enterprise Linux Red Hat kernelét? SAP [SAP-támogatási Megjegyzés](https://launchpad.support.sap.com/#/notes/1565179) olvasása #1565179
+- Miért nem tanúsítottak SAP HANA az Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [EA (k) VM-](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) családoknak? Az Azure Das/EAS virtuálisgép-családok az AMD processzorral vezérelt hardveren alapulnak. A SAP HANA nem támogatja az AMD-processzorokat, még virtualizált helyzetekben sem.
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA az Azure-ban (nagyméretű példányok)
@@ -74,17 +76,18 @@ Ebből a szakaszból megtudhatja, hogyan konfigurálhatja az SSO-t a legtöbb SA
 
 
 ## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>Az Azure-szolgáltatások SAP-összetevőkbe való integrálásának dokumentációja
-Ebben a szakaszban a PowerBI-integráció SAP-adatforrásokkal való integrálásával, valamint a SAP BWba való integrációval Azure Data Factory dokumentumokat talál.
+Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az SAP-adatforrásokkal való integrációt és az SAP BWbe való integrációt Azure Data Factory.
 
 
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 12/12/2020: a mutató hozzáadva az SAP-megjegyzéshez, amely részletesen ismerteti az SAP által támogatott Oracle Enterprise Linux-támogatást az Azure-beli [üzembe helyezések által támogatott SAP-szoftverekhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support)
 - 11/26/2020: az [Azure-beli virtuális gépek tárolási konfigurációinak](./hana-vm-operations-storage.md) és [Az Azure storage-típusok](./planning-guide-storage.md) SAP HANA hozzáigazítása az SAP számítási feladatokhoz az egyetlen virtuálisgép- [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) módosítása
 - 11/05/2020: új SAP-megjegyzésre mutató hivatkozás módosítása a HANA által támogatott fájlrendszer-típusokkal kapcsolatban [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](./hana-vm-operations-storage.md) 
 - 10/26/2020: az Azure Premium Storage SAP HANA-konfiguráció egyes tábláinak módosítása az Azure-beli [virtuális gépek tárolási konfigurációjának](./hana-vm-operations-storage.md) kiépített és burst átviteli sebességének tisztázására
 - 10/22/2020: a [SLES for](./high-availability-guide-suse.md)SAP-alkalmazások esetében az Azure-beli virtuális gépeken az SAP NW esetében az SAP-alkalmazásokhoz, [Ha az Azure](./high-availability-guide-suse-netapp-files.md)-beli virtuális gépeken a ANF-t használó Azure-beli virtuális gépeken az SAP NW-on futó Azure-beli virtuális gépeken az SAP NW-t, a [RHEL](./high-availability-guide-rhel-netapp-files.md) -t [használó](./high-availability-guide-rhel.md) Azure virtuális gépeken net.IPv4.tcp_keepalive_time  
-- 10/16/2020: változás az Azure-beli virtuális gépeken az Azure-beli [virtuális gépeken a SLES és a pacemaker](./dbms-guide-ha-ibm.md)szolgáltatással, ha az SAP NW Azure-beli [virtuális gépeken a RHEL for SAP Applications](./high-availability-guide-rhel.md), [Ha az IBM DB2 LUW a RHEL](./high-availability-guide-rhel-ibm-db2-luw.md) [-on](./high-availability-guide-rhel-netapp-files.md)futó Azure [-](./high-availability-guide-rhel-multi-sid.md)beli virtuális gépeken ha az SAP NW-t Azure-beli [virtuális gépeken SLES for SAP-alkalmazásokhoz](./high-availability-guide-suse.md), [az](./sap-hana-high-availability.md)Azure- [beli virtuális gépeken futó SAP-ra épülő SLES multi-SID útmutatójában,](./high-availability-guide-suse-multi-sid.md)ha az Azure-beli virtuális gépeken futó SAP NW-t a [ANF for SAP-alkalmazásokhoz,](./high-availability-guide-suse-netapp-files.md)ha az Azure-beli virtuális gépeken, a SLES-on [,](./sap-hana-high-availability-netapp-files-red-hat.md) a SLES SAP HANA SAP HANA [HA for NFS on Azure VMs on SLES](./high-availability-guide-suse-nfs.md) , [HA SAP HANA Azure-beli virtuális gépeken a RHEL-on](./sap-hana-high-availability-rhel.md), [SAP HANA Azure-beli virtuális gépeken futó HSR-kibővíthető RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), [előkészítheti az Azure-infrastruktúrát az SAP ASCS/SCS és a WSFC, valamint a megosztott lemezzel](./sap-high-availability-infrastructure-wsfc-shared-disk.md), több biztonsági azonosítóval [ellátott](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) útmutató az SAP ASCS/SCS és a [WSFC és az Azure Shared](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) Disk szolgáltatáshoz 
+- 10/16/2020: változás az Azure-beli virtuális gépeken az Azure-beli [virtuális gépeken a SLES és a pacemaker](./dbms-guide-ha-ibm.md)szolgáltatással, ha az SAP NW Azure-beli [virtuális gépeken a RHEL for SAP Applications](./high-availability-guide-rhel.md), [Ha az IBM DB2 LUW a RHEL](./high-availability-guide-rhel-ibm-db2-luw.md) [-on](./high-availability-guide-rhel-netapp-files.md)futó Azure [-](./high-availability-guide-rhel-multi-sid.md)beli virtuális gépeken ha az SAP NW-t Azure-beli [virtuális gépeken SLES for SAP-alkalmazásokhoz](./high-availability-guide-suse.md), [az](./sap-hana-high-availability.md)Azure- [beli virtuális gépeken futó SAP-ra épülő SLES multi-SID útmutatójában,](./high-availability-guide-suse-multi-sid.md)ha az Azure-beli virtuális gépeken futó SAP NW-t a [ANF for SAP-alkalmazásokhoz,](./high-availability-guide-suse-netapp-files.md)ha az Azure-beli virtuális gépeken, a SLES-on [,](./sap-hana-high-availability-netapp-files-red-hat.md) a SLES SAP HANA SAP HANA [](./high-availability-guide-suse-nfs.md) , [HA SAP HANA Azure-beli virtuális gépeken a RHEL-on](./sap-hana-high-availability-rhel.md), [SAP HANA Azure-beli virtuális gépeken futó HSR-kibővíthető RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), [előkészítheti az Azure-infrastruktúrát az SAP ASCS/SCS és a WSFC, valamint a megosztott lemezzel](./sap-high-availability-infrastructure-wsfc-shared-disk.md), több biztonsági azonosítóval [ellátott](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) útmutató az SAP ASCS/SCS és a [WSFC és az Azure Shared](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) Disk szolgáltatáshoz 
 - 10/16/2020: dokumentáció hozzáadása a HANA nagyméretű példányok tárolási pillanatképének vezérléséhez a [SAP HANA a Hana nagyméretű példányain való biztonsági mentés és visszaállítás során](./hana-backup-restore.md)
 - 10/15/2020: a SAP BusinessObjects BI platform kiadása az Azure dokumentációjában, [SAP BUSINESSOBJECTS bi platform tervezési és megvalósítási útmutató az Azure](businessobjects-deployment-guide.md) -ban és az [SAP BusinessObjects bi platform üzembe helyezési útmutatója az Azure-beli Linux rendszerhez](businessobjects-deployment-guide-linux.md)
 - 10/05/2020: a RHEL-konfigurációs útmutatóban az Azure-beli [virtuális gépeken lévő pacemakerrel rendelkező SAP HANA kibővíthető HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) kiadása
@@ -124,7 +127,7 @@ Ebben a szakaszban a PowerBI-integráció SAP-adatforrásokkal való integrálá
 - 2020. május 12.: a [virtuális gépek nyilvános végponti kapcsolatának módosítása az Azure standard ILB SAP ha-forgatókönyvek használatával](./high-availability-guide-standard-load-balancer-outbound-connections.md) a hivatkozások frissítéséhez és a külső tűzfal konfigurálásához szükséges információk hozzáadásához
 - 2020. május 11.: a [SLES található Azure-beli virtuális gépeken a SAP HANA magas rendelkezésre állásának](./sap-hana-high-availability.md) megváltozásával állítsa be az erőforrás-stickiion értéket 0-ra a netcat-erőforrás számára, mivel ez több egyszerűsített feladatátvételt eredményez 
 - 2020. május 05.: az [Azure Virtual Machines tervezésének és megvalósításának változásai az SAP NetWeaver](./planning-guide.md) használatával kifejezve, hogy Gen2 üzemelő példányok elérhetők a Mv1 VM-család számára
-- 2020. április 24.: [SAP HANA az Azure-beli virtuális gépek készenléti csomópontján](./sap-hana-scale-out-standby-netapp-files-suse.md)belüli, a SLES-on futó ANF-alapú, az Azure-beli virtuális gépeken futó Azure-beli virtuális gépeken, a SLES-on és a ANF-on futó Azure-beli virtuális gépeken elérhető SAP NetWeaver magas rendelkezésre [állását](./high-availability-guide-suse-netapp-files.md) biztosító [SAP HANA](./sap-hana-scale-out-standby-netapp-files-rhel.md) [High availability for SAP NetWeaver on Azure VMs on RHEL with ANF](./high-availability-guide-rhel-netapp-files.md)
+- 2020. április 24.: [SAP HANA az Azure-beli virtuális gépek készenléti csomópontján](./sap-hana-scale-out-standby-netapp-files-suse.md)belüli, a SLES-on futó ANF-alapú, az Azure-beli virtuális gépeken futó Azure-beli virtuális gépeken, a SLES-on és a ANF-on futó Azure-beli virtuális gépeken elérhető SAP NetWeaver magas rendelkezésre [állását](./high-availability-guide-suse-netapp-files.md) biztosító [SAP HANA](./sap-hana-scale-out-standby-netapp-files-rhel.md) [](./high-availability-guide-rhel-netapp-files.md)
 - 2020. április 22.: az [Azure-beli virtuális gépeken a SLES-on található SAP HANA magas rendelkezésre állásának](./sap-hana-high-availability.md) megváltozása a meta attribútumnak `is-managed` az utasításokból való eltávolításához, ahogy az ütközik a fürtnek a karbantartási módba vagy kívülre helyezésével.
 - 2020. április 21.: a (z) SAP-(Hybris-) kereskedelmi platform 1811-es és újabb verzióiban a SQL Azure DB-t is felvettük az Azure-beli üzemelő [példányok](./sap-supported-product-on-azure.md) és az [SAP-tanúsítványok, valamint a Microsoft Azure](./sap-certifications.md)
 - Április 16., 2020: hozzáadva SAP HANA az SAP (Hybris) kereskedelmi platformhoz támogatott, az Azure-környezetekben [támogatott SAP-szoftvereket](./sap-supported-product-on-azure.md) és [a Microsoft Azure-on futó SAP-tanúsítványok és-konfigurációk](./sap-certifications.md) esetében.

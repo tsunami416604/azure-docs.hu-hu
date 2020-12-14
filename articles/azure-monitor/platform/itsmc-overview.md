@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 917eb52a7255527b55aacd488f33125ad853e894
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 6c9e2ae420e56c5ef99ff79cdcb49592bc7e049e
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932268"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371985"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -42,9 +42,12 @@ A jogi feltételekkel és az adatvédelmi szabályzattal kapcsolatos informáci�
 Az alábbi lépések végrehajtásával kezdheti meg a ITSMC használatát:
 
 1.  [ITSMC hozzáadása.](#add-it-service-management-connector)
-2.  [Hozzon létre egy ITSM-kapcsolatokat.](#create-an-itsm-connection)
-3.  [Használja a kapcsolatokat.](#use-itsmc)
-
+2. [ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)
+3.  [Hozzon létre egy ITSM-kapcsolatokat.](#create-an-itsm-connection)
+4.  [Használja a kapcsolatokat.](#use-itsmc)
+   
+   >[!NOTE]
+> Ezt a sorrendet kell követnie, ellenkező esetben hibaüzenetet fog kapni.
 
 ##  <a name="add-it-service-management-connector"></a>IT-szolgáltatásmenedzsmenti csatoló hozzáadása
 
@@ -70,7 +73,7 @@ A kapcsolatok létrehozása előtt hozzá kell adnia a ITSMC.
    >[!NOTE]
    >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már *log Analytics munkaterületek*.
 
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
 A ITSMC-erőforrás telepítésekor az ablak jobb felső sarkában megjelenik egy értesítés.
 
@@ -156,7 +159,7 @@ Munkaelemek létrehozásához kövesse az alábbi eljárást:
    * Ha a munkaelem legördülő menüben a "esemény" lehetőséget választja: Ha a választógombok kiválasztásakor a különböző munkaelemek **létrehozása** lehetőséget választja, minden riasztás új munkaelemet fog létrehozni. Ha a választógombok kiválasztásakor az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz.
    ![A ITSM-jegy ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration-event.png)
 
-10. Kattintson az **OK** gombra.
+10. Válassza az **OK** lehetőséget.
 
 Azure-riasztási szabály létrehozásakor vagy szerkesztésekor használjon egy ITSM műveletet tartalmazó műveleti csoportot. A riasztás indításakor a rendszer létrehozza vagy frissíti a munkaelemet a ITSM eszközben.
 
