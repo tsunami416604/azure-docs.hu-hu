@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 185cb24d5edd08438c56603b602448226ce31f0b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360244"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387819"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Oktatóanyag: a REST API-k használata
 
@@ -113,7 +113,7 @@ Keresse meg és mentse a következő értékeket:
   * A bal oldali ablaktábla **kezelés** szakaszában válassza a **Tulajdonságok** elemet, keresse meg a **bérlő azonosítóját**, majd válassza a **Másolás a vágólapra** ikont az érték mentéséhez.
 * Atlas-végpont:
   * A Azure Portal [Azure hatáskörébe tartozó fiókok lapján](https://aka.ms/purviewportal) keresse meg és válassza ki az Azure-beli hatáskörébe tartozó fiókot a listában.
-  * Válassza az **Áttekintés** lehetőséget, keresse meg az **Atlas-végpontot**, majd válassza a **Másolás a vágólapra** ikont az érték mentéséhez. Ha később használja, távolítsa el a karakterlánc *https://* részét.
+  * Válassza a **Tulajdonságok** lehetőséget, keresse meg az **Atlas-végpontot**, majd válassza a **Másolás a vágólapra** ikont az érték mentéséhez. Ha később használja, távolítsa el a karakterlánc *https://* részét.
 * Fiók neve:
   * Bontsa ki a katalógus nevét az Atlas Endpoint sztringből. Ha például az Atlas-végpontja `https://ThisIsMyCatalog.catalog.purview.azure.com` , a fiók neve `ThisIsMyCatalog` .
 

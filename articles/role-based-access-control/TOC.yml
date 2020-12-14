@@ -9,7 +9,7 @@
       href: rbac-and-directory-admin-roles.md
 - name: Rövid útmutatók
   items:
-    - name: Felhasználó hozzáférésének megtekintése
+    - name: Felhasználó hozzáférésének ellenőrzése
       href: check-access.md
     - name: ARM-sablon
       displayName: Resource Manager

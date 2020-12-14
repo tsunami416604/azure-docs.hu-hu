@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 5/26/2020
-ms.openlocfilehash: d1291b645e987f33bd2035580587650b843f1771
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 12/11/2020
+ms.openlocfilehash: b055201bba5147e72fc7ee80e1e9f24320f124a5
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535656"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387649"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Gyors útmutató: Node.js használata az adatAzure Database for MySQLhoz való kapcsolódáshoz és adatlekérdezéshez
 
@@ -50,10 +50,16 @@ A platformtól függően kövesse a megfelelő szakaszban található utasítás
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
-1. A **Node.js** és az **npm** , a Node.js csomagkezelőjének telepítéséhez futtassa a következő parancsokat.
+1. A **Node.js** és az **npm**, a Node.js csomagkezelőjének telepítéséhez futtassa a következő parancsokat.
 
    ```bash
-   sudo apt-get install -y nodejs npm
+    # Using Ubuntu
+    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    
+    # Using Debian, as root
+    curl -sL https://deb.nodesource.com/setup_14.x | bash -
+    apt-get install -y nodejs
    ```
 
 2. Futtassa a következő parancsokat egy projekt mappájának létrehozásához, `mysqlnodejs` és telepítse a MySQL-csomagot a mappába.
@@ -68,12 +74,8 @@ A platformtól függően kövesse a megfelelő szakaszban található utasítás
 
 ### <a name="macos"></a>macOS
 
-1. A **Brew** , a MacOS és a **Node.js** könnyen használható csomagkezelő telepítéséhez adja meg a következő parancsokat.
+1. Látogasson el a [Node.js letöltések oldalra](https://nodejs.org/en/download/), majd válassza ki a MacOS-telepítőt.
 
-   ```bash
-   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-   brew install node
-   ```
 2. Futtassa a következő parancsokat egy projekt mappájának létrehozásához, `mysqlnodejs` és telepítse a MySQL-csomagot a mappába.
 
    ```bash
@@ -90,7 +92,7 @@ A platformtól függően kövesse a megfelelő szakaszban található utasítás
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/).
-2. Azure Portal bal oldali menüjében válassza a **minden erőforrás** elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver** ).
+2. Azure Portal bal oldali menüjében válassza a **minden erőforrás** elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
 3. Válassza ki a kiszolgálónevet.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  :::image type="content" source="./media/connect-nodejs/server-name-azure-database-mysql.png" alt-text="A MySQL-hez készült Azure Database-kiszolgáló neve":::
@@ -321,7 +323,7 @@ function deleteData(){
 };
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
 

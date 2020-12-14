@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 1ed74f5678a1b1c5d5ded525da0c3e7e7a75b902
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 1fe1ad14dc1cc8f5ff5171ef517d23363969be4d
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347530"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387785"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -48,7 +48,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
     |--|--|
     |**Az URL-címek, a. PDF vagy a. docx fájlok többszörös kinyerésének engedélyezése.**|Jelölje be|
     |**Többszörös kapcsolású alapértelmezett szöveg**| Kiválasztás és beállítás|
-    |**+ URL-cím hozzáadása**|`https://www.microsoft.com/software-download/faq`|
+    |**+ URL-cím hozzáadása**|`https://www.microsoft.com/en-us/software-download/faq`|
     |**Csevegés**|**Professional** kiválasztása|
 
 7. Az **5. lépésben** válassza **a saját kb létrehozása** lehetőséget.

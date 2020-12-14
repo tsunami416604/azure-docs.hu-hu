@@ -7,43 +7,61 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/12/2020
-ms.openlocfilehash: ace887396bacf264f0ffbd186ef1349e96496786
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 12/14/2020
+ms.openlocfilehash: ad572905d9864083466049fd602e24d9f3632ea3
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371174"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387428"
 ---
-# <a name="create-a-basic-query-in-azure-cognitive-search"></a>Alapszintű lekérdezés létrehozása az Azure Cognitive Search
+# <a name="create-a-query-in-azure-cognitive-search"></a>Lekérdezés létrehozása az Azure Cognitive Searchban
 
-Ez a cikk a lekérdezés-fejlesztés lépéseit ismerteti. TÖBBek között a következőkben találhatók a karakterláncok másolása **a** portálon, vagy interaktív lekérdezéseket készíthet a Poster vagy a Visual Studio Code használatával. A jelen cikkben szereplő példákhoz a Cognitive Search bármely szintjét vagy verzióját használhatja.
+Ismerje meg a lekérdezések létrehozásához szükséges eszközöket és API-kat, valamint azt, hogy milyen módszerekkel lehet lekérdezéseket létrehozni, valamint azt, hogy az indexelési struktúra és a tartalom hogyan befolyásolhatja a lekérdezések eredményét. A lekérdezési kérések [és az összeállítások](search-query-overview.md)bevezetéséhez.
 
-## <a name="choose-a-tool-or-api"></a>Eszköz vagy API kiválasztása
+## <a name="choose-tools-and-apis"></a>Eszközök és API-k kiválasztása
 
-A következő eszközök és API-k közül választhat a tesztelési vagy éles számítási feladatokhoz tartozó lekérdezések létrehozásához.
+A következő eszközök és API-k bármelyikét használhatja lekérdezések tesztelési vagy éles számítási feladatokhoz való létrehozására.
 
 | Módszertan | Leírás |
 |-------------|-------------|
-| Portál| A [Search Explorer (portál)](search-explorer.md) az index és az API-verzió kiválasztására szolgáló keresési sávot és lehetőségeket biztosít. Az eredményeket JSON-dokumentumként adja vissza a rendszer. Korai vizsgálathoz, teszteléshez és érvényesítéshez ajánlott. <br/>[Részletek](search-explorer.md) |
-| Webes tesztelési eszközök| A [Poster vagy a Visual Studio Code](search-get-started-rest.md) erős választás a [keresési dokumentumok](/rest/api/searchservice/search-documents) Rest-hívásainak megfogalmazásához. A REST API támogatja az Azure Cognitive Search minden programozott műveletét, így a kéréseket interaktív módon is kiállíthatja, hogy megtudja, hogyan működik a programkódba való befektetés előtt.  |
-| Azure SDK | A [SearchClient (.net)](/dotnet/api/azure.search.documents.searchclient) a keresési indexek lekérdezésére használható a C#-ban.  [Részletek](search-howto-dotnet-sdk.md) <br/><br/>A [SearchClient (Python)](/dotnet/api/azure.search.documents.searchclient) használatával lekérdezhető a Pythonban egy keresési index. [Részletek](search-get-started-python.md) <br/><br/> A [SearchClient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) használatával lekérdezhető a keresési index a JavaScriptben. [Részletek](search-get-started-javascript.md)  |
+| Portál| A [Search Explorer (portál)](search-explorer.md) a Azure Portal lekérdezési felülete, amely a mögöttes keresési szolgáltatás indexekkel való futtatására használható. A portál REST API hívásokat kezdeményez a színfalak mögött. Kiválaszthat bármely indexet és bármely támogatott REST API verziót, beleértve az előzetes verziókat is. A lekérdezési karakterláncok egyszerű és teljes szintaxissal is rendelkezhetnek, és tartalmazhatnak szűrési kifejezéseket, dimenziókat, Select és searchField utasításokat, valamint searchMode. A portálon, amikor megnyit egy indexet, az egymás melletti lapfüleken található JSON-definícióval együtt használhatja a keresési Explorert a mezők attribútumaihoz való könnyű hozzáférés érdekében. A lekérdezések tesztelésekor megtekintheti a kereshető, rendezhető, szűrhető és sokrétű mezőket. Korai vizsgálathoz, teszteléshez és érvényesítéshez ajánlott. <br/>[Részletek](search-explorer.md) |
+| Webes tesztelési eszközök| A [Poster vagy a Visual Studio Code](search-get-started-rest.md) erős választás a [keresési dokumentumok](/rest/api/searchservice/search-documents) iránti kérelem rest-ben való kialakításához. A REST API támogatja az Azure Cognitive Search minden programozott műveletét, és ha olyan eszközt használ, mint a Poster vagy a Visual Studio Code, interaktív módon is kiállíthatja a kéréseket, hogy megtudja, hogyan működik a programkódba való befektetés előtt. A webes tesztelési eszköz jó választás, ha nincs közreműködői vagy rendszergazdai jogosultsága a Azure Portal. Ha a keresési URL-cím és a lekérdezési API-kulcs van, akkor az eszközök segítségével futtathat lekérdezéseket egy meglévő indexen. |
+| Azure SDK | Ha készen áll a kód írására, használhatja a .NET, Python, JavaScript vagy Java rendszerhez készült Azure SDK-k Azure.Search.Document. Az SDK-nak saját kiadási ütemterve van, de mindegyikben létrehozhat és lekérdezheti az indexeket. <br/><br/>A [SearchClient (.net)](/dotnet/api/azure.search.documents.searchclient) a keresési indexek lekérdezésére használható a C#-ban.  [Részletek](search-howto-dotnet-sdk.md)<br/><br/>A [SearchClient (Python)](/dotnet/api/azure.search.documents.searchclient) használatával lekérdezhető a Pythonban egy keresési index. [Részletek](search-get-started-python.md) <br/><br/> A [SearchClient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) használatával lekérdezhető a keresési index a JavaScriptben. [Részletek](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>Keresési ügyfél beállítása
 
-A keresési ügyfél hitelesíti a keresési szolgáltatást, küldi a kérelmeket, és kezeli a válaszokat. A lekérdezések mindig egyetlen index dokumentumainak gyűjteményére vannak irányítva. Az indexek nem csatlakoztathatók, és nem hozhatnak létre egyéni vagy ideiglenes adatstruktúrákat lekérdezési célként.
+A keresési ügyfél hitelesíti a keresési szolgáltatást, küldi a kérelmeket, és kezeli a válaszokat. Függetlenül attól, hogy melyik eszközt vagy API-t használja, a keresési ügyfélnek a következőkkel kell rendelkeznie:
+
+| Tulajdonságok | Leírás |
+|------------|-------------|
+| Végpont | A keresési szolgáltatás a következő formátumú URL-cím: `https://[service-name].search.windows.net` . |
+| API-hozzáférési kulcs (rendszergazda vagy lekérdezés) | Hitelesíti a kérést a keresési szolgáltatásban. |
+| Index neve | A lekérdezések mindig egyetlen index dokumentumainak gyűjteményére vannak irányítva. Az indexek nem csatlakoztathatók, és nem hozhatnak létre egyéni vagy ideiglenes adatstruktúrákat lekérdezési célként. |
+| API-verzió | A REST-hívások explicit módon igénylik a `api-version` kérést. Ezzel szemben az Azure SDK-ban található ügyféloldali kódtárak egy adott REST API verzióra vonatkoznak. Az SDK-k esetében a `api-version` implicit. |
 
 ### <a name="in-the-portal"></a>A portálon
 
-A keresési Explorer és egyéb portál eszközök beépített ügyfélkapcsolatot biztosítanak a szolgáltatáshoz, közvetlen hozzáférési indexekkel és más objektumokkal a portál oldalain. Az eszközökhöz, a varázslókhoz és az objektumokhoz való hozzáférés feltételezi, hogy rendszergazdai jogosultságokkal rendelkezik a szolgáltatásban. A Search Explorerben a keresési karakterlánc és más paraméterek megadására koncentrálhat. 
+A keresési Explorer és egyéb portál eszközök beépített ügyfélkapcsolatot biztosítanak a szolgáltatáshoz, közvetlen hozzáférési indexekkel és más objektumokkal a portál oldalain. Az eszközökhöz, a varázslókhoz és az objektumokhoz való hozzáféréshez a közreműködő szerepkör vagy a szolgáltatáson felüli tagság szükséges. 
 
 ### <a name="using-rest"></a>A REST használata
 
-REST-hívások esetén a [Poster vagy hasonló eszközöket](search-get-started-rest.md) használhatja az ügyfélként a [keresési dokumentumok](/rest/api/searchservice/search-documents) kérésének megadásához. Minden kérelem önálló, ezért meg kell adnia a végpontot (a szolgáltatás URL-címét) és egy rendszergazdai vagy lekérdezési API-kulcsot a hozzáféréshez. A kérelemtől függően előfordulhat, hogy az URL-cím tartalmazza az index nevét, a dokumentumok gyűjteményét és egyéb tulajdonságokat is. A kérelem fejlécében néhány tulajdonságot, például a Content-Type és az API-kulcsot adja át a rendszer. Az URL-címen vagy a kérelem törzsében más paraméterek adhatók át. Minden REST-híváshoz API-kulcs szükséges a hitelesítéshez és egy API-verzióhoz.
+REST-hívások esetén a [Poster vagy hasonló eszközöket](search-get-started-rest.md) használhatja az ügyfélként a [keresési dokumentumok](/rest/api/searchservice/search-documents) kérésének megadásához. Minden kérelem önálló, ezért minden kérelemnél meg kell adnia a végpontot, az index nevét és az API-verziót. A kérelem fejlécében a többi tulajdonság, a Content-Type és az API-kulcs is át lesz adva. 
+
+A POST vagy a GET paranccsal lekérdezéseket végezhet az indexben. A POST, a kérés törzsében megadott paraméterekkel könnyebben használható. Ha a POST lehetőséget használja, ügyeljen arra, hogy szerepeljen az `docs/search` URL-címben:
+
+```http
+POST https://myservice.search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "simple",
+    "search": "*"
+}
+```
 
 ### <a name="using-azure-sdks"></a>Azure SDK-k használata
 
-Az Azure SDK-k olyan keresési ügyfeleket biztosítanak, amelyek megtartják az állapotot, és lehetővé teszik a kapcsolatok ismételt A lekérdezési műveletek esetében egy SearchClient hoz létre, és a következő tulajdonságok értékeit adja meg: Endpoint, Key, index. Ezután meghívhatja a keresési módszert a lekérdezési karakterlánc megadására. 
+Ha Azure SDK-t használ, a-ügyfelet kódban kell létrehoznia. Az SDK-k minden olyan keresési ügyfelet biztosítanak, amely megtarthatja az állapotot, lehetővé téve a kapcsolatok újrafelhasználását. A lekérdezési műveletekhez a következő tulajdonságokat kell létrehoznia, **`SearchClient`** és értékeket kell megadni: Endpoint, Key, index. Ezután meghívja a **`Search method`** to pass szót a lekérdezési karakterláncban. 
 
 | Nyelv | Ügyfél | Példa |
 |----------|--------|---------|
@@ -54,11 +72,11 @@ Az Azure SDK-k olyan keresési ügyfeleket biztosítanak, amelyek megtartják az
 
 ## <a name="choose-a-parser-simple--full"></a>Válasszon elemzőt: Simple | teljes
 
-Az Azure Cognitive Search két lekérdezési elemző közül választhat a tipikus és a speciális lekérdezések kezeléséhez. Az egyszerű elemzőt használó kérelmek általában teljes szöveges keresési lekérdezések, amelyek az [egyszerű lekérdezési szintaxis](query-simple-syntax.md)alapján lettek kiválasztva, és a sebesség és a hatékonyság az ingyenes szöveges lekérdezésekben. Ez a szintaxis számos gyakori keresési operátort támogat, többek között a következőt: és, vagy, nem, kifejezés, utótag és elsőbbségi operátor.
+Ha a lekérdezés teljes szöveges keresést végez, a rendszer elemzőt használ a keresési paraméter tartalmának feldolgozásához. Az Azure Cognitive Search két lekérdezés-elemzőt kínál. Az egyszerű elemző megérti az [egyszerű lekérdezési szintaxist](query-simple-syntax.md). Ez az elemző lett kiválasztva, mivel a gyorsasága és hatékonysága az ingyenes szöveges lekérdezésekben nem megfelelő. A szintaxis támogatja a gyakori keresési operátorokat (és, vagy nem) a kifejezésre és kifejezésre való keresésekhez, valamint az előtag ( `*` ) kereséshez (mint a "Sea *" a Seattle és a Seaside esetében). Általános javaslat, hogy először az egyszerű elemzőt próbálja ki, majd a teljes elemzőre váltson, ha az alkalmazásra vonatkozó követelmények nagyobb teljesítményű lekérdezéseket hívnak meg.
 
-A [teljes Lucene lekérdezési szintaxis](query-Lucene-syntax.md#bkmk_syntax), amely a kérelemhez való hozzáadáskor engedélyezve van `queryType=full` , az [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)részeként kifejlesztett, széles körben elfogadott és kifejező lekérdezési nyelvet jeleníti meg. A teljes szintaxis kibővíti az egyszerű szintaxist. Az egyszerű szintaxishoz írt összes lekérdezés a teljes Lucene-elemző alatt fut. 
+A kérelemhez való hozzáadáskor engedélyezett [teljes Lucene-lekérdezési szintaxis](query-Lucene-syntax.md#bkmk_syntax) `queryType=full` az [Apache Lucene-elemző](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)alapján történik.
 
-Az alábbi példák szemléltetik a pontot: ugyanaz a lekérdezés, de különböző **`queryType`** beállításokkal, amelyek különböző eredményeket eredményeznek. Az első lekérdezésben a `^3` rendszer a `historic` keresési kifejezés részeként kezeli a következőt:. A lekérdezés legfelső szintű eredménye a "Marquis Plaza & Suites", amely az *óceánt* is tartalmazta a leírásában.
+A teljes szintaxis az egyszerű szintaxis kiterjesztése, több operátorral, így speciális lekérdezéseket hozhat létre, például a intelligens keresést, a helyettesítő karakteres keresést, a közelségi keresést és a reguláris kifejezéseket. Az alábbi példák szemléltetik a pontot: ugyanaz a lekérdezés, de különböző **`queryType`** beállításokkal, amelyek különböző eredményeket eredményeznek. Az első egyszerű lekérdezésben a `^3` kifejezést a `historic` rendszer a keresési kifejezés részeként kezeli. A lekérdezés legfelső szintű eredménye a "Marquis Plaza & Suites", amely az *óceánt* is tartalmazta a leírásában.
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -84,20 +102,40 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 }
 ```
 
-## <a name="enable-query-behaviors-in-an-index"></a>Lekérdezési viselkedés engedélyezése egy indexben
+## <a name="choose-query-methods"></a>Lekérdezési módszerek kiválasztása
 
-Az index tervezési és lekérdezési kialakítása szorosan összekapcsolható az Azure Cognitive Searchban. Az *index séma*, amely az egyes mezők attribútumait határozza meg, meghatározza, hogy milyen típusú lekérdezést hozhat létre.
+A keresés alapvetően egy felhasználó által vezérelt gyakorlat, amelyben a feltételek vagy kifejezések gyűjtése egy keresőmező alapján történik, vagy az adott oldalon lévő események elemre kattintva. A következő táblázat összefoglalja azokat a mechanizmusokat, amelyekkel összegyűjtheti a felhasználói adatokat, valamint a várt keresési élményt.
 
-Egy mező indexelése az engedélyezett műveletekkel – azt határozza meg, hogy egy mező *kereshető* -e az indexben, lekérhető az *eredmények között,* *rendezhető*, *szűrhető* és így tovább. A példában szereplő lekérdezésekben `"$orderby": "Rating desc"` csak a működik, mert a minősítési mező az index sémában *rendezhető* van megjelölve.
+| Bevitel | Élmény |
+|-------|---------|
+| [Keresési módszer](/rest/api/searchservice/search-documents) | A felhasználók kifejezéseket és kifejezéseket is begépelnek egy keresési mezőbe, operátorral vagy anélkül, és a Keresés gombra kattintanak a kérelem elküldéséhez. A Keresés az ugyanazon kérelemben található szűrőkkel is használható, de nem automatikus kiegészítéssel vagy javaslatokkal. |
+| [Automatikus kiegészítési módszer](/rest/api/searchservice/autocomplete) | A felhasználók néhány karaktert begépelnek, és a rendszer minden új karakter beírása után kezdeményezi a lekérdezéseket. A válasz egy befejezett sztring az indexből. Ha a megadott karakterlánc érvényes, a felhasználó a Keresés gombra kattintva küldi el a lekérdezést a szolgáltatásnak. |
+| [Javaslatok metódusa](/rest/api/searchservice/suggestions) | Az automatikus kiegészítéshez hasonlóan a felhasználók csak néhány karaktert és növekményes lekérdezéseket hoznak létre. A válasz a megfelelő dokumentumok legördülő listája, amelyet jellemzően néhány egyedi vagy leíró mező képvisel. Ha bármelyik kijelölés érvényes, a felhasználó rákattint az egyikre, és a rendszer visszaadja a megfelelő dokumentumot. |
+| [Jellemzőalapú navigáció](/rest/api/searchservice/search-documents#query-parameters) | Egy oldalon a keresés hatókörét szűkítő, kattintható navigációs hivatkozások vagy zsemlemorzsa látható. Egy csiszolt navigációs struktúra dinamikusan áll a kezdeti lekérdezés alapján. Például `search=*` egy olyan csiszolt navigációs fa feltöltéséhez, amely minden lehetséges kategóriából tevődik össze. Egy lekérdezési válaszban egy sokoldalú navigációs struktúra jön létre, de a következő lekérdezés kiírására szolgáló mechanizmus is. n REST API hivatkozás a `facets` keresési dokumentumok művelet lekérdezési paramétereként van dokumentálva, de a paraméter nélkül is használható `search` .|
+| [Szűrési módszer](/rest/api/searchservice/search-documents#query-parameters) | A szűrők a dimenziók használatával szűkítik az eredményeket. Az oldal mögött egy szűrőt is alkalmazhat, például az oldal inicializálásához nyelvspecifikus mezőkkel. REST API-hivatkozásban a a `$filter` keresési dokumentumok művelet lekérdezési paramétereként van dokumentálva, de a paraméter nélkül is használható `search` .|
+
+## <a name="know-your-field-attributes"></a>A mező attribútumainak megismerése
+
+Ha korábban áttekintette a [lekérdezési kérelem alapjait](search-query-overview.md), megjegyezheti, hogy a lekérdezési kérelem paraméterei attól függnek, hogy a mezők hogyan legyenek indexelve az indexben. A lekérdezésekben, szűrési vagy rendezési sorrendben való használatra például egy mezőnek *kereshetőnek*, *szűrhetőnek* *és rendezhető* kell lennie. Hasonlóképpen, a találatok között csak a *beolvasható* mezők láthatók. A `search` `filter` kérelemben szereplő, és paraméter megadásakor `orderby` ügyeljen arra, hogy a nem várt eredmények elkerülése érdekében ellenőrizze az attribútumokat.
+
+Az alábbi, a [Hotel minta indexét](search-get-started-portal.md)tartalmazó képernyőképen csak az utolsó két mező ("" lastrenovationdate "és" minősítés " `"$orderby"` ) használható egyetlen záradékban.
 
 ![A szállodai minta index-definíciója](./media/search-query-overview/hotel-sample-index-definition.png "A szállodai minta index-definíciója")
 
-A fenti képernyőkép a [Hotels Sample index](search-get-started-portal.md)index-attribútumainak részleges listája. A teljes index sémát a portálon lehet létrehozni és megtekinteni. További információ az index attribútumairól: [create index (REST API)](/rest/api/searchservice/create-index).
+A Mezőtulajdonságok leírását lásd: [create index (REST API)](/rest/api/searchservice/create-index).
+
+## <a name="know-your-tokens"></a>A jogkivonatok ismerete
+
+Az indexelés során a lekérdezési motor egy elemzőt használ a karakterláncok szöveges elemzéséhez, és maximalizálja a lekérdezési időponthoz való egyeztetés lehetőségét. A karakterláncok minimálisan kisebbek, de morfológiai elemzéshez is lehetnek, és leállíthatók a Word eltávolítása. A nagyobb sztringeket vagy összetett szavakat általában szóközzel, kötőjelekkel vagy kötőjelekkel, valamint különálló tokenként indexelve kell elosztani. 
+
+Az a pont, amellyel elkerülheti, hogy mit gondol az index, és hogy mi valójában, eltérő lehet. Ha a lekérdezések nem adják vissza a várt eredményeket, megvizsgálhatja az analizátor által létrehozott jogkivonatokat az [elemzés szövege alapján (REST API)](/rest/api/searchservice/test-analyzer). További információ a jogkivonatok létrehozása és a lekérdezések hatásáról: [részleges kifejezéses keresés és minták speciális karakterekkel](search-query-partial-matching.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megértette a kérés kialakításának módját, próbálja ki a példákat az egyszerű és a teljes szintaxis használatával.
+Most, hogy jobban megértette a lekérdezési kérések kialakítását, próbálja ki a következő gyors útmutatót a gyakorlati élményhez.
 
-+ [Példák egyszerű lekérdezésre](search-query-simple-examples.md)
-+ [Példák a speciális lekérdezések kiépítési Lucene](search-query-lucene-examples.md)
-+ [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
++ [Keresési ablak](search-explorer.md)
++ [A lekérdezés a REST-ben](search-get-started-rest.md)
++ [Lekérdezés a .NET-ben](search-get-started-dotnet.md)
++ [Lekérdezés a Pythonban](search-get-started-python.md)
++ [Lekérdezés a JavaScriptben](search-get-started-javascript.md)

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d3492685efbf70b69e5bafba919d38a4f06fb666
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754375"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387470"
 ---
 # <a name="pricing-of-azure-security-center"></a>A Azure Security Center díjszabása
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést jelentő számítógépes kockázatok megtartását.
@@ -52,7 +52,7 @@ Az Azure Defender engedélyezése:
 1. A Security Center főmenüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki a frissíteni kívánt előfizetést.
 1. A frissítéshez válassza az **Azure Defender** lehetőséget.
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Válassza a **Mentés** lehetőséget.
 
 Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Megfigyelheti, hogy az Azure Defender minden csomagja külön díjszabású, és egyénileg be-és kikapcsolható.
 
@@ -68,12 +68,24 @@ Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Me
 
 ## <a name="faq---pricing-and-billing"></a>Gyakori kérdések – díjszabás és számlázás 
 
-### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>Hogyan követhetem nyomon a szervezetem, hogy az Azure Defender milyen változásokat engedélyezett Azure Security Center
+- [Hogyan követhetem nyomon a szervezetem, hogy az Azure Defender milyen változásokat Azure Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+- [Mik a Security Center által kínált csomagok?](#what-are-the-plans-offered-by-security-center)
+- [Hogyan engedélyezhetem az Azure Defendert az előfizetéshez?](#how-do-i-enable-azure-defender-for-my-subscription)
+- [Engedélyezhetem az Azure Defendert kiszolgálók részhalmazában lévő kiszolgálókhoz az előfizetésben?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [Engedélyezve van-e az Azure Defender for Servers előfizetése, ha nem futó kiszolgálókat fizetnem?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+- [A Log Analytics ügynök nélküli gépek után kell díjat fizetni?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+- [Ha egy Log Analytics ügynök több munkaterületre jelent jelentést, akkor kétszer kell fizetnem?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+- [Ha egy Log Analytics-ügynök több munkaterületre is jelentést készít, a 500 MB-os ingyenes adatfeldolgozás az összes rajtuk elérhető?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+- [A teljes munkaterülethez vagy a gépenként kizárólag a 500 MB-os ingyenes adatfeldolgozást számítjuk ki?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+
+### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Hogyan követhetem nyomon a szervezetem, hogy az Azure Defender milyen változásokat Security Center?
 Az Azure-előfizetések több rendszergazdai jogosultsággal rendelkezhetnek a díjszabási beállítások módosításához. Ha szeretné megtudni, hogy melyik felhasználó módosította a változást, használja az Azure-tevékenység naplóját.
 
-Ha a felhasználó adatai nem szerepelnek az oszlop **által kezdeményezett eseményben** , tekintse át az eseményt a vonatkozó részletekért.
+:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Az Azure-tevékenység naplója a díjszabás változási eseményét mutatja":::
 
-:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Az Azure eseménynaplója egy árképzési változási eseményt mutat be":::
+Ha a felhasználó adatai nem szerepelnek az oszlop **által kezdeményezett eseményben** , tekintse át az esemény JSON-fájlját a vonatkozó részletekért.
+
+:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Azure-Tevékenységnaplók JSON-kezelője":::
 
 
 ### <a name="what-are-the-plans-offered-by-security-center"></a>Mik a Security Center által kínált csomagok? 
@@ -85,7 +97,7 @@ Security Center két ajánlattal rendelkezik:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Hogyan engedélyezhetem az Azure Defendert az előfizetéshez? 
 Az előfizetéshez az alábbi módokon engedélyezheti az Azure Defender használatát: 
 
-|Módszer  |Utasítások  |
+|Metódus  |Utasítások  |
 |---------|---------|
 |A Azure Portal Azure Security Center lapja|[Az Azure Defender engedélyezése](#enable-azure-defender)|
 |REST API|[Díjszabási API](/rest/api/securitycenter/pricings)|
@@ -115,8 +127,12 @@ Igen. Ha úgy konfigurálta a Log Analytics-ügynököt, hogy két vagy több k�
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Ha egy Log Analytics-ügynök több munkaterületre is jelentést készít, a 500 MB-os ingyenes adatfeldolgozás az összes rajtuk elérhető?
 Igen. Ha úgy konfigurálta a Log Analytics-ügynököt, hogy két vagy több különböző Log Analytics-munkaterületre küldje el az adatküldés adatait, 500 MB szabad adatfeldolgozást fog kapni. A rendszer minden olyan munkaterületre kiszámítja, amelyet jelentettek, naponta, és minden olyan munkaterület számára elérhető, amelyeken telepítve van a "biztonság" vagy az "antimalware" megoldás. A 500 MB-nál nagyobb mennyiségű adatot kell fizetnie.
 
+### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>A teljes munkaterülethez vagy a gépenként kizárólag a 500 MB-os ingyenes adatfeldolgozást számítjuk ki?
+Napi 500 MB-nyi ingyenes adatfeldolgozást biztosít minden, a munkaterülethez csatlakozó gépen. Kifejezetten a Azure Security Center által közvetlenül gyűjtött biztonsági adattípusokhoz.
 
-## <a name="next-steps"></a>További lépések
+Ezek az adatforgalom az összes csomópont átlagos napi díja. Így még akkor is, ha egyes gépek 100-MB-ot küldenek, mások pedig 800-MB-ot küldenek, ha az összeg nem lépi túl a **[gépek számát] x 500-MB** szabad korlátot, nem számítunk fel külön díjat.
+
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk a Security Center díjszabási lehetőségeit ismerteti. Kapcsolódó anyagok esetében lásd:
 
 - [Az Azure számítási feladatok költségeinek optimalizálása](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)

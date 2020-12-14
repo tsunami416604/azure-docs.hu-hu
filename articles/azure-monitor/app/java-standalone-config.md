@@ -1,19 +1,19 @@
 ---
-title: Konfigurációs beállítások – Azure Monitor Application Insights Java
-description: Azure Monitor Application Insights Java konfigurációs lehetőségei
+title: Konfigurációs beállítások – Azure Monitor Application Insights Javához
+description: A Java-Azure Monitor Application Insights konfigurálása
 ms.topic: conceptual
 ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: e9240253b385a0b53868c5a8a79c751c2f7c09c0
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b5c1ab7db818daa91497728299d2247f612fe21b
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601084"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387751"
 ---
-# <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Azure Monitor Application Insights Java konfigurációs lehetőségei
+# <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurációs beállítások – Azure Monitor Application Insights Javához
 
 > [!WARNING]
 > **Ha 3,0 előzetes verzióról frissít**

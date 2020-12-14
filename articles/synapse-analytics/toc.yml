@@ -1095,9 +1095,9 @@
         - name: A pontozási varázsló használata a dedikált SQL-készletekhez
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
-        - name: Modell kódolás nélküli betanítása az Azure AutoML-lel
+        - name: Modell kódolás nélküli betanítása automatizált gépi tanulással
           href: ./machine-learning/tutorial-automl.md
-        - name: Modell Pythonban történő betanítása az Azure AutoML-lel
+        - name: Modell Pythonban történő betanítása automatizált gépi tanulással
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
         - name: Modell létrehozása az Apache Spark MLlib használatával

@@ -1,5 +1,5 @@
 ---
-title: A Azure Active Directory B2C referenciái – megbízhatósági keretrendszerek | Microsoft Docs
+title: Az egyéni szabályzatok Azure AD B2C áttekintése | Microsoft Docs
 description: A Azure Active Directory B2C egyéni szabályzatokkal és az identitás-élmény keretrendszerével kapcsolatos témakörök.
 services: active-directory-b2c
 author: msmimart
@@ -7,121 +7,170 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/04/2017
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d29bd05f67d00047499dc256e5e1a82f98693a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95990983"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387037"
 ---
-# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Megbízhatósági keretrendszerek meghatározása Azure AD B2C Identity Experience Framework-keretrendszerrel
+# <a name="azure-ad-b2c-custom-policy-overview"></a>Egyéni szabályzatok Azure AD B2C áttekintése
 
-Azure Active Directory B2C (Azure AD B2C) a személyazonossági élmény keretrendszert használó egyéni házirendek központosított szolgáltatással biztosítják a szervezetét. Ez a szolgáltatás csökkenti az identitás-összevonás összetettségét egy nagy közösség érdeklődési területén. Az összetettséget egyetlen megbízhatósági kapcsolat és egy metaadat-csere is csökkenti.
+Az egyéni házirendek olyan konfigurációs fájlok, amelyek meghatározzák a Azure Active Directory B2C (Azure AD B2C) bérlő viselkedését. Míg a [felhasználói folyamatok](user-flow-overview.md) előre vannak meghatározva a Azure ad B2C-portálon a leggyakoribb identitási feladatokhoz. Az egyéni házirendek teljes mértékben szerkeszthetők egy identitás-fejlesztőtől számos különböző feladat elvégzéséhez.
 
-Azure AD B2C egyéni szabályzatok az identitási élmény keretrendszert használják a következő kérdések megválaszolásához:
+Az egyéni házirend teljes mértékben konfigurálható, amely a szabványos protokoll-formátumokban, például az OpenID Connect, a OAuth, az SAML és néhány nem standard szintű entitások közötti megbízhatósági kapcsolatot hangolja össze, például REST API-alapú rendszer-rendszerbeli jogcímek cseréjére. A keretrendszer felhasználóbarát, fehér címkével ellátott tapasztalatokat hoz létre.
 
-- Milyen jogi, biztonsági, adatvédelmi és adatvédelmi szabályzatokat kell betartani?
-- Kik a partnerek, és Mik azok a folyamatok, amelyek egy akkreditált résztvevőnek válnak?
-- Kik az akkreditált identitás-szolgáltatók (más néven "jogcím-szolgáltatók"), és mit kínálnak?
-- Kik az akkreditált függő entitások (és opcionálisan mit is igényelnek)?
-- Mik a technikai "a drót" együttműködési követelményei a résztvevők számára?
-- Milyen működési "futtatókörnyezeti" szabályokat kell kikényszeríteni a digitális azonosítók adatainak cseréjére?
+Az egyéni szabályzatok egy vagy több XML-formátumú fájlként jelennek meg, amelyek egy hierarchikus láncban egymásra hivatkoznak. Az XML-elemek határozzák meg az építési fickókat, a felhasználóval való interakciót és a többi felet, valamint az üzleti logikát. 
 
-Ezen kérdések megválaszolásához Azure AD B2C az Identity Experience Framework-t használó egyéni szabályzatokat a megbízhatósági keretrendszer (TF) szerkezet használatával. Tekintsük át ezt a konstrukciót és azt, amit biztosít.
+## <a name="custom-policy-starter-pack"></a>Egyéni házirend alapszintű csomagja
 
-## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>A megbízhatósági keretrendszer és az összevonási felügyeleti alaprendszer ismertetése
+Azure AD B2C a Custom Policy [Starter Pack](custom-policy-get-started.md#get-the-starter-pack) számos előre elkészített szabályzattal rendelkezik, amelyekkel gyorsan elvégezheti a munkát. Az alapszintű csomagok mindegyike a leírt forgatókönyvek eléréséhez szükséges technikai profilok és felhasználói utazások legkisebb számát tartalmazza:
 
-A megbízhatósági keretrendszer az identitás, a biztonság, az adatvédelem és az adatvédelmi szabályzatok írásos specifikációja, amelyeknek meg kell felelniük a Közösségen belüli résztvevőknek.
+- **LocalAccounts** – csak a helyi fiókok használatát engedélyezi.
+- **SocialAccounts** – engedélyezi a közösségi (vagy összevont) fiókok használatát.
+- **SocialAndLocalAccounts** – lehetővé teszi mind a helyi, mind a közösségi fiókok használatát. A legtöbb minta erre a szabályzatra hivatkozik.
+- **SocialAndLocalAccountsWithMFA** – lehetővé teszi a közösségi, a helyi és a többtényezős hitelesítési lehetőségek használatát.
 
-Az összevont identitás lehetővé teszi a végfelhasználói identitások Internet-méretezéssel való megvalósításának alapját. Az Identitáskezelés harmadik félnek való delegálásával a végfelhasználók egyetlen digitális identitása újra felhasználható több függő féllel.
+## <a name="understanding-the-basics"></a>Az alapvető tudnivalók 
 
-Az Identity Assurance megköveteli, hogy az Identity Providers (IDP) és az attribútum-szolgáltatók (AtPs-EK) megfeleljenek az egyes biztonsági, adatvédelmi és üzemeltetési házirendeknek és eljárásoknak.  Ha nem tudnak közvetlen ellenőrzéseket végezni, a függő entitások (RPs) megbízhatósági kapcsolatot kell kifejleszteniük a IDP és a AtPs.
+### <a name="claims"></a>Jogcímek
 
-Mivel a felhasználók száma és a digitális személyazonossággal kapcsolatos információk mennyisége növekszik, nehéz tovább páros a megbízhatósági kapcsolatok felügyeletét, vagy akár a hálózati kapcsolathoz szükséges technikai metaadatok páros cseréjét is.  Az összevonási központok csak korlátozott sikert értek el ezen problémák megoldásakor.
+A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárolást biztosít. Tárolhatja a felhasználóval kapcsolatos információkat, például a vezetéknevet, a vezetéknevet vagy a felhasználótól vagy más rendszerekből beszerzett egyéb jogcímeket (jogcím-cserék). A [jogcím-séma](claimsschema.md) az a hely, ahol deklarálja a jogcímeket. 
 
-### <a name="what-a-trust-framework-specification-defines"></a>A megbízhatósági keretrendszer specifikációjának meghatározása
-A TFs az Open Identity Exchange (OIX) megbízhatósági keretrendszer modelljének linchpins, amelyben minden érdekelt Közösségre egy adott TF-specifikáció vonatkozik. Az ilyen TF-specifikációk a következőket határozzák meg:
+A házirend futtatásakor Azure AD B2C a belső és külső felektől érkező és onnan érkező jogcímeket küld és fogad, majd a jogcímek egy részhalmazát küldi el a függő entitás alkalmazásának a jogkivonat részeként. A jogcímek használata a következő módokon történik: 
 
-- **A Közösség számára fontos biztonsági és adatvédelmi mérőszámok a következő meghatározásával:**
-    - A résztvevők által kínált/szükséges megbízhatósági szintek (LOA); például a megbízhatósági minősítések rendezett halmaza a digitális azonosítók adatainak hitelességéhez.
-    - A résztvevők által kínált/szükséges védelmi szintek (LOP); például egy rendezett megbízhatósági minősítést a Közösségen belüli résztvevők által kezelt digitális identitások adatainak védelmére.
+- A rendszer a címtár felhasználói objektumán menti, olvassa vagy frissíti a jogcímeket.
+- A rendszer egy külső személyazonossági szolgáltatótól kapott jogcímet.
+- A jogcímek küldése vagy fogadása egy egyéni REST API szolgáltatás használatával történik.
+- A rendszer az adatokat a felhasználó által a regisztrálás vagy a profil szerkesztése folyamat során kapott jogcímekként gyűjti.
 
-- A **résztvevők által felkínált vagy szükséges digitális azonosító információk leírása**.
+### <a name="manipulating-your-claims"></a>A jogcímek módosítása
 
-- **A digitális azonosító adatok előállítására és felhasználására vonatkozó technikai szabályzatok, így az LOA és a LOP méréséhez. Ezek az írott szabályzatok jellemzően a következő kategóriákat tartalmazzák:**
-    - Személyazonosság-ellenőrző szabályzatok, például: *milyen mértékben van a személy személyazonossági adatai?*
-    - Biztonsági házirendek, például az *adatok integritásának és titkosságának védelme?*
-    - Adatvédelmi szabályzatok, például: *milyen szabályozást végeznek a felhasználók személyes azonosításra alkalmas adatokkal*?
-    - Túlélési szabályzatok, például: *Ha a szolgáltató megszűnik a műveletek, hogyan végezheti el a személyes adatok folytonosságát és védelmét?*
+A [jogcím-átalakítások](claimstransformations.md) előre definiált függvények, amelyek segítségével egy adott jogcím átalakítható egy másikra, kiértékelheti a jogcímeket, vagy beállíthatja a jogcím értékét. Például hozzáadhat egy elemeket egy karakterlánc-gyűjteményhez, megváltoztathatja a karakterláncok esetét, vagy kiértékelheti az adatmennyiséget és az időpontot. A jogcím-átalakítás egy átalakítási metódust határoz meg. 
 
-- **A digitális azonosító adatok előállítására és felhasználására szolgáló technikai profilok. Ezek a profilok a következők:**
-    - A hatókör-felületek, amelyekhez a rendszer a megadott LOA-ben elérhetővé válik a digitális azonosító információi.
-    - Technikai követelmények a vezetékes együttműködéshez.
+### <a name="customize-and-localize-your-ui"></a>Felhasználói felület testreszabása és honosítása
 
-- **A Közösség résztvevői által elvégezhető különböző szerepkörök leírása, valamint a szerepkörök teljesítéséhez szükséges képzettségek.**
+Ha adatokat szeretne gyűjteni a felhasználóktól, ha egy oldalt mutat be a böngészőben, használja az [önjelölt technikai profilt](self-asserted-technical-profile.md). A saját maga által vezérelt technikai profilt szerkesztheti [jogcímek hozzáadásához és a felhasználói bevitel testreszabásához](custom-policy-configure-user-input.md).
 
-Így a TF specifikáció szabályozza, hogyan történik az identitási adatok cseréje a Közösség résztvevői között: függő entitások, identitás-és attribútum-szolgáltatók, valamint attribútumok ellenőrzői.
+Az önérvényesített technikai profil [felhasználói felületének testreszabásához](customize-ui-with-html.md) megadhat egy URL-címet a tartalom- [definíciós](contentdefinitions.md) elemben testreszabott HTML-tartalommal. Az önérvényesített technikai profilban erre a tartalom-definíciós AZONOSÍTÓra mutat.
 
-A TF-specifikáció egy vagy több olyan dokumentum, amely referenciául szolgál az olyan Közösség irányítására, amely a digitális személyazonossági információk Közösségen belüli érvényesítését és felhasználását szabályozza. Ez a szabályzatok és eljárások dokumentált készlete, amelynek célja, hogy megbízhatósági kapcsolatot hozzon létre a Közösség érdeklődési körének online tranzakciói számára használt digitális identitásokban.
+A nyelvspecifikus karakterláncok testreszabásához használja a [honosítási](localization.md) elemet. A tartalom definíciója olyan [honosítási](localization.md) referenciát tartalmazhat, amely a betöltendő honosított erőforrások listáját határozza meg. Azure AD B2C egyesíti a felhasználói felület elemeit az URL-címről betöltött HTML-tartalommal, majd megjeleníti a lapot a felhasználónak. 
 
-Ez azt jelenti, hogy a TF specifikáció meghatározza az életképes összevont identitások ökoszisztémájának létrehozási szabályait egy Közösség számára.
+## <a name="relying-party-policy-overview"></a>Függő entitások házirendjének áttekintése
 
-Jelenleg széleskörű megállapodás van az ilyen megközelítés előnyeiről. Nem kétséges, hogy a megbízhatósági keretrendszer specifikációi megerősítik a digitális identitás-ökoszisztémák fejlesztését a ellenőrizhető biztonsági, megbízhatósági és adatvédelmi jellemzőkkel, ami azt jelenti, hogy több Közösség érdeklődésére is felhasználhatók.
+A függő entitások vagy a szolgáltatóként ismert SAML protokoll meghívja a függő [entitás házirendjét](relyingparty.md) egy adott felhasználói út végrehajtásához. A függő entitás házirendje meghatározza a végrehajtandó felhasználói elérési utat, és felsorolja a jogkivonat által biztosított jogcímeket. 
 
-Ezért Azure AD B2C az Identity Experience Framework-t használó egyéni szabályzatok a specifikációt használják a TF számára az együttműködési képesség elősegítése érdekében.
+![A házirend végrehajtási folyamatát ábrázoló diagram](./media/custom-policy-trust-frameworks/custom-policy-execution.png)
 
-Azure AD B2C az identitási élmény keretrendszerét kihasználó egyéni szabályzatok az emberi és a géppel olvasható adatok keverékéből álló TF-specifikációnak minősülnek. A modell egyes részeit (általában az irányítás irányába jobban igazodó szakaszt) a közzétett biztonsági és adatvédelmi szabályzatokra mutató hivatkozásként, valamint a kapcsolódó eljárásokkal (ha vannak) jelölik. Más szakaszok részletesen ismertetik az operatív automatizálást megkönnyítő konfigurációs metaadatokat és futtatókörnyezeti szabályokat.
+Minden olyan függő entitás, amely ugyanazt a házirendet használja, ugyanazokat a jogkivonatokat fogadja, és a felhasználó ugyanazon a felhasználói úton halad.
 
-## <a name="understand-trust-framework-policies"></a>A megbízhatósági keretrendszer házirendjeinek ismertetése
+### <a name="user-journeys"></a>Felhasználói utazások
 
-A megvalósítás szempontjából a TF specifikáció olyan szabályzatokból áll, amelyek lehetővé teszik az identitás-viselkedés és a tapasztalatok teljes körű felügyeletét.  Az Identity Experience Framework-t használó egyéni házirendek lehetővé teszik, hogy saját TF-et hozzanak létre és hozzon létre az olyan deklaratív házirendekkel, amelyek meghatározhatják és konfigurálhatják a következőket: Azure AD B2C
+A [felhasználói útvonalak](userjourneys.md) lehetővé teszik, hogy meghatározza az üzleti logikát az elérési úttal, amelyen keresztül a felhasználó az alkalmazáshoz való hozzáférést fogja követni. A felhasználó az alkalmazáshoz benyújtandó jogcímek beolvasásához a felhasználói úton történik. A felhasználói út előkészítési [lépésekből](userjourneys.md#orchestrationsteps)épül fel. A felhasználónak el kell érnie az utolsó lépést a jogkivonat beszerzéséhez. 
 
-- A Közösség összevont identitási ökoszisztémáját meghatározó dokumentum-hivatkozás vagy hivatkozások, amely a TF-hoz kapcsolódik. A TF dokumentációra hivatkoznak. Az (előre definiált) működési futtatókörnyezeti szabályok vagy a felhasználói utazások, amelyek automatizálják és/vagy vezérlik a jogcímek cseréjét és használatát. Ezeket a felhasználói útvonalakat egy LOA (és egy LOP) társítja. A szabályzatok ezért különböző LOAs (és LOPs) rendelkező felhasználói útvonalakat is tartalmazhatnak.
+Az alábbiakban azt ismertetjük, hogyan adhat hozzá előkészítési lépéseket a [közösségi és a helyi fiók Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts) házirendjéhez. Íme egy példa egy REST API-hívásra, amely hozzá lett adva.
 
-- Az identitás-és attribútum-szolgáltatók, illetve a jogcímek szolgáltatója a Közösségen belül, valamint az általuk támogatott technikai profilok, valamint a hozzájuk kapcsolódó (sávon kívüli) LOA/LOP akkreditáció.
+![testreszabott felhasználói út](media/custom-policy-trust-frameworks/user-journey-flow.png)
 
-- Az attribútum-ellenőrzők vagy jogcímek szolgáltatóinak integrációja.
 
-- A Közösségen belüli függő felek (következtetéssel).
+### <a name="orchestration-steps"></a>Az előkészítés lépései
 
-- A résztvevők közötti hálózati kommunikáció kialakításához szükséges metaadatok. Ezeket a metaadatokat a technikai profilokkal együtt használja a rendszer a forgalomban lévő, a függő entitás és más közösségi résztvevők közötti együttműködésre irányuló forgalomban.
+A koordinációs lépés olyan metódusra hivatkozik, amely megvalósítja a kívánt célt vagy funkciót. Ezt a módszert [technikai profilnak](technicalprofiles.md)nevezzük. Ha a felhasználói utazás az üzleti logikát jobban reprezentáló elágazási igényeket igényli, a koordinálási lépés az [alárendelt útra](subjourneys.md)hivatkozik. A sub Journey a saját előkészítési lépéseit tartalmazza.
 
-- A protokoll átalakítása, ha van ilyen (például SAML 2,0, OAuth2, WS-Federation és OpenID Connect).
+A felhasználónak el kell érnie a felhasználói út utolsó előkészítési lépését a token beszerzéséhez. Előfordulhat azonban, hogy a felhasználóknak nem kell átutazniuk az összes előkészítési lépéssel. A koordináló lépések feltételesen hajthatók végre a előkészítési lépésben meghatározott [Előfeltételek](userjourneys.md#preconditions) alapján. 
 
-- A hitelesítési követelmények.
+Egy előkészítési lépés befejezése után a Azure AD B2C a **jogcímek táskájában** tárolja a kiállított jogcímeket. A jogcímek táskájában lévő jogcímeket a felhasználói út bármely további előkészítési lépése használhatja.
 
-- A többtényezős előkészítés, ha van ilyen.
+Az alábbi ábra bemutatja, hogyan érheti el a felhasználói út előkészítési lépései a jogcímek táskáját.
 
-- Egy megosztott séma az összes rendelkezésre álló jogcím számára, és a Közösségen belüli résztvevőkhöz való hozzárendelés.
+![Felhasználói út Azure AD B2C](media/custom-policy-trust-frameworks/user-journey-diagram.png)
 
-- A jogcímek átalakítását, valamint a lehetséges adatminimalizálás mértékét a jogcímek cseréjének és használatának fenntartása érdekében.
+### <a name="technical-profile"></a>Technikai profil
 
-- A kötés és a titkosítás.
+A technikai profil egy felületet biztosít a különböző típusú felekkel való kommunikációhoz. A felhasználói út a technikai profilok meghívását az üzleti logikájának meghatározására szolgáló lépések segítségével ötvözi.
 
-- A jogcím-tároló.
+A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemeneti jogcímeket, a jogcímek átalakítását és a konfigurált féllel folytatott kommunikációt kell elküldenie. A folyamat elvégzése után a technikai profil visszaadja a jogcím-táska kimeneti jogcímeit. További információ: [technikai profilok – áttekintés](technicalprofiles.md)
 
-### <a name="understand-claims"></a>Jogcímek ismertetése
+### <a name="validation-technical-profile"></a>Ellenőrzési technikai profil
 
-> [!NOTE]
-> A rendszer közösen hivatkozik a "jogcímek" kifejezéssel kicserélt személyazonossági adatok lehetséges típusaira: a végfelhasználók hitelesítési hitelesítő adataival, a személyazonossággal kapcsolatos adatokkal, a kommunikációs eszközzel, a fizikai hellyel, a személyazonosításra alkalmas attribútumokkal és így tovább.
->
-> A "jogcímek" kifejezést használjuk – a "Attributes" kifejezés helyett – mivel az online tranzakciók esetében ezek az adatösszetevők nem olyan tények, amelyeket a függő entitás közvetlenül ellenőrizheti. Ehelyett a jogcímek vagy jogcímek olyan tényekkel kapcsolatosak, amelyekhez a függő entitásnak megfelelő megbízhatóságot kell kialakítania ahhoz, hogy a végfelhasználó által kért tranzakciót megadják.
->
-> A "jogcímek" kifejezést is felhasználjuk, mivel Azure AD B2C az identitást használó egyéni szabályzatok úgy vannak kialakítva, hogy a rendszer következetes módon leegyszerűsítse az összes digitális identitási információ cseréjét, függetlenül attól, hogy az alapul szolgáló protokoll definiálva van-e a felhasználói hitelesítéshez vagy az attribútumok lekéréséhez.  Hasonlóképpen a "jogcímek szolgáltatói" kifejezést használjuk, hogy közösen hivatkozzon a személyazonosság-szolgáltatókra, az attribútum-szolgáltatóra és az attribútum-ellenőrzőre, ha nem szeretnénk megkülönböztetni az adott függvények körét.
+Ha a felhasználó kommunikál a felhasználói felülettel, érdemes lehet érvényesíteni az összegyűjtött adatokat. A felhasználóval folytatott kommunikációhoz [saját maga által vezérelt technikai profilt](self-asserted-technical-profile.md) kell használni.
 
-Így szabályozzák, hogyan történik a személyazonossági adatok cseréje a függő entitások, az identitás-és az attribútum-szolgáltatók, valamint az attribútumok ellenőrzői között. Azt szabályozzák, hogy mely identitás-és attribútum-szolgáltatók szükségesek a függő entitások hitelesítéséhez. Ezeket a tartományra jellemző nyelvnek (DSL) kell tekinteni, azaz egy adott alkalmazás-tartományhoz tartozó, örökléssel, *Ha* az utasítások, a polimorfizmus.
+A felhasználói bevitel ellenőrzéséhez egy [érvényesítési műszaki](validation-technical-profile.md) profilt kell meghívni az önérvényesített technikai profilból. 
 
-Ezek a szabályzatok a TF-konstrukció géppel olvasható részét képezik Azure AD B2C egyéni szabályzatokban, amelyek az identitási élmény keretrendszerét hasznosítják. Ide tartozik az összes működési adat, beleértve a jogcím-szolgáltatók metaadatait, a technikai profilokat, a jogcímek sémájának definícióit, a jogcím-átalakítási függvényeket és a kitöltött felhasználói útvonalakat az operatív előkészítés és automatizálás elősegítése érdekében.
+Az érvényesítési technikai profil bármely olyan metódus, amely nem interaktív technikai profilt hív meg. Ebben az esetben a technikai profil kimeneti jogcímeket vagy hibaüzenetet adhat vissza. A hibaüzenet a felhasználó képernyőjén jelenik meg, így a felhasználó újra próbálkozik.
 
-A rendszer feltételezi, hogy *élő dokumentumoknak* minősülnek, mivel a tartalmakat a szabályzatokban szereplő aktív résztvevőkkel kapcsolatos idő múlásával érdemes megváltoztatni. Az is előfordulhat, hogy a résztvevő feltételei és kikötései változhatnak.
+Az alábbi ábra azt szemlélteti, hogyan használja a Azure AD B2C egy érvényesítési technikai profilt a felhasználói hitelesítő adatok ellenőrzéséhez.
 
-Az összevonás beállítása és karbantartása nagymértékben leegyszerűsíthető a függő entitások folyamatos megbízhatósággal és kapcsolat-újrakonfigurálásával, mint a különböző jogcím-szolgáltatók/ellenőrzők csatlakozása vagy elhagyása (a Közösség által jelölt) a szabályzatok halmaza.
+![Ellenőrzési technikai profil diagramja](media/custom-policy-trust-frameworks/validation-technical-profile.png)
 
-Az együttműködési képesség egy másik jelentős kihívás. A további jogcím-szolgáltatók/ellenőrzők integrálására van szükség, mivel a függő entitások nem valószínű, hogy támogatják a szükséges protokollokat. Azure AD B2C egyéni szabályzatok ezt a problémát az iparági szabványnak megfelelő protokollok támogatásával és a kérések áttelepítésére vonatkozó konkrét felhasználói utazások alkalmazásával oldják meg, ha a függő entitások és az attribútumok szolgáltatói nem támogatják ugyanazt a protokollt.
+## <a name="inheritance-model"></a>Öröklési modell
 
-A felhasználói útvonalak közé tartoznak azok a protokoll-profilok és metaadatok, amelyeket a rendszer a függő entitás és a többi résztvevő között a vezetékeken való együttműködéshez használ. A TF specifikációnak megfelelően vannak olyan operatív futtatókörnyezeti szabályok is, amelyek a közzétett szabályzatoknak való megfelelés érdekében érvényesek az azonosító adatok Exchange-kérelmére és a válaszüzenetekre. A felhasználói élményre vonatkozó elképzelés az, hogy az ügyfél-környezet testreszabása kulcsfontosságú. Emellett fényt derít arra is, hogy a rendszer hogyan működik a protokoll szintjén.
+Minden kezdő csomag a következő fájlokat tartalmazza:
 
-Ezen az alapon a függő entitások és a portálok a kontextustól függően meghívhatnak Azure AD B2C egyéni szabályzatokat, amelyek kihasználják az identitási élmény keretrendszerét egy adott szabályzat nevével, és pontosan a kívánt viselkedést és információcserét rendetlenség, felállás vagy kockázat nélkül.
+- A definíciók többségét tartalmazó **alapfájl.** Ha segítségre van szüksége a házirendek hibaelhárításához és hosszú távú karbantartásához, akkor azt javasoljuk, hogy módosítsa a fájl minimális számát.
+- Egy **kiterjesztési** fájl, amely a bérlő egyedi konfigurációs módosításait tárolja. Ez a házirend-fájl az alapfájlból származik. Ezzel a fájllal új funkciókat adhat hozzá, vagy felülbírálhatja a meglévő funkciókat. Használja például ezt a fájlt, hogy összevonása az új identitás-szolgáltatókkal.
+- Egy **függő entitást (RP)** tartalmazó fájl, amely egy, a függő entitás alkalmazás által közvetlenül meghívott, egyetlen feladat által irányított fájl, például a web-, mobil-vagy asztali alkalmazások. Az egyes egyedi feladatok, például a regisztráció, a bejelentkezés, a jelszó-visszaállítás vagy a profil szerkesztése a saját függő entitások házirendjének fájlját igénylik. Ez a házirendfájl a kiterjesztések fájljából származik.
+
+Az öröklési modell a következő:
+
+- A gyermek házirend bármilyen szinten örökölhető a szülő házirendtől, és új elemek hozzáadásával bővíthető.
+- Összetettebb forgatókönyvek esetén nagyobb mértékű Inhabitat (legfeljebb 5 összesen) adhat hozzá.
+- További függő entitásokra vonatkozó szabályzatokat adhat hozzá. Például törölje a saját fiókját, változtassa meg a telefonszámot, az SAML-függő entitások házirendjét és egyebeket.
+
+Az alábbi ábrán a házirend-fájlok és a függő entitások alkalmazásai közötti kapcsolat látható.
+
+![A megbízhatósági keretrendszer házirendjének öröklési modelljét bemutató ábra](media/custom-policy-trust-frameworks/policies.png)
+
+
+## <a name="guidance-and-best-practices"></a>Útmutatás és ajánlott eljárások
+
+### <a name="best-practices"></a>Ajánlott eljárások
+
+Egy Azure AD B2C egyéni szabályzaton belül integrálhatja saját üzleti logikáját, hogy a felhasználó felhasználja a szolgáltatáshoz szükséges és kibővíthető funkciókat. Az első lépésekhez az ajánlott eljárások és javaslatok állnak rendelkezésére.
+
+- Hozza létre a logikát a **kiterjesztési szabályzaton** belül vagy a **továbbító fél házirendjében**. Hozzáadhat új elemeket is, amelyek felülírják az alapházirendet ugyanarra az AZONOSÍTÓra hivatkozva. Ez lehetővé teszi a projekt vertikális felskálázását, miközben a Microsoft új kezdő csomagokat bocsát ki.
+- Az **alapházirenden** belül kifejezetten javasoljuk, hogy elkerülje a módosítások elvégzését.  Ha szükséges, észrevételeket tesz a módosítások végrehajtásához.
+- Ha felülbírál egy elemet, például a technikai profil metaadatait, ne másolja a teljes technikai profilt az alapszabályzatból. Ehelyett csak az elem szükséges szakaszát másolja. A módosítás elvégzéséhez tekintse meg az [e-mailek ellenőrzésének letiltása](custom-policy-disable-email-verification.md) című témakört.
+- Ha csökkenteni szeretné a technikai profilok ismétlődését, ahol a központi funkciók megoszlik, használja a [technikai profilokat](technicalprofiles.md#include-technical-profile).
+- A bejelentkezés során Kerülje az Azure AD-címtárba való írást, ami a problémák szabályozásához vezethet.
+- Ha a házirend külső függőségekkel rendelkezik, például a REST API biztosítja, hogy a rendszer nagyon elérhető legyen.
+- A jobb felhasználói élmény érdekében győződjön meg arról, hogy az egyéni HTML-sablonok globálisan üzembe helyezhetők az [online tartalom-továbbítás](https://docs.microsoft.com/azure/cdn/)használatával. Az Azure Content Delivery Network (CDN) segítségével csökkentheti a betöltési időt, megtakaríthatja a sávszélességet és gyorsabbá teheti a rugalmasságot.
+- Ha módosítást szeretne végezni a felhasználói úton. Másolja a teljes felhasználói utat az alapszabályzatból a kiterjesztési szabályzatba. Adjon meg egy egyedi felhasználói útvonal-azonosítót a másolt felhasználói útra. Ezután a [függő entitás házirendjében](relyingparty.md)módosítsa az [alapértelmezett felhasználói útvonal](relyingparty.md#defaultuserjourney) elemet úgy, hogy az új felhasználói útra mutasson.
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Azure AD B2C házirendekkel való fejlesztéskor hibák vagy kivételek jelenhetnek meg a felhasználói utazás végrehajtása során. A Application Insights használatával is megvizsgálható.
+
+- Application Insights integrálása Azure AD B2C a [kivételek diagnosztizálásához](troubleshoot-with-application-insights.md).
+- A [vs code Azure ad B2C-bővítménye](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) segíthet a naplók elérésében és [megjelenítésében](https://github.com/azure-ad-b2c/vscode-extension/blob/master/src/help/app-insights.md) a szabályzat neve és időpontja alapján.
+- Az egyéni házirendek beállításának leggyakoribb hibája az XML-fájl helytelen formázása. Az XML- [séma érvényesítésével](troubleshoot-custom-policies.md) azonosíthatja a hibákat, mielőtt feltölti az XML-fájlt.
+
+## <a name="continuous-integration"></a>Folyamatos integráció
+
+Az Azure-folyamatokban beállított folyamatos integrációs és kézbesítési (CI/CD) folyamat használatával a szoftveres kézbesítés és a kód-vezérlés automatizálása [során a Azure ad B2C egyéni szabályzatokat](deploy-custom-policies-devops.md) is megadhatja. A különböző Azure AD B2C környezetekben történő üzembe helyezéskor, például a fejlesztési, tesztelési és éles üzemi környezetben javasoljuk, hogy távolítsa el a manuális folyamatokat, és végezzen automatikus tesztelést az Azure-folyamatok használatával.
+
+## <a name="prepare-your-environment"></a>A környezet előkészítése
+
+Első lépések Azure AD B2C egyéni szabályzattal:
+
+1. [Azure AD B2C bérlő létrehozása](tutorial-create-tenant.md)
+1. [Webalkalmazás regisztrálása](tutorial-register-applications.md) a Azure Portal használatával. Így Ön is tesztelheti a szabályzatot.
+1. Adja hozzá a szükséges [házirend-kulcsokat](custom-policy-get-started.md#add-signing-and-encryption-keys) , és [regisztrálja a személyazonossági élmény keretrendszere alkalmazásait](custom-policy-get-started.md#register-identity-experience-framework-applications)
+1. [Szerezze be a Azure ad B2C Policy starter csomagot](custom-policy-get-started.md#get-the-starter-pack) , és töltse fel a bérlőbe. 
+1. Az alapszintű csomag feltöltése után [tesztelje a regisztrálási vagy bejelentkezési szabályzatot](custom-policy-get-started.md#test-the-custom-policy) .
+1. Javasoljuk, hogy töltse le és telepítse a [Visual Studio Code](https://code.visualstudio.com/) -ot (vs Code). A Visual Studio Code egy könnyen használható és hatékony forráskódszerkesztő, amely asztali számítógépeken fut, és Windows, macOS és Linux operációs rendszerekhez érhető el. A VS Code segítségével szerkesztheti a Azure AD B2C egyéni házirend XML-fájljait.
+1. Azure AD B2C egyéni szabályzatok gyors átjárásához javasoljuk, hogy telepítse a [vs Code Azure ad B2C-bővítményt](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)
+ 
+## <a name="next-steps"></a>Következő lépések
+
+A Azure AD B2C szabályzat beállítása és tesztelése után megkezdheti a szabályzat testreszabását. A következő cikkekben megismerheti a következőket:
+
+- [Jogcímek hozzáadása és felhasználói bevitel testreszabása](custom-policy-configure-user-input.md) egyéni szabályzatok használatával. Megtudhatja, hogyan határozhat meg jogcímeket, és hogyan adhat hozzá jogcímeket a felhasználói felülethez az alapszintű csomagok egyes technikai profiljainak testreszabásával.
+- Egyéni házirend használatával [testreszabhatja az alkalmazás felhasználói felületét](customize-ui-with-html.md) . Megtudhatja, hogyan hozhat létre saját HTML-tartalmakat, és hogyan szabhatja testre a tartalom definícióját.
+- Az alkalmazás [felhasználói felületének honosítása](custom-policy-localization.md) egyéni házirend használatával. Megtudhatja, hogyan állíthatja be a támogatott nyelvek listáját, és hogyan adhat meg nyelvspecifikus címkéket a honosított erőforrások elem hozzáadásával.
+- A szabályzat fejlesztése és tesztelése során [letilthatja az e-mailek ellenőrzését](custom-policy-disable-email-verification.md). Útmutató a technikai profil metaadatainak felülírásához.
+- Egyéni házirendeket használó [Google-fiókkal történő bejelentkezés beállítása](identity-provider-google-custom.md) . Megtudhatja, hogyan hozhat létre új jogcím-szolgáltatót a OAuth2 technikai profiljával. Ezután szabja testre a felhasználói utat, hogy belefoglalja a Google bejelentkezési lehetőséget.
+- Az egyéni szabályzatokkal kapcsolatos problémák diagnosztizálásához [összegyűjthet Azure Active Directory B2C naplókat Application Insights](troubleshoot-with-application-insights.md)használatával. Ismerje meg, hogyan adhat hozzá új technikai profilokat, és hogyan konfigurálhatja a továbbító fél házirendjét.

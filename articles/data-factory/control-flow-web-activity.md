@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8ee23adf569a6afafc57dac786cd907a3481abde
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fbe37152f4ff1ce24754bc2d7b968c8e1c76ca10
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485791"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387717"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,7 +27,10 @@ A webes tevékenység segítségével meghívható egy egyéni REST-végpont egy
 > [!NOTE]
 > A webes tevékenység privát virtuális hálózaton üzemeltetett URL-címek meghívására való használata, valamint a saját üzemeltetésű integrációs modullal történő használata is támogatott. Az integrációs modulnak rálátással kell rendelkeznie az URL-végpontra. 
 
-## <a name="syntax"></a>Szintaxis
+> [!NOTE]
+> A támogatott kimeneti válaszok maximális mérete 4 MB.  
+
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -259,7 +262,7 @@ public HttpResponseMessage Execute(JObject payload)
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat:
 
 - [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md)

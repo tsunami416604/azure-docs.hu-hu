@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: 9cac0a0026a7007e227607e04e03a77e4df99ecd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368120"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387666"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Lekérdezés az Azure Cognitive Searchban
 
-Az Azure Cognitive Search széles körű lekérdezési nyelvet kínál a különböző forgatókönyvek, az ingyenes űrlapos keresés és a nagy mértékben megadott lekérdezési minták támogatásához. Ez a cikk a létrehozható lekérdezések típusait foglalja össze.
+Az Azure Cognitive Search sokoldalú lekérdezési nyelvet kínál a különböző forgatókönyvek, a szabadszöveges keresések és a magas megadott lekérdezési minták támogatásához. Ez a cikk a létrehozható lekérdezések típusait foglalja össze.
 
 A Cognitive Searchban a lekérdezés egy kerekítési művelet teljes specifikációja **`search`** , amely a lekérdezés-végrehajtást és a válasz visszatérését is tájékoztatja. A paraméterek és az elemzők határozzák meg a lekérdezési kérelem típusát. A következő lekérdezési példa a [Search Documents (REST API) kifejezést](/rest/api/searchservice/search-documents)használja, amely a [Hotels bemutató indexét](search-get-started-portal.md)célozza meg.
 
@@ -38,7 +38,7 @@ A lekérdezés végrehajtása során használt paraméterek:
 
 + **`queryType`** Beállítja az elemzőt, amely az [alapértelmezett egyszerű lekérdezés-elemző](search-query-simple-examples.md) (optimális a teljes szöveges kereséshez), vagy a speciális lekérdezési felépítéshez használt [teljes Lucene lekérdezés-elemző](search-query-lucene-examples.md) , például a reguláris kifejezések, a közelségi keresés, a fuzzy és a helyettesítő karakterek keresése, hogy csak néhányat említsünk.
 
-+ **`search`** az egyeztetési feltételeket, általában a teljes kifejezéseket és kifejezéseket biztosítja operátorok segítségével vagy anélkül. Az index sémában *kereshetőként* megadott bármely mező erre a paraméterre van jelölt. 
++ **`search`** az egyeztetési feltételeket, általában a teljes kifejezéseket és kifejezéseket biztosítja operátorok segítségével vagy anélkül. Az index sémában *kereshetőként* megadott bármely mező erre a paraméterre van jelölt.
 
 + **`searchFields`** a lekérdezés végrehajtásának korlátozása adott kereshető mezőkre.
 
@@ -110,10 +110,8 @@ A speciális lekérdezési űrlap a teljes Lucene-elemzőtől és az adott leké
 
 ## <a name="next-steps"></a>Következő lépések
 
-Használja a portált vagy más eszközt, például a Poster vagy a Visual Studio Code-ot, vagy az egyik SDK-t, hogy mélyebben tárja fel a lekérdezéseket. Az alábbi hivatkozásokkal kezdheti meg az első lépéseket.
+A lekérdezés megvalósításának alaposabb megtekintéséhez tekintse át az egyes szintaxisokra vonatkozó példákat. Ha még csak most ismerkedik a teljes szöveges kereséssel, tekintse meg a megfelelő választást a lekérdezési motor.
 
-+ [Keresési ablak](search-explorer.md)
-+ [A lekérdezés a REST-ben](search-get-started-rest.md)
-+ [Lekérdezés a .NET-ben](search-get-started-dotnet.md)
-+ [Lekérdezés a Pythonban](search-get-started-python.md)
-+ [Lekérdezés a JavaScriptben](search-get-started-javascript.md)
++ [Példák egyszerű lekérdezésre](search-query-simple-examples.md)
++ [Példák a speciális lekérdezések kiépítési Lucene](search-query-lucene-examples.md)
++ [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: f64d4d2b9acbe0e6585ca546c915b82d2d1dbbc4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8f735ecd4f8b79b4f5bd0c95d0bfb9f280d93833
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737196"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387343"
 ---
 # <a name="common-errors"></a>Gyakori hibák
 
@@ -36,13 +36,13 @@ BEGIN
 END;
 ```
 
-**Megoldás** : a hiba elhárításához állítsa a portálon a log_bin_trust_function_creators [server parameters](howto-server-parameters.md) 1 értékre, majd a kívánt objektumok létrehozásához HAJTsa végre a DDL-utasításokat, vagy importálja a sémát, hogy létrehozza a kívánt objektumokat, majd visszaállítja a log_bin_trust_function_creators paramétert az előző értékre a létrehozás után.
+**Megoldás**: a hiba elhárításához állítsa a portálon a log_bin_trust_function_creators [](howto-server-parameters.md) 1 értékre, majd a kívánt objektumok létrehozásához HAJTsa végre a DDL-utasításokat, vagy importálja a sémát, hogy létrehozza a kívánt objektumokat, majd visszaállítja a log_bin_trust_function_creators paramétert az előző értékre a létrehozás után.
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>1227-es hiba (42000) a következő 101 sorban: hozzáférés megtagadva; Ehhez a művelethez szükség van a SUPER jogosultság (ok) ra (legalább az egyikre). A művelet nem sikerült az 1. ExitCode
 
 A fenti hiba akkor fordulhat elő, amikor egy memóriaképfájl importálása vagy a [definomabb](https://dev.mysql.com/doc/refman/5.7/en/create-procedure.html)eljárásokat tartalmazó eljárás létrehozása történik. 
 
-**Megoldás** : a hiba megoldásához a rendszergazda felhasználó jogosultságokat adhat az eljárások létrehozásához vagy végrehajtásához az alábbi példáknak megfelelően:
+**Megoldás**: a hiba megoldásához a rendszergazda felhasználó jogosultságokat adhat az eljárások létrehozásához vagy végrehajtásához az alábbi példáknak megfelelően:
 
 ```sql
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
@@ -61,8 +61,19 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`AdminUserName`@`ServerName`*/ /*!50003
 DELIMITER ;
 ```
+#### <a name="error-1227-42000-at-line-295-access-denied-you-need-at-least-one-of-the-super-or-set_user_id-privileges-for-this-operation"></a>1227-es hiba (42000) a következő 295 sorban: hozzáférés megtagadva; Ehhez a művelethez szükség van a SUPER vagy a SET_USER_ID jogosultság (ok) re.
 
-## <a name="next-steps"></a>Következő lépések
+A fenti hiba akkor fordulhat elő, ha egy memóriaképfájl importálásával vagy parancsfájl futtatásával ellátott CREATE nézetet hoz létre a definomabb utasításokkal. A Azure Database for MySQL nem engedélyezi a SUPER jogosultságokat, vagy nem SET_USER_ID jogosultságot semmilyen felhasználó számára. 
+
+**Megoldás**: 
+* Ha lehetséges, használja a definomabb felhasználót a létrehozás nézet végrehajtásához. Valószínű, hogy sok olyan nézet létezik, amely különböző engedélyekkel rendelkezik, így ez nem valósítható meg.  OR
+* Szerkessze a memóriaképet, vagy HOZZon létre egy nézet parancsfájlt, és távolítsa el a definomabb = utasítást a memóriakép fájlból, vagy 
+* Szerkessze a memóriaképet, vagy HOZZon létre egy VIEW szkriptet, és cserélje le a definomabb értékeket a felhasználóval rendszergazdai engedélyekkel, akik az Importálás vagy a parancsfájl végrehajtása művelettel rendelkeznek.
+
+> [!Tip] 
+> A sed vagy a Perl használatával módosítsa a memóriaképfájl vagy az SQL-szkriptet a definomabb = utasítás helyére.
+
+## <a name="next-steps"></a>További lépések
 Ha nem találta meg a keresett választ, vegye figyelembe a következőket:
 - Tegye fel kérdéseit a [Microsoft Q&a kérdéses oldalra](/answers/topics/azure-database-mysql.html) vagy [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mysql).
 - Küldjön e-mailt a MySQL-hez készült Azure Database for MySQL Team [ @Ask Azure db](mailto:AskAzureDBforMySQL@service.microsoft.com)-nek. Ez az e-mail-cím nem technikai támogatási alias.

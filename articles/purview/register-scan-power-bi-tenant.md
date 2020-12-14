@@ -7,19 +7,19 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904992"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387581"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI bérlő regisztrálása és bevizsgálása (előzetes verzió)
 
 Ez a cikk bemutatja, hogyan regisztrálhat és vizsgálhat meg egy Power BI bérlőt az Azure hatáskörébe-portál használatával.
 
 > [!Note]
-> Ha a hatáskörébe tartozó példány és a Power BI bérlő ugyanabban az Azure-bérlőben található, akkor csak a felügyelt identitás (MSI) hitelesítést használhatja egy Power BI bérlő vizsgálatának beállításához. Ha a hatáskörébe tartozó példány és Power BI bérlő különböző Azure-bérlőn található, akkor hitelesítenie kell magát a delegált hitelesítéssel, és az ellenőrzéseket a PowerShell használatával kell beállítania. Lásd: [a PowerShell használata a Power bi regisztrálásához és vizsgálatához](powershell-register-scan-power-bi.md).
+> Ha a hatáskörébe tartozó példány és a Power BI bérlő ugyanabban az Azure-bérlőben található, akkor csak a felügyelt identitás (MSI) hitelesítést használhatja egy Power BI bérlő vizsgálatának beállításához. 
 
 ## <a name="create-a-security-group-for-permissions"></a>Biztonsági csoport létrehozása engedélyekhez
 

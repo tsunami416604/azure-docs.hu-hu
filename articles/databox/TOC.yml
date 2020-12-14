@@ -90,6 +90,8 @@
               href: data-box-local-web-ui-admin.md
             - name: Önállóan felügyelt szállítás használata
               href: data-box-portal-customer-managed-shipping.md
+            - name: Saját tanúsítványok használata
+              href: data-box-bring-your-own-certificates.md
             - name: Felhasználó által kezelt kulcs engedélyezése
               href: data-box-customer-managed-encryption-key-portal.md
             - name: Ügyfélszéf használata

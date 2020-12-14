@@ -1,19 +1,19 @@
 ---
-title: Telemetria processzorok (előzetes verzió) – Azure Monitor Application Insights Java
-description: Telemetria processzorok Azure Monitor Application Insights Javához
+title: Telemetria processzorok (előzetes verzió) – Azure Monitor Application Insights Javához
+description: Telemetria-processzorok konfigurálása a Azure Monitor Application Insights Javához
 ms.topic: conceptual
 ms.date: 10/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 316243e130345ce1b009e065cf9d8250c501ee84
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7fd53c77b64e028ffad25c8fa7a9eefd95439513
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601033"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387156"
 ---
-# <a name="telemetry-processors-preview-for-azure-monitor-application-insights-java"></a>Telemetria processzorok (előzetes verzió) Azure Monitor Application Insights Javához
+# <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetria processzorok (előzetes verzió) – Azure Monitor Application Insights Javához
 
 > [!NOTE]
 > Ez a funkció még mindig előzetes verzióban érhető el.
