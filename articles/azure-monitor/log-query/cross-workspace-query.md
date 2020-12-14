@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a6b328bc076ffa619921a8698549e95e6f15c60
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013649"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400760"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Napló lekérdezés végrehajtása a munkaterületeken és alkalmazásokon átnyúló Azure Monitorekben
 
@@ -22,7 +22,7 @@ A több munkaterületen és alkalmazásokban tárolt adatlekérdezés két móds
 2. Implicit módon használja az [erőforrás-környezet lekérdezéseit](../platform/design-logs-deployment.md#access-mode). Ha egy adott erőforrás, erőforráscsoport vagy előfizetés kontextusában kérdez le adatokat, a rendszer beolvassa a kapcsolódó adatokat az összes olyan munkaterületről, amely ezen erőforrások adatait tartalmazza. Az alkalmazásokban tárolt adatApplication Insights nem lesznek beolvasva.
 
 > [!IMPORTANT]
-> Ha [munkaterületen alapuló Application Insights erőforrás-](../app/create-workspace-resource.md) telemetria használ, a rendszer egy log Analytics munkaterületen tárolja az összes többi naplózási adattal. A log () kifejezés használatával olyan lekérdezést írhat, amely több munkaterületen is tartalmaz alkalmazást. Ugyanazon a munkaterületen több alkalmazás esetében nincs szükség több munkaterület-lekérdezésre.
+> Ha [munkaterületen alapuló Application Insights erőforrás-](../app/create-workspace-resource.md) telemetria használ, a rendszer egy log Analytics munkaterületen tárolja az összes többi naplózási adattal. A munkaterület () kifejezés használatával olyan lekérdezést írhat, amely több munkaterületen is tartalmaz alkalmazást. Ugyanazon a munkaterületen több alkalmazás esetében nincs szükség több munkaterület-lekérdezésre.
 
 
 ## <a name="cross-resource-query-limits"></a>Erőforrások közötti lekérdezési korlátok 
@@ -140,7 +140,7 @@ applicationsScoping
 
 ![Idődiagramját](media/cross-workspace-query/chart.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a naplófájlok [elemzését Azure monitor](log-query-overview.md) a naplók áttekintését, valamint a Azure monitor naplózási adatai strukturált módját.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: b685f716688cfbe732fa7d3566e1af97cc81272a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 390d2c8488fd2b35c775eabe43677b9349b547a1
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652110"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401644"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Oktatóanyag: egyéni elemzési szabályok létrehozása a fenyegetések észleléséhez
 
@@ -97,14 +97,14 @@ Egyéni elemzési szabályokat hozhat létre, amelyek segítségével megkereshe
        >
        > - A **riasztások** olyan események gyűjteményei, amelyek együttesen jelentősek a biztonsági szempontból. A riasztások egyetlen eseményt tartalmazhatnak, ha az esemény jelentős biztonsági következményekkel járt – például az Office-munkaidőn kívüli külföldi országtól érkező rendszergazdai bejelentkezés.
        >
-       > - Mellesleg mi az **incidens**? Az Azure Sentinel belső logikája **incidenseket** vagy **alerts** riasztási csoportokat hoz létre. Az incidensek várólistája az elemzők munkahelyi osztályozásának, kivizsgálásának és szervizelésének központi eleme.
+       > - Mellesleg mi az **incidens**? Az Azure Sentinel belső logikája **incidenseket** vagy  riasztási csoportokat hoz létre. Az incidensek várólistája az elemzők munkahelyi osztályozásának, kivizsgálásának és szervizelésének központi eleme.
        > 
        > Az Azure Sentinel a különböző adatforrásokból származó nyers eseményeket és mások által már feldolgozott riasztásokat is tartalmaz. Fontos megjegyezni, hogy az Ön által felmerülő, bármikor felhasználható.
 
        > [!IMPORTANT]
        > Az események csoportosítása jelenleg nyilvános előzetes verzióban érhető el. Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
     
-    1. A **letiltási** szakaszban bekapcsolhatja a **futó lekérdezés leállítása a riasztás létrehozása után** beállítást, **On** ha a riasztást követően felfüggeszti a szabály működését egy olyan időszakra, amely meghaladja a lekérdezési időközt. Ha bekapcsolja ezt a beállítást, be kell állítania a **lekérdezés leállítása leállítását** azon időtartamra, ameddig a lekérdezésnek futnia kell, akár 24 óráig.
+    1. A **letiltási** szakaszban bekapcsolhatja a **futó lekérdezés leállítása a riasztás létrehozása után** beállítást,  ha a riasztást követően felfüggeszti a szabály működését egy olyan időszakra, amely meghaladja a lekérdezési időközt. Ha bekapcsolja ezt a beállítást, be kell állítania a **lekérdezés leállítása leállítását** azon időtartamra, ameddig a lekérdezésnek futnia kell, akár 24 óráig.
 
 1. Az **incidens beállításai** lapon megadhatja, hogy az Azure Sentinel hogyan kapcsolja be a riasztásokat a gyakorlatban előforduló incidensekre. Ha ez a lap egyedül marad, az Azure Sentinel egyetlen, külön incidenst hoz létre minden riasztásból. Dönthet úgy, hogy nem hozott létre incidenseket, vagy egyetlen incidensbe csoportosítja a több riasztást. ehhez módosítsa az ezen a lapon található beállításokat.
 
@@ -145,7 +145,13 @@ Egyéni elemzési szabályokat hozhat létre, amelyek segítségével megkereshe
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Egy ütemezett szabályt nem sikerült végrehajtani, vagy a rendszer automatikusan letiltottként jeleníti meg a nevet
+### <a name="issue-no-events-appear-in-query-results"></a>Probléma: a lekérdezés eredményeiben nem jelennek meg események
+
+Ha az **esemény-csoportosítás** úgy van beállítva, hogy **riasztást indítson az egyes eseményekhez**, majd bizonyos esetekben a lekérdezés eredményeinek későbbi megtekintésekor (például egy incidensből riasztások visszavonásakor), lehetséges, hogy egyetlen lekérdezési eredmény sem fog megjelenni. Ennek az az oka, hogy az eseménynek a riasztáshoz való kapcsolódása az adott esemény adatainak kivonatolásával, valamint a kivonatnak a lekérdezésbe való belefoglalásával valósul meg. Ha a lekérdezés eredményei megváltoztak a riasztás létrehozása óta, a kivonat többé nem lesz érvényes, és a rendszer nem jeleníti meg az eredményeket. 
+
+Az események megtekintéséhez manuálisan távolítsa el a sort a kivonatból a szabály lekérdezésében, majd futtassa a lekérdezést.
+
+### <a name="issue-a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Probléma: egy ütemezett szabályt nem sikerült végrehajtani, vagy a rendszer automatikusan letiltottként jeleníti meg a nevet
 
 Ritkán fordul elő, hogy egy ütemezett lekérdezési szabály nem fut, de ez megtörténhet. Az Azure Sentinel a meghibásodások meghatározott típusa és a hozzájuk kapcsolódó körülmények alapján osztályozza az átmeneti vagy állandó hibákat.
 

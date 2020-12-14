@@ -3,12 +3,12 @@ title: Figyelés és naplózás – Azure
 description: Ez a cikk áttekintést nyújt az élő videók elemzéséről IoT Edge figyelésről és naplózásról.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ae455a4157cd649f610620e486323ac2c0a5744
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567554"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401049"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
@@ -21,7 +21,7 @@ Azt is megismerheti, hogyan szabályozhatja a modul által generált naplókat.
 A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria az alábbi besorolásnak megfelelően.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Az események osztályozása&quot;:::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Az események osztályozása":::
 
 * Működés: a felhasználó által végrehajtott műveletek részeként vagy egy [adathordozó-gráf](media-graph-concept.md)végrehajtása során generált események.
    
@@ -32,16 +32,16 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
       
       ```
       {
-        &quot;body&quot;: {
-          &quot;outputType&quot;: &quot;assetName&quot;,
-          &quot;outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200512T233309Z&quot;
+        "body": {
+          "outputType": "assetName",
+          "outputLocation": "sampleAssetFromEVR-LVAEdge-20200512T233309Z"
         },
-        &quot;applicationProperties&quot;: {
-          &quot;topic&quot;: &quot;/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>&quot;,
-          &quot;subject&quot;: &quot;/graphInstances/Sample-Graph-2/sinks/assetSink&quot;,
-          &quot;eventType&quot;: &quot;Microsoft.Media.Graph.Operational.RecordingStarted&quot;,
-          &quot;eventTime&quot;: &quot;2020-05-12T23:33:10.392Z&quot;,
-          &quot;dataVersion&quot;: &quot;1.0"
+        "applicationProperties": {
+          "topic": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>",
+          "subject": "/graphInstances/Sample-Graph-2/sinks/assetSink",
+          "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
+          "eventTime": "2020-05-12T23:33:10.392Z",
+          "dataVersion": "1.0"
         }
       }
       ```
@@ -160,7 +160,7 @@ A fentiekben a lvaEdge az élő videó Analytics neve IoT Edge modulon, és az �
 
 Az események a peremhálózati eszközről származnak, és a peremhálózati vagy a felhőben is felhasználhatók. A IoT Edge élő videó-elemzés által generált események megfelelnek az Azure IoT Hub által létrehozott [streaming Messaging-mintának](../../iot-hub/iot-hub-devguide-messages-construct.md) , a rendszer tulajdonságai, az alkalmazás tulajdonságai és a törzs alapján.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 A IoT Hubon keresztül megfigyelt minden esemény az alább leírtak szerint egy közös tulajdonsággal fog rendelkezni.
 
@@ -168,7 +168,7 @@ A IoT Hubon keresztül megfigyelt minden esemény az alább leírtak szerint egy
 |---|---|---|---|
 |üzenet-azonosító |rendszer |guid|  Egyedi eseményazonosító.|
 |témakör| applicationProperty |sztring|    Azure Resource Manager a Media Services-fiók elérési útja.|
-|tulajdonos|   applicationProperty |sztring|    Az eseményt kibocsátó entitás alútvonala.|
+|tárgy|   applicationProperty |sztring|    Az eseményt kibocsátó entitás alútvonala.|
 |eventTime| applicationProperty|    sztring| Az esemény létrehozásának ideje.|
 |eventType| applicationProperty |sztring|    Eseménytípus azonosítója (lásd alább).|
 |body (Törzs)|body (Törzs)  |object|    Adott esemény adatai.|
@@ -186,7 +186,7 @@ A gráfhoz társított Azure Media Service-fiókot jelöli.
 
 `/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Media/mediaServices/{accountName}`
 
-#### <a name="subject"></a>tulajdonos
+#### <a name="subject"></a>tárgy
 
 Az eseményt kibocsátó entitás:
 
@@ -205,7 +205,7 @@ Az Eseménytípus a következő sémának megfelelő névtérhez van rendelve:
 
 #### <a name="event-classes"></a>Eseményosztályok
 
-|Osztály neve|Leírás|
+|Osztály neve|Description|
 |---|---|
 |Elemzés  |A tartalom elemzése részeként generált események.|
 |Diagnosztika    |A problémák és a teljesítmény diagnosztizálását segítő események.|
@@ -223,6 +223,85 @@ Példák:
 
 Az esemény időpontját a ISO8601 karakterlánc írja le, és ez az esemény időpontjában következik be.
 
+### <a name="azure-monitor-collection-using-telegraf"></a>Azure Monitor-gyűjtemény a-ben Graf használatával
+
+Ezek a metrikák a IoT Edge modul Live Video Analytics szolgáltatását jelentik majd:  
+
+|Metrika neve|Típus|Címke|Description|
+|-----------|----|-----|-----------|
+|lva_active_graph_instances|Kijelző|iothub, edge_device, module_name, graph_topology|Az aktív gráfok teljes száma topológia szerint.|
+|lva_received_bytes_total|Számláló|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Egy csomópont által fogadott bájtok teljes száma. Csak RTSP-források esetén támogatott|
+|lva_data_dropped_total|Számláló|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node, data_kind|Az eldobott adatmennyiség (események, adathordozók stb.) számlálója|
+
+> [!NOTE]
+> A [Prometheus-végpont](https://prometheus.io/docs/practices/naming/) a tároló **9600** -es portjánál van kitéve. Ha az élő videó-elemzést IoT Edge "lvaEdge" modulban nevezi el, akkor hozzáférhet a metrikához, ha a GET kérelmet küld http://lvaEdge:9600/metrics .   
+
+A következő lépésekkel engedélyezheti a metrikák gyűjteményét az élő videó Analytics IoT Edge modulban:
+
+1. Hozzon létre egy mappát a fejlesztői gépen, és navigáljon a mappára
+
+1. A mappában hozzon létre egy `telegraf.toml` fájlt a következő tartalommal
+    ```
+    [agent]
+        interval = "30s"
+        omit_hostname = true
+
+    [[inputs.prometheus]]
+      metric_version = 2
+      urls = ["http://edgeHub:9600/metrics", "http://edgeAgent:9600/metrics", "http://{LVA_EDGE_MODULE_NAME}:9600/metrics"]
+
+    [[outputs.azure_monitor]]
+      namespace_prefix = ""
+      region = "westus"
+      resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
+    ```
+    > [!IMPORTANT]
+    > Győződjön meg arról, hogy lecserélte a tartalmi fájlban lévő változókat (a `{ }` ).
+
+1. A mappában hozzon létre egy- `.dockerfile` t a következő tartalommal
+    ```
+        FROM telegraf:1.15.3-alpine
+        COPY telegraf.toml /etc/telegraf/telegraf.conf
+    ```
+
+1. Mostantól a Docker CLI-parancs használatával hozza **létre a Docker-fájlt** , és tegye közzé a rendszerképet a Azure Container Registry.
+    1. Útmutató a [Docker-rendszerképek leküldéséhez és lekéréséhez – Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).  További információ: Azure Container Registry (ACR) [itt](https://docs.microsoft.com/azure/container-registry/)található.
+
+
+1. Miután befejeződött a leküldéses ACR, a telepítési jegyzékfájlban adja hozzá a következő csomópontot:
+    ```
+    "telegraf": 
+    {
+      "settings": 
+        {
+            "image": "{ACR_LINK_TO_YOUR_TELEGRAF_IMAGE}"
+        },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": 
+        {
+            "AZURE_TENANT_ID": { "value": "{YOUR_TENANT_ID}" },
+            "AZURE_CLIENT_ID": { "value": "{YOUR CLIENT_ID}" },
+            "AZURE_CLIENT_SECRET": { "value": "{YOUR_CLIENT_SECRET}" }
+        }
+    ``` 
+    > [!IMPORTANT]
+    > Győződjön meg arról, hogy lecserélte a tartalmi fájlban lévő változókat (a `{ }` ).
+
+
+1. **Hitelesítés**
+    1. A Azure Monitor az [egyszerű szolgáltatásnév hitelesíti](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication).
+        1. A Azure Monitor Graf beépülő modul [számos hitelesítési módszert](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication)tesz elérhetővé. A következő környezeti változókat kell beállítani az egyszerű szolgáltatásnév hitelesítés használatára.  
+            • AZURE_TENANT_ID: azt a bérlőt adja meg, amelynek a hitelesítését végzi.  
+            • AZURE_CLIENT_ID: a használni kívánt alkalmazás ügyfél-AZONOSÍTÓját adja meg.  
+            • AZURE_CLIENT_SECRET: a használni kívánt alkalmazás titkát adja meg.  
+    >[!TIP]
+    > Az egyszerű szolgáltatásnév a "**figyelési mérőszámok közzétevője**" szerepkört is megadhatja.
+
+1. A modulok üzembe helyezése után a metrikák egyetlen névtérben jelennek meg Azure Monitorban, és a Prometheus által kibocsátott metrikák neveivel egyezőek lesznek. 
+    1. Ebben az esetben a Azure Portalban navigáljon a IoT Hub, majd a bal oldali navigációs ablaktáblán kattintson a "**metrikák**" hivatkozásra. Itt kell látnia a metrikákat.
 ## <a name="logging"></a>Naplózás
 
 Más IoT Edge modulokhoz hasonlóan a peremhálózati eszközön is ellenőrizheti [a tároló naplóit](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . A naplókba írt adatokat a [következő modul Twin](module-twin-configuration-schema.md) tulajdonságai szabályozzák:

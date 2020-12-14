@@ -1,18 +1,18 @@
 ---
 title: 'Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portalban (előzetes verzió)'
 description: Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot, és hogyan konfigurálhat engedélyeket a használatának megkezdéséhez.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 06e62f49b996eac09b9a0a6cb9001eb362833168
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359298"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400386"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portal
 
@@ -25,7 +25,7 @@ Ebben a rövid útmutatóban létrehoz egy Azure-beli hatáskörébe tartozó fi
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Saját [Azure Active Directory bérlője](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* Saját [Azure Active Directory-bérlő](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
 
 * A fióknak engedéllyel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az előfizetésben
 

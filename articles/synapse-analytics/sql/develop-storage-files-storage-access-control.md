@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446626"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400675"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
 A kiszolgáló nélküli SQL-készlet lekérdezése közvetlenül az Azure Storage-ból olvassa be a fájlokat. Az Azure Storage-beli fájlok eléréséhez szükséges engedélyek két szinten vannak szabályozva:
 - **Tárolási szint** – a felhasználónak engedéllyel kell rendelkeznie a mögöttes tárolási fájlok eléréséhez. A tároló rendszergazdájának engedélyeznie kell az Azure AD-rendszerbiztonsági tag számára a fájlok olvasását/írását, vagy a tároló eléréséhez használni kívánt SAS-kulcs létrehozását.
-- **SQL-szolgáltatási szint** – a felhasználónak engedéllyel kell rendelkeznie az `SELECT` adatok [külső táblából](develop-tables-external-tables.md) való beolvasásához vagy `ADMINISTER BULK ADMIN` a végrehajtáshoz szükséges engedélyekhez, `OPENROWSET` valamint a tároló elérésére használt hitelesítő adatok használatára is.
+- **SQL-szolgáltatási szint** – a felhasználónak engedélyt kell adni az adat [külső tábla](develop-tables-external-tables.md) használatával történő olvasásához vagy a `OPENROWSET` függvény végrehajtásához. További információ [a szükséges engedélyekről ebben a szakaszban](develop-storage-files-overview.md#permissions).
 
 Ez a cikk ismerteti a használható hitelesítő adatok típusait, valamint azt, hogy az SQL és az Azure AD-felhasználók hogyan használják a hitelesítő adatokat.
 
@@ -318,7 +318,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE 
 GO
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alább felsorolt cikkek segítenek megismerni a különböző típusú mappák, fájltípusok és a nézetek létrehozásának és használatának a lekérdezését:
 

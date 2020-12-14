@@ -7,12 +7,12 @@ author: vladvino
 ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.openlocfilehash: 19080679291b88b693c95bd71f8ddc0e59286356
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fdf7e842959e09a8ec35017031f745cb16d13c6d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90057412"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400403"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>Rövid útmutató: új Azure API Management Service-példány létrehozása a Visual Studio Code használatával
 
@@ -42,7 +42,7 @@ Válassza a bejelentkezés az Azure-ba **...** lehetőséget a böngészőablak 
 
 Miután bejelentkezett a Microsoft-fiókba, az *Azure: API Management* Explorer ablaktábláján megjelennek az Azure-előfizetések.
 
-Kattintson a jobb gombbal a használni kívánt előfizetésre, és válassza az **API Management létrehozása az Azure-ban**lehetőséget.
+Kattintson a jobb gombbal a használni kívánt előfizetésre, és válassza az **API Management létrehozása az Azure-ban** lehetőséget.
 
 ![API Management varázsló létrehozása a VS Code-ban](./media/vscode-create-service-instance/vscode-apim-create.png)
 
@@ -51,11 +51,11 @@ A megnyíló ablaktáblán adja meg az új API Management példány nevét. Glob
 A rendszer új API Management példányt (és szülő erőforráscsoportot) hoz létre a megadott névvel. A példány alapértelmezés szerint az *USA nyugati* régiójában jön létre, a *felhasználási* SKU-val.
 
 > [!TIP]
-> Ha az *Azure API Management bővítmény beállításaiban*engedélyezi a **speciális létrehozást** , megadhat egy [API Management SKU](https://azure.microsoft.com/pricing/details/api-management/)-t, [Azure-régiót](https://status.azure.com/en-us/status)és egy [erőforráscsoportot](../azure-resource-manager/management/overview.md) is a API Management példány üzembe helyezéséhez.
+> Ha az *Azure API Management bővítmény beállításaiban* engedélyezi a **speciális létrehozást** , megadhat egy [API Management SKU](https://azure.microsoft.com/pricing/details/api-management/)-t, [Azure-régiót](https://status.azure.com/en-us/status)és egy [erőforráscsoportot](../azure-resource-manager/management/overview.md) is a API Management példány üzembe helyezéséhez.
 >
 > Míg a *fogyasztási* SKU kevesebb mint egy percet vesz igénybe, a többi sku általában 30-40 percet vesz igénybe.
 
-Most már készen áll az első API-k importálására és közzétételére. Ezt megteheti, és a Visual Studio Code-ban a bővítményen belül közös API Management műveleteket is végrehajthat. További információkért tekintse meg a [Visual Studio Code API Management bővítményét](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) .
+Most már készen áll az első API-k importálására és közzétételére. Ezt megteheti, és a Visual Studio Code-ban a bővítményen belül közös API Management műveleteket is végrehajthat. További információkért tekintse meg [az oktatóanyagot](visual-studio-code-tutorial.md) .
 
 ![Az újonnan létrehozott API Management példány a VS Code API Management bővítmény panelen](./media/vscode-create-service-instance/vscode-apim-instance.png)
 
@@ -67,7 +67,7 @@ Másik lehetőségként kiválaszthatja a **delete API Management** elemet a API
 
 ![API Management példány törlése a VS Code-ból](./media/vscode-create-service-instance/vscode-apim-delete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Az első API importálása és közzététele](import-and-publish.md)
+> [API-k importálása és kezelése az API Management bővítmény használatával](visual-studio-code-tutorial.md)

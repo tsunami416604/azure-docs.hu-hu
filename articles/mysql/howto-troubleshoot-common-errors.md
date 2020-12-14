@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 8f735ecd4f8b79b4f5bd0c95d0bfb9f280d93833
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 39e058487effea432369b74a9e638f30722ef089
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387343"
+ms.locfileid: "97401712"
 ---
 # <a name="common-errors"></a>Gyakori hibák
 
@@ -73,8 +73,30 @@ A fenti hiba akkor fordulhat elő, ha egy memóriaképfájl importálásával va
 > [!Tip] 
 > A sed vagy a Perl használatával módosítsa a memóriaképfájl vagy az SQL-szkriptet a definomabb = utasítás helyére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="common-connection-errors-for-server-admin-login"></a>A kiszolgáló-rendszergazdai bejelentkezés gyakori hálózati hibái
+
+Azure Database for MySQL-kiszolgáló létrehozásakor a kiszolgáló rendszergazdai bejelentkezési adatait a kiszolgáló létrehozásakor kell megadnia. A kiszolgáló-rendszergazdai bejelentkezés lehetővé teszi új adatbázisok létrehozását, új felhasználók hozzáadását és engedélyek megadását. Ha a kiszolgáló-rendszergazdai bejelentkezés törölve lett, az engedélyei visszavonásra kerülnek, vagy megváltoznak a jelszavuk, előfordulhat, hogy a kapcsolatok során megtekintheti az alkalmazás kapcsolódási hibáit. A következő gyakori hibák némelyike
+
+#### <a name="error-1045-28000-access-denied-for-user-usernameip-address-using-password-yes"></a>HIBA 1045 (28000): hozzáférés megtagadva a felhasználó felhasználóneve @ IP-címe (jelszó használata: igen)
+
+A fenti hiba a következő esetekben fordul elő:
+
+* A Felhasználónév nem létezik
+* A felhasználói Felhasználónév törölve
+* a jelszó módosítása vagy alaphelyzetbe állítása
+
+A hiba megoldása a következő: 
+
+**Megoldás**: 
+* Annak ellenőrzése, hogy a "username" érvényes felhasználóként van-e a kiszolgálón, vagy véletlenül törölve van-e. A következő lekérdezés végrehajtásához jelentkezzen be a Azure Database for MySQL felhasználóba:
+  ```sql
+  select user from mysql.user;
+  ```
+* Ha a fenti lekérdezés végrehajtásához nem tud bejelentkezni a MySQL-be, javasoljuk, hogy [Azure Portal használatával állítsa alaphelyzetbe a rendszergazdai jelszót](howto-create-manage-server-portal.md). A jelszó alaphelyzetbe állítása lehetőség a Azure Portal segítségével újból létrehozhatja a felhasználót, alaphelyzetbe állíthatja a jelszót, és visszaállíthatja a rendszergazdai engedélyeket, ami lehetővé teszi a kiszolgáló-rendszergazda használatával történő bejelentkezést és további műveletek elvégzését.
+
+## <a name="next-steps"></a>Következő lépések
 Ha nem találta meg a keresett választ, vegye figyelembe a következőket:
+
 - Tegye fel kérdéseit a [Microsoft Q&a kérdéses oldalra](/answers/topics/azure-database-mysql.html) vagy [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mysql).
 - Küldjön e-mailt a MySQL-hez készült Azure Database for MySQL Team [ @Ask Azure db](mailto:AskAzureDBforMySQL@service.microsoft.com)-nek. Ez az e-mail-cím nem technikai támogatási alias.
 - Vegye fel a kapcsolatot az Azure támogatási szolgálatával, és kérjen [jegyet a Azure Portalból](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.

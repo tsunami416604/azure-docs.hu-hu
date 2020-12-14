@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: c0253dc3c9dc029cd964fb32b148be1405e7fbad
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2ff35a8d86534a99b8957a9272f9a1eb59fc27ab
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780178"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399978"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: OIDC-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben
 
@@ -49,7 +49,7 @@ Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png" alt-text="A képernyőképen az egyszeri bejelentkezési lehetőség és a regisztrációs gomb látható." lightbox="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png":::
 
 
-2. Válassza a **regisztráció** lehetőséget, majd az alkalmazás fejlesztői bejelentkezési oldalát. Jelentkezzen be Azure Active Directory bejelentkezési hitelesítő adataival. 
+2. Válassza a **regisztráció** lehetőséget, és az alkalmazás fejlesztői bejelentkezési oldalára kerül sor. Jelentkezzen be Azure Active Directory bejelentkezési hitelesítő adataival. 
 
    > [!IMPORTANT]
     > Ha már rendelkezik előfizetéssel az alkalmazáshoz, akkor a felhasználói adatok érvényesítése és a bérlő/könyvtár adatai történnek. Ha az alkalmazás nem tudja ellenőrizni a felhasználót, akkor a rendszer átirányítja Önt az Application Service vagy a hiba oldalára.
@@ -74,7 +74,7 @@ OIDC-alapú alkalmazás hozzáadása Azure Active Directory
 
 Ha elkészült a rövid útmutatóval, érdemes lehet törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan törölhet egy alkalmazást.
 > [!div class="nextstepaction"]

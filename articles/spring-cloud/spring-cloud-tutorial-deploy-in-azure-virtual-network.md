@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2f5c16fce68213b291b970c11921a17b39527270
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1e16c984e48c11961dba0c977d3bdbddbd6bdf36
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032117"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400319"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Oktatóanyag: az Azure Spring Cloud üzembe helyezése az Azure Virtual Networkben (VNet Injection)
 
@@ -58,7 +58,7 @@ Ha már rendelkezik virtuális hálózattal az Azure Spring Cloud Service-péld�
     |-----------------|--------------------------------------------------|
     |Előfizetés     |Válassza ki előfizetését.                         |
     |Erőforráscsoport   |Válassza ki az erőforráscsoportot, vagy hozzon létre egy újat.  |
-    |Name (Név)             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
+    |Name             |Adja meg az *Azure-Spring-Cloud-vnet*                   |
     |Hely         |Válassza ki az **USA keleti** régióját                                |
 
 1. Kattintson a **Tovább gombra: IP-címek >**. 
@@ -157,19 +157,22 @@ Ezek a hálózati erőforrások a fent létrehozott virtuális hálózathoz csat
 
 A kis alhálózat-tartomány menti az IP-címeket, de korlátozásokat biztosít az Azure Spring Cloud által megtartható alkalmazás-példányok maximális számánál. 
 
-| CIDR | Összes IP-cím | Elérhető IP-címek | Alkalmazás-példányok maximális száma                                        |
-| ---- | --------- | ------------- | ------------------------------------------------------------ |
-| /28  | 16        | 8             | <p> Alkalmazás 1 maggal: 96 <br/> Alkalmazás 2 maggal: 48<br/>  Alkalmazás 3 maggal: 32 <br/> Alkalmazás 4 maggal: 24 </p> |
-| /27  | 32        | 24            | <p> Alkalmazás 1 maggal: 228<br/> Alkalmazás 2 maggal: 144<br/>  Alkalmazás 3 maggal: 96 <br/>  Alkalmazás 4 maggal: 72</p> |
-| /26  | 64        | 56            | <p> Alkalmazás 1 maggal: 500<br/> Alkalmazás 2 maggal: 336<br/>  Alkalmazás 3 maggal: 224<br/>  Alkalmazás 4 maggal: 168</p> |
-| /25  | 128       | 120           | <p> Alkalmazás 1 maggal: 500<br> Alkalmazás 2 maggal: 500<br>  Alkalmazás 3 maggal: 480<br>  Alkalmazás 4 maggal: 360</p> |
-| /24  | 256       | 248           | <p> Alkalmazás 1 maggal: 500<br/> Alkalmazás 2 maggal: 500<br/>  Alkalmazás 3 maggal: 500<br/>  Alkalmazás 4 maggal: 500</p> |
+| Alkalmazás-alhálózat CIDR | Összes IP-cím | Elérhető IP-címek | Alkalmazás-példányok maximális száma                                        |
+| --------------- | --------- | ------------- | ------------------------------------------------------------ |
+| /28             | 16        | 8             | <p> Alkalmazás 1 maggal: 96 <br/> Alkalmazás 2 maggal: 48<br/>  Alkalmazás 3 maggal: 32 <br/> Alkalmazás 4 maggal: 24 </p> |
+| /27             | 32        | 24            | <p> Alkalmazás 1 maggal: 228<br/> Alkalmazás 2 maggal: 144<br/>  Alkalmazás 3 maggal: 96 <br/>  Alkalmazás 4 maggal: 72</p> |
+| /26             | 64        | 56            | <p> Alkalmazás 1 maggal: 500<br/> Alkalmazás 2 maggal: 336<br/>  Alkalmazás 3 maggal: 224<br/>  Alkalmazás 4 maggal: 168</p> |
+| /25             | 128       | 120           | <p> Alkalmazás 1 maggal: 500<br> Alkalmazás 2 maggal: 500<br>  Alkalmazás 3 maggal: 480<br>  Alkalmazás 4 maggal: 360</p> |
+| /24             | 256       | 248           | <p> Alkalmazás 1 maggal: 500<br/> Alkalmazás 2 maggal: 500<br/>  Alkalmazás 3 maggal: 500<br/>  Alkalmazás 4 maggal: 500</p> |
 
+Az alhálózatok esetében 5 IP-címet az Azure foglal le, és az Azure Spring Cloud legalább 4 címet igényel. Legalább 9 IP-címet kötelező megadni, így a/29 és/30 nem működőképes.
+
+A szolgáltatás-futtatókörnyezeti alhálózat esetében a minimális méret a/28, és ez nem befolyásolja az alkalmazások példányainak számát.
 ## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazás üzembe helyezése az Azure Spring Cloud-ban a VNet](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Az Azure Spring Cloud hibaelhárítása a VNET-ben](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/05-troubleshooting-azure-spring-cloud-in-vnet.md)
 - [Az Azure Spring Cloud VNET való futtatásának felhasználói feladatai](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/06-customer-responsibilities-for-running-azure-spring-cloud-in-vnet.md)

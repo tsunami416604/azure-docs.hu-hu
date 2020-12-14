@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099113"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400607"
 ---
 # <a name="what-is-azure-digital-twins"></a>Mi az az Azure Digital Twins?
 
@@ -52,7 +52,7 @@ A minta vizualizáció a következőképpen néz ki:
 
 Az Azure Digital Twins gazdag **eseményt** biztosít a gráfnak az adatfeldolgozással és az üzleti logikával való folyamatos megőrzéséhez. A külső számítási erőforrások, például a [Azure functions](../azure-functions/functions-overview.md)összekapcsolhatók az adatfeldolgozás rugalmas, testre szabott módon történő elvégzéséhez.
 
-Az Azure Digital Twins hatékony **lekérdezési API** -ját használva az élő végrehajtási környezetből is kinyerheti az eredményeket. Az API lehetővé teszi a részletes keresési feltételekkel való lekérdezést, beleértve a tulajdonságértékek, a kapcsolatok, a kapcsolati tulajdonságok, a modell információit és egyebeket. A lekérdezéseket kombinálhatja a környezettel kapcsolatos információk széles körének összegyűjtésével, valamint az Ön számára fontos egyéni kérdések megválaszolásával is.
+Az Azure Digital Twins hatékony **lekérdezési API**-ját használva az élő végrehajtási környezetből is kinyerheti az eredményeket. Az API lehetővé teszi a részletes keresési feltételekkel való lekérdezést, beleértve a tulajdonságértékek, a kapcsolatok, a kapcsolati tulajdonságok, a modell információit és egyebeket. A lekérdezéseket kombinálhatja a környezettel kapcsolatos információk széles körének összegyűjtésével, valamint az Ön számára fontos egyéni kérdések megválaszolásával is.
 
 ### <a name="input-from-iot-and-business-systems"></a>A IoT és az üzleti rendszerek bemenetei
 
@@ -88,7 +88,7 @@ Az Azure Digital Twins használatával végzett teljes megoldás a következő r
 
 Az alábbi ábra azt mutatja be, hogy az Azure Digital Twins egy nagyobb Azure IoT-megoldás kontextusában rejlik.
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="Képernyőkép az Azure Digital Twins Explorer alkalmazásról, amely a digitális ikreket jelképező csomópontok gráfját mutatja" border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="A bemeneti forrásokat, a kimeneti szolgáltatásokat és az ügyfélalkalmazások és a külső számítási erőforrások közötti kétirányú kommunikációt bemutató ábra." border="false" lightbox="media/overview/solution-context.png":::
 
 ## <a name="service-limits"></a>Szolgáltatási korlátozások
 
@@ -96,9 +96,6 @@ Az Azure Digital Twins-korlátok listáját a következő témakörben találhat
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha már használta az Azure Digital Twins első előzetes kiadását (október 2018), Ismerje meg, hogy mi változott:
-* [*Áttekintés: az első kiadástól való eltérések*](overview-differences.md)
+Ha már használta az Azure Digital Twins első előzetes kiadását (2018. október), Ismerje meg, hogy mi változott: [*Áttekintés: az első kiadástól való eltérések*](overview-differences.md).
 
-Vagy folytassa a munkát az Azure Digital Twins használatának első oktatóanyagával:
-
-[*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)
+Vagy folytassa a munkát az Azure Digital Twins szolgáltatással a gyors üzembe helyezési útmutatóval: rövid útmutató [*: példa a forgatókönyvek megismerésére*](quickstart-adt-explorer.md).

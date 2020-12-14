@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 03ef75f43d8c8c854c3803ceb30f31b292d566c3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 79f442c5ab7db92e69f5396f3f9205212bdf4d4d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033425"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399247"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok folyamatnaplózásába
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A [hálózati biztonsági csoport](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) folyamatábrája az Azure Network Watcher egyik funkciója, amely lehetővé teszi, hogy naplózza a NSG keresztül ÁRAMLÓ IP-forgalomra vonatkozó információkat. A flow-adatok az Azure Storage-fiókokba kerülnek, ahonnan elérheti, és exportálhatja bármely vizualizációs eszközre, SIEM-re vagy tetszőleges AZONOSÍTÓra.
 
@@ -371,9 +371,11 @@ Nem **kompatibilis szolgáltatások**: az aktuális NSG miatt az Azure-szolgált
 
 **Engedélyezés a kritikus virtuális hálózatok/alhálózatokon**: a flow-naplókat az előfizetés minden kritikus virtuális hálózatok/alhálózatán engedélyezni kell, mint a naplózási és biztonsági ajánlott eljárás. 
 
-**NSG-naplózás engedélyezése az erőforráshoz csatolt összes NSG**: az Azure-ban a flow naplózása a NSG-erőforráson van konfigurálva. Egy folyamat csak egyetlen NSG-szabályhoz lesz társítva. Az olyan forgatókönyvekben, ahol több NSG van használatban, javasoljuk, hogy engedélyezze a NSG flow-naplókat minden olyan NSG, amely az erőforrás alhálózatát vagy hálózati adapterét alkalmazza az összes forgalom rögzítésének biztosításához. További információ: a hálózati biztonsági csoportokban lévő [forgalom kiértékelésének módja](../virtual-network/network-security-group-how-it-works.md) .
+**NSG-naplózás engedélyezése az erőforráshoz csatolt összes NSG**: az Azure-ban a flow naplózása a NSG-erőforráson van konfigurálva. Egy folyamat csak egyetlen NSG-szabályhoz lesz társítva. Az olyan forgatókönyvekben, ahol több NSG van használatban, javasoljuk, hogy engedélyezze a NSG flow-naplókat az erőforrás alhálózatán vagy hálózati adapterén alkalmazott összes NSG az összes forgalom rögzítésének biztosítása érdekében. További információ: a hálózati biztonsági csoportokban lévő [forgalom kiértékelésének módja](../virtual-network/network-security-group-how-it-works.md) . 
 
-A **hálózati adapteren és az alhálózaton is NSG**: abban az esetben, ha a NSG a hálózati adapteren, valamint az alhálózati szinten van konfigurálva, akkor a folyamat naplózását mindkét NSG engedélyezni kell. 
+Néhány gyakori forgatókönyv:
+1. **Több NSG egy hálózati adapteren**: Ha több NSG van csatolva egy hálózati adapterhez, a flow naplózást mindegyiken engedélyezni kell
+1. A **hálózati adapteren és az alhálózaton is NSG**: abban az esetben, ha a NSG a hálózati adapteren, valamint az alhálózati szinten van konfigurálva, akkor a folyamat naplózását mindkét NSG engedélyezni kell. 
 
 **Tárolási kiépítés**: a tárterületet a várt flow-naplózási kötetnek megfelelően kell kiépíteni.
 

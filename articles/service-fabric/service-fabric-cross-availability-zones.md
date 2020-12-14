@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d8e4a9201c14e71520bd58ff1017b700ca47fa21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109817"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401729"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -407,12 +407,12 @@ A több rendelkezésre állási zóna támogatásához engedélyezni kell a Serv
 >[!NOTE]
 > * A nyilvános IP-cím és a Load Balancer erőforrásnak a cikkben korábban ismertetett standard SKU-t kell használnia.
 > * a nodeType "multipleAvailabilityZones" tulajdonsága csak a nodeType létrehozásakor adható meg, és később nem módosítható. Ezért a meglévő nodeTypes nem konfigurálhatók ezzel a tulajdonsággal.
-> * Ha a "hierarchicalUpgradeDomain" érték ki van hagyva vagy igaz értékre van állítva, a fürt és az alkalmazás központi telepítései lassabbak lesznek, mivel a fürt több frissítési tartománnyal rendelkezik. Fontos, hogy megfelelően módosítsa a frissítési szabályzat időtúllépését, hogy az a 15 frissítési tartományhoz tartozó frissítési idő időtartamára legyen beépítve.
+> * Ha a "sfZonalUpgradeMode" ki van hagyva vagy "hierarchikus" értékre van állítva, a fürt és az alkalmazás központi telepítése lassabb lesz, mert a fürtben több frissítési tartomány található. Fontos, hogy megfelelően módosítsa a frissítési szabályzat időtúllépését, hogy az a 15 frissítési tartományhoz tartozó frissítési idő időtartamára legyen beépítve.
 > * Javasoljuk, hogy a fürt megbízhatósági szintjét a Platinum értékre állítsa, hogy a fürt ne maradjon le az egyik zónában.
 
 >[!NOTE]
-> Az ajánlott eljárás az, ha a hierarchicalUpgradeDomain értéke TRUE (igaz) vagy kihagyva. Az üzembe helyezés során a virtuális gépek a kisebb mennyiségű replikát és/vagy az azok biztonságosabbá tételét érintő replikálási eloszlását fogja követni.
-> Ha az üzembe helyezési sebesség prioritás, vagy csak állapot nélküli számítási feladat fut, akkor a hierarchicalUpgradeDomain értékeként a következőt kell használnia: több az AZ. Ez azt eredményezi, hogy az UD Walk is párhuzamosan fog történni az AZ-ban.
+> Ajánlott eljárásként javasoljuk, hogy a sfZonalUpgradeMode Hierarchikusra állítsa, vagy hagyja figyelmen kívül. Az üzembe helyezés során a virtuális gépek a kisebb mennyiségű replikát és/vagy az azok biztonságosabbá tételét érintő replikálási eloszlását fogja követni.
+> Ha az üzembe helyezés sebessége prioritás, vagy csak állapot nélküli számítási feladat fut, akkor a sfZonalUpgradeMode párhuzamosan kell futnia. Ez azt eredményezi, hogy az UD Walk is párhuzamosan fog történni az AZ-ban.
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migrálás a csomópont típusára több Availability Zones
 Minden áttelepítési forgatókönyv esetében új nodeType kell hozzáadni, amely több rendelkezésre állási zónával is rendelkezik. Egy meglévő nodeType nem telepíthető át több zóna támogatásához.

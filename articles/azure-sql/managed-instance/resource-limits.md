@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 11c3de703a4b37318b7b99f60d74190fe8ec8610
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077370"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400573"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>A felügyelt Azure SQL-példány erőforráskorlátainak áttekintése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -108,7 +108,7 @@ A általános célú szolgáltatási szinten minden adatbázisfájl dedikált IO
 
 Ha bizonyos adatbázisfájlok esetében magas IO-késleltetést észlel, vagy ha azt látja, hogy a IOPS/átviteli sebesség eléri a korlátot, [a fájlméret növelésével](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)növelheti a teljesítményt.
 
-A maximális írási sebesség (azaz 22 MB/s) esetében is van egy példányra vonatkozó korlát, így előfordulhat, hogy nem tudja elérni a maximális fájlt a naplófájlban, mert a példány átviteli sebességére vonatkozó korlátot éri el.
+A napló írási sebességének maximális átviteli sebessége (lásd a fenti értékeket (pl. 22 MB/s), ezért előfordulhat, hogy a naplófájlban nem érhető el a maximális fájl, mert a példány átviteli sebességének korlátja.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
@@ -132,8 +132,8 @@ Az SQL felügyelt példány jelenleg csak a következő típusú előfizetések 
 
 A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt SQL-példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek (ez igény szerint növelhető, ha egy speciális [támogatási kérést hoz létre a Azure Portal az](../database/quota-increase-request.md) előfizetés típusától függően:
 
-- **Alhálózat korlátja** : azon alhálózatok maximális száma, amelyekben az SQL felügyelt példány példányai egyetlen régióban vannak üzembe helyezve.
-- **virtuális mag-egység korlátja** : az egyetlen régió összes példányán üzembe helyezhető virtuális mag egységek maximális száma. Az egyik GP-virtuális mag egy virtuális mag egységet használ, és az egyik BC-virtuális mag 4 virtuális mag-egységet vesz igénybe. A példányok teljes száma nincs korlátozva, amíg az virtuális mag-egység korlátján belül van.
+- **Alhálózat korlátja**: azon alhálózatok maximális száma, amelyekben az SQL felügyelt példány példányai egyetlen régióban vannak üzembe helyezve.
+- **virtuális mag-egység korlátja**: az egyetlen régió összes példányán üzembe helyezhető virtuális mag egységek maximális száma. Az egyik GP-virtuális mag egy virtuális mag egységet használ, és az egyik BC-virtuális mag 4 virtuális mag-egységet vesz igénybe. A példányok teljes száma nincs korlátozva, amíg az virtuális mag-egység korlátján belül van.
 
 > [!Note]
 > Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. A határértékek igény szerinti növeléséhez hozzon létre egy speciális [támogatási kérelmet a Azure Portal,](../database/quota-increase-request.md) ha az aktuális régióban több példányra van szüksége. Alternatív megoldásként új SQL-példányokat is létrehozhat egy másik Azure-régióban a támogatási kérések küldése nélkül.
@@ -142,7 +142,7 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 
 |Előfizetés típusa| SQL felügyelt példányok alhálózatai maximális száma | Virtuális mag egységek maximális száma * |
 | :---| :--- | :--- |
-|Használatalapú fizetés|3|320|
+|Utólagos elszámolás|3|320|
 |CSP |8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
 |Utólagos elszámolású fejlesztési/tesztelési funkciók|3|320|
 |Enterprise Dev/Test|3|320|
@@ -150,7 +150,7 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional és MSDN platformok|2|32|
 
-\* Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben az SQL felügyelt példánya telepítve van, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával** .
+\* Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben az SQL felügyelt példánya telepítve van, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
 
 \*\* A nagyobb alhálózat-és virtuális mag korlátozások a következő régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, Dél-Európa, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
 

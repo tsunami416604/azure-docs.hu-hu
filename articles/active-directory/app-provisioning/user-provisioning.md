@@ -11,16 +11,18 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 5b593add9c9d7be446798eecdd03b396c3fe513a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 486add54a6d41493c54bd7b0b0339804f6c31847
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174730"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399995"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Mi az az Azure AD-ben az automatizált SaaS-alkalmazások felhasználói üzembe helyezése?
 
-Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez [SaaS](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
+Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez [](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
+
+Ha többet szeretne megtudni a SCIM és a technikai közösségi beszélgetéshez való csatlakozásról, tekintse meg a [kiépítés a scim technikai Közösséggel](https://aka.ms/scimoverview)című témakört.
 
 ![Kiépítés – áttekintés diagram](./media/user-provisioning/provisioning-overview.png)
 

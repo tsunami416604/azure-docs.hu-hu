@@ -3,12 +3,12 @@ title: Üzemi készültség és ajánlott eljárások – Azure
 description: Ez a cikk útmutatást nyújt az éles környezetekben IoT Edge modul élő videós elemzésének konfigurálásához és üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906335"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400556"
 ---
 # <a name="production-readiness-and-best-practices"></a>Termelési készenlét és ajánlott eljárások
 
@@ -109,7 +109,11 @@ Ha a rövid útmutatóhoz és az oktatóanyagokhoz, például a [folyamatos vide
 
 ### <a name="naming-video-assets-or-files"></a>Videóobjektumok vagy -fájlok elnevezése
 
-Az adathordozó-diagramok lehetővé teszik az eszközök Felhőbeli vagy MP4-fájlokban való létrehozását az Edge-ben. A média eszközei a [folyamatos videorögzítés](continuous-video-recording-tutorial.md) vagy az [eseményvezérelt videofelvételek](event-based-video-recording-tutorial.md)segítségével hozhatók létre. Habár ezek az eszközök és fájlok megtekinthetők a kívánt névvel, a folyamatos videofelvétel-alapú adathordozó javasolt elnevezési struktúrája a következő: " &lt; anytext &gt; -$ {System. GraphTopologyName}-$ {System. GraphInstanceName}". Például a következő módon állíthatja be a assetNamePattern az eszköz fogadóján:
+Az adathordozó-diagramok lehetővé teszik az eszközök Felhőbeli vagy MP4-fájlokban való létrehozását az Edge-ben. A média eszközei a [folyamatos videorögzítés](continuous-video-recording-tutorial.md) vagy az [eseményvezérelt videofelvételek](event-based-video-recording-tutorial.md)segítségével hozhatók létre. Habár ezek az eszközök és fájlok megtekinthetők a kívánt névvel, a folyamatos videofelvétel-alapú adathordozó javasolt elnevezési struktúrája a következő: " &lt; anytext &gt; -$ {System. GraphTopologyName}-$ {System. GraphInstanceName}".   
+
+A helyettesítési mintát a $ Sign határozza meg, amelyet kapcsos zárójelek követnek: **$ {variableName}**.  
+
+Például a következő módon állíthatja be a assetNamePattern az eszköz fogadóján:
 
 ```
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
@@ -130,15 +134,29 @@ Ha ugyanannak a gráfnak több példányát futtatja, a diagram topológiájána
 Az esemény-alapú videók rögzítésére létrehozott MP4 videoklipek esetében az ajánlott elnevezési mintában a DateTime értéknek kell szerepelnie, az azonos gráf több példánya pedig a GraphTopologyName és a GraphInstanceName rendszerváltozókat használja. Például a következő módon állíthatja be a filePathPattern a file mosogatón: 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
 ```
 
 Vagy 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
 ```
+>[!NOTE]
+> A fenti példában a **fileSinkOutputName** változó a Graph-topológiában definiált minta változó nevet adja meg. Ez **nem** rendszerváltozó. 
 
+#### <a name="system-variables"></a>Rendszerváltozók
+Egyes rendszer által definiált változók a következők:
+
+|Rendszerváltozó|Leírás|Példa|
+|-----------|-----------|-----------|
+|System. DateTime|UTC dátum és idő ISO8601-fájlnak megfelelő formátumban (alapszintű képviseleti YYYYMMDDThhmmss).|20200222T173200Z|
+|System. PreciseDateTime|UTC dátum és idő ISO8601 fájlnak megfelelő formátumban, ezredmásodpercekkel (alapszintű YYYYMMDDThhmmss. ÉER).|20200222T 173200.123 Z|
+|System. GraphTopologyName|A végrehajtó gráf topológiájának felhasználó által megadott neve.|IngestAndRecord|
+|System. GraphInstanceName|A végrehajtó Graph-példány felhasználó által megadott neve.|camera001|
+
+>[!TIP]
+> A System. PreciseDateTime nem használható, ha az eszközök elnevezése a " a névben
 ### <a name="keeping-your-vm-clean"></a>A virtuális gép tisztán tartása
 
 A peremhálózati eszközként használt linuxos virtuális gép nem válaszol, ha nem rendszeres időközönként kezelik. Fontos, hogy a gyorsítótárak tisztán maradjanak, távolítsuk el a szükségtelen csomagokat, és távolítsa el a nem használt tárolókat a virtuális gépről. Ehhez az ajánlott parancsok egy készletét használhatja, amelyet a peremhálózati virtuális gépen használhat.
@@ -153,7 +171,7 @@ A peremhálózati eszközként használt linuxos virtuális gép nem válaszol, 
 
     Az automatikus eltávolítási lehetőség eltávolítja azokat a csomagokat, amelyeket a rendszer automatikusan telepített, mert más csomagok is szükségesek, de a többi csomag eltávolításával már nincs rájuk szükség.
 1. `sudo docker image ls` – A peremhálózati rendszeren lévő Docker-rendszerképek listáját jeleníti meg
-1. `sudo docker system prune `
+1. `sudo docker system prune`
 
     A Docker konzervatív módszert alkalmaz a fel nem használt objektumok (gyakran "Garbage Collection"), például képek, tárolók, kötetek és hálózatok tisztítására: ezeket az objektumokat általában nem távolítja el a rendszer, hacsak nem kifejezetten kéri a Docker használatát. Ennek hatására a Docker további lemezterületet is igénybe vehet. Minden objektumtípus esetében a Docker egy aszalt szilva parancsot biztosít. Emellett a Docker System aszalt szilva szolgáltatással egyszerre több típusú objektumot is kitakaríthat. További információkért lásd a nem [használt Docker-objektumok aszalt szilvát](https://docs.docker.com/config/pruning/)ismertető témakört.
 1. `sudo docker rmi REPOSITORY:TAG`

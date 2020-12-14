@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/11/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 321669457c479f7f59ccbb9b7950457b7f9a1af5
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 8b33c7f76cc2ac7a2012dc9d8c854a1dde46c3ea
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108300"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399128"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -74,11 +74,38 @@ A következő példa egy **RelyingParty** elemet mutat be a *B2C_1A_signup_signi
 
 A választható **RelyingParty** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Az RP-alkalmazás alapértelmezett felhasználói útja. |
+| Végpontok | 0:1 | A végpontok listája. További információ: UserInfo- [végpont](userinfo-endpoint.md). |
 | UserJourneyBehaviors | 0:1 | A felhasználói út viselkedésének hatóköre. |
 | Kivonatjogcím | 1:1 | Az RP-alkalmazás által támogatott technikai profil. A technikai profil egy szerződést biztosít az RP-alkalmazásnak a Azure AD B2C való kapcsolatfelvételhez. |
+
+## <a name="endpoints"></a>Végpontok
+
+A **végpontok** elem a következő elemet tartalmazza:
+
+| Elem | Események | Description |
+| ------- | ----------- | ----------- |
+| Végpont | 1:1 | Egy végpontra mutató hivatkozás.|
+
+A **végpont** elem a következő attribútumokat tartalmazza:
+
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| Id | Yes | A végpont egyedi azonosítója.|
+| UserJourneyReferenceId | Yes | A felhasználó által a szabályzatban megjelenő út azonosítója. További információ: [felhasználói útvonalak](userjourneys.md)  | 
+
+Az alábbi példa egy függő entitást mutat be a [UserInfo-végponttal](userinfo-endpoint.md):
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <Endpoints>
+    <Endpoint Id="UserInfo" UserJourneyReferenceId="UserInfoJourney" />
+  </Endpoints>
+  ...
+```
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
@@ -110,7 +137,7 @@ A **DefaultUserJourney** elem a következő attribútumot tartalmazza:
 
 A **UserJourneyBehaviors** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Az egyszeri bejelentkezés (SSO) munkamenet-viselkedésének hatóköre a felhasználói úton. |
 | SessionExpiryType |0:1 | A munkamenet hitelesítési viselkedése. Lehetséges értékek: `Rolling` vagy `Absolute` . Az `Rolling` érték (alapértelmezett) azt jelzi, hogy a felhasználó addig marad bejelentkezve, amíg a felhasználó folyamatosan aktív az alkalmazásban. Az `Absolute` érték azt jelzi, hogy a felhasználónak az alkalmazás-munkamenet élettartama által megadott időszak után újra hitelesítenie kell magát. |
@@ -155,7 +182,7 @@ A következő példa egy nevű paramétert ad `campaignId` át `hawaii` a lekér
 
 A **ContentDefinitionParameters** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0: n | Egy olyan karakterlánc, amely tartalmazza a Content definition URI-azonosító lekérdezési karakterláncához fűzött kulcs érték párt. |
 
@@ -177,10 +204,10 @@ A **kivonatjogcím** elem a következő attribútumot tartalmazza:
 
 A **kivonatjogcím** a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | A technikai profil nevét tartalmazó karakterlánc. |
-| Leírás | 0:1 | A technikai profil leírását tartalmazó karakterlánc. |
+| Description | 0:1 | A technikai profil leírását tartalmazó karakterlánc. |
 | Protokoll | 1:1 | Az összevonáshoz használt protokoll. |
 | Metaadatok | 0:1 | A protokoll által a végponttal való kommunikációhoz használt kulcs/érték párokból álló *elemek* gyűjteménye a függő entitás és más közösségi résztvevők közötti interakció konfigurálásához. |
 | OutputClaims | 1:1 | A technikai profilban kimenetként elkészített jogcím-típusok listája. Ezen elemek mindegyike egy olyan **claimType** hivatkozik, amely már definiálva van a **ClaimsSchema** szakaszban vagy egy olyan házirendben, amelyből a házirend-fájl örököl. |
@@ -209,7 +236,7 @@ Ha a protokoll `SAML` , a metaadat elem a következő elemeket tartalmazza.
 
 A **OutputClaims** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | A várt jogcím-típus neve a támogatott listában ahhoz a Szabályzathoz, amelyre a függő entitás előfizet. Ez a jogcím a technikai profil kimenetét szolgálja. |
 

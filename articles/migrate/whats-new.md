@@ -7,18 +7,19 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 4d87602ccd0ff576c0580f9cc20b475335ee577f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7ff9d9c6624016d4b1ea94072d52de1c42d73913
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109181"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400471"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
 A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszolgálókat, alkalmazásokat és az Microsoft Azure felhőbe áttelepítheti, elemezheti és áttelepítheti azokat. Ez a cikk a Azure Migrate új kiadásait és szolgáltatásait foglalja össze.
 ## <a name="update-december-2020"></a>Frissítés (2020. december)
 - Azure Migrate mostantól automatikusan telepíti az Azure virtuálisgép-ügynököt a VMware virtuális gépekre, miközben az Azure-ba való Migrálás során a VMware Migration ügynök nélküli módszerét használja.
+- A VMware virtuális gépek áttelepítése az Azure Virtual Machines szolgáltatásba, az ügyfél által felügyelt kulcsokkal (CMK) rendelkező kiszolgálóoldali titkosítással (SSE) rendelkező lemezekkel, Azure Migrate kiszolgáló áttelepítése (ügynök nélküli replikáció) mostantól elérhető a Azure Portalon keresztül.
 
 ## <a name="update-september-2020"></a>Frissítés (2020. szeptember)
 - A kiszolgálók Availability Zonesre való áttelepítése mostantól támogatott.

@@ -3,12 +3,12 @@ title: Élő videók elemzése Computer Vision térbeli elemzéshez – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Live Video Analytics szolgáltatást az Azure Cognitive Services Computer Vision térbeli Analysis AI funkciójának használatával egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015685"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400512"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Élő videó elemzése a Computer Vision for térbeli Analysis (előzetes verzió)
 
@@ -44,14 +44,14 @@ Az alábbiak a térbeli elemzési modul élő video Analytics-modulhoz való csa
 * [Azure stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) GPU-gyorsítással.  
     Azt javasoljuk, hogy a Azure Stack Edge-t GPU-gyorsítással használja, azonban a tároló bármely más eszközön fut egy [NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/)-val. 
 * Az [Azure kognitív szolgáltatás Computer Vision tároló](https://azure.microsoft.com/services/cognitive-services/computer-vision/) a térbeli elemzéshez.  
-    A tároló használatához rendelkeznie kell egy Computer Vision erőforrással a társított **API-kulcs** és egy **végponti URI**beszerzéséhez. Az API-kulcs a Azure Portal Computer Vision áttekintés és kulcsok oldalain érhető el. A tároló indításához a kulcs és a végpont szükséges.
+    A tároló használatához rendelkeznie kell egy Computer Vision erőforrással a társított **API-kulcs** és egy **végponti URI** beszerzéséhez. Az API-kulcs a Azure Portal Computer Vision áttekintés és kulcsok oldalain érhető el. A tároló indításához a kulcs és a végpont szükséges.
 
 ## <a name="overview"></a>Áttekintés
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/spatial-analysis-tutorial/overview.png" alt-text="Térbeli elemzés – áttekintés":::
  
-Ez az ábra az oktatóanyagban szereplő jelek folyamatát mutatja be. Az [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) szimulál egy Real-Time Streaming Protocol-(RTSP-) kiszolgálót futtató IP-kamerát. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a képkockákat a [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópontjára küldi. Ez a processzor korlátozza a MediaGraphCognitiveServicesVisionExtension processzor-csomópontot elérő video stream képkockasebességét.
+Ez az ábra az oktatóanyagban szereplő jelek folyamatát mutatja be. Az [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) szimulál egy Real-Time Streaming Protocol-(RTSP-) kiszolgálót futtató IP-kamerát. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és képkockákat küld a `MediaGraphCognitiveServicesVisionExtension` processzor-csomópontnak.
 
 A MediaGraphCognitiveServicesVisionExtension csomópont egy proxy szerepét játssza le. A képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a rendszerképet a **megosztott memórián** keresztül egy másik peremhálózati modulhoz, amely egy gRPC-végpont MÖGÖTTi AI-műveleteket futtat. Ebben a példában ez a peremhálózati modul a térbeli elemzési modul. A MediaGraphCognitiveServicesVisionExtension processzor csomópontja két dolgot tesz:
 
@@ -71,7 +71,7 @@ Három elsődleges paraméter van az összes szükséges Cognitive Services tár
 A rendszer egy kulcsot használ a térbeli elemzési tároló elindításához, és a `Keys and Endpoint` megfelelő kognitív szolgáltatási erőforrás Azure Portal lapján érhető el. Keresse meg a lapot, és keresse meg a kulcsokat és a végpont URI-JÁT.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Térbeli elemzés – áttekintés":::
+> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Végpont URI-ja":::
 
 ## <a name="set-up-azure-stack-edge"></a>Azure Stack Edge beállítása
 
@@ -169,36 +169,52 @@ Kövesse az alábbi lépéseket a jegyzékfájlnak a sablonból való létrehoz�
 1. Az AZURE IOT HUB panel mellett válassza a további műveletek ikont a IoT Hub kapcsolódási karakterlánc beállításához. A karakterláncot a src/Cloud-to-Device-Console-app/appsettings.jsfájlból másolhatja.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Térbeli elemzés – áttekintés":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Térbeli elemzés: a kapcsolatok karakterlánca":::
 1. Kattintson a jobb gombbal `src/edge/deployment.spatialAnalysis.template.json` , és válassza a IoT Edge üzembe helyezési jegyzék előállítása lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Térbeli elemzés – áttekintés":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Térbeli elemzés: üzembe helyezés amd64 JSON":::
     
     Ehhez a művelethez létre kell hoznia egy deployment.amd64.jsnevű jegyzékfájlt az src/Edge/config mappában.
 1. Kattintson a jobb gombbal `src/edge/config/deployment.spatialAnalysis.amd64.json` , válassza a központi telepítés létrehozása egyetlen eszközhöz lehetőséget, majd válassza ki a peremhálózati eszköz nevét.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Térbeli elemzés – áttekintés" állapotúnak kell lennie.
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Térbeli elemzés: üzembe helyezési sablon JSON":::   
+1. Amikor a rendszer rákérdez a IoT Hub eszköz kiválasztására, válassza ki a Azure Stack Edge nevét a legördülő menüből.
+1. Körülbelül 30 másodperc elteltével frissítse az Azure IoT Hubt az ablak bal alsó sarkában. A peremhálózati eszköz mostantól a következő központilag telepített modulokat mutatja:
+    
+    * Élő video Analytics IoT Edge (modul neve lvaEdge).
+    * Real-Time Streaming Protocol (RTSP) szimulátor (modul neve rtspsim).
+    * Térbeli elemzés (modul neve spatialAnalysis).
+    
+Ha a telepítés sikeresen megtörtént, a KIMENETben a következőhöz hasonló üzenet jelenik meg:
+
+```
+[Edge] Start deployment to device [<Azure Stack Edge name>]
+[Edge] Deployment succeeded.
+```
+
+Ezután megkeresheti `lvaEdge` , `rtspsim` `spatialAnalysis` és `rtspsim` modulokat használhat az eszközök/modulok területen, és az állapotuknak "fut" állapotúnak kell lennie.
 
 ## <a name="prepare-to-monitor-events"></a>Felkészülés az események figyelésére
 
 Az események megtekintéséhez kövesse az alábbi lépéseket:
 
 1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
-1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Térbeli elemzés – áttekintés" lehetőséget.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Bővítmény beállításai":::
+1. Keresse meg és engedélyezze a "részletes üzenet megjelenítése" lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Térbeli elemzés – áttekintés":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Részletes üzenet megjelenítése":::
 1. Nyissa meg az Explorer ablaktáblát, és keresse meg az Azure IoT Hub a bal alsó sarokban.
 1. Bontsa ki az eszközök csomópontot.
 1. Kattintson a jobb gombbal az Azure Stack Edge-re, és válassza a figyelés beépített esemény végpontja lehetőséget.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Térbeli elemzés – áttekintés":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Térbeli elemzés: figyelés indítása":::
      
 ## <a name="run-the-program"></a>A program futtatása
 
@@ -249,11 +265,11 @@ operations.json:
 
 `topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
 
-A **GraphInstanceSet**alatt szerkessze a gráf topológiájának nevét, hogy az megfeleljen az előző hivatkozásban szereplő értéknek:
+A **GraphInstanceSet** alatt szerkessze a gráf topológiájának nevét, hogy az megfeleljen az előző hivatkozásban szereplő értéknek:
 
 `topologyName` : InferencingWithCVExtension
 
-A **GraphTopologyDelete**alatt szerkessze a nevet:
+A **GraphTopologyDelete** alatt szerkessze a nevet:
 
 `name`: InferencingWithCVExtension
 

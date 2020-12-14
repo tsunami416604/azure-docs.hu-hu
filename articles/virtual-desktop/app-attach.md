@@ -1,211 +1,44 @@
 ---
-title: Windows rendszerű virtuális asztali MSIX-alkalmazás csatolása – Azure
-description: A Windows rendszerű virtuális asztalok MSIX alkalmazásának beállítása.
+title: A Windows rendszerű virtuális asztali MSIX alkalmazás konfigurálása PowerShell-parancsfájlok csatolása – Azure
+description: PowerShell-parancsfájlok létrehozása a Windows rendszerű virtuális asztali MSIX alkalmazáshoz.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3b02be8f35ff33f758aebe03c89287c51c9ffef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816321"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400828"
 ---
-# <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
+# <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>PowerShell-parancsfájlok létrehozása MSIX-alkalmazás csatolásához (előzetes verzió)
 
 > [!IMPORTANT]
 > A MSIX-alkalmazás csatolása jelenleg nyilvános előzetes verzióban érhető el.
 > Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ebből a témakörből megtudhatja, hogyan állíthatja be a MSIX-alkalmazások csatlakoztatását egy Windows rendszerű virtuális asztali környezetben.
+Ebből a témakörből megtudhatja, hogyan állíthat be PowerShell-szkripteket a MSIX alkalmazáshoz.
 
-## <a name="requirements"></a>Követelmények
-
-Mielőtt elkezdené, a következő lépésekkel kell konfigurálnia a MSIX-alkalmazás csatolását:
-
-- Hozzáférés a Windows Insider portálhoz a Windows 10 azon verziójának beszerzéséhez, amely támogatja a MSIX app Attach API-kat.
-- Működő Windowsos virtuális asztali telepítés. A Windows rendszerű virtuális asztali gépek (klasszikus) központi telepítésének megismeréséhez tekintse meg [a bérlő létrehozása a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)című témakört. A Windows rendszerű virtuális asztali Azure Resource Manager integrációs szolgáltatással való üzembe helyezésével kapcsolatos további információkért lásd: [gazdagép-készlet létrehozása a Azure Portal](./create-host-pools-azure-marketplace.md).
-- A MSIX-csomagoló eszköz.
-- Hálózati megosztás a Windows rendszerű virtuális asztali környezetben, ahol a MSIX-csomagot tárolja a rendszer.
-
-## <a name="get-the-os-image"></a>Az operációs rendszer rendszerképének beolvasása
-
-Először le kell kérnie az operációs rendszer rendszerképét. Az operációs rendszer rendszerképét az Azure Portalon keresztül érheti el. Ha azonban Ön a Windows Insider program tagja, lehetősége van a Windows Insider portál használatára.
-
-### <a name="get-the-os-image-from-the-azure-portal"></a>Az operációs rendszer rendszerképének beolvasása a Azure Portal
-
-Az operációs rendszer rendszerképének beszerzése a Azure Portalról:
-
-1. Nyissa meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be.
-
-2. Válassza a **virtuális gép létrehozása**lehetőséget.
-
-3. Az **alapszintű** lapon válassza a **Windows 10 Enterprise multi-session (2004-es verzió**) lehetőséget.
-
-4. A virtuális gép létrehozásának befejezéséhez kövesse a további utasításokat.
-
-     >[!NOTE]
-     >A virtuális gép használatával közvetlenül tesztelheti a MSIX-alkalmazás csatolását. További információért ugorjon a [virtuális merevlemez-vagy VHDX-csomag MSIX való létrehozásához](#generate-a-vhd-or-vhdx-package-for-msix). Ellenkező esetben folytassa a szakasz olvasásával.
-
-### <a name="get-the-os-image-from-the-windows-insider-portal"></a>Az operációs rendszer rendszerképének beszerzése a Windows Insider portálról
-
-Az operációs rendszer rendszerképének beszerzése a Windows Insider portálról:
-
-1. Nyissa meg a [Windows Insider portált](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) , és jelentkezzen be.
-
-     >[!NOTE]
-     >A Windows Insider portálhoz való hozzáféréshez a Windows Insider program tagjának kell lennie. Ha többet szeretne megtudni a Windows Insider programról, tekintse meg a [Windows Insider dokumentációját](/windows-insider/at-home/).
-
-2. Görgessen le a **Select Edition (kiadás kiválasztása** ) szakaszhoz, és válassza a **Windows 10 Insider Preview Enterprise (gyors) – build 19041** vagy újabb lehetőséget.
-
-3. Válassza a **megerősítés**lehetőséget, majd válassza ki a használni kívánt nyelvet, majd kattintson ismét a **Confirm (megerősítés** ) gombra.
-
-     >[!NOTE]
-     >Jelenleg az angol az egyetlen olyan nyelv, amelyet teszteltek a szolgáltatással. Kijelölhet más nyelveket is, de előfordulhat, hogy nem a kívánt módon jelennek meg.
-
-4. A letöltési hivatkozás létrehozása után válassza ki a **64 bites letöltést** , és mentse a helyi merevlemezre.
-
-## <a name="prepare-the-vhd-image-for-azure"></a>A VHD-rendszerkép előkészítése az Azure-hoz
-
-Ezután létre kell hoznia egy fő VHD-lemezképet. Ha még nem hozta létre a fő VHD-lemezképet, ugorjon a [fő VHD-rendszerkép előkészítése és testreszabása](set-up-customize-master-image.md) című témakörre, és kövesse az itt található utasításokat.
-
-A fő VHD-rendszerkép létrehozása után le kell tiltania az MSIX alkalmazáshoz tartozó alkalmazások automatikus frissítését. Az automatikus frissítések letiltásához futtatnia kell a következő parancsokat egy rendszergazda jogú parancssorban:
-
-```cmd
-rem Disable Store auto update:
-
-reg add HKLM\Software\Policies\Microsoft\WindowsStore /v AutoDownload /t REG_DWORD /d 0 /f
-Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Automatic app update" /Disable
-Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Scheduled Start" /Disable
-
-rem Disable Content Delivery auto download apps that they want to promote to users:
-
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v PreInstalledAppsEnabled /t REG_DWORD /d 0 /f
-
-reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
-
-rem Disable Windows Update:
-
-sc config wuauserv start=disabled
-```
-
-Miután letiltotta az automatikus frissítéseket, engedélyeznie kell a Hyper-V-t, mert a Mount-VHD parancsot fogja használni a kilépéshez és a virtuális merevlemez leválasztásához.
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
->[!NOTE]
->Ehhez a változáshoz újra kell indítani a virtuális gépet.
-
-Ezután készítse elő az Azure-beli virtuális gép virtuális merevlemezét, és töltse fel az eredményül kapott VHD-lemezt az Azure-ba További információ: [Master VHD-lemezkép előkészítése és testreszabása](set-up-customize-master-image.md).
-
-Miután feltöltötte a VHD-t az Azure-ba, hozzon létre egy, az új rendszerképen alapuló alkalmazáskészletet az Azure Marketplace oktatóanyagának használatával, a [gazdagép létrehozása](create-host-pools-azure-marketplace.md) című témakör utasításait követve.
-
-## <a name="prepare-the-application-for-msix-app-attach"></a>Az alkalmazás előkészítése MSIX-alkalmazás csatolásához
-
-Ha már rendelkezik MSIX-csomaggal, ugorjon előre a [Windows rendszerű virtuális asztali infrastruktúra konfigurálásához](#configure-windows-virtual-desktop-infrastructure). Ha az örökölt alkalmazásokat szeretné tesztelni, kövesse az [MSIX-csomag létrehozása egy virtuális gépen asztali telepítőből](/windows/msix/packaging-tool/create-app-package-msi-vm/) című témakör utasításait, hogy az örökölt alkalmazást egy MSIX-csomagba alakítsa át.
-
-## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>VHD-vagy VHDX-csomag létrehozása a MSIX
-
-A csomagok VHD-vagy VHDX-formátumúak a teljesítmény optimalizálása érdekében. A MSIX VHD-vagy VHDX-csomagok megfelelő működéséhez szükségesek.
-
-VHD-vagy VHDX-csomag létrehozása a MSIX-hez:
-
-1. [Töltse le a msixmgr eszközt](https://aka.ms/msixmgr) , és mentse a. zip mappát egy, a munkamenet-gazda virtuális gépen található mappába.
-
-2. Bontsa ki a msixmgr Tool. zip mappát.
-
-3. Helyezze a forrás MSIX-csomagot ugyanabba a mappába, ahová kicsomagolta a msixmgr eszközt.
-
-4. Futtassa a következő parancsmagot a PowerShellben a virtuális merevlemez létrehozásához:
-
-    ```powershell
-    New-VHD -SizeBytes <size>MB -Path c:\temp\<name>.vhd -Dynamic -Confirm:$false
-    ```
-
-    >[!NOTE]
-    >Győződjön meg arról, hogy a virtuális merevlemez mérete elég nagy a kibontott MSIX tárolásához. *
-
-5. Futtassa az alábbi parancsmagot az újonnan létrehozott virtuális merevlemez csatlakoztatásához:
-
-    ```powershell
-    $vhdObject = Mount-VHD c:\temp\<name>.vhd -Passthru
-    ```
-
-6. Futtassa ezt a parancsmagot a virtuális merevlemez inicializálásához:
-
-    ```powershell
-    $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
-    ```
-
-7. Futtassa ezt a parancsmagot egy új partíció létrehozásához:
-
-    ```powershell
-    $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
-    ```
-
-8. Futtassa ezt a parancsmagot a partíció formázásához:
-
-    ```powershell
-    Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
-    ```
-
-9. Hozzon létre egy szülő mappát a csatlakoztatott virtuális merevlemezen. Ez a lépés kötelező, mivel a MSIX-alkalmazás csatolásához szülőmappa szükséges. A szülőmappa tetszőleges módon elnevezhető.
-
-### <a name="expand-msix"></a>MSIX kibontása
-
-Ezt követően ki kell bontania a MSIX-rendszerképet a kicsomagolásával. A MSIX rendszerkép kicsomagolása:
-
-1. Nyisson meg egy parancssort rendszergazdaként, és navigáljon ahhoz a mappához, ahová letöltötte és kicsomagolta a msixmgr eszközt.
-
-2. A következő parancsmag futtatásával csomagolja ki a MSIX a létrehozott és az előző szakaszban csatlakoztatott virtuális merevlemezre.
-
-    ```powershell
-    msixmgr.exe -Unpack -packagePath <package>.msix -destination "f:\<name of folder you created earlier>" -applyacls
-    ```
-
-    A kicsomagolás befejezése után a következő üzenetnek kell megjelennie:
-
-    `Successfully unpacked and applied ACLs for package: <package name>.msix`
-
-    >[!NOTE]
-    > Ha a hálózaton belüli üzleti (vagy oktatási) Microsoft Store csomagokat használ, vagy olyan eszközökön, amelyek nem csatlakoznak az internethez, be kell szereznie a csomag licenceit az áruházból, és telepítenie kell őket az alkalmazás sikeres futtatásához. Lásd: [kapcsolat nélküli csomagok használata](#use-packages-offline).
-
-3. Navigáljon a csatlakoztatott virtuális merevlemezhez, és nyissa meg az alkalmazás mappáját, és ellenőrizze, hogy megtalálható-e a csomag tartalma.
-
-4. Válassza le a virtuális merevlemezt.
-
-## <a name="configure-windows-virtual-desktop-infrastructure"></a>A Windows rendszerű virtuális asztali infrastruktúra konfigurálása
-
-A tervezés szerint egyetlen MSIX kibontott csomag (az előző szakaszban létrehozott VHD) több munkamenet-gazda virtuális gép között is megosztható, mivel a virtuális merevlemezek csak olvasható módban vannak csatolva.
-
-Mielőtt elkezdené, győződjön meg arról, hogy a hálózati megosztás megfelel a következő követelményeknek:
-
-- A megosztás SMB-kompatibilis.
-- A munkamenet-címkészlet részét képező virtuális gépek NTFS-jogosultságokkal rendelkeznek a megosztáshoz.
-
-### <a name="set-up-an-msix-app-attach-share"></a>MSIX-alkalmazás csatlakoztatása megosztás létrehozása
-
-A Windows rendszerű virtuális asztali környezetben hozzon létre egy hálózati megosztást, és helyezze át a csomagot.
-
->[!NOTE]
-> A MSIX hálózati megosztások létrehozásához ajánlott eljárás az, ha a hálózati megosztást NTFS írásvédett engedélyekkel állítja be.
+>[!IMPORTANT]
+>Mielőtt elkezdené, győződjön meg róla, hogy kitölti és beküldi [ezt az űrlapot](https://aka.ms/enablemsixappattach) , hogy engedélyezze a MSIX-alkalmazás csatolását az előfizetésében. Ha nem rendelkezik jóváhagyott kéréssel, a MSIX-alkalmazás csatolása nem fog működni. A kérések jóváhagyása akár 24 óráig is eltarthat a munkaidőn belül. A kérés elfogadását és befejezését követően e-mailt fog kapni.
 
 ## <a name="install-certificates"></a>Tanúsítványok telepítése
 
+Telepítenie kell a tanúsítványokat az összes olyan munkamenet-gazdagépre, amely a MSIX-alkalmazáshoz csatol csomagokat.
+
 Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvánosan megbízható vagy önaláírt, a következő módon telepítheti:
 
-1. Kattintson a jobb gombbal a csomagra, és válassza a **Tulajdonságok**lehetőséget.
-2. A megjelenő ablakban válassza a **digitális aláírások** fület. A lapon csak egy elemnek kell szerepelnie a listán, ahogy az az alábbi képen is látható. Válassza ki az elemet az elem kiemeléséhez, majd válassza a **részletek**lehetőséget.
-3. Amikor megjelenik a digitális aláírás részletei ablak, válassza az **általános** lapot, majd válassza a **Tanúsítvány megtekintése**lehetőséget, majd válassza a **tanúsítvány telepítése**lehetőséget.
-4. A telepítő megnyitásakor válassza a **helyi gép** lehetőséget a tárolási helyként, majd kattintson a **tovább**gombra.
-5. Ha a telepítő megkérdezi, hogy engedélyezni szeretné-e az alkalmazásnak az eszköz módosítását, válassza az **Igen**lehetőséget.
-6. Válassza **a minden tanúsítvány tárolása a következő tárolóban**lehetőséget, majd válassza a **Tallózás**lehetőséget.
-7. Amikor megjelenik a tanúsítványtároló kiválasztása ablak, válassza a **Megbízható személyek**lehetőséget, majd kattintson **az OK gombra**.
-8. Válassza a **tovább** , majd a **Befejezés**lehetőséget.
+1. Kattintson a jobb gombbal a csomagra, és válassza a **Tulajdonságok** lehetőséget.
+2. A megjelenő ablakban válassza a **digitális aláírások** fület. A lapon csak egy elemnek kell szerepelnie a listán, ahogy az az alábbi képen is látható. Válassza ki az elemet az elem kiemeléséhez, majd válassza a **részletek** lehetőséget.
+3. Amikor megjelenik a digitális aláírás részletei ablak, válassza az **általános** lapot, majd válassza a **Tanúsítvány megtekintése** lehetőséget, majd válassza a **tanúsítvány telepítése** lehetőséget.
+4. A telepítő megnyitásakor válassza a **helyi gép** lehetőséget a tárolási helyként, majd kattintson a **tovább** gombra.
+5. Ha a telepítő megkérdezi, hogy engedélyezni szeretné-e az alkalmazásnak az eszköz módosítását, válassza az **Igen** lehetőséget.
+6. Válassza **a minden tanúsítvány tárolása a következő tárolóban** lehetőséget, majd válassza a **Tallózás** lehetőséget.
+7. Amikor megjelenik a tanúsítványtároló kiválasztása ablak, válassza a **Megbízható személyek** lehetőséget, majd kattintson **az OK gombra**.
+8. Válassza a **tovább** , majd a **Befejezés** lehetőséget.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>PowerShell-parancsfájlok előkészítése MSIX-alkalmazás csatolásához
 
@@ -224,7 +57,7 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
 
 1.  Nyissa meg azt a hálózati megosztást, ahol a VHD abban a virtuális gépen található, amelyen futtatni fogja a parancsfájlt.
 
-2.  Kattintson a jobb gombbal a virtuális merevlemezre, és válassza a **Csatlakoztatás**lehetőséget. Ezzel csatlakoztatja a virtuális merevlemezt egy meghajtóbetűjelhez.
+2.  Kattintson a jobb gombbal a virtuális merevlemezre, és válassza a **Csatlakoztatás** lehetőséget. Ezzel csatlakoztatja a virtuális merevlemezt egy meghajtóbetűjelhez.
 
 3.  Miután csatlakoztatta a VHD-t, megnyílik a **fájlkezelő** ablak. A szülőmappa rögzítése és a **$parentFolder** változó frissítése
 
@@ -235,7 +68,7 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
 
     Például: `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
-5.  Nyisson meg egy parancssort, és adja meg a **mountvol**parancsot. A parancs megjeleníti a kötetek listáját és a GUID azonosítókat. Másolja ki annak a kötetnek a GUID azonosítóját, amelyben a meghajtóbetűjel megegyezik azzal a meghajtóval, amellyel a virtuális merevlemezt csatlakoztatta a 2. lépésben.
+5.  Nyisson meg egy parancssort, és adja meg a **mountvol** parancsot. A parancs megjeleníti a kötetek listáját és a GUID azonosítókat. Másolja ki annak a kötetnek a GUID azonosítóját, amelyben a meghajtóbetűjel megegyezik azzal a meghajtóval, amellyel a virtuális merevlemezt csatlakoztatta a 2. lépésben.
 
     Például a mountvol parancs kimenetében, ha a virtuális merevlemezt a C meghajtóhoz csatlakoztatta, a fenti értéket át kell másolnia `C:\` :
 
@@ -243,7 +76,7 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
     Possible values for VolumeName along with current mount points are:
 
     \\?\Volume{a12b3456-0000-0000-0000-10000000000}\
-    *** NO MOUNT POINTS ***
+    **_ NO MOUNT POINTS _*_
 
     \\?\Volume{c78d9012-0000-0000-0000-20000000000}\
         E:\
@@ -254,7 +87,7 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
     ```
 
 
-6.  Frissítse a **$volumeGuid** változót az imént másolt kötet GUID azonosítóval.
+6.  Frissítse az _ *$volumeGuid** változót az imént másolt kötet GUID azonosítóval.
 
 7. Nyisson meg egy rendszergazdai PowerShell-parancssort, és frissítse a következő PowerShell-parancsfájlt a környezetre vonatkozó változókkal.
 

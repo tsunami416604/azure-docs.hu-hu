@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/02/2020
+ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530750"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399366"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Az alkalmazás közzététele az Azure AD App Galleryben
 
@@ -95,8 +95,8 @@ A következő táblázat összehasonlítja a fő szabványokat: nyílt hitelesí
 | Webalapú egyszeri kijelentkezés| √| √ |
 | Mobile-alapú egyszeri bejelentkezés| √| √* |
 | Mobile-alapú egyszeri kijelentkezés| √| √* |
-| A mobil alkalmazások feltételes hozzáférési szabályzatai| √| X |
-| Zökkenőmentes MFA-élmény a Mobile Applications szolgáltatáshoz| √| X |
+| A mobil alkalmazások feltételes hozzáférési szabályzatai| √| √* |
+| Zökkenőmentes MFA-élmény a Mobile Applications szolgáltatáshoz| √| √* |
 | SCIM kiépítés| √| √ |
 | Hozzáférés Microsoft Graph| √| X |
 
@@ -178,7 +178,7 @@ Ha többet szeretne megtudni az ügyfelek SCIM szabványainak és előnyeiről, 
 Az Azure AD SCIM megvalósításával kapcsolatos további tudnivalókért lásd: [scim-végpont létrehozása és a felhasználók üzembe helyezésének beállítása az Azure ad-vel](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups).
 
 ### <a name="implement-scim"></a>SCIM megvalósítása
-Az Azure AD olyan [hivatkozási kódot](https://aka.ms/scimoverview) biztosít, amely segítséget nyújt egy scim-végpont létrehozásához. A githubon számos harmadik féltől származó kódtár és hivatkozás is megtalálható.  
+Az Azure AD olyan [hivatkozási kódot](https://aka.ms/scimoverview) biztosít, amely segítséget nyújt egy scim-végpont létrehozásához. A GitHubon számos harmadik féltől származó kódtár és hivatkozás is megtalálható.  
 
 ## <a name="step-4---create-your-azure-tenant-and-test-your-app"></a>4. lépés – az Azure-bérlő létrehozása és az alkalmazás tesztelése
 
@@ -317,6 +317,6 @@ Bármilyen eszkaláció esetén küldjön e-mailt az [Azure ad SSO integrációs
 A Microsoft Partner Network azonnali hozzáférést biztosít az exkluzív erőforrásokhoz, programokhoz, eszközökhöz és kapcsolatokhoz. A hálózathoz való csatlakozáshoz és a piacra jutási terv létrehozásához tekintse meg a [kereskedelmi ügyfelek elérhetőségét](https://partner.microsoft.com/explore/commercial#gtm)ismertető témakört.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Hitelesítési forgatókönyvek az Azure AD-hez](authentication-flows-app-scenarios.md)

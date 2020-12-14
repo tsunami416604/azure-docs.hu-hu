@@ -3,18 +3,18 @@ title: Az Azure Notebooks előzetes verziójának áttekintése
 description: Futtasson Jupyter jegyzetfüzeteket a felhőben az ingyenes Azure Notebooks előzetes verzió szolgáltatásával, ahol nincs szükség beállításra vagy konfigurációra.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: ef0a033c5125b3a359d281be30dd0ec2a2aa1747
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7e622bdef785085384395bb0c8ac3efba2b2053a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109487"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400265"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Az Azure Notebooks előzetes verziójának áttekintése
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. A [Jupyter](https://jupyter.org/) (korábbi nevén IPython) egy nyílt forráskódú projekt, amely lehetővé teszi a Markdown-szöveg *, a végrehajtható* kód, az állandó adatok, a grafikák és a vizualizációk egyszerű egyesítését egyetlen, megosztható vászonra (a jupyter.org lemezkép jóvoltából):
+A Azure Notebooks egy ingyenes üzemeltetett szolgáltatás, amely Jupyter-jegyzetfüzeteket fejleszt és futtat a felhőben telepítés nélkül. A [Jupyter](https://jupyter.org/) (korábbi nevén IPython) egy nyílt forráskódú projekt, amely lehetővé teszi a Markdown-szöveg *, a végrehajtható* kód, az állandó adatok, a grafikák és a vizualizációk egyszerű egyesítését egyetlen, megosztható vászonra (a jupyter.org lemezkép jóvoltából):
 
 [![Példák Jupyter notebookokra](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
@@ -92,4 +92,4 @@ A Azure Notebooksával kapcsolatos kérdéseiről a [GitHub-adattáron](https://
 - Gyorsútmutatók:
 
   - [Bejelentkezés és felhasználói azonosító beállítása](quickstart-sign-in-azure-notebooks.md)
-  - [Jupyter-jegyzetfüzet exportálása](quickstart-export-jupyter-notebook-project.md)
+  - [Jupyter Notebook exportálása](quickstart-export-jupyter-notebook-project.md)

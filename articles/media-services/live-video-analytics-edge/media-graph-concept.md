@@ -3,12 +3,12 @@ title: Media Graph-koncepció – Azure
 description: A Media Graph lehetővé teszi annak meghatározását, hogy az adathordozót hol kell rögzíteni, hogyan kell feldolgozni, és hol kell elküldeni az eredményeket. Ez a cikk részletes leírást nyújt a Media Graph-koncepcióról.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 5efb62440b52d6219373d15ba3d19ddac1a2a834
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007840"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401100"
 ---
 # <a name="media-graph"></a>Médiagrafikon
 
@@ -87,6 +87,8 @@ A mozgásészlelési processzor csomópont lehetővé teszi az élő videókon v
 #### <a name="frame-rate-filter-processor"></a>Frame rate Filter processzor  
 
 A frame rate szűrő processzor csomópontja lehetővé teszi, hogy a beérkező videó streamből egy megadott arányban mintákat lehessen mintát venni. Ez lehetővé teszi, hogy csökkentse a lefelé stream-összetevőkre (például a HTTP-bővítmény processzor-csomópontjára) küldött keretek számát a további feldolgozás érdekében.
+>[!WARNING]
+> Ez a processzor **elavult** az élő videó Analytics legújabb kiadásában IoT Edge modulban. A frame rate Management mostantól a Graph Extension processors szolgáltatásban is támogatott.
 
 #### <a name="http-extension-processor"></a>HTTP-bővítmény processzora
 
@@ -108,8 +110,9 @@ Az eszköz fogadó csomópontja lehetővé teszi adathordozó (videó és/vagy h
 
 #### <a name="file-sink"></a>File mosogató  
 
-A file fogadó csomópont lehetővé teszi adathordozó (videó és/vagy hang) típusú adatok írását a IoT Edge eszköz helyi fájlrendszerének egyik helyére. Egy Media Graph-ban csak egy file mosogató csomópont lehet, és a jel a Signal Gate processzor csomópontjának kell, hogy legyen. Ez korlátozza a kimeneti fájlok időtartamát a Signal Gate-feldolgozó csomópontjának tulajdonságaiban megadott értékekre.
-
+A file fogadó csomópont lehetővé teszi adathordozó (videó és/vagy hang) típusú adatok írását a IoT Edge eszköz helyi fájlrendszerének egyik helyére. Egy Media Graph-ban csak egy file mosogató csomópont lehet, és a jel a Signal Gate processzor csomópontjának kell, hogy legyen. Ez korlátozza a kimeneti fájlok időtartamát a Signal Gate-feldolgozó csomópontjának tulajdonságaiban megadott értékekre. Annak biztosítása érdekében, hogy az Edge-eszköz ne fusson el a szabad lemezterületen, beállíthatja azt is, hogy az élő videó-elemzés IoT Edge moduljában hogyan tárolhatók az adatai.  
+> [!NOTE]
+Ha a fájl fogadója megtelik, az élő videó Analytics IoT Edge modulban elkezdi törölni a legrégebbi adat törlését, és lecseréli az újat.
 #### <a name="iot-hub-message-sink"></a>Üzenet-fogadó IoT Hub  
 
 Egy IoT Hub Message fogadó csomópont lehetővé teszi az események közzétételét IoT Edge hubhoz. Az IoT Edge hub ezután átirányíthatja az adatforrásokat a peremhálózati eszközön lévő más modulokba vagy alkalmazásokba, vagy a felhőben IoT Hub (az üzembe helyezési jegyzékben megadott útvonalakon). A IoT Hub Message fogadó csomópont képes fogadni a felsőbb rétegbeli processzorokból származó eseményeket, például a mozgásészlelési processzor csomópontját vagy egy külső következtetési szolgáltatást egy HTTP-bővítmény processzor-csomópontján keresztül.

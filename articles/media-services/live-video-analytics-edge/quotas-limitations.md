@@ -3,12 +3,12 @@ title: Élő videó-elemzés IoT Edge kvóták és korlátozások – Azure
 description: Ez a cikk az élő videók elemzését ismerteti IoT Edge kvóták és korlátozások alapján.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68c7b91bb1051348b5a8e52f841d443894f0a632
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90529230"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400524"
 ---
 # <a name="quotas-and-limitations"></a>Kvóták és korlátozások
 
@@ -16,17 +16,17 @@ Ez a cikk a IoT Edge modul élő videós elemzésének kvótáit és korlátozá
 
 ## <a name="maximum-period-of-disconnected-use"></a>Leválasztott használat maximális időtartama
 
-Az Edge-modul képes fenntartani a hálózati kapcsolat átmeneti elvesztését. Ha a modul több mint 36 órával továbbra is megszakadt, akkor a rendszer inaktiválja a futó Graph-példányokat, és a további közvetlen metódusok hívása le lesz tiltva.
+Az Edge-modul képes fenntartani az internetkapcsolat ideiglenes elvesztését. Ha a modul több mint 36 órával továbbra is megszakadt, akkor a rendszer inaktiválja az összes futó gráf-példányt. Minden további közvetlen metódus hívása le lesz tiltva.
 
-Ha a peremhálózati modult működési állapotba kívánja folytatni, akkor vissza kell állítania a hálózati kapcsolatot, és a modulnak képesnek kell lennie az Azure Media Service-fiókkal való sikeres kommunikációra.
+Az Edge-modul operatív állapotba való folytatásához vissza kell állítania az internetkapcsolatot, hogy a modul sikeresen kommunikálni tudjon az Azure Media Service-fiókkal.
 
 ## <a name="maximum-number-of-graph-instances"></a>Graph-példányok maximális száma
 
-A modulban legfeljebb 1000 gráf példány adható meg (GraphInstanceSet használatával létrehozva).
+A (GraphInstanceSet-on keresztül létrehozott) modulokban legfeljebb 1000 gráf-példány támogatott.
 
 ## <a name="maximum-number-of-graph-topologies"></a>Gráf-topológiák maximális száma
 
-Modulon legfeljebb 50 gráf-topológiát lehet létrehozni (GraphTopologySet-on keresztül létrehozva).
+Legfeljebb 50 gráf-topológia támogatott a (z) GraphTopologySet-on keresztül létrehozott modulokban.
 
 ## <a name="limitations-on-graph-topologies-at-preview"></a>A Graph-topológiák korlátozásai az előzetes verzióban
 
@@ -34,17 +34,8 @@ Az előzetes kiadásban a különböző csomópontokra vonatkozó korlátozások
 
 * RTSP-forrás
    * Graph-topológia esetében csak egy RTSP-forrás engedélyezett.
-* Frame rate Filter processzor
-   * Közvetlenül az RTSP forrás-vagy mozgásészlelési processzorról kell, hogy legyen.
-   * HTTP-vagy gRPC-bővítményi processzor esetén nem használható.
-   * Mozgásészlelési processzorról nem lehet upstream.
-* HTTP-bővítmény processzora
-   * Graph-topológiában legfeljebb egy ilyen processzor lehet.
-* gRPC-bővítmény processzora
-   * Graph-topológiában legfeljebb egy ilyen processzor lehet.
 * Mozgásészlelési processzor
    * Közvetlenül az RTSP-forrástól kell, hogy legyen.
-   * Graph-topológiában legfeljebb egy ilyen processzor lehet.
    * HTTP-vagy gRPC-bővítményi processzor esetén nem használható.
 * Signal Gate processzor
    * Közvetlenül az RTSP-forrástól kell, hogy legyen.
@@ -52,11 +43,9 @@ Az előzetes kiadásban a különböző csomópontokra vonatkozó korlátozások
    * Közvetlenül az RTSP-forrás vagy a Signal Gate-processzor között kell lennie.
 * File mosogató
    * Közvetlenül a Signal Gate-processzorról kell, hogy legyen.
-   * Nem lehet közvetlenül a HTTP-vagy gRPC-bővítmény processzora, vagy a mozgásérzékelő processzora
+   * Nem lehet közvetlenül a HTTP-vagy gRPC-bővítmény processzora vagy a mozgásérzékelő processzora.
 * IoT Hub fogadó
    * Nem lehet közvetlenül a IoT Hub forrásának vége.
-
-Ha a mozgásészlelési és a szűrési sebességű processzor-csomópontok is szerepelnek, akkor az RTSP-forrás csomóponthoz vezető csomópontok láncában kell lenniük.
 
 ## <a name="limitations-on-media-service-operations-at-preview"></a>A Media Service-műveletekre vonatkozó korlátozások előzetes verzióban
 

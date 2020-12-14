@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/19/2020
-ms.openlocfilehash: c9f29a891061dc0e6dcfe8c8f6a65f0f190c6afc
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bd1b33b2f6b1b0e0bf94639b3991b6507a89f5a9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593586"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400794"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Gyorsított adatbázis-helyreállítás az Azure SQL-ben 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 A **gyorsított adatbázis-helyreállítás (ADR)** egy SQL Server adatbázismotor-szolgáltatás, amely nagy mértékben javítja az adatbázisok rendelkezésre állását, különösen a hosszú ideig futó tranzakciók jelenlétében, a SQL Server adatbázismotor helyreállítási folyamatának újratervezésével. 
 
-Az ADR jelenleg a Azure SQL Database, az Azure SQL felügyelt példányaihoz, az Azure szinapszis Analytics (jelenleg előzetes verzióban elérhető) adatbázisokhoz, valamint az Azure-beli virtuális gépeken SQL Server SQL Server 2019-től kezdődően érhető el. 
+Az ADR jelenleg a Azure SQL Database, az Azure SQL felügyelt példányaihoz, az Azure szinapszis Analytics-adatbázisokhoz és az Azure-beli virtuális gépek SQL Server SQL Server 2019-től kezdődően érhető el. 
 
 > [!NOTE] 
 > Az automatikus központi telepítési szabály alapértelmezés szerint engedélyezve van Azure SQL Database és az Azure SQL felügyelt példányain, és a termékre vonatkozó ADR letiltása nem támogatott. 
