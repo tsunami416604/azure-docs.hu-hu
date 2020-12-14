@@ -41,17 +41,17 @@
       href: concept-generating-thumbnails.md
     - name: Felnőtteknek szóló tartalom észlelése
       href: concept-detecting-adult-content.md
-- name: Felelősségteljes MI
+- name: Az MI felelős használata
   items:
     - name: Térbeli elemzés
       items:
-        - name: Átláthatósági megjegyzés
+        - name: Átláthatósági megjegyzések
           items:
             - name: A térbeli elemzés bemutatása
               href: /legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
             - name: Jellemzők és korlátozások
               href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-        - name: Üzembehelyezési irányelvek
+        - name: Integráció és felelős használat
           items:
             - name: Felelős használat mesterséges intelligencia üzemeltetésekor
               href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext

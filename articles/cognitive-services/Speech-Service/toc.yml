@@ -504,6 +504,8 @@
       href: how-to-use-logging.md
     - name: Memóriahasználat nyomon követése
       href: how-to-track-speech-sdk-memory-usage.md
+    - name: Privát végpont engedélyezése
+      href: speech-services-private-link.md
     - name: Linuxos OpenSSL konfigurálása
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md
