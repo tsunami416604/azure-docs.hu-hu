@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dd15df0e745a5c6e3130233e693bbdb22655775
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b2f50ba910e3e47c55a63f58bc9f5e978e80e95a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500444"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401185"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Linux rendszerű virtuális gépek rendelkezésre állásának kezelése
 
@@ -70,7 +70,7 @@ A tartalék tartományok azonos tápforrással és hálózati kapcsolóval rende
    ![A frissítési és tartalék tartományokat tartalmazó konfiguráció elméleti rajza](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel
-Ha jelenleg nem felügyelt lemezekkel rendelkező virtuális gépeket használ, javasoljuk, hogy a [Linux](./linux/convert-unmanaged-to-managed-disks.md) és a [Windows rendszerhez](./windows/convert-unmanaged-to-managed-disks.md)készült felügyelt lemezeket ne felügyelje.
+Ha jelenleg nem felügyelt lemezekkel rendelkező virtuális gépeket használ, javasoljuk, hogy a nem felügyelt és a felügyelt lemezekre Konvertáljon [Linux](./linux/convert-unmanaged-to-managed-disks.md) és [Windows rendszerre](./windows/convert-unmanaged-to-managed-disks.md).
 
 A [felügyelt lemezek](./managed-disks-overview.md) jobb rendelkezésre állást nyújtanak a rendelkezésre állási csoportok számára, mivel biztosítják a rendelkezésre állási csoportban lévő virtuális gépek lemezeinek megfelelő elszigetelését a kritikus hibapontok elkerülése érdekében. Ezt úgy teszi meg, hogy a lemezeket a különböző tárolási tartalék tartományokban (Storage-fürtökben) helyezi el, és a virtuálisgép-tartalék tartományhoz igazítja őket. Ha a tárolási tartalék tartomány hardveres vagy szoftveres hiba miatt meghiúsul, akkor csak a tárolási tartalék tartomány lemezeit tartalmazó virtuálisgép-példány meghiúsul.
 ![Felügyelt lemezek tartalék](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
@@ -113,5 +113,5 @@ Ha a terheléselosztó nem úgy van konfigurálva, hogy a terhelést elossza tö
 A rendelkezésre állási zónák közötti terheléselosztással kapcsolatos oktatóanyagért lásd [: oktatóanyag: virtuális gépek terheléselosztása rendelkezésre állási zónák között standard Load Balancer a Azure Portal használatával](../load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a virtuális gépek terheléselosztásáról, tekintse meg a [virtuális gépek](../load-balancer/load-balancer-overview.md)terheléselosztását ismertető témakört.

@@ -11,14 +11,57 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483954"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401151"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
+
+## <a name="text-to-speech-2020-december-release"></a>Szöveg-beszéd 2020 – decemberi kiadás
+
+**Új neurális hangok a GA-ben és az előzetes verzió**
+
+51 új hang jelent meg összesen 129 neurális hangra a 54 nyelveken/területi beállításokon keresztül:
+
+- **46 új hangok a ga területi beállításaiban**: az `ar-EG` Arab (Egyiptom), az `ar-SA` Arab (Szaúd-Arábiai) Borislav, a `bg-BG` bolgár (Bulgária), Joana in `ca-ES` katalán (Spanyolország) Antonin in `cs-CZ` Czech (Cseh Köztársaság), Jeppe `da-DK` dán (Dánia), Jonas in German (Ausztria), `de-AT` Jan in `de-CH` German (Svájc), Nestoras in Greek (Görögország), `el-GR` Liam in `en-CA` English (Kanada), Connor in `en-IE` English (Ireland), a Daniella in hindi (India), megkerülő a `en-IN` `en-IN` telugu (India), `en-IN` angol (indiai), lengyel Valluvar in `en-IN` Tamil (India), Enric in `es-ES` katalán (Spanyolország), kert in észt (Észtország), a Finnia (Finnország), a finn (finnországi) Selma, a finn (Finnország), a `et-EE` `fi-FI` `fi-FI` `fr-CH` francia (Svájc), a Colm in `ga-IE` Irish (Írország), a Avri a `he-IL` héber (Izrael), Srecko a `hr-HR` horvátországi (horvátországi), Tamás Magyarországon `hu-HU` (Magyarországon), Gulácsi `id-ID` indonéz (Indonézia), a `lt-LT` litván (Litvánia), a Nils in `lv-LV` lett (Lettország), Osman in `ms-MY` maláj (Malajzia), Joseph in `mt-MT` máltai (Málta) , Finn `nb-NO` norvég, Pernille (Norvégia), norvég, olasz (norvégiai) `nb-NO` , Fenna `nl-NL` holland (Hollandia), Maarten in holland (Hollandia), Agnes in Polish (Lengyelország), lengyel `nl-NL` `pl-PL` `pl-PL` (Lengyelország), Duarte `pt-BR` portugál (brazíliai), a `pt-PT` portugál (Potugal), a német Emil (Románia), a Dmitrij in `ro-RO` `ru-RU` Russian (Oroszország) Svetlana in `ru-RU` Russian (Oroszország), Lukas a `sk-SK` szlovák régióban (Szlovákia), Rok `sl-SI` Szlovéniában (Szlovénia), Mattias `sv-SE` svéd (svédországi), `sv-SE` Niwat svéd (Svédország), a `th-TH` thai (Thailand), Ahmet in `tr-TR` török (Törökország), NamMinh in `vi-VN` vietnami (Vietnam), HsiaoChen a tajvani `zh-TW` mandarin (Tajvan), YunJhe a tajvani `zh-TW` mandarin (Tajvan), HiuMaan `zh-HK` kínai kantoni (Hongkong), WanLung `zh-HK` kínai kantoni (Hongkong).
+
+- **5 új hang az előzetes verzió területi beállításaiban**: kert in `et-EE` észt (Észtország), Colm in `ga-IE` Irish (Írország), Nils in `lv-LV` lett (Lettország), leonas in `lt-LT` litván (Litvánia), Joseph in `mt-MT` máltai (Málta).
+
+Ebben a kiadásban mostantól összesen 129 neurális hang támogatott a 54-es nyelvek/területi beállítások között. Emellett a 70-es standard hangok is elérhetők az 49 nyelven/területi beállításokban. Látogasson el a teljes lista [nyelvi támogatására](language-support.md#text-to-speech) .
+
+**A hangtartalom-létrehozás frissítései**
+- Továbbfejlesztett hangválasztási felhasználói felület hangkategóriákkal és részletes hangleírásokkal. 
+- Az összes neurális hangra való hanglejtés hangolása különböző nyelveken.
+- A felhasználói felület localizaiton automatizált a böngésző nyelve alapján.
+- `StyleDegree`Az összes neurális hang engedélyezett vezérlése `zh-CN` .
+Az új funkciók megtekintéséhez látogasson el a [hangtartalom-létrehozási eszközre](https://speech.microsoft.com/audiocontentcreation) . 
+
+**A zh-CN Voices frissítései**
+- Frissítette az összes `zh-CN` neurális hangját, hogy támogassa az angol nyelvű nyelvet.
+- Minden `zh-CN` neurális hang engedélyezése a hanglejtési beállítások támogatásához. A SSML vagy a hangtartalom-létrehozási eszköz használható a legjobb hanglejtéshez való alkalmazkodáshoz.
+- Az összes `zh-CN` multi-Style neurális hang frissítése a `StyleDegree` vezérlés támogatására. Az érzelem intenzitása (lágy vagy erős) állítható.
+- Frissítve `zh-CN-YunyeNeural` , hogy támogassa a több stílust, amely különböző érzelmeket tud végezni.
+
+## <a name="text-to-speech-2020-november-release"></a>Szöveg – beszéd 2020 – novemberi kiadás
+
+**Új területi beállítások és hangok az előzetes verzióban**
+- **Öt új hang és nyelv** van bevezetve a neurális TTS-portfólióba. A következők: Grace in máltai (Málta), Ona litván (Litvánia), az észt (Észtország), a Orla in Irish (Írország) és a Everita (Lettország).
+- **Öt új `zh-CN` hang, amely több stílust és szerepkört támogat**: Xiaohan, Xiaomo, Xiaorui, Xiaoxuan és Yunxi.
+
+> Ezek a hangok nyilvános előzetes verzióban érhetők el három Azure-régióban: EastUS, SouthEastAsia és WestEurope.
+
+**Neurális TTS-tároló GA**
+- A neurális TTS-tárolóval a fejlesztők a saját környezetükben található legtöbb természetes digitális hangon futtathatják a hangszintézist a biztonsági és adatirányítási követelmények tekintetében. [A beszédfelismerési tárolók telepítésének](speech-container-howto.md)megadásához. 
+
+**Új funkciók**
+- **Egyéni hang**: enabed a felhasználókat, hogy átmásolják a hangmodellt az egyik régióból a másikba; a végpont támogatott felfüggesztése és folytatása. Lépjen a [portálra](https://speech.microsoft.com/customvoice) itt.
+- A [SSML Silence címke](speech-synthesis-markup.md#add-silence) támogatása 
+- Általános TTS hangminőség-fejlesztések: jobb szó szintű kiejtési pontosság a NB-nem értékben. Csökkentett 53%-os kiejtési hiba.
+
+> További információk [ebben a tech blogban](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-previews-five-new-languages-with/ba-p/1907604).
 
 ## <a name="text-to-speech-2020-october-release"></a>Szöveg-beszéd 2020 – októberi kiadás
 
@@ -261,7 +304,7 @@ Egészségesek maradjanak!
 * Pénznem olvasása
     * Kijavítottuk a és a pénznem beolvasásával kapcsolatos problémát `es-ES``es-MX`
      
-    | Nyelv | Input (Bemenet) | Fejlesztés utáni kiolvasás |
+    | Nyelv | Bevitel | Fejlesztés utáni kiolvasás |
     |---|---|---|
     | `es-MX` | $1,58 | un peso cincuenta y Ocho centavos |
     | `es-ES` | $1,58 | un dólar cincuenta y Ocho centavos |
@@ -423,7 +466,7 @@ Egészségesek maradjanak!
 - [Itt talál](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)rögzített rövid útmutatót. Ezek a "mikrofon nem található" kivétel nélkül lettek kizárva a Linux, macOS és Windows rendszereken.
 - Rögzített SDK-összeomlás a hosszú beszédfelismerés eredményeként bizonyos kódok elérési útjain, például [a](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp)mintában.
 - Az Azure webalkalmazás-környezet rögzített SDK-telepítési hibája a [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)megoldásához.
-- A probléma megoldásához több címke vagy címke használatakor hiba történt `<voice>` `<audio>` . [this customer issue](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433) 
+- A probléma megoldásához több címke vagy címke használatakor hiba történt `<voice>` `<audio>` . [](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433) 
 - A rendszer felfüggesztette a TTS 401 hibát, ha az SDK-t felfüggesztették a felfüggesztésből.
 - JavaScript: rögzített hangadatok körkörös importálása a [euirim](https://github.com/euirim)hozzájárulásának köszönhetően. 
 - JavaScript: a szolgáltatás tulajdonságainak beállításához hozzáadott támogatás a 1,7-as verzióban.

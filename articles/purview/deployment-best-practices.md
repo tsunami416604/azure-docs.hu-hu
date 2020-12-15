@@ -1,18 +1,18 @@
 ---
 title: Ajánlott üzembe helyezési eljárások
 description: Ez a cikk az Azure hatáskörébe való telepítés ajánlott eljárásait ismerteti. Az Azure hatáskörébe minden felhasználó regisztrálhatja, felderítheti, értelmezheti és felhasználhatja az adatforrásokat.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: cae4904d0b3dacc608c7b41b638dc507b3cda6b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552800"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400692"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Az Azure hatáskörébe telepítése – ajánlott eljárások
 
@@ -53,7 +53,7 @@ Az általános megközelítés az átfogó célkitűzések különböző kategó
 |---------|---------|
 |Felderítés|A rendszergazda felhasználóknak képesnek kell lenniük az Azure-beli és nem Azure-beli adatforrások (beleértve a helyszíni forrásokat is) vizsgálatára az adategységek automatikus adatainak gyűjtéséhez.|
 |Osztályozás|A platformnak automatikusan kell osztályoznia az adatelemzést az adatmintavételezés alapján, és az egyéni besorolások használatával manuális felülbírálást is engedélyezhet.|
-|Használat|Az üzleti felhasználóknak az üzleti és technikai metaadatokra vonatkozó információkat is meg kell tudniuk találni az egyes eszközökről.|
+|Felhasználás|Az üzleti felhasználóknak az üzleti és technikai metaadatokra vonatkozó információkat is meg kell tudniuk találni az egyes eszközökről.|
 |Lineage|Minden objektumnak az alapul szolgáló adatkészletek grafikus nézetét kell megjelenítenie, hogy a felhasználók megértsék az eredeti forrásokat, és hogy milyen módosításokat hajtottak végre.|
 |Együttműködés|A platformnak lehetővé kell tennie a felhasználók számára, hogy további információkat biztosítson az egyes adategységekről.|
 |Jelentéskészítés|A felhasználóknak képesnek kell lenniük a jelentések megtekintésére az adatbirtokon, beleértve a bizalmas adatokat és az olyan adatokat, amelyek további dúsítást igényelnek.|
@@ -110,7 +110,7 @@ Ezek a forgatókönyvek többféleképpen is írhatók, de legalább az alábbi 
 
 A forgatókönyveknek a mérhető eredményekkel kell rendelkezniük, amelyeknek konkrét, végrehajtható és végrehajthatónak kell lenniük. Néhány példa arra, hogy milyen forgatókönyveket használhat:
 
-|Használati példa|Részletek|Persona|
+|Forgatókönyv|Részletek|Persona|
 |---------|---------|---------|
 |Az üzleti szempontból kritikus fontosságú eszközök katalogizálása|Információra van szükségem az egyes adatkészletekről, hogy jól lássuk, mi is az. Ez a forgatókönyv a katalógusban lévő adatkészlettel kapcsolatos üzleti és technikai metaadatokat is tartalmazza. Az adatforrások közé tartoznak az Azure Data Lake Storage Gen2, az Azure szinapszis DW és/vagy Power BI. Ez a forgatókönyv olyan helyszíni erőforrást is tartalmaz, mint például a SQL Server.|Üzleti elemző, adattudós, adatmérnök|
 |Üzleti szempontból kritikus fontosságú eszközök felderítése|Olyan keresőmotorra van szükségem, amely a katalógusban található összes metaadaton át tud keresni. Képesnek kell lennie arra, hogy a technikai kifejezéssel, az üzleti kifejezéssel vagy egyszerű vagy összetett kereséssel keressen helyettesítő karaktert.|Üzleti elemző, adattudós, adatmérnök, adatadminisztrátor|

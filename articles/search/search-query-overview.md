@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2020
-ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.date: 12/14/2020
+ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387666"
+ms.locfileid: "97400811"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Lekérdezés az Azure Cognitive Searchban
 
-Az Azure Cognitive Search sokoldalú lekérdezési nyelvet kínál a különböző forgatókönyvek, a szabadszöveges keresések és a magas megadott lekérdezési minták támogatásához. Ez a cikk a létrehozható lekérdezések típusait foglalja össze.
+Az Azure Cognitive Search sokoldalú lekérdezési nyelvet kínál a különböző forgatókönyvek, a szabadszöveges keresések és a magas megadott lekérdezési minták támogatásához. Ez a cikk a lekérdezési kérelmeket és a létrehozandó lekérdezések típusát ismerteti.
 
-A Cognitive Searchban a lekérdezés egy kerekítési művelet teljes specifikációja **`search`** , amely a lekérdezés-végrehajtást és a válasz visszatérését is tájékoztatja. A paraméterek és az elemzők határozzák meg a lekérdezési kérelem típusát. A következő lekérdezési példa a [Search Documents (REST API) kifejezést](/rest/api/searchservice/search-documents)használja, amely a [Hotels bemutató indexét](search-get-started-portal.md)célozza meg.
+A Cognitive Searchban a lekérdezés egy kerekítési művelet teljes specifikációja **`search`** , amely a lekérdezés-végrehajtást és a válasz visszatérését is tájékoztatja. A paraméterek és az elemzők határozzák meg a lekérdezési kérelem típusát. A következő példa egy egyszerű szöveges lekérdezés, amely egy logikai operátort használ a [Search Documents (REST API)](/rest/api/searchservice/search-documents)használatával, amely a [Hotels-Sample-index](search-get-started-portal.md) Documents Collectiont célozza meg.
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,7 +34,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 }
 ```
 
-A lekérdezés végrehajtása során használt paraméterek:
+A lekérdezés végrehajtása során használt paraméterek a következők:
 
 + **`queryType`** Beállítja az elemzőt, amely az [alapértelmezett egyszerű lekérdezés-elemző](search-query-simple-examples.md) (optimális a teljes szöveges kereséshez), vagy a speciális lekérdezési felépítéshez használt [teljes Lucene lekérdezés-elemző](search-query-lucene-examples.md) , például a reguláris kifejezések, a közelségi keresés, a fuzzy és a helyettesítő karakterek keresése, hogy csak néhányat említsünk.
 
@@ -66,7 +66,7 @@ Ha a keresőalkalmazás olyan keresőmezőt tartalmaz, amely a lejárati bemenet
 
 Cognitive Search a teljes szöveges keresés az Apache Lucene lekérdezési motorra épül. A teljes szöveges keresésekben a lekérdezési karakterláncok a lexikális elemzések révén hatékonyabbá teszik a vizsgálatokat. Az elemzés magában foglalja az összes feltételt, eltávolítja a leállítási szavakat, például a "The" szót, és csökkenti a kifejezéseket az egyszerű legfelső szintű űrlapokra Az alapértelmezett elemző a standard Lucene.
 
-Ha egyezési feltételek találhatók, a lekérdezési motor visszaállítja a egyezést tartalmazó keresési dokumentumot, rangsorolja a dokumentumokat a relevancia sorrendjében, és a válaszban a legfontosabb 50 (alapértelmezés szerint) adja vissza.
+Ha a megfeleltetési feltételek teljesülnek, a lekérdezési motor egy olyan keresési dokumentumot hoz létre, amely tartalmazza a megfelelő dokumentumot vagy azonosítót a mezőértékek összeállításához, rangsorolja a dokumentumokat a megfelelő sorrendben, és visszaadja a legfontosabb 50 (alapértelmezés szerint) a válaszban, vagy egy másik számot, ha meg van adva **`top`** .
 
 Ha teljes szöveges keresést hajt végre, akkor a tartalom jogkivonatának megismerése segít a lekérdezési rendellenességek hibakeresésében. A leválasztott karakterláncok vagy speciális karakterek lekérdezése az alapértelmezett standard Lucene eltérő Analyzer használatát teszi lehetővé annak biztosítása érdekében, hogy az index tartalmazza a megfelelő jogkivonatokat. Felülbírálhatja az alapértelmezett [nyelvi elemzőket](index-add-language-analyzers.md#language-analyzer-list) vagy [speciális elemzőket](index-add-custom-analyzers.md#AnalyzerTable) , amelyek a lexikális analízist módosítják. Az egyik példa egy [kulcsszó](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , amely egy mező teljes tartalmát egyetlen tokenként kezeli. Ez hasznos lehet például a zip-kódok, az azonosítók és a termékek neveihez. További információ: [részleges kifejezéses keresés és minták speciális karakterekkel](search-query-partial-matching.md).
 
@@ -78,11 +78,11 @@ Az [automatikus kiegészítés vagy a javasolt eredmények](search-autocomplete-
 
 ## <a name="filter-search"></a>Keresés szűrése
 
-A szűrők széles körben használatosak a Cognitive Searcht tartalmazó alkalmazásokban. Az alkalmazás oldalain a szűrők gyakran a felhasználó által irányított szűréshez használt hivatkozás-navigációs struktúrákban láthatók. A szűrőket belsőleg is használják az indexelt tartalomhoz tartozó szeletek megjelenítéséhez. Például szűrheti a nyelvet, ha az index az angol és a francia nyelven is tartalmaz mezőket. 
+A szűrők széles körben használatosak a Cognitive Searcht tartalmazó alkalmazásokban. Az alkalmazás oldalain a szűrők gyakran a felhasználó által irányított szűréshez használt hivatkozás-navigációs struktúrákban láthatók. A szűrőket belsőleg is használják az indexelt tartalomhoz tartozó szeletek megjelenítéséhez. Előfordulhat például, hogy egy keresési oldalt inicializál egy termékkategória alapján, vagy egy nyelvet, ha az index az angol és a francia nyelven is tartalmaz mezőket.
 
 A következő táblázatban leírtak szerint szűrőkre is szükség lehet egy speciális lekérdezési űrlap meghívásához. A szűrőket meghatározatlan kereséssel ( **`search=*`** ) vagy olyan lekérdezési karakterlánccal használhatja, amely kifejezéseket, kifejezéseket, operátorokat és mintákat tartalmaz.
 
-| Szűrési forgatókönyv | Leírás |
+| Szűrési forgatókönyv | Description |
 |-----------------|-------------|
 | Tartomány szűrőinek | Az Azure Cognitive Searchban a Range lekérdezéseket a Filter paraméterrel kell felépíteni. További információért és Példákért lásd: [tartomány szűrő példa](search-query-simple-examples.md#example-4-range-filters). |
 | Földrajzi hely keresése | Ha egy kereshető mező [EDM. geographypoint adattípuson típusú](/rest/api/searchservice/supported-data-types), létrehozhat egy szűrési kifejezést a "keresés a közelben" vagy a térképes keresési vezérlőkben. A földrajzi keresést elvégező mezők koordinátáit tartalmaznak. További információ és példa: [földrajzi keresési példa](search-query-simple-examples.md#example-5-geo-search). |

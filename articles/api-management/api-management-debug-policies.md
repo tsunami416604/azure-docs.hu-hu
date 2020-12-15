@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8ed834c9ab093ae063e386978bca4d73fa46543
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343019"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400726"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Azure API Management-szabályzatok hibakeresése a Visual Studio Code-ban
 
@@ -30,9 +30,11 @@ Ez a cikk a Visual Studio Code-hoz készült [Azure API Management bővítménny
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzon létre egy API Management fejlesztői szintű példányt az [oktatóanyag](get-started-create-service-instance.md) első lépésével.
+* Hozzon létre egy API Management fejlesztői szintű [példányt ehhez a](get-started-create-service-instance.md) rövid útmutatóhoz elsőként.
 
-Telepítse a [Visual Studio Code](https://code.visualstudio.com/) -ot és az [Azure API Management Extension legújabb verzióját a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)-hoz. 
+* Telepítse a [Visual Studio Code](https://code.visualstudio.com/) -ot és az [Azure API Management Extension legújabb verzióját a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)-hoz. 
+
+* API importálása a API Management-példányba. A lépéseket például [az oktatóanyag: az API-k importálásához és kezeléséhez használja a Visual Studio Code API Management bővítményét](visual-studio-code-tutorial.md).
 
 ## <a name="restrictions-and-limitations"></a>Korlátozások és korlátozások
 
