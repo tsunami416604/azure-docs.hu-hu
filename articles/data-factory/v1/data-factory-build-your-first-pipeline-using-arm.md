@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: ce8710cb8f1cf49752f95340d931ddd79d43ec35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e65039d39bea4063f717709f97b090e465c5e3c4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496381"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508509"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Az első Azure data factory létrehozása Azure Resource Manager-sablon használatával
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ A jelen oktatóanyagban szereplő folyamat egyetlen tevékenységet tartalmaz: e
 
 ## <a name="in-this-tutorial"></a>Az oktatóanyag tartalma
 
-| Entitás | Description |
+| Entitás | Leírás |
 | --- | --- |
 | Azure Storage társított szolgáltatás |Társítja az Azure Storage-fiókot a data factoryhoz. Ebben a példában az Azure Storage-fiók a bemeneti és a kimeneti adatokat tárolja a folyamathoz. |
 | HDInsight igény szerinti társított szolgáltatás |Egy igény szerinti HDInsight-fürtöt társít a data factoryhoz. A rendszer automatikusan létrehozza a fürtöt az adatok feldolgozásához, majd törli a feldolgozás befejezése után. |
@@ -143,14 +143,14 @@ Hozzon létre egy **ADFTutorialARM.json** nevű JSON-fájlt a **C:\ADFGetStarted
             ],
             "apiVersion": "2015-10-01",
             "properties": {
-                  "type": "HDInsightOnDemand",
-                  "typeProperties": {
+                "type": "HDInsightOnDemand",
+                "typeProperties": {
                     "version": "3.5",
                     "clusterSize": 1,
                     "timeToLive": "00:05:00",
                     "osType": "Linux",
                     "linkedServiceName": "[variables('azureStorageLinkedServiceName')]"
-                  }
+                }
             }
           },
           {
@@ -526,37 +526,37 @@ Definiálhat egy folyamatot, amely átalakítja az adatokat a Hive-parancsfájl 
     "properties": {
         "description": "Pipeline that transforms data using Hive script.",
         "activities": [
-        {
-            "type": "HDInsightHive",
-            "typeProperties": {
-                "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
-                "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
-                "defines": {
-                    "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
-                    "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
-                }
-            },
-            "inputs": [
             {
-                "name": "[variables('blobInputDatasetName')]"
+                "type": "HDInsightHive",
+                "typeProperties": {
+                    "scriptPath": "[concat(parameters('blobContainer'), '/', parameters('hiveScriptFolder'), '/', parameters('hiveScriptFile'))]",
+                    "scriptLinkedService": "[variables('azureStorageLinkedServiceName')]",
+                    "defines": {
+                        "inputtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('inputBlobFolder'))]",
+                        "partitionedtable": "[concat('wasb://', parameters('blobContainer'), '@', parameters('storageAccountName'), '.blob.core.windows.net/', parameters('outputBlobFolder'))]"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "[variables('blobInputDatasetName')]"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "[variables('blobOutputDatasetName')]"
+                    }
+                ],
+                "policy": {
+                    "concurrency": 1,
+                    "retry": 3
+                },
+                "scheduler": {
+                    "frequency": "Month",
+                    "interval": 1
+                },
+                "name": "RunSampleHiveActivity",
+                "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
             }
-            ],
-            "outputs": [
-            {
-                "name": "[variables('blobOutputDatasetName')]"
-            }
-            ],
-            "policy": {
-                "concurrency": 1,
-                "retry": 3
-            },
-            "scheduler": {
-                "frequency": "Month",
-                "interval": 1
-            },
-            "name": "RunSampleHiveActivity",
-            "linkedServiceName": "[variables('hdInsightOnDemandLinkedServiceName')]"
-        }
         ],
         "start": "2017-07-01T00:00:00Z",
         "end": "2017-07-02T00:00:00Z",
@@ -620,7 +620,7 @@ Ez a sablon létrehozza a GatewayUsingArmDF nevű data factoryt a GatewayUsingAR
 
 ## <a name="see-also"></a>Lásd még:
 
-| Témakör | Description |
+| Témakör | Leírás |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Azure Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti az adatkészleteket az Azure Data Factoryban. |

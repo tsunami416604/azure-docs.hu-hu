@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95406599"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509427"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 - Egy Azure AD-bérlő. További információ: [Azure ad-bérlő beszerzése](quickstart-create-new-tenant.md).
 - Egy vagy több felhasználói fiók az Azure AD-bérlőben. Ez a minta nem fog működni Microsoft-fiók. Ha bejelentkezett a [Azure Portalba](https://portal.azure.com) egy Microsoft-fiók, és még soha nem hozott létre felhasználói fiókot a címtárban, tegye meg most.
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Forgatókönyv
 
 Az alkalmazás ASP.NET MVC-alkalmazásként van felépítve. A OWIN OpenID Connect middleware használatával jelentkezik be a felhasználókba.
 
@@ -65,7 +65,7 @@ Vagy [töltse le a mintát egy zip-fájlba](https://github.com/Azure-Samples/ms-
 
 Ez a minta egy projekttel rendelkezik. Az alkalmazás Azure AD-Bérlővel való regisztrálásához az alábbiakat teheti:
 
-- Kövesse a [minta regisztrálása a Azure Active Directory Bérlővel](#register-your-application) című témakör lépéseit, és [konfigurálja a mintát az Azure ad-bérlő használatára](#choose-the-azure-ad-tenant).
+- Kövesse a [minta regisztrálása a Azure Active Directory Bérlővel](#register-the-client-app-dotnet-web-daemon-v2) című témakör lépéseit, és [konfigurálja a mintát az Azure ad-bérlő használatára](#choose-the-azure-ad-tenant).
 - Használjon olyan PowerShell-parancsfájlokat, amelyek:
   - *Automatikusan* létrehozhatja az Azure ad-alkalmazásokat és a kapcsolódó objektumokat (jelszavak, engedélyek, függőségek).
   - Módosítsa a Visual Studio-projektek konfigurációs fájljait.
@@ -93,40 +93,34 @@ Ha nem kívánja használni az automatizálást, kövesse az alábbi részben is
 
 ### <a name="choose-the-azure-ad-tenant"></a>Az Azure AD-bérlő kiválasztása
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók használatával.
-1. Ha a fiókja több Azure AD-bérlőn található, válassza ki a profilt az oldal tetején található menüben, majd válassza a **címtár váltása** lehetőséget.
-1. Módosítsa a portál munkamenetét a kívánt Azure AD-bérlőre.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>Az ügyfélalkalmazás regisztrálása (DotNet-web-Daemon-v2)
 
-1. Nyissa meg a Microsoft Identity platform [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapját a fejlesztők számára.
-1. Válassza az **új regisztráció** lehetőséget.
-1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
-   - A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Írja be például a következőt: **DotNet-web-Daemon-v2**.
-   - A **támogatott fiókok típusai** szakaszban válassza a **fiókok lehetőséget bármely szervezeti címtárban**.
-   - Az **átirányítási URI (nem kötelező)** szakaszban a kombinált listában válassza a **web** lehetőséget, és adja meg a következő átirányítási URI-ket:
-       - **https://localhost:44316/**
-       - **https://localhost:44316/Account/GrantPermissions**
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás **nevét** , például: `dotnet-web-daemon-v2` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+1. A **támogatott fiókok típusai** szakaszban válassza a **fiókok lehetőséget bármely szervezeti címtárban**.
+1. Az **átirányítási URI (nem kötelező)** szakaszban válassza a kombinált lista **webes** elemét, és adja meg az `https://localhost:44316/` és `https://localhost:44316/Account/GrantPermissions` az átirányítási URI-t.
 
-     Ha kettőnél több átirányítási URI van, akkor az alkalmazás sikeres létrehozása után később hozzá kell adnia őket a **hitelesítés** lapon.
+    Ha kettőnél több átirányítási URI van, akkor az alkalmazás sikeres létrehozása után később hozzá kell adnia őket a **hitelesítés** lapon.
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
-1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Ehhez a projekthez a Visual Studio konfigurációs fájlját kell konfigurálnia.
-1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet. Ezután:
-   - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: **https://localhost:44316/Account/EndSession** .
-   - A **Speciális beállítások**  >  **implicit támogatás** szakaszban válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** elemet. Ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó felé, és hívjon fel egy API-t.
-1. Kattintson a **Mentés** gombra.
-1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka** elemet. Ezután:
-
-   1. Adja meg a kulcs leírását (például: **alkalmazás titka**),
-   1. Válassza ki a kulcs időtartamát **1 év** vagy **2 év** között, vagy **Soha ne járjon le**.
-   1. Kattintson a **Hozzáadás** gombra.
-   1. Amikor megjelenik a kulcs értéke, másolja és mentse biztonságos helyre. Erre a kulcsra később szüksége lesz a projekt konfigurálásához a Visual Studióban. Nem jelenik meg többé, vagy más módon nem kérhető le.
-1. Az alkalmazáshoz tartozó lapok listájában válassza az **API-engedélyek** lehetőséget. Ezután:
-   1. Nyomja meg **Az engedély hozzáadása** gombot.
-   1. Győződjön meg arról, hogy a **Microsoft API** -k lap van kiválasztva.
-   1. A **gyakran használt Microsoft API** -k szakaszban válassza a **Microsoft Graph** lehetőséget.
-   1. Az **alkalmazás engedélyei** szakaszban győződjön meg arról, hogy a megfelelő engedélyek vannak kiválasztva: **User. Read. All**.
-   1. Kattintson az **engedélyek hozzáadása** gombra.
+1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel későbbi használatra. Ehhez a projekthez a Visual Studio konfigurációs fájlját kell konfigurálnia.
+1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+1. A **kijelentkezési URL** beállítása a következőre: `https://localhost:44316/Account/EndSession` .
+1. Az **implicit támogatás** szakaszban válassza a **hozzáférési jogkivonatok** és **azonosító tokenek** elemet. Ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó felé, és hívjon fel egy API-t.
+1. Válassza a **Mentés** lehetőséget.
+1. A **Kezelés** területen válassza a **Tanúsítványok és titkos kódok** lehetőséget.
+1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet. 
+1. Adja meg a kulcs leírását (például az **alkalmazás titkát**).
+1. Válassza ki a kulcs időtartamát **1 év** vagy **2 év** között, vagy **Soha ne járjon le**.
+1. Válassza a **Hozzáadás** elemet. Jegyezze fel a kulcs értékét egy biztonságos helyen. Erre a kulcsra később szüksége lesz a projekt konfigurálásához a Visual Studióban.
+1. A **kezelés** területen válassza az **API-engedélyek**  >  **Hozzáadás engedélyt**.
+1. A **gyakran használt Microsoft API** -k szakaszban válassza a **Microsoft Graph** lehetőséget.
+1. Az **alkalmazás engedélyei** szakaszban győződjön meg arról, hogy a megfelelő engedélyek vannak kiválasztva: **User. Read. All**.
+1. Válassza az **engedélyek hozzáadása** lehetőséget.
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>A minta beállítása az Azure AD-bérlő használatára
 
@@ -224,7 +218,7 @@ A projekt webalkalmazás-és webes API-projektekkel rendelkezik. Az Azure-webhel
 1. Válassza a **Konfigurálás** lehetőséget.
 1. A **kapcsolat** lapon frissítse a cél URL-címet úgy, hogy a "https"-t használja. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . Kattintson a **Tovább** gombra.
 1. A **Beállítások** lapon győződjön meg arról, hogy a **szervezeti hitelesítés engedélyezése** jelölőnégyzet nincs bejelölve.
-1. Kattintson a **Mentés** gombra. Válassza a fő képernyő **Közzététel** elemét.
+1. Válassza a **Mentés** lehetőséget. Válassza a fő képernyő **Közzététel** elemét.
 
 A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngészőt a projekt URL-címére. Ha megjelenik a projekt alapértelmezett weboldala, a kiadvány sikeres volt.
 
@@ -253,7 +247,7 @@ Ha hibát talál a MSAL.NET-ben, akkor emelje fel a problémát a [MSAL.net GitH
 
 A javaslatok megadásához nyissa meg a [felhasználói hang lapot](https://feedback.azure.com/forums/169401-azure-active-directory).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Microsoft Identity platformot használó Daemon-alkalmazások létrehozásáról a védett webes API-k eléréséhez:
 

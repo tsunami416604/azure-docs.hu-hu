@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e17c390dddcb2af9fdc83b45ae812ef1fff7f1c3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 14195ad4638c724cf0c8dd46945a0da79ec0e4ec
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345082"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509700"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Önérvényesített technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -209,7 +209,7 @@ Az üzleti logikával meghívhat egy REST API technikai profilt, felülírhatja 
 | Setting. showContinueButton | Nem | Megjeleníti a folytatás gombot. Lehetséges értékek: `true` (alapértelmezett), vagy `false` |
 | Setting. showSignupLink <sup>2</sup>| Nem | Megjeleníti a regisztrációs gombot. Lehetséges értékek: `true` (alapértelmezett), vagy `false` |
 | Setting. forgotPasswordLinkLocation <sup>2</sup>| Nem| Az elfelejtett jelszó hivatkozását jeleníti meg. Lehetséges értékek: `AfterInput` (alapértelmezett) a hivatkozás megjelenik az oldal alján, vagy `None` eltávolítja az elfelejtett jelszó hivatkozást.|
-| Setting. enableRememberMe <sup>2</sup>| Nem| Megjeleníti a [bejelentkezett marad](custom-policy-keep-me-signed-in.md) jelölőnégyzetet. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). |
+| Setting. enableRememberMe <sup>2</sup>| Nem| Megjeleníti a [bejelentkezett marad](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) jelölőnégyzetet. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). |
 | Setting. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Nem| Javítja a felhasználói élményt, ha megvárja, amíg a felhasználó leállítja a beírást, majd érvényesíti az értéket. Az alapértelmezett érték 2000 ezredmásodperc. |
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 

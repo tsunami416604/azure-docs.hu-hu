@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 6c9e2ae420e56c5ef99ff79cdcb49592bc7e049e
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 3d4e5ad0b24b7163072d7e3110a523dad9608923
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371985"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507371"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -152,12 +152,12 @@ Munkaelemek létrehozásához kövesse az alábbi eljárást:
 
 9. Ha **az egyes konfigurációs elemekhez az egyes** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz. A konfigurációs elemek egy munkaelemet kapnak. A rendszer a létrehozandó riasztások alapján frissíti.
 
-   * Abban az esetben, ha a munkaelem legördülő menüben a "incidens" vagy a "riasztás" lehetőséget választotta: Ha törli az egyes **konfigurációs elemek egyéni munkaelemeinek létrehozása** jelölőnégyzet jelölését, minden riasztás új munkaelemet fog létrehozni. Egy konfigurációs elemmel több riasztás is lehet.
+    * Abban az esetben, ha a munkaelem legördülő menüben a "incidens" vagy a "riasztás" lehetőséget választotta: Ha törli az egyes **konfigurációs elemek egyéni munkaelemeinek létrehozása** jelölőnégyzet jelölését, minden riasztás új munkaelemet fog létrehozni. Egy konfigurációs elemmel több riasztás is lehet.
 
-   ![A ITSM-jegy ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration.png)
-   
-   * Ha a munkaelem legördülő menüben a "esemény" lehetőséget választja: Ha a választógombok kiválasztásakor a különböző munkaelemek **létrehozása** lehetőséget választja, minden riasztás új munkaelemet fog létrehozni. Ha a választógombok kiválasztásakor az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz.
-   ![A ITSM-jegy ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration-event.png)
+       ![A ITSM incidens ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration.png)
+
+    * Ha a munkaelem legördülő menüben a "esemény" lehetőséget választja: Ha a választógombok kiválasztásakor a különböző munkaelemek **létrehozása** lehetőséget választja, minden riasztás új munkaelemet fog létrehozni. Ha a választógombok kiválasztásakor az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz.
+   ![Képernyőkép, amely a ITSM esemény ablakát jeleníti meg.](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. Válassza az **OK** lehetőséget.
 
@@ -169,26 +169,6 @@ Azure-riasztási szabály létrehozásakor vagy szerkesztésekor használjon egy
 >
 >
 >- A riasztási szabály definíciójának rövid leírása mezője 40 karakterre van korlátozva, ha a ITSM művelettel küldi el.
-
-
-## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Az incidens megjelenítése és elemzése és a kérelmekre vonatkozó adatváltozás
-
-A kapcsolatok beállításakor a ITSMC legfeljebb 120 napos incidenst tud szinkronizálni, és módosíthatja a kérelmek adatait. Az adatok naplózási rekordjainak sémája a jelen cikk [következő szakaszában](#additional-information) található.
-
-A ITSMC irányítópult használatával megjelenítheti az incidenst és módosíthatja a kérelmeket:
-
-![A ITSMC irányítópultot megjelenítő képernyőkép.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
-
-Az irányítópult az összekötő állapotáról is tartalmaz információkat, amelyeket kiindulási pontként használhat a kapcsolatokkal kapcsolatos problémák elemzéséhez.
-
-A Service Map érintett számítógépeken szinkronizált incidenseket is megjelenítheti.
-
-Service Map automatikusan feltérképezi az alkalmazás összetevőit Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Lehetővé teszi, hogy a kiszolgálókat a következőképpen tekintheti meg: olyan összekapcsolt rendszerek, amelyek kritikus szolgáltatásokat biztosítanak. Service Map megjeleníti a kiszolgálók, a folyamatok és a portok közötti kapcsolatokat bármely TCP-kapcsolattal rendelkező architektúrán keresztül. Az ügynök telepítésén kívül nincs szükség konfigurációra. További információ: [a Service Map használata](../insights/service-map.md).
-
-Ha Service Map használ, megtekintheti a ITSM-megoldásokban létrehozott ügyfélszolgálati elemeket az itt látható módon:
-
-![Képernyőkép, amely a Log Analytics képernyőt jeleníti meg.](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
-
 
 ## <a name="additional-information"></a>További információ
 
@@ -299,36 +279,16 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Impact_s| Hatás|
 | RequestedDate_t  | Kérelem dátuma szerint |
 | ClosedDate_t | Lezárt dátum |
-| PlannedStartDate_t  |     Tervezett kezdési dátum |
-| PlannedEndDate_t  |   Tervezett befejezési dátum |
+| PlannedStartDate_t  | Tervezett kezdési dátum |
+| PlannedEndDate_t  | Tervezett befejezési dátum |
 | WorkStartDate_t  | Tényleges kezdési dátum |
 | WorkEndDate_t | Tényleges befejezési dátum|
 | Description_s | Leírás |
 | Computer  | Konfigurációs tétel |
 
-
-## <a name="troubleshoot-itsm-connections"></a>ITSM-kapcsolatok hibáinak megoldása
-- Ha egy kapcsolat nem sikerül a csatlakoztatott forrás felhasználói felületéről, és hibaüzenet jelenik meg a **kapcsolati üzenet mentésekor** , hajtsa végre a következő lépéseket:
-   - ServiceNow, Cherwell és elővance kapcsolatok esetén:  
-     - Győződjön meg arról, hogy minden kapcsolathoz helyesen adta meg a felhasználónevet, a jelszót, az ügyfél-azonosítót és az ügyfél-titkot.  
-     - Győződjön meg arról, hogy megfelelő jogosultságokkal rendelkezik a megfelelő ITSM-termékben a kapcsolódáshoz.  
-   - Service Manager kapcsolatok esetén:  
-     - Győződjön meg arról, hogy a webalkalmazás üzembe helyezése sikeres volt, és hogy a hibrid kapcsolat létrejött. Annak ellenőrzéséhez, hogy a kapcsolat sikeresen létrejött-e a helyszíni Service Manager számítógéppel, lépjen a webalkalmazás URL-címére a [hibrid kapcsolat](./itsmc-connections.md#configure-the-hybrid-connection)létrehozásához szükséges dokumentációban leírtak szerint.  
-
-- Ha a ServiceNow származó adatok nem lettek szinkronizálva Log Analyticsre, győződjön meg arról, hogy a ServiceNow-példány nem alvó állapotú. A ServiceNow dev-példányok néha alvó állapotba kerülnek, ha hosszú ideje tétlenek. Ha ez nem történik meg, jelentse a problémát.
-- Ha Log Analytics riasztások tüzet, de a munkaelemek nem jönnek létre a ITSM termékben, ha a konfigurációs elemek nem jönnek létre/nem kapcsolódnak munkaelemekhez vagy egyéb információkhoz, tekintse meg ezeket az erőforrásokat:
-   -  ITSMC: a megoldás a kapcsolatok, a munkaelemek, a számítógépek és egyebek összegzését jeleníti meg. Válassza ki az **összekötő állapota** címkével ellátott csempét. Ekkor a **Keresés** a megfelelő lekérdezéssel történik. További információért tekintse meg a rekordokat `LogType_S` `ERROR` .
-   - **Naplók keresése** oldalon: a hibákat és a kapcsolódó információkat közvetlenül a lekérdezés használatával tekintheti meg `*ServiceDeskLog_CL*` .
-
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager webalkalmazás központi telepítésének hibáinak megoldása
--   Ha problémák merülnek fel a webalkalmazások üzembe helyezésével kapcsolatban, győződjön meg arról, hogy rendelkezik az előfizetés erőforrásainak létrehozásához/üzembe helyezéséhez szükséges engedélyekkel.
--   Ha a [parancsfájl](itsmc-service-manager-script.md)futtatásakor nem az objektumra **vonatkozó hiba példányára van beállítva** , akkor ellenőrizze, hogy érvényes értékeket adott-e meg a **Felhasználó konfigurációja** szakaszban.
--   Ha nem sikerül létrehoznia a Service Bus Relay-névteret, győződjön meg arról, hogy a szükséges erőforrás-szolgáltató regisztrálva van az előfizetésben. Ha nincs regisztrálva, manuálisan hozza létre a Service Bus Relay-névteret a Azure Portalból. Azt is létrehozhatja, amikor [létrehozza a hibrid kapcsolatokat](./itsmc-connections.md#configure-the-hybrid-connection) a Azure Portalban.
-
-
 ## <a name="contact-us"></a>Kapcsolat
 
 Ha a IT-szolgáltatásmenedzsmenti csatolóról kérdez vagy visszajelzést szeretne küldeni, lépjen kapcsolatba velünk a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [ITSM-termékek/szolgáltatások hozzáadása a IT-szolgáltatásmenedzsmenti csatolóhoz](./itsmc-connections.md)

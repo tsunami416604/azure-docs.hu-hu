@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7ba15e66cca7baefdf8cca5cabd5e5d5b1e2c7f7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996202"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507812"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása Android-alkalmazásból
 
@@ -75,24 +75,28 @@ Ha még nem rendelkezik Android-alkalmazással, kövesse az alábbi lépéseket 
 
 ### <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
-1. Nyissa meg az [Azure Portalt](https://aka.ms/MobileAppReg).
-2. Nyissa meg a [Alkalmazásregisztrációk](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) panelt, és kattintson az **+ új regisztráció** elemre.
-3. Adja meg az alkalmazás **nevét** , majd az átirányítási URI beállítása **nélkül** kattintson a **regisztráció** elemre.
-4. A megjelenő panel **kezelés** szakaszában válassza a **hitelesítés**  >  **+ platform hozzáadása**  >  **Android** lehetőséget. (Előfordulhat, hogy a panel tetején a "váltás az új felületre" lehetőséget kell választani a szakasz megtekintéséhez)
-5. Adja meg a projekt csomagjának nevét. Ha letöltötte a kódot, akkor ez az érték `com.azuresamples.msalandroidapp` .
-6. Az **Android-alkalmazás konfigurálása** lap **aláírás-kivonatolás** szakaszában kattintson a **fejlesztési aláírás kivonatának létrehozása** lehetőségre. és másolja a Főeszköz parancsot a platformhoz való használatra.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás **nevét** . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+1. Válassza a **Regisztráció** lehetőséget.
+1. A **kezelés** területen válassza   >  **a hitelesítés Hozzáadás a platformhoz**  >  **Android** lehetőséget.
+1. Adja meg a projekt csomagjának nevét. Ha letöltötte a kódot, akkor ez az érték `com.azuresamples.msalandroidapp` .
+1. Az **Android-alkalmazás konfigurálása** lap **aláírás-kivonatolás** szakaszában válassza a **fejlesztési aláírás kivonatának létrehozása lehetőséget.** és másolja a Főeszköz parancsot a platformhoz való használatra.
 
    > [!Note]
    > KeyTool.exe a Java Development Kit (JDK) részeként van telepítve. Az OpenSSL eszközt is telepítenie kell, hogy végrehajtsa a parancssori eszközt. További információkért tekintse [meg az Android dokumentációját a kulcs létrehozásához](https://developer.android.com/studio/publish/app-signing#generate-key) .
 
-7. Adja meg a Főeszköz által generált **aláírási kivonatot** .
-8. Kattintson `Configure` és mentse az **Android-konfiguráció** lapon megjelenő **MSAL-konfigurációt** , így megadhatja, amikor később konfigurálja az alkalmazást.  Kattintson a **Kész** gombra.
+1. Adja meg a Főeszköz által generált **aláírási kivonatot** .
+1. Válassza a **Konfigurálás** lehetőséget, és mentse az **Android-konfiguráció** lapon megjelenő MSAL- **konfigurációt** , hogy később is megadhatja azt az alkalmazás konfigurálásakor.  
+1. Válassza a **Kész** lehetőséget.
 
 ### <a name="configure-your-application"></a>Az alkalmazás konfigurálása
 
 1. A Android Studio projekt ablaktábláján navigáljon a **app\src\main\res** elemre.
-2. Kattintson a jobb gombbal a **res** elemre, és válassza az **új**  >  **könyvtár** lehetőséget. Adja meg `raw` az új könyvtárnév nevet, majd kattintson az **OK** gombra.
-3. Az **app**  >  **src**  >  **Main**  >  **res**  >  **RAW** fájlban hozzon létre egy nevű új JSON-fájlt, `auth_config_single_account.json` és illessze be a korábban mentett MSAL-konfigurációt.
+1. Kattintson a jobb gombbal a **res** elemre, és válassza az **új**  >  **könyvtár** lehetőséget. Adja meg `raw` az új könyvtárnév nevet, majd kattintson az **OK** gombra.
+1. Az **app**  >  **src**  >  **Main**  >  **res**  >  **RAW** fájlban hozzon létre egy nevű új JSON-fájlt, `auth_config_single_account.json` és illessze be a korábban mentett MSAL-konfigurációt.
 
     Az átirányítási URI alatt illessze be a következőt:
     ```json

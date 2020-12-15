@@ -11,24 +11,24 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e47eda29b0ad1c47edad08195b2ffd0fe3835af
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750475"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508050"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az [egyszeri bejelentkezési (SSO) munkamenet](session-overview.md) -kezelés ugyanazt a szemantikai kapcsolatot használja, mint bármely más technikai profil az egyéni házirendekben. Egy előkészítési lépés végrehajtásakor a rendszer a lépéshez társított technikai profilt kérdezi le `UseTechnicalProfileForSessionManagement` . Ha van ilyen, a rendszer ellenőrzi a hivatkozott SSO munkamenet-szolgáltatót, hogy a felhasználó munkamenet-résztvevő-e. Ha igen, az SSO-munkamenet-szolgáltató a munkamenet újrafeltöltésére szolgál. Hasonlóképpen, ha egy előkészítési lépés végrehajtása befejeződött, a szolgáltató a munkamenetben lévő információk tárolására szolgál, ha meg van adva egy egyszeri bejelentkezéses munkamenet-szolgáltató.
+Az [egyszeri bejelentkezési (SSO) munkamenet](session-behavior.md) -kezelés ugyanazt a szemantikai kapcsolatot használja, mint bármely más technikai profil az egyéni házirendekben. Egy előkészítési lépés végrehajtásakor a rendszer a lépéshez társított technikai profilt kérdezi le `UseTechnicalProfileForSessionManagement` . Ha van ilyen, a rendszer ellenőrzi a hivatkozott SSO munkamenet-szolgáltatót, hogy a felhasználó munkamenet-résztvevő-e. Ha igen, az SSO-munkamenet-szolgáltató a munkamenet újrafeltöltésére szolgál. Hasonlóképpen, ha egy előkészítési lépés végrehajtása befejeződött, a szolgáltató a munkamenetben lévő információk tárolására szolgál, ha meg van adva egy egyszeri bejelentkezéses munkamenet-szolgáltató.
 
 Azure AD B2C több SSO munkamenet-szolgáltatót definiált:
 
 |Munkamenet-szolgáltató  |Hatókör  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Nincsenek       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Nincs       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C belső munkamenet-kezelő.      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C és OAuth1, a OAuth2 vagy az OpenId Connect Identity Provider között.        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Egy OAuth2 vagy OpenId Connect függő entitás alkalmazás és Azure AD B2C között.        |        
@@ -168,5 +168,4 @@ Az `SM-Saml-issuer` [SAML kiállítói műszaki profil](saml-issuer-technical-pr
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [Azure ad B2C-munkamenetről](session-overview.md).
-- Megtudhatja, hogyan [konfigurálhatja a munkamenet viselkedését az egyéni házirendekben](session-behavior-custom-policy.md).
+Megtudhatja, hogyan [konfigurálhatja a munkamenet viselkedését](session-behavior.md).

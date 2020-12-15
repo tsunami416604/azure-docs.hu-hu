@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/14/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 12d74e2f21678fdbb02719c29a31c0fcdc4fa132
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f73186612fe79af88e84956bb4d0f0b374f4c986
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030145"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507795"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
 > [!IMPORTANT]
-> 2021. január 30-ig a bérlők többé nem tudják konfigurálni a frissítési és a munkamenet-tokenek élettartamát, és Azure Active Directory a házirendek után leállítja a frissítési és a munkamenet-jogkivonat konfigurációját.
+> Május 2020. után a bérlők többé nem tudják konfigurálni a frissítési és a munkamenet-jogkivonat élettartamát.  A Azure Active Directory a házirendekben a meglévő frissítési és munkamenet-jogkivonat konfigurációját a 2021. január 30. után nem fogja megbecsülni. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.
 >
-> Ha továbbra is meg kell határoznia azt az időtartamot, ameddig a felhasználónak újra be kell jelentkeznie, konfigurálnia kell a bejelentkezési gyakoriságot a feltételes hozzáférésben. Ha többet szeretne megtudni a feltételes hozzáférésről, látogasson el az [Azure ad díjszabási oldalára](https://azure.microsoft.com/en-us/pricing/details/active-directory/).
+> Ha továbbra is meg kell határoznia azt az időtartamot, ameddig a felhasználónak újra be kell jelentkeznie, konfigurálnia kell a bejelentkezési gyakoriságot a feltételes hozzáférésben. Ha többet szeretne megtudni a feltételes hozzáférésről, tekintse meg a [hitelesítési munkamenet-kezelés konfigurálása feltételes hozzáféréssel című szakaszt](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
 >
 > Azok a bérlők, akik nem szeretnék feltételes hozzáférést használni a lejárati dátum után, számíthatnak arra, hogy az Azure AD tiszteletben tartja a következő szakaszban ismertetett alapértelmezett konfigurációt.
 
@@ -288,6 +288,6 @@ A szolgáltatás használatához prémium szintű Azure AD P1 licenc szükséges
 
 A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért olvassa el [a jogkivonat-élettartamok konfigurálásának példáit](configure-token-lifetimes.md).

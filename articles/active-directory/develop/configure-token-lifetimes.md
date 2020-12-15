@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 12/14/2020
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2815041f32ebd7c2dae235229d1ca19aad253f7d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e663cdd3846e804d1dcf96076c07b9a3db84272c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503621"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507744"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Jogkivonat élettartamára vonatkozó szabályzatok konfigurálása (előzetes verzió)
 Az Azure AD-ben számos forgatókönyv lehetséges, ha az alkalmazásokhoz, az egyszerű szolgáltatásokhoz és a teljes szervezethez token-élettartamot hozhat létre és kezelhet.  
 
 > [!IMPORTANT]
-> 2021. január 30-ig a bérlők többé nem tudják konfigurálni a frissítési és a munkamenet-jogkivonat élettartamát, és az Azure AD nem fogja tudni megbecsülni a meglévő frissítési és munkamenet-jogkivonat-konfigurációt a házirendekben az adott dátum után. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.  További információért olvassa el [a konfigurálható jogkivonat élettartamait a Microsoft Identity platformon](active-directory-configurable-token-lifetimes.md).
-> Végrehajtotta [authentication session management capabilities](../conditional-access/howto-conditional-access-session-lifetime.md)   Az Azure ad feltételes hozzáférésének hitelesítési munkamenet-kezelési képességeit. Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával.
+> Május 2020. után a bérlők többé nem tudják konfigurálni a frissítési és a munkamenet-jogkivonat élettartamát.  A Azure Active Directory a házirendekben a meglévő frissítési és munkamenet-jogkivonat konfigurációját a 2021. január 30. után nem fogja megbecsülni. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.  További információért olvassa el [a konfigurálható jogkivonat élettartamait a Microsoft Identity platformon](active-directory-configurable-token-lifetimes.md).
+> Végrehajtotta [](../conditional-access/howto-conditional-access-session-lifetime.md)   Az Azure ad feltételes hozzáférésének hitelesítési munkamenet-kezelési képességeit. Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával.
 
 
 Ebben a szakaszban néhány olyan általános házirend-forgatókönyvet ismertetünk, amely segíthet a következő új szabályok bevezetésében:

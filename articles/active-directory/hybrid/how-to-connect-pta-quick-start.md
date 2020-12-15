@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973201"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507676"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory átmenő hitelesítés: gyors útmutató
 
@@ -72,7 +72,7 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben.
      | **8080** (nem kötelező) | A hitelesítési ügynökök tíz percenként jelentést készítenek az állapotukról az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. A 8080-es port _nem_ használatos a felhasználói bejelentkezésekhez. |
      
      Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
-   - Ha a tűzfal vagy a proxy engedélyezi a DNS-engedélyezési lehetőséget, vegyen fel kapcsolatokat a **\* . msappproxy.net** és a **\* . servicebus.Windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
+   - Ha a tűzfal vagy a proxy lehetővé teszi, hogy DNS-bejegyzéseket adjon hozzá egy engedélyezési, vegyen fel kapcsolatokat a **\* . msappproxy.net** és a **\* . servicebus.Windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
    - A hitelesítési ügynököknek hozzá kell férniük a **login.Windows.net** és a **login.microsoftonline.com** a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-címekhez is.
     - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **crl3.Digicert.com:80**, **crl4.Digicert.com:80**, **ocsp.digicert.com:80**, **www \. d-trust.net:80**, **root-C3-Ca2-2009.OCSP.d-Trust.net:80**, **CRL.microsoft.com:80**, **oneocsp.microsoft.com:80** és **OCSP.msocsp.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: 3eb43c98ae2697ece5ded8ae0df451a6cf5f272d
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c7e8f96e7917173aaec308b8ae5218684a722483
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007205"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507472"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Adatok másolása Azure Databricks Delta-tóból és onnan a Azure Data Factory használatával
 
@@ -81,11 +81,11 @@ A következő tulajdonságokat támogatja egy Azure Databricks Delta Lake társ�
 
 | Tulajdonság    | Leírás                                                  | Kötelező |
 | :---------- | :----------------------------------------------------------- | :------- |
-| típus        | A Type tulajdonságot **AzureDatabricksDeltaLake** értékre kell beállítani. | Yes      |
+| típus        | A Type tulajdonságot **AzureDatabricksDeltaLake** értékre kell beállítani. | Igen      |
 | domain      | Itt adhatja meg a Azure Databricks munkaterület URL-címét, például: `https://adb-xxxxxxxxx.xx.azuredatabricks.net` . |          |
-| clusterId   | Egy meglévő fürthöz tartozó fürt AZONOSÍTÓjának megadására. Egy már létrehozott interaktív fürtnek kell lennie. <br>Az interaktív fürt Databricks munkaterületen található – > fürtök – > interaktív fürt neve – > Configuration-> címkék. [További információk](/azure/databricks/clusters/configure#cluster-tags). |          |
+| clusterId   | Egy meglévő fürthöz tartozó fürt AZONOSÍTÓjának megadására. Egy már létrehozott interaktív fürtnek kell lennie. <br>Az interaktív fürt Databricks munkaterületen található – > fürtök – > interaktív fürt neve – > Configuration-> címkék. [További információ](/azure/databricks/clusters/configure#cluster-tags). |          |
 | accessToken | A hozzáférési token szükséges ahhoz, hogy a Data Factory hitelesíthető legyen a Azure Databricks. A hozzáférési tokent a databricks munkaterületen kell létrehozni. A hozzáférési token megkeresésének részletes lépései [itt](/azure/databricks/dev-tools/api/latest/authentication#generate-token)találhatók. |          |
-| Connectvia tulajdonsággal  | Az adattárhoz való kapcsolódáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime-t használja. | No       |
+| Connectvia tulajdonsággal  | Az adattárhoz való kapcsolódáshoz használt [integrációs](concepts-integration-runtime.md) modul. Használhatja az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime-t használja. | Nem       |
 
 **Példa**
 
@@ -114,7 +114,7 @@ A Azure Databricks Delta Lake adatkészlet a következő tulajdonságokat támog
 
 | Tulajdonság  | Leírás                                                  | Kötelező                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| típus      | Az adatkészlet Type tulajdonságát **AzureDatabricksDeltaLakeDataset** értékre kell állítani. | Yes                         |
+| típus      | Az adatkészlet Type tulajdonságát **AzureDatabricksDeltaLakeDataset** értékre kell állítani. | Igen                         |
 | adatbázis | Az adatbázis neve. |Nem, forrás, igen, fogadó  |
 | table | A különbözeti tábla neve. |Nem, forrás, igen, fogadó  |
 
@@ -148,13 +148,13 @@ Azure Databricks Delta-tótól származó adatok másolásához a másolási tev
 
 | Tulajdonság                     | Leírás                                                  | Kötelező |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| típus                         | A másolási tevékenység forrásának Type tulajdonságát **AzureDatabricksDeltaLakeSource** értékre kell állítani. | Yes      |
-| lekérdezés          | Az adatolvasásra szolgáló SQL-lekérdezés meghatározása. Az időutazások vezérléséhez kövesse az alábbi mintát:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | No       |
-| exportSettings | Az adatok különbözeti táblából való beolvasásához használt speciális beállítások. | No       |
+| típus                         | A másolási tevékenység forrásának Type tulajdonságát **AzureDatabricksDeltaLakeSource** értékre kell állítani. | Igen      |
+| lekérdezés          | Az adatolvasásra szolgáló SQL-lekérdezés meghatározása. Az időutazások vezérléséhez kövesse az alábbi mintát:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Nem       |
+| exportSettings | Az adatok különbözeti táblából való beolvasásához használt speciális beállítások. | Nem       |
 | ***Alatt `exportSettings` :** _ |  |  |
-| típus | Az exportálási parancs típusa: _ * AzureDatabricksDeltaLakeExportCommand * *. | Yes |
-| dateFormat | Dátum típusának formázása dátum formátumú karakterláncra. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd` . | No |
-| timestampFormat | Az időbélyeg típusának formázása időbélyeg-formátumú karakterláncra. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
+| típus | Az exportálási parancs típusa: _ * AzureDatabricksDeltaLakeExportCommand * *. | Igen |
+| dateFormat | Dátum típusának formázása dátum formátumú karakterláncra. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd` . | Nem |
+| timestampFormat | Az időbélyeg típusának formázása időbélyeg-formátumú karakterláncra. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Nem |
 
 #### <a name="direct-copy-from-delta-lake"></a>Közvetlen másolás a Delta-tótól
 
@@ -262,13 +262,13 @@ Ha az Adatmásolást Azure Databricks Delta-tóba szeretné másolni, a másolá
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | :------------ | :----------------------------------------------------------- | :------- |
-| típus          | A másolási tevékenység fogadójának Type tulajdonsága **AzureDatabricksDeltaLakeSink** értékre van állítva. | Yes      |
-| preCopyScript | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az összes futtatás során Databricks-különbözeti táblába írna. Ezt a tulajdonságot használhatja az előre betöltött adatok törléséhez, illetve egy csonkolt tábla vagy vákuum-utasítás hozzáadásához. | No       |
-| importSettings | Az adatkülönbözeti táblába való adatíráshoz használt speciális beállítások. | No |
+| típus          | A másolási tevékenység fogadójának Type tulajdonsága **AzureDatabricksDeltaLakeSink** értékre van állítva. | Igen      |
+| preCopyScript | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az összes futtatás során Databricks-különbözeti táblába írna. Ezt a tulajdonságot használhatja az előre betöltött adatok törléséhez, illetve egy csonkolt tábla vagy vákuum-utasítás hozzáadásához. | Nem       |
+| importSettings | Az adatkülönbözeti táblába való adatíráshoz használt speciális beállítások. | Nem |
 | **_Alatt `importSettings` :_* _ |                                                              |  |
-| típus | Az importálási parancs típusa: _ * AzureDatabricksDeltaLakeImportCommand * *. | Yes |
-| dateFormat | Formázza a karakterláncot dátum típusúra dátumformátum formájában. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd` . | No |
-| timestampFormat | Formázza a karakterláncot timestamp típusúra időbélyeg-formátummal. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
+| típus | Az importálási parancs típusa: _ * AzureDatabricksDeltaLakeImportCommand * *. | Igen |
+| dateFormat | Formázza a karakterláncot dátum típusúra dátumformátum formájában. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd` . | Nem |
+| timestampFormat | Formázza a karakterláncot timestamp típusúra időbélyeg-formátummal. Az egyéni dátumformátum formátuma a következő: [datetime minta](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Ha nincs megadva, az alapértelmezett értéket használja `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Nem |
 
 #### <a name="direct-copy-to-delta-lake"></a>Közvetlen másolás a Delta Lake-be
 

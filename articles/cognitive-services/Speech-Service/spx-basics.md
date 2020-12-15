@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546904"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507574"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>A Speech CLI alapjai
 
@@ -87,7 +87,7 @@ Ebben a parancsban meg kell adnia a forrást (a fordítás nyelvét) és a célk
 
 ### <a name="configuration-files-in-the-datastore"></a>Konfigurációs fájlok az adattárban
 
-A Speech CLI működése hivatkozhat a konfigurációs fájlok beállításaira, amelyek a Speech CLI-hívásokon belül a @ szimbólum használatával is hivatkozhatnak.
+A Speech CLI működése a konfigurációs fájlok beállításai alapján is hivatkozhat, amelyet a beszédfelismerési CLI-hívásokban egy szimbólum használatával lehet megtekinteni \@ .
 A Speech CLI új beállítást ment egy új `./spx/data` alkönyvtárban, amelyet a rendszer az aktuális munkakönyvtárban hoz létre.
 A konfigurációs érték keresésekor a Speech CLI a jelenlegi munkakönyvtárban, majd az adattárolóban, majd más adattárolókban `./spx/data` is megjelenik, beleértve a bináris írásvédett adattárat is `spx` .
 Korábban az adattárat használta a és az `@key` `@region` értékek mentéséhez, így nem kell megadnia azokat az egyes parancssori hívásokkal.
@@ -207,6 +207,6 @@ Ezeket a mezőneveket a megfelelő argumentumokra írhatja felül a hívás köv
 spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.tsv
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Fejezze be a beszédfelismerési vagy [beszédfelismerési](get-started-text-to-speech.md?pivots=programmer-tool-spx) útmutatókat [a Speech CLI](get-started-speech-to-text.md?pivots=programmer-tool-spx) használatával.

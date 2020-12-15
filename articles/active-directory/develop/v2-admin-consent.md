@@ -12,12 +12,12 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: cb629b80958ed2897f76eb099f738c33b48c3696
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7de97fd775853f64803ab62ac397e754d065e4df
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119606"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509325"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Rendszergazdai engedély a Microsoft Identity platformon
 
@@ -44,14 +44,13 @@ https://graph.microsoft.com/calendars.read
 https://graph.microsoft.com/mail.send
 ```
 
-
-| Paraméter     | Condition (Állapot)     | Leírás                                                                               |
-|--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
+| Paraméter | Feltétel | Leírás |
+| ---: | ---: | :---: |
 | `tenant` | Kötelező | Az a címtár-bérlő, amelyre engedélyt szeretne kérni. A GUID vagy a felhasználóbarát név formátumban adható meg, vagy `organizations` a példában látható módon általános hivatkozással. Ne használja a "Common" kulcsszót, mert a személyes fiókok nem biztosíthatnak rendszergazdai jogosultságot, kivéve a bérlő kontextusát. A bérlőket kezelő személyes fiókokkal való legjobb kompatibilitás érdekében használja a bérlői azonosítót, ha lehetséges. |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
 | `redirect_uri` | Kötelező |Az az átirányítási URI, ahová az alkalmazásnak el kell juttatnia a választ a kezelésére. Pontosan meg kell egyeznie az alkalmazás regisztrációs portálján regisztrált átirányítási URI-k egyikével. |
 | `state` | Ajánlott | A kérelemben szereplő érték, amelyet a rendszer a jogkivonat-válaszban is visszaad. A kívánt tartalom sztringje lehet. Az állapot használatával kódolja a felhasználó állapotára vonatkozó adatokat az alkalmazásban, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
-|`scope`        | Kötelező      | Meghatározza az alkalmazás által igényelt engedélyek készletét. Ez lehet statikus (/.default használatával) vagy dinamikus hatókörök használata.  Ebbe beletartozhatnak a OIDC hatókörök ( `openid` , `profile` ,) is `email` . |
+|`scope` | Kötelező | Meghatározza az alkalmazás által igényelt engedélyek készletét. Ez lehet statikus (/.default használatával) vagy dinamikus hatókörök használata. Ebbe beletartozhatnak a OIDC hatókörök ( `openid` , `profile` ,) is `email` . |
 
 
 Ezen a ponton az Azure AD-nek a bérlői rendszergazdának kell bejelentkeznie a kérelem teljesítéséhez. A rendszer felkéri a rendszergazdát, hogy hagyja jóvá a paraméterben kért összes engedélyt `scope` .  Ha statikus ( `/.default` ) értéket használt, úgy fog működni, mint a v 1.0 rendszergazdai engedélyezési végpont, és az alkalmazáshoz szükséges engedélyekben található összes hatókörre vonatkozó kérelem beleegyezése.
@@ -64,12 +63,12 @@ Ha a rendszergazda jóváhagyja az alkalmazás engedélyeit, a sikeres válasz a
 http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
 ```
 
-| Paraméter         | Leírás                                                                                       |
-|------------------:|:-------------------------------------------------------------------------------------------------:|
+| Paraméter | Leírás |
+| ---: | :---: |
 | `tenant`| A címtár-bérlő, amely az alkalmazást a kért engedélyekkel rendelkezik, GUID formátumban megadva.|
-| `state`           | A kérelemben szereplő érték, amely a jogkivonat-válaszban is szerepelni fog. A kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését.|
-| `scope`          | Az alkalmazáshoz való hozzáférést engedélyező engedélyek készlete.|
-| `admin_consent`   | A következőre lesz beállítva: `True` .|
+| `state` | A kérelemben szereplő érték, amely a jogkivonat-válaszban is szerepelni fog. A kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését.|
+| `scope` | Az alkalmazáshoz való hozzáférést engedélyező engedélyek készlete.|
+| `admin_consent` | A következőre lesz beállítva: `True` .|
 
 ### <a name="error-response"></a>Hiba válasza
 
@@ -77,15 +76,15 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 A sikeres válaszban látható paraméterekhez való hozzáadáskor a hiba paramétereit az alábbi módon tekintheti meg.
 
-| Paraméter          | Leírás                                                                                      |
+| Paraméter | Leírás |
 |-------------------:|:-------------------------------------------------------------------------------------------------:|
-| `error`            | Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására használható, és felhasználható a hibákra való reagálásra.|
-| `error_description`| Egy adott hibaüzenet, amely segítséget nyújt a fejlesztőknek a hibák kiváltó okának azonosításában.|
+| `error` | Hibakód-karakterlánc, amely a felmerülő hibák típusának besorolására használható, és felhasználható a hibákra való reagálásra.|
+| `error_description` | Egy adott hibaüzenet, amely segítséget nyújt a fejlesztőknek a hibák kiváltó okának azonosításában.|
 | `tenant`| A címtár-bérlő, amely az alkalmazást a kért engedélyekkel rendelkezik, GUID formátumban megadva.|
-| `state`           | A kérelemben szereplő érték, amely a jogkivonat-válaszban is szerepelni fog. A kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését.|
-| `admin_consent`   | Úgy lesz beállítva, hogy `True` jelezze, hogy ez a válasz rendszergazdai engedélyezési folyamaton történt.|
+| `state` | A kérelemben szereplő érték, amely a jogkivonat-válaszban is szerepelni fog. A kívánt tartalom sztringje lehet. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására szolgál a hitelesítési kérelem végrehajtása előtt, például az oldal vagy a nézet megtekintését.|
+| `admin_consent` | Úgy lesz beállítva, hogy `True` jelezze, hogy ez a válasz rendszergazdai engedélyezési folyamaton történt.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje [meg, hogyan alakíthat át egy alkalmazást több-bérlővé](howto-convert-app-to-be-multi-tenant.md)
 - Ismerje meg [, hogyan támogatott a hozzájárulás a OAuth 2,0 protokoll szintjén az engedélyezési kód engedélyezése során](v2-oauth2-auth-code-flow.md#request-an-authorization-code).
 - Ismerje meg, [Hogyan használhatják a több-bérlős alkalmazások a](./howto-convert-app-to-be-multi-tenant.md) "felhasználó" és a "rendszergazda" jogosultságot a "felhasználói" és "rendszergazdai" engedély megvalósításához, ami fejlettebb többrétegű alkalmazási mintákat is támogat.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 8594250d72754e6b7d2a6d8c27d3d5bcd0e9c8e4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920865"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508883"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Több táblázat másolása ömlesztve Azure Data Factory használatával a Azure Portal
 
@@ -25,7 +25,7 @@ ms.locfileid: "96920865"
 Ez az oktatóanyag azt mutatja be, hogyan **másolhat több táblázatot Azure SQL Databaseról az Azure szinapszis Analytics szolgáltatásba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Ha például SQL Server/Oracle-ből másol táblákat a Azure SQL Database/Azure szinapszis Analytics/Azure Blobba, a különböző elérési utakat a Blobból a Azure SQL Database táblákba másolja.
 
 > [!NOTE]
-> - Ha még csak ismerkedik az Azure Data Factory szolgáltatással: [Bevezetés az Azure Data Factory használatába](introduction.md).
+> Ha még csak ismerkedik az Azure Data Factory szolgáltatással: [Bevezetés az Azure Data Factory használatába](introduction.md).
 
 Az oktatóanyag a következő főbb lépésekből áll:
 
@@ -99,9 +99,7 @@ A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg a kiszolgáló
 1. A létrehozás befejezése után válassza az **erőforrás keresése** lehetőséget, és lépjen a **Data Factory** lapra. 
    
 1. A Data Factory felhasználóifelület-alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
-1. Az **első lépések** oldalon váltson a **Szerző** lapra a bal oldali panelen, ahogy az alábbi képen is látható:
 
-     ![Első lépések lap](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 Társított szolgáltatásokat hoz létre az adattárak és a számítási erőforrások adat-előállítóval történő társításához. A társított szolgáltatás rendelkezik azon kapcsolatadatokkal, amelyeket a Data Factory szolgáltatás futtatáskor az adattárhoz való kapcsolódáshoz használ. 
@@ -177,7 +175,9 @@ Ebben az oktatóanyagban a forrás és cél SQL-táblái nincsenek fixen rögzí
 
 ### <a name="create-a-dataset-for-source-sql-database"></a>Adatkészlet létrehozása a forrás SQL-adatbázishoz
 
-1. Kattintson a **+ (plusz)** elemre a bal oldali ablaktáblán, majd kattintson az **adatkészlet** elemre. 
+1. Válassza a **Szerző** fület a bal oldali ablaktáblán.
+
+1. Válassza ki a **+** (plusz) elemet a bal oldali ablaktáblán, majd válassza az **adatkészlet** lehetőséget. 
 
     ![Új adatkészlet menü](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
 1. Az **új adatkészlet** ablakban válassza a **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** gombra. 
@@ -220,7 +220,7 @@ A  **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paramét
 
     ![Új folyamat menü](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
  
-1. A **Tulajdonságok** terület általános paneljén adja meg **IterateAndCopySQLTables** a IterateAndCopySQLTables **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
+1. A **Tulajdonságok** terület általános paneljén adja meg  a IterateAndCopySQLTables **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
 1. Váltson a **Paraméterek** lapra, és hajtsa végre a következőket: 
 
@@ -250,7 +250,7 @@ A  **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paramét
 1. Váltson a **Forrás** lapra, és végezze el az alábbi lépéseket:
 
     1. **Forrásadatkészletnek** válassza a következőt: **AzureSqlDatabaseDataset**. 
-    1. A lekérdezéshez válassza **Use query** a **lekérdezés** lehetőséget. 
+    1. A lekérdezéshez válassza a **lekérdezés** lehetőséget. 
     1. Kattintson a **Lekérdezés** beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg a következő kifejezést a **Lekérdezés** értékeként, majd kattintson a **Befejezés** gombra.
 
         ```sql
@@ -277,7 +277,7 @@ A  **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paramét
     1. Jelölje be az **előkészítés engedélyezése** jelölőnégyzetet.
     1. A **Tárfiók társított szolgáltatásánál** válassza az **AzureStorageLinkedService** elemet.
 
-1. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** gombra a felső folyamateszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A **Folyamatérvényesítési jelentés** bezárásához kattintson a **>>** jelre.
+1. A folyamat beállításainak érvényesítéséhez kattintson az **Érvényesítés** gombra a felső folyamateszköztáron. Ellenőrizze, hogy nincs-e érvényesítési hiba. A folyamat- **ellenőrzési jelentés** bezárásához kattintson a dupla szögű zárójelekre **>>** .
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>A GetTableListAndTriggerCopyData folyamat létrehozása
 
@@ -285,6 +285,8 @@ Ez a folyamat két műveletet végez:
 
 * Megkeresi az Azure SQL Database rendszertábláját, és lekéri a másolni kívánt táblák listáját.
 * Elindítja az „IterateAndCopySQLTables” folyamatot, amely elvégezi a tényleges adatmásolást.
+
+A folyamat létrehozásának lépései a következők:
 
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd kattintson a **Folyamat** elemre.
 1. A **Tulajdonságok** területen található általános panelen módosítsa a folyamat nevét a **GetTableListAndTriggerCopyData** értékre. 
@@ -395,7 +397,7 @@ Ez a folyamat két műveletet végez:
 
 1. Győződjön meg róla, hogy az adatgyűjtés az oktatóanyagban használt Azure szinapszis-elemzésre lett másolva. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8f4c91070d87e9e6e3cdbb5534b988063eaba14
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 3f92bfe98a45117264c957481a75493de652abc9
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387176"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508101"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -251,8 +251,8 @@ A következő technikai profil töröl egy közösségi felhasználói fiókot a
 | Művelet | Igen | A végrehajtandó művelet. Lehetséges értékek: `Read` ,,, `Write` `DeleteClaims` vagy `DeleteClaimsPrincipal` . |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nem | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false` . |
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nem | Hiba, ha a felhasználói objektum már létezik. Lehetséges értékek: `true` vagy `false` .|
-| ApplicationObjectId | Nem | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md). |
-| ClientID | Nem | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md) |
+| ApplicationObjectId | Nem | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: [Egyéni attribútumok használata](user-flow-custom-attributes.md?pivots=b2c-custom-policy). |
+| ClientID | Nem | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](user-flow-custom-attributes.md?pivots=b2c-custom-policy) |
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 
 ### <a name="ui-elements"></a>Felhasználói felület elemei
@@ -265,7 +265,7 @@ A következő beállításokkal megadhatja a hiba esetén megjelenő hibaüzenet
 | UserMessageIfClaimsPrincipalDoesNotExist | Nem | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg az alábbi cikket, például az Azure AD technikai profiljának használatát:
 

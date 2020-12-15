@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 11/09/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96013394"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509019"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Gyorsútmutató: Adat-előállító létrehozása az Azure Data Factory felhasználói felületén 
 
@@ -45,42 +45,42 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 1. Válassza az **integráció** lehetőséget, majd válassza a **Data Factory** lehetőséget. 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
-1. Az **Új data factory** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
+1. A **Data Factory létrehozása** lap **alapok** lapján válassza ki azt az Azure- **előfizetést** , amelyben létre kívánja hozni az adat-előállítót.
+1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
+
+    a. Válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
+
+    b. Válassza az **új létrehozása** lehetőséget, és adja meg egy új erőforráscsoport nevét.
+    
+    Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket. 
+
+1. A **régió** mezőben válassza ki az adatelőállító helyét.
+
+   A listában csak a Data Factory által támogatott helyek és az Azure Data Factory-metaadatok tárolási helye jelenik meg. A Data Factory által használt adattárak (például az Azure Storage és a Azure SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is futhatnak.
  
+1. A **név** mezőbe írja be a következőt: **ADFTutorialDataFactory**.
    Az Azure-beli adatgyár nevének *globálisan egyedinek* kell lennie. Ha a következő hiba jelenik meg, módosítsa az adatgyár nevét (például **&lt; sajátneve &gt; ADFTutorialDataFactory**), és próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
    ![Hibaüzenet, ha egy név nem érhető el](./media/doc-common-process/name-not-available-error.png)
-1. **Előfizetés:** válassza ki azt az Azure-előfizetést, amelyben az adat-előállítót létre szeretné hozni. 
-1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
-     
-   - Kattintson a **Meglévő használata** elemre, majd válasszon egy meglévő erőforráscsoportot a listából. 
-   - Válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét.   
-         
-   Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+
 1. A **Verzió** résznél válassza a **V2** értéket.
-1. **Hely:** válassza ki az adat-előállító helyét.
 
-   A listában csak a Data Factory által támogatott helyek és az Azure Data Factory-metaadatok tárolási helye jelenik meg. A Data Factory által használt adattárak (például az Azure Storage és a Azure SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is futhatnak.
+1. Válassza a **Next (tovább): git-konfiguráció** lehetőséget, majd jelölje be a **git későbbi konfigurálása** jelölőnégyzetet.
 
-1. Válassza a **Tovább: git-konfiguráció** lehetőséget, majd válassza a **git konfigurálása később** lehetőséget.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, majd az érvényesítés után válassza a **Létrehozás** lehetőséget. A létrehozás befejezése után válassza az **erőforrás keresése** lehetőséget, és lépjen a **Data Factory** lapra. 
 
-1. Kattintson a **Létrehozás** gombra. A létrehozás befejezése után válassza az **erőforrás keresése** lehetőséget, és lépjen a **Data Factory** lapra. 
-
-1. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
+1. Válassza a **szerző & figyelés** csempét, hogy elindítsa a Azure Data Factory felhasználói felületi (UI) alkalmazást egy külön böngésző lapon.
    
    ![Az adat-előállító kezdőlapja a „Létrehozás és monitorozás” csempével](./media/doc-common-process/data-factory-home-page.png)
    
    > [!NOTE]
    > Ha úgy látja, hogy a webböngésző az "engedélyezés" gombra kattint, törölje a jelet a **harmadik féltől származó cookie-k és a hely adatvédelme** jelölőnégyzetből. Vagy hagyja bejelölve, hozzon létre egy kivételt a **login.microsoftonline.com**, majd próbálja meg újból megnyitni az alkalmazást.
    
-1. Az **Első lépések** lapon váltson a **Szerző** lapra a bal oldali ablaktáblán. 
-
-    ![„Első lépések” lap](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-a-linked-service"></a>Társított szolgáltatás létrehozása
 Ebben az eljárásban létrehoz egy társított szolgáltatást, amely összekapcsolja az Azure Storage-fiókot az adatelőállítóval. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory szolgáltatás használ futtatáskor a hozzá való kapcsolódáshoz.
 
-1. Nyissa meg a [kezelés fület](./author-management-hub.md) a bal oldali ablaktáblán.
+1. A Azure Data Factory felhasználói felület lapon nyissa meg a [**kezelés**](./author-management-hub.md) fület a bal oldali ablaktáblán.
 
 1. A társított szolgáltatások lapon válassza az **+ új** lehetőséget egy új társított szolgáltatás létrehozásához.
 
@@ -109,10 +109,13 @@ A bemeneti adatkészlet a bemeneti mappában lévő forrásadatokat jelenti. A b
 A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatkészlet definíciójában adhatja meg annak a blobtárolónak (**adftutorial**), mappának (**output**) és fájlnak a nevét, amelybe az adatok át lesznek másolva. Egy folyamat minden egyes futtatásához egyedi azonosító tartozik. Ehhez az azonosítóhoz a **RunId** rendszerváltozó használatával férhet hozzá. A rendszer a folyamatfuttatási azonosító alapján dinamikusan kiértékeli a kimeneti fájl nevét.   
 
 A társított szolgáltatás beállításaiban a forrásadatokat tartalmazó Azure Storage-fiókot adta meg. A forrásadatkészlet beállításainál megadja a forrásadatok pontos helyét (blobtároló, mappa és fájl). A fogadó adatkészlet beállításainál megadja az adatok másolásának célhelyét (blobtároló, mappa és fájl). 
- 
+
+1. Válassza a **Szerző** fület a bal oldali ablaktáblán.
+
 1. Válassza a **+** (plusz) gombot, majd válassza az **adatkészlet** lehetőséget.
 
    ![Adatkészlet létrehozására szolgáló menü](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+
 1. Az **új adatkészlet** lapon válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** gombra. 
 
 1. A **formátum kiválasztása** lapon válassza ki az adatai formátumának típusát, majd kattintson a **Folytatás** gombra. Ebben az esetben válassza a **bináris** elemet, ha a fájlokat a tartalom elemzése nélkül másolja.
@@ -153,7 +156,7 @@ A feladat részeként létrehozza és megerősíti azt a másolási tevékenysé
 
 1. Válassza a **+** (plusz) gombot, majd válassza a **folyamat** elemet. 
 
-1. A **Tulajdonságok** terület általános paneljén adja meg **CopyPipeline** a CopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
+1. A **Tulajdonságok** terület általános paneljén adja meg  a CopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.
 
 1. A **Tevékenységek** eszközkészletben bontsa ki az **Áthelyezés és átalakítás** elemet. Húzza a **adatok másolása** tevékenységet a **tevékenységek** eszközkészletből a folyamat tervező felületére. A **Tevékenységek** eszközkészletben kereshet is az egyes tevékenységek között. Adja meg a **CopyFromBlobToBlob** értéket a **Név** mezőben.
 
@@ -163,7 +166,7 @@ A feladat részeként létrehozza és megerősíti azt a másolási tevékenysé
 
 1. Váltson a **Fogadó** lapra a másolási tevékenység beállításainál, és válassza az **OutputDataset** lehetőséget a **Fogadó adatkészlet** mezőben.
 
-1. A folyamat beállításainak érvényesítéséhez a vászon fölött kattintson az **Érvényesítés** elemre a folyamat eszköztárán. Győződjön meg róla, hogy a folyamat érvényesítése sikerült. Az érvényesítési kimenet bezárásához kattintson a **>>** (jobbra mutató nyíl) gombra. 
+1. A folyamat beállításainak érvényesítéséhez a vászon fölött kattintson az **Érvényesítés** elemre a folyamat eszköztárán. Győződjön meg róla, hogy a folyamat érvényesítése sikerült. Az érvényesítési kimenet bezárásához kattintson a jobb felső sarokban található Érvényesítés gombra. 
 
    ![Folyamat ellenőrzése](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
@@ -185,7 +188,7 @@ A feladat részeként entitásokat (társított szolgáltatásokat, adatkészlet
 
     ![Az összes közzététele](./media/quickstart-create-data-factory-portal/publish-all.png)
 
-1. A folyamat manuális elindításához válassza az **trigger hozzáadása** lehetőséget a folyamat eszköztáron, majd válassza az **aktiválás most** lehetőséget. A **folyamat futtatása** lapon válassza a **Befejezés** lehetőséget.
+1. A folyamat manuális elindításához válassza az **trigger hozzáadása** lehetőséget a folyamat eszköztáron, majd válassza az **aktiválás most** lehetőséget. A **folyamat futtatása** lapon kattintson az **OK gombra**.
 
 ## <a name="monitor-the-pipeline"></a>A folyamat figyelése
 

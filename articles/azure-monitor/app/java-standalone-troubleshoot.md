@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan lehet elhárítani a Java-ügynököt a Azure M
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ccfd583b58d129268af2a94e3072200e58308cd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347830"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507642"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Hibaelhárítási útmutató: Azure Monitor Application Insights Javához
 
@@ -34,6 +34,14 @@ Ezek a változások a következők:
 -  A konfigurációs fájl neve módosult a következőre: `ApplicationInsights.json` `applicationinsights.json` .
 -  A `instrumentationSettings` csomópont már nem létezik. A rendszer az összes tartalmat `instrumentationSettings` áthelyezi a gyökér szintjére. 
 -  A (z `sampling` ),, `jmxMetrics` és rendszerű konfigurációs csomópontok `instrumentation` `heartbeat` kikerülnek a `preview` gyökér szintjére.
+
+## <a name="some-logging-is-not-auto-collected"></a>Egyes naplózások nem lesznek automatikusan begyűjtve
+
+A rendszer csak akkor rögzíti a naplózást, ha először megfelel a naplózási keretrendszerek konfigurált küszöbértékének, a második pedig megfelel a Application Insights konfigurált küszöbértéknek is.
+
+A legjobb módszer annak megállapítására, hogy egy adott naplózási utasítás megfelel-e a naplózási keretrendszerek konfigurált küszöbértékének, annak ellenőrzéséhez, hogy megjelenik-e a normál alkalmazási naplóban (például fájl vagy konzol).
+
+További részletekért tekintse meg az [automatikusan összegyűjtött naplózási konfigurációt](./java-standalone-config.md#auto-collected-logging) .
 
 ## <a name="import-ssl-certificates"></a>SSL-tanúsítványok importálása
 

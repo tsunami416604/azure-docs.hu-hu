@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: e73381ef0e646f697f5195cb3df7f4c2733cccaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f702633f6311d4ae4a79452e9b1c9176125c56f9
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456907"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508400"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]

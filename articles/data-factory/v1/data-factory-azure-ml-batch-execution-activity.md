@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 481b801d481f32ef84279be2d8bd6089670a01b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c65ef2eb25f330f645048cdc73371d98d8c2ce91
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496519"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508472"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Prediktív folyamatok létrehozása Azure Machine Learning Studio (klasszikus) és Azure Data Factory használatával
 
@@ -35,7 +35,6 @@ ms.locfileid: "96496519"
 ## <a name="introduction"></a>Bevezetés
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el az [adatátalakítás a Data Factory Machine learning használatával](../transform-data-using-machine-learning.md)című témakört.
-
 
 ### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasszikus)
 A [Azure Machine learning Studio (klasszikus)](https://azure.microsoft.com/documentation/services/machine-learning/) lehetővé teszi prediktív elemzési megoldások összeállítását, tesztelését és üzembe helyezését. A magas szintű nézetből három lépésben végezhető el:
@@ -86,7 +85,7 @@ Ebben az esetben a Studio (klasszikus) webszolgáltatás előrejelzéseket kész
 >
 >
 
-```JSON
+```json
 {
   "name": "PredictivePipeline",
   "properties": {
@@ -127,6 +126,7 @@ Ebben az esetben a Studio (klasszikus) webszolgáltatás előrejelzéseket kész
   }
 }
 ```
+
 > [!NOTE]
 > A webszolgáltatásnak csak a AzureMLBatchExecution tevékenység bemeneteit és kimeneteit lehet paraméterként átadni. A fenti JSON-kódrészletben például a DecisionTreeInputBlob a AzureMLBatchExecution tevékenység bemenete, amelyet a rendszer a webServiceInput paraméterrel a webszolgáltatásnak bemenetként továbbít.
 >
@@ -139,115 +139,119 @@ Javasoljuk, hogy az [első folyamat létrehozása Data Factory][adf-build-1st-pi
 
 1. Hozzon létre egy **társított szolgáltatást** az **Azure Storage**-hoz. Ha a bemeneti és kimeneti fájlok különböző tárolási fiókokban vannak, két társított szolgáltatásra van szükség. A következő egy JSON-példa:
 
-    ```JSON
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=[acctName];AccountKey=[acctKey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "StorageLinkedService",
+     "properties": {
+       "type": "AzureStorage",
+       "typeProperties": {
+         "connectionString": "DefaultEndpointsProtocol=https;AccountName= [acctName];AccountKey=[acctKey]"
+       }
+     }
+   }
+   ```
+
 2. Hozza létre a **bemeneti** Azure Data Factory **adatkészletet**. A többi Data Factory adatkészlettől eltérően ezek az adatkészletek mind a **folderPath** , mind a **filename** értékeket tartalmazniuk kell. A particionálással az egyes batch-végrehajtásokat (minden adatszeletet) feldolgozhatja, illetve egyedi bemeneti és kimeneti fájlokat hozhat létre. Előfordulhat, hogy egy felsőbb rétegbeli tevékenységet is tartalmaznia kell a CSV-fájlformátumba való átalakításhoz, és az egyes szeletekhez tartozó Storage-fiókba kell helyeznie azt. Ebben az esetben nem kell megadnia az alábbi példában látható **külső** és **externalData** beállításokat, és a DecisionTreeInputBlob egy másik tevékenység kimeneti adatkészlete lenne.
 
-    ```JSON
-    {
-      "name": "DecisionTreeInputBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/input",
-          "fileName": "in.csv",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeInputBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/input",
+         "fileName": "in.csv",
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "external": true,
+       "availability": {
+         "frequency": "Day",
+         "interval": 1
+       },
+       "policy": {
+         "externalData": {
+           "retryInterval": "00:01:00",
+           "retryTimeout": "00:10:00",
+           "maximumRetry": 3
+         }
+       }
+     }
+   }
+   ```
 
-    A bemeneti CSV-fájlnak tartalmaznia kell az oszlop fejlécének sorát. Ha a **másolási tevékenység** használatával hozza létre vagy helyezi át a CSV-fájlt a blob Storage-ba, a fogadó tulajdonságot **igaz** értékre kell állítania **blobWriterAddHeader** . Például:
+   A bemeneti CSV-fájlnak tartalmaznia kell az oszlop fejlécének sorát. Ha a **másolási tevékenység** használatával hozza létre vagy helyezi át a CSV-fájlt a blob Storage-ba, a fogadó tulajdonságot **igaz** értékre kell állítania **blobWriterAddHeader** . Például:
 
-    ```JSON
-    sink:
-    {
-        "type": "BlobSink",
-        "blobWriterAddHeader": true
-    }
-    ```
+   ```json
+   sink:
+   {
+     "type": "BlobSink",
+     "blobWriterAddHeader": true
+     }
+   ```
 
-    Ha a CSV-fájl nem tartalmazza a fejlécet, a következő hibaüzenet jelenhet meg: **hiba a tevékenységben: hiba történt a karakterlánc olvasása során. Váratlan jogkivonat: StartObject. Elérési út: "", 1. sor, 1. pozíció**.
+   Ha a CSV-fájl nem tartalmazza a fejlécet, a következő hibaüzenet jelenhet meg: **hiba a tevékenységben: hiba történt a karakterlánc olvasása során. Váratlan jogkivonat: StartObject. Elérési út: "", 1. sor, 1. pozíció**.
+
 3. Hozza létre a **kimeneti** Azure Data Factory **adatkészletet**. Ez a példa particionálással hoz létre egyedi kimeneti útvonalat az egyes szeletek végrehajtásához. A particionálás nélkül a tevékenység felülírja a fájlt.
 
-    ```JSON
-    {
-      "name": "DecisionTreeResultBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/scored/{folderpart}/",
-          "fileName": "{filepart}result.csv",
-          "partitionedBy": [
-            {
-              "name": "folderpart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyyMMdd"
-              }
-            },
-            {
-              "name": "filepart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HHmmss"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 15
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeResultBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/scored/{folderpart}/",
+         "fileName": "{filepart}result.csv",
+         "partitionedBy": [
+           {
+             "name": "folderpart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "yyyyMMdd"
+             }
+           },
+           {
+             "name": "filepart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "HHmmss"
+             }
+           }
+         ],
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "availability": {
+         "frequency": "Day",
+         "interval": 15
+       }
+     }
+   }
+   ```
+
 4. Hozzon létre egy típusú **társított szolgáltatást** : **AzureMLLinkedService**, amely biztosítja az API-kulcs és a modell batch-végrehajtási URL-címét.
 
-    ```JSON
-    {
-      "name": "MyAzureMLLinkedService",
-      "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-          "mlEndpoint": "https://[batch execution endpoint]/jobs",
-          "apiKey": "[apikey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "MyAzureMLLinkedService",
+     "properties": {
+       "type": "AzureML",
+       "typeProperties": {
+         "mlEndpoint": "https://[batch execution endpoint]/jobs",
+         "apiKey": "[apikey]"
+       }
+     }
+   }
+   ```
+
 5. Végül létrehozhat egy **AzureMLBatchExecution** tevékenységet tartalmazó folyamatot. Futásidőben a folyamat a következő lépéseket hajtja végre:
 
    1. Lekéri a bemeneti fájl helyét a bemeneti adatkészletből.
@@ -259,45 +263,45 @@ Javasoljuk, hogy az [első folyamat létrehozása Data Factory][adf-build-1st-pi
       >
       >
 
-      ```JSON
+      ```json
       {
         "name": "PredictivePipeline",
         "properties": {
-            "description": "use AzureML model",
-            "activities": [
-            {
-                "name": "MLActivity",
-                "type": "AzureMLBatchExecution",
-                "description": "prediction analysis on batch input",
-                "inputs": [
+          "description": "use AzureML model",
+          "activities": [
+              {
+              "name": "MLActivity",
+              "type": "AzureMLBatchExecution",
+              "description": "prediction analysis on batch input",
+              "inputs": [
                 {
-                    "name": "DecisionTreeInputBlob"
+                  "name": "DecisionTreeInputBlob"
                 }
                 ],
-                "outputs": [
+              "outputs": [
                 {
-                    "name": "DecisionTreeResultBlob"
+                  "name": "DecisionTreeResultBlob"
                 }
                 ],
-                "linkedServiceName": "MyAzureMLLinkedService",
-                "typeProperties":
+              "linkedServiceName": "MyAzureMLLinkedService",
+              "typeProperties":
                 {
-                    "webServiceInput": "DecisionTreeInputBlob",
-                    "webServiceOutputs": {
-                        "output1": "DecisionTreeResultBlob"
-                    }
+                "webServiceInput": "DecisionTreeInputBlob",
+                "webServiceOutputs": {
+                  "output1": "DecisionTreeResultBlob"
+                }
                 },
-                "policy": {
-                    "concurrency": 3,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 1,
-                    "timeout": "02:00:00"
-                }
+              "policy": {
+                "concurrency": 3,
+                "executionPriorityOrder": "NewestFirst",
+                "retry": 1,
+                "timeout": "02:00:00"
+              }
             }
-            ],
-            "start": "2016-02-13T00:00:00Z",
-            "end": "2016-02-14T00:00:00Z"
-        }
+          ],
+          "start": "2016-02-13T00:00:00Z",
+          "end": "2016-02-14T00:00:00Z"
+          }
       }
       ```
 
@@ -320,7 +324,7 @@ Az olvasó-és író modulok használata esetén célszerű webszolgáltatási p
 
 Nézzük meg a webszolgáltatási paraméterek használatának forgatókönyvét. Van egy telepített Studio (klasszikus) webszolgáltatás, amely egy olvasó modult használ a Studio (klasszikus) által támogatott adatforrásokból származó adatok olvasásához (például: Azure SQL Database). A Batch-végrehajtás elvégzése után az eredményeket egy író modul (Azure SQL Database) segítségével kell megírni.  A kísérletekben nincs definiálva webszolgáltatás-bemenet és-kimenet. Ebben az esetben javasoljuk, hogy konfigurálja az olvasó és az író modulok releváns webszolgáltatás-paramétereit. Ez a konfiguráció lehetővé teszi, hogy az olvasó/író modulok a AzureMLBatchExecution tevékenység használatakor legyenek konfigurálva. A webszolgáltatás paramétereit az alábbi módon adhatja meg a tevékenység JSON- **globalParameters** szakaszában.
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
         "Param 1": "Value 1",
@@ -331,7 +335,7 @@ Nézzük meg a webszolgáltatási paraméterek használatának forgatókönyvét
 
 A webszolgáltatás paramétereinek átadásához [Data Factory függvények](data-factory-functions-variables.md) is használhatók, ahogy az alábbi példában is látható:
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
        "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"

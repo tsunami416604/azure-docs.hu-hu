@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: b911181abea06894873e64da51afbb8799f1066a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927838"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508271"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Az Azure dedikált HSM szolgáltatás hibaelhárítása
 
@@ -29,7 +29,7 @@ Az Azure dedikált HSM szolgáltatásnak két különböző aspektusa van. Elős
 
 ## <a name="hsm-registration"></a>HSM-regisztráció
 
-A dedikált HSM nem szabadon használható, mert hardveres erőforrásokat szolgáltat a felhőben, ezért egy értékes erőforrás, amelynek védelmet kell biztosítania. Ezért e-mailben egy engedélyezési eljárást használhat a használatával HSMrequest@microsoft.com . 
+A dedikált HSM nem szabadon használható, mert hardveres erőforrásokat szolgáltat a felhőben, ezért egy értékes erőforrás, amelynek védelmet kell biztosítania. Ezért a használatával e-mailben használjuk a allowlisting folyamatot HSMrequest@microsoft.com . 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Hozzáférés a dedikált HSM-hez
 
@@ -69,7 +69,7 @@ A központi telepítések sikertelenek lehetnek, ha a stampnél 2 HSM és régi�
 Ha egy adott bélyegző vagy régió megtelt, azaz szinte minden ingyenes HSM kiépítve, akkor ez üzembe helyezési hibákhoz vezethet. Minden bélyegző 11 HSM érhető el az ügyfelek számára, ami 22/régiót jelent. Az egyes bélyegzők 3 tartalékot és 1 tesztelési eszközt is kapnak. Ha úgy gondolja, hogy elérte a határértéket, akkor az HSMrequest@microsoft.com adott bélyegzők kitöltési szintjével kapcsolatos információkat az e-mailben tekintheti meg.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Hogyan tekintse meg a HSM a kiépítés során?
-Mivel a dedikált HSM egy engedélyezési szolgáltatás, a Azure Portal rejtett típusnak minősül. A HSM-erőforrások megtekintéséhez a "rejtett típusok megjelenítése" jelölőnégyzetet kell bejelölnie az alább látható módon. A NIC-erőforrás mindig a HSM-et követi, és jó kiindulópont a HSM IP-címének megkereséséhez, mielőtt az SSH-t használja a kapcsolódáshoz.
+Mivel a dedikált HSM egy allowlisted szolgáltatás, a Azure Portal rejtett típusnak minősül. A HSM-erőforrások megtekintéséhez a "rejtett típusok megjelenítése" jelölőnégyzetet kell bejelölnie az alább látható módon. A NIC-erőforrás mindig a HSM-et követi, és jó kiindulópont a HSM IP-címének megkereséséhez, mielőtt az SSH-t használja a kapcsolódáshoz.
 
 ![Képernyőfelvétel a rejtett típusok megjelenítése](./media/troubleshoot/hsm-provisioned.png)
 
@@ -150,6 +150,6 @@ Csak akkor, ha a HSM teljes mértékben elkészült, kiépíthető, majd a Micro
 
 A HSM-hez készült Azure-erőforrás csak akkor törölhető, ha a HSM "zéró" állapotban van.  Ezért az összes fontos anyagot törölni kell, mielőtt erőforrásként törölné. A zeroize leggyorsabb módja, ha a HSM-rendszergazda jelszava 3 alkalommal nem megfelelő (Megjegyzés: Ez a HSM-rendszergazda, és nem a készülék szintjének felügyeletére vonatkozik). A Luna-rendszerhéjnak van egy `hsm -factoryreset` parancsa, amely zeroizes, de csak a soros porton keresztül hajtható végre, és az ügyfeleknek nincs hozzáférésük ehhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk betekintést nyújt a HSM üzembe helyezési életciklusára, amely problémákba ütközik, vagy hibaelhárítást vagy alapos megfontolást igényelhet. Remélhetőleg ez a cikk segít elkerülni a szükségtelen késéseket és a frusztrációt, és ha releváns kiegészítésekkel vagy módosításokkal rendelkezik, a Microsofttal támogatási kérést emelhet, és tudassa velünk. 

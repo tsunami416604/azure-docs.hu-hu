@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d205cff71b962afb9ead8271ee0c220fa1e2242f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 5fb7c0df653048adcffceda4d8a384be823b5c3a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518770"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507693"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból
 
@@ -104,18 +104,17 @@ Az alkalmazást gyorsan regisztrálhatja a következő módon:
 ### <a name="option-2-advanced-mode"></a>2. lehetőség: speciális mód
 
 Az alkalmazása regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való hozzáadásához tegye a következőket:
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
-1. Válassza az **új regisztráció** lehetőséget.
-   - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `Win-App-calling-MsGraph`).
-   - A **Támogatott fióktípusok** szakaszban jelölje be a **Tetszőleges szervezeti címtárban található fiókok és a Személyes Microsoft-fiókok (például Skype, Xbox, Outlook.com)** beállítást.
-   - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
-1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
-   1. Az **átirányítási URI** -k szakasz átirányítási URI-k listájában:
-   1. A **típus** oszlopban válassza a **nyilvános ügyfél/natív (mobil & asztali)** lehetőséget.
-   1. Az **átirányítási URI** oszlopban adja meg a `https://login.microsoftonline.com/common/oauth2/nativeclient`
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás **nevét** , például: `Win-App-calling-MsGraph` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+1. A **támogatott fióktípus** szakaszban válassza a fiókok lehetőséget **bármely szervezeti címtárban (bármely Azure ad-címtár-több-bérlős) és a személyes Microsoft-fiókokat (például Skype, Xbox)**.
 1. Válassza a **Regisztráció** lehetőséget.
+1. A **kezelés** területen válassza   >  **a hitelesítés platform hozzáadása** elemet.
+1. Válassza a **mobil-és asztali alkalmazások** lehetőséget.
+1. Az **átirányítási URI** -k szakaszban válassza a elemet **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. Válassza a **Konfigurálás** lehetőséget.
 1. Nyissa meg a Visual studiót, nyissa meg a *app.XAML.cs* fájlt, majd cserélje le az `Enter_the_Application_Id_here` alábbi kódrészletet az imént regisztrált és másolt alkalmazás-azonosítóra.
 
     ```csharp

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: ded54628a307f3cf4441e804f7f1025a0e943b51
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 4eb3c2905f3c1ccfa63da1bb4a8c81decdbc2f2b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979946"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507727"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -265,17 +265,18 @@ Most már rendelkezik egy egyszerű kiszolgálóval a gyógyfürdő kiszolgálá
 
 A hitelesítés további folytatása előtt regisztrálja alkalmazását **Azure Active Directoryon**.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókot a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
-1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapját.
-1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás **nevét** . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
 1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 1. Az **átirányítási URI** szakaszban válassza ki a **webplatformot a** legördülő listából, majd állítsa be az értéket a webkiszolgálón alapuló alkalmazás URL-címére.
 1. Válassza a **Regisztráció** lehetőséget.
 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
-1. Ez a rövid útmutató az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezését igényli. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés** lehetőséget.
-1. A **Speciális beállítások** területén az **implicit engedélyezés** területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
-1. Kattintson a **Mentés** gombra.
+1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+1. Az **implicit támogatás** szakaszban válassza az **azonosító tokenek** és a **hozzáférési tokenek** elemet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
+1. Válassza a **Mentés** lehetőséget.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Átirányítási URL-cím beállítása Node.jshoz
 >
@@ -412,7 +413,7 @@ Az útmutató által létrehozott SPA a `acquireTokenSilent` `acquireTokenPopup`
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-A kezdeti bejelentkezés után nem kívánja megkérni a felhasználókat, hogy minden alkalommal újra hitelesíteni tudják az erőforrásokhoz való hozzáféréshez szükséges jogkivonatot. Így a *acquireTokenSilent* a legtöbb időt kell használni a tokenek beszerzéséhez. Vannak azonban olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Példák erre vonatkozóan:
+A kezdeti bejelentkezés után nem kívánja megkérni a felhasználókat, hogy minden alkalommal újra hitelesíteni tudják az erőforrásokhoz való hozzáféréshez szükséges jogkivonatot. Így a *acquireTokenSilent* a legtöbb időt kell használni a tokenek beszerzéséhez. Vannak azonban olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Példák:
 
 - A felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszó lejárt.
 - Az alkalmazás hozzáférést kér egy erőforráshoz, és szüksége van a felhasználó belefoglalására.
@@ -507,7 +508,7 @@ A Microsoft Graph API-nak a felhasználónak *. Read* hatókörrel kell rendelke
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az egyoldalas alkalmazások (SPA) fejlesztése a Microsoft Identity platformon, a több részből álló forgatókönyvek sorozatában.
 

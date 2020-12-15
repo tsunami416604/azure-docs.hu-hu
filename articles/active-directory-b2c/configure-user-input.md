@@ -12,12 +12,12 @@ ms.date: 12/10/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 698864a4dc1081cb8cad9036ff1cfc737a17473c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53f5346030e3c5a247d1ad2a73b23882e83ed41a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111291"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508118"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Felhasználói attribútumok hozzáadása és felhasználói bevitel testreszabása Azure Active Directory B2C
 
@@ -129,7 +129,7 @@ A a `LocalizedCollections` és a párok tömbje `Name` `Value` . Az elemek sorre
 ::: zone pivot="b2c-custom-policy"
 
 > [!NOTE]
-> Ez a példa a beépített "City" jogcímet használja. Ehelyett kiválaszthatja az egyik támogatott [Azure ad B2C beépített attribútumot](user-profile-attributes.md) vagy egy egyéni attribútumot is. Ha egyéni attribútumot szeretne használni, [engedélyezze az egyéni attribútumokat a házirendben](custom-policy-custom-attributes.md). Ha más beépített vagy egyéni attribútumot szeretne használni, cserélje le a "City" kulcsszót az Ön által választott attribútumra, például a beépített attribútum *beosztás* vagy egy olyan egyéni attribútumra, mint a *extension_loyaltyId*.  
+> Ez a példa a beépített "City" jogcímet használja. Ehelyett kiválaszthatja az egyik támogatott [Azure ad B2C beépített attribútumot](user-profile-attributes.md) vagy egy egyéni attribútumot is. Ha egyéni attribútumot szeretne használni, [engedélyezze az egyéni attribútumok](user-flow-custom-attributes.md)használatát. Ha más beépített vagy egyéni attribútumot szeretne használni, cserélje le a "City" kulcsszót az Ön által választott attribútumra, például a beépített attribútum *beosztás* vagy egy olyan egyéni attribútumra, mint a *extension_loyaltyId*.  
 
 A felhasználóktól származó kezdeti adatokat a regisztrációs vagy bejelentkezési felhasználói úton gyűjtheti be. A további jogcímek később is összegyűjthetők, ha a felhasználói úton szerkeszti a profilt. A bármikor Azure AD B2C az adatokat közvetlenül a felhasználótól gyűjti össze interaktív módon, az Identity Experience Framework saját [maga által megadott műszaki profilt](self-asserted-technical-profile.md)használja. Ebben a példában a következőket látja:
 
@@ -339,9 +339,9 @@ Az alkalmazásnak visszaadott jogkivonat tartalmazza a `city` jogcímet.
 
 ::: zone pivot="b2c-custom-policy"
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [ClaimsSchema](claimsschema.md) elemről a IEF-hivatkozásban.
-- Megtudhatja, hogyan használhatja az egyéni [attribútumokat egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md).
+- Ismerje meg, hogyan [használhatja az egyéni attribútumokat a Azure ad B2Cban](user-flow-custom-attributes.md).
 
 ::: zone-end

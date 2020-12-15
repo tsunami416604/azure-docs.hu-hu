@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: 065cfe6695d7651d3cda49ad32428127633b834c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f3060a7308d728b31266008d75e18470883e4480
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555447"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508594"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Az adatok növekményes betöltése a SQL Server több táblájából egy Azure SQL Database-adatbázisba az Azure Portal
 
@@ -50,7 +50,7 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
     
     Ebben az oktatóanyagban a küszöbértékeket egy SQL-adatbázisban tároljuk.
 
-1. **Folyamat létrehozása a következő tevékenységekkel** : 
+1. **Folyamat létrehozása a következő tevékenységekkel**: 
     
     a. Egy ForEach tevékenység létrehozása, amely végighalad a forrástáblanevek listáján, amelyet a rendszer paraméterként ad át a folyamatnak. Minden forrástáblához elindítja a következő tevékenységeket a változásadatok betöltéséhez az adott tábla esetében.
 
@@ -168,8 +168,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime 
 WHERE [TableName] = @TableName
 
 END
@@ -236,7 +236,7 @@ END
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-2. A bal oldali menüben válassza az **erőforrás** -  >  **integráció** létrehozása  >  **Data Factory** : 
+2. A bal oldali menüben válassza az **erőforrás**-  >  **integráció** létrehozása  >  **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -246,7 +246,7 @@ END
   
    `Data factory name "ADFIncCopyTutorialDF" is not available`
 
-4. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni. 
+4. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 5. Az **erőforráscsoport** esetében hajtsa végre az alábbi lépések egyikét:
      
     - Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából. 
@@ -274,7 +274,7 @@ Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárb
 1. A **Integration Runtime telepítő** ablakban jelölje be az **adatáthelyezési és-küldési tevékenységek végrehajtása külső számításokhoz** lehetőséget, majd kattintson a **Folytatás** gombra. 
 
 1. Válassza a **saját** üzemeltetésű lehetőséget, majd kattintson a **Folytatás** gombra. 
-1. Adja meg a **MySelfHostedIR** **nevet** , majd kattintson a **Létrehozás** gombra. 
+1. Adja meg a **MySelfHostedIR** **nevet**, majd kattintson a **Létrehozás** gombra. 
 
 1. Kattintson a **Kattintson ide a számítógépen történő expressz telepítés indításához** elemre az **1. lehetőség: Expressz telepítés** szakaszban. 
 
@@ -304,7 +304,7 @@ Ebben a lépésben összekapcsolja SQL Server adatbázisát az adatelőállító
     1. Válassza a **MySelfHostedIR** elemet a **Connect via integration runtime** (Csatlakozás integrációs modulon keresztül) lehetőségnél. Ez egy **fontos** lépés. Az alapértelmezett integrációs modul nem tud csatlakozni a helyszíni adattárakhoz. Használja a korábban létrehozott saját üzemeltetésű integrációs modult. 
     1. A **Kiszolgáló neve** mezőben adja meg az SQL Server-adatbázist tartalmazó számítógép nevét.
     1. Az **Adatbázis neve** mezőben adja meg a forrásadatokkal rendelkező SQL Server-adatbázis nevét. Az előfeltételek részeként létrehozott egy táblát, és adatokat szúrt be ebbe az adatbázisba. 
-    1. Az **Authentication type** (Hitelesítési típus) mezőben válassza ki **a hitelesítés típusát** , amellyel az adatbázishoz kíván csatlakozni. 
+    1. Az **Authentication type**(Hitelesítési típus) mezőben válassza ki **a hitelesítés típusát**, amellyel az adatbázishoz kíván csatlakozni. 
     1. A **User name** (Felhasználónév) mezőben adja meg az SQL Server-adatbázishoz hozzáféréssel rendelkező felhasználó nevét. Ha perjel karaktert (`\`) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja az escape-karaktert (`\`). Például: `mydomain\\myuser`.
     1. A **Password** (Jelszó) mezőben adja meg a felhasználónévhez tartozó **jelszót**. 
     1. Ha tesztelni szeretné, hogy a Data Factory csatlakozni tud-e az SQL Server-adatbázishoz, kattintson a **Test connection** (Kapcsolat tesztelése) gombra. Javítson ki minden hibát, amíg nem sikerül a kapcsolódás. 
@@ -396,7 +396,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 
 1. Kattintson a bal oldali ablaktáblán a **+ (plusz)** jelre, majd kattintson a **Folyamat** elemre.
 
-1. A **Tulajdonságok** terület általános paneljén adja meg **IncrementalCopyPipeline** a IncrementalCopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.  
+1. A **Tulajdonságok** terület általános paneljén adja meg  a IncrementalCopyPipeline **nevet**. Ezután csukja össze a panelt a jobb felső sarokban található tulajdonságok ikonra kattintva.  
 
 1. A **Parameters (paraméterek** ) lapon hajtsa végre a következő lépéseket: 
 
@@ -479,7 +479,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 
         | Név | Típus | Érték | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | Dátum/idő | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
@@ -681,7 +681,7 @@ project_table   2017-10-01 00:00:00.000
 
 Megfigyelhető, hogy mindkét tábla küszöbértékei frissültek.
      
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 3bd18f697c25f7e81f227e7e1456ba0b3d2150c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85fabb540180adb1848285f4c40f944225db2760
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541747"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508577"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>Adatok növekményes betöltése a Azure SQL Databaseból az Azure-ba Blob Storage a Change Tracking Information használatával a PowerShell használatával
 
@@ -143,8 +143,8 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
     BEGIN
 
-        UPDATE table_store_ChangeTracking_version
-        SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
+    UPDATE table_store_ChangeTracking_version
+    SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
     WHERE [TableName] = @TableName
 
     END    
@@ -216,7 +216,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
         }
     }
     ```
-2. A **Azure PowerShellban**váltson a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappára.
+2. A **Azure PowerShellban** váltson a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappára.
 3. Futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService**. A következő példában a **ResourceGroupName** és a **DataFactoryName** paraméter értékeit fogja megadni.
 
     ```powershell
@@ -225,7 +225,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -235,7 +235,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása.
 Ebben a lépésben összekapcsolja az adatbázist az adatelőállítóval.
 
-1. Hozzon létre egy **AzureSQLDatabaseLinkedService.js** nevű JSON-fájlt a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappában a következő tartalommal: a fájl mentése előtt cserélje le a ** &lt; kiszolgáló- &gt; &lt; adatbázis nevét, a &gt; &lt; felhasználói azonosítót &gt; és a &lt; jelszót &gt; ** a kiszolgáló nevére, az adatbázis nevére, a felhasználói azonosítóra és a jelszóra.
+1. Hozzon létre egy **AzureSQLDatabaseLinkedService.js** nevű JSON-fájlt a **C:\ADFTutorials\IncCopyChangeTrackingTutorial** mappában a következő tartalommal: a fájl mentése előtt cserélje le a **&lt; kiszolgáló- &gt; &lt; adatbázis nevét, a &gt; &lt; felhasználói azonosítót &gt; és a &lt; jelszót &gt;** a kiszolgáló nevére, az adatbázis nevére, a felhasználói azonosítóra és a jelszóra.
 
     ```json
     {
@@ -248,7 +248,7 @@ Ebben a lépésben összekapcsolja az adatbázist az adatelőállítóval.
         }
     }
     ```
-2. A **Azure PowerShell**a **set-AzDataFactoryV2LinkedService** parancsmag futtatásával hozza létre a társított szolgáltatást: **AzureSQLDatabaseLinkedService**.
+2. A **Azure PowerShell** a **set-AzDataFactoryV2LinkedService** parancsmag futtatásával hozza létre a társított szolgáltatást: **AzureSQLDatabaseLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -256,7 +256,7 @@ Ebben a lépésben összekapcsolja az adatbázist az adatelőállítóval.
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -424,7 +424,7 @@ Ebben a lépésben egy másolási tevékenységgel rendelkező folyamatot fog l�
 
    Itt látható a minta kimenete:
 
-   ```json
+   ```console
     PipelineName      : FullCopyPipeline
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -498,113 +498,110 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
 
     ```json
     {
-            "name": "IncrementalCopyPipeline",
-            "properties": {
-                "activities": [
+        "name": "IncrementalCopyPipeline",
+        "properties": {
+            "activities": [
                 {
-                        "name": "LookupLastChangeTrackingVersionActivity",
-                        "type": "Lookup",
-                        "typeProperties": {
+                    "name": "LookupLastChangeTrackingVersionActivity",
+                    "type": "Lookup",
+                    "typeProperties": {
                         "source": {
                             "type": "SqlSource",
                             "sqlReaderQuery": "select * from table_store_ChangeTracking_version"
-                            },
-
-                            "dataset": {
+                        },
+                        "dataset": {
                             "referenceName": "ChangeTrackingDataset",
                             "type": "DatasetReference"
-                            }
                         }
-                    },
-                    {
-                        "name": "LookupCurrentChangeTrackingVersionActivity",
-                        "type": "Lookup",
-                        "typeProperties": {
-                            "source": {
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion"
+                    }
+                },
+                {
+                    "name": "LookupCurrentChangeTrackingVersionActivity",
+                    "type": "Lookup",
+                    "typeProperties": {
+                        "source": {
+                            "type": "SqlSource",
+                            "sqlReaderQuery": "SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion"
                         },
-
-                            "dataset": {
+                        "dataset": {
                             "referenceName": "SourceDataset",
                             "type": "DatasetReference"
-                            }
                         }
-                    },
-
-                    {
-                        "name": "IncrementalCopyActivity",
-                        "type": "Copy",
-                        "typeProperties": {
-                            "source": {
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}"
-                            },
-                            "sink": {
-                                "type": "BlobSink"
-                            }
-                        },
-                        "dependsOn": [
-                            {
-                                "activity": "LookupLastChangeTrackingVersionActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                            },
-                            {
-                                "activity": "LookupCurrentChangeTrackingVersionActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                        }
-                        ],
-
-                        "inputs": [
-                            {
-                            "referenceName": "SourceDataset",
-                                "type": "DatasetReference"
-                        }
-                        ],
-                        "outputs": [
-                            {
-                                "referenceName": "SinkDataset",
-                                "type": "DatasetReference"
-                            }
-                        ]
-                    },
-
-                {
-                        "name": "StoredProceduretoUpdateChangeTrackingActivity",
-                        "type": "SqlServerStoredProcedure",
-                        "typeProperties": {
-
-                            "storedProcedureName": "Update_ChangeTracking_Version",
-                            "storedProcedureParameters": {
-                            "CurrentTrackingVersion": {"value": "@{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}", "type": "INT64" },
-                                "TableName":  { "value":"@{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName}", "type":"String"}
-                            }
-                    },
-
-                        "linkedServiceName": {
-                        "referenceName": "AzureSQLDatabaseLinkedService",
-                            "type": "LinkedServiceReference"
-                        },
-
-                        "dependsOn": [
-                        {
-                                "activity": "IncrementalCopyActivity",
-                            "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                            }
-                        ]
                     }
-                ]
-
-            }
+                },
+                {
+                    "name": "IncrementalCopyActivity",
+                    "type": "Copy",
+                    "typeProperties": {
+                        "source": {
+                            "type": "SqlSource",
+                            "sqlReaderQuery": "select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}"
+                        },
+                        "sink": {
+                            "type": "BlobSink"
+                        }
+                    },
+                    "dependsOn": [
+                        {
+                            "activity": "LookupLastChangeTrackingVersionActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        },
+                        {
+                            "activity": "LookupCurrentChangeTrackingVersionActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        }
+                    ],
+                    "inputs": [
+                        {
+                            "referenceName": "SourceDataset",
+                            "type": "DatasetReference"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "referenceName": "SinkDataset",
+                            "type": "DatasetReference"
+                        }
+                    ]
+                },
+                {
+                    "name": "StoredProceduretoUpdateChangeTrackingActivity",
+                    "type": "SqlServerStoredProcedure",
+                    "typeProperties": {
+                        "storedProcedureName": "Update_ChangeTracking_Version",
+                        "storedProcedureParameters": {
+                            "CurrentTrackingVersion": {
+                                "value": "@{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}",
+                                "type": "INT64"
+                            },
+                            "TableName": {
+                                "value": "@{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName}",
+                                "type": "String"
+                            }
+                        }
+                    },
+                    "linkedServiceName": {
+                        "referenceName": "AzureSQLDatabaseLinkedService",
+                        "type": "LinkedServiceReference"
+                    },
+                    "dependsOn": [
+                        {
+                            "activity": "IncrementalCopyActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
     }
-
     ```
+
 2. Futtassa a Set-AzDataFactoryV2Pipeline parancsmagot a következő folyamat létrehozásához: FullCopyPipeline.
 
    ```powershell
@@ -613,7 +610,7 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
 
    Itt látható a minta kimenete:
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -655,8 +652,8 @@ Az első három oszlop a data_source_table táblából származó módosított a
 ==================================================================
 PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ==================================================================
-1        update  10     2                     U
-6        new     50     1                     I
+1        update  10            2                                 U
+6        new     50            1                                 I
 ```
 
 

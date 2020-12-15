@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c67dcbbe2ca6dea533260f59831556c4338374ba
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 07ff656c5eacbbcdc16c6c7cf098478ca6baf745
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012990"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509291"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>A munkaterület használata egyéni DNS-kiszolgálóval
 
@@ -41,6 +41,7 @@ Ha Azure Machine Learning munkaterületet használ privát végponttal, a [DNS-n
 
 A következő lista tartalmazza a munkaterület és a privát végpont által használt teljes tartományneveket (FQDN):
 
+* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
@@ -90,6 +91,7 @@ Az összes metódus által visszaadott információ ugyanaz; az erőforrások te
 > [!IMPORTANT]
 > Egyes teljes tartománynevek nem jelennek meg a privát végpontok listáján, de a munkaterület számára szükséges. Ezek a teljes tartománynevek az alábbi táblázatban láthatók, és a DNS-kiszolgálóhoz is hozzá kell adni:
 >
+> * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`
@@ -97,6 +99,6 @@ Az összes metódus által visszaadott információ ugyanaz; az erőforrások te
 >
 > Az összes IP-cím esetében ugyanazt a címet használja, mint az `*.api.azureml.ms` előző lépésekből visszaadott bejegyzéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Machine Learning virtuális hálózattal való használatával kapcsolatos további információkért lásd a [virtuális hálózat áttekintését](how-to-network-security-overview.md).

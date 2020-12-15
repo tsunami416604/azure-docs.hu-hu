@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: b24b95423adb271b8a4016430e7d2b381c386cd2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e055287f069c477318a54aedf3d9a2fe22343367
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443755"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509155"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webalkalmazás: kód konfigurálása
 
@@ -32,7 +32,7 @@ A [felhasználói forgatókönyvekben bejelentkező webalkalmazás](scenario-web
 
 A Microsoft Authentication Library (MSAL) következő kódtárai támogatják a webes alkalmazások engedélyezési kódjának áramlását:
 
-| MSAL-könyvtár | Description |
+| MSAL-könyvtár | Leírás |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatása. A Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android nem támogatott, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. <br/><br/>ASP.NET Core webalkalmazások és webes API-k esetében a MSAL.NET a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web)nevű magasabb szintű könyvtárban van beágyazva. |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Pythonhoz készült MSAL | Python-webalkalmazások támogatása. |
@@ -99,7 +99,7 @@ A *Microsoft. Identity. Web* számos módszert kínál a tanúsítványok leír�
 
 ## <a name="startupcs"></a>Startup.cs
 
-A webalkalmazásnak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` vezérlő és az oldal műveleteiben használható szolgáltatást. A következő két lehetőség esetében azonban egyszerűen megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` a *Startup.cs* -ben:
+A webalkalmazásnak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` vezérlő és az oldal műveleteiben használható szolgáltatást. A következő két lehetőség esetében azonban egyszerűen megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` a *Startup.cs*-ben:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -110,7 +110,7 @@ A webalkalmazásnak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-ho
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                .AddInMemoryTokenCaches();
@@ -140,7 +140,7 @@ Ha meg szeretné hívni Microsoft Graph, a *Microsoft. Identity. Web* lehetővé
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                   .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
@@ -164,7 +164,7 @@ Ha a Microsoft Graphtól eltérő webes API-t szeretne meghívni, a *Microsoft. 
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, "AzureAd")
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                   .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))

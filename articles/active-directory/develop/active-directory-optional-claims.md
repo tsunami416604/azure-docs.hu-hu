@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 3fd91bb86b32a958344dc366cfcd142bff369c1f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108144"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509563"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -124,15 +124,16 @@ Ez a OptionalClaims objektum azt eredményezi, hogy a rendszer visszaadja az azo
 
 Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület vagy az alkalmazás jegyzékfájlja segítségével konfigurálhatja.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg és válassza ki az **Azure Active Directoryt**.
-1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk** lehetőséget.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
 
 **Választható jogcímek konfigurálása a felhasználói felületen keresztül:**
 
 [![Választható jogcímek konfigurálása a felhasználói felületen](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
-1. A **kezelés** szakaszban válassza a **jogkivonat-konfiguráció** elemet.
+1. A **kezelés** területen válassza a **jogkivonat-konfiguráció** elemet.
 1. Válassza a **választható jogcím hozzáadása** lehetőséget.
 1. Válassza ki a konfigurálni kívánt jogkivonat-típust.
 1. Válassza ki a hozzáadandó választható jogcímeket.
@@ -145,7 +146,7 @@ Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület va
 
 [![Bemutatja, hogyan konfigurálhat választható jogcímeket az alkalmazás jegyzékfájljának használatával](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
 
-1. A **kezelés** szakaszban válassza a **jegyzékfájl** lehetőséget. Megnyílik egy web-alapú jegyzékfájl-szerkesztő, amely lehetővé teszi a jegyzékfájl szerkesztését. Másik lehetőségként a **Letöltés** lehetőséget választva a helyi gépen is szerkesztheti az alkalmazásjegyzéket, majd a **Feltöltés** gombra kattintva alkalmazhatja a módosításokat az alkalmazásra. Az alkalmazás jegyzékfájljának megismeréséhez tekintse meg az [Azure ad Application manifest ismertetése című cikket](reference-app-manifest.md).
+1. A **kezelés** területen válassza a **jegyzékfájl** lehetőséget. Megnyílik egy web-alapú jegyzékfájl-szerkesztő, amely lehetővé teszi a jegyzékfájl szerkesztését. Másik lehetőségként a **Letöltés** lehetőséget választva a helyi gépen is szerkesztheti az alkalmazásjegyzéket, majd a **Feltöltés** gombra kattintva alkalmazhatja a módosításokat az alkalmazásra. Az alkalmazás jegyzékfájljának megismeréséhez tekintse meg az [Azure ad Application manifest ismertetése című cikket](reference-app-manifest.md).
 
     A következő Application manifest bejegyzés hozzáadja a auth_time, a IPADDR és az UPN opcionális jogcímeit az AZONOSÍTÓhoz, a hozzáféréshez és az SAML-jogkivonatokhoz.
 
@@ -225,22 +226,19 @@ Az SAML-tokeneken belül ezek a jogcímek a következő URI-formátummal lesznek
 
 ## <a name="configuring-groups-optional-claims"></a>Csoportok konfigurálása választható jogcímek
 
-   > [!NOTE]
-   > A helyi verzióról szinkronizált felhasználók és csoportok számára a csoportok nevének kiadásának lehetősége nyilvános előzetes verzió.
-
 Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a választható jogcímek területen az alapértelmezett csoport objectID a helyi Windows Active Directoryról szinkronizált attribútumokra vonatkozóan használt csoportok attribútumainak módosítására használhatók. A felhasználói felület vagy az alkalmazás jegyzékfájlja segítségével az alkalmazáshoz választható jogcímeket is konfigurálhat.
 
 > [!IMPORTANT]
-> További részletek: az Azure AD-ben az [alkalmazások csoportos jogcímei jogcímeinek konfigurálása](../hybrid/how-to-connect-fed-group-claims.md)című témakörben olvashat bővebben.
+> További részletek, beleértve a helyszíni attribútumokból származó csoportos jogcímek fontos figyelmeztetéseit is: [alkalmazások csoportos jogcímek konfigurálása az Azure ad-vel](../hybrid/how-to-connect-fed-group-claims.md).
 
 **Csoportok konfigurálása választható jogcímek a felhasználói felületen keresztül:**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
-1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
-1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk** lehetőséget.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
-1. A **kezelés** szakaszban válassza a **jogkivonat-konfiguráció** elemet.
+1. A **kezelés** területen válassza a **jogkivonat-konfiguráció** elemet.
 1. Válassza a **Csoport hozzáadása jogcímet**.
 1. Válassza ki a visszaadni kívánt csoportok típusát (**biztonsági csoportok**, **címtárbeli szerepkörök**, **az alkalmazáshoz rendelt** **összes csoport** és/vagy csoport). Az **alkalmazás-beállításhoz rendelt csoportok** csak az alkalmazáshoz rendelt csoportokat tartalmazzák. A **minden csoport** beállítás magában foglalja az **SecurityGroup**, a **DirectoryRole** és a **DistributionList**, de **az alkalmazáshoz nem rendelt csoportokat**. 
 1. Nem kötelező: válassza ki az adott jogkivonat-típus tulajdonságait, hogy módosítsa a csoportok jogcím értékét, amely a helyszíni csoport attribútumait tartalmazza, vagy ha módosítani szeretné a jogcím típusát a szerepkörre.
@@ -250,9 +248,9 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
-1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. Válassza ki azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában.
-1. A **kezelés** szakaszban válassza a **jegyzékfájl** lehetőséget.
+1. A **kezelés** területen válassza a **jegyzékfájl** lehetőséget.
 1. Adja hozzá a következő bejegyzést a jegyzékfájl-szerkesztő használatával:
 
    Az érvényes értékek a következők:
@@ -382,13 +380,13 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
 
-1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 
-1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk** lehetőséget.
+1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 
 1. Keresse meg azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában, majd válassza ki azt.
 
-1. A **kezelés** szakaszban válassza a **jogkivonat-konfiguráció** elemet.
+1. A **kezelés** területen válassza a **jogkivonat-konfiguráció** elemet.
 
 1. Válassza a **választható jogcím hozzáadása** lehetőséget, válassza ki az **azonosító** token típusát, válassza az **egyszerű felhasználónév** lehetőséget a jogcímek listájából, majd válassza a **Hozzáadás** lehetőséget.
 
@@ -404,9 +402,9 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A hitelesítés után válassza ki az Azure AD-bérlőt az oldal jobb felső sarkában.
-1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. Keresse meg azt az alkalmazást, amelyhez választható jogcímeket szeretne konfigurálni a listában, majd válassza ki azt.
-1. A **kezelés** szakaszban válassza a **jegyzékfájl** lehetőséget a beágyazott jegyzékfájl-szerkesztő megnyitásához.
+1. A **kezelés** területen válassza a **jegyzékfájl** elemet a beágyazott jegyzékfájl-szerkesztő megnyitásához.
 1. A jegyzékfájlt közvetlenül szerkesztheti a szerkesztő használatával. A jegyzékfájl az [alkalmazás entitásának](./reference-app-manifest.md)sémáját követi, és a mentés után automatikusan formázza a jegyzékfájlt. Új elemek lesznek hozzáadva a `OptionalClaims` tulajdonsághoz.
 
     ```json
@@ -438,7 +436,7 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 
 1. Amikor befejezte a jegyzékfájl frissítését **, a Mentés gombra kattintva** mentheti a jegyzékfájlt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure AD által biztosított standard jogcímekről.
 

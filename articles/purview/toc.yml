@@ -104,8 +104,6 @@ items:
                 href: register-scan-on-premises-sql-server.md
               - name: Power BI-bérlő – Portál
                 href: register-scan-power-bi-tenant.md
-              - name: Power BI-bérlő – PowerShell
-                href: powershell-register-scan-power-bi.md
       - name: Üzleti szószedet
         items:
           - name: 'Szószedet-kifejezések létrehozása, importálása és exportálása'

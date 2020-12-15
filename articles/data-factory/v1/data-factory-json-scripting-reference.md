@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3b4795a47f0e6dbf945bd4a1f9aaaa0df2137f91
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 41ba08aef7aed761c3c6063f97768f22bffe3a36
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495582"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508492"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-parancsfájlok leírása
 > [!NOTE]
@@ -95,10 +95,10 @@ A következő táblázat a tevékenység JSON-definíciójában található tula
 | szabályzat |Olyan szabályzatok, amelyek az adott tevékenység futásidejű viselkedését befolyásolják. Ha nincs megadva, a rendszer az alapértelmezett szabályzatokat használja. |Nem |
 | scheduler |a "Scheduler" tulajdonság a tevékenység kívánt ütemezésének meghatározására szolgál. Az altulajdonságok ugyanazok, mint az [adatkészlet rendelkezésre állási tulajdonságában](data-factory-create-datasets.md#dataset-availability)lévők. |Nem |
 
-### <a name="policies"></a>Szabályzatok
+### <a name="policies"></a>Házirendek
 A házirendek hatással vannak egy tevékenység futásidejű viselkedésére, különösen akkor, ha egy tábla szeletét dolgozzák fel. A részleteket a következő táblázat tartalmazza.
 
-| Tulajdonság | Megengedett értékek | Alapértelmezett érték | Description |
+| Tulajdonság | Megengedett értékek | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
 | Egyidejűség |Egész szám <br/><br/>Maximális érték: 10 |1 |A tevékenység egyidejű végrehajtásának száma.<br/><br/>Meghatározza, hogy hány párhuzamos tevékenység-végrehajtás történhet a különböző szeleteken. Ha például egy tevékenységnek az elérhető adatmennyiség nagy készletén kell haladnia, a nagyobb párhuzamossági érték felgyorsítja az adatfeldolgozást. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Meghatározza a feldolgozás alatt álló adatszeletek sorrendjét.<br/><br/>Ha például 2 szelete van (egy 16:00-kor történik, egy másik pedig 5 órakor), és mindkettő függőben van. Ha úgy állítja be a executionPriorityOrder, hogy a NewestFirst, a szeletet 5 ÓRAKOR dolgozza fel a rendszer. Hasonlóképpen, ha úgy állítja be a executionPriorityORder, hogy a OldestFIrst legyen, akkor a szelet 4 ÓRAKOR lesz feldolgozva. |
@@ -1219,7 +1219,7 @@ Ha az Azure szinapszis Analyticsből másol Adatmásolást, állítsa **be a** m
 További információt az [Azure szinapszis Analytics-összekötő](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties) című cikkben talál.
 
 ### <a name="azure-synapse-analytics-sink-in-copy-activity"></a>Az Azure szinapszis Analytics fogadója a másolási tevékenységben
-Ha az adatok másolása az Azure szinapszis Analytics szolgáltatásba történik, **sink type** állítsa a másolási tevékenység fogadó típusát **SqlDWSink** értékre, és adja meg a következő tulajdonságokat a **fogadó szakaszban:**
+Ha az adatok másolása az Azure szinapszis Analytics szolgáltatásba történik,  állítsa a másolási tevékenység fogadó típusát **SqlDWSink** értékre, és adja meg a következő tulajdonságokat a **fogadó szakaszban:**
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
@@ -1228,7 +1228,7 @@ Ha az adatok másolása az Azure szinapszis Analytics szolgáltatásba történi
 | polyBaseSettings |A tulajdonságok olyan csoportja, amely akkor adható meg, ha a **allowPolybase** tulajdonság értéke **true (igaz**). |&nbsp; |Nem |
 | rejectValue |A lekérdezés sikertelensége előtt visszautasítható sorok számát vagy százalékos arányát adja meg. <br/><br/>További információ a [create External Table (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) című témakör **argumentumok** szakaszában található alapszintű elutasítás beállításairól. |0 (alapértelmezett), 1, 2,... |Nem |
 | rejectType |Megadja, hogy a rejectValue beállítás literál értékként vagy százalékként van-e megadva. |Érték (alapértelmezett), százalék |Nem |
-| rejectSampleValue |Meghatározza a lekérdezni kívánt sorok számát, mielőtt a rendszer újraszámítja az elutasított sorok százalékos arányát. |1, 2,... |Igen, ha **rejectType** a rejectType **százaléka** |
+| rejectSampleValue |Meghatározza a lekérdezni kívánt sorok számát, mielőtt a rendszer újraszámítja az elutasított sorok százalékos arányát. |1, 2,... |Igen, ha  a rejectType **százaléka** |
 | useTypeDefault |Meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, ha a viszonyítási adatok beolvasása a szövegfájlból történik.<br/><br/>Erről a tulajdonságról a [külső fájlformátum létrehozása (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)argumentumai című szakaszban olvashat bővebben. |Igaz, hamis (alapértelmezett) |Nem |
 | writeBatchSize |Az SQL-táblába szúrja be az adatmennyiséget, ha a puffer mérete eléri a writeBatchSize |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |Nem |
@@ -3324,7 +3324,7 @@ Helyszíni fájlrendszert kapcsolhat egy Azure-beli adatgyárhoz a helyszíni **
 
 #### <a name="sample-folder-path-definitions"></a>A minta mappa elérési útjának definíciói
 
-| Használati példa | Gazdagép a társított szolgáltatás definíciójában | folderPath az adatkészlet definíciójában |
+| Forgatókönyv | Gazdagép a társított szolgáltatás definíciójában | folderPath az adatkészlet definíciójában |
 | --- | --- | --- |
 | Helyi mappa adatkezelés átjáró számítógépén: <br/><br/>Példák: D: \\ \* vagy D:\folder\subfolder\\* |D: \\ \\ (adatkezelés átjáró 2,0-es és újabb verziói esetén) <br/><br/> localhost (a adatkezelés Gateway 2,0-es verziójánál korábbi verziók esetében) |.\\\\ vagy mappa \\ \\ almappája (adatkezelés átjáró 2,0-es és újabb verzióihoz) <br/><br/>D: \\ \\ vagy d: \\ \\ mappa \\ \\ almappája (az átjáró 2,0-es verziójához) |
 | Távoli megosztott mappa: <br/><br/>Példák: \\ \\ MyServer \\ Share \\ \* vagy \\ \\ MyServer \\ Share \\ mappa \\ almappája\\* |\\\\\\\\MyServer- \\ \\ megosztás |.\\\\ vagy mappa \\ \\ almappája |
@@ -5057,7 +5057,7 @@ További információ: SQL Server- [összekötő](data-factory-sqlserver-connect
 
 ## <a name="data-transformation-activities"></a>ADATÁTALAKÍTÁSI TEVÉKENYSÉGEK
 
-Tevékenység | Description
+Tevékenység | Leírás
 -------- | -----------
 [HDInsight-struktúra tevékenység](#hdinsight-hive-activity) | A Data Factory folyamat HDInsight-struktúrájának tevékenysége a saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre a kaptár-lekérdezéseket.
 [HDInsight Pig-tevékenység](#hdinsight-pig-activity) | A HDInsight Pig-tevékenység egy Data Factory folyamat során a Pig-lekérdezéseket a saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre.
@@ -5642,7 +5642,7 @@ A .NET egyéni tevékenység JSON-definíciójában a következő tulajdonságok
 
 Részletes információ: [egyéni tevékenységek használata Data Factory](data-factory-use-custom-activities.md) cikkben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi oktatóanyagokat:
 
 - [Oktatóanyag: másolási tevékenységgel rendelkező folyamat létrehozása](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)

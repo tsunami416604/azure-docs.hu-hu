@@ -11,12 +11,12 @@ ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62f2869bfe1110dd5bf8459c9f6f6b21701dc934
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 95f41283b78c39ed2cf3b4abb75275902d8cf7bd
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425835"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509580"
 ---
 # <a name="userinfo-endpoint"></a>UserInfo végpont
 
@@ -103,7 +103,7 @@ A felhasználói adatok UserJourney a következőket határozza meg:
 
 1. A UserInfoIssuer technikai profiljában található outputClaims szakasz a visszaadni kívánt attribútumokat határozza meg. A UserInfoIssuer technikai profilt a felhasználói út végén hívja meg. 
 1. A UserInfoAuthorization technikai profilja ellenőrzi az aláírást, a kiállító nevét és a jogkivonat célközönségét, és kibontja a jogcímet a bejövő jogkivonatból. Módosítsa a következő metaadatokat a környezetének megfelelően:
-    1. **kiállító** – ennek az értéknek meg kell egyeznie a `iss` jogcímet a hozzáférési jogkivonat jogcímen belül. A Azure AD B2C által kiállított jogkivonatok a kibocsátót használják a formátumban `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` . További információ a [token testreszabásáról](configure-tokens-custom-policy.md).
+    1. **kiállító** – ennek az értéknek meg kell egyeznie a `iss` jogcímet a hozzáférési jogkivonat jogcímen belül. A Azure AD B2C által kiállított jogkivonatok a kibocsátót használják a formátumban `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` . További információ a [token testreszabásáról](configure-tokens.md).
     1. **IdTokenAudience** – `aud` a hozzáférési jogkivonat jogcímen belüli jogcímet meg kell egyeznie. Azure AD B2C a `aud` jogcím a függő entitás alkalmazásának azonosítója. Ez az érték egy gyűjtemény, amely vesszővel elválasztó karakter használatával több értéket is támogat.
 
 A következő hozzáférési jogkivonatban a `iss` jogcím értéke: `https://contoso.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/` . A `aud` jogcím értéke: `22222222-2222-2222-2222-222222222222` .

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95974330"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509461"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Univerzális Windows-platform-(UWP-) alkalmazásból
 
@@ -347,21 +347,23 @@ private async Task DisplayMessageAsync(string message)
 Most regisztrálnia kell az alkalmazást:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
-1. Válassza az **új regisztráció** lehetőséget. Adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például *UWP-app-Calling-MSGraph*.
-1. A **támogatott fióktípus** területen válassza a **fiókok lehetőséget a szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox)**. Ezután válassza a **regisztráció** lehetőséget a folytatáshoz.
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás **nevét** , például: `UWP-App-calling-MSGraph` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+1. A **támogatott fióktípus** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár-több-bérlős) és a személyes Microsoft-fiókokat (például Skype, Xbox)**. 
+1. Válassza a **Regisztráció** lehetőséget.
 1. Az Áttekintés oldalon keresse meg az **alkalmazás (ügyfél) azonosítójának** értékét, és másolja. Lépjen vissza a Visual studióba, nyissa meg a *MainPage.XAML.cs*, és cserélje le az értéket ezzel az `ClientId` értékkel.
 
 Az alkalmazás hitelesítésének konfigurálása:
 
-1. A [Azure Portal](https://portal.azure.com)vissza a **kezelés** alatt válassza a **hitelesítés** lehetőséget.
-1. Az **átirányítási URI**-  |  **k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban, a következőt: https://login.microsoftonline.com/common/oauth2/nativeclient .
-1. Kattintson a **Mentés** gombra.
+1. A [Azure Portal](https://portal.azure.com)a **kezelés** területen válassza a **hitelesítés**  >  **a platform hozzáadása** lehetőséget, majd válassza a **mobil-és asztali alkalmazások** lehetőséget.
+1. Az **átirányítási URI** -k szakaszban keresse meg a t **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. Válassza a **Konfigurálás** lehetőséget.
 
 API-engedélyek konfigurálása az alkalmazáshoz:
 
-1. A **kezelés** területen válassza az **API-engedélyek** lehetőséget.
-1. Válassza az **engedély hozzáadása** lehetőséget, és győződjön meg arról, hogy a **Microsoft API-kat** választotta.
+1. A **kezelés** területen válassza az **API-engedélyek**  >  **Hozzáadás engedélyt**.
 1. Válassza a **Microsoft Graph** lehetőséget.
 1. Válassza a **delegált engedélyek** lehetőséget, keresse meg a *User. Read* parancsot, és ellenőrizze, hogy a **felhasználó. Read** van-e kiválasztva.
 1. Ha módosította a módosításokat, válassza az **engedélyek hozzáadása** lehetőséget a mentéshez.

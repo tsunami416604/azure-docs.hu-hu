@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a5fcbf80850fd9de77e6f9a431afea6d48cb14d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6abc3316e18fc70a2969bc220fd75e10e10f0e6e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949411"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507778"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C felhasználói fiókok kezelése Microsoft Graph
 
@@ -63,7 +63,7 @@ A Microsoft Graph API-ban a helyi és az összevont identitások is a User `iden
 | Tulajdonság   | Típus |Leírás|
 |:---------------|:--------|:----------|
 |signInType|sztring| Megadja a felhasználói bejelentkezési típusokat a címtárban. Helyi fiók esetén:,,,,  `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3`  `userName` vagy bármely más hasonló típus. A közösségi fiókot a következőre kell beállítani:  `federated` .|
-|kiállító|sztring|Megadja az identitás kiállítóját. Helyi fiókok esetében (ahol a **signInType** nem `federated` ), ez a tulajdonság a helyi B2C-bérlő alapértelmezett tartománynevét adja meg, például: `contoso.onmicrosoft.com` . A közösségi identitás (ahol **signInType** a signInType `federated` ) értéke a kibocsátó neve, például:`facebook.com`|
+|kiállító|sztring|Megadja az identitás kiállítóját. Helyi fiókok esetében (ahol a **signInType** nem `federated` ), ez a tulajdonság a helyi B2C-bérlő alapértelmezett tartománynevét adja meg, például: `contoso.onmicrosoft.com` . A közösségi identitás (ahol  a signInType `federated` ) értéke a kibocsátó neve, például:`facebook.com`|
 |issuerAssignedId|sztring|A kiállító által a felhasználóhoz rendelt egyedi azonosítót határozza meg. A **kibocsátó** és a **issuerAssignedId** kombinációjának egyedinek kell lennie a bérlőn belül. Helyi fiók esetén, ha a **signInType** értéke `emailAddress` vagy `userName` , a felhasználó bejelentkezési nevét jelöli.<br>Ha a **signInType** értéke: <ul><li>`emailAddress` (vagy kezdődik a `emailAddress` Like `emailAddress1` ) **issuerAssignedId** érvényes e-mail-címnek kell lennie</li><li>`userName`(vagy bármely más érték) a **issuerAssignedId** egy [e-mail-cím érvényes helyi részének](https://tools.ietf.org/html/rfc3696#section-3) kell lennie</li><li>`federated`, a **issuerAssignedId** az összevont fiók egyedi azonosítóját jelöli.</li></ul>|
 
 A következő **identitások** tulajdonság egy helyi fiók identitásával, egy bejelentkezési névvel, egy e-mail-címmel és egy közösségi identitással. 
@@ -115,7 +115,7 @@ A felhasználói áttelepítési forgatókönyvek esetében, ha az áttelepíten
 
 ### <a name="extension-properties"></a>Bővítmény tulajdonságai
 
-Minden ügyfélre kiterjedő alkalmazás egyedi követelményekkel rendelkezik a gyűjtött adatokhoz. A Azure AD B2C bérlője a tulajdonságok területen tárolt beépített információkkal, például a megadott névvel, a vezetéknévvel, a várossal és az irányítószámmal rendelkezik. A Azure AD B2C használatával kiterjesztheti az egyes felhasználói fiókokban tárolt tulajdonságok készletét. Az egyéni attribútumok definiálásával kapcsolatos további információkért lásd: [Egyéni attribútumok (felhasználói folyamatok)](user-flow-custom-attributes.md) és [Egyéni attribútumok (egyéni házirendek)](custom-policy-custom-attributes.md).
+Minden ügyfélre kiterjedő alkalmazás egyedi követelményekkel rendelkezik a gyűjtött adatokhoz. A Azure AD B2C bérlője a tulajdonságok területen tárolt beépített információkkal, például a megadott névvel, a vezetéknévvel, a várossal és az irányítószámmal rendelkezik. A Azure AD B2C használatával kiterjesztheti az egyes felhasználói fiókokban tárolt tulajdonságok készletét. Az egyéni attribútumok definiálásával kapcsolatos további információkért lásd: [Egyéni attribútumok](user-flow-custom-attributes.md).
 
 Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API-bővítmény attribútumai az egyezmény használatával vannak elnevezve `extension_ApplicationClientID_attributename` , ahol a a `ApplicationClientID` (z) az alkalmazás **alkalmazás-(ügyfél-) azonosítója** `b2c-extensions-app` (a Azure Portal **Alkalmazásregisztrációk**  >  **összes alkalmazásában** található). Vegye figyelembe, hogy a bővítmény attribútumának nevében szereplő **alkalmazás-azonosító (ügyfél)** nem tartalmaz kötőjelet. Például:
 
@@ -205,7 +205,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 
 [Az Microsoft Graph SDK-kat használó API-hívások a](/graph/sdks/create-requests) Microsoft Graph információk olvasására és írására, a `$select` visszaadott tulajdonságok szabályozására, az egyéni lekérdezési paraméterek megadására, valamint a `$filter` és a lekérdezés paramétereinek használatára vonatkozó információkat tartalmaznak `$orderBy` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Azure AD B2C erőforrásokhoz támogatott Microsoft Graph API-műveletek teljes indexét itt tekintheti meg: [Azure ad B2C számára elérhető Microsoft Graph műveletek](microsoft-graph-operations.md).
 

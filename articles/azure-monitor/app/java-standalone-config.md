@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b5c1ab7db818daa91497728299d2247f612fe21b
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387751"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507659"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurációs beállítások – Azure Monitor Application Insights Javához
 
@@ -184,9 +184,9 @@ További információkért tekintse meg a [telemetria-feldolgozó](./java-standa
 
 A Log4j, a Logback és a Java. util. Logging automatikusan lett kialakítva, és ezekkel a naplózási keretrendszerekkel végrehajtott naplózás automatikusan begyűjtve lesz.
 
-Alapértelmezés szerint a naplózás csak akkor kerül begyűjtésre, ha a naplózást a `INFO` szinten vagy felett hajtják végre.
+A rendszer csak akkor rögzíti a naplózást, ha először megfelel a naplózási keretrendszerek konfigurált küszöbértékének, a második pedig megfelel a Application Insights konfigurált küszöbértéknek is.
 
-Ha módosítani szeretné a gyűjtési szintet:
+Az alapértelmezett Application Insights küszöbérték: `INFO` . Ha módosítani szeretné ezt a szintet:
 
 ```json
 {

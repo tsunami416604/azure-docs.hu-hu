@@ -3,12 +3,12 @@ title: Önálló fürt üzembe helyezésének előkészítése
 description: A környezet előkészítéséhez és a fürtkonfiguráció létrehozásához kapcsolódó dokumentáció, amely az éles számítási feladatok kezelésére szolgáló fürt üzembe helyezése előtt megfontolandó.
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 9e5ad37d803b2042fd57b0a325570e69d7b73038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842954"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509172"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>A Service Fabric önálló fürt üzembe helyezésének megtervezése és előkészítése
 
@@ -78,7 +78,7 @@ Nyissa meg az egyik ClusterConfig.jsa letöltött csomag fájljai közül, és m
 
 | **Konfigurációs beállítás** | **Leírás** |
 | --- | --- |
-| **NodeTypes** |A csomópont-típusok lehetővé teszik a fürtcsomópontok különböző csoportokba való elkülönítését. A fürtnek rendelkeznie kell legalább egy NodeType. A csoport összes csomópontja a következő általános jellemzőkkel rendelkezik: <br> **Név** – ez a csomópont típusának neve. <br>**Végponti portok** – ezek különböző elnevezett végpontok (portok), amelyek ehhez a csomópont-típushoz vannak társítva. Tetszőleges portszámot használhat, ha nem ütköznek a jegyzékfájlban található minden más alkalmazással, és a gép/virtuális gépen futó más alkalmazások még nem használják azokat. <br> **Elhelyezési tulajdonságok** – a csomópont azon típusának tulajdonságait írja le, amelyet elhelyezési megkötésként használ a rendszerszolgáltatások vagy a szolgáltatások számára. Ezek a tulajdonságok olyan felhasználó által definiált kulcs/érték párok, amelyek egy adott csomópontra vonatkozóan extra metaadatokat biztosítanak. Csomópont-tulajdonságok például az, hogy a csomópont rendelkezik-e merevlemezzel vagy grafikus kártyával, a merevlemezen, a magokon és egyéb fizikai tulajdonságoknál található orsók számával. <br> **Kapacitások** – a csomóponti kapacitások határozzák meg egy adott erőforrás nevét és mennyiségét, amelyet egy adott csomópont felhasználhat a felhasználáshoz. Egy csomópont például meghatározhat egy "MemoryInMb" nevű metrikai kapacitást, és alapértelmezés szerint 2048 MB érhető el. Ezek a kapacitások futásidőben használhatók annak biztosítására, hogy bizonyos mennyiségű erőforrást igénylő szolgáltatások a szükséges mennyiségeken elérhetők legyenek az adott erőforrásokkal rendelkező csomópontokon.<br>**IsPrimary** – ha egynél több NodeType van meghatározva, győződjön meg arról, hogy csak egy az *igaz*értékre van beállítva, amely a rendszerszolgáltatások futtatásának helye. Minden más csomópont-típust *false* értékre kell beállítani |
+| **NodeTypes** |A csomópont-típusok lehetővé teszik a fürtcsomópontok különböző csoportokba való elkülönítését. A fürtnek rendelkeznie kell legalább egy NodeType. A csoport összes csomópontja a következő általános jellemzőkkel rendelkezik: <br> **Név** – ez a csomópont típusának neve. <br>**Végponti portok** – ezek különböző elnevezett végpontok (portok), amelyek ehhez a csomópont-típushoz vannak társítva. Tetszőleges portszámot használhat, ha nem ütköznek a jegyzékfájlban található minden más alkalmazással, és a gép/virtuális gépen futó más alkalmazások még nem használják azokat. <br> **Elhelyezési tulajdonságok** – a csomópont azon típusának tulajdonságait írja le, amelyet elhelyezési megkötésként használ a rendszerszolgáltatások vagy a szolgáltatások számára. Ezek a tulajdonságok olyan felhasználó által definiált kulcs/érték párok, amelyek egy adott csomópontra vonatkozóan extra metaadatokat biztosítanak. Csomópont-tulajdonságok például az, hogy a csomópont rendelkezik-e merevlemezzel vagy grafikus kártyával, a merevlemezen, a magokon és egyéb fizikai tulajdonságoknál található orsók számával. <br> **Kapacitások** – a csomóponti kapacitások határozzák meg egy adott erőforrás nevét és mennyiségét, amelyet egy adott csomópont felhasználhat a felhasználáshoz. Egy csomópont például meghatározhat egy "MemoryInMb" nevű metrikai kapacitást, és alapértelmezés szerint 2048 MB érhető el. Ezek a kapacitások futásidőben használhatók annak biztosítására, hogy bizonyos mennyiségű erőforrást igénylő szolgáltatások a szükséges mennyiségeken elérhetők legyenek az adott erőforrásokkal rendelkező csomópontokon.<br>**IsPrimary** – ha egynél több NodeType van meghatározva, győződjön meg arról, hogy csak egy az *igaz* értékre van beállítva, amely a rendszerszolgáltatások futtatásának helye. Minden más csomópont-típust *false* értékre kell beállítani |
 | **Csomópontok** |Ezek a fürt részét képező csomópontok (csomópont típusa, csomópont neve, IP-cím, tartalék tartomány és a csomópont frissítési tartománya) részletei. Azokat a gépeket, amelyekhez létre szeretné hozni a fürtöt, itt fel kell vennie az IP-címüket. <br> Ha ugyanazt az IP-címet használja az összes csomóponthoz, akkor létrejön egy egyablakos fürt, amely tesztelési célokra használható. Ne használjon egydobozos fürtöket éles számítási feladatok telepítéséhez. |
 
 Miután a fürtkonfiguráció minden beállítást beállított a környezethez, a rendszer tesztelheti a fürt környezetét (7. lépés).
@@ -103,7 +103,7 @@ Ha egy fürt rendszergazdája Service Fabric önálló fürtöt konfigurál, a k
 5. Ha a fürtben lévő gépek nem érhetők el az internetről, állítsa be a következőt a fürt konfigurációjában:
    * Telemetria letiltása: a "EnableTelemetry" *tulajdonságban* állítsa be a *következőt: false*
    * Letilthatja az automatikus háló verziójának letöltését & értesítéseket arról, hogy a fürt aktuális verziója hamarosan megszűnik a támogatás vége: a *"fabricClusterAutoupgradeEnabled"* *tulajdonság* beállítása alatt: false
-   * Ha a hálózati internet-hozzáférés a felsorolt tartományokra korlátozódik, az alábbi tartományokra van szükség az automatikus frissítéshez: go.microsoft.com download.microsoft.com
+   * Ha a hálózati internet-hozzáférés allowlisted tartományokra korlátozódik, az alábbi tartományokra van szükség az automatikus frissítéshez: go.microsoft.com download.microsoft.com
 
 6. A megfelelő Service Fabric Antivirus-kizárások beállítása:
 
@@ -159,5 +159,5 @@ Ez a konfigurációs tesztelési modul jelenleg nem ellenőrzi a biztonsági be�
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Windows Serveren futó különálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)

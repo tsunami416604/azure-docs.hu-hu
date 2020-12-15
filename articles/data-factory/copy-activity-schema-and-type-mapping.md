@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 96667dcdd43eb801542a4be8fa4f21ff8d1317b7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637258"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507523"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Séma-és adattípus-leképezés a másolási tevékenységben
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -170,7 +170,7 @@ Ha például a forrás MongoDB-dokumentum a következő tartalommal rendelkezik:
 }
 ```
 
-És egy szövegfájlba kívánja másolni a következő formátumban a fejlécben a tömbben található adatok összegyűjtésével *(order_pd és order_price)* , valamint a közös legfelső szintű információkkal való összekapcsolással *(szám, dátum és város)* :
+És egy szövegfájlba kívánja másolni a következő formátumban a fejlécben a tömbben található adatok összegyűjtésével *(order_pd és order_price)* , valamint a közös legfelső szintű információkkal való összekapcsolással *(szám, dátum és város)*:
 
 | rendelésszáma | RendelésDátuma | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |
@@ -182,7 +182,7 @@ Megadhatja a leképezést Data Factory szerzői felhasználói felületen:
 
 1. A másolási tevékenység – > leképezés lapon kattintson a **séma importálása** gombra a forrás-és fogadó sémák importálásához. Ahogy Data Factory a séma importálásakor a legfontosabb néhány objektumot, ha bármelyik mező nem jelenik meg, felveheti a hierarchiában a megfelelő rétegbe – vigye a kurzort egy meglévő mezőnév fölé, és válassza a csomópont, objektum vagy tömb hozzáadását.
 
-2. Válassza ki azt a tömböt, amelyről meg szeretné ismételni az adatok kinyerését. A rendszer automatikusan kitölti a **gyűjteményi referenciát** . Vegye figyelembe, hogy ilyen művelet esetén csak egyetlen tömb támogatott.
+2. Válassza ki azt a tömböt, amelyről meg szeretné ismételni az adatok kinyerését. A rendszer automatikusan kitölti a **gyűjteményi referenciát**. Vegye figyelembe, hogy ilyen művelet esetén csak egyetlen tömb támogatott.
 
 3. Rendelje hozzá a szükséges mezőket a fogadóhoz. A Data Factory automatikusan meghatározza a hierarchikus oldalhoz tartozó JSON-útvonalakat.
 
@@ -356,7 +356,7 @@ Az adattípusok átalakításának másolási tevékenységében a következő t
 
 ### <a name="alternative-column-mapping-legacy-model"></a>Alternatív oszlop – leképezés (örökölt modell)
 
-Megadhatja a másolási tevékenység-> `translator`  ->  `columnMappings` a táblázatos adatokat a leképezéshez. Ebben az esetben a "Structure" szakasz szükséges a bemeneti és a kimeneti adatkészletekhez is. Az oszlop-hozzárendelés támogatja a "Structure" **forrás-adatkészlet összes oszlopának vagy részhalmazának leképezését a "Structure" fogadó adatkészlet összes oszlopára** . A következő hibák a kivételt eredményezik:
+Megadhatja a másolási tevékenység-> `translator`  ->  `columnMappings` a táblázatos adatokat a leképezéshez. Ebben az esetben a "Structure" szakasz szükséges a bemeneti és a kimeneti adatkészletekhez is. Az oszlop-hozzárendelés támogatja a "Structure" **forrás-adatkészlet összes oszlopának vagy részhalmazának leképezését a "Structure" fogadó adatkészlet összes oszlopára**. A következő hibák a kivételt eredményezik:
 
 - A forrás adattároló lekérdezési eredményének nincs olyan oszlopa, amely meg van adva a (z) "Structure" bemeneti adatkészletben.
 - A fogadó adattár (ha előre definiált sémával rendelkezik) nem rendelkezik olyan oszloppal, amely meg van adva a "Structure" (kimeneti adatkészlet) szakaszban.
@@ -487,7 +487,7 @@ Ha például a következő tartalommal rendelkezik a MongoDB-dokumentummal:
 }
 ```
 
-és a következő formátumban szeretné átmásolni egy Azure SQL-táblába a tömbben lévő adatok összesimításával *(order_pd és order_price)* , valamint a közös legfelső szintű információkkal való összekapcsolással *(szám, dátum és város)* :
+és a következő formátumban szeretné átmásolni egy Azure SQL-táblába a tömbben lévő adatok összesimításával *(order_pd és order_price)* , valamint a közös legfelső szintű információkkal való összekapcsolással *(szám, dátum és város)*:
 
 | rendelésszáma | RendelésDátuma | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |
@@ -523,7 +523,7 @@ Konfigurálja a séma-leképezési szabályt a következő másolási tevékenys
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)

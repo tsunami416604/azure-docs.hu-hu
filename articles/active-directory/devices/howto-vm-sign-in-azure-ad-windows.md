@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3c42495ceab7108d20b0f0dedbf0cf94f5f9352d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347438"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509308"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -158,7 +158,7 @@ A virtuális gép szerepkör-hozzárendelései több módon is konfigurálhatók
 - A Azure Cloud Shell felület használata
 
 > [!NOTE]
-> A virtuális gép rendszergazdai felhasználónevét és a virtuális gép felhasználói bejelentkezési szerepköreit a dataActions használja, ezért nem rendelhető hozzá a felügyeleti csoport hatóköréhez. Jelenleg ezek a szerepkörök csak az előfizetés hatókörében rendelhetők hozzá.
+> A virtuális gép rendszergazdai felhasználónevét és a virtuális gép felhasználói bejelentkezési szerepköreit a dataActions használja, ezért nem rendelhető hozzá a felügyeleti csoport hatóköréhez. Jelenleg ezek a szerepkörök csak az előfizetéshez, az erőforráscsoport vagy az erőforrás-hatókörhöz rendelhetők hozzá.
 
 ### <a name="using-azure-ad-portal-experience"></a>Az Azure AD Portal felületének használata
 
@@ -368,6 +368,6 @@ Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez n
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](../fundamentals/active-directory-whatis.md)

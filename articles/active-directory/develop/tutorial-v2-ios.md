@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5260ca049f971cce07659f12b54ce30304dd826d
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f04a8aa96b51ac9330e4302c3afcc48f7d305b39
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107634"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507710"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 
@@ -71,16 +71,17 @@ Ha le szeretné tölteni az oktatóanyagban felépített alkalmazás befejezett 
 
 ## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
-1. Nyissa meg az [Azure Portalt](https://aka.ms/MobileAppReg)
-2. Nyissa meg a Alkalmazásregisztrációk panelt, és válassza az **+ új regisztráció** lehetőséget.
-3. Adja meg az alkalmazás **nevét** , majd az átirányítási URI beállítása nélkül.
-4. Válassza **a fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlős) és személyes Microsoft-fiókok (például Skype, Xbox)** a **támogatott fióktípus** területen
-5. **Regisztráció** kiválasztása
-6. A megjelenő panel **kezelés** szakaszában válassza a **hitelesítés** lehetőséget.
-
-7. A képernyő felső részén található **új felület** kiválasztásával nyissa meg az új alkalmazás regisztrációs élményét, majd válassza az **+ új regisztráció**  >  **+ platform hozzáadása**  >  **iOS/MacOS** lehetőséget.
-    - Adja meg a projekt köteg-AZONOSÍTÓját. Ha letöltötte a kódot, akkor ez a következő: `com.microsoft.identitysample.MSALiOS` . Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
-8. Válassza ki `Configure` és mentse a **MSAL-konfiguráció** lapon megjelenő MSAL- **konfigurációt** , hogy később az alkalmazás konfigurálásakor is megadhatja. Válassza a **Kész** lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás **nevét** . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+1. Válassza **a fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlő) és a személyes Microsoft-fiókok (például Skype, Xbox)** a **támogatott fióktípus** területen.
+1. Válassza a **Regisztráció** lehetőséget.
+1. A **kezelés** területen válassza   >  **a hitelesítés Hozzáadás platform**  >  **iOS/MacOS** lehetőséget.
+1. Adja meg a projekt köteg-AZONOSÍTÓját. Ha letöltötte a kódot, akkor ez a következő: `com.microsoft.identitysample.MSALiOS` . Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
+1. Válassza a **Konfigurálás** lehetőséget, és mentse a **MSAL-konfigurációt** , amely megjelenik a **MSAL-konfiguráció** lapon, így később is megadhatja az alkalmazást. 
+1. Válassza a **Kész** lehetőséget.
 
 ## <a name="add-msal"></a>MSAL hozzáadása
 
@@ -852,7 +853,7 @@ Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Id
 
 A bejelentkezést követően az alkalmazás megjeleníti az Microsoft Graph végpont által visszaadott adatok megjelenítését `/me` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a védett webes API-kat meghívó mobil alkalmazások létrehozásáról a többrészes forgatókönyvek sorozatában.
 

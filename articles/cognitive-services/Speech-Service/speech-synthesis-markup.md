@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6b522f234343cc6a50d76607d1629c46cd180b7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6a4053eb70c02e27599bbd9086dfa32b0bcc65
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894014"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508832"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -200,6 +200,7 @@ A jelen neurális hangok esetében jelenleg a beszélő stílusának módosítá
 * `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
 * `zh-CN-YunxiNeural` Előnézet
 * `zh-CN-XiaohanNeural` Előnézet
 * `zh-CN-XiaomoNeural` Előnézet
@@ -271,7 +272,14 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 |                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |   
 |                         | `style="lyrical"`         | Az érzelmeket dallamos és szentimentális módon fejezi ki         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  | 
-| `zh-CN-YunxiNeural`    | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Egy ritka elérésű, összegyűjtött és álló hozzáállást fejez ki beszéd közben. A Tone, a Pitch, a prosody sokkal homogénebb más típusú beszédekhez képest.    | 
+|                         | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
+|                         | `style="sad"`             | Szomorú hangvételt, nagyobb hangvételt, kevesebb intenzitást és vokális energiát biztosít. Az érzelem gyakori mutatói whimpers vagy sírást okoznak a beszéd során.            |
+|                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
+|                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
+|                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
+|                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.          |
+| `zh-CN-YunxiNeural`     | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
 |                         | `style="sad"`             | Szomorú hangvételt, nagyobb hangvételt, kevesebb intenzitást és vokális energiát biztosít. Az érzelem gyakori mutatói whimpers vagy sírást okoznak a beszéd során.            |
 |                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
 |                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |

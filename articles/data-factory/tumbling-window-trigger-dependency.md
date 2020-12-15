@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/03/2020
-ms.openlocfilehash: 4a99865e13e029dcea478cf6085d71c465918b14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 221f8bd7908613812a728d420a68b747051e095b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421859"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508798"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Függőség létrehozása átfedésmentes ablak eseményindítójához
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ Ahhoz, hogy a Azure Data Factory függő folyamatokat hozzon létre a kieséses 
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>Függőség létrehozása a Data Factory felhasználói felületen
 
-Ha függőséget szeretne létrehozni egy triggerhez, válassza az **aktiválás > speciális > új**lehetőséget, majd válassza ki a megfelelő eltolással és mérettel függő triggert. Válassza a **Befejezés** lehetőséget, és tegye közzé a függőségek érvénybe léptetéséhez szükséges adatfeldolgozó-módosításokat.
+Ha függőséget szeretne létrehozni egy triggerhez, válassza az **aktiválás > speciális > új** lehetőséget, majd válassza ki a megfelelő eltolással és mérettel függő triggert. Válassza a **Befejezés** lehetőséget, és tegye közzé a függőségek érvénybe léptetéséhez szükséges adatfeldolgozó-módosításokat.
 
 ![Függőség létrehozása](media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png "Függőség létrehozása")
 
@@ -181,6 +181,6 @@ Az átlátszó mezők megjelenítik a függőségi ablakokat az egyes adatfolyam
 
 Egy ablak Gantt-diagram nézetben való újrafuttatásához jelölje be az ablakhoz tartozó Solid Color (folytonos szín) jelölőnégyzetet, és a műveleti panel a részletek és az újrafuttatási beállítások használatával jelenik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A bukdácsoló ablakos trigger létrehozásának](how-to-create-tumbling-window-trigger.md) áttekintése

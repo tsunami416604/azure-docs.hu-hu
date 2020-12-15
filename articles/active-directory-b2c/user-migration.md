@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383971"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509614"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Felhasználók migrálása Azure AD B2Cre
 
@@ -90,7 +90,7 @@ A régi identitás-szolgáltató összes adatát át kell telepíteni a Azure AD
 
 Az áttelepítési folyamat megkezdése előtt végezze el a könyvtár törlésének lehetőségét.
 
-- Azonosítsa a Azure AD B2C tárolandó felhasználói attribútumok készletét, és csak azt telepítse át, amire szüksége van. Ha szükséges, létrehozhat [Egyéni attribútumokat](custom-policy-custom-attributes.md) a felhasználóval kapcsolatos további információk tárolásához.
+- Azonosítsa a Azure AD B2C tárolandó felhasználói attribútumok készletét, és csak azt telepítse át, amire szüksége van. Ha szükséges, létrehozhat [Egyéni attribútumokat](user-flow-custom-attributes.md) a felhasználóval kapcsolatos további információk tárolásához.
 - Ha több hitelesítési forrásból származó környezetről végez áttelepítést (például az egyes alkalmazások saját felhasználói címtárral rendelkeznek), telepítse át a Azure AD B2C egyesített fiókjába.
 - Ha több alkalmazásnak eltérő felhasználóneve van, akkor az identitások gyűjtemény használatával egy Azure AD B2C felhasználói fiókban tárolhatók. A jelszóval kapcsolatban hagyja, hogy a felhasználó válasszon egyet, és állítsa be a könyvtárba. A zökkenőmentes áttelepítéssel például csak a kiválasztott jelszót kell tárolni a Azure AD B2C fiókban.
 - Távolítsa el a nem használt felhasználói fiókokat az áttelepítés előtt, vagy ne telepítse át az elavult fiókokat.

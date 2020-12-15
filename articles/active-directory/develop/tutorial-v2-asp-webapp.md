@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 0dad7add63102d462a2111f1ecf12ae43dae123c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996185"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507761"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Oktatóanyag: bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
 
@@ -87,7 +87,7 @@ A következő lépésekkel hozhat létre egy OWIN middleware indítási osztály
 
 > [!TIP]
 > Ha a projekt gyökérmappája nem tartalmazza a `Startup.cs` fájlt:
-> 1. Kattintson a jobb gombbal a projekt gyökérkönyvtárára, majd válassza az **Add**  >  **új elem** hozzáadása  >  **OWIN indítási osztály** elemet.<br/>
+> 1. Kattintson a jobb gombbal a projekt gyökérkönyvtárára, majd válassza az   >  **új elem** hozzáadása  >  **OWIN indítási osztály** elemet.<br/>
 > 2. Nevezze el **Startup.cs**.
 >
 >> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, és nem szabványos C# osztály. Győződjön meg arról, hogy a következőt látja: [Assembly: OwinStartup (typeof ({névtér}). Indítás)]]] a névtér fölött.
@@ -185,7 +185,7 @@ A *OpenIDConnectAuthenticationOptions* által megadott paraméterek koordinátá
 
 Ha új vezérlőt szeretne létrehozni a bejelentkezéshez és a kijelentkezési módszerekhez, kövesse az alábbi lépéseket:
 
-1.  Kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a **Add**  >  **vezérlő** hozzáadása elemet.
+1.  Kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a   >  **vezérlő** hozzáadása elemet.
 2.  Válassza az **MVC (.NET version) Controller – Empty** (MVC (.NET verzió) vezérlő – Üres) elemet.
 3.  Válassza a **Hozzáadás** elemet.
 4.  Nevezze el **HomeController** , majd válassza a **Hozzáadás** lehetőséget.
@@ -277,7 +277,7 @@ A Visual Studióban hozzon létre egy új nézetet a bejelentkezési gomb hozzá
 ## <a name="add-a-controller-to-display-users-claims"></a>Vezérlő hozzáadása a felhasználói jogcímek megjelenítéséhez
 Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]` attribútummal. Ez az attribútum csak a hitelesített felhasználók engedélyezésével korlátozza a hozzáférést a vezérlőhöz. A következő kód az attribútum használatával jeleníti meg a bejelentkezés részeként beolvasott felhasználói jogcímeket:
 
-1.  Kattintson a jobb gombbal a **vezérlők** mappára, majd válassza **Add** a  >  **vezérlő** hozzáadása elemet.
+1.  Kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a  >  **vezérlő** hozzáadása elemet.
 2.  Válassza az **MVC {version} Controller – Empty** (MVC {verzió} vezérlő – Üres) elemet.
 3.  Válassza a **Hozzáadás** elemet.
 4.  Adja neki a **ClaimsController** nevet.
@@ -373,15 +373,16 @@ Az alkalmazás regisztrálásához és az alkalmazás regisztrációs informáci
    1. Megoldáskezelő válassza ki a projektet, és tekintse meg a Tulajdonságok ablak (ha nem lát Tulajdonságok ablak, nyomja le az F4 billentyűt).
    1. Az SSL módosításának engedélyezése a következőre: `True` .
    1. Kattintson a jobb gombbal a projektre a Visual Studióban, válassza a **Tulajdonságok** lehetőséget, majd válassza a **Web (weblap** ) lapot. A **kiszolgálók** szakaszban módosítsa a **projekt URL** -címét az **SSL URL-címére**.
-   1. Másolja az SSL-URL-címet. A következő lépésben hozzáadja ezt az URL-címet a regisztrációs portál átirányítási URL-címeinek listájához.<br/><br/>![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiók használatával.
-1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
-1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapját.
-1. Válassza az **új regisztráció** lehetőséget.
-1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
-   1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például az **ASPNET-tutorial**.
-   1. Adja hozzá a Visual studióból másolt SSL URL-címet az 1. lépésben (például `https://localhost:44368/` ) a **Válasz URL-címében**, és válassza a **regisztráció** lehetőséget.
-1. Válassza a **hitelesítés** menüt, válassza az **azonosító tokenek** lehetőséget az **implicit engedélyezés** területen, majd válassza a **Mentés** lehetőséget.
+   1. Másolja az SSL-URL-címet. A következő lépésben hozzáadja ezt az URL-címet a regisztrációs portál átirányítási URI-k listájához.<br/><br/>![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás **nevét** , például: `ASPNET-Tutorial` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+1. Adja hozzá a Visual studióból másolt SSL-URL-címet az 1. lépésben (például `https://localhost:44368/` ) az **ÁTirányítási URI**-ban.
+1. Válassza a **Regisztráció** lehetőséget.
+1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+1. Az **implicit támogatás** szakaszban válassza az **azonosító tokenek** lehetőséget, majd kattintson a **Mentés** gombra.
 1. Adja hozzá a következőt a web.config fájlhoz, amely a (z) szakasz gyökérkönyvtárában található `configuration\appSettings` :
 
     ```xml
