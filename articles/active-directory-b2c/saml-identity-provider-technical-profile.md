@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 572d6964384c711a7d2b98b0fa27852a7d28951f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 3f8ba563345f5aa4f35bcf07546abdad05c3b6ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936709"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509784"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>SAML-identitás szolgáltatójának műszaki profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
@@ -168,7 +168,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 | IncludeAuthnContextClassReferences | Nem | Egy vagy több URI-hivatkozást ad meg a hitelesítési környezet osztályainak azonosításához. Ha például engedélyezni szeretné, hogy egy felhasználó csak a felhasználónévvel és a jelszóval jelentkezzen be, állítsa a értéket a következőre: `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` . Ha engedélyezni szeretné a bejelentkezést a felhasználónévvel és a jelszóval védett munkameneten keresztül (SSL/TLS), adja meg a következőt: `PasswordProtectedTransport` . Tekintse meg az Identity Provider dokumentációját, amely útmutatást nyújt a támogatott **AuthnContextClassRef** URI azonosítókkal kapcsolatban. Vesszővel tagolt listaként több URI-t is meg kell adni. |
 | IncludeKeyInfo | Nem | Azt jelzi, hogy az SAML-hitelesítési kérelem tartalmazza-e a tanúsítvány nyilvános kulcsát, amikor a kötés be van állítva `HTTP-POST` . Lehetséges értékek: `true` vagy `false` . |
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
-|SingleLogoutEnabled| Nem| Azt jelzi, hogy a technikai profilba való bejelentkezés során a rendszer megpróbál-e kijelentkezni az összevont identitás-szolgáltatókról. További információ: Azure AD B2C- [munkamenet](session-overview.md#sign-out)kijelentkezése.  Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
+|SingleLogoutEnabled| Nem| Azt jelzi, hogy a technikai profilba való bejelentkezés során a rendszer megpróbál-e kijelentkezni az összevont identitás-szolgáltatókról. További információ: Azure AD B2C- [munkamenet](session-behavior.md#sign-out)kijelentkezése.  Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -212,7 +212,7 @@ Példa:
      …
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben példákat talál az SAML-identitás-szolgáltatók használatának Azure AD B2C:
 

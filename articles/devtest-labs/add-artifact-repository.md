@@ -3,12 +3,12 @@ title: Összetevő hozzáadása a laborhoz Azure DevTest Labsban | Microsoft Doc
 description: Megtudhatja, hogyan adhatja meg a laborhoz tartozó saját Azure DevTest Labs, hogy az eszközök ne legyenek elérhetők a nyilvános tárolóban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dd7d89020bf077e29b177f6871f43b52467b0d8
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88270978"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512011"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban lévő tároló hozzáadása a laborhoz
 A DevTest Labs lehetővé teszi, hogy a virtuális gép létrehozásakor vagy a virtuális gép létrehozása után adja meg a virtuális géphez hozzáadandó összetevőt. Ez az összetevő lehet egy eszköz vagy egy alkalmazás, amelyet telepíteni kíván a virtuális gépre. Az összetevők egy GitHub vagy Azure DevOps git-tárházból betöltött JSON-fájlban vannak meghatározva.
@@ -20,43 +20,43 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá egyéni összetevő-tárházat Azur
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ahhoz, hogy egy tárházat vegyen fel a laborba, először szerezze be a legfontosabb információkat a tárházból. A következő szakaszok azt ismertetik, hogyan kérhető le a **githubon** vagy az **Azure DevOps**tárolt adattárakhoz szükséges információk.
+Ahhoz, hogy egy tárházat vegyen fel a laborba, először szerezze be a legfontosabb információkat a tárházból. A következő szakaszok azt ismertetik, hogyan kérhető le a **githubon** vagy az **Azure DevOps** tárolt adattárakhoz szükséges információk.
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>A GitHub-adattár klónozási URL-címének és a személyes hozzáférési jogkivonat beszerzése
 
 1. Nyissa meg a GitHub-tárház kezdőlapját, amely tartalmazza az összetevő vagy a Resource Manager-sablon definícióit.
 2. Válassza a **Clone or download** (Klónozás vagy letöltés) lehetőséget.
 3. Az URL-cím vágólapra másolásához válassza a **https-klón URL-címe** gombot. Mentse az URL-címet későbbi használatra.
-4. A GitHub jobb felső sarkában válassza ki a profil rendszerképét, majd válassza a **Beállítások**lehetőséget.
-5. A bal oldali **személyes beállítások** menüben válassza a **fejlesztői beállítások**elemet.
+4. A GitHub jobb felső sarkában válassza ki a profil rendszerképét, majd válassza a **Beállítások** lehetőséget.
+5. A bal oldali **személyes beállítások** menüben válassza a **fejlesztői beállítások** elemet.
 6. A bal oldali menüben válassza a **személyes hozzáférési tokenek** lehetőséget.
-7. Válassza az **új jogkivonat előállítása**lehetőséget.
-8. Az **új személyes hozzáférési jogkivonat** lapon a **jogkivonat leírása**területen adjon meg egy leírást. Fogadja el az alapértelmezett elemeket a **hatókörök kiválasztása**területen, majd válassza a **jogkivonat előállítása**lehetőséget.
+7. Válassza az **új jogkivonat előállítása** lehetőséget.
+8. Az **új személyes hozzáférési jogkivonat** lapon a **jogkivonat leírása** területen adjon meg egy leírást. Fogadja el az alapértelmezett elemeket a **hatókörök kiválasztása** területen, majd válassza a **jogkivonat előállítása** lehetőséget.
 9. Mentse a generált tokent. Később a tokent használja.
 10. A GitHub bezárásához.   
 
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Az Azure Repos Clone URL-cím és a személyes hozzáférési jogkivonat beszerzése
 1. Nyissa meg a csapat gyűjteményének kezdőlapját (például: `https://contoso-web-team.visualstudio.com` ), majd válassza ki a projektet.
-2. A projekt kezdőlapján válassza a **kód**lehetőséget.
-3. A klónozott URL-cím megtekintéséhez a projekt **kódja** lapon válassza a **klónozás**lehetőséget.
+2. A projekt kezdőlapján válassza a **kód** lehetőséget.
+3. A klónozott URL-cím megtekintéséhez a projekt **kódja** lapon válassza a **klónozás** lehetőséget.
 4. Mentse az URL-címet. Később az URL-címet használja.
-5. Személyes hozzáférési jogkivonat létrehozásához a felhasználói fiók legördülő menüjében válassza a **saját profil**lehetőséget.
-6. A profil adatai lapon válassza a **Biztonság**elemet.
-7. A **biztonsági > személyes hozzáférési tokenek** lapon válassza az **+ új jogkivonat**lehetőséget.
+5. Személyes hozzáférési jogkivonat létrehozásához a felhasználói fiók legördülő menüjében válassza a **saját profil** lehetőséget.
+6. A profil adatai lapon válassza a **Biztonság** elemet.
+7. A **biztonsági > személyes hozzáférési tokenek** lapon válassza az **+ új jogkivonat** lehetőséget.
 8. Az **új személyes hozzáférési jogkivonat létrehozása** oldalon:
    1. Adja meg a jogkivonat **nevét** .
-   2. A **szervezet** listában válassza az **összes elérhető szervezet**lehetőséget.
-   3. A **lejárat (UTC)** listában válassza a **90 nap**lehetőséget, vagy egy egyéni meghatározott lejárati időszakot.
+   2. A **szervezet** listában válassza az **összes elérhető szervezet** lehetőséget.
+   3. A **lejárat (UTC)** listában válassza a **90 nap** lehetőséget, vagy egy egyéni meghatározott lejárati időszakot.
    4. Válassza ki a hatókörök **teljes hozzáférési** beállítását.
-   5. Kattintson a **Létrehozás** gombra.
-9. Az új jogkivonat megjelenik a **személyes hozzáférési tokenek** listájában. Válassza a **token másolása**lehetőséget, majd mentse a jogkivonat értékét későbbi használatra.
+   5. Válassza a **Létrehozás** lehetőséget.
+9. Az új jogkivonat megjelenik a **személyes hozzáférési tokenek** listájában. Válassza a **token másolása** lehetőséget, majd mentse a jogkivonat értékét későbbi használatra.
 10. Folytassa a labor összekapcsolásával a tárház szakaszával.
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
 Ez a szakasz azokat a lépéseket ismerteti, amelyekkel egy összetevő-tárházat adhat hozzá egy laborhoz a Azure Portal.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza a **További szolgáltatások**lehetőséget, majd válassza a **DevTest Labs** lehetőséget a szolgáltatások listájából.
+2. Válassza a **További szolgáltatások** lehetőséget, majd válassza a **DevTest Labs** lehetőséget a szolgáltatások listájából.
 3. A Labs listából válassza ki a labort.
 4. Válassza a **konfiguráció és szabályzatok** lehetőséget a bal oldali menüben.
 5. A bal oldali menüben válassza a **külső erőforrások** szakaszban található **adattárak** elemet.
@@ -71,7 +71,7 @@ Ez a szakasz azokat a lépéseket ismerteti, amelyekkel egy összetevő-tárház
    5. **Mappa elérési útjai** Adja meg legalább egy olyan mappa elérési útját, amely az összetevő vagy a Resource Manager-sablon definícióit tartalmazó klónozási URL-címhez képest van. Alkönyvtár megadásakor ügyeljen arra, hogy a mappa elérési útja tartalmazza a továbbítás perjelét.
 
         ![Adattárakhoz tartozó területek](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
 Az Azure erőforrás-kezelési (Azure Resource Manager) Sablonok JSON-fájlok, amelyek az Azure-ban létrehozni kívánt erőforrásokat írják le. További információ ezekről a sablonokról: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/templates/template-syntax.md).
@@ -381,7 +381,7 @@ $resourceName = $LabName + '/' + $ArtifactRepositoryName
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [A laborhoz tartozó kötelező összetevők megadása Azure DevTest Labs](devtest-lab-mandatory-artifacts.md)
 - [Egyéni összetevők létrehozása a DevTest Labs virtuális géphez](devtest-lab-artifact-author.md)
 - [Az összetevők hibáinak diagnosztizálása a laborban](devtest-lab-troubleshoot-artifact-failure.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 7fe788677a084575d41f2f28154b74b28ea9d3d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5254d83c18ddc9f2a5518ed4f711d4cd73ab6de7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955735"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510940"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-bővítmény
 
@@ -74,7 +74,7 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
         "advancedOptions": {
             "forcePullAndApply": false,
             "downloadMappings": {
-                "specificDependencyKey": "https://myCustomDependencyLocation"
+             "specificDependencyKey": "https://myCustomDependencyLocation"
             }
         } 
     },
@@ -98,7 +98,7 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa | Adattípus |
+| Név | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | dátum |
 | közzétevő | Microsoft. PowerShell. DSC | sztring |
@@ -107,7 +107,7 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 
 ### <a name="settings-property-values"></a>Beállítások tulajdonság értékei
 
-| Name | Adattípus | Leírás
+| Név | Adattípus | Leírás
 | ---- | ---- | ---- |
 | Settings. wmfVersion | sztring | Meghatározza a Windows felügyeleti keretrendszer azon verzióját, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot "Latest" értékre állítja, a rendszer a WMF legújabb verzióját telepíti. Ennek a tulajdonságnak csak az aktuális lehetséges értékei: "4,0", "5,0" és "Latest". Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a "Latest". |
 | settings.configszülő. URL | sztring | Meghatározza azt az URL-címet, amelyből le szeretné tölteni a DSC-konfiguráció zip-fájlját. Ha a megadott URL-címnek SAS-tokenre van szüksége a hozzáféréshez, akkor a protectedSettings.configurationUrlSasToken tulajdonságot az SAS-token értékére kell állítania. Ez a tulajdonság akkor szükséges, ha settings.configszülő. script és/vagy settings.configszülő. Function van definiálva.
@@ -121,7 +121,7 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 
 ### <a name="protected-settings-property-values"></a>Védett beállítások tulajdonságértékek
 
-| Name | Adattípus | Leírás
+| Név | Adattípus | Leírás
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | sztring | Meghatározza a DSC-konfigurációnak átadandó paramétereket. Ez a tulajdonság titkosítva lesz. |
 | protectedSettings.configurationUrlSasToken | sztring | Meghatározza a Configuration. URL által definiált URL-cím elérésére szolgáló SAS-tokent. Ez a tulajdonság titkosítva lesz. |

@@ -2,16 +2,16 @@
 title: Fájlok és mappák helyreállítása az Azure virtuális gép biztonsági másolatából
 description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlokat és mappákat egy Azure-beli virtuális gép helyreállítási pontjából.
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b9d5c90634dac3229e756ad93c10db91b268080c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d34fc48e5d16275d0225a1cef4b5fa63f0b66d6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841162"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511654"
 ---
-# <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
+# <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gép biztonsági mentéséből
 
 Azure Backup lehetővé teszi az Azure-beli [virtuális gépek (VM-EK) és lemezek](./backup-azure-arm-restore-vms.md) visszaállítását az Azure VM biztonsági másolatokból, más néven helyreállítási pontokból. Ez a cikk azt ismerteti, hogyan lehet helyreállítani a fájlokat és mappákat egy Azure-beli virtuális gép biztonsági másolatából. A fájlok és mappák visszaállítása csak a Resource Manager-modell használatával üzembe helyezett Azure-beli virtuális gépekhez és a Recovery Services-tárolóhoz való védelemmel érhető el.
 
@@ -156,7 +156,7 @@ A végrehajtható fájl futtatásakor az operációs rendszer csatlakoztatja az 
 
    ![Csatolt helyreállítási kötetek](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-**Nagyméretű lemezekkel rendelkező biztonsági másolatok (Windows)**
+#### <a name="for-backed-up-vms-with-large-disks-windows"></a>Nagyméretű lemezekkel rendelkező biztonsági másolatok (Windows)
 
 Ha a fájl-helyreállítási folyamat a fájl-visszaállítási parancsfájl futtatása után leáll (például ha a lemezek soha nem vannak csatlakoztatva, vagy csatlakoztatva vannak, de a kötetek nem jelennek meg), hajtsa végre a következő lépéseket:
   
@@ -182,7 +182,7 @@ A Linux rendszerben a helyreállítási pont kötetei ahhoz a mappához vannak c
   ![Linux-fájl helyreállítási menüje](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
 
-**Nagyméretű lemezekkel rendelkező biztonsági másolatok (Linux)**
+#### <a name="for-backed-up-vms-with-large-disks-linux"></a>Nagyméretű lemezekkel rendelkező biztonsági másolatok (Linux) * *
 
 Ha a fájl-helyreállítási folyamat a fájl-visszaállítási parancsfájl futtatása után leáll (például ha a lemezek soha nem vannak csatlakoztatva, vagy csatlakoztatva vannak, de a kötetek nem jelennek meg), hajtsa végre a következő lépéseket:
 
@@ -377,7 +377,7 @@ A szülő/biztonsági mentés alatt lévő virtuális gépen található összes
 A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha korábban szeretné eltávolítani a hozzáférést, jelentkezzen be Azure Portal/PowerShell/parancssori felületre, és hajtson végre **leválasztott lemezeket** az adott helyreállítási ponthoz. A parancsfájl azonnal érvénytelenítve lesz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [állíthatja vissza a fájlokat a PowerShell](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup) használatával
 - Ismerje meg, hogyan [állíthatja vissza a fájlokat az Azure CLI-n keresztül](./tutorial-restore-files.md)

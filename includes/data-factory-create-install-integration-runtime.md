@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 20397339c1675686f2a670dc60899bfd4bd4c3ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0a0b44b3de088539a070f1182248c4e6db7303f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050407"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510277"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 
@@ -28,7 +28,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
    Itt látható a minta kimenete:
 
-   ```json
+   ```console
     Name              : <Integration Runtime name>
     Type              : SelfHosted
     ResourceGroupName : <ResourceGroupName>
@@ -45,7 +45,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
    Itt látható a minta kimenete:
 
-   ```json  
+   ```console  
    State                     : NeedRegistration
    Version                   : 
    CreateTime                : 9/24/2019 6:00:00 AM
@@ -103,7 +103,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
     ![Az integrációs modul regisztrálása](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
 
-9. Az **új Integration Runtime (helyi) csomópont** lapon válassza a **Befejezés**lehetőséget. 
+9. Az **új Integration Runtime (helyi) csomópont** lapon válassza a **Befejezés** lehetőséget. 
 
 10. Az integrációs modul sikeres regisztrációja esetén a következő üzenet jelenik meg:
 

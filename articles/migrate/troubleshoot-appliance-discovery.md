@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 90abe6bf680f6a186b970631dcd0a42d6d36bf94
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753416"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511586"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -41,6 +41,13 @@ Ez akkor fordulhat elő, ha a berendezés számítógépe proxy mögött van.
 - Adja meg az engedélyezési hitelesítő adatokat, ha a proxynak szüksége van rájuk.
 - Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, adja hozzá [ezeket az URL-címeket](migrate-appliance.md#url-access) egy engedélyezési listához.
 - Ha elfogó proxyt használ az internethez való csatlakozáshoz, [ezeket a lépéseket követve](./migrate-appliance.md)importálja a tanúsítványt a berendezés virtuális gépén.
+
+
+## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>A "bejelentkezhessen" gombra kattintva megnyílik egy új lap, amely nem rendelkezik az eszköz kódjával
+
+Ha a bejelentkezhessen elemre való kattintás után egy új lap jelenik meg, amely kód nélkül nyílik meg, térjen vissza a készülék Configuration Manager lapjára, és keresse meg az eszköz kódját félkövér betűtípussal az alábbi képernyőképen látható "bejelentkezhessen" gomb alatt. Másolja be a kódot, és illessze be a login (bejelentkezés) lapra az Azure-beli hitelesítéshez.
+
+![Eszköz kódja](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Nem lehet bejelentkezni az Azure-ba a készülék webalkalmazásból
 

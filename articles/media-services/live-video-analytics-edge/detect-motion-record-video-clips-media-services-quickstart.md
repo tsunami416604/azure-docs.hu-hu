@@ -3,12 +3,12 @@ title: Mozgás észlelése, videó rögzítése Azure Media Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket, hogy felderítse az élő videó streamben való mozgást, és videoklipeket rögzítsen a Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776476"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511892"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Gyors útmutató: mozgás észlelése, videó rögzítése Media Services
 
@@ -41,13 +41,14 @@ Az alábbi lépések elvégzése után élő videó-elemzéseket használt IoT E
 A modul segítségével közvetlen metódusok meghívásával elemezheti az élő videó streameket. A [IoT Edge élő videó-elemzések közvetlen módszereinek](direct-methods.md) olvasása a modul által biztosított közvetlen módszerek megismeréséhez. 
 
 1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
-1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Esemény-alapú videó rögzítése az eszközökön a mozgási események alapján" lehetőséget.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Bővítmény beállításai":::
+1. Keresse meg és engedélyezze a "részletes üzenet megjelenítése" lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Esemény-alapú videó rögzítése az eszközökön a mozgási események alapján":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Részletes üzenet megjelenítése":::
 
 ### <a name="invoke-graphtopologylist"></a>GraphTopologyList meghívása
 Ez a lépés az összes [gráf-topológiát](media-graph-concept.md#media-graph-topologies-and-instances) enumerálja a modulban.
@@ -58,7 +59,7 @@ Ez a lépés az összes [gráf-topológiát](media-graph-concept.md#media-graph-
     
 ```
 {
-    "@apiVersion" : "1.0"
+    "@apiVersion" : "2.0"
 }
 ```
 
@@ -83,7 +84,7 @@ A GraphTopologyList meghívásakor megjelenő lépések használatával meghívh
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
@@ -330,7 +331,7 @@ Most hívja meg a GraphTopologyGet-t a következő hasznos adattartalommal
 ```
 
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
@@ -473,7 +474,7 @@ Most hívja meg a GraphInstanceSet Direct metódust a következő adattartalomma
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2",
     "properties" : {
         "topologyName" : "EVRtoAssetsOnMotionDetection",
@@ -555,7 +556,7 @@ Most aktiválja a Graph-példányt – amely elindítja az élő videó áramlá
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -579,7 +580,7 @@ Most hívja meg a GraphInstanceGet Direct metódust a következő adattartalomma
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -758,7 +759,7 @@ Hívja meg a GraphInstanceDeactivate Direct metódust a következő adattartalom
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -786,7 +787,7 @@ A közvetlen metódus GraphInstanceDelete meghívása a következő adattartalom
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -810,7 +811,7 @@ Hívja meg a GraphTopologyDelete Direct metódust a következő adattartalommal:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
@@ -859,7 +860,7 @@ Ezután használhatja a Azure Portal a rögzített videó lejátszásához.
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan hívhat meg programozott módon az élő videó-elemzéseket IoT Edge [közvetlen módszerekkel](direct-methods.md) .
 * További információ a diagnosztikai üzenetekről.    

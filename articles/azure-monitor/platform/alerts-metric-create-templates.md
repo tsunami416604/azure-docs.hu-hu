@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: e5f78c8b58cc3100d746957094ddfd9bab2b29fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51ae97567e9c3720c7e36a81bfa7bff44935aac6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813219"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511620"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -270,7 +270,7 @@ az login
 
 az deployment group create \
     --name AlertDeployment \
-    --resource-group ResourceGroupofTargetResource \
+    --resource-group ResourceGroupOfTargetResource \
     --template-file simplestaticmetricalert.json \
     --parameters @simplestaticmetricalert.parameters.json
 ```
@@ -377,7 +377,7 @@ Mentse az alábbi JSON-t simpledynamicmetricalert.jsként az útmutató céljár
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -518,7 +518,7 @@ Mentse az alábbi JSON-t simpledynamicmetricalert.parameters.jsként, és szüks
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -570,7 +570,6 @@ Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, ve
 - A "" nem használható \* dimenzió értékként.
 - Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon be kell állítani az összes ilyen metrika esetében (a vonatkozó feltételben).
     - Az alábbi példában, mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája **ApiName** dimenzióval rendelkezik, és a *criterion1* meghatározza a **ApiName** dimenzió *"GetBlob"* értékét, akkor a *criterion2* **a GetBlob** dimenzió *"ApiName"* értékét is be kell állítania.
-
 
 Mentse az alábbi JSON-t advancedstaticmetricalert.jsként az útmutató céljára.
 
@@ -976,7 +975,7 @@ Mentse és módosítsa az alábbi JSON-t multidimensionalstaticmetricalert.param
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }
@@ -3623,7 +3622,7 @@ az deployment group create \
     --parameters @availabilityalert.parameters.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ [Az Azure-beli riasztásokról](alerts-overview.md)
 - Megtudhatja, hogyan [hozhat létre műveleti csoportot Resource Manager-sablonokkal](action-groups-create-resource-manager-template.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 3a188189b39311734a25a2fc98ea78a62bbe0cff
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 621bbac6bc9ff3cb147110942060c8268fd86989
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108841"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511178"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a JIRA SAML SSO-val a Microsoft által
 
@@ -260,7 +260,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a Microsoft csempén lévő SAML SSO JIRA kattint, automatikusan be kell jelentkeznie a Microsoft JIRA SAML SSO-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 - [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
 

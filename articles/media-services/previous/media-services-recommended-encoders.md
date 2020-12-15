@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 91ccc4395bf328d14698e7fe5db634a773197660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11456a8dc55a98778bf44225bf659e506e2d3a3f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259523"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510056"
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott helyszíni kódolók
 
@@ -64,7 +64,7 @@ Azure Media Services a helyszíni kódoló partnernek, Media Services népszerű
 
 Csatorna ellenőrzésének továbbítása
 1. Azure Media Services fiók létrehozása vagy meglátogatása
-2. Áteresztő csatorna létrehozása **pass-through** és elindítása
+2. Áteresztő csatorna létrehozása  és elindítása
 3. Állítsa be a kódolót a többszörös sávszélességű élő stream küldéséhez.
 4. Közzétett élő esemény létrehozása
 5. Futtassa az élő kódolót körülbelül 10 percen keresztül
@@ -88,7 +88,7 @@ Csatorna ellenőrzésének továbbítása
 
 Élettartam ellenőrzése
 1. Azure Media Services fiók létrehozása vagy meglátogatása
-2. Áteresztő csatorna létrehozása **pass-through** és elindítása
+2. Áteresztő csatorna létrehozása  és elindítása
 3. Állítsa be a kódolót a többszörös sávszélességű élő stream küldéséhez.
 4. Közzétett élő esemény létrehozása
 5. Élő kódoló futtatása egy hétig vagy tovább

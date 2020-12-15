@@ -5,35 +5,35 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 11/1/2018
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: fd1cad4031d83fd0e17286bfaabb77aa746b646a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 254f5909e7ed8db4dc18ade2677a3213b268cf41
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202327"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511263"
 ---
 # <a name="configure-bfd-over-expressroute"></a>BFD konfigurálása a ExpressRoute-en keresztül
 
-A ExpressRoute támogatja a kétirányú továbbítási észlelést (BFD) a magán-és a Microsoft-partnereknél. A BFD ExpressRoute-en keresztüli engedélyezésével felgyorsíthatja a Microsoft Enterprise Edge-(MSEE-) eszközök és a ExpressRoute-áramkör (CE/PE) leállítására szolgáló útválasztók közötti kapcsolódási hibák észlelését. A ExpressRoute lemondhatja az ügyfél peremhálózati útválasztási eszközein vagy a partner peremhálózati útválasztási eszközein (ha a felügyelt 3. rétegbeli kapcsolat szolgáltatással járt). Ez a dokumentum részletesen ismerteti a BFD szükségességét, valamint azt, hogy hogyan engedélyezhető a BFD a ExpressRoute-en keresztül.
+A ExpressRoute támogatja a kétirányú továbbítási észlelést (BFD) a magán-és a Microsoft-partnereknél. Ha engedélyezi a BFD-t a ExpressRoute-en keresztül, felgyorsíthatja a Microsoft Enterprise Edge-(MSEE-) eszközök és a ExpressRoute-áramkör által konfigurált útválasztók (CE/PE) közötti kapcsolódási hibák észlelését. A ExpressRoute a peremhálózati útválasztási eszközökön vagy a partner peremhálózati útválasztási eszközein keresztül is konfigurálhatja (ha a felügyelt 3. rétegbeli kapcsolati szolgáltatással járt). Ez a dokumentum részletesen ismerteti a BFD szükségességét, valamint azt, hogy hogyan engedélyezhető a BFD a ExpressRoute-en keresztül.
 
 ## <a name="need-for-bfd"></a>BFD szükséges
 
 A következő ábra a BFD engedélyezésének előnyeit mutatja be a ExpressRoute-áramkörön keresztül: [![1]][1]
 
-A ExpressRoute áramkört a 2. rétegbeli kapcsolatok vagy a felügyelt 3. rétegbeli kapcsolatok is lehetővé teszik. Mindkét esetben, ha egy vagy több 2. rétegbeli eszköz van a ExpressRoute-kapcsolat elérési útjában, az elérési úton fennálló kapcsolati hibák észlelésének felelőssége a túlterhelt BGP.
+A ExpressRoute áramkört a 2. rétegbeli kapcsolatok vagy a felügyelt 3. rétegbeli kapcsolatok is lehetővé teszik. Mindkét esetben, ha egynél több 2. rétegbeli eszköz van a ExpressRoute-kapcsolat elérési útjában, az elérési úton található kapcsolódási hibák észlelésének feladata a túlterhelt BGP-munkamenet.
 
-A MSEE-eszközökön a BGP életben tartása és a tartási idő általában 60-as és 180 másodpercen belül van konfigurálva. Ezért a kapcsolódási hiba után akár három percet is igénybe vehet a kapcsolódási hibák észlelése és a forgalom másik kapcsolatra váltásakor.
+A MSEE-eszközökön a BGP Keep-Alive és a Holding Time általában 60 és 180 másodpercre van konfigurálva. Erre az esetre, ha a kapcsolódási hiba történik, akár három percet is igénybe vehet, hogy észlelje a kapcsolódási hibát, és átváltsa a forgalmat más kapcsolatra.
 
-A BGP-időzítők szabályozásához konfigurálja az alacsonyabb BGP-t és a megtartási időt az ügyfél peremhálózati partneri eszközén. Ha a BGP-időzítők nem egyeznek a két társ eszköz között, a társak közötti BGP-munkamenet az alsó időzítő értéket fogja használni. A BGP életben tartása legfeljebb három másodpercre állítható be, a tartási idő pedig több tízezer másodperc. A BGP-időzítők agresszív beállítása azonban kevésbé előnyösebb, mert a protokoll intenzív folyamat.
+A BGP-időzítők vezérléséhez konfigurálja az alacsonyabb BGP Keep-Alive-t, és őrizze meg az időt a peremhálózati társ-kezelő eszközön. Ha a BGP-időzítők nem egyeznek meg a két társ eszköz között, a BGP-munkamenet az alsó idő értékével fog megjelenni. A BGP Keep-Alive értéke akár három másodperc is lehet, a megőrzési idő pedig 10 másodpercnél kisebb. Azonban a nagyon agresszív BGP-időzítő beállítása nem ajánlott, mert a protokoll intenzíven dolgozza fel.
 
 Ebben az esetben a BFD segíthet. A BFD alacsony terhelésű kapcsolati hibák észlelését teszi lehetővé egy másodperces időintervallumban. 
 
 
 ## <a name="enabling-bfd"></a>BFD engedélyezése
 
-A BFD alapértelmezés szerint a Msee összes újonnan létrehozott ExpressRoute-társítási felületén van konfigurálva. Ezért a BFD engedélyezéséhez egyszerűen konfigurálnia kell a BFD-t a CEs/PEs-ben (mindkettő az elsődleges és a másodlagos eszközön egyaránt). A BFD konfigurálása kétlépéses folyamat: be kell állítania a BFD a csatolón, majd csatolni kell a BGP-munkamenethez.
+A BFD alapértelmezés szerint a Msee összes újonnan létrehozott ExpressRoute-társítási felületén van konfigurálva. Így a BFD engedélyezéséhez csak az elsődleges és a másodlagos eszközön kell konfigurálnia a BFD-t. A BFD konfigurálása kétlépéses folyamat. Konfigurálja a BFD a csatolón, majd kapcsolja össze a BGP-munkamenettel.
 
 Alább látható például a CE/PE (Cisco IOS XE használatával) konfiguráció. 
 
@@ -62,13 +62,13 @@ router bgp 65020
 
 ## <a name="bfd-timer-negotiation"></a>BFD időzítő egyeztetése
 
-A BFD-partnerek között a két partner lassabban határozzák meg az átviteli sebességet. A Msee BFD átviteli/fogadási intervallumai 300 ezredmásodpercre vannak beállítva. Bizonyos esetekben az intervallum értéke 750 ezredmásodpercnél nagyobb lehet. A magasabb értékek beállításával az intervallumok hosszabbak lehetnek. de nem rövidebb.
+A BFD-partnerek között a két partner lassabban határozzák meg az átviteli sebességet. A Msee BFD átviteli/fogadási intervallumai 300 ezredmásodpercre vannak beállítva. Bizonyos esetekben az intervallum értéke 750 ezredmásodpercnél nagyobb lehet. Ha magasabb értéket állít be, az intervallumok hosszabbak lehetnek, de nem lehetséges, hogy rövidebbek legyenek.
 
 >[!NOTE]
->Ha a Geo-redundáns ExpressRoute-áramköröket konfigurálta, vagy a helyek közötti IPSec VPN-kapcsolatot használja biztonsági mentésként; a BFD engedélyezése a ExpressRoute kapcsolódási hibája után gyorsabban segít a feladatátvételben. 
+>Ha a Geo-redundáns ExpressRoute-áramköröket konfigurálta, vagy a helyek közötti IPSec VPN-kapcsolatot használja biztonsági másolatként. A BFD engedélyezése a ExpressRoute kapcsolódási hibája után gyorsabban segít a feladatátvételben. 
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért és segítségért tekintse meg az alábbi hivatkozásokat:
 

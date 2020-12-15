@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: duau
-ms.openlocfilehash: e24c0aacd1b10615e645c14ceb2b8d31f1f75e40
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: ae63173f683c97d71f22e0dd4d438be0a999bc08
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093893"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511195"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -83,7 +83,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Auckland** | [Vocus csoport, NZ Albany](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | n/a | 10G | Devoli, Kordia, Megaport, Spark NZ, Vocus csoport, NZ |
 | **Bangkok** | [AIS](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | n/a | 10G | AIS, UIH |
 | **Berlin** | [NTT GDC](https://www.e-shelter.de/en/location/berlin-1-data-center) | 1 | Észak-Németország | 10G | Equinix, NTT globális adatközpontok EMEA|
-| **Bogota** | [Equinix BG1](https://www.equinix.com/locations/americas-colocation/colombia-colocation/bogota-data-centers/bg1/) | 3 | n/a | 10G | |
+| **Bogota** | [Equinix BG1](https://www.equinix.com/locations/americas-colocation/colombia-colocation/bogota-data-centers/bg1/) | 4 | n/a | 10G | |
 | **Busan** | [LG CNS](https://www.lgcns.com/En/Service/DataCenter) | 2 | Dél-Korea déli régiója | n/a | LG CNS |
 | **Canberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Ausztrália középső régiója | 10G, 100G | CDC |
 | **Canberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Ausztrália 2. középső régiója| 10G, 100G | CDC, Equinix |
@@ -249,7 +249,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **Európa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Észak-Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
 | **Dél-Amerika** |Avanade Inc., Venha Pra Nuvem |
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 

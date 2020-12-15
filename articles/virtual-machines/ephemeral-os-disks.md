@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927923"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510991"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Ideiglenes operációsrendszer-lemezek Azure-beli virtuális gépekhez
 
@@ -86,7 +86,7 @@ az vm create \
 
 A méretezési csoportok esetében ugyanazt a paramétert használja az az `--ephemeral-os-disk true` [-vmss-Create](/cli/azure/vmss#az-vmss-create) paranccsal, és állítsa a paramétert a következőre: `--os-disk-caching` `ReadOnly` .
 
-## <a name="portal"></a>Portál   
+## <a name="portal"></a>Portál
 
 A Azure Portal a **lemezek** lap **speciális** szakaszának megnyitásával kiválaszthatja, hogy a virtuális gépek üzembe helyezése során az ideiglenes lemezeket használja-e. Az **ideiglenes operációsrendszer-lemez használata** beállításnál válassza az **Igen** lehetőséget.
 
@@ -120,7 +120,7 @@ Az elmúló operációsrendszer-lemezt használó méretezési csoport létrehoz
        "storageProfile": { 
         "osDisk": { 
           "diffDiskSettings": { 
-                "option": "Local" 
+            "option": "Local" 
           }, 
           "caching": "ReadOnly", 
           "createOption": "FromImage" 
@@ -245,5 +245,5 @@ A: az ideiglenes lemezek nem támogatják A következőket:
 - Azure Site Recovery  
 - OPERÁCIÓSRENDSZER-lemez cseréje 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az [Azure CLI](/cli/azure/vm#az-vm-create)használatával létrehozhat egy ideiglenes operációsrendszer-lemezzel ellátott virtuális gépet.

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: c05f9a326fcbe75a3348e58987d57e106094cf56
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893981"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510566"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Resource Manager-sablonok – minták metrikus riasztási szabályokhoz Azure Monitor
 
@@ -343,7 +343,7 @@ Mentse az alábbi JSON-t simpledynamicmetricalert.jsként az útmutató céljár
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -480,7 +480,7 @@ Mentse az alábbi JSON-t simpledynamicmetricalert.jsként az útmutató céljár
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -712,10 +712,10 @@ Ebben a mintában a riasztási szabály a **ResponseType** és a **ApiName** dim
 2. **ApiName** – a rendszer csak a **GetBlob** és a **PutBlob** dimenzió értékeit figyeli.
 
 Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
-- Metrika = *tranzakciók* , ResponseType = *sikeres* , ApiName = *GetBlob*
-- Metrika = *tranzakciók* , ResponseType = *sikeres* , ApiName = *PutBlob*
-- Metrika = *tranzakciók* , ResponseType = *kiszolgáló időkorlátja* , ApiName = *GetBlob*
-- Metrika = *tranzakciók* , ResponseType = *kiszolgáló időkorlátja* , ApiName = *PutBlob*
+- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *GetBlob*
+- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *PutBlob*
+- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *GetBlob*
+- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *PutBlob*
 
 ### <a name="template-file"></a>Sablonfájl
 
@@ -875,7 +875,7 @@ Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }
@@ -903,10 +903,10 @@ Ebben a mintában a riasztási szabály a **ResponseType** és a **ApiName** dim
 2. **ApiName** – a rendszer csak a **GetBlob** és a **PutBlob** dimenzió értékeit figyeli.
 
 Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
-- Metrika = *tranzakciók* , ResponseType = *sikeres* , ApiName = *GetBlob*
-- Metrika = *tranzakciók* , ResponseType = *sikeres* , ApiName = *PutBlob*
-- Metrika = *tranzakciók* , ResponseType = *kiszolgáló időkorlátja* , ApiName = *GetBlob*
-- Metrika = *tranzakciók* , ResponseType = *kiszolgáló időkorlátja* , ApiName = *PutBlob*
+- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *GetBlob*
+- Metrika = *tranzakciók*, ResponseType = *sikeres*, ApiName = *PutBlob*
+- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *GetBlob*
+- Metrika = *tranzakciók*, ResponseType = *kiszolgáló időkorlátja*, ApiName = *PutBlob*
 
 >[!NOTE]
 > A dinamikus küszöbértékeket használó metrikus riasztási szabályok esetében jelenleg nem támogatott több feltétel.
@@ -3300,7 +3300,7 @@ A Content-Match paraméter további konfigurációja a `pingText` sablonfájl r�
 | `usgov-ddeast-azr`   | `USDoD East`     |
 | `usgov-ddcentral-azr`| `USDoD Central`  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További Azure monitor-sablonok beszerzése](resource-manager-samples.md).
 - [További információ a riasztásokról](../platform/alerts-overview.md).

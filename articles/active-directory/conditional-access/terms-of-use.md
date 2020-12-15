@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 12/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b07534c702e509b2b664fbee585aa2cff69f6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837600"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509988"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Használati feltételek Azure Active Directory
 
@@ -104,14 +104,14 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
    | Alice | Jan. 1. | Feb. 1. | Mar 1 | 1. április |
    | Bob | Jan. 15. | Feb. 1. | Mar 1 | 1. április |
 
-1. Használja az **időtartamot az újraelfogadás előtt (nap)** beállítással határozza meg, hogy hány nap elteltével kell a felhasználónak újra elfogadnia a használati feltételeket. Ez lehetővé teszi a felhasználók számára, hogy kövessék a saját ütemtervet. Ha például az időtartamot **30** napra állítja be, akkor itt láthatja, hogyan fordulhat elő a lejárat két felhasználó esetén:
+1. Az **újraelfogadás előtti időtartam használata (nap)** beállítással adhatja meg, hogy hány nap elteltével kell a felhasználónak újra elfogadnia a használati feltételeket. Ez lehetővé teszi a felhasználók számára, hogy kövessék a saját ütemtervet. Ha például az időtartamot **30** napra állítja be, akkor itt láthatja, hogyan fordulhat elő a lejárat két felhasználó esetén:
 
    | Felhasználó | Első elfogadás dátuma | Első lejárat dátuma | Második lejárati dátum | Harmadik lejárat dátuma |
    | --- | --- | --- | --- | --- |
    | Alice | Jan. 1. | Jan 31 | Március 2. | 1. április |
    | Bob | Jan. 15. | Február 14 | Március 16. | Április 15. |
 
-   Az **újbóli elfogadás előtt** a **lejárati** jóváhagyások és az időtartam is használható, de általában az egyiket vagy a másikat kell használnia.
+   Az újraelfogadás előtt a **lejárati hozzájárulásokat** és az **időtartamot is használhatja (nap)** , de általában az egyiket vagy a másikat kell használnia.
 
 1. A **feltételes hozzáférés** területen a **kikényszerítés feltételes hozzáférési házirend sablonnal** listával válassza ki a sablont a használati feltételek érvénybe léptetéséhez.
 
@@ -120,7 +120,7 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
    | Sablon | Leírás |
    | --- | --- |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes vendég számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes vendég és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően szükség lehet a kijelentkezésre és a bejelentkezésre. |
-   | **Hozzáférés a felhőalapú alkalmazásokhoz az összes felhasználó számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes felhasználó és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően ki kell jelentkeznie és be kell jelentkeznie. |
+   | **Hozzáférés a felhőalapú alkalmazásokhoz az összes felhasználó számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes felhasználó és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően ki kell jelentkeznie, és be kell jelentkeznie. |
    | **Egyéni szabályzat** | Válassza ki azokat a felhasználókat, csoportokat és alkalmazásokat, amelyekre a használati feltételek vonatkoznak lesznek. |
    | **Feltételes hozzáférési szabályzat létrehozása később** | A használati feltételek az engedélyezési vezérlő listában jelennek meg a feltételes hozzáférési szabályzat létrehozásakor. |
 
@@ -219,15 +219,55 @@ Szerkesztheti a használati feltételek részleteit, de nem módosíthatja a meg
 1. Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a [https://aka.ms/catou](https://aka.ms/catou) címen.
 1. Válassza ki a szerkeszteni kívánt használati feltételeket.
 1. Kattintson a **feltételek szerkesztése** elemre.
-1. A használati feltételek szerkesztése panelen módosítsa a nevet, a megjelenítendő nevet, vagy a felhasználókat az értékek kibontásához.
+1. A használati feltételek szerkesztése ablaktáblán a következők módosíthatók:
+     - **Név** – ez a nem a végfelhasználók számára megosztott felhasználási feltételek belső neve.
+     - **Megjelenítendő név** – ez az a név, amelyet a végfelhasználók láthatnak a használati feltételek megtekintésekor
+     - **A használati feltételek kiterjesztésének megkövetelése a felhasználóktól** – a **be** értékre állításával kikényszerítheti a végfelhasználók számára a használati feltételek kibontását az elfogadás előtt.
+     - Előnézet **Frissíthet egy meglévő használati feltételeket tartalmazó** dokumentumot
+     - Hozzáadhat egy nyelvet egy meglévő felhasználási feltételekhez
 
    Ha más beállításokat szeretne módosítani, például a PDF-dokumentumot, a felhasználóknak minden eszközhöz meg kell egyezniük, le kell kötnie az elfogadást, az időtartamot az újbóli elfogadás előtt vagy a feltételes hozzáférési szabályzatot, új használati feltételeket kell létrehoznia.
 
-   ![A használati feltételek ablaktábla neve és kibontása lehetőségek megjelenítése](./media/terms-of-use/edit-tou.png)
+    ![Más nyelvi beállítások megjelenítésének szerkesztése ](./media/terms-of-use/edit-terms-use.png)
 
-1. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+1. Ha elkészült, kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-   A módosítások mentése után a felhasználóknak nem kell újra elfogadniuk ezeket a módosításokat.
+## <a name="update-the-version-or-pdf-of-an-existing-terms-of-use"></a>Meglévő használati feltételek verziójának vagy PDF-fájljának frissítése
+
+1.  Jelentkezzen be az Azure-ba, és navigáljon [használati feltételek](https://aka.ms/catou)
+2.  Válassza ki a szerkeszteni kívánt használati feltételeket.
+3.  Kattintson a **feltételek szerkesztése** elemre.
+4.  Ahhoz a nyelvhez, amelyre frissíteni szeretne egy új verziót, kattintson a művelet oszlopban az **Update (frissítés** ) elemre.
+ 
+     ![A használati feltételek ablaktábla neve és kibontása lehetőségek megjelenítése](./media/terms-of-use/edit-terms-use.png)
+
+5.  A jobb oldali ablaktáblán töltse fel a PDF-fájlt az új verzióra.
+6.  Itt is **szükség** van egy váltási lehetőségre, ha azt szeretné, hogy a felhasználók a következő bejelentkezéskor fogadják el ezt az új verziót. Ha azt szeretné, hogy a felhasználók újra elfogadják a feltételes hozzáférési szabályzatban meghatározott erőforrásokhoz való hozzáférést, akkor a rendszer kéri, hogy fogadja el ezt az új verziót. Ha nem kéri a felhasználóktól az újrafogadást, az előző beleegyezésük továbbra is naprakész marad, és csak azokat az új felhasználókat fogja látni, akik még nem adták meg a hozzájárulást, vagy amelyek érvényessége lejár, megjelenik az új verzió.
+
+    ![A használati feltételek ismételt elfogadás lehetőségének szerkesztése](./media/terms-of-use/re-accept.png)
+
+7.  Miután feltöltötte az új PDF-fájlt, és eldöntötte az újrafogadást, kattintson a panel alján található Hozzáadás gombra.
+8.  Ekkor megjelenik a legfrissebb verzió a dokumentum oszlopban.
+
+## <a name="view-previous-versions-of-a-terms-of-use"></a>Használati feltételek korábbi verzióinak megtekintése
+
+1.  Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a https://aka.ms/catou címen.
+2.  Válassza ki azokat a használati feltételeket, amelyeken meg szeretné tekinteni a korábbi verziót.
+3.  Kattintson a **nyelvek és korábbi verziók** lehetőségre
+4.  Kattintson a **korábbi verziók megtekintéséhez.**
+
+    ![a dokumentum részletei, beleértve a nyelvi verziókat](./media/terms-of-use/document-details.png)
+
+5.  Az adott verzió letöltéséhez kattintson a dokumentum nevére
+
+## <a name="see-who-has-accepted-each-version"></a>Megtekintheti, hogy ki fogadta el az egyes verziókat
+
+1.  Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a https://aka.ms/catou címen.
+2.  Ha szeretné megtekinteni, hogy ki fogadta el a használati feltételeket, kattintson a kívánt felhasználási területhez tartozó **elfogadható** oszlopban lévő számra.
+3.  Alapértelmezés szerint a következő oldalon látható, hogy az egyes felhasználók milyen aktuális állapotot fogadnak el a felhasználási feltételekhez
+4.  Ha meg szeretné tekinteni az előző engedélyezési eseményeket, válassza az **összes** lehetőséget az **aktuális állapot** legördülő menüből. Most láthatja az egyes felhasználók eseményeit az egyes verziók részleteivel kapcsolatban, és mi történt.
+5.  Azt is megteheti, hogy kijelöl egy adott verziót a **verzió**  legördülő menüből, hogy megtudja, ki fogadta el az adott verziót.
+
 
 ## <a name="add-a-terms-of-use-language"></a>Használati feltételek nyelvének megadása
 
@@ -235,14 +275,14 @@ Az alábbi eljárás a használati feltételek nyelvének hozzáadását ismerte
 
 1. Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a [https://aka.ms/catou](https://aka.ms/catou) címen.
 1. Válassza ki a szerkeszteni kívánt használati feltételeket.
-1. A részleteket tartalmazó ablaktáblán kattintson a **nyelvek** fülre.
-
-   ![Használati feltételek kiválasztva és a részletek ablaktábla nyelvek lapjának megjelenítése](./media/terms-of-use/languages-tou.png)
-
-1. Kattintson a **nyelv hozzáadása** lehetőségre.
+1. Kattintson a **feltételek szerkesztése** elemre.
+1. Kattintson a lap alján található **nyelv hozzáadása** gombra.
 1. A használati feltételek hozzáadása panelen töltse fel a honosított PDF-fájlt, és válassza ki a nyelvet.
 
-   ![Használati feltételek nyelvi paneljének hozzáadása a honosított PDF-fájlok feltöltésének lehetőségeivel](./media/terms-of-use/language-add-tou.png)
+   ![Használati feltételek kiválasztva és a részletek ablaktábla nyelvek lapjának megjelenítése](./media/terms-of-use/select-language.png)
+
+1. Kattintson a **nyelv hozzáadása** lehetőségre.
+1. Kattintson a **Mentés** gombra.
 
 1. A nyelv hozzáadásához kattintson a **Hozzáadás** gombra.
 
@@ -318,7 +358,7 @@ A feltételes hozzáférési szabályzatok azonnal érvénybe lépnek. Ha ez tö
 > - a feltételes hozzáférési szabályzat engedélyezett a használati feltételeken
 > - létrehoztak újabb használati feltételeket
 
-## <a name="b2b-guests-preview"></a>B2B-vendégek (előzetes verzió)
+## <a name="b2b-guests"></a>B2B vendégek
 
 A legtöbb szervezetnek van egy folyamata, amellyel alkalmazottaik elfogadják a szervezet használati feltételeit és adatvédelmi nyilatkozatait. De hogyan érvényesítheti ugyanezeket az Azure AD vállalatközi (B2B) vendégek számára, amikor a SharePointon vagy a Teams szolgáltatáson keresztül veszik fel? A feltételes hozzáférés és a használati feltételek használata esetén a szabályzatok közvetlenül a B2B vendég felhasználói felé is kikényszeríthető. A meghívó beváltási folyamata során a felhasználó a használati feltételekkel jelenik meg. Ez a támogatás jelenleg előzetes verzióban érhető el.
 
@@ -326,7 +366,7 @@ Használati feltételek csak akkor jelenik meg, ha a felhasználóhoz tartozik e
 
 ![Felhasználók és csoportok ablaktábla – belefoglalási lap – minden vendég felhasználó lehetőség bejelölve](./media/terms-of-use/b2b-guests.png)
 
-## <a name="support-for-cloud-apps-preview"></a>Felhőalapú alkalmazások támogatása (előzetes verzió)
+## <a name="support-for-cloud-apps"></a>Felhőalapú alkalmazások támogatása
 
 A Használati feltételek különböző felhőalapú alkalmazásokhoz, például a Azure Information Protectionhoz és a Microsoft Intunehoz is használható. Ez a támogatás jelenleg előzetes verzióban érhető el.
 
@@ -387,8 +427,8 @@ A: [áttekintheti a korábban elfogadott használati feltételeket](#how-users-c
 A: Ha az Azure AD használati feltételeit és az [Intune használati](/intune/terms-and-conditions-create)feltételeit is beállította, akkor a felhasználónak mindkettőt el kell fogadnia. További információ: a [megfelelő feltételek megoldásának kiválasztása a szervezet blogbejegyzésében](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 **K: milyen végpontokat használnak a használati feltételek a hitelesítéshez?**<br />
-A: a Használati feltételek a következő végpontokat használja a hitelesítéshez: https://tokenprovider.termsofuse.identitygovernance.azure.com és https://account.activedirectory.windowsazure.com . Ha a szervezete rendelkezik a beléptetési URL-címek engedélyezési listájával, ezeket a végpontokat fel kell vennie az engedélyezési listára, valamint a bejelentkezéshez használt Azure AD-végpontokat is.
+A: a Használati feltételek a következő végpontokat használja a hitelesítéshez: https://tokenprovider.termsofuse.identitygovernance.azure.com és https://account.activedirectory.windowsazure.com . Ha a szervezete rendelkezik a beléptetéshez szükséges URL-címek listájával, ezeket a végpontokat fel kell vennie az engedélyezési listára, valamint a bejelentkezéshez használt Azure AD-végpontokat is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt](require-tou.md)

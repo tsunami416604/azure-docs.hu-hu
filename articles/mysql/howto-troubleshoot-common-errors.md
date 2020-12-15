@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 39e058487effea432369b74a9e638f30722ef089
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401712"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510962"
 ---
 # <a name="common-errors"></a>Gyakori hibák
 
@@ -83,9 +83,7 @@ A fenti hiba a következő esetekben fordul elő:
 
 * A Felhasználónév nem létezik
 * A felhasználói Felhasználónév törölve
-* a jelszó módosítása vagy alaphelyzetbe állítása
-
-A hiba megoldása a következő: 
+* a jelszavának módosítása vagy alaphelyzetbe állítása.
 
 **Megoldás**: 
 * Annak ellenőrzése, hogy a "username" érvényes felhasználóként van-e a kiszolgálón, vagy véletlenül törölve van-e. A következő lekérdezés végrehajtásához jelentkezzen be a Azure Database for MySQL felhasználóba:
@@ -94,7 +92,7 @@ A hiba megoldása a következő:
   ```
 * Ha a fenti lekérdezés végrehajtásához nem tud bejelentkezni a MySQL-be, javasoljuk, hogy [Azure Portal használatával állítsa alaphelyzetbe a rendszergazdai jelszót](howto-create-manage-server-portal.md). A jelszó alaphelyzetbe állítása lehetőség a Azure Portal segítségével újból létrehozhatja a felhasználót, alaphelyzetbe állíthatja a jelszót, és visszaállíthatja a rendszergazdai engedélyeket, ami lehetővé teszi a kiszolgáló-rendszergazda használatával történő bejelentkezést és további műveletek elvégzését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha nem találta meg a keresett választ, vegye figyelembe a következőket:
 
 - Tegye fel kérdéseit a [Microsoft Q&a kérdéses oldalra](/answers/topics/azure-database-mysql.html) vagy [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mysql).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2020
 ms.author: memildin
-ms.openlocfilehash: fcdcda8aaa6d48b24c346d87a402f6966ab11cf5
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 052758079d8d413f7b0fead2a5abf3b47b9a691e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505494"
+ms.locfileid: "97511331"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -32,7 +32,7 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 ## <a name="planned-changes"></a>Tervezett változások
 
 - ["Nem alkalmazható" erőforrások, amelyeket "megfelelőként" kell jelenteni Azure Policy értékelésekben](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
-- [35 az Azure biztonsági teljesítményteszt lefedettségének növeléséhez hozzáadott előzetes javaslatok](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [35 az Azure biztonsági teljesítményteszt lefedettségének növeléséhez hozzáadott előzetes javaslatok](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
 ### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Nem alkalmazható" erőforrások, amelyeket "megfelelőként" kell jelenteni Azure Policy értékelésekben
 
@@ -42,13 +42,13 @@ Jelenleg a javaslathoz kiértékelt és a **nem** megfelelőnek talált erőforr
 
 Az egyetlen hatása a Azure Policy, ahol a megfelelő erőforrások száma növekedni fog. Azure Security Center a biztonságos pontszáma nem lesz hatással.
 
-### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 az Azure biztonsági teljesítményteszt lefedettségének növeléséhez hozzáadott előzetes javaslatok
+### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>35 az Azure biztonsági teljesítményteszt lefedettségének növeléséhez hozzáadott előzetes javaslatok
 
 **Változás becsült dátuma:** December 2020
 
 Az Azure biztonsági teljesítményteszt a Microsoft által létrehozott, Azure-specifikus irányelvek a biztonsági és megfelelőségi szabályzatok közös megfelelőségi keretrendszereken alapuló bevált eljárásaihoz. [További tudnivalók az Azure-biztonsági teljesítménytesztről](../security/benchmarks/introduction.md).
 
-A következő 35 előzetes javaslatok lettek hozzáadva az Security Centerhoz a teljesítményteszt lefedettségének növeléséhez.
+A jelen teljesítményteszt lefedettségének növeléséhez a következő 35 előzetes verzióra vonatkozó javaslatok lesznek hozzáadva a Security Centerhoz.
 
 Az előzetes verzióra vonatkozó javaslatok nem jelenítik meg az erőforrás állapotát, és nem tartoznak bele a biztonságos pontszám számításaiba. Ha lehetséges, javítsa őket, hogy ha az előzetes verzió időtartama lejár, a pontszáma is hozzájárul. További információ a javaslatokról a [Azure Security Centerban található javaslatok szervizelése](security-center-remediate-recommendations.md)című témakörben található.
 
@@ -72,6 +72,6 @@ Kapcsolódó hivatkozások:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A termék legutóbbi módosításaival kapcsolatban tekintse [meg az Újdonságok a Azure Security Center?](release-notes.md)című témakört.

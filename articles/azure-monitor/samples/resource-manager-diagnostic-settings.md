@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: f340f2a4318fc187d4a7f28b91ab362e232a263e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 6e1c38a1fc9b681616ac3bf5c0c78fd56d933ce6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95754989"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510549"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Resource Manager-sablonok – minták a diagnosztikai beállításokhoz Azure Monitor
 Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz az Azure-erőforrások diagnosztikai beállításainak létrehozásához. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -810,7 +810,7 @@ A következő minta létrehoz egy diagnosztikai beállítást a Storage-fiókban
   }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További Azure monitor-sablonok beszerzése](resource-manager-samples.md).
 * [További információ a diagnosztikai beállításokról](../platform/diagnostic-settings.md).

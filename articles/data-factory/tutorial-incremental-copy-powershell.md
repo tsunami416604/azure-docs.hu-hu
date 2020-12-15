@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 267c82981ca91dc8fd437222c80368b5ab6f4a46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65a2d06acc3461d881ad6f100f3720b217ef7634
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320863"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510209"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Adatok növekményes betöltése Azure SQL Databaseról az Azure Blob Storage-ba a PowerShell használatával
 
@@ -68,7 +68,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 * **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Adatforrástábla létrehozása az SQL-adatbázisban
-1. Nyissa meg az SQL Server Management Studiót. A **Server Explorerben**kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**elemet.
+1. Nyissa meg az SQL Server Management Studiót. A **Server Explorerben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
 2. Futtassa a következő SQL-parancsot az SQL-adatbázison egy tábla `data_source_table` néven, adatforrástárként történő létrehozásához:
 
@@ -141,8 +141,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
 
 END
@@ -222,7 +222,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -253,7 +253,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -327,7 +327,7 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a forrás és a fogadó 
     ```
 
     > [!IMPORTANT]
-    > Ez a kódtöredék azt feltételezi, hogy a Blob Storage-ban rendelkezik egy adftutorial nevű blobtárolóval. Ha még nem létezik, hozza létre a tárolót, vagy állítsa be egy meglévő tároló nevét. Az `incrementalcopy` kimeneti mappa automatikusan létrejön, ha még nem létezik a tárolóban. Ebben az oktatóanyagban a fájl nevét dinamikusan hozzuk létre a következő kifejezés használatával: `@CONCAT('Incremental-', pipeline().RunId, '.txt')`.
+    > Ez a kódrészlet feltételezi, hogy rendelkezik egy blob-tárolóval a `adftutorial` blob Storage-ban. Ha még nem létezik, hozza létre a tárolót, vagy állítsa be egy meglévő tároló nevét. Az `incrementalcopy` kimeneti mappa automatikusan létrejön, ha még nem létezik a tárolóban. Ebben az oktatóanyagban a fájl nevét dinamikusan hozzuk létre a következő kifejezés használatával: `@CONCAT('Incremental-', pipeline().RunId, '.txt')`.
 
 2. Futtassa a **set-AzDataFactoryV2Dataset** parancsmagot az adatkészlet SinkDataset létrehozásához.
 
@@ -505,7 +505,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
    Itt látható a minta kimenete:
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -528,7 +528,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupNewWaterMarkActivity
@@ -648,7 +648,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupNewWaterMarkActivity

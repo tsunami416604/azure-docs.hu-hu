@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517087"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511280"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
@@ -38,7 +38,7 @@ A kód beadása előtt a kód [felülvizsgálatával](/azure/devops/learn/devops
 
 ### <a name="perform-static-code-analysis"></a>Statikus kódelemzés végrehajtása
 
-A [statikus kód elemzését](https://owasp.org/www-community/controls/Static_Code_Analysis) (más néven *forráskód-elemzést* ) általában a kód felülvizsgálatának részeként hajtja végre a rendszer. A statikus kód elemzése általában arra utal, hogy statikus kód-elemzési eszközöket futtasson, hogy a nem futó kódban lévő lehetséges biztonsági réseket olyan technikák használatával találja meg, mint a [szennyező ellenőrzés](https://en.wikipedia.org/wiki/Taint_checking) és [az adatfolyam-elemzés](https://en.wikipedia.org/wiki/Data-flow_analysis).
+A [statikus kód elemzését](https://owasp.org/www-community/controls/Static_Code_Analysis) (más néven *forráskód-elemzést*) általában a kód felülvizsgálatának részeként hajtja végre a rendszer. A statikus kód elemzése általában arra utal, hogy statikus kód-elemzési eszközöket futtasson, hogy a nem futó kódban lévő lehetséges biztonsági réseket olyan technikák használatával találja meg, mint a [szennyező ellenőrzés](https://en.wikipedia.org/wiki/Taint_checking) és [az adatfolyam-elemzés](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
 Az Azure Marketplace olyan [fejlesztői eszközöket](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) kínál, amelyek statikus kódok elemzését végzik, és segítséget nyújtanak a kódok felülvizsgálatában.
 
@@ -48,15 +48,15 @@ Az összes bemenetet nem megbízhatóként kezelheti az alkalmazás a leggyakori
 
 Az adatfolyam elején ellenőrizze, hogy csak a megfelelően formázott adatok jelennek-e meg a munkafolyamatban. Nem kívánja, hogy a helytelenül formázott adatmegőrzést végezze az adatbázisban, vagy hibásan aktiválja az alsóbb rétegbeli összetevőket.
 
-A beviteli szintaxis érvényesítésének két általános módja a feketelistára helyezés és az engedélyezési lista:
+A Blocklisting és a allowlisting két általános módszer a bemeneti szintaxis érvényesítésének végrehajtásához:
 
-  - Az adott felhasználói bevitelt nem "ismert, hogy rosszindulatú" tartalomnak kellene megadnia.
+  - A Blocklisting megkísérli annak ellenőrzését, hogy egy adott felhasználói bevitel nem tartalmazza-e az "ismert kártékony" tartalmat.
 
-  - Engedélyezési kísérletek annak ellenőrzését, hogy egy adott felhasználói bevitel megfelel-e a "ismert jó" bemeneteknek. A karakteres engedélyezési lista az engedélyezési lista olyan formája, amelyben egy alkalmazás ellenőrzi, hogy a felhasználói bevitel csak az "ismert jó" karaktereket tartalmazza-e, vagy hogy a bemenet megfelel-e az ismert formátumnak.
+  - A Allowlisting megkísérli megállapítani, hogy egy adott felhasználói bevitel megfelel-e a "ismert jó" bemeneteknek. A karakteres allowlisting a allowlisting egy formája, ahol egy alkalmazás ellenőrzi, hogy a felhasználói bevitel csak az "ismert jó" karaktereket tartalmazza-e, vagy hogy a bemenet megfelel-e az ismert formátumnak.
     Előfordulhat például, hogy a Felhasználónév csak alfanumerikus karaktereket tartalmaz, vagy pontosan két számot tartalmaz.
 
-Az engedélyezési módszer a biztonságos szoftverek létrehozásának előnyben részesített megközelítése.
-A feketelistás szolgáltatás a hiba miatt nem lehetséges, mert a potenciálisan rossz bevitel teljes listáját nem lehet meggondolni.
+A Allowlisting a biztonságos szoftverek létrehozásának előnyben részesített megközelítése.
+A Blocklisting a hiba miatt nem lehetséges, mert a potenciálisan rossz bevitel teljes listáját nem lehet meggondolni.
 
 Ezt a kiszolgálót nem az ügyfél oldalán (vagy a kiszolgálón és az ügyfél oldalon) hajtsa végre.
 
@@ -150,7 +150,7 @@ Győződjön meg arról, hogy az alkalmazás biztonságban van, mivel minden má
 
 Az Azure-hoz készült [Secure DevOps Kit](https://azsk.azurewebsites.net/index.html) (AzSK) az Azure platform több szolgáltatásának SVTs tartalmazza. Ezeket a SVTs rendszeresen futtatva biztosíthatja, hogy az Azure-előfizetése és az alkalmazást alkotó különböző erőforrások biztonságos állapotúak legyenek. Ezeket a teszteket a AzSK folyamatos integráció/folyamatos üzembe helyezés (CI/CD) bővítmények szolgáltatásával is automatizálhatja, amely a Visual Studio-bővítményként elérhetővé teszi a SVTs.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások tervezésében és üzembe helyezésében.
 
 - [Biztonságos alkalmazások tervezése](secure-design.md)

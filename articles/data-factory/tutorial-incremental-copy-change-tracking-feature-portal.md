@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: c5f87e693d2592f830ec785f2163c232915544d1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3ea231258f7a60ce90ec119803b5abc8b6e525fe
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561131"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510617"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Adatok növekményes betöltése Azure SQL Databaseból az Azure-ba Blob Storage a Change Tracking Information használatával a Azure Portal
 
@@ -75,8 +75,8 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ### <a name="create-a-data-source-table-in-azure-sql-database"></a>Adatforrás-tábla létrehozása Azure SQL Databaseban
 
-1. Indítsa el **SQL Server Management Studio** , és kapcsolódjon a SQL Databasehoz.
-2. A **Kiszolgálókezelőben** kattintson a jobb gombbal az **adatbázisra** , és válassza az **Új lekérdezés** elemet.
+1. Indítsa el **SQL Server Management Studio**, és kapcsolódjon a SQL Databasehoz.
+2. A **Kiszolgálókezelőben** kattintson a jobb gombbal az **adatbázisra**, és válassza az **Új lekérdezés** elemet.
 3. Futtassa a következő SQL-parancsot az adatbázison, és hozzon létre egy nevű táblát az `data_source_table` adatforrás-tárolóban.  
 
     ```sql
@@ -140,8 +140,8 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
     BEGIN
 
-        UPDATE table_store_ChangeTracking_version
-        SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
+    UPDATE table_store_ChangeTracking_version
+    SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
     WHERE [TableName] = @TableName
 
     END    
@@ -156,7 +156,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory** :
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**:
 
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -167,7 +167,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
    A Azure Data Factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a data factory nevét (például sajátnévADFTutorialDataFactory-ra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők részleteit a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
    *A "ADFTutorialDataFactory" nevű adatgyár nem érhető el*
-3. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni.
+3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
 4. Az **erőforráscsoport** esetében hajtsa végre az alábbi lépések egyikét:
 
       - Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
@@ -195,7 +195,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása
 Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 
-1. Kattintson a **Kapcsolatok** , majd az **+ Új** elemre.
+1. Kattintson a **Kapcsolatok**, majd az **+ Új** elemre.
 
    ![Új kapcsolat gomb](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-connection-button-storage.png)
 2. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Continue** (Folytatás) elemre.
@@ -213,7 +213,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása.
 Ebben a lépésben összekapcsolja az adatbázist az adatelőállítóval.
 
-1. Kattintson a **Kapcsolatok** , majd az **+ Új** elemre.
+1. Kattintson a **Kapcsolatok**, majd az **+ Új** elemre.
 2. Az **Új társított szolgáltatás** ablakban válassza az **Azure SQL Database** lehetőséget, majd kattintson a **Folytatás** elemre.
 3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
 
@@ -403,13 +403,13 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
 9. Váltson a **Fogadó** lapra, és válassza a **SinkDataset** lehetőséget a **Fogadó adatkészlet** mezőnél.
 
     ![Másolási tevékenység – fogadóbeállítások](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
-10. **Mindkét keresési tevékenységet kapcsolja a másolási tevékenységhez** , egymás után. Húzza a **keresési** tevékenységhez tartozó **zöld** gombot a **másolási** tevékenységhez.
+10. **Mindkét keresési tevékenységet kapcsolja a másolási tevékenységhez**, egymás után. Húzza a **keresési** tevékenységhez tartozó **zöld** gombot a **másolási** tevékenységhez.
 
     ![A keresési és másolási tevékenységek összekapcsolása](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-lookup-and-copy.png)
 11. Húzza át a **Tárolt eljárás** tevékenységet a **tevékenységek** eszközkészletéből a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **StoredProceduretoUpdateChangeTrackingActivity**. Ez a tevékenység frissíti a **table_store_ChangeTracking_version** táblában található változáskövetési verziót.
 
     ![Tárolt eljárási tevékenység – név](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. Váltson az *SQL-fiók* * lapra, majd a **Társított szolgáltatás** elemnél válassza az **AzureSqlDatabaseLinkedService** lehetőséget.
+12. Váltson az *SQL-fiók** lapra, majd a **Társított szolgáltatás** elemnél válassza az **AzureSqlDatabaseLinkedService** lehetőséget.
 
     ![Tárolt eljárási tevékenység – SQL-fiók](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. Váltson a **Tárolt eljárás** lapra, és végezze el az alábbi lépéseket:
@@ -466,13 +466,12 @@ Az első három oszlop a data_source_table táblából származó módosított a
 ==================================================================
 PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ==================================================================
-1        update  10     2                     U
-6        new     50     1                     I
+1        update  10            2                                 U
+6        new     50            1                                 I
 ```
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan másolhat új és módosított fájlokat csak a LastModifiedDate alapján:
 
 > [!div class="nextstepaction"]
->[Új fájlok másolása a lastmodifieddate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+> [Új fájlok másolása a lastmodifieddate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)

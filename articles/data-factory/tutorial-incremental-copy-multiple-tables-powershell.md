@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 54dea3ba7bbc3339b7b044b476c321fd95138ac2
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 61a4119947b1412d3e874458e06748fd40a381b4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566418"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510260"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Több táblázatból származó adatok növekményes betöltése SQL Server Azure SQL Database a PowerShell használatával
 
@@ -50,7 +50,7 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
 
     Ebben az oktatóanyagban a küszöbértékeket egy SQL-adatbázisban tároljuk.
 
-3. **Folyamat létrehozása a következő tevékenységekkel** :
+3. **Folyamat létrehozása a következő tevékenységekkel**:
     
     a. Egy ForEach tevékenység létrehozása, amely végighalad a forrástáblanevek listáján, amelyet a rendszer paraméterként ad át a folyamatnak. Minden forrástáblához elindítja a következő tevékenységeket a változásadatok betöltéséhez az adott tábla esetében.
 
@@ -167,8 +167,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime 
 WHERE [TableName] = @TableName
 
 END
@@ -283,7 +283,7 @@ Vegye figyelembe a következő szempontokat:
 
 * Adatelőállító-példányok létrehozásához a felhasználói fióknak, amellyel bejelentkezik az Azure-ba, a közreműködő vagy tulajdonos szerepkörök tagjának, vagy az Azure-előfizetés rendszergazdájának kell lennie.
 
-* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory** : [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adattárak (Azure Storage, SQL Database, SQL felügyelt példány stb.) és az adatelőállító által használt számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
+* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adattárak (Azure Storage, SQL Database, SQL felügyelt példány stb.) és az adatelőállító által használt számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
@@ -365,7 +365,7 @@ Ebben a lépésben összekapcsolja SQL Server adatbázisát az adatelőállító
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     LinkedServiceName : SqlServerLinkedService
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -398,7 +398,7 @@ Ebben a lépésben összekapcsolja SQL Server adatbázisát az adatelőállító
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -773,7 +773,7 @@ A folyamat táblanevek listáját használja paraméterként. A **foreach tevék
 
    Itt látható a minta kimenete: 
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : <ResourceGroupName>
     DataFactoryName   : <DataFactoryName>
@@ -974,7 +974,7 @@ project_table   2017-10-01 00:00:00.000
 
 Megfigyelhető, hogy mindkét tábla küszöbértékei frissültek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

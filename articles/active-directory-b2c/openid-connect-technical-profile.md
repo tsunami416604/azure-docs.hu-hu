@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad9d3adacf36f0d224e2915836356c5a24e6256a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 10b01538c26f301a375a6d9b1660895dc3e3108b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936675"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509835"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenID Connect műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -93,7 +93,7 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 | DiscoverMetadataByTokenIssuer | Nem | Azt jelzi, hogy a OIDC metaadatait fel kell-e deríteni a JWT jogkivonat kiállítójának használatával. |
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 |token_endpoint_auth_method| Nem| Meghatározza, hogy a Azure AD B2C hogyan küldi el a hitelesítési fejlécet a jogkivonat-végpontnak. Lehetséges értékek: `client_secret_post` (alapértelmezett) és `client_secret_basic` (nyilvános előzetes verzió). További információ: [OpenID Connect ügyfél-hitelesítés szakasz](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-|SingleLogoutEnabled| Nem| Azt jelzi, hogy a technikai profilba való bejelentkezés során a rendszer megpróbál-e kijelentkezni az összevont identitás-szolgáltatókról. További információ: Azure AD B2C- [munkamenet](session-overview.md#sign-out)kijelentkezése.  Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
+|SingleLogoutEnabled| Nem| Azt jelzi, hogy a technikai profilba való bejelentkezés során a rendszer megpróbál-e kijelentkezni az összevont identitás-szolgáltatókról. További információ: Azure AD B2C- [munkamenet](session-behavior.md#sign-out)kijelentkezése.  Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
 
 ```xml
 <Metadata>
@@ -130,7 +130,7 @@ A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
 Ha az Identitáskezelő átirányítási URI-JÁT konfigurálja, írja be a (z `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` ) értéket. Ne felejtse el lecserélni a `{your-tenant-name}` bérlő nevét. Az átirányítási URI-nak minden kisbetűsnek kell lennie.
 
-Példák:
+Angol nyelvű Példák:
 
 - [Microsoft-fiók (MSA) hozzáadása identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-microsoft-account.md)
 - [Bejelentkezés Azure AD-fiókok használatával](identity-provider-azure-ad-single-tenant.md)

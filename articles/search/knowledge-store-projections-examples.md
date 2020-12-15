@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f40841887b8116ad1384dc2b827d8215ea659490
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3985564d49ce8a5c62b15f9537364418c0a8f5da
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537497"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509920"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>A dúsítások formázása és exportálása
 
@@ -576,13 +576,12 @@ A konszolidált crossProjection objektumból illessze be az objektumot több tá
                     }
                 ],
                 "files": [
-                     {
+                    {
                         "storageContainer": "crossimages",
                         "generatedKeyName": "crossimages",
                         "source": "/document/crossProjection/images/*/image"
                     }
-                    ]
-                
+                ]
             }
         ]
     }
@@ -664,7 +663,7 @@ A kivetítés meghatározásakor van néhány gyakori probléma, amely nem várt
 
 + Elérésiút-szintaktikai hibák. Az elérésiút-választók megkülönböztetik a kis-és nagybetűket, és hiányzó bemeneti figyelmeztetéseket okozhatnak, ha nem a pontos esetet használja a választóhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A jelen cikkben szereplő példák a kivetítések létrehozásának általános mintáit mutatják be. Most, hogy már jól ismeri a fogalmakat, jobban fel van szerelve, hogy kivetítéseket építsen ki az adott forgatókönyvhöz.
 

@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan hitelesítheti Event Hubs erőforrások
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332433"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510090"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Hozzáférés hitelesítése Event Hubs erőforrásokhoz megosztott hozzáférési aláírások (SAS) használatával
 A közös hozzáférésű aláírás (SAS) részletesen szabályozza az Ön által a közös hozzáférési aláírással rendelkező ügyfelek számára biztosított hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 
@@ -212,7 +212,7 @@ Ha például az engedélyezési szabályok hatókörét úgy szeretné meghatár
 >
 > Amikor az ügyfél adatokat küld egy Event hubhoz, a kérelmét a jogkivonattal címkézi. Ha meg szeretné akadályozni, hogy a támadók lehallgatják és ellopják a tokent, akkor az ügyfél és az Event hub közötti kommunikációnak titkosított csatornán kell történnie.
 > 
-> Ha egy támadó ellopja a jogkivonatot, a támadó megszemélyesítheti az ügyfelet, amelynek a jogkivonatát ellopták. A közzétevők feketelistára állítása az ügyfél használhatatlanul jelenik meg, amíg nem kap egy másik közzétevőt használó új jogkivonatot.
+> Ha egy támadó ellopja a jogkivonatot, a támadó megszemélyesítheti az ügyfelet, amelynek a jogkivonatát ellopták. A közzétevő Blocklisting az ügyfél használhatatlanná válik, amíg nem kap egy másik közzétevőt használó új jogkivonatot.
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Event Hubs ügyfelek hitelesítése SAS használatával 

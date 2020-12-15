@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 9562c9fd590ea1234fb2378f03861141e58432ff
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: bed497dfdc25ec2815f51795a1f40847586ce798
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637530"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510311"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: adatok másolása SQL Server-adatbázisból az Azure Blob Storage-ba
 
@@ -179,7 +179,7 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. R
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Az adat-előállító példányok létrehozásához annak a felhasználói fióknak, amellyel belép az Azure-ba, a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie.
-> * Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory** : [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
+> * Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
 >
 >
 
@@ -201,7 +201,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     Name              : ADFTutorialIR
     Type              : SelfHosted
     ResourceGroupName : <resourceGroupName>
@@ -218,7 +218,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     State                     : NeedRegistration
     Version                   :
     CreateTime                : 9/10/2019 3:24:09 AM
@@ -345,7 +345,7 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 
    Itt látható egy mintakimenet:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroup name>
     DataFactoryName   : <dataFactory name>
@@ -415,7 +415,7 @@ Ebben a lépésben összekapcsolja SQL Server példányát az adatelőállítóv
     > - Válassza ki az SQL Server-példányhoz való kapcsolódáshoz használt hitelesítési módszernek megfelelő szakaszt.
     > - Cserélje le az értékét  **\<integration runtime name>** az Integration Runtime nevére.
     > - A fájl mentése előtt cserélje le a,, **\<servername>** **\<databasename>** **\<username>** és **\<password>** értéket a SQL Server példányának értékeire.
-    > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *SajátTartomány \\ \\ myuser* .
+    > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *SajátTartomány \\ \\ myuser*.
 
 1. A bizalmas adatok (felhasználónév, jelszó stb.) titkosításához futtassa a `New-AzDataFactoryV2LinkedServiceEncryptedCredential` parancsmagot.  
     A titkosítás a hitelesítő adatokat az adatvédelmi API (DPAPI) segítségével titkosítja. A titkosított hitelesítő adatok tárolása a saját üzemeltetésű integrációs modul csomópontján helyileg történik (a helyi gépen). A kimenő hasznos adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben az *encryptedLinkedService.json* fájlba), amely titkosított hitelesítő adatokat tartalmaz.
@@ -469,7 +469,7 @@ Ebben a lépésben megadhat egy adatkészletet, amely az SQL Server-adatbázisp�
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     DatasetName       : SqlServerDataset
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -480,7 +480,7 @@ Ebben a lépésben megadhat egy adatkészletet, amely az SQL Server-adatbázisp�
 ### <a name="create-a-dataset-for-azure-blob-storage-sink"></a>Adatkészlet létrehozása a Azure Blob Storage-hez (fogadó)
 Ebben a lépésben az Azure Blob Storage-be másolni kívánt adatokat képviselő adatkészletet adja meg. Az adatkészlet típusa AzureBlob. Ez az oktatóanyagban korábban létrehozott Azure Storage társított szolgáltatásra vonatkozik.
 
-A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket az adat-előállító használ futtatáskor az Azure Storage-fiókhoz való kapcsolódásra. Ez az adatkészlet azt az Azure Storage-beli mappát határozza meg, amelybe a rendszer az adatokat másolja az SQL Server-adatbázisból. Ebben az oktatóanyagban a mappa a következő: *adftutorial/fromonprem* , ahol az `adftutorial` a blobtároló, a `fromonprem` pedig a mappa.
+A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket az adat-előállító használ futtatáskor az Azure Storage-fiókhoz való kapcsolódásra. Ez az adatkészlet azt az Azure Storage-beli mappát határozza meg, amelybe a rendszer az adatokat másolja az SQL Server-adatbázisból. Ebben az oktatóanyagban a mappa a következő: *adftutorial/fromonprem*, ahol az `adftutorial` a blobtároló, a `fromonprem` pedig a mappa.
 
 1. Hozzon létre egy *AzureBlobDataset.json* nevű JSON-fájlt a *C:\ADFv2Tutorial* mappában a következő kóddal:
 
@@ -522,7 +522,7 @@ A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket az a
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     DatasetName       : AzureBlobDataset
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -531,7 +531,7 @@ A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket az a
     ```
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
-Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendelkező folyamatot. A másolási tevékenység az SqlServerDataset készletet használja bemeneti adatkészletként, illetve az AzureBlobDataset készletet kimeneti adatkészletként. A forrás típusa *SqlSource* , a fogadó típusa *BlobSink* .
+Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendelkező folyamatot. A másolási tevékenység az SqlServerDataset készletet használja bemeneti adatkészletként, illetve az AzureBlobDataset készletet kimeneti adatkészletként. A forrás típusa *SqlSource*, a fogadó típusa *BlobSink*.
 
 1. Hozzon létre egy *SqlServerToBlobPipeline.json* nevű JSON-fájlt a *C:\ADFv2Tutorial* mappában a következő kóddal:
 
@@ -602,7 +602,7 @@ Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendel
 
     Itt látható a minta kimenete:
 
-    ```json
+    ```console
     PipelineName      : SQLServerToBlobPipeline
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -639,7 +639,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 
     Itt látható a példa futtatás kimenete:
 
-    ```JSON
+    ```console
     ResourceGroupName    : <resourceGroupName>
     DataFactoryName      : <dataFactoryName>
     ActivityRunId        : 24af7cf6-efca-4a95-931d-067c5c921c25
@@ -716,7 +716,7 @@ A folyamat automatikusan létrehozza a *fromonprem* nevű kimeneti mappát az `a
     ![Kimeneti fájl](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

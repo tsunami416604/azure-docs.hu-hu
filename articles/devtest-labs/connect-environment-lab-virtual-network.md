@@ -3,12 +3,12 @@ title: Környezetek összekötése egy labor vnet a Azure DevTest Labsban | Micr
 description: Ismerje meg, hogyan csatlakoztathatók a környezetek (például Service Fabric-fürt) a tesztkörnyezet virtuális hálózatához Azure DevTest Labs
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 31f924a4b6d7cbe1b6f71c7e34d43fd9c135bac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 980c6317ded70db374c2b948075f060754168b0f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483771"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511960"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Környezet összekötése a tesztkörnyezet virtuális hálózatával Azure DevTest Labs
 A Azure DevTest Labs segítségével egyszerűen hozhat létre virtuális gépeket egy [beépített hálózatkezeléssel](devtest-lab-configure-vnet.md)rendelkező tesztkörnyezetben. Nagy rugalmasságot biztosít a [több virtuális gépre kiterjedő környezetek létrehozásához](devtest-lab-test-env.md). Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a virtuális gépek egy környezetben a tesztkörnyezet virtuális hálózatához. Az egyik forgatókönyv, ahol ezt a funkciót használja, egy N szintű alkalmazást állít be egy olyan SQL Server adatréteggel, amely a labor VNet csatlakozik, és lehetővé teszi a tesztkörnyezet számára a tesztkörnyezetben való hozzáférést.  

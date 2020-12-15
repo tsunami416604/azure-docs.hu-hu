@@ -3,12 +3,12 @@ title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch-megoldások fejlesztéséhez.
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1eaa34e02a4c505691662e9fc29334cb823a3185
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254663"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511212"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -141,6 +141,10 @@ A [számítási csomópont](nodes-and-pools.md#nodes) egy Azure-beli virtuális 
 
 Csakúgy, mint más feladatokhoz, a csomópont [indítási tevékenységének](jobs-and-tasks.md#start-task) idempotens kell lennie, mivel a csomópont minden indításakor újra futni fog. Egy idempotens feladat egyszerűen egy, amely konzisztens eredményt állít elő többszöri futtatásakor.
 
+### <a name="isolated-nodes"></a>Elkülönített csomópontok
+
+Használjon elkülönített virtuálisgép-méretet a megfelelőségi vagy szabályozási követelményekkel rendelkező munkaterhelésekhez. A virtuális gép konfigurációs módjában támogatott elkülönített méretek a következők:,,, `Standard_E64i_v3` `Standard_E80ids_v4` `Standard_F72s_v2` `Standard_G5` `Standard_GS5` és `Standard_M128ms` . Az elkülönített virtuálisgép-méretekről további információt a [virtuális gépek elkülönítése az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/isolation)című témakörben talál.
+
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>A hosszan futó szolgáltatások kezelése az operációs rendszer szolgáltatásainak felületén keresztül
 
 Időnként szükség van egy másik ügynök futtatására a csomóponton található batch-ügynök mellett. Előfordulhat például, hogy adatokat szeretne gyűjteni a csomópontról, és jelentenie kell azt. Javasoljuk, hogy ezeket az ügynököket operációs rendszerként, például Windows-szolgáltatásként vagy Linux-szolgáltatásként telepítse `systemd` .
@@ -225,7 +229,7 @@ A Batch aktívan megpróbálja törölni azt a munkakönyvtárat, amelyen a fela
 
 A munkakönyvtár automatikus tisztítása le lesz tiltva, ha a Windows rendszerű szolgáltatást futtat a startTask Working Directory szolgáltatásból, mert a mappa még használatban van. Ennek hatására csökken a teljesítmény. Ennek a megoldásnak a kijavításához módosítsa a szolgáltatás könyvtárát egy különálló, a Batch által nem kezelt könyvtárba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzon létre egy Azure batch fiókot a Azure Portal használatával](batch-account-create-portal.md).
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.

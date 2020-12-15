@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 12/3/2020
+ms.date: 12/15/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0e4674c9e0513a0b8dae29f5868b1da79da8ab84
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 8f59f3488f6c8f5b35ec68d93db656447f882a92
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920559"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510682"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>A metrikus riasztások által támogatott erőforrások Azure Monitor
 
@@ -41,10 +41,10 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök | Nem | Nem | [Klasszikus Cloud Services](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft. ClassicCompute/virtualMachines | Nem | Nem | [Klasszikus Virtual Machines](./metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft. ClassicStorage/storageAccounts | Igen | Nem | [Storage-fiókok (klasszikus)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
-|Microsoft. ClassicStorage/storageAccounts/blobServices | Igen | Nem | |
-|Microsoft. ClassicStorage/storageAccounts/fileServices | Igen | Nem | |
-|Microsoft. ClassicStorage/storageAccounts/queueServices | Igen | Nem | |
-|Microsoft. ClassicStorage/storageAccounts/tableServices | Igen | Nem | |
+|Microsoft. ClassicStorage/storageAccounts/blobServices | Igen | Nem | [Storage-fiókok (klasszikus) – Blobok](./metrics-supported.md#microsoftclassicstoragestorageaccountsblobservices) |
+|Microsoft. ClassicStorage/storageAccounts/fileServices | Igen | Nem | [Storage-fiókok (klasszikus) – fájlok](./metrics-supported.md#microsoftclassicstoragestorageaccountsfileservices) |
+|Microsoft. ClassicStorage/storageAccounts/queueServices | Igen | Nem | [Storage-fiókok (klasszikus) – várólisták](./metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) |
+|Microsoft. ClassicStorage/storageAccounts/tableServices | Igen | Nem | [Storage-fiókok (klasszikus) – táblák](./metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) |
 |Microsoft. CognitiveServices/fiókok | Igen | Nem | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
 |Microsoft.Compute/virtualMachines | Igen | Igen<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Igen | Nem |[Virtuálisgép-méretezési csoportok](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
@@ -57,10 +57,9 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. DataShare/fiókok | Igen | Nem | |
 |Microsoft. DBforMariaDB/kiszolgálók | Nem | Nem | [MariaDB-adatbázis](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft. DBforMySQL/kiszolgálók | Nem | Nem |[A MySQL-hez készült adatbázis](./metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft. DBforPostgreSQL/flexibleServers | Igen | Nem | |
 |Microsoft. DBforPostgreSQL/kiszolgálók | Nem | Nem | [PostgreSQL-hez készült adatbázis](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft. DBforPostgreSQL/serversv2 | Nem | Nem | [A PostgreSQL v2 ADATBÁZISa](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft. DBforPostgreSQL/rugalmas | Nem | Nem | [PostgreSQL-hez készült adatbázis (rugalmas kiszolgálók)](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
+|Microsoft. DBforPostgreSQL/flexibleServers | Igen | Nem | [PostgreSQL-hez készült adatbázis (rugalmas kiszolgálók)](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft. Devices/IotHubs | Igen | Nem |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft. Devices/provisioningServices| Igen | Nem | [Eszközök kiépítési szolgáltatásai](./metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft. DigitalTwins/digitalTwinsInstances | Igen | Nem | |
@@ -104,7 +103,10 @@ Az újabb riasztások által támogatott Azure Monitor metrikus források teljes
 |Microsoft. SQL/kiszolgálók/adatbázisok | Nem | Igen | [SQL Database-adatbázisok](./metrics-supported.md#microsoftsqlserversdatabases) |
 |Microsoft. SQL/kiszolgálók/elasticPools | Nem | Igen | [Rugalmas SQL-készletek](./metrics-supported.md#microsoftsqlserverselasticpools) |
 |Microsoft. Storage/storageAccounts |Igen | Nem | [Storage-fiókok](./metrics-supported.md#microsoftstoragestorageaccounts)|
-|Microsoft. Storage/storageAccounts/Services | Igen| Nem | [Blob Services](./metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Fájlszolgáltatások](./metrics-supported.md#microsoftstoragestorageaccountsfileservices), [üzenetsor-szolgáltatások](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) és [Table Services](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft. Storage/storageAccounts/blobServices | Igen| Nem | [Storage-fiókok – Blobok](./metrics-supported.md#microsoftstoragestorageaccountsblobservices) |
+|Microsoft. Storage/storageAccounts/fileServices | Igen| Nem | [Storage-fiókok – fájlok](./metrics-supported.md#microsoftstoragestorageaccountsfileservices) |
+|Microsoft. Storage/storageAccounts/queueServices | Igen| Nem | [Storage-fiókok – várólisták](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) |
+|Microsoft. Storage/storageAccounts/tableServices | Igen| Nem | [Storage-fiókok – táblák](./metrics-supported.md#microsoftstoragestorageaccountstableservices) |
 |Microsoft. StorageCache/gyorsítótárak | Igen | Nem | |
 |Microsoft. StorageSync/storageSyncServices | Igen | Nem | [Storage Sync Services](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft. StreamAnalytics/streamingjobs | Igen | Nem | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
@@ -179,7 +181,7 @@ A POST művelet a következő JSON-adattartalomot és sémát tartalmazza az ös
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az új [riasztási élményről](./alerts-overview.md).
 * További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).

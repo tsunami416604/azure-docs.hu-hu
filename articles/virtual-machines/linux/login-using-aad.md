@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 4c11e8c9cbd767bb95e094535a8a6cd7c8fe84fc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b4fc6b9facc79db109c5ce5be09576b16a2abdc7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340883"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510889"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
 
@@ -119,7 +119,7 @@ Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) házirend határ
 - **Virtuális gép felhasználói bejelentkezése**: az ehhez a szerepkörhöz hozzárendelt felhasználók rendszeres felhasználói jogosultságokkal jelentkezhetnek be egy Azure-beli virtuális gépre.
 
 > [!NOTE]
-> Annak engedélyezéséhez, hogy a felhasználó SSH-kapcsolaton keresztül jelentkezzen be a virtuális gépre, hozzá kell rendelnie a *virtuális gép rendszergazdai felhasználónevét* vagy a *virtuális gép felhasználói bejelentkezési* szerepkörét. Egy virtuális géphez hozzárendelt *tulajdonosi* vagy *közreműködői* szerepkörökkel rendelkező Azure-felhasználó nem jogosult automatikusan bejelentkezni a virtuális gépre SSH-kapcsolaton keresztül.
+> Annak engedélyezéséhez, hogy a felhasználó SSH-kapcsolaton keresztül jelentkezzen be a virtuális gépre, hozzá kell rendelnie a *virtuális gép rendszergazdai felhasználónevét* vagy a *virtuális gép felhasználói bejelentkezési* szerepkörét. A virtuális gép rendszergazdai felhasználónevét és a virtuális gép felhasználói bejelentkezési szerepköreit a dataActions használja, ezért nem rendelhető hozzá a felügyeleti csoport hatóköréhez. Jelenleg ezek a szerepkörök csak az előfizetéshez, az erőforráscsoport vagy az erőforrás-hatókörhöz rendelhetők hozzá. Egy virtuális géphez hozzárendelt *tulajdonosi* vagy *közreműködői* szerepkörökkel rendelkező Azure-felhasználó nem jogosult automatikusan bejelentkezni a virtuális gépre SSH-kapcsolaton keresztül. 
 
 Az alábbi példa az [az role hozzárendelés Create](/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a *virtuális gép rendszergazdai bejelentkezési* szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](/cli/azure/account#az-account-show)paranccsal szerezheti be, a *hatókör* pedig az előző lépésben létrehozott virtuális gépre az [az VM show](/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a szokásos Azure RBAC öröklési engedélyek is érvényesek. További információ: [Azure RBAC](../../role-based-access-control/overview.md)
 
@@ -138,7 +138,12 @@ az role assignment create \
 
 Az Azure-előfizetési erőforrásokhoz való hozzáférés az Azure RBAC való kezelésével kapcsolatos további információkért lásd az [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)vagy [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)használatát ismertető témakört.
 
-Az Azure AD-t úgy is beállíthatja, hogy a többtényezős hitelesítés megkövetelése egy adott felhasználó számára a linuxos virtuális gépre való bejelentkezéshez. További információ: Ismerkedés [Az Azure AD multi-Factor Authentication a felhőben](../../active-directory/authentication/howto-mfa-getstarted.md).
+## <a name="using-conditional-access"></a>Feltételes hozzáférés használata
+
+A feltételes hozzáférési szabályzatok, például a többtényezős hitelesítés vagy a felhasználói bejelentkezés kockázatának érvényesítése előtt engedélyezheti a hozzáférést az Azure-beli Linux rendszerű virtuális gépekhez, amelyek engedélyezve vannak az Azure AD-bejelentkezéssel. A feltételes hozzáférési szabályzat alkalmazásához ki kell választania az "Azure Linux VM-bejelentkezés" alkalmazást a Cloud apps vagy a műveletek hozzárendelési beállításból, majd a bejelentkezési kockázatot feltételként kell használnia, és/vagy a többtényezős hitelesítést kell megadni hozzáférés-vezérlésként. 
+
+> [!WARNING]
+> Felhasználónkénti engedélyezett/kényszerített Azure AD-Multi-Factor Authentication nem támogatott a virtuális gép bejelentkezéséhez.
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Bejelentkezés a Linux rendszerű virtuális gépre
 
@@ -195,6 +200,8 @@ Using keyboard-interactive authentication.
 Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute/virtualMachines/login/action', for example 'Virtual Machine User Login'
 Access denied
 ```
+> [!NOTE]
+> Ha az Azure szerepkör-hozzárendelésekkel kapcsolatos problémákba ütközik, tekintse meg az [Azure-RBAC hibaelhárítását](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit)ismertető témakört.
 
 ### <a name="continued-ssh-sign-in-prompts"></a>További SSH bejelentkezési kérések
 

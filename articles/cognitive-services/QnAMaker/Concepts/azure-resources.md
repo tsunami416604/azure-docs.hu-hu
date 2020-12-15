@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: cd64c19e7e9af05becd7a6978ceb4d0306112170
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351895"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512045"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Makerhoz
 
@@ -104,11 +104,11 @@ A következő táblázat néhány magas szintű útmutatást nyújt.
 
 |Cél QPS | App Service | Azure Cognitive Search |
 | -------------------- | ----------- | ------------ |
-| 3             | S1, 1 példány   | S1, 1 példány    |
-| 50         | S3, 10 példány       | S1, 12 példány         |
-| 80         | S3, 10 példány      |  S3, 12 példány  |
-| 100         | P3V2, 10 példány  | S3, 12 példány, 3 partíció   |
-| 200 – 250         | P3V2, 20 példány | S3, 12 példány, 3 partíció    |
+| 3             | S1, 1 replika   | S1, 1 replika    |
+| 50         | S3, 10 replika       | S1, 12 replika         |
+| 80         | S3, 10 replika      |  S3, 12 replika  |
+| 100         | P3V2, 10 replika  | S3, 12 replika, 3 partíció   |
+| 200 – 250         | P3V2, 20 replika | S3, 12 replika, 3 partíció    |
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 

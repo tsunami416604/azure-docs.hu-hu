@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170939"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509818"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>A Azure AD B2C számára elérhető Microsoft Graph műveletek
 
@@ -107,9 +107,9 @@ A Microsoft Graph API legfelső szintű erőforrása a [megbízható keretrendsz
 
 - [Bővítmény tulajdonságainak listázása](/graph/api/application-list-extensionproperty)
 
-Azure AD B2C egy olyan könyvtárat biztosít, amely felhasználónként 100 egyéni attribútumot tud tárolni. A felhasználói folyamatok esetében ezek a bővítmény-tulajdonságok [a Azure Portal használatával kezelhetők](custom-policy-custom-attributes.md). Egyéni házirendek esetén a Azure AD B2C létrehozza a tulajdonságot, amikor a házirend első alkalommal ír egy értéket a bővítmény tulajdonságba.
+Azure AD B2C egy olyan könyvtárat biztosít, amely felhasználónként 100 egyéni attribútumot tud tárolni. A felhasználói folyamatok esetében ezek a bővítmény-tulajdonságok [a Azure Portal használatával kezelhetők](user-flow-custom-attributes.md). Egyéni házirendek esetén a Azure AD B2C létrehozza a tulajdonságot, amikor a házirend első alkalommal ír egy értéket a bővítmény tulajdonságba.
 
-## <a name="audit-logs"></a>Auditnaplók
+## <a name="audit-logs"></a>Naplók
 
 - [Naplófájlok listázása](/graph/api/directoryaudit-list)
 

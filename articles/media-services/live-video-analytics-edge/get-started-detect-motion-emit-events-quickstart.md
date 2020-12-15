@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: e67c717a4476ab9191471483d9aa8e8f222cd750
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: db48183e918fcb1096734f912f02c091ddac1d74
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498268"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511875"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -115,7 +115,7 @@ A modul összes [gráf topológiájának](media-graph-concept.md#media-graph-top
 
     ```
     {
-        "@apiVersion" : "1.0"
+        "@apiVersion" : "2.0"
     }
     ```
 
@@ -141,7 +141,7 @@ A meghívásához szükséges lépéseket követve `GraphTopologyList` meghívha
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "MotionDetection",
     "properties": {
         "description": "Analyzing live video to detect motion and emit events",
@@ -304,7 +304,7 @@ Próbálkozzon a következő lépésekkel:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```
@@ -402,7 +402,7 @@ Hívja meg a Direct metódust a `GraphInstanceSet` következő hasznos adatok ha
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1",
     "properties" : {
         "topologyName" : "MotionDetection",
@@ -462,7 +462,7 @@ Most aktiválja a Graph-példányt, hogy elindítsa az élő videó áramlását
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -486,7 +486,7 @@ Most hívja meg a közvetlen metódust `GraphInstanceGet` a következő hasznos 
 
 ```
  {
-     "@apiVersion" : "1.0",
+     "@apiVersion" : "2.0",
      "name" : "Sample-Graph-1"
  }
  ```
@@ -619,7 +619,7 @@ Hívja meg a Direct metódust a `GraphInstanceDeactivate` következő hasznos ad
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -645,7 +645,7 @@ Hívja meg a Direct metódust a `GraphInstanceDelete` következő hasznos adatok
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -669,7 +669,7 @@ Hívja meg a Direct metódust a `GraphTopologyDelete` következő hasznos adatok
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```

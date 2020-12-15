@@ -11,12 +11,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbfeefc14059785ba82cbf245a60e5e72759db76
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 48c60878a6a58b2f4629768b81af894a741dab1c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840406"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509801"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webes bejelentkezés OpenID-kapcsolattal Azure Active Directory B2C
 
@@ -262,7 +262,7 @@ A hibaüzenetek így néznek ki:
 
 ## <a name="send-a-sign-out-request"></a>Kijelentkezési kérelem küldése
 
-Ha ki szeretné írni a felhasználót az alkalmazásból, nem elég az alkalmazás cookie-jait törölni, vagy más módon leállítani a munkamenetet a felhasználóval. Átirányítja a felhasználót, hogy Azure AD B2C a kijelentkezéshez. Ha ezt nem teszi meg, előfordulhat, hogy a felhasználó újra hitelesíteni tudja az alkalmazását anélkül, hogy újra be kellene írnia a hitelesítő adatait. További információ: Azure AD B2C- [munkamenet](session-overview.md).
+Ha ki szeretné írni a felhasználót az alkalmazásból, nem elég az alkalmazás cookie-jait törölni, vagy más módon leállítani a munkamenetet a felhasználóval. Átirányítja a felhasználót, hogy Azure AD B2C a kijelentkezéshez. Ha ezt nem teszi meg, előfordulhat, hogy a felhasználó újra hitelesíteni tudja az alkalmazását anélkül, hogy újra be kellene írnia a hitelesítő adatait. További információ: Azure AD B2C- [munkamenet](session-behavior.md).
 
 A felhasználó kijelentkezéséhez irányítsa át a felhasználót a `end_session` korábban ismertetett OpenID Connect metadata dokumentumban felsorolt végpontra:
 
@@ -283,8 +283,8 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 A kijelentkezés után a rendszer átirányítja a felhasználót a paraméterben megadott URI-ra `post_logout_redirect_uri` , az alkalmazáshoz megadott válasz URL-címektől függetlenül. Ha azonban érvényes `id_token_hint` értéket ad át, és a **kijelentkezési kérésekhez szükséges azonosító jogkivonat** be van kapcsolva, Azure ad B2C ellenőrzi, hogy az adott `post_logout_redirect_uri` alkalmazás beállított átirányítási URI azonosítóinak egyike megfelel-e az átirányítás végrehajtása előtt. Ha nincs beállítva egyező válasz URL-cím az alkalmazáshoz, a rendszer hibaüzenetet jelenít meg, és a felhasználót nem irányítja át.
 
-A szükséges azonosító jogkivonat a kijelentkezési kérelmekben való beállításával kapcsolatban lásd: [munkamenet-viselkedés konfigurálása Azure Active Directory B2Cban](session-behavior-custom-policy.md#secure-your-logout-redirect), valamint a [munkamenet viselkedésének konfigurálása egyéni házirendek használatával Azure Active Directory B2Cban](session-behavior-custom-policy.md#secure-your-logout-redirect).
+A szükséges azonosító jogkivonat beállításához a kijelentkezési kérelmekben lásd: [munkamenet-viselkedés konfigurálása Azure Active Directory B2Cban](session-behavior.md#secure-your-logout-redirect).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [Azure ad B2C-munkamenetről](session-overview.md).
+- További információ a [Azure ad B2C-munkamenetről](session-behavior.md).

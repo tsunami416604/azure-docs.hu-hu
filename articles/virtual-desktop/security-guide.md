@@ -3,15 +3,15 @@ title: Ajánlott Windowsos virtuális asztali biztonsági eljárások – Azure
 description: Ajánlott eljárások a Windows rendszerű virtuális asztali környezet biztonságának megőrzéséhez.
 author: heidilohr
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023156"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511535"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -29,16 +29,16 @@ A Windows rendszerű virtuális asztali környezetében a következő biztonság
 
 | Biztonsági igények | Az ügyfél felelős erre? |
 |---------------|:-------------------------:|
-|Identitás|Yes|
-|Felhasználói eszközök (mobil és PC)|Yes|
-|Alkalmazás biztonsága|Yes|
-|Munkamenet-gazda operációs rendszer|Yes|
-|Központi telepítés konfigurálása|Yes|
-|Hálózati vezérlők|Yes|
-|Virtualizációs vezérlő síkja|No|
-|Fizikai gazdagépek|No|
-|Fizikai hálózat|No|
-|Fizikai adatközpont|No|
+|Identitás|Igen|
+|Felhasználói eszközök (mobil és PC)|Igen|
+|Alkalmazás biztonsága|Igen|
+|Munkamenet-gazda operációs rendszer|Igen|
+|Központi telepítés konfigurálása|Igen|
+|Hálózati vezérlők|Igen|
+|Virtualizációs vezérlő síkja|Nem|
+|Fizikai gazdagépek|Nem|
+|Fizikai hálózat|Nem|
+|Fizikai adatközpont|Nem|
 
 Az ügyfél nem felelős a Microsoft által kezelt biztonsági követelményeknek.
 
@@ -80,7 +80,7 @@ A [feltételes hozzáférés](../active-directory/conditional-access/overview.md
 
 A naplózás engedélyezésével megtekintheti a Windows rendszerű virtuális asztallal kapcsolatos felhasználói és rendszergazdai tevékenységeket. Néhány példa a legfontosabb naplókra:
 
--   [Azure-tevékenységnapló](../azure-monitor/platform/activity-log.md)
+-   [Azure-tevékenység naplója](../azure-monitor/platform/activity-log.md)
 -   [Azure Active Directory tevékenység naplója](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Munkamenet-gazdagépek](../azure-monitor/platform/agent-windows.md)
@@ -98,6 +98,25 @@ A Windows rendszerű virtuális asztali szolgáltatások használatának és ren
 ## <a name="session-host-security-best-practices"></a>A munkamenet-gazdagép biztonsági eljárásai – ajánlott eljárások
 
 A munkamenet-gazdagépek olyan virtuális gépek, amelyek az Azure-előfizetésben és a virtuális hálózaton belül futnak. A Windows rendszerű virtuális asztali környezet általános biztonsága a munkamenet-gazdagépekre helyezett biztonsági vezérlőktől függ. Ez a szakasz az ajánlott eljárásokat ismerteti a munkamenet-gazdagépek biztonságának megőrzése érdekében.
+
+### <a name="enable-screen-capture-protection-preview"></a>Képernyőfelvétel-védelem engedélyezése (előzetes verzió)
+
+A képernyőfelvételek védelme funkció megakadályozza a bizalmas adatok rögzítését az ügyfél-végpontokon. Ha engedélyezi ezt a funkciót, a rendszer automatikusan letiltja vagy elrejti a távoli tartalmat a képernyőképek és a képernyők megosztásában. A rendszer olyan kártékony szoftverekből is el fogja rejteni, amelyek folyamatosan rögzítik a képernyő tartalmát.
+
+Ezt a házirendet a gazdagép szintjén kell kikényszeríteni egy beállításkulcs konfigurálásával. A szabályzat engedélyezéséhez nyissa meg a PowerShellt, és állítsa be a **fEnableScreenCaptureProtection** beállításkulcsot a következő parancsmag futtatásával:
+
+```powershell
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /t REG_DWORD /d 1
+```
+
+Az új szolgáltatás tesztelése:
+
+- Győződjön meg arról, hogy a gazdagép-készletek az ellenőrzési környezetben vannak kiépítve.
+- Győződjön meg arról, hogy letöltötte és telepítette a Windows asztali ügyfelet (1.2.1526) vagy újabb verziót.
+
+>[!NOTE]
+>Az előzetes verzióban csak a Windows 10-es végpontok teljes asztali kapcsolatai támogatják ezt a funkciót.
+
 
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection engedélyezése
 
@@ -151,6 +170,6 @@ Az operációs rendszer képességeinek korlátozásával megerősítheti a munk
 
 - A nemkívánatos szoftverek futtatásának megakadályozása a munkamenet-gazdagépeken. A munkamenet-gazdagépek további biztonsága érdekében engedélyezheti az alkalmazások zárolását, így biztosíthatja, hogy csak az Ön által engedélyezett alkalmazások futhatnak a gazdagépen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A többtényezős hitelesítés engedélyezéséről a [többtényezős hitelesítés beállítása](set-up-mfa.md)című témakörben olvashat bővebben.

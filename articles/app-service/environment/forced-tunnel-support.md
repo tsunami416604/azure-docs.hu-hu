@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c8a4b6998d1471a79dd789ed6528e22b07f2015c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540975"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510498"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Az App Service-környezet konfigurálása kényszerített bújtatással
 
@@ -103,7 +103,7 @@ Ha az Azure Storage felé irányuló forgalmon kívül bújtatni szeretné az AS
 
    A lap tetején kattintson a **PUT** elemre. Ez a lehetőség aktivál egy méretezési műveletet az App Service-környezetben, és beállítja a tűzfalat.
 
-_Az ASE létrehozása a kimenő forgalmi címekkel_ : Kövesse az [App Service-környezet sablonnal történő létrehozását][template] ismertető cikk utasításait, és kérje le a megfelelő sablont.  Szerkessze az azuredeploy.json fájl „resources” (erőforrások) szakaszát, de a „properties” (tulajdonságok) blokkot ne, és a **userWhitelistedIpRanges** értékhez adjon hozzá egy sort a saját értékeivel.
+_Az ASE létrehozása a kimenő forgalmi címekkel_: Kövesse az [App Service-környezet sablonnal történő létrehozását][template] ismertető cikk utasításait, és kérje le a megfelelő sablont.  Szerkessze az azuredeploy.json fájl „resources” (erőforrások) szakaszát, de a „properties” (tulajdonságok) blokkot ne, és a **userWhitelistedIpRanges** értékhez adjon hozzá egy sort a saját értékeivel.
 
 ```json
 "resources": [
@@ -131,7 +131,7 @@ _Az ASE létrehozása a kimenő forgalmi címekkel_ : Kövesse az [App Service-k
 
 Ezek a változások közvetlenül az Azure Storage felé küldik a forgalmat az ASE-ből, továbbá az ASE virtuális IP-címétől eltérő további címekről is engedélyezik az Azure SQL elérését.
 
-   ![Kényszerített bújtatás SQL engedélyezési listával][3]
+   ![Kényszerített bújtatás SQL-engedélyezési][3]
 
 ## <a name="preventing-issues"></a>Hibák megelőzése ##
 
