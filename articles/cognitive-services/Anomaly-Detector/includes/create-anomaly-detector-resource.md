@@ -8,17 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: e896ac5f4625d36060d713d66fa885f8b24756f1
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d1add17c1c84d2a22d76aaa1f96aeca4db645ba7
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014739"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506288"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Anomália-detektor erőforrásának létrehozása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
-1. Kattintson [az **anomália-detektor** erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) elemre.
+1. Jelentkezzen be <a href="https://portal.azure.com" target="_blank">a <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portalba</a>.
+1. Válassza az <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector" target="_blank">anomália <span class="docon docon-navigate-external x-hidden-focus"></span> -detektor erőforrás létrehozása</a> lehetőséget.
 1. Adja meg az összes szükséges beállítást:
 
     |Beállítás|Érték|
@@ -26,15 +26,15 @@ ms.locfileid: "92014739"
     |Név|Kívánt név (2-64 karakter)|
     |Előfizetés|Válassza ki a megfelelő előfizetést|
     |Hely|Válasszon ki egy közeli és elérhető helyet|
-    |Tarifacsomag|`F0` – a minimális díjszabási réteg|
-    |Resource Group|Válasszon ki egy rendelkezésre álló erőforráscsoportot|
+    |Tarifacsomag|`F0` -100 hívás/másodperc, 20000 tranzakció havonta. <br> Vagy<br> `S0` -80 hívás/másodperc|
+    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló erőforráscsoportot|
 
 1. Kattintson a **Létrehozás** gombra, és várja meg az erőforrás létrehozását. A létrehozást követően navigáljon az erőforrás lapra
 1. Összegyűjtése konfigurált `endpoint` és API-kulcs:
 
-    |Erőforrás lap a portálon|Beállítás|Érték|
+    |Kulcsok és végpont lap a portálon|Beállítás|Érték|
     |--|--|--|
-    |**Áttekintés**|Végpont|Másolja a végpontot. A következőhöz hasonlóan néz ki `https://westus2.api.cognitive.microsoft.com/`|
+    |**Áttekintés**|Végpont|Másolja a végpontot. A következőhöz hasonlóan néz ki ` https://<your-resource-name>.cognitiveservices.azure.com/`|
     |**Kulcsok**|API-kulcs|A két kulcs 1. másolása. Egy 32 alfanumerikus karakterből álló karakterlánc, szóköz vagy kötőjel nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .|
 
 

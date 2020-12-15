@@ -256,9 +256,11 @@
       items:
         - name: Lekérdezéstípusok és összeállítás
           href: search-query-overview.md
-        - name: Egyszerű lekérdezés létrehozása
+        - name: Alapszintű lekérdezés létrehozása
+          href: search-query-create.md
+        - name: Egyszerű szintaxis használata (példák)
           href: search-query-simple-examples.md
-        - name: Teljes Lucene-szintaxis használata
+        - name: Teljes Lucene használata (példák)
           href: search-query-lucene-examples.md
         - name: Részleges kifejezések és különleges karakterek
           href: search-query-partial-matching.md
@@ -536,6 +538,8 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK fájlok bemutató
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: NYC-feladatok bemutató
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: Képzés
       items:
         - name: Bevezetés (Microsoft Learn)

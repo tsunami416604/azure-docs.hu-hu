@@ -48,6 +48,8 @@
       items:
         - name: Ügynök automatikus frissítése
           href: how-to-automatic-upgrade.md
+        - name: Ügynök beállításjegyzék-beállításai
+          href: how-to-manage-registry-options.md
     - name: Fejlesztés
       items:
         - name: Átalakítások

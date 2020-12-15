@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 86d4eb68866e35300738a15cbd3549485c3cbafb
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096434"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506341"
 ---
 A regionális VNet-integráció használata lehetővé teszi, hogy az alkalmazás hozzáférjen:
 
@@ -99,8 +99,8 @@ A Border Gateway Protocol (BGP) útvonalak az alkalmazások forgalmára is hatá
 Miután az alkalmazás integrálva van a VNet, ugyanazt a DNS-kiszolgálót használja, amelyhez a VNet konfigurálva van. Alapértelmezés szerint az alkalmazás nem fog működni Azure DNS Private Zones. A Azure DNS Private Zones való együttműködéshez a következő Alkalmazásbeállítások hozzáadására van szükség:
 
 
-1. A WEBSITE_DNS_SERVER értéke 168.63.129.16 1. WEBSITE_DNS_SERVER értékkel 168.63.129.16
-1. 1 1 értékű WEBSITE_VNET_ROUTE_ALL. 1. értékkel rendelkező WEBSITE_VNET_ROUTE_ALL
+1. WEBSITE_DNS_SERVER értékkel 168.63.129.16
+1. 1. értékkel rendelkező WEBSITE_VNET_ROUTE_ALL
 
 
 Ezek a beállítások elküldik az alkalmazásból érkező összes kimenő hívást a VNet, továbbá lehetővé teszi, hogy az alkalmazás Azure DNS privát zónákat használjon.   Ezek a beállítások az alkalmazásból érkező összes kimenő hívást elküldik a VNet. Emellett lehetővé teszi, hogy az alkalmazás a Azure DNS használja a saját DNS zóna munkavégző szinten történő lekérdezésével. Ezt a funkciót akkor kell használni, ha egy futó alkalmazás egy saját DNS zónához fér hozzá.

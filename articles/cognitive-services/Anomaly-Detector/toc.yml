@@ -30,6 +30,8 @@
   items:
     - name: Adatok rendellenességeinek azonosítása
       href: how-to/identify-anomalies.md
+    - name: Üzembe helyezés az IoT Edge-eszközön
+      href: how-to/deploy-anomaly-detection-on-iot-edge.md
     - name: Tárolók használata
       items:
         - name: Tárolók telepítése és futtatása

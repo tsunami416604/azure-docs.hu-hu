@@ -84,16 +84,33 @@
           href: tutorial-setup-vscode-extension.md
         - name: TensorFlow képbesorolási modellek betanítása és üzembe helyezése
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: Microsoft Power BI-integráció
+      items:
+        - name: '1. rész: Modellek betanítása és üzembe helyezése'
+          items:
+            - name: Jegyzetfüzetek használata (kód)
+              href: tutorial-power-bi-custom-model.md
+            - name: Tervező használata
+              href: tutorial-power-bi-designer-model.md
+            - name: Automatizált gépi tanulás használata
+              href: tutorial-power-bi-automated-model.md
+        - name: '2. rész: Felhasználás Power BI-ban'
+          href: /power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context
 - name: Példák
   items:
     - name: Jupyter-notebookok
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
+    - name: Példa adattárra
+      displayName: 'example, examples, jupyter, python, notebook, github'
+      href: 'https://github.com/Azure/azureml-examples'
     - name: Tervezői példák és adathalmazok
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
+    - name: Teljes körű MLOps-példák
+      href: 'https://github.com/microsoft/MLOps'
     - name: Open Datasets (nyilvános)
-      href: ../open-datasets/samples.md?context=%2fazure%2fmachine-learning%2fcontext%2fml-context
+      href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: Alapelvek
   items:
     - name: Költségtervezés és a költségek kezelése
@@ -155,8 +172,6 @@
         - name: Vállalati biztonság áttekintése
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
-        - name: Adattitkosítás
-          href: concept-data-encryption.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: Felelősségteljes ML
@@ -179,17 +194,14 @@
       items:
         - name: Identitás és hozzáférés kezelése
           items:
-            - name: Munkaterület-hitelesítés
+            - name: Hitelesítés beállítása
               displayName: 'authentication, auth, oauth'
               href: how-to-setup-authentication.md
-            - name: Webszolgáltatás-hitelesítés
-              displayName: 'authentication, model, web service'
-              href: how-to-authenticate-web-service.md
-            - name: Hozzáférés-kezelés (engedélyezés)
+            - name: Felhasználók és szerepkörök kezelése
               href: how-to-assign-roles.md
-            - name: Felügyelt identitások hozzáférés-vezérléshez
+            - name: Felügyelt identitások használata hozzáférés-vezérléshez
               href: how-to-use-managed-identities.md
-            - name: Azure AD Identity AKS-környezetekben
+            - name: Az Azure AD Identity használata AKS-környezetekben
               href: how-to-use-azure-ad-identity.md
         - name: Hálózati biztonság
           items:
@@ -399,9 +411,6 @@
         - name: Távoli számítógépcélok használata
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
-        - name: Automatizált gépi tanulás használata a Databricksszel
-          displayName: automl
-          href: how-to-configure-databricks-automl-environment.md
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -448,15 +457,11 @@
               href: how-to-deploy-model-cognitive-search.md
             - name: Egyéni Docker-rendszerkép használata
               href: how-to-deploy-custom-docker-image.md
-            - name: Helyi gép
-              href: how-to-deploy-local.md
             - name: IoT Edge
-              href: ../iot-edge/tutorial-deploy-machine-learning.md?context=%2fazure%2fmachine-learning%2fservice%2fcontext%2fml-context
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA-következtetés
               href: how-to-deploy-fpga-web-service.md
-        - name: Hibakeresés és hibaelhárítás (helyi)
-          href: how-to-troubleshoot-deployment-local.md
-        - name: Hibakeresés és hibaelhárítás (távoli)
+        - name: Hibakeresés és hibaelhárítás
           href: how-to-troubleshoot-deployment.md
         - name: Webszolgáltatás felhasználása
           displayName: create client consume request response synchronous
@@ -534,7 +539,7 @@
           href: how-to-debug-parallel-run-step.md
     - name: Azure Pipelines a CI/CD-hez
       displayName: 'continuous, integration, delivery'
-      href: /azure/devops/pipelines/targets/azure-machine-learning?context=%2fazure/machine-learning/context/ml-context
+      href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
     - name: GitHub Actions a CI/CD-hez
       href: how-to-github-actions-machine-learning.md
     - name: Erőforráskvóták kezelése
@@ -556,7 +561,7 @@
   items:
     - name: Python SDK
       displayName: 'api, core, package, python, class'
-      href: /python/api/overview/azure/ml/intro?view=azure-ml-py
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
     - name: R SDK
       displayName: 'api, core, package, R, class'
       href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
@@ -564,7 +569,7 @@
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: REST API
-      href: /rest/api/azureml/
+      href: 'https://docs.microsoft.com/rest/api/azureml/'
     - name: Tervezőmodul-referencia
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
@@ -595,11 +600,11 @@
       displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: Felhasználói fórum
-      href: /answers/topics/azure-machine-learning.html
+      href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Machine Learning-termékeink összehasonlítása
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=%2fazure/machine-learning/context/ml-context
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context
     - name: Mi történt a Workbenchcsel?
       displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md

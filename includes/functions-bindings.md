@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 574544df1ad89b277f2e07103b02b9b591fb3924
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 182f448ca852f114bb9564e04c1316119f2b6aa3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002389"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506274"
 ---
 Ez a táblázat a Azure Functions futtatókörnyezet főbb verzióiban támogatott kötéseket mutatja be:
 
@@ -19,7 +19,7 @@ Ez a táblázat a Azure Functions futtatókörnyezet főbb verzióiban támogato
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Azure Cosmos DB](../articles/azure-functions/functions-bindings-cosmosdb-v2.md)               |✔|✔|✔|✔|✔|
-| [Dapr](https://github.com/dapr/azure-functions-extension)<sup>3</sup> . Dapr             | |✔|✔|✔|✔|
+| [](https://github.com/dapr/azure-functions-extension)<sup>3</sup> . Dapr             | |✔|✔|✔|✔|
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| |✔|
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|
 | [HTTP & webhookok](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔|✔|✔| |✔|
@@ -28,7 +28,7 @@ Ez a táblázat a Azure Functions futtatókörnyezet főbb verzióiban támogato
 | [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔| | |✔|✔|
 | [Notification Hubs](../articles/azure-functions/functions-bindings-notification-hubs.md) |✔|| | |✔|
 | [Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔|✔| |✔|
-| [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension)<sup>2</sup> . RabbitMQ             | |✔|✔| |✔|
+| [](../articles/azure-functions/functions-bindings-rabbitmq.md)<sup>2</sup> . RabbitMQ             | |✔|✔| |✔|
 | [SendGrid](../articles/azure-functions/functions-bindings-sendgrid.md)                   |✔|✔| | |✔|
 | [Szolgáltatásbusz](../articles/azure-functions/functions-bindings-service-bus.md)             |✔|✔|✔| |✔|
 | [SignalR](../articles/azure-functions/functions-bindings-signalr-service.md)             | |✔| |✔|✔|

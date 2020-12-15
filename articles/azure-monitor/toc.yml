@@ -1175,6 +1175,8 @@
               href: platform/workbooks-automate.md
             - name: Csoportok
               href: platform/workbooks-groups.md
+            - name: Saját tároló használata
+              href: platform/workbooks-bring-your-own-storage.md
             - name: JSON-adatok átalakítása JSONPath használatával
               href: platform/workbooks-jsonpath.md
             - name: Munkafüzetek áthelyezése egy másik régióba

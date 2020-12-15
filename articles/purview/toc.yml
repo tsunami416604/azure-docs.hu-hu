@@ -54,6 +54,8 @@ items:
         href: concept-business-glossary.md
       - name: Adatokkal kapcsolatos megállapítások
         href: concept-insights.md
+      - name: Támogatott böngészők
+        href: supported-browsers.md
       - name: Gyakori kérdések
         href: frequently-asked-questions.md
   - name: Útmutatók
@@ -110,6 +112,8 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Kifejezéssablonok kezelése
             href: how-to-manage-term-templates.md
+          - name: Objektumok tömeges szerkesztése szószedet-kifejezések hozzárendeléséhez
+            href: how-to-bulk-edit-assets.md
       - name: Besorolás
         items:
           - name: Egyéni besorolás és besorolási szabály létrehozása
