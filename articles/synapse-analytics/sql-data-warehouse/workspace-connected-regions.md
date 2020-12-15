@@ -10,27 +10,36 @@ ms.subservice: sql-dw
 ms.date: 11/11/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8a345c2feaeea933af3fdce591283716443fbfda
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.custom: references_regions
+ms.openlocfilehash: d46f8b518476cdf2f68b51ed93498cf822f8d8a5
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621671"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504151"
 ---
 # <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>A szinapszis munkaterület funkcióinak engedélyezése egy dedikált SQL-készleten (korábban SQL DW) a régióban.
 
 ## <a name="regions-not-supported"></a>A régiók nem támogatottak 
 A következő táblázat összefoglalja azt a régiót, ahol a szinapszis-munkaterület funkcióinak engedélyezése meglévő dedikált SQL-készleten (korábban SQL DW) nem támogatott. Térjen vissza, és tekintse meg, hogy mikor válik elérhetővé a régió.
 
+\* azt jelzi, hogy a régióhoz megadott ütemterv jelenleg nem érhető el.
+
 | Régió | Szinapszis-munkaterület rendelkezésre állása |
 |:--- |:--- |:--- |
+| Ausztrália középső régiója 1 |\* |
+| Ausztrália 2. középső régiója |\* |
 | Kelet-Kína 2 |Március 31., 2021 |
 | Észak-Kína 2 |Március 31., 2021 |
-| Dél-Korea déli régiója |Március 31., 2021 |
 | Dél-India |Március 31., 2021 |
 | Nyugat-India |Március 31., 2021 |
+| Dél-Korea déli régiója |Március 31., 2021 |
 | Nyugat-Svájc |Március 31., 2021 |
 | Észak-Egyesült Arab |Március 31., 2021 |
+ 
+ 
+> [!NOTE]
+> A fenti régió lista csak azokra a régiókra vonatkozik, amelyekben a szinapszis-munkaterület funkcióinak engedélyezése jelenleg nem érhető el. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Bevezetés a [szinapszis munkaterülettel és a Studióval](../get-started.md).

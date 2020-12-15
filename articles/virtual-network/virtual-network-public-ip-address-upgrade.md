@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6cabc340c0be347165a3e506703a6277f7eb1cea
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905791"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503933"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Nyilvános IP-címek frissítése
 
@@ -32,9 +32,6 @@ Ebben a cikkben a következő forgatókönyveket tekintjük át:
 * Klasszikus Azure-Fenntartott IP migrálása Azure Resource Manager alapszintű SKU nyilvános IP-címére
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>Nyilvános IP-cím frissítése alapszintről standard SKU-ra
-
->[!NOTE]
->Az alapszintű és a standard közötti nyilvános IP-címek frissítésének lehetősége nem minden régióban érhető el.  További részletekért tekintse meg a [**korlátozásokat**](#limitations) .
 
 Nyilvános IP-cím frissítéséhez nem köthető erőforráshoz ( [ebben az oldalon](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) további információt talál a nyilvános IP-címek társításának megszüntetéséről).
 
@@ -148,20 +145,11 @@ A rendszer létrehoz egy új erőforráscsoportot a Azure Resource Managerben az
 
 ## <a name="limitations"></a>Korlátozások
 
-* Ez a funkció jelenleg nem érhető el a következő régiókban:<br>
-USA-beli államigazgatás – Virginia<br>
-US DoD – Kelet<br>
-US DoD – Középső régió<br>
-Kelet-Kína<br>
-Kelet-Kína 2<br>
-Észak-Kína<br>
-Észak-Kína 2
-
 * Egy alapszintű nyilvános IP-cím frissítéséhez nem társítható egyetlen Azure-erőforráshoz sem.  A nyilvános IP-címek hozzárendelésével kapcsolatos további információkért tekintse át [ezt a lapot](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) .  Hasonlóképpen, a Fenntartott IP átmigrálása nem rendelhető hozzá semmilyen felhőalapú szolgáltatáshoz.  A fenntartott IP-címek hozzárendelésével kapcsolatos további információkért tekintse át [ezt a lapot](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) .  
 * Az alapszintről standard SKU-ra frissített nyilvános IP-címek továbbra is nem rendelkeznek [rendelkezésre állási zónákkal](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) , ezért nem társíthatók olyan Azure-erőforrásokkal, amelyek akár zónában redundáns, akár nem.  Vegye figyelembe, hogy ez csak a rendelkezésre állási zónákat tartalmazó régiókra vonatkozik.
 * A standard és az alapszintű érték között nem lehetséges a visszalépés.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az Azure-beli [nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) , beleértve az SKU-típusok közötti különbséget, valamint a [nyilvános IP-cím beállításait](virtual-network-public-ip-address.md#create-a-public-ip-address).
 - Ismerje meg, hogyan [frissítheti az Azure nyilvános Load balancert alapszintről standard szintre](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard).

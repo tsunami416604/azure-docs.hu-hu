@@ -12,17 +12,17 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 358a551908a7263f3258f47dfe1cceeffe2307b1
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b255f64547c3bae56d31415dc94a751989ca1f45
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860490"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504899"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Csoport tulajdonosainak hozzáadása vagy eltávolítása Azure Active Directory
 A Azure Active Directory-(Azure AD-) csoportokat a csoport tulajdonosai és kezelik. A csoport tulajdonosai lehetnek felhasználók vagy egyszerű szolgáltatások, és képesek a csoport kezelésére, beleértve a tagságot is. A csoport tulajdonosai csak a meglévő tulajdonosok vagy csoport-felügyeleti rendszergazdák számára rendelhetők hozzá. A csoport tulajdonosai nem szükségesek a csoport tagjainak lennie.
 
-Ha egy csoport nem rendelkezik tulajdonossal, a csoport kezelésére szolgáló rendszergazdák továbbra is kezelhetik a csoportot. Azt javasoljuk, hogy minden csoportban legyen legalább egy tulajdonos. Ha a tulajdonosok hozzárendelni egy csoportba, a csoport utolsó tulajdonosa nem távolítható el. Győződjön meg arról, hogy a csoport utolsó tulajdonosának eltávolítása előtt kiválaszt egy másik tulajdonost.
+Ha egy csoport nem rendelkezik tulajdonossal, a csoport kezelésére szolgáló rendszergazdák továbbra is kezelhetik a csoportot. Azt javasoljuk, hogy minden csoportban legyen legalább egy tulajdonos. Ha a tulajdonosok egy csoporthoz vannak rendelve, a csoport utolsó tulajdonosa nem távolítható el. Győződjön meg arról, hogy a csoport utolsó tulajdonosának eltávolítása előtt kiválaszt egy másik tulajdonost.
 
 ## <a name="add-an-owner-to-a-group"></a>Tulajdonos hozzáadása egy csoporthoz
 Az alábbi útmutatást követve adhat hozzá felhasználót tulajdonosként egy csoporthoz az Azure AD-portál használatával. Ha egy egyszerű szolgáltatást szeretne hozzáadni egy csoport tulajdonosaként, kövesse az utasításokat a [PowerShell](/powershell/module/Azuread/Add-AzureADGroupOwner)használatával.

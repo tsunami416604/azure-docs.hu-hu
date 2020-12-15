@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8c6fce5b22d67dd1022fbaac763ea5df3b0930f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254690"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505375"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Az Azure API Management használata az Azure Kubernetes Service-ben üzembe helyezett Service-szolgáltatásokkal
 
@@ -39,7 +39,7 @@ Egy Kubernetes-fürtben a tárolók olyan [hüvelyekben](https://kubernetes.io/d
 
 A probléma megoldásához a Kubernetes bevezette a [szolgáltatások](https://kubernetes.io/docs/concepts/services-networking/service/)fogalmát. A Kubernetes szolgáltatás egy absztrakt réteg, amely a hüvelyek logikai csoportját határozza meg, és lehetővé teszi a külső adatforgalom, a terheléselosztás és a szolgáltatások felderítését a hüvelyek számára. 
 
-Ha készen áll arra, hogy a API Management API-jai segítségével elérhetővé tegye a szolgáltatásait API-kkal, a API Management-ban található API-kra Kubernetes kell. Nincsenek beállított szabályok. Ez attól függ, hogy az üzleti képességek vagy tartományok hogyan lettek kialakítva és particionálva a szolgáltatás elején. Ha például egy szolgáltatás mögötti hüvely felelős az adott erőforráson (például az ügyfélen) lévő összes műveletért, akkor a szolgáltatás egy API-ra képezhető le. Ha egy erőforráson végrehajtott műveletek több szolgáltatásba vannak particionálva (pl. GetOrder, PlaceOrder), akkor több szolgáltatás is logikailag összesíthető egyetlen API-ban az API managementben (lásd az 1. ábrát). 
+Ha készen áll arra, hogy a API Management API-jai segítségével elérhetővé tegye a szolgáltatásait API-kkal, a API Management-ban található API-kra Kubernetes kell. Nincsenek beállított szabályok. Ez attól függ, hogy az üzleti képességek vagy tartományok hogyan lettek kialakítva és particionálva a szolgáltatás elején. Ha például egy szolgáltatás mögött található hüvelyek felelősek egy adott erőforráson (például az ügyfélen) lévő összes műveletért, akkor a szolgáltatás egy API-ra képezhető le. Ha egy erőforráson végrehajtott műveletek több szolgáltatásba vannak particionálva (pl. GetOrder, PlaceOrder), akkor több szolgáltatás is logikailag összesíthető egyetlen API-ban az API managementben (lásd az 1. ábrát). 
 
 A leképezések is fejlődnek. Mivel a API Management létrehoz egy homlokzatot a-szolgáltatások előtt, lehetővé teszi, hogy az idő múlásával újraértékelje a szolgáltatásait és a megfelelő méretet. 
 
@@ -118,7 +118,7 @@ Szakemberek
 Hátránya
 * A VNet-ben való munkavégzéshez szükséges API Management üzembe helyezésének és konfigurálásának bonyolultsága
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [hálózati fogalmakról az AK-beli alkalmazásokhoz](../aks/concepts-network.md)
 * További információ a [API Management virtuális hálózatokkal való használatáról](./api-management-using-with-vnet.md)

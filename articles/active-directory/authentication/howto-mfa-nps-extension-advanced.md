@@ -11,16 +11,19 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdadc02c8bb1c3f9450ff34ac935547343989cf6
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 6d436414393d77c83acc835110f17e55e491dce1
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742969"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503489"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Speciális konfigurációs beállítások a Multi-Factor Authentication NPS-bővítményéhez
 
-A hálózati házirend-kiszolgáló (NPS) bővítmény kibővíti a felhőalapú Azure AD Multi-Factor Authentication szolgáltatásokat a helyszíni infrastruktúrába. Ez a cikk feltételezi, hogy már telepítette a bővítményt, és most szeretné tudni, hogyan szabhatja testre a szükséges bővítményt. 
+A hálózati házirend-kiszolgáló (NPS) bővítmény kibővíti a felhőalapú Azure AD Multi-Factor Authentication szolgáltatásokat a helyszíni infrastruktúrába. Ez a cikk feltételezi, hogy már telepítette a bővítményt, és most szeretné tudni, hogyan szabhatja testre a szükséges bővítményt.
+
+> [!NOTE]
+> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="alternate-login-id"></a>Másodlagos bejelentkezési azonosító
 
@@ -30,7 +33,7 @@ A hálózati házirend-kiszolgáló bővítményben kijelölhet egy Active Direc
 
 Az alternatív bejelentkezési azonosítók konfigurálásához lépjen a (z) elemre, `HKLM\SOFTWARE\Microsoft\AzureMfa` és szerkessze a következő beállításjegyzékbeli értékeket:
 
-| Név | Típus | Alapértelmezett érték | Leírás |
+| Név | Típus | Alapértelmezett érték | Description |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | sztring | Üres | Jelölje ki az egyszerű felhasználónév helyett használni kívánt Active Directory attribútum nevét. Ez az attribútum a AlternateLoginId attribútumként szolgál. Ha a beállításazonosító [érvényes Active Directory attribútumra](/windows/win32/adschema/attributes-all) van beállítva (például E-mail vagy DisplayName), akkor a rendszer az attribútum értékét használja a felhasználó egyszerű felhasználóneve helyett a hitelesítéshez. Ha a beállításazonosító üres vagy nincs konfigurálva, akkor a AlternateLoginId le van tiltva, és a rendszer a felhasználó UPN-azonosítóját használja a hitelesítéshez. |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | Hamis | Ezzel a jelzővel kényszerítheti a globális katalógus használatát az LDAP-keresésekhez, amikor megkeresi a AlternateLoginId. Konfiguráljon egy tartományvezérlőt globális katalógusként, adja hozzá a AlternateLoginId attribútumot a globális katalógushoz, majd engedélyezze ezt a jelzőt. <br><br> Ha LDAP_LOOKUP_FORESTS konfigurálva van (nem üres), **Ez a jelző igaz értékre van kényszerítve**, a beállításjegyzék-beállítás értékétől függetlenül. Ebben az esetben a hálózati házirend-kiszolgáló bővítménye megköveteli, hogy a globális katalógus minden erdő AlternateLoginId attribútumával legyen konfigurálva. |
@@ -44,7 +47,7 @@ Ha figyelnie kell a kiszolgáló rendelkezésre állását, például ha a terhe
 
 Az IP-címek engedélyezési listájának konfigurálásához nyissa meg `HKLM\SOFTWARE\Microsoft\AzureMfa` a következő beállításértéket, és konfigurálja a beállításjegyzéket:
 
-| Név | Típus | Alapértelmezett érték | Leírás |
+| Név | Típus | Alapértelmezett érték | Description |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | sztring | Üres | Adja meg az IP-címek pontosvesszővel tagolt listáját. Adja meg azoknak a számítógépeknek a IP-címeit, amelyeken a szolgáltatás kérelmek származnak, például a NAS/VPN-kiszolgálótól. Az IP-címtartományok és az alhálózatok nem támogatottak. <br><br> Például: *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 
@@ -53,6 +56,6 @@ Az IP-címek engedélyezési listájának konfigurálásához nyissa meg `HKLM\S
 
 Ha egy kérelem olyan IP-címről érkezik, amely létezik a-ben `IP_WHITELIST` , a kétlépéses ellenőrzés kimarad. Az IP-listát a RADIUS-kérelem *ratNASIPAddress* attribútumában megadott IP-címhez hasonlítjuk. Ha egy RADIUS-kérelem a ratNASIPAddress attribútum nélkül érkezik, a rendszer a következő figyelmeztetést naplózza: "P_WHITE_LIST_WARNING:: az IP-engedélyezési lista figyelmen kívül lesz hagyva, mert a forrás IP-cím hiányzik a RADIUS-kérelemben a NasIpAddress attribútumban."
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hibák elhárítása az Azure AD-hez tartozó NPS-bővítményből Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)

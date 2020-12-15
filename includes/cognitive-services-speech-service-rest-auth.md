@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b73d3f9011f9384fafa18394d9318e3eafa67
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88864914"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504491"
 ---
 ## <a name="authentication"></a>Hitelesítés
 
@@ -18,9 +18,9 @@ Minden kérelemhez engedélyezési fejléc szükséges. Ez a táblázat azt szem
 | Támogatott engedélyezési fejlécek | Diktálás | Szövegfelolvasás |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | Igen | Nem |
-| Engedélyezés: tulajdonos | Igen | Igen |
+| Engedélyezés: tulajdonos | Igen | Yes |
 
-A fejléc használatakor `Ocp-Apim-Subscription-Key` csak az előfizetési kulcsot kell megadnia. Példa:
+A fejléc használatakor `Ocp-Apim-Subscription-Key` csak az előfizetési kulcsot kell megadnia. Például:
 
 ```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
@@ -151,7 +151,7 @@ def get_token(subscription_key):
 
 A hozzáférési jogkivonatot fejlécként kell elküldeni a szolgáltatásnak `Authorization: Bearer <TOKEN>` . Minden hozzáférési jogkivonat 10 percig érvényes. A hálózati forgalom és a késés csökkentése érdekében bármikor létrehozhat egy új jogkivonatot, de azt javasoljuk, hogy a tokent kilenc percre használja.
 
-Íme egy minta HTTP-kérelem a szöveg-beszéd REST API:
+Íme egy minta HTTP-kérelem a rövid hang beszéd-szöveg REST APIához:
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

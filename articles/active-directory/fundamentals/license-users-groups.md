@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2018
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e0fe1cf3bb628c40e774423e45ea88d6ab78a5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359713"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504406"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Licencek kiosztása vagy eltávolítása a Azure Active Directory portálon
 
@@ -47,13 +47,20 @@ Megtekintheti az elérhető szolgáltatási csomagokat, beleértve az egyes lice
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure ad-szervezetben található licenc-rendszergazdai fiók használatával.
 
-1. Válassza a **Azure Active Directory**lehetőséget, majd válassza a **licencek**lehetőséget.
+1. Válassza a **Azure Active Directory** lehetőséget, majd válassza a **licencek** lehetőséget.
 
-    ![Licencek lap, a megvásárolt szolgáltatások és a hozzárendelt licencek számával](media/license-users-groups/license-details-blade.png)
+    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="Licencek lap, a megvásárolt szolgáltatások és a hozzárendelt licencek számával":::
 
-1. A **megvásárolt** hivatkozásra kattintva megtekintheti a **termékek** lapot, és megtekintheti a licencekhez **rendelt**, **elérhető**és **hamarosan lejáró** számokat.
+1. Válassza a **minden termék** lehetőséget a minden termék lap megtekintéséhez, és tekintse meg a licencelési csomagok **összesített**, **hozzárendelt**, **elérhető** és **hamarosan lejáró** számát.
 
-    ![szolgáltatások lap, a szolgáltatási licencszerződésekkel és a kapcsolódó licenccel kapcsolatos információkkal](media/license-users-groups/license-products-blade-with-products.png)
+    :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="szolgáltatások lap – a Service License Plans – társított licenc adatai":::
+
+    > [!NOTE]
+    > A számok a következőképpen vannak definiálva: 
+    > - Összesen: megvásárolt licencek száma összesen
+    > - Hozzárendelt: a felhasználókhoz rendelt licencek száma
+    > - Elérhető: a hozzárendeléshez rendelkezésre álló licencek száma, beleértve a hamarosan lejárt
+    > - Hamarosan lejár: a hamarosan lejáró licencek száma
 
 1. Válassza ki a csomag nevét a licenccel rendelkező felhasználók és csoportok megtekintéséhez.
 
@@ -67,15 +74,15 @@ Győződjön meg arról, hogy a licenccel rendelkező Azure AD-szolgáltatás ha
 
     ![szolgáltatások lap, a Kiemelt szolgáltatási licencelési csomaggal](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. A licencelési terv áttekintése lapon válassza a **hozzárendelés**lehetőséget.
+1. A licencelési terv áttekintése lapon válassza a **hozzárendelés** lehetőséget.
 
     ![szolgáltatások lap, Kiemelt hozzárendelési lehetőséggel](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. A **hozzárendelés** lapon válassza a **felhasználók és csoportok**lehetőséget, majd keresse meg és válassza ki azt a felhasználót, akinek a licencet hozzárendeli.
+1. A **hozzárendelés** lapon válassza a **felhasználók és csoportok** lehetőséget, majd keresse meg és válassza ki azt a felhasználót, akinek a licencet hozzárendeli.
 
     ![Licencek kiosztása oldal, Kiemelt kereséssel és Select beállításokkal](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-1. Válassza a **hozzárendelési beállítások**lehetőséget, győződjön meg arról, hogy a megfelelő licencelési beállítások be vannak kapcsolva, majd kattintson **az OK gombra**.
+1. Válassza a **hozzárendelési beállítások** lehetőséget, győződjön meg arról, hogy a megfelelő licencelési beállítások be vannak kapcsolva, majd kattintson **az OK gombra**.
 
     ![Licencelési lehetőség lap, a licencelési csomagban elérhető összes lehetőséggel](media/license-users-groups/license-option-blade-assignments.png)
 
@@ -96,15 +103,15 @@ Győződjön meg arról, hogy a licenccel rendelkező Azure AD-szolgáltatás ha
 
     ![Termékek panel, Kiemelt termék licencelési csomaggal](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. A **prémium szintű Azure Active Directory 2. csomag** lapon válassza a **hozzárendelés**lehetőséget.
+1. A **prémium szintű Azure Active Directory 2. csomag** lapon válassza a **hozzárendelés** lehetőséget.
 
     ![Termékek lap, Kiemelt hozzárendelési lehetőséggel](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. A **hozzárendelés** lapon válassza a **felhasználók és csoportok**lehetőséget, majd keresse meg és válassza ki azt a csoportot, amelyhez hozzá szeretné rendelni a licencet.
+1. A **hozzárendelés** lapon válassza a **felhasználók és csoportok** lehetőséget, majd keresse meg és válassza ki azt a csoportot, amelyhez hozzá szeretné rendelni a licencet.
 
     ![Licenc kiosztása oldal, a kijelölt kereséssel és a 2. lehetőséggel](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-1. Válassza a **hozzárendelési beállítások**lehetőséget, győződjön meg arról, hogy a megfelelő licencelési beállítások be vannak kapcsolva, majd kattintson **az OK gombra**.
+1. Válassza a **hozzárendelési beállítások** lehetőséget, győződjön meg arról, hogy a megfelelő licencelési beállítások be vannak kapcsolva, majd kattintson **az OK gombra**.
 
     ![Licencelési lehetőség lap, a 2. licencelési csomagban elérhető összes lehetőséggel](media/license-users-groups/license-option-blade-group-assignments.png)
 
@@ -122,7 +129,7 @@ A licenceket eltávolíthatja egy felhasználó Azure AD-felhasználó oldalár�
 
 1. A szolgáltatási csomag **licenccel rendelkező felhasználók** lapján válassza ki azt a felhasználót, akinek már nem lesz a licence. Például _Alain Charon_.
 
-1. Válassza a **licenc eltávolítása**lehetőséget.
+1. Válassza a **licenc eltávolítása** lehetőséget.
 
     ![Licenccel rendelkező felhasználók lap Kiemelt licenc eltávolítása lehetőséggel](media/license-users-groups/license-products-user-blade-with-remove-option-highlight.png)
 
@@ -133,12 +140,12 @@ A licenceket eltávolíthatja egy felhasználó Azure AD-felhasználó oldalár�
 
 1. A licencelési csomag **licencelt csoportok** lapján válassza ki azt a csoportot, amelynek már nem lesz a licence.
 
-1. Válassza a **licenc eltávolítása**lehetőséget.
+1. Válassza a **licenc eltávolítása** lehetőséget.
 
     ![Licencelt csoportok lap – Kiemelt licenc eltávolítása lehetőség 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
-    > Ha egy Azure AD-val szinkronizált helyszíni felhasználói fiók a szinkronizálás hatókörén kívül esik, vagy ha a szinkronizálás el lett távolítva, a felhasználó az Azure AD-ben nem törlődik. Ha ez történik, a felhasználóhoz közvetlenül vagy csoportos licencelésen keresztül hozzárendelt licencek nem **töröltként**lesznek **felfüggesztve** .
+    > Ha egy Azure AD-val szinkronizált helyszíni felhasználói fiók a szinkronizálás hatókörén kívül esik, vagy ha a szinkronizálás el lett távolítva, a felhasználó az Azure AD-ben nem törlődik. Ha ez történik, a felhasználóhoz közvetlenül vagy csoportos licencelésen keresztül hozzárendelt licencek nem **töröltként** lesznek **felfüggesztve** .
 
 ## <a name="next-steps"></a>Következő lépések
 

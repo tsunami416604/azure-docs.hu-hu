@@ -5,16 +5,16 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 232a1ae5d125a2ea1d5723e85073fb3dd02420cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294219"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503556"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates-preview"></a>Fejlesztői környezet konfigurálása a sablonokban üzembe helyezési parancsfájlok számára (előzetes verzió)
+# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Fejlesztői környezet konfigurálása telepítési parancsfájlok telepítéséhez a sablonokban
 
 Ismerje meg, hogyan hozhat létre fejlesztési környezetet az üzembe helyezési parancsfájlok kiépítéséhez és teszteléséhez egy telepítési parancsfájl használatával. Létrehozhat [Azure Container-példányt](../../container-instances/container-instances-overview.md) vagy használhatja a [Docker](https://docs.docker.com/get-docker/)-t is. Mindkettőt ebben a cikkben tárgyaljuk.
 
@@ -197,7 +197,7 @@ A fájlt a Azure Portal és az Azure CLI használatával is feltöltheti.
 
     ![üzembe helyezési parancsfájl összekapcsolási tárolójának példánya](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
-1. Válassza a **kapcsolat**, majd a **kapcsolat**lehetőséget. Ha nem tud csatlakozni a Container-példányhoz, indítsa újra a tároló csoportot, és próbálkozzon újra.
+1. Válassza a **kapcsolat**, majd a **kapcsolat** lehetőséget. Ha nem tud csatlakozni a Container-példányhoz, indítsa újra a tároló csoportot, és próbálkozzon újra.
 1. A konzol ablaktábláján futtassa a következő parancsokat:
 
     ```
@@ -237,7 +237,7 @@ A fájlmegosztást úgy is be kell állítania, hogy csatlakoztassa a könyvtár
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    Cserélje le a ** &lt; gazdagép illesztőprogramjának betűjelét>** és az ** &lt; állomásnév nevét>** egy meglévő mappát a megosztott meghajtón.  Leképezi a mappát a tároló **/Data** mappájába. Példák a D:\docker leképezésére:
+    Cserélje le a **&lt; gazdagép illesztőprogramjának betűjelét>** és az **&lt; állomásnév nevét>** egy meglévő mappát a megosztott meghajtón.  Leképezi a mappát a tároló **/Data** mappájába. Példák a D:\docker leképezésére:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
@@ -257,7 +257,7 @@ A fájlmegosztást úgy is be kell állítania, hogy csatlakoztassa a könyvtár
 
 A parancsfájl sikeres tesztelése után a sablonban használható üzembe helyezési parancsfájlként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a telepítési parancsfájlokat. Útmutató az üzembe helyezési parancsfájlhoz:
 

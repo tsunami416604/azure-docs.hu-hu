@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558759"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505222"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Útmutató: az érzelmek elemzése és a vélemények bányászata
 
@@ -51,7 +51,7 @@ A megbízhatósági pontszámok 1-től 0-ig terjedhetnek. Az 1-nél közelebbi p
 
 ## <a name="opinion-mining"></a>Vélemény bányászata
 
-A kivonás a Hangulatelemzés egyik funkciója, amely a 3,1-es verziótól kezdődően érhető el. 1. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaiban) lévő véleményekkel kapcsolatos részletesebb információkat tartalmaz a szövegben található, aspektusokon alapuló Hangulatelemzésként is. 
+A kivonás a Hangulatelemzés egyik funkciója, amely az 3,1-es verzió előzetes verziójától kezdődően érhető el. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaiban) lévő véleményekkel kapcsolatos részletesebb információkat tartalmaz a szövegben található, aspektusokon alapuló Hangulatelemzésként is.
 
 Ha például egy ügyfél visszajelzést küld egy olyan szállodáról, mint például a "The Room nagyszerű volt, de a személyzet nem volt barátja.", a kisegítő adatbányászat megkeresi a szövegben szereplő szempontokat, valamint a hozzájuk kapcsolódó véleményeket és érzelmeit. Hangulatelemzés lehet, hogy csak negatív véleményét jelentse.
 
@@ -74,7 +74,7 @@ A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie a dokumentu
 
 Hozzon létre egy POST kérést. A [Poster](text-analytics-how-to-call-api.md) vagy az API- **tesztelési konzolt** a következő hivatkozásokra kattintva gyorsan strukturálhatja és küldheti el. 
 
-#### <a name="version-31-preview2"></a>[3,1-es verzió – preview. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[3,1-es verzió – preview. 3](#tab/version-3-1)
 
 [Hangulatelemzés v 3.1 – dokumentáció](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -91,17 +91,17 @@ Hozzon létre egy POST kérést. A [Poster](text-analytics-how-to-call-api.md) v
 > [!NOTE]
 > A Text Analytics erőforráshoz tartozó kulcsot és végpontot a Azure Portalban találja. Ezek az erőforrás **gyors üzembe helyezés** lapján, az **Erőforrás-kezelés** területen találhatók. 
 
-#### <a name="version-31-preview2"></a>[3,1-es verzió – preview. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[3,1-es verzió – preview. 3](#tab/version-3-1)
 
 **Hangulatelemzés**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
 
 **Vélemény bányászata**
 
 A vélemény adatbányászati eredményeinek beszerzéséhez meg kell adnia a `opinionMining=true` paramétert. Például:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
 
 Ez a paraméter alapértelmezés szerint be van állítva `false` . 
 
@@ -144,7 +144,7 @@ A Text Analytics API állapot nélküli. A fiókjában nem tárolunk semmilyen a
 
 A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is továbbíthatja, amely fogadja a JSON-t, vagy mentse a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy olyan alkalmazásba, amelyet az adatrendezéshez, kereséshez és kezeléshez használhat. A többnyelvű és a Emoji-támogatás miatt a válasz szöveges eltolásokat is tartalmazhat. További információkért lásd: [eltolások feldolgozása](../concepts/text-offsets.md) .
 
-#### <a name="version-31-preview2"></a>[3,1-es verzió – preview. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[3,1-es verzió – preview. 3](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Hangulatelemzés és vélemény bányászati példája
 
@@ -299,8 +299,8 @@ Ebben a cikkben a Text Analytics API segítségével megtanulta az érzelmek ele
 + `opinionMining=true`Az érző Analysis-kérelmekben a vélemény-adatbányászat eredményeinek beszerzéséhez.
 + A válasz kimenete, amely az egyes dokumentumok AZONOSÍTÓinak hangulati pontszámát tartalmazza, továbbítható bármely olyan alkalmazásnak, amely elfogadja a JSON-t. Például: Excel és Power BI.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [A Text Analytics áttekintése](../overview.md)
-* [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)
+* [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/client-libraries-rest-api.md)
 * [Újdonságok](../whats-new.md)

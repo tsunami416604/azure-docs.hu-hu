@@ -1,80 +1,121 @@
 ---
 title: Nevesített értékek használata az Azure API Management-házirendekben
-description: Megtudhatja, hogyan használhatja a nevesített értékeket az Azure API Management-házirendekben. A nevesített értékek literál karakterláncokat és házirend-kifejezéseket tartalmazhatnak.
+description: Megtudhatja, hogyan használhatja a nevesített értékeket az Azure API Management-házirendekben. A nevesített értékek tartalmazhatnak literál karakterláncokat, házirend-kifejezéseket és Azure Key Vault tárolt titkos kulcsokat.
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 12/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852191"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504732"
 ---
-# <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Nevesített értékek használata az Azure API Management-házirendekben
+# <a name="use-named-values-in-azure-api-management-policies"></a>Nevesített értékek használata az Azure API Management-házirendekben
 
-API Management házirendek a rendszer hatékony funkciója, amely lehetővé teszi, hogy a Azure Portal a konfiguráción keresztül megváltoztassa az API viselkedését. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A házirend-utasítások literális szöveges értékekkel, házirend-kifejezésekkel és elnevezett értékekkel állíthatók össze.
+[API Management a házirendek](api-management-howto-policies.md) a rendszer hatékony funkciója, amely lehetővé teszi a közzétevő számára, hogy konfiguráción változtassa meg az API viselkedését. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A házirend-utasítások literális szöveges értékekkel, házirend-kifejezésekkel és elnevezett értékekkel állíthatók össze.
 
-Minden API Management Service-példányhoz kulcs/érték párok gyűjteménye tartozik, amely neve named Values, amely globális a szolgáltatási példány számára. A gyűjtemény elemeinek száma nincs korlátozva. A nevesített értékek használatával állandó karakterlánc-értékeket kezelhet az összes API-konfigurációban és-házirendben. Minden megnevezett érték a következő tulajdonságokkal rendelkezhet:
+A *nevesített értékek* a név/érték párok globális gyűjteménye minden API Management-példányban. A gyűjtemény elemeinek száma nincs korlátozva. A nevesített értékek használatával állandó karakterlánc-értékeket és titkos kulcsokat kezelhet az összes API-konfiguráció és-szabályzat között. 
 
-| Attribútum      | Típus            | Description                                                                                                                            |
-| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `Display name` | sztring          | A megnevezett értékre hivatkozik a szabályzatokban. Egy 256 karakterből álló karakterlánc. Csak betűket, számokat, pontokat és kötőjeleket lehet engedélyezni. |
-| `Value`        | sztring          | Tényleges érték. Nem lehet üres, és nem állhat csak szóközökből. Legfeljebb 4096 karakter hosszú lehet.                                        |
-| `Secret`       | boolean         | Meghatározza, hogy az érték titkos-e, és hogy titkosítva legyen-e.                                                               |
-| `Tags`         | sztringek tömbje | A megnevezett értékek listájának szűrésére szolgál. Legfeljebb 32 címkével.                                                                                    |
+:::image type="content" source="media/api-management-howto-properties/named-values.png" alt-text="Megnevezett értékek a Azure Portal":::
 
-![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
+## <a name="value-types"></a>Értékek típusai
 
-A nevesített értékek literál karakterláncokat és [házirend-kifejezéseket](./api-management-policy-expressions.md)tartalmazhatnak. Az értéke például `Expression` egy olyan házirend-kifejezés, amely az aktuális dátumot és időpontot tartalmazó karakterláncot ad vissza. A megnevezett érték `Credential` titkosként van megjelölve, ezért az értéke alapértelmezés szerint nem jelenik meg.
+|Típus  |Description  |
+|---------|---------|
+|Egyszerű     |  Literális karakterlánc vagy házirend kifejezése     |
+|Titkos     |   A API Management által titkosított literális karakterlánc vagy házirend-kifejezés      |
+|[Key Vault](#key-vault-secrets)     |  Egy Azure Key vaultban tárolt titok azonosítója.      |
 
-| Name (Név)       | Érték                      | Titkos | Címkék          |
-| ---------- | -------------------------- | ------ | ------------- |
-| Érték      | 42                         | Hamis  | létfontosságú számok |
-| Hitelesítő adat | ••••••••••••••••••••••     | Igaz   | biztonság      |
-| Expression | @ (DateTime. Now. ToString ()) | Hamis  |               |
+Az egyszerű értékek vagy titkos kódok tartalmazhatnak [házirend-kifejezéseket](./api-management-policy-expressions.md). A kifejezés például `@(DateTime.Now.ToString())` egy karakterláncot ad vissza, amely az aktuális dátumot és időt tartalmazza.
 
-> [!NOTE]
-> Egy API Management szolgáltatásban tárolt névvel ellátott értékek helyett a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) szolgáltatásban tárolt értékeket használhatja, ahogy azt a [példa](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)mutatja.
+Az elnevezett érték attribútumaival kapcsolatos részletekért tekintse meg a API Management [REST API-referenciát](/rest/api/apimanagement/2020-06-01-preview/namedvalue/createorupdate).
 
-## <a name="to-add-and-edit-a-named-value"></a>Megnevezett érték hozzáadása és szerkesztése
+## <a name="key-vault-secrets"></a>Key Vault-titkok
 
-![Megnevezett érték hozzáadása](./media/api-management-howto-properties/add-property.png)
+A titkos értékek tárolhatók titkosított karakterláncként API Managementban (egyéni titok), vagy [Azure Key Vault](../key-vault/general/overview.md)a titkos kulcsokra hivatkozva. 
 
-1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
-2. Válassza a **nevesített értékek**lehetőséget.
-3. Kattintson a **+ Hozzáadás**gombra.
+A Key Vault-titkok használata ajánlott, mert segít javítani a API Management biztonságot:
 
-    A név és az érték kötelező érték. Ha az érték titkos, jelölje be a _titkos_ jelölőnégyzetet. Adjon meg egy vagy több opcionális címkét, amely segítséget nyújt az elnevezett értékek megszervezésében, majd kattintson a Mentés gombra.
+* A Key vaultokban tárolt titkos kódok újra felhasználhatók a szolgáltatások között
+* A részletes [hozzáférési szabályzatok](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) a titkokra alkalmazhatók
+* A Key vaultban frissített titkokat API Management automatikusan elforgatja a rendszer. A Key vaultban történt frissítés után a rendszer 4 órán belül frissíti API Managementban megnevezett értéket. 
 
-4. Kattintson a **Létrehozás** lehetőségre.
+### <a name="prerequisites-for-key-vault-integration"></a>A Key Vault-integráció előfeltételei
 
-A megnevezett érték létrehozása után a szerkesztéséhez kattintson rá. Ha megváltoztatja a megnevezett érték nevét, a rendszer automatikusan frissíti az adott nevesített értékre hivatkozó házirendeket az új név használatára.
+1. A kulcstartó létrehozásának lépéseiért lásd: gyors útmutató [: kulcstartó létrehozása a Azure Portal használatával](../key-vault/general/quick-create-portal.md).
+1. A rendszer által hozzárendelt vagy felhasználó által hozzárendelt [felügyelt identitás](api-management-howto-use-managed-service-identity.md) engedélyezése a API Management-példányban.
+1. Rendeljen hozzá egy [Key Vault-hozzáférési szabályzatot](../key-vault/general/assign-access-policy-portal.md) a felügyelt identitáshoz, amely engedélyekkel rendelkezik a titkos kódok lekéréséhez és listázásához a tárból. A szabályzat hozzáadása:
+    1. A portálon navigáljon a kulcstartóhoz.
+    1. Válassza a **beállítások > hozzáférési szabályzatok > + hozzáférési házirend hozzáadása** lehetőséget.
+    1. Válassza a **titkos engedélyek**, majd a **beolvasás** és a **lista** lehetőséget.
+    1. A **rendszerbiztonsági tag kiválasztása** területen válassza ki a felügyelt identitás erőforrásának nevét. Ha rendszer által hozzárendelt identitást használ, a rendszerbiztonsági tag a API Management példányának neve.
+1. Hozzon létre vagy importáljon egy titkos kulcsot a kulcstartóba. Lásd [: gyors útmutató: Azure Key Vault titkos kód beállítása és beolvasása a Azure Portal használatával](../key-vault/secrets/quick-create-portal.md).
 
-## <a name="to-delete-a-named-value"></a>Megnevezett érték törlése
+A Key Vault-titok használatához [adjon hozzá vagy szerkesszen egy megnevezett értéket](#add-or-edit-a-named-value), és adja meg a **Key Vault** típusát. Válassza ki a titkos kulcsot a Key vaultból.
 
-Megnevezett érték törléséhez kattintson a **Törlés** lehetőségre a nevesített érték mellett.
+> [!CAUTION]
+> Ha API Management Key Vault-titkot használ, ügyeljen arra, hogy ne törölje a Key Vault eléréséhez használt titkos kulcsot, kulcstartót vagy felügyelt identitást.
 
-> [!IMPORTANT]
-> Ha a nevesített érték bármely házirendre hivatkozik, akkor nem tudja sikeresen törölni, amíg el nem távolítja a megnevezett értéket az összes olyan házirendből, amelyik azt használja.
+Ha [Key Vault tűzfal](../key-vault/general/network-security.md) engedélyezve van a kulcstartón, a következő további követelmények vonatkoznak a Key Vault-titkok használatára:
 
-## <a name="to-search-and-filter-named-values"></a>Névvel ellátott értékek keresése és szűrése
+* A Key Vault eléréséhez a API Management példány **rendszer által hozzárendelt** felügyelt identitását kell használnia.
+* Key Vault tűzfalon engedélyezze a **megbízható Microsoft-szolgáltatások számára a tűzfal megkerülésének engedélyezése** beállítást.
 
-Az **elnevezett értékek** lapon keresési és szűrési lehetőségek találhatók a megnevezett értékek kezelésének megkönnyítésére. A nevesített értékek listájának név alapján történő szűréséhez írjon be egy keresési kifejezést a **keresési tulajdonság** szövegmezőbe. Az összes megnevezett érték megjelenítéséhez törölje a jelet a **keresési tulajdonság** szövegmezőből, és nyomja le az ENTER billentyűt.
+Ha a API Management példány egy virtuális hálózaton van telepítve, konfigurálja a következő hálózati beállításokat is:
+* A API Management alhálózaton Azure Key Vault engedélyezése a [szolgáltatási végpontoknak](../key-vault/general/overview-vnet-service-endpoints.md) .
+* Konfiguráljon egy hálózati biztonsági csoport (NSG) szabályt, hogy engedélyezze a kimenő forgalmat a AzureKeyVault és a AzureActiveDirectory [szolgáltatás címkéi](../virtual-network/service-tags-overview.md)számára. 
 
-Ha címkével szeretné szűrni a listát, adjon meg egy vagy több címkét a **Filter by Tags** szövegmezőbe. Az összes megnevezett érték megjelenítéséhez törölje a **szűrés címkék alapján** szövegmezőt, majd nyomja le az ENTER billentyűt.
+Részletekért lásd: hálózati konfiguráció részletei a [Kapcsolódás virtuális hálózathoz](api-management-using-with-vnet.md#-common-network-configuration-issues).
 
-## <a name="to-use-a-named-value"></a>Megnevezett érték használata
+## <a name="add-or-edit-a-named-value"></a>Megnevezett érték hozzáadása vagy szerkesztése
 
-Ha megnevezett értéket szeretne használni egy szabályzatban, helyezze a nevét egy dupla pár kapcsos zárójelbe `{{ContosoHeader}}` , ahogy az a következő példában látható:
+### <a name="add-a-key-vault-secret"></a>Key Vault-titok hozzáadása
+
+Lásd: [a Key Vault-integráció előfeltételei](#prerequisites-for-key-vault-integration).
+
+1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
+1. Az **API**-k területen válassza a **nevesített értékek**  >  **+ Hozzáadás** lehetőséget.
+1. Adja meg a **név** azonosítóját, és adjon meg egy **megjelenítendő nevet** , amely a tulajdonságra hivatkozik a szabályzatokban.
+1. Az **érték típusa mezőben** válassza a **Key Vault** elemet.
+1. Adja meg egy Key Vault-titok azonosítóját (verzió nélkül), vagy válassza a **kijelölés** lehetőséget egy kulcstartó titkos kódjának kiválasztásához.
+    > [!IMPORTANT]
+    > Ha saját maga adja meg a Key Vault titkos azonosítóját, győződjön meg róla, hogy nem rendelkezik a verzióval kapcsolatos információkkal. Ellenkező esetben a titkos kulcs nem forog automatikusan API Management a Key Vault frissítését követően.
+1. Az **ügyfél identitása** területen válasszon ki egy rendszer által hozzárendelt vagy egy meglévő felhasználó által hozzárendelt felügyelt identitást. Ismerje meg, hogyan [adhat hozzá vagy módosíthat felügyelt identitásokat a API Management szolgáltatásban](api-management-howto-use-managed-service-identity.md).
+    > [!NOTE]
+    > Az identitásnak jogosultsággal kell rendelkeznie a Key vaultban található titkos kódok beolvasásához és listázásához. Ha még nem konfigurálta a Key vaulthoz való hozzáférést, API Management felszólítja, hogy automatikusan konfigurálja az identitást a szükséges engedélyekkel.
+1. Adjon hozzá egy vagy több opcionális címkét a megnevezett értékek rendszerezéséhez, majd **mentse** a következőt:.
+1. Válassza a **Létrehozás** lehetőséget.
+
+    :::image type="content" source="media/api-management-howto-properties/add-property.png" alt-text="Key Vault titkos értékének hozzáadása":::
+
+### <a name="add-a-plain-or-secret-value"></a>Egyszerű vagy titkos érték hozzáadása
+
+1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
+1. Az **API**-k területen válassza a **nevesített értékek**  >  **+ Hozzáadás** lehetőséget.
+1. Adja meg a **név** azonosítóját, és adjon meg egy **megjelenítendő nevet** , amely a tulajdonságra hivatkozik a szabályzatokban.
+1. Az **érték típusa** mezőben válassza az **egyszerű** vagy a **titkos** lehetőséget.
+1. Az **érték** mezőben adjon meg egy karakterlánc-vagy házirend-kifejezést.
+1. Adjon hozzá egy vagy több opcionális címkét a megnevezett értékek rendszerezéséhez, majd **mentse** a következőt:.
+1. Válassza a **Létrehozás** lehetőséget.
+
+A megnevezett érték létrehozása után a név kiválasztásával szerkesztheti. Ha megváltoztatja a megjelenítendő nevet, a rendszer automatikusan frissíti az adott nevesített értékre hivatkozó házirendeket az új megjelenítendő név használatára.
+
+## <a name="use-a-named-value"></a>Névvel ellátott érték használata
+
+Az ebben a szakaszban szereplő példák az alábbi táblázatban látható megnevezett értékeket használják.
+
+| Name               | Érték                      | Titkos | 
+|--------------------|----------------------------|--------|---------|
+| ContosoHeader      | `TrackingId`                 | Hamis  | 
+| ContosoHeaderValue | ••••••••••••••••••••••     | Igaz   | 
+| ExpressionProperty | `@(DateTime.Now.ToString())` | Hamis  | 
+
+Ha megnevezett értéket szeretne használni egy házirendben, a megjelenítendő nevet a kapcsos zárójelek közé helyezheti, `{{ContosoHeader}}` ahogy az a következő példában látható:
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -84,9 +125,13 @@ Ha megnevezett értéket szeretne használni egy szabályzatban, helyezze a nev�
 
 Ebben a példában `ContosoHeader` a rendszer a szabályzat fejlécének neveként használja `set-header` , és `ContosoHeaderValue` a fejléc értékeként használja. Ha ezt a házirendet az API Management-átjáróra vonatkozó kérelem vagy válasz alapján értékeli ki, a `{{ContosoHeader}}` `{{ContosoHeaderValue}}` rendszer a megfelelő értékekkel helyettesíti a szabályzatot.
 
-Az elnevezett értékek teljes attribútumként vagy elemként használhatók, ahogy az az előző példában is látható, de az alábbi példában látható módon egy literális kifejezés egy részébe is beilleszthető vagy kombinálható: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Az elnevezett értékek teljes attribútumként vagy elemként használhatók, ahogy az az előző példában is látható, de az alábbi példában látható módon egy literális kifejezés egy részébe is beilleszthető vagy kombinálható: 
 
-A nevesített értékek házirend-kifejezéseket is tartalmazhatnak. A következő példában a `ExpressionProperty` használatban van.
+```xml
+<set-header name = "CustomHeader{{ContosoHeader}}" ...>
+```
+
+A nevesített értékek házirend-kifejezéseket is tartalmazhatnak. A következő példában a `ExpressionProperty` kifejezés van használatban.
 
 ```xml
 <set-header name="CustomHeader" exists-action="override">
@@ -94,17 +139,27 @@ A nevesített értékek házirend-kifejezéseket is tartalmazhatnak. A következ
 </set-header>
 ```
 
-A szabályzat kiértékelése után a `{{ExpressionProperty}}` rendszer a következő értékkel cseréli le: `@(DateTime.Now.ToString())` . Mivel az érték egy házirend-kifejezés, a rendszer kiértékeli a kifejezést, és a szabályzat végrehajtásával folytatja.
+Ha kiértékelik ezt a házirendet, a helyére az értékét adja meg `{{ExpressionProperty}}` `@(DateTime.Now.ToString())` . Mivel az érték egy házirend-kifejezés, a rendszer kiértékeli a kifejezést, és a szabályzat végrehajtásával folytatja.
 
-Ezt kipróbálhatja a fejlesztői portálon egy olyan művelet meghívásával, amelynek a hatókörében megnevezett értékekkel rendelkező házirend található. A következő példában egy műveletet kell meghívni a két korábbi `set-header` , nevesített értékekkel rendelkező házirenddel. Vegye figyelembe, hogy a válasz két olyan egyéni fejlécet tartalmaz, amelyek nevesített értékekkel rendelkező házirendek használatával lettek konfigurálva.
+Ezt a Azure Portal vagy a [fejlesztői portálon](api-management-howto-developer-portal.md) tesztelheti úgy, hogy olyan műveletet hív meg, amelynek a hatókörében megnevezett értékekkel rendelkező szabályzat található. A következő példában egy műveletet kell meghívni a két korábbi `set-header` , nevesített értékekkel rendelkező házirenddel. Figyelje meg, hogy a válasz két olyan egyéni fejlécet tartalmaz, amelyek nevesített értékekkel rendelkező házirendek használatával lettek konfigurálva.
 
-![Fejlesztői portál][api-management-send-results]
+:::image type="content" source="media/api-management-howto-properties/api-management-send-results.png" alt-text="API-válasz tesztelése":::
 
-Ha megtekinti az [API Inspector nyomkövetését](api-management-howto-api-inspector.md) egy olyan híváshoz, amely tartalmazza az elnevezett értékeket tartalmazó két korábbi minta szabályzatot, akkor a két, `set-header` beszúrt értékkel rendelkező szabályzatot, valamint a házirend kifejezés kiértékelését a házirend kifejezését tartalmazó megnevezett értékre is megtekintheti.
+Ha megtekinti a kimenő [API-nyomkövetést](api-management-howto-api-inspector.md) egy olyan híváshoz, amely tartalmazza a két korábbi, nevesített értékkel rendelkező minta szabályzatot, akkor a két, `set-header` beszúrt értékkel rendelkező szabályzatot, valamint a házirend kifejezés kiértékelését a házirend kifejezését tartalmazó megnevezett értékre.
 
-![API Inspector nyomkövetés][api-management-api-inspector-trace]
+:::image type="content" source="media/api-management-howto-properties/api-management-api-inspector-trace.png" alt-text="API Inspector nyomkövetés":::
+
+> [!CAUTION]
+> Ha egy házirend Azure Key Vault titkos kulcsra hivatkozik, akkor a kulcstartóban lévő érték látható lesz azoknak a felhasználóknak, akik hozzáférnek az [API-kérelmek nyomkövetéséhez](api-management-howto-api-inspector.md)engedélyezett előfizetésekhez.
 
 Míg a nevesített értékek tartalmazhatnak házirend-kifejezéseket, nem tartalmazhatnak más nevesített értékeket. Ha egy megnevezett értékű hivatkozást tartalmazó szöveget használ egy értékhez, például a `Text: {{MyProperty}}` hivatkozást, a hivatkozás nem lesz feloldva és lecserélve.
+
+## <a name="delete-a-named-value"></a>Megnevezett érték törlése
+
+Megnevezett érték törléséhez válassza ki a nevet, majd válassza a helyi menü **Törlés** elemét (**...**).
+
+> [!IMPORTANT]
+> Ha az elnevezett érték bármely API Management házirendre hivatkozik, akkor nem törölheti, amíg el nem távolítja a megnevezett értéket az összes olyan házirendből, amelyik azt használja.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -114,5 +169,4 @@ Míg a nevesített értékek tartalmazhatnak házirend-kifejezéseket, nem tarta
     -   [Házirend-kifejezések](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
-[api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
-[api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
+

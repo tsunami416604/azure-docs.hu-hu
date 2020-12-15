@@ -4,23 +4,21 @@ description: Megtudhatja, hogyan használhatja az üzembe helyezési szkripteket
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: carmonm
-editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/25/2020
+ms.date: 12/14/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: cc19222cf1e610c6c65d7c721a54f9949bed70ae
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 13d2fbdc2337995a2aa8056cdd93e2c348e550f6
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931435"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504372"
 ---
-# <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Oktatóanyag: az üzembe helyezési parancsfájlok használata önaláírt tanúsítvány létrehozásához (előzetes verzió)
+# <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Oktatóanyag: az üzembe helyezési parancsfájlok használata önaláírt tanúsítvány létrehozásához
 
 Megtudhatja, hogyan használhatja az üzembe helyezési szkripteket Azure Resource Manager-sablonokban (ARM-sablonok). Az üzembe helyezési parancsfájlok olyan egyéni lépések elvégzésére használhatók, amelyeket az ARM-sablonok nem végezhetnek el. Például hozzon létre egy önaláírt tanúsítványt.  Ebben az oktatóanyagban létrehoz egy sablont az Azure Key Vault üzembe helyezéséhez, majd egy olyan `Microsoft.Resources/deploymentScripts` erőforrást használ egy sablonban, amely létrehoz egy tanúsítványt, majd hozzáadja a tanúsítványt a kulcstartóhoz. További információ az üzembe helyezési parancsfájlról: [telepítési parancsfájlok használata ARM-sablonokban](./deployment-script-template.md).
 
@@ -178,7 +176,7 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
     ```json
     {
       "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2019-10-01-preview",
+      "apiVersion": "2020-10-01",
       "name": "createAddCertificate",
       "location": "[resourceGroup().location]",
       "dependsOn": [

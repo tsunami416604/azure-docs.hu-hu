@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7b035af85e250d97fb05625bf386bec8dc94a74c
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602784"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505256"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -31,7 +31,7 @@ A 3.1-es verziótól kezdődően a Text Analytics API két aszinkron végpontot 
 
 Az alábbi táblázatból megtudhatja, hogy mely szolgáltatásokat lehet aszinkron módon használni. Vegye figyelembe, hogy csak néhány funkció hívható meg a `/analyze` végpontról. 
 
-| Jellemző | Szinkron | Aszinkron |
+| Funkció | Szinkron | Aszinkron |
 |--|--|--|
 | Nyelvfelismerés | ✔ |  |
 | Hangulatelemzés | ✔ |  |
@@ -194,7 +194,7 @@ A poster (vagy egy másik webes API-tesztelési eszköz) területen adja hozzá 
 
 #### <a name="synchronous"></a>[Szinkron](#tab/synchronous)
 
-| Jellemző | Kérelemtípus | Erőforrás-végpontok |
+| Funkció | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Nyelvfelismerés | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | Hangulatelemzés | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
@@ -206,14 +206,14 @@ A poster (vagy egy másik webes API-tesztelési eszköz) területen adja hozzá 
 
 #### <a name="analyze"></a>[Elemzés](#tab/analyze)
 
-| Jellemző | Kérelemtípus | Erőforrás-végpontok |
+| Funkció | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Elemzési feladatok elküldése | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | Elemzési állapot és eredmények beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
 #### <a name="text-analytics-for-health"></a>[Egészségügyi Text Analytics](#tab/health)
 
-| Jellemző | Kérelemtípus | Erőforrás-végpontok |
+| Funkció | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Text Analytics beküldése a Health-feladatokhoz  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
 | Feladatok állapotának és eredményeinek beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
@@ -341,10 +341,10 @@ A Text Analytics for Health aszinkron API-válaszról a következő cikkben tal�
 
 --- 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
 * [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)
-* [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)
+* [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/client-libraries-rest-api.md)
 * [Újdonságok](../whats-new.md)

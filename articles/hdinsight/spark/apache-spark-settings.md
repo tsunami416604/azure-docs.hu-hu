@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 231ab5cc93d98d7356d47472b7e160ddd3ade790
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545939"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504933"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
 
@@ -121,7 +121,7 @@ A fonal az egyes Spark-csomópontokon lévő tárolók által használt memória
 
 ![A fonal Spark memóriájának kezelése](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
-## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter-jegyzetfüzetben futó alkalmazás paramétereinek módosítása
+## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook futó alkalmazás paramétereinek módosítása
 
 A HDInsight-alapú Spark-fürtök több összetevőt is tartalmaznak alapértelmezés szerint. Ezen összetevők mindegyike alapértelmezett konfigurációs értékeket tartalmaz, amelyeket szükség esetén felül lehet bírálni.
 
@@ -133,12 +133,12 @@ A HDInsight-alapú Spark-fürtök több összetevőt is tartalmaznak alapértelm
 |Jupyter és Apache Zeppelin notebookok|Interaktív böngészőalapú felhasználói felület a Spark-fürttel való interakcióhoz.|
 |ODBC-illesztő|A HDInsight-alapú Spark-fürtök összekapcsolása az üzleti intelligencia (BI) eszközeivel, például a Microsoft Power BI és a tabló használatával.|
 
-A Jupyter notebookon futó alkalmazások esetében használja a `%%configure` parancsot a konfiguráció módosítására a jegyzetfüzetből. Ezek a konfigurációs változások a notebook-példányról futtatott Spark-feladatokra lesznek alkalmazva. Az első kódrészlet futtatása előtt végezze el az ilyen módosításokat az alkalmazás elején. A rendszer a módosított konfigurációt alkalmazza a Livy-munkamenetre a létrehozásakor.
+A Jupyter Notebook futó alkalmazások esetében a `%%configure` paranccsal a saját jegyzetfüzetből végezheti el a konfigurációs módosításokat. Ezek a konfigurációs változások a notebook-példányról futtatott Spark-feladatokra lesznek alkalmazva. Az első kódrészlet futtatása előtt végezze el az ilyen módosításokat az alkalmazás elején. A rendszer a módosított konfigurációt alkalmazza a Livy-munkamenetre a létrehozásakor.
 
 > [!NOTE]  
 > Ha az alkalmazás egy későbbi szakaszában szeretné módosítani a konfigurációt, használja a `-f` (Force) paramétert. Azonban az alkalmazás minden folyamata el fog veszni.
 
-Az alábbi kód azt mutatja be, hogyan lehet módosítani egy Jupyter-jegyzetfüzetben futó alkalmazás konfigurációját.
+Az alábbi kód azt mutatja be, hogyan lehet módosítani egy Jupyter Notebook futó alkalmazás konfigurációját.
 
 ```
 %%configure

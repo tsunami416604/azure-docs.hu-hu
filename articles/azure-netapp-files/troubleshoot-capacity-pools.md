@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369239"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505460"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Kapacitáskészletekkel kapcsolatos hibák elhárítása
 
@@ -33,7 +33,7 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel a kapacitási készletek 
 | Kapacitási készlet törlésével kapcsolatos problémák  |  Győződjön meg arról, hogy az előfizetésben lévő összes Azure NetApp Files kötetet és pillanatképet eltávolítja, ahol törölni szeretné a kapacitási készletet. <br> Ha már eltávolította az összes kötetet és pillanatképet, és továbbra sem tudja törölni a kapacitás-készletet, az erőforrásokra mutató hivatkozások továbbra is előfordulhatnak a portálon való megjelenítés nélkül. Ebben az esetben egy támogatási jegyet kell megadnia, és meg kell adnia, hogy végrehajtotta a fenti javasolt lépéseket. |
 | A kötet létrehozása vagy módosítása a `Requested throughput not available` következő hibával meghiúsul: | A kötetek rendelkezésre álló átviteli sebességét a kapacitási készlet mérete és a szolgáltatási szint határozza meg. Ha nem rendelkezik elegendő átviteli sebességgel, növelje a készlet méretét, vagy módosítsa a meglévő kötet átviteli sebességét. | 
 
-## <a name="issues-moving-a-capacity-pool"></a>Kapacitási készlet áthelyezésével kapcsolatos problémák 
+## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>Kötetek kapacitási készletének módosításakor felmerülő problémák 
 
 > [!IMPORTANT] 
 > A mennyiségi nyilvános előzetes regisztráció [szolgáltatási szintjének dinamikus módosítása](dynamic-change-volume-service-level.md) további értesítésig tart.
@@ -44,7 +44,7 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel a kapacitási készletek 
 | A kapacitási készlet mérete túl kicsi a teljes kötet méretéhez. |  A hiba oka, hogy a célként megadott kapacitási készlet nem rendelkezik az áthelyezett kötet rendelkezésre álló kapacitásával.  <br> Növelje a cél készlet méretét, vagy válasszon egy nagyobb készletet.  Lásd: [Kapacitási készlet vagy kötet átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md).   |
 |  A készlet módosítása nem hajtható végre, mert egy nevű kötet `'{source pool name}'` már létezik a célként megadott készletben. `'{target pool name}'` | Ez a hiba azért fordul elő, mert már létezik ilyen nevű kötet a cél kapacitási készletben.  Válasszon egy másik olyan kapacitási készletet, amely nem rendelkezik azonos nevű kötettel.   | 
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 * [Manuális QoS-kapacitáskészlet kezelése](manage-manual-qos-capacity-pool.md)

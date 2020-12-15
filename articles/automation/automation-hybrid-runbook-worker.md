@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7bd9560399a2b2b377cb543a4f829883bcbdf7c8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7feac3ccb94cd8b4b0fab509477d4dbf772df2ae
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183770"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505528"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hibrid runbook-feldolgozó – áttekintés
 
@@ -22,7 +22,7 @@ A következő ábra szemlélteti ezt a funkciót:
 
 Kétféle Runbook-feldolgozó létezik – rendszer és felhasználó. A következő táblázat ismerteti a kettő közötti különbséget.
 
-|Típus | Leírás |
+|Típus | Description |
 |-----|-------------|
 |**Rendszer** |A támogatja a Update Management szolgáltatás által használt rejtett runbookok, amelyek a Windows és Linux rendszerű gépeken a felhasználó által megadott frissítések telepítéséhez lettek kialakítva.<br> Az ilyen típusú hibrid Runbook-feldolgozó nem tagja a hibrid Runbook Worker csoportnak, ezért nem futtatja a Runbook-munkavégző csoportra irányuló runbookok. |
 |**Felhasználó** |Támogatja a felhasználó által definiált runbookok, amely közvetlenül a Windows és Linux rendszerű gépen fut, amely egy vagy több Runbook Worker-csoport tagja. |
@@ -92,7 +92,7 @@ Azure Automation Hybrid Runbook Worker Azure Government használható a követke
 
 * [Elkülönített virtuális gép](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines). Üzembe helyezéskor a rendszer az adott gép teljes fizikai gazdagépét használja fel a IL5-munkaterhelések támogatásához szükséges elkülönítési szint biztosításához.
 
-* Az [Azure dedikált gazdagépei](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts)olyan fizikai kiszolgálókat biztosítanak, amelyek egy vagy több virtuális gép üzemeltetésére képesek egy Azure-előfizetéshez.
+* Az [Azure dedikált gazdagépei](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host)olyan fizikai kiszolgálókat biztosítanak, amelyek egy vagy több virtuális gép üzemeltetésére képesek egy Azure-előfizetéshez.
 
 >[!NOTE]
 >A hibrid Runbook-feldolgozói szerepkörrel való számítási elkülönítés az Azure kereskedelmi és az USA kormányzati felhők számára érhető el. 

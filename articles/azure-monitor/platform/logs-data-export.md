@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 4155cda1e1de6f15aefa6d5fc960988eba15068d
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 8fa823620d6d1306260d719cbabaa3d815cc0d09
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371968"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505443"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -120,18 +120,18 @@ Az adatexportálási szabály a táblák egy adott célhelyére exportálandó a
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+N.A.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N/A
+N.A.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az alábbi CLI-paranccsal megtekintheti a munkaterületen lévő táblákat. Ez segíthet a kívánt táblák másolásában és az adatexportálási szabályban való felvételében.
 
 ```azurecli
-az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
+az monitor log-analytics workspace table list --resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
 ```
 
 A következő parancs használatával hozzon létre egy adatexportálási szabályt egy Storage-fiókhoz a parancssori felület használatával.
@@ -222,11 +222,11 @@ Az alábbi példa egy Event hub REST-kérelmére szolgál, ahol az Event hub nev
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+N.A.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N/A
+N.A.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -249,11 +249,11 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+N.A.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N/A
+N.A.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -291,11 +291,11 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+N.A.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N/A
+N.A.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -318,11 +318,11 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+N.A.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-N/A
+N.A.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

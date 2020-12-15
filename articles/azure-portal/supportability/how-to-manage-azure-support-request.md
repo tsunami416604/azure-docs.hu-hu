@@ -4,13 +4,13 @@ description: Ismerteti a támogatási kérések megtekintését, az üzenetek k�
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: 882dfaa802638efd98eaf6f12a33a77a9727adc2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.date: 12/14/2020
+ms.openlocfilehash: 8110f87401da1352309fb55615093d49981c754d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359064"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504814"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure-támogatáskérés kezelése
 
@@ -119,9 +119,17 @@ A fájlfeltöltés lehetőség használata esetén kövesse az alábbi irányelv
 | -           | -     | -           | -     | -        | -          | .zix    |
 | -           | -     | -           | -     | -        | -          | . ZZZ    |
 
+## <a name="close-a-support-request"></a>Támogatási kérelem lezárása
+
+Ha le kell zárnia egy támogatási kérelmet, [küldjön egy üzenetet](#send-a-message) , amely arra kéri, hogy zárja be a kérést.
+
 ## <a name="reopen-a-closed-request"></a>Lezárt kérelem újbóli megnyitása
 
 Ha újra meg kell nyitnia egy lezárt támogatási kérelmet, hozzon létre egy [új üzenetet](#send-a-message), amely automatikusan újra megnyitja a kérést.
+
+## <a name="cancel-a-support-plan"></a>Támogatási csomag megszakítása
+
+Ha meg kell szakítania egy támogatási csomagot, tekintse meg [a támogatási csomag megszakítása](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

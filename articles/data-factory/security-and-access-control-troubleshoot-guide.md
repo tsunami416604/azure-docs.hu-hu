@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 99c03ae4430d1a4caf575bdb9900200af0217bf1
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 51cb1a1a8151748fc9c6cd4c81da967424b52868
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109766"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505154"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Biztonsági és hozzáférés-vezérlési problémák elhárítása Azure Data Factory
 
@@ -23,114 +23,113 @@ Ez a cikk a Azure Data Factory biztonsági és hozzáférés-vezérlésének gya
 
 ## <a name="common-errors-and-messages"></a>Gyakori hibák és üzenetek
 
-
-### <a name="connectivity-issue-of-copy-activity-in-cloud-data-store"></a>A másolási tevékenység kapcsolódási problémája a felhőalapú adattárban
+### <a name="connectivity-issue-in-the-copy-activity-of-the-cloud-datastore"></a>Kapcsolódási probléma a Cloud adattár másolási tevékenységében
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-A forrás/fogadó adattár kapcsolódási problémája miatt különféle típusú hibaüzenetek adhatók vissza.
+A forrás-vagy a fogadó adattárban csatlakozási problémák merülhetnek fel.
 
 #### <a name="cause"></a>Ok 
 
-A problémát többnyire a következő tényezők okozzák:
+A problémát általában az alábbi tényezők okozzák:
 
-1. Proxy beállítása a saját üzemeltetésű integrációs modul csomópontjában (ha saját üzemeltetésű IR-t használ)
+* A saját üzemeltetésű integrációs modul (IR) csomópontjának proxy beállítása, ha saját üzemeltetésű IR-t használ.
 
-1. Tűzfal beállítása a saját üzemeltetésű integrációs modul csomópontjában (ha saját üzemeltetésű IR-t használ)
+* A tűzfal beállítása a saját üzemeltetésű IR-csomópontban, ha saját üzemeltetésű integrációs modult használ.
 
-1. Tűzfal beállítása a felhőalapú adattárban
+* A tűzfal beállítása a felhő adattárában.
 
 #### <a name="resolution"></a>Feloldás
 
-1. Először ellenőrizze a következő pontokat, hogy a probléma a kapcsolódási probléma miatt következik-e be:
+* A kapcsolódási probléma megoldásához ellenőrizze a következő szempontokat:
 
-   - A hiba a forrás/fogadó összekötőtől származik.
+   - A hiba a forrás vagy a fogadó összekötőtől származik.
+   - A hiba a másolási tevékenység elején történik.
+   - A hiba konzisztens a Azure IR vagy a saját üzemeltetésű, egyetlen csomóponttal rendelkező integrációs modul esetében, mert a több csomópontos, saját üzemeltetésű integrációs modul véletlenszerű meghibásodása lehet, ha csak néhány csomópont rendelkezik a problémával.
 
-   - A tevékenység a másolás elején meghiúsul
+* Ha **saját** üzemeltetésű integrációs modult használ, ellenőrizze a proxy-, a tűzfal-és a hálózati beállításokat, mert az ugyanahhoz az adattárhoz való csatlakozás sikeres lehet, ha Azure IR használ. A forgatókönyv hibáinak megoldásához tekintse meg a következőt:
 
-   - A Azure IR vagy a saját üzemeltetésű integrációs modul konzisztens meghibásodása egy csomóponttal, mivel ez véletlenszerű hiba lehet a több csomópontos, saját üzemeltetésű integrációs modul esetében, ha csak a csomópontok egy része rendelkezik a problémával.
-
-1. Ellenőrizze a proxyt, a tűzfalat és a hálózati beállításokat, ha **saját** üzemeltetésű integrációs modult használ, mert az ugyanazon az adattáron való futtatás sikerült Azure IR. A következő hivatkozásokat tekintse át a hibakereséshez:
-
-   [Saját üzemeltetésű IR-portok és tűzfalak](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls) 
-    [ADLS-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
+   * [Saját üzemeltetésű IR-portok és tűzfalak](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls)
+   * [Azure Data Lake Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
   
-1. Ha **Azure IR** használ, próbálja meg letiltani az adattár tűzfal-beállítását. Ezzel a módszerrel a következő két esettel kapcsolatos problémát lehet megállapítani:
+* Ha **Azure IR** használ, próbálja meg letiltani az adattár tűzfalbeállítások beállítását. Ez a módszer a következő két helyzetben képes megoldani a problémákat:
   
-   * [Azure IR IP-címek](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses) nincsenek az engedélyezési listán.
+   * [Azure IR IP-címek](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses) nem szerepelnek az engedélyezési listán.
+   * A *megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése ehhez a Storage-fiókhoz* funkció ki van kapcsolva az [Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities) és [Azure Data Lake Storage Gen 2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities).
+   * Az *Azure-szolgáltatásokhoz való hozzáférés engedélyezése* beállítás nincs engedélyezve a Azure Data Lake Storage Gen1.
 
-   * A *megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése ehhez a Storage-fiókhoz* funkció ki van kapcsolva az [Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities) és a [ADLS Gen 2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities)esetében.
-
-   * Az *Azure-szolgáltatásokhoz való hozzáférés engedélyezése* nincs engedélyezve a ADLS Gen1.
-
-1. Ha a fenti módszerek nem működnek, kérje a Microsoft segítségét.
+Ha az előző módszerek egyike sem működik, forduljon a Microsofthoz segítségért.
 
 
 ### <a name="invalid-or-empty-authentication-key-issue-after-public-network-access-is-disabled"></a>Érvénytelen vagy üres hitelesítési kulcs probléma a nyilvános hálózati hozzáférés letiltása után
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-Miután letiltotta Data Factory nyilvános hálózati hozzáférését, mert a saját üzemeltetésű integrációs modul a következő hibát veti fel: "a hitelesítési kulcs érvénytelen vagy üres."
+Miután letiltotta Data Factory nyilvános hálózati hozzáférését, a saját üzemeltetésű integrációs modul a következő hibát veti fel: "a hitelesítési kulcs érvénytelen vagy üres."
 
 #### <a name="cause"></a>Ok
 
-A probléma valószínűleg a DNS-feloldási probléma okozza, mivel a nyilvános kapcsolatok letiltása és a privát végpontok létrehozása nem segít az újracsatlakozásban.
+A problémát valószínűleg a tartománynévrendszer (DNS) feloldási problémája okozza, mivel a nyilvános kapcsolatok letiltása és a privát végpontok létrehozása megakadályozza az újracsatlakozást.
 
-Az alábbi lépések végrehajtásával ellenőrizheti, hogy az Data Factory teljes tartománynevet a nyilvános IP-címhez oldja-e fel:
+Annak ellenőrzéséhez, hogy a Data Factory teljes tartományneve (FQDN) fel van-e oldva a nyilvános IP-címhez, tegye a következőket:
 
-1. Győződjön meg arról, hogy az Azure-beli virtuális gépet ugyanabban a VNET hozta létre, mint Data Factory privát végpontot.
+1. Győződjön meg arról, hogy az Azure virtuális gépet (VM) ugyanabban a virtuális hálózaton hozta létre, mint a Data Factory magánhálózati végpontot.
 
-2. PsPing futtatása és pingelése az Azure-beli virtuális gépről Data Factory FQDN-re:
-
-   `ping <dataFactoryName>.<region>.datafactory.azure.net`
+2. Futtassa a PsPing és a ping parancsot az Azure-beli virtuális gépről a Data Factory FQDN-re:
 
    `psping.exe <dataFactoryName>.<region>.datafactory.azure.net:443`
+   `ping <dataFactoryName>.<region>.datafactory.azure.net`
 
    > [!Note]
-   > A PsPing parancshoz meg kell adni egy portot, míg a 443-es port nem kötelező.
+   > Meg kell adnia egy portot a PsPing parancshoz. Az 443-es port itt látható, de nem kötelező.
 
-3. Ellenőrizze, hogy mindkét parancs feloldása egy, a megadott régión alapuló ADF nyilvános IP-címhez történt-e (xxx. xxx. xxx. 0 formátum).
+3. Ellenőrizze, hogy mindkét parancs egy adott régión alapuló Azure Data Factory nyilvános IP-címhez van-e feloldva. Az IP-címet a következő formátumban kell megadni: `xxx.xxx.xxx.0`
 
 #### <a name="resolution"></a>Feloldás
 
-- A [Azure Data Factoryra vonatkozó Azure-beli privát hivatkozásban](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints)található cikkben talál további információt. Az utasítás a magánhálózati DNS-zóna/-kiszolgáló konfigurálására szolgál az Data Factory teljes tartománynevek magánhálózati IP-címként való feloldásához.
+A probléma megoldásához tegye a következőket:
+- Tekintse meg [Azure Data Factory cikkhez tartozó Azure Private-hivatkozást](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints) . Az utasítás a magánhálózati DNS-zóna vagy-kiszolgáló konfigurálására szolgál az Data Factory FQDN magánhálózati IP-címhez való feloldásához.
 
-- Ha jelenleg nem kívánja konfigurálni a magánhálózati DNS-zónát vagy-kiszolgálót, kérjük, végezze el az alábbi lépéseket ideiglenes megoldásként. Az egyéni DNS azonban továbbra is ajánlott hosszú távú megoldásként.
+- Javasoljuk, hogy használjon egy egyéni DNS-t hosszú távú megoldásként. Ha azonban nem szeretné konfigurálni a magánhálózati DNS-zónát vagy-kiszolgálót, próbálja meg a következő ideiglenes megoldást:
 
-  1. Módosítsa a Windows rendszerű gazdagépet, és a privát IP-címet (ADF-t) Az ADF teljes tartománynevére.
+  1. Módosítsa a Windows rendszerű gazdagépet, és rendelje hozzá a magánhálózati IP-címet (a Azure Data Factory magánhálózati végpontot) a Azure Data Factory FQDN-hez.
   
-     Navigáljon a "C:\Windows\System32\drivers\etc" elérési útra az Azure-beli virtuális gépen, és nyissa meg **a fájlt a** Jegyzettömbben. A fájl végén adja hozzá a privát IP-címek leképezése a teljes tartománynévhez lehetőséget, és mentse a változást.
+     Az Azure-beli virtuális gépen lépjen a (z `C:\Windows\System32\drivers\etc` ) elemre, majd nyissa meg a fájlt a Jegyzettömbben.  Adja hozzá azt a sort, amely a magánhálózati IP-címet leképezi a fájl végén lévő teljes tartománynévre, és mentse a változást.
      
-     ![Hozzárendelés hozzáadása a gazdagéphez](media/self-hosted-integration-runtime-troubleshoot-guide/add-mapping-to-host.png)
+     ![Képernyőfelvétel: a magánhálózati IP-cím hozzárendelése a gazdagéphez.](media/self-hosted-integration-runtime-troubleshoot-guide/add-mapping-to-host.png)
 
-  1. Futtassa újra a fenti ellenőrzési lépések utasításait a válasz ellenőrzéséhez, amelynek tartalmaznia kell a magánhálózati IP-címet.
+  1. Futtassa újra ugyanazokat a parancsokat, mint az előző ellenőrzési lépésekben a válasz ellenőrzéséhez, amelynek tartalmaznia kell a magánhálózati IP-címet.
 
-  1. Regisztrálja újra a saját üzemeltetésű integrációs modult, és a problémát meg kell oldani.
- 
+  1. Regisztrálja újra a saját üzemeltetésű integrációs modult, és a problémát fel kell oldani.
 
 ### <a name="unable-to-register-ir-authentication-key-on-self-hosted-vms-due-to-private-link"></a>Nem lehet regisztrálni az IR hitelesítési kulcsot a saját üzemeltetésű virtuális gépeken privát hivatkozás miatt
 
 #### <a name="symptoms"></a>Hibajelenségek
 
-Nem lehet regisztrálni az IR hitelesítési kulcsot a saját üzemeltetésű virtuális gépen, mert a magánhálózati kapcsolat engedélyezve van.
+Nem lehet regisztrálni az IR hitelesítési kulcsot a saját üzemeltetésű virtuális gépen, mert a magánhálózati kapcsolat engedélyezve van. A következő hibaüzenet jelenik meg:
 
-A hiba adatai az alábbiak szerint jelennek meg:
-
-`
-Failed to get service token from ADF service with key *************** and time cost is: 0.1250079 seconds, the error code is: InvalidGatewayKey, activityId is: XXXXXXX and detailed error message is Client IP address is not valid private ip Cause Data factory couldn’t access the public network thereby not able to reach out to the cloud to make the successful connection.
-`
+"Nem sikerült lekérni a Service tokent az ADF szolgáltatásból a (z) * * * * * * * * * * * * * * * * * * * * * * * * * * * 0,1250079 másodperc, a hibakód a következő: InvalidGatewayKey, tevékenységazonosító: XXXXXXX és részletes hibaüzenet az ügyfél IP-címe nem érvényes magánhálózati IP-cím, mert az adatelőállító nem tudta elérni a nyilvános hálózatot, így nem tud hozzáférni a felhőhöz a sikeres kapcsolat érdekében."
 
 #### <a name="cause"></a>Ok
 
-A problémát a virtuális gép okozhatja, amelyben a saját üzemeltetésű integrációs modul telepítését kísérli meg. A felhőhöz való kapcsolódáshoz győződjön meg arról, hogy a nyilvános hálózati hozzáférés engedélyezve van.
+A problémát a virtuális gép okozhatja, amelyben a saját üzemeltetésű integrációs modult próbálja telepíteni. A felhőhöz való kapcsolódáshoz ellenőrizze, hogy engedélyezve van-e a nyilvános hálózati hozzáférés.
 
 #### <a name="resolution"></a>Feloldás
 
- **1. megoldás:** A probléma megoldásához kövesse az alábbi lépéseket:
+**1\. megoldás**
+ 
+A probléma megoldásához tegye a következőket:
 
 1. Nyissa meg a [gyárak – frissítés](https://docs.microsoft.com/rest/api/datafactory/Factories/Update) lapot.
 
 1. A jobb felső sarokban kattintson a **TRY IT (kipróbálás** ) gombra.
+1. A **Paraméterek** területen végezze el a szükséges információkat. 
+1. A **törzs** alatt illessze be a következő tulajdonságot:
+
+    ```
+    { "tags": { "publicNetworkAccess":"Enabled" } }
+    ```
+1. Válassza a **Futtatás** lehetőséget a függvény futtatásához. 
 
 1. A **Paraméterek** területen végezze el a szükséges információkat. 
 
@@ -140,19 +139,18 @@ A problémát a virtuális gép okozhatja, amelyben a saját üzemeltetésű int
     ``` 
 
 1. Válassza a **Futtatás** lehetőséget a függvény futtatásához. 
-
 1. Győződjön meg arról, hogy a 200-es **hibakód** jelenik meg. A beillesztett tulajdonságnak a JSON-definícióban is szerepelnie kell.
 
 1. Adja hozzá ismét az IR-hitelesítési kulcsot az Integration Runtime-ban.
 
 
-**2. megoldás:** A megoldásról a következő cikkben talál további információt:
+**2\. megoldás**
 
-https://docs.microsoft.com/azure/data-factory/data-factory-private-link
+A probléma megoldásához nyissa meg a [Azure Data Factory Azure-beli privát hivatkozását](https://docs.microsoft.com/azure/data-factory/data-factory-private-link).
 
 Próbálja meg engedélyezni a nyilvános hálózati hozzáférést a felhasználói felületen a következő képernyőképen látható módon:
 
-![Nyilvános hálózati hozzáférés engedélyezése](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+![Képernyőfelvétel: "engedélyezve" vezérlő a "nyilvános hálózati hozzáférés engedélyezése" beállításnál a hálózatkezelés ablaktáblán.](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

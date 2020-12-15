@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 12/14/2020
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c120f343ec539783f04fe35e96891c5372c5d39
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 466b9e389beb94ff527cbce014ca39f85de8d5bd
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109079"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503624"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Feltételes hozzáférés hozzáadása a felhasználói folyamatokhoz Azure Active Directory B2C
 
@@ -34,6 +35,22 @@ A feltételes hozzáférés a felhasználói folyamatok legújabb verzióiban t�
 - **Feltételes hozzáférés**: a beállításnak mindig **be kell jelentkeznie**. Ezt a beállítást általában a hibaelhárítás vagy az áttelepítés során, vagy az örökölt implementációk esetén kell **kikapcsolni** .
 
 További információ az [Identity Protectionről és a feltételes hozzáférésről](conditional-access-identity-protection-overview.md) Azure ad B2Cban, illetve a [beállításáról](conditional-access-identity-protection-setup.md).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+- A kockázatos bejelentkezési szabályzatok létrehozásához Azure AD B2C Premium 2 szükséges. A prémium P1-bérlők létrehozhatnak helyet, alkalmazást vagy csoporton alapuló házirendeket.
+- Tesztelési célból [regisztrálhat](tutorial-register-applications.md) egy `https://jwt.ms` Microsoft tulajdonú webalkalmazást, amely egy jogkivonat dekódolású tartalmát jeleníti meg (a jogkivonat tartalma soha nem hagyja el a böngészőt). 
+- Ha kockázatos bejelentkezést szeretne szimulálni, töltse le a TOR böngészőt, és próbálja meg bejelentkezni a felhasználói folyamat végpontba.
+- A következő beállítások használatával [hozzon létre egy feltételes hozzáférési szabályzatot](conditional-access-identity-protection-setup.md):
+   
+  - **Felhasználók és csoportok** esetében válassza a felhasználó tesztelése lehetőséget (ne jelölje ki az **összes felhasználót** , vagy tiltsa le a bejelentkezést).
+  - **Felhőalapú alkalmazások vagy műveletek** esetében válassza az **alkalmazások kiválasztása** lehetőséget, majd válassza ki a függő entitás alkalmazását.
+  - A feltételek beállításnál válassza a **bejelentkezési kockázat** és a **magas**, **közepes** és **alacsony** kockázati szintek lehetőséget.
+  - A **támogatás** mezőben válassza a **hozzáférés letiltása** lehetőséget.
+
+      ![Kockázatészlelések](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>Feltételes hozzáférés hozzáadása egy új felhasználói folyamathoz
 
@@ -89,19 +106,6 @@ További információ az [Identity Protectionről és a feltételes hozzáféré
 
 A felhasználói folyamat feltételes hozzáférésének teszteléséhez [hozzon létre egy feltételes hozzáférési szabályzatot](conditional-access-identity-protection-setup.md) , és engedélyezze a feltételes hozzáférést a felhasználói folyamatokban a fent leírtak szerint. 
 
-### <a name="prerequisites"></a>Előfeltételek
-
-- A kockázatos bejelentkezési szabályzatok létrehozásához Azure AD B2C Premium 2 szükséges. A prémium P1-bérlők létrehozhatnak helyet, alkalmazást vagy csoporton alapuló házirendeket.
-- Tesztelési célból [regisztrálhat](tutorial-register-applications.md) egy `https://jwt.ms` Microsoft tulajdonú webalkalmazást, amely egy jogkivonat dekódolású tartalmát jeleníti meg (a jogkivonat tartalma soha nem hagyja el a böngészőt). 
-- Ha kockázatos bejelentkezést szeretne szimulálni, töltse le a TOR böngészőt, és próbálja meg bejelentkezni a felhasználói folyamat végpontba.
-- A következő beállítások használatával [hozzon létre egy feltételes hozzáférési szabályzatot](conditional-access-identity-protection-setup.md):
-   
-   - **Felhasználók és csoportok** esetében válassza a felhasználó tesztelése lehetőséget (ne jelölje ki az **összes felhasználót** , vagy tiltsa le a bejelentkezést).
-   - **Felhőalapú alkalmazások vagy műveletek** esetében válassza az **alkalmazások kiválasztása** lehetőséget, majd válassza ki a függő entitás alkalmazását.
-   - A feltételek beállításnál válassza a **bejelentkezési kockázat** és a **magas**, **közepes** és **alacsony** kockázati szintek lehetőséget.
-   - A **támogatás** mezőben válassza a **hozzáférés letiltása** lehetőséget.
-
-      ![Kockázatészlelések](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>A felhasználói folyamat futtatása
 
@@ -116,6 +120,16 @@ A felhasználói folyamat feltételes hozzáférésének teszteléséhez [hozzon
 1. Adja meg a kért információkat a bejelentkezési lapon, majd próbálja meg bejelentkezni. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek. A dekódolású jwt.ms-tokenben látnia kell, hogy a bejelentkezés le lett tiltva:
 
    ![Blokkolt bejelentkezés tesztelése](media/conditional-access-identity-protection-setup/test-blocked-sign-in.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="add-conditional-access-to-your-policy"></a>Feltételes hozzáférés hozzáadása a Szabályzathoz
+
+A [githubon](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access)megtalálhatja például a feltételes hozzáférési szabályzatot.
+
+::: zone-end
 
 ## <a name="next-steps"></a>Következő lépések
 

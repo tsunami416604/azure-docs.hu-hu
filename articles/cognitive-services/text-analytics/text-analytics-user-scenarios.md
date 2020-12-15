@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 4f540c7e853efe370c84b7c4d0a7d74911b8cd6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4c551a6e9b8d79fdeb7b5219f311c7c7c969757
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823937"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505358"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Példa a Text Analytics API felhasználói forgatókönyvei
 
@@ -61,4 +61,4 @@ A termék vagy szolgáltatás felmérésekben, vásárlói visszajelzésekben va
 ## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)
-* [Kérelem küldése a Text Analytics APInak az ügyféloldali kódtár használatával](quickstarts/text-analytics-sdk.md)
+* [Kérelem küldése a Text Analytics APInak az ügyféloldali kódtár használatával](quickstarts/client-libraries-rest-api.md)

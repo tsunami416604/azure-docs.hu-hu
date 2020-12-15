@@ -3,12 +3,12 @@ title: Azure Application Insights – áttekintés irányítópult | Microsoft D
 description: Alkalmazások figyelése az Azure Application Insights és az áttekintő irányítópult funkcióinak segítségével.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 714488d88b269f252dfd6677f847db315969a270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b0708fa70d3a3ecb406f1d974bb1f2b47e55b40
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970610"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504100"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights áttekintése irányítópult
 
@@ -53,7 +53,7 @@ Ha vissza szeretne térni az áttekintő felületre, csak válassza a következ�
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a **csempe beállításainak megadása** lehetőséget választja, és az egyéni időtartományt 31 napnál nagyobb időtartamra állítja be, az irányítópult nem jeleníti meg a 31 napos adatmennyiséget, még az alapértelmezett 90 napos adatmegőrzéssel sem. Ehhez a viselkedéshez jelenleg nincs Áthidaló megoldás.
+Az irányítópulton megjelenített adatmennyiségnek jelenleg legfeljebb 30 napos adatértéke van. Ha 30 napon túli időszűrőt választ, vagy ha a **csempe beállításainak megadása** lehetőséget választja, és az egyéni időtartományt 30 napon belül meghaladóra állítja, az irányítópult nem jeleníti meg a 30 napos adatmennyiséget, még az alapértelmezett 90 napos adatmegőrzési időtartamot is. Ehhez a viselkedéshez jelenleg nincs Áthidaló megoldás.
 
 ## <a name="next-steps"></a>Következő lépések
 

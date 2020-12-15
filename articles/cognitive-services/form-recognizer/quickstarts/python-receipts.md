@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: b897690e08f07f2506aa79c873af03b604f94664
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: d1e40793e12f1c74a2a6f5e6945dc449dc63bbc0
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96009585"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504301"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Gyors útmutató: bevételezési adatok kinyerése az űrlap-felismerő REST API és a Python használatával
 
@@ -141,7 +141,7 @@ Egy olyan választ fog kapni `202 (Success)` , amely egy **művelet – hely** f
 ```console
 https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
-# <a name="v21-preview1"></a>[v 2.1 – előzetes verzió. 1](#tab/v2-1)    
+# <a name="v21-preview2"></a>[v 2.1 – előzetes verzió. 2](#tab/v2-1)    
 ```console
 https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
@@ -516,7 +516,7 @@ A `"readResults"` csomópont tartalmazza az összes felismert szöveget. A szöv
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST APIt használta a Python használatával az értékesítési nyugták tartalmának kinyeréséhez. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 

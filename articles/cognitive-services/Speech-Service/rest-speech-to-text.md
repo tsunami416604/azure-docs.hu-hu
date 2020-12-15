@@ -8,35 +8,66 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 12/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dff7ff0afd6c236645731dc7edd936b0b808716b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c746666d58e21c2705a2ef1d6a17d0d1196f7590
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483920"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504474"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
-A Speech [SDK](speech-sdk.md)alternatívájaként a beszédfelismerési szolgáltatás lehetővé teszi, hogy REST API használatával alakítsa át a beszédfelismerést a szöveggé. Minden elérhető végpont egy régióhoz van társítva. Az alkalmazáshoz szükség van egy előfizetési kulcsra a használni kívánt végponthoz. A REST API nagyon korlátozott, és csak abban az esetben használható, ha a [SPEECH SDK](speech-sdk.md) nem.
+A beszédfelismerési szöveg két különböző REST API-val rendelkezik. Minden API speciális célt szolgál, és különböző végpontokat használ.
 
-A beszéd – szöveg REST API használata előtt vegye figyelembe a következőket:
+A beszéd – szöveg REST API-k a következők:
+- A [beszédfelismerés és a szöveg közötti REST API v 3.0](#speech-to-text-rest-api-v30) használatos a [kötegelt átíráshoz](batch-transcription.md) és a [Custom Speechhoz](custom-speech-overview.md). a v 3.0 a [v 2.0 utódja](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- A beszéd [-szöveg REST API a rövid hanghoz](#speech-to-text-rest-api-for-short-audio) a [Speech SDK](speech-sdk.md)alternatívájaként használható online átírás. Az API-t használó kérelmek legfeljebb 60 másodpercig továbbítanak kérelmeket. 
 
-* A REST APIt használó és a hang közvetlen továbbítására szolgáló kérelmek legfeljebb 60 másodperces hangot tartalmazhatnak.
-* A beszéd – szöveg REST API csak a végső eredményeket adja vissza. A részleges eredmények nincsenek megadva.
+## <a name="speech-to-text-rest-api-v30"></a>Beszéd – szöveg REST API v 3.0
 
-Ha a hosszú hang küldése az alkalmazásra vonatkozó követelmény, érdemes lehet használni a [SPEECH SDK](speech-sdk.md) -t vagy egy file-alapú REST API, például a [Batch átírását](batch-transcription.md).
+A beszédfelismerés és a szöveg közötti REST API v 3.0 használatos a [kötegelt átíráshoz](batch-transcription.md) és a [Custom Speechhoz](custom-speech-overview.md). Ha a REST-on keresztül kell kommunikálnia az OnLine átírással, a [rövid hangfelvételhez használjon beszéd-szöveges REST API](#speech-to-text-rest-api-for-short-audio).
+
+REST API v 3.0 használata a következőhöz:
+- Modellek másolása más előfizetésekre arra az esetre, ha azt szeretné, hogy a munkatársak hozzáférjenek a létrehozott modellhez, vagy olyan esetekben, amikor egy modellt több régióra kíván telepíteni
+- Adatok átírása egy tárolóból (tömeges átírás), valamint több hangfájl URL-címének megadása
+- Adatok feltöltése az Azure Storage-fiókokba SAS URI használatával
+- Naplók beolvasása egy végponton, ha a rendszer naplózza a naplókat a végponthoz
+- A létrehozott modellek jegyzékfájljának kérése a helyszíni tárolók beállítása céljából
+
+A REST API v 3.0 a következőkhöz hasonló funkciókat tartalmaz:
+- **Értesítések – webhookok**– a szolgáltatás összes futó folyamata mostantól támogatja a webhook-értesítéseket. A REST API v 3.0 biztosítja azokat a hívásokat, amelyek lehetővé teszik, hogy regisztrálja az értesítéseket küldő webhookokat
+- **A végpontok mögötti modellek frissítése** 
+- **Modellek átalakítása több adatkészlettel**– modell átalakítása az akusztikus, a nyelv és a kiejtési adat több adatkészlet-kombinációjának használatával
+- **Saját tárterület** használata – saját Storage-fiókok használata naplókhoz, átírási fájlokhoz és egyéb adatfájlokhoz
+
+Tekintse meg a következő [cikket](batch-transcription.md): példák a Batch átírásával REST API v 3.0 használatával.
+
+Ha beszédfelismerést REST API v 2.0-s verziót használ, tekintse meg az [útmutató](/azure/cognitive-services/speech-service/migrate-v2-to-v3)a v 3.0-ba való áttelepítését ismertető témakört.
+
+Tekintse meg a teljes beszéd – szöveg REST API v [3.0 referenciát](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0).
+
+## <a name="speech-to-text-rest-api-for-short-audio"></a>Beszéd – szöveg REST API rövid hanghoz
+
+A Speech [SDK](speech-sdk.md)alternatívájaként a beszédfelismerési szolgáltatás lehetővé teszi, hogy REST API használatával alakítsa át a beszédfelismerést a szöveggé. Minden elérhető végpont egy régióhoz van társítva. Az alkalmazáshoz szükség van egy előfizetési kulcsra a használni kívánt végponthoz. A rövid hang REST API nagyon korlátozott, és csak abban az esetben használható, ha a [SPEECH SDK](speech-sdk.md) nem.
+
+Mielőtt a rövid hanghoz tartozó beszéd-szöveg REST API használja, vegye figyelembe a következőket:
+
+* A rövid hangra és a hang továbbítására szolgáló REST APIt használó kérések közvetlenül legfeljebb 60 másodperces hangot tartalmazhatnak.
+* A rövid hanganyaghoz tartozó beszéd-szöveg REST API csak a végső eredményeket adja vissza. A részleges eredmények nincsenek megadva.
+
+Ha a hosszú hang küldése az alkalmazásra vonatkozó követelmény, érdemes lehet használni a [SPEECH SDK](speech-sdk.md) [-t vagy a beszéd – szöveg REST API v 3.0](#speech-to-text-rest-api-v30)-s verzióját.
 
 > [!TIP]
 > Lásd: az Azure Government [dokumentációja](../../azure-government/compare-azure-government-global-azure.md) a Government Cloud (FairFax) végpontokhoz.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>Régiók és végpontok
+### <a name="regions-and-endpoints"></a>Régiók és végpontok
 
-A REST API végpontjának formátuma a következő:
+A rövid hang REST API végpontjának formátuma a következő:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
@@ -49,7 +80,7 @@ Cserélje le az `<REGION_IDENTIFIER>` elemet az előfizetés régiójának megfe
 > [!NOTE]
 > A nyelvi paramétert az URL-címhez kell hozzáfűzni, hogy ne kapjon 4xx HTTP-hibát. Az USA nyugati végpontját használó angol nyelv például a következő: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
-## <a name="query-parameters"></a>Lekérdezési paraméterek
+### <a name="query-parameters"></a>Lekérdezési paraméterek
 
 Ezek a paraméterek szerepelhetnek a REST-kérelem lekérdezési karakterláncában.
 
@@ -60,7 +91,7 @@ Ezek a paraméterek szerepelhetnek a REST-kérelem lekérdezési karakterláncá
 | `profanity` | Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek olyanok, `masked` amelyek a káromkodást helyettesítik a csillagokkal, `removed` ami eltávolítja az eredményből az összes trágár elemet, vagy az `raw` eredménybe beletartozik a káromkodás is. Az alapértelmezett beállítás: `masked`. | Választható |
 | `cid` | Ha egyéni modelleket hoz létre a [Custom Speech-portálon](./custom-speech-overview.md) , egyéni modelleket használhat a **telepítési** oldalon található **végpont-azonosítón** keresztül. Használja a **VÉGPONT azonosítóját** a `cid` lekérdezési karakterlánc paraméter argumentumaként. | Választható |
 
-## <a name="request-headers"></a>Kérésfejlécek
+### <a name="request-headers"></a>Kérésfejlécek
 
 Ez a táblázat a beszédfelismerési kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
@@ -74,7 +105,7 @@ Ez a táblázat a beszédfelismerési kérelmekhez szükséges és nem kötelez�
 | `Expect` | Ha darabolásos átvitelt használ, küldje el `Expect: 100-continue` . A beszédfelismerési szolgáltatás tudomásul veszi a kezdeti kérést, és további adatra vár.| A darabolásos hangadatok küldéséhez szükséges. |
 | `Accept` | Ha meg van adni, azt kötelező megadni `application/json` . A beszédfelismerési szolgáltatás az eredményeket JSON-formátumban jeleníti meg. Néhány kérelem-keretrendszer nem kompatibilis alapértelmezett értéket biztosít. Célszerű mindig belefoglalni `Accept` . | Nem kötelező, de ajánlott. |
 
-## <a name="audio-formats"></a>Hangformátumok
+### <a name="audio-formats"></a>Hangformátumok
 
 A hang a HTTP-kérelem törzsében lesz elküldve `POST` . Ennek a táblázatnak az egyik formátumában kell szerepelnie:
 
@@ -84,9 +115,9 @@ A hang a HTTP-kérelem törzsében lesz elküldve `POST` . Ennek a táblázatnak
 | VORBIS    | OPUS  | 256 kpbs | 16 kHz, monó |
 
 >[!NOTE]
->A fenti formátumok a Speech Service REST API és WebSocket szolgáltatásán keresztül támogatottak. A [SPEECH SDK](speech-sdk.md) jelenleg a WAV formátumot támogatja a PCM-kodekkel és [más formátumokkal](how-to-use-codec-compressed-audio-input-streams.md).
+>A fenti formátumok a beszédfelismerési szolgáltatásban a rövid hang és a WebSocket REST APIon keresztül támogatottak. A [SPEECH SDK](speech-sdk.md) jelenleg a WAV formátumot támogatja a PCM-kodekkel és [más formátumokkal](how-to-use-codec-compressed-audio-input-streams.md).
 
-## <a name="pronunciation-assessment-parameters"></a>Kiejtés-értékelési paraméterek
+### <a name="pronunciation-assessment-parameters"></a>Kiejtés-értékelési paraméterek
 
 Ez a táblázat a kiejtés értékeléséhez szükséges és választható paramétereket sorolja fel.
 
@@ -123,7 +154,7 @@ Javasoljuk, hogy a hangadatok közzététele során a streaming (darabolásos) f
 >[!NOTE]
 >A kiejtés-értékelési funkció jelenleg csak `westus` `eastasia` és `centralindia` régiókban érhető el. Ez a funkció jelenleg csak nyelven érhető el `en-US` .
 
-## <a name="sample-request"></a>Példa a kérelemre
+### <a name="sample-request"></a>Példa a kérelemre
 
 Az alábbi minta tartalmazza az állomásnév és a szükséges fejléceket. Fontos megjegyezni, hogy a szolgáltatás a hangadatokat is várja, amelyek nem szerepelnek ebben a mintában. Ahogy korábban említettük, a darabolás javasolt, de nem kötelező.
 
@@ -143,7 +174,7 @@ A kiejtés értékelésének engedélyezéséhez az alábbi fejlécet adhat hozz
 Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
-## <a name="http-status-codes"></a>HTTP-állapotkódok
+### <a name="http-status-codes"></a>HTTP-állapotkódok
 
 Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 
@@ -155,9 +186,9 @@ Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 | `401` | Nem engedélyezett | Az előfizetési kulcs vagy az engedélyezési jogkivonat érvénytelen a megadott régióban, vagy érvénytelen végpont. |
 | `403` | Forbidden | Hiányzó előfizetési kulcs vagy engedélyezési jogkivonat. |
 
-## <a name="chunked-transfer"></a>Darabolásos átvitel
+### <a name="chunked-transfer"></a>Darabolásos átvitel
 
-A darabolásos átvitel ( `Transfer-Encoding: chunked` ) segítségével csökkentheti az elismerés késését. Lehetővé teszi, hogy a beszédfelismerési szolgáltatás megkezdje a hangfájl feldolgozását a továbbítás során. A REST API nem biztosít részleges vagy időközi eredményeket.
+A darabolásos átvitel ( `Transfer-Encoding: chunked` ) segítségével csökkentheti az elismerés késését. Lehetővé teszi, hogy a beszédfelismerési szolgáltatás megkezdje a hangfájl feldolgozását a továbbítás során. A rövid hang REST API nem nyújt részleges vagy időközi eredményeket.
 
 Ez a mintakód azt mutatja be, hogyan lehet hangot küldeni a darabokban. Csak az első részletnek kell tartalmaznia a hangfájl fejlécét. `request` egy olyan `HttpWebRequest` objektum, amely a megfelelő Rest-végponthoz van csatlakoztatva. `audioFile` a lemezen lévő hangfájl elérési útja.
 
@@ -191,7 +222,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>Válasz paraméterei
+### <a name="response-parameters"></a>Válasz paraméterei
 
 Az eredmények JSON-ként vannak megadva. A `simple` formátum tartalmazza ezeket a legfelső szintű mezőket.
 
@@ -233,7 +264,7 @@ A listában szereplő objektum a következőket `NBest` tartalmazhatja:
 | `PronScore` | Az adott beszéd kiejtési minőségét jelző összesített pontszám. Ez az Összesítés a `AccuracyScore` `FluencyScore` és `CompletenessScore` a súlyozással történik. |
 | `ErrorType` | Ez az érték azt jelzi, hogy egy szó ki van-e hagyva, be van-e jelölve vagy rosszul van-e kiválasztva `ReferenceText` . A lehetséges értékek: `None` (azaz nincs hiba ezen a szónak), `Omission` `Insertion` és `Mispronunciation` . |
 
-## <a name="sample-responses"></a>Mintául szolgáló válaszok
+### <a name="sample-responses"></a>Mintául szolgáló válaszok
 
 Egy tipikus válasz az `simple` elismerésre:
 
@@ -304,8 +335,9 @@ Egy tipikus válasz az elismeréshez a kiejtés értékelésével:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 - [Akusztikai modellek testreszabása](./how-to-custom-speech-train-model.md)
 - [Nyelvi modellek testreszabása](./how-to-custom-speech-train-model.md)
+- [Ismerkedjen meg a Batch-átírással](batch-transcription.md)

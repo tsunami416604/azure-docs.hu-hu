@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: dbe5fba838e7c4ad9487a29889eab11d4e42671f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1a0d1018991be9d78623b0826aeab3d13958e996
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358930"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504134"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Üzletmenet-folytonosság és HADR az Azure-ban SQL Server Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -85,20 +85,13 @@ Az Azure Blob Storage szolgáltatással a rendelkezésre állási csoportok, az 
 
 Ha rendelkezik frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), hibrid vész-helyreállítási (Dr) terveket is alkalmazhat SQL Server a passzív vész-helyreállítási példányra vonatkozó további licencelési költségek nélkül.
 
-Használhat például egy aktív elsődleges helyszíni és egy ingyenes passzív másodlagos for DR-t az Azure-ban: 
-
-![Ingyenes másodlagos passzív az Azure-ban](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-secondary-in-azure.png)
-
-Az előző képen a telepítő SQL Server futtat egy Azure-beli virtuális gépen, amely 12 magot használ vész-helyreállítási replikáként egy 12 magot használó helyszíni SQL Server üzembe helyezéshez. A múltban az SQL Server 12 maggal kell rendelkeznie a helyszíni telepítéshez és az Azure Virtual Machines üzemelő példányához. Az új előny passzív replika előnyöket kínál az Azure-beli virtuális gépeken való futtatáshoz. Most csak a helyszínen futó SQL Server 12 magot kell használnia, amennyiben az Virtual Machines Azure-beli passzív replika vész-helyreállítási feltételei teljesülnek.
-
-Két szabad passzív formátumú másodlagos zónák is rendelkezhet, ha mindhárom replikát az Azure-ban üzemeltetik: 
+Használhat például két ingyenes passzív formátumú másodlagos zónák, ha mindhárom replikát az Azure-ban üzemelteti: 
 
 ![Két ingyenes passzív, ha minden az Azure-ban](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
 
-Vagy beállíthat egy hibrid feladatátvételi környezetet is, amely egy licenccel rendelkező elsődleges helyszíni, egy ingyenes passzív, HA pedig két szabad passzív a DR: 
+Vagy konfigurálhat egy hibrid feladatátvételi környezetet is, amely egy licenccel rendelkező elsődleges helyszíni, egy ingyenes passzív, HA pedig egy ingyenes passzív a DR helyszíni környezethez, és egy ingyenes passzív DR az Azure-ban:
 
 ![Három szabad passzív, ha a környezet hibrid egy elsődleges helyszíni replikával](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
-
 
 További információkért tekintse meg a [termék licencelési feltételeit](https://www.microsoft.com/licensing/product-licensing/products). 
 

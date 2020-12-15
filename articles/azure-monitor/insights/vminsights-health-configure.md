@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/08/2020
-ms.openlocfilehash: f41a43e76993a03554d32fc7f3ce3149848989a9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 12/14/2020
+ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686988"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505596"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>A figyelés konfigurálása Azure Monitor for VMs vendég állapota (előzetes verzió)
 Azure Monitor for VMs vendég állapota lehetővé teszi egy virtuális gép állapotának megtekintését, amelyet a rendszeres időközönként mintavételnek alávetett teljesítmény-mérések határoznak meg. Ez a cikk azt ismerteti, hogyan módosíthatja az alapértelmezett figyelést a Azure Portal használatával. Emellett ismerteti a [figyelőknek az adatgyűjtési szabály használatával történő konfigurálásához](vminsights-health-configure-dcr.md)szükséges alapvető fogalmakat is.
@@ -33,6 +33,12 @@ Az egység figyelők és az összesített figyelők **állapot-figyelési állap
 Ha egy figyelő le van tiltva, az alábbi példában látható módon a feltételek nem érhetők el.
 
 ![Letiltott figyelő](media/vminsights-health-configure/disabled-monitor.png)
+
+
+> [!NOTE]
+> Ha a szülő figyelő le van tiltva, akkor a rendszer letiltja az összes gyermek figyelőt is. Ha explicit módon engedélyezte a gyermek figyelőt, akkor a szülő is engedélyezve lesz, de a konfiguráció állapota változatlan marad. Ebben az esetben a szülő figyelőben a következő üzenet jelenik meg.
+>
+> *A figyelő konfigurált állapotának eltérése "Letiltva", de az állapot nem tükrözi ezt. Ennek az az oka, hogy a konfigurált módosításokat propagálja a rendszer, vagy a gyermek figyelők valamelyikét explicit módon engedélyezték.*
 
 ## <a name="enable-or-disable-virtual-machine"></a>Virtuális gép engedélyezése vagy letiltása
 A virtuális gép figyelését letilthatja az összes figyelő ideiglenes leállításához. Előfordulhat, hogy letiltja a virtuális gép figyelését, például amikor karbantartást végez rajta.

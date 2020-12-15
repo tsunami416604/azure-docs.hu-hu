@@ -5,18 +5,21 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a13713f01a6bdb0ffcd787ef9c1d2f9a0336f63c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369556"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505409"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Az Azure Event Hubs (előzetes verzió) Apache Kafka csatlakozási támogatásának integrálása az adatváltozások rögzítésének Debezium
 
 Az **adatváltozások rögzítése (CDC)** a létrehozási, frissítési és törlési műveletekre reagáló, az adatbázistáblák sorainak változásainak nyomon követésére szolgáló módszer. A [Debezium](https://debezium.io/) egy elosztott platform, amely a különböző adatbázisokban elérhető adatváltozás-rögzítési funkciókra épül (például a [PostgreSQL logikai dekódolása](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)). Olyan [Kafka csatlakozási összekötőket](https://debezium.io/documentation/reference/1.2/connectors/index.html) biztosít, amelyek az adatbázistábla (ok) sorban álló változásaira koppintanak, és a [Apache Kafkaba](https://kafka.apache.org/)küldendő esemény-adatfolyamokra konvertálják őket.
 
 Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli adatváltozás-rögzítési rendszert az Azure [Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (a Kafka esetében), [Az Azure db for PostgreSQL és a](../postgresql/overview.md) Debezium használatával. A [Debezium PostgreSQL-összekötővel](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) továbbítja a PostgreSQL-ből származó adatbázis-módosításokat az Azure-beli Kafka-témakörökbe Event Hubs
+
+> [!NOTE]
+> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 

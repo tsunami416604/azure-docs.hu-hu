@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fefa16a39545c0c4094db8dbd18b46fb94ef5025
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325304"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504032"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager Webalkalmazás létrehozása az automatikus parancsfájl használatával
 
@@ -26,9 +26,12 @@ Futtassa a szkriptet a következő szükséges részletek megadásával:
 - A webalkalmazás helynév-előtagja
 - ServiceBus-névtér.
 
-A szkript létrehozza a webalkalmazást a megadott névvel (néhány további sztringtel együtt, hogy egyedivé tegye azt). Létrehozza a **webalkalmazás URL-címét**, az **ügyfél-azonosítót**és az **ügyfél titkos kulcsát**.
+A szkript létrehozza a webalkalmazást a megadott névvel (néhány további sztringtel együtt, hogy egyedivé tegye azt). Létrehozza a **webalkalmazás URL-címét**, az **ügyfél-azonosítót** és az **ügyfél titkos kulcsát**.
 
 Mentse ezeket az értékeket, ha IT-szolgáltatásmenedzsmenti csatoló-vel létesített kapcsolatokat hoz létre.
+
+> [!NOTE]
+> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -317,6 +320,6 @@ if(!$err)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A hibrid kapcsolatok konfigurálása](./itsmc-connections.md#configure-the-hybrid-connection).
 

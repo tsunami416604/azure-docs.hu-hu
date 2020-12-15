@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad03942a2200c57475cf8a81d0fb08d475ec6964
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 57d74272d77183baa2284265aee298967f641250
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973218"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504882"
 ---
 # <a name="risky-ip-report-public-preview"></a>Kockázatos IP-jelentés (nyilvános előzetes verzió)
 AD FS ügyfelek jelszavas hitelesítési végpontokat tehetnek elérhetővé az interneten, hogy hitelesítési szolgáltatásokat nyújtsanak a végfelhasználók számára az SaaS-alkalmazások, például a Microsoft 365 eléréséhez. Ez lehetőséget ad kártékony elemek számára, hogy megkíséreljenek bejelentkezni az AD FS rendszerbe, és találgatással kiderítsék a végfelhasználó jelszavát az alkalmazás-erőforrások elérése érdekében. A Windows Server 2012 R2-n futó AD FS-től kezdve elérhető zárolási funkció az extranet-fiókokhoz az ilyen típusú támadások elkerülése érdekében. Ha korábbi verziót használ, erősen ajánlott AD FS rendszerét Windows Server 2016-ra frissíteni. <br />
@@ -36,12 +36,15 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 > [!NOTE]
 > A jelentés használatához győződjön meg róla, hogy az AD FS-naplózás engedélyezve van. További információkért tekintse meg az [AD FS-naplózás engedélyezését](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
 > Az előzetes verzió eléréséhez globális rendszergazda vagy [biztonsági olvasó](../../role-based-access-control/built-in-roles.md#security-reader) szerepkörű felhasználói engedély szükséges.  
-> 
+>
+
+> [!NOTE]
+> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="what-is-in-the-report"></a>Mi a jelentés?
 A sikertelen bejelentkezési tevékenység ügyfél IP-címei a webalkalmazás-proxy kiszolgálókon keresztül vannak összesítve. A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. A következő információkat tartalmazza: ![ képernyőkép, amely egy kockázatos IP-jelentést jelenít meg az oszlopfejlécek kiemelésével.](./media/how-to-connect-health-adfs/report4a.png)
 
-| Jelentéselem | Leírás |
+| Jelentéselem | Description |
 | ------- | ----------- |
 | Időbélyegző | Az észlelési időszak kezdetét jelző, az Azure Portal helyi ideje szerinti időbélyegző.<br /> Az összes napi eseményt UTC szerint éjfélkor állítja elő a rendszer. <br />Az óránkénti eseményeknél az időbélyeg az óra kezdetére van kerekítve. Az exportált fájlban a „firstAuditTimestamp” érték mutatja az első tevékenység kezdetét. |
 | Eseményindító típusa | Az észlelési időszak típusa. Az összesítési eseményindítók óránkénti és a napi típusúak lehetnek. Ez hasznos lehet a nagy gyakoriságú találgatásos támadások észlelésére a lassú támadásokkal szemben, ahol a kísérletek eloszlanak egy adott napon belül. |
@@ -68,7 +71,7 @@ A terheléselosztó összesítési bejelentkezési tevékenységei meghiúsultak
 ## <a name="download-risky-ip-report"></a>Kockázatos IP-jelentés letöltése 
 A **letöltési** funkcióval az összes kockázatos IP-cím listája exportálható a Connect Health portálról az elmúlt 30 napra vonatkozóan. Az exportált listában szerepel az egyes észlelési időszakokban előforduló összes sikertelen AD FS-bejelentkezési tevékenység, így az exportálás után testreszabhatja a szűrési feltételeket. A portálon kiemelt összesítések mellett az exportált lista IP-címekre lebontva további részleteket is tartalmaz a sikertelen bejelentkezési tevékenységekről:
 
-|  Jelentéselem  |  Leírás  | 
+|  Jelentéselem  |  Description  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | A sikertelen tevékenységek kezdetének első időbélyegzője az észlelési időszakon belül.  | 
 | lastAuditTimestamp | A sikertelen tevékenységek végének utolsó időbélyegzője az észlelési időszakon belül.  | 
@@ -83,7 +86,7 @@ A figyelmeztetési küszöbérték küszöbérték-beállításokban módosítha
 
 ![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4d.png)
 
-| Küszöbértékelem | Leírás |
+| Küszöbértékelem | Description |
 | --- | --- |
 | (Helytelen felhasználónév/jelszó + extranet zárolás) naponta  | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha a helytelen jelszavak és az extranet zárolások **napi** száma meghaladja az értéket. Az alapértelmezett érték a 100.|
 | (Helytelen felhasználónév/jelszó + extranet zárolás) óránként | A küszöbérték-beállítás megadásával jelentés készül a tevékenységről, és figyelmeztető értesítés jön létre, ha a helytelen jelszavak és az extranet zárolások **óránkénti** száma meghaladja az értéket. Az alapértelmezett érték a 50.|
@@ -116,6 +119,6 @@ Az azonosított kártevő IP-címeket érdemes hozzáadni a tűzfalhoz vagy blok
 Globális rendszergazda vagy [biztonsági olvasó](../../role-based-access-control/built-in-roles.md#security-reader) szerepkörű felhasználói engedély szükséges. Hozzáférésért forduljon a globális rendszergazdához.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Az Azure AD Connect Health-ügynök telepítése](how-to-connect-health-agent-install.md)

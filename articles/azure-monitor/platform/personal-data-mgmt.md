@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318317"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505273"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>A Log Analyticsben és az Application Insightsban tárolt személyes adatokkal kapcsolatos útmutató
 
@@ -47,7 +47,7 @@ A Log Analytics egy rugalmas tároló, amely egy séma az adatokhoz való előí
     search "[username goes here]"
     ```
   Ne felejtse el megkeresni, hogy ne csak az ember számára olvasható felhasználóneveket, hanem a GUID azonosítókat is, amelyek közvetlenül visszavezethetők egy adott felhasználó számára.
-* Az *eszközök*azonosítói: például a felhasználói azonosítók, az eszközök azonosítói esetenként "privát" is tekinthetők. Használja ugyanazt a megközelítést, mint a fent felsorolt felhasználói azonosítók a táblák azonosításához, ahol ez problémát jelenthet. 
+* Az *eszközök* azonosítói: például a felhasználói azonosítók, az eszközök azonosítói esetenként "privát" is tekinthetők. Használja ugyanazt a megközelítést, mint a fent felsorolt felhasználói azonosítók a táblák azonosításához, ahol ez problémát jelenthet. 
 * *Egyéni adatok*: a log Analytics különböző módszerekkel teszi lehetővé a gyűjtemény használatát: az egyéni naplók és az egyéni mezők, a http-adatgyűjtő [API](./data-collector-api.md) és a rendszer-eseménynaplók részeként gyűjtött egyéni adatok. Ezek mindegyike bizalmas személyes adatmennyiséget tartalmaz, és meg kell vizsgálni, hogy van-e ilyen adatmennyiség.
 * *Megoldás – rögzített adatértékek*: mivel a megoldási mechanizmus egy nyílt végű, javasoljuk, hogy tekintse át a megoldások által generált összes táblázatot a megfelelőség biztosítása érdekében.
 
@@ -67,7 +67,7 @@ A Log Analytics egy rugalmas tároló, amely egy séma az adatokhoz való előí
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Memóriában tárolt és átvitel*alatt álló adat: Application Insights a kivételeket, a kérelmeket, a függőségi hívásokat és a nyomkövetéseket fogja követni. A magánjellegű adatokat gyakran a kód és a HTTP-hívás szintjén lehet gyűjteni. Tekintse át a kivételeket, a kérelmeket, a függőségeket és a nyomkövetési táblázatokat az ilyen jellegű adat azonosításához. Ha lehetséges, használja a [telemetria-inicializálást](../app/api-filtering-sampling.md) , ahol a lehető legtöbbet használhatja ezeket az adatfájlokat.
+* *Memóriában tárolt és átvitel* alatt álló adat: Application Insights a kivételeket, a kérelmeket, a függőségi hívásokat és a nyomkövetéseket fogja követni. A magánjellegű adatokat gyakran a kód és a HTTP-hívás szintjén lehet gyűjteni. Tekintse át a kivételeket, a kérelmeket, a függőségeket és a nyomkövetési táblázatokat az ilyen jellegű adat azonosításához. Ha lehetséges, használja a [telemetria-inicializálást](../app/api-filtering-sampling.md) , ahol a lehető legtöbbet használhatja ezeket az adatfájlokat.
 * *Snapshot Debugger Captures*: a Application Insights [Snapshot Debugger](../app/snapshot-debugger.md) szolgáltatása lehetővé teszi a hibakeresési Pillanatképek gyűjtését, ha kivétel történik az alkalmazás éles példányán. A pillanatképek lehetővé teszik a teljes verem nyomon követését, amely a kivételekhez vezet, valamint a helyi változók értékeit a verem minden lépésében. Ez a funkció sajnos nem teszi lehetővé a Snap pontok szelektív törlését, illetve az adatokhoz való programozott hozzáférést a pillanatképen belül. Ezért ha az alapértelmezett pillanatkép-megőrzési arány nem felel meg a megfelelőségi követelményeknek, a javaslat a funkció kikapcsolására szolgál.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Magánjellegű adatexportálás és-törlés
@@ -81,7 +81,7 @@ Ahogy az a [személyes adatok kezelésére vonatkozó stratégia](#strategy-for-
 Az adatkérések megtekintésére és exportálására a [log Analytics lekérdezési API](https://dev.loganalytics.io/) -t vagy a  [Application INSIGHTS lekérdezési API](https://dev.applicationinsights.io/quickstart) -t kell használni. Ahhoz, hogy a felhasználók számára elérhetővé lehessen tennie az adatalakot, a felhasználónak kell megvalósítania. A [Azure functions](https://azure.microsoft.com/services/functions/) nagyszerű helyet ad az ilyen logika üzemeltetéséhez.
 
 > [!IMPORTANT]
->  Habár a kitisztítási műveletek túlnyomó többsége sokkal gyorsabban teljesíthető, mint az SLA, **a kitisztítási műveletek befejezésére vonatkozó formális SLA-t 30 napon belül állítja be a rendszer** a felhasznált adatplatformra gyakorolt jelentős hatás miatt. Ez egy automatizált folyamat; nem kérhető le a művelet gyorsabb kezelése.
+>  Habár a kitisztítási műveletek túlnyomó többsége sokkal gyorsabban teljesíthető, mint az SLA, **a kitisztítási műveletek befejezésére vonatkozó formális SLA-t 30 napon belül állítja be a rendszer** a felhasznált adatplatformra gyakorolt jelentős hatás miatt. Ez az SLA megfelel a GDPR követelményeinek. Ez egy automatizált folyamat, így nem lehet lekérni egy művelet gyorsabb kezelését. 
 
 ### <a name="delete"></a>Törlés
 
@@ -89,6 +89,9 @@ Az adatkérések megtekintésére és exportálására a [log Analytics lekérde
 > A Log Analyticsban lévő törlés romboló és nem visszafordítható! A végrehajtás során rendkívül körültekintően járjon el.
 
 Elérhetővé tettük a *kiürítési* API elérési útját az adatvédelem részeként. Ezt az elérési utat takarékosan kell használni a művelethez kapcsolódó kockázat miatt, a lehetséges teljesítményre gyakorolt hatás, valamint a teljes összesítések, a mérések és a Log Analytics-adat egyéb szempontjainak eldöntése. Tekintse meg a [személyes adatkezeléssel](#strategy-for-personal-data-handling) foglalkozó témakört, amely a magánjellegű információk kezelésére szolgáló alternatív módszereket ismerteti.
+
+> [!NOTE]
+> A kiürítési művelet elvégzése után az nem érhető el, amíg a [kiürítési művelet állapota](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) *függőben* van. 
 
 A kiürítés egy magas jogosultsági szintű művelet, amelyet az Azure-ban egyetlen alkalmazás vagy felhasználó sem tartalmaz (beleértve az erőforrás tulajdonosát is), anélkül, hogy külön szerepkört kellene kiadni a Azure Resource Managerban. Ez a szerepkör _Adattisztító_ , és az adatvesztés lehetősége miatt körültekintően kell delegálni. 
 
@@ -123,7 +126,7 @@ A Azure Resource Manager szerepkör hozzárendelése után két új API-elérés
 > [!IMPORTANT]
 >  Habár a kitisztítási műveletek túlnyomó többsége sokkal gyorsabban teljesíthető, mint az SLA, mivel jelentős hatással vannak az Application Insights által használt adatplatformra, **a törlési műveletek befejezésére vonatkozó formális SLA 30 napon belül be van állítva**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha többet szeretne megtudni a Log Analytics adatok gyűjtéséről, feldolgozásáról és védelméről, tekintse meg a [log Analytics az adatbiztonságot](./data-security.md)ismertető témakört.
 - Ha többet szeretne megtudni a Application Insights adatok gyűjtéséről, feldolgozásáról és védelméről, tekintse meg a [Application Insights az adatbiztonságot](../app/data-retention-privacy.md)ismertető témakört.
 

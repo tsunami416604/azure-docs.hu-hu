@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: d94a4858b4c4fa99a09acc2bec88f94a64686c2d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7fa3355ff7e61d624d57da68d0f835faa7ca3736
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539139"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505426"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit Deep learning-modell használata Azure HDInsight Spark-fürttel
 
@@ -31,12 +31,12 @@ Ebben a cikkben a következő lépéseket hajtja végre.
 
 ## <a name="how-does-this-solution-flow"></a>Hogyan működik ez a megoldás?
 
-Ez a megoldás a jelen cikk és a jelen cikk részeként feltöltött Jupyter-jegyzetfüzetek között oszlik meg. Ebben a cikkben a következő lépéseket hajtja végre:
+Ez a megoldás a jelen cikk és a jelen cikk részeként feltöltött Jupyter Notebook között oszlik meg. Ebben a cikkben a következő lépéseket hajtja végre:
 
 * Parancsfájl-művelet futtatása HDInsight Spark-fürtön Microsoft Cognitive Toolkit és Python-csomagok telepítéséhez.
-* Töltse fel a megoldást futtató Jupyter-jegyzetfüzetet a HDInsight Spark-fürtre.
+* Töltse fel a megoldást futtató Jupyter Notebook a HDInsight Spark-fürtre.
 
-A következő további lépéseket a Jupyter-jegyzetfüzet ismerteti.
+A következő fennmaradó lépéseket a Jupyter Notebook tárgyalja.
 
 * Betöltheti a mintaképeket egy Spark rugalmas elosztott adatkészletbe vagy RDD.
   * Modulok betöltése és beállításkészlet megadása
@@ -61,22 +61,22 @@ Az Azure Portal parancsfájl-művelet futtatására való használatával kapcso
 |Tulajdonság |Érték |
 |---|---|
 |Parancsfájl típusa|– Egyéni|
-|Name (Név)| A MCT telepítése|
+|Name| A MCT telepítése|
 |Bash-parancsfájl URI-ja|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Csomópont típusa (i):|Head, Worker|
 |Paraméterek|Nincs|
 
-## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>A Jupyter notebook feltöltése Azure HDInsight Spark fürtre
+## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>A Jupyter Notebook feltöltése Azure HDInsight Spark-fürtre
 
-Ahhoz, hogy a Microsoft Cognitive Toolkit a Azure HDInsight Spark fürthöz használhassa, be kell töltenie a Jupyter notebook **CNTK_model_scoring_on_Spark_walkthrough. ipynb** a Azure HDInsight Spark fürtbe. Ez a jegyzetfüzet a GitHubon érhető el [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
+Ahhoz, hogy a Microsoft Cognitive Toolkitt a Azure HDInsight Spark fürthöz használhassa, be kell töltenie a Jupyter Notebook **CNTK_model_scoring_on_Spark_walkthrough. ipynb** a Azure HDInsight Spark-fürtre. Ez a jegyzetfüzet a GitHubon érhető el [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
 1. Töltse le és csomagolja ki [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
 1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net/jupyter` , ahol a a `CLUSTERNAME` fürt neve.
 
-1. A Jupyter jegyzetfüzetből válassza a **feltöltés** lehetőséget a jobb felső sarokban, majd navigáljon a letöltés és a fájl kiválasztása elemre `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
+1. A Jupyter Notebook válassza a jobb felső sarokban található **feltöltés** lehetőséget, majd navigáljon a letöltés és a fájl kiválasztása elemre `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
 
-    ![Jupyter-jegyzetfüzet feltöltése Azure HDInsight Spark-fürtre](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter-jegyzetfüzet feltöltése Azure HDInsight Spark-fürtre")
+    ![Jupyter Notebook feltöltése Azure HDInsight Spark-fürtre](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter Notebook feltöltése Azure HDInsight Spark-fürtre")
 
 1. Válassza a **feltöltés** újra lehetőséget.
 
@@ -104,7 +104,7 @@ Ahhoz, hogy a Microsoft Cognitive Toolkit a Azure HDInsight Spark fürthöz hasz
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [A HDInsight Apache Spark-fürtben Jupyter Notebook számára elérhető kernelek](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

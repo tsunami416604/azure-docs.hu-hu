@@ -1,26 +1,26 @@
 ---
-ms.openlocfilehash: 99f2c690360167626566b2ea45aef172e1e832ab
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 29e1578ee2c9ff0fc320cc62a17f4b7033560316
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829298"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486741"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>A mintaadatok vizsgálata és szerkesztése
 
 Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaadatok vizsgálatához és szerkesztéséhez kövesse az alábbi lépéseket.
 
-1. A Visual Studio Code-ban lépjen az *src/Edge*elemre. Ekkor megjelenik a *. env* fájl és néhány központi telepítési sablon fájl.
+1. A Visual Studio Code-ban lépjen az *src/Edge* elemre. Ekkor megjelenik a *. env* fájl és néhány központi telepítési sablon fájl.
 
     A központi telepítési sablon a peremhálózati eszköz üzembe helyezési jegyzékére hivatkozik. Tartalmaz néhány helyőrző értéket. A *. env* fájl tartalmazza a változók értékeit.
 
 1. Lépjen a *src/Cloud-to-Device-Console-app* mappába. Itt láthatja a *appsettings.js* fájlt, és néhány további fájlt:
 
-    * ***C2D-Console-app. csproj*** – a Project fájl a Visual Studio Code-hoz.
-    * ***operations.json*** – a program futtatásához használni kívánt műveletek listája.
-    * ***Program.cs*** – a minta programkódja. Ez a kód:
+    * ***C2D-Console-app. csproj** _ – a Project fájl a Visual Studio Code-hoz.
+    _ ***operations.json** _ – azoknak a műveleteknek a listája, amelyeket futtatni kíván a program.
+    _ ***Program.cs** _ – a minta programkódja. Ez a kód:
 
-        * Betölti az alkalmazás beállításait.
+        _ Betölti az alkalmazás beállításait.
         * Közvetlen metódusokat hív meg, amelyeket az élő videó Analytics IoT Edge modulban tesz elérhetővé. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](../../../direct-methods.md)meghívásával.
         * Szünetelteti, hogy megvizsgálhatja a program kimenetét a **terminál** ablakban, és megvizsgálhatja a modul által a **kimeneti** ablakban generált eseményeket.
         * Közvetlen metódusokat hív meg az erőforrások törléséhez.
@@ -29,7 +29,7 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 1. Szerkessze a *operations.js* fájlt:
     * Módosítsa a Graph-topológiára mutató hivatkozást:
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 
     * A (z) alatt `GraphInstanceSet` szerkessze a gráf topológiájának nevét, hogy az megfeleljen az előző hivatkozásban szereplő értéknek:
 
@@ -41,7 +41,7 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 
 ### <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Az IoT Edge telepítési jegyzék előállítása és üzembe helyezése
 
-1. Kattintson a jobb gombbal a fájlon a *src/Edge/deployment.yolov3.template.js* elemre, majd válassza a **IoT Edge üzembe helyezési jegyzék előállítása**lehetőséget.
+1. Kattintson a jobb gombbal a fájlon a *src/Edge/deployment.yolov3.template.js* elemre, majd válassza a **IoT Edge üzembe helyezési jegyzék előállítása** lehetőséget.
 
     ![IoT Edge üzembe helyezési jegyzék előállítása](../../../media/quickstarts/generate-iot-edge-deployment-manifest-yolov3.png)  
 
@@ -49,15 +49,15 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 
 1. Ha befejezte a [mozgás észlelése és a kibocsátó események](../../../detect-motion-emit-events-quickstart.md) rövid útmutatóját, ugorja át ezt a lépést. 
 
-    Ellenkező esetben a bal alsó sarokban található **Azure IOT hub** panel közelében válassza a **További műveletek** ikont, majd válassza a **IoT hub a kapcsolatok karakterláncának beállítása**lehetőséget. A karakterláncot a *appsettings.js* fájlból másolhatja. Vagy a megfelelő IoT hub a Visual Studio Code-ban való konfigurálásának biztosításához használja az [IoT hub kiválasztása parancsot](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).
+    Ellenkező esetben a bal alsó sarokban található **Azure IOT hub** panel közelében válassza a **További műveletek** ikont, majd válassza a **IoT hub a kapcsolatok karakterláncának beállítása** lehetőséget. A karakterláncot a *appsettings.js* fájlból másolhatja. Vagy a megfelelő IoT hub a Visual Studio Code-ban való konfigurálásának biztosításához használja az [IoT hub kiválasztása parancsot](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).
     
     ![IoT Hub-kapcsolatok karakterláncának beállítása](../../../media/quickstarts/set-iotconnection-string.png)
 
-1. Kattintson a jobb gombbal *az src/Edge/config/deployment.yolov3.amd64.js* elemre, és válassza a **központi telepítés létrehozása egyetlen eszközhöz**lehetőséget. 
+1. Kattintson a jobb gombbal *az src/Edge/config/deployment.yolov3.amd64.js* elemre, és válassza a **központi telepítés létrehozása egyetlen eszközhöz** lehetőséget. 
 
     ![Központi telepítés létrehozása egyetlen eszközhöz](../../../media/quickstarts/create-deployment-single-device.png)
 
-1. Amikor a rendszer rákérdez a IoT Hub eszköz kiválasztására, válassza a **LVA-Sample-Device**elemet.
+1. Amikor a rendszer rákérdez a IoT Hub eszköz kiválasztására, válassza a **LVA-Sample-Device** elemet.
 1. Körülbelül 30 másodperc elteltével frissítse az Azure IoT Hubt az ablak bal alsó sarkában. A peremhálózati eszköz mostantól a következő központilag telepített modulokat mutatja:
 
     * A **lvaEdge** nevű Live Video Analytics-modul
@@ -69,16 +69,15 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 ### <a name="prepare-to-monitor-events"></a>Felkészülés az események figyelésére
 
 1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
-1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai** lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Bővítmény beállításai&quot;:::
-1. Keresse meg és engedélyezze a &quot;részletes üzenet megjelenítése" lehetőséget.
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Bővítmény beállításai":::
+1. Keresse meg és engedélyezze a "részletes üzenet megjelenítése" lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Bővítmény beállításai&quot;:::
-1. Keresse meg és engedélyezze a &quot;részletes üzenet megjelenítése":::
-1. Kattintson a jobb gombbal a Live Video Analytics-eszközre, és válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget. Erre a lépésre szüksége lesz a Visual Studio Code **kimeneti** ablakának IoT hub eseményeinek figyeléséhez. 
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Részletes üzenet megjelenítése":::
+1. Kattintson a jobb gombbal a Live Video Analytics-eszközre, és válassza a **figyelés beépített esemény végpontjának elindítása** lehetőséget. Erre a lépésre szüksége lesz a Visual Studio Code **kimeneti** ablakának IoT hub eseményeinek figyeléséhez. 
 
    ![Figyelés indítása](../../../media/quickstarts/start-monitoring-iothub-events.png) 
 

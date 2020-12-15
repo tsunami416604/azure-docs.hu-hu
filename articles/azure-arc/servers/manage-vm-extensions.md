@@ -1,20 +1,20 @@
 ---
 title: Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolgálókkal
 description: Az Azure arc-kompatibilis kiszolgálók kezelhetik azokat a virtuálisgép-bővítmények központi telepítését, amelyek a telepítés utáni konfigurálást és az automatizálási feladatokat nem Azure-beli virtuális gépekkel is rendelkeznek.
-ms.date: 11/06/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7682f6c8631bbaf2310d501d7cee6aecb2311226
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358031"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504508"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Virtuálisgép-bővítmények kezelése az Azure arc használatára képes kiszolgálókon
 
-A virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Ha egy virtuális gépen például szoftver telepítésére, vírusvédelemre vagy egy szkript futtatására van szükség, erre felhasználható egy virtuálisgép-bővítmény.
+A virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Ha például egy virtuális gépnek szoftver telepítésére, vírusvédelmi védelemre vagy parancsfájl futtatására van szüksége, a rendszer egy virtuálisgép-bővítményt is használhat.
 
-Az Azure arc-kompatibilis kiszolgálók lehetővé teszik az Azure-beli virtuálisgép-bővítmények üzembe helyezését nem Azure-beli Windows-és Linux-alapú virtuális gépeken, a helyszíni, peremhálózati és más felhőalapú környezetek felügyeletének egyszerűsítését életciklusuk alapján. A virtuálisgép-bővítmények a következő módszerekkel kezelhetők a hibrid gépeken vagy az arc-kompatibilis kiszolgálók által felügyelt kiszolgálókon:
+Az Azure arc-kompatibilis kiszolgálók lehetővé teszik az Azure-beli virtuálisgép-bővítmények üzembe helyezését a nem Azure-beli Windows-és Linux-alapú virtuális gépeken, így egyszerűbbé válik a hibrid gép felügyelete életciklusuk során. A virtuálisgép-bővítmények a következő módszerekkel kezelhetők a hibrid gépeken vagy az arc-kompatibilis kiszolgálók által felügyelt kiszolgálókon:
 
 - A [Azure Portal](manage-vm-extensions-portal.md)
 - Az [Azure CLI](manage-vm-extensions-cli.md)
@@ -27,7 +27,7 @@ Az Azure arc-kompatibilis kiszolgálók virtuálisgép-bővítmények támogatá
 
 - [Azure Automation állapot konfigurációjának](../../automation/automation-dsc-overview.md) használatával központilag tárolhatja a konfigurációkat, és megtarthatja a DSC virtuálisgép-bővítményen keresztül engedélyezett hibrid csatlakoztatott gépek kívánt állapotát.
 
-- Begyűjti a naplózási adatokat az elemzéshez [Azure monitor a naplókat](../../azure-monitor/platform/data-platform-logs.md) az log Analytics ügynök virtuálisgép-bővítményének használatával. Ez hasznos lehet a különböző forrásokból származó adatok összetett elemzésének végrehajtásához.
+- Begyűjti a naplózási adatokat az elemzéshez [Azure monitor a naplókat](../../azure-monitor/platform/data-platform-logs.md) az log Analytics ügynök virtuálisgép-bővítményének használatával. Ez hasznos lehet a különböző típusú forrásokból származó adatok összetett elemzéséhez.
 
 - A [Azure monitor for VMS](../../azure-monitor/insights/vminsights-overview.md)a elemzi a Windows-és Linux-alapú virtuális gépek teljesítményét, és figyeli a folyamatokat és a függőségeket más erőforrásokra és külső folyamatokra. Ez a Log Analytics ügynök és a függőségi ügynök virtuálisgép-bővítményeinek engedélyezésével érhető el.
 
@@ -65,15 +65,17 @@ Ez a funkció az előfizetés alábbi Azure-erőforrás-szolgáltatói függ:
 - **Microsoft. HybridCompute**
 - **Microsoft. GuestConfiguration**
 
-Ha még nincsenek regisztrálva, kövesse az [Azure Resource Providers regisztrálása](agent-overview.md#register-azure-resource-providers)című témakör lépéseit.
+Ha még nincsenek regisztrálva, kövesse az [Azure erőforrás-szolgáltatók regisztrálása](agent-overview.md#register-azure-resource-providers)című témakör lépéseit.
+
+Ügyeljen arra, hogy az előző táblázatban hivatkozott minden virtuálisgép-bővítmény dokumentációjában ellenőrizze, hogy rendelkezik-e hálózati vagy rendszerkövetelményekkel. Ez segít elkerülni az Azure-szolgáltatásokkal vagy-szolgáltatásokkal kapcsolatos kapcsolódási problémák elkerülését, amely az adott virtuálisgép-bővítményre támaszkodik.
 
 ### <a name="log-analytics-vm-extension"></a>Log Analytics virtuálisgép-bővítmény
 
-A Linux rendszerhez készült Log Analytics Agent virtuálisgép-bővítményhez a Python 2. x verziója szükséges a célszámítógépen.
+A Linux rendszerhez készült Log Analytics Agent virtuálisgép-bővítményhez a Python 2. x verziója szükséges a célszámítógépen. 
 
 ### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM-bővítmény (előzetes verzió)
 
-A Key Vault virtuálisgép-bővítmény (előzetes verzió) nem támogatja a következő Linux operációs rendszereket:
+A Key Vault VM-bővítmény (előzetes verzió) nem támogatja a következő Linux operációs rendszereket:
 
 - CentOS Linux 7 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
@@ -99,6 +101,6 @@ A Windows és Linux rendszeren a szolgáltatással támogatott csatlakoztatott g
 
 Ha a gépet a szükséges ügynök verziójára szeretné frissíteni, tekintse meg az [ügynök frissítése](manage-agent.md#upgrading-agent)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Virtuálisgép-bővítményeket telepíthet, kezelhet és eltávolíthat az [Azure CLI](manage-vm-extensions-cli.md), [Azure PowerShell](manage-vm-extensions-powershell.md), [Azure Portal](manage-vm-extensions-portal.md)vagy [Azure Resource Manager sablonok](manage-vm-extensions-template.md)használatával.

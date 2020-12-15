@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: a3ef198c79683786a7d6fb36a46cd0c989071c9e
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 0ff6bcd2e50b64993966f2780c6c8118aea2694f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346893"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505171"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Példa: nyelv felismerése Text Analytics
 
@@ -291,7 +291,7 @@ Az eredményül kapott kimenet a domináns nyelvből áll, amelynek a pontszáma
 }
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben az Azure-Cognitive Services Text Analytics használatával megtanulta a nyelvfelismerés fogalmait és munkafolyamatát. A következő pontokat ismertették és mutatták be:
 
@@ -303,5 +303,5 @@ Ebben a cikkben az Azure-Cognitive Services Text Analytics használatával megta
 ## <a name="see-also"></a>Lásd még
 
 * [A Text Analytics áttekintése](../overview.md)
-* [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/text-analytics-sdk.md)
+* [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/client-libraries-rest-api.md)
 * [Újdonságok](../whats-new.md)

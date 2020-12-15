@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518209"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504355"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Hibrid identitási megfontolások a Azure Government felhőhöz
 
@@ -24,6 +24,9 @@ Ez a cikk a hibrid környezetek Microsoft Azure Government felhővel való integ
 
 > [!NOTE]
 > Ahhoz, hogy integrálni lehessen a Microsoft Active Directory környezetét (akár helyszíni, akár egy olyan IaaS, amely ugyanabban a felhőalapú példányban található Azure Government), frissítenie kell a [Azure ad Connect](https://www.microsoft.com/download/details.aspx?id=47594)legújabb kiadására.
+
+> [!NOTE]
+> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 Egyesült Államok kormányzati védelmi végpontok teljes listáját a [dokumentációban](/office365/enterprise/office-365-u-s-government-dod-endpoints)találja.
 
@@ -100,7 +103,7 @@ Ha felülbírálta a környezetben lévő  `AuthNegotiateDelegateAllowlist` �
 
 Ha felülbírálta a környezetben lévő  `AuthNegotiateDelegateWhitelist`   vagy `AuthServerWhitelist`   házirend-beállításokat, ügyeljen arra, hogy hozzáadja az Azure ad URL-címét `https://autologon.microsoft.us` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Átmenő hitelesítés](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)
 - [Egyszeri bejelentkezés](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)
