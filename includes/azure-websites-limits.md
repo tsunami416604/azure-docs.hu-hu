@@ -4,19 +4,19 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 800dc50f82fa47228f1a88a143c5b515168812a6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 6265a7cde8e276570409238cadfd5ebc777b4527
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755898"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97532126"
 ---
-| Erőforrás | Ingyenes | Megosztott | Alapszintű | Standard | Prémium (v3) | Izolált </th> |
+| Erőforrás | Ingyenes | Megosztott | Alapszintű | Standard | Prémium (v1-v3) | Izolált </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-, mobil-vagy API-alkalmazások](https://azure.microsoft.com/services/app-service/) [Azure app Service](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> . csomag |10 |100 |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup>|
 | [App Service terv](../articles/app-service/overview-hosting-plans.md) |10 régiónként |10/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport|
 | Számítási példány típusa |Megosztott |Megosztott |<sup>3</sup> . dedikált |<sup>3</sup> . dedikált |<sup>3</sup> . dedikált</p> |<sup>3</sup> . dedikált|
-| Vertikális [felskálázás](../articles/app-service/manage-scale-up.md) (példányok maximális száma) |1 megosztott |1 megosztott |3 dedikált<sup>3</sup> |10 dedikált<sup>3</sup> |30 dedikált<sup>3</sup>|100 dedikált<sup>4</sup>|
+| Vertikális [felskálázás](../articles/app-service/manage-scale-up.md) (példányok maximális száma) |1 megosztott |1 megosztott |3 dedikált<sup>3</sup> |10 dedikált<sup>3</sup> | 20 dedikált v1 és v2; 30 dedikált v3. <sup>3</sup>|100 dedikált<sup>4</sup>|
 | <sup>5</sup> . tárterület |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> Ha több mint 250 GB-nyi, küldjön egy támogatási kérést. |1 TB<sup>5</sup> <br/><br/> A rendelkezésre álló tárolási kvóta 999 GB. |
 | CPU-idő (5 perc)<sup>6</sup> |3 perc |3 perc |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a>|
 | CPU-idő (nap)<sup>6</sup> |60 perc |240 perc |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |
@@ -30,7 +30,7 @@ ms.locfileid: "92755898"
 | Egyéni tartományok/alkalmazás</a> |0 (csak azurewebsites.net altartomány)|500 |500 |500 |500 |500 |
 | Egyéni tartomány [SSL-támogatása](../articles/app-service/configure-ssl-certificate.md) |Nem támogatott, a. azurewebsites.net helyettesítő tanúsítványa \* alapértelmezés szerint elérhető.|Nem támogatott, a. azurewebsites.net helyettesítő tanúsítványa \* alapértelmezés szerint elérhető.|Korlátlan SNI SSL kapcsolatok |Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található |Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található | Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található|
 | Hibrid kapcsolatok | | | 5/csomag | 25/csomag | 200/alkalmazás | 200/alkalmazás |
-| [Virtual Network integráció](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [Virtuális hálózat integrációja](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | Integrált Load Balancer | |X |X |X |X |X<sup>10</sup> |
 | [Hozzáférési korlátozások](../articles/app-service/networking-features.md#access-restrictions) | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás |
 | [Always on](../articles/app-service/configure-common.md) | | |X |X |X |X |

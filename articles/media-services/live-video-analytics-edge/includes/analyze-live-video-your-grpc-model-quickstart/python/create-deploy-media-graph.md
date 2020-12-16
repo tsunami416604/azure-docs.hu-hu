@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2debfa64849e4b576c98fd37b42e382772029bf4
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 8a1baa34565e9939db54b44f3d196c927b35385e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97486787"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97532161"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>A mintaadatok vizsgálata és szerkesztése
 
@@ -132,7 +132,7 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
     -------------------------------Executing operation GraphTopologyList-----------------------  
     Request: GraphTopologyList  --------------------------------------------------
     {
-    "@apiVersion": "1.0"
+    "@apiVersion": "2.0"
     }
     ---------------  
     Response: GraphTopologyList - Status: 200  ---------------
@@ -151,7 +151,7 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
     
     ```
     {
-      "@apiVersion": "1.0",
+      "@apiVersion": "2.0",
       "name": "Sample-Graph-1",
       "properties": {
         "topologyName": "InferencingWithGrpcExtension",
