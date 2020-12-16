@@ -7,12 +7,12 @@ description: Lekéréses kérelem módosításainak áttekintése és tesztelés
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 447c41055ededfc55e44bebd92de89b3d23de3c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995564"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591565"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
 
@@ -103,7 +103,7 @@ Navigáljon az elágazó tárházhoz, és kattintson a *Beállítások* elemre. 
 > [!NOTE]
 > Az összes ilyen titkot a GitHub-művelet használja, és a [. GitHub/munkafolyamatok/Bikes. YML][github-action-yaml]-ben vannak konfigurálva.
 
-Ha szeretné frissíteni a főtárhelyet a PR-összefésülés után, adja hozzá a *GATEWAY_HOST* titkot, amely az űrlapot *<MASTER_SPACE>. Gateway. <* HOST_SUFFIX>, amely ebben a példában a *dev.Gateway.fedcab0987.EUs.azds.IO*. Miután összevonta a módosításokat az elágazásban található Master ágra, egy másik művelet fog futni, és futtatja a teljes alkalmazást a fő fejlesztői térben. Ebben a példában a fő terület a *dev*. Ez a művelet a [. GitHub/workflows/bikesharing. YML][github-action-bikesharing-yaml]-ben van konfigurálva.
+Ha szeretné frissíteni a főtárhelyet a PR-összefésülés után, adja hozzá a *GATEWAY_HOST* titkot, amely az űrlapot *<MASTER_SPACE>. Gateway. <* HOST_SUFFIX>, amely ebben a példában a *dev.Gateway.fedcab0987.EUs.azds.IO*. Miután összevonta a módosításokat az elágazás fő ágában, egy másik művelet fog futni, és a teljes alkalmazást futtatja a fő fejlesztői térben. Ebben a példában a fő terület a *dev*. Ez a művelet a [. GitHub/workflows/bikesharing. YML][github-action-bikesharing-yaml]-ben van konfigurálva.
 
 Továbbá, ha szeretné, hogy a PR-ban lévő módosítások egy unoka-térben fussanak, frissítse a *MASTER_SPACE* és a *gazdagép* titkait. Ha például az alkalmazás a fejlesztés és a *azureuser1* területén fut a *dev* -ben, akkor a PR-t a *dev/azureuser1*:
 
@@ -149,7 +149,7 @@ A használatával `git push` leküldheti az új ágat az elágazó adattárba:
 git push origin bike-images
 ```
 
-A leküldéses folyamat befejezése után navigáljon a GitHubon található elágazó adattárhoz, és hozzon létre egy pull-kérést az elágazó tárházban található *Master* ág alapján, a *Bike-images* ág összehasonlításával.
+A leküldéses folyamat befejezése után navigáljon a GitHubon található elágazó adattárhoz, és hozzon létre egy pull-kérést *az elágazó tárház főágában,* a *Bike-images* ág összevetésével.
 
 A lekéréses kérelem megnyitása után navigáljon a *műveletek* lapra. Ellenőrizze, hogy az új művelet elindult-e, és hogy a *Bikes* szolgáltatást épít-e ki.
 
@@ -162,7 +162,7 @@ A művelet befejezését követően egy megjegyzés jelenik meg az új gyermekob
 
 Nyissa meg a *bikesharingweb* szolgáltatást, és nyissa meg az URL-címet a megjegyzésből. Válassza az *Aurelia Briggs (ügyfél)* lehetőséget felhasználóként, majd válassza ki a bérelni kívánt kerékpárt. Győződjön meg arról, hogy már nem jelenik meg a bike helyőrző képe.
 
-Ha egyesíti a módosításokat az elágazásban található *Master* ágban, egy másik művelet fog futni, és a teljes alkalmazást futtatja a szülő fejlesztői térben. Ebben a példában a szülő terület a *dev*. Ez a művelet a [. GitHub/workflows/bikesharing. YML][github-action-bikesharing-yaml]-ben van konfigurálva.
+Ha egyesíti a módosításokat az elágazás *fő* ágában, egy másik művelet fog futni, és a teljes alkalmazást futtatja a szülő fejlesztői térben. Ebben a példában a szülő terület a *dev*. Ez a művelet a [. GitHub/workflows/bikesharing. YML][github-action-bikesharing-yaml]-ben van konfigurálva.
 
 ## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
 
@@ -170,7 +170,7 @@ Ha egyesíti a módosításokat az elágazásban található *Master* ágban, eg
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure dev Spaces működéséről.
 

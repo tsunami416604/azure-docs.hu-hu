@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
-ms.openlocfilehash: 15a4a0ea78ef169480d4494683cb929cfefd16f2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026972"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590460"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>A megfeleltetési adatfolyam gráfjának kezelése
 
@@ -21,13 +21,13 @@ ms.locfileid: "93026972"
 
 Az adatfolyamatok leképezése egy tervezési felületen keresztül történik, amely az adatfolyam-gráfot ismeri. A gráfban az átalakítási logika balról jobbra van kialakítva, és a további adatfolyamok felül lesznek adva. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre.
 
-![Vászon](media/data-flow/canvas2.png "Vászon")
+![Vászon](media/data-flow/canvas-2.png)
 
 Mivel az adatforgalom összetettebb, a következő módszerekkel kezelheti és felügyelheti az adatfolyam-diagramot. 
 
 ## <a name="moving-transformations"></a>Átalakítások áthelyezése
 
-Az adatfolyamatok leképezése során a csatlakoztatott transzformációs logika egy készletét nevezzük **streamnek** . A **bejövő adatfolyam** mező azt határozza meg, hogy melyik adatfolyam táplálja az aktuális transzformációt. Minden átalakítás egy vagy két bejövő streamtel rendelkezik a függvénytől függően, és kimeneti adatfolyamot jelöl. A bejövő adatfolyamok kimeneti sémája határozza meg, hogy az aktuális átalakítás milyen oszlop-metaadatokat hivatkozhat.
+Az adatfolyamatok leképezése során a csatlakoztatott transzformációs logika egy készletét nevezzük **streamnek**. A **bejövő adatfolyam** mező azt határozza meg, hogy melyik adatfolyam táplálja az aktuális transzformációt. Minden átalakítás egy vagy két bejövő streamtel rendelkezik a függvénytől függően, és kimeneti adatfolyamot jelöl. A bejövő adatfolyamok kimeneti sémája határozza meg, hogy az aktuális átalakítás milyen oszlop-metaadatokat hivatkozhat.
 
 ![Csomópont áthelyezése](media/data-flow/move-nodes.png "csomópont áthelyezése")
 

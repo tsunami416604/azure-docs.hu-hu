@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc638eec174a52d501120d5e53bb2dc9e35b688
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997681"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591174"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory zökkenőmentes egyetlen Sign-On hibáinak megoldása
 
@@ -94,11 +94,11 @@ A következő ellenőrzőlista segítségével elháríthatja a zökkenőmentes 
 Ha engedélyezi a sikeres naplózást a tartományvezérlőn, akkor minden alkalommal, amikor egy felhasználó a zökkenőmentes SSO-n keresztül jelentkezik be, egy biztonsági bejegyzést rögzít az eseménynaplóban. Ezeket a biztonsági eseményeket a következő lekérdezéssel érheti el. (Keresse meg a **$ AzureADSSOAcc** számítógépfiók **4769** -as eseményét.)
 
 ```
-    <QueryList>
-      <Query Id="0" Path="Security">
-    <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
-      </Query>
-    </QueryList>
+  <QueryList>
+    <Query Id="0" Path="Security">
+      <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
+    </Query>
+  </QueryList>
 ```
 
 ## <a name="manual-reset-of-the-feature"></a>A szolgáltatás manuális alaphelyzetbe állítása

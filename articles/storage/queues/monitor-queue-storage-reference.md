@@ -1,22 +1,22 @@
 ---
-title: Az Azure üzenetsor Storage figyelési adatreferenciája | Microsoft Docs
-description: Naplózási és metrikai referenciák az Azure üzenetsor-tárolóban tárolt adatok figyeléséhez.
+title: Az Azure Queue Storage monitorozási dokumentációja
+description: Naplózási és metrikai referenciák az Azure Queue Storage figyelési adataihoz.
 author: normesta
 services: azure-monitor
-ms.service: azure-monitor
-ms.topic: reference
-ms.date: 10/02/2020
 ms.author: normesta
+ms.date: 10/02/2020
+ms.topic: reference
+ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: a3a07f828bb8ef20da630e909e46f03e8556eb98
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780365"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590647"
 ---
-# <a name="azure-queue-storage-monitoring-data-reference"></a>Az Azure üzenetsor Storage figyelési adatreferenciája
+# <a name="azure-queue-storage-monitoring-data-reference"></a>Az Azure Queue Storage monitorozási dokumentációja
 
 Az Azure Storage figyelési adatainak gyűjtésével és elemzésével kapcsolatos részletekért lásd: az [Azure Storage figyelése](monitor-queue-storage.md) .
 
@@ -30,23 +30,23 @@ A kapacitás metrikáinak értékei naponta frissülnek (akár 24 óráig). Az i
 
 Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Monitorban.
 
-#### <a name="account-level"></a>Fiók szintje
+#### <a name="account-level-capacity-metrics"></a>Fiók szintű kapacitás metrikái
 
-[!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
+[!INCLUDE [Account-level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="queue-storage"></a>Queue Storage
+#### <a name="queue-storage-metrics"></a>Queue Storage metrikák
 
-Ez a táblázat a [várólista-tároló metrikáit](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)jeleníti meg.
+Ez a táblázat [Queue Storage mérőszámokat](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)jelenít meg.
 
 | Metrika | Leírás |
 | ------------------- | ----------------- |
-| QueueCapacity | A Storage-fiók által használt üzenetsor-tároló mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
-| QueueCount   | A Storage-fiókban lévő várólisták száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
-| QueueMessageCount | A tárolási fiók Queue szolgáltatásban lévő üzenetsor-üzenetek hozzávetőleges száma. <br/><br/>Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
+| **QueueCapacity** | A Storage-fiók által használt Queue Storage mennyisége. <br><br> Egység `Bytes` <br> Összesítés típusa: `Average` <br> Érték példa: `1024` |
+| **QueueCount** | A Storage-fiókban lévő várólisták száma. <br><br> Egység `Count` <br> Összesítés típusa: `Average` <br> Érték példa: `1024` |
+| **QueueMessageCount** | A tárolási fiók üzenetsor-üzeneteinek hozzávetőleges száma. <br><br> Egység `Count` <br> Összesítés típusa: `Average` <br> Érték példa: `1024` |
 
 ### <a name="transaction-metrics"></a>Tranzakciómetrikák
 
-A tranzakciós metrikák az Azure Storage-ból Azure Monitorba történő minden kérelemre kibocsátva. Abban az esetben, ha nincs tevékenység a Storage-fiókban, az adott időszakban nem lesz adat a tranzakciós metrikákban. Az összes tranzakciós metrika a fiók és a várólista tárolási szolgáltatási szintjén is elérhető. Az időgabona meghatározza a metrikai értékek bemutatásának időintervallumát. Az összes tranzakciós metrika támogatott időgabona-PT1H és PT1M.
+A tranzakciós metrikák az Azure Storage-ból Azure Monitorba történő minden kérelemre kibocsátva. Abban az esetben, ha nincs tevékenység a Storage-fiókban, az adott időszakban nem lesz adat a tranzakciós metrikákban. Az összes tranzakciós metrika mind a fiók, mind a Queue Storage szolgáltatási szinten elérhető. Az időgabona meghatározza a metrikai értékek bemutatásának időintervallumát. Az összes tranzakciós metrika támogatott időgabona-PT1H és PT1M.
 
 [!INCLUDE [Transaction metrics](../../../includes/azure-storage-account-transaction-metrics.md)]
 
@@ -77,7 +77,7 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
-- Az Azure Storage figyelésének leírását lásd: az [Azure üzenetsor-tároló figyelése](monitor-queue-storage.md) .
+- Lásd: az Azure [Queue Storage figyelése](monitor-queue-storage.md) az azure-Queue Storage figyelésének leírásához.
 - Az Azure-erőforrások figyelésével kapcsolatos részletekért lásd: az [Azure-erőforrások figyelése Azure monitorokkal](../../azure-monitor/insights/monitor-azure-resource.md) .

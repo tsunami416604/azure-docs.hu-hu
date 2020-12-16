@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: c28595458fea61f66b6930ce72fa0702e00aecd9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 74cab14cd162ba608a9c5d0168485e9055661f55
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129296"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590790"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Virtuális gép létrehozása jóváhagyott alap használatával
 
@@ -40,13 +40,17 @@ Az Azure számos jóváhagyott Linux-disztribúciót kínál. Az aktuális list�
 2. Válassza a **Virtuális gépek** lehetőséget.
 3. Válassza a **+ Hozzáadás** lehetőséget a **virtuális gép létrehozása** képernyő megnyitásához.
 4. Válassza ki a lemezképet a legördülő listából, vagy válassza az **összes nyilvános és privát rendszerkép tallózása** lehetőséget a rendelkezésre álló virtuálisgép-lemezképek kereséséhez vagy tallózásához.
-5. A 2. **generációs** virtuális gépek létrehozásához nyissa meg a **speciális** lapot, és válassza a **2. generációs** lehetőséget.
+5. Ha **1. generációs** virtuális gépet szeretne létrehozni, nyissa meg a **lemezek** lapot, és állítsa a **felügyelt lemez használata** beállítást a **nem** értékre, hogy a virtuális gép virtuális merevlemezét a megadott Storage-fiókban tudja beolvasni
+
+   :::image type="content" source="media/create-vm/create-virtual-machine-sizes-2.png" alt-text="Válassza a nem felügyelt lemez lehetőséget.":::
+   
+6. A 2. **generációs** virtuális gépek létrehozásához nyissa meg a **speciális** lapot, és válassza a **2. generációs** lehetőséget.
 
     :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Válassza az 1. gen vagy a 2. lehetőséget.":::
 
-6. Válassza ki a telepítendő virtuális gép méretét.
+7. Válassza ki a telepítendő virtuális gép méretét.
 
-    :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Válassza az 1. gen vagy a 2. lehetőséget.":::
+    :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Válasszon egy ajánlott virtuálisgép-méretet a kiválasztott képhez.":::
 
 7. Adja meg a virtuális gép létrehozásához szükséges egyéb adatokat.
 8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez. Amikor megjelenik az **érvényesítési** üzenet, válassza a  **Létrehozás** lehetőséget.

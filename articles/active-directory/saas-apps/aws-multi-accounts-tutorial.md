@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 246eba24f42baacf264c1c6d39ea63a51c62c51f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7e71058e1899cf83e712025b534e51a1be1f6bdb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457435"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591769"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Oktatóanyag: Azure Active Directory integráció Amazon Web Services (AWS) (örökölt oktatóanyag)
 
@@ -70,8 +70,8 @@ Amazon Web Services (AWS) Azure AD-be való integrálásának konfigurálásáho
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Amazon Web Services (AWS)** kifejezést a keresőmezőbe.
 1. Válassza az **Amazon Web Services (AWS)** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
@@ -99,7 +99,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 **Az Azure AD egyszeri bejelentkezés Amazon Web Services (AWS) szolgáltatással való konfigurálásához hajtsa végre a következő lépéseket:**
 
-1. A Azure Portal **Amazon Web Services (AWS)** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A Azure Portal **Amazon Web Services (AWS)** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -119,23 +119,23 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name  | Forrás attribútum  | Névtér |
+    | Név  | Forrás attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
-    | Role            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
-    | SessionDuration             | "900 másodperc (15 perc) és 43200 másodperc (12 óra) közötti értéket adjon meg" |  `https://aws.amazon.com/SAML/Attributes` |
+    | Szerepkör | User. assignedroles | `https://aws.amazon.com/SAML/Attributes`|
+    | SessionDuration | "900 másodperc (15 perc) és 43200 másodperc (12 óra) közötti értéket adjon meg" |  `https://aws.amazon.com/SAML/Attributes` |
 
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+    1. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![Képernyőfelvétel: a felhasználói jogcímek hozzáadása új jogcím hozzáadásával és elnevezett mentéssel.](common/new-save-attribute.png)
+        ![Képernyőfelvétel: a felhasználói jogcímek hozzáadása új jogcím hozzáadásával és elnevezett mentéssel.](common/new-save-attribute.png)
 
-    ![Képernyőfelvétel: a felhasználói jogcímek kezelése, ahol megadhatja az ebben a lépésben ismertetett értékeket.](common/new-attribute-details.png)
+        ![Képernyőfelvétel: a felhasználói jogcímek kezelése, ahol megadhatja az ebben a lépésben ismertetett értékeket.](common/new-attribute-details.png)
 
     b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
     c. A **névtér** szövegmezőbe írja be az adott sorhoz megjelenő névtér értékét.
 
-    d. Válassza a forrás **attribútumként**lehetőséget.
+    d. Válassza a forrás **attribútumként** lehetőséget.
 
     e. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
@@ -151,15 +151,15 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 1. Egy másik böngészőablakban jelentkezzen be a Amazon Web Services (AWS) vállalati webhelyre rendszergazdaként.
 
-1. Kattintson az **AWS Kezdőlap**elemre.
+1. Kattintson az **AWS Kezdőlap** elemre.
 
     ![Önálló Sign-On-Kezdőlap konfigurálása][11]
 
-1. Kattintson **az identitás-és hozzáférés-kezelés**elemre.
+1. Kattintson **az identitás-és hozzáférés-kezelés** elemre.
 
     ![Önálló Sign-On identitás konfigurálása][12]
 
-1. Kattintson az **identitás-szolgáltatók**elemre, majd a **szolgáltató létrehozása**elemre.
+1. Kattintson az **identitás-szolgáltatók** elemre, majd a **szolgáltató létrehozása** elemre.
 
     ![Önálló Sign-On-szolgáltató konfigurálása][13]
 
@@ -167,19 +167,19 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     ![Egyetlen Sign-On konfigurálása párbeszédpanel][14]
 
-    a. **Szolgáltató típusaként**válassza az **SAML**lehetőséget.
+    a. **Szolgáltató típusaként** válassza az **SAML** lehetőséget.
 
     b. A **szolgáltató neve** szövegmezőbe írja be a szolgáltató nevét (például: *WAAD*).
 
-    c. A letöltött metaadat- **fájl** Azure Portalból való feltöltéséhez kattintson a **fájl kiválasztása**lehetőségre.
+    c. A letöltött metaadat- **fájl** Azure Portalból való feltöltéséhez kattintson a **fájl kiválasztása** lehetőségre.
 
-    d. Kattintson a **következő lépés**gombra.
+    d. Kattintson a **következő lépés** gombra.
 
-1. A **szolgáltatói adatok ellenőrzése** párbeszédpanelen kattintson a **Létrehozás**gombra.
+1. A **szolgáltatói adatok ellenőrzése** párbeszédpanelen kattintson a **Létrehozás** gombra.
 
     ![Egyszeres Sign-On-ellenőrzés konfigurálása][15]
 
-1. Kattintson a **szerepkörök**elemre, majd kattintson a **szerepkör létrehozása**lehetőségre.
+1. Kattintson a **szerepkörök** elemre, majd kattintson a **szerepkör létrehozása** lehetőségre.
 
     ![Egyetlen Sign-On szerepkör konfigurálása][16]
 
@@ -190,12 +190,12 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     ![Egyetlen Sign-On megbízhatóság konfigurálása][19]
 
-    a. Válassza ki az **SAML 2,0-összevonás** elemet **a megbízható entitás típusa**területen.
+    a. Válassza ki az **SAML 2,0-összevonás** elemet **a megbízható entitás típusa** területen.
 
-    b. Az **saml 2,0-szolgáltató kiválasztása szakaszban**válassza ki a korábban létrehozott **SAML-szolgáltatót** (például: *WAAD*)
+    b. Az **saml 2,0-szolgáltató kiválasztása szakaszban** válassza ki a korábban létrehozott **SAML-szolgáltatót** (például: *WAAD*)
 
-    c. Válassza **a programozott és AWS felügyeleti konzol hozzáférésének engedélyezése**lehetőséget.
-  
+    c. Válassza **a programozott és AWS felügyeleti konzol hozzáférésének engedélyezése** lehetőséget.
+
     d. Kattintson a **Tovább gombra: engedélyek**.
 
 1. Keresse meg a **rendszergazdai hozzáférést** a keresősáv alatt, és jelölje be a **AdministratorAccess** jelölőnégyzetet, majd kattintson a **Tovább gombra: címkék**.
@@ -220,7 +220,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     b. A **szerepkör leírása** szövegmezőbe írja be ugyanazt az értéket, amelyet a szerepkör neveként használt.
 
-    c. Kattintson a **szerepkör létrehozása**lehetőségre.
+    c. Kattintson a **szerepkör létrehozása** lehetőségre.
 
     d. Szükség szerint hozzon létre annyi szerepkört, és rendelje őket az identitás-szolgáltatóhoz.
 
@@ -231,7 +231,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
     ![A képernyőképen látható, hogy az I. fiók hol jelenik meg a W S ablakban.](./media/aws-multi-accounts-tutorial/aws-accountid.png)
 
-1. Most jelentkezzen be [Azure Portal](https://portal.azure.com/) , és lépjen a **csoportok**elemre.
+1. Most jelentkezzen be [Azure Portal](https://portal.azure.com/) , és lépjen a **csoportok** elemre.
 
 1. Hozzon létre új csoportokat ugyanazzal a névvel, mint a korábban létrehozott IAM-szerepkörökkel, és jegyezze fel az új csoportok **objektum-azonosítóit** .
 
@@ -253,39 +253,35 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 1. Nyissa meg [Microsoft Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban.
 
-    a. Jelentkezzen be a Microsoft Graph Explorer webhelyre a bérlőhöz tartozó globális rendszergazdai/rendszergazdai hitelesítő adatok használatával.
+    1. Jelentkezzen be a Microsoft Graph Explorer webhelyre a bérlőhöz tartozó globális rendszergazdai/rendszergazdai hitelesítő adatok használatával.
 
-    b. Megfelelő engedélyekkel kell rendelkeznie a szerepkörök létrehozásához. A szükséges engedélyek beszerzéséhez kattintson az **engedélyek módosítása** elemre.
+    1. Megfelelő engedélyekkel kell rendelkeznie a szerepkörök létrehozásához. A szükséges engedélyek beszerzéséhez kattintson az **engedélyek módosítása** elemre.
 
-    ![Microsoft Graph Explorer párbeszédpanel Box1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+        ![Microsoft Graph Explorer párbeszédpanel Box1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
-    c. Válassza ki az alábbi engedélyeket a listából (ha még nem rendelkezik ezekkel), és kattintson az "engedélyek módosítása" elemre. 
+    1. Válassza ki az alábbi engedélyeket a listából (ha még nem rendelkezik ezekkel), és kattintson az "engedélyek módosítása" elemre. 
 
-    ![Microsoft Graph Explorer párbeszédpanel rajzolása 2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+        ![Microsoft Graph Explorer párbeszédpanel rajzolása 2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. Ekkor ismét be kell jelentkeznie, és el kell fogadnia az engedélyt. A beleegyezés elfogadása után ismét bejelentkezett a Microsoft Graph Explorerbe.
+    1. Ekkor ismét be kell jelentkeznie, és el kell fogadnia az engedélyt. A beleegyezés elfogadása után ismét bejelentkezett a Microsoft Graph Explorerbe.
 
-    e. Módosítsa a verzió legördülő menüjét a **bétaverzióra**. Az összes egyszerű szolgáltatásnév beolvasásához használja a következő lekérdezést:
+    1. Módosítsa a verzió legördülő menüjét a **bétaverzióra**. Az összes egyszerű szolgáltatásnév beolvasásához használja a következő lekérdezést: `https://graph.microsoft.com/beta/servicePrincipals` . Ha több könyvtárat használ, akkor a következő mintát használhatja, amely az elsődleges tartománnyal rendelkezik: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` .
 
-    `https://graph.microsoft.com/beta/servicePrincipals`
+        ![Microsoft Graph Explorer párbeszédpanel box3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    Ha több könyvtárat használ, akkor a következő mintát használhatja, amely az elsődleges tartománya  `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    1. A beolvasott egyszerű szolgáltatások listájából szerezze be a módosítandó elemet. A CTRL + F billentyűkombinációval is megkeresheti az alkalmazást az összes felsorolt ServicePrincipals. A következő lekérdezéssel az Azure AD tulajdonságlapról másolt **egyszerű szolgáltatásnév-objektum azonosítójának** használatával érheti el a megfelelő szolgáltatásnevet.
 
-    ![Microsoft Graph Explorer párbeszédpanel box3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
-  
-    f. A beolvasott egyszerű szolgáltatások listájából szerezze be a módosítandó elemet. A CTRL + F billentyűkombinációval is megkeresheti az alkalmazást az összes felsorolt ServicePrincipals. A következő lekérdezéssel az Azure AD tulajdonságlapról másolt **egyszerű szolgáltatásnév-objektum azonosítójának** használatával érheti el a megfelelő szolgáltatásnevet.
+        `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+        ![Microsoft Graph Explorer párbeszédpanel box4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    ![Microsoft Graph Explorer párbeszédpanel box4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    1. Bontsa ki a appRoles tulajdonságot az egyszerű szolgáltatásnév objektumból.
 
-    : Bontsa ki a appRoles tulajdonságot az egyszerű szolgáltatásnév objektumból.
+        ![Microsoft Graph Explorer párbeszédpanel box5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
-    ![Microsoft Graph Explorer párbeszédpanel box5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    1. Most új szerepköröket kell létrehoznia az alkalmazáshoz. 
 
-    h. Most új szerepköröket kell létrehoznia az alkalmazáshoz. 
-
-    i. Az alábbi JSON egy példa a appRoles objektumra. Hozzon létre egy hasonló objektumot az alkalmazáshoz használni kívánt szerepkörök hozzáadásához.
+    1. Az alábbi JSON egy példa a appRoles objektumra. Hozzon létre egy hasonló objektumot az alkalmazáshoz használni kívánt szerepkörök hozzáadásához.
 
     ```
     {
@@ -329,9 +325,9 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
     > [!Note]
     > A javítási művelet **msiam_access** után csak új szerepköröket adhat hozzá. Azt is megteheti, hogy annyi szerepkört ad hozzá, amennyit csak szeretne, ha a szervezetnek szüksége van rá. Az Azure AD a következő szerepkörök **értékét** küldi el az SAML-válaszban szereplő jogcím-értékként.
 
-    j. Lépjen vissza a Microsoft Graph-Intézőre, és módosítsa a metódust a **Get** to **patch**elemre. Az egyszerű szolgáltatásnév objektumának javításához a appRoles tulajdonság frissítésével a példában láthatóhoz hasonló módon frissítse a kívánt szerepköröket. A javítási művelet végrehajtásához kattintson a **lekérdezés futtatása** elemre. A sikeres üzenet megerősíti a Amazon Web Services alkalmazás szerepkörének létrehozását.
+    1. Lépjen vissza a Microsoft Graph-Intézőre, és módosítsa a metódust a **Get** to **patch** elemre. Az egyszerű szolgáltatásnév objektumának javításához a appRoles tulajdonság frissítésével a példában láthatóhoz hasonló módon frissítse a kívánt szerepköröket. A javítási művelet végrehajtásához kattintson a **lekérdezés futtatása** elemre. A sikeres üzenet megerősíti a Amazon Web Services alkalmazás szerepkörének létrehozását.
 
-    ![Microsoft Graph Explorer párbeszédpanel box6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+        ![Microsoft Graph Explorer párbeszédpanel box6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 1. Ha a szolgáltatásnév több szerepkörrel is rendelkezik, akkor felhasználókat és csoportokat rendelhet hozzá a megfelelő szerepkörökhöz. Ezt a portálon teheti meg, és megnyithatja a Amazon Web Services alkalmazást. Kattintson a felül található **felhasználók és csoportok** fülre.
 
@@ -365,7 +361,7 @@ Azt is ellenőrizheti, hogy az SAML-válasz a jogcímek szerint átadott szerepk
 
 További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután konfigurálta Amazon Web Services (AWS), kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 

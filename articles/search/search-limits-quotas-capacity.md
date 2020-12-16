@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/15/2020
+ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107827"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591344"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Az Azure Cognitive Search szolgáltatási korlátai
 
-A tárolás, a munkaterhelések és az indexek és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy az Azure Cognitive Search **ingyenes**, **alapszintű**, **standard**vagy **Storage optimalizált** árképzési szinteken van-e [kiépítve](search-create-service-portal.md) .
+A tárolás, a munkaterhelések és az indexek és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy az Azure Cognitive Search **ingyenes**, **alapszintű**, **standard** vagy **Storage optimalizált** árképzési szinteken van-e [kiépítve](search-create-service-portal.md) .
 
 + Az **ingyenes** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetéshez tartozik. 
 
@@ -25,7 +25,7 @@ A tárolás, a munkaterhelések és az indexek és egyéb objektumok mennyiség�
 
 + A **standard** szintű dedikált gépeken fut, és minden szinten nagyobb a tárterület és a feldolgozási kapacitás. A standard szint négy szinten érhető el: S1, S2, S3 és S3 HD. Az S3 nagy sűrűségű (S3 HD) a [több-bérlős](search-modeling-multitenant-saas-applications.md) és nagy mennyiségű kisméretű indexhez (szolgáltatás: 3000 indexek) van tervezve. Az S3 HD nem biztosítja az [Indexelő szolgáltatást](search-indexer-overview.md) , és az adatfeldolgozásnak olyan API-kat kell használnia, amelyek a forrástól az indexig leküldik az adatot. 
 
-+ A Storage-ra **optimalizált tárolók** a **standard szintű**tárterületet, tárolási sávszélességet és memóriát biztosító dedikált gépeken futnak. Ez a réteg nagy, lassan változó indexeket céloz meg. A tároló optimalizált két szinten érhető el: L1 és L2.
++ A Storage-ra **optimalizált tárolók** a **standard szintű** tárterületet, tárolási sávszélességet és memóriát biztosító dedikált gépeken futnak. Ez a réteg nagy, lassan változó indexeket céloz meg. A tároló optimalizált két szinten érhető el: L1 és L2.
 
 ## <a name="subscription-limits"></a>Előfizetés korlátai
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
@@ -37,12 +37,12 @@ A tárolás, a munkaterhelések és az indexek és egyéb objektumok mennyiség�
 
 ## <a name="index-limits"></a>Index korlátai
 
-| Erőforrás | Ingyenes | 1. alapszintű &nbsp; <sup>1</sup>  | S1 | S2 | S3 | S3 &nbsp; HD | L1 | L2 |
+| Erőforrás | Ingyenes | 1. alapszintű &nbsp; <sup></sup>  | S1 | S2 | S3 | S3 &nbsp; HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Indexek maximális száma |3 |5 vagy 15 |50 |200 |200 |1000 partíciónként vagy 3000 szolgáltatásonként |10 |10 |
 | Egyszerű mezők maximális száma index szerint |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
 | Összetett gyűjtemény mezőinek maximális száma index szerint |40 |40 |40 |40 |40 |40 |40 |40 |
-| A 2. dokumentumba tartozó összes összetett gyűjteményen belüli elemek maximális száma &nbsp; <sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| A 2. dokumentumba tartozó összes összetett gyűjteményen belüli elemek maximális száma &nbsp; <sup></sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Összetett mezők maximális mélysége |10 |10 |10 |10 |10 |10 |10 |10 |
 | Mutatók maximális száma index [alapján](/rest/api/searchservice/suggesters) |1 |1 |1 |1 |1 |1 |1 |1 |
 | [Pontozási profilok](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) maximális száma index szerint |100 |100 |100 |100 |100 |100 |100 |100 |
@@ -143,7 +143,7 @@ A keresési lekérdezési és indexelési kérelmeket a rendszer a maximális ka
 
 Az indexhez kapcsolódó műveletekre vonatkozó statikus díjszabási kérelmek:
 
-+ Indexek listázása (/Indexes beolvasása): 5 másodpercenkénti keresési egységenként
++ Indexek listázása (/Indexes beolvasása): másodpercenként 3/keresési egység
 + Index beolvasása (/Indexes/myindex beolvasása): másodpercenként 10/keresési egység
 + Index létrehozása (/Indexes POST): 12 percenként, keresési egységenként
 + Index létrehozása vagy frissítése (PUT/Indexes/myindex): 6 másodpercenként/keresési egységenként

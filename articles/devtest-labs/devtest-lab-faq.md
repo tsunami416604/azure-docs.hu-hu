@@ -3,12 +3,12 @@ title: Azure DevTest Labs GYIK | Microsoft Docs
 description: Ez a cikk a Azure DevTest Labs kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328385"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590273"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Választ kaphat a Azure DevTest Labsával kapcsolatos leggyakoribb kérdésekre.
@@ -165,7 +165,7 @@ Előfordulhat, hogy a földrajzi határokat is figyelembe kell vennie. Az észak
 Azure DevOps Projectson belül egy adott projekthez is használhat labort. Ezután egy megadott Azure Active Directory csoporton keresztül alkalmazza a biztonságot, amely lehetővé teszi az erőforrások mindkét készletének elérését. A laborhoz rendelt virtuális hálózat lehet egy másik határ, amellyel összevonhatja a felhasználókat.
 
 ### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>Hogyan lehet megakadályozni az erőforrások törlését a laboron belül?
-Javasoljuk, hogy a megfelelő engedélyeket a labor szintjén állítsa be úgy, hogy csak a jogosult felhasználók törölhetnek erőforrásokat, vagy módosíthatják a labor-házirendeket. A fejlesztőket a **DevTest Labs-felhasználók** csoportba kell helyezni. A vezető fejlesztőnek vagy az infrastruktúra-érdeklődőnek a **DevTest Labs-tulajdonosnak**kell lennie. Javasoljuk, hogy csak két labor tulajdonosa legyen. Ez a szabályzat a sérülés elkerülése érdekében kiterjed a kód tárházára. A labor felhasználói jogosultak erőforrásokat használni, de nem frissíthetik a labor-házirendeket. Tekintse meg a következő cikket, amely felsorolja azokat a szerepköröket és jogosultságokat, amelyekkel az egyes beépített csoportok egy laborban találhatók: a [tulajdonosok és a felhasználók hozzáadása a Azure DevTest Labs](devtest-lab-add-devtest-user.md).
+Javasoljuk, hogy a megfelelő engedélyeket a labor szintjén állítsa be úgy, hogy csak a jogosult felhasználók törölhetnek erőforrásokat, vagy módosíthatják a labor-házirendeket. A fejlesztőket a **DevTest Labs-felhasználók** csoportba kell helyezni. A vezető fejlesztőnek vagy az infrastruktúra-érdeklődőnek a **DevTest Labs-tulajdonosnak** kell lennie. Javasoljuk, hogy csak két labor tulajdonosa legyen. Ez a szabályzat a sérülés elkerülése érdekében kiterjed a kód tárházára. A labor felhasználói jogosultak erőforrásokat használni, de nem frissíthetik a labor-házirendeket. Tekintse meg a következő cikket, amely felsorolja azokat a szerepköröket és jogosultságokat, amelyekkel az egyes beépített csoportok egy laborban találhatók: a [tulajdonosok és a felhasználók hozzáadása a Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Hogyan megosztanak egy közvetlen hivatkozást a laborba?
 
@@ -278,10 +278,10 @@ A VHD-fájlok egyéni lemezképek létrehozására való feltöltésének automa
 A laborhoz társított cél Storage-fiók megkeresése:
 
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2.  A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget.
+2.  A bal oldali menüben válassza az **erőforráscsoportok** lehetőséget.
 3.  Keresse meg és válassza ki a laborhoz társított erőforráscsoportot.
-4.  Az **Áttekintés**területen válassza ki a Storage-fiókok egyikét.
-5.  Válassza a **Blobok**lehetőséget.
+4.  Az **Áttekintés** területen válassza ki a Storage-fiókok egyikét.
+5.  Válassza a **Blobok** lehetőséget.
 6.  Keresse meg a listában a feltöltéseket. Ha nincs ilyen, térjen vissza a 4. lépéshez, és próbálkozzon egy másik Storage-fiókkal.
 7.  Az **URL-címet** használja célként a AzCopy parancsban.
 
@@ -318,7 +318,7 @@ A szervezet általános irányítási és konfigurációs felügyeleti stratégi
 - Társítsa az Azure Repos-t ugyanazzal a Azure Active Directory Bérlővel, amelyet az Azure-előfizetés használ a hitelesítéshez és engedélyezéshez.
 - Hozzon létre egy `All DevTest Labs Developers` központilag felügyelt Azure Active Directory nevű csoportot. Az összetevő-fejlesztéshez hozzájáruló fejlesztőknek ebbe a csoportba kell tartoznia.
 - Ugyanaz a Azure Active Directory csoport használható az Azure Repos adattárhoz és a laborhoz való hozzáférés biztosításához.
-- Az Azure-alapú adattárakban az elágazások és az elágazások különálló, az elsődleges üzemi tárházból származó fejlesztésen alapuló tárházban használhatók. A tartalmat a rendszer csak a megfelelő kód felülvizsgálatát követően egy lekéréses kérelemmel adja hozzá a Master ág számára. Ha a kód felülvizsgáló jóváhagyja a változást, a vezető fejlesztő, aki felelős a főág fenntartásáért, egyesíti a frissített kódot.
+- Az Azure-alapú adattárakban az elágazások és az elágazások különálló, az elsődleges üzemi tárházból származó fejlesztésen alapuló tárházban használhatók. A tartalmat a rendszer csak a fő ág számára adja hozzá egy lekéréses kérelemmel a megfelelő kód felülvizsgálatát követően. Miután a kód-véleményező jóváhagyja a változást, egy vezető fejlesztő, aki felelős a fő ág fenntartásáért, egyesíti a frissített kódot.
 
 ## <a name="cicd-integration"></a>CI/CD-integráció
 

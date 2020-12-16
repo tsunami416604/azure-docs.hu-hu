@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: b-juche
-ms.openlocfilehash: ee5e1230acd059d69648144b84a8fbfa652ef6e7
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854053"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591822"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
 
@@ -49,8 +49,8 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy k
     
     | Biztonsági stílus    | Engedélyek módosítására képes ügyfelek   | Az ügyfelek által használható engedélyek  | Eredményül kapott biztonsági stílus    | Fájlok elérésére képes ügyfelek     |
     |-  |-  |-  |-  |-  |
-    | UNIX  | NFS   | NFSv3 mód BITS   | UNIX  | NFS és Windows   |
-    | NTFS  | Windows   | NTFS ACL-ek     | NTFS  |NFS és Windows|
+    | `Unix`    | NFS   | NFSv3 mód BITS   | UNIX  | NFS és Windows   |
+    | `Ntfs`    | Windows   | NTFS ACL-ek     | NTFS  |NFS és Windows|
 * Az NTFS biztonsági stílusú kötetet az NFS használatával csatlakoztató UNIX-felhasználók Windows-felhasználóként lesznek hitelesítve a `root` UNIX `root` és `pcuser` az összes többi felhasználó számára. Győződjön meg arról, hogy ezek a felhasználói fiókok léteznek a Active Directory a kötet csatlakoztatása előtt, amikor az NFS-t használja. 
 
 

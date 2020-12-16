@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73fb9bf436c043e903977fafbb5a502e2edc5488
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518685"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591195"
 ---
 # <a name="msix-app-attach-faq"></a>MSIX-alkalmazás csatolása – GYIK
 
@@ -27,7 +27,7 @@ A MSIX az alkalmazások csomagolási formátuma, míg a MSIX-alkalmazás csatol�
 
 A MSIX-alkalmazás csatolása nem használja a FSLogix. A MSIX és a FSLogix együttes használata azonban zökkenőmentes felhasználói élmény biztosítására szolgál.
 
-## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>Használhatom a MSIX alkalmazást a Windows rendszerű virtuális asztali gépeken kívül?
+## <a name="can-i-use-the-msix-app-attach-outside-of-windows-virtual-desktop"></a>Használhatom a MSIX alkalmazást a Windows rendszerű virtuális asztalon kívül?
 
 A Power MSIX-alkalmazás által csatolt API-k elérhetők a Windows 10 Enterprise rendszerhez. Ezek az API-k a Windows rendszerű virtuális asztali gépeken kívül is használhatók. Azonban nincs olyan felügyeleti sík a MSIX alkalmazáshoz, amely a Windows rendszerű virtuális asztalon kívülre van csatolva.
 
@@ -72,6 +72,6 @@ Igen. Megadhatja a már újraelőkészített alkalmazásokat, és ez nem okoz hi
 A MSIX-alkalmazás HTTP-n vagy HTTPs-en keresztüli csatlakoztatása jelenleg nem támogatott.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az MSIX-alkalmazás csatlakoztatásáról, tekintse át az Áttekintés és a [Szószedet](app-attach-glossary.md) [témakört](what-is-app-attach.md) . Ellenkező esetben Ismerkedjen [meg az alkalmazások csatlakoztatásának beállítása](app-attach.md)című lépéssel.

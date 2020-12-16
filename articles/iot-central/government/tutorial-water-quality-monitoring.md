@@ -3,17 +3,17 @@ title: 'Oktatóanyag: vízminőség-figyelési alkalmazás létrehozása az Azur
 description: 'Oktatóanyag: megtudhatja, hogyan hozhat létre vízminőség-figyelési alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 07f0e66888eaa909dfce14924e9186bcb9b876b4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6e8f9b8b33d391c4e13c6076a8589d336455d8c0
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014492"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590222"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Oktatóanyag: vízminőség-figyelési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -139,13 +139,13 @@ A következő eszközbeállítások beállításainak testreszabása:
 1. Lépjen a **hőmérséklet** telemetria típusra.
 1. Módosítsa a **megjelenített név** értékét a **jelentett hőmérséklet** értékre.
 1. Módosítsa a mértékegységet, vagy állítsa be a **minimális értéket** és a **maximális értéket**.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 #### <a name="add-a-cloud-property"></a>Felhőbeli tulajdonság hozzáadása
 
 1. Az eszköz sablonja menüben válassza a **Cloud Property** elemet.
 1. Új Felhőbeli tulajdonság hozzáadásához válassza a **+ Cloud Property hozzáadása** elemet. Az Azure IoT Centralban hozzáadhat egy olyan tulajdonságot, amely egy eszközhöz kapcsolódik, de az nem várható, hogy az eszköz elküldje őket. Ilyen tulajdonság például a telepítési területre, az eszköz adataira vagy a karbantartási információkra jellemző riasztási küszöbérték.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="explore-views"></a>Nézetek megismerése
 
@@ -231,7 +231,7 @@ Az Azure IoT Central-feladatokkal több eszközön is aktiválhatja a frissíté
 
 Építőként több beállítást is módosíthat az alkalmazás felhasználói felületének testreszabásához.
 
-1. Válassza **Administration**  >  **az adminisztráció testre szabása alkalmazást**.
+1. Válassza   >  **az adminisztráció testre szabása alkalmazást**.
 1. Az **alkalmazás emblémája** területen válassza a **módosítás** lehetőséget, hogy kiválassza a logóként feltölteni kívánt képet.
 1. A **böngésző ikonja** alatt válassza a **módosítás** lehetőséget a böngésző lapjain megjelenő rendszerkép kiválasztásához.
 1. A **böngésző színei** területen lecserélheti az alapértelmezett értékeket HTML hexadecimális színkódokkal.
@@ -245,7 +245,7 @@ Az Azure IoT Central-feladatokkal több eszközön is aktiválhatja a frissíté
 
 1. A **rendszerkép kiválasztása** gomb használatával kiválaszthatja az alkalmazási képként feltölteni kívánt képet.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alábbi lépésekkel:
 

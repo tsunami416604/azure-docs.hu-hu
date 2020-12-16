@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9bdd70baa906d9dc03a37eecb0388eee5638f153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e05ecd162ccb333c6ab29b0185f6ffcb04a6213
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184280"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591361"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-beli szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával
 
@@ -109,14 +109,14 @@ A sablon használatához a következőket kell tennie:
 }
 ```
 
-Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) parancsokat mutatja be a telepítés elindításához egy ExampleGroup nevű erőforráscsoporthoz.
+Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) parancsait mutatja be a telepítés elindításához egy ExampleGroup nevű erőforráscsoporthoz.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json
 ```
 
 Az alábbi példa az olvasói szerepkör hozzárendelését mutatja be egy erőforráscsoport felhasználói számára a sablon telepítése után.
@@ -187,24 +187,24 @@ A sablon használatához a következő bemeneteket kell megadnia:
 > [!NOTE]
 > Ez a sablon nem idempotens, kivéve, ha ugyanazt az `roleNameGuid` értéket paraméterként megadja a sablon minden egyes telepítéséhez. Ha nincs `roleNameGuid` megadva, a rendszer alapértelmezés szerint új GUID azonosítót hoz létre minden központi telepítésnél, és a további központi telepítések `Conflict: RoleAssignmentExists` hibát jeleznek.
 
-A szerepkör-hozzárendelés hatóköre a központi telepítés szintjétől függ. Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) parancsokat mutatja be a telepítés elindításához egy erőforráscsoport-hatókörben.
+A szerepkör-hozzárendelés hatóköre a központi telepítés szintjétől függ. Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) parancsait mutatja be a telepítés elindításához egy erőforráscsoport-hatókörben.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-Az alábbi példa a [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) és az [Deployment Create](/cli/azure/deployment#az-deployment-create) parancsait mutatja be a központi telepítés előfizetési hatókörben való elindításához és a hely megadásához.
+Az alábbi példa a [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) és az [Deployment sub Create](/cli/azure/deployment/sub#az_deployment_sub_create) parancsait mutatja be a központi telepítés előfizetési hatókörben való elindításához és a hely megadásához.
 
 ```azurepowershell
 New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment sub create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 ### <a name="resource-scope"></a>Erőforrás hatóköre
@@ -290,14 +290,14 @@ A sablon használatához a következő bemeneteket kell megadnia:
 }
 ```
 
-Az előző sablon üzembe helyezéséhez használja az erőforráscsoport-parancsokat. Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) parancsokat mutatja be a telepítés elindításához egy erőforrás-hatókörben.
+Az előző sablon üzembe helyezéséhez használja az erőforráscsoport-parancsokat. Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) parancsait mutatja be a telepítés elindításához egy erőforrás-hatókörben.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
 A következő példa a közreműködői szerepkör hozzárendelését mutatja be egy felhasználónak egy Storage-fiókhoz a sablon telepítése után.
@@ -360,14 +360,14 @@ A sablon használatához a következő bemeneteket kell megadnia:
 }
 ```
 
-Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) parancsokat mutatja be a telepítés elindításához egy erőforráscsoport-hatókörben.
+Az alábbi példa a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és az [Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create) parancsait mutatja be a telepítés elindításához egy erőforráscsoport-hatókörben.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup2 --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup2 --template-file rbac-test.json
 ```
 
 Az alábbi példa a közreműködői szerepkör hozzárendelését mutatja be egy új felügyelt identitási szolgáltatásnév számára a sablon telepítése után.
@@ -385,7 +385,7 @@ Az Azure-RBAC az Azure-erőforrásokhoz való hozzáférés eltávolításához 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Rövid útmutató: Azure Resource Manager-sablon létrehozása és üzembe helyezése az Azure Portalon](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
-- [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../azure-resource-manager/templates/template-syntax.md)
+- [Rövid útmutató: ARM-sablonok létrehozása és üzembe helyezése a Azure Portal használatával](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
+- [Az ARM-sablonok struktúrájának és szintaxisának megismerése](../azure-resource-manager/templates/template-syntax.md)
 - [Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?term=rbac)

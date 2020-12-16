@@ -1,19 +1,19 @@
 ---
-title: A várólista-tároló (C++) használata – Azure Storage
-description: Ismerje meg, hogyan használható a üzenetsor-tárolási szolgáltatás az Azure-ban. A minták C++ nyelven íródnak.
+title: A Queue Storage (C++) használata – Azure Storage
+description: Ismerje meg, hogyan használhatja a Queue Storage szolgáltatást az Azure-ban. A minták C++ nyelven íródnak.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 07/16/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.topic: how-to
-ms.reviewer: dineshm
-ms.openlocfilehash: 73d88f69057dc6fe39f6329e89eb72ecebf853f0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 44d64c54049c02b6602f01b97effcc33b03dbcfe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491978"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591327"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>A Queue Storage használata C++-szal
 
@@ -23,10 +23,10 @@ ms.locfileid: "96491978"
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure üzenetsor-tárolási szolgáltatás használatával. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, **bepillantása**, **beolvasása** és **törlése** , valamint a **várólisták létrehozása és törlése**.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure Queue Storage szolgáltatás használatával. A minták C++ nyelven íródtak, és az [Azure Storage ügyféloldali kódtárat használják a C++ nyelvhez](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, **bepillantása**, **beolvasása** és **törlése** , valamint a **várólisták létrehozása és törlése**.
 
 > [!NOTE]
-> Ez az útmutató az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának 1.0.0-s és újabb verziójára vonatkozik. Az ajánlott verzió a Storage ügyféloldali kódtárának 2.2.0-s verziója, amely elérhető a [NuGeten](https://www.nuget.org/packages/wastorage) vagy a [GitHubon](https://github.com/Azure/azure-storage-cpp/) keresztül.
+> Ez az útmutató az Azure Storage ügyféloldali függvénytárát célozza meg a C++ v 1.0.0 vagy újabb verzióra. Az ajánlott verzió az Azure Storage ügyféloldali kódtár v 2.2.0, amely a [NuGet](https://www.nuget.org/packages/wastorage) vagy a [githubon](https://github.com/Azure/azure-storage-cpp/)keresztül érhető el.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -36,12 +36,14 @@ Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az 
 
 Ebben az útmutatóban a tárolási funkciókat fogja használni, amelyek egy C++-alkalmazáson belül futtathatók.
 
-Ehhez telepítenie kell az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát, és létre kell hoznia egy Azure Storage-fiókot az Azure-előfizetésben.
+Ehhez telepítenie kell az Azure Storage ügyféloldali kódtárat a C++-hoz, és létre kell hoznia egy Azure Storage-fiókot az Azure-előfizetésében.
 
-Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az alábbi módszerekkel telepítheti:
+<!-- docutune:casing "Getting Started on Linux" -->
+
+Ha az Azure Storage ügyféloldali kódtárat szeretné telepíteni a C++ nyelvre, a következő módszereket használhatja:
 
 - **Linux:** Kövesse az [Azure Storage ügyféloldali függvénytárában](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) , a következő témakörben ismertetett utasításokat: első lépések Linuxon lapon.
-- **Windows:** Windows rendszeren használja a [vcpkg](https://github.com/microsoft/vcpkg) -t a függőség-kezelőként. A vcpkg inicializálásához [kövesse a rövid](https://github.com/microsoft/vcpkg#quick-start) útmutatót. Ezután használja a következő parancsot a könyvtár telepítéséhez:
+- **Windows:** Windows rendszeren használja a [vcpkg](https://github.com/microsoft/vcpkg) -t a függőség-kezelőként. [Az inicializáláshoz kövesse a rövid](https://github.com/microsoft/vcpkg#quick-start) útmutatót `vcpkg` . Ezután használja a következő parancsot a könyvtár telepítéséhez:
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
@@ -58,16 +60,16 @@ Adja hozzá a következő include utasításokat a C++ fájl elejéhez, ahol az 
 #include <was/queue.h>
 ```
 
-## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage-beli kapcsolatok karakterláncának beállítása
+## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage kapcsolati sztring beállítása
 
-Az Azure Storage-ügyfél egy tárolási kapcsolati sztringet használ az adatkezelési szolgáltatások elérésére szolgáló végpontok és hitelesítő adatok tárolásához. Ha egy ügyfélalkalmazás fut, a tárolási kapcsolati karakterláncot a következő formátumban kell megadnia a Storage-fiók neve és a *accountname* és a *AccountKey* értékek [Azure Portal](https://portal.azure.com) lévő Storage-fiókhoz tartozó Storage-hozzáférési kulcs használatával. További információ a Storage-fiókokról és a hozzáférési kulcsokról: [Tudnivalók az Azure Storage-fiókokról](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
+Az Azure Storage-ügyfelek tárolási kapcsolódási karakterláncot használnak az adatkezelési szolgáltatások eléréséhez szükséges végpontok és hitelesítő adatok tárolásához. Ügyfélalkalmazás esetén a tárolási kapcsolati karakterláncot a következő formátumban kell megadnia, a Storage-fiók neve és a (z) és értékek [Azure Portal](https://portal.azure.com) lévő Storage-fiókhoz tartozó Storage-hozzáférési kulcs használatával `AccountName` `AccountKey` . További információ a Storage-fiókokról és a hozzáférési kulcsokról: [Tudnivalók az Azure Storage-fiókokról](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-Az alkalmazás helyi Windows-számítógépeken való teszteléséhez használhatja a [Azurite Storage emulatort](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). A Azurite egy olyan segédprogram, amely szimulálja az Azure-ban elérhető blob-és üzenetsor-szolgáltatásokat a helyi fejlesztési gépen. A következő példa bemutatja, hogyan deklarálhat statikus mezőt a helyi Storage Emulatorhoz használható kapcsolati sztring tárolására:
+Az alkalmazás helyi Windows-számítógépeken való teszteléséhez használhatja a [Azurite Storage emulatort](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). A Azurite egy olyan segédprogram, amely szimulálja az Azure Blob Storage és Queue Storage a helyi fejlesztési gépen. A következő példa bemutatja, hogyan deklarálhat statikus mezőt a helyi Storage Emulatorhoz használható kapcsolati sztring tárolására:
 
 ```cpp
 // Define the connection-string with Azurite.
@@ -80,7 +82,7 @@ Az alábbi minták azt feltételezik, hogy az ezen két módszer egyikével kér
 
 ## <a name="retrieve-your-connection-string"></a>A kapcsolati sztring lekérése
 
-A Storage-fiók adatainak megjelenítéséhez használhatja a **cloud_storage_account** osztályt. A Storage-fiók információit a **parse** metódussal kérheti le a Storage kapcsolati sztringjéből.
+A `cloud_storage_account` Storage-fiók adatainak ábrázolásához használhatja az osztályt. A Storage-fiók adatainak a Storage-kapcsolódási karakterláncból való lekéréséhez használhatja a `parse` metódust.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -89,7 +91,7 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 
 ## <a name="how-to-create-a-queue"></a>Útmutató: üzenetsor létrehozása
 
-A **cloud_queue_client** objektumok lehetővé teszi a várólisták hivatkozási objektumainak lekérését. A következő kód egy **cloud_queue_client** objektumot hoz létre.
+Az `cloud_queue_client` objektumok lehetővé teszi a várólisták hivatkozási objektumainak lekérését. A következő kód létrehoz egy `cloud_queue_client` objektumot.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -99,19 +101,19 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 ```
 
-A **cloud_queue_client** objektum használatával kérjen hivatkozást a használni kívánt várólistára. Ha nem létezik, létrehozhat egy várólistát.
+Használja az `cloud_queue_client` objektumot a használni kívánt üzenetsor hivatkozásának beolvasásához. Ha nem létezik, létrehozhat egy várólistát.
 
 ```cpp
 // Retrieve a reference to a queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
 // Create the queue if it doesn't already exist.
- queue.create_if_not_exists();  
+queue.create_if_not_exists();  
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Útmutató: üzenet beszúrása egy várólistába
 
-Ha egy üzenetet egy meglévő várólistába szeretne beszúrni, először hozzon létre egy új **cloud_queue_message**. Ezután hívja meg a **add_message** metódust. Egy **cloud_queue_message** lehet létrehozni egy sztringből vagy egy **bájtos** tömbből. Az alábbi kód létrehoz egy üzenetsort (ha még nem létezik), és beszúrja a „Hello, World” üzenetet:
+Ha egy üzenetet egy meglévő várólistába szeretne beszúrni, először hozzon létre egy újat `cloud_queue_message` . Ezután hívja meg a `add_message` metódust. A `cloud_queue_message` létrehozható egy karakterláncból (UTF-8 formátumban) vagy egy bájtos tömbből. Az alábbi kód létrehoz egy várólistát (ha nem létezik), és beszúrja az üzenetet `Hello, World` :
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -133,7 +135,7 @@ queue.add_message(message1);
 
 ## <a name="how-to-peek-at-the-next-message"></a>Útmutató: betekintés a következő üzenetbe
 
-A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistából a **peek_message** metódus meghívásával.
+A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistába `peek_message` .
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -154,7 +156,7 @@ std::wcout << U("Peeked message content: ") << peeked_message.content_as_string(
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: várólistán lévő üzenet tartalmának módosítása
 
-Egy üzenetet tartalmát helyben, az üzenetsorban módosíthatja. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. Az alábbi kód frissíti az üzenetsorban található üzenetet az új tartalommal, és a láthatósági időkorlátot további 60 másodperccel bővíti. Elmenti az üzenethez társított feladat állapotát, és az ügyfél számára további egy percet biztosít az üzenet használatának folytatására. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel n alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
+Egy üzenetet tartalmát helyben, az üzenetsorban módosíthatja. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. Az alábbi kód frissíti az üzenetsorban található üzenetet az új tartalommal, és a láthatósági időkorlátot további 60 másodperccel bővíti. Elmenti az üzenethez társított feladat állapotát, és az ügyfél számára további egy percet biztosít az üzenet használatának folytatására. Ezzel a technikával nyomon követheti a várólista-üzenetek többlépéses munkafolyamatait anélkül, hogy az elejétől kellene kezdenie, ha a feldolgozási lépés hardverhiba vagy szoftver meghibásodása miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel n alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -179,9 +181,9 @@ queue.update_message(changed_message, std::chrono::seconds(60), true);
 std::wcout << U("Changed message content: ") << changed_message.content_as_string() << std::endl;  
 ```
 
-## <a name="how-to-de-queue-the-next-message"></a>Útmutató: a következő üzenet törlése a várólistából
+## <a name="how-to-dequeue-the-next-message"></a>Útmutató: a következő üzenet elküldése
 
-A kód két lépésben távolít el egy üzenetet az üzenetsorból. **Get_message** hívásakor a következő üzenet jelenik meg egy várólistában. A **get_message** által visszaadott üzenet láthatatlanná válik a várólistáról érkező más kódoknál. Az üzenet várólistából való eltávolításának befejezéséhez meg kell hívnia a **delete_messaget** is. Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A kód meghívja **delete_message** közvetlenül az üzenet feldolgozását követően.
+A kód két lépésben elvégez egy üzenetsor-várólistán lévő üzenetet. A hívásakor `get_message` a következő üzenet jelenik meg egy várólistában. A visszaadott üzenet a `get_message` várólistából beolvasott más kódokba is láthatatlanná válik. Az üzenet várólistából való eltávolításának befejezéséhez meg kell hívni a következőt is: `delete_message` . Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A kód meghívása `delete_message` közvetlenül az üzenet feldolgozása után történik.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -201,9 +203,9 @@ std::wcout << U("Dequeued message: ") << dequeued_message.content_as_string() <<
 queue.delete_message(dequeued_message);
 ```
 
-## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Útmutató: további beállítások kihasználása az üzenetsor-kezelő üzenetekhez
+## <a name="how-to-use-additional-options-for-dequeuing-messages"></a>Útmutató: a dequeuing üzenetek további beállításainak használata
 
-Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból. Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. A második lehetőség az, hogy beállít egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak lehetősége van hosszabb vagy rövidebb idő alatt teljesen feldolgozni az egyes üzeneteket. A következő kódrészlet a **get_messages** metódus használatával 20 üzenetet kap egy hívásban. Ezután feldolgozza az egyes üzeneteket a **for** loop használatával. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az összes üzenet 5 percben kezdődik, így a **get_messages** hívása óta 5 perc elteltével a rendszer a nem törölt üzeneteket ismét láthatóvá válik.
+Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból. Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. A második lehetőség az, hogy beállít egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak lehetősége van hosszabb vagy rövidebb idő alatt teljesen feldolgozni az egyes üzeneteket. A következő példában a metódus használatával `get_messages` 20 üzenetet kap egy hívásban. Ezután az összes üzenetet feldolgozza egy `for` hurok használatával. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az öt perc egyszerre indul el az összes üzenethez, így a hívása óta öt perc elteltével a `get_messages` rendszer a nem törölt üzeneteket ismét láthatóvá válik.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -232,7 +234,7 @@ for (auto it = messages.cbegin(); it != messages.cend(); ++it)
 
 ## <a name="how-to-get-the-queue-length"></a>Útmutató: a várólista hosszának beolvasása
 
-Megbecsülheti egy üzenetsorban található üzenetek számát. A **download_attributes** metódus kéri a Queue szolgáltatás az üzenetsor-attribútumok beolvasására, beleértve az üzenetek darabszámát is. A **approximate_message_count** metódus a várólistában lévő üzenetek hozzávetőleges számát kapja meg.
+Megbecsülheti egy üzenetsorban található üzenetek számát. A `download_attributes` metódus a várólista tulajdonságait adja vissza, beleértve az üzenetek darabszámát is. A `approximate_message_count` metódus lekéri az üzenetek hozzávetőleges számát a várólistában.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -256,7 +258,7 @@ std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::e
 
 ## <a name="how-to-delete-a-queue"></a>Útmutató: üzenetsor törlése
 
-Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a **delete_queue_if_exists** metódust a várólista-objektumon.
+Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja `delete_queue_if_exists` meg a metódust a várólista-objektumon.
 
 ```cpp
 // Retrieve storage account from connection-string.
@@ -272,12 +274,12 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 queue.delete_queue_if_exists();  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte a várólista-tárolás alapjait, kövesse az alábbi hivatkozásokat, és ismerkedjen meg az Azure Storage szolgáltatással.
+Most, hogy megismerte Queue Storage alapjait, kövesse az alábbi hivatkozásokat, és ismerkedjen meg az Azure Storage szolgáltatással.
 
 - [A Blob Storage használata a C++-ból](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 - [A Table Storage használata a C++-ból](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-- [Azure Storage-erőforrások listázása C++-ban](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
-- [Storage ügyféloldali kódtár a C++-hoz – dokumentáció](https://azure.github.io/azure-storage-cpp)
+- [Azure Storage-erőforrások listázása C++ nyelven](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Azure Storage ügyféloldali kódtár a C++-hoz – dokumentáció](https://azure.github.io/azure-storage-cpp)
 - [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)

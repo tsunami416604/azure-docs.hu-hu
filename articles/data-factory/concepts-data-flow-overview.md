@@ -7,17 +7,17 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 09/02/2020
-ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/10/2020
+ms.openlocfilehash: f78cbaedea90a241efddd0eff9cb7503201528c5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027601"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590406"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Az adatfolyamatok leképezése Azure Data Factory
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
@@ -29,7 +29,7 @@ Az adatforgalom leképezése teljes körű vizuális élményt biztosít, és ni
 
 Az adatfolyamatok a gyári erőforrások ablaktábláról jönnek létre, például a folyamatok és az adatkészletek. Adatfolyamat létrehozásához válassza ki a **gyári erőforrások** melletti pluszjelet, majd válassza az **adatfolyam** lehetőséget. 
 
-![Új adatfolyam](media/data-flow/new-data-flow.png "új adatfolyam")
+![Új adatfolyam](media/data-flow/new-data-flow.png)
 
 Ez a művelet végigvezeti az adatáramlási vászonon, ahol létrehozhatja az átalakítási logikát. A forrás-átalakítás konfigurálásának megkezdéséhez válassza a **forrás hozzáadása** lehetőséget. További információ: forrás- [átalakítás](data-flow-source.md).
 
@@ -37,17 +37,17 @@ Ez a művelet végigvezeti az adatáramlási vászonon, ahol létrehozhatja az �
 
 A leképezési folyamat egy egyedi szerzői vászon, amely megkönnyíti az átalakítási logika kiépítése. Az adatfolyam-vászon három részből áll: a felső sáv, a gráf és a konfigurációs panel. 
 
-![Képernyőfelvétel: az adatáramlási vászon a felső sáv, a gráf és a konfigurációs panel feliratú.](media/data-flow/canvas1.png "Vászon")
+![Képernyőfelvétel: az adatáramlási vászon a felső sáv, a gráf és a konfigurációs panel feliratú.](media/data-flow/canvas-1.png "Vászon")
 
 ### <a name="graph"></a>Graph
 
 A gráf megjeleníti az átalakítási adatfolyamot. Megjeleníti a forrásadatok vonalát, mivel az egy vagy több mosogatóba áramlik. Új forrás hozzáadásához válassza a **forrás hozzáadása** elemet. Új átalakítás hozzáadásához válassza a meglévő átalakítás jobb alsó sarkában látható plusz jelre. További információ [az adatfolyam-gráf kezeléséről](concepts-data-flow-manage-graph.md).
 
-![A képernyőfelvétel a vászon Graph részét jeleníti meg egy keresési szövegmezővel.](media/data-flow/canvas2.png "Vászon")
+![A képernyőfelvétel a vászon Graph részét jeleníti meg egy keresési szövegmezővel.](media/data-flow/canvas-2.png)
 
 ### <a name="configuration-panel"></a>Konfigurációs panel
 
-A konfigurációs panel megjeleníti az aktuálisan kiválasztott átalakításhoz tartozó beállításokat. Ha nincs kiválasztva átalakítás, az adatfolyamatot jeleníti meg. A teljes adatfolyam-konfigurációban szerkesztheti a nevet és a leírást az **általános** lapon, vagy hozzáadhat paramétereket a parameters ( **Paraméterek** ) lapon. További információ: [az adatfolyam paramétereinek leképezése](parameters-data-flow.md).
+A konfigurációs panel megjeleníti az aktuálisan kiválasztott átalakításhoz tartozó beállításokat. Ha nincs kiválasztva átalakítás, az adatfolyamatot jeleníti meg. A teljes adatfolyam-konfigurációban paramétereket adhat hozzá a **Parameters (paraméterek** ) lapon. További információ: [az adatfolyam paramétereinek leképezése](parameters-data-flow.md).
 
 Minden átalakítás legalább négy konfigurációs lapot tartalmaz.
 
@@ -99,63 +99,63 @@ A Azure Data Factory csapat létrehozta a [teljesítmény-hangolási útmutatót
 
 ## <a name="available-regions"></a>Elérhető régiók
 
-Az adatfolyamatok leképezése a következő régiókban érhető el:
+Az adatfolyamatok leképezése az ADF következő régióiban érhető el:
 
-| Azure-régió | Adatfolyamatok az ADF-ben | Adatforgalom a szinapszis Studióban |
-| ------------ | ----------------- | ---------------------------- |
-|  Ausztrália középső régiója | | |  
-| Ausztrália 2. középső régiója | | |
-| Kelet-Ausztrália | ✓ |  ✓ |
-| Délkelet-Ausztrália   | ✓ | ✓ |
-| Dél-Brazília  | ✓ |  |
-| Közép-Kanada | ✓ |  |
-| Közép-India | ✓ |   ✓ |
-| USA középső régiója    | ✓ |   ✓ |
-| Kelet-Kína |      | ✓ |
-| Kelet-Kína 2  |   |    |
-| Kína nem regionális | | |
-| Észak-Kína |     | |
-| Észak-Kína 2 | |  |
-| Kelet-Ázsia | ✓ | |
-| USA keleti régiója   | ✓ | ✓ |
-| USA 2. keleti régiója | ✓ | ✓ |
-| Közép-Franciaország | ✓ | ✓ |
-| Dél-Franciaország  | | |
-| Közép-Németország (szuverén) | | |
-| Németország – régiófüggetlen (szuverén) | | |
-| Észak-Németország (nyilvános) | | |
-| Északkelet-Németország (szuverén) | | |
-| Középnyugat-Németország (nyilvános) |  | ✓ |
-| Kelet-Japán | ✓ |  |
-| Nyugat-Japán |  | |
-| Dél-Korea középső régiója | ✓ |  |
-| Dél-Korea déli régiója | | |
-| USA északi középső régiója  | ✓ | ✓ |
-| Észak-Európa  | ✓ |    |
-| Kelet-Norvégia | | |
-| Norvégia nyugati régiója | | |
-| Dél-Afrika északi régiója    | ✓ | |
-| Dél-Afrika nyugati régiója |  |    |
-| USA déli középső régiója  | | ✓ |
-| Dél-India | | |
-| Délkelet-Ázsia    | ✓ | ✓ |
-| Észak-Svájc |   |  |
-| Nyugat-Svájc | | |
-| UAE középső régiója | | |
-| Észak-Egyesült Arab |  |    |
-| Az Egyesült Királyság déli régiója  | ✓ |   | ✓ |
-| Az Egyesült Királyság nyugati régiója |     | ✓ |
-| US DoD – Középső régió | |  |
-| US DoD – Kelet | |  |
-| USA-beli államigazgatás – Arizona |      |  |
-| US Gov – régiófüggetlen | |  |
-| USA-beli államigazgatás – Texas | |  |
-| USA-beli államigazgatás – Virginia |     |  |
-| USA nyugati középső régiója |     | ✓ |
-| Nyugat-Európa   | ✓ |   ✓ |
-| Nyugat-India | | |
-| USA nyugati régiója   | ✓ |   |
-| USA 2. nyugati régiója | ✓ |   ✓ | 
+| Azure-régió | Adatfolyamatok az ADF-ben |
+| ------------ | ----------------- |
+|  Ausztrália középső régiója | |
+| Ausztrália 2. középső régiója | |
+| Kelet-Ausztrália | ✓ |
+| Délkelet-Ausztrália   | ✓ |
+| Dél-Brazília  | ✓ |
+| Közép-Kanada | ✓ |
+| Közép-India | ✓ |
+| USA középső régiója    | ✓ |
+| Kelet-Kína |      |
+| Kelet-Kína 2  |   |
+| Kína nem regionális | |
+| Észak-Kína |     |
+| Észak-Kína 2 | |
+| Kelet-Ázsia | ✓ |
+| USA keleti régiója   | ✓ |
+| USA 2. keleti régiója | ✓ |
+| Közép-Franciaország | ✓ |
+| Dél-Franciaország  | |
+| Közép-Németország (szuverén) | |
+| Németország – régiófüggetlen (szuverén) | |
+| Észak-Németország (nyilvános) | |
+| Északkelet-Németország (szuverén) | |
+| Középnyugat-Németország (nyilvános) |  |
+| Kelet-Japán | ✓ |
+| Nyugat-Japán |  |
+| Dél-Korea középső régiója | ✓ |
+| Dél-Korea déli régiója | |
+| USA északi középső régiója  | ✓ |
+| Észak-Európa  | ✓ |
+| Kelet-Norvégia | |
+| Norvégia nyugati régiója | |
+| Dél-Afrika északi régiója    | ✓ |
+| Dél-Afrika nyugati régiója |  |
+| USA déli középső régiója  | |
+| Dél-India | |
+| Délkelet-Ázsia    | ✓ |
+| Észak-Svájc |   |
+| Nyugat-Svájc | |
+| UAE középső régiója | |
+| Észak-Egyesült Arab |  |
+| Az Egyesült Királyság déli régiója  | ✓ |
+| Az Egyesült Királyság nyugati régiója |     |
+| US DoD – Középső régió | |
+| US DoD – Kelet | |
+| USA-beli államigazgatás – Arizona |      |
+| US Gov – régiófüggetlen | |
+| USA-beli államigazgatás – Texas | |
+| USA-beli államigazgatás – Virginia |     |
+| USA nyugati középső régiója |     |
+| Nyugat-Európa   | ✓ |
+| Nyugat-India | |
+| USA nyugati régiója   | ✓ |
+| USA 2. nyugati régiója | ✓ |
 
 ## <a name="next-steps"></a>Következő lépések
 

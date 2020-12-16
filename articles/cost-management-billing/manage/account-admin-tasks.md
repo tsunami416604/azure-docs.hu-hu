@@ -9,13 +9,13 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contentperfq2
-ms.openlocfilehash: c9f344ec6eae40db2c76f3712df6f1f9d8cead37
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bd46e7b2f0713da67842def47dfeadc837027d8f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668869"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027968"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Fiókadminisztrátori feladatok az Azure Portalon
 
@@ -59,7 +59,7 @@ Az aktív fizetési mód módosításához hozzáadhat egy új hitelkártyát, v
 
     ![A hitelkártya hozzáadása űrlapot megjelenítő képernyőkép.](./media/account-admin-tasks/subscription-add-payment-method-x.png)
 
-1. Ha ezt a kártyát szeretné aktív fizetési módként beállítani, jelölje be az  **Ez legyen az aktív fizetési mód**  beállítás melletti jelölőnégyzetet az űrlap felett. Ez a kártya lesz innentől az aktív fizetési eszköz az összes olyan előfizetés esetben, amely a kiválasztott előfizetéssel azonos kártyát használ.
+1. Ha ezt a kártyát szeretné aktív fizetési módként beállítani, jelölje be az **Ez legyen az aktív fizetési mód** beállítás melletti jelölőnégyzetet az űrlap felett. Ez a kártya lesz innentől az aktív fizetési eszköz az összes olyan előfizetés esetben, amely a kiválasztott előfizetéssel azonos kártyát használ.
 
     ![Képernyőkép a kártyát aktív fizetési móddá tevő jelölőnégyzettel.](./media/account-admin-tasks/subscription-make-active-payment-method-x.png)
 

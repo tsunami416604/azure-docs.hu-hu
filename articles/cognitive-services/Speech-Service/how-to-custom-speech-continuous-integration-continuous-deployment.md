@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025667"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591616"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD a Custom Speechhez
 
@@ -31,7 +31,7 @@ Az egyéni CI/CD-megoldások lehetségesek, de robusztus, előre elkészített m
 
 A munkafolyamatok célja annak biztosítása, hogy minden Custom Speech modell jobb felismerési pontossággal rendelkezik, mint az előző Build. Ha a tesztelési és/vagy betanítási adatok frissítései javítják a pontosságot, a munkafolyamatok új Custom Speech végpontot hoznak létre.
 
-A git-kiszolgálók, például a GitHub és az Azure DevOps automatizált munkafolyamatokat futtathatnak, amikor adott git-események történnek, például egyesítések vagy lekéréses kérelmek. A CI-munkafolyamatok például akkor indíthatók el, ha a tesztelési adatok frissítését leküldik a *fő* ágra. A különböző git-kiszolgálók eltérő eszközökkel fognak rendelkezni, de lehetővé teszik a parancssori felületi (CLI) parancsok futtatását, hogy azok egy Build-kiszolgálón futtathatók legyenek.
+A git-kiszolgálók, például a GitHub és az Azure DevOps automatizált munkafolyamatokat futtathatnak, amikor adott git-események történnek, például egyesítések vagy lekéréses kérelmek. A CI-munkafolyamatok például akkor indíthatók el, ha a tesztelési célú adatfrissítéseket a *fő* ágra küldi. A különböző git-kiszolgálók eltérő eszközökkel fognak rendelkezni, de lehetővé teszik a parancssori felületi (CLI) parancsok futtatását, hogy azok egy Build-kiszolgálón futtathatók legyenek.
 
 Így a munkafolyamatoknak az adatok, tesztek, tesztelési fájlok, modellek és végpontok nevét és tárolását kell megadniuk, hogy azok visszavezethetők legyenek a véglegesített vagy verzióra. Emellett hasznos lehet ezeknek az objektumoknak a megadnia, hogy könnyen láthatók legyenek, melyeket a tesztelési adatok és a betanítási adatok frissítése után hoztak létre.
 
@@ -84,7 +84,7 @@ A [beszédfelismerési DevOps-sablon](https://github.com/Azure-Samples/Speech-Se
 
 - Másolja a sablon tárházát a GitHub-fiókjába, majd hozzon létre Azure-erőforrásokat és egy [egyszerű szolgáltatásnevet](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) a GitHub-műveletek CI/CD-munkafolyamataihoz.
 - Végigvezeti a "[dev Inner loop](https://mitchdenny.com/the-inner-loop/)"-t. Frissítheti a betanítási és tesztelési adatait egy adott szolgáltatási ágra, tesztelheti a módosításokat egy ideiglenes fejlesztési modellel, és lekéréses kérelmet hozhat létre, és áttekintheti a módosításokat.
-- Ha a betanítási adatok egy lekéréses kérelemben frissülnek a *Master*-be, a modellek betanítása a GitHub Actions CI-munkafolyamattal
+- Ha a betanítási kérelmeket egy lekéréses kérelemben frissítik a *Main*-ba, a modelleket a GitHub ACTIONs CI-munkafolyamattal.
 - Automatizált pontossági tesztelést végezhet a modell [Word-hibák arányának](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) létrehozásához. A teszt eredményeinek tárolása az Azure blobban.
 - Futtassa a CD-munkafolyamatot, és hozzon létre egy végpontot, amikor a WER fejleszti.
 

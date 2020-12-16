@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d6f59f64aed2870494fa8697014e670e373337
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958422"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590358"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>A tartományok és a TLS/SSL-tanúsítványok problémáinak elhárítása Azure App Service
 
 Ez a cikk azokat a gyakori problémákat sorolja fel, amelyek akkor fordulhatnak elő, amikor a Azure App Service webalkalmazásaihoz konfigurál egy tartomány-vagy TLS/SSL-tanúsítványt. Emellett leírja a problémák lehetséges okait és megoldásait is.
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az [MSDN-és stack overflow fórumokban](https://azure.microsoft.com/support/forums/)található Azure-szakértőkkel. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az [MSDN-és stack overflow fórumokban](https://azure.microsoft.com/support/forums/)található Azure-szakértőkkel. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -38,7 +38,7 @@ Ha TLS-kötést ad hozzá, a következő hibaüzenet jelenik meg:
 
 Ez a probléma akkor fordulhat elő, ha több IP-alapú SSL-kötést használ ugyanahhoz az IP-címhez több alkalmazás között. Az A alkalmazás például egy olyan IP-alapú SSL-t tartalmaz, amely egy régi tanúsítvánnyal rendelkezik. A B alkalmazásnak van egy IP-alapú SSL-je, amely egy új tanúsítvánnyal rendelkezik ugyanahhoz az IP-címhez. Ha az alkalmazás TLS-kötését az új tanúsítvánnyal frissíti, akkor ez a hiba meghiúsul, mert ugyanazt az IP-címet használja egy másik alkalmazáshoz. 
 
-#### <a name="solution"></a>Megoldás 
+#### <a name="solution"></a>Megvalósítás 
 
 A probléma megoldásához használja az alábbi módszerek egyikét:
 
@@ -57,7 +57,7 @@ Amikor megpróbálja törölni a tanúsítványt, a következő hibaüzenet jele
 
 Ez a probléma akkor fordulhat elő, ha egy másik alkalmazás használja a tanúsítványt.
 
-#### <a name="solution"></a>Megoldás
+#### <a name="solution"></a>Megvalósítás
 
 Távolítsa el az adott tanúsítványhoz tartozó TLS-kötést az alkalmazásokból. Ezután próbálja meg törölni a tanúsítványt. Ha továbbra sem tudja törölni a tanúsítványt, törölje az internetböngésző gyorsítótárát, majd nyissa meg újra a Azure Portal egy új böngészőablakban. Ezután próbálja meg törölni a tanúsítványt.
 
@@ -89,8 +89,8 @@ Ez a probléma a következő okok bármelyike miatt fordulhat elő:
     **Megoldás**: Ha a tanúsítvány csalásként van megjelölve, és 24 óra elteltével nem oldódik meg, kövesse az alábbi lépéseket:
 
     1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-    2. Lépjen **app Service a tanúsítványok**elemre, és válassza ki a tanúsítványt.
-    3. A **tanúsítvány konfigurációjának**kiválasztása  >  **2. lépés:** a  >  **tartomány ellenőrzésének**ellenőrzése. Ez a lépés e-mailben értesítést küld az Azure-tanúsítvány szolgáltatójának a probléma megoldásához.
+    2. Lépjen **app Service a tanúsítványok** elemre, és válassza ki a tanúsítványt.
+    3. A **tanúsítvány konfigurációjának** kiválasztása  >  **2. lépés:** a  >  **tartomány ellenőrzésének** ellenőrzése. Ez a lépés e-mailben értesítést küld az Azure-tanúsítvány szolgáltatójának a probléma megoldásához.
 
 ## <a name="custom-domain-problems"></a>Egyéni tartományi problémák
 
@@ -104,7 +104,7 @@ Ha az Egyéni tartománynév használatával keres a webhelyre, a következő hi
 
 #### <a name="cause-and-solution"></a>Ok és megoldás
 
-**1. ok** 
+**1\. ok** 
 
 A konfigurált egyéni tartományból hiányzik egy CNAME vagy egy rekord. 
 
@@ -114,13 +114,13 @@ A konfigurált egyéni tartományból hiányzik egy CNAME vagy egy rekord.
 - Ha nem kell használnia az alkalmazás legfelső szintű tartományát, azt javasoljuk, hogy egy rekord helyett CNAME-rekordot használjon.
 - Ne használjon egyszerre egy CNAME rekordot és egy rekordot ugyanahhoz a tartományhoz. Ez a probléma ütközést okozhat, és megakadályozhatja a tartomány feloldását. 
 
-**2. ok** 
+**2\. ok** 
 
 Előfordulhat, hogy az internetböngésző továbbra is gyorsítótárazza a tartomány régi IP-címét. 
 
 **Megoldás a 2. okból**
 
-Törölje a böngészőt. Windows-eszközök esetén futtathatja a parancsot `ipconfig /flushdns` . A [WhatsmyDNS.net](https://www.whatsmydns.net/) használatával ellenőrizze, hogy a tartomány az alkalmazás IP-címére mutat-e. 
+Törölje a böngészőt. Windows-eszközök esetén futtathatja a parancsot `ipconfig /flushdns` . A [WhatsmyDNS.net](https://www.whatsmydns.net/) használatával ellenőrizze, hogy a tartomány az alkalmazás IP-címére mutat-e.
 
 ### <a name="you-cant-add-a-subdomain"></a>Nem adhat hozzá altartományt 
 
@@ -128,7 +128,7 @@ Törölje a böngészőt. Windows-eszközök esetén futtathatja a parancsot `ip
 
 Egy altartomány hozzárendeléséhez nem adhat hozzá új állomásnevet az alkalmazáshoz.
 
-#### <a name="solution"></a>Megoldás
+#### <a name="solution"></a>Megvalósítás
 
 - Az előfizetés rendszergazdájával ellenőrizze, hogy van-e engedélye az állomásnév hozzáadására az alkalmazáshoz.
 - Ha több altartományra van szüksége, javasoljuk, hogy változtassa meg az Azure tartománynév-szolgáltatás (DNS) üzemeltetését. Azure DNS használatával 500-állomásneveket adhat hozzá az alkalmazáshoz. További információ: [altartomány hozzáadása](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website).
@@ -147,7 +147,7 @@ Ez a probléma a következő okok egyike miatt fordul elő:
 - Az élettartam (TTL) időszaka nem járt le. Ellenőrizze a tartomány DNS-konfigurációját, hogy meghatározza a TTL-értéket, majd várjon, amíg lejár az időszak.
 - A DNS-konfiguráció helytelen.
 
-#### <a name="solution"></a>Megoldás
+#### <a name="solution"></a>Megvalósítás
 - Várjon 48 órát a probléma megoldásához.
 - Ha a DNS-konfigurációban módosíthatja a TTL-beállítást, módosítsa az értéket 5 percre, és ellenőrizze, hogy ez megoldja-e a problémát.
 - A [WhatsmyDNS.net](https://www.whatsmydns.net/) használatával ellenőrizze, hogy a tartomány az alkalmazás IP-címére mutat-e. Ha nem, konfigurálja az a rekordot az alkalmazás megfelelő IP-címére.
@@ -160,7 +160,7 @@ A tartomány már nem látható a Azure Portalban.
 #### <a name="cause"></a>Ok 
 Előfordulhat, hogy az előfizetés tulajdonosa véletlenül törölte a tartományt.
 
-#### <a name="solution"></a>Megoldás
+#### <a name="solution"></a>Megvalósítás
 Ha a tartományt a hét napja kevesebb, mint hét napja törölte, a tartomány még nem indította el a törlési folyamatot. Ebben az esetben ugyanezt a tartományt is megvásárolhatja a Azure Portal ugyanazon előfizetés alatt. (Ügyeljen arra, hogy a keresőmezőbe írja be a pontos tartománynevet.) Erre a tartományra vonatkozóan nem számítunk fel újra díjat. Ha a tartományt több mint hét napja törölte, forduljon az [Azure támogatási szolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a tartomány visszaállításával kapcsolatos segítségért.
 
 ## <a name="domain-problems"></a>Tartományi problémák
@@ -171,7 +171,7 @@ Ha a tartományt a hét napja kevesebb, mint hét napja törölte, a tartomány 
 
 Nem megfelelő tartományhoz vásárolt App Service-tanúsítványt. A tanúsítvány nem frissíthető a megfelelő tartomány használatára.
 
-#### <a name="solution"></a>Megoldás
+#### <a name="solution"></a>Megvalósítás
 
 Törölje a tanúsítványt, majd vásároljon egy új tanúsítványt.
 
@@ -185,33 +185,33 @@ Az App Service-tanúsítvány megújítása megtörtént, de a App Service tanú
 
 #### <a name="cause"></a>Ok 
 A App Service 48 órán belül automatikusan szinkronizálja a tanúsítványt. Amikor elforgat vagy frissít egy tanúsítványt, néha az alkalmazás továbbra is beolvassa a régi tanúsítványt, nem pedig az újonnan frissített tanúsítványt. Ennek az az oka, hogy a tanúsítvány-erőforrás szinkronizálásának feladata még nem fut. Kattintson a szinkronizálás elemre. A szinkronizálási művelet automatikusan frissíti a tanúsítványhoz tartozó állomásnév-kötéseket App Service anélkül, hogy leállást okozna az alkalmazásai számára.
- 
-#### <a name="solution"></a>Megoldás
+
+#### <a name="solution"></a>Megvalósítás
 
 A tanúsítvány szinkronizálását kényszerítheti:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **app Service tanúsítványokat**, majd válassza ki a tanúsítványt.
-2. Válassza a **regenerálás és szinkronizálás**lehetőséget, majd válassza a **szinkronizálás**lehetőséget. A szinkronizálás eltarthat egy ideig. 
+2. Válassza a **regenerálás és szinkronizálás** lehetőséget, majd válassza a **szinkronizálás** lehetőséget. A szinkronizálás eltarthat egy ideig. 
 3. A szinkronizálás befejezésekor a következő értesítés jelenik meg: "az összes erőforrás frissítése sikeresen megtörtént a legújabb tanúsítvánnyal."
 
 ### <a name="domain-verification-is-not-working"></a>A tartomány ellenőrzése nem működik 
 
 #### <a name="symptom"></a>Hibajelenség 
-A App Service tanúsítványhoz a tanúsítvány használatának megkezdése előtt tartományi ellenőrzés szükséges. Ha az **ellenőrzés**lehetőséget választja, a folyamat sikertelen lesz.
+A App Service tanúsítványhoz a tanúsítvány használatának megkezdése előtt tartományi ellenőrzés szükséges. Ha az **ellenőrzés** lehetőséget választja, a folyamat sikertelen lesz.
 
-#### <a name="solution"></a>Megoldás
+#### <a name="solution"></a>Megvalósítás
 A tartomány manuális ellenőrzése TXT-rekord hozzáadásával:
- 
-1.  Lépjen a tartománynév szolgáltatás (DNS) szolgáltatóhoz, amely a tartománynevet tárolja.
-2.  Adjon hozzá egy TXT-rekordot a tartományhoz, amely a Azure Portal látható tartományi jogkivonat értékét használja. 
+
+1. Lépjen a tartománynév szolgáltatás (DNS) szolgáltatóhoz, amely a tartománynevet tárolja.
+1. Adjon hozzá egy TXT-rekordot a tartományhoz, amely a Azure Portal látható tartományi jogkivonat értékét használja. 
 
 Várjon néhány percet a DNS-propagálás futtatására, majd kattintson a **frissítés** gombra az ellenőrzés elindításához. 
 
 Alternatív megoldásként a HTML-weblap metódus használatával manuálisan is ellenőrizheti a tartományt. Ezzel a módszerrel a hitelesítésszolgáltató megerősítheti annak a tartománynak a tulajdonjogát, amelyre a tanúsítványt kiállították.
 
-1.  Hozzon létre egy {domain ellenőrző jogkivonat}. html nevű HTML-fájlt. A fájl tartalmának a tartomány-ellenőrzési jogkivonat értékének kell lennie.
-3.  Töltse fel ezt a fájlt a tartományt üzemeltető webkiszolgáló gyökerébe.
-4.  A tanúsítvány állapotának megtekintéséhez válassza a **frissítés** lehetőséget. Az ellenőrzés befejezéséhez néhány percet is igénybe vehet.
+1. Hozzon létre egy {domain ellenőrző jogkivonat}. html nevű HTML-fájlt. A fájl tartalmának a tartomány-ellenőrzési jogkivonat értékének kell lennie.
+1. Töltse fel ezt a fájlt a tartományt üzemeltető webkiszolgáló gyökerébe.
+1. A tanúsítvány állapotának megtekintéséhez válassza a **frissítés** lehetőséget. Az ellenőrzés befejezéséhez néhány percet is igénybe vehet.
 
 Ha például a azure.com standard tanúsítványát vásárolja meg a tartomány-ellenőrzési jogkivonat 1234abcd, egy webes kérelemnek https://azure.com/1234abcd.html kell visszaadnia a 1234abcd. 
 
@@ -260,7 +260,7 @@ Ez a probléma a következő okok egyike miatt fordul elő:
 
     **Megoldás**: Ellenőrizze, hogy a CNAME vagy egy rekord megfelelően van-e konfigurálva. Ha egyéni tartományt szeretne hozzárendelni egy alkalmazáshoz, hozzon létre egy CNAME rekordot vagy egy rekordot. Ha legfelső szintű tartományt kíván használni, A és A TXT típusú rekordokat kell használnia:
 
-    |Rekordtípus|Gazda|Mutasson a|
+    |Rekordtípus|Gazdagép|Mutasson a|
     |------|------|-----|
     |A|@|Alkalmazás IP-címe|
     |TXT|@|`<app-name>.azurewebsites.net`|

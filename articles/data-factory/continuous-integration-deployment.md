@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902308"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591897"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és teljesítés az Azure Data Factoryben
 
@@ -41,9 +41,9 @@ Alább látható egy példa az Azure Repos git szolgáltatással konfigurált Az
 
 1.  A fejlesztő [létrehoz egy szolgáltatási ágat](source-control.md#creating-feature-branches) , amely megváltoztatja a módosításokat. A legutóbbi módosításokkal hibakeresést folytatnak a folyamaton. A folyamatok futtatásának hibakeresésével kapcsolatos további információkért lásd: [iterációs fejlesztés és hibakeresés Azure Data Factory](iterative-development-debugging.md)használatával.
 
-1.  Miután a fejlesztő elégedett a módosításaival, létrehoznak egy lekéréses kérelmet a szolgáltatási ágra a Master vagy az Collaboration ágban, hogy a társaik áttekintsék a módosításokat.
+1.  Miután a fejlesztők elégedettek voltak a módosításaival, létrehozhatnak egy lekéréses kérelmet a szolgáltatási ágra a fő vagy az együttműködési ágra, hogy a társaik áttekintsék a módosításokat.
 
-1.  A lekéréses kérelem jóváhagyása és a módosítások egyesítése a Master ág esetében a módosítások a fejlesztői gyárban lesznek közzétéve.
+1.  A lekéréses kérelem jóváhagyása és a módosítások egyesítése a fő ág esetében a módosítások a fejlesztői gyárban lesznek közzétéve.
 
 1.  Ha a csapat készen áll a módosítások tesztelési vagy ellenőrzését (felhasználói elfogadási tesztelés) gyárba való telepítésére, a csapat az Azure-folyamatokat is kiadja, és üzembe helyezi a fejlesztői gyár kívánt verzióját a ellenőrzését. Ez az üzembe helyezés az Azure-folyamatok feladatának részeként zajlik, és Resource Manager-sablon paramétereit használja a megfelelő konfiguráció alkalmazásához.
 
@@ -668,7 +668,7 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
     - A adatfeldolgozó-entitások egymástól függenek. Az eseményindítók például a folyamatoktól függenek, és az adatkészletek és az egyéb folyamatok függenek egymástól. Az erőforrások egy részhalmazának szelektív közzététele váratlan viselkedést és hibákat eredményezhet.
     - Ritka esetekben, amikor szelektív közzétételre van szüksége, érdemes lehet gyorsjavítást használni. További információ: [gyorsjavítások éles környezete](#hotfix-production-environment).
 
-- Az Azure Data Factory csapat nem javasolja, hogy az Azure RBAC-vezérlőket az egyes entitásokhoz (adatcsatornákhoz, adatkészletekhez stb.) rendeljen egy adat-előállítóban. Ha például egy fejlesztő hozzáfér egy folyamathoz vagy adathalmazhoz, akkor hozzá kell férnie az adat-előállítóban lévő összes folyamathoz vagy adathalmazhoz. Ha úgy érzi, hogy számos Azure-szerepkört kell megvalósítani egy adat-előállítón belül, tekintse meg a második adat-előállító üzembe helyezését ismertetőt.
+- Az Azure Data Factory csapat nem javasolja, hogy az Azure RBAC-vezérlőket az egyes entitásokhoz (folyamatokhoz, adatkészletekhez stb.) rendeljen egy adat-előállítóban. Ha például egy fejlesztő hozzáfér egy folyamathoz vagy adathalmazhoz, akkor hozzá kell férnie az adat-előállítóban lévő összes folyamathoz vagy adathalmazhoz. Ha úgy érzi, hogy számos Azure-szerepkört kell megvalósítani egy adat-előállítón belül, tekintse meg a második adat-előállító üzembe helyezését ismertetőt.
 
 -   Privát ágakból nem lehet közzétenni.
 

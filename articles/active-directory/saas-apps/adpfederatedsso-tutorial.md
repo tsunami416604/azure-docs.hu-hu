@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
-ms.openlocfilehash: cf6973242e81cef53625a3b1eda4f2d92e1d5ffd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d78f2c8da338a92ef88734371647a48ddb190c3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998634"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591208"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az ADP-vel
 
@@ -155,11 +155,11 @@ Az ADP-képviselő jóváhagyásának kézhezvétele után konfigurálja az ADP 
 
     ![Egyszeri bejelentkezéshez csatolt tulajdonságok](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-    a.  Állítsa az engedélyezve beállítást a felhasználók számára a **bejelentkező** mező értékének **Igen** értékűre állításához.
+    1. Állítsa az engedélyezve beállítást a felhasználók számára a **bejelentkező** mező értékének **Igen** értékűre állításához.
 
-    b.  Állítsa az **Igen** értékre a **felhasználó-hozzárendelés kötelező** mező értékét.
+    1. Állítsa az **Igen** értékre a **felhasználó-hozzárendelés kötelező** mező értékét.
 
-    c.  Állítsa az **Igen** értékre a **Visible to Users** mező értékét.
+    1. Állítsa az **Igen** értékre a **Visible to Users** mező értékét.
 
 1. A [Azure Portal](https://portal.azure.com/)az **ADP** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 
@@ -171,39 +171,39 @@ Az ADP-képviselő jóváhagyásának kézhezvétele után konfigurálja az ADP 
 
     ![Egyszeri bejelentkezés kelléke](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
 
-    a. Illessze be a **felhasználói hozzáférési URL-címet**, amelyet a fenti **Tulajdonságok lapról** másolt (a fő ADP-alkalmazásból).
-                                                             
-    b. A következő 5 alkalmazás támogatja a különböző **továbbító állapotú URL-címeket**. Az adott alkalmazáshoz tartozó megfelelő **továbbítási állapot URL-címét** manuálisan kell hozzáfűzni a **felhasználói hozzáférés URL-címéhez**.
-    
-    * **ADP munkaerő most**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
+    1. Illessze be a **felhasználói hozzáférési URL-címet**, amelyet a fenti **Tulajdonságok lapról** másolt (a fő ADP-alkalmazásból).
 
-    * **ADP munkaerő-kibővített idő**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
-    
-    * **ADP Vantage HCM**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
+    1. A következő 5 alkalmazás támogatja a különböző **továbbító állapotú URL-címeket**. Az adott alkalmazáshoz tartozó megfelelő **továbbítási állapot URL-címét** manuálisan kell hozzáfűzni a **felhasználói hozzáférés URL-címéhez**.
 
-    * **ADP Enterprise HR**
+        * **ADP munkaerő most**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
 
-    * **MyADP**
+        * **ADP munkaerő-kibővített idő**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
 
-9. **Mentse** a módosításokat.
+        * **ADP Vantage HCM**
 
-10. Az ADP-képviselő jóváhagyásának kézhezvétele után kezdjen el a tesztet egy vagy két felhasználóval.
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
 
-    a. Rendeljen néhány felhasználót az ADP szolgáltatásbeli alkalmazáshoz az összevont hozzáférés teszteléséhez.
+        * **ADP Enterprise HR**
 
-    b. A teszt sikeres, amikor a felhasználók hozzáférnek az ADP szolgáltatás alkalmazásához a katalógusban, és hozzáférhetnek az ADP szolgáltatáshoz.
- 
-11. A sikeres teszt megerősítése után rendelje hozzá az összevont ADP-szolgáltatást az egyes felhasználókhoz vagy felhasználói csoportokhoz, amelyeket az oktatóanyag későbbi részében talál, és adja ki az alkalmazottainak.
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+
+        * **MyADP**
+
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+
+1. **Mentse** a módosításokat.
+
+1. Az ADP-képviselő jóváhagyásának kézhezvétele után kezdjen el a tesztet egy vagy két felhasználóval.
+
+    1. Rendeljen néhány felhasználót az ADP szolgáltatásbeli alkalmazáshoz az összevont hozzáférés teszteléséhez.
+
+    1. A teszt sikeres, amikor a felhasználók hozzáférnek az ADP szolgáltatás alkalmazásához a katalógusban, és hozzáférhetnek az ADP szolgáltatáshoz.
+
+1. A sikeres teszt megerősítése után rendelje hozzá az összevont ADP-szolgáltatást az egyes felhasználókhoz vagy felhasználói csoportokhoz, amelyeket az oktatóanyag későbbi részében talál, és adja ki az alkalmazottainak.
 
 ### <a name="create-adp-test-user"></a>ADP-tesztkörnyezet létrehozása
 
@@ -217,10 +217,8 @@ Amikor a hozzáférési panelen az ADP csempére kattint, automatikusan be kell 
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [Az ADP kipróbálása az Azure AD-vel](https://aad.portal.azure.com)

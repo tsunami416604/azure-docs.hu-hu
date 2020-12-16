@@ -3,22 +3,20 @@ title: Kormányzati megoldások létrehozása az Azure IoT Centrallal
 description: Ismerje meg, hogyan hozhat létre intelligens városi megoldásokat az Azure IoT Central alkalmazás-sablonok használatával.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126566"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590817"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Kormányzati megoldások létrehozása az Azure IoT Centrallal
 
-
-
-Ismerkedjen meg az intelligens városi megoldások Azure IoT Central alkalmazás-sablonok használatával történő létrehozásával. Kezdje el most a **víz minőségének monitorozásával**, a **vízfogyasztás figyelésével**és a **csatlakoztatott hulladékgazdálkodással**.
+Ismerkedjen meg az intelligens városi megoldások Azure IoT Central alkalmazás-sablonok használatával történő létrehozásával. Kezdje el most a **víz minőségének monitorozásával**, a **vízfogyasztás figyelésével** és a **csatlakoztatott hulladékgazdálkodással**.
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>Mi az a víz minőségének monitorozására szolgáló alkalmazás sablonja?   
 
@@ -41,7 +39,6 @@ Ismerkedjen meg a [víz minőségének monitorozási alkalmazásával foglalkoz�
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>Mi a víz fogyasztásának monitorozása alkalmazás sablonja? 
 
 A hagyományos vízfelhasználási nyomon követés a vízkezelők számára a vízfelhasználási mérőszámok kézi elolvasására támaszkodik a mérési helyeken. Egyre több város a hagyományos mérőszámokat a fejlett intelligens mérőszámokkal helyettesíti, amely lehetővé teszi a használat távoli figyelését és a szelepek távvezérlését a vízfolyás szabályozása érdekében. A víz fogyasztásának monitorozása és a polgárok digitális visszajelzési üzenete is növelheti a hangfelismerést, és csökkentheti a víz felhasználását. 
-
 
 A vízfelhasználás-figyelési alkalmazás egy IoT Central alkalmazás sablonja, amely segítséget nyújt a IoT-megoldás fejlesztésében, hogy a víz-segédeszközök és-városok távolról felügyeljék és ellenőrizzék a víz áramlását a felhasználás csökkentése érdekében. 
 

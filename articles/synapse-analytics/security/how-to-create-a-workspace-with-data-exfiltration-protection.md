@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8f11f104e8d3d0a4f3a004ebe9f149cb4132d910
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501426"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590560"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Munkaterület létrehozása a kiszűrése-védelem engedélyezésével
 Ez a cikk azt ismerteti, hogyan hozhat létre olyan munkaterületet, amelyen engedélyezve van az kiszűrése Protection, és hogyan kezelheti a jóváhagyott Azure AD-bérlőket ehhez a munkaterülethez.
@@ -33,7 +33,7 @@ Kövesse a rövid útmutató [: szinapszis-munkaterület létrehozása](../quick
 1. Válassza az "igen" lehetőséget a "kimenő adatforgalom engedélyezése csak a jóváhagyott célokhoz" beállításnál.
 1. Válassza ki a munkaterülethez jóváhagyott Azure AD-bérlőket.
 1. Tekintse át a konfigurációt, és hozza létre a munkaterületet.
-:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="Kiszűrése-védelemmel ellátott munkaterület létrehozása":::
+:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="Képernyőfelvétel: a Create szinapszis-munkaterület &quot;a felügyelt virtuális hálózat engedélyezése&quot; beállításának megjelenítése.":::
 
 ## <a name="manage-approved-azure-active-directory-tenants-for-the-workspace"></a>Jóváhagyott Azure Active Directory bérlők kezelése a munkaterülethez
 1. A munkaterület Azure Portal válassza a "jóváhagyott Azure AD-bérlők" lehetőséget. Itt jelenik meg a munkaterület jóváhagyott Azure AD-bérlők listája. A munkaterület bérlője alapértelmezés szerint szerepel, és nem szerepel a listáján.
@@ -49,7 +49,7 @@ Felügyelt privát végpontokat hozhat létre az Azure AD-bérlők azon Azure-er
 >[!IMPORTANT]
 >A munkaterületén kívüli bérlők erőforrásai nem rendelkezhetnek az SQL-készletekhez való kapcsolódáshoz szükséges tűzfalszabályok blokkolásával. A munkaterület felügyelt virtuális hálózatában lévő erőforrások, például a Spark-fürtök, felügyelt magánhálózati kapcsolatokon keresztül kapcsolódhatnak a tűzfallal védett erőforrásokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [kiszűrése-védelemről a szinapszis-munkaterületeken](./workspace-data-exfiltration-protection.md)
 

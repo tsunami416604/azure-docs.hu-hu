@@ -1,5 +1,5 @@
 ---
-title: A Soft delete minden Azure Key Vaulton engedélyezve lesz | Microsoft Docs
+title: A Soft delete engedélyezése az összes Azure Key Vaulton | Microsoft Docs
 description: Ez a dokumentum fogadja el az összes kulcstartó törlését.
 services: key-vault
 author: ShaneBala-keyvault
@@ -7,19 +7,19 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/15/2020
 ms.author: sudbalas
-ms.openlocfilehash: 0e811cc219002c034afb968be760ce2c249b08f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e512cccdbfdc56500fa7c69372ca38f59d3195c2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825257"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590086"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>A Soft-delete minden kulcstartón engedélyezve lesz.
 
 > [!WARNING]
-> **Megszakítási változás**: a rendszer az év végéig elavulttá teszi a helyreállítható törlés lehetőségét, és az összes kulcstartó esetében automatikusan bekapcsolja a törlési védelmet.  Azure Key Vault felhasználóknak és rendszergazdáknak azonnal engedélyeznie kell a helyreállítható törlést a kulcstartón.
+> **Megszakítási változás**: a rendszer hamarosan letilthatja a törlés lehetőségét. Azure Key Vault felhasználóknak és rendszergazdáknak azonnal engedélyeznie kell a helyreállítható törlést a kulcstartón.
 >
 > A felügyelt HSM esetében a Soft delete alapértelmezés szerint engedélyezve van, és nem tiltható le.
 
@@ -29,9 +29,18 @@ Ha törölnek egy titkos kulcsot a kulcstartóból, és nem törli a védelmet, 
 
 A Soft-delete funkció részletes ismertetését lásd: [Azure Key Vault-törlés – áttekintés](soft-delete-overview.md).
 
-## <a name="how-do-i-respond-to-breaking-changes"></a>Hogyan válasz a változtatások megszakítására
+## <a name="can-my-application-work-with-soft-delete-enabled"></a>Használható az alkalmazásom a Soft delete szolgáltatással?
 
-Egy Key Vault-objektum nem hozható létre ugyanazzal a névvel, mint egy Key Vault-objektum a nem törölt állapotban.  Ha például töröl egy nevű kulcsot `test key` a Key Vault a-ban, akkor a Key Vault a-ben nevű új kulcsot nem hozhatja létre, amíg a helyreállított objektumot el nem `test key` `test key` távolítja.
+> [!Important] 
+> **A Key Vault-tárolók nem kötelező törlésének bekapcsolása előtt olvassa el figyelmesen az alábbi információkat**
+
+A Key Vault nevek globálisan egyediek. A Key vaultban tárolt titkos kulcsok nevei szintén egyediek. Nem fogja tudni újra felhasználni egy olyan kulcstartó vagy kulcstartó-objektum nevét, amely már létezik a nem kötelezően törölt állapotban. 
+
+**Példa #1** Ha az alkalmazás programozott módon létrehoz egy "Vault A" nevű kulcstartót, és később törli A "Vault A"-t. A Key vaultot a rendszer áthelyezi a helyreállítható törölt állapotba. Az alkalmazás nem fog tudni újra létrehozni egy "Vault" nevű kulcstartót, amíg a kulcstároló nem törlődik a törölt állapotból. 
+
+**Példa #2** Ha az alkalmazás létrehoz egy nevű kulcsot `test key` az a Key vaultban, és később törli a kulcsot az a tárolóból, az alkalmazás nem fog tudni új kulcsot létrehozni a `test key` Key Vault a-ben, amíg az objektum nem törlődik a helyreállítható `test key` törlési állapotból. 
+
+Ez ütközési hibákhoz vezethet, ha egy Key Vault-objektumot próbál törölni, és újból létrehozza azt ugyanazzal a névvel anélkül, hogy előbb törölje azt a helyreállított állapotból. Ennek hatására előfordulhat, hogy az alkalmazások vagy az Automation meghibásodik. A szükséges alkalmazás-és adminisztrációs módosítások végrehajtása előtt forduljon a fejlesztői csapatához. 
 
 ### <a name="application-changes"></a>Alkalmazás módosításai
 
@@ -59,13 +68,14 @@ Ha a szervezete jogi megfelelőségi követelmények hatálya alá tartozik, és
 2. Keressen rá a "Azure Policy" kifejezésre.
 3. Válassza a "definíciók" lehetőséget.
 4. A kategória területen válassza a "Key Vault" elemet a szűrőben.
-5. Válassza ki a "Key Vault objektumok helyreállítható" házirendet.
+5. Válassza ki a "Key Vault törölje az engedélyezett törlés engedélyezve" házirendet.
 6. Kattintson a "hozzárendelés" gombra.
 7. Állítsa be a hatókört az előfizetésre.
-8. Válassza a "felülvizsgálat + létrehozás" lehetőséget.
-9. A-ben akár 24 óráig is elvégezheti a környezet teljes vizsgálatát.
-10. A Azure Policy panelen kattintson a "megfelelőség" elemre.
-11. Válassza ki az alkalmazott szabályzatot.
+8. Győződjön meg arról, hogy a házirend hatására a "naplózás" érték van beállítva.
+9. Válassza a "felülvizsgálat + létrehozás" lehetőséget.
+10. A-ben akár 24 óráig is elvégezheti a környezet teljes vizsgálatát.
+11. A Azure Policy panelen kattintson a "megfelelőség" elemre.
+12. Válassza ki az alkalmazott szabályzatot.
 
 Most már képesnek kell lennie szűrni, és látni, hogy a kulcstárolók melyike legyen engedélyezve a helyreállítható törlés (megfelelő erőforrások), és hogy mely kulcstartók esetében nem engedélyezett a helyreállítható törlés (nem megfelelő erőforrások).
 
@@ -106,17 +116,13 @@ Kövesse az "eljárás a kulcstartók naplózásához" című szakaszban ismerte
 
 ### <a name="what-action-do-i-need-to-take"></a>Milyen műveleteket kell elvégeznie?
 
-Győződjön meg arról, hogy nem kell módosítania az alkalmazás logikáját. Ha meggyőződött róla, kapcsolja be a Soft-delete szolgáltatást az összes kulcstartón. Ezzel a lépéssel meggyőződhet arról, hogy az év végén az összes kulcstartó esetében nem lesz hatással a feltörési változás, ha a törlés be van kapcsolva.
+Győződjön meg arról, hogy nem kell módosítania az alkalmazás logikáját. Ha meggyőződött róla, kapcsolja be a Soft-delete szolgáltatást az összes kulcstartón.
 
 ### <a name="by-when-do-i-need-to-take-action"></a>Mire van szükség a művelet elvégzéséhez?
 
-A rendszer az év végéig bekapcsolja az összes kulcstartót a Soft delete használatával. Annak érdekében, hogy az alkalmazások ne legyenek hatással, kapcsolja be a helyreállítható törlést a kulcstartón a lehető leghamarabb.
+Annak érdekében, hogy az alkalmazások ne legyenek hatással, kapcsolja be a helyreállítható törlést a kulcstartón a lehető leghamarabb.
 
-## <a name="what-will-happen-if-i-dont-take-any-action"></a>Mi történik, ha nem végezek semmilyen műveletet?
-
-Ha nem hajt végre semmilyen műveletet, a rendszer az év végén automatikusan bekapcsolja az összes kulcstartót. Ez ütközési hibákhoz vezethet, ha egy Key Vault-objektumot próbál törölni, és újból létrehozza azt ugyanazzal a névvel anélkül, hogy előbb törölje azt a helyreállított állapotból. Ennek hatására előfordulhat, hogy az alkalmazások vagy az Automation meghibásodik.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lépjen kapcsolatba velünk a változással kapcsolatos bármilyen kérdéssel [akvsoftdelete@microsoft.com](mailto:akvsoftdelete@microsoft.com) .
 - A [Soft-delete áttekintésének](soft-delete-overview.md) beolvasása
