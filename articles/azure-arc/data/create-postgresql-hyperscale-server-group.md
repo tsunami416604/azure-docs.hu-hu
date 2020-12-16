@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d432f29e91097491fc4719ec59a11cb96948f431
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364422"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609054"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport létrehozása
 
@@ -32,7 +32,7 @@ Fontos témaköröket érdemes elolvasni a létrehozás folytatása előtt:
 - [Tárolási konfiguráció és Kubernetes-tárolási fogalmak](storage-configuration.md)
 - [Kubernetes erőforrás-modell](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 
-Ha szeretné kipróbálni a teljes környezet kiépítését anélkül, hogy az Azure [arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) az Azure Kubernetes szolgáltatás (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gép üzembe helyezése nélkül próbálja ki.
+Ha szeretné kipróbálni a teljes környezet kiépítését anélkül, hogy az Azure [arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) az Azure Kubernetes szolgáltatás (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gép üzembe helyezése nélkül próbálja ki.
 
 
 ## <a name="login-to-the-azure-arc-data-controller"></a>Bejelentkezés az Azure arc-adatkezelőbe
@@ -183,7 +183,7 @@ Most már csatlakozhat bármelyik psql:
 psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Olvassa el a Azure Database for PostgreSQL nagy kapacitású kapcsolatos fogalmakat és útmutatókat az adatok több PostgreSQL nagy kapacitású-csomóponton keresztüli terjesztéséhez, valamint a Azure Database for PostgreSQL nagy kapacitású teljesítményének kihasználása érdekében. :
     * [Csomópontok és táblák](../../postgresql/concepts-hyperscale-nodes.md)

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7b925a25e1e246008f393f7b15160417c3b3d7a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d047a45d678918541eb3c2d2c45e4519a34bdd57
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254854"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608680"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a .NET API használatával
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
     ```powershell
     Get-AzSubscription
     ```
-4. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az ** &lt; NameOfAzureSubscription** - &gt; t az Azure-előfizetés nevére.
+4. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le az **&lt; NameOfAzureSubscription** - &gt; t az Azure-előfizetés nevére.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -108,7 +108,7 @@ Hozzon létre egy Azure Active Directory-alkalmazást, hozza létre az alkalmaz�
 9. Szerezze be az alkalmazásazonosítót.
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication
     ```
     Írja le az alkalmazásazonosítót (a parancs kimenetében szereplő applicationID paraméter értéke).
 
@@ -134,7 +134,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
    2. Futtassa a következő parancsot az Azure Active Directory-csomag telepítéséhez (használja az Active Directory API-t a kódban): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Adja hozzá az alábbi **appSetttings** részt az **App.config** fájlhoz. Ezeket a beállításokat a **GetAuthorizationHeader** segédmetódus használja.
 
-    Cserélje le az ** &lt; alkalmazás- &gt; azonosító**, a ** &lt; jelszó &gt; **, az ** &lt; előfizetés- &gt; azonosító**és a ** &lt; bérlői azonosító &gt; ** értékeit a saját értékeire.
+    Cserélje le az **&lt; alkalmazás- &gt; azonosító**, a **&lt; jelszó &gt;**, az **&lt; előfizetés- &gt; azonosító** és a **&lt; bérlői azonosító &gt;** értékeit a saját értékeire.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -240,7 +240,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 9. Adja hozzá az alábbi kódot, amely létrehozza az **Azure SQL-társított szolgáltatást** a **Main** metódusban.
 
    > [!IMPORTANT]
-   > A **kiszolgálónév**, a **databasename**, a **Felhasználónév**és a **jelszó** helyére írja be a kiszolgáló, az adatbázis, a felhasználó és a jelszó nevét.
+   > A **kiszolgálónév**, a **databasename**, a **Felhasználónév** és a **jelszó** helyére írja be a kiszolgáló, az adatbázis, a felhasználó és a jelszó nevét.
 
     ```csharp
     // create a linked service for output data store: Azure SQL Database
@@ -345,7 +345,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 
     Ebben a lépésben hozza létre az InputDataset nevű adatkészletet, amely az AzureStorageLinkedService társított szolgáltatás által hivatkozott Azure Storage blobtárolójának (adftutorial) gyökérmappájában található blobfájlra mutat (emp.txt). Ha nem ad meg értéket a fájlnévnek (vagy kihagyja azt), a rendszer a bemeneti mappában található összes blob adatát a célhelyre másolja. Ebben az oktatóanyagban a fileName értékét adja meg.    
 
-    Ebben a lépésben egy kimeneti adatkészletet hoz létre **OutputDataset** néven. Ez az adatkészlet a **AzureSqlLinkedService**által jelzett adatbázisban található SQL-táblára mutat.
+    Ebben a lépésben egy kimeneti adatkészletet hoz létre **OutputDataset** néven. Ez az adatkészlet a **AzureSqlLinkedService** által jelzett adatbázisban található SQL-táblára mutat.
 11. Adja hozzá az alábbi kódot, amely **létrehozza és aktiválja az adatcsatornát** a **Main** metódusban. Ebben a lépésben létrehoz egy **másolási tevékenységgel** rendelkező folyamatot, amely bemenetként az **InputDataset**, kimenetként pedig az **OutputDataset** adatkészletet használja.
 
     ```csharp
@@ -503,7 +503,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
     }
     ```
 
-15. A Megoldáskezelő bontsa ki a projektet (DataFactoryAPITestApp), kattintson a jobb gombbal a **hivatkozások**elemre, majd kattintson a **hivatkozás hozzáadása**parancsra. Jelölje be a **System.Configuration** szerelvényhez tartozó jelölőnégyzetet. Kattintson **OK** gombra.
+15. A Megoldáskezelő bontsa ki a projektet (DataFactoryAPITestApp), kattintson a jobb gombbal a **hivatkozások** elemre, majd kattintson a **hivatkozás hozzáadása** parancsra. Jelölje be a **System.Configuration** szerelvényhez tartozó jelölőnégyzetet. Kattintson **OK** gombra.
 16. Hozza létre a konzolalkalmazást. Kattintson a menü **Fordítás** elemére, majd a **Megoldás fordítása** lehetőségre.
 17. Ellenőrizze, hogy az Azure Blob-fiókban található **adftutorial** nevű tárolóban van-e legalább egy fájl. Ha nincs, a Jegyzettömbben hozzon létre egy, az alábbi sorokat tartalmazó **Emp.txt** nevű fájlt, majd töltse fel azt az adftutorial nevű tárolóba.
 
@@ -511,7 +511,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
     John, Doe
     Jane, Doe
     ```
-18. Futtassa a mintát úgy, **Debug**hogy  ->  a menüben a hibakeresés**megkezdése** parancsra kattint. Ha megjelenik a **Getting run details of a data slice** (Adatszelet futtatási adatainak lekérése) felirat, várjon néhány percet, majd nyomja le az **ENTER** billentyűt.
+18. Futtassa a mintát úgy, hogy  ->  a menüben a hibakeresés **megkezdése** parancsra kattint. Ha megjelenik a **Getting run details of a data slice** (Adatszelet futtatási adatainak lekérése) felirat, várjon néhány percet, majd nyomja le az **ENTER** billentyűt.
 19. Az Azure Portalon ellenőrizze, hogy az **APITutorialFactory** nevű adat-előállító létrejött-e az alábbi összetevőkkel:
     * Társított szolgáltatás: **LinkedService_AzureStorage**
     * Adatkészlet: **InputDataset** és **OutputDataset**.

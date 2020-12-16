@@ -4,16 +4,16 @@ description: Hozzon létre egy GitHub-műveletet, amely automatizálja a szüks�
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 270aa69e74045a48a3567ca74b722ca48a030654
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7dfa2a66851db760049e7c3dc3446223c7dffad1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591633"
+ms.locfileid: "97609156"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub-művelet konfigurálása tárolópéldány létrehozásához
 
-A [GitHub-műveletek](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) a GitHub szolgáltatásainak egyik csomagja, amellyel automatizálható a szoftverfejlesztői munkafolyamatok ugyanazon a helyen, mint a kód tárolása és a lekéréses kérelmek és problémák közös használata.
+A [GitHub-műveletek](https://docs.github.com/en/free-pro-team@latest/actions) a GitHub szolgáltatásainak egyik csomagja, amellyel automatizálható a szoftverfejlesztői munkafolyamatok ugyanazon a helyen, mint a kód tárolása és a lekéréses kérelmek és problémák közös használata.
 
 Az [üzembe helyezés Azure Container instances](https://github.com/azure/aci-deploy) GitHub művelettel automatizálható egyetlen tároló üzembe helyezése Azure Container instances. A művelettel az az [Container Create][az-container-create] parancshoz hasonló tároló-példány tulajdonságait állíthatja be.
 
@@ -177,7 +177,7 @@ A munkafolyamat-fájl véglegesíte után a rendszer elindítja a munkafolyamato
 
 ![Munkafolyamat-folyamatjelző megtekintése](./media/container-instances-github-action/github-action-progress.png)
 
-A munkafolyamat egyes lépései állapotának és eredményének megtekintésével kapcsolatos információkért tekintse meg a [munkafolyamat futtatásának kezelése](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) című témakört. Ha a munkafolyamat nem fejeződött be, tekintse [meg a naplók megtekintése a hibák diagnosztizálásához](https://docs.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures)című témakört.
+A munkafolyamat egyes lépései állapotának és eredményének megtekintésével kapcsolatos információkért tekintse meg a [munkafolyamat-futtatási előzmények megtekintése](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history) című témakört. Ha a munkafolyamat nem fejeződött be, tekintse [meg a naplók megtekintése a hibák diagnosztizálásához](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures)című témakört.
 
 Amikor a munkafolyamat sikeresen befejeződik, az az [Container show][az-container-show] paranccsal lekérheti az *ACI-PéldaAlkalmazás* nevű tároló példány adatait. Helyettesítse be az erőforráscsoport nevét: 
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>Parancs állapota
 
-* Ha a rendszer kéri, adja meg a GitHub hitelesítő adatait, vagy adja meg a GitHub-fiókkal való hitelesítéshez szükséges adattárház *-és* *felhasználói* hatókörökkel rendelkező [GitHub személyes hozzáférési tokent](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (Pat). Ha a GitHub hitelesítő adatait adja meg, a parancs létrehoz egy PAT-t az Ön számára. A munkafolyamat konfigurálásához kövesse a további kéréseket.
+* Ha a rendszer kéri, adja meg a GitHub hitelesítő adatait, vagy adja meg a GitHub-fiókkal való hitelesítéshez szükséges adattárház *-és* *felhasználói* hatókörökkel rendelkező [GitHub személyes hozzáférési tokent](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) (Pat). Ha a GitHub hitelesítő adatait adja meg, a parancs létrehoz egy PAT-t az Ön számára. A munkafolyamat konfigurálásához kövesse a további kéréseket.
 
 * A parancs a munkafolyamat adattárházának titkait hozza létre:
 
@@ -258,7 +258,7 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
-A GitHub felhasználói felületen a munkafolyamat állapotának és eredményeinek megtekintéséhez tekintse meg a [munkafolyamat-Futtatás kezelése](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)című témakört.
+A GitHub felhasználói felületen a munkafolyamat állapotának és eredményeinek megtekintéséhez tekintse meg a [munkafolyamat-futtatási előzmények megtekintése](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history)című témakört.
 
 ### <a name="validate-workflow"></a>Munkafolyamat ellenőrzése
 
@@ -299,7 +299,7 @@ az group delete \
   --name <resource-group-name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További műveletek a [GitHub-piactéren](https://github.com/marketplace?type=actions) a fejlesztési munkafolyamat automatizálásához
 

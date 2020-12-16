@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 946388fa60e0f6147db2986192392740fa3949f4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 84b0a761b52baca4ae1ab81b3c67f18f6b14db92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671838"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608833"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Oktatóanyag: SAP Analytics-felhő integrálása Azure Active Directory
 
@@ -103,7 +103,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként az SAP Analytics felhőalapú vállalati webhelyére.
 
-2. Válassza a **menü**  >  **System**  >  **rendszerfelügyelet** menüpontot.
+2. Válassza a **menü**  >    >  **rendszerfelügyelet** menüpontot.
     
     ![Válassza a menü, majd a rendszer, majd az adminisztráció lehetőséget.](./media/sapboc-tutorial/config1.png)
 
@@ -139,7 +139,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -183,21 +183,21 @@ Felhasználói fiók kiépítése:
 
     Ezután hajtsa végre a következő lépéseket:
 
-    a. A **felhasználói azonosító** mezőben adja meg a felhasználó felhasználói azonosítóját, például: **B** .
+    1. A **felhasználói azonosító** mezőben adja meg a felhasználó felhasználói azonosítóját, például: **B**.
 
-    b. A **keresztnév** mezőbe írja be a felhasználó utónevét, például: **B** .
+    1. A **keresztnév** mezőbe írja be a felhasználó utónevét, például: **B**.
 
-    c. A **vezetéknév** mezőbe írja be a felhasználó vezetéknevét, például **Simon** .
+    1. A **vezetéknév** mezőbe írja be a felhasználó vezetéknevét, például **Simon**.
 
-    d. A **megjelenítendő név** mezőbe írja be a felhasználó teljes nevét, például: **B. Simon** .
+    1. A **megjelenítendő név** mezőbe írja be a felhasználó teljes nevét, például: **B. Simon**.
 
-    e. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét, például: `b.simon@contoso.com` .
+    1. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét, például: `b.simon@contoso.com` .
 
-    f. A **szerepkörök kiválasztása** lapon válassza ki a megfelelő szerepkört a felhasználó számára, majd kattintson az **OK gombra** .
+    1. A **szerepkörök kiválasztása** lapon válassza ki a megfelelő szerepkört a felhasználó számára, majd kattintson az **OK gombra**.
 
-      ![Válasszon szerepkört](./media/sapboc-tutorial/user3.png)
+        ![Válasszon szerepkört](./media/sapboc-tutorial/user3.png)
 
-    : Válassza a **Mentés** ikont.
+    1. Válassza a **Mentés** ikont.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

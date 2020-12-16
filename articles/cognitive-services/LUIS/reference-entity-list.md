@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 29f0f0c3fd48920990519aecfe5ae58c32b43db9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b33b5c6078d096fa4b2acaa7b49bc14c95e31
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253836"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608272"
 ---
 # <a name="list-entity"></a>Listaentitás
 
@@ -85,7 +85,6 @@ Az előző részletben a Word a `paris` lista entitás részeként van leképezv
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-
 Ez a JSON, ha `verbose=false` be van állítva a lekérdezési karakterláncban:
 
 ```json
@@ -131,8 +130,7 @@ Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 |--|--|--|
 |Entitás listázása|`Cities`|`paris`|
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az entitásokról:
 

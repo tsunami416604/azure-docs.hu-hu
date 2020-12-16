@@ -9,20 +9,20 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ef16a4c0b6ea40fb4934307916f1fe79ccea72f9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316970"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609139"
 ---
-# <a name="what-are-azure-arc-enabled-data-services-preview"></a>Mik azok az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)?
+# <a name="what-are-azure-arc-enabled-data-services-preview"></a>Mik azok az Azure Arc-kompatibilis adatszolgáltatások (előzetes verzió)?
 
 Az Azure arc lehetővé teszi az Azure-beli adatszolgáltatások helyszíni, peremhálózati és nyilvános felhőben történő futtatását a Kubernetes és az Ön által választott infrastruktúra használatával.
 
 Jelenleg a következő Azure arc-kompatibilis adatszolgáltatások érhetők el előzetes verzióban:
 
-- Felügyelt SQL-példány
+- SQL Managed Instance
 - PostgreSQL nagy kapacitású
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
@@ -33,7 +33,7 @@ Az Azure arc-kompatibilis adatszolgáltatások, például az Azure arc-kompatibi
 
 ## <a name="elastic-scale"></a>Rugalmas méretezés
 
-A helyszíni rugalmas rugalmasság lehetővé teszi, hogy az adatbázisok méretezése dinamikusan, ugyanúgy, mint az Azure-ban, az infrastruktúra rendelkezésre álló kapacitása alapján. Ezzel a képességgel az illékony igényekkel rendelkező burst forgatókönyvek is megtalálhatók, beleértve azokat a forgatókönyveket, amelyekben valós időben kell bevenni az adatok betöltését és lekérdezését, és a másodpercben megadott időpontig. Emellett az adatbázis-példányokat az Azure Database for PostgreSQL nagy kapacitású egyedi Hyper-skála üzembe helyezési lehetőségével is felskálázással bővítheti. Ez a funkció lehetővé teszi az adatok számítási feladatait a kapacitás optimalizálásának növelésére, az egyedi kibővített*olvasási és írási műveletek* használatával.
+A helyszíni rugalmas rugalmasság lehetővé teszi, hogy az adatbázisok méretezése dinamikusan, ugyanúgy, mint az Azure-ban, az infrastruktúra rendelkezésre álló kapacitása alapján. Ezzel a képességgel az illékony igényekkel rendelkező burst forgatókönyvek is megtalálhatók, beleértve azokat a forgatókönyveket, amelyekben valós időben kell bevenni az adatok betöltését és lekérdezését, és a másodpercben megadott időpontig. Emellett az adatbázis-példányokat az Azure Database for PostgreSQL nagy kapacitású egyedi Hyper-skála üzembe helyezési lehetőségével is felskálázással bővítheti. Ez a funkció lehetővé teszi az adatok számítási feladatait a kapacitás optimalizálásának növelésére, az egyedi kibővített *olvasási és írási műveletek* használatával.
 
 ## <a name="self-service-provisioning"></a>Önkiszolgáló kiépítés
 
@@ -47,10 +47,10 @@ A jól ismert eszközök, például a Azure Portal, a Azure Data Studio és a se
 
 A szolgáltatások számos szolgáltatása, például az önkiszolgáló üzembe helyezés, az automatizált biztonsági mentések/visszaállítás és a figyelés helyileg is futtatható az infrastruktúrában az Azure-hoz való közvetlen kapcsolódással vagy anélkül. A közvetlenül az Azure-hoz való csatlakozás további lehetőségeket biztosít a más Azure-szolgáltatásokkal való integrációhoz, például a Azure Monitorhoz, és lehetővé teszi, hogy a világ bármely pontjáról a Azure Portal és Azure Resource Manager API-kat használja az Azure arc-kompatibilis adatszolgáltatások kezeléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > **Csak szeretné kipróbálni a dolgokat?**  
-> Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) az Azure Kubernetes Service (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gépen.
+> Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) az Azure Kubernetes Service (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gépen.
 
 [Az ügyféleszközök telepítése](install-client-tools.md)
 

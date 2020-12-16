@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fd9a04c2324af2ec36d8fa1d43a079e9f2c32dd8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0205617198ec8e57cb891d2415d2b5413a945f1b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520302"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608935"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Oktatóanyag: a Azure Active Directory integrálásának módja
 
@@ -48,14 +48,14 @@ Az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a k
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **keresőmezőbe a kifejezést** .
 1. Válassza ki az eredmények **panelen az alkalmazás** lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Konfigurálja és tesztelje az Azure AD SSO-t úgy, hogy egy **B. Simon**nevű teszt felhasználót használ. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a következő módon:.
+Konfigurálja és tesztelje az Azure AD SSO-t úgy, hogy egy **B. Simon** nevű teszt felhasználót használ. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a következő módon:.
 
 Az Azure AD SSO konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -70,8 +70,8 @@ Az Azure AD SSO konfigurálásához és teszteléséhez hajtsa végre a követke
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **az alkalmazás-** integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **az alkalmazás-** integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -95,7 +95,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 ### <a name="configure-way-we-do-sso"></a>Konfigurálás módja az egyszeri bejelentkezéshez
 
-1. A konfiguráció automatizálása érdekében az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva kell telepítenie.
+1. A konfiguráció automatizálása érdekében az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva kell telepítenie.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -109,7 +109,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Fiók létrehozása](./media/waywedo-tutorial/tutorial_waywedo_account.png)
 
-1. A **menü ikonra** kattintva nyissa meg a leküldéses navigációs menüt, és kattintson az **egyszeri bejelentkezés**lehetőségre.
+1. A **menü ikonra** kattintva nyissa meg a leküldéses navigációs menüt, és kattintson az **egyszeri bejelentkezés** lehetőségre.
 
     ![Egyetlen lehetőség](./media/waywedo-tutorial/tutorial_waywedo_single.png)
 
@@ -117,50 +117,50 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A Mentés módja](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
-    a. Az egyszeri bejelentkezés engedélyezéséhez kattintson az **egyszeri bejelentkezés bekapcsolása** **Igen** értékre.
+    1. Az egyszeri bejelentkezés engedélyezéséhez kattintson az **egyszeri bejelentkezés bekapcsolása** **Igen** értékre.
 
-    b. Az **egyszeri bejelentkezés neve** szövegmezőbe írja be a nevét.
+    1. Az **egyszeri bejelentkezés neve** szövegmezőbe írja be a nevét.
 
-    c. Az **entitás-azonosító** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító**értékét.
+    1. Az **entitás-azonosító** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
-    d. Az **SAML SSO URL** szövegmezőbe illessze be a **bejelentkezési URL**-címet, amelyet a Azure Portal másolt.
+    1. Az **SAML SSO URL** szövegmezőbe illessze be a **bejelentkezési URL**-címet, amelyet a Azure Portal másolt.
 
-    e. Töltse fel a tanúsítványt a **tanúsítvány**melletti **kiválasztás** gombra kattintva.
+    1. Töltse fel a tanúsítványt a **tanúsítvány** melletti **kiválasztás** gombra kattintva.
 
-    f. **Választható beállítások** -
-    
-    * Jelszavak engedélyezése – ha ez a beállítás le van tiltva, a szokásos jelszó-függvények lehetővé teszik, hogy a felhasználók csak az egyszeri bejelentkezést használják.
+    1. **Választható beállítások** -
 
-    * Automatikus kiépítés engedélyezése – ha ez engedélyezve van, a bejelentkezéshez használt e-mail-cím automatikusan össze lesz hasonlítva a felhasználók listájával. Ha az e-mail-cím nem egyezik az aktív felhasználóval, a rendszer automatikusan új felhasználói fiókot ad hozzá a bejelentkezett személyhez, és a hiányzó információkat kéri.
+        * Jelszavak engedélyezése – ha ez a beállítás le van tiltva, a szokásos jelszó-függvények lehetővé teszik, hogy a felhasználók csak az egyszeri bejelentkezést használják.
 
-      > [!NOTE]
-      > Az egyszeri bejelentkezéssel hozzáadott felhasználók általános felhasználókként lesznek hozzáadva, és a rendszer nem kap szerepkört a rendszeren. A rendszergazdák megtekinthetik és módosíthatják a biztonsági szerepkört szerkesztőként vagy rendszergazdaként, és egy vagy több szervezeti diagram szerepkört is hozzárendelhet.
+        * Automatikus kiépítés engedélyezése – ha ez engedélyezve van, a bejelentkezéshez használt e-mail-cím automatikusan össze lesz hasonlítva a felhasználók listájával. Ha az e-mail-cím nem egyezik az aktív felhasználóval, a rendszer automatikusan új felhasználói fiókot ad hozzá a bejelentkezett személyhez, és a hiányzó információkat kéri.
 
-    : Kattintson a **Save (Mentés** ) gombra a beállítások megőrzése érdekében.
+          > [!NOTE]
+          > Az egyszeri bejelentkezéssel hozzáadott felhasználók általános felhasználókként lesznek hozzáadva, és a rendszer nem kap szerepkört a rendszeren. A rendszergazdák megtekinthetik és módosíthatják a biztonsági szerepkört szerkesztőként vagy rendszergazdaként, és egy vagy több szervezeti diagram szerepkört is hozzárendelhet.
+
+    1. Kattintson a **Save (Mentés** ) gombra a beállítások megőrzése érdekében.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a szolgáltatáshoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza ki a **módját**.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 

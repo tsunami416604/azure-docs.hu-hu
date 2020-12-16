@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413224"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608782"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Az Azure arc-adatkezelő létrehozása
 
@@ -36,7 +36,7 @@ Jelenleg a Kubernetes-szolgáltatások és-disztribúciók támogatott listája 
 - Nyílt forráskódú, általában a kubeadm használatával üzembe helyezett fölérendelt Kubernetes
 
 > [!IMPORTANT]
-> * A Kubernetes minimális támogatott verziója v 1.17.
+> * A Kubernetes minimális támogatott verziója v 1.17. További információ: [ismert problémák](./release-notes.md#known-issues) . 
 > * A OCP minimális támogatott verziója 4,3.
 > * A [kapcsolati követelményekből](connectivity.md) megtudhatja, milyen kapcsolatra van szükség a környezet és az Azure között.
 > * Tekintse meg a [tárolási konfigurációs útmutatót](storage-configuration.md) , amelyből megtudhatja, hogyan konfigurálhatja az állandó tárterületet.
@@ -46,7 +46,7 @@ Jelenleg a Kubernetes-szolgáltatások és-disztribúciók támogatott listája 
 > [!NOTE]
 > Ha a Red Hat OpenShift Container platformot használja az Azure-ban, a legújabb elérhető verziót ajánlott használni.
 
-A választott lehetőségtől függően bizonyos eszközökre lesz _szükség_ , de ajánlott az [összes ügyféleszközök telepítése](./install-client-tools.md) , mielőtt megkezdené az Azure arc-adatkezelő létrehozását.
+A választott lehetőségtől függően bizonyos eszközökre lesz _szükség_, de ajánlott az [összes ügyféleszközök telepítése](./install-client-tools.md) , mielőtt megkezdené az Azure arc-adatkezelő létrehozását.
 
 A létrehozási folyamat során a választott lehetőségtől függetlenül a következő információkat kell megadnia:
 
@@ -64,10 +64,10 @@ A létrehozási folyamat során a választott lehetőségtől függetlenül a k�
 Több lehetőség is létezik az Azure arc-adatkezelő létrehozásához:
 
 > **Csak szeretné kipróbálni a dolgokat?**  
-> Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) az Azure Kubernetes Service (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gépen.
+> Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) az Azure Kubernetes Service (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gépen.
 > 
 - [Adatvezérlő létrehozása a szolgáltatással [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Adatvezérlő létrehozása Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Adatkezelő létrehozása a Azure Portal Jupyter notebookon keresztül Azure Data Studio](create-data-controller-resource-in-azure-portal.md)
 - [Adatvezérlő létrehozása Kubernetes eszközökkel, például kubectl vagy oC](create-data-controller-using-kubernetes-native-tools.md)
-- [Adatvezérlő létrehozása Azure arc Jumpstart-vel a tesztelési célú üzembe helyezés gyorsított élményéhez](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)
+- [Adatvezérlő létrehozása Azure arc Jumpstart-vel a tesztelési célú üzembe helyezés gyorsított élményéhez](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

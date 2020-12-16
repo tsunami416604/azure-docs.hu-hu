@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: ae3ffb9dc387129153b684a849ba4e58274ad80c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563279"
+ms.locfileid: "97608510"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
 A [GitHub-műveletek](https://github.com/features/actions) használatával definiálhat egy munkafolyamatot, amely automatikusan létrehozza és telepíti a kódot az Azure Function alkalmazásban. 
 
-A GitHub-műveletekben a [munkafolyamat](https://help.github.com/articles/about-github-actions#workflow) egy automatizált folyamat, amelyet a GitHub-tárházban határozhat meg. Ezzel a folyamattal megtudhatja, hogyan hozhat létre és helyezhet üzembe functions-projekteket a GitHubon. 
+A GitHub-műveletekben a [munkafolyamat](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) egy automatizált folyamat, amelyet a GitHub-tárházban határozhat meg. Ezzel a folyamattal megtudhatja, hogyan hozhat létre és helyezhet üzembe functions-projekteket a GitHubon. 
 
 A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza. 
 
@@ -40,7 +40,7 @@ Azure Functions munkafolyamathoz a fájl három szakaszt tartalmaz:
 
 A GitHub-műveletek Azure Functions való hitelesítésének ajánlott módja a közzétételi profil használata. A hitelesítést egy egyszerű szolgáltatással is elvégezheti. További információért lásd [a GitHub-műveletek tárházát](https://github.com/Azure/functions-action). 
 
-Miután mentette a közzétételi profil hitelesítő adatait a [GitHub-titokként](https://docs.github.com/en/actions/reference/encrypted-secrets), ezt a titkot fogja használni a munkafolyamaton belül a hitelesítéshez az Azure-ban. 
+Miután mentette a közzétételi profil hitelesítő adatait a [GitHub-titokként](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets), ezt a titkot fogja használni a munkafolyamaton belül a hitelesítéshez az Azure-ban. 
 
 #### <a name="download-your-publish-profile"></a>Közzétételi profil letöltése
 

@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6e3dbb968d0dff8d8227518fe53d257bfc1fae4b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357569"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607966"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Rövid útmutató: a GitHub-műveletek használata az Azure MySQL-hez való kapcsolódáshoz
 
 **A** következőkre vonatkozik: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – egyetlen kiszolgáló :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – rugalmas kiszolgáló
 
-Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy munkafolyamattal, amely az adatbázis-frissítések [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)való üzembe helyezésére használható.
+Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/free-pro-team@latest/actions) egy munkafolyamattal, amely az adatbázis-frissítések [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)való üzembe helyezésére használható.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -196,7 +196,7 @@ A kapcsolatok karakterláncát GitHub-titokként fogja használni.
 
 Ha az Azure MySQL-adatbázisra és-tárházra már nincs szükség, távolítsa el az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg az Azure-t és a GitHub-integrációt](/azure/developer/github/)

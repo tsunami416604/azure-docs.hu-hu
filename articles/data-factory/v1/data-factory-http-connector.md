@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ddf8236dbbc9714c705e442bb65eb2ac3d293cc7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 653a53d6bb5c69cd95fd5e9a2483b51de8293b40
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589576"
+ms.locfileid: "97608578"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Adatok áthelyezése HTTP-forrásokból Azure Data Factory használatával
 
@@ -26,7 +26,6 @@ ms.locfileid: "97589576"
 
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Azure Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [http-összekötőt a v2-ben](../connector-http.md).
-
 
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban egy helyszíni vagy Felhőbeli HTTP-végpont adatainak egy támogatott fogadó adattárba való áthelyezéséhez. Ez a cikk a [másolási tevékenységgel helyezi át az adatáthelyezést](data-factory-data-movement-activities.md), amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenység használatával. A cikk a másolási tevékenység által támogatott adattárakat is felsorolja a forrásként és a mosdóként.
 
@@ -120,9 +119,8 @@ Ez a társított szolgáltatás az adatgyárat egy helyszíni HTTP-webkiszolgál
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-        "certThumbprint": "thumbprint of certificate",
-        "gatewayName": "gateway name"
-
+            "certThumbprint": "thumbprint of certificate",
+            "gatewayName": "gateway name"
         }
     }
 }
@@ -142,8 +140,8 @@ Ez a társított szolgáltatás az adatgyárat egy helyszíni HTTP-webkiszolgál
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-        "embeddedCertData": "Base64-encoded cert data",
-        "password": "password of cert"
+            "embeddedCertData": "Base64-encoded cert data",
+            "password": "password of cert"
         }
     }
 }
@@ -176,9 +174,9 @@ A **typeProperties** szakasz eltérő az egyes adatkészletek esetében. A **typ
     "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
-      "relativeUrl": "XXX/test.xml",
-        "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-    },
+          "relativeUrl": "XXX/test.xml",
+          "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+        },
         "external": true,
         "availability": {
             "frequency": "Hour",

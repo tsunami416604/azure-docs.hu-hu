@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed71311125229a7575c675dd3338b4908ea1be95
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8b49e3594754e8eed38e3b1ef44648bc065558b8
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518432"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608358"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Oktatóanyag: Azure Active Directory integráció a Skillport
 
@@ -61,13 +61,13 @@ A Skillport Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Skillport**kifejezést, válassza a **Skillport** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Skillport** kifejezést, válassza a **Skillport** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Skillport az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Skillport-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Skillport-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Skillport kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Skillport való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Skillport való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Skillport** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Skillport** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -101,23 +101,23 @@ Az Azure AD egyszeri bejelentkezés Skillport való konfigurálásához hajtsa v
 
     ![Skillport tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:
+    1. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:
 
-    EU-adatközpont: `https://adfs.skillport.eu`
+        EU-adatközpont: `https://adfs.skillport.eu`
 
-    Egyesült államokbeli adatközpont: `https://sso.skillport.com`
+        Egyesült államokbeli adatközpont: `https://sso.skillport.com`
 
-    b. Az **azonosító** mezőbe írja be az URL-címet:
+    1. Az **azonosító** mezőbe írja be az URL-címet:
 
-    EU-adatközpont: `http://adfs.skillport.eu/adfs/services/trust`
+        EU-adatközpont: `http://adfs.skillport.eu/adfs/services/trust`
 
-    Egyesült államokbeli adatközpont: `https://sso.skillport.com`
+        Egyesült államokbeli adatközpont: `https://sso.skillport.com`
 
-    c. A **Válasz URL-cím** szövegmezőbe írja be az URL-címet:
+    1. A **Válasz URL-cím** szövegmezőbe írja be az URL-címet:
 
-    EU-adatközpont: `https://adfs.skillport.eu/adfs/ls/`
+        EU-adatközpont: `https://adfs.skillport.eu/adfs/ls/`
 
-      Egyesült államokbeli adatközpont: `https://sso.skillport.com/sp/ACS.saml2`
+        Egyesült államokbeli adatközpont: `https://sso.skillport.com/sp/ACS.saml2`
 
 5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -141,7 +141,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **Skillport** oldalon, 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -160,21 +160,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Skillport hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Skillport**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Skillport** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Skillport**lehetőséget.
+2. Az alkalmazások listában válassza a **Skillport** lehetőséget.
 
     ![Az Skillport hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

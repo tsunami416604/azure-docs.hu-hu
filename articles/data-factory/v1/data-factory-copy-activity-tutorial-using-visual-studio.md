@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 013f82c33b149d754e059bbc4c9933f917a2555a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a4a6e896d0cee22424274d845ccc24463833cc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85248628"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608765"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Visual Studio használatával
 > [!div class="op_single_selector"]
@@ -53,36 +53,44 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
 3. A számítógépre a következőket kell telepíteni: 
    * Visual Studio 2013 vagy Visual Studio 2015
    * Töltse le az Azure SDK-t a Visual Studio 2013-hoz vagy a Visual Studio 2015-höz. Nyissa meg az [Azure letöltési oldalát](https://azure.microsoft.com/downloads/), és kattintson a **VS 2013** vagy a **VS 2015** elemre a **.NET** szakaszban.
-   * Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). A beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson az **eszközök**  ->  **bővítmények és frissítések**  ->  **online**  ->  **Visual Studio Gallery**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update**lehetőségre.
+   * Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). A beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson az **eszközök**  ->  **bővítmények és frissítések**  ->  **online**  ->  **Visual Studio Gallery**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update** lehetőségre.
 
 ## <a name="steps"></a>Lépések
+
 Az oktatóanyag során a következő lépéseket fogja elvégezni:
 
 1. Hozzon létre **társított szolgáltatásokat** az adat-előállítóban. Ebben a lépésben a következő két típusú társított szolgáltatást hozza létre: Azure Storage és Azure SQL Database. 
-    
+
     Az AzureStorageLinkedService az Azure Storage-fiókot társítja az adat-előállítóval. Az [Előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)részeként létrehozott egy tárolót, és feltöltötte az adattárat ebbe a Storage-fiókba.   
 
     A AzureSqlLinkedService a Azure SQL Database az adatelőállítóra mutató hivatkozásokat. A blobtárolóból másolt adatokat a rendszer ebben az adatbázisban tárolja. Az [előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) részeként létrehozta az SQL-táblát az adatbázisban.     
+
 2. Hozza létre a bemeneti és kimeneti **adatkészleteket** az adat-előállítóban.  
-    
+
     Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure Storage-fiók csatlakoztatásához használ. A bemeneti blob adatkészlete pedig a tárolót és a bemeneti adatokat tartalmazó mappát határozza meg.  
 
     Hasonlóképpen, a Azure SQL Database társított szolgáltatás határozza meg azt a kapcsolati karakterláncot, amelyet a Data Factory szolgáltatás futás közben használ a Azure SQL Databasehoz való kapcsolódáshoz. Az SQL-tábla kimeneti adatkészlete határozza meg azt az adatbázistáblát, amelybe a rendszer a blobtárolóból származó adatokat másolja.
+
 3. Hozzon létre egy **folyamatot** az adat-előállítóban. Ebben a lépésben létre fog hozni egy másolási tevékenységgel rendelkező folyamatot.   
-    
-    A másolási tevékenység az Azure Blob Storage-ban lévő blobból másol át egy Azure SQL Databaseba egy táblába. A folyamat másolási tevékenységével adatokat másolhat bármely támogatott forrásból bármely támogatott célhelyre. A támogatott adattárak listájáért lásd: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md#supported-data-stores-and-formats). 
+
+    A másolási tevékenység az Azure Blob Storage-ban lévő blobból másol át egy Azure SQL Databaseba egy táblába. A folyamat másolási tevékenységével adatokat másolhat bármely támogatott forrásból bármely támogatott célhelyre. A támogatott adattárak listájáért lásd: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
+
 4. Hozzon létre egy Azure **adat-előállítót** Data Factory-entitások (összekapcsolt szolgáltatások adatkészletek/táblák és folyamatok) telepítésekor. 
 
 ## <a name="create-visual-studio-project"></a>Visual Studio-projekt létrehozása
+
 1. Indítsa el a **Visual Studio 2015-öt**. Kattintson a **File** (Fájl) menüre, mutasson a **New** (Új) elemre, és kattintson a **Project** (Projekt) lehetőségre. Meg kell jelennie a **New project** (Új projekt) párbeszédpanelnek.  
+
 2. A **New project** (Új projekt) párbeszédpanelen jelölje ki a **DataFactory** sablont, és kattintson az **Empty Data Factory Project** (Üres Data Factory-projekt) elemre.  
-   
+
     ![A New project (Új projekt) párbeszédpanel](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png)
+
 3. Adja meg a projekt nevét, a megoldás helyét és nevét, majd kattintson az **OK** gombra.
-   
+
     ![Megoldáskezelő](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
+
 Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben az oktatóanyagban nem használunk számítási szolgáltatásokat (például Azure HDInsight vagy Azure Data Lake Analytics). Csak kétféle típusú adattárat használunk: Azure Storage (forrás) és Azure SQL Database (cél). 
 
 Ezért a következő két típusú társított szolgáltatást hozza létre: AzureStorage és AzureSQLDatabase.  
@@ -94,27 +102,32 @@ Az Azure SQL társított szolgáltatás az adatgyárhoz Azure SQL Database hivat
 A társított szolgáltatások adattárakat vagy számítási szolgáltatásokat társítanak az Azure data factoryhez. A másolási tevékenység által támogatott forrásokért és fogadókért tekintse meg a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) című részt. A Data Factory által támogatott számítási szolgáltatások listájáért tekintse meg a [számítási társított szolgáltatások](data-factory-compute-linked-services.md) című részt. Az oktatóanyag során ne használjon számítási szolgáltatásokat. 
 
 ### <a name="create-the-azure-storage-linked-service"></a>Az Azure Storage társított szolgáltatás létrehozása
+
 1. A **Solution Explorerben** (Megoldáskezelőben) kattintson a jobb gombbal a **Linked Services** (Társított szolgáltatások) elemre, mutasson az **Add** (Hozzáadás) parancsra, és kattintson a **New Item** (Új elem) elemre.      
+
 2. Az **Add New Item** (Új elem hozzáadása) párbeszédpanelen válassza ki a listából az **Azure Storage Linked Service** (Azure Storage társított szolgáltatás) elemet, és kattintson az **Add** (Hozzáadás) parancsra. 
-   
+
     ![Új társított szolgáltatás](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-linked-service-dialog.png)
+
 3. Cserélje le az `<accountname>` és az `<accountkey>`* kifejezést az Azure Storage-tárfiókja nevére, illetve kulcsára. 
-   
+
     ![Azure Storage társított szolgáltatás](./media/data-factory-copy-activity-tutorial-using-visual-studio/azure-storage-linked-service.png)
+
 4. Mentse az **AzureStorageLinkedService1.json** fájlt.
 
     További információ a társított szolgáltatás definíciójában található JSON-tulajdonságokról: [Azure Blob Storage-összekötő](data-factory-azure-blob-connector.md#linked-service-properties).
 
 ### <a name="create-the-azure-sql-linked-service"></a>Az Azure SQL társított szolgáltatás létrehozása
+
 1. A **Solution Explorerben** (Megoldáskezelőben) ismét kattintson a jobb gombbal a **Linked Services** (Társított szolgáltatások) csomópontra, mutasson az **Add** (Hozzáadás) elemre, és kattintson a **New Item** (Új elem) lehetőségre. 
 2. Ezúttal válassza a **Azure SQL Linked Service** (Azure SQL társított szolgáltatás) lehetőséget, és kattintson az **Add** (Hozzáadás) elemre. 
-3. A ** fájlAzureSqlLinkedService1.js**cserélje le a, a, a `<servername>` `<databasename>` `<username@servername>` és `<password>` a nevet a kiszolgáló, az adatbázis, a felhasználói fiók és a jelszó nevére.    
+3. A **fájlAzureSqlLinkedService1.js** cserélje le a, a, a `<servername>` `<databasename>` `<username@servername>` és `<password>` a nevet a kiszolgáló, az adatbázis, a felhasználói fiók és a jelszó nevére.    
 4. Mentse az **AzureSqlLinkedService1.json** fájlt. 
-    
+
     További információ a JSON-tulajdonságokról: [Azure SQL Database-összekötő](data-factory-azure-sql-connector.md#linked-service-properties).
 
-
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
+
 Az előző lépésben társított szolgáltatásokat hozott létre az Azure Storage-fiók összekapcsolásához és a Azure SQL Databaseához. Ebben a lépésben két adatkészletet határoz meg – InputDataset és OutputDataset néven –, amelyek az AzureStorageLinkedService1 és az AzureSqlLinkedService1 szolgáltatás által hivatkozott bemeneti és kimeneti adatokat jelölik.
 
 Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati sztringet, amelyet futtatáskor a Data Factory szolgáltatás az Azure Storage-fiók csatlakoztatásához használ. A bemeneti blob adatkészlete (InputDataset) pedig a tárolót és a bemeneti adatokat tartalmazó mappát határozza meg.  
@@ -122,6 +135,7 @@ Az Azure Storage társított szolgáltatása határozza meg azt a kapcsolati szt
 Hasonlóképpen, a Azure SQL Database társított szolgáltatás határozza meg azt a kapcsolati karakterláncot, amelyet a Data Factory szolgáltatás futás közben használ a Azure SQL Databasehoz való kapcsolódáshoz. Az SQL-tábla kimeneti adatkészlete (OututDataset) határozza meg azt az adatbázistáblát, amelybe a rendszer a blobtárolóból származó adatokat másolja. 
 
 ### <a name="create-input-dataset"></a>Bemeneti adatkészlet létrehozása
+
 Ebben a lépésben hozza létre az InputDataset nevű adatkészletet, amely az AzureStorageLinkedService1 társított szolgáltatás által hivatkozott Azure Storage blobtárolójának (adftutorial) gyökérmappájában található blobfájlra mutat (emp.txt). Ha nem ad meg értéket a fájlnévnek (vagy kihagyja azt), a rendszer a bemeneti mappában található összes blob adatát a célhelyre másolja. Ebben az oktatóanyagban a fileName értékét adja meg. 
 
 Az „adatkészletek” helyett itt inkább a „táblák” kifejezés használandó. A tábla egy téglalap alakú adatkészlet, és jelenleg ez az egyetlen támogatott adatkészlettípus. 
@@ -165,50 +179,52 @@ Az „adatkészletek” helyett itt inkább a „táblák” kifejezés használ
 
     | Tulajdonság | Leírás |
     |:--- |:--- |
-    | típus | A tulajdonság beállításának értéke **AzureBlob**, mert az adatok egy Azure Blob Storage-tárban találhatók. |
-    | linkedServiceName | A korábban létrehozott **AzureStorageLinkedService** szolgáltatásra hivatkozik. |
-    | folderPath | A bemeneti blobokat tartalmazó **blobtárolót** és **mappát** adja meg. Ebben az oktatóanyagban az adftutorial a blobtároló és a folder a gyökérmappa. | 
-    | fileName | Ez a tulajdonság nem kötelező. Ha kihagyja, a rendszer a folderPath elérési úton található összes fájlt kiválasztja. Ebben az oktatóanyagban az **emp.txt** a fileName értéke, így a rendszer csak ezt a fájlt használja a feldolgozáshoz. |
-    | formátum -> típus |A bemeneti fájl szöveges formátumú, ezért a **TextFormat** értéket használjuk. |
-    | columnDelimiter | A bemeneti fájlban **vesszővel (`,`)** vannak elválasztva az oszlopok. |
-    | frequency/interval | A frequency (gyakoriság) beállítása **Hour** (Óra), az interval (időköz) beállítása pedig **1**, ami azt jelenti, hogy a bemeneti szeletek **óránként** érhetők el. Vagyis a Data Factory szolgáltatás óránként keres bemeneti adatokat a megadott blobtároló (**adftutorial**) gyökérmappájában. A szolgáltatás a folyamat kezdő és befejező időpontja közti időszakban – és nem azon kívül – keres adatokat.  |
-    | external | Ez a tulajdonság a **true** (igaz) értékre van állítva, ha az adatokat nem ez a folyamat hozta létre. Az oktatóanyagban használt bemeneti adatok az emp.txt fájlban találhatók, amelyet nem ez a folyamat hoz létre, ezért ezt a tulajdonságot true (igaz) értékre állítottuk. |
+    | típus | A Type tulajdonság értéke **AzureBlob** , mert az anAzure blob Storage-ban található adat. |
+    | linkedServiceName | A korábban youcreated **AzureStorageLinkedService** hivatkozik. |
+    | folderPath | Megadja a blob- **tárolót** és a **mappa** thatcontains a bemeneti blobokat. Ebben az oktatóanyagban a adftutorial a andfolder blob tárolója. | 
+    | fileName | Ez a tulajdonság nem kötelező. Ha kihagyja ezt a tulajdonságot, a rendszer a folderPath összes filesfrom kiválasztja. Ebben az oktatóanyagban **emp.txt** van megadva a fájlnévhez, így csak az adott fájl lesz feldolgozva feldolgozásra. |
+    | formátum -> típus |A bemeneti fájl szöveges formátumú, ezért a **Szövegformátum** használjuk. |
+    | columnDelimiter | A bemeneti fájlban lévő oszlopokat a **commacharacter ( `,` )** tagolja. |
+    | frequency/interval | A gyakoriság értéke **óra** és intervallum setto **1**, ami azt jelenti, hogy a bemeneti szeletek **óránként** elérhetők. A otherwords-ben a Data Factory szolgáltatás óránként keresi a bemeneti adatokat a blob-tároló (**adftutorial**) megadott gyökérmappa. A thedata a folyamat kezdő és befejező időpontjain belül, nem pedig a thesetimes előtt és után keresi.  |
+    | external | Ez a tulajdonság TRUE ( **igaz** ) értékre van beállítva, ha az adatbythis-folyamat nem jön létre. Az oktatóanyagban szereplő bemeneti adatok a emp.txt fájlban szerepelnek, amelyet ez a folyamat nem hozott létre, ezért a tulajdonságot igaz értékre kell állítani. |
 
     Ezekről a JSON-tulajdonságokról további tudnivalók az [Azure Blob-összekötőről](data-factory-azure-blob-connector.md#dataset-properties) szóló cikkben olvashatók.   
 
 ### <a name="create-output-dataset"></a>Kimeneti adatkészlet létrehozása
-Ebben a lépésben egy kimeneti adatkészletet hoz létre **OutputDataset** néven. Ez az adatkészlet a **AzureSqlLinkedService1**által képviselt Azure SQL Database egy SQL-táblára mutat. 
+
+Ebben a lépésben egy kimeneti adatkészletet hoz létre **OutputDataset** néven. Ez az adatkészlet a **AzureSqlLinkedService1** által képviselt Azure SQL Database egy SQL-táblára mutat. 
 
 1. A **Solution Explorerben** (Megoldáskezelőben) ismét kattintson a jobb gombbal a **Tables** (Táblák) elemre, mutasson az **Add** (Hozzáadás) elemre, és kattintson a **New Item** (Új elem) lehetőségre.
 2. Az **Add New Item** (Új elem hozzáadása) párbeszédpanelen válassza ki a listából az **Azure SQL** elemet, és kattintson az **Add** (Hozzáadás) elemre. 
 3. Cserélje a JSON-szöveget az alábbi JSON-szövegre, és mentse az **AzureSqlTableLocation1.json** fájlt.
 
-   ```json
+    ```json
     {
-     "name": "OutputDataset",
-     "properties": {
-       "structure": [
-         {
-           "name": "FirstName",
-           "type": "String"
-         },
-         {
-           "name": "LastName",
-           "type": "String"
-         }
-       ],
-       "type": "AzureSqlTable",
-       "linkedServiceName": "AzureSqlLinkedService1",
-       "typeProperties": {
-         "tableName": "emp"
-       },
-       "availability": {
-         "frequency": "Hour",
-         "interval": 1
-       }
-     }
+        "name": "OutputDataset",
+        "properties": {
+            "structure": [
+                {
+                    "name": "FirstName",
+                    "type": "String"
+                },
+                {
+                    "name": "LastName",
+                    "type": "String"
+                }
+            ],
+            "type": "AzureSqlTable",
+            "linkedServiceName": "AzureSqlLinkedService1",
+            "typeProperties": {
+              "tableName": "emp"
+            },
+            "availability": {
+              "frequency": "Hour",
+              "interval": 1
+            }
+        }
     }
     ```
+
     Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságokat:
 
     | Tulajdonság | Leírás |
@@ -223,57 +239,58 @@ Ebben a lépésben egy kimeneti adatkészletet hoz létre **OutputDataset** név
     További információ ezekről a JSON-tulajdonságokról: [Azure SQL-összekötő](data-factory-azure-sql-connector.md#dataset-properties).
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
+
 Ebben a lépésben létrehoz egy **másolási tevékenységgel** rendelkező folyamatot, amely bemenetként az **InputDataset**, kimenetként pedig az **OutputDataset** adatkészletet használja.
 
 Jelenleg a kimeneti adatkészlet határozza meg az ütemezést. Az oktatóanyagban a kimeneti adatkészletet úgy konfiguráljuk, hogy a szeletek létrehozása óránként történjen meg. A folyamat kezdő és befejező időpontja között egy nap, azaz 24 óra telik el. Ezért a folyamat a kimeneti adatkészletből 24 szeletet hoz létre. 
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a **Pipelines** (Folyamatok) elemre, mutasson az **Add** (Hozzáadás) elemre, és kattintson a **New Item** (Új elem) lehetőségre.  
 2. Az **Add New Item** (Új elem hozzáadása) párbeszédpanelen válassza a **Copy Data Pipeline** (Adatok másolása folyamat) elemet, és kattintson az **Add** (Hozzáadás) parancsra. 
-3. Cserélje le a JSON-t a következő JSON- ** ra** , és mentse aCopyActivity1.jsfájlt.
+3. Cserélje le a JSON-t a következő JSON- **ra** , és mentse aCopyActivity1.jsfájlt.
 
-   ```json   
-    {
-     "name": "ADFTutorialPipeline",
-     "properties": {
-       "description": "Copy data from a blob to Azure SQL table",
-       "activities": [
-         {
-           "name": "CopyFromBlobToSQL",
-           "type": "Copy",
-           "inputs": [
-             {
-               "name": "InputDataset"
-             }
-           ],
-           "outputs": [
-             {
-               "name": "OutputDataset"
-             }
-           ],
-           "typeProperties": {
-             "source": {
-               "type": "BlobSource"
-             },
-             "sink": {
-               "type": "SqlSink",
-               "writeBatchSize": 10000,
-               "writeBatchTimeout": "60:00:00"
-             }
-           },
-           "Policy": {
-             "concurrency": 1,
-             "executionPriorityOrder": "NewestFirst",
-             "style": "StartOfInterval",
-             "retry": 0,
-             "timeout": "01:00:00"
+   ```json
+  {
+   "name": "ADFTutorialPipeline",
+   "properties": {
+     "description": "Copy data from a blob to Azure SQL table",
+     "activities": [
+       {
+         "name": "CopyFromBlobToSQL",
+         "type": "Copy",
+         "inputs": [
+           {
+             "name": "InputDataset"
            }
+         ],
+         "outputs": [
+           {
+             "name": "OutputDataset"
+           }
+         ],
+         "typeProperties": {
+           "source": {
+             "type": "BlobSource"
+           },
+           "sink": {
+             "type": "SqlSink",
+             "writeBatchSize": 10000,
+             "writeBatchTimeout": "60:00:00"
+           }
+         },
+         "Policy": {
+           "concurrency": 1,
+           "executionPriorityOrder": "NewestFirst",
+           "style": "StartOfInterval",
+           "retry": 0,
+           "timeout": "01:00:00"
          }
-       ],
-       "start": "2017-05-11T00:00:00Z",
-       "end": "2017-05-12T00:00:00Z",
-       "isPaused": false
-     }
-    }
+       }
+     ],
+     "start": "2017-05-11T00:00:00Z",
+     "end": "2017-05-12T00:00:00Z",
+     "isPaused": false
+   }
+  }
     ```   
    - A tevékenységek szakaszban csak egyetlen tevékenység van, amelynek a **típusa****Copy** értékre van beállítva. További információ a másolási tevékenységről: [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md). A Data Factory megoldásaiban használhatja az [adatátalakítási tevékenységeket](data-factory-data-transformation-activities.md) is.
    - A tevékenység bemenetének beállítása **InputDataset**, a kimeneté pedig **OutputDataset**. 
@@ -333,13 +350,13 @@ Vegye figyelembe a következő szempontokat:
   
   * Az Azure PowerShellben futtassa az alábbi parancsot a Data Factory-szolgáltató regisztrálásához. 
 
-    ```powershell    
-    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+  ```powershell    
+  Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
-    Az alábbi parancs futtatásával ellenőrizheti, hogy a Data Factory-szolgáltató regisztrálva van-e. 
+  Az alábbi parancs futtatásával ellenőrizheti, hogy a Data Factory-szolgáltató regisztrálva van-e. 
     
-    ```powershell
-    Get-AzResourceProvider
+  ```powershell
+  Get-AzResourceProvider
     ```
   * Az Azure-előfizetés használatával jelentkezzen be az [Azure Portalra](https://portal.azure.com), és navigáljon egy Data Factory panelre, vagy hozzon létre egy data factoryt az Azure Portalon. Ezzel a művelettel automatikusan regisztrálja a szolgáltatót.
 * Az adat-előállító neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá tehető.
@@ -353,13 +370,13 @@ Lépjen az adat-előállítója kezdőlapjára:
 1. Jelentkezzen be [Azure Portalba](https://portal.azure.com).
 2. A bal oldali menüben kattintson a **További szolgáltatások**, majd az **Adat-előállítók** elemre.
 
-    ![Data factoryk tallózása](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
+  ![Data factoryk tallózása](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
 3. Kezdje el begépelni az adat-előállító nevét.
 
-    ![Adat-előállító neve](media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png) 
+  ![Adat-előállító neve](media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png) 
 4. Kattintson az adat-előállítóra az eredménylistában az adat-előállító kezdőlapjának megnyitásához.
 
-    ![Data factory kezdőlap](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
+  ![Data factory kezdőlap](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
 5. Az [Adatkészletek és folyamatok figyelése](data-factory-monitor-manage-pipelines.md) című cikk útmutatásait követve monitorozhatja az oktatóanyagban létrehozott folyamatot és adatkészleteket. A Visual Studio jelenleg nem támogatja a Data Factory-folyamatok monitorozását. 
 
 ## <a name="summary"></a>Összefoglalás
@@ -388,7 +405,7 @@ Ez a szakasz azt ismerteti, hogy hogyan használható a Visual Studio Kiszolgál
 
 - Ha egy meglévő adat-előállító alapján szeretne létrehozni Visual Studio-projektet, kattintson a jobb gombbal egy adat-előállítóra a Kiszolgálókezelőben, és válassza az **Export Data Factory to New Project** (Adat-előállító exportálása új projektbe) lehetőséget.
 
-    ![Data factory exportálása VS-projektbe](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
+  ![Data factory exportálása VS-projektbe](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
 
 ## <a name="update-data-factory-tools-for-visual-studio"></a>Visual Studióhoz készült Data Factory-eszközök frissítése
 A Visual Studióhoz készült Data Factory-eszközök frissítéséhez tegye a következőket:
@@ -424,29 +441,29 @@ Adjon hozzá konfigurációs fájlt az egyes környezetekhez a következő lép�
     ![Konfigurációs fájl hozzáadása](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. Adja meg a konfigurációs paramétereket és az értéküket az alábbi formátumban:
 
-    ```json
-    {
-        "$schema": "http://datafactories.schema.management.azure.com/vsschemas/V1/Microsoft.DataFactory.Config.json",
-        "AzureStorageLinkedService1": [
-            {
-                "name": "$.properties.typeProperties.connectionString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
-        ],
-        "AzureSqlLinkedService1": [
-            {
-                "name": "$.properties.typeProperties.connectionString",
-                "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-            }
-        ]
-    }
+  ```json
+  {
+      "$schema": "http://datafactories.schema.management.azure.com/vsschemas/V1/Microsoft.DataFactory.Config.json",
+      "AzureStorageLinkedService1": [
+          {
+              "name": "$.properties.typeProperties.connectionString",
+              "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+          }
+      ],
+      "AzureSqlLinkedService1": [
+          {
+              "name": "$.properties.typeProperties.connectionString",
+              "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+          }
+      ]
+  }
     ```
 
     Ez a példa konfigurálja egy Azure Storage társított szolgáltatás és egy Azure SQL társított szolgáltatás connectionString tulajdonságát. Figyelje meg, hogy a névmegadás szintaxisa a [JsonPath](https://goessner.net/articles/JsonPath/).   
 
     Ha a JSON-fájlban szerepel egy olyan tulajdonság, amely értékek tömbjével rendelkezik a következő kódban látható módon:  
 
-    ```json
+  ```json
     "structure": [
           {
               "name": "FirstName",
@@ -461,7 +478,7 @@ Adjon hozzá konfigurációs fájlt az egyes környezetekhez a következő lép�
 
     Konfigurálja a tulajdonságokat a következő konfigurációs fájlban látható módon (használjon nulláról induló indexelést):
 
-    ```json
+  ```json
     {
         "name": "$.properties.structure[0].name",
         "value": "FirstName"

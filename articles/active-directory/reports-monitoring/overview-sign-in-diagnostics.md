@@ -17,12 +17,12 @@ ms.date: 12/15/2020
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6aedf41fbf1ed0d70467a2efe97431fdecaa4fa
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e85de1edd94a0430a4b28b332d9e43b967afba76
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585912"
+ms.locfileid: "97608918"
 ---
 # <a name="what-is-sign-in-diagnostic-in-azure-ad"></a>Mi a bejelentkezési diagnosztika az Azure AD-ben?
 
@@ -180,7 +180,7 @@ Ennek a diagnosztikai forgatókönyvnek a célja, hogy betekintést nyújtson ar
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mik azok az Azure Active Directory-jelentések?](overview-reports.md)
 * [Mi az Azure Active Directory-figyelés?](overview-monitoring.md)

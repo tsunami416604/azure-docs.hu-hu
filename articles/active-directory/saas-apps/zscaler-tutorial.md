@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
-ms.openlocfilehash: a9d16f8cbb3da98a96f97a85d65672cc7ef70f65
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 438537efc9922e681c6dd253c2f41a44c5f2fb92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893619"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608901"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Zscaler
 
@@ -89,9 +89,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a Zscaler alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ---------| ------------ |
-    | memberOf     | User. assignedroles |
+    | memberOf | User. assignedroles |
 
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
@@ -120,7 +120,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -183,14 +183,14 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 1. Az **SAML szerkesztése** ablakban hajtsa végre a következő lépéseket:, majd kattintson a Mentés gombra.  
 
     ![Felhasználók kezelése & hitelesítéssel](./media/zscaler-tutorial/ic800208.png "Felhasználók kezelése & hitelesítéssel")
-    
+
     a. Az **SAML-portál URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-címet** .
 
     b. A **bejelentkezési név attribútum** szövegmezőbe írja be a **NameID** nevet.
 
     c. Kattintson a **feltöltés** gombra, és töltse fel a **nyilvános SSL-tanúsítványban** Azure Portal letöltött Azure SAML-aláíró tanúsítványt.
 
-    d. Az **SAML automatikus kiépítés engedélyezése** .
+    d. Az **SAML automatikus kiépítés engedélyezése**.
 
     e. A **felhasználó megjelenített név attribútuma** szövegmezőbe írja be a **DisplayName** értéket, ha engedélyezni szeretné az SAML automatikus kiépítési lehetőséget a DisplayName attribútumokhoz.
 
@@ -212,14 +212,14 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Proxybeállítások konfigurálása az Internet Explorerben
 
-1. Indítsa el az **Internet Explorert** .
+1. Indítsa el az **Internet Explorert**.
 
 1. **Az Internetbeállítások párbeszédpanel** megnyitásához válassza az **eszközök** menü **Internetbeállítások** elemét.
 
     ![Internetbeállítások](./media/zscaler-tutorial/ic769492.png "Internetbeállítások")
 
 1. Kattintson a **kapcsolatok** fülre.
-  
+
     ![Kapcsolatok](./media/zscaler-tutorial/ic769493.png "Kapcsolatok")
 
 1. A LAN- **Beállítások** párbeszédpanel megnyitásához kattintson a **LAN-beállítások** elemre.
@@ -228,11 +228,11 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     ![Proxykiszolgáló](./media/zscaler-tutorial/ic769494.png "Proxykiszolgáló")
 
-    a. Válassza **a proxykiszolgáló használata a LAN** -hoz lehetőséget.
+    a. Válassza **a proxykiszolgáló használata a LAN**-hoz lehetőséget.
 
-    b. A címek szövegmezőbe írja be a következőt: **Gateway.zscaler.net** .
+    b. A címek szövegmezőbe írja be a következőt: **Gateway.zscaler.net**.
 
-    c. A port szövegmezőbe írja be a következőt: **80** .
+    c. A port szövegmezőbe írja be a következőt: **80**.
 
     d. Válassza **a proxykiszolgáló kihagyása helyi címeknél** lehetőséget.
 
@@ -255,9 +255,9 @@ Ha a hozzáférési panelen a Zscaler csempére kattint, automatikusan be kell j
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 

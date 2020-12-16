@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan hozhat létre olyan Java-alkalmazást, 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e77ff762de11a9c8a723b162993db11efe715b66
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591548"
+ms.locfileid: "97607983"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Az Azure Event Hubs (Azure-eventhubs) eseményeinek küldése vagy fogadása a Java használatával
 
@@ -17,7 +17,6 @@ Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket az Event hub esem
 
 > [!WARNING]
 > Ez a rövid útmutató a régi **Azure-eventhubs** és az **Azure-eventhubs-EF** csomagokat használja. Az  **Azure-Messaging-eventhubs** csomagot használó gyors útmutató: [események küldése és fogadása az Azure-Messaging-eventhubs használatával](event-hubs-java-get-started-send.md). Ha át szeretné helyezni az alkalmazást a régi csomagról az új verzióra, tekintse meg az [Azure-eventhubs az Azure-üzenetküldés-eventhubs való Migrálás útmutatóját](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md). 
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,7 +74,6 @@ public class SimpleSend {
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
 
-
     }
  }
 ```
@@ -109,7 +107,6 @@ Hozzon létre egy számokból álló eseményt egy karakterláncnak az UTF-8 bá
         // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-
 
         try {
             for (int i = 0; i < 10; i++) {
@@ -419,8 +416,7 @@ Bármilyen, a környezetében elérhető adattárat használhat.
 
 A com. microsoft. Azure. eventprocessorhost. EventProcessorHost osztály két konstruktort biztosít, amelyek segítségével felülbírálhatja a EventProcessorHost ellenőrzőpont-kezelőjét.
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a következő cikkeket: 
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

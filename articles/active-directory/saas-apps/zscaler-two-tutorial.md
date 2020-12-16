@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: a6bf6c659ff589cf693f56c6c37e7f28daa376f8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a7acbc736fc297a55a97173893cb4873acd02059
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894202"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609071"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler Two-nal
 
@@ -114,9 +114,9 @@ Ha az Azure AD egyszeri bejelentkezést két Zscaler szeretné konfigurálni, ha
 
 6. A fentiek mellett a Zscaler két alkalmazás is vár néhány további attribútumot, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
     
-    | Name (Név) | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ---------| ------------ |
-    | memberOf     | User. assignedroles |
+    | memberOf | User. assignedroles |
 
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
@@ -181,7 +181,7 @@ Ha az Azure AD egyszeri bejelentkezést két Zscaler szeretné konfigurálni, ha
 
     c. Kattintson a **feltöltés** gombra, és töltse fel a **nyilvános SSL-tanúsítványban** Azure Portal letöltött Azure SAML-aláíró tanúsítványt.
 
-    d. Az **SAML automatikus kiépítés engedélyezése** .
+    d. Az **SAML automatikus kiépítés engedélyezése**.
 
     e. A **felhasználó megjelenített név attribútuma** szövegmezőbe írja be a **DisplayName** értéket, ha engedélyezni szeretné az SAML automatikus kiépítési lehetőséget a DisplayName attribútumokhoz.
 
@@ -202,7 +202,7 @@ Ha az Azure AD egyszeri bejelentkezést két Zscaler szeretné konfigurálni, ha
 ## <a name="configuring-proxy-settings"></a>Proxybeállítások konfigurálása
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Proxybeállítások konfigurálása az Internet Explorerben
 
-1. Indítsa el az **Internet Explorert** .
+1. Indítsa el az **Internet Explorert**.
 
 2. **Az Internetbeállítások párbeszédpanel** megnyitásához válassza az **eszközök** menü **Internetbeállítások** elemét.   
     
@@ -218,11 +218,11 @@ Ha az Azure AD egyszeri bejelentkezést két Zscaler szeretné konfigurálni, ha
    
     ![Proxykiszolgáló](./media/zscaler-two-tutorial/ic769494.png "Proxykiszolgáló")
 
-    a. Válassza **a proxykiszolgáló használata a LAN** -hoz lehetőséget.
+    a. Válassza **a proxykiszolgáló használata a LAN**-hoz lehetőséget.
 
-    b. A címek szövegmezőbe írja be az **átjáró értéket. Zscaler Two.net** .
+    b. A címek szövegmezőbe írja be az **átjáró értéket. Zscaler Two.net**.
 
-    c. A port szövegmezőbe írja be a következőt: **80** .
+    c. A port szövegmezőbe írja be a következőt: **80**.
 
     d. Válassza **a proxykiszolgáló kihagyása helyi címeknél** lehetőséget.
 
@@ -234,7 +234,7 @@ Ha az Azure AD egyszeri bejelentkezést két Zscaler szeretné konfigurálni, ha
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: b8560c4890855683e6ebb1c05383db8aa89988c0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5cbfdd57ebd25da013bfb82b761839b1e74ee012
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017644"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609020"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -25,7 +25,6 @@ Ennek az oktatóanyagnak a célja, hogy megjelenjenek a munkavégző profilok mu
 >Ezt az oktatóanyagot akkor használja, ha a munkahelyről kiépíteni kívánt felhasználóknak helyszíni AD-fiókra és Azure AD-fiókra van szükségük. 
 >* Ha a munkahelyen lévő felhasználóknak csak az Azure AD-fiókra (csak felhőalapú felhasználókra) van szükségük, tekintse meg a [munkanapok konfigurálása az Azure ad](workday-inbound-cloud-only-tutorial.md) -ben a felhasználók üzembe helyezése című oktatóanyagot. 
 >* Ha olyan visszaírási szeretne konfigurálni, mint például az e-mail-cím, a Felhasználónév és a telefonszám az Azure AD-ből munkanapokra, tekintse meg a [munkanap visszaírási konfigurálása](workday-writeback-tutorial.md)című oktatóanyagot.
-
 
 ## <a name="overview"></a>Áttekintés
 
@@ -112,7 +111,7 @@ Az összes munkanap-létesítési összekötő általános követelménye, hogy 
    >[!div class="mx-imgBorder"] 
    >![Felhasználó létrehozása](./media/workday-inbound-tutorial/wd_isu_01.png "Felhasználó létrehozása")
 2. Fejezze be az **integrációs rendszer felhasználói feladat létrehozása** nevű felhasználót egy új integrációs rendszer felhasználójának felhasználónevével és jelszavával.  
-  
+
    * Ha nem jelölte be az **új jelszó megkövetelése** jelölőnégyzetet, akkor a következő bejelentkezéskor nem kell bejelentkeznie, mert ez a felhasználó programozott módon lesz bejelentkezve.
    * Hagyja meg a **munkamenet időkorlátját percben** a 0 alapértelmezett értékkel, ami megakadályozza, hogy a felhasználó munkamenete idő előtt ne legyen időtúllépés.
    * Válassza a **felhasználói felületi munkamenetek tiltása** lehetőséget, mivel ez egy hozzáadott biztonsági réteget biztosít, amely megakadályozza, hogy a felhasználó az integrációs rendszer jelszavával ne jelentkezzen be munkanapokba.
@@ -164,7 +163,7 @@ Ebben a lépésben "tartományi biztonsági" házirend-engedélyeket ad a munkav
    * *Munkavégző adatok: aktuális személyzeti információ*
    * *Worker-adatfeldolgozók: a munkavégző profilban szereplő üzleti cím*
    * *Munkanap-fiókok*
-   
+
      >[!div class="mx-imgBorder"]
      >![A "tartomány" szövegmezőben a "külső fiók" nevű tartományi biztonsági konfigurációs jelentést megjelenítő képernyőkép.](./media/workday-inbound-tutorial/wd_isu_07.png "Tartományi biztonsági házirendek")  
 
@@ -218,7 +217,7 @@ Ebben a lépésben az "üzleti folyamatok biztonsága" házirend engedélyeit fo
    >![A "Business Process type" (üzleti folyamat típusa) menüből kiválasztva az "üzleti folyamat biztonsági szabályzatának szerkesztése" és a "munkahelyi kapcsolat módosítása" nevű képernyőkép.](./media/workday-inbound-tutorial/wd_isu_13.png "Üzleti folyamatok biztonsági házirendjei")  
 
 3. Az **üzleti folyamat biztonsági házirendjének szerkesztése** lapon görgessen a **munkahelyi kapcsolattartási adatok módosítása (webszolgáltatás)** szakaszra.
-    
+
 
 4. Válassza ki és adja hozzá az új integrációs rendszer biztonsági csoportját azon biztonsági csoportok listájához, amelyek elindíthatják a webszolgáltatások kérelmét. 
 
@@ -250,9 +249,9 @@ Miután azonosította a kiépítési ügynököt futtató Windows Servert, jelen
 
 ### <a name="permissions-required-to-configure-the-provisioning-agent-service"></a>A kiépítési ügynök szolgáltatás konfigurálásához szükséges engedélyek
 Az alábbi lépésekkel állíthatja be az ügynök műveleteihez használható szolgáltatásfiókot. 
-1.  Az AD-tartományvezérlőn nyissa meg *Active Directory felhasználók és számítógépek* beépülő modult. 
-2.  Hozzon létre egy új tartományi felhasználót (például: *provAgentAdmin*)  
-3.  Kattintson a jobb gombbal a szervezeti egység vagy a tartomány nevére, és válassza a *vezérlés delegálása* lehetőséget, amely megnyitja a *vezérlés delegálása varázslót*. 
+1. Az AD-tartományvezérlőn nyissa meg *Active Directory felhasználók és számítógépek* beépülő modult. 
+2. Hozzon létre egy új tartományi felhasználót (például: *provAgentAdmin*)  
+3. Kattintson a jobb gombbal a szervezeti egység vagy a tartomány nevére, és válassza a *vezérlés delegálása* lehetőséget, amely megnyitja a *vezérlés delegálása varázslót*. 
 
 > [!NOTE] 
 > Ha korlátozni szeretné a kiépítési ügynököt úgy, hogy az csak bizonyos szervezeti egységeket hozzon létre és olvasson el tesztelési célból, javasoljuk, hogy a teszt futtatásakor a megfelelő szervezeti egység szintjén végezze el a vezérlés delegálását.
@@ -269,8 +268,7 @@ Az alábbi lépésekkel állíthatja be az ügynök műveleteihez használható 
    >[!div class="mx-imgBorder"]
    >![Feladatok képernyő](./media/workday-inbound-tutorial/delegation-wizard-02.png "Feladatok képernyő")
 
-7. Kattintson a **tovább** gombra, és **mentse** a konfigurációt
-
+7. Kattintson a **tovább** gombra, és **mentse** a konfigurációt.
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>A felhasználó üzembe helyezésének beállítása munkahelyről Active Directory
 
@@ -305,7 +303,6 @@ Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a mu
    >[!div class="mx-imgBorder"]
    >![Ügynök letöltése](./media/workday-inbound-tutorial/pa-download-agent.png "Ügynök letöltése képernyő")
 
-
 ### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>2. rész: a helyszíni kiépítési ügynök (ek) telepítése és konfigurálása
 
 A helyszíni Active Directory létrehozásához a kiépítési ügynököt olyan kiszolgálóra kell telepíteni, amely .NET 4.7.1 + keretrendszert és hálózati hozzáférést biztosít a kívánt Active Directory tartomány (ok) hoz.
@@ -322,12 +319,12 @@ Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és
 
    >[!div class="mx-imgBorder"]
    >![Telepítési képernyő](./media/workday-inbound-tutorial/pa_install_screen_1.png "Telepítési képernyő")
-   
+
 1. A telepítés befejezése után elindul a varázsló, és megjelenik az **Azure ad** -hez való csatlakozási képernyő. Az Azure AD-példányhoz való kapcsolódáshoz kattintson a **hitelesítés** gombra.
 
    >[!div class="mx-imgBorder"]
    >![Az Azure AD csatlakoztatása](./media/workday-inbound-tutorial/pa_install_screen_2.png "Az Azure AD csatlakoztatása")
-   
+
 1. Hitelesítés az Azure AD-példányon hibrid identitás-rendszergazdai hitelesítő adatok használatával.
 
    >[!div class="mx-imgBorder"]
@@ -340,12 +337,12 @@ Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és
 
    >[!div class="mx-imgBorder"]
    >![Könyvtár hozzáadása](./media/workday-inbound-tutorial/pa_install_screen_4.png "Könyvtár hozzáadása")
-  
+
 1. Ekkor a rendszer felszólítja az AD-tartományhoz való csatlakozáshoz szükséges hitelesítő adatok megadására. Ugyanazon a képernyőn a **tartományvezérlő kiválasztása prioritással** adhatja meg azokat a tartományvezérlőket, amelyeket az ügynöknek használnia kell a kiépítési kérelmek küldéséhez.
 
    >[!div class="mx-imgBorder"]
    >![Tartományi hitelesítő adatok](./media/workday-inbound-tutorial/pa_install_screen_5.png)
-   
+
 1. A tartomány konfigurálása után a telepítő megjeleníti a konfigurált tartományok listáját. Ezen a képernyőn megismételheti a #5 és #6 lépést, ha további tartományokat szeretne hozzáadni, vagy kattintson a **tovább** gombra az ügynök regisztrációjának folytatásához.
 
    >[!div class="mx-imgBorder"]
@@ -354,22 +351,22 @@ Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és
    > [!NOTE]
    > Ha több AD-tartománnyal is rendelkezik (például na.contoso.com, emea.contoso.com), akkor egyenként adja hozzá az egyes tartományokat a listához.
    > Csak a szülőtartomány hozzáadása (például contoso.com) nem elegendő. Minden alárendelt tartományt regisztrálnia kell az ügynökkel.
-   
+
 1. Tekintse át a konfiguráció részleteit, és kattintson a **Confirm (megerősítés** ) gombra az ügynök regisztrálásához.
-  
+
    >[!div class="mx-imgBorder"]
    >![Képernyő megerősítése](./media/workday-inbound-tutorial/pa_install_screen_7.png "Képernyő megerősítése")
-   
+
 1. A konfigurációs varázsló megjeleníti az ügynök regisztrációjának állapotát.
-  
+
    >[!div class="mx-imgBorder"]
    >![Ügynök regisztrációja](./media/workday-inbound-tutorial/pa_install_screen_8.png "Ügynök regisztrációja")
-   
+
 1. Ha az ügynök regisztrációja sikeres volt, kattintson a **Kilépés** gombra a varázslóból való kilépéshez.
 
    >[!div class="mx-imgBorder"]
    >![Kilépés képernyő](./media/workday-inbound-tutorial/pa_install_screen_9.png "Kilépés képernyő")
-   
+
 1. Ellenőrizze az ügynök telepítését, és győződjön meg arról, hogy fut a "szolgáltatások" Snap-In megnyitásával, és keresse meg a "Microsoft Azure AD kapcsolat létesítése ügynök" nevű szolgáltatást.
 
    >[!div class="mx-imgBorder"]
@@ -387,12 +384,12 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
    * **Munkanap jelszava –** Adja meg a munkanap-integrációs rendszerfiók jelszavát
 
    * A **munkanap Web Services API URL-címe –** Adja meg a bérlőhöz tartozó munkanap webszolgáltatások végpontjának URL-címét. Az URL-cím határozza meg az összekötő által használt munkanap Web Services API verzióját. 
-   
+
      | URL-formátum | WWS API-verzió használatban | XPATH-módosítások szükségesek |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nem |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nem |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Igen |
 
       > [!NOTE]
      > Ha nem ad meg verziószámot az URL-címben, az alkalmazás a munkanap webszolgáltatások (WWS) v 21.1 verzióját használja, és nincs szükség módosításra az alkalmazáshoz mellékelt alapértelmezett XPATH API-kifejezésekhez. Ha egy adott WWS API-verziót szeretne használni, az URL-címben válassza a verziószám értéket. <br>
@@ -403,7 +400,7 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
 
    * **Active Directory tároló –** Adja meg a tároló DN-t, amelyben az ügynöknek alapértelmezés szerint létre kell hoznia a felhasználói fiókokat.
         Példa: *ou = standard felhasználók, OU = felhasználók, DC = contoso, DC = test*
-        
+
      > [!NOTE]
      > Ez a beállítás csak akkor kerül lejátszásra a felhasználói fiókok létrehozásához, ha a *parentDistinguishedName* attribútum nincs konfigurálva az attribútum-hozzárendelésekben. Ez a beállítás nem használatos a felhasználói keresési vagy frissítési műveletekhez. A tartomány teljes alfájának a keresési művelet hatóköre esik.
 
@@ -446,7 +443,7 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 
    > [!CAUTION] 
    > A kiépítési motor alapértelmezett viselkedése, hogy letiltsa/törölje a hatókörön kívüli felhasználókat. Előfordulhat, hogy az AD-integrációhoz nem lehet szükség az adott munkanapon belül. Az alapértelmezett viselkedés felülbírálásához tekintse meg a [Hatókörön kívüli felhasználói fiókok törlésének kihagyása](../app-provisioning/skip-out-of-scope-deletions.md) című cikket.
-  
+
 1. A **cél objektum műveletek** mezőben globálisan szűrheti, hogy a Active Directory milyen műveleteket hajtson végre. A **Létrehozás** és a **frissítés** a leggyakoribb.
 
 1. Az **attribútum-hozzárendelések** szakaszban megadhatja, hogy az egyes munkanapok attribútumai hogyan Active Directory attribútumaikat.
@@ -510,7 +507,7 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 | **CountryReferenceTwoLetter**    |  c  |     |         Létrehozás + frissítés |
 | **CountryRegionReference** |  st     |     | Létrehozás + frissítés |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Létrehozás + frissítés |
-| **Irányítószám**  |   Irányítószám  |     | Létrehozás + frissítés |
+| **Irányítószám**  |   postalCode  |     | Létrehozás + frissítés |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Létrehozás + frissítés |
 | **Fax**      | Érték facsimiletelephonenumber     |     |    Létrehozás + frissítés |
 | **Mobil**  |    mobil       |     |       Létrehozás + frissítés |
@@ -538,8 +535,6 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
    > [!div class="mx-imgBorder"]
    > ![Kiépítés folyamatjelző sáv](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-
-
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
 * **Megoldási képességgel kapcsolatos kérdések**
@@ -562,7 +557,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
   * [Hogyan gondoskodjon arról, hogy a kiépítési ügynök képes legyen kommunikálni az Azure AD-Bérlővel, és egyetlen tűzfal sem blokkolja az ügynök által igényelt portokat?](#how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent)
   * [Hogyan a kiépítési ügynökhöz társított tartomány regisztrációját?](#how-do-i-de-register-the-domain-associated-with-my-provisioning-agent)
   * [Hogyan eltávolítja a kiépítési ügynököt?](#how-do-i-uninstall-the-provisioning-agent)
-  
+
 * **Az Active Directory-attribútumok hozzárendelésére és konfigurálására vonatkozó kérdések munkanapokon**
   * [A munkaidő-kiépítési attribútum leképezésének és sémájának munkapéldányának biztonsági mentése vagy exportálása Hogyan?](#how-do-i-back-up-or-export-a-working-copy-of-my-workday-provisioning-attribute-mapping-and-schema)
   * [Egyéni attribútumok vannak a munkanapokon és a Active Directory. Hogyan konfigurálja a megoldást az egyéni attribútumokkal való munkavégzéshez?](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
@@ -604,7 +599,7 @@ A megoldás jelenleg a következő munkanap API-kat használja:
   * Ha az URL-cím formátuma: https:// \# \# \# \# \. munkanap \. com/CCX/Service/tenantName, akkor az API v 21.1 használatos. 
   * Ha az URL-cím formátuma: https:// \# \# \# \# \. munkanap \. com/CCX/Service/tenantName/Human \_ Resources, akkor az API v 21.1 használatos 
   * Ha az URL-cím formátuma: https:// \# \# \# \# \. munkanap \. com/CCX/Service/tenantName/Human \_ Resources/v \# \# \. \# , akkor a rendszer a megadott API-verziót használja. (Példa: Ha a v 34.0 meg van adva, akkor a rendszer ezt használja.)  
-   
+
 * A munkanap E-mail visszaírási funkció Change_Work_Contact_Information (v 30.0) használ 
 * A munkanap Felhasználónév visszaírási funkció a következőt használja Update_Workday_Account (v 31.2) 
 
@@ -779,7 +774,7 @@ Itt láthatja, hogyan kezelheti ezeket a követelményeket a *CN* vagy a *Displa
      | PreferredLastName | WD: Worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: Last_Name/Text () |
      | Vállalat | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: azonosító [ @wd:type = "Organization_Type_ID"] = "vállalat"]/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: azonosító [ @wd:type = "Organization_Type_ID"] = "felügyelet"]/WD: Organization_Name/Text () |
-  
+
    Erősítse meg a munkanap csapatát, hogy a fenti API-kifejezés érvényes a munkanap bérlői konfigurációjához. Szükség esetén szerkesztheti őket a [munkanap felhasználói attribútumok listájának testreszabása](#customizing-the-list-of-workday-user-attributes)című szakaszban leírtak szerint.
 
 * Hasonlóképpen, a munkanapokban található ország/régió adatai a következő XPATH használatával kérhetők le: *WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference*
@@ -995,7 +990,6 @@ Ha a létesítési szolgáltatás nem tud csatlakozni a munkanapokhoz vagy a Act
 |--|---|---|---|
 |1.| Ha a **kapcsolat tesztelése** gombra kattint, a következő hibaüzenet jelenik meg: *hiba történt a Active Directoryhoz való csatlakozáskor. Győződjön meg arról, hogy a helyszíni kiépítési ügynök fut, és a megfelelő Active Directory tartománnyal van konfigurálva.* | Ez a hiba általában akkor jelenik meg, ha a kiépítési ügynök nem fut, vagy egy tűzfal blokkolja az Azure AD és a kiépítési ügynök közötti kommunikációt. Ezt a hibát akkor is láthatja, ha a tartomány nincs konfigurálva az ügynök varázslóban. | Nyissa meg a *szolgáltatások* konzolt a Windows Serveren, és győződjön meg arról, hogy az ügynök fut. Nyissa meg a létesítési ügynök varázslót, és ellenőrizze, hogy a megfelelő tartomány regisztrálva van-e az ügynökben.  |
 |2.| A kiépítési feladatok a hétvégén (Pén-Szo) a karantén állapotba kerülnek, és e-mailben értesítést küldünk arról, hogy hiba történt a szinkronizálás során. | A hiba egyik gyakori oka a Workday tervezett állásideje. Ha Ön Workday megvalósítási bérlőt használ, vegye figyelembe, hogy a Workday megvalósítási bérlőihez állásidő van ütemezve hétvégére (általában péntek estétől szombat reggelig), és ebben az időszakban a Workday kiépítési alkalmazások karanténba helyezett állapotba léphetnek, mivel nem tudnak csatlakozni a Workdayhez. Amint a Workday megvalósítási bérlője újra elérhetővé válik, visszaállnak normál állapotba. Ritka esetekben ez a hibaüzenet akkor is megjelenhet, ha az integrációs rendszer felhasználójának jelszava megváltozott a bérlő frissítése miatt, vagy ha a fiók zárolva lett, illetve lejárt. | Beszéljen Workday-rendszergazdájával vagy integrációs partnerével, hogy megtudja, mikorra van ütemezve a Workday állásideje, így figyelmen kívül hagyhatja a figyelmeztető üzeneteket a leállás ideje alatt, és meggyőződhet a rendelkezésre állásról, amint a Workday-példány újra elérhető.  |
-
 
 #### <a name="ad-user-account-creation-errors"></a>AD felhasználói fiókok létrehozásával kapcsolatos hibák
 

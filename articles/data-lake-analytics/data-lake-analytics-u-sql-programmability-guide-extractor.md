@@ -5,14 +5,14 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: a3613c2b95f13e6bbaaf570f522ad1f7b7edd756
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: ad7f6336753903533771033de21aec8262425a61
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512589"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608017"
 ---
-# <a name="use-user-defined-extractor"></a>Felhasználó által definiált kivonó használata
+# <a name="use-user-defined-extractor"></a>Felhasználó által definiált kinyerő használata
 
 ## <a name="u-sql-udo-user-defined-extractor"></a>U-SQL UDO: felhasználó által definiált kivonó
 A U-SQL lehetővé teszi külső adatok importálását egy EXTRACT utasítás használatával. A kinyerési utasítások beépített UDO-kiállítók használatát használhatják:  
@@ -157,10 +157,10 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 
 @rs0 =
     EXTRACT
-            guid Guid,
+        guid Guid,
         dt String,
-            user String,
-            des String
+        user String,
+        des String
     FROM @input_file
         USING new USQL_Programmability.FullDescriptionExtractor(Encoding.UTF8);
 
@@ -168,6 +168,6 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A U-SQL programozható útmutatója – áttekintés](data-lake-analytics-u-sql-programmability-guide.md)
 * [U-SQL programozható útmutató – UDT és UDAGG](data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md)

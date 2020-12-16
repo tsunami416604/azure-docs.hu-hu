@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 7eac2ed58608ac5814e1f907b863a2977df830d4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 11539e7d6e685703810537cf69e0e7ed3ec0be4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636714"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609088"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Wdesk
 
@@ -120,7 +120,7 @@ Az Azure AD egyszeri bejelentkezés Wdesk való konfigurálásához hajtsa végr
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -170,19 +170,19 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 1. Egy másik böngészőablakban jelentkezzen be a Wdesk biztonsági rendszergazdaként.
 
-2. A bal alsó sarokban kattintson a **rendszergazda** elemre, és válassza a **fiók rendszergazdája** elemet:
+1. A bal alsó sarokban kattintson a **rendszergazda** elemre, és válassza a **fiók rendszergazdája** elemet:
  
-     ![Képernyőfelvétel: a rendszergazda menüből kiválasztott fiók rendszergazdája.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+    ![Képernyőfelvétel: a rendszergazda menüből kiválasztott fiók rendszergazdája.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. A Wdesk-rendszergazda területen navigáljon a **Biztonság** , majd az **SAML**  >  **SAML-beállítások** elemre:
+1. A Wdesk-rendszergazda területen navigáljon a **Biztonság**, majd az **SAML**  >  **SAML-beállítások** elemre:
 
     ![A képernyőfelvételen az SAML lapon kiválasztott SAML-beállítások láthatók.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
-1. Az **SAML felhasználói azonosító beállításai** területen győződjön meg arról, **hogy az SAML felhasználói azonosító Wdesk Felhasználónév** .
+1. Az **SAML felhasználói azonosító beállításai** területen győződjön meg arról, **hogy az SAML felhasználói azonosító Wdesk Felhasználónév**.
 
     ![A képernyőfelvételen az SAML felhasználói I D beállításai láthatók, ahol kiválaszthatja az SAML-felhasználó I D-t, az ügyfélszolgálati felhasználónevet.](./media/wdesk-tutorial/wdesk-username.png)
 
-4. Az **általános beállítások** területen jelölje be az **SAML egyszeri bejelentkezés engedélyezése** :
+4. Az **általános beállítások** területen jelölje be az **SAML egyszeri bejelentkezés engedélyezése**:
 
     ![Képernyőfelvétel: az SAML-beállítások szerkesztése, ahol kiválaszthatja az SAML egyszeri bejelentkezés engedélyezése lehetőséget.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
 
@@ -190,19 +190,19 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     ![A képernyőképen a szolgáltató adatai láthatók, ahol megadhatja a leírt értékeket.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
-      a. Másolja a **bejelentkezési URL-címet** , és illessze be a **bejelentkezési url** szövegmezőbe Azure Portal.
-   
-      b. Másolja a **metaadatok URL-címét** , és illessze be az **azonosító** szövegmezőbe Azure Portal.
-       
-      c. Másolja a **felhasználói URL-címet** , és illessze be a **Válasz URL-** szövegmezőbe Azure Portal.
-   
-      d. A módosítások mentéséhez kattintson a Azure Portal **Mentés** gombra.      
+    1. Másolja a **bejelentkezési URL-címet** , és illessze be a **bejelentkezési url** szövegmezőbe Azure Portal.
 
-6. A **identitásszolgáltató beállításainak konfigurálása** elemre kattintva nyissa meg a **identitásszolgáltató-beállítások szerkesztése** párbeszédpanelt. Kattintson a **fájl kiválasztása** lehetőségre a Azure Portalból mentett **Metadata.xml** fájl megkereséséhez, majd töltse fel.
+    1. Másolja a **metaadatok URL-címét** , és illessze be az **azonosító** szövegmezőbe Azure Portal.
+
+    1. Másolja a **felhasználói URL-címet** , és illessze be a **Válasz URL-** szövegmezőbe Azure Portal.
+
+    1. A módosítások mentéséhez kattintson a Azure Portal **Mentés** gombra.      
+
+1. A **identitásszolgáltató beállításainak konfigurálása** elemre kattintva nyissa meg a **identitásszolgáltató-beállítások szerkesztése** párbeszédpanelt. Kattintson a **fájl kiválasztása** lehetőségre a Azure Portalból mentett **Metadata.xml** fájl megkereséséhez, majd töltse fel.
     
     ![A képernyőképen a Szerkesztés I d P beállításai láthatók, ahol feltöltheti a metaadatokat.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
-7. Kattintson a **módosítások mentése** gombra.
+1. Kattintson a **módosítások mentése** gombra.
 
     ![Képernyőfelvétel: a módosítások mentése gomb.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
@@ -214,11 +214,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Wd
 
 1. Jelentkezzen be a Wdesk biztonsági rendszergazdaként.
 
-2. Navigáljon a **rendszergazdai**  >  **fiók rendszergazdájához** .
+2. Navigáljon a **rendszergazdai**  >  **fiók rendszergazdájához**.
 
      ![Képernyőfelvétel: a rendszergazda menüből kiválasztott fiók rendszergazdája.](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. Kattintson **Members** a tagok **elemre** .
+3. Kattintson  a tagok **elemre**.
 
 4. Most kattintson a **tag hozzáadása** elemre a **tag hozzáadása** párbeszédpanel megnyitásához. 
    
@@ -234,7 +234,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Wd
  
     a. Az **e-mail** szövege mezőben adja meg a felhasználóhoz hasonló e-mail címet b.simon@contoso.com .
 
-    b. Az **Utónév** szövegmezőbe írja be a (z) " **B** " felhasználó utónevét.
+    b. Az **Utónév** szövegmezőbe írja be a (z) " **B**" felhasználó utónevét.
 
     c. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 

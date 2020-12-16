@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: dcd64cf779b931dbf3b4f743844071835e0b8c91
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932056"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608493"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Monitor megismerése
 
@@ -39,17 +39,17 @@ Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és teljesítmén
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Keressen rá a **figyelőre** , és válassza a **figyelő**lehetőséget.
+2. Keressen rá a **figyelőre** , és válassza a **figyelő** lehetőséget.
 
     ![A "monitor" szót tartalmazó keresőmező és egy olyan legördülő lista, amely egy sebességmérő stílusú képpel rendelkező szolgáltatásokat mutat](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. Válassza a **Cosmos db**lehetőséget.
+3. Válassza a **Cosmos db** lehetőséget.
 
     ![Képernyőkép a Cosmos DB áttekintése munkafüzetről](./media/cosmosdb-insights-overview/cosmos-db.png)
 
 ### <a name="overview"></a>Áttekintés
 
-Az **Áttekintés**oldalon a táblázat interaktív Azure Cosmos db metrikákat jelenít meg. Az eredményeket az alábbi legördülő listából kiválasztott beállítások alapján szűrheti:
+Az **Áttekintés** oldalon a táblázat interaktív Azure Cosmos db metrikákat jelenít meg. Az eredményeket az alábbi legördülő listából kiválasztott beállítások alapján szűrheti:
 
 * **Előfizetések** – csak a Azure Cosmos db erőforrással rendelkező előfizetések jelennek meg.  
 
@@ -71,7 +71,7 @@ Válassza ki a **hibák** elemet az oldal tetején, és megnyílik a munkafüzet
 
 ![Képernyőfelvétel a HTTP-kérelem típusa szerinti bontásban fellépő hibákról](./media/cosmosdb-insights-overview/failures.png)
 
-| Code      |  Leírás       | 
+| Code |  Leírás       | 
 |-----------|:--------------------|
 | `200 OK`  | A következő REST-műveletek egyike sikeres volt: </br>– Erőforrás lekérése. </br> -Erőforrásra kerül. </br> – KÖZZÉTÉTEL egy erőforráson. </br> – KÖZZÉTÉTEL a tárolt eljárási erőforráson a tárolt eljárás végrehajtásához.|
 | `201 Created` | Az erőforrás-létrehozás utáni művelet sikeres. |
@@ -111,7 +111,7 @@ A munkafüzet összes legördülő nézetének kibontásához vagy összecsukás
 
 ## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Monitor testreszabása
 
-Mivel ez a felület Azure monitor munkafüzet-sablonokra épül, **testreszabhatja**a  >  **Edit** módosítást, és **mentheti** a módosított verzió egy példányát egy egyéni munkafüzetbe. 
+Mivel ez a felület Azure monitor munkafüzet-sablonokra épül, **testreszabhatja** a  >   módosítást, és **mentheti** a módosított verzió egy példányát egy egyéni munkafüzetbe. 
 
 ![Sáv testreszabása](./media/cosmosdb-insights-overview/customize.png)
 
@@ -123,7 +123,7 @@ A munkafüzetek egy erőforráscsoporthoz lesznek mentve, vagy az Ön számára 
 
 A hibaelhárítással kapcsolatos útmutatásért tekintse meg a dedikált munkafüzet-alapú információkkal [kapcsolatos hibaelhárítási cikket](troubleshoot-workbooks.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications-portal.md) konfigurálása automatizált riasztások beállításához a problémák észlelése érdekében.
 

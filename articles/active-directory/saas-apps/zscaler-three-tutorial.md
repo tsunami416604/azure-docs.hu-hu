@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 12bc1de62217a598a478d8d7e4d71a4b60e000b9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ad88f2a469fb89145c39990fe55e92abf0f2a4c1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896633"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608884"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Zscaler-vel – három
 
@@ -89,10 +89,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     ![A képernyőképen a szerkesztési ikonnal jelölt felhasználói attribútumok láthatók.](common/edit-attribute.png)
 
 6. A fentiek mellett a Zscaler három alkalmazás is vár néhány további attribútumot az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
-    
-    | Name (Név) | Forrás attribútum |
+
+    | Név | Forrás attribútum |
     | ---------| ------------ |
-    | memberOf     | User. assignedroles |
+    | memberOf | User. assignedroles |
 
     > [!NOTE]
     > [Ide kattintva](../develop/active-directory-enterprise-app-role-management.md) megtudhatja, hogyan konfigurálhatja a szerepkört az Azure ad-ben
@@ -109,7 +109,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -148,7 +148,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 3. Ha a Zscaler három kézzel szeretné beállítani, nyisson meg egy új böngészőablakot, és jelentkezzen be a Zscaler három vállalati webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
 
 4. Lépjen az **adminisztráció > hitelesítés > hitelesítési beállítások** lapra, és hajtsa végre a következő lépéseket:
-   
+
     ![A képernyőképen a Zscaler egy hely jelenik meg, amely a leírt lépéseket ismerteti.](./media/zscaler-three-tutorial/ic800206.png "Felügyelet")
 
     a. A hitelesítés típusa területen válassza az **SAML** elemet.
@@ -156,16 +156,16 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
     b. Kattintson az **SAML konfigurálása** elemre.
 
 5. Az **SAML szerkesztése** ablakban hajtsa végre a következő lépéseket:, majd kattintson a Mentés gombra.  
-            
+
     ![Felhasználók kezelése & hitelesítéssel](./media/zscaler-three-tutorial/ic800208.png "Felhasználók kezelése & hitelesítéssel")
-    
+
     a. Az **SAML-portál URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-címet** .
 
     b. A **bejelentkezési név attribútum** szövegmezőbe írja be a **NameID** nevet.
 
     c. Kattintson a **feltöltés** gombra, és töltse fel a **nyilvános SSL-tanúsítványban** Azure Portal letöltött Azure SAML-aláíró tanúsítványt.
 
-    d. Az **SAML automatikus kiépítés engedélyezése** .
+    d. Az **SAML automatikus kiépítés engedélyezése**.
 
     e. A **felhasználó megjelenített név attribútuma** szövegmezőbe írja be a **DisplayName** értéket, ha engedélyezni szeretné az SAML automatikus kiépítési lehetőséget a DisplayName attribútumokhoz.
 
@@ -186,27 +186,27 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 ## <a name="configuring-proxy-settings"></a>Proxybeállítások konfigurálása
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Proxybeállítások konfigurálása az Internet Explorerben
 
-1. Indítsa el az **Internet Explorert** .
+1. Indítsa el az **Internet Explorert**.
 
 2. **Az Internetbeállítások párbeszédpanel** megnyitásához válassza az **eszközök** menü **Internetbeállítások** elemét.   
-    
+
      ![Internetbeállítások](./media/zscaler-three-tutorial/ic769492.png "Internetbeállítások")
 
 3. Kattintson a **kapcsolatok** fülre.   
-  
+
      ![Kapcsolatok](./media/zscaler-three-tutorial/ic769493.png "Kapcsolatok")
 
 4. A LAN- **Beállítások** párbeszédpanel megnyitásához kattintson a **LAN-beállítások** elemre.
 
 5. A proxykiszolgáló szakaszban hajtsa végre a következő lépéseket:   
-   
+
     ![Proxykiszolgáló](./media/zscaler-three-tutorial/ic769494.png "Proxykiszolgáló")
 
-    a. Válassza **a proxykiszolgáló használata a LAN** -hoz lehetőséget.
+    a. Válassza **a proxykiszolgáló használata a LAN**-hoz lehetőséget.
 
-    b. A címek szövegmezőbe írja be az **átjáró értéket. Zscaler Three.net** .
+    b. A címek szövegmezőbe írja be az **átjáró értéket. Zscaler Three.net**.
 
-    c. A port szövegmezőbe írja be a következőt: **80** .
+    c. A port szövegmezőbe írja be a következőt: **80**.
 
     d. Válassza **a proxykiszolgáló kihagyása helyi címeknél** lehetőséget.
 
@@ -229,9 +229,9 @@ Ha a hozzáférési panelen a Zscaler három csempére kattint, automatikusan be
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
