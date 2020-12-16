@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 08f574fdfbfb2a74cd095e9672a76c7dfde6dd1c
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: dde50986601a9e6412b81fe0c4faa9775784c6c8
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96993016"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582485"
 ---
 Ismerkedés a Custom Vision a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja a képbesorolási modell létrehozásához szükséges példát. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
 
@@ -58,7 +58,7 @@ Hozzon létre változókat az erőforrás Azure-végpontja és előfizetési kul
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Custom Vision erőforrások telepítése sikeresen megtörtént, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsokat és végpontokat az **Erőforrás-kezelés** területen találja az erőforrások **kulcs és végpont** oldalain. A képzési és előrejelzési kulcsokat is meg kell kapnia.
+> Nyissa meg az Azure Portalt. Ha az **Előfeltételek** szakaszban létrehozott Custom Vision erőforrások telepítése sikeresen megtörtént, kattintson az **Ugrás erőforrásra** gombra a **következő lépések** alatt. A kulcsokat és végpontokat az **Erőforrás-kezelés** területen találja az erőforrások **kulcs és végpont** oldalain. A betanítási és előrejelzési kulcsokat is meg kell kapnia, valamint a képzési erőforrások végpontját.
 >
 > A megjelenő erőforrás-azonosító értékét az erőforrás **Áttekintés** lapján, az **előfizetés-azonosító** mezőben találja.
 >
@@ -162,6 +162,8 @@ Done!
 ```
 
 Ezt követően ellenőrizheti, hogy a **<base_image_location>/images/test/** található) tesztelési rendszerkép megfelelően van-e megjelölve. Vissza is léphet a [Custom Vision webhelyére](https://customvision.ai), és megtekintheti az újonnan létrehozott projekt aktuális állapotát.
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 

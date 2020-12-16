@@ -6,6 +6,8 @@
       href: overview-reports.md
     - name: Mi az Azure AD-monitorozás?
       href: overview-monitoring.md
+    - name: Mi az a bejelentkezési diagnosztika?
+      href: overview-sign-in-diagnostics.md
 - name: Rövid útmutatók
   expanded: true
   items:

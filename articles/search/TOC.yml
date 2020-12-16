@@ -306,10 +306,12 @@
       items:
         - name: Szint kiválasztása
           href: search-sku-tier.md
-        - name: Szolgáltatási korlátozások
-          href: search-limits-quotas-capacity.md
+        - name: Kapacitás és költségek becslése
+          href: search-sku-manage-costs.md
         - name: Kapacitás módosítása
           href: search-capacity-planning.md
+        - name: Szolgáltatási korlátozások
+          href: search-limits-quotas-capacity.md
         - name: Teljesítményorientált skálázás
           href: search-performance-optimization.md
         - name: Több-bérlős architektúra
@@ -362,12 +364,6 @@
               href: service-configure-firewall.md
             - name: Privát végpont létrehozása
               href: service-create-private-endpoint.md
-        - name: Identitás-alapú hozzáférés
-          items:
-            - name: Biztonsági szűrők
-              href: search-security-trimming-for-azure-search.md
-            - name: Felhasználói identitások szűrése
-              href: search-security-trimming-for-azure-search-with-aad.md
         - name: Kimenő biztonság (indexelők)
           items:
             - name: Hozzáférés IP-címtartományon keresztül
@@ -376,6 +372,12 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: Hozzáférés privát végpontokon keresztül
               href: search-indexer-howto-access-private.md
+        - name: Identitás-alapú hozzáférés
+          items:
+            - name: Biztonsági szűrők
+              href: search-security-trimming-for-azure-search.md
+            - name: Felhasználói identitások szűrése
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: Kezelés
       items:
         - name: Portál

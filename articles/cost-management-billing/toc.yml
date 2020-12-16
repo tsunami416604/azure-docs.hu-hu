@@ -384,6 +384,8 @@
       href: /azure/templates/microsoft.consumption/budgets
     - name: Cost Management REST API-minták
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
+    - name: Cost Management – Azure PowerShell
+      href: /powershell/module/Az.CostManagement
     - name: Számlázásautomatizálási forgatókönyvek
       href: manage/cost-management-automation-scenarios.md
     - name: Az Azure számlázási API áttekintése

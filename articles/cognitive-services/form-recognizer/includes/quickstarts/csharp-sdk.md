@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 48a895875edab56e062320321d82b43da15234d0
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c67a859177695b71c6607c53b3ae9c268aee7797
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366470"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582765"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
@@ -58,17 +58,24 @@ Build succeeded.
 
 Az alkalmazás könyvtárában telepítse a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a következő paranccsal:
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
 
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+> [!NOTE]
+> Az űrlap-felismerő 3.0.0 SDK a 2,0-es API-verziót tükrözi
+
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
+
+> [!NOTE]
+> Az űrlap-felismerő 3.1.0 SDK az API 2,1-es verziójának előzetes verzióját tükrözi
+
 ---
 
 > [!TIP]
@@ -89,9 +96,9 @@ Az alkalmazás **program** osztályában hozzon létre változókat az erőforr�
 
 Az alkalmazás **fő** metódusában adjon hozzá egy hívást az ebben a rövid útmutatóban használt aszinkron feladatokhoz. Ezeket később fogja megvalósítani.
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
 
 ---
@@ -127,7 +134,7 @@ Tekintse át a [modell betanítására](#train-a-custom-model) és az [egyéni m
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a .NET-hez készült űrlap-felismerő ügyféloldali kódtára használatával:
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Űrlap tartalmának felismerése](#recognize-form-content)
@@ -136,7 +143,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Űrlap tartalmának felismerése](#recognize-form-content)
@@ -172,9 +179,9 @@ Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a
 * Ezután ismételje meg a fenti lépéseket a blob Storage-tárolóban lévő egyes dokumentumok SAS URL-címének lekéréséhez. Mentse azt egy ideiglenes helyre is.
 * Végül mentse az alább felsorolt minta-rendszerkép (ek) URL-címét (a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)is elérhető). 
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
 
 ---
@@ -289,11 +296,15 @@ Item:
 Total: '1203.39', with confidence '0.774'
 ```
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
-
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>Névjegykártyák felismerése
+
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
+
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
+
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával.
 
@@ -308,7 +319,16 @@ A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egy a dokument
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>Számlák felismerése
+
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
+
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az értékesítési számlákból származó általános mezőket egy előre betanított modell használatával.
 

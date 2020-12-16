@@ -16,6 +16,8 @@
       items:
         - name: Csevegés hozzáadása az alkalmazáshoz
           href: quickstarts/chat/get-started.md
+        - name: Csevegőalkalmazás csatlakoztatása Teams-értekezlethez
+          href: quickstarts/chat/meeting-interop.md
     - name: Telefonos funkciók és SMS
       items:
         - name: Telefonszám lekérése

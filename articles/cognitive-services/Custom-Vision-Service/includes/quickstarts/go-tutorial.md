@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 4e9b5326f8ce28e94c829f9aed56d035c256be52
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 27eb4383084e9a782e0c2cb8ff734fba8496c9f1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625359"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582494"
 ---
 Ez az útmutató útmutatást és mintakód segítséget nyújt a Custom Vision ügyféloldali kódtár a Go-hoz való használatának megkezdéséhez a rendszerkép-besorolási modell létrehozásához. Létrehoz egy projektet, címkéket ad hozzá, betanítja a projektet, és a projekt előrejelzési végpontjának URL-címét használja a programozott teszteléshez. Ez a példa sablonként használható a saját rendszerkép-felismerő alkalmazás létrehozásához.
 
@@ -85,7 +85,7 @@ func main() {
 
 ## <a name="create-tags-in-the-project"></a>Címkék létrehozása a projektben
 
-Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *minta végéhez. Ugrás* :
+Ha besorolási címkéket szeretne létrehozni a projekthez, adja hozzá a következő kódot a *minta végéhez. Ugrás*:
 
 ```go
 // Make two tags in the new project
@@ -164,7 +164,7 @@ A képek előrejelzési végpontra való küldéséhez és az előrejelzés lek�
 }
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa a *sample. go* parancsot.
 
@@ -189,9 +189,11 @@ Done!
 
 Ezután ellenőrizheti, hogy a tesztkép (az **<base_image_url>/Images/Test/** mappában található) megfelelően lett-e megcímkézve. Vissza is léphet a [Custom Vision webhelyére](https://customvision.ai), és megtekintheti az újonnan létrehozott projekt aktuális állapotát.
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan végezhető el az objektum-észlelési folyamat minden lépése a kódban. Ez a minta egyetlen betanítási iterációt hajt végre, de gyakran több alkalommal kell betanítania és tesztelni a modellt, hogy pontosabb legyen.
 

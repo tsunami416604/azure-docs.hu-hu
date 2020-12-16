@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 89520dacd9faea0373559119636d5c558b3b1536
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a33490d289e3867dffec0041a5da21ea5f235b28
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366526"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582692"
 ---
 > [!IMPORTANT]
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
@@ -36,17 +36,23 @@ ms.locfileid: "97366526"
 
 A Python telepítése után a következő módon telepítheti az űrlap-felismerő ügyféloldali kódtár legújabb verzióját:
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
 ```console
 pip install azure-ai-formrecognizer
 ```
 
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+> [!NOTE]
+> A legfrissebb űrlap-felismerő a 2,0-es API-verziót tükrözi
+
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
+
+> [!NOTE]
+> Az űrlap-felismerő előnézet SDK az API 2,1-es verziójának előzetes verzióját tükrözi
 
 ---
 
@@ -91,7 +97,7 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Pythonhoz készült űrlap-felismerő ügyféloldali kódtár használatával:
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Űrlap tartalmának felismerése](#recognize-form-content)
@@ -100,7 +106,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Űrlap tartalmának felismerése](#recognize-form-content)
@@ -194,11 +200,15 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
-
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
 
 ## <a name="recognize-business-cards"></a>Névjegykártyák felismerése
+
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
+
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával. Ha egy URL-címről szeretné felismerni a névjegykártyákat, használja a `begin_recognize_business_cards_from_url` metódust. 
 
@@ -207,7 +217,16 @@ Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az angol üzleti ká
 > [!TIP]
 > A helyi névjegykártya-lemezképeket is felismerheti. Tekintse meg a [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_business_cards` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
 
+---
+
 ## <a name="recognize-invoices"></a>Számlák felismerése
+
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
+
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az értékesítési számlákból származó általános mezőket egy előre betanított modell használatával. A számlák URL-címről való felismeréséhez használja a `begin_recognize_invoices_from_url` metódust. 
 

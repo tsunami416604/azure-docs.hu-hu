@@ -190,6 +190,8 @@
               href: platform/metrics-getting-started.md
             - name: A Metrikaböngésző speciális funkciói
               href: platform/metrics-charts.md
+            - name: Több erőforrás megtekintése a Metrikaböngészőben
+              href: platform/metrics-dynamic-scope.md
             - name: Példák metrikadiagramokra
               href: platform/metric-chart-samples.md
             - name: Metrikadiagramok hibaelhárítása
@@ -546,12 +548,12 @@
               href: platform/itsmc-overview.md
             - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
               href: platform/itsmc-connections.md
-            - name: Integrálás a Secure Exporttal
-              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager-webalkalmazás létrehozása
               href: platform/itsmc-service-manager-script.md
             - name: Hibaelhárítás az ITSM-összekötőben
               href: platform/itsmc-resync-servicenow.md
+            - name: Integrálás a Secure Exporttal
+              href: platform/it-service-management-connector-secure-webhook-connections.md
         - name: Klasszikus riasztási szabályok migrálása
           items:
             - name: A klasszikus riasztások bemutatása
@@ -752,6 +754,8 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: Naplóalapú metrikák definíciói
               href: platform/app-insights-metrics.md
+            - name: Standard metrikák
+              href: app/standard-metrics.md
         - name: Keresés
           href: app/diagnostic-search.md
         - name: Profilkészítő

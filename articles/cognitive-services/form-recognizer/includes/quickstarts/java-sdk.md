@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 23d76f441178238ae6527c2fa5440c4ab7b1d4e3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ac14f6331d01325302dd7dda753695ca3a129c27
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366507"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582481"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
@@ -58,7 +58,7 @@ Ez a rövid útmutató a Gradle függőség-kezelőt használja. Megtalálhatja 
 
 A projekt *Build. gradle. KTS* fájljában adja meg az ügyféloldali függvénytárat `implementation` utasításként, valamint a szükséges beépülő modulokat és beállításokat.
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 ```kotlin
 plugins {
     java
@@ -74,6 +74,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
 }
 ```
+
+> [!NOTE]
+> Az űrlap-felismerő 3.0.0 SDK a 2,0-es API-verziót tükrözi
+
 #### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
 ```kotlin
 plugins {
@@ -90,6 +94,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.1")
 }
 ```
+
+> [!NOTE]
+> Az űrlap-felismerő 3.1.0 SDK az API 2,1-es verziójának előzetes verzióját tükrözi
+
 ---
 
 ### <a name="create-a-java-file"></a>Java-fájl létrehozása
@@ -124,11 +132,11 @@ Az alkalmazás **fő** metódusában adjon hozzá hívásokat az ebben a rövid 
 * Egy olyan űrlap URL-címének lekéréséhez, amely a teszteléshez használható, a fenti lépésekkel lekérheti egy egyedi dokumentum SAS URL-címét a blob Storage-ban. Vagy vegyen fel egy máshol található dokumentum URL-címét.
 * A fenti módszer használatával beolvashatja a beérkezési képek URL-címét is.
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
@@ -165,14 +173,14 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Javához készült űrlap-felismerő ügyféloldali kódtár használatával:
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Űrlap tartalmának felismerése](#recognize-form-content)
 * [Visszaigazolások felismerése](#recognize-receipts)
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Űrlap tartalmának felismerése](#recognize-form-content)
 * [Visszaigazolások felismerése](#recognize-receipts)
@@ -259,11 +267,14 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
-
-#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>Névjegykártyák felismerése
+
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
+
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával.
 
@@ -278,7 +289,16 @@ A visszaadott érték a **RecognizedForm** objektumok gyűjteménye: egyet a dok
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>Számlák felismerése
+
+#### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
+
+> [!IMPORTANT]
+> Ez a funkció nem érhető el a kiválasztott API-verzióban.
+
+#### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az értékesítési számlákból származó általános mezőket egy előre betanított modell használatával.
 
