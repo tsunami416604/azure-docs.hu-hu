@@ -1,32 +1,32 @@
 ---
-title: Skálázhatóság és teljesítménybeli célok a várólista-tároláshoz
+title: A Queue Storage méretezhetősége és teljesítménybeli céljai
 titleSuffix: Azure Storage
-description: A várólista-tárolás skálázhatósági és teljesítménybeli céljainak megismerése.
-services: storage
+description: A Queue Storage méretezhetőségének és teljesítményének megismerése.
 author: tamram
-ms.service: storage
-ms.topic: conceptual
-ms.date: 12/18/2019
+services: storage
 ms.author: tamram
+ms.date: 12/18/2019
+ms.topic: conceptual
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 464807a7bf4a20b540e2d5344b721c8844bd7bca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8567943033647c785e633e185d4662a5a9fa847
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75750486"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588250"
 ---
-# <a name="scalability-and-performance-targets-for-queue-storage"></a>Skálázhatóság és teljesítménybeli célok a várólista-tároláshoz
+# <a name="scalability-and-performance-targets-for-queue-storage"></a>A Queue Storage méretezhetősége és teljesítménybeli céljai
 
 [!INCLUDE [storage-scalability-intro-include](../../../includes/storage-scalability-intro-include.md)]
 
-## <a name="scale-targets-for-queue-storage"></a>Méretezési célok a várólista-tároláshoz
+## <a name="scale-targets-for-queue-storage"></a>Célok méretezése Queue Storagehoz
 
 [!INCLUDE [storage-queues-scale-targets](../../../includes/storage-queues-scale-targets.md)]
 
 ## <a name="see-also"></a>Lásd még
 
-- [A várólista tárolásának teljesítmény-és méretezhetőségi ellenőrzőlistája](storage-performance-checklist.md)
+- [A Queue Storage teljesítményére és méretezhetőségére vonatkozó ellenőrzőlista](storage-performance-checklist.md)
 - [A standard szintű Storage-fiókok méretezhetőségi céljai](../common/scalability-targets-standard-account.md)
 - [Az Azure Storage erőforrás-szolgáltató skálázhatósági céljai](../common/scalability-targets-resource-provider.md)
 - [Azure-előfizetési korlátok és kvóták](../../azure-resource-manager/management/azure-subscription-service-limits.md)

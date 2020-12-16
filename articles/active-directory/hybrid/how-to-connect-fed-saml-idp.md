@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfe3d995cef888d2f0e973a6a6b2a06e0dd6cb54
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b26c24149d422021dcb86f75c915ade89cbccdec
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563211"
+ms.locfileid: "97589875"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez
 
@@ -60,19 +60,19 @@ Az Azure AD konfigurálható úgy, hogy az SAML 2,0 SP Lite-profilt használó i
 Az SAML-válaszüzenetben az aláírási csomópont az üzenet digitális aláírásával kapcsolatos információkat tartalmaz. Az aláírási blokk követelményei a következők:
 
 1. Magát az állítási csomópontot kell aláírni
-2.  Az RSA-SHA1 algoritmust DigestMethod kell használni. Más digitális aláírási algoritmusok nem fogadhatók el.
+2. Az RSA-SHA1 algoritmust DigestMethod kell használni. Más digitális aláírási algoritmusok nem fogadhatók el.
    `<ds:DigestMethod Algorithm="https://www.w3.org/2000/09/xmldsig#sha1"/>`
-3.  Az XML-dokumentumot is aláírhatja. 
-4.  Az átalakítási algoritmusnak meg kell egyeznie a következő mintában szereplő értékekkel:    `<ds:Transform Algorithm="https://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+3. Az XML-dokumentumot is aláírhatja. 
+4. Az átalakítási algoritmusnak meg kell egyeznie a következő mintában szereplő értékekkel:     `<ds:Transform Algorithm="https://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
        <ds:Transform Algorithm="https://www.w3.org/2001/10/xml-exc-c14n#"/>`
-9.  A SignatureMethod algoritmusnak meg kell egyeznie a következő mintával:   `<ds:SignatureMethod Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
+9. A SignatureMethod algoritmusnak meg kell egyeznie a következő mintával:    `<ds:SignatureMethod Algorithm="https://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
 
 ## <a name="supported-bindings"></a>Támogatott kötések
 A kötések az átvitelsel kapcsolatos kommunikációs paraméterek, amelyekre szükség van. Az alábbi követelmények vonatkoznak a kötésekre
 
 1. A HTTPS a szükséges átvitel.
-2.  Az Azure AD-ben a bejelentkezés során a rendszer HTTP-BEJEGYZÉST kér a jogkivonat-küldéshez.
-3.  Az Azure AD HTTP-BEJEGYZÉST fog használni a hitelesítési kérelemhez az Identitáskezelő számára, és átirányítja a kijelentkezési üzenetet az identitás-szolgáltatónak.
+2. Az Azure AD-ben a bejelentkezés során a rendszer HTTP-BEJEGYZÉST kér a jogkivonat-küldéshez.
+3. Az Azure AD HTTP-BEJEGYZÉST fog használni a hitelesítési kérelemhez az Identitáskezelő számára, és átirányítja a kijelentkezési üzenetet az identitás-szolgáltatónak.
 
 ## <a name="required-attributes"></a>Szükséges attribútumok
 Ez a táblázat az SAML 2,0 üzenetben megadott attribútumok követelményeit mutatja be.
@@ -91,16 +91,16 @@ Megjelenik egy kérelem és válaszüzenet pár a bejelentkezési üzenet Exchan
 Az alábbi példa az Azure AD-ből egy példa SAML 2,0-identitás-szolgáltatóra küldött kérelem-üzenet. Az SAML 2,0-es identitás-szolgáltató az SAML-P protokoll használatára konfigurált Active Directory összevonási szolgáltatások (AD FS) (AD FS). Az együttműködési képesség tesztelése más SAML 2,0 identitás-szolgáltatókkal is befejeződött.
 
 ```xml
-    <samlp:AuthnRequest 
-        xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" 
-        xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" 
-        ID="_7171b0b2-19f2-4ba2-8f94-24b5e56b7f1e" 
-        IssueInstant="2014-01-30T16:18:35Z" 
-        Version="2.0" 
-        AssertionConsumerServiceIndex="0" >
-            <saml:Issuer>urn:federation:MicrosoftOnline</saml:Issuer>
-            <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
-    </samlp:AuthnRequest>
+  <samlp:AuthnRequest 
+    xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" 
+    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" 
+    ID="_7171b0b2-19f2-4ba2-8f94-24b5e56b7f1e" 
+    IssueInstant="2014-01-30T16:18:35Z" 
+    Version="2.0" 
+    AssertionConsumerServiceIndex="0" >
+        <saml:Issuer>urn:federation:MicrosoftOnline</saml:Issuer>
+        <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
+  </samlp:AuthnRequest>
 ```
 
 A következő egy példaként szolgáló válaszüzenet, amelyet a rendszer az SAML 2,0-kompatibilis identitás-szolgáltatótól az Azure AD-be/Microsoft 365-re küld.
@@ -196,47 +196,47 @@ Az alábbi eljárás végigvezeti egy meglévő standard tartomány egy összevo
 
 1. Kapcsolódjon az Azure AD-címtárhoz bérlői rendszergazdaként:
 
-    ```powershell
-    Connect-MsolService
-    ```
-    
+  ```powershell
+  Connect-MsolService
+  ```
+  
 2. Konfigurálja a kívánt Microsoft 365 tartományt az SAML 2,0-alapú összevonás használatára:
 
-    ```powershell
-    $dom = "contoso.com" 
-    $BrandName - "Sample SAML 2.0 IDP" 
-    $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" 
-    $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" 
-    $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" 
-    $MyURI = "urn:uri:MySamlp2IDP" 
-    $MySigningCert = "MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" 
-    $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" 
-    $Protocol = "SAMLP" 
-    Set-MsolDomainAuthentication `
-        -DomainName $dom `
-        -FederationBrandName $BrandName `
-        -Authentication Federated `
-        -PassiveLogOnUri $LogOnUrl `
-        -ActiveLogOnUri $ecpUrl `
-        -SigningCertificate $MySigningCert `
-        -IssuerUri $MyURI `
-        -LogOffUri $LogOffUrl `
-        -PreferredAuthenticationProtocol $Protocol
-    ``` 
+  ```powershell
+  $dom = "contoso.com" 
+  $BrandName - "Sample SAML 2.0 IDP" 
+  $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" 
+  $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" 
+  $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" 
+  $MyURI = "urn:uri:MySamlp2IDP" 
+  $MySigningCert = "MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" 
+  $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" 
+  $Protocol = "SAMLP" 
+  Set-MsolDomainAuthentication `
+    -DomainName $dom `
+    -FederationBrandName $BrandName `
+    -Authentication Federated `
+    -PassiveLogOnUri $LogOnUrl `
+    -ActiveLogOnUri $ecpUrl `
+    -SigningCertificate $MySigningCert `
+    -IssuerUri $MyURI `
+    -LogOffUri $LogOffUrl `
+    -PreferredAuthenticationProtocol $Protocol
+  ``` 
 
 3.  Az aláíró tanúsítvány Base64 kódolású karakterláncát a IDENTITÁSSZOLGÁLTATÓ metaadat-fájljából kérheti le. Erre a helyre példa van megadva, de a megvalósítástól függően némileg eltérőek lehetnek.
 
-    ```xml
-    <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
-        <KeyDescriptor use="signing">
-          <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
-             <X509Data>
-                 <X509Certificate> MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate>
-              </X509Data>
-            </KeyInfo>
-        </KeyDescriptor>
-    </IDPSSODescriptor>
-    ``` 
+  ```xml
+  <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <KeyDescriptor use="signing">
+      <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+       <X509Data>
+         <X509Certificate> MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate>
+        </X509Data>
+      </KeyInfo>
+    </KeyDescriptor>
+  </IDPSSODescriptor>
+  ``` 
 
 További információ a "set-MsolDomainAuthentication"-ról: [/Previous-Versions/Azure/dn194112 (v = Azure. 100)](/previous-versions/azure/dn194112(v=azure.100)).
 
@@ -278,13 +278,12 @@ További információ a "New-MsolUser" pénztárról: [/Previous-Versions/Azure/
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>Az egyszeri bejelentkezés ellenőrzése az SAML 2,0-IDENTITÁSSZOLGÁLTATÓ
 Rendszergazdaként az egyszeri bejelentkezés (más néven identitás-összevonás) ellenőrzése és kezelése előtt tekintse át az adatokat, és hajtsa végre az alábbi cikkekben ismertetett lépéseket az egyszeri bejelentkezés beállításához az SAML 2,0 SP-Lite-alapú identitás-szolgáltatóval:
 
-
-1.  Áttekintette az Azure AD SAML 2,0 protokoll követelményeit
-2.  Az SAML 2,0-identitás szolgáltatóját konfigurálta
-3.  A Windows PowerShell telepítése az SAML 2,0 Identity Provider használatával történő egyszeri bejelentkezéshez
-4.  Megbízhatóság beállítása az SAML 2,0 Identity Provider és az Azure AD között
-5.  A Windows PowerShell vagy a Azure AD Connect használatával kiépített egy ismert teszt felhasználói rendszerbiztonsági tag Azure Active Directory (Microsoft 365).
-6.  Konfigurálja a címtár-szinkronizálást [Azure ad Connect](whatis-hybrid-identity.md)használatával.
+1. Áttekintette az Azure AD SAML 2,0 protokoll követelményeit
+2. Az SAML 2,0-identitás szolgáltatóját konfigurálta
+3. A Windows PowerShell telepítése az SAML 2,0 Identity Provider használatával történő egyszeri bejelentkezéshez
+4. Megbízhatóság beállítása az SAML 2,0 Identity Provider és az Azure AD között
+5. A Windows PowerShell vagy a Azure AD Connect használatával kiépített egy ismert teszt felhasználói rendszerbiztonsági tag Azure Active Directory (Microsoft 365).
+6. Konfigurálja a címtár-szinkronizálást [Azure ad Connect](whatis-hybrid-identity.md)használatával.
 
 Miután beállította az egyszeri bejelentkezést az SAML 2,0 SP-Lite-alapú identitás-szolgáltatóval, ellenőrizze, hogy megfelelően működik-e.
 
@@ -302,29 +301,33 @@ A Microsoft olyan eszközt biztosított, amellyel tesztelheti az SAML 2,0-alapú
 
 
 
-1. Töltse le a kapcsolati elemzőt a alkalmazásból [https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client) .
-2.  A telepítés gombra kattintva megkezdheti az eszköz letöltését és telepítését.
-3.  Válassza a "nem tudom beállítani az Office 365, az Azure vagy más, Azure Active Directory használó szolgáltatásokkal való összevonást" lehetőséget.
-4.  Az eszköz letöltése és futtatása után megjelenik a kapcsolati diagnosztika ablak. Az eszköz végigvezeti az összevonási kapcsolatok tesztelésének lépésein.
-5.  A connectivity Analyzer megnyitja az SAML 2,0 IDENTITÁSSZOLGÁLTATÓ a bejelentkezéshez, adja meg a tesztelni kívánt felhasználó hitelesítő adatait: ![ képernyőkép, amely az SAML 2,0 identitásszolgáltató bejelentkezési ablakát jeleníti meg.](./media/how-to-connect-fed-saml-idp/saml1.png)
+1. Töltse le a [connectivity Analyzert](https://testconnectivity.microsoft.com/?tabid=Client).
+2. A telepítés gombra kattintva megkezdheti az eszköz letöltését és telepítését.
+3. Válassza a "nem tudom beállítani az Office 365, az Azure vagy más, Azure Active Directory használó szolgáltatásokkal való összevonást" lehetőséget.
+4. Az eszköz letöltése és futtatása után megjelenik a kapcsolati diagnosztika ablak. Az eszköz végigvezeti az összevonási kapcsolatok tesztelésének lépésein.
+5. A connectivity Analyzer megnyitja az SAML 2,0 IDENTITÁSSZOLGÁLTATÓ a bejelentkezéshez, adja meg a tesztelni kívánt felhasználói tag hitelesítő adatait:
+
+    ![Az SAML 2,0-IDENTITÁSSZOLGÁLTATÓ bejelentkezési ablakát bemutató képernyőkép.](./media/how-to-connect-fed-saml-idp/saml1.png)
+
 6.  Az összevonási teszt bejelentkezési ablakában meg kell adnia egy fióknevet és egy jelszót ahhoz az Azure AD-bérlőhöz, amely az SAML 2,0-identitás-szolgáltatóval való összevonásra van konfigurálva. Az eszköz megkísérli a bejelentkezést a hitelesítő adatok használatával, és a bejelentkezési kísérlet során végrehajtott tesztek részletes eredményeit kimenetként adja meg.
-![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
+
+    ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
+
 7. Ez az ablak a tesztelés sikertelen eredményét jeleníti meg. A részletes eredmények megtekintése elemre kattintva megtekintheti az egyes végrehajtott tesztek eredményeire vonatkozó információkat. Az eredményeket lemezre is mentheti, hogy megossza őket.
  
->[!NOTE]
->A connectivity Analyzer a WS *-based és az ECP/PAOS protokollok használatával is teszteli az aktív összevonást. Ha nem használja ezeket, figyelmen kívül hagyhatja a következő hibát: az aktív bejelentkezési folyamat tesztelése az identitás-szolgáltató aktív összevonási végpontjának használatával.
+> [!NOTE]
+> A connectivity Analyzer a WS *-based és az ECP/PAOS protokollok használatával is teszteli az aktív összevonást. Ha nem használja ezeket, figyelmen kívül hagyhatja a következő hibát: az aktív bejelentkezési folyamat tesztelése az identitás-szolgáltató aktív összevonási végpontjának használatával.
 
 ### <a name="manually-verify-that-single-sign-on-has-been-set-up-correctly"></a>Manuálisan ellenőrizze, hogy az egyszeri bejelentkezés helyesen van-e beállítva.
+
 A manuális ellenőrzés további lépéseket tesz elérhetővé, amelyekkel biztosíthatja, hogy az SAML 2,0-identitás szolgáltatója megfelelően működjön.
 Annak ellenőrzéséhez, hogy az egyszeri bejelentkezés helyesen van-e beállítva, hajtsa végre a következő lépéseket:
 
-
 1. Egy tartományhoz csatlakoztatott számítógépen jelentkezzen be a felhőalapú szolgáltatásba ugyanazzal a bejelentkezési névvel, amelyet a céges hitelesítő adataihoz is használ.
-2.  Kattintson a jelszó mezőbe. Ha az egyszeri bejelentkezés be van állítva, a jelszó mező árnyékolva lesz, és a következő üzenet jelenik meg: "mostantól a vállalatnál be kell jelentkeznie &lt; &gt; ."
-3.  Kattintson a bejelentkezés a &lt; céges &gt; hivatkozásra. Ha be tud jelentkezni, az egyszeri bejelentkezés beállítása megtörtént.
+2. Kattintson a jelszó mezőbe. Ha az egyszeri bejelentkezés be van állítva, a jelszó mező árnyékolva lesz, és a következő üzenet jelenik meg: "mostantól a vállalatnál be kell jelentkeznie &lt; &gt; ."
+3. Kattintson a bejelentkezés a &lt; céges &gt; hivatkozásra. Ha be tud jelentkezni, az egyszeri bejelentkezés beállítása megtörtént.
 
 ## <a name="next-steps"></a>További lépések
-
 
 - [Active Directory összevonási szolgáltatások (AD FS) felügyelet és testreszabás Azure AD Connect](how-to-connect-fed-management.md)
 - [Az Azure AD összevonás kompatibilitási listája](how-to-connect-fed-compatibility.md)

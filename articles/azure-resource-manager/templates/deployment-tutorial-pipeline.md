@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe Azure Resou
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1b9e60ec1b3f7626a3cb67a673bf12d14d7d259b
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368205"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588131"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Oktatóanyag: ARM-sablonok folyamatos integrálása az Azure-folyamatokkal
 
@@ -100,10 +100,10 @@ A _azuredeploy.js_ bekerült a helyi tárházba. Ezután töltse fel a sablont a
     ```bash
     git add .
     git commit -m "Add web app templates."
-    git push origin master
+    git push origin main
     ```
 
-    Előfordulhat, hogy figyelmeztetést kap a LF-ről. Figyelmen kívül hagyhatja a figyelmeztetést. a **Master** a Master ág.  Általában létre kell hoznia egy ágat az egyes frissítésekhez. Az oktatóanyag leegyszerűsítése érdekében közvetlenül a Master ágat használja.
+    Előfordulhat, hogy figyelmeztetést kap a LF-ről. Figyelmen kívül hagyhatja a figyelmeztetést. a **Main a** fő ág.  Általában létre kell hoznia egy ágat az egyes frissítésekhez. Az oktatóanyag leegyszerűsítése érdekében közvetlenül a fő ágat használja.
 
 1. Tallózással keresse meg a GitHub-tárházat egy böngészőben. Az URL-cím: `https://github.com/[YourAccountName]/[YourGitHubRepository]` . Ekkor megjelenik a _CreateWebApp_ mappa, valamint a mappában található három fájl.
 1. A sablon megnyitásához válassza _alinkedStorageAccount.json_ lehetőséget.
@@ -128,7 +128,7 @@ A következő eljárás folytatásához szükség van egy DevOps-szervezetre. Ha
     * **Verziókövetés**: válassza a **git** lehetőséget. Előfordulhat, hogy a **speciális** elemre kell bontania a **verziókövetés** megjelenítéséhez.
 
     Használja az alapértelmezett értéket a többi tulajdonsághoz.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Hozzon létre egy olyan szolgáltatási kapcsolódást, amely a projektek Azure-ba való telepítésére szolgál.
 
@@ -183,7 +183,7 @@ Folyamat létrehozása lépéssel a sablon üzembe helyezéséhez:
 
     ![Képernyőfelvétel: az ARM-sablon üzembe helyezési lapja, ahol a szükséges értékek szerepelnek.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
     További információ a feladatról: az [Azure-erőforráscsoport üzembe helyezési feladata](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)és [Azure Resource Manager sablon központi telepítési feladata](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 
@@ -217,15 +217,15 @@ Amikor frissíti a sablont, és leküldi a módosításokat a távoli tárházba
 1. A következő parancsok a git bash/shellből való futtatásával küldje el a módosításokat a távoli adattárba.
 
     ```bash
-    git pull origin master
+    git pull origin main
     git add .
     git commit -m "Update the storage account type."
-    git push origin master
+    git push origin main
     ```
 
     Az első parancs ( `pull` ) szinkronizálja a helyi tárházat a távoli adattárral. A folyamat YAML-fájlja csak a távoli tárházhoz lett hozzáadva. A `pull` parancs futtatása letölti a YAML fájl egy példányát a helyi ágra.
 
-    A negyedik parancs ( `push` ) feltölti a módosított _linkedStorageAccount.js_ fájlt a távoli tárházba. A távoli tárház főágának frissítése után a folyamat újra bekerül.
+    A negyedik parancs ( `push` ) feltölti a módosított _linkedStorageAccount.js_ fájlt a távoli tárházba. A távoli tárház fő ága frissítve lett, a folyamat újra aktiválódik.
 
 A módosítások ellenőrzéséhez ellenőrizze a Storage-fiók replikáció tulajdonságát. Lásd: [a központi telepítés ellenőrzése](#verify-the-deployment).
 

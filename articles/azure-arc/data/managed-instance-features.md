@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940776"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589219"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Az Azure arc használatára képes SQL felügyelt példány funkciói és képességei
 
@@ -33,7 +33,7 @@ Az Azure arc használatára képes SQL felügyelt példány közös programkódo
 
 ###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS magas rendelkezésre állása  
   
-|Szolgáltatás|Azure Arc-kompatibilis, felügyelt SQL-példány|
+|Funkció|Azure Arc-kompatibilis, felügyelt SQL-példány|
 |-------------|----------------|
 |Naplóküldés|Igen| 
 |Biztonsági másolatok tömörítése|Igen|
@@ -59,78 +59,78 @@ Az Azure arc használatára képes SQL felügyelt példány közös programkódo
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS méretezhetőség és teljesítmény  
 
-|Szolgáltatás|Azure Arc-kompatibilis, felügyelt SQL-példány|
-|-------------|----------------|
-|Oszlopcentrikus|   Igen|
-|Nagyméretű objektumok bináris fájljai fürtözött oszlopcentrikus indexekben|    Igen|
-|Online nem fürtözött oszlopcentrikus index újraépítése| Igen|
-|Memóriában tárolt OLTP|    Igen|
-|Állandó fő memória|    Igen|
-|Tábla-és indexelési particionálás|  Igen
-|Adattömörítés|  Igen|
-|Resource Governor| Igen|
-|Particionált tábla párhuzamossága| Igen|
-|NUMA-Aware és nagyméretű oldal memóriája és puffer-tömb kiosztása|  Igen|
-|IO-erőforrás szabályozása|    Igen|
-|Késleltetett tartósság|    Igen|
-|Automatikus finomhangolás|  Igen|
-|Kötegelt módú adaptív illesztések| Igen|
-|Kötegelt üzemmód memória-engedélyezési visszajelzés|  Igen|
-|Többutasításos táblázat értékű függvények egymással megszakított végrehajtása|  Igen|
-|Tömeges Beszúrás – tökéletesítések   |Igen|
+| Funkció | Azure Arc-kompatibilis, felügyelt SQL-példány |
+|--|--|
+| Oszlopcentrikus | Igen |
+| Nagyméretű objektumok bináris fájljai fürtözött oszlopcentrikus indexekben | Igen |
+| Online nem fürtözött oszlopcentrikus index újraépítése | Igen |
+| Memóriában tárolt OLTP | Igen |
+| Állandó fő memória | Igen |
+| Tábla-és indexelési particionálás | Igen |
+| Adattömörítés | Igen |
+| Resource Governor | Igen |
+| Particionált tábla párhuzamossága | Igen |
+| NUMA-Aware és nagyméretű oldal memóriája és puffer-tömb kiosztása | Igen |
+| IO-erőforrás szabályozása | Igen |
+| Késleltetett tartósság | Igen |
+| Automatikus finomhangolás | Igen |
+| Kötegelt módú adaptív illesztések | Igen |
+| Kötegelt üzemmód memória-engedélyezési visszajelzés | Igen |
+| Többutasításos táblázat értékű függvények egymással megszakított végrehajtása | Igen |
+| Tömeges Beszúrás – tökéletesítések | Igen |
 
-###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS biztonság  
-|Szolgáltatás|Azure Arc-kompatibilis, felügyelt SQL-példány|
-|-------------|----------------|
-|Sorszintű biztonság|    Igen|
-|Always Encrypted|  Igen|
-|Always Encrypted biztonságos Enklávékkal| Nem|
-|Dinamikus adatmaszkolás|  Igen|
-|Alapszintű naplózás|    Igen|
-|Részletes naplózás| Igen|
-|Transzparens adatbázis-titkosítás|   Igen|
-|Felhasználó által definiált szerepkörök|    Igen|
-|Tartalmazott adatbázisok|   Igen|
-|Biztonsági másolatok titkosítása|    Igen|
+###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS biztonság
+
+| Funkció | Azure Arc-kompatibilis, felügyelt SQL-példány |
+|--|--|
+| Sorszintű biztonság | Igen |
+| Always Encrypted | Igen |
+| Biztonságos enklávékkal ellátott Always Encrypted | Nem |
+| Dinamikus adatmaszkolás | Igen |
+| Alapszintű naplózás | Igen |
+| Részletes naplózás | Igen |
+| Transzparens adatbázis-titkosítás | Igen |
+| Felhasználó által definiált szerepkörök | Igen |
+| Tartalmazott adatbázisok | Igen |
+| Biztonsági másolatok titkosítása | Igen |
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS kezelhetősége  
 
-|Szolgáltatás|Azure Arc-kompatibilis, felügyelt SQL-példány|
-|-------------|----------------|
-|Dedikált rendszergazdai kapcsolatok|    Igen|
-|PowerShell-parancsfájlok támogatása|  Igen|
-|Az adatrétegbeli alkalmazás-összetevő műveleteinek támogatása – kinyerés, üzembe helyezés, frissítés, törlés| Igen
-|Házirend-automatizálás (ellenőrzési ütemterv és módosítás)   |Igen|
-|Teljesítményadatokat gyűjtő|    Igen|
-|Normál teljesítményű jelentések   |Igen|
-|Útmutatók tervezése és a tervek befagyasztásának megtervezése| Igen|
-|Indexelt nézetek közvetlen lekérdezése (a deexpand mutató használatával)|   Igen|
-|Automatikus indexelt nézetek karbantartása    |Igen|
-|Elosztott particionált nézetek| Igen|
-|Párhuzamos indexelt műveletek    |Igen|
-|Indexelt nézet automatikus használata lekérdezés-optimalizáló használatával|  Igen|
-|Párhuzamos konzisztencia-ellenőrzés |Igen|
-
+| Funkció | Azure Arc-kompatibilis, felügyelt SQL-példány |
+|--|--|
+| Dedikált rendszergazdai kapcsolatok | Igen |
+| PowerShell-parancsfájlok támogatása | Igen |
+| Az adatrétegbeli alkalmazás-összetevő műveleteinek támogatása – kinyerés, üzembe helyezés, frissítés, törlés | Igen |
+| Házirend-automatizálás (ellenőrzési ütemterv és módosítás) | Igen |
+| Teljesítményadatokat gyűjtő | Igen |
+| Normál teljesítményű jelentések | Igen |
+| Útmutatók tervezése és a tervek befagyasztásának megtervezése | Igen |
+| Indexelt nézetek közvetlen lekérdezése (a deexpand mutató használatával) | Igen |
+| Automatikus indexelt nézetek karbantartása | Igen |
+| Elosztott particionált nézetek | Igen |
+| Párhuzamos indexelt műveletek | Igen |
+| Indexelt nézet automatikus használata lekérdezés-optimalizáló használatával | Igen |
+| Párhuzamos konzisztencia-ellenőrzés | Igen |
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programozhatóság  
 
-|Szolgáltatás|Azure Arc-kompatibilis, felügyelt SQL-példány|
-|-------------|----------------|
-|JSON|  Igen |       |
-|Lekérdezéstár    |Igen    |       
-|Historikus|  Igen |       
-|Natív XML-támogatás|    Igen |       
-|XML-indexelés   |Igen    |       
-|& UPSERT-képességek EGYESÍTÉSe|   Igen |       
-|Dátum és idő adattípus    |Igen    |       
-|Honosítási támogatás|  Igen |       
-|Teljes szöveges és szemantikai keresés |    Nem      |
-|A nyelv meghatározása a lekérdezésben |Igen        |   
-|Service Broker (üzenetküldés)|    Igen     |   
-|Transact-SQL-végpontok|    Igen |       
-|Graph| Igen |   
-|Machine Learning Services| Nem  |   
-|PolyBase| Nem   |
+| Funkció | Azure Arc-kompatibilis, felügyelt SQL-példány |
+|--|--|
+| JSON | Igen |
+| Lekérdezéstár | Igen |  |
+| Historikus | Igen |  |
+| Natív XML-támogatás | Igen |  |
+| XML-indexelés | Igen |  |
+| & UPSERT-képességek EGYESÍTÉSe | Igen |  |
+| Dátum és idő adattípus | Igen |  |
+| Honosítási támogatás | Igen |  |
+| Teljes szöveges és szemantikai keresés | Nem |
+| A nyelv meghatározása a lekérdezésben | Igen |  |
+| Service Broker (üzenetküldés) | Igen |  |
+| Transact-SQL-végpontok | Igen |  |
+| Graph | Igen |  |
+| Machine Learning Services | Nem |  |
+| PolyBase | Nem |
 
 
 ### <a name="tools"></a>Eszközök

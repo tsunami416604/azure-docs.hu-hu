@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 08/24/2020
 ms.author: ninallam
-ms.openlocfilehash: 92fa445cee75b2311cbadf96e24c31a1dbd579b8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e3c72ce6a15f90f0dbe08bbff10db0ca5f6b5c8f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332761"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588811"
 ---
 # <a name="set-up-cicd-for-a-nodejs-app-with-devops-starter-using-github-actions"></a>CI/CD beállítása Node.js alkalmazáshoz a DevOps Starter használatával GitHub-műveletekkel
 
@@ -33,7 +33,7 @@ A DevOps Starter egy CI/CD-munkafolyamatot hoz létre a GitHub-műveletek haszn�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A keresőmezőbe írja be a **DevOps Starter**kifejezést, majd válassza a elemet. Kattintson a **Hozzáadás** gombra egy új létrehozásához.
+1. A keresőmezőbe írja be a **DevOps Starter** kifejezést, majd válassza a elemet. Kattintson a **Hozzáadás** gombra egy új létrehozásához.
 
     ![A DevOps Starter irányítópultja](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -43,15 +43,15 @@ A DevOps Starter egy CI/CD-munkafolyamatot hoz létre a GitHub-műveletek haszn�
 
     ![landing_page](_img/azure-devops-project-nodejs/landing-page.png)
 
-1. Győződjön meg arról, hogy a CI/CD-szolgáltató **GitHub-műveletként**van kiválasztva.
+1. Győződjön meg arról, hogy a CI/CD-szolgáltató **GitHub-műveletként** van kiválasztva.
 
     ![CICD_provider](_img/azure-devops-project-nodejs/provider-selection.png)
 
 1. Válassza a **Node.js** mintaalkalmazást. A Node.js-minták esetén több alkalmazási keretrendszer közül választhat.
 
-1. Az alapértelmezett mintakeretrendszer az **Express.js**. Hagyja meg az alapértelmezett beállítást, majd kattintson a **tovább**gombra.   
+1. Az alapértelmezett mintakeretrendszer az **Express.js**. Hagyja meg az alapértelmezett beállítást, majd kattintson a **tovább** gombra.   
 
-2. A Windows Web App az alapértelmezett telepítési cél. Az alkalmazás-keretrendszer, amelyet korábban választott, az itt elérhető Azure-szolgáltatás telepítési célhelyét diktálja. Hagyja meg az alapértelmezett szolgáltatást, majd válassza a **tovább**lehetőséget.
+2. A Windows Web App az alapértelmezett telepítési cél. Az alkalmazás-keretrendszer, amelyet korábban választott, az itt elérhető Azure-szolgáltatás telepítési célhelyét diktálja. Hagyja meg az alapértelmezett szolgáltatást, majd válassza a **tovább** lehetőséget.
  
 ## <a name="configure-github-account-and-an-azure-subscription"></a>GitHub-fiók és Azure-előfizetés konfigurálása 
 
@@ -65,7 +65,7 @@ A DevOps Starter egy CI/CD-munkafolyamatot hoz létre a GitHub-műveletek haszn�
    
    1. Válassza ki a GitHub-tárház nevét. 
    
-   1. Válassza ki az Azure-előfizetést és-helyet, válasszon egy nevet az alkalmazásnak, majd válassza a **kész**lehetőséget.
+   1. Válassza ki az Azure-előfizetést és-helyet, válasszon egy nevet az alkalmazásnak, majd válassza a **kész** lehetőséget.
     
        ![Enter_GH_details](_img/azure-devops-project-nodejs/gh-details.png)
 
@@ -88,14 +88,14 @@ A DevOps Starter létrehoz egy tárházat a GitHubban. Az adattár megtekintés�
 
 1. A DevOps Starter irányítópult bal oldalán válassza ki a fő ág hivatkozását. Ez a hivatkozás egy nézetet nyit meg az újonnan létrehozott GitHub-tárházban.
 
-1. A tárház klónozási URL-címének megtekintéséhez válassza a böngésző jobb felső sarkában található **klónozás** elemet. A Git-adattárat klónozhatja például a kedvenc IDE-környezetébe. A következő néhány lépésben a webböngésző segítségével közvetlenül a főágban hajthat végre és véglegesíthet kódmódosításokat.
+1. A tárház klónozási URL-címének megtekintéséhez válassza a böngésző jobb felső sarkában található **klónozás** elemet. A Git-adattárat klónozhatja például a kedvenc IDE-környezetébe. A következő néhány lépésben a webböngészővel teheti meg és véglegesítheti a kód módosításait közvetlenül a fő ágra.
 
 1. A böngésző bal oldalán lépjen a **/Application/views/index.PUG** fájlra.
 
-1. Válassza a **Szerkesztés**lehetőséget, majd végezze el a módosítást egy bizonyos szövegre.
+1. Válassza a **Szerkesztés** lehetőséget, majd végezze el a módosítást egy bizonyos szövegre.
     Módosíthatja például az egyik címke szövegét.
 
-1. Válassza **a**végrehajtás lehetőséget, majd mentse a módosításokat.
+1. Válassza **a** végrehajtás lehetőséget, majd mentse a módosításokat.
 
 1. A böngészőben nyissa meg a DevOps Starter irányítópultját.   
 Ekkor meg kell jelennie a GitHub-munkafolyamat felépítési feladatainak. Az elvégzett módosításokat a GitHub-munkafolyamatok automatikusan építették és telepítik.
@@ -104,13 +104,13 @@ Ekkor meg kell jelennie a GitHub-munkafolyamat felépítési feladatainak. Az el
 
 Az előző lépésben a DevOps Starter automatikusan egy teljes GitHub-munkafolyamatot konfigurált. Szükség szerint vizsgálja meg és szabja testre a munkafolyamatot. A következő lépésekkel Ismerkedjen meg a munkafolyamattal.
 
-1. A DevOps Starter irányítópult bal oldalán válassza a **GitHub-munkafolyamat**elemet. Ez a hivatkozás egy böngésző fület és a GitHub-munkafolyamatot nyitja meg az új projekthez.
+1. A DevOps Starter irányítópult bal oldalán válassza a **GitHub-munkafolyamat** elemet. Ez a hivatkozás egy böngésző fület és a GitHub-munkafolyamatot nyitja meg az új projekthez.
     > [!NOTE]
     > Ne nevezze át a munkafolyamat-fájlt. A munkafolyamat-fájl nevének **devops-Starter-workflow. YML** kell lennie ahhoz, hogy az irányítópult tükrözze a módosításokat
 
 1. A munkafolyamat YAML fájlja tartalmazza az alkalmazás létrehozásához és üzembe helyezéséhez szükséges összes GitHub-műveletet. Kattintson a **fájl szerkesztése** lehetőségre a munkafolyamat-fájl testreszabásához.
 
-1. A tárház **kód** lapján kattintson a **véglegesítés**elemre. Ez a nézet az adott központi telepítéshez társított kód-véglegesítő kódokat jeleníti meg.
+1. A tárház **kód** lapján kattintson a **véglegesítés** elemre. Ez a nézet az adott központi telepítéshez társított kód-véglegesítő kódokat jeleníti meg.
 
 1. A tárház **műveletek** lapján megtekintheti az adattár összes munkafolyamat-futtatásának előzményeit.
 
@@ -124,7 +124,7 @@ Az előző lépésben a DevOps Starter automatikusan egy teljes GitHub-munkafoly
 
 Ha már nincs szüksége rájuk, törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat is. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A CI/CD folyamat beállításakor a rendszer automatikusan létrehozta a GitHub-munkafolyamatot. Ezt a munkafolyamatot úgy módosíthatja, hogy az megfeleljen a csapat igényeinek. A GitHub-műveletekkel és-munkafolyamatokkal kapcsolatos további tudnivalókért tekintse meg a következőt:
 

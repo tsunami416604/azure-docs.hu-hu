@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994655"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589797"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
 
@@ -112,7 +112,7 @@ Emellett a kialakítási kulcsot is meg kell adni a Function alkalmazásnak az `
 A üzemeltetési csomag definíciója változó, és a következők egyike lehet:
 * [Felhasználási terv](#consumption) (alapértelmezett)
 * [Prémium szintű csomag](#premium)
-* [App Service-csomag](#app-service-plan)
+* [App Service terv](#app-service-plan)
 
 ### <a name="function-app"></a>Függvényalkalmazás
 
@@ -299,8 +299,6 @@ Linux rendszeren a Function alkalmazásnak rendelkeznie kell a (z) értékkel `k
 }
 ```
 
-
-
 <a name="premium"></a>
 
 ## <a name="deploy-on-premium-plan"></a>Üzembe helyezés prémium csomaggal
@@ -380,7 +378,6 @@ A prémium szintű csomaghoz tartozó Function alkalmazásnak a `serverFarmId` k
     }
 }
 ```
-
 
 <a name="app-service-plan"></a>
 
@@ -689,7 +686,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 A központi telepítés teszteléséhez használhat egy olyan [sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) , amely a Windowsban egy használati alkalmazást hoz létre egy felhasználási tervben. Cserélje le a `<function-app-name>` függvényt egy egyedi névre a Function alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions fejlesztéséről és konfigurálásáról.
 

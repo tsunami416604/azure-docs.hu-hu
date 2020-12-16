@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 89b01205c08216b3ce1ec2d36cce48335b49eb47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344283"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560542"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
@@ -21,7 +21,7 @@ Az Azure Reservations biztosítja a rugalmasságot a változó igények kielég�
 Az önkiszolgáló csere- és lemondási lehetőség nem érhető el az Egyesült Államok kormányának nagyvállalati szerződésével rendelkező ügyfelei számára. Az Egyesült Államok kormányának (US Government) egyéb előfizetési típusai támogatottak, például a használatalapú fizetés és a Felhőszolgáltató (CSP).
 
 > [!NOTE]
-> - **Meglévő foglalások cseréjéhez vagy visszatérítéséhez tulajdonosi hozzáféréssel kell rendelkeznie a foglalási rendeléshez**. Elvégezhető [a foglalást kezelő felhasználók hozzáadása vagy módosítása](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+> - **Meglévő foglalások cseréjéhez vagy visszatérítéséhez tulajdonosi hozzáféréssel kell rendelkeznie a foglalási rendeléshez**. Elvégezhető [a foglalást kezelő felhasználók hozzáadása vagy módosítása](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 > - A Microsoft jelenleg nem számol fel korai felmondási díjat a foglalásokhoz kapcsolódó visszatérítések után. Előfordulhat, hogy a visszatérítések a jövőben díjkötelesek lesznek. Jelenleg még nem határoztuk meg a díj bevezetésének dátumát.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Meglévő foglalások cseréje vagy visszatérítése
@@ -66,7 +66,7 @@ Az Azure-ban a következő szabályzatok érvényesek a lemondásokra, cserékre
 **Csereszabályzatok**
 
 - Egyszerre több létező foglalást is becserélhet egy ugyanolyan típusú új foglalás vásárlásakor. Az adott típusú foglalásokat nem lehet másik típusúra cserélni. Például nem lehet egy virtuális gép foglalását egy SQL-foglalás megvásárlására becserélni. A cserék során a foglalások bármely tulajdonsága módosítható, így a család, a sorozat, a verzió, a termékváltozat, a régió, a mennyiség és az időtartam is.
-- A cseréket csak foglalások tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- A cseréket csak foglalások tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 - A cserét a rendszer visszatérítésként és újravásárlásként dolgozza fel – vagyis külön tranzakciókat hoz létre a lemondáshoz és az új foglalás vásárlásához. A becserélt foglalások arányosított foglalási összegét visszatéríti a rendszer. Az új vásárlásért pedig teljes díjat kell fizetni. Az arányosított foglalási összeg a visszaadott foglalás nap szerint kiszámított maradványértéke.
 - A foglalások akkor is becserélhetők vagy visszatéríthetők, ha a megvásárlásukhoz használt Nagyvállalati Szerződés lejárt, és új szerződésként lett megújítva.
 - Az új foglalás élettartamra vonatkozó kötelezettségvállalásának a visszatérített foglalásra vonatkozó megmaradt kötelezettségvállalással egyenlőnek vagy annál nagyobb összegűnek kell lennie. Példa: egy hároméves, havi 100 USD összegű foglalás esetén, amelyet a 18. fizetés után becserélnek, az új foglalás élettartamára vonatkozó kötelezettségvállalásnak 1800 USD vagy nagyobb összegűnek kell lennie (havonta vagy előre fizetve).
@@ -79,7 +79,7 @@ Az Azure-ban a következő szabályzatok érvényesek a lemondásokra, cserékre
 - Egy számlázási profil vagy egy regisztráció esetében a lemondott kötelezettségvállalás teljes összege nem haladhatja meg az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan. Például egy hároméves, havi 100 USD összegű, a 18. hónapban visszatérítendő foglalás esetén a lemondott kötelezettségvállalás értéke 1800 USD. A visszatérítés után az új visszatérítési korlát 48 200 USD lesz. Ezen visszatérítéstől számított 365 nap múlva a 48 200 USD korlátot megnöveljük 1800 USD-vel, így az új keret 50 000 USD lesz. A számlázási profilhoz vagy az EA-regisztrációhoz tartozó minden más foglaláslemondás ugyanezt a keretet csökkenti, és ugyanez a feltöltési logika érvényesül.
 - Az Azure nem dolgozza fel azokat a visszatérítéseket, amelyek egy számlázási profil vagy EA-regisztráció esetében meghaladják az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan.
 - A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számítja ki.
-- A visszatérítéseket csak a foglalásrendelések tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- A visszatérítéseket csak a foglalásrendelések tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 

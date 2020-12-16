@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3ed0fea4846b969c2af80aa525f7da64e7700bb5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535367"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587927"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>felhőbe irányuló replikálás konfigurálása Azure Database for MariaDB
 
@@ -52,7 +52,7 @@ A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adat
 
 A következő lépések előkészítik és konfigurálja a helyszínen üzemeltetett MariaDB-kiszolgálót egy virtuális gépen vagy egy felhőalapú adatbázis-szolgáltatásban felhőbe irányuló replikálás számára. A MariaDB-kiszolgáló a forrás a felhőbe irányuló replikálásban.
 
-1. A továbblépés előtt tekintse át a [fő kiszolgálóra vonatkozó követelményeket](concepts-data-in-replication.md#requirements) . 
+1. A továbblépés előtt tekintse át az [elsődleges kiszolgálóra vonatkozó követelményeket](concepts-data-in-replication.md#requirements) . 
 
 2. Győződjön meg arról, hogy a forráskiszolgáló engedélyezi a bejövő és a kimenő forgalmat is a 3306-es porton, valamint arról, hogy a forráskiszolgáló **nyilvános IP-címmel** rendelkezik, a DNS nyilvánosan elérhető, vagy rendelkezik teljes tartománynévvel (FQDN). 
    
@@ -78,7 +78,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
       ```bash
       ping <output of step 2b>
       ``` 
-      Ilyenek többek között: 
+      Például: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -284,7 +284,7 @@ A következő lépések előkészítik és konfigurálja a helyszínen üzemelte
     
     A MariaDB-ben a natív replikálás korlátozása miatt  [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) a GTID-forgatókönyv nélkül kell beállítania és konfigurálnia [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) a replikálást.
 
-    Ellenőrizze a Slave-kiszolgáló `sync_master_info` és a `sync_relay_log_info` változóit, és ellenőrizze, hogy az adatreplikáció stabil-e, és állítsa be a változókat a következőre: `1` .
+    Ellenőrizze a replika kiszolgálójának `sync_master_info` és `sync_relay_log_info` változóinak ellenőrzését, és győződjön meg arról, hogy az adatreplikáció stabil, és állítsa be a változókat a következőre: `1` .
     
 ## <a name="other-stored-procedures"></a>Egyéb tárolt eljárások
 

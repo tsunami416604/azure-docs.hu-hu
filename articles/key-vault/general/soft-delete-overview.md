@@ -4,20 +4,20 @@ description: A Azure Key Vault-törléssel helyreállítható a törölt kulcsta
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 09/30/2020
-ms.openlocfilehash: 184003e42a14e786cc52c4f585c6781f7b9fe0e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 12/15/2020
+ms.openlocfilehash: 0f428954ac6ef74253e6e6e430977a85a3943f99
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452182"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589984"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault: a helyreállítható törlés áttekintése
 
 > [!IMPORTANT]
-> Azonnal engedélyeznie kell a Soft-delete szolgáltatást a kulcstartókban. A helyreállítható törlés lehetőségét az év végéig elavulttá válik, és a rendszer automatikusan bekapcsolja az összes kulcstartót.  A részletes információk [itt](soft-delete-change.md) találhatók
+> Azonnal engedélyeznie kell a Soft-delete szolgáltatást a kulcstartókban. A helyreállítható törlés lehetősége hamarosan elavulttá válik. A részletes információk [itt](soft-delete-change.md) találhatók
 
 Key Vault a helyreállítható törlési funkció lehetővé teszi a törölt tárolók helyreállítását és a Key Vault-objektumok (például kulcsok, titkok, tanúsítványok) törlését, amelyeket a rendszer a Soft delete néven is ismert. Pontosabban a következő helyzeteket vesszük fel: Ez a védelem a következő védelmi lehetőségeket kínálja:
 
@@ -95,7 +95,7 @@ Ha egy kulcstartó vagy kulcstartó-objektum helyreáll, a megőrzési időtarta
 - a "kiürítés" és a "helyreállítás" művelet a normál Key Vault-műveletekbe kerül, és számlázásra kerül.
 - Ha az objektum egy HSM-kulcs, a "HSM-védelemmel ellátott kulcs havi díja" díjat akkor kell alkalmazni, ha az elmúlt 30 napban a kulcs verzióját használták. Ezt követően, mivel az objektum törölve állapotban van, semmilyen műveletet nem lehet végrehajtani, ezért a rendszer díjmentesen alkalmazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő két útmutató az elsődleges használati forgatókönyveket kínálja a Soft delete használatára.
 

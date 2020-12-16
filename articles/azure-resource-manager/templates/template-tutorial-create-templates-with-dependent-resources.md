@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a43fa12e72484e97b828648cd7d610f5cf15ea4e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d1e5848e568f42fb8a77c65c775962f27a5a03df
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931588"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588036"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Oktatóanyag: ARM-sablonok létrehozása függő erőforrásokkal
 
@@ -46,7 +46,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
 
-1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott** fájl elemet.
+1. A Visual Studio Code-ból válassza a **fájl**  >  **megnyitott** fájl elemet.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -54,18 +54,18 @@ Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon
     ```
 
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. Válassza a **fájl** > **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre **azuredeploy.js** a következő néven:.
+4. Válassza a **fájl**  >  **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre _azuredeploy.js_ a következő néven:.
 
 ## <a name="explore-the-template"></a>A sablon vizsgálata
 
 Amikor ebben a szakaszban a sablont vizsgálja, próbálja megválaszolni a következő kérdéseket:
 
 * Hány Azure-erőforrás van meghatározva ebben a sablonban?
-* Az egyik erőforrás egy Azure-tárfiók.  A definíció hasonlít a legutóbbi oktatóanyagban használtra?
+* Az egyik erőforrás egy Azure-tárfiók. A definíció hasonlít a legutóbbi oktatóanyagban használtra?
 * Hogyan tudja megkeresni a sablonban meghatározott erőforrásokhoz a sablonreferenciákat?
 * Hogyan tudja megkeresni az erőforrások függőségeit?
 
-1. A Visual Studio Code-ban csukja össze az elemeket mindaddig, amíg csak az első szintű és a **resources** (erőforrások) alatt lévő második szintű elemek lesznek láthatók:
+1. A Visual Studio Code-ból csukja össze az elemeket, amíg csak az első szintű elemeket és a második szintű elemeket látja `resources` :
 
     ![Visual Studio Code ARM-sablonok](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
@@ -78,9 +78,9 @@ Amikor ebben a szakaszban a sablont vizsgálja, próbálja megválaszolni a köv
    * [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
    * [**Microsoft. számítási/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     A sablon testreszabása előtt hasznos áttekinteni a sablon hivatkozását.
+     A sablon testreszabása előtt célszerű áttekinteni a sablon hivatkozását.
 
-1. Bontsa ki az első erőforrást. Ez egy tárfiók. Hasonlítsa össze az erőforrás-definíciót a [sablon hivatkozásával](/azure/templates/Microsoft.Storage/storageAccounts).
+1. Bontsa ki az első erőforrást. Ez egy Storage-fiók. Hasonlítsa össze az erőforrás-definíciót a [sablon hivatkozásával](/azure/templates/Microsoft.Storage/storageAccounts).
 
     ![Visual Studio Code ARM-sablonok Storage-fiók definíciója](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
@@ -96,7 +96,7 @@ Amikor ebben a szakaszban a sablont vizsgálja, próbálja megválaszolni a köv
 
     ![Visual Studio Code ARM-sablonok virtuális hálózati dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    A dependsOn elem lehetővé teszi, hogy egy adott erőforrást egy vagy több erőforrástól függőként lehessen meghatározni. Ez az erőforrás egy másik erőforrástól függ:
+    Az `dependsOn` elem lehetővé teszi, hogy egy erőforrást egy vagy több erőforrástól függőként definiáljon. Ez az erőforrás egy másik erőforrástól függ:
 
     * `Microsoft.Network/networkSecurityGroups`
 
@@ -124,7 +124,7 @@ A függőségek megadásával a Resource Manager már hatékonyan képes üzembe
 
     ![Azure Portal Cloud Shell fájl feltöltése](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre. Lásd az előző képernyőképet. Válassza ki a korábban mentett fájlt. A fájl feltöltése után az **ls** parancs és a **Cat** parancs használatával ellenőrizheti, hogy a fájl feltöltése sikeresen megtörtént-e.
+1. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre. Lásd az előző képernyőképet. Válassza ki a korábban mentett fájlt. A fájl feltöltése után a `ls` parancs és a parancs használatával ellenőrizheti, `cat` hogy a fájl feltöltése sikeresen megtörtént-e.
 
 1. Futtassa a következő PowerShell-szkriptet a sablon telepítéséhez.
 

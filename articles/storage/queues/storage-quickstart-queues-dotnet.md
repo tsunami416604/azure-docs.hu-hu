@@ -1,25 +1,25 @@
 ---
-title: 'Rövid útmutató: Azure üzenetsor Storage Library v12-.NET'
-description: Megtudhatja, hogyan használhatja az Azure üzenetsor .NET V12 függvénytárát üzenetsor létrehozásához és üzenetek a várólistához való hozzáadásához. Ezután megtudhatja, hogyan olvashatja és törölheti az üzeneteket a várólistából. Azt is megtudhatja, hogyan törölhet egy várólistát.
+title: 'Gyors útmutató: Azure Queue Storage Client Library v12-.NET'
+description: Megtudhatja, hogyan hozhat létre várólistát, és hogyan adhat hozzá üzeneteket a várólistához az Azure Queue Storage a .NET-hez készült ügyféloldali kódtár használatával. Ezután megtudhatja, hogyan olvashatja és törölheti az üzeneteket a várólistából. Azt is megtudhatja, hogyan törölhet egy várólistát.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8900db8ed43b8c255915bf5429e1211f04e7338
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 22038e4145acabc067083177fcf297464972ad58
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491961"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589525"
 ---
-# <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a .NET-hez
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure Queue Storage Client Library V12 a .NET-hez
 
-Ismerkedjen meg az Azure üzenetsor Storage ügyféloldali kódtár 12-es verziójával a .NET-hez. Az Azure üzenetsor-tároló egy olyan szolgáltatás, amely nagy mennyiségű üzenetet tárol a későbbi lekérésekhez és feldolgozáshoz. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja a programkódot az alapszintű feladatokhoz.
+Ismerkedjen meg a .NET-hez készült Azure Queue Storage ügyféloldali kódtár 12-es verziójával. Az Azure Queue Storage egy olyan szolgáltatás, amely nagy mennyiségű üzenetet tárol a későbbi lekérésekhez és feldolgozáshoz. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja a programkódot az alapszintű feladatokhoz.
 
-Használja az Azure üzenetsor Storage ügyféloldali kódtárat a .NET-hez a következőhöz:
+Az Azure Queue Storage a .NET-hez készült ügyféloldali kódtár a következőhöz használható:
 
 - Üzenetsor létrehozása
 - Üzenetek hozzáadása egy várólistához
@@ -44,19 +44,19 @@ További források:
 
 ## <a name="setting-up"></a>Beállítás
 
-Ez a szakasz végigvezeti a projekt előkészítésének folyamatán az Azure üzenetsor Storage ügyféloldali kódtára a .NET-hez való működéséhez.
+Ez a szakasz végigvezeti a projekt előkészítésének folyamatán az Azure Queue Storage .NET-hez készült ügyféloldali kódtár használatával.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy *QueuesQuickstartV12* nevű .net Core-alkalmazást.
+Hozzon létre egy nevű .NET Core-alkalmazást `QueuesQuickstartV12` .
 
-1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *QueuesQuickstartV12* nevű Console-alkalmazást. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `QueuesQuickstartV12` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre, amely egyetlen nevű forrásfájl `Program.cs` .
 
    ```console
    dotnet new console -n QueuesQuickstartV12
    ```
 
-1. Váltson az újonnan létrehozott *QueuesQuickstartV12* -könyvtárra.
+1. Váltson az újonnan létrehozott `QueuesQuickstartV12` címtárra.
 
    ```console
    cd QueuesQuickstartV12
@@ -64,7 +64,7 @@ Hozzon létre egy *QueuesQuickstartV12* nevű .net Core-alkalmazást.
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Az alkalmazás könyvtárában a parancs használatával telepítse az Azure üzenetsor Storage ügyféloldali kódtárat a .NET-csomaghoz `dotnet add package` .
+Noha még mindig az alkalmazás könyvtárában van, telepítse az Azure Queue Storage .NET-csomaghoz készült ügyféloldali kódtárat a `dotnet add package` paranccsal.
 
 ```console
 dotnet add package Azure.Storage.Queues
@@ -74,8 +74,8 @@ dotnet add package Azure.Storage.Queues
 
 A projekt könyvtárából:
 
-1. Nyissa meg a *program.cs* fájlt a szerkesztőben
-1. Az `Console.WriteLine("Hello World!");` utasítás eltávolítása
+1. Nyissa meg a `Program.cs` fájlt a szerkesztőben
+1. Az `Console.WriteLine("Hello, World");` utasítás eltávolítása
 1. `using`Irányelvek hozzáadása
 1. A `Main` metódus deklarációjának frissítése az [aszinkron kód támogatásához](/dotnet/csharp/whats-new/csharp-7#async-main)
 
@@ -103,7 +103,7 @@ namespace QueuesQuickstartV12
 
 ## <a name="object-model"></a>Objektummodell
 
-Az Azure Queue Storage szolgáltatás nagy számú üzenet tárolására szolgál. Egy üzenetsor-üzenet akár 64 KB méretű is lehet. Egy üzenetsor akár több millió üzenetet is tartalmazhat, akár egy Storage-fiók teljes kapacitási korlátját. A várólistákat általában arra használják, hogy egy várakozó munkafolyamatot hozzon létre aszinkron feldolgozásra. A várólista-tárolás háromféle típusú erőforrást kínál:
+Az Azure Queue Storage szolgáltatás nagy számú üzenet tárolására szolgál. Egy üzenetsor-üzenet akár 64 KB méretű is lehet. Egy üzenetsor akár több millió üzenetet is tartalmazhat, akár egy Storage-fiók teljes kapacitási korlátját. A várólistákat általában arra használják, hogy egy várakozó munkafolyamatot hozzon létre aszinkron feldolgozásra. A Queue Storage háromféle típusú erőforrást kínál:
 
 - A Storage-fiók
 - A Storage-fiókban lévő üzenetsor
@@ -115,13 +115,13 @@ Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
 Használja az alábbi .NET-osztályokat a következő erőforrásokkal való interakcióhoz:
 
-- [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient): a `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
-- [QueueClient](/dotnet/api/azure.storage.queues.queueclient): a `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és azok üzeneteit.
-- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage): az `QueueMessage` osztály a [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) egy várólistán való meghívásakor visszaadott egyedi objektumokat jelöli.
+- [`QueueServiceClient`](/dotnet/api/azure.storage.queues.queueserviceclient): A `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
+- [`QueueClient`](/dotnet/api/azure.storage.queues.queueclient): Az `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és az üzeneteiket.
+- [`QueueMessage`](/dotnet/api/azure.storage.queues.models.queuemessage): Az `QueueMessage` osztály a várólista hívásakor visszaadott egyedi objektumokat jelöli [`ReceiveMessages`](/dotnet/api/azure.storage.queues.queueclient.receivemessages) .
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő műveleteket az Azure üzenetsor-tároló .NET-hez készült ügyféloldali kódtára használatával:
+Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következő műveleteket az Azure Queue Storage .NET-hez készült ügyféloldali kódtár használatával:
 
 - [A kapcsolati sztring lekérése](#get-the-connection-string)
 - [Üzenetsor létrehozása](#create-a-queue)
@@ -134,12 +134,12 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő m
 
 ### <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
 
-Az alábbi kód a Storage-fiókhoz tartozó kapcsolatok karakterláncot kérdezi le. A hálózati karakterláncot a [Storage-kapcsolatok karakterláncának konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változóban tárolja a rendszer.
+A következő kód lekéri a Storage-fiókhoz tartozó kapcsolatok karakterláncát. A hálózati karakterláncot a [Storage-kapcsolatok karakterláncának konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változóban tárolja a rendszer.
 
 Adja hozzá ezt a kódot a `Main` metódushoz:
 
 ```csharp
-Console.WriteLine("Azure Queue storage v12 - .NET quickstart sample\n");
+Console.WriteLine("Azure Queue Storage client library v12 - .NET quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable called
@@ -152,12 +152,12 @@ string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONN
 
 ### <a name="create-a-queue"></a>Üzenetsor létrehozása
 
-Döntse el az új üzenetsor nevét. Az alábbi kód egy GUID értéket fűz hozzá a várólista neveként, hogy az egyedi legyen.
+Döntse el az új üzenetsor nevét. A következő kód egy GUID értéket fűz hozzá a várólista neveként, hogy az egyedi legyen.
 
 > [!IMPORTANT]
-> A várólisták nevei csak kisbetűket, számokat és kötőjeleket tartalmazhatnak, és betűvel vagy számmal kell kezdődnie. A kötőjelek előtt és után csak nem kötőjel karakter állhat. A névnek 3 – 63 karakter hosszúnak kell lennie. További információ a várólisták elnevezéséről: [várólisták és metaadatok elnevezése](/rest/api/storageservices/naming-queues-and-metadata).
+> A várólisták nevei csak kisbetűket, számokat és kötőjeleket tartalmazhatnak, és betűvel vagy számmal kell kezdődnie. A kötőjelek előtt és után csak nem kötőjel karakter állhat. A névnek 3 – 63 karakter hosszúnak kell lennie. További információ: a [várólisták és a metaadatok elnevezése](/rest/api/storageservices/naming-queues-and-metadata).
 
-Hozza létre a [QueueClient](/dotnet/api/azure.storage.queues.queueclient) osztály egy példányát. Ezután hívja meg a [CreateAsync](/dotnet/api/azure.storage.queues.queueclient.createasync) metódust az üzenetsor létrehozásához a Storage-fiókban.
+Hozza létre a osztály egy példányát [`QueueClient`](/dotnet/api/azure.storage.queues.queueclient) . Ezután hívja meg a [`CreateAsync`](/dotnet/api/azure.storage.queues.queueclient.createasync) metódust az üzenetsor létrehozásához a Storage-fiókban.
 
 Adja hozzá ezt a kódot a metódus végéhez `Main` :
 
@@ -177,7 +177,7 @@ await queueClient.CreateAsync();
 
 ### <a name="add-messages-to-a-queue"></a>Üzenetek hozzáadása egy várólistához
 
-A következő kódrészlet aszinkron módon adja hozzá az üzeneteket a várólistához a [SendMessageAsync](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) metódus meghívásával. Egy hívásból visszaadott [SendReceipt](/dotnet/api/azure.storage.queues.models.sendreceipt) is ment `SendMessageAsync` . A visszaigazolás az üzenet későbbi, a programban való frissítésére szolgál.
+A következő kódrészlet aszinkron módon adja hozzá az üzeneteket a várólistához a metódus meghívásával [`SendMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) . Egy [`SendReceipt`](/dotnet/api/azure.storage.queues.models.sendreceipt) hívást is visszaküld `SendMessageAsync` . A visszaigazolás az üzenet későbbi, a programban való frissítésére szolgál.
 
 Adja hozzá ezt a kódot a metódus végéhez `Main` :
 
@@ -194,7 +194,7 @@ SendReceipt receipt = await queueClient.SendMessageAsync("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Üzenetek betekintése egy várólistába
 
-A [PeekMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) metódus meghívásával megtekintheti az üzenetsor üzeneteit. A `PeekMessagesAsync` metódus egy vagy több üzenetet kérdez le a várólista elejéről, de nem módosítja az üzenet láthatóságát.
+A metódus meghívásával megtekintheti a várólistában lévő üzeneteket [`PeekMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) . Ez a metódus egy vagy több üzenetet kér le a várólista elejéről, de nem módosítja az üzenet láthatóságát.
 
 Adja hozzá ezt a kódot a metódus végéhez `Main` :
 
@@ -213,7 +213,7 @@ foreach (PeekedMessage peekedMessage in peekedMessages)
 
 ### <a name="update-a-message-in-a-queue"></a>Üzenetsor frissítése
 
-Egy üzenet tartalmának frissítéséhez hívja meg a [UpdateMessageAsync](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) metódust. A `UpdateMessageAsync` metódus módosíthatja az üzenet láthatósági időtúllépését és tartalmát. Az üzenet tartalmának UTF-8 kódolású karakterláncnak kell lennie, amely akár 64 KB méretű is lehet. Az üzenet új tartalma mellett adja meg a `SendReceipt` korábban a kódban mentett értékeket. Az `SendReceipt` értékek határozzák meg, hogy melyik üzenetet kell frissíteni.
+Az üzenet tartalmának frissítéséhez hívja meg a [`UpdateMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) metódust. Ez a metódus módosíthatja az üzenet láthatósági időtúllépését és tartalmát. Az üzenet tartalmának UTF-8 kódolású karakterláncnak kell lennie, amely akár 64 KB méretű is lehet. Az üzenet új tartalma mellett adja meg a `SendReceipt` korábban a kódban mentett értékeket. Az `SendReceipt` értékek határozzák meg, hogy melyik üzenetet kell frissíteni.
 
 ```csharp
 Console.WriteLine("\nUpdating the third message in the queue...");
@@ -224,7 +224,7 @@ await queueClient.UpdateMessageAsync(receipt.MessageId, receipt.PopReceipt, "Thi
 
 ### <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
 
-A korábban hozzáadott üzenetek letöltése a [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) metódus meghívásával.
+A korábban hozzáadott üzenetek letöltése a metódus meghívásával [`ReceiveMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) .
 
 Adja hozzá ezt a kódot a metódus végéhez `Main` :
 
@@ -261,7 +261,7 @@ foreach (QueueMessage message in messages)
 
 ### <a name="delete-a-queue"></a>Üzenetsor törlése
 
-A következő kód megtisztítja az alkalmazás által létrehozott erőforrásokat az üzenetsor törlésével a [DeleteAsync](/dotnet/api/azure.storage.queues.queueclient.deleteasync) metódus használatával.
+A következő kód törli az alkalmazás által létrehozott erőforrásokat az üzenetsor törlésével a [`DeleteAsync`](/dotnet/api/azure.storage.queues.queueclient.deleteasync) metódus használatával.
 
 Adja hozzá ezt a kódot a metódus végéhez `Main` :
 
@@ -293,7 +293,7 @@ dotnet run
 Az alkalmazás kimenete az alábbi példához hasonló:
 
 ```output
-Azure Queue storage v12 - .NET quickstart sample
+Azure Queue Storage client library v12 - .NET quickstart sample
 
 Creating queue: quickstartqueues-5c72da2c-30cc-4f09-b05c-a95d9da52af2
 
@@ -322,9 +322,9 @@ Done
 
 Ha az alkalmazás szünetelteti az üzenetek fogadását, akkor a [Azure Portalban](https://portal.azure.com)keresse meg a Storage-fiókját. Ellenőrizze, hogy az üzenetek szerepelnek-e a várólistán.
 
-Nyomja le az **ENTER** billentyűt az üzenetek fogadásához és törléséhez. Ha a rendszer kéri, nyomja meg ismét az **ENTER** billentyűt a várólista törléséhez és a bemutató befejezéséhez.
+Kattintson a `Enter` kulcsra az üzenetek fogadásához és törléséhez. Amikor a rendszer kéri, nyomja le `Enter` ismét a gombot a várólista törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre üzenetsor-t, és hogyan adhat hozzá üzeneteket az aszinkron .NET-kód használatával. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 
@@ -334,5 +334,5 @@ Oktatóanyagok, minták, gyors indítás és egyéb dokumentáció:
 > [Azure .NET- és .NET Core-fejlesztőknek](/dotnet/azure/)
 
 - További információt a [.net-hez készült Azure Storage kódtárak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage)című témakörben talál.
-- További Azure üzenetsor-tárolási minta alkalmazások megjelenítéséhez folytassa az [Azure üzenetsor Storage v12 .net Ügyféloldali függvénytárának mintáit](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples).
+- További Azure Queue Storage-példákat az [azure Queue Storage .net-hez készült ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)című témakörben talál.
 - A .NET Core keretrendszerrel kapcsolatos további információért lásd [a .NET használatának első lépéseit 10 percben](https://www.microsoft.com/net/learn/get-started/) ismertető szakaszt.

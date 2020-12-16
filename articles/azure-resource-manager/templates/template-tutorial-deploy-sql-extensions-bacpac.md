@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2d50903f464c03157ee393787af6ddfdad975aed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931401"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588046"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Oktatóanyag: SQL BACPAC-fájlok importálása ARM-sablonokkal
 
-Megtudhatja, hogyan importálhat Azure SQL Database-bővítményeket egy BACPAC-fájl importálásához Azure Resource Manager-sablonokkal (ARM-sablonok). Az üzembe helyezési összetevők a központi telepítés befejezéséhez szükséges fő sablonfájlok mellett bármilyen fájl is. A BACPAC-fájl egy összetevő.
+Megtudhatja, hogyan importálhat Azure SQL Database-bővítményeket egy [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) -fájl importálásához Azure Resource Manager-sablonokkal (ARM-sablonok). Az üzembe helyezési összetevők a központi telepítés befejezéséhez szükséges fő sablonfájlok mellett bármilyen fájl is. A BACPAC-fájl egy összetevő.
 
 Ebben az oktatóanyagban létrehoz egy sablont a [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) és egy önálló adatbázis üzembe helyezéséhez, valamint egy BACPAC-fájl importálásához. További információ az Azure-beli virtuálisgép-bővítmények ARM-sablonok használatával történő üzembe helyezéséről [: oktatóanyag: virtuálisgép-bővítmények üzembe helyezése ARM-sablonokkal](./template-tutorial-deploy-vm-extensions.md).
 
@@ -55,7 +55,7 @@ A BACPAC-fájlt egy ARM-sablon használatával kell tárolni egy Azure Storage-f
 * Töltse fel a BACPAC-fájlt a tárolóba.
 * Jelenítse meg a Storage-fiók kulcsát és a blob URL-címét.
 
-1. Válassza a **kipróbálás** lehetőséget a Cloud Shell megnyitásához. Ezután illessze be a következő PowerShell-szkriptet a rendszerhéj ablakába.
+1. Válassza a **kipróbálás** lehetőséget a rendszerhéj megnyitásához. Ezután illessze be a következő PowerShell-szkriptet a rendszerhéj ablakába.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -120,7 +120,7 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
 
 ## <a name="edit-the-template"></a>A sablon szerkesztése
 
-1. Adjon hozzá két további paramétert a parameters ( **Paraméterek** ) szakasz végén a Storage-fiók kulcsának és a BACPAC URL-címének megadásához.
+1. Vegyen fel két további paramétert a szakasz végén a `parameters` Storage-fiók kulcsának és a BACPAC URL-címének megadásához.
 
     ```json
         "storageAccountKey": {
@@ -137,7 +137,7 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
         }
     ```
 
-    Adjon hozzá egy vesszőt a **adminPassword** után. A JSON-fájl Visual Studio Code-ból való formázásához válassza a Shift + Alt + F billentyűkombinációt.
+    Adja hozzá a vesszőt a `adminPassword` tulajdonság záró kapcsos zárójel ( `}` ) után. A JSON-fájl Visual Studio Code-ból való formázásához válassza a Shift + Alt + F billentyűkombinációt.
 
     A két érték beszerzéséhez tekintse meg [a BACPAC-fájl előkészítését](#prepare-a-bacpac-file)ismertető témakört.
 
@@ -196,11 +196,11 @@ Az oktatóanyagban használt sablont a [GitHub](https://raw.githubusercontent.co
 
         További információ az erőforrás-definícióról: [SQL Database-bővítmény referenciája](/azure/templates/microsoft.sql/servers/databases/extensions). A következők a fontosabb elemek:
 
-        * **dependsOn**: az adatbázis létrehozása után létre kell hozni a bővítmény erőforrását.
-        * **storageKeyType**: adja meg a használandó tárolási kulcs típusát. Az értéke `StorageAccessKey` vagy `SharedAccessKey` lehet. Ebben `StorageAccessKey` az oktatóanyagban használható.
-        * **storageKey**: a BACPAC-fájlt tároló tárolási fiók kulcsát határozza meg. Ha a tárolási kulcs típusa `SharedAccessKey` , akkor meg kell előznie a következőt: "?".
-        * **storageUri**: a Storage-fiókban tárolt BACPAC-fájl URL-címét határozza meg.
-        * **administratorLoginPassword**: Az SQL-rendszergazda jelszava. Használjon generált jelszót. Lásd: [Előfeltételek](#prerequisites).
+        * `dependsOn`: Az adatbázis létrehozása után létre kell hozni a bővítmény erőforrását.
+        * `storageKeyType`: Adja meg a használni kívánt tárolási kulcs típusát. Az értéke `StorageAccessKey` vagy `SharedAccessKey` lehet. Ebben `StorageAccessKey` az oktatóanyagban használható.
+        * `storageKey`: Határozza meg a BACPAC-fájlt tároló Storage-fiók kulcsát. Ha a tárolási kulcs típusa `SharedAccessKey` , akkor meg kell előznie a következőt: "?".
+        * `storageUri`: Itt adhatja meg a Storage-fiókban tárolt BACPAC-fájl URL-címét.
+        * `administratorLoginPassword`: Az SQL-rendszergazda jelszava. Használjon generált jelszót. Lásd: [Előfeltételek](#prerequisites).
 
 A befejezett sablon ehhez hasonlóan néz ki:
 

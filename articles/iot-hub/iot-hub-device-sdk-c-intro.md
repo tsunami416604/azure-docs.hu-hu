@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 9b870e21ffd5c6a8261b6731b939b5dff558256d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501192"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588828"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C-hez készült Azure IoT eszközoldali SDK
 
@@ -45,7 +45,7 @@ A C GitHub-tárházhoz [**tartozó Azure IoT ESZKÖZOLDALI SDK**](https://github
 
 A kódtárak legújabb verziója az adattár **fő** ágában található:
 
-  ![A tárház főágának képernyőképe](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
+  ![A tárház fő ágának képernyőképe](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
 * Az SDK alapvető implementációja a **iothub \_ Client** mappában található, amely a legalacsonyabb API-réteg megvalósítását tartalmazza az SDK-ban: a **iothubclientről** könyvtár. A **iothubclientről** -függvénytár olyan API-kat tartalmaz, amelyek a nyers üzenetküldést implementálják az üzenetek küldéséhez IoT hub és az üzenetek fogadásához IoT hubról. Ennek a könyvtárnak a használatakor Ön felelős az üzenetek szerializálásának végrehajtásáért, de a IoT Hubkel folytatott kommunikáció egyéb adatai is kezelhetők.
 
@@ -72,7 +72,7 @@ Mielőtt futtatja a mintákat a C-hez készült Azure IoT Device SDK-ban, [létr
 
 A csomagok a közös platformokhoz (például a NuGet for Windows apt_get vagy a Debian és az Ubuntu rendszerhez) vannak megadva, és a minták ezeket a csomagokat használják, ha vannak ilyenek. Bizonyos esetekben le kell fordítania az SDK-t a vagy az eszközön. Ha le kell fordítania az SDK-t, tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) a GitHub-tárházban című témakört.
 
-A minta alkalmazás kódjának beszerzéséhez töltse le az SDK egy példányát a GitHubról. Szerezze be a forrás másolatát a [GitHub-adattár](https://github.com/Azure/azure-iot-sdk-c) **fő** ágának.
+A minta alkalmazás kódjának beszerzéséhez töltse le az SDK egy példányát a GitHubról. Szerezze be a forrás másolatát a [GitHub-adattár](https://github.com/Azure/azure-iot-sdk-c) **fő** ágában.
 
 
 ### <a name="obtain-the-device-credentials"></a>Az eszköz hitelesítő adatainak beszerzése
@@ -582,7 +582,7 @@ serializer_deinit();
 
 Mindhárom függvény a korábban leírt három inicializálási függvényhez igazodik. Az API-k meghívásával biztosíthatja, hogy a korábban lefoglalt erőforrások ingyenesek legyenek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a **C-hez készült Azure IoT Device SDK** kódtárainak használatának alapjait tárgyalja. Ez elegendő információt biztosít ahhoz, hogy megértsük az SDK-t, az architektúráját és a Windows-minták használatának megkezdését. A következő cikk a [iothubclientről könyvtárával kapcsolatos további tudnivalókkal](iot-hub-device-sdk-c-iothubclient.md)folytatja az SDK leírását.
 

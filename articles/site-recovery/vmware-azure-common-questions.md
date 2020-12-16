@@ -3,18 +3,18 @@ title: Gyakori kérdések a VMware vész-helyreállítással kapcsolatban Azure 
 description: Választ kaphat a helyszíni VMware virtuális gépek Azure-ba való vész-helyreállításával kapcsolatos gyakori kérdésekre Azure Site Recovery használatával.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379990"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587792"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
 
 Ez a cikk a helyszíni VMware virtuális gépek (VM-EK) Azure-ba történő vész-helyreállításának telepítésekor felmerülő gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-do-i-need-for-vmware-vm-disaster-recovery"></a>Mire van szükség a VMware virtuális gépek vész-helyreállításához?
 
@@ -46,7 +46,7 @@ Bármely olyan alkalmazást vagy munkaterhelést replikálhat, amely a [repliká
 
 Igen, a Microsoft frissítési garanciával rendelkező ügyfelei [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) használatával menthetik a licencelési költségeket az Azure-ba migrált Windows Server-gépekre, illetve az Azure-t a vész-helyreállításra.
 
-## <a name="security"></a>Biztonsági őr
+## <a name="security"></a>Biztonság
 
 ### <a name="what-access-to-vmware-servers-does-site-recovery-need"></a>Milyen Site Recovery szükséges a VMware-kiszolgálókhoz való hozzáférés?
 
@@ -146,6 +146,10 @@ A VMware virtuális gépek Azure-ba történő replikálásakor a replikálás f
 ### <a name="can-i-extend-replication"></a>Ki lehet terjeszteni a replikálást?
 
 A kiterjesztett vagy láncolt replikáció nem támogatott. Kérje ezt a szolgáltatást a [visszajelzési fórumba](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+
+### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>Hogyan követhetem nyomon a kezdeti replikáció/szinkronizálás folyamatát?
+
+Ez a funkció mostanában a szolgáltatások Site Recovery. Pontos részletekért frissítse a Site Recovery-infrastruktúrát (konfigurációs kiszolgálók, kibővített folyamat-kiszolgálók) és a mobilitási ügynököt a 9,36-es vagy újabb verzióra. További információ az előrehaladás nyomon követéséről [itt](vmware-azure-enable-replication.md#monitor-initial-replication).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Végezhetek kapcsolat nélküli kezdeti replikálást?
 

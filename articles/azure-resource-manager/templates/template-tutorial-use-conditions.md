@@ -5,18 +5,18 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1f4e8c0bc6a066e0d82d393474bfc804be5e3fb3
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f044863be7d0bfaaad57d3974a1d2856b27927ea
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931367"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589134"
 ---
-# <a name="tutorial-use-condition-in-arm-templates"></a>Oktatóanyag: feltétel használata ARM-sablonokban
+# <a name="tutorial-use-condition-in-arm-templates"></a>Oktatóanyag: Feltétel használata ARM-sablonokban
 
 Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat egy Azure Resource Manager-sablon (ARM-sablon) feltételei alapján.
 
-Az [erőforrások üzembehelyezési sorrendjének beállítását](./template-tutorial-create-templates-with-dependent-resources.md) ismertető oktatóanyagban egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat fog létrehozni, például egy tárfiókot. Ahelyett, hogy minden alkalommal egy új tárfiókot kellene létrehozni, megengedheti a felhasználóknak, hogy maguk döntsék el, új tárfiókot hoznak létre vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke „új”, akkor a rendszer új tárfiókot hoz létre. Ellenkező esetben a rendszer a megadott nevű meglévő Storage-fiókot használja.
+Az [erőforrások üzembehelyezési sorrendjének beállítását](./template-tutorial-create-templates-with-dependent-resources.md) ismertető oktatóanyagban egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat fog létrehozni, például egy tárfiókot. Ahelyett, hogy minden alkalommal egy új tárfiókot kellene létrehozni, megengedheti a felhasználóknak, hogy maguk döntsék el, új tárfiókot hoznak létre vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke **új**, a rendszer új Storage-fiókot hoz létre. Ellenkező esetben a rendszer a megadott nevű meglévő Storage-fiókot használja.
 
 ![Resource Manager-sablon használati feltételeinek diagramja](./media/template-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
@@ -54,7 +54,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
 
-1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott** fájl elemet.
+1. A Visual Studio Code-ból válassza a **fájl**  >  **megnyitott** fájl elemet.
 1. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -73,19 +73,19 @@ Az Azure Gyorsindítás sablonjai az ARM-sablonok tárháza. Teljesen új sablon
 
     A sablon testreszabása előtt hasznos áttekinteni a sablon hivatkozását.
 
-1. Válassza a **fájl** > **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre **azuredeploy.js** a következő néven:.
+1. Válassza a **fájl**  >  **Mentés másként** lehetőséget a fájl másolatának mentéséhez a helyi számítógépre _azuredeploy.js_ a következő néven:.
 
 ## <a name="modify-the-template"></a>A sablon módosítása
 
 A meglévő sablont két helyen kell módosítania:
 
 * Adjon hozzá egy tárfióknév paramétert. A felhasználók megadhatnak egy új tárfióknevet vagy egy meglévő tárfiók nevét is.
-* Adjon hozzá egy új, **newOrExisting** nevű paramétert. A központi telepítés ezzel a paraméterrel határozza meg, hogy létre kell-e hozni egy új Storage-fiókot, vagy egy meglévő Storage-fiókot kell használnia.
+* Adjon hozzá egy nevű új paramétert `newOrExisting` . A központi telepítés ezzel a paraméterrel határozza meg, hogy létre kell-e hozni egy új Storage-fiókot, vagy egy meglévő Storage-fiókot kell használnia.
 
 A következő eljárással hajthatja végre a módosításokat:
 
-1. Nyissa meg az **azuredeploy.json** fájlt a Visual Studio Code-ban.
-1. Cserélje le a három **változót ("storageAccountName")** a teljes sablonban található **paraméterekkel ("storageAccountName")** .
+1. Nyissa meg az _azuredeploy.json_ fájlt a Visual Studio Code-ban.
+1. Cserélje le a hármat a `variables('storageAccountName')` `parameters('storageAccountName')` teljes sablonra.
 1. Távolítsa el az alábbi változódefiníciót:
 
     ![Képernyőkép, amely kiemeli az eltávolítandó változók definícióit.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
@@ -105,7 +105,7 @@ A következő eljárással hajthatja végre a módosításokat:
     },
     ```
 
-    Az **[Alt] + [SHIFT] + F** billentyűkombinációval formázza a sablont a Visual Studio Code-ban.
+    Nyomja le az ALT + SHIFT + F billentyűkombinációt a sablon formázásához a Visual Studio Code-ban.
 
     A frissített paraméterdefiníció a következőképpen néz ki:
 
@@ -117,12 +117,12 @@ A következő eljárással hajthatja végre a módosításokat:
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
-    A feltétel ellenőrzi a **newOrExisting** nevű paraméter értékét. Ha a paraméter értéke **new** (új), az üzemelő példány létrehozza a tárfiókot.
+    A feltétel ellenőrzi a paraméter értékét `newOrExisting` . Ha a paraméter értéke **new** (új), az üzemelő példány létrehozza a tárfiókot.
 
     A frissített tárfiók-definíció a következőképpen néz ki:
 
     ![A Storage-fiók frissített definícióját megjelenítő képernyőkép.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-1. Frissítse a virtuális gép erőforrás-definíciójának **storageUri** tulajdonságát a következő értékkel:
+1. Frissítse a `storageUri` virtuális gép erőforrás-definíciójának tulajdonságát a következő értékkel:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -136,16 +136,16 @@ A következő eljárással hajthatja végre a módosításokat:
 
 1. Jelentkezzen be a [Azure Cloud Shellba](https://shell.azure.com)
 
-1. Válassza ki a kívánt környezetet a **PowerShell** vagy a **bash** (a CLI esetében) lehetőség kiválasztásával a bal felső sarokban.  A váltáskor a felületet újra kell indítani.
+1. Válassza ki a kívánt környezetet a **PowerShell** vagy a **bash** (a CLI esetében) lehetőség kiválasztásával a bal felső sarokban. A váltáskor a felületet újra kell indítani.
 
     ![Azure Portal Cloud Shell fájl feltöltése](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre. Lásd az előző képernyőképet. Válassza ki a korábbi szakaszban mentett fájlt. A fájl feltöltése után az **ls** parancs és a **Cat** parancs használatával ellenőrizheti, hogy a fájl feltöltése sikeresen megtörtént-e.
+1. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre. Lásd az előző képernyőképet. Válassza ki a korábbi szakaszban mentett fájlt. A fájl feltöltése után a `ls` parancs és a parancs használatával ellenőrizheti, `cat` hogy a fájl feltöltése sikeresen megtörtént-e.
 
 1. Futtassa a következő PowerShell-szkriptet a sablon telepítéséhez.
 
     > [!IMPORTANT]
-    > A tárfiók nevének egyedinek kell lennie az egész Azure rendszerben. A névnek csak kisbetűvel vagy számmal kell rendelkeznie. Nem lehet hosszabb 24 karakternél. A Storage-fiók neve a projekt neve a "Store" hozzáfűzéssel. Győződjön meg arról, hogy a projekt neve és a létrehozott Storage-fiók neve megfelel a Storage-fiók nevének.
+    > A tárfiók nevének egyedinek kell lennie az egész Azure rendszerben. A névnek csak kisbetűvel vagy számmal kell rendelkeznie. Nem lehet hosszabb 24 karakternél. A Storage-fiók neve a projekt neve, a **tároló** hozzáfűzve. Győződjön meg arról, hogy a projekt neve és a létrehozott Storage-fiók neve megfelel a Storage-fiók nevének.
 
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
@@ -172,9 +172,9 @@ A következő eljárással hajthatja végre a módosításokat:
     ```
 
     > [!NOTE]
-    > Az üzembe helyezés meghiúsul, ha a **newOrExisting** paraméter értéke **new**, de a megadott névvel rendelkező tárfiók már létezik.
+    > Az üzembe helyezés meghiúsul `newOrExisting` , ha az **új**, de a megadott Storage-fiókkal rendelkező Storage-fiók már létezik.
 
-Próbáljon meg egy másik üzemelő példányt a **newOrExisting** beállítással a "meglévő" értékre állítani, és adjon meg egy meglévő Storage-fiókot. Ha a művelet előtt szeretne létrehozni egy tárfiókot, tekintse meg a [tárfiók létrehozását](../../storage/common/storage-account-create.md) ismertető útmutatót.
+Próbáljon meg egy másik központi telepítést `newOrExisting` beállítani **meglévőre** , és adjon meg egy meglévő Storage-fiókot. Ha a művelet előtt szeretne létrehozni egy tárfiókot, tekintse meg a [tárfiók létrehozását](../../storage/common/storage-account-create.md) ismertető útmutatót.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

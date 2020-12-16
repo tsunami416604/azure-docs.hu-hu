@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 10c06f5b36de880302f17dc17c1d47d5209dd902
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780705"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588471"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Tanácsadási szolgáltatás ajánlatának megtervezése a kereskedelmi piactéren
 
@@ -29,17 +29,42 @@ A tanácsadási szolgáltatás ajánlatait a rendszer a **kapcsolatfelvételi** 
 
 Minden tanácsadási szolgáltatásnak az alábbi Microsoft-termékek egyikére kell összpontosítania, amelyet az ajánlat **elsődleges termékének** nevezünk:
 
-|Elsődleges termék                               |                   |
-|-------------------------------|-------------------|
-|Azure                          |Dynamics 365 Project szolgáltatás automatizálása |
-|Dynamics 365 Business Central  |Dynamics 365 Sales |
-|Dynamics 365 kereskedelmi          |Dynamics 365 ellátási lánc kezelése |
-|Dynamics 365 Customer Insights |Microsoft 365 |
-|Dynamics 365 Customer szolgáltatás  |Power Apps |
-|Dynamics 365 mező szolgáltatás     |Power Automate |
-|Dynamics 365 – Pénzügy           |Power BI |
-|Dynamics 365 marketing         |Power Virtual Agents |
-|    |    |
+:::row:::
+    :::column:::
+        Azure
+
+        Dynamics 365 Business Central
+
+        Dynamics 365 kereskedelmi
+
+        Dynamics 365 Customer Insights
+
+        Dynamics 365 Customer szolgáltatás
+
+        Dynamics 365 mező szolgáltatás
+
+        Dynamics 365 – Pénzügy
+
+        Dynamics 365 marketing
+    :::column-end:::
+    :::column:::
+        Dynamics 365 Project szolgáltatás automatizálása
+
+        Dynamics 365 Sales
+
+        Dynamics 365 ellátási lánc kezelése
+
+        Microsoft 365
+
+        Power Apps
+
+        Power Automate
+
+        Power BI
+
+        Power Virtual Agents
+    :::column-end:::
+:::row-end:::
 
 A partner Centerben kiválasztott elsődleges termék meghatározza, hogy az ajánlat közzé lesz-e téve Microsoft AppSource vagy az Azure Marketplace-en.
 
@@ -98,7 +123,7 @@ Amikor a partner Centerben hozza létre a tanácsadási szolgáltatás ajánlat�
 
 Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az elemeket az idő előtt. Ha másként nincs jelezve, a következő elemek szükségesek.
 
-**Name (név**): Ez a név jelenik meg a kereskedelmi piactéren az ajánlati lista címeként. A név lehet védjeggyel ellátott. Nem tartalmazhat hangulatjelek (kivéve, ha a védjegyek és a szerzői jogi szimbólumok), és legfeljebb 50 karakter hosszúnak kell lennie. A névnek tartalmaznia kell az ajánlat időtartamát és a szolgáltatás típusát, hogy maximalizálja a keresőmotor-optimalizálást (SEO). A kötelező formátum *neve: időtartam + típus*. Csak akkor adja meg a vállalat nevét, ha a termék neve is. Néhány példa:
+**Name (név**): Ez a név jelenik meg a kereskedelmi piactéren az ajánlati lista címeként. A név lehet védjeggyel ellátott. Nem tartalmazhat hangulatjelek (kivéve, ha a védjegyek és a szerzői jogi szimbólumok), és legfeljebb 50 karakter hosszúnak kell lennie. A névnek tartalmaznia kell az ajánlat időtartamát és a szolgáltatás típusát, hogy maximalizálja a keresőmotor-optimalizálást (SEO). A kötelező formátum *neve: időtartam + típus*. Csak akkor adja meg a vállalat nevét, ha a termék neve is. Íme néhány példa:
 
 |Ne mondd |Mondja a következőt:  |
 |---|---|
@@ -164,7 +189,7 @@ Kövesse az alábbi irányelveket a logókhoz:
 A tanácsadási szolgáltatás ajánlatát egy vagy több országban vagy régióban lehet elérhetővé tenni. A partner Centerben eldöntheti, hogy minden egyes kiválasztott piacon milyen árat kell megállapítania. A támogatott piacok és pénznemek teljes listájáért tekintse meg [a kereskedelmi piactér földrajzi elérhetőségét és a pénznemek támogatását](./marketplace-geo-availability-currencies.md)ismertető témakört.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tanácsadási szolgáltatási ajánlat létrehozása a kereskedelmi piactéren](./create-consulting-service-offer.md)
 * [Ajánlatlistákra vonatkozó ajánlott eljárások](./gtm-offer-listing-best-practices.md)

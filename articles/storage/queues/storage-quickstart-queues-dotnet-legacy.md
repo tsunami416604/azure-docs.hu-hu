@@ -3,25 +3,25 @@ title: 'Gyors útmutató: az Azure Storage v11 használata a .NET-hez egy üzene
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a .NET-hez készült Azure Storage ügyféloldali kódtárat üzenetsor létrehozására és az ahhoz tartozó üzenetek hozzáadására. Ezután megtudhatja, hogyan olvashatja és dolgozhatja fel az üzeneteket a várólistából.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f7368025993c91490d808ef0ae5f5f66233fe666
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 23703dc507aa909aea4711289a4d7d5c5e6a170e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345618"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588199"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rövid útmutató: a .NET-hez készült Azure Storage SDK v11 használatával kezelheti a várólistákat
 
-Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Storage ügyféloldali kódtár 11-es verzióját a .NET-hez egy üzenetsor létrehozásához és az üzenetek hozzáadásához. Ezután megtudhatja, hogyan olvashatja és dolgozhatja fel az üzeneteket a várólistából.
+Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a .NET-hez készült Azure Storage ügyféloldali kódtár-v11 egy üzenetsor létrehozásához és az üzenetek hozzáadásához. Ezután megtudhatja, hogyan olvashatja és dolgozhatja fel az üzeneteket a várólistából.
 
 > [!NOTE]
-> Ez a rövid útmutató az Azure üzenetsor-tároló ügyféloldali függvénytárának örökölt verzióját használja. A legújabb verzió használatának megkezdéséhez lásd: gyors üzembe helyezési útmutató az [Azure üzenetsor Storage ügyféloldali kódtára a .net-hez](storage-quickstart-queues-dotnet.md).
+> Ez a rövid útmutató az Azure Queue Storage ügyféloldali kódtár örökölt verzióját használja. A legújabb verzió használatának megkezdéséhez tekintse meg a következőt: gyors útmutató [: Azure Queue Storage a .net-hez készült ügyféloldali kódtár](storage-quickstart-queues-dotnet.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +56,7 @@ A [git](https://git-scm.com/) használatával letöltheti az alkalmazás egy pé
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megoldás megnyitásához keresse meg a *Storage-Queues-DotNet-Gyorsindítás* mappát, nyissa meg, és kattintson duplán a *Storage-Queues-DotNet-Quickstart. SLN* elemre.
+Ez a parancs klónozott a tárházat a helyi git-mappába. A Visual Studio-megoldás megnyitásához keresse meg a `storage-queues-dotnet-quickstart` mappát, nyissa meg, majd kattintson duplán a elemre `storage-queues-dotnet-quickstart.sln` .
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -98,7 +98,7 @@ A minta alkalmazás létrehoz egy várólistát, és felvesz egy üzenetet. Az a
 
 ### <a name="windows"></a>Windows
 
-Ha Visual Studiót használt szerkesztőként, a futtatáshoz nyomja le az **F5** billentyűt.
+Ha szerkesztőként használja a Visual studiót, kattintson `F5` a Futtatás gombra.
 
 Máskülönben lépjen az alkalmazás könyvtárába, majd futtassa az alkalmazást a `dotnet run` paranccsal.
 
@@ -148,7 +148,7 @@ A következőkben áttekintjük a mintakódot, és értelmezzük, hogyan működ
 
 ### <a name="try-parsing-the-connection-string"></a>Kapcsolati sztring elemzése
 
-A minta először ellenőrzi, hogy a környezeti változó tartalmaz-e egy olyan kapcsolódási karakterláncot, amely elemezhető egy olyan [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) objektum létrehozásához, amely a Storage-fiókra mutat. Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc érvényes-e, a minta a [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) metódust használja. Ha a **TryParse** sikeres, a minta inicializálja a *storageAccount* változót, és **igaz** értéket ad vissza.
+A minta először ellenőrzi, hogy a környezeti változó tartalmaz-e egy olyan kapcsolódási karakterláncot, amely elemezhető egy olyan objektum létrehozásához, amely [`CloudStorageAccount`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) a Storage-fiókra mutat. Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc érvényes-e, a minta a [`TryParse`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) metódust használja. Ha `TryParse` a sikeres, inicializálja a `storageAccount` változót, és visszatér `true` .
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -204,7 +204,7 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-Ha nem lejáró üzenetet szeretne felvenni, használja a `Timespan.FromSeconds(-1)` [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)-hívását.
+Ha nem lejáró üzenetet szeretne hozzáadni, használja a `Timespan.FromSeconds(-1)` hívást a következőre: [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) .
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -262,25 +262,25 @@ if (queue != null)
 
 ## <a name="resources-for-developing-net-applications-with-queues"></a>Erőforrások várólistákkal rendelkező .NET-alkalmazások fejlesztéséhez
 
-Tekintse meg ezeket a további forrásokat a .NET-fejlesztéshez az Azure Queues használatával:
+Tekintse meg ezeket a további forrásokat a .NET-fejlesztéshez az Azure Queue Storage használatával:
 
 ### <a name="binaries-and-source-code"></a>Bináris fájlok és forráskód
 
 - A .NET-hez készült [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage) legújabb verziójához tartozó NuGet-csomagok letöltése
-  - [Közös](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  - [Közös](https://www.nuget.org/packages/microsoft.azure.storage.common/)
   - [Üzenetsorok](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - A [.NET ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-net) a GitHubon tekintheti meg.
 
-### <a name="client-library-reference-and-samples"></a>Ügyféloldali kódtár – referencia és minták
+### <a name="azure-storage-client-library-reference-and-samples"></a>Az Azure Storage ügyféloldali kódtár referenciái és mintái
 
-- A .NET ügyféloldali kódtárral kapcsolatos további információért lásd a [.NET API-referenciáját](/dotnet/api/overview/azure/storage).
-- A .NET ügyféloldali kódtár használatával írt [üzenetsor-tárolási minták](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) megismerése.
+- A .NET-ügyfél kódtárakkal kapcsolatos további információkért tekintse meg az [Azure Storage ügyféloldali kódtárai](/dotnet/api/overview/azure/storage) című témakört.
+- Ismerkedjen meg Queue Storage a .NET ügyféloldali kódtár használatával írt [mintákkal](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) .
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan adhat hozzá üzeneteket egy várólistához, hogyan szúrhat be üzeneteket egy várólistából, és hogyan dolgozza fel az üzeneteket a .NET használatával.
 
 > [!div class="nextstepaction"]
-> [Alkalmazások közötti kommunikáció az Azure Queue Storage használatával](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Az alkalmazások közötti kommunikáció az Azure Queue Storage](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - A .NET Core keretrendszerrel kapcsolatos további információért lásd [a .NET használatának első lépéseit 10 percben](https://www.microsoft.com/net/learn/get-started/) ismertető szakaszt.

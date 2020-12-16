@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bd7bc159f7f5974452adf6b2f51148d869b4ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708152"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589236"
 ---
 # <a name="deployment-best-practices"></a>Ajánlott eljárások az üzembe helyezéshez
 
@@ -45,9 +45,9 @@ Amikor csak lehetséges, használja az [üzembe helyezési](deploy-staging-slots
 
 Ha a projekt a teszteléshez, a MINŐSÉGBIZTOSÍTÁShoz és az előkészítéshez kijelölt ágakat tartalmaz, akkor ezeket az ágakat folyamatosan üzembe kell helyezni egy átmeneti tárolóhelyen. (Ez az úgynevezett Gitflow- [kialakítás](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) Ez lehetővé teszi, hogy az érintettek könnyedén értékeljék és tesztelik az ág üzembe helyezését. 
 
-A folyamatos üzembe helyezést soha nem szabad engedélyezni az éles tárolóhelyen. Ehelyett a termelési ág (gyakran a Master) üzembe helyezését nem éles tárolóhelyre kell telepíteni. Ha készen áll az alapág kiadására, cserélje le az üzemi tárolóhelyre. Éles környezetbe történő váltás – az éles környezetbe való telepítés helyett – megakadályozza az állásidőt, és lehetővé teszi a módosítások visszaállítását újbóli cserével. 
+A folyamatos üzembe helyezést soha nem szabad engedélyezni az éles tárolóhelyen. Ehelyett a termelési ág (gyakran a fő) üzembe helyezését nem éles tárolóhelyre kell telepíteni. Ha készen áll az alapág kiadására, cserélje le az üzemi tárolóhelyre. Éles környezetbe történő váltás – az éles környezetbe való telepítés helyett – megakadályozza az állásidőt, és lehetővé teszi a módosítások visszaállítását újbóli cserével. 
 
-![Diagram, amely a fejlesztési, átmeneti és főágak, valamint a rendszerbe telepített tárolóhelyek közötti folyamatot mutatja.](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Diagram, amely a fejlesztési, átmeneti és fő ágak, valamint a rendszerbe telepített tárolóhelyek közötti folyamatot mutatja.](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>Tárolók folyamatos üzembe helyezése
 
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     -name: Authenticate using a Service Principal
       uses: azure/actions/login@v1

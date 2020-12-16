@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 31c4e6383b5eaea2bb66dc1baafa0fbff4918a7c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928528"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589117"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Oktatóanyag: ARM-sablonok üzembe helyezésének hibakeresése
 
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 Nyisson meg egy [standard Storage-fiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/) az [Azure gyorsindítási sablonokból](https://azure.microsoft.com/resources/templates/)nevű sablont, és állítson be két sablonbeli problémát.
 
-1. A Visual Studio Code-ból válassza a **fájl** > **megnyitott** fájl elemet.
+1. A Visual Studio Code-ból válassza a **fájl**  >  **megnyitott** fájl elemet.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
@@ -51,16 +51,16 @@ Nyisson meg egy [standard Storage-fiók létrehozása](https://azure.microsoft.c
     ```
 
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. Módosítsa a **apiVersion** sort a következő sorba:
+4. Módosítsa a `apiVersion` sort a következő sorba:
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
 
-    - a **apiVersion1** érvénytelen az elem neve. Érvényesítési hiba.
-    - Az API-verzió "2018-07-01".  Központi telepítési hiba.
+    - `apiVersion1` az elem neve érvénytelen. Érvényesítési hiba.
+    - Az API-verziónak a következőkkel kell lennie: `"2018-07-01"` .  Központi telepítési hiba.
 
-5. Válassza a **fájl** > **Mentés másként** lehetőséget, hogy a fájlt **azuredeploy.jsa** helyi számítógépre mentse.
+5. Válassza a **fájl**  >  **Mentés másként** lehetőséget, hogy a fájlt _azuredeploy.jsa_ helyi számítógépre mentse.
 
 ## <a name="troubleshoot-the-validation-error"></a>Az érvényesítési hiba megoldása
 
@@ -68,13 +68,13 @@ A sablon üzembe helyezéséhez tekintse meg a [sablon üzembe helyezése](templ
 
 A rendszerhéj a következőhöz hasonló hibaüzenetet kap:
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-A hibaüzenet azt jelzi, hogy a probléma a **apiVersion1**.
+A hibaüzenet azt jelzi, hogy a probléma a következő: `apiVersion1` .
 
-A Visual Studio Code segítségével javítsa ki a problémát úgy, hogy módosítja a **apiVersion1** a **apiVersion**, majd menti a sablont.
+A Visual Studio Code használatával javítsa ki a problémát `apiVersion1` `apiVersion` , és mentse a sablont.
 
 ## <a name="troubleshoot-the-deployment-error"></a>A központi telepítési hiba megoldása
 
@@ -82,7 +82,7 @@ A sablon üzembe helyezéséhez tekintse meg a [sablon üzembe helyezése](templ
 
 A rendszerhéj a következőhöz hasonló hibaüzenetet kap:
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageAccounts 'storeqii7x2rce77dc' failed with message '{
   "error": {
     "code": "NoRegisteredProviderFound",

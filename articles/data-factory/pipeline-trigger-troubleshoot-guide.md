@@ -1,20 +1,20 @@
 ---
-title: A folyamat-előkészítés és-eseményindítók hibáinak megoldása az ADF-ben
-description: Az ADF-ben a folyamat-triggerekkel kapcsolatos hibák elhárításához különböző módszereket használhat
+title: A folyamat-összehangolás és az eseményindítók hibáinak megoldása Azure Data Factory
+description: Különböző módszerekkel végezheti el a folyamat-triggerekkel kapcsolatos hibák elhárítását Azure Data Factory.
 author: ssabat
 ms.service: data-factory
 ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: ed3728513820da9f4ef85d44cac983dc09c3fc7d
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 0e67a316b012eda61607c84edfd8e10d6aa3318d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97521832"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589168"
 ---
-# <a name="troubleshoot-pipeline-orchestration-and-triggers-in-adf"></a>A folyamat-előkészítés és-eseményindítók hibáinak megoldása az ADF-ben
+# <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>A folyamat-összehangolás és az eseményindítók hibáinak megoldása Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,10 +27,10 @@ A folyamatfuttatások példányosítása jellemzően az argumentumoknak a folyam
 ### <a name="pipeline-with-azure-function-throws-error-with-private-end-point-connectivity"></a>A folyamat és az Azure Function dob hibát jelez a privát végponti kapcsolattal
  
 #### <a name="issue"></a>Probléma
-Bizonyos kontextusokban az ADF és az Azure függvényalkalmazás fut egy privát végponton. Olyan folyamatot próbál beolvasni, amely együttműködik az Azure függvényalkalmazásával. Három különböző metódust próbált meg, de egy hibát ad vissza `Bad Request` , a másik két metódus visszatér `103 Error Forbidden` .
+Egyes környezetekben Data Factory és Azure függvényalkalmazás fut egy privát végponton. Olyan folyamatot próbál beolvasni, amely együttműködik az Azure függvényalkalmazásával. Három különböző metódust próbált meg, de egy hibát ad vissza `Bad Request` , a másik két metódus visszatér `103 Error Forbidden` .
 
 #### <a name="cause"></a>Ok 
-Az ADF jelenleg nem támogatja az Azure függvényalkalmazáshez készült magánhálózati végpont-összekötőt. Ennek az az oka, hogy az Azure függvényalkalmazás elutasítja a hívásokat, mivel úgy lett konfigurálva, hogy csak privát kapcsolaton keresztül engedélyezze a kapcsolatokat.
+A Data Factory jelenleg nem támogatja az Azure függvényalkalmazáshez készült magánhálózati végpont-összekötőt. Ennek az az oka, hogy az Azure függvényalkalmazás elutasítja a hívásokat, mivel úgy lett konfigurálva, hogy csak privát kapcsolaton keresztül engedélyezze a kapcsolatokat.
 
 #### <a name="resolution"></a>Feloldás
 Létrehozhat egy **PrivateLinkService** típusú privát végpontot, és megadhatja a függvény alkalmazásának DNS-t, és a hálózatnak működnie kell.
@@ -46,7 +46,7 @@ Frissítse a böngészőt, és alkalmazza a megfelelő szűrőket a figyeléshez
 ### <a name="copy-pipeline-failure--found-more-columns-than-expected-column-count-delimitedtextmorecolumnsthandefined"></a>Másolási folyamat hibája – a várt oszlopoknál több oszlop található (DelimitedTextMoreColumnsThanDefined)
 
 #### <a name="issue"></a>Probléma  
-Ha a másolt mappában lévő fájlok különböző sémákkal (például változó számú oszlopokkal, különböző elválasztó karakterekkel, idézőjelekkel vagy valamilyen adatproblémával) rendelkeznek, akkor az ADF-folyamat véget ért a következő hibánál:
+Ha a másolandó mappában található fájlok különböző sémákkal (például változó számú oszlopokkal, különböző elválasztó karakterekkel, idézőjelekkel vagy valamilyen adatproblémával) rendelkeznek, akkor a Data Factory folyamat a következő hibaüzenettel végződik:
 
 `
 Operation on target Copy_sks  failed: Failure happened on 'Sink' side.
@@ -57,7 +57,7 @@ Source=Microsoft.DataTransfer.Common,'
 `
 
 #### <a name="resolution"></a>Feloldás
-A Adatok másolása tevékenység létrehozásakor válassza a "bináris másolás" lehetőséget. Így az adatok tömeges másolása vagy áttelepítése az egyik Data Lakeról a másikra, **bináris** lehetőség használatával az ADF nem nyitja meg a fájlokat az olvasási sémának, de csak az összes fájlt bináris fájlként kezeli, és átmásolja azokat a másik helyre.
+A Adatok másolása tevékenység létrehozásakor válassza a "bináris másolás" lehetőséget. Így az adatok tömeges másolása vagy áttelepítése az egyik Data Lakeról a másikra **bináris** beállítással Data Factory nem nyitja meg a fájlokat a séma olvasására, de csak bináris fájlként kezeli az összes fájlt, és átmásolja azokat a másik helyre.
 
 ### <a name="pipeline-run-fails-when-capacity-limit-of-integration-runtime-is-reached"></a>A folyamat futtatása meghiúsul, ha elérte az integrációs modul kapacitásának korlátját
 
@@ -79,14 +79,14 @@ Ha egy időben nagy mennyiségű adatfolyamatot hajt végre ugyanazzal az integr
 ### <a name="how-to-monitor-pipeline-failures-on-regular-interval"></a>Folyamat-meghibásodások figyelése rendszeres időközönként
 
 #### <a name="issue"></a>Probléma
-Gyakran van szükség az ADF-folyamatok időközönkénti figyelésére, azaz 5 percre. A folyamat a végpont használatával kérdezheti le és szűrheti a folyamat futtatását egy adatok előállítóján. 
+Gyakran van szükség az Data Factory-folyamatok időközönkénti figyelésére, azaz 5 percre. A folyamat a végpont használatával kérdezheti le és szűrheti a folyamat futtatását egy adatok előállítóján. 
 
 #### <a name="recommendation"></a>Ajánlás
 1. Állítson be egy Azure logikai alkalmazást, amely 5 percenként lekérdezi az összes sikertelen folyamatot.
 2. Ezt követően az incidenseket bejelenthetjük a [QueryByFactory](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory).
 
 #### <a name="reference"></a>Referencia
-- [Külső – értesítések küldése az ADF-ből](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
+- [Külső – értesítések küldése Data Factoryról](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
 
 ### <a name="how-to-handle-activity-level-errors-and-failures-in-pipelines"></a>Tevékenység-szintű hibák és hibák kezelése a folyamatokban
 
@@ -102,7 +102,7 @@ Azure Data Factory a folyamat sikeres és sikertelen működésének meghatároz
 - A tevékenységek szintjének ellenőrzésének végrehajtása [a folyamat hibáinak és hibáinak kezelése](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)után.
 - Az Azure Logic App használatával rendszeres időközönként figyelheti a folyamatokat a [DataFactory által végzett lekérdezés]( https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 

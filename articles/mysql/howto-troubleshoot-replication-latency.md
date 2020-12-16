@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 30ac28ef996c42e99ebece27ec156777f0d033d2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087026"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587876"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>A replikáció késésének elhárítása az Azure Database for MySQL-ben
 
@@ -31,9 +31,12 @@ A másodlagos olvasási replikák replikációs késése számos tényezőtől f
 
 Ebből a cikkből megtudhatja, hogyan lehet elhárítani a Azure Database for MySQL replikációs késését. Azt is megismerheti, hogy a replika kiszolgálók nagyobb replikációs késésének gyakori okai.
 
+> [!NOTE]
+> Ez a cikk a Slave kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+
 ## <a name="replication-concepts"></a>Replikációs fogalmak
 
-Ha engedélyezve van egy bináris napló, a forráskiszolgáló véglegesített tranzakciókat ír a bináris naplóba. A rendszer a bináris naplót használja a replikáláshoz. Alapértelmezés szerint be van kapcsolva minden olyan újonnan kiosztott kiszolgáló számára, amely akár 16 TB tárterületet is támogat. A replika-kiszolgálókon két szál fut minden egyes másodpéldány-kiszolgálón. Az egyik szál az *IO-szál* , a másik pedig az *SQL-szál* :
+Ha engedélyezve van egy bináris napló, a forráskiszolgáló véglegesített tranzakciókat ír a bináris naplóba. A rendszer a bináris naplót használja a replikáláshoz. Alapértelmezés szerint be van kapcsolva minden olyan újonnan kiosztott kiszolgáló számára, amely akár 16 TB tárterületet is támogat. A replika-kiszolgálókon két szál fut minden egyes másodpéldány-kiszolgálón. Az egyik szál az *IO-szál*, a másik pedig az *SQL-szál*:
 
 - Az i/o-szál csatlakozik a forráskiszolgálón, és a frissített bináris naplókat kéri. Ez a szál a bináris napló frissítéseit kapja meg. Ezeket a frissítéseket egy replika-kiszolgálóra menti a rendszer a *Relay-napló* nevű helyi naplóban.
 - Az SQL-szál beolvassa a Relay-naplót, majd alkalmazza az adatmódosításokat a replika-kiszolgálókon.
@@ -87,14 +90,14 @@ mysql> SHOW SLAVE STATUS;
 A következő egy tipikus kimenet:
   
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="Replikáció késésének figyelése&quot;:::
+> :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="Replikáció késésének figyelése":::
 
 
 A kimenet számos információt tartalmaz. Általában csak az alábbi táblázatban leírt sorokra kell összpontosítania.
 
 |Metrika|Leírás|
 |---|---|
-|Slave_IO_State| Az i/o-szál aktuális állapotát jelöli. Az állapot általában &quot;Várakozás a főkiszolgáló számára esemény küldésére&quot;, ha a forrás (főkiszolgáló) kiszolgáló szinkronizálást végez. Egy olyan állapot, mint a &quot;Csatlakozás a főkiszolgálóhoz" érték azt jelzi, hogy a replika elvesztette a kapcsolatot a forráskiszolgálóról. Győződjön meg arról, hogy a forráskiszolgáló fut, vagy ellenőrizze, hogy a tűzfal blokkolja-e a kapcsolódást.|
+|Slave_IO_State| Az i/o-szál aktuális állapotát jelöli. Az állapot általában "Várakozás a főkiszolgáló számára esemény küldésére", ha a forrás (főkiszolgáló) kiszolgáló szinkronizálást végez. Egy olyan állapot, mint a "Csatlakozás a főkiszolgálóhoz" érték azt jelzi, hogy a replika elvesztette a kapcsolatot a forráskiszolgálóról. Győződjön meg arról, hogy a forráskiszolgáló fut, vagy ellenőrizze, hogy a tűzfal blokkolja-e a kapcsolódást.|
 |Master_Log_File| Azt a bináris naplófájlt jelöli, amelyre a forráskiszolgáló írása történik.|
 |Read_Master_Log_Pos| Azt jelzi, hogy a forráskiszolgáló hol van írva a bináris naplófájlban.|
 |Relay_Master_Log_File| Azt a bináris naplófájlt jelöli, amelyet a replika kiszolgáló a forráskiszolgálóról olvas.|

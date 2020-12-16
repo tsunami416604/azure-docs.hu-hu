@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9e04006a0908832c623230d89caa62b0985f32e4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931452"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587944"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Oktatóanyag: virtuálisgép-bővítmények üzembe helyezése ARM-sablonokkal
 
@@ -42,7 +42,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell-szkript előkészítése
 
-Használhat beágyazott PowerShell-parancsfájlt vagy parancsfájlt is.  Ez az oktatóanyag bemutatja, hogyan használható egy parancsfájl. A [githubon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)a következő tartalommal rendelkező PowerShell-szkriptek vannak megosztva:
+Használhat beágyazott PowerShell-parancsfájlt vagy parancsfájlt is. Ez az oktatóanyag bemutatja, hogyan használható egy parancsfájl. A [githubon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)a következő tartalommal rendelkező PowerShell-szkriptek vannak megosztva:
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -105,22 +105,22 @@ Adjon hozzá a meglévő sablonhoz egy virtuális gépi bővítmény erőforrás
 
 Az erőforrás-definícióval kapcsolatos további információkért tekintse meg a [bővítmények referenciáját](/azure/templates/microsoft.compute/virtualmachines/extensions). A következők a fontosabb elemek:
 
-* **name**: Mivel a bővítményerőforrás a virtuális gép objektum gyermekerőforrása, a nevének tartalmaznia kell a virtuális gép nevének előtagját. Lásd: [a gyermek erőforrások nevének és típusának beállítása](child-resource-name-type.md).
-* **dependsOn**: hozza létre a bővítmény erőforrást a virtuális gép létrehozása után.
-* **fileUris**: a parancsfájlokat tároló hely. Ha úgy dönt, hogy nem használja a megadott helyet, frissítenie kell az értékeket.
-* **commandToExecute**: Ez a parancs meghívja a parancsfájlt.
+* `name`: Mivel a bővítmény erőforrás a virtuálisgép-objektum alárendelt erőforrása, a névnek a virtuális gép nevének előtagjaként kell szerepelnie. Lásd: [a gyermek erőforrások nevének és típusának beállítása](child-resource-name-type.md).
+* `dependsOn`: Hozza létre a bővítmény erőforrást a virtuális gép létrehozása után.
+* `fileUris`: A parancsfájlok tárolására szolgáló hely. Ha úgy dönt, hogy nem használja a megadott helyet, frissítenie kell az értékeket.
+* `commandToExecute`: Ez a parancs meghívja a parancsfájlt.
 
-A beágyazott parancsfájl használatához távolítsa el a **fileUris**, és frissítse a **commandToExecute** a következőre:
+Ha beágyazott parancsfájlt szeretne használni, távolítsa el `fileUris` , és frissítsen a következőre `commandToExecute` :
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
 ```
 
-Ez a beágyazott parancsfájl frissíti a iisstart.html tartalmát is.
+Ez a beágyazott parancsfájl a _iisstart.html_ tartalmát is frissíti.
 
-Meg kell nyitnia a HTTP-portot is, hogy el tudja érni a webkiszolgálót.
+Meg kell nyitnia a HTTP-portot is, hogy hozzáférhessen a webkiszolgálóhoz.
 
-1. Keresse meg a **securityRules** a sablonban.
+1. Keresés `securityRules` a sablonban.
 1. Adja hozzá a következő szabályt az **alapértelmezett-Allow-3389** elem mellett.
 
     ```json
@@ -141,7 +141,7 @@ Meg kell nyitnia a HTTP-portot is, hogy el tudja érni a webkiszolgálót.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A telepítési eljárással kapcsolatban tekintse meg az [oktatóanyag: ARM-sablonok létrehozása függő erőforrásokkal](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)című témakör "a sablon telepítése" című szakaszát. Javasoljuk, hogy a virtuális gép rendszergazdai fiókjához generált jelszót használjon. Tekintse meg ezt a cikk [előfeltételeit](#prerequisites) ismertető szakaszt.
+Az üzembe helyezési eljárással kapcsolatban tekintse meg a **sablon telepítése** című szakaszt a következő [OKTATÓANYAGban: ARM-sablonok létrehozása függő erőforrásokkal](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Javasoljuk, hogy a virtuális gép rendszergazdai fiókjához generált jelszót használjon. Tekintse meg ezt a cikk [előfeltételeit](#prerequisites) ismertető szakaszt.
 
 A Cloud Shell futtassa a következő parancsot a virtuális gép nyilvános IP-címének lekéréséhez:
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dc6056653fc50976439d4b16594e6d554e62f061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65107b0924351ca6debf37201e8849ffe8dd1eab
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652822"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589427"
 ---
 # <a name="nvv3-series"></a>NVv3 sorozat
 
@@ -26,6 +26,7 @@ A NVv3-példányok minden GPU-je tartalmaz egy RÁCSos licencet. Ez a licenc leh
 [Élő áttelepítés](maintenance-and-updates.md): nem támogatott<br>
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
+Gyorsított hálózatkezelés: támogatott<br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) | Virtuális munkaállomások | Virtuális alkalmazások |
@@ -35,8 +36,6 @@ A NVv3-példányok minden GPU-je tartalmaz egy RÁCSos licencet. Ez a licenc leh
 | Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80000/800 | 8 / 24000 | 4 | 100 |
 
 <sup>1</sup> 1 GPU = egy fél M60 kártya.
-
-<sup>2</sup> ebben az időben a gyorsított hálózatkezelés nem támogatott ezen a virtuálisgép-családon, így a valós hálózati teljesítmény az itt rögzített elméleti számoknál alacsonyabb lehet.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
