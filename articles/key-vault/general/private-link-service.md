@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 75f06ae11d308028431202c22338ff4a589acf28
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460054"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592296"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>A Key Vault és az Azure Private Link integrálása
 
@@ -53,7 +53,7 @@ A Key Vault alapalapjainak konfigurálása után válassza a hálózatkezelés f
 1. Válassza a magánhálózati végpont választógombot a hálózatkezelés lapon.
 1. Privát végpont hozzáadásához kattintson a "+ Hozzáadás" gombra.
 
-    ![Rendszerkép](../media/private-link-service-1.png)
+    ![Képernyőkép, amely a "hálózatkezelés" fület mutatja a "Key Vault létrehozása" oldalon.](../media/private-link-service-1.png)
  
 1. A privát végpont létrehozása panel "location" mezőjében válassza ki azt a régiót, amelyben a virtuális hálózat található. 
 1. A "név" mezőben hozzon létre egy leíró nevet, amely lehetővé teszi a privát végpont azonosítását. 
@@ -61,7 +61,7 @@ A Key Vault alapalapjainak konfigurálása után válassza a hálózatkezelés f
 1. Hagyja változatlanul az "integráció a saját DNS-zónával" beállítást.  
 1. Válassza az OK gombot.
 
-    ![Rendszerkép](../media/private-link-service-8.png)
+    ![Képernyőkép, amely a "privát végpont létrehozása" lapot jeleníti meg a kiválasztott beállításokkal.](../media/private-link-service-8.png)
  
 Ekkor megtekintheti a konfigurált privát végpontot. Most már lehetősége van a privát végpont törlésére és szerkesztésére. Válassza a "felülvizsgálat + létrehozás" gombot, és hozza létre a Key vaultot. A telepítés befejezéséhez 5-10 percet vesz igénybe. 
 
@@ -76,12 +76,13 @@ Ha már rendelkezik kulcstartóval, a következő lépések végrehajtásával h
 1. Válassza ki a privát Endpoint Connections fület az oldal tetején.
 1. Válassza ki a "+ Private Endpoint" gombot az oldal tetején.
 
-    ![Rendszerkép ](../media/private-link-service-3.png) ![](../media/private-link-service-4.png)
+    ![A "hálózatkezelés" lapon a "+ Private Endpoint" (privát végpont) gombot megjelenítő képernyőkép.](../media/private-link-service-3.png)
+    ![Képernyőkép, amely a "privát végpont (előzetes verzió) létrehozása" lap "alapismeretek" lapját jeleníti meg.](../media/private-link-service-4.png)
 
 A panel használatával bármely Azure-erőforráshoz létrehozhat egy privát végpontot. A legördülő menük segítségével kiválaszthat egy erőforrástípust, és kiválaszthat egy erőforrást a címtárban, vagy bármely Azure-erőforráshoz kapcsolódhat erőforrás-azonosító használatával. Hagyja változatlanul az "integráció a saját DNS-zónával" beállítást.  
 
-![Rendszerkép ](../media/private-link-service-3.png)
- ![](../media/private-link-service-4.png)
+![Képernyőkép, amely bemutatja, hogyan adhat hozzá egy privát végpontot az aktuális panel használatával. ](../media/private-link-service-3.png)
+ ![ Képernyőkép, amely a "privát végpont (előzetes verzió) létrehozása" lapra mutat példát.](../media/private-link-service-4.png)
 
 Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az erőforrás, amelyhez privát végpontot hoz létre, akkor jóváhagyhatja a megfelelő engedélyekkel rendelkező kapcsolódási kérelmet. Ha egy másik címtárban található Azure-erőforráshoz csatlakozik, meg kell várnia, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolódási kérelmet.
 
@@ -105,7 +106,7 @@ Négy kiépítési állapot létezik:
 1. Kattintson a jóváhagyás gombra.
 1. Ha van olyan privát végponti kapcsolat, amelyet el szeretne utasítani, legyen az egy függőben lévő kérelem vagy létező kapcsolat, válassza ki a kapcsolatot, és kattintson az "elutasítás" gombra.
 
-    ![Rendszerkép](../media/private-link-service-7.png)
+    ![Kép](../media/private-link-service-7.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
@@ -263,7 +264,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 További információ [: Azure Private link Service: korlátozások](../../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure Private linkről](../../private-link/private-link-service-overview.md)
 - További információ a [Azure Key Vault](overview.md)

@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, specs, Hardware, DK, képességek, mélység, szín, RGB, IMU, tömb, mélység, több, szinkronizálás
-ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361160"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592279"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Több Azure Kinect DK-eszköz szinkronizálása
 
@@ -89,6 +89,9 @@ Ha 160 s-eltolást használ &mu; , akár kilenc további részletes kamerát is 
 
 A szoftverben a vagy a használatával győződjön meg arról, ```depth_delay_off_color_usec``` ```subordinate_delay_off_master_usec``` hogy az egyes IR lézeres tüzek a saját 160 &mu; s ablakban vannak, vagy más típusú nézetben vannak.
 
+> [!NOTE]  
+> A tényleges Pulse szélessége 125us, azonban 160us, hogy bizonyos mozgásteret biztosítson. Ha például NFOV UNBINNED, az egyes 125us impulzusokat a 1450us üresjárat követi. Ezek összesen – (9 x 125) + (8 x 1450) – a rendszer a 12.8 MS expozíciós idejét eredményezi. A szekrényben a 2 eszköz beléptetése is megmarad, hogy a második kamera első impulzusa az első kamera első üresjárati időszaka alá kerüljön. Az első és második kamera közötti késleltetés akár 125us is lehet (egy impulzus vastagsága), de azt javasoljuk, hogy a 160us. Megadott 160us legfeljebb 10 kamera expozíciós időszakait lehet összekapcsolni.
+
 ## <a name="prepare-your-devices-and-other-hardware"></a>Az eszközök és egyéb hardverek előkészítése
 
 Több Azure Kinect DK-eszközön kívül előfordulhat, hogy további gazdagép-számítógépeket és egyéb hardvereket kell beszereznie, hogy támogassa a létrehozni kívánt konfigurációt. Az ebben a szakaszban található információk alapján győződjön meg arról, hogy az összes eszköz és hardver készen áll a beállítás megkezdése előtt.
@@ -122,7 +125,7 @@ Alapértelmezés szerint a Linux-alapú gazdagépek az USB-vezérlőt csak 16 MB
    ```
    > [!NOTE]  
    > Ezek a parancsok az USB-memóriát 32 MB-ra állítja be. Ez egy példa az alapértelmezett érték két alkalommal történő beállítására. Sokkal nagyobb értéket is beállíthat, a megoldásnak megfelelően.
-1. Futtassa a **sudo update-grub**parancsot.
+1. Futtassa a **sudo update-grub** parancsot.
 1. Indítsa újra a számítógépet.
 
 ### <a name="cables"></a>Kábelek
@@ -160,17 +163,17 @@ Az [Azure Kinect Viewer](azure-kinect-viewer.md)használatával ellenőrizheti, 
 > Ehhez az eljáráshoz ismernie kell az egyes Azure Kinect DK sorozatszámát.
 
 1. Nyissa meg az Azure Kinect Viewer két példányát.
-1. Az **eszköz megnyitása**alatt válassza ki a tesztelni kívánt alárendelt eszköz sorozatszámát.  
+1. Az **eszköz megnyitása** alatt válassza ki a tesztelni kívánt alárendelt eszköz sorozatszámát.  
    ![Eszköz megnyitása](./media/open-devices.png)
    > [!IMPORTANT]  
    > Ha az összes eszköz között pontos képrögzítési igazítást szeretne kapni, akkor a főeszközt utoljára kell elindítania.  
-1. A **külső szinkronizálás**területen válassza a **Sub**elemet.  
+1. A **külső szinkronizálás** területen válassza a **Sub** elemet.  
    ![Alárendelt kamera kezdete](./media/sub-device-start.png)
 1.  Válassza az **Indítás** elemet.  
     > [!NOTE]  
     > Mivel ez egy alárendelt eszköz, az Azure Kinect Viewer nem jelenít meg rendszerképet az eszköz elindítása után. Egyetlen rendszerkép sem jelenik meg addig, amíg az alárendelt eszköz nem kap szinkronizálási jelet a főeszköztől.
 1. Az alárendelt eszköz elindítása után az Azure Kinect Viewer másik példányával nyissa meg a fő eszközt.
-1. A **külső szinkronizálás**területen válassza a **főkiszolgáló**lehetőséget.
+1. A **külső szinkronizálás** területen válassza a **főkiszolgáló** lehetőséget.
 1. Válassza az **Indítás** elemet.
 
 A fő Azure Kinect-eszköz indításakor az Azure Kinect Viewer mindkét példányának képeket kell megjelenítenie.

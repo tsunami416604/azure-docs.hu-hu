@@ -4,12 +4,12 @@ description: Az autoskálázási beállítások részletes részletezése és m�
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a914f6d71c013acea8dfde0f6578985bc009bb26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317467"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605240"
 ---
 # <a name="understand-autoscale-settings"></a>Ismerkedés az automatikus méretezési beállításokkal
 Az automatikus skálázási beállítások segítségével gondoskodhat arról, hogy megfelelő mennyiségű erőforrást futtasson az alkalmazás változó terhelésének kezeléséhez. Az automatikus skálázási beállításokat beállíthatja úgy, hogy a terhelést vagy teljesítményt jelző mérőszámok alapján induljon el, vagy egy ütemezett dátumon és időpontban aktiválódik. Ez a cikk részletesen ismerteti az autoskálázási beállítások anatómiáját. A cikk a beállítások sémájával és tulajdonságaival kezdődik, majd végigvezeti a különböző konfigurálható profilok típusain. Végül a cikk bemutatja, hogyan értékeli ki az Azure-ban az autoscale funkció az adott időpontban végrehajtandó profilt.
@@ -60,7 +60,7 @@ Az autoskálázási beállítás sémájának szemléltetéséhez a következő 
               "cooldown": "PT5M"
             }
           },
-    {
+          {
             "metricTrigger": {
               "metricName": "Percentage CPU",
               "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1",
@@ -119,34 +119,41 @@ Az autoskálázási profilok három típusa létezik:
 
 - **Rögzített dátum profil:** Ez a profil különleges esetekhez használható. Tegyük fel például, hogy egy fontos esemény következik be, amely a 2017 (PST) december 26-án jelenik meg. Azt szeretné, hogy az erőforrás minimális és maximális kapacitása ettől a naptól eltérő legyen, de továbbra is méretezhető ugyanazon mérőszámok esetében. Ebben az esetben adjon hozzá egy rögzített dátumú profilt a beállítások listájához. A profil úgy van konfigurálva, hogy csak az esemény napján fusson. Az autoscale bármely más napra a normál profilt használja.
 
-    ``` JSON
-    "profiles": [{
-    "name": " regularProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    },
-    {
-    ...
-    }]
-    },
-    {
-    "name": "eventProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    }, {
-    ...
-    }],
-    "fixedDate": {
-        "timeZone": "Pacific Standard Time",
-               "start": "2017-12-26T00:00:00",
-               "end": "2017-12-26T23:59:00"
-    }}
+    ```json
+    "profiles": [
+        {
+            "name": " regularProfile",
+            "capacity": {
+                ...
+            },
+            "rules": [
+                {
+                ...
+                },
+                {
+                ...
+                }
+            ]
+        },
+        {
+            "name": "eventProfile",
+            "capacity": {
+            ...
+            },
+            "rules": [
+                {
+                ...
+                }, 
+                {
+                ...
+                }
+            ],
+            "fixedDate": {
+                "timeZone": "Pacific Standard Time",
+                "start": "2017-12-26T00:00:00",
+                "end": "2017-12-26T23:59:00"
+            }
+        }
     ]
     ```
     

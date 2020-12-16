@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7e8746d9b29b0b4af30ba799628328acc3fd8bc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17c0e63b02d61b3aecf70624bc97a468d18f66fe
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936017"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607507"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Mi az Azure arc engedélyezve PostgreSQL nagy kapacitású?
 
@@ -26,7 +26,7 @@ Az Azure arc engedélyezve PostgreSQL nagy kapacitású az Azure arc-kompatibili
 - Leválasztott forgatókönyvek támogatása
 
 További részletek:
-- [Mik azok az Azure arc-kompatibilis adatszolgáltatások](overview.md)
+- [Mik azok az Azure Arc-kompatibilis adatszolgáltatások?](overview.md)
 - [Csatlakozási módok és követelmények](connectivity.md)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
@@ -43,14 +43,14 @@ Ez az Azure-beli szolgáltatásként elérhető postgres-adatbázismotor nagy ka
 
 ## <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure arc engedélyezve PostgreSQL nagy kapacitású
 
-:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure SQL Database PostgreSQL-nagy kapacitású (Citus)":::
+:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure arc engedélyezve PostgreSQL nagy kapacitású":::
 
 Ez az Azure arc-kompatibilis adatszolgáltatások által elérhető postgres-adatbázismotor nagy kapacitású formája. Emellett a Citus bővítmény is, amely lehetővé teszi a nagy kapacitású élményét. Ezen az űrlapon ügyfeleink a rendszereket üzemeltető infrastruktúrát biztosítják, és működtetik azokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - **Létrehozás**
-   > **Csak szeretné kipróbálni a dolgokat?**  
-   > Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) az Azure Kubernetes Service (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gépen.
+   > **Csak szeretné kipróbálni a dolgokat? Nincs elérhető Kubernetes-fürt? Egy Sandboxot biztosítunk Önnek:**  
+   > Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) az Azure Kubernetes Service (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gépen.
 
    - **Létrehozása**
       - [Az ügyféleszközök telepítése](install-client-tools.md)

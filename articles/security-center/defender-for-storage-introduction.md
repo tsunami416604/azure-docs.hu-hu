@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516519"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606725"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Az Azure Defender tároláshoz bemutatása
 
@@ -20,7 +20,6 @@ ms.locfileid: "97516519"
 Az **Azure Defender for Storage** egy olyan Azure-alapú biztonsági intelligencia, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kihasználásához. A biztonsági AI és a [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) speciális képességeinek kihasználásával környezetfüggő biztonsági riasztásokat és ajánlásokat biztosít.
 
 A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a riasztások a Azure Security Centerba vannak integrálva, és e-mailben is elküldhető az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos javaslatokkal kapcsolatban.
-
 
 ## <a name="availability"></a>Rendelkezésre állás
 
@@ -31,6 +30,17 @@ A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáli�
 |Védett tárolási típusok:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
+
+
+## <a name="what-are-the-benefits-of-azure-defender-for-storage"></a>Milyen előnyökkel jár az Azure Defender a Storage szolgáltatáshoz?
+
+Az Azure Defender for Storage a következőket biztosítja:
+
+- **Azure-natív biztonság** – az Azure-Blob, a Azure Files és az adattavakban tárolt adatvédelmet biztosító Defender for Storage védelmet nyújt. Az Azure-natív szolgáltatásként a Defender a Storage számára központosított biztonságot nyújt az összes Azure által kezelt adategységben, és integrálva van más Azure-beli biztonsági szolgáltatásokkal, például az Azure Sentinelrel.
+- A Microsoft veszélyforrások felderítése által működtetett, **gazdag észlelési csomag** , amely a Defender for Storage szolgáltatás észleléseit fedi le, például a névtelen hozzáférést, a feltört hitelesítő adatokat, a közösségi mérnöki környezetet, a jogosultsági visszaéléseket és a rosszindulatú tartalmakat.
+- A Scale-Security Center Automation-eszközeire **adott válasz** megkönnyíti az azonosított fenyegetések megelőzését és reagálását. További információ: [Security Center triggerekre adott válaszok automatizálása](workflow-automation.md).
+
+:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="Az Azure Defender for Storage funkcióinak magas szintű áttekintése":::
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-storage-provide"></a>Milyen típusú riasztások biztosítják az Azure Defender for Storage szolgáltatást?

@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: conceptual
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: 20f25e0add5d05bb2dcf7f3ebdc86ccd5ae889d0
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bee41bb8e5beb4df3086ab50499cb185a83e4efe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510787"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592329"
 ---
 # <a name="peering-policy"></a>Társviszony-létesítési szabályzat
 A Microsoft egy szelektív, az iparági szabványoknak és az ajánlott eljárásoknak megfelelő felhasználói élményt biztosít, amely a jövőbeli igények és a társítások stratégiai elhelyezésének biztosítására szolgál. Ennek megfelelően a Microsoft fenntartja a jogot arra, hogy a szükségesnek ítélt kivételeket hozzon a szabályzathoz. A Microsoft általános követelményeit a hálózatról az alábbi részben ismertetjük. Ezek a közvetlen társ-és Exchange-kérelmekre egyaránt érvényesek. 
@@ -64,7 +64,7 @@ A Microsoft egy szelektív, az iparági szabványoknak és az ajánlott eljárá
 * Az Exchange-kapcsolaton keresztüli társak esetében legalább 500 MB-os forgalomnak és 2 GB-nál kisebbnek kell lennie. A 2 GB-os közvetlen társítást meghaladó forgalom esetében meg kell határozni a forgalmat.
 * A Microsoft számára legalább 2 GB szükséges a közvetlen társításhoz. A egymással kölcsönösen megállapodott helyeknek támogatniuk kell a feladatátvételt, amely biztosítja, hogy a társítás a feladatátvételi forgatókönyv során is honosítva maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretne többet megtudni a Microsofttal való közvetlen együttműködés beállításához szükséges lépésekről, kövesse a közvetlen összevonási [útmutató](walkthrough-direct-all.md)utasításait.
 * A Microsofttal való Exchange-társítás beállításával kapcsolatos lépésekért kövesse az [Exchange-partneri útmutató](walkthrough-exchange-all.md)című témakört.

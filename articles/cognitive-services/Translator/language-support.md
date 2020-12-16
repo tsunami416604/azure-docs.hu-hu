@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: bdd12b5c866ee723547513e35a5adcfabb59dab9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c7e859b05450b95cf9c75421599dd9c54a639cdc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364420"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606844"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
@@ -34,88 +34,88 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 
 [A fordítási műveletekre vonatkozó dokumentáció megtekintése](reference/v3-0-translate.md)
 
-|Nyelv|  Nyelvkód|
-|:-----|:-----:|
-|búr| `af`|
-|Arab|    `ar`    |
-|Asszámi|  `as`    |
-|Bangla|    `bn`    |
-|Bosnyák (latin betűs)|   `bs`    |
-|Bolgár| `bg`    |
-|Kantoni (hagyományos)|   `yue`|
-|Katalán|   `ca`    |
-|kínai (egyszerűsített)|    `zh-Hans`|
-|kínai (hagyományos)|   `zh-Hant`       |
-|Horvát|  `hr`    |
-|cseh| `cs`    |
-|Dari|  `prs`   |
-|Dán|    `da`        |
-|Holland| `nl`|
-|Angol|   `en`    |
-|Észt|  `et`    |
-|Fidzsi|    `fj`    |
-|Filipino|  `fil`   |
-|Finn|   `fi`    |
-|Francia|    `fr`    |
-|Francia (Kanada)|   `fr-ca` |
-|Német|    `de`    |
-|Görög| `el`    |
-|gudzsaráti|  `gu`    |
-|Haiti kreol|    `ht`        |
-|héber |`he`   |
-|Hindi| `hi`    |
-|Hmong DAW| `mww`   |
-|Magyar| `hu`    |
-|Izlandi| `is`    |
-|Indonéz|    `id`    |
-|Ír | `ga`|
-|Olasz|   `it`    |
-|Japán|  `ja`    |
-|kannada|`kn`|
-|Kazak|`kk`|
-|Klingon|   `tlh-Latn`  |
-|Klingon (plqaD)|   `tlh-Piqd`  |
-|Koreai |`ko`   |
-|Kurd (Közép)  |`ku`   |
-|Kurd (északi) |`kmr`  |
-|Lett|   `lv`    |
-|Litván|    `lt`    |
-|Malgas|  `mg`    |
-|Maláj| `ms`        |
-|malajálam| `ml` |
-|Máltai|   `mt`    |
-|maori| `mi`  |
-|marathi| `mr`  |
-|Norvég| `nb`    |
-|Odia|  `or`    |
-|Pasto|    `ps`    |
-|perzsa|   `fa`    |
-|Lengyel|    `pl`    |
-|Portugál (Brazília)|   `pt-br` |
-|Portugál (Portugália)| `pt-pt` |
-|pandzsábi|`pa`|
-|Queretaro otomi|   `otq`   |
-|Román|  `ro`    |
-|Orosz|   `ru`    |
-|Szamoai|    `sm`    |
-|Szerb (cirill betűs)|    `sr-Cyrl`|
-|Szerb (latin betűs)|   `sr-Latn`       |
-|Szlovák|    `sk`    |
-|Szlovén| `sl`    |
-|Spanyol|   `es`    |
-|szuahéli|   `sw`    |
-|svéd|   `sv`    |
-|Tahitian|  `ty`    |
-|tamil| `ta`    |
-|telugu|    `te`    |
-|Thai|  `th`    |
-|Tongai|    `to`    |
-|Török|   `tr`        |
-|Ukrán| `uk`    |
-|urdu|  `ur`    |
-|Vietnámi|    `vi`    |
-|walesi| `cy`    |
-|Yucatec Maya|  `yua`   |
+| Nyelv | Nyelvkód |
+|:-|:-:|
+| búr | `af` |
+| Arab | `ar` |
+| Asszámi | `as` |
+| Bangla | `bn` |
+| Bosnyák (latin betűs) | `bs` |
+| Bolgár | `bg` |
+| Kantoni (hagyományos) | `yue` |
+| Katalán | `ca` |
+| kínai (egyszerűsített) | `zh-Hans` |
+| kínai (hagyományos) | `zh-Hant` |
+| Horvát | `hr` |
+| cseh | `cs` |
+| Dari | `prs` |
+| Dán | `da` |
+| Holland | `nl` |
+| Angol | `en` |
+| Észt | `et` |
+| Fidzsi | `fj` |
+| Filipino | `fil` |
+| Finn | `fi` |
+| Francia | `fr` |
+| Francia (Kanada) | `fr-ca` |
+| Német | `de` |
+| Görög | `el` |
+| gudzsaráti | `gu` |
+| Haiti kreol | `ht` |
+| héber | `he` |
+| Hindi | `hi` |
+| Hmong DAW | `mww` |
+| Magyar | `hu` |
+| Izlandi | `is` |
+| Indonéz | `id` |
+| Ír | `ga` |
+| Olasz | `it` |
+| Japán | `ja` |
+| kannada | `kn` |
+| Kazak | `kk` |
+| Klingon | `tlh-Latn` |
+| Klingon (plqaD) | `tlh-Piqd` |
+| Koreai | `ko` |
+| Kurd (Közép) | `ku` |
+| Kurd (északi) | `kmr` |
+| Lett | `lv` |
+| Litván | `lt` |
+| Malgas | `mg` |
+| Maláj | `ms` |
+| malajálam | `ml` |
+| Máltai | `mt` |
+| maori | `mi` |
+| marathi | `mr` |
+| Norvég | `nb` |
+| Odia | `or` |
+| Pasto | `ps` |
+| perzsa | `fa` |
+| Lengyel | `pl` |
+| Portugál (Brazília) | `pt-br` |
+| Portugál (Portugália) | `pt-pt` |
+| pandzsábi | `pa` |
+| Queretaro otomi | `otq` |
+| Román | `ro` |
+| Orosz | `ru` |
+| Szamoai | `sm` |
+| Szerb (cirill betűs) | `sr-Cyrl` |
+| Szerb (latin betűs) | `sr-Latn` |
+| Szlovák | `sk` |
+| Szlovén | `sl` |
+| Spanyol | `es` |
+| szuahéli | `sw` |
+| svéd | `sv` |
+| Tahitian | `ty` |
+| tamil | `ta` |
+| telugu | `te` |
+| Thai | `th` |
+| Tongai | `to` |
+| Török | `tr` |
+| Ukrán | `uk` |
+| urdu | `ur` |
+| Vietnámi | `vi` |
+| walesi | `cy` |
+| Yucatec Maya | `yua` |
 
 > [!NOTE]
 > A Nyelvkód `pt` alapértelmezett értéke `pt-br` , Portugál (Brazília).
@@ -126,63 +126,63 @@ A Translator a következő nyelveket észleli fordításhoz és íráshoz.
 
 [Észlelési műveletre vonatkozó dokumentáció megtekintése](reference/v3-0-detect.md)
 
-|Nyelv|  Nyelvkód|
-|:-----|:-----:|
-|búr| `af`|
-|Arab|    `ar`    |
-|Bolgár| `bg`    |
-|Katalán|   `ca`    |
-|kínai (egyszerűsített)|    `zh-Hans`|
-|kínai (hagyományos)|   `zh-Hant`       |
-|Horvát|  `hr`    |
-|Cseh| `cs`    |
-|Dán|    `da`        |
-|Holland| `nl`|
-|Angol|   `en`    |
-|Észt|  `et`    |
-|Finn|   `fi`    |
-|Francia|    `fr`    |
-|Német|    `de`    |
-|Görög| `el`    |
-|gudzsaráti|  `gu`    |
-|Haiti kreol|    `ht`        |
-|héber |`he`   |
-|Hindi| `hi`    |
-|Magyar| `hu`    |
-|Izlandi| `is`    |
-|Indonéz|    `id`    |
-|Ír | `ga`|
-|Olasz|   `it`    |
-|Japán|  `ja`    |
-|Klingon|   `tlh-Latn`  |
-|Koreai |`ko`   |
-|Kurd (Közép)  |`ku-Arab`  |
-|Lett|   `lv`    |
-|Litván|    `lt`    |
-|Maláj| `ms`        |
-|Máltai|   `mt`    |
-|Norvég| `nb`    |
-|Pasto|    `ps`    |
-|perzsa|   `fa`    |
-|Lengyel|    `pl`    |
-|Portugál|    `pt`    |
-|Román|  `ro`    |
-|Orosz|   `ru`    |
-|Szerb (cirill betűs)|    `sr-Cyrl`|
-|Szerb (latin betűs)|   `sr-Latn`       |
-|Szlovák|    `sk`    |
-|Szlovén| `sl`    |
-|Spanyol|   `es`    |
-|szuahéli|   `sw`    |
-|svéd|   `sv`    |
-|Tahitian|  `ty`    |
-|Thai|  `th`    |
-|Török|   `tr`        |
-|Ukrán| `uk`    |
-|urdu|  `ur`    |
-|Vietnámi|    `vi`    |
-|walesi| `cy`    |
-|Yucatec Maya|  `yua`   |
+| Nyelv | Nyelvkód |
+|:-|:-:|
+| búr | `af` |
+| Arab | `ar` |
+| Bolgár | `bg` |
+| Katalán | `ca` |
+| kínai (egyszerűsített) | `zh-Hans` |
+| kínai (hagyományos) | `zh-Hant` |
+| Horvát | `hr` |
+| Cseh | `cs` |
+| Dán | `da` |
+| Holland | `nl` |
+| Angol | `en` |
+| Észt | `et` |
+| Finn | `fi` |
+| Francia | `fr` |
+| Német | `de` |
+| Görög | `el` |
+| gudzsaráti | `gu` |
+| Haiti kreol | `ht` |
+| héber | `he` |
+| Hindi | `hi` |
+| Magyar | `hu` |
+| Izlandi | `is` |
+| Indonéz | `id` |
+| Ír | `ga` |
+| Olasz | `it` |
+| Japán | `ja` |
+| Klingon | `tlh-Latn` |
+| Koreai | `ko` |
+| Kurd (Közép) | `ku-Arab` |
+| Lett | `lv` |
+| Litván | `lt` |
+| Maláj | `ms` |
+| Máltai | `mt` |
+| Norvég | `nb` |
+| Pasto | `ps` |
+| perzsa | `fa` |
+| Lengyel | `pl` |
+| Portugál | `pt` |
+| Román | `ro` |
+| Orosz | `ru` |
+| Szerb (cirill betűs) | `sr-Cyrl` |
+| Szerb (latin betűs) | `sr-Latn` |
+| Szlovák | `sk` |
+| Szlovén | `sl` |
+| Spanyol | `es` |
+| szuahéli | `sw` |
+| svéd | `sv` |
+| Tahitian | `ty` |
+| Thai | `th` |
+| Török | `tr` |
+| Ukrán | `uk` |
+| urdu | `ur` |
+| Vietnámi | `vi` |
+| walesi | `cy` |
+| Yucatec Maya | `yua` |
 
 ### <a name="transliterate"></a>Átírás
 
@@ -319,7 +319,7 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 | Lett      | `lv`          |
 | Litván      | `lt`          |
 | Malgas| `mg`    |
-| Maláj|    `ms`        |
+| Maláj|    `ms` |
 |Máltai|   `mt`    |
 | maori| `mi`  |
 | marathi| `mr`  |
@@ -387,47 +387,47 @@ A beszédet szöveggé alakíthatja, hogy a választott szöveg nyelvét leford�
 ### <a name="text-to-speech"></a>Szövegfelolvasás
 Szöveg konvertálása beszédre A szöveg és a beszéd használatával a fordítási eredmények hallható kimenetét, illetve beszéd – beszéd fordítást lehet használni a beszédfelismerési szöveggel történő használathoz. 
 
-| Nyelv    |
-|:----------- |
-|Arab|
-|Bolgár|
-|Kantoni (hagyományos)|
-|Katalán|
-|kínai (egyszerűsített)|
-|kínai (hagyományos)|
-|Horvát|
-|Cseh|
-|Dán|
-|Holland|
-|Angol|
-|Finn|
-|Francia|
-|Francia (Kanada)|
-|Német|
-|Görög|
-|héber|
-|Hindi|
-|Magyar|
-|Indonéz|
-|Olasz|
-|Japán|
-|Koreai|
-|Maláj|
-|Norvég|
-|Lengyel|
-|Portugál (Brazília)|
-|Portugál (Portugália)|
-|Román|
-|Orosz|
-|Szlovák|
-|Szlovén|
-|Spanyol|
-|Svéd|
-|tamil|
-|telugu|
-|Thai|
-|Török|
-|Vietnámi|
+| Nyelv |
+|:-|
+| Arab |
+| Bolgár |
+| Kantoni (hagyományos) |
+| Katalán |
+| kínai (egyszerűsített) |
+| kínai (hagyományos) |
+| Horvát |
+| Cseh |
+| Dán |
+| Holland |
+| Angol |
+| Finn |
+| Francia |
+| Francia (Kanada) |
+| Német |
+| Görög |
+| héber |
+| Hindi |
+| Magyar |
+| Indonéz |
+| Olasz |
+| Japán |
+| Koreai |
+| Maláj |
+| Norvég |
+| Lengyel |
+| Portugál (Brazília) |
+| Portugál (Portugália) |
+| Román |
+| Orosz |
+| Szlovák |
+| Szlovén |
+| Spanyol |
+| Svéd |
+| tamil |
+| telugu |
+| Thai |
+| Török |
+| Vietnámi |
 
 ## <a name="view-the-language-list-on-the-microsoft-translator-website"></a>A Microsoft Translator webhelyén megtekintheti a nyelvi listát
 

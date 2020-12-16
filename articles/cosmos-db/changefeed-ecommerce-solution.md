@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: d0eef49ea82afe50c5e178de9ad5e82bcb0db0eb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e7b75c71d64054e38630677ecd38f8e3e2483c12
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342164"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606334"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>A valós idejű adatelemzések megjelenítéséhez használja a Azure Cosmos DB módosítási csatornát
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,14 +35,14 @@ A következő ábra a megoldásban részt vevő adatfolyamot és összetevőket 
  
 1. **Adatgenerálás:** A adatszimulátor használatával olyan kiskereskedelmi adatforgalom hozhatók forgalomba, amelyek olyan eseményeket jelentenek, mint például egy felhasználó, egy elem hozzáadása a kosárhoz, és egy elem vásárlása. Az adatgenerátor használatával nagy mennyiségű mintaadatok hozhatók létre. A generált mintaadatok a következő formátumban tartalmazzák a dokumentumokat:
    
-   ```json
-   {      
-     "CartID": 2486,
-     "Action": "Viewed",
-     "Item": "Women's Denim Jacket",
-     "Price": 31.99
-   }
-   ```
+    ```json
+    {
+      "CartID": 2486,
+      "Action": "Viewed",
+      "Item": "Women's Denim Jacket",
+      "Price": 31.99
+    }
+    ```
 
 2. **Cosmos db:** A generált adattároló egy Azure Cosmos-tárolóban tárolódik.  
 
@@ -90,7 +90,7 @@ Hozza létre az Azure-erőforrásokat – Azure Cosmos DB, a Storage-fiókot, az
    ```powershell
    .\deploy.ps1
    ```
-5. Ha a rendszer kéri, adja meg az Azure- **előfizetése azonosítóját** , a **changefeedlab** az erőforráscsoport nevét, és **run1** a telepítési név mezőben. Ha az erőforrások üzembe helyezése megkezdődött, akár 10 percet is igénybe vehet.
+5. Ha a rendszer kéri, adja meg az Azure- **előfizetése azonosítóját**, a **changefeedlab** az erőforráscsoport nevét, és **run1** a telepítési név mezőben. Ha az erőforrások üzembe helyezése megkezdődött, akár 10 percet is igénybe vehet.
 
 ## <a name="create-a-database-and-the-collection"></a>Adatbázis és gyűjtemény létrehozása
 
@@ -180,7 +180,7 @@ Ha szeretné megtudni, hogyan dolgozza fel a változás a hírcsatornában az ú
  
 6. Várjon, amíg a program futni próbál. A csillagok azt jelentik, hogy az adatforgalom bekerül! A program futásának fenntartása – fontos, hogy a rendszer sok adatgyűjtést gyűjtsön.  
 
-7. Ha [Azure Portal](https://portal.azure.com/) , majd az erőforráscsoport Cosmos db fiókjához navigál, majd **adatkezelő** , akkor a rendszer a **changefeedlabcollection** importált véletlenszerű adatmennyiséget fogja látni.
+7. Ha [Azure Portal](https://portal.azure.com/) , majd az erőforráscsoport Cosmos db fiókjához navigál, majd **adatkezelő**, akkor a rendszer a **changefeedlabcollection** importált véletlenszerű adatmennyiséget fogja látni.
  
    :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="A portálon létrehozott adatértékek":::
 
@@ -204,7 +204,7 @@ A Azure Stream Analytics egy teljes körűen felügyelt felhőalapú szolgáltat
    * Az **Event hub-névtér** mezőben adja meg az prelab során létrehozott Event hub-névtér nevét.  
    * Az **Event hub neve** mezőben válassza a **meglévő használata** lehetőséget, majd a legördülő menüben válassza az **Event-hub1** elemet.  
    * Az **Event hub-házirend** neve mező értékét állítsa az alapértelmezett értékre.  
-   * Az **esemény szerializálási formátumának** meghagyása **JSON** -ként.  
+   * Az **esemény szerializálási formátumának** meghagyása **JSON**-ként.  
    * Hagyja meg a **kódolás mezőt** **UTF-8** értékre.  
    * Az **esemény tömörítési típus** mezőjét állítsa **nincs** értékre.  
    * Válassza ki a **Mentés** gombot.
@@ -253,7 +253,7 @@ A Power BI egy üzleti elemzési eszközcsomag, mellyel adatokat elemezhet és m
  
 5. Válassza ki a **averagePrice** az **adatkészletek** közül, majd kattintson a **tovább** gombra.  
 
-6. A **vizualizáció típusa** mezőben válassza a **fürtözött sávdiagram** lehetőséget a legördülő menüből. A **tengely** területen adja hozzá a műveletet. A **Jelmagyarázat** kihagyása anélkül, hogy bármit adna hozzá. Ezután a következő, érték nevű szakaszban adja hozzá az **AVG** **értéket**. Válassza a **Next (tovább** ), majd a diagram címet, és kattintson az **alkalmaz** gombra. Új diagramot kell látnia az irányítópulton.  
+6. A **vizualizáció típusa** mezőben válassza a **fürtözött sávdiagram** lehetőséget a legördülő menüből. A **tengely** területen adja hozzá a műveletet. A **Jelmagyarázat** kihagyása anélkül, hogy bármit adna hozzá. Ezután a következő, érték nevű szakaszban adja hozzá az **AVG** **értéket**. Válassza a **Next (tovább**), majd a diagram címet, és kattintson az **alkalmaz** gombra. Új diagramot kell látnia az irányítópulton.  
 
 7. Most, ha további mérőszámokat szeretne megjeleníteni, térjen vissza a **streamjob1** , és hozzon létre három további kimenetet a következő mezőkkel.
 
@@ -323,9 +323,9 @@ A Power BI egy üzleti elemzési eszközcsomag, mellyel adatokat elemezhet és m
 
 Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-kereskedelmi hellyel való kapcsolódáshoz. Az e-kereskedelmi webhely létrehozásához használjon egy Azure Cosmos-adatbázist a termékkategóriák (nők, férfiak, Unisex), a termékkatalógus és a legnépszerűbb elemek listájának tárolásához.
 
-1. Térjen vissza a [Azure Portalra](https://portal.azure.com/), majd a **Cosmos db-fiókjába** , majd **adatkezelő**.  
+1. Térjen vissza a [Azure Portalra](https://portal.azure.com/), majd a **Cosmos db-fiókjába**, majd **adatkezelő**.  
 
-   Adjon hozzá két gyűjteményt a **changefeedlabdatabase**  -  - **termékek** és- **Kategóriák** területen rögzített tárolókapacitással.
+   Adjon hozzá két gyűjteményt a **changefeedlabdatabase**  -  -**termékek** és- **Kategóriák** területen rögzített tárolókapacitással.
 
    Adjon hozzá egy másik gyűjteményt a **topItems** és a **/cikkengedm** nevű **changefeedlabdatabase** a partíció kulcsaként.
 
@@ -381,7 +381,7 @@ Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-
 
 7. A `<appSettings>` blokkon belül adja hozzá az **URI** -t és az **elsődleges kulcsot** , amelyet korábban mentett, ahol az **URI itt** és **az elsődleges kulcs itt** látható. Ezután adja hozzá az **adatbázis nevét** és a **gyűjtemény nevét** a jelzett módon. (Ezek a nevek csak akkor **changefeedlabdatabase** és **changefeedlabcollection** , ha úgy dönt, hogy másképpen nevezi el.)
 
-   Adja meg a **termékek gyűjteményének nevét** , a **Kategóriák gyűjteményének nevét** és a **legfontosabb elemek gyűjteményének nevét** a jelzett módon. (Ezeknek a névnek **termékeknek, kategóriáknak és topItems** kell lennie, kivéve, ha úgy döntött, hogy másképpen nevezi el.)  
+   Adja meg a **termékek gyűjteményének nevét**, a **Kategóriák gyűjteményének nevét** és a **legfontosabb elemek gyűjteményének nevét** a jelzett módon. (Ezeknek a névnek **termékeknek, kategóriáknak és topItems** kell lennie, kivéve, ha úgy döntött, hogy másképpen nevezi el.)  
 
 8. Navigáljon a **EcommerceWebApp. SLN** **mappában található pénztár mappához** , és nyissa meg a következőt:. Ezután nyissa meg a **Web.config** fájlt a mappán belül.  
 

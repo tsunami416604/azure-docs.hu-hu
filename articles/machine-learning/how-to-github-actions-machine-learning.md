@@ -1,5 +1,5 @@
 ---
-title: A CI/CD-hez készült GitHub-műveletek
+title: GitHub Actions a CI/CD-hez
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan hozhat létre GitHub-műveletek munkafolyamatot modell betanításához Azure Machine Learning
 services: machine-learning
@@ -10,16 +10,16 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: 4336827dc7f8cb45f04e4cef94d79d1e6409d5c0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e7f6066cb7ed5c166d3e2bdc3f895073b05b92b9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795210"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605025"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>GitHub-műveletek használata Azure Machine Learning
 
-Ismerkedjen meg a [GitHub-műveletekkel](https://help.github.com/en/articles/about-github-actions) Azure Machine learning-modell betanításához. 
+Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/free-pro-team@latest/actions) Azure Machine learning-modell betanításához. 
 
 > [!NOTE]
 > A Azure Machine Learning GitHub-műveletei a következőként vannak megadva, és a Microsoft nem támogatja teljesen. Ha egy adott művelettel kapcsolatos problémákat tapasztal, nyisson meg egy problémát a tárházban a művelethez. Ha például problémát tapasztal a pénzmosás-telepítés művelettel kapcsolatban, jelentse a problémát a tárházban [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) .
@@ -221,11 +221,11 @@ jobs:
 
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az erőforráscsoport és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val](how-to-create-your-first-pipeline.md)

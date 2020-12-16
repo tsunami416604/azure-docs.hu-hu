@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b8f13a20232fab61dc082c1b12b7ddaa11807554
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7d97958c5fd1274495da88c064b63e59e354f691
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016190"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606963"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure Time Series Insights Gen2 használati esetei
 
@@ -98,7 +98,7 @@ Azure Time Series Insights Gen2 két egyszerű és költséghatékony módszert 
 
 * Másodszor, a gépi tanulási és előrejelzési modellek kimenete Azure Time Series Insights Gen2 az eredmények megjelenítéséhez és tárolásához. Ez az eljárás segít a szervezeteknek a modelljeik optimalizálásában és finomhangolásában. Azure Time Series Insights Gen2 megkönnyíti a folyamatos átviteli telemetria-adatokat a betanított modell kimenetével megegyező síkban. Így segít az adatelemzési csapatoknak észrevenni a rendellenességeket és azonosítani a mintákat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [Azure Time Series Insights Gen2 Explorer böngészőről](./concepts-ux-panels.md).
 * A környezet megtervezéséhez olvassa el [Azure Time Series Insights Gen2 ajánlott eljárásokat](./how-to-plan-your-environment.md) .

@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346995"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606283"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -111,6 +111,7 @@ Időbe telik a tűzfalszabály módosításainak propagálása. A tűzfalbeáll�
 - [Hogyan hozzáférést biztosítanak a lekéréses vagy leküldéses képekhez engedély nélkül a beállításjegyzék-erőforrás kezeléséhez?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Hogyan lehetővé teszi az automatikus rendszerképek karanténba helyezését a beállításjegyzékben?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [Hogyan engedélyezze a névtelen lekéréses hozzáférést?](#how-do-i-enable-anonymous-pull-access)
+- [A nem terjeszthető rétegek leküldése a beállításjegyzékbe Hogyan](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Hogyan Access Docker Registry HTTP API v2?
 
@@ -264,6 +265,33 @@ Az Azure Container Registry for Anonymous (nyilvános) lekéréses hozzáférés
 > [!NOTE]
 > * Névtelenül csak az ismert rendszerképek lekéréséhez szükséges API-k érhetők el. Nem érhetők el más API-k olyan műveletekhez, mint a címkék vagy a Tárházak listája.
 > * A névtelen lekérési művelet megkísérlése előtt futtassa `docker logout` a parancsot, és győződjön meg arról, hogy a meglévő Docker-hitelesítő adatok törlődnek.
+
+### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>A nem terjeszthető rétegek leküldése a beállításjegyzékbe Hogyan
+
+A jegyzékfájlban található nem terjeszthető réteg olyan URL-paramétert tartalmaz, amelyből a tartalom beolvasható. A nem terjeszthető rétegek engedélyezésének egyes lehetséges használati esetei a hálózati korlátozott nyilvántartások, a korlátozott hozzáférésű gapped-jegyzékek, illetve az internetkapcsolattal nem rendelkező kibocsátásiegység-forgalmi jegyzékek esetében használhatók.
+
+Ha például úgy állítja be a NSG-szabályokat, hogy a virtuális gép csak az Azure Container registryből tudja lekérni a lemezképeket, a Docker lekéri a külső/nem terjeszthető rétegek hibáit. Egy Windows Server Core-rendszerkép például az Azure Container registryre mutató idegen rétegbeli hivatkozásokat tartalmazhatja a jegyzékfájljában, és nem fogja tudni lekérni ezt a forgatókönyvet.
+
+Nem terjeszthető rétegek kitolásának engedélyezése:
+
+1. Szerkessze a `daemon.json` fájlt, amely a `/etc/docker/` Linux-gazdagépeken és a `C:\ProgramData\docker\config\daemon.json` Windows Server rendszeren található. Ha feltételezi, hogy a fájl korábban üres, adja hozzá a következő tartalmakat:
+
+   ```json
+   {
+     "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+   }
+   ```
+   > [!NOTE]
+   > Az érték a beállításjegyzékbeli címek tömbje, vesszővel elválasztva.
+
+2. Mentse és zárja be a fájlt.
+
+3. A Docker újraindítása.
+
+Ha a listában lévő beállításjegyzékbe leküldi a lemezképeket, a nem terjeszthető rétegeket a rendszer leküldi a beállításjegyzékbe.
+
+> [!WARNING]
+> A nem terjeszthető összetevők általában korlátozásokkal rendelkeznek a terjesztésük és a megosztásuk módjára vonatkozóan. Ezt a funkciót csak az összetevők privát beállításjegyzékbe való leküldésére használhatja. Győződjön meg arról, hogy megfelel a nem terjeszthető összetevők újraterjesztését lefedő feltételeknek.
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnosztika és állapot-ellenőrzések
 
@@ -525,6 +553,6 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub Actions](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További](container-registry-intro.md) információ a Azure Container Registryról.

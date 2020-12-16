@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 25dda63c6450040e396de9ee0d3fb0a459416343
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369511"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606827"
 ---
 # <a name="translator-v20"></a>Translator v 2.0
 
@@ -51,9 +51,9 @@ Ha meg szeretné akadályozni, hogy a fordítás káromkodása a forrás szöveg
 
 |ProfanityAction    |Művelet |Példa forrása (Japán)  |Példa fordításra (angol)  |
 |:--|:--|:--|:--|
-|NoAction   |Default (Alapértelmezett): Ugyanaz, mint a beállítás beállítása. A káromkodás a forrás és a cél között lesz továbbítva.        |彼はジャッカスです 。     |Ő egy seggfej.   |
-|Megjelölve     |A profán szavakat az XML-címkék és a is veszi körül \<profanity> \</profanity> .       |彼はジャッカスです 。 |Ő egy \<profanity> seggfej \</profanity> .  |
-|Törölve    |A profán szavakat a rendszer a pótlás nélkül eltávolítja a kimenetből.     |彼はジャッカスです 。 |Ő a.   |
+|NoAction   |Default (Alapértelmezett): Ugyanaz, mint a beállítás beállítása. A káromkodás a forrás és a cél között lesz továbbítva. |彼はジャッカスです 。 |Ő egy seggfej.  |
+|Megjelölve |A profán szavakat az XML-címkék és a is veszi körül \<profanity> \</profanity> . |彼はジャッカスです 。   |Ő egy \<profanity> seggfej \</profanity> .  |
+|Törölve    |A profán szavakat a rendszer a pótlás nélkül eltávolítja a kimenetből. |彼はジャッカスです 。 |Ő a.   |
 
     
 ## <a name="excluding-content-from-translation"></a>Tartalom kizárása a fordításból
@@ -607,11 +607,11 @@ Az `TranslateOptions` objektum a következő listában szereplő értékeket tar
 
 * `Category`: A fordítás kategóriáját (tartományát) tartalmazó karakterlánc. A mező alapértelmezett értéke: `general`.
 * `ContentType`: Az egyetlen támogatott lehetőség, és az alapértelmezett érték a `text/plain` .
-* `IncludeMultipleMTAlternatives`: Logikai jelző, amely azt határozza meg, hogy az MT motorból egynél több alternatíva legyen-e visszaadva. Az érvényes értékek: `true` és (kis-és nagybetűk megkülönböztetése `false` ). Az alapértelmezett érték az `false` , amely csak egy alternatív értéket ad vissza. Ha úgy állítja be a jelzőt, hogy `true` lehetővé tegye a mesterséges alternatívák létrehozását, az együttműködésen alapuló fordítási keretrendszer (CTF) teljes körű integrálását. A szolgáltatás lehetővé teszi alternatívák visszaadását olyan mondatokhoz, amelyek nem rendelkeznek fordítással a CTF-ben a dekóder *n* -legjobb listájáról származó mesterséges alternatívák hozzáadásával.
+* `IncludeMultipleMTAlternatives`: Logikai jelző, amely azt határozza meg, hogy az MT motorból egynél több alternatíva legyen-e visszaadva. Az érvényes értékek: `true` és (kis-és nagybetűk megkülönböztetése `false` ). Az alapértelmezett érték az `false` , amely csak egy alternatív értéket ad vissza. Ha úgy állítja be a jelzőt, hogy `true` lehetővé tegye a mesterséges alternatívák létrehozását, az együttműködésen alapuló fordítási keretrendszer (CTF) teljes körű integrálását. A szolgáltatás lehetővé teszi alternatívák visszaadását olyan mondatokhoz, amelyek nem rendelkeznek fordítással a CTF-ben a dekóder *n*-legjobb listájáról származó mesterséges alternatívák hozzáadásával.
     - Értékelés. A minősítések a következőképpen lesznek alkalmazva: 
          - A legjobb automatikus fordítás 5-ös minősítéssel rendelkezik.
        - A CTF-alternatívák a felülvizsgáló tekintélyét tükrözik. Ezek a-10 és + 10 közé esnek.
-       - Az automatikusan generált ( *n* -Best) fordítási alternatívák a 0 minősítéssel rendelkeznek, és a megfelelési fok 100.
+       - Az automatikusan generált (*n*-Best) fordítási alternatívák a 0 minősítéssel rendelkeznek, és a megfelelési fok 100.
     - Alternatívák száma. A visszaadott alternatívák száma lehet olyan magas, mint a mezőben megadott érték `maxTranslations` , de alacsonyabb lehet.
     - Nyelvi párok Ez a funkció nem érhető el az egyszerűsített kínai és a hagyományos kínai nyelv közötti fordításhoz mindkét irányban. A Microsoft Translator által támogatott összes többi nyelvi pár számára elérhető.
 * `State`: A kérés és a válasz összekapcsolását segítő felhasználói állapot. A válaszban ugyanazt a tartalmat adja vissza a rendszer.
@@ -719,11 +719,11 @@ A kérelem törzsének formátuma a következő:
 * `Options`Választható. Egy `Options` objektum, amely a következő értékeket tartalmazza. Ezek mind opcionálisak, és alapértelmezés szerint a leggyakoribb beállítások. A megadott elemeknek betűrendes sorrendben kell szerepelniük.
     - `Category`: A fordítás kategóriáját (tartományát) tartalmazó karakterlánc. A mező alapértelmezett értéke: `general`.
     - `ContentType`: Az egyetlen támogatott lehetőség, és az alapértelmezett érték a `text/plain` .
-    - `IncludeMultipleMTAlternatives`: Logikai jelző, amely azt határozza meg, hogy az MT motorból egynél több alternatíva legyen-e visszaadva. Az érvényes értékek: `true` és (kis-és nagybetűk megkülönböztetése `false` ). Az alapértelmezett érték az `false` , amely csak egy alternatív értéket ad vissza. Ha a jelzőt úgy állítja be, hogy lehetővé tegye a `true` mesterséges alternatívák létrehozását a fordításban, teljes mértékben integrálva az együttműködő fordítási keretrendszerrel (CTF). A funkció lehetővé teszi olyan mondatok alternatíváinak visszaadását, amelyek nem rendelkeznek alternatívákkal a CTF-ben a dekóder *n* -legjobb listájából származó mesterséges alternatívák hozzáadásával.
+    - `IncludeMultipleMTAlternatives`: Logikai jelző, amely azt határozza meg, hogy az MT motorból egynél több alternatíva legyen-e visszaadva. Az érvényes értékek: `true` és (kis-és nagybetűk megkülönböztetése `false` ). Az alapértelmezett érték az `false` , amely csak egy alternatív értéket ad vissza. Ha a jelzőt úgy állítja be, hogy lehetővé tegye a `true` mesterséges alternatívák létrehozását a fordításban, teljes mértékben integrálva az együttműködő fordítási keretrendszerrel (CTF). A funkció lehetővé teszi olyan mondatok alternatíváinak visszaadását, amelyek nem rendelkeznek alternatívákkal a CTF-ben a dekóder *n*-legjobb listájából származó mesterséges alternatívák hozzáadásával.
         - A minősítések minősítését a következőhöz hasonlóan kell alkalmazni:
           - A legjobb automatikus fordítás 5-ös minősítéssel rendelkezik.
           - A CTF-alternatívák a felülvizsgáló tekintélyét tükrözik. Ezek a-10 és + 10 közé esnek.
-          - Az automatikusan generált ( *n* -Best) fordítási alternatívák a 0 minősítéssel rendelkeznek, és a megfelelési fok 100.
+          - Az automatikusan generált (*n*-Best) fordítási alternatívák a 0 minősítéssel rendelkeznek, és a megfelelési fok 100.
         - Alternatívák száma. A visszaadott alternatívák száma lehet olyan magas, mint a mezőben megadott érték `maxTranslations` , de alacsonyabb lehet.
         - Nyelvi párok Ez a funkció nem érhető el az egyszerűsített kínai és a hagyományos kínai nyelv közötti fordításhoz mindkét irányban. A Microsoft Translator által támogatott összes többi nyelvi pár számára elérhető.
 * `State`: A kérés és a válasz összekapcsolását segítő felhasználói állapot. A válaszban ugyanazt a tartalmat adja vissza a rendszer.

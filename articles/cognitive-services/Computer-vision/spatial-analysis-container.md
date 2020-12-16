@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014594"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606266"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -113,7 +113,7 @@ Az **Edge-számítás konfigurálása**   lapon válasszon ki egy meglévő 
 
 Kattintson a **Létrehozás** gombra. A IoT Hub erőforrás létrehozása néhány percet is igénybe vehet. A IoT Hub erőforrás létrejötte után a rendszer frissíti az **Edge számítási csempe beállítása** frissítést az új konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása**   csempén.
 
-Amikor a peremhálózati eszközön beállította a peremhálózat számítási szerepkört, két eszközt hoz létre: egy IoT eszközt és egy IoT Edge eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. A Azure IoT Edge futtatókörnyezet már fut a IoT Edge eszközön.            
+Amikor a peremhálózati eszközön beállította a peremhálózat számítási szerepkört, két eszközt hoz létre: egy IoT eszközt és egy IoT Edge eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. A Azure IoT Edge futtatókörnyezet már fut a IoT Edge eszközön.
 
 > [!NOTE]
 > * A IoT Edge-eszközök jelenleg csak a Linux platformot támogatják. Az Azure Stack Edge-eszköz hibaelhárításával kapcsolatos segítségért lásd a [naplózási és hibaelhárítási](spatial-analysis-logging.md) cikket.
@@ -418,7 +418,7 @@ A térbeli elemzési tároló számlázási adatokat küld az Azure-nak az Azure
 Az Azure Cognitive Services-tárolók nem rendelkeznek licenccel a mérési/számlázási végponthoz való csatlakozás nélkül. Engedélyeznie kell a tárolókat, hogy mindig a számlázási végponttal kommunikáljanak a számlázási adatokkal. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett videót vagy képet a Microsoftnak.
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 
@@ -427,7 +427,7 @@ Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepí
 * A Container images szolgáltatás IoT-modulként fut Azure IoT Edgeban.
 * A tároló konfigurálása és üzembe helyezése a gazdagépen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Felhasználók üzembe helyezése webes alkalmazásokban](spatial-analysis-web-app.md)
 * [Térbeli elemzési műveletek konfigurálása](spatial-analysis-operations.md)

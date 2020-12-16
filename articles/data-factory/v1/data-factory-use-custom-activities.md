@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b3391727b19e9e8e88646f72667545f1df7fe5a7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012867"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606946"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Egyéni tevékenységek használata egy Azure Data Factory 1-es verziójú adatcsatornán
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -98,13 +98,15 @@ A metódus négy paramétert vesz igénybe:
 A metódus egy olyan szótárt ad vissza, amely az egyéni tevékenységek a jövőben történő láncolására használható. Ez a szolgáltatás még nincs megvalósítva, ezért a metódusból üres szótárt ad vissza.
 
 ### <a name="procedure"></a>Eljárás
+
 1. Hozzon létre egy **.net Class Library** -projektet.
-   <ol type="a">
+   
+    <ol type="a">
      <li>Indítsa el a Visual studiót.</li>
      <li>Kattintson a <b>File</b> (Fájl) menüre, mutasson a <b>New</b> (Új) elemre, és kattintson a <b>Project</b> (Projekt) lehetőségre.</li>
      <li>Bontsa ki a <b>Sablonok</b> lehetőséget, és válassza a <b>Visual C#</b> lehetőséget. Ebben az útmutatóban a C# nyelvet használja, de bármilyen .NET-nyelv használatával fejlesztheti az egyéni tevékenységeket.</li>
      <li>A jobb oldalon válassza ki az <b>osztály könyvtára</b> elemet a projekttípus listából. A Visual Studióban válassza az <b>osztály könyvtára (.NET-keretrendszer) lehetőséget.</b> </li>
-     <li>Adja <b>MyDotNetActivity</b> meg a MyDotNetActivity <b>nevet</b>.</li>
+     <li>Adja <b></b> meg a MyDotNetActivity <b>nevet</b>.</li>
      <li>A <b>helyhez</b>válassza a <b>C:\ADFGetStarted</b> lehetőséget.</li>
      <li>A projekt létrehozásához kattintson az <b>OK</b> gombra.</li>
    </ol>
@@ -116,6 +118,7 @@ A metódus egy olyan szótárt ad vissza, amely az egyéni tevékenységek a jö
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
+
 4. Importálja az **Azure Storage** NuGet-csomagot a projektbe.
 
     ```powershell
@@ -149,16 +152,19 @@ A metódus egy olyan szótárt ad vissza, amely az egyéni tevékenységek a jö
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
+
 6. Módosítsa a **névtér** nevét a **MyDotNetActivityNS** értékre.
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
+
 7. Módosítsa az osztály nevét a **MyDotNetActivity** értékre, és származtatja azt a **IDotNetActivity** felületen az alábbi kódrészletben látható módon:
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
+
 8. Implementálja (adja hozzá) a **IDotNetActivity** felület **Execute** metódusát a **MyDotNetActivity** osztályhoz, és másolja az alábbi mintakód a metódusba.
 
     Az alábbi minta a keresési kifejezés ("Microsoft") előfordulásának számát számolja az adatszelethez társított minden blobban.
@@ -279,6 +285,7 @@ A metódus egy olyan szótárt ad vissza, amely az egyéni tevékenységek a jö
         return new Dictionary<string, string>();
     }
     ```
+
 9. Adja hozzá a következő segítő metódusokat:
 
     ```csharp
@@ -367,25 +374,30 @@ A metódus egy olyan szótárt ad vissza, amely az egyéni tevékenységek a jö
     ```
 
     A számítás módszer kiszámítja a Microsoft kulcsszó példányainak számát a bemeneti fájlokban (Blobok a mappában). A keresési kifejezés ("Microsoft") nem rögzített a kódban.
+
 10. A projekt fordítása. Kattintson a **Létrehozás** lehetőségre a menüben, majd kattintson a **megoldás létrehozása** lehetőségre.
 
     > [!IMPORTANT]
     > A .NET-keretrendszer 4.5.2-es verziójának beállítása a projekt célként szolgáló keretrendszereként: kattintson a jobb gombbal a projektre, majd kattintson a **Tulajdonságok** elemre a cél keretrendszer beállításához. A Data Factory nem támogatja az 4.5.2-nél újabb .NET-keretrendszer-verziókkal összeállított egyéni tevékenységeket.
 
 11. Indítsa el a **Windows Intézőt**, és a Build típusától függően navigáljon a **bin\debug** vagy a **bin\release** mappához.
+
 12. Hozzon létre egy zip-fájl **MyDotNetActivity.zip** , amely a \bin\Debug mappában található összes bináris fájlt tartalmazza \<project folder\> . Adja meg a **MyDotNetActivity. pdb** fájlt, hogy további részleteket kapjon, például a forráskódban található sorszámot, amely miatt hiba történt.
 
     > [!IMPORTANT]
     > Az egyéni tevékenység zip-fájljában lévő összes fájlnak a **legfelső szinten** kell lennie, almappák nélkül.
 
     ![Bináris kimeneti fájlok](./media/data-factory-use-custom-activities/Binaries.png)
-14. Hozzon létre egy **customactivitycontainer** nevű BLOB-tárolót, ha még nem létezik.
-15. Töltse fel MyDotNetActivity.zip blobként a customactivitycontainer egy **általános célú** Azure Blob Storage-tárolóba (nem a gyors elérésű blob Storage-ba), amelyre a AzureStorageLinkedService hivatkozik.
+
+13. Hozzon létre egy **customactivitycontainer** nevű BLOB-tárolót, ha még nem létezik.
+
+14. Töltse fel MyDotNetActivity.zip blobként a customactivitycontainer egy **általános célú** Azure Blob Storage-tárolóba (nem a gyors elérésű blob Storage-ba), amelyre a AzureStorageLinkedService hivatkozik.
 
 > [!IMPORTANT]
 > Ha hozzáadja ezt a .NET-tevékenység projektet egy olyan megoldáshoz a Visual Studióban, amely Data Factory projektet tartalmaz, és hozzáadja a .NET-tevékenység projekthez való hivatkozást a Data Factory alkalmazás-projektből, nem kell végrehajtania a zip-fájl manuális létrehozásához és az általános célú Azure Blob Storage-hoz való feltöltéséhez szükséges utolsó két lépést. Amikor a Visual Studióval tesz közzé Data Factory entitásokat, ezeket a lépéseket a közzétételi folyamat automatikusan végrehajtja. További információ: [Data Factory Project in Visual Studio](#data-factory-project-in-visual-studio) szakasz.
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>Folyamat létrehozása egyéni tevékenységgel
+
 Létrehozott egy egyéni tevékenységet, és feltöltte a bináris fájlokat egy **általános célú** Azure Storage-fiókban található blob-tárolóba. Ebben a szakaszban egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely az egyéni tevékenységet használja.
 
 Az egyéni tevékenység bemeneti adatkészlete blobokat (fájlokat) jelöl a blob Storage adftutorial tárolójának customactivityinput mappájába. A tevékenység kimeneti adatkészlete a blob Storage adftutorial tárolójának customactivityoutput mappájában lévő kimeneti blobokat jelöli.

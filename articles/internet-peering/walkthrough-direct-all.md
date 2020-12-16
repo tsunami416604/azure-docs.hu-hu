@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: how-to
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: e27fa26514d27d68aecdf9e28b36e2747dc8ffe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a1fa7f582511a2089bab2694f9f5ec47634ff54
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710762"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592381"
 ---
 # <a name="direct-peering-walkthrough"></a>Útmutató a közvetlen társviszony-létesítéshez
 
@@ -52,6 +52,6 @@ Ha egy közvetlen társítás van beállítva a megszüntetéshez, a **PendingRe
 > [!NOTE]
 > Ha a PowerShell-parancsmagot futtatja a közvetlen társítás törléséhez, amikor a ConnectionState ProvisioningStarted vagy ProvisioningCompleted, a művelet sikertelen lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a Microsofttal való összevonással kapcsolatos [előfeltételekkel](prerequisites.md).

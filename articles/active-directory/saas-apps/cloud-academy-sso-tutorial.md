@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 12/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 96c4eba31013b868fa7afb41544d5d8cbcc1cdc6
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180999"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607218"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Cloud Academy-vel – SSO
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Cloud Academy-SS
 * Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá a Cloud Academy-SSO-hoz.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Cloud Academy-SSO-ba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az egyszeri bejelentkezés?](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,15 +37,14 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tesztkörnyezetben végezheti el.
 
-A Cloud Academy – SSO támogatja az SP által kezdeményezett egyszeri bejelentkezést.
-
-A Cloud Academy-SSO konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
+* Cloud Academy – SSO támogatja az **SP** által kezdeményezett SSO-t
+* Cloud Academy – az egyszeri bejelentkezés **csak időben támogatja a** felhasználók üzembe helyezését
 
 ## <a name="add-cloud-academy---sso-from-the-gallery"></a>Cloud Academy-SSO hozzáadása a katalógusból
 
 A Cloud Academy-SSO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Cloud Academy-SSO-t a katalógusból a felügyelt SaaS-alkalmazások listájához:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók.
 1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
 1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
@@ -72,14 +69,29 @@ Az Azure AD SSO és a Cloud Academy-SSO konfigurálásához és teszteléséhez 
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portalban:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Cloud Academy-SSO** Application Integration oldalon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal a **Cloud Academy-SSO** Application Integration oldalon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
 
    ![Képernyőkép, amely az alapszintű SAML-konfiguráció szerkesztésére szolgáló ceruza gombot mutatja.](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakasz **bejelentkezési URL-címe** mezőjébe írja be a következőt: `https://cloudacademy.com/login/enterprise/` .
+1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az alábbi URL-címek egyikét:
+    
+    | Bejelentkezési URL-cím |
+    |--------------|
+    | `https://cloudacademy.com/login/enterprise/` |
+    | `https://app.qa.com/login/enterprise/` |
+    |
+    
+    b. A **Válasz URL-címe** szövegmezőbe írja be az alábbi URL-címek egyikét:
+    
+    | Válasz URL-cím |
+    |--------------|
+    | `https://cloudacademy.com/labs/social/complete/saml/` |
+    | `https://app.qa.com/labs/social/complete/saml/` |
+    |
 1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a másolás gombot az **alkalmazás-összevonási metaadatok URL-címének** másolásához. Mentse az URL-címet.
 
     ![Képernyőkép, amely az alkalmazás-összevonási metaadatok URL-címéhez tartozó másolás gombot jeleníti meg.](common/copy-metadataurl.png)
@@ -94,7 +106,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
    1. A **Felhasználónév** mezőbe írja be a nevet \<username> @ \<companydomain> . \<extension> Például: `B.Simon@contoso.com`.
    1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="grant-access-to-the-test-user"></a>Hozzáférés biztosítása a tesztelési felhasználónak
 
@@ -103,15 +115,9 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza ki a **Cloud Academy-SSO** elemet.
 1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok** lehetőséget:
-
-   ![A felhasználók és csoportok lehetőséget megjelenítő képernyőkép.](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget:
-
-    ![A felhasználó hozzáadása gombot megjelenítő képernyőkép.](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza az **B. Simon** elemet a **felhasználók** listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ## <a name="configure-single-sign-on-for-cloud-academy"></a>Egyszeri bejelentkezés konfigurálása a Cloud Academy-hez
@@ -138,43 +144,26 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     d. A **név azonosítójának formátuma** mezőben tartsa meg az alapértelmezett értéket: `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` .
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     > [!NOTE]
     > A Cloud Academy-SSO konfigurálásával kapcsolatos további információkért lásd: az [egyszeri bejelentkezés beállítása](https://support.cloudacademy.com/hc/articles/360043908452-Setting-Up-Single-Sign-On).
 
 ### <a name="create-a-cloud-academy-test-user"></a>Felhőalapú Akadémia tesztelési felhasználójának létrehozása
 
-1. Jelentkezzen be a Cloud Academy-SSO-ba.
-
-1. Válassza ki a vállalat nevét, majd a megjelenő menüben válassza a **tagok** elemet:
-
-    ![A tagok lehetőséget megjelenítő képernyőkép.](./media/cloud-academy-sso-tutorial/create-user.PNG)
-
-1. Válassza a **tagok meghívása** , majd **az egyetlen tag meghívása** lehetőséget:
-
-    ![Képernyőkép, amely az egyetlen tag meghívása lehetőséget mutatja.](./media/cloud-academy-sso-tutorial/create-user-1.PNG)
-
-1. Adja meg az értékeket a kötelező mezőkben, majd válassza a **meghívás** elemet:
-
-    ![Képernyőkép, amely megjeleníti a tag meghívása párbeszédpanelt.](./media/cloud-academy-sso-tutorial/create-user-2.PNG)
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Cloud Academy-SSO-ban. A Cloud Academy-SSO támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Cloud Academy-SSO-ban, a rendszer egy újat hoz létre a hitelesítés után.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Most tesztelheti az Azure AD SSO-konfigurációját a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Amikor kiválasztja a Cloud Academy-SSO csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Cloud Academy-SSO-példányba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ: [Bevezetés a hozzáférési panelbe](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a Cloud Academy-SSO bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen a Cloud Academy-SSO bejelentkezési URL-címére közvetlenül, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Útmutatók az SaaS-alkalmazások Azure Active Directory-nal való integrálásához](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Cloud Academy-SSO csempére kattint, a rendszer átirányítja a Cloud Academy-SSO bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+## <a name="next-steps"></a>További lépések
 
-- [Próbálja ki a Cloud Academy-SSO-t az Azure AD-vel](https://aad.portal.azure.com/)
-
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
-
-- [A Cloud Academy – SSO védelem speciális láthatóság és vezérlők használatával](/cloud-app-security/proxy-intro-aad)
+A Cloud Academy-SSO konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

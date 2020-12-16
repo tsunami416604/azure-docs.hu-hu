@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jgao
-ms.openlocfilehash: 63879350eba897cfe5a793309e5129323fe8bbde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e13f18ef9c2ec71a351d8a80d72d600bf8e9715
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372374"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607405"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Állapot-integráció bevezetése az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -197,7 +197,7 @@ Ezen a ponton az Azure telepítéskezelő tudja, hogyan kérdezheti le a szolgá
     1. Ha a rendszer egy nem Kifogástalan állapotra vonatkozó választ észlel, az Azure telepítéskezelő leállítja a teljes bevezetést, és visszaküldi a nem megfelelő állapotú szolgáltatási jeleket eredményező REST-választ.
     1. A HealthyState időtartamának befejeződése után a healthCheck befejeződött, és a telepítés a következő lépéssel folytatódik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan integrálhatja az állapotfigyelő szolgáltatásait az Azure telepítéskezelőba. A következő cikkből megtudhatja, hogyan helyezheti üzembe a telepítéskezelő használatával.
 

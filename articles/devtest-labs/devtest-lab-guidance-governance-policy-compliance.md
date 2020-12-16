@@ -4,12 +4,12 @@ description: Ez a cikk útmutatást nyújt a vállalati szabályzatok és a Azur
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: fe370ec882fd0462bba6afdf11c718cf46618f0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89fe380c3a8e0e0a82cc806bf19f9a3454041d94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480932"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592347"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs infrastruktúra irányítása – a vállalati házirend és a megfelelőség
 Ez a cikk útmutatást nyújt a vállalati szabályzatok és a Azure DevTest Labs infrastruktúra megfelelőségének szabályozásához. 
@@ -37,7 +37,7 @@ A szervezet általános irányítási és konfigurációs felügyeleti stratégi
 - Társítsa az Azure Repos-t ugyanazzal a Azure Active Directory Bérlővel, amelyet az Azure-előfizetés használ a hitelesítéshez és engedélyezéshez.
 - Hozzon létre egy, a központilag felügyelt Azure Active Directory **összes DevTest Labs-fejlesztő** nevű csoportot. Az összetevő-fejlesztéshez hozzájáruló fejlesztőknek ebbe a csoportba kell tartoznia.
 - Ugyanaz a Azure Active Directory csoport használható az Azure Repos adattárhoz és a laborhoz való hozzáférés biztosításához.
-- Az Azure-alapú adattárakban az elágazások és az elágazások különálló, az elsődleges üzemi tárházból származó fejlesztésen alapuló tárházban használhatók. A tartalmat a rendszer csak a megfelelő kód felülvizsgálatát követően egy lekéréses kérelemmel adja hozzá a Master ág számára. Ha a kód felülvizsgáló jóváhagyja a változást, a vezető fejlesztő, aki felelős a főág fenntartásáért, egyesíti a frissített kódot. 
+- Az Azure-alapú adattárakban az elágazások és az elágazások különálló, az elsődleges üzemi tárházból származó fejlesztésen alapuló tárházban használhatók. A tartalmat a rendszer csak a fő ág számára adja hozzá egy lekéréses kérelemmel a megfelelő kód felülvizsgálatát követően. Miután a kód-véleményező jóváhagyja a változást, egy vezető fejlesztő, aki felelős a fő ág fenntartásáért, egyesíti a frissített kódot. 
 
 ## <a name="corporate-security-policies"></a>Vállalati biztonsági szabályzatok
 
@@ -67,5 +67,5 @@ A vezérlőelemek második rétege olyan csoportházirend-objektumok készletét
 Végső soron ugyanazokat a korlátozásokat kell alkalmazni a szervezeten belül, amelyeknek figyelembe kell venniük a cserélhető adathordozók és a külső URL-címek összes lehetséges módszerét is, amelyek elfogadják a tartalom közzétételét. A biztonsági szabályzat áttekintéséhez és megvalósításához forduljon a biztonsági szakemberekhez. További javaslatok: [Microsoft Cyber Security](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd: [alkalmazások áttelepítése és integrációja](devtest-lab-guidance-governance-application-migration-integration.md).

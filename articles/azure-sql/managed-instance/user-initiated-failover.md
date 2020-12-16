@@ -9,15 +9,15 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 08/31/2020
-ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 7f30ff70e0219a803051b0f8e1208740c359863a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985518"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605394"
 ---
-# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon
+# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által, felügyelt SQL-példányon kezdeményezett manuális feladatátvétel
 
 Ez a cikk azt ismerteti, hogyan lehet manuálisan feladatátvételt elvégezni az SQL felügyelt példányok általános célú (GP) és a üzletileg kritikus (BC) szolgáltatáshoz tartozó elsődleges csomópontok számára, és hogyan lehet manuálisan feladatátvételt elvégezni a csak a BC szolgáltatási szinten található másodlagos írásvédett replika csomóponton.
 
@@ -140,11 +140,11 @@ Nem fogja tudni ugyanazt a kimenetet látni a GP szolgáltatási szintjével, mi
 
 > [!IMPORTANT]
 > A felhasználó által kezdeményezett manuális feladatátvétel működési korlátai a következők:
-> - Lehet, hogy egy (1) feladatátvétel a felügyelt példányon **30 percenként** lett kezdeményezve.
+> - **15 percenként** egyetlen (1) feladatátvételt kezdeményeztek ugyanazon a felügyelt példányon.
 > - BC-példányok esetében léteznie kell a feladatátvételi kérelem elfogadásához szükséges replikák Kvórumának.
 > - BC-példányok esetében nem lehet megadni, hogy melyik olvasható másodlagos replika kezdeményezi a feladatátvételt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a felügyelt példány magas rendelkezésre állásáról [Az Azure SQL felügyelt példányain](../database/high-availability-sla.md).
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).

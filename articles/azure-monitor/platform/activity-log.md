@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1b49faabb1c61a10418bfce3ae2e8187429981ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 00e264cea34c7c3e7223b47217ecf5a59b76ba41
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186082"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592466"
 ---
 # <a name="azure-activity-log"></a>Azure-tevékenységnapló
 A Tevékenységnapló az Azure előfizetési szintű eseményekkel kapcsolatos megállapításokat biztosító [platformnaplója](platform-logs-overview.md). Olyan információkat tartalmaz, mint az erőforrások módosításának vagy a virtuális gépek indításának az időpontja. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. További funkciókért hozzon létre egy diagnosztikai beállítást, amely elküldi a tevékenység naplóját [Azure monitor naplókba](data-platform-logs.md), az Azure Event Hubs az Azure-on kívülre vagy az Azure Storage-ba az archiváláshoz. Ez a cikk részletesen ismerteti a tevékenység naplójának megtekintését és a különböző célhelyekre való küldését.
@@ -56,7 +56,8 @@ A tevékenység-naplózási eseményeket a következő módszerekkel érheti el.
 - A naplók használatával összetett elemzéseket végezhet, és részletes elemzéseket készíthet a tevékenységi naplók bejegyzéseiről.
 - A naplózási riasztásokat olyan tevékenységi bejegyzésekkel használhatja, amelyek összetettebb riasztási logikát tesznek lehetővé.
 - 90 napnál hosszabb ideig tárolhatja a tevékenység naplójának bejegyzéseit.
-- Nincs adatfeldolgozási vagy adatmegőrzési díj a Log Analytics munkaterületen tárolt műveletnapló-adatokra vonatkozóan.
+- A Log Analytics munkaterületen tárolt műveletnapló-adatokra vonatkozóan nem történik adatfeldolgozási díj.
+- Log Analytics munkaterületen tárolt műveletnapló-adatok esetében nem számítunk fel adatmegőrzési díjat, amíg 90 nap.
 
 [Hozzon létre egy diagnosztikai beállítást](diagnostic-settings.md) a műveletnapló log Analytics munkaterületre való elküldéséhez. A tevékenység naplóját bármely előfizetésből akár öt munkaterületre is elküldheti. A több bérlőt érintő naplógyűjtéshez az [Azure Lighthouse](../../lighthouse/index.yml) szükséges.
 
@@ -201,7 +202,7 @@ Ha már létezik egy bejelentkezési profil, először el kell távolítania a m
 
     | Tulajdonság | Kötelező | Leírás |
     | --- | --- | --- |
-    | Name (Név) |Igen |A napló profiljának neve. |
+    | Név |Igen |A napló profiljának neve. |
     | StorageAccountId |Nem |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni kell a tevékenység naplóját. |
     | serviceBusRuleId |Nem |Service Bus a Service Bus névtérhez tartozó szabály AZONOSÍTÓját, amelybe az Event hub-t létre szeretné hozni. Ez a következő formátumú karakterlánc: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Hely |Igen |Azoknak a régióknak a vesszővel tagolt listája, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. |

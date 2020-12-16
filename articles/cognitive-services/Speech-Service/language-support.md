@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 12c9777449d3f360b8f08d99aca7b916856139d4
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0c8e13449a66c5eba055c64e072db3140b0cdc1c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400182"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606878"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -36,94 +36,94 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Nyelv                          | Területi beállítás (BCP-47) | Testreszabások                                   |
-|-----------------------------------|--------|--------------------------------------------------|
-|Arab (Bahrein), modern standard  |`ar-BH` | Nyelvi modell                                   |
-|Arab (Egyiptom)                     |`ar-EG` | Nyelvi modell                                   |
-|Arab (Irak)                      |`ar-IQ` | Nyelvi modell                                   |
-|Arab (Izrael)                              |`ar-IL` | Nyelvi modell                                                   |
-|Arab (Jordánia)                    |`ar-JO` | Nyelvi modell                                   |
-|Arab (Kuvait)                    |`ar-KW` | Nyelvi modell                                   |
-|Arab (Libanon)                   |`ar-LB` | Nyelvi modell                                   |
-|Arab (Omán)                      |`ar-OM` | Nyelvi modell                                   |
-|Arab (Katar)                     |`ar-QA` | Nyelvi modell                                   |
-|Arab (Szaúd-Arábia)              |`ar-SA` | Nyelvi modell                                   |
-|Arab (palesztin állam)            |`ar-PS` | Nyelvi modell                                   |
-|Arab (Szíria)                     |`ar-SY` | Nyelvi modell                                   |
-|Arab (Egyesült Arab Emírségek)      |`ar-AE` | Nyelvi modell                                   |
-|Bolgár (Bulgária)               |`bg-BG` | Nyelvi modell                                   |
-|Katalán (Spanyolország)                    |`ca-ES` | Nyelvi modell                                   |
-|Kínai (kantoni, hagyományos)   |`zh-HK` | Nyelvi modell                                   |
-|Kínai (mandarin, egyszerűsített)     |`zh-CN` | Akusztikai modell<br>Nyelvi modell                 |
-|Kínai (tajvani mandarin)       |`zh-TW` | Nyelvi modell                                   |
-|Horvát (Horvátország)                 |`hr-HR` | Nyelvi modell                                   |
-|Cseh (Cseh Köztársaság)             |`cs-CZ` | Nyelvi modell                                   |
-|Dán (Dánia)                   |`da-DK` | Nyelvi modell                                   |
-|Holland (Hollandia)                |`nl-NL` | Nyelvi modell                                   |
-|Angol (Ausztrália)                |`en-AU` | Akusztikai modell<br>Nyelvi modell                 |
-|Angol (Kanada)                   |`en-CA` | Akusztikai modell<br>Nyelvi modell                 |
-|Angol (Hongkong)                |`en-HK` | Nyelvi modell                                   |
-|Angol (India)                    |`en-IN` | Akusztikai modell<br>Nyelvi modell                 |
-|Angol (Írország)                  |`en-IE` | Nyelvi modell                                   |
-|Angol (Új-Zéland)              |`en-NZ` | Akusztikai modell<br>Nyelvi modell                 |
-|Angol (Nigéria)                          |`en-NG` | Nyelvi modell                                                     |
-|Angol (Fülöp-szigetek)              |`en-PH` | Nyelvi modell                                   |
-|Angol (Szingapúr)                |`en-SG` | Nyelvi modell                                   |
-|Angol (Dél-Afrika)             |`en-ZA` | Nyelvi modell                                   |
-|angol (Egyesült Királyság)           |`en-GB` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
-|angol (Egyesült Államok)            |`en-US` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
-|Észt (Észtország)                  |`et-EE` | Nyelvi modell                                   |
-|Finn (Finnország)                  |`fi-FI` | Nyelvi modell                                   |
-|Francia (Kanada)                    |`fr-CA` | Akusztikai modell<br>Nyelvi modell                 |
-|Francia (Franciaország)                    |`fr-FR` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
-|Német (Németország)                   |`de-DE` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
-|Görög (Görögország)                     |`el-GR` | Nyelvi modell                                   |
-|Gudzsaráti (indiai)                  |`gu-IN` | Nyelvi modell                                   |
-|Hindi (India)                      |`hi-IN` | Akusztikai modell<br>Nyelvi modell                 |
-|Magyar (Magyarország)                |`hu-HU` | Nyelvi modell                                   |
-|Ír (Írország)                     |`ga-IE` | Nyelvi modell                                   |
-|Olasz (Olaszország)                    |`it-IT` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
-|Japán (Japán)                   |`ja-JP` | Nyelvi modell                                   |
-|Koreai (Dél-Korea)                     |`ko-KR` | Nyelvi modell                                   |
-|Lett (Lettország)                   |`lv-LV` | Nyelvi modell                                   |
-|Litván (Litvánia)             |`lt-LT` | Nyelvi modell                                   |
-|Máltai (Málta)                     |`mt-MT` | Nyelvi modell                                   |
-|Marathi (India)                    |`mr-IN` | Nyelvi modell                                   |
-|norvég (bokmål, Norvégia)         |`nb-NO` | Nyelvi modell                                   |
-|Lengyel (Lengyelország)                    |`pl-PL` | Nyelvi modell                                   |
-|Portugál (Brazília)                |`pt-BR` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
-|Portugál (Portugália)              |`pt-PT` | Nyelvi modell                                   |
-|Román (Románia)                 |`ro-RO` | Nyelvi modell                                   |
-|Orosz (Oroszország)                   |`ru-RU` | Akusztikai modell<br>Nyelvi modell                 |
-|Szlovák (Szlovákia)                  |`sk-SK` | Nyelvi modell                                   |
-|Szlovén (Szlovénia)               |`sl-SI` | Nyelvi modell                                   |
-|Spanyol (Argentína)                |`es-AR` | Nyelvi modell                                   |
-|Spanyol (Bolívia)                  |`es-BO` | Nyelvi modell                                   |
-|Spanyol (Chile)                    |`es-CL` | Nyelvi modell                                   |
-|Spanyol (Kolumbia)                 |`es-CO` | Nyelvi modell                                   |
-|Spanyol (Costa Rica)               |`es-CR` | Nyelvi modell                                   |
-|Spanyol (Kuba)                     |`es-CU` | Nyelvi modell                                   |
-|Spanyol (Dominikai Köztársaság)       |`es-DO` | Nyelvi modell                                   |
-|Spanyol (Ecuador)                  |`es-EC` | Nyelvi modell                                   |
-|Spanyol (Salvador)              |`es-SV` | Nyelvi modell                                   |
-|Spanyol (Egyenlítői-Guinea)            |`es-GQ` | Nyelvi modell                                   |
-|Spanyol (Guatemala)                |`es-GT` | Nyelvi modell                                   |
-|Spanyol (Honduras)                 |`es-HN` | Nyelvi modell                                   |
-|Spanyol (Mexikó)                   |`es-MX` | Akusztikai modell<br>Nyelvi modell                 |
-|Spanyol (Nicaragua)                |`es-NI` | Nyelvi modell                                   |
-|Spanyol (Panama)                   |`es-PA` | Nyelvi modell                                   |
-|Spanyol (Paraguay)                 |`es-PY` | Nyelvi modell                                   |
-|Spanyol (perui)                     |`es-PE` | Nyelvi modell                                   |
-|Spanyol (Puerto Rico)              |`es-PR` | Nyelvi modell                                   |
-|Spanyol (Spanyolország)                    |`es-ES` | Akusztikai modell<br>Nyelvi modell                 |
-|Spanyol (Uruguay)                  |`es-UY` | Nyelvi modell                                   |
-|Spanyol (USA)                      |`es-US` | Nyelvi modell                                   |
-|Spanyol (Venezuela)                |`es-VE` | Nyelvi modell                                   |
-|Svéd (Svédország)                   |`sv-SE` | Nyelvi modell                                   |
-|Tamil (India)                      |`ta-IN` | Nyelvi modell                                   |
-|Telugu (India)                     |`te-IN` | Nyelvi modell                                   |
-|Thai (Thaiföld)                    |`th-TH` | Nyelvi modell                                   |
-|Török (Törökország)                   |`tr-TR` | Nyelvi modell                                   |
+| Nyelv                           | Területi beállítás (BCP-47) | Testreszabások                                   |
+|------------------------------------|--------|--------------------------------------------------|
+| Arab (Bahrein), modern standard  | `ar-BH` | Nyelvi modell                                   |
+| Arab (Egyiptom)                     | `ar-EG` | Nyelvi modell                                   |
+| Arab (Irak)                      | `ar-IQ` | Nyelvi modell                                   |
+| Arab (Izrael)                    | `ar-IL` | Nyelvi modell                                   |
+| Arab (Jordánia)                    | `ar-JO` | Nyelvi modell                                   |
+| Arab (Kuvait)                    | `ar-KW` | Nyelvi modell                                   |
+| Arab (Libanon)                   | `ar-LB` | Nyelvi modell                                   |
+| Arab (Omán)                      | `ar-OM` | Nyelvi modell                                   |
+| Arab (Katar)                     | `ar-QA` | Nyelvi modell                                   |
+| Arab (Szaúd-Arábia)              | `ar-SA` | Nyelvi modell                                   |
+| Arab (palesztin állam)        | `ar-PS` | Nyelvi modell                                   |
+| Arab (Szíria)                     | `ar-SY` | Nyelvi modell                                   |
+| Arab (Egyesült Arab Emírségek)      | `ar-AE` | Nyelvi modell                                   |
+| Bolgár (Bulgária)               | `bg-BG` | Nyelvi modell                                   |
+| Katalán (Spanyolország)                    | `ca-ES` | Nyelvi modell                                   |
+| Kínai (kantoni, hagyományos)   | `zh-HK` | Nyelvi modell                                   |
+| Kínai (mandarin, egyszerűsített)     | `zh-CN` | Akusztikai modell<br>Nyelvi modell                 |
+| Kínai (tajvani mandarin)       | `zh-TW` | Nyelvi modell                                   |
+| Horvát (Horvátország)                 | `hr-HR` | Nyelvi modell                                   |
+| Cseh (Cseh Köztársaság)             | `cs-CZ` | Nyelvi modell                                   |
+| Dán (Dánia)                   | `da-DK` | Nyelvi modell                                   |
+| Holland (Hollandia)                | `nl-NL` | Nyelvi modell                                   |
+| Angol (Ausztrália)                | `en-AU` | Akusztikai modell<br>Nyelvi modell                 |
+| Angol (Kanada)                   | `en-CA` | Akusztikai modell<br>Nyelvi modell                 |
+| Angol (Hongkong)                | `en-HK` | Nyelvi modell                                   |
+| Angol (India)                    | `en-IN` | Akusztikai modell<br>Nyelvi modell                 |
+| Angol (Írország)                  | `en-IE` | Nyelvi modell                                   |
+| Angol (Új-Zéland)              | `en-NZ` | Akusztikai modell<br>Nyelvi modell                 |
+| Angol (Nigéria)                  | `en-NG` | Nyelvi modell                                   |
+| Angol (Fülöp-szigetek)              | `en-PH` | Nyelvi modell                                   |
+| Angol (Szingapúr)                | `en-SG` | Nyelvi modell                                   |
+| Angol (Dél-Afrika)             | `en-ZA` | Nyelvi modell                                   |
+| angol (Egyesült Királyság)           | `en-GB` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
+| angol (Egyesült Államok)            | `en-US` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
+| Észt (Észtország)                  | `et-EE` | Nyelvi modell                                   |
+| Finn (Finnország)                  | `fi-FI` | Nyelvi modell                                   |
+| Francia (Kanada)                    | `fr-CA` | Akusztikai modell<br>Nyelvi modell                 |
+| Francia (Franciaország)                    | `fr-FR` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
+| Német (Németország)                   | `de-DE` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
+| Görög (Görögország)                     | `el-GR` | Nyelvi modell                                   |
+| Gudzsaráti (indiai)                  | `gu-IN` | Nyelvi modell                                   |
+| Hindi (India)                      | `hi-IN` | Akusztikai modell<br>Nyelvi modell                 |
+| Magyar (Magyarország)                | `hu-HU` | Nyelvi modell                                   |
+| Ír (Írország)                     | `ga-IE` | Nyelvi modell                                   |
+| Olasz (Olaszország)                    | `it-IT` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
+| Japán (Japán)                   | `ja-JP` | Nyelvi modell                                   |
+| Koreai (Dél-Korea)                     | `ko-KR` | Nyelvi modell                                   |
+| Lett (Lettország)                   | `lv-LV` | Nyelvi modell                                   |
+| Litván (Litvánia)             | `lt-LT` | Nyelvi modell                                   |
+| Máltai (Málta)                     | `mt-MT` | Nyelvi modell                                   |
+| Marathi (India)                    | `mr-IN` | Nyelvi modell                                   |
+| norvég (bokmål, Norvégia)         | `nb-NO` | Nyelvi modell                                   |
+| Lengyel (Lengyelország)                    | `pl-PL` | Nyelvi modell                                   |
+| Portugál (Brazília)                | `pt-BR` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
+| Portugál (Portugália)              | `pt-PT` | Nyelvi modell                                   |
+| Román (Románia)                 | `ro-RO` | Nyelvi modell                                   |
+| Orosz (Oroszország)                   | `ru-RU` | Akusztikai modell<br>Nyelvi modell                 |
+| Szlovák (Szlovákia)                  | `sk-SK` | Nyelvi modell                                   |
+| Szlovén (Szlovénia)               | `sl-SI` | Nyelvi modell                                   |
+| Spanyol (Argentína)                | `es-AR` | Nyelvi modell                                   |
+| Spanyol (Bolívia)                  | `es-BO` | Nyelvi modell                                   |
+| Spanyol (Chile)                    | `es-CL` | Nyelvi modell                                   |
+| Spanyol (Kolumbia)                 | `es-CO` | Nyelvi modell                                   |
+| Spanyol (Costa Rica)               | `es-CR` | Nyelvi modell                                   |
+| Spanyol (Kuba)                     | `es-CU` | Nyelvi modell                                   |
+| Spanyol (Dominikai Köztársaság)       | `es-DO` | Nyelvi modell                                   |
+| Spanyol (Ecuador)                  | `es-EC` | Nyelvi modell                                   |
+| Spanyol (Salvador)              | `es-SV` | Nyelvi modell                                   |
+| Spanyol (Egyenlítői-Guinea)        | `es-GQ` | Nyelvi modell                                   |
+| Spanyol (Guatemala)                | `es-GT` | Nyelvi modell                                   |
+| Spanyol (Honduras)                 | `es-HN` | Nyelvi modell                                   |
+| Spanyol (Mexikó)                   | `es-MX` | Akusztikai modell<br>Nyelvi modell                 |
+| Spanyol (Nicaragua)                | `es-NI` | Nyelvi modell                                   |
+| Spanyol (Panama)                   | `es-PA` | Nyelvi modell                                   |
+| Spanyol (Paraguay)                 | `es-PY` | Nyelvi modell                                   |
+| Spanyol (perui)                     | `es-PE` | Nyelvi modell                                   |
+| Spanyol (Puerto Rico)              | `es-PR` | Nyelvi modell                                   |
+| Spanyol (Spanyolország)                    | `es-ES` | Akusztikai modell<br>Nyelvi modell                 |
+| Spanyol (Uruguay)                  | `es-UY` | Nyelvi modell                                   |
+| Spanyol (USA)                      | `es-US` | Nyelvi modell                                   |
+| Spanyol (Venezuela)                | `es-VE` | Nyelvi modell                                   |
+| Svéd (Svédország)                   | `sv-SE` | Nyelvi modell                                   |
+| Tamil (India)                      | `ta-IN` | Nyelvi modell                                   |
+| Telugu (India)                     | `te-IN` | Nyelvi modell                                   |
+| Thai (Thaiföld)                    | `th-TH` | Nyelvi modell                                   |
+| Török (Törökország)                   | `tr-TR` | Nyelvi modell                                   |
 
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 

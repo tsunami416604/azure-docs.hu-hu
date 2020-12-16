@@ -8,14 +8,14 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: overview
-ms.date: 10/02/2020
+ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8fdbb42d06f26849d14e093c340c6d2457ee6ec9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ae5887657e7657e60348217c21aa0ed17f9f4b07
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020095"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606300"
 ---
 # <a name="what-is-azure-time-series-insights-gen2"></a>Mi az Azure Time Series Insights Gen2
 
@@ -87,7 +87,7 @@ Ezeknek a kulcsfontosságú ipari IoT képességeknek a bevezetésével a Azure 
 | Bővíthetőség és integráció | Az Power BI Connector integrációja közvetlenül a Time Series Explorer felhasználói felületén érhető el az **exportálási** lehetőséggel, így az ügyfelek a felhasználói élményben létrehozott idősorozat-lekérdezéseket közvetlenül a Power bi asztalra, a más bi Analytics szolgáltatással pedig az idősorozat-diagramokat is megtekinthetik. Ez megnyitja az ajtót egy új forgatókönyvnek az olyan ipari IoT vállalatok számára, akik befektettek a Power BIba a különböző adatforrásokból, például a IoT-sorozatokból származó elemzések egyetlen paneljét biztosítva. |
 | Az Azure Time Series Insights Gen2 platformra épülő egyéni alkalmazások | Azure Time Series Insights Gen2 támogatja a [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)-t. Az SDK sokoldalú vezérlőket és egyszerűsített hozzáférést biztosít a lekérdezésekhez. Az SDK használatával egyéni IoT-alkalmazásokat hozhat létre Azure Time Series Insights Gen2, hogy megfeleljen az üzleti igényeinek. A Azure Time Series Insights Gen2- [lekérdezési API-kat](./concepts-query-overview.md) közvetlenül is használhatja az egyéni IoT-alkalmazásokba való adattovábbításhoz. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedés a Azure Time Series Insights Gen2:
 

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa8a6643f1b7bd60fbf6e5950234e0381666177e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87925542"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605224"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>A Azure Data Box Disk érvényesítési problémáinak elhárítása naplók használatával
 
@@ -51,27 +51,27 @@ Ha több munkamenetet is futtat az ellenőrzéshez, a rendszer egy naplófájlt 
 - Itt látható a hibanapló mintája, ha a tároló neve érvénytelen. A (z) vagy a (z) alatt létrehozott mappa az `BlockBlob` `PageBlob` `AzureFile` Azure Storage-fiókban található tároló lesz. A tároló nevének meg kell felelnie az [Azure elnevezési konvencióinak](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions).
 
     ```xml
-        <?xml version="1.0" encoding="utf-8"?>
-        <ErrorLog Version="2018-10-01">
-          <SessionId>bbsession</SessionId>
-          <ItemType>BlockBlob</ItemType>
-          <SourceDirectory>E:\BlockBlob</SourceDirectory>
-          <Errors>
-            <Error Code="InvalidShareContainerFormat">
-              <List>
-                <Container Name="Azu-reFile" />
-                <Container Name="bbcont ainer1" />
-              </List>
-              <Count>2</Count>
-            </Error>
-          </Errors>
-          <Warnings />
+    <?xml version="1.0" encoding="utf-8"?>
+    <ErrorLog Version="2018-10-01">
+        <SessionId>bbsession</SessionId>
+        <ItemType>BlockBlob</ItemType>
+        <SourceDirectory>E:\BlockBlob</SourceDirectory>
+        <Errors>
+        <Error Code="InvalidShareContainerFormat">
+            <List>
+            <Container Name="Azu-reFile" />
+            <Container Name="bbcont ainer1" />
+            </List>
+            <Count>2</Count>
+        </Error>
+        </Errors>
+        <Warnings />
     </ErrorLog>
     ```
 
 ## <a name="validation-tool-errors"></a>Ellenőrző eszköz hibái
 
-A következő táblázat összegzi a *error.xmlban * szereplő hibákat a megfelelő javasolt műveletekkel.
+A következő táblázat összegzi a *error.xmlban* szereplő hibákat a megfelelő javasolt műveletekkel.
 
 | Hibakód| Leírás                       | Ajánlott műveletek               |
 |------------|--------------------------|-----------------------------------|
@@ -94,6 +94,6 @@ A következő táblázat összegzi a *error.xmlban * szereplő hibákat a megfel
 | `NonVhdFileNotSupportedForManagedDisk` | Nem VHD-fájl nem tölthető fel felügyelt lemezként. |Távolítsa el a nem VHD-fájlokat a `ManagedDisk` mappából, mivel ezek nem támogatottak, vagy helyezze át ezeket a fájlokat egy `PageBlob` mappába. Próbálja megismételni az ellenőrzést. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az adatfeltöltési hibák](data-box-disk-troubleshoot-upload.md)elhárítása.

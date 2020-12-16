@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: cc17dcef7a554bee2715c79ba7d0c2356db2c6b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 55ad9c90129a5d732f377ac1b6c905c14de319dc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185657"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607423"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Hibaelhárítási útmutató az Azure Signaler szolgáltatás gyakori problémáira
 
@@ -36,7 +36,7 @@ Az SDK **1.0.6** vagy újabb verziója `/negotiate` akkor fog kiindulni, `413 Pa
 
 ### <a name="solution"></a>Megoldás:
 
-Alapértelmezés szerint a rendszer a jogcímeket a `context.User.Claims` JWT hozzáférési token **ASRS**(Zure **A** **S** ignal **R** **S** zésének) való létrehozásakor tartalmazza, így a jogcímek megmaradnak, és a **ASRS** -ből továbbítható, `Hub` Ha az ügyfél csatlakozik a szolgáltatáshoz `Hub` .
+Alapértelmezés szerint a rendszer a jogcímeket a `context.User.Claims` JWT hozzáférési token **ASRS**(Zure **S** ignal **R** zésének) való létrehozásakor tartalmazza, így a jogcímek megmaradnak, és a **ASRS** -ből továbbítható, `Hub` Ha az ügyfél csatlakozik a szolgáltatáshoz `Hub` .
 
 Bizonyos esetekben a `context.User.Claims` rendszer kihasználja az App Server számos információjának tárolására, amelyek többségét nem használja az s, `Hub` hanem más összetevők.
 
@@ -122,7 +122,7 @@ A ASP.NET Core a jelző más típusú átviteli típusát, az SSE-t és a hossz�
 
 A ASP.NET-jelző esetében az ügyfél időről időre elküld egy életben tartási `/ping` kérelmet a szolgáltatásnak, amikor a `/ping` művelet meghiúsul, az ügyfél **megszakítja** a kapcsolatot, és soha nem csatlakozik újra. Ez azt jelenti, hogy a ASP.NET-jelző esetében az alapértelmezett jogkivonat élettartama **legfeljebb** 1 órát tart a teljes átviteli típushoz.
 
-### <a name="solution"></a>Megoldás
+### <a name="solution"></a>Megvalósítás
 
 Biztonsági okokból az élettartam meghosszabbítása nem ajánlott. Javasoljuk, hogy az ügyfél újracsatlakozási logikájának hozzáadásával indítsa újra a kapcsolatot, ha az 401 történik. Amikor az ügyfél újraindítja a kapcsolódást, a rendszer egyezteti az App Serverrel, hogy újra lekérje az JWT-tokent, és megújított jogkivonatot kapjon.
 
@@ -144,11 +144,17 @@ A ASP.NET-jelző esetében, amikor az [ügyfél kapcsolata csökken](#client_con
 
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>429 (túl sok kérés) lett visszaküldve az ügyfél kéréseihez
 
-429 visszaadja, ha az **egyidejű** kapcsolatok száma meghaladja a korlátot.
+Két eset létezik.
+
+### <a name="concurrent-connection-count-exceeds-limit"></a>Az **egyidejű** kapcsolatok száma meghaladja a korlátot.
 
 Az **ingyenes** példányok esetében az **egyidejű** kapcsolatok száma legfeljebb 20 a **standard** példányok esetében, az **egységenkénti** **kapcsolati** korlát egységenként 1 K, ami azt jelenti, hogy a Unit100 engedélyezi a 100-K egyidejű kapcsolatait.
 
 A kapcsolatok az ügyfél és a kiszolgáló kapcsolatait is tartalmazzák. [itt](./signalr-concept-messages-and-connections.md#how-connections-are-counted) tekintheti meg a kapcsolatok számításának módját.
+
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>Túl sok egyeztetési kérelem van egy időben.
+
+Javasoljuk, hogy az újrakapcsolódás előtt véletlenszerű késleltetést [adjon meg,](#restart_connection) és próbálkozzon újra a mintákkal.
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 hiba az egyeztetés során: az Azure Signaler szolgáltatás még nincs csatlakoztatva, próbálkozzon újra később.
 
@@ -253,7 +259,7 @@ Az ügyfélkapcsolatok hosszú ideje folyamatosan növekednek az Azure-jelző Me
 
 1. Ellenőrizze, hogy a jelző ügyfele **soha nem** zárul-e le.
 
-### <a name="solution"></a>Megoldás
+### <a name="solution"></a>Megvalósítás
 
 Ellenőrizze, hogy be van-e zárva a kapcsolatok. Manuálisan hívja `HubConnection.DisposeAsync()` meg a kapcsolatok leállítását a használat után.
 
@@ -281,7 +287,7 @@ finally
 
 Ez a probléma gyakran fordul elő, ha valaki a Signal-ügyfélkapcsolatot az Azure Function metódusban hozza létre ahelyett, hogy statikus tagot kellene létesítenie a Function osztályba. Előfordulhat, hogy csak egy ügyfélkapcsolatot kell létrehoznia, de az ügyfél-kapcsolatok száma folyamatosan növekszik a Azure Portal erőforrás menüjének figyelés szakaszában lévő mérőszámok között, és ezek a kapcsolatok csak az Azure-függvény vagy az Azure-jelző szolgáltatás újraindítása után jelennek meg. Ennek az az oka, hogy **minden** kérelem esetében az Azure Function **egy** ügyfélkapcsolatot hoz létre, ha nem állítja le az ügyfélkapcsolatot a Function metódusban, az ügyfél életben tartja a kapcsolatokat az Azure signaler szolgáltatásban.
 
-#### <a name="solution"></a>Megoldás
+#### <a name="solution"></a>Megvalósítás
 
 * Ne felejtse el lezárva az ügyfélkapcsolatot, ha a Signaler-ügyfeleket az Azure-függvényben használja, vagy ha a Signaler-ügyfelet különállóként
 * A Signaler-ügyfelek az Azure-függvényben való használata helyett a Signaler-ügyfelek bárhol létrehozhatók, és az [Azure signaler szolgáltatáshoz Azure functions kötések](https://github.com/Azure/azure-functions-signalrservice-extension) használatával [egyeztetik](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/samples/simple-chat/csharp/FunctionApp/Functions.cs#L22) az ügyfelet az Azure-jelzővel. Emellett a kötést is használhatja az [üzenetek küldéséhez](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/samples/simple-chat/csharp/FunctionApp/Functions.cs#L40). Az ügyfél egyeztetésére és az üzenetek küldésére szolgáló mintákat [itt](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples)találja. További információt [itt](https://github.com/Azure/azure-functions-signalrservice-extension)találhat.
@@ -347,7 +353,7 @@ Vegyen fel ASP.NET Core egyet például (a ASP.NET egy hasonló):
 
     * [ASP.NET JavaScript-ügyfél](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban megtanulta, hogyan kezelheti a gyakori problémákat. További általános hibaelhárítási módszereket is megtudhat. 
 

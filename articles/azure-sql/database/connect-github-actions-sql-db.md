@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 9203cebbd721b918f2514f7615712c035a0460ed
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 216658b5f5443409e7bd44cbd29bff40cd56c75f
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669746"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606980"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>A GitHub-műveletek használata a Azure SQL Databasehoz való kapcsolódáshoz
 
-Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy munkafolyamattal, amely az adatbázis-frissítések [Azure SQL Database](../azure-sql-iaas-vs-paas-what-is-overview.md)való üzembe helyezésére használható. 
+Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/free-pro-team@latest/actions) egy munkafolyamattal, amely az adatbázis-frissítések [Azure SQL Database](../azure-sql-iaas-vs-paas-what-is-overview.md)való üzembe helyezésére használható. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -187,11 +187,11 @@ A kapcsolatok sztringjét GitHub-titokként fogja használni.
  
    :::image type="content" source="media/quickstart-sql-github-actions/github-actions-run-sql.png" alt-text="A GitHub-műveletek futtatásának naplója":::
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az Azure SQL Database-adatbázisra és-tárházra már nincs szükség, távolítsa el az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg az Azure-t és a GitHub-integrációt](/azure/developer/github/)

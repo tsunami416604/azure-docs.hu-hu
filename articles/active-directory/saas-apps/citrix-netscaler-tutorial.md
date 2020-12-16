@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Citrix NetScaler (Kerberos-alapú hitelesítéssel) | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést (SSO) a Azure Active Directory és a Citrix NetScaler között Kerberos-alapú hitelesítés használatával.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Citrix ADC-vel (Kerberos-alapú hitelesítéssel) | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést (SSO) a Azure Active Directory és a Citrix ADC között Kerberos-alapú hitelesítés használatával.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,67 +9,64 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/27/2020
+ms.date: 12/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 8557c830aec2dd30de0a99a19d7950928d36e894
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e5f1f16ba9a2f276d41373eaf4c819522f2d9e2b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456020"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607575"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Citrix NetScaler (Kerberos-alapú hitelesítés)
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-kerberos-based-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Citrix ADC-vel (Kerberos-alapú hitelesítés)
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Citrix NetScaler Azure Active Directory (Azure AD) használatával. Ha a Citrix NetScaler-t az Azure AD-vel integrálja, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Citrix ADC-t Azure Active Directory (Azure AD) használatával. Ha a Citrix ADC-t az Azure AD-vel integrálja, a következőket teheti:
 
-* A Citrix NetScaler elérését biztosító Azure AD-beli vezérlés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Citrix NetScaler-ba az Azure AD-fiókjával.
+* Szabályozza az Azure AD-t, aki hozzáfér a Citrix ADC-hez.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Citrix ADC-be az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](../manage-apps/what-is-single-sign-on.md)használatával című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Citrix NetScaler egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Citrix ADC egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. Az oktatóanyag a következő forgatókönyveket tartalmazza:
 
-* **SP – kezdeményezett** Egyszeri bejelentkezés a Citrix NetScaler
+* **SP – kezdeményezett** Egyszeri bejelentkezés a Citrix ADC-hez
 
-* **Felhasználói üzembe helyezés a Citrix** NetScaler
+* Felhasználói üzembe helyezés a Citrix ADC **-** hez
 
-* [Kerberos-alapú hitelesítés Citrix NetScaler](#publish-the-web-server)
+* [Kerberos-alapú hitelesítés Citrix ADC esetén](#publish-the-web-server)
 
-* [Fejléc-alapú hitelesítés Citrix NetScaler](header-citrix-netscaler-tutorial.md#publish-the-web-server)
+* [Fejléc-alapú hitelesítés Citrix ADC esetén](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
-* A Citrix NetScaler konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="add-citrix-netscaler-from-the-gallery"></a>Citrix NetScaler hozzáadása a katalógusból
+## <a name="add-citrix-adc-from-the-gallery"></a>Citrix ADC hozzáadása a katalógusból
 
-A Citrix NetScaler Azure AD-val való integrálásához először adja hozzá a Citrix NetScaler a felügyelt SaaS-alkalmazások listájához a katalógusból:
+A Citrix ADC Azure AD-val való integrálásához először adja hozzá a Citrix ADC-t a felügyelt SaaS-alkalmazások listájához a gyűjteményből:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 
-1. A bal oldali menüben válassza a **Azure Active Directory**lehetőséget.
+1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 
-1. A **Hozzáadás a** katalógusból szakaszban adja meg a **Citrix NetScaler** kifejezést a keresőmezőbe.
+1. A **Hozzáadás a** katalógusból szakaszban adja meg a **Citrix ADC** kifejezést a keresőmezőbe.
 
-1. Az eredmények között válassza ki a **Citrix NetScaler**elemet, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Az eredmények között válassza ki a **CITRIX ADC** elemet, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-citrix-netscaler"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Citrix NetScaler-hez
+## <a name="configure-and-test-azure-ad-sso-for-citrix-adc"></a>Azure AD SSO konfigurálása és tesztelése a Citrix ADC-hez
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Citrix NetScaler egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Citrix NetScaler-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Citrix ADC használatával egy **B. Simon** nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Citrix ADC-ben.
 
-Az Azure AD SSO és a Citrix NetScaler konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO Citrix ADC-vel való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az [Azure ad SSO konfigurálása](#configure-azure-ad-sso) – a funkció használatának engedélyezése a felhasználók számára.
 
@@ -77,9 +74,9 @@ Az Azure AD SSO és a Citrix NetScaler konfigurálásához és teszteléséhez h
 
     1. [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) – hogy a B. Simon engedélyezze az Azure ad SSO használatát.
 
-1. A [Citrix NETSCALER SSO konfigurálása](#configure-citrix-netscaler-sso) – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+1. [CITRIX ADC SSO konfigurálása](#configure-citrix-adc-sso) – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 
-    * [Hozzon létre egy Citrix NetScaler-teszt felhasználót](#create-a-citrix-netscaler-test-user) – a felhasználó Azure ad-beli képviseletéhez kapcsolódó B. Simon-partneri kapcsolathoz a Citrix NetScaler.
+    * [Hozzon létre egy CITRIX ADC-tesztet használó felhasználót](#create-a-citrix-adc-test-user) – a felhasználó Azure ad-képviseletéhez csatolt B. Simon-ügyfélként a Citrix ADC-ben.
 
 1. [SSO tesztelése](#test-sso) – annak ellenőrzése, hogy a konfiguráció működik-e.
 
@@ -87,9 +84,9 @@ Az Azure AD SSO és a Citrix NetScaler konfigurálásához és teszteléséhez h
 
 Ha az Azure AD SSO-t a Azure Portal használatával szeretné engedélyezni, hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Citrix NetScaler** Application Integration panel **kezelés**területén válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A Azure Portal a **CITRIX ADC** Application Integration panel **kezelés** területén válassza az **egyszeri bejelentkezés** lehetőséget.
 
-1. Az **egyszeri bejelentkezési módszer kiválasztása** panelen válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** panelen válassza az **SAML** lehetőséget.
 
 1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza a toll **szerkesztése** ikont az **alapszintű SAML-konfigurációhoz** a beállítások szerkesztéséhez.
 
@@ -106,14 +103,14 @@ Ha az Azure AD SSO-t a Azure Portal használatával szeretné engedélyezni, haj
     * A **bejelentkezési URL** szövegmezőben adjon meg egy URL-címet, amely a következő mintával rendelkezik: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
-    > * Az ebben a szakaszban használt URL-címek nem valós értékek. Frissítse ezeket az értékeket az azonosító, a válasz URL-cím és a bejelentkezési URL-cím tényleges értékeivel. Az értékek lekéréséhez forduljon a [Citrix NetScaler ügyfél-támogatási csapatához](https://www.citrix.com/contact/technical-support.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
-    > * Az egyszeri bejelentkezés beállításához az URL-címeknek elérhetőnek kell lenniük a nyilvános webhelyekről. Engedélyeznie kell a tűzfalat vagy más biztonsági beállításokat a Citrix NetScaler oldalon ahhoz, hogy enble az Azure AD-t, hogy elküldhesse a tokent a konfigurált URL-címen.
+    > * Az ebben a szakaszban használt URL-címek nem valós értékek. Frissítse ezeket az értékeket az azonosító, a válasz URL-cím és a bejelentkezési URL-cím tényleges értékeivel. Az értékek lekéréséhez lépjen kapcsolatba a [CITRIX ADC ügyfél-támogatási csapatával](https://www.citrix.com/contact/technical-support.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > * Az egyszeri bejelentkezés beállításához az URL-címeknek elérhetőnek kell lenniük a nyilvános webhelyekről. Engedélyeznie kell a tűzfalat vagy más biztonsági beállításokat a Citrix ADC oldalán ahhoz, hogy enble az Azure AD-t, hogy elküldhesse a tokent a konfigurált URL-címen.
 
-1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen az **SAML aláíró tanúsítvány** szakaszban az **alkalmazás-összevonás metaadatainak URL-címéhez**másolja ki az URL-címet, és mentse azt a Jegyzettömbben.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen az **SAML aláíró tanúsítvány** szakaszban az **alkalmazás-összevonás metaadatainak URL-címéhez** másolja ki az URL-címet, és mentse azt a Jegyzettömbben.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **Citrix NetScaler beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
+1. A **CITRIX ADC beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
@@ -121,63 +118,55 @@ Ha az Azure AD SSO-t a Azure Portal használatával szeretné engedélyezni, haj
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali menüjében válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**lehetőséget, majd válassza a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali menüjében válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** lehetőséget, majd válassza a **minden felhasználó** lehetőséget.
 
 1. Válassza az **új felhasználó** elemet a panel tetején.
 
 1. A **felhasználói** tulajdonságok területen hajtsa végre a következő lépéseket:
 
-   1. A **név**mezőbe írja be a következőt: `B.Simon` .  
+   1. A **név** mezőbe írja be a következőt: `B.Simon` .  
 
-   1. A **Felhasználónév**mezőbe írja be a következőt: _username@companydomain.extension_ . Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a következőt: _username@companydomain.extension_ . Például: `B.Simon@contoso.com`.
 
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel vagy másolja a **jelszóban**megjelenő értéket.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel vagy másolja a **jelszóban** megjelenő értéket.
 
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure SSO használatát azáltal, hogy hozzáférést biztosít a felhasználónak a Citrix NetScaler-hoz.
+Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure SSO használatát azáltal, hogy a felhasználónak hozzáférést biztosít a Citrix ADC-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 
-1. Az alkalmazások listában válassza a **Citrix NetScaler**elemet.
+1. Az alkalmazások listában válassza a **CITRIX ADC** elemet.
 
-1. Az alkalmazás áttekintés területén a **kezelés**területen válassza a **felhasználók és csoportok**lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
+1. Az alkalmazás áttekintés területén a **kezelés** területen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza ki az **B. Simon** elemet a **felhasználók** listából. Válassza a **Kiválasztás** lehetőséget
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd válassza a **kiválasztás**lehetőséget.
-
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
-
-## <a name="configure-citrix-netscaler-sso"></a>A Citrix NetScaler SSO konfigurálása
+## <a name="configure-citrix-adc-sso"></a>Citrix ADC SSO konfigurálása
 
 Válasszon egy hivatkozást a konfigurálni kívánt hitelesítési típushoz:
 
-- [Citrix NetScaler SSO konfigurálása Kerberos-alapú hitelesítéshez](#publish-the-web-server)
+- [Citrix ADC SSO konfigurálása Kerberos-alapú hitelesítéshez](#publish-the-web-server)
 
-- [A Citrix NetScaler SSO konfigurálása a fejléc-alapú hitelesítéshez](header-citrix-netscaler-tutorial.md#publish-the-web-server)
+- [Citrix ADC SSO konfigurálása fejléc-alapú hitelesítéshez](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
 ### <a name="publish-the-web-server"></a>A webkiszolgáló közzététele 
 
 Virtuális kiszolgáló létrehozása:
 
-1. Válassza a **Traffic Management**  >  **terheléselosztási**  >  **szolgáltatások**lehetőséget.
+1. Válassza a **Traffic Management**  >  **terheléselosztási**  >  **szolgáltatások** lehetőséget.
     
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
-    ![Citrix NetScaler Configuration-Services ablaktábla](./media/citrix-netscaler-tutorial/web01.png)
+    ![Citrix ADC-konfiguráció – szolgáltatások ablaktábla](./media/citrix-netscaler-tutorial/web01.png)
 
 1. Állítsa be az alábbi értékeket az alkalmazásokat futtató webkiszolgálóra:
 
-   * **Szolgáltatás neve**
+   * **Szolgáltatásnév**
    * **Kiszolgáló IP-címe/meglévő kiszolgáló**
    * **Protokoll**
    * **Port**
@@ -188,7 +177,7 @@ A terheléselosztó konfigurálása:
 
 1. Nyissa meg a **Traffic Management**  >  **terheléselosztási**  >  **virtuális kiszolgálókat**.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Állítsa be az alábbi értékeket a következő képernyőképen leírtak szerint:
 
@@ -199,31 +188,31 @@ A terheléselosztó konfigurálása:
 
 1. Válassza az **OK** lehetőséget.
 
-    ![Citrix NetScaler-konfiguráció – alapszintű beállítások panel](./media/citrix-netscaler-tutorial/load01.png)
+    ![Citrix ADC-konfiguráció – alapszintű beállítások panel](./media/citrix-netscaler-tutorial/load01.png)
 
 ### <a name="bind-the-virtual-server"></a>A virtuális kiszolgáló kötése
 
 A terheléselosztó kötése a virtuális kiszolgálóval:
 
-1. A **szolgáltatások és szolgáltatások csoport** ablaktáblán válassza a **nincs terheléselosztás virtuális kiszolgáló szolgáltatás kötése**elemet.
+1. A **szolgáltatások és szolgáltatások csoport** ablaktáblán válassza a **nincs terheléselosztás virtuális kiszolgáló szolgáltatás kötése** elemet.
 
-   ![Citrix NetScaler-konfiguráció – a virtuális kiszolgáló szolgáltatás kötési paneljének terheléselosztása](./media/citrix-netscaler-tutorial/bind01.png)
+   ![Citrix ADC-konfiguráció – terheléselosztás a virtuális kiszolgáló szolgáltatás kötési paneljén](./media/citrix-netscaler-tutorial/bind01.png)
 
-1. Ellenőrizze a beállításokat az alábbi képernyőképen látható módon, majd kattintson a **Bezárás**gombra.
+1. Ellenőrizze a beállításokat az alábbi képernyőképen látható módon, majd kattintson a **Bezárás** gombra.
 
-   ![Citrix NetScaler konfiguráció – a Virtual Server Services-kötés ellenőrzése](./media/citrix-netscaler-tutorial/bind02.png)
+   ![Citrix ADC-konfiguráció – a Virtual Server Services-kötés ellenőrzése](./media/citrix-netscaler-tutorial/bind02.png)
 
 ### <a name="bind-the-certificate"></a>A tanúsítvány kötése
 
 A szolgáltatás TLS-ként történő közzétételéhez kösse a kiszolgálói tanúsítványt, majd tesztelje az alkalmazást:
 
-1. A **tanúsítvány**területen válassza a **nincs kiszolgálói tanúsítvány**lehetőséget.
+1. A **tanúsítvány** területen válassza a **nincs kiszolgálói tanúsítvány** lehetőséget.
 
-   ![Citrix NetScaler-konfiguráció – kiszolgálói tanúsítvány panel](./media/citrix-netscaler-tutorial/bind03.png)
+   ![Citrix ADC-konfiguráció – kiszolgálói tanúsítvány panel](./media/citrix-netscaler-tutorial/bind03.png)
 
-1. Ellenőrizze a beállításokat az alábbi képernyőképen látható módon, majd kattintson a **Bezárás**gombra.
+1. Ellenőrizze a beállításokat az alábbi képernyőképen látható módon, majd kattintson a **Bezárás** gombra.
 
-   ![Citrix NetScaler konfiguráció – a tanúsítvány ellenőrzése](./media/citrix-netscaler-tutorial/bind04.png)
+   ![Citrix ADC-konfiguráció – a tanúsítvány ellenőrzése](./media/citrix-netscaler-tutorial/bind04.png)
 
 ## <a name="citrix-adc-saml-profile"></a>Citrix ADC SAML-profil
 
@@ -233,51 +222,51 @@ A Citrix ADC SAML-profil konfigurálásához végezze el a következő szakaszt.
 
 Hitelesítési házirend létrehozása:
 
-1. Válassza a **Biztonság**  >  **AAA – alkalmazás forgalmi**  >  **szabályzatok**  >  **hitelesítési**  >  **hitelesítési szabályzatok**lehetőséget.
+1. Válassza a **Biztonság**  >  **AAA – alkalmazás forgalmi**  >  **szabályzatok**  >  **hitelesítési**  >  **hitelesítési szabályzatok** lehetőséget.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. A **hitelesítési házirend létrehozása** panelen adja meg vagy válassza ki a következő értékeket:
 
     * **Név**: adja meg a hitelesítési házirend nevét.
-    * **Művelet**: írja be az **SAML**-t, majd kattintson a **Hozzáadás**gombra.
-    * **Kifejezés**: adja meg az **igaz**értéket.     
+    * **Művelet**: írja be az **SAML**-t, majd kattintson a **Hozzáadás** gombra.
+    * **Kifejezés**: adja meg az **igaz** értéket.     
     
-    ![Citrix NetScaler konfiguráció – hitelesítési házirend létrehozása panel](./media/citrix-netscaler-tutorial/policy01.png)
+    ![Citrix ADC-konfiguráció – hitelesítési házirend létrehozása panel](./media/citrix-netscaler-tutorial/policy01.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="create-an-authentication-saml-server"></a>Hitelesítési SAML-kiszolgáló létrehozása
 
 A hitelesítési SAML-kiszolgáló létrehozásához lépjen a **hitelesítés SAML-kiszolgáló létrehozása** panelre, majd hajtsa végre a következő lépéseket:
 
-1. A **név**mezőben adja meg a hitelesítési SAML-kiszolgáló nevét.
+1. A **név** mezőben adja meg a hitelesítési SAML-kiszolgáló nevét.
 
-1. Az **SAML-metaadatok exportálása**területen:
+1. Az **SAML-metaadatok exportálása** területen:
 
    1. Jelölje be a **Metaadatok importálása** jelölőnégyzetet.
 
    1. Adja meg az összevonási metaadatok URL-címét a korábban másolt Azure SAML felhasználói felületről.
     
-1. A **kiállító neve**mezőbe írja be a megfelelő URL-címet.
+1. A **kiállító neve** mezőbe írja be a megfelelő URL-címet.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
-![Citrix NetScaler Configuration – hitelesítés SAML-kiszolgáló létrehozása panel](./media/citrix-netscaler-tutorial/server01.png)
+![Citrix ADC konfiguráció – hitelesítés SAML-kiszolgáló létrehozása panel](./media/citrix-netscaler-tutorial/server01.png)
 
 ### <a name="create-an-authentication-virtual-server"></a>Hitelesítési virtuális kiszolgáló létrehozása
 
 Hitelesítési virtuális kiszolgáló létrehozása:
 
-1.  Válassza a **Biztonság**  >  **AAA-alkalmazás forgalmi**  >  **szabályzatok**  >  **hitelesítési**  >  **hitelesítés virtuális kiszolgálók**lehetőséget.
+1.  Válassza a **Biztonság**  >  **AAA-alkalmazás forgalmi**  >  **szabályzatok**  >  **hitelesítési**  >  **hitelesítés virtuális kiszolgálók** lehetőséget.
 
-1.  Válassza a **Hozzáadás**lehetőséget, majd hajtsa végre a következő lépéseket:
+1.  Válassza a **Hozzáadás** lehetőséget, majd hajtsa végre a következő lépéseket:
 
-    1. A **név**mezőben adja meg a hitelesítési virtuális kiszolgáló nevét.
+    1. A **név** mezőben adja meg a hitelesítési virtuális kiszolgáló nevét.
 
     1. Jelölje be a **nem címezhető** jelölőnégyzetet.
 
-    1. A **protokoll**területen válassza az **SSL**lehetőséget.
+    1. A **protokoll** területen válassza az **SSL** lehetőséget.
 
     1. Válassza az **OK** lehetőséget.
     
@@ -287,40 +276,40 @@ Hitelesítési virtuális kiszolgáló létrehozása:
 
 Két rész módosítása a hitelesítési virtuális kiszolgálóhoz:
 
-1.  A **speciális hitelesítési házirendek** panelen válassza a **nincs hitelesítési házirend**elemet.
+1.  A **speciális hitelesítési házirendek** panelen válassza a **nincs hitelesítési házirend** elemet.
 
-    ![Citrix NetScaler-konfiguráció – speciális hitelesítési házirendek panel](./media/citrix-netscaler-tutorial/virtual01.png)
+    ![Citrix ADC-konfiguráció – speciális hitelesítési házirendek panel](./media/citrix-netscaler-tutorial/virtual01.png)
 
-1. A **házirend-kötés** ablaktáblán válassza ki a hitelesítési házirendet, majd válassza a **kötés**lehetőséget.
+1. A **házirend-kötés** ablaktáblán válassza ki a hitelesítési házirendet, majd válassza a **kötés** lehetőséget.
 
-    ![Citrix NetScaler-konfiguráció – házirend-kötési panel](./media/citrix-netscaler-tutorial/virtual02.png)
+    ![Citrix ADC-konfiguráció – házirend kötési panelje](./media/citrix-netscaler-tutorial/virtual02.png)
 
-1. Az **űrlap alapú virtuális kiszolgálók** ablaktáblán válassza a **nincs terheléselosztás virtuális kiszolgáló**elemet.
+1. Az **űrlap alapú virtuális kiszolgálók** ablaktáblán válassza a **nincs terheléselosztás virtuális kiszolgáló** elemet.
 
-    ![Citrix NetScaler-konfiguráció – űrlap alapú virtuális kiszolgálók ablaktábla](./media/citrix-netscaler-tutorial/virtual03.png)
+    ![Citrix ADC konfiguráció – űrlap alapú virtuális kiszolgálók ablaktábla](./media/citrix-netscaler-tutorial/virtual03.png)
 
-1. A **hitelesítési FQDN**mezőben adjon meg egy teljes tartománynevet (FQDN) (kötelező).
+1. A **hitelesítési FQDN** mezőben adjon meg egy teljes tartománynevet (FQDN) (kötelező).
 
 1. Válassza ki azt a terheléselosztási virtuális kiszolgálót, amelyet az Azure AD-hitelesítéssel szeretne védelemmel ellátni.
 
-1. Válassza a **kötés**lehetőséget.
+1. Válassza a **kötés** lehetőséget.
 
-    ![Citrix NetScaler-konfiguráció – virtuális kiszolgáló kötési paneljének terheléselosztása](./media/citrix-netscaler-tutorial/virtual04.png)
+    ![Citrix ADC-konfiguráció-terheléselosztás virtuális kiszolgáló kötésének panelje](./media/citrix-netscaler-tutorial/virtual04.png)
 
     > [!NOTE]
     > Ügyeljen rá, hogy a **hitelesítés virtuális kiszolgáló konfigurációja** ablaktáblán válassza a **kész** lehetőséget.
 
 1. A módosítások ellenőrzéséhez a böngészőben nyissa meg az alkalmazás URL-címét. A korábban látott nem hitelesített hozzáférés helyett a bérlő bejelentkezési lapját kell látnia.
 
-    ![Citrix NetScaler Configuration – bejelentkezési oldal egy böngészőben](./media/citrix-netscaler-tutorial/virtual05.png)
+    ![Citrix ADC konfiguráció – bejelentkezési oldal egy böngészőben](./media/citrix-netscaler-tutorial/virtual05.png)
 
-## <a name="configure-citrix-netscaler-sso-for-kerberos-based-authentication"></a>Citrix NetScaler SSO konfigurálása Kerberos-alapú hitelesítéshez
+## <a name="configure-citrix-adc-sso-for-kerberos-based-authentication"></a>Citrix ADC SSO konfigurálása Kerberos-alapú hitelesítéshez
 
 ### <a name="create-a-kerberos-delegation-account-for-citrix-adc"></a>Kerberos-delegálási fiók létrehozása Citrix ADC-hez
 
 1. Hozzon létre egy felhasználói fiókot (ebben a példában a _AppDelegation_-t használjuk).
 
-    ![Citrix NetScaler-konfiguráció-Tulajdonságok panel](./media/citrix-netscaler-tutorial/kerberos01.png)
+    ![Citrix ADC-konfiguráció – Tulajdonságok ablaktábla](./media/citrix-netscaler-tutorial/kerberos01.png)
 
 1. GAZDAGÉP SPN beállítása ehhez a fiókhoz. 
 
@@ -334,22 +323,22 @@ Két rész módosítása a hitelesítési virtuális kiszolgálóhoz:
 
 1. Konfigurálja a webkiszolgáló delegálását az alábbi képernyőképen látható módon:
  
-    ![Citrix NetScaler-konfiguráció – delegálás a Tulajdonságok panelen](./media/citrix-netscaler-tutorial/kerberos02.png)
+    ![Citrix ADC-konfiguráció – delegálás a Tulajdonságok panelen](./media/citrix-netscaler-tutorial/kerberos02.png)
 
     > [!NOTE]
     > A képernyőképen az a belső webkiszolgáló neve, amely a Windows integrált hitelesítés (WIA) helyet futtatja, a _CWEB2_.
 
-### <a name="citrix-netscaler-aaa-kcd-kerberos-delegation-accounts"></a>Citrix NetScaler AAA KCD (Kerberos-delegálási fiókok)
+### <a name="citrix-adc-aaa-kcd-kerberos-delegation-accounts"></a>Citrix ADC AAA KCD (Kerberos-delegálási fiókok)
 
-A Citrix NetScaler AAA KCD fiók konfigurálása:
+A Citrix ADC AAA KCD fiók konfigurálása:
 
 1.  Ugrás a **Citrix Gateway**  >  **AAA KCD (Kerberos által korlátozott delegálás) fiókjaira**.
 
-1.  Válassza a **Hozzáadás**lehetőséget, majd adja meg vagy válassza ki a következő értékeket:
+1.  Válassza a **Hozzáadás** lehetőséget, majd adja meg vagy válassza ki a következő értékeket:
 
     * **Név**: adja meg a KCD-fiók nevét.
 
-    * **Tartomány: írja**be a tartományt és a bővítményt nagybetűvel.
+    * **Tartomány: írja** be a tartományt és a bővítményt nagybetűvel.
 
     * **Szolgáltatás SPN**: `http/<host/fqdn>@<DOMAIN.COM>` .
     
@@ -362,7 +351,7 @@ A Citrix NetScaler AAA KCD fiók konfigurálása:
 
 1. Válassza az **OK** lehetőséget.
  
-    ![Citrix NetScaler konfiguráció – KCD-fiók konfigurálása panel](./media/citrix-netscaler-tutorial/kerberos03.png)
+    ![Citrix ADC-konfiguráció – KCD-fiók konfigurálása panel](./media/citrix-netscaler-tutorial/kerberos03.png)
 
 ### <a name="citrix-traffic-policy-and-traffic-profile"></a>Citrix Traffic Policy és Traffic profil
 
@@ -370,25 +359,25 @@ A Citrix forgalmi házirend és a forgalmi profil konfigurálása:
 
 1.  Lépjen a **Biztonság**  >  **AAA-alkalmazás forgalmi**  >  **szabályzatok**  >  **forgalmi szabályzatok, profilok és űrlap SSO ProfilesTraffic házirendek elemre**.
 
-1.  Válassza a **forgalmi profilok**lehetőséget.
+1.  Válassza a **forgalmi profilok** lehetőséget.
 
-1.  Válassza a **Hozzáadás** elemet.
+1.  Válassza a **Hozzáadás** lehetőséget.
 
 1.  A forgalmi profil konfigurálásához adja meg vagy válassza ki a következő értékeket.
 
     * **Név**: adja meg a forgalmi profil nevét.
 
-    * **Egyszeri bejelentkezés**: válassza **a**be lehetőséget.
+    * **Egyszeri bejelentkezés**: válassza **a** be lehetőséget.
 
     * **KCD fiók**: válassza ki az előző szakaszban létrehozott KCD-fiókot.
 
 1. Válassza az **OK** lehetőséget.
 
-    ![Citrix NetScaler konfiguráció – forgalmi profil konfigurálása panel](./media/citrix-netscaler-tutorial/kerberos04.png)
+    ![Citrix ADC konfiguráció – Traffic profil konfigurálása panel](./media/citrix-netscaler-tutorial/kerberos04.png)
  
-1.  Válassza a **forgalmi szabályzat**lehetőséget.
+1.  Válassza a **forgalmi szabályzat** lehetőséget.
 
-1.  Válassza a **Hozzáadás** elemet.
+1.  Válassza a **Hozzáadás** lehetőséget.
 
 1.  A forgalmi szabályzatok konfigurálásához adja meg vagy válassza ki a következő értékeket:
 
@@ -396,11 +385,11 @@ A Citrix forgalmi házirend és a forgalmi profil konfigurálása:
 
     * **Profil**: válassza ki az előző szakaszban létrehozott forgalmi profilt.
 
-    * **Kifejezés**: adja meg az **igaz**értéket.
+    * **Kifejezés**: adja meg az **igaz** értéket.
 
 1. Válassza az **OK** lehetőséget.
 
-    ![Citrix NetScaler konfiguráció – forgalmi szabályzat konfigurálása panel](./media/citrix-netscaler-tutorial/kerberos05.png)
+    ![Citrix ADC konfiguráció – forgalmi szabályzat konfigurálása panel](./media/citrix-netscaler-tutorial/kerberos05.png)
 
 ### <a name="bind-a-traffic-policy-to-a-virtual-server-in-citrix"></a>Forgalmi szabályzat kötése Citrix virtuális kiszolgálóhoz
 
@@ -408,59 +397,52 @@ Forgalmi szabályzat kötése egy virtuális kiszolgálóhoz a grafikus felhaszn
 
 1. Nyissa meg a **Traffic Management**  >  **terheléselosztási**  >  **virtuális kiszolgálókat**.
 
-1. A virtuális kiszolgálók listájában válassza ki azt a virtuális kiszolgálót, amelyhez az Újraírási házirendet kötni szeretné, majd válassza a **Megnyitás**lehetőséget.
+1. A virtuális kiszolgálók listájában válassza ki azt a virtuális kiszolgálót, amelyhez az Újraírási házirendet kötni szeretné, majd válassza a **Megnyitás** lehetőséget.
 
-1. A terheléselosztási **virtuális kiszolgáló** ablaktábla **Speciális beállítások**területén válassza a **házirendek**elemet. Az NetScaler-példányhoz konfigurált összes házirend megjelenik a listában.
+1. A terheléselosztási **virtuális kiszolgáló** ablaktábla **Speciális beállítások** területén válassza a **házirendek** elemet. Az NetScaler-példányhoz konfigurált összes házirend megjelenik a listában.
  
-    ![Citrix NetScaler-konfiguráció – virtuális kiszolgáló terheléselosztása panel](./media/citrix-netscaler-tutorial/kerberos06.png)
+    ![Citrix ADC konfiguráció – virtuális kiszolgáló terheléselosztása panel](./media/citrix-netscaler-tutorial/kerberos06.png)
 
-    ![Citrix NetScaler-konfiguráció – házirendek párbeszédpanel](./media/citrix-netscaler-tutorial/kerberos07.png)
+    ![Citrix ADC-konfiguráció – házirendek párbeszédpanel](./media/citrix-netscaler-tutorial/kerberos07.png)
 
 1.  Jelölje be a virtuális kiszolgálóhoz kötni kívánt szabályzat neve melletti jelölőnégyzetet.
  
-    ![Citrix NetScaler konfiguráció – virtuális kiszolgáló forgalmi házirendjének kötési paneljének terheléselosztása](./media/citrix-netscaler-tutorial/kerberos09.png)
+    ![Citrix ADC konfiguráció – virtuális kiszolgáló forgalmi házirendjének kötési paneljének terheléselosztása](./media/citrix-netscaler-tutorial/kerberos09.png)
 
 1. A **típus kiválasztása** párbeszédpanelen:
 
-    1. A **házirend kiválasztása**lapon válassza a **forgalom**lehetőséget.
+    1. A **házirend kiválasztása** lapon válassza a **forgalom** lehetőséget.
 
-    1. Válassza a **típus lehetőséget**, majd a **kérelem**lehetőséget.
+    1. Válassza a **típus lehetőséget**, majd a **kérelem** lehetőséget.
 
-    ![Citrix NetScaler konfiguráció – a típus panel kiválasztása](./media/citrix-netscaler-tutorial/kerberos08.png)
+    ![Citrix ADC-konfiguráció – válassza a típus panelt](./media/citrix-netscaler-tutorial/kerberos08.png)
 
-1. Ha a szabályzat kötve van, válassza a **kész**lehetőséget.
+1. Ha a szabályzat kötve van, válassza a **kész** lehetőséget.
  
-    ![Citrix NetScaler-konfiguráció – házirendek ablaktábla](./media/citrix-netscaler-tutorial/kerberos10.png)
+    ![Citrix ADC-konfiguráció – házirendek ablaktábla](./media/citrix-netscaler-tutorial/kerberos10.png)
 
 1. Tesztelje a kötést a WIA webhely használatával.
 
-    ![Citrix NetScaler Configuration – tesztoldal a böngészőben](./media/citrix-netscaler-tutorial/kerberos11.png)    
+    ![Citrix ADC konfiguráció – tesztoldal egy böngészőben](./media/citrix-netscaler-tutorial/kerberos11.png)    
 
-### <a name="create-a-citrix-netscaler-test-user"></a>Citrix NetScaler-teszt felhasználó létrehozása
+### <a name="create-a-citrix-adc-test-user"></a>Citrix ADC-teszt felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Citrix NetScaler. A Citrix NetScaler az igény szerinti felhasználói üzembe helyezést támogatja, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nem végezhető művelet. Ha egy felhasználó még nem létezik a Citrix NetScaler-ben, a rendszer egy újat hoz létre a hitelesítés után.
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Citrix ADC-ben. A Citrix ADC támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nem végezhető művelet. Ha egy felhasználó még nem létezik a Citrix ADC-ben, akkor a hitelesítés után létrejön egy újat.
 
 > [!NOTE]
-> Ha manuálisan kell létrehoznia egy felhasználót, forduljon a [Citrix NetScaler ügyfél-támogatási csapatához](https://www.citrix.com/contact/technical-support.html).
+> Ha manuálisan kell létrehoznia egy felhasználót, forduljon a [CITRIX ADC ügyfél-támogatási csapatához](https://www.citrix.com/contact/technical-support.html).
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD SSO konfigurációját a hozzáférési panel használatával teszteli.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Amikor kiválasztja a Citrix NetScaler csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Citrix NetScaler, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a Citrix ADC bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen közvetlenül a Citrix ADC bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Citrix ADC-csempére kattint, a rendszer átirányítja a Citrix ADC bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
+## <a name="next-steps"></a>További lépések
 
-- [A Citrix NetScaler kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-
-- [A Citrix NetScaler egyszeri bejelentkezés konfigurálása a fejléc-alapú hitelesítéshez](header-citrix-netscaler-tutorial.md)
-
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
-
-- [A Citrix NetScaler és a speciális láthatóság és vezérlők elleni védelem](/cloud-app-security/proxy-intro-aad)
+A Citrix ADC konfigurálását követően kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

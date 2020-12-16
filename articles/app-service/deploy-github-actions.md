@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3c2f90403afbc581f80312be2271d802f4d719a8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0c10cc683d8c8c2496ca8fdbd00f0e5065e2db35
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584238"
+ms.locfileid: "97604923"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés az App Service-ben a GitHub Actions segítségével
 
-Ismerkedjen meg a [GitHub-műveletekkel](https://help.github.com/en/articles/about-github-actions) a munkafolyamatok automatizálásához és a githubról [Azure app Service](overview.md) üzembe helyezéséhez. 
+Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions) a munkafolyamatok automatizálásához és a githubról [Azure app Service](overview.md) üzembe helyezéséhez. 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -63,7 +63,7 @@ A munkafolyamatokat a központi telepítési központ használata nélkül is ü
 
 Az Azure App Services a GitHub-műveletekhez való hitelesítésének ajánlott módja a közzétételi profil. A hitelesítést egy egyszerű szolgáltatással is elvégezheti, de a folyamat további lépéseket igényel. 
 
-Mentse a közzétételi profil hitelesítő adatait vagy egyszerű szolgáltatásnevet [GitHub-titokként](https://docs.github.com/en/actions/reference/encrypted-secrets) az Azure-beli hitelesítéshez. A titkos kulcsot a munkafolyamaton belül érheti el. 
+Mentse a közzétételi profil hitelesítő adatait vagy egyszerű szolgáltatásnevet [GitHub-titokként](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) az Azure-beli hitelesítéshez. A titkos kulcsot a munkafolyamaton belül érheti el. 
 
 # <a name="publish-profile"></a>[Profil közzététele](#tab/applevel)
 
@@ -732,7 +732,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
 
@@ -746,7 +746,7 @@ Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit
 
 - [Docker-bejelentkezés/kijelentkezés](https://github.com/Azure/docker-login)
 
-- [Munkafolyamatokat kiváltó események](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [Munkafolyamatokat kiváltó események](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [K8s üzembe helyezése](https://github.com/Azure/k8s-deploy)
 

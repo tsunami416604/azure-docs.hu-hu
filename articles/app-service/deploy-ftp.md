@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9884b109db3f3a34ceb323bef9fba1d5bfc23147
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150258"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605076"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Az alkalmazás üzembe helyezése az Azure App Service FTP/S használatával
 
@@ -21,7 +21,7 @@ Az alkalmazáshoz tartozó FTP/S végpont már aktív. Az FTP/S központi telep�
 
 ## <a name="open-ftp-dashboard"></a>FTP-irányítópult megnyitása
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza a **app Services**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza a **app Services** lehetőséget.
 
     ![Keressen rá az App Services kifejezésre.](media/app-service-continuous-deployment/search-for-app-services.png)
 
@@ -39,10 +39,10 @@ Az FTP-irányítópulton válassza a **Másolás** lehetőséget a FTPS-végpont
 
 ![FTP-adatok másolása](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-Javasoljuk, hogy az alkalmazáshoz tartozó **hitelesítő adatok** használatával telepítse az alkalmazást, mert az minden alkalmazás esetében egyedi. Ha azonban a **felhasználói hitelesítő adatok**elemre kattint, megadhat felhasználói szintű hitelesítő adatokat, amelyeket az előfizetésében található összes app Service alkalmazáshoz HASZNÁLHAT az FTP/S bejelentkezéshez.
+Javasoljuk, hogy az alkalmazáshoz tartozó **hitelesítő adatok** használatával telepítse az alkalmazást, mert az minden alkalmazás esetében egyedi. Ha azonban a **felhasználói hitelesítő adatok** elemre kattint, megadhat felhasználói szintű hitelesítő adatokat, amelyeket az előfizetésében található összes app Service alkalmazáshoz HASZNÁLHAT az FTP/S bejelentkezéshez.
 
 > [!NOTE]
-> Hitelesítés egy FTP-/FTPS-végponthoz felhasználói szintű hitelesítő adatokkal, amelyek a felhasználónevet a következő formátumban használják: 
+> A felhasználói szintű hitelesítő adatokkal rendelkező FTP-/FTPS-végpontra történő hitelesítéshez a felhasználónévnek a következő formátumúnak kell lennie: 
 >
 >`<app-name>\<user-name>`
 >
@@ -71,7 +71,7 @@ A fokozott biztonság érdekében csak a TLS/SSL protokollt használó FTP-t eng
 
 Az alkalmazás erőforrás-lapja [Azure Portalban](https://portal.azure.com)válassza a **konfiguráció**  >  **általános beállítások** lehetőséget a bal oldali navigációs sávon.
 
-A titkosítatlan FTP letiltásához válassza a **FTPS csak** **FTP-állapotban**lehetőséget. Az FTP és a FTPS teljes letiltásához válassza a **Letiltva**lehetőséget. Amikor végzett, kattintson a **Mentés** gombra. Ha **csak a FTPS**-t használja, a webalkalmazás **TLS/SSL-beállítások** paneljére kell kikényszeríteni a TLS 1,2-es vagy újabb verzióját. A TLS 1,0 és 1,1 **csak a FTPS**esetében támogatott.
+A titkosítatlan FTP letiltásához válassza a **FTPS csak** **FTP-állapotban** lehetőséget. Az FTP és a FTPS teljes letiltásához válassza a **Letiltva** lehetőséget. Amikor végzett, kattintson a **Mentés** gombra. Ha **csak a FTPS**-t használja, a webalkalmazás **TLS/SSL-beállítások** paneljére kell kikényszeríteni a TLS 1,2-es vagy újabb verzióját. A TLS 1,0 és 1,1 **csak a FTPS** esetében támogatott.
 
 ![FTP/S letiltása](./media/app-service-deploy-ftp/disable-ftp.png)
 
@@ -85,9 +85,18 @@ Az [Azure PowerShell](/cli/azure)használatával történő FTP-telepítéssel k
 
 ## <a name="troubleshoot-ftp-deployment"></a>FTP-telepítés hibáinak megoldása
 
-- [Hogyan lehet elhárítani az FTP-telepítést?](#how-can-i-troubleshoot-ftp-deployment)
-- [Nem tudok FTP-t és közzétenni a kódot. Hogyan oldható fel a probléma?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-- [Hogyan csatlakozhatok az FTP-hez Azure App Service passzív módban?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+- [Az alkalmazás üzembe helyezése az Azure App Service FTP/S használatával](#deploy-your-app-to-azure-app-service-using-ftps)
+  - [FTP-irányítópult megnyitása](#open-ftp-dashboard)
+  - [FTP-kapcsolat adatainak beolvasása](#get-ftp-connection-information)
+  - [Fájlok üzembe helyezése az Azure-ban](#deploy-files-to-azure)
+  - [FTPS betartatása](#enforce-ftps)
+  - [Automatizálás szkriptekkel](#automate-with-scripts)
+  - [FTP-telepítés hibáinak megoldása](#troubleshoot-ftp-deployment)
+    - [Hogyan lehet elhárítani az FTP-telepítést?](#how-can-i-troubleshoot-ftp-deployment)
+    - [Nem tudok FTP-t és közzétenni a kódot. Hogyan oldható fel a probléma?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+    - [Hogyan csatlakozhatok az FTP-hez Azure App Service passzív módban?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+  - [Következő lépések](#next-steps)
+  - [További erőforrások](#more-resources)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Hogyan lehet elhárítani az FTP-telepítést?
 
@@ -108,7 +117,7 @@ Győződjön meg arról, hogy a helyes állomásnevet és [hitelesítő adatokat
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Hogyan csatlakozhatok az FTP-hez Azure App Service passzív módban?
 Azure App Service támogatja az aktív és passzív módban történő csatlakozást. A passzív üzemmód használata ajánlott, mert az üzembe helyezési gépek általában tűzfal mögött vannak (az operációs rendszeren vagy otthoni vagy üzleti hálózat részeként). Tekintse meg [a megnyerő dokumentációban található példát](https://winscp.net/docs/ui_login_connection). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A speciális üzembe helyezési forgatókönyvek esetében próbálja meg [üzembe helyezni az Azure-ban a git használatával](deploy-local-git.md). Az Azure-hoz készült git-alapú üzembe helyezés lehetővé teszi a verziókövetés, a csomagok visszaállítása, az MSBuild és egyebek használatát.
 

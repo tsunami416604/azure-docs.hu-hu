@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b84d24174771e8395677874c9dac863fa6f27a54
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a6b92d1b7f36b73d91b8e0e8e519981b936d8735
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185912"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592432"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -50,7 +50,7 @@ Log Analytics dedikált fürtök egyetlen felügyelt Azure Adatkezelő-fürtbe t
 
 A fürt kapacitásának foglalási szintje programozott módon van konfigurálva a Azure Resource Manager használatával a (z `Capacity` ) paraméterrel `Sku` . A a `Capacity` GB egységben van megadva, és 1000 GB/nap vagy több értékkel rendelkezhet a 100 GB/nap növekményekben. Ezt [Azure monitor ügyfél által felügyelt kulcs](customer-managed-keys.md#create-cluster)részletezi. Ha a fürtnek 2000 GB/nap feletti foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
-A fürtön két számlázási mód van használatban. Ezeket a paraméter megadhatja a `billingType` [fürt konfigurálásakor](customer-managed-keys.md#customer-managed-key-operations). A két mód a következők: 
+A fürtön két számlázási mód van használatban. Ezeket a paraméter megadhatja a `billingType` [fürt konfigurálásakor](customer-managed-keys.md#customer-managed-key-operations). A két mód a következő: 
 
 1. **Fürt**: ebben az esetben (ez az alapértelmezett beállítás) a betöltött adatmennyiség számlázása a fürt szintjén történik. A rendszer összesíti a fürthöz társított egyes munkaterületekről betöltött adatmennyiségeket a fürt napi számlájának kiszámításához. Vegye figyelembe, hogy a [Azure Security Center](../../security-center/index.yml) -tól származó csomópont-hozzárendelések a munkaterület szintjén lesznek alkalmazva az összesített adatoknak a fürt összes munkaterülete közötti összesítése előtt. 
 
@@ -150,11 +150,11 @@ A megőrzés a paraméter használatával is [beállítható Azure Resource Mana
 
 A 30 napos megőrzéssel rendelkező munkaterületek 31 napig ténylegesen megőrzik az adatmegőrzési időt. Ha fontos, hogy az adatok csak 30 napig legyenek tárolva, a Azure Resource Manager segítségével állítsa be az adatmegőrzést 30 napra és a `immediatePurgeDataOn30Days` paraméterrel.  
 
-Alapértelmezés szerint 90 a rendszer két adattípust (-- `Usage` és `AzureActivity` --) tart fenn, és ez a 90 nap megtartása esetén nem számít fel díjat. Ha a munkaterület megtartása 90 nap fölé emelkedik, az adattípusok megőrzése is megnövekszik.  Ezek az adattípusok az adatfeldolgozási díjaktól is mentesek. 
+Alapértelmezés szerint 90 a rendszer két adattípust (-- `Usage` és `AzureActivity` --) tart fenn, és a 90-es nap megtartásához nem számítunk fel díjat. Ha a munkaterület megtartása 90 nap fölé emelkedik, az adattípusok megőrzése is megnövekszik.  Ezek az adattípusok az adatfeldolgozási díjaktól is mentesek. 
 
 A munkaterületen alapuló Application Insights-erőforrások (,,,,,,,, és) adattípusai `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` alapértelmezés szerint `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` `AppSystemEvents` `AppTraces` 90 napra is megmaradnak, és ez a 90 nap megtartása esetén nem számítunk fel díjat. A megőrzésük adattípusú funkció használatával állítható be. 
 
-Vegye figyelembe, hogy az Log Analytics [Purge API](/rest/api/loganalytics/workspacepurge/purge) nem befolyásolja az adatmegőrzési számlázást, és nagyon korlátozott esetekben használható. Az adatmegőrzési számla csökkentése érdekében a megőrzési időtartamot csökkenteni kell a munkaterület vagy adott adattípusok esetében. 
+Vegye figyelembe, hogy a Log Analytics [kiürítési API-ja](/rest/api/loganalytics/workspacepurge/purge) nincs hatással az adatmegőrzés számlázására, és nagyon körülhatárolt esetekben való használatra készült. Az adatmegőrzési számla csökkentése érdekében a megőrzési időtartamot csökkenteni kell a munkaterület vagy adott adattípusok esetében. 
 
 ### <a name="retention-by-data-type"></a>Megőrzés adattípus szerint
 
@@ -639,7 +639,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 
 Az adatgyűjtés leállításakor az OperationStatus állapota: **Figyelmeztetés**. Az adatgyűjtés indításakor az OperationStatus állapota: **Sikeres**. Az alábbi táblázat leírja, hogy az adatgyűjtés miért leáll és egy javasolt művelet az adatgyűjtés folytatásához:  
 
-|Az OK gyűjtése leáll| Megoldás| 
+|Az OK gyűjtése leáll| Megvalósítás| 
 |-----------------------|---------|
 |Elérte a munkaterület napi korlátját|Várjon, amíg a gyűjtemény automatikusan újraindul, vagy növelje a napi adatmennyiség kezelése című témakörben leírt napi adatmennyiség korlátját. A napi korlát alaphelyzetbe állításának ideje a **napi korlát** oldalon látható. |
 | A munkaterület elérte az [adatfeldolgozási kötet sebességét](../service-limits.md#log-analytics-workspaces) | Az Azure-erőforrásokról diagnosztikai beállítások használatával küldött adatok alapértelmezett maximális adatfeldolgozási sebessége munkaterületenként körülbelül 6 GB/perc. Ez egy hozzávetőleges érték, mivel a tényleges méret a napló hosszától és a tömörítési aránytól függően eltérő lehet az adattípusok között. Ez a korlátozás nem vonatkozik az ügynökökről vagy a Data Collector API-ról küldött adatokra. Ha egy adott munkaterületre nagyobb sebességgel küld adatokat, egyes adatok elvesznek, és a rendszer 6 óránként eseményt küld a munkaterület műveleti táblájára, amíg meg nem szűnik a küszöb túllépése. Ha a betöltési mennyiség továbbra is meghaladja a sebességkorlátot, vagy ha úgy gondolja, hogy nemsokára el fogja az érni, akkor az LAIngestionRate@microsoft.com címre küldött e-mailben vagy egy támogatási kérés megnyitásával kérheti a sebesség növelését a munkaterületen. Az adatfeldolgozási sebességkorlátot jelző esemény az `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"` lekérdezéssel kereshető meg. |

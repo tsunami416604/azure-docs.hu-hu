@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1edd5ffc2578a27a53c7e9a46a4a5f1cf61331ff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353119"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605059"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker erőforrások és tudásbázisok nyelvi támogatása
 
@@ -83,61 +83,61 @@ Ha egy Tudásbázis-rendszer támogatására van szüksége, amely több nyelvet
 
 A következő lista a QnA Maker erőforrás által támogatott nyelveket tartalmazza. 
 
-|Nyelv|
+| Nyelv |
 |--|
-|Arab|
-|örmény|
-|Bangla|
-|Baszk|
-|Bolgár|
-|Katalán|
-|Chinese_Simplified|
-|Chinese_Traditional|
-|Horvát|
-|Cseh|
-|Dán|
-|Holland|
-|Angol|
-|Észt|
-|Finn|
-|Francia|
-|Gallego|
-|Német|
-|Görög|
-|gudzsaráti|
-|héber|
-|Hindi|
-|Magyar|
-|Izlandi|
-|Indonéz|
-|Ír|
-|Olasz|
-|Japán|
-|kannada|
-|Koreai|
-|Lett|
-|Litván|
-|malajálam|
-|Maláj|
-|Norvég|
-|Lengyel|
-|Portugál|
-|pandzsábi|
-|Román|
-|Orosz|
-|Serbian_Cyrillic|
-|Serbian_Latin|
-|Szlovák|
-|Szlovén|
-|Spanyol|
-|Svéd|
-|tamil|
-|telugu|
-|Thai|
-|Török|
-|Ukrán|
-|urdu|
-|Vietnámi|
+| Arab |
+| örmény |
+| Bangla |
+| Baszk |
+| Bolgár |
+| Katalán |
+| Chinese_Simplified |
+| Chinese_Traditional |
+| Horvát |
+| Cseh |
+| Dán |
+| Holland |
+| Angol |
+| Észt |
+| Finn |
+| Francia |
+| Gallego |
+| Német |
+| Görög |
+| gudzsaráti |
+| héber |
+| Hindi |
+| Magyar |
+| Izlandi |
+| Indonéz |
+| Ír |
+| Olasz |
+| Japán |
+| kannada |
+| Koreai |
+| Lett |
+| Litván |
+| malajálam |
+| Maláj |
+| Norvég |
+| Lengyel |
+| Portugál |
+| pandzsábi |
+| Román |
+| Orosz |
+| Serbian_Cyrillic |
+| Serbian_Latin |
+| Szlovák |
+| Szlovén |
+| Spanyol |
+| Svéd |
+| tamil |
+| telugu |
+| Thai |
+| Török |
+| Ukrán |
+| urdu |
+| Vietnámi |
 
 ## <a name="query-matching-and-relevance"></a>Lekérdezés megfeleltetése és relevanciája
 A QnA Maker az [Azure Cognitive Search Language Analyzers](/rest/api/searchservice/language-support) szolgáltatástól függ az eredmények biztosításához.

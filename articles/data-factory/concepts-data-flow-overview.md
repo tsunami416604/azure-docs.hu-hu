@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 12/10/2020
-ms.openlocfilehash: f78cbaedea90a241efddd0eff9cb7503201528c5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 01ee890fe77abebfdec8d3d643773b42cb54187e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590406"
+ms.locfileid: "97606181"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Az adatfolyamatok leképezése Azure Data Factory
 
@@ -99,7 +99,7 @@ A Azure Data Factory csapat létrehozta a [teljesítmény-hangolási útmutatót
 
 ## <a name="available-regions"></a>Elérhető régiók
 
-Az adatfolyamatok leképezése az ADF következő régióiban érhető el:
+= = = = = = = Az adatfolyamatok leképezése az ADF következő régióiban érhető el:
 
 | Azure-régió | Adatfolyamatok az ADF-ben |
 | ------------ | ----------------- |
@@ -157,7 +157,7 @@ Az adatfolyamatok leképezése az ADF következő régióiban érhető el:
 | USA nyugati régiója   | ✓ |
 | USA 2. nyugati régiója | ✓ |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan hozhat létre [forrás-átalakítást](data-flow-source.md).
 * Megtudhatja, hogyan hozhat létre adatfolyamatokat [hibakeresési módban](concepts-data-flow-debug-mode.md).

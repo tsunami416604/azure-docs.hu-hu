@@ -7,19 +7,19 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: af8d768ceeaacdf1c8a0f6cdc8be0041e4ae4ed1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fb0d3e3c57a26f7ca14b74edc42cb657ba6074c3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099079"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604997"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Mi az új Azure digitális Twins? Miben különbözik az előző verziótól (2018)?
 
 Az Azure Digital Twins első nyilvános előzetes verziója 2018 októberében jelent meg. Noha az első verzió alapfogalmai átkerültek az új szolgáltatásra, az interfészek és a megvalósítás számos részlete úgy módosult, hogy a szolgáltatás rugalmasabb és hozzáférhető legyen. Ezeket a módosításokat az ügyfelek visszajelzései indokolták.
 
 > [!IMPORTANT]
-> Az új szolgáltatás kibővített képességeinek fényében az előző Azure digitális Twins szolgáltatás a 2020-as év végéig megszűnik.
+> Az új szolgáltatás kibővített képességeinek fényében az előző Azure digitális Twins szolgáltatás kivonásra kerül, és az API-k és a hozzájuk kapcsolódó adatmennyiségek már nem állnak rendelkezésre a 2021. január 18-án.
 
 Ha az első nyilvános előzetes verzióban használta az Azure Digital Twins első verzióját, az ebben a cikkben található információk és ajánlott eljárások segítségével megismerheti az új szolgáltatás használatát, és kihasználhatja a funkcióit.
 
@@ -40,7 +40,7 @@ Az alábbi diagram a szolgáltatás előző verziója és az új (aktuális) szo
 
 Az Azure Digital Twins-korlátok listáját a következő témakörben találhatja [*: referenciák: szolgáltatási korlátok*](reference-service-limits.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Következő lépésként az Azure Digital Twins használatáról az első oktatóanyagban tájékozódhat:
 

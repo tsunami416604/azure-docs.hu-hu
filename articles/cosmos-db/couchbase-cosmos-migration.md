@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: e84b80233d87ac4ae5e2281b506e225c4ab1bd9d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a15c6b5919f428b28daab86fea9c3b6473d19162
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357602"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606198"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrálás a CouchBase-ből Azure Cosmos DB SQL API-ba
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,12 +24,12 @@ A Azure Cosmos DB egy méretezhető, globálisan elosztott, teljes körűen fel�
 
 Az alábbi főbb funkciók a Couchbase képest eltérő módon működnek Azure Cosmos DBban:
 
-|   Couchbase     |   Azure Cosmos DB   |
-| ---------------|-------------------|
-|Couchbase-kiszolgáló| Fiók       |
-|Gyűjtő           | Adatbázis      |
-|Gyűjtő           | Tároló/gyűjtemény |
-|JSON-dokumentum    | Tétel/dokumentum |
+| Couchbase | Azure Cosmos DB |
+|--|--|
+| Couchbase-kiszolgáló | Fiók |
+| Gyűjtő | Adatbázis |
+| Gyűjtő | Tároló/gyűjtemény |
+| JSON-dokumentum | Tétel/dokumentum |
 
 ## <a name="key-differences"></a>Fő eltérések
 
@@ -189,7 +189,7 @@ A N1QL lekérdezések a lekérdezéseknek a Couchbase való definiálásának m�
 
 |N1QL-lekérdezés | Azure CosmosDB-lekérdezés|
 |-------------------|-------------------|
-|Válassza a META ( `TravelDocument` ). ID azonosítót, `TravelDocument` . * elemet, `TravelDocument` ahol `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" és az ország = "India", a vízumok pedig minden m. type = = "Multi-Entry" és m. Country in ["India", Bhután "] Order by ` Validity` desc limit 25 eltolás 0   | Válassza ki a c. id, a c értéket a c: c. ország = "India", ahol c._type = "com. xx. xx. xx. xxx. xxx. xxxx" és c. ország = "India" és m. type = "Multi-Entry" és m. Country IN ("India", "Bhután") ORDER BY c |
+|Válassza a META ( `TravelDocument` ). ID azonosítót, `TravelDocument` . * elemet, `TravelDocument` ahol `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" és az ország = "India", a vízumok pedig minden m. type = = "Multi-Entry" és m. Country in ["India", Bhután "] Order by ` Validity` desc limit 25 eltolás 0 | Válassza ki a c. id, a c értéket a c: c. ország = "India", ahol c._type = "com. xx. xx. xx. xxx. xxx. xxxx" és c. ország = "India" és m. type = "Multi-Entry" és m. Country IN ("India", "Bhután") ORDER BY c |
 
 A N1QL-lekérdezésekben a következő változások láthatók:
 
@@ -221,12 +221,12 @@ Használja az aszinkron Java SDK-t a következő lépésekkel:
    cp.connectionMode(ConnectionMode.DIRECT);
     
    if(client==null)
-    client= CosmosClient.builder()
-        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
-        .connectionPolicy(cp)
-        .key(PrimaryKey)
-        .consistencyLevel(ConsistencyLevel.EVENTUAL)
-        .build();   
+      client= CosmosClient.builder()
+         .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
+          .connectionPolicy(cp)
+          .key(PrimaryKey)
+          .consistencyLevel(ConsistencyLevel.EVENTUAL)
+          .build();
    
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
@@ -242,22 +242,22 @@ Most a fenti módszer segítségével több lekérdezést is átadhat, és probl
 ```java
 for(SqlQuerySpec query:queries)
 {
-    objFlux= container.queryItems(query, fo);
-    objFlux .publishOn(Schedulers.elastic())
-            .subscribe(feedResponse->
-                {
-                    if(feedResponse.results().size()>0)
-                    {
-                        _docs.addAll(feedResponse.results());
-                    }
-                
-                },
-                Throwable::printStackTrace,latch::countDown);
-    lstFlux.add(objFlux);
+   objFlux= container.queryItems(query, fo);
+   objFlux .publishOn(Schedulers.elastic())
+         .subscribe(feedResponse->
+            {
+               if(feedResponse.results().size()>0)
+               {
+                  _docs.addAll(feedResponse.results());
+               }
+            
+            },
+            Throwable::printStackTrace,latch::countDown);
+   lstFlux.add(objFlux);
 }
-                        
-        Flux.merge(lstFlux);
-        latch.await();
+                  
+      Flux.merge(lstFlux);
+      latch.await();
 }
 ```
 
@@ -267,7 +267,7 @@ Az előző kóddal párhuzamosan futtathat lekérdezéseket, és növelheti az e
 
 A dokumentum beszúrásához futtassa a következő kódot:
 
-```java 
+```java
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
@@ -278,13 +278,13 @@ CountDownLatch latch=new CountDownLatch(1);
 objMono .subscribeOn(Schedulers.elastic())
         .subscribe(resourceResponse->
         {
-            if(resourceResponse.statusCode()!=successStatus)
-                {
-                    throw new RuntimeException(resourceResponse.toString());
-                }
-            },
+           if(resourceResponse.statusCode()!=successStatus)
+              {
+                 throw new RuntimeException(resourceResponse.toString());
+              }
+           },
         Throwable::printStackTrace,latch::countDown);
-latch.await();              
+latch.await();
 ```
 
 ### <a name="upsert-operation"></a>Upsert művelet
@@ -300,7 +300,7 @@ Ezután fizessen elő a Mono-ra. Tekintse meg a Mono előfizetési kódrészlete
 
 A következő kódrészlet végrehajtja a törlési műveletet:
 
-```java     
+```java
 CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
@@ -350,12 +350,12 @@ Ez egy egyszerű számítási feladat, amelyben lekérdezések helyett keresési
    cp.connectionMode(ConnectionMode.DIRECT);
    
    if(client==null)
-    client= CosmosClient.builder()
-        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
-        .connectionPolicy(cp)
-        .key(PrimaryKey)
-        .consistencyLevel(ConsistencyLevel.EVENTUAL)
-        .build();
+      client= CosmosClient.builder()
+         .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
+          .connectionPolicy(cp)
+          .key(PrimaryKey)
+          .consistencyLevel(ConsistencyLevel.EVENTUAL)
+          .build();
     
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
@@ -370,16 +370,16 @@ Az elem olvasásához használja a következő kódrészletet:
 CosmosItemRequestOptions ro=new CosmosItemRequestOptions();
 ro.partitionKey(new PartitionKey(documentId));
 CountDownLatch latch=new CountDownLatch(1);
-        
+      
 var objCosmosItem= container.getItem(documentId, documentId);
 Mono<CosmosItemResponse> objMono = objCosmosItem.read(ro);
 objMono .subscribeOn(Schedulers.elastic())
         .subscribe(resourceResponse->
         {
-            if(resourceResponse.item()!=null)
-            {
-                doc= resourceResponse.properties().toObject(UserModel.class);
-            }
+           if(resourceResponse.item()!=null)
+           {
+              doc= resourceResponse.properties().toObject(UserModel.class);
+           }
         },
         Throwable::printStackTrace,latch::countDown);
 latch.await();
@@ -389,7 +389,7 @@ latch.await();
 
 Egy elem beszúrásához hajtsa végre a következő kódot:
 
-```java 
+```java
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
@@ -398,14 +398,14 @@ Ezután fizessen elő a Mono-ra:
 ```java
 CountDownLatch latch=new CountDownLatch(1);
 objMono.subscribeOn(Schedulers.elastic())
-        .subscribe(resourceResponse->
-        {
-            if(resourceResponse.statusCode()!=successStatus)
-                {
-                    throw new RuntimeException(resourceResponse.toString());
-                }
-            },
-        Throwable::printStackTrace,latch::countDown);
+      .subscribe(resourceResponse->
+      {
+         if(resourceResponse.statusCode()!=successStatus)
+            {
+               throw new RuntimeException(resourceResponse.toString());
+            }
+         },
+      Throwable::printStackTrace,latch::countDown);
 latch.await();
 ```
 
@@ -422,7 +422,7 @@ Ezután fizessen elő a Mono-ra, tekintse meg a Mono előfizetés kódrészletet
 
 A törlési művelet végrehajtásához használja a következő kódrészletet:
 
-```java     
+```java
 CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```

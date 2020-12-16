@@ -3,12 +3,12 @@ title: Azure DevTest Labs erőforrások elosztott együttműködési fejlesztés
 description: A DevTest Labs erőforrásainak fejlesztéséhez ajánlott eljárásokat biztosít egy elosztott és együttműködő fejlesztési környezet beállításához.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483805"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592364"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Ajánlott eljárások az Azure DevTest Labs-erőforrások elosztott és együttműködő fejlesztéséhez
 Az elosztott együttműködési fejlesztés lehetővé teszi a különböző csapatok vagy személyek számára, hogy alapszintű kódot fejlesszenek és őrizzenek meg. Ahhoz, hogy sikeres legyen, a fejlesztési folyamat az információk létrehozására, megosztására és integrálására való képességtől függ. Ez a kulcs-fejlesztési elv a Azure DevTest Labson belül használható. A laborban többféle típusú erőforrás van, amelyeket általában a különböző laborok osztanak szét egy vállalaton belül. A különböző típusú erőforrások két területre vannak koncentrálva:
@@ -45,9 +45,9 @@ Az alábbi ábrán két tárház látható: az IT-részleg által karbantartott 
 
 ![Példaként szolgáló terjesztési és együttműködési fejlesztési környezet](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
    
-Ez a rétegzett struktúra lehetővé teszi a fejlesztést, miközben magasabb szintű minőséget tart fenn a fő ág esetében, miközben a laborhoz több tárház csatlakozik, így nagyobb rugalmasságot biztosít.
+Ez a rétegzett struktúra lehetővé teszi a fejlesztést, miközben magasabb szintű minőséget biztosít a fő ág számára, miközben a laborhoz kapcsolódó több tárház nagyobb rugalmasságot tesz lehetővé.
 
-## <a name="next-steps"></a>További lépések    
+## <a name="next-steps"></a>Következő lépések    
 Lásd az alábbi cikkeket:
 
 - Adattár hozzáadása laborhoz a [Azure Portal](devtest-lab-add-artifact-repo.md) vagy az [Azure Resource Management-sablon](add-artifact-repository.md) használatával
