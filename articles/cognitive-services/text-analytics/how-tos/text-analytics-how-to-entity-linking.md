@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/15/2020
 ms.author: aahi
-ms.openlocfilehash: 5b064365a6f0bd8a544f57d67cd6e4beb98bb404
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505239"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562531"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -83,7 +83,7 @@ A nevesített entitások felismerése `v3.1-preview.3` külön végpontokat hasz
 
 [Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-**Elnevezett entitások felismerése**
+**Megnevezett entitások felismerése**
 * Általános entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
 [Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
@@ -99,6 +99,14 @@ A-től kezdődően `v3.1-preview.3` a JSON-válasz tartalmaz egy `redactedText` 
 
 [Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
+**Aszinkron művelet**
+
+A `v3.1-preview.3` verziótól kezdve a végpont használatával aszinkron módon küldhet adatfogadási kérelmeket `/analyze` .
+
+* Aszinkron művelet – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+
+Lásd: [a Text Analytics API meghívása](text-analytics-how-to-call-api.md) az aszinkron kérelmek küldésével kapcsolatos információkért.
+
 #### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 Az elnevezett entitások felismerése v3 külön végpontokat használ az Egypéldányos és az entitás-összekapcsolási kérelmekhez Az alábbi URL-formátumot használja a kérelme alapján:
@@ -108,7 +116,7 @@ Az elnevezett entitások felismerése v3 külön végpontokat használ az Egypé
 
 [Elnevezett entitás-felismerés 3,0-es verziójának referenciája `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-**Elnevezett entitások felismerése**
+**Megnevezett entitások felismerése**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [Elnevezett entitás-felismerés 3,0-es verziójának referenciája `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
@@ -117,7 +125,11 @@ Az elnevezett entitások felismerése v3 külön végpontokat használ az Egypé
 
 A Text Analytics API kulcsot tartalmazó kérelem fejlécének beállítása. A kérelem törzsében adja meg az előkészített JSON-dokumentumokat.
 
-### <a name="example-ner-request"></a>Példa a kérelemre 
+## <a name="example-requests"></a>Példák a kérelmekre
+
+#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-preview)
+
+### <a name="example-synchronous-ner-request"></a>Példa szinkron kérésre 
 
 A következő JSON egy példa az API-nak elküldhető tartalomra. A kérelem formátuma megegyezik az API mindkét verziójával.
 
@@ -131,8 +143,64 @@ A következő JSON egy példa az API-nak elküldhető tartalomra. A kérelem for
     }
   ]
 }
-
 ```
+
+### <a name="example-asynchronous-ner-request"></a>Példa aszinkron hívásra
+
+Ha az `/analyze` [aszinkron művelethez](text-analytics-how-to-call-api.md)a végpontot használja, az API-nak küldött feladatokat tartalmazó választ fog kapni.
+
+```json
+{
+    "displayName": "My Job",
+    "analysisInput": {
+        "documents": [
+            {
+                "id": "doc1",
+                "text": "It's incredibly sunny outside! I'm so happy"
+            },
+            {
+                "id": "doc2",
+                "text": "Pike place market is my favorite Seattle attraction."
+            }
+        ]
+    },
+    "tasks": {
+        "entityRecognitionTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
+        "entityRecognitionPiiTasks": [{
+            "parameters": {
+                "model-version": "latest"
+            }
+        }]
+    }
+}
+```
+
+#### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
+
+### <a name="example-synchronous-ner-request"></a>Példa szinkron kérésre 
+
+Az 3,0-es verzió csak szinkron műveletet tartalmaz. A következő JSON egy példa az API-nak elküldhető tartalomra. A kérelem formátuma megegyezik az API mindkét verziójával.
+
+```json
+{
+  "documents": [
+    {
+        "id": "1",
+        "language": "en",
+        "text": "Our tour guide took us up the Space Needle during our trip to Seattle last week."
+    }
+  ]
+}
+```
+
+---
 
 ## <a name="post-the-request"></a>A kérelem közzététele
 
@@ -148,11 +216,68 @@ A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó a
 
 ### <a name="example-responses"></a>Válaszok – példa
 
-A 3-as verzió külön végpontokat biztosít az általános célú, a személyes adatokkal és az entitások összekapcsolásával kapcsolatban. A két műveletre adott válaszok alább láthatók. 
+A 3-as verzió külön végpontokat biztosít az általános célú, a személyes adatokkal és az entitások összekapcsolásával kapcsolatban. Az 3,1-es verzió – a pareview aszinkron elemzési módot tartalmaz. A műveletekre adott válaszok alább láthatók. 
 
 #### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-preview)
 
+### <a name="synchronous-example-results"></a>Szinkron példa eredményei
+
+Példa az általános célú válaszra:
+
+```json
+{
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "text": "tour guide",
+          "category": "PersonType",
+          "offset": 4,
+          "length": 10,
+          "confidenceScore": 0.45
+        },
+        {
+          "text": "Space Needle",
+          "category": "Location",
+          "offset": 30,
+          "length": 12,
+          "confidenceScore": 0.38
+        },
+        {
+          "text": "trip",
+          "category": "Event",
+          "offset": 54,
+          "length": 4,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "Seattle",
+          "category": "Location",
+          "subcategory": "GPE",
+          "offset": 62,
+          "length": 7,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "last week",
+          "category": "DateTime",
+          "subcategory": "DateRange",
+          "offset": 70,
+          "length": 9,
+          "confidenceScore": 0.8
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
+}
+```
+
 Példa a személyes adatokra válaszra:
+
 ```json
 {
   "documents": [
@@ -239,6 +364,58 @@ Példa a választ hivatkozó entitásra:
 }
 ```
 
+### <a name="example-asynchronous-result"></a>Példa aszinkron eredményre
+
+```json
+{
+  "displayName": "My Analyze Job",
+  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
+  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
+  "createdDateTime": "2020-11-13T04:01:13Z",
+  "expirationDateTime": "2020-11-14T04:01:13Z",
+  "status": "running",
+  "errors": [],
+  "tasks": {
+      "details": {
+          "name": "My Analyze Job",
+          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
+      },
+      "completed": 1,
+      "failed": 0,
+      "inProgress": 2,
+      "total": 3,
+      "keyPhraseExtractionTasks": [
+          {
+              "name": "My Analyze Job",
+              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
+              "results": {
+                  "inTerminalState": true,
+                  "documents": [
+                      {
+                          "id": "doc1",
+                          "keyPhrases": [
+                              "sunny outside"
+                          ],
+                          "warnings": []
+                      },
+                      {
+                          "id": "doc2",
+                          "keyPhrases": [
+                              "favorite Seattle attraction",
+                              "Pike place market"
+                          ],
+                          "warnings": []
+                      }
+                  ],
+                  "errors": [],
+                  "modelVersion": "2020-07-01"
+              }
+          }
+      ]
+  }
+}
+```
+
 
 #### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
@@ -306,7 +483,7 @@ Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogal
 * A POST kéréseket egy vagy több végpontra küldi a rendszer, egy személyre szabott [hozzáférési kulccsal és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használva.
 * Bármely alkalmazásban használhatók olyan válaszok, amelyek összekapcsolt entitásokból (beleértve a megbízhatósági pontszámokat, az eltolásokat és a webes hivatkozásokat) tartalmazzák
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/client-libraries-rest-api.md)

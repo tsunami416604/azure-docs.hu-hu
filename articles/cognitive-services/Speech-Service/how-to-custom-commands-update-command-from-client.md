@@ -3,19 +3,19 @@ title: Parancs frissítése ügyfélalkalmazás alapján
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan frissítheti a parancsokat egy ügyfélalkalmazás használatával.
 services: cognitive-services
-author: encorona-ms
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: encorona
-ms.openlocfilehash: 765bcbd0521f93bacb0799595e6fbef565d0f313
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.author: nitinme
+ms.openlocfilehash: 08c674a7a7ec060a4273836064cb1c21e979e725
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963623"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560287"
 ---
 # <a name="update-a-command-from-a-client-app"></a>Parancs frissítése ügyfélalkalmazás alapján
 
@@ -147,7 +147,7 @@ Vegye figyelembe, hogy néhány dolog:
 - Összetett objektumokat használhat a következőhöz: `clientContext` .
 - `clientContext`A beszédfelismerési válaszokat, a tevékenységek küldését és a webes végpontok meghívását is használhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Parancsok frissítése webes végpontról](./how-to-custom-commands-update-command-from-web-endpoint.md)

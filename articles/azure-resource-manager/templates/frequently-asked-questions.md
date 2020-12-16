@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903003"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561902"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Az ARM-sablonokkal kapcsolatos gyakori kérdések
 
@@ -154,7 +154,7 @@ Ez a cikk a Azure Resource Manager-sablonokkal (ARM-sablonokkal) kapcsolatos gya
 
 * **Mi a teendő, ha a nem a saját sablonban található tulajdonságok módosításait látom. A rendszer ezt a "zajt" várta?**
 
-  Mi a teendő az előzetes verzióban. Dolgozunk a zaj csökkentésén. A GitHub-tárházban található problémák a következő lépések elküldésével segíthetnek a fejlesztésben: https://aka.ms/WhatIfIssues
+  Dolgozunk a zaj csökkentésén. A GitHub-tárházban található problémák a következő lépések elküldésével segíthetnek a fejlesztésben: https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>Sablon megjelenítő
 
@@ -188,6 +188,6 @@ Ez a cikk a Azure Resource Manager-sablonokkal (ARM-sablonokkal) kapcsolatos gya
 
   Igen, lásd: [ARM-sablonok telepítése GitHub-műveletek használatával](deploy-github-actions.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ARM-sablonok bemutatása: [Mi az ARM-sablonok?](overview.md).

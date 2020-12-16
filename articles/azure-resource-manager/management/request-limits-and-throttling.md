@@ -2,14 +2,14 @@
 title: Kérelemkorlátozások és -szabályozás
 description: Ismerteti, hogyan használható a szabályozás Azure Resource Manager kérelmekkel, ha elérte az előfizetési korlátokat.
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239363"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563126"
 ---
 # <a name="throttling-resource-manager-requests"></a>Erőforrás-kezelő kéréseinek szabályozása
 
@@ -25,7 +25,7 @@ Minden előfizetési szintű és bérlői szintű művelethez szabályozási kor
 
 Az alapértelmezett szabályozási korlát/óra az alábbi táblázatban látható.
 
-| Hatókör | Műveletek | Korlát |
+| Hatókör | Üzemeltetés | Korlát |
 | ----- | ---------- | ------- |
 | Előfizetés | olvasás | 12000 |
 | Előfizetés | törli | 15 000 |
@@ -66,9 +66,16 @@ Virtuálisgép-méretezési csoporton belüli virtuálisgép-példányok ellenő
 
 Az [Azure Resource Graph](../../governance/resource-graph/overview.md) korlátozza a műveleteire irányuló kérések számát. A cikkben ismertetett lépések alapján megállapíthatja a fennmaradó kérelmeket, és hogyan reagálhat a korlátra, ha az erőforrás-gráfra is érvényes. Az erőforrás-gráf azonban beállítja a saját korlátját és az alaphelyzetbe állítási arányt. További információ: az [erőforrás-gráf szabályozására szolgáló fejlécek](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers).
 
+### <a name="other-resource-providers"></a>Egyéb erőforrás-szolgáltatók
+
+A más erőforrás-szolgáltatók szabályozásával kapcsolatos információkért lásd:
+
+* [Az Azure Key Vaultra vonatkozó szabályozási irányelvek](../../key-vault/general/overview-throttling.md)
+* [AKS-hibaelhárítás](../../aks/troubleshooting.md#im-receiving-429---too-many-requests-errors)
+
 ## <a name="error-code"></a>Hibakód
 
-Ha eléri a korlátot, a 429-as HTTP-állapotkód **túl sok kérést**kap. A válasz tartalmazza az **újrapróbálkozások** utáni értéket, amely meghatározza, hogy az alkalmazás hány másodpercig várjon (vagy alvó állapotba), mielőtt elküldené a következő kérést. Ha az újrapróbálkozási érték lejárta előtt küld egy kérést, a rendszer nem dolgozza fel a kérést, és új újrapróbálkozási értéket ad vissza.
+Ha eléri a korlátot, a 429-as HTTP-állapotkód **túl sok kérést** kap. A válasz tartalmazza az **újrapróbálkozások** utáni értéket, amely meghatározza, hogy az alkalmazás hány másodpercig várjon (vagy alvó állapotba), mielőtt elküldené a következő kérést. Ha az újrapróbálkozási érték lejárta előtt küld egy kérést, a rendszer nem dolgozza fel a kérést, és új újrapróbálkozási értéket ad vissza.
 
 A megadott időpontra való várakozás után lezárhatja és újra megnyithatja az Azure-hoz való kapcsolódást. A kapcsolat alaphelyzetbe állításával csatlakozhat a Azure Resource Manager egy másik példányához.
 
@@ -97,13 +104,13 @@ Az erőforrás-szolgáltató a válasz fejléceit is visszaküldheti a fennmarad
 
 A fejléc értékeinek beolvasása a kódban vagy a parancsfájlban nem különbözik, mint a fejlécek értékének beolvasása. 
 
-A **C# nyelvben**például lekéri a fejléc értékét egy **Válasz** nevű **HttpWebResponse** objektumból a következő kóddal:
+A **C# nyelvben** például lekéri a fejléc értékét egy **Válasz** nevű **HttpWebResponse** objektumból a következő kóddal:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-A **PowerShellben**egy Invoke-WebRequest műveletből kéri le a fejléc értékét.
+A **PowerShellben** egy Invoke-WebRequest műveletből kéri le a fejléc értékét.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders

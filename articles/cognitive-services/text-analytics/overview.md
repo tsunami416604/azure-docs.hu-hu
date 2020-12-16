@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: szöveg-adatbányászat, érzelmek elemzése, szöveges elemzés
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2d8ebe87cdf1d11ae4d9c9050ba1ac924089aa33
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505613"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563228"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
@@ -64,7 +64,7 @@ A `/analyze` végpont lehetővé teszi, hogy [aszinkron módon](how-tos/text-ana
 
 A munkafolyamat egyszerű: benyújtjuk az adatokat elemzésre és a kódban kezeljük a kimeneteket. Az elemzők használatra készek, esetükben nincs szükség további konfigurációs beállításokra vagy testreszabásra.
 
-1. [Hozzon létre egy Azure-erőforrást](../cognitive-services-apis-create-account.md) a Text Analyticshoz. Ezt követően [szerezze be a](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) kérések hitelesítéséhez létrehozott kulcsot.
+1. [Hozzon létre egy Azure-erőforrást](how-tos/text-analytics-how-to-call-api.md) a Text Analyticshoz. Ezt követően [szerezze be a](how-tos/text-analytics-how-to-call-api.md) kérések hitelesítéséhez létrehozott kulcsot.
 
 2. [Állítson össze egy kérést](how-tos/text-analytics-how-to-call-api.md#json-schema), amely az adatokat nyers, strukturálatlan szövegként tartalmazza, JSON formátumban.
 
@@ -105,7 +105,7 @@ A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. Továb
 
 A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez és a karakterszámok számításához. A kérések elküldhetők UTF-8- és UTF-16-kódolással is, amelyek között nincs számottevő különbség a karakterek számában. A rendszer a Unicode-kódpontokat használja a karakterszám heurisztikus számításához. A két mennyiség a Text Analytics adatkorlátai szempontjából egyenértékű. Ha [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) a karakterek számának beolvasására használja, ugyanazt a módszert használja az adatméret mérésére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Hozzon létre egy Azure-erőforrást](../cognitive-services-apis-create-account.md) az Text Analytics számára az alkalmazások kulcsának és végpontjának beszerzéséhez.
 

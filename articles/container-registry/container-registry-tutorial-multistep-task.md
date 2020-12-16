@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy A
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: fac409e9acc14048068c0f46ffb2b64cc69582ef
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: c8d1179f1c31642b350ab8757a8d4abf71583bfc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029990"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562888"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: többlépéses tároló-munkafolyamat futtatása a felhőben a forráskód elküldésekor
 
@@ -83,7 +83,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Ez a feladat azt adja meg, hogy a rendszer minden alkalommal véglegesíti *a főágat az* által megadott adattárban, az `--context` ACR-feladatok a több lépésből álló feladatot futtatják az adott ág kódjában. A `--file` tárház gyökerében megadott YAML-fájl határozza meg a lépéseket. 
+Ez a feladat azt adja meg, hogy a rendszer minden alkalommal véglegesíti az adott adattár *fő* ágát `--context` , az ACR-feladatok a több lépésből álló feladatot futtatják az adott ág kódjában. A `--file` tárház gyökerében megadott YAML-fájl határozza meg a lépéseket. 
 
 A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbihoz hasonló:
 
@@ -126,7 +126,7 @@ A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbiho
       {
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
-          "branch": "master",
+          "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git",
           "sourceControlAuthProperties": null,
           "sourceControlType": "Github"
@@ -220,7 +220,7 @@ Ezután az alábbi parancsok futtatásával hozzon létre, véglegesítsen és k
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
-git push origin master
+git push origin main
 ```
 
 Előfordulhat, hogy a rendszer a GitHub hitelesítő adatok megadását kéri a `git push` parancs végrehajtásakor. Adja meg GitHub-felhasználónevét, valamint a jelszóként korábban létrehozott személyes hozzáférési jogkivonatot (PAT).

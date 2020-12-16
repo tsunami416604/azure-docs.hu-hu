@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a22d06137c3ec17851280605ac85c94ef8b342cd
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350211"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563075"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Statikusan renderelt Next.js webhelyek üzembe helyezése az Azure statikus Web Apps előzetes verziójában
 
@@ -125,7 +125,7 @@ Az Azure statikus Web Apps egy GitHub-tárházból helyezi üzembe az alkalmazá
 1. A módosítások elküldése a GitHubra.
 
     ```bash
-    git push origin master
+    git push origin main
     ```
 
 ## <a name="deploy-your-static-website"></a>A statikus webhely üzembe helyezése
@@ -155,7 +155,7 @@ Az új statikus Web Apps fióknak hozzá kell férnie a tárházhoz a Next.js al
 1. Kattintson a **Bejelentkezés a GitHub gombra**
 1. Válassza ki azt a **szervezetet** , amelyben létrehozta a tárházat a Next.js projekthez, amely lehet a GitHub-felhasználóneve.
 1. Keresse meg és válassza ki a korábban létrehozott adattár nevét.
-1. Válassza a **főkiszolgáló** elemet a *ág* legördülő menüből.
+1. Válassza a **Main** elemet *az ág legördülő menüből.*
 
    :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="A GitHub csatlakoztatása":::
 
@@ -189,7 +189,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 
 Az alkalmazás létrehozásakor az Azure statikus Web Apps létrehozott egy GitHub-műveletek munkafolyamat-fájlt a tárházban. Ezt a fájlt le kell állítania a helyi tárházba, hogy a git előzményei szinkronizálva legyenek.
 
-Térjen vissza a terminálhoz, és futtassa a következő parancsot `git pull origin master` .
+Térjen vissza a terminálhoz, és futtassa a következő parancsot `git pull origin main` .
 
 ## <a name="configure-dynamic-routes"></a>Dinamikus útvonalak konfigurálása
 

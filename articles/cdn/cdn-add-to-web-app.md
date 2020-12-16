@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0abe13c7c6a9f26746278aeede199a0860a54c0d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779544"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562242"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Oktatóanyag: Azure CDN hozzáadása egy Azure App Service-webalkalmazáshoz
 
@@ -76,7 +76,7 @@ Az **Azure Content Delivery Network** lapon adja meg az **Új végpont** beáll�
 | ------- | --------------- | ----------- |
 | **CDN-profil** | myCDNProfile | A CDN-profil ugyanabba a tarifacsomagba tartozó CDN-végpontok gyűjteménye. |
 | **Tarifacsomag** | Standard Akamai | A [tarifacsomag](cdn-features.md) határozza meg a szolgáltatót és az elérhető szolgáltatásokat. Ez az oktatóanyag a *Standard Akamai* szolgáltatást használja. |
-| **CDN-végpont neve** | Bármely egyedi név az azureedge.net tartományban | A gyorsítótárazott erőforrásokat a *&lt; végpontneve &gt;* . azureedge.net tartományba érheti el.
+| **CDN-végpont neve** | Bármely egyedi név az azureedge.net tartományban | A gyorsítótárazott erőforrásokat a *&lt; végpontneve &gt;*. azureedge.net tartományba érheti el.
 
 Válassza a **Létrehozás** lehetőséget egy új CDN-profil létrehozásához.
 
@@ -91,7 +91,7 @@ Az Azure létrehozza a profilt és a végpontot. Az új végpont megjelenik a **
    - Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
    - A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 90 percen belül fejeződik be. 
 
-Ugyanehhez az alkalmazáshoz tartozik egy *index.html* fájl, valamint *css* , *img* és *js* mappák is, amelyek egyéb statikus objektumokat tartalmaznak. Az összes fájl tartalmának elérési útjai megegyezik a CDN-végponton. Például a következő két URL egyaránt a *bootstrap.css* fájlra mutat a *css* mappában:
+Ugyanehhez az alkalmazáshoz tartozik egy *index.html* fájl, valamint *css*, *img* és *js* mappák is, amelyek egyéb statikus objektumokat tartalmaznak. Az összes fájl tartalmának elérési útjai megegyezik a CDN-végponton. Például a következő két URL egyaránt a *bootstrap.css* fájlra mutat a *css* mappában:
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -135,7 +135,7 @@ Véglegesítse a módosítást, és telepítse a webappba.
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 Miután befejeződött a telepítés, a böngészőben nyissa meg a webalkalmazás URL-címét, és láthatja a módosított tartalmat.
@@ -210,7 +210,7 @@ Az Azure Portal **CDN-végpont** lapján válassza a **Gyorsítótár** lehetős
 
 Válassza a **Minden egyedi URL-cím gyorsítótárazása** lehetőséget a **Lekérdezési sztringek gyorsítótárazásának működése** legördülő menüben.
 
-Válassza a **Mentés** lehetőséget.
+Kattintson a **Mentés** gombra.
 
 ![Lekérdezési sztringek gyorsítótárazási működésének kiválasztása](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 
@@ -230,7 +230,7 @@ Nyissa meg az *index.html* fájlt, módosítsa a *V2* értéket *V3* értékre, 
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
 Böngészőben nyissa meg a CDN-végponti URL-címet egy új lekérdezési sztringgel, például a következővel: `q=2`. Az Azure CDN ekkor lekéri az aktuális *index.html* fájlt, és megjelenik a *V3* utótag. Ha azonban a `q=1` lekérdezési sztringgel nyitja meg a CDN-végpontot, a *V2* utótag látható.
@@ -256,7 +256,7 @@ További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedés
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak elvégzését ismerte meg:
 

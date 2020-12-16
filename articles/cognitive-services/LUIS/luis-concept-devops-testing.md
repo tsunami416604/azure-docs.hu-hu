@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 3017d0dec5acd3494600c42bef410ed346fead1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025942"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561222"
 ---
 # <a name="testing-for-luis-devops"></a>A LUIS DevOps tesztelése
 
@@ -18,7 +18,7 @@ A Language Understanding (LUIS) alkalmazást fejlesztő szoftverfejlesztők DevO
 
 Az agilis szoftverfejlesztés módszereiben a tesztelés a minőségi szoftverek fejlesztése terén is szerves szerepet játszik. A LUIS-alkalmazás minden jelentős változását olyan tesztek kísérik, amelyek a fejlesztőnek az alkalmazásba való beépítését szolgáló új funkciók tesztelésére szolgálnak. Ezek a tesztek bekerülnek a forráskód-tárházba a `.lu` Luis-alkalmazás forrásával együtt. A módosítás megvalósítása akkor fejeződik be, amikor az alkalmazás megfelel a teszteknek.
 
-A tesztek a [CI/CD-munkafolyamatok](luis-concept-devops-automation.md)kritikus részét képezik. Ha a LUIS-alkalmazás módosításait egy pull-kérelemben (PR) vagy a módosítások a főágra való egyesítése után javasolja, akkor a CI-munkafolyamatoknak futtatniuk kell a teszteket annak ellenőrzéséhez, hogy a frissítések nem okozott-e regressziót.
+A tesztek a [CI/CD-munkafolyamatok](luis-concept-devops-automation.md)kritikus részét képezik. Ha a LUIS-alkalmazás módosításait egy pull-kérelemben (PR) vagy a változtatások a fő ágra való egyesítése után javasolják, akkor a CI-munkafolyamatoknak futtatniuk kell a teszteket annak ellenőrzéséhez, hogy a frissítések nem okozott-e regressziót.
 
 ## <a name="how-to-do-unit-testing-and-batch-testing"></a>Az egység tesztelése és a kötegelt tesztelés
 
@@ -123,7 +123,7 @@ Használhatja a [NLU. DevOps](https://github.com/microsoft/NLU.DevOps) -csomag t
 Használhatja a NLU is. DevOps-csomag a Batch-tesztek parancssorból való futtatásához.
 
 * Használja a NLU. A DevOps [teszt paranccsal](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md) teszteket küldhet egy adott végpontnak, és a tényleges előrejelzési eredményeket rögzítheti egy fájlban, ugyanúgy, mint az egységes tesztek esetében.
-* Használja a NLU. Az alkalmazás teljesítményének méréséhez DevOps- [összehasonlító parancsot kell összehasonlítania](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) a teljesítmény [tesztelési módban](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) , például az alkalmazás teljesítményének összehasonlítására az alapteljesítményre vonatkozó teljesítményteszt alapján, például a legutóbbi véglegesítés a főkiszolgálóra vagy a jelenlegi kiadásra. A teljesítmény tesztelése módban a `compare` parancs a NUnit teszt kimenetét és a [Batch-teszt eredményét](./luis-glossary.md#batch-test) JSON formátumban hozza létre.
+* Használja a NLU. Az alkalmazás teljesítményének méréséhez DevOps- [összehasonlító parancsot kell összehasonlítania](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) a teljesítmény- [tesztelési módban](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) , például az alkalmazás teljesítményének összehasonlítására az alapteljesítményre vonatkozó teljesítményteszt alapján, például a legutóbbi véglegesítés a Main vagy a jelenlegi verzióra való bevezetésének eredményét. A teljesítmény tesztelése módban a `compare` parancs a NUnit teszt kimenetét és a [Batch-teszt eredményét](./luis-glossary.md#batch-test) JSON formátumban hozza létre.
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUIS nem determinisztikus képzés és a tesztelés hatása
 
@@ -133,7 +133,7 @@ Ennek a nem determinisztikus-képzésnek az eredménye az, hogy a [különböző
 
 Ha szeretné letiltani a nem determinisztikus betanítást azon LUIS-alkalmazások esetében, amelyek tesztelés céljából készülnek, használja a [Version Settings API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) -t a `UseAllTrainingData` beállítás értékeként `true` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [CI/CD-munkafolyamatok megvalósításáról](luis-concept-devops-automation.md)
 * Ismerje meg, hogyan valósítható meg a [DevOps for Luis a GitHub](luis-how-to-devops-with-github.md) használatával

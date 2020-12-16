@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1f5c0c7a877964eeb480fa958c7e76eb5706122f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95535554"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561273"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps eljárások a LUIS számára
 
@@ -98,7 +98,7 @@ Az Ön által elfogadott elágazási stratégia egyik legfontosabb elve, hogy a 
 
 A független munkavégzés támogatása a LUIS-projekttel:
 
-- **A Master ág saját LUIS-alkalmazással rendelkezik.** Ez az alkalmazás képviseli a megoldás aktuális állapotát a projekthez, és a jelenlegi aktív verziójának mindig a `.lu` Master ág forrására kell mutatnia. Az alkalmazás forrásának összes frissítését `.lu` felül kell vizsgálni és tesztelni kell, hogy az alkalmazás üzembe helyezhető legyen, hogy olyan környezeteket hozzon létre, mint például a termelési szolgáltatás. Ha a frissítések a `.lu` főkiszolgálóról a szolgáltatásba egyesülnek, akkor létre kell hoznia egy új verziót a Luis alkalmazásban, és meg kell [botlik a verziószámot](#versioning).
+- **A fő ág saját LUIS-alkalmazással rendelkezik.** Ez az alkalmazás képviseli a megoldás aktuális állapotát a projekthez, és a jelenlegi aktív verziója mindig a `.lu` fő ág forrására van leképezve. Az alkalmazás forrásának összes frissítését `.lu` felül kell vizsgálni és tesztelni kell, hogy az alkalmazás üzembe helyezhető legyen, hogy olyan környezeteket hozzon létre, mint például a termelési szolgáltatás. Ha a rendszer a `.lu` szolgáltatásban lévő frissítéseket egyesíti a főkiszolgálóról, hozzon létre egy új verziót a Luis alkalmazásban, és [a verziószámot](#versioning).
 
 - **Minden egyes szolgáltatás-ág a Luis-alkalmazás saját példányát kell használnia**. A fejlesztők ezzel az alkalmazással együttműködve a szolgáltatási ágban nem érintik a más ágakban dolgozó fejlesztőket. Ez a "dev Branch" alkalmazás egy olyan működő példány, amelyet törölni kell a szolgáltatási ág törlésekor.
 
@@ -108,13 +108,13 @@ A független munkavégzés támogatása a LUIS-projekttel:
 
 A fejlesztők a következő módon dolgozhatnak a LUIS-alkalmazások frissítésein:
 
-1. Egy szolgáltatási ág létrehozása a fő ágban (a fiókirodai stratégia, általában a Master vagy a fejlesztés) alapján.
+1. Egy szolgáltatási ág létrehozása a fő ág alapján (a fiókirodai stratégia, általában a fő vagy a fejlesztés) függvényében.
 
 1. [Hozzon létre egy új Luis-alkalmazást a Luis-portálon](./luis-how-to-start-new-app.md) (a "*dev Branch app*") kizárólag a szolgáltatás üzletágban végzett munka támogatásához.
 
    * Ha a `.lu` megoldás forrása már létezik a ágban, mert a projekt korábbi részében történt munka után lett mentve, a fájl importálásával hozza létre a dev Branch Luis alkalmazást `.lu` .
 
-   * Ha egy új projekten kezdi meg a munkát, még nem fogja tudni a `.lu` Master Luis-alkalmazás forrását a tárházban. A fájl létrehozásához `.lu` exportálja a fejlesztői ág alkalmazást a portálról, amikor befejezte a szolgáltatási ág működését, és beküldi azt a lekéréses kérelem részeként.
+   * Ha új projekten indítja el a munkát, még nem lesz a `.lu` fő Luis-alkalmazás forrása a tárházban. A fájl létrehozásához `.lu` exportálja a fejlesztői ág alkalmazást a portálról, amikor befejezte a szolgáltatási ág működését, és beküldi azt a lekéréses kérelem részeként.
 
 1. A szükséges módosítások végrehajtásához a dev Branch alkalmazás aktív verzióján dolgozhat. Javasoljuk, hogy csak a fejlesztői ág egyetlen verziójában működjön együtt az összes funkciós ág működéséhez. Ha több verziót hoz létre a fejlesztői ág alkalmazásban, ügyeljen arra, hogy nyomon kövesse, melyik verzió tartalmazza azokat a módosításokat, amelyeket be szeretne állítani a PR-ban.
 
@@ -124,7 +124,7 @@ A fejlesztők a következő módon dolgozhatnak a LUIS-alkalmazások frissítés
 
 1. Tekintse át a frissítéseket, és hívja meg a frissítések partneri áttekintését. Ha a GitHubot használja, egy [lekéréses kérelmet](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)fog felhívni.
 
-1. Ha jóváhagyja a módosításokat, egyesítse a frissítéseket a fő ágra. Ezen a ponton a *Master* Luis alkalmazás egy új [verzióját](./luis-how-to-manage-versions.md) fogja létrehozni a frissített `.lu` főkiszolgáló használatával. A verzió nevének beállításával kapcsolatos megfontolásokat lásd: [verziószámozás](#versioning) .
+1. A módosítások jóváhagyásakor egyesítse a frissítéseket a fő ágra. Ezen a ponton a *fő* Luis alkalmazás egy új [verzióját](./luis-how-to-manage-versions.md) fogja létrehozni a frissítés `.lu` a főoldalán. A verzió nevének beállításával kapcsolatos megfontolásokat lásd: [verziószámozás](#versioning) .
 
 1. A szolgáltatási ág törlését követően érdemes törölni a szolgáltatás-ág működéséhez létrehozott fejlesztői ág LUIS-alkalmazását.
 
@@ -150,7 +150,7 @@ Egyszerre több fejlesztő is dolgozhat ugyanazon a szolgáltatási ágban:
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>Az egyik ág és a másik közötti változások átépítése vagy egyesítése
 
-Előfordulhat, hogy a csapat egy másik munkahelyén dolgozó többi fejlesztő is frissítette a `.lu` forrást, és összevonta őket a fő ágra a szolgáltatási ág létrehozása után. Mielőtt folytatja a saját módosításait a szolgáltatási ágban, érdemes beépíteni a módosításokat a munkaverzióba. Ezt úgy teheti meg, [hogy az újraindítással vagy az egyesítés a főkiszolgálóval](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) ugyanúgy történik, mint bármely más kód eszköz. Mivel a LUDown-formátumú LUIS-alkalmazás emberi olvasásra alkalmas, a szabványos egyesítési eszközök használatával támogatja az egyesítést.
+Előfordulhat, hogy a csapat egy másik munkahelyén dolgozó többi fejlesztő frissítette a `.lu` forrást, és összevonta őket a fő ágra a szolgáltatási ág létrehozása után. Mielőtt folytatja a saját módosításait a szolgáltatási ágban, érdemes beépíteni a módosításokat a munkaverzióba. Ezt úgy teheti meg, [hogy a főadatbázisba való](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) átállítással vagy más kóddal megegyező módon egyesíti a főverziót. Mivel a LUDown-formátumú LUIS-alkalmazás emberi olvasásra alkalmas, a szabványos egyesítési eszközök használatával támogatja az egyesítést.
 
 Kövesse ezeket a tippeket, ha a LUIS-alkalmazást átalakítja egy szolgáltatási ágban:
 
@@ -162,7 +162,7 @@ Kövesse ezeket a tippeket, ha a LUIS-alkalmazást átalakítja egy szolgáltat�
 
 ### <a name="merge-prs"></a>A PRs egyesítése
 
-A lekéréses kérelem jóváhagyása után egyesítheti a módosításokat a Master ág használatával. A LUIS-alkalmazás LUDown-forrására nem vonatkozik speciális szempont: ez az ember által olvasható, és így támogatja az egyesítést a standard Merge Tools használatával. Az egyesítési ütközések ugyanúgy oldhatók fel, mint a többi forrásfájl esetében.
+A lekéréses kérelem jóváhagyása után egyesítheti a módosításokat a fő ágra. A LUIS-alkalmazás LUDown-forrására nem vonatkozik speciális szempont: ez az ember által olvasható, és így támogatja az egyesítést a standard Merge Tools használatával. Az egyesítési ütközések ugyanúgy oldhatók fel, mint a többi forrásfájl esetében.
 
 A PR egyesítése után javasolt a tisztítás:
 
@@ -173,7 +173,7 @@ A PR egyesítése után javasolt a tisztítás:
 Ugyanúgy, mint az Application Code-eszközök esetében, az egységhez tartozó teszteket kell írnia a LUIS-alkalmazás frissítéseihez. A teszteléshez folyamatos integrációs munkafolyamatokat kell alkalmaznia:
 
 - A lekéréses kérelemben szereplő, a lekéréses kérelmeket egyesítő frissítések
-- A fő ág LUIS-alkalmazás a lekéréses kérelem jóváhagyása után, a módosítások pedig a Master-be lettek egyesítve.
+- A fő ág LUIS-alkalmazás jóvá lett hagyva egy PR jóváhagyása után, és a módosítások a Mainba vannak egyesítve.
 
 A LUIS DevOps tesztelésével kapcsolatos további információkért lásd: a [DevOps for Luis kipróbálása](luis-concept-devops-testing.md). A munkafolyamatok megvalósításával kapcsolatos további információkért lásd: [az Automation-munkafolyamatok a Luis DevOps](luis-concept-devops-automation.md).
 
@@ -185,9 +185,9 @@ A LUDown-formátumú LUIS-alkalmazások emberi olvasást biztosítanak, amely t�
 
 Az alkalmazások több összetevőből állnak, amelyek olyan dolgokból állhatnak, mint például a [Azure bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), a [QnA Maker](https://www.qnamaker.ai/), az [Azure Speech Service](../speech-service/overview.md)és más eszközökön futó robot. A lazán összekapcsolt alkalmazások céljának eléréséhez használja a [verziókövetés](/azure/devops/learn/git/what-is-version-control) használatát, hogy az alkalmazás minden összetevője egymástól függetlenül legyen elvégezve, így a fejlesztők csak a verziószám alapján tudják felderíteni a feltörési változásokat vagy a frissítéseket. A LUIS-alkalmazás más összetevőktől függetlenül is egyszerűbb, ha a saját tárházában tartja karban.
 
-A Master ág LUIS-alkalmazásának verziószámozási sémával kell rendelkeznie. Ha egy LUIS-alkalmazáshoz egyesíti a frissítéseket a `.lu` Master-be, ezt a frissített forrást egy új verzióba importálhatja a Master ág Luis-alkalmazásában.
+A fő ág LUIS-alkalmazásának verziószámozási sémával kell rendelkeznie. Ha egy LUIS-alkalmazáshoz egyesíti a frissítéseket a `.lu` Main-ba, ezt a frissített forrást egy új verzióba importálhatja a fő ág Luis-alkalmazásában.
 
-Azt javasoljuk, hogy a fő LUIS-alkalmazás verziójához használjon numerikus verziószámozási sémát, például:
+Azt javasoljuk, hogy a fő LUIS-alkalmazás verziószámához használjon numerikus verziószámozási sémát, például:
 
 `major.minor[.build[.revision]]`
 
@@ -199,7 +199,7 @@ A fő/alverzió használatával jelezheti a LUIS-alkalmazás funkcióinak válto
 * Alverzió: visszamenőlegesen kompatibilis kisebb változás, például a jelentős új képzés után
 * Build: nincs funkcionalitás-változás, csak egy másik Build.
 
-Miután meghatározta a Master Luis-alkalmazás legújabb változatának verziószámát, létre kell hoznia és tesztelni kell az új alkalmazás verzióját, és közzé kell tennie egy olyan végponton, ahol különböző Build-környezetekben, például minőségbiztosítási vagy éles környezetben is használható. Erősen ajánlott a folyamatos integrációs (CI) munkafolyamat összes lépésének automatizálása.
+Miután meghatározta a fő Luis-alkalmazás legújabb változatának verziószámát, létre kell hoznia és tesztelni kell az új alkalmazás verzióját, és közzé kell tennie egy olyan végponton, ahol különböző Build-környezetekben, például minőségbiztosítási vagy éles környezetben is használható. Erősen ajánlott a folyamatos integrációs (CI) munkafolyamat összes lépésének automatizálása.
 
 Lásd:
 - [Automatizálási munkafolyamatok](luis-concept-devops-automation.md) , amelyekből megtudhatja, hogyan implementálhat egy CI-munkafolyamatot egy Luis-alkalmazás teszteléséhez és kiadásához.
@@ -207,11 +207,11 @@ Lásd:
 
 ### <a name="versioning-the-feature-branch-luis-app"></a>A "feature Branch" LUIS-alkalmazás verziószámozása
 
-Ha olyan "fejlesztői ág" LUIS-alkalmazással dolgozik, amelyet a szolgáltatásban végzett munka támogatásához hozott létre, akkor exportálja az alkalmazást, amikor befejezte a munkát, és tartalmazza a frissítését is `'lu` . A tárházban található ágat, a "dev Branch" LUIS alkalmazást pedig törölni kell, miután a rendszer beolvadt a főkiszolgálóba. Mivel ez az alkalmazás kizárólag a szolgáltatási ág munkájának támogatásához szükséges, nincs szükség az alkalmazáson belüli, adott verziószámozási sémára.
+Ha olyan "fejlesztői ág" LUIS-alkalmazással dolgozik, amelyet a szolgáltatásban végzett munka támogatásához hozott létre, akkor exportálja az alkalmazást, amikor befejezte a munkát, és tartalmazza a frissítését is `'lu` . A tárházban található ágat, a "dev Branch" LUIS alkalmazást pedig törölni kell, miután a rendszer beolvadt a Mainba. Mivel ez az alkalmazás kizárólag a szolgáltatási ág munkájának támogatásához szükséges, nincs szükség az alkalmazáson belüli, adott verziószámozási sémára.
 
-Ha a lekéréses kérelemben szereplő módosítások a főkiszolgálóba vannak egyesítve, akkor a verziószámozást kell alkalmazni, hogy a Master összes frissítése egymástól függetlenül legyen.
+Ha a lekéréses eljárásban végzett módosítások a főverzióba vannak egyesítve, akkor a verziószámozást kell alkalmazni, hogy a Main összes frissítése egymástól függetlenül legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [Luis DevOps teszteléséről](luis-concept-devops-testing.md)
 * Ismerje meg, hogyan valósítható meg a [DevOps for Luis a GitHub](luis-how-to-devops-with-github.md) használatával

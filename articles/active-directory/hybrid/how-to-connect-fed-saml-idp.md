@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: cfe3d995cef888d2f0e973a6a6b2a06e0dd6cb54
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861799"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563211"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez
 
@@ -273,7 +273,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egyetlen felhasználót az Azure 
 További információ a "New-MsolUser" pénztárról: [/Previous-Versions/Azure/dn194096 (v = Azure. 100)](/previous-versions/azure/dn194096(v=azure.100))
 
 >[!NOTE]
->A "UserPrinciplName" értéknek egyeznie kell azzal az értékkel, amelyet az SAML 2,0-jogcím "IDPEmail" küld, és a "ImmutableID" értéknek meg kell egyeznie a "NameID" állításban elküldött értékkel.
+>A "UserPrincipalName" értéknek egyeznie kell azzal az értékkel, amelyet az SAML 2,0-jogcím "IDPEmail" küld, és a "ImmutableID" értéknek meg kell egyeznie a "NameID" állításban elküldött értékkel.
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>Az egyszeri bejelentkezés ellenőrzése az SAML 2,0-IDENTITÁSSZOLGÁLTATÓ
 Rendszergazdaként az egyszeri bejelentkezés (más néven identitás-összevonás) ellenőrzése és kezelése előtt tekintse át az adatokat, és hajtsa végre az alábbi cikkekben ismertetett lépéseket az egyszeri bejelentkezés beállításához az SAML 2,0 SP-Lite-alapú identitás-szolgáltatóval:
@@ -323,7 +323,7 @@ Annak ellenőrzéséhez, hogy az egyszeri bejelentkezés helyesen van-e beállí
 2.  Kattintson a jelszó mezőbe. Ha az egyszeri bejelentkezés be van állítva, a jelszó mező árnyékolva lesz, és a következő üzenet jelenik meg: "mostantól a vállalatnál be kell jelentkeznie &lt; &gt; ."
 3.  Kattintson a bejelentkezés a &lt; céges &gt; hivatkozásra. Ha be tud jelentkezni, az egyszeri bejelentkezés beállítása megtörtént.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 - [Active Directory összevonási szolgáltatások (AD FS) felügyelet és testreszabás Azure AD Connect](how-to-connect-fed-management.md)

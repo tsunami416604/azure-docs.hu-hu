@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6109164d8827a343a550a114acc42db2461f3a2c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d475c76d338270cb9b8e34ea8563cdfd8fdf5122
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905349"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563058"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -143,8 +143,9 @@ Az alábbi lépéseket követve feltöltheti a geokerítésen a Azure Maps adatf
 
    ```HTTP
    https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={subscription-key}
-
-7. When the **GET** HTTP request completes successfully, it returns a `resourceLocation`. The `resourceLocation` contains the unique `udid` for the uploaded content. Copy this `udid` for later use in this tutorial.
+   ```
+   
+7. Ha a **Get** HTTP-kérelem sikeresen befejeződik, a egy értéket ad vissza `resourceLocation` . A `resourceLocation` tartalmazza a `udid` feltöltött tartalom egyedi tartalmát. Másolja ezt `udid` az oktatóanyagban a későbbi használatra.
 
       ```json
       {
@@ -182,7 +183,7 @@ Most állítsa be az Azure-függvényt.
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="Képernyőkép a Function-alkalmazás létrehozásáról.":::
 
-1. A **Storage-fiók** területen válassza ki az [Azure Storage-fiók létrehozása](#create-an-azure-storage-account)lapon létrehozott Storage-fiókot. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. A **Storage-fiók** területen válassza ki az [Azure Storage-fiók létrehozása](#create-an-azure-storage-account)lapon létrehozott Storage-fiókot. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 
 1. Tekintse át a Function alkalmazás részleteit, és válassza a **Létrehozás** lehetőséget.
 
@@ -214,7 +215,7 @@ Most állítsa be az Azure-függvényt.
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Képernyőkép az esemény-előfizetés létrehozásáról.":::
 
-1. Tekintse át a beállításokat. Győződjön meg arról, hogy a végpont a szakasz elején létrehozott függvényt adja meg. Kattintson a **Létrehozás** gombra.
+1. Tekintse át a beállításokat. Győződjön meg arról, hogy a végpont a szakasz elején létrehozott függvényt adja meg. Válassza a **Létrehozás** lehetőséget.
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Képernyőkép az esemény-előfizetés létrehozásának megerősítéséről.":::
 
@@ -283,7 +284,7 @@ A IoT Azure minősítéssel rendelkező eszközök listájának lekéréséhez l
 
 * [Azure Certified-eszközök](https://catalog.azureiotsolutions.com/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az eszközről a felhőbe irányuló telemetria küldéséről, és fordítva, tekintse meg a következőt:
 

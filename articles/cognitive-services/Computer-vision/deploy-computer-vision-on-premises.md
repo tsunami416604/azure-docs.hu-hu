@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: dce8893cac156ce2941652e32409357cb8ec3b1a
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96015315"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562599"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Computer Vision tároló használata a Kubernetes és a Helm használatával
 
@@ -27,7 +27,7 @@ Computer Vision tárolók helyszíni használata előtt a következő előfelté
 
 | Kötelező | Cél |
 |----------|---------|
-| Azure-fiók | Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][free-azure-account]. |
+| Azure-fiók | Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][free-azure-account], mielőtt hozzákezd. |
 | Kubernetes CLI | A megosztott hitelesítő adatok a tároló-beállításjegyzékből való kezeléséhez a [KUBERNETES CLI][kubernetes-cli] szükséges. A Kubernetes a Helm előtt is szükséges, amely a Kubernetes csomagkezelő. |
 | Helm parancssori felület | Telepítse a [Helm CLI][helm-install]-t, amely a Helm-diagram (Container Package Definition) telepítéséhez használatos. |
 | Erőforrás Computer Vision |A tároló használatához a következőket kell tennie:<br><br>Egy Azure **Computer Vision** erőforrás és a hozzá tartozó API-kulcs a végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges.<br><br>**{API_KEY}**: a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}**: az **Áttekintés** lapon megadott végpont|
@@ -167,6 +167,9 @@ spec:
 
 Ugyanebben a *sablonok* mappában másolja és illessze be a következő segítő függvényeket a alkalmazásba `helpers.tpl` . `helpers.tpl` a Helm-sablon létrehozásához használható hasznos függvények meghatározása.
 
+> [!NOTE]
+> Ez a cikk a Slave kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+
 ```yaml
 {{- define "rabbitmq.hostname" -}}
 {{- printf "%s-rabbitmq" .Release.Name -}}
@@ -304,7 +307,7 @@ spec:
     app: read-app
 ```
 
-Futtassa az alábbi parancsot: 
+Futtassa az alábbi parancsot. 
 
 ```console
 kubectl apply -f deployment.yaml

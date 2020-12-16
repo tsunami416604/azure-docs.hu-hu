@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852846"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563160"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -23,6 +23,8 @@ Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből meg
 ## <a name="november-2020"></a>2020. november
 
 ### <a name="new-features"></a>Új funkciók
+
+**Az űrlap-felismerő v 2.1 nyilvános előzetes verziója már elérhető.** V 2.1 – előzetes verzió: 2, a következő funkciókkal együtt: 
 
 - **Új előre elkészített számla modell** – az új, előre elkészített számla modell lehetővé teszi, hogy az ügyfelek különböző formátumokban számlázzák a számlákat, és a feldolgozott adatmennyiséget a számla feldolgozásának automatizálásához adják vissza. A nagy teljesítményű optikai karakterfelismerési (OCR) képességeket ötvözi a részletes tanulási modellekkel, hogy kinyerje a legfontosabb információkat a számlákból angol nyelven. Kibontja a szöveget, a táblákat és az információkat, például az ügyfelet, a szállítót, a számla AZONOSÍTÓját, a számla esedékes dátumát, a végösszeget, az esedékes összeget, az adó mennyiségét, a szállítást és a számlázást.
 
@@ -37,7 +39,7 @@ Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből meg
  
   > [További információ az elrendezés kinyeréséről](concept-layout.md)
 
-- **Ügyféloldali kódtár frissítése** – a .net, a Python, a Java és a JavaScript [ügyféloldali kódtárainak](quickstarts/client-library.md) legújabb verziója támogatja az űrlap-felismerő 2,1 API-ját.
+- **Ügyféloldali kódtár frissítése** – a .net, a Python, a Java és a JavaScript [ügyféloldali kódtárainak](quickstarts/client-library.md) legújabb verziói támogatják az űrlap-felismerő 2,1 API-ját.
 - **Támogatott új nyelv: Japán** – a következő új nyelvek támogatottak:, `AnalyzeLayout` és `AnalyzeCustomForm` : Japán ( `ja` ). [Nyelvi támogatás](language-support.md)
 - **Szöveg vonaltípusának jelzése (kézírásos/egyéb) (csak latin nyelveken)** – az űrlap-felismerő mostantól egy olyan objektumot ad eredményül `appearance` , amely azt sorolja fel, hogy az egyes szövegfájlok kézírásos stílusúak-e, valamint a megbízhatósági pontszámmal együtt. Ez a funkció csak latin nyelveken támogatott.
 - **Minőség-tökéletesítések** – a kinyerési funkciók, beleértve az egyszámjegyű extrakciós funkciókat.
@@ -205,7 +207,7 @@ Az értékesítési visszaigazolások olvasására szolgáló API-k átnevezve l
 
 A JSON-válaszok minden API-híváshoz új formátumok tartoznak. Egyes kulcsok és értékek hozzá lettek adva, el lettek távolítva vagy átnevezve lettek. Tekintse meg az aktuális JSON-formátumok példáit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Töltse ki az [ügyféloldali kódtár](quickstarts/client-library.md) gyors kezdését, hogy megkezdje az űrlapok feldolgozását az űrlap felismerővel az Ön által választott nyelven.
 

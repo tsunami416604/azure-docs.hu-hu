@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f76f4a3e5fc87420c242c693e3c48a91244641e0
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287049"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560033"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)
 > [!NOTE]
@@ -48,30 +48,30 @@ A felhasználói attribútumok a felhasználó által az önkiszolgáló regiszt
 Ahhoz, hogy önkiszolgáló regisztrációs felhasználói folyamatot lehessen hozzáadni az alkalmazásaihoz, engedélyeznie kell a szolgáltatást a bérlő számára. Az engedélyezése után a vezérlők elérhetővé válnak a felhasználói folyamat során, amely lehetővé teszi a felhasználói folyamat alkalmazáshoz való hozzárendelését.
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként.
-2. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
-3. Válassza a **felhasználói beállítások**lehetőséget, majd a **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
-4. Állítsa be a **vendég önkiszolgáló regisztráció engedélyezése felhasználói folyamatokkal (előzetes verzió)** az **Igen**értékre.
+2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
+3. Válassza a **felhasználói beállítások** lehetőséget, majd a **külső felhasználók** területen válassza a **külső együttműködési beállítások kezelése** lehetőséget.
+4. Állítsa be a **vendég önkiszolgáló regisztráció engedélyezése felhasználói folyamatokkal (előzetes verzió)** az **Igen** értékre.
 
    ![Vendég önkiszolgáló regisztrálásának engedélyezése](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
-
+5. Kattintson a **Mentés** gombra.
 ## <a name="create-the-user-flow-for-self-service-sign-up"></a>Felhasználói folyamat létrehozása önkiszolgáló regisztrációhoz
 
 Ezután létre kell hoznia a felhasználói folyamatot az önkiszolgáló regisztrációhoz, és hozzá kell adnia egy alkalmazáshoz.
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként.
-2. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
-3. A bal oldali menüben válassza a **külső identitások**lehetőséget.
-4. Válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget, majd válassza az **új felhasználói folyamat**elemet.
+2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
+3. A bal oldali menüben válassza a **külső identitások** lehetőséget.
+4. Válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget, majd válassza az **új felhasználói folyamat** elemet.
 
    ![Új felhasználói folyamat hozzáadása gomb](media/self-service-sign-up-user-flow/new-user-flow.png)
 
 5. A **Létrehozás** lapon adja meg a felhasználói folyamat **nevét** . Vegye figyelembe, hogy a név automatikusan **B2X_1_**.
 6. Az **Identity Providers** listán válasszon ki egy vagy több olyan identitás-szolgáltatót, amelyet a külső felhasználók használhatnak az alkalmazásba való bejelentkezéshez. A **Azure Active Directory regisztráció** alapértelmezés szerint ki van választva. (Lásd [még](#before-you-begin) a jelen cikk korábbi részében ismertetett tudnivalókat az identitás-szolgáltatók hozzáadásának megismeréséhez.)
-7. A **felhasználói attribútumok**területen válassza ki a felhasználótól gyűjteni kívánt attribútumokat. További attribútumok esetén válassza a **továbbiak megjelenítése**lehetőséget. Válassza például a **továbbiak megjelenítése**lehetőséget, majd az **ország/régió**, a **megjelenítendő név**és az **Irányítószám**elemnél válassza az attribútumok és jogcímek lehetőséget. Kattintson az **OK** gombra.
+7. A **felhasználói attribútumok** területen válassza ki a felhasználótól gyűjteni kívánt attribútumokat. További attribútumok esetén válassza a **továbbiak megjelenítése** lehetőséget. Válassza például a **továbbiak megjelenítése** lehetőséget, majd az **ország/régió**, a **megjelenítendő név** és az **Irányítószám** elemnél válassza az attribútumok és jogcímek lehetőséget. Válassza az **OK** lehetőséget.
 
    ![Új felhasználói folyamat létrehozása lap](media/self-service-sign-up-user-flow/create-user-flow.png)
 
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 9. Az új felhasználói folyamat megjelenik a **felhasználói folyamatok (előzetes verzió)** listában. Ha szükséges, frissítse az oldalt.
 
 ## <a name="select-the-layout-of-the-attribute-collection-form"></a>Az attribútumok gyűjteménye űrlap elrendezésének kiválasztása
@@ -79,10 +79,10 @@ Ezután létre kell hoznia a felhasználói folyamatot az önkiszolgáló regisz
 Megadhatja, hogy az attribútumok milyen sorrendben jelenjenek meg a regisztrációs oldalon. 
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Azure Active Directory** lehetőséget.
-2. Válassza ki a **külső identitások**lehetőséget, majd válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget.
+2. Válassza ki a **külső identitások** lehetőséget, majd válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget.
 3. Válassza ki az önkiszolgáló bejelentkezési felhasználói folyamatot a listából.
 4. A **Testreszabás** **területen válassza a lapelrendezések elemet**.
-5. A program felsorolja a begyűjteni kívánt attribútumokat. A Megjelenítés sorrendjének módosításához válasszon ki egy attribútumot, **majd válassza a**feljebb, a **lejjebb,** **a feljebb**vagy a **lentre ugrás**lehetőséget.
+5. A program felsorolja a begyűjteni kívánt attribútumokat. A Megjelenítés sorrendjének módosításához válasszon ki egy attribútumot, **majd válassza a** feljebb, a **lejjebb,** **a feljebb** vagy a **lentre ugrás** lehetőséget.
 6. Kattintson a **Mentés** gombra.
 
 ## <a name="add-applications-to-the-self-service-sign-up-user-flow"></a>Alkalmazások hozzáadása az önkiszolgáló bejelentkezési felhasználói folyamathoz
@@ -90,19 +90,19 @@ Megadhatja, hogy az attribútumok milyen sorrendben jelenjenek meg a regisztrác
 Most már hozzárendelheti az alkalmazásokat a felhasználói folyamathoz.
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként.
-2. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
-3. A bal oldali menüben válassza a **külső identitások**lehetőséget.
-4. Az **önkiszolgáló regisztráció**alatt válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget.
+2. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
+3. A bal oldali menüben válassza a **külső identitások** lehetőséget.
+4. Az **önkiszolgáló regisztráció** alatt válassza a **felhasználói folyamatok (előzetes verzió)** lehetőséget.
 5. Válassza ki az önkiszolgáló bejelentkezési felhasználói folyamatot a listából.
-6. A bal oldali menüben a **használat**alatt válassza az **alkalmazások**lehetőséget.
-7. Válassza az **alkalmazás hozzáadása**lehetőséget.
+6. A bal oldali menüben a **használat** alatt válassza az **alkalmazások** lehetőséget.
+7. Válassza az **alkalmazás hozzáadása** lehetőséget.
 
    ![Alkalmazás társítása a felhasználói folyamathoz](media/self-service-sign-up-user-flow/assign-app-to-user-flow.png)
 
 8. Válassza ki az alkalmazást a listából. Vagy használja a keresőmezőt az alkalmazás megkereséséhez, majd jelölje ki.
-9. Kattintson a **Kiválasztás** elemre.
+9. Válassza a **Kiválasztás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Google hozzáadása a közösségi identitású szolgáltatók listájához](google-federation.md)
 - [Facebook hozzáadása a közösségi identitású szolgáltatók listájához](facebook-federation.md)

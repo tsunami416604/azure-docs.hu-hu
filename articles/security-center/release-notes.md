@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922931"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560253"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -39,6 +39,7 @@ A decemberi frissítések a következők:
 - [Általánosan elérhető az Azure Defender for SQL-támogatás az Azure szinapszis Analytics dedikált SQL-készletéhez](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
 - [A globális rendszergazdák mostantól bérlői szintű engedélyeket is biztosíthatnak](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [Két új Azure Defender-csomag: az Azure Defender for DNS és az Azure Defender for Resource Manager (előzetes verzió)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
+- [Új biztonsági riasztások oldal a Azure Portal (előzetes verzió)](#new-security-alerts-page-in-the-azure-portal-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Általánosan elérhető az Azure Defender az SQL-kiszolgálókhoz a gépeken
 
@@ -95,6 +96,24 @@ Ezek az új védelem nagy mértékben fokozza rugalmasságát a veszélyforráso
     - [Válaszadás a DNS-hez készült Azure Defender-riasztásokra](defender-for-dns-usage.md)
     - [Az Azure Defender által a DNS-hez biztosított riasztások listája](alerts-reference.md#alerts-dns)
 
+
+### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Új biztonsági riasztások oldal a Azure Portal (előzetes verzió)
+
+A Azure Security Center biztonsági riasztások lapja az alábbiak biztosítására lett újratervezve:
+
+- **Jobb osztályozási élmény a riasztásokhoz** – segít csökkenteni a riasztások fáradtságát, és könnyebben koncentrálni a legfontosabb fenyegetésekre, a lista tartalmaz testreszabható szűrőket és csoportosítási lehetőségeket.
+- **További információk a riasztások listájában** – például a MITRE ATT&ACK-taktika
+- A riasztások **létrehozásának gombja** – az Azure Defender képességeinek kiértékeléséhez és a riasztások konfigurációjának teszteléséhez (Siem-integráció, e-mail-értesítések és munkafolyamat-automatizálások esetén) létrehozhat minta-riasztásokat az összes Azure Defender-csomagból.
+- Az **Azure Sentinel incidensekkel való összehangolása** – a két terméket használó ügyfelek esetében a váltás mostantól egyszerűbb, és könnyen megtanulható egy másik
+- **Nagyobb teljesítmény** a nagyméretű riasztások listája esetén
+- A riasztások listáján a **billentyűzetes Navigálás**
+- **Riasztások az Azure Resource Graph-ból** – a riasztásokat lekérdezheti az Azure Resource Graph-ban, a Kusto API-t az összes erőforráshoz. Ez akkor is hasznos, ha saját riasztási irányítópultokat épít ki. [További információ az Azure Resource Graph-ról](../governance/resource-graph/index.yml).
+
+Az új felület eléréséhez használja a "kipróbálás most" hivatkozást a biztonsági riasztások oldal tetején található szalagcímből.
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Az új előzetes riasztási élményre mutató hivatkozást tartalmazó szalagcím":::
+
+A riasztások új felhasználói élményből való létrehozásával kapcsolatban lásd: [minta Azure Defender-riasztások](security-center-alert-validation.md#generate-sample-azure-defender-alerts)létrehozása.
 
 ## <a name="november-2020"></a>2020. november
 
@@ -514,7 +533,7 @@ Kapcsolódó lapok:
 
 ### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Biztonsági konfigurációs problémák megakadályozása az új erőforrások létrehozásakor feltett javaslatok végrehajtásakor
 
-A biztonsági incidensek jelentős oka a biztonság. A Security Center mostantól lehetővé teszi az új erőforrások helytelen konfigurációjának *megelőzését* az adott javaslatok tekintetében. 
+A biztonsági incidensek jelentős oka a biztonság. Security Center mostantól lehetővé teszi az új erőforrások helytelen konfigurációjának *megelőzését* az adott javaslatok tekintetében. 
 
 Ez a funkció segít megőrizni a számítási feladatokat, és stabilizálni tudja a biztonságos pontszámot.
 

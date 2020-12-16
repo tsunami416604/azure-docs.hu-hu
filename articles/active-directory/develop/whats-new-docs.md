@@ -5,22 +5,43 @@ description: Új és frissített dokumentáció a Microsoft Identity platformhoz
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 108cd5f74b7b560534baf8f55f7d07ebb6557e7f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4813a71a0bdd14e747aa4cfe51ab5a4191df62a4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457146"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563041"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity platform docs: Újdonságok
 
 Üdvözli a Microsoft Identity platform dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek.
+
+## <a name="december-2020"></a>2020. december
+
+### <a name="new-articles"></a>Új cikkek
+
+- [Gyors útmutató: ASP.NET Core webalkalmazás, amely a felhasználók nevében jelentkezik be, és Microsoft Graph](quickstart-v2-aspnet-core-webapp-calls-graph.md)
+- [Hibák és kivételek kezelése az MSAL.NET-ben](msal-error-handling-dotnet.md)
+- [Hibák és kivételek kezelése az iOS-hez/macOS-hez készült MSAL-ben](msal-error-handling-ios.md)
+- [Hibák és kivételek kezelése a Javához készült MSAL-ben](msal-error-handling-java.md)
+- [Hibák és kivételek kezelése az MSAL.js-ben](msal-error-handling-js.md)
+- [Hibák és kivételek kezelése a Pythonhoz készült MSAL-ben](msal-error-handling-python.md)
+- [Microsoft Identity platform token Exchange-forgatókönyvek SAML-vel és OIDC/OAuth](scenario-token-exchange-saml-oauth.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása](tutorial-v2-aspnet-daemon-web-app.md)
+- [Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása](scenario-web-app-sign-user-app-registration.md)
+- [Microsoft Identity platform és implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md)
+- [Microsoft Identity platform hozzáférési jogkivonatok](access-tokens.md)
+- [Webes API-kat meghívó webes API: az alkalmazás jogkivonatának beszerzése](scenario-web-api-call-api-acquire-token.md)
+
 
 ## <a name="november-2020"></a>2020. november
 

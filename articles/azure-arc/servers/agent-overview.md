@@ -1,14 +1,14 @@
 ---
 title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 277e6616ce1bf90ada83516cb71f9cb55de1b7b0
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516806"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563024"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -80,9 +80,9 @@ Az Azure-ba irányuló adatátvitel biztonságának biztosítása érdekében ha
 
 ### <a name="networking-configuration"></a>Hálózatkezelési konfiguráció
 
-A Linux és a Windows rendszerhez csatlakoztatott gépi ügynök a 443-as TCP-porton keresztül kommunikál az Azure-beli ív felé. Ha a gép tűzfalon vagy proxykiszolgálón keresztül csatlakozik az interneten keresztüli kommunikációhoz, tekintse át az alábbi követelményeket a hálózati konfigurációs követelmények megismeréséhez.
+A Linux és a Windows rendszerhez csatlakoztatott gépi ügynök a 443-as TCP-porton keresztül kommunikál az Azure-beli ív felé. Ha a gép tűzfalon vagy proxykiszolgálón keresztül csatlakozik az interneten keresztüli kommunikációhoz, tekintse át a következőt a hálózati konfigurációs követelmények megismeréséhez.
 
-Ha a kimenő kapcsolatot a tűzfal vagy a proxykiszolgáló korlátozza, győződjön meg arról, hogy az alább felsorolt URL-címek nincsenek letiltva. Ha csak az ügynöknek a szolgáltatással való kommunikációhoz szükséges IP-tartományokat vagy tartományneveket engedélyezi, akkor a következő szolgáltatási címkékhez és URL-címekhez is engedélyeznie kell a hozzáférést.
+Ha a kimenő kapcsolatot a tűzfal vagy a proxykiszolgáló korlátozza, győződjön meg arról, hogy az alább felsorolt URL-címek nincsenek letiltva. Ha csak az ügynöknek a szolgáltatással való kommunikációhoz szükséges IP-tartományokat vagy tartományneveket engedélyezi, engedélyeznie kell a következő szolgáltatás-címkék és URL-címek elérését.
 
 Szolgáltatás címkéi:
 
@@ -181,8 +181,9 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
     |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
     |-------------|-------------|-------------|------------|
-    |himds |Azure Hybrid Instance Metadata Service |himds.exe |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
-    |DscService |Vendég konfigurációs szolgáltatás |dsc_service.exe |A kívánt állapot-konfiguráció (DSC v2) az Azure-ban használt, In-Guest házirend megvalósítására szolgáló kód.|
+    |himds |Azure Hybrid Instance Metadata Service |himds |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
+    |GCArcService |Vendég konfigurációs ív szolgáltatás |gc_service |Figyeli a gép kívánt állapotának konfigurációját.|
+    |ExtensionService |Vendég konfigurációs bővítmény szolgáltatás | gc_service |Telepíti a gépet célzó szükséges bővítményeket.|
 
 * Az ügynök telepítése során az alábbi környezeti változók jönnek létre.
 
@@ -232,8 +233,9 @@ A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után 
 
     |Szolgáltatásnév |Megjelenített név |Folyamatnév |Leírás |
     |-------------|-------------|-------------|------------|
-    |himdsd. Service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
-    |DSCD. Service |Vendég konfigurációs szolgáltatás |/opt/DSC/dsc_linux_service |Ez a kívánt állapot-konfiguráció (DSC v2) az Azure-ban használt, In-Guest házirend megvalósítására szolgáló rendszerbeállításai.|
+    |himdsd. Service |Azure-beli csatlakoztatott gépi ügynök szolgáltatás |himds |Ez a szolgáltatás implementálja az Azure-példány metaadatainak szolgáltatását (IMDS) az Azure-hoz és a csatlakoztatott gép Azure-identitásához való csatlakozás kezeléséhez.|
+    |gcad. servce |GC arc szolgáltatás |gc_linux_service |Figyeli a gép kívánt állapotának konfigurációját. |
+    |extd. Service |Bővítmény szolgáltatás |gc_linux_service | Telepíti a gépet célzó szükséges bővítményeket.|
 
 * Több naplófájl is elérhető a hibaelhárításhoz. Ezeket a következő táblázat ismerteti.
 

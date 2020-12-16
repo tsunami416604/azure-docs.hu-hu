@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
-ms.date: 01/27/2020
+ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 996ffdeb56d41e2c05fd402714876cb16e126021
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: df171b74014179c36466a2683a8d0d7c0c3b5e90
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96912390"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560882"
 ---
 <a name="HOLTop"></a>
 
@@ -267,9 +267,9 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
-> [I cleaned up resources](?success=clean-up-resources#next-steps) [Egy hibába ütközött az](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) erőforrások
+> [](?success=clean-up-resources#next-steps) [Egy hibába ütközött az](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) erőforrások
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Computer Vision API referenciája (go)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)

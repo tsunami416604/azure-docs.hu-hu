@@ -1,7 +1,7 @@
 ---
 title: Újdonságok a Azure Active Directory vállalat – ügyfél (B2C) szolgáltatásban
 description: Új és frissített dokumentáció a Azure Active Directory üzleti – ügyfél (B2C) szolgáltatáshoz.
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,29 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 4c204ec33604ff5edd1551f9728c28e3dcab9a61
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8805caad990cd472b3199bda27130d8d63be3071
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571079"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559727"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: Újdonságok
 
 Üdvözli a Azure Active Directory B2C dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. A B2C szolgáltatás újdonságait itt tekintheti meg: a [Azure Active Directory újdonságai](../active-directory/fundamentals/whats-new.md).
+
+## <a name="december-2020"></a>2020. december
+
+### <a name="new-articles"></a>Új cikkek
+
+- [Felhasználói folyamat létrehozása Azure Active Directory B2C](create-user-flow.md)
+- [Telefonos regisztráció és bejelentkezés beállítása felhasználói folyamatokhoz (előzetes verzió)](phone-authentication-user-flows.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása](tutorial-create-tenant.md)
+- [Azure Active Directory B2C-mintakódok](code-samples.md)
+- [Oldalelrendezési verziók](page-layout.md)
 
 ## <a name="november-2020"></a>2020. november
 

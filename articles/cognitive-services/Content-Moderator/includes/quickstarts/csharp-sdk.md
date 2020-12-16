@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 793dc6d210751d0605ab756cd1c72b1dc5dd308f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8a715c23900ac0d5a16ff4a0a8ade5ea9458cfed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925018"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561494"
 ---
 Ismerkedés az Azure Content Moderator .NET-hez készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a NuGet csomagot, és próbálja ki az alapszintű feladatok példáját. 
 
@@ -24,9 +24,9 @@ Content Moderator egy AI-szolgáltatás, amely lehetővé teszi a potenciálisan
 
 A .NET-hez készült Content Moderator ügyféloldali kódtára a következőre használható:
 
-* [Mérsékelt szöveg](#moderate-text)
-* [Közepes méretű képek](#moderate-images)
-* [Felülvizsgálat létrehozása](#create-a-review)
+* Mérsékelt szöveg
+* Közepes méretű képek
+* Felülvizsgálat létrehozása
 
 [Dokumentáció](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  [Példák](../../samples-dotnet.md)
 
@@ -52,7 +52,7 @@ Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat 
 
 #### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `content-moderator-quickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs* .
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `content-moderator-quickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
 ```console
 dotnet new console -n content-moderator-quickstart
@@ -232,7 +232,7 @@ Adja hozzá a következő metódust a **program** osztályhoz. Ez a metódus a l
 
 ### <a name="define-the-review-creation-method"></a>A felülvizsgálati módszer megadása
 
-Most már készen áll arra, hogy meghatározza azt a metódust, amely kezeli a felülvizsgálat létrehozását és lekérdezését. Adjon hozzá egy új metódust, **CreateReviews** , és adja meg a következő helyi változókat.
+Most már készen áll arra, hogy meghatározza azt a metódust, amely kezeli a felülvizsgálat létrehozását és lekérdezését. Adjon hozzá egy új metódust, **CreateReviews**, és adja meg a következő helyi változókat.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_fields)]
 
@@ -268,7 +268,7 @@ Ha ebben a forgatókönyvben visszahívási végpontot használt, akkor a követ
  'type': 'Image'}
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
@@ -284,14 +284,14 @@ dotnet run
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan használhatja a Content Moderator .NET-függvénytárat moderálási feladatok elvégzésére. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
 

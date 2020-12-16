@@ -1,7 +1,7 @@
 ---
 title: Újdonságok az Azure Active Directory alkalmazás-kiépítés során
 description: Új és frissített dokumentáció a Azure Active Directory alkalmazás üzembe helyezéséhez.
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: fd9be81e8c23686695f8cdb49d873d5a663d69c4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 053d342c8fbdd506ac5d4ba0916a1ae9361e7189
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571759"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562208"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory alkalmazás üzembe helyezése: Újdonságok
 
 Üdvözli a Azure Active Directory Application kiépítési dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. A kiépítési szolgáltatás újdonságait itt tekintheti meg: a [Azure Active Directory újdonságai](../fundamentals/whats-new.md).
+
+## <a name="december-2020"></a>2020. december
+
+### <a name="updated-articles"></a>Frissített cikkek
+- [Ismert problémák: az alkalmazás kiépítés](known-issues.md)
+- [Mi az az Azure AD-ben az automatizált SaaS-alkalmazások felhasználói üzembe helyezése?](user-provisioning.md)
+- [Oktatóanyag – a felhasználó-kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory](customize-application-attributes.md)
+
 
 ## <a name="november-2020"></a>2020. november
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 370dade1b74634649c9de44864a0fd9f5cac988f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025976"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561307"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Folyamatos integráció és folyamatos kézbesítési munkafolyamatok LUIS DevOps
 
@@ -23,7 +23,7 @@ A Language Understanding-(LUIS-) alkalmazást fejlesztő szoftverfejlesztők Dev
 A forráskód-kezelési (SCM) rendszerekben konfigurálja az automatizált Build-folyamatokat, hogy azok a következő eseményeken fussanak:
 
 1. [Lekéréses kérelem](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) kiváltásakor kiváltott **PR-munkafolyamat** . Ez a munkafolyamat ellenőrzi a PR tartalmát, *mielőtt* a frissítések beolvadnak a fő ágra.
-1. A **CI/CD munkafolyamat** akkor aktiválódik, ha a frissítések a főágra kerülnek, például a módosítások egy PR-ból való egyesítése után. Ez a munkafolyamat biztosítja a fő ág frissítéseinek minőségét.
+1. A **CI/CD munkafolyamat** akkor aktiválódik, ha a frissítéseket a fő ágra küldi, például a módosítások egy PR-ból való egyesítése után. Ez a munkafolyamat biztosítja a fő ág frissítéseinek minőségét.
 
 A **CI/CD munkafolyamat** két kiegészítő fejlesztési folyamatot egyesít:
 
@@ -31,7 +31,7 @@ A **CI/CD munkafolyamat** két kiegészítő fejlesztési folyamatot egyesít:
 
 * A [folyamatos teljesítés](/azure/devops/learn/what-is-continuous-delivery) (CD) továbbra is a folyamatos integrációs koncepciót alkalmazza az alkalmazás olyan környezetbe való automatikus üzembe helyezéséhez, ahol alaposabb tesztelést végezhet. A CD lehetővé teszi, hogy a lehető leggyorsabban megismerje a változásokkal kapcsolatos előre nem látható problémákat, valamint a tesztelési lefedettség hiányosságainak megismerését is.
 
-A folyamatos integráció és a folyamatos teljesítés célja annak biztosítása, hogy a "főkiszolgáló mindig shippable". A LUIS-alkalmazások esetében ez azt jelenti, hogy ha szükséges, a fő ág LUIS-alkalmazásból, és az éles környezetben szállítjuk.
+A folyamatos integráció és a folyamatos teljesítés célja annak biztosítása, hogy a "fő mindig shippable". A LUIS-alkalmazások esetében ez azt jelenti, hogy ha szükséges, a fő ág LUIS-alkalmazásból, és az éles környezetben szállítjuk.
 
 ### <a name="tools-for-building-automation-workflows-for-luis"></a>A LUIS automatizálási munkafolyamatainak létrehozásához szükséges eszközök
 
@@ -47,7 +47,7 @@ Az alábbi eszközöket használhatja a LUIS-alapú automatizálási munkafolyam
 
 ### <a name="the-pr-workflow"></a>A PR-munkafolyamat
 
-Ahogy azt korábban említettük, ezt a munkafolyamatot úgy állíthatja be, hogy akkor fusson, amikor egy fejlesztő egy PR-t állít elő, amely a szolgáltatási ág és a fő ág közötti egyesítést javasolja. Ennek célja, hogy ellenőrizze a PR-változások minőségét, mielőtt egyesíteni tudnák a fő ágat.
+Ahogy azt korábban említettük, ezt a munkafolyamatot úgy állíthatja be, hogy akkor fusson, amikor egy fejlesztő egy PR-t terjeszt elő, hogy a szolgáltatás a fő ágra egyesítse a módosításokat. Ennek célja, hogy ellenőrizze a PR-változások minőségét, mielőtt egyesíteni tudnák a fő ágat.
 
 Ennek a munkafolyamatnak a következőket kell tennie:
 
@@ -59,13 +59,13 @@ Ennek a munkafolyamatnak a következőket kell tennie:
 
 Ha az SCM támogatja, konfigurálja a fiókirodák védelmi szabályait úgy, hogy a munkafolyamatot sikeresen végre lehessen hajtani a PR befejezése előtt.
 
-### <a name="the-master-branch-cicd-workflow"></a>A fő ág CI/CD-munkafolyamata
+### <a name="the-main-branch-cicd-workflow"></a>A fő ág CI/CD-munkafolyamata
 
-Konfigurálja ezt a munkafolyamatot úgy, hogy a rendszer a PR-ban lévő frissítések egyesítése után fusson a fő ágra. Ennek célja, hogy a frissítések tesztelésével megtartsa a fő ág magas minőségi sávját. Ha a frissítések megfelelnek a minőségi sávra, ez a munkafolyamat telepíti az új LUIS-alkalmazás verzióját egy olyan környezetbe, ahol alaposabb tesztelést végezhet.
+Konfigurálja ezt a munkafolyamatot úgy, hogy az a folyamatban lévő frissítések a fő ágra való egyesítése után fusson. Ennek célja, hogy a frissítések tesztelésével a fő ág magas minőségi sávján maradjon. Ha a frissítések megfelelnek a minőségi sávra, ez a munkafolyamat telepíti az új LUIS-alkalmazás verzióját egy olyan környezetbe, ahol alaposabb tesztelést végezhet.
 
 Ennek a munkafolyamatnak a következőket kell tennie:
 
-* Hozzon létre egy új verziót az elsődleges LUIS alkalmazásban (a fő ág számára fenntartott alkalmazás) a frissített forráskód használatával.
+* Hozzon létre egy új verziót az elsődleges LUIS-alkalmazásban (a fő ág számára fenntartott alkalmazás) a frissített forráskód használatával.
 
 * A LUIS-alkalmazás verziójának betanítása és közzététele.
 
@@ -96,7 +96,7 @@ Az alkalmazások verziójának központi telepítésének egyéb lehetőségei a
 
 Általában azt javasoljuk, hogy csak a nem éles környezetekhez, például a fejlesztéshez és az előkészítéshez végezzen folyamatos teljesítést. A legtöbb csapatnak manuális felülvizsgálati és jóváhagyási folyamatra van szüksége az éles környezetbe történő üzembe helyezéshez. Éles környezetben érdemes lehet meggyőződni arról, hogy a fejlesztői csapat kulcsfontosságú tagjai támogatásra vagy alacsony forgalmú időszakokra vonatkozóan állnak rendelkezésre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan valósítható meg a [DevOps for Luis a GitHub](luis-how-to-devops-with-github.md) használatával
 * Megtudhatja, hogyan írhat egy [GitHub-műveletek munkafolyamatot a NLU. DevOps](https://github.com/Azure-Samples/LUIS-DevOps-Template/blob/master/docs/4-pipeline.md)

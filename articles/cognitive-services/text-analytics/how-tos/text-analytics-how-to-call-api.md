@@ -10,16 +10,34 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 7b035af85e250d97fb05625bf386bec8dc94a74c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.custom: references_regions
+ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505256"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562565"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
 Ebben a cikkben a Text Analytics REST API és a [Poster](https://www.postman.com/downloads/) használatával mutatjuk be a főbb fogalmakat. Az API számos szinkron és aszinkron végpontot biztosít a szolgáltatás funkcióinak használatához. 
+
+## <a name="create-a-text-analytics-resource"></a>Text Analytics erőforrás létrehozása
+
+> [!NOTE]
+> * Ha a (z) vagy a végpontot szeretné használni, szüksége lesz egy Text Analytics-erőforrásra a standard (k) [árképzési szint](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) használatával `/analyze` `/health` . A `/analyze` végpontot a [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)tartalmazza.
+
+A Text Analytics API használata előtt létre kell hoznia egy Azure-erőforrást az alkalmazásaihoz tartozó kulccsal és végponttal. 
+
+1.  Először nyissa meg a [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) , és hozzon létre egy új Text Analytics-erőforrást, ha még nem rendelkezik ilyennel. Válasszon [árképzési szintet](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/).
+
+2.  Válassza ki a végponthoz használni kívánt régiót.  Vegye figyelembe, hogy a `/analyze` és a `/health` végpontok csak a következő régiókban érhetők el: USA 2. nyugati régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa és Nyugat-Európa.
+
+3.  Hozza létre a Text Analytics-erőforrást, és lépjen a lap bal oldalán található kulcsok és végpont panelre. Másolja az API-k meghívásakor később használni kívánt kulcsot. Ezt később adja hozzá a fejléc értékeként `Ocp-Apim-Subscription-Key` .
+
+## <a name="using-the-api-synchronously"></a>Az API szinkron használata
+
+A Text Analytics szinkron módon hívható (alacsony késésű forgatókönyvek esetén). A szinkron API használatakor külön kell meghívnia az egyes API-k (szolgáltatások) használatát. Ha több szolgáltatást is meg kell hívnia, tekintse meg az alábbi szakaszt a Text Analytics aszinkron módon történő meghívásához. 
 
 ## <a name="using-the-api-asynchronously"></a>Az API aszinkron használata
 
@@ -48,24 +66,16 @@ Az alábbi táblázatból megtudhatja, hogy mely szolgáltatásokat lehet aszink
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>Előfeltételek
-
-
-> [!NOTE]
-> * Ha a (z) vagy a végpontot szeretné használni, szüksége lesz egy Text Analytics-erőforrásra a standard (k) [árképzési szint](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) használatával `/analyze` `/health` .
-
-1.  Először nyissa meg a [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) , és hozzon létre egy új Text Analytics-erőforrást, ha még nem rendelkezik ilyennel. Ha a vagy a végpontot szeretné használni, válassza a **Standard (S) árképzési szintet** `/analyze` `/health` . A `/analyze` végpontot a [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)tartalmazza.
-
-2.  Válassza ki a végponthoz használni kívánt régiót.  Vegye figyelembe, hogy a `/analyze` és a `/health` végpontok csak a következő régiókban érhetők el: USA 2. nyugati régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa és Nyugat-Európa.
-
-3.  Hozza létre a Text Analytics-erőforrást, és lépjen a lap bal oldalán található kulcsok és végpont panelre. Másolja az API-k meghívásakor később használni kívánt kulcsot. Ezt később adja hozzá a fejléc értékeként `Ocp-Apim-Subscription-Key` .
-
 
 <a name="json-schema"></a>
 
-## <a name="api-request-format"></a>API-kérelem formátuma
+## <a name="api-request-formats"></a>API-kérelmek formátumai
+
+A Text Analytics API is küldhet szinkron és aszinkron hívásokat.
 
 #### <a name="synchronous"></a>[Szinkron](#tab/synchronous)
+
+### <a name="synchronous-requests"></a>Szinkron kérelmek
 
 Az API-kérelmek formátuma megegyezik az összes szinkron művelet esetében. A dokumentumok egy JSON-objektumban nyers strukturálatlan szövegként lesznek elküldve. Az XML nem támogatott. A JSON-séma az alább ismertetett elemekből áll.
 
@@ -89,7 +99,9 @@ A következő példa egy API-kérést mutat be a szinkron Text Analytics végpon
 }
 ```
 
-#### <a name="analyze"></a>[Elemzés](#tab/analyze)
+#### <a name="asynchronous"></a>[Aszinkron](#tab/asynchronous)
+
+### <a name="asynchronous-requests-to-the-analyze-endpoint"></a>Aszinkron kérelmek a `/analyze` végponthoz
 
 > [!NOTE]
 > A Text Analytics ügyféloldali kódtár legújabb előzetes verziója lehetővé teszi az aszinkron elemzési műveletek meghívását egy ügyfél-objektum használatával. Példákat a GitHubon talál:
@@ -154,7 +166,7 @@ A `/analyze` végpont lehetővé teszi, hogy kiválassza, hogy a támogatott Tex
 
 ```
 
-#### <a name="text-analytics-for-health"></a>[Egészségügyi Text Analytics](#tab/health)
+### <a name="asynchronous-requests-to-the-health-endpoint"></a>Aszinkron kérelmek a `/health` végponthoz
 
 Az API-kérelmek formátuma az állapotba helyezett API-hoz Text Analytics a tárolóhoz. A dokumentumok egy JSON-objektumban nyers strukturálatlan szövegként lesznek elküldve. Az XML nem támogatott. A JSON-séma az alább ismertetett elemekből áll.  Kérjük, töltse ki és küldje el a [Cognitive Services kérelem űrlapját](https://aka.ms/csgate) , hogy hozzáférést kérjen a Text Analytics for Health nyilvános előzetes verziójához. Az állapotfigyelő Text Analyticsért nem számítunk fel díjat. 
 
@@ -194,6 +206,8 @@ A poster (vagy egy másik webes API-tesztelési eszköz) területen adja hozzá 
 
 #### <a name="synchronous"></a>[Szinkron](#tab/synchronous)
 
+### <a name="endpoints-for-sending-synchronous-requests"></a>Szinkron kérések küldésére szolgáló végpontok
+
 | Funkció | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Nyelvfelismerés | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
@@ -204,14 +218,16 @@ A poster (vagy egy másik webes API-tesztelési eszköz) területen adja hozzá 
 | Elnevezett entitások felismerése – személyes adatok | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
 | Nevesített entitások felismerése – PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
 
-#### <a name="analyze"></a>[Elemzés](#tab/analyze)
+#### <a name="asynchronous"></a>[Aszinkron](#tab/asynchronous)
+
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>Végpontok aszinkron kérelmek küldéséhez a `/analyze` végpontra
 
 | Funkció | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
 | Elemzési feladatok elküldése | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | Elemzési állapot és eredmények beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
-#### <a name="text-analytics-for-health"></a>[Egészségügyi Text Analytics](#tab/health)
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Végpontok aszinkron kérelmek küldéséhez a `/health` végpontra
 
 | Funkció | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
@@ -242,7 +258,7 @@ Miután elvégezte a végpontot, a poster (vagy egy másik webes API-tesztelési
 5. Illesszen be néhány JSON-dokumentumot érvényes formátumban. Használja a fentiekben ismertetett **API-kérelmek formátumát** , és további információkat és példákat a következő témakörökben talál:
 
       + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)
-      + [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md)
+      + [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md)
       + [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md)
       + [Entitások felismerése](text-analytics-how-to-entity-linking.md)
 
@@ -267,77 +283,24 @@ Vegye figyelembe, hogy a `/analyze` `/health` fenti 2. lépésben az aszinkron v
  
 # <a name="synchronous"></a>[Szinkron](#tab/synchronous)
 
+### <a name="example-responses-for-synchronous-operation"></a>Például a szinkron műveletre adott válaszok
+
 A szinkron végpontokra adott válaszok a használt végponttól függően változnak. Tekintse meg a következő cikkeket, például a válaszokat.
 
 + [Nyelvfelismerés](text-analytics-how-to-language-detection.md#step-3-view-the-results)
-+ [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Entitások felismerése](text-analytics-how-to-entity-linking.md#view-results)
 
-# <a name="analyze"></a>[Elemzés](#tab/analyze)
+# <a name="asynchronous"></a>[Aszinkron](#tab/asynchronous)
+
+### <a name="example-responses-for-asynchronous-operations"></a>Példa a válaszokra aszinkron műveletekhez
 
 Ha a művelet sikeres, a GET kérelem a `/analyze` végponthoz a hozzárendelt feladatokat tartalmazó objektumot ad vissza. Például: `keyPhraseExtractionTasks`. Ezek a feladatok tartalmazzák a válasz objektumot a megfelelő Text Analytics szolgáltatásból. További információt a következő cikkekben talál.
 
-+ [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Entitások felismerése](text-analytics-how-to-entity-linking.md#view-results)
-
-
-```json
-{
-  "displayName": "My Analyze Job",
-  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
-  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
-  "createdDateTime": "2020-11-13T04:01:13Z",
-  "expirationDateTime": "2020-11-14T04:01:13Z",
-  "status": "running",
-  "errors": [],
-  "tasks": {
-      "details": {
-          "name": "My Analyze Job",
-          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
-      },
-      "completed": 1,
-      "failed": 0,
-      "inProgress": 2,
-      "total": 3,
-      "keyPhraseExtractionTasks": [
-          {
-              "name": "My Analyze Job",
-              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
-              "results": {
-                  "inTerminalState": true,
-                  "documents": [
-                      {
-                          "id": "doc1",
-                          "keyPhrases": [
-                              "sunny outside"
-                          ],
-                          "warnings": []
-                      },
-                      {
-                          "id": "doc2",
-                          "keyPhrases": [
-                              "favorite Seattle attraction",
-                              "Pike place market"
-                          ],
-                          "warnings": []
-                      }
-                  ],
-                  "errors": [],
-                  "modelVersion": "2020-07-01"
-              }
-          }
-      ]
-  }
-}
-```
-
-# <a name="text-analytics-for-health"></a>[Egészségügyi Text Analytics](#tab/health)
-
-A Text Analytics for Health aszinkron API-válaszról a következő cikkben talál további információt:
-
 + [Egészségügyi Text Analytics](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
-
 
 --- 
 

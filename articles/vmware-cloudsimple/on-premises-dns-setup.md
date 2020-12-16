@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7a2b2344bbb110cd4b35cc1f6428f61e48552b01
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424704"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563007"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS konfigurálása névfeloldáshoz a saját Felhőbeli vCenter való hozzáféréshez a helyszíni munkaállomásokról
 
@@ -25,7 +25,7 @@ Ha a vCenter-kiszolgálót a helyszíni munkaállomásokról származó CloudSim
 
 2. Navigáljon az **erőforrások**  >  **privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
 
-3. Az **alapszintű információ**területen található privát felhő **Összegzés** lapján másolja a saját Felhőbeli DNS-kiszolgáló IP-címét.
+3. Az **alapszintű információ** területen található privát felhő **Összegzés** lapján másolja a saját Felhőbeli DNS-kiszolgáló IP-címét.
 
     ![Privát Felhőbeli DNS-kiszolgálók](media/private-cloud-dns-server.png)
 
@@ -45,6 +45,9 @@ A konfigurálandó fájl és paraméterek az egyéni DNS-beállítástól függ�
 
 Az alapértelmezett kötési kiszolgáló konfigurációja esetében például szerkessze a/etc/named.conf-fájlt a DNS-kiszolgálón, és adja hozzá a következő zónával kapcsolatos információkat.
 
+> [!NOTE]
+>Ez a cikk a Slave kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+
 ```
 zone "az.cloudsimple.io"
 {
@@ -56,19 +59,19 @@ zone "az.cloudsimple.io"
 
 ### <a name="create-a-zone-on-a-microsoft-windows-dns-server"></a>Zóna létrehozása Microsoft Windows DNS-kiszolgálón
 
-1. Kattintson a jobb gombbal a DNS-kiszolgálóra, és válassza az **új zóna**lehetőséget. 
+1. Kattintson a jobb gombbal a DNS-kiszolgálóra, és válassza az **új zóna** lehetőséget. 
   
     ![Képernyőkép, amely kiemeli az új zóna menüpontot.](media/DNS01.png)
-2. Válassza ki a **helyettes zónát** , és kattintson a **tovább**gombra.
+2. Válassza ki a **helyettes zónát** , és kattintson a **tovább** gombra.
 
     ![Képernyőkép, amely kiemeli a helyettes zóna beállítást.](media/DNS02.png)
-3. A környezettől függően válassza ki a megfelelő beállítást, majd kattintson a **tovább**gombra.
+3. A környezettől függően válassza ki a megfelelő beállítást, majd kattintson a **tovább** gombra.
 
     ![A zóna adatreplikálási beállításait megjelenítő képernyőkép.](media/DNS03.png)
-4. Válassza a **címkeresési zóna** lehetőséget, majd kattintson a **tovább**gombra.
+4. Válassza a **címkeresési zóna** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![A Címkeresési zóna beállítását kiemelő képernyőkép.](media/DNS01.png)
-5. Adja meg a zóna nevét, és kattintson a **tovább**gombra.
+5. Adja meg a zóna nevét, és kattintson a **tovább** gombra.
 
     ![A zóna nevének megadását bemutató képernyőkép.](media/DNS05.png)
 6. Adja meg azon DNS-kiszolgálók IP-címeit, amelyeket a CloudSimple-portálról beszerzett saját felhőhöz.
@@ -99,4 +102,4 @@ zone "az.cloudsimple.io" {
 2. Kattintson a jobb gombbal a **feltételes továbbítók** elemre, és válassza az új feltételes továbbító hozzáadásának lehetőségét.
 
     ![Feltételes továbbító 1 Windows DNS](media/DNS08.png)
-3. Adja meg a DNS-tartományt és a DNS-kiszolgálók IP-címét a privát felhőben, majd kattintson **az OK**gombra.
+3. Adja meg a DNS-tartományt és a DNS-kiszolgálók IP-címét a privát felhőben, majd kattintson **az OK** gombra.

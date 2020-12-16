@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 12/15/2020
 ms.author: aahi
-ms.openlocfilehash: 39823792a438e533134f38c04e72f2c314c57678
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e5d25e71e4700f3f327319e4f444d2060c7ab5f6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505188"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561885"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: a fő kifejezések kinyerése Text Analytics használatával
 
@@ -37,7 +37,12 @@ A Key kifejezés kinyerése a legjobban akkor működik, ha nagyobb mennyiségű
 
 A JSON-dokumentumoknak ebben a formátumban kell szerepelniük: azonosító, szöveg, nyelv
 
-A dokumentum méretének 5 120 vagy kevesebb karakterből kell állnia, és egy gyűjteményben legfeljebb 1 000 elem (azonosító) adható meg. A kollekció elküldése a kérelem törzsében történik. A következő példa egy kulcsszókeresésre beküldhető szöveget mutat be.
+A dokumentum méretének 5 120 vagy kevesebb karakterből kell állnia, és egy gyűjteményben legfeljebb 1 000 elem (azonosító) adható meg. A kollekció elküldése a kérelem törzsében történik. A következő példa egy kulcsszókeresésre beküldhető szöveget mutat be. 
+
+További információ a kérések és válaszok objektumairól: [a Text Analytics API meghívása](text-analytics-how-to-call-api.md) .  
+
+### <a name="example-synchronous-request-object"></a>Példa szinkron kérési objektumra
+
 
 ```json
     {
@@ -71,13 +76,43 @@ A dokumentum méretének 5 120 vagy kevesebb karakterből kell állnia, és egy 
     }
 ```
 
+### <a name="example-asynchronous-request-object"></a>Példa aszinkron kérelem objektumra
+
+A `v3.1-preview.3` verziótól kezdve a végpont használatával aszinkron módon küldhet adatfogadási kérelmeket `/analyze` .
+
+
+```json
+{
+    "displayName": "My Job",
+    "analysisInput": {
+        "documents": [
+            {
+                "id": "doc1",
+                "text": "It's incredibly sunny outside! I'm so happy"
+            },
+            {
+                "id": "doc2",
+                "text": "Pike place market is my favorite Seattle attraction."
+            }
+        ]
+    },
+    "tasks": {
+        "keyPhraseExtractionTasks": [{
+            "parameters": {
+                "model-version": "latest"
+            }
+        }],
+    }
+}
+```
+
 ## <a name="step-1-structure-the-request"></a>1. lépés: A kérés felépítése
 
 További információ a kérelem meghatározásáról: [a Text Analytics API meghívása](text-analytics-how-to-call-api.md). A következő pontokat a kényelem kedvéért itt megismételjük:
 
 + Hozzon létre egy **POST** kérést. Tekintse át a kérelem API-dokumentációját: [Key kifejezések API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases).
 
-+ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Meg kell adnia `/text/analytics/v3.0/keyPhrases` az URL-címet. Például: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
++ Állítsa be a HTTP-végpontot a kulcsfontosságú kifejezés kinyeréséhez az Azure-ban vagy egy példányban [text Analytics tárolóban](text-analytics-how-to-install-containers.md)Text Analytics erőforrás használatával. Ha szinkron módon használja az API-t, akkor `/text/analytics/v3.0/keyPhrases` az URL-címet is meg kell adnia. Például: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
 
 + Állítsa be a kérelem fejlécét, hogy tartalmazza a Text Analytics műveletekhez tartozó [hozzáférési kulcsot](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
@@ -99,6 +134,8 @@ Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal �
 A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
 Itt látható egy példa a fő kifejezés kinyerésének eredményére a v 3.1-es verzióról. 2 végpont a következő:
+
+### <a name="synchronous-result"></a>Szinkron eredmény
 
 ```json
     {
@@ -160,13 +197,68 @@ Itt látható egy példa a fő kifejezés kinyerésének eredményére a v 3.1-e
 ```
 Ahogy azt a feljegyezte, az elemző megkeresi és elveti a nem alapvető szavakat, és megtartja a mondat tárgyát vagy tárgyát képező egyszeres kifejezéseket vagy kifejezéseket.
 
+### <a name="asynchronous-result"></a>Aszinkron eredmény
+
+Ha az `/analyze` aszinkron művelethez a végpontot használja, az API-nak küldött feladatokat tartalmazó választ fog kapni.
+
+```json
+{
+  "displayName": "My Analyze Job",
+  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
+  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
+  "createdDateTime": "2020-11-13T04:01:13Z",
+  "expirationDateTime": "2020-11-14T04:01:13Z",
+  "status": "running",
+  "errors": [],
+  "tasks": {
+      "details": {
+          "name": "My Analyze Job",
+          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
+      },
+      "completed": 1,
+      "failed": 0,
+      "inProgress": 2,
+      "total": 3,
+      "keyPhraseExtractionTasks": [
+          {
+              "name": "My Analyze Job",
+              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
+              "results": {
+                  "inTerminalState": true,
+                  "documents": [
+                      {
+                          "id": "doc1",
+                          "keyPhrases": [
+                              "sunny outside"
+                          ],
+                          "warnings": []
+                      },
+                      {
+                          "id": "doc2",
+                          "keyPhrases": [
+                              "favorite Seattle attraction",
+                              "Pike place market"
+                          ],
+                          "warnings": []
+                      }
+                  ],
+                  "errors": [],
+                  "modelVersion": "2020-07-01"
+              }
+          }
+      ]
+  }
+}
+```
+
+
 ## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szükséges fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 
 + A [Kulcsszókeresés API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) csak egyes nyelvekre érhető el.
 + A kérelem törzsében található JSON-dokumentumok közé tartozik az azonosító, a szöveg és a nyelvi kód.
-+ POST-kérés a `/keyphrases` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) használatával.
++ A POST kérelem egy `/keyphrases` vagy `/analyze` végpontra vonatkozik, amely egy személyre szabott [hozzáférési kulcsot és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használ.
 + A válasz kimenete, amely az egyes dokumentumok AZONOSÍTÓinak legfontosabb szavaiból és kifejezésből áll, továbbítható bármely olyan alkalmazásnak, amely elfogadja a JSON-t, beleértve a Microsoft Office Excel és Power BI is, hogy csak néhányat említsünk.
 
 ## <a name="see-also"></a>Lásd még
@@ -174,7 +266,7 @@ Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szük
  [Text Analytics áttekintése –](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
  [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/client-libraries-rest-api.md)

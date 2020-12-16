@@ -1,29 +1,26 @@
 ---
-title: Template deployment mi a teendő (előzetes verzió)
+title: Template deployment mi a teendő
 description: A Azure Resource Manager-sablon telepítése előtt határozza meg, hogy milyen változások történnek az erőforrásokban.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87810071"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563092"
 ---
-# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sablon üzembe helyezési művelete (előzetes verzió)
+# <a name="arm-template-deployment-what-if-operation"></a>ARM-sablon üzembe helyezése what-if művelettel
 
-Azure Resource Manager sablon (ARM-sablon) üzembe helyezése előtt megtekintheti a megjelenő módosításokat. A Azure Resource Manager a mi-if művelettel teszi lehetővé, hogy az erőforrások hogyan változnak, ha telepíti a sablont. A mi a teendő, ha a művelet nem módosítja a meglévő erőforrásokat. Ehelyett a megadott sablon központi telepítésekor a módosításokat előre jelezheti.
-
-> [!NOTE]
-> A mi-if művelet jelenleg előzetes verzióban érhető el. Előzetes kiadásként előfordulhat, hogy az eredmények azt mutatják, hogy egy erőforrás akkor változik, ha valójában nem történt változás. Dolgozunk ezen problémák csökkentésén, de segítségre van szükségünk. Kérjük, jelentse ezeket a problémákat a következő címen: [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
+Azure Resource Manager sablon (ARM-sablon) üzembe helyezése előtt megtekintheti a megjelenő módosításokat. A Azure Resource Manager a mi-if művelettel teszi lehetővé, hogy az erőforrások hogyan változnak, ha telepíti a sablont. A what-if művelet nem módosít meglévő erőforrásokat. Ehelyett előre jelzi a megadott sablon üzembe helyezésével járó változásokat.
 
 Az Azure PowerShell, az Azure CLI vagy a REST API műveletekkel használhatja a mi-if műveletet. Mi a teendő, ha az erőforráscsoport, az előfizetés, a felügyeleti csoport és a bérlői szintű üzemelő példányok esetében támogatott.
 
-## <a name="install-azure-powershell-module"></a>Azure PowerShell modul telepítése
+## <a name="install-azure-powershell-module"></a>Azure PowerShell-modul telepítése
 
-A mi-ha a PowerShellben való használatához **az az modul 4,2-es vagy újabb**verziójával kell rendelkeznie.
+A mi-ha a PowerShellben való használatához **az az modul 4,2-es vagy újabb** verziójával kell rendelkeznie.
 
 A szükséges modul telepítése előtt azonban győződjön meg róla, hogy a PowerShell Core (6. x vagy 7. x). Ha a PowerShell 5. x vagy korábbi verziója van telepítve, [frissítse a PowerShell-verzióját](/powershell/scripting/install/installing-powershell). A szükséges modult nem telepítheti a PowerShell 5. x vagy régebbi verzióján.
 
@@ -37,34 +34,9 @@ Install-Module -Name Az -Force
 
 A modulok telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
-### <a name="uninstall-alpha-version"></a>Alfa verzió eltávolítása
-
-Ha korábban telepítette a mi-if modul alfa-verzióját, távolítsa el a modult. Az Alpha verziója csak olyan felhasználók számára érhető el, akik regisztráltak egy korai előzetes verzióra. Ha nem telepítette az előnézetet, akkor kihagyhatja ezt a szakaszt.
-
-1. A PowerShell futtatása rendszergazdaként
-1. Keresse meg az az. Resources modul telepített verzióit.
-
-   ```powershell
-   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
-   ```
-
-1. Ha a telepített verziója **2. x. x-Alpha**formátumú verziószámmal rendelkezik, távolítsa el ezt a verziót.
-
-   ```powershell
-   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
-   ```
-
-1. Szüntesse meg az előzetes verzió telepítéséhez használt adattárház regisztrációját.
-
-   ```powershell
-   Unregister-PSRepository -Name WhatIfRepository
-   ```
-
-Készen áll a mi-if használatára.
-
 ## <a name="install-azure-cli-module"></a>Az Azure CLI-modul telepítése
 
-Ha az Azure CLI-ben szeretné használni, akkor az Azure CLI 2.5.0-t vagy annak újabb verzióját kell használnia. Ha szükséges, [telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli).
+A what-if Azure CLI-beli használatához az Azure CLI 2.5.0 vagy újabb verziója szükséges. Ha szükséges, [telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli).
 
 ## <a name="see-results"></a>Eredmények megtekintése
 
@@ -129,8 +101,8 @@ A következő paranccsal tekintheti meg a módosításokat a sablon telepítése
 
 * [az üzembe helyezési csoport mi – ha](/cli/azure/deployment/group#az-deployment-group-what-if) az erőforráscsoport-telepítésekhez
 * [az üzembe helyezési alárendelt](/cli/azure/deployment/sub#az-deployment-sub-what-if)
-* [az Deployment mg mi – ha](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) a felügyeleti csoport központi telepítései
-* [az üzembe helyezési bérlő](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if)
+* [az Deployment mg mi – ha](/cli/azure/deployment/mg#az-deployment-mg-what-if) a felügyeleti csoport központi telepítései
+* [az üzembe helyezési bérlő](/cli/azure/deployment/tenant#az-deployment-tenant-what-if)
 
 A `--confirm-with-what-if` kapcsolót (vagy annak rövid formáját) használva `-c` megtekintheti a módosításokat, és a rendszer kéri, hogy folytassa a telepítést. Adja hozzá ezt a kapcsolót a következőhöz:
 
@@ -143,7 +115,7 @@ Használhatja például `az deployment group create --confirm-with-what-if` `-c`
 
 Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuálisan lehet megvizsgálni. Egy olyan JSON-objektum beszerzéséhez, amelyet programozott módon vizsgálhat a változásokhoz, használja a `--no-pretty-print` kapcsolót. Például `az deployment group what-if --no-pretty-print` az erőforráscsoport-telepítésekhez használható.
 
-Ha színek nélkül szeretné visszaadni az eredményeket, nyissa meg az [Azure CLI konfigurációs](/cli/azure/azure-cli-configuration) fájlját. Állítsa **no_color** a no_color **értéket igen**értékre.
+Ha színek nélkül szeretné visszaadni az eredményeket, nyissa meg az [Azure CLI konfigurációs](/cli/azure/azure-cli-configuration) fájlját. Állítsa  a no_color **értéket igen** értékre.
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -154,23 +126,23 @@ REST API esetén használja a következőt:
 * [Központi telepítések – What if a felügyeleti csoport hatókörében](/rest/api/resources/deployments/whatifatmanagementgroupscope) a felügyeleti csoportok központi telepítéséhez
 * [Központi telepítések – What if a bérlői hatókörben](/rest/api/resources/deployments/whatifattenantscope) a bérlői környezetekben.
 
-## <a name="change-types"></a>Típusok módosítása
+## <a name="change-types"></a>Változástípusok
 
 A mi-if művelet hat különböző típusú változást sorol fel:
 
-- **Létrehozás**: az erőforrás jelenleg nem létezik, de definiálva van a sablonban. A rendszer létrehozza az erőforrást.
+- **Létrehozás**: az erőforrás jelenleg nem létezik, de definiálva van a sablonban. Az erőforrás létre lesz hozva.
 
-- **Delete (Törlés**): Ez a módosítási típus csak akkor érvényes, ha az üzembe helyezéshez [teljes üzemmódot](deployment-modes.md) használ. Az erőforrás létezik, de nincs definiálva a sablonban. A teljes módban az erőforrás törölve lesz. Ebben a változási típusban csak a [teljes módú törlést támogató](complete-mode-deletion.md) erőforrások szerepelnek.
+- **Delete (Törlés**): Ez a módosítási típus csak akkor érvényes, ha az üzembe helyezéshez [teljes üzemmódot](deployment-modes.md) használ. Az erőforrás létezik, de nincs definiálva a sablonban. Teljes mód esetén az erőforrás törölve lesz. Ebben a változási típusban csak a [teljes módú törlést támogató](complete-mode-deletion.md) erőforrások szerepelnek.
 
-- **Figyelmen kívül hagyva**: az erőforrás létezik, de nincs definiálva a sablonban. Az erőforrás nem lesz telepítve vagy módosítva.
+- **Figyelmen kívül hagyva**: az erőforrás létezik, de nincs definiálva a sablonban. Az erőforrás nem lesz üzembe helyezve vagy módosítva.
 
-- Nincs **változás**: az erőforrás létezik, és a sablonban van definiálva. A rendszer újratelepíti az erőforrást, de az erőforrás tulajdonságai nem változnak. Ezt a változást adja vissza a [ResultFormat](#result-format) beállításakor `FullResourcePayloads` , amely az alapértelmezett érték.
+- Nincs **változás**: az erőforrás létezik, és a sablonban van definiálva. Az erőforrás újra üzembe lesz helyezve, de az erőforrás tulajdonságai nem változnak. Ezt a változást adja vissza a [ResultFormat](#result-format) beállításakor `FullResourcePayloads` , amely az alapértelmezett érték.
 
-- **Módosítás**: az erőforrás létezik, és a sablonban van definiálva. Az erőforrás újratelepítése megtörténik, és az erőforrás tulajdonságai megváltoznak. Ezt a változást adja vissza a [ResultFormat](#result-format) beállításakor `FullResourcePayloads` , amely az alapértelmezett érték.
+- **Módosítás**: az erőforrás létezik, és a sablonban van definiálva. Az erőforrás újra üzembe lesz helyezve és az erőforrás tulajdonságai megváltoznak. Ezt a változást adja vissza a [ResultFormat](#result-format) beállításakor `FullResourcePayloads` , amely az alapértelmezett érték.
 
-- **Üzembe helyezés**: az erőforrás létezik, és a sablonban van definiálva. Az erőforrás újratelepítése megtörténik. Előfordulhat, hogy az erőforrás tulajdonságai nem változnak. A művelet ezt a módosítási típust adja vissza, ha nem rendelkezik elegendő információval annak megállapításához, hogy a tulajdonságok módosulnak-e. Ezt az állapotot csak akkor láthatja, ha a [ResultFormat](#result-format) értéke `ResourceIdOnly` .
+- **Üzembe helyezés**: az erőforrás létezik, és a sablonban van definiálva. Az erőforrás újra üzembe lesz helyezve. Az erőforrás tulajdonságai megváltozhatnak, de nem feltétlenül. A művelet akkor adja vissza ezt a változástípust, ha nem rendelkezik elég információval a tulajdonságok esetleges megváltozásának meghatározásához. Ezt az állapotot csak akkor láthatja, ha a [ResultFormat](#result-format) értéke `ResourceIdOnly` .
 
-## <a name="result-format"></a>Eredmény formátuma
+## <a name="result-format"></a>Az eredmény formátuma
 
 Szabályozhatja az előre jelzett változásokkal kapcsolatos részletességi szintet. Erre két lehetősége van:
 
@@ -282,7 +254,7 @@ az deployment group what-if \
 
 ---
 
-A mi, ha a kimenet a következőhöz hasonlóan jelenik meg:
+A what-if kimenete a következőhöz hasonló:
 
 ![Resource Manager-sablon üzembe helyezése – mi a művelet kimenete](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -354,7 +326,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 A mi-if művelet támogatja a [telepítési mód](deployment-modes.md)használatát. Ha a befejezési módra van állítva, a sablonban nem szereplő erőforrások törlődnek. A következő példa olyan sablont telepít [, amely nem rendelkezik teljes módban definiált erőforrásokkal](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) .
 
-Ha egy sablon telepítése előtt szeretné előtekinteni a módosításokat, használja a Switch paramétert a telepítési paranccsal. Ha a módosítások a várt módon változnak, fogadja el, hogy a központi telepítés befejezését szeretné elvégezni.
+A változásoknak a sablon üzembe helyezése előtti áttekintéséhez használja a jóváhagyást kérő confirm kapcsolót az üzembe helyezési parancsban. Ha a változások azok, amelyekre számított, jóváhagyhatja az üzembe helyezés befejezését.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -415,15 +387,15 @@ Megtekintheti a várt módosításokat, és ellenőrizheti, hogy szeretné-e fut
 
 Az Azure SDK-k használatával a mi-if művelet is használható.
 
-* Python [esetén használja a](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)következőt:.
+* Python [esetén használja a](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)következőt:.
 
-* A Javához használja a [DeploymentWhatIf osztályt](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable).
+* A Javához használja a [DeploymentWhatIf osztályt](/java/api/com.microsoft.azure.management.resources.deploymentwhatif).
 
-* .NET esetén használja a [DeploymentWhatIf osztályt](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet).
+* .NET esetén használja a [DeploymentWhatIf osztályt](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ha az előzetes kiadásban helytelen eredményeket észlel, akkor jelentse a hibákat a következő helyen: [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
+- Ha a mi-if művelet helytelen eredményeit észleli, jelentse a hibákat a következő helyen: [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - A sablonok Azure PowerShell használatával történő telepítéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md).
 - A sablonok Azure CLI-vel történő üzembe helyezéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és az Azure CLI-vel](deploy-cli.md).
 - A sablonok REST-tel történő üzembe helyezéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Resource Manager-Rest APIokkal](deploy-rest.md).

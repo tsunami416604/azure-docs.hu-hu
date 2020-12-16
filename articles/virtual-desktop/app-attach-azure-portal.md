@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ffae02a11f2857e72cf7c5d2bbc84d8ab6174e17
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d8ed429003a9da7ae93fb93f4218cd66767dcd7b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425887"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562276"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>A MSIX-alkalmazás csatlakoztatása a Azure Portal
 
@@ -31,6 +31,7 @@ A MSIX-alkalmazás csatolásának konfigurálásához a következők szükséges
 
 - Működő Windowsos virtuális asztali telepítés. A Windows rendszerű virtuális asztali gépek (klasszikus) központi telepítésének megismeréséhez tekintse meg [a bérlő létrehozása a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)című témakört. A Windows rendszerű virtuális asztali Azure Resource Manager integrációs szolgáltatással való üzembe helyezésével kapcsolatos további információkért lásd: [gazdagép-készlet létrehozása a Azure Portal](./create-host-pools-azure-marketplace.md).
 - Egy Windows rendszerű virtuális asztali címkészlet, amely legalább egy aktív munkamenet-gazdagépet futtat.
+- Ennek az alkalmazáskészletnek az ellenőrzési környezetben kell lennie. 
 - A MSIX-csomagoló eszköz.
 - Egy MSIX csomagolt alkalmazás kibővült egy fájlmegosztásba feltöltött MSIX-rendszerképbe.
 - Egy fájlmegosztás a Windows rendszerű virtuális asztali környezetben, ahol a MSIX-csomagot tárolja a rendszer.
@@ -232,7 +233,7 @@ Az egyes MSIX-alkalmazások eltávolítása a csomagból:
 
 4. Válassza ki az eltávolítani kívánt alkalmazást, majd kattintson az **Eltávolítás** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kérje meg a közösségi kérdéseket a szolgáltatással kapcsolatban a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 

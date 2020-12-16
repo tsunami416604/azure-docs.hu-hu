@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/14/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: e239d9da4a083b50460ef746f9c538aa3081a577
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027322"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562123"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -26,9 +26,11 @@ A Azure Active Directory (Azure AD) fiókjaihoz tartozó bejelentkezési élmén
 
 A jelszó nélküli hitelesítési módszerek, például a Windows Hello, a FIDO2 biztonsági kulcsok és a Microsoft Authenticator alkalmazás biztosítja a legbiztonságosabb bejelentkezési eseményeket.
 
-Az Azure AD Multi-Factor Authentication további biztonságot tesz elérhetővé, csak a jelszó használatával, amikor a felhasználó bejelentkezik. A felhasználónak további hitelesítési formákat kell megadnia, például egy leküldéses értesítésre való reagáláshoz, egy szoftver-vagy hardver-jogkivonat kódjának megadásához, illetve az SMS-vagy telefonhívások megválaszolásához.
+Az Azure AD Multi-Factor Authentication (MFA) a felhasználó bejelentkezésekor csak jelszó használatával ad további biztonságot. A felhasználónak további hitelesítési formákat kell megadnia, például egy leküldéses értesítésre való reagáláshoz, egy szoftver-vagy hardver-jogkivonat kódjának megadásához, illetve az SMS-vagy telefonhívások megválaszolásához.
 
-Javasoljuk, hogy egyszerűsítse a felhasználói felületi élményt, és regisztráljon mind az MFA-, mind a SSPR esetében, javasoljuk, hogy [engedélyezze a kombinált biztonsági információk regisztrálását](howto-registration-mfa-sspr-combined.md). A rugalmasság érdekében javasoljuk, hogy a felhasználóknak több hitelesítési módszert kell regisztrálniuk. Ha egy felhasználó nem érhető el a bejelentkezés vagy a SSPR során, dönthet úgy, hogy egy másik metódussal végez hitelesítést. További információ: [rugalmas hozzáférés-vezérlési kezelési stratégia létrehozása az Azure ad-ben](concept-resilient-controls.md).
+Javasoljuk, hogy egyszerűsítse a felhasználói felületi élményt, és regisztráljon mind az MFA-, mind az önkiszolgáló jelszó-visszaállítás (SSPR) számára, javasoljuk, hogy [engedélyezze a kombinált biztonsági információk regisztrálását](howto-registration-mfa-sspr-combined.md). A rugalmasság érdekében javasoljuk, hogy a felhasználóknak több hitelesítési módszert kell regisztrálniuk. Ha egy felhasználó nem érhető el a bejelentkezés vagy a SSPR során, dönthet úgy, hogy egy másik metódussal végez hitelesítést. További információ: [rugalmas hozzáférés-vezérlési kezelési stratégia létrehozása az Azure ad-ben](concept-resilient-controls.md).
+
+Itt talál egy [videót](https://www.youtube.com/watch?v=LB2yj4HSptc&feature=youtu.be) , amely segít kiválasztani a legmegfelelőbb hitelesítési módszert a szervezet biztonságának megőrzéséhez.
 
 ## <a name="authentication-method-strength-and-security"></a>Hitelesítési módszer erőssége és biztonsága
 
@@ -47,7 +49,10 @@ Az alábbi táblázat az elérhető hitelesítési módszerek biztonsági szempo
 | Hang                          | Közepes   | Közepes    | Közepes       |
 | Jelszó                       | Alacsony      | Magas      | Magas         |
 
-A biztonsággal kapcsolatos további információkért lásd: [hitelesítési sebezhetőségek és támadási vektorok](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
+A biztonsággal kapcsolatos legújabb információkért tekintse meg a blogbejegyzéseket:
+
+- [Itt az ideje, hogy letegye a telefonos átvitelt a hitelesítéshez](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)
+- [Hitelesítési sebezhetőségek és támadási vektorok](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)
 
 > [!TIP]
 > A rugalmasság és a használhatóság érdekében javasoljuk, hogy használja a Microsoft Authenticator alkalmazást. Ez a hitelesítési módszer a legjobb felhasználói élményt és több módot kínál, például a jelszavakat, az MFA leküldéses értesítéseit és az eskü-kódokat.
@@ -58,7 +63,7 @@ Egyes hitelesítési módszerek elsődleges tényezőként használhatók egy al
 
 A következő táblázat azt ismerteti, hogy mikor lehet hitelesítési módszert használni a bejelentkezési esemény során:
 
-| Metódus                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
+| Módszer                         | Elsődleges hitelesítés | Másodlagos hitelesítés  |
 |--------------------------------|:----------------------:|:-------------------------:|
 | Vállalati Windows Hello     | Igen                    | MFA                       |
 | A Microsoft Authenticator alkalmazás    | Igen (előzetes verzió)          | MFA és SSPR              |
@@ -91,7 +96,7 @@ A következő további ellenőrzési módszerek használhatók bizonyos helyzete
 * [Biztonsági kérdések](concept-authentication-security-questions.md) – csak a SSPR esetében használatos
 * [E-mail-cím](concept-sspr-howitworks.md#authentication-methods) – csak a SSPR esetében használatos
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az első lépésekhez tekintse meg az [önkiszolgáló jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure ad multi-Factor Authentication][tutorial-azure-mfa]oktatóanyagát.
 

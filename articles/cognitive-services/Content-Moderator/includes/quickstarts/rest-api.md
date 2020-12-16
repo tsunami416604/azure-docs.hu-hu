@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: include
 ms.date: 12/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 06af722e8c827acdad356acb982ac3761ef68236
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ebef33072b802ffc35b8c011d974dbcd203fa6e1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905664"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561477"
 ---
 Ismerkedjen meg az Azure Content Moderator REST APIával. 
 
@@ -23,8 +23,8 @@ Content Moderator egy AI-szolgáltatás, amely lehetővé teszi a potenciálisan
 
 Használja a Content Moderator REST APIt a következőre:
 
-* [Mérsékelt szöveg](#moderate-text)
-* [Közepes méretű képek](#moderate-images)
+* Mérsékelt szöveg
+* Közepes méretű képek
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -171,7 +171,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Content Moderator REST API a moderálási feladatok végrehajtásához. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
 

@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy A
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 00f77d9dc56bf8fff792a23bbb139519ccd24351
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7f2e6d7f304977d3e6d92a778dba5bf026343707
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030594"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562905"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: Tárolólemezképek összeállításának automatizálása a felhőben forráskód véglegesítésekor
 
@@ -58,7 +58,7 @@ az acr task create \
 ```
 
 
-A feladat megadja, hogy minden alkalommal, amikor kódot véglegesítenek a `--context` argumentumban megadott adattár *fő* elágazásába, az ACR Tasks összeállítja a tárolórendszerképet az elágazásban lévő kódból. A `--file` rendszer a tárház gyökerében megadott Docker használja a rendszerkép létrehozásához. Az `--image` argumentum a `{{.Run.ID}}` egy parametrikus értékét adja meg a rendszerkép címkéjének a verzióra vonatkozó részéhez, ezzel biztosítva, hogy az összeállított rendszerkép egy adott összeállításhoz tartozzon és egyedi címkével legyen jelölve.
+Ez a feladat azt adja meg, hogy a rendszer minden alkalommal véglegesíti az adott adattár *fő* ágát `--context` , az ACR-feladatok pedig az adott ág kódjából fogják felépíteni a tároló rendszerképét. A `--file` rendszer a tárház gyökerében megadott Docker használja a rendszerkép létrehozásához. Az `--image` argumentum a `{{.Run.ID}}` egy parametrikus értékét adja meg a rendszerkép címkéjének a verzióra vonatkozó részéhez, ezzel biztosítva, hogy az összeállított rendszerkép egy adott összeállításhoz tartozzon és egyedi címkével legyen jelölve.
 
 A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbihoz hasonló:
 
@@ -103,7 +103,7 @@ A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbiho
       {
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
-          "branch": "master",
+          "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
           "sourceControlAuthProperties": null,
           "sourceControlType": "GitHub"
@@ -194,7 +194,7 @@ Ezután az alábbi parancsok futtatásával hozzon létre, véglegesítsen és k
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
-git push origin master
+git push origin main
 ```
 
 Előfordulhat, hogy a rendszer a GitHub hitelesítő adatok megadását kéri a `git push` parancs végrehajtásakor. Adja meg GitHub-felhasználónevét, valamint a jelszóként korábban létrehozott személyes hozzáférési jogkivonatot (PAT).

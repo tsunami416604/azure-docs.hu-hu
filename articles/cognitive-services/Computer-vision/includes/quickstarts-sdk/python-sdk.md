@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
-ms.date: 12/05/2019
+ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 91bc9def06b7b9844e32dbc0d2654d03c5b72389
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: ea71cd4e235923c48c7c5b5269eb8f58d4c349d1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96912353"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560797"
 ---
 <a name="HOLTop"></a>
 
@@ -210,9 +210,9 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
-> [I cleaned up resources](?success=clean-up-resources#next-steps) [Egy hibába ütközött az](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) erőforrások
+> [](?success=clean-up-resources#next-steps) [Egy hibába ütközött az](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) erőforrások
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythonhoz készült Computer Vision kódtárat a feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 

@@ -5,13 +5,13 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
-adobe-target: true
-ms.openlocfilehash: dc4c67437d6cc6d5eea87bf414058a676d7cd8a4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+robots: noindex
+ms.openlocfilehash: e068de77760752070117644c269e80a52c8c1707
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833689"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561545"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linux rendszeren
 
@@ -156,7 +156,7 @@ A Python-mintakód egy beépített rendszerképpel futtatja App Service Linux-t�
 
     ![Egy minta Python-alkalmazás helyi futtatása](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. A terminál ablakban a **CTRL** C billentyűkombináció lenyomásával + **C** lépjen ki a fejlesztői kiszolgálóról.
+1. A terminál ablakban a **CTRL** C billentyűkombináció lenyomásával +  lépjen ki a fejlesztői kiszolgálóról.
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
@@ -194,7 +194,7 @@ A Python-mintakód egy beépített rendszerképpel futtatja App Service Linux-t�
 
     ![Egy minta Python-alkalmazás helyi futtatása](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. A terminál ablakban a **CTRL** C billentyűkombináció lenyomásával + **C** lépjen ki a fejlesztői kiszolgálóról.
+1. A terminál ablakban a **CTRL** C billentyűkombináció lenyomásával +  lépjen ki a fejlesztői kiszolgálóról.
 ::: zone-end
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
@@ -293,7 +293,7 @@ Az `--no-wait` argumentum lehetővé teszi, hogy a parancs visszaadja a művelet
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python (Django) webalkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

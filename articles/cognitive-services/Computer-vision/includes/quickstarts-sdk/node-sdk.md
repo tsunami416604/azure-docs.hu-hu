@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: e0767e50ac6d88922281b10389b77c5cf0c481be
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 50d1222f5c33b327c92799ccf27ed0650ba0226c
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96912355"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560865"
 ---
 <a name="HOLTop"></a>
 
@@ -251,7 +251,7 @@ Adja hozzá az alábbi kódot, amely meghívja a `readTextFromURL` függvényt a
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-Adja meg a `readTextFromURL` függvényt. Ez a hívás a művelethez tartozó **olvasási** metódust adja meg az ügyfél objektumon, amely egy műveleti azonosítót ad vissza, és elindít egy aszinkron folyamatot a rendszerkép tartalmának olvasásához. Ezután a műveleti azonosító használatával vizsgálja meg a művelet állapotát, amíg vissza nem adja az eredményeket. A kinyert eredményeket adják vissza.
+Adja meg a `readTextFromURL` függvényt. Ezzel meghívja az **olvasási** metódust az ügyfél objektumon, amely egy műveleti azonosítót ad vissza, és egy aszinkron folyamatot indít el a rendszerkép tartalmának olvasásához. Ezután a műveleti azonosító használatával vizsgálja meg a művelet állapotát, amíg vissza nem adja az eredményeket. A kinyert eredményeket adják vissza.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
@@ -281,9 +281,9 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
-> [I cleaned up resources](?success=clean-up-resources#next-steps) [Egy hibába ütközött az](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) erőforrások
+> [](?success=clean-up-resources#next-steps) [Egy hibába ütközött az](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) erőforrások
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[Computer Vision API referenciája (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)

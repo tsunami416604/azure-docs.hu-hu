@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 077500e0188d1cc20864d436a2e2fd711b180702
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886022"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560236"
 ---
 # <a name="chat-concepts"></a>Csevegéssel kapcsolatos alapfogalmak
 
@@ -46,8 +46,9 @@ Két fő részből áll a csevegő architektúra: 1) megbízható szolgáltatás
 
 A kommunikációs szolgáltatások csevegés megosztja a felhasználó által létrehozott üzeneteket, valamint a szál- **tevékenységek** nevű rendszer által generált üzeneteket. A hozzászóláslánc-tevékenységek akkor jönnek létre, amikor egy csevegési szál frissül. `List Messages` `Get Messages` Egy csevegési szál hívásakor az eredmény a felhasználó által generált szöveges üzeneteket, valamint a rendszerüzeneteket is tartalmazza időrendben. Ez segít megállapítani, hogy mikor lett hozzáadva vagy eltávolítva egy tag, vagy mikor frissítették a csevegési szál témakört. A támogatott üzenetek típusai a következők:  
 
- - `Text`: A csevegési beszélgetés részeként a felhasználó által összeállított és küldött tényleges üzenet. 
- - `ThreadActivity/AddMember`: Az a Rendszerüzenet, amely azt jelzi, hogy egy vagy több tag hozzá lett adva a csevegési szálhoz. Például:
+ - `Text`: Egyszerű szöveges üzenet, amelyet egy felhasználó egy csevegési beszélgetés részeként komponál és küld. 
+ - `RichText/HTML`: Formázott szöveges üzenet. Vegye figyelembe, hogy a kommunikációs szolgáltatások felhasználói jelenleg nem küldhetnek RichText üzeneteket. Ezt az üzenetet a csapatok felhasználóitól a kommunikációs szolgáltatások felhasználóinak küldött üzenetek támogatják a csapatok együttműködési forgatókönyvekben.
+ - `ThreadActivity/AddMember`: Olyan Rendszerüzenet, amely azt jelzi, hogy egy vagy több tag hozzá lett adva a csevegési szálhoz. Például:
 
 ```xml
 
@@ -92,6 +93,30 @@ A kommunikációs szolgáltatások csevegés megosztja a felhasználó által l�
 
 ```
 
+- `ThreadActivity/MemberJoined`: Olyan Rendszerüzenet, amely akkor jön létre, amikor egy vendég felhasználó csatlakozik a Teams Meeting szolgáltatáshoz. A kommunikációs szolgáltatások felhasználóinak tagja a Teams Meeting csevegésnek. Például:  
+```xml
+{ 
+  "id": "1606351443605", 
+  "type": "ThreadActivity/MemberJoined", 
+  "version": "1606347753409", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606351443080,\"initiator\":\"8:orgid:8a53fd2b5ef150bau8442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665d83-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": " 19:meeting_curGQFTQ8tifs3EK9aTusiszGpkZULzNTTy2dbfI4dCJEaik@thread.v2", 
+  "createdOn": "2020-11-29T00:44:03.6950000Z" 
+} 
+```
+- `ThreadActivity/MemberLeft`: Olyan Rendszerüzenet, amely akkor jön létre, amikor egy vendég felhasználó elhagyja az értekezlet csevegését. A kommunikációs szolgáltatások felhasználóinak tagja a Teams Meeting csevegésnek. Például: 
+```xml
+{ 
+  "id": "1606347703429", 
+  "type": "ThreadActivity/MemberLeft", 
+  "version": "1606340753429", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606340755385,\"initiator\":\"8:orgid:8a53fd2b5u8150ba81442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665753-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": "19:meeting_9u7hBcYiADudn41Djm0n9DTVyAHuMZuh7p0bDsx1rLVGpnMk@thread.v2", 
+  "createdOn": "2020-11-29T23:42:33.4290000Z" 
+} 
+```
 - `ThreadActivity/TopicUpdate`: Az a Rendszerüzenet, amely azt jelzi, hogy a témakör frissítve lett. Például:
 
 ```xml
@@ -132,7 +157,7 @@ Ezt úgy érheti el, ha a megbízható szolgáltatás egy csevegési szál tagja
 
 :::image type="content" source="../media/chat/cognitive-services.png" alt-text="A kommunikációs szolgáltatásokkal való interakciót Cognitive Services bemutató ábra.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a csevegéssel](../../quickstarts/chat/get-started.md)

@@ -1,19 +1,19 @@
 ---
 title: 'Azure ExpressRoute: ARP-táblák – hibaelhárítás'
-description: Ez az oldal a ExpressRoute-áramkör ARP-tábláinak beolvasására vonatkozó utasításokat tartalmazza.
+description: Ez az oldal útmutatást nyújt a ExpressRoute-áramkörhöz tartozó ARP-táblázatok beszerzéséhez
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
-ms.date: 01/30/2017
+ms.date: 12/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 9272bb8bac2054d7a02a7eac8c214395a86ceebf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8ae2c58979c66ebbbab366d172179bdeee4253
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394856"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561579"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-táblák lekérése a Resource Manager-alapú üzemi modellben
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Ez a cikk végigvezeti a ExpressRoute-áramkör ARP-tábláinak megismeréséhez
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>A címhozzárendelés protokoll (ARP) és az ARP-táblák
 A címhozzárendelés protokoll (ARP) az [RFC 826](https://tools.ietf.org/html/rfc826)-ben definiált 2. rétegbeli protokoll. Az ARP az Ethernet-cím (MAC-cím) IP-címmel való leképezésére szolgál.
 
-Az ARP-táblázat egy adott társítás IPv4-címeinek és MAC-címeinek leképezését biztosítja. Az ExpressRoute-kapcsolati kapcsolatok ARP-táblázata az egyes interfészekhez (elsődleges és másodlagos) a következő információkat tartalmazza.
+Az ARP-tábla az alábbi információkat tartalmazza mind az elsődleges, mind a másodlagos csatolóhoz az egyes társítási típusok esetében:
 
 1. Helyszíni útválasztó illesztő IP-címének hozzárendelése a MAC-címhez
 2. A ExpressRoute útválasztó felületének IP-címének hozzárendelése a MAC-címhez
@@ -55,10 +55,10 @@ Age InterfaceProperty IpAddress  MacAddress
 A következő szakasz arról nyújt tájékoztatást, hogyan tekintheti meg az ExpressRoute Edge-útválasztók által látott ARP-táblákat. 
 
 ## <a name="prerequisites-for-learning-arp-tables"></a>Az ARP-táblák megismerésének előfeltételei
-Mielőtt továbblépne, ellenőrizze, hogy rendelkezik-e a következőkkel
+A folytatás előtt győződjön meg arról, hogy az alábbi információk teljesülnek:
 
-* Legalább egy társítással konfigurált érvényes ExpressRoute-áramkör. Az áramkört teljesen konfigurálni kell a kapcsolat szolgáltatójának. Az adott áramkörön (vagy a kapcsolat szolgáltatójánál) konfigurálnia kell legalább az egyik társat (Azure Private, Azure Public és Microsoft).
-* A társak konfigurálásához használt IP-címtartományok (Azure Private, Azure Public és Microsoft). Tekintse át az IP-címek hozzárendelésével kapcsolatos példákat az [ExpressRoute-útválasztási követelmények oldalon](expressroute-routing.md) , és Ismerje meg, hogy az IP-címek hogyan vannak leképezve a felületekre az Ön oldalán és a ExpressRoute oldalon. A társítási konfigurációval kapcsolatos információkat a ExpressRoute-társítási [konfiguráció oldalának](expressroute-howto-routing-arm.md)áttekintésével érheti el.
+* Legalább egy társítással konfigurált érvényes ExpressRoute-áramkör. Az áramkört teljesen konfigurálni kell a kapcsolat szolgáltatójának. Ön vagy a kapcsolat szolgáltatójának legalább az Azure Private, az Azure nyilvános vagy a Microsoft-társítást kell konfigurálnia ezen az áramkörön.
+* A társak konfigurálásához használt IP-címtartományok. Tekintse át az IP-címek hozzárendelésével kapcsolatos példákat az [ExpressRoute-útválasztási követelmények lapon](expressroute-routing.md) , hogy megtudja, hogyan legyenek leképezve az IP-címek A társítási konfigurációval kapcsolatos információkat a ExpressRoute-társítási [konfiguráció oldalának](expressroute-howto-routing-arm.md)áttekintésével érheti el.
 * A hálózati csapat/kapcsolat szolgáltatójától származó információk az ezen IP-címekkel használt felületek MAC-címein.
 * Az Azure-hoz készült legújabb PowerShell-modulnak (1,50-es vagy újabb verzió) kell lennie.
 
@@ -151,10 +151,10 @@ Age InterfaceProperty IpAddress  MacAddress
 A társítások ARP-táblázata a 2. réteg konfigurációjának és a kapcsolatok ellenőrzésének meghatározására használható. Ez a szakasz áttekintést nyújt arról, hogy az ARP-táblázatok hogyan fognak megjelenni a különböző forgatókönyvekben.
 
 ### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>ARP-tábla, ha egy áramkör működési állapotban van (várt állapot)
-* Az ARP-táblázat egy érvényes IP-címet és MAC-címet tartalmazó bejegyzéssel fog rendelkezni a helyszíni oldalon, valamint egy hasonló bejegyzés a Microsoft oldalán. 
+* Az ARP-táblázat egy érvényes IP-címet és MAC-címet tartalmazó bejegyzéssel fog rendelkezni a helyszíni oldalon. Ugyanez a Microsoft oldalán is látható. 
 * A helyszíni IP-cím utolsó oktettje mindig páratlan szám lesz.
 * A Microsoft IP-címének utolsó oktettje mindig páros szám lesz.
-* Ugyanez a MAC-címe fog megjelenni a Microsoft oldalán mind a 3 (elsődleges, mind a másodlagos) partner számára. 
+* Ugyanez a MAC-címe fog megjelenni a Microsoft oldalán mindhárom (elsődleges/másodlagos) partner számára. 
 
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
@@ -164,23 +164,21 @@ Age InterfaceProperty IpAddress  MacAddress
 ```
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP-tábla, ha a helyszíni/kapcsolati szolgáltató oldalán problémák léptek fel
-Ha problémák merülnek fel a helyszíni vagy a kapcsolati szolgáltatóval kapcsolatban, láthatja, hogy az ARP-táblában vagy a helyszíni MAC-címen csak egy bejegyzés jelenik meg. Ekkor megjelenik a Microsoft oldalán használt MAC-cím és IP-cím közötti leképezés. 
+Ha a helyszíni vagy a kapcsolati szolgáltatóval kapcsolatos probléma merül fel, az ARP-tábla két dolog egyikét fogja megjeleníteni. A helyszíni MAC-címek megjelenítése nem fejeződött be, vagy csak a Microsoft bejegyzés jelenik meg az ARP táblában.
   
-```output
-Age InterfaceProperty IpAddress  MacAddress    
---- ----------------- ---------  ----------    
-  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
-```
-
-vagy
-       
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
 --- ----------------- ---------  ----------   
   0 On-Prem           65.0.0.1   Incomplete
   0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 ```
-
+vagy
+   
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```  
 
 > [!NOTE]
 > Az ilyen problémák hibakereséséhez nyisson meg egy támogatási kérést a kapcsolat szolgáltatójánál. Ha az ARP-tábla nem rendelkezik a MAC-címekhez hozzárendelt adapterek IP-címeivel, tekintse át a következő információkat:
@@ -193,10 +191,10 @@ Age InterfaceProperty IpAddress  MacAddress
 * Ha problémák merülnek fel a Microsoft oldalán, nem jelenik meg a társak számára megjelenített ARP-táblázat. 
 * Nyisson meg egy támogatási jegyet a [Microsoft ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Adja meg, hogy van-e probléma a 2. rétegbeli kapcsolattal. 
 
-## <a name="next-steps"></a>Következő lépések
-* 3. rétegbeli konfigurációk ellenőrzése a ExpressRoute-áramkörhöz
-  * Útvonal-összefoglalás beolvasása a BGP-munkamenetek állapotának megállapításához 
-  * Útválasztási táblázat beolvasása a ExpressRoute-ben meghirdetett előtagok meghatározásához
-* Adatátvitel ellenőrzése a bájtok és a kimenő adatok áttekintésével
+## <a name="next-steps"></a>További lépések
+* Ellenőrizze az ExpressRoute áramkör 3. rétegbeli konfigurációit.
+  * A BGP-munkamenetek állapotának megállapításához lekérheti az útvonal összegzését.
+  * Az útválasztási táblázat lekérésével meghatározhatja, hogy mely előtagokat hirdessen meg a rendszer a ExpressRoute között.
+* Ellenőrizze az adatátvitelt a bájtok vagy kimenő adatok áttekintésével.
 * Ha továbbra is problémákat tapasztal, nyisson meg egy támogatási jegyet a [Microsoft ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 

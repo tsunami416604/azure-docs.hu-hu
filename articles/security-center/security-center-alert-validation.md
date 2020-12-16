@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 999888b12f10c07f7d42f14289e88030f9542a36
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340818"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560101"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Riasztások érvényesítése Azure Security Center
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
@@ -27,11 +27,46 @@ A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően kon
 A riasztások olyan értesítések, amelyeket a Security Center hoz létre, ha fenyegetést észlel egy erőforrásban. Rangsorolja és felsorolja a riasztásokat, valamint azokat az információkat, amelyek a probléma gyors kivizsgálásához szükségesek. A Security Center javaslatokat is felkínál a támadás elhárítására.
 További információ: [biztonsági riasztások a Security Centerban](security-center-alerts-overview.md) , valamint a [biztonsági riasztások kezelése és válaszadás](security-center-managing-and-responding-alerts.md)
 
-## <a name="validate-alerts-on-windows-vms"></a>Riasztások ellenőrzése Windows rendszerű virtuális gépeken <a name="validate-windows"></a>
+
+## <a name="generate-sample-azure-defender-alerts"></a>Minta Azure Defender-riasztások előállítása
+
+Ha az új, előzetes verziójú riasztásokat használja a [Azure Security Center biztonsági riasztások kezelése és](security-center-managing-and-responding-alerts.md)az azokra való reagálás című témakörben leírtak szerint, néhány kattintással létrehozhat minta riasztásokat a Azure Portal biztonsági riasztások oldaláról.
+
+Használjon példákat a következőhöz:
+
+- Az Azure Defender értékének és funkcióinak kiértékelése
+- érvényesítse a biztonsági riasztásokhoz (például SIEM-integrációhoz, a munkafolyamat-automatizáláshoz és az e-mail-értesítésekhez) létrehozott konfigurációkat.
+
+> [!NOTE]
+> Ez az eljárás megköveteli, hogy az új (előzetes verzió) riasztások elérhetők legyenek a **biztonsági riasztások** oldal tetején található szalagcímben.
+>
+> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Az új előzetes riasztási élményre mutató hivatkozást tartalmazó szalagcím":::
+
+Példa riasztások létrehozásához:
+
+1. A riasztások lap eszköztárán válassza a **minta riasztások létrehozása** lehetőséget. 
+1. Válassza ki az előfizetést.
+1. Válassza ki a megfelelő Azure Defender-csomagot/-t, amelynek riasztásait meg szeretné jeleníteni. 
+1. Válassza a **minta riasztások létrehozása** lehetőséget.
+
+    :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="A minta riasztások létrehozásának lépései Azure Security Center":::
+    
+    Megjelenik egy értesítés, amely tájékoztatja, hogy a rendszer létrehozza a minta riasztásokat:
+
+    :::image type="content" source="media/security-center-alert-validation/notification-sample-alerts-creation.png" alt-text="Értesítés arról, hogy a rendszer létrehozza a minta riasztásait.":::
+
+    Néhány perc elteltével a riasztások a biztonsági riasztások lapon jelennek meg. Ezen kívül bárhol máshol is megjelennek a Azure Security Center biztonsági riasztások (csatlakoztatott SIEM-EK, e-mail-értesítések stb.) fogadására konfiguráltak.
+
+    :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="Riasztások a biztonsági riasztások listájában":::
+
+    > [!TIP]
+    > A riasztások szimulált erőforrásokra vonatkoznak.
+
+## <a name="simulate-alerts-on-your-azure-vms-windows"></a>Riasztások szimulálása Azure-beli virtuális gépeken (Windows) <a name="validate-windows"></a>
 
 Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
 
-1. Másoljon egy végrehajtható fájlt (például **calc.exe**) a számítógép asztalára vagy más kényelmi címtárba, és nevezze át **ASC_AlertTest_662jfi039N.exeként **.
+1. Másoljon egy végrehajtható fájlt (például **calc.exe**) a számítógép asztalára vagy más kényelmi címtárba, és nevezze át **ASC_AlertTest_662jfi039N.exeként**.
 1. Nyissa meg a parancssort, és hajtsa végre a fájlt argumentummal (csak egy hamis argumentum neve), például: ```ASC_AlertTest_662jfi039N.exe -foo```
 1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Riasztásnak kell megjelennie.
 
@@ -40,7 +75,7 @@ Miután telepítette Security Center ügynököt a számítógépre, hajtsa vég
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## <a name="validate-alerts-on-linux-vms"></a>Riasztások ellenőrzése Linux rendszerű virtuális gépeken <a name="validate-linux"></a>
+## <a name="simulate-alerts-on-your-azure-vms-linux"></a>Riasztások szimulálása Azure-beli virtuális gépeken (Linux) <a name="validate-linux"></a>
 
 Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
 1. Másolja a végrehajtható fájlt egy kényelmes helyre, és nevezze át a (z **)./asc_alerttest_662jfi039nre**, például:
@@ -54,7 +89,7 @@ Miután telepítette Security Center ügynököt a számítógépre, hajtsa vég
 1. Várjon 5-10 percet, és nyissa meg a Security Center riasztásait. Riasztásnak kell megjelennie.
 
 
-## <a name="validate-alerts-on-kubernetes"></a>Riasztások ellenőrzése a Kubernetes <a name="validate-kubernetes"></a>
+## <a name="simulate-alerts-on-kubernetes"></a>Riasztások szimulálása a Kubernetes <a name="validate-kubernetes"></a>
 
 Ha az Azure Kubernetes szolgáltatást a Security Centerrel integrálta, tesztelheti, hogy a riasztások a következő kubectl-paranccsal működnek-e:
 
@@ -62,7 +97,7 @@ Ha az Azure Kubernetes szolgáltatást a Security Centerrel integrálta, tesztel
 
 A Kubernetes-csomópontok és-fürtök védelmével kapcsolatos további információkért lásd: [Bevezetés az Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) használatába
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk a riasztások érvényesítési folyamatát mutatta be. Most, hogy már ismeri az érvényesítést, tekintse meg a következő cikkeket:
 
 * [Azure Key Vault-fenyegetésészlelés érvényesítése az Azure Security Centerben](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)

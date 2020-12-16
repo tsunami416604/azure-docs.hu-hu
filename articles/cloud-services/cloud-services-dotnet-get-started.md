@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 404fc887cf40ee5d88b2824e8d2324d103226973
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a875c036c79419357f1134c32f62fdb060fec7c6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164363"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562293"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -125,7 +125,7 @@ Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog
 5. Válassza ki a régiót, ahol telepíteni szeretné az alkalmazást.
 
     Ez a mező határozza meg, hogy a felhőszolgáltatása melyik adatközpontban fog üzemelni. Termelési alkalmazások esetében az ügyfeleihez legközelebb eső régiót kellene kiválasztania. A jelen oktatóanyag esetében válassza az Önhöz legközelebbi régiót.
-5. Kattintson a **Létrehozás** lehetőségre.
+5. Kattintson a **Létrehozás** gombra.
 
     Az alábbi képen egy CSvccontosoads.cloudapp.net URL-címmel ellátott felhőszolgáltatás létrehozása történik.
 
@@ -154,7 +154,7 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
     ![Új kiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Kattintson a **Létrehozás** lehetőségre.
+10. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 Az Azure-tárfiók erőforrásokat biztosít az üzenetsor és a blob adatainak felhőbeli tárolásához.
@@ -177,7 +177,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
     Ha a felhőszolgáltatás és a tárfiók különböző adatközpontokban van (különböző régiókban), a késés mértéke megnő, és az adatközponton kívül használt sávszélességért fizetnie kell. Az adatközponton belül használt sávszélesség ingyenes.
 
     Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Kattintson a **Létrehozás** lehetőségre.
+7. Kattintson a **Létrehozás** gombra.
 
     ![Új tárfiók](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -231,7 +231,7 @@ Az Azure-tárfiók kapcsolati sztringjeinek tárolása a webes- és a feldolgoz�
 1. A **Megoldáskezelőben** a **ContosoAdsCloudService** projekt **Szerepkörök** területén kattintson a jobb gombbal a **ContosoAdsWeb** elemre, majd kattintson a **Tulajdonságok** lehetőségre.
 
     ![Szerepkör tulajdonságai](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Kattintson a **Beállítások** fülre. A **szolgáltatás konfigurációja** legördülő listában válassza a **felhő**lehetőséget.
+2. Kattintson a **Beállítások** fülre. A **szolgáltatás konfigurációja** legördülő listában válassza a **felhő** lehetőséget.
 
     ![Felhő konfigurálása](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Jelölje ki a **StorageConnectionString** bejegyzést, és megjelenik egy három pontot (**...**) ábrázoló gomb a sor jobb oldali végén. Kattintson a három pontot ábrázoló gombra a **Create Storage Account Connection String** (Tárfiók kapcsolati sztringjének létrehozása) párbeszédpanel megnyitásához.
@@ -379,7 +379,7 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurál
 3. A ContosoAdsCloudService projektben a **Szerepkörök** területen kattintson a jobb gombbal a ContosoAdsWeb elemre, majd kattintson a **Tulajdonságok** elemre.
 
     ![Képernyőfelvétel a Tulajdonságok menüpontra a szerepkörök területen.](./media/cloud-services-dotnet-get-started/roleproperties.png)
-4. A **ContosoAdsWeb [szerepkör]** tulajdonságok ablakában kattintson a **Beállítások** fülre, majd a **beállítás hozzáadása**elemre.
+4. A **ContosoAdsWeb [szerepkör]** tulajdonságok ablakában kattintson a **Beállítások** fülre, majd a **beállítás hozzáadása** elemre.
 
     A **Service Configuration** (Szolgáltatáskonfiguráció) **All Configurations** (Minden konfiguráció) értékét ne módosítsa.
 5. Adjon hozzá egy *StorageConnectionString* névvel ellátott beállítást. A **Típus** beállítása legyen *ConnectionString*, az **Érték** beállítása pedig *UseDevelopmentStorage=true*.
@@ -400,7 +400,7 @@ Ebben a szakaszban Azure Storage- és SQL-kapcsolati sztringeket fog konfigurál
 ### <a name="add-code-files"></a>Kódfájlok hozzáadása
 Ebben a szakaszban kódfájlokat fog másolni a letöltött megoldásból az új megoldásba. A következő szakaszok bemutatják és ismertetik a kód legfontosabb részeit.
 
-Ha fájlokat szeretne hozzáadni egy projekthez vagy mappához, kattintson a jobb gombbal a projektre vagy **Add**mappára, majd kattintson a  -  **meglévő elem**hozzáadása lehetőségre. Jelölje ki a kívánt fájlokat, majd kattintson az **Add** (Hozzáadás) gombra. Ha a rendszer rákérdez, hogy lecseréli-e a meglévő fájlokat, kattintson a **Yes** (Igen) gombra.
+Ha fájlokat szeretne hozzáadni egy projekthez vagy mappához, kattintson a jobb gombbal a projektre vagy mappára, majd kattintson a  -  **meglévő elem** hozzáadása lehetőségre. Jelölje ki a kívánt fájlokat, majd kattintson az **Add** (Hozzáadás) gombra. Ha a rendszer rákérdez, hogy lecseréli-e a meglévő fájlokat, kattintson a **Yes** (Igen) gombra.
 
 1. A ContosoAdsCommon projektben törölje a *Class1.cs* fájlt, és a helyére illessze be az *Ad.cs* és a *ContosoAdscontext.cs* fájlt a letöltött projektből.
 2. A ContosoAdsWeb projektben adja hozzá az alábbi fájlokat a letöltött projektből.
@@ -409,7 +409,7 @@ Ha fájlokat szeretne hozzáadni egy projekthez vagy mappához, kattintson a job
    * A *Views\Shared* mappában: *\_Layout.cshtml*.
    * A *Views\Home* mappában: *Layout.cshtml*.
    * A *Controllers* mappában: *AdController.cs*.
-   * A*Views\Ad* mappában (először hozza létre a mappát): öt *.cshtml* fájl.
+   * A *Views\Ad* mappában (először hozza létre a mappát): öt *.cshtml* fájl.
 3. A ContosoAdsWorker projektben adja hozzá a *WorkerRole.cs* fájlt a letöltött projektből.
 
 Most már létrehozhatja és futtathatja az alkalmazást az oktatóanyag korábbi utasításai szerint, amely a helyi adatbázist és a Storage Emulator erőforrásait fogja használni.
@@ -744,7 +744,7 @@ Ez a kód beolvassa az adatbázist a kép URL-címének lekéréséhez, miniatű
 Ha az oktatóanyag utasításainak követése ellenére valami mégsem működne, íme néhány gyakran előforduló hiba és azok megoldása.
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException
-A `RoleEnvironment` objektumot az Azure biztosítja az alkalmazás Azure-ban való futtatásakor, vagy az Azure Compute Emulator használatával történő helyi futtatáskor.  Ha a helyi futtatás során ez a hiba jelenik meg, ellenőrizze, hogy a ContosoAdsCloudService projektet állította-e be kiindulási projektként. Beállítja a projektet, hogy az Azure Compute Emulator használatával fusson.
+Ha az Azure `RoleEnvironment` -ban futtat egy alkalmazást az Azure-ban, vagy amikor helyileg futtatja az Azure-beli számítási emulátort, akkor az objektumot az Azure nyújtja.  Ha a helyi futtatás során ez a hiba jelenik meg, ellenőrizze, hogy a ContosoAdsCloudService projektet állította-e be kiindulási projektként. Ezzel beállítja az Azure számítási emulátor használatával futtatandó projektet.
 
 Az alkalmazás többek között a *.cscfg*-fájlokban tárolt kapcsolatisztring-értékek lekérésére használja az Azure RoleEnvironmentet, ezért a kivétel egy másik oka egy hiányzó kapcsolati sztring. Győződjön meg arról, hogy a ContosoAdsWeb projekt Felhő- és a Helyi konfigurációiban is létrehozta a StorageConnectionString beállítást, illetve arról is, hogy a ContosoAdsWorker projekt mindkét konfigurációjában létrehozta mindkét kapcsolati sztringet. Ha a **Find All** (Összes keresése) funkció használatával keres a StorageConnectionString kifejezésre a megoldás egészében, 6 fájlban, 9 alkalommal kell megjelennie.
 
@@ -754,7 +754,7 @@ Próbálja módosítani a webes projekt által használt port számát. Kattints
 A probléma megoldására irányuló alternatív megoldásért tekintse meg a következő szakaszt.
 
 ### <a name="other-errors-when-running-locally"></a>A helyi futtatás során felmerülő egyéb hibák
-Alapértelmezés szerint az új felhőszolgáltatás-projektek az Azure Compute Emulator Express használatával szimulálják az Azure-környezetet. Ez a teljes Compute Emulator egyszerűsített verziója, és bizonyos körülmények között előfordulhat, hogy a teljes emulátor akkor is működik, amikor az Express verzió nem.  
+Alapértelmezés szerint az új Cloud Service-projektek az Azure számítási emulátor Express használatával szimulálják az Azure-környezetet. Ez a teljes Compute Emulator egyszerűsített verziója, és bizonyos körülmények között előfordulhat, hogy a teljes emulátor akkor is működik, amikor az Express verzió nem.  
 
 Ha a teljes emulátor használatára szeretné módosítani a projekt beállítását, kattintson a jobb gombbal a ContosoAdsCloudService projektre, majd kattintson a **Tulajdonságok** lehetőségre. A **Tulajdonságok** ablakban kattintson a **Web** lapra, majd kattintson a **Use Full Emulator** (Teljes emulátor használata) választógombra.
 

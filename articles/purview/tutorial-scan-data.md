@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 802b7d2ca5d96bf385c4b8f0ee0cdaa3db181a1c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922575"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559964"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Oktatóanyag: az adatvizsgálat az Azure hatáskörébe (előzetes verzió)
 
@@ -146,10 +146,11 @@ A katalógus-konfiguráció befejezése után futtassa a következő parancsfáj
 
    A parancs futtatásakor megjelenik egy előugró ablak, amely a Azure Active Directory hitelesítő adataival jelentkezhet be.
 
-1. Futtassa az alábbi parancsot a Starter Kit futtatásához. Cserélje le a,,,, `CatalogName` `TenantID` `SubscriptionID` `newresourcegroupname` és `CatalogResourceGroupName` helyőrzőket. A (z) esetében `newresourcegroupname` használja az erőforráscsoport egyedi nevét, amely az adatbirtokot fogja tartalmazni.
 
-> [!IMPORTANT]
-> A **newresourcegroupname** csak számokat és kisbetűket használ, és legfeljebb 17 karakterből állhat. **A nagybetűk és a speciális karakterek nem engedélyezettek.** Ez a megkötés a tárolási fiókok elnevezési szabályaiból származik.
+1. Futtassa az alábbi parancsot a Starter Kit futtatásához. Cserélje le a,,,, `CatalogName` `TenantID` `SubscriptionID` `NewResourceGroupName` és `CatalogResourceGroupName` helyőrzőket. A esetében `NewResourceGroupName` adjon meg egy egyedi nevet (csak kisbetűs alfanumerikus karaktereket tartalmazó) az erőforráscsoport számára, amely az adatbirtokot fogja tartalmazni.
+
+   > [!IMPORTANT]
+   > A **newresourcegroupname** csak számokat és kisbetűket használ, és legfeljebb 17 karakterből állhat. **A nagybetűk és a speciális karakterek nem engedélyezettek.** Ez a megkötés a tárolási fiókok elnevezési szabályaiból származik.
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 1150cdb64c5fe7d1b2241cdc0ad1a6eb0a36f47f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168562"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562803"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Az Azure Metrikaböngésző speciális funkciói
 
@@ -46,20 +46,20 @@ Kattintson a **diagram hozzáadása** lehetőségre, és hozzon létre egy mási
 
 ### <a name="order-or-delete-multiple-charts"></a>Több diagram megrendelése vagy törlése
 
-Több diagram megrendeléséhez vagy törléséhez kattintson a három pontra ( **..** .) szimbólumra a diagram menü megnyitásához, majd válassza ki a **feljebb,** lejjebb **Move down**vagy **törölni**kívánt menüelemet.
+Több diagram megrendeléséhez vagy törléséhez kattintson a három pontra ( **..** .) szimbólumra a diagram menü megnyitásához, majd válassza ki a **feljebb,** lejjebb vagy **törölni** kívánt menüelemet.
 
 ## <a name="changing-aggregation"></a>Összesítés módosítása
 
 Ha mérőszámot ad hozzá egy diagramhoz, a metrikák Explorer automatikusan kiválasztja az alapértelmezett összesítést. Az alapértelmezett érték az alapszintű, de egy másik összesítéssel további információkhoz juthat a metrikáról. A diagramokon a különböző összesítések megtekintéséhez meg kell ismernie, hogy a metrikák kezelője hogyan kezeli őket. 
 
-A metrikák az adott időszakban rögzített mérési (vagy "metrikus értékek") sorozata. Amikor Kirajzol egy diagramot, a kiválasztott metrika értékei külön lesznek összesítve az *időgabona*során. Az időgabona méretét [a Metrikaböngésző Time Picker panelen](metrics-getting-started.md#select-a-time-range)választhatja ki. Ha nem az időgabona explicit kijelölését választja, a rendszer automatikusan kiválasztja az idő részletességét a jelenleg kijelölt időtartomány alapján. Az időkeret meghatározása után a rendszer összesíti az egyes időkeretek során rögzített metrikai értékeket, és a diagramra helyezi a Datapoint.
+A metrikák az adott időszakban rögzített mérési (vagy "metrikus értékek") sorozata. Amikor Kirajzol egy diagramot, a kiválasztott metrika értékei külön lesznek összesítve az *időgabona* során. Az időgabona méretét [a Metrikaböngésző Time Picker panelen](metrics-getting-started.md#select-a-time-range)választhatja ki. Ha nem az időgabona explicit kijelölését választja, a rendszer automatikusan kiválasztja az idő részletességét a jelenleg kijelölt időtartomány alapján. Az időkeret meghatározása után a rendszer összesíti az egyes időkeretek során rögzített metrikai értékeket, és a diagramra helyezi a Datapoint.
 
 Tegyük fel például, hogy a diagram a **kiszolgáló válaszideje** mérőszámot mutatja az **elmúlt 24 órában** mért **átlagos** összesítés használatával:
 
 - Ha az idő részletessége 30 percre van beállítva, a diagram 48 összesített datapoints (például a diagram ábrázolási területének 48 pontjának összekapcsolása). Ez egy óránként 24 óra x 2 datapoints. Mindegyik Datapoint az összes rögzített válaszidő *átlagát* jelöli az összes olyan kiszolgálói kérelem esetében, amelyek az egyes érintett 30 perces időszakok során fordultak elő.
 - Ha 15 percre vált az időrészletesség, 96 összesített datapoints kap.  Ez egy óránként 24 óra x 4 datapoints.
 
-A mérőszámok Explorerben öt alapvető statisztikai összesítési típus érhető el: **Sum**, **Count**, **min**, **Max**és **Average**. Az **összeg** összesítését időnként a **teljes** összesítésnek is nevezzük. Számos metrika esetében Metrikaböngésző elrejti a teljesen lényegtelen összesítéseket, és nem használható.
+A mérőszámok Explorerben öt alapvető statisztikai összesítési típus érhető el: **Sum**, **Count**, **min**, **Max** és **Average**. Az **összeg** összesítését időnként a **teljes** összesítésnek is nevezzük. Számos metrika esetében Metrikaböngésző elrejti a teljesen lényegtelen összesítéseket, és nem használható.
 
 - **Sum (összeg** ) – az összesítési intervallumban rögzített összes érték összege
 - **Count (darabszám** ) – az összesítési intervallumban rögzített mértékegységek száma. Vegye figyelembe, hogy a **Count** értéke megegyezik az **összeggel** abban az esetben, ha a metrikát az 1 értékkel együtt mindig rögzíti a rendszer. Ez gyakran előfordul, ha a metrika nyomon követi a különböző események számát, és az egyes mérések egy eseményt jelölnek (azaz a kód egy metrikai rekord kikapcsolását minden alkalommal, amikor új kérés érkezik)
@@ -77,15 +77,15 @@ Szűrőket alkalmazhat a diagramokra, amelyek dimenziókat tartalmazó metrikák
 
 2. Válassza ki a szűrni kívánt dimenziót (tulajdonságot)
 
-   ![A szűrni kívánt dimenziókat (tulajdonságokat) megjelenítő képernyőkép.](./media/metrics-charts/00006.png)
+   ![A szűrni kívánt dimenziókat (tulajdonságokat) megjelenítő képernyőkép.](./media/metrics-charts/028.png)
 
 3. Válassza ki, hogy mely dimenzió értékeket kívánja felvenni a diagram ábrázolásakor (ez a példa a sikeres tárolási tranzakciók szűrését mutatja):
 
-   ![A sikeres tárolási tranzakciók szűrését bemutató képernyőkép.](./media/metrics-charts/00007.png)
+   ![A sikeres tárolási tranzakciók szűrését bemutató képernyőkép.](./media/metrics-charts/029.png)
 
 4. Miután kiválasztotta a szűrő értékeit, kattintson a szűrési választóból a bezáráshoz. A diagramon most már látható, hogy hány tárolási tranzakciót sikerült végrehajtani:
 
-   ![A tárolási tranzakciók számának számát bemutató képernyőkép](./media/metrics-charts/00008.png)
+   ![A tárolási tranzakciók számának számát bemutató képernyőkép](./media/metrics-charts/030.png)
 
 5. Az 1-4-es lépések megismétlésével több szűrőt is alkalmazhat ugyanarra a diagramra.
 
@@ -104,11 +104,11 @@ A mérőszámok dimenzió alapján való felosztásával megjelenítheti, hogy a
 
 2. Válassza ki azt a dimenziót, amelyre a diagramot szeretné szegmentálni:
 
-   ![A diagramot ábrázoló kiválasztott dimenziót megjelenítő képernyőkép.](./media/metrics-charts/00010.png)
+   ![A diagramot ábrázoló kiválasztott dimenziót megjelenítő képernyőkép.](./media/metrics-charts/031.png)
 
    A diagram most már több sort is megjelenít, egyet a dimenzió minden szegmenséhez:
 
-   ![Képernyőkép, amely több sort mutat be, egyet a dimenzió minden egyes szegmenséhez.](./media/metrics-charts/00012.png)
+   ![Képernyőkép, amely több sort mutat be, egyet a dimenzió minden egyes szegmenséhez.](./media/metrics-charts/032.png)
 
 3. Kattintson a **csoportosítási választóból** a bezáráshoz.
 
@@ -123,9 +123,13 @@ Ha például a sikeres kérések mennyisége 99,99%-ról 99,5%-ra csökken, a sz
 
 Egy másik példa a rendelkezésre álló memória ingadozása, ahol az érték műszakilag soha nem éri el a 0 értéket. Ha a tartományt magasabb értékre javítja, a kihagyható a rendelkezésre álló memória. 
 
-Az y tengely tartományának vezérléséhez használja a "..." diagram menü, és a speciális diagram beállításainak eléréséhez válassza a **diagram szerkesztése** lehetőséget. Módosítsa az Y tengely tartománya szakaszban található értékeket, vagy az **automatikus** gomb használatával térjen át az alapértelmezett értékekre.
+Az y tengely tartományának vezérléséhez használja a "..." diagram menü, majd a **Diagram beállításai** lehetőségre kattintva érheti el a speciális diagram beállításait.
 
-![Képernyőfelvétel: a diagram szerkesztése lehetőség.](./media/metrics-charts/00014-manually-set-granularity.png)
+![Képernyőfelvétel: a diagram beállításai lehetőség kiemelése.](./media/metrics-charts/033.png)
+
+ Módosítsa az Y tengely tartománya szakaszban található értékeket, vagy az **automatikus** gomb használatával térjen át az alapértelmezett értékekre.
+ 
+ ![Képernyőkép, amely kiemeli az Y tengely Range szakaszt.](./media/metrics-charts/034.png)
 
 > [!WARNING]
 > Az y tengely azon határainak zárolása, amelyek a különböző számításokat vagy összegeket követik egy adott időtartamon belül (és így a darabszámot, a Sum, a minimum vagy a maximális összesítést használják) általában a rögzített idő részletességét kell megadnia az automatikus alapértékek helyett. Erre azért van szükség, mert a diagramok értékei változnak, amikor az időrészletességet automatikusan módosítja a felhasználó átméretezni a böngészőablakot, vagy az egyik képernyőfelbontásról egy másikra kerül. Az időbeli részletesség változása hatással van a diagram kinézetére, és az y tengely tartományának aktuális kijelölését érvényteleníti.
@@ -136,9 +140,9 @@ A diagramok konfigurálása után a rendszer automatikusan egy alapértelmezett 
 
 Egy diagramterület színének módosításához kattintson a diagramhoz tartozó jelmagyarázatban található színes sávra. Ekkor megnyílik a színválasztó párbeszédpanel. A színválasztó segítségével konfigurálja a vonal színét.
 
-A diagram színeinek konfigurálása után a diagramot egy irányítópultra rögzítve maradnak. A következő szakasz bemutatja, hogyan rögzítheti a diagramokat.
+![A szín módosítását bemutató képernyőkép](./media/metrics-charts/035.png)
 
-![A diagram rögzítését bemutató képernyőkép.](./media/metrics-charts/018.png)
+A diagram színeinek konfigurálása után a diagramot egy irányítópultra rögzítve maradnak. A következő szakasz bemutatja, hogyan rögzítheti a diagramokat.
 
 ## <a name="pin-charts-to-dashboards"></a>Diagramok rögzítése az irányítópultokon
 
@@ -146,9 +150,9 @@ A diagramok konfigurálása után érdemes lehet hozzáadni az irányítópultok
 
 Konfigurált diagram rögzítése az irányítópulton:
 
-A diagram konfigurálása után a diagram jobb felső sarkában kattintson a **diagram műveletek** menüre, majd kattintson a **rögzítés az irányítópulton**elemre.
+A diagram konfigurálása után kattintson a **rögzítés az irányítópultra** lehetőségre a diagram jobb felső sarkában.
 
-![metrika képe](./media/metrics-charts/00013.png)
+![Képernyőkép, amely bemutatja, hogyan kell rögzíteni a diagramot](./media/metrics-charts/036.png)
 
 ## <a name="create-alert-rules"></a>Riasztási szabályok létrehozása
 
@@ -156,11 +160,11 @@ A mérőszámok metrika-alapú riasztási szabály alapján történő megjelen�
 
 ### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Új riasztási szabály létrehozásához kattintson az **új riasztási szabály** elemre.
 
-![Piros színnel jelölt új riasztási szabály gomb](./media/metrics-charts/015.png)
+![Piros színnel jelölt új riasztási szabály gomb](./media/metrics-charts/042.png)
 
 A riasztási szabály létrehozási paneljén a diagramon előre kitöltött mérőszám-dimenziók láthatók, így könnyebben hozhat létre egyéni riasztási szabályokat.
 
-![Riasztási szabály létrehozása](./media/metrics-charts/016.png)
+![Riasztási szabály létrehozása](./media/metrics-charts/041.png)
 
 A metrikai riasztások beállításával kapcsolatos további információkért tekintse meg ezt a [cikket](alerts-metric.md) .
 

@@ -1,26 +1,26 @@
 ---
 title: 'Azure ExpressRoute: áramkör-társítások alaphelyzetbe állítása'
-description: Megtudhatja, hogyan tilthatja le és engedélyezheti az Azure ExpressRoute áramköri szolgáltatásait Azure PowerShell használatával. A társítások konfigurálásakor a rendszer alapértelmezés szerint engedélyezi őket.
+description: Megtudhatja, hogyan engedélyezheti és tilthatja le az Azure ExpressRoute áramköri szolgáltatásait Azure PowerShell használatával.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/13/2018
+ms.date: 12/15/2020
 ms.author: duau
-ms.openlocfilehash: f3b34966aa46ca8d663f83ab2aceafa4b0dda2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bde96ae5f4a9aff6f4a16a4f1544d9b39e5cb66
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395740"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559573"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute-áramköri társítások alaphelyzetbe állítása
 
-Ez a cikk bemutatja, hogyan tilthatja le és engedélyezheti egy ExpressRoute-áramkör társítását a PowerShell használatával. Ha letilt egy társítást, akkor a BGP-munkamenet mind az elsődleges, mind a ExpressRoute áramkör másodlagos kapcsolata le lesz állítva. Ezzel a kapcsolattal elveszti a kapcsolatot a Microsofttal. Ha engedélyezi a társítást, akkor a BGP-munkamenet az elsődleges kapcsolaton és a ExpressRoute áramkör másodlagos kapcsolatán is megjelenik. Ezzel a kapcsolattal visszanyerheti a kapcsolatot a Microsofttal. A Microsoft-és az Azure-beli privát ExpressRoute egymástól függetlenül engedélyezheti és tilthatja le. Amikor először konfigurálja a társításokat a ExpressRoute-áramkörön, a rendszer alapértelmezés szerint engedélyezi a társításokat.
+Ez a cikk azt ismerteti, hogyan lehet engedélyezni és letiltani egy ExpressRoute-áramkör társításait a PowerShell használatával. A társítások alapértelmezés szerint engedélyezve vannak a létrehozásuk során. Ha letilt egy társítást, a rendszer leállítja a BGP-munkamenetet a ExpressRoute áramkör elsődleges és másodlagos kapcsolatán. A Microsofthoz való kapcsolódás elvész. A társítás engedélyezésekor a BGP-munkamenet a ExpressRoute-áramkör elsődleges és másodlagos kapcsolatán is létrejön. A rendszer visszaállítja a kapcsolatot a Microsofttal ehhez a társhoz. Engedélyezheti és letilthatja a Microsoft-és az Azure-beli privát kapcsolatok társítását a ExpressRoute áramkörtől függetlenül.
 
-Van néhány olyan forgatókönyv, ahol hasznos lehet a ExpressRoute-társítások alaphelyzetbe állítása.
-* Tesztelje a vész-helyreállítási tervét és megvalósítását. Tegyük fel, hogy két ExpressRoute-áramkörrel rendelkezik. Letilthatja egy áramkör társításait, és kényszerítheti a hálózati forgalmat, hogy átadja a feladatátvételt a másik áramkörnek.
-* Engedélyezze a kétirányú továbbítási észlelést (BFD) a ExpressRoute-áramkör Azure-beli privát vagy Microsoft-hálózatán. A BFD alapértelmezés szerint engedélyezve van az Azure-beli privát kapcsolatok esetében, ha a ExpressRoute-áramkört a 1 2018-es és a Microsoft-partneri kapcsolat alapján hozza létre, ha a ExpressRoute-áramkört január 10 2020 után hozták létre. Ha az áramkört korábban már létrehozták, a BFD nem volt engedélyezve. A BFD engedélyezéséhez tiltsa le a társítást, és engedélyezze újra. 
+A ExpressRoute-társítások alaphelyzetbe állításához a következő két helyzetben hasznos lehet:
+* Ha tesztelni szeretné a vész-helyreállítási tervét és megvalósítását. Tegyük fel, hogy két ExpressRoute-áramkörrel rendelkezik. Letilthatja a társításokat egy áramkörön, és kényszerítheti a hálózati forgalmat, hogy átadja a feladatátvételt a másik áramkörnek.
+* Engedélyezze a kétirányú továbbítási észlelést (BFD) a ExpressRoute-áramkör Azure-beli privát vagy Microsoft-kapcsolataiban. A BFD alapértelmezés szerint engedélyezve van az Azure-beli privát kapcsolatok esetében, ha a ExpressRoute-áramkört a 2018. augusztus 1. és a Microsoft-partnerek számára a 2020. január 10. után hozta létre. Ha az áramkör a felsorolt dátum előtt lett létrehozva, a BFD engedélyezéséhez alaphelyzetbe kell állítania a társítást. 
 
 ### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
 
@@ -141,7 +141,7 @@ Van néhány olyan forgatókönyv, ahol hasznos lehet a ExpressRoute-társítás
    ```
    A társításnak beállított állapotban kell lennie. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha segítségre van szüksége egy ExpressRoute-probléma elhárításához, tekintse meg a következő cikkeket:
 * [Az ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)
 * [A hálózati teljesítmény hibaelhárítása](expressroute-troubleshooting-network-performance.md)

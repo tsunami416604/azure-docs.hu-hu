@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali munkamenetgazda szolgáltatás fris
 description: Ellenőrzési címkészlet létrehozása a szolgáltatások frissítéseinek figyeléséhez, mielőtt az éles környezetbe helyezné a frissítéseket.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/13/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526510"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563245"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: gazdagép-készlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez
 
@@ -66,6 +66,20 @@ A parancsmag eredményeinek ehhez a kimenethez hasonlóan kell kinéznie:
     LoadBalancerType    : BreadthFirst
     ValidationEnvironment : True
 ```
+
+## <a name="enable-your-validation-environment-with-the-azure-portal"></a>Az ellenőrzési környezet engedélyezése a Azure Portal
+
+Az ellenőrzési környezet engedélyezéséhez használhatja a Azure Portal is.
+
+A Azure Portal használata az érvényesítési gazdagép-készlet konfigurálásához:
+
+1. Jelentkezzen be az Azure Portalra a <https://portal.azure.com> webhelyen.
+2. Keresse meg és válassza ki a **Windows virtuális asztal** elemet.
+3. A Windows rendszerű virtuális asztal lapon válassza a **gazdagép készletek** elemet.
+4. Válassza ki a szerkeszteni kívánt gazdagép-készlet nevét.
+5. Válassza ki a **Tulajdonságok** elemet.
+6. Az érvényesítési környezet mezőben válassza az **Igen** lehetőséget az ellenőrzési környezet engedélyezéséhez.
+7. Kattintson a **Mentés** gombra. Ez az új beállításokat fogja alkalmazni.
 
 ## <a name="update-schedule"></a>Frissítési ütemterv
 

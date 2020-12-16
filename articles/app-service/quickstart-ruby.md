@@ -6,12 +6,12 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 49f2100386af21cee8f76403d7a2d2e4ac6b8f63
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 45c87f690c24e989a797cbd82147b9125e447e79
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961333"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561783"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>Ruby on Rails-alkalmazás létrehozása App Service
 
@@ -69,7 +69,7 @@ Webböngészőjével a `http://localhost:3000` hely megkeresésével helyileg te
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-Nyissa meg az alkalmazást, és tekintse meg az újonnan létrehozott, beépített rendszerképpel rendelkező webalkalmazást. Cserélje le az _ &lt; alkalmazás nevét>_ a webalkalmazás nevére.
+Nyissa meg az alkalmazást, és tekintse meg az újonnan létrehozott, beépített rendszerképpel rendelkező webalkalmazást. Cserélje le az _&lt; alkalmazás nevét>_ a webalkalmazás nevére.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -85,7 +85,7 @@ Futtassa a következő parancsokat a helyi alkalmazás üzembe helyezéséhez az
 
 ```bash
 git remote add azure <Git deployment URL from above>
-git push azure master
+git push azure main
 ```
 
 Erősítse meg, hogy az üzembehelyezési műveletek sikerrel jártak. A parancsok eredménye a következő szöveghez fog hasonlítani:
@@ -104,7 +104,7 @@ remote: Running post deployment command(s)...
 remote: Deployment successful.
 remote: App container will begin restart within 10 seconds.
 To https://<app-name>.scm.azurewebsites.net/<app-name>.git
-   a6e73a2..ae34be9  master -> master
+   a6e73a2..ae34be9  main -> main
 ```
 
 Miután az üzembe helyezés befejeződött, várjon körülbelül 10 másodpercet a webalkalmazás újraindításához, majd navigáljon a webalkalmazáshoz, és ellenőrizze az eredményeket.

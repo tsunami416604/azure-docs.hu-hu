@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 09/22/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: 0379fd186c499e19d949d9494b0eb5dec4f2bb50
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/15/2020
+ms.custom: contperf-fy21q1,contperfq1
+ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032541"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562837"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Mélyreható tanulás és gépi tanulás a Azure Machine Learning
 
@@ -57,6 +57,16 @@ A következő táblázat részletesebben összehasonlítja a két technikát:
 |  **Végrehajtási idő** | Viszonylag kevés időt vesz igénybe a betanítás, néhány másodperctől néhány órára. | A tanítás általában hosszú időt vesz igénybe, mivel a Deep learning algoritmus számos réteget magában foglal. |
 |  **Kimenet** | A kimenet általában numerikus érték, például pontszám vagy besorolás. | A kimenetnek több formátuma is lehet, például egy szöveg, egy pontszám vagy egy hang. |
 
+## <a name="transfer-learning"></a>A tanulás átvitele
+
+A Deep learning-modellek betanításához gyakran nagy mennyiségű betanítási adatok, nagy teljesítményű számítási erőforrások (GPU, TPU) és hosszú betanítási idő szükséges. Abban az esetben, ha nem rendelkezik ezekkel a lehetőségekkel, a betanítási folyamatot az adatátviteli tanulási módszernek nevezett eljárással teheti meg.
+
+Az átvitel a tanulás olyan technika, amely az egyik probléma megoldását egy másik, de kapcsolódó problémára is kiszolgálja.
+
+A neurális hálózatok szerkezete miatt az első rétegek általában alacsonyabb szintű funkciókat tartalmaznak, míg a rétegek végső készlete magasabb szintű funkciót tartalmaz, amely közelebb áll a szóban forgó tartományhoz. Ha a végső rétegeket új tartományba vagy problémába kívánja használni, jelentősen csökkentheti az új modell betanításához szükséges idő, adatok és számítási erőforrások mennyiségét. Ha például már rendelkezik egy olyan modellel, amely az autókat ismeri fel, ezt a modellt átviheti a Learning használatával is, és felismerheti a teherautók, motorkerékpárok és más típusú járművek használatát.
+
+Ismerje meg, hogyan alkalmazhatja az átvitelt a képbesorolásra egy nyílt forráskódú keretrendszer használatával Azure Machine Learning: [rendszerképek osztályozása Pytorch-modell használatával](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
+
 ## <a name="deep-learning-use-cases"></a>Mély tanulási használati esetek
 
 A mesterséges neurális hálózati struktúra miatt a Deep learning kiemelkedik a strukturálatlan adat, például képek, hang, videó és szöveg mintázatának azonosítására. Emiatt a Deep learning gyorsan átalakítja számos iparágat, például az egészségügyet, az energiát, a pénzügyt és a szállítást. Ezek az iparágak mostantól a hagyományos üzleti folyamatokat gondolják át. 
@@ -72,8 +82,6 @@ A nevesített entitások felismerése olyan mély tanulási módszer, amely a sz
 A Deep learning számos objektum-észlelési használati esettel lett alkalmazva. Az objektumok észlelése két részből áll: a képek besorolása, majd a képek honosítása. A rendszerkép _besorolása_ azonosítja a rendszerkép objektumait, például az autókat vagy a személyeket. A rendszerkép _honosítása_ megadja az objektumok adott helyét. 
 
 Az objektumok észlelése már használatban van olyan iparágakban, mint például a játékok, a kiskereskedelem, a turizmus és az önkiszolgáló autók.
-
-Megtudhatja, hogyan használhat képbesorolási modellt egy nyílt forráskódú keretrendszerből Azure Machine Learning: [rendszerképek osztályozása Pytorch-modell használatával](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Képfelirat létrehozása
 
@@ -107,13 +115,13 @@ A feedforward neurális hálózat a mesterséges neurális hálózat legegyszer�
 
 Az ismétlődő neurális hálózatok széles körben használják a mesterséges neurális hálózatot. Ezek a hálózatok elmentik egy réteg kimenetét, és visszaküldik a bemeneti rétegnek a réteg eredményének előrejelzéséhez. Az ismétlődő neurális hálózatok nagy tanulási képességekkel rendelkeznek. Ezek széles körben használatosak olyan összetett feladatokhoz, mint például az idősorozat-előrejelzés, a tanulási kézírás és a nyelv felismerése.
 
-### <a name="convolutional-neural-networks"></a>Összetartozó neurális hálózatok
+### <a name="convolutional-neural-network"></a>Egyazon neurális hálózat
 
 A többrendszeres neurális hálózat egy különösen hatékony mesterséges neurális hálózat, amely egyedi architektúrát mutat be. A rétegek három dimenzióban vannak rendezve: szélesség, magasság és mélység. Az egyik rétegben lévő neuronok nem a következő rétegben lévő összes neuronokhoz csatlakoznak, hanem csak a réteg neuronok kis régiójához. A végső kimenetet a rendszer a mélységi dimenzió mentén szervezett valószínűségi pontszámok egyetlen vektorára csökkenti. 
 
 A többszintű neurális hálózatok olyan területeken lettek felhasználva, mint a videó-felismerés, a képfelismerés és az ajánlott rendszerek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkek további lehetőségeket mutatnak be a nyílt forráskódú mély tanulási modellek [Azure Machine Learningban](./index.yml?WT.mc_id=docs-article-lazzeri)való használatára:
 

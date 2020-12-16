@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8340712e10721374bb2f0a35ac2e2e9a6abf181c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: deb05083ca45c24a58cabf9e923b706575ef093b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743037"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562140"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló (NPS) infrastruktúrájának integrálása az Azure AD-vel Multi-Factor Authentication
 
@@ -224,6 +224,10 @@ A terheléselosztási képességek és a redundancia biztosítása érdekében i
    ```
 
 1. Futtassa a telepítő által létrehozott PowerShell-szkriptet.
+
+   Előfordulhat, hogy először engedélyeznie kell a TLS 1,2 for PowerShellt ahhoz, hogy csatlakozni tudjon, és megfelelően töltse le a csomagokat:
+   
+   `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
 
    > [!IMPORTANT]
    > Az Azure Government vagy az Azure China 21Vianet felhők használatát használó ügyfelek esetében először szerkessze a `Connect-MsolService` *AzureMfaNpsExtnConfigSetup.ps1* parancsfájlban található parancsmagokat, hogy tartalmazza a szükséges felhőhöz tartozó *AzureEnvironment* paramétereket. Válassza például a *-AzureEnvironment USGovernment* vagy a *-AzureEnvironment AzureChinaCloud*.

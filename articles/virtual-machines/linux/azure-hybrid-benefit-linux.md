@@ -1,6 +1,6 @@
 ---
 title: Azure Hybrid Benefit és Linux rendszerű virtuális gépek
-description: A Azure Hybrid Benefit lehetővé teszi, hogy pénzt takarítson meg az Azure-on futó linuxos virtuális gépeken.
+description: Ismerje meg, hogyan segítheti a Azure Hybrid Benefit az Azure-on futó linuxos virtuális gépek pénzének megtakarítását.
 services: virtual-machines
 documentationcenter: ''
 author: mathapli
@@ -10,63 +10,67 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 5b565a3e653d05ffcecfbc5718c74d07d8f45373
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1bc108f76ac35b13474de18d473f5728dbad9d23
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109164"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560016"
 ---
-# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hybrid Benefit – hogyan vonatkozik Linux Virtual Machines
+# <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>A Linux rendszerű virtuális gépekre vonatkozó Azure Hybrid Benefit alkalmazása
 
-## <a name="overview"></a>Áttekintés
+A Azure Hybrid Benefit egy licencelési kedvezmény, amely segítségével jelentősen csökkentheti a Red Hat Enterprise Linux (RHEL) és a SUSE Linux Enterprise Server (SLES) virtuális gépek felhőben történő futtatásának költségeit. Ezzel a kedvezménysel csak a virtuális gép infrastrukturális költségeit számítjuk fel, mivel a RHEL vagy a SLES előfizetése tartalmazza a szoftver díját. Az előnyök az összes RHEL és SLES piactéren elvégzett (TB) lemezképre érvényesek.
 
-A Azure Hybrid Benefit egy licencelési kedvezmény, amely segítségével jelentősen csökkentheti a Red Hat Enterprise Linux (RHEL) és a SUSE Linux Enterprise Server (SLES) virtuális gépek felhőben történő futtatásának költségeit. Ezzel a kedvezménysel csak a virtuális gép infrastrukturális költségeiért kell fizetnie, mert a RHEL vagy a SLES előfizetése fedezi a szoftver díját. Az előnyök az összes RHEL és SLES piactéren elvégzett (TB) lemezképre érvényesek.
-
-> [!IMPORTANT]
-> A Linux rendszerű virtuális gépek Azure Hybrid Benefit most már nyilvánosak
-
+A Linux rendszerű virtuális gépek Azure Hybrid Benefit már nyilvánosan elérhető.
 
 ## <a name="benefit-description"></a>Juttatás leírása
 
-A Azure Hybrid Benefit segítségével könnyebben áttelepítheti a helyszíni RHEL és a SLES-kiszolgálókat az Azure-ba, ha átalakítja a meglévő RHEL-és SLES-TB-alapú virtuális gépeket az Azure-ban, hogy saját előfizetést (BYOS) számlázjon. Az Azure-beli TB-rendszerképekből üzembe helyezett virtuális gépek általában az infrastruktúra díját és a szoftver díját is felszámítják. A Azure Hybrid Benefit a TB virtuális gépek újratelepítése nélkül alakíthatók át BYOS számlázási modellre, így elkerülhető az állásidő kockázata.
+A Azure Hybrid Benefit segítségével áttelepítheti a helyszíni RHEL és a SLES-kiszolgálókat az Azure-ba, ha átalakítja a meglévő RHEL és SLES TB virtuális gépeket az Azure-ban a saját előfizetés (BYOS) számlázására. Az Azure-beli TB-rendszerképekből üzembe helyezett virtuális gépek jellemzően az infrastruktúra díját és a szoftver díját is megterhelik. A Azure Hybrid Benefit használatával a TB virtuális gépek újratelepítése nélkül alakíthatók át BYOS számlázási modellre, így elkerülhető az állásidő kockázata.
 
 :::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Azure Hybrid Benefit a Cost vizualizációt Linux rendszerű virtuális gépeken.":::
 
-Ha engedélyezi a kedvezményt egy RHEL vagy SLES virtuális gépen, akkor a továbbiakban nem számítunk fel díjat a TB virtuális gépen általában felmerülő további szoftverekért. Ehelyett a virtuális gép megkezdi a BYOS-díj kivezetését, amely csak a számítási hardver díját és a szoftver díját tartalmazza.
+Miután engedélyezte a kedvezményt egy RHEL vagy SLES virtuális gépen, a továbbiakban nem számítunk fel díjat a TB virtuális gépen általában felmerülő további szoftverekért. Ehelyett a virtuális gép egy BYOS díjat számít fel, amely csak a számítási hardver díját és a szoftveres díjat tartalmazza.
 
-Ha szeretne, olyan virtuális gépet is átalakíthat, amelynek az előnye engedélyezve lett a TB számlázási modellben.
+Azt is megteheti, hogy olyan virtuális gépet alakít át, amelynek az előnye engedélyezve volt a TB számlázási modellre.
 
 ## <a name="scope-of-azure-hybrid-benefit-eligibility-for-linux-vms"></a>A Linux rendszerű virtuális gépekre vonatkozó Azure Hybrid Benefit jogosultságok köre
 
-Azure Hybrid Benefit az összes RHEL és SLES Marketplace TB-lemezképhez elérhető. Az előny még nem érhető el a RHEL vagy a SLES Marketplace BYOS-lemezképekhez vagy egyéni lemezképekhez.
+Azure Hybrid Benefit elérhető az Azure Marketplace-ről származó összes RHEL és SLES TB-lemezképhez. Az előny még nem érhető el RHEL vagy SLES BYOS-lemezképekhez vagy egyéni rendszerképekhez az Azure Marketplace-en.
 
-A fenntartott példányok, a dedikált gazdagépek és az SQL Hybrid előnyök nem jogosultak a Azure Hybrid Benefit használatára, ha már használja a Linux rendszerű virtuális gépek előnyeit.
+A fenntartott példányok, az Azure dedikált gazdagép példányai és az SQL Hybrid előnyök nem jogosultak Azure Hybrid Benefitre, ha már használja a Linux rendszerű virtuális gépek előnyeit.
 
-## <a name="how-to-get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 ### <a name="red-hat-customers"></a>Red Hat-ügyfelek
 
-A RHEL számára elérhető Azure Hybrid Benefit olyan ügyfelek számára érhető el, akik aktív/nem használt RHEL-előfizetésekkel rendelkeznek, amelyek jogosultak az Azure-ban való használatra, és akik egy vagy több előfizetést engedélyeztek az Azure-ban a [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) program használatával. 
+A RHEL Azure Hybrid Benefit a következő feltételeknek megfelelő Red Hat-ügyfelek számára érhető el:
 
-1.  Engedélyezzen egy vagy több jogosult RHEL-előfizetést az Azure-ban a [Red Hat Cloud Access felhasználói felületének](https://access.redhat.com/management/cloud)használatával.
-1.  A Red Hat Cloud Access engedélyezési folyamat során megadott Azure-előfizetések a Azure Hybrid Benefit funkció használatát teszik lehetővé.
-1.  Alkalmazza a Azure Hybrid Benefitt a meglévő RHEL TB virtuális gépekre, valamint az Azure Marketplace TB-lemezképekről üzembe helyezett új RHEL virtuális gépekre is.
-1.  Kövesse az ajánlott [következő lépéseket](https://access.redhat.com/articles/5419341) a RHEL virtuális gépek frissítési forrásainak konfigurálásához és a RHEL-előfizetés megfelelőségi iránymutatásaihoz.
+- Az Azure-ban való használatra jogosult aktív vagy nem használt RHEL-előfizetések
+- Egy vagy több előfizetést engedélyeztek az Azure-ban a [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) program használatával
+
+A Red Hat előnyeinek használatának megkezdéséhez:
+
+1. A [Red Hat Cloud Access felhasználói felületének](https://access.redhat.com/management/cloud)használatával engedélyezzen egy vagy több jogosult RHEL-előfizetést az Azure-ban való használathoz.
+
+   A Red Hat Cloud Access engedélyezési folyamat során megadott Azure-előfizetések ezután használhatják a Azure Hybrid Benefit funkciót.
+1. Alkalmazza Azure Hybrid Benefit a meglévő RHEL TB virtuális gépekre, valamint az Azure Marketplace TB-lemezképekről üzembe helyezett új RHEL virtuális gépekre.
+1. Kövesse az ajánlott [következő lépéseket](https://access.redhat.com/articles/5419341) a RHEL virtuális gépek frissítési forrásainak konfigurálásához és a RHEL-előfizetés megfelelőségi iránymutatásaihoz.
 
 
 ### <a name="suse-customers"></a>SUSE-ügyfelek
 
-1.    Regisztrálás a SUSE nyilvános felhő programban
-1.    A meglévő virtuális gépek előnyének alkalmazása az Azure CLI-n keresztül
-1.    Az előnyt élvező virtuális gépek regisztrálása külön frissítési forrással
+A SUSE előnyeinek használatának megkezdéséhez:
+
+1. Regisztráljon a SUSE nyilvános felhő programjával.
+1. Alkalmazza az előnyt a meglévő virtuális gépekre az Azure CLI-n keresztül.
+1. Regisztrálja az előnyben részesített virtuális gépeket egy külön frissítési forrással.
 
 
-### <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Az előny engedélyezése és letiltása az Azure CLI-ben
+## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Az előny engedélyezése és letiltása az Azure CLI-ben
 
-A meglévő virtuális gépek frissítéséhez használhatja az "az VM Update" parancsot. RHEL virtuális gépek esetén futtassa a parancsot a (z) "RHEL_BYOS" licenc-Type paraméterrel. SLES virtuális gépek esetén futtassa a parancsot a (z) "SLES_BYOS" licenc-Type paraméterrel.
+A `az vm update` parancs használatával frissítheti a meglévő virtuális gépeket. RHEL virtuális gépek esetén futtassa a parancsot a `--license-type` paraméterrel `RHEL_BYOS` . SLES virtuális gépek esetén futtassa a parancsot a `--license-type` paraméterrel `SLES_BYOS` .
 
-#### <a name="cli-example-to-enable-the-benefit"></a>CLI-példa az előny engedélyezéséhez:
+### <a name="cli-example-to-enable-the-benefit"></a>PARANCSSORI felület – példa az előny engedélyezésére
 ```azurecli
 # This will enable the benefit on a RHEL VM
 az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS
@@ -74,24 +78,26 @@ az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS
 # This will enable the benefit on a SLES VM
 az vm update -g myResourceGroup -n myVmName --license-type SLES_BYOS
 ```
-#### <a name="cli-example-to-disable-the-benefit"></a>PARANCSSORI felület – példa az előny letiltására:
-Az előny letiltásához használja a "None" licenc típusú értéket
+### <a name="cli-example-to-disable-the-benefit"></a>PARANCSSORI felület – példa az előny letiltására
+Az előny letiltásához használja a következő `--license-type` értéket `None` :
+
 ```azurecli
 # This will disable the benefit on a VM
 az vm update -g myResourceGroup -n myVmName --license-type None
 ```
 
-#### <a name="cli-example-to-enable-the-benefit-on-a-large-number-of-vms"></a>CLI-példa a nagy mennyiségű virtuális gépen elérhető előnyök engedélyezésére
-Ha nagyszámú virtuális gépen szeretné engedélyezni az előnyt, használhatja a `--ids` paramétert az Azure CLI-ben.
+### <a name="cli-example-to-enable-the-benefit-on-a-large-number-of-vms"></a>CLI-példa a nagy mennyiségű virtuális gépen elérhető előnyök engedélyezésére
+Ha nagyszámú virtuális gépen szeretné engedélyezni az előnyt, használhatja a `--ids` paramétert az Azure CLI-ben:
 
 ```azurecli
 # This will enable the benefit on a RHEL VM. In this example, ids.txt is an
-# existing text file containing a delimited list of resource IDs corresponding
+# existing text file that contains a delimited list of resource IDs corresponding
 # to the VMs using the benefit
 az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS --ids $(cat ids.txt)
 ```
 
-Az alábbi példák két módszert mutatnak be az erőforrás-azonosítók listájának lekéréséhez – egyet az erőforráscsoport szintjén, egyet az előfizetés szintjén.
+Az alábbi példák két módszert mutatnak be az erőforrás-azonosítók listájának lekéréséhez: egyet az erőforráscsoport szintjén, és egyet az előfizetés szintjén.
+
 ```azurecli
 # To get a list of all the resource IDs in a resource group:
 $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
@@ -100,13 +106,18 @@ $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
 az vm list -o json | jq '.[] | {VMName: .name, ResourceID: .id}'
 ```
 
-## <a name="check-ahb-status-of-a-vm"></a>Virtuális gép AHB-állapotának megkeresése
-A virtuális gépek AHB állapotát kétféleképpen tekintheti meg: az Azure CLI használatával vagy az Azure Instance Metadata Service (Azure IMDS) használatával.
+## <a name="apply-the-azure-hybrid-benefit-at-vm-create-time"></a>A Azure Hybrid Benefit alkalmazása a virtuális gép létrehozási idején
+A Azure Hybrid Benefit meglévő utólagos elszámolású virtuális gépekre való alkalmazása mellett a virtuális gép létrehozásakor is meghívhatja azt. Az előnyök a következők:
+- A TB és a BYOS virtuális gépeket ugyanazzal a képpel és folyamattal is kiépítheti.
+- Lehetővé teszi a jövőbeli licencelési mód módosításait, ami nem érhető el egy BYOS képpel, vagy ha saját virtuális gépet hoz.
+- A virtuális gép alapértelmezés szerint a Red Hat frissítési infrastruktúrához (RHUI) lesz csatlakoztatva, így biztosítva, hogy naprakész és biztonságos maradjon. Az üzembe helyezést követően bármikor módosíthatja a frissített mechanizmust.
 
+## <a name="check-the-azure-hybrid-benefit-status-of-a-vm"></a>Virtuális gép Azure Hybrid Benefit állapotának keresése
+Egy virtuális gép Azure Hybrid Benefit állapotát az Azure CLI-vel vagy az Azure Instance Metadata Service használatával tekintheti meg.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-`az vm get-instance-view`Ezt a parancsot használhatja erre a célra. Keresse meg a válaszban a licenseType mezőt. Ha a licenseType mező létezik, és az értéke "RHEL_BYOS" vagy "SLES_BYOS", akkor a virtuális gépnek engedélyezve van az előnye.
+Erre a célra a `az vm get-instance-view` parancsot használhatja. Keressen egy `licenseType` mezőt a válaszban. Ha a `licenseType` mező létezik, és az értéke `RHEL_BYOS` vagy `SLES_BYOS` , a virtuális gépnek engedélyezve van az előnye.
 
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVm
@@ -114,78 +125,74 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata szolgáltatás
 
-A virtuális GÉPEN belül lekérdezheti a IMDS által tanúsított metaadatokat a virtuális gép licenseType meghatározásához. A "RHEL_BYOS" vagy a "SLES_BYOS" licenseType érték azt jelzi, hogy a virtuális gépnek engedélyezve van az előnye. További információ az [igazolt metaadatokról](./instance-metadata-service.md#attested-data)
+A virtuális GÉPEN belül lekérdezheti az igazolt metaadatokat az Azure Instance Metadata Serviceban a virtuális gép `licenseType` értékének meghatározásához. A `licenseType` vagy a `RHEL_BYOS` érték `SLES_BYOS` azt jelzi, hogy a virtuális gépnek engedélyezve van az előnye. [További információ az igazolt metaadatokról](./instance-metadata-service.md#attested-data).
 
 ## <a name="compliance"></a>Megfelelőség
 
 ### <a name="red-hat"></a>Red Hat
 
-A RHEL Azure Hybrid Benefit használó ügyfelek elfogadják az Azure Marketplace RHEL-ajánlatokkal kapcsolatos általános [jogi feltételeket](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Cloud_Software_Subscription_Agreement_for_Microsoft_Azure.pdf) és [adatvédelmi nyilatkozatot](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Privacy_Statement_for_Microsoft_Azure.pdf) .
+A RHEL Azure Hybrid Benefitt használó ügyfelek elfogadják az Azure Marketplace RHEL-ajánlatokkal kapcsolatos általános [jogi feltételeket](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Cloud_Software_Subscription_Agreement_for_Microsoft_Azure.pdf) és [adatvédelmi nyilatkozatot](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Privacy_Statement_for_Microsoft_Azure.pdf) .
 
-A RHEL Azure Hybrid Benefit használó ügyfeleknek három lehetősége van a szoftverfrissítések és-javítások biztosítására a virtuális gépeken:
+Azok a felhasználók, akik a RHEL Azure Hybrid Benefit használják, három lehetősége van a szoftverfrissítések és a javítások biztosítására a virtuális gépeken:
 
-1.  [Red Hat frissítési infrastruktúra (RHUI)](../workloads/redhat/redhat-rhui.md) (alapértelmezett beállítás)
-1.  Red Hat Satellite Server
-1.  Red Hat előfizetés-kezelő
+- [Red Hat frissítési infrastruktúra](../workloads/redhat/redhat-rhui.md) (alapértelmezett beállítás)
+- Red Hat Satellite Server
+- Red Hat előfizetés-kezelő
 
-A RHUI beállítást használó ügyfelek továbbra is használhatják a RHUI a AHB RHEL fő frissítési forrásaként anélkül, hogy RHEL előfizetéseket csatolnak a virtuális gépekhez.  A RHUI lehetőséget választó ügyfelek felelősek a RHEL-előfizetés megfelelőségének biztosításáért.
+Azok az ügyfelek, akik a RHUI lehetőséget választják, továbbra is használhatják a RHUI fő frissítési forrásaként a Azure Hybrid Benefit RHEL virtuális gépekhez anélkül, hogy RHEL előfizetéseket csatlakoztatni a virtuális gépekhez. Azok az ügyfelek, akik a RHUI lehetőséget választják, a RHEL-előfizetés megfelelőségének biztosításáért felelősek.
 
-A Red Hat Satellite Servert vagy a Red Hat előfizetés-kezelőt választó ügyfeleknek el kell távolítaniuk a RHUI-konfigurációt, majd csatlakoztatnia kell a felhőalapú hozzáférés-kompatibilis RHEL-előfizetést a AHB RHEL virtuális géphez.  
+A Red Hat Satellite Servert vagy a Red Hat előfizetés-kezelőt használó ügyfeleknek el kell távolítaniuk a RHUI-konfigurációt, majd csatlakoztatnia kell a felhőalapú hozzáférés-kompatibilis RHEL-előfizetést a Azure Hybrid Benefit RHEL virtuális gépekhez  
 
-A Red Hat-előfizetések megfelelőségével, a szoftverfrissítések és a AHB RHEL virtuális gépek forrásaival kapcsolatos további információkért tekintse meg a következőt [:.](https://access.redhat.com/articles/5419341)
+A Red Hat-előfizetések megfelelőségével, a szoftverfrissítések és a Azure Hybrid Benefit RHEL virtuális gépek forrásaival kapcsolatos további információkért tekintse meg a [Red Hat című cikket, amely az RHEL-előfizetések használatáról Azure Hybrid Benefit](https://access.redhat.com/articles/5419341).
 
 ### <a name="suse"></a>SUSE
 
-A SLES virtuális gépekhez való Azure Hybrid Benefit használatához először regisztrálnia kell a SUSE nyilvános felhő programban. További információk a programról. Miután megvásárolta a SUSE-előfizetéseket, regisztrálnia kell a virtuális gépeket az előfizetések saját frissítési forrásaira a SUSE Customer Center, az előfizetés-kezelő eszköz kiszolgálója vagy a SUSE Manager használatával.
+Ha a SLES virtuális gépekhez Azure Hybrid Benefit szeretne használni, először regisztrálnia kell a [SUSE nyilvános felhő programban](https://www.suse.com/media/guide/suse_public_cloud_service_provider_program_overview.pdf). Miután megvásárolta a SUSE-előfizetéseket, regisztrálnia kell az előfizetéseket használó virtuális gépeket a saját frissítési forrásaiba. Ehhez a regisztrációhoz használja a SUSE Customer centert, az előfizetés-kezelési eszköz kiszolgálóját vagy a SUSE Managert.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-*K: használhatok SLES-lemezképpel rendelkező "RHEL_BYOS" licencet, vagy fordítva?*
+*K: használhatok `RHEL_BYOS` SLES-lemezképpel rendelkező licencet, vagy fordítva?*
 
-A: nem. A virtuális gépen futó disztribúcióval nem egyező típusú licenc beírására tett kísérlet nem frissíti a számlázási metaadatokat. Ha azonban véletlenül helytelenül írja be a licenc típusát, a virtuális gép újbóli frissítése a megfelelő licenc-típusra továbbra is engedélyezi a kedvezményt.
+A: nem. Olyan licencelési típust próbál meg megadni, amely nem felel meg a virtuális gépen futó terjesztésnek, nem frissíti a számlázási metaadatokat. Ha azonban véletlenül helytelenül írja be a licenc típusát, a virtuális gép újbóli frissítése a megfelelő licenc-típusra továbbra is engedélyezi a kedvezményt.
 
-*K: a Red Hat Cloud Access szolgáltatásban regisztráltam, de továbbra sem tudom engedélyezni a RHEL virtuális gépeken nyújtott előnyöket. Mi a teendő?*
+*K: a Red Hat Cloud Access szolgáltatásban regisztráltam, de továbbra sem engedélyezhető a RHEL virtuális gépeken való előny. Mit tegyek?*
 
-Válasz: eltarthat egy ideig, amíg a Red Hat Cloud Access-előfizetés regisztrálása a Red Hat-ról az Azure-ra terjed. Ha továbbra is látni szeretné a hibát egy munkanap után, forduljon a Microsoft támogatási szolgálatához.
+Válasz: eltarthat egy ideig, amíg a Red Hat Cloud Access-előfizetés regisztrálása a Red Hat-ról az Azure-ra terjed. Ha egy munkanap után is megjelenik a hiba, forduljon a Microsoft támogatási szolgálatához.
 
-*K: üzembe helyeztem egy virtuális gépet egy "arany lemezkép" RHEL-BYOS használatával. Átválthatom a BYOS-ből a TB-re való számlázást?*
-
-A: nem. A Azure Hybrid Benefit csak utólagos elszámolású lemezképeken támogatja az átalakítást.
-
-*K: üzembe helyeztem egy virtuális gépet egy "arany lemezkép" RHEL-BYOS használatával. Átválthatom a BYOS-ből a TB-re való számlázást?*
+*K: üzembe helyezett egy virtuális gépet egy RHEL-BYOS "Golden-lemezkép" használatával. Átválthatom a BYOS-ből a TB-re való számlázást?*
 
 A: nem. A Azure Hybrid Benefit csak utólagos elszámolású lemezképeken támogatja az átalakítást.
 
-*K: Feltöltöttem a saját RHEL-rendszerképét a helyi gépen (Azure Migrate, ASR vagy más módon) az Azure-ba. Átválthatom a BYOS-ből a TB-re való számlázást?*
+*K: Feltöltöttem a saját RHEL-rendszerképét a helyszínen (Azure Migrate, Azure Site Recovery vagy más módon) az Azure-ba. Átválthatom a BYOS-ből a TB-re való számlázást?*
 
-A: nem. A Azure Hybrid Benefit képesség jelenleg csak a RHEL és a SLES Marketplace-lemezképek esetében érhető el. 
+A: nem. A Azure Hybrid Benefit képesség jelenleg csak az Azure Marketplace-en RHEL és SLES lemezképek esetében érhető el. 
 
-*K: Feltöltöttem a saját RHEL-rendszerképét a helyi gépen (Azure Migrate, ASR vagy más módon) az Azure-ba. Kell-e bármit kihasználnia a Azure Hybrid Benefit?*
+*K: Feltöltöttem a saját RHEL-rendszerképét a helyszínen (Azure Migrate, Azure Site Recovery vagy más módon) az Azure-ba. Kell-e bármit kihasználnia a Azure Hybrid Benefit?*
 
-A: nem. A feltöltött RHEL-lemezképek már BYOS minősülnek, és csak az Azure infrastrukturális költségeiért kell fizetni. Ön felelős az előfizetések költségeinek RHEL, ugyanúgy, mint a helyszíni környezetekben. 
+A: nem. A feltöltött RHEL-lemezképek már BYOS minősülnek, és csak az Azure infrastrukturális költségeiért kell fizetni. Ön felelős az előfizetési költségek RHEL, ugyanúgy, mint a helyszíni környezetekhez. 
 
-*K: használhatok Azure Hybrid Benefit a piactér RHEL és a SLES SAP-lemezképeken üzembe helyezett virtuális gépeken?*
+*K: használhatok Azure Hybrid Benefit az Azure Marketplace RHEL és a SLES SAP-lemezképeken üzembe helyezett virtuális gépeken?*
 
-Válasz: igen. A (z) "RHEL_BYOS" RHEL virtuális gépekhez és "SLES_BYOS" licencelési típust használhat a piactér RHEL és a SLES SAP-lemezképből üzembe helyezett virtuális gépek átalakításához.
+Válasz: igen. A `RHEL_BYOS` RHEL virtuális gépekhez és az `SLES_BYOS` Azure Marketplace RHEL és SLES SAP-lemezképekben üzembe helyezett virtuális gépek átalakításához használhatja a licenc típusát.
 
-*K: használhatom a Azure Hybrid Benefitt a virtuálisgép-méretezési csoporton (VMSS) a RHEL és a SLES?*
+*K: használhatom a Azure Hybrid Benefitt a virtuálisgép-méretezési csoportokban a RHEL és a SLES?*
 
-A: nem. A VMSS a RHEL és a SLES jelenleg nem tartoznak Azure Hybrid Benefitek hatálya alá.
+A: nem. A virtuálisgép-méretezési csoportok jelenleg nem a RHEL és a SLES Azure Hybrid Benefit hatókörében vannak.
 
-*K: használhatom Azure Hybrid Benefit a RHEL és a SLES fenntartott példányokon (RIs)?*
+*K: használhatom Azure Hybrid Benefit a RHEL és a SLES fenntartott példányain?*
 
-A: nem. A RIs a RHEL és a SLES jelenleg nem tartozik Azure Hybrid Benefit ma.
+A: nem. A fenntartott példányok jelenleg nem a RHEL és a SLES Azure Hybrid Benefit hatókörében vannak.
 
 *K: használhatom a Azure Hybrid Benefitt a RHEL-lemezképeken SQL Server üzembe helyezett virtuális gépen?*
 
 A: nem. Ezek támogatásához nincs terv.
  
 
-## <a name="common-issues"></a>Gyakori problémák
-Ez a szakasz az észlelt gyakori problémák listáját és a mérséklési lépéseket tartalmazza.
+## <a name="common-problems"></a>Gyakori problémák
+Ez a szakasz az esetlegesen felmerülő gyakori problémákat és a mérséklési lépéseket sorolja fel.
 
 | Hiba | Kockázatcsökkentés |
 | ----- | ---------- |
-| "A műveletet nem lehetett befejezni, mert a rekordok azt mutatják, hogy az Azure-előfizetésében nem sikerült engedélyezni a Red Hat Cloud Access használatát..." | Ahhoz, hogy a juttatást a RHEL virtuális gépekkel használhassa, először regisztrálnia kell az Azure-előfizetését a Red Hat Cloud Access használatával. Tekintse meg ezt a hivatkozást, ha többet szeretne megtudni arról, hogyan regisztrálhat Azure-előfizetéseket a Red Hat Cloud Accesshez
+| "A műveletet nem lehetett befejezni, mert a rekordok azt mutatják, hogy az Azure-előfizetésében nem sikerült engedélyezni a Red Hat Cloud Access használatát..." | A RHEL virtuális gépekkel való ellátás használatához először [regisztrálnia kell az Azure-előfizetéseket a Red Hat Cloud Access](https://access.redhat.com/management/cloud)használatával.
 
-## <a name="next-steps"></a>Következő lépések
-* Ismerje meg, hogyan hozhat létre és frissíthet virtuális gépeket, és hogyan adhat hozzá licenceket (RHEL_BYOS, SLES_BYOS) Azure Hybrid Benefit az [Azure CLI használatával.](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)
+## <a name="next-steps"></a>További lépések
+* [Megtudhatja, hogyan hozhat létre és frissíthet virtuális gépeket, és hogyan adhat hozzá licenceket (RHEL_BYOS, SLES_BYOS) az Azure CLI-vel való Azure Hybrid Benefithoz](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)

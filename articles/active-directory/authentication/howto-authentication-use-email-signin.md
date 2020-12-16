@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743173"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559840"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Bejelentkezés Azure Active Directory az e-mail-cím használata másodlagos bejelentkezési AZONOSÍTÓként (előzetes verzió)
 
@@ -36,6 +36,9 @@ Ez a cikk bemutatja, hogyan engedélyezheti és használhatja az e-maileket alte
 
 > [!NOTE]
 > Ez a funkció csak a felhőben hitelesített Azure AD-felhasználók számára érhető el.
+
+> [!NOTE]
+> Ez a funkció jelenleg nem támogatott az Azure AD-hez csatlakoztatott Windows 10-es eszközökön a felhőalapú hitelesítéssel rendelkező bérlők esetében. Ez a funkció nem alkalmazható a hibrid Azure AD-hez csatlakoztatott eszközökre.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Az Azure AD bejelentkezési módszereinek áttekintése
 

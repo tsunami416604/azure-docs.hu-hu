@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 8dc8446ecbc203622ce7c2163136c1c26aac1cc7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032728"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559539"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -89,17 +89,23 @@ Ezek a lépések hozzáadják a munkaterület által felügyelt identitást __ol
 
 ### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>Felügyelt identitás hitelesítésének engedélyezése az alapértelmezett Storage-fiókoknál
 
-Minden Azure Machine Learning munkaterület két alapértelmezett Storage-fiókkal rendelkezik, amelyek a munkaterület létrehozásakor vannak meghatározva. A Studio az alapértelmezett Storage-fiókokat használja a kísérlet és a modell összetevőinek tárolására, amelyek kritikus fontosságúak a Studióban található egyes szolgáltatásokhoz.
+Minden Azure Machine Learning munkaterület két alapértelmezett Storage-fiókkal, egy alapértelmezett blob Storage-fiókkal és egy alapértelmezett file Store-fiókkal rendelkezik, amely a munkaterület létrehozásakor van meghatározva. Új alapértelmezett értékeket is beállíthat az **adattár** kezelése lapon.
+
+![Az alapértelmezett adattárolók helyét bemutató képernyőkép](./media/how-to-enable-studio-virtual-network/default-datastores.png)
 
 A következő táblázat azt ismerteti, hogy miért kell engedélyeznie a felügyelt identitások hitelesítését a munkaterület alapértelmezett tárolási fiókjaihoz.
 
-|Tárfiók  | Megjegyzések  |
+|Tárfiók  | Jegyzetek  |
 |---------|---------|
 |Munkaterület alapértelmezett blob Storage| Modell típusú eszközöket tárol a tervezőtől. A tervezőben a modellek üzembe helyezéséhez engedélyeznie kell a felügyelt identitás hitelesítését ezen a Storage-fiókon. <br> <br> Ha olyan nem alapértelmezett adattárat használ, amely felügyelt identitás használatára lett konfigurálva, megjelenítheti és futtathatja a tervezői folyamatokat. Ha azonban olyan betanított modellt próbál telepíteni, amely nem engedélyezte a felügyelt identitást az alapértelmezett adattáron, akkor a telepítés a használatban lévő többi adattártól függetlenül meghiúsul.|
 |Munkaterület alapértelmezett fájljának tárolója| A AutoML-kísérleti eszközöket tárolja. A AutoML kísérletek elküldéséhez engedélyeznie kell a felügyelt identitások hitelesítését ezen a Storage-fiókon. |
 
-
-![Az alapértelmezett adattárolók helyét bemutató képernyőkép](./media/how-to-enable-studio-virtual-network/default-datastores.png)
+> [!WARNING]
+> Létezik egy ismert probléma, amelyben az alapértelmezett tár nem hozza létre automatikusan a `azureml-filestore` mappát, amely a AutoML-kísérletek beküldéséhez szükséges. Ez akkor fordul elő, amikor a felhasználók egy meglévő Filestore hoznak létre alapértelmezett Filestore a munkaterület létrehozása során.
+> 
+> A probléma elkerüléséhez két lehetőség közül választhat: 1) használja az alapértelmezett Filestore, amelyet a rendszer automatikusan hoz létre a munkaterület létrehozásához. 2) Ha saját Filestore szeretne létrehozni, győződjön meg róla, hogy a Filestore kívül esik a VNet a munkaterület létrehozása során. A munkaterület létrehozása után adja hozzá a Storage-fiókot a virtuális hálózathoz.
+>
+> A probléma megoldásához távolítsa el a Filestore fiókot a virtuális hálózatról, majd adja hozzá újra a virtuális hálózathoz.
 
 
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Munkaterület felügyelt identitás- __olvasó__ hozzáférésének engedélyezése a Storage privát hivatkozásához
@@ -154,7 +160,7 @@ Győződjön meg arról, hogy rendelkezik hozzáféréssel a virtuális hálóza
 
 A kimeneti adatok megjelenítéséhez engedélyeznie kell a [felügyelt identitások hitelesítését](#configure-datastores-to-use-workspace-managed-identity) is a köztes Storage-fiókok számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat választható részét képezi. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

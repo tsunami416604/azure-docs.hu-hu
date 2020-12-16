@@ -3,12 +3,12 @@ title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch-megoldások fejlesztéséhez.
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1eaa34e02a4c505691662e9fc29334cb823a3185
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f19fceca0212bd0a05d7caa311403b173c19de5
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511212"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563177"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -143,7 +143,7 @@ Csakúgy, mint más feladatokhoz, a csomópont [indítási tevékenységének](j
 
 ### <a name="isolated-nodes"></a>Elkülönített csomópontok
 
-Használjon elkülönített virtuálisgép-méretet a megfelelőségi vagy szabályozási követelményekkel rendelkező munkaterhelésekhez. A virtuális gép konfigurációs módjában támogatott elkülönített méretek a következők:,,, `Standard_E64i_v3` `Standard_E80ids_v4` `Standard_F72s_v2` `Standard_G5` `Standard_GS5` és `Standard_M128ms` . Az elkülönített virtuálisgép-méretekről további információt a [virtuális gépek elkülönítése az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/isolation)című témakörben talál.
+Használjon elkülönített virtuálisgép-méreteket a megfelelőségi és szabályozási követelményekkel rendelkező munkaterhelésekhez. A virtuális gép konfigurációs módjában támogatott elkülönített méretek a következők:,,, `Standard_E80ids_v4` `Standard_M128ms` `Standard_F72s_v2` `Standard_G5` `Standard_GS5` és `Standard_E64i_v3` . Az elkülönített virtuálisgép-méretekről további információt a [virtuális gépek elkülönítése az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/isolation)című témakörben talál.
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>A hosszan futó szolgáltatások kezelése az operációs rendszer szolgáltatásainak felületén keresztül
 

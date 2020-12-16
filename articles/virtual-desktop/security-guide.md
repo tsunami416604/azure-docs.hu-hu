@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511535"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562616"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -101,7 +101,7 @@ A munkamenet-gazdagépek olyan virtuális gépek, amelyek az Azure-előfizetésb
 
 ### <a name="enable-screen-capture-protection-preview"></a>Képernyőfelvétel-védelem engedélyezése (előzetes verzió)
 
-A képernyőfelvételek védelme funkció megakadályozza a bizalmas adatok rögzítését az ügyfél-végpontokon. Ha engedélyezi ezt a funkciót, a rendszer automatikusan letiltja vagy elrejti a távoli tartalmat a képernyőképek és a képernyők megosztásában. A rendszer olyan kártékony szoftverekből is el fogja rejteni, amelyek folyamatosan rögzítik a képernyő tartalmát.
+A képernyőfelvételek védelme funkció megakadályozza a bizalmas adatok rögzítését az ügyfél-végpontokon. Ha engedélyezi ezt a funkciót, a rendszer automatikusan letiltja vagy elrejti a távoli tartalmat a képernyőképek és a képernyők megosztásában. A rendszer olyan kártékony szoftverekből is el fogja rejteni, amelyek folyamatosan rögzítik a képernyő tartalmát. Javasoljuk, hogy tiltsa le a vágólap-átirányítást, hogy megakadályozza a távoli tartalomnak a végpontokra való másolását a funkció használata közben.
 
 Ezt a házirendet a gazdagép szintjén kell kikényszeríteni egy beállításkulcs konfigurálásával. A szabályzat engedélyezéséhez nyissa meg a PowerShellt, és állítsa be a **fEnableScreenCaptureProtection** beállításkulcsot a következő parancsmag futtatásával:
 

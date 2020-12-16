@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan konfigurálhatja az IP-hozzáférés-vezérlés
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 12/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ec4ec5b3ea522200562d05d1891f46e69c9e5ca8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b4e01375388f12b828d9adcb1e2ed8851061a0bf
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092160"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560729"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>IP-tűzfal konfigurálása Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -21,7 +21,7 @@ A fiókban tárolt adatokat a Azure Cosmos DB támogatja egy olyan titkos alapú
 
 ## <a name="ip-access-control"></a><a id="ip-access-control-overview"></a>IP-hozzáférés-vezérlés
 
-Alapértelmezés szerint az Azure Cosmos-fiók elérhető az internetről, feltéve, hogy a kérést érvényes engedélyezési jogkivonat kíséri. Az IP-házirend alapú hozzáférés-vezérlés konfigurálásához a felhasználónak meg kell adnia az IP-címek vagy az IP-címtartományok készletét a CIDR (osztály nélküli Inter-Domain útválasztás) képernyőn, hogy az ügyfél IP-címeinek engedélyezett listája szerepeljen egy adott Azure Cosmos-fiók eléréséhez. A konfiguráció alkalmazása után az ezen engedélyezett listán kívüli gépekről származó kérelmek 403 (tiltott) választ kapnak. Ha IP-tűzfalat használ, javasoljuk, hogy engedélyezze a Azure Portal számára a fiók elérését. Hozzáférés szükséges az adatkezelő használatának engedélyezéséhez, valamint a Azure Portalban megjelenített fiók metrikáinak lekéréséhez. Az adatkezelő használatakor a Azure Portal hozzáférésének engedélyezése mellett a tűzfal beállításait is frissítenie kell, hogy az aktuális IP-címet hozzáadja a tűzfalszabályok számára. Vegye figyelembe, hogy a tűzfal módosításai akár 15min is eltarthat.
+Alapértelmezés szerint az Azure Cosmos-fiók elérhető az internetről, feltéve, hogy a kérést érvényes engedélyezési jogkivonat kíséri. Az IP-házirend alapú hozzáférés-vezérlés konfigurálásához a felhasználónak meg kell adnia az IP-címek vagy az IP-címtartományok készletét a CIDR (osztály nélküli Inter-Domain útválasztás) képernyőn, hogy az ügyfél IP-címeinek engedélyezett listája szerepeljen egy adott Azure Cosmos-fiók eléréséhez. A konfiguráció alkalmazása után az ezen engedélyezett listán kívüli gépekről származó kérelmek 403 (tiltott) választ kapnak. Ha IP-tűzfalat használ, javasoljuk, hogy engedélyezze a Azure Portal számára a fiók elérését. Hozzáférés szükséges az adatkezelő használatának engedélyezéséhez, valamint a Azure Portalban megjelenített fiók metrikáinak lekéréséhez. Az adatkezelő használatakor a Azure Portal hozzáférésének engedélyezése mellett a tűzfal beállításait is frissítenie kell, hogy az aktuális IP-címet hozzáadja a tűzfalszabályok számára. Vegye figyelembe, hogy a tűzfal módosításai akár 15 percet is igénybe vehetnek, és a tűzfal inkonzisztens viselkedést mutat ebben az időszakban.
 
 Az IP-alapú tűzfalat az alhálózat és a VNET hozzáférés-vezérlés használatával kombinálhatja. Ezek kombinálásával korlátozhatja a hozzáférést bármely olyan forráshoz, amely nyilvános IP-címmel és/vagy a VNET-n belül egy adott alhálózattal rendelkezik. Az alhálózati és a VNET hozzáférés-vezérlés használatáról további információt a [virtuális hálózatok Azure Cosmos db erőforrásainak elérését](./how-to-configure-vnet-service-endpoint.md)ismertető témakörben talál.
 
@@ -48,7 +48,7 @@ Ha az IP-hozzáférés-vezérlés be van kapcsolva, az Azure Portal lehetővé t
 
 Ha programozott módon engedélyezi az IP-hozzáférés-vezérlési házirendet, a hozzáférés fenntartásához hozzá kell adnia a Azure Portal IP-címét a **ipRangeFilter** tulajdonsághoz. A portál IP-címei a következők:
 
-|Region|IP-cím|
+|Régió|IP-cím|
 |------|----------|
 |Németország|51.4.229.218|
 |Kína|139.217.8.252|
@@ -57,13 +57,13 @@ Ha programozott módon engedélyezi az IP-hozzáférés-vezérlési házirendet,
 
 Az alábbi képernyőképen látható módon engedélyezheti a kérelmeket a Azure Portal eléréséhez: **hozzáférés engedélyezése Azure Portal** lehetőség kiválasztásával.
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Képernyőfelvétel: a tűzfal oldalának megnyitása a Azure Portal":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="A Azure Portal-hozzáférés engedélyezését bemutató képernyőkép":::
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>Globális Azure-adatközpontokból vagy egyéb Azure-beli forrásokból érkező kérések engedélyezése
 
 Ha a Azure Cosmos DB fiókját olyan szolgáltatásokból éri el, amelyek nem biztosítanak statikus IP-címet (például Azure Stream Analytics és Azure Functions), akkor továbbra is használhatja az IP-tűzfalat a hozzáférés korlátozására. Az Azure-ban lévő más forrásokból is engedélyezheti a hozzáférést az **Azure-adatközpontok lehetőségből származó kapcsolatok fogadása** lehetőség kiválasztásával, az alábbi képernyőképen látható módon:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Képernyőfelvétel: a tűzfal oldalának megnyitása a Azure Portal":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Az Azure-adatközpontok kapcsolatainak fogadását bemutató képernyőkép":::
 
 Ha engedélyezi ezt a beállítást, a rendszer hozzáadja az IP-címet `0.0.0.0` az engedélyezett IP-címek listájához. Az `0.0.0.0` IP-cím korlátozza a kérelmeket az Azure Datacenter IP-címtartomány Azure Cosmos db-fiókjára. A beállítás semmilyen más IP-tartomány számára nem engedélyezi a hozzáférést az Azure Cosmos DB-fiókhoz.
 
@@ -78,7 +78,7 @@ A portál automatikusan észleli az ügyfél IP-címét. Lehet, hogy a gép ügy
 
 Ha a jelenlegi IP-címet az IP-címek listájához szeretné felvenni, válassza a **jelenlegi IP-cím hozzáadása** lehetőséget. Kattintson a **Mentés** gombra.
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Képernyőfelvétel: a tűzfal oldalának megnyitása a Azure Portal":::
+:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Képernyőfelvétel: a tűzfalbeállítások konfigurálása az aktuális IP-címhez":::
 
 ### <a name="requests-from-cloud-services"></a>A Cloud servicestől érkező kérések
 
@@ -86,7 +86,7 @@ Az Azure-ban a Cloud Services gyakori módszer a közepes szintű szolgáltatás
 
 A felhőalapú szolgáltatások IP-címeit a Azure Portal az alábbi képernyőképen látható módon kérheti le:
 
-:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Képernyőfelvétel: a tűzfal oldalának megnyitása a Azure Portal":::
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses.png" alt-text="Képernyőfelvétel: a Azure Portalban megjelenített felhőalapú szolgáltatás nyilvános IP-címének megjelenítése":::
 
 Ha szerepkör-példányok hozzáadásával bővíti a felhőalapú szolgáltatást, akkor ezek az új példányok automatikusan hozzáférhetnek a Azure Cosmos DB fiókhoz, mert ugyanahhoz a felhőalapú szolgáltatáshoz tartoznak.
 
@@ -96,7 +96,7 @@ A [virtuális gépeket](https://azure.microsoft.com/services/virtual-machines/) 
 
 A Azure Portal lévő virtuális gépek IP-címeit az alábbi képernyőképen látható módon kérheti le:
 
-:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="Képernyőfelvétel: a tűzfal oldalának megnyitása a Azure Portal":::
+:::image type="content" source="./media/how-to-configure-firewall/public-ip-addresses-dns.png" alt-text="A Azure Portalban megjelenített virtuális gép nyilvános IP-címét bemutató képernyőfelvétel":::
 
 Amikor virtuálisgép-példányokat vesz fel a csoportba, a automatikusan hozzáférést kap a Azure Cosmos DB fiókjához.
 
@@ -226,13 +226,13 @@ Engedélyezze a diagnosztikai naplózást a Azure Cosmos DB-fiókjában. Ezek a 
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Az alhálózaton lévő, Azure Cosmos DB engedélyezett szolgáltatás-végponttal rendelkező alhálózat kérései
 
-A virtuális hálózat azon alhálózatai által küldött kérelmek, amelyek szolgáltatás-végpontja Azure Cosmos DB engedélyezve, a virtuális hálózatot és az alhálózati identitást Azure Cosmos DB fiókoknak küldi el. Ezek a kérések nem rendelkeznek a forrás nyilvános IP-címével, ezért az IP-szűrők elutasítja őket. Ha engedélyezni szeretné a hozzáférést a virtuális hálózatokban lévő adott alhálózatokról, vegyen fel egy hozzáférés-vezérlési listát a [virtuális hálózat és az alhálózat-alapú hozzáférés konfigurálása a Azure Cosmos db-fiókhoz című témakörben](how-to-configure-vnet-service-endpoint.md)leírtak szerint. A tűzfalszabályok alkalmazása akár 15 percet is igénybe vehet.
+A virtuális hálózat azon alhálózatai által küldött kérelmek, amelyek szolgáltatás-végpontja Azure Cosmos DB engedélyezve, a virtuális hálózatot és az alhálózati identitást Azure Cosmos DB fiókoknak küldi el. Ezek a kérések nem rendelkeznek a forrás nyilvános IP-címével, ezért az IP-szűrők elutasítja őket. Ha engedélyezni szeretné a hozzáférést a virtuális hálózatokban lévő adott alhálózatokról, vegyen fel egy hozzáférés-vezérlési listát a [virtuális hálózat és az alhálózat-alapú hozzáférés konfigurálása a Azure Cosmos db-fiókhoz című témakörben](how-to-configure-vnet-service-endpoint.md)leírtak szerint. A tűzfalszabályok alkalmazása akár 15 percet is igénybe vehet, és a tűzfal nem konzisztens viselkedést mutat ezen időszak alatt.
 
 ### <a name="private-ip-addresses-in-list-of-allowed-addresses"></a>Magánhálózati IP-címek az engedélyezett címek listájában
 
 Egy Azure Cosmos-fiók létrehozása vagy frissítése a privát IP-címeket tartalmazó engedélyezett címek listájával sikertelen lesz. Győződjön meg arról, hogy nincs megadva magánhálózati IP-cím a listában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Cosmos DB-fiókhoz tartozó virtuális hálózati szolgáltatás végpontjának konfigurálásához tekintse meg a következő cikkeket:
 

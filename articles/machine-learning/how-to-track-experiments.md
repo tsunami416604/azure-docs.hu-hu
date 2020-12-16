@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c193249ee8cef38650a8a188a59c26a0eab17506
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 0b91869e59109550910712b9386056c23843cecd
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938396"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559591"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>A naplózás engedélyezése ML betanítási futtatásokban
 
@@ -51,12 +51,13 @@ Ez a példa paraméteres frissítést végez az alfa értékeken, és az eredmé
 
 1. Hozza létre a naplózási logikát tartalmazó `train.py` betanítási szkriptet.
 
-   [!code-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)]
+   [! Code-Python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py)
 
 
 1. Küldje be a ```train.py``` szkriptet a felhasználó által kezelt környezetekben való futtatáshoz. A rendszer a teljes szkriptmappát elküldi a betanításhoz.
 
-   [!notebook-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)] [!notebook-python[](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
+   [! Jegyzetfüzet – Python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src) 
+    [! Jegyzetfüzet – Python](~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)
 
     A `show_output` paraméter bekapcsolja a részletes naplózást, amely lehetővé teszi a betanítási folyamat részleteinek, valamint a távoli erőforrásokkal vagy számítási célokkal kapcsolatos információknak a megtekintését. A következő kóddal kapcsolja be a részletes naplózást a kísérlet beküldésekor.
 
@@ -91,7 +92,7 @@ A cikkben szereplő fogalmakat a következő jegyzetfüzetek mutatják be:
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
-[!INCLUDE[aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
+[! TÖBBek között a pénzmosás-Clone-in-Azure-notebook](/includes/aml-clone-for-examples.md)
 
 ## <a name="next-steps"></a>További lépések
 

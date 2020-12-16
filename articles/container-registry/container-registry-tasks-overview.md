@@ -3,12 +3,12 @@ title: Az ACR-feladatok áttekintése
 description: Az ACR-feladatok, a Azure Container Registry szolgáltatásainak egyik csomagja, amely biztonságos, automatizált tároló-rendszerképek készítését, kezelését és javítását teszi lehetővé a felhőben.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 14758e363e74450a10f1a2cbfc889f3e24782771
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027666"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562854"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
 
@@ -105,7 +105,7 @@ A következő táblázat példákat mutat be az ACR-feladatok támogatott körny
 | Környezet helye | Leírás | Példa |
 | ---------------- | ----------- | ------- |
 | Helyi fájlrendszer | A helyi fájlrendszer egyik könyvtárában található fájlok. | `/home/user/projects/myapp` |
-| GitHub-főkiszolgáló ág | Egy nyilvános vagy privát GitHub-tárház főkiszolgálójának (vagy más alapértelmezett) ágában lévő fájljai.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub fő ága | Egy nyilvános vagy privát GitHub-tárház fő (vagy más alapértelmezett) ágában található fájlok.  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub-ág | Nyilvános vagy privát GitHub-tárház adott ága.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub-almappa | Egy nyilvános vagy privát GitHub-tárház almappájába tartozó fájlok. Példa egy ág és almappa specifikációjának kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | GitHub-véglegesítés | Konkrét véglegesítés nyilvános vagy privát GitHub-tárházban. Példa a commit hash (SHA) és az almappák specifikációjának kombinációját mutatja be. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
@@ -131,7 +131,7 @@ Minden feladat futtatásakor a rendszer naplózza a napló kimenetét, amely ala
 
 További információ a [naplók megtekintéséről és kezeléséről](container-registry-tasks-logs.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha készen áll a tárolók rendszerképének és a Felhőbeli karbantartásának automatizálására, tekintse meg az [ACR feladatok oktatóanyag-sorozatát](container-registry-tutorial-quick-task.md).
 

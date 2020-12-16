@@ -9,13 +9,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.custom: how-to, devx-track-python, contperf-fy21q2
+ms.openlocfilehash: 7144d576694b6694f426533451717cef58c2da87
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302566"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562446"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Megerősítő tanulás (előzetes verzió) Azure Machine Learning
 
@@ -24,9 +24,9 @@ ms.locfileid: "96302566"
 > [!NOTE]
 > Azure Machine Learning a megerősítő tanulási funkció jelenleg előzetes verzióként érhető el. Jelenleg csak a Ray és a RLlib keretrendszerek támogatottak.
 
-Ebből a cikkből megtudhatja, hogyan taníthat meg egy megerősítő tanulási (RL) ügynököt a videojáték-pong lejátszásához. A nyílt forráskódú Python Library [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) és a Azure Machine learning segítségével kezelheti az elosztott RL-feladatok összetettségét.
+Ebből a cikkből megtudhatja, hogyan taníthat meg egy megerősítő tanulási (RL) ügynököt a videojáték-pong lejátszásához. A nyílt forráskódú Python Library [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) és a Azure Machine learning segítségével kezelheti az elosztott RL összetettségét.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebben a cikkben az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Kísérlet beállítása
 > * Fő-és munkavégző csomópontok meghatározása
@@ -38,7 +38,7 @@ Ez a cikk a [RLlib pong példán](https://aka.ms/azureml-rl-pong) alapul, amely 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Futtassa ezt a kódot az alábbi környezetek egyikében. Javasoljuk, hogy próbálja meg Azure Machine Learning számítási példányt a leggyorsabb indítási élményhez. A megerősítő minta jegyzetfüzetek gyors klónozáshoz és Azure Machine Learning számítási példányon való futtatásához használhatók.
+Ezt a kódot ezen környezetek bármelyikében futtathatja. Javasoljuk, hogy próbálja meg Azure Machine Learning számítási példányt a leggyorsabb indítási élményhez. A megerősítő minta notebookok gyors klónozását és futtatását Azure Machine Learning számítási példányon végezheti el.
 
  - Azure Machine Learning számítási példány
 
@@ -61,19 +61,21 @@ A megerősítő tanulás (RL) a gépi tanulás olyan megközelítése, amellyel 
 
 A képzési ügynökök egy **szimulált környezetben** tanulják meg a pongot. A betanítási ügynökök a játék minden keretén megdöntik, hogy a lapát fel-vagy leállt, vagy a helyükön maradjon. A döntés végrehajtásához a játék állapotát (a képernyő RGB-képét) tekinti át.
 
-Az RL a **jutalmak** használatával közli az ügynököt, ha döntése sikeres. Ebben a környezetben az ügynök pozitív jutalomban részesül, amikor egy pontot és negatív jutalmat kap, amikor egy pontot Kinyer. A képzési ügynök számos iteráción keresztül megtanulja, hogy a jelenlegi állapot alapján kiválassza a műveletet, amely a várható jövőbeli jutalmak összegét optimalizálja.
-
-Gyakori, hogy a **Deep neurális hálózat** (DNN) modellt használják az optimalizáláshoz az RL-ben. Kezdetben a tanulási ügynök rosszul fog elvégezni, de minden játék további mintákat hoz majd, hogy tovább javítsa a modellt.
+Az RL a **jutalmak** használatával közli az ügynököt, ha döntése sikeres. Ebben a példában az ügynök pozitív jutalomban részesül, amikor egy pontot és negatív jutalmat mutat be, amikor egy pontot kilőttek. A képzési ügynök számos iteráción keresztül megtanulja, hogy a jelenlegi állapot alapján kiválassza a műveletet, amely a várható jövőbeli jutalmak összegét optimalizálja. Gyakori, hogy a **Deep neurális hálózatokat** (DNN) használja az RL-ben való optimalizáláshoz. 
 
 A képzés akkor ér véget, amikor az ügynök elérte a 18. számú jutalom pontszámát egy képzési korszakban. Ez azt jelenti, hogy az ügynök az ellenfelet legalább 18 ponttal megszakította.
 
-A szimulációk és a DNN átképzésének folyamata számítási feltételt igényel, és nagy mennyiségű adattal jár. Az RL-feladatok teljesítményének növelésének egyik módja a **tetszés munkája** , így egyszerre több képzési ügynök is működhet és tanulhat. Az elosztott RL-környezetek kezelése azonban összetett vállalkozás lehet.
+A szimuláció és a DNN átképzésének folyamata számítási feltételt igényel, és nagy mennyiségű adattal kell rendelkeznie. Az RL-feladatok teljesítményének növelésének egyik módja a **tetszés munkája** , így egyszerre több képzési ügynök is működhet és tanulhat. Az elosztott RL-környezetek kezelése azonban összetett vállalkozás lehet.
 
 Azure Machine Learning biztosítja az ilyen bonyolultságok kezelésére szolgáló keretrendszert az RL számítási feladatainak méretezésére.
 
 ## <a name="set-up-the-environment"></a>A környezet beállítása
 
-Állítsa be a helyi RL környezetet a szükséges Python-csomagok betöltésével, a munkaterület inicializálásával, a kísérlet létrehozásával és egy konfigurált virtuális hálózat megadásával.
+A helyi RL-környezet beállítása:
+1. A szükséges Python-csomagok betöltése
+1. A munkaterület inicializálása
+1. Kísérlet létrehozása
+1. Konfigurált virtuális hálózat megadására.
 
 ### <a name="import-libraries"></a>Kódtárak importálása
 
@@ -97,9 +99,7 @@ from azureml.contrib.train.rl import WorkerConfiguration
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning munkaterület](concept-workspace.md) a Azure Machine learning legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez.
-
-Inicializáljon egy munkaterület-objektumot az `config.json` [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból. Ha Azure Machine Learning számítási példányban hajtja végre ezt a kódot, a konfigurációs fájl már létre lett hozva.
+Inicializáljon egy [munkaterület](concept-workspace.md) -objektumot az `config.json` [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból. Ha Azure Machine Learning számítási példányban hajtja végre ezt a kódot, a konfigurációs fájl már létre lett hozva.
 
 ```Python
 ws = Workspace.from_config()
@@ -117,7 +117,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>Virtuális hálózat meghatározása
 
-A több számítási célt használó RL-feladatok esetében olyan nyitott portokkal rendelkező virtuális hálózatot kell megadnia, amelyek lehetővé teszik a munkavégző csomópontok és a fő csomópontok közötti kommunikációt. A virtuális hálózat bármely erőforráscsoporthoz tartozhat, de a munkaterület munkaterületének azonos régiójában kell lennie. A virtuális hálózat beállításával kapcsolatos további információkért tekintse meg a munkaterület telepítő notebookját, amely az előfeltételek szakaszban található. Itt adhatja meg az erőforráscsoport virtuális hálózatának nevét.
+A több számítási célt használó RL-feladatok esetében olyan nyitott portokkal rendelkező virtuális hálózatot kell megadnia, amelyek lehetővé teszik a munkavégző csomópontok és a fő csomópontok közötti kommunikációt.
+
+A virtuális hálózat bármely erőforráscsoporthoz tartozhat, de a munkaterület munkaterületének azonos régiójában kell lennie. A virtuális hálózat beállításával kapcsolatos további információkért tekintse meg a munkaterület telepítő notebookját az előfeltételek szakaszban. Itt adhatja meg az erőforráscsoport virtuális hálózatának nevét.
 
 ```python
 vnet = 'your_vnet'
@@ -125,13 +127,13 @@ vnet = 'your_vnet'
 
 ## <a name="define-head-and-worker-compute-targets"></a>A fő-és munkavégző számítási célok meghatározása
 
-Ez a példa külön számítási célokat használ a Ray Head és a Worker csomópontjaihoz. Ezek a beállítások lehetővé teszik a számítási erőforrások felfelé és lefelé skálázását a várt munkaterheléstől függően. Állítsa be a csomópontok számát és az egyes csomópontok méretét a kísérlet igényei alapján.
+Ez a példa külön számítási célokat használ a Ray Head és a Worker csomópontjaihoz. Ezek a beállítások lehetővé teszik a számítási erőforrások felfelé és lefelé méretezését a munkaterheléstől függően. Állítsa be a csomópontok számát, valamint az egyes csomópontok méretét az igények alapján.
 
 ### <a name="head-computing-target"></a>Fő számítástechnikai cél
 
-Ez a példa egy GPU-vel felszerelt fő fürtöt használ a mély tanulási teljesítmény optimalizálása érdekében. A főcsomópont betanítja azt az neurális hálózatot, amelyet az ügynök a döntések elvégzéséhez használ. A fő csomópont a munkavégző csomópontokból származó adatpontokat is gyűjti a neurális hálózat további betanításához.
+A mély tanulási teljesítmény javítása érdekében egy GPU-vel felszerelt főfürtet használhat. A főcsomópont betanítja azt az neurális hálózatot, amelyet az ügynök a döntések elvégzéséhez használ. A fő csomópont a munkavégző csomópontokból származó adatpontokat is gyűjti a neurális hálózat betanításához.
 
-A Head számítás egyetlen [ `STANDARD_NC6` virtuális gépet](../virtual-machines/nc-series.md) (VM) használ. 6 virtuális CPU-val rendelkezik, ami azt jelenti, hogy a munka a 6 munkaprocesszoron keresztül terjeszthető.
+A Head számítás egyetlen [ `STANDARD_NC6` virtuális gépet](../virtual-machines/nc-series.md) (VM) használ. 6 virtuális processzorral rendelkezik a munka elosztásához.
 
 
 ```python
@@ -173,7 +175,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>Feldolgozói számítástechnikai fürt
 
-Ez a példa négy [ `STANDARD_D2_V2` virtuális](../virtual-machines/nc-series.md) gépet használ a munkavégző számítási célra. Minden munkavégző csomópont 2 rendelkezésre álló processzorral rendelkezik, összesen 8 rendelkezésre álló CPU-integrálással a munkához.
+Ez a példa négy [ `STANDARD_D2_V2` virtuális](../virtual-machines/nc-series.md) gépet használ a munkavégző számítási célra. Minden munkavégző csomópont 2 rendelkezésre álló processzorral rendelkezik, összesen 8 rendelkezésre álló CPU-hoz.
 
 A GPU-k nem szükségesek a munkavégző csomópontok számára, mivel nem rendelkeznek mély tanulással. A feldolgozók futtatják a játék szimulációit, és adatokat gyűjtenek.
 
@@ -212,14 +214,13 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Megerősítő tanulási kalkulátor létrehozása
+A [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) használatával betanítási feladatot küldhet Azure Machine Learningnak.
 
-Ebből a szakaszból megtudhatja, hogyan küldhet betanítási feladatot a Azure Machine Learningba a [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) használatával.
-
-Azure Machine Learning a kalkulátor osztályokat használja a futtatási konfigurációs adatok beágyazásához. Így egyszerűen megadhatja, hogyan konfigurálhat egy parancsfájl-végrehajtást. 
+Azure Machine Learning a kalkulátor osztályokat használja a futtatási konfigurációs adatok beágyazásához. Ez lehetővé teszi a parancsfájlok végrehajtásának konfigurálását. 
 
 ### <a name="define-a-worker-configuration"></a>Munkavégző konfiguráció megadása
 
-A WorkerConfiguration objektum közli Azure Machine Learning, hogyan inicializálhatja a feldolgozói fürtöt, amely a bejegyzési parancsfájlt fogja futtatni.
+A WorkerConfiguration objektum közli Azure Machine Learning a beléptetési parancsfájlt futtató munkavégző fürt inicializálását.
 
 ```python
 # Pip packages we will use for both head and worker
@@ -246,9 +247,11 @@ worker_conf = WorkerConfiguration(
 
 A bejegyzési parancsfájl `pong_rllib.py` elfogadja a betanítási feladatok végrehajtásának módját meghatározó paraméterek listáját. Ha ezeket a paramétereket a kalkulátoron keresztül adja át, a beágyazás rétege megkönnyíti a parancsfájlok paramétereinek módosítását és a konfigurációk egymástól független futtatását.
 
-A megfelelő beállítás megadásával `num_workers` a lehető legtöbbet hozhatja ki a párhuzamos. Állítsa be a feldolgozók számát a rendelkezésre álló processzorok számával megegyező értékre. Ehhez a példához a következőképpen számíthat:
+A helyes beállítás megadásával `num_workers` a lehető legtöbbet hozhatja ki a párhuzamos. Állítsa be a feldolgozók számát a rendelkezésre álló processzorok számával megegyező értékre. Ehhez a példához a következő számítást használhatja:
 
-A fő csomópont egy 6 vCPU rendelkező [Standard_NC6](../virtual-machines/nc-series.md) . A munkavégző fürt 4 [Standard_D2_V2 virtuális gép](../cloud-services/cloud-services-sizes-specs.md#dv2-series) 2 processzorral, összesen 8 processzorral. Azonban ki kell vonnia az 1 PROCESSZORt a munkavégzők számáról, mivel az 1 elemet a fő csomóponti szerepkörhöz kell hozzárendelni. 6 processzor + 8 processzor – 1 fő CPU = 13 egyidejű feldolgozók. Azure Machine Learning a fő-és feldolgozói fürtöket használja a számítási erőforrások megkülönböztetéséhez. A Ray azonban nem különbözteti meg a fej és a feldolgozók között, és az összes processzor elérhető processzorokkal rendelkezik a munkavégző szál végrehajtásához.
+A fő csomópont egy 6 vCPU rendelkező [Standard_NC6](../virtual-machines/nc-series.md) . A munkavégző fürt 4 [Standard_D2_V2 virtuális gép](../cloud-services/cloud-services-sizes-specs.md#dv2-series) 2 processzorral, összesen 8 processzorral. Azonban ki kell vonnia az 1 PROCESSZORt a munkavégzők számáról, mivel az 1 elemet a fő csomóponti szerepkörhöz kell hozzárendelni.
+
+6 processzor + 8 processzor – 1 fő CPU = 13 egyidejű feldolgozók. Azure Machine Learning a fő-és feldolgozói fürtöket használja a számítási erőforrások megkülönböztetéséhez. A Ray azonban nem különbözteti meg a fej és a feldolgozók között, és az összes CPU munkavégző szálként érhető el.
 
 
 ```python
@@ -409,7 +412,7 @@ run = exp.submit(config=rl_estimator)
 
 ## <a name="monitor-and-view-results"></a>Eredmények monitorozása és megtekintése
 
-A futtatások állapotának valós idejű megjelenítéséhez használja a Azure Machine Learning Jupyter widgetet. Ebben a példában a widget két alárendelt futtatást mutat be: egyet a Head és egy for Worker számára. 
+A futtatások állapotának valós idejű megjelenítéséhez használja a Azure Machine Learning Jupyter widgetet. A widget két alárendelt futtatást mutat be: egyet a Head és egy for Worker számára. 
 
 ```python
 from azureml.widgets import RunDetails
@@ -421,7 +424,7 @@ run.wait_for_completion()
 1. Várjon, amíg betöltődik a widget.
 1. A futtatások listájában válassza ki a futtatni kívánt Head parancsot.
 
-Válassza **a kattintson ide a futtatás Azure Machine learning Studióban** a további futtatási információk a Studióban című témakört. Ezeket az információkat a Futtatás folyamatban vagy befejezését követően is elérheti.
+Válassza **a kattintson ide a futtatás Azure Machine learning Studióban** a további futtatási információk a Studióban című témakört. Ezeket az információkat a Futtatás folyamatban vagy a befejezést követően is elérheti.
 
 ![A Run details widgetet bemutató line Graph](./media/how-to-use-reinforcement-learning/pong-run-details-widget.png)
 
@@ -429,7 +432,7 @@ Az **episode_reward_mean** ábrán látható, hogy milyen számú pontot kell ki
 
 Ha a gyermek által futtatott naplókat böngészi, láthatja driver_log.txt fájlban rögzített kiértékelési eredményeket. Előfordulhat, hogy néhány percet várnia kell, amíg a metrikák elérhetővé válnak a Futtatás oldalon.
 
-Rövid idő alatt több számítási erőforrást is megtanult a megerősítő tanulási ügynök betanítására, hogy nagyon jól játszhasson.
+Rövid idő alatt több számítási erőforrást is megtanult, hogy betanítsa a megerősítő tanulási ügynököt, hogy nagyon jól játszhasson a oppponent a számítógépeken.
 
 ## <a name="next-steps"></a>További lépések
 

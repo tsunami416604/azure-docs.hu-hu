@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7713765a36207f0d9da05c4c11629e4a7f1164d9
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356494"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561511"
 ---
 Ismerkedjen meg a Javához készült Azure Content Moderator ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a Maven-csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. 
 
@@ -24,8 +24,8 @@ Content Moderator egy AI-szolgáltatás, amely lehetővé teszi a potenciálisan
 
 A Javához készült Content Moderator ügyféloldali kódtár a következőre használható:
 
-* Közepes méretű képek
 * Mérsékelt szöveg
+* Közepes méretű képek
 
 [Dokumentáció](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | Összetevő [(Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Példák](/samples/browse/?products=azure&term=content-moderator)
 
@@ -127,14 +127,42 @@ A következő osztályok a Content Moderator Java ügyféloldali kódtár főbb 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Javához készült Content Moderator ügyféloldali kódtár használatával:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Közepes méretű képek](#moderate-images)
 * [Mérsékelt szöveg](#moderate-text)
+* [Közepes méretű képek](#moderate-images)
+
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 Az alkalmazás `main` metódusában hozzon létre egy [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) objektumot az előfizetési végpont értéke és az előfizetés kulcsa alapján.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+
+
+
+## <a name="moderate-text"></a>Mérsékelt szöveg
+
+### <a name="set-up-sample-text"></a>Minta szövegének beállítása
+
+A **ContentModeratorQuickstart** osztály tetején Definiáljon egy helyi szövegfájlra mutató hivatkozást. Vegyen fel egy. txt fájlt a projekt könyvtárába, és írja be az elemezni kívánt szöveget.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
+
+### <a name="analyze-text"></a>Szöveg elemzése
+
+Hozzon létre egy új metódust, amely beolvassa a. txt fájlt, és minden sorban meghívja a **screenText** metódust.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
+
+### <a name="print-text-moderation-results"></a>Szöveg moderálási eredményeinek nyomtatása
+
+Adja hozzá a következő kódot a moderálási eredmények egy. JSON-fájlba való nyomtatásához a projekt könyvtárába.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
+
+A `try` metódus befejezéséhez lépjen ki a és a `catch` utasításból.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
+
 
 ## <a name="moderate-images"></a>Közepes méretű képek
 
@@ -180,31 +208,6 @@ A `while` hurok után adja hozzá a következő kódot, amely kiírja az eredmé
 Fejezze be az `try` utasítást, és adjon hozzá egy `catch` utasítást a metódus végrehajtásához.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
-
-## <a name="moderate-text"></a>Mérsékelt szöveg
-
-### <a name="set-up-sample-text"></a>Minta szövegének beállítása
-
-A **ContentModeratorQuickstart** osztály tetején Definiáljon egy helyi szövegfájlra mutató hivatkozást. Vegyen fel egy. txt fájlt a projekt könyvtárába, és írja be az elemezni kívánt szöveget.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
-
-### <a name="analyze-text"></a>Szöveg elemzése
-
-Hozzon létre egy új metódust, amely beolvassa a. txt fájlt, és minden sorban meghívja a **screenText** metódust.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
-
-### <a name="print-text-moderation-results"></a>Szöveg moderálási eredményeinek nyomtatása
-
-Adja hozzá a következő kódot a moderálási eredmények egy. JSON-fájlba való nyomtatásához a projekt könyvtárába.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
-
-A `try` metódus befejezéséhez lépjen ki a és a `catch` utasításból.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
-
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
