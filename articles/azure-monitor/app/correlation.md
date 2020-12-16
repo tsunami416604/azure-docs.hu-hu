@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 7a206d61124b2524feae0cf155083c1939696e18
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 20e9ed7e83ff3359651acebc11a939a998f2889d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853322"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607915"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -79,7 +79,6 @@ A [W3C nyomkövetési környezet](https://w3c.github.io/trace-context/) és a Ap
 | `Operation_Id`                         | [nyomkövetési azonosító](https://w3c.github.io/trace-context/#trace-id)                                           |
 | `Operation_ParentId`                   | a span szülő-tartományának [szülő-azonosítója](https://w3c.github.io/trace-context/#parent-id) . Ha ez egy gyökérszintű tartomány, akkor ennek a mezőnek üresnek kell lennie.     |
 
-
 További információ: [Application Insights telemetria adatmodell](../../azure-monitor/app/data-model.md).
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése a .NET-alkalmazások számára
@@ -103,7 +102,7 @@ A W3C nyomkövetési környezet –-alapú elosztott nyomkövetés alapértelmez
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
-    
+
   - A Spring boot-alkalmazások esetében adja hozzá a következő tulajdonságokat:
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -139,7 +138,7 @@ Adja hozzá a következő konfigurációt:
   ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
   ```
-  
+
 - **[Kódrészlet-alapú telepítés](./javascript.md#snippet-based-setup)**
 
 Adja hozzá a következő konfigurációt:
@@ -284,7 +283,7 @@ A [Java-ügynök](./java-in-process-agent.md) , valamint a [Java SDK](../../azur
 
   A Spring boot Starter automatikusan hozzárendeli `cloudRoleName` a `spring.application.name` tulajdonsághoz megadott értéket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)írása.
 - A ASP.NET Core-és ASP.NET speciális korrelációs forgatókönyvei: [Egyéni műveletek nyomon követése](custom-operations-tracking.md).

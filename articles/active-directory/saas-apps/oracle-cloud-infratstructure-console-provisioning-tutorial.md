@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 203af02841e6d17546d254ed83868c859ba3ac0d
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 94de0ca0a5393c891e567e558cbbadd0ca1f453b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938936"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608000"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Oktatóanyag: az Oracle felhőalapú infrastruktúra-konzol konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
@@ -120,40 +120,40 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 9. Tekintse át az Azure AD-ból az Oracle Cloud Infrastructure Console-be szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az Oracle Cloud Infrastructure Console felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy megváltoztatja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy az Oracle Cloud Infrastructure Console API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-      |Attribútum|Típus|
-      |---|---|
-      |displayName|Sztring|
-      |userName (Felhasználónév)|Sztring|
-      |active|Logikai|
-      |cím|Sztring|
-      |emails[type eq "work"].value|Sztring|
-      |preferredLanguage|Sztring|
-      |name.givenName|Sztring|
-      |name.familyName|Sztring|
-      |címek [type EQ "work"]. formázott|Sztring|
-      |címek [típus EQ "work"]. helység|Sztring|
-      |címek [típus EQ "work"]. régió|Sztring|
-      |címek [type EQ "work"]. irányítószám|Sztring|
-      |címek [type EQ "work"]. Country|Sztring|
-      |címek [type EQ "work"]. streetAddress|Sztring|
-      |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|Sztring|
-      |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
-      |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: costCenter|Sztring|
-      |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Division|Sztring|
-      |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
-      |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: szervezet|Sztring|
-      |urn: IETF: params: scim: sémák: Oracle: IDCs: bővítmény: felhasználó: felhasználó: bypassNotification|Logikai|
-      |urn: IETF: params: scim: sémák: Oracle: IDCs: bővítmény: felhasználó: felhasználó: isFederatedUser|Logikai|
+    |Attribútum|Típus|
+    |---|---|
+    |displayName|Sztring|
+    |userName (Felhasználónév)|Sztring|
+    |active|Logikai|
+    |cím|Sztring|
+    |emails[type eq "work"].value|Sztring|
+    |preferredLanguage|Sztring|
+    |name.givenName|Sztring|
+    |name.familyName|Sztring|
+    |címek [type EQ "work"]. formázott|Sztring|
+    |címek [típus EQ "work"]. helység|Sztring|
+    |címek [típus EQ "work"]. régió|Sztring|
+    |címek [type EQ "work"]. irányítószám|Sztring|
+    |címek [type EQ "work"]. Country|Sztring|
+    |címek [type EQ "work"]. streetAddress|Sztring|
+    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|Sztring|
+    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
+    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: costCenter|Sztring|
+    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Division|Sztring|
+    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Hivatkozás|
+    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: szervezet|Sztring|
+    |urn: IETF: params: scim: sémák: Oracle: IDCs: bővítmény: felhasználó: felhasználó: bypassNotification|Logikai|
+    |urn: IETF: params: scim: sémák: Oracle: IDCs: bővítmény: felhasználó: felhasználó: isFederatedUser|Logikai|
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása Oracle Cloud Infrastructure-konzolra** lehetőséget.
 
 11. Tekintse át az Azure AD-ből szinkronizált csoportosítási attribútumokat az Oracle felhő-infrastruktúra konzolra az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használhatók az Oracle Cloud Infrastructure konzolon lévő csoportok egyeztetéséhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-      |Attribútum|Típus|
-      |---|---|
-      |displayName|Sztring|
-      |externalId|Sztring|
-      |tagok|Referencia|
+    | Attribútum | Típus |
+    |--|--|
+    | displayName | Sztring |
+    | externalId | Sztring |
+    | tagok | Referencia |
 
 12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
@@ -178,7 +178,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 * Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

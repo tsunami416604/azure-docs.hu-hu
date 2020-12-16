@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dbc9e48987f527c9579decc3db84091a432a17e5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601016"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607898"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Hibaelhárítás és Q és A for Application Insights for Java SDK
 
@@ -63,7 +63,6 @@ Sikeresen beállította az alkalmazást, hogy telemetria küldjön a kiszolgál�
 Azt is megteheti, hogy ha az ügyfél egy [telefonon vagy más eszközön][platforms]lévő alkalmazás, telemetria is küldhet.
 
 Használja ugyanazt a kialakítási kulcsot az ügyfél és a kiszolgáló telemetria beállításához. Az adatok ugyanabban a Application Insights erőforrásban jelennek meg, és az ügyfél és a kiszolgáló eseményei is összekapcsolhatók.
-
 
 ## <a name="disabling-telemetry"></a>Telemetria letiltása
 **Hogyan lehet letiltani a telemetria-gyűjteményt?**
@@ -183,7 +182,6 @@ Application Insights használja `org.apache.http` . Ez a névtér alatt Applicat
 
 >[!NOTE]
 >Ha engedélyezi a HIBAKERESÉSi szintű naplózást az alkalmazás összes névterében, a rendszer az összes végrehajtó modult tiszteletben tartja, beleértve a `org.apache.http` nevet is `com.microsoft.applicationinsights.core.dependencies.http` . A Application Insights nem fogja tudni alkalmazni ezeket a hívásokat, mert az Apache Library a napló hívását végzi. A HIBAKERESÉSi szint naplózása jelentős mennyiségű naplófájlt eredményez, és nem ajánlott éles üzemi példányok esetén.
-
 
 ## <a name="next-steps"></a>További lépések
 **Beállítottam Application Insights a Java Server-alkalmazáshoz. Mit tehetek?**
