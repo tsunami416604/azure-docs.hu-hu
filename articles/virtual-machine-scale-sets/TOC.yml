@@ -118,31 +118,31 @@
       items:
         - name: Általános célú
           href: ../virtual-machines/sizes-general.md
-          maintainContext: true
           items:
             - name: B sorozat – adatlöket-kezelés
               href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
+          maintainContext: true
         - name: Számításra optimalizált
           href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: Memóriaoptimalizált
           href: ../virtual-machines/sizes-memory.md
-          maintainContext: true
           items:
             - name: Korlátozott vCPU-k
               href: ../virtual-machines/constrained-vcpu.md
               maintainContext: true
+          maintainContext: true
         - name: Tárolásra optimalizált
           href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: GPU-optimalizált
           href: ../virtual-machines/sizes-gpu.md
-          maintainContext: true
           items:
             - name: NVIDIA GPU-illesztők beállítása
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
+          maintainContext: true
         - name: Nagy teljesítményű számítás
           href: ../virtual-machines/sizes-hpc.md
           maintainContext: true
@@ -165,8 +165,6 @@
     - name: Karbantartás és frissítések
       href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
-    - name: Vezénylési módok
-      href: orchestration-modes.md
     - name: Lemezes tárolás
       items:
         - name: Felügyelt lemezek

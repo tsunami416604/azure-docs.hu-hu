@@ -5,6 +5,8 @@
   items:
     - name: Mi az a Face szolgáltatás?
       href: Overview.md
+    - name: Újdonságok
+      href: releasenotes.md
 - name: Rövid útmutatók
   items:
     - name: Az ügyfélkódtár vagy a REST API használata
@@ -97,5 +99,3 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Titkosítás
       href: face-encryption-of-data-at-rest.md
-    - name: Kibocsátási megjegyzések
-      href: ReleaseNotes.md

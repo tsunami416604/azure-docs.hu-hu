@@ -758,6 +758,8 @@
           href: data-factory-troubleshoot-guide.md
         - name: Összekötők
           href: connector-troubleshoot-guide.md
+        - name: Folyamattriggerek
+          href: pipeline-trigger-troubleshoot-guide.md
         - name: Adatfolyamok
           href: data-flow-troubleshoot-guide.md
         - name: Folyamatos integráció és üzembe helyezés

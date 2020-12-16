@@ -114,10 +114,6 @@
           href: developers-guide.md
         - name: Az Azure Resource Manager használata a Key Vault üzembe helyezéséhez
           href: vault-create-template.md
-        - name: Webalkalmazás titkos kulcsának mentése
-          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-        - name: Szolgáltatások közötti hitelesítés a .NET-tel
-          href: service-to-service-authentication.md
         - name: A Key Vault csatlakoztatott szolgáltatásának használata
           href: vs-key-vault-add-connected-service.md
     - name: Monitorozás és szabályozás
