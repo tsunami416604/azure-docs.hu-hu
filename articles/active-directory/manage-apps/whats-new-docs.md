@@ -1,7 +1,7 @@
 ---
 title: Az Azure Active Directory-alkalmazások kezelésének újdonságai
 description: Új és frissített dokumentáció a Azure Active Directory-alkalmazások kezeléséhez.
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,30 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 38602482f1a25f212829342fe691d7bb75666d31
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571011"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563398"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
 Üdvözli a Azure Active Directory Application Management dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. Az Application Management szolgáltatással kapcsolatos újdonságok megismeréséhez tekintse [meg a Azure Active Directory újdonságait](../fundamentals/whats-new.md)ismertető témakört.
+
+## <a name="december-2020"></a>2020. december
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Gyors útmutató: OIDC-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben](add-application-portal-setup-oidc-sso.md)
+- [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [A OIDC-alapú egyszeri bejelentkezés ismertetése](configure-oidc-single-sign-on.md)
+- [Alkalmazáshitelesítés áthelyezése az Active Directory Federation Servicesből az Azure Active Directoryba](migrate-adfs-apps-to-azure.md)
+- [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Azure Active Directory Application Management: Újdonságok](whats-new-docs.md)
+- [Alkalmazások áttelepíthetők az Azure AD-be a AD FS alkalmazás-tevékenységi jelentés (előzetes verzió) használatával](migrate-adfs-application-activity.md)
+- [Távoli asztal közzététele Azure AD-alkalmazásproxy használatával](application-proxy-integrate-with-remote-desktop-services.md)
+
 
 ## <a name="november-2020"></a>2020. november
 

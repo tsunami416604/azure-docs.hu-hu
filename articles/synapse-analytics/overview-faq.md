@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576026"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563262"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure szinapszis Analytics – gyakori kérdések
 
@@ -59,7 +59,7 @@ A: kiindulási pontként az Azure szinapszis az Azure-előfizetési szinten elé
 
 A: A szinapszis-munkaterületek támogatja a felhasználó által definiált mappákat.
 
-### <a name="q-can-i-link-more-than-one-power-bi-workspaces-to-a-single-azure-synapse-workspace"></a>K: több Power BI-munkaterületet is kapcsolhatok egyetlen Azure szinapszis-munkaterülethez?
+### <a name="q-can-i-link-more-than-one-power-bi-workspace-to-a-single-azure-synapse-workspace"></a>K: Csatolhatok több Power BI munkaterületet egyetlen Azure szinapszis-munkaterülethez?
     
 A: jelenleg csak egyetlen Power BI munkaterületet kapcsolhat egy Azure szinapszis-munkaterülethez. 
 
@@ -69,9 +69,9 @@ A: a Apache Spark szinapszis hivatkozása a GA. A kiszolgáló nélküli SQL-ké
 
 ### <a name="q-does-azure-synapse-workspace-support-cicd"></a>K: az Azure szinapszis munkaterület támogatja a CI/CD-t? 
 
-Válasz: igen! A folyamat összes összetevője, jegyzetfüzete, SQL-szkriptje és Spark-feladatának definíciója a GIT-ben fog megjelenni. Az összes készlet-definíciót a GIT as ARM-sablonokban tárolja a rendszer. A dedikált SQL Pool-objektumokat (sémákat, táblákat, nézeteket stb.) a CI/CD-támogatással rendelkező adatbázis-projektekkel felügyeli a rendszer.
+Válasz: igen! A folyamat összes összetevője, jegyzetfüzete, SQL-szkriptje és Spark-feladatának definíciója a git-ben fog megjelenni. Az összes készlet-definíciót a git as ARM-sablonokban tárolja a rendszer. A dedikált SQL Pool-objektumokat (sémákat, táblákat, nézeteket stb.) a CI/CD-támogatással rendelkező adatbázis-projektekkel felügyeli a rendszer.
 
-## <a name="pipelines"></a>Folyamatok
+## <a name="pipelines"></a>Pipelines
 
 ### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>K: Hogyan arról, hogy tudom, milyen hitelesítő adatokat használ a folyamat futtatásához? 
 
@@ -91,11 +91,11 @@ A: jelenleg manuálisan újra létre kell hoznia a Azure Data Factory-folyamatok
 
 A: a Szinapszishoz Apache Spark Apache Spark a más szolgáltatásokkal (HRE, AzureML stb.) és további kódtárakkal (mssparktuils, kolibri) és előre beállított teljesítmény-konfigurációkkal való integráció támogatásával.
 
-A Apache Spark jelenleg futó munkaterhelések az MSFT Sparkon futnak módosítás nélkül. 
+A Apache Spark jelenleg futó munkaterhelések Apache Spark az Azure szinapszis-on való módosítás nélkül futnak. 
 
 ### <a name="q-what-versions-of-spark-are-available"></a>K: milyen verziójú Spark érhető el?
 
-A: az Azure szinapszis Apache Spark teljes mértékben támogatja a Spark 2,4-et. Az alapvető összetevők és a jelenleg támogatott verziók teljes listáját lásd: [Apache Spark verzió támogatása ](./spark/apache-spark-version-support.md).
+A: az Azure szinapszis Apache Spark teljes mértékben támogatja a Spark 2,4-et. Az alapvető összetevők és a jelenleg támogatott verziók teljes listáját lásd: [Apache Spark verzió támogatása](./spark/apache-spark-version-support.md).
 
 ### <a name="q-is-there-an-equivalent-of-dbutils-in-azure-synapse-spark"></a>K: az Azure szinapszis Spark DButils egyenértékű?
 
@@ -121,13 +121,13 @@ Ennek a feladatnak a megvalósításának legegyszerűbb módja, ha az adatokat 
  
 A forgatókönyv kielégítése érdekében minden fejlesztőnek olyan kiszolgáló nélküli Spark-készletet kell adnia, amely kis számú Spark-erőforrás használatára van beállítva. Mivel a kiszolgáló nélküli Spark-készletek nem járnak semmibe, amíg aktívan nem használják őket, a több fejlesztő esetében is csökkentheti a költségeket. A készletek megosztják a metaadatokat (Spark-táblázatok), így könnyen dolgozhatnak egymással.
 
-### <a name="q-how-do-i-include-manage-and-install-libraries"></a>K: Hogyan a kódtárak belefoglalása, kezelése és telepítése 
+### <a name="q-how-do-i-include-manage-and-install-libraries"></a>K: Hogyan a kódtárakat, a felügyeletet és a telepítést?
 
 Válasz: külső csomagokat telepíthet requirements.txt fájl segítségével a Spark-készlet létrehozásakor, a szinapszis munkaterületen vagy a Azure Portal. Lásd: [a Apache Spark könyvtárak kezelése az Azure szinapszis Analyticsben](./spark/apache-spark-azure-portal-add-libraries.md).
 
 ## <a name="dedicated-sql-pools"></a>Dedikált SQL-készletek
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>K: a dedikált SQL-készletek és a kiszolgáló nélküli készletek közötti funkcionális különbségek
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>K: Milyen különbségek vannak a dedikált SQL-készletek és a kiszolgáló nélküli készletek között?
 
 A: teljes listát talál a [T-SQL szolgáltatásbeli különbségekről a SZINAPSZIS SQL-ben](./sql/overview-features.md).
 
@@ -140,7 +140,7 @@ A: nincs "Move" vagy "Migration". Választhat, hogy engedélyezi-e az új munkat
 A: alapértelmezés szerint az összes új dedikált SQL-készletet egy munkaterületre telepíti a rendszer. Ha azonban továbbra is létre kell hoznia egy dedikált SQL-készletet (korábban SQL DW) egy önálló űrlapon. 
 
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pool"></a>K: a dedikált SQL-készletek és a kiszolgáló nélküli SQL-készlet működési különbségei 
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>K: melyek a dedikált SQL-készletek és a kiszolgáló nélküli SQL-készletek közötti funkcionális különbségek?
 
 A: teljes listát talál a [T-SQL szolgáltatásbeli különbségekről a SZINAPSZIS SQL-ben](./sql/overview-features.md).
 
