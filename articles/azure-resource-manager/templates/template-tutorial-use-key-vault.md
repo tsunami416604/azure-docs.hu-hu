@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ae2361d12dfe18cadd80dd3b84405b2b17751e59
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929316"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584085"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Oktatóanyag: Az Azure Key Vault integrálása ARM-sablonalapú telepítésbe
 
@@ -43,6 +43,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
     ```console
     openssl rand -base64 32
     ```
+
     Ellenőrizze, hogy a generált jelszó megfelel-e a virtuális gép jelszavával kapcsolatos követelményeknek. Az egyes Azure-szolgáltatások különböző jelszókövetelményeket szabnak meg. A virtuális gép jelszavával kapcsolatos követelményekért lásd: [Mik a jelszóra vonatkozó követelmények a virtuális gépek létrehozásakor?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
 ## <a name="prepare-a-key-vault"></a>Kulcstartó előkészítése
@@ -53,7 +54,7 @@ Ebben a szakaszban létrehoz egy kulcstartót, és hozzáad egy titkos kulcsot a
 * Titkos kulcsot helyez el a kulcstartóhoz. A titkos kulcs a virtuális gép rendszergazdai jelszavát tárolja.
 
 > [!NOTE]
-> Ha a virtuálisgép-sablont telepítő felhasználó nem a kulcstartó tulajdonosa vagy közreműködője, akkor a tulajdonosnak vagy a közreműködőnek hozzáférést kell adnia a Microsoft. kulcstartó/tárolók/ *üzembe helyezés/művelet* engedélyhez a kulcstartóhoz. További információ: a [Azure Key Vault használata biztonságos paraméterek értékének](./key-vault-parameter.md)átadására az üzembe helyezés során.
+> Ha a virtuálisgép-sablont telepítő felhasználó nem a kulcstartó tulajdonosa vagy közreműködője, akkor a tulajdonosnak vagy a közreműködőnek hozzáférést kell adnia a `Microsoft.KeyVault/vaults/deploy/action` kulcstartó engedélyéhez. További információ: a [Azure Key Vault használata biztonságos paraméterek értékének](./key-vault-parameter.md)átadására az üzembe helyezés során.
 
 A következő Azure PowerShell parancsfájl futtatásához válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablaktáblára, majd válassza a **Beillesztés** lehetőséget.
 
@@ -79,7 +80,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * A titok alapértelmezett neve **vmAdminPassword**. A sablon hardcoded.
 > * Ha engedélyezni szeretné a sablon számára a titkos kulcs lekérését, engedélyeznie kell egy hozzáférési szabályzatot, amelynek neve **: hozzáférés engedélyezése Azure Resource Manager** a Key vaulthoz való központi telepítéshez. Ez a szabályzat engedélyezve van a sablonban. A hozzáférési szabályzattal kapcsolatos további információkért lásd: [kulcstartók és titkos kulcsok üzembe helyezése](./key-vault-parameter.md#deploy-key-vaults-and-secrets).
 
-A sablon egy *keyVaultId* nevű kimeneti értékkel rendelkezik. Ezt az azonosítót és a titkos nevet is használni fogja a titkos érték lekéréséhez az oktatóanyag későbbi részében. Az erőforrás-azonosító formátuma:
+A sablon egyetlen kimeneti értékkel rendelkezik, a neve `keyVaultId` . Ezt az azonosítót és a titkos nevet is használni fogja a titkos érték lekéréséhez az oktatóanyag későbbi részében. Az erőforrás-azonosító formátuma:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,7 +88,7 @@ A sablon egy *keyVaultId* nevű kimeneti értékkel rendelkezik. Ezt az azonosí
 
 Az azonosító másolásakor és beillesztésekor előfordulhat, hogy több sorba van bontva. Egyesítse a sorokat, és vágja fel a felesleges szóközöket.
 
-A központi telepítés ellenőrzéséhez futtassa a következő PowerShell-parancsot ugyanazon a rendszerhéj-ablaktáblán a titkos kód egyszerű szövegként való lekéréséhez. A parancs csak ugyanabban a rendszerhéj-munkamenetben működik, mert a *$keyVaultName* változót használja, amely az előző PowerShell-parancsfájlban van meghatározva.
+A központi telepítés ellenőrzéséhez futtassa a következő PowerShell-parancsot ugyanazon a rendszerhéj-ablaktáblán a titkos kód egyszerű szövegként való lekéréséhez. A parancs csak ugyanabban a rendszerhéj-munkamenetben működik, mert a változót használja `$keyVaultName` , amely az előző PowerShell-parancsfájlban van meghatározva.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -146,14 +147,14 @@ A statikus azonosító módszer használatával semmilyen módosítást nem kell
     ```
 
     > [!IMPORTANT]
-    > Cserélje le az **azonosító** értékét az előző eljárás során létrehozott kulcstartó erőforrás-azonosítójával. A secretName hardcoded a **vmAdminPassword**.  Lásd: [Key Vault előkészítése](#prepare-a-key-vault).
+    > Cserélje le az értékét az `id` előző eljárás során létrehozott kulcstartó erőforrás-azonosítójával. A a `secretName` hardcoded as **vmAdminPassword**.  Lásd: [Key Vault előkészítése](#prepare-a-key-vault).
 
     ![A Key Vault és a Resource Manager-sablon virtuális gép telepítési paramétereinek fájljának integrálása](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. Frissítse a következő értékeket:
 
-    * **adminUsername**: a virtuális gép rendszergazdai fiókjának neve.
-    * **dnsLabelPrefix**: nevezze el a dnsLabelPrefix értéket.
+    * `adminUsername`: A virtuális gép rendszergazdai fiókjának neve.
+    * `dnsLabelPrefix`: Nevezze el az `dnsLabelPrefix` értéket.
 
     Példák a nevekre: az előző képen látható.
 
@@ -167,7 +168,7 @@ A statikus azonosító módszer használatával semmilyen módosítást nem kell
 
     ![Azure Portal Cloud Shell fájl feltöltése](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre. Töltse fel a *azuredeploy.jst* és *azuredeploy.parameters.js* a Cloud shellre. A fájl feltöltése után az **ls** parancs és a **Cat** parancs használatával ellenőrizheti, hogy a fájl feltöltése sikeresen megtörtént-e.
+1. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre. Töltse fel a *azuredeploy.jst* és *azuredeploy.parameters.js* a Cloud shellre. A fájl feltöltése után a `ls` parancs és a parancs használatával ellenőrizheti, `cat` hogy a fájl feltöltése sikeresen megtörtént-e.
 
 1. Futtassa a következő PowerShell-szkriptet a sablon telepítéséhez.
 

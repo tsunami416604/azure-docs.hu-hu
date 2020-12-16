@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c9738d25fdcb1c0ccda70ec116eb369f8b50e980
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027475"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584493"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Oktatóanyag – SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -330,7 +330,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 */Users beolvasása? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-b016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Reagálás
+##### <a name="response"></a><a name="response-2"></a>Válasz
 
 *HTTP/1.1 200 OK*
 ```json
@@ -371,7 +371,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 */Users beolvasása? Filter = userName EQ "nem létező felhasználó"*
 
-##### <a name="response"></a><a name="response-3"></a>Reagálás
+##### <a name="response"></a><a name="response-3"></a>Válasz
 
 *HTTP/1.1 200 OK*
 ```json
@@ -408,7 +408,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Reagálás
+##### <a name="response"></a><a name="response-4"></a>Válasz
 
 *HTTP/1.1 200 OK*
 ```json
@@ -452,7 +452,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Reagálás
+##### <a name="response"></a><a name="response-5"></a>Válasz
 
 *HTTP/1.1 200 OK*
 ```json
@@ -501,7 +501,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Reagálás
+##### <a name="response"></a><a name="response-14"></a>Válasz
 
 ```json
 {
@@ -541,7 +541,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 */Users/5171a35d82074e068ce2 törlése HTTP/1.1*
 
-##### <a name="response"></a><a name="response-6"></a>Reagálás
+##### <a name="response"></a><a name="response-6"></a>Válasz
 
 *HTTP/1.1 204 nincs tartalom*
 
@@ -568,7 +568,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Reagálás
+##### <a name="response"></a><a name="response-7"></a>Válasz
 
 *HTTP/1.1 201 létrehozva*
 ```json
@@ -593,7 +593,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 */Groups/40734ae655284ad3abcc beolvasása? excludedAttributes = tagok HTTP/1.1*
 
-##### <a name="response"></a><a name="response-8"></a>Reagálás
+##### <a name="response"></a><a name="response-8"></a>Válasz
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -614,7 +614,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 ##### <a name="request"></a><a name="request-9"></a>Kérés
 */Groups beolvasása? excludedAttributes = tagok&Filter = displayName EQ "displayName" HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Reagálás
+##### <a name="response"></a><a name="response-9"></a>Válasz
 
 *HTTP/1.1 200 OK*
 ```json
@@ -654,7 +654,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Reagálás
+##### <a name="response"></a><a name="response-10"></a>Válasz
 
 *HTTP/1.1 204 nincs tartalom*
 
@@ -677,7 +677,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Reagálás
+##### <a name="response"></a><a name="response-11"></a>Válasz
 
 *HTTP/1.1 204 nincs tartalom*
 
@@ -700,7 +700,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Reagálás
+##### <a name="response"></a><a name="response-12"></a>Válasz
 
 *HTTP/1.1 204 nincs tartalom*
 
@@ -710,7 +710,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 */Groups/cdb1ce18f65944079d37 törlése HTTP/1.1*
 
-##### <a name="response"></a><a name="response-13"></a>Reagálás
+##### <a name="response"></a><a name="response-13"></a>Válasz
 
 *HTTP/1.1 204 nincs tartalom*
 

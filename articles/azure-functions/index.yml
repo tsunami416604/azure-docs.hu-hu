@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Az Azure Functions dokumentációja
-summary: Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat események által aktivált kódokat.
+summary: Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat események által aktivált kódokat. Az igény szerinti számítási képességei lehetővé teszik a könnyű integrációt és az egyszeri támogatási funkciókat. Ezenfelül webes API-k biztosítására, adatbázis-változásokra adott válaszokra, IoT-adatfolyamok feldolgozására és üzenetsorok kezelésére is használható.
 metadata:
   title: Az Azure Functions dokumentációja
-  description: Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat események által aktivált kódokat.
+  description: Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat események által aktivált kódokat. Az igény szerinti számítási képességei lehetővé teszik a könnyű integrációt és az egyszeri támogatási funkciókat. Ezenfelül webes API-k biztosítására, adatbázis-változásokra adott válaszokra, IoT-adatfolyamok feldolgozására és üzenetsorok kezelésére is használható.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: c2271970fb9a8b500e78687547030d39c5f241e3
-  ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+  ms.openlocfilehash: e6c3cb1a9d536ed898c48c45f57434dc4bf66970
+  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96751708"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97505290"
 landingContent:
 - title: Az Azure Functions ismertetése
   linkLists:

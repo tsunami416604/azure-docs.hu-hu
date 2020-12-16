@@ -663,6 +663,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Azure Service Fabric-fürt üzembe helyezése rendelkezésreállási zónákban
                   href: service-fabric-cross-availability-zones.md
+                - name: Azure Service Fabric-fürt üzembe helyezése állapot nélküli csomóponttípusokkal
+                  href: service-fabric-stateless-node-types.md
                 - name: Azure Active Directory-alapú hitelesítés beállítása
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Egyéni fürtsablon létrehozása

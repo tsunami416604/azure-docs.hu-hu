@@ -1,6 +1,6 @@
 ---
 title: Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök telepítése
-description: Ez a cikk ismerteti, hogyan telepítheti a Azure AD Connect Cloud kiépítési ügynököt.
+description: Megtudhatja, hogyan telepítheti a Azure AD Connect Cloud kiépítési ügynököt, és hogyan konfigurálhatja azt a Azure Portalban.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9553608fdd72d4dec4c1572e0d38cd460018a469
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348534"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584340"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök telepítése
 Ez a dokumentum végigvezeti a Azure Active Directory-(Azure AD-) kapcsolat létesítési ügynökének telepítési folyamatán, és azt, hogy miként konfigurálható először a Azure Portal.
@@ -92,7 +92,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látható-e az 
 Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket.
 
 1.  Jelentkezzen be a kiszolgálóra egy rendszergazdai fiókkal.
-1.  Nyissa meg a **szolgáltatásokat** vagy navigáljon a szolgáltatásba, vagy **indítsa el** a  >  **Run**  >  **Services. msc** parancsot.
+1.  Nyissa meg a **szolgáltatásokat** vagy navigáljon a szolgáltatásba, vagy **indítsa el** a  >    >  **Services. msc** parancsot.
 1.  Győződjön meg arról, hogy a **szolgáltatások** területen **Microsoft Azure ad a összekapcsolási ügynök frissítése** és a **Microsoft Azure ad kapcsolat létesítése ügynök** van, és az állapota *fut*.
 
     ![Szolgáltatások képernyő](media/how-to-install/troubleshoot-1.png)
@@ -103,7 +103,7 @@ Az ügynök futtatásának ellenőrzéséhez kövesse az alábbi lépéseket.
 
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

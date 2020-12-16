@@ -42,6 +42,8 @@
       href: api-management-get-started-publish-versions.md
     - name: 9 – A fejlesztői portál testreszabása
       href: api-management-howto-developer-portal-customize.md
+    - name: 10 – API-k kezelése a Visual Studio Code-ban
+      href: visual-studio-code-tutorial.md
 - name: Példák
   items:
     - name: Házirendek
@@ -216,7 +218,7 @@
           href: api-management-sample-flexible-throttling.md
         - name: Külső szolgáltatások használata
           href: api-management-sample-send-request.md
-        - name: Titkok kezelése tulajdonságokkal
+        - name: Titkos kulcsok kezelése nevesített értékekkel
           href: api-management-howto-properties.md
         - name: Hozzáférés-korlátozási szabályzatok
           href: api-management-access-restriction-policies.md

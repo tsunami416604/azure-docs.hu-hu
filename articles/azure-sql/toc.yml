@@ -69,6 +69,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: Sebezhetőségi felmérés szabályai
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: Sebezhetőségi felmérés szabályainak változásnaplója
+                  href: database/sql-database-vulnerability-assessment-rules-changelog.md
                 - name: Biztonságirés-keresések tárolása a tárterületen
                   href: database/sql-database-vulnerability-assessment-storage.md
             - name: 'Bejelentkezések, felhasználói fiókok, szerepkörök és engedélyek'

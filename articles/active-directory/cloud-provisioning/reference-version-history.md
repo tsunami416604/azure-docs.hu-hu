@@ -11,13 +11,13 @@ ms.date: 11/19/2020
 ms.subservice: app-provisioning
 ms.author: billmath
 ms.reviewer: daveba
-ms.openlocfilehash: 4ea4214b81a6ba812634449ab839ef9328dab931
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 3aa5546ec7ab65e3bfe3dd0fee76930a56cfe429
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255115"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584272"
 ---
-# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei
+# <a name="azure-ad-connect-cloud-sync-agent-version-release-history"></a>Azure AD Connect Cloud Sync Agent: verziók kiadásának előzményei
 
 [!INCLUDE [active-directory-cloud-sync-version-history.md](../../../includes/active-directory-cloud-sync-version-history.md)]

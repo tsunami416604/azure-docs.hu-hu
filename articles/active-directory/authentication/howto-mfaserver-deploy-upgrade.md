@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755404a06d8586968801aa22f2af532da278802
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fbddd2eb52414827561d8896dfc8bc9ff705f41b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742323"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584391"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>A legújabb Azure Multi-Factor Authentication-kiszolgáló frissítése
 
@@ -33,16 +33,16 @@ Ha v6. x-ről vagy régebbiről a v7. x vagy újabb verzióra frissít, az össz
 
 Frissítés lépéseinek áttekintése:
 
-* Azure MFA-kiszolgálók frissítése (alárendeltek, majd főkiszolgáló)
+* Azure MFA-kiszolgálók frissítése (alárendeltek, majd elsődleges)
 * A felhasználói portál példányainak frissítése
 * A AD FS-adapter példányainak frissítése
 
 ## <a name="upgrade-azure-mfa-server"></a>Az Azure MFA-kiszolgáló frissítése
 
 1. Az Azure- [multi-Factor Authentication-kiszolgáló letöltése](howto-mfaserver-deploy.md#download-the-mfa-server) az Azure MFA-kiszolgáló telepítőjének legújabb verziójára című cikkben található utasításokat követve olvasható.
-2. Készítsen biztonsági másolatot az MFA-kiszolgáló adatfájljáról a C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (feltéve, hogy ez az alapértelmezett telepítési hely) a fő MFA-kiszolgálón.
+2. Készítsen biztonsági másolatot az MFA-kiszolgáló adatfájljáról, amely a C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (feltéve, hogy az alapértelmezett telepítési hely) az elsődleges MFA-kiszolgálón található.
 3. Ha több kiszolgálót is futtat a magas rendelkezésre állás érdekében, módosítsa az MFA-kiszolgálóra hitelesítő ügyfélszoftvereket, hogy ne küldjenek forgalmat a frissített kiszolgálókra. Ha Load balancert használ, távolítsa el az alárendelt MFA-kiszolgálót a terheléselosztó közül, végezze el a frissítést, majd adja hozzá újra a kiszolgálót a farmhoz.
-4. Futtassa az új telepítőt az egyes MFA-kiszolgálókon. Először frissítse az alárendelt kiszolgálókat, mert elolvashatják a főkiszolgáló által replikált régi adatfájlt.
+4. Futtassa az új telepítőt az egyes MFA-kiszolgálókon. Először frissítse az alárendelt kiszolgálókat, mert elolvashatják az elsődleges által replikált régi adatfájlt.
 
    > [!NOTE]
    > A kiszolgálók frissítésekor el kell távolítani a terheléselosztásról vagy más MFA-kiszolgálókkal való forgalom megosztásáról.
@@ -51,7 +51,7 @@ Frissítés lépéseinek áttekintése:
   
 5. Ha a rendszer kéri, hogy telepítsen egy Microsoft Visual C++ 2015 újraterjeszthető frissítési csomagot, fogadja el a kérést. A csomag x86-os és x64-es verziója is telepítve van.
 6. Ha a Web Service SDK-t használja, a rendszer kéri, hogy telepítse az új Web Service SDK-t. Az új Web Service SDK telepítésekor ellenőrizze, hogy a virtuális könyvtár neve megegyezik-e a korábban telepített virtuális könyvtárral (például Phonefactorwebservicesdk).
-7. Ismételje meg a lépéseket az összes alárendelt kiszolgálón. Léptesse elő a beosztottak egyikét, hogy az új főkiszolgáló legyen, majd frissítse a régi főkiszolgáló-kiszolgálót.
+7. Ismételje meg a lépéseket az összes alárendelt kiszolgálón. Léptesse elő a beosztottak egyikét az új elsődlegesnek, majd frissítse a régi elsődleges kiszolgálót.
 
 ## <a name="upgrade-the-user-portal"></a>A felhasználói portál frissítése
 
@@ -114,7 +114,7 @@ Ezek az utasítások csak akkor érvényesek, ha a Multi-Factor Authentication-k
 9. Ismételje meg a 2. lépést a AD FS farmból eltávolított kiszolgálók frissítéséhez, majd indítsa újra a AD FS szolgáltatást ezeken a kiszolgálókon.
 10. Adja hozzá ezeket a kiszolgálókat a AD FS farmhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Példák [speciális forgatókönyvekre az Azure multi-Factor Authentication és a harmadik féltől származó virtuális magánhálózatok](howto-mfaserver-nps-vpn.md) esetében
 
