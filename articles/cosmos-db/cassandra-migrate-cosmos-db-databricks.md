@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349180"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516542"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Adatok migrálása a Cassandra-ből Azure Cosmos DB Cassandra API-fiókba a Azure Databricks használatával
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -42,7 +42,7 @@ Az adatbázis-számítási feladatok egyik platformról a másikra való áttele
 
 ## <a name="provision-an-azure-databricks-cluster"></a>Azure Databricks-fürt kiépítése
 
-[Azure Databricks-fürt](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)kiépítésére vonatkozó utasításokat követve hozhat létre. Vegye figyelembe azonban, hogy a 3. x Apache Spark jelenleg nem támogatott az Apache Cassandra-összekötőn. Létre kell hoznia egy Databricks-futtatókörnyezetet a Apache Spark támogatott v2. x verziójával. Az Databricks Runtime 6,6-es verziójának használatát javasoljuk:
+[Azure Databricks-fürt](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)kiépítésére vonatkozó utasításokat követve hozhat létre. Vegye figyelembe azonban, hogy a 3. x Apache Spark jelenleg nem támogatott az Apache Cassandra-összekötőn. Létre kell hoznia egy Databricks-futtatókörnyezetet a Apache Spark támogatott v2. x verziójával. Javasoljuk, hogy válassza ki a Databricks Runtime azon verzióját, amely támogatja a Spark 2. x legújabb verzióját, amely a Scala 2,11-as verziójánál későbbi:
 
 :::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Databricks futtatókörnyezet":::
 

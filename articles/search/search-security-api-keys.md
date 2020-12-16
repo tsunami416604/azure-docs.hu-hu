@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0e209e8114d8f1791a00e87894fa12206edcf34e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 29a314553584843ed6241b9311e9d72b42ec8705
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700222"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516409"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése
 
@@ -88,6 +88,7 @@ Továbbra is hozzáférhet a szolgáltatáshoz a portálon vagy a felügyeleti r
 Miután a portálon vagy a felügyeleti rétegen keresztül új kulcsokat hozott létre, a rendszer visszaállítja a hozzáférést a tartalomhoz (indexek, indexelő, adatforrások, szinonimák), ha az új kulcsokkal rendelkezik, és megadja ezeket a kulcsokat a kérésekhez.
 
 ## <a name="secure-api-keys"></a>Biztonságos API – kulcsok
+
 A kulcs biztonsága a portálon vagy a Resource Manager-felületeken (PowerShell vagy parancssori felületen) keresztüli hozzáférés korlátozásával biztosítható. Az előfizetés-rendszergazdák az összes API-kulcsot megtekinthetik és újragenerálják. Elővigyázatosságból tekintse át a szerepkör-hozzárendeléseket, és Ismerje meg, hogy ki férhet hozzá a rendszergazdai kulcsokhoz.
 
 + A szolgáltatás Irányítópultján kattintson a **hozzáférés-vezérlés (iam)** elemre, majd a **szerepkör-hozzárendelések** fülre a szolgáltatáshoz tartozó szerepkör-hozzárendelések megtekintéséhez.
@@ -97,7 +98,7 @@ A következő szerepkörök tagjai megtekinthetik és újragenerálják a kulcso
 > [!Note]
 > A keresési eredményeken alapuló, identitás-alapú hozzáféréshez biztonsági szűrőket hozhat létre, amelyek identitás alapján metszik az eredményeket, és eltávolíthatja azokat a dokumentumokat, amelyekhez a kérelmezőnek nincs hozzáférése. További információ: [biztonsági szűrők](search-security-trimming-for-azure-search.md) és [biztonságos a Active Directory](search-security-trimming-for-azure-search-with-aad.md).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [Azure szerepköralapú hozzáférés-vezérlés az Azure-ban Cognitive Search](search-security-rbac.md)
 + [Kezelés a PowerShell-lel](search-manage-powershell.md) 

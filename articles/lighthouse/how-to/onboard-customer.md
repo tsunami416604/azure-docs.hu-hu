@@ -1,18 +1,18 @@
 ---
 title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.topic: how-to
-ms.openlocfilehash: b353a8194b9f5dd48b315340435669531359e8d5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608469"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516133"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
-Ez a cikk azt ismerteti, hogy Ön, mint szolgáltató, hogyan helyezhet üzembe egy ügyfelet az Azure Lighthouse szolgáltatásban. Ha így tesz, az ügyfél delegált erőforrásai (előfizetések és/vagy erőforráscsoportok) a saját Azure Active Directory (Azure AD) bérlőn keresztül érhetők el és kezelhetők az Azure-beli [delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md)használatával.
+Ez a cikk azt ismerteti, hogy Ön, mint szolgáltató, hogyan helyezhet üzembe egy ügyfelet az Azure Lighthouse szolgáltatásban. Ha így tesz, a delegált erőforrások (előfizetések és/vagy erőforráscsoportok) az ügyfél Azure Active Directory (Azure AD) bérlője a saját bérlőn keresztül felügyelhető az Azure-beli [delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md)használatával.
 
 > [!TIP]
 > Bár a jelen témakörben a szolgáltatók és az ügyfelek számára is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják az Azure Lighthouse beállításához és a kezelési élmény megszilárdításához.
@@ -22,7 +22,7 @@ A bevezetési folyamat több ügyfél számára is megismételhető. Ha a megfel
 Ha nyomon szeretné követni az ügyfelek bevonásait és az elismerést, társítsa a Microsoft Partner Network (MPN) AZONOSÍTÓját legalább egy olyan felhasználói fiókkal, amely hozzáfér a beérkező előfizetésekhez. Ezt a társítást a szolgáltatói bérlőben kell végrehajtania. Azt javasoljuk, hogy hozzon létre egy egyszerű szolgáltatásnevet a bérlőben, amely az MPN-AZONOSÍTÓhoz van társítva, majd az adott egyszerű szolgáltatást is beleértve minden alkalommal, amikor előkészíti az ügyfelet. További információ: [a partner azonosítójának összekapcsolása a partner által a delegált erőforrásokon kapott jóváírás engedélyezéséhez](partner-earned-credit.md).
 
 > [!NOTE]
-> Az ügyfelek az Azure világítótoronyba is bejelentkezhetnek, ha az [Azure Marketplace](publish-managed-services-offers.md)-en közzétett felügyelt szolgáltatási ajánlatot (nyilvános vagy privát) vásárolnak. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlatok mellett is használhatja.
+> Az Azure világítótoronyban az ügyfelek felhasználhatják az Azure-világítótornyot, amikor az [Azure Marketplace](publish-managed-services-offers.md)-en közzétett felügyelt szolgáltatási ajánlatot (nyilvános vagy privát) vásárolnak. Az itt ismertetett bevezetési folyamatot az Azure Marketplace-en közzétett ajánlatokkal együtt is használhatja.
 
 A bevezetési folyamathoz a szolgáltató bérlője és az ügyfél bérlője között végrehajtandó műveletek szükségesek. A fenti lépéseket a cikk ismerteti.
 
@@ -303,7 +303,19 @@ az account list
 
 Ha módosításokat kell végeznie az ügyfél beléptetése után, akkor [frissítheti a delegálást](update-delegation.md). [A delegáláshoz való hozzáférést teljesen el is távolíthatja](remove-delegation.md) .
 
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha nem tudja sikeresen bevezetni az ügyfelet, vagy ha a felhasználók nem tudnak hozzáférni a delegált erőforrásokhoz, tekintse meg az alábbi tippeket és követelményeket, és próbálkozzon újra.
+
+- Az `managedbyTenantId` érték nem egyezhet meg az előfizetéshez tartozó bérlői azonosítóval.
+- Ugyanahhoz a hatókörhöz nem tartozhat több hozzárendelés `mspOfferName` . 
+- A delegált előfizetéshez regisztrálni kell a **Microsoft. ManagedServices** erőforrás-szolgáltatót. Ez automatikusan megtörténik az üzembe helyezés során, de ha nem, akkor [manuálisan is regisztrálhatja](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+- Az engedélyek nem tartalmazhatnak olyan felhasználókat, akik a [tulajdonos](../../role-based-access-control/built-in-roles.md#owner) beépített szerepkörével vagy a [DataActions](../../role-based-access-control/role-definitions.md#dataactions)-mel rendelkező beépített szerepkörökkel rendelkeznek.
+- A csoportokat úgy kell létrehozni, hogy a [**csoport típusa**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) legyen **biztonsági** , és ne **Microsoft 365**.
+- Azok a felhasználók, akiknek a Azure Portal erőforrásainak meg kell tekinteniük az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört (vagy egy másik beépített szerepkört, amely olvasói hozzáférést is tartalmaz).
+
 ## <a name="next-steps"></a>További lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .
+- Megtudhatja, hogyan [frissítheti](update-delegation.md) vagy [távolíthatja el](remove-delegation.md) a delegálást.

@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3fbd4990fd330960bb8dbce2e2a8d1bcb578cf2a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 17b0564b4b73f5a5032343dcb78669cbf4cabd5a
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701184"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516146"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning használata a Fairlearn nyílt forráskódú csomaggal, amellyel mérhető az ML-modellek tisztasága (előzetes verzió)
 
@@ -38,80 +38,99 @@ A és a csomagok telepítéséhez használja az alábbi parancsokat `azureml-con
 pip install azureml-contrib-fairness
 pip install fairlearn==0.4.6
 ```
+A Fairlearn újabb verziói a következő példában is működnek.
 
 
 
 ## <a name="upload-fairness-insights-for-a-single-model"></a>Egyetlen modell méltányos bepillantást tölthet fel
 
-Az alábbi példa azt mutatja be, hogyan használható a méltányos csomag a modellnek a Azure Machine Learningba való feltöltéséhez, és a Azure Machine Learning Studióban tekintse meg a tisztesség értékelésének irányítópultját.
+Az alábbi példa bemutatja, hogyan használható a méltányos csomag. Azure Machine Learning és a Azure Machine Learning Studióban tekintjük meg a méltányos értékelés irányítópultját.
 
 1. Egy minta modell betanítása Jupyter-jegyzetfüzetbe. 
 
-    Az adatkészlet esetében a jól ismert felnőtt népszámlálás adatkészletet használjuk, amelyet a használatával töltünk be `shap` (a kényelem érdekében). Ebben a példában ezt az adatkészletet a hitelnyújtási döntési problémaként kezeljük, és a címke azt jelzi, hogy az egyes hitelek korábban nem fizettek-e vissza. Az adatküldés során a rendszer betanítja a prediktív betanítást, hogy a korábban láthatatlan személyek fizessenek-e kölcsönt vagy sem. Feltételezi, hogy a modell előrejelzései alapján döntheti el, hogy kell-e egy adott személyt felkínálni.
+    Az adatkészlet esetében a jól ismert felnőtt népszámlálás adatkészletet használjuk, amelyet a OpenML kapunk le. Tegyük fel, hogy a címkével kapcsolatban probléma merült fel, amely azt jelzi, hogy egy adott személy visszafizette-e az előző kölcsönt. Betanítunk egy modellt, amely azt jelzi, hogy a korábban láthatatlan személyek fizetnek-e hitelt. Ezt a modellt felhasználhatja a hitelek meghozatalához.
 
     ```python
-    from sklearn.model_selection import train_test_split
-    from fairlearn.widget import FairlearnDashboard
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.preprocessing import LabelEncoder, StandardScaler
+    import copy
+    import numpy as np
     import pandas as pd
-    import shap
+
+    from sklearn.compose import ColumnTransformer
+    from sklearn.datasets import fetch_openml
+    from sklearn.impute import SimpleImputer
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.model_selection import train_test_split
+    from sklearn.preprocessing import StandardScaler, OneHotEncoder
+    from sklearn.compose import make_column_selector as selector
+    from sklearn.pipeline import Pipeline
+    
+    from fairlearn.widget import FairlearnDashboard
 
     # Load the census dataset
-    X_raw, Y = shap.datasets.adult()
-    X_raw["Race"].value_counts().to_dict()
+    data = fetch_openml(data_id=1590, as_frame=True)
+    X_raw = data.data
+    y = (data.target == ">50K") * 1
     
-
     # (Optional) Separate the "sex" and "race" sensitive features out and drop them from the main data prior to training your model
-    A = X_raw[['Sex','Race']]
-    X = X_raw.drop(labels=['Sex', 'Race'],axis = 1)
-    X = pd.get_dummies(X)
+    X_raw = data.data
+    y = (data.target == ">50K") * 1
+    A = X_raw[["race", "sex"]]
+    X = X_raw.drop(labels=['sex', 'race'],axis = 1)
     
-    sc = StandardScaler()
-    X_scaled = sc.fit_transform(X)
-    X_scaled = pd.DataFrame(X_scaled, columns=X.columns)
+    # Split the data in "train" and "test" sets
+    (X_train, X_test, y_train, y_test, A_train, A_test) = train_test_split(
+        X_raw, y, A, test_size=0.3, random_state=12345, stratify=y
+    )
 
-    # Perform some standard data preprocessing steps to convert the data into a format suitable for the ML algorithms
-    le = LabelEncoder()
-    Y = le.fit_transform(Y)
-
-    # Split data into train and test
-    from sklearn.model_selection import train_test_split
-    from sklearn.model_selection import train_test_split
-    X_train, X_test, Y_train, Y_test, A_train, A_test = train_test_split(X_scaled, 
-                                                        Y, 
-                                                        A,
-                                                        test_size = 0.2,
-                                                        random_state=0,
-                                                        stratify=Y)
-
-    # Work around indexing issue
+    # Ensure indices are aligned between X, y and A,
+    # after all the slicing and splitting of DataFrames
+    # and Series
     X_train = X_train.reset_index(drop=True)
-    A_train = A_train.reset_index(drop=True)
     X_test = X_test.reset_index(drop=True)
+    y_train = y_train.reset_index(drop=True)
+    y_test = y_test.reset_index(drop=True)
+    A_train = A_train.reset_index(drop=True)
     A_test = A_test.reset_index(drop=True)
 
-    # Improve labels
-    A_test.Sex.loc[(A_test['Sex'] == 0)] = 'female'
-    A_test.Sex.loc[(A_test['Sex'] == 1)] = 'male'
+    # Define a processing pipeline. This happens after the split to avoid data leakage
+    numeric_transformer = Pipeline(
+        steps=[
+            ("impute", SimpleImputer()),
+            ("scaler", StandardScaler()),
+        ]
+    )
+    categorical_transformer = Pipeline(
+        [
+            ("impute", SimpleImputer(strategy="most_frequent")),
+            ("ohe", OneHotEncoder(handle_unknown="ignore")),
+        ]
+    )
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ("num", numeric_transformer, selector(dtype_exclude="category")),
+            ("cat", categorical_transformer, selector(dtype_include="category")),
+        ]
+    )
 
+    # Put an estimator onto the end of the pipeline
+    lr_predictor = Pipeline(
+        steps=[
+            ("preprocessor", copy.deepcopy(preprocessor)),
+            (
+                "classifier",
+                LogisticRegression(solver="liblinear", fit_intercept=True),
+            ),
+        ]
+    )
 
-    A_test.Race.loc[(A_test['Race'] == 0)] = 'Amer-Indian-Eskimo'
-    A_test.Race.loc[(A_test['Race'] == 1)] = 'Asian-Pac-Islander'
-    A_test.Race.loc[(A_test['Race'] == 2)] = 'Black'
-    A_test.Race.loc[(A_test['Race'] == 3)] = 'Other'
-    A_test.Race.loc[(A_test['Race'] == 4)] = 'White'
-
-
-    # Train a classification model
-    lr_predictor = LogisticRegression(solver='liblinear', fit_intercept=True)
-    lr_predictor.fit(X_train, Y_train)
+    # Train the model on the test data
+    lr_predictor.fit(X_train, y_train)
 
     # (Optional) View this model in Fairlearn's fairness dashboard, and see the disparities which appear:
     from fairlearn.widget import FairlearnDashboard
     FairlearnDashboard(sensitive_features=A_test, 
-                       sensitive_feature_names=['Sex', 'Race'],
-                       y_true=Y_test,
+                       sensitive_feature_names=['Race', 'Sex'],
+                       y_true=y_test,
                        y_pred={"lr_model": lr_predictor.predict(X_test)})
     ```
 
@@ -149,11 +168,11 @@ Az alábbi példa azt mutatja be, hogyan használható a méltányos csomag a mo
 
     ```python
     #  Create a dictionary of model(s) you want to assess for fairness 
-    sf = { 'Race': A_test.Race, 'Sex': A_test.Sex}
+    sf = { 'Race': A_test.race, 'Sex': A_test.sex}
     ys_pred = { lr_reg_id:lr_predictor.predict(X_test) }
     from fairlearn.metrics._group_metric_set import _create_group_metric_set
 
-    dash_dict = _create_group_metric_set(y_true=Y_test,
+    dash_dict = _create_group_metric_set(y_true=y_test,
                                         predictions=ys_pred,
                                         sensitive_features=sf,
                                         prediction_type='binary_classification')
@@ -207,28 +226,33 @@ Az alábbi példa azt mutatja be, hogyan használható a méltányos csomag a mo
 
 ## <a name="upload-fairness-insights-for-multiple-models"></a>Több modell méltányos bepillantást tölthet fel
 
-Ha több modell összehasonlítását szeretné megtekinteni, és látni szeretné, hogy a tisztesség értékelése hogyan különbözik, több modellt is átadhat a vizualizációs irányítópulthoz, és megkeresheti a teljesítmény-méltányos kompromisszumot.
+Ha több modellt szeretne összehasonlítani, és látni szeretné, hogy a tisztesség értékelésük Miben különbözik, akkor több modellt is átadhat a vizualizációs irányítópulthoz, és összehasonlíthatja a teljesítmény-méltányos kompromisszumokat.
 
 1. A modellek betanítása:
     
-    A korábbi logisztikai regressziós modellen kívül egy második besorolást is létrehozunk egy támogatási vektoros számítógép-kalkulátor alapján, és fel kell tölteni a tisztességes irányítópult-szótárt a Fairlearn `metrics` csomagjának használatával. Vegye figyelembe, hogy itt kihagyjuk az betöltési és előfeldolgozási lépéseket, és rögtön a modell betanítási szakaszába kerülnek.
+    Most létrehozunk egy második besorolást, amely egy támogatási vektoros gépi kalkulátoron alapul, és feltölt egy méltányos irányítópult-szótárt a Fairlearn `metrics` csomagjának használatával. Feltételezzük, hogy a korábban betanított modell továbbra is elérhető.
 
 
     ```python
-    # Train your first classification model
-    from sklearn.linear_model import LogisticRegression
-    lr_predictor = LogisticRegression(solver='liblinear', fit_intercept=True)
-    lr_predictor.fit(X_train, Y_train)
+    # Put an SVM predictor onto the preprocessing pipeline
+    from sklearn import svm
+    svm_predictor = Pipeline(
+        steps=[
+            ("preprocessor", copy.deepcopy(preprocessor)),
+            (
+                "classifier",
+                svm.SVC(),
+            ),
+        ]
+    )
 
     # Train your second classification model
-    from sklearn import svm
-    svm_predictor = svm.SVC()
-    svm_predictor.fit(X_train, Y_train)
+    svm_predictor.fit(X_train, y_train)
     ```
 
 2. A modellek regisztrálása
 
-    Ezután regisztráljon mindkét modellt Azure Machine Learningon belül. A későbbi metódusokban való használat érdekében az eredményeket egy olyan szótárban tárolja, amely a `id` regisztrált modell (egy formátumú karakterlánc) leképezi a `name:version` prediktív szolgáltatást:
+    Ezután regisztráljon mindkét modellt Azure Machine Learningon belül. A kényelmes használat érdekében az eredményeket egy olyan szótárban tárolja, amely a `id` regisztrált modell (formátumú karakterlánc) leképezi a prediktív azonosítóját `name:version` :
 
     ```python
     model_dict = {}
@@ -255,8 +279,8 @@ Ha több modell összehasonlítását szeretné megtekinteni, és látni szeretn
     from fairlearn.widget import FairlearnDashboard
 
     FairlearnDashboard(sensitive_features=A_test, 
-                    sensitive_feature_names=['Sex', 'Race'],
-                    y_true=Y_test.tolist(),
+                    sensitive_feature_names=['Race', 'Sex'],
+                    y_true=y_test.tolist(),
                     y_pred=ys_pred)
     ```
 
@@ -265,7 +289,7 @@ Ha több modell összehasonlítását szeretné megtekinteni, és látni szeretn
     Irányítópult-szótár létrehozása a Fairlearn `metrics` csomagjának használatával.
 
     ```python
-    sf = { 'Race': A_test.Race, 'Sex': A_test.Sex }
+    sf = { 'Race': A_test.race, 'Sex': A_test.sex }
 
     from fairlearn.metrics._group_metric_set import _create_group_metric_set
 
@@ -304,22 +328,22 @@ Ha több modell összehasonlítását szeretné megtekinteni, és látni szeretn
     ```
 
 
-    Az előző szakaszhoz hasonlóan a Azure Machine Learning Studióban a fentiekben ismertetett elérési utak **Experiments** egyikét **Models** is követheti a vizualizációs irányítópult eléréséhez, és a két modellt a méltányosság és a teljesítmény szempontjából hasonlíthatja össze.
+    Az előző szakaszhoz hasonlóan a Azure Machine Learning Studióban a fentiekben ismertetett elérési utak  egyikét is követheti a vizualizációs irányítópult eléréséhez, és a két modellt a méltányosság és a teljesítmény szempontjából hasonlíthatja össze.
 
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>Nem enyhített és enyhített tisztasági adatok feltöltése
 
 Használhatja a Fairlearn [enyhítő algoritmusait](https://fairlearn.github.io/master/user_guide/mitigation.html), összehasonlíthatja a létrehozott, kinyert modell (eke) t az eredeti, nem enyhített modellel, és megtekintheti a teljesítmény/méltányosság elleni kompromisszumokat az összehasonlított modellek között.
 
-Ha szeretné megtekinteni egy példát, amely bemutatja a [Grid Search](https://fairlearn.github.io/master/user_guide/mitigation.html#grid-search) -enyhítő algoritmus használatát (amely a különböző tisztességgel és teljesítményű adatforgalommal rendelkező, csökkenthető modellek gyűjteményét hozza létre), tekintse meg ezt a [minta jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb). 
+Ha meg szeretné tekinteni egy példát, amely bemutatja a [Grid Search](https://fairlearn.github.io/master/user_guide/mitigation.html#grid-search) -enyhítő algoritmus használatát (amely a különböző tisztességgel és teljesítményű adatforgalommal rendelkező, csökkenthető modellek gyűjteményét hozza létre), tekintse meg ezt a [minta jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb). 
 
-Ha több modellt tölt fel egy adott futtatásban, az a méltányosság és a teljesítmény tekintetében lehetővé teszi a modellek összehasonlítását. További rákattinthat a modell összehasonlító diagramján megjelenő modellekre is, hogy megtekintse az adott modell részletes, korrekt megállapításait.
+Több modell kimutatása egyetlen futtatásban – lehetővé teszi a modellek összehasonlítását a méltányosság és a teljesítmény tekintetében. A modell összehasonlító diagramján megjelenő modellekre kattintva megtekintheti az adott modell részletes információit.
 
 
 [![Modell összehasonlító Fairlearn irányítópultja](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
     
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ a modell tisztaságáról](concept-fairness-ml.md)
 

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: fbbd5dbbc51cdb3b0d3c3783fa6ed72b76d26284
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 693cabac616dca8e108a2029c173a5e1b71c2695
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900368"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516738"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alkalmazások fejlesztői számára az erőforrások kezeléséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -34,7 +34,7 @@ A számítási erőforrások egy AK-fürtön belüli kezelésének elsődleges m
 * A **Pod CPU-/memória-kérések** határozzák meg a processzor és a memória minimálisan szükséges mennyiségét.
     * Amikor a Kubernetes Scheduler egy Pod-t próbál elhelyezni egy csomóponton, a pod-kérelmek alapján megállapítható, hogy melyik csomópont rendelkezik elegendő erőforrással az ütemezéshez.
     * Ha nem állít be egy Pod-kérést, a rendszer alapértelmezés szerint a megadott korlátot állítja be.
-    * Nagyon fontos az alkalmazás teljesítményének figyelése a kérések módosításához. Ha nem áll rendelkezésre elegendő kérelem, az alkalmazás csökkentett teljesítményt kaphat a csomópont ütemezése miatt. Ha a kérelmeket túlbecsülik, előfordulhat, hogy az alkalmazás az ütemezettnél nagyobb nehézségekbe ütközik.
+    * Nagyon fontos az alkalmazás teljesítményének figyelése a kérések módosításához. Ha nem áll rendelkezésre elegendő Pod-erőforrásra vonatkozó kérelem, az alkalmazás a csomópont ütemezése miatt lecsökkentett teljesítményt kaphat. Ha a kérelmeket túlbecsülik, előfordulhat, hogy az alkalmazás az ütemezettnél nagyobb nehézségekbe ütközik.
 * A **Pod CPU/memória korlátja** a hüvely által használható CPU és memória maximális mennyisége. A memória korlátai segítenek meghatározni, hogy mely hüvelyek legyenek leállítva a csomópont instabilitása miatt, mert nincs elegendő erőforrás. A megfelelő korlátok megadása nélkül a hüvelyek leállnak, amíg az erőforrás-nyomást fel nem emelik. Egy Pod lehet, hogy egy adott időtartamon belül nem lépheti túl a CPU-korlátot, de a rendszer nem fogja leölni a CPU-korlátot. 
     * A pod-korlátok segítenek meghatározni, hogy egy Pod elvesztette-e az erőforrás-felhasználást. Ha túllépi a korlátot, a pod prioritást élvez a csomópont állapotának fenntartása és a csomópontot megosztó hüvelyek hatásának csökkentése érdekében.
     * Ha nem állít be egy Pod-korlátot, a rendszer az adott csomópont legmagasabb rendelkezésre álló értékére állítja be.
@@ -100,7 +100,7 @@ Az Kube-Advisor eszköz jelentést készíthet az erőforrás-kérésekről, val
 
 A sok fejlesztői csapatot és alkalmazást üzemeltető AK-fürtben nehéz lehet a hüvelyek nyomon követése az erőforrás-kérelmek és a korlátok beállítása nélkül. Ajánlott eljárásként rendszeresen futtasson `kube-advisor` az AK-fürtökön.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az ajánlott eljárási cikk a fürt és a számítási feladatok fürtözési perspektívából való futtatására koncentrál. További információ az ajánlott felügyeleti gyakorlatokról: a [cluster operátor ajánlott eljárásai az elkülönítéshez és az erőforrás-kezeléshez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-isolation].
 

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68526fd542d8bc891358a36d031af3314edab4c2
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507982"
+ms.locfileid: "97516092"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések a Azure Active Directory B2C egyéni házirendjeihez
 
@@ -116,7 +116,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 | Lekérdezési karakterlánc paraméter `login_hint` |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
 | JSON beszúrása felhasználói útra a használatával `client_assertion` | X |  |  | Elavulttá válik. |
 | JSON beszúrása a felhasználói útra `id_token_hint` |  | X |  | Továbbítási megközelítés a JSON továbbítására. |
-| [Identitás-szolgáltatói token átadása az alkalmazásnak](idp-pass-through-custom.md) |  | X |  | Például a Facebookról az alkalmazásra. |
+| [Identitás-szolgáltatói token átadása az alkalmazásnak](idp-pass-through-user-flow.md) |  | X |  | Például a Facebookról az alkalmazásra. |
 
 
 ### <a name="session-management"></a>Munkamenet-kezelés

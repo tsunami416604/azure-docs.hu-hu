@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e3245053fcc9943814268835fa5ac0f40a6f94c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750509"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516374"
 ---
 # <a name="secure-your-restful-services"></a>A REST-szolgáltatások biztonságossá tétele 
 
@@ -53,15 +53,15 @@ Ha egy REST API műszaki profilt HTTP alapszintű hitelesítéssel szeretne konf
     Lehet, hogy az előtag *B2C_1A_* automatikusan hozzá lesz adva.
 1. A **titok** mezőbe írja be a REST API felhasználónevet.
 1. A **kulcshasználat** beállításnál válassza a **titkosítás** lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Válassza újra a **házirend-kulcsok** elemet.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. A **Beállítások** lapon válassza a **manuális** lehetőséget.
 1. A **név** mezőbe írja be a következőt: **RestApiPassword**.
     Lehet, hogy az előtag *B2C_1A_* automatikusan hozzá lesz adva.
 1. A **titok** mezőbe írja be a REST API jelszót.
 1. A **kulcshasználat** beállításnál válassza a **titkosítás** lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-http-basic-authentication"></a>A REST API műszaki profil konfigurálása HTTP alapszintű hitelesítés használatára
 
@@ -142,7 +142,7 @@ Nem éles környezetekben, ha még nem rendelkezik tanúsítvánnyal, önaláír
     A rendszer automatikusan hozzáadja a *B2C_1A_* előtagot.
 1. A **fájlfeltöltés** mezőben válassza ki a tanúsítvány. pfx fájlját, amely titkos kulccsal rendelkezik.
 1. A **jelszó** mezőbe írja be a tanúsítvány jelszavát.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-client-certificate-authentication"></a>Az REST API műszaki profil konfigurálása az ügyféltanúsítvány-alapú hitelesítés használatára
 
@@ -230,7 +230,7 @@ A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárol
 
 ### <a name="acquiring-an-access-token"></a>Hozzáférési jogkivonat beszerzése 
 
-A hozzáférési jogkivonatot többféleképpen is beszerezheti: Ha [egy összevont identitás-szolgáltatótól](idp-pass-through-custom.md)szerzi be REST API a hozzáférési jogkivonatot, egy [ROPC-folyamat](../active-directory/develop/v2-oauth-ropc.md)használatával vagy az [ügyfél hitelesítő adatainak](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)használatával.  
+A hozzáférési jogkivonatot többféleképpen is beszerezheti: Ha [egy összevont identitás-szolgáltatótól](idp-pass-through-user-flow.md)szerzi be REST API a hozzáférési jogkivonatot, egy [ROPC-folyamat](../active-directory/develop/v2-oauth-ropc.md)használatával vagy az [ügyfél hitelesítő adatainak](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)használatával.  
 
 Az alábbi példa egy REST API technikai profilt használ az Azure AD jogkivonat-végpontra irányuló kérelem elvégzésére az ügyfél HTTP alapszintű hitelesítésként átadott hitelesítő adatainak használatával. Az Azure AD-ben való konfigurálásról a [Microsoft Identity platform és a OAuth 2,0 ügyfél-hitelesítő adatok folyamata](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)című cikkben olvashat. Előfordulhat, hogy módosítania kell ezt az identitás-szolgáltatóval való kapcsolatra. 
 
@@ -323,7 +323,7 @@ Ha egy REST API műszaki profilt OAuth2 tulajdonosi jogkivonattal szeretne konfi
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `RestApiBearerToken`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 1. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
 1. A **kulcshasználat** beállításnál válassza a elemet `Encryption` .
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-the-bearer-token-policy-key"></a>A REST API technikai profiljának konfigurálása a tulajdonosi jogkivonat-házirend kulcsának használatára
 
@@ -383,7 +383,7 @@ REST API műszaki profil API-kulcsos hitelesítéssel való konfigurálásához 
     Lehet, hogy az előtag *B2C_1A_* automatikusan hozzá lesz adva.
 1. A **titok** mezőbe írja be a REST API kulcsot.
 1. A **kulcshasználat** beállításnál válassza a **titkosítás** lehetőséget.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-api-key-authentication"></a>Az REST API műszaki profil konfigurálása az API-kulcsos hitelesítés használatára

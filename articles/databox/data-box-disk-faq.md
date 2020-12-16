@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 483ae81f22358e41f252dd8090c01d5b4cad7fb1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344164"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516449"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: gyakori kérdések
 
@@ -62,27 +62,56 @@ A. A Data Box Disk az Egyesült Államok, Kanada, Ausztrália, Nyugat-Európa é
 ### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>K. Hogyan importálhatók a saját helyükre tartozó forrásadatok egy adott országban vagy régióban egy másik országban található Azure-régióba?
 A. Data Box Disk támogatja az adatfeldolgozást kizárólag a rendeltetési országon vagy régióban belül, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol a Data Box-lemezek bármelyik EU-országba/régióba oda tudnak szállítani.
 
-Ha például az Azure-beli WestUS-fiókba kívánja helyezni az adatait, az alábbi módon érheti el:
+Ha például az Egyesült államokbeli USA-beli Azure-beli Storage-fiókba kívánja helyezni az adatait, az alábbi módon érheti el:
 
 ### <a name="option-1"></a>1. módszer: 
 
-Az [Azure import/export szolgáltatásból](../storage/common/storage-import-export-service.md) származó adatokkal rendelkező [támogatott lemez](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks) szállítása a kanadai forrás helyéről az Azure WestUS adatközpontba.
+Az [Azure import/export szolgáltatásból](../storage/common/storage-import-export-service.md) származó adatokkal rendelkező [támogatott lemez](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks) szállítása a kanadai forrás helyéről az Azure West US datacenterba.
 
 ### <a name="option-2"></a>2. lehetőség:
 
-1. Megrendelési Data Box Disk Kanadában a Storage-fiók kiválasztásával a Cananda Central-ban. Az SSD-lemezeket az Azure-adatközpontból, Közép-Kanadában, a rendelés létrehozása során megadott szállítási címtől (Kanadában) szállítjuk.
+1. Megrendelési Data Box Disk Kanadában egy Storage-fiók kiválasztásával Kanada középső régiójában. Az SSD-lemezeket az Azure-adatközpontból, Közép-Kanadában, a rendelés létrehozása során megadott szállítási címtől (Kanadában) szállítjuk.
 
 2. Miután a rendszer átmásolta a helyszíni kiszolgáló adatait a lemezekre, a Microsoft által biztosított visszatérési címkék használatával visszaküldheti azokat a kanadai Azure-adatközpontba. A Data Box Disk (ok) ban található, a rendelés létrehozásakor kiválasztott Kanada Azure-régiójában lévő, a cél Storage-fiókba való feltöltésre kerül.
 
-3. Ezt követően egy olyan eszközzel is elvégezheti az AzCopy, amely az WestUS-ben lévő Storage-fiókba másolja az adatfájlokat. Ez a lépés a Data Box Disk számlázásban nem szereplő [szabványos tárolási](https://azure.microsoft.com/pricing/details/storage/) és [sávszélesség-díjakat](https://azure.microsoft.com/pricing/details/bandwidth/) tartalmazza.
+3. Ezután a AzCopy hasonló eszközzel másolhatók az adattárak az USA nyugati régiójában lévő Storage-fiókba. Ez a lépés a Data Box Disk számlázásban nem szereplő [szabványos tárolási](https://azure.microsoft.com/pricing/details/storage/) és [sávszélesség-díjakat](https://azure.microsoft.com/pricing/details/bandwidth/) tartalmazza.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box Disk-lemezekkel kapcsolatban?
-A. Ha Data Box lemezzel kapcsolatos problémákat tapasztal, vegye fel a [kapcsolatot a Microsoft ügyfélszolgálataval](./data-box-disk-contact-microsoft-support.md).
+A. Ha Data Box lemezzel kapcsolatos problémákat tapasztal, forduljon a [Microsoft ügyfélszolgálatahoz](./data-box-disk-contact-microsoft-support.md).
+
+## <a name="order-device"></a>Eszköz rendelése
+
+### <a name="q-how-do-i-get-data-box-disk"></a>K. Hogyan lekérni Data Box Disk? 
+A.  Azure Data Box Disk beszerzéséhez jelentkezzen be a Azure Portalba, és hozzon létre egy Data Box Disk rendelést. Adja meg a kapcsolattartási és értesítési adatait. Ha megrendelést helyezett a rendelkezésre állás alapján, a rendszer 10 napon belül elküldi a Data Box Disk. További információ [a Data Box megrendeléséről](data-box-disk-deploy-ordered.md).
+
+### <a name="q-i-couldnt-create-a-data-box-disk-order-in-the-azure-portal-why"></a>K. Nem sikerült Data Box Disk sorrendet létrehozni a Azure Portalban. Miért?
+A. Ha nem hoz létre Data Box Disk sorrendet, az előfizetési típussal vagy a hozzáféréssel kapcsolatos probléma merült fel.
+
+Ellenőrizze az előfizetését. A Data Box Disk csak Nagyvállalati Szerződés (EA) és a Cloud Solution Provider (CSP) előfizetési ajánlatok esetében érhető el. Ha nem rendelkezik ezekkel az előfizetési típusokkal, lépjen kapcsolatba Microsoft ügyfélszolgálata az előfizetés frissítéséhez.
+
+Ha egy támogatott típusú előfizetéssel rendelkezik, ellenőrizze a hozzáférési szintjét. Megrendelés létrehozására csak az előfizetések közreműködői vagy tulajdonosai jogosultak.
+
+### <a name="q-how-long-will-my-order-take-from-order-creation-to-data-uploaded-to-azure"></a>K. Mennyi időt vesz igénybe a rendelés létrehozása az Azure-ba feltöltött adatok alapján?
+
+A. A megrendelés feldolgozásának minden fázisában a következő becsült bevezetési idő alapján érdemes elvárnia, mire számíthat.  
+
+Ezek az átvezető időpontok a *becslések*. Az adatközpont, az egyidejű megrendelések és az egyéb környezeti feltételek betöltése hatással van a megrendelés feldolgozásának minden szakaszának időpontjára.
+
+**Data Box Disk rendelés becsült átvezetési ideje:**
+
+1. Megrendelés Data Box Disk: néhány perc a portálról
+2. Lemez kiosztása és előkészítése: 1-2 munkanap
+3. Szállítás: 2–3 munkanap
+4. Adatmásolás az ügyfél webhelyén: az adatok természetétől, méretétől és a fájlok számától függ.
+5. Visszaküldés: 2–3 munkanap
+6. Lemez feldolgozása a következő adatközpontban: 1-2 munkanapok
+7. Adatok feltöltése az Azure-ba: a feldolgozás befejeződése és a lemez csatlakoztatása után kezdődik. A feltöltési idő az adatok természetétől, a mérettől és a fájlok számától függ.
+
 
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>K. Megadhatom a megrendelésben a Data Box Disk-lemezek számát?
-A.  Nem. 8 TB-os lemezeket (legfeljebb 5-öt) fog kapni az adatai mérete és a lemezek rendelkezésre állásának függvényében.  
+A.  Nem. 8 TB-os lemez (legfeljebb 5 lemez) adható meg az adatmérettől és a lemezek elérhetőségtől függően.  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>K. Hogyan oldhatom fel a Data Box Disk-lemezeket? 
 A.  Nyissa meg az Azure Portalon a Data Box Disk-megrendelését, majd az **Eszköz részletei** lehetőséget. Másol le a jelszót. Töltse le az Azure Portalról az operációs rendszerének megfelelő Data Box Disk lemezzárolás-feloldó eszközt. Futtassa azon a számítógépen, amelyről az adatokat a lemezekre szeretné másolni. Adja meg a jelszót a lemezek feloldásához. Ugyanaz a jelszó oldja fel az összes lemezt. 
@@ -116,7 +145,7 @@ A. Igen. A Microsoft csak US Gov régióban biztosít önfelügyelt szállítás
 Miután az Adatmásolás és az érvényesítés befejeződött, hajtsa végre a következő lépéseket a lemez visszaküldéséhez:
 
 1. Miután az adatok érvényesítése befejeződött, válassza le a lemezeket. Távolítsa el a csatlakoztatott kábeleket.
-2. Csomagolja be az összes lemezt és kábelt buborékfóliába, és helyezze őket a szállítási dobozba. Ha a tartozékok hiányoznak, a szolgáltató költségeket számíthat fel.
+2. Csomagolja be az összes lemezt és a csatlakoztatott kábeleket egy buborék-körbefuttatással, és helyezze azokat a szállítás mezőbe. Ha a tartozékok hiányoznak, a szolgáltató költségeket számíthat fel.
 
     - Használja fel újra az első szállításkor kapott csomagolást. Ajánlott megfelelően rögzített buborékfóliát használni a lemezek becsomagolásához.
     - Gondoskodjon róla, hogy a lemez szorosan illeszkedjen a dobozba.
@@ -139,16 +168,16 @@ A. A tesztjeink során USB 3.0-ás kapcsolat esetén a lemezeknél 430 MB/s-os a
 A.  A Data Box Disk-lemezek 128 bites BitLocker AES-titkosítással vannak titkosítva, és a titkosítás jelszava csak az Azure Portalon érhető el. A jelszó lekéréséhez jelentkezzen be az Azure Portalra a fiókja hitelesítő adataival. Ezt a jelszót a Data Box lemezzárolás-feloldó eszköz használata során adhatja meg.
 
 ### <a name="q-how-do-i-copy-the-data-to-the-data-box-disks"></a>K. Hogyan tudom az adataimat a Data Box Disk-lemezekre másolni? 
-A.  Az adatok egy SMB-másoló eszköz, például a Robocopy vagy a Diskboss használatával másolhatja a lemezekre, de használhatja akár a Windows Fájlkezelő húzás funkcióját is.
+A.  Az adatlemezekre másoláshoz használjon SMB-másolási eszközt, például, `Robocopy` `Diskboss` vagy akár a Windows fájlkezelő húzását.
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>K. Vannak tippek az adatok másolásának felgyorsítására?
 A.  A másolási folyamat felgyorsításához:
 
-- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A ténylegesen használt parancsokkal kapcsolatban további információkat a következő oktatóanyagban talál: [Oktatóanyag: Adatok másolása az Azure Data Box Disk-lemezre, és az adatok ellenőrzése](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
+- Használjon több másolási adatfolyamot. Például a `Robocopy` esetében használja a többszálú kapcsolót. A ténylegesen használt parancsokkal kapcsolatban további információkat a következő oktatóanyagban talál: [Oktatóanyag: Adatok másolása az Azure Data Box Disk-lemezre, és az adatok ellenőrzése](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
 - Használjon több munkamenetet.
 - Például a hálózati megosztásból történő másolás helyett (ahol a hálózat sebessége korlátokat szabhat) gondoskodjon róla, hogy az adatok azon a helyi számítógépen legyenek, amelyre a lemezeket csatlakoztatja.
-- Gondoskodjon róla, hogy a másolási folyamathoz USB 3.0-ás vagy újabb kapcsolatot használjon. Töltse le és használja az [USBView eszközt](/windows-hardware/drivers/debugger/usbview), amellyel azonosíthatja a számítógép USB-vezérlőit és a számítógéphez kapcsolódó USB-s eszközöket.
-- Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [Bluestop FIO eszközt](https://ci.appveyor.com/project/axboe/fio), amellyel megmérheti a kiszolgáló hardverének teljesítményét. Válassza ki a legújabb x86-vagy x64-buildet, válassza a **összetevők fület** , és töltse le az MSI-t.
+- Gondoskodjon róla, hogy a másolási folyamathoz USB 3.0-ás vagy újabb kapcsolatot használjon. Töltse le és használja az [ `USBView` eszközt](/windows-hardware/drivers/debugger/usbview) a számítógéphez csatlakoztatott USB-vezérlők és USB-eszközök azonosításához.
+- Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [Bluestop `FIO` eszközt](https://ci.appveyor.com/project/axboe/fio) a kiszolgálói hardver teljesítményének összehasonlításához. Válassza ki a legújabb x86-vagy x64-buildet, válassza a **összetevők fület** , és töltse le az MSI-t.
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>K. Hogyan lehet felgyorsítani az adatok másolását, ha a forrásadatok között sok kisméretű fájl található (KB-os vagy néhány MB-os méretűek)?
 A.  A másolási folyamat felgyorsításához:
@@ -163,7 +192,7 @@ A.  Nem. A Data Box Disk-lemezekkel jelenleg csak egyetlen általános célú va
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>K. Milyen eszközkészlet érhető el az adataim Data Box lemezzel?
 A. A Data Box Disk elérhető eszközkészlet három eszközt tartalmaz:
  - **Data Box Disk-feloldási eszköz**: ezzel az eszközzel oldhatja fel a Microsoft által szállított titkosított lemezeket. Ha a lemezeket az eszközzel oldja fel, meg kell adnia a Azure Portal Data Box Disk sorrendjében elérhető hozzáférési kulcsot. 
- - **Data Box Disk érvényesítési eszköz**: ezzel az eszközzel ellenőrizheti a méretet, a formátumot és a blob nevét az Azure elnevezési konvenciók szerint. Emellett ellenőrzőösszegeket is generál a másolt adatfájlokhoz, amelyeket azután az Azure-ba feltöltött adatellenőrzéshez használ a rendszer.
+ - **Data Box Disk érvényesítési eszköz**: ezzel az eszközzel ellenőrizheti a méretet, a formátumot és a blob nevét az Azure elnevezési konvenciók szerint. Emellett ellenőrzőösszegeket is generál a másolt adatelemekhez, amelyeket azután az Azure-ba feltöltött adatellenőrzéshez használ a rendszer.
  - **Data Box Disk megosztott másolási eszköz**: akkor használja ezt az eszközt, ha több lemezt használ, és olyan nagy adatkészlettel rendelkezik, amelyet az összes lemezre el kell osztani és át kell másolni. Ez az eszköz jelenleg Windows rendszeren érhető el. Ez az eszköz felügyelt lemezek esetén nem támogatott. Ez az eszköz azt is ellenőrzi, hogy az Adatmásolás során az adatmásolási lépés kihagyható-e az eszköz használatakor.
 
 Az eszközkészlet a Windows és a Linux rendszerhez egyaránt elérhető. Az eszközkészletet innen töltheti le:
@@ -180,10 +209,10 @@ A. A Azure Files Data Box Disk, de nem fognak jól működni Azure File Sync. A 
 A.  Amint az Adatmásolás megrendelési állapota befejeződöttként jelenik meg, azonnal hozzáférhet az adataihoz.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>K. A feltöltést követően hol lesznek az adataim az Azure-ban?
-A.  Ha a lemezen a *BlockBlob* és a *PageBlob* mappákba másolta az adatait, akkor a *BlockBlob* és a *PageBlob* mappákban található almappáknak létrejön az Azure-tárfiókban egy-egy tároló. Ha a fájlokat közvetlenül a *BlockBlob* és a *PageBlob* mappákba másolta, akkor ezek az alapértelmezett *$root* tárolóban lesznek megtalálhatók az Azure-tárfiókban. Amikor az *AzureFile* mappában található mappába másol egy mappát, létrejön egy fájlmegosztás.
+A.  Ha a lemezen a *BlockBlob* és a *PageBlob* mappákba másolta az adatait, akkor a *BlockBlob* és a *PageBlob* mappákban található almappáknak létrejön az Azure-tárfiókban egy-egy tároló. Ha közvetlenül a *BlockBlob* és a *PageBlob* mappákba másolta a fájlokat, akkor a fájlok az Azure Storage-fiók alatt *$root* alapértelmezett tárolóban találhatók. Amikor az *AzureFile* mappában található mappába másol egy mappát, létrejön egy fájlmegosztás.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>K. Most vettem észre, hogy nem követtem az Azure elnevezési követelményeit a tárolóim esetében. Így is fel lehet tölteni az adataimat az Azure-ba?
-A. Ha a tárolók nevei nagybetűket tartalmaznak, akkor azokat automatikusan kisbetűsekké alakítja át a rendszer. Ha a nevek valami más szempontból nem megfelelőek (például speciális karaktereket tartalmaznak, más nyelvűek stb.) akkor a feltöltés meghiúsul. További információt az [Azure elnevezési konvencióit](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) ismertető szakaszban talál.
+A. A rendszer a tároló neveiben lévő nagybetűket automatikusan kisbetűvé alakítja. Ha a nevek más módokon nem megfelelőek – például speciális karaktereket vagy más nyelveket tartalmaznak – a feltöltés sikertelen lesz. További információt az [Azure elnevezési konvencióit](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) ismertető szakaszban talál.
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>K. Hogyan tudom ellenőrizni a több Data Box Disk-lemezre feltöltött adataimat?
 A.  Az adatok másolásának befejezése után futtassa az `DataBoxDiskValidation.cmd` fájlt a *DataBoxDiskImport* mappából, hogy létrehozzon az érvényesítéshez egy ellenőrzőösszeget. Ha több lemeze is van, akkor minden egyes lemezen meg kell nyitnia a parancssori ablakot, és le kell futtatnia ezt a parancsot. Vegye figyelembe, hogy ez a művelet az adatok méretétől függően akár hosszú ideig (órákig) is eltarthat.
@@ -192,7 +221,7 @@ A.  Az adatok másolásának befejezése után futtassa az `DataBoxDiskValidatio
 A.  Ha befejeződött az adatok Azure-ba történő másolása, a rendszer a lemezen található adatokat a NIST SP 800-88 Revision 1 útmutatásainak megfelelően biztonságosan törli.  
 
 ### <a name="q-how-is-my-data-protected-during-transit"></a>K. Milyen védelem alatt állnak az adataim a szállítás közben? 
-A.  A Data Box Disk-lemezek 128 bites Microsoft BitLocker AES-titkosítással vannak titkosítva. A feloldáshoz és az adatokhoz való hozzáféréshez egyetlen jelszó szükséges.
+A.  A Data Box lemezek titkosítása AES-128 Microsoft BitLocker-titkosítással történik, és egyetlen hitelesítő kulcs szükséges az összes lemez zárolásának feloldásához és az adateléréshez.
 
 ### <a name="q-do-i-need-to-rerun-checksum-validation-if-i-add-more-data-to-the-data-box-disks"></a>K. Le kell futtatnom ismét az ellenőrzőösszeg-érvényesítést, ha további adatokat másolok a Data Box Disk-lemezekre?
 A. Igen. Ha úgy dönt, hogy érvényesíti az adatait (ezt mi is javasoljuk), akkor ha további adatokat másol a lemezre, újra le kell futtatnia az érvényesítést.
@@ -200,11 +229,11 @@ A. Igen. Ha úgy dönt, hogy érvényesíti az adatait (ezt mi is javasoljuk), a
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>K. Az összes lemezt felhasználtam az adataim átviteléhez, és szükségem van további lemezek megrendelésére. Fel lehet adni gyorsan a megrendelést?
 A. Lehetősége van klónozni az előző megrendelését. A klónozással létrehozhat egy, az előzővel azonos megrendelést, amelynek szerkesztheti a részleteit, anélkül, hogy újra meg kellene adnia a címet vagy az értesítési adatokat.
 
-### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>K. Átmásoltam az ManagedDisk mappába. Nem látok felügyelt lemezeket a felügyelt lemezekhez megadott erőforráscsoporthoz. Feltöltöttem az adataim az Azure-ba, és hogyan találom meg?
-A. Igen. Az adatai az Azure-ba lettek feltöltve, de ha nem lát felügyelt lemezt a megadott erőforráscsoporthoz, akkor valószínű, hogy az adatai érvénytelenek. Ha a Blobok, a Blobok, a Azure Files és a felügyelt lemezek blokkolása nem volt érvényes, akkor a következő mappákhoz juthat:
- - Az oldal Blobok egy *databoxdisk-érvénytelen-PB-* vel kezdődő blokk blob-tárolóra mutatnak.
- - A Azure Files egy blokk blob-tárolóba kerül, amely a *databoxdisk-érvénytelen-AF-*-vel kezdődik.
- - A felügyelt lemezek egy blokk blob-tárolóba kerülnek, amely a következővel kezdődik: *databoxdisk-érvénytelen-MD-*.
+### <a name="q-i-copied-data-to-the-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-how-can-i-locate-it"></a>K. Átmásoltam az adatfájlokat a ManagedDisk mappába. Nem látok felügyelt lemezeket a felügyelt lemezekhez megadott erőforráscsoporthoz. Az adataim az Azure-ba lettek feltöltve? Hol találom meg?
+A. Igen. Az adatait feltöltöttük az Azure-ba, de ha nem lát felügyelt lemezt a megadott erőforráscsoporthoz, akkor valószínű, hogy az adatai érvénytelenek. Ha az oldal Blobok, a Blobok, a Azure Files vagy a felügyelt lemezek nem érvényesek, a következő mappákba kerülnek:
+ - Az oldal Blobok egy blokk blob-tárolóba kerülnek, amely a *databoxdisk-érvénytelen-PB-* vel kezdődik.
+ - A Azure Files egy blokk BLOB-tárolót nyit meg, amely a következővel kezdődik: *databoxdisk-érvénytelen-AF-*.
+ - A Managed Disks egy blokk blob-tárolóba kerül, amely a *databoxdisk-érvénytelen-MD-*-vel kezdődik.
 
 ## <a name="next-steps"></a>További lépések
 

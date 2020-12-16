@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: alexeyo
-ms.openlocfilehash: c88a7820518d0a73bfb0e93d3b364190207b8f90
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 01a0171ed2b660fbabebf4276a74f8a3ea631bde
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97051222"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516531"
 ---
 # <a name="using-speech-services-with-private-endpoints-provided-by-azure-private-link"></a>A Speech Services használata az Azure Private link által biztosított privát végpontokkal
 
@@ -53,11 +53,11 @@ A privát végpontoknak [Cognitive Services egyéni altartománynevek](../cognit
 - Egy új panel jelenik meg, amely az erőforrás egyedi egyéni altartományának létrehozásához nyújt útmutatást.
 > [!WARNING]
 > Miután létrehozott egy egyéni tartománynevet, **nem** módosítható. A fenti figyelmeztetésben további információkat talál.
-- A művelet befejezése után érdemes kiválasztani a *kulcsok és a végpont* (*erőforrás-felügyeleti* csoport) beállítást, és az erőforrás új végpontjának nevét a következő formátumban kell ellenőrizni: `{your custom name}.cognitiveservices.azure.com`
+- A művelet befejezése után érdemes kiválasztani a *kulcsok és a végpont* (*erőforrás-felügyeleti* csoport) beállítást, és az erőforrás új végpontjának nevét a következő formátumban kell ellenőrizni: <p />`{your custom name}.cognitiveservices.azure.com`
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ebben a szakaszban a PowerShell 7. x vagy újabb verziójára van szükség a Azure PowerShell modul 5.1.0 vagy újabb verziójával. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el a [Azure PowerShell modul telepítése](/powershell/azure/install-Az-ps) című témakört.
+Ebben a szakaszban a PowerShell 7. x vagy újabb verziójára van szükség a Azure PowerShell modul 5.1.0 vagy újabb verziójával. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
 Mielőtt folytatná a további futtatást `Connect-AzAccount` , hozzon létre egy-egy kapcsolódást az Azure-ban.
 
@@ -272,13 +272,13 @@ Egy egyéni tartománynevet és privát végpontot használó beszédfelismerés
 
 A Speech Services REST API a [beszéd-szöveg](rest-speech-to-text.md) és a [szöveg – beszéd kommunikációhoz](rest-text-to-speech.md). Az alábbiakat kell figyelembe venni a privát végpontok számára engedélyezett forgatókönyv esetében.
 
-A beszéd-szöveg a két különböző REST API-val rendelkezik. Az egyes API-k eltérő célokat szolgálnak, különböző végpontokat használnak, és más megközelítést igényelnek, amikor a privát végpontok számára engedélyezett forgatókönyvben használják a Singet.
+A beszédfelismerési szöveg két különböző REST API-val rendelkezik. Az egyes API-k eltérő célokat szolgálnak, különböző végpontokat használnak, és más megközelítést igényelnek, amikor a privát végpontok számára engedélyezett forgatókönyvben használják a Singet.
 
 A beszéd – szöveg REST API-k a következők:
-- a [v 1.0](rest-speech-to-text.md) használatban van az online átíráshoz
-- a v 3.0 használatos a [Batch átírásához](batch-transcription.md) és [Custom Speech](custom-speech-overview.md). (Lásd a [teljes referenciát](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0))
+- A [beszédfelismerés és a szöveg közötti REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) használatos a [kötegelt átíráshoz](batch-transcription.md) és a [Custom Speechhoz](custom-speech-overview.md). a v 3.0 a [v 2.0 utódja](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- Az OnLine átíráshoz a [rövid hangra vonatkozó beszéd-szöveg REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) használható. 
 
-A beszéd-szöveg 1.0-s és a szöveg-beszéd REST API használata a privát végpont forgatókönyvben a cikk későbbi részében ismertetett [SPEECH SDK-esettel](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) azonos és azzal egyenértékű. 
+A rövid hang-és szöveg-REST API beszéd típusú, a privát végpont forgatókönyvben a beszéd és a szöveg közötti REST API használata a jelen cikk későbbi részében ismertetett [SPEECH SDK-esettel](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) azonos és azzal egyenértékű. 
 
 A beszéd – szöveg REST API v 3.0 különböző végpontokat használ, így a privát végpontok számára engedélyezett forgatókönyvhöz eltérő megközelítést kell alkalmazni.
 
@@ -287,7 +287,7 @@ Mindkét esetet a következő alszakaszokban ismertetjük.
 
 ##### <a name="speech-to-text-rest-api-v30"></a>Beszéd – szöveg REST API v 3.0
 
-A beszédfelismerési erőforrások általában [Cognitive Services regionális végpontokat](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) használnak a [beszéd – szöveg REST API v 3.0-](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)val való kommunikációhoz. Ezek az erőforrások a következő elnevezési formátummal rendelkeznek: <p/>`{region}.api.cognitive.microsoft.com`
+A beszédfelismerési erőforrások általában [Cognitive Services regionális végpontokat](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) használnak a [beszéd – szöveg REST API v 3.0-](rest-speech-to-text.md#speech-to-text-rest-api-v30)val való kommunikációhoz. Ezek az erőforrások a következő elnevezési formátummal rendelkeznek: <p/>`{region}.api.cognitive.microsoft.com`
 
 Ez egy példa a kérelem URL-címére:
 
@@ -311,15 +311,18 @@ Ennek az URL-címnek elérhetőnek kell lennie az Virtual Network a csatolt priv
 >
 > A beszédfelismerési erőforrás egyéni tartományneve **nem** tartalmaz információt arról a régióról, ahol az erőforrás telepítve van. Így a fent ismertetett alkalmazás-logika **nem** fog működni, és módosítani kell.
 
-##### <a name="speech-to-text-rest-api-v10-and-text-to-speech-rest-api"></a>Beszéd – szöveg REST API 1.0-s és szöveg – beszéd REST API
+##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Beszéd-szöveg REST API rövid hang-és szöveg-beszéd REST API
 
-A [beszédfelismerési REST API 1.0](rest-speech-to-text.md) -s és [szöveg-beszéd REST API](rest-text-to-speech.md) két típusú végpontot használhat:
+A rövid hang-és [szöveg-beszéd](rest-text-to-speech.md) típusú [REST API a beszéd-szöveg](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) REST API kétféle végpontot használhat:
 - [Cognitive Services regionális végpontok](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) , amelyek a Cognitive Services REST API való kommunikációhoz szükségesek az engedélyezési jogkivonat beszerzéséhez
 - Speciális végpontok minden egyéb művelethez
 
 A speciális végpontok részletes leírását, valamint azt, hogy az URL-cím Hogyan alakítható át egy privát végponton engedélyezett beszédfelismerési erőforráshoz [, a "](#general-principle) használat a Speech SDK-val" című szakaszban olvasható. Az SDK-val kapcsolatban ismertetett alapelv vonatkozik a beszéd – szöveg 1.0-s verzióra és a szövegről beszédre REST API.
 
-Ismerkedjen meg az előző bekezdésben említett alszakaszban található anyagokkal, és tekintse meg a következő példát. (A példa szöveg-beszéd REST APIt ismertet; a beszédfelismerés és a szöveg közötti 1.0-s REST API használata teljes mértékben egyenértékű)
+Ismerkedjen meg az előző bekezdésben említett alszakaszban található anyagokkal, és tekintse meg a következő példát. (A példa szöveg-beszéd REST APIt ír elő; a rövid hanghoz való beszéd-szöveg REST API használata teljesen egyenértékű)
+
+> [!NOTE]
+> Ha a **rövid hangra vonatkozó beszéd-szöveg REST API a** privát végponti forgatókönyvekben, a fejlécen [átadott](rest-speech-to-text.md#request-headers) engedélyezési tokent kell használnia `Authorization` [](rest-speech-to-text.md#request-headers); a beszéd előfizetési kulcsának a fejlécen keresztüli speciális végpontra való továbbítása `Ocp-Apim-Subscription-Key` **nem** fog működni, és a 401-es hibát állítja elő.
 
 **Szöveg-beszéd REST API használati példa.**
 
@@ -368,8 +371,8 @@ A régió összes lehetséges értéke (a DNS-név első eleme) [itt](regions.md
 | `commands`     | [Custom Commands](custom-commands.md)                       |
 | `convai`       | [Beszélgetés átirata](conversation-transcription.md) |
 | `s2s`          | [Speech Translation](speech-translation.md)                 |
-| `stt`          | [Beszéd – szöveg](speech-to-text.md)                         |
-| `tts`          | [Szöveg – beszéd](text-to-speech.md)                         |
+| `stt`          | [Diktálás](speech-to-text.md)                         |
+| `tts`          | [Szövegfelolvasás](text-to-speech.md)                         |
 | `voice`        | [Egyéni hang](how-to-custom-voice.md)                      |
 
 Így a fenti példa ( `westeurope.stt.speech.microsoft.com` ) a Nyugat-Európában a beszéd-szöveg végpontot jelenti.
@@ -497,14 +500,16 @@ Hasonlítsa össze a [szakasz](#optional-check-dns-resolution-from-other-network
 
 A beszéd-szöveg REST API v 3.0 használata teljesen egyenértékű a [privát végpontok által engedélyezett beszédfelismerési erőforrások](#speech-to-text-rest-api-v30)esetében.
 
-##### <a name="speech-to-text-rest-api-v10-and-text-to-speech-rest-api"></a>Beszéd – szöveg REST API 1.0-s és szöveg – beszéd REST API
+##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Beszéd-szöveg REST API rövid hang-és szöveg-beszéd REST API
 
-Ebben az esetben a beszédfelismerés és a szöveg közötti REST API 1.0-s és szöveg-beszéd REST API használata nem tartalmaz eltéréseket az általános esetnek, és a [beszéd – szöveg REST API](rest-speech-to-text.md) 1.0-s és [szöveg-beszéd REST API](rest-text-to-speech.md) dokumentációjában leírt módon kell használni.
+Ebben az esetben a rövid hang-és szöveg-beszéd REST API-használathoz tartozó beszéd-szöveg REST API nem tartalmaz eltéréseket az általános esettel kapcsolatban, ha egy kivételt jelent a beszéd – szöveg REST API a rövid hang (lásd az alábbi megjegyzést). Mindkét API-t a [beszéd-szöveg REST API a rövid hang](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) -és [szöveg-beszéd REST API](rest-text-to-speech.md) dokumentációja szerint kell használni.
 
+> [!NOTE]
+> Ha **beszéd-szöveg Rest APIt használ a rövid hanghoz** egyéni tartománybeli forgatókönyvekben, akkor a fejlécen [átadott](rest-speech-to-text.md#request-headers) engedélyezési tokent kell használnia `Authorization` [](rest-speech-to-text.md#request-headers); a beszéd előfizetési kulcsának a fejlécen keresztüli speciális végpontra való továbbítása `Ocp-Apim-Subscription-Key` **nem** fog működni, és a 401-es hibát állítja elő
 
 #### <a name="speech-resource-with-custom-domain-name-without-private-endpoints-usage-with-speech-sdk"></a>Egyéni tartománynevet tartalmazó beszédfelismerési erőforrás magánhálózati végpontok nélkül. Használat a Speech SDK-val
 
-Ha egyéni tartománynevet használó Speech SDK-t használ, a saját végpontok **nélküli** beszédfelismerési erőforrásokhoz az alkalmazás kódjának felülvizsgálata és valószínű módosítása szükséges. Vegye figyelembe, hogy ezek a változások **eltérnek** a [privát végpontok által engedélyezett beszédfelismerési erőforrások](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk)esetében. A privát végpontok/egyéni tartományok zökkenőmentes támogatásán dolgozunk.
+Ha egyéni tartománynevet használó Speech SDK-t használ, a saját végpontok **nélküli** beszédfelismerési erőforrásokhoz az alkalmazás kódjának felülvizsgálata és valószínű módosítása szükséges. Vegye figyelembe, hogy ezek a változások **eltérnek** a [privát végpontok által engedélyezett beszédfelismerési erőforrások](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk)esetében. A Private Endpoint/Custom domain forgatókönyvek zökkenőmentes támogatásán dolgozunk.
 
 `my-private-link-speech.cognitiveservices.azure.com`Ebben a szakaszban a példaként használt Speech Resource DNS-nevet (egyéni tartományt) fogjuk használni.
 
@@ -569,7 +574,7 @@ A módosítást követően az alkalmazásnak az egyéni tartománynévvel rendel
 
 A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [Azure Private linkről](../../private-link/private-link-overview.md)
 * További információ a [SPEECH SDK](speech-sdk.md) -ról

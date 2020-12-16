@@ -2,22 +2,22 @@
 title: Microsoft Azure Data Box – gyakori kérdések | Microsoft Docs
 description: A gyakori kérdéseket és válaszokat tartalmaz a Azure Data Boxre, egy felhőalapú megoldásra, amely lehetővé teszi nagy mennyiségű adatok átvitelét az Azure-ba.
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 12/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 4b65d1be9fa3ddb28a216d51e91ce2a8b20f15e6
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 18a1fc7f42884dcc194256e1f51ddecb62d2708c
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127182"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516404"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
-A Microsoft Azure Data Box hibrid megoldással gyorsan, költséghatékonyan és megbízhatóan küldhet több terabájtnyi adatot az Azure-ba egy átviteli eszköz segítségével. A gyakori kérdések a Data Box Azure Portalon történő használatával kapcsolatban esetlegesen felmerülő kérdésekre adnak választ. 
+A Microsoft Azure Data Box hibrid megoldással gyorsan, költséghatékonyan és megbízhatóan küldhet több terabájtnyi adatot az Azure-ba egy átviteli eszköz segítségével. A gyakori kérdések a Data Box Azure Portalon történő használatával kapcsolatban esetlegesen felmerülő kérdésekre adnak választ.
 
 A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosítottuk:
 
@@ -61,19 +61,19 @@ A. A Data Box az USA, Nyugat-Európa, Észak-Európa, Franciaország, Egyesült 
 
 Data Box támogatja az adatfeldolgozást vagy a kilépést kizárólag a rendeltetési országon/régión belül, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol az adatmezők bármely EU-országba/régióból elhelyezhetők.
 
-Például abban az esetben, ha az importálási forgatókönyvben volt olyan forrásadatok, amelyet Kanadában szeretne áthelyezni egy Azure WestUS Storage-fiókba, akkor a következő módon érheti el:
+Például abban az esetben, ha az importálási forgatókönyvben volt olyan adatforrás, amelyet Kanadában szeretne áthelyezni egy Azure West US Storage-fiókba, akkor a következő módon érheti el:
 
-1. A Cananda-ben megjelenő Storage-fiók kiválasztásával Kanadában Data Box megrendelését. Az eszköz a kanadai Azure-adatközpontból a rendelés létrehozása során megadott szállítási lakcímbe (Kanadában) van elküldve.
+1. Megrendelési Data Box Kanadában a Storage-fiók kiválasztásával Kanadában. Az eszköz a kanadai Azure-adatközpontból a rendelés létrehozása során megadott szállítási lakcímbe (Kanadában) van elküldve.
 
 2. Miután megtörtént a helyszíni Adatmásolás a Data Boxre, a rendszer visszaküldi az eszközt a kanadai Azure-adatközpontba. A Data Boxban található, majd a rendelés létrehozásakor kiválasztott Kanada Azure-régiójában lévő, a cél Storage-fiókba való feltöltésre kerül.
 
-3. Ezt követően egy olyan eszközzel is elvégezheti az AzCopy, amely az WestUS-ben lévő Storage-fiókba másolja az adatfájlokat. Ez a lépés a Data Box számlázásban nem szereplő [szabványos tárolási](https://azure.microsoft.com/pricing/details/storage/) és [sávszélesség-díjakat](https://azure.microsoft.com/pricing/details/bandwidth/) tartalmazza.
+3. Ezután a AzCopy hasonló eszközzel másolhatók az adattárak az USA nyugati régiójában lévő Storage-fiókba. Ez a lépés a Data Box számlázásban nem szereplő [szabványos tárolási](https://azure.microsoft.com/pricing/details/storage/) és [sávszélesség-díjakat](https://azure.microsoft.com/pricing/details/bandwidth/) tartalmazza.
 
-### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>K. Kihez fordulhatok, ha probléma merülne fel a Data Box kapcsán?
-A. Ha bármilyen probléma merülne fel a Data Box kapcsán, kérjük, [forduljon a Microsoft támogatási szolgálatához](data-box-disk-contact-microsoft-support.md).
+### <a name="q-who-should-i-contact-if-i-come-across-any-issues-with-data-box"></a>K. Kihez vegyem fel a kapcsolatot, ha a Data Boxkel kapcsolatos bármilyen problémára ráakadok?
+A. Ha Data Boxtel kapcsolatos problémákba ütközik, [forduljon a Microsoft ügyfélszolgálatahoz](data-box-disk-contact-microsoft-support.md).
 
-### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>K. Elveszítettem a Data Box. Elveszett az eszköz díja?
-A. Igen. Elveszett vagy sérült az eszköz díja. Ez a díj a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/storage/databox/) , valamint a [termék használati feltételeiben](https://www.microsoft.com/licensing/product-licensing/products)is szerepel.
+### <a name="q-i-lost-my-data-box-is-there-a-lost-device-charge"></a>K. Elveszítettem a Data Box. Elveszett az eszköz díja?
+A. Igen. Az elveszett vagy sérült eszközökért díjat számítunk fel. Ez a díj a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/storage/databox/) és a [termék használati feltételeiben](https://www.microsoft.com/licensing/product-licensing/products)szerepel.
 
 
 ## <a name="order-device"></a>Eszköz rendelése
@@ -81,23 +81,39 @@ A. Igen. Elveszett vagy sérült az eszköz díja. Ez a díj a [díjszabási old
 ### <a name="q-how-do-i-get-data-box"></a>K. Hogyan szerezhetem be a Data Boxot? 
 A.  Az Azure Data Box beszerzéséhez jelentkezzen be az Azure Portalon, majd hozzon létre egy Data Box-megrendelést. Adja meg a kapcsolattartási és értesítési adatait. A megrendelés elküldése után a rendelkezésre állás függvényében 10 napon belül szállítjuk Önnek a Data Boxot. További információ [a Data Box megrendeléséről](data-box-deploy-ordered.md).
 
-### <a name="q-i-was-not-able-to-create-a-data-box-order-in-the-azure-portal-why-would-this-be"></a>K. Nem sikerült létrehoznom egy Data Box-megrendelést az Azure Portalon. Mi lehet ennek az oka?
-A. Ha nem sikerült létrehoznia egy Data Box-megrendelést, akkor a probléma az előfizetési típusában vagy a hozzáférésében keresendő. 
+### <a name="q-i-couldnt-create-a-data-box-order-in-the-azure-portal-why"></a>K. Nem sikerült Data Box sorrendet létrehozni a Azure Portalban. Miért?
+A. Ha nem hoz létre Data Box sorrendet, az előfizetési típussal vagy a hozzáféréssel kapcsolatos probléma merült fel.
 
-Ellenőrizze az előfizetését. A Data Box csak Nagyvállalati Szerződés (EA) és Felhőszolgáltató (CSP) típusú előfizetés esetén érhető el. Ha az előfizetése nem az említett típusok egyikéhez tartozik, forduljon a Microsoft támogatási szolgálatához az előfizetése bővítése érdekében.
+Ellenőrizze az előfizetését. A Data Box csak Nagyvállalati Szerződés (EA) és Felhőszolgáltató (CSP) típusú előfizetés esetén érhető el. Ha nem rendelkezik ezekkel az előfizetési típusokkal, lépjen kapcsolatba Microsoft ügyfélszolgálata az előfizetés frissítéséhez.
 
 Ha egy támogatott típusú előfizetéssel rendelkezik, ellenőrizze a hozzáférési szintjét. Megrendelés létrehozására csak az előfizetések közreműködői vagy tulajdonosai jogosultak.
 
-### <a name="q-i-ordered-a-couple-of-data-box-devices-i-am-not-able-to-create-any-additional-orders-why-would-this-be"></a>K. Rendeltem néhány Data Box-eszközt. Nem tudok további rendeléseket létrehozni. Mi lehet ennek az oka?
-A. Legfeljebb öt aktív megrendelés engedélyezett előfizetésenként és a kereskedelmi korlátokon belül (ez az ország és a kiválasztott régió kombinációjából áll össze). Ha további eszközökre van szüksége, forduljon a Microsoft támogatási szolgálatához az előfizetésére vonatkozó korlátozás bővítéséhez.
+### <a name="q-how-long-will-my-order-take-from-order-creation-to-data-uploaded-to-azure"></a>K. Mennyi időt vesz igénybe a rendelés létrehozása az Azure-ba feltöltött adatok alapján?
+
+A. A megrendelés feldolgozásának minden fázisában a következő becsült bevezetési idő alapján érdemes elvárnia, mire számíthat.  
+
+Ezek az átvezető időpontok a *becslések*. Az adatközpont, az egyidejű megrendelések és az egyéb környezeti feltételek betöltése hatással van a megrendelés feldolgozásának minden szakaszának időpontjára.
+
+**Data Box rendelés becsült átvezetési ideje:**
+
+1. Megrendelés Data Box: néhány perc a portálról
+2. Eszköz lefoglalása és előkészítése: 1–2 munkanap
+3. Szállítás: 2–3 munkanap
+4. Adatmásolás az ügyfél webhelyén: az adatok természetétől, méretétől és a fájlok számától függ.
+5. Visszaküldés: 2–3 munkanap
+6. Eszköz feldolgozása az adatközpontban: 1-2 munkanap
+7. Adatok feltöltése az Azure-ba: a feldolgozás befejezését követően kezdődik, és az eszköz csatlakoztatva van. A feltöltési idő az adatok természetétől, a mérettől és a fájlok számától függ.
+
+### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>K. Rendeltem néhány Data Box-eszközt. Nem tudok további rendeléseket létrehozni. Miért?
+A. Az előfizetések másodpercenként legfeljebb öt aktív rendelést engedélyezünk (a kiválasztott ország és régió kombinációja). Ha további eszközökre van szüksége, forduljon a Microsoft támogatási szolgálatához az előfizetésére vonatkozó korlátozás bővítéséhez.
 
 ### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>K. Amikor megpróbálok létrehozni egy rendelést, arról kapok értesítést, hogy a Data Box szolgáltatás nem érhető el. Mit jelent ez?
-A. Ez azt jelenti, hogy a Data Box szolgáltatás nem érhető el az ország és régió kiválasztott kombinációja esetében. A kombináció módosításával valószínűleg elérhetővé válik a Data Box szolgáltatás. Azon régiók listáját, ahol a szolgáltatás elérhető, a [Data Box regionális elérhetőségét](data-box-overview.md#region-availability) ismertető témakörben találja.
+A. A Data Box szolgáltatás nem érhető el a kiválasztott ország és régió kombinációjára. A kombináció módosításával valószínűleg elérhetővé válik a Data Box szolgáltatás. Azon régiók listáját, ahol a szolgáltatás elérhető, a [Data Box regionális elérhetőségét](data-box-overview.md#region-availability) ismertető témakörben találja.
 
 ### <a name="q-i-placed-my-data-box-order-few-days-back-when-will-i-receive-my-data-box"></a>K. Néhány napja adtam fel a Data Box-megrendelésem. Mikor fogom megkapni a Data Boxot?
 A. A megrendelések beérkezésekor ellenőrizzük, hogy van-e a rendelésnek megfelelő elérhető eszköz. Ha van, akkor 10 napon belül kiszállítjuk. Elképzelhető, hogy bizonyos időszakokban a kereslet megnövekszik. Ebben az esetben rendelését sorba állítjuk, a rendelés állapotát pedig az Azure Portalon követheti nyomon. Ha a rendelés 90 napon belül sem teljesül, akkor a rendszer automatikusan visszavonja azt.
 
-### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>K. Feltöltöttem a Data Boxom adatokkal, és rendelnem kell egy másikat. Fel lehet adni gyorsan a megrendelést?
+### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>K. Feltöltöttem a Data Box az adataival, és egy másikat kell megrendelnie. Fel lehet adni gyorsan a megrendelést?
 A. Lehetősége van klónozni az előző megrendelését. A klónozással létrehozhat egy, az előzővel azonos megrendelést, amelynek szerkesztheti a részleteit, anélkül, hogy újra meg kellene adnia a címet vagy az értesítési adatokat. A klónozás csak importálási rendelésekhez engedélyezett.
 
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
@@ -120,31 +136,43 @@ A. Igen. A GbE interfészek is csatlakoztathatók a Data Box az Adatmásolás k�
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
 
-### Q. I could not set up Data Box using a Dynamic (DHCP) IP address. Why would this be?
+### Q. I could not set up Data Box using a Dynamic (DHCP) IP address. Why?
 A.
 
-### Q. I could not set up Data Box using a Static IP address. Why would this be?
+### Q. I could not set up Data Box using a Static IP address. Why?
 A.
 
-### Q. I could not set up Data Box on a private network. Why would this be?
+### Q. I could not set up Data Box on a private network. Why?
 A.-->
 
 ### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>K. Az elülső kezelőpanelen világít a rendszerhibajelző LED. Mit tegyek?
-A. Ha a rendszerhibajelző LED világít, az azt jelzi, hogy a rendszer állapota nem kifogástalan. A következő lépésekhez [forduljon Microsoft ügyfélszolgálata](data-box-disk-contact-microsoft-support.md) .
+A. Egy Data Box elején két LED lámpa található a főkapcsoló gomb alatt. Az alsó – a rendszerhiba jelzője, amely jelzi, hogy a rendszer kifogástalan állapotú-e.
 
-### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>K. Nem férek hozzá a Data Box zárolásfeloldási jelszavához az Azure Portalon. Mi lehet ennek az oka?
-A. Ha nem fér hozzá a Data Box zárolásfeloldási jelszavához az Azure Portalon, ellenőrizze az előfizetése és a tárfiókja jogosultságait. Győződjön meg arról, hogy közreműködői vagy tulajdonosi jogosultságokkal rendelkezik az erőforráscsoport szintjén. Ha nem, akkor legalább Data Box operátori szerepkörrel kell rendelkeznie a hozzáférési hitelesítő adatok megtekintéséhez.
+A rendszerhibák jelző LED-je piros színnel jelezheti az alábbi problémák egyikét:
+- Ventilátor meghibásodása
+- A CPU hőmérséklete magas
+- Az alaplap hőmérséklete magas
+- Kettős beágyazott memóriamodul (DIMM) hiba a kód (ECC) csatlakoztatásakor
+
+Hajtsa végre a következő lépéseket:
+1. Győződjön meg arról, hogy a ventilátor működik-e.
+2. Helyezze át az eszközt egy nagyobb légáram feletti helyre.
+
+Ha a rendszerhiba-jelző jelzőfény továbbra is fennáll, [forduljon a Microsoft ügyfélszolgálatahoz](data-box-disk-contact-microsoft-support.md).
+
+### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why"></a>K. Nem férek hozzá a Data Box zárolásfeloldási jelszavához az Azure Portalon. Miért?
+A. Ha nem tudja elérni a zárolási jelszót a Azure Portalban, ellenőrizze az előfizetése és a Storage-fiókja engedélyeit. Győződjön meg arról, hogy közreműködői vagy tulajdonosi jogosultságokkal rendelkezik az erőforráscsoport szintjén. A hozzáférési hitelesítő adatok megtekintéséhez legalább Data Box operátori szerepkörre van szükség.
 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>K. Támogatott-e a Data Box a port csatorna konfigurációja? Az MPIO ismertetése
-A. A port Channel-konfiguráció, a többutas i/o (MPIO) konfigurációja vagy a vLAN-konfiguráció nem támogatott Data Boxon.
+A. Nem támogatjuk a portok csatornájának konfigurációját, a többutas i/o (MPIO) konfigurációt vagy a vLAN-konfigurációt Data Boxon.
 
 ## <a name="track-status"></a>Állapot nyomon követése
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>K. Hogyan tudom nyomon követni a Data Boxot a megrendelésem feladásától kezdve egészen az eszköz visszaküldéséig? 
-A.  A Data Box-megrendelésének állapotát az Azure Portalon követheti nyomon. A megrendelés létrehozásakor a rendszer egy értesítési e-mail-cím megadását is kéri. Ha adott meg ilyen e-mail-címet, akkor a megrendelés állapotváltozásairól e-mailben is értesíteni fogjuk. További információ az [Értesítési e-mailek beállítása](data-box-portal-ui-admin.md#edit-notification-details) témában.
+A.  A Data Box-megrendelésének állapotát az Azure Portalon követheti nyomon. A megrendelés létrehozásakor a rendszer felszólítja, hogy adjon meg egy értesítő e-mailt. Ha megadja az egyiket, a rendszer e-mailben értesíti a rendelés összes állapotának változásáról. További információ az [Értesítési e-mailek beállítása](data-box-portal-ui-admin.md#edit-notification-details) témában.
 
 ### <a name="q-how-do-i-return-the-device"></a>K. Hogyan küldhetem vissza az eszközt? 
-A.  A Microsoft megjelenít egy fuvarlevélcímkét az E-ink-megjelenítőn. Ha a fuvarlevélcímke nem jelenik meg az E-ink-képernyőn, lépjen az **Áttekintés > Levélcímke letöltése** menüpontra. Töltse le és nyomtassa ki a címkét, majd helyezze az átlátszó műanyag tasakba az eszközön, és adja le azt a szállítmányozójánál. 
+A.  A Microsoft megjelenít egy fuvarlevélcímkét az E-ink-megjelenítőn. Ha a szállítási címke nem jelenik meg az E-Ink megjelenítésnél, ugorjon az **áttekintés > a szállítási címke letöltése** elemre. Töltse le és nyomtassa ki a címkét, szúrja be a címkét a tiszta műanyag címkébe az eszközön, és dobja ki az eszközt a szállítási szolgáltató helyén. 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>K. Kaptam egy e-mail-értesítést, hogy az eszközöm elért az Azure-adatközpontba. Hogyan deríthetem ki, hogy az adatok felöltése folyamatban van-e?
 A. Nyissa meg az Azure Portalon a Data Box-megrendelését, majd az **Áttekintést**. Ha az adatok feltöltése már megkezdődött, a jobb oldali panelen látható a másolás folyamatának előrehaladása. 
@@ -161,7 +189,7 @@ A.  A legnagyobb méreteket az Azure Storage tárhelykorlátai határozzák meg.
 A. Több biztonsági funkció is gondoskodik a Data Box biztonságáról az átvitel során. Ezek közé tartozik az illetéktelen hozzáférést megakadályozó burkolat, az illetéktelen hardver- vagy szoftverhozzáférést észlelő megoldások, vagy az eszköz zárolásának feloldására szolgáló jelszó. További információt [az Azure Data Box biztonsági és adatvédelmi szolgáltatásait](data-box-security.md) ismertető cikkben talál.
 
 ### <a name="q-how-do-i-copy-the-data-to-the-data-box"></a>K. Hogyan másolhatom az adataimat a Data Boxra? 
-A.  Ha SMB-ügyfelet használ, az adatokat egy SMB-másolóeszköz, például a Robocopy vagy a Diskboss használatával másolhatja az eszközre, de használhatja akár a Windows Fájlkezelő húzás funkcióját is. 
+A.  Ha SMB-ügyfelet használ, használhat egy SMB-másolási eszközt, például a `Robocopy` , `Diskboss` vagy akár a Windows fájlkezelő húzását az eszközre másoláshoz. 
 
 Ha NFS-ügyfelet használ, akkor az [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy [Ultracopier](https://ultracopier.first-world.info/) alkalmazást használhatja. 
 
@@ -170,10 +198,10 @@ További információt [az adatok az Azure Data Boxra történő másolását](d
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>K. Vannak tippek az adatok másolásának felgyorsítására?
 A.  A másolási folyamat felgyorsításához:
 
-- Használjon több másolási adatfolyamot. Használja például a Robocopy többszálas lehetőségét. A konkrét parancsokkal kapcsolatban további információt [az adatok az Azure Data Boxra másolását és ellenőrzését](data-box-deploy-copy-data.md) ismertető oktatóanyagban talál.
+- Használjon több másolási adatfolyamot. Például a `Robocopy` esetében használja a többszálú kapcsolót. A konkrét parancsokkal kapcsolatban további információt [az adatok az Azure Data Boxra másolását és ellenőrzését](data-box-deploy-copy-data.md) ismertető oktatóanyagban talál.
 - Használjon több munkamenetet.
-- Például a hálózati megosztásból történő másolás helyett (ahol a hálózat sebessége korlátokat szabhat) gondoskodjon róla, hogy az adatok azon a helyi számítógépen legyenek, amelyhez a Data Boxot csatlakoztatja.
-- Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [Bluestop FIO eszközt](https://ci.appveyor.com/project/axboe/fio), amellyel megmérheti a kiszolgáló hardverének teljesítményét. Válassza ki a legújabb x86-vagy x64-buildet, válassza a **összetevők fület** , és töltse le az MSI-t.
+- A hálózati megosztáson való másolás helyett (ahol a hálózati sebesség korlátozhatja a másolási sebességet), az adatok helyileg is tárolhatók azon a számítógépen, amelyhez a Data Box csatlakoztatva van.
+- Mérje meg az adatok másolására használt számítógép teljesítményét. Töltse le és használja a [ `Bluestop` Fio eszközt](https://ci.appveyor.com/project/axboe/fio) a kiszolgálói hardver teljesítményének összehasonlításához. Válassza ki a legújabb x86-vagy x64-buildet, válassza a **összetevők fület** , és töltse le az MSI-t.
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
@@ -184,15 +212,15 @@ A.  To speed up the copy process:
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>K. Használhatok több tárfiókot is a Data Boxhoz?
-A.  Igen. A Data Boxhoz legfeljebb 10 tárfiók használata támogatott. Ezek lehetnek általános célú, klasszikus vagy Blob Storage-fiókok. A gyakori és a ritka elérésű blob is támogatott. 
+A.  Igen. A Data Boxhoz legfeljebb 10 tárfiók használata támogatott. Ezek lehetnek általános célú, klasszikus vagy Blob Storage-fiókok. A gyakori és a ritka elérésű blob is támogatott.
 
 
 ## <a name="ship-device"></a>Eszköz kiszállítása
 
 <!--### Q. How do I schedule a pickup for my Data Box?--> 
 
-### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>K. Megérkezett az eszközöm, de sérültnek tűnik. Mit tegyek?
-A. Ha az eszköz sérülten érkezett, vagy a jelek illetéktelen hozzáférésre utalnak, ne használja az eszközt. Vegye fel a kapcsolatot a [Microsoft támogatási szolgálatával](data-box-disk-contact-microsoft-support.md), és a lehető leghamarabb küldje vissza az eszközt. Létrehozhat egy új Data Box-megrendelést is egy csereeszköz igényléséhez. Ebben az esetben nem számítjuk fel a csereeszköz árát.
+### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>K. Az eszköz kézbesítése megszakadt, de úgy tűnik, hogy az eszköz sérült. Mit tegyek?
+A. Ha az eszköz megsérült, vagy ha bebizonyosodik az illetéktelen módosítást, ne használja az eszközt. [Vegye fel a kapcsolatot Microsoft ügyfélszolgálata](data-box-disk-contact-microsoft-support.md) és az eszközt a lehető leghamarabb küldje vissza. Létrehozhat egy új Data Box-megrendelést is egy csereeszköz igényléséhez. Ebben az esetben nem számítunk fel díjat a helyettesítő eszközért.
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>K. Felvehetem magam is a Data Box rendelést? Visszaadhatom a Data Box a választott szolgáltatón keresztül?
 A. Igen. A Microsoft a saját üzemeltetésű szállítást is biztosítja. A Data Box rendelés elhelyezésekor kiválaszthatja az önfelügyelt szállítási lehetőséget is. További információ: [önfelügyelt szállítás Data Box számára](data-box-portal-customer-managed-shipping.md).
@@ -201,10 +229,10 @@ A. Igen. A Microsoft a saját üzemeltetésű szállítást is biztosítja. A Da
 A. Az összes Data Box eszköz a rendeltetési országon/régión belül, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol az eszközök bármelyik EU-országba/régióba oda tudnak szállítani. Ez a Data Box és a Data Box Heavy eszközre is vonatkozik.
 
 ### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>K. Megrendeltem egy Data Box az USA keleti régiójában, de kaptam egy olyan eszközt, amelyet az USA nyugati régiójában szállítottak el. Hová kell visszaadni az eszközt?
-A. A lehető leggyorsabban igyekszünk Data Box eszközt beolvasni. Rangsoroljuk a szállítást egy, a Storage-fiók helyéhez legközelebb lévő adatközpontból, de az eszköz minden olyan Azure-adatközpontból elérhető, amely rendelkezik rendelkezésre álló leltárral. A Data Box vissza kell adni ugyanarra a helyre, ahol a szállítási címkén látható módon szállították.
+A. A lehető legrövidebb időn belül megpróbáljuk beolvasni a Data Box eszközt. Rangsoroljuk a szállítást egy, a Storage-fiók helyéhez legközelebb lévő adatközpontból, de az eszköz minden olyan Azure-adatközpontból elérhető, amely rendelkezik rendelkezésre álló leltárral. A Data Box vissza kell adni ugyanarra a helyre, ahol a szállítási címkén látható módon szállították.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>K. Az E-ink-képernyőn nem jelenik meg a csomagvisszaküldési címke. Mit tegyek?
-A. Ha az E Ink-képernyőn nem jelenik meg a csomagvisszaküldési címke, hajtsa végre a következő lépéseket:
+A. Ha az E-Ink kijelző nem jeleníti meg a visszáru-szállítólevél címkéjét, hajtsa végre a következő lépéseket:
 - Távolítsa el a régi szállítási címkét és minden egyéb, az előző szállításból származó címkét.
 - Nyissa meg az Azure Portalon a megrendelését. Nyissa meg az **áttekintést** , és **töltse le a szállítási címkéket**. További információ a [fuvarlevélcímke letöltéséről](data-box-portal-admin.md#download-shipping-label).
 - Nyomtassa ki a címkét, és helyezze az eszközre rögzített átlátszó műanyag tasakba. 
@@ -216,33 +244,33 @@ A.  Az átvitel során a Data Box következő funkciói védik az adatokat.
  - Az eszköz zárolva van, és egy zárolásfeloldási jelszót igényel a belépéshez és az adatok eléréséhez.
 További információ [a Data Box biztonsági funkcióiról](data-box-security.md).  
 
-### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>K. Befejeztem az importálási sorrendet, és leállítottam az eszközt. Hozzáadhatok még adatokat?
+### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-the-data-box"></a>K. Befejeztem az importálási sorrendet, és leállítottam az eszközt. Továbbra is Hozzáadhatok további adatmennyiséget a Data Box?
 A. Igen. Bekapcsolhatja az eszközt, és további adatokat adhat hozzá. A másolás végeztével újra futtatnia kell a **szállításra való előkészítés** műveletet.
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>K. Megkaptam az eszközt, és nem indul el a rendszerindítás? Hogyan az eszköz visszaszállítása?
-A. Ha az eszköz nem indul el, lépjen a sorrendbe a Azure Portal. Töltsön le egy szállítási címkét, és helyezze el az eszközön. További információ a [fuvarlevélcímke letöltéséről](data-box-portal-admin.md#download-shipping-label).
+A. Ha az eszköz nem indul el, lépjen a sorrendbe a Azure Portal. Töltsön le egy szállítási címkét, és csatolja az eszközhöz. További információ a [fuvarlevélcímke letöltéséről](data-box-portal-admin.md#download-shipping-label).
 
 ## <a name="verify-and-upload"></a>Ellenőrzés és feltöltés
 
 ### <a name="q-how-soon-can-i-access-my-data-in-azure-once-ive-shipped-the-data-box-back"></a>K. Milyen gyorsan férhetnek hozzá az Azure-beli adataim a Data Box visszaszállítása után? 
-A.  Ha az **Adatmásolási** sorrend állapota **befejezettként**jelenik meg, azonnal hozzáférhet az adataihoz.
+A.  Ha az **Adatmásolási** sorrend állapota **befejezettként** jelenik meg, azonnal hozzáférhet az adataihoz.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>K. A feltöltést követően hol lesznek az adataim az Azure-ban?
-A.  Amikor az adatait a Data Boxba másolja, attól függően, hogy az adatblokk blob-vagy lapozófájl-vagy Azure-fájlok, az Azure Storage-fiókban az alábbi útvonalak egyikére lesz feltöltve az adatai.
+A.  Amikor az adatait a Data Boxba másolja, attól függően, hogy az adatblokk blob-vagy lapozófájl-vagy Azure-fájlok, az Azure Storage-fiókban az alábbi elérési utak egyikére lesz feltöltve az adatai:
 - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
 - `https://<storage_account_name>.file.core.windows.net/<sharename>`
  
-  Alternatív megoldásként navigálhat az Azure Storage-fiókjából is az Azure Portalon.
+  Másik lehetőségként megnyithatja az Azure Storage-fiókját a Azure Portalban, és innen navigálhat.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>K. Most vettem észre, hogy nem követtem az Azure elnevezési követelményeit a tárolóim esetében. Így is fel lehet tölteni az adataimat az Azure-ba?
-A.  Ha a tárolók nevei nagybetűvel rendelkeznek, a rendszer automatikusan kisbetűvé alakítja ezeket a neveket. Ha a nevek valami más szempontból nem megfelelőek (például speciális karaktereket tartalmaznak, más nyelvűek stb.) akkor a feltöltés meghiúsul. További információk a megosztások, tárolók és fájlok elnevezésének ajánlott eljárásairól:
+A.  Ha a tárolók nevei nagybetűvel rendelkeznek, a rendszer automatikusan kisbetűvé alakítja ezeket a neveket. Ha a nevek valami más szempontból nem megfelelőek (például speciális karaktereket tartalmaznak, más nyelvűek stb.) akkor a feltöltés meghiúsul. A megosztások, tárolók és fájlok elnevezésével kapcsolatos további útmutatásért keresse fel a következőt:
 - [Megosztások elnevezése és hivatkozása](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Blokkblobok és lapblobok konvenciói](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>K. Hogyan tudom ellenőrizni a Data Boxra feltöltött adataimat?
 A.  Az adatmásolást követően a **szállításra való előkészítés** művelet futtatásakor a rendszer ellenőrzi az adatokat. Az ellenőrzési folyamat során létrehoz egy listát az adatfájlokról és azok ellenőrzőösszegeiről. Letöltheti a fájlok listáját, és ellenőrizheti a listát a forrásadatok fájljaiban. További információ [a szállításra való előkészítésről](data-box-deploy-picked-up.md#prepare-to-ship).
 
-### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>K. Mi történik az adataimmal, miután visszaküldtem a Data Boxot?
+### <a name="q-what-happens-to-my-data-after-i-return-the-data-box"></a>K. Mi történik az adataim után a Data Box visszaküldése után?
 A.  Ha befejeződött az adatok Azure-ba történő másolása, a rendszer a Data Box-lemezeken található adatokat a NIST SP 800-88 Revision 1 útmutatásainak megfelelően biztonságosan törli. További információ [az adatok a Data Boxról történő törléséről](data-box-deploy-picked-up.md#erasure-of-data-from-data-box).
 
 ## <a name="audit-report"></a>Naplózási jelentés
@@ -264,12 +292,12 @@ A.  A következő típusú jelentések érhetők el a felügyeleti láncokhoz:
 A.  A futárcégek nyomkövetési naplóit a Data Box rendelési előzményei tartalmazzák. Ez a jelentés azt követően érhető el, miután az eszköz visszatért az Azure-adatközpontba, és a lemezeken lévő adatok törölve lettek. Azonnali igény esetén közvetlenül a szolgáltató webhelyére is megtekintheti a megrendelés követési számát, és lekérheti a nyomkövetési adatokat.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Elszállíthatom magam a Data Boxot az Azure-adatközpontba? 
-A.  Nem. Ha a Microsoft által felügyelt szállítást választotta, az adatátvitelt nem végezheti el. Az Azure-adatközpont jelenleg nem fogadja el a Data Box az ügyfelektől vagy a UPS-től eltérő szállítóktól.
+A.  Nem. Ha a Microsoft által felügyelt szállítást választotta, az adatátvitelt nem végezheti el. Az Azure-adatközpont jelenleg nem fogadja el az ügyfelektől vagy a UPS-től eltérő szállítótól érkező Data Box kézbesítését.
 
 Ha az önfelügyelt szállítást választotta, akkor a Data Box az Azure-adatközpontból is kiválaszthatja vagy letilthatja.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [Data Box rendszerkövetelményeinek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.

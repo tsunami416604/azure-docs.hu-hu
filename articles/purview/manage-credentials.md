@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: c991559d550b351ce70bcc5834f96f313f856a82
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552399"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516689"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Az Azure hatáskörébe tartozó forrás-hitelesítés hitelesítő adatai
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre hitelesítő adatokat az Azure-ban
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure Key Vault. Ha még nem rendelkezik ilyennel, hogyan hozhat létre egyet a következővel:
+* Egy Azure Key Vault. A létrehozásával kapcsolatos információkért lásd: rövid útmutató [: kulcstartó létrehozása a Azure Portal használatával](../key-vault/general/quick-create-portal.md).
 
 ## <a name="introduction"></a>Introduction (Bevezetés)
 A hitelesítő adatok olyan hitelesítési információk, amelyeket az Azure hatáskörébe használhat a regisztrált adatforrásokhoz való hitelesítéshez. Egy hitelesítőadat-objektum hozható létre különféle hitelesítési forgatókönyvekhez (például a Felhasználónév/jelszó megkövetelése egyszerű hitelesítéshez), és a kiválasztott hitelesítési módszer alapján rögzíti a szükséges információkat. A hitelesítő adatok a meglévő Azure Key Vault-titkokat használják a bizalmas hitelesítési információk beolvasására a hitelesítő adatok létrehozásakor.
@@ -32,7 +32,7 @@ Ha a hatáskörébe tartozó felügyelt identitást használja a vizsgálatok be
 - [1. generációs Azure Data Lake Storage](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#setting-up-authentication-for-a-scan)
 - [Azure SQL Database](register-scan-azure-sql-database.md)
-- [Felügyelt példány Azure SQL Database](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
+- [Felügyelt Azure SQL Database-példány](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
 
 ## <a name="create-azure-key-vaults-connections-in-your-azure-purview-account"></a>Azure Key Vault-kapcsolatok létrehozása az Azure hatáskörébe tartozó fiókban

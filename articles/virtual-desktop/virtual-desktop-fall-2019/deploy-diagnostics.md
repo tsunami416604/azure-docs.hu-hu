@@ -3,25 +3,20 @@ title: A Windows rendszerű virtuális asztali környezet (klasszikus) diagnoszt
 description: A diagnosztikai UX eszköz üzembe helyezése a Windows rendszerű virtuális asztali gépeken (klasszikus).
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023071"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97515640"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>A Windows rendszerű virtuális asztali (klasszikus) diagnosztika eszköz üzembe helyezése
 
 >[!IMPORTANT]
 >Ez a tartalom a Windows rendszerű virtuális asztali (klasszikus) verzióra vonatkozik, amely nem támogatja Azure Resource Manager Windows rendszerű virtuális asztali objektumokat.
-
->[!IMPORTANT]
->2020. március 16-án átmenetileg letiltottuk a felhasználói élményt befolyásoló diagnosztikai lekérdezéseket a szolgáltatás megnövekedett igénye miatt. Ez azt eredményezi, hogy az eszköz nem működik, mert ezek a lekérdezések a működésre támaszkodnak. Ezt a cikket akkor fogjuk frissíteni, amikor a diagnosztikai lekérdezések ismét elérhetők lesznek.
->
->Addig is javasoljuk, hogy a folyamatos figyeléshez [használjon log Analytics](diagnostics-log-analytics-2019.md) .
 
 A Windows rendszerű virtuális asztal diagnosztikai eszköze a következő műveleteket hajthatja végre:
 
@@ -43,8 +38,8 @@ Az eszközhöz tartozó Azure Resource Manager sablon üzembe helyezéséhez lé
 
 Ezt a két PowerShell-modult is telepítenie kell az első lépések előtt:
 
-- [Azure PowerShell-modul](/powershell/azure/install-az-ps?view=azps-2.4.0/)
-- [Azure AD-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
+- [Azure PowerShell-modul](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
+- [Azure AD-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
 
 Győződjön meg arról, hogy az előfizetés-azonosítója készen áll a bejelentkezéskor.
 
@@ -113,7 +108,7 @@ Az ajánlott teljesítményszámlálók manuális konfigurálását a következ�
 1. Nyissa meg az Internet böngészőt, és jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a rendszergazdai fiókjával.
 2. Ezután lépjen **log Analytics munkaterületek** elemre a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
 3. A **Beállítások** szakaszban válassza a  **Speciális beállítások** lehetőséget.
-4. Ezt követően navigáljon az **Data**  >  **adatwindows-teljesítményszámlálók** elemhez, és adja hozzá a következő számlálókat:
+4. Ezt követően navigáljon az   >  **adatwindows-teljesítményszámlálók** elemhez, és adja hozzá a következő számlálókat:
 
     -   LogicalDisk ( \* ) \\ % szabad terület
     -   LogicalDisk (C:) \\ átlagos Lemezvezérlő-várólista hossza
@@ -264,7 +259,7 @@ A munkamenet-gazdagépen lévő felhasználókkal is dolgozhat:
 
     - Küszöbérték: a 2000 MS-nál nagyobb érték van megjelölve sérültként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan figyelheti a tevékenységek naplóit a [használatban lévő diagnosztika log Analytics használatával](diagnostics-log-analytics-2019.md).
 - További információ a gyakori hibákról, valamint a [problémák azonosítására és diagnosztizálására szolgáló hibák](diagnostics-role-service-2019.md)elhárításáról.

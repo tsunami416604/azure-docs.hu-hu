@@ -1,10 +1,9 @@
 ---
-title: 'Oktatóanyag: az automatikus felhasználó-kiépítés megadásának beállítása a Azure Active Directoryhoz | Microsoft Docs'
-description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a tartalomhoz.
+title: 'Oktatóanyag: az automatikus felhasználó-kiépítés megadásának beállítása a Azure Active Directory'
+description: Ismerje meg, hogyan lehet automatikusan kiépíteni és felépíteni a felhasználói fiókokat Azure Active Directory (Azure AD)-ról a tartalomra.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: zchia
 manager: beatrizd
 ms.assetid: 3b761984-a9a0-4519-b23e-563438978de5
 ms.service: active-directory
@@ -14,114 +13,116 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2020
-ms.author: Zhchia
-ms.openlocfilehash: 4ff08e51f6e3b2ae72da43052c25046be8bb5397
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.author: zhchia
+ms.openlocfilehash: c9d19624d90b1228b2a44caeff7d103af3172ed9
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352150"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516333"
 ---
 # <a name="tutorial-configure-contentful-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus kiépítési felállításához szükséges tartalom konfigurálása
 
-Ez az oktatóanyag leírja, milyen lépéseket kell végrehajtania a tartalom és a Azure Active Directory (Azure AD) számára az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a [felhasználókat](https://www.contentful.com/) és csoportokat az Azure ad kiépítési szolgáltatásával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md). 
-
+Ez a cikk az automatikus felhasználó-kiépítés konfigurálásához szükséges lépéseket ismerteti, és Azure Active Directory (Azure AD). Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és a csoportokat az Azure [ad-](https://www.contentful.com/) kiépítési szolgáltatás használatával. A szolgáltatás működéséről és működéséről, valamint a gyakori kérdésekről a következő témakörben talál további információt: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory használatával](../app-provisioning/user-provisioning.md). 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
+
 > [!div class="checklist"]
 > * Felhasználók létrehozása tartalommal
-> * Ha már nincs szükség hozzáférésre, távolítsa el a felhasználókat a tartalomból
+> * Távolítsa el a felhasználókat a tartalomból, ha már nem igénylik a hozzáférést
 > * A felhasználói attribútumok szinkronizálása az Azure AD és a tartalmas szolgáltatás között
 > * Csoportok és csoporttagságok kiépítése a tartalomból
-> * [Egyszeri bejelentkezés](./contentful-tutorial.md) a tartalomra (ajánlott)
+> * [Egyszeri bejelentkezés](contentful-tutorial.md) a tartalomra (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../roles/permissions-reference.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
-* Egy SCIM-kiépítést támogató előfizetéssel rendelkező, tartalommal rendelkező szervezeti fiók. [support@contentful.com](mailto:support@contentful.com)Ha kérdése van a szervezet előfizetésével kapcsolatban, forduljon a tartalomhoz.
+* [Egy Azure AD-bérlő](../develop/quickstart-create-new-tenant.md). 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult a](../roles/permissions-reference.md) kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás rendszergazdája, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* Egy, a tartományok közötti Identitáskezelés (SCIM) kiépítését támogató előfizetéssel rendelkező, tartalommal rendelkező szervezeti fiók. Ha kérdése van a szervezet előfizetésével kapcsolatban, forduljon a [tartalom-támogatási szolgálathoz](mailto:support@contentful.com).
  
-## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
+## <a name="plan-your-provisioning-deployment"></a>Az átadás üzembe helyezésének megtervezése
+
 1. Ismerje meg [az átadási szolgáltatás működését](../app-provisioning/user-provisioning.md).
 2. Határozza meg, hogy ki lesz [az átadás hatókörében](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 3. Határozza meg, hogy milyen adatokat kell [leképezni az Azure ad és a tartalommal](../app-provisioning/customize-application-attributes.md). 
 
-## <a name="step-2-configure-contentful-to-support-provisioning-with-azure-ad"></a>2. lépés A tartalom konfigurálása az Azure AD-vel való kiépítés támogatásához
+## <a name="configure-contentful-to-support-provisioning-with-azure-ad"></a>A tartalom konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-1. Hozzon létre egy **szolgáltatás felhasználói** fiókot a tartalomból. Az Azure-hoz tartozó összes kiépítési engedély ezen a fiókon keresztül lesz elérhető. Ajánlott a **tulajdonost** a fiókhoz tartozó szervezeti szerepkörként kiválasztani.
+1. A tartalommal rendelkező alkalmazásban hozzon létre egy **szolgáltatás-felhasználói** fiókot. Az Azure-hoz tartozó összes kiépítési engedély ezen a fiókon keresztül érhető el. Azt javasoljuk, hogy ehhez a fiókhoz válassza a **tulajdonos** lehetőséget a szervezeti szerepkörként.
 
-2. Jelentkezzen be a tartalomba az előző lépésben létrehozott **szolgáltatás-felhasználóként** .
+2. Jelentkezzen be a **szolgáltatás felhasználója** számára.
 
-3. Navigáljon a **bal oldali csúszka**  ->  **szervezeti beállítások**  ->  **hozzáférési eszközök**  ->  **felhasználó üzembe** helyezése elemre.
+3. A bal oldali menüben válassza a **szervezeti beállítások**  >  **hozzáférési eszközök**  >  **felhasználó kiépítése** lehetőséget.
 
-    ![Menü](media/contentful-provisioning-tutorial/access.png)
+   ![Képernyőfelvétel a szervezeti beállítások menüjéről, a felhasználók kiépítése a hozzáférési eszközök területen.](media/contentful-provisioning-tutorial/access.png)
 
-4. Másolja és mentse a **scim URL-címét**. Ez az érték a Azure Portalban a tartalommal rendelkező alkalmazás üzembe helyezés lapján lesz megadva.
+4. Másolja és mentse a **scim URL-címét**. Ezt az értéket meg kell adnia a Azure Portal a tartalommal rendelkező alkalmazás **létesítés** lapján.
 
-5. Kattintson a **személyes hozzáférési jogkivonat előállítása** elemre.
+5. Válassza a **személyes hozzáférési jogkivonat előállítása** lehetőséget.
 
     ![url](media/contentful-provisioning-tutorial/generate.png)
 
-6. A modális ablakban adjon egy értelmes nevet a személyes hozzáférési tokennek, és kattintson a "létrehozás" gombra.
-    
-7. A rendszer létrehoz egy **scim URL-címet** és a **titkos jogkivonatot** . Másolja és mentse ezeket az értékeket. Ezek az értékek bekerülnek a tartalommal rendelkező alkalmazás üzembe helyezés lapján a Azure Portal.
+6. A modális ablakban adja meg a személyes hozzáférési jogkivonat nevét, majd válassza a **Létrehozás** lehetőséget.
 
-    ![hozzáférés](media/contentful-provisioning-tutorial/token.png)
+7. A rendszer létrehoz egy SCIM URL-címet és a titkos jogkivonatot. Másolja és mentse ezeket az értékeket. Ezeket az értékeket a Azure Portalban lévő, a tartalommal rendelkező alkalmazás **üzembe** helyezés lapján adhatja meg.
 
-
-[support@contentful.com](mailto:support@contentful.com)Ha kérdése van a kiépítés konfigurálásához a felderített felügyeleti konzolon, akkor elérheti.
+    ![Képernyőfelvétel a személyes hozzáférési jogkivonat panelről, C F P A T és a token helyőrző neve kiemelve.](media/contentful-provisioning-tutorial/token.png)
 
 
-## <a name="step-3-add-contentful-from-the-azure-ad-application-gallery"></a>3. lépés Tartalom hozzáadása az Azure AD Application Galleryből
+Ha kérdése van, miközben a kiépítés konfigurálását végzi a megtekintő felügyeleti konzolon, forduljon a [tartalom-támogatási szolgálathoz](mailto:support@contentful.com).
 
-A kiépítés a tartalomhoz való felügyeletének megkezdéséhez vegyen fel tartalmat az Azure AD-alkalmazás-katalógusból. Ha korábban már beállította az egyszeri bejelentkezést, ugyanazt az alkalmazást használhatja. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet. 
+## <a name="add-contentful-from-the-azure-ad-application-gallery"></a>Tartalom hozzáadása az Azure AD Application Galleryből
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
+A kiépítés a tartalomból való kezeléséhez adja hozzá a tartalmat az Azure AD Application Galleryből. Ha korábban már beállította az egyszeri bejelentkezéshez szükséges tartalmat, ugyanazt az alkalmazást használhatja. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, hogy először tesztelje az integrációt. Megtudhatja, hogyan [adhat hozzá egy alkalmazást a](../manage-apps/add-application-portal.md)katalógusban. 
 
-Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
+## <a name="define-who-will-be-in-scope-for-provisioning"></a>Az átadás hatókörében lévő személyek meghatározása 
 
-* A felhasználók és csoportok tartalomhoz rendeléséhez ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
+Az Azure AD-kiépítési szolgáltatás az alkalmazáshoz való hozzárendelés vagy a felhasználó vagy csoport attribútumai alapján kiépített hatókörre használható. 
 
-* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
+Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, hajtsa végre a [felhasználók és csoportok alkalmazáshoz rendelésének](../manage-apps/assign-user-or-group-access-portal.md)lépéseit.
 
+Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, egy hatókör-szűrő használatával [határozhatja meg a felhasználói fiókok üzembe helyezésének feltételes szabályait](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-contentful"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a tartalomhoz 
+* Amikor felhasználókat és csoportokat rendel hozzá a tartalomhoz, az **alapértelmezett hozzáféréstől** eltérő szerepkört kell kijelölnie. Azok a felhasználók, akik az alapértelmezett hozzáférési szerepkörrel rendelkeznek, ki vannak zárva a kiépítés alól, és a kiépítési naplókban nem jogosultak rá. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](../develop/howto-add-app-roles-in-azure-ad-apps.md) . 
+* Kezdje kicsiben. Próbálja ki a felhasználókat és csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé vált. Ha a kiépítési hatókör a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, akkor a hatókört úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel hozzá az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+## <a name="configure-automatic-user-provisioning-to-contentful"></a>Automatikus felhasználó-kiépítés beállítása a tartalomhoz 
 
-### <a name="to-configure-automatic-user-provisioning-for-contentful-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása az Azure AD-ben való tartalomhoz:
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás beállításának lépésein, hogy az Azure AD-ben felhasználói vagy csoport-hozzárendelések alapján hozzon létre, frissítsen és tiltsa le a felhasználók és csoportok egy tesztelési alkalmazásban.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet.
+### <a name="configure-automatic-user-provisioning-for-contentful-in-azure-ad"></a>Automatikus felhasználó-kiépítés beállítása az Azure AD-ben elérhető tartalomhoz
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások** lehetőséget, majd válassza **a minden alkalmazás** lehetőséget.
+
+   ![Képernyőfelvétel a Azure Portal vállalati alkalmazások menüjéről, minden alkalmazás kiemelve.](common/enterprise-applications.png)
 
 2. Az alkalmazások listában válassza a **tartalom** elemet.
 
-    ![Az alkalmazások listában található, a tartalomra mutató hivatkozás](common/all-applications.png)
+   ![Képernyőfelvétel: az alkalmazások listájában az első 20 találat jelenik meg.](common/all-applications.png)
 
 3. Válassza a **Kiépítés** lapot.
 
-    ![Kiépítés lap](common/provisioning.png)
+   ![Képernyőkép a kiépítés lapról a bal oldali menü kezelés szakaszában.](common/provisioning.png)
 
-4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
+4. A **kiépítési mód** beállítása **automatikusra**.
 
-    ![Kiépítés lap automatikus](common/provisioning-automatic.png)
+   ![A kiépítési mód beállításait megjelenítő képernyőkép, automatikus kiemelve.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a tartalommal rendelkező bérlői URL-címet és a titkos jogkivonatot. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen a tartalommal való kapcsolódásra. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a tartalomszolgáltató fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a tartalommal rendelkező bérlői URL-címet és a titkos jogkivonatot. Ha biztosítani szeretné, hogy az Azure AD képes legyen a tartalomhoz csatlakozni, válassza a **kapcsolat tesztelése** lehetőséget. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a tartalomszolgáltató fiók rendelkezik rendszergazdai engedélyekkel, majd próbálkozzon újra.
 
-    ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+   ![Képernyőkép, amely megjeleníti a bérlő U R L és a titkos token szövegmezőket, a kapcsolat tesztelése gomb kiemelve.](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **Értesítés e-mailben** mezőben adja meg annak a személynek vagy csoportnak az e-mail-címét, aki az átadással kapcsolatos hibaüzeneteket kapja, és jelölje be az **E-mail-értesítés küldése hiba esetén** jelölőnégyzetet.
+6. Az **értesítő e-mailben** adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, majd jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
 
-    ![Értesítés e-mailben](common/provisioning-notification-email.png)
+   ![Az értesítő e-mail-szövegmezőt megjelenítő képernyőkép.](common/provisioning-notification-email.png)
 
 7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a tartalomhoz** lehetőséget.
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található tartalomhoz. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használt felhasználói fiókok egyeztetésére szolgálnak. Ha úgy dönt, hogy megváltoztatja a [megfelelő célként megadott attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a tartalomszolgáltató API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Az **attribútum-leképezés** szakaszban tekintse át az Azure ad-ből a tartalommal szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez használt felhasználói fiókok egyeztetésére szolgálnak. Ha úgy dönt, hogy megváltoztatja a [megfeleltetési cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a tartalommal rendelkező API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
    |Attribútum|Típus|Szűréshez támogatott|
    |---|---|---|
@@ -131,41 +132,39 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a tartalommal** lehetőséget.
 
-11. Tekintse át az Azure AD-ből szinkronizált csoportosítási attribútumokat az **attribútum-hozzárendelési** szakaszban található tartalomhoz. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez tartozó csoportok egyeztetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+11. Az **attribútum-leképezés** szakaszban tekintse át az Azure ad-ből a tartalommal szinkronizált csoportok attribútumait. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekhez tartozó csoportok egyeztetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-      |Attribútum|Típus|Szűréshez támogatott|
-      |---|---|---|
-      |displayName|Sztring|&check;|
-      |tagok|Referencia|
+    |Attribútum|Típus|Szűréshez támogatott|
+    |---|---|---|
+    |displayName|Sztring|&check;|
+    |tagok|Referencia|
 
-12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+12. A hatóköri szűrők beállításához hajtsa végre a [hatókör-szűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)ismertetett lépéseket.
 
-13. Ha szeretné engedélyezni az Azure AD-kiépítési szolgáltatást a tartalomhoz, módosítsa a **kiépítési állapotot** **a következőre a** **Beállítások** szakaszban.
+13. Ha szeretné engedélyezni az Azure AD kiépítési szolgáltatást a tartalomhoz, a beállítások szakaszban a **kiépítési állapot** **beállításnál** válassza **a** be lehetőséget.
 
-    ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
+    ![Képernyőfelvétel: a kiépítési állapot be-és kikapcsolása váltógomb.](common/provisioning-toggle-on.png)
 
-14. Adja meg azokat a felhasználókat és/vagy csoportokat, amelyeket szeretne kiépíteni a tartalom kiépítéséhez, ha a **Settings (beállítások** ) szakaszban a kívánt értékeket választja ki a **hatókörben** .
+14. A tartalomra kiépíteni kívánt felhasználók vagy csoportok definiálásához a **Beállítások** szakaszban a **hatókör** területen válassza a megfelelő lehetőséget.
 
-    ![Átadási hatókör](common/provisioning-scope.png)
+    ![A hatókör ablaktáblán kiválasztható beállításokat bemutató képernyőkép.](common/provisioning-scope.png)
 
-15. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
+15. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget.
 
-    ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
+    ![A Save (Mentés) gombot és a Cancel (Mégse) gombot megjelenítő képernyőkép.](common/provisioning-configuration-save.png)
 
-Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát elindítja. A kezdeti ciklus elvégzése hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek az Azure AD átadási szolgáltatásának futtatása során körülbelül 40 percenként lesznek végrehajtva. 
+Ez a művelet elindítja a **Beállítások** területen a **hatókörben** definiált összes felhasználó és csoport kezdeti szinkronizálási ciklusát. A kezdeti ciklus elvégzése hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek az Azure AD átadási szolgáltatásának futtatása során körülbelül 40 percenként lesznek végrehajtva. 
 
-## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
-Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
+## <a name="monitor-your-deployment"></a>Az üzemelő példány figyelése
 
-1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
-2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
-3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
+A kiépítés beállítása után a következő erőforrásokkal figyelheti az üzemelő példányt:
 
-## <a name="additional-resources"></a>További források
-
-* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* Annak megállapításához, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül, tekintse meg a [kiépítési naplókat](../reports-monitoring/concept-provisioning-logs.md).
+* Ha meg szeretné tekinteni a kiépítési ciklus állapotát, és azt, hogy a Befejezés hogyan zárul be, ellenőrizze a [folyamatjelző sávot](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
+* Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a [karantén állapotáról](../app-provisioning/application-provisioning-quarantine-status.md).  
 
 ## <a name="next-steps"></a>További lépések
 
 * [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

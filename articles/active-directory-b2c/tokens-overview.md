@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0ad14481673f0061fb0170e60869109c87a6829
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379786"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516358"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C jogkivonatok áttekintése
 
@@ -50,7 +50,7 @@ Az azonosító jogkivonatokban lévő jogcímeket nem adja vissza a rendszer ado
 
 A következő táblázat felsorolja azokat a jogcímeket, amelyeket az azonosító jogkivonatok és a Azure AD B2C által kiállított hozzáférési jogkivonatok várhatnak.
 
-| Name | Jogcím | Példaérték | Leírás |
+| Név | Jogcím | Példaérték | Leírás |
 | ---- | ----- | ------------- | ----------- |
 | Célközönség | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Azonosítja a jogkivonat kívánt címzettjét. Azure AD B2C esetében a célközönség az alkalmazás azonosítója. Az alkalmazásnak érvényesíteni kell ezt az értéket, és el kell utasítania a tokent, ha az nem egyezik. A célközönség szinonimája az erőforrásnak. |
 | Kiállító | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Azonosítja a tokent létrehozó és visszaküldő biztonságijogkivonat-szolgáltatást (STS). Emellett azt a könyvtárat is azonosítja, amelyben a felhasználó hitelesítése megtörtént. Az alkalmazásnak ellenőriznie kell a kiállítói jogcímet, hogy ellenőrizze, a jogkivonat a megfelelő végpontból származik-e. |
@@ -62,7 +62,7 @@ A következő táblázat felsorolja azokat a jogcímeket, amelyeket az azonosít
 | Hozzáférési jogkivonat kivonata | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Egy hozzáférési jogkivonat kivonata csak akkor szerepel egy azonosító jogkivonatban, ha a tokent egy OAuth 2,0 hozzáférési jogkivonattal együtt állították ki. A hozzáférési jogkivonat kivonata használható a hozzáférési token hitelességének ellenőrzéséhez. Az érvényesítés végrehajtásával kapcsolatos további információkért lásd az [OpenID Connect specifikációját](https://openid.net/specs/openid-connect-core-1_0.html) .  |
 | Egyszeri | `nonce` | `12345` | Egy alkalom a jogkivonat-újrajátszás elleni támadások enyhítésére szolgáló stratégia. Az alkalmazás a lekérdezési paraméter használatával megadhat egy egyszeres engedélyt egy engedélyezési kérelemben `nonce` . A kérelemben megadott értéket a rendszer nem módosítja `nonce` csak azonosító jogkivonat jogcímen. Ez a jogcím lehetővé teszi az alkalmazás számára, hogy ellenőrizze az értéket a kérelemben megadott értékkel. Az alkalmazásnak el kell végeznie ezt az ellenőrzést az azonosító jogkivonat érvényesítési folyamata során. |
 | Tárgy | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat érvényesít, például egy alkalmazás felhasználóját. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Az engedélyezési ellenőrzések biztonságos elvégzésére használható, például ha a jogkivonat egy erőforrás elérésére szolgál. Alapértelmezés szerint a tulajdonos jogcímet a rendszer a címtárban lévő felhasználó objektumazonosító alapján tölti fel. |
-| Hitelesítési környezet osztályának referenciája | `acr` | Nem értelmezhető | Csak régebbi házirendekkel használható. |
+| Hitelesítési környezet osztályának referenciája | `acr` | Nem alkalmazható | Csak régebbi házirendekkel használható. |
 | Megbízhatósági keretrendszer szabályzata | `tfp` | `b2c_1_signupsignin1` | Az azonosító jogkivonat beszerzéséhez használt szabályzat neve. |
 | Hitelesítési idő | `auth_time` | `1438535543` | Az az idő, amikor a felhasználó legutóbb megadta a hitelesítő adatokat. A hitelesítés nem jelent különbséget a friss bejelentkezés, az egyszeri bejelentkezési (SSO) munkamenet vagy egy másik bejelentkezési típus között. Az az `auth_time` utolsó alkalommal, amikor az alkalmazás (vagy felhasználó) hitelesítési kísérletet kezdeményezett Azure ad B2C. A hitelesítéshez használt metódus nincs megkülönböztetve. |
 | Hatókör | `scp` | `Read`| Az erőforráshoz hozzáférési jogkivonat számára megadott engedélyek. Több megadott engedély is szóközzel elválasztva. |
@@ -91,13 +91,13 @@ A [jogkivonatok kompatibilitásának kezeléséhez](configure-tokens.md)a követ
 
 - **Kiállítói (ISS) jogcím** – ez a tulajdonság azonosítja a jogkivonatot kiállító Azure ad B2C bérlőt. Az alapértelmezett érték `https://<domain>/{B2C tenant GUID}/v2.0/`. Az érték a `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` Azure ad B2C bérlő és a jogkivonat-kérelemben használt felhasználói folyamat azonosítóit tartalmazza. Ha az alkalmazásnak vagy a könyvtárnak Azure AD B2Cnak kell lennie az [OpenID Connect Discovery 1,0 specifikációjának](https://openid.net/specs/openid-connect-discovery-1_0.html)megfelelőnek, ezt az értéket kell használnia.
 
-- **Tulajdonos (Sub) jogcím** – ez a tulajdonság azonosítja azt az entitást, amelyhez a jogkivonat adatokat érvényesít. Az alapértelmezett érték a **ObjectId** , amely a `sub` jogkivonatban lévő jogcímet a felhasználó objektum-azonosítójával tölti fel. A **nem támogatott** érték csak a visszamenőleges kompatibilitás érdekében adható meg. Javasoljuk, hogy a **ObjectId** -re váltson, amint tudja.
+- **Tulajdonos (Sub) jogcím** – ez a tulajdonság azonosítja azt az entitást, amelyhez a jogkivonat adatokat érvényesít. Az alapértelmezett érték a **ObjectId**, amely a `sub` jogkivonatban lévő jogcímet a felhasználó objektum-azonosítójával tölti fel. A **nem támogatott** érték csak a visszamenőleges kompatibilitás érdekében adható meg. Javasoljuk, hogy a **ObjectId** -re váltson, amint tudja.
 
 - **Házirend-azonosítót jelölő jogcím** – ez a tulajdonság azonosítja azt a jogcím-típust, amelybe a jogkivonat-kérelemben használt házirend neve fel van töltve. Az alapértelmezett érték `tfp`. A értéke `acr` csak a visszamenőleges kompatibilitás érdekében van megadva.
 
 ## <a name="pass-through"></a>Továbbítás
 
-A felhasználói utazás megkezdésekor Azure AD B2C hozzáférési jogkivonatot kap egy identitás-szolgáltatótól. Azure AD B2C a token használatával kéri le a felhasználó adatait. [Engedélyezheti a jogcímeket a felhasználói folyamatokban](idp-pass-through-user-flow.md) , vagy [megadhat egy jogcímet az egyéni szabályzatban](idp-pass-through-custom.md) , hogy átadja a jogkivonatot a Azure ad B2Cban regisztrált alkalmazásoknak. Az alkalmazásnak [ajánlott felhasználói folyamatot](user-flow-versions.md) kell használnia ahhoz, hogy kihasználhassa a jogkivonatot jogcímként.
+A felhasználói utazás megkezdésekor Azure AD B2C hozzáférési jogkivonatot kap egy identitás-szolgáltatótól. Azure AD B2C a token használatával kéri le a felhasználó adatait. A felhasználói folyamat egy jogcímet engedélyez, hogy [átadja a jogkivonatot](idp-pass-through-user-flow.md) a Azure ad B2Cban regisztrált alkalmazásoknak. Az alkalmazásnak [ajánlott felhasználói folyamatot](user-flow-versions.md) kell használnia ahhoz, hogy kihasználhassa a jogkivonatot jogcímként.
 
 Azure AD B2C jelenleg csak az OAuth 2,0 Identity Providers hozzáférési jogkivonatának továbbítását támogatja, beleértve a Facebookot és a Google-t is. Az összes többi Identity Provider esetében a rendszer üresen adja vissza a jogcímet.
 
@@ -107,7 +107,7 @@ A jogkivonatok érvényesítéséhez az alkalmazásnak ellenőriznie kell a jogk
 
 ### <a name="validate-signature"></a>Aláírás ellenőrzése
 
-A JWT három szegmenst, egy *fejlécet* , egy *törzset* és egy *aláírást* tartalmaznak. Az aláírási szegmens használatával ellenőrizheti a jogkivonat hitelességét, hogy az alkalmazás megbízható legyen. Azure AD B2C tokenek az iparági szabványnak megfelelő aszimmetrikus titkosítási algoritmusok, például az RSA 256 használatával vannak aláírva.
+A JWT három szegmenst, egy *fejlécet*, egy *törzset* és egy *aláírást* tartalmaznak. Az aláírási szegmens használatával ellenőrizheti a jogkivonat hitelességét, hogy az alkalmazás megbízható legyen. Azure AD B2C tokenek az iparági szabványnak megfelelő aszimmetrikus titkosítási algoritmusok, például az RSA 256 használatával vannak aláírva.
 
 A jogkivonat fejléce a jogkivonat aláírásához használt kulcs-és titkosítási módszerről tartalmaz információkat:
 
@@ -149,7 +149,7 @@ Ha az alkalmazások vagy API azonosító jogkivonatot kap, akkor az azonosító 
 
 Az alkalmazás által végrehajtandó érvényesítések teljes listáját az [OpenID Connect specifikációjában](https://openid.net)találja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [hozzáférési tokenek használatáról](access-tokens.md).
 

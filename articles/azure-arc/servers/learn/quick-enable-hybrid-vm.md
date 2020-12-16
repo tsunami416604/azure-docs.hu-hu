@@ -2,13 +2,13 @@
 title: Hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal
 description: Ismerje meg, hogyan csatlakozhat és regisztrálhat hibrid gépet az Azure arc-kompatibilis kiszolgálókon.
 ms.topic: quickstart
-ms.date: 11/12/2020
-ms.openlocfilehash: 3779d95ac138e83b1d953f744e07ae553890a5d7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/15/2020
+ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576842"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516780"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Gyors útmutató: hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal
 
@@ -29,6 +29,9 @@ Az [Azure arc-kompatibilis kiszolgálók](../overview.md) lehetővé teszik a he
     * Ha a gép tűzfalon vagy proxykiszolgálón keresztül csatlakozik az interneten keresztüli kommunikációhoz, győződjön meg arról, hogy a [felsorolt](../agent-overview.md#networking-configuration) URL-címek nincsenek letiltva.
 
     * Az Azure arc-kompatibilis kiszolgálók csak az [itt](../overview.md#supported-regions)megadott régiókat támogatják.
+
+> [!WARNING]
+> A Linux-állomásnév vagy a Windows-számítógép neve nem használhatja a név egyik foglalt kifejezését vagy védjegyét, ellenkező esetben a csatlakoztatott gép Azure-ba való regisztrálására tett kísérlet sikertelen lesz. A fenntartott szavak listáját a [fenntartott erőforrás-hibák feloldása](../../../azure-resource-manager/templates/error-reserved-resource-name.md) című témakörben tekintheti meg.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -107,7 +110,7 @@ Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis
 
 :::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="A számítógép sikeres csatlakoztatása" border="false":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy engedélyezte a Linux vagy Windows rendszerű hibrid gépet, és sikeresen csatlakozott a szolgáltatáshoz, készen áll a Azure Policy az Azure-ban való megfelelőség megismerésére.
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 47c3c091e767cac63bb814469397ef1a0aeca3a4
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173566"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516502"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform – ajánlott eljárások és javaslatok
 
@@ -28,9 +28,9 @@ Ha most ismerkedik az első lépésekkel, tekintse meg a [Microsoft Identity pla
 Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás hatékonyan legyen integrálva a [Microsoft Identity platformmal](./index.yml).
 
 > [!TIP]
-> A Azure Portal *integrációs asszisztense* segíthet az ajánlott eljárások és javaslatok alkalmazásában. Válassza ki a Azure Portal valamelyik [alkalmazás-regisztrációját](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) , majd a Segéd megkezdéséhez válassza az **Integration Assistant (előzetes verzió)** menüpontot.
+> A Azure Portal *integrációs asszisztense* segíthet az ajánlott eljárások és javaslatok alkalmazásában. Válassza ki a Azure Portal valamelyik [alkalmazás-regisztrációját](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) , majd válassza az **integrációs asszisztens** menüpontot a Segéd megkezdéséhez.
 
-## <a name="basics"></a>Alapvető beállítások
+## <a name="basics"></a>Alapbeállítások
 
 ![jelölőnégyzet ](./media/active-directory-integration-checklist/checkbox-two.svg) beolvasása és a [Microsoft-Platform házirendjeinek](/legal/microsoft-identity-platform/terms-of-use)megismerése. Győződjön meg arról, hogy az alkalmazás megfelel a felhasználók és a platform elleni védelemhez tervezett feltételeknek.
 

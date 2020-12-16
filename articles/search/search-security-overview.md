@@ -7,20 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/01/2020
+ms.date: 12/15/2020
 ms.custom: references_regions
-ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 118ee6ffb189b7a5558477912bd6b27ea739afde
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011795"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516168"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
 
 Ez a cikk az Azure Cognitive Search legfontosabb biztonsági funkcióit ismerteti, amelyek a tartalom és a műveletek védelmére használhatók.
 
-+ A tárolási rétegben a titkosítás az összes olyan, a szolgáltatás által felügyelt tartalomra épül, mint az indexek, a szinonimák leképezései, valamint az indexelő, az adatforrások és a szakértelmével definíciói. Az Azure Cognitive Search az indexelt tartalom kiegészítő titkosításához is támogatja az ügyfél által felügyelt kulcsok (CMK) hozzáadását. A 1 2020 augusztusában létrehozott szolgáltatások esetében a CMK titkosítás az ideiglenes lemezeken lévő adatokat az indexelt tartalom teljes dupla titkosítására terjeszti.
++ A tárolási rétegben a titkosítást a rendszer a lemezre mentett összes szolgáltatás által felügyelt tartalomhoz tartalmazza, beleértve az indexeket, a szinonimákat, valamint az indexelő, az adatforrások és a szakértelmével definícióit. Az Azure Cognitive Search az indexelt tartalom kiegészítő titkosításához is támogatja az ügyfél által felügyelt kulcsok (CMK) hozzáadását. A 1 2020 augusztusában létrehozott szolgáltatások esetében a CMK titkosítás az ideiglenes lemezeken lévő adatokat az indexelt tartalom teljes dupla titkosítására terjeszti.
 
 + A bejövő biztonság a keresési szolgáltatási végpontot a biztonsági szintek növekvő szintjén védi: a kérés API-kulcsaitól, a tűzfal bejövő szabályaitól a szolgáltatás teljes körű védelmét biztosító privát végpontok számára a nyilvános internetről.
 
@@ -40,7 +40,7 @@ Az Azure Cognitive Search a titkosítás a kapcsolatokkal és az átvitelekkel k
 
 A Search szolgáltatás által belsőleg kezelt [adattitkosítási modelleket](../security/fundamentals/encryption-models.md)az alábbi táblázat ismerteti. Bizonyos funkciók, például a Tudásbázis, a növekményes bővítés és az indexelő alapú indexelés, a más Azure-szolgáltatások adatstruktúráinak olvasására vagy írására. Ezek a szolgáltatások az Azure Cognitive Searchtól eltérő titkosítási támogatással rendelkeznek.
 
-| Modellezés | Kulcsok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Követelmények&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Korlátozások | A következőre érvényes: |
+| Modell | Kulcsok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Követelmények&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Korlátozások | A következőre érvényes: |
 |------------------|-------|-------------|--------------|------------|
 | kiszolgálóoldali titkosítás | Microsoft által felügyelt kulcsok | Nincs (beépített) | Nincs, az összes régióban elérhető minden szinten, a január 24 2018. után létrehozott tartalomhoz. | Tartalom (indexek és szinonima térképek) és definíciók (indexelő, adatforrások, szakértelmével) |
 | kiszolgálóoldali titkosítás | ügyfél által felügyelt kulcsok | Azure Key Vault | Minden régióban elérhető számlázandó szinten, a január 2019. után létrehozott tartalomhoz. | Az adatlemezeken található tartalom (indexek és szinonimák) |
@@ -76,7 +76,7 @@ A bejövő biztonsági funkciók a keresési szolgáltatás végpontját a bizto
 
 ### <a name="public-access-using-api-keys"></a>Nyilvános hozzáférés API-kulcsok használatával
 
-Alapértelmezés szerint a keresési szolgáltatás a nyilvános felhőn keresztül érhető el, kulcs alapú hitelesítéssel, rendszergazdai vagy lekérdezési hozzáféréssel a keresési szolgáltatás végpontja számára. Az API-Key egy véletlenszerűen generált számokból és betűkből álló karakterlánc. A kulcs típusa (rendszergazda vagy lekérdezés) határozza meg a hozzáférési szintet. Az érvényes kulcs beküldése igazolja, hogy a kérelem megbízható entitásból származik.
+Alapértelmezés szerint a keresési szolgáltatás a nyilvános felhőn keresztül érhető el, kulcs alapú hitelesítéssel, rendszergazdai vagy lekérdezési hozzáféréssel a keresési szolgáltatás végpontja számára. Az [API-kulcsok](search-security-rbac.md) véletlenszerűen generált számokból és betűkből álló karakterláncok. A kulcs típusa (rendszergazda vagy lekérdezés) határozza meg a hozzáférési szintet. Az érvényes kulcs beküldése igazolja, hogy a kérelem megbízható entitásból származik.
 
 A keresési szolgáltatásnak két hozzáférési szintje van, amelyeket a következő API-kulcsok engedélyeznek:
 
@@ -114,15 +114,15 @@ Habár ez a megoldás a legbiztonságosabb, a további szolgáltatások használ
 
 Az Azure Cognitive Searchban az egyes indexek nem biztonságos objektumok. Ehelyett az indexhez való hozzáférést a szolgáltatási réteg határozza meg (olvasási vagy írási hozzáférés a szolgáltatáshoz), valamint egy művelet kontextusával.
 
-A végfelhasználói hozzáféréshez a lekérdezési kérelmeket a lekérdezési kulcs használatával lehet összeszervezni, amely minden kérés írásvédett, és tartalmazza az alkalmazás által használt adott indexet. Egy lekérdezési kérelemben nincs olyan fogalom, amely az indexek összekapcsolását vagy egyszerre több index elérését teszi elérhetővé, így az összes kérelem egyetlen indexet céloz meg definíció szerint. Ennek megfelelően a lekérdezési kérelem (egy kulcs plusz egy célként megadott index) kialakítása határozza meg a biztonsági határt.
+A végfelhasználói hozzáféréshez a lekérdezési kérelmeket a [lekérdezési kulcs](search-security-rbac.md)használatával lehet összeszervezni, amely minden kérés írásvédett, és tartalmazza az alkalmazás által használt adott indexet. Egy lekérdezési kérelemben nincs olyan fogalom, amely az indexek összekapcsolását vagy egyszerre több index elérését teszi elérhetővé, így az összes kérelem egyetlen indexet céloz meg definíció szerint. Ennek megfelelően a lekérdezési kérelem (egy kulcs plusz egy célként megadott index) kialakítása határozza meg a biztonsági határt.
 
-Az indexekhez való rendszergazdai és fejlesztői hozzáférés nem különbözik: a szolgáltatás által felügyelt objektumok létrehozásához, törléséhez és frissítéséhez egyaránt írási hozzáférésre van szükség. A szolgáltatáshoz tartozó rendszergazdai kulccsal bárki megtekintheti, módosíthatja vagy törölheti ugyanazon szolgáltatás bármelyik indexét. Az indexek véletlen vagy rosszindulatú törlésével szembeni védelem érdekében a belső verziókövetés a kód eszközeire a nemkívánatos indexek törlésének vagy módosításának megfordítására szolgáló megoldás. Az Azure Cognitive Search a rendelkezésre állás biztosítása érdekében feladatátvételt hajt végre a fürtön belül, de nem tárolja és nem hajtja végre az indexek létrehozásához vagy betöltéséhez használt tulajdonosi kódot.
+Az indexekhez való rendszergazdai és fejlesztői hozzáférés nem különbözik: a szolgáltatás által felügyelt objektumok létrehozásához, törléséhez és frissítéséhez egyaránt írási hozzáférésre van szükség. A szolgáltatáshoz tartozó [rendszergazdai kulccsal](search-security-rbac.md) bárki megtekintheti, módosíthatja vagy törölheti ugyanazon szolgáltatás bármelyik indexét. Az indexek véletlen vagy rosszindulatú törlésével szembeni védelem érdekében a belső verziókövetés a kód eszközeire a nemkívánatos indexek törlésének vagy módosításának megfordítására szolgáló megoldás. Az Azure Cognitive Search a rendelkezésre állás biztosítása érdekében feladatátvételt hajt végre a fürtön belül, de nem tárolja és nem hajtja végre az indexek létrehozásához vagy betöltéséhez használt tulajdonosi kódot.
 
 Az index szintjén biztonsági határokat igénylő bérlős megoldások esetében az ilyen megoldások jellemzően olyan középső szintet tartalmaznak, amelyet az ügyfelek az indexek elkülönítésének kezelésére használnak. További információ a több-bérlős használati esetről: [tervezési minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Cognitive Search](search-modeling-multitenant-saas-applications.md).
 
 ## <a name="user-access"></a>Felhasználói hozzáférés
 
-Az index és az egyéb objektumok elérésének módja a kérelemben szereplő API-kulcs típusa alapján történik. A legtöbb fejlesztő a [*lekérdezési kulcsokat*](search-security-api-keys.md) az ügyféloldali keresési kérelmekhez hozza létre és rendeli hozzá. A lekérdezési kulcs csak olvasási hozzáférést biztosít az indexen belüli kereshető tartalmakhoz.
+Az index és az egyéb objektumok elérésének módja a kérelemben szereplő API-kulcs típusa alapján történik. A legtöbb fejlesztő a [lekérdezési kulcsokat](search-security-api-keys.md) az ügyféloldali keresési kérelmekhez hozza létre és rendeli hozzá. A lekérdezési kulcs csak olvasási hozzáférést biztosít az indexen belüli kereshető tartalmakhoz.
 
 Ha részletes, felhasználónkénti vezérlést igényel a keresési eredmények között, biztonsági szűrőket készíthet a lekérdezésekhez, és visszaküldheti az adott biztonsági identitáshoz társított dokumentumokat. Az előre definiált szerepkörök és szerepkör-hozzárendelések helyett az identitás-alapú hozzáférés-vezérlés olyan *szűrőként* van megvalósítva, amely identitások alapján metszi a dokumentumok és tartalmak keresési eredményeit. Az alábbi táblázat két módszert ismertet a jogosulatlan tartalom keresési eredményeinek kivágására.
 

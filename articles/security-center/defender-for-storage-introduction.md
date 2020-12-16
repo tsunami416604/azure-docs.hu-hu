@@ -7,18 +7,19 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341974"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516519"
 ---
-# <a name="introduction-to-azure-defender-for-storage"></a>Bevezetés az Azure Defender for Storage használatába
+# <a name="introduction-to-azure-defender-for-storage"></a>Az Azure Defender tároláshoz bemutatása
 
-Az **Azure Defender for Storage** észleli az Azure Storage-fiókokban potenciálisan ártalmas tevékenységeket. Az Ön adatai védetté tehetik, hogy blob-tárolóként, fájlmegosztásként vagy adattavakként vannak tárolva.
 
-Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését *anélkül* , hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági monitorozási rendszerek kezelésében.
+Az **Azure Defender for Storage** egy olyan Azure-alapú biztonsági intelligencia, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kihasználásához. A biztonsági AI és a [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) speciális képességeinek kihasználásával környezetfüggő biztonsági riasztásokat és ajánlásokat biztosít.
+
+A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a riasztások a Azure Security Centerba vannak integrálva, és e-mailben is elküldhető az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és javításával kapcsolatos javaslatokkal kapcsolatban.
 
 
 ## <a name="availability"></a>Rendelkezésre állás
@@ -28,7 +29,7 @@ Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését *anélkül* , 
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|A Storage-hoz készült **Azure Defender** számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
 |Védett tárolási típusok:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
-|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 
@@ -36,14 +37,14 @@ Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését *anélkül* , 
 
 A biztonsági riasztások akkor aktiválódnak, ha:
 
-- **Gyanús tevékenység** – például a Storage-fiók sikeresen elérhető a Tor aktív kilépési csomópontjának nevezett IP-címről.
-- **Rendellenes viselkedés** – például a hozzáférési minta módosítása egy Storage-fiókra
-- **Lehetséges kártevők feltöltése** – a kivonatoló hírnevének elemzése azt jelzi, hogy egy feltöltött fájl kártevőket tartalmaz
+- **Gyanús hozzáférési minták** – például sikeres hozzáférés egy Tor-kilépési csomópontból vagy egy olyan IP-címről, amely a Microsoft Threat Intelligence által gyanúsnak minősül
+- **Gyanús tevékenységek** – például rendellenes Adatkiemelés vagy a hozzáférési engedélyek szokatlan módosítása
+- **Rosszindulatú tartalom feltöltése** – például a lehetséges kártevő fájlok (a kivonatok elemzése alapján) vagy az adathalászat-tartalom üzemeltetése
 
-A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a fenyegetések kivizsgálásával és szervizelésével kapcsolatos javaslatokat.
+A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a fenyegetések kivizsgálásával és szervizelésével kapcsolatos javaslatokat. A riasztások exportálhatók az Azure Sentinelbe vagy bármely más harmadik féltől származó SIEM vagy más külső eszközre.
 
 > [!TIP]
-> A tárolási riasztások szimulálása a [blogbejegyzés](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)utasításait követve végezhető el.
+> Javasoljuk, hogy az [Azure Defender for Storage](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center) szolgáltatást az előfizetés szintjén konfigurálja, de az [Egyéni Storage-fiókok esetében is konfigurálható](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal).
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>Mi a kivonatoló hírnevének elemzése kártevők számára?
@@ -59,7 +60,7 @@ Ha egy fájl gyanúja szerint kártevőt tartalmaz, Security Center riasztást j
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta az Azure Defender for Storage szolgáltatással kapcsolatos tudnivalókat.
 

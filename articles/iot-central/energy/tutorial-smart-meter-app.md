@@ -3,21 +3,19 @@ title: 'Oktatóanyag: Smart Meter Analytics-alkalmazás létrehozása IoT Centra
 description: 'Oktatóanyag: Ismerje meg, hogyan hozhat létre intelligens mérőműszer-figyelő alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.'
 author: op-ravi
 ms.author: omravi
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: af4940ae6b0dc001667602b8729faaa3a10d19da
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: a95f1befcdc9b59293eb97330ba7ceae3034a74b
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127131"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516770"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Oktatóanyag: az intelligens fogyasztásmérő monitorozási alkalmazás sablonjának létrehozása és végigvezeti 
-
-
 
 Ez az oktatóanyag végigvezeti az intelligens mérőműszer-figyelő alkalmazás létrehozásának folyamatán, amely egy szimulált adattal rendelkező minta-eszköz modellt tartalmaz. Ezen oktatóanyag segítségével elsajátíthatja a következőket:
 
@@ -30,7 +28,7 @@ Ez az oktatóanyag végigvezeti az intelligens mérőműszer-figyelő alkalmazá
 Ha nincs előfizetése, [hozzon létre egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Nincsenek
+- Nincs
 - Az Azure-előfizetés használata ajánlott, de nem szükséges a kipróbáláshoz
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Intelligens fogyasztásmérő monitorozására szolgáló alkalmazás létrehozása 
@@ -38,14 +36,13 @@ Ha nincs előfizetése, [hozzon létre egy ingyenes próbaverziós fiókot](http
 Ezt az alkalmazást három egyszerű lépésben hozhatja létre:
 
 1. Nyissa meg az [Azure IoT Central kezdőlapját](https://apps.azureiotcentral.com) , és kattintson a **Build** (létrehozás) gombra egy új alkalmazás létrehozásához. 
-
-2. Válassza **az energia** fület, majd kattintson az alkalmazás **létrehozása** elemre az **intelligens fogyasztásmérő figyelése** alkalmazás csempén.
+1. Válassza **az energia** fület, majd kattintson az alkalmazás **létrehozása** elemre az **intelligens fogyasztásmérő figyelése** alkalmazás csempén.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás összeállítása](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
-3. Az alkalmazás **létrehozása** megnyitja az **új alkalmazás** űrlapot. Adja meg a kért adatokat az alábbi ábrán látható módon:
+1. Az alkalmazás **létrehozása** megnyitja az **új alkalmazás** űrlapot. Adja meg a kért adatokat az alábbi ábrán látható módon:
     * **Alkalmazás neve**: válasszon egy nevet a IoT Central alkalmazás számára. 
     * **URL**: válasszon egy IoT Central URL-címet, a platform ellenőrzi annak egyediségét.
     * **7 napos ingyenes próbaverzió**: Ha már rendelkezik Azure-előfizetéssel, az alapértelmezett beállítás ajánlott. Ha nem rendelkezik Azure-előfizetéssel, kezdje az ingyenes próbaverzióval.
@@ -55,7 +52,6 @@ Ezt az alkalmazást három egyszerű lépésben hozhatja létre:
         ![Új alkalmazás űrlapja](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
 
         ![Új alkalmazás-űrlap számlázási adatai](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
-
 
 ### <a name="verify-the-application-and-simulated-data"></a>Az alkalmazás és a szimulált adatértékek ellenőrzése
 
@@ -99,12 +95,12 @@ Az intelligenskártya-modell megjelenítéséhez kattintson az **eszköz sablono
 Ha úgy dönt, hogy nem folytatja az alkalmazás használatát, törölje az alkalmazást a következő lépésekkel:
 
 1. A bal oldali ablaktáblában nyissa meg az adminisztráció lapot.
-2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
+1. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás törlése](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További tudnivalók az Intelligens Fogyasztásmérők alkalmazás-architektúrával kapcsolatban 
 > [!div class="nextstepaction"]
