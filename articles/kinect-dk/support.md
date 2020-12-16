@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, rögzítés, érzékelő, SDK, hozzáférés, mélység, videó, kamera, IMU, mozgás, érzékelő, hang, mikrofon, Matroska, Sensor SDK, letöltés, törzs, nyomon követés, támogatás
-ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9bb6e0ad8ebbb763389f13e317036eacc5c7d074
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357045"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587094"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Az Azure Kinect támogatási lehetőségei és erőforrásai
 
@@ -57,6 +57,8 @@ Mielőtt felveszi a kapcsolatot a hardver támogatásával, győződjön meg arr
 
 A támogatási ajánlatokkal kapcsolatos további információkért tekintse meg a [Microsoft támogatási részlegét](https://support.microsoft.com/help/4341255/support-for-business).
 
-## <a name="next-steps"></a>További lépések
+A Microsoft Hardware Products-megfelelőséggel kapcsolatos EU-nyilatkozatok [itt](https://www.microsoft.com/en-us/eu-declarations-compliance?activetab=pivot1:primaryr3) találhatóak
+
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Kinect hibaelhárítása](troubleshooting.md)

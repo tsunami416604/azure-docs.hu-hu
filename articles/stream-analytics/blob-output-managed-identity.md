@@ -5,15 +5,15 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/11/2020
-ms.openlocfilehash: f1aad2464e4979ecbf35deceaad4de70e05b3004
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/15/2020
+ms.openlocfilehash: 62651e9ea4e1b02b276e7870163453bfa55c3909
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573663"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587570"
 ---
-# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Felügyelt identitás (előzetes verzió) használata az Azure Stream Analytics-feladatok hitelesítéséhez az Azure Blob Storage output szolgáltatásban
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>A felügyelt identitás (előzetes verzió) használatával hitelesítheti a Azure Stream Analytics feladatot az Azure-ban Blob Storage
 
 Az Azure Blob Storage-hoz való kimenet [felügyelt identitás-hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) (előzetes verzió) lehetővé teszi, hogy a stream Analytics feladatok közvetlen hozzáférést biztosítanak egy Storage-fiókhoz a kapcsolati karakterlánc használata helyett. A fokozott biztonság mellett ez a funkció lehetővé teszi, hogy az Azure-ban egy Virtual Network (VNET) lévő Storage-fiókba írja az adatok.
 
@@ -239,7 +239,7 @@ A szolgáltatás jelenlegi korlátai a következők:
 
 4. A [felhasználó által hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md) nem támogatott. Ez azt jelenti, hogy a felhasználó nem tudja megadni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz használhatnak. Az egyszerű szolgáltatásnevet Azure Stream Analytics kell létrehozni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](./stream-analytics-define-outputs.md)
 * [Egyéni blob kimeneti particionálás Azure Stream Analytics](./stream-analytics-custom-path-patterns-blob-storage-output.md)

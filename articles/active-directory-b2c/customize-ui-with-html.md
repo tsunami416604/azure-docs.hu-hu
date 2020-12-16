@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869cf5a47831844b04e0461a95fb7d16aa4d1569
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111299"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585190"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
 
@@ -29,9 +29,7 @@ A Azure Active Directory B2C (Azure AD B2C) felhasználói felületének védjeg
 > [!TIP]
 > Ha csak a szalagcím emblémáját, háttérképét és háttérszínét szeretné módosítani a felhasználói folyamatok oldalain, kipróbálhatja a [vállalati védjegyezés](company-branding.md) funkciót.
 
-
 ## <a name="custom-html-and-css-overview"></a>Egyéni HTML és CSS – áttekintés
-
 
 A Azure AD B2C a kódot az ügyfél böngészőjében futtathatja, ha az [erőforrás-megosztást (CORS)](https://www.w3.org/TR/cors/)használja. Futásidőben a tartalom betöltődik a felhasználói folyamat vagy az egyéni házirendben megadott URL-címről. A felhasználói felület minden lapja betölti a tartalmat az adott laphoz megadott URL-címről. Miután betöltötte a tartalmat az URL-címről, a rendszer egyesít egy, a Azure AD B2C által beszúrt HTML-kódrészlettel, majd megjeleníti a lapot az ügyfél számára.
 
@@ -121,7 +119,6 @@ A folyamat áttekintése:
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
-
 
 ### <a name="1-create-your-html-content"></a>1. HTML-tartalom létrehozása
 
@@ -235,7 +232,6 @@ Ellenőrizze, hogy készen áll-e a következő lépések végrehajtásával:
 1. Válassza a **küldési kérelem** lehetőséget.
     Ennek az eredménynek kell lennie `XHR status: 200` . 
     Ha hibaüzenetet kap, ellenőrizze, hogy helyesek-e a CORS beállításai. Előfordulhat, hogy törölnie kell a böngésző gyorsítótárát, vagy meg kell nyitnia egy privát böngészési munkamenetet a CTRL + SHIFT + P billentyűkombináció lenyomásával.
-
 
 ::: zone pivot="b2c-user-flow"
 
@@ -391,10 +387,7 @@ A minta használata:
 1. Most módosítsa a szabályzatot, amely a korábban említett HTML-fájlra mutat.
 1. Ha a hiányzó betűkészleteket, képeket vagy CSS-ket látja, tekintse át a hivatkozásokat a kiterjesztések és a \* . HTML fájlok között.
 
-
 ## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan engedélyezheti az [ügyféloldali JavaScript-kódokat](javascript-and-page-layout.md).
-
-
 

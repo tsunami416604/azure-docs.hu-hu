@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: hibaelhárítás, frissítés, hiba, Kinect, visszajelzés, helyreállítás, naplózás, tippek
-ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356382"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587281"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure-beli Kinect ismert problémák és hibaelhárítás
 
@@ -144,7 +144,7 @@ Ha nem, akkor hajtsa végre a [gyári beállítások visszaállítását](https:
 
 Ha az eszköz nem sorolja fel az Eszközkezelőt, annak oka az lehet, hogy a rendszer nem támogatott USB3-vezérlőhöz csatlakozik. 
 
-Az Azure Kinect DK a **Windows, az Intel** , a **Texas Instruments (ti)** és a **Renesas** az *egyetlen támogatott gazdagép-vezérlő*. Az Azure Kinect SDK a Windows-platformokon egy egyesített tároló-AZONOSÍTÓra támaszkodik, és az USB 2,0-es és 3,0-es eszközökön is át kell terjednie, hogy az SDK megtalálja az ugyanazon az eszközön fizikailag található mélység-, szín-és hangeszközöket. Linux rendszeren több gazdagép-vezérlő is támogatott, mivel ez a platform a tároló-AZONOSÍTÓnál kevesebbet, az eszköz sorozatszámait pedig többet használ. 
+Az Azure Kinect DK a **Windows, az Intel**, a **Texas Instruments (ti)** és a **Renesas** az *egyetlen támogatott gazdagép-vezérlő*. Az Azure Kinect SDK a Windows-platformokon egy egyesített tároló-AZONOSÍTÓra támaszkodik, és az USB 2,0-es és 3,0-es eszközökön is át kell terjednie, hogy az SDK megtalálja az ugyanazon az eszközön fizikailag található mélység-, szín-és hangeszközöket. Linux rendszeren több gazdagép-vezérlő is támogatott, mivel ez a platform a tároló-AZONOSÍTÓnál kevesebbet, az eszköz sorozatszámait pedig többet használ. 
 
 Az USB-állomásvezérlő témája még bonyolultabbá válik, ha egy számítógépen egynél több állomásvezérlő van telepítve. Ha a gazdagép-vezérlők vegyesen működnek, a felhasználók olyan problémákat tapasztalhatnak, amelyekben bizonyos portok nem működnek megfelelően, és más nem működik. Attól függően, hogy a portok hogyan vannak vezetékesek az esethez, az összes, az Azure Kinect szolgáltatással kapcsolatban felmerülő portot látni lehet
 
@@ -166,6 +166,21 @@ A mélységi kamera által a képmélységi adatok kiszámításához használt 
 
 Ha az Unreal-mel szeretné használni a Body Tracking SDK-t, győződjön meg róla, hogy hozzáadta `<SDK Installation Path>\tools` a környezeti változóhoz, és `PATH` másolja azt `dnn_model_2_0.onnx` `cudnn64_7.dll` `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="using-azure-kinect-on-headless-linux-system"></a>Az Azure Kinect használata a fej nélküli Linux rendszeren
+
+A Linuxon futó Azure Kinect mélységmérő-motor az OpenGL-t használja. Az OpenGL működéséhez szükség van egy Windows-példányra, amelyhez a figyelőnek csatlakoznia kell a rendszerhez. A probléma megkerülő megoldás:
+
+1. Engedélyezze az automatikus bejelentkezést a használni kívánt felhasználói fiókhoz. Az automatikus bejelentkezés engedélyezésével kapcsolatos utasításokért tekintse meg [ezt](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) a cikket.
+2. Kapcsolja le a rendszerállapotot, válassza le a figyelőt, és kapcsolja be a rendszerállapotot. Az automatikus bejelentkezés kényszeríti az x kiszolgáló munkamenetének létrehozását.
+2. Csatlakozzon SSH-n keresztül, és állítsa be a DISPLAY env változót `export DISPLAY=:0`
+3. Indítsa el az Azure Kinect-alkalmazást.
+
+## <a name="missing-c-documentation"></a>Hiányzó C#-dokumentáció
+
+Az Sensor SDK C# dokumentációja [itt](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html)található.
+
+A Body Tracking SDK C# dokumentációja [itt](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html)található.
+
+## <a name="next-steps"></a>Következő lépések
 
 [További támogatási információk](support.md)

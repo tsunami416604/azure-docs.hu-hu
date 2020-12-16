@@ -3,23 +3,19 @@ title: Az Azure IoT Central beépített vízminőség-figyelési megoldás hivat
 description: Az Azure IoT Central beépített vízminőség-figyelési megoldással kapcsolatos fogalmak megismerése.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1c4cc7f5440aca27be085c238179cd0ab20b226a
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 229074ad97e6d066a358da19bbbd43158fe1d6fc
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874049"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586720"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>A vízminőség-monitorozás referenciaarchitektúrája 
-
-
-
 A vízminőség-figyelési megoldások az **Azure IoT Central app sablonnal** is felhasználhatók a kick starter IoT alkalmazásként. Ez a cikk magas szintű hivatkozási architektúra-útmutatást nyújt a végpontok közötti megoldás létrehozásához. 
-
 
 ![Vízminőség-figyelési architektúra](./media/concepts-waterqualitymonitoring-architecture/concepts-waterqualitymonitoring-architecture1.png)
 
@@ -27,8 +23,8 @@ Fogalmak:
 
 1. Eszközök és kapcsolatok  
 1. IoT Central 
-2. Bővíthetőség és integrációk
-3. Üzleti alkalmazások
+1. Bővíthetőség és integrációk
+1. Üzleti alkalmazások
 
 Vessünk egy pillantást a kulcsfontosságú összetevőkre, amelyek általában a vízminőség-figyelési megoldás részét képezik.
 

@@ -1,25 +1,25 @@
 ---
-title: 'Gyors útmutató: Azure üzenetsor Storage Library V12 – JavaScript'
-description: Megtudhatja, hogyan hozhat létre várólistát, és hogyan adhat hozzá üzeneteket a várólistához az Azure-üzenetsor JavaScript V12-es kódtár használatával. Ezután megtudhatja, hogyan olvashatja és törölheti az üzeneteket a várólistából. Azt is megtudhatja, hogyan törölhet egy várólistát.
+title: 'Gyors útmutató: Azure Queue Storage Client Library V12 – JavaScript'
+description: Megtudhatja, hogyan hozhat létre várólistát, és hogyan adhat hozzá üzeneteket a JavaScripthez készült Azure Queue Storage-ügyfél kódtár használatával Ebből a cikkből megtudhatja, hogyan olvashatja és törölheti az üzeneteket a várólistából. Azt is megtudhatja, hogyan törölhet egy várólistát.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/13/2019
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 5f50e42bc33adb8f40520f3f98bf1dcfba190a41
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 23c58526ba481a56b371bd077661d8d0bc7d45c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491910"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586533"
 ---
-# <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtár a JavaScripthez
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Gyors útmutató: Azure Queue Storage Client Library V12 a JavaScripthez
 
-Ismerkedjen meg az Azure üzenetsor Storage ügyféloldali kódtár 12-es verziójával a JavaScripthez. Az Azure üzenetsor-tároló egy olyan szolgáltatás, amely nagy mennyiségű üzenetet tárol a későbbi lekérésekhez és feldolgozáshoz. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja a programkódot az alapszintű feladatokhoz.
+Ismerkedjen meg a JavaScripthez készült Azure Queue Storage ügyfél-kódtár V12-es verziójának használatába. Az Azure Queue Storage egy olyan szolgáltatás, amely nagy mennyiségű üzenetet tárol a későbbi lekérésekhez és feldolgozáshoz. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja a programkódot az alapszintű feladatokhoz.
 
-A JavaScripthez készült Azure üzenetsor Storage ügyféloldali kódtára a következőre használható:
+A JavaScripthez készült Azure Queue Storage ügyféloldali kódtár a következőre használható:
 
 - Üzenetsor létrehozása
 - Üzenetek hozzáadása egy várólistához
@@ -33,7 +33,7 @@ További források:
 
 - [API-referenciadokumentáció](/javascript/api/@azure/storage-queue/)
 - [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
-- [Csomag (node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue)
+- [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-queue)
 - [Példák](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -44,11 +44,11 @@ További források:
 
 ## <a name="setting-up"></a>Beállítás
 
-Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet az Azure üzenetsor-tárolóhoz készült, a JavaScripthez készült ügyféloldali kódtár használatával való együttműködésre.
+Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet a JavaScripthez készült Azure Queue Storage ügyfél-kódtár V12-es verziójának működéséhez.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy *Queues-Gyorsindítás-V12* nevű Node.js alkalmazást.
+Hozzon létre egy Node.js nevű alkalmazást `queues-quickstart-v12`
 
 1. A konzol ablakban (például cmd, PowerShell vagy bash) hozzon létre egy új könyvtárat a projekthez.
 
@@ -56,13 +56,13 @@ Hozzon létre egy *Queues-Gyorsindítás-V12* nevű Node.js alkalmazást.
     mkdir queues-quickstart-v12
     ```
 
-1. Váltson az újonnan létrehozott *várólistákra – rövid útmutató – V12* könyvtár.
+1. Váltson az újonnan létrehozott `queues-quickstart-v12` címtárra.
 
     ```console
     cd queues-quickstart-v12
     ```
 
-1. Hozzon létre egy *package.js* nevű új szövegfájlt. Ez a fájl határozza meg a Node.js projektet. Mentse ezt a fájlt a *Queues-Gyorsindítás-V12* könyvtárba. A fájl tartalma:
+1. Hozzon létre egy nevű új szövegfájlt `package.json` . Ez a fájl határozza meg a Node.js projektet. Mentse ezt a fájlt a `queues-quickstart-v12` könyvtárba. A fájl tartalma:
 
     ```json
     {
@@ -87,13 +87,13 @@ Hozzon létre egy *Queues-Gyorsindítás-V12* nevű Node.js alkalmazást.
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Miközben továbbra is a *Queues-Gyorsindítás-V12* könyvtárban található, telepítse az Azure Queue Storage ügyféloldali kódtárat a JavaScript-csomaghoz a `npm install` parancs használatával.
+Miközben a `queues-quickstart-v12` címtárban marad, telepítse az Azure Queue Storage ügyféloldali kódtárat a JavaScript-csomaghoz a `npm install` parancs használatával.
 
 ```console
 npm install
 ```
 
- Ez a parancs beolvassa a *package.js* fájlt, és telepíti az Azure üzenetsor Storage ügyféloldali kódtárat a JavaScript-csomaghoz, és az összes olyan kódtárat, amelytől függ.
+Ez a parancs beolvassa a `package.json` fájlt, és telepíti az Azure Queue Storage ügyféloldali kódtárat a JavaScript-csomaghoz, és az összes olyan kódtárat, amelytől függ.
 
 ### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
 
@@ -110,7 +110,7 @@ A projekt könyvtárából:
     const uuidv1 = require("uuid/v1");
 
     async function main() {
-        console.log("Azure Queue storage v12 - JavaScript quickstart sample");
+        console.log("Azure Queue Storage client library v12 - JavaScript quickstart sample");
         // Quick start code goes here
     }
 
@@ -118,13 +118,13 @@ A projekt könyvtárából:
 
     ```
 
-1. Mentse az új fájlt *queues-quickstart-v12.jsként* a *Queues-Gyorsindítás-V12* könyvtárba.
+1. Mentse az új fájlt `queues-quickstart-v12.js` a `queues-quickstart-v12` könyvtárba.
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Objektummodell
 
-Az Azure Queue Storage szolgáltatás nagy számú üzenet tárolására szolgál. Egy üzenetsor-üzenet akár 64 KB méretű is lehet. Egy üzenetsor akár több millió üzenetet is tartalmazhat, akár egy Storage-fiók teljes kapacitási korlátját. A várólistákat általában arra használják, hogy egy várakozó munkafolyamatot hozzon létre aszinkron feldolgozásra. A várólista-tárolás háromféle típusú erőforrást kínál:
+Az Azure Queue Storage szolgáltatás nagy számú üzenet tárolására szolgál. Egy üzenetsor-üzenet akár 64 KB méretű is lehet. Egy üzenetsor akár több millió üzenetet is tartalmazhat, akár egy Storage-fiók teljes kapacitási korlátját. A várólistákat általában arra használják, hogy egy várakozó munkafolyamatot hozzon létre aszinkron feldolgozásra. A Queue Storage háromféle típusú erőforrást kínál:
 
 - A Storage-fiók
 - A Storage-fiókban lévő üzenetsor
@@ -136,13 +136,13 @@ Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
 Használja az alábbi JavaScript-osztályokat a következő erőforrásokkal való interakcióhoz:
 
-- [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient): a `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
-- [QueueClient](/javascript/api/@azure/storage-queue/queueclient): a `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és azok üzeneteit.
-- [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage): az `QueueMessage` osztály a [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) egy várólistán való meghívásakor visszaadott egyedi objektumokat jelöli.
+- [`QueueServiceClient`](/javascript/api/@azure/storage-queue/queueserviceclient): A `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
+- [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient): Az `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és az üzeneteiket.
+- [`QueueMessage`](/javascript/api/@azure/storage-queue/queuemessage): Az `QueueMessage` osztály a várólista hívásakor visszaadott egyedi objektumokat jelöli [`ReceiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) .
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő műveleteket az Azure üzenetsor-tárolási ügyféloldali kódtár használatával a JavaScripthez:
+Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következő műveleteket a JavaScript Azure Queue Storage ügyféloldali kódtár használatával:
 
 - [A kapcsolati sztring lekérése](#get-the-connection-string)
 - [Üzenetsor létrehozása](#create-a-queue)
@@ -155,7 +155,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő m
 
 ### <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
 
-Az alábbi kód a Storage- [kapcsolatok karakterláncának konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változóból kéri le a Storage-fiókhoz tartozó kapcsolatok karakterláncát.
+A következő kód lekéri a Storage-fiókhoz tartozó, a [tárolási kapcsolatok karakterláncának konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változóból származó kapcsolatok karakterláncát.
 
 Adja hozzá ezt a kódot a `main` függvényhez:
 
@@ -171,12 +171,12 @@ const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STR
 
 ### <a name="create-a-queue"></a>Üzenetsor létrehozása
 
-Döntse el az új üzenetsor nevét. Az alábbi kód egy UUID értéket fűz hozzá a várólista neveként, hogy az egyedi legyen.
+Döntse el az új üzenetsor nevét. A következő kód egy UUID értéket fűz hozzá a várólista neveként, hogy az egyedi legyen.
 
 > [!IMPORTANT]
-> A várólisták nevei csak kisbetűket, számokat és kötőjeleket tartalmazhatnak, és betűvel vagy számmal kell kezdődnie. A kötőjelek előtt és után csak nem kötőjel karakter állhat. A névnek 3 – 63 karakter hosszúnak kell lennie. További információ a várólisták elnevezéséről: [várólisták és metaadatok elnevezése](/rest/api/storageservices/naming-queues-and-metadata).
+> A várólisták nevei csak kisbetűket, számokat és kötőjeleket tartalmazhatnak, és betűvel vagy számmal kell kezdődnie. A kötőjelek előtt és után csak nem kötőjel karakter állhat. A névnek 3 – 63 karakter hosszúnak kell lennie. További információ: a [várólisták és a metaadatok elnevezése](/rest/api/storageservices/naming-queues-and-metadata).
 
-Hozza létre a [QueueClient](/javascript/api/@azure/storage-queue/queueclient) osztály egy példányát. Ezután hívja meg a [create](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) metódust az üzenetsor létrehozásához a Storage-fiókban.
+Hozza létre a osztály egy példányát [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient) . Ezután hívja meg a [`create`](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) metódust az üzenetsor létrehozásához a Storage-fiókban.
 
 Adja hozzá ezt a kódot a függvény végéhez `main` :
 
@@ -197,7 +197,7 @@ console.log("Queue created, requestId:", createQueueResponse.requestId);
 
 ### <a name="add-messages-to-a-queue"></a>Üzenetek hozzáadása egy várólistához
 
-A következő kódrészlet üzeneteket hoz létre a várólistához a [üzenetküldés](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) metódus meghívásával. Emellett menti a harmadik hívásból visszaadott [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage) is `sendMessage` . A visszaadott érték az `sendMessageResponse` üzenet tartalmának későbbi, a programban való frissítésére szolgál.
+A következő kódrészlet üzeneteket hoz létre a várólistához a metódus meghívásával [`sendMessage`](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) . Emellett a [`QueueMessage`](/javascript/api/@azure/storage-queue/queuemessage) harmadik hívásból is menti a visszaadott értéket `sendMessage` . A visszaadott érték az `sendMessageResponse` üzenet tartalmának későbbi, a programban való frissítésére szolgál.
 
 Adja hozzá ezt a kódot a függvény végéhez `main` :
 
@@ -214,7 +214,7 @@ console.log("Messages added, requestId:", sendMessageResponse.requestId);
 
 ### <a name="peek-at-messages-in-a-queue"></a>Üzenetek betekintése egy várólistába
 
-A [peekMessages](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) metódus meghívásával megtekintheti az üzenetsor üzeneteit. A `peekMessages` metódus egy vagy több üzenetet kérdez le a várólista elejéről, de nem módosítja az üzenet láthatóságát.
+A metódus meghívásával megtekintheti a várólistában lévő üzeneteket [`peekMessages`](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) . Ez a metódus egy vagy több üzenetet kér le a várólista elejéről, de nem módosítja az üzenet láthatóságát.
 
 Adja hozzá ezt a kódot a függvény végéhez `main` :
 
@@ -232,7 +232,7 @@ for (i = 0; i < peekedMessages.peekedMessageItems.length; i++) {
 
 ### <a name="update-a-message-in-a-queue"></a>Üzenetsor frissítése
 
-Egy üzenet tartalmának frissítéséhez hívja meg a [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) metódust. A `updateMessage` metódus módosíthatja az üzenet láthatósági időtúllépését és tartalmát. Az üzenet tartalmának UTF-8 kódolású karakterláncnak kell lennie, amely akár 64 KB méretű is lehet. Az új tartalommal együtt továbbítja a `messageId` kódot a `popReceipt` korábban mentett válasznak. A `sendMessageResponse` tulajdonságok határozzák meg, hogy melyik üzenetet kell frissíteni.
+Az üzenet tartalmának frissítéséhez hívja meg a [`updateMessage`](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) metódust. Ez a metódus módosíthatja az üzenet láthatósági időtúllépését és tartalmát. Az üzenet tartalmának UTF-8 kódolású karakterláncnak kell lennie, amely akár 64 KB méretű is lehet. Az új tartalommal együtt továbbítja a `messageId` kódot a `popReceipt` korábban mentett válasznak. A `sendMessageResponse` tulajdonságok határozzák meg, hogy melyik üzenetet kell frissíteni.
 
 ```javascript
 console.log("\nUpdating the third message in the queue...");
@@ -249,7 +249,7 @@ console.log("Message updated, requestId:", updateMessageResponse.requestId);
 
 ### <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
 
-A korábban hozzáadott üzenetek letöltése a [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) metódus meghívásával. A `numberOfMessages` mezőben adja meg a híváshoz fogadott üzenetek maximális számát.
+A korábban hozzáadott üzenetek letöltése a metódus meghívásával [`receiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) . A `numberOfMessages` mezőben adja meg a híváshoz fogadott üzenetek maximális számát.
 
 Adja hozzá ezt a kódot a függvény végéhez `main` :
 
@@ -266,7 +266,7 @@ console.log("Messages received, requestId:", receivedMessagesResponse.requestId)
 
 Üzenetek törlése a sorból a fogadás és a feldolgozás után. Ebben az esetben a feldolgozás csak az üzenet megjelenítését jeleníti meg a konzolon.
 
-Az üzenetek törléséhez hívja meg a [deleteMessage](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) metódust. A nem explicit módon törölt üzenetek később ismét láthatóvá válnak a várólistában, hogy egy másik lehetőség is feldolgozza őket.
+Az üzenetek törléséhez hívja meg a [`deleteMessage`](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) metódust. A nem explicit módon törölt üzenetek később ismét láthatóvá válnak a várólistában, hogy egy másik lehetőség is feldolgozza őket.
 
 Adja hozzá ezt a kódot a függvény végéhez `main` :
 
@@ -289,7 +289,7 @@ for (i = 0; i < receivedMessagesResponse.receivedMessageItems.length; i++) {
 
 ### <a name="delete-a-queue"></a>Üzenetsor törlése
 
-A következő kód megtisztítja az alkalmazás által létrehozott erőforrásokat az üzenetsor törlésével a [delete](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) metódus használatával.
+A következő kód törli az alkalmazás által létrehozott erőforrásokat az üzenetsor törlésével a [`delete`](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) metódus használatával.
 
 Adja hozzá ezt a kódot a függvény végéhez `main` , és mentse a fájlt:
 
@@ -304,7 +304,7 @@ console.log("Queue deleted, requestId:", deleteQueueResponse.requestId);
 
 Ez az alkalmazás három üzenetet hoz létre és tesz hozzá egy Azure-várólistához. A kód felsorolja a várólistán lévő üzeneteket, majd lekéri és törli őket, mielőtt véglegesen törölné a várólistát.
 
-A konzol ablakban navigáljon a *queues-quickstart-v12.js* fájlt tartalmazó könyvtárra, majd futtassa a következő parancsot az `node` alkalmazás futtatásához.
+A konzol ablakban navigáljon a fájlt tartalmazó könyvtárhoz `queues-quickstart-v12.js` , majd futtassa az alábbi parancsot az `node` alkalmazás futtatásához.
 
 ```console
 node queues-quickstart-v12.js
@@ -313,7 +313,7 @@ node queues-quickstart-v12.js
 Az alkalmazás kimenete az alábbi példához hasonló:
 
 ```output
-Azure Queue storage v12 - JavaScript quickstart sample
+Azure Queue Storage client library v12 - JavaScript quickstart sample
 
 Creating queue...
          quickstartc095d120-1d04-11ea-af30-090ee231305f
@@ -347,7 +347,7 @@ Done
 
 Lépjen be a hibakeresőbe, és vizsgálja meg a [Azure Portal](https://portal.azure.com) a folyamat során. Ellenőrizze a Storage-fiókját, hogy az üzenetek a várólistán legyenek létrehozva és törölve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre várólistát, és hogyan adhat hozzá üzeneteket a JavaScript-kód használatával. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 
@@ -356,5 +356,5 @@ Oktatóanyagok, minták, gyors indítás és egyéb dokumentáció:
 > [!div class="nextstepaction"]
 > [Azure a JavaScripthez – dokumentáció](/azure/developer/javascript/)
 
-- További információ: [Azure Storage-üzenetsor ügyféloldali kódtára a javascripthez](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue).
-- További Azure üzenetsor-tárolási minta alkalmazások megjelenítéséhez folytassa az [Azure üzenetsor-tárolás ügyféloldali kódtár V12 JavaScript-mintáit](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples).
+- További információ: [Azure Queue Storage ügyféloldali kódtár a javascripthez](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue).
+- További Azure Queue Storage-példákat a [JavaScript-példákat lásd: azure Queue Storage ügyféloldali kódtár V12](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples).

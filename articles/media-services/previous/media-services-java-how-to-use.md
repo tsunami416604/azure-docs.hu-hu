@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a95ee631797c4dcca87f3506a6cf29245328159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c86689681aa99f60c4345e92f7f5c426795a69e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263450"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586703"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Az Azure Media Services Java ügyfél-SDK használatának megkezdése
 
@@ -51,7 +51,7 @@ Ha például a buildelőeszköze a `gradle`, adja a következő függőséget a 
 >Az `azure-media` csomag `0.9.8`-as verziójától kezdődően az SDK támogatást nyújt az Azure Active Directory (AAD) hitelesítéshez, és nem támogatja az Azure Access Control Service (ACS) hitelesítést. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre. A migrálással kapcsolatos részletekért olvassa el [az Azure Media Services API Azure AD-hitelesítéssel történő elérését](media-services-use-aad-auth-to-access-ams-api.md) ismertető cikket.
 
 >[!NOTE]
->Az Azure Media Services Java SDK forráskódját a [GitHub-adattárban találja](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Győződjön meg arról, hogy a „0.9”, és nem a „master” ágra váltott. 
+>Az Azure Media Services Java SDK forráskódját a [GitHub-adattárban találja](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Ügyeljen arra, hogy az 0,9 ágra váltson, ne a fő ágra. 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>Útmutató: Az Azure Media Services használata Javával
 

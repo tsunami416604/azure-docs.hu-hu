@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bafd8a9752d2587ec52fe586e442e3bfc86d7537
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544511"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585768"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure cache a Redis-fejlesztéssel kapcsolatos gyakori kérdések
 
@@ -55,7 +55,7 @@ A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyak
 
 * **Újrapróbálkozások**
   * A ConnectRetry és a ConnectTimeout esetében az általános útmutató fail fast, majd újra próbálkozik. Ez az útmutató a számítási feladatokon alapul, és mennyi időt vesz igénybe az ügyfél számára, hogy kiadjon egy Redis-parancsot, és választ kapjon.
-  * Hagyja, hogy a StackExchange. Redis automatikusan újracsatlakozik a kapcsolat állapotának ellenőrzése és az újbóli csatlakoztatása helyett. **Kerülje a ConnectionMultiplexer. IsConnected tulajdonság használatát** .
+  * Hagyja, hogy a StackExchange. Redis automatikusan újracsatlakozik a kapcsolat állapotának ellenőrzése és az újbóli csatlakoztatása helyett. **Kerülje a ConnectionMultiplexer. IsConnected tulajdonság használatát**.
   * Bevezetés – időnként előfordulhat, hogy az újrapróbálkozást és a hógolyó újrapróbálkozását, illetve a rendszer soha nem állítja vissza. Ha bekövetkezik a bevezetést, érdemes lehet egy exponenciális leállítási újrapróbálkozási algoritmust használni a Microsoft Patterns & Practices csoport által közzétett [általános útmutató](/azure/architecture/best-practices/transient-faults) című témakörben leírtak szerint.
   
 * **Időtúllépési értékek**
@@ -64,12 +64,12 @@ A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyak
   * Egyetlen ConnectionMultiplexer-példányt használjon az alkalmazáshoz. A LazyConnection használatával létrehozhat egyetlen, a kapcsolati tulajdonság által visszaadott példányt, ahogy az a [ConnectionMultiplexer osztály használatával a gyorsítótárhoz való kapcsolódással](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)is látható.
   * Állítsa a `ConnectionMultiplexer.ClientName` tulajdonságot az alkalmazás-példány egyedi nevére diagnosztikai célokra.
   * Több `ConnectionMultiplexer` példány használata az egyéni munkaterhelésekhez.
-      * Ezt a modellt követheti, ha eltérő terhelést használ az alkalmazásban. Például:
-      * A nagyméretű kulcsok kezeléséhez egy multiplexer is tartozhat.
-      * A kis kulcsok kezeléséhez egy multiplexer is tartozhat.
-      * Megadhat különböző értékeket a kapcsolati időtúllépésekhez, és újrapróbálkozhat a logikával minden egyes használt ConnectionMultiplexer.
-      * Állítsa be az `ClientName` egyes multiplexerek tulajdonságát a diagnosztika segítésére.
-      * Ez az útmutató az egyszerűbb késést eredményezhet `ConnectionMultiplexer` .
+    * Ezt a modellt követheti, ha eltérő terhelést használ az alkalmazásban. Például:
+    * A nagyméretű kulcsok kezeléséhez egy multiplexer is tartozhat.
+    * A kis kulcsok kezeléséhez egy multiplexer is tartozhat.
+    * Megadhat különböző értékeket a kapcsolati időtúllépésekhez, és újrapróbálkozhat a logikával minden egyes használt ConnectionMultiplexer.
+    * Állítsa be az `ClientName` egyes multiplexerek tulajdonságát a diagnosztika segítésére.
+    * Ez az útmutató az egyszerűbb késést eredményezhet `ConnectionMultiplexer` .
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Milyen Azure cache-t használhatok a Redis-ügyfelek számára?
 A Redis egyik nagyszerű dologa, hogy sok ügyfél támogatja számos különböző fejlesztési nyelvet. Az ügyfelek aktuális listájáért lásd: [Redis-ügyfelek](https://redis.io/clients). A különböző nyelveket és ügyfeleket bemutató oktatóanyagokat lásd: az [Azure cache használata a Redis](cache-dotnet-how-to-use-azure-redis-cache.md) és a testvér cikkeihez a tartalomjegyzékben.

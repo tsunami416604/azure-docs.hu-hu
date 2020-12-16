@@ -3,17 +3,17 @@ title: 'Oktatóanyag: vízfogyasztást figyelő alkalmazás létrehozása az Azu
 description: 'Oktatóanyag: megtudhatja, hogyan hozhat létre vízfelhasználást figyelő alkalmazást Azure IoT Central alkalmazás-sablonok használatával.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 400585d3e5908268708d93ceeefd26a4a5efdd49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 476a0c2d75dcbee5c1ed4d758e0cbc9d4726ff95
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972390"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587196"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Oktatóanyag: vízfogyasztást figyelő alkalmazás létrehozása az Azure IoT Central
 
@@ -58,7 +58,7 @@ Ez a sablon egy minta vízfogyasztási eszköz sablonját, egy szimulált eszkö
 1. Válassza az alkalmazás **létrehozása** lehetőséget az **új alkalmazás** -létrehozási űrlap megnyitásához a következő mezőkkel:
     * **Alkalmazásnév**: alapértelmezés szerint az alkalmazás a *vízfogyasztás figyelését* , majd egy egyedi azonosító karakterláncot használ, amelyet az Azure IoT Central generál. Igény szerint válasszon egy felhasználóbarát nevet. Az alkalmazás neve később is módosítható.
     * **URL**: az Azure IoT Central automatikusan létrehozza az URL-címet az alkalmazás neve alapján. Megadhatja, hogy az URL-címet saját ízlése szerint frissítse. Az URL-címet később is megváltoztathatja.
-    * Ha rendelkezik Azure-előfizetéssel, adja meg a **címtárat**, az **Azure-előfizetést**és a **helyadatok** adatait. Ha nem rendelkezik előfizetéssel, kiválaszthatja a **7 napos ingyenes próbaverzió** lehetőséget, és elvégezheti a szükséges kapcsolattartási adatokat.
+    * Ha rendelkezik Azure-előfizetéssel, adja meg a **címtárat**, az **Azure-előfizetést** és a **helyadatok** adatait. Ha nem rendelkezik előfizetéssel, kiválaszthatja a **7 napos ingyenes próbaverzió** lehetőséget, és elvégezheti a szükséges kapcsolattartási adatokat.
 
     A címtárakkal és az előfizetésekkel kapcsolatos további információkért lásd: alkalmazás-útmutató [létrehozása](../core/quick-deploy-iot-central.md).
 
@@ -94,22 +94,22 @@ Az alkalmazás létrehozása után megnyílik a minta **Wide World Water-felhasz
 Az irányítópult különböző típusú csempéket tartalmaz:
 
 * A **globális vízkészletek rendszerképek csempe**: az irányítópult első csempe a kitalált víz-segédprogram széles világának képcsempe-képe. A csempét testreszabhatja saját rendszerkép beszúrásával vagy eltávolításával.
-* **Átlagos vízfolyás KPI-csempe**: a KPI csempe úgy van konfigurálva, hogy az *átlagot az elmúlt 30 percben*jelenítse meg. Testreszabhatja a KPI csempét, és beállíthatja egy másik típusra és időtartományra is.
-* **Eszköz-parancssori csempék**: ezek a csempék közé tartozik a **szelep lezárása**, az **Open Valve**és a **Valve position** csempék beállítása. A parancsok kiválasztásával elvégezheti a szimulált eszköz parancs lapját. Az Azure IoT Centralban a *parancs* egy *eszköz-képesség* típusú. Ezt a koncepciót később a jelen oktatóanyag "eszköz sablonja" szakaszában fogjuk feltárni.
-* **Vízterjesztési terület leképezése**: a Térkép Azure Maps használ, amelyet közvetlenül az Azure IoT Central konfigurálhat. A Térkép csempén az eszköz helye látható. Vigye a kurzort a Térkép fölé, és próbálja ki a vezérlőelemeket a térképen, például *Nagyítás*, *kicsinyítés*vagy *kibővítés*.
+* **Átlagos vízfolyás KPI-csempe**: a KPI csempe úgy van konfigurálva, hogy az *átlagot az elmúlt 30 percben* jelenítse meg. Testreszabhatja a KPI csempét, és beállíthatja egy másik típusra és időtartományra is.
+* **Eszköz-parancssori csempék**: ezek a csempék közé tartozik a **szelep lezárása**, az **Open Valve** és a **Valve position** csempék beállítása. A parancsok kiválasztásával elvégezheti a szimulált eszköz parancs lapját. Az Azure IoT Centralban a *parancs* egy *eszköz-képesség* típusú. Ezt a koncepciót később a jelen oktatóanyag "eszköz sablonja" szakaszában fogjuk feltárni.
+* **Vízterjesztési terület leképezése**: a Térkép Azure Maps használ, amelyet közvetlenül az Azure IoT Central konfigurálhat. A Térkép csempén az eszköz helye látható. Vigye a kurzort a Térkép fölé, és próbálja ki a vezérlőelemeket a térképen, például *Nagyítás*, *kicsinyítés* vagy *kibővítés*.
 
     ![Vízfogyasztás figyelése irányítópult-Térkép](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboard-map.png)
 
 * A **víz átlagos folyamatábrája** és a **környezeti feltétel diagramja**: megjelenítheti egy vagy több, a kívánt időtartományon belül telemetriáiról ábrázoló eszközt.
 * Az **átlagos Valve Pressure hő diagramja**: kiválaszthatja a hő megjelenítési típusát, amelyet az adott időtartományon belül, egy színindexszel rendelkező telemetria szeretne megjeleníteni.
 * **Riasztási küszöbértékek alaphelyzetbe állítása csempe**: megadhatja a hívás – művelet tartalmú csempéket, és beágyazhat egy hivatkozást egy művelet lapra. Ebben az esetben a riasztások alaphelyzetbe állítása küszöbértékre viszi az alkalmazás **feladatait**, ahol a frissítéseket futtathatja az eszköz tulajdonságai között. Ezt a lehetőséget később a jelen oktatóanyag "feladatok konfigurálása" szakaszában fogjuk feltárni.
-* **Tulajdonságlapok**: az irányítópulton megjelennek a **Valve működési adatai**, a **flow riasztási küszöbértékei**és a **karbantartási információk** csempéi.
+* **Tulajdonságlapok**: az irányítópulton megjelennek a **Valve működési adatai**, a **flow riasztási küszöbértékei** és a **karbantartási információk** csempéi.
 
 ### <a name="customize-the-dashboard"></a>Az irányítópult testreszabása
 
 Építőként testreszabhatja a nézeteket az irányítópulton a kezelők számára.
 
-1. Válassza a **Szerkesztés** lehetőséget a **globális vízfelhasználás irányítópultjának**testreszabásához. A **Szerkesztés** menü kiválasztásával testreszabhatja az irányítópultot. Miután az irányítópult **szerkesztési** módban van, hozzáadhat új csempéket, vagy beállíthatja azt.
+1. Válassza a **Szerkesztés** lehetőséget a **globális vízfelhasználás irányítópultjának** testreszabásához. A **Szerkesztés** menü kiválasztásával testreszabhatja az irányítópultot. Miután az irányítópult **szerkesztési** módban van, hozzáadhat új csempéket, vagy beállíthatja azt.
 
      ![Irányítópult szerkesztése](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-edit-dashboard.png)
 
@@ -123,7 +123,7 @@ A víz-felhasználás figyelésére szolgáló alkalmazás két, a *flow-mérőt
 
 Az eszköz sablonjának megtekintése:
 
-1. Az Azure IoT Centralban az alkalmazás bal oldali ablaktábláján válassza az **eszközök sablonjait** . Az **eszközök** listájában két eszköz sablonja, az **intelligens szelep** és a flow- **mérő**látható.
+1. Az Azure IoT Centralban az alkalmazás bal oldali ablaktábláján válassza az **eszközök sablonjait** . Az **eszközök** listájában két eszköz sablonja, az **intelligens szelep** és a flow- **mérő** látható.
 
    ![Eszköz sablonja](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 
@@ -173,11 +173,11 @@ Az Azure IoT Central segítségével szimulált eszközöket hozhat létre az es
 
    ![Minden eszköz panel](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devices.png)
 
-1. Válassza az **1. intelligens szelep**elemet.
+1. Válassza az **1. intelligens szelep** elemet.
 
     ![1. intelligens szelep](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitor-device1.png)
 
-1. A **parancsok** lapon megtekintheti a három eszköz parancsait (a**Valve**, a **Valve**és a **set Valve pozícióját**), amelyek az **intelligens Valve** -eszköz sablonjában meghatározott képességek.
+1. A **parancsok** lapon megtekintheti a három eszköz parancsait (a **Valve**, a **Valve** és a **set Valve pozícióját**), amelyek az **intelligens Valve** -eszköz sablonjában meghatározott képességek.
 
 1. Fedezze fel az **eszköz tulajdonságai** lapot és az **eszköz irányítópultját** .
 
@@ -200,7 +200,7 @@ A létrehozott víz-felhasználási figyelő alkalmazás három előre konfigur�
 
    ![Szabályok ablaktábla](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
 
-1. Válassza a **magas pH-riasztás**lehetőséget, amely az alkalmazás előre konfigurált szabályainak egyike.
+1. Válassza a **magas pH-riasztás** lehetőséget, amely az alkalmazás előre konfigurált szabályainak egyike.
 
      ![Magas pH-riasztás](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
@@ -210,7 +210,7 @@ Most hozzon létre egy e-mail-műveletet.
 
 Művelet hozzáadása a szabályhoz:
 
-1. Válassza a **+ e-mail**lehetőséget.
+1. Válassza a **+ e-mail** lehetőséget.
 1. Adja meg a **magas pH-riasztást** a művelet felhasználóbarát **megjelenítendő neveként** .
 1. Adja meg az Azure IoT Central-fiókjához tartozó e-mail-címet **a alkalmazásban**.
 1. Szükség esetén megadhat egy megjegyzést, amely az e-mail szövegében szerepel.
@@ -231,20 +231,20 @@ Néhány percen belül egy e-mailt kell kapnia a beállított feltétel teljesü
 Az Azure IoT Centralban a feladatok lehetővé teszik, hogy az eszköz vagy a Felhőbeli tulajdonságok frissítései több eszközön is aktiválva legyenek. A tulajdonságok mellett a feladatok segítségével több eszközön is aktiválhatja az eszközök parancsait. Az Azure IoT Central automatizálja a munkafolyamatot.
 
 1. A bal oldali panelen válassza a **feladatok** lehetőséget.
-1. Válassza az **+ új**lehetőséget, és konfiguráljon egy vagy több feladatot.
+1. Válassza az **+ új** lehetőséget, és konfiguráljon egy vagy több feladatot.
 
 ## <a name="customize-your-application"></a>Az alkalmazás testreszabása
 
 Építőként több beállítást is módosíthat az alkalmazás felhasználói felületének testreszabásához.
 
-1. Válassza **Administration**  >  **az adminisztráció testre szabása alkalmazást**.
-1. Ha ki szeretne választani egy képet, amelyet az **alkalmazás emblémája**szeretne feltölteni, kattintson a **módosítás** gombra.
+1. Válassza   >  **az adminisztráció testre szabása alkalmazást**.
+1. Ha ki szeretne választani egy képet, amelyet az **alkalmazás emblémája** szeretne feltölteni, kattintson a **módosítás** gombra.
 1. A böngésző lapjain megjelenő **böngésző ikonjának** kiválasztásához kattintson a **módosítás** gombra.
 1. Az alapértelmezett **böngésző színeit** HTML hexadecimális színkódok hozzáadásával is lecserélheti.
 
    ![Az alkalmazás emblémájának, a böngésző ikonjának és a böngésző színének kiválasztása](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-customize-your-application.png)
 
-1. Az alkalmazás lemezképeit az **adminisztrációs**  >  **alkalmazás beállításai**lehetőség kiválasztásával is módosíthatja. Ha ki szeretne választani egy képet, amelyet az alkalmazás képként szeretne feltölteni, válassza a **rendszerkép kiválasztása** gombot.
+1. Az alkalmazás lemezképeit az **adminisztrációs**  >  **alkalmazás beállításai** lehetőség kiválasztásával is módosíthatja. Ha ki szeretne választani egy képet, amelyet az alkalmazás képként szeretne feltölteni, válassza a **rendszerkép kiválasztása** gombot.
 1. Végül az alkalmazás jobb felső sarkában található **Beállítások** ikonra kattintva módosíthatja a **témát** is.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -252,9 +252,9 @@ Az Azure IoT Centralban a feladatok lehetővé teszik, hogy az eszköz vagy a Fe
 Ha nem folytatja az alkalmazás használatát, törölje azt.
 
 1. Az Azure IoT Central-alkalmazás bal oldali paneljén válassza az **Adminisztráció** lehetőséget.
-1. Válassza az **Alkalmazásbeállítások**lehetőséget, majd a lap alján kattintson a **Törlés** elemre.
+1. Válassza az **Alkalmazásbeállítások** lehetőséget, majd a lap alján kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ 
 

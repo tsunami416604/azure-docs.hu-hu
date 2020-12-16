@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 8226a1e445c6f7f6360d715d17bbe5229e4172b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a3b9ae91118f714ce15f56cde0f79faa4fb4d640
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454779"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Oktatóanyag: Azure Active Directory integráció a Directtel
 
@@ -61,13 +61,13 @@ Az Azure AD-ba való közvetlen integráció konfigurálásához közvetlenül a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Direct**kifejezést, válassza a **közvetlen** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Direct** kifejezést, válassza a **közvetlen** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![közvetlen az eredmények listájában](common/search-new-app.png)
+    ![közvetlen az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Direct **Britta Simon**nevű teszt-felhasználó alapján konfigurálja és teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Direct **Britta Simon** nevű teszt-felhasználó alapján konfigurálja és teszteli.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közvetlen kapcsolata szükséges.
 
 Az Azure AD egyszeri bejelentkezés közvetlen konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés közvetlen konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a Direct Application Integration ( **közvetlen** alkalmazás-integráció) lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a Direct Application Integration ( **közvetlen** alkalmazás-integráció) lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -131,7 +131,7 @@ Az egyszeri bejelentkezés **közvetlen** elérésű konfigurálásához el kell
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -144,18 +144,18 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A Felhasználónév mezőbe írja be a **nevet** brittasimon@yourcompanydomain.extension . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban az Azure egyszeri bejelentkezés használatára engedélyezi a Britta, hogy közvetlen hozzáférést biztosítson.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Direct (közvetlen**) lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Direct (közvetlen**) lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -163,7 +163,7 @@ Ebben a szakaszban az Azure egyszeri bejelentkezés használatára engedélyezi 
 
     ![A közvetlen hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -185,15 +185,15 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Direct-ban
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-1. Ha **identitásszolgáltató kezdeményezett módban**szeretne tesztelni:
+1. Ha **identitásszolgáltató kezdeményezett módban** szeretne tesztelni:
 
     Ha a hozzáférési panelen a **közvetlen** csempére kattint, automatikusan bejelentkezett a **közvetlen** alkalmazásba.
 
-2. Ha az **SP által kezdeményezett módban**szeretne tesztelni:
+2. Ha az **SP által kezdeményezett módban** szeretne tesztelni:
 
     a. Kattintson a **közvetlen** csempére a hozzáférési panelen, és a rendszer átirányítja az alkalmazás bejelentkezési oldalára.
 
-    b. Adja meg a elemet `subdomain` a szövegmezőben, és nyomja meg a "次へ (Next)" gombot, és automatikusan be kell jelentkeznie a **közvetlen** alkalmazásba.
+    b. Adja meg a `subdomain` elemet a szövegmezőben, és válassza a **Next (tovább**) gombot, és automatikusan bejelentkezett a **közvetlen** alkalmazásba.
 
 Ha a hozzáférési panelen a közvetlen csempére kattint, automatikusan be kell jelentkeznie arra a közvetlen bejelentkezésre, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 

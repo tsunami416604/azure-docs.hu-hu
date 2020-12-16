@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2019
+ms.date: 12/15/2020
 ms.author: kumud
-ms.openlocfilehash: 1fbb683754aed5b2a2e6e9c022713b7e87ad9ba9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e30697fe93e2debaa68e12561f18be7f85d772a4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329207"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586414"
 ---
 # <a name="what-is-subnet-delegation"></a>Mi az alhálózat-delegálás?
 
@@ -52,6 +52,7 @@ Az egyes Azure-szolgáltatások saját üzemi modellt határoznak meg, ahol megh
 - a delegált alhálózat IP-címének megadását a magánhálózati IP-címtartomány (10.0.0.0/8, 192.168.0.0/16, 172.16.0.0/12) alapján határozza meg.
 - azt diktálja, hogy az egyéni DNS-konfiguráció Azure DNS bejegyzést tartalmaz.
 - a delegálás eltávolítását igényli az alhálózat vagy a virtuális hálózat törlése előtt.
+- nem használható privát végponttal, ha az alhálózat delegálva van.
 
 A befecskendezett szolgáltatások a következőképpen is hozzáadhatják saját házirendjeiket:
 - **Biztonsági házirendek**: az adott szolgáltatás működéséhez szükséges biztonsági szabályok gyűjteménye.

@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
-ms.date: 09/30/2020
-ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 12/15/2020
+ms.openlocfilehash: 485da2230de80150c9a5d13b262d1857c8c172fc
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324958"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587111"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>A Soft delete és a Purge Protection engedélyezése
 
@@ -23,7 +23,7 @@ Ez a cikk a Azure Key Vault két helyreállítási funkcióját ismerteti, a Sof
 
 A Soft delete és a Purge Protection két különböző Key Vault helyreállítási funkció.
 > [!IMPORTANT]
-> Az összes kulcstartón engedélyezni kell a Soft delete Protection szolgáltatást. A Soft-delete védelem letiltásának lehetősége december 2020-én megszűnik. A részletes információkat [ **itt** találja.](soft-delete-change.md)
+> A Soft delete bekapcsolása kritikus fontosságú annak biztosítása érdekében, hogy a kulcstartók és a hitelesítő adatok a véletlen törléssel védve legyenek. A Soft delete bekapcsolása azonban nem változik, mivel előfordulhat, hogy módosítania kell az alkalmazás logikáját, vagy további engedélyeket kell megadnia az egyszerű szolgáltatásokhoz. Mielőtt a Soft delete bekapcsolja az alábbi utasításokat, ellenőrizze, hogy az alkalmazás kompatibilis-e a dokumentum használatával [ .](soft-delete-change.md)
 
 A **Soft delete** a Key vaultban tárolt kulcstartó és kulcsok, titkos kódok és tanúsítványok véletlen törlésének megelőzésére szolgál. Gondolja át, hogy a Soft-DELETE, például egy Lomtár. Ha töröl egy kulcstartót vagy egy Key Vault-objektumot, az a felhasználó által konfigurálható megőrzési időtartam vagy az alapértelmezett 90 nap után helyreállítható marad. A Soft Deleted állapotú kulcstartók **is törölhetők, ami azt** jelenti, hogy véglegesen törlődnek. Ez lehetővé teszi, hogy újra létrehozza a kulcstartókat és a Key Vault-objektumokat ugyanazzal a névvel. A kulcstartók és objektumok helyreállításához és törléséhez emelt szintű hozzáférési házirendre van szükség. **Ha a helyreállított törlés engedélyezve van, nem lehet letiltani.**
 

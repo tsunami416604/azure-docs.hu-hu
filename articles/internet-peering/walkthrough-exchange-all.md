@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: how-to
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: ec83778d034cfc512582eddf79995412dad405c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97430d86cba1107ef67264a181925d2a4d7c12c3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710728"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586822"
 ---
 # <a name="exchange-peering-walkthrough"></a>Útmutató Exchange-társviszony létesítéséhez
 
@@ -50,6 +50,6 @@ Ha egy Exchange-társítás kiépítésre van beállítva, a kapcsolódási áll
 > [!NOTE]
 > Ha a PowerShell-parancsmag futtatásával törli az Exchange-társat a kapcsolódási állapot ProvisioningStarted vagy ProvisioningCompleted, a művelet sikertelen lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a Microsofttal való összevonással kapcsolatos [előfeltételekkel](prerequisites.md).

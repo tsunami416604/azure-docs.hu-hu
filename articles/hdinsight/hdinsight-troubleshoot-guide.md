@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 5ffd688a60f793ffa497cd0d23ed88437e56a07c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ec19497f8e718eaf081d0fd8e2a4012e3ee24bf7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022683"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587383"
 ---
 # <a name="troubleshoot-azure-hdinsight"></a>Az Azure HDInsight hibáinak megoldása
 
 | Apache munkaterhelés | A leggyakoribb kérdések |
 |---|---|
-|![hdinsight Apache HBase ikon ikon](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hbase.png)<br>[Az Apache HBase hibaelhárítása]()|<br>[Nem hozzárendelt régiók](hbase/hbase-troubleshoot-unassigned-regions.md#scenario-unassigned-regions)<br><br>[A hbase hbck parancs időtúllépése az Azure HDInsightban](hbase/hbase-troubleshoot-timeouts-hbase-hbck.md)<br><br>[Kapcsolódási problémák Apache Phoenix az Azure HDInsight](hbase/hbase-troubleshoot-phoenix-connectivity.md)<br><br>[Mi okozza, hogy a főkiszolgáló nem indul el?](hbase/hbase-troubleshoot-start-fails.md)<br><br>[BindException – már használatban van a címe](hbase/hbase-troubleshoot-bindexception-address-use.md)|
+|![hdinsight Apache HBase ikon ikon](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hbase.png)<br>[Az Apache HBase hibaelhárítása]()|<br>[Nem hozzárendelt régiók](hbase/hbase-troubleshoot-unassigned-regions.md#scenario-unassigned-regions)<br><br>[A hbase hbck parancs időtúllépése az Azure HDInsightban](hbase/hbase-troubleshoot-timeouts-hbase-hbck.md)<br><br>[Kapcsolódási problémák Apache Phoenix az Azure HDInsight](hbase/hbase-troubleshoot-phoenix-connectivity.md)<br><br>[Mi okozza, hogy az elsődleges kiszolgáló nem indul el?](hbase/hbase-troubleshoot-start-fails.md)<br><br>[BindException – már használatban van a címe](hbase/hbase-troubleshoot-bindexception-address-use.md)|
 |![hdinsight Apache hdfs ikon ikon](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hdfs.png)<br>[Apache Hadoop HDFS hibáinak megoldása](hdinsight-troubleshoot-hdfs.md)|<br>[Hogyan hozzáférhet egy helyi HDFS egy fürtön belülről?](hdinsight-troubleshoot-hdfs.md#how-do-i-access-local-hdfs-from-inside-a-cluster)<br><br>[Az Azure HDInsight-fürtön biztonságos módban ragadt helyi HDFS](hadoop/hdinsight-hdfs-troubleshoot-safe-mode.md)|
 |![hdinsight Apache kaptár ikon ikon](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hive.png)<br>[Hibakeresés Apache Hive](hdinsight-troubleshoot-hive.md)|<br>[Hogyan exportáljon egy Hive-metaadattár, és importálja egy másik fürtre?](hdinsight-troubleshoot-hive.md#how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster)<br><br>[Hogyan megkeresni Apache Hive naplókat a fürtön?](hdinsight-troubleshoot-hive.md#how-do-i-locate-hive-logs-on-a-cluster)<br><br>[Hogyan elindítja a Apache Hive-rendszerhéjt a fürt adott beállításaival?](hdinsight-troubleshoot-hive.md#how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster)<br><br>[Hogyan az Apache TEZ DAG-alapú adatelemzést a fürt kritikus elérési útjára?](hdinsight-troubleshoot-hive.md#how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path)<br><br>[Hogyan letölti az Apache TEZ DAG-adatait egy fürtről?](hdinsight-troubleshoot-hive.md#how-do-i-download-tez-dag-data-from-a-cluster)|
 |![hdinsight Apache Spark ikon ikon](./media/hdinsight-troubleshoot-guide/hdinsight-apache-spark.png)<br>[Hibakeresés Apache Spark](./spark/apache-troubleshoot-spark.md)|<br>[Hogyan konfigurálható egy Apache Spark-alkalmazás az Apache Ambari fürtökön történő használatával?](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters)<br><br>[Hogyan konfigurálható egy Apache Spark-alkalmazás egy Jupyter Notebook-jegyzetfüzet fürtökön történő használatával?](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters)<br><br>[Hogyan konfigurálható egy Apache Spark-alkalmazás az Apache Livy fürtökön történő használatával?](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters)<br><br>[Hogyan konfigurálható egy Apache Spark-alkalmazás a spark-submit fürtökön történő használatával?](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters)<br><br>[Hogyan konfiguráljon egy Apache Spark alkalmazást a IntelliJ használatával?](spark/apache-spark-intellij-tool-plugin.md)<br><br>[Hogyan konfiguráljon egy Apache Spark alkalmazást az Eclipse használatával?](spark/apache-spark-eclipse-tool-plugin.md)<br><br>[Hogyan konfiguráljon egy Apache Spark alkalmazást a VSCode használatával?](hdinsight-for-vscode.md)<br><br>[Működése OutOfMemoryError kivétel Apache Spark](spark/apache-spark-troubleshoot-outofmemory.md#scenario-outofmemoryerror-exception-for-apache-spark)|
@@ -34,6 +34,6 @@ ms.locfileid: "96022683"
 | Hibák | - [Webhcaten-hibák megértése és megoldása](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [OutofMemory-hiba elhárításának Apache Hive beállításai](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Eszközök | - [Apache Hive lekérdezések optimalizálása](hdinsight-hadoop-optimize-hive-query.md)<br>- [HDInsight IntelliJ eszköz](./spark/apache-spark-intellij-tool-plugin.md)<br>- [HDInsight Eclipse eszköz](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [HDInsight VSCode eszköz](hdinsight-for-vscode.md)<br>- [HDInsight Visual Studio-eszköz](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

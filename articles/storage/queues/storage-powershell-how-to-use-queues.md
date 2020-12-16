@@ -1,24 +1,24 @@
 ---
-title: Azure üzenetsor-tárolási műveletek végrehajtása a PowerShellben
-description: Műveleteket hajthat végre az Azure üzenetsor-tárolóban a PowerShell használatával. Az Azure üzenetsor-tárolóval nagy számú, HTTP/HTTPS által elérhető üzenetet tárolhat.
+title: Az Azure Queue Storage használata a PowerShellből – Azure Storage
+description: Műveleteket hajthat végre az Azure Queue Storage PowerShell használatával. Az Azure Queue Storage segítségével nagy számú, HTTP/HTTPS által elérhető üzenetet tárolhat.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 05/15/2019
+ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.topic: how-to
-ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2f1229ab8a292b06dfc43b95d9047ed8d233523
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fba288f76377e744b1fe21a52e03a43409c505bf
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345703"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585615"
 ---
-# <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-műveletek végrehajtása az Azure PowerShell-lel
+# <a name="how-to-use-azure-queue-storage-from-powershell"></a>Az Azure Queue Storage használata a PowerShell-lel
 
-Az Azure üzenetsor-tároló egy olyan szolgáltatás, amely a világ bármely pontjáról HTTP vagy HTTPS használatával elérhető, nagy mennyiségű üzenetet tárol. Részletes információ: [Bevezetés az Azure Queues](storage-queues-introduction.md)szolgáltatásba. Ez a cikk a közös üzenetsor-tárolási műveleteket ismerteti. Az alábbiak végrehajtásának módját ismerheti meg:
+Az Azure Queue Storage egy olyan szolgáltatás, amely a világ bármely pontjáról HTTP vagy HTTPS használatával elérhető, nagy mennyiségű üzenetet tárol. Részletes információkat az [Azure Queue Storage bemutatása](storage-queues-introduction.md)című témakörben talál. Ez a cikk a közös Queue Storage műveleteket ismerteti. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 >
@@ -29,9 +29,9 @@ Az Azure üzenetsor-tároló egy olyan szolgáltatás, amely a világ bármely p
 > - Üzenet törlése
 > - Üzenetsor törlése
 
-Ez a útmutató a Azure PowerShell modul az 0,7-es vagy újabb verzióját igényli. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
+Ehhez a útmutatóhoz a Azure PowerShell ( `Az` ) modul 0,7-es vagy újabb verziójára van szükség. `Get-Module -ListAvailable Az`A jelenleg telepített verzió megkereséséhez futtassa a parancsot. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
 
-A várólisták adatsíkja nem tartalmaz PowerShell-parancsmagokat. Az adatsík-műveletek, például az üzenetek hozzáadása, az üzenet olvasása és az üzenet törlése után a .NET Storage ügyféloldali kódtárat kell használnia, mivel az elérhető a PowerShellben. Hozzon létre egy üzenet objektumot, majd a AddMessage parancsok használatával hajtsa végre a műveleteket az üzeneten. Ez a cikk bemutatja, hogyan teheti meg.
+A várólisták adatsíkja nem tartalmaz PowerShell-parancsmagokat. Az adatsík-műveletek, például az üzenetek hozzáadása, az üzenet olvasása és az üzenet törlése után a .NET Storage ügyféloldali kódtárat kell használnia, mivel az elérhető a PowerShellben. Hozzon létre egy üzenet objektumot, majd olyan parancsokat is használhat `AddMessage` , amelyekkel műveleteket végezhet az adott üzeneten. Ez a cikk bemutatja, hogyan teheti meg.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Helyszínek listájának beolvasása
 
-Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ez a gyakorlat a **eastus** -t fogja használni. Ezt a változót a későbbi használat érdekében a változó **helyén** tárolja.
+Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ez a gyakorlat a következőt fogja használni: `eastus` . Ezt a változót későbbi felhasználás céljából tárolja a változóban `location` .
 
 ```powershell
 Get-AzLocation | Select-Object Location
@@ -56,7 +56,7 @@ $location = "eastus"
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal.
 
-Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoport nevét egy változóban tárolja későbbi használatra. Ebben a példában egy *howtoqueuesrg* nevű erőforráscsoportot hoznak létre a *eastus* régióban.
+Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoport nevét egy változóban tárolja későbbi használatra. Ebben a példában egy `howtoqueuesrg` nevű erőforráscsoport jön létre a `eastus` régióban.
 
 ```powershell
 $resourceGroup = "howtoqueuesrg"
@@ -65,7 +65,7 @@ New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>Storage-fiók létrehozása
 
-Hozzon létre egy szabványos általános célú Storage-fiókot a helyileg redundáns tárolással (LRS) a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)használatával. Szerezze be a használni kívánt Storage-fiókot definiáló Storage-fiók környezetét. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat.
+Hozzon létre egy szabványos általános célú Storage-fiókot a helyileg redundáns tárolással (LRS) a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)használatával. Szerezze be a használni kívánt Storage-fiókot definiáló Storage-fiók környezetét. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat.
 
 ```powershell
 $storageAccountName = "howtoqueuestorage"
@@ -79,18 +79,18 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 
-Az alábbi példa először kapcsolatot létesít az Azure Storage-val a Storage-fiók környezetével, amely magában foglalja a Storage-fiók nevét és a hozzá tartozó hozzáférési kulcsot. Ezután meghívja a [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) parancsmagot egy "howtoqueue" nevű várólista létrehozásához.
+Az alábbi példa először kapcsolatot létesít az Azure Storage-val a Storage-fiók környezetével, amely magában foglalja a Storage-fiók nevét és a hozzá tartozó hozzáférési kulcsot. Ezután meghívja a [New-AzStorageQueue](/powershell/module/az.storage/new-azstoragequeue) parancsmagot a nevű várólista létrehozásához `howtoqueue` .
 
 ```powershell
 $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-További információ az Azure Queue szolgáltatás elnevezési szabályairól: [várólisták és metaadatok elnevezése](/rest/api/storageservices/Naming-Queues-and-Metadata).
+Az Azure Queue Storage elnevezési konvenciókkal kapcsolatos információkért lásd: [várólisták és metaadatok elnevezése](/rest/api/storageservices/naming-queues-and-metadata).
 
 ## <a name="retrieve-a-queue"></a>Üzenetsor beolvasása
 
-Lekérdezheti és lekérhet egy adott várólistát vagy egy Storage-fiókban lévő összes várólistát tartalmazó listát. Az alábbi példák azt mutatják be, hogyan kérhető le az összes várólista a Storage-fiókban, valamint egy adott várólista; mindkét parancs a [Get-AzStorageQueue](/powershell/module/az.storage/Get-AzStorageQueue) parancsmagot használja.
+Lekérdezheti és lekérhet egy adott várólistát vagy egy Storage-fiókban lévő összes várólistát tartalmazó listát. Az alábbi példák azt mutatják be, hogyan kérhető le az összes várólista a Storage-fiókban, valamint egy adott várólista; mindkét parancs a [Get-AzStorageQueue](/powershell/module/az.storage/get-azstoragequeue) parancsmagot használja.
 
 ```powershell
 # Retrieve a specific queue
@@ -104,7 +104,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>Üzenet hozzáadása egy várólistához
 
-Az üzenetsor tényleges üzeneteit befolyásoló műveletek a .NET Storage ügyféloldali kódtárat használják a PowerShellben elérhetőként. Ha üzenetet szeretne hozzáadni egy várólistához, hozzon létre egy új példányt a [Microsoft. Azure. Storage. üzenetsor. CloudQueueMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) osztályhoz. Ezután hívja meg az [AddMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) módszert. A CloudQueueMessage egy sztringből (UTF-8 formátumban) vagy egy bájttömbből hozható létre.
+Az üzenetsor tényleges üzeneteit befolyásoló műveletek a .NET Storage ügyféloldali kódtárat használják a PowerShellben elérhetőként. Ha üzenetet szeretne hozzáadni egy várólistához, hozzon létre egy új példányt az üzenet objektuma, [`Microsoft.Azure.Storage.Queue.CloudQueueMessage`](/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) osztály. Ezután hívja meg a [`AddMessage`](/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) metódust. A `CloudQueueMessage` létrehozható egy karakterláncból (UTF-8 formátumban) vagy egy bájtos tömbből.
 
 Az alábbi példa bemutatja, hogyan adhat hozzá egy üzenetet a várólistához.
 
@@ -131,9 +131,9 @@ Az üzenetek beolvasása a legjobb – első kijelentkezési sorrendben. Ez nem 
 
 Ez a **láthatósági időkorlát** azt határozza meg, hogy az üzenet hányszor maradjon láthatatlan, mielőtt újra elérhetővé válik a feldolgozáshoz. Az alapértelmezett érték 30 mp.
 
-A kód két lépésben beolvas egy üzenetet a várólistából. A [Microsoft. Azure. Storage. üzenetsor. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) metódus meghívásakor a következő üzenet jelenik meg a várólistán. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. Az üzenet üzenetsorből való eltávolításának befejezéséhez hívja meg a [Microsoft. Azure. Storage. üzenetsor. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) metódust.
+A kód két lépésben beolvas egy üzenetet a várólistából. A metódus meghívásakor a [`Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) következő üzenet jelenik meg a várólistán. A visszaadott üzenet a `GetMessage` várólistából beolvasott más kódokba is láthatatlanná válik. Az üzenet várólistából való eltávolításának befejezéséhez hívja meg a [`Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) metódust.
 
-Az alábbi példában elolvashatja a három üzenetsor-üzenetet, majd várjon 10 másodpercet (a láthatatlanság időtúllépését). Ezután olvassa el újra a három üzenetet, és törölje az üzeneteket a **DeleteMessage** meghívásával. Ha az üzenetek törlése után megpróbálja beolvasni a várólistát, $queueMessage a rendszer NULL értéket ad vissza.
+Az alábbi példában elolvashatja a három üzenetsor-üzenetet, majd várjon 10 másodpercet (a láthatatlanság időtúllépését). Ezután olvassa el újra a három üzenetet, és törölje az üzeneteket a hívásával `DeleteMessage` . Ha az üzenetek törlése után megpróbálja beolvasni a várólistát, a rendszer a következőt `$queueMessage` adja vissza: `$null` .
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue
@@ -164,7 +164,7 @@ $queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Resul
 
 ## <a name="delete-a-queue"></a>Üzenetsor törlése
 
-Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a Remove-AzStorageQueue parancsmagot. Az alábbi példa bemutatja, hogyan törölheti a gyakorlatban használt adott várólistát az Remove-AzStorageQueue parancsmag használatával.
+Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a `Remove-AzStorageQueue` parancsmagot. Az alábbi példa bemutatja, hogyan törölheti a gyakorlatban használt adott várólistát a `Remove-AzStorageQueue` parancsmag használatával.
 
 ```powershell
 # Delete the queue
@@ -181,7 +181,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a útmutatóban megtanulta az alapszintű üzenetsor-tárolás kezelését a PowerShell használatával, beleértve a következőket:
+Ebben az útmutatóban megtanulta az alapszintű Queue Storage felügyeletét a PowerShell-lel, beleértve a következőket:
 
 > [!div class="checklist"]
 >

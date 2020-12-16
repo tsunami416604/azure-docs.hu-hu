@@ -3,15 +3,15 @@ title: A VMware virtuális gépek engedélyezése a vész-helyreállításhoz Az
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a VMware VM-replikáció a vész-helyreállításhoz a Azure Site Recovery szolgáltatás használatával
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 04/01/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1f4759bc40c4074f0dd618be8ac66ad088e848c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004211"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587754"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-ba történő replikáció engedélyezése VMware virtuális gépek esetében
 
@@ -93,7 +93,42 @@ A replikáció engedélyezéséhez kövesse az alábbi lépéseket:
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Replikálási ablak engedélyezése":::
 
-1. Válassza a **replikáció engedélyezése** lehetőséget. A **védelem engedélyezése** feladat előrehaladását a beállítások **Settings**  >  **feladatok**  >  **site Recovery feladatok** menüpontban követheti nyomon. A **védelem véglegesítése** feladatok futtatása után a virtuális gép készen áll a feladatátvételre.
+1. Válassza a **replikáció engedélyezése** lehetőséget. A **védelem engedélyezése** feladat előrehaladását a beállítások   >  **feladatok**  >  **site Recovery feladatok** menüpontban követheti nyomon. A **védelem véglegesítése** feladatok futtatása után a virtuális gép készen áll a feladatátvételre.
+
+## <a name="monitor-initial-replication"></a>Kezdeti replikáció figyelése
+
+A védett elem replikációjának engedélyezése után Azure Site Recovery kezdeményezi a forrás-és a célként megadott régió adatainak replikálását (a szinkronizálás szinonimája). Ezen időszak alatt a rendszer létrehozza a forrásként szolgáló lemezek replikáját. Csak az eredeti lemezek másolásának befejezése után a rendszer átmásolja a különbözeti változásokat a célként megadott régióba. Az eredeti lemezek másolásához szükséges idő több paramétertől függ, például:
+
+- a forrásoldali gépi lemezek mérete
+- az adatok Azure-ba történő átviteléhez rendelkezésre álló sávszélesség (a Deployment Planner kihasználható a szükséges optimális sávszélesség azonosításához)
+- feldolgozza a kiszolgáló erőforrásait, például a memóriát, a szabad lemezterületet, a gyorsítótár számára elérhető CPU-t, & feldolgozza a védett elemektől kapott adatokat (ellenőrizze, hogy a Process Server [kifogástalan](vmware-physical-azure-monitor-process-server.md#monitor-proactively)
+
+A kezdeti replikálás előrehaladásának nyomon követéséhez navigáljon a Recovery Services-tárolóhoz Azure Portal-> replikált elemek – > figyelő "status" oszlop értéke replikált elem. Az állapot a kezdeti replikálás százalékos befejezését jeleníti meg. Az állapotra való Rámutatás után az "összes átvitt adat" elérhető lenne. Ha az állapot gombra kattint, megnyílik egy környezetfüggő oldal, amely a következő paramétereket jeleníti meg:
+
+- Utolsó frissítés: – azt jelzi, hogy a szolgáltatás Mikor frissítette a teljes gép replikációs információit.
+- Befejezett százalék – a virtuális gép kezdeti replikációjának százalékos arányát jelzi.
+- Összes továbbított adatátvitel – a virtuális gépről az Azure-ba továbbított adatok mennyisége
+
+:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="replikálási állapot" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+
+- Szinkronizálási folyamat (a részletek a lemez szintjén való nyomon követése)
+    - Replikáció állapota
+      - Ha a replikáció még nem indul el, a rendszer az állapotot "a várólistában" frissíti. A kezdeti replikálás során egyszerre csak 3 lemez replikálódik. Ezt a mechanizmust követve elkerülhető a folyamat-kiszolgáló szabályozása.
+      - A replikáció elindítása után a rendszer a "folyamatban" állapotot frissíti.
+      - A kezdeti replikáció befejezését követően az állapot "Complete" (Befejezés) jelöléssel van megjelölve.        
+   - Site Recovery beolvassa az eredeti lemezt, átviszi az adatokat az Azure-ba, és rögzíti a folyamatot a lemez szintjén. Vegye figyelembe, hogy Site Recovery kihagyja a lemez nem foglalt méretének replikálását, és hozzáadja azt a befejezett értékekhez. Így előfordulhat, hogy az összes lemezen továbbított adatmennyiség összege nem jelenik meg a virtuális gép szintjén az "összes átvitt adatforgalom" értékkel.
+   - Ha a lemezre kattint a buborékra kattintva, megtudhatja, hogy mikor váltott ki a lemezre a replikálás (a szinkronizálás szinonimája), az Azure-ba továbbított adatokat az elmúlt 15 percben, amelyet a legutolsó frissített időbélyegző követ. Ez az időbélyegző azt jelzi, hogy az Azure-szolgáltatás mikor fogadta el az adatokat a forrásoldali gépről a :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-info-balloon.png" alt-text="kezdeti replikáció-info-Balloon-details" lightbox="media/vmware-azure-enable-replication/initial-replication-info-balloon.png":::
+   - Az egyes lemezek állapota megjelenik
+      - Ha a replikáció a vártnál lassabban működik, a lemez állapota figyelmeztetésre vált.
+      - Ha a replikáció nem halad előre, a lemez állapota kritikusra vált.
+
+Ha az állapot kritikus/figyelmeztetési állapotban van, győződjön meg arról, hogy a gép és a [folyamat](vmware-physical-azure-monitor-process-server.md) replikálása kifogástalan állapotú. 
+
+Amint a replikációs feladatok engedélyezése befejeződött, a replikálási folyamat 0% lesz, és az összes átvitt adatátvitel NA lenne. Ha a gombra kattint, az egyes azonosított lemezek esetében a "NA" érték lesz. Ez azt jelzi, hogy a replikáció még nem indul el, és Azure Site Recovery még nem kapja meg a legújabb statisztikát. A folyamat 30 percenként frissül.
+
+> [!NOTE]
+> Győződjön meg arról, hogy a konfigurációs kiszolgálókat, a kibővített folyamat-kiszolgálókat és a mobilitási ügynököket a 9,36-es vagy újabb verzióra frissíti, így biztosítva a pontos előrehaladást és a Site Recovery szolgáltatásoknak
+
 
 ## <a name="view-and-manage-vm-properties"></a>A virtuális gépek tulajdonságainak megtekintése és kezelése
 
@@ -141,7 +176,7 @@ A Microsoft frissítési garanciával rendelkező ügyfelei az Azure-ba migrált
 
 [További](https://azure.microsoft.com/pricing/hybrid-benefit/) információ a Azure Hybrid Benefitról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután a virtuális gép elérte a védett állapotot, próbálja meg a [feladatátvételt](site-recovery-failover.md) , és győződjön meg arról, hogy az alkalmazás megjelenik az Azure-ban.
 

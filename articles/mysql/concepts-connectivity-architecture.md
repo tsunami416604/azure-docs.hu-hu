@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 02919c8e31e556ab7b5e7e04fcbde27dcf981736
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 03b7f7cd0ebff61047175c8667130a31866b7cbe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511569"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586006"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Kapcsolati architektúra a Azure Database for MySQLban
 Ez a cikk ismerteti a Azure Database for MySQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MySQL-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -29,7 +29,7 @@ Az átjáró szolgáltatás az állapot nélküli számítási csomópontok olya
 
 A szolgáltatás folyamatos karbantartásának részeként rendszeresen frissítjük az átjárókat üzemeltető számítási hardvereket, hogy biztosítsák a legbiztonságosabb és a teljesítményre vonatkozó élményt. Az átjáró hardverének frissítésekor a rendszer először a számítási csomópontok új gyűrűjét építi ki. Ez az új gyűrű az újonnan létrehozott Azure Database for MySQL-kiszolgálók forgalmát szolgálja ki, és más IP-címmel fog rendelkezni a régebbi átjáró-gyűrűktől az adott régióban, hogy megkülönböztesse a forgalmat. Ha az új gyűrű teljesen működőképes, a rendszer a meglévő kiszolgálókat kiszolgáló régebbi hardverek leszerelését tervezi. Az átjáró hardverének leszerelése előtt a kiszolgálókat futtató és a régebbi átjárós gyűrűkhöz csatlakozó ügyfelek értesítést kapnak e-mailben és a Azure Portal, három hónappal korábban, a leszerelés előtt. Az átjárók leszerelése hatással lehet a kiszolgálókhoz való kapcsolatra, ha 
 
-* Az átjáró IP-címeinek kódolása az alkalmazáshoz tartozó kapcsolatok karakterláncában végezhető el. **Nem ajánlott**. 
+* Az átjáró IP-címeinek kódolása az alkalmazáshoz tartozó kapcsolatok karakterláncában végezhető el. **Nem ajánlott**. A kiszolgáló teljes tartománynevét (FQDN) a (z). mysql.database.azure.com formátumban kell használni az <servername> alkalmazáshoz tartozó kapcsolatok karakterláncában. 
 * Az új átjáró IP-címeit nem frissíti az ügyféloldali tűzfalon, hogy a kimenő forgalom elérhetővé váljon az új átjáró-gyűrűkhöz.
 
 A következő táblázat az összes adatterület Azure Database for MySQL átjárójának átjáró IP-címeit sorolja fel. Az átjáró IP-címeinek legnaprakészebb információi az egyes régiókban az alábbi táblázatban láthatók. Az alábbi táblázatban az oszlopok az alábbiakat jelölik:
@@ -94,7 +94,7 @@ Az átirányítás támogatása a Microsoft által fejlesztett PHP [mysqlnd_azur
 > [!IMPORTANT]
 > Az átirányítás támogatása a PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) bővítményben jelenleg előzetes verzióban érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Database for MySQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-using-portal.md)
 * [Azure Database for MySQL tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](./howto-manage-firewall-using-cli.md)

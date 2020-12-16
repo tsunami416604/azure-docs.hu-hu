@@ -5,12 +5,12 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 7a5872f94a2d267ed2a0e17815e84cec5b02c613
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 81a8b6cd5044b31ee80f50448d6610ba6a57281e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368103"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585649"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Oktatóanyag: csatolt sablon üzembe helyezése
 
@@ -32,7 +32,7 @@ A Storage-fiók erőforrását egy csatolt sablonba is elkülönítheti:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-A fő sablon a következő sablon. A Kiemelt `Microsoft.Resources/deployments` objektum egy csatolt sablon meghívását mutatja be. A csatolt sablon nem tárolható helyi fájlként vagy olyan fájlként, amely csak a helyi hálózaton érhető el. Csak olyan URI-értéket adhat meg, amely tartalmazza a vagy a elemet `HTTP` `HTTPS` . A Resource Managernek képesnek kell lennie hozzáférni a sablonhoz. Az egyik lehetőség, hogy a csatolt sablont egy Storage-fiókba helyezi, és az adott elemhez tartozó URI-t használja. Az URI-t egy paraméterrel kell átadni a sablonnak. Tekintse meg a kijelölt paraméter definícióját.
+A fő sablon a következő sablon. A Kiemelt `Microsoft.Resources/deployments` objektum egy csatolt sablon meghívását mutatja be. A csatolt sablon nem tárolható helyi fájlként vagy olyan fájlként, amely csak a helyi hálózaton érhető el. Csak olyan URI-értéket adhat meg, amely HTTP vagy HTTPS protokollt is tartalmaz. A Resource Managernek képesnek kell lennie hozzáférni a sablonhoz. Az egyik lehetőség, hogy a csatolt sablont egy Storage-fiókba helyezi, és az adott elemhez tartozó URI-t használja. Az URI-t egy paraméterrel kell átadni a sablonnak. Tekintse meg a kijelölt paraméter definícióját.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 

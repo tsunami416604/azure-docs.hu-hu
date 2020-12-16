@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: aafdbe631426b4b0c8c762a81457369bc474f479
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a87a08db672c459138fc1efd865332dc0f19944e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181124"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586659"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>Oktatóanyag: az Adobe Identity Management konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -61,7 +61,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 3. Válassza **a felhasználók szinkronizálása Microsoft Azure** lehetőséget, majd kattintson a **tovább** gombra.
 
-      ![Sync](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+      ![Képernyőfelvétel: a "felhasználók szinkronizálása Microsoft Azure Active Directory" beállítás látható.](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. Másolja és mentse a **bérlői URL-címet** és a **titkos jogkivonatot**. Ezek az értékek a **bérlői URL-cím** és a **titkos jogkivonat** mezőiben jelennek meg az Adobe Identity Management alkalmazás üzembe helyezés lapján a Azure Portal.
 

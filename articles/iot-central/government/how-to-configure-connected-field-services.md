@@ -3,23 +3,19 @@ title: Azure IoT Central-alkalmazás összekötése a Dynamics 365 Field Service
 description: Ismerje meg, hogyan hozhat létre teljes körű megoldást az Azure IoT Central és a Dynamics 365 Field Service használatával
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 702de11abc274d1f4001df5b28498928fde71109
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1d098f56bbadfe115620580c8d93fb6dd021550d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014458"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586674"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>Teljes körű megoldás létrehozása az Azure IoT Central és a Dynamics 365 Field Service használatával 
-
-
-
 Építőként engedélyezheti az Azure IoT Central-alkalmazás integrálását más üzleti rendszerekre. 
-
 
 Egy csatlakoztatott hulladékkezelési megoldásban például optimalizálhatja a trash Collections-teherautók küldését. Az optimalizálás a csatlakoztatott adattárolók IoT-érzékelők adatainak használatával végezhető el. Az [IoT Central csatlakoztatott hulladékkezelési alkalmazásban](./tutorial-connected-waste-management.md) szabályokat és műveleteket konfigurálhat, és beállíthatja, hogy riasztásokat hozzon létre a Dynamics-mező szolgáltatásban. Ez a forgatókönyv a Power automatizálás használatával valósítható meg, amelyet közvetlenül a IoT Central konfigurál a munkafolyamatok alkalmazások és szolgáltatások közötti automatizálásához. Emellett a Service-tevékenységek alapján a Field Service-ben az információ visszaküldhető az Azure IoT Centralba. 
 

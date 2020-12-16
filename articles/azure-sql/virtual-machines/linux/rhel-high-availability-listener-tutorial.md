@@ -7,12 +7,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 7b7ded4e7f94e2f9dfdfdda86aec99ff87f2beda
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 83fde9e957cb2011ce585603e51d331be171bc08
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359982"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586227"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoport figyelője SQL Server RHEL virtuális gépek Azure-ban való konfigurálásához
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -262,6 +262,10 @@ Ezen a ponton az erőforráscsoport egy terheléselosztó, amely az összes SQL 
     ```
 
 1. Ellenőrizze a fürt erőforrásait a parancs használatával `sudo pcs resource` , és láthatja, hogy az elsődleges példány most már `<VM2>` .
+
+    > [!NOTE]
+    > Ez a cikk a Slave kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource

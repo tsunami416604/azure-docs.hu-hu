@@ -9,15 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1abc0f075098768d3823b6ce916d7c44711c0567
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1ade28af1094694d2cb6dffaecec4e4131630535
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516188"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584867"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Bejelentkezés és bejelentkezés beállítása LinkedIn-fiókkal Azure Active Directory B2C használatával
 
@@ -70,7 +71,7 @@ Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](au
 1. Adjon meg egy **nevet**. Például: *LinkedIn*.
 1. Az **ügyfél-azonosító** mezőben adja meg a korábban létrehozott LinkedIn-alkalmazás ügyfél-azonosítóját.
 1. Az **ügyfél titka** mezőben adja meg a rögzített ügyfél-titkot.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ::: zone-end
 
@@ -245,7 +246,7 @@ Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A műv
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
 1. Kattintson arra a felhasználói folyamatra, amelyre a LinkedIn Identity providert szeretné használni.
 1. A **közösségi identitás-szolgáltatók** területen válassza a **LinkedIn** lehetőséget.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
 1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **felhasználói folyamat futtatása** elemre.

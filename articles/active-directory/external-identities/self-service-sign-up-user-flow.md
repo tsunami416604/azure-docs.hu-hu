@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76f4a3e5fc87420c242c693e3c48a91244641e0
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 51602e97a8424bade542eec6f88b673130fee8b5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560033"
+ms.locfileid: "97586023"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat hozzáadása egy alkalmazáshoz (előzetes verzió)
 > [!NOTE]
@@ -53,7 +53,7 @@ Ahhoz, hogy önkiszolgáló regisztrációs felhasználói folyamatot lehessen h
 4. Állítsa be a **vendég önkiszolgáló regisztráció engedélyezése felhasználói folyamatokkal (előzetes verzió)** az **Igen** értékre.
 
    ![Vendég önkiszolgáló regisztrálásának engedélyezése](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 ## <a name="create-the-user-flow-for-self-service-sign-up"></a>Felhasználói folyamat létrehozása önkiszolgáló regisztrációhoz
 
 Ezután létre kell hoznia a felhasználói folyamatot az önkiszolgáló regisztrációhoz, és hozzá kell adnia egy alkalmazáshoz.
@@ -71,6 +71,9 @@ Ezután létre kell hoznia a felhasználói folyamatot az önkiszolgáló regisz
 
    ![Új felhasználói folyamat létrehozása lap](media/self-service-sign-up-user-flow/create-user-flow.png)
 
+> [!NOTE]
+> Csak akkor gyűjthet attribútumokat, ha a felhasználó első alkalommal jelentkezik be. A felhasználó regisztrálása után a rendszer többé nem kéri az attribútum-információk gyűjtésére, még akkor sem, ha megváltoztatja a felhasználói folyamatot.
+
 8. Válassza a **Létrehozás** lehetőséget.
 9. Az új felhasználói folyamat megjelenik a **felhasználói folyamatok (előzetes verzió)** listában. Ha szükséges, frissítse az oldalt.
 
@@ -83,7 +86,7 @@ Megadhatja, hogy az attribútumok milyen sorrendben jelenjenek meg a regisztrác
 3. Válassza ki az önkiszolgáló bejelentkezési felhasználói folyamatot a listából.
 4. A **Testreszabás** **területen válassza a lapelrendezések elemet**.
 5. A program felsorolja a begyűjteni kívánt attribútumokat. A Megjelenítés sorrendjének módosításához válasszon ki egy attribútumot, **majd válassza a** feljebb, a **lejjebb,** **a feljebb** vagy a **lentre ugrás** lehetőséget.
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 ## <a name="add-applications-to-the-self-service-sign-up-user-flow"></a>Alkalmazások hozzáadása az önkiszolgáló bejelentkezési felhasználói folyamathoz
 
@@ -102,7 +105,7 @@ Most már hozzárendelheti az alkalmazásokat a felhasználói folyamathoz.
 8. Válassza ki az alkalmazást a listából. Vagy használja a keresőmezőt az alkalmazás megkereséséhez, majd jelölje ki.
 9. Válassza a **Kiválasztás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Google hozzáadása a közösségi identitású szolgáltatók listájához](google-federation.md)
 - [Facebook hozzáadása a közösségi identitású szolgáltatók listájához](facebook-federation.md)

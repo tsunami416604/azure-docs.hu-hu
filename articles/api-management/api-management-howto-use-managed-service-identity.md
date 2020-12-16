@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: db1a8238cf9ddae57d73438d43daa54294ce6860
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2866633503399e9f6d78e8665f7a45d9063f01d9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686225"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585785"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Felügyelt identitások használata az Azure-ban API Management
 
@@ -279,7 +279,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először létre ke
 1. A szokásos módon hozzon létre egy API Management példányt a portálon. Tallózással keresse meg a portálon.
 2. Válassza a **felügyelt identitások** lehetőséget.
 3. A **felhasználó által hozzárendelt** lapon válassza a **Hozzáadás** lehetőséget.
-4. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** elemet.
+4. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** lehetőséget.
 
    :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Felhasználó által hozzárendelt felügyelt identitás engedélyezésének kiválasztása" border="true":::
 
@@ -361,7 +361,7 @@ A teljes Azure Resource Manager sablon például a következőhöz hasonló lehe
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-        "dependsOn": [       
+         "dependsOn": [       
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: dcbb82dafc5f4c51299e4bcca7947e2f38f502ff
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780841"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585479"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált JavaScript-függvények Azure Stream Analytics
  
@@ -215,7 +215,15 @@ A lekérdezés kimenete a megadott beállításokkal megjelenő, **de-de** dátu
 Samstag, 28. Dezember 2019
 ```
 
-## <a name="next-steps"></a>További lépések
+### <a name="user-logging"></a>Felhasználói naplózás
+A naplózási mechanizmus lehetővé teszi, hogy egyéni adatokat rögzítsen a feladatok futtatása közben. A naplózási adatok segítségével valós időben végezhet hibakeresést vagy felmérni az egyéni kód helyességét. Ez a mechanizmus a Console. log () metóduson keresztül érhető el.
+
+```javascript
+console.log('my error message');
+```
+
+A naplózási üzeneteket a [diagnosztikai naplókon](data-errors.md)keresztül érheti el.
+## <a name="next-steps"></a>Következő lépések
 
 * [UDF Machine Learning](./machine-learning-udf.md)
 * [C# UDF](./stream-analytics-edge-csharp-udf-methods.md)

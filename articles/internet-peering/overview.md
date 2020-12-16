@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: overview
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: 34d340881e4f612544f4b3d68d3c1f3da598cab3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8f960e58d47963cbb239d498af52e7adfc77caa9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023428"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586866"
 ---
 # <a name="internet-peering-overview"></a>Internetes peering – áttekintés
 
@@ -49,7 +49,7 @@ A Microsoft szelektív, de általában nyitott társítási szabályzattal rende
 ## <a name="faq"></a>GYIK
 A peering szolgáltatással kapcsolatos gyakori kérdésekért lásd: [internetes társközi – gyakori](faqs.md)kérdések.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretne többet megtudni a Microsofttal való közvetlen együttműködés beállításához szükséges lépésekről, kövesse a [Direct peering](walkthrough-direct-all.md) bemutatót
 * A Microsofttal való Exchange-társítás beállításával kapcsolatos lépésekért kövesse az [Exchange-partneri útmutató](walkthrough-exchange-all.md) lépéseit

@@ -1,28 +1,28 @@
 ---
-title: A üzenetsor-tároló használata a Java-Azure Storage-ból
+title: A Queue Storage használata a Java-Azure Storage szolgáltatásban
 description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat a Queue Storage használatával. Megtudhatja, hogyan szúrhat be, betekintést, beolvashat és törölhet üzeneteket a Javához készült Azure Storage ügyféloldali kódtár használatával.
 author: mhopkins-msft
-ms.custom: devx-track-java
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/19/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.topic: how-to
-ms.reviewer: dineshm
-ms.openlocfilehash: c2ee32b3ced8fdcd5f9f889c4fd0183e46ad5d8d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.custom: devx-track-java
+ms.openlocfilehash: 997a37ac4252813abf1b35877cd34e192ec3e2ae
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346009"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585717"
 ---
-# <a name="how-to-use-queue-storage-from-java"></a>How to use Queue Storage from Java (A Queue Storage használata Javával)
+# <a name="how-to-use-queue-storage-from-java"></a>A Queue Storage használata a Java-ból
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 ## <a name="overview"></a>Áttekintés
 
-Ez az útmutató bemutatja, hogyan használható a gyakori forgatókönyvek kódja az Azure üzenetsor-tárolási szolgáltatással. A kódminták Java nyelven íródtak, és a [Java-hoz készült Azure Storage SDK-t][Azure Storage SDK for Java] használják. A forgatókönyvek közé tartoznak az üzenetsor-üzenetek **beszúrása** , **bepillantása** , **beolvasása** és **törlése** . A várólisták **létrehozásához** és **törléséhez** szükséges kód is szerepel. A várólistákkal kapcsolatos további információkért tekintse meg a [következő lépések](#next-steps) szakaszt.
+Ez az útmutató bemutatja, hogyan használható az Azure Queue Storage szolgáltatással közös forgatókönyvek kódolása. A kódminták Java nyelven íródtak, és a [Java-hoz készült Azure Storage SDK-t](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage) használják. A forgatókönyvek közé tartoznak az üzenetsor-üzenetek **beszúrása**, **bepillantása**, **beolvasása** és **törlése** . A várólisták **létrehozásához** és **törléséhez** szükséges kód is szerepel. A várólistákkal kapcsolatos további információkért tekintse meg a [következő lépések](#next-steps) szakaszt.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -32,11 +32,11 @@ Ez az útmutató bemutatja, hogyan használható a gyakori forgatókönyvek kód
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-Először is ellenőrizze, hogy a fejlesztői rendszer megfelel-e az [Azure üzenetsor Storage ügyféloldali kódtára Java V12](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)-es verziójában felsorolt előfeltételeknek.
+Először is ellenőrizze, hogy a fejlesztői rendszer megfelel-e az Azure Queue Storage a Java-hoz készült [ügyféloldali kódtár V12](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)-es verziójában felsorolt előfeltételeknek.
 
-*Queues-How-to-V12* nevű Java-alkalmazás létrehozása:
+Hozzon létre egy nevű Java-alkalmazást `queues-how-to-v12` :
 
-1. A konzol ablakban (például cmd, PowerShell vagy bash) a Maven használatával hozzon létre egy új, a *Queues-to-V12* nevű konzol alkalmazást. A "Hello World!" létrehozásához írja be a következő **MVN** -parancsot: Java-projekt.
+1. A konzol ablakban (például cmd, PowerShell vagy bash) a Maven használatával hozzon létre egy új, a nevű Console-alkalmazást `queues-how-to-v12` . A `mvn` "Hello World" Java-projekt létrehozásához írja be a következő parancsot.
 
    ```bash
     mvn archetype:generate \
@@ -93,7 +93,7 @@ Először is ellenőrizze, hogy a fejlesztői rendszer megfelel-e az [Azure üze
     [INFO] ------------------------------------------------------------------------
         ```
 
-1. Switch to the newly created *queues-howto-v12* directory.
+1. Switch to the newly created `queues-howto-v12` directory.
 
    ```console
    cd queues-howto-v12
@@ -101,7 +101,7 @@ Először is ellenőrizze, hogy a fejlesztői rendszer megfelel-e az [Azure üze
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá a függőségek csoportjához a következő függőségi elemet.
+Nyissa meg a fájlt a szövegszerkesztőben `pom.xml` . Adja hozzá a függőségek csoportjához a következő függőségi elemet.
 
 ```xml
 <dependency>
@@ -117,7 +117,7 @@ Először is ellenőrizze, hogy a fejlesztői rendszer megfelel-e a Java V8-hoz 
 
 ---
 
-## <a name="configure-your-application-to-access-queue-storage"></a>Az alkalmazás konfigurálása a várólista-tároló eléréséhez
+## <a name="configure-your-application-to-access-queue-storage"></a>Az alkalmazás konfigurálása Queue Storage eléréséhez
 
 Adja hozzá a következő importálási utasításokat azon Java-fájl elejéhez, amelyen az Azure Storage API-kat szeretné használni a várólisták eléréséhez:
 
@@ -135,9 +135,9 @@ import com.microsoft.azure.storage.queue.*;
 
 ---
 
-## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage-beli kapcsolatok karakterláncának beállítása
+## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage kapcsolati sztring beállítása
 
-Az Azure Storage-ügyfelek tárolási kapcsolatok sztringjét használják az adatkezelési szolgáltatások eléréséhez. Szerezze be a [Azure Portalban](https://portal.azure.com)felsorolt Storage-fiók nevét és elsődleges elérési kulcsát. Használja őket *accountname* és *AccountKey* értékként a kapcsolatok karakterláncában. Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
+Az Azure Storage-ügyfelek tárolási kapcsolatok sztringjét használják az adatkezelési szolgáltatások eléréséhez. Szerezze be a [Azure Portalban](https://portal.azure.com)felsorolt Storage-fiók nevét és elsődleges elérési kulcsát. Használja őket a `AccountName` és az `AccountKey` értékként a kapcsolatok karakterláncában. Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
@@ -153,7 +153,7 @@ final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-Ezt a karakterláncot a *ServiceConfiguration. cscfg* nevű szolgáltatás-konfigurációs fájlban tárolhatja. Microsoft Azure szerepkörön belül futó alkalmazások esetén a **RoleEnvironment. getConfigurationSettings** meghívásával érheti el a kapcsolati karakterláncot. Íme egy példa arra, hogy a *StorageConnectionString* nevű **Setting** elemből hogyan kell beszerezni a kapcsolatok karakterláncát:
+Ezt a karakterláncot a nevű szolgáltatás konfigurációs fájljába lehet tárolni `ServiceConfiguration.cscfg` . Microsoft Azure szerepkörön belül futó alkalmazások esetén a kapcsolati karakterláncot a hívásával érheti el `RoleEnvironment.getConfigurationSettings` . Íme egy példa arra, hogyan kell lekérdezni a kapcsolatok karakterláncát egy `Setting` nevű elemből `StorageConnectionString` :
 
 ```java
 // Retrieve storage account from connection-string.
@@ -163,21 +163,22 @@ String storageConnectionString =
 
 ---
 
-A következő minták feltételezik, hogy van egy **karakterlánc** -objektum, amely tartalmazza a tárolási kapcsolatok karakterláncát.
+A következő minták feltételezik, hogy rendelkezik egy olyan `String` objektummal, amely tartalmazza a tárolási kapcsolatok karakterláncát.
 
 ## <a name="how-to-create-a-queue"></a>Útmutató: üzenetsor létrehozása
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-A **QueueClient** objektum tartalmazza a várólistával való interakció műveleteit. A következő kód létrehoz egy **QueueClient** objektumot. A használni kívánt várólista létrehozásához használja a **QueueClient** objektumot.
+Egy `QueueClient` objektum tartalmazza a várólistával való interakció műveleteit. A következő kód létrehoz egy `QueueClient` objektumot. Az `QueueClient` objektum használatával hozza létre a használni kívánt várólistát.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_CreateQueue":::
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-A **CloudQueueClient** objektum lehetővé teszi a várólisták hivatkozási objektumainak lekérését. A következő kód létrehoz egy **CloudQueueClient** objektumot. (Megjegyzés: a **CloudStorageAccount** -objektumok létrehozásának további módjai is vannak; további tudnivalókért lásd: **CloudStorageAccount** az [Azure Storage ügyféloldali SDK-dokumentációjában].)
+Az `CloudQueueClient` objektumok lehetővé teszi a várólisták hivatkozási objektumainak lekérését. A következő kód létrehoz egy `CloudQueueClient` objektumot, amely hivatkozást biztosít a használni kívánt várólistára. Ha nem létezik, létrehozhat egy várólistát.
 
-A **CloudQueueClient** objektum használatával kérjen egy hivatkozást a használni kívánt várólistára. Ha nem létezik, létrehozhat egy várólistát.
+> [!NOTE]
+> Más módokon is létrehozhat `CloudStorageAccount` objektumokat. További információ: az `CloudStorageAccount` [Azure Storage ügyféloldali SDK-dokumentációja](https://azure.github.io/azure-sdk-for-java/storage.html).)
 
 ```java
 try
@@ -208,13 +209,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-Ha egy üzenetet egy meglévő várólistába szeretne beszúrni, hívja meg a **üzenetküldés** metódust. Egy üzenet lehet karakterlánc (UTF-8 formátumban) vagy egy bájtos tömb. Az alábbi kód egy karakterlánc-üzenetet küld a várólistába.
+Ha egy üzenetet egy meglévő várólistába szeretne beszúrni, hívja meg a `sendMessage` metódust. Egy üzenet lehet karakterlánc (UTF-8 formátumban) vagy egy bájtos tömb. Az alábbi kód egy karakterlánc-üzenetet küld a várólistába.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_AddMessage":::
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-Ha üzenetet szeretne beszúrni egy létező üzenetsorba, először hozzon létre egy **CloudQueueMessage** elemet. Ezután hívja meg a **addMessage** metódust. A **CloudQueueMessage** egy sztringből (UTF-8 formátumban) vagy egy bájttömbből hozható létre. Az alábbi kód létrehoz egy várólistát (ha nem létezik), és beszúrja a "Hello, World" üzenetet.
+Ha egy üzenetet egy meglévő várólistába szeretne beszúrni, először hozzon létre egy újat `CloudQueueMessage` . Ezután hívja meg a `addMessage` metódust. A `CloudQueueMessage` létrehozható egy karakterláncból (UTF-8 formátumban) vagy egy bájtos tömbből. Az alábbi kód létrehoz egy várólistát (ha nem létezik), és beszúrja az üzenetet `Hello, World` .
 
 ```java
 try
@@ -247,7 +248,7 @@ catch (Exception e)
 
 ## <a name="how-to-peek-at-the-next-message"></a>Útmutató: betekintés a következő üzenetbe
 
-A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistából a **peekMessage** meghívásával.
+A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistából `peekMessage` .
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
@@ -298,7 +299,7 @@ A következő mintakód az üzenetek várólistáján keres, megkeresi a keresé
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-A következő mintakód az üzenetek várólistáján keres, megkeresi a "Hello, World" karakterláncnak megfelelő első üzenet tartalmát, módosítja az üzenet tartalmát, és kilép.
+A következő mintakód az üzenetek várólistáján keres, megkeresi az üzenetben szereplő első tartalmat, `Hello, world` módosítja az üzenet tartalmát, és kilép.
 
 ```java
 try
@@ -394,13 +395,13 @@ Megbecsülheti egy üzenetsorban található üzenetek számát.
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-A **getProperties** metódus több aktuális érték megadását kéri a Queue szolgáltatás. Az értékek egyike annak a száma, hogy hány üzenet van egy várólistában. A darabszám csak hozzávetőleges, mert az üzenetek a kérés után hozzáadhatók vagy eltávolíthatók. A **getApproximateMessageCount** metódus a **getProperties** hívása által lekért utolsó értéket adja vissza a Queue szolgáltatás hívása nélkül.
+A `getProperties` metódus több értéket ad vissza, beleértve a jelenleg várólistán lévő üzenetek számát. A darabszám csak hozzávetőleges, mert az üzenetek a kérés után hozzáadhatók vagy eltávolíthatók. A `getApproximateMessageCount` metódus a hívása által lekért utolsó értéket adja vissza `getProperties` Queue Storage hívása nélkül.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_GetQueueLength":::
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-A **downloadAttributes** metódus több aktuális érték megadását kéri a Queue szolgáltatás. Az értékek egyike annak a száma, hogy hány üzenet van egy várólistában. A darabszám csak hozzávetőleges, mert az üzenetek a kérés után hozzáadhatók vagy eltávolíthatók. A **getApproximateMessageCount** metódus a **downloadAttributes** hívása által lekért utolsó értéket adja vissza a Queue szolgáltatás hívása nélkül.
+A `downloadAttributes` metódus több értéket kér le, beleértve a jelenleg várólistán lévő üzenetek számát is. A darabszám csak hozzávetőleges, mert az üzenetek a kérés után hozzáadhatók vagy eltávolíthatók. A `getApproximateMessageCount` metódus a hívása által lekért utolsó értéket adja vissza `downloadAttributes` Queue Storage hívása nélkül.
 
 ```java
 try
@@ -437,13 +438,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-A kód két lépésben elvégez egy üzenetsor-várólistán lévő üzenetet. A **receiveMessage** meghívásakor a következő üzenet jelenik meg egy várólistában. A **receiveMessage** által visszaadott üzenet láthatatlanná válik minden más, a várólistáról olvasó üzenetben. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Az üzenet várólistából való eltávolításának befejezéséhez a **deleteMessage** is hívnia kell. Ha a kód nem tud feldolgozni egy üzenetet, ez a kétlépéses folyamat biztosítja, hogy ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód a **deleteMessage** közvetlenül az üzenet feldolgozása után hívja meg.
+A kód két lépésben elvégez egy üzenetsor-várólistán lévő üzenetet. A hívásakor `receiveMessage` a következő üzenet jelenik meg egy várólistában. A visszaadott üzenet a `receiveMessage` várólistából beolvasott más kódokba is láthatatlanná válik. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Az üzenet várólistából való eltávolításának befejezéséhez meg kell hívni a következőt is: `deleteMessage` . Ha a kód nem tud feldolgozni egy üzenetet, ez a kétlépéses folyamat biztosítja, hogy ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód meghívása `deleteMessage` közvetlenül az üzenet feldolgozása után történik.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessage":::
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-A kód két lépésben elvégez egy üzenetsor-várólistán lévő üzenetet. A **retrieveMessage** meghívásakor a következő üzenet jelenik meg egy várólistában. A **retrieveMessage** által visszaadott üzenet láthatatlanná válik minden más, a várólistáról olvasó üzenetben. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Az üzenet várólistából való eltávolításának befejezéséhez a **deleteMessage** is hívnia kell. Ha a kód nem tud feldolgozni egy üzenetet, ez a kétlépéses folyamat biztosítja, hogy ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód a **deleteMessage** közvetlenül az üzenet feldolgozása után hívja meg.
+A kód két lépésben elvégez egy üzenetsor-várólistán lévő üzenetet. A hívásakor `retrieveMessage` a következő üzenet jelenik meg egy várólistában. A visszaadott üzenet a `retrieveMessage` várólistából beolvasott más kódokba is láthatatlanná válik. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Az üzenet várólistából való eltávolításának befejezéséhez meg kell hívni a következőt is: `deleteMessage` . Ha a kód nem tud feldolgozni egy üzenetet, ez a kétlépéses folyamat biztosítja, hogy ugyanazt az üzenetet kapja, és próbálkozzon újra. A kód meghívása `deleteMessage` közvetlenül az üzenet feldolgozása után történik.
 
 ```java
 try
@@ -482,13 +483,13 @@ Az üzenetek várólistából való lekérését kétféleképpen lehet testre s
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-A következő kódrészlet a **receiveMessages** metódus használatával 20 üzenetet kap egy hívásban. Ezután feldolgozza az egyes üzeneteket a **for** loop használatával. Azt is beállítja, hogy az egyes üzenetek esetében a láthatósági időkorlát 5 perc (300 másodperc) legyen. Az időtúllépés az összes üzenetnél egyszerre elindul. Ha öt perc telt el a **receiveMessages** hívása óta, a rendszer minden nem törölt üzenetet újra láthatóvá válik.
+A következő példában a metódus használatával `receiveMessages` 20 üzenetet kap egy hívásban. Ezután az összes üzenetet feldolgozza egy `for` hurok használatával. Azt is beállítja, hogy az egyes üzenetek esetében a láthatósági időkorlát 5 perc (300 másodperc) legyen. Az időtúllépés az összes üzenetnél egyszerre elindul. Ha öt perc telt el a hívása óta `receiveMessages` , a rendszer minden nem törölt üzenetet újra láthatóvá válik.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DequeueMessages":::
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-A következő kódrészlet a **retrieveMessages** metódus használatával 20 üzenetet kap egy hívásban. Ezután feldolgozza az egyes üzeneteket a **for** loop használatával. Azt is beállítja, hogy az egyes üzenetek esetében a láthatósági időkorlát 5 perc (300 másodperc) legyen. Az időtúllépés az összes üzenetnél egyszerre elindul. Ha öt perc telt el a **retrieveMessages** hívása óta, a rendszer minden nem törölt üzenetet újra láthatóvá válik.
+A következő példában a metódus használatával `retrieveMessages` 20 üzenetet kap egy hívásban. Ezután az összes üzenetet feldolgozza egy `for` hurok használatával. Azt is beállítja, hogy az egyes üzenetek esetében a láthatósági időkorlát 5 perc (300 másodperc) legyen. Az időtúllépés az összes üzenetnél egyszerre elindul. Ha öt perc telt el a hívása óta `retrieveMessages` , a rendszer minden nem törölt üzenetet újra láthatóvá válik.
 
 ```java
 try
@@ -523,13 +524,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-Az aktuális várólisták listájának beszerzéséhez hívja meg a **QueueServiceClient. listQueues ()** metódust, amely **várólistaelemhez** objektumok gyűjteményét fogja visszaadni.
+Az aktuális várólisták listájának beszerzéséhez hívja meg a `QueueServiceClient.listQueues()` metódust, amely objektumok gyűjteményét fogja visszaadni `QueueItem` .
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_ListQueues":::
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-Az aktuális várólisták listájának beszerzéséhez hívja meg a **CloudQueueClient. listQueues ()** metódust, amely **CloudQueue** objektumok gyűjteményét fogja visszaadni.
+Az aktuális várólisták listájának beszerzéséhez hívja meg a `CloudQueueClient.listQueues()` metódust, amely objektumok gyűjteményét fogja visszaadni `CloudQueue` .
 
 ```java
 try
@@ -562,13 +563,13 @@ catch (Exception e)
 
 # <a name="java-v12"></a>[Java V12](#tab/java)
 
-Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a **delete** metódust a **QueueClient** objektumon.
+Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja `delete` meg a metódust az `QueueClient` objektumon.
 
 :::code language="java" source="~/azure-storage-snippets/queues/howto/java/java-v12/src/main/java/com/queues/howto/App.java" id="Snippet_DeleteMessageQueue":::
 
 # <a name="java-v8"></a>[Java V8](#tab/java8)
 
-Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a **deleteifexists paranccsal** metódust a **CloudQueue** objektumon.
+Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja `deleteIfExists` meg a metódust az `CloudQueue` objektumon.
 
 ```java
 try
@@ -599,15 +600,9 @@ catch (Exception e)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte a várólista-tárolás alapjait, az alábbi hivatkozásokat követve megismerheti az összetettebb tárolási feladatokat.
+Most, hogy megismerte Queue Storage alapjait, az alábbi hivatkozásokat követve megismerheti az összetettebb tárolási feladatokat.
 
-- [Javához készült Azure Storage SDK][Azure Storage SDK for Java]
-- [Azure Storage ügyféloldali SDK-referencia][Azure Storage Client SDK Reference]
-- [Az Azure Storage-szolgáltatások REST API-ja][Azure Storage Services REST API]
-- [Az Azure Storage csapat blogja][Azure Storage Team Blog]
-
-[Azure SDK for Java]: https://github.com/azure/azure-sdk-for-java
-[Azure Storage SDK for Java]: https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage
-[Azure Storage ügyféloldali SDK-referencia]: https://azure.github.io/azure-sdk-for-java/storage.html
-[Azure Storage Services REST API]: /rest/api/storageservices/
-[Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog
+- [Javához készült Azure Storage SDK](https://github.com/Azure/Azure-SDK-for-Java)
+- [Az Azure Storage ügyféloldali SDK-referenciája](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage)
+- [Azure Storage-szolgáltatások REST API](/rest/api/storageservices/)
+- [Az Azure Storage csapat blogja](https://techcommunity.Microsoft.com/t5/Azure-storage/bg-p/azurestorageblog)

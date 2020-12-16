@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028274"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586346"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során
 Az alábbi bejelentkezési problémák elhárítása érdekében javasoljuk, hogy a következő lépésekkel jobban diagnosztizálja és automatizálja a megoldási lépéseket:
@@ -33,7 +33,9 @@ Az SAML-alapú egyszeri bejelentkezés konfigurációs oldalának megnyitása:
 1.  Írja be a **"Azure Active Directory"** kifejezést a szűrő keresőmezőbe, és válassza ki a **Azure Active Directory** elemet.
 1.  Az Azure Active Directory bal oldali navigációs menüjében válassza a **Vállalati alkalmazások** elemet.
 1.  Válassza a **Minden alkalmazás** lehetőséget az összes alkalmazás listájának megtekintéséhez.
+
     Ha nem látja a kívánt alkalmazást, használja a **Minden alkalmazás lista** tetején lévő **szűrőt**, és állítsa a **Megjelenítés** beállítást a **Minden alkalmazás** értékre.
+
 1.  Válassza ki az egyszeri bejelentkezéshez konfigurálni kívánt alkalmazást.
 1. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget az alkalmazás bal oldali navigációs menüjében.
 1. Válassza az SAML-alapú egyszeri bejelentkezést.
@@ -63,7 +65,7 @@ Az `AssertionConsumerServiceURL` SAML-kérelemben szereplő érték nem felel me
 Győződjön meg arról, hogy az `AssertionConsumerServiceURL` SAML-kérelemben szereplő érték megegyezik az Azure ad-ben konfigurált válasz URL-értékkel. 
 
 Ellenőrizze vagy frissítse a válasz URL-címe szövegmezőben szereplő értéket, hogy az megfeleljen az `AssertionConsumerServiceURL` SAML-kérelemben szereplő értéknek.   
-    
+
 Miután frissítette a válasz URL-értékét az Azure AD-ben, és megfelel az alkalmazás által az SAML-kérelemben küldött értéknek, be kell tudnia jelentkezni az alkalmazásba.
 
 ## <a name="user-not-assigned-a-role"></a>A felhasználó nincs szerepkörhöz rendelve

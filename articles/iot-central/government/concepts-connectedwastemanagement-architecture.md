@@ -3,20 +3,18 @@ title: Az Azure IoT Central beépített, csatlakoztatott hulladékgazdálkodási
 description: Megtudhatja, hogyan használhatók az Azure IoT Central-vel létrehozott, csatlakoztatott hulladékgazdálkodási megoldás fogalmai.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 93a5d17ce5ea5ec60c67604efe5081d2b3425a84
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 94098a1a2a9ac1b4889ad165a65c8b9d50d734dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873692"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586805"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Az összekapcsolt hulladékmonitorozás referenciaarchitektúrája 
-
-
 
 A csatlakoztatott hulladékkezelési megoldás az **Azure IoT Central alkalmazás-sablonnal** is létrehozható kick starter IoT alkalmazásként. Ez a cikk magas szintű hivatkozási architektúra-útmutatást nyújt a végpontok közötti megoldás létrehozásához. 
 
@@ -27,8 +25,8 @@ Fogalmak:
 
 1. Eszközök és kapcsolatok  
 1. IoT Central 
-2. Bővíthetőség és integrációk
-3. Üzleti alkalmazások
+1. Bővíthetőség és integrációk
+1. Üzleti alkalmazások
 
 Vessünk egy pillantást a kulcsfontosságú összetevőkre, amelyek általában egy részét játszanak a vízfogyasztás figyelésére szolgáló megoldásban.
 

@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: conceptual
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: 3c820a7be561aeef9b7e50fd0ac0cf4dee721af8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc45bc8809eabe75902b602835ea595b56ff3cf8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75775406"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586840"
 ---
 # <a name="prerequisites-to-set-up-peering-with-microsoft"></a>A Microsoft segítségével történő társviszony-létesítés előfeltételei
 
@@ -30,7 +30,7 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek, mielőtt 
 ## <a name="other-prerequisites"></a>Egyéb előfeltételek
 * **PeeringDB-profil:** A társak számára a [PeeringDB](https://www.peeringdb.com)teljes és naprakész profilja szükséges. Ezt az információt a regisztrációs rendszeren a partner adatainak, például a NOC-információknak, a technikai kapcsolattartási adatoknak, valamint azok jelenlétének ellenőrzéséhez használjuk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hozzon létre vagy módosítson egy közvetlen társat a portál használatával](howto-direct-portal.md).
 * [Örökölt közvetlen társviszony konvertálása Azure-erőforrássá a portál használatával](howto-legacy-direct-portal.md)

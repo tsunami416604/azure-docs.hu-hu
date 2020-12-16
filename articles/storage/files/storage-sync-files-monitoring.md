@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1cc2cd1a7c5c16b1f9d1542e3f2d14dc030bb090
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008299"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586550"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -161,7 +161,7 @@ Felhő-rétegek állapota
   - A 9003-as AZONOSÍTÓJÚ esemény egy kiszolgálói végpont hibáinak eloszlását biztosítja. Például: összesített hibák száma és ErrorCode. A rendszer egy eseményt naplóz egy hibakód alapján.
   - A 9016-es azonosítójú esemény a kötetek szellemképes eredményeit biztosítja. Például: a szabad terület százalékos értéke, a munkamenetben felkészült fájlok száma, és a fájlok száma nem sikerült.
   - A 9029-as AZONOSÍTÓJÚ esemény a kiszolgálói végpontok szellemkép-információit biztosítja. Például: a munkamenetben megkísérelt fájlok száma, a munkamenetben leírtak száma és a már lépcsőzetesen megadott fájlok száma.
-  
+
 - A kiszolgálón található visszahívás-tevékenységek figyeléséhez használja a 9005, 9006, 9009, 9059 és 9071 azonosítójú eseményazonosítót a telemetria eseménynaplójában, amely Eseménynapló az *alkalmazások és a Services\Microsoft\FileSync\Agent* területen található.
 
   - Az 9005-as AZONOSÍTÓJÚ esemény egy kiszolgálói végpontra vonatkozó visszahívás megbízhatóságot biztosít. Például: összes elért egyedi fájl, valamint a sikertelen hozzáféréssel rendelkező egyedi fájlok teljes száma.
@@ -192,7 +192,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
 
   > [!Note]  
   > Ha riasztást hoz létre, és túl zajos, állítsa be a küszöbértéket és a riasztási logikát.
-  
+
 ### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>Riasztás létrehozása, ha a kiszolgálói végpont állapota hibát jelez a portálon
 
 1. A **Azure Portal** navigáljon a megfelelő **Storage Sync szolgáltatáshoz**. 
@@ -201,16 +201,16 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
 4. Konfigurálja a feltételt a **feltétel kiválasztása** lehetőségre kattintva.
 5. A **jel logikájának konfigurálása** panelen kattintson a jel neve alatt található **szinkronizálási munkamenet eredménye** elemre.  
 6. Válassza ki a következő dimenzió-konfigurációt: 
-    - Dimenzió neve: **kiszolgálói végpont neve**  
-    - Üzemeltető **=** 
-    - Dimenzió értékei: **az összes aktuális és jövőbeli érték**  
+     - Dimenzió neve: **kiszolgálói végpont neve**  
+     - Üzemeltető **=** 
+     - Dimenzió értékei: **az összes aktuális és jövőbeli érték**  
 7. Navigáljon a **riasztási logikához** , és végezze el a következőket: 
-    - Küszöbérték **statikusra** állítva 
-    - Operátor: **kisebb, mint** 
-    - Összesítés típusa: **maximum**  
-    - Küszöbérték: **1** 
-    - Értékelés alapja: aggregációs részletesség = **24 óra** | Értékelés gyakorisága = **óránként** 
-    - Kattintson a **Kész gombra.** 
+     - Küszöbérték **statikusra** állítva 
+     - Operátor: **kisebb, mint** 
+     - Összesítés típusa: **maximum**  
+     - Küszöbérték: **1** 
+     - Értékelés alapja: aggregációs részletesség = **24 óra** | Értékelés gyakorisága = **óránként** 
+     - Kattintson a **Kész gombra.** 
 8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 
@@ -254,7 +254,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
      - Összesítés típusa: **maximum**  
      - Küszöbérték (bájt): **1** 
      - Értékelés alapja: aggregációs részletesség = **1 óra** | Értékelés gyakorisága = **30 percenként** 
-        - Vegye figyelembe, hogy a metrikák a Azure Monitor 15 – 20 percenként érkeznek. Ne állítsa 30 percnél rövidebbre a **kiértékelés gyakoriságát** (hamis riasztásokat hoz létre).
+         - Vegye figyelembe, hogy a metrikák a Azure Monitor 15 – 20 percenként érkeznek. Ne állítsa 30 percnél rövidebbre a **kiértékelés gyakoriságát** (hamis riasztásokat hoz létre).
      - Kattintson a **Kész gombra.** 
 8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
@@ -277,7 +277,7 @@ Ez a szakasz néhány példát mutat be Azure File Syncra.
      - Összesítés típusa: **összesen**  
      - Küszöbérték (bájt): **67108864000** 
      - Értékelés alapja: aggregációs részletesség = **24 óra** | Értékelés gyakorisága = **óránként** 
-    - Kattintson a **Kész gombra.** 
+     - Kattintson a **Kész gombra.** 
 8. Kattintson a **műveleti csoport kiválasztása** lehetőségre egy műveleti csoport (E-mail, SMS stb.) a riasztáshoz való hozzáadásához, vagy egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 9. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 10. Kattintson a **Riasztási szabály létrehozása** lehetőségre. 

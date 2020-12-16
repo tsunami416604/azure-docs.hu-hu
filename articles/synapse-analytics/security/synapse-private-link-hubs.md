@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2613a4fd931ad49a4f40a4221ea20e8c25f185fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501590"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586975"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Csatlakozás az Azure szinapszis studióhoz az Azure Private link hubok használatával 
 
@@ -35,15 +35,15 @@ A privát kapcsolati hubot úgy is létrehozhatja, *hogy* megkeresi a Azure Port
 ## <a name="azure-private-links-hubs-and-azure-virtual-network"></a>Azure Private Links hubok és Azure Virtual Network
 Csatlakoztatnia kell az Azure-beli virtuális hálózatot a szinapszis Private link hub-erőforráshoz, hogy biztonságossá tegye a szinapszis studióhoz való végpontok közötti kapcsolatot. Ehhez létre kell hoznia egy magánhálózati végpontot a virtuális hálózatról a létrehozott privát kapcsolati hubhoz. Használhatja az Azure Portal a privát kapcsolati hubhoz, és megtekintheti a privát végpont szakaszt. Válassza a "+ privát végpont" lehetőséget, és hozzon létre egy új privát végpontot, amely a privát kapcsolati hubhoz csatlakozik.
 
-:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Privát végpont létrehozása a privát kapcsolati hubhoz":::
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="A privát Endpoint Connections oldalt bemutató képernyőkép.":::
 
-Győződjön meg arról, hogy a "Resource" (erőforrás) lapon a "Microsoft. szinapszis/privateLinkHubs" erőforrástípus van kiválasztva. :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="hozzon létre privát végpontot a privát kapcsolati hubhoz"::: .
+Győződjön meg arról, hogy a "Resource" (erőforrás) lapon a "Microsoft. szinapszis/privateLinkHubs" erőforrástípus :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="van"::: kiválasztva
 
 A "konfiguráció" lapon válassza a "privatelink.azuresynapse.net" lehetőséget saját DNS zónákhoz a virtuális hálózat és a magánhálózati DNS-zóna integrálásakor.
 
 :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-dns-zones.png" alt-text="Privát végpont létrehozása a privát kapcsolati hubhoz":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kapcsolódás a munkaterület erőforrásaihoz egy korlátozott hálózatról](./how-to-connect-to-workspace-from-restricted-network.md)
 

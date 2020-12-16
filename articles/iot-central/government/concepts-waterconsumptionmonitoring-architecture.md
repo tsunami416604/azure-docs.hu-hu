@@ -3,20 +3,18 @@ title: Az Azure IoT Central beépített vízfelhasználás-figyelési megoldás 
 description: Megtudhatja, hogyan használhatók az Azure IoT Central-vel készített, vízfogyasztást figyelő megoldásokra vonatkozó fogalmak.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df402064f2aa26e29ef72c0f73f8f5aa761506e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a291a32c8fd635c9124a7e1f997b6c676c8c0bd4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873559"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586788"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>A vízfogyasztás-monitorozás referenciaarchitektúrája 
-
-
 
 A víz felhasználásának figyelésére szolgáló megoldások az **Azure IoT Central app sablonnal** is felhasználhatók a kick starter IoT alkalmazásként. Ez a cikk magas szintű hivatkozási architektúra-útmutatást nyújt a végpontok közötti megoldás létrehozásához. 
 
@@ -26,8 +24,8 @@ Fogalmak:
 
 1. Eszközök és kapcsolatok  
 1. IoT Central 
-2. Bővíthetőség és integrációk
-3. Üzleti alkalmazások
+1. Bővíthetőség és integrációk
+1. Üzleti alkalmazások
 
 Vessünk egy pillantást a kulcsfontosságú összetevőkre, amelyek általában egy részét játszanak a vízfogyasztás figyelésére szolgáló megoldásban.
 

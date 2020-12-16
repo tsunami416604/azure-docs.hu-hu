@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: ee3d1335de1b2bb3096e88c4d04cd03daaa665f5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f85df2e16554b4830d3e5f1bc82c5c8cdf22e28b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96014100"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586630"
 ---
 # <a name="smb-multichannel-performance"></a>Többcsatornás SMB teljesítménye
 
@@ -81,7 +81,7 @@ A cikkben szereplő diagramok esetében a következő konfigurációt használt�
 |---|---|---|---|---|---|---|---|---|
 | [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) | 32 | 128 | 256 | 32 | 64000/512 (800)    | 51200/768  | 8|16000 |
 
-:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG" alt-text="Képernyőkép a Get-smbmultichannelconnection eredményeiről." lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG":::
+:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG" alt-text="A teljesítmény-tesztelési konfigurációt bemutató képernyőkép." lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-nic-settings-all-nics.PNG":::
 
 ### <a name="mutli-threadedmultiple-files-with-smb-multichannel"></a>Megtalálhatjuk – többszálú/több fájl többcsatornás SMB-vel
 
@@ -130,7 +130,7 @@ A következő tippek segíthetnek a teljesítmény optimalizálásában:
 
 A magasabb i/o-méretek nagyobb átviteli sebességet eredményeznek, és nagyobb késéssel fognak rendelkezni, ami alacsonyabb számú nettó IOPS eredményez. A kisebb i/o-méretek magasabb IOPS fognak vezetni, de alacsonyabb nettó átviteli sebességet és késést eredményeznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Többcsatornás SMB engedélyezése FileStorage-fiókban (előzetes verzió)](storage-files-enable-smb-multichannel.md)
 - A többcsatornás SMB-vel kapcsolatos további információkért tekintse meg a [Windows dokumentációját](/azure-stack/hci/manage/manage-smb-multichannel) .

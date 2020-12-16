@@ -3,17 +3,17 @@ title: 'Rövid útmutató: Azure Storage-várólisták létrehozása a portálon
 description: Üzenetsor létrehozásához használja a Azure Portal. Ezután a Azure Portal használatával vegyen fel egy üzenetet, tekintse meg az üzenet tulajdonságait, és törölje az üzenetet.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/13/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
-ms.openlocfilehash: 0ee3d9c26d6972da9e528660d034432ce696aa45
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 24b1d16ab5f13a9aef1faa5bc7a3579ad1a5aa5e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347199"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585547"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Gyors útmutató: várólista létrehozása és üzenet hozzáadása a Azure Portal
 
@@ -28,7 +28,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan használható az [Azure Porta
 Ha várólistát szeretne létrehozni a Azure Portalban, kövesse az alábbi lépéseket:
 
 1. Az Azure Portalon lépjen az új tárfiókjára.
-2. A Storage-fiók bal oldali menüjében görgessen a **Queue szolgáltatás** szakaszra, majd válassza a **várólisták** elemet.
+2. A Storage-fiók bal oldali menüjében görgessen a **Queue Storage** szakaszra, majd válassza a **várólisták** elemet.
 3. Kattintson a **+ várólista** gombra.
 4. Adja meg az új üzenetsor nevét. A várólista nevének kisbetűnek kell lennie, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjel (-) karaktert tartalmazhat.
 6. A várólista létrehozásához kattintson **az OK gombra** .
@@ -66,4 +66,4 @@ A dequeuing mindig eltávolítja a legrégebbi üzenetet a várólistában.
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy üzenetsor, hogyan adhat hozzá egy üzenetet, megtekintheti az üzenet tulajdonságait, és elvégezheti az üzenetek elküldését a Azure Portal.
 
 > [!div class="nextstepaction"]
-> [Mik azok az Azure Queues?](storage-queues-introduction.md)
+> [Mi az Azure Queue Storage?](storage-queues-introduction.md)
