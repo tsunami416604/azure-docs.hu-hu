@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 35c1ffb370a158acc91e2378119055337e28580d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2af79efa2bd1685d0e7bd621e2ddb8930425dee1
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443092"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614897"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Webes API-kat meghívó mobileszközök regisztrálása
 
@@ -44,13 +44,13 @@ További információ: [forgatókönyvek és támogatott hitelesítési folyamat
 
 ### <a name="interactive-authentication"></a>Interaktív hitelesítés
 
-Ha interaktív hitelesítést használó mobil alkalmazást hoz létre, a legkritikusabb regisztrációs lépés az átirányítási URI. A hitelesítés panelen beállíthatja az interaktív hitelesítést a [platform konfigurációján **Authentication**](https://aka.ms/MobileAppReg)keresztül.
+Ha interaktív hitelesítést használó mobil alkalmazást hoz létre, a legkritikusabb regisztrációs lépés az átirányítási URI. A hitelesítés panelen beállíthatja az interaktív hitelesítést a [platform konfigurációján  ](https://aka.ms/MobileAppReg)keresztül.
 
 Ez a felhasználói élmény lehetővé teszi, hogy az alkalmazás egyszeri bejelentkezést (SSO) kapjon Microsoft Authenticator (és az Androidon Intune Céges portál). Emellett az eszköz-felügyeleti házirendeket is támogatni fogja.
 
 Az alkalmazás regisztrációs portálján elérhető egy előzetes verzió, amely segítséget nyújt az iOS-és Android-alkalmazások felügyelt válasz URI-azonosítójának kiszámításához:
 
-1. Az alkalmazás-regisztrációs portálon válassza **Authentication**  >  **a hitelesítés kipróbálom az új felhasználói élményt**.
+1. Az alkalmazás-regisztrációs portálon válassza   >  **a hitelesítés kipróbálom az új felhasználói élményt**.
 
    ![A hitelesítés panel, ahol új felhasználói élményt választhat](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
@@ -72,16 +72,21 @@ A lépések elvégzése után az átirányítási URI-t az alábbi képen látha
 
 Ha manuálisan szeretné konfigurálni az átirányítási URI-t, ezt az alkalmazás jegyzékfájlján keresztül teheti meg. A jegyzékfájl ajánlott formátuma a következő:
 
-- **iOS** : `msauth.<BUNDLE_ID>://auth`
+- **iOS**: `msauth.<BUNDLE_ID>://auth`
   - Adja meg például a következőt: `msauth.com.yourcompany.appName://auth`
-- **Android** : `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Az Android-aláírási kivonatot a kulcstartó parancs használatával hozhatja ki a kiadási kulccsal vagy a hibakeresési kulccsal.
 
 ### <a name="username-password-authentication"></a>Felhasználónév – jelszó-hitelesítés
 
 Ha az alkalmazás csak a Felhasználónév-jelszó típusú hitelesítést használja, nem kell regisztrálnia az alkalmazáshoz tartozó átirányítási URI-t. Ez a folyamat egy, a Microsoft Identity platform 2,0-es végpontján elvégezhető oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
 
-Az alkalmazást azonban nyilvános ügyfélalkalmazásként kell azonosítania. Ehhez indítsa el az alkalmazás **hitelesítési** szakaszát. A **Speciális beállítások** alszakasz **alapértelmezett ügyfél típusa** részében, az **alkalmazás nyilvános ügyfélként való kezelésére** szolgáló kérdésnél válassza az **Igen** lehetőséget.
+Az alkalmazást azonban nyilvános ügyfélalkalmazásként kell azonosítania. Ehhez tegye a következőket:
+
+1. Még mindig a [Azure Portalban](https://portal.azure.com)válassza ki az alkalmazást **Alkalmazásregisztrációk**, majd válassza a **hitelesítés** lehetőséget.
+1. A **Speciális beállítások**  >  **lehetővé teszik a nyilvános ügyfél-folyamatok** számára  >  **a következő mobil-és asztali folyamatok használatát: válassza az** **Igen** lehetőséget.
+
+   :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Nyilvános ügyfél beállításainak engedélyezése a Azure Portal hitelesítés paneljén":::
 
 ## <a name="api-permissions"></a>API-engedélyek
 

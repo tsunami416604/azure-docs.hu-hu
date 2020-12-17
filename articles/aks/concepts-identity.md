@@ -6,35 +6,78 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457173"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615801"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
 A hitelesítés, a hozzáférés/engedélyezés és a biztonságos Kubernetes-fürtök többféleképpen is megadhatók. A Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) használatával a felhasználók, csoportok és szolgáltatásfiókok hozzáférése csak a szükséges erőforrásokhoz biztosítható. Az Azure Kubernetes Service (ak) segítségével tovább növelheti a biztonsági és az engedélyezési struktúrát Azure Active Directory és az Azure RBAC használatával. Ezek a módszerek segítenek a fürt hozzáférésének biztonságossá tételében, és csak a minimálisan szükséges engedélyeket biztosítják a fejlesztők és a kezelők számára.
 
-Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújtanak az AK-beli engedélyek hitelesítéséhez és hozzárendeléséhez:
+Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújtanak az AK-ban lévő engedélyek hitelesítéséhez és hozzárendeléséhez.
 
-- [Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC)](#kubernetes-role-based-access-control-kubernetes-rbac)
-  - [Szerepkörök és ClusterRoles](#roles-and-clusterroles)
-  - [RoleBindings és ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
-  - [Kubernetes-szolgáltatásfiókok](#kubernetes-service-accounts)
-- [Azure Active Directory-integráció](#azure-active-directory-integration)
-- [Azure RBAC-vel](#azure-role-based-access-control-azure-rbac)
-  - [Azure-RBAC az AK-erőforráshoz való hozzáférés engedélyezéséhez](#azure-rbac-to-authorize-access-to-the-aks-resource)
-  - [Azure RBAC for Kubernetes-engedélyezés (előzetes verzió)](#azure-rbac-for-kubernetes-authorization-preview)
+## <a name="aks-service-permissions"></a>AK szolgáltatás engedélyei
 
+Fürt létrehozásakor az AK létrehozza vagy módosítja azokat az erőforrásokat, amelyeket létre kell hoznia és futtatnia kell a fürtöt, például virtuális gépeket és hálózati adaptereket a fürtöt létrehozó felhasználó nevében. Ez az identitás különbözik a fürt személyazonossági engedélyével, amely a fürt létrehozásakor jön létre.
+
+### <a name="identity-creating-and-operating-the-cluster-permissions"></a>A fürt engedélyeinek létrehozásához és üzemeltetéséhez szükséges identitás
+
+A fürt létrehozásához és üzemeltetéséhez a következő engedélyekre van szükség.
+
+| Engedély | Ok |
+|---|---|
+| Microsoft. számítás/diskEncryptionSets/olvasás | A lemez titkosítási készletének AZONOSÍTÓjának olvasásához szükséges. |
+| Microsoft. számítás/proximityPlacementGroups/írás | A közelségi elhelyezési csoportok frissítéséhez szükséges. |
+| Microsoft. Network/applicationGateways/READ <br/> Microsoft. Network/applicationGateways/Write <br/> Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet | Az Application Gateway konfigurálásához és az alhálózat csatlakoztatásához szükséges. |
+| Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet | Egyéni VNET használata esetén az alhálózat hálózati biztonsági csoportjának konfigurálásához szükséges.|
+| Microsoft. Network/nyilvános IP/csatlakozás/művelet <br/> Microsoft. Network/publicIPPrefixes/csatlakozás/művelet | A kimenő nyilvános IP-címek a standard Load Balancer való konfigurálásához szükséges. |
+| Microsoft. OperationalInsights/munkaterületek/sharedkeys/olvasás <br/> Microsoft. OperationalInsights/munkaterületek/olvasás <br/> Microsoft. OperationsManagement/megoldások/írás <br/> Microsoft. OperationsManagement/megoldások/olvasás <br/> Microsoft. ManagedIdentity/userAssignedIdentities/hozzárendelés/művelet | Log Analytics munkaterületek létrehozásához és frissítéséhez, valamint a tárolók Azure-figyeléséhez szükséges. |
+
+### <a name="aks-cluster-identity-permissions"></a>AK-fürt identitásának engedélyei
+
+A következő engedélyeket használja az AK-fürt identitása, amelyet a rendszer létrehoz és társít az AK-fürthöz a fürt létrehozásakor. Az alábbi okokból minden engedély használatos:
+
+| Engedély | Ok |
+|---|---|
+| Microsoft. Network/loadBalancers/delete <br/> Microsoft. Network/loadBalancers/READ <br/> Microsoft. Network/loadBalancers/Write | A terheléselosztó terheléselosztó-szolgáltatáshoz való konfigurálásához szükséges. |
+| Microsoft. Network/nyilvános IP/delete <br/> Microsoft. Network/nyilvános IP/READ <br/> Microsoft. Network/nyilvános IP/Write | A terheléselosztó szolgáltatás nyilvános IP-címeinek megkereséséhez és konfigurálásához szükséges. |
+| Microsoft. Network/nyilvános IP/csatlakozás/művelet | A terheléselosztó szolgáltatás nyilvános IP-címeinek konfigurálásához szükséges. |
+| Microsoft. Network/networkSecurityGroups/READ <br/> Microsoft. Network/networkSecurityGroups/Write | A terheléselosztó szolgáltatás biztonsági szabályainak létrehozásához vagy törléséhez szükséges. |
+| Microsoft. számítás/lemezek/törlés <br/> Microsoft. számítás/lemezek/olvasás <br/> Microsoft. számítás/lemezek/írás <br/> Microsoft. számítás/helyszínek/kiírások/olvasás | A AzureDisks konfigurálásához szükséges. |
+| Microsoft. Storage/storageAccounts/delete <br/> Microsoft. Storage/storageAccounts/Listkeys műveletének beolvasása/művelet <br/> Microsoft. Storage/storageAccounts/olvasás <br/> Microsoft. Storage/storageAccounts/írás <br/> Microsoft. Storage/Operations/READ | A AzureFile vagy AzureDisk tartozó Storage-fiókok konfigurálásához szükséges. |
+| Microsoft. Network/routeTables/READ <br/> Microsoft. Network/routeTables/Routes/delete <br/> Microsoft. Network/routeTables/Routes/READ <br/> Microsoft. Network/routeTables/Routes/Write <br/> Microsoft. Network/routeTables/Write | A csomópontok útválasztási tábláinak és útvonalának konfigurálásához szükséges. |
+| Microsoft. számítás/virtualMachines/olvasás | Egy VMAS található virtuális gépek információinak megkereséséhez szükséges, például a zónák, a tartalék tartomány, a méret és az adatlemezek. |
+| Microsoft. számítás/virtualMachines/írás | Egy VMAS lévő virtuális géphez való AzureDisks csatolásához szükséges. |
+| Microsoft. számítás/virtualMachineScaleSets/olvasás <br/> Microsoft. számítás/virtualMachineScaleSets/virtualMachines/olvasás <br/> Microsoft. számítás/virtualMachineScaleSets/virtualmachines/instanceView/READ | A virtuálisgép-méretezési csoportokban lévő virtuális gépek információinak megkereséséhez szükséges, például a zónák, a tartalék tartomány, a méret és az adatlemezek. |
+| Microsoft. Network/networkInterfaces/Write | Ahhoz szükséges, hogy egy VMAS egy virtuális gépet egy terheléselosztó háttérbeli címkészlet számára adjon hozzá. |
+| Microsoft. számítás/virtualMachineScaleSets/írás | Egy virtuálisgép-méretezési csoport terheléselosztásához szükséges a virtuálisgép-méretezési csoportokban, és bővíteni kell a csomópontokat. |
+| Microsoft. számítás/virtualMachineScaleSets/virtualmachines/írás | A AzureDisks csatolásához és egy virtuális gép virtuálisgép-méretezési csoportból a terheléselosztó számára való hozzáadásához szükséges. |
+| Microsoft. Network/networkInterfaces/READ | A VMAS virtuális gépei számára a belső IP-címek és a terheléselosztó háttér-címkészlet esetében szükséges. |
+| Microsoft. számítás/virtualMachineScaleSets/virtualMachines/networkInterfaces/READ | A virtuálisgép-méretezési csoportokban lévő virtuális gépekhez tartozó belső IP-címek és terheléselosztó háttér-címkészlet számára szükséges. |
+| Microsoft. számítás/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipconfigurations/nyilvános IP/READ | A virtuálisgép-méretezési csoportokban lévő virtuális gépek nyilvános IP-címeinek megkereséséhez szükséges. |
+| Microsoft. Network/virtualNetworks/READ <br/> Microsoft. Network/virtualNetworks/alhálózatok/olvasás | Szükséges annak ellenőrzéséhez, hogy létezik-e alhálózat a belső terheléselosztó számára egy másik erőforráscsoporthoz. |
+| Microsoft. számítás/Pillanatképek/törlés <br/> Microsoft. számítás/Pillanatképek/olvasás <br/> Microsoft. számítás/Pillanatképek/írás | A AzureDisk Pillanatképek konfigurálásához szükséges. |
+| Microsoft. számítás/helyszínek/méreteinek listáján/olvasás <br/> Microsoft. számítás/helyszínek/műveletek/olvasás | A virtuálisgép-méretek megkereséséhez szükséges a AzureDisk. |
+
+### <a name="additional-cluster-identity-permissions"></a>További fürt-identitási engedélyek
+
+Az alábbi további engedélyek szükségesek a fürt identitása számára, ha adott attribútumokkal rendelkező fürtöt hoz létre. Ezek az engedélyek nem lesznek automatikusan hozzárendelve, ezért ezeket az engedélyeket a létrehozás után hozzá kell adni a fürt identitásához.
+
+| Engedély | Ok |
+|---|---|
+| Microsoft. Network/networkSecurityGroups/Write <br/> Microsoft. Network/networkSecurityGroups/READ | Akkor szükséges, ha egy másik erőforráscsoport hálózati biztonsági csoportját használja. A terheléselosztó szolgáltatás biztonsági szabályainak konfigurálásához szükséges. |
+| Microsoft. Network/virtualNetworks/alhálózatok/olvasás <br/> Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet | Kötelező, ha egy alhálózatot használ egy másik erőforráscsoporthoz, például egy egyéni VNET. |
+| Microsoft. Network/routeTables/Routes/READ <br/> Microsoft. Network/routeTables/Routes/Write | Kötelező, ha egy másik erőforráscsoport útválasztási táblájához társított alhálózatot használ, például egy egyéni VNET egyéni útválasztási táblázattal. Szükséges annak ellenőrzéséhez, hogy egy alhálózat már létezik-e a másik erőforráscsoport alhálózatához. |
+| Microsoft. Network/virtualNetworks/alhálózatok/olvasás | A belső terheléselosztó egy másik erőforráscsoporthoz való használata esetén kötelező. Szükséges annak ellenőrzéséhez, hogy már létezik-e alhálózat a belső terheléselosztó számára az erőforráscsoporthoz. |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC)
 
 A felhasználók által elvégezhető műveletek részletes szűrésének biztosításához a Kubernetes a Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes RBAC) használja. Ez a vezérlési mechanizmus lehetővé teszi a felhasználók vagy felhasználói csoportok hozzárendelését, például az erőforrások létrehozását és módosítását, illetve a naplók megtekintését az alkalmazás-munkaterhelések futtatásához. Ezek az engedélyek egyetlen névtérre is érvényesek, vagy a teljes AK-fürtön keresztül is megadhatók. A Kubernetes RBAC segítségével létrehozhat *szerepköröket* az engedélyek definiálásához, majd hozzárendelheti ezeket a szerepköröket a felhasználókhoz *szerepkör-kötésekkel*.
 
 További információ: [a KUBERNETES RBAC-hitelesítés használata][kubernetes-rbac].
-
 
 ### <a name="roles-and-clusterroles"></a>Szerepkörök és ClusterRoles
 
@@ -84,11 +127,11 @@ Ahogy az a fenti ábrán is látható, az API-kiszolgáló meghívja az AK webho
 1. Az Azure AD ügyfélalkalmazás a kubectl használatával jelentkezik be a OAuth 2,0-es [eszköz-engedélyezési folyamattal](../active-directory/develop/v2-oauth2-device-code.md)rendelkező felhasználókba.
 2. Az Azure AD egy access_token, id_token és egy refresh_token biztosít.
 3. A felhasználó kérést küld a kubectl access_token a kubeconfig.
-4. A Kubectl elküldi a access_tokent a APIServer.
+4. A Kubectl az API-kiszolgálónak küldi a access_token.
 5. Az API-kiszolgáló a hitelesítési webhook-kiszolgálóval van konfigurálva az érvényesítés végrehajtásához.
 6. A hitelesítési webhook-kiszolgáló megerősíti, hogy a JSON Web Token aláírása érvényes az Azure AD nyilvános aláíró kulcsának ellenőrzésével.
 7. A kiszolgálóalkalmazás felhasználó által megadott hitelesítő adatok használatával kérdezi le a bejelentkezett felhasználó csoporttagságait az MS Graph APIból.
-8. A rendszer választ kap a APIServer olyan felhasználói adatokkal, mint például a hozzáférési jogkivonat egyszerű felhasználóneve (UPN) jogcíme, valamint a felhasználó csoporttagság az objektumazonosító alapján.
+8. A rendszer választ kap az API-kiszolgálónak a felhasználói adatokkal, például a hozzáférési jogkivonat egyszerű felhasználóneve (UPN) jogcímével, valamint a felhasználó csoporttagság alapján.
 9. Az API a Kubernetes szerepkör/RoleBinding alapján hajt végre engedélyezési döntést.
 10. Az engedélyezést követően az API-kiszolgáló egy választ küld a kubectl.
 11. A Kubectl visszajelzést nyújt a felhasználónak.
@@ -145,7 +188,7 @@ Az AK a következő négy beépített szerepkört biztosítja. Hasonlóak a [Kub
 
 **Ha szeretné megtudni, hogyan engedélyezheti az Azure RBAC az Kubernetes-engedélyezést, [olvassa el itt](manage-azure-rbac.md).**
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a táblázat összefoglalja, hogy a felhasználók hogyan hitelesíthetők a Kubernetes, ha engedélyezve van az Azure AD-integráció.  A felhasználói parancsok minden esetben a következőket tartalmazzák:
 1. `az login`Az Azure-ban való hitelesítéshez futtassa a parancsot.
@@ -154,7 +197,7 @@ Ez a táblázat összefoglalja, hogy a felhasználók hogyan hitelesíthetők a 
 
 A második oszlopban szereplő szerepkör-támogatás a Azure Portal **Access Control** lapján látható Azure RBAC szerepkör-támogatás. A fürt rendszergazdája Azure AD-csoport a portál **konfiguráció** lapján (vagy az Azure CLI-ben található paraméter nevével) jelenik meg `--aad-admin-group-object-ids` .
 
-| Description        | Szerepkör megadása kötelező| Fürt rendszergazdai Azure AD-csoport (ok) | A következő esetekben használja |
+| Leírás        | Szerepkör megadása kötelező| Fürt rendszergazdai Azure AD-csoport (ok) | A következő esetekben használja |
 | -------------------|------------|----------------------------|-------------|
 | Örökölt rendszergazdai bejelentkezés ügyféltanúsítvány használatával| Az **Azure Kubernetes rendszergazdai szerepköre**. Ez a szerepkör lehetővé teszi `az aks get-credentials` a jelzővel való használatot `--admin` , amely egy [örökölt (nem Azure ad-) fürt rendszergazdai tanúsítványát](control-kubeconfig-access.md) tölti le a felhasználó számára `.kube/config` . Ez az egyetlen célja az "Azure Kubernetes-rendszergazdai szerepkör".|n/a|Ha véglegesen letiltja azt, hogy nem fér hozzá a fürthöz hozzáféréssel rendelkező érvényes Azure AD-csoporthoz.| 
 | Azure AD manuális (fürt) RoleBindings| Az **Azure Kubernetes felhasználói szerepköre**. A "user" szerepkör lehetővé teszi a `az aks get-credentials` jelző nélküli használatot `--admin` . (Ez az egyetlen célja az "Azure Kubernetes felhasználói szerepkör".) Ennek eredményeképpen egy Azure AD-kompatibilis fürtön [egy üres bejegyzés](control-kubeconfig-access.md) tölthető le `.kube/config` , amely a böngészőalapú hitelesítést indítja el, amikor először használja `kubectl` .| A felhasználó nem szerepel ezen csoportok egyikében sem. Mivel a felhasználó nem tagja a fürt rendszergazdai csoportjainak, a jogosultságokat teljes mértékben a RoleBindings vagy ClusterRoleBindings vezérli. A (fürt) RoleBindings az [Azure ad-felhasználókat vagy az Azure ad-csoportokat jelölik](azure-ad-rbac.md) `subjects` . Ha nincsenek beállítva ilyen kötések, a felhasználó nem fog tudni Excute egyetlen `kubectl` parancsot sem.|Ha részletes hozzáférés-vezérlést szeretne, és nem használja az Azure RBAC-t a Kubernetes engedélyezéséhez. Vegye figyelembe, hogy a kötéseket beállító felhasználónak a táblázatban felsorolt más módszerek egyikével kell bejelentkeznie.|
@@ -192,3 +235,4 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [operator-best-practices-identity]: operator-best-practices-identity.md
+[upgrade-per-cluster]: ../azure-monitor/insights/container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli

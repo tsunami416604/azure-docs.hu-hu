@@ -3,12 +3,12 @@ title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
 ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0532441e1ab0d2676e7800c9d63878f9bf3bb3dc
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563024"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616161"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -49,7 +49,7 @@ A Windows és a Linux rendszerhez készült Azure-beli csatlakoztatott gépi üg
 
 A Windows és a Linux operációs rendszer következő verziói hivatalosan támogatottak az Azure-beli csatlakoztatott gépi ügynöknél:
 
-- Windows Server 2012 R2 és újabb verziók (beleértve a Windows Server Core-t)
+- Windows Server 2008 R2, Windows Server 2012 R2 és újabb (beleértve a Server Core-t)
 - Ubuntu 16,04 és 18,04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)

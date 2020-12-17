@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860966"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614914"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
 
@@ -134,7 +134,7 @@ A Felhasználónév/jelszó használatával ROPC-folyamatokban több dolgot is f
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>A ROPC folyamat konfigurálása Azure AD B2C
 
-A Azure AD B2C-bérlőben hozzon létre egy új felhasználói folyamatot, és válassza a **Bejelentkezés a ROPC használatával** lehetőséget a felhasználói folyamat ROPC engedélyezéséhez. További információ: [az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása](../../active-directory-b2c/configure-ropc.md).
+A Azure AD B2C-bérlőben hozzon létre egy új felhasználói folyamatot, és válassza a **Bejelentkezés a ROPC használatával** lehetőséget a felhasználói folyamat ROPC engedélyezéséhez. További információ: [az erőforrás-tulajdonos jelszava hitelesítő adatainak konfigurálása](../../active-directory-b2c/add-ropc-policy.md).
 
 `IPublicClientApplication` a `AcquireTokenByUsernamePassword` metódust tartalmazza:
 
@@ -190,7 +190,7 @@ Az egyik lehetőség a jogcím használata a `name` helyett `preferred_username`
 
 A felhasználói folyamatok által visszaadott jogcímek meghatározásával kapcsolatos további információkért lásd [: oktatóanyag: felhasználói folyamatok létrehozása Azure ad B2Cban](../../active-directory-b2c/tutorial-create-user-flows.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A jogkivonatok interaktív módon való beszerzésével kapcsolatban további részleteket a következő példában talál: Azure AD B2C alkalmazások MSAL.NET.
 

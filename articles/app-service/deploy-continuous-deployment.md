@@ -6,14 +6,14 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 799699662b738804790e3fe18ce9bd579027808d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004345"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616315"
 ---
-# <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés Azure App Service
+# <a name="continuous-deployment-to-azure-app-service"></a> Folyamatos üzembe helyezés az Azure App Service-be
 
 [Azure app Service](overview.md) lehetővé teszi a GitHub, a BitBucket és az [Azure Repos](https://azure.microsoft.com/services/devops/repos/) -Tárházak folyamatos üzembe helyezését a legújabb frissítések behúzásával. Ez a cikk bemutatja, hogyan használható a Azure Portal az alkalmazás folyamatos üzembe helyezéséhez a kudu Build Service vagy az [Azure-folyamatok](https://azure.microsoft.com/services/devops/pipelines/)használatával. 
 
@@ -96,7 +96,7 @@ Ha a fiókja rendelkezik a szükséges engedélyekkel, beállíthatja az Azure-f
 
 Ahhoz Azure App Service, hogy az Azure-folyamatok használatával folyamatos kézbesítést hozzon létre, az Azure DevOps-szervezetnek a következő engedélyekkel kell rendelkeznie: 
 
-- Az Azure-fióknak engedéllyel kell rendelkeznie a Azure Active Directory írásához és a szolgáltatás létrehozásához. 
+- Az Azure-fióknak engedéllyel kell rendelkeznie a Azure Active Directory írásához és az alkalmazás regisztrálásához. 
   
 - Az Azure-fióknak **tulajdonosi** szerepkörrel kell rendelkeznie az Azure-előfizetésében.
 

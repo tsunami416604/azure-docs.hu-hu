@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 3813d58d894d87051b1bcf8b512c848d527a52bb
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387581"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615848"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI bérlő regisztrálása és bevizsgálása (előzetes verzió)
 
@@ -50,6 +50,7 @@ A hitelesítés beállításához hozzon létre egy biztonsági csoportot, és a
 ## <a name="associate-the-security-group-with-the-tenant"></a>A biztonsági csoport hozzárendelése a bérlőhöz
 
 1. Jelentkezzen be a [Power bi felügyeleti portálra](https://app.powerbi.com/admin-portal/tenantSettings).
+1. Válassza ki a **bérlői beállítások** lapot.
 
     > [!Important]
     > A bérlői beállítások lap megtekintéséhez Power BI rendszergazdának kell lennie.
@@ -109,7 +110,7 @@ Első lépésként adjon hozzá egy speciális funkció-jelölőt a hatásköré
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/save-run-power-bi-scan.png" alt-text="Power BI képernyő rendszerképének mentése és futtatása":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha meg szeretné tudni, hogyan lehet PowerShell-parancsmagokkal regisztrálni és beolvasni egy Power BI bérlőt, tekintse meg a következőt:
   

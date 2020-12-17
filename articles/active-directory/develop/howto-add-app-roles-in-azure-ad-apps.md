@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96c52c46a75d6d5810dfddf91439c275d14e85f1
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616137"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614931"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -30,7 +30,10 @@ Egy másik módszer az Azure AD-csoportok és a csoportos jogcímek használata 
 
 ## <a name="declare-roles-for-an-application"></a>Szerepkörök deklarálása egy alkalmazáshoz
 
-Az alkalmazás-szerepköröket a [Azure Portal](https://portal.azure.com)használatával határozhatja meg. Amikor egy felhasználó bejelentkezik az alkalmazásba, az Azure AD egy `roles` jogcímet bocsát ki minden olyan szerepkörhöz, amelyet a felhasználó egyénileg adott meg a felhasználó és a csoporttagság alapján.
+Az alkalmazás-szerepköröket a [Azure Portal](https://portal.azure.com)használatával határozhatja meg. Az alkalmazás szerepkörei általában egy szolgáltatást, alkalmazást vagy API-t képviselő alkalmazás-regisztráción vannak meghatározva. Amikor egy felhasználó bejelentkezik az alkalmazásba, az Azure AD egy `roles` jogcímet bocsát ki minden olyan szerepkörhöz, amelyet a felhasználó vagy a szolgáltatásnév egyénileg adott meg a felhasználónak és a csoport tagságának. Ez a jogcím-alapú hitelesítés megvalósítására használható. Az alkalmazás szerepkörei hozzárendelhetők [egy felhasználóhoz vagy egy felhasználói csoporthoz](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app)is. Az alkalmazás szerepkörei más alkalmazásokhoz, illetve [felügyelt identitásokhoz](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md)is hozzárendelhetők az egyszerű szolgáltatáshoz.
+
+> [!IMPORTANT]
+> Jelenleg, ha egy egyszerű szolgáltatásnevet ad hozzá egy csoporthoz, majd hozzárendel egy alkalmazás-szerepkört az adott csoporthoz, az Azure AD nem adja hozzá a `roles` jogcímet az általa felmerülő jogkivonatokhoz.
 
 Az alkalmazás szerepköreinek kétféle módon deklarálható a Azure Portal használatával:
 
@@ -50,7 +53,7 @@ Alkalmazás-szerepkör létrehozása a Azure Portal felhasználói felületének
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a Azure Active Directory bérlőt, amely az alkalmazás regisztrációját tartalmazza, amelyhez hozzá kívánja adni az alkalmazás-szerepkört.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki azt az alkalmazást, amelyben meg szeretné adni az alkalmazás-szerepköröket.
-1. **Alkalmazás-szerepkörök kiválasztása | Tekintse meg az előnézetet** , majd válassza az **alkalmazás szerepkör létrehozása** lehetőséget.
+1. **Alkalmazás-szerepkörök kiválasztása | Tekintse meg az előnézetet**, majd válassza az **alkalmazás szerepkör létrehozása** lehetőséget.
 
    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-overview-pane.png" alt-text="Az alkalmazás regisztrációjának alkalmazás-szerepkörök panelje a Azure Portal":::
 1. Az **alkalmazás-szerepkör létrehozása** panelen adja meg a szerepkör beállításait. A képet követő táblázat ismerteti az egyes beállításokat és azok paramétereit.
@@ -75,7 +78,7 @@ Szerepkörök hozzáadása a jegyzékfájl közvetlen szerkesztésével:
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a Azure Active Directory bérlőt, amely az alkalmazás regisztrációját tartalmazza, amelyhez hozzá kívánja adni az alkalmazás-szerepkört.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki azt az alkalmazást, amelyben meg szeretné adni az alkalmazás-szerepköröket.
-1. A **kezelés** alatt kattintson ismét a **manifest (jegyzékfájl** ) elemre.
+1. A **kezelés** alatt kattintson ismét a **manifest (jegyzékfájl**) elemre.
 1. Szerkessze az alkalmazás-jegyzékfájlt úgy, hogy megkeresi a `appRoles` beállítást, és hozzáadja az alkalmazási szerepköröket. Megadhatja a célként megadott vagy mindkét szerepkörű alkalmazást `users` `applications` . A következő JSON-kódrészletek példákat mutatnak.
 1. Mentse a jegyzékfájlt.
 
@@ -169,7 +172,7 @@ Az újonnan hozzáadott szerepköröknek meg kell jelennie az alkalmazás regisz
 
 #### <a name="grant-admin-consent"></a>Rendszergazdai jóváhagyás megadása
 
-Mivel ezek az *alkalmazások engedélyei* , nem delegált engedélyek, a rendszergazdának meg kell adnia a jóváhagyást az alkalmazáshoz rendelt alkalmazás-szerepkörök használatához.
+Mivel ezek az *alkalmazások engedélyei*, nem delegált engedélyek, a rendszergazdának meg kell adnia a jóváhagyást az alkalmazáshoz rendelt alkalmazás-szerepkörök használatához.
 
 1. Az alkalmazás-regisztráció **API-engedélyei** panelen válassza a **\<tenant name\> rendszergazdai jóváhagyás megadása** lehetőséget.
 1. Válassza az **Igen** lehetőséget, ha a rendszer kéri, hogy adja meg a kért engedélyek jóváhagyását.

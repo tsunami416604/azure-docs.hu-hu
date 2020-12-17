@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: 246da3a35396430bbda86e5a5e927a456618ac05
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619283"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615817"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure Active Directory Domain Services konfigurációs beállításai
 
@@ -110,9 +110,8 @@ A következő hálózati biztonsági csoportokra vonatkozó szabályokra van sz�
 
 | Portszám | Protokoll | Forrás                             | Cél | Művelet | Kötelező | Cél |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Igen      | Szinkronizálás az Azure AD-Bérlővel. |
-| 3389        | TCP      | CorpNetSaw                         | Bármelyik         | Engedélyezés  | Igen      | A tartomány kezelése. |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Igen      | A tartomány kezelése. |
+| 3389        | TCP      | CorpNetSaw                         | Bármelyik         | Engedélyezés  | Választható      | Hibakeresés a támogatáshoz. |
 
 Létrejön egy Azure standard Load Balancer, amely megköveteli a szabályok elhelyezését. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez. Ne törölje ezt a hálózati biztonsági csoportot. A terheléselosztó nem fog megfelelően működni.
 
@@ -127,12 +126,17 @@ Ha szükséges, [a szükséges hálózati biztonsági csoportot és szabályokat
 >
 > Az Azure SLA nem vonatkozik azokra az üzemelő példányokra, amelyekben nem megfelelően konfigurált hálózati biztonsági csoport és/vagy felhasználó által definiált útválasztási táblák lettek alkalmazva, amelyek blokkolják az Azure AD DS a tartomány frissítését és felügyeletét.
 
-### <a name="port-443---synchronization-with-azure-ad"></a>443-es port – szinkronizálás az Azure AD-vel
+### <a name="port-5986---management-using-powershell-remoting"></a>5986-es port – felügyelet a PowerShell távoli eljáráshívás használatával
 
-* Az Azure AD-bérlő felügyelt tartományhoz való szinkronizálására szolgál.
-* A porthoz való hozzáférés nélkül a felügyelt tartomány nem tud szinkronizálni az Azure AD-Bérlővel. Előfordulhat, hogy a felhasználók nem tudnak bejelentkezni, mert a jelszavukat nem szinkronizálják a felügyelt tartományba.
-* A port IP-címekre való bejövő hozzáférése alapértelmezés szerint a **AzureActiveDirectoryDomainServices** szolgáltatás címkével van korlátozva.
-* Ne korlátozza a kimenő hozzáférést ebből a portból.
+* Felügyeleti feladatok végrehajtásához használható a felügyelt tartomány PowerShell-távelérési funkciójával.
+* A porthoz való hozzáférés nélkül a felügyelt tartományt nem lehet frissíteni, konfigurálni, biztonsági mentést készíteni vagy figyelni.
+* A Resource Manager-alapú virtuális hálózatot használó felügyelt tartományok esetében a porthoz való bejövő hozzáférést a *AzureActiveDirectoryDomainServices* szolgáltatás címkéjére korlátozhatja.
+    * A klasszikus virtuális hálózatot használó örökölt felügyelt tartományok esetében a porthoz való bejövő hozzáférést a következő forrás IP-címekre korlátozhatja: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18* és *104.40.87.209*.
+
+    > [!NOTE]
+    > A (z) 2017-es verziójában Azure AD Domain Services elérhetővé vált a Azure Resource Manager hálózaton lévő gazdagép számára. Azóta egy biztonságosabb szolgáltatást hoztunk létre a Azure Resource Manager modern képességeinek használatával. Mivel Azure Resource Manager központi telepítések teljes mértékben lecserélik a klasszikus üzemelő példányokat, az Azure-AD DS a klasszikus virtuális hálózati telepítések 2023. március 1-től megszűnnek.
+    >
+    > További információkért lásd a [hivatalos elavult közleményt](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/) .
 
 ### <a name="port-3389---management-using-remote-desktop"></a>3389-es port – felügyelet a távoli asztal használatával
 
@@ -148,18 +152,6 @@ Ha szükséges, [a szükséges hálózati biztonsági csoportot és szabályokat
 > Például a következő szkripttel hozhat létre egy olyan szabályt, amely engedélyezi az RDP-t: 
 >
 > `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
-
-### <a name="port-5986---management-using-powershell-remoting"></a>5986-es port – felügyelet a PowerShell távoli eljáráshívás használatával
-
-* Felügyeleti feladatok végrehajtásához használható a felügyelt tartomány PowerShell-távelérési funkciójával.
-* A porthoz való hozzáférés nélkül a felügyelt tartományt nem lehet frissíteni, konfigurálni, biztonsági mentést készíteni vagy figyelni.
-* A Resource Manager-alapú virtuális hálózatot használó felügyelt tartományok esetében a porthoz való bejövő hozzáférést a *AzureActiveDirectoryDomainServices* szolgáltatás címkéjére korlátozhatja.
-    * A klasszikus virtuális hálózatot használó örökölt felügyelt tartományok esetében a porthoz való bejövő hozzáférést a következő forrás IP-címekre korlátozhatja: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18* és *104.40.87.209*.
-
-    > [!NOTE]
-    > A (z) 2017-es verziójában Azure AD Domain Services elérhetővé vált a Azure Resource Manager hálózaton lévő gazdagép számára. Azóta egy biztonságosabb szolgáltatást hoztunk létre a Azure Resource Manager modern képességeinek használatával. Mivel Azure Resource Manager központi telepítések teljes mértékben lecserélik a klasszikus üzemelő példányokat, az Azure-AD DS a klasszikus virtuális hálózati telepítések 2023. március 1-től megszűnnek.
-    >
-    > További információkért lásd a [hivatalos elavult közleményt](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/) .
 
 ## <a name="user-defined-routes"></a>Felhasználó által megadott útvonalak
 

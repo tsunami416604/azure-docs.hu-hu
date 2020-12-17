@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590183"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614593"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Bevezetés az Azure Metrikaböngésző használatába
 
@@ -29,15 +29,14 @@ Azure Monitor a metrikák Explorer a Microsoft Azure Portal egy olyan összetev�
 
 Metrikus diagram létrehozásához az erőforrás, Erőforráscsoport, előfizetés vagy Azure Monitor nézetben nyissa meg a **metrikák** lapot, és kövesse az alábbi lépéseket:
 
-1. Az erőforrás-választó használatával válassza ki azt az erőforrást, amelyre vonatkozóan meg szeretné jeleníteni a metrikákat. (Az erőforrás előre be van jelölve, ha egy adott erőforrás kontextusában nyitott meg **mérőszámokat** ).
-
-    > ![Erőforrás kiválasztása](./media/metrics-getting-started/resource-picker.png)
+1. Kattintson a "hatókör kiválasztása" gombra az erőforrás hatókör-választójának megnyitásához. Ezzel kiválaszthatja azokat az erőforrásokat, amelyekhez mérőszámokat kíván megjeleníteni. Ha az erőforrás menüjéből megnyitotta a metrikák Explorert, az erőforrást már fel kell tölteni. Ha szeretné megtudni, hogyan tekintheti meg a mérőszámokat több erőforrás között, [olvassa el ezt a cikket](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-dynamic-scope).
+    > ![Erőforrás kiválasztása](./media/metrics-getting-started/scope-picker.png)
 
 2. Egyes erőforrások esetében ki kell választania egy névteret. A névtér csak a mérőszámok rendszerezését teszi lehetővé, így könnyen megtalálhatja őket. A Storage-fiókok például különálló névtereket biztosítanak a fájlok, táblák, blobok és várólisták metrikáinak tárolásához. Számos erőforrástípus csak egy névteret tartalmaz.
 
 3. Válasszon ki egy mérőszámot az elérhető metrikák listájából.
 
-    > ![Metrika kiválasztása](./media/metrics-getting-started/metric-picker.png)
+    > ![Metrika kiválasztása](./media/metrics-getting-started/metrics-dropdown.png)
 
 4. Igény szerint [módosíthatja a metrikák összesítését](metrics-charts.md#changing-aggregation). Előfordulhat például, hogy a diagramot a metrika minimális, maximális vagy átlagos értékének megjelenítésére szeretné megjeleníteni.
 
@@ -51,7 +50,7 @@ Metrikus diagram létrehozásához az erőforrás, Erőforráscsoport, előfizet
 
 Alapértelmezés szerint a diagram a legutóbbi 24 órányi metrikai adatokat jeleníti meg. Használja az **időválasztó** panelt a diagram időtartományának, nagyításának vagy kicsinyítésének módosításához. 
 
-![Időtartomány-panel módosítása](./media/metrics-getting-started/time-picker.png)
+![Időtartomány-panel módosítása](./media/metrics-getting-started/time.png)
 
 > [!TIP]
 > Az **idő ecsettel** vizsgálja meg a diagram egy érdekes területét (Spike vagy DIP). Vigye az egérmutatót a terület elejére, kattintson és tartsa nyomva a bal egérgombot, húzza a terület másik oldalára, majd engedje el a gombot. A diagram az adott időtartományon nagyítja fel. 
@@ -73,6 +72,7 @@ Testreszabhatja a diagram stílusát, címét és a speciális diagram beállít
 ## <a name="next-steps"></a>További lépések
 
 * [További információ a Metrikaböngésző speciális funkcióiról](metrics-charts.md)
+* [Több erőforrás megtekintése Metrikaböngésző](metrics-dynamic-scope.md)
 * [A Metrikaböngésző hibaelhárítása](metrics-troubleshoot.md)
 * [Az Azure-szolgáltatásokhoz elérhető metrikák listájának megtekintése](metrics-supported.md)
 * [A konfigurált diagramok példáinak megtekintése](metric-chart-samples.md)

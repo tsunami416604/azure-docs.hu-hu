@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperf-fy20q4
 ms.date: 11/09/2020
-ms.openlocfilehash: 010d37baff76a046bef2da877262f6427cb3d5c9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0a14d57db932ef6cfb17df84b3204d3dec9e4d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094437"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617000"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás az Azure Machine Learningben
 
@@ -183,7 +183,7 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
   * Chrome (legújabb verzió)
   * Firefox (legújabb verzió)
 
-## <a name="set-up-your-environment"></a>Saját környezet beállítása
+## <a name="set-up-your-environment"></a>A környezet kialakítása
 
 * **Hiba történt a AmlCompute létrehozásakor**: ritkán fordul elő, hogy néhány felhasználó létrehozta Azure Machine learning munkaterületét a Azure Portal, mielőtt a ga-kiadás nem tudja létrehozni a AmlCompute az adott munkaterületen. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
 
@@ -429,6 +429,16 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   2. Adja meg `pip freeze` és keresse meg `tensorflow` , ha található, a felsorolt verziónak < 1,13
   3. Ha a felsorolt verzió nem támogatott verzió, a `pip uninstall tensorflow` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.
 
+## <a name="model-explanations"></a>Modell magyarázatai
+
+* A **ritka adatmennyiségek nem támogatottak**: a modell magyarázatának irányítópultja megszakítja a jelentős mennyiségű funkciót, ezért jelenleg nem támogatott a ritka adatformátum. Emellett az általános memóriával kapcsolatos problémák nagy adatkészletekkel és nagy számú funkcióval is felmerülhetnek. 
+
+* Az **előrejelzési modellek nem támogatottak a modell magyarázatával**: az értelmezés, a legjobb modell magyarázata nem érhető el olyan AutoML előrejelzési kísérletekhez, amelyek a következő algoritmusokat ajánlják a legjobb modellként: TCNForecaster, AutoArima, ExponentialSmoothing, Average, naiv, szezonális átlag és szezonális naiv. A AutoML előrejelzése regressziós modelleket tartalmaz, amelyek támogatják a magyarázatot. A magyarázat Dashbord azonban az "egyes funkciók fontossága" lap nem támogatott az előrejelzéshez az adatfolyamatok összetettsége miatt.
+
+* Az **adatindex helyi magyarázata**: a magyarázat irányítópultja nem támogatja a helyi fontossági értékeket az eredeti ellenőrzési adatkészlet sorainak azonosítójára, ha az adatkészlet nagyobb, mint 5000 datapoints, mivel az irányítópult véletlenszerűen downsamples az adatokat. Az irányítópult azonban megjeleníti a nyers adatkészlet-szolgáltatás értékeit az irányítópulton az egyes szolgáltatások fontossága lap alatt átadott Datapoint vonatkozóan. A felhasználók a nyers adatkészlet szolgáltatás értékeinek megfelelő módon leképezhetők a helyi fontosságot az eredeti adatkészletbe. Ha az érvényesítési adatkészlet mérete kisebb, mint 5000 minta, a `index` AzureML Studio funkciója az érvényesítési adatkészletben szereplő indexnek fog megfelelni.
+
+* A **pénzmosás Studio által nem támogatott**, a (z) What-If és az egyéni feltételes várakozási (jég) mintaterületek nem támogatottak a AzureML Studióban a magyarázatok lapon, mivel a feltöltött magyarázatnak aktív számításra van szüksége az előrejelzések és a zaklatott funkciók valószínűségének újraszámításához. Jelenleg a Jupyter notebookok esetében támogatott, ha az SDK-val widgetet használ.
+
 ## <a name="deploy--serve-models"></a>Modellek üzembe helyezése és kiszolgálása
 
 Tegye a következő hibákat a műveletekhez:
@@ -511,7 +521,7 @@ Ha a Azure Machine Learning számítási fürt a csomópont állapotának átmé
 
 [!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 

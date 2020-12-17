@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: batch
 author: JnHs
 ms.service: batch
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 12/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 54a789aba793d9a6b44d5fe9a1e0f42023002b5a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0a94b122f1cdd598eeac553c8cc784d2a0a5369f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026889"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614513"
 ---
 | **Erőforrás** | **Alapértelmezett korlát** | **Maximális korlát** |
 | --- | --- | --- |
@@ -24,9 +24,6 @@ ms.locfileid: "96026889"
 | Készletek száma Batch-fiókonként | 20-100 | 500<sup>1</sup> |
 
 <sup>1</sup> A korlátot meghaladó növekedés igényléséhez forduljon az Azure ügyfélszolgálatához.
-
-> [!IMPORTANT]
-> Módosítjuk a dedikált kvóta kérését és kezelését.  A teljes dedikált vCPU a jelenleg érvényesített érték, de hamarosan dedikált kvótát fogunk kikényszeríteni a virtuálisgép-sorozatok esetében. Az alacsony prioritású kvóta a teljes korlát alapján továbbra is érvényben marad; a VM-sorozat nem kényszeríti ki.
 
 > [!NOTE]
 > Az alapértelmezett korlátok a Batch-fiók létrehozásához használt előfizetés típusától függően változnak. A kimutatott magok kvótái a Batch szolgáltatás üzemmódjában található batch-fiókokra vonatkoznak. [Megtekintheti a Batch-fiókban lévő kvótákat](../articles/batch/batch-quota-limit.md#view-batch-quotas).

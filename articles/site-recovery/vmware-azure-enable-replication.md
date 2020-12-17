@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a1f4759bc40c4074f0dd618be8ac66ad088e848c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587754"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616609"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-ba történő replikáció engedélyezése VMware virtuális gépek esetében
 
@@ -109,7 +109,7 @@ A kezdeti replikálás előrehaladásának nyomon követéséhez navigáljon a R
 - Befejezett százalék – a virtuális gép kezdeti replikációjának százalékos arányát jelzi.
 - Összes továbbított adatátvitel – a virtuális gépről az Azure-ba továbbított adatok mennyisége
 
-:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="replikálási állapot" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+    :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="replikálási állapot" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
 
 - Szinkronizálási folyamat (a részletek a lemez szintjén való nyomon követése)
     - Replikáció állapota
@@ -176,7 +176,7 @@ A Microsoft frissítési garanciával rendelkező ügyfelei az Azure-ba migrált
 
 [További](https://azure.microsoft.com/pricing/hybrid-benefit/) információ a Azure Hybrid Benefitról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután a virtuális gép elérte a védett állapotot, próbálja meg a [feladatátvételt](site-recovery-failover.md) , és győződjön meg arról, hogy az alkalmazás megjelenik az Azure-ban.
 

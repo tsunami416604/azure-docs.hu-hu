@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: e0cbbb3fd6cea962008218b5e695f119d211a909
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f4975c0e8d8b23a7c107b9704b0e0825702a0010
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033697"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617017"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -168,6 +168,7 @@ from azureml.automl.core.forecasting_parameters import ForecastingParameters
 forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                                forecast_horizon=50,
                                                time_series_id_column_names=["store"],
+                                               freq='W',
                                                target_lags='auto',
                                                target_rolling_window_size=10)
                                               
@@ -376,7 +377,7 @@ Tekintse meg az [előrejelzési minta jegyzetfüzeteket](https://github.com/Azur
 * [a gördülő ablak összesített funkciói](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
 * [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 * Ismerje meg az [értelmezést: modell-magyarázatok az automatikus gépi tanulásban (előzetes verzió)](how-to-machine-learning-interpretability-automl.md). 

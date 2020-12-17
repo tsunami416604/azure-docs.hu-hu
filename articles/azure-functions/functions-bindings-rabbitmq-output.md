@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan küldhet RabbitMQ-üzeneteket Azure Functionsb�
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 212bfcee09cd63b6ff09faaba4d99e4b4c583fe8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: febcb3d2b6990d36a686dc4fab57a6bcbc96b080
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505733"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616660"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ kimeneti kötés a Azure Functions áttekintéséhez
 
@@ -193,8 +193,6 @@ A *function.js* fájlban található kötési adatfájlok:
 }
 ```
 
-Az *_\_ init_ \_ .* másolás eszközben a metódus értékének megadásával kiírhat egy üzenetet a várólistába `set` .
-
 ```python
 import azure.functions as func
 
@@ -265,17 +263,19 @@ További részletekért tekintse meg a kimeneti kötési [példát](#example) .
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `RabbitMQ` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a | "RabbitMQ" értékre kell állítani.|
 |**irányba** | n/a | "Out" értékre kell állítani. |
 |**név** | n/a | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. |
 |**queueName**|**QueueName**| Azon várólista neve, ahová üzeneteket szeretne küldeni. |
-|**hostName**|**HostName**|(ConnectStringSetting használata esetén nem kötelező) <br>A várólista állomásneve (pl.: 10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting használata esetén nem kötelező) <br>A várólista eléréséhez használandó név |
-|**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting használata esetén nem kötelező) <br>A várólista eléréséhez szükséges jelszó|
+|**hostName**|**HostName**|(ConnectStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista állomásneve (pl.: 10.26.45.210)|
+|**userName**|**UserName**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>Annak az alkalmazás-beállításnak a neve, amely a várólistához való hozzáféréshez használt felhasználónevet tartalmazza. Például: UserNameSetting: "< UserNameFromSettings >"|
+|**alaphelyzetbe állítása**|**Jelszó**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>Annak az alkalmazás-beállításnak a neve, amely a várólista eléréséhez szükséges jelszót tartalmazza. Például: UserNameSetting: "< UserNameFromSettings >"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Annak az RabbitMQ a neve, amely az üzenetsor-kapcsolatok karakterláncát tartalmazza. Vegye figyelembe, hogy ha a (z) local.settings.json lévő alkalmazás-beállításon keresztül közvetlenül adja meg a kapcsolatok karakterláncát, akkor az trigger nem fog működni. (Pl.: *function.json*: connectionStringSetting: "rabbitMQConnection" <br> *local.settings.json*: "rabbitMQConnection": "< ActualConnectionstring >")|
-|**Port**|**Port**|Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0.|
+|**Port**|**Port**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0.|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Használat
 
@@ -297,7 +297,7 @@ A kimeneti kötéshez használja a következő paramétereket:
 
 * `byte[]` -Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
 * `string` -Ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
-* `POCO` – Ha a paraméter értéke nem C#-objektumként van formázva, hibaüzenetet kap.
+* `POCO` – Ha a paraméter értéke nem C#-objektumként van formázva, hibaüzenetet kap. Teljes példa: C# parancsfájl- [példa](#example).
 
 C# parancsfájl-függvények használata esetén:
 
@@ -305,11 +305,11 @@ C# parancsfájl-függvények használata esetén:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A RabbitMQ üzenetet egy sztring küldi el.
+Az üzenetsor-üzenet a Context. kötések használatával érhető el.<NAME> ahol a <NAME> megegyezik a function.jsáltal megadott névvel. Ha a hasznos adat JSON, az érték deszerializálása egy objektumba történik.
 
 # <a name="python"></a>[Python](#tab/python)
 
-A RabbitMQ üzenetet egy sztring küldi el.
+Tekintse meg a Python- [példát](#example).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -321,6 +321,6 @@ A kimeneti kötéshez használja a következő paramétereket:
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása RabbitMQ-üzenet létrehozásakor (trigger)](./functions-bindings-rabbitmq-trigger.md)

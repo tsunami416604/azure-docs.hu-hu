@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 34f82fc060586e2df5acefa6b0836171e558aa4a
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029404"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615767"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -110,6 +110,7 @@ Ez a beállítás a következő iOS-és Android-alkalmazásokra vonatkozik:
    - A csak az iOS és az Android for Device platform feltételeit támogatja.
    - Az eszköz regisztrálásához egy Broker-alkalmazás szükséges. A közvetítő alkalmazás a Microsoft Authenticator iOS-hez, vagy az Microsoft Authenticator vagy a Microsoft vállalati portál Android-eszközökhöz.
 - A feltételes hozzáférés nem tekintheti meg a Microsoft Edge-t InPrivate módban egy jóváhagyott ügyfélalkalmazás.
+- Az Azure AD Application Proxy használatával lehetővé teheti, hogy a Power BI Mobile App a helyszíni Power BI jelentéskészítő kiszolgálóhoz kapcsolódjon, és nem támogatott olyan feltételes hozzáférési szabályzatok használata, amelyeken a Microsoft Power BI alkalmazás jóváhagyott ügyfélalkalmazás.
 
 Tekintse meg a következő cikket [: a felhőalapú alkalmazások hozzáférésének megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](app-based-conditional-access.md) a konfigurációs példákhoz.
 

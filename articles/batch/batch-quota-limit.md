@@ -2,14 +2,14 @@
 title: Szolgáltatási kvóták és korlátok
 description: Ismerje meg az alapértelmezett Azure Batch kvótákat, korlátozásokat és korlátozásokat, valamint a kvóta növelésének módját
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b2039794a0c8a13070c9d81b83869ca4097bd02e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 9f529d388cb883f635b6225801af5ce41b8c997a
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325968"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614514"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -62,7 +62,7 @@ A készlet méretének korlátait a Batch szolgáltatás állítja be. Az [erőf
 | **A [csomópontok közötti kommunikációt engedélyező készlet](batch-mpi.md) számítási csomópontjai**  ||
 | Batch szolgáltatás-készlet kiosztási módja | 100 |
 | Batch-előfizetési készlet lefoglalási módja | 80 |
-| **[Felügyelt rendszerkép 1-es erőforrásával létrehozott készlet](batch-custom-images.md)számítási csomópontjai**<sup>1</sup> ||
+| **[Felügyelt rendszerkép 1-es erőforrásával létrehozott készlet](batch-custom-images.md)számítási csomópontjai**<sup></sup> ||
 | Dedikált csomópontok | 2000 |
 | Alacsony prioritású csomópontok | 1000 |
 

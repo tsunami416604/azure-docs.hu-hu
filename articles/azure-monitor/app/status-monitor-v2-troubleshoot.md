@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: df8ebd97ed9e34e0fce85a50297c595732057115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 472a7f128ea19cdcc9df5a03d171f345c7d601de
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761464"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616830"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights ügynök hibaelhárítása (korábbi nevén Állapotmonitor v2)
 
@@ -51,6 +51,11 @@ A hibakeresési eszközök segítségével megtekintheti a tüneti viselkedést:
     0x0000000009b90000  0x4f000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.ExtensionsHost_x64.dll
     0x0000000004d20000  0xb2000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.Extensions.Base_x64.dll
     ```
+
+### <a name="powershell-versions"></a>PowerShell-verziók
+Ezt a terméket a PowerShell v 5.1 használatával írták és tesztelték.
+Ez a modul nem kompatibilis a PowerShell 6-os vagy 7-es verziójával.
+Javasoljuk, hogy az újabb verziókkal együtt a PowerShell v 5.1-es verzióját használja. További információ: a [PowerShell 7 párhuzamos használata a powershell 5,1](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51)-mel.
 
 ### <a name="conflict-with-iis-shared-configuration"></a>Ütközés az IIS megosztott konfigurációjával
 
@@ -137,19 +142,19 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](s
     - **Zip**
     - **Egyesítés**
     - **.NET-szimbólum gyűjteménye**
-5. **További szolgáltatók**beállítása:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. **További szolgáltatók** beállítása:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>Naplók összegyűjtése
 
 1. Rendszergazdai jogosultságokkal rendelkező parancssori konzolon futtassa a `iisreset /stop` parancsot az IIS és az összes webalkalmazás kikapcsolásához.
-2. A Perfview eszköz területen válassza a **gyűjtés indítása**elemet.
+2. A Perfview eszköz területen válassza a **gyűjtés indítása** elemet.
 3. Rendszergazdai jogosultságokkal rendelkező parancssori konzolon futtassa a `iisreset /start` parancsot az IIS elindításához.
 4. Próbálja meg megkeresni az alkalmazást.
-5. Az alkalmazás betöltése után térjen vissza a Perfview eszköz, és válassza a **gyűjtemény leállítása**lehetőséget.
+5. Az alkalmazás betöltése után térjen vissza a Perfview eszköz, és válassza a **gyűjtemény leállítása** lehetőséget.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A kihagyott paraméterek megismeréséhez tekintse át az [API-referenciát](status-monitor-v2-overview.md#powershell-api-reference) .

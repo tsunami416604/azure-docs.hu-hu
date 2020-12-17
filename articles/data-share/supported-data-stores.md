@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 12/7/2020
-ms.openlocfilehash: 566fd2c9c31933420769f7200a0434cc53f8c2f3
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.date: 12/16/2020
+ms.openlocfilehash: d45d9a29f671e66c6caba689f49e1748780545e0
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853142"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616745"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Az Azure Data Share támogatott adattárai
 
@@ -50,7 +50,7 @@ Az alábbi táblázat a különböző kombinációkat és választásokat ismert
 | Azure Data Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Megosztás egy Storage-fiókból
-Az Azure-beli adatmegosztás támogatja a fájlok, mappák és fájlrendszerek megosztását Azure Data Lake Gen1 és Azure Data Lake Gen2. Emellett támogatja a Blobok, mappák és tárolók megosztását az Azure Blob Storage-ból. Jelenleg csak a Block blob támogatott. Ha a fájlrendszer, a tárolók vagy a mappák a pillanatkép-alapú megosztásban vannak megosztva, az adatfogyasztó dönthet úgy, hogy teljes másolatot készít a megosztási adatokról, vagy a növekményes pillanatkép-képességgel csak az új vagy frissített fájlokat másolja. A növekményes pillanatkép a fájlok utolsó módosításának időpontján alapul. A rendszer felülírja az azonos nevű meglévő fájlokat.
+Az Azure-beli adatmegosztás támogatja a fájlok, mappák és fájlrendszerek megosztását Azure Data Lake Gen1 és Azure Data Lake Gen2. Emellett támogatja a Blobok, mappák és tárolók megosztását az Azure Blob Storage-ból. Jelenleg csak a Block blob támogatott. Ha a fájlrendszer, a tárolók vagy a mappák a pillanatkép-alapú megosztásban vannak megosztva, az adatfogyasztó dönthet úgy, hogy teljes másolatot készít a megosztási adatokról, vagy a növekményes pillanatkép-képességgel csak az új vagy frissített fájlokat másolja. A növekményes pillanatkép a fájlok utolsó módosításának időpontján alapul. A pillanatkép során a rendszer felülírja az azonos nevű meglévő fájlokat. A forrásból törölt fájl nem törlődik a célhelyen. 
 
 A részletekért tekintse [meg az Azure-Blob Storage és Azure Data Lake Storage adatainak megosztása és fogadása](how-to-share-from-storage.md) című témakört.
 
@@ -69,6 +69,6 @@ A megosztott adatbázisok eléréséhez az adatfogyasztónak saját Azure Adatke
 
 A részletekért tekintse [meg az Azure-adatkezelő adatainak megosztása és fogadása](/azure/data-explorer/data-share) című témakört. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.

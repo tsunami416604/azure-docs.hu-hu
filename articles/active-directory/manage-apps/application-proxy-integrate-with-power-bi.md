@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c3188571e9188add7bc8f4f4d07ea5a562a79b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658111"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616898"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>A Power BI Mobile távoli elérésének engedélyezése Azure AD-alkalmazásproxyval
 
@@ -154,7 +154,9 @@ A Microsoft Intune segítségével kezelheti a vállalat munkaerő által haszn�
 
 Ha az alkalmazás a jelentés több percnél hosszabb betöltésére tett kísérlet után egy hibaüzenetet ad vissza, előfordulhat, hogy módosítania kell az időtúllépési beállítást. Alapértelmezés szerint az alkalmazásproxy olyan alkalmazásokat támogat, amelyek akár 85 másodpercet is igénybe vesznek a kérelmek megválaszolására. A beállítás 180 másodpercre való meghosszabbításához válassza ki az alkalmazáshoz **tartozó alkalmazásproxy** -beállítások lapon a háttérbeli időtúllépést. A gyors és megbízható jelentések létrehozásával kapcsolatos tippekért tekintse meg [Power bi jelentések – ajánlott eljárások](/power-bi/power-bi-reports-performance)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+Az Azure AD Application Proxy használatával lehetővé teheti, hogy a Power BI Mobile App a helyszíni Power BI jelentéskészítő kiszolgálóhoz kapcsolódjon, és nem támogatott olyan feltételes hozzáférési szabályzatok használata, amelyeken a Microsoft Power BI alkalmazás jóváhagyott ügyfélalkalmazás.
+
+## <a name="next-steps"></a>További lépések
 
 - [Natív ügyfélalkalmazások engedélyezése a proxy alkalmazásokkal való kommunikációhoz](application-proxy-configure-native-client-application.md)
 - [Helyszíni jelentéskészítő kiszolgálói jelentések és KPI-k megtekintése a Power BI-mobilalkalmazásokban](/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)

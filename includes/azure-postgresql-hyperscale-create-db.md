@@ -1,27 +1,28 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: include
-ms.date: 09/12/2019
+ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54cc31cdb0ddc7694568d60b1446f1cf99663e95
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74973414"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616626"
 ---
+## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású létrehozása (Citus)
+
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+### <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású létrehozása (Citus)
 
 Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz létrehozásához:
 1. Kattintson az **erőforrás létrehozása**  elemre a Azure Portal bal felső sarkában.
@@ -53,7 +54,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
 10. A rendszer átirányítja a lapot az üzemelő példány figyelésére. Ha a telepítés állapotának változása **folyamatban van** az üzemelő **példányról, kattintson** a lap bal oldalán található **outputs (kimenet** ) elemre.
 11. A outputs (kimenetek) lapon egy, a mellette található gomb is szerepel, amely az értéket a vágólapra másolja. Jegyezze fel ezt az információt későbbi használatra.
 
-## <a name="connect-to-the-database-using-psql"></a>Kapcsolódás az adatbázishoz a psql használatával
+### <a name="connect-to-the-database-using-psql"></a>Kapcsolódás az adatbázishoz a psql használatával
 
 A Azure Database for PostgreSQL-kiszolgáló létrehozásakor létrejön egy **citus** nevű alapértelmezett adatbázis. Az adatbázis-kiszolgálóhoz való kapcsolódáshoz kapcsolati sztringre és rendszergazdai jelszóra van szükség.
 

@@ -1,21 +1,23 @@
 ---
-title: 'Gyors útmutató: Python-alkalmazás létrehozása Linuxra'
+title: 'Gyors útmutató: Python-alkalmazás létrehozása Linuxon'
 description: A Azure App Service első lépései Python-alkalmazások Linux-tárolóba való üzembe helyezésével App Service.
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: e068de77760752070117644c269e80a52c8c1707
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9f9805c25955384e7ca5b3f1d560581a7ca4a638
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561545"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614659"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linux rendszeren
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
 Ebben a rövid útmutatóban egy Python-webalkalmazást helyez üzembe a [Linuxon](overview.md#app-service-on-linux), az Azure rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatásának app Service. Egy Mac, Linux vagy Windows rendszerű számítógépen a helyi [Azure parancssori felület (CLI)](/cli/azure/install-azure-cli) segítségével helyezheti üzembe a mintát a lombiktal vagy a Django keretrendszerek használatával. Az Ön által konfigurált webalkalmazás ingyenes App Service szintet használ, így a cikk során nem jár költségekkel.
+
+A **gyakori kifejezések definícióit** lásd [röviden az Azure-terminológiában](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json).
 
 > [!TIP]
 > Ha egy IDE-n keresztül szeretné telepíteni az alkalmazásokat, tekintse **[meg a Python-alkalmazások üzembe helyezése a Visual Studio Code-ból való app Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** című témakört.

@@ -4,12 +4,12 @@ description: Az Azure Kubernetes Service-ben található fürthöz tartozó Azur
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607823"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614795"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -100,20 +100,9 @@ Ha Azure Container Registry (ACR) tároló lemezkép-tárolót használ, engedé
 
 ### <a name="networking"></a>Hálózat
 
-Használhat olyan speciális hálózatkezelést, ahol a virtuális hálózat és az alhálózat vagy a nyilvános IP-címek egy másik erőforráscsoporthoz tartoznak. Rendelje hozzá a következő szerepkör-engedélyek egyikét:
+Használhat olyan speciális hálózatkezelést, ahol a virtuális hálózat és az alhálózat vagy a nyilvános IP-címek egy másik erőforráscsoporthoz tartoznak. Rendelje hozzá a [hálózati közreműködő][rbac-network-contributor] beépített szerepkört a virtuális hálózaton belüli alhálózathoz. Azt is megteheti, hogy létrehozhat egy [Egyéni szerepkört][rbac-custom-role] , amely jogosult az adott erőforráscsoport hálózati erőforrásainak elérésére. További részletekért lásd: [AK szolgáltatás engedélyei][aks-permissions] .
 
-- Hozzon létre egy [Egyéni szerepkört][rbac-custom-role] , és adja meg a következő szerepkör-engedélyeket:
-  - *Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet*
-  - *Microsoft. Network/virtualNetworks/alhálózatok/olvasás*
-  - *Microsoft. Network/nyilvános IP/csatlakozás/művelet*
-  - *Microsoft. Network/nyilvános IP/READ*
-  - *Microsoft. Network/nyilvános IP/Write*
-  - Ha [Egyéni útválasztási táblákat használ a Kubenet-fürtökhöz](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) , adja hozzá ezeket a további engedélyeket:
-    - *Microsoft. Network/routeTables/Write*
-    - *Microsoft. Network/routeTables/READ*
-- Vagy rendelje hozzá a [hálózati közreműködő][rbac-network-contributor] beépített szerepkört a virtuális hálózaton belüli alhálózathoz.
-
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 
 Előfordulhat, hogy egy másik erőforráscsoport meglévő lemez-erőforrásaihoz is hozzá kell férnie. Rendelje hozzá a következő szerepkör-engedélyek egyikét:
 
@@ -124,7 +113,7 @@ Előfordulhat, hogy egy másik erőforráscsoport meglévő lemez-erőforrásaih
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
-Ha virtuális Kubelet használ az AK-val való integrációhoz, és úgy dönt, hogy a (z) Azure Container Instances (ACI)-t futtatja egy, az AK *Contributor* -fürttől független erőforráscsoporthoz
+Ha virtuális Kubelet használ az AK-val való integrációhoz, és úgy dönt, hogy a (z) Azure Container Instances (ACI)-t futtatja egy, az AK  -fürttől független erőforráscsoporthoz
 
 ## <a name="additional-considerations"></a>Néhány fontos megjegyzés
 
@@ -188,3 +177,4 @@ A hitelesítő adatok frissítésével kapcsolatos információkért lásd: [az 
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
+[aks-permissions]: concepts-identity.md#aks-service-permissions

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a6b92d1b7f36b73d91b8e0e8e519981b936d8735
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 99375abbf8e9749712b878ea35c9bc034bedbc5e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592432"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616144"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -266,7 +266,7 @@ A kezdéshez itt láthatók az ajánlott beállítások a táblában a függvén
 - Riasztási szabály neve: elérte a napi adatkorlátot
 - Súlyosság: figyelmeztetés (1. pont)
 
-Miután meghatározta a riasztást, és elérte a korlátot, a rendszer riasztást indít el, és végrehajtja a műveleti csoportban definiált választ. E-mailben és SMS-ben értesítheti a csapatot, vagy automatizálhatja a műveleteket webhookok, Automation runbookok vagy [külső ITSM-megoldásokkal való integráció](itsmc-overview.md#create-itsm-work-items-from-azure-alerts)révén. 
+Miután meghatározta a riasztást, és elérte a korlátot, a rendszer riasztást indít el, és végrehajtja a műveleti csoportban definiált választ. E-mailben és SMS-ben értesítheti a csapatot, vagy automatizálhatja a műveleteket webhookok, Automation runbookok vagy [külső ITSM-megoldásokkal való integráció](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)révén. 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>A vártnál magasabb szintű használatot okozó hibák elhárítása
 
@@ -653,7 +653,7 @@ Ha értesítést szeretne kapni az adatgyűjtés leállításakor, kövesse a *n
 Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díjszabási szintjétől függ. Ezeket az Azure- [előfizetések és-szolgáltatások korlátozásai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)dokumentálják.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A keresési nyelv használatának megismeréséhez tekintse meg a [naplóban megkeresett Azure monitor naplókat](../log-query/log-query-overview.md) . A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
 - Az [új naplózási riasztás létrehozásával kapcsolatos](alerts-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.

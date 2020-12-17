@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 11/19/2020
+ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: dca14781aac9db3cdd47ab4b66506f77f0b78c31
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510651"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616575"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -77,6 +77,11 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 [Azure Cost Management + számlázás](../../cost-management-billing/index.yml):
 
 - A bérlők felügyelete alatt a CSP-partnerek megtekinthetik, kezelhetik és elemezhetik az előfizetéssel kapcsolatos használati költségeket (nem tartalmazza a vásárlásokat) az Azure-csomag alatti ügyfelek számára. A költségek a kiskereskedelmi díjak és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alapján érhetők el, amelyhez a partner az ügyfél előfizetéséhez tartozik.
+
+[Azure Key Vault](../../key-vault/general/index.yml):
+
+- Kulcstartók létrehozása az ügyfelek bérlői számára
+- Felügyelt identitás használata kulcstartók létrehozásához az ügyfelek bérlői számára
 
 [Azure Kubernetes szolgáltatás (ak)](../../aks/index.yml):
 

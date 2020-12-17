@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 724809dbce3ca1b5a36f4da0ba5c03d0f78897f5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577696"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614642"
 ---
 # <a name="viewing-multiple-resources-in-metrics-explorer"></a>Több erőforrás megtekintése Metrikaböngésző
 
@@ -71,7 +71,7 @@ Például az alábbi táblázat a százalékos CPU-t mutatja a 9VMs között. Az
 
 ![Képernyőkép, amely bemutatja, hogyan használhatja a felosztást a PROCESSZORok százalékos arányának megjelenítéséhez virtuális gépenként](./media/metrics-charts/026.png)
 
-A felosztás mellett a szűrés funkció használatával csak a megtekinteni kívánt erőforráscsoportok jeleníthetők meg.  Ha például meg szeretné tekinteni a virtuális gépek százalékos CPU-értékét egy adott erőforráscsoport esetében, a "szűrő hozzáadása" eszközzel szűrheti az erőforráscsoportot. Ebben a példában a keljfeljancsi alapján szűrünk, amely eltávolítja az erőforrásokhoz társított metrikákat a TailspinToysDemo-ben. 
+A felosztás mellett a szűrés funkció használatával csak a megtekinteni kívánt erőforráscsoportok jeleníthetők meg.  Ha például meg szeretné tekinteni a virtuális gépek százalékos CPU-értékét egy adott erőforráscsoport esetében, a "szűrő hozzáadása" eszközzel szűrheti az erőforráscsoportot. Ebben a példában a TailspinToysDemo alapján szűrünk, amely eltávolítja az erőforrásokhoz társított metrikákat a keljfeljancsi-ben. 
 
 ![Az erőforráscsoport szerinti szűrést bemutató képernyőkép](./media/metrics-charts/027.png)
 
@@ -80,7 +80,7 @@ A felosztás mellett a szűrés funkció használatával csak a megtekinteni kí
 > [!WARNING] 
 > A mérőszámok több erőforrás, erőforráscsoport vagy előfizetés alapján történő megjelenítéséhez az előfizetés szintjén kell figyelnie az olvasói jogosultságot. Ennek elvégzéséhez kövesse a [jelen dokumentum](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)utasításait. 
 
-A multi-Resource diagram rögzítéséhez kövesse az [itt](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#create-alert-rules)található utasításokat. 
+A multi-Resource diagram rögzítéséhez kövesse az [itt](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards)található utasításokat. 
 
 ## <a name="next-steps"></a>További lépések
 

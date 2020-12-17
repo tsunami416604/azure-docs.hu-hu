@@ -3,12 +3,12 @@ title: Az Azure Arc áttekintése
 description: Ismerje meg, hogy mi az Azure arc, és hogyan segíti az ügyfelek a hibrid erőforrásaik kezelését és irányítását más Azure-szolgáltatásokkal és-funkciókkal.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a8b054d9b7fd8f48dc667a5bd49a2c6994de1a3
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714154"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616524"
 ---
 # <a name="azure-arc-overview"></a>Az Azure Arc áttekintése
 
@@ -50,7 +50,7 @@ Az alábbiakban az Azure arc által jelenleg elérhető funkciók díjszabása o
 
 ### <a name="arc-enabled-servers"></a>Arc-kompatibilis kiszolgálók
 
-Az Azure arc-vezérlési sík funkció díjmentesen vehető igénybe.Ide tartoznak az alábbiak:
+Az Azure arc-vezérlési sík funkció díjmentesen vehető igénybe. Ide tartoznak az alábbiak:
 
 * Erőforrás-szervezet Azure felügyeleti csoportok és címkék használatával.
 
@@ -60,7 +60,7 @@ Az Azure arc-vezérlési sík funkció díjmentesen vehető igénybe.Ide tartozn
 
 * Környezetek és automatizálás sablonok és bővítmények segítségével.
 
-* Frissítés kezelése
+* Frissítéskezelés
 
 Az arc-kompatibilis kiszolgálókon használt bármely Azure-szolgáltatás (például Azure Security Center vagy Azure Monitor) a szolgáltatás díjszabása szerint lesz felszámítva. További információ: Azure- [díjszabási oldal](https://azure.microsoft.com/pricing/).
 
@@ -73,6 +73,8 @@ Az aktuális előzetes verzióban az Azure arc-kompatibilis Kubernetes díjmente
 Az aktuális előzetes verzióban az Azure arc-kompatibilis adatszolgáltatások díjmentesen vehetők igénybe.
 
 ## <a name="next-steps"></a>További lépések
+
+* Indítsa el az arc-kompatibilis szolgáltatásokat a [Jumpstart forgatókönyvekben](https://azurearcjumpstart.io/azure_arc_jumpstart/)
 
 * Ha többet szeretne megtudni az ív használatára képes kiszolgálókról, tekintse meg a következő [áttekintést](./servers/overview.md) :
 

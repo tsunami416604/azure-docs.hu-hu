@@ -195,8 +195,6 @@
           href: luis-how-to-azure-subscription.md
         - name: Alkalmazás- és verzióbeállítások
           href: how-to-application-settings-portal.md
-        - name: Migrálás tartalomkészítési erőforrásra
-          href: luis-migration-authoring.md
         - name: Szerzők és közreműködők
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
