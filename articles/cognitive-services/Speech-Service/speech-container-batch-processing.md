@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356705"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631992"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batch Processing Kit a Speech containers szolgáltatáshoz
 
@@ -86,13 +86,13 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs --entrypoint /bin/bash /mn
 A Batch-ügyfél futtatása:  
 
 ```Docker
-run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 A Batch-ügyfél és-tároló futtatása egyetlen paranccsal:
 
 ```Docker
-docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 
@@ -156,7 +156,7 @@ A Batch Processing Kit három módot kínál a `--run-mode` paraméter használa
 > [!NOTE]
 > Előfordulhat, hogy a Batch-ügyfél időnként felülírja a *Run. log* fájlt, ha az túl nagy lesz.
 
-Az ügyfél létrehoz egy *Run. log* fájlt a `-log_folder` Docker parancs argumentumában megadott könyvtárban `run` . Alapértelmezés szerint a rendszer a naplókat a HIBAKERESÉSi szinten rögzíti. Ugyanazokat a naplókat küldik el a rendszer `stdout/stderr` , és az argumentumtól függően szűrve `-log_level` . Ez a napló csak hibakereséshez szükséges, vagy ha nyomkövetést kell küldenie a támogatáshoz. A naplózási mappa az egyes hangfájlok Speech SDK-naplóit is tartalmazza.
+Az ügyfél létrehoz egy *Run. log* fájlt a `-log_folder` Docker parancs argumentumában megadott könyvtárban `run` . Alapértelmezés szerint a rendszer a naplókat a HIBAKERESÉSi szinten rögzíti. Ugyanazokat a naplókat a rendszer elküldi a `stdout/stderr` -nek, és a (z `-file_log_level` ) vagy argumentumtól függően szűrve lesz `console_log_level` . Ez a napló csak hibakereséshez szükséges, vagy ha nyomkövetést kell küldenie a támogatáshoz. A naplózási mappa az egyes hangfájlok Speech SDK-naplóit is tartalmazza.
 
 A által megadott kimeneti könyvtár `-output_folder` tartalmaz egy *run_summary.jst a*   fájlon, amely minden esetben 30 másodpercenként újraírható, vagy ha az új átírások befejeződtek. Ezt a fájlt használhatja a folyamat előrehaladásának ellenőrzéséhez. Emellett az összes fájl végleges futtatási statisztikáit és végső állapotát is tartalmazza a köteg befejezésekor. A köteg akkor fejeződik be, amikor a folyamat tiszta kijárattal rendelkezik. 
 

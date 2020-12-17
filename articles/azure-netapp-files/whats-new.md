@@ -12,20 +12,34 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/05/2020
+ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421702"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631159"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>A Azure NetApp Files újdonságai
 
 Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókról és fejlesztésekről nyújt összefoglalót. 
 
-## <a name="november-2020"></a>November 2020
+## <a name="december-2020"></a>2020. december
+
+* [Azure Application konzisztens pillanatkép-eszköz](azacsnap-introduction.md) (nyilvános előzetes verzió)    
+
+    Az Azure Application konzisztens pillanatkép-eszköz (AzAcSnap) egy olyan parancssori eszköz, amely lehetővé teszi, hogy leegyszerűsítse a harmadik féltől származó adatbázisok SAP HANA (például a SUSE és a RHEL) adatvédelmi funkcióit.   
+
+    A AzAcSnap kihasználja a kötet-pillanatfelvételt és a replikálási funkciókat Azure NetApp Files és az Azure nagyméretű példányain. A következő előnyöket biztosítja:
+
+    * Alkalmazás – konzisztens adatvédelem 
+    * Adatbázis-katalógus kezelése 
+    * *Ad hoc* mennyiségi védelem 
+    * A tárolási kötetek klónozása 
+    * A vész-helyreállítási támogatás 
+
+## <a name="november-2020"></a>2020. november
 
 * [Pillanatkép visszaállítása](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
 
@@ -52,10 +66,10 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 * Új [metrikák](azure-netapp-files-metrics.md):   
 
     * Új mennyiségi mérőszámok: 
-        * *Kötet lefoglalt mérete* : kötet kiépített mérete
+        * *Kötet lefoglalt mérete*: kötet kiépített mérete
     * Új készlet metrikái: 
-        * *Készlet lefoglalt mérete* : a készlet kiépített mérete 
-        * *A készlethez tartozó pillanatképek teljes mérete* : a készlet összes kötetének pillanatkép-méretének összege
+        * *Készlet lefoglalt mérete*: a készlet kiépített mérete 
+        * *A készlethez tartozó pillanatképek teljes mérete*: a készlet összes kötetének pillanatkép-méretének összege
 
 ## <a name="july-2020"></a>2020. július
 
@@ -89,6 +103,6 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 
     Azure NetApp Files lehetővé teszi olyan további fiókok hozzáadását, amelyek emelt szintű jogosultságokat igényelnek a Azure NetApp Fileshoz való használatra létrehozott számítógépfiók számára. A megadott fiókok a fájl vagy mappa szintjén módosíthatják az NTFS-engedélyeket. Megadhat például egy nem Kiemelt szolgáltatásfiók-fiókot, amely az adatáttelepítés során az SMB-fájlmegosztás Azure NetApp Files-ben való áttelepítésére szolgál. A biztonsági mentési házirend felhasználói szolgáltatás jelenleg előzetes verzióban érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Mi az az Azure NetApp Files?](azure-netapp-files-introduction.md)
 * [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md) 

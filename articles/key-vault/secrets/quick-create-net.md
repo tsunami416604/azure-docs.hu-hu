@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: dcf7c8db955b2e85ad7d1c047c714eb2c5968455
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e0141d4a5658b8612ee083c6ed1825b10c0009ec
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780807"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631708"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Rövid útmutató: Azure Key Vault a .NET-hez készült titkos ügyféloldali kódtár (SDK v4)
 
@@ -159,7 +159,7 @@ A titkos kód most már mentve van `secret.Value` .
 
 ### <a name="delete-a-secret"></a>Titkos kulcs törlése
 
-Végül törölje a titkos kulcsot a Key vaultból a [StartDeleteSecretAsync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) és a [PurgeDeletedSecretAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.purgedeletedsecretasync) metódussal.
+Végül törölje a titkos kulcsot a Key vaultból a [StartDeleteSecretAsync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) és a [PurgeDeletedSecretAsync](/dotnet/api/azure.security.keyvault.keys.keyclient) metódussal.
 
 ```csharp
 var operation = await client.StartDeleteSecretAsync("mySecret");
@@ -244,7 +244,7 @@ Deleting your secret from <your-unique-keyvault-name> ... done.
 Purging your secret from <your-unique-keyvault-name> ... done.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, tekintse meg a következő cikkeket:
 

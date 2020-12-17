@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: ff51c2a71dfcaec580733a92e265628ac816e229
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 223f8acd6aad7aaf4c37e0b2eae2df882ed2ad1d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096061"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629374"
 ---
 # <a name="tutorial-to-configure-zscaler-private-access-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Oktatóanyag a Zscaler privát hozzáférésének konfigurálásához Azure Active Directory B2C a biztonságos hibrid hozzáféréshez
 
@@ -46,7 +46,7 @@ Az alábbi ábra azt mutatja be, hogyan integrálható a ZPA a Azure AD B2Cokkal
 
 ![A kép a zscaler architektúra diagramját mutatja](media/partner-zscaler/zscaler-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy ZPA felhasználói portálon vagy egy ZPA Browser Access alkalmazásban érkezik meg.
 | 2. | Az ZPA megköveteli a felhasználói környezet információit, mielőtt eldöntheti, hogy engedélyezi-e a felhasználó számára a webalkalmazás elérését. A felhasználó hitelesítéséhez a ZPA SAML-átirányítást végez a Azure AD B2C bejelentkezési oldalára.  
@@ -125,7 +125,7 @@ Az előző lépésben be kell szereznie egy SAML-metaadatok URL-címét a követ
 
 ahol a a `<tenant-name>` Azure ad B2C bérlő neve, és az az `<policy-name>` Egyéni SAML-szabályzat neve, amelyet az előző lépésben hozott létre.
 
-Például: https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata
+Például: " https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata "
 
 Nyisson meg egy webböngészőt, és navigáljon az SAML-metaadatok URL-címéhez. Amikor az oldal betöltődik, kattintson a jobb gombbal az oldal bármely pontjára. Válassza az **oldal mentése másként** lehetőséget, és mentse a fájlt a számítógépre; ezt a következő részben fogja használni.
 

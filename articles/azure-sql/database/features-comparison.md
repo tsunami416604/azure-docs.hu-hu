@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 11/10/2020
-ms.openlocfilehash: b40f618b65af6fd7a6d283431aaf63c2cc1dcd1a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: c30cecf0b480a1765f04ee48a0fd66f4ddd52708
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368460"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630326"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Szolgáltatások összehasonlítása: Azure SQL Database és az Azure SQL felügyelt példánya
 
@@ -64,6 +64,7 @@ A következő táblázat a SQL Server főbb funkcióit sorolja fel, és informá
 | [Elosztott tranzakciók – MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nem – lásd a [rugalmas tranzakciókat](elastic-transactions-overview.md) |  Nem – lásd a [csatolt kiszolgálók közötti különbségeket](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers). A Migrálás során próbáljon összevonni több elosztott SQL Server-példány adatbázisát egyetlen SQL felügyelt példányba. |
 | [DML-eseményindítók](/sql/relational-databases/triggers/create-dml-triggers) | A legtöbb esetben – lásd az egyes utasításokat |  Yes |
 | [Dinamikus felügyeleti nézetek](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | A legtöbb esetben – lásd az egyes DMV |  Igen – lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
+| [Rugalmas lekérdezés](elastic-query-overview.md) (nyilvános előzetes verzióban) | Igen, a szükséges RDBMS-típussal. | Igen, a szükséges RDBMS-típussal. |
 | [Eseményértesítések](/sql/relational-databases/service-broker/event-notifications) | Nem – a [riasztások](alerts-insights-configure-portal.md) megtekintése | No |
 | [Kifejezések](/sql/t-sql/language-elements/expressions-transact-sql) |Igen | Yes |
 | [Kiterjesztett események (XEvent)](/sql/relational-databases/extended-events/extended-events) | Néhány – lásd [a kiterjesztett eseményeket SQL Database](xevent-db-diff-from-svr.md) | Igen – lásd a [kiterjesztett események különbségeit](../managed-instance/transact-sql-tsql-differences-sql-server.md#extended-events) |

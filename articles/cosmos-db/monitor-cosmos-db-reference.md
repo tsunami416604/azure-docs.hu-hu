@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 1b1ff2649f54005eff139b1ed1d4d0b4ea152b1f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 75df985377e6ed1764985f8d0b6b44323f249b8a
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855022"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632009"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Azure Cosmos DB adathivatkozás figyelése
 
@@ -26,7 +26,7 @@ A Azure Cosmos DBnak megfelelő metrikák a névtérben **Cosmos dB standard met
 
 ### <a name="request-metrics"></a>Kérelmek metrikái
 
-|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa) |Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa) |Description|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
 | TotalRequests (összes kérelem) | Darabszám (darabszám) | Benyújtott kérelmek száma| DatabaseName, CollectionName, régió, StatusCode| Mind | TotalRequests, http-2xx, http-3xx, http 400, HTTP 401, belső kiszolgálóhiba, szolgáltatás nem érhető el, szabályozott kérelmek, átlagos kérelmek másodpercenként | Az állapotkód, a tároló percenkénti részletességgel történő figyelésére használatos. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal. |
 | MetadataRequests (metaadat-kérelmek) |Darabszám (darabszám) | A metaadat-kérelmek száma. Azure Cosmos DB minden fiókhoz rendszermetaadat-tárolót tart fenn, amely lehetővé teszi a gyűjtemények, adatbázisok stb. és azok konfigurációinak számbavételét díjmentesen. | DatabaseName, CollectionName, régió, StatusCode| Mind| |Metaadat-kérelmek miatti szabályozások figyelésére használatos.|
@@ -34,7 +34,7 @@ A Azure Cosmos DBnak megfelelő metrikák a névtérben **Cosmos dB standard met
 
 ### <a name="request-unit-metrics"></a>Adategység metrikáinak kérése
 
-|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Description|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
 | MongoRequestCharge (Mongo-kérelem díja) | Darabszám (összesen) |Felhasznált Mongo-kérelmek egységei| DatabaseName, CollectionName, régió, CommandName, ErrorCode| Mind |Mongo-lekérdezési kérelem díja, Mongo frissítési kérelmének díja, Mongo törlési kérelmének díja, Mongo-kérelem díja, Mongo száma kérelmek díja| Egy percen belül figyeli a Mongo-erőforrást.|
 | TotalRequestUnits (összes kérelem egysége)| Darabszám (összesen) | Felhasználható kérési egységek| DatabaseName, CollectionName, régió, StatusCode |Mind| TotalRequestUnits| A teljes RU-használat figyelésére használható percenkénti részletességgel. Ha másodpercenként átlagosan felhasznált RU-t szeretné lekérni, használja a teljes összesítést percenként, és ossza meg a 60-as számmal.|
@@ -42,7 +42,7 @@ A Azure Cosmos DBnak megfelelő metrikák a névtérben **Cosmos dB standard met
 
 ### <a name="storage-metrics"></a>Tárolási metrikák
 
-|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Description|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
 | AvailableStorage (rendelkezésre álló tár) |Bájtok (összesen) | Régiónként 5 perces részletességgel jelentett teljes rendelkezésre álló tárterület| DatabaseName, CollectionName, régió| 5 M| Rendelkezésre álló tárhely| A rendelkezésre álló tárolókapacitás (csak a rögzített tárolási gyűjtemények esetében érvényes) figyeléséhez használatos minimális részletességnek 5 percnek kell lennie.| 
 | DataUsage (adathasználat) |Bájtok (összesen) |Régiónként 5 perces részletességgel jelentett teljes adatfelhasználás| DatabaseName, CollectionName, régió| 5 M |Adatméret | A tároló és régió teljes adatfelhasználásának figyelésére szolgál, a minimális részletességnek 5 percnek kell lennie.|
@@ -52,20 +52,20 @@ A Azure Cosmos DBnak megfelelő metrikák a névtérben **Cosmos dB standard met
 
 ### <a name="latency-metrics"></a>Késési metrikák
 
-|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Description|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
 | ReplicationLatency (replikációs késés)| Ezredmásodperc (minimum, maximum, átlag) | P99 replikációs késés a forrás-és a célcsoportok között a Geo-kompatibilis fiókhoz| SourceRegion, TargetRegion| Mind | Egy földrajzilag replikált fiók két régiója közötti P99-replikációs késés figyelésére használatos. |
 | Kiszolgálóoldali késés| Ezredmásodperc (átlagos) | A kiszolgáló által a kérelem feldolgozásához szükséges idő. | CollectionName, ConnectionMode, DatabaseName, OperationType, PublicAPIType, régió | Mind | A kérés késésének figyelésére szolgál a Azure Cosmos DB kiszolgálón. |
 
 ### <a name="availability-metrics"></a>Rendelkezésre állási metrikák
 
-|Metrika (metrika megjelenítendő neve) |Egység (aggregáció típusa)|Leírás| Időbeli részletesség| Örökölt metrika leképezése | Használat |
+|Metrika (metrika megjelenítendő neve) |Egység (aggregáció típusa)|Description| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---|
 | ServiceAvailability (szolgáltatás rendelkezésre állása)| Százalék (minimum, maximum) | A fiók egy órás részletességgel kéri a rendelkezésre állást| 1H | Szolgáltatás rendelkezésre állása | Az átadott kérelmek százalékos arányát jelöli. A rendszer hibát okozó kérést küld, ha az állapotkód 410, 500 vagy 503, amely a fiók rendelkezésre állásának figyelésére használatos az óránkénti részletességgel. |
 
 ### <a name="cassandra-api-metrics"></a>Cassandra API metrikák
 
-|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Használat |
+|Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Description|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
 | CassandraRequests (Cassandra-kérelmek) | Darabszám (darabszám) | Cassandra API kérelmek száma| DatabaseName, CollectionName, ErrorCode, régió, OperationType, ResourceType| Mind| A Cassandra-kérések figyelésére szolgál percenkénti részletességgel. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal.|
 | CassandraRequestCharges (Cassandra-kérelmek díjai) | Darabszám (Sum, min, Max, AVG) | A Cassandra API által felhasznált kérelmek egységei | DatabaseName, CollectionName, régió, OperationType, ResourceType| Mind| Egy Cassandra API fiók által percenként használt RUs figyelésére használatos.|
@@ -77,9 +77,9 @@ További információkért tekintse [meg az Azure monitor által támogatott pla
 
 A következő táblázat a Azure Cosmos DB erőforrás-naplófájljainak tulajdonságait sorolja fel. Az erőforrás-naplókat Azure Monitor naplókba vagy az Azure Storage-ba gyűjti. Azure Monitor a rendszer a naplókat az erőforrás-szolgáltató * * neve alatt gyűjti a **AzureDiagnostics** táblában `MICROSOFT.DOCUMENTDB` .
 
-| Azure Storage-mező vagy-tulajdonság | Azure Monitor naplók tulajdonsága | Leírás |
+| Azure Storage-mező vagy-tulajdonság | Azure Monitor naplók tulajdonsága | Description |
 | --- | --- | --- |
-| **time** | **TimeGenerated** | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
+| **idő** | **TimeGenerated** | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
 | **resourceId** | **Erőforrás** | Az Azure Cosmos DB fiók, amely számára engedélyezve vannak a naplók.|
 | **Kategória** | **Kategória** | A Azure Cosmos DB, a **DataPlaneRequests**, a **MongoRequests**, a **QueryRuntimeStatistics**, a **PartitionKeyStatistics**, a **PartitionKeyRUConsumption** és a **ControlPlaneRequests** a rendelkezésre álló naplózási típusok. |
 | **operationName** | **OperationName** | A művelet neve. A művelet neve lehet:,,,,,,,,,  `Create` `Update` ,, `Read` `ReadFeed` `Delete` `Replace` `Execute` `SqlQuery` `Query` `JSQuery` `Head` `HeadFeed` vagy `Upsert` .   |
@@ -92,7 +92,7 @@ A következő táblázat a Azure Cosmos DB erőforrás-naplófájljainak tulajdo
 | **clientIpAddress** | **clientIpAddress_s** | Az ügyfél IP-címe. |
 | **requestCharge** | **requestCharge_s** | A művelet által használt RU/s száma |
 | **collectionRid** | **collectionId_s** | A gyűjtemény egyedi azonosítója.|
-| **duration** | **duration_d** | A művelet időtartama ezredmásodpercben. |
+| **időtartama** | **duration_d** | A művelet időtartama ezredmásodpercben. |
 | **requestLength** | **requestLength_s** | A kérelem hossza (bájt). |
 | **responseLength** | **responseLength_s** | A válasz hossza (bájt).|
 | **resourceTokenPermissionId** | **resourceTokenPermissionId_s** | Ez a tulajdonság jelzi a megadott erőforrás-jogkivonat engedélyének azonosítóját. Az engedélyekkel kapcsolatos további tudnivalókért tekintse meg az [adatai biztonságos elérését](./secure-access-to-data.md#permissions) ismertető cikket. |
@@ -104,7 +104,7 @@ Az összes Azure Monitor naplózási kategória és a társított sémák hivatk
 
 ## <a name="azure-monitor-logs-tables"></a>Azure Monitor naplók táblái
 
-Azure Cosmos DB Kusto-táblákat használ Azure Monitor naplókból. Ezeket a táblákat a log Analytics használatával kérdezheti le. A Kusto Bales-alkalmazások listáját a [Azure monitor naplók táblázatának dokumentációjában](/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db) találja.
+Azure Cosmos DB Kusto-táblákat használ Azure Monitor naplókból. Ezeket a táblákat a log Analytics használatával kérdezheti le. A Kusto Bales-alkalmazások listáját a [Azure monitor naplók táblázatának dokumentációjában](/azure/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db) találja.
 
 ## <a name="see-also"></a>Lásd még:
 

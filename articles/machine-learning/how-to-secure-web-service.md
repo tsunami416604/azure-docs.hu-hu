@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: f7e16400f6460f7479cdffd1928126cdd70a8f0c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 872958f87e7d75427d5939aed73314920cfaf3ea
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503998"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631091"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével
 
@@ -75,34 +75,23 @@ Ha tanúsítványt kér, meg kell adnia a webszolgáltatáshoz használni kívá
 
 A szolgáltatás a TLS-vel való üzembe helyezéséhez (vagy újbóli üzembe helyezéséhez) állítsa a *ssl_enabled* paramétert "true" értékre, ahol alkalmazható. Állítsa a *ssl_certificate* paramétert a *tanúsítványfájl* értékére. Állítsa a *ssl_key* értékét a *kulcsfájl* értékére.
 
-### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Üzembe helyezés az AK-ban és a Field-programozható Gate array (FPGA)
+### <a name="deploy-on-azure-kubernetes-service"></a>Üzembe helyezés az Azure Kubernetes Service-ben
 
   > [!NOTE]
   > Az ebben a szakaszban található információk akkor is érvényesek, ha biztonságos webszolgáltatást telepít a tervezőhöz. Ha nem ismeri a Python SDK használatát, tekintse [meg a mi a Pythonhoz készült Azure Machine learning SDK?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)című témakört.
 
-Ha AK-ra végez üzembe helyezést, létrehozhat egy új AK-fürtöt, vagy csatolhat egy meglévőt. A fürtök létrehozásával vagy csatolásával kapcsolatos további információkért lásd: [modell üzembe helyezése Azure Kubernetes Service-fürtön](how-to-deploy-azure-kubernetes-service.md).
-  
--  Ha új fürtöt hoz létre, akkor **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)**-t használ.
-- Ha meglévő fürtöt csatlakoztat, használja a **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)**. Mindkettő olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik.
+A **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** és a **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** egyaránt olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik, és a TLS engedélyezéséhez **enable_ssl** metódust is használhat.
 
-A **enable_ssl** metódus a Microsoft által biztosított, vagy a megvásárolt tanúsítvánnyal rendelkező tanúsítványt is használhat.
+A TLS-t a Microsoft-tanúsítvánnyal vagy a CA-ból vásárolt egyéni tanúsítvánnyal engedélyezheti. 
 
-> [!WARNING]
-> Ha az AK-fürt belső terheléselosztó használatával van konfigurálva, a Microsoft által biztosított tanúsítvány használata __nem támogatott__. A Microsoft által biztosított tanúsítvány használatához egy nyilvános IP-erőforrásra van szükség az Azure-ban, amely nem érhető el az AK-hoz, ha belső Load Balancerhez van konfigurálva.
-
-  * Ha tanúsítványt használ a Microsofttól, akkor a *leaf_domain_label* paramétert kell használnia. Ez a paraméter a szolgáltatás DNS-nevét hozza létre. A "contoso" érték például a "contoso" nevű tartománynevet hozza létre \<six-random-characters> \<azureregion> . cloudapp.azure.com ", ahol a a \<azureregion> szolgáltatást tartalmazó régió. Igény szerint a *overwrite_existing_domain* paraméterrel írhatja felül a meglévő *leaf_domain_label*.
-
-    A szolgáltatás a TLS-vel való üzembe helyezéséhez (vagy újbóli üzembe helyezéséhez) állítsa a *ssl_enabled* paramétert "true" értékre, ahol alkalmazható. Állítsa a *ssl_certificate* paramétert a *tanúsítványfájl* értékére. Állítsa a *ssl_key* értékét a *kulcsfájl* értékére.
-
-    > [!IMPORTANT]
-    > Ha tanúsítványt használ a Microsofttól, nem kell megvásárolnia a saját tanúsítványát vagy tartománynevét.
-
-    Az alábbi példa bemutatja, hogyan hozhat létre olyan konfigurációt, amely engedélyezi a TLS/SSL-tanúsítványt a Microsofttól:
+* **Ha tanúsítványt használ a Microsofttól**, akkor a *leaf_domain_label* paramétert kell használnia. Ez a paraméter a szolgáltatás DNS-nevét hozza létre. A "contoso" érték például a "contoso" nevű tartománynevet hozza létre \<six-random-characters> \<azureregion> . cloudapp.azure.com ", ahol a a \<azureregion> szolgáltatást tartalmazó régió. Igény szerint a *overwrite_existing_domain* paraméterrel írhatja felül a meglévő *leaf_domain_label*. Az alábbi példa bemutatja, hogyan hozhat létre olyan konfigurációt, amely engedélyezi a TLS-t a Microsoft-tanúsítvánnyal:
 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
@@ -112,20 +101,28 @@ A **enable_ssl** metódus a Microsoft által biztosított, vagy a megvásárolt 
     # Config used to attach an existing AKS cluster to your workspace and enable TLS
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
+    > [!IMPORTANT]
+    > Ha tanúsítványt használ a Microsofttól, nem kell megvásárolnia a saját tanúsítványát vagy tartománynevét.
 
-  * A *megvásárolt tanúsítvány* használatakor a *ssl_cert_pem_file*, *ssl_key_pem_file* és *ssl_cname* paramétereket kell használnia. Az alábbi példa bemutatja, hogyan használható a *. PEM* fájlok olyan konfiguráció létrehozásához, amely egy megvásárolt TLS/SSL-tanúsítványt használ:
+    > [!WARNING]
+    > Ha az AK-fürt belső terheléselosztó használatával van konfigurálva, a Microsoft által biztosított tanúsítvány használata __nem támogatott__ , és a TLS engedélyezéséhez egyéni tanúsítványt kell használnia.
 
+* A **megvásárolt egyéni tanúsítvány használatakor** a *ssl_cert_pem_file*, *ssl_key_pem_file* és *ssl_cname* paramétereket kell használnia. Az alábbi példa bemutatja, hogyan használható a. PEM fájlok olyan konfiguráció létrehozásához, amely egy megvásárolt TLS/SSL-tanúsítványt használ:
+ 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
@@ -150,23 +147,17 @@ További információ: [AciWebservice.deploy_configuration ()](/python/api/azure
 
 ## <a name="update-your-dns"></a>A DNS frissítése
 
-Ezt követően frissítenie kell a DNS-t, hogy az a webszolgáltatásra mutasson.
+Egyéni tanúsítvánnyal vagy ACI-vel történő üzembe helyezés esetén a DNS-rekordot úgy kell frissíteni, hogy az a pontozási végpont IP-címére mutasson.
 
-+ **Container Instances esetén:**
+  > [!IMPORTANT]
+  > Ha a Microsofttól származó tanúsítványt használ az AK-alapú telepítéshez, nem kell manuálisan frissítenie a fürt DNS-értékét. Az értéket automatikusan kell beállítani.
 
-  A tartománynév-regisztráló eszközeit használva frissítse a tartománynév DNS-rekordját. A rekordnak a szolgáltatás IP-címére kell mutatnia.
+Az alábbi lépéseket követve frissítheti az Egyéni tartománynév DNS-rekordját:
+* Pontozási végpont IP-címének lekérése a pontozási végpont URI-ja alapján, amely általában a formátuma *http://104.214.29.152:80/api/v1/service/<service-name>/score* . 
+* A tartománynév-regisztráló eszközeit használva frissítse a tartománynév DNS-rekordját. A rekordnak a pontozási végpont IP-címére kell mutatnia.
+* A DNS-rekord frissítése után az *nslookup Custom-domain-name* paranccsal ellenőrizheti a DNS-feloldást. Ha a DNS-rekord megfelelően frissül, akkor az Egyéni tartománynév a pontozási végpont IP-címére mutat.
+* Perc vagy óra késése is lehet, mielőtt az ügyfelek fel tudják oldani a tartománynevet a regisztrátortól és a tartománynévhez konfigurált "élettartamtól" (TTL) függően.
 
-  Perc vagy óra késése is lehet, mielőtt az ügyfelek fel tudják oldani a tartománynevet a regisztrátortól és a tartománynévhez konfigurált "élettartamtól" (TTL) függően.
-
-+ **AK esetében:**
-
-  > [!WARNING]
-  > Ha az *leaf_domain_label* használatával hozza létre a szolgáltatást a Microsofttól származó tanúsítvánnyal, ne frissítse manuálisan a fürt DNS-értékét. Az értéket automatikusan kell beállítani.
-  >
-  > Ha az AK-fürt belső terheléselosztó használatával van konfigurálva, a Microsoft által biztosított tanúsítvány használata ( *leaf_domain_label*) __nem támogatott__. A Microsoft által biztosított tanúsítvány használatához egy nyilvános IP-erőforrásra van szükség az Azure-ban, amely nem érhető el az AK-hoz, ha belső Load Balancerhez van konfigurálva.
-  Frissítse az AK-fürt nyilvános IP-címének DNS-címét a **konfiguráció** lapon a bal oldali ablaktábla **Beállítások** területén. (Lásd az alábbi ábrát.) A nyilvános IP-cím olyan erőforrástípus, amely az AK-ügynök csomópontjait és egyéb hálózati erőforrásokat tartalmazó erőforráscsoport alatt jön létre.
-
-  [![Azure Machine Learning: webszolgáltatások biztonságossá tétele a TLS-vel](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-tlsssl-certificate"></a>A TLS/SSL-tanúsítvány frissítése
 

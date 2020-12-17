@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5bc00ecf5e4c8ae440ce6610e9be8c8f77ed666
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862207"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630615"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Telepítse át a 2.0-s és a v 3.0-s verzióját a REST API
 
@@ -33,12 +33,16 @@ A feltörési változások listáját az alkalmazkodáshoz szükséges módosít
 ### <a name="host-name-changes"></a>Állomásnév módosítása
 
 A végpontok állomásneve módosultak a verzióról a verzióra `{region}.cris.ai` `{region}.api.cognitive.microsoft.com` . Az új végpontokhoz tartozó elérési utak már nem tartalmaznak, `api/` mert az állomásnév részét képezi. A [hencegő dokumentum](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) felsorolja az érvényes régiókat és elérési utakat.
+>[!IMPORTANT]
+>Módosítsa a gazdagépet a helyről a `{region}.cris.ai` -re, `{region}.api.cognitive.microsoft.com` ahol a régió a beszédfelismerési előfizetés régiója. Távolítsa el az `api/` ügyfél kódjának bármely útvonalát is.
 
 ### <a name="identity-of-an-entity"></a>Entitás identitása
 
 A tulajdonság `id` most `self` . A v2-ben az API-felhasználóknak tudnia kellett, hogyan jönnek létre az API-k elérési útjai. Ez nem bővíthető és szükségtelen munkát igényelt a felhasználótól. A tulajdonságot ( `id` UUID) a `self` (karakterlánc) helyettesíti, amely az entitás (URL) helye. Az érték továbbra is egyedi az összes entitás között. Ha a a `id` kódban karakterláncként van tárolva, az Átnevezés elegendő az új séma támogatásához. Mostantól használhatja a `self` tartalmat URL-címként az `GET` `PATCH` `DELETE` entitáshoz, és Rest-hívásokat is.
 
 Ha az entitás további, más elérési utakon elérhető funkciókkal is rendelkezik, a lista alatt találhatók `links` . Az átíráshoz az alábbi példa egy külön módszert mutat be az `GET` átirat tartalmára:
+>[!IMPORTANT]
+>Nevezze át a tulajdonságot az `id` `self` ügyfél kódjába. Szükség esetén módosítsa a típust `uuid` `string` . 
 
 **v2 átirat:**
 
@@ -91,6 +95,9 @@ A `values` tulajdonság a rendelkezésre álló gyűjtemény entitások egy rés
 
 Ehhez a változáshoz az `GET` összes elem visszaadását követően egy hurokban kell meghívnia a gyűjteményt.
 
+>[!IMPORTANT]
+>Ha a GET `speechtotext/v3.0/{collection}` értéke tartalmazza a értéket `$.@nextLink` , folytassa a kiadást, `GETs` amíg nincs `$.@nextLink` beállítva a `$.@nextLink` gyűjtemény összes elemének beolvasása.
+
 ### <a name="creating-transcriptions"></a>Átiratok létrehozása
 
 Az átírások kötegek létrehozásával kapcsolatos részletes leírást a [Batch-átírási útmutatóban](./batch-transcription.md)találhat.
@@ -134,6 +141,8 @@ Az új tulajdonsága `timeToLive` `properties` segít a meglévő befejezett ent
   }
 }
 ```
+>[!IMPORTANT]
+>Nevezze át a tulajdonságot egy `recordingsUrl` `contentUrls` URL-cím helyett, és adjon át egy URL-tömböt. A vagy a helyett adja meg a beállításokat `diarizationEnabled` `wordLevelTimestampsEnabled` `bool` `string` .
 
 ### <a name="format-of-v3-transcription-results"></a>V3 átirat eredményeinek formátuma
 
@@ -201,6 +210,9 @@ Egy v3 átírási eredmény mintája. A különbségeket a megjegyzések írják
   ]
 }
 ```
+>[!IMPORTANT]
+>Deszerializálja az átírás eredményét az új típusba, ahogy az a fentiekben látható. Egy hangcsatornán belüli egyetlen fájl helyett a csatornák megkülönböztetése az egyes elemekhez tartozó tulajdonságok értékének ellenőrzésével `channel` `recognizedPhrases` . Minden bemeneti fájlhoz már létezik egyetlen eredményhalmaz.
+
 
 ### <a name="getting-the-content-of-entities-and-the-results"></a>Az entitások és az eredmények tartalmának beolvasása
 
@@ -269,6 +281,9 @@ A v3-as verzióban `links` vegyen fel egy nevű altulajdonságot, `files` Ha az 
 
 A `kind` tulajdonság a fájl tartalmának formátumát jelzi. Az átírások esetében a fajta fájl `TranscriptionReport` összefoglalása a feladatoknak és a fajta fájloknak az `Transcription` eredménye.
 
+>[!IMPORTANT]
+>A műveletek eredményeinek lekéréséhez használja a-t a on `GET` `/speechtotext/v3.0/{collection}/{id}/files` vagy a válaszában `GET` `/speechtotext/v3.0/{collection}/{id}` `/speechtotext/v3.0/{collection}` .
+
 ### <a name="customizing-models"></a>Modellek testreszabása
 
 A v3 előtt az _akusztikus modell_ és a _nyelvi modell_ megkülönböztetése történt a modell betanítása előtt. Ez a különbség azt eredményezte, hogy a végpontok vagy átírások létrehozásakor több modellt kell megadnia. A hívó számára a folyamat leegyszerűsítése érdekében eltávolítjuk a különbségeket, és minden a modell betanításához használt adatkészletek tartalmától függ. Ezzel a módosítással a modell létrehozása mostantól támogatja a vegyes adatkészleteket (a nyelvi adatokat és az akusztikai adatokat). A végpontoknak és az átírásoknak már csak egy modellre van szükségük.
@@ -277,11 +292,17 @@ Ezzel a módosítással a `kind` `POST` művelethez szükséges egy műveletet e
 
 A betanított modell eredményeinek javításához a nyelvi képzés során a rendszer automatikusan használja az akusztikai adatmennyiséget. Általánosságban elmondható, hogy a V3 API-val létrehozott modellek pontosabb eredményeket biztosítanak, mint a v2 API-val létrehozott modellek.
 
+>[!IMPORTANT]
+>Az akusztikus és a nyelvi modell részének testreszabásához továbbítsa a bejegyzés összes szükséges nyelvét és akusztikai adatkészletét a következőre: `datasets[]` `/speechtotext/v3.0/models` . Ez egyetlen modellt hoz létre, amelyben mindkét rész testre van szabva.
+
 ### <a name="retrieving-base-and-custom-models"></a>Alapszintű és egyéni modellek beolvasása
 
 A rendelkezésre álló modellek leegyszerűsítése érdekében a v3 elválasztta a "alapmodellek" gyűjteményeit az ügyfél "testreszabott modelljei" alapján. A két útvonal most `GET /speechtotext/v3.0/models/base` és `GET /speechtotext/v3.0/models/` .
 
 A v2-ben az összes modell egyetlen válaszban lett visszaadva.
+
+>[!IMPORTANT]
+>A testreszabáshoz megadott alapmodellek listájának lekéréséhez használja a következőt: `GET` `/speechtotext/v3.0/models/base` . Megtalálhatja a saját testreszabott modelljeit is `GET` `/speechtotext/v3.0/models` .
 
 ### <a name="name-of-an-entity"></a>Entitás neve
 
@@ -302,6 +323,9 @@ A `name` tulajdonság most `displayName` . Ez konzisztens más Azure API-kkal, h
     "displayName": "Transcription using locale en-US"
 }
 ```
+
+>[!IMPORTANT]
+>Nevezze át a tulajdonságot az `name` `displayName` ügyfél kódjába.
 
 ### <a name="accessing-referenced-entities"></a>A hivatkozott entitások elérése
 
@@ -351,6 +375,10 @@ A v2-ben a hivatkozott entitások mindig beágyazottak voltak, például egy vé
 
 Ha a fenti példában látható módon kell felhasználnia egy hivatkozott modell részleteit, egyszerűen adja meg a beolvasást `$.model.self` .
 
+>[!IMPORTANT]
+>A hivatkozott entitások metaadatainak lekéréséhez adja meg a beolvasást `$.{referencedEntity}.self` , például az átíráshoz tartozó modell lekéréséhez `GET` `$.model.self` .
+
+
 ### <a name="retrieving-endpoint-logs"></a>Végponti naplók beolvasása
 
 A szolgáltatás által támogatott naplózási végpont eredményeinek v2-es verziója. A végpontok eredményeinek a v2-vel való lekéréséhez hozzon létre egy "adatexportálást", amely az adott időtartomány által meghatározott eredmények pillanatképét képviseli. A kötegek exportálásának folyamata nem volt rugalmas. A V3 API hozzáférést biztosít az egyes fájlokhoz, és lehetővé teszi a rajtuk való iterációt.
@@ -392,6 +420,9 @@ A végponti naplók tördelése az összes többi gyűjteményhez hasonlóan mű
 
 A v3-as verzióban minden végponti napló egyenként törölhető, `DELETE` Ha egy műveletet ad ki egy `self` fájlon vagy `DELETE` a on használatával `$.links.logs` . A befejezési dátum megadásához a lekérdezési paramétert `endDate` hozzá lehet adni a kéréshez.
 
+>[!IMPORTANT]
+>A naplófájlok `/api/speechtotext/v2.0/endpoints/{id}/data` `/v3.0/endpoints/{id}/files/logs/` külön való eléréséhez a használaton alapuló napló-exportálások létrehozása helyett. 
+
 ### <a name="using-custom-properties"></a>Egyéni tulajdonságok használata
 
 Ha az egyéni tulajdonságokat el szeretné különíteni a választható konfigurációs tulajdonságoktól, az összes explicit módon elnevezett tulajdonság mostantól a `properties` tulajdonságban található, és a hívók által meghatározott összes tulajdonság már a `customProperties` tulajdonságban található.
@@ -424,15 +455,26 @@ Ha az egyéni tulajdonságokat el szeretné különíteni a választható konfig
 
 Ez a módosítás azt is lehetővé teszi, hogy a megfelelő típusokat használja az összes explicit módon megnevezett tulajdonsághoz `properties` (például string helyett Boolean).
 
+>[!IMPORTANT]
+>Adja át az összes egyéni tulajdonságot a `customProperties` `properties` `POST` kérések helyett.
+
 ### <a name="response-headers"></a>Válaszfejlécek
 
 a (z) v3 már nem adja vissza a `Operation-Location` fejlécet a `Location` kérelmek fejlécén kívül `POST` . A v2-ben mindkét fejléc értéke azonos volt. Most már csak `Location` a visszaadott értéket adja vissza.
 
 Mivel az új API-verziót mostantól az Azure API Management (APIM) felügyeli, a szabályozáshoz kapcsolódó fejlécek, `X-RateLimit-Limit` `X-RateLimit-Remaining` és `X-RateLimit-Reset` nem szerepelnek a válasz fejlécében.
 
+>[!IMPORTANT]
+>A helyett olvassa el a helyet a válasz fejlécből `Location` `Operation-Location` . 429-hibakód esetén olvassa el a `Retry-After` fejléc értékét a, vagy a helyett `X-RateLimit-Limit` `X-RateLimit-Remaining` `X-RateLimit-Reset` .
+
+
 ### <a name="accuracy-tests"></a>Pontossági tesztek
 
 A pontossági tesztek átnevezve lettek az értékelésre, mert az új név jobban leírja, hogy mit jelentenek. Az új elérési utak a következők: `https://{region}.api.cognitive.microsoft.com/speechtotext/v3.0/evaluations` .
+
+>[!IMPORTANT]
+>Nevezze át az elérésiút-szegmenst az `accuracytests` `evaluations` ügyfél kódjába.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

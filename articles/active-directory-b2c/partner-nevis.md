@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 470dc146d1658b97a707be8cb7ad868d943a8e60
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170896"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629391"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Útmutató a Nevis konfigurálásához a Azure Active Directory B2C a jelszóval nem rendelkező hitelesítéshez
 
@@ -46,7 +46,7 @@ A diagram a megvalósítást mutatja be.
 
 ![Magas szintű jelszó-bejelentkezési folyamat Azure AD B2C és Nevis](./media/partner-nevis/nevis-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználók Azure AD B2C bejelentkezési és regisztrációs szabályzattal próbálnak bejelentkezni vagy regisztrálni egy alkalmazásba.
 | 2. | A regisztráció során a Nevis-hozzáférési alkalmazás egy QR-kóddal van regisztrálva a felhasználói eszközön. A rendszer a felhasználói eszközön létrehoz egy titkos kulcsot, amely a felhasználói kérések aláírására szolgál.
@@ -134,9 +134,9 @@ Két e-mailt fog kapni:
 
 4. **Mentse** a fájl módosításait.
 
-5. Kövesse az [utasításokat](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#2-create-an-azure-blob-storage-account) , és töltse fel az **nevis.html** -fájlt az Azure Blob Storage-ba.
+5. Kövesse az [utasításokat](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account) , és töltse fel az **nevis.html** -fájlt az Azure Blob Storage-ba.
 
-6. Kövesse az [utasításokat](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) , és engedélyezze a fájlhoz a több eredetű erőforrás-megosztást (CORS).
+6. Kövesse az [utasításokat](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors) , és engedélyezze a fájlhoz a több eredetű erőforrás-megosztást (CORS).
 
 7. Miután a feltöltés befejeződött, és a CORS engedélyezve van, válassza ki a **nevis.html** fájlt a listában.
 
@@ -232,7 +232,7 @@ Két e-mailt fog kapni:
 
 10. Adja meg az űrlapot az új jelszóval és a megjelenítendő névvel.
 
-11. Kattintson a **Létrehozás** gombra.
+11. Válassza a **Létrehozás** lehetőséget.
 
 12. Ekkor megjelenik a QR-kód vizsgálata oldal.
 

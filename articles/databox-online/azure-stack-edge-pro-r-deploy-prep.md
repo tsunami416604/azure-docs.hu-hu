@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: d992748e9829993acc28795778baae3eb92e88f3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468320"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630768"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Oktatóanyag: Felkészülés a Azure Stack Edge Pro R üzembe helyezésére
 
@@ -41,7 +41,7 @@ Azure Stack Edge Pro R üzembe helyezéséhez tekintse meg az alábbi oktatóany
 |  | |
 |**Üzembe helyezési oktatóanyagok** |Ezek az oktatóanyagok a Azure Stack Edge Pro R-eszköz éles környezetben történő üzembe helyezéséhez szükségesek. |
 |**[1. a Azure Portal előkészítése az eszközre](azure-stack-edge-pro-r-deploy-prep.md)** |Hozza létre és konfigurálja a Azure Stack Edge-erőforrást, mielőtt telepítené a Azure Stack Box Edge fizikai eszközét. |
-|**[2. az eszköz telepítése](azure-stack-edge-pro-r-deploy-install.md)**|A fizikai eszköz kicsomagolása, rack és kábeles csatlakoztatása.  |
+|**[2. az eszköz telepítése](azure-stack-edge-pro-r-deploy-install.md)**|Ellenőrizze és csatlakoztassa a fizikai eszközét.  |
 |**[3. kapcsolódás az eszközhöz](azure-stack-edge-pro-r-deploy-connect.md)** |Az eszköz telepítése után kapcsolódjon az eszköz helyi webes felhasználói felületéhez.  |
 |**[4. a hálózati beállítások konfigurálása](azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy.md)** |Konfigurálja a hálózatot, beleértve az eszköz számítási hálózatát és WebProxy-beállításait.   |
 |**[5. eszközbeállítások megadása](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |Rendeljen hozzá egy eszköznév és egy DNS-tartományt, konfigurálja a frissítési kiszolgálót és az eszköz idejét. |
@@ -91,7 +91,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
 1. A Microsoft Azure hitelesítő adataival jelentkezzen be a Azure Portalba ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com) .
 
-2. A bal oldali panelen válassza az **+ erőforrás létrehozása** lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Kattintson a **Létrehozás** gombra. 
+2. A bal oldali panelen válassza az **+ erőforrás létrehozása** lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Válassza a **Létrehozás** lehetőséget. 
 
 3. Válassza ki az Azure Stack Edge Pro-eszközhöz használni kívánt előfizetést. Válassza ki azt az országot, ahová a fizikai eszközt el szeretné szállítani. Válassza az **eszközök megjelenítése** lehetőséget.
 
@@ -140,7 +140,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
     Arról is értesítést kap, hogy az erőforrás létrehozásakor egy Managed Service Identity (MSI) engedélyezve van, amely lehetővé teszi a felhőalapú szolgáltatásokban történő hitelesítést. Ez az identitás mindaddig létezik, amíg az erőforrás létezik.
 
-11. Kattintson a **Létrehozás** gombra.
+11. Válassza a **Létrehozás** lehetőséget.
 
 Az erőforrás létrehozása néhány percet vesz igénybe. A rendszer létrehoz egy MSI-t is, amely lehetővé teszi, hogy az Azure Stack Edge-eszköz kommunikáljon az Azure-beli erőforrás-szolgáltatóval.
 
@@ -177,7 +177,7 @@ Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérni
 > - Az aktiválási kulcs három nappal a létrehozása után lejár.
 > - Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a Azure Stack Edge-témaköröket, például a következőket:
 

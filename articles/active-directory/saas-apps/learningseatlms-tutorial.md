@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a9357f81c3b22f70af2a4a05de2de10e19acfbd9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: edf9df1777c4ab1d204cfc8058ec22c2d4e3f663
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458654"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631720"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Oktatóanyag: Azure Active Directory integráció a Learning Seat LMS szolgáltatással
 
@@ -67,7 +67,7 @@ Ahhoz, hogy az Azure AD-be integrálni tudja a Learning Seat LMS-integrációt, 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az **Britta Simon**nevű tesztkörnyezet alapján konfigurálja és teszteli a Learning Seat LMS-ben.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az **Britta Simon** nevű tesztkörnyezet alapján konfigurálja és teszteli a Learning Seat LMS-ben.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a Learning Seat LMS-ben.
 
 Az Azure AD egyszeri bejelentkezés a Learning Seat LMS használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Ha az Azure AD egyszeri bejelentkezést a Learning Seat LMS-sel szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **learning Seat LMS** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **learning Seat LMS** Application Integration oldalon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -112,7 +112,7 @@ Ha az Azure AD egyszeri bejelentkezést a Learning Seat LMS-sel szeretné konfig
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<subdomain>.learningseatlms.com`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezekhez az értékekhez forduljon az ügyfélszolgálati munkaállomáshoz tartozó [ügyfél-támogatási csapathoz](http://help.learningseatlms.com/help) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezekhez az értékekhez forduljon az ügyfélszolgálati munkaállomáshoz tartozó [ügyfél-támogatási csapathoz](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -130,13 +130,13 @@ Ha az Azure AD egyszeri bejelentkezést a Learning Seat LMS-sel szeretné konfig
 
 ### <a name="configure-learning-seat-lms-single-sign-on"></a>A Learning Seat LMS egyetlen Sign-On konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné beállítani a **learning Seat LMS** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [Seat LMS támogatási csapatának megismeréséhez](http://help.learningseatlms.com/help). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné beállítani a **learning Seat LMS** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [Seat LMS támogatási csapatának megismeréséhez](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -155,21 +155,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Learning Seat LMS szolgáltatáshoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **tanulási munkaállomás-LMS**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **tanulási munkaállomás-LMS** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **tanulási munkaállomás-LMS**elemet.
+2. Az alkalmazások listában válassza a **tanulási munkaállomás-LMS** elemet.
 
     ![Az alkalmazások listájában található learning Seat LMS-hivatkozás](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -185,7 +185,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-learning-seat-lms-test-user"></a>Learning Seat LMS-teszt felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Learning Seat LMS-ben. Együttműködik a [learning Seat LMS támogatási csapatával](http://help.learningseatlms.com/help) , és felveheti a felhasználókat a Learning Seat LMS platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Learning Seat LMS-ben. Együttműködik a [learning Seat LMS támogatási csapatával](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview) , és felveheti a felhasználókat a Learning Seat LMS platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

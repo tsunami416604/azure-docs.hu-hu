@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9b8d48139e6cbabfbc5bf63f85d2d03c64d7efd9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c82b1ffbb005542822016a55346d9067e23050b2
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542286"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630870"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>TensorFlow-modellek betanítása méretekben Azure Machine Learning
 
@@ -216,7 +216,7 @@ src = ScriptRunConfig(source_directory=script_folder,
 A feladatok ScriptRunConfig-vel való konfigurálásával kapcsolatos további információkért lásd: a [betanítási futtatások konfigurálása és elküldése](how-to-set-up-training-targets.md).
 
 > [!WARNING]
-> Ha korábban már használta a TensorFlow-kalkulátort a TensorFlow-betanítási feladatok konfigurálásához, vegye figyelembe, hogy a becslések az Azure ML SDK egy későbbi kiadásában lesz elavult. Az Azure ML SDK >= 1.15.0 használatával a betanítási feladatok, például a DL-keretrendszerek használatát ajánlott beállítani a ScriptRunConfig.
+> Ha korábban már használta a TensorFlow-kalkulátort a TensorFlow-betanítási feladatok konfigurálásához, vegye figyelembe, hogy a becslések a 1.19.0 SDK kiadása óta elavulttá vált. Az Azure ML SDK >= 1.15.0 használatával a betanítási feladatok, köztük a Deep learning-keretrendszerek használatát ajánlott beállítani a ScriptRunConfig. Gyakori áttelepítési kérdésekben tekintse [meg a ScriptRunConfig áttelepítési útmutatót a kalkulátorban](how-to-migrate-from-estimators-to-scriptrunconfig.md).
 
 ### <a name="submit-a-run"></a>Futtatás küldése
 
@@ -229,13 +229,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Mi történik a Futtatás végrehajtásakor
 A Futtatás végrehajtásakor a következő szakaszokon halad végig:
 
-- **Előkészítés** : a Docker-rendszerkép a definiált környezetnek megfelelően jön létre. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők. Ha helyette egy kurátori környezet van megadva, akkor a rendszer a kiválasztott gyorsítótárazott rendszerképet fogja használni.
+- **Előkészítés**: a Docker-rendszerkép a definiált környezetnek megfelelően jön létre. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők. Ha helyette egy kurátori környezet van megadva, akkor a rendszer a kiválasztott gyorsítótárazott rendszerképet fogja használni.
 
-- **Skálázás** : a fürt akkor kísérli meg a skálázást, ha a Batch AI fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
+- **Skálázás**: a fürt akkor kísérli meg a skálázást, ha a Batch AI fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
 
-- **Futtatás** : a rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és `script` végrehajtja a szolgáltatást. Az stdout és a **./logs** mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
+- **Futtatás**: a rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és `script` végrehajtja a szolgáltatást. Az stdout és a **./logs** mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
 
-- **Utómunka** : a Futtatás **./outputs** mappáját a rendszer átmásolja a futtatási előzményekbe.
+- **Utómunka**: a Futtatás **./outputs** mappáját a rendszer átmásolja a futtatási előzményekbe.
 
 ## <a name="register-or-download-a-model"></a>Modell regisztrálása vagy letöltése
 

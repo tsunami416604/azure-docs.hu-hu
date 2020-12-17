@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása az Advisor szolgál
 description: Az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javítása érdekében Azure Advisor teljesítményre vonatkozó javaslatokat használhat.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 59de7ee14a3af2f8740d63a3cae19571469afd7f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183345"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630343"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Az Azure-alkalmazások teljesítményének növelése Azure Advisor használatával
 
@@ -175,6 +175,11 @@ Megállapítottuk, hogy a virtuális gépek más régióban vagy messze vannak a
 Azt észleltük, hogy az előfizetésben lévő erőforrások a Modern olvasó elavult SDK-verzióit használják. A Modern olvasó legújabb SDK-verzióját javított biztonság és teljesítmény mellett használhatja, továbbá bővített funkciókészlettel rendelkezik az integráció testre szabása és fejlesztése érdekében.
 További információ a [magával ejtő olvasói SDK](../cognitive-services/immersive-reader/index.yml)-ról.
 
+## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>A virtuális gépek teljesítményének növelése a munkamenet maximális korlátjának módosításával
+
+Az Advisor azt észleli, hogy rendelkezik egy, a terheléselosztási algoritmust elsőként tartalmazó gazdagép-készlettel, és az alkalmazáskészlet maximális munkamenet-korlátja nagyobb vagy egyenlő, mint 99999. A mélységi terheléselosztás a maximális munkamenetkorlát alapján határozza meg, hogy legfeljebb hány felhasználó futtathat egyidejű munkameneteket egy adott munkamenet-gazdagépen. Ha a maximális munkamenet-korlát túl magas, a rendszer az összes felhasználói munkamenetet ugyanarra a munkamenet-gazdagépre irányítja, és ez a teljesítménnyel és a megbízhatósággal kapcsolatos problémákat okoz. Ezért, amikor a gazdagépet úgy állítja be, hogy az első terheléselosztással rendelkezzen, a telepítés és a virtuális gépek kapacitása alapján kell beállítania a megfelelő maximális munkamenet-korlátot. 
+
+A Windows rendszerű virtuális asztali terheléselosztással kapcsolatos további tudnivalókért tekintse meg [a Windows rendszerű virtuális asztali terheléselosztási módszer konfigurálása](/virtual-desktop/troubleshoot-set-up-overview.md)című témakört.
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Teljesítménnyel kapcsolatos javaslatok elérése az Advisorban
 

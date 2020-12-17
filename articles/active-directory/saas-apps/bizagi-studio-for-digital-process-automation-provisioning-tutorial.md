@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: 141dd37dff8403825df713de8f7176d4dd9d20f8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008044"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632033"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Oktatóanyag: a bizarr Studio konfigurálása a digitális folyamatok automatizálásához a felhasználók automatikus üzembe helyezéséhez
 
@@ -58,7 +58,7 @@ A bizarr Studio for digitális folyamatok automatizálásának konfigurálásáh
 
    ![Képernyőkép a bizarr-ről, a OAuth 2 alkalmazással kiemelve.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/admin.png)
 
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 4. A **támogatás típusa** mezőben válassza a **tulajdonosi jogkivonat** lehetőséget. Az **engedélyezett hatókör** beállításnál válassza az **API** és a **felhasználói szinkronizálás** lehetőséget. Kattintson a **Mentés** gombra.
 
    ![Képernyőkép az alkalmazás regisztrálása beállításról, a támogatás típusa és a megengedett hatókör kiemelve.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/token.png)
@@ -117,7 +117,7 @@ Ez a szakasz végigvezeti a felhasználók és csoportok létrehozásához, fris
 
     ![Az értesítő e-mail-beállítások képernyőképe.](common/provisioning-notification-email.png)
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 8. A **leképezések** szakaszban válassza az **Azure Active Directory-felhasználók szinkronizálása a bizarr Studio digitális folyamatok automatizálásához** lehetőséget.
 
@@ -132,7 +132,14 @@ Ez a szakasz végigvezeti a felhasználók és csoportok létrehozásához, fris
    |name.familyName|Sztring|
    |név. formázott|Sztring|
    |phoneNumbers[type eq "mobile"].value|Sztring|
+
+   Az egyéni bővítmény attribútumai hozzáadhatók a **Speciális beállítások megjelenítése > a bizarr szerkesztéséhez**. Az egyéni bővítmény attribútumait el kell látni az **urn: IETF: paraméterek: scim: schemas: Extension: bizarr: 2.0: UserProperties:**. Ha például az egyéni bővítmény attribútuma **IdentificationNumber**, az attribútumot **urn: IETF: params: scim: schemas: Extension: bizarr: 2.0: UserProperties: IdentificationNumber** kell hozzáadni. A módosítások elvégzéséhez válassza a **Mentés** lehetőséget.
    
+    ![Attribútumok listájának szerkesztése.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/edit.png)  
+
+   Az egyéni attribútumok hozzáadásával kapcsolatos további információkért tekintse meg az [alkalmazás attribútumainak testreszabása](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)című részt.
+
+
 10. A hatóköri szűrők konfigurálásához tekintse meg a [hatóköri szűrő oktatóanyagát](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a bizarr studióhoz a digitális folyamatok automatizálásához, a **Beállítások** szakaszban módosítsa a **kiépítési állapotot** **a** következőre:.

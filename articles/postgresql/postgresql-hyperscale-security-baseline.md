@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 324a2acbf069e8e23246b99a7d79a3195f737a56
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 836cf4600e353da61673ec8ee5df8f30fb4b9562
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492301"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629850"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure biztonsági alapkonfiguráció Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -582,7 +582,7 @@ Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaS
 
 **Útmutató**: a Azure Database for PostgreSQL-nagy kapacitású (Citus) jelenleg nem támogatja közvetlenül a felügyelt identitásokat. A Azure Database for PostgreSQL-kiszolgáló létrehozásakor meg kell adnia egy rendszergazdai felhasználó hitelesítő adatait. A Azure Portal felületen további felhasználói szerepköröket is létrehozhat.
 
-- [Azure Database for PostgreSQL-nagy kapacitású létrehozása (Citus)](./quickstart-create-hyperscale-portal.md#create-an-azure-database-for-postgresql---hyperscale-citus)
+- [Azure Database for PostgreSQL-nagy kapacitású létrehozása (Citus)](./quickstart-create-hyperscale-portal.md#create-a-hyperscale-citus-server-group)
 
 - [További felhasználói szerepkörök létrehozása](./howto-hyperscale-create-users.md#how-to-create-additional-user-roles)
 
@@ -750,7 +750,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ea8300447b9aa596e8678038982771263a4c76f6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358775"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630037"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>Blobok letöltése az Azure Blob Storage-ból az AzCopy v10 használatával
 
@@ -21,7 +21,7 @@ A blob Storage-ból a AzCopy v10 parancssori segédprogram használatával tölt
 
 Ha más típusú feladatokhoz, például fájlok feltöltéséhez, blob Storage-hoz való szinkronizáláshoz vagy Blobok a fiókok közötti másolásához szeretne példákat látni, tekintse meg a jelen cikk [következő lépések](#next-steps) című szakaszának hivatkozásait.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és a tárolási szolgáltatás engedélyezési hitelesítő adatainak megadásához szükséges módszerekről.
 
@@ -143,7 +143,7 @@ Ezután használja a [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--li
 
 #### <a name="download-a-blob-snapshot"></a>BLOB-pillanatkép letöltése
 
-A [blob-](/azure/storage/blobs/snapshots-overview.md) Pillanatképek a blob-pillanatkép **datetime** értékére hivatkozva tölthetők le. 
+A [blob-](/azure/storage/blobs/snapshots-overview) Pillanatképek a blob-pillanatkép **datetime** értékére hivatkozva tölthetők le. 
 
 |    |     |
 |--------|-----------|

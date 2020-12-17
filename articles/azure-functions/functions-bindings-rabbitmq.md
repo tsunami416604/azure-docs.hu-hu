@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 72c31d0eebc19a926805976ed637168a00fa9495
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: ebf094ddfec19dac98238adf7d55af785b3df122
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617187"
+ms.locfileid: "97629629"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions RabbitMQ-kötések – áttekintés
 
 > [!NOTE]
-> A RabbitMQ-kötések csak a **Windows prémium** csomagokban teljes mértékben támogatottak. A felhasználás és a Linux jelenleg nem támogatott.
+> A RabbitMQ-kötések csak a **Windows Premium és a dedikált** csomagok esetében teljes mértékben támogatottak. A felhasználás és a Linux jelenleg nem támogatott.
 
 A Azure Functions [triggerek és kötések](./functions-triggers-bindings.md)használatával integrálható a [RabbitMQ](https://www.rabbitmq.com/) . A Azure Functions RabbitMQ-kötési bővítmények lehetővé teszik üzenetek küldését és fogadását a RabbitMQ API és a functions használatával.
 
@@ -50,7 +50,7 @@ Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra 
 
 A RabbitMQ kötési bővítmények nem támogatottak az 1. x és 2. x függvényeknél. Használja a 3. x és újabb függvényeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Függvény futtatása RabbitMQ-üzenet létrehozásakor (trigger)](./functions-bindings-rabbitmq-trigger.md)
 - [RabbitMQ üzenetek küldése Azure Functionsból (kimeneti kötés)](./functions-bindings-rabbitmq-output.md)

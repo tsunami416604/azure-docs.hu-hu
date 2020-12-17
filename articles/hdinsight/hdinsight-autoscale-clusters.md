@@ -1,30 +1,29 @@
 ---
-title: Az Azure HDInsight-fürtök autoskálázása
-description: Az Azure HDInsight automatikus méretezési funkciója segítségével automatikusan méretezheti Apache Hadoop fürtöket.
+title: Azure HDInsight-fürtök automatikus skálázása
+description: Az automatikus méretezés funkció használatával automatikusan méretezheti az Azure HDInsight-fürtöket ütemterv vagy teljesítménybeli mérőszámok alapján.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperf-fy21q1
-ms.date: 09/14/2020
-ms.openlocfilehash: 09e4412128a3b13abfa91bf0c128372b30b3e686
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.date: 12/14/2020
+ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033136"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629255"
 ---
-# <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök autoskálázása
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus skálázása
 
-Az Azure HDInsight ingyenes automatikus méretezési funkciója a korábban beállított feltételek alapján automatikusan növelheti vagy csökkentheti a fürt munkavégző csomópontjainak számát. A fürt létrehozása során a csomópontok minimális és maximális számát állíthatja be, a méretezési feltételeket a napi ütemterv vagy a megadott teljesítmény-mérőszámok alapján kell meghatározni, és a HDInsight platform a REST-t használja.
+Az Azure HDInsight ingyenes automatikus méretezési funkciója a korábban beállított feltételek alapján automatikusan növelheti vagy csökkentheti a fürt munkavégző csomópontjainak számát. Az automatikus skálázási funkció úgy működik, hogy a csomópontok számát a teljesítmény mérőszámai alapján, vagy a skálázási és a horizontális Felskálázási műveletek ütemtervével méretezi.
 
 ## <a name="how-it-works"></a>Működés
 
-Az automatikus méretezési funkció kétféle feltételt használ a skálázási események elindításához: a különböző fürt teljesítményének mérőszámai (úgynevezett *terheléses skálázás*) és az időalapú eseményindítók ( *ütemezett skálázás*) küszöbértékeit. A terhelésen alapuló skálázás megváltoztatja a fürtben lévő csomópontok számát a beállított tartományon belül, így biztosítva az optimális CPU-használatot, és csökkentheti a futtatási költségeket. Az ütemezett skálázás a fürt csomópontjainak számát a megadott dátummal és időpontokkal társított műveletek alapján módosítja.
+Az automatikus méretezési funkció kétféle feltételt használ a skálázási események elindításához: a különböző fürt teljesítményének mérőszámai (úgynevezett *terheléses skálázás*) és az időalapú eseményindítók ( *ütemezett skálázás*) küszöbértékeit. A terhelésen alapuló skálázás megváltoztatja a fürtben lévő csomópontok számát a beállított tartományon belül, így biztosítva az optimális CPU-használatot, és csökkentheti a futtatási költségeket. Az ütemezett skálázás a fürt csomópontjainak számát a méretezési és a leskálázási műveletek ütemterve alapján módosítja.
 
 Az alábbi videó áttekintést nyújt azokról a kihívásokról, amelyekkel az autoscale megoldásokkal és a HDInsight-vel kapcsolatos költségek szabályozásával segít.
-
 
 > [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
@@ -74,14 +73,14 @@ Az alábbi táblázat az autoscale szolgáltatással kompatibilis fürtök típu
 
 | Verzió | Spark | Hive | Interaktív lekérdezés | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
-| HDInsight 4,0 ESP nélkül | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
-| HDInsight 3,6, ESP-vel | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
-| HDInsight 4,0, ESP-vel | Igen | Igen | Igen | Igen* | Nem | Nem | Nem |
+| HDInsight 3,6 ESP nélkül | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
+| HDInsight 4,0 ESP nélkül | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
+| HDInsight 3,6, ESP-vel | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
+| HDInsight 4,0, ESP-vel | Igen | Igen | Yes | Igen* | Nem | Nem | Nem |
 
 \* A HBase-fürtök csak az ütemezett skálázáshoz konfigurálhatók, nem pedig a terhelés alapján.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Fürt létrehozása terheléselosztási alapú automatikus skálázással
 
@@ -133,7 +132,7 @@ További információ a HDInsight-fürtök létrehozásáról a Azure Portal has
 
 #### <a name="load-based-autoscaling"></a>Load-alapú automatikus skálázás
 
-Létrehozhat egy HDInsight-fürtöt egy Azure Resource Manager-sablon terheléses automatikus skálázásával, ha hozzáad egy `autoscale` csomópontot a `computeProfile`  >  `workernode` szakaszhoz a tulajdonságok segítségével, `minInstanceCount` és az `maxInstanceCount` alábbi JSON-kódrészletben látható. A teljes Resource Manager-sablonhoz lásd [: gyors üzembe helyezési sablon: Spark-fürt üzembe helyezése az Loadbased autoscale enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)utasítással.
+Létrehozhat egy HDInsight-fürtöt egy Azure Resource Manager-sablon terheléses automatikus skálázásával, ha hozzáad egy `autoscale` csomópontot a `computeProfile`  >  `workernode` szakaszhoz a tulajdonságok segítségével, `minInstanceCount` és az `maxInstanceCount` alábbi JSON-kódrészletben látható. Teljes Resource Manager-sablon: gyors útmutató [sablon: a Spark-fürt üzembe helyezése az automatikus méretezés engedélyezve van](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
 
 ```json
 {
@@ -225,7 +224,7 @@ A Azure Portalban felsorolt fürt állapota segíthet az autoskálázási tevék
 
 Az alábbi listában az összes olyan fürt állapotüzenetek látható, amelyet látni fog.
 
-| Fürt állapota | Leírás |
+| Fürt állapota | Description |
 |---|---|
 | Futó | A fürt rendesen működik. Az összes korábbi autoskálázási tevékenység sikeresen befejeződött. |
 | Frissítés  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |

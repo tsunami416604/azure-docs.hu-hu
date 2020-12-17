@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b83a690386b6240c2c3733afb4d0d9919ca8712d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c36f09731bfb21473d8e8bc87c9cfd3316060ee6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907549"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631142"
 ---
 # <a name="azure-security-baseline-for-azure-database-migration-service"></a>Azure Database Migration Service Azure biztonsági alapterve
 
@@ -364,7 +364,7 @@ A Azure Database Migration Service nem teszi lehetővé az alkalmazások futtat�
 
 ## <a name="logging-and-threat-detection"></a>Naplózás és fenyegetésészlelés
 
-*További információ: [Azure Security Benchmark: Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*További információ: [Azure Security Benchmark: Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Fenyegetésészlelés engedélyezése az Azure-beli identitás- és hozzáférés-kezeléshez
 
@@ -536,7 +536,7 @@ Emellett a címkék használatával megjelölheti az erőforrásokat, és létre
 
 ## <a name="posture-and-vulnerability-management"></a>A biztonsági állapot és a biztonsági rések kezelése
 
-*További információ: [Azure Security Benchmark: A biztonsági állapot és a biztonsági rések kezelése](/azure/security/benchmarks/security-controls-v2-vulnerability-management).*
+*További információ: [Azure Security Benchmark: A biztonsági állapot és a biztonsági rések kezelése](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
 
 ### <a name="pv-8-conduct-regular-attack-simulation"></a>PV-8: Rendszeres támadásszimulációk végrehajtása
 
@@ -586,9 +586,9 @@ További információkat az alábbi hivatkozásokon találhat:
 
 - [Felhőadaptálási keretrendszer – Az Azure-beli adatbiztonsághoz és titkosításhoz ajánlott eljárások](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
 
-- [Azure Security Benchmark – Eszközkezelés](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure Security Benchmark – Eszközkezelés](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure Security Benchmark – Adatvédelem](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure Security Benchmark – Adatvédelem](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -616,7 +616,7 @@ Gondoskodjon róla, hogy a szegmentálási stratégia következetesen meg legyen
 
 **Útmutató**: Folyamatosan mérje és mérsékelje a kockázatokat, amelyeknek az egyes összetevők, valamint az a környezet van kitéve, amelyben üzemeltetve vannak. Kezelje kiemelten az olyan nagy értékű összetevőket és leginkább elérhetővé tett támadási felületeket, mint a közzétett alkalmazások, a hálózat be- és kilépési pontjai, a felhasználói és rendszergazdai végpontok stb.
 
-- [Azure Security Benchmark - Biztonsági állapot és biztonsági rések felmérése](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure Security Benchmark - Biztonsági állapot és biztonsági rések felmérése](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -657,7 +657,7 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 További információkat az alábbi hivatkozásokon találhat:
 - [Ajánlott Azure-biztonsági eljárások 11 – Architektúra. Egyetlen egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure Security Benchmark – Hálózati biztonság](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure Security Benchmark – Hálózati biztonság](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [A nagyvállalati hálózati biztonság áttekintése](../security/fundamentals/network-overview.md)
 
@@ -685,9 +685,9 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 
 További információkat az alábbi hivatkozásokon találhat:
 
-- [Azure Security Benchmark – Identitáskezelés](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure Security Benchmark – Identitáskezelés](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure Security Benchmark – Emelt jogosultságú hozzáférés](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure Security Benchmark – Emelt jogosultságú hozzáférés](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Ajánlott Azure-biztonsági eljárások 11 – Architektúra. Egyetlen egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -719,9 +719,9 @@ Ennek a stratégiának magában kell foglalnia a dokumentált útmutatót, és a
 
 További információkat az alábbi hivatkozásokon találhat:
 
-- [Azure Security Benchmark – Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure Security Benchmark – Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure Security Benchmark – Incidenskezelés](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure Security Benchmark – Incidenskezelés](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Ajánlott Azure-biztonsági eljárások 4 – Folyamat. Incidensválasz-folyamat frissítése a felhőhöz](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

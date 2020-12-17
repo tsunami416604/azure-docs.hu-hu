@@ -553,6 +553,12 @@
               displayName: 'portal, create hyperscale'
     - name: Oktatóanyagok
       items:
+        - name: Kiszolgálócsoport létrehozása
+          href: tutorial-hyperscale-server-group.md
+        - name: Modell- és betöltési adatok
+          items:
+            - name: Szegmensadatok a munkavégző csomópontokon
+              href: tutorial-hyperscale-shard.md
         - name: Több-bérlős adatbázis tervezése
           href: tutorial-design-database-hyperscale-multi-tenant.md
           displayName: 'hyperscale, tutorial, multi-tenant'

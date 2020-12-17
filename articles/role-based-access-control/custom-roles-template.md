@@ -1,6 +1,6 @@
 ---
-title: Egyéni Azure-szerepkör létrehozása Azure Resource Manager sablon használatával – Azure RBAC
-description: Ismerje meg, hogyan hozhat létre Azure-beli egyéni szerepkört egy Azure Resource Manager sablon (ARM-sablon) és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
+title: Egyéni Azure-szerepkörök létrehozása vagy frissítése egy Azure Resource Manager sablon használatával – Azure RBAC
+description: Megtudhatja, hogyan hozhat létre vagy frissíthet Azure egyéni szerepköröket egy Azure Resource Manager sablon (ARM-sablon) és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: role-based-access-control,azure-resource-manager
 author: rolyon
 manager: mtillman
@@ -8,18 +8,18 @@ ms.service: role-based-access-control
 ms.topic: how-to
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 06/25/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 96dfdc0a1c32237c55d4e65bb25989656e2a4ad2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097022"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631312"
 ---
-# <a name="create-an-azure-custom-role-using-an-arm-template"></a>Egyéni Azure-szerepkör létrehozása ARM-sablonnal
+# <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése ARM-sablon használatával
 
-Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni szerepköröket](custom-roles.md)is. Ez a cikk azt ismerteti, hogyan hozhat létre egyéni szerepkört egy Azure Resource Manager sablon (ARM-sablon) használatával.
+Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni szerepköröket](custom-roles.md)is. Ez a cikk azt ismerteti, hogyan lehet egyéni szerepköröket létrehozni vagy frissíteni egy Azure Resource Manager sablon (ARM-sablon) használatával.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -66,15 +66,13 @@ Az előző sablon üzembe helyezéséhez kövesse az alábbi lépéseket.
     $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
     [string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
     $actions = $actions.Split(',')
-
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/create-role-def/azuredeploy.json"
-
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. Adja meg a központi telepítés helyét (például *CentralUS* ).
+1. Adja meg a központi telepítés helyét, például: `centralus` .
 
-1. Adja meg az egyéni szerepkörhöz tartozó műveletek listáját vesszővel tagolt listaként, mint például a *Microsoft. Resources/Resources/READ, Microsoft. Resources/Subscriptions/resourceGroups/Read* .
+1. Adja meg az egyéni szerepkörhöz tartozó műveletek listáját vesszővel tagolt listaként, például: `Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read` .
 
 1. Ha szükséges, nyomja le az ENTER billentyűt a parancs futtatásához `New-AzDeployment` .
 
@@ -153,7 +151,48 @@ Az alábbi lépéseket követve ellenőrizheti, hogy létrejött-e az egyéni sz
 
    ![Új egyéni szerepkör a Azure Portal](./media/custom-roles-template/custom-role-template-portal.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="update-a-custom-role"></a>Egyéni szerepkörök frissítése
+
+Az egyéni szerepkör létrehozásához hasonlóan egy meglévő egyéni szerepkör is frissíthető sablon használatával. Egyéni szerepkör frissítéséhez meg kell adnia a frissíteni kívánt szerepkört.
+
+Az egyéni szerepkör frissítéséhez az előző rövid útmutató sablonban szükséges módosításokat kell elvégeznie.
+
+- Adja meg a szerepkör-azonosítót paraméterként.
+    ```json
+        ...
+        "roleDefName": {
+          "type": "string",
+          "metadata": {
+            "description": "ID of the role definition"
+          }
+        ...
+    ```
+
+- A szerepkör-definícióban adja meg a szerepkör-azonosító paramétert.
+
+    ```json
+      ...
+      "resources": [
+        {
+          "type": "Microsoft.Authorization/roleDefinitions",
+          "apiVersion": "2018-07-01",
+          "name": "[parameters('roleDefName')]",
+          "properties": {
+            ...
+    ```
+
+Íme egy példa a sablon üzembe helyezésére.
+
+```azurepowershell
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+[string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
+$actions = $actions.Split(',')
+$roleDefName = Read-Host -Prompt "Enter the role ID to update"
+$templateFile = "rg-reader-update.json"
+New-AzDeployment -Location $location -TemplateFile $templateFile -actions $actions -roleDefName $roleDefName
+```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az egyéni szerepkör eltávolításához kövesse az alábbi lépéseket.
 

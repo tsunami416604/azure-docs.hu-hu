@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545958"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629357"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-oldal Blobok áttekintése
 
@@ -57,7 +57,7 @@ A következő ábra a fiók, a tárolók és a Blobok közötti általános kapc
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-Először szerezzen be egy hivatkozást egy tárolóra. Az oldal blobjának létrehozásához hívja meg a [GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) metódust, és hívja meg a [PageBlobClient. Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) metódust. Adja meg a blob létrehozásához szükséges maximális méretet. Ennek a méretnek 512 bájtos többszörösének kell lennie.
+Először szerezzen be egy hivatkozást egy tárolóra. Az oldal blobjának létrehozásához hívja meg a GetPageBlobClient metódust, és hívja meg a [PageBlobClient. Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) metódust. Adja meg a blob létrehozásához szükséges maximális méretet. Ennek a méretnek 512 bájtos többszörösének kell lennie.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 

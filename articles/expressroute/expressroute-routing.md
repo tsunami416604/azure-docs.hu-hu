@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 436e866969d620389818bcebca3c5c37b8805309
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007171"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629034"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -163,7 +163,7 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | USA nyugati középső régiója | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 | 12076:55027 |
 | USA északi középső régiója | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 | 12076:55007 |
 | USA déli középső régiója | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 | 12076:55008 |
-| Az USA középső régiója | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
+| USA középső régiója | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
 | Közép-Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 | 12076:55020 |
 | Kelet-Kanada | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 | 12076:55021 |
 | **Dél-Amerika** | |
@@ -229,9 +229,12 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Azure Resource Manager |12076:5070 |
 | Egyéb Office 365 online szolgáltatások * * | 12076:5100 |
 
-\* Az Azure Global Services jelenleg csak az Azure DevOps tartalmazza. \
-\*\* Engedélyezés szükséges a Microsofttól, lásd [: útválasztási szűrők konfigurálása a Microsoft-partnerek számára](how-to-routefilter-portal.md)\
-\*\*\* Ez a Közösség a Microsoft Teams Services szükséges útvonalait is közzéteszi. \
+\* Az Azure globális szolgáltatásai jelenleg csak az Azure-DevOps tartalmazzák.
+
+\*\* Engedélyezés szükséges a Microsofttól, lásd [: útválasztási szűrők konfigurálása a Microsoft-partnerek számára](how-to-routefilter-portal.md)
+
+\*\*\* Ez a Közösség a Microsoft Teams Services szükséges útvonalait is közzéteszi.
+
 \*\*\*\* A CRM Online támogatja a Dynamics v 8.2-es vagy régebbi verzióit. A magasabb verziók esetében válassza ki a regionális Közösséget a Dynamics-környezetekben.
 
 > [!NOTE]
@@ -261,7 +264,7 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Azure Active Directory |12076:5160 |
 | Egyéb Office 365-szolgáltatások |12076:5200 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az ExpressRoute-kapcsolat konfigurálása.
   
   * [Kapcsolatcsoport létrehozása és módosítása](expressroute-howto-circuit-arm.md)

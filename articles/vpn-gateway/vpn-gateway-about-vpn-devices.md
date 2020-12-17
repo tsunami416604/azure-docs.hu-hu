@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: ae498b39a421db19f0d4e0a8daca58730321b58c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: fdb7b1964bf4b8e2dbf6afd541e4415c0345347c
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546811"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631465"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
 
@@ -61,7 +61,7 @@ A VPN-eszköz konfigurálásának megkönnyítéséhez tekintse meg a megfelelő
 | Microsoft |Útválasztás és távelérés szolgáltatás |Windows Server 2012 |Nem kompatibilis |Támogatott |
 | Open Systems AG |Mission Control biztonsági átjáró |N.A. |[Konfigurációs útmutató](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Nem kompatibilis |
 | Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS<br>Házirendalapú: 6.1.5 vagy újabb<br>Útvonalalapú: 7.1.4 |Támogatott |[Konfigurációs útmutató](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
-| Sentrium (fejlesztői) | VyOS | VyOS 1.2.2 | (nincs tesztelve) | [Konfigurációs útmutató ](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
+| Sentrium (fejlesztői) | VyOS | VyOS 1.2.2 | (nincs tesztelve) | [Konfigurációs útmutató ](https://docs.vyos.io/en/latest/configexamples/azure-vpn-bgp.html)|
 | ShareTech | Következő generációs UTM (NU sorozat) | 9.0.1.3 | Nem kompatibilis | [Konfigurációs útmutató](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ sorozat, NSA sorozat<br>SuperMassive sorozat<br>E-Class NSA sorozat |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Nem kompatibilis |[Konfigurációs útmutató](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen tűzfal | XG v17 | (nincs tesztelve) | [Konfigurációs útmutató](https://community.sophos.com/kb/127546)<br><br>[Konfigurációs útmutató – több SAs](https://community.sophos.com/kb/en-us/133154) |
@@ -142,7 +142,7 @@ A következő táblázatokban:
 | Titkosító és kivonatoló algoritmus |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
 | SA élettartama (Idő)            |3 600 másodperc  |27 000 másodperc                               |
 | SA élettartama (bájt)           |102 400 000 kB |102 400 000 kB                               |
-| Sérülés utáni titkosságvédelem (PFS) |Nem             |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
+| Sérülés utáni titkosságvédelem (PFS) |No             |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
 | Kapcsolat megszakadásának észlelése (DPD)     |Nem támogatott  |Támogatott                                    |
 
 
@@ -154,24 +154,24 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Nincsenek         |
-| 2 |AES256        |SHA1              |Nincsenek         |
-| 3 |3DES          |SHA1              |Nincsenek         |
-| 4 |AES256        |SHA256            |Nincsenek         |
-| 5 |AES128        |SHA1              |Nincsenek         |
-| 6 |3DES          |SHA256            |Nincsenek         |
+| 1 |GCM AES256    |GCM (AES256)      |Nincs         |
+| 2 |AES256        |SHA1              |Nincs         |
+| 3 |3DES          |SHA1              |Nincs         |
+| 4 |AES256        |SHA256            |Nincs         |
+| 5 |AES128        |SHA1              |Nincs         |
+| 6 |3DES          |SHA256            |Nincs         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure-átjáró, mint válaszadó
 
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |Nincsenek         |
-| 2 |AES256        |SHA1              |Nincsenek         |
-| 3 |3DES          |SHA1              |Nincsenek         |
-| 4 |AES256        |SHA256            |Nincsenek         |
-| 5 |AES128        |SHA1              |Nincsenek         |
-| 6 |3DES          |SHA256            |Nincsenek         |
-| 7 |DES           |SHA1              |Nincsenek         |
+| 1 |GCM AES256    |GCM (AES256)      |Nincs         |
+| 2 |AES256        |SHA1              |Nincs         |
+| 3 |3DES          |SHA1              |Nincs         |
+| 4 |AES256        |SHA256            |Nincs         |
+| 5 |AES128        |SHA1              |Nincs         |
+| 6 |3DES          |SHA256            |Nincs         |
+| 7 |DES           |SHA1              |Nincs         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -186,7 +186,7 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |Nincsenek         |
+| 22|AES128        |SHA256            |Nincs         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

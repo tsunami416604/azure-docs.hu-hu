@@ -86,8 +86,8 @@
                 - name: SQL-szkript
                   href: ./sql/author-sql-script.md
                   displayname: author
-                - name: Leképezési adatfolyam
-                  href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Adatfolyam
+                  href: concepts-data-flow-overview.md
         - name: Karbantartási ütemezés
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Verziókövetés
@@ -660,8 +660,8 @@
           href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Adatfolyamok
           items:
-            - name: Adatfolyam-leképezés áttekintése
-              href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Adatfolyam áttekintése
+              href: concepts-data-flow-overview.md
             - name: Hibakeresési mód
               href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Sémaeltérés

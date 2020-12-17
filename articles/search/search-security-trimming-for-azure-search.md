@@ -1,19 +1,19 @@
 ---
 title: Az eredmények kivágására szolgáló biztonsági szűrők
 titleSuffix: Azure Cognitive Search
-description: Biztonsági jogosultságok a dokumentum szintjén az Azure Cognitive Search keresési eredmények, biztonsági szűrők és felhasználói identitások használatával.
+description: Megtudhatja, hogyan valósíthat meg biztonsági jogosultságokat az Azure Cognitive Search keresési eredményeinek dokumentum szintjén, biztonsági szűrők és felhasználói identitások használatával.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/16/2020
+ms.openlocfilehash: 8bd162fcf2011d2ccce716564763e7f54f19ff69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928523"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631803"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Az Azure Cognitive Search az eredmények kivágására szolgáló biztonsági szűrők
 
@@ -62,7 +62,7 @@ Tegyük fel, hogy a védett fájlok indexét használjuk, és minden fájlhoz eg
   
 Adjon ki egy HTTP POST-kérelmet az index URL-címének végpontjának. A HTTP-kérelem törzse egy JSON-objektum, amely tartalmazza a hozzáadandó dokumentumokat:
 
-```
+```http
 POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
@@ -110,17 +110,18 @@ Ha egy meglévő dokumentumot kell frissítenie a csoportok listájával, a `mer
 ```
 
 A dokumentumok hozzáadásával vagy frissítésével kapcsolatos részletes információkért olvassa el a [dokumentumok szerkesztése című dokumentumot](/rest/api/searchservice/addupdate-or-delete-documents).
-   
+
 ## <a name="apply-the-security-filter"></a>A biztonsági szűrő alkalmazása
 
 A dokumentumok hozzáférés alapján történő kivágásához egy `group_ids` szűrővel rendelkező keresési lekérdezést kell kiadnia `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` , ahol "group_id1 group_id2,..." azok a csoportok, amelyekhez a keresési kérelem kiállítója tartozik.
+
 Ez a szűrő minden olyan dokumentumra illeszkedik, amelynek a `group_ids` mezője tartalmazza a megadott azonosítók egyikét.
 A dokumentumok Azure Cognitive Search használatával történő keresésével kapcsolatos részletes információkért olvassa el a [keresési dokumentumokat](/rest/api/searchservice/search-documents).
 Vegye figyelembe, hogy ez a minta bemutatja, hogyan kereshet dokumentumokat a POST-kérések használatával.
 
 A HTTP POST-kérelem kiadása:
 
-```
+```http
 POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
@@ -152,12 +153,12 @@ A dokumentumokat vissza kell olvasnia, ahol a `group_ids` "group_id1" vagy a "gr
  ]
 }
 ```
-## <a name="conclusion"></a>Összegzés
 
-Így szűrheti az eredményeket a felhasználói identitás és az Azure Cognitive Search `search.in()` függvény alapján. Ezzel a függvénnyel az egyes dokumentumokhoz társított elsődleges azonosítókkal egyező azonosítókat adhat meg a kérelmező felhasználó számára. Keresési kérelem kezelésekor a `search.in` függvény kiszűri azokat a keresési eredményeket, amelyekhez a felhasználó egyetlen résztvevője sem rendelkezik olvasási hozzáféréssel. A résztvevő azonosítói a biztonsági csoportok, szerepkörök vagy akár a felhasználó saját identitása is lehetnek.
- 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>Következő lépések
 
-+ [Active Directory identitás-alapú hozzáférés-vezérlés az Azure Cognitive Search szűrőkkel](search-security-trimming-for-azure-search-with-aad.md)
-+ [Szűrők az Azure Cognitive Search](search-filters.md)
-+ [Adatbiztonság és hozzáférés-vezérlés az Azure Cognitive Search Operations szolgáltatásban](search-security-overview.md)
+Ez a cikk az eredmények felhasználói identitás és a függvény alapján történő szűrésének mintáját ismerteti `search.in()` . Ezzel a függvénnyel az egyes dokumentumokhoz társított elsődleges azonosítókkal egyező azonosítókat adhat meg a kérelmező felhasználó számára. Keresési kérelem kezelésekor a `search.in` függvény kiszűri azokat a keresési eredményeket, amelyekhez a felhasználó egyetlen résztvevője sem rendelkezik olvasási hozzáféréssel. A résztvevő azonosítói a biztonsági csoportok, szerepkörök vagy akár a felhasználó saját identitása is lehetnek.
+
+A Active Directoryon alapuló alternatív minta esetén vagy más biztonsági funkciók újrakereséséhez tekintse meg a következő hivatkozásokat.
+
+* [Az eredmények kivágására szolgáló biztonsági szűrők Active Directory identitások használatával](search-security-trimming-for-azure-search-with-aad.md)
+* [Biztonság az Azure Cognitive Search](search-security-overview.md)

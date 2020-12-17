@@ -546,6 +546,8 @@
           items:
             - name: Informatikai szolgáltatásfelügyeleti összekötő
               href: platform/itsmc-overview.md
+            - name: Informatikai szolgáltatásfelügyeleti összekötő definíciója
+              href: platform/itsmc-definition.md
             - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
               href: platform/itsmc-connections.md
             - name: Service Manager-webalkalmazás létrehozása

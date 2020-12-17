@@ -3,12 +3,12 @@ title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
 ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: dca14781aac9db3cdd47ab4b66506f77f0b78c31
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 111e5310f1dac01053eebc6592d7b56105358c41
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616575"
+ms.locfileid: "97630088"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -99,7 +99,7 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 - A delegált előfizetések tevékenységi naplójának részleteinek megtekintése
 - Log Analytics: adatok lekérdezése távoli munkaterületekről több bérlőn
 - Hozzon létre riasztásokat az olyan ügyfél-bérlők számára, amelyek automatizálják az automatizálást, például Azure Automation runbookok vagy Azure Functionst a bérlő kezelése webhookokon keresztül
-- Diagnosztikai beállítások létrehozása az ügyfelek bérlői számára az erőforrás-naplók elküldéséhez a munkaterületek kezeléséhez a bérlőben
+- [Diagnosztikai beállítások](../..//azure-monitor/platform/diagnostic-settings.md) létrehozása az ügyfelek bérlői számára az erőforrás-naplók elküldéséhez a munkaterületek kezeléséhez a bérlőben
 - SAP-alapú számítási [feladatokhoz az SAP-megoldások metrikáinak figyelése összesített nézettel az ügyfél-bérlők között](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure hálózatkezelés](../../networking/networking-overview.md):
@@ -174,7 +174,7 @@ Az összes forgatókönyv esetén vegye figyelembe a következő korlátozásoka
 - A Azure Databrickst használó előfizetések előállítása közben a bérlők kezelése szolgáltatásban lévő felhasználók jelenleg nem indíthatnak Azure Databricks-munkaterületeket a delegált előfizetéseken.
 - Az erőforrás-zárolással rendelkező előfizetések és erőforráscsoportok bevezetése közben ezek a zárolások nem akadályozzák meg a felhasználók által végzett műveletek végrehajtását a bérlők felügyeletében. A rendszer által felügyelt erőforrások, például az Azure által felügyelt alkalmazások vagy az Azure-tervrajzok (rendszer által hozzárendelt megtagadási hozzárendelések) által létrehozott [hozzárendelések megtagadása](../../role-based-access-control/deny-assignments.md) , hogy a bérlők ne tudják eljárni az adott erőforráson. Ugyanakkor az ügyfél bérlője jelenleg nem hozhat létre saját megtagadási hozzárendeléseket (felhasználó által hozzárendelt megtagadási hozzárendeléseket).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ügyfeleket az Azure világítótoronyba [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.
 - [Megtekintheti és kezelheti az ügyfeleket](../how-to/view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

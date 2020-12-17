@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: cf8b6670817132c8c0c0a09194b9aca4bbc8073c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923778"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632060"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban a Azure Logic Apps (előzetes verzió) bővítménnyel
 
@@ -421,9 +421,9 @@ Az ebben a példában szereplő munkafolyamat ezt az triggert és a következő 
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Hogy** | Igen | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
-   | **Tárgy** | Igen | `An email from your example workflow` | Az e-mail tárgya |
-   | **Törzs** | Igen | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
+   | **Hogy** | Yes | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
+   | **Tárgy** | Yes | `An email from your example workflow` | Az e-mail tárgya |
+   | **Törzs** | Yes | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
    ||||
 
    > [!NOTE]
@@ -598,7 +598,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
    ![Képernyőkép a munkafolyamat áttekintő oldaláról a futtatási állapottal és előzményekkel](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Futtatás állapota | Leírás |
+   | Futtatás állapota | Description |
    |------------|-------------|
    | **Megszakítva** | A Futtatás leállt vagy nem fejeződik be külső problémák miatt, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | A Futtatás elindítva és elindítva, de lemondási kérelem érkezett. |
@@ -622,7 +622,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
    A munkafolyamat egyes lépései a következő lehetséges állapotokat tartalmazhatják:
 
-   | Művelet állapota | Ikon | Leírás |
+   | Művelet állapota | Ikon | Description |
    |---------------|------|-------------|
    | Megszakítva | ![A "megszakított" művelet állapotának ikonja][aborted-icon] | A művelet a külső problémák miatt leállt vagy nem zárult, például rendszerleállás vagy elévült Azure-előfizetés. |
    | Lemondva | ![A "megszakított" művelet állapotának ikonja][cancelled-icon] | A művelet futása megszakadt, de lemondási kérelmet kapott. |
@@ -769,7 +769,7 @@ A logikai alkalmazást új erőforrásként teheti közzé, amely automatikusan 
 
       1. Válasszon ki egy meglévő Application Insights-erőforrást, vagy **hozzon létre új Application Insights-erőforrást**.
 
-      1. A [Azure Portal](htpps://portal.azure.com)lépjen a Application Insights erőforráshoz.
+      1. A [Azure Portal](https://portal.azure.com)lépjen a Application Insights erőforráshoz.
 
       1. Az erőforrás menüben válassza az **Áttekintés** lehetőséget. Keresse meg és másolja a kialakítási **kulcs** értékét.
 

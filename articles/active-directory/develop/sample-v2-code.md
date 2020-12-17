@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a3f2eb8fe3da9b272c5fe61ef5dd66726cf7764d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 169a8dba979571a5f4b8c8056737fce72db1d058
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348432"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629867"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
@@ -36,7 +36,7 @@ Emellett a GitHubon is hozzájárulhat a mintákhoz. További információ: [Mic
 
 Ezek a minták azt mutatják be, hogyan lehet egy egyoldalas alkalmazást biztonságossá tennie a Microsoft Identity platformmal. Ezek a minták a MSAL.js egyikét használják.
 
-| Platform | Leírás | Hivatkozás |
+| Platform | Description | Hivatkozás |
 | -------- | --------------------- | -------- |
 | ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA-hívások Microsoft Graph |[JavaScript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | SPA-hívások Microsoft Graph az Auth Code flow PKCE |[JavaScript – v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
@@ -46,7 +46,7 @@ Ezek a minták azt mutatják be, hogyan lehet egy egyoldalas alkalmazást bizton
 | ![Ez a képen a szögletes embléma szögletes ábrázolása ](media/sample-v2-code/logo_angular.png) [(MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) látható| SPA-hívások egyéni webes API | [MS-Identity-JavaScript-szögletes-Spa-aspnetcore-webapi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
 | ![Ez a képen a szögletes embléma szögletes ábrázolása ](media/sample-v2-code/logo_angular.png) [(MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) látható | SPA-hívások B2C |[Active-Directory-B2C-JavaScript-szögletes-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
 | ![Ez a képen a reagáló embléma ](media/sample-v2-code/logo_react.png) [reagál (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)| A SPA meghívja az egyéni webes API-t, amely viszont meghívja a Microsoft Graph  | [MS-Identity-JavaScript-reakciós-Spa-dotnetcore-webapi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
-| ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | A SPA meghívja az egyéni webes API-t, amely viszont meghívja a Microsoft Graph  | [MS-Identity-JavaScript-oktatóanyag-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/4-1-call-api-graph) |
+| ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | A SPA meghívja az egyéni webes API-t, amely viszont meghívja a Microsoft Graph  | [MS-Identity-JavaScript-oktatóanyag-chapter4-OBO](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/4-AdvancedGrants/1-call-api-graph) |
 | ![Ez a képen a szögletes embléma szögletes ábrázolása ](media/sample-v2-code/logo_angular.png) [(MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) látható | A SPA meghívja az egyéni webes API-t az alkalmazás szerepköreivel és biztonsági csoportjaival |[MS-Identity-JavaScript-szögletes-Spa-dotnetcore-webapi-roles-groups](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups) |
 | ![Ez a képen a Blazer logo ](media/sample-v2-code/logo-blazor.png) [Blazer webszerelvénye (MSAL-js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) látható | A Blazer webszerelvényének oktatóanyaga a felhasználók bejelentkezéséhez és az API-k hívásához Azure Active Directory |[MS-Identity-Blazer-wasm](https://github.com/Azure-Samples/ms-identity-blazor-wasm) |
 
@@ -112,7 +112,7 @@ Az alábbi példa egy, a webböngészőt nem használó eszközön futó nyilvá
 
 Az alábbi példák bemutatják, hogyan konfigurálhatja az alkalmazást úgy, hogy fogadja a bejelentkezéseket bármely Azure Active Directory (Azure AD) bérlőről. Ha úgy konfigurálja az alkalmazást, hogy *több-bérlős* legyen, azt jelenti, hogy egy **szolgáltatott szoftver** (SaaS) alkalmazás számos szervezet számára elérhetővé válik, lehetővé téve, hogy a felhasználók bejelentkezzenek az alkalmazásba, miután beleegyezett a fiók használatára.
 
-| Platform | Leírás | Hivatkozás |
+| Platform | Description | Hivatkozás |
 | -------- | --------------------- | -------- |
 | ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) | Több-bérlős SPA-hívások Graph API |[MS-Identity-JavaScript-szögletes-Spa-ASPNET-webapi-több-bérlős](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter1) |
 | ![Ez a képen a szögletes embléma szögletes ábrázolása ](media/sample-v2-code/logo_angular.png) [(MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) látható | Több-bérlős SPA több-bérlős egyéni webes API-t hív meg |[MS-Identity-JavaScript-szögletes-Spa-ASPNET-webapi-több-bérlős](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter2) |

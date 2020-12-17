@@ -4,20 +4,20 @@ description: Ismerje meg, hogyan futtathat egy Azure-függvényt egy RabbitMQ-ü
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617221"
+ms.locfileid: "97630734"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ-trigger Azure Functions – áttekintés
 
 > [!NOTE]
-> A RabbitMQ-kötések csak a **Windows prémium** csomagokban teljes mértékben támogatottak. A felhasználás és a Linux jelenleg nem támogatott.
+> A RabbitMQ-kötések csak a **Windows Premium és a dedikált** csomagok esetében teljes mértékben támogatottak. A felhasználás és a Linux jelenleg nem támogatott.
 
 A RabbitMQ trigger használatával válaszolhat az RabbitMQ-üzenetsor üzeneteire.
 
@@ -206,7 +206,7 @@ További részletekért tekintse meg az trigger [példáját](#example) .
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `RabbitMQTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n/a | "RabbitMQTrigger" értékre kell állítani.|
 |**irányba** | n/a | "In" értékre kell állítani.|
@@ -275,7 +275,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |prefetchCount|30|Lekérdezi vagy beállítja az üzenet fogadója által egyidejűleg kérelmezhető és gyorsítótárazott üzenetek számát.|
 |queueName|n/a| Azon várólista neve, amelyről üzeneteket szeretne fogadni. |
@@ -303,7 +303,7 @@ Ha a helyi tesztelést nem a kapcsolatok karakterlánca nélkül végzi, állít
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |hostName|n/a|(ConnectStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista állomásneve (pl.: 10.26.45.210)|
 |userName (Felhasználónév)|n/a|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista eléréséhez használandó név |
@@ -315,6 +315,6 @@ A várólisták és az egyes RabbitMQ-végpontok cseréjének figyelése:
 * A [RabbitMQ-kezelő beépülő modul](https://www.rabbitmq.com/management.html) engedélyezése
 * Keresse meg a http://{node-hostname}: 15672, és jelentkezzen be a felhasználónevével és jelszavával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [RabbitMQ üzenetek küldése Azure Functionsból (kimeneti kötés)](./functions-bindings-rabbitmq-output.md)

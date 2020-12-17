@@ -3,13 +3,13 @@ title: Kubernetes-erőforrások elérése a Azure Portal
 description: Ismerje meg, hogyan kezelheti a Kubernetes-erőforrásokkal az Azure Kubernetes szolgáltatás (ak) fürtjét a Azure Portal.
 services: container-service
 ms.topic: article
-ms.date: 12/09/2020
-ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/16/2020
+ms.openlocfilehash: 4f34535f74de562c0a1b65c31f28476ca02e540f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921591"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631875"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal"></a>Kubernetes-erőforrások elérése a Azure Portal
 
@@ -19,15 +19,17 @@ A Azure Portal Kubernetes-erőforrás nézete lecseréli az [AK-irányítópult 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Azure Portal Kubernetes-erőforrásainak megtekintéséhez AK-fürtre van szükség. Bármely fürt támogatott, de ha Azure Active Directory (Azure AD) integrációt használ, a fürtnek az [AK által felügyelt Azure ad-integrációt][aks-managed-aad]kell használnia. Ha a fürt örökölt Azure AD-t használ, a fürtöt a portálon vagy az [Azure CLI][cli-aad-upgrade]-vel is frissítheti.
+A Azure Portal Kubernetes-erőforrásainak megtekintéséhez AK-fürtre van szükség. Bármely fürt támogatott, de ha Azure Active Directory (Azure AD) integrációt használ, a fürtnek az [AK által felügyelt Azure ad-integrációt][aks-managed-aad]kell használnia. Ha a fürt örökölt Azure AD-t használ, a fürtöt a portálon vagy az [Azure CLI][cli-aad-upgrade]-vel is frissítheti. [Az Azure Portal használatával][portal-cluster] új AK-fürtöt is létrehozhat.
 
 ## <a name="view-kubernetes-resources"></a>Kubernetes-erőforrások megtekintése
 
 A Kubernetes-erőforrások megtekintéséhez navigáljon az AK-fürthöz a Azure Portal. A bal oldali navigációs ablaktábla az erőforrások elérésére szolgál. Az erőforrások a következők:
 
 - A **névterek** a fürt névtereit jelenítik meg. A névtér lista tetején található szűrő gyors módszert kínál a névtér erőforrásainak szűrésére és megjelenítésére.
-- A **munkaterhelések** a fürtön üzembe helyezett központi telepítések, hüvelyek, replikák és démon-készletek adatait jelenítik meg. Az alábbi képernyőképen egy példa AK-fürt alapértelmezett rendszerhüvelyei láthatók.
+- A **munkaterhelések** a fürtön üzembe helyezett központi telepítések, hüvelyek, replikakészlet, állapot-nyilvántartó készletek, démon-készletek, feladatok és cron-feladatok adatait jelenítik meg. Az alábbi képernyőképen egy példa AK-fürt alapértelmezett rendszerhüvelyei láthatók.
 - A **szolgáltatások és a ingresses** megjeleníti a fürt összes szolgáltatását és a bejövő erőforrásokat.
+- A **Storage** az Azure Storage-osztályait és az állandó mennyiségi adatokat mutatja.
+- A **konfiguráció** a fürt konfigurációs térképeit és a titkos kulcsokat jeleníti meg.
 
 :::image type="content" source="media/kubernetes-portal/workloads.png" alt-text="A Azure Portalban megjelenő Kubernetes-Pod-információ." lightbox="media/kubernetes-portal/workloads.png":::
 
@@ -35,7 +37,7 @@ A Kubernetes-erőforrások megtekintéséhez navigáljon az AK-fürthöz a Azure
 
 Ebben a példában a minta AK-fürtöt használjuk az Azure vote-alkalmazás üzembe helyezéséhez az [AK][portal-quickstart]gyors útmutatójában.
 
-1. Válassza a **Hozzáadás** tetszőleges erőforrás-nézetből (névtér, munkaterhelések, szolgáltatások és ingresses) lehetőséget.
+1. Válassza a **Hozzáadás** tetszőleges erőforrás-nézetből (névtér, munkaterhelések, szolgáltatások és Ingresses, tárterület vagy konfiguráció) lehetőséget.
 1. Illessze be az Azure vote-alkalmazás YAML az [AK][portal-quickstart]rövid útmutatójában.
 1. Válassza a **Hozzáadás** lehetőséget a YAML-szerkesztő alján az alkalmazás telepítéséhez. 
 
@@ -45,7 +47,7 @@ A YAML-fájl hozzáadása után az erőforrás-megjelenítő mindkét létrehozo
 
 ### <a name="monitor-deployment-insights"></a>Üzembe helyezési áttekintések figyelése
 
-Az [Azure monitor for containers][enable-monitor] -t használó AK-fürtök gyorsan megtekinthetik az üzembe helyezési eredményeket. A Kubernetes-erőforrások nézetben a felhasználók láthatják az egyes központi telepítések élő állapotát, beleértve a processzor-és memóriahasználat, valamint az Azure-figyelőre való áttérést, amely részletesebb információkat biztosít. Íme egy példa egy minta AK-fürt üzembe helyezésére:
+A [tárolók számára Azure monitor][enable-monitor] rendelkező AK-fürtök gyorsan megtekinthetik az üzembe helyezést és az egyéb ismereteket. A Kubernetes-erőforrások nézetben a felhasználók láthatják az egyes központi telepítések élő állapotát, beleértve a processzor-és memóriahasználat, valamint az Azure monitorra való áttérést az adott csomópontokkal és tárolókkal kapcsolatos részletesebb információkhoz. Íme egy példa egy minta AK-fürt üzembe helyezésére:
 
 :::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="A Azure Portalban megjelenő üzembe helyezési eredmények." lightbox="media/kubernetes-portal/deployment-insights.png":::
 
@@ -75,8 +77,6 @@ A Kubernetes erőforrásainak eléréséhez hozzáféréssel kell rendelkeznie a
 
 A meglévő fürtök esetében előfordulhat, hogy engedélyeznie kell a Kubernetes erőforrás-nézetet. Az erőforrás nézet engedélyezéséhez kövesse a fürtben található portálon megjelenő utasításokat.
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure Portal üzenet a Kubernetes erőforrás nézetének engedélyezéséhez." lightbox="media/kubernetes-portal/enable-resource-view.png":::
-
 > [!TIP]
 > Az [**API-kiszolgáló által engedélyezett IP-tartományokhoz**](api-server-authorized-ip-ranges.md) tartozó AK funkció hozzáadható az API-kiszolgáló hozzáférésének korlátozásához csak a tűzfal nyilvános végpontja számára. Egy másik lehetőség, hogy az ilyen fürtök frissítése a `--api-server-authorized-ip-ranges` helyi ügyfélszámítógép vagy az IP-címtartomány (amelyről a portál böngészése) hozzáférését is tartalmazza. A hozzáférés engedélyezéséhez a számítógép nyilvános IPv4-címe szükséges. Ezt a címet megkeresheti az alábbi paranccsal, vagy a "mi az IP-cím" kifejezéssel az Internet böngészőben.
 ```bash
@@ -100,3 +100,4 @@ Ez a cikk bemutatja, hogyan érheti el a Kubernetes-erőforrásokat az AK-fürth
 [aks-managed-aad]: managed-aad.md
 [cli-aad-upgrade]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration
 [enable-monitor]: ../azure-monitor/insights/container-insights-enable-existing-clusters.md
+[portal-cluster]: kubernetes-walkthrough-portal.md

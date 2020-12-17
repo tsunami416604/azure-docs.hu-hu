@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: d1e6f4e16e3eda8519913a9e2ae14f7cc909bf61
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6cefe543ea8ba992b028448070bf041a77bfec64
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445455"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630275"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Az Azure Cognitive Search alkoholtartalom-növelési folyamatának pénzmosás-képessége
 
@@ -33,7 +33,7 @@ A beépített képességekhez hasonlóan a **pénzmosás** -képesség is bemene
 
 * Egy [pénzmosás-munkaterület](../machine-learning/concept-workspace.md)
 * Egy [Azure Kubernetes szolgáltatáshoz tartozó számítási cél](../machine-learning/concept-compute-target.md) a munkaterületen egy [üzembe helyezett modellel](../machine-learning/how-to-deploy-azure-kubernetes-service.md)
-  * A [számítási célnak engedélyezve kell](../machine-learning/how-to-secure-web-service.md#deploy-on-aks-and-field-programmable-gate-array-fpga)lennie az SSL-nek. Az Azure Cognitive Search csak a **https** -végpontokhoz való hozzáférést engedélyezi
+  * A [számítási célnak engedélyezve kell](../machine-learning/how-to-secure-web-service.md#deploy-on-azure-kubernetes-service)lennie az SSL-nek. Az Azure Cognitive Search csak a **https** -végpontokhoz való hozzáférést engedélyezi
   * Az önaláírt tanúsítványokat nem lehet használni.
 
 ## <a name="odatatype"></a>@odata.type  

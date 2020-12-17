@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 12/07/2020
-ms.openlocfilehash: d07f01a17c2d784eed61ad7e7ef47c8f7eb5ac30
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 9069a53166b30e206559f0c68c4bcef2ec136ac5
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862190"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631499"
 ---
 # <a name="cognitive-services-docs-whats-new-for-november-1-2020---november-30-2020"></a>Cognitive Services docs: Újdonságok november 1-től, 2020 – november 30., 2020
 
@@ -29,39 +29,39 @@ ms.locfileid: "96862190"
 - [Természetes nyelvi támogatás az Azure Cognitive Services](language-support.md)
 - [Cognitive Services Azure biztonsági alapterve](security-baseline.md)
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Tárolók
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Azure Cognitive Services Container képcímkék és kibocsátási megjegyzések](/azure/cognitive-services/containers/container-image-tags.md)
+- [Azure Cognitive Services Container képcímkék és kibocsátási megjegyzések](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
 ### <a name="new-articles"></a>Új cikkek
 
-- [Űrlap-felismerő előre összeépített számlázási modellje](/azure/cognitive-services/form-recognizer/concept-invoices.md)
-- [Űrlap-felismerő elrendezési szolgáltatás](/azure/cognitive-services/form-recognizer/concept-layout.md)
-- [Gyors útmutató: számlázási adatok kinyerése az űrlap-felismerő REST API és a Python használatával](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices.md)
+- [Űrlap-felismerő előre összeépített számlázási modellje](/azure/cognitive-services/form-recognizer/concept-invoices)
+- [Űrlap-felismerő elrendezési szolgáltatás](/azure/cognitive-services/form-recognizer/concept-layout)
+- [Gyors útmutató: számlázási adatok kinyerése az űrlap-felismerő REST API és a Python használatával](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices)
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Nyugtákra vonatkozó fogalmak](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [Mi a Form Recognizer?](/azure/cognitive-services/form-recognizer/overview.md)
-- [Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával](/azure/cognitive-services/form-recognizer/quickstarts/label-tool.md)
-- [Gyors útmutató: névjegykártya-adatok kinyerése az űrlap-felismerő REST API és a Python használatával](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards.md)
-- [A Form Recognizer újdonságai](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [Nyugtákra vonatkozó fogalmak](/azure/cognitive-services/form-recognizer/concept-receipts)
+- [Mi a Form Recognizer?](/azure/cognitive-services/form-recognizer/overview)
+- [Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [Gyors útmutató: névjegykártya-adatok kinyerése az űrlap-felismerő REST API és a Python használatával](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards)
+- [A Form Recognizer újdonságai](/azure/cognitive-services/form-recognizer/whats-new)
 
 ## <a name="metrics-advisor"></a>Metrics Advisor
 
 ### <a name="new-articles"></a>Új cikkek
 
-- [Metrikák Advisor: a docs újdonságai](/azure/cognitive-services/metrics-advisor/whats-new.md)
+- [Metrikák Advisor: a docs újdonságai](/azure/cognitive-services/metrics-advisor/whats-new)
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Anomália-visszajelzés megadása](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback.md)
-- [Metrikák Advisor – gyakori kérdések](/azure/cognitive-services/metrics-advisor/faq.md)
-- [Gyors útmutató: az ügyfél-kódtárak vagy a REST API-k használata a megoldás testreszabásához](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library.md)
+- [Anomália-visszajelzés megadása](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback)
+- [Metrikák Advisor – gyakori kérdések](/azure/cognitive-services/metrics-advisor/faq)
+- [Gyors útmutató: az ügyfél-kódtárak vagy a REST API-k használata a megoldás testreszabásához](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library)
 
 ## <a name="qna-maker"></a>QnA Maker 
 
@@ -75,12 +75,12 @@ ms.locfileid: "96862190"
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Az Text Analytics API vonatkozó adatforgalmi és díjszabási korlátok](/azure/cognitive-services/text-analytics/concepts/data-limits.md)
-- [Útmutató: a Text Analytics for Health használata (előzetes verzió)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health.md)
-- [A Text Analytics meghívása REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
-- [Elnevezett entitások felismerésének használata a Text Analyticsban](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Útmutató: az érzelmek elemzése és a vélemények bányászata](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
-- [A Text Analytics API újdonságai.](/azure/cognitive-services/text-analytics/whats-new.md)
-- [Példa: nyelv felismerése Text Analytics](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md)
+- [Az Text Analytics API vonatkozó adatforgalmi és díjszabási korlátok](/azure/cognitive-services/text-analytics/concepts/data-limits)
+- [Útmutató: a Text Analytics for Health használata (előzetes verzió)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
+- [A Text Analytics meghívása REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [Elnevezett entitások felismerésének használata a Text Analyticsban](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [Útmutató: az érzelmek elemzése és a vélemények bányászata](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis)
+- [A Text Analytics API újdonságai.](/azure/cognitive-services/text-analytics/whats-new)
+- [Példa: nyelv felismerése Text Analytics](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

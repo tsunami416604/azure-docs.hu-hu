@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.openlocfilehash: bc93c3643e329879e5118d1cfb61a356442df808
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7d93002af866aa653972182a13ea37d37e912ce8
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97622230"
+ms.locfileid: "97630309"
 ---
 # <a name="tutorial-shard-data-on-worker-nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Oktatóanyag: az Azure Database for PostgreSQL-beli munkavégző csomópontok szegmense szerinti adathalmazok – nagy kapacitású (Citus)
 
@@ -171,8 +171,8 @@ Láthatjuk, hogy a szegmensek mérete egyenlő. Már láttuk, hogy a kihelyezés
 
 A példában szereplő sorok `users` egyenletesen oszlanak el, mivel a terjesztési oszlop tulajdonságai megtalálhatók `email` .
 
-1. Az e-mail-címek száma nagyobb vagy egyenlő, mint a szegmensek száma
-2. Az e-mail-címeken belüli sorok száma hasonló volt (esetünkben pontosan egy sor van megadva, mert az e-mail-címet deklaráljuk)
+1. Az e-mail-címek száma nagyobb vagy egyenlő, mint a szegmensek száma.
+2. Az e-mail-címeken belüli sorok száma hasonló volt (esetünkben pontosan egy sor van megadva, mert az e-mail-címet deklaráljuk).
 
 Bármely olyan tábla-és terjesztési oszlop közül választhat, amelyben bármelyik tulajdonság meghiúsul, és a feldolgozók egyenetlen adatméretet eredményeznek, azaz az *adat-elferdítés*.
 
@@ -256,7 +256,7 @@ explain select avg(current_date - bday) from users;
 
 A kimenet egy példát mutat be egy, a szegmens 102040-on futó *lekérdezési töredékre* (a Worker 10.0.0.21 táblára) vonatkozó végrehajtási tervre `users_102040` . A többi töredék nem jelenik meg, mert hasonlóak. Láthatjuk, hogy a feldolgozó csomópont megkeresi a szegmens táblákat, és alkalmazza az összesítést. A koordinátor csomópont a végső eredmény összesítéseit kombinálja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehoztunk egy elosztott táblázatot, és megismertük a szegmenseit és elhelyezéseit. Feltettük az egyediség és a külső kulcsok korlátozásait, és végül azt is láttuk, hogy az elosztott lekérdezések hogyan működnek magas szinten.
 

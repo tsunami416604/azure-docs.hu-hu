@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan állíthatja be az Azure Private-hivatkozást e
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 12/16/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4ba4e5f462a3cc88de5b23b32a5e749f9363e93f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9a6db0d25165059581d7ffafa5b8e7fd19330c87
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081892"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629646"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -47,7 +47,7 @@ A következő lépésekkel hozhat létre egy meglévő Azure Cosmos-fiókhoz tar
     | Erőforráscsoport | Válasszon ki egy erőforráscsoportot.|
     | **Példány adatai** |  |
     | Name | Adja meg a privát végpont nevét. Ha ezt a nevet hozza, hozzon létre egy egyedit. |
-    |Region| Válassza ki azt a régiót, ahol a privát hivatkozást telepíteni szeretné. Hozza létre a magánhálózati végpontot ugyanazon a helyen, ahol a virtuális hálózat található.|
+    |Régió| Válassza ki azt a régiót, ahol a privát hivatkozást telepíteni szeretné. Hozza létre a magánhálózati végpontot ugyanazon a helyen, ahol a virtuális hálózat található.|
     |||
 1. Válassza a **Tovább: erőforrás** elemet.
 1. A **privát végpont létrehozása – erőforrás** területen adja meg vagy válassza ki az alábbi adatokat:
@@ -71,10 +71,10 @@ A következő lépésekkel hozhat létre egy meglévő Azure Cosmos-fiókhoz tar
     | Alhálózat | Válassza ki az alhálózatot. |
     |**saját DNS integráció**||
     |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. <br><br/> A magánhálózati végponthoz való kapcsolódáshoz DNS-rekordra van szükség. Javasoljuk, hogy a privát végpontot egy privát DNS-zónával integrálja. Saját DNS-kiszolgálókat is használhat, vagy létrehozhat DNS-rekordokat a virtuális gépeken található gazdagép-fájlok használatával. |
-    |Privát DNS-zóna |Válassza ki **privatelink.documents.Azure.com** . <br><br/> A magánhálózati DNS-zóna automatikusan meg van határozva. A Azure Portal használatával nem módosítható.|
+    |Privát DNS-zóna |Válassza ki **privatelink.documents.Azure.com**. <br><br/> A magánhálózati DNS-zóna automatikusan meg van határozva. A Azure Portal használatával nem módosítható.|
     |||
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** lapon az Azure ellenőrzi a konfigurációt.
 1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
 Ha jóváhagyta az Azure Cosmos-fiókhoz tartozó privát hivatkozást, akkor a Azure Portalban a **tűzfal és a virtuális hálózatok** ablaktábla **minden hálózat** lehetőség nem érhető el.
@@ -88,18 +88,18 @@ Az alábbi táblázat a különböző Azure Cosmos-fiók API-típusai, a támoga
 |Mongo   |  MongoDB       |  privatelink.mongo.cosmos.azure.com    |
 |Gremlin     | Gremlin        |  privatelink.gremlin.cosmos.azure.com   |
 |Gremlin     |  SQL       |  privatelink.documents.azure.com    |
-|Tábla    |    Tábla     |   privatelink.table.cosmos.azure.com    |
-|Tábla     |   SQL      |  privatelink.documents.azure.com    |
+|Táblázat    |    Táblázat     |   privatelink.table.cosmos.azure.com    |
+|Táblázat     |   SQL      |  privatelink.documents.azure.com    |
 
 ### <a name="fetch-the-private-ip-addresses"></a>A magánhálózati IP-címek beolvasása
 
 A magánhálózati végpont kiépítés után lekérdezheti az IP-címeket. A Azure Portal IP-címeinek megtekintése:
 
 1. Válassza a **Minden erőforrás** elemet.
-1. Keresse meg a korábban létrehozott privát végpontot. Ebben az esetben ez a **cdbPrivateEndpoint3** .
+1. Keresse meg a korábban létrehozott privát végpontot. Ebben az esetben ez a **cdbPrivateEndpoint3**.
 1. A DNS-beállítások és az IP-címek megtekintéséhez válassza az **Áttekintés** lapot.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Privát végpont létrehozására szolgáló kijelölés a Azure Portalban":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Magánhálózati IP-címek a Azure Portal":::
 
 Több IP-cím jön létre egy privát végponton:
 
@@ -412,7 +412,7 @@ Ezen fiókok esetében minden egyes API-típushoz létre kell hoznia egy privát
 
 A sablon sikeres üzembe helyezését követően az alábbi képen láthatóhoz hasonló kimenet jelenik meg. Az `provisioningState` érték az, `Succeeded` Ha a magánhálózati végpontok megfelelően vannak beállítva.
 
-:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Privát végpont létrehozására szolgáló kijelölés a Azure Portalban":::
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Üzembe helyezési kimenet a Resource Manager-sablonhoz":::
 
 A sablon üzembe helyezése után a magánhálózati IP-címek az alhálózaton belül vannak lefoglalva. Az Azure Cosmos-fiók tűzfalszabály úgy van konfigurálva, hogy csak a magánhálózati végpontról fogadjon kapcsolatokat.
 
@@ -616,6 +616,9 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 Saját DNS-zónát kell használnia azon az alhálózaton belül, ahol létrehozta a magánhálózati végpontot. Konfigurálja úgy a végpontokat, hogy minden magánhálózati IP-cím le legyen képezve egy DNS-bejegyzésre. (Lásd a `fqdns` korábban bemutatott válasz tulajdonságát.)
 
 A privát végpont létrehozásakor az Azure-ban egyesítheti azt egy privát DNS-zónával. Ha ehelyett egyéni DNS-zónát használ, úgy kell beállítania, hogy a magánhálózati végpont számára fenntartott magánhálózati IP-címekhez adja hozzá a DNS-rekordokat.
+
+> [!IMPORTANT]
+> Ez a kérések DNS-feloldása, amely meghatározza, hogy a kérések a privát végpontokon haladnak-e át, vagy a standard nyilvános útvonalat. Győződjön meg arról, hogy a helyi DNS megfelelően hivatkozik a privát végpont által leképezett magánhálózati IP-címre.
 
 ## <a name="private-link-combined-with-firewall-rules"></a>Privát hivatkozás a tűzfalszabályok együttes használatával
 

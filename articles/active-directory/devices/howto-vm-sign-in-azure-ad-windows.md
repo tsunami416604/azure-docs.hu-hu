@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c42495ceab7108d20b0f0dedbf0cf94f5f9352d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ef2c9d7e2388d2da7a807fbf6b579360115a8323
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509308"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629799"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -333,6 +333,9 @@ Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal ke
 ![A fiókja úgy van konfigurálva, hogy megakadályozza az eszköz használatát.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
 Ellenőrizze, hogy konfigurálta-e az [Azure RBAC-házirendeket](../../virtual-machines/linux/login-using-aad.md) a virtuális gép számára, amely megadja a felhasználónak a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét:
+
+> [!NOTE]
+> Ha az Azure szerepkör-hozzárendelésekkel kapcsolatos problémákba ütközik, tekintse meg az [Azure-RBAC hibaelhárítását](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit)ismertető témakört.
  
 #### <a name="unauthorized-client"></a>Jogosulatlan ügyfél
 
@@ -368,6 +371,6 @@ Ha még nem telepítette a vállalati Windows Hello szolgáltatást, és ha ez n
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](../fundamentals/active-directory-whatis.md)

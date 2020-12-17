@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 057599cc92e27e423d25d528d5d84b978ff4a911
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919536"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630292"
 ---
 # <a name="resilient-end-user-experience"></a>Rugalmas végfelhasználói élmény
 
@@ -58,7 +58,7 @@ A külső identitás-szolgáltató regisztrációs folyamatának részeként tar
 
  2. Konfiguráljon egy profilt, amely lehetővé teszi a felhasználók számára, hogy a bejelentkezés után [összekapcsolják a másik identitást a fiókjával](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking) .
 
- 3. Értesítés küldése és engedélyezése a felhasználóknak egy [másik identitásszolgáltató való váltásra](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#configure-dynamic-custom-page-content-uri) leállás közben.
+ 3. Értesítés küldése és engedélyezése a felhasználóknak egy [másik identitásszolgáltató való váltásra](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri) leállás közben.
 
 ## <a name="availability-of-multi-factor-authentication"></a>A többtényezős hitelesítés rendelkezésre állása
 
@@ -95,7 +95,7 @@ A Content Delivery Networks (CDNs) jobb teljesítményű és olcsóbb, mint a bl
 
 Rendszeresen tesztelje a CDN rendelkezésre állását és a tartalom terjesztésének teljesítményét a végpontok közötti forgatókönyv és a terheléses tesztelés segítségével. Ha az előléptetés vagy az üdülési forgalom miatt várhatóan nagy lendületet szeretne, módosítsa a becsléseket a terheléses teszteléshez.
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rugalmassági erőforrások Azure AD B2C-fejlesztőknek](resilience-b2c.md)
   

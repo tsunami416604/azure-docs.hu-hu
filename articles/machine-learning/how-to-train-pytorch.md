@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ed368615395614bc0d3e9a6f06727da8c64d8486
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: eec53570c542ceb60c937072135fcb70b59e80a6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559641"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631040"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch-modellek betanítása méretekben Azure Machine Learning
 
@@ -199,7 +199,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 A feladatok ScriptRunConfig-vel való konfigurálásával kapcsolatos további információkért lásd: a [betanítási futtatások konfigurálása és elküldése](how-to-set-up-training-targets.md).
 
 > [!WARNING]
-> Ha korábban már használta a PyTorch-kalkulátort a PyTorch-betanítási feladatok konfigurálásához, vegye figyelembe, hogy a becslések az Azure ML SDK egy későbbi kiadásában lesz elavult. Az Azure ML SDK >= 1.15.0 használatával a betanítási feladatok, például a DL-keretrendszerek használatát ajánlott beállítani a ScriptRunConfig.
+> Ha korábban már használta a PyTorch-kalkulátort a PyTorch-betanítási feladatok konfigurálásához, vegye figyelembe, hogy a becslések a 1.19.0 SDK kiadása óta elavulttá vált. Az Azure ML SDK >= 1.15.0 használatával a betanítási feladatok, köztük a Deep learning-keretrendszerek használatát ajánlott beállítani a ScriptRunConfig. Gyakori áttelepítési kérdésekben tekintse [meg a ScriptRunConfig áttelepítési útmutatót a kalkulátorban](how-to-migrate-from-estimators-to-scriptrunconfig.md).
 
 ## <a name="submit-your-run"></a>A Futtatás beküldése
 
@@ -319,7 +319,7 @@ Az elosztott PyTorch Azure ML-re való futtatásával kapcsolatos teljes oktató
 
 Ha optimalizálni szeretné a következtetést a [ONNX futtatókörnyezettel](concept-onnx.md), alakítsa át a betanított PyTorch modelljét a ONNX formátumba. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban. Példaként tekintse meg az [oktatóanyagot](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a PyTorch-on Azure Machine Learning-on keresztül tanult és regisztrált egy mély tanulási és neurális hálózatot. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
 

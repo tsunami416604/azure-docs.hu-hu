@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: febcb3d2b6990d36a686dc4fab57a6bcbc96b080
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8ea4b0c7c8df1ff7fe0e3ecb253b23d188681e80
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616660"
+ms.locfileid: "97629680"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ kimeneti kötés a Azure Functions áttekintéséhez
 
 > [!NOTE]
-> A RabbitMQ-kötések csak a **Windows prémium** csomagokban teljes mértékben támogatottak. A felhasználás és a Linux jelenleg nem támogatott.
+> A RabbitMQ-kötések csak a **Windows Premium és a dedikált** csomagok esetében teljes mértékben támogatottak. A felhasználás és a Linux jelenleg nem támogatott.
 
 Az RabbitMQ kimeneti kötés használatával üzeneteket küldhet egy RabbitMQ-várólistába.
 
@@ -263,7 +263,7 @@ További részletekért tekintse meg a kimeneti kötési [példát](#example) .
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `RabbitMQ` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n/a | "RabbitMQ" értékre kell állítani.|
 |**irányba** | n/a | "Out" értékre kell állítani. |
@@ -321,6 +321,6 @@ A kimeneti kötéshez használja a következő paramétereket:
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Függvény futtatása RabbitMQ-üzenet létrehozásakor (trigger)](./functions-bindings-rabbitmq-trigger.md)

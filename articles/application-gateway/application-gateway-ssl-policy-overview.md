@@ -5,14 +5,14 @@ services: application gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 11/16/2019
+ms.date: 12/17/2020
 ms.author: amsriva
-ms.openlocfilehash: 16c6dd28d47573c2ad5b0d5a331b0dc48e7aacef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77239cd8586b8fb07abf6862be436979541bdb99
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85253630"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631690"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>Application Gateway TLS-házirend áttekintése
 
@@ -23,6 +23,18 @@ A TLS-házirend szabályozza a TLS protokoll verziószámát, valamint a titkos�
 ## <a name="predefined-tls-policy"></a>Előre definiált TLS-házirend
 
 Application Gateway három előre definiált biztonsági házirenddel rendelkezik. Ezen szabályzatok bármelyikével konfigurálhatja az átjárót a megfelelő szintű biztonság eléréséhez. A szabályzatok neveit az év és a hónap, amelyben konfigurálták. Az egyes házirendek különböző TLS protokoll-és titkosítási csomagokat biztosítanak. Javasoljuk, hogy a legújabb TLS-házirendeket használja a legjobb TLS-biztonság biztosításához.
+
+## <a name="known-issue"></a>Ismert probléma
+A Application Gateway v2 nem támogatja a következő DHE-titkosításokat, és ezek nem használhatók a TLS-kapcsolatokhoz az ügyfelekkel, még akkor is, ha azok szerepelnek az előre definiált szabályzatokban. A DHE titkosítások helyett a biztonságos és a gyorsabb ECDHE-titkosítás ajánlott.
+
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
@@ -54,6 +66,10 @@ Application Gateway három előre definiált biztonsági házirenddel rendelkezi
 ## <a name="custom-tls-policy"></a>Egyéni TLS-házirend
 
 Ha az előre definiált TLS-szabályzatot be kell állítani a követelményekhez, meg kell határoznia a saját egyéni TLS-házirendjét. Egyéni TLS-szabályzattal teljes mértékben szabályozhatja a TLS protokoll minimális verziójának támogatását, valamint a támogatott titkosítási csomagokat és azok prioritási sorrendjét.
+
+> [!IMPORTANT]
+> Ha Application Gateway v1 SKU-ban (standard vagy WAF) egyéni SSL-házirendet használ, ügyeljen arra, hogy a listához hozzáadja a kötelező titkosítási "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256". Ez a titkosítás szükséges a metrikák és a naplózás Application Gateway v1 SKU-ban való engedélyezéséhez.
+> Ez nem kötelező Application Gateway v2 SKU-hoz (Standard_v2 vagy WAF_v2).
  
 ### <a name="tlsssl-protocol-versions"></a>TLS/SSL protokoll verziói
 
@@ -98,17 +114,6 @@ Application Gateway a következő titkosítási csomagokat támogatja, amelyekr�
 > [!NOTE]
 > A kapcsolatban használt TLS titkosítási csomagok a használt tanúsítvány típusától függően is megtalálhatók. Az ügyfél és az Application Gateway közötti kapcsolatok esetében a használt titkosítási csomagok az Application Gateway-figyelő kiszolgálói tanúsítványainak típusán alapulnak. Az Application Gateway és a háttérrendszer-készlet kapcsolatai között a használt titkosítási csomagok a háttérrendszer kiszolgálói tanúsítványainak típusától függenek.
 
-## <a name="known-issue"></a>Ismert probléma
-A Application Gateway v2 jelenleg nem támogatja a következő titkosítási műveleteket:
-- DHE-RSA-AES128-GCM-SHA256
-- DHE-RSA-AES128-SHA
-- DHE-RSA-AES256-GCM-SHA384
-- DHE-RSA-AES256-SHA
-- DHE-DSS-AES128-SHA256
-- DHE-DSS-AES128-SHA
-- DHE-DSS-AES256-SHA256
-- DHE-DSS-AES256-SHA
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a TLS-házirend konfigurálásáról, olvassa el [a TLS-házirend verzióinak és a titkosítási csomagok konfigurálása Application Gatewayon](application-gateway-configure-ssl-policy-powershell.md)című témakört.

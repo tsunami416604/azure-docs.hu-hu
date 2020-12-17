@@ -1,5 +1,5 @@
 ---
-title: Fürtök konfigurálása Active Directory-integrációhoz
+title: Fürtök konfigurálása Azure Active Directory-integrációhoz
 titleSuffix: Azure HDInsight
 description: Megtudhatja, hogyan állíthatja be és konfigurálhatja a Active Directory-nal integrált HDInsight-fürtöt a Azure Active Directory Domain Services és a Enterprise Security Package funkció használatával.
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 248d909e633607271aec7c2c9b8a373f111f7d98
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031482"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631550"
 ---
-# <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>HDInsight-fürtök konfigurálása Active Directory integrációhoz Enterprise Security Package
+# <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>HDInsight-fürtök konfigurálása Azure Active Directory integrációhoz Enterprise Security Package
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat Active Directory integrált HDInsight-fürtöt egy Enterprise Security Package (ESP), Azure Active Directory Domain Services (Azure AD-DS) szolgáltatással és a meglévő helyszíni Active Directoryokkal.
+Ez a cikk összefoglalja, hogyan hozhat létre és konfigurálhat egy Azure Active Directory integrált HDInsight-fürtöt. Ez az integráció egy Enterprise Security Package (ESP), Azure Active Directory Domain Services (Azure AD-DS) és a már meglévő helyszíni Active Directory nevű HDInsight-szolgáltatásra támaszkodik.
 
-A tartományok Azure-ban történő beállításával és konfigurálásával, valamint az ESP-kompatibilis fürtök létrehozásával kapcsolatos oktatóanyagért lásd: [Enterprise Security Package-fürtök létrehozása és konfigurálása az Azure HDInsight-ben](apache-domain-joined-create-configure-enterprise-security-cluster.md).
+A tartományok Azure-beli beállításával és konfigurálásával, valamint az ESP-kompatibilis fürt létrehozásával és a helyszíni felhasználók szinkronizálásával kapcsolatos részletes útmutató: [Enterprise Security Package-fürtök létrehozása és konfigurálása az Azure HDInsight-ben](apache-domain-joined-create-configure-enterprise-security-cluster.md).
 
 ## <a name="background"></a>Háttér
 
@@ -33,12 +33,13 @@ Enterprise Security Package (ESP) Active Directory-integrációt biztosít az Az
 
 Az ESP-kompatibilis HDInsight-fürtök létrehozásához néhány előfeltételnek kell meglennie:
 
+- Egy meglévő helyszíni Active Directory és Azure Active Directory.
 - Az Azure AD-DS engedélyezése.
 - Ellenőrizze, hogy az Azure AD-DS állapota megtörtént-e a szinkronizálás befejezésének biztosításához.
 - Felügyelt identitás létrehozása és engedélyezése.
 - A DNS és a kapcsolódó problémák teljes hálózatkezelésének beállítása.
 
-Az alábbiakban részletesen ismertetjük ezeket az elemeket.
+Az alábbiakban részletesen ismertetjük ezeket az elemeket. A fenti lépések elvégzéséhez lásd: [Enterprise Security Package-fürtök létrehozása és konfigurálása az Azure HDInsight-ben](apache-domain-joined-create-configure-enterprise-security-cluster.md).
 
 ### <a name="enable-azure-ad-ds"></a>Az Azure AD tartományi szolgáltatások engedélyezése
 

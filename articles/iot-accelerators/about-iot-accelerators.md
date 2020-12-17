@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 193ceab0b2df1ab833a86eb748c18271a8e33b71
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 5012383e64a85ee025273f5339b828f5338e1d4f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852914"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629068"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Mik az Azure IoT-megoldásgyorsítók?
 
 A felhőalapú IoT-megoldás általában egyéni kódot és felhőalapú szolgáltatásokat használ az eszközök kapcsolatának kezeléséhez, az adatfeldolgozáshoz és az elemzéshez, valamint a megjelenítéshez.
 
-Az IoT-megoldásgyorsítók teljes körű, üzembe helyezésre kész IoT-megoldások, amelyek gyakori IoT-forgatókönyveket implementálnak. A forgatókönyvek közé tartozik a csatlakoztatott gyár és az eszköz szimulálása. A megoldásgyorsítók üzembe helyezésekor az üzemelő példány magában foglalja az összes szükséges felhőalapú szolgáltatást és minden szükséges alkalmazáskódot.
+Az IoT-megoldásgyorsítók teljes körű, üzembe helyezésre kész IoT-megoldások, amelyek gyakori IoT-forgatókönyveket implementálnak. A forgatókönyvek közé tartoznak a csatlakoztatott gyárak és az eszközszimuláció. A megoldásgyorsítók üzembe helyezésekor az üzemelő példány magában foglalja az összes szükséges felhőalapú szolgáltatást és minden szükséges alkalmazáskódot.
 
 A megoldásgyorsítók az Ön saját IoT-megoldásainak kiindulópontjaiként szolgálnak. Az összes megoldásgyorsító forráskódja nyílt, és elérhető a GitHubban. A megoldásgyorsítókat letöltheti és saját igényei szerint testre szabhatja.
 
@@ -29,7 +29,7 @@ A megoldásgyorsítókat tanulási eszközként is használhatja, mielőtt létr
 Az összes megoldásgyorsító alkalmazáskódja tartalmaz egy olyan webalkalmazást, amely lehetővé teszi az alkalmazásgyorsító kezelését.
 
 > [!NOTE]
-> A távoli figyelési és prediktív karbantartási megoldások el lettek távolítva az [Azure IoT megoldás-gyorsító](https://www.azureiotsolutions.com/Accelerators) webhelyről. További információ: [Mi az Azure IoT megoldás-gyorsító? (előző verzió)](/previous-versions/azure/iot-accelerators/about-iot-accelerators.md).
+> A távoli figyelési és prediktív karbantartási megoldások el lettek távolítva az [Azure IoT megoldás-gyorsító](https://www.azureiotsolutions.com/Accelerators) webhelyről. További információ: [Mi az Azure IoT megoldás-gyorsító? (előző verzió)](/previous-versions/azure/iot-accelerators/about-iot-accelerators).
 
 ## <a name="supported-iot-scenarios"></a>Támogatott IoT-forgatókönyvek
 

@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás erőforrásának engedélyezése
 description: Megtudhatja, hogyan küldhet be támogatási kérést az Azure VMware-megoldási erőforrásának engedélyezéséhez. További gazdagépeket is igényelhet a meglévő Azure VMware-megoldás privát felhőben.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 6d614dffc4ab3127e1e6740b1a8773e5fd7c23ff
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346537"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630887"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Az Azure VMware megoldás erőforrásának engedélyezése
 Megtudhatja, hogyan küldhet be támogatási kérést az [Azure VMware-megoldási](introduction.md) erőforrásának engedélyezéséhez. További gazdagépeket is igényelhet a meglévő Azure VMware-megoldás privát felhőben.
@@ -61,7 +61,7 @@ Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jeg
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>Azure VMware-megoldás engedélyezése a CSP-ügyfelek számára 
 
-A CSP-nek a [Microsoft partner centert](https://partner.microsoft.com) kell használnia az Azure VMware-megoldás az ügyfelek számára történő engedélyezéséhez. Ez a cikk a [CSP Azure-csomagot](/partner-center/azure-plan-lp.md) használja példaként a partnereknek szóló vásárlási eljárás szemléltetésére.
+A CSP-nek a [Microsoft partner centert](https://partner.microsoft.com) kell használnia az Azure VMware-megoldás az ügyfelek számára történő engedélyezéséhez. Ez a cikk a [CSP Azure-csomagot](/partner-center/azure-plan-lp) használja példaként a partnereknek szóló vásárlási eljárás szemléltetésére.
 
    >[!IMPORTANT] 
    >Az Azure VMware megoldási szolgáltatás nem biztosít több-bérlőt. Az azt igénylő partnerek nem támogatottak. 
@@ -76,9 +76,9 @@ A CSP-nek a [Microsoft partner centert](https://partner.microsoft.com) kell hasz
 
 1. Válassza az **Azure-csomag** lehetőséget, majd válassza **a Hozzáadás a kosárhoz** lehetőséget. 
 
-1. Tekintse át és fejezze be az Azure-csomag előfizetésének általános beállítását az ügyfél számára. További információt a [Microsoft partner Center dokumentációjában](/partner-center/azure-plan-manage.md)talál.
+1. Tekintse át és fejezze be az Azure-csomag előfizetésének általános beállítását az ügyfél számára. További információt a [Microsoft partner Center dokumentációjában](/partner-center/azure-plan-manage)talál.
 
-Az Azure-csomag konfigurálása és a szükséges [Azure RBAC engedélyek](/partner-center/azure-plan-manage.md) megléte után az előfizetés lehetővé teszi a Microsoft számára, hogy engedélyezze az Azure-csomag előfizetésének kvótáját. Hozzáférési Azure Portal a [Microsoft partner Centertől](https://partner.microsoft.com) a (z) (AOBO) eljárásban a **rendszergazda** használatával.
+Az Azure-csomag konfigurálása és a szükséges [Azure RBAC engedélyek](/partner-center/azure-plan-manage) megléte után az előfizetés lehetővé teszi a Microsoft számára, hogy engedélyezze az Azure-csomag előfizetésének kvótáját. Hozzáférési Azure Portal a [Microsoft partner Centertől](https://partner.microsoft.com) a (z) (AOBO) eljárásban a **rendszergazda** használatával.
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com).
 
