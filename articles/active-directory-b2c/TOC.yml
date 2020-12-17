@@ -95,8 +95,6 @@
       href: user-overview.md
     - name: Felhasználói profilattribútumok
       href: user-profile-attributes.md
-    - name: SSO-munkamenetek
-      href: session-overview.md
     - name: Identity Protection és feltételes hozzáférés
       href: conditional-access-identity-protection-overview.md
 - name: Útmutatók
@@ -155,6 +153,8 @@
           href: identity-provider-wechat.md
         - name: Weibo
           href: identity-provider-weibo.md
+        - name: Az identitásszolgáltatói jogkivonat átengedése
+          href: idp-pass-through-user-flow.md
     - name: Felhasználói felület testreszabása
       items:
         - name: Felhasználó által megadott adatok konfigurálása
@@ -174,6 +174,24 @@
         - name: MFA engedélyezése
           href: multi-factor-authentication.md
           displayName: multi-factor auth
+        - name: Közvetlen bejelentkezés beállítása
+          href: direct-signin.md
+    - name: Jogkivonatok és munkamenet-kezelés
+      items:
+        - name: Munkamenet viselkedésének konfigurálása
+          href: session-behavior.md
+        - name: Jogkivonatok konfigurálása
+          href: configure-tokens.md
+    - name: Egyéni attribútumok meghatározása
+      href: user-flow-custom-attributes.md
+    - name: Identity Protection és feltételes hozzáférés
+      items:
+        - name: Identity Protection és feltételes hozzáférés beállítása
+          href: conditional-access-identity-protection-setup.md
+        - name: Feltételes hozzáférés hozzáadása
+          href: conditional-access-user-flow.md
+    - name: Korhatáralapú hozzáférés-korlátozás konfigurálása
+      href: basic-age-gating.md
     - name: Felhasználói folyamat
       items:
         - name: Folyamat létrehozása
@@ -184,40 +202,23 @@
               href: configure-ropc.md
             - name: Új jelszó önkiszolgáló kérésének beállítása
               href: user-flow-self-service-password-reset.md
-        - name: Feltételes hozzáférés hozzáadása
-          href: conditional-access-user-flow.md
-        - name: Jogkivonatok és munkamenet-kezelés
-          items:
-            - name: Jogkivonatok konfigurálása
-              href: configure-tokens.md
-            - name: Munkamenet viselkedésének konfigurálása
-              href: session-behavior.md
-        - name: Korhatáralapú hozzáférés-korlátozás konfigurálása
-          href: basic-age-gating.md
-        - name: Egyéni attribútumok meghatározása
-          href: user-flow-custom-attributes.md
         - name: API-összekötők (előzetes verzió)
           items:
             - name: Áttekintés
               href: api-connectors-overview.md
             - name: API-összekötő hozzáadása
               href: add-api-connector.md
-        - name: Külső identitásszolgáltatói jogkivonat átadása
-          href: idp-pass-through-user-flow.md
-    - name: Identity Protection és feltételes hozzáférés
-      href: conditional-access-identity-protection-setup.md
     - name: Egyéni szabályzat
       items:
+        - name: Egyéni szabályzatok áttekintése
+          href: custom-policy-trust-frameworks.md
+        - name: Egyéni szabályzatok – első lépések
+          href: custom-policy-get-started.md
         - name: Szabályzat létrehozása
           items:
-            - name: Egyéni szabályzatok – első lépések
-              href: custom-policy-get-started.md
             - name: Erőforrás tulajdonosának jelszava
               href: ropc-custom.md
               displayName: ropc
-            - name: A bejelentkezve maradás engedélyezése
-              href: custom-policy-keep-me-signed-in.md
-              displayName: kmsi
             - name: Jelszó módosítása
               href: custom-policy-password-change.md
             - name: Telefonos regisztráció és bejelentkezés
@@ -230,18 +231,6 @@
             - name: SendGrid
               href: custom-email-sendgrid.md
           displayName: verification
-        - name: Jogkivonatok és munkamenet-kezelés
-          items:
-            - name: Jogkivonatok testreszabása
-              href: configure-tokens-custom-policy.md
-            - name: Munkamenet viselkedésének konfigurálása
-              href: session-behavior-custom-policy.md
-        - name: Külső identitásszolgáltatói jogkivonat átadása
-          href: idp-pass-through-custom.md
-        - name: Adaptív élmény
-          items:
-            - name: Közvetlen bejelentkezés beállítása
-              href: direct-signin.md
         - name: Saját üzleti logika hozzáadása
           items:
             - name: A REST API integrálása
@@ -254,8 +243,6 @@
               displayName: rest claims exchange
             - name: A REST API védelme
               href: secure-rest-api.md
-        - name: Egyéni attribútumok meghatározása
-          href: custom-policy-custom-attributes.md
         - name: Hibaelhárítás
           items:
             - name: Naplók gyűjtése az Application Insights használatával
@@ -268,8 +255,6 @@
           href: analytics-with-application-insights.md
         - name: Referencia
           items:
-            - name: A bizalmi keretrendszer meghatározása
-              href: custom-policy-trust-frameworks.md
             - name: TrustFrameworkPolicy
               href: trustframeworkpolicy.md
             - name: BuildingBlocks
@@ -315,11 +300,9 @@
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
-                - name: TechnicalProfiles
+                - name: Technikai profilok
                   href: technicalprofiles.md
                   items:
-                    - name: A technikai profilok ismertetése
-                      href: technical-profiles-overview.md
                     - name: A technikai profilok ellenőrzésének ismertetése
                       href: validation-technical-profile.md
                     - name: Application Insights
@@ -370,6 +353,8 @@
               href: relyingparty.md
             - name: Igénylésfeloldók
               href: claim-resolver-overview.md
+    - name: UserInfo végpont
+      href: userinfo-endpoint.md
     - name: Partnerintegráció
       items:
         - name: Azure AD B2C – partnerkatalógus
