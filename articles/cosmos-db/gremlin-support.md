@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/11/2020
 ms.author: sngun
-ms.openlocfilehash: a149f0b331a77462aa53b948fedf25dd1331969e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "94683624"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630751"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB Gremlin Graph támogatás és kompatibilitás az TinkerPop-funkciókkal
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -121,7 +121,7 @@ Az egyes tulajdonságok több értéket is tárolhatnak egy tömbben.
 
 Most pedig tekintsük át az Azure Cosmos DB által támogatott Gremlin-lépéseket. A Gremlin teljes körű ismertetését a [TinkerPop referenciaanyaga](https://tinkerpop.apache.org/docs/3.3.2/reference) tartalmazza.
 
-| lépés | Leírás | TinkerPop 3.2-dokumentáció |
+| lépés | Description | TinkerPop 3.2-dokumentáció |
 | --- | --- | --- |
 | `addE` | Hozzáad egy élt két csúcspont között. | [addE lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#addedge-step) |
 | `addV` | Hozzáad egy csúcspontot a gráfhoz. | [addV lépés](https://tinkerpop.apache.org/docs/3.3.2/reference/#addvertex-step) |
@@ -195,33 +195,33 @@ _ **Lambda kifejezések és függvények** jelenleg nem támogatottak. Ez magáb
 
 _ **Gremlin lekérdezések indexelése a bejárási `.V()` lépésekkel**: jelenleg csak a `.V()` bejárások első hívása fogja használni az indexet az ahhoz csatolt szűrők vagy predikátumok feloldásához. A következő hívások nem fogják megkeresni az indexet, ami növelheti a lekérdezés késését és költségeit.
     
-    Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
+Az alapértelmezett indexelés feltételezi, hogy a lépéssel kezdődő tipikus olvasási Gremlin-lekérdezés `.V()` paramétereket használ a csatolt szűrési lépéseiben, például a `.has()` vagy a `.where()` segítségével optimalizálja a lekérdezés költségeit és teljesítményét. Például:
 
-    ```java
-    g.V().has('category', 'A')
-    ```
+```java
+g.V().has('category', 'A')
+```
 
-    However, when more than one `.V()` step is included in the Gremlin query, the resolution of the data for the query might not be optimal. Take the following query as an example:
+Ha azonban `.V()` a Gremlin-lekérdezés több lépést is tartalmaz, előfordulhat, hogy a lekérdezéshez tartozó adatfelbontás nem optimális. Példaként végezze el a következő lekérdezést:
 
-    ```java
-    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
-    ```
+```java
+g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+```
 
-    This query will return two groups of vertices based on their property called `category`. In this case, only the first call, `g.V().has('category', 'A')` will make use of the index to resolve the vertices based on the values of their properties.
+Ez a lekérdezés a csúcspontok két csoportját fogja visszaadni a megnevezett tulajdonság alapján `category` . Ebben az esetben csak az első hívás `g.V().has('category', 'A')` fogja használni az indexet, hogy feloldja a csúcspontokat a tulajdonságaik értékei alapján.
 
-    A workaround for this query is to use subtraversal steps such as `.map()` and `union()`. This is exemplified below:
+A lekérdezésre vonatkozó Áthidaló megoldás az olyan bejárási lépések használata, mint a `.map()` és a `union()` . Ez az alábbi példán alapul:
 
-    ```java
-    // Query workaround using .map()
-    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+```java
+// Query workaround using .map()
+g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
 
-    // Query workaround using .union()
-    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
-    ```
+// Query workaround using .union()
+g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+```
 
-    You can review the performance of the queries by using the [Gremlin `executionProfile()` step](graph-execution-profile.md).
+A lekérdezések teljesítményét a [Gremlin `executionProfile()` lépés](graph-execution-profile.md)használatával tekintheti át.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Bevezetés egy gráfalkalmazás létrehozásába [az SDK-k használatával](create-graph-dotnet.md) 
 * További információk a [gráfok támogatásáról](graph-introduction.md) az Azure Cosmos DB-ben

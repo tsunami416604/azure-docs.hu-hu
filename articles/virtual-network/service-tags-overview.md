@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e357667e650e9feeb8dceeffe71c287cde9fe8a0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401559"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631601"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **AzureActiveDirectory** | Azure Active Directory. | Kimenő | Nem | Igen |
 | **AzureActiveDirectoryDomainServices** | Felügyeleti forgalom a Azure Active Directory Domain Services számára dedikált központi telepítések esetén. | Mindkettő | Nem | Igen |
 | **AzureAdvancedThreatProtection** | Az Azure komplex veszélyforrások elleni védelem. | Kimenő | Nem | Nem |
+| **AzureArcInfrastructure** | Azure arc-kompatibilis kiszolgálók, Azure arc-kompatibilis Kubernetes és vendég-konfigurációs forgalom.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **AzureActiveDirectory**, a **AzureTrafficManager** és a **AzureResourceManager** címkével. *Ez a címke jelenleg nem konfigurálható az Azure Portalon keresztül*.| Kimenő | Nem | Igen |
 | **AzureBackup** |Azure Backup.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **Storage** és a **AzureActiveDirectory** címkével. | Kimenő | Nem | Igen |
 | **AzureBotService** | Azure Bot Service. | Kimenő | Nem | Nem |
 | **AzureCloud** | Minden [adatközpont nyilvános IP-címe](https://www.microsoft.com/download/details.aspx?id=56519). | Kimenő | Igen | Yes |

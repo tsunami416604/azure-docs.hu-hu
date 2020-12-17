@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: df6a4053eb70c02e27599bbd9086dfa32b0bcc65
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5d11f343a55d30e5d14d6f4ae0ddb1a74d9c61fa
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508832"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631975"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -32,6 +32,11 @@ A SSML beszédfelismerési szolgáltatásának megvalósítása a World Wide Web
 Válasszon a standard és a neurális hangok közül, vagy hozzon létre saját egyéni hangját a termék vagy a márka számára. a 75 + standard hangok több mint 45 nyelven és területi beállításban érhetők el, és az 5 neurális hang négy nyelven és területi beállításban érhető el. A támogatott nyelvek, területi beállítások és hangok (neurális és standard) teljes listáját a [nyelvi támogatás](language-support.md)című témakörben tekintheti meg.
 
 A standard, a neurális és az egyéni hangok megismeréséhez lásd a [szöveg – beszéd áttekintést](text-to-speech.md).
+
+
+> [!NOTE]
+> A hangok különböző stílusokban és [a Text to speech oldalról](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)történő olvasásával is hallhatók.
+
 
 ## <a name="special-characters"></a>Speciális karakterek
 
@@ -198,6 +203,7 @@ A jelen neurális hangok esetében jelenleg a beszélő stílusának módosítá
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
@@ -244,7 +250,7 @@ A fenti módosítások a mondat szintjén lesznek alkalmazva, a stílusok és a 
 
 Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismerések milyen beszélő stílusokat támogatnak.
 
-| Hang                   | Stílus                     | Leírás                                                 |
+| Hang                   | Stílus                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Formális, magabiztos és mérvadó hangvételt ad a hírek kézbesítéséhez |
 |                         | `style="newscast-casual"` | Sokoldalú és hétköznapi hangvételt nyújt az általános hírekhez        |
@@ -257,6 +263,7 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 |                         | `style="assistant"`       | A digitális asszisztensek meleg és nyugodt tónusa    |
 |                         | `style="newscast"`        | Sokoldalú és hétköznapi hangvételt nyújt az általános hírekhez   |
 | `en-US-GuyNeural`       | `style="newscast"`        | Formális és professzionális hangvételt biztosít a hírek elbeszéléséhez |
+| `pt-BR-FranciscaNeural` | `style="calm"`            | Egy ritka elérésű, összegyűjtött és álló hozzáállást fejez ki beszéd közben. A Tone, a Pitch, a prosody sokkal homogénebb más típusú beszédekhez képest.                                |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formális és professzionális hangvételt biztosít a hírek elbeszéléséhez |
 |                         | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  |
 |                         | `style="assistant"`       | A digitális asszisztensek meleg és nyugodt tónusa    |
@@ -391,7 +398,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 | `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Választható |
 | `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben, ez az érték kisebb, mint 5000ms. Példák érvényes értékekre, `2s` és `500ms` | Választható |
 
-| Erősségét                      | Leírás |
+| Erősségét                      | Description |
 |-------------------------------|-------------|
 | Nincs, vagy ha nincs megadva érték | 0 MS        |
 | x – gyenge                        | 250 MS      |
@@ -862,6 +869,6 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 </speak>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Nyelvi támogatás: hangok, területi beállítások, nyelvek](language-support.md)

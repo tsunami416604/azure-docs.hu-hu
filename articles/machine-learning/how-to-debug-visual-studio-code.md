@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 12163419ad779acfa116f1dee66284623e2d45fb
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: a9d20732c3ae08718c400faff44137000e98fffd
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616110"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629429"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktív hibakeresés a Visual Studio Code-ban
 
@@ -58,7 +58,7 @@ A Azure Machine Learning bővítmény használatával ellenőrizheti, futtathatj
     1. Adja meg a futtatni kívánt parancsfájl nevét. Az elérési út a VS Code-ban megnyitott könyvtárhoz képest relatív.
     1. Válassza ki, hogy Azure Machine Learning adatkészletet kíván-e használni, vagy sem. A bővítmény használatával létrehozhat [Azure Machine learning adatkészleteket](how-to-manage-resources-vscode.md#create-dataset) .
     1. Debugpy szükséges ahhoz, hogy a hibakeresőt a kísérletet futtató tárolóhoz csatolja. Ha függőségként szeretné hozzáadni a debugpy, válassza a **Debugpy hozzáadása** elemet. Ellenkező esetben válassza a **kihagyás** lehetőséget. Ha nem ad hozzá debugpy, a rendszer a hibakeresőhöz való csatolás nélkül futtatja a kísérletet.
-    1. A szerkesztőben megnyílik a futtatási konfigurációs beállításokat tartalmazó konfigurációs fájl. Ha elégedett a beállításokkal, válassza a **kísérlet küldése** lehetőséget. Azt is megteheti, hogy a menüsávban megnyitja a parancssort ( **> a parancs-paletta megtekintése** ), és a `Azure ML: Submit experiment` parancsot a szövegmezőbe írja be.
+    1. A szerkesztőben megnyílik a futtatási konfigurációs beállításokat tartalmazó konfigurációs fájl. Ha elégedett a beállításokkal, válassza a **kísérlet küldése** lehetőséget. Azt is megteheti, hogy a menüsávban megnyitja a parancssort (**> a parancs-paletta megtekintése**), és a `Azure ML: Submit experiment` parancsot a szövegmezőbe írja be.
 1. Miután elküldte a kísérletet, a parancsfájlt tartalmazó Docker-rendszerkép és a futtatási konfigurációban megadott konfigurációk jönnek létre.
 
     A Docker-rendszerkép létrehozási folyamatának megkezdése után a fájl tartalma a `60_control_log.txt` kimeneti konzolra kerül a vs Code-ban.
@@ -355,9 +355,9 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
 
 1. Ha a VS Code-t úgy szeretné konfigurálni, hogy kommunikáljon a Docker-lemezképpel, hozzon létre egy új hibakeresési konfigurációt:
 
-    1. A VS Code-ból válassza a __hibakeresés__ menüt, majd válassza a __konfigurációk megnyitása__ lehetőséget. Megnyílik egy __launch.js__ nevű fájl.
+    1. A VS Code-ból válassza a __hibakeresés__ menüt a __futtatási__ hatókörben, majd válassza a __konfigurációk megnyitása__ lehetőséget. Megnyílik egy __launch.js__ nevű fájl.
 
-    1. A fájl __launch.js__ keresse meg a tartalmazó sort `"configurations": [` , majd szúrja be a következő szöveget:
+    1. A __launch.js__ fájlon keresse meg a __"konfigurációk"__ (a benne található) elemét `"configurations": [` , majd szúrja be a következő szöveget. 
 
         ```json
         {
@@ -376,11 +376,44 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
             ]
         }
         ```
+        A Beszúrás után a fájl __launch.js__ a következőhöz hasonlónak kell lennie:
+        ```json
+        {
+        // Use IntelliSense to learn about possible attributes.
+        // Hover to view descriptions of existing attributes.
+        // For more information, visit: https://go.microsoft.com/fwlink/linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Python: Current File",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal"
+            },
+            {
+                "name": "Azure Machine Learning Deployment: Docker Debug",
+                "type": "python",
+                "request": "attach",
+                "connect": {
+                    "port": 5678,
+                    "host": "0.0.0.0"
+                    },
+                "pathMappings": [
+                    {
+                        "localRoot": "${workspaceFolder}",
+                        "remoteRoot": "/var/azureml-app"
+                    }
+                ]
+            }
+            ]
+        }
+        ```
 
         > [!IMPORTANT]
-        > Ha már vannak más bejegyzések a konfigurációk szakaszban, adjon hozzá egy vesszőt (,) a beszúrt kód után.
+        > Ha már vannak más bejegyzések a konfigurációk szakaszban, adjon hozzá egy vesszőt ( __,__ ) a beszúrt kód után.
 
-        Ez a szakasz a Docker-tárolóhoz csatlakozik a 5678-es porton keresztül.
+        Ez a szakasz a Docker-tárolóhoz csatlakozik a __5678__-es porton keresztül.
 
     1. Mentse a __launch.js__ fájlt.
 
@@ -433,13 +466,13 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
     package.pull()
     ```
 
-    A rendszerkép létrehozása és letöltése után a rendszerkép elérési útja (tartalmazza az adattárat, a nevet és a címkét is, amely ebben az esetben a kivonata is) a következőhöz hasonló üzenetben jelenik meg:
+    A rendszerkép létrehozása és letöltése után (ez a folyamat több mint 10 percet is igénybe vehet, ezért várjon türelmesen), a rendszerkép elérési útja (tartalmazza a tárházat, a nevet és a címkét, amely ebben az esetben a kivonata is) a következőhöz hasonló üzenetben jelenik meg:
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. Ahhoz, hogy könnyebben működjön a rendszerképpel, a következő paranccsal adhat hozzá egy címkét. Cserélje le az `myimagepath` elemet az előző lépésben megadott Location értékre.
+1. Annak érdekében, hogy könnyebben működjön együtt a rendszerképpel, a következő paranccsal adhat hozzá címkét ehhez a képhez. A `myimagepath` következő parancsban cserélje le az előző lépésben megadott Location értéket.
 
     ```bash
     docker tag myimagepath debug:1
@@ -457,22 +490,37 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
 1. Ha egy Docker-tárolót a rendszerkép használatával szeretne elindítani, használja a következő parancsot:
 
     ```bash
-    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_path_to_score.py>:/var/azureml-apps/score.py debug:1 /bin/bash
+    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_local_path_to_score.py>:/var/azureml-app/score.py debug:1 /bin/bash
     ```
 
     Ez a `score.py` tárolóban lévő egyikhez csatolja a helyileg. Ezért a szerkesztőben végrehajtott módosítások automatikusan megjelennek a tárolóban.
 
-1. A tárolón belül futtassa a következő parancsot a rendszerhéjban.
+2. A jobb élmény érdekében új VS Code-felülettel léphet be a tárolóba. Válassza ki a `Docker` vs Code oldali sáv kiterjedését, és keresse meg a létrehozott helyi tárolót, ebben a dokumentációban `debug:1` . Kattintson a jobb gombbal erre a tárolóra, és válassza ki az `"Attach Visual Studio Code"` új vs Code felületét, és ez az interfész a létrehozott tároló belsejében jelenik meg.
+
+    ![A Container VS Code felülete](./media/how-to-troubleshoot-deployment/container-interface.png)
+
+3. A tárolón belül futtassa a következő parancsot a rendszerhéjban.
 
     ```bash
     runsvdir /var/runit
     ```
+    Ezután a tárolóban a következő kimenet jelenik meg a rendszerhéjon belül:
 
-1. Ha a VS Code-t a tárolón belül debugpy szeretné csatolni, nyissa meg a VS Code-ot, és használja az F5 billentyűt, __vagy válassza a__ Ha a rendszer kéri, válassza a __Azure Machine learning központi telepítés: Docker hibakeresési__ konfigurációt. Azt is megteheti, hogy kijelöli a hibakeresés ikont az oldalsó sávon, a Azure Machine Learning üzemelő __példány: Docker debug__ bejegyzést a hibakeresés legördülő menüből, majd a zöld nyíl használatával csatlakoztathatja a hibakeresőt.
+    ![A tároló futtatási konzoljának kimenete](./media/how-to-troubleshoot-deployment/container-run.png)
+
+4. Ha a VS Code-t a tárolón belül debugpy szeretné csatolni, nyissa meg a VS Code-ot, és használja az F5 billentyűt, __vagy válassza a__ Ha a rendszer kéri, válassza a __Azure Machine learning központi telepítés: Docker hibakeresési__ konfigurációt. Azt is megteheti, hogy kijelöli a __futtatási__ mérték ikont az oldalsó sávon, a __Azure Machine learning üzembe helyezés: Docker debug__ bejegyzést a hibakeresés legördülő menüből, majd a zöld nyíl használatával csatolja a hibakeresőt.
 
     ![A hibakeresés ikon, a hibakeresés elindítása gomb és a konfigurációs választó](./media/how-to-troubleshoot-deployment/start-debugging.png)
+    
+    Miután rákattintott a zöld nyílra, és csatolja a hibakeresőt, a Container VS Code felületén láthat néhány új információt:
+    
+    ![A tároló Debugger csatolt információi](./media/how-to-troubleshoot-deployment/debugger-attached.png)
+    
+    Emellett a fő VS Code felületén a következőt láthatja:
 
-Ezen a ponton a VS Code a Docker-tárolón belül csatlakozik a debugpy-hez, és a korábban megadott törésponton leáll. Most már megkezdheti a kód futtatását, megtekintheti a változókat stb.
+    ![A VS Code töréspont a score.py](./media/how-to-troubleshoot-deployment/local-debugger.png)
+
+És most a `score.py` tárolóhoz csatolt helyi hely már le van állítva a beállított töréspontokon. Ezen a ponton a VS Code a Docker-tárolón belül csatlakozik a debugpy-hez, és leállítja a Docker-tárolót a korábban beállított törésponton. Most már megkezdheti a kód futtatását, megtekintheti a változókat stb.
 
 A VS Code a Python hibakereséséhez való használatával kapcsolatos további információkért lásd [a Python-kód hibakeresését](https://code.visualstudio.com/docs/python/debugging)ismertető témakört.
 
@@ -484,7 +532,7 @@ A tároló leállításához használja a következő parancsot:
 docker stop debug
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította a VS Code Remote szolgáltatást, számítási példányt használhat távoli számításként a VS Code-ból a kód interaktív hibakereséséhez. 
 

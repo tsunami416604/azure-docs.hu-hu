@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484804"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631949"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Oktatóanyag: Kapcsolódás Azure Cosmos-fiókhoz Azure Private-végpont használatával
 
@@ -87,7 +87,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -106,7 +106,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | Virtuális gép neve | **MyVM** megadása |
     | Régió | Válassza ki az **USA keleti** régióját |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
-    | Rendszerkép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
+    | Kép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
     | Méret | A virtuális gép méretének kiválasztása vagy az alapértelmezett beállítás megadása |
     | **Rendszergazdai fiók** |  |
@@ -127,7 +127,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | NIC hálózati biztonsági csoport | **Basic**|
     | Nyilvános bejövő portok | Válassza a **Nincs** lehetőséget. |
    
-5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
@@ -174,7 +174,7 @@ Ebben a szakaszban létrehoz egy Cosmos DB fiókot, és konfigurálja a magánh�
     | Előfizetés | Válassza ki az Azure-előfizetését |
     | Erőforráscsoport | **MyResourceGroup** kiválasztása |
     | Hely | Válassza ki az **USA keleti** régióját |
-    | Név | **MyPrivateEndpoint** megadása |
+    | Name | **MyPrivateEndpoint** megadása |
     | Cél alerőforrás | Hagyja meg az alapértelmezett **mag (SQL)** |
     | **Hálózat** |  |
     | Virtuális hálózat | **MyVNet** kiválasztása |
@@ -208,13 +208,9 @@ Ebben a szakaszban létrehoz egy Cosmos DB fiókot, és konfigurálja a magánh�
 
 5. Válassza az **OK** lehetőséget.
 
-10. A CosmosDB-fiók **Beállítások** szakaszában válassza a **kulcsok** elemet.
+6. A CosmosDB-fiók **Beállítások** szakaszában válassza a **kulcsok** elemet.
 
-11. Válassza a **myResourceGroup** lehetőséget.
-
-12. Válassza ki az előző lépésekben létrehozott Storage-fiókot.
-
-14. Válassza a másolás lehetőséget az **elsődleges kapcsolatok karakterláncán**.
+7. Válassza a másolás lehetőséget az **elsődleges kapcsolatok karakterláncán**.
 
 ## <a name="test-connectivity-to-private-endpoint"></a>A magánhálózati végponthoz való kapcsolódás tesztelése
 
@@ -234,7 +230,7 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
 7. A kapcsolat után nyissa meg a Windows PowerShellt a kiszolgálón.
 
-8. Írja be a következő szöveget: `nslookup <storage-account-name>.documents.azure.com`. Cserélje le az **\<storage-account-name>** nevet az előző lépésekben létrehozott Storage-fiók nevére. 
+8. Írja be a következő szöveget: `nslookup <cosmosdb-account-name>.documents.azure.com`. Cserélje le az helyére az **\<cosmosdb-account-name>** előző lépésekben létrehozott Cosmos db fiók nevét. 
 
     ```powershell
     Server:  UnKnown
