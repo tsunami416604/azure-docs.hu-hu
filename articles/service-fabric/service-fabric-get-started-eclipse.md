@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
-ms.openlocfilehash: c94f43b74edf5da18acd7e67417f3b7e10a07d5d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: b85206f9b1e92607bba7b6f141b700922c129b65
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590868"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656920"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Az Eclipse Service Fabric beépülő moduljának Java alkalmazásfejlesztése
 Az Eclipse a Java-fejlesztők által leggyakrabban használt integrált fejlesztőkörnyezetek (IDE-k) közé tartozik. Ebben a cikkben azt ismertetjük, hogyan állíthatja be az Eclipse fejlesztői környezetet az Azure Service Fabrickel való használathoz. Megtudhatja, hogyan telepítheti a Service Fabric beépülő modult, hogyan hozhat létre Service Fabric-alkalmazást, és hogyan helyezhet üzembe Service Fabric-alkalmazásokat helyi vagy távoli Service Fabric-fürtön az Eclipse-ben. 
@@ -53,7 +53,6 @@ Ha a Service Fabric beépülő modul már telepítve van, telepítse a legújabb
 
 > [!NOTE]
 >Ha az Eclipse nem a várt módon működik a Mac gépén (vagy a futtatáshoz felügyelőként történő bejelentkezést ír elő), keresse meg az **ECLIPSE_INSTALLATION_PATH** mappa **Eclipse.app/Contents/MacOS** almappáját. Indítsa el az Eclipse-et az `./eclipse` futtatásával.
-
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Service Fabric-alkalmazás létrehozása az Eclipse-ben
 
@@ -156,7 +155,6 @@ Az alkalmazás felhőben való közzétételéhez kövesse az alábbi lépéseke
 
 4. A közzétételi művelet előrehaladását a konzol ablakban követheti el.
 5. Az alkalmazás futásának ellenőrzéséhez nyissa meg Service Fabric Explorer az Azure-fürtön egy böngészőablakban. A fenti példában a következő lenne: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer` . Bontsa ki az **alkalmazások** csomópontot, és ellenőrizze, hogy fut-e az alkalmazás. 
-
 
 Ha az alkalmazás Reliable Services szolgáltatásokat tartalmaz, a biztonságos Linux-fürtökön konfigurálnia kell egy tanúsítványt, amelyet a szolgáltatások használhatnak Service Fabric futtatókörnyezeti API-k meghívásához. További információ: [Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatásra](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
 

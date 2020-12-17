@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 4d420bf45cd705f518df0d52929a331d23537184
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395172"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656342"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Adatátviteli feladatok létrehozása az Azure SQL Edge szolgáltatásban 
 
@@ -36,11 +36,11 @@ Emellett, ha az Azure SQL Edge, SQL Server vagy Azure SQL Database kimeneti adat
 
 Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-bemenetként és-kimenetként.
 
-| Adatforrás típusa | Input (Bemenet) | Kimenet | Leírás |
+| Adatforrás típusa | Input (Bemenet) | Kimenet | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | Y | Y | Az adatforrást az adatfolyamok Azure IoT Edge központba való olvasására és írására. További információ: [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
-| SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
-| Kafka | I | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. Ez az adapter jelenleg csak az Azure SQL Edge Intel vagy AMD verzióihoz érhető el. Az Azure SQL Edge ARM64 verziója nem érhető el.|
+| SQL Database | N | Y | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
+| Kafka | Y | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. Ez az adapter jelenleg csak az Azure SQL Edge Intel vagy AMD verzióihoz érhető el. Az Azure SQL Edge ARM64 verziója nem érhető el.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Példa: külső stream bemeneti/kimeneti objektum létrehozása Azure IoT Edge hubhoz
 
@@ -154,7 +154,7 @@ Az alábbi példa egy külső stream objektumot hoz létre a helyi adatbázishoz
         DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
     )
    ```
-    
+
 3. Hozza létre a külső stream objektumot. A következő példa egy külső stream objektumot hoz létre, amely a Kafka-témakörre mutat `*TemperatureMeasurement*` .
 
     ```sql
@@ -163,7 +163,7 @@ Az alábbi példa egy külső stream objektumot hoz létre a helyi adatbázishoz
     (  
         DATA_SOURCE = KafkaInput, 
         FILE_FORMAT = JsonGzipped,
-        LOCATION = 'TemperatureMeasurement',     
+        LOCATION = 'TemperatureMeasurement',
         INPUT_OPTIONS = 'PARTITIONS: 10' 
     ); 
     ```
@@ -251,7 +251,7 @@ A folyamatos átviteli feladatokhoz a következő állapotok tartozhatnak:
 | Leállítva | A folyamatos átviteli feladatot leállították. |
 | Sikertelen | A folyamatos átviteli feladatot nem sikerült végrehajtani. Ez általában egy végzetes hibát jelez a feldolgozás során. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A folyamatos átviteli feladatokhoz tartozó metaadatok megtekintése az Azure SQL Edge-ben](streaming-catalog-views.md) 
 - [Külső stream létrehozása](create-external-stream-transact-sql.md)

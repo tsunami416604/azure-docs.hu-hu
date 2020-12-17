@@ -3,12 +3,12 @@ title: Fizikai kiszolgáló vész-helyreállítási architektúrája Azure Site 
 description: Ez a cikk áttekintést nyújt azokról az összetevőkről és architektúráról, amelyeket a helyszíni fizikai kiszolgálók az Azure-ba történő, a Azure Site Recovery szolgáltatással történő helyreállításakor használtak.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 966636e269043d81912b552711635f34b412f22f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87422657"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654727"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fizikai kiszolgálókról Azure-ba történő vészhelyreállítás architektúrája
 
@@ -42,7 +42,7 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
 | Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
@@ -92,6 +92,6 @@ A replikáció beállítása után a vész-helyreállítási gyakorlat (feladat�
 
 ![Feladat-visszavétel](./media/physical-azure-architecture/enhanced-failback.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fizikai kiszolgálók Azure-ba való vész [-](physical-azure-disaster-recovery.md)helyreállításának beállításához tekintse meg a útmutató útmutatását.

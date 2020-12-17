@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 47c8096893742a25904f0f7e688af2fc641166d1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1b62777ec647efc6d5aded573e681cadd6475b47
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004313"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654795"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Ajánlott eljárások az Azure Cache for Redis használatához 
 Az ajánlott eljárások követésével maximalizálhatja az Azure cache teljesítményének és költséghatékony felhasználásának hatékonyságát a Redis-példány esetében.
@@ -34,20 +34,20 @@ Az ajánlott eljárások követésével maximalizálhatja az Azure cache teljes�
  * **Konfigurálja az ügyféloldali függvénytárat úgy, hogy legalább 15 másodperces *csatlakozási időkorlátot* használjon**, így a rendszeridőt még nagyobb CPU-feltételek mellett is csatlakozhat.  A kis kapcsolat időtúllépési értéke nem garantálja, hogy a kapcsolat az adott időkereten belül van-e.  Ha valami probléma merül fel (magas szintű ügyfél-CPU, magas kiszolgálói processzor stb.), akkor egy rövid kapcsolat időtúllépési értéke miatt sikertelen lesz a kapcsolódási kísérlet. Ez a viselkedés gyakran rosszabb helyzetet tesz lehetővé.  A rövidebb időtúllépések támogatása helyett a rendszer arra kényszeríti a rendszert, hogy indítsa újra a kapcsolódási kísérlet folyamatát, ami egy *csatlakozási > sikertelen > újrapróbálkozási* hurokhoz vezethet. Általánosságban azt javasoljuk, hogy a kapcsolat időkorlátját 15 másodperc vagy annál nagyobb értékre hagyja. Jobb, ha a kapcsolódási kísérletet 15 vagy 20 másodperc után nem sikerül végrehajtani, mint hogy a művelet gyorsan meghiúsuljon. Egy ilyen újrapróbálkozási hurok miatt a leállás tovább tart, mint ha a rendszer már csak hosszabb ideig tart.  
      > [!NOTE]
      > Ez az útmutató a *kapcsolódási kísérletre* vonatkozik, és nem kapcsolódik ahhoz az időponthoz, ameddig várni szeretne egy *műveletre* , például a Get vagy a Complete értékre.
- 
+
  * **Kerülje a költséges műveleteket** – bizonyos Redis műveletek, például a [Keys](https://redis.io/commands/keys) parancs *nagyon* drágák, és el kell kerülni őket.  További információ: néhány megfontolandó szempont a [hosszan futó parancsokról](cache-troubleshoot-server.md#long-running-commands)
 
  * **TLS titkosítás használata** – az Azure cache for Redis ALAPÉRTELMEZÉS szerint TLS titkosítású kommunikációt igényel.  A TLS 1,0, 1,1 és 1,2 verziók jelenleg támogatottak.  Azonban a TLS 1,0 és a 1,1 egy olyan útvonalon van, amely az iparágra kiterjedő elavult, ezért a TLS 1,2-et használja, ha ez egyáltalán lehetséges.  Ha az ügyféloldali kódtár vagy eszköz nem támogatja a TLS-t, akkor a titkosítatlan kapcsolatok engedélyezése [a Azure Portal vagy a](cache-configure.md#access-ports) [felügyeleti API](/rest/api/redis/redis/update)-kon keresztül végezhető el.  Olyan esetekben, ahol a titkosított kapcsolatok nem lehetségesek, ajánlott a gyorsítótár és az ügyfélalkalmazás virtuális hálózatra helyezése.  A virtuális hálózati gyorsítótár-forgatókönyvben használt portokkal kapcsolatos további információkért tekintse meg ezt a [táblázatot](cache-how-to-premium-vnet.md#outbound-port-requirements).
- 
+
  * **Üresjárat időkorlátja** – az Azure Redis jelenleg 10 perces üresjárati időtúllépést biztosít a kapcsolatok esetében, ezért ezt 10 percnél rövidebb értékre kell állítani.
- 
+
 ## <a name="memory-management"></a>Memória kezelése
 A Redis Server-példányon belül számos olyan dolgot kell megfontolni, amelyet érdemes figyelembe venni.  Íme néhány:
 
  * **Válasszon ki egy [kizárási szabályzatot](https://redis.io/topics/lru-cache) , amely az alkalmazáshoz használható.**  Az Azure Redis alapértelmezett házirendje a *felejtő LRU*, ami azt jelenti, hogy csak a TTL-értékkel rendelkező kulcsok jogosultak a kizárásra.  Ha egyetlen kulcs sem rendelkezik TTL-értékkel, akkor a rendszer nem távolítja el a kulcsokat.  Ha azt szeretné, hogy a rendszer bármilyen kulcsot kizárjon a memória nyomása alatt, érdemes megfontolnia a *allkeys-LRU* szabályzat használatát.
 
  * **Állítsa be a lejárati értéket a kulcsokra.**  A lejáratok a kulcsok proaktív módon történő eltávolítása helyett a memória nyomására várnak.  Ha a kizárás a memória nyomása miatt nem indul el, a kiszolgáló további terhelést okozhat.  További információkért tekintse meg a [lejárati](https://redis.io/commands/expire) és [EXPIREAT](https://redis.io/commands/expireat) parancsok dokumentációját.
- 
+
 ## <a name="client-library-specific-guidance"></a>Ügyféloldali függvénytár-specifikus útmutató
  * [StackExchange. Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java – melyik ügyfelet kell használnia?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
@@ -62,9 +62,9 @@ A Redis Server-példányon belül számos olyan dolgot kell megfontolni, amelyet
 Sajnos nincs egyszerű válasz.  Minden alkalmazásnak el kell döntenie, hogy milyen műveleteket lehet újrapróbálni, és nem.  Az egyes műveletek különböző követelményekkel és a kulcsok közötti függőségekkel rendelkeznek.  Íme néhány dolog, amit érdemes figyelembe vennie:
 
  * Az ügyféloldali hibák akkor is beszerezhetők, ha a Redis sikeresen futtatta a futtatni kívánt parancsot.  Például:
-     - Az időtúllépés egy ügyféloldali fogalom.  Ha a művelet elérte a kiszolgálót, a kiszolgáló akkor is futtatja a parancsot, ha az ügyfél várakozik.  
-     - Ha a szoftvercsatorna-kapcsolaton hiba történik, nem lehet tudni, hogy a művelet ténylegesen futott-e a kiszolgálón.  A kapcsolati hiba például akkor fordulhat elő, ha a kiszolgáló feldolgozta a kérést, de az ügyfél megkapja a választ.
- *  Hogyan reagál az alkalmazás, ha véletlenül kétszer ugyanazt a műveletet futtatom?  Például mi a teendő, ha egy egész számot kétszer kell megnövelni a helyett?  Az alkalmazásom ugyanarra a kulcsra ír több helyről?  Mi a teendő, ha az újrapróbálkozási logika felülírja az alkalmazás egy másik része által beállított értéket?
+    - Az időtúllépés egy ügyféloldali fogalom.  Ha a művelet elérte a kiszolgálót, a kiszolgáló akkor is futtatja a parancsot, ha az ügyfél várakozik.  
+    - Ha a szoftvercsatorna-kapcsolaton hiba történik, nem lehet tudni, hogy a művelet ténylegesen futott-e a kiszolgálón.  A kapcsolati hiba például akkor fordulhat elő, ha a kiszolgáló feldolgozta a kérést, de az ügyfél megkapja a választ.
+ * Hogyan reagál az alkalmazás, ha véletlenül kétszer ugyanazt a műveletet futtatom?  Például mi a teendő, ha egy egész számot kétszer kell megnövelni a helyett?  Az alkalmazásom ugyanarra a kulcsra ír több helyről?  Mi a teendő, ha az újrapróbálkozási logika felülírja az alkalmazás egy másik része által beállított értéket?
 
 Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehet az [Újraindítás funkciót](cache-administration.md#reboot)használni. Az újraindítás lehetővé teszi, hogy megtekintse, hogyan befolyásolja a kapcsolódási visszavertség az alkalmazást.
 
@@ -75,12 +75,12 @@ Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehe
  * Győződjön meg arról, hogy az ügyfél által használt virtuális gép rendelkezik **legalább annyi számítási és sávszélességgel* , mint a tesztelt gyorsítótár. 
  * **Engedélyezze a VRSS** az ügyfélszámítógépen, ha Windows rendszeren van.  [Részletekért lásd itt](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Példa a PowerShell parancsprogramra:
      >PowerShell-ExecutionPolicy korlátlan Enable-NetAdapterRSS-Name (Get-NetAdapter). név 
-     
+
  * **Érdemes lehet prémium szintű Redis-példányokat használni**.  Ezek a gyorsítótár-méretek jobb hálózati késést és átviteli sebességet biztosítanak, mivel a processzor és a hálózat számára is jobb hardveren futnak.
- 
+
      > [!NOTE]
      > A megfigyelt teljesítmény eredményei [itt jelennek](cache-planning-faq.md#azure-cache-for-redis-performance) meg a referenciában.   Ügyeljen arra is, hogy az SSL/TLS felvesz némi terhelést, így eltérő késést és/vagy átviteli sebességet érhet el, ha átviteli titkosítást használ.
- 
+
 ### <a name="redis-benchmark-examples"></a>Redis-Benchmark példák
 **Tesztelés előtti beállítás**: Készítse elő a gyorsítótár-példányt az alább felsorolt késési és átviteli sebesség-tesztelési parancsokhoz szükséges adatokkal.
 > Redis-benchmark-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 

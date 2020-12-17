@@ -2,16 +2,16 @@
 title: Oktatóanyag – & üzembe helyezési sablon létrehozása
 description: Hozza létre az első Azure Resource Manager sablonját (ARM-sablon). Az oktatóanyagban megismerheti a sablonfájl szintaxisát és a Storage-fiók központi telepítését.
 author: mumian
-ms.date: 09/28/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 191eacbc9cc66ccfb9b378cb5e8a90b4e0fb20e6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 001a20c38a82d053ae22a2614a32f0be9d8aabce
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107023"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656988"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése
 
@@ -19,7 +19,7 @@ Ez az oktatóanyag bemutatja, hogyan Azure Resource Manager sablonokat (ARM-sabl
 
 Ez az oktatóanyag egy sorozat első része. Ahogy halad a sorozaton, módosítja a sablon indítása lépésről lépésre, amíg meg nem tárja az ARM-sablonok összes alapvető részét. Ezek az elemek a sokkal összetettebb sablonok építőelemei. Reméljük, hogy a sorozat végén biztos lehet abban, hogy saját sablonokat hoz létre, és készen áll a sablonokkal való üzembe helyezések automatizálására.
 
-Ha szeretné megismerni a sablonok használatának előnyeit, és miért érdemes automatizálni az üzembe helyezést a sablonokkal, tekintse meg az [ARM-sablonok áttekintése](overview.md)című témakört.
+Ha szeretné megismerni a sablonok használatának előnyeit, és miért érdemes automatizálni az üzembe helyezést a sablonokkal, tekintse meg az [ARM-sablonok áttekintése](overview.md)című témakört. Ha szeretne többet megtudni az ARM-sablonokról a Microsoft Learn modulok irányított készletén keresztül, tekintse meg az [erőforrások üzembe helyezése és kezelése az Azure-ban ARM-sablonok használatával című részt](/learn/paths/deploy-manage-resource-manager-templates/).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -35,7 +35,7 @@ A sablonok JSON-fájlok. Sablonok létrehozásához jó JSON-szerkesztőre van s
 
 A sablon telepítéséhez Azure PowerShell vagy Azure CLI is szükséges. Ha az Azure CLI-t használja, a legújabb verziót kell használnia. A telepítési utasításokért lásd:
 
-- [Azure PowerShell telepítése](/powershell/azure/install-az-ps)
+- [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
 - [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)
 - [Az Azure CLI telepítése Linux rendszeren](/cli/azure/install-azure-cli-linux)
 - [Az Azure CLI telepítése macOS rendszeren](/cli/azure/install-azure-cli-macos)

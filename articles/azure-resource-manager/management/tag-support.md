@@ -3,12 +3,12 @@ title: Erőforrások támogatásának címkézése
 description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a címkéket. Az összes Azure-szolgáltatás részleteit tartalmazza.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 12a57577241e3b2206aab9c3badb29502e7b0301
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005724"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656971"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](tag-resources.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek. A költségeket címkék alapján tekintheti meg a [Cost Management Cost Analysis](../../cost-management-billing/costs/group-filter.md) és az [Azure számlázási számlájában és a napi használati adatokban](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -921,7 +921,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Részlegek | Nem | Nem |
 > | Dimenziók | Nem | Nem |
 > | EnrollmentAccounts | Nem | Nem |
-> | Export | Nem | Nem |
+> | Exportálások | Nem | Nem |
 > | ExternalBillingAccounts | Nem | Nem |
 > | ExternalBillingAccounts/riasztások | Nem | Nem |
 > | ExternalBillingAccounts/méretek | Nem | Nem |
@@ -2253,7 +2253,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | Igen | Yes |
-> | managedInstances/adatbázisok | Igen (lásd az [alábbi megjegyzést](#sqlnote)) | Yes |
+> | managedInstances/adatbázisok | Nem | Nem |
 > | managedInstances/adatbázisok/backupShortTermRetentionPolicies | Nem | Nem |
 > | managedInstances/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels | Nem | Nem |
 > | managedInstances/adatbázisok/vulnerabilityAssessments | Nem | Nem |

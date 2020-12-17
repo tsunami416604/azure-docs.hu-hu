@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 589f320f0099fdab829e9e707a86e3e77d51c21e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562531"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656291"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -34,8 +34,6 @@ Az elnevezett entitások felismerése lehetővé teszi a különböző entitáso
 A személyre szabott funkció az egyoldalas szolgáltatás része, és képes azonosítani és kivonni a bizalmas entitásokat egy olyan szövegben, amely egy személyhez van társítva, például: telefonszám, e-mail-cím, levelezési cím, Passport-szám.
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Elnevezett entitás-felismerési funkciók és verziók
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 | Funkció                                                         | V 3.0 | V 3.1 – előzetes verzió. 3 |
 |-----------------------------------------------------------------|--------|----------|
@@ -83,7 +81,7 @@ A nevesített entitások felismerése `v3.1-preview.3` külön végpontokat hasz
 
 [Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-**Megnevezett entitások felismerése**
+**Elnevezett entitások felismerése**
 * Általános entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
 [Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
@@ -116,7 +114,7 @@ Az elnevezett entitások felismerése v3 külön végpontokat használ az Egypé
 
 [Elnevezett entitás-felismerés 3,0-es verziójának referenciája `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-**Megnevezett entitások felismerése**
+**Elnevezett entitások felismerése**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [Elnevezett entitás-felismerés 3,0-es verziójának referenciája `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
@@ -483,7 +481,7 @@ Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogal
 * A POST kéréseket egy vagy több végpontra küldi a rendszer, egy személyre szabott [hozzáférési kulccsal és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használva.
 * Bármely alkalmazásban használhatók olyan válaszok, amelyek összekapcsolt entitásokból (beleértve a megbízhatósági pontszámokat, az eltolásokat és a webes hivatkozásokat) tartalmazzák
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/client-libraries-rest-api.md)
