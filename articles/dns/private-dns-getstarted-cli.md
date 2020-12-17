@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: df180f0aefc817004e99d63998d000498c4d15aa
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 820641af00caea4ffca450be8aa81b5357ba1261
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310150"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652961"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Rövid útmutató: Azure Private DNS-zóna létrehozása az Azure CLI használatával
 
@@ -21,13 +21,13 @@ Ez a rövid útmutató végigvezeti az első saját DNS-zóna és-rekord Azure C
 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Ha privát DNS-zónát szeretne közzétenni a virtuális hálózaton, meg kell adnia azon virtuális hálózatok listáját, amelyek feloldhatnak rekordokat a zónában.  Ezeket *csatolt* virtuális hálózatoknak nevezzük. Ha engedélyezve van az automatikus regisztráció, a Azure DNS a zóna rekordjait is frissíti, amikor létrejön egy virtuális gép, megváltoztatja az IP-címét, vagy törli azt.
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Ha szeretné, a rövid útmutató [Azure PowerShell](private-dns-getstarted-powershell.md)használatával is elvégezhető.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- A rövid útmutató a [Azure PowerShell](private-dns-getstarted-powershell.md)használatával is elvégezhető.
 
 ## <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
@@ -39,7 +39,7 @@ az group create --name MyAzureResourceGroup --location "East US"
 
 ## <a name="create-a-private-dns-zone"></a>Privát DNS-zóna létrehozása
 
-A következő példa egy **myAzureVNet**nevű virtuális hálózatot hoz létre. Ezután létrehoz egy **Private.contoso.com** nevű DNS-zónát a **MyAzureResourceGroup** -erőforráscsoporthoz, összekapcsolja a DNS-zónát a **MyAzureVnet** virtuális hálózattal, és engedélyezi az automatikus regisztrációt.
+A következő példa egy **myAzureVNet** nevű virtuális hálózatot hoz létre. Ezután létrehoz egy **Private.contoso.com** nevű DNS-zónát a **MyAzureResourceGroup** -erőforráscsoporthoz, összekapcsolja a DNS-zónát a **MyAzureVnet** virtuális hálózattal, és engedélyezi az automatikus regisztrációt.
 
 ```azurecli
 az network vnet create \
@@ -110,7 +110,7 @@ Ez eltarthat néhány percig.
 
 DNS-rekordokat az `az network private-dns record-set [record type] add-record` paranccsal lehet létrehozni. Az A-rekordok hozzáadásával kapcsolatos segítségért például lásd: `az network private-dns record-set A add-record --help`.
 
- A következő példa létrehoz egy rekordot a relatív name **db** -vel a DNS-zóna **Private.contoso.com**, az erőforráscsoport **MyAzureResourceGroup**. A **db.Private.contoso.com**teljesen minősített neve. A rekord típusa „A”, az IP-címe pedig „10.2.0.4”.
+ A következő példa létrehoz egy rekordot a relatív name **db** -vel a DNS-zóna **Private.contoso.com**, az erőforráscsoport **MyAzureResourceGroup**. A **db.Private.contoso.com** teljesen minősített neve. A rekord típusa „A”, az IP-címe pedig „10.2.0.4”.
 
 ```azurecli
 az network private-dns record-set a add-record \
@@ -151,13 +151,13 @@ Ismételje meg ezt a myVM02 gép esetében is.
 
 1. A myVM02 gép Windows PowerShell parancssorából pingelje meg a myVM01 gépet az automatikusan regisztrált gazdagépnév használatával:
 
-   ```
+   ```powershell
    ping myVM01.private.contoso.com
    ```
 
    A következőhöz hasonló kimenetnek kell megjelennie:
 
-   ```
+   ```output
    PS C:\> ping myvm01.private.contoso.com
 
    Pinging myvm01.private.contoso.com [10.2.0.4] with 32 bytes of data:
@@ -175,13 +175,13 @@ Ismételje meg ezt a myVM02 gép esetében is.
 
 2. Most pingelje meg a korábban létrehozott **db** nevet:
 
-   ```
+   ```powershell
    ping db.private.contoso.com
    ```
 
    A következőhöz hasonló kimenetnek kell megjelennie:
 
-   ```
+   ```output
    PS C:\> ping db.private.contoso.com
 
    Pinging db.private.contoso.com [10.2.0.4] with 32 bytes of data:
@@ -208,5 +208,5 @@ az group delete --name MyAzureResourceGroup
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Azure DNS Private Zones forgatókönyvek](private-dns-scenarios.md)
+> [Az Azure DNS privát zónák forgatókönyvei](private-dns-scenarios.md)
 

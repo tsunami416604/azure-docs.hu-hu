@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 68d2ed0d6702a42f44e502f2f7d3a91c0221ff6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 795b6f13913590041b463115c0be65a6201fedab
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440940"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654064"
 ---
 # <a name="about-point-to-site-vpn"></a>Tudnivalók a pont – hely VPN-ről
 
@@ -61,9 +61,9 @@ Magas szinten az alábbi lépéseket kell elvégeznie az Azure AD-hitelesítés 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Hitelesítés Active Directory (AD) tartományi kiszolgáló használatával
 
 Az AD tartományi hitelesítés lehetővé teszi a felhasználóknak az Azure-hoz való kapcsolódást a szervezeti tartományi hitelesítő adataik használatával. Ehhez egy olyan RADIUS-kiszolgáló szükséges, amely integrálva van az AD-kiszolgálóval. A szervezetek a meglévő RADIUS-telepítést is kihasználhatják.
-  
-A RADIUS-kiszolgáló a helyszínen vagy az Azure-VNet is üzembe helyezhető. A hitelesítés során az Azure VPN Gateway továbbítja a hitelesítési üzeneteket a RADIUS-kiszolgáló és a csatlakozó eszköz között. Ezért fontos, hogy az átjáró elérhető legyen a RADIUS-kiszolgáló számára. Ha a RADIUS-kiszolgáló a helyszínen található, az Azure-ból a helyszíni helyre létesített VPN-S2S szükséges a rendelkezésre álláshoz.  
-  
+  
+A RADIUS-kiszolgáló a helyszínen vagy az Azure-VNet is üzembe helyezhető. A hitelesítés során az Azure VPN Gateway továbbítja a hitelesítési üzeneteket a RADIUS-kiszolgáló és a csatlakozó eszköz között. Ezért fontos, hogy az átjáró elérhető legyen a RADIUS-kiszolgáló számára. Ha a RADIUS-kiszolgáló a helyszínen található, az Azure-ból a helyszíni helyre létesített VPN-S2S szükséges a rendelkezésre álláshoz.  
+  
 A RADIUS-kiszolgáló az AD tanúsítványszolgáltatásokkal is integrálható. Ez lehetővé teszi a RADIUS-kiszolgáló és a vállalati tanúsítvány központi telepítésének használatát a P2S-tanúsítvány hitelesítéséhez az Azure-tanúsítvány hitelesítésének alternatívájaként. Ennek az az előnye, hogy a főtanúsítványokat és a visszavont tanúsítványokat nem kell feltölteni az Azure-ba.
 
 A RADIUS-kiszolgálók integrálása más külső identitási rendszerekkel is elvégezhető. Ez számos hitelesítési lehetőséget nyit meg a P2S VPN-hez, beleértve a többtényezős beállításokat is.
@@ -102,41 +102,41 @@ A zip-fájl az Azure-oldal néhány fontos beállításának értékeit is megad
 
 **IKEv2**
 
-|**Titkosítási** | **Integritás** | **PRF** | **DH-csoport** |
-|---        | ---           | ---       | ---   |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_ECP384 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_ECP256 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_24 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_14 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_ECP384 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA384      | SHA384    | GROUP_24 |
-|AES256     |   SHA384      | SHA384    | GROUP_14 |
-|AES256     |   SHA384      | SHA384    | GROUP_ECP384 |
-|AES256     |   SHA384      | SHA384    | GROUP_ECP256 |
-|AES256     |   SHA256      | SHA256    | GROUP_24 |
-|AES256     |   SHA256      | SHA256    | GROUP_14 |
-|AES256     |   SHA256      | SHA256    | GROUP_ECP384 |
-|AES256     |   SHA256      | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA256      | SHA256    | GROUP_2 |
+| **Titkosítási** | **Integritás** | **PRF** | **DH-csoport** |
+|--|--|--|--|
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP256 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA384 | SHA384 | GROUP_24 |
+| AES256 | SHA384 | SHA384 | GROUP_14 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP384 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_2 |
 
 **IPsec**
 
-|**Titkosítási** | **Integritás** | **PFS-csoport** |
-|---        | ---           | ---       |
-|GCM_AES256 | GCM_AES256 | GROUP_NONE |
-|GCM_AES256 | GCM_AES256 | GROUP_24 |
-|GCM_AES256 | GCM_AES256 | GROUP_14 |
-|GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
-|GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
-| AES256    | SHA256 | GROUP_NONE |
-| AES256    | SHA256 | GROUP_24 |
-| AES256    | SHA256 | GROUP_14 |
-| AES256    | SHA256 | GROUP_ECP384 |
-| AES256    | SHA256 | GROUP_ECP256 |
-| AES256    | SHA1 | GROUP_NONE |
+| **Titkosítási** | **Integritás** | **PFS-csoport** |
+|--|--|--|
+| GCM_AES256 | GCM_AES256 | GROUP_NONE |
+| GCM_AES256 | GCM_AES256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
+| AES256 | SHA256 | GROUP_NONE |
+| AES256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA1 | GROUP_NONE |
 
 ## <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Milyen TLS-házirendek vannak konfigurálva a P2S VPN-átjárón?
 **TLS**
@@ -178,7 +178,7 @@ A lépésekért lásd az alábbi [gyakori kérdéseket](#removeconfig).
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [P2S-alapú kapcsolatok konfigurálása – RADIUS-hitelesítés](point-to-site-how-to-radius-ps.md)
 

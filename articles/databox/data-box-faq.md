@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 18a1fc7f42884dcc194256e1f51ddecb62d2708c
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516404"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655475"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
@@ -97,11 +97,11 @@ Ezek az átvezető időpontok a *becslések*. Az adatközpont, az egyidejű megr
 **Data Box rendelés becsült átvezetési ideje:**
 
 1. Megrendelés Data Box: néhány perc a portálról
-2. Eszköz lefoglalása és előkészítése: 1–2 munkanap
+2. Eszközök kiosztása és előkészítése: 1-2 munkanap, a leltár rendelkezésre állása és a függőben lévő egyéb megrendelések teljesítése alapján
 3. Szállítás: 2–3 munkanap
 4. Adatmásolás az ügyfél webhelyén: az adatok természetétől, méretétől és a fájlok számától függ.
 5. Visszaküldés: 2–3 munkanap
-6. Eszköz feldolgozása az adatközpontban: 1-2 munkanap
+6. Eszköz feldolgozása az adatközpontban: 1-2 munkanap, a feldolgozásra váró egyéb megrendelések függvényében
 7. Adatok feltöltése az Azure-ba: a feldolgozás befejezését követően kezdődik, és az eszköz csatlakoztatva van. A feltöltési idő az adatok természetétől, a mérettől és a fájlok számától függ.
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>K. Rendeltem néhány Data Box-eszközt. Nem tudok további rendeléseket létrehozni. Miért?
@@ -297,7 +297,7 @@ A.  Nem. Ha a Microsoft által felügyelt szállítást választotta, az adatát
 Ha az önfelügyelt szállítást választotta, akkor a Data Box az Azure-adatközpontból is kiválaszthatja vagy letilthatja.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box rendszerkövetelményeinek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.

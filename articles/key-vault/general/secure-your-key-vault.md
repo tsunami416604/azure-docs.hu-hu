@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 3f28c50be73b2b87ed8b25429cfa2dee9a663f1b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5e1f8a099256040e14db1cdab288551a228512cd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452173"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655373"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -62,7 +62,7 @@ Az alkalmazások végpontokon keresztül férnek hozzá a síkokhoz. A két sík
 
 A következő táblázat a felügyeleti és adatsíkok végpontját mutatja be.
 
-| Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Műveletek | Hozzáférés- &nbsp; vezérlési mechanizmus |
+| Hozzáférési &nbsp; sík | Hozzáférés végpontjai | Üzemeltetés | Hozzáférés- &nbsp; vezérlési mechanizmus |
 | --- | --- | --- | --- |
 | Felügyeleti sík | **Globális**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure US government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 | Kulcstartók létrehozása, olvasása, frissítése és törlése<br><br>Key Vault hozzáférési szabályzatok beállítása<br><br>Key Vault címkék beállítása | Azure RBAC-vel |
 | Adatsík | **Globális**<br> &lt;tároló-neve&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;tároló-neve&gt;.vault.azure.cn:443<br><br> **Azure US government:**<br> &lt;tároló-neve&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;tároló-neve&gt;.vault.microsoftazure.de:443 | Kulcsok: titkosítás, visszafejtés, wrapKey, unwrapKey, aláírás, ellenőrzés, beolvasás, Listázás, létrehozás, frissítés, importálás, törlés, helyreállítás, biztonsági mentés, visszaállítás, kiürítés<br><br> Tanúsítványok: managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, beolvasás, Listázás, létrehozás, importálás, frissítés, törlés, helyreállítás, biztonsági mentés, visszaállítás, kiürítés<br><br>  Titkok: beolvasás, Listázás, beállítás, törlés, helyreállítás, biztonsági mentés, visszaállítás, kiürítés | Key Vault hozzáférési szabályzat vagy Azure RBAC (előzetes verzió)|
@@ -182,13 +182,13 @@ A következő műveleteket kell engedélyeznie a szerepkörökhöz:
 
 A következő táblázat összefoglalja a szerepkörök és alkalmazások hozzáférési engedélyeit.
 
-| Role | Felügyeleti sík engedélyei | Adatsík engedélyei – tár-hozzáférési szabályzatok | Adatsík engedélyei – Azure RBAC (előzetes verzió)  |
+| Szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei – tár-hozzáférési szabályzatok | Adatsík engedélyei – Azure RBAC (előzetes verzió)  |
 | --- | --- | --- | --- |
 | Biztonsági csapat | [Key Vault közreműködő](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Tanúsítványok: minden művelet <br> Kulcsok: minden művelet <br> Titkok: minden művelet | [Key Vault rendszergazda (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
-| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincsenek | Nincsenek |
-| Ellenőrök | Nincsenek | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | [Key Vault olvasó (előzetes verzió)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure Storage-tárfiók neve | Nincsenek | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | [Titkosítási szolgáltatás titkosításának Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
-| Alkalmazás | Nincsenek | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault Secret User (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
+| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincs | Nincs |
+| Ellenőrök | Nincs | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
+| Azure Storage-tárfiók neve | Nincs | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | [Titkosítási szolgáltatás titkosítása Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
+| Alkalmazás | Nincs | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault Secret User (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 A három csoport szerepköreinek más erőforrásokhoz való hozzáférésre van szükségük Key Vault engedélyekkel együtt. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek telepíteniük kell a hozzáférést. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, ahol a Key Vault-naplókat tárolják.
 
@@ -205,7 +205,7 @@ Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli for
 - [Azure RBAC-vel](../../role-based-access-control/overview.md)
 - [Privát kapcsolat](../../private-link/private-link-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hitelesítés az Azure Key Vaulttal](authentication.md)
 

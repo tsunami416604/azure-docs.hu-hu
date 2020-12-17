@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5ba5c6799db6a32bce64a730f4888f59080300dd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928817"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657175"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B sorozatú virtuális gépek méretei
 
@@ -102,7 +102,7 @@ Egy olyan D16s_v3 esetében, amely 16 vCPU és 64 GiB memóriával rendelkezik, 
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>K: Hogyan figyelhető meg a kreditek egyenlege és a fogyasztásom?
 
-**A** Válasz: a **kredit** metrika segítségével megtekintheti, hogy a virtuális gép hány kreditet kapott, és a **ConsumedCredit** metrika azt mutatja, hogy a virtuális gép hány CPU-kreditet használ a banktól.    Ezeket a metrikákat a portál mérőszámok paneljéről vagy programozott módon, a Azure Monitor API-kon keresztül tekintheti meg.
+Válasz: a **kredit** metrika segítségével megtekintheti, hogy a virtuális gép hány kreditet kapott, és a **ConsumedCredit** metrika azt mutatja, hogy a virtuális gép hány CPU-kreditet használ a banktól.    Ezeket a metrikákat a portál mérőszámok paneljéről vagy programozott módon, a Azure Monitor API-kon keresztül tekintheti meg.
 
 További információ az Azure mérőszámok adatainak eléréséről: [a Microsoft Azure metrikáinak áttekintése](../azure-monitor/platform/data-platform.md).
 
@@ -112,7 +112,7 @@ További információ az Azure mérőszámok adatainak eléréséről: [a Micros
 
 **Példa**: üzembe helyezhetek egy virtuális gépet a kis idő és a részvételi B1ms mérete alapján. Ez a méret lehetővé teszi, hogy az alkalmazásom a vCPU akár 20%-át használja alaptervként, ami 0,2 kredit, amelyet akár percenként is használhatok.
 
-Az alkalmazásom az alkalmazottak munkanapjának elején és végén foglalt, 7:00-9:00-kor és 4:00-18:00 között. A nap további 20 órájában az alkalmazásom általában üresjáratban van, és csak a vCPU 10%-át használja. A nem maximális óraszám esetében percenként 0,2 kreditet keresünk, de percenként csak 0. l kreditet használunk, így a virtuális gép 0,1 x 60 = 6 kredit/óra lesz.  A 20 órán át, hogy én vagyok a csúcson, a bank 120 kreditet kap.  
+Az alkalmazásom az alkalmazottak munkanapjának elején és végén foglalt, 7:00-9:00-kor és 4:00-18:00 között. A nap további 20 órájában az alkalmazásom általában üresjáratban van, és csak a vCPU 10%-át használja. A nem maximális óraszámban 0,2 kreditet keresünk, de percenként csak 0,1 kreditet használunk, így a virtuális gép a bank 0,1 x 60 = 6 kredit/óra lesz.  A 20 órán át, hogy én vagyok a csúcson, a bank 120 kreditet kap.  
 
 Az alkalmazás csúcsidőben átlagosan 60%-os vCPU-kihasználtságot használok, de percenként 0,2 kreditet keresek, de percenként 0,6 kreditet használok, és a 100-as vagy 0,4 x 60 = 24 kreditet számítjuk 0,4 fel óránként. Napi 4 óra van használatban, ezért 4 x 24 = 96 kreditet számítunk fel a csúcsérték-használathoz.
 

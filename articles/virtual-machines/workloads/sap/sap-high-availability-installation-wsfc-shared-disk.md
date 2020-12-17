@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81721cb52035a51cffa2667568914c780b4c397b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1324afb38560afeb43b5be9191b6e2e7afc5c81d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588658"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654897"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver HA telepítése Windows feladatátvevő fürtön és megosztott lemezen az Azure-beli SAP ASCS/SCS-példányhoz
 
@@ -66,8 +66,6 @@ ms.locfileid: "97588658"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f
 
 [sap-high-availability-infrastructure-wsfc-shared-disk]:sap-high-availability-infrastructure-wsfc-shared-disk.md
-
-
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
 [sap-ha-guide-figure-1001]:./media/virtual-machines-shared-sap-high-availability-guide/1001-wsfc-on-azure-ilb.png
@@ -173,7 +171,6 @@ Nincsenek különleges megfontolások, ha a különböző adatbázis-kezelő szo
 > [!IMPORTANT]
 > Ha a SIOS-t használja a megosztott lemez bemutatására, ne helyezze a lapozófájlt a SIOS DataKeeper tükrözött kötetekre. A lapozófájlt egy Azure-beli virtuális gép ideiglenes meghajtójába helyezheti el, amely az alapértelmezett. Ha még nem tette meg, helyezze át a Windows-lapozófájlt az Azure-beli virtuális gép D meghajtóján.  
 
-
 A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepítése a következő feladatokat foglalja magában:
 
 * Hozzon létre egy virtuális állomásnevet a fürtözött SAP ASCS/SCS-példányhoz.
@@ -189,7 +186,6 @@ A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepít�
    > [!IMPORTANT]
    > A ASCS/SCS-példány virtuális állomásnevét hozzárendelt IP-címnek meg kell egyeznie a Azure Load Balancerhoz rendelt IP-címmel.  
 
-
    ![1. ábra: az SAP ASCS/SCS-fürt virtuális neve és a TCP/IP-cím DNS-bejegyzésének megadása][sap-ha-guide-figure-3046]
 
    _Adja meg a DNS-bejegyzést az SAP ASCS/SCS-fürt virtuális neve és TCP/IP-címe számára._
@@ -199,11 +195,9 @@ A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepít�
    > [!IMPORTANT]
    > A ERS2-példány virtuális állomásnevét hozzárendelt IP-címnek a másodiknak kell lennie a Azure Load Balancerhoz rendelt IP-címnek.    
 
-
    ![1A. ábra: az SAP ASCS/SCS-fürt virtuális neve és a TCP/IP-cím DNS-bejegyzésének megadása][sap-ha-guide-figure-3046-ers2]
 
    _Adja meg az SAP ERS2-fürt virtuális neve és a TCP/IP-cím DNS-bejegyzését_
-
 
 3. A virtuális gazdagép neveként hozzárendelt IP-cím megadásához válassza a **DNS-kezelő**  >  **tartomány** lehetőséget.
 
@@ -219,7 +213,6 @@ A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepít�
    * **Java-System**: **SCS** -példány száma **01**
    * **ABAP + Java System**: **ASCS** -példány száma **00** és **SCS** -példány száma **01**
 
-
    > [!IMPORTANT]
    > Ne feledje, hogy az Azure belső terheléselosztó terheléselosztási szabályaiban (alapszintű SKU használata esetén) a konfigurációnak meg kell egyeznie a kiválasztott SAP-példányok számával.
 
@@ -227,8 +220,6 @@ A magas rendelkezésre állású ASCS/SCS-példánnyal rendelkező SAP telepít�
 
 > [!TIP]
 > Az SAP telepítési dokumentációja leírja, hogyan telepítheti az első ASCS/SCS fürtcsomópont-csomópontot.
-
-
 
 ### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> Az ASCS/SCS-példány SAP-profiljának módosítása
 
@@ -295,7 +286,6 @@ Mintavételi port hozzáadásához futtassa ezt a PowerShell-modult az egyik fü
     .PARAMETER IsSAPERSClusteredInstance 
     Optional parameter.Default value is '$False'.
     If set to $True , then handle clsutered new SAP ERS2 instance.
-
 
     .EXAMPLE 
     # Set probe port to 62000, on SAP cluster resource 'SAP AB1 IP', and restart the SAP cluster group 'SAP AB1', to activate the changes.

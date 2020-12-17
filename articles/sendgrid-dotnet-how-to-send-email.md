@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8ac20378cbae9334cedb59878311f2541b40bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66bec9635af696d0ce1cf9d7dcad8c26a1ef23ad
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020592"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652364"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>E-mail küldése a SendGrid és az Azure használatával
 ## <a name="overview"></a>Áttekintés
@@ -53,7 +53,7 @@ A SendGrid NuGet-csomag az alkalmazásban való telepítéséhez tegye a követk
 1. Kattintson az **új projekt** elemre, és válasszon ki egy **sablont**.
 
    ![Új projekt létrehozása][create-new-project]
-2. A **megoldáskezelő**kattintson a jobb gombbal a **hivatkozások**elemre, majd kattintson a **NuGet-csomagok kezelése**elemre.
+2. A **megoldáskezelő** kattintson a jobb gombbal a **hivatkozások** elemre, majd kattintson a **NuGet-csomagok kezelése** elemre.
 
    ![SendGrid NuGet csomag][SendGrid-NuGet-package]
 3. Keresse meg a **SendGrid** , és válassza ki a **SendGrid** elemet az eredmények listájában.
@@ -62,7 +62,7 @@ A SendGrid NuGet-csomag az alkalmazásban való telepítéséhez tegye a követk
    ![SendGrid-csomag][sendgrid-package]
 5. A telepítés befejezéséhez **kattintson a telepítés gombra** , majd a párbeszédpanel bezárásához.
 
-A SendGrid .NET-osztály könyvtára **SendGrid**néven ismert. A következő névtereket tartalmazza:
+A SendGrid .NET-osztály könyvtára **SendGrid** néven ismert. A következő névtereket tartalmazza:
 
 * **SendGrid** a SendGrid API-val való kommunikációhoz.
 * **SendGrid. helpers. post** for Helper metódusok az e-mailek küldését megadó SendGridMessage-objektumok egyszerű létrehozásához.
@@ -107,7 +107,7 @@ Az e-mailek küldéséhez meg kell adnia a SendGrid API-kulcsát. Ha további in
 
 Ezeket a hitelesítő adatokat a Azure Portalon keresztül is tárolhatja, ha az Alkalmazásbeállítások elemre kattint, és hozzáadja a kulcs/érték párokat az alkalmazás beállításai területen.
 
- ![Azure-alkalmazás beállításai][azure_app_settings]
+![Azure-alkalmazás beállításai][azure_app_settings]
 
 Ezután a következőképpen érheti el őket:
 
@@ -159,17 +159,17 @@ Ebben a példában az API-kulcsot a fájl tárolja, `appsettings.json` amely fel
 
 A fájl tartalmának a következőhöz `appsettings.json` hasonlóan kell kinéznie:
 
-```csharp
+```json
 {
-   "Logging": {
-   "IncludeScopes": false,
-   "LogLevel": {
-   "Default": "Debug",
-   "System": "Information",
-   "Microsoft": "Information"
-     }
-   },
- "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  },
+  "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 }
 ```
 
@@ -208,8 +208,8 @@ namespace SendgridMailApp.Controllers
        public NotificationController(IConfiguration configuration)
        {
          _configuration = configuration;
-       }      
-    
+       }
+
        [Route("SendNotification")]
        public async Task PostMessage()
        {
@@ -222,7 +222,7 @@ namespace SendgridMailApp.Controllers
               new EmailAddress("test3@example.com", "Example User 3"),
               new EmailAddress("test4@example.com","Example User 4")
           };
-        
+
           var subject = "Hello world email from Sendgrid ";
           var htmlContent = "<strong>Hello world with HTML content</strong>";
           var displayRecipients = false; // set this to true if you want recipients to see each others mail id 

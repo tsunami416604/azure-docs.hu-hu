@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ce37ee51e549a2bd6f2747f28af8c038c39d8f1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020602"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656835"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Adatelemzési kód tesztelése az Azure-ban a csoportos adatelemzési folyamattal és az Azure DevOps Services szolgáltatással
 Ez a cikk az adatelemzési munkafolyamatok kódjának tesztelésére vonatkozó előzetes irányelveket ismerteti. Az ilyen tesztelések lehetővé teszik az adatszakértők számára, hogy szisztematikusan és hatékonyan ellenőrizzék a kód minőségét és várható eredményét. Olyan csoportos adatelemzési folyamat (TDSP) [projektjét használjuk, amely a korábban közzétett UCI Adult bevételi adatkészletet használja](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , hogy megmutassa, hogyan lehet elvégezni a kód tesztelését. 
@@ -150,7 +150,7 @@ Ha a riasztások megfelelően vannak beállítva, értesítést fog kapni e-mail
 
 ![A Build sikeres Azure DevOps-értesítése](./media/code-test/vs_online_build_succeed.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az adatelemzési forgatókönyvek esetében lásd: az [UCI bevétel-előrejelző tárháza](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , amely konkrét példákat tartalmaz az egységek tesztelésére.
 * Kövesse az előző vázlatot és példákat a saját adatelemzési projektjeiben lévő UCI bevétel-előrejelzési forgatókönyvből.
 

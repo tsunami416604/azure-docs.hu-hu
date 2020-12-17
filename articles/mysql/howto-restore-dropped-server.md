@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 982747c1a7e093f84daeb63e75cfdf439d3fccf9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 34dddd8e5f3fb418fc7155630bf82a922e418402
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546721"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657090"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>Eldobott Azure Database for MySQL kiszolgáló visszaállítása
 
@@ -45,15 +45,15 @@ Az eldobott Azure Database for MySQL kiszolgáló visszaállításához a követ
  6. Görgessen lejjebb a kérelem törzse szakaszban, és illessze be a következőt az "eldobott kiszolgáló helye", a "submissionTimestamp" és a "resourceId" helyett. A "restorePointInTime" értéknél a "submissionTimestamp" értéket mínusz **15 percben** kell megadni, hogy a parancs ne legyen hiba.
  
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
+    {
+        "location": "Dropped Server Location",  
+        "properties": 
+            {
+                "restorePointInTime": "submissionTimestamp - 15 minutes",
+                "createMode": "PointInTimeRestore",
+                "sourceServerId": "resourceId"
             }
-        }
+    }
     ```
 
 7. Ha a 201-es vagy a 202-es hibakód jelenik meg, a visszaállítási kérelem sikeresen elküldve. 

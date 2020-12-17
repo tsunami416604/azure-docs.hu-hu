@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 038c1d4c0f0b5ffd7b9aabea2de32e3a44e3b221
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832739"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654132"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Leképezések létrehozása, amelyek az XML-t különböző formátumokká alakítják át az Azure Logic Appsben az Enterprise Integration Packkel
 
@@ -44,7 +44,7 @@ Most, hogy elvégezte az előfeltételeket, ideje létrehozni a logikai alkalmaz
 4. A keresőmezőbe írja be a Word *átalakítás* kifejezést a használni kívánt összes művelet szűréséhez  
    ![Képernyőfelvétel: az átalakítási XML-művelet megkeresése a "Microsoft felügyelt API-k megjelenítése" legördülő menüben, hogy hozzá lehessen adni a kérelem-triggerhez.](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. **XML-átalakítási** művelet kiválasztása   
-6. Adja hozzá az átalakított XML- **tartalmat** . A HTTP-kérelemben a **tartalomként**kapott XML-adatokat is használhatja. Ebben a példában válassza ki a logikai alkalmazást indító HTTP-kérelem törzsét.
+6. Adja hozzá az átalakított XML- **tartalmat** . A HTTP-kérelemben a **tartalomként** kapott XML-adatokat is használhatja. Ebben a példában válassza ki a logikai alkalmazást indító HTTP-kérelem törzsét.
 
    > [!NOTE]
    > Győződjön meg arról, hogy az **átalakítás XML** -fájljának tartalma XML. Ha a tartalom nem XML vagy Base64 kódolású, akkor meg kell adnia egy kifejezést, amely feldolgozza a tartalmat. Használhatja például a [függvények](logic-apps-workflow-definition-language.md#functions)használatát, például ```@base64ToBinary``` a tartalom dekódolásához vagy ```@xml``` a tartalom XML-ként történő feldolgozásához.
@@ -95,17 +95,17 @@ Az átalakítási művelet a leképezéseket és az átalakításokat is támoga
     <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
   </msxsl:script>
   <xsl:template match="data">
-     <circles>
-        <xsl:for-each select="circle">
-            <circle>
-                <xsl:copy-of select="node()"/>
-                    <circumference>
-                        <xsl:value-of select="user:circumference(radius)"/>
-                    </circumference>
-            </circle>
-        </xsl:for-each>
-     </circles>
-    </xsl:template>
+   <circles>
+    <xsl:for-each select="circle">
+      <circle>
+        <xsl:copy-of select="node()"/>
+          <circumference>
+            <xsl:value-of select="user:circumference(radius)"/>
+          </circumference>
+      </circle>
+    </xsl:for-each>
+   </circles>
+  </xsl:template>
     </xsl:stylesheet>
   ```
 

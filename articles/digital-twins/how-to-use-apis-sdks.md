@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187238"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656937"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -26,7 +26,7 @@ Ez a cikk áttekintést nyújt az elérhető API-król, valamint a velük való 
 
 A vezérlési sík API-k az Azure Digital Twins-példányok egészének kezelésére szolgáló [ARM](../azure-resource-manager/management/overview.md) API-k, így olyan műveletekre is kiterjednek, mint például a teljes példány létrehozása vagy törlése. Ezeket a végpontok létrehozásához és törléséhez is használni fogja.
 
-A jelenlegi Control Plant API-verzió a _**2020-10-31**_.
+A jelenlegi Control Plant API-verzió a _**2020-12-01**_.
 
 A vezérlő sík API-k használata:
 * Az API-kat közvetlenül hívhatja a [vezérlési sík hencegő mappájában](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)található legújabb hencegés hivatkozásával. Ez a tárház a használatot bemutató példákat is tartalmaz.
@@ -275,7 +275,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 ## <a name="general-apisdk-usage-notes"></a>Általános API-/SDK-használati megjegyzések
 
 > [!NOTE]
-> Vegye figyelembe, hogy az Azure Digital Twins jelenleg nem támogatja a **több eredetű erőforrás-megosztást (CORS)**. A hatás-és megoldási stratégiákkal kapcsolatos további információkért tekintse meg a *fogalmak: biztonság Azure digitális Twins-megoldásokhoz* című szakaszát. [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors)
+> Vegye figyelembe, hogy az Azure Digital Twins jelenleg nem támogatja a **több eredetű erőforrás-megosztást (CORS)**. A hatás-és megoldási stratégiákkal kapcsolatos további információkért tekintse meg a *fogalmak: biztonság Azure digitális Twins-megoldásokhoz* című szakaszát. [](concepts-security.md#cross-origin-resource-sharing-cors)
 
 Az alábbi lista további részleteket és általános irányelveket tartalmaz az API-k és SDK-k használatához.
 
@@ -286,7 +286,7 @@ Az alábbi lista további részleteket és általános irányelveket tartalmaz a
 * Az összes szolgáltatási funkció szinkron és aszinkron verziókban található.
 * Az összes szolgáltatási funkció kivételt jelez a 400-es vagy újabb visszaküldési állapot esetén. Ügyeljen arra, hogy a hívásokat egy `try` szakaszba csomagolja, és legalább a fogást `RequestFailedExceptions` . Az ilyen típusú kivételekről [itt](/dotnet/api/azure.requestfailedexception?preserve-view=true&view=azure-dotnet)talál további információt.
 * A legtöbb szolgáltatási módszer visszaadja `Response<T>` vagy (az `Task<Response<T>>` aszinkron hívások esetében), ahol a a `T` szolgáltatás hívásához tartozó visszatérési objektum osztálya. A [`Response`](/dotnet/api/azure.response-1?preserve-view=true&view=azure-dotnet) osztály beágyazza a szolgáltatás visszaadását, és megadja a visszatérési értékeket a `Value` mezőben.  
-* A lapozható eredményekkel `Pageable<T>` vagy eredményekkel rendelkező szolgáltatási metódusok `AsyncPageable<T>` . További információ az `Pageable<T>` osztályról: itt [here](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet-preview)talál további információt `AsyncPageable<T>` . [here](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet-preview)
+* A lapozható eredményekkel `Pageable<T>` vagy eredményekkel rendelkező szolgáltatási metódusok `AsyncPageable<T>` . További információ az `Pageable<T>` osztályról: itt [](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet-preview)talál további információt `AsyncPageable<T>` . [](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet-preview)
 * A lapozható eredmények egy hurok használatával is megadhatók `await foreach` . További információ erről a folyamatról: [.](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)
 * A mögöttes SDK a `Azure.Core` . Az SDK-infrastruktúrával és-típusokkal kapcsolatos tudnivalókat az [Azure névtér dokumentációjában](/dotnet/api/azure?preserve-view=true&view=azure-dotnet-preview) találja.
 

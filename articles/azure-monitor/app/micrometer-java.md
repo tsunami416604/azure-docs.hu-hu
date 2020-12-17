@@ -6,12 +6,12 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: a80684fbaa34f8906d321f56d3819039d3798ecb
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: bb5caafea944d21547a904b99f9043aef63a6ffa
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600982"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656466"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>A Mikrométer használata az Azure Application Insights Java SDK-val (nem ajánlott)
 
@@ -92,17 +92,17 @@ Alapértelmezett mérőszámok:
 *    A rendszer automatikusan konfigurálta a Tomcat, a JVM, a Logback metrikák, a Log4J metrikák, a üzemidő Metrikái, a processzor Metrikái és a FileDescriptorMetrics metrikáit.
 *    Ha például a Netflix Hystrix megtalálható az osztály elérési úton, akkor a mérőszámokat is megkapjuk. 
 *    A következő mérőszámok elérhetők a megfelelő bab hozzáadásával. 
-        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)     
+        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
         - OkHttp3 metrikák 
         - Kafka-metrikák 
 
- 
+
 
 Az automatikus metrikák gyűjtésének kikapcsolása: 
- 
+
 - JVM metrikák: 
     - felügyeleti. mérőszámok. kötések. JVM. enabled = false 
 - Logback metrikák: 
@@ -139,7 +139,7 @@ Lépések:
             <artifactId>micrometer-registry-azure-monitor</artifactId>
             <version>1.1.0</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.microsoft.azure</groupId>
             <artifactId>applicationinsights-web-auto</artifactId>
@@ -152,17 +152,17 @@ Lépések:
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-    
+
        <!-- The key from the portal: -->
        <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-    
+
        <!-- HTTP request component (not required for bare API) -->
        <TelemetryModules>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
        </TelemetryModules>
-    
+
        <!-- Events correlation (not required for bare API) -->
        <!-- These initializers add context data to each event -->
        <TelemetryInitializers>
@@ -172,7 +172,7 @@ Lépések:
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
           <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
        </TelemetryInitializers>
-    
+
     </ApplicationInsights>
     ```
 
@@ -181,17 +181,17 @@ Lépések:
     ```Java
         @WebServlet("/hello")
         public class TimedDemo extends HttpServlet {
-    
+
           private static final long serialVersionUID = -4751096228274971485L;
-    
+
           @Override
           @Timed(value = "hello.world")
           protected void doGet(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException {
-    
+
             response.getWriter().println("Hello World!");
             MeterRegistry registry = (MeterRegistry) getServletContext().getAttribute("AzureMonitorMeterRegistry");
-    
+
         //create new Timer metric
             Timer sampleTimer = registry.timer("timer");
             Stream<Integer> infiniteStream = Stream.iterate(0, i -> i+1);
@@ -210,9 +210,9 @@ Lépések:
           public void destroy() {
             System.out.println("Servlet " + this.getServletName() + " has stopped");
           }
-    
+
         }
-    
+
     ```
 
 4. Minta konfigurációs osztály:
@@ -220,10 +220,10 @@ Lépések:
     ```Java
          @WebListener
          public class MeterRegistryConfiguration implements ServletContextListener {
-     
+
            @Override
            public void contextInitialized(ServletContextEvent servletContextEvent) {
-     
+
          // Create AzureMonitorMeterRegistry
            private final AzureMonitorConfig config = new AzureMonitorConfig() {
              @Override
@@ -233,23 +233,23 @@ Lépések:
             @Override
                public Duration step() {
                  return Duration.ofSeconds(60);}
-     
+
              @Override
              public boolean enabled() {
                  return false;
              }
          };
-     
+
       MeterRegistry azureMeterRegistry = AzureMonitorMeterRegistry.builder(config);
-     
+
              //set the config to be used elsewhere
              servletContextEvent.getServletContext().setAttribute("AzureMonitorMeterRegistry", azureMeterRegistry);
-     
+
            }
-     
+
            @Override
            public void contextDestroyed(ServletContextEvent servletContextEvent) {
-     
+
            }
          }
     ```
@@ -278,7 +278,7 @@ Adja hozzá a következő kötési kódot a konfigurációs fájlhoz:
     New GuavaCacheMetrics().bind(registry);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A mikrométersel kapcsolatos további tudnivalókért tekintse meg a hivatalos [mikrométer dokumentációját](https://micrometer.io/docs).
 * A Spring on Azure-ról az Azure-beli hivatalos [tavaszi dokumentációban](/java/azure/spring-framework/?view=azure-java-stable)olvashat bővebben.

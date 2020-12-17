@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: 17c3f07fe553e363d1eb2a997287feb77296a621
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9b5693ddef5e512b0a95c87a700fd12acd4b5fae
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540312"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654642"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Az Apache HBase készült .NET SDK használata
 
@@ -38,11 +38,11 @@ var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdins
 client = new HBaseClient(credentials);
 ```
 
-Cserélje le a CLUSTERNAME-t a HDInsight HBase, valamint a Felhasználónév és a jelszó helyére a fürt létrehozásához megadott Apache Hadoop hitelesítő adatokat. Az alapértelmezett Hadoop-Felhasználónév a **rendszergazda** .
+Cserélje le a CLUSTERNAME-t a HDInsight HBase, valamint a Felhasználónév és a jelszó helyére a fürt létrehozásához megadott Apache Hadoop hitelesítő adatokat. Az alapértelmezett Hadoop-Felhasználónév a **rendszergazda**.
 
 ## <a name="create-a-new-table"></a>Új tábla létrehozása
 
-A HBase táblákban tárolja az adattárakat. A tábla egy *Rowkey* , egy elsődleges kulcsból és egy vagy több *oszlopból* álló csoportból áll. Az egyes táblákban lévő összes adathalmazt vízszintesen osztják el egy Rowkey-tartományból *régiókba* . Minden régió rendelkezik kezdési és befejezési kulccsal. Egy tábla egy vagy több régióval rendelkezhet. Ahogy a tábla adatai növekednek, a HBase a nagyméretű régiókat kisebb régiókra osztja fel. A régiók tárolása a *régió-kiszolgálókon* történik, ahol az egyik régió-kiszolgáló több régiót is tárolhat.
+A HBase táblákban tárolja az adattárakat. A tábla egy *Rowkey*, egy elsődleges kulcsból és egy vagy több *oszlopból* álló csoportból áll. Az egyes táblákban lévő összes adathalmazt vízszintesen osztják el egy Rowkey-tartományból *régiókba*. Minden régió rendelkezik kezdési és befejezési kulccsal. Egy tábla egy vagy több régióval rendelkezhet. Ahogy a tábla adatai növekednek, a HBase a nagyméretű régiókat kisebb régiókra osztja fel. A régiók tárolása a *régió-kiszolgálókon* történik, ahol az egyik régió-kiszolgáló több régiót is tárolhat.
 
 Az adattárolást fizikailag a *HFiles* tárolja. Egyetlen HFile egy tábla, egy régió és egy oszlop családja számára tartalmaz adattípust. A HFile lévő sorok tárolása a Rowkey szerint történik. Minden HFile rendelkezik egy *B + Tree* indextel a sorok gyors lekéréséhez.
 

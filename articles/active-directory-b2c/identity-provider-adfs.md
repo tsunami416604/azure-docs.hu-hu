@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8e9cf9a7c2556a1f0710b2bf646d83ffbf84ea97
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 767f60cae2f74f7e2a928253d45011bb6ceb5d0e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585054"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653843"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS hozzáadása SAML-identitás-szolgáltatóként egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy AD FS felhaszn
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure Active Directory B2Cban](custom-policy-get-started.md).
-- Ellenőrizze, hogy van-e hozzáférése egy titkos kulccsal rendelkező Certificate. pfx fájlhoz. Létrehozhat saját aláírt tanúsítványt, és feltöltheti Azure AD B2Cba. Azure AD B2C ezt a tanúsítványt használja a SAML-identitás szolgáltatójának küldendő SAML-kérelem aláírására. A tanúsítványok létrehozásával kapcsolatos további információkért lásd: [aláíró tanúsítvány létrehozása](identity-provider-salesforce.md#generate-a-signing-certificate).
+- Ellenőrizze, hogy van-e hozzáférése egy titkos kulccsal rendelkező Certificate. pfx fájlhoz. Létrehozhat saját aláírt tanúsítványt, és feltöltheti Azure AD B2Cba. Azure AD B2C ezt a tanúsítványt használja a SAML-identitás szolgáltatójának küldendő SAML-kérelem aláírására. A tanúsítványok létrehozásával kapcsolatos további információkért lásd: [aláíró tanúsítvány létrehozása](identity-provider-salesforce-saml.md#generate-a-signing-certificate).
 - Ahhoz, hogy az Azure elfogadja a. pfx-fájl jelszavát, a jelszót titkosítani kell a Windows tanúsítványtároló-exportálás segédprogram TripleDES-SHA1 kapcsolóval, a AES256-SHA256 szemben.
 
 ## <a name="create-a-policy-key"></a>Házirend-kulcs létrehozása

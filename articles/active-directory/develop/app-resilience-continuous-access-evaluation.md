@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: 86c379316737b7718b62165a6feb93ca3a0e9954
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f6ce792b3db0100d7356884bbc6ee2696580df10
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484039"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652058"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>A folyamatos hozzáférés kiértékelését engedélyező API-k használata az alkalmazásokban
 
@@ -40,9 +40,9 @@ Például:
 ```console
 HTTP 401; Unauthorized
 WWW-Authenticate=Bearer
- authorization_uri="https://login.windows.net/common/oauth2/authorize",
- error="insufficient_claims",
- claims="eyJhY2Nlc3NfdG9rZW4iOnsibmJmIjp7ImVzc2VudGlhbCI6dHJ1ZSwgInZhbHVlIjoiMTYwNDEwNjY1MSJ9fX0="
+  authorization_uri="https://login.windows.net/common/oauth2/authorize",
+  error="insufficient_claims",
+  claims="eyJhY2Nlc3NfdG9rZW4iOnsibmJmIjp7ImVzc2VudGlhbCI6dHJ1ZSwgInZhbHVlIjoiMTYwNDEwNjY1MSJ9fX0="
 ```
 
 Az alkalmazás a következőket vizsgálja:
@@ -114,6 +114,6 @@ _clientApp = PublicClientApplicationBuilder.Create(App.ClientId)
 
 Az alkalmazás teszteléséhez jelentkezzen be egy felhasználót az alkalmazásba, majd használja a Azure Portal a felhasználó munkameneteinek visszavonásához. Amikor az alkalmazás legközelebb meghívja a CAE-kompatibilis API-t, a rendszer megkéri a felhasználót, hogy végezze el a hitelesítést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [folyamatos hozzáférés kiértékelése](../conditional-access/concept-continuous-access-evaluation.md).

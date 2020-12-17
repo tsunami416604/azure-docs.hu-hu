@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: reference
 keywords: Kinect, Azure, szenzor, SDK, mélység, RGB, rekord, lejátszás, Matroska, MKV
-ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4fa14b0841cb76b2ba191310ecbca312d29f805
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501780"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654591"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>Fájl formátumának rögzítése az Azure Kinect Sensor SDK használatával
 
@@ -71,6 +71,6 @@ A címkék teljes listája a [rekord és lejátszás](record-playback-api.md) ol
 | K4A_IMU_TRACK        | IMU követése              | Matroska Track UID    |
 | K4A_CALIBRATION_FILE | Kalibrálási melléklet | Melléklet fájlneve   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Rögzítés és lejátszás](record-playback-api.md)

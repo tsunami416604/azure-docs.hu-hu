@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518243"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653282"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -112,7 +112,7 @@ Egyes jogcímek segítségével az Azure AD biztonságos tokeneket használhat �
 | `roles` | Karakterláncok tömbje, engedélyek listája | Az alkalmazás által a kérelmező alkalmazásnak vagy felhasználónak megadott engedélyekkel rendelkező engedélyek készlete. Az [alkalmazás-jogkivonatok](#user-and-application-tokens)esetében ez az ügyfél-hitelesítő adatok ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) felhasználói hatókörök helyett használatos.  [Felhasználói jogkivonatok](#user-and-application-tokens) esetén ez a felhasználó által a célalkalmazás számára hozzárendelt szerepkörökkel van feltöltve. |
 | `wids` | [RoleTemplateID](../roles/permissions-reference.md#role-template-ids) GUID-azonosítók tömbje | Az ehhez a felhasználóhoz rendelt bérlői szintű szerepköröket jelöli a [rendszergazdai szerepkörök lapon](../roles/permissions-reference.md#role-template-ids)lévő szerepkörök szakasza alapján.  Ez a jogcím az `groupMembershipClaims` [alkalmazás jegyzékfájljának](reference-app-manifest.md)tulajdonságán alapuló, alkalmazáson belüli alapon van konfigurálva.  Az "all" vagy a "DirectoryRole" beállítás megadása kötelező.  Előfordulhat, hogy a jogkivonat-hossz miatti implicit folyamat során beszerzett jogkivonatok nem jelennek meg. |
 | `groups` | GUID-azonosítók JSON-tömbje | A tulajdonos csoportjának tagságát képviselő objektumazonosítók benyújtása. Ezek az értékek egyediek (lásd: objektumazonosító), és biztonságosan használhatók a hozzáférés felügyeletéhez, például az erőforrásokhoz való hozzáférés engedélyezésének kényszerítéséhez. A groups jogcímben szereplő csoportok alkalmazáson belüli alapon vannak konfigurálva, az `groupMembershipClaims` [alkalmazás jegyzékfájljának](reference-app-manifest.md)tulajdonságán keresztül. A Null érték kizárja az összes csoportot, a "SecurityGroup" érték pedig csak Active Directory biztonsági csoporttagság részét fogja tartalmazni, az "all" érték pedig a biztonsági csoportokat és a Microsoft 365 terjesztési listát is tartalmazza. <br><br>Tekintse `hasgroups` meg az alábbi jogcímet a `groups` jogcímek implicit támogatással történő használatával kapcsolatos részletekért. <br>Más folyamatok esetében, ha a felhasználó által birtokolt csoportok száma meghaladja a határértéket (150 az SAML, 200 for JWT esetében), a rendszer felvesz egy túllépési jogcímet a felhasználóhoz tartozó csoportok listáját tartalmazó Microsoft Graph végpontra. |
-| `hasgroups` | Logikai érték | Ha van, akkor mindig `true` , ha a felhasználó legalább egy csoportban szerepel. A `groups` JWTs implicit engedélyezési folyamatokban használt jogcímek helyett, ha a teljes csoportok jogcím kiterjeszti az URI-töredéket az URL-cím hosszának korlátain túl (jelenleg 6 vagy több csoport). Azt jelzi, hogy az ügyfélnek a Microsoft Graph API-t kell használnia a felhasználó csoportjainak () meghatározásához `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` . |
+| `hasgroups` | Logikai | Ha van, akkor mindig `true` , ha a felhasználó legalább egy csoportban szerepel. A `groups` JWTs implicit engedélyezési folyamatokban használt jogcímek helyett, ha a teljes csoportok jogcím kiterjeszti az URI-töredéket az URL-cím hosszának korlátain túl (jelenleg 6 vagy több csoport). Azt jelzi, hogy az ügyfélnek a Microsoft Graph API-t kell használnia a felhasználó csoportjainak () meghatározásához `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` . |
 | `groups:src1` | JSON-objektum | A nem hosszúságú jogkivonat-kérelmek esetében (lásd a `hasgroups` fentieket), de még mindig túl nagy a tokenhez, a rendszer a felhasználó teljes csoportok listájára mutató hivatkozást tartalmaz. Elosztott jogcímek esetén az SAML-t a jogcím helyett új jogcímként JWTs `groups` . <br><br>**Példa JWT értékre**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | Sztring | Az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat érvényesít, például egy alkalmazás felhasználóját. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Az engedélyezési ellenőrzések biztonságos végrehajtásához használható, például ha a jogkivonat egy erőforrás elérésére szolgál, és kulcsként használható az adatbázis tábláiban. Mivel a tulajdonos mindig szerepel az Azure AD által felmerülő jogkivonatokban, javasoljuk, hogy használja ezt az értéket egy általános célú engedélyezési rendszeren. A tulajdonos azonban egy páros-azonosító – egyedi egy adott alkalmazás-AZONOSÍTÓhoz. Ezért ha egyetlen felhasználó két különböző alkalmazásba jelentkezik be két különböző ügyfél-azonosítóval, akkor ezek az alkalmazások két különböző értéket kapnak a tulajdonos jogcímek számára. Az architektúrától és az adatvédelmi követelményektől függően előfordulhat, hogy ez nem szükséges. Lásd még a `oid` jogcím (amely a bérlőn belüli alkalmazások esetében is változatlan marad). |
 | `oid` | Karakterlánc, GUID | Egy objektum megváltoztathatatlan azonosítója a Microsoft Identity platformon, ebben az esetben egy felhasználói fiók. Emellett az engedélyezési ellenőrzések biztonságos elvégzésére, valamint az adatbázis tábláiban lévő kulcsra is felhasználható. Ez az azonosító egyedileg azonosítja a felhasználót az alkalmazások között – két különböző alkalmazás, amely ugyanazon a felhasználón jelentkezik be, ugyanazokat az értékeket kapja meg a `oid` jogcímben. Így `oid` a Microsoft online szolgáltatások (például a Microsoft Graph) lekérdezéseit is felhasználhatja. A Microsoft Graph `id` egy adott [felhasználói fiókhoz](/graph/api/resources/user)tartozó tulajdonságként adja vissza ezt az azonosítót. Mivel a `oid` lehetővé teszi, hogy több alkalmazás is összekapcsolja a felhasználókat, a `profile` hatókörre azért van szükség, hogy megkapja ezt a jogcímet. Vegye figyelembe, hogy ha egyetlen felhasználó több bérlőn is létezik, akkor a felhasználó minden bérlőn egy másik objektumazonosítót fog tartalmazni – ezeket a rendszer akkor is eltérő fióknak tekinti, ha a felhasználó ugyanazzal a hitelesítő adatokkal jelentkezik be az egyes fiókokba. |
@@ -140,8 +140,8 @@ Annak biztosítása érdekében, hogy a jogkivonat mérete ne haladja meg a HTTP
        }
      }
   ...
- }
- ```
+}
+```
 
 Az `BulkCreateGroups.ps1` [alkalmazás-létrehozási parancsfájlok](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) mappában találhatóak segítségével tesztelheti a túlhasználatos forgatókönyveket.
 
@@ -186,7 +186,7 @@ Nem minden alkalmazásnak kell érvényesíteni a jogkivonatokat. Csak bizonyos 
 
 Ha a fenti forgatókönyvek egyike sem teljesül, az alkalmazás nem fogja kihasználni a jogkivonat érvényesítését, és biztonsági és megbízhatósági kockázatot jelenthet, ha a jogkivonatok érvényességén alapuló döntések történnek.  A nyilvános ügyfelek, például a natív alkalmazások vagy a gyógyfürdők nem élvezik a jogkivonatok érvényesítését – az alkalmazás közvetlenül kommunikál a IDENTITÁSSZOLGÁLTATÓ, így az SSL-védelem biztosítja, hogy a jogkivonatok érvényesek legyenek.
 
- Az API-k és a webalkalmazások csak olyan jogkivonatokat érvényesítenek, amelyeknek az `aud` alkalmazása megfelel az alkalmazásnak; más erőforrásokhoz egyéni jogkivonat-ellenőrzési szabályok tartozhatnak. A Microsoft Graph jogkivonatai például a saját formátumuk miatt nem lesznek érvényesítve a szabályok alapján. Egy másik erőforráshoz tartozó jogkivonatok érvényesítése és elfogadása egy példa a [zavaros helyettes](https://cwe.mitre.org/data/definitions/441.html) problémájára.
+Az API-k és a webalkalmazások csak olyan jogkivonatokat érvényesítenek, amelyeknek az `aud` alkalmazása megfelel az alkalmazásnak; más erőforrásokhoz egyéni jogkivonat-ellenőrzési szabályok tartozhatnak. A Microsoft Graph jogkivonatai például a saját formátumuk miatt nem lesznek érvényesítve a szabályok alapján. Egy másik erőforráshoz tartozó jogkivonatok érvényesítése és elfogadása egy példa a [zavaros helyettes](https://cwe.mitre.org/data/definitions/441.html) problémájára.
 
 Ha az alkalmazásnak ellenőriznie kell egy id_token vagy egy access_token a fentieknek megfelelően, az alkalmazásnak először ellenőriznie kell a jogkivonat aláírását és kiállítóját az OpenID-felderítési dokumentum értékeivel. A dokumentum bérlőtől független verziója például a következő helyen található: [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) .
 
@@ -264,7 +264,7 @@ A [jogkivonat-élettartam konfigurációjának](active-directory-configurable-to
 
 * MaxInactiveTime: Ha a frissítési token nem lett használva a MaxInactiveTime által diktált időn belül, a frissítési token többé nem lesz érvényes.
 * MaxSessionAge: Ha a MaxAgeSessionMultiFactor vagy a MaxAgeSessionSingleFactor értéke nem az alapértelmezett (a visszavonás után) értékre van állítva, akkor az újrahitelesítésre akkor van szükség, amikor a MaxAgeSession * eltelik.
-* Példák:
+* Angol nyelvű Példák:
   * A bérlőnek öt napja van egy MaxInactiveTime, és a felhasználó egy hétig ment a vakáción, így az Azure AD nem kapott új jogkivonat-kérelmet a felhasználótól 7 napon belül. Amikor a felhasználó legközelebb új jogkivonatot kér, megtalálják a frissítési jogkivonatot, és újra meg kell adniuk a hitelesítő adataikat.
   * Egy bizalmas alkalmazásnak egy nap MaxAgeSessionSingleFactor kell lennie. Ha a felhasználó hétfőn és kedden (25 óra elteltével) bejelentkezik, újra kell hitelesítenie.
 
@@ -297,7 +297,7 @@ A *nem jelszó alapú* bejelentkezés olyan esetben, amikor a felhasználó nem 
 >
 > A frissítési tokenek nem lettek érvénytelenítve vagy visszavonva, ha új hozzáférési jogkivonatot és frissítési jogkivonatot kívánnak beolvasni.  Azonban az alkalmazásnak el kell vetnie a régit, amint a használatban van, és lecseréli az újat, mert az új jogkivonat új lejárati ideje van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [ `id_tokens` Az Azure ad-](id-tokens.md)t.
 * További információ az engedélyekről és a hozzájárulásról ( [1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).

@@ -1,7 +1,7 @@
 ---
 title: Azure Performance Diagnostics virtuálisgép-bővítmény a Windowshoz | Microsoft Docs
 description: Bemutatja az Azure Performance Diagnostics virtuálisgép-bővítményét a Windows rendszerhez.
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
 manager: dcscontentpm
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 16af8b8c1258ef7945e88a7af42e86a7bba2003b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9edba575b35613abb8bc3081964a37b838bb358b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963261"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656595"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure teljesítménydiagnosztikai virtuálisgép-bővítmény Windowsra
 
@@ -54,16 +54,16 @@ A következő JSON az Azure Performance Diagnostics virtuálisgép-bővítmény�
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
-            "performanceScenario": "[parameters('performanceScenario')]",
-            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-            "perfCounterTrace": "[parameters('perfCounterTrace')]",
-            "networkTrace": "[parameters('networkTrace')]",
-            "xperfTrace": "[parameters('xperfTrace')]",
-            "storPortTrace": "[parameters('storPortTrace')]",
-            "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
-            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
+          "storageAccountName": "[parameters('storageAccountName')]",
+          "performanceScenario": "[parameters('performanceScenario')]",
+          "traceDurationInSeconds": "[parameter('traceDurationInSeconds')]",
+          "perfCounterTrace": "[parameters('perfCounterTrace')]",
+          "networkTrace": "[parameters('networkTrace')]",
+          "xperfTrace": "[parameters('xperfTrace')]",
+          "storPortTrace": "[parameters('storPortTrace')]",
+          "srNumber": "[parameters('srNumber')]",
+          "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+          "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
         "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
@@ -74,23 +74,23 @@ A következő JSON az Azure Performance Diagnostics virtuálisgép-bővítmény�
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-|   **Név**   |**Érték/példa**|       **Leírás**      |
-|--------------|-------------------|----------------------------|
-|apiVersion|2015-06-15|Az API verziója.
-|közzétevő|Microsoft. Azure. Performance. Diagnostics|A bővítmény közzétevői névterét.
-|típus|AzurePerformanceDiagnostics|A virtuálisgép-bővítmény típusa.
-|typeHandlerVersion|1.0|A bővítmény kezelőjének verziója.
-|performanceScenario|alapvető|Az a teljesítménnyel kapcsolatos forgatókönyv, amelynek az adatai rögzítésére kerül. Az érvényes értékek a következők: **alapszintű**, **vmslow**, **azurefiles**és **Custom**.
-|traceDurationInSeconds|300|A Nyomkövetések időtartama, ha a nyomkövetési beállítások bármelyike ki van választva.
-|perfCounterTrace|P|A teljesítményszámláló nyomkövetésének engedélyezése lehetőség. Az érvényes értékek: **p** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
-|networkTrace|p|A hálózati nyomkövetés engedélyezésének lehetősége. Az érvényes értékek: **n** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
-|xperfTrace|x|A XPerf nyomkövetés engedélyezésének lehetősége. Az érvényes értékek **x** vagy Empty értékűek. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
-|storPortTrace|s|A StorPort nyomkövetés engedélyezésének lehetősége. Az érvényes értékek: **s** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
-|srNumber|123452016365929|A támogatási jegy száma, ha elérhető. Ha nincs, hagyja üresen az értéket.
-|requestTimeUtc|2017-09-28T22:08:53.736 Z|Az aktuális dátum időpontja (UTC). Ha a portált használja a bővítmény telepítéséhez, nem kell megadnia ezt az értéket.
-|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|Egy virtuális gép egyedi azonosítója.
-|storageAccountName|mystorageaccount|A diagnosztikai naplók és eredmények tárolására szolgáló Storage-fiók neve.
-|storageAccountKey|lDuVvxuZB28NNP... hAiRF3voADxLBTcc = =|A Storage-fiók kulcsa.
+| Name | Érték/példa | Description |
+|--|--|--|
+| apiVersion | 2015-06-15 | Az API verziója. |
+| közzétevő | Microsoft. Azure. Performance. Diagnostics | A bővítmény közzétevői névterét. |
+| típus | AzurePerformanceDiagnostics | A virtuálisgép-bővítmény típusa. |
+| typeHandlerVersion | 1,0 | A bővítmény kezelőjének verziója. |
+| performanceScenario | alapvető | Az a teljesítménnyel kapcsolatos forgatókönyv, amelynek az adatai rögzítésére kerül. Az érvényes értékek a következők: **alapszintű**, **vmslow**, **azurefiles** és **Custom**. |
+| traceDurationInSeconds | 300 | A Nyomkövetések időtartama, ha a nyomkövetési beállítások bármelyike ki van választva. |
+| perfCounterTrace | P | A teljesítményszámláló nyomkövetésének engedélyezése lehetőség. Az érvényes értékek: **p** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket. |
+| networkTrace | p | A hálózati nyomkövetés engedélyezésének lehetősége. Az érvényes értékek: **n** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket. |
+| xperfTrace | x | A XPerf nyomkövetés engedélyezésének lehetősége. Az érvényes értékek **x** vagy Empty értékűek. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket. |
+| storPortTrace | s | A StorPort nyomkövetés engedélyezésének lehetősége. Az érvényes értékek: **s** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket. |
+| srNumber | 123452016365929 | A támogatási jegy száma, ha elérhető. Ha nincs, hagyja üresen az értéket. |
+| requestTimeUtc | 2017-09-28T22:08:53.736 Z | Az aktuális dátum időpontja (UTC). Ha a portált használja a bővítmény telepítéséhez, nem kell megadnia ezt az értéket. |
+| resourceId | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} | Egy virtuális gép egyedi azonosítója. |
+| storageAccountName | mystorageaccount | A diagnosztikai naplók és eredmények tárolására szolgáló Storage-fiók neve. |
+| storageAccountKey | lDuVvxuZB28NNP... hAiRF3voADxLBTcc = = | A Storage-fiók kulcsa. |
 
 ## <a name="install-the-extension"></a>A bővítmény telepítése
 
@@ -100,10 +100,10 @@ Az alábbi utasításokat követve telepítse a bővítményt a Windows rendszer
 2. Válassza ki azt a virtuális gépet, amelyre telepíteni kívánja ezt a bővítményt.
 
     ![Képernyőkép a Azure Portalről, a virtuális gépek kiemelésével](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
-3. Válassza ki a **bővítmények** panelt, és válassza a **Hozzáadás**lehetőséget.
+3. Válassza ki a **bővítmények** panelt, és válassza a **Hozzáadás** lehetőséget.
 
     ![Képernyőkép a bővítmények panelről, a Hozzáadás Kiemelt](media/performance-diagnostics-vm-extension/select-extensions.png)
-4. Válassza az **Azure Performance Diagnostics**elemet, tekintse át a használati feltételeket, majd válassza a **Létrehozás**lehetőséget.
+4. Válassza az **Azure Performance Diagnostics** elemet, tekintse át a használati feltételeket, majd válassza a **Létrehozás** lehetőséget.
 
     ![Képernyőkép az új erőforrás-képernyőről, az Azure Performance Diagnostics kiemelve](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
 5. Adja meg a telepítés paramétereinek értékeit, majd kattintson az **OK** gombra a bővítmény telepítéséhez. További információ a támogatott forgatókönyvekről: [a PerfInsights használata](how-to-use-perfinsights.md#supported-troubleshooting-scenarios). 
@@ -117,10 +117,11 @@ Az alábbi utasításokat követve telepítse a bővítményt a Windows rendszer
     > A bővítmény a kiépítés sikerességét követően fut. Az alapszintű forgatókönyvhöz legalább két percet vesz igénybe. Más esetekben a telepítés során megadott időtartamon keresztül fut.
 
 ## <a name="remove-the-extension"></a>A bővítmény eltávolítása
+
 A bővítmény virtuális gépről való eltávolításához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza ki azt a virtuális gépet, amelyről el szeretné távolítani ezt a bővítményt, majd válassza a **bővítmények** panelt. 
-2. Válassza a (**..**.) lehetőséget a teljesítmény diagnosztikai bővítmény bejegyzéséhez a listából, majd válassza az **Eltávolítás**lehetőséget.
+2. Válassza a (**..**.) lehetőséget a teljesítmény diagnosztikai bővítmény bejegyzéséhez a listából, majd válassza az **Eltávolítás** lehetőséget.
 
     ![Képernyőkép a bővítmények panelről, az Eltávolítás kiemelve](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
 
@@ -128,9 +129,10 @@ A bővítmény virtuális gépről való eltávolításához kövesse az alábbi
     > Kiválaszthatja a bővítmény bejegyzését is, és az **Eltávolítás** lehetőséget is kiválaszthatja.
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
+
 Az Azure-beli virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. Az előző szakaszban részletezett JSON-sémát Azure Resource Manager sablonban lehet használni. Ezzel futtatja az Azure Performance Diagnostics virtuálisgép-bővítményt egy Azure Resource Manager sablon központi telepítése során. Példa a sablonra:
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -144,11 +146,11 @@ Az Azure-beli virtuálisgép-bővítmények Azure Resource Manager-sablonokkal i
       "defaultValue": "southcentralus"
     },
     "storageAccountName": {
-      "type": "securestring"
+      "type": "securestring",
       "defaultValue": "yourStorageAccount"
     },
     "storageAccountKey": {
-      "type": "securestring"
+      "type": "securestring",
       "defaultValue": "yourStorageAccountKey"
     },
     "performanceScenario": {
@@ -159,10 +161,10 @@ Az Azure-beli virtuálisgép-bővítmények Azure Resource Manager-sablonokkal i
       "type": "string",
       "defaultValue": ""
     },
-    "traceDurationInSeconds": {
-      "type": "int",
+  "traceDurationInSeconds": {
+    "type": "int",
     "defaultValue": 300
-    },
+  },
     "perfCounterTrace": {
       "type": "string",
       "defaultValue": "p"
@@ -196,16 +198,16 @@ Az Azure-beli virtuálisgép-bővítmények Azure Resource Manager-sablonokkal i
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
-            "performanceScenario": "[parameters('performanceScenario')]",
-            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-            "perfCounterTrace": "[parameters('perfCounterTrace')]",
-            "networkTrace": "[parameters('networkTrace')]",
-            "xperfTrace": "[parameters('xperfTrace')]",
-            "storPortTrace": "[parameters('storPortTrace')]",
-            "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
-            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
+          "storageAccountName": "[parameters('storageAccountName')]",
+          "performanceScenario": "[parameters('performanceScenario')]",
+          "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+          "perfCounterTrace": "[parameters('perfCounterTrace')]",
+          "networkTrace": "[parameters('networkTrace')]",
+          "xperfTrace": "[parameters('xperfTrace')]",
+          "storPortTrace": "[parameters('storPortTrace')]",
+          "srNumber": "[parameters('srNumber')]",
+          "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+          "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
         "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"
@@ -217,6 +219,7 @@ Az Azure-beli virtuálisgép-bővítmények Azure Resource Manager-sablonokkal i
 ```
 
 ## <a name="powershell-deployment"></a>A PowerShell telepítése
+
 A `Set-AzVMExtension` parancs használatával üzembe helyezhető az Azure Performance Diagnostics virtuálisgép-bővítmény egy meglévő virtuális gépre.
 
 PowerShell
@@ -241,7 +244,7 @@ A PerfInsights eszköz különböző naplókat, konfigurációkat és diagnoszti
 
 ## <a name="view-and-share-the-results"></a>Az eredmények megtekintése és megosztása
 
-A bővítmény kimenete olyan zip-fájlban található, amely fel van töltve a telepítés során megadott Storage-fiókba, és a megosztott [hozzáférési aláírások (SAS)](../../storage/common/storage-sas-overview.md)használatával 30 napig meg van osztva. Ez a zip-fájl tartalmazza a diagnosztikai naplókat, valamint az eredményeket és javaslatokat tartalmazó jelentést. A kimeneti zip-fájlra mutató SAS-hivatkozás egy *zipfilename*_saslink.txt nevű szövegfájlban található a **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **mappa alatt. Bárki, aki rendelkezik ezzel a hivatkozással, letöltheti a zip-fájlt.
+A bővítmény kimenete olyan zip-fájlban található, amely fel van töltve a telepítés során megadott Storage-fiókba, és a megosztott [hozzáférési aláírások (SAS)](../../storage/common/storage-sas-overview.md)használatával 30 napig meg van osztva. Ez a zip-fájl tartalmazza a diagnosztikai naplókat, valamint az eredményeket és javaslatokat tartalmazó jelentést. A kimeneti zip-fájlra mutató SAS-hivatkozás egy *zipfilename* _saslink.txt nevű szövegfájlban található a **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version>** mappa alatt. Bárki, aki rendelkezik ezzel a hivatkozással, letöltheti a zip-fájlt.
 
 Ha segítségre van szükség a támogatási szakembernek a támogatási jegyén való munkához, a Microsoft ezt az SAS-hivatkozást használja a diagnosztikai adatai letöltéséhez.
 
@@ -263,4 +266,4 @@ A zip-fájlt közvetlenül a portálról is letöltheti a bővítmény kiválasz
 
     `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>`
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése** lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

@@ -8,17 +8,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c77da8252fb3dcb2672a50ec75f676e18dd31da
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85080871"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652330"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Dokumentum-extrakciós kognitív képesség
 
 > [!IMPORTANT] 
-> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs portál vagy .NET SDK-támogatás.
+> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs portál vagy .NET SDK-támogatás.
 
 A **dokumentum-kivonási** képesség Kinyeri a tartalmat egy fájlból a dúsítási folyamaton belül. Ez lehetővé teszi, hogy kihasználja az olyan dokumentum-kivonási lépést, amely általában a készségkészlet végrehajtása előtt történik, amelyet más szakismeretek is létrehozhatnak.
 
@@ -34,13 +34,13 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bevitelek            | Megengedett értékek | Leírás |
+| Bevitelek | Megengedett értékek | Description |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | Olyan `default` fájlok kibontására van beállítva, amelyek nem tiszta szöveg vagy JSON formátumúak. Állítsa a (z) értékre `text` az egyszerű szövegfájlok teljesítményének növelése érdekében. Állítsa be a `json` elemet a következőre: strukturált tartalom kinyerése JSON-fájlokból Ha `parsingMode` nincs explicit módon definiálva, akkor a következőre lesz beállítva: `default` . |
 | `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Állítsa be értékre `contentAndMetadata` az összes metaadat és szöveges tartalom kinyeréséhez minden fájlból. Állítsa be, hogy `allMetadata` csak a [tartalomtípus-specifikus metaadatokat](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) (például a csak a. png fájlok egyedi metaadatait) bontsa ki. Ha `dataToExtract` nincs explicit módon definiálva, akkor a következőre lesz beállítva: `contentAndMetadata` . |
 | `configuration` | Lásd alább. | A dokumentumok kinyerésének módját módosító választható paraméterek szótára. A támogatott konfigurációs tulajdonságok leírását az alábbi táblázat tartalmazza. |
 
-| Konfigurációs paraméter   | Megengedett értékek | Leírás |
+| Konfigurációs paraméter   | Megengedett értékek | Description |
 |-------------------------|----------------|-------------|
 | `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Állítsa az értékre `none` , hogy figyelmen kívül hagyja az adatkészletben lévő beágyazott képeket vagy képfájlokat. Ez az alapértelmezett beállítás. <br/>Ha a [képelemzést kognitív képességekkel szeretné használni](cognitive-search-concept-image-scenarios.md), úgy állítsa be, hogy `generateNormalizedImages` a készség a dokumentum repedésének részeként normalizált rendszerképekből álló tömböt hozzon létre. Ehhez a művelethez a és a értékre kell állítani `parsingMode` `default` `dataToExtract` `contentAndMetadata` . A normalizált kép olyan további feldolgozásra utal, amely egységes képkimenetet, méretet és elforgatást eredményez, így a konzisztens renderelés elősegítése, ha képeket tartalmaz a vizuális keresési eredményekben (például egy gráf vezérlőelemben a [JFK bemutatóban](https://github.com/Microsoft/AzureSearch_JFK_Files)látható azonos méretű fényképeket). Ez az információ minden rendszerképhez létrejön, ha ezt a beállítást használja.  <br/>Ha a értékre van állítva `generateNormalizedImagePerPage` , a PDF-fájlokat a rendszer a beágyazott képek kibontása helyett eltérően fogja kezelni, és ennek megfelelően a rendszer az egyes lapokat képként jeleníti meg.  A nem PDF típusú fájltípusok ugyanúgy lesznek kezelve, mint ha `generateNormalizedImages` be van állítva.
 | `normalizedImageMaxWidth` | 50-10000 közötti egész szám | A generált normalizált képek maximális szélessége (képpontban). Az alapértelmezett érték 2000. | 
@@ -50,7 +50,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 > A normalizált képek maximális szélességének és magasságának 2000 képpont alapértéke az [OCR-képesség](cognitive-search-skill-ocr.md) és a [képelemzési képesség](cognitive-search-skill-image-analysis.md)által támogatott maximális méretektől függ. Az [OCR-képesség](cognitive-search-skill-ocr.md) legfeljebb 4200-es szélességet és magasságot támogat a nem angol nyelvű és a 10000 angol nyelv esetén.  Ha csökkenti a maximális korlátot, a feldolgozás a készségkészlet-definíciótól és a dokumentumok nyelvétől függően meghiúsulhat a nagyobb rendszerképeken. 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név     | Leírás |
+| Bemeneti név     | Description |
 |--------------------|-------------|
 | `file_data` | Az a fájl, amelyből a tartalmat ki kell olvasni. |
 
@@ -73,7 +73,7 @@ A fájl hivatkozási objektuma háromféleképpen hozható létre:
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve    | Leírás |
+| Kimenet neve    | Description |
 |--------------|-------------|
 | `content` | A dokumentum szöveges tartalma. |
 | `normalized_images`   | Ha a értéke `imageAction` ettől eltérő értékre van állítva `none` , az új *normalized_images* mező képek tömbjét fogja tartalmazni. Az egyes rendszerképek kimeneti formátumával kapcsolatos további részletekért tekintse meg [a képek kinyerésének dokumentációját](cognitive-search-concept-image-scenarios.md) . |

@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 178d3896fe8d063855a734f3f0fe6c489b0ec1fc
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074668"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97651973"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>ADAL a MSAL áttelepítési útmutató Android rendszerhez
 
@@ -89,7 +89,7 @@ Ha jelenleg a ADAL-t használja, és nem kell növekményes beleegyeznie, akkor 
 > [!CAUTION]
 > Nem lehet beállítani mindkét hatókört és egy erőforrás-azonosítót. A mindkettő beállítására tett kísérlet a következő eredményt fogja eredményezni: `IllegalArgumentException` .
 
- Ez azt eredményezi, hogy ugyanazt a v1-es viselkedést fogja használni. Az alkalmazás regisztrálásához szükséges összes engedélyt a felhasználó az első interakció során kéri le.
+Ez azt eredményezi, hogy ugyanazt a v1-es viselkedést fogja használni. Az alkalmazás regisztrálásához szükséges összes engedélyt a felhasználó az első interakció során kéri le.
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>Csak a szükséges engedélyek hitelesítése és kérése
 
@@ -131,13 +131,13 @@ Ha olyan szolgáltatót próbál meg használni, amely nem ismeri a Microsoftot,
 ### <a name="logging"></a>Naplózás
 Mostantól a konfiguráció részeként deklaratív módon konfigurálhatja a naplózást, például:
 
- ```
- "logging": {
-    "pii_enabled": false,
-    "log_level": "WARNING",
-    "logcat_enabled": true
-  }
-  ```
+```json
+"logging": {
+  "pii_enabled": false,
+  "log_level": "WARNING",
+  "logcat_enabled": true
+}
+```
 
 ## <a name="migrate-from-userinfo-to-account"></a>Migrálás a UserInfo-ből a fiókba
 
@@ -147,7 +147,7 @@ Vegyünk egy bankszámlát. Több fiókkal is rendelkezhet több pénzügyi int�
 
 Az analógia, például a pénzügyi intézmény fiókjai esetében a Microsoft Identity platform fiókjai a hitelesítő adatok használatával érhetők el. Ezek a hitelesítő adatok regisztrálva vannak a-ban vagy a-ben, a Microsoft számára. Vagy a Microsoft által a szervezet nevében.
 
-Ha a Microsoft Identity platform különbözik egy pénzügyi intézménytől, ebben az analógiában az, hogy a Microsoft Identity platform olyan keretrendszert biztosít, amely lehetővé teszi, hogy a felhasználók egy fiókot és a hozzájuk tartozó hitelesítő adatokat használják a több személyhez és szervezethez tartozó erőforrások eléréséhez. Ez olyan, mint egy bank által kibocsátott kártya, még egy másik pénzügyi intézmény. Ez azért működik, mert a szóban forgó összes szervezet a Microsoft Identity platformot használja, amely lehetővé teszi, hogy az egyik fiók több szervezet között legyen használatban. Íme egy példa:
+Ha a Microsoft Identity platform különbözik egy pénzügyi intézménytől, ebben az analógiában az, hogy a Microsoft Identity platform olyan keretrendszert biztosít, amely lehetővé teszi, hogy a felhasználók egy fiókot és a hozzájuk tartozó hitelesítő adatokat használják a több személyhez és szervezethez tartozó erőforrások eléréséhez. Ez olyan, mint egy bank által kibocsátott kártya, még egy másik pénzügyi intézmény. Ez azért működik, mert a szóban forgó összes szervezet a Microsoft Identity platformot használja, amely lehetővé teszi, hogy az egyik fiók több szervezet között legyen használatban. Bemutatunk egy példát:
 
 A Sam Contoso.com működik, de a Fabrikam.com-hoz tartozó Azure-beli virtuális gépeket kezeli. Ahhoz, hogy a Sam felügyelje a fabrikam virtuális gépeket, engedélyezni kell az elérését. Ez a hozzáférés a Sam-fiók Fabrikam.com való hozzáadásával, valamint a fióknak a virtuális gépekkel való együttműködését lehetővé tevő szerepkör megadásával adható meg. Ezt a Azure Portal fogja elvégezni.
 
@@ -237,7 +237,7 @@ public interface SilentAuthenticationCallback {
 A ADAL egyetlen kivételt `AuthenticationException` tartalmaz, amely magában foglal egy metódust az `ADALError` enumerálás értékének beolvasásához.
 A MSAL-ben van egy kivételek hierarchiája, és mindegyikhez tartozik egy adott hibakód.
 
-| Kivétel                                        | Leírás                                                         |
+| Kivétel                                        | Description                                                         |
 |--------------------------------------------------|---------------------------------------------------------------------|
 | `MsalArgumentException`                          | Ha egy vagy több bemeneti argumentum érvénytelen.                 |
 | `MsalClientException`                            | Kidobás, ha a hiba ügyféloldali.                                 |

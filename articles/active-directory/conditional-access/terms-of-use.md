@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6e8731312ee43930e0f2abcf81228c21bebfdb1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509988"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653724"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Használati feltételek Azure Active Directory
 
@@ -117,7 +117,7 @@ Ha véglegesítette a használati feltételeket tartalmazó dokumentumot, a köv
 
    ![Egy házirend-sablon kiválasztására szolgáló feltételes hozzáférés legördülő lista](./media/terms-of-use/conditional-access-templates.png)
 
-   | Sablon | Leírás |
+   | Sablon | Description |
    | --- | --- |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes vendég számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes vendég és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően szükség lehet a kijelentkezésre és a bejelentkezésre. |
    | **Hozzáférés a felhőalapú alkalmazásokhoz az összes felhasználó számára** | A rendszer létrehoz egy feltételes hozzáférési szabályzatot az összes felhasználó és minden felhőalapú alkalmazás számára. Ez a házirend hatással van a Azure Portalra. A létrehozást követően ki kell jelentkeznie, és be kell jelentkeznie. |
@@ -238,8 +238,8 @@ Szerkesztheti a használati feltételek részleteit, de nem módosíthatja a meg
 2.  Válassza ki a szerkeszteni kívánt használati feltételeket.
 3.  Kattintson a **feltételek szerkesztése** elemre.
 4.  Ahhoz a nyelvhez, amelyre frissíteni szeretne egy új verziót, kattintson a művelet oszlopban az **Update (frissítés** ) elemre.
- 
-     ![A használati feltételek ablaktábla neve és kibontása lehetőségek megjelenítése](./media/terms-of-use/edit-terms-use.png)
+
+    ![A használati feltételek ablaktábla neve és kibontása lehetőségek megjelenítése](./media/terms-of-use/edit-terms-use.png)
 
 5.  A jobb oldali ablaktáblán töltse fel a PDF-fájlt az új verzióra.
 6.  Itt is **szükség** van egy váltási lehetőségre, ha azt szeretné, hogy a felhasználók a következő bejelentkezéskor fogadják el ezt az új verziót. Ha azt szeretné, hogy a felhasználók újra elfogadják a feltételes hozzáférési szabályzatban meghatározott erőforrásokhoz való hozzáférést, akkor a rendszer kéri, hogy fogadja el ezt az új verziót. Ha nem kéri a felhasználóktól az újrafogadást, az előző beleegyezésük továbbra is naprakész marad, és csak azokat az új felhasználókat fogja látni, akik még nem adták meg a hozzájárulást, vagy amelyek érvényessége lejár, megjelenik az új verzió.
@@ -295,10 +295,10 @@ A támogatott platformok és szoftverek listáját itt találja.
 > [!div class="mx-tableFixed"]
 > |  | iOS | Android | Windows 10 | Egyéb |
 > | --- | --- | --- | --- | --- |
-> | **Natív alkalmazás** | Igen | Igen | Igen |  |
-> | **Microsoft Edge** | Igen | Igen | Igen |  |
-> | **Internet Explorer** | Igen | Igen | Igen |  |
-> | **Chrome (kiterjesztéssel)** | Igen | Igen | Igen |  |
+> | **Natív alkalmazás** | Igen | Igen | Yes |  |
+> | **Microsoft Edge** | Igen | Igen | Yes |  |
+> | **Internet Explorer** | Igen | Igen | Yes |  |
+> | **Chrome (kiterjesztéssel)** | Igen | Igen | Yes |  |
 
 Az eszközönkénti használati feltételek a következő korlátozásokkal rendelkeznek:
 
@@ -429,6 +429,6 @@ A: Ha az Azure AD használati feltételeit és az [Intune használati](/intune/t
 **K: milyen végpontokat használnak a használati feltételek a hitelesítéshez?**<br />
 A: a Használati feltételek a következő végpontokat használja a hitelesítéshez: https://tokenprovider.termsofuse.identitygovernance.azure.com és https://account.activedirectory.windowsazure.com . Ha a szervezete rendelkezik a beléptetéshez szükséges URL-címek listájával, ezeket a végpontokat fel kell vennie az engedélyezési listára, valamint a bejelentkezéshez használt Azure AD-végpontokat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt](require-tou.md)

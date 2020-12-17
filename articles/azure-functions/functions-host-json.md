@@ -3,12 +3,12 @@ title: host.jsAzure Functions 2. x esetén
 description: A v2 futtatókörnyezettel rendelkező fájl Azure Functions host.jsdokumentációja.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746080"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654812"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x és újabb verziók – host.json referencia 
 
@@ -129,7 +129,8 @@ A (z) 2. x + verzióban található fájlon a következő minta *host.js* minden
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 
@@ -150,7 +151,7 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 > [!NOTE]
 > A napló mintavételezése miatt előfordulhat, hogy egyes végrehajtások nem jelennek meg a Application Insights figyelő paneljén. A naplók mintavételezésének elkerüléséhez adja hozzá `excludedTypes: "Request"` a értéket a következőhöz: `samplingSettings` .
 
-| Tulajdonság | Alapértelmezett | Leírás |
+| Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- | 
 | samplingSettings | n/a | Lásd: [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | enableLiveMetrics | true | Élő metrikák gyűjtésének engedélyezése. |
@@ -164,7 +165,7 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 
 További információ ezekről a beállításokról: [mintavétel Application Insightsban](../azure-monitor/app/sampling.md). 
 
-|Tulajdonság | Alapértelmezett | Leírás |
+|Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- | 
 | isEnabled | true | Engedélyezheti vagy letilthatja a mintavételezést. | 
 | maxTelemetryItemsPerSecond | 20 | Az egyes kiszolgálók gazdagépén másodpercenként naplózott telemetria-elemek megcélzott száma. Ha az alkalmazás számos gazdagépen fut, csökkentse ezt az értéket, hogy az a forgalom teljes célján belül maradjon. | 
@@ -180,7 +181,7 @@ További információ ezekről a beállításokról: [mintavétel Application In
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
 
-|Tulajdonság | Alapértelmezett | Leírás |
+|Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | Engedélyezheti vagy letilthatja a http-eseményindítók kiterjesztett HTTP-kérelmi információit: bejövő kérelmek korrelációs fejlécei, többtényezős kulcsok támogatása, HTTP-metódus, elérési út és válasz. |
 | enableW3CDistributedTracing | true | Engedélyezheti vagy letilthatja a W3C elosztott nyomkövetési protokoll támogatását (és bekapcsolja az örökölt korrelációs sémát). Alapértelmezés szerint engedélyezve `enableHttpTriggerExtendedInfoCollection` , ha igaz. Ha `enableHttpTriggerExtendedInfoCollection` a értéke false (hamis), ez a jelző csak a kimenő kérelmekre vonatkozik, nem a bejövő kérelmekre. |
@@ -190,7 +191,7 @@ További információ ezekről a beállításokról: [mintavétel Application In
 
 A pillanatképekkel kapcsolatos további információkért tekintse meg a [.NET-alkalmazásokban előforduló kivételek hibakeresését](../azure-monitor/app/snapshot-debugger.md) ismertető témakört, valamint a [Application Insights Snapshot Debugger vagy Pillanatképek megtekintését engedélyező problémákat](../azure-monitor/app/snapshot-debugger-troubleshoot.md)
 
-|Tulajdonság | Alapértelmezett | Leírás |
+|Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | A Application Insights Snapshot Debugger szolgáltatáshoz való kapcsolódáshoz használt végpont. Ha NULL, a rendszer egy alapértelmezett végpontot használ. |
 | captureSnapshotMemoryWeight | 0,5 | A folyamat aktuális memória-méretéhez megadott súlyozás, ha a rendszer ellenőrzi, hogy van-e elég memória a pillanatkép elvégzéséhez. A várt érték nagyobb, mint 0 megfelelő tört (0 < CaptureSnapshotMemoryWeight < 1). |
@@ -234,7 +235,7 @@ Egyéni kezelő konfigurációs beállításai. További információ: [Azure fu
 }
 ```
 
-|Tulajdonság | Alapértelmezett | Leírás |
+|Tulajdonság | Alapértelmezett | Description |
 | --------- | --------- | --------- |
 | defaultExecutablePath | n/a | A végrehajtható fájl, amely az egyéni kezelői folyamatként indul el. Az egyéni kezelők használata kötelező beállítás, és az értéke a Function alkalmazás gyökeréhez képest relatív. |
 | workingDirectory | *function alkalmazás gyökere* | Az a munkakönyvtár, amelyben el kell indítani az egyéni kezelő folyamatát. Ez egy opcionális beállítás, amely értéke a Function alkalmazás gyökeréhez képest relatív. |
@@ -275,7 +276,7 @@ Az összes függvény időtúllépési időtartamát jelzi. A TimeSpan karakterl
 
 | Csomag típusa | Alapértelmezett (min.) | Maximum (min.) |
 | -- | -- | -- |
-| Használat | 5 | 10 |
+| Felhasználás | 5 | 10 |
 | <sup>1</sup> . prémium | 30 | -1 (nem kötött)<sup>2</sup> |
 | Dedikált (App Service) | 30 | -1 (nem kötött)<sup>2</sup> |
 
@@ -304,7 +305,7 @@ A [gazdagép állapotának figyelésére](https://github.com/Azure/azure-webjobs
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------| 
 |engedélyezve|true|Megadja, hogy engedélyezve van-e a szolgáltatás. | 
 |healthCheckInterval|10 másodperc|Az időszakos háttér állapotának ellenőrzése közötti időtartam. | 
@@ -336,7 +337,7 @@ A Function alkalmazás naplózási viselkedését szabályozza, beleértve a App
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Meghatározza, hogy a fájlok naplózása milyen szintű legyen engedélyezve.  A lehetőségek a következők:, `never` `always` `debugOnly` . |
 |Naplózási szint|n/a|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ezzel a beállítással szűrheti az adott függvények naplózását. További információ: [naplózási szűrés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering) a ASP.net Core dokumentációjában. |
@@ -359,7 +360,7 @@ Ez a beállítás a [naplózás](#logging)gyermeke. A konzol naplózását vezé
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------| 
 |isEnabled|hamis|Engedélyezheti vagy letilthatja a konzol naplózását.| 
 
@@ -393,7 +394,7 @@ Az [újrapróbálkozási házirend](./functions-bindings-error-pages.md#retry-po
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------| 
 |stratégia|null|Kötelező. A használt újrapróbálkozási stratégia. Az érvényes értékek a következők: `fixedDelay` vagy `exponentialBackoff` .|
 |Maxretrycount csak|null|Kötelező. Az újrapróbálkozások maximális száma egy függvény végrehajtásakor. `-1` azt jelenti, hogy határozatlan ideig próbálkozik.|
@@ -425,7 +426,7 @@ Az egyszeri zárolási viselkedés konfigurációs beállításai. További info
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Az az időszak, ameddig a rendszer a működési szintet zárolja. A zárolások automatikus megújítása.| 
 |listenerLockPeriod|00:01:00|A figyelő zárolásának időtartama.| 
@@ -447,6 +448,16 @@ A módosításokat figyelő [megosztott kód-címtárak](functions-reference-csh
 }
 ```
 
+## <a name="watchfiles"></a>watchFiles
+
+Egy vagy több olyan fájl nevét tartalmazó tömb, amelyet az alkalmazás újraindítását igénylő módosítások esetében figyelnek.  Ez garantálja, hogy ha a fájlokban megváltoznak a kód, a rendszer a frissítéseket a függvények által felvette.
+
+```json
+{
+    "watchFiles": [ "myFile.txt" ]
+}
+```
+
 ## <a name="override-hostjson-values"></a>Értékek felülbírálása host.js
 
 Előfordulhat, hogy olyan példányok vannak, amelyekben egy adott környezethez tartozó host.jsban szeretné konfigurálni vagy módosítani a megadott beállításokat, anélkül, hogy a host.jsmagát a fájlra módosítaná.  Az értékek meghatározott host.jsfelülbírálásával egyenértékű értéket hozhat létre az alkalmazás-beállításként. Ha a futtatókörnyezet megkeresi az alkalmazás formátumát `AzureFunctionsJobHost__path__to__setting` , felülbírálja az egyenértékű host.jsa `path.to.setting` JSON-ban található beállításban. Ha alkalmazás-beállításként van kifejezve, a `.` JSON-hierarchia jelzésére használt pont () egy dupla aláhúzás () karakterrel lesz helyettesítve `__` . 
@@ -464,7 +475,7 @@ Tegyük fel például, hogy helyileg futtatta az alkalmazás-betekintési mintav
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató a host.jsfájl frissítéséhez](functions-reference.md#fileupdate)

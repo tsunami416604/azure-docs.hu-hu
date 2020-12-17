@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ed36948faf6fe12467128a57af634e52ee457180
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 71e3bf429c7b8d3f4f8fe205c05b0701732fdef9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584987"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653809"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Több-bérlős Azure Active Directory bejelentkezésének beállítása egyéni házirendek használatával Azure Active Directory B2C
 
@@ -32,19 +32,7 @@ ms.locfileid: "97584987"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-::: zone pivot="b2c-user-flow"
-
-* [Hozzon létre egy felhasználói folyamatot](tutorial-create-user-flows.md), amellyel a felhasználók regisztrálhatnak és bejelentkezhetnek az alkalmazásba.
-* Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást az Azure Active Directory B2C-bérlőhöz](add-web-api-application.md).
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* Hajtsa végre az [első lépések az egyéni házirendek Active Directory B2Cban](custom-policy-get-started.md)című témakör lépéseit.
-* Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást az Azure Active Directory B2C-bérlőhöz](add-web-api-application.md).
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést a Azure Active Directory (Azure AD) több-bérlős végpontját használó felhasználók számára. Ez lehetővé teszi, hogy több Azure AD-bérlő felhasználói jelentkezzenek be Azure AD B2C használatával, anélkül, hogy az egyes bérlők számára kellene konfigurálnia az identitás-szolgáltatót. Ezeknek a bérlőknek a vendég tagjai azonban nem tudnak **majd** bejelentkezni. Ehhez [külön kell konfigurálnia az egyes bérlőket](identity-provider-azure-ad-single-tenant.md).
 

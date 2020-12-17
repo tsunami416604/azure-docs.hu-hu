@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functionseke
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167797"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655815"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure-függvények fejlesztése a Visual Studióval  
 
@@ -42,7 +42,7 @@ Hacsak másként nincs jelezve, az eljárások és a példák a Visual Studio 20
 
 ### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Tekintse meg az eszközök verzióját a Visual Studio 2017-ben
 
-1. A **Tools (eszközök** ) menüben válassza a **bővítmények és frissítések**lehetőséget. Bontsa ki a **telepített**  >  **eszközök**csomópontot, majd válassza a **Azure functions és a web Jobs-eszközök**elemet.
+1. A **Tools (eszközök** ) menüben válassza a **bővítmények és frissítések** lehetőséget. Bontsa ki a **telepített**  >  **eszközök** csomópontot, majd válassza a **Azure functions és a web Jobs-eszközök** elemet.
 
     ![A functions Tools verziójának ellenőrzése](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -52,15 +52,15 @@ Hacsak másként nincs jelezve, az eljárások és a példák a Visual Studio 20
 
 ### <a name="update-your-tools-in-visual-studio-2017"></a>Eszközök frissítése a Visual Studio 2017-ban
 
-1. A **bővítmények és frissítések** párbeszédpanelen bontsa ki a **frissítések**  >  **Visual Studio Marketplace**, majd a **Azure functions és a webjobs-eszközök** elemet, és válassza a **frissítés**lehetőséget.
+1. A **bővítmények és frissítések** párbeszédpanelen bontsa ki a **frissítések**  >  **Visual Studio Marketplace**, majd a **Azure functions és a webjobs-eszközök** elemet, és válassza a **frissítés** lehetőséget.
 
     ![A functions Tools verziójának frissítése](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
-1. Miután letöltötte az eszközök frissítését, válassza a **Bezárás**lehetőséget, majd a Visual Studió bezárásával aktiválja az eszközök frissítését a VSIX Installer használatával.
+1. Miután letöltötte az eszközök frissítését, válassza a **Bezárás** lehetőséget, majd a Visual Studió bezárásával aktiválja az eszközök frissítését a VSIX Installer használatával.
 
 1. A VSIX-telepítőben válassza a **módosítás** lehetőséget az eszközök frissítéséhez. 
 
-1. A frissítés befejezése után kattintson a **Bezárás**gombra, majd indítsa újra a Visual studiót.
+1. A frissítés befejezése után kattintson a **Bezárás** gombra, majd indítsa újra a Visual studiót.
 
 > [!NOTE]  
 > A Visual Studio 2019-es és újabb verzióiban a Azure Functions Tools bővítmény a Visual Studio részeként frissül.  
@@ -86,15 +86,27 @@ A Visual Studio nem tölti fel automatikusan a local.settings.jsbeállításait 
 
 A kód emellett környezeti változókként is beolvashatja a Function app Settings értékeit. További információ: [környezeti változók](functions-dotnet-class-library.md#environment-variables).
 
+## <a name="configure-your-build-output-settings"></a>A Build kimeneti beállításainak konfigurálása
+
+Azure Functions projektek létrehozásakor a build-eszközök optimalizálja a kimenetet, így a függvények futtatókörnyezetének egyetlen példánya is megmarad. Az eredmény egy optimalizált Build, amely annyi helyet takarít meg, amennyire csak lehetséges. Ha azonban a projekt egyik szerelvényének újabb verziójára helyez át, előfordulhat, hogy a build-eszközök nem tudják, hogy ezeket a szerelvényeket meg kell őrizni. Annak ellenőrzéséhez, hogy ezek a szerelvények megmaradnak-e az optimalizálási folyamat során, megadhatja őket `FunctionsPreservedDependencies` a projekt (. csproj) fájljában található elemek használatával:
+
+```xml
+  <ItemGroup>
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Extensions.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Features.dll" />
+  </ItemGroup>
+```
+
 ## <a name="configure-the-project-for-local-development"></a>A projekt konfigurálása helyi fejlesztéshez
 
 A functions futtatókörnyezet belsőleg használ egy Azure Storage-fiókot. A HTTP és webhookok kivételével az összes trigger típushoz állítsa a `Values.AzureWebJobsStorage` kulcsot egy érvényes Azure Storage-fiók kapcsolati karakterláncára. A Function alkalmazás az [Azure Storage emulatort](../storage/common/storage-use-emulator.md) is használhatja a `AzureWebJobsStorage` projekthez szükséges kapcsolatbeállításokat. Az emulátor használatához állítsa a értékét a következőre `AzureWebJobsStorage` : `UseDevelopmentStorage=true` . Az üzembe helyezés előtt módosítsa a beállítást egy tényleges Storage-fiók kapcsolódási karakterláncára.
 
 A Storage-fiók kapcsolódási karakterláncának beállítása:
 
-1. A Visual Studióban válassza **View**a  >  **Cloud Explorer**megtekintése lehetőséget.
+1. A Visual Studióban válassza a  >  **Cloud Explorer** megtekintése lehetőséget.
 
-2. A **Cloud Explorerben**bontsa ki a **Storage-fiókok**csomópontot, majd válassza ki a Storage-fiókját. A **Tulajdonságok** lapon másolja az **elsődleges kapcsolatok karakterláncának** értékét.
+2. A **Cloud Explorerben** bontsa ki a **Storage-fiókok** csomópontot, majd válassza ki a Storage-fiókját. A **Tulajdonságok** lapon másolja az **elsődleges kapcsolatok karakterláncának** értékét.
 
 2. A projektben nyissa meg a local.settings.jsfájlt, és állítsa be a `AzureWebJobsStorage` kulcs értékét a másolt kapcsolódási karakterláncra.
 
@@ -104,9 +116,9 @@ A Storage-fiók kapcsolódási karakterláncának beállítása:
 
 A C# Class Library függvények esetében a függvény által használt kötések a kódban szereplő attribútumok alkalmazásával definiálhatók. Amikor létrehozza a függvény eseményindítóit a megadott sablonokból, az eseményindító attribútumai lesznek alkalmazva. 
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projekt csomópontjára, és válassza **Add**az  >  **új elem hozzáadása elemet**. 
+1. **Megoldáskezelő** kattintson a jobb gombbal a projekt csomópontjára, és válassza az  >  **új elem hozzáadása elemet**. 
 
-2. Válassza az **Azure-függvény**lehetőséget, adja meg az osztály **nevét** , majd válassza a **Hozzáadás**lehetőséget.
+2. Válassza az **Azure-függvény** lehetőséget, adja meg az osztály **nevét** , majd válassza a **Hozzáadás** lehetőséget.
 
 3. Válassza ki az triggert, állítsa be a kötési tulajdonságokat, majd kattintson **az OK gombra**. A következő példa a várólista-tároló trigger funkciójának létrehozási beállításait mutatja be. 
 
@@ -216,7 +228,7 @@ A hivatkozás kiválasztásakor megjelenik a Function **alkalmazás Alkalmazásb
 
 ![Alkalmazásbeállítások](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
-A **helyi** érték jelenik meg a local.settings.jsfájlon, a **távoli** pedig az Azure-beli Function alkalmazás aktuális beállítás értékét jeleníti meg. Új Alkalmazásbeállítás létrehozásához válassza a **beállítás hozzáadása** lehetőséget. A beállítás értékének a **helyi** hivatkozásból történő másolásához használja a Setting értéket a **távoli** mezőre. A függőben lévő módosítások a helyi beállítások fájlba és a Function alkalmazásba íródnak, amikor az **OK gombra**kattint.
+A **helyi** érték jelenik meg a local.settings.jsfájlon, a **távoli** pedig az Azure-beli Function alkalmazás aktuális beállítás értékét jeleníti meg. Új Alkalmazásbeállítás létrehozásához válassza a **beállítás hozzáadása** lehetőséget. A beállítás értékének a **helyi** hivatkozásból történő másolásához használja a Setting értéket a **távoli** mezőre. A függőben lévő módosítások a helyi beállítások fájlba és a Function alkalmazásba íródnak, amikor az **OK gombra** kattint.
 
 > [!NOTE]
 > Alapértelmezés szerint a fájl local.settings.jsnincs bejelölve a verziókövetésba. Ez azt jelenti, hogy ha a helyi functions-projektet a verziókövetés alapján klónozott, a projekthez nem tartozik local.settings.jsa fájlhoz. Ebben az esetben manuálisan kell létrehoznia a local.settings.jsfájlt a projekt gyökerében, hogy az **Alkalmazásbeállítások** párbeszédpanel a várt módon működjön. 
@@ -233,7 +245,7 @@ A függvények végrehajtásának ajánlott figyelése a Function alkalmazás Az
 
 Ha többet szeretne megtudni a Application Insights használatával végzett figyelésről, tekintse meg a [Azure functions figyelése](functions-monitoring.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions Core Toolsről: a [Azure functions Core Tools használata](functions-run-local.md).
 

@@ -7,17 +7,17 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
-ms.openlocfilehash: 1c111ca23ce7cf749dc4a7d5ad2ad39756236ab1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6c144f33f32422e27916e1987e0b2e8693f97945
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028206"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656478"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>A Azure Cosmos DB Emulator-tanúsítványok exportálása Java-, Python-és Node.js-alkalmazásokkal való használatra
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az Azure Cosmos Emulator csak a biztonságos kommunikációt támogatja a TLS-kapcsolatokon keresztül.
+Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Azure Cosmos DB Emulator csak TLS-kapcsolatokon keresztül támogatja a biztonságos kommunikációt.
 
 A Azure Cosmos DB helyi emulátorban lévő tanúsítványok az emulátor első futtatásakor jönnek létre. Két tanúsítvány van. Egyikük a helyi emulátorhoz való kapcsolódásra szolgál, a másik pedig az Emulator-adatemulátoron belüli alapértelmezett titkosítás kezelésére szolgál. Az exportálandó tanúsítvány a csatlakozáshoz való. Ennek felhasználóbarát neve "DocumentDBEmulatorCertificate".
 

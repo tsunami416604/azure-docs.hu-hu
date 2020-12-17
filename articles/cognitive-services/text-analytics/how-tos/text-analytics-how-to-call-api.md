@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562565"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654829"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -63,9 +63,6 @@ Az alábbi táblázatból megtudhatja, hogy mely szolgáltatásokat lehet aszink
 
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
-
 
 <a name="json-schema"></a>
 
@@ -258,7 +255,7 @@ Miután elvégezte a végpontot, a poster (vagy egy másik webes API-tesztelési
 5. Illesszen be néhány JSON-dokumentumot érvényes formátumban. Használja a fentiekben ismertetett **API-kérelmek formátumát** , és további információkat és példákat a következő témakörökben talál:
 
       + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)
-      + [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md)
+      + [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md)
       + [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md)
       + [Entitások felismerése](text-analytics-how-to-entity-linking.md)
 
@@ -288,7 +285,7 @@ Vegye figyelembe, hogy a `/analyze` `/health` fenti 2. lépésben az aszinkron v
 A szinkron végpontokra adott válaszok a használt végponttól függően változnak. Tekintse meg a következő cikkeket, például a válaszokat.
 
 + [Nyelvfelismerés](text-analytics-how-to-language-detection.md#step-3-view-the-results)
-+ [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Entitások felismerése](text-analytics-how-to-entity-linking.md#view-results)
 
@@ -298,7 +295,7 @@ A szinkron végpontokra adott válaszok a használt végponttól függően vált
 
 Ha a művelet sikeres, a GET kérelem a `/analyze` végponthoz a hozzárendelt feladatokat tartalmazó objektumot ad vissza. Például: `keyPhraseExtractionTasks`. Ezek a feladatok tartalmazzák a válasz objektumot a megfelelő Text Analytics szolgáltatásból. További információt a következő cikkekben talál.
 
-+ [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Entitások felismerése](text-analytics-how-to-entity-linking.md#view-results)
 + [Egészségügyi Text Analytics](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
 

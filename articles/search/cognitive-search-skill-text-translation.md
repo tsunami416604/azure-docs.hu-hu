@@ -8,12 +8,12 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4889ecd02be1b8f59c30550b7813ed5e5935f20f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0953d750ee8b59e9889512bb64cfd276a0bbeb53
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924694"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654864"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Szöveg fordítása – kognitív képességek
 
@@ -38,7 +38,7 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a következők
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bevitelek                | Leírás |
+| Bevitelek | Description |
 |---------------------|-------------|
 | defaultToLanguageCode | Szükséges A dokumentumok olyan dokumentumokhoz való fordítására szolgáló nyelvkód, amelyek nem adják meg explicit módon a nyelvet. <br/> [A támogatott nyelvek teljes listáját](../cognitive-services/translator/language-support.md)itt tekintheti meg. |
 | defaultFromLanguageCode | Választható A dokumentumok olyan dokumentumokból való fordítására szolgáló nyelvkód, amelyek nem határozzák meg explicit módon a feladó nyelvét.  Ha a defaultFromLanguageCode nincs megadva, a rendszer az Translator Text API által megadott automatikus nyelvfelismerés alapján határozza meg a feladó nyelvét. <br/> [A támogatott nyelvek teljes listáját](../cognitive-services/translator/language-support.md)itt tekintheti meg. |
@@ -46,7 +46,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név     | Leírás |
+| Bemeneti név     | Description |
 |--------------------|-------------|
 | szöveg | A lefordítani kívánt szöveg.|
 | toLanguageCode    | Egy karakterlánc, amely azt jelzi, hogy a szöveget milyen nyelven kell lefordítani. Ha nincs megadva ez a bemenet, a rendszer a defaultToLanguageCode fogja használni a szöveg fordításához. <br/>[A támogatott nyelvek teljes listája](../cognitive-services/translator/language-support.md)|
@@ -54,7 +54,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve    | Leírás |
+| Kimenet neve    | Description |
 |--------------------|-------------|
 | translatedText | A translatedFromLanguageCode és a translatedToLanguageCode közötti szöveg-fordítás karakterláncának eredménye.|
 | translatedToLanguageCode  | Egy karakterlánc, amely azt jelzi, hogy a szöveg melyik nyelvkódot lett lefordítva. Akkor hasznos, ha több nyelvre végez fordítást, és szeretné nyomon követni, hogy melyik szöveg milyen nyelven van.|

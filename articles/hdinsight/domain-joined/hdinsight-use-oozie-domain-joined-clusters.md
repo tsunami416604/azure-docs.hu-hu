@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71432dc2dd09381d39ca646d45c7f2bdd96012c6
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83647576"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653435"
 ---
 # <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Apache Oozie futtatása az Azure HDInsight-fürtökben Enterprise Security Package
 
@@ -178,7 +178,7 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
 
 4. Cserélje le a `clustername` nevet a fürt nevére.
 
-5. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**. Adja meg az **Y**értéket. Ezután kattintson az **ENTER**gombra.
+5. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**. Adja meg az **Y** értéket. Ezután kattintson az **ENTER** gombra.
 
     A munkafolyamat két részre oszlik:
 
@@ -231,10 +231,10 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
    ```
 
    - Akkor használja az `adl://home` URI- `nameNode` t a tulajdonsághoz, ha Azure Data Lake Storage Gen1 elsődleges fürtös tárolóként. Ha Azure-Blob Storage használ, váltson a következőre: `wasb://home` . Ha Azure Data Lake Storage Gen2 használ, váltson a következőre: `abfs://home` .
-   - Cserélje le a `domainuser` nevet a tartomány felhasználónevére.  
-   - Cserélje le a helyére `ClusterShortName` a fürt rövid nevét. Ha például a fürt neve https:// *[example link]* sechadoopcontoso.azurehdisnight.net, a a `clustershortname` fürt első hat karaktere: **sechad**.  
+   - Cserélje le a `domainuser` nevet a tartomány felhasználónevére.
+   - Cserélje le a helyére `ClusterShortName` a fürt rövid nevét. Ha például a fürt neve https:// *[example link]* sechadoopcontoso.azurehdisnight.net, a a `clustershortname` fürt első hat karaktere: **sechad**.
    - Cserélje le a `jdbcurlvalue` elemet a struktúra konfigurációjának JDBC URL-címére. Ilyen például a JDBC: hive2://headnodehost: 10001/; transportMode = http.
-   - A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, írja be a következőt: `Y` , majd válassza az **ENTER**billentyűt.
+   - A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, írja be a következőt: `Y` , majd válassza az **ENTER** billentyűt.
 
    Ennek a tulajdonságnak a Oozie-feladatok futtatásakor helyileg jelen kell lennie.
 
@@ -313,17 +313,17 @@ CoordAction ID: -
 
 Actions
 ------------------------------------------------------------------------------------------------
-ID                      Status  Ext ID          ExtStatus   ErrCode
+ID                        Status    Ext ID            ExtStatus                 ErrCode
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@:start:    OK  -           OK      -
+0000015-180626011240801-oozie-oozi-W@:start:    OK    -                         OK             -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@mr-test    OK  job_1529975666160_0051  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@mr-test    OK    job_1529975666160_0051    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@myHive2    OK  job_1529975666160_0053  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@myHive2    OK    job_1529975666160_0053    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@myHive OK  job_1529975666160_0055  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@myHive    OK     job_1529975666160_0055    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@end    OK  -           OK      -
+0000015-180626011240801-oozie-oozi-W@end       OK     -                         OK             -
 -----------------------------------------------------------------------------------------------
 ```
 
@@ -345,7 +345,7 @@ A Oozie webes felhasználói felülete webes nézetet biztosít a fürt Oozie-fe
 
 2. A [Oozie webes felhasználói felületének](../hdinsight-use-oozie-linux-mac.md) lépéseit követve engedélyezze az SSH-bújtatást a peremhálózati csomóponton, és nyissa meg a webes felhasználói felületet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [Apache Oozie és a Apache Hadoop használatával megadhatja és futtathatja a munkafolyamatokat a Linux-alapú Azure-HDInsight](../hdinsight-use-oozie-linux-mac.md).
 - [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).

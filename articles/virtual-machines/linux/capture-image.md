@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: 376d9d76633060f504454f85841b9c15bafc6685
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503038"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655169"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Virtuális gép vagy VHD felügyelt rendszerképének létrehozása
 
@@ -54,14 +54,14 @@ Először távolítsa el a virtuális gépet az Azure virtuálisgép-ügynök ha
 4. A parancs befejezése után a **Kilépés** gombra kattintva zárja be az SSH-ügyfelet.  Ezen a ponton továbbra is fut a virtuális gép.
 
 ## <a name="step-2-create-vm-image"></a>2. lépés: virtuális gép rendszerképének létrehozása
-Használja az Azure CLI-t a virtuális gép általánosított való megjelölésére és a lemezkép rögzítésére. Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. A paraméterek nevei például a következők: *myResourceGroup*, *myVnet*és *myVM*.
+Használja az Azure CLI-t a virtuális gép általánosított való megjelölésére és a lemezkép rögzítésére. Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. A paraméterek nevei például a következők: *myResourceGroup*, *myVnet* és *myVM*.
 
-1. Szabadítsa fel a virtuális gépet, amelyet az [az VM felszabadításával](/cli/azure/vm)kiépített. Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup*nevű erőforráscsoporthoz.  
+1. Szabadítsa fel a virtuális gépet, amelyet az [az VM felszabadításával](/cli/azure/vm)kiépített. Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup* nevű erőforráscsoporthoz.  
    
     ```azurecli
     az vm deallocate \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
     
     Várjon, amíg a virtuális gép teljesen fel nem szabadítja a szolgáltatást, mielőtt továbblépne. Ez eltarthat néhány percig.  A lefoglalás során a virtuális gép le van állítva.
@@ -70,18 +70,18 @@ Használja az Azure CLI-t a virtuális gép általánosított való megjelölés
    
     ```azurecli
     az vm generalize \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
 
     Egy általánosított virtuális gép már nem indítható újra.
 
-3. Hozzon létre egy rendszerképet a VM-erőforrásról az [az rendszerkép Create](/cli/azure/image#az-image-create)paranccsal. A következő példa létrehoz egy *myImage* nevű rendszerképet a *myResourceGroup* nevű ERŐFORRÁSCSOPORTHOZ a *myVM*nevű VM-erőforrás használatával.
+3. Hozzon létre egy rendszerképet a VM-erőforrásról az [az rendszerkép Create](/cli/azure/image#az-image-create)paranccsal. A következő példa létrehoz egy *myImage* nevű rendszerképet a *myResourceGroup* nevű ERŐFORRÁSCSOPORTHOZ a *myVM* nevű VM-erőforrás használatával.
    
     ```azurecli
     az image create \
-      --resource-group myResourceGroup \
-      --name myImage --source myVM
+        --resource-group myResourceGroup \
+        --name myImage --source myVM
     ```
    
    > [!NOTE]
@@ -92,7 +92,7 @@ Használja az Azure CLI-t a virtuális gép általánosított való megjelölés
 Ez a parancs visszaadja a virtuális gép rendszerképét leíró JSON-t. Mentse ezt a kimenetet későbbi hivatkozásként.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>3. lépés: virtuális gép létrehozása a rögzített lemezképből
-Hozzon létre egy virtuális gépet az az [VM Create](/cli/azure/vm)paranccsal létrehozott rendszerkép használatával. A következő példában létrehozunk egy *myVMDeployed* nevű virtuális gépet a *myImage*nevű rendszerképből.
+Hozzon létre egy virtuális gépet az az [VM Create](/cli/azure/vm)paranccsal létrehozott rendszerkép használatával. A következő példában létrehozunk egy *myVMDeployed* nevű virtuális gépet a *myImage* nevű rendszerképből.
 
 ```azurecli
 az vm create \
@@ -136,5 +136,5 @@ az vm show \
    --show-details
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A képek nagy léptékű létrehozásához, tárolásához és megosztásához tekintse meg a [megosztott lemezképek gyűjteményét](../shared-images-cli.md).

@@ -1,6 +1,6 @@
 ---
-title: A Azure Security Centerban elérhető támogatott szolgáltatások | Microsoft Docs
-description: Ez a dokumentum a Azure Security Center által támogatott szolgáltatások listáját tartalmazza.
+title: Azure Security Center funkciói az operációs rendszer, a gép típusa és a felhő szerint
+description: Ismerje meg, hogy mely Azure Security Center szolgáltatások érhetők el az operációs rendszer, a típus és a felhő üzembe helyezése alapján.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2020
+ms.date: 12/17/2020
 ms.author: memildin
-ms.openlocfilehash: 40d70c7bd740d8c72ddb72047a3bae3586e1aa1f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b3671a57b8371c47b1690b4bf6be008d695d1ca0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445251"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654744"
 ---
 # <a name="feature-coverage-for-machines"></a>Szolgáltatások lefedettsége gépekhez
 
@@ -28,7 +28,7 @@ Az alábbi két lap a Windows és Linux rendszerű virtuális gépekhez és kisz
 
 ### <a name="windows-machines"></a>[**Windows rendszerű gépek**](#tab/features-windows)
 
-|**Jellemző**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure arc-kompatibilis gépek**|**Azure Defender szükséges**
+|**Funkció**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure arc-kompatibilis gépek**|**Azure Defender szükséges**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender az Endpoint Integration szolgáltatáshoz](security-center-wdatp.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Yes|
 |[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](alerts-reference.md)|✔|✔|✔|Yes|
@@ -52,7 +52,7 @@ Az alábbi két lap a Windows és Linux rendszerű virtuális gépekhez és kisz
 
 ### <a name="linux-machines"></a>[**Linux rendszerű gépek**](#tab/features-linux)
 
-|**Jellemző**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure arc-kompatibilis gépek**|**Azure Defender szükséges**
+|**Funkció**|**Azure Virtual Machines**|**Azure Virtual Machine Scale Sets**|**Azure arc-kompatibilis gépek**|**Azure Defender szükséges**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender az Endpoint Integration szolgáltatáshoz](security-center-wdatp.md)|-|-|-|Yes|
 |[Virtuális gép viselkedési elemzési (és biztonsági riasztások)](./azure-defender.md)|✔</br>(támogatott verziók esetén)|✔</br>(támogatott verziók esetén)|✔|Yes|
@@ -99,13 +99,48 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 | McAfee v10+ | Linux Server termékcsalád  | No | Igen * *\** _ |
 | Sophos v9 +| Linux Server termékcsalád  | No | igen  _*\**_  |
 
- _ *\** * A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított log Analytics munkaterületen érhető el. Ez nem jelenik meg a Azure Security Center-portálon.
+ _*\**_ A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított Log Analytics munkaterületen érhető el. Ez nem jelenik meg a Azure Security Center-portálon.
 
 > [!NOTE]
 > A System Center Endpoint Protection (SCEP) észlelése Windows Server 2008 R2 rendszerű virtuális gépen a PowerShell (v 3.0 vagy újabb) után telepíteni kell a SCEP-t.
 
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="feature-support-in-government-clouds"></a>Szolgáltatások támogatása a kormányzati felhőkben
+
+| Szolgáltatás/szolgáltatás | US Gov | Kínai gov |
+|------|:----:|:----:|
+|Igény szerinti virtuális gépekhez [való hozzáférés](security-center-just-in-time.md) (1)|✔|✔|
+|[Fájl integritásának figyelése](security-center-file-integrity-monitoring.md) (1)|✔|-|
+|[Adaptív alkalmazások vezérlői](security-center-adaptive-application.md) (1)|✔|✔|
+|[Adaptív hálózat megerősítése](security-center-adaptive-network-hardening.md) (1)|-|-|
+|[Docker-gazdagép megerősítése](harden-docker-hosts.md) (1)|✔|✔|
+|[A számítógépek integrált sebezhetőségi felmérése](deploy-vulnerability-assessment-vm.md) (1)|-|-|
+|[Microsoft Defender a végponthoz](harden-docker-hosts.md) (1)|✔|-|
+|[AWS-fiók összekötése](quickstart-onboard-aws.md) (1)|-|-|
+|[GCP-fiók összekötése](quickstart-onboard-gcp.md) (1)|-|-|
+|[Folyamatos exportálás](continuous-export.md)|✔|✔|
+|[Munkafolyamat-automatizálás](workflow-automation.md)|✔|✔|
+|[Javaslat alóli kivétel szabályai](exempt-resource.md)|-|-|
+|[Riasztáselnyomási szabályok](alerts-suppression-rules.md)|✔|✔|
+|[Biztonsági riasztások e-mail-értesítései](security-center-provide-security-contact-details.md)|✔|✔|
+|[Tárgyieszköz-leltár](asset-inventory.md)|-|-|
+|[Azure Defender App Service-hez](defender-for-app-service-introduction.md)|-|-|
+|[Azure Defender tároláshoz](defender-for-storage-introduction.md)|✔|-|
+|[Azure Defender SQL-hez](defender-for-sql-introduction.md)|✔|✔ (2)|
+|[Azure Defender Key Vaulthoz](defender-for-key-vault-introduction.md)|-|-|
+|[Azure Defender a Resource Managerhez](defender-for-resource-manager-introduction.md)|-|-|
+|[Azure Defender DNS-hez](defender-for-dns-introduction.md)|-|-|
+|[Azure Defender Kuberneteshez](defender-for-kubernetes-introduction.md)|✔|✔|
+|[Azure Defender tárolóregisztrációs adatbázisokhoz](defender-for-container-registries-introduction.md)|✔ (2)|-|
+|||
+
+(1)*Az Azure Defender for Servers szolgáltatáshoz* szükséges*
+
+(2) részleges
+
+
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogy [a Security Center hogyan gyűjt adatokat az log Analytics ügynökkel](security-center-enable-data-collection.md).
 - Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).
