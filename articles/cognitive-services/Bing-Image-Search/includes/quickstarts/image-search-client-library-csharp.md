@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: aahi
-ms.openlocfilehash: 247aea49d60c2d953d8b6dff37d22188a5442a1f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e051eca990ae0aa0b5a79c208a594e1b2332bcb2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625295"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612709"
 ---
 Ezzel a rövid útmutatóval elvégezheti az első képkeresést az Bing Image Search ügyféloldali kódtár használatával. 
 
@@ -37,8 +37,6 @@ Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.
 
 Először hozzon létre egy új C#-konzol alkalmazást.
 
-## <a name="create-a-console-project"></a>Konzol-projekt létrehozása
-
 # <a name="visual-studio"></a>[Visual Studio](#tab/visualstudio)
 
 1. Hozzon létre egy *BingImageSearch* nevű új konzolos megoldást a Visual Studióban.
@@ -46,7 +44,7 @@ Először hozzon létre egy új C#-konzol alkalmazást.
 1. A [kognitív Image Search NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch) hozzáadása
     1. Kattintson a jobb gombbal a projektre **megoldáskezelő**.
     1. Válassza a **NuGet-csomagok kezelése** lehetőséget.
-    1. Keresse meg és válassza ki a *Microsoft. Azure. CognitiveServices. Search. ImageSearch* , majd telepítse a csomagot.
+    1. Keresse meg és válassza ki a *Microsoft. Azure. CognitiveServices. Search. ImageSearch*, majd telepítse a csomagot.
     
 # <a name="vs-code"></a>[VS Code](#tab/vscode)
 
@@ -131,7 +129,7 @@ if (imageResults != null)
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Bing Image Search?](../../overview.md)  
 * [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  

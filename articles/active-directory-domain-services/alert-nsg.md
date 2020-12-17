@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/06/2020
+ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: d8f2e77b7225306844cec85363a2971eaac4eebd
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 58cdd025587823f7eb702164c965ab622a7325d3
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620256"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615647"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: hálózati konfigurációval kapcsolatos riasztások Azure Active Directory Domain Services
 
@@ -40,12 +40,12 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 
 | Prioritás | Név | Port | Protokoll | Forrás | Cél | Művelet |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Bármelyik | Engedélyezés |
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Bármely | <sup>1</sup> . megtagadás |
 | 65000    | AllVnetInBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerInBound | Bármelyik | Bármelyik | AzureLoadBalancer | Bármelyik | Engedélyezés |
-| 65500    | DenyAllInBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Deny (Megtagadás) |
+| 65500    | DenyAllInBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Megtagadás |
+<sup>1</sup> Hibakereséshez nem kötelező. Engedélyezze, ha szükséges a speciális hibaelhárításhoz.
 
 > [!NOTE]
 > A [biztonságos LDAP konfigurálása][configure-ldaps]esetén további szabályt is használhat, amely engedélyezi a bejövő forgalmat. Ez a további szabály a megfelelő LDAP-kommunikációhoz szükséges.
@@ -56,7 +56,7 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerOutBound | Bármelyik | Bármelyik |  Bármelyik | Internet | Engedélyezés |
-| 65500    | DenyAllOutBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Deny (Megtagadás) |
+| 65500    | DenyAllOutBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Megtagadás |
 
 >[!NOTE]
 > Az Azure AD DS a virtuális hálózat nem korlátozott kimenő hozzáférését igényli. Nem javasoljuk, hogy hozzon létre olyan további szabályokat, amelyek korlátozzák a kimenő hozzáférést a virtuális hálózat számára.

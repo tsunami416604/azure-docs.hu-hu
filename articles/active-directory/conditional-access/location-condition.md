@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: b647b5ee9dbd7a0447bbb69a47db76685daa1102
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030195"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615711"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>A hely feltételének használata feltételes hozzáférési házirendben 
 
@@ -196,7 +196,10 @@ Ha egy felhőalapú proxy van érvényben, a hibrid Azure AD-hez csatlakoztatott
 
 Az elnevezett helyszínek Graph API előzetes verziója érhető el, további információért lásd a [NAMEDLOCATION API](/graph/api/resources/namedlocation?view=graph-rest-beta)-t.
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> A PowerShell-megjelenítéssel létrehozott elnevezett helyszínek csak névvel ellátott helyen (előzetes verzió) jelennek meg. A nevesített helyszínek nem láthatók a régi nézetben.  
+
+## <a name="next-steps"></a>További lépések
 
 - Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a [feltételes hozzáférési szabályzat létrehozásával](concept-conditional-access-policies.md)foglalkozó cikket.
 - A hely feltételét használó példát keres? Tekintse meg a következő cikket [: feltételes hozzáférés letiltása hely szerint](howto-conditional-access-policy-location.md)

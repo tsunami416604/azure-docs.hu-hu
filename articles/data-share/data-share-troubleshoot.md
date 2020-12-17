@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/15/2020
-ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/16/2020
+ms.openlocfilehash: c93ce9c81ada3c30128846b43041603e132abd88
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579147"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617238"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Az Azure Data Share gyakori hibáinak elhárítása 
 
@@ -67,6 +67,10 @@ A pillanatkép különböző okok miatt sikertelen lehet. A részletes hibaüzen
 * A tűzfal blokkolja az adatmegosztási kapcsolatokat a forrás-vagy a célként megadott adattárhoz.
 * A rendszer törli a megosztott adatkészletet vagy a forrás vagy a cél adattárát.
 
+A Storage-fiók esetében a pillanatkép-hibák további okai a következők.
+
+* A fájl frissítése folyamatban van a forrásnál, miközben pillanatkép történik. Ennek eredményeképpen 0 bájtos fájl lehet a célhelyen. A frissítés befejezését követően a következő pillanatkép sikeresnek kell lennie a forrásnál.
+
 SQL-források esetén a pillanatkép-hibák további okai a következők: 
 
 * Az adatmegosztási engedélyt megadó forrás vagy cél SQL-parancsfájl nem fut. Vagy Azure SQL Database vagy Azure szinapszis Analytics (korábban Azure SQL DW) esetében az SQL-hitelesítéssel futtatja Azure Active Directory hitelesítés helyett.  
@@ -76,7 +80,10 @@ SQL-források esetén a pillanatkép-hibák további okai a következők:
 * A célként megadott SQL-táblázatot egy Foreign Key korlátozás hivatkozik. Ha már létezik ilyen nevű céltábla, az Azure-adatmegosztás elveszíti a táblát, és új táblát hoz létre. Ha a cél SQL-táblát egy idegenkulcs-megkötés hivatkozik, a tábla nem helyezhető el.
 * A rendszer létrehozza a cél CSV-fájlt, de az Excelben nem olvashatók be az adathalmazok. Ez akkor fordulhat elő, ha a forrás SQL-táblázat nem angol karakterből álló adatkészletet tartalmaz. Az Excelben válassza az "adatlekérdezés" fület, és válassza ki a CSV-fájlt, válassza a fájl forrása 65001: Unicode (UTF-8) és az adatbetöltése lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="snapshot-issue-after-updating-snapshot-schedule"></a>Pillanatkép-probléma a pillanatkép-ütemterv frissítése után
+Miután az adatszolgáltató frissíti az elküldött megosztás pillanatkép-ütemezéseit, az adatfogyasztónak le kell tiltania a korábbi pillanatkép-ütemezéseket, és újra engedélyeznie kell a beérkezett megosztás frissített pillanatfelvétel-ütemezéseit. 
+
+## <a name="next-steps"></a>További lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot. 
 

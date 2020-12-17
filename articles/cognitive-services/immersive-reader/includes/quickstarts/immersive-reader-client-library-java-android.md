@@ -11,18 +11,18 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 4118ef478f43c5887e2c5fba4595314e5a4ac02d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 29bacfff2e7b555143c0483f9b7e4b4f61c9e973
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779677"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612706"
 ---
 A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az alkalmazásokban magával ragadó olvasóval elkülönítheti a szöveget a fókusz növeléséhez, képeket jeleníthet meg a gyakran használt szavakhoz, kiemelheti a beszéd részeit, beolvashatja a kijelölt szöveget hangosan, lefordíthatja a szavakat és kifejezéseket valós időben, és így tovább.
 
 Ebben a rövid útmutatóban egy Android-alkalmazást hozhat létre a semmiből, és integrálhatja a magával ragadó olvasót. Ennek a rövid útmutatónak a teljes működő mintája elérhető [a githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ![Új projekt – Android](../../media/android/java/android-studio-create-project.png)
 
-A **projekt kiválasztása** ablakban válassza az **üres tevékenység**elemet, majd kattintson a **tovább**gombra.
+A **projekt kiválasztása** ablakban válassza az **üres tevékenység** elemet, majd kattintson a **tovább** gombra.
 
 ![Üres tevékenység projekt – Android](../../media/android/java/android-studio-empty-activity.png)
 
@@ -292,7 +292,7 @@ public class MainActivity extends Activity {
 
 16 további Java-osztály fájlt hozunk létre a **/Java/com.example.quickstartjava** mappában. Az alkalmazás ezeket az osztályokat használja a lebilincselő olvasói SDK integrálására. Minden új fájl esetében van néhány olyan, a kódban hivatkozott osztály, amely még nem létezik, és később jön létre. Az összes osztály létrehozása után nem lehet null hivatkozási hiba.
 
-Új **ImmersiveReader. Java** Java-osztály létrehozásához kattintson a jobb gombbal a mappára Android Studioban, válassza az **új**, majd a **Java-osztály**elemet. Ugyanezt a módszert fogja használni a Java-osztályok fájljainak létrehozásához minden létrehozott új Java-osztályhoz.
+Új **ImmersiveReader. Java** Java-osztály létrehozásához kattintson a jobb gombbal a mappára Android Studioban, válassza az **új**, majd a **Java-osztály** elemet. Ugyanezt a módszert fogja használni a Java-osztályok fájljainak létrehozásához minden létrehozott új Java-osztályhoz.
 
 ![ImmersiveReader – Android](../../media/android/java/android-studio-immersivereader-java.png)
 
@@ -318,7 +318,6 @@ import java.lang.ref.WeakReference;
  * ImmersiveReader immersiveReader = new ImmersiveReader(Activity, IRAuthenticator);
  * immersiveReader.read(ReadableTextChunk);
  */
-
 
 @Keep
 public class ImmersiveReader {
@@ -402,7 +401,6 @@ import java.lang.ref.WeakReference;
  * ImmersiveReader immersiveReader = new ImmersiveReader(Activity, IRAuthenticator);
  * immersiveReader.read(ReadableTextChunk);
  */
-
 
 @Keep
 public class ImmersiveReader {
@@ -770,7 +768,6 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
             urlStringBuilder.append("/oauth2/token");
             URL tokenUrl = new URL(urlStringBuilder.toString());
 
-
             StringBuilder formStringBuilder = new StringBuilder();
             formStringBuilder.append("grant_type=client_credentials&resource=https://cognitiveservices.azure.com/&client_id=");
             formStringBuilder.append(clientId);
@@ -793,7 +790,6 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
             if (responseCode == HTTP_OK) {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
                 StringBuffer response = new StringBuffer();
-
 
                 String line = bufferedReader.readLine();
                 while (!TextUtils.isEmpty(line)) {
@@ -1393,6 +1389,6 @@ A Android Studio használatával futtathatja az alkalmazást egy eszköz-emulát
 
 ![Lebilincselő olvasó – Android](../../media/android/java/android-studio-device-emulator.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Fedezze fel az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a [magára ejtő olvasó SDK-referenciát](../../reference.md).

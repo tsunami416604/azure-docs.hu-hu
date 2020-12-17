@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187398"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612704"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Az Azure Virtual WAN a GA-ban található?
 
@@ -254,7 +254,7 @@ Ha egy ExpressRoute áramkör csatlakozik a virtuális központhoz, a Microsoft 
 A jelenlegi viselkedés az, hogy a ExpressRoute áramköri útvonalat a VNet és a VNet közötti kapcsolathoz részesíti előnyben. Ez azonban nem javasolt a virtuális WAN-telepítésben. A virtuális WAN-csapat olyan javításon dolgozik, amely lehetővé teszi a hub – hub elérését a ExpressRoute útvonalon. A javaslat több ExpressRoute-áramkörre (különböző szolgáltatóra) vonatkozik az egyik hubhoz való csatlakozáshoz, és a virtuális WAN által a régiók közötti adatforgalomhoz biztosított, a központ és a központ közötti kapcsolat használatát.
 
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>Létrehozhatók-e a virtuális WAN különböző erőforráscsoporthoz tartozó hubok?
-Igen. Ez a beállítás jelenleg csak a powershellen keresztül érhető el. A virtuális WAN-portál a virtuális WAN-erőforrással azonos erőforráscsoporthoz tartozó hubokat bízza meg.
+Igen. Ez a beállítás jelenleg csak a PowerShellen keresztül érhető el. A virtuális WAN-portál a virtuális WAN-erőforrással azonos erőforráscsoporthoz tartozó hubokat bízza meg.
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Támogatja az IPv6-ot a virtuális WAN-ban?
 
@@ -277,3 +277,7 @@ Lásd: [alapszintű és standard szintű virtuális WAN](../articles/virtual-wan
 ### <a name="does-virtual-wan-store-customer-data"></a>A virtuális WAN tárolja az ügyféladatokat? 
 
 Nem. A virtuális WAN nem tárolja az ügyféladatokat.
+
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Vannak olyan felügyelt szolgáltatók, amelyek felügyelik a virtuális WAN szolgáltatást a felhasználók számára szolgáltatásként? 
+
+Igen. Az Azure Marketplace-en keresztül engedélyezett felügyelt szolgáltatói (MSP) megoldások listáját az Azure [Marketplace-ajánlatok az Azure hálózati MSP-partnerek](../articles/networking/networking-partners-msp.md#msp)számára című témakörben találja.
