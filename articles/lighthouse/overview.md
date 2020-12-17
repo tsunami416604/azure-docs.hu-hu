@@ -1,20 +1,20 @@
 ---
 title: Mi az az Azure Lighthouse?
 description: Az Azure Lighthouse lehetővé teszi, hogy a szolgáltatók felügyelt szolgáltatásokat nyújtsanak ügyfeleiknek magasabb szintű automatizálással és hatékonysággal.
-ms.date: 12/10/2020
+ms.date: 12/16/2020
 ms.topic: overview
-ms.openlocfilehash: bef6107878f36e02a896b3c38b8913ebb50169a7
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: b9215f42e3ad3b7517d14fdaee710a31680ce453
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356361"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617153"
 ---
 # <a name="what-is-azure-lighthouse"></a>Mi az az Azure Lighthouse?
 
 Az Azure Lighthouse lehetővé teszi a bérlők közötti és a több-bérlős felügyeletet, ami nagyobb fokú automatizálást, skálázhatóságot és szabályozást nyújt a bérlőkre és az erőforrásokra vonatkozóan.
 
-Az Azure Lighthouse használatával a szolgáltatók a felügyelt szolgáltatásokat az Azure platformon beépített átfogó és robusztus felügyeleti eszközökkel biztosíthatják. Az ügyfelek szabályozzák, hogy ki férhet hozzá a bérlőhöz, milyen erőforrásokhoz férhet hozzá, és milyen műveleteket lehet elvégezni. Ez az ajánlat olyan [vállalati IT-szervezeteket](concepts/enterprise.md) is használhat, amelyek több bérlőn keresztül kezelik az erőforrásokat.
+Az Azure Lighthouse használatával a szolgáltatók a felügyelt szolgáltatásokat az Azure platformon beépített átfogó és robusztus felügyeleti eszközökkel biztosíthatják. Az ügyfelek szabályozzák, hogy ki férhet hozzá a bérlőhöz, mely erőforrásokat érhetik el, és milyen műveleteket végezhetnek el. Ez az ajánlat olyan [vállalati IT-szervezeteket](concepts/enterprise.md) is használhat, amelyek több bérlőn keresztül kezelik az erőforrásokat.
 
 ![Az Azure Lighthouse áttekintési ábrája](media/azure-lighthouse-overview.jpg)
 

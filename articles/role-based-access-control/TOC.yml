@@ -82,7 +82,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: Egyéni szerepkörök létrehozása vagy frissítése
+    - name: Egyéni szerepkörök létrehozása
       items:
         - name: Áttekintés
           href: custom-roles.md

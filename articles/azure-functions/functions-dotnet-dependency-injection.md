@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f87ed9b7455bed870cf25a6920cc6295811d94c8
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167695"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617068"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -68,7 +68,7 @@ A Futtatás előtt és után futtatott regisztrációs lépések sorozata az ind
 
 - *Az indítási osztály csak a beállítás és a regisztráció céljára szolgál.* Ne használja az indításkor regisztrált szolgáltatásokat az indítási folyamat során. Például ne próbáljon naplózni egy olyan üzenetet, amely az indítás során regisztrálva van. A regisztrációs folyamat ezen pontja túl korai ahhoz, hogy a szolgáltatások elérhetők legyenek. A `Configure` metódus futtatása után a functions Runtime továbbra is regisztrálja a további függőségeket, ami befolyásolhatja a szolgáltatások működését.
 
-- *A függőségi injektálási tároló csak explicit módon regisztrált típusokat*tartalmaz. A metódusban csak az injekciós típusként elérhető szolgáltatások vannak beállítva `Configure` . Ennek eredményeképpen a functions-specifikus típusok, `BindingContext` például `ExecutionContext` nem érhetők el a telepítés során, vagy injektálható típusokként.
+- *A függőségi injektálási tároló csak explicit módon regisztrált típusokat* tartalmaz. A metódusban csak az injekciós típusként elérhető szolgáltatások vannak beállítva `Configure` . Ennek eredményeképpen a functions-specifikus típusok, `BindingContext` például `ExecutionContext` nem érhetők el a telepítés során, vagy injektálható típusokként.
 
 ## <a name="use-injected-dependencies"></a>Beinjektált függőségek használata
 
@@ -118,8 +118,8 @@ Ez a példa a [Microsoft. Extensions. http](https://www.nuget.org/packages/Micro
 
 Azure Functions alkalmazások ugyanazt a szolgáltatási élettartamot biztosítják, mint a [ASP.net függőségi injekció](/aspnet/core/fundamentals/dependency-injection#service-lifetimes). A functions alkalmazás esetében a különböző szolgáltatási élettartamok a következőképpen viselkednek:
 
-- **Átmeneti**: az átmeneti szolgáltatások a szolgáltatás minden egyes kérelme alapján jönnek létre.
-- **Hatókörön**belüli: a hatókörön belüli szolgáltatás élettartama megfelel a függvény végrehajtási élettartamának. A hatókörrel rendelkező szolgáltatások végrehajtáskor egyszer jönnek létre. A szolgáltatás későbbi kérelmei a végrehajtás során újra felhasználják a meglévő szolgáltatást.
+- **Átmeneti**: az átmeneti szolgáltatások a szolgáltatás minden egyes felbontása alapján jönnek létre.
+- **Hatókörön** belüli: a hatókörön belüli szolgáltatás élettartama megfelel a függvény végrehajtási élettartamának. A hatókörrel rendelkező szolgáltatások a függvények végrehajtása után jönnek létre. A szolgáltatás későbbi kérelmei a végrehajtás során újra felhasználják a meglévő szolgáltatást.
 - **Egyszeres**: az egyszeres szolgáltatás élettartama megegyezik a gazdagép élettartamával, és az adott példányon végrehajtott függvények végrehajtása során újra felhasználja őket. Az egyedi élettartamú szolgáltatások a kapcsolatok és az ügyfelek számára ajánlottak, például `DocumentClient` vagy `HttpClient` példányok esetén.
 
 A GitHubon megtekintheti és letöltheti a [különböző szolgáltatási élettartamokat tartalmazó mintát](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) .
@@ -181,6 +181,8 @@ A következő példában szereplő `host.json` fájl hozzáadja a naplózási sz
     }
 }
 ```
+
+A naplózási szintekkel kapcsolatos további információkért lásd: a [naplózási szintek konfigurálása](configure-monitoring.md#configure-log-levels).
 
 ## <a name="function-app-provided-services"></a>A függvény által biztosított szolgáltatások
 
@@ -291,7 +293,7 @@ Adja hozzá a konfigurációs szolgáltatókat a `ConfigurationBuilder` tulajdon
 
 A a `FunctionsHostBuilderContext` következőből származik: `IFunctionsConfigurationBuilder.GetContext()` . Ezzel a kontextussal kérheti le az aktuális környezeti nevet, és feloldja a konfigurációs fájlok helyét a Function app mappában.
 
-Alapértelmezés szerint a konfigurációs fájlok (például * aappsettings.js* ) nem másolódnak automatikusan a Function alkalmazás kimeneti mappájába. Frissítse a *. csproj* fájlt, hogy az megfeleljen a következő mintának a fájlok másolásának biztosításához.
+Alapértelmezés szerint a konfigurációs fájlok (például *aappsettings.js* ) nem másolódnak automatikusan a Function alkalmazás kimeneti mappájába. Frissítse a *. csproj* fájlt, hogy az megfeleljen a következő mintának a fájlok másolásának biztosításához.
 
 ```xml
 <None Update="appsettings.json">

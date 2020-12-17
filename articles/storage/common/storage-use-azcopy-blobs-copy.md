@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f536e163e3d19d91c150506ab44fdd9cbc02c693
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 524e3f70f9588cfae2c739722fc1a44e683f9a7f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907509"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617289"
 ---
 # <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy-v10"></a>Blobok másolása az Azure Storage-fiókok között a AzCopy v10 használatával
 
@@ -28,6 +28,8 @@ A AzCopy letöltéséhez és a tárolási szolgáltatás hitelesítési hiteles�
 ## <a name="guidelines"></a>Irányelvek
 
 Alkalmazza a következő irányelveket a AzCopy parancsaira. 
+
+- Az ügyfélnek hálózati hozzáféréssel kell rendelkeznie mind a forrás-, mind a cél Storage-fiókhoz. Az egyes Storage-fiókok hálózati beállításainak konfigurálásáról az [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](storage-network-security.md?toc=/azure/storage/blobs/toc.json)című cikk nyújt tájékoztatást.
 
 - Fűzze hozzá az SAS-tokent az egyes forrás URL-címekhez. 
 
@@ -134,7 +136,7 @@ A másolási művelet szinkron módon megy végbe, ezért a parancs visszatéré
 
 A másolási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 
-|Használati példa|Jelölő|
+|Forgatókönyv|Jelölő|
 |---|---|
 |Blobok másolása blokk, oldal vagy Hozzáfűzés Blobként.|**– blob típusú** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
 |Másolás adott hozzáférési szintre (például az archív szintre).|**--Block-blob-réteg** = \[ Nincs \| gyors elérésű \| \| Archívum\]|
@@ -142,13 +144,13 @@ A másolási műveletet opcionális jelzők használatával is megadhatja. Íme 
 
 A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-copy.md#options). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példákat a következő cikkekben talál:
 
-- [Példák: feltöltés](storage-use-azcopy-blobs-upload.md)
+- [Példák: Feltöltés](storage-use-azcopy-blobs-upload.md)
 - [Példák: Letöltés](storage-use-azcopy-blobs-download.md)
-- [Példák: szinkronizálás](storage-use-azcopy-blobs-synchronize.md)
+- [Példák: Szinkronizálás](storage-use-azcopy-blobs-synchronize.md)
 - [Példák: Amazon S3-gyűjtők](storage-use-azcopy-s3.md)
 - [Példák: Azure Files](storage-use-azcopy-files.md)
 - [Oktatóanyag: Helyszíni adatok migrálása felhőtárhelybe az AzCopyval](storage-use-azcopy-migrate-on-premises-data.md)

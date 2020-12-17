@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360288"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617408"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>A Blobok hozzáférésének engedélyezése a AzCopy és a Azure Active Directory (Azure AD) használatával
 
@@ -183,9 +183,9 @@ Cserélje le a `<path-to-certificate-file>` helyőrzőt a tanúsítványfájl re
 > [!NOTE]
 > Érdemes lehet egy parancssort használni, ahogy az ebben a példában is látható. Így a jelszó nem jelenik meg a konzolon a parancs előzményeiben. 
 
-## <a name="authorize-without-a-keyring-linux"></a>Engedélyezés kulcstartó nélkül (Linux)
+## <a name="authorize-without-a-secret-store"></a>Engedélyezés titkos tároló nélkül
 
-Ha az operációs rendszer nem rendelkezik titkos tárolóval (például *kulcstartóval*), a `azcopy login` parancs nem fog működni. Ehelyett a memóriában tárolt környezeti változók is megadhatók az egyes műveletek futtatása előtt. Ezek az értékek a művelet befejeződése után eltűnnek a memóriából, ezért ezeket a változókat minden alkalommal be kell állítania, amikor egy azcopy-parancsot futtat.
+Ha az operációs rendszer nem rendelkezik titkos tárolóval (például linuxos *kulcstartóval*), a `azcopy login` parancs nem fog működni. Ehelyett a memóriában tárolt környezeti változók is megadhatók az egyes műveletek futtatása előtt. 
 
 ### <a name="authorize-a-user-identity"></a>Felhasználói identitás engedélyezése
 
@@ -291,7 +291,7 @@ Cserélje le a `<path-to-certificate-file>` helyőrzőt a tanúsítványfájl re
 
 Ezután futtasson bármely azcopy-parancsot (például: `azcopy list https://contoso.blob.core.windows.net` ).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a AzCopy-ről: [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
 

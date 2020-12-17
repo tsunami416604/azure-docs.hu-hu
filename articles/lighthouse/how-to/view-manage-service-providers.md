@@ -1,18 +1,18 @@
 ---
 title: Szolgáltatók megtekintése és kezelése
 description: Az ügyfelek a Azure Portal szolgáltatók lapján tekinthetik meg a szolgáltatók, a szolgáltatói ajánlatok és a delegált erőforrások adatait.
-ms.date: 10/12/2020
+ms.date: 12/16/2020
 ms.topic: how-to
-ms.openlocfilehash: e94a9fd6562a9fa8bc0f2d84cce477e7907a1e48
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5ee897503c997ab10fdb489f7921c9d2d001e472
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371103"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617204"
 ---
 # <a name="view-and-manage-service-providers"></a>Szolgáltatók megtekintése és kezelése
 
-Az ügyfelek a Azure Portal **szolgáltatók** lapján tekinthetik meg [Azure portal](https://portal.azure.com) a szolgáltatók és a szolgáltatói ajánlatok részleteit, adott erőforrások delegálását az [Azure Lighthouse](../overview.md)szolgáltatásba, és az új szolgáltatói ajánlatokat is vásárolhatnak.
+A [Azure Portal](https://portal.azure.com) **szolgáltatók** lapja biztosítja az ügyfelek számára az [Azure Lighthouse](../overview.md)szolgáltatást használó szolgáltatók felügyeletét és láthatóságát. Az ügyfelek megtekinthetik a szolgáltatók részleteit, az egyes erőforrások delegálását, az új szolgáltatói ajánlatok megvásárlását, a szolgáltatói hozzáférés eltávolítását stb.
 
 > [!TIP]
 > Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a [több bérlőt kezelő vállalatok](../concepts/enterprise.md) ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
@@ -39,9 +39,9 @@ A **delegálások** oszlopban az ügyfél azt látja, hogy hány előfizetés é
 
 ## <a name="add-or-remove-service-provider-offers"></a>Szolgáltatói ajánlatok hozzáadása vagy eltávolítása
 
-Egy ügyfél hozzáadhat egy új szolgáltatói ajánlatot a szolgáltatói **ajánlatok** oldaláról az **ajánlat hozzáadása**lehetőség kiválasztásával. A szolgáltatónak közzé kell tennie egy ajánlatot ehhez az ügyfélhez. Az ügyfél ezt követően kiválaszthatja az ajánlatot a **privát ajánlatok** képernyőjén, majd a **Létrehozás**lehetőséget is választhatja.
+Egy ügyfél hozzáadhat egy új szolgáltatói ajánlatot a szolgáltatói **ajánlatok** oldaláról az **ajánlat hozzáadása** lehetőség kiválasztásával. A szolgáltatónak közzé kell tennie egy ajánlatot ehhez az ügyfélhez. Az ügyfél ezt követően kiválaszthatja az ajánlatot a **privát ajánlatok** képernyőjén, majd a **Létrehozás** lehetőséget is választhatja.
 
-Ha az ügyfél el szeretné távolítani a szolgáltatói ajánlatot, kiválaszthatja az ajánlat sorában látható Kuka ikont. A Törlés megerősítése után a szolgáltató már nem fog tudni hozzáférni az adott ajánlathoz korábban delegált ügyfél-erőforrásokhoz.
+Ha az ügyfél el szeretné távolítani a szolgáltatói ajánlatot, ezt bármikor megteheti, ha kiválasztja az ajánlat sorában látható Kuka ikont. A Törlés megerősítése után a szolgáltató már nem fog tudni hozzáférni az adott ajánlathoz korábban delegált ügyfél-erőforrásokhoz.
 
 ## <a name="delegate-resources"></a>Erőforrások delegálása
 
@@ -51,9 +51,9 @@ Előfizetések vagy erőforráscsoportok delegálása:
 
 1. Jelölje be a szolgáltatót, az ajánlatot és a nevet tartalmazó sor jelölőnégyzetét. Ezután válassza az **erőforrások delegálása** lehetőséget a képernyő tetején.
 1. Tekintse át a szolgáltató és az ajánlat részleteit az **erőforrások delegálása** lap **ajánlat részletei** szakaszában. Az ajánlathoz tartozó szerepkör-hozzárendelések áttekintéséhez válassza a **kattintson ide a kiválasztott ajánlat részleteinek megtekintéséhez**.
-1. A **delegált** szakaszban válassza az **előfizetések delegálása** vagy az **erőforráscsoportok delegálása**lehetőséget.
-1. Válassza ki az ajánlathoz delegálni kívánt előfizetéseket és/vagy erőforráscsoportokat, majd válassza a **Hozzáadás**lehetőséget.
-1. Jelölje be a lap alján található jelölőnégyzetet annak megerősítéséhez, hogy a szolgáltató hozzáférést kíván adni a kiválasztott erőforrásokhoz, majd válassza a **delegálás**lehetőséget.
+1. A **delegált** szakaszban válassza az **előfizetések delegálása** vagy az **erőforráscsoportok delegálása** lehetőséget.
+1. Válassza ki az ajánlathoz delegálni kívánt előfizetéseket és/vagy erőforráscsoportokat, majd válassza a **Hozzáadás** lehetőséget.
+1. Jelölje be a lap alján található jelölőnégyzetet annak megerősítéséhez, hogy a szolgáltató hozzáférést kíván adni a kiválasztott erőforrásokhoz, majd válassza a **delegálás** lehetőséget.
 
 ## <a name="update-service-provider-offers"></a>A szolgáltatói ajánlatok frissítése
 
@@ -82,7 +82,8 @@ Egy másik [beépített szabályzat-definíció](../../governance/policy/samples
 
 A szabályzatok hozzárendeléséről és a megfelelőségi állapot eredményeinek megjelenítéséről a rövid útmutató [: szabályzat-hozzárendelés létrehozása](../../governance/policy/assign-policy-portal.md)című témakörben olvashat bővebben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure Lighthouse](../overview.md)-ról.
+- További információ a szolgáltatói [tevékenységek naplózásáról](view-service-provider-activity.md).
 - Ismerje meg, hogy a szolgáltatók hogyan [tekinthetik meg és kezelhetik az ügyfeleket](view-manage-customers.md) a Azure Portal **saját ügyfelek** lapján.

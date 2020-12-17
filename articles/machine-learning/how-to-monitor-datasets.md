@@ -1,7 +1,7 @@
 ---
-title: Az adathalmazok adateltolódásának elemzése és figyelése (előzetes verzió)
+title: Az adatkészletek adateltolódásának észlelése (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Hozzon létre Azure Machine Learning adatkészleteket figyelőket (előzetes verzió), figyelje az adatsorok adateltolódását, és állítson be riasztásokat.
+description: Ismerje meg, hogyan állíthatja be az adateltolódás észlelését az Azure learningben. Adatkészletek létrehozása (előzetes verzió), az adateltolódás figyelése és riasztások beállítása.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 04882c71a2d80e01029dd0a8b476f21a658e632b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1622f8ce988c5592ac96cec798617ca6ac37aa8d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359595"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617170"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Adatcsere (előzetes verzió) észlelése az adatkészleteken
 
 
 > [!IMPORTANT]
-> Az adatkészletek adateltolódásának észlelése jelenleg nyilvános előzetes verzióban érhető el.
+> Az adathalmazok adateltolódás-észlelése jelenleg nyilvános előzetes verzióban érhető el.
 > Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Megtudhatja, hogyan figyelheti az adateltolódást, és hogyan állíthatja be a riasztásokat, ha magas a drift  
@@ -41,7 +41,7 @@ Megtekintheti az adateltolódási metrikákat a Python SDK-val vagy a Azure Mach
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az adatkészlet-figyelők létrehozásához és működéséhez a következőkre lesz szüksége:
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 * A [Azure Machine learning SDK for Python telepítve](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), amely tartalmazza a azureml-adatkészletek csomagot.
 * Strukturált (táblázatos) adatokat az adatokat tartalmazó fájl elérési útja, fájlneve vagy oszlopa által megadott időbélyeggel.
@@ -87,7 +87,7 @@ Az adatkészlet-figyelők a következő Azure-szolgáltatásoktól függenek.
 
 |Azure-szolgáltatás  |Leírás  |
 |---------|---------|
-| *Adatkészlet* | A drift Machine Learning adatkészletek használatával kéri le a betanítási adatokat, és összehasonlítja az adatokat a modell betanításához  Az adatok profiljának generálása a jelentett mérőszámok némelyikét, például a min, a maximumot, a különböző értékeket, a különböző értékek számát hozza létre. |
+| *Adathalmaz* | A drift Machine Learning adatkészletek használatával kéri le a betanítási adatokat, és összehasonlítja az adatokat a modell betanításához  Az adatok profiljának generálása a jelentett mérőszámok némelyikét, például a min, a maximumot, a különböző értékeket, a különböző értékek számát hozza létre. |
 | *Azureml-folyamat és-számítás* | A drift számítási feladatot a azureml-folyamat tárolja.  A feladatot igény szerint, vagy ütemezés szerint kell elindítani a drift monitor létrehozási idején konfigurált számítási feladatok futtatásához.
 | *Application bepillantást*| A drift a Machine learning-munkaterülethez tartozó mérőszámokat bocsát ki Application Insights.
 | *Azure Blob Storage*| A drift JSON formátumú metrikákat bocsát ki az Azure Blob Storage-ba.
@@ -223,14 +223,14 @@ Az `timeseries` adatkészletek és adatdrift-detektorok beállításának teljes
 
     | Beállítás | Leírás | Tippek | Változtatható | 
     | ------- | ----------- | ---- | ------- |
-    | Név | Az adatkészlet figyelő neve. | | No |
-    | Szolgáltatások | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Yes | 
-    | Számítási cél | Azure Machine Learning számítási célt az adatkészlet-figyelő feladatok futtatásához. | | Yes | 
-    | Bekapcsolás | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Tiltsa le az ütemtervet, hogy elemezze a korábbi adatértékeket a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Yes | 
-    | Gyakoriság | A folyamat feladatainak beütemezett és a korábbi adatok elemzéséhez használt gyakoriság, ha backfill fut. A beállítások a következők: naponta, hetente vagy havonta. | Minden Futtatás összehasonlítja a cél adatkészletben lévő adatokat a gyakoriság szerint: <li>Napi: a legutóbbi teljes nap összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Hetente: a legutóbbi teljes hét (hétfő – vasárnap) összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Havi: a legutóbbi teljes hónap összehasonlítása a célként megadott adatkészlet alapkonfigurációval | No | 
-    | Késés | Az adatkészletbe való beérkezéshez szükséges idő (óra). Ha például három napot vesz igénybe az adatkészletet tároló SQL-ADATBÁZISba való beérkezési adat, a késést állítsa 72-re. | Az adatkészlet-figyelő létrehozása után nem módosítható | No | 
-    | E-mail-címek | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Yes | 
-    | Küszöbérték | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Yes |
+    | Név | Az adatkészlet figyelő neve. | | Nem |
+    | Szolgáltatások | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Igen | 
+    | Számítási cél | Azure Machine Learning számítási célt az adatkészlet-figyelő feladatok futtatásához. | | Igen | 
+    | Engedélyezés | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Tiltsa le az ütemtervet, hogy elemezze a korábbi adatértékeket a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Igen | 
+    | Gyakoriság | A folyamat feladatainak beütemezett és a korábbi adatok elemzéséhez használt gyakoriság, ha backfill fut. A beállítások a következők: naponta, hetente vagy havonta. | Minden Futtatás összehasonlítja a cél adatkészletben lévő adatokat a gyakoriság szerint: <li>Napi: a legutóbbi teljes nap összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Hetente: a legutóbbi teljes hét (hétfő – vasárnap) összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Havi: a legutóbbi teljes hónap összehasonlítása a célként megadott adatkészlet alapkonfigurációval | Nem | 
+    | Késés | Az adatkészletbe való beérkezéshez szükséges idő (óra). Ha például három napot vesz igénybe az adatkészletet tároló SQL-ADATBÁZISba való beérkezési adat, a késést állítsa 72-re. | Az adatkészlet-figyelő létrehozása után nem módosítható | Nem | 
+    | E-mail-címek | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Igen | 
+    | Küszöbérték | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Igen |
 
 A varázsló befejezése után az eredményül kapott adatkészlet figyelő megjelenik a listában. Válassza ki, hogy megnyissa a figyelő részleteket tartalmazó lapját.
 
@@ -319,7 +319,7 @@ Meglévő műveleti csoportot is használhat, vagy létrehozhat egy újat, hogy 
 
 ![Új műveleti csoport](./media/how-to-monitor-datasets/action-group.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Hozzon létre egy adatkészlet-figyelőt a [Azure Machine learning Studióban](https://ml.azure.com) vagy a [Python-jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) .
 * Ismerje meg, hogyan állíthatja be az adateltolódást az [Azure Kubernetes szolgáltatásban üzembe helyezett modelleken](./how-to-enable-data-collection.md).

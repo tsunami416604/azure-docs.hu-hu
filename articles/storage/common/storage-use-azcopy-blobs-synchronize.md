@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6d1e9e8eeddaaa2ce8c891888935faad12d40295
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f8210428e772241134b57ac4fccb5b1549e04483
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907514"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617272"
 ---
 # <a name="synchronize-with-azure-blob-storage-by-using-azcopy-v10"></a>Szinkronizálás az Azure Blob Storage-nal a AzCopy v10 használatával
 
@@ -26,7 +26,7 @@ A helyi fájlrendszer tartalmát egy blob-tárolóval szinkronizálhatja. A tár
 
 Ha más típusú feladatokra, például fájlok feltöltésére, blobok letöltésére vagy Blobok a fiókok közötti másolására szeretne példákat látni, tekintse meg a jelen cikk [következő lépések](#next-steps) című szakaszának hivatkozásait.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és a tárolási szolgáltatás engedélyezési hitelesítő adatainak megadásához szükséges módszerekről.
 
@@ -79,7 +79,7 @@ A parancsban megjelenő első tároló a forrás. A második a cél.
 | **Syntax** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Példa** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
-## <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Könyvtár frissítése egy másik fájlmegosztás könyvtárának módosításaival
+## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>Könyvtár frissítése egy másik tárolóban lévő könyvtár módosításaival
 
 A parancsban megjelenő első könyvtár a forrás. A második a cél.
 
@@ -95,7 +95,7 @@ A parancsban megjelenő első könyvtár a forrás. A második a cél.
 
 A szinkronizálási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 
-|Használati példa|Jelölő|
+|Forgatókönyv|Jelölő|
 |---|---|
 |Itt adhatja meg, hogy a letöltéskor a szigorúan MD5-kivonatokat kell-e érvényesíteni.|**--ellenőrzési-MD5** = \[ Nincs \| bejelentkezett bejelentkezési \| FailIfDifferent \| FailIfDifferentOrMissing\]|
 |Fájlok kizárása mintázat alapján.|**--kizárás – elérési út**|
@@ -103,13 +103,13 @@ A szinkronizálási műveletet opcionális jelzők használatával is megadhatja
 
 A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-sync.md#options).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példákat a következő cikkekben talál:
 
-- [Példák: feltöltés](storage-use-azcopy-blobs-upload.md)
+- [Példák: Feltöltés](storage-use-azcopy-blobs-upload.md)
 - [Példák: Letöltés](storage-use-azcopy-blobs-download.md)
-- [Példák: másolás a fiókok között](storage-use-azcopy-blobs-copy.md)
+- [Példák: Másolás tárfiókok között](storage-use-azcopy-blobs-copy.md)
 - [Példák: Amazon S3-gyűjtők](storage-use-azcopy-s3.md)
 - [Példák: Azure Files](storage-use-azcopy-files.md)
 - [Oktatóanyag: Helyszíni adatok migrálása felhőtárhelybe az AzCopyval](storage-use-azcopy-migrate-on-premises-data.md)

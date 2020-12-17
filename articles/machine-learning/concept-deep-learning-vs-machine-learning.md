@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562837"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617119"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Mélyreható tanulás és gépi tanulás a Azure Machine Learning
 
@@ -57,9 +57,9 @@ A következő táblázat részletesebben összehasonlítja a két technikát:
 |  **Végrehajtási idő** | Viszonylag kevés időt vesz igénybe a betanítás, néhány másodperctől néhány órára. | A tanítás általában hosszú időt vesz igénybe, mivel a Deep learning algoritmus számos réteget magában foglal. |
 |  **Kimenet** | A kimenet általában numerikus érték, például pontszám vagy besorolás. | A kimenetnek több formátuma is lehet, például egy szöveg, egy pontszám vagy egy hang. |
 
-## <a name="transfer-learning"></a>A tanulás átvitele
+## <a name="transfer-learning"></a>Transzfertanulás
 
-A Deep learning-modellek betanításához gyakran nagy mennyiségű betanítási adatok, nagy teljesítményű számítási erőforrások (GPU, TPU) és hosszú betanítási idő szükséges. Abban az esetben, ha nem rendelkezik ezekkel a lehetőségekkel, a betanítási folyamatot az adatátviteli tanulási módszernek nevezett eljárással teheti meg.
+A Deep learning-modellek betanításához gyakran nagy mennyiségű betanítási adatok, nagy teljesítményű számítási erőforrások (GPU, TPU) és hosszú betanítási idő szükséges. Abban az esetben, ha nem rendelkezik ezekkel a lehetőségekkel, a betanítási folyamatot az *adatátviteli tanulási* módszernek nevezett eljárással teheti meg.
 
 Az átvitel a tanulás olyan technika, amely az egyik probléma megoldását egy másik, de kapcsolódó problémára is kiszolgálja.
 

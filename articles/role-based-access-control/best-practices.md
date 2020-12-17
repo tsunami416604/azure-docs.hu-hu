@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595505"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617374"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Ajánlott eljárások az Azure RBAC
 
@@ -24,7 +24,7 @@ Ez a cikk az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) haszn�
 
 Az Azure RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szükségük van. Ahelyett, hogy mindenki számára korlátlan engedélyeket adna az Azure-előfizetéshez vagy -erőforrásokhoz, az egyes műveletekhez hatókört adhat meg.
 
-A hozzáférés-vezérlési stratégia megtervezésekor ajánlott eljárásként csak a munkájuk elvégzéséhez minimálisan szükséges jogosultságokat biztosítsa a felhasználók számára. Ne rendeljen szélesebb hatókörű szerepköröket, még akkor is, ha az kezdetben kényelmesebbnek tűnik. A szerepkörök és hatókörök korlátozásával korlátozhatja, hogy a rendszerbiztonsági tag feltörése esetén milyen erőforrásokra van kitéve.
+A hozzáférés-vezérlési stratégia megtervezésekor ajánlott eljárásként csak a munkájuk elvégzéséhez minimálisan szükséges jogosultságokat biztosítsa a felhasználók számára. Ne rendeljen szélesebb hatókörű szerepköröket, még akkor is, ha az kezdetben kényelmesebbnek tűnik. Egyéni szerepkörök létrehozásakor csak a felhasználóknak szükséges engedélyeket kell tartalmazniuk. A szerepkörök és hatókörök korlátozásával korlátozhatja, hogy milyen erőforrásokra van veszélye, ha a rendszerbiztonsági tag még mindig biztonságban van.
 
 Az alábbi ábrán egy javasolt minta látható az Azure RBAC használatához.
 
@@ -42,6 +42,6 @@ A rendszerjogosultságú fiókok rosszindulatú cyber-támadások elleni védelm
 
 További információ: [Mi az Azure ad Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure RBAC hibáinak megoldása](troubleshooting.md)

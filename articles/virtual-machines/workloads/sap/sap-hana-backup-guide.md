@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 522af4bf6cc711bbfdfd30d0443ee58dad56b87e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 340ce84ebe662b976f32048a47fd98d793083065
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950023"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617102"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Az Azure-beli SAP HANA biztonsági mentési útmutatója Virtual Machines
 
@@ -103,7 +103,7 @@ A tábla konzisztencia-ellenőrzésével kapcsolatos információk az SAP webhel
 
 ### <a name="pros-and-cons-of-hana-backup-versus-storage-snapshot"></a>A HANA Backup és a Storage pillanatkép előnyei és hátrányai
 
-Az SAP nem&#39;t használ a HANA Backup és a Storage pillanatképének beállítására. Felsorolja azok előnyeit és hátrányait, így az a helyzettől és a rendelkezésre álló tárolási technológiától függően eldöntheti, hogy melyiket érdemes használni (lásd [a biztonsági mentési és helyreállítási stratégia megtervezése](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)című témakört).
+Az SAP nem&#39;t használ a HANA Backup és a Storage pillanatképének beállítására. Felsorolja azok előnyeit és hátrányait, így az a helyzettől és a rendelkezésre álló tárolási technológiától függően eldöntheti, hogy melyiket érdemes használni (lásd [a biztonsági mentési és helyreállítási stratégia megtervezése](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/ef085cd5949c40b788bba8fd3c65743e.html)című témakört).
 
 Az Azure-ban vegye figyelembe, hogy az Azure Blob pillanatkép-funkciója nem&#39;a fájlrendszer konzisztenciáját több lemez között (lásd: [blob-Pillanatképek használata a PowerShell használatával](/archive/blogs/cie/using-blob-snapshots-with-powershell)). 
 
@@ -147,6 +147,6 @@ A [biztonsági mentési és helyreállítási stratégia megtervezésére](https
 SAP HANA az adattitkosítást és a naplót is biztosítja. Ha SAP HANA adatokat és naplókat nem titkosítja a rendszer, akkor a biztonsági mentések alapértelmezés szerint nem lesznek titkosítva. A SAP HANA azonban egy különálló biztonsági mentési titkosítást biztosít [SAP HANA biztonsági mentési titkosításban](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/5f837a57ce5e468d9db21c8683bc84da.html)dokumentált módon. Ha a SAP HANA régebbi kiadásait futtatja, előfordulhat, hogy ellenőriznie kell, hogy a biztonsági másolat titkosítása a már megadott funkciók részét képezte-e.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [SAP HANA Azure Backup a fájl szintjén](sap-hana-backup-file-level.md) leírja a fájl alapú biztonsági mentési lehetőséget.
 * Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezheti meg az Azure-beli SAP HANA vész-helyreállítását (nagyméretű példányok), tekintse meg [a SAP HANA (nagyméretű példányok) magas rendelkezésre állását és a](hana-overview-high-availability-disaster-recovery.md)

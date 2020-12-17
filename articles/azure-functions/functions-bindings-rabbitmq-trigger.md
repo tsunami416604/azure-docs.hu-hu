@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan futtathat egy Azure-függvényt egy RabbitMQ-ü
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: e7095c08c385457bddf6d70d345c4f47073b4adb
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505730"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617221"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ-trigger Azure Functions – áttekintés
 
@@ -133,14 +133,12 @@ RabbitMQ kötés van definiálva a *function.js* , ahol a *típus* értéke: `Ra
             "name": "myQueueItem",
             "type": "rabbitMQTrigger",
             "direction": "in",
-            "queueName": "",
-            "connectionStringSetting": ""
+            "queueName": "queue",
+            "connectionStringSetting": "rabbitMQConnection"
         }
     ]
 }
 ```
-
-Az *_\_ init_. a (z \_ ). a. a. a.* a (z) kód egy paramétert deklarál `func.RabbitMQMessage` , amely lehetővé teszi a függvényben lévő üzenet olvasását
 
 ```python
 import logging
@@ -208,17 +206,17 @@ További részletekért tekintse meg az trigger [példáját](#example) .
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `RabbitMQTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a | "RabbitMQTrigger" értékre kell állítani.|
 |**irányba** | n/a | "In" értékre kell állítani.|
 |**név** | n/a | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. |
 |**queueName**|**QueueName**| Azon várólista neve, amelyről üzeneteket szeretne fogadni. |
-|**hostName**|**HostName**|(ConnectStringSetting használata esetén nem kötelező) <br>A várólista állomásneve (pl.: 10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting használata esetén nem kötelező) <br>A várólista eléréséhez használandó név |
-|**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting használata esetén nem kötelező) <br>A várólista eléréséhez szükséges jelszó|
+|**hostName**|**HostName**|(ConnectStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista állomásneve (pl.: 10.26.45.210)|
+|**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>Annak az alkalmazás-beállításnak a neve, amely a várólistához való hozzáféréshez használt felhasználónevet tartalmazza. Például: UserNameSetting: "% < UserNameFromSettings >%"|
+|**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>Annak az alkalmazás-beállításnak a neve, amely a várólista eléréséhez szükséges jelszót tartalmazza. Például: PasswordSetting: "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Annak az RabbitMQ a neve, amely az üzenetsor-kapcsolatok karakterláncát tartalmazza. Vegye figyelembe, hogy ha a (z) local.settings.json lévő alkalmazás-beállításon keresztül közvetlenül adja meg a kapcsolatok karakterláncát, akkor az trigger nem fog működni. (Pl.: *function.json*: connectionStringSetting: "rabbitMQConnection" <br> *local.settings.json*: "rabbitMQConnection": "< ActualConnectionstring >")|
-|**Port**|**Port**|Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0.|
+|**Port**|**Port**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -226,31 +224,29 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Az üzenethez a következő típusú paraméterek érhetők el:
+Az alapértelmezett üzenet típusa [RabbitMQ esemény](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html), és a `Body` RabbitMQ esemény tulajdonsága az alább felsorolt típusok szerint olvasható:
 
-* [RabbitMQ esemény](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) – az RabbitMQ-üzenetek alapértelmezett formátuma.
-  * `byte[]`– A RabbitMQ esemény "Body" tulajdonságán keresztül.
-* `string` – Az üzenet szövege.
 * `An object serializable as JSON` – Az üzenet érvényes JSON-sztringként lesz továbbítva.
+* `string`
+* `byte[]`
 * `POCO` – Az üzenet C#-objektumként van formázva. A teljes példa: C# [példa](#example).
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az üzenethez a következő típusú paraméterek érhetők el:
+Az alapértelmezett üzenet típusa [RabbitMQ esemény](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html), és a `Body` RabbitMQ esemény tulajdonsága az alább felsorolt típusok szerint olvasható:
 
-* [RabbitMQ esemény](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) – az RabbitMQ-üzenetek alapértelmezett formátuma.
-  * `byte[]`– A RabbitMQ esemény "Body" tulajdonságán keresztül.
-* `string` – Az üzenet szövege.
 * `An object serializable as JSON` – Az üzenet érvényes JSON-sztringként lesz továbbítva.
-* `POCO` – Az üzenet C#-objektumként van formázva.
+* `string`
+* `byte[]`
+* `POCO` – Az üzenet C#-objektumként van formázva. Teljes példa: C# parancsfájl- [példa](#example).
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A RabbitMQ-üzenet a függvényben karakterlánc-vagy JSON-objektumként lesz átadva.
+Az üzenetsor-üzenet a Context. kötések használatával érhető el.<NAME> ahol a <NAME> megegyezik a function.jsáltal megadott névvel. Ha a hasznos adat JSON, az érték deszerializálása egy objektumba történik.
 
 # <a name="python"></a>[Python](#tab/python)
 
-A RabbitMQ-üzenet a függvényben karakterlánc-vagy JSON-objektumként lesz átadva.
+Tekintse meg a Python- [példát](#example).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -279,19 +275,19 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |prefetchCount|30|Lekérdezi vagy beállítja az üzenet fogadója által egyidejűleg kérelmezhető és gyorsítótárazott üzenetek számát.|
 |queueName|n/a| Azon várólista neve, amelyről üzeneteket szeretne fogadni. |
 |connectionString|n/a|Annak az RabbitMQ a neve, amely az üzenetsor-kapcsolatok karakterláncát tartalmazza. Vegye figyelembe, hogy ha a (z) local.settings.json lévő alkalmazás-beállításon keresztül közvetlenül adja meg a kapcsolatok karakterláncát, akkor az trigger nem fog működni.|
-|port|0|A többméretű példányon egyidejűleg kezelhető munkamenetek maximális száma.|
+|port|0|(a connectionString használatával figyelmen kívül hagyva) A többméretű példányon egyidejűleg kezelhető munkamenetek maximális száma.|
 
 ## <a name="local-testing"></a>Helyi tesztelés
 
 > [!NOTE]
 > A connectionString elsőbbséget élvez a "hostName", a "userName" és a "password" kifejezéssel szemben. Ha ezek mindegyike be van állítva, akkor a connectionString felülbírálja a másik kettőt.
 
-Ha a helyi tesztelést nem a kapcsolatok karakterlánca nélkül végzi, állítsa be a "hostName" beállítást és a "username" és a "password" értéket, ha az a *host.js*"rabbitMQ" szakaszában szerepel:
+Ha a helyi tesztelést nem a kapcsolatok karakterlánca nélkül végzi, állítsa be a "hostName" beállítást és a "userName" és a "password" értéket, ha az a *host.js*"rabbitMQ" szakaszában szerepel:
 
 ```json
 {
@@ -300,18 +296,18 @@ Ha a helyi tesztelést nem a kapcsolatok karakterlánca nélkül végzi, állít
         "rabbitMQ": {
             ...
             "hostName": "localhost",
-            "username": "<your username>",
-            "password": "<your password>"
+            "username": "userNameSetting",
+            "password": "passwordSetting"
         }
     }
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|hostName|n/a|(ConnectStringSetting használata esetén nem kötelező) <br>A várólista állomásneve (pl.: 10.26.45.210)|
-|userName (Felhasználónév)|n/a|(ConnectionStringSetting használata esetén nem kötelező) <br>A várólista eléréséhez használandó név |
-|jelszó|n/a|(ConnectionStringSetting használata esetén nem kötelező) <br>A várólista eléréséhez szükséges jelszó|
+|hostName|n/a|(ConnectStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista állomásneve (pl.: 10.26.45.210)|
+|userName (Felhasználónév)|n/a|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista eléréséhez használandó név |
+|jelszó|n/a|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista eléréséhez szükséges jelszó|
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>RabbitMQ-végpont figyelése
 A várólisták és az egyes RabbitMQ-végpontok cseréjének figyelése:
@@ -319,6 +315,6 @@ A várólisták és az egyes RabbitMQ-végpontok cseréjének figyelése:
 * A [RabbitMQ-kezelő beépülő modul](https://www.rabbitmq.com/management.html) engedélyezése
 * Keresse meg a http://{node-hostname}: 15672, és jelentkezzen be a felhasználónevével és jelszavával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [RabbitMQ üzenetek küldése Azure Functionsból (kimeneti kötés)](./functions-bindings-rabbitmq-output.md)

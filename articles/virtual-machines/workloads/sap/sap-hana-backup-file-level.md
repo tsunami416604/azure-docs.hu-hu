@@ -13,22 +13,22 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 13bdf4b10ec586bf83a70434f003cc1573aca469
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 70b0f8178a94735a6ef37a225044984508cc2233
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950261"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617136"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup a fájl szintjén
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Ez a cikk az [Azure Virtual Machines SAP HANAának biztonsági mentési útmutatóját](./sap-hana-backup-guide.md)ismerteti, amely áttekintést nyújt az első lépésekről, valamint a Azure Backup szolgáltatás és a tárolási Pillanatképek további részleteiről. 
 
 Az Azure-beli különböző virtuálisgép-típusok különböző számú virtuális merevlemezt tesznek lehetővé. A pontos részleteket a [Linux rendszerű virtuális gépek méreteiben dokumentáljuk az Azure-ban](../../sizes.md). Az ebben a dokumentációban említett tesztek esetében egy GS5 Azure-beli virtuális gépet használunk, amely lehetővé teszi a 64-hez csatlakoztatott adatlemezek használatát. Nagyobb SAP HANA rendszerek esetében előfordulhat, hogy jelentős számú lemezre van szükség az adatok és a naplófájlok esetében, valószínűleg az optimális lemezes i/o-átviteli sebességhez. Az Azure-beli virtuális gépeken SAP HANA üzemelő példányok javasolt lemez-konfigurációval kapcsolatos további részletekért olvassa el az Azure-beli [virtuális gépek tárolási konfigurációjának SAP HANAát](./hana-vm-operations-storage.md)ismertető cikket. A javaslatok a helyi biztonsági mentésekre vonatkozó lemezterület-ajánlásokat is tartalmaznak.
 
-A Backup/Restore fájl szintjén való kezelésének szabványos módja a fájl-alapú biztonsági mentés SAP HANA studión keresztül vagy SAP HANA SQL-utasításokon keresztül. További információért olvassa el [SAP HANA SQL-és rendszernézetek referenciáját](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf).
+A Backup/Restore fájl szintjén való kezelésének szabványos módja a fájl-alapú biztonsági mentés SAP HANA studión keresztül vagy SAP HANA SQL-utasításokon keresztül. További információért olvassa el [SAP HANA SQL-és rendszernézetek referenciáját](https://help.sap.com/viewer/4fe29514fd584807ac9f2a04f6754767/2.0.05/en-US/3859e48180bb4cf8a207e15cf25a7e57.html).
 
 ![Ez az ábra a SAP HANA Studio Backup (biztonsági mentés) menüpontjának párbeszédpanelét jeleníti meg](media/sap-hana-backup-file-level/backup-menue-dialog.png)
 
@@ -118,6 +118,6 @@ A Azure Fileson elvégzett tesztekben nem az Azure Premium Files körülbelül 9
 
 Az Azure Files SAP HANA biztonsági mentési fájljainak tárolása érdekes lehetőség lehet. Különösen az Azure Premium-fájlok jobb késésével és teljesítményével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Virtual Machines SAP HANA biztonsági mentési útmutatója](sap-hana-backup-guide.md) áttekintést nyújt az első lépésekről.
 * Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezheti meg az Azure-beli SAP HANA vész-helyreállítását (nagyméretű példányok), tekintse meg [a SAP HANA (nagyméretű példányok) magas rendelkezésre állását és a](hana-overview-high-availability-disaster-recovery.md)

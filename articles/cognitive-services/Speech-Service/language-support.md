@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 0c8e13449a66c5eba055c64e072db3140b0cdc1c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 1b73b018432e5fb9a8af90fc141d009d1bb7b799
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606878"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617051"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -144,8 +144,8 @@ A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel val
 | Arab (Egyiptom) | `ar-EG` | Férfi | `ar-EG-ShakirNeural` <sup>Új</sup> | Általános kérdések |
 | Arab (Szaúd-Arábia) | `ar-SA` | Nő | `ar-SA-ZariyahNeural` | Általános kérdések |
 | Arab (Szaúd-Arábia) | `ar-SA` | Férfi | `ar-SA-HamedNeural` <sup>Új</sup> | Általános kérdések |
-| Bolgár (duzzadt) | `bg-BG` | Nő | `bg-BG-KalinaNeural` | Általános kérdések |
-| Bolgár (duzzadt) | `bg-BG` | Férfi | `bg-BG-BorislavNeural` <sup>Új</sup> | Általános kérdések |
+| Bolgár (Bulgária) | `bg-BG` | Nő | `bg-BG-KalinaNeural` | Általános kérdések |
+| Bolgár (Bulgária) | `bg-BG` | Férfi | `bg-BG-BorislavNeural` <sup>Új</sup> | Általános kérdések |
 | Katalán (Spanyolország) | `ca-ES` | Nő | `ca-ES-AlbaNeural` | Általános kérdések |
 | Katalán (Spanyolország) | `ca-ES` | Nő | `ca-ES-JoanaNeural` <sup>Új</sup> | Általános kérdések |
 | Katalán (Spanyolország) | `ca-ES` | Férfi | `ca-ES-EnricNeural` <sup>Új</sup> | Általános kérdések |

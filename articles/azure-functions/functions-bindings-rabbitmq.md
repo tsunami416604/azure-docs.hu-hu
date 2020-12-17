@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan küldhet Azure RabbitMQ-eseményindítókat és
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: cd6c8de0d9290aab273e25403bb1cb2d8fe07e27
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 72c31d0eebc19a926805976ed637168a00fa9495
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505726"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617187"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions RabbitMQ-kötések – áttekintés
 
@@ -30,7 +30,7 @@ A Azure Functions [triggerek és kötések](./functions-triggers-bindings.md)has
 
 A bővítmény fejlesztésének megkezdéséhez győződjön meg arról, hogy először [állít be egy RabbitMQ-végpontot](https://github.com/Azure/azure-functions-rabbitmq-extension/wiki/Setting-up-a-RabbitMQ-Endpoint). Ha többet szeretne megtudni a RabbitMQ, tekintse meg az [első lépéseket ismertető oldalt](https://www.rabbitmq.com/getstarted.html).
 
-### <a name="functions-2x-and-higher"></a>Functions 2.x és újabb
+### <a name="functions-3x-and-higher"></a>3. x és újabb függvények
 
 Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra hivatkozzon. A NuGet csomag a .NET-osztály könyvtáraihoz használatos, míg a kiterjesztési köteg minden más alkalmazás típusához használatos.
 
@@ -46,11 +46,11 @@ Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra 
 [Bővítmények frissítése]: ./functions-bindings-register.md
 [Azure-eszközök bővítmény]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-### <a name="functions-1x"></a>Functions 1.x
+### <a name="functions-1x-and-2x"></a>1. x és 2. x függvények
 
-A RabbitMQ kötési bővítmények nem támogatottak az 1. x függvényeknél. Használja a 2. x és újabb függvényeket.
+A RabbitMQ kötési bővítmények nem támogatottak az 1. x és 2. x függvényeknél. Használja a 3. x és újabb függvényeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása RabbitMQ-üzenet létrehozásakor (trigger)](./functions-bindings-rabbitmq-trigger.md)
 - [RabbitMQ üzenetek küldése Azure Functionsból (kimeneti kötés)](./functions-bindings-rabbitmq-output.md)

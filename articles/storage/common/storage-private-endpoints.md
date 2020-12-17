@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905553"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617255"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Privát végpontok használata az Azure Storage-hoz
 
@@ -45,6 +45,9 @@ A Storage-fiók tulajdonosai a [Azure Portal](https://portal.azure.com)a Storage
 > Ha csak a privát végponton keresztül szeretné korlátozni a Storage-fiók elérését, konfigurálja a tárolási tűzfalat a nyilvános végponton keresztüli hozzáférés megtagadásához vagy vezérléséhez.
 
 A Storage-fiók úgy is biztosítható, hogy csak a VNet érkező kapcsolatokat fogadja el, ha úgy [konfigurálja a tárolási tűzfalat](storage-network-security.md#change-the-default-network-access-rule) , hogy alapértelmezés szerint megtagadja a hozzáférést a nyilvános végponton keresztül. Nincs szükség olyan tűzfalszabályre, amely engedélyezi a forgalmat egy privát végponttal rendelkező VNet, mivel a tárolási tűzfal csak a nyilvános végponton keresztüli hozzáférést vezérli. A magánhálózati végpontok Ehelyett az alhálózatokhoz való hozzáférést biztosító engedélyezési folyamaton alapulnak.
+
+> [!NOTE]
+> A Storage-fiókok közötti Blobok másolásakor az ügyfélnek mindkét fiókhoz hálózati hozzáféréssel kell rendelkeznie. Tehát ha úgy dönt, hogy csak egy fiókhoz (a forráshoz vagy a célhelyhez) szeretne privát hivatkozást használni, győződjön meg arról, hogy az ügyfélnek van hálózati hozzáférése a másik fiókhoz. További információ a hálózati hozzáférés konfigurálásának egyéb módjairól: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](storage-network-security.md?toc=/azure/storage/blobs/toc.json). 
 
 ### <a name="private-endpoints-for-azure-storage"></a>Privát végpontok az Azure Storage-hoz
 
@@ -136,7 +139,7 @@ Ez a megkötés a DNS-módosítások eredményeként történt, amikor az A2-es 
 
 Jelenleg nem konfigurálhatja a [hálózati biztonsági csoport](../../virtual-network/network-security-groups-overview.md) (NSG) szabályait és a felhasználó által megadott útvonalakat a privát végpontokhoz. A privát végpontot működtető alhálózatra alkalmazott NSG-szabályok csak a privát végponton lévő többi végpontra (például hálózati adapterekre) vonatkoznak. A probléma korlátozott megkerülő megoldásként implementálja a privát végpontok hozzáférési szabályait a forrás alhálózatokon, bár ennél a megközelítésnél magasabb szintű felügyeleti terhelésre lehet szükség.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](storage-network-security.md)
 - [Biztonsági javaslatok a blob Storage-hoz](../blobs/security-recommendations.md)

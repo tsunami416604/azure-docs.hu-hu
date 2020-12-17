@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: rolyon
-ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369123"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617323"
 ---
 # <a name="azure-custom-roles"></a>Egyéni Azure-szerepkörök
 
@@ -161,11 +161,11 @@ A következő táblázat leírja, hogy az egyéni szerepkör tulajdonságai mit 
 | `Id`</br>`name` | Igen | Sztring | Az egyéni szerepkör egyedi azonosítója. A Azure PowerShell és az Azure CLI esetében ez az azonosító automatikusan létrejön, amikor új szerepkört hoz létre. |
 | `IsCustom`</br>`roleType` | Igen | Sztring | Azt jelzi, hogy ez egy egyéni szerepkör-e. `true` `CustomRole` Egyéni szerepkörökhöz vagy értékhez. `false` `BuiltInRole` Beépített szerepkörökhöz vagy értékhez. |
 | `Description`</br>`description` | Igen | Sztring | Az egyéni szerepkör leírása. Tartalmazhat betűket, számokat, szóközöket és speciális karaktereket is. A karakterek maximális száma 1024. |
-| `Actions`</br>`actions` | Yes | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza, hogy a szerepkör milyen kezelési műveleteket hajtson végre. További információ: [műveletek](role-definitions.md#actions). |
-| `NotActions`</br>`notActions` | No | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza az engedélyezetttől kizárt felügyeleti műveleteket `Actions` . További információkért lásd: a nem- [tapintatok](role-definitions.md#notactions). |
-| `DataActions`</br>`dataActions` | No | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza azokat az adatműveleteket, amelyeket a szerepkör engedélyez az adott objektumon belüli adatokon való végrehajtáshoz. Ha egyéni szerepkört hoz létre a `DataActions` alkalmazással, a szerepkör nem rendelhető hozzá a felügyeleti csoport hatóköréhez. További információ: [DataActions](role-definitions.md#dataactions). |
-| `NotDataActions`</br>`notDataActions` | No | Karakterlánc [] | Karakterláncok tömbje, amely az engedélyezetttől kizárt adatműveleteket határozza meg `DataActions` . További információ: [NotDataActions](role-definitions.md#notdataactions). |
-| `AssignableScopes`</br>`assignableScopes` | Yes | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza az egyéni szerepkör hozzárendeléshez elérhető hatóköreit. Egyéni szerepkörben csak egyetlen felügyeleti csoportot lehet definiálni `AssignableScopes` . A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el. További információ: [AssignableScopes](role-definitions.md#assignablescopes). |
+| `Actions`</br>`actions` | Igen | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza, hogy a szerepkör milyen kezelési műveleteket hajtson végre. További információ: [műveletek](role-definitions.md#actions). |
+| `NotActions`</br>`notActions` | Nem | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza az engedélyezetttől kizárt felügyeleti műveleteket `Actions` . További információkért lásd: a nem- [tapintatok](role-definitions.md#notactions). |
+| `DataActions`</br>`dataActions` | Nem | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza azokat az adatműveleteket, amelyeket a szerepkör engedélyez az adott objektumon belüli adatokon való végrehajtáshoz. Ha egyéni szerepkört hoz létre a `DataActions` alkalmazással, a szerepkör nem rendelhető hozzá a felügyeleti csoport hatóköréhez. További információ: [DataActions](role-definitions.md#dataactions). |
+| `NotDataActions`</br>`notDataActions` | Nem | Karakterlánc [] | Karakterláncok tömbje, amely az engedélyezetttől kizárt adatműveleteket határozza meg `DataActions` . További információ: [NotDataActions](role-definitions.md#notdataactions). |
+| `AssignableScopes`</br>`assignableScopes` | Igen | Karakterlánc [] | Karakterláncok tömbje, amely meghatározza az egyéni szerepkör hozzárendeléshez elérhető hatóköreit. Egyéni szerepkörben csak egyetlen felügyeleti csoportot lehet definiálni `AssignableScopes` . A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el. További információ: [AssignableScopes](role-definitions.md#assignablescopes). |
 
 ## <a name="wildcard-permissions"></a>Helyettesítő karakteres engedélyek
 
@@ -208,6 +208,7 @@ Az alábbi lista az egyéni szerepkörökre vonatkozó korlátozásokat ismertet
 - Minden címtárhoz legfeljebb **5000** egyéni szerepkör tartozhat.
 - Az Azure Germany és az Azure China 21Vianet az egyes könyvtárak esetében akár 2000 egyéni szerepkört is tartalmazhat.
 - `AssignableScopes`A gyökérszintű hatókör () nem állítható be `"/"` .
+- A alkalmazásban nem használhatók helyettesítő karakterek ( `*` ) `AssignableScopes` . Ez a helyettesítő karakteres korlátozás segít biztosítani, hogy a felhasználók nem tudják elérni a hatókört a szerepkör-definíció frissítésével.
 - Egyéni szerepkörben csak egyetlen felügyeleti csoportot lehet definiálni `AssignableScopes` . A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
 - `DataActions`A felügyeleti csoport hatókörében nem lehet hozzárendelni egyéni szerepköröket.
 - Azure Resource Manager nem ellenőrzi a felügyeleti csoport létezését a szerepkör-definíció hozzárendelhető hatókörében.
@@ -355,7 +356,7 @@ Az alábbi példa bemutatja a kimenetet, amikor egyéni szerepkört listáz a RE
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell használatával](tutorial-custom-role-powershell.md)
 - [Oktatóanyag: egyéni Azure-szerepkör létrehozása az Azure CLI használatával](tutorial-custom-role-cli.md)

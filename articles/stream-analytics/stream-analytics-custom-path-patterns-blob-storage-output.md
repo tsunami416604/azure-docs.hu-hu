@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7239c2e3cb42cb17b01904e8fc226ae2408dbb47
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491672"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617425"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Egyéni blob kimeneti particionálás Azure Stream Analytics
 
@@ -25,7 +25,13 @@ Az egyéni mezők vagy a bemeneti attribútumok javítják az adatfeldolgozási 
 
 ### <a name="partition-key-options"></a>Partíciós kulcs beállításai
 
-A bemeneti adatok particionálásához használt partíciós kulcs vagy oszlopnév a kötőjeleket, aláhúzásokat és szóközöket tartalmazó alfanumerikus karaktereket tartalmazhat. A beágyazott mezőket nem lehet partíciós kulcsként használni, kivéve, ha aliasokkal együtt használják. A partíció kulcsának NVARCHAR (MAX), BIGINT, FLOAT vagy BIT értékűnek kell lennie (1,2 kompatibilitási szint vagy magasabb). További információ: [Azure stream Analytics adattípusok](/stream-analytics-query/data-types-azure-stream-analytics).
+A bemeneti adatok particionálásához használt partíciós kulcs vagy oszlopnév tartalmazhat bármely, a [blob-nevek](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)számára elfogadható karaktert. A beágyazott mezőket nem lehet partíciós kulcsként használni, kivéve, ha az aliasokkal együtt használják őket, de bizonyos karaktereket is használhat a fájlok hierarchiájának létrehozásához. A következő lekérdezéssel például létrehozhat egy olyan oszlopot, amely két másik oszlop adatait kombinálja egy egyedi partíciós kulcs létrehozásához.
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+A partíció kulcsának NVARCHAR (MAX), BIGINT, FLOAT vagy BIT értékűnek kell lennie (1,2 kompatibilitási szint vagy magasabb). A DateTime, a Array és a Records típusok nem támogatottak, de a karakterláncokra konvertált partíciós kulcsként használhatók. További információ: [Azure stream Analytics adattípusok](/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Példa
 
@@ -73,7 +79,7 @@ Az egyéni DateTime elérésiút-minták lehetővé teszik olyan kimeneti formá
 
 A következő formátumú megadási jogkivonatok használhatók önállóan vagy kombinálva egyéni DateTime formátumok eléréséhez:
 
-|Megadási formátum   |Description   |Az eredmények például 2018-01-02T10:06:08|
+|Megadási formátum   |Leírás   |Az eredmények például 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{datetime: ÉÉÉÉ}|Az év egy négyjegyű számként|2018|
 |{datetime: PP}|Hónap, 01 és 12 között|01|

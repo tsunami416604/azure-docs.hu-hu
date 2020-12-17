@@ -27,6 +27,8 @@
   items:
     - name: Biztonság
       items:
+        - name: Biztonsági áttekintés
+          href: security.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
     - name: Az Azure Data Share terminológiája
@@ -62,8 +64,6 @@
       href: how-to-revoke-share-subscription.md
     - name: Monitor
       href: how-to-monitor.md
-    - name: Biztonság
-      href: security.md
     - name: Vészhelyreállítás
       href: disaster-recovery.md
     - name: Hibaelhárítás
