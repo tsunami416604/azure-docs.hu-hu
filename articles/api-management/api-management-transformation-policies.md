@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 3097f7b0b6b69dc470877d4951efbcbd3c7482b1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 212a6b0786b371bfb92f2e193e67d9accd432bf8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078493"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657243"
 ---
 # <a name="api-management-transformation-policies"></a>API Management-átalakítási szabályzatok
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](./api-management-policies.md).
@@ -316,12 +316,12 @@ Ebben a példában a házirend a kérést egy Service Fabric-háttérre irányí
 
 ```xml
 <set-body>
-@{ 
-    string inBody = context.Request.Body.As<string>(preserveContent: true); 
-    if (inBody[0] =='c') { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody; 
+@{ 
+    string inBody = context.Request.Body.As<string>(preserveContent: true); 
+    if (inBody[0] =='c') { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody; 
 }
 </set-body>
 ```
@@ -329,14 +329,14 @@ Ebben a példában a házirend a kérést egy Service Fabric-háttérre irányí
 #### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accessing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Példa a törzs JObject való elérésére. Vegye figyelembe, hogy mivel az eredeti kérelem törzse nem található meg, a folyamat későbbi részében való hozzáférés kivételt eredményez.
 
 ```xml
-<set-body> 
-@{ 
-    JObject inBody = context.Request.Body.As<JObject>(); 
-    if (inBody.attribute == <tag>) { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody.ToString(); 
-} 
+<set-body> 
+@{ 
+    JObject inBody = context.Request.Body.As<JObject>(); 
+    if (inBody.attribute == <tag>) { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody.ToString(); 
+} 
 </set-body>
 
 ```
@@ -513,7 +513,7 @@ OriginalUrl.
 |Név|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |fejléc beállítása|Gyökérelem.|Yes|
-|value|Megadja a beállítandó fejléc értékét. Több azonos nevű fejléchez további elemek is hozzáadhatók `value` .|No|
+|érték|Megadja a beállítandó fejléc értékét. Több azonos nevű fejléchez további elemek is hozzáadhatók `value` .|No|
 
 ### <a name="properties"></a>Tulajdonságok
 
@@ -568,7 +568,7 @@ OriginalUrl.
 |Név|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |set-Query-paraméter|Gyökérelem.|Yes|
-|value|Megadja a beállítandó lekérdezési paraméter értékét. Az azonos nevű lekérdezési paraméterekhez további elemek is hozzáadhatók `value` .|Yes|
+|érték|Megadja a beállítandó lekérdezési paraméter értékét. Az azonos nevű lekérdezési paraméterekhez további elemek is hozzáadhatók `value` .|Yes|
 
 ### <a name="properties"></a>Tulajdonságok
 
@@ -697,7 +697,7 @@ OriginalUrl.
   <outbound>
       <base />
       <xsl-transform>
-        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             <xsl:output omit-xml-declaration="yes" method="xml" indent="yes" />
             <!-- Copy all nodes directly-->
             <xsl:template match="node()| @*|*">
@@ -705,7 +705,7 @@ OriginalUrl.
                     <xsl:apply-templates select="@* | node()|*" />
                 </xsl:copy>
             </xsl:template>
-        </xsl:stylesheet>
+          </xsl:stylesheet>
     </xsl-transform>
   </outbound>
 </policies>
@@ -732,4 +732,4 @@ További információkért tekintse át a következők témaköröket:
 
 + [Szabályzatok API Management](api-management-howto-policies.md)
 + Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
-+ [Házirend-minták](./policy-reference.md)
++ [Szabályzatminták](./policy-reference.md)

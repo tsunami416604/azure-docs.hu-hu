@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 824ae8d39d934ebc58fc75185e36f5faa11109a9
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 662a0f53a5d5e8e02ef3b29640009fd07bf4f1d0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325366"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652144"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kód mintái (v 1.0 végpont)
 
@@ -40,10 +40,10 @@ A GitHubon is hozzájárulhat a mintákhoz. További információ: [Microsoft Az
 
 Ez a minta bemutatja, hogyan írhat egy egyoldalas alkalmazást az Azure AD-vel.
 
- Platform | Saját API meghívása | Egy másik webes API meghívása
- -------- |  --------------------- | ------------------ 
-![Ez a rendszerkép a JavaScript emblémát jeleníti meg](media/sample-v2-code/logo-js.png) | [JavaScript – singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
-![Ez a képen a szögletes JS embléma látható](media/sample-v2-code/logo-angular.png) | [angularjs – singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-CORS](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
+| Platform | Saját API meghívása | Egy másik webes API meghívása |
+|--|--|--|
+| ![Ez a rendszerkép a JavaScript emblémát jeleníti meg](media/sample-v2-code/logo-js.png) | [JavaScript – singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
+| ![Ez a képen a szögletes JS embléma látható](media/sample-v2-code/logo-angular.png) | [angularjs – singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-CORS](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi) |
 
 ## <a name="web-applications"></a>Webalkalmazások
 
@@ -51,21 +51,21 @@ Ez a minta bemutatja, hogyan írhat egy egyoldalas alkalmazást az Azure AD-vel.
 
 Az alábbi példák bemutatják a felhasználók aláírására szolgáló webalkalmazásokat. Ezen alkalmazások némelyike a bejelentkezett felhasználó nevében is meghívja a Microsoft Graph vagy a saját webes API-ját.
 
- Platform | Csak a felhasználókhoz tartozó jelek | Hívások Microsoft Graph | Egy másik ASP.NET vagy ASP.NET Core 2,0 webes API meghívása
- -------- | ------------------- | --------------------- | -------------------------
-![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-WebApp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WebApp-webapi-több-bérlős-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(HRE gráf) | [DotNet-WebApp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [WebApp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-WebApp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-WebApp-több-bérlős openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (HRE gráf) |
-![Ez a képen a Python-embléma látható](media/sample-v2-code/logo-python.png) | | [Python-WebApp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
-![Ez a rendszerkép a Java-naplót jeleníti meg](media/sample-v2-code/logo-java.png)  | | [Java-WebApp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
-![Ez a rendszerkép a PHP-emblémát jeleníti meg](media/sample-v2-code/logo-php.png) | | [PHP-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
+| Platform | Csak a felhasználókhoz tartozó jelek | Hívások Microsoft Graph | Egy másik ASP.NET vagy ASP.NET Core 2,0 webes API meghívása |
+|--|--|--|--|
+| ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-WebApp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WebApp-webapi-több-bérlős-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(HRE gráf) | [DotNet-WebApp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore) |
+| ![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | </p> [WebApp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-WebApp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-WebApp-több-bérlős openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (HRE gráf) |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo-python.png) |  | [Python-WebApp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) |
+| ![Ez a rendszerkép a Java-naplót jeleníti meg](media/sample-v2-code/logo-java.png) |  | [Java-WebApp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect) |
+| ![Ez a rendszerkép a PHP-emblémát jeleníti meg](media/sample-v2-code/logo-php.png) |  | [PHP-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web) |
 
 ### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>Szerepköralapú hozzáférés-vezérlést bemutató webalkalmazások (Engedélyezés)
 
 A következő példák bemutatják, hogyan valósítható meg a szerepköralapú hozzáférés-vezérlés (RBAC). A RBAC egy webalkalmazás bizonyos szolgáltatásai engedélyeinek bizonyos felhasználókra való korlátozására szolgál. A felhasználók jogosultak attól függően, hogy egy **Azure ad-csoporthoz** tartoznak-e, vagy egy adott alkalmazási **szerepkörrel** rendelkeznek.
 
-Platform | Sample |
- -------- | ------------------- |
-![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-WebApp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [DotNet-WebApp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD- **szerepköröket** használó .net 4,5 MVC-alapú webalkalmazások engedélyezéséhez
+| Platform | Sample |
+|--|--|
+| ![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-WebApp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [DotNet-WebApp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD- **szerepköröket** használó .net 4,5 MVC-alapú webalkalmazások engedélyezéséhez |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Microsoft Graph vagy webes API-t hívó asztali és mobil nyilvános ügyfélalkalmazások
 

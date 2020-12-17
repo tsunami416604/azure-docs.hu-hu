@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/18/2020
+ms.date: 12/16/2020
 ms.custom: generated
-ms.openlocfilehash: e18dc7e16eb0b114bd279d53b7dcc895bd62f338
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f22b74b16594419b0eff33f0c73d6e9c3a62ac15
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002731"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655033"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -27,10 +27,10 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 ## <a name="all"></a>Mind
 
 > [!div class="mx-tableFixed"]
-> | Beépített szerepkör | Leírás | ID (Azonosító) |
+> | Beépített szerepkör | Description | ID (Azonosító) |
 > | --- | --- | --- |
 > | **Általános** |  |  |
-> | [Közreműködő](#contributor) | Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem teszi lehetővé szerepkörök hozzárendelését az Azure RBAC-ben. | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [Közreműködő](#contributor) | Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem teszi lehetővé a szerepkörök hozzárendelését az Azure RBAC, a hozzárendelések kezelését az Azure-tervekben, illetve a képtárak megosztását. | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | [Tulajdonos](#owner) | Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, beleértve a szerepkörök hozzárendelésének lehetőségét az Azure RBAC. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [Olvasó](#reader) | Megtekintheti az összes erőforrást, de nem teszi lehetővé a módosítások elvégzését. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [Felhasználói hozzáférés adminisztrátora](#user-access-administrator) | Lehetővé teszi az Azure-erőforrásokhoz való felhasználói hozzáférés kezelését. | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
@@ -121,7 +121,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Log Analytics olvasó](#log-analytics-reader) | Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adatait, valamint megtekintheti a figyelési beállításokat, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [Séma beállításjegyzékbeli közreműködői (előzetes verzió)](#schema-registry-contributor-preview) | Séma-beállításjegyzékbeli csoportok és sémák olvasása, írása és törlése. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [Séma beállításjegyzék-olvasója (előzetes verzió)](#schema-registry-reader-preview) | Séma-beállításjegyzékbeli csoportok és sémák olvasása és listázása. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
-> | **Blokklánc** |  |  |
+> | **Blockchain** |  |  |
 > | [Blockchain-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain-tagok csomópontjaihoz | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI és gépi tanulás** |  |  |
 > | [Cognitive Services közreműködő](#cognitive-services-contributor) | Lehetővé teszi Cognitive Services kulcsainak létrehozását, olvasását, frissítését, törlését és kezelését. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -165,7 +165,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Key Vault Certificates Officer (előzetes verzió)](#key-vault-certificates-officer-preview) | Hajtson végre bármilyen műveletet a Key Vault tanúsítványán, kivéve a kezelési engedélyeket. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Key Vault közreműködő](#key-vault-contributor) | A kulcstartók kezelése, de nem teszi lehetővé szerepkörök hozzárendelését az Azure RBAC, és nem teszi lehetővé a titkok, kulcsok és tanúsítványok elérését. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | [Key Vault titkosítási tisztviselő (előzetes verzió)](#key-vault-crypto-officer-preview) | Hajtson végre bármilyen műveletet a kulcstartó kulcsain, kivéve a kezelési engedélyeket. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-> | [Titkosítási szolgáltatás titkosításának Key Vault (előzetes verzió)](#key-vault-crypto-service-encryption-preview) | A kulcsok metaadatainak olvasása, valamint a becsomagolási/kicsomagolási műveletek végrehajtása. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault kriptográfiai szolgáltatás titkosítási felhasználója (előzetes verzió)](#key-vault-crypto-service-encryption-user-preview) | A kulcsok metaadatainak olvasása, valamint a becsomagolási/kicsomagolási műveletek végrehajtása. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
 > | [Key Vault kriptográfiai felhasználó (előzetes verzió)](#key-vault-crypto-user-preview) | Titkosítási műveletek végrehajtása kulcsok használatával. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | 12338af0-0e69-4776-bea7-57ae8d297424 |
 > | [Key Vault olvasó (előzetes verzió)](#key-vault-reader-preview) | A kulcstartók és a hozzá tartozó tanúsítványok, kulcsok és titkos kódok metaadatainak olvasása. Nem lehet olvasni a bizalmas értékeket, például a titkos tartalmat vagy a kulcs anyagát. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | 21090545-7ca7-4776-b22c-e363652d74d2 |
 > | [Key Vault Secrets Officer (előzetes verzió)](#key-vault-secrets-officer-preview) | Hajtson végre bármilyen műveletet a Key Vault titkos kulcsain, kivéve a kezelési engedélyeket. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
@@ -220,12 +220,12 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Ütemező – feladattípusok közreműködői](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 
 ### <a name="contributor"></a>Közreműködő
 
-Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem teszi lehetővé szerepkörök hozzárendelését az Azure RBAC-ben. [További információ](rbac-and-directory-admin-roles.md)
+Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem teszi lehetővé a szerepkörök hozzárendelését az Azure RBAC, a hozzárendelések kezelését az Azure-tervekben, illetve a képtárak megosztását. [További információ](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -248,7 +248,7 @@ Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem tes
   "assignableScopes": [
     "/"
   ],
-  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC.",
+  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC, manage assignments in Azure Blueprints, or share image galleries.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
   "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
   "permissions": [
@@ -688,7 +688,7 @@ Tekintse meg Virtual Machines a portálon, és jelentkezzen be normál felhaszn�
 }
 ```
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 
 ### <a name="cdn-endpoint-contributor"></a>CDN-végpont közreműködői
@@ -2589,7 +2589,7 @@ Azure Storage-várólisták és üzenetsor-üzenetek olvasása és listázása. 
 }
 ```
 
-## <a name="web"></a>Web
+## <a name="web"></a>Webes
 
 
 ### <a name="azure-maps-data-reader"></a>Adatolvasó Azure Maps
@@ -3072,7 +3072,7 @@ Lehetővé teszi a webhelyek (nem webes csomagok) kezelését, de nem fér hozz�
 }
 ```
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Tárolók
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -4265,6 +4265,7 @@ Lehetővé teszi az SQL-kiszolgálók és-adatbázisok biztonsággal kapcsolatos
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/azureADOnlyAuthentications/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/READ | Visszaadja a felügyelt példányok listáját, vagy lekéri a megadott felügyelt példány tulajdonságait. |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/* |  |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/sqlVulnerabilityAssessments/* |  |
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions** |  |
@@ -4326,7 +4327,8 @@ Lehetővé teszi az SQL-kiszolgálók és-adatbázisok biztonsággal kapcsolatos
         "Microsoft.Support/*",
         "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
         "Microsoft.Sql/managedInstances/read",
-        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*"
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
+        "Microsoft.Security/sqlVulnerabilityAssessments/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4968,7 +4970,7 @@ Séma-beállításjegyzékbeli csoportok és sémák olvasása és listázása.
 }
 ```
 
-## <a name="blockchain"></a>Blokklánc
+## <a name="blockchain"></a>Blockchain
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blockchain-hozzáférés (előzetes verzió)
@@ -6191,7 +6193,7 @@ Lehetővé teszi a fejlesztők számára munkafolyamatok, integrációs fiókok 
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
 > | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/READ | Beolvassa az integrációs szolgáltatási környezetet. |
-> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/JOIN/Action | Csatlakozik a integrációs szolgáltatási környezethoz. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/*/JOIN/Action |  |
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions** |  |
@@ -6213,7 +6215,7 @@ Lehetővé teszi a fejlesztők számára munkafolyamatok, integrációs fiókok 
         "Microsoft.Authorization/*/read",
         "Microsoft.Support/*",
         "Microsoft.Logic/integrationServiceEnvironments/read",
-        "Microsoft.Logic/integrationServiceEnvironments/join/action"
+        "Microsoft.Logic/integrationServiceEnvironments/*/join/action"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6688,6 +6690,7 @@ Azure Sentinel-olvasó [További információ](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/READ |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/Action | Felhasználói hitelesítés és licencek keresése |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/automationRules/* |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/Cases/* |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/Indicators/appendTags/Action | Címkék hozzáfűzése a veszélyforrások felderítéséhez |
@@ -6732,6 +6735,7 @@ Azure Sentinel-olvasó [További információ](../sentinel/roles.md)
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+        "Microsoft.SecurityInsights/automationRules/*",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
@@ -7004,7 +7008,7 @@ Hajtson végre bármilyen műveletet a kulcstartó kulcsain, kivéve a kezelési
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-preview"></a>Titkosítási szolgáltatás titkosításának Key Vault (előzetes verzió)
+### <a name="key-vault-crypto-service-encryption-user-preview"></a>Key Vault kriptográfiai szolgáltatás titkosítási felhasználója (előzetes verzió)
 
 A kulcsok metaadatainak olvasása, valamint a becsomagolási/kicsomagolási műveletek végrehajtása. Csak az "Azure szerepköralapú hozzáférés-vezérlés" engedélyezési modellt használó kulcstartók esetében működik.
 
@@ -7041,7 +7045,7 @@ A kulcsok metaadatainak olvasása, valamint a becsomagolási/kicsomagolási műv
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Service Encryption (preview)",
+  "roleName": "Key Vault Crypto Service Encryption User (preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -8455,6 +8459,7 @@ Megtekintheti a költségeket és kezelheti a költségek konfigurációját (pl
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/configurations/READ | Konfigurációk beolvasása |
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Recommendations/READ | Olvasási javaslatok |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/READ | Felügyeleti csoportok listázása a hitelesített felhasználó számára. |
+> | [Microsoft. számlázási](resource-provider-operations.md#microsoftbilling)/billingProperty/READ |  |
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions** |  |
@@ -8481,7 +8486,8 @@ Megtekintheti a költségeket és kezelheti a költségek konfigurációját (pl
         "Microsoft.Support/*",
         "Microsoft.Advisor/configurations/read",
         "Microsoft.Advisor/recommendations/read",
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Billing/billingProperty/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -8510,6 +8516,7 @@ Megtekintheti a költségeket és a konfigurációt (például a költségvetés
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/configurations/READ | Konfigurációk beolvasása |
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Recommendations/READ | Olvasási javaslatok |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/READ | Felügyeleti csoportok listázása a hitelesített felhasználó számára. |
+> | [Microsoft. számlázási](resource-provider-operations.md#microsoftbilling)/billingProperty/READ |  |
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions** |  |
@@ -8536,7 +8543,8 @@ Megtekintheti a költségeket és a konfigurációt (például a költségvetés
         "Microsoft.Support/*",
         "Microsoft.Advisor/configurations/read",
         "Microsoft.Advisor/recommendations/read",
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Billing/billingProperty/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -8603,8 +8611,8 @@ Szerepkör-definíció a connectedClusters [-erőforrások](../azure-arc/kuberne
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/READ | Az előfizetési művelet eredményeinek beolvasása. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/READ | Az előfizetések listájának beolvasása. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
-> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | ConnectedClusters írása |
-> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/READ | ConnectedClusters olvasása |
+> | Microsoft. Kubernetes/connectedClusters/Write |  |
+> | Microsoft. Kubernetes/connectedClusters/READ |  |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
 > | **NotActions** |  |
 > | *nincs* |  |
@@ -9743,7 +9751,7 @@ Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)

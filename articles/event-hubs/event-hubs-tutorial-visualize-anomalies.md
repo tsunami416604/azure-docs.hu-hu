@@ -3,12 +3,12 @@ title: Azure Event Hubs – adatanomáliák megjelenítése valós idejű esemé
 description: 'Oktatóanyag: az adatrendellenességek megjelenítése a Microsoft Azureba eljuttatott valós idejű eseményekben Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b72b82f3959565e6bd0598fef8e21bb64fedb053
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934055"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655679"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 
@@ -26,14 +26,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot][], mielőtt hozzákezd.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - A [Visual Studio](https://www.visualstudio.com/) telepítése. 
 - A Stream Analytics-feladat kimenetének elemzéséhez szüksége lesz egy Power BI-fiókra. A [Power BI-t ingyenesen kipróbálhatja](https://app.powerbi.com/signupredirect?pbi_source=web).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="set-up-resources"></a>Erőforrások beállítása
 
@@ -153,8 +151,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 A [githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) található Event Hubs minták olyan anomália-detektor alkalmazást tartalmaznak, amely tesztelési célú adatfeldolgozást készít Önnek. Az alkalmazás szimulálja a hitelkártyák használatát azáltal, hogy hitelkártya-tranzakciókat ír az eseményközpontba, és időnként több tranzakciót ír ugyanahhoz a hitelkártyához, több helyszínen, hogy a rendszer anomáliaként jelölje meg őket. Az alkalmazás futtatásához kövesse az alábbi lépéseket: 
 
 1. Töltse le az [Azure Event Hubs-mintákat](https://github.com/Azure/azure-event-hubs/archive/master.zip) a GitHubról, majd bontsa ki őket helyben.
-2. Navigáljon a mappa **\azure-Event-Hubs-master\samples\DotNet \\ ** mappájába. 
-3. Váltson az **Azure. Messaging. EventHubs\AnomalyDetector \\ ** mappára, és kattintson duplán a **AnomalyDetector. SLN** elemre a megoldás a Visual Studióban való megnyitásához. 
+2. Navigáljon a mappa **\azure-Event-Hubs-master\samples\DotNet \\** mappájába. 
+3. Váltson az **Azure. Messaging. EventHubs\AnomalyDetector \\** mappára, és kattintson duplán a **AnomalyDetector. SLN** elemre a megoldás a Visual Studióban való megnyitásához. 
 
     A régi Microsoft. Azure. EventHubs csomagot használó minta régi verziójának használatához nyissa meg a megoldást a **Microsoft. Azure. EventHubs\AnomalyDetector** mappából. 
 3. Nyissa meg a Program.cs fájlt, és cserélje le az **Event Hubs kapcsolati sztringjét** a szkript futtatásakor mentett kapcsolati sztringre. 
@@ -180,7 +178,7 @@ Most már adatokat streamelhet az eseményközpontba. Az adatok Power BI-vizuali
 
    ![Új Azure Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Létrehozás** elemre. 
+    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Létrehozás** gombra. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
@@ -300,7 +298,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
    ![Képernyőkép az irányítópult nevének megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. Az irányítópult lapon kattintson a **csempe hozzáadása**elemre, válassza ki az **Egyéni adatfolyam** -adatátvitelt a **valós idejű** adatszakaszban, majd kattintson a **tovább**gombra.
+7. Az irányítópult lapon kattintson a **csempe hozzáadása** elemre, válassza ki az **Egyéni adatfolyam** -adatátvitelt a **valós idejű** adatszakaszban, majd kattintson a **tovább** gombra.
 
    ![Képernyőkép a csempe forrásának megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 
@@ -308,7 +306,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
    ![Képernyőkép az adatkészlet megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. A vizualizáció típusánál válassza a **Kártya** lehetőséget. A **mezők**területen kattintson az **érték hozzáadása**, majd a elemre `fraudulentuses` .
+9. A vizualizáció típusánál válassza a **Kártya** lehetőséget. A **mezők** területen kattintson az **érték hozzáadása**, majd a elemre `fraudulentuses` .
 
    ![Képernyőkép a vizualizációtípus és a mezők megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -319,7 +317,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
     ![Képernyőkép az irányítópult-csempe címének és alcímének megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
     > [!IMPORTANT]
-    > Ha a minta alkalmazást és az adatfolyamot az Event hub-ra futtatja, a csempe száma gyorsan változik (másodpercenként). Ez azért van, mert a Stream Analytics lekérdezés **másodpercenként**frissíti az értéket. Frissítse a lekérdezést egy 3 perces késleltetésű ablakra, hogy az összeg az elmúlt néhány percben megjelenjen. 
+    > Ha a minta alkalmazást és az adatfolyamot az Event hub-ra futtatja, a csempe száma gyorsan változik (másodpercenként). Ez azért van, mert a Stream Analytics lekérdezés **másodpercenként** frissíti az értéket. Frissítse a lekérdezést egy 3 perces késleltetésű ablakra, hogy az összeg az elmúlt néhány percben megjelenjen. 
 11. Adjon hozzá egy másik vizualizációt. Ismételje meg az első néhány lépést:
 
     * Kattintson a **Csempe hozzáadása** elemre.
@@ -329,9 +327,9 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
 12. A **Vizualizáció típusa** területen válassza a **Vonaldiagram** lehetőséget.
 
-13. A **tengely**területen kattintson az **érték hozzáadása**elemre, majd válassza a elemet `windowend` . 
+13. A **tengely** területen kattintson az **érték hozzáadása** elemre, majd válassza a elemet `windowend` . 
 
-14. Az **értékek**területen kattintson az **érték hozzáadása** lehetőségre, és válassza a lehetőséget `fraudulentuses` .
+14. Az **értékek** területen kattintson az **érték hozzáadása** lehetőségre, és válassza a lehetőséget `fraudulentuses` .
 
 15. A **Megjelenítendő időtartomány** területen válassza ki az utolsó öt percet. Kattintson a **Tovább** gombra.
 

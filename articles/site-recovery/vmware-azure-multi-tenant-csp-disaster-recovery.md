@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb2a8a7bb14758ab21eb2183a119f456b53c8562
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400638"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654949"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A VMware vész-helyreállítás beállítása több-bérlős környezetben a Cloud Solution Provider (CSP) program keretében
 
@@ -33,13 +33,13 @@ A VMware-replikáció beállításához a következőket kell tennie:
 ## <a name="create-a-tenant-account"></a>Bérlői fiók létrehozása
 
 1. A [Microsoft partner centeren](https://partnercenter.microsoft.com/)keresztül jelentkezzen be a CSP-fiókjába.
-2. Az **irányítópult** menüben válassza az **ügyfelek**lehetőséget.
+2. Az **irányítópult** menüben válassza az **ügyfelek** lehetőséget.
 3. A megnyíló lapon kattintson az **ügyfél hozzáadása** gombra.
 4. Az **új ügyfél** lapon adja meg a bérlői fiókadatok adatait.
 
     ![A fiók adatai lap](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
-5. Ezután kattintson a **Tovább: előfizetések**elemre.
+5. Ezután kattintson a **Tovább: előfizetések** elemre.
 6. Az előfizetések kiválasztása lapon jelölje be a **Microsoft Azure** jelölőnégyzetet. Más előfizetéseket most vagy bármikor hozzáadhat.
 7. Az **Áttekintés** lapon erősítse meg a bérlő adatait, majd kattintson a **Submit (Küldés**) gombra.
 8. Miután létrehozta a bérlői fiókot, megjelenik egy megerősítő lap, amely megjeleníti az alapértelmezett fiók és az előfizetés jelszavának részleteit. Mentse az adatokat, és szükség szerint módosítsa a jelszót a Azure Portal bejelentkezési oldalán.
@@ -65,24 +65,24 @@ Most már elvégezheti és kezelheti a bérlő összes Site Recovery műveletét
 ## <a name="assign-tenant-access-to-the-subscription"></a>Bérlői hozzáférés kiosztása az előfizetéshez
 
 1. Győződjön meg arról, hogy a vész-helyreállítási infrastruktúra be van állítva. A partnerek a CSP-portálon keresztül érik el a bérlői előfizetéseket, függetlenül attól, hogy a vész-helyreállítási felügyelet vagy az önkiszolgáló szolgáltatás. Állítsa be a tárolót, és regisztrálja az infrastruktúrát a bérlői előfizetésekben.
-2. Adja meg a bérlőt a [létrehozott fiókkal](#create-a-tenant-account).
-3. A következő módon adhat hozzá új felhasználót a bérlői előfizetéshez a CSP-portálon keresztül:
+1. Adja meg a bérlőt a [létrehozott fiókkal](#create-a-tenant-account).
+1. A következő módon adhat hozzá új felhasználót a bérlői előfizetéshez a CSP-portálon keresztül:
 
-    a) lépjen a bérlő CSP-előfizetése oldalra, majd válassza a **felhasználók és licencek** lehetőséget.
+    1. Lépjen a bérlő CSP-előfizetése oldalra, majd válassza a **felhasználók és licencek** lehetőséget.
 
-      ![A bérlő CSP-előfizetési lapja](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+       ![A bérlő CSP-előfizetési lapja](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    b) most hozzon létre egy új felhasználót a megfelelő részletek beírásával és az engedélyek kiválasztásával, vagy egy CSV-fájlban lévő felhasználók listájának feltöltésével.
-    
-    c) Miután létrehozott egy új felhasználót, térjen vissza a Azure Portal. Az **előfizetés** lapon válassza ki a megfelelő előfizetést.
+    1. Most hozzon létre egy új felhasználót a megfelelő részletek beírásával és az engedélyek kiválasztásával, vagy a CSV-fájlban lévő felhasználók listájának feltöltésével.
 
-    d) válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd kattintson a **szerepkör-hozzárendelések**elemre.
+    1. Miután létrehozott egy új felhasználót, térjen vissza a Azure Portal. Az **előfizetés** lapon válassza ki a megfelelő előfizetést.
 
-    e) kattintson a **szerepkör-hozzárendelés hozzáadása** lehetőségre egy olyan felhasználó hozzáadásához, amely a megfelelő hozzáférési szinttel rendelkezik. A CSP-portálon létrehozott felhasználók a szerepkör-hozzárendelések lapon jelennek meg.
+    1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd kattintson a **szerepkör-hozzárendelések** elemre.
 
-      ![Felhasználó hozzáadása](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+    1. Kattintson a **szerepkör-hozzárendelés hozzáadása** lehetőségre a megfelelő hozzáférési szinttel rendelkező felhasználó hozzáadásához. A CSP-portálon létrehozott felhasználók a szerepkör-hozzárendelések lapon jelennek meg.
 
-- A legtöbb felügyeleti művelethez elegendő a *közreműködő* szerepkör. Az ezzel a hozzáférési szinttel rendelkező felhasználók mindent elvégezhetnek egy előfizetésen, kivéve a hozzáférési szintek módosítását (amelyekhez *tulajdonosi*szintű hozzáférés szükséges).
+        ![Felhasználó hozzáadása](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+
+- A legtöbb felügyeleti művelethez elegendő a *közreműködő* szerepkör. Az ezzel a hozzáférési szinttel rendelkező felhasználók mindent elvégezhetnek egy előfizetésen, kivéve a hozzáférési szintek módosítását (amelyekhez *tulajdonosi* szintű hozzáférés szükséges).
 - A Site Recovery három [előre definiált felhasználói szerepkörrel](site-recovery-role-based-linked-access-control.md)is rendelkezik, amelyekkel igény szerint tovább korlátozhatja a hozzáférési szinteket.
 
 ## <a name="multi-tenant-environments"></a>Több-bérlős környezetek

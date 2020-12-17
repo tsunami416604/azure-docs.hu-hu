@@ -10,16 +10,19 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 6a909b246e7cb3695533a75294c523d7c9aeaeda
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832942"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655858"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
 
-Ez a cikk azt ismerteti, hogyan használható a bemelegedési trigger a Azure Functionsban. A bemelegedési trigger csak [prémium](functions-premium-plan.md)szintű csomagban futó Function apps esetén támogatott. A rendszer meghívja a bemelegedési eseményindítót, amikor egy példány bekerül egy futó Function-alkalmazás méretezésére. A bemelegedési művelettel előre betöltheti az egyéni függőségeket az [előmelegítési folyamat](./functions-premium-plan.md#pre-warmed-instances) során, így a függvények azonnal elkezdhetik a kérelmek feldolgozását. 
+Ez a cikk azt ismerteti, hogyan használható a bemelegedési trigger a Azure Functionsban. A rendszer meghívja a bemelegedési eseményindítót, amikor egy példány bekerül egy futó Function-alkalmazás méretezésére. A bemelegedési művelettel előre betöltheti az egyéni függőségeket az [előmelegítési folyamat](./functions-premium-plan.md#pre-warmed-instances) során, így a függvények azonnal elkezdhetik a kérelmek feldolgozását. 
+
+> [!NOTE]
+> A bemelegedési trigger nem támogatott a használati tervekben futó Function apps esetén.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -225,7 +228,7 @@ A bemelegedési trigger nem támogatott a Javaban attribútumként.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `WarmupTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 | **típusa** | n/a| Kötelező – a következőre kell beállítani: `warmupTrigger` . |
 | **irányba** | n/a| Kötelező – a következőre kell beállítani: `in` . |

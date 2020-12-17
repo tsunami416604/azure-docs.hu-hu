@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8fa823620d6d1306260d719cbabaa3d815cc0d09
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3b29245aed1b2c7767c340cbe8cd35dfa38610b9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505443"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656682"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -58,7 +58,7 @@ Log Analytics munkaterület-adatok exportálásával folyamatosan exportálhatja
 ## <a name="data-completeness"></a>Az adatteljesség
 Az adatexportálás továbbra is újra próbálkozik az adatok küldésével akár 30 percig, ha a cél nem érhető el. Ha a 30 perc elteltével sem érhető el, akkor a rendszer elveti az adatvesztést, amíg a célhely elérhetővé nem válik.
 
-## <a name="cost"></a>Költségek
+## <a name="cost"></a>Költség
 Az adatexportálási szolgáltatáshoz jelenleg nem számítunk fel további díjakat. Az adatexportálás díjszabása a jövőben lesz bejelentve, és a számlázás megkezdése előtt megjelenő értesítés. Ha úgy dönt, hogy az adatexportálást a felmondási időszak után is használja, akkor a díjszabást a vonatkozó díjak alapján számítjuk fel.
 
 ## <a name="export-destinations"></a>Célhelyek exportálása
@@ -351,7 +351,7 @@ Ha az adatexportálási szabály olyan táblát tartalmaz, amely nem létezik, a
 A támogatott táblázatok jelenleg az alább megadott értékekre korlátozódnak. A rendszer minden, a táblából származó adattal exportál, hacsak nincsenek korlátozások megadva. A rendszer frissíti a listát a további táblázatok támogatásával.
 
 
-| Tábla | Korlátozások |
+| Táblázat | Korlátozások |
 |:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |

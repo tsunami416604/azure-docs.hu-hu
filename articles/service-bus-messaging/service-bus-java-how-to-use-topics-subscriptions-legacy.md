@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 33d8aa9be6a6ee4182e49e658bd41ebf6da588e5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c44f3329626c42bdbb9e206c9dbf258c97b1aa57
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456561"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655645"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata Javával
 Ebben a rövid útmutatóban a Java-kódokat kell írnia, hogy üzeneteket küldjön egy Azure Service Bus témakörbe, majd üzeneteket fogadjon az előfizetésből az adott témakörbe. 
@@ -456,7 +456,7 @@ Message sending: Id = 9
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Service Bus várólisták, témakörök és előfizetések][Service Bus queues, topics, and subscriptions].
 
 [Azure SDK for Java]: /java/api/overview/azure/

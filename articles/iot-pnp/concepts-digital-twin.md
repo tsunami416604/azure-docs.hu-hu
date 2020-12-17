@@ -3,44 +3,117 @@ title: Az IoT Plug and Play digitális ikreinek ismertetése
 description: Ismerje meg, hogyan használja a IoT Plug and Play a digitális ikreket
 author: prashmo
 ms.author: prashmo
-ms.date: 07/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f13230c7bd88a9c3cf043fc1881a34f6b7ce6fe7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 99c957e5bf6ffe69c94e109796590f5ab975c3cf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495321"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656886"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Az IoT Plug and Play digitális ikreinek ismertetése
 
-A IoT Plug and Play-eszközök a [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) sémája által leírt modellt implementálják. A modell leírja az adott eszközhöz tartozó összetevők, tulajdonságok, parancsok és telemetria-üzenetek készletét. Az eszközök Twin és a digitális iker inicializálása az első alkalommal, amikor egy IoT Plug and Play eszköz csatlakozik egy IoT hubhoz.
+A IoT Plug and Play-eszközök a [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) sémája által leírt modellt implementálják. A modell leírja az adott eszközhöz tartozó összetevők, tulajdonságok, parancsok és telemetria-üzenetek készletét.
 
 A IoT Plug and Play a DTDL 2-es verzióját használja. További információ erről a verzióról: [Digital Twins Definition Language (DTDL) – 2. verzió](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) specifikáció a githubon.
 
-A DTDL nem kizárólag IoT Plug and Play. Más IoT-szolgáltatások, például az [Azure digitális Twins](../digital-twins/overview.md), a teljes környezetek, például épületek és energiahálózatok ábrázolására használhatók. További információ: [Twin models ismertetése az Azure Digital twinsban](../digital-twins/concepts-models.md).
+> [!NOTE]
+> A DTDL nem kizárólag IoT Plug and Play. Más IoT-szolgáltatások, például az [Azure digitális Twins](../digital-twins/overview.md), a teljes környezetek, például épületek és energiahálózatok ábrázolására használhatók.
 
-Ez a cikk azt ismerteti, hogyan jelennek meg az összetevők és a tulajdonságok a különálló eszközök *kívánt* és *jelentett* részeiben. Emellett azt is ismerteti, hogyan kapcsolódnak ezek a fogalmak a megfelelő digitális ikerhez.
+Az Azure IoT Service SDK-k olyan API-kat tartalmaznak, amelyek lehetővé teszik a szolgáltatásnak az eszköz digitális Twin-példányának interakcióját. Egy szolgáltatás például beolvashatja az eszköz tulajdonságait a digitális Twin-ből, vagy a digitális Twin használatával hívhat meg egy parancsot az eszközön. További információ: [IoT hub digitális kettős példák](concepts-developer-guide-service.md#iot-hub-digital-twin-examples).
 
-A cikk IoT Plug and Play eszköze, amely a hőmérséklet- [vezérlő modelljét](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) implementálja [termosztát](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) -összetevővel.
+A cikkben szereplő példa IoT Plug and Play eszköz a [termosztát](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) -összetevőkkel rendelkező [hőmérséklet-vezérlő modellt](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) valósít meg.
 
 ## <a name="device-twins-and-digital-twins"></a>Eszközök ikrek és digitális Twins
 
-Az ikrek olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos információkat tárolnak, beleértve a metaadatokat, a konfigurációkat és a feltételeket. További információ: [az eszközök ikrek megismerése és használata a IoT Hubban](../iot-hub/iot-hub-devguide-device-twins.md). Mind az eszköz-, mind a megoldás-építők továbbra is használhatják a Device Twin API-k és SDK-k együttes használatát az eszközök és megoldások IoT Plug and Play konvenciók használatával történő megvalósításához.
+Az Azure IoT Hub és a Digital Twin is fenntart egy *eszközt* a csatlakoztatott eszközökhöz. Az eszközökhöz tartozó Twin egy olyan digitális Twin-hez hasonló, amely az eszköz tulajdonságainak ábrázolását mutatja be. Az Azure IoT Service SDK-k API-kat tartalmaznak a Device ikrek szolgáltatással való interakcióhoz.
 
-A digitális Twin API-k magas szintű szerkezetekben működnek a digitális Twins Definition Language (DTDL) nyelvben (például összetevők, tulajdonságok és parancsok). A digitális Twin API-k megkönnyítik a megoldás-építők számára, hogy IoT Plug and Play megoldásokat hozzanak létre.
+Az IoT hub az első alkalommal inicializálja a digitális Twin-et és egy IoT Plug and Play eszköz csatlakoztatásakor.
 
-Egy különálló eszközön az írható tulajdonság állapota a kívánt és a jelentett szakaszokra oszlik. Az összes írásvédett tulajdonság a jelentett szakaszban található.
+Az ikrek olyan JSON-dokumentumok, amelyek az eszköz állapotával kapcsolatos információkat tárolnak, beleértve a metaadatokat, a konfigurációkat és a feltételeket. További információ: [IoT hub szolgáltatás ügyféloldali példái](concepts-developer-guide-service.md#iot-hub-service-client-examples). Mind az eszköz-, mind a megoldás-építők továbbra is használhatják a Device Twin API-k és SDK-k együttes használatát az eszközök és megoldások IoT Plug and Play konvenciók használatával történő megvalósításához.
+
+A digitális Twin API-k magas szintű DTDL-szerkezetekben működnek, mint például az összetevők, a tulajdonságok és a parancsok. A digitális Twin API-k megkönnyítik a megoldás-építők számára, hogy IoT Plug and Play megoldásokat hozzanak létre.
+
+Egy különálló eszközön az írható tulajdonság állapota a *kívánt tulajdonságok* és a *jelentett tulajdonságok* szakaszokra oszlik. Az összes írásvédett tulajdonság a jelentett tulajdonságok szakaszban található.
 
 A Digital Twin-ben a tulajdonság jelenlegi és kívánt állapotának egységes nézete látható. Egy adott tulajdonság szinkronizációs állapotát a megfelelő alapértelmezett összetevő szakaszban tárolja a rendszer `$metadata` .
 
-### <a name="digital-twin-json-format"></a>Digitális kettős JSON formátum
+### <a name="device-twin-json-example"></a>Eszköz kettős JSON-példa
 
-Ha JSON-objektumként jelenik meg, a digitális Twin a következő mezőket tartalmazza:
+Az alábbi kódrészlet egy IoT-Plug and Play-eszközt mutat be, amely JSON-objektumként van formázva:
 
-| Mező neve | Leírás |
+```json
+{
+  "deviceId": "sample-device",
+  "modelId": "dtmi:com:example:TemperatureController;1",
+  "version": 15,
+  "properties": {
+    "desired": {
+      "thermostat1": {
+        "__t": "c",
+        "targetTemperature": 21.8
+      },
+      "$metadata": {...},
+      "$version": 4
+    },
+    "reported": {
+      "serialNumber": "alwinexlepaho8329",
+      "thermostat1": {
+        "maxTempSinceLastReboot": 25.3,
+        "__t": "c",
+        "targetTemperature": {
+          "value": 21.8,
+          "ac": 200,
+          "ad": "Successfully executed patch",
+        }
+      },
+      "$metadata": {...},
+      "$version": 11
+    }
+  }
+}
+```
+
+### <a name="digital-twin-example"></a>Digitális dupla példa
+
+A következő kódrészletben a rendszer JSON-objektumként formázott Digital Twin-t jeleníti meg:
+
+```json
+{
+  "$dtId": "sample-device",
+  "serialNumber": "alwinexlepaho8329",
+  "thermostat1": {
+    "maxTempSinceLastReboot": 25.3,
+    "targetTemperature": 21.8,
+    "$metadata": {
+      "targetTemperature": {
+        "desiredValue": 21.8,
+        "desiredVersion": 4,
+        "ackVersion": 4,
+        "ackCode": 200,
+        "ackDescription": "Successfully executed patch",
+        "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+      },
+      "maxTempSinceLastReboot": {
+         "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+      }
+    }
+  },
+  "$metadata": {
+    "$model": "dtmi:com:example:TemperatureController;1",
+    "serialNumber": {
+      "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+    }
+  }
+}
+```
+
+A következő táblázat a digitális Twin JSON-objektum mezőit ismerteti:
+
+| Mező neve | Description |
 | --- | --- |
 | `$dtId` | Egy felhasználó által megadott karakterlánc, amely az eszköz digitális Twin AZONOSÍTÓját jelöli |
 | `{propertyName}` | A JSON-tulajdonság értéke |
@@ -55,83 +128,13 @@ Ha JSON-objektumként jelenik meg, a digitális Twin a következő mezőket tart
 | `{componentName}.{propertyName}` | Az összetevő tulajdonságának értéke a JSON-ban |
 | `{componentName}.$metadata` | Az összetevő metaadat-információi. |
 
-#### <a name="device-twin-sample"></a>Eszköz kettős mintája
-
-Az alábbi kódrészlet egy IoT-Plug and Play-eszközt mutat be, amely JSON-objektumként van formázva:
-
-```json
-{
-    "deviceId": "sample-device",
-    "modelId": "dtmi:com:example:TemperatureController;1",
-    "version": 15,
-    "properties": {
-        "desired": {
-            "thermostat1": {
-                "__t": "c",
-                "targetTemperature": 21.8
-            },
-            "$metadata": {...},
-            "$version": 4
-        },
-        "reported": {
-            "serialNumber": "alwinexlepaho8329",
-            "thermostat1": {
-                "maxTempSinceLastReboot": 25.3,
-                "__t": "c",
-                "targetTemperature": {
-                    "value": 21.8,
-                    "ac": 200,
-                    "ad": "Successfully executed patch",
-                }
-            },
-            "$metadata": {...},
-            "$version": 11
-        }
-    }
-}
-```
-
-#### <a name="digital-twin-sample"></a>Digitális kettős minta
-
-A következő kódrészletben a rendszer JSON-objektumként formázott Digital Twin-t jeleníti meg:
-
-```json
-{
-    "$dtId": "sample-device",
-    "serialNumber": "alwinexlepaho8329",
-    "thermostat1": {
-        "maxTempSinceLastReboot": 25.3,
-        "targetTemperature": 21.8,
-        "$metadata": {
-            "targetTemperature": {
-                "desiredValue": 21.8,
-                "desiredVersion": 4,
-                "ackVersion": 4,
-                "ackCode": 200,
-                "ackDescription": "Successfully executed patch",
-                "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
-            },
-            "maxTempSinceLastReboot": {
-                "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-            }
-        }
-    },
-    "$metadata": {
-        "$model": "dtmi:com:example:TemperatureController;1",
-        "serialNumber": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
-    }
-}
-```
-
 ### <a name="properties"></a>Tulajdonságok
 
 A tulajdonságok olyan adatmezők, amelyek egy entitás állapotát jelölik (például a tulajdonságok számos objektumorientált programozási nyelven).
 
 #### <a name="read-only-property"></a>Írásvédett tulajdonság
 
-Séma
+DTDL séma:
 
 ```json
 {
@@ -152,9 +155,9 @@ A következő kódrészletek a tulajdonság egymás melletti JSON-ábrázolásá
 
 ```json
 "properties": {
-    "reported": {
-        "serialNumber": "alwinexlepaho8329"
-    }
+  "reported": {
+    "serialNumber": "alwinexlepaho8329"
+  }
 }
 ```
 
@@ -171,15 +174,17 @@ A következő kódrészletek a tulajdonság egymás melletti JSON-ábrázolásá
 
 #### <a name="writable-property"></a>Írható tulajdonság
 
-Tegyük fel, hogy az eszközön a következő írható tulajdonság is szerepelt az alapértelmezett összetevőben:
+Az alábbi példák egy írható tulajdonságot mutatnak be az alapértelmezett összetevőben.
+
+DTDL:
 
 ```json
 {
-    "@type": "Property",
-    "name": "fanSpeed",
-    "displayName": "Fan Speed",
-    "writable": true,
-    "schema": "double"
+  "@type": "Property",
+  "name": "fanSpeed",
+  "displayName": "Fan Speed",
+  "writable": true,
+  "schema": "double"
 }
 ```
 
@@ -189,19 +194,19 @@ Tegyük fel, hogy az eszközön a következő írható tulajdonság is szerepelt
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "fanSpeed": 2.0,
-        },
-        "reported": {
-            "fanSpeed": {
-                "value": 3.0,
-                "ac": 200,
-                "av": 1,
-                "ad": "Successfully executed patch version 1"
-            }
-        }
+  "properties": {
+    "desired": {
+      "fanSpeed": 2.0,
     },
+    "reported": {
+      "fanSpeed": {
+        "value": 3.0,
+        "ac": 200,
+        "av": 1,
+        "ad": "Successfully executed patch version 1"
+      }
+    }
+  },
 }
 ```
 
@@ -211,17 +216,17 @@ Tegyük fel, hogy az eszközön a következő írható tulajdonság is szerepelt
 
 ```json
 {
-    "fanSpeed": 3.0,
-    "$metadata": {
-        "fanSpeed": {
-            "desiredValue": 2.0,
-            "desiredVersion": 2,
-            "ackVersion": 1,
-            "ackCode": 200,
-            "ackDescription": "Successfully executed patch version 1",
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
+  "fanSpeed": 3.0,
+  "$metadata": {
+    "fanSpeed": {
+      "desiredValue": 2.0,
+      "desiredVersion": 2,
+      "ackVersion": 1,
+      "ackCode": 200,
+      "ackDescription": "Successfully executed patch version 1",
+      "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
     }
+  }
 }
 ```
 
@@ -233,8 +238,7 @@ Ebben a példában az `3.0` `fanSpeed` eszköz által jelentett tulajdonság akt
 ### <a name="components"></a>Összetevők
 
 Az összetevők lehetővé teszik, hogy a modell felülete más felületek szerelvényként legyen felépítve.
-Vegye fontolóra a modellként definiált [termosztát](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) -felületet.
-Ez az illesztőfelület mostantól összetevő-thermostat1 (és egy másik összetevő-thermostat2) is beépíthető a [hőmérséklet-vezérlő modell](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)meghatározásakor.
+A [termosztát](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) interfész például összetevőkként `thermostat1` és  `thermostat2` a [hőmérséklet-vezérlő modell](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) modelljében is beépíthető.
 
 Egy különálló eszközön a jelölő azonosítja az összetevőket `{ "__t": "c"}` . Egy digitális Twin-ben a `$metadata` megjelölés egy összetevőt jelöl.
 
@@ -251,30 +255,30 @@ Az alábbi kódrészletek az összetevő egymás melletti JSON-ábrázolását m
 
 ```json
 "properties": {
-    "desired": {
-        "thermostat1": {
-            "__t": "c",
-            "targetTemperature": 21.8
-        },
-        "$metadata": {
-        },
-        "$version": 4
+  "desired": {
+    "thermostat1": {
+      "__t": "c",
+      "targetTemperature": 21.8
     },
-    "reported": {
-        "thermostat1": {
-            "maxTempSinceLastReboot": 25.3,
-            "__t": "c",
-            "targetTemperature": {
-                "value": 21.8,
-                "ac": 200,
-                "ad": "Successfully executed patch",
-                "av": 4
-            }
-        },
-        "$metadata": {
-        },
-        "$version": 11
-    }
+    "$metadata": {
+    },
+    "$version": 4
+  },
+  "reported": {
+    "thermostat1": {
+      "maxTempSinceLastReboot": 25.3,
+      "__t": "c",
+      "targetTemperature": {
+        "value": 21.8,
+        "ac": 200,
+        "ad": "Successfully executed patch",
+        "av": 4
+      }
+    },
+    "$metadata": {
+    },
+    "$version": 11
+  }
 }
 ```
 
@@ -284,21 +288,21 @@ Az alábbi kódrészletek az összetevő egymás melletti JSON-ábrázolását m
 
 ```json
 "thermostat1": {
-    "maxTempSinceLastReboot": 25.3,
-    "targetTemperature": 21.8,
-    "$metadata": {
-        "targetTemperature": {
-            "desiredValue": 21.8,
-            "desiredVersion": 4,
-            "ackVersion": 4,
-            "ackCode": 200,
-            "ackDescription": "Successfully executed patch",
-            "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
-        },
-        "maxTempSinceLastReboot": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
+  "maxTempSinceLastReboot": 25.3,
+  "targetTemperature": 21.8,
+  "$metadata": {
+    "targetTemperature": {
+      "desiredValue": 21.8,
+      "desiredVersion": 4,
+      "ackVersion": 4,
+      "ackCode": 200,
+      "ackDescription": "Successfully executed patch",
+      "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+    },
+    "maxTempSinceLastReboot": {
+       "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
     }
+  }
 }
 ```
 
@@ -307,7 +311,7 @@ Az alábbi kódrészletek az összetevő egymás melletti JSON-ábrázolását m
 
 ## <a name="digital-twin-apis"></a>Digitális Twin API-k
 
-Az Azure Digital Twins a **Get Digital Twin**, a **Digital Twin frissítése**, az **Component parancs meghívása** és az eszközök digitális iker-kezelésének **meghívása paranccsal** érhető el. Használhatja a [REST API-kat](/rest/api/iothub/service/digitaltwin) közvetlenül vagy egy [Service SDK](../iot-pnp/libraries-sdks.md)-n keresztül.
+A digitális Twin API-k közé tartozik a **digitális Twin**, a **Digital Twin frissítése**, az **összetevő-parancs meghívása** és a **parancssori műveletek meghívása** a digitális Twin szolgáltatással. Használhatja a [REST API-kat](/rest/api/iothub/service/digitaltwin) közvetlenül vagy egy [Service SDK](../iot-pnp/libraries-sdks.md)-n keresztül.
 
 ## <a name="digital-twin-change-events"></a>Digitális ikermódosítási események
 

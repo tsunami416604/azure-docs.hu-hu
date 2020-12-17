@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 56464268b95181af0379a1895d392cc3cc26624c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 6a71bcbfb8341098711e330cebf8545e1fd2751c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980898"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656954"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrálás a Text Analytics API 3. x verziójára
-
-[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
 Ha a Text Analytics API 2,1-es verzióját használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez a 3. x verzió használatára. Az 3,0-es verzió általánosan elérhető, és olyan új funkciókat vezet be, mint az [elnevezett entitás-felismerés](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) és a [modell verziószámozása](concepts/model-versioning.md). A v 3.1 (v 3.1-preview. x) előzetes verziója is elérhető, amely olyan funkciókat is tartalmaz, mint a [vélemény bányászata](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features). A v2-ben használt modellek nem kapják meg a jövőbeli frissítéseket. 
 
@@ -97,7 +95,7 @@ A JSON-válaszra vonatkozó példák a dokumentációban találhatók.
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
-## <a name="key-phrase-extraction"></a>[Fő kifejezés kibontása](#tab/key-phrase-extraction)
+## <a name="key-phrase-extraction"></a>[Kulcskifejezések kinyerése](#tab/key-phrase-extraction)
 
 ### <a name="feature-changes"></a>Szolgáltatások módosításai 
 
@@ -120,7 +118,7 @@ A JSON-válaszra vonatkozó példák a dokumentációban találhatók.
 
 ---
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Text Analytics API](overview.md)
 * [Nyelvi támogatás](language-support.md)

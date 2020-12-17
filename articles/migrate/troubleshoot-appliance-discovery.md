@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 90abe6bf680f6a186b970631dcd0a42d6d36bf94
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 647e07fe32beedbd54ca6c5bb95c1de9564df2fd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511586"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654013"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -203,58 +203,56 @@ Azure Migrate támogatja az alkalmazások, szerepkörök és szolgáltatások fe
 
 A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve. 
 
-**Hiba** | **Ok** | **Művelet**
---- | --- | ---
-9000: a VMware-eszköz állapota nem észlelhető.     |   Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek.    |   Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen.
-9001: nincs telepítve a VMware-eszközök.     |   Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek.    |   Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen.
-9002: a VMware-eszközök nem futnak.   |   Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek.    |   Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen.
-9003: a vendég virtuális gép felderítése nem támogatja az operációs rendszer típusát.    |   A kiszolgálón futó operációs rendszer sem Windows, sem Linux.    |   A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el. Ha a kiszolgáló valóban Windows vagy Linux rendszerű, ellenőrizze a vCenter Serverban megadott operációsrendszer-típust.
-9004: a virtuális gép nem fut.     |   A virtuális gép ki van kapcsolva.  |   Győződjön meg arról, hogy a virtuális gép be van kapcsolva.
-9005: a vendég virtuális gép felderítése nem támogatja az operációs rendszer típusát.    |   A vendég virtuális gép felderítése nem támogatja az operációs rendszer típusát.     |   A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el.
-9006: a metaadat-fájl vendégről való letöltésének URL-címe üres.     |   Ez akkor fordulhat elő, ha a felderítési ügynök nem a várt módon működik.    |   A problémának automatikusan fel kell oldania a in24 órát. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz.
-9007: a felderítési feladat futtatására szolgáló folyamat nem található a vendég virtuális gépen.   |   Ez akkor fordulhat elő, ha a felderítési ügynök nem működik megfelelően.   |   A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz.
-9008: a vendég virtuális gép folyamatának állapota nem kérhető le.   |   A probléma belső hiba miatt fordulhat elő.   |   A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz.
-9009: a Windows UAC megakadályozta a felderítési feladat végrehajtását a kiszolgálón.  |   A Windows felhasználói fiókok felügyelete (UAC) beállításai a kiszolgálón korlátozóak, és megakadályozzák a telepített alkalmazások felderítését.  |   A kiszolgáló "felhasználói fiókok felügyelete" beállításainál konfigurálja az UAC-beállítást úgy, hogy az az alsó két szint egyikének legyen.
-9010: a virtuális gép ki van kapcsolva.     |   A virtuális gép ki van kapcsolva.  |   Győződjön meg arról, hogy a virtuális gép be van kapcsolva.
-9011: a rendszer nem találja a felderített metaadat-fájlt a vendég virtuális fájlrendszerben.    |   A probléma belső hiba miatt fordulhat elő.   |   A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz.
-9012: a felderített metaadat-fájl üres.     |   A probléma belső hiba miatt fordulhat elő.   |   A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz.
-9013: minden bejelentkezéshez új ideiglenes profil jön létre.    |   A VMware virtuális géphez minden bejelentkezéshez új ideiglenes profil jön létre.    |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
-9014: nem sikerült lekérni a metaadatokat a vendég virtuális fájlrendszerből.     |   Nincs kapcsolat az ESXi-gazdagéphez    |   Győződjön meg arról, hogy a készülék csatlakozni tud a 443-es porthoz a virtuális gépet futtató ESXi-gazdagépen
-9015: a vendég műveleti szerepkör nincs engedélyezve a vCenter felhasználói fiókján   |   A vendég műveleti szerepkör nincs engedélyezve a vCenter felhasználói fiókon.   |   Győződjön meg arról, hogy a vendég műveleti szerepkör engedélyezve van a vCenter felhasználói fiókján.
-9016: nem sikerült felderíteni, mert a vendég operatív ügynök elavult.   |   A VMware-eszközök nincsenek megfelelően telepítve vagy nem naprakészek.    |   Győződjön meg arról, hogy a VMware-eszközök megfelelően vannak telepítve és naprakészek.
-9017: a felderített metaadatokat tartalmazó fájl nem található a virtuális gépen.  |   A probléma belső hiba miatt fordulhat elő.   |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
-9018: a PowerShell nincs telepítve a vendég virtuális gépeken.  |   A PowerShell nem érhető el a vendég virtuális gépen.    |   Telepítse a PowerShellt a vendég virtuális gépen.
-9019: nem sikerült felderíteni a vendég virtuális gép műveletének hibája miatt.     |   A VMware Guest művelet sikertelen volt a virtuális gépen.    |   Győződjön meg arról, hogy a virtuális gép hitelesítő adatai érvényesek, és a vendég virtuális gép hitelesítő adataiban megadott Felhasználónév UPN formátumban van megadva.
-9020: a fájl létrehozására vonatkozó engedély megtagadva.    |   A felhasználóhoz vagy a Csoportházirendhez társított szerepkör korlátozza a felhasználót abban, hogy a fájlt a mappában hozza létre.    |   Ellenőrizze, hogy a megadott vendég felhasználó rendelkezik-e létrehozási engedéllyel a fájlhoz a mappában. A mappa nevében tekintse meg az **értesítések** a kiszolgáló értékelése című témakört.
-9021: nem hozható létre fájl a System Temp elérési úton.     |   A VMware eszköz a rendszer ideiglenes elérési útját jelenti a felhasználók ideiglenes elérési útja helyett.    |   Frissítse a VMware-eszköz 10287-es verzióját (NGC/VI ügyfél-formátum).
-9022: a WMI-objektumhoz való hozzáférés megtagadva.    |   A felhasználóhoz vagy a Csoportházirendhez társított szerepkör korlátozza a felhasználót a WMI-objektum elérésére.  |   Vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
-9023: nem lehet futtatni a PowerShellt a SystemRoot környezeti változó értéke üres.    |   A SystemRoot környezeti változó értéke üres a vendég virtuális gépen.     |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
-9024: nem sikerült felderíteni, mert a TEMP környezeti változó értéke üres.    |   A TEMP környezeti változó értéke üres a vendég virtuális gép esetében.   |   Vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
-9025: a PowerShell sérült a vendég virtuális gépeken.  |   A PowerShell sérült a vendég virtuális gépen.    |   Telepítse újra a PowerShellt a vendég virtuális gépen, és ellenőrizze, hogy a PowerShell futtatható-e a vendég virtuális gépen.
-9026: nem lehet futtatni a vendég műveleteit a virtuális gépen.  |   A virtuális gép állapota nem teszi lehetővé, hogy a vendég műveletei a virtuális gépen fussanak.   |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
-9027: a vendég műveleti ügynök nem fut a virtuális gépen.   |   Nem sikerült felvenni a kapcsolatot a virtuális gépen futó vendég műveleti ügynökkel.    |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
-9028: a fájl nem hozható létre, mert nincs elég szabad lemezterület a virtuális gépen.     |   Nincs elég hely a lemezen.   |   Gondoskodjon arról, hogy elegendő lemezterület álljon rendelkezésre a virtuális gép lemezes tárolásában.
-9029: nem érhető el a PowerShell a vendég virtuális gép hitelesítő adatainak megadásakor.   |   A Powershellhez való hozzáférés nem érhető el a felhasználó számára.     |   Győződjön meg arról, hogy a készüléken hozzáadott felhasználó hozzáférhet a PowerShellhez a vendég virtuális gépen.
-9030: nem sikerült a felderített metaadatok gyűjtése, mert az ESXi-gazdagép le van választva.     |   Az ESXi-gazdagép leválasztott állapotban van.   |   Győződjön meg arról, hogy a virtuális gépet futtató ESXi-gazdagép csatlakoztatva van.
-9031: nem sikerült a felderített metaadatok gyűjtése, mert az ESXi-gazdagép nem válaszol.   |   A távoli gazdagép érvénytelen állapotban van.    |   Győződjön meg arról, hogy a virtuális gépet futtató ESXi-gazdagép fut és csatlakoztatva van.
-9032: egy belső hiba miatt nem sikerült felderíteni.   |   A probléma belső hiba miatt fordulhat elő.   |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
-9033: nem sikerült felderíteni, mert a virtuális gép felhasználóneve érvénytelen karaktereket tartalmaz.     |   Érvénytelen karakterek észlelhetők a felhasználónévben.   |   Adja meg a virtuális gép hitelesítő adatait, hogy ne legyenek érvénytelen karakterek.
-9034: a megadott Felhasználónév nem UPN-formátumú.    |   A Felhasználónév nem UPN formátumú.  |   Győződjön meg arról, hogy a Felhasználónév az egyszerű felhasználónév (UPN) formátumban van.
-9035: nem sikerült felderíteni a PowerShell nyelvi üzemmódját, mert nincs "teljes nyelv" beállítás.  |   A PowerShell nyelvi módja a vendég virtuális gépen nem teljes nyelvre van beállítva.   |   Győződjön meg arról, hogy a PowerShell nyelvi mód beállítása "teljes nyelv".
-9037: az adatgyűjtés ideiglenesen szünetel, mert a virtuális gép válaszideje túl magas.    |   A felderített virtuális gép túl sokáig tart a válaszadáshoz     |   Nincs szükség beavatkozásra. Az alkalmazás észlelése 24 órán belül próbálkozik, és a függőségi elemzéshez 3 óra van (ügynök nélkül).
-10000: az operációs rendszer típusa nem támogatott.   |   A kiszolgálón futó operációs rendszer sem Windows, sem Linux.    |   A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el.
-10001: a kiszolgáló felderítésére szolgáló parancsfájl nem található a berendezésen.    |   A felderítés nem a várt módon működik.   |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
-10002: a felderítési feladat nem fejeződött be időben.     |   A felderítési ügynök nem a várt módon működik.     |   A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz.
-10003: a felderítési feladat végrehajtásának folyamata hiba miatt kilépett.    |   A felderítési feladat végrehajtásának folyamata hiba miatt kilépett.  |   A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
-10004: nincs megadva hitelesítő adat a vendég operációs rendszer típusához.  |   Az operációs rendszer típusú gépek eléréséhez szükséges hitelesítő adatok nem lettek megadva a Azure Migrate berendezésben.    |   Hitelesítő adatok hozzáadása a készüléken lévő gépekhez
-10005: a megadott hitelesítő adatok nem érvényesek.   |   A készülékhez a kiszolgáló eléréséhez megadott hitelesítő adatok helytelenek.  |   Frissítse a berendezésben megadott hitelesítő adatokat, és győződjön meg arról, hogy a kiszolgáló elérhető a hitelesítő adatok használatával.
-10006: a vendég operációs rendszer típusa nem támogatott a hitelesítőadat-tárolóban.  |   A kiszolgálón futó operációs rendszer sem Windows, sem Linux.    |   A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el.
-10007: nem sikerült feldolgozni a felderített metaadatokat.    |   Hiba történt a JSON deszerializálására tett kísérlet során.    |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
-10008: nem hozható létre fájl a kiszolgálón.    |  A probléma belső hiba miatt előfordulhat.    |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
-10009: nem lehet felderített metaadatokat írni a-kiszolgálón található fájlba.  |   A probléma belső hiba miatt fordulhat elő.   |   Megoldásért forduljon Microsoft ügyfélszolgálatahoz.
+| **Hiba** | **Ok** | **Művelet** |
+|--|--|--|
+| 9000: a VMware-eszköz állapota nem észlelhető. | Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek. | Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen. |
+| 9001: nincs telepítve a VMware-eszközök. | Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek. | Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen. |
+| 9002: a VMware-eszközök nem futnak. | Előfordulhat, hogy a VMWare-eszközök nincsenek telepítve vagy sérültek. | Győződjön meg arról, hogy a VMware-eszközök telepítve vannak és futnak a virtuális gépen. |
+| 9003: a vendég virtuális gép felderítése nem támogatja az operációs rendszer típusát. | A kiszolgálón futó operációs rendszer sem Windows, sem Linux. | A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el. Ha a kiszolgáló valóban Windows vagy Linux rendszerű, ellenőrizze a vCenter Serverban megadott operációsrendszer-típust. |
+| 9004: a virtuális gép nem fut. | A virtuális gép ki van kapcsolva. | Győződjön meg arról, hogy a virtuális gép be van kapcsolva. |
+| 9005: a vendég virtuális gép felderítése nem támogatja az operációs rendszer típusát. | A vendég virtuális gép felderítése nem támogatja az operációs rendszer típusát. | A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el. |
+| 9006: a metaadat-fájl vendégről való letöltésének URL-címe üres. | Ez akkor fordulhat elő, ha a felderítési ügynök nem a várt módon működik. | A problémának automatikusan fel kell oldania a in24 órát. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
+| 9007: a felderítési feladat futtatására szolgáló folyamat nem található a vendég virtuális gépen. | Ez akkor fordulhat elő, ha a felderítési ügynök nem működik megfelelően. | A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
+| 9008: a vendég virtuális gép folyamatának állapota nem kérhető le. | A probléma belső hiba miatt fordulhat elő. | A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
+| 9009: a Windows UAC megakadályozta a felderítési feladat végrehajtását a kiszolgálón. | A Windows felhasználói fiókok felügyelete (UAC) beállításai a kiszolgálón korlátozóak, és megakadályozzák a telepített alkalmazások felderítését. | A kiszolgáló "felhasználói fiókok felügyelete" beállításainál konfigurálja az UAC-beállítást úgy, hogy az az alsó két szint egyikének legyen. |
+| 9010: a virtuális gép ki van kapcsolva. | A virtuális gép ki van kapcsolva. | Győződjön meg arról, hogy a virtuális gép be van kapcsolva. |
+| 9011: a rendszer nem találja a felderített metaadat-fájlt a vendég virtuális fájlrendszerben. | A probléma belső hiba miatt fordulhat elő. | A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
+| 9012: a felderített metaadat-fájl üres. | A probléma belső hiba miatt fordulhat elő. | A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
+| 9013: minden bejelentkezéshez új ideiglenes profil jön létre. | A VMware virtuális géphez minden bejelentkezéshez új ideiglenes profil jön létre. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
+| 9014: nem sikerült lekérni a metaadatokat a vendég virtuális fájlrendszerből. | Nincs kapcsolat az ESXi-gazdagéphez | Győződjön meg arról, hogy a készülék csatlakozni tud a 443-es porthoz a virtuális gépet futtató ESXi-gazdagépen |
+| 9015: a vendég műveleti szerepkör nincs engedélyezve a vCenter felhasználói fiókján | A vendég műveleti szerepkör nincs engedélyezve a vCenter felhasználói fiókon. | Győződjön meg arról, hogy a vendég műveleti szerepkör engedélyezve van a vCenter felhasználói fiókján. |
+| 9016: nem sikerült felderíteni, mert a vendég operatív ügynök elavult. | A VMware-eszközök nincsenek megfelelően telepítve vagy nem naprakészek. | Győződjön meg arról, hogy a VMware-eszközök megfelelően vannak telepítve és naprakészek. |
+| 9017: a felderített metaadatokat tartalmazó fájl nem található a virtuális gépen. | A probléma belső hiba miatt fordulhat elő. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
+| 9018: a PowerShell nincs telepítve a vendég virtuális gépeken. | A PowerShell nem érhető el a vendég virtuális gépen. | Telepítse a PowerShellt a vendég virtuális gépen. |
+| 9019: nem sikerült felderíteni a vendég virtuális gép műveletének hibája miatt. | A VMware Guest művelet sikertelen volt a virtuális gépen. | Győződjön meg arról, hogy a virtuális gép hitelesítő adatai érvényesek, és a vendég virtuális gép hitelesítő adataiban megadott Felhasználónév UPN formátumban van megadva. |
+| 9020: a fájl létrehozására vonatkozó engedély megtagadva. | A felhasználóhoz vagy a Csoportházirendhez társított szerepkör korlátozza a felhasználót abban, hogy a fájlt a mappában hozza létre. | Ellenőrizze, hogy a megadott vendég felhasználó rendelkezik-e létrehozási engedéllyel a fájlhoz a mappában. A mappa nevében tekintse meg az **értesítések** a kiszolgáló értékelése című témakört. |
+| 9021: nem hozható létre fájl a System Temp elérési úton. | A VMware eszköz a rendszer ideiglenes elérési útját jelenti a felhasználók ideiglenes elérési útja helyett. | Frissítse a VMware-eszköz 10287-es verzióját (NGC/VI ügyfél-formátum). |
+| 9022: a WMI-objektumhoz való hozzáférés megtagadva. | A felhasználóhoz vagy a Csoportházirendhez társított szerepkör korlátozza a felhasználót a WMI-objektum elérésére. | Vegye fel a kapcsolatot Microsoft ügyfélszolgálata. |
+| 9023: nem lehet futtatni a PowerShellt a SystemRoot környezeti változó értéke üres. | A SystemRoot környezeti változó értéke üres a vendég virtuális gépen. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
+| 9024: nem sikerült felderíteni, mert a TEMP környezeti változó értéke üres. | A TEMP környezeti változó értéke üres a vendég virtuális gép esetében. | Vegye fel a kapcsolatot Microsoft ügyfélszolgálata. |
+| 9025: a PowerShell sérült a vendég virtuális gépeken. | A PowerShell sérült a vendég virtuális gépen. | Telepítse újra a PowerShellt a vendég virtuális gépen, és ellenőrizze, hogy a PowerShell futtatható-e a vendég virtuális gépen. |
+| 9026: nem lehet futtatni a vendég műveleteit a virtuális gépen. | A virtuális gép állapota nem teszi lehetővé, hogy a vendég műveletei a virtuális gépen fussanak. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
+| 9027: a vendég műveleti ügynök nem fut a virtuális gépen. | Nem sikerült felvenni a kapcsolatot a virtuális gépen futó vendég műveleti ügynökkel. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
+| 9028: a fájl nem hozható létre, mert nincs elég szabad lemezterület a virtuális gépen. | Nincs elég hely a lemezen. | Gondoskodjon arról, hogy elegendő lemezterület álljon rendelkezésre a virtuális gép lemezes tárolásában. |
+| 9029: nem érhető el a PowerShell a vendég virtuális gép hitelesítő adatainak megadásakor. | A Powershellhez való hozzáférés nem érhető el a felhasználó számára. | Győződjön meg arról, hogy a készüléken hozzáadott felhasználó hozzáférhet a PowerShellhez a vendég virtuális gépen. |
+| 9030: nem sikerült a felderített metaadatok gyűjtése, mert az ESXi-gazdagép le van választva. | Az ESXi-gazdagép leválasztott állapotban van. | Győződjön meg arról, hogy a virtuális gépet futtató ESXi-gazdagép csatlakoztatva van. |
+| 9031: nem sikerült a felderített metaadatok gyűjtése, mert az ESXi-gazdagép nem válaszol. | A távoli gazdagép érvénytelen állapotban van. | Győződjön meg arról, hogy a virtuális gépet futtató ESXi-gazdagép fut és csatlakoztatva van. |
+| 9032: egy belső hiba miatt nem sikerült felderíteni. | A probléma belső hiba miatt fordulhat elő. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
+| 9033: nem sikerült felderíteni, mert a virtuális gép felhasználóneve érvénytelen karaktereket tartalmaz. | Érvénytelen karakterek észlelhetők a felhasználónévben. | Adja meg a virtuális gép hitelesítő adatait, hogy ne legyenek érvénytelen karakterek. |
+| 9034: a megadott Felhasználónév nem UPN-formátumú. | A Felhasználónév nem UPN formátumú. | Győződjön meg arról, hogy a Felhasználónév az egyszerű felhasználónév (UPN) formátumban van. |
+| 9035: nem sikerült felderíteni a PowerShell nyelvi üzemmódját, mert nincs "teljes nyelv" beállítás. | A PowerShell nyelvi módja a vendég virtuális gépen nem teljes nyelvre van beállítva. | Győződjön meg arról, hogy a PowerShell nyelvi mód beállítása "teljes nyelv". |
+| 9037: az adatgyűjtés ideiglenesen szünetel, mert a virtuális gép válaszideje túl magas. | A felderített virtuális gép túl sokáig tart a válaszadáshoz | Nincs szükség beavatkozásra. Az alkalmazás észlelése 24 órán belül próbálkozik, és a függőségi elemzéshez 3 óra van (ügynök nélkül). |
+| 10000: az operációs rendszer típusa nem támogatott. | A kiszolgálón futó operációs rendszer sem Windows, sem Linux. | A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el. |
+| 10001: a kiszolgáló felderítésére szolgáló parancsfájl nem található a berendezésen. | A felderítés nem a várt módon működik. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
+| 10002: a felderítési feladat nem fejeződött be időben. | A felderítési ügynök nem a várt módon működik. | A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
+| 10003: a felderítési feladat végrehajtásának folyamata hiba miatt kilépett. | A felderítési feladat végrehajtásának folyamata hiba miatt kilépett. | A problémát 24 órán belül automatikusan fel kell oldani. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot Microsoft ügyfélszolgálata. |
+| 10004: nincs megadva hitelesítő adat a vendég operációs rendszer típusához. | Az operációs rendszer típusú gépek eléréséhez szükséges hitelesítő adatok nem lettek megadva a Azure Migrate berendezésben. | Hitelesítő adatok hozzáadása a készüléken lévő gépekhez |
+| 10005: a megadott hitelesítő adatok nem érvényesek. | A készülékhez a kiszolgáló eléréséhez megadott hitelesítő adatok helytelenek. | Frissítse a berendezésben megadott hitelesítő adatokat, és győződjön meg arról, hogy a kiszolgáló elérhető a hitelesítő adatok használatával. |
+| 10006: a vendég operációs rendszer típusa nem támogatott a hitelesítőadat-tárolóban. | A kiszolgálón futó operációs rendszer sem Windows, sem Linux. | A támogatott operációsrendszer-típusok csak Windows és Linux rendszereken érhetők el. |
+| 10007: nem sikerült feldolgozni a felderített metaadatokat. | Hiba történt a JSON deszerializálására tett kísérlet során. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
+| 10008: nem hozható létre fájl a kiszolgálón. | A probléma belső hiba miatt előfordulhat. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
+| 10009: nem lehet felderített metaadatokat írni a-kiszolgálón található fájlba. | A probléma belső hiba miatt fordulhat elő. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
 
+## <a name="next-steps"></a>Következő lépések
 
-
-
-## <a name="next-steps"></a>További lépések
 Állítson be egy berendezést a [VMware](how-to-set-up-appliance-vmware.md), a [Hyper-V](how-to-set-up-appliance-hyper-v.md)vagy a [fizikai kiszolgálók](how-to-set-up-appliance-physical.md)számára.

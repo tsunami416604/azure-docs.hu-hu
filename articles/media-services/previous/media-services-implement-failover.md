@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10976c91e781763264d73adcc54ba88ec8d07f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68cd107b2606643d712c4de94b6d1a82e8ee614a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256531"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657260"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Feladatátvételi továbbítás implementálása Media Services v2-vel
 
@@ -64,9 +64,9 @@ A következő szempontokat kell figyelembe venni:
 
 Ebben a szakaszban egy C# konzolos alkalmazás-projektet hoz létre és állít be.
 
-1. A Visual Studióval hozzon létre egy új megoldást, amely a C# konzol alkalmazás projektjét tartalmazza. Adja meg a **HandleRedundancyForOnDemandStreaming** nevet, majd kattintson **az OK**gombra.
+1. A Visual Studióval hozzon létre egy új megoldást, amely a C# konzol alkalmazás projektjét tartalmazza. Adja meg a **HandleRedundancyForOnDemandStreaming** nevet, majd kattintson **az OK** gombra.
 2. Hozza létre a **SupportFiles** mappát ugyanazon a szinten, mint a **HandleRedundancyForOnDemandStreaming. csproj** Project fájl. A **SupportFiles** mappában hozza létre a **OutputFiles** és a **MP4Files** mappát. Másolja egy. MP4-fájlt a **MP4Files** mappába. (Ebben a példában a rendszer a **ignite.mp4** fájlt használja.) 
-3. A **NuGet** használatával a Media Serviceshoz kapcsolódó dll-ekre mutató hivatkozásokat adhat hozzá. A **Visual Studio főmenüjében**válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**. A konzol ablakban írja be a következőt: **Install-Package windowsazure. Mediaservices**, majd nyomja le az ENTER billentyűt.
+3. A **NuGet** használatával a Media Serviceshoz kapcsolódó dll-ekre mutató hivatkozásokat adhat hozzá. A **Visual Studio főmenüjében** válassza az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt**. A konzol ablakban írja be a következőt: **Install-Package windowsazure. Mediaservices**, majd nyomja le az ENTER billentyűt.
 4. Adja meg a projekthez szükséges egyéb hivatkozásokat: System. Runtime. szerializálás és System. Web.
 5. Cserélje le a **Programs.cs** -fájlhoz hozzáadott utasítások **használatát** a következő esetekben:
 
@@ -751,7 +751,7 @@ Ebben a szakaszban létrehozza a redundancia kezelésére szolgáló képessége
     
 ## <a name="content-protection"></a>Tartalomvédelem
 
-A témakörben szereplő példa a folyamatos átvitelt mutatja. Ha a védett adatfolyamot szeretné elvégezni, néhány további dolgot is telepítenie kell, ugyanazokat a **AssetDeliveryPolicy**kell használnia, mint a **ContentKeyAuthorizationPolicy** vagy a külső kulcs kiszolgálójának URL-címét, és ugyanazzal az azonosítóval kell megadnia a tartalom kulcsait.
+A témakörben szereplő példa a folyamatos átvitelt mutatja. Ha a védett adatfolyamot szeretné elvégezni, néhány további dolgot is telepítenie kell, ugyanazokat a **AssetDeliveryPolicy** kell használnia, mint a **ContentKeyAuthorizationPolicy** vagy a külső kulcs kiszolgálójának URL-címét, és ugyanazzal az azonosítóval kell megadnia a tartalom kulcsait.
 
 További információ a tartalomvédelem [használatáról: az AES-128 dinamikus titkosítás és a Key Delivery Service használata](media-services-protect-with-aes128.md).
 

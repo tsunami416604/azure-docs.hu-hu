@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 981ac775e7153cfd03dc1760bbbc4e50fd9ecc57
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9fbf6990f789bdb0edb1cf45885003569d4f6a8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169545"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653231"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Kulcs átváltásának aláírása a Microsoft Identity platformon
 Ez a cikk azt ismerteti, hogy mit kell tudni a Microsoft Identity platform által a biztonsági jogkivonatok aláírásához használt nyilvános kulcsokról. Fontos megjegyezni, hogy ezek a kulcsok rendszeres időközönként, és vészhelyzetben azonnal összeállíthatók. A Microsoft Identity platformot használó összes alkalmazásnak képesnek kell lennie programozott módon kezelni a kulcs átváltási folyamatát. Folytassa az olvasással, hogy megtudja, hogyan működik a kulcsok működése, hogyan állapítható meg a rollover hatása az alkalmazásra, illetve hogyan lehet frissíteni az alkalmazást, vagy létre kell hozni egy rendszeres manuális átütemezési folyamatot a kulcsok átváltásához, ha szükséges.
@@ -85,7 +85,7 @@ app.UseWsFederationAuthentication(
      });
 ```
 ```
- app.UseWindowsAzureActiveDirectoryBearerAuthentication(
+app.UseWindowsAzureActiveDirectoryBearerAuthentication(
      new WindowsAzureActiveDirectoryBearerAuthenticationOptions
      {
      // ...
@@ -261,7 +261,7 @@ Ha az alkalmazást a Microsoft által biztosított bármely kód-minta vagy bemu
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. Hívja meg a **RefreshValidationSettings ()** metódust a Global.asax.cs **()** metódusban Application_Start a **Global.asax.cs** -ben az alábbiak szerint:
+4. Hívja meg a **RefreshValidationSettings ()** metódust a Global.asax.cs **()** metódusban Application_Start a  -ben az alábbiak szerint:
    ```
    protected void Application_Start()
    {

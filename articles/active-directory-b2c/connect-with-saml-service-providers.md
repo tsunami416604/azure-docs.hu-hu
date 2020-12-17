@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ad7fe062d30f6858296ad4a2638b62c190862365
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 80e6dbdc02b68c279452127933532106b0f78ab8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936437"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654659"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -39,7 +39,7 @@ A két nem kizárólagos alapszintű forgatókönyvek összefoglalása az SAML h
 | Forgatókönyv | Azure AD B2C szerepkör | Használati útmutató |
 | -------- | ----------------- | ------- |
 | Az alkalmazás egy SAML-állítást vár a hitelesítés elvégzéséhez. | **Azure AD B2C identitás-szolgáltatóként (identitásszolgáltató) működik**<br />Azure AD B2C SAML-identitásszolgáltató viselkedik az alkalmazásokban. | Ez a cikk. |
-| A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](identity-provider-adfs.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](identity-provider-salesforce.md)</li></ul> |
+| A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](identity-provider-adfs.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](identity-provider-salesforce-saml.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -393,7 +393,7 @@ Ha engedélyezni szeretné a Azure AD B2C számára a titkosított kijelentések
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>Identitás-szolgáltató által kezdeményezett folyamat engedélyezése (nem kötelező)
 
-Az identitás-szolgáltató által kezdeményezett folyamat során a bejelentkezési folyamatot az Identitáskezelő (Azure AD B2C) kezdeményezi, amely egy kéretlen SAML-választ küld a szolgáltatónak (a függő entitás alkalmazásának). Jelenleg nem támogatunk olyan forgatókönyveket, amelyekben a kezdeményező személyazonosság szolgáltatója külső identitás-szolgáltató, például [AD-FS](identity-provider-adfs.md)vagy [Salesforce](identity-provider-salesforce.md).
+Az identitás-szolgáltató által kezdeményezett folyamat során a bejelentkezési folyamatot az Identitáskezelő (Azure AD B2C) kezdeményezi, amely egy kéretlen SAML-választ küld a szolgáltatónak (a függő entitás alkalmazásának). Jelenleg nem támogatunk olyan forgatókönyveket, amelyekben a kezdeményező személyazonosság szolgáltatója külső identitás-szolgáltató, például [AD-FS](identity-provider-adfs.md)vagy [Salesforce](identity-provider-salesforce-saml.md).
 
 Az Identitáskezelő (Azure AD B2C) által kezdeményezett folyamat engedélyezéséhez állítsa a **IdpInitiatedProfileEnabled** metaadat-elemét a `true` [függő entitás technikai profiljába](relyingparty.md#technicalprofile).
 

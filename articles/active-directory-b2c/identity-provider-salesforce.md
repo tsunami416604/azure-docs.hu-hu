@@ -1,7 +1,7 @@
 ---
-title: Bejelentkezés beállítása Salesforce SAML-szolgáltatóhoz egyéni szabályzatok használatával
+title: Regisztráció és bejelentkezés beállítása Salesforce-fiókkal
 titleSuffix: Azure AD B2C
-description: Salesforce SAML-szolgáltatóval történő bejelentkezés beállítása egyéni szabályzatok használatával Azure Active Directory B2Cban.
+description: A Azure Active Directory B2C használatával Salesforce-fiókkal rendelkező ügyfelek számára biztosítson regisztrációt és bejelentkezést az alkalmazásokban.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -13,171 +13,148 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8214cbd7bb517f0bdcfde14e93790238bd1e354b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0d8b90e18865afeb5cb0c171d21c89d7c6e932f0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584714"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654285"
 ---
-# <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Salesforce SAML-szolgáltatóval történő bejelentkezés beállítása egyéni szabályzatok használatával Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Salesforce-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
-
-::: zone pivot="b2c-user-flow"
-[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
-
-::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy Salesforce-szervezet felhasználói számára a Azure Active Directory B2C (Azure AD B2C) [Egyéni házirendjeivel](custom-policy-overview.md) . A bejelentkezést egy SAML-identitás- [szolgáltató technikai profiljának](saml-identity-provider-technical-profile.md) egy egyéni szabályzathoz való hozzáadásával engedélyezheti.
+::: zone-end
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure Active Directory B2Cban](custom-policy-get-started.md).
-- Ha még nem tette meg, regisztráljon egy [ingyenes Developer Edition-fiókra](https://developer.salesforce.com/signup). Ez a cikk a [Salesforce villám-élményt](https://developer.salesforce.com/page/Lightning_Experience_FAQ)használja.
-- [Állítsa be a saját tartományát](https://help.salesforce.com/articleView?id=domain_name_setup.htm&language=en_US&type=0) a Salesforce-szervezet számára.
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
-### <a name="set-up-salesforce-as-an-identity-provider"></a>Salesforce beállítása identitás-szolgáltatóként
 
-1. [Jelentkezzen be a Salesforce](https://login.salesforce.com/).
-2. A bal oldali menüben a **Beállítások** alatt bontsa ki az **identitás** csomópontot, majd válassza az **identitás-szolgáltató** elemet.
-3. Válassza az **Identitáskezelő engedélyezése** lehetőséget.
-4. A **tanúsítvány kiválasztása** területen válassza ki azt a tanúsítványt, amelyet a Salesforce használni szeretne a Azure ad B2Csal való kommunikációhoz. Használhatja az alapértelmezett tanúsítványt.
-5. Kattintson a **Mentés** gombra.
+## <a name="create-a-salesforce-application"></a>Salesforce-alkalmazás létrehozása
 
-### <a name="create-a-connected-app-in-salesforce"></a>Csatlakoztatott alkalmazás létrehozása a Salesforce-ben
+Ha Azure Active Directory B2C (Azure AD B2C) Salesforce-fiókot szeretne használni, létre kell hoznia egy alkalmazást a Salesforce **app Managerben**. További információ: az [alapszintű csatlakoztatott alkalmazások beállításainak konfigurálása](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)és [az OAuth-beállítások engedélyezése az API-integrációhoz](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
-1. Az **Identitáskezelő** lapon válassza a szolgáltatók a **csatlakoztatott alkalmazások használatával lehetőséget. Kattintson ide.**
-2. Az **alapszintű információ** területen adja meg a csatlakoztatott alkalmazás szükséges értékeit.
-3. A **webalkalmazás beállításai** területen jelölje be az **SAML engedélyezése** jelölőnégyzetet.
-4. Az **entitás azonosítója** mezőben adja meg a következő URL-címet. Győződjön meg arról, hogy az értékét a `your-tenant` Azure ad B2C bérlő nevére cseréli.
+1. A **telepítőből** írja be az **alkalmazások** elemet a **gyors keresés** mezőbe, és válassza az **app Manager** lehetőséget.
+1. Válassza az **új csatlakoztatott alkalmazás** lehetőséget.
+1. Az **alapszintű információ** területen adja meg a következőket:
+    1. **Csatlakoztatott alkalmazás neve** – a csatlakoztatott alkalmazás neve megjelenik az App Managerben és az App Launcher csempén. A névnek egyedinek kell lennie a szervezeten belül. 
+    1. **API neve** 
+    1. **Kapcsolattartási E-mail cím** – a Salesforce tartozó kapcsolattartási e-mail cím
+1. Az **API (OAuth-beállítások engedélyezése)** területen válassza a **OAuth-beállítások engedélyezése** lehetőséget.
+1. A **visszahívási URL-cím** mezőbe írja be a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a helyére a `your-tenant-name` bérlő nevét. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
+1. A **kiválasztott OAuth-hatókörökben** válassza **a hozzáférés az alapvető információkhoz (azonosító, profil, e-mail cím, telefonszám)** lehetőséget, és **engedélyezze az egyedi azonosítóhoz (OpenID) való hozzáférést**.
+1. Válassza **a titkos kód megkövetelése webkiszolgálói folyamathoz** lehetőséget.
+1. Válassza az **azonosító jogkivonat konfigurálása** lehetőséget, majd válassza a **standard jogcímek belefoglalása** lehetőséget.
+1. Kattintson a **Mentés** gombra.
+1. Másolja a **fogyasztói kulcs** és a **fogyasztói titok** értékeit. Mindkettőre szüksége lesz, hogy konfigurálja a Salesforce identitás-szolgáltatóként a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
 
-      ```
-      https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
-      ```
+::: zone pivot="b2c-user-flow"
 
-6. Az **ACS URL-címe** mezőbe írja be a következő URL-címet. Győződjön meg arról, hogy az értékét a `your-tenant` Azure ad B2C bérlő nevére cseréli.
+## <a name="configure-a-salesforce-account-as-an-identity-provider"></a>Salesforce-fiók konfigurálása identitás-szolgáltatóként
 
-      ```
-      https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
-      ```
-7. Görgessen a lista aljára, majd kattintson a **Mentés** gombra.
+1. Győződjön meg arról, hogy a Azure AD B2C bérlőt tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
+1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
+1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider** lehetőséget.
+1. Adjon meg egy **nevet**. Írja be például a következőt: *Salesforce*.
+1. A **metaadatok URL-címéhez** adja meg a következő URL-címet a `{org}` Salesforce-szervezetnél:
 
-### <a name="get-the-metadata-url"></a>A metaadatok URL-címének beolvasása
+    ```
+    https://{org}.my.salesforce.com/.well-known/openid-configuration
+    ```
 
-1. A csatlakoztatott alkalmazás áttekintés lapján kattintson a **kezelés** elemre.
-2. Másolja a metaadat- **felderítési végpont** értékét, majd mentse. Ezt a cikk későbbi részében fogja használni.
+1. Az **ügyfél-azonosító** mezőben adja meg a korábban rögzített alkalmazás azonosítóját.
+1. Az **ügyfél titkos kulcsa** mezőben adja meg a korábban rögzített ügyfél-titkot.
+1. A **hatókörben** adja meg a következőt: `openid id profile email` .
+1. Hagyja meg a **Válasz típusa** és a **válasz mód** alapértelmezett értékeit.
+1. Választható A **tartományhoz tartozó tipp** esetében adja meg a következőt: `contoso.com` . További információ: [közvetlen bejelentkezés beállítása Azure Active Directory B2C használatával](direct-signin.md#redirect-sign-in-to-a-social-provider).
+1. Az **Identity Provider jogcímek leképezése** területen válassza ki a következő jogcímeket:
 
-### <a name="set-up-salesforce-users-to-federate"></a>Salesforce-felhasználók beállítása a összevonása
+    - **Felhasználói azonosító**: *Sub*
+    - **Megjelenítendő név**: *név*
+    - **Utónév**: *given_name*
+    - **Vezetéknév**: *family_name*
+    - **E-mail**: *preferred_username*
 
-1. A csatlakoztatott alkalmazás **kezelés** lapján kattintson a **profilok kezelése** lehetőségre.
-2. Válassza ki a összevonása használni kívánt profilokat (vagy felhasználói csoportokat) Azure AD B2C. Rendszergazdaként jelölje be a rendszergazda jelölőnégyzetet, hogy **összevonása a Salesforce** -fiók használatával.
+1. Válassza a **Mentés** lehetőséget.
+::: zone-end
 
-## <a name="generate-a-signing-certificate"></a>Aláíró tanúsítvány létrehozása
-
-A Salesforce küldött kérelmeket Azure AD B2C alá kell írni. Aláíró tanúsítvány létrehozásához nyissa meg Azure PowerShell, majd futtassa a következő parancsokat.
-
-> [!NOTE]
-> Győződjön meg arról, hogy a felső két sorban frissíti a bérlő nevét és jelszavát.
-
-```powershell
-$tenantName = "<YOUR TENANT NAME>.onmicrosoft.com"
-$pwdText = "<YOUR PASSWORD HERE>"
-
-$Cert = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName "SamlIdp.$tenantName" -Subject "B2C SAML Signing Cert" -HashAlgorithm SHA256 -KeySpec Signature -KeyLength 2048
-
-$pwd = ConvertTo-SecureString -String $pwdText -Force -AsPlainText
-
-Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
-```
+::: zone pivot="b2c-custom-policy"
 
 ## <a name="create-a-policy-key"></a>Házirend-kulcs létrehozása
 
-A Azure AD B2C bérlőben létrehozott tanúsítványt kell tárolnia.
+A Azure AD B2C bérlőben korábban rögzített ügyfél-titkos kulcsot kell tárolnia.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a bérlőt tartalmazó könyvtárat.
 3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 4. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 5. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
-6. A **Beállítások** területen válassza a lehetőséget `Upload` .
-7. Adja meg a szabályzat **nevét**. Például: SAMLSigningCert. Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs nevéhez.
-8. Keresse meg és válassza ki a létrehozott B2CSigningCert. pfx-tanúsítványt.
-9. Adja meg a tanúsítványhoz tartozó **jelszót** .
-3. Kattintson a **Létrehozás** gombra.
+6. A **Beállítások** területen válassza a lehetőséget `Manual` .
+7. Adja meg a szabályzat kulcsának **nevét** . Például: `SalesforceSecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
+8. A **Secret (titkos kulcs**) mezőben adja meg a korábban rögzített ügyfél-titkot.
+9. A **kulcshasználat** beállításnál válassza a elemet `Signature` .
+10. Kattintson a **Létrehozás** gombra.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
 
 Ha azt szeretné, hogy a felhasználók Salesforce-fiókkal jelentkezzenek be, meg kell adnia a fiókot jogcím-szolgáltatóként, amely Azure AD B2C tud kommunikálni egy végponton keresztül. A végpont olyan jogcímeket biztosít, amelyeket a Azure AD B2C használ annak ellenőrzéséhez, hogy egy adott felhasználó hitelesítve van-e.
 
-A Salesforce-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat fájlkiterjesztés fájljában. További információ: SAML- [identitás-szolgáltató technikai profiljának megadása](saml-identity-provider-technical-profile.md).
+A Salesforce-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat fájlkiterjesztés fájljában.
 
 1. Nyissa meg a *TrustFrameworkExtensions.xml*.
-1. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
-1. Vegyen fel egy új **ClaimsProvider** a következőképpen:
+2. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
+3. Vegyen fel egy új **ClaimsProvider** a következőképpen:
 
     ```xml
     <ClaimsProvider>
-      <Domain>salesforce</Domain>
+      <Domain>salesforce.com</Domain>
       <DisplayName>Salesforce</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="salesforce">
+        <TechnicalProfile Id="Salesforce-OIDC">
           <DisplayName>Salesforce</DisplayName>
-          <Description>Login with your Salesforce account</Description>
-          <Protocol Name="SAML2"/>
+          <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <Item Key="WantsEncryptedAssertions">false</Item>
-            <Item Key="WantsSignedAssertions">false</Item>
-            <Item Key="PartnerEntity">https://contoso-dev-ed.my.salesforce.com/.well-known/samlidp.xml</Item>
+            <!-- Update the {org} below to your Salesforce organization -->
+            <Item Key="METADATA">https://{org}.my.salesforce.com/.well-known/openid-configuration</Item>
+            <Item Key="response_types">code</Item>
+            <Item Key="response_mode">form_post</Item>
+            <Item Key="scope">openid id profile email</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="client_id">Your Salesforce application ID</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_SalesforceSecret"/>
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="userId"/>
-            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name"/>
-            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name"/>
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email"/>
-            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="username"/>
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication"/>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="SAMLIdp" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="salesforce.com" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
-            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
-            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName"/>
-            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
-            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-idp"/>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-1. Frissítse a **PartnerEntity** értékét a korábban átmásolt Salesforce metaadat URL-címével.
-1. Frissítse a **StorageReferenceId** mindkét példányának értékét az aláíró tanúsítvány kulcsának nevére. Például B2C_1A_SAMLSigningCert.
-1. Keresse meg a `<ClaimsProviders>` szakaszt, és adja hozzá a következő XML-kódrészletet. Ha a házirend már tartalmazza a `SM-Saml-idp` technikai profilt, ugorjon a következő lépésre. További információ: [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md).
-
-    ```xml
-    <ClaimsProvider>
-      <DisplayName>Session Management</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="SM-Saml-idp">
-          <DisplayName>Session Management Provider</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-            <Item Key="IncludeSessionIndex">false</Item>
-            <Item Key="RegisterServiceProviders">false</Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
-    ```
-1. Mentse a fájlt.
+4. Állítsa be a **metaadatok** URI-ját `{org}` a Salesforce-szervezettel.
+5. **Client_id** beállítása az alkalmazás-azonosítóhoz az alkalmazás regisztrációja során.
+6. Mentse a fájlt.
 
 ### <a name="upload-the-extension-file-for-verification"></a>A bővítmény fájljának feltöltése ellenőrzéshez
 
@@ -189,7 +166,7 @@ Most úgy konfigurálta a szabályzatot, hogy Azure AD B2C tudja, hogyan kommuni
 
 ## <a name="register-the-claims-provider"></a>A jogcím-szolgáltató regisztrálása
 
-Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regisztrációs vagy bejelentkezési képernyőkön nem érhető el. Az elérhetővé tételéhez hozzon létre egy másolatot egy meglévő sablon felhasználói utazásról, majd módosítsa úgy, hogy az a Salesforce-identitás szolgáltatója is legyen.
+Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regisztrációs és bejelentkezési képernyőkön nem érhető el. Az elérhetővé tételéhez hozzon létre egy másolatot egy meglévő sablon felhasználói utazásról, majd módosítsa úgy, hogy az a Salesforce-identitás szolgáltatója is legyen.
 
 1. Nyissa meg a *TrustFrameworkBase.xml* fájlt az alapszintű csomagból.
 2. A **UserJourney** elem teljes tartalmának megkeresése és másolása `Id="SignUpOrSignIn"` .
@@ -199,9 +176,9 @@ Ezen a ponton az identitás-szolgáltató beállítása megtörtént, de a regis
 
 ### <a name="display-the-button"></a>A gomb megjelenítése
 
-A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezési képernyőn lévő Identity Provider gombhoz. Ha **ClaimsProviderSelection** elemet ad hozzá egy LinkedIn-fiókhoz, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
+A **ClaimsProviderSelection** elem a bejelentkezési és bejelentkezési képernyőn lévő Identity Provider gombhoz hasonlít. Ha hozzáad egy **ClaimsProviderSelection** elemet egy Salesforce-fiókhoz, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
 
-1. Keresse meg  az `Order="1"` imént létrehozott felhasználói útra kiterjedő OrchestrationStep elemet.
+1. Keresse meg  az `Order="1"` Ön által létrehozott felhasználói útra kiterjedő OrchestrationStep elemet.
 2. A **ClaimsProviderSelects** területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `SalesforceExchange` :
 
     ```xml
@@ -213,25 +190,49 @@ A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezé
 Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. Ebben az esetben a művelet arra vonatkozik, hogy a Azure AD B2C kommunikáljon egy Salesforce-fiókkal a jogkivonat fogadásához.
 
 1. Keresse meg a felhasználói útra kiterjedő **OrchestrationStep** `Order="2"` .
-2. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId** használt **azonosítóhoz** :
+2. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId** használt azonosítóhoz:
 
     ```xml
-    <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
+    <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="Salesforce-OIDC" />
     ```
 
-    Frissítse a **TechnicalProfileReferenceId** értékét a korábban létrehozott műszaki profil **azonosítójával** . Például `salesforce` vagy `LinkedIn-OAUTH`.
+    Frissítse a **TechnicalProfileReferenceId** értékét a korábban létrehozott műszaki profil azonosítójával. Például: `Salesforce-OIDC`.
 
 3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.
 
-## <a name="update-and-test-the-relying-party-file"></a>A függő entitás fájljának frissítése és tesztelése
+::: zone-end
 
-Frissítse a függő entitás (RP) fájlját, amely elindítja az imént létrehozott felhasználói utat:
+::: zone pivot="b2c-user-flow"
 
-1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárában, és nevezze át. Nevezze át például *SignUpSignInSalesforce.xmlra*.
-2. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInSalesforce`.
-3. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például:`http://contoso.com/B2C_1A_signup_signin_salesforce`
-4. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy az megfeleljen a létrehozott új felhasználói út azonosítójának (SignUpSignInSalesforce).
-5. Mentse a módosításokat, töltse fel a fájlt, majd válassza ki az új szabályzatot a listában.
-6. Győződjön meg arról, hogy a létrehozott Azure AD B2C alkalmazás ki van választva az **alkalmazás kiválasztása** mezőben, majd tesztelje a **Futtatás most** lehetőségre kattintva.
+## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>Salesforce-identitás szolgáltatójának hozzáadása felhasználói folyamathoz 
+
+1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
+1. Kattintson arra a felhasználói folyamatra, amelyet a Salesforce-identitás szolgáltatója szeretne.
+1. A **közösségi identitás-szolgáltatók** területen válassza a **Salesforce** lehetőséget.
+1. Válassza a **Mentés** lehetőséget.
+1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
+1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **felhasználói folyamat futtatása** elemre.
 
 ::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="update-and-test-the-relying-party-file"></a>A függő entitás fájljának frissítése és tesztelése
+
+Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott felhasználói utat.
+
+1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárában, és nevezze át. Nevezze át például *SignUpSignInSalesforce.xmlra*.
+1. Nyissa meg az új fájlt, és frissítse a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInSalesforce`.
+1. Frissítse a **PublicPolicyUri** értékét a szabályzat URI azonosítójának értékével. Például:`http://contoso.com/B2C_1A_signup_signin_Salesforce`
+1. Frissítse a **ReferenceId** attribútum értékét a **DefaultUserJourney** -ben, hogy az megfeleljen a létrehozott új felhasználói út azonosítójának (SignUpSignSalesforce).
+1. Mentse a módosításokat, töltse fel a fájlt.
+1. Az **Egyéni házirendek** területen válassza a **B2C_1A_signup_signin** lehetőséget.
+1. Az **alkalmazás kiválasztása** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **Futtatás most** lehetőségre, és válassza a Salesforce lehetőséget a Salesforce való bejelentkezéshez és az egyéni szabályzat teszteléséhez.
+
+::: zone-end
+
+## <a name="next-steps"></a>Következő lépések
+
+Megtudhatja, hogyan [adhat át Salesforce tokent az alkalmazásnak](idp-pass-through-user-flow.md).

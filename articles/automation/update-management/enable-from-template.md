@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: eac7999db61bd883dd1148e8b866b811a4f3c851
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ce04053d7b624bddf8c0d3a6476f26c3462af2c2
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222866"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652024"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Az Update Management engedélyezése Azure Resource Manager-sablonnal
 
@@ -329,15 +329,15 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
 
 2. A Azure Portal nyissa meg a létrehozott Automation-fiókot.
 
-3. A bal oldali panelen válassza a **runbookok**lehetőséget. A **runbookok** lapon a lista három oktatóanyag-runbookok hozott létre az Automation-fiókkal.
+3. A bal oldali panelen válassza a **runbookok** lehetőséget. A **runbookok** lapon a lista három oktatóanyag-runbookok hozott létre az Automation-fiókkal.
 
     ![Az Automation-fiókkal létrehozott runbookok oktatóanyag](../media/quickstart-create-automation-account-template/automation-sample-runbooks.png)
 
-4. A bal oldali panelen válassza a **csatolt munkaterület**lehetőséget. A **csatolt munkaterület** lapon megjelenik az Automation-fiókhoz korábban megadott log Analytics munkaterület.
+4. A bal oldali panelen válassza a **csatolt munkaterület** lehetőséget. A **csatolt munkaterület** lapon megjelenik az Automation-fiókhoz korábban megadott log Analytics munkaterület.
 
     ![Az Log Analytics munkaterülethez csatolt Automation-fiók](../media/quickstart-create-automation-account-template/automation-account-linked-workspace.png)
 
-5. A bal oldali panelen válassza a **frissítés kezelése**lehetőséget. Az **Update Management (frissítés felügyelete** ) lapon az értékelés oldalt az éppen engedélyezve állapotot eredményező információk nélkül jeleníti meg, és a gépek nincsenek felügyeletre konfigurálva.
+5. A bal oldali panelen válassza a **frissítés kezelése** lehetőséget. Az **Update Management (frissítés felügyelete** ) lapon az értékelés oldalt az éppen engedélyezve állapotot eredményező információk nélkül jeleníti meg, és a gépek nincsenek felügyeletre konfigurálva.
 
     ![Update Management funkció-értékelési nézet](./media/enable-from-template/update-management-assessment-view.png)
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: ffe5a1d0c9bbdbc416ecce7c36b3710339c4f059
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d2c1ddd1e0b5a080050e1ffeb28eded98dbfea3f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781022"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652109"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Vész-helyreállítás egy több-bérlős SaaS-alkalmazáshoz az adatbázis-geo-replikáció használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,7 +33,7 @@ Ez az oktatóanyag a feladatátvételi és feladat-visszavételi munkafolyamatok
 > * Később, a leállás után visszaadja az alkalmazást, katalogizálja és bérlői adatbázisait az eredeti régióba
 > * Frissítse a katalógust úgy, hogy minden bérlői adatbázis feladatait átadja az egyes bérlői adatbázisok elsődleges helyének nyomon követéséhez
 > * Győződjön meg arról, hogy az alkalmazás és az elsődleges bérlői adatbázis mindig ugyanabban az Azure-régióban található, hogy csökkentse a késést  
- 
+
 
 Az oktatóanyag megkezdése előtt győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 * A Wingtip jegyek SaaS-adatbázisa egy bérlői alkalmazáson van üzembe helyezve. Ha kevesebb, mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS-adatbázis üzembe helyezése és megismerése bérlői alkalmazásokban](saas-dbpertenant-get-started-deploy.md)  
@@ -42,7 +42,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy teljesülnek az
 ## <a name="introduction-to-the-geo-replication-recovery-pattern"></a>Bevezetés a Geo-replikáció helyreállítási mintába
 
 ![Helyreállítási architektúra](./media/saas-dbpertenant-dr-geo-replication/recovery-architecture.png)
- 
+
 A vész-helyreállítási (DR) fontos szempont számos alkalmazás számára, legyen szó megfelelőségi okokról vagy üzletmenet folytonosságáról. Ha a szolgáltatás hosszabb ideig tartó, a jól előkészített DR-terv csökkentheti az üzleti fennakadást. A földrajzi replikálás használatával a legalacsonyabb RPO és RTO az adatbázis-replikák egy olyan helyreállítási régióban való fenntartásával, amely rövid időn belül feloldható.
 
 A Geo-replikáción alapuló DR-terv három különálló részből áll:
@@ -56,13 +56,13 @@ Minden résznek körültekintően kell megfontolnia, különösen, ha nagy lépt
     * Hozzon létre és őrizzen meg egy tükrözési környezetet a helyreállítási régióban. A rugalmas készletek létrehozása és az ebben a helyreállítási környezetben található adatbázisok replikálása a helyreállítási régióban foglalt kapacitást is fenntartja. A környezet fenntartása magában foglalja az új bérlői adatbázisok replikálását az üzembe helyezés során.  
 * Helyreállítási
     * Ha a napi költségek csökkentése érdekében a méretezhető helyreállítási környezetet használják, a készleteket és az adatbázisokat fel kell mérni a helyreállítási régióban a teljes működési kapacitás megszerzéséhez.
-    * Az új bérlői kiépítés engedélyezése a helyreállítási régióban a lehető leghamarabb  
-    * A bérlők prioritási sorrendben való visszaállítására van optimalizálva
-    * A lehető leggyorsabban optimalizálhatja a bérlők online állapotba lépéseit
-    * Legyen rugalmas a meghibásodás, újraindítási és idempotens
-    * Akkor lehet megszakítani a folyamatot, ha az eredeti régió újra elérhetővé vált.
+     * Az új bérlői kiépítés engedélyezése a helyreállítási régióban a lehető leghamarabb  
+     * A bérlők prioritási sorrendben való visszaállítására van optimalizálva
+     * A lehető leggyorsabban optimalizálhatja a bérlők online állapotba lépéseit
+     * Legyen rugalmas a meghibásodás, újraindítási és idempotens
+     * Akkor lehet megszakítani a folyamatot, ha az eredeti régió újra elérhetővé vált.
 * Hazaszállítás 
-    * A helyreállítási régió adatbázisainak feladatátvétele az eredeti régióban lévő replikák számára minimális hatással van a bérlők számára: az adatvesztés és a minimálisan megengedett időtartam a bérlőn kívüli.   
+     * A helyreállítási régió adatbázisainak feladatátvétele az eredeti régióban lévő replikák számára minimális hatással van a bérlők számára: az adatvesztés és a minimálisan megengedett időtartam a bérlőn kívüli.
 
 Ebben az oktatóanyagban ezek a kihívások a Azure SQL Database és az Azure platform funkcióinak használatával foglalkoznak:
 
@@ -108,10 +108,10 @@ Ebben a feladatban egy olyan folyamatot indít el, amely a kiszolgálók, a ruga
 > [!IMPORTANT]
 > Az egyszerűség kedvéért a szinkronizálási folyamat és az egyéb hosszú ideig futó helyreállítási és újratelepítési folyamatok ezekben az oktatóanyagokban helyi PowerShell-feladatokként vagy az ügyfél felhasználói bejelentkezése alatt futó munkamenetekben valósulnak meg. A bejelentkezéskor kiállított hitelesítési jogkivonatok több óra elteltével lejárnak, és a feladatok sikertelenek lesznek. Éles környezetben a hosszan futó folyamatokat olyan megbízható Azure-szolgáltatásként kell megvalósítani, amely egy egyszerű szolgáltatásnév keretében fut. Lásd: a [Azure PowerShell használata egy egyszerű szolgáltatásnév létrehozásához tanúsítvánnyal](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-1. A _POWERSHELL ISE_ -ben nyissa meg a. ..\Learning Modules\UserConfig.psm1 fájlt. Cserélje le a `<resourcegroup>` és `<user>` a értéket a 10-es és a 11-es vonalakra az alkalmazás üzembe helyezésekor használt értékkel.  Mentse a fájlt!
+1. A _POWERSHELL ISE_-ben nyissa meg a. ..\Learning Modules\UserConfig.psm1 fájlt. Cserélje le a `<resourcegroup>` és `<user>` a értéket a 10-es és a 11-es vonalakra az alkalmazás üzembe helyezésekor használt értékkel.  Mentse a fájlt!
 
-2. A *POWERSHELL ISE* -ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következőket:
-    * **$DemoScenario = 1** , a bérlői kiszolgáló szinkronizálása és a készlet konfigurációs adatainak elindítása a katalógusba
+2. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következőket:
+    * **$DemoScenario = 1**, a bérlői kiszolgáló szinkronizálása és a készlet konfigurációs adatainak elindítása a katalógusba
 
 3. Nyomja le az **F5** billentyűt a szinkronizálási parancsfájl futtatásához. A rendszer új PowerShell-munkamenetet nyit meg a bérlői erőforrások konfigurációjának szinkronizálásához.
 ![A bérlői erőforrások konfigurációjának szinkronizálására megnyitott új PowerShell-munkamenetet bemutató képernyőkép.](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
@@ -128,8 +128,8 @@ Ebben a feladatban egy olyan folyamatot indít el, amely egy duplikált alkalmaz
 > [!Note]
 > Ez az oktatóanyag geo-replikációs védelmet biztosít a Wingtip tickets minta alkalmazáshoz. A földrajzi replikálást használó alkalmazások éles környezetben való üzembe helyezése esetén az egyes bérlők kezdettől kezdve egy földrajzilag replikált adatbázissal lesznek kiépítve. Lásd: [a magasan elérhető szolgáltatások tervezése Azure SQL Database használatával](designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
 
-1. A *POWERSHELL ISE* -ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő értékeket:
-    * **$DemoScenario = 2** , tükrözött rendszerkép-helyreállítási környezet létrehozása és katalógus-és bérlői adatbázisok replikálása
+1. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő értékeket:
+    * **$DemoScenario = 2**, tükrözött rendszerkép-helyreállítási környezet létrehozása és katalógus-és bérlői adatbázisok replikálása
 
 2. A szkript futtatásához nyomja le az **F5** billentyűt. A rendszer új PowerShell-munkamenetet nyit meg a replikák létrehozásához.
 ![Szinkronizálási folyamat](./media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
@@ -181,8 +181,8 @@ A helyreállítási parancsfájl a következő feladatokat hajtja végre:
 
 Most képzelje el, hogy az alkalmazás üzembe helyezése és a helyreállítási parancsfájl futtatása a régióban leáll:
 
-1. A *POWERSHELL ISE* -ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő értékeket:
-    * **$DemoScenario = 3** , az alkalmazás helyreállítása helyreállítási régióban a replikák feladatátvételével
+1. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő értékeket:
+    * **$DemoScenario = 3**, az alkalmazás helyreállítása helyreállítási régióban a replikák feladatátvételével
 
 2. A szkript futtatásához nyomja le az **F5** billentyűt.  
     * A parancsfájl egy új PowerShell-ablakban nyílik meg, majd a párhuzamosan futó PowerShell-feladatok sorozatát indítja el. Ezek a feladatok feladatátvételt hajtanak végre a bérlői adatbázisokon a helyreállítási régióban.
@@ -204,7 +204,7 @@ Amíg az alkalmazás végpontja le van tiltva a Traffic Managerban, az alkalmaz�
 
      > [!Note]
      > Ha csak néhány adatbázist kíván helyreállítani, előfordulhat, hogy a helyreállítás befejeződése előtt nem tudja frissíteni a böngészőt, így előfordulhat, hogy nem látja a bérlőket offline állapotban. 
- 
+
      ![Események hub offline](./media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
    * Ha közvetlenül az offline bérlő eseményeinek lapját nyitja meg, akkor a "bérlő offline" értesítés jelenik meg. Ha például a contoso Concert Hall offline állapotban van, próbálja meg megnyitni a következőt: http://events.wingtip-dpt.&lt &gt; . felhasználó. Trafficmanager.net/contosoconcerthall ![ contoso offline oldal](./media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
@@ -212,8 +212,8 @@ Amíg az alkalmazás végpontja le van tiltva a Traffic Managerban, az alkalmaz�
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Új bérlő kiépítése a helyreállítási régióban
 Még az összes meglévő bérlői adatbázis feladatátvétele előtt is kiépítheti az új bérlőket a helyreállítási régióban.  
 
-1. A *POWERSHELL ISE* -ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő tulajdonságot:
-    * **$DemoScenario = 4** , új bérlő kiépítése a helyreállítási régióban
+1. A *POWERSHELL ISE*-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlt, és állítsa be a következő tulajdonságot:
+    * **$DemoScenario = 4**, új bérlő kiépítése a helyreállítási régióban
 
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és az új bérlő kiépítéséhez. 
 
@@ -239,21 +239,21 @@ A helyreállítási folyamat befejezése után az alkalmazás és az összes bé
    * A katalógus és a tenants1-kiszolgálók helyreállítási verziói a _helyreállítási_ utótaggal.  Ezen kiszolgálókon a visszaállított katalógus és bérlői adatbázisok mindegyike az eredeti régióban használt neveket tartalmazza.
 
    * A _tenants2-DPT- &lt; User &gt; -Recovery_ SQL Server.  Ez a kiszolgáló új bérlők kiépítési felállítására szolgál a leállás során.
-   * Az App Service nevű, _Events-Wingtip-DPT- &lt; recoveryregion &gt; - &lt; User&gt_ ;, amely az Events alkalmazás helyreállítási példánya. 
+   * Az App Service nevű, _Events-Wingtip-DPT- &lt; recoveryregion &gt; - &lt; User&gt_;, amely az Events alkalmazás helyreállítási példánya. 
 
      ![Azure helyreállítási erőforrások](./media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
-    
+
 4. Nyissa meg a _tenants2-DPT- &lt; User &gt; -Recovery_ SQL Servert.  Figyelje meg, hogy tartalmazza az adatbázis _hawthornhall_ és a _Pool1_ rugalmas készletét.  A _hawthornhall_ -adatbázis rugalmas adatbázisként van konfigurálva a _Pool1_ rugalmas készletben.
 
 5. Térjen vissza az erőforráscsoporthoz, és kattintson a contoso Concert Hall adatbázisára a _tenants1-DPT- &lt; User &gt; -Recovery_ Server kiszolgálón. Kattintson Geo-Replication a bal oldalon.
-    
+
     ![Contoso-adatbázis feladatátvétel után](./media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication-after-failover.png)
 
 ## <a name="change-tenant-data"></a>Bérlői adatbázis módosítása 
 Ebben a feladatban frissíti a bérlői adatbázisok egyikét. 
 
 1. A böngészőben keresse meg a contoso Concert Hall eseményeinek listáját, és jegyezze fel az utolsó esemény nevét.
-2. A *POWERSHELL ISE* -ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlban állítsa be a következő értéket:
+2. A *POWERSHELL ISE*-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 parancsfájlban állítsa be a következő értéket:
     * **$DemoScenario = 5** Esemény törlése a helyreállítási régióban lévő bérlőből
 3. Nyomja le az **F5** billentyűt a szkript végrehajtásához
 4. Frissítse a contoso koncert csarnok eseményeinek oldalát ( http://events.wingtip-dpt.&lt ; User &gt; . trafficmanager.net/contosoconcerthall – az &lt; &gt; üzembe helyezés felhasználói értékével helyettesíti a felhasználót), és figyelje meg, hogy az utolsó eseményt törölték.
@@ -278,14 +278,14 @@ A feladatátvétel hatékonyan áthelyezi az adatbázist az eredeti régióba. H
 ### <a name="run-the-repatriation-script"></a>A kivezetés parancsfájl futtatása
 Most képzelje el, hogy a leállás megoldódott, és futtatja a rehazatérési parancsfájlt.
 
-1. A *POWERSHELL ISE* -ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 szkript.
+1. A *POWERSHELL ISE*-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 szkript.
 
 2. Ellenőrizze, hogy a katalógus szinkronizálási folyamata továbbra is fut-e a PowerShell-példányában.  Szükség esetén indítsa újra a beállítást:
-    * **$DemoScenario = 1** , a bérlői kiszolgáló, a készlet és az adatbázis-konfigurációs adatok szinkronizálásának megkezdése a katalógusba
+    * **$DemoScenario = 1**, a bérlői kiszolgáló, a készlet és az adatbázis-konfigurációs adatok szinkronizálásának megkezdése a katalógusba
     * A szkript futtatásához nyomja le az **F5** billentyűt.
 
 3.  Ezután állítsa be a következőt:
-    * **$DemoScenario = 6** , szabadon hazautalhatnak az alkalmazást az eredeti régiójába
+    * **$DemoScenario = 6**, szabadon hazautalhatnak az alkalmazást az eredeti régiójába
     * Nyomja le az **F5** billentyűt a helyreállítási parancsfájl új PowerShell-ablakban való futtatásához.  A rehazatérés több percet is igénybe vehet, és a PowerShell-ablakban figyelhető.
     ![Rehazatérési folyamat](./media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 

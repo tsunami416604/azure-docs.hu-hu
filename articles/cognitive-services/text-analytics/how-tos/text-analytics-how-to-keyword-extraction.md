@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: e5d25e71e4700f3f327319e4f444d2060c7ab5f6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 91e10c25d2c3bef9c1ca20e3e5737a326d45997c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561885"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654778"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: a fő kifejezések kinyerése Text Analytics használatával
 
@@ -30,8 +30,6 @@ További információt a [támogatott nyelvek](../language-support.md) ismertet�
 > * Ezt a funkciót a végpont használatával [aszinkron módon](text-analytics-how-to-call-api.md) is használhatja `/analyze` .
 
 ## <a name="preparation"></a>Előkészítés
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 A Key kifejezés kinyerése a legjobban akkor működik, ha nagyobb mennyiségű szöveget ad meg a munkához. Ez az érzelmek elemzésével ellentétes, ami jobb a kisebb mennyiségű szövegnél. Annak érdekében, hogy mindkét művelet a legjobb eredményt hozza, érdemes lehet ennek megfelelően átszervezni a bemeneteket.
 
@@ -266,7 +264,7 @@ Ebben a cikkben megtanulta a kulcsfontosságú kifejezések kinyeréséhez szük
  [Text Analytics áttekintése –](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
  [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/client-libraries-rest-api.md)

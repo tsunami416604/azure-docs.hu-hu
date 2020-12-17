@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfbd5e6f190e0600c31aa17e9b1a75f08e213df4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fddb3b171e5a26273cb2e0045f11e3a4dbb48c5f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973575"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655101"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Hozzáférési kérelmek jóváhagyása vagy elutasítása az Azure AD-jogosultságok kezelésében
 
@@ -57,11 +57,11 @@ Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megtalálhatja 
 
 1. Kattintson a **kérelem részletei** elemre.
 
-     ![Hozzáférési portál – hozzáférési kérelem – kattintson a kérelem részletei lehetőségre](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+    ![Hozzáférési portál – hozzáférési kérelem – kattintson a kérelem részletei lehetőségre](./media/entitlement-management-request-approve/requestor-information-request-details.png)
 
 1. A kérelmező által megadott információk a panel alján lesznek.
 
-     ![A kérés részleteit megjelenítő képernyőkép](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+    ![A kérés részleteit megjelenítő képernyőkép](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
 
 1. A kérelmező által megadott információk alapján jóváhagyhatja vagy megtagadhatja a kérelmet. Tekintse meg az útmutató jóváhagyása vagy elutasítása című témakör lépéseit.
 
@@ -89,7 +89,7 @@ Miután megnyitotta a hozzáférési kérelmek jóváhagyását, megtekintheti a
 
     Ha a konfigurált jóváhagyók egyike sem tudja jóváhagyni vagy megtagadni a hozzáférési kérelmet, a kérelem érvényessége a konfigurált kérelem időtartama után lejár. A felhasználó értesítést kap arról, hogy a hozzáférési kérelem lejárt, és újra el kell küldenie a hozzáférési kérést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomaghoz való hozzáférés kérése](entitlement-management-request-access.md)
 - [Kérelmek feldolgozása és e-mail-értesítések](entitlement-management-process.md)

@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 568243c6fecf26510f6e9988907d1ccad103cdc2
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: c6bac44e6f7212344463665840f180732970c3d4
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618918"
+ms.locfileid: "97657158"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -207,7 +207,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Tervezett befejezési dátum
 - Munka kezdő dátuma
 - Munka befejezési dátuma
-- Leírás
+- Description
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow incidens kimeneti adatkészlete
@@ -254,9 +254,11 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | PlannedEndDate_t  | Tervezett befejezési dátum |
 | WorkStartDate_t  | Tényleges kezdési dátum |
 | WorkEndDate_t | Tényleges befejezési dátum|
-| Description_s | Leírás |
+| Description_s | Description |
 | Computer  | Konfigurációs tétel |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[ITSM-termékek/szolgáltatások hozzáadása a IT-szolgáltatásmenedzsmenti csatolóhoz](./itsmc-connections.md)
+[ITSM-csatoló áttekintése](./itsmc-overview.md) 
+ [ITSM-termékek/szolgáltatások hozzáadása a it-szolgáltatásmenedzsmenti csatolóhoz](./itsmc-connections.md) 
+ [Hibaelhárítási problémák a ITSM-csatoló](./itsmc-resync-servicenow.md)

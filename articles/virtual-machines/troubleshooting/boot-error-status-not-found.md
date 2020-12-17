@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088665"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657124"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>A Windows rendszerindítási kezelőjével kapcsolatos hiba – 0xC0000225 "állapot nem található"
  
@@ -76,7 +76,7 @@ A beállításjegyzék-struktúra sérülésének oka a következő lehet:
 - A struktúra sikertelen
 - A kaptár csatlakoztatása, de üres
 - A struktúra nem zárult megfelelően
-## <a name="solution"></a>Megoldás
+## <a name="solution"></a>Megvalósítás
 
 ### <a name="process-overview"></a>Folyamat áttekintése
 
@@ -110,7 +110,7 @@ A beállításjegyzék-struktúra sérülésének oka a következő lehet:
 
       ![A "cng.sys" fájlhoz tartozó Tulajdonságok ablak, a fájl verziószáma kiemelve.](./media/troubleshoot-boot-error-status-not-found/5.png)
 
-1. Nevezze át a fájlt **< BINARY.SYS >. Old**névre, és cserélje le **< BINARY.SYS >** a fájl nevére.
+1. Nevezze át a fájlt **< BINARY.SYS >. Old** névre, és cserélje le **< BINARY.SYS >** a fájl nevére.
 
    A fenti lépésben szereplő rendszerképet a fájl **cng.sys** átnevezi **cng.sys. old névre.**
 
@@ -126,7 +126,7 @@ A beállításjegyzék-struktúra sérülésének oka a következő lehet:
       `dir <BINARY WITH ".SYS" EXTENSION>  /s`
 
       Ez a parancs felsorolja a fájl összes olyan verzióját, amelyen a gép található, így megadhatja az adott összetevő elérési útját.
-      
+
       Például a **dir cng.sys** átnevezi a **dir parancsot cng.sys/s**
 
    1. Válassza ki a fájl legújabb verzióját a listáról (vagy bármely más előnyben részesített), és másolja a fájlt a **Windows\System32** mappába az előző elérési út és a következő parancs használatával:
@@ -163,7 +163,7 @@ Ha ez az adatgyűjtés hibát jelez, amikor nincs **\boot\bcd** -fájl, akkor ha
    Jegyezze fel a Windows rendszerindító betöltő azonosítóját, amelynek az elérési útja **\windows\system32\winload.exe**.
 
 1. A 2. generációs virtuális gépek esetében ellenőrizze, hogy az operációsrendszer-lemez online állapotban van-e, és hogy a partíciós meghajtó betűjele hozzá van-e rendelve. Ha a rendszer ellenőrizte ezt, a rendszerindítási telepítési adatokat gyűjti.
-   1. A **Windows Search**mezőbe írja be a **Lemezkezelés** kifejezést, és nyissa meg a Lemezkezelés konzolt. Ezzel a konzollal azonosíthatja a javítási virtuális gépen csatolt lemez számát, valamint a BCD-tárolót tartalmazó Extensible Firmware Interface (EFI) partíciót.
+   1. A **Windows Search** mezőbe írja be a **Lemezkezelés** kifejezést, és nyissa meg a Lemezkezelés konzolt. Ezzel a konzollal azonosíthatja a javítási virtuális gépen csatolt lemez számát, valamint a BCD-tárolót tartalmazó Extensible Firmware Interface (EFI) partíciót.
 
    Az alábbi ábrán a 2. lemez a javítási virtuális géphez csatolt lemez száma. A rendszerkép az EFI rendszerpartíciót is megjeleníti a 2. lemezen, amely 100 MB méretű, és nem rendelkezik hozzárendelt betűvel.
 

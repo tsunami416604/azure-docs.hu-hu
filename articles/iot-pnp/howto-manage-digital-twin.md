@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495269"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654608"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT-Plug and Play digitális ikrek kezelése
 
@@ -26,7 +26,7 @@ A IoT Plug and Play-eszközök a [digitális Twins Definition Language v2 (DTDL)
 
 A cikkben példaként használt IoT Plug and Play eszköz a [hőmérséklet-vezérlő modelljét](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) implementálja [termosztát](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) -összetevőkkel.
 
-A következő kódrészlet a **Get Digital Twin** kérelem JSON-objektumként való formázásának válaszát mutatja. Ha többet szeretne megtudni a digitális kettős formátumról, tekintse meg a [IoT Plug and Play digitális ikrek ismertetése](./concepts-digital-twin.md#digital-twin-json-format)című témakört:
+A következő kódrészlet a **Get Digital Twin** kérelem JSON-objektumként való formázásának válaszát mutatja. Ha többet szeretne megtudni a digitális kettős formátumról, tekintse meg a [IoT Plug and Play digitális ikrek ismertetése](./concepts-digital-twin.md#digital-twin-example)című témakört:
 
 ```json
 {
@@ -130,7 +130,7 @@ A következő JSON-javítási minta bemutatja, hogyan adhat hozzá, cserélhet v
 
 A Hozzáadás vagy csere művelet beállítja egy tulajdonság kívánt értékét. Az eszköz szinkronizálhatja az állapotot, és a `ack` kóddal, a verzióval és a leírással együtt az érték frissítését is bejelentheti.
 
-A tulajdonság eltávolítása törli a tulajdonság kívánt értékét, ha be van állítva. Az eszköz ezután leállíthatja a tulajdonság jelentését, és a rendszer eltávolítja az összetevőből. Ha ez a tulajdonság az utolsó az összetevőben, akkor a rendszer eltávolítja az összetevőt is.
+A tulajdonság eltávolítása törli a tulajdonság kívánt értékét, ha be van állítva. Az eszköz ezután leállíthatja ezt a tulajdonságot, és eltávolíthatja azt az összetevőből. Ha ez a tulajdonság az utolsó az összetevőben, akkor a rendszer eltávolítja az összetevőt is.
 
 A következő JSON-javítási minta bemutatja, hogyan adhat hozzá, cserélhet vagy távolíthat el egy tulajdonságot egy összetevőn belül:
 

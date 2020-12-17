@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516449"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654625"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: gyakori kérdések
 
@@ -100,13 +100,11 @@ Ezek az átvezető időpontok a *becslések*. Az adatközpont, az egyidejű megr
 **Data Box Disk rendelés becsült átvezetési ideje:**
 
 1. Megrendelés Data Box Disk: néhány perc a portálról
-2. Lemez kiosztása és előkészítése: 1-2 munkanap
+2. Lemez kiosztása és előkészítése: legfeljebb 5 munkanap, a leltár rendelkezésre állása és a feldolgozandó függőben lévő megrendelések száma alapján
 3. Szállítás: 2–3 munkanap
 4. Adatmásolás az ügyfél webhelyén: az adatok természetétől, méretétől és a fájlok számától függ.
 5. Visszaküldés: 2–3 munkanap
-6. Lemez feldolgozása a következő adatközpontban: 1-2 munkanapok
-7. Adatok feltöltése az Azure-ba: a feldolgozás befejeződése és a lemez csatlakoztatása után kezdődik. A feltöltési idő az adatok természetétől, a mérettől és a fájlok számától függ.
-
+6. Az adatközpontban történő feldolgozás és az Azure-ba való feltöltés: az adatok feltöltése az adatközpontban kezdődik, amint a működés közbeni feldolgozás befejeződött, és a lemez csatlakoztatva van. A feltöltési idő az adatok természetétől, a mérettől és a fájlok számától függ.
 
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
  
@@ -235,7 +233,7 @@ A. Igen. Az adatait feltöltöttük az Azure-ba, de ha nem lát felügyelt lemez
  - A Azure Files egy blokk BLOB-tárolót nyit meg, amely a következővel kezdődik: *databoxdisk-érvénytelen-AF-*.
  - A Managed Disks egy blokk blob-tárolóba kerül, amely a *databoxdisk-érvénytelen-MD-*-vel kezdődik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Data Box Disk rendszerkövetelményeit](data-box-disk-system-requirements.md).
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.

@@ -4,12 +4,12 @@ description: Azure Functions támogatja a futtatókörnyezet több verzióját. 
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 3997c5e79192f4386ee5280350620a748dd1489b
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 935291c461e275902cb6905c4440fe4d289f0c16
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309706"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653350"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
 
@@ -116,7 +116,7 @@ A Visual Studióban a projekt létrehozásakor kiválaszthatja a futtatókörnye
 ##### <a name="version-1x"></a>1. x verzió
 
 ```xml
-<TargetFramework>net461</TargetFramework>
+<TargetFramework>net472</TargetFramework>
 <AzureFunctionsVersion>v1</AzureFunctionsVersion>
 ```
 
@@ -192,7 +192,7 @@ A következő táblázat bemutatja, hogy az egyes futásidejű verziók milyen k
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 16cb8a9c2a951c9f60640248ef74757d1e5ee200
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: de11e6f9fd9acc81f7be6d23bb1019f88f9e1322
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518923"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657209"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Telepítse a Jupyter Notebookt a számítógépre, és kapcsolódjon a HDInsight Apache Sparkhoz
 
@@ -42,12 +42,7 @@ Töltse le a platformhoz tartozó [anaconda-telepítőt](https://www.anaconda.co
 
 ## <a name="install-spark-magic"></a>A Spark Magic telepítése
 
-1. A Spark Magic telepítéséhez adja meg az alábbi parancsok egyikét. Lásd még: [sparkmagic dokumentáció](https://github.com/jupyter-incubator/sparkmagic#installation).
-
-    |Fürt verziója | Telepítési parancs |
-    |---|---|
-    |v 3.6 és v 3.5 |`pip install sparkmagic==0.13.1`|
-    |v 3.4|`pip install sparkmagic==0.2.3`|
+1. Adja meg a `pip install sparkmagic==0.13.1` Spark Magic telepítéséhez szükséges parancsot a 3,6-es és a 4,0-es verziójú HDInsight-fürtökhöz. Lásd még: [sparkmagic dokumentáció](https://github.com/jupyter-incubator/sparkmagic#installation).
 
 1. `ipywidgets`A következő parancs futtatásával ellenőrizze, hogy megfelelően van-e telepítve:
 
@@ -179,7 +174,7 @@ A Jupyter telepítésének okai a számítógépen, majd a HDInsight-fürthöz v
 > [!WARNING]  
 > Ha a Jupyter telepítve van a helyi számítógépen, a több felhasználó ugyanazon a Spark-fürtön is futtathatja ugyanazt a jegyzetfüzetet. Ilyen esetben a rendszer több Livy-munkamenetet hoz létre. Ha problémát tapasztal, és azt szeretné, hogy a rendszer hibakeresést végezzen, az egy összetett feladat, amellyel nyomon követheti, hogy melyik Livy-munkamenet melyik felhasználóhoz tartozik.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [A Apache Spark Jupyter Notebook kernelei](apache-spark-jupyter-notebook-kernels.md)

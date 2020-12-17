@@ -13,12 +13,12 @@ ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0181313a404127f4c542423cdcfe90ca64a03fe6
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 48887df0ce6228fa436cb91bfb0a3ee7aa0f6c08
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585071"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654506"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Egy Amazon-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -32,19 +32,7 @@ ms.locfileid: "97585071"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-::: zone pivot="b2c-user-flow"
-
-* [Hozzon létre egy felhasználói folyamatot](tutorial-create-user-flows.md), amellyel a felhasználók regisztrálhatnak és bejelentkezhetnek az alkalmazásba.
-* Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást az Azure Active Directory B2C-bérlőhöz](add-web-api-application.md).
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* Hajtsa végre az [első lépések az egyéni házirendek Active Directory B2Cban](custom-policy-get-started.md)című témakör lépéseit.
-* Ha még nem tette meg, [adjon hozzá egy webes API-alkalmazást az Azure Active Directory B2C-bérlőhöz](add-web-api-application.md).
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-an-app-in-the-amazon-developer-console"></a>Alkalmazás létrehozása az Amazon fejlesztői konzolján
 

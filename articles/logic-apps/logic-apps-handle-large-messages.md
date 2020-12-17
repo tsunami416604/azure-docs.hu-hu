@@ -7,12 +7,12 @@ author: DavidCBerry13
 ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b23c92ec70b80a6cd08fc42a05ffec1e5b43b31
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83117563"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656767"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Nagy méretű üzenetek kezelése Azure Logic Apps
 
@@ -53,11 +53,11 @@ Ha egy végpont engedélyezte a letöltések vagy a feltöltések darabolását,
 
 Ha egy HTTP-művelet még nem teszi lehetővé a darabolást, akkor a művelet tulajdonságában is be kell állítania a darabolást `runTimeConfiguration` . Ezt a tulajdonságot a műveleten belül állíthatja be közvetlenül a Code View Editorban a későbbiekben leírtak szerint, vagy a Logic Apps Designerben az itt leírtak szerint:
 
-1. A http-művelet jobb felső sarkában kattintson a három pontot ábrázoló gombra (**...**), majd válassza a **Beállítások**lehetőséget.
+1. A http-művelet jobb felső sarkában kattintson a három pontot ábrázoló gombra (**...**), majd válassza a **Beállítások** lehetőséget.
 
    ![A műveletnél nyissa meg a Beállítások menüt.](./media/logic-apps-handle-large-messages/http-settings.png)
 
-2. A **tartalom átvitele**területen állítsa be a **darabolás engedélyezése** **a**következőre:.
+2. A **tartalom átvitele** területen állítsa be a **darabolás engedélyezése** **a** következőre:.
 
    ![Adatdarabolás bekapcsolása](./media/logic-apps-handle-large-messages/set-up-chunking.png)
 
@@ -69,7 +69,7 @@ Ha egy HTTP-művelet még nem teszi lehetővé a darabolást, akkor a művelet t
 
 Számos végpont automatikusan küld nagy mennyiségű üzenetet a HTTP GET kéréssel letöltött adattömbökben. A ledarabolt üzenetek HTTP-n keresztüli letöltéséhez a végpontnak támogatnia kell a részleges tartalmi kéréseket vagy a *darabolásos letöltéseket*. Ha a logikai alkalmazás HTTP GET kérést küld egy végpontnak a tartalom letöltéséhez, és a végpont "206" állapotkódot válaszol, a válasz feldarabolt tartalmat tartalmaz. Logic Apps nem tudja szabályozni, hogy a végpont támogatja-e a részleges kérelmeket. Ha azonban a logikai alkalmazás megkapja az első "206" választ, a logikai alkalmazás automatikusan több kérést küld az összes tartalom letöltéséhez.
 
-Ha szeretné megtekinteni, hogy egy végpont támogatja-e a részleges tartalmat, küldjön egy HEAD-kérelmet. Ez a kérelem segít megállapítani, hogy a válasz tartalmazza-e a `Accept-Ranges` fejlécet. Így ha a végpont támogatja a darabolásos letöltéseket, de nem küldi el a darabolásos *suggest* tartalmat, ezt a beállítást a `Range` http Get-kérelem fejlécének beállításával javasolhatja. 
+Ha szeretné megtekinteni, hogy egy végpont támogatja-e a részleges tartalmat, küldjön egy HEAD-kérelmet. Ez a kérelem segít megállapítani, hogy a válasz tartalmazza-e a `Accept-Ranges` fejlécet. Így ha a végpont támogatja a darabolásos letöltéseket, de nem küldi el a darabolásos  tartalmat, ezt a beállítást a `Range` http Get-kérelem fejlécének beállításával javasolhatja. 
 
 Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a feldarabolt tartalomnak egy végpontról a logikai alkalmazásba való letöltéséhez használja:
 
@@ -113,7 +113,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
 1. A logikai alkalmazás egy kezdeti HTTP POST-vagy PUT-kérést küld egy üres üzenet törzsének. A kérelem fejléce tartalmazza ezt az információt arról a tartalomról, amelyet a logikai alkalmazás fel szeretne tölteni a darabokban:
 
-   | Logic Apps kérelem fejlécének mezője | Érték | Típus | Leírás |
+   | Logic Apps kérelem fejlécének mezője | Érték | Típus | Description |
    |---------------------------------|-------|------|-------------|
    | **x-MS – átvitel üzemmód** | darabolásos | Sztring | Azt jelzi, hogy a tartalom fel van töltve a darabokban |
    | **x-MS-Content-Length** | <*Content-Length*> | Egész szám | A teljes tartalom mérete bájtban a darabolás előtt |
@@ -123,8 +123,8 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    | Végpont válaszának fejléce mező | Típus | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-darab-méret** | Egész szám | Nem | A javasolt adathalmaz mérete bájtban |
-   | **Hely** | Sztring | Igen | A HTTP-javítási üzenetek küldésének helye |
+   | **x-MS-darab-méret** | Egész szám | No | A javasolt adathalmaz mérete bájtban |
+   | **Hely** | Sztring | Yes | A HTTP-javítási üzenetek küldésének helye |
    ||||
 
 3. A logikai alkalmazás a következő adatokat tartalmazó HTTP-javítási üzeneteket hozza létre és küldi el:
@@ -133,7 +133,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    * Ezek a fejlécek az egyes javítási üzenetekben küldött tartalmi adattömbökkel kapcsolatos adatokat tartalmazzák:
 
-     | Logic Apps kérelem fejlécének mezője | Érték | Típus | Leírás |
+     | Logic Apps kérelem fejlécének mezője | Érték | Típus | Description |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*tartomány*> | Sztring | Az aktuális tartalom adatrészletének bájtjai, beleértve a kezdő értéket, a záró értéket és a tartalom teljes méretét, például: "Bytes = 0-1023/10100" |
      | **Content-Type** | <*Content-Type*> | Sztring | A darabolásos tartalom típusa |
@@ -144,8 +144,8 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    | Végpont válaszának fejléce mező | Típus | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
-   | **Tartomány** | Sztring | Igen | A végpont által fogadott tartalomhoz tartozó bájtok köre, például: "Bytes = 0-1023" |   
-   | **x-MS-darab-méret** | Egész szám | Nem | A javasolt adathalmaz mérete bájtban |
+   | **Tartomány** | Sztring | Yes | A végpont által fogadott tartalomhoz tartozó bájtok köre, például: "Bytes = 0-1023" |   
+   | **x-MS-darab-méret** | Egész szám | No | A javasolt adathalmaz mérete bájtban |
    ||||
 
 Ez a műveleti definíció például egy HTTP POST-kérést mutat be a darabolásos tartalom egy végpontra való feltöltéséhez. A művelet `runTimeConfiguration` tulajdonságában a tulajdonság a következőre van `contentTransfer` kijelölve `transferMode` `chunked` :

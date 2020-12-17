@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 92fdef48556a3306ee5e3f10e07ff609a8fc4be4
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608435"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656223"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator – kibocsátási megjegyzések és letöltési információk
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ Ez a cikk a Azure Cosmos DB Emulator kibocsátási megjegyzéseit mutatja be az 
 | | |
 |---------|---------|
 |**MSI letöltése**|[Microsoft letöltőközpont](https://aka.ms/cosmosdb-emulator)|
-|**Első lépések**|[Helyi fejlesztés az Azure Cosmos Emulatorrel](local-emulator.md)|
+|**Első lépések**|[Helyi fejlesztés Azure Cosmos DB emulátorral](local-emulator.md)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -83,7 +83,7 @@ Ez a kiadás két új, Cosmos Emulator indítási lehetőséget hoz létre:
 
 ### <a name="246"></a>2.4.6
 
-- Ez a kiadás paritást biztosít az Azure Cosmos szolgáltatás szolgáltatásaival július 2019-ig, az [Azure Cosmos Emulator segítségével helyileg fejleszthető](local-emulator.md)kivételekkel. Emellett javít számos, az emulátorral kapcsolatos hibát, amikor a parancssorból és a belső IP-címek felülbírálásait használja a közvetlen módú kapcsolattal rendelkező SDK-ügyfelek számára.
+- Ez a kiadás paritást biztosít az Azure Cosmos szolgáltatás szolgáltatásaival ( [Azure Cosmos DB](local-emulator.md)2019. július). Emellett javít számos, az emulátorral kapcsolatos hibát, amikor a parancssorból és a belső IP-címek felülbírálásait használja a közvetlen módú kapcsolattal rendelkező SDK-ügyfelek számára.
 
 ### <a name="243"></a>2.4.3
 

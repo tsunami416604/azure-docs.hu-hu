@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 251f9a2b075189f19b9e943ff660baaba93ec33b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96176188"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652041"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítésének hibaelhárítása
 
@@ -61,7 +61,7 @@ Annak ellenőrzéséhez, hogy ez a probléma, először ellenőrizze, hogy az á
 
 1. Hozzon létre egy teszt fiókot.  
 2. Importálja a PowerShell-modult az ügynök gépére:
- 
+
  ```powershell
  Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
  ```

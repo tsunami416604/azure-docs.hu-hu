@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 56654f09d3a92eec5b86d8c8e4cd76fec0639394
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499662"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653044"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer kibocsátási megjegyzések
 
@@ -567,7 +567,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
   * Új mappák létrehozása
   * Fájlok és mappák feltöltése, letöltése, átnevezése és törlése
   * A fájl-és mappa tulajdonságainak és engedélyeinek (jobb oldali) kezelése.
-    
+
     Más jellemző blob-funkciók, például a Soft delete és a pillanatképek jelenleg nem érhetők el. Az engedélyek kezelése csak akkor érhető el, ha bejelentkezett. Emellett, ha ADLS Gen2 Storage-fiókban dolgozik, Storage Explorer a AzCopy fogja használni az összes feltöltéshez és letöltéshez, valamint az alapértelmezett értéket, hogy az összes művelethez a név és a kulcs hitelesítő adatait használja, ha van ilyen.
 * Az erős felhasználói visszajelzéseket követően a break bérlet többször is felhasználható több blob bérletének egyszerre történő megszakítására.
 

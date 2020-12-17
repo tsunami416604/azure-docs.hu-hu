@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4956d11ea2a4b011a792827357c3f4627058ead9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355857"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97651990"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Az Azure AD Connect felhőalapú jogosultságkiosztás előfeltételei
 Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőalapú kiépítés a személyazonossági megoldáshoz való kiválasztásához és használatához.
@@ -51,33 +51,33 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
 
 ### <a name="in-your-on-premises-environment"></a>Helyszíni környezetben
 
- 1. Azonosítson egy Windows Server 2012 R2 vagy újabb rendszert futtató, tartományhoz csatlakoztatott gazdagépet legalább 4 GB RAM-mal és .NET 4.7.1 + futtatókörnyezettel.
+1. Azonosítson egy Windows Server 2012 R2 vagy újabb rendszert futtató, tartományhoz csatlakoztatott gazdagépet legalább 4 GB RAM-mal és .NET 4.7.1 + futtatókörnyezettel.
 
- >[!NOTE]
- > Vegye figyelembe, hogy egy hatókör-szűrő definiálása esetén a rendszer memóriába kerül a gazdagépen.  Ha nincs megadva hatókör-szűrő, a rendszer nem használ extra memóriát. A 4 GB-os minimum a hatókör-szűrőben definiált legfeljebb 12 szervezeti egység szinkronizálását fogja támogatni. Ha további szervezeti egységeket szeretne szinkronizálni, növelje a minimálisan szükséges memória mennyiségét. Használja az alábbi táblázatot útmutatóként:
- >
- >  
- >  | Szervezeti egységek száma a hatóköri szűrőben| minimálisan szükséges memória|
- >  | --- | --- |
- >  | 12| 4 GB|
- >  | 18|5,5 GB|
- >  | 28|10 + GB|
- >
- > 
+    >[!NOTE]
+    > Vegye figyelembe, hogy egy hatókör-szűrő definiálása esetén a rendszer memóriába kerül a gazdagépen.  Ha nincs megadva hatókör-szűrő, a rendszer nem használ extra memóriát. A 4 GB-os minimum a hatókör-szűrőben definiált legfeljebb 12 szervezeti egység szinkronizálását fogja támogatni. Ha további szervezeti egységeket szeretne szinkronizálni, növelje a minimálisan szükséges memória mennyiségét. Használja az alábbi táblázatot útmutatóként:
+    >
+    >
+    > | Szervezeti egységek száma a hatóköri szűrőben| minimálisan szükséges memória|
+    > | --- | --- |
+    > | 12 | 4 GB |
+    > | 18 | 5,5 GB|
+    > | 28 | 10 + GB|
+    >
+    > 
 
- 2. A helyi kiszolgálón található PowerShell végrehajtási házirendet nem definiált vagy RemoteSigned értékre kell beállítani.
+2. A helyi kiszolgálón található PowerShell végrehajtási házirendet nem definiált vagy RemoteSigned értékre kell beállítani.
 
- 3. Ha tűzfal található a kiszolgálók és az Azure AD között, konfigurálja a következő elemeket:
+3. Ha tűzfal található a kiszolgálók és az Azure AD között, konfigurálja a következő elemeket:
+
    - Győződjön meg arról, hogy az ügynökök az alábbi portokon keresztül tehetnek *kimenő* kéréseket az Azure ad-nek:
 
-        | Portszám | Használatuk módja |
-        | --- | --- |
-        | **80** | Letölti a visszavont tanúsítványok listáját (CRL) a TLS/SSL-tanúsítvány ellenőrzése közben.  |
-        | **443** | A szolgáltatással folytatott összes kimenő kommunikációt kezeli. |
-        |**8082**|A telepítéshez szükséges, és ha be szeretné állítani az adminisztrációs API-t.  Ez a port eltávolítható az ügynök telepítése után, és ha nem tervezi az API használatát.   |
-        | **8080** (nem kötelező) | Az ügynökök 10 percenként jelentik az állapotukat az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. |
-   
-     
+      | Portszám | Használatuk módja |
+      | --- | --- |
+      | **80** | Letölti a visszavont tanúsítványok listáját (CRL) a TLS/SSL-tanúsítvány ellenőrzése közben.  |
+      | **443** | A szolgáltatással folytatott összes kimenő kommunikációt kezeli. |
+      |**8082**|A telepítéshez szükséges, és ha be szeretné állítani az adminisztrációs API-t.  Ez a port eltávolítható az ügynök telepítése után, és ha nem tervezi az API használatát.   |
+      | **8080** (nem kötelező) | Az ügynökök 10 percenként jelentik az állapotukat az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. |
+
    - Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
    - Ha a tűzfal vagy proxy lehetővé teszi a biztonságos utótagok megadását, vegyen fel kapcsolatokat a \* . msappproxy.net és a \* . servicebus.Windows.net. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
    - Az ügynököknek hozzá kell férniük a login.windows.net és a login.microsoftonline.com a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-címekhez is.
@@ -86,10 +86,8 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
 >[!NOTE]
 > A felhőalapú kiépítési ügynök telepítése a Windows Server Core rendszerre nem támogatott.
 
-
-
-
 ### <a name="additional-requirements"></a>További követelmények
+
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 
 
 #### <a name="tls-requirements"></a>TLS-követelmények
@@ -102,7 +100,7 @@ A Azure AD Connect felhőalapú kiépítési ügynököt futtató Windows Server
 A TLS 1,2 engedélyezéséhez kövesse az alábbi lépéseket.
 
 1. Állítsa be a következő beállításkulcsokat:
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001

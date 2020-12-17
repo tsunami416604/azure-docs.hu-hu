@@ -2,13 +2,13 @@
 title: Sablonok – Áttekintés
 description: A Azure Resource Manager-sablonok (ARM-sablonok) használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: da091d09f6d242d4b98903a8dcd76fe305e578b8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/17/2020
+ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497996"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657311"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -126,9 +126,10 @@ Ha elképzeli, hogy a rétegek külön életciklusokkal rendelkeznek, akkor a h�
 
 A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsolt sablonok használata az Azure Resource Manager eszközben](linked-templates.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).
+* Ha szeretne többet megtudni az ARM-sablonokról a Microsoft Learn modulok irányított készletén keresztül, tekintse meg az [erőforrások üzembe helyezése és kezelése az Azure-ban ARM-sablonok használatával című részt](/learn/paths/deploy-manage-resource-manager-templates/).
 * A sablonfájlok tulajdonságairól további információt az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakörben talál.
 * A sablonok exportálásával kapcsolatos további tudnivalókért tekintse meg a rövid útmutató [: ARM-sablonok létrehozása és telepítése a Azure Portal használatával](quickstart-create-templates-use-the-portal.md)című témakört.
 * A gyakori kérdésekre adott válaszokért tekintse meg az [ARM-sablonokkal kapcsolatos gyakori kérdések](frequently-asked-questions.md)című témakört.

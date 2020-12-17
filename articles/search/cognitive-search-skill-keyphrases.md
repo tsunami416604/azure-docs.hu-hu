@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 145d8265412c4efcaa2afad97feb23528a36191d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936061"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652313"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Kulcsszókeresés kognitív képesség
 
@@ -37,21 +37,21 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a következők
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bevitelek                | Leírás |
+| Bevitelek | Description |
 |---------------------|-------------|
 | `defaultLanguageCode` | Választható A nyelvet explicit módon nem megadó dokumentumokra alkalmazandó nyelvi kód.  Ha nincs megadva az alapértelmezett nyelvkód, a rendszer az angol (en) nyelvet használja alapértelmezett nyelvi kódnak. <br/> [A támogatott nyelvek teljes listáját](../cognitive-services/text-analytics/language-support.md)itt tekintheti meg. |
 | `maxKeyPhraseCount`   | Választható A létrehozni kívánt legfontosabb kifejezések maximális száma. |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Input (Bemenet)  | Leírás |
+| Bevitel  | Description |
 |--------------------|-------------|
 | `text` | Az elemezni kívánt szöveg.|
 | `languageCode`    |  A rekordok nyelvét jelző sztring. Ha ez a paraméter nincs megadva, a rendszer az alapértelmezett nyelvkódot fogja használni a rekordok elemzéséhez. <br/>[A támogatott nyelvek teljes listája](../cognitive-services/text-analytics/language-support.md)|
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet     | Leírás |
+| Kimenet     | Description |
 |--------------------|-------------|
 | `keyPhrases` | A bemeneti szövegből kinyert fő kifejezések listája. A legfontosabb kifejezések fontossági sorrendben lesznek visszaadva. |
 

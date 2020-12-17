@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba8dec19443bbafa300144b1aa42b3973cce9e6d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235502"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655152"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>A SCIM és a Microsoft Graph együttes használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez az általa igénybe venni kívánt adattal
 
 **Célközönség:** Ez a cikk a Azure Active Directory (Azure AD) integrálására szolgáló fejlesztők számára készült. Ha az Azure AD-vel már integrált alkalmazásokat szeretne használni, például a nagyítást, a ServiceNow és a DropBoxot, kihagyhatja ezt a cikket, és áttekintheti az alkalmazásra vonatkozó [oktatóanyagokat](../saas-apps/tutorial-list.md) , vagy áttekintheti [a kiépítési szolgáltatás működését](./how-provisioning-works.md).
 
-**Gyakori helyzetek**
+**Gyakori forgatókönyvek**
 
 Az Azure AD az üzembe helyezéshez és az alkalmazások kiépítéséhez használható bővíthető platformot biztosít az alkalmazásokhoz. A döntési fa azt ismerteti, hogy a fejlesztők hogyan használják a [scim](https://aka.ms/scimoverview) és a [Microsoft Graph](/graph/overview) a kiépítés automatizálására. 
 
@@ -62,7 +62,7 @@ POST /Users
     "roles": []
 }
 ```
-    
+
 ## <a name="scenario-2-automatically-remove-users-from-my-app"></a>2. forgatókönyv: a felhasználók automatikus eltávolítása az alkalmazásból
 Az alkalmazást használó ügyfeleink biztonságra vannak koncentrálva, és irányítási követelményekkel rendelkeznek a fiókok eltávolításához, ha az alkalmazottaknak már nincs rájuk szükségük. Hogyan automatizálható a kiépítés az alkalmazásból?
 

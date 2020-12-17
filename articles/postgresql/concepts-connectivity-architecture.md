@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: dd125860aab8e64d316a91ec8876a3678c646d52
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d5476bf1bfe2e222e115146c13f46e776d4bb497
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591469"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657192"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Kapcsolati architektúra a Azure Database for PostgreSQLban
 Ez a cikk ismerteti a Azure Database for PostgreSQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for PostgreSQL adatbázis-példányára az Azure-on belüli és kívüli ügyfelektől.
@@ -49,7 +49,7 @@ A következő táblázat az összes adatterület Azure Database for PostgreSQL �
 | Dél-Brazília |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Közép-Kanada |40.85.224.249  | | |
 | Kelet-Kanada | 40.86.226.166    | | |
-| USA középső régiója | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     | | |
+| USA középső régiója | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
 | Kelet-Kína | 139.219.130.35    | | |
 | Kelet-Kína 2 | 40.73.82.1  | | |
 | Észak-Kína | 139.219.15.17    | | |

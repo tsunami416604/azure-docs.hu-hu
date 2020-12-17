@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710532"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657022"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Teljesítmény figyelése a lekérdezési tárolóval
 
@@ -29,11 +29,11 @@ A lekérdezési tároló egy opt-in funkció, így alapértelmezés szerint nem 
 1. Jelentkezzen be a Azure Portalba, és válassza ki a Azure Database for PostgreSQL-kiszolgálót.
 2. Válassza ki a **kiszolgáló paramétereit** a menü **Beállítások** szakaszában.
 3. Keresse meg a `pg_qs.query_capture_mode` paramétert.
-4. Állítsa be `TOP` és **mentse**a értéket.
+4. Állítsa be `TOP` és **mentse** a értéket.
 
 A várakozási statisztika engedélyezése a lekérdezési tárolóban: 
 1. Keresse meg a `pgms_wait_sampling.query_capture_mode` paramétert.
-1. Állítsa be `ALL` és **mentse**a értéket.
+1. Állítsa be `ALL` és **mentse** a értéket.
 
 
 A paramétereket az Azure CLI használatával is megadhatja.
@@ -149,25 +149,25 @@ Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. 
 ### <a name="query_storequery_texts_view"></a>query_store query_store.query_texts_view
 Ez a nézet a lekérdezési tárolóban lévő szöveges adatok visszaadása. Minden különböző query_text egy sor van.
 
-|**Név**|  **Típus**|   **Leírás**|
-|---|---|---|
-|query_text_id  |bigint     |A query_texts tábla azonosítója|
-|query_sql_text |Varchar (10000)     |Egy reprezentatív utasítás szövege. Az azonos struktúrával rendelkező különböző lekérdezések együtt vannak csoportosítva; Ez a szöveg a fürtben lévő lekérdezések első példányának szövege.|
+| **Név** | **Típus** | **Leírás** |
+|--|--|--|
+| query_text_id | bigint | A query_texts tábla azonosítója |
+| query_sql_text | Varchar (10000) | Egy reprezentatív utasítás szövege. Az azonos struktúrával rendelkező különböző lekérdezések együtt vannak csoportosítva; Ez a szöveg a fürtben lévő lekérdezések első példányának szövege. |
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store query_store.pgms_wait_sampling_view
 Ez a nézet visszaadja az események várakozási idejének értékét a lekérdezési tárolóban. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz, lekérdezési AZONOSÍTÓhoz és eseményhez egy sor van.
 
-|**Név**|  **Típus**|   **Hivatkozások**| **Leírás**|
-|---|---|---|---|
-|user_id    |OID    |pg_authid. OID  |Az utasítást végrehajtó felhasználó OID azonosítója|
-|db_id  |OID    |pg_database. OID    |Az utasítást elvégező adatbázis OID azonosítója|
-|query_id   |bigint     ||Belső kivonatoló kód, amely az utasítás elemzési fájából lett kiszámítva|
-|event_type |szöveg       ||Az esemény típusa, amelynek a háttere várakozik|
-|esemény  |szöveg       ||A várakozási esemény neve, ha a háttér jelenleg várakozik|
-|hívások  |Egész szám        ||A rögzített esemény száma|
+| **Név** | **Típus** | **Hivatkozások** | **Leírás** |
+|--|--|--|--|
+| user_id | OID | pg_authid. OID | Az utasítást végrehajtó felhasználó OID azonosítója |
+| db_id | OID | pg_database. OID | Az utasítást elvégező adatbázis OID azonosítója |
+| query_id | bigint |  | Belső kivonatoló kód, amely az utasítás elemzési fájából lett kiszámítva |
+| event_type | szöveg |  | Az esemény típusa, amelynek a háttere várakozik |
+| esemény | szöveg |  | A várakozási esemény neve, ha a háttér jelenleg várakozik |
+| hívások | Egész szám |  | A rögzített esemény száma |
 
+### <a name="functions"></a>Függvények
 
-### <a name="functions"></a>Functions
 Query_store Query_store.qs_reset () érvénytelen értéket ad vissza
 
 `qs_reset` a lekérdezési tároló által eddig összegyűjtött összes statisztika elvetése. Ezt a függvényt csak a kiszolgáló-rendszergazdai szerepkörrel lehet végrehajtani.
@@ -192,7 +192,7 @@ Az erőforrás-naplók engedélyezése a Azure Portal használatával:
 2. Válassza a diagnosztikai beállítás hozzáadása lehetőséget.
 3. Nevezze el ezt a beállítást.
 4. Válassza ki az előnyben részesített végpontot (Storage-fiók, Event hub, log Analytics).
-5. Válassza ki a **QueryStoreRuntimeStatistics** és a **QueryStoreWaitStatistics**típusú naplókat.
+5. Válassza ki a **QueryStoreRuntimeStatistics** és a **QueryStoreWaitStatistics** típusú naplókat.
 6. Mentse a beállítást.
 
 Ha ezt a beállítást a PowerShell, a CLI vagy a REST API használatával szeretné engedélyezni, keresse fel a [diagnosztikai beállítások című cikket](../azure-monitor/platform/diagnostic-settings.md).

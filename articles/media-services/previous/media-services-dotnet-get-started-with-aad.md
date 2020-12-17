@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 0d0d92c41ec15f4b4cf2307ac686b299cc5fb1ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cca17aacc914412d34f613adfeba31617c60c455
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262115"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652942"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Az Azure AD-hitelesítés használata Azure Media Services API .NET-tel való eléréséhez
 
@@ -61,9 +61,9 @@ Lehetősége van arra is, hogy lecserélje a **AzureAdTokenProvider** alapértel
 >Ha az Azure AD-hitelesítést a Media Services .NET SDK-val szeretné használni, rendelkeznie kell a legújabb [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) -csomaggal. Továbbá adjon hozzá egy hivatkozást a **Microsoft. IdentityModel. clients. ActiveDirectory** szerelvényhez. Ha meglévő alkalmazást használ, foglalja bele a **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** szerelvényt.
 
 1. Hozzon létre egy új C# konzolos alkalmazást a Visual Studióban.
-2. **Azure Media Services .net SDK**telepítéséhez használja a [windowsazure. Mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet-csomagot.
+2. **Azure Media Services .net SDK** telepítéséhez használja a [windowsazure. Mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet-csomagot.
 
-    Ha a NuGet használatával szeretne hivatkozásokat felvenni, hajtsa végre a következő lépéseket: **megoldáskezelő**kattintson a jobb gombbal a projekt nevére, majd válassza a **NuGet-csomagok kezelése**lehetőséget. Ezután keressen rá a **windowsazure. Mediaservices** kifejezésre, és válassza a **telepítés**lehetőséget.
+    Ha a NuGet használatával szeretne hivatkozásokat felvenni, hajtsa végre a következő lépéseket: **megoldáskezelő** kattintson a jobb gombbal a projekt nevére, majd válassza a **NuGet-csomagok kezelése** lehetőséget. Ezután keressen rá a **windowsazure. Mediaservices** kifejezésre, és válassza a **telepítés** lehetőséget.
 
     -vagy-
 
@@ -90,7 +90,7 @@ Ha az Azure Media Service API-hoz szeretne csatlakozni a felhasználói hiteles�
 
 A paraméterek értékei a következő címen találhatók: **AzureEnvironments. AzureCloudEnvironment**. A **AzureEnvironments. AzureCloudEnvironment** állandó a .net SDK egyik segítője, amely egy nyilvános Azure-adatközpont megfelelő környezeti változójának beállítására szolgál.
 
-Előre definiált környezeti beállításokat tartalmaz, amelyek csak a nyilvános adatközpontokban lévő Media Services elérésére használhatók. Szuverén vagy kormányzati Felhőbeli régiókban a **AzureChinaCloudEnvironment**, a **AzureUsGovernmentEnvironment**és a **AzureGermanCloudEnvironment** is használható.
+Előre definiált környezeti beállításokat tartalmaz, amelyek csak a nyilvános adatközpontokban lévő Media Services elérésére használhatók. Szuverén vagy kormányzati Felhőbeli régiókban a **AzureChinaCloudEnvironment**, a **AzureUsGovernmentEnvironment** és a **AzureGermanCloudEnvironment** is használható.
 
 A következő kódrészlet létrehoz egy jogkivonatot:
 
@@ -101,7 +101,7 @@ var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
 A Media Services programozásának megkezdéséhez létre kell hoznia egy **csatlakozáshoz szükséges cloudmediacontext** -példányt, amely a kiszolgáló környezetét jelöli. A **csatlakozáshoz szükséges cloudmediacontext** olyan fontos gyűjteményekre mutató hivatkozásokat tartalmaz, mint a feladatok, az eszközök, a fájlok, a hozzáférési házirendek és a lokátorok.
 
-A **Media Rest-szolgáltatások erőforrás-URI-ját** is át kell adnia a **csatlakozáshoz szükséges cloudmediacontext** konstruktornak. A Media REST-szolgáltatások erőforrás-URI-ja beszerzéséhez jelentkezzen be a Azure Portalba, válassza ki a Azure Media Services fiókját, válassza az **API-hozzáférés**lehetőséget, majd válassza a **Kapcsolódás a Azure Media Serviceshoz felhasználói hitelesítéssel**lehetőséget.
+A **Media Rest-szolgáltatások erőforrás-URI-ját** is át kell adnia a **csatlakozáshoz szükséges cloudmediacontext** konstruktornak. A Media REST-szolgáltatások erőforrás-URI-ja beszerzéséhez jelentkezzen be a Azure Portalba, válassza ki a Azure Media Services fiókját, válassza az **API-hozzáférés** lehetőséget, majd válassza a **Kapcsolódás a Azure Media Serviceshoz felhasználói hitelesítéssel** lehetőséget.
 
 A következő mintakód egy **csatlakozáshoz szükséges cloudmediacontext** -példányt hoz létre:
 
@@ -153,8 +153,8 @@ A következő mintakód létrehoz egy jogkivonatot a **AzureAdTokenCredentials**
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 
 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 ```
@@ -165,8 +165,8 @@ A tanúsítványoknak az Azure AD által használható űrlapon való létrehoz�
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 ```
 
 A Media Services programozásának megkezdéséhez létre kell hoznia egy **csatlakozáshoz szükséges cloudmediacontext** -példányt, amely a kiszolgáló környezetét jelöli. A **Media Rest-szolgáltatások erőforrás-URI-ját** is át kell adnia a **csatlakozáshoz szükséges cloudmediacontext** konstruktornak. A **Media Rest Services** értékének erőforrás-URI-ja a Azure Portal is beszerezhető.

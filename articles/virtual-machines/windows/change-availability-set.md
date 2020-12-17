@@ -6,12 +6,12 @@ author: cynthn
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: f774056a8faf40e3796b06718e90cd7da988241c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c0694bd1dc2fefed644dc91a0d649dd1a480428
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284625"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654540"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>Virtuális gép rendelkezésre állási csoportjának módosítása
 A következő lépések azt ismertetik, hogyan módosítható a virtuális gépek rendelkezésre állási csoportja a Azure PowerShell használatával. A virtuális gépeket csak akkor lehet felvenni a rendelkezésre állási csoportba, ha az létrejött. A rendelkezésre állási csoport módosításához törölnie kell, majd újra létre kell hoznia a virtuális gépet. 
@@ -83,18 +83,18 @@ Az alábbi parancsfájl egy példát mutat be a szükséges információk össze
 # Add NIC(s) and keep the same NIC as primary
     foreach ($nic in $originalVM.NetworkProfile.NetworkInterfaces) {    
     if ($nic.Primary -eq "True")
-        {
+    {
             Add-AzVMNetworkInterface `
-            -VM $newVM `
-            -Id $nic.Id -Primary
-            }
-        else
-            {
-              Add-AzVMNetworkInterface `
-              -VM $newVM `
-              -Id $nic.Id 
+               -VM $newVM `
+               -Id $nic.Id -Primary
+               }
+           else
+               {
+                 Add-AzVMNetworkInterface `
+                -VM $newVM `
+                 -Id $nic.Id 
                 }
-    }
+      }
 
 # Recreate the VM
     New-AzVM `
@@ -104,6 +104,6 @@ Az alábbi parancsfájl egy példát mutat be a szükséges információk össze
        -DisableBginfoExtension
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Adjon hozzá további tárhelyet a virtuális géphez egy további [adatlemez](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)hozzáadásával.

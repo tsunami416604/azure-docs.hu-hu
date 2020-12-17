@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 935ba888352d2454a609a40866ef10ccf13a2dac
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605462"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653571"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Kibocsátási megjegyzések – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
 
@@ -29,7 +29,7 @@ Az Azure-beli adatcli ( `azdata` ) verziószáma: 20.2.5. Töltse le a következ
 Megtekintheti az SQL felügyelt példányhoz tartozó végpontokat és a PostgreSQL-nagy kapacitású az Azure-beli adatcli ( `azdata` ) `azdata arc sql endpoint list` és `azdata arc postgres endpoint list` parancsokkal.
 
 Az SQL felügyelt példányok erőforrásának (CPU Core és Memory) kérelmeit és korlátait Azure Data Studio használatával szerkessze.
-     
+
 Az Azure arc engedélyezve PostgreSQL nagy kapacitású mostantól támogatja az időponthoz tartozó visszaállítást a PostgreSQL 11. és 12. verziójának teljes biztonsági mentési visszaállítása mellett. Az időponthoz tartozó visszaállítási funkció lehetővé teszi, hogy egy adott dátumot és időpontot jelezzen a visszaállításhoz.
 
 Megváltoztak az Azure arc-alapú, a PostgreSQL nagy kapacitású-hez készült hüvelyek elnevezési konvenciója. Jelenleg a következő formában van: ServergroupName {r, s}-_n_. Például egy három csomóponttal rendelkező kiszolgálócsoport, egy koordinátori csomópont és két feldolgozói csomópont a következőképpen jelenik meg:
@@ -126,8 +126,8 @@ A nyilvános előzetes verzióban elérhető az Azure arc-kompatibilis adatszolg
 
 Útmutatás: [Mi az az Azure arc-kompatibilis adatszolgáltatás?](overview.md)
 
-## <a name="next-steps"></a>További lépések
-  
+## <a name="next-steps"></a>Következő lépések
+
 > **Csak szeretné kipróbálni a dolgokat?**  
 > Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) az AK-ra, az AWS rugalmas Kubernetes szolgáltatásra (EKS), a Google Cloud Kubernetes Engine-re (GKE) vagy egy Azure-beli virtuális gépre.
 

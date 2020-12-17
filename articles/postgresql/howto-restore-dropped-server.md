@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 81764294cc29ad74d5a77f2055f10498d69b59e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343113"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652925"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Eldobott Azure Database for PostgreSQL kiszolgáló visszaállítása
 
@@ -24,7 +24,7 @@ Az eldobott Azure Database for PostgreSQL kiszolgáló visszaállításához a k
 
 ## <a name="steps-to-restore"></a>A visszaállítás lépései
 
-1. Keresse fel az [Azure Portalt](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade). Válassza ki a **Azure monitor** szolgáltatást, majd válassza a **műveletnapló** elemet.
+1. Tallózással keresse meg a [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade). Válassza ki a **Azure monitor** szolgáltatást, majd válassza a **műveletnapló** elemet.
 
 2. A tevékenység naplójában kattintson a **szűrő hozzáadása** elemre, és adja meg a következő szűrőket a következőhöz:
 
@@ -39,23 +39,26 @@ Az eldobott Azure Database for PostgreSQL kiszolgáló visszaállításához a k
 
  4. Tallózással keresse meg a PostgreSQL- [kiszolgáló létrehozása REST API lapot](/rest/api/PostgreSQL/servers/create) , és válassza a zöld színnel kiemelt **kipróbálás** lapot. Jelentkezzen be az Azure-fiókjával.
 
- 5. Adja meg a **resourceGroupName** , **serverName** (a kiszolgáló nevét), a **SUBSCRIPTIONID** tulajdonságokat a resourceId attribútum JSON-értéke alapján, amelyet a 3. lépésben rögzített. Az API-Version tulajdonság előre ki van töltve, és az a következő képen látható módon maradhat: is.
+ 5. Adja meg a **resourceGroupName**, **serverName** (a kiszolgáló nevét), a **SUBSCRIPTIONID** tulajdonságokat a resourceId attribútum JSON-értéke alapján, amelyet a 3. lépésben rögzített. Az API-Version tulajdonság előre ki van töltve, és az a következő képen látható módon maradhat: is.
 
     ![Kiszolgáló létrehozása REST API használatával](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
  6. Görgessen lejjebb a kérelem törzse szakaszban, és illessze be a következőt az "eldobott kiszolgáló helye", a "submissionTimestamp" és a "resourceId" helyett. A "restorePointInTime" értéknél a "submissionTimestamp" értéket mínusz **15 percben** kell megadni, hogy a parancs ne legyen hiba.
+    
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
-            }
-        }
+    {
+      "location": "Dropped Server Location",  
+      "properties": 
+      {
+        "restorePointInTime": "submissionTimestamp - 15 minutes",
+        "createMode": "PointInTimeRestore",
+        "sourceServerId": "resourceId"
+      }
+    }
     ```
+
     Ha például az aktuális idő 2020-11-02T23:59:59.0000000 Z, javasoljuk, hogy legalább 15 perccel korábbi visszaállítási pontot a 2020-11-02T23:44:59.0000000 Z időpontban.
+
     > [!Important]
     > A kiszolgáló eldobása után a rendszer öt nappal túllépte az időkorlátot. Öt nap elteltével hiba várható, mivel a biztonságimásolat-fájl nem található.
     
@@ -66,6 +69,6 @@ Az eldobott Azure Database for PostgreSQL kiszolgáló visszaállításához a k
    - **Erőforrás típusa** = Azure Database for PostgreSQL-kiszolgálók (Microsoft. DBforPostgreSQL/Servers) 
    - **Művelet** = PostgreSQL-kiszolgáló létrehozása
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha öt napon belül próbál helyreállítani egy kiszolgálót, és továbbra is hibaüzenetet kap, miután pontosan követte a korábban tárgyalt lépéseket, nyisson meg egy támogatási eseményt segítségért. Ha öt nap elteltével próbál helyreállítani egy eldobott kiszolgálót, a rendszer hibaüzenetet vár, mivel a biztonságimásolat-fájl nem található. Ebben a forgatókönyvben ne nyisson meg támogatási jegyet. A támogatási csapat nem tud segítséget nyújtani, ha a biztonsági mentést törli a rendszerből. 
 - A kiszolgálók véletlen törlésének elkerülése érdekében javasoljuk, hogy használjon [erőforrás-zárolást](https://techcommunity.microsoft.com/t5/azure-database-for-PostgreSQL/preventing-the-disaster-of-accidental-deletion-for-your-PostgreSQL/ba-p/825222).

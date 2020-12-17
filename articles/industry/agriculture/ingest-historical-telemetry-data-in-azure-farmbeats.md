@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: af1bee00261cd96f61a39389f31a52109f4e64b5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 603f14d2076b5b74dde0b92a732f8fe816f6dd10
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675821"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656784"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -46,13 +46,13 @@ Kövesse az alábbi lépéseket:
 
       b. Válassza ki a FarmBeats-telepítés részeként létrehozott **alkalmazás-regisztrációt** . Ez a neve megegyezik a FarmBeats datahub.
 
-      c. Válassza ki **az API közzététele** lehetőséget > válassza az **ügyfélalkalmazás hozzáadása** lehetőséget, és adja meg a **04b07795-8ddb-461a-bbee-02f9e1bf7b46** , és jelölje be az **Engedélyezés hatókört** . Ez hozzáférést biztosít az Azure CLI-hez (Cloud Shell) az alábbi lépések végrehajtásához:
+      c. Válassza ki **az API közzététele** lehetőséget > válassza az **ügyfélalkalmazás hozzáadása** lehetőséget, és adja meg a **04b07795-8ddb-461a-bbee-02f9e1bf7b46** , és jelölje be az **Engedélyezés hatókört**. Ez hozzáférést biztosít az Azure CLI-hez (Cloud Shell) az alábbi lépések végrehajtásához:
 
 3. Nyissa meg a Cloud Shellt. Ez a beállítás a Azure Portal jobb felső sarkában található eszköztáron érhető el.
 
     ![Azure Portal eszköztár](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-4. Győződjön meg arról, hogy a környezet **PowerShell** -re van beállítva. Alapértelmezés szerint a bash értékre van beállítva.
+4. Győződjön meg arról, hogy a környezet **PowerShell**-re van beállítva. Alapértelmezés szerint a bash értékre van beállítva.
 
     ![PowerShell eszköztár-beállítás](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
@@ -84,7 +84,7 @@ Kövesse az alábbi lépéseket:
 
     ```
 
-9. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont** , a **bérlői azonosító** , az **ügyfél-azonosító** , az **ügyfél titkos kulcsa** és a **EventHub kapcsolódási karakterláncának** értékét.
+9. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa** és a **EventHub kapcsolódási karakterláncának** értékét.
 
 
 ## <a name="create-device-or-sensor-metadata"></a>Eszköz vagy érzékelő metaadatainak létrehozása
@@ -96,51 +96,50 @@ Kövesse az alábbi lépéseket:
  > [!NOTE]
  > Partnerként csak olvasási, létrehozási és frissítési metaadatokat lehet elérni. **a törlési lehetőség csak a partnerre korlátozódik.**
 
-- /**DeviceModel** : a DeviceModel megfelel az eszköz metaadatainak, például a gyártónak és az eszköz típusának, amely vagy egy átjáró vagy egy csomópont.
-- /**Eszköz** : az eszköz a farmon található fizikai eszköznek felel meg.
-- /**SensorModel** : a SensorModel megfelel az érzékelő metaadatainak, például a gyártó, az érzékelő típusa, amely az analóg vagy a digitális, valamint az érzékelő mérése, például a környezeti hőmérséklet és a nyomás.
-- /**Érzékelő** : az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
+- /**DeviceModel**: a DeviceModel megfelel az eszköz metaadatainak, például a gyártónak és az eszköz típusának, amely vagy egy átjáró vagy egy csomópont.
+- /**Eszköz**: az eszköz a farmon található fizikai eszköznek felel meg.
+- /**SensorModel**: a SensorModel megfelel az érzékelő metaadatainak, például a gyártó, az érzékelő típusa, amely az analóg vagy a digitális, valamint az érzékelő mérése, például a környezeti hőmérséklet és a nyomás.
+- /**Érzékelő**: az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
 
-
-|        DeviceModel   |  Javaslatok   |
-| ------- | -------             |
-|     Típus (csomópont, átjáró)        |          Az eszköz – csomópont vagy átjáró típusa      |
-|          Gyártó            |         A gyártó neve    |
-|  ProductCode                    |  Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800.  |
-|            Portok          |     A port neve és típusa, amely digitális vagy analóg.
-|     Name (Név)                 |  Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
-      Leírás     | Adjon meg egy értelmes leírást a modellről.
-|    Tulajdonságok          |    További tulajdonságok a gyártótól.   |
-|    **Eszköz**             |                      |
-|   DeviceModelId     |     A társított eszköz-modell azonosítója.  |
-|  HardwareId          | Az eszköz egyedi azonosítója, például a MAC-címe.
-|  ReportingInterval        |   Jelentéskészítési időköz (másodperc).
-|  Hely            |  Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben).
-|ParentDeviceId       |    Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakoztatott csomópont. A csomópontok átjáróként vannak parentDeviceId.  |
-|    Name (Név)            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
-|     Leírás       |      Adjon meg egy értelmes leírást. |
-|     Tulajdonságok    |  További tulajdonságok a gyártótól.
-|     **SensorModel**        |          |
-|       Típus (analóg, digitális)          |      Az érzékelő típusa, legyen az analóg vagy a digitális.       |
-|          Gyártó            |       Az érzékelő gyártója.     |
-|     ProductCode| Termékkód vagy modell neve vagy száma. Például RS-CO2-N01. |
-|       SensorMeasures > neve       | Az érzékelő mértékének neve. Csak kisbetűk támogatottak. A különböző mélységű mérések esetében határozza meg a mélységet. Például soil_moisture_15cm. Ennek a névnek konzisztensnek kell lennie a telemetria-adattal.  |
-|          SensorMeasures > adattípus       |Az telemetria adattípusa. Jelenleg a Double támogatott.|
-|    SensorMeasures > típusa    |Az érzékelő telemetria-adattípusának mértékegysége A rendszer által meghatározott típusok: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért tekintse meg a/ExtendedType API-t.|
-|        SensorMeasures > egység              | Az érzékelő telemetria-adategysége. A rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, méter, hüvelyk, láb, Mile, kilométer, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour,/ExtendedType,,.|
-|    SensorMeasures > AggregationType    |  Az értékek a következők lehetnek: none, Average, Max, minimum vagy StandardDeviation.  |
-|          Name (Név)            | Egy erőforrás azonosítására szolgáló név. Például a modell neve vagy a termék neve.  |
-|    Leírás        | Adjon meg egy értelmes leírást a modellről.|
-|   Tulajdonságok       |  További tulajdonságok a gyártótól.|
-|    **Érzékelő**      |          |
-| HardwareId          |   A gyártó által beállított érzékelő egyedi azonosítója.|
-|  SensorModelId     |    A társított érzékelő modell azonosítója.|
-| Hely          |  Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).|
-|   Port > neve        |  Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel.|
-|    DeviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik. |
-| Name (Név)            |   Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.|
-|    Leírás      | Adjon meg egy értelmes leírást.|
-|    Tulajdonságok        |További tulajdonságok a gyártótól.|
+| DeviceModel | Javaslatok |
+|--|--|
+| Típus (csomópont, átjáró) | Az eszköz – csomópont vagy átjáró típusa |
+| Gyártó | A gyártó neve |
+| ProductCode | Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800. |
+| Portok | A port neve és típusa, amely digitális vagy analóg. |
+| Name | Az erőforrást azonosító név. Például a modell neve vagy a termék neve. |
+| Description | Adjon meg egy értelmes leírást a modellről. |
+| Tulajdonságok | További tulajdonságok a gyártótól. |
+| **Eszköz** |  |
+| DeviceModelId | A társított eszköz-modell azonosítója. |
+| HardwareId | Az eszköz egyedi azonosítója, például a MAC-címe. |
+| ReportingInterval | Jelentéskészítési időköz (másodperc). |
+| Hely | Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben). |
+| ParentDeviceId | Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakoztatott csomópont. A csomópontok átjáróként vannak parentDeviceId. |
+| Name | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats. |
+| Description | Adjon meg egy értelmes leírást. |
+| Tulajdonságok | További tulajdonságok a gyártótól. |
+| **SensorModel** |  |
+| Típus (analóg, digitális) | Az érzékelő típusa, legyen az analóg vagy a digitális. |
+| Gyártó | Az érzékelő gyártója. |
+| ProductCode | Termékkód vagy modell neve vagy száma. Például RS-CO2-N01. |
+| SensorMeasures > neve | Az érzékelő mértékének neve. Csak kisbetűk támogatottak. A különböző mélységű mérések esetében határozza meg a mélységet. Például soil_moisture_15cm. Ennek a névnek konzisztensnek kell lennie a telemetria-adattal. |
+| SensorMeasures > adattípus | Az telemetria adattípusa. Jelenleg a Double támogatott. |
+| SensorMeasures > típusa | Az érzékelő telemetria-adattípusának mértékegysége A rendszer által meghatározott típusok: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért tekintse meg a/ExtendedType API-t. |
+| SensorMeasures > egység | Az érzékelő telemetria-adategysége. A rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, méter, hüvelyk, láb, Mile, kilométer, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour,/ExtendedType,,. |
+| SensorMeasures > AggregationType | Az értékek a következők lehetnek: none, Average, Max, minimum vagy StandardDeviation. |
+| Name | Egy erőforrás azonosítására szolgáló név. Például a modell neve vagy a termék neve. |
+| Description | Adjon meg egy értelmes leírást a modellről. |
+| Tulajdonságok | További tulajdonságok a gyártótól. |
+| **Érzékelő** |  |
+| HardwareId | A gyártó által beállított érzékelő egyedi azonosítója. |
+| SensorModelId | A társított érzékelő modell azonosítója. |
+| Hely | Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben). |
+| Port > neve | Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel. |
+| DeviceID | Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik. |
+| Name | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód. |
+| Description | Adjon meg egy értelmes leírást. |
+| Tulajdonságok | További tulajdonságok a gyártótól. |
 
 További információ az objektumokról: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).
 
@@ -192,9 +191,9 @@ access_token = token_response.get('access_token')
 
 Itt láthatók a leggyakoribb kérelmek fejlécei, amelyeket meg kell adni, amikor API-hívást végez a FarmBeats Datahub:
 
-- **Content-Type** : Application/JSON
-- **Engedélyezés** : tulajdonos <Access-Token>
-- **Elfogadás** : alkalmazás/JSON
+- **Content-Type**: Application/JSON
+- **Engedélyezés**: tulajdonos <Access-Token>
+- **Elfogadás**: alkalmazás/JSON
 
 ### <a name="input-payload-to-create-metadata"></a>A metaadatok létrehozására szolgáló bemeneti adattartalom
 
@@ -431,9 +430,9 @@ Példa egy telemetria-üzenetre:
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Nem lehet megtekinteni a telemetria adatait az érzékelőkből származó múltbeli/adatfolyam-adatok betöltése után
 
-**Tünet** : az eszközök vagy érzékelők üzembe helyezése megtörténik, és létrehozta az eszközöket/érzékelőket a FarmBeats-on és a betöltött telemetria a EventHub, de nem tudja lekérdezni vagy megtekinteni a telemetria-adatot a FarmBeats.
+**Tünet**: az eszközök vagy érzékelők üzembe helyezése megtörténik, és létrehozta az eszközöket/érzékelőket a FarmBeats-on és a betöltött telemetria a EventHub, de nem tudja lekérdezni vagy megtekinteni a telemetria-adatot a FarmBeats.
 
-**Javítási művelet** :
+**Javítási művelet**:
 
 1. Győződjön meg arról, hogy végrehajtotta a megfelelő partneri regisztrációt – ezt megteheti, ha a datahub henceg, a/partner API-ra navigálva elvégezheti a beolvasást, és ellenőrizheti, hogy a partner regisztrálva van-e. Ha nem, kövesse a partner hozzáadásához [szükséges lépéseket](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) .
 

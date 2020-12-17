@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: 047da0224cdbdb534ad9080faee4fd48da3840c5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9c855fff9e5791b9c0cf870acfc6de53e7a700b2
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492454"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653996"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Az Azure-Network Watcher kapcsolódási hibáinak bemutatása
 
@@ -81,6 +81,6 @@ A kapcsolatok hibaelhárítása a kapcsolatban fellépő hibák típusait adja v
 |NetworkSecurityRule    | Egy NSG szabály blokkolta a forgalmat (a rendszer visszaadja a szabályt)        |
 |UserDefinedRoute|A rendszer egy felhasználó által definiált vagy rendszerútvonal miatt eldobott forgalmat. |
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan lehet a [Azure Portal](network-watcher-connectivity-portal.md), a [PowerShell](network-watcher-connectivity-powershell.md), az [Azure CLI](network-watcher-connectivity-cli.md)vagy a [REST API](network-watcher-connectivity-rest.md)használatával a kapcsolatokat elhárítani.

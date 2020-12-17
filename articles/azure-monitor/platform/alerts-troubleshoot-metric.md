@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 11/25/2020
 ms.subservice: alerts
-ms.openlocfilehash: ef8a07f0360338aeb659942967169b0605b08e51
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: fc54d2ba3ca4e7a150a1602c671b99f58197bc44
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507217"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657294"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Az Azure Monitor metrikaalapú riasztásaival kapcsolatos hibák elhárítása 
 
@@ -72,7 +72,7 @@ Ha riasztást szeretne kapni a virtuális gépek vendég operációs rendszerér
 - [Linux rendszerű virtuális gépek esetén](./collect-custom-metrics-linux-telegraf.md)
 
 További információ az adatoknak a virtuális gép vendég operációs rendszerből való összegyűjtéséről: [itt](../insights/monitor-vm-azure.md#guest-operating-system).
-    
+
 > [!NOTE] 
 > Ha a vendég metrikákat úgy konfigurálta, hogy egy Log Analytics munkaterületre legyenek küldve, a metrikák a Log Analytics munkaterület-erőforrás alatt jelennek meg, és **csak** az azokat figyelő riasztási szabály létrehozása után kezdenek adatokat megjeleníteni. Ehhez kövesse a [naplók metrikariasztásának konfigurálására](./alerts-metric-logs.md#configuring-metric-alert-for-logs) szolgáló lépéseket.
 
@@ -266,6 +266,6 @@ Javasoljuk, hogy a *kiértékelés gyakorisága* nagyobb mértékű *összesít�
 -   Metrikus riasztási szabály, amely több erőforrást figyel – új erőforrás a hatókörhöz való hozzáadásakor
 -   Metrikus riasztási szabály, amely nem folyamatosan kibocsátott mérőszámot figyel (ritka metrika) – Ha a mérőszámot 24 óránál hosszabb időt követően bocsátják ki a rendszer, amelyben nem lett kibocsátva
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).

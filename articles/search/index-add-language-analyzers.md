@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: e763dbd15ea443ad3c8f6295b37999c748db7e6c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422331"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656036"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
 
@@ -68,64 +68,64 @@ További információ az index tulajdonságairól: [index létrehozása &#40;Azu
 ## <a name="language-analyzer-list"></a>Nyelvi analizátorok listája 
  Alább látható a támogatott nyelvek listája, valamint a Lucene és a Microsoft Analyzer neve.  
 
-|Nyelv|Microsoft Analyzer neve|Lucene Analyzer neve|  
-|--------------|-----------------------------|--------------------------|  
-|Arab|ar. Microsoft|ar. Lucene|  
-|örmény||Lucene|  
-|Bangla|bn. Microsoft||  
-|Baszk||EU. Lucene|  
-|Bolgár|BG. Microsoft|BG. Lucene|  
-|Katalán|CA. Microsoft|CA. Lucene|  
-|kínai (egyszerűsített)|zh-Hans. Microsoft|zh-Hans. Lucene|  
-|kínai (hagyományos)|zh-Hant. Microsoft|zh-Hant. Lucene|  
-|Horvát|HR. Microsoft||  
-|cseh|cs. Microsoft|cs. Lucene|  
-|dán|da. Microsoft|da. Lucene|  
-|Holland|nl. Microsoft|nl. Lucene|  
-|Angol|en. Microsoft|en. Lucene|  
-|Észt|et. Microsoft||  
-|finn|Fi. Microsoft|Fi. Lucene|  
-|Francia|fr. Microsoft|fr. Lucene|  
-|Gallego||Gl. Lucene|  
-|Német|de. Microsoft|de. Lucene|  
-|Görög|el. Microsoft|el. Lucene|  
-|gudzsaráti|Gu. Microsoft||  
-|héber|ő. Microsoft||  
-|Hindi|Hi. Microsoft|Hi. Lucene|  
-|Magyar|hu. Microsoft|hu. Lucene|  
-|Izlandi|a. Microsoft||  
-|Indonéz (Bahasa)|azonosító. Microsoft|ID. Lucene|  
-|Ír||ga. Lucene|  
-|Olasz|it. Microsoft|it. Lucene|  
-|Japán|ja. Microsoft|ja. Lucene|  
-|kannada|KN. Microsoft||  
-|Koreai|ko. Microsoft|ko. Lucene|  
-|Lett|lv. Microsoft|lv. Lucene|  
-|Litván|lt. Microsoft||  
-|malajálam|ml. Microsoft||  
-|Maláj (latin betűs)|MS. Microsoft||  
-|marathi|Mr. Microsoft||  
-|Norvég|NB. Microsoft|nem. Lucene|  
-|perzsa||fa. Lucene|  
-|Lengyel|pl. Microsoft|pl. Lucene|  
-|Portugál (Brazília)|pt-br. Microsoft|pt-br. Lucene|  
-|Portugál (Portugália)|PT-pt. Microsoft|PT-pt. Lucene|  
-|pandzsábi|PA. Microsoft||  
-|Román|ro. Microsoft|ro. Lucene|  
-|Orosz|ru. Microsoft|ru. Lucene|  
-|Szerb (cirill betűs)|SR-cirill betűs. Microsoft||  
-|Szerb (latin betűs)|SR-latin. Microsoft||  
-|Szlovák|sk. Microsoft||  
-|Szlovén|SL. Microsoft||  
-|Spanyol|es. Microsoft|es. Lucene|  
-|svéd|Sv. Microsoft|Sv. Lucene|  
-|tamil|ta. Microsoft||  
-|telugu|te. Microsoft||  
-|Thai|th. Microsoft|th. Lucene|  
-|Török|TR. Microsoft|TR. Lucene|  
-|Ukrán|Egyesült Királyság. Microsoft||  
-|urdu|a. Microsoft||  
-|Vietnámi|VI. Microsoft||  
+| Nyelv | Microsoft Analyzer neve | Lucene Analyzer neve |  |
+|--|--|--|--|
+| Arab | ar. Microsoft | ar. Lucene |  |
+| örmény |  | Lucene |  |
+| Bangla | bn. Microsoft |  |  |
+| Baszk |  | EU. Lucene |  |
+| Bolgár | BG. Microsoft | BG. Lucene |  |
+| Katalán | CA. Microsoft | CA. Lucene |  |
+| kínai (egyszerűsített) | zh-Hans. Microsoft | zh-Hans. Lucene |  |
+| kínai (hagyományos) | zh-Hant. Microsoft | zh-Hant. Lucene |  |
+| Horvát | HR. Microsoft |  |  |
+| cseh | cs. Microsoft | cs. Lucene |  |
+| dán | da. Microsoft | da. Lucene |  |
+| Holland | nl. Microsoft | nl. Lucene |  |
+| Angol | en. Microsoft | en. Lucene |  |
+| Észt | et. Microsoft |  |  |
+| finn | Fi. Microsoft | Fi. Lucene |  |
+| Francia | fr. Microsoft | fr. Lucene |  |
+| Gallego |  | Gl. Lucene |  |
+| Német | de. Microsoft | de. Lucene |  |
+| Görög | el. Microsoft | el. Lucene |  |
+| gudzsaráti | Gu. Microsoft |  |  |
+| héber | ő. Microsoft |  |  |
+| Hindi | Hi. Microsoft | Hi. Lucene |  |
+| Magyar | hu. Microsoft | hu. Lucene |  |
+| Izlandi | a. Microsoft |  |  |
+| Indonéz (Bahasa) | azonosító. Microsoft | ID. Lucene |  |
+| Ír |  | ga. Lucene |  |
+| Olasz | it. Microsoft | it. Lucene |  |
+| Japán | ja. Microsoft | ja. Lucene |  |
+| kannada | KN. Microsoft |  |  |
+| Koreai | ko. Microsoft | ko. Lucene |  |
+| Lett | lv. Microsoft | lv. Lucene |  |
+| Litván | lt. Microsoft |  |  |
+| malajálam | ml. Microsoft |  |  |
+| Maláj (latin betűs) | MS. Microsoft |  |  |
+| marathi | Mr. Microsoft |  |  |
+| Norvég | NB. Microsoft | nem. Lucene |  |
+| perzsa |  | fa. Lucene |  |
+| Lengyel | pl. Microsoft | pl. Lucene |  |
+| Portugál (Brazília) | pt-br. Microsoft | pt-br. Lucene |  |
+| Portugál (Portugália) | PT-pt. Microsoft | PT-pt. Lucene |  |
+| pandzsábi | PA. Microsoft |  |  |
+| Román | ro. Microsoft | ro. Lucene |  |
+| Orosz | ru. Microsoft | ru. Lucene |  |
+| Szerb (cirill betűs) | SR-cirill betűs. Microsoft |  |  |
+| Szerb (latin betűs) | SR-latin. Microsoft |  |  |
+| Szlovák | sk. Microsoft |  |  |
+| Szlovén | SL. Microsoft |  |  |
+| Spanyol | es. Microsoft | es. Lucene |  |
+| svéd | Sv. Microsoft | Sv. Lucene |  |
+| tamil | ta. Microsoft |  |  |
+| telugu | te. Microsoft |  |  |
+| Thai | th. Microsoft | th. Lucene |  |
+| Török | TR. Microsoft | TR. Lucene |  |
+| Ukrán | Egyesült Királyság. Microsoft |  |  |
+| urdu | a. Microsoft |  |  |
+| Vietnámi | VI. Microsoft |  |  |
 
  Az [Apache Lucene nyelvi elemzői](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )a **Lucene** -mel ellátott nevekkel rendelkező elemzőket használják.
 

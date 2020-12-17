@@ -1,23 +1,23 @@
 ---
 title: A Microsoft Azure Data Box biztonsági áttekintése | Microsoft Docs in data
-description: Az eszköz, a szolgáltatás és a Data Boxban lévő adatok Azure Data Box biztonsági szolgáltatásainak ismertetése
+description: Ismerteti Azure Data Box biztonsági funkcióit az eszközön, a szolgáltatásban és a Data Box található adaton.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 12/16/2020
 ms.author: alkohli
-ms.openlocfilehash: f9330f99a0473aa38da2fcbb8ae0624a37746613
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4d6c77b3e8920cabc397cdcbc235baefa031e5ab
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444758"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655492"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Az Azure Data Box biztonsági és adatvédelmi szolgáltatásai
 
-A Data Box biztonságos megoldást kínál az adatok védelmére, mivel garantálja, hogy az adatokat csak a jogosult entitások tekinthetik meg, módosíthatják vagy törölhetik. A cikk az Azure Data Box biztonsági szolgáltatásait ismerteti, amelyekkel biztosítható a Data Box megoldás összetevőinek és a bennük tárolt adatoknak a védelme. 
+A Data Box biztonságos megoldást kínál az adatok védelmére, mivel garantálja, hogy az adatokat csak a jogosult entitások tekinthetik meg, módosíthatják vagy törölhetik. A cikk az Azure Data Box biztonsági szolgáltatásait ismerteti, amelyekkel biztosítható a Data Box megoldás összetevőinek és a bennük tárolt adatoknak a védelme.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -26,9 +26,9 @@ A Data Box biztonságos megoldást kínál az adatok védelmére, mivel garantá
 A Microsoft Azure Data Box megoldást négy, egymással együttműködő fő összetevő alkotja:
 
 - **Az Azure-ban üzemeltetett Azure Data Box szolgáltatás** – a felügyeleti szolgáltatás, amellyel eszközmegrendeléseket hozhat létre, konfigurálhatja az eszközöket, majd nyomon követheti a rendelést a teljesítésig.
-- **Data Box-eszköz** – az átviteli eszköz, amelyet helyszíni adatai az Azure-ba való importálásához kiküldünk Önnek. 
+- **Data Box-eszköz** – az átviteli eszköz, amelyet helyszíni adatai az Azure-ba való importálásához kiküldünk Önnek.
 - **Az eszközhöz csatlakoztatott ügyfelek/gazdagépek** – az infrastruktúra védeni kívánt adatokat tartalmazó, a Data Box-eszközhöz csatlakozó ügyfelei.
-- **Felhőalapú tároló** – a hely az Azure-felhőben, ahol az adatok tárolása történik. Ez általában a létrehozott Azure Data Box-erőforráshoz csatolt tárfiók.
+- **Felhőalapú tároló** – a hely az Azure-felhőben, ahol az adatok tárolása történik. Ez a hely általában a létrehozott Azure Data Box erőforráshoz csatolt Storage-fiók.
 
 A következő ábra az adatok folyamatát mutatja a helyszíni és az Azure közötti Azure Data Box megoldáson keresztül, valamint a különböző biztonsági funkciókat, amelyeket az adatok a megoldáson keresztül áramlanak. Ez a folyamat a Data Box importálási sorrendje.
 
@@ -45,7 +45,7 @@ Mivel az adatforgalom ezen a megoldáson keresztül zajlik, a rendszer naplózza
 
 ## <a name="security-features"></a>Biztonsági funkciók
 
-A Data Box biztonságos megoldást kínál az adatok védelmére, mivel garantálja, hogy az adatokat csak a jogosult entitások tekinthetik meg, módosíthatják vagy törölhetik. A megoldás biztonsági szolgáltatásai a lemezekre és a rajtuk tárolt adatokat védő szolgáltatásra is vonatkoznak. 
+A Data Box biztonságos megoldást kínál az adatok védelmére, mivel garantálja, hogy az adatokat csak a jogosult entitások tekinthetik meg, módosíthatják vagy törölhetik. A megoldás biztonsági szolgáltatásai a lemezekre és a rajtuk tárolt adatokat védő szolgáltatásra is vonatkoznak.
 
 ### <a name="data-box-device-protection"></a>A Data Box-eszköz védelme
 
@@ -55,25 +55,30 @@ A Data Box-eszköz védelmét az alábbi funkciók biztosítják:
 - A hardverhez vagy a szoftverekhez való illetéktelen hozzáférés észlelése esetén az eszköz nem működtethető.
 - Csak Data Box-kompatibilis szoftvert futtat.
 - A rendszerindítás zárolt állapotban történik.
-- Az eszközhöz való hozzáférés védelmét zárolásfeloldási jelszó biztosítja.
-- Az adatok külső helyre és helyről történő másolásához hozzáférési hitelesítő adatokat kell megadni. Azure Portal a rendszer az **eszköz hitelesítő adatai** lap összes hozzáférését naplózza a [tevékenység naplófájljaiban](data-box-logs.md#query-activity-logs-during-setup).
+- Eszköz-hozzáférés vezérlése az eszköz zárolásának feloldására szolgáló hozzáférési kulcs használatával. Ezt a hitelesítő kulcsot egy titkosítási kulcs védi. Használhatja a saját ügyfél által felügyelt kulcsot a hitelesítő kulcs megvédéséhez. További információ: [az ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box](data-box-customer-managed-encryption-key-portal.md).
+- Az adatok külső helyre és helyről történő másolásához hozzáférési hitelesítő adatokat kell megadni. A rendszer minden, a Azure Portal **eszköz hitelesítő adatok** lapjához való hozzáférést naplóz a [tevékenység naplófájljaiban](data-box-logs.md#query-activity-logs-during-setup).
+- Saját jelszavait használhatja az eszközhöz, és megoszthatja a hozzáférést. További információ: [oktatóanyag: Order Azure Data Box](data-box-deploy-ordered.md).
+
+### <a name="establish-trust-with-the-device-via-certificates"></a>Megbízhatósági kapcsolat létrehozása az eszközzel tanúsítványok használatával
+
+A Data Box eszköz lehetővé teszi saját tanúsítványok használatát, és telepíti azokat, amelyeket a helyi webes felhasználói felülethez és a blob-tárolóhoz való csatlakozáshoz kíván használni. További információ: [saját tanúsítványok használata Data Box és Data Box Heavy eszközökkel](data-box-bring-your-own-certificates.md).
 
 ### <a name="data-box-data-protection"></a>A Data Box-adatok védelme
 
 A Data Box szolgáltatás bejövő és kimenő adatainak biztonságát az alábbi szolgáltatások biztosítják:
 
-- Az inaktív adatok 256 bites AES-titkosítással védettek.
+- Az inaktív adatok 256 bites AES-titkosítással védettek. Magas biztonsági környezetben a szoftveres kettős titkosítást is használhatja. További információ: [oktatóanyag: Order Azure Data Box](data-box-deploy-ordered.md).
 - A titkosított protokollok átvitel közben is biztosítják az adatok védelmét. Javasoljuk, hogy az SMB 3,0 titkosítással használja az adatok védelme érdekében az adatkiszolgálókról történő másoláskor.
-- Az adatokat biztonságosan törölheti az eszközről, miután az Azure-ba való feltöltés befejeződött. Az adattörlés összhangban van a " [a" függelékben szereplő, a NIST 800-88r1 szabványokban található ATA merevlemez-meghajtókra](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)vonatkozó útmutatásokkal. Az adattörlési eseményt a rendszer rögzíti a [megrendelési előzményekben](data-box-logs.md#download-order-history).
+- Az Azure-ba való feltöltés után az adatok biztonságos törlése az eszközről. Az adattörlés összhangban van a " [a" függelékben szereplő, a NIST 800-88r1 szabványokban található ATA merevlemez-meghajtókra](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)vonatkozó útmutatásokkal. Az adattörlési eseményt a rendszer rögzíti a [megrendelési előzményekben](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>A Data Box szolgáltatás védelme
 
 A Data Box szolgáltatás biztonságát az alábbi funkciók biztosítják.
 
-- A Data Box szolgáltatáshoz való hozzáféréshez a cégnek olyan Azure-előfizetéssel kell rendelkeznie, amely tartalmazza a Data Boxot. Az előfizetés szabályozza, hogy az Azure Portal mely szolgáltatásai érhetők el.
+- A Data Box szolgáltatáshoz való hozzáféréshez a szervezetnek rendelkeznie kell Data Boxt tartalmazó Azure-előfizetéssel. Az előfizetés szabályozza, hogy az Azure Portal mely szolgáltatásai érhetők el.
 - A Data Box szolgáltatás az Azure-ban üzemel, így az Azure biztonsági funkciói védik. A Microsoft Azure által biztosított biztonsági funkciókról a [Microsoft Azure biztonsági és adatkezelési központban](https://www.microsoft.com/TrustCenter/Security/default.aspx) talál további információt.
 - Az Data Box rendeléshez való hozzáférés az Azure-szerepkörök használatával szabályozható. További információ: Data Box- [sorrend hozzáférés-vezérlésének beállítása](data-box-logs.md#set-up-access-control-on-the-order)
-- A Data Box szolgáltatás tárolja a zárolásfeloldási jelszót, amellyel az eszköz zárolása a szolgáltatásban feloldható.
+- A Data Box szolgáltatás a szolgáltatásban lévő eszköz zárolásának feloldásához használt feloldási jelszót tárolja.
 - A Data Box szolgáltatás tárolja a megrendelések adatait és állapotát a szolgáltatásban. A megrendelés törlésekor ezek az információk is törlődnek.
 
 ## <a name="managing-personal-data"></a>Személyes adatok kezelése
@@ -82,7 +87,7 @@ Az Azure Data Box a szolgáltatás alábbi főbb példányaiban gyűjt és jelen
 
 - **Értesítési beállítások** – Amikor létrehoz egy megrendelést, a felhasználók e-mail-címeit az értesítési beállítások alatt konfigurálhatja. Ezeket az adatokat az adminisztrátor megtekintheti. A szolgáltatás törli az adatokat, amikor a feladat eléri a végállapotot, illetve ha Ön törli a megrendelést.
 
-- **Megrendelés részletei** – miután létrejött a megrendelés, a felhasználók szállítási címét, e-mail-címét és kapcsolattartási adatait az Azure Portal tárolja. A mentett információk a következők:
+- **Rendelés részletei** – a megrendelés létrehozása után a rendszer a Azure Portal tárolja a felhasználók szállítási címét, e-mail-címét és kapcsolattartási adatait. A mentett információk a következők:
 
   - Kapcsolattartó neve
   - Telefonszám
@@ -90,7 +95,7 @@ Az Azure Data Box a szolgáltatás alábbi főbb példányaiban gyűjt és jelen
   - Utca, házszám
   - City
   - Irányítószám
-  - Állapot
+  - Állam
   - Ország/tartomány/régió
   - Szállítmányozó fiókszáma
   - Szállítmány nyomkövetési száma
@@ -104,7 +109,7 @@ További információkért lásd a Microsoft szabályzatát a [biztonsági és a
 
 ## <a name="security-guidelines-reference"></a>Biztonsági irányelvek – referencia
 
-A Data Box szolgáltatásra a következő biztonsági irányelvek vonatkoznak: 
+A Data Box szolgáltatásra a következő biztonsági irányelvek vonatkoznak:
 
 |Irányelv   |Description   |
 |---------|---------|
@@ -114,7 +119,7 @@ A Data Box szolgáltatásra a következő biztonsági irányelvek vonatkoznak:
 |[2. szintű FIPS 140-2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Adatvédelem         |
 |A függelék, ATA-meghajtók esetében a [NIST SP 800 – 88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Adattisztítás         |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box használatára vonatkozó előfeltételek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.

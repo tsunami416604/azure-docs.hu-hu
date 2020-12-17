@@ -6,18 +6,21 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: dff98a5c54d2fee350e2b35dc00148c19ea233b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956500"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653112"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS-/SSL-tanúsítvány hozzáadása az Azure App Service-ben
 
 Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ebből a cikkből megtudhatja, hogyan hozhat létre, tölthet fel vagy importálhat privát tanúsítványt vagy nyilvános tanúsítványt App Serviceba. 
 
 Miután hozzáadta a tanúsítványt a App Service app vagy [Function alkalmazáshoz](../azure-functions/index.yml), biztonságossá teheti az [Egyéni DNS-nevet](configure-ssl-bindings.md) , vagy [használhatja azt az alkalmazás kódjában](configure-ssl-certificate-in-code.md).
+
+> [!NOTE]
+> Az alkalmazásba feltöltött tanúsítványt egy olyan központi telepítési egység tárolja, amely az alkalmazás erőforráscsoport-és régió-kombinációjának (belső nevén *webtárhely*) van kötve. Így a tanúsítvány elérhetővé válik más alkalmazások számára ugyanabban az erőforráscsoport-és régió-kombinációban. 
 
 A következő táblázat felsorolja azokat a beállításokat, amelyekkel tanúsítványokat adhat hozzá a App Serviceban:
 
@@ -73,7 +76,7 @@ Az ingyenes App Service felügyelt tanúsítvány egy kulcsrakész megoldás az 
 
 Ingyenes App Service felügyelt tanúsítvány létrehozása:
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget   >  **\<app-name>** .
 
 Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL**  >  **-Beállítások titkos kulcsú tanúsítványok (. pfx)**  >  **app Service felügyelt tanúsítvány létrehozása** lehetőséget.
 
@@ -119,7 +122,7 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 | Beállítás | Leírás |
 |-|-|
 | Név | A App Service tanúsítvány rövid neve. |
-| Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a *both* legfelső szintű tartományt és az `www` altartományt is védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok védelméhez adja meg az altartomány teljes tartománynevét (például: `mysubdomain.contoso.com` ).|
+| Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a  legfelső szintű tartományt és az `www` altartományt is védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok védelméhez adja meg az altartomány teljes tartománynevét (például: `mysubdomain.contoso.com` ).|
 | Előfizetés | Az előfizetés, amely a tanúsítványt fogja tartalmazni. |
 | Erőforráscsoport | Az erőforráscsoport, amely a tanúsítványt fogja tartalmazni. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
 | Tanúsítvány SKU | Meghatározza a létrehozandó tanúsítvány típusát, legyen az egy standard tanúsítvány vagy egy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
@@ -170,7 +173,7 @@ Válassza ki **app Service ellenőrzést**. Mivel már leképezte a tartományt 
 
 ### <a name="import-certificate-into-app-service"></a>Tanúsítvány importálása App Serviceba
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget   >  **\<app-name>** .
 
 Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL**  >  **-Beállítások titkos kulcsú tanúsítványok (. pfx)**  >  **Importálás app Service-tanúsítvány** elemet.
 
@@ -197,7 +200,7 @@ Alapértelmezés szerint a App Service erőforrás-szolgáltató nem fér hozzá
 
 ### <a name="import-a-certificate-from-your-vault-to-your-app"></a>Tanúsítvány importálása a tárolóból az alkalmazásba
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget   >  **\<app-name>** .
 
 Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL**  >  **-Beállítások titkos kulcsú tanúsítványok (. pfx)**  >  **Key Vault tanúsítvány importálása** lehetőséget.
 
@@ -270,7 +273,7 @@ Ha az IIS vagy a _Certreq.exe_ használatával hozta létre a tanúsítványkér
 
 Most már készen áll a tanúsítvány feltöltésére App Service.
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget   >  **\<app-name>** .
 
 Az alkalmazás bal oldali navigációs sávján válassza a **TLS/SSL**  >  **-Beállítások titkos kulcsú tanúsítványok (. pfx)**  >  **feltöltési tanúsítvány** elemet.
 
@@ -290,7 +293,7 @@ Ha a művelet befejeződik, megjelenik a tanúsítvány a **titkos kulcs tanús�
 
 A nyilvános tanúsítványokat *. cer* formátumban támogatja a rendszer. 
 
-A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget **App Services**  >  **\<app-name>** .
+A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a app Services lehetőséget   >  **\<app-name>** .
 
 Az alkalmazás bal oldali navigációs sávján kattintson a **TLS/SSL**  >  **-Beállítások nyilvános tanúsítványok (. cer)** nyilvános  >  **kulcsú tanúsítvány feltöltése** elemre.
 
