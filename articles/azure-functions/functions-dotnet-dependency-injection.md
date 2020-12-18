@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: f87ed9b7455bed870cf25a6920cc6295811d94c8
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b2bf406dcab626b3ac08caf1a21ffea9332d3ca2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617068"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672644"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -29,6 +29,8 @@ A függőségi befecskendezés használata előtt telepítenie kell a következ�
 - [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - A [Microsoft. net. SDK. functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) csomag 1.0.28 vagy újabb verziója
+
+- [Microsoft. bővítmény. DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (jelenleg csak 3. x és korábbi verziók támogatottak)
 
 ## <a name="register-services"></a>Szolgáltatások regisztrálása
 
@@ -188,7 +190,7 @@ A naplózási szintekkel kapcsolatos további információkért lásd: a [napló
 
 A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
 
-|Szolgáltatástípus|Élettartama|Leírás|
+|Szolgáltatástípus|Élettartama|Description|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|
@@ -308,7 +310,7 @@ Alapértelmezés szerint a konfigurációs fájlok (például *aappsettings.js* 
 > [!IMPORTANT]
 > A felhasználási vagy prémium csomagokban futó Function apps esetében az eseményindítókban használt konfigurációs értékek módosítása a skálázási hibákhoz vezethet. Ha az osztály ezen tulajdonságok bármelyikét megváltoztatja, a `FunctionsStartup` Function app indítási hibát eredményez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat találhat az alábbi forrásokban:
 

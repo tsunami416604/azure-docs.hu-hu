@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6c2d89c20294446da63889e53e807db7919eb2e1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 48d09a5ef43e267550dd584a9f6356493887d6d7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455527"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673790"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Oktatóanyag: Azure Active Directory integráció a Communifire
 
@@ -63,13 +63,13 @@ A Communifire Azure AD-be való integrálásának konfigurálásához hozzá kel
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Communifire**kifejezést, válassza a **Communifire** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Communifire** kifejezést, válassza a **Communifire** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Communifire az eredmények listájában](common/search-new-app.png)
+    ![Communifire az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Communifire-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Communifire-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Communifire kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Communifire való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Communifire való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Communifire** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Communifire** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -125,11 +125,11 @@ Az Azure AD egyszeri bejelentkezés Communifire való konfigurálásához hajtsa
     ![SAML aláíró tanúsítvány szerkesztése](common/edit-certificate.png)
 
     a. Válassza az **SAML-válasz és-állítás** aláírása **lehetőséget az aláírási lehetőségnél**.
-    
-    b. Kattintson a **Mentés** gombra
+
+    b. Kattintson a **Mentés** gombra.
 
     ![Communifire-aláírási beállítás](./media/communifire-tutorial/tutorial-communifire-signing-option.png)
- 
+
 8. A **Communifire beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
@@ -148,7 +148,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **Communifire** oldalon
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -161,27 +161,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Communifire hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Communifire**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Communifire** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Communifire**lehetőséget.
+2. Az alkalmazások listában válassza a **Communifire** lehetőséget.
 
     ![Az Communifire hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -197,7 +197,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-communifire-test-user"></a>Communifire-tesztelési felhasználó létrehozása
 
-Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a Communifire-ben. A Communifire támogatja az **igény szerinti üzembe**helyezést, amely alapértelmezés szerint engedélyezve van. Ha még nem létezik, a rendszer létrehoz egy új felhasználót a profil adatainak mentésekor a Communifire elérésére tett kísérlet során.
+Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a Communifire-ben. A Communifire támogatja az **igény szerinti üzembe** helyezést, amely alapértelmezés szerint engedélyezve van. Ha még nem létezik, a rendszer létrehoz egy új felhasználót a profil adatainak mentésekor a Communifire elérésére tett kísérlet során.
 
 >[!Note]
 >Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [Communifire támogatási csapatával](mailto:support@axerosolutions.com).

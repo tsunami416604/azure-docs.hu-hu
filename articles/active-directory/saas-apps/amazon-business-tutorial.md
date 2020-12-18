@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1424669af9fe28257e66c8c5438f6e1d171954e0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589912"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672899"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Oktatóanyag: az Amazon Business integrálása a Azure Active Directory
 
@@ -74,12 +74,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 1. Ha az **alapszintű SAML-konfigurációt** **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
     1. Az **azonosító (Entity ID)** szövegmezőben írja be az URL-címet a következő minták egyikének használatával:
-    
+
        | URL-cím | Régió |
        |-|-|
        | `https://www.amazon.com`| Észak-Amerika |
@@ -87,7 +87,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
        | `https://www.amazon.de`| Európa |
 
     1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minták egyikének használatával:
-    
+
        | URL-cím | Régió |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Észak-Amerika |
@@ -146,7 +146,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **egyszeri bejelentkezés beállítása** varázslóban válassza ki a szolgáltatót a szervezeti követelményeknek megfelelően, és kattintson a **tovább** gombra.
 
     ![A képernyőképen az S S O beállítása látható, Microsoft Azure A D és a következő kijelölése után.](media/amazon-business-tutorial/default-group1.png)
-    
+
     > [!NOTE]
     > Bár a Microsoft ADFS egy felsorolt lehetőség, nem fog működni az Azure AD SSO-val.
 
@@ -193,12 +193,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Végül az **SSO-kapcsolat részletei** szakaszban az **állapot** **aktívként** jelenik meg.
 
     ![A képernyőfelvétel aktív állapottal rendelkező S S O-kapcsolati adatait jeleníti meg.](media/amazon-business-tutorial/sso-connection5.png)
-    
+
     > [!NOTE]
     > Ha az alkalmazást **SP** -kezdeményezésű módban szeretné konfigurálni, hajtsa végre a következő lépést, illessze be a bejelentkezési URL-címet a fenti képernyőképen a **további URL-címek beállítása** szakasz **bejelentkezési URL-címe** szövegmezőbe a Azure Portal. Használja az alábbi formátumot:
     >
     > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
-    
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
@@ -236,7 +236,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza az **Amazon Business** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -288,8 +288,8 @@ Ha a hozzáférési panelen a Amazon Business csempére kattint, automatikusan b
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)

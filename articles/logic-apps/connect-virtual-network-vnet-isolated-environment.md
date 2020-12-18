@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 6c5badf4760bff559fb050278df84c7ad6e703bd
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.date: 12/18/2020
+ms.openlocfilehash: 3eaabc6c1e7d34bb5d9433d742581f39bdfbf98e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616943"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669533"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
 
@@ -67,9 +67,9 @@ Létrehozhat egy ISE-t is a [minta Azure Resource Manager](https://github.com/Az
 
   * Ha a használatával vagy a [kényszerített bújtatással](../firewall/forced-tunneling.md)együtt kívánja használni a [ExpressRoute](../expressroute/expressroute-introduction.md) -t, akkor [létre kell hoznia egy útválasztási táblázatot](../virtual-network/manage-route-table.md) a következő adott útvonalon, és össze kell kapcsolnia az útválasztási táblázatot az ISE által használt összes alhálózathoz:
 
-    **Név** : < *útvonal neve*><br>
-    **Címzési előtag** : 0.0.0.0/0<br>
-    **Következő ugrás** : Internet
+    **Név**: <*útvonal neve*><br>
+    **Címzési előtag**: 0.0.0.0/0<br>
+    **Következő ugrás**: Internet
     
     Erre az útválasztási táblázatra azért van szükség, hogy Logic Apps-összetevők kommunikáljanak más függő Azure-szolgáltatásokkal, például az Azure Storage és az Azure SQL DB használatával. További információ erről az útvonalról: [0.0.0.0/0 címek előtagja](../virtual-network/virtual-networks-udr-overview.md#default-route). Ha nem kényszerített bújtatást használ a ExpressRoute, nincs szüksége erre az útválasztási táblázatra.
     
@@ -114,10 +114,10 @@ Ez a táblázat azokat a portokat ismerteti, amelyeknek az ISE számára elérhe
 
 #### <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
-| Rendeltetés | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Jegyzetek |
+| Cél | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Jegyzetek |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
-| Alhálózati kommunikáció a virtuális hálózaton belül | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | A virtuális hálózat alhálózatai *közötti* adatforgalomhoz szükséges. <p><p>**Fontos** : az egyes alhálózatokban található *összetevők* közötti adatforgalom esetén győződjön meg arról, hogy az egyes alhálózatokon belül minden portot megnyit. |
-| Mind <p>Kommunikáció a logikai alkalmazással <p><p>A logikai alkalmazás előzményeinek futtatása| Belső ISE: <br>**VirtualNetwork** <p><p>Külső ISE: **Internet** vagy lásd a **megjegyzéseket** | * | **VirtualNetwork** | 443 | Az **Internet** Service címke használata helyett megadhatja az alábbi elemek forrás IP-címét: <p><p>– Az a számítógép vagy szolgáltatás, amely meghívja a logikai alkalmazásban megjelenő kérelem-eseményindítókat vagy webhookokat <p>– Az a számítógép vagy szolgáltatás, ahonnan el szeretné érni a logikai alkalmazás futtatási előzményeit <p><p>**Fontos** : a port bezárása vagy blokkolása megakadályozza a meghívást az eseményindítókkal vagy webhookokkal rendelkező logikai alkalmazásoknak. Azt is megakadályozhatja, hogy a futtatási előzményekben szereplő egyes lépéseknél hozzáférjenek a bemenetekhez és a kimenetekhez. Azonban nem akadályozza meg a logikai alkalmazás futtatási előzményeinek elérését.|
+| Alhálózati kommunikáció a virtuális hálózaton belül | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | A virtuális hálózat alhálózatai *közötti* adatforgalomhoz szükséges. <p><p>**Fontos**: az egyes alhálózatokban található *összetevők* közötti adatforgalom esetén győződjön meg arról, hogy az egyes alhálózatokon belül minden portot megnyit. |
+| Mind <p>Kommunikáció a logikai alkalmazással <p><p>A logikai alkalmazás előzményeinek futtatása| Belső ISE: <br>**VirtualNetwork** <p><p>Külső ISE: **Internet** vagy lásd a **megjegyzéseket** | * | **VirtualNetwork** | 443 | Az **Internet** Service címke használata helyett megadhatja az alábbi elemek forrás IP-címét: <p><p>– Az a számítógép vagy szolgáltatás, amely meghívja a logikai alkalmazásban megjelenő kérelem-eseményindítókat vagy webhookokat <p>– Az a számítógép vagy szolgáltatás, ahonnan el szeretné érni a logikai alkalmazás futtatási előzményeit <p><p>**Fontos**: a port bezárása vagy blokkolása megakadályozza a meghívást az eseményindítókkal vagy webhookokkal rendelkező logikai alkalmazásoknak. Azt is megakadályozhatja, hogy a futtatási előzményekben szereplő egyes lépéseknél hozzáférjenek a bemenetekhez és a kimenetekhez. Azonban nem akadályozza meg a logikai alkalmazás futtatási előzményeinek elérését.|
 | Logic Apps Designer – dinamikus tulajdonságok | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | A kérések az adott régióhoz tartozó Logic Apps hozzáférési végpont [bejövő IP-címeiből](../logic-apps/logic-apps-limits-and-config.md#inbound) származnak. |
 | Összekötő üzembe helyezése | **AzureConnectors** | * | **VirtualNetwork** | 454 | Összekötők telepítéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
 | Hálózati állapot-ellenőrzési | **LogicApps** | * | **VirtualNetwork** | 454 | A kérelmek a Logic Apps hozzáférési végpont [bejövő IP-címeiből](../logic-apps/logic-apps-limits-and-config.md#inbound) és a régió [kimenő IP-címeiből](../logic-apps/logic-apps-limits-and-config.md#outbound) származnak. |
@@ -129,9 +129,9 @@ Ez a táblázat azokat a portokat ismerteti, amelyeknek az ISE számára elérhe
 
 #### <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
 
-| Rendeltetés | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Jegyzetek |
+| Cél | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Jegyzetek |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
-| Alhálózati kommunikáció a virtuális hálózaton belül | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | A virtuális hálózat alhálózatai *közötti* adatforgalomhoz szükséges. <p><p>**Fontos** : az egyes alhálózatokban található *összetevők* közötti adatforgalom esetén győződjön meg arról, hogy az egyes alhálózatokon belül minden portot megnyit. |
+| Alhálózati kommunikáció a virtuális hálózaton belül | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | A virtuális hálózat alhálózatai *közötti* adatforgalomhoz szükséges. <p><p>**Fontos**: az egyes alhálózatokban található *összetevők* közötti adatforgalom esetén győződjön meg arról, hogy az egyes alhálózatokon belül minden portot megnyit. |
 | Kommunikáció a logikai alkalmazásból | **VirtualNetwork** | * | A célhelytől függően változik | 80, 443 | A cél a külső szolgáltatáshoz tartozó végpontok alapján változik, amelyekkel a logikai alkalmazásnak kommunikálnia kell. |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80, 443 ||
 | Azure Storage-függőség | **VirtualNetwork** | * | **Storage** | 80, 443, 445 ||
@@ -148,7 +148,7 @@ Emellett a [app Service Environment (](../app-service/environment/intro.md)bead�
 
 * Ha Azure Firewall használ, be kell állítania a tűzfalat a App Service Environment ( [teljes tartománynév) címkével](../firewall/fqdn-tags.md#current-fqdn-tags), amely lehetővé teszi a kimenő hozzáférést a szolgáltatói platform forgalmához.
 
-* Ha nem Azure Firewall tűzfalat használ, be kell állítania a tűzfalat a App Service Environmenthoz szükséges tűzfal *all* - [integrációs függőségekben](../app-service/environment/firewall-integration.md#dependencies) felsorolt szabályokkal.
+* Ha nem Azure Firewall tűzfalat használ, be kell állítania a tűzfalat a App Service Environmenthoz szükséges tűzfal  - [integrációs függőségekben](../app-service/environment/firewall-integration.md#dependencies) felsorolt szabályokkal.
 
 <a name="forced-tunneling"></a>
 
@@ -156,21 +156,29 @@ Emellett a [app Service Environment (](../app-service/environment/intro.md)bead�
 
 Ha [kényszerített bújtatást](../firewall/forced-tunneling.md) állít be vagy használ a tűzfalon keresztül, engedélyeznie kell az ISE további külső függőségeit. A kényszerített bújtatás lehetővé teszi, hogy az interneten keresztüli forgalmat a következő ugrásra, például a virtuális magánhálózati (VPN) vagy egy virtuális készülékre irányítsa át, nem pedig az internetre, így ellenőrizheti és naplózhatja a kimenő hálózati forgalmat.
 
-Az ISE kimenő függőségi forgalma általában az ISE-vel kiépített virtuális IP-címen (VIP) halad át. Ha azonban megváltoztatja a forgalmi útválasztást az ISE-ből vagy-ból, engedélyeznie kell a következő kimenő függőségeket a tűzfalon a következő ugrás beállításával `Internet` . Ha Azure Firewall használ, kövesse az [utasításokat, és állítsa be a tűzfalat a app Service Environment](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).
+Ha nem engedélyezi a hozzáférést ezekhez a függőségekhez, az ISE-telepítés meghiúsul, és a telepített ISE működése leáll.
 
-Ha nem engedélyezi a hozzáférést ezekhez a függőségekhez, az ISE-telepítés meghiúsul, és a telepített ISE működése leáll:
+* Felhasználó által megadott útvonalak
 
-* [Felügyeleti címek App Service Environment](../app-service/environment/management-addresses.md)
+  Az aszimmetrikus útválasztás megakadályozása érdekében meg kell határoznia az összes alább felsorolt IP-cím útvonalát a következő ugrásként elérhető **internettel** .
+  
+  * [Felügyeleti címek App Service Environment](../app-service/environment/management-addresses.md)
+  * [Az ISE régióban található összekötők Azure IP-címei az ebben a letöltési fájlban elérhetők](https://www.microsoft.com/download/details.aspx?id=56519)
+  * [Azure Traffic Manager felügyeleti címek](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
+  * [Az ISE-régió bejövő és kimenő címeinek Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
+  * [Az ebben a letöltési fájlban található, az ISE régióban található összekötők Azure IP-címei](https://www.microsoft.com/download/details.aspx?id=56519)
 
-* [Azure-API Management címei](../api-management/api-management-using-with-vnet.md#control-plane-ips)
+* Szolgáltatásvégpontok
 
-* [Azure Traffic Manager felügyeleti címek](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
+  Engedélyeznie kell a szolgáltatási végpontokat az Azure SQL, a Storage, a Service Bus és a Event Hubs számára, mivel nem küldhet forgalmat tűzfalon keresztül ezen szolgáltatások számára.
 
-* [Az ISE-régió bejövő és kimenő címeinek Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
+*  Egyéb bejövő és kimenő függőségek
 
-* [Az ebben a letöltési fájlban található, az ISE régióban található összekötők Azure IP-címei](https://www.microsoft.com/download/details.aspx?id=56519)
-
-* Engedélyeznie kell a szolgáltatási végpontokat az Azure SQL, a Storage, a Service Bus és az Event hub számára, mivel nem küldhet forgalmat tűzfalon keresztül ezen szolgáltatások számára.
+   A tűzfalnak *engedélyeznie kell* a következő bejövő és kimenő függőségeket:
+   
+   * [Azure App Service függőségek](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
+   * [Azure-Cache Service függőségei](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-vnets)
+   * [Azure-API Management függőségei](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 <a name="create-environment"></a>
 
@@ -190,15 +198,15 @@ Ha nem engedélyezi a hozzáférést ezekhez a függőségekhez, az ISE-telepít
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Előfizetés** | Igen | <*Azure-előfizetés – név*> | A környezetéhez használni kívánt Azure-előfizetés |
-   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport-név*> | Új vagy meglévő Azure-erőforráscsoport, amelyben létre szeretné hozni a környezetet |
-   | **Integrációs szolgáltatási környezet neve** | Igen | <*környezet – név*> | Az ISE neve, amely csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ) és pontokat ( `.` ) tartalmazhat. |
-   | **Hely** | Igen | <*Azure-Datacenter – régió*> | Az Azure-adatközpont régiója, ahol üzembe helyezheti a környezetet |
-   | **Termékváltozat** | Igen | **Prémium** vagy **fejlesztői (SLA nélkül)** | A létrehozandó és használandó ISE SKU. Az adatsku-változatok közötti különbségekért lásd: [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-i. <p><p>**Fontos** : Ez a beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható. |
-   | **További kapacitás** | Prémium: <br>Igen <p><p>Fejlesztő <br>Nem alkalmazható | Prémium: <br>0 – 10 <p><p>Fejlesztő <br>Nem alkalmazható | Az ISE-erőforráshoz használandó további feldolgozási egységek száma. A kapacitás létrehozás utáni hozzáadásával kapcsolatban lásd: [ISE-kapacitás hozzáadása](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
-   | **Hozzáférési végpont** | Igen | **Belső** vagy **külső** | Az ISE számára használandó hozzáférési végpontok típusa. Ezek a végpontok határozzák meg, hogy az ISE-beli logikai alkalmazásokban a kérelmek vagy a webhook-eseményindítók fogadhatnak-e hívásokat a virtuális hálózaton kívülről. <p><p>Ha például a következő webhook-alapú eseményindítókat szeretné használni, győződjön meg arról, hogy a **külső** elemet választotta: <p><p>– Azure DevOps <br>– Azure Event Grid <br>– Common Data Service <br>– Office 365 <br>-SAP (ISE-verzió) <p><p>A kiválasztott módszer azt is befolyásolja, hogyan lehet megtekinteni és elérni a logikai alkalmazás futtatási előzményeinek bemeneteit és kimeneteit. További információ: [ISE Endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Fontos** : a hozzáférési végpontot csak az ISE létrehozásakor választhatja ki, és később nem módosíthatja ezt a beállítást. |
-   | **Virtuális hálózat** | Igen | <*Azure-Virtual-Network-name*> | Az Azure-beli virtuális hálózat, ahová be szeretné szúrni a környezetét, hogy a környezetében a logikai alkalmazások hozzáférhessenek a virtuális hálózathoz. Ha nem rendelkezik hálózattal, [először hozzon létre egy Azure-beli virtuális hálózatot](../virtual-network/quick-create-portal.md). <p><p>**Fontos** : ezt az injekciót *csak* akkor hajthatja végre, ha létrehozza az ISE-t. |
-   | **Alhálózatok** | Igen | <*alhálózat – erőforrás-lista*> | Az ISE négy *üres* alhálózatot igényel, amelyek szükségesek az ISE-erőforrások létrehozásához és üzembe helyezéséhez, és amelyeket a belső Logic apps-összetevők, például összekötők és a teljesítmény gyorsítótárazása használ. <p>**Fontos** : Ügyeljen arra, hogy [az alhálózatok létrehozásához tekintse át az alhálózat követelményeit, mielőtt folytatná ezeket a lépéseket](#create-subnet). |
+   | **Előfizetés** | Yes | <*Azure-előfizetés – név*> | A környezetéhez használni kívánt Azure-előfizetés |
+   | **Erőforráscsoport** | Yes | <*Azure-Erőforrás-csoport-név*> | Új vagy meglévő Azure-erőforráscsoport, amelyben létre szeretné hozni a környezetet |
+   | **Integrációs szolgáltatási környezet neve** | Yes | <*környezet – név*> | Az ISE neve, amely csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ) és pontokat ( `.` ) tartalmazhat. |
+   | **Hely** | Yes | <*Azure-Datacenter – régió*> | Az Azure-adatközpont régiója, ahol üzembe helyezheti a környezetet |
+   | **Termékváltozat** | Yes | **Prémium** vagy **fejlesztői (SLA nélkül)** | A létrehozandó és használandó ISE SKU. Az adatsku-változatok közötti különbségekért lásd: [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-i. <p><p>**Fontos**: Ez a beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható. |
+   | **További kapacitás** | Prémium: <br>Yes <p><p>Fejlesztő <br>Nem alkalmazható | Prémium: <br>0 – 10 <p><p>Fejlesztő <br>Nem alkalmazható | Az ISE-erőforráshoz használandó további feldolgozási egységek száma. A kapacitás létrehozás utáni hozzáadásával kapcsolatban lásd: [ISE-kapacitás hozzáadása](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
+   | **Hozzáférési végpont** | Yes | **Belső** vagy **külső** | Az ISE számára használandó hozzáférési végpontok típusa. Ezek a végpontok határozzák meg, hogy az ISE-beli logikai alkalmazásokban a kérelmek vagy a webhook-eseményindítók fogadhatnak-e hívásokat a virtuális hálózaton kívülről. <p><p>Ha például a következő webhook-alapú eseményindítókat szeretné használni, győződjön meg arról, hogy a **külső** elemet választotta: <p><p>– Azure DevOps <br>– Azure Event Grid <br>– Common Data Service <br>– Office 365 <br>-SAP (ISE-verzió) <p><p>A kiválasztott módszer azt is befolyásolja, hogyan lehet megtekinteni és elérni a logikai alkalmazás futtatási előzményeinek bemeneteit és kimeneteit. További információ: [ISE Endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Fontos**: a hozzáférési végpontot csak az ISE létrehozásakor választhatja ki, és később nem módosíthatja ezt a beállítást. |
+   | **Virtuális hálózat** | Yes | <*Azure-Virtual-Network-name*> | Az Azure-beli virtuális hálózat, ahová be szeretné szúrni a környezetét, hogy a környezetében a logikai alkalmazások hozzáférhessenek a virtuális hálózathoz. Ha nem rendelkezik hálózattal, [először hozzon létre egy Azure-beli virtuális hálózatot](../virtual-network/quick-create-portal.md). <p><p>**Fontos**: ezt az injekciót *csak* akkor hajthatja végre, ha létrehozza az ISE-t. |
+   | **Alhálózatok** | Yes | <*alhálózat – erőforrás-lista*> | Az ISE négy *üres* alhálózatot igényel, amelyek szükségesek az ISE-erőforrások létrehozásához és üzembe helyezéséhez, és amelyeket a belső Logic apps-összetevők, például összekötők és a teljesítmény gyorsítótárazása használ. <p>**Fontos**: Ügyeljen arra, hogy [az alhálózatok létrehozásához tekintse át az alhálózat követelményeit, mielőtt folytatná ezeket a lépéseket](#create-subnet). |
    |||||
 
    <a name="create-subnet"></a>
@@ -227,9 +235,9 @@ Ha nem engedélyezi a hozzáférést ezekhez a függőségekhez, az ISE-telepít
 
    * Ha a [ExpressRoute](../expressroute/expressroute-introduction.md)-t használja, [létre kell hoznia egy útválasztási táblázatot](../virtual-network/manage-route-table.md) , amely a következő útvonalat tartalmazza, és csatolja a táblát az ISE által használt összes alhálózathoz:
 
-     **Név** : < *útvonal neve*><br>
-     **Címzési előtag** : 0.0.0.0/0<br>
-     **Következő ugrás** : Internet
+     **Név**: <*útvonal neve*><br>
+     **Címzési előtag**: 0.0.0.0/0<br>
+     **Következő ugrás**: Internet
 
    1. Az **alhálózatok** listában válassza az **alhálózat konfigurációjának kezelése** lehetőséget.
 
@@ -241,8 +249,8 @@ Ha nem engedélyezi a hozzáférést ezekhez a függőségekhez, az ISE-telepít
 
    1. Az **alhálózat hozzáadása** panelen adja meg ezt az információt.
 
-      * **Name (név** ): az alhálózat neve
-      * **Címtartomány (CIDR blokk)** : az alhálózat tartománya a virtuális hálózatban és CIDR formátumban
+      * **Name (név**): az alhálózat neve
+      * **Címtartomány (CIDR blokk)**: az alhálózat tartománya a virtuális hálózatban és CIDR formátumban
 
       ![Alhálózat adatainak hozzáadása](./media/connect-virtual-network-vnet-isolated-environment/provide-subnet-details.png)
 
@@ -288,7 +296,7 @@ Ha nem engedélyezi a hozzáférést ezekhez a függőségekhez, az ISE-telepít
    
    1. A következő információk alapján adjon hozzá egy bejövő biztonsági szabályt a másolt nyilvános kimenő IP-címekhez. További információ: [oktatóanyag: hálózati forgalom szűrése hálózati biztonsági csoporttal a Azure Portal használatával](../virtual-network/tutorial-filter-network-traffic.md#create-a-network-security-group).
 
-      | Rendeltetés | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Jegyzetek |
+      | Cél | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Jegyzetek |
       |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
       | Az összekötő kimenő IP-címeiről érkező forgalom engedélyezése | <*összekötő – nyilvános-kimenő-IP-címek*> | * | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | |
       |||||||
@@ -308,7 +316,7 @@ Ha nem engedélyezi a hozzáférést ezekhez a függőségekhez, az ISE-telepít
    > [!IMPORTANT]
    > Miután létrehozta az ISE-t, a felügyelt ISE-összekötők elérhetővé válnak a használatra, de nem jelennek meg automatikusan a Logic app Designer összekötő-választójában. Az ISE-összekötők használata előtt [ezeket az összekötőket manuálisan kell hozzáadnia és telepítenie az ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment) -ben, hogy azok megjelenjenek a Logic app Designerben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Erőforrás hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [Integrációs szolgáltatási környezetek kezelése](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)

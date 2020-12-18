@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0264baf6a8ff107c4a3aa811b9e8639352dca782
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 349a77d2f2cd5e1c492de63919d84efb436a51a3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301809"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Oktatóanyag: Azure Active Directory integráció az automatikus feladat-végpont biztonsági mentésével
 
@@ -63,7 +63,7 @@ Az automatikus feladat-végpont biztonsági mentésének az Azure AD-be való in
 
 4. A keresőmezőbe írja be az automatikus **feladat végpontjának biztonsági mentését**, válassza az automatikus **feladat végpontjának biztonsági mentése** az eredmény panelről lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az automatikus feladat-végpont biztonsági mentése az eredmények listájában](common/search-new-app.png)
+    ![Az automatikus feladat-végpont biztonsági mentése az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
@@ -149,7 +149,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

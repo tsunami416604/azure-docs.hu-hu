@@ -1,14 +1,14 @@
 ---
 title: Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási ajánlatot, amely az ügyfeleket az Azure Lighthouse-be.
-ms.date: 08/18/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a003e671631e9f23654eb524c7c2d937339a9588
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023925"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673154"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
 
@@ -18,7 +18,7 @@ Ebből a cikkből megtudhatja, hogyan tehet közzé nyilvános vagy privát fel�
 
 Ajánlatok létrehozásához és közzétételéhez érvényes fiókkal kell rendelkeznie a [partner Centerben](../../marketplace/partner-center-portal/create-account.md) . Ha még nem rendelkezik fiókkal, a [regisztrációs folyamat](https://aka.ms/joinmarketplace) végigvezeti a fiók létrehozásának lépésein a partner Centerben és a kereskedelmi piactér programban való regisztrálásban.
 
-A [felügyelt szolgáltatásokra vonatkozó minősítési követelmények](/legal/marketplace/certification-policies#7004-business-requirements)alapján a felügyelt szolgáltatások ajánlatának közzétételéhez egy [Silver vagy Gold Cloud platform kompetenciával](/partner-center/learn-about-competencies) vagy [Azure szakértői MSP](https://partner.microsoft.com/membership/azure-expert-msp) -vel kell rendelkeznie.
+A [felügyelt szolgáltatásokra vonatkozó minősítési követelmények](/legal/marketplace/certification-policies#7004-business-requirements)alapján a felügyelt szolgáltatások ajánlatának közzétételéhez egy [Silver vagy Gold Cloud platform kompetenciával](/partner-center/learn-about-competencies) vagy [Azure szakértői MSP](https://partner.microsoft.com/membership/azure-expert-msp) -vel kell rendelkeznie. Meg kell [adnia egy érdeklődő célhelyet is, amely egy rekordot hoz létre a CRM-rendszerben](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#customer-leads) minden alkalommal, amikor egy ügyfél üzembe helyezi az ajánlatot.
 
 A [rendszer automatikusan hozzárendeli](../../cost-management-billing/manage/link-partner-id.md) az Ön Microsoft Partner Network (MPN) azonosítóját a közzétett ajánlatokhoz, és nyomon követheti az ügyfelek bevonásának következményeit.
 
@@ -26,7 +26,7 @@ Ha nem szeretne ajánlatot közzétenni az Azure Marketplace-en, vagy nem teljes
 
 Az alábbi táblázat segítségével meghatározhatja, hogy az ügyfelek felügyelt szolgáltatási ajánlat közzétételével vagy Azure Resource Manager sablonok használatával legyenek bevezetve.
 
-|**Szempont**  |**Felügyelt szolgáltatás ajánlata**  |**ARM-sablonok**  |
+|**Megfontolandó**  |**Felügyelt szolgáltatás ajánlata**  |**ARM-sablonok**  |
 |---------|---------|---------|
 |[Partner Center-fiók](../../marketplace/partner-center-portal/create-account.md) szükséges   |Igen         |Nem        |
 |[Silver vagy Gold Cloud Platform kompetencia](/partner-center/learn-about-competencies) vagy [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) szükséges      |Igen         |Nem         |
@@ -62,7 +62,7 @@ Miután egy ügyfél felveszi az ajánlatot, [egy vagy több konkrét előfizet�
 
 Miután az ügyfél delegált egy előfizetést (vagy egy vagy több erőforráscsoportot egy előfizetésen belül), a **Microsoft. ManagedServices** erőforrás-szolgáltató regisztrálva lesz az adott előfizetéshez, és a bérlő felhasználói hozzáférhetnek a delegált erőforrásokhoz az ajánlatban foglalt jogosultságok alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [kereskedelmi piactérről](../../marketplace/overview.md).
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).

@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan futtathat egy Azure-függvényt egy RabbitMQ-ü
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/16/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630734"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673987"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ-trigger Azure Functions – áttekintés
 
@@ -32,7 +32,7 @@ Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat 
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] BasicDeliverEventArgs args,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] BasicDeliverEventArgs args,
     ILogger logger
     )
 {
@@ -50,7 +50,7 @@ public class TestClass
 
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] TestClass pocObj,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
     ILogger logger
     )
 {
@@ -74,7 +74,7 @@ A *function.js* fájlban található kötési adatfájlok:
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -105,7 +105,7 @@ A *function.js* fájlban található kötési adatfájlok:
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -134,7 +134,7 @@ RabbitMQ kötés van definiálva a *function.js* , ahol a *típus* értéke: `Ra
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -155,7 +155,7 @@ A következő Java-függvény a `@RabbitMQTrigger` [Java RabbitMQ-típusok](http
 ```java
 @FunctionName("RabbitMQTriggerExample")
 public void run(
-    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnection", queueName = "queue") String input,
+    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnectionAppSetting", queueName = "queue") String input,
     final ExecutionContext context)
 {
     context.getLogger().info("Java HTTP trigger processed a request." + input);
@@ -180,7 +180,7 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 }
 ```
 
-A teljes példa: C# példa.
+A teljes példa: C# [példa](#example).
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
@@ -278,9 +278,9 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 |Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------|
 |prefetchCount|30|Lekérdezi vagy beállítja az üzenet fogadója által egyidejűleg kérelmezhető és gyorsítótárazott üzenetek számát.|
-|queueName|n/a| Azon várólista neve, amelyről üzeneteket szeretne fogadni. |
-|connectionString|n/a|Annak az RabbitMQ a neve, amely az üzenetsor-kapcsolatok karakterláncát tartalmazza. Vegye figyelembe, hogy ha a (z) local.settings.json lévő alkalmazás-beállításon keresztül közvetlenül adja meg a kapcsolatok karakterláncát, akkor az trigger nem fog működni.|
-|port|0|(a connectionString használatával figyelmen kívül hagyva) A többméretű példányon egyidejűleg kezelhető munkamenetek maximális száma.|
+|queueName|n/a| Azon várólista neve, amelyről üzeneteket szeretne fogadni.|
+|connectionString|n/a|A RabbitMQ üzenet-várólista-kapcsolatok karakterlánca. Vegye figyelembe, hogy a kapcsolatok karakterlánca közvetlenül itt van megadva, és nem az alkalmazás beállításain keresztül.|
+|port|0|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0.|
 
 ## <a name="local-testing"></a>Helyi tesztelés
 

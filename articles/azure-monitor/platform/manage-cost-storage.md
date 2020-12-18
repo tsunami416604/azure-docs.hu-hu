@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/22/2020
+ms.date: 12/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 99375abbf8e9749712b878ea35c9bc034bedbc5e
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616144"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671165"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -78,7 +78,7 @@ Log Analytics díjak hozzáadódnak az Azure-számlához. Az Azure-számlázás 
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Log Analytics használatának megtekintése az Azure-számlán 
 
-Az Azure nagyszerű hasznos funkciókat biztosít a [Azure Cost Management + számlázási](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) központban. A "Cost Analysis" funkció például lehetővé teszi az Azure-erőforrások költségeinek megtekintését. Először vegyen fel egy szűrőt "erőforrástípus" (a Microsoft. operationalinsights/munkaterületre Log Analytics és a Microsoft. operationalinsights/munkaterület Log Analytics fürtök esetében) lehetővé teszi, hogy nyomon kövesse a Log Analytics költeni. Ezután a "csoportosítás" lehetőségnél válassza a "mérési kategória" vagy a "mérőszám" lehetőséget.  Vegye figyelembe, hogy az egyéb szolgáltatások, például a Azure Security Center és az Azure Sentinel is számlázzák a használatot Log Analytics munkaterület-erőforrásokkal szemben. Ha meg szeretné tekinteni a hozzárendelést a szolgáltatásnév számára, akkor a diagram helyett a táblázat nézetet is kiválaszthatja. 
+Az Azure nagyszerű hasznos funkciókat biztosít a [Azure Cost Management + számlázási](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) központban. A "Cost Analysis" funkció például lehetővé teszi az Azure-erőforrások költségeinek megtekintését. Először vegyen fel egy szűrőt "erőforrástípus" (a Microsoft. operationalinsights/munkaterületre Log Analytics és a Microsoft. operationalinsights/Cluster Log Analytics fürtök esetében) lehetővé teszi, hogy nyomon kövesse a Log Analytics költeni. Ezután a "csoportosítás" lehetőségnél válassza a "mérési kategória" vagy a "mérőszám" lehetőséget.  Vegye figyelembe, hogy az egyéb szolgáltatások, például a Azure Security Center és az Azure Sentinel is számlázzák a használatot Log Analytics munkaterület-erőforrásokkal szemben. Ha meg szeretné tekinteni a hozzárendelést a szolgáltatásnév számára, akkor a diagram helyett a táblázat nézetet is kiválaszthatja. 
 
 Használati adatait még részletesebben megismerheti, ha [letölti a használati adatokat az Azure Portalról](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). A letöltött táblázatban láthatja a napi használatot az Azure-erőforrás (például a Log Analytics-munkaterület) szerinti bontásban. Ebben az Excel-számolótáblában a Log Analytics-munkaterületek használatáról az első szűrés a "kategória kategóriája" oszlopban, hogy megjelenjen a "Log Analytics", "megállapítások és elemzések (az örökölt árképzési szintek némelyike által használt) és a" Azure Monitor "(a kapacitás foglalásának díjszabása alapján), majd egy olyan szűrőt ad hozzá a" példány-azonosító "oszlophoz, amely a" munkaterület tartalmaz "vagy a" fürt tartalmaz "(az utóbbi Log Analytics-fürt használatát tartalmazza). A használat megjelenik a "felhasznált mennyiség" oszlopban, és az egyes bejegyzések egysége a "mértékegység" oszlopban látható.  További részletek is elérhetők, ha [meg szeretné ismerni Microsoft Azure-számláját](../../cost-management-billing/understand/review-individual-bill.md). 
 
@@ -150,7 +150,7 @@ A megőrzés a paraméter használatával is [beállítható Azure Resource Mana
 
 A 30 napos megőrzéssel rendelkező munkaterületek 31 napig ténylegesen megőrzik az adatmegőrzési időt. Ha fontos, hogy az adatok csak 30 napig legyenek tárolva, a Azure Resource Manager segítségével állítsa be az adatmegőrzést 30 napra és a `immediatePurgeDataOn30Days` paraméterrel.  
 
-Alapértelmezés szerint 90 a rendszer két adattípust (-- `Usage` és `AzureActivity` --) tart fenn, és a 90-es nap megtartásához nem számítunk fel díjat. Ha a munkaterület megtartása 90 nap fölé emelkedik, az adattípusok megőrzése is megnövekszik.  Ezek az adattípusok az adatfeldolgozási díjaktól is mentesek. 
+Alapértelmezés szerint 90 a rendszer két adattípust (-- `Usage` és `AzureActivity` --) tart fenn, és ez a 90 nap megtartása esetén nem számít fel díjat. Ha a munkaterület megtartása 90 nap fölé emelkedik, az adattípusok megőrzése is megnövekszik.  Ezek az adattípusok az adatfeldolgozási díjaktól is mentesek. 
 
 A munkaterületen alapuló Application Insights-erőforrások (,,,,,,,, és) adattípusai `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` alapértelmezés szerint `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` `AppSystemEvents` `AppTraces` 90 napra is megmaradnak, és ez a 90 nap megtartása esetén nem számítunk fel díjat. A megőrzésük adattípusú funkció használatával állítható be. 
 
@@ -216,7 +216,7 @@ A napi korlát elérésekor a számlázható adattípusok gyűjteménye a nap h�
 > A napi korlát nem tudja leállítani az adatgyűjtést a megadott Cap-szintnek megfelelően, és néhány felesleges adatmennyiség várható, különösen akkor, ha a munkaterület nagy mennyiségű adattal rendelkezik. Tekintse meg az [alább](#view-the-effect-of-the-daily-cap) egy olyan lekérdezést, amely hasznos a Cap napi viselkedésének tanulmányozásához. 
 
 > [!WARNING]
-> A napi korlát nem állítja le az adatok gyűjtését az Azure sentinal vagy a Azure Security Centerból, kivéve azokat a munkaterületeket, amelyekben a Azure Security Center a 2017. június 19. előtt volt telepítve. 
+> A napi korlát nem állítja le a [Azure Security Center napi csomópontos juttatások](#log-analytics-and-security-center) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus, Update és updateSummary típusú) részét képező adattípusok gyűjteményét, kivéve azokat a munkaterületeket, amelyekben a Azure Security Center a 2017. június 19. előtt volt telepítve. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>A definiálni kívánt napi adatkorlát meghatározása
 
@@ -266,7 +266,7 @@ A kezdéshez itt láthatók az ajánlott beállítások a táblában a függvén
 - Riasztási szabály neve: elérte a napi adatkorlátot
 - Súlyosság: figyelmeztetés (1. pont)
 
-Miután meghatározta a riasztást, és elérte a korlátot, a rendszer riasztást indít el, és végrehajtja a műveleti csoportban definiált választ. E-mailben és SMS-ben értesítheti a csapatot, vagy automatizálhatja a műveleteket webhookok, Automation runbookok vagy [külső ITSM-megoldásokkal való integráció](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)révén. 
+Miután meghatározta a riasztást, és elérte a korlátot, a rendszer riasztást indít el, és végrehajtja a műveleti csoportban definiált választ. E-mailben és SMS-ben értesítheti a csapatot, vagy automatizálhatja a műveleteket webhookok, Automation runbookok vagy [külső ITSM-megoldásokkal való integráció](itsmc-definition.md#create-itsm-work-items-from-azure-alerts)révén. 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>A vártnál magasabb szintű használatot okozó hibák elhárítása
 
@@ -653,7 +653,7 @@ Ha értesítést szeretne kapni az adatgyűjtés leállításakor, kövesse a *n
 Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díjszabási szintjétől függ. Ezeket az Azure- [előfizetések és-szolgáltatások korlátozásai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)dokumentálják.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A keresési nyelv használatának megismeréséhez tekintse meg a [naplóban megkeresett Azure monitor naplókat](../log-query/log-query-overview.md) . A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
 - Az [új naplózási riasztás létrehozásával kapcsolatos](alerts-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.

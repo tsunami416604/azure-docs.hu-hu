@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 450d68e26c5a3fc1ecfbaf6a3be6b5f698ee65e3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 696ba785abb317a29de38160440dc06487ff5bca
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183260"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673885"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -27,6 +27,8 @@ A privát fürt nyilvános régiókban, Azure Government és Azure China 21Viane
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az Azure CLI 2.2.0 vagy újabb verziója
+* A Private link Service csak a standard Azure Load Balancer esetén támogatott. Az alapszintű Azure Load Balancer nem támogatott.  
+* Ha egyéni DNS-kiszolgálót szeretne használni, adja hozzá a Azure DNS IP-168.63.129.16 a felsőbb rétegbeli DNS-kiszolgálóként az egyéni DNS-kiszolgálón.
 
 ## <a name="create-a-private-aks-cluster"></a>Privát AK-fürt létrehozása
 
@@ -64,6 +66,20 @@ Ahol a egy `--enable-private-cluster` privát fürt kötelező jelzője.
 > [!NOTE]
 > Ha a Docker-híd CIDR (172.17.0.1/16) ütközne az alhálózati CIDR, módosítsa a Docker-híd megfelelőjét.
 
+### <a name="configure-private-dns-zone"></a>saját DNS zóna konfigurálása
+
+Az alapértelmezett érték a "rendszer", ha a--Private-DNS-Zone argumentum nincs megadva. Az AK létrehoz egy saját DNS zónát a csomópont-erőforráscsoporthoz. A "None" paraméter átadása azt jelenti, hogy az AK nem hoz létre saját DNS zónát.  Ez a beállítás a saját DNS-kiszolgáló és a saját FQDN DNS-feloldási konfigurációjának megalapozása alapján működik.  Ha nem konfigurálja a DNS-feloldást, a DNS csak az ügynök-csomópontokon belül oldható fel, és a telepítés után problémát okoz a fürtben.
+
+## <a name="no-private-dns-zone-prerequisites"></a>Nincs saját DNS zóna előfeltételei
+Nincs PrivateDNSZone
+* Az Azure CLI verziója 0.4.67 vagy újabb verzió
+* Az API 2020-11-01-es vagy újabb verziója
+
+## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Privát AK-fürt létrehozása saját DNS zónával
+
+```azurecli-interactive
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
+```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>A privát fürthöz való csatlakozás lehetőségei
 
 Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Az API-kiszolgáló kezeléséhez olyan virtuális gépet kell használnia, amely hozzáféréssel rendelkezik az AK-fürt Azure-Virtual Networkához (VNet). Több lehetőség is van a magánhálózati kapcsolat létrehozására a privát fürthöz.
@@ -74,7 +90,7 @@ Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Az API-kiszolgál�
 
 A legegyszerűbb lehetőség a virtuális gép létrehozása ugyanabban a VNET, mint az AK-fürt.  Az expressz útvonal és a VPN-EK növelik a költségeket és további hálózati bonyolultságot igényelnek.  A virtuális hálózat társításához meg kell terveznie a hálózati CIDR-tartományokat, hogy ne legyenek átfedésben lévő tartományok.
 
-## <a name="virtual-network-peering"></a>Virtuális hálózati társviszony
+## <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
 Ahogy azt említettük, a virtuális hálózatok egymáshoz való hozzáférésének egyik módja a privát fürt elérésének. A virtuális hálózati kapcsolatok használatához létre kell hoznia egy kapcsolatot a virtuális hálózat és a magánhálózati DNS-zóna között.
     
@@ -100,23 +116,19 @@ A központilag [és küllős architektúrákat](/azure/architecture/reference-ar
 
 3. Olyan esetekben, amikor a fürtöt tartalmazó VNet egyéni DNS-beállításokkal rendelkezik (4), a fürt üzembe helyezése meghiúsul, ha a magánhálózati DNS-zóna az egyéni DNS-feloldókat (5) tartalmazó VNet van társítva. Ez a hivatkozás manuálisan hozható létre, miután a privát zóna létrejött a fürt kiépítése során vagy az automatizáláson keresztül, amikor az eseményvezérelt központi telepítési mechanizmusok használatával észleli a zóna létrehozását (például Azure Event Grid és Azure Functions).
 
-## <a name="dependencies"></a>Függőségek  
-
-* A Private link Service csak a standard Azure Load Balancer esetén támogatott. Az alapszintű Azure Load Balancer nem támogatott.  
-* Ha egyéni DNS-kiszolgálót szeretne használni, adja hozzá a Azure DNS IP-168.63.129.16 a felsőbb rétegbeli DNS-kiszolgálóként az egyéni DNS-kiszolgálón.
+> [!NOTE]
+> Ha a saját [útválasztási táblázatot használja a kubenet](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) , és saját DNS-t használ privát fürttel, a fürt létrehozása sikertelen lesz. Ahhoz, hogy a létrehozás sikeres legyen, a csomópont-erőforráscsoport [útvonaltábla](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) hozzá kell rendelnie az alhálózathoz.
 
 ## <a name="limitations"></a>Korlátozások 
 * A jogosult IP-címtartományok nem alkalmazhatók a privát API-kiszolgálói végpontra, csak a nyilvános API-kiszolgálóra érvényesek.
-* A [Availability Zones][availability-zones] jelenleg bizonyos régiókban támogatottak. 
 * Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre vonatkoznak.
-* Az Azure DevOps nem támogatja a Microsoft által üzemeltetett ügynököket privát fürtökkel. Érdemes lehet saját üzemeltetésű [ügynököket][devops-agents]használni. 
+* Az Azure DevOps nem támogatja a Microsoft által üzemeltetett ügynököket privát fürtökkel. Érdemes lehet saját üzemeltetésű [ügynököket](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser&preserve-view=true)használni. 
 * Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
-* Nincs aktuális támogatás az Azure dev Spaces szolgáltatáshoz
 * Meglévő AK-fürtök privát fürtökre való konvertálása nem támogatott
 * Ha törli vagy módosítja a magánhálózati végpontot az ügyfél alhálózatán, a fürt működése leáll. 
 * A tárolók élő adatAzure Monitor jelenleg nem támogatottak.
-* A rendelkezésre állási SLA jelenleg nem támogatott.
-
+* Miután az ügyfelek frissítették a rekordot a saját DNS-kiszolgálóin, ezek a hüvelyek továbbra is feloldják a apiserver teljes tartománynevét a régebbi IP-címekre a Migrálás után, amíg újra nem indulnak. Az ügyfeleknek újra kell indítaniuk a hostNetwork-hüvelyeket és az alapértelmezett-DNSPolicy hüvelyeket a vezérlési sík áttelepítése után.
+* Ha karbantartást végez a vezérlési síkon, az [AK IP-címe](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.) változhat. Ebben az esetben frissítenie kell az a rekordot, amely az API-kiszolgáló magánhálózati IP-címére mutat az egyéni DNS-kiszolgálón, és minden egyéni hüvelyt vagy üzemelő példányt újraindít a hostNetwork használatával.
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 7f0eff28533d8cf736d032aff61454a49bcf379e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e3daf89b80daf47049150b05ca392eede360bd3e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449718"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673416"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet kapacitásának korlátai az Azure szinapszis Analyticsben
 
@@ -27,7 +27,7 @@ Az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet külön
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
 | [Adatraktár-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Egyetlen dedikált SQL-készlet maximális DWU  | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Adatraktár-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Alapértelmezett DTU kiszolgálónkénti |54 000<br></br>Alapértelmezés szerint minden SQL-kiszolgáló (például myserver.database.windows.net) 54 000-as DTU-kvótával rendelkezik, amely akár DW5000c is lehetővé teszi. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótát megnövelheti [egy támogatási jegy létrehozásával](sql-data-warehouse-get-started-create-support-ticket.md) , és a kérelem típusaként kiválaszthatja a *kvótát* .  A DTU-szükségletek kiszámításához szorozza meg a 7,5-et a szükséges teljes DWU, vagy szorozza meg a 9,5-et a szükséges teljes cDWU. Például:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW5000c x 9,5 = 47 500 DTU.<br></br>Az aktuális DTU-felhasználást a portálon, az SQL Server lehetőségnél tekintheti meg. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
+| [Adatraktár-egységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Alapértelmezett DTU kiszolgálónkénti |54 000<br></br>Alapértelmezés szerint minden SQL-kiszolgáló (például myserver.database.windows.net) 54 000-as DTU-kvótával rendelkezik, amely akár DW6000c is lehetővé teszi. Ez a kvóta egyszerűen egy biztonsági korlát. A kvótát megnövelheti [egy támogatási jegy létrehozásával](sql-data-warehouse-get-started-create-support-ticket.md) , és a kérelem típusaként kiválaszthatja a *kvótát* .  A DTU-szükségletek kiszámításához szorozza meg a 7,5-et a szükséges teljes DWU, vagy szorozza meg a 9-es értékkel az összes szükséges cDWU. Például:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW7500c x 9 = 67 500 DTU.<br></br>Az aktuális DTU-felhasználást a portálon, az SQL Server lehetőségnél tekintheti meg. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
 | Adatbázis-kapcsolatok |Egyidejű nyitott munkamenetek maximális száma |1024<br/><br/>Az egyidejű nyitott munkamenetek száma a kiválasztott DWU függően változhat. A DWU600c és újabb verziók legfeljebb 1024 nyitott munkamenetet támogatnak. A DWU500c és az alatta az egyidejű nyitott munkamenetek maximális 512-os korlátját támogatja. Vegye figyelembe, hogy az egyidejűleg végrehajtható lekérdezések száma korlátozott. Ha túllépi a párhuzamossági korlátot, a kérelem egy belső várólistába kerül, ahol a rendszer feldolgozza azt. |
 | Adatbázis-kapcsolatok |Előkészített utasítások maximális memóriája |20 MB |
 | [Számítási feladatok kezelése](resource-classes-for-workload-management.md) |Egyidejű lekérdezések maximális száma |128<br/><br/>  Legfeljebb 128 egyidejű lekérdezés fog futni, és a fennmaradó lekérdezések várólistára kerülnek.<br/><br/>Az egyidejű lekérdezések száma csökkenhet, ha a felhasználók nagyobb erőforrás-osztályokhoz vannak rendelve, vagy ha az [adatraktár-egység](memory-concurrency-limits.md) beállítása csökken. Egyes lekérdezések, például a DMV-lekérdezések mindig futhatnak, és nem befolyásolják az egyidejű lekérdezési korlátot. Az egyidejű lekérdezés-végrehajtással kapcsolatos további információkért tekintse meg a [párhuzamosságok maximális](memory-concurrency-limits.md) száma című cikket. |
@@ -39,13 +39,13 @@ Az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet külön
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
 | Adatbázis |Maximális méret | Gen1:240 TB tömörített lemezen. Ez a terület független a tempdb és a naplózási területtől, ezért ez a terület állandó táblákhoz van hozzárendelve.  A fürtözött oszlopcentrikus-tömörítés becsült értéke 5X.  Ez a tömörítés lehetővé teszi, hogy az adatbázis körülbelül 1 PB-re növelje, ha az összes tábla fürtözött oszlopcentrikus (az alapértelmezett tábla típusa). <br/><br/> Gen2: korlátlan tárterület a oszlopcentrikus-táblákhoz.  Az adatbázis sortárindex létrehozását része továbbra is korlátozott a lemezen lévő, 240 TB-os tömörítéssel. |
-| Tábla |Maximális méret |Korlátlan méret a oszlopcentrikus táblákhoz. <br>60 TB a lemezen tömörített sortárindex létrehozását-táblákhoz. |
-| Tábla |Táblák/adatbázis | 100.000 |
-| Tábla |Oszlopok száma táblában |1024 oszlop |
-| Tábla |Bájt/oszlop |Az oszlop [adattípusának](sql-data-warehouse-tables-data-types.md)függvénye. A határérték 8000 karakteres adattípusok esetén, 4000 nvarchar, vagy 2 GB a maximális adattípusokhoz. |
-| Tábla |Bájt/sor, meghatározott méret |8060 bájt<br/><br/>A másodpercenkénti bájtok számát ugyanúgy számítjuk ki, mint az oldal tömörítéséhez SQL Server. A SQL Serverhoz hasonlóan a soros túlcsordulású tárolás is támogatott, ami lehetővé teszi a **változó hosszúságú oszlopok** leküldését a sorból. Ha a változó hosszúságú sorok kiküldése sorban történik, a fő rekordban csak 24 bájtos gyökér tárolódik. További információ: a [soros túlcsordulási adatok 8 kb-ot meghaladóak](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Tábla |Partíciók száma táblában |15 000<br/><br/>A nagy teljesítmény érdekében javasoljuk, hogy minimalizálja a szükséges partíciók számát, miközben továbbra is támogatja az üzleti igényeit. Ahogy nő a partíciók száma, az adatdefiníciós nyelv (DDL) és az adatmanipulációs nyelv (DML) műveleteinek terhelése növekszik, és lassabb teljesítményt eredményez. |
-| Tábla |Karakter/partíciós határ értéke. |4000 |
+| Táblázat |Maximális méret |Korlátlan méret a oszlopcentrikus táblákhoz. <br>60 TB a lemezen tömörített sortárindex létrehozását-táblákhoz. |
+| Táblázat |Táblák/adatbázis | 100.000 |
+| Táblázat |Oszlopok száma táblában |1024 oszlop |
+| Táblázat |Bájt/oszlop |Az oszlop [adattípusának](sql-data-warehouse-tables-data-types.md)függvénye. A határérték 8000 karakteres adattípusok esetén, 4000 nvarchar, vagy 2 GB a maximális adattípusokhoz. |
+| Táblázat |Bájt/sor, meghatározott méret |8060 bájt<br/><br/>A másodpercenkénti bájtok számát ugyanúgy számítjuk ki, mint az oldal tömörítéséhez SQL Server. A SQL Serverhoz hasonlóan a soros túlcsordulású tárolás is támogatott, ami lehetővé teszi a **változó hosszúságú oszlopok** leküldését a sorból. Ha a változó hosszúságú sorok kiküldése sorban történik, a fő rekordban csak 24 bájtos gyökér tárolódik. További információ: a [soros túlcsordulási adatok 8 kb-ot meghaladóak](https://msdn.microsoft.com/library/ms186981.aspx). |
+| Táblázat |Partíciók száma táblában |15 000<br/><br/>A nagy teljesítmény érdekében javasoljuk, hogy minimalizálja a szükséges partíciók számát, miközben továbbra is támogatja az üzleti igényeit. Ahogy nő a partíciók száma, az adatdefiníciós nyelv (DDL) és az adatmanipulációs nyelv (DML) műveleteinek terhelése növekszik, és lassabb teljesítményt eredményez. |
+| Táblázat |Karakter/partíciós határ értéke. |4000 |
 | Index |Nem fürtözött indexek száma táblábanként. |50<br/><br/>Csak a sortárindex létrehozását táblákra vonatkozik. |
 | Index |Fürtözött indexek száma táblábanként. |1<br><br/>A sortárindex létrehozását és a oszlopcentrikus táblákra is érvényes. |
 | Index |Index kulcsának mérete |900 bájt.<br/><br/>Csak a sortárindex létrehozását indexekre vonatkozik.<br/><br/>Az 900 bájtnál nagyobb maximális mérettel rendelkező varchar-oszlopok indexei akkor hozhatók létre, ha az oszlopok meglévő adata nem haladja meg a 900 bájtot az index létrehozásakor. Ha azonban később olyan műveleteket végez az oszlopokon, amelyek az 900 bájtnál nagyobb teljes méretet okoznak, a művelet sikertelen lesz. |
@@ -97,6 +97,6 @@ Az Azure szinapszis Analytics szolgáltatásban a dedikált SQL-készlet külön
 | sys.dm_pdw_sql_requests |A sys.dm_pdw_exec_requestsban tárolt legutóbbi 1000 SQL-kérelmek. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure szinapszis használatával kapcsolatos javaslatokért tekintse meg a [Cheat lapot](cheat-sheet.md).

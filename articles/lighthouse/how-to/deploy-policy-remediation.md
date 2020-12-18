@@ -1,14 +1,14 @@
 ---
 title: Javítható szabályzat telepítése
 description: Az Azure Világítótoronyon keresztül szervizelési feladatot használó házirendek telepítéséhez létre kell hoznia egy felügyelt identitást az ügyfél-bérlőben.
-ms.date: 08/12/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010095"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670491"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>A delegált előfizetésen belüli szervizelésre alkalmas szabályzat telepítése
 
@@ -41,7 +41,7 @@ Az alábbi példa egy olyan **principalId** mutat be, amely a felhasználói hoz
 
 ## <a name="deploy-policies-that-can-be-remediated"></a>Szervizelhető házirendek üzembe helyezése
 
-Miután létrehozta a felhasználót a fent ismertetett szükséges engedélyekkel, a felhasználó telepíthet olyan házirendeket, amelyek szervizelési feladatokat használnak az ügyfél bérlőn belül.
+Miután létrehozta a felhasználót a fent ismertetett szükséges engedélyekkel, a felhasználó telepíthet olyan házirendeket, amelyek szervizelési feladatokat használnak a delegált ügyfél-előfizetéseken belül.
 
 Tegyük fel például, hogy engedélyezni szeretné a diagnosztika engedélyezését az ügyfél bérlőn lévő Azure Key Vault erőforrásokon, ahogy azt ebben a [példában](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)is látható. A bérlő a megfelelő engedélyekkel rendelkező felhasználója egy [Azure Resource Manager sablon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) üzembe helyezésével engedélyezi ezt a forgatókönyvet.
 
@@ -67,7 +67,7 @@ Az alábbi példa egy **delegatedManagedIdentityResourceId** rendelkező szerepk
 > [!TIP]
 > A rendszer egy [hasonló mintát](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) mutat be, amely bemutatja, hogyan helyezhet üzembe egy olyan szabályzatot, amely egy (a módosítás hatásával) címkét hozzáad vagy eltávolít egy delegált előfizetéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Azure Policy](../../governance/policy/index.yml)megismerése.
 - Ismerje meg [Az Azure-erőforrások felügyelt identitásait](../../active-directory/managed-identities-azure-resources/overview.md).

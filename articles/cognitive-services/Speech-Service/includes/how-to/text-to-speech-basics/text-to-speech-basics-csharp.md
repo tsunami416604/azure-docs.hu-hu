@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27eecc5560bc99520fea85baf13c0ff4d8a84e7e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 6eb016e968db7376913a4944dc6a638b35c9da4c
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425118"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97665018"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan végezheti el a szöveg-beszéd szintézist a Speech SDK használatával. Első lépésként alapkonfigurációt és szintézist kell elvégeznie, és az egyéni alkalmazások fejlesztéséhez további speciális példákra kell lépnie, például:
 
@@ -162,6 +162,9 @@ A hangformátum módosításához használja a `SetSpeechSynthesisOutputFormat()
 
 A követelményektől függően különböző fájltípusok választhatók. Vegye figyelembe, hogy definíció szerint a nyers formátumok, például a nem `Raw24Khz16BitMonoPcm` tartalmaznak hangfejléceket. A nyers formátumok csak akkor használhatók, ha tudja, hogy az alsóbb rétegbeli implementáció dekódolást végez a nyers Bitstream, vagy ha manuálisan kívánja felépíteni a fejléceket a kis mélység, a mintavételezési arány, a csatornák száma stb. alapján.
 
+> [!NOTE]
+> A Voices **en-us-AriaRUS** és **en-us-GuyRUS** támogatja a `Riff24Khz16BitMonoPcm` mintavételi sebességet.
+
 Ebben a példában egy magas hűségű RIFF formátumot kell megadnia az `Riff24Khz16BitMonoPcm` objektumra vonatkozó beállítással `SpeechSynthesisOutputFormat` `SpeechConfig` . Az előző szakaszban szereplő példához hasonlóan a [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?preserve-view=true&view=azure-dotnet) segítségével beolvashatja az eredmény memóriában lévő adatfolyamát, majd megírhatja azt egy fájlba.
 
 ```csharp
@@ -198,7 +201,7 @@ Először hozzon létre egy új XML-fájlt a SSML config-hoz a legfelső szintű
 Ezután módosítania kell a beszédfelismerési kérést az XML-fájlra való hivatkozáshoz. A kérelem többnyire azonos, de a függvény használata helyett használja a parancsot `SpeakTextAsync()` `SpeakSsmlAsync()` . Ez a függvény egy XML-karakterláncot vár, így először be kell töltenie a SSML-konfigurációt karakterláncként a használatával `File.ReadAllText()` . Innen az eredmény objektum pontosan megegyezik az előző példákkal.
 
 > [!NOTE]
-> Ha a Visual studiót használja, a Build-konfiguráció valószínűleg nem fogja megkeresni az XML-fájlt alapértelmezetten. A probléma megoldásához kattintson a jobb gombbal az XML-fájlra, és válassza a **Tulajdonságok** lehetőséget. Változtassa meg a **Build műveletet** a *tartalomra* , és a másolás **a kimeneti könyvtárba** a *mindig* elemre.
+> Ha a Visual studiót használja, a Build-konfiguráció valószínűleg nem fogja megkeresni az XML-fájlt alapértelmezetten. A probléma megoldásához kattintson a jobb gombbal az XML-fájlra, és válassza a **Tulajdonságok** lehetőséget. Változtassa meg a **Build műveletet** a *tartalomra*, és a másolás **a kimeneti könyvtárba** a *mindig* elemre.
 
 ```csharp
 public static async Task SynthesizeAudioAsync() 

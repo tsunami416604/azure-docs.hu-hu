@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956d11ea2a4b011a792827357c3f4627058ead9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1f0c94ba6fb9ee5ab019458043095271123e325e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97651990"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671012"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Az Azure AD Connect felhőalapú jogosultságkiosztás előfeltételei
 Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőalapú kiépítés a személyazonossági megoldáshoz való kiválasztásához és használatához.
@@ -62,14 +62,11 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
     > | 12 | 4 GB |
     > | 18 | 5,5 GB|
     > | 28 | 10 + GB|
-    >
-    > 
 
 2. A helyi kiszolgálón található PowerShell végrehajtási házirendet nem definiált vagy RemoteSigned értékre kell beállítani.
 
 3. Ha tűzfal található a kiszolgálók és az Azure AD között, konfigurálja a következő elemeket:
-
-   - Győződjön meg arról, hogy az ügynökök az alábbi portokon keresztül tehetnek *kimenő* kéréseket az Azure ad-nek:
+    - Győződjön meg arról, hogy az ügynökök az alábbi portokon keresztül tehetnek *kimenő* kéréseket az Azure ad-nek:
 
       | Portszám | Használatuk módja |
       | --- | --- |
@@ -78,13 +75,13 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
       |**8082**|A telepítéshez szükséges, és ha be szeretné állítani az adminisztrációs API-t.  Ez a port eltávolítható az ügynök telepítése után, és ha nem tervezi az API használatát.   |
       | **8080** (nem kötelező) | Az ügynökök 10 percenként jelentik az állapotukat az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. |
 
-   - Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
-   - Ha a tűzfal vagy proxy lehetővé teszi a biztonságos utótagok megadását, vegyen fel kapcsolatokat a \* . msappproxy.net és a \* . servicebus.Windows.net. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
-   - Az ügynököknek hozzá kell férniük a login.windows.net és a login.microsoftonline.com a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-címekhez is.
-   - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 és www \. Microsoft.com:80. Ezeket az URL-címeket a rendszer más Microsoft-termékekkel való tanúsítvány-ellenőrzésre használja, ezért előfordulhat, hogy az URL-címek feloldása már megtörtént.
+    - Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
+    - Ha a tűzfal vagy proxy lehetővé teszi a biztonságos utótagok megadását, vegyen fel kapcsolatokat a \* . msappproxy.net és a \* . servicebus.Windows.net. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
+    - Az ügynököknek hozzá kell férniük a login.windows.net és a login.microsoftonline.com a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-címekhez is.
+    - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 és www \. Microsoft.com:80. Ezeket az URL-címeket a rendszer más Microsoft-termékekkel való tanúsítvány-ellenőrzésre használja, ezért előfordulhat, hogy az URL-címek feloldása már megtörtént.
 
->[!NOTE]
-> A felhőalapú kiépítési ügynök telepítése a Windows Server Core rendszerre nem támogatott.
+    >[!NOTE]
+    > A felhőalapú kiépítési ügynök telepítése a Windows Server Core rendszerre nem támogatott.
 
 ### <a name="additional-requirements"></a>További követelmények
 
@@ -92,8 +89,8 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
 
 #### <a name="tls-requirements"></a>TLS-követelmények
 
->[!NOTE]
->A Transport Layer Security (TLS) egy olyan protokoll, amely biztonságos kommunikációt tesz lehetővé. A TLS-beállítások módosítása a teljes erdőre hatással van. További információ: [frissítés a tls 1,1 és a tls 1,2 alapértelmezett biztonságos protokollokként a Windowsban](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi).
+> [!NOTE]
+> A Transport Layer Security (TLS) egy olyan protokoll, amely biztonságos kommunikációt tesz lehetővé. A TLS-beállítások módosítása a teljes erdőre hatással van. További információ: [frissítés a tls 1,1 és a tls 1,2 alapértelmezett biztonságos protokollokként a Windowsban](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi).
 
 A Azure AD Connect felhőalapú kiépítési ügynököt futtató Windows Servernek a telepítése előtt rendelkeznie kell a TLS 1,2-es beállítással.
 
@@ -111,6 +108,7 @@ A TLS 1,2 engedélyezéséhez kövesse az alábbi lépéseket.
 1. Indítsa újra a kiszolgálót.
 
 ## <a name="known-limitations"></a>Ismert korlátozások
+
 A következő ismert korlátozások érvényesek:
 
 ### <a name="delta-synchronization"></a>Különbözeti szinkronizálás

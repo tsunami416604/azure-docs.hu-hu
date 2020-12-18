@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 31b0a4fd8d97371eb4e127a2a473893a0487f220
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3d90d35e113b5f9757faf59681bb2532b66f2b09
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319077"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Oktatóanyag: Azure Active Directory integráció az LMS-sel
 
@@ -66,11 +66,11 @@ A befogadási LMS Azure AD-be való integrálásának konfigurálásához fel ke
 
 4. A keresőmezőbe írja be a következőt: **elnyelő LMS**, válassza az **LMS befogadása** az eredményekből panelt, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az LMS befogadása az eredmények listájában](common/search-new-app.png)
+    ![Az LMS befogadása az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a befogadási LMS-ben.
 
 Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -88,7 +88,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/)az **LMS** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/)az **LMS** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -119,7 +119,7 @@ Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek beszerzéséhez vegye fel a kapcsolatot az [LMS ügyfél-támogatási csapatával](https://support.absorblms.com/hc/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve.
+5. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName** leképezéssel van leképezve.
 
     ![image](common/edit-attribute.png)
 
@@ -145,7 +145,7 @@ Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő
 
     ![A fiók gomb](./media/absorblms-tutorial/1.png)
 
-3. A fiók ablaktáblán válassza a **portál beállításai**lehetőséget.
+3. A fiók ablaktáblán válassza a **portál beállításai** lehetőséget.
 
     ![A portál beállításainak hivatkozása](./media/absorblms-tutorial/2.png)
 
@@ -163,17 +163,17 @@ Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő
 
     c. Nyissa meg a Jegyzettömbben a Azure Portal letöltött tanúsítványt. Távolítsa el a **---BEGIN certificate---** és **---END Certificate---** címkéket. Ezt követően illessze be a többi tartalmat a **kulcs** mezőbe.
 
-    d. A **Mode (mód** ) mezőben válassza az **identitás-szolgáltató kezdeményezve**lehetőséget.
+    d. A **Mode (mód** ) mezőben válassza az **identitás-szolgáltató kezdeményezve** lehetőséget.
 
     e. Az **azonosító tulajdonság** mezőben válassza ki azt az attribútumot, amelyet felhasználói azonosítóként konfigurált az Azure ad-ben. Ha például az *NameIdentifier* van kiválasztva az Azure ad-ben, válassza a **username (Felhasználónév**) lehetőséget.
 
-    f. Válassza **Sha256** ki a Sha256 **aláírási típusként**.
+    f. Válassza  ki a Sha256 **aláírási típusként**.
 
     : A **bejelentkezési URL-cím** mezőben illessze be a **felhasználói hozzáférési URL-címet** az Azure Portal alkalmazás **Tulajdonságok** lapjáról.
 
-    h. A **kijelentkezési URL-címben**illessze be a Azure Portal a **bejelentkezés beállítása** ablakból másolt kijelentkezési **URL** -értéket.
+    h. A **kijelentkezési URL-címben** illessze be a Azure Portal a **bejelentkezés beállítása** ablakból másolt kijelentkezési **URL** -értéket.
 
-    i. **Automatikus átirányításának** bekapcsolása **a**következőre:.
+    i. **Automatikus átirányításának** bekapcsolása **a** következőre:.
 
 6. Válassza a **Mentés lehetőséget.**
 
@@ -183,7 +183,7 @@ Az Azure AD egyszeri bejelentkezés a befogadási LMS használatával történő
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -196,27 +196,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a következőt: `brittasimon\@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az LMS befogadására való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **LMS befogadása**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **LMS befogadása** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza az **LMS befogadása**lehetőséget.
+2. Az alkalmazások listában írja be és válassza az **LMS befogadása** lehetőséget.
 
     ![A befogadási LMS hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -238,7 +238,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az LMS-be, be kell őket
 
 1. Jelentkezzen be a befogadása az LMS vállalati webhelyre rendszergazdaként.
 
-2. A **felhasználók** ablaktáblán válassza a **felhasználók**lehetőséget.
+2. A **felhasználók** ablaktáblán válassza a **felhasználók** lehetőséget.
 
     ![A felhasználók hivatkozás](./media/absorblms-tutorial/absorblms_userssub.png)
 
@@ -252,7 +252,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az LMS-be, be kell őket
 
     a. Az **Utónév** mezőbe írja be az utónév nevet (például **Britta**).
 
-    b. A **vezetéknév** mezőbe írja be a vezetéknevet, például **Simon**nevet.
+    b. A **vezetéknév** mezőbe írja be a vezetéknevet, például **Simon** nevet.
 
     c. A **Felhasználónév** mezőbe írja be a teljes nevet, például **Britta Simon**.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: a7e71f1c146b0e99ffa20cc74546e35e3ff8a5a6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bd7d05225ef0583c8d56804fb2164cfc73ad4a6a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309107"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673290"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Oktatóanyag: Azure Active Directory integráció az Adobe Sign szolgáltatással
 
@@ -61,13 +61,13 @@ Az Adobe-bejelentkezés az Azure AD-be való integrálásának konfigurálásáh
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **Adobe Sign**kifejezést, válassza az **Adobe-bejelentkezés** az eredményekből panelt, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **Adobe Sign** kifejezést, válassza az **Adobe-bejelentkezés** az eredményekből panelt, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Adobe-bejelentkezés az eredmények listájában](common/search-new-app.png)
+    ![Adobe-bejelentkezés az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Adobe Sign szolgáltatással konfigurálhatja és tesztelheti egy **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Adobe Sign szolgáltatással konfigurálhatja és tesztelheti egy **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az Adobe-bejelentkezéshez kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés az Adobe Sign használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés az Adobe Sign használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/)az **Adobe Sign** Application Integration lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/)az **Adobe Sign** Application Integration lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -129,12 +129,12 @@ Az Azure AD egyszeri bejelentkezés az Adobe Sign használatával történő kon
     a. Az [Adobe Sign ügyfél-támogatási csapata](https://helpx.adobe.com/in/contact/support.html) véletlenszerűen generált tokent küld. A tartományhoz a token a következőhöz hasonló lesz: **Adobe-Sign-ellenőrzés = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 
     b. Tegye közzé az ellenőrző tokent egy DNS-szöveges rekordban, és értesítse az [Adobe Sign ügyfél támogatási csapatát](https://helpx.adobe.com/in/contact/support.html).
-    
+
     > [!NOTE]
     > Ez eltarthat néhány napig, vagy hosszabb időt is igénybe vehet. Vegye figyelembe, hogy a DNS-propagálás késése azt jelenti, hogy a DNS-ben közzétett érték nem jelenik meg egy órán belül. A rendszergazdának ismernie kell a token DNS-szöveges rekordban való közzétételének módját.
-    
+
     c. Ha a támogatási jegyen keresztül értesíti az [Adobe Sign-ügyfél támogatási csapatát](https://helpx.adobe.com/in/contact/support.html) , a jogkivonat közzététele után érvényesíti a tartományt, és hozzáadja a fiókjához.
-    
+
     d. Általában a következő módon teheti közzé a tokent egy DNS-rekordon:
 
     * Jelentkezzen be a tartományi fiókjába
@@ -145,37 +145,37 @@ Az Azure AD egyszeri bejelentkezés az Adobe Sign használatával történő kon
 
 1. Egy másik böngészőablakban jelentkezzen be az Adobe Sign céges webhelyre rendszergazdaként.
 
-1. Az SAML menüben válassza a **Fiókbeállítások**  >  **SAML-beállítások**elemet.
-   
+1. Az SAML menüben válassza a **Fiókbeállítások**  >  **SAML-beállítások** elemet.
+
     ![Az Adobe Sign SAML-beállítások oldalának képernyőképe](./media/adobe-echosign-tutorial/ic789520.png "Fiók")
 
 1. Az **SAML-beállítások** szakaszban hajtsa végre a következő lépéseket:
-  
-   ![Képernyőkép, amely kiemeli az SAML-beállításokat, beleértve az SAML Kötelezőt is.](./media/adobe-echosign-tutorial/ic789521.png "SAML-beállítások")
-   
+
+    ![Képernyőkép, amely kiemeli az SAML-beállításokat, beleértve az SAML Kötelezőt is.](./media/adobe-echosign-tutorial/ic789521.png "SAML-beállítások")
+
    ![Az SAML-beállítások képernyőképe](./media/adobe-echosign-tutorial/ic789522.png "SAML-beállítások")
 
-   a. Az **SAML mód**területen válassza az **SAML kötelező**lehetőséget.
-   
-   b. Jelölje be a **EchoSign-fiók rendszergazdáinak engedélyezése a EchoSign hitelesítő adataik használatával történő bejelentkezéshez**lehetőséget.
-   
-   c. A **felhasználó létrehozása**területen válassza az SAML-n **keresztül hitelesített felhasználók automatikus hozzáadása**lehetőséget.
+   a. Az **SAML mód** területen válassza az **SAML kötelező** lehetőséget.
+
+   b. Jelölje be a **EchoSign-fiók rendszergazdáinak engedélyezése a EchoSign hitelesítő adataik használatával történő bejelentkezéshez** lehetőséget.
+
+   c. A **felhasználó létrehozása** területen válassza az SAML-n **keresztül hitelesített felhasználók automatikus hozzáadása** lehetőséget.
 
    d. Illessze be az **Azure ad-azonosítót**, amelyet a Azure Portal másolt a **IDENTITÁSSZOLGÁLTATÓ-entitás azonosítója** szövegmezőbe.
-    
+
    e. Illessze be a **bejelentkezési URL-címet**, amelyet Azure Portal a **identitásszolgáltató bejelentkezési URL-címe** szövegmezőbe másolt.
-   
+
    f. Illessze be a **kijelentkezési URL-címet**, amelyet a Azure Portal a **identitásszolgáltató KIJELENTKEZÉSI URL-címe** szövegmezőbe másolt.
 
    : Nyissa meg a letöltött **tanúsítvány (Base64)** fájlt a Jegyzettömbben. Másolja a tartalmát a vágólapra, majd illessze be a **identitásszolgáltató-tanúsítvány** szövegmezőbe.
 
-   h. Válassza a **módosítások mentése**lehetőséget.
+   h. Válassza a **módosítások mentése** lehetőséget.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -188,27 +188,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson az Adobe Sign szolgáltatáshoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd az **Adobe Sign**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd az **Adobe Sign** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza az **Adobe Sign**elemet.
+2. Az alkalmazások listában írja be és válassza az **Adobe Sign** elemet.
 
     ![Az Adobe Sign hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -231,17 +231,17 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az A
 
 1. Jelentkezzen be az **Adobe Sign** céges webhelyre rendszergazdaként.
 
-2. A felső menüben válassza a **fiók**lehetőséget. Ezután a bal oldali ablaktáblán válassza a **felhasználók & csoportok**  >  **új felhasználó létrehozása**lehetőséget.
-   
+2. A felső menüben válassza a **fiók** lehetőséget. Ezután a bal oldali ablaktáblán válassza a **felhasználók & csoportok**  >  **új felhasználó létrehozása** lehetőséget.
+
     ![Képernyőkép az Adobe Sign céges webhelyről, a fiókkal, a felhasználókkal &csoportokkal, és új felhasználó kijelölése](./media/adobe-echosign-tutorial/ic789524.png "Fiók")
-   
+
 3. Az **új felhasználó létrehozása** szakaszban hajtsa végre a következő lépéseket:
-   
+
     ![Képernyőkép az új felhasználó létrehozása szakaszról](./media/adobe-echosign-tutorial/ic789525.png "Felhasználó létrehozása")
-   
-    a. Írja be a kapcsolódó szövegmezőbe felépíteni kívánt érvényes Azure AD **-fiók E-mail címét**, **utónevét**és **vezetéknevét** .
-   
-    b. Válassza a **felhasználó létrehozása**lehetőséget.
+
+    a. Írja be a kapcsolódó szövegmezőbe felépíteni kívánt érvényes Azure AD **-fiók E-mail címét**, **utónevét** és **vezetéknevét** .
+
+    b. Válassza a **felhasználó létrehozása** lehetőséget.
 
 >[!NOTE]
 >A Azure Active Directory fiók tulajdonosa egy e-mailt kap, amely tartalmazza a fiók megerősítésére szolgáló hivatkozást, mielőtt az aktívvá válna. 

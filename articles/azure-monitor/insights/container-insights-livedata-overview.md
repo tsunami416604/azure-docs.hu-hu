@@ -2,23 +2,20 @@
 title: Élő adatértékek (előzetes verzió) megtekintése az Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk a Kubernetes-naplók,-események és a pod-metrikák valós idejű nézetét írja le anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346831"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672868"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése
 
 A tárolók Azure Monitor tartalmazza az élő adatok (előzetes verzió) szolgáltatást, amely egy fejlett diagnosztikai funkció, amely lehetővé teszi az Azure Kubernetes szolgáltatás (ak) tároló-naplófájljainak (StdOut/stderror), az események és a pod-metrikák közvetlen elérését. Közvetlen hozzáférést tesz elérhetővé a `kubectl logs -c` , az `kubectl get` eseményekhez és a szolgáltatásokhoz `kubectl top pods` . A konzol ablaktáblán láthatók a tároló-motor által generált naplók, események és mérőszámok, amelyek a hibák valós idejű hibaelhárítását segítik elő.
 
 Ez a cikk részletes áttekintést nyújt, és segít megérteni a funkció használatát.
-
->[!NOTE]
->Ez a funkció nem támogatja a [privát fürtökként](https://azure.microsoft.com/updates/aks-private-cluster/) engedélyezett AK-fürtöket. Ez a funkció arra támaszkodik, hogy közvetlenül a böngészőből egy proxykiszolgálón keresztül éri el a Kubernetes API-t. A hálózati biztonság engedélyezésével letilthatja a Kubernetes API-t ebből a proxyból, és letiltja a forgalmat.
 
 Az élő adatszolgáltatások (előzetes verzió) beállításához vagy hibaelhárításához tekintse át a [telepítési útmutatót](container-insights-livedata-setup.md). Ez a funkció közvetlenül hozzáfér a Kubernetes API-hoz, és a hitelesítési modellel kapcsolatos további információ [itt](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)található.
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 12/17/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8633ae0d23650eb12ee2e1fdcd355864dfd8b6c3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bfff8d450a6506cb37730838e4f70609080ca7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743632"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670791"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Hitelesítési módszerek használati &i adatok (előzetes verzió)
 
@@ -31,7 +31,7 @@ A következő szerepkörök használhatják a használatot és az információka
 - Biztonsági rendszergazda
 - Jelentések olvasója
 
-A használat és az információk eléréséhez nincs szükség további licencelésre. Az Azure AD Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási (SSPR) licencelési információk a [Azure Active Directory díjszabási webhelyen](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
+ A használat és az adatok eléréséhez prémium szintű Azure AD P1 vagy P2 licenc szükséges. Az Azure AD Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási (SSPR) licencelési információk a [Azure Active Directory díjszabási webhelyen](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
 
 ## <a name="how-it-works"></a>Működés
 
@@ -65,7 +65,7 @@ Ha a **regisztrált felhasználók**, a **felhasználók** vagy a **felhasznál�
 
 A regisztráció részletei jelentés az alábbi információkat jeleníti meg az egyes felhasználókra vonatkozóan:
 
-- Név
+- Name
 - Felhasználónév
 - Regisztrációs állapot (összes, regisztrált, nincs regisztrálva)
 - Engedélyezett állapot (mind, engedélyezve, nincs engedélyezve)
@@ -80,7 +80,7 @@ Ha a regisztrációra kattint, vagy alaphelyzetbe állítja a diagramokat, a ren
 
 A részletek visszaállítása jelentés az elmúlt 30 nap regisztrációs és alaphelyzetbe állítási eseményeit jeleníti meg, beleértve a következőket:
 
-- Név
+- Name
 - Felhasználónév
 - Szolgáltatás (összes, regisztráció, alaphelyzetbe állítás)
 - Hitelesítési módszer (alkalmazás-értesítés, alkalmazás kódja, telefonhívás, Office-hívás, SMS, E-mail, biztonsági kérdések)
@@ -96,7 +96,7 @@ A használati és adatelemzési adatok nem helyettesíti az Azure ad Multi-Facto
 
 A jelentés jelenleg nem szűrhető úgy, hogy kizárja a külső felhasználókat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A hitelesítési módszerek használati jelentésének API használata](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
 - [A szervezet hitelesítési módszereinek kiválasztása](concept-authentication-methods.md)

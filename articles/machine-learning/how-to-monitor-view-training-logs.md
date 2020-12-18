@@ -11,18 +11,22 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 845160d92100a27c32f16eddcd1f36e9e8624e80
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0dd5f6a48175bad35b37155c8ff881e352922ca7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360598"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674470"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
 
-Ebből a cikkből megtudhatja, hogyan figyelheti Azure Machine Learning futtatásait, és hogyan tekintheti meg a naplókat. Mielőtt megtekinti a naplókat, először engedélyeznie kell azokat. További információ: [a naplózás engedélyezése az Azure ml-képzésekben](how-to-track-experiments.md).
+Megtudhatja, hogyan figyelheti Azure Machine Learning futtatásait, és hogyan tekintheti meg a naplókat. 
 
-A naplók segítségével diagnosztizálhatja a hibákat és a figyelmeztetéseket, vagy nyomon követheti a teljesítmény mérőszámait, például a paramétereket és a modell pontosságát. Ebből a cikkből megtudhatja, hogyan tekintheti meg a naplókat a következő módszerek használatával:
+Kísérlet futtatásakor a naplók és a metrikák továbbítva lesznek.  Emellett felveheti a sajátját is.  További információ: [a naplózás engedélyezése az Azure ml-képzésekben](how-to-track-experiments.md).
+
+A naplók segíthetnek a futtatásához szükséges hibák és figyelmeztetések diagnosztizálásában. A teljesítmény-mérőszámok, például a paraméterek és a modell pontossága segíthet a futtatások nyomon követésében és figyelésében.
+
+Ebből a cikkből megtudhatja, hogyan tekintheti meg a naplókat a következő módszerek használatával:
 
 > [!div class="checklist"]
 > * A monitor futtatása a Studióban
@@ -32,27 +36,6 @@ A naplók segítségével diagnosztizálhatja a hibákat és a figyelmeztetések
 > * Kimeneti naplók megtekintése a Studióban
 
 A kísérletek kezelésével kapcsolatos általános információkért lásd: a [betanítási futtatások elindítása, figyelése és megszakítása](how-to-manage-runs.md).
-
-## <a name="monitor-runs-in-the-studio"></a>A monitor futtatása a Studióban
-
-Ha figyelni szeretné a futtatásokat egy adott számítási célra a böngészőben, kövesse az alábbi lépéseket:
-
-1. A [Azure Machine learning Studióban](https://ml.azure.com/)válassza ki a munkaterületet, majd a lap bal oldalán kattintson a __számítás__ elemre.
-
-1. Válassza a __betanítási fürtök__ lehetőséget a betanításhoz használt számítási célok listájának megjelenítéséhez. Ezután válassza ki a fürtöt.
-
-    ![Válassza ki a betanítási fürtöt](./media/how-to-track-experiments/select-training-compute.png)
-
-1. Válassza a __futtatások__ lehetőséget. Megjelenik a fürtöt használó futtatások listája. Egy adott Futtatás részleteinek megtekintéséhez használja a __Run (Futtatás__ ) oszlopban található hivatkozást. A kísérlet részleteinek megtekintéséhez használja a __kísérlet__ oszlopban található hivatkozást.
-
-    ![A betanítási fürt futtatásának kiválasztása](./media/how-to-track-experiments/show-runs-for-compute.png)
-    
-    > [!TIP]
-    > Mivel a kiszámított számítási célok egy megosztott erőforrás, több futtatási várólistára vagy aktívra lehet szükség egy adott időpontban.
-    > 
-    > A futtatások tartalmazhatnak alárendelt futtatásokat, így egy betanítási feladatok több bejegyzést is eredményezhetnek.
-
-A Futtatás befejezése után már nem jelenik meg ezen a lapon. A befejezett futtatásokkal kapcsolatos információk megtekintéséhez látogasson el a Studio __kísérletek__ szakaszára, és válassza ki a kísérletet, majd futtassa a parancsot. További információért lásd a [befejezett futtatások metrikáinak megtekintése](#view-the-experiment-in-the-web-portal)című szakaszt.
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>A monitor futtatása a Jupyter notebook Widget használatával
 
@@ -94,28 +77,28 @@ RunDetails(run).show()
 A **ScriptRunConfig** használatakor a ```run.wait_for_completion(show_output = True)``` segítségével megjelenítheti a modell betanításának befejeződését. A ```show_output``` jelző részletes kimenetet biztosít. További információt a [naplózás engedélyezésének](how-to-track-experiments.md#scriptrun-logs)ScriptRunConfig című szakaszában talál.
 
 <a id="queryrunmetrics"></a>
+
 ## <a name="query-run-metrics"></a>Lekérdezés-futtatási metrikák
 
 A betanított modell metrikáit a használatával tekintheti meg ```run.get_metrics()``` . Például a fenti példával meghatározhatja a legjobb modellt úgy, hogy a legalacsonyabb Mean Square error (MSE) értékkel keresi a modellt.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
+
 ## <a name="view-run-records-in-the-studio"></a>Futtatási rekordok megtekintése a Studióban
 
 A [Azure Machine learning Studióban](https://ml.azure.com)böngészhet a befejezett futtatási rekordok, beleértve a naplózott metrikákat is.
 
-Navigáljon a **kísérletek** lapra. Ha a munkaterületen lévő összes futtatást a kísérletek között szeretné megtekinteni, válassza a **minden Futtatás** lapot. A futtatások részletezését meghatározott kísérletek esetén a felső menüsorban a kísérlet szűrő alkalmazásával végezheti el. 
+Navigáljon a **kísérletek** lapra. Ha a munkaterületen lévő összes futtatást a kísérletek között szeretné megtekinteni, válassza a **minden Futtatás** lapot. A futtatások részletezését meghatározott kísérletek esetén a felső menüsorban a kísérlet szűrő alkalmazásával végezheti el.
 
 Az egyes kísérletek nézet esetében válassza a **minden kísérlet** lapot. A kísérlet futtatása irányítópulton láthatja az egyes futtatások nyomon követett mérőszámait és naplóit. 
 
-Egy adott Futtatás részletezésével megtekintheti a kimeneteit vagy naplóit, vagy letöltheti a kísérlet pillanatképét, így megoszthatja a kísérlet mappáját másokkal.
-
-A futtatási lista tábla szerkesztésével több futtatást is kijelölhet, és megjelenítheti a futtatások utolsó, minimális vagy maximális naplózott értékét. A diagramok testreszabásával összehasonlíthatja a naplózott mérőszámok értékeit és összesítéseit több Futtatás között.
+A futtatási lista tábla szerkesztésével több futtatást is kijelölhet, és megjelenítheti a futtatások utolsó, minimális vagy maximális naplózott értékét. A diagramok testreszabásával összehasonlíthatja a naplózott mérőszámok értékeit és összesítéseit több Futtatás között. 
 
 ![Részletek futtatása a Azure Machine Learning Studióban](media/how-to-track-experiments/experimentation-tab.gif)
 
-### <a name="format-charts-in-the-studio"></a>Diagramok formázása a Studióban
+### <a name="format-charts"></a>Diagramok formázása 
 
-A naplózási API-k a következő módszerekkel befolyásolhatják a mérőszámok megjelenítését.
+A következő módszerek használhatók a naplózási API-kon a metrikák vizualizációinak befolyásolására.
 
 |Naplózott érték|Mintakód| Formátum a portálon|
 |----|----|----|
@@ -123,6 +106,80 @@ A naplózási API-k a következő módszerekkel befolyásolhatják a mérőszám
 |Egy numerikus értéket többször is felhasználhat ugyanazzal a metrikai névvel (például a cikluson belül)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Egyváltozós vonalas diagram|
 |Sor naplózása 2 numerikus oszloppal ismételten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Kétváltozós vonalas diagram|
 |Táblázat két numerikus oszloppal|`run.log_table(name='Sine Wave', value=sines)`|Kétváltozós vonalas diagram|
+
+
+### <a name="view-log-files-for-a-run"></a>Futtatási naplófájlok megtekintése 
+
+A naplófájlok nélkülözhetetlen erőforrást biztosítanak az Azure ML-munkaterhelések hibakereséséhez. A naplók és kimenetek megtekintéséhez végezzen részletezést egy adott futtatásra:  
+
+1. Navigáljon a **kísérletek** lapra.
+1. Válassza ki az adott futtatáshoz tartozó runID.
+1. Válassza ki a **kimeneteket és a naplókat** az oldal tetején.
+
+:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="A Run (kimenet és naplók) szakaszának képernyőképe":::
+
+Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban látható mappákban.
+
+> [!NOTE]
+> Információ arról, hogy a felhasználónak akkor is meg kell jelennie, ha a skimmingYou nem feltétlenül fogja látni az összes fájl minden futtatását. A 20_image_build_log *. txt például csak akkor jelenik meg, ha új rendszerkép van felépítve (például ha módosítja a környezetet).
+
+#### <a name="azureml-logs-folder"></a>`azureml-logs` mappa
+
+|Fájl  |Description  |
+|---------|---------|
+|20_image_build_log.txt     | Docker-rendszerkép-létrehozási napló a betanítási környezethez, nem kötelező, egy Futtatás. Csak a környezet frissítésekor alkalmazható. Máskülönben a pénzmosás felhasználja a gyorsítótárazott rendszerképet. Ha a művelet sikeres, a rendszerkép beállításjegyzékének részleteit tartalmazza a megfelelő rendszerképhez.         |
+|55_azureml-Execution-<node_id # C1.txt     | StdOut/stderr log of Host Tool, egy csomóponton. A rendszerkép lekérése a számítási célra. Megjegyzés: Ez a napló csak akkor jelenik meg, ha biztonságos számítási erőforrásokkal rendelkezik.         |
+|65_job_prep-<node_id # C1.txt     |   StdOut/stderr-napló a feladatok előkészítéséhez. Töltse le a kódot a számítási célra és adattárolóba (ha szükséges).       |
+|70_driver_log (_x). txt      |  StdOut/stderr-napló a pénzmosás-vezérlési parancsfájlból és az ügyfél-betanítási parancsfájlból, egy folyamaton belül. **Ez a szkript standard kimenete. Itt jelennek meg a kód naplói (például Print utasítások).** Az esetek többségében itt fogja figyelni a naplókat.       |
+|70_mpi_log.txt     |   MPI-keretrendszer naplója, választható, egy Futtatás. Csak MPI-futtatáshoz.   |
+|75_job_post-<node_id # C1.txt     |  StdOut/stderr-napló a feladathoz tartozó kiadási parancsfájlból, egy csomóponton. Naplók elküldése, a számítási erőforrások felszabadítása vissza az Azure-ba.        |
+|process_info.jsbekapcsolva      |   annak megjelenítése, hogy melyik folyamat fut a csomóponton.  |
+|process_status.jsbekapcsolva      | a folyamat állapotának megjelenítése, azaz ha egy folyamat nem indult el, fut vagy nem fejeződött be.         |
+
+#### <a name="logs--azureml-folder"></a>`logs > azureml` mappa
+
+|Fájl  |Description  |
+|---------|---------|
+|110_azureml. log      |         |
+|job_prep_azureml. log     |   rendszernapló a feladat-előkészítéshez        |
+|job_release_azureml. log     | a feladat kiadásának rendszernaplója        |
+
+#### <a name="logs--azureml--sidecar--node_id-folder"></a>`logs > azureml > sidecar > node_id` mappa
+
+Ha az oldalkocsi engedélyezve van, a feladatok előkészítési és a feladatok kiadására szolgáló szkriptek az oldalkocsis tárolón belül lesznek futtatva.  Mindegyik csomóponthoz egy mappa van. 
+
+|Fájl  |Description  |
+|---------|---------|
+|start_cms.txt     |  Az oldalkocsi-tároló indításakor megjelenő folyamat naplózása       |
+|prep_cmd.txt      |   A futtatáskor megadott ContextManagers naplója `job_prep.py` (ennek egy része a következőre lesz továbbítva: `azureml-logs/65-job_prep` )       |
+|release_cmd.txt     |  A futtatáskor kilépett ComtextManagers naplója `job_release.py`        |
+
+#### <a name="other-folders"></a>Egyéb mappák
+
+A több számítási fürtön futó feladatok esetében a naplók az egyes csomópont-IP-címeknél jelennek meg. Az egyes csomópontok szerkezete ugyanaz, mint egy csomópontos feladat. A teljes végrehajtás, a stderr és az stdout-naplók számára egy további naplófájl található.
+
+Azure Machine Learning a különböző forrásokból származó információkat naplózza a betanítás során, például a AutoML vagy a betanítási feladatot futtató Docker-tárolóban. A naplók közül sok nincs dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
+
+## <a name="monitor-a-compute-cluster"></a>Számítási fürt figyelése
+
+Ha figyelni szeretné a futtatásokat egy adott számítási célra a böngészőben, kövesse az alábbi lépéseket:
+
+1. A [Azure Machine learning Studióban](https://ml.azure.com/)válassza ki a munkaterületet, majd a lap bal oldalán kattintson a __számítás__ elemre.
+
+1. Válassza a __betanítási fürtök__ lehetőséget a betanításhoz használt számítási célok listájának megjelenítéséhez. Ezután válassza ki a fürtöt.
+
+    ![Válassza ki a betanítási fürtöt](./media/how-to-track-experiments/select-training-compute.png)
+
+1. Válassza a __futtatások__ lehetőséget. Megjelenik a fürtöt használó futtatások listája. Egy adott Futtatás részleteinek megtekintéséhez használja a __Run (Futtatás__ ) oszlopban található hivatkozást. A kísérlet részleteinek megtekintéséhez használja a __kísérlet__ oszlopban található hivatkozást.
+
+    ![A betanítási fürt futtatásának kiválasztása](./media/how-to-track-experiments/show-runs-for-compute.png)
+    
+    > [!TIP]
+    > Mivel a kiszámított számítási célok egy megosztott erőforrás, több futtatási várólistára vagy aktívra lehet szükség egy adott időpontban.
+    > 
+    > A futtatások tartalmazhatnak alárendelt futtatásokat, így egy betanítási feladatok több bejegyzést is eredményezhetnek.
+
+A Futtatás befejezése után már nem jelenik meg ezen a lapon. A befejezett futtatásokkal kapcsolatos információk megtekintéséhez látogasson el a Studio __kísérletek__ szakaszára, és válassza ki a kísérletet, majd futtassa a parancsot. További információért lásd a [befejezett futtatások metrikáinak megtekintése](#view-the-experiment-in-the-web-portal)című szakaszt.
 
 
 ## <a name="next-steps"></a>Következő lépések

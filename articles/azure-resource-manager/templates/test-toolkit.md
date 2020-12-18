@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e5ad0b6dca7718166517b52148fbc6dd49f38869
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928188"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674012"
 ---
 # <a name="use-arm-template-test-toolkit"></a>ARM-sablon tesztelési eszközkészletének használata
 
@@ -282,4 +282,5 @@ A következő példa bemutatja, hogyan futtathatja a teszteket.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az alapértelmezett tesztek megismeréséhez tekintse meg az [ARM-sablon tesztelési eszközkészletének alapértelmezett tesztelési eseteit](test-cases.md).
+- Az alapértelmezett tesztek megismeréséhez tekintse meg az [ARM-sablon tesztelési eszközkészletének alapértelmezett tesztelési eseteit](test-cases.md).
+- A tesztelési eszközkészlettel foglalkozó Microsoft Learn modul esetében tekintse meg az [előzetes verzió módosításait és az Azure-erőforrások érvényesítését a mi és az ARM template test Toolkit használatával](/learn/modules/arm-template-test/).

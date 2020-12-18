@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 069cf348bb6d0432d02a8350bc0847c2b155f90a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498081"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672381"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-üzembehelyezési tervek
 Az Azure Active Directory (Azure AD) képességeinek üzembe helyezésével kapcsolatos teljes körű útmutatást keres? Az Azure AD üzembehelyezési csomagjai végigvezetik a közös Azure AD-képességek sikeres üzembe helyezéséhez szükséges üzleti értékeken, tervezési szempontokon és üzemeltetési eljárásokon.
@@ -29,7 +29,7 @@ A csomag bármelyik lapján a böngészőben a PDF-fájl nyomtatása lehetőség
 
 | Képesség | Leírás|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Az Azure AD Multi-Factor Authentication (MFA) a Microsoft kétlépéses ellenőrzési megoldása. A rendszergazda által jóváhagyott hitelesítési módszerek használatával az Azure AD MFA segít megőrizni az adataihoz és alkalmazásaihoz való hozzáférést, miközben az egyszerű bejelentkezési folyamat iránti igényt is kielégíti. |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Az Azure AD Multi-Factor Authentication (MFA) a Microsoft kétlépéses ellenőrzési megoldása. A rendszergazda által jóváhagyott hitelesítési módszerek használatával az Azure AD MFA segít megőrizni az adataihoz és alkalmazásaihoz való hozzáférést, miközben az egyszerű bejelentkezési folyamat iránti igényt is kielégíti. Tekintse meg ezt a videót arról, [hogyan konfigurálhatja és kényszerítheti a többtényezős hitelesítés használatát a bérlőben](https://www.youtube.com/watch?v=qNndxl7gqVM)|
 | [Feltételes hozzáférés](../conditional-access/plan-conditional-access.md)| A feltételes hozzáféréssel olyan automatizált hozzáférés-vezérlési döntéseket hozhat létre, amelyek a feltételek alapján hozzáférhetnek a felhőalapú alkalmazásokhoz. |
 | [Új jelszó önkiszolgáló kérése](../authentication/howto-sspr-deployment.md)| Az önkiszolgáló jelszó-visszaállítás segítségével a felhasználók rendszergazdai beavatkozás nélkül állíthatják vissza a jelszavukat, amikor és ahol szükségesek. |
 | [Jelszó nélküli](../authentication/howto-authentication-passwordless-deployment.md) | Jelszó-alapú hitelesítés implementálása a szervezet Microsoft Authenticator alkalmazás-vagy FIDO2 biztonsági kulcsaival |
@@ -49,7 +49,7 @@ A csomag bármelyik lapján a böngészőben a PDF-fájl nyomtatása lehetőség
 | -| -|
 | [ADFS a jelszókivonat-szinkronizáláshoz](../hybrid/plan-migrate-adfs-password-hash-sync.md)| A jelszó-kivonatolási szinkronizálással a felhasználói jelszavak kivonatait a helyszíni Active Directoryról az Azure AD-be szinkronizálja, így az Azure AD hitelesíti a felhasználókat a helyszíni Active Directoryekkel való interakció nélkül. |
 | [ADFS az átmenő hitelesítéshez](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Az Azure AD átmenő hitelesítéssel a felhasználók ugyanazzal a jelszóval jelentkezhetnek be mind a helyszíni, mind a felhőalapú alkalmazásokba. Ez a funkció jobb felhasználói élményt nyújt a felhasználóknak – eggyel kevesebb jelszót kell megjegyeznie – és csökkenti az informatikai támogatási szolgálat költségeit, mivel a felhasználók kevésbé valószínű, hogy bejelentkeznek. Az Azure AD-vel való bejelentkezéskor a szolgáltatás közvetlenül a helyszíni Active Directoryban tárolt adatok alapján érvényesíti a felhasználói jelszavakat. |
-| [Azure AD-alkalmazásproxy](../manage-apps/application-proxy-deployment-plan.md) |Napjainkban a munkavállalók a legkülönfélébb helyeken, időpontokban és eszközökön szeretnek dolgozni. Az SaaS-alkalmazásokhoz a helyszíni felhőben és a vállalati alkalmazásokban is hozzá kell férniük. Az Azure AD-alkalmazásproxy lehetővé teszi, hogy ez a robusztus hozzáférés költséges és összetett virtuális magánhálózatok (VPN) vagy vagy demilitarizált zónák (DMZ) nélkül legyen elérhető. |
+| [Azure-AD Application Proxy](../manage-apps/application-proxy-deployment-plan.md) |Napjainkban a munkavállalók a legkülönfélébb helyeken, időpontokban és eszközökön szeretnek dolgozni. Az SaaS-alkalmazásokhoz a helyszíni felhőben és a vállalati alkalmazásokban is hozzá kell férniük. Az Azure AD-alkalmazásproxy lehetővé teszi, hogy ez a robusztus hozzáférés költséges és összetett virtuális magánhálózatok (VPN) vagy vagy demilitarizált zónák (DMZ) nélkül legyen elérhető. |
 | [Közvetlen egyszeri bejelentkezés](../hybrid/how-to-connect-sso-quick-start.md)| Az Azure Active Directory közvetlen egyszeri bejelentkezése (Azure AD közvetlen SSO) automatikusan bejelentkezteti a felhasználókat, ha azok a vállalati hálózatra csatlakozó vállalati eszközeiket használják. Ezzel a funkcióval a felhasználóknak nem kell beírniuk a jelszavukat, hogy bejelentkezzenek az Azure AD-be, és általában nem kell megadniuk a felhasználónevét. Ez a funkció lehetővé teszi, hogy a jogosult felhasználók könnyen hozzáférhessenek a felhőalapú alkalmazásokhoz anélkül, hogy további helyszíni összetevőket kellene megadniuk. |
 
 ## <a name="deploy-user-provisioning"></a>Felhasználói kiépítés központi telepítése

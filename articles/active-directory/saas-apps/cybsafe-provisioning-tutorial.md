@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 92329a3fa04d3cc685ba5068e9e5ae9932d1eb4d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178942"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673376"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés CybSafe konfigurálása
 
@@ -135,15 +135,15 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 13. Az Azure AD-kiépítési szolgáltatás CybSafe való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-    ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
+      ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
 14. Adja meg a CybSafe kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
 
-    ![Átadási hatókör](common/provisioning-scope.png)
+      ![Átadási hatókör](common/provisioning-scope.png)
 
 15. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
-    ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
+      ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
 
 Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát elindítja. A kezdeti ciklus elvégzése hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek az Azure AD átadási szolgáltatásának futtatása során körülbelül 40 percenként lesznek végrehajtva. 
 

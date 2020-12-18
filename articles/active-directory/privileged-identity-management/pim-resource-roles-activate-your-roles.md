@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4e3fe72492ef92fe65572c75bf9f88b5f9ffda3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1a6ddde80ca554aea25d24694aff76e61e47d928
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653418"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672457"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörök aktiválása Privileged Identity Management
 
@@ -42,7 +42,7 @@ Ha egy Azure-erőforrás szerepkört kell igénybe vennie, az aktiválást az Pr
 
 1. Válassza ki az **Azure-erőforrások szerepköreit** , és tekintse meg a jogosult Azure-erőforrás-szerepkörök listáját.
 
-   ![Saját szerepkörök – Azure Resource roles lap](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
+    ![Saját szerepkörök – Azure Resource roles lap](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
 
 1. Az **Azure erőforrás-szerepkörök** listában keresse meg az aktiválni kívánt szerepkört.
 

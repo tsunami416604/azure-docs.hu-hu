@@ -3,12 +3,12 @@ title: Az Azure Arc áttekintése
 description: Ismerje meg, hogy mi az Azure arc, és hogyan segíti az ügyfelek a hibrid erőforrásaik kezelését és irányítását más Azure-szolgáltatásokkal és-funkciókkal.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 3a8b054d9b7fd8f48dc667a5bd49a2c6994de1a3
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616524"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672686"
 ---
 # <a name="azure-arc-overview"></a>Az Azure Arc áttekintése
 
@@ -72,12 +72,12 @@ Az aktuális előzetes verzióban az Azure arc-kompatibilis Kubernetes díjmente
 
 Az aktuális előzetes verzióban az Azure arc-kompatibilis adatszolgáltatások díjmentesen vehetők igénybe.
 
-## <a name="next-steps"></a>További lépések
-
-* Indítsa el az arc-kompatibilis szolgáltatásokat a [Jumpstart forgatókönyvekben](https://azurearcjumpstart.io/azure_arc_jumpstart/)
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni az ív használatára képes kiszolgálókról, tekintse meg a következő [áttekintést](./servers/overview.md) :
 
 * Ha többet szeretne megtudni az arc-kompatibilis Kubernetes, tekintse meg a következő [áttekintést](./kubernetes/overview.md) :
 
 * Az arc-kompatibilis adatszolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg a következő [áttekintést](https://azure.microsoft.com/services/azure-arc/hybrid-data-services/) :
+
+* Arc-kompatibilis szolgáltatások az [Jumpstart megvalósíthatósági igazolása](https://azurearcjumpstart.io/azure_arc_jumpstart/) alapján

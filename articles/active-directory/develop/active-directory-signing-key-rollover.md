@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c9fbf6990f789bdb0edb1cf45885003569d4f6a8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a8c9a15761a4b37dfcf5ba7cc4cf046390092145
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653231"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672145"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Kulcs átváltásának aláírása a Microsoft Identity platformon
 Ez a cikk azt ismerteti, hogy mit kell tudni a Microsoft Identity platform által a biztonsági jogkivonatok aláírásához használt nyilvános kulcsokról. Fontos megjegyezni, hogy ezek a kulcsok rendszeres időközönként, és vészhelyzetben azonnal összeállíthatók. A Microsoft Identity platformot használó összes alkalmazásnak képesnek kell lennie programozott módon kezelni a kulcs átváltási folyamatát. Folytassa az olvasással, hogy megtudja, hogyan működik a kulcsok működése, hogyan állapítható meg a rollover hatása az alkalmazásra, illetve hogyan lehet frissíteni az alkalmazást, vagy létre kell hozni egy rendszeres manuális átütemezési folyamatot a kulcsok átváltásához, ha szükséges.
@@ -68,28 +68,30 @@ Az Azure App Services hitelesítés/engedélyezés (EasyAuth) funkciója már re
 ### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webalkalmazások/API-k az erőforrások védelme .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware használatával
 Ha az alkalmazás a .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware-t használja, akkor már rendelkezik a kulcs átváltásának automatikus kezelésére szolgáló szükséges logikával.
 
-A következő kódrészletek bármelyikének megkeresésével ellenőrizheti, hogy az alkalmazás használja-e az alkalmazás Startup.cs vagy Startup.Auth.cs
+Az alkalmazás Startup.cs-vagy Startup.Auth.cs-fájljaiban az alábbi kódrészletek bármelyikének megkeresésével ellenőrizheti, hogy az alkalmazás használja-e ezeket.
 
-```
+```csharp
 app.UseOpenIdConnectAuthentication(
-     new OpenIdConnectAuthenticationOptions
-     {
-         // ...
-     });
+    new OpenIdConnectAuthenticationOptions
+    {
+        // ...
+    });
 ```
-```
+
+```csharp
 app.UseWsFederationAuthentication(
     new WsFederationAuthenticationOptions
     {
-     // ...
-     });
+        // ...
+    });
 ```
-```
+
+```csharp
 app.UseWindowsAzureActiveDirectoryBearerAuthentication(
-     new WindowsAzureActiveDirectoryBearerAuthenticationOptions
-     {
-     // ...
-     });
+    new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+    {
+        // ...
+    });
 ```
 
 ### <a name="web-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>Webalkalmazások/API-k az erőforrások védelme .NET Core OpenID Connect vagy JwtBearerAuthentication middleware használatával

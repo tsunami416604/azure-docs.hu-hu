@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4eaac716d06b102a07872059af28da4986889caa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632033"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673437"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Oktatóanyag: a bizarr Studio konfigurálása a digitális folyamatok automatizálásához a felhasználók automatikus üzembe helyezéséhez
 
@@ -139,6 +139,8 @@ Ez a szakasz végigvezeti a felhasználók és csoportok létrehozásához, fris
 
    Az egyéni attribútumok hozzáadásával kapcsolatos további információkért tekintse meg az [alkalmazás attribútumainak testreszabása](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)című részt.
 
+> [!NOTE]
+> Csak az alapvető típusú tulajdonságok támogatottak (például string, Integer, Boolean, DateTime stb.). A számszerű táblákhoz vagy több típushoz csatolt tulajdonságok még nem támogatottak.
 
 10. A hatóköri szűrők konfigurálásához tekintse meg a [hatóköri szűrő oktatóanyagát](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 

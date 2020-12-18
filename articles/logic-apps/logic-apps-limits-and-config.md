@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 16002d7acf97832f743410a203e2f76e99646c0c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937627"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673358"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -23,7 +23,7 @@ Ez a cikk az automatikus munkafolyamatok létrehozásával és futtatásával ka
 
 Egyetlen logikai alkalmazás definíciójának korlátai:
 
-| Name (Név) | Korlát | Jegyzetek |
+| Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
 | Műveletek munkafolyamatonként | 500 | A korlát meghosszabbításához szükség szerint beágyazott munkafolyamatokat adhat hozzá. |
 | Engedélyezett beágyazási mélység a műveletekhez | 8 | A korlát meghosszabbításához szükség szerint beágyazott munkafolyamatokat adhat hozzá. |
@@ -47,7 +47,7 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 
 Egyetlen logikai alkalmazás futtatásának korlátai:
 
-| Name (Név) | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Jegyzetek |
+| Name | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Jegyzetek |
 |------|--------------------|---------------------------------------|-------|
 | Futtatás időtartama | 90 nap | 366 nap | A futtatási időtartam kiszámítása a futtatási kezdési idő és a munkafolyamat-beállításban megadott korlát alapján történik, a [**futtatási Előzmények megőrzése napokban**](#change-duration) , a kezdés időpontjában. <p><p>Az alapértelmezett korlát módosításához tekintse meg a [futtatási időtartam és az előzmények megőrzésének módosítása a tárolóban](#change-duration)című témakört. |
 | Futtatási Előzmények megőrzése a tárolóban | 90 nap | 366 nap | Ha a Futtatás időtartama meghaladja a jelenlegi futtatási előzmények megőrzési korlátját, a rendszer eltávolítja a futtatást a tárolóban lévő futtatási előzményekből. Függetlenül attól, hogy fut-e a Futtatás vagy időtúllépés, a futtatási Előzmények megőrzése mindig a Futtatás kezdő időpontját és a munkafolyamat-beállításban megadott aktuális korlátot használja, a [**futtatási Előzmények megőrzése napokban**](#change-retention). Az előző korláttól függetlenül a rendszer mindig az aktuális korlátot használja a megőrzés kiszámításához. <p><p>Az alapértelmezett korlát módosításához és további információért lásd: az [időtartam módosítása és a futtatási Előzmények megőrzése a tárolóban](#change-retention). A maximális korlát növeléséhez [vegye fel a kapcsolatot az Logic apps csapatával](mailto://logicappsemail@microsoft.com) a követelményekkel kapcsolatos segítségért. |
@@ -112,7 +112,7 @@ Egyetlen logikai alkalmazás futtatásának korlátai:
 
 ### <a name="loops"></a>Hurkok
 
-| Name (Név) | Korlát | Jegyzetek |
+| Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
 | Foreach | 100.000 | Ez a korlát a "for each" ciklusban feldolgozható tömb elemeinek legnagyobb számát mutatja. <p><p>Nagyobb tömbök szűréséhez használhatja a [lekérdezési műveletet](logic-apps-perform-data-operations.md#filter-array-action). |
 | Foreach Egyidejűség | Egyidejűségtel kikapcsolva: 20 <p><p>Párhuzamosságtal: <p><p>– Alapértelmezett: 20 <br>– Min: 1 <br>-Max: 50 | Ez a korlát a "minden" hurok-iteráció esetében a legmagasabb szám, amely egyszerre vagy párhuzamosan futtatható. <p><p>Ha módosítani szeretné ezt a korlátot, tekintse meg az egyes ["párhuzamossági korlátok](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) és [futtatások](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)" módosítását egymás után. |
@@ -122,7 +122,7 @@ Egyetlen logikai alkalmazás futtatásának korlátai:
 
 ### <a name="concurrency-and-debatching"></a>Egyidejűség és letétel
 
-| Name (Név) | Korlát | Jegyzetek |
+| Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
 | Egyidejűség kiváltása | Párhuzamosságtal: korlátlan <p><p>A párhuzamossággal, amelyet a következő engedélyezése után nem lehet visszavonni: <p><p>– Alapértelmezett: 25 <br>– Min: 1 <br>-Max: 50 | Ez a korlát a logikai alkalmazások azon példányainak a legnagyobb száma, amelyek egyszerre vagy párhuzamosan futtathatók. <p><p>**Megjegyzés**: Ha a Egyidejűség be van kapcsolva, a SplitOn korlátja 100 elemre [csökken.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) <p><p>Ennek a korlátnak a módosításához lásd: [trigger párhuzamossági korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [példányok egymás utáni elindítása](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Várakozó futtatások maximális száma | Egyidejűségtel kikapcsolva: <p><p>– Min: 1 <br>-Max: 50 <p><p>Párhuzamosságtal: <p><p>-Min: 10, valamint az egyidejű futtatások (trigger Egyidejűség) száma <br>-Max: 100 | Ez a korlát a logikai alkalmazások azon példányainak a legnagyobb száma, amelyek a futtatásra várnak, ha a logikai alkalmazás már futtatja az egyidejű példányok maximális számát. <p><p>A korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)című témakört. |
@@ -137,7 +137,7 @@ Egyetlen logikai alkalmazás definíciójának korlátai:
 
 ### <a name="multi-tenant-logic-apps-service"></a>Több-bérlős Logic Apps szolgáltatás
 
-| Name (Név) | Korlát | Jegyzetek |
+| Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
 | Művelet: végrehajtások száma 5 percenként | 100 000 az alapértelmezett korlát, de a 300 000 a maximális korlát. | Ha az alapértelmezett korlátot a logikai alkalmazás maximális értékére szeretné emelni, tekintse meg az előzetes verzióban elérhető, [magas átviteli sebességű módban történő futtatást](#run-high-throughput-mode). Vagy [a számítási feladatok több logikai alkalmazásban is eloszthatók a](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) szükséges módon. |
 | Művelet: egyidejű kimenő hívások | ~2.500 | Csökkentheti az egyidejű kérések számát, vagy igény szerint csökkentheti az időtartamot. |
@@ -195,7 +195,7 @@ A logikai alkalmazás erőforrás-definíciójának részletes ismertetését az
 
 A [prémium ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)átviteli sebességének korlátai:
 
-| Name (Név) | Korlát | Jegyzetek |
+| Name | Korlát | Jegyzetek |
 |------|-------|-------|
 | Alapegység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Percenként ~ 4 000 művelet-végrehajtást biztosít, ami ~ 160 000 000 művelet-végrehajtás havonta | |
 | Skálázási egység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Minden egyes méretezési egység percenként 2 000 további művelet-végrehajtást biztosít, ami ~ 80 000 000 további műveletek végrehajtása havonta | |
@@ -225,7 +225,7 @@ Az alábbi korlátozások érvényesek egyetlen bejövő vagy kimenő hívásra:
 
 Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-kérelmeket, így a műveletek időtúllépése hosszabb lehet a határértéknél. További információkért tekintse meg az adott összekötő technikai részleteit, valamint a [munkafolyamat-eseményindítókat és műveleteket](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
-| Name (Név) | Logic Apps (több-bérlős) | Logic Apps (előzetes verzió) | Integrációs szolgáltatási környezet | Jegyzetek |
+| Name | Logic Apps (több-bérlős) | Logic Apps (előzetes verzió) | Integrációs szolgáltatási környezet | Jegyzetek |
 |------|---------------------------|----------------------|---------------------------------|-------|
 | Kimenő kérelem | 120 másodperc <br>(2 perc) | 230 másodperc <br>(3,9 perc) | 240 másodperc <br>(4 perc) | A kimenő kérelmekre például a HTTP-trigger vagy a művelet által kezdeményezett hívások tartoznak. További információ az előzetes verzióról: [Azure Logic apps Preview](logic-apps-overview-preview.md). <p><p>**Tipp**: a hosszú ideig futó műveletekhez használjon [aszinkron lekérdezési mintát](../logic-apps/logic-apps-create-api-app.md#async-pattern) vagy egy [ciklusig](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). Ha egy másik logikai alkalmazást hív meg, amely egy [meghívásos végponttal](logic-apps-http-endpoint.md)rendelkezik, az időkorlát korlátozásához használhatja a beépített Azure Logic apps műveletet, amelyet a **beépített összekötő-** választóban talál. |
 | Bejövő kérelem | 120 másodperc <br>(2 perc) | 230 másodperc <br>(3,9 perc) | 240 másodperc <br>(4 perc) | A bejövő kérésekre példák például a kérelem-trigger, a HTTP-webhook-trigger és a HTTP-webhook művelet által fogadott hívások. További információ az előzetes verzióról: [Azure Logic apps Preview](logic-apps-overview-preview.md). <p><p>**Megjegyzés**: ahhoz, hogy az eredeti hívó megkapja a választ, a válaszban szereplő összes lépésnek befejeznie kell a korláton belül, kivéve, ha egy másik logikai alkalmazást beágyazott munkafolyamatként hív meg. További információ: a [logikai alkalmazások hívása, triggere vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md). |
@@ -235,7 +235,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 #### <a name="message-size"></a>Üzenet mérete
 
-| Name (Név) | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Jegyzetek |
+| Name | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Jegyzetek |
 |------|--------------------|---------------------------------------|-------|
 | Üzenet mérete | 100 MB | 200 MB | A korlát megkerüléséhez lásd: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). Előfordulhat azonban, hogy egyes összekötők és API-k nem támogatják a darabolást, vagy akár az alapértelmezett korlátot is. <p><p>– Az AS2, a X12 és a EDIFACT összekötőhöz saját [B2B-üzenetek](#b2b-protocol-limits)tartoznak. <br>-Az ISE-összekötők az ISE-korlátot használják, nem a nem ISE-összekötő korlátait. |
 | Az üzenetek mérete darabolással | 1 GB | 5 GB | Ez a korlát olyan műveletekre vonatkozik, amelyek natív módon támogatják a darabolást, vagy lehetővé teszik a darabolást a futásidejű konfigurációjában. <p><p>Ha ISE-t használ, akkor a Logic Apps motor támogatja ezt a korlátot, az összekötők azonban a motor korlátján belül a saját darabolási korláttal rendelkeznek, például az [Azure Blob Storage-összekötő API-referenciája](/connectors/azureblob/)című témakörben talál. További információ a darabolásról: [nagy méretű üzenetek kezelése darabolással](../logic-apps/logic-apps-handle-large-messages.md). |
@@ -243,7 +243,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 #### <a name="character-limits"></a>Karakterek korlátai
 
-| Name (Név) | Jegyzetek |
+| Name | Jegyzetek |
 |------|-------|
 | Kifejezések kiértékelési korlátja | 131 072 karakter | A `@concat()` , `@base64()` a `@string()` kifejezés nem lehet hosszabb ennél a korlátnál. |
 | Kérelem URL-karakterének korlátja | 16 384 karakter |
@@ -253,7 +253,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 #### <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 
-| Name (Név) | Korlát | Jegyzetek |
+| Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
 | Újrapróbálkozási kísérletek | 90 | Az alapértelmezett érték 4. Az alapértelmezett érték módosításához használja az [újrapróbálkozási házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 | Újrapróbálkozások maximális késése | 1 nap | Az alapértelmezett érték módosításához használja az [újrapróbálkozási házirend paramétert](../logic-apps/logic-apps-workflow-actions-triggers.md). |
@@ -266,7 +266,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 Íme egy olyan logikai alkalmazás korlátai, amelyek egy kérelem-triggerrel kezdődnek, és lehetővé teszik [Azure Active Directory nyílt hitelesítés](../active-directory/develop/index.yml) (Azure ad OAuth) számára a bejövő hívások engedélyezését a kérelem-trigger számára:
 
-| Name (Név) | Korlát | Jegyzetek |
+| Name | Korlát | Jegyzetek |
 | ---- | ----- | ----- |
 | Azure AD-engedélyezési házirendek | 5 | |
 | Jogcímek engedélyezési házirend alapján | 10 | |
@@ -279,7 +279,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 A webes API-k által létrehozott egyéni összekötők korlátai.
 
-| Name (Név) | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Jegyzetek |
+| Name | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Jegyzetek |
 |------|--------------------|---------------------------------------|-------|
 | Egyéni összekötők száma | Azure-előfizetésenként 1000 | Azure-előfizetésenként 1000 ||
 | Kérelmek percenkénti száma egyéni összekötő esetén | 500 percenkénti kérelmek száma kapcsolatonként | 2 000 kérelem/perc/ *egyéni összekötő* ||
@@ -289,7 +289,7 @@ A webes API-k által létrehozott egyéni összekötők korlátai.
 
 ## <a name="managed-identities"></a>Felügyelt identitások
 
-| Name (Név) | Korlát |
+| Name | Korlát |
 |------|-------|
 | Felügyelt identitások/logikai alkalmazások | Vagy a rendszer által hozzárendelt identitás vagy 1 felhasználó által hozzárendelt identitás |
 | A felügyelt identitással rendelkező logikai alkalmazások száma régiónként | 1,000 |
@@ -305,12 +305,12 @@ Az egyes Azure-előfizetések az alábbi integrációs fiókra korlátozzák:
 
 * 1 000 összes integrációs fiók, beleértve az Integration [Service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) integrációs fiókjait mind a [fejlesztői, mind a prémium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-ban.
 
-* A [fejlesztőknek és a prémiumoknak](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)az összes ISE teljes számú integrációs fiókra korlátozódik, de [ezt a korlátot további díjakra is kiemelheti](logic-apps-pricing.md#fixed-pricing):
+* Minden ISE – akár [fejlesztő](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), akár prémium szintű – egyetlen integrációs fiókot használhat fel díjmentesen, bár a belefoglalt fiók típusa az ISE SKU-tól függ. Több integrációs fiókot is létrehozhat az ISE számára a [További díjak](logic-apps-pricing.md#fixed-pricing)teljes korlátja érdekében:
 
   | ISE SKU | Integrációs fiók korlátai |
   |---------|----------------------------|
-  | **Prémium** | 20 teljes [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) fiók, beleértve az ingyenes egy standard fiókot is. További [díjakért több integrációs fiók](logic-apps-pricing.md#fixed-pricing)is tartozhat. Ingyenes vagy alapszintű fiókok használata nem engedélyezett. |
-  | **Fejlesztő** | 20 összesen – [ingyenes](../logic-apps/logic-apps-pricing.md#integration-accounts) (legfeljebb 1 fiók) és [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) kombinált, vagy az összes standard fiók. További [díjakért több integrációs fiók](logic-apps-pricing.md#fixed-pricing)is tartozhat. Nem engedélyezett alapszintű fiók. A [fejlesztői SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) -t a kísérletezéshez, fejlesztéshez és teszteléshez használhatja, az éles környezetben való teszteléshez azonban nem. |
+  | **Prémium** | 20 teljes fiók, beleértve egy standard fiókot is, díjmentesen. Ezzel az SKU-val csak [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) fiókok használhatók. Ingyenes vagy alapszintű fiókok használata nem engedélyezett. |
+  | **Fejlesztő** | 20 teljes fiók, beleértve egy [ingyenes](../logic-apps/logic-apps-pricing.md#integration-accounts) fiókot (legfeljebb 1). Ezzel az SKU-val a következő kombinációk közül választhat: <p>– Ingyenes fiók és legfeljebb 19 [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) fiók. <br>-Ingyenes fiók és legfeljebb 20 standard fiók. <p>Nincs engedélyezve az alapszintű vagy további ingyenes fiókok használata. <p><p>**Fontos**: a [fejlesztői SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) -t a kísérletezéshez, fejlesztéshez és teszteléshez használja, az éles környezethez és a teljesítmény teszteléséhez azonban nem. |
   |||
 
 A ISEs díjszabásának és számlázásának megismeréséhez tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#fixed-pricing). A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).
@@ -319,8 +319,7 @@ A ISEs díjszabásának és számlázásának megismeréséhez tekintse meg a [L
 
 ### <a name="artifact-limits-per-integration-account"></a>Összetevők korlátai integrációs fiókban
 
-Az egyes integrációs fiókok szintjein található összetevők számának korlátai.
-A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/). Az integrációs fiókok díjszabásának és számlázásának megismeréséhez tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#integration-accounts).
+Az egyes integrációs fiókok szintjein található összetevők számának korlátai. A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/). Az integrációs fiókok díjszabásának és számlázásának megismeréséhez tekintse meg a [Logic apps díjszabási modelljét](../logic-apps/logic-apps-pricing.md#integration-accounts).
 
 > [!NOTE]
 > Az ingyenes szintet csak feltáró forgatókönyvek esetében használja, éles környezetben nem. Ez a szint korlátozza az átviteli sebességet és a használatot, és nem rendelkezik szolgáltatói szerződéssel (SLA).
@@ -365,7 +364,7 @@ A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.mic
 
 Itt láthatók a B2B protokollokra vonatkozó üzenetek mérete:
 
-| Name (Név) | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Jegyzetek |
+| Name | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Jegyzetek |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 – 100 MB<br>v1 – 25 MB | v2 – 200 MB <br>v1 – 25 MB | A dekódolásra és a kódolásra vonatkozik |
 | X12 | 50 MB | 50 MB | A dekódolásra és a kódolásra vonatkozik |

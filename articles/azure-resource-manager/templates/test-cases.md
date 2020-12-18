@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: ff9ad659e15a88725e4c3905ab6c623fda7610fd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600904"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674042"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Az ARM-sablon tesztelési eszközkészletének alapértelmezett tesztelési esetei
 
@@ -691,6 +691,7 @@ A következő példa **meghiúsul** , mert a kimenetben egy [List *](template-fu
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A tesztelési eszközkészlet futtatásáról további információt a [ARM-sablon tesztelési eszközkészletének használata](test-toolkit.md)című témakörben talál.
+- A tesztelési eszközkészlet futtatásáról további információt a [ARM-sablon tesztelési eszközkészletének használata](test-toolkit.md)című témakörben talál.
+- A tesztelési eszközkészlettel foglalkozó Microsoft Learn modul esetében tekintse meg az [előzetes verzió módosításait és az Azure-erőforrások érvényesítését a mi és az ARM template test Toolkit használatával](/learn/modules/arm-template-test/).

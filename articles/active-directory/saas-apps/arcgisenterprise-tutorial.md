@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 61920b7c5356b6e1fa5683ac0553060c85e256d3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f7578972b054747c75cdbbc2371fc0bf35c6039a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457809"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672559"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Oktatóanyag: Azure Active Directory integráció a ArcGIS Enterprise-nal
 
@@ -66,13 +66,13 @@ A ArcGIS Enterprise Azure AD-be való integrálásának konfigurálásához hozz
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **ArcGIS Enterprise**kifejezést, válassza a **ArcGIS Enterprise** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **ArcGIS Enterprise** kifejezést, válassza a **ArcGIS Enterprise** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![ArcGIS Enterprise az eredmények listájában](common/search-new-app.png)
+    ![ArcGIS Enterprise az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli az [alkalmazásnév] névvel a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli az [alkalmazásnév] névvel a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az [alkalmazásnév] kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -90,7 +90,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **ArcGIS Enterprise** Application Integration lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **ArcGIS Enterprise** Application Integration lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -125,7 +125,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>A ArcGIS Enterprise Single Sign-On konfigurálása
 
-1. A ArcGIS Enterprise-on belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A ArcGIS Enterprise-on belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -136,7 +136,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 1. Ha manuálisan szeretné beállítani a ArcGIS Enterprise-t, jelentkezzen be a ArcGIS Enterprise vállalati webhelyre rendszergazdaként.
 
 
-1. Válassza a **szervezet >beállítások szerkesztése**lehetőséget.
+1. Válassza a **szervezet >beállítások szerkesztése** lehetőséget.
 
     ![A képernyőképen a ArcGIS Enterprise Organization (vállalati szervezet) lap jelenik meg, amely a szerkesztési beállításokat tartalmazza.](./media/arcgisenterprise-tutorial/configure1.png)
 
@@ -144,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     ![Képernyőfelvétel: a Biztonság lap van kiválasztva.](./media/arcgisenterprise-tutorial/configure2.png)
 
-1. Görgessen le a **vállalati bejelentkezések SAML használatával** szakaszban, és válassza a **vállalati bejelentkezés beállítása**lehetőséget.
+1. Görgessen le a **vállalati bejelentkezések SAML használatával** szakaszban, és válassza a **vállalati bejelentkezés beállítása** lehetőséget.
 
     ![A képernyőképen a vállalati bejelentkezések az SAML-n keresztül láthatók, ahol kiválaszthatja a vállalati bejelentkezés beállítása lehetőséget.](./media/arcgisenterprise-tutorial/configure3.png)
 
@@ -157,16 +157,16 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
     b. Az **URL** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
 
     c. Kattintson a **Speciális beállítások megjelenítése** elemre, és másolja be az **entitás-azonosító** értékét, és illessze be az **azonosító** szövegmezőbe a **ArcGIS Enterprise domain és URLs** szakaszának Azure Portal.
-    
+
     ![Képernyőfelvétel: a D entitás beszerzése és az azonosítási szolgáltató frissítése.](./media/arcgisenterprise-tutorial/configure5.png)
 
-    d. Kattintson az **identitás-szolgáltató frissítése**elemre.
+    d. Kattintson az **identitás-szolgáltató frissítése** elemre.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -179,27 +179,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az ArcGIS Enterprise elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **ArcGIS Enterprise**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **ArcGIS Enterprise** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza a **ArcGIS Enterprise**elemet.
+2. Az alkalmazások listában írja be és válassza a **ArcGIS Enterprise** elemet.
 
     ![A ArcGIS Enterprise hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

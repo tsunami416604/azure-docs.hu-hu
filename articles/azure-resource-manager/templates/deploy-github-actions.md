@@ -4,12 +4,12 @@ description: Útmutatás Azure Resource Manager sablonok (ARM-sablonok) a GitHub
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: f8c669393d38d7af2af4f63f251740d8ad72edf7
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 4c1f59e9a18e7359ae543b0311baea0c2a4ab8d6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607303"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674332"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>ARM-sablonok üzembe helyezése GitHub-műveletek használatával
 
@@ -154,7 +154,10 @@ Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha az erőforráscsoport és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az első ARM-sablon létrehozása](./template-tutorial-create-first-template.md)
+
+> [!div class="nextstepaction"]
+> [A modul ismertetése: ARM-sablonok telepítésének automatizálása GitHub-műveletek használatával](/learn/modules/deploy-templates-command-line-github-actions/)

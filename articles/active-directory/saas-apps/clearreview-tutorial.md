@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: cc5a214d53441a5e1f30158a0264278b3cdc95a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e971b02fb87440d4833c2eeba8897143f97a20dd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455918"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Oktatóanyag: Azure Active Directory integráció egyértelmű áttekintéssel
 
@@ -64,13 +64,13 @@ Az egyértelmű áttekintés az Azure AD-be való integrálásának konfigurál�
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Clear Review**kifejezést, majd az alkalmazás hozzáadásához válassza az **Áttekintés** az eredményekből elemet, majd kattintson a **Hozzáadás** gombra.
+4. A keresőmezőbe írja be a **Clear Review** kifejezést, majd az alkalmazás hozzáadásához válassza az **Áttekintés** az eredményekből elemet, majd kattintson a **Hozzáadás** gombra.
 
-     ![Áttekintés törlése az eredmények listájában](common/search-new-app.png)
+    ![Áttekintés törlése az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését a **Britta Simon**nevű tesztelési felhasználó alapján, egyértelmű felülvizsgálattal végezheti el.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését a **Britta Simon** nevű tesztelési felhasználó alapján, egyértelmű felülvizsgálattal végezheti el.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat törlését kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az egyértelmű áttekintéssel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -88,7 +88,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)az alkalmazás-integráció **törlése** lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az alkalmazás-integráció **törlése** lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -117,13 +117,13 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon az [ügyfél-támogatási csoport egyértelmű áttekintése című csoporthoz](https://clearreview.com/contact/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az ellenőrző alkalmazás törlése az SAML-jogkivonatokat egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. Az alkalmazás törlése: a **NameIdentifier** a **User. mail**használatával kell leképezni, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútumok leképezését.
+6. Az ellenőrző alkalmazás törlése az SAML-jogkivonatokat egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName** leképezéssel van leképezve. Az alkalmazás törlése: a **NameIdentifier** a **User. mail** használatával kell leképezni, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútumok leképezését.
 
     ![A képernyőképen a szerkesztési ikonnal jelölt felhasználói attribútumok láthatók.](common/edit-attribute.png)
 
 7. A **felhasználói attribútumok & jogcímek** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    a. Kattintson a **név azonosító értékének**jobb oldalán található **Szerkesztés ikonra** .
+    a. Kattintson a **név azonosító értékének** jobb oldalán található **Szerkesztés ikonra** .
 
     ![Képernyőfelvétel: felhasználói attribútumok & jogcímek kijelölése a szerkesztési ikonnal.](./media/clearreview-tutorial/attribute02.png)
 
@@ -155,7 +155,7 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
 
     ![Képernyőfelvétel: a Clear felülvizsgálati portál és a rendszergazda kijelölése.](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. Az oldal alján található **integrációk** szakaszban kattintson az **egyes Sign-On beállításoktól**jobbra található **módosítás** gombra.
+3. Az oldal alján található **integrációk** szakaszban kattintson az **egyes Sign-On beállításoktól** jobbra található **módosítás** gombra.
 
     ![A képernyőképen az egyetlen Sign-On módosítás gomb látható.](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
@@ -177,7 +177,7 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -190,27 +190,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a törlési ellenőrzéshez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **felülvizsgálat törlése**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **felülvizsgálat törlése** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **Áttekintés törlése**elemet.
+2. Az alkalmazások listában válassza az **Áttekintés törlése** elemet.
 
     ![Az alkalmazások listájának Clear Review (áttekintés) hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

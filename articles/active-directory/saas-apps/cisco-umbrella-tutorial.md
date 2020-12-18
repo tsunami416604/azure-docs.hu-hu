@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ec2c0089295cdd269b5bb3bccf0baaef3cb14849
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dde618b28e004e87edc2783bc44c5e7dd9f0ebba
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456122"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Oktatóanyag: Azure Active Directory integráció a Cisco Umbrella-nal
 
@@ -61,13 +61,13 @@ A Cisco Umbrella Azure AD-be való integrálásának konfigurálásához hozzá 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Cisco Umbrella**kifejezést, válassza a **Cisco Umbrella** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Cisco Umbrella** kifejezést, válassza a **Cisco Umbrella** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![A Cisco Umbrella az eredmények listájában](common/search-new-app.png)
+    ![A Cisco Umbrella az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli az [alkalmazásnév] névvel a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli az [alkalmazásnév] névvel a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az [alkalmazásnév] kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Cisco Umbrella** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Cisco Umbrella** Application Integration oldalon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     a. Ha az alkalmazást **SP** intiated módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    b. Kattintson a **további URL-címek beállítása**elemre.
+    b. Kattintson a **további URL-címek beállítása** elemre.
 
     c. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet: `https://login.umbrella.com/sso`
 
@@ -125,15 +125,15 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
 1. Egy másik böngészőablakban jelentkezzen be a Cisco Umbrella vállalati webhelyre rendszergazdaként.
 
-2. A menü bal oldalán kattintson a **rendszergazda** elemre, és keresse meg a **hitelesítést** , majd kattintson az **SAML**elemre.
+2. A menü bal oldalán kattintson a **rendszergazda** elemre, és keresse meg a **hitelesítést** , majd kattintson az **SAML** elemre.
 
     ![A rendszergazda](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_admin.png)
 
-3. Válassza a **továbbiak** lehetőséget, majd kattintson a **tovább**gombra.
+3. Válassza a **továbbiak** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![A másik](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_other.png)
 
-4. A **Cisco Umbrella-metaadatok**lapon kattintson a **tovább**gombra.
+4. A **Cisco Umbrella-metaadatok** lapon kattintson a **tovább** gombra.
 
     ![A metaadatok](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_metadata.png)
 
@@ -141,21 +141,21 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     ![A következő](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-6. Az **a: fájl feltöltése XML-fájlban**töltse fel a Azure Portal letöltött **összevonási metaadatok XML-** fájlját, és a metaadatok feltöltése után az alábbi értékek automatikusan feltöltve értéket kapnak, majd kattintson a **tovább**gombra.
+6. Az **a: fájl feltöltése XML-fájlban** töltse fel a Azure Portal letöltött **összevonási metaadatok XML-** fájlját, és a metaadatok feltöltése után az alábbi értékek automatikusan feltöltve értéket kapnak, majd kattintson a **tovább** gombra.
 
     ![A choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
-7. Az **SAML-konfiguráció ellenőrzése** szakaszban kattintson **az SAML-konfiguráció tesztelése**elemre.
+7. Az **SAML-konfiguráció ellenőrzése** szakaszban kattintson **az SAML-konfiguráció tesztelése** elemre.
 
     ![A teszt](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_test.png)
 
-8. Kattintson a **Mentés**gombra.
+8. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -168,27 +168,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Cisco Umbrella elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Cisco Umbrella**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Cisco Umbrella** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza a **Cisco Umbrella**elemet.
+2. Az alkalmazások listában írja be és válassza a **Cisco Umbrella** elemet.
 
     ![A Cisco Umbrella-hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -211,7 +211,7 @@ A Cisco Umbrella esetében a kiépítés manuális feladat.
 
 1. Egy másik böngészőablakban jelentkezzen be a Cisco Umbrella vállalati webhelyre rendszergazdaként.
 
-2. A menü bal oldalán kattintson a **rendszergazda** lehetőségre, és navigáljon a **fiókok**elemre.
+2. A menü bal oldalán kattintson a **rendszergazda** lehetőségre, és navigáljon a **fiókok** elemre.
 
     ![A fiók](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_account.png)
 
@@ -221,17 +221,17 @@ A Cisco Umbrella esetében a kiépítés manuális feladat.
 
     a. Az Utónév mezőben adja meg a vezetéknév (például **Britta**) **nevet** .
 
-    b. A **vezetékneve** mezőben adja meg a (z) **Simon**nevet.
+    b. A **vezetékneve** mezőben adja meg a (z) **Simon** nevet.
 
-    c. A **delegált rendszergazdai szerepkör kiválasztása**lapon válassza ki a szerepkört.
-  
-    d. Az **e-mail-cím** mezőben adja meg a **brittasimon \@ contoso.com**felhasználóhoz hasonló felhasználói címet.
+    c. A **delegált rendszergazdai szerepkör kiválasztása** lapon válassza ki a szerepkört.
+
+    d. Az **e-mail-cím** mezőben adja meg a **brittasimon \@ contoso.com** felhasználóhoz hasonló felhasználói címet.
 
     e. A **jelszó** mezőbe írja be a jelszavát.
 
     f. A **Jelszó megerősítése** mezőbe írja be újra a jelszót.
 
-    : Kattintson a **Létrehozás**gombra.
+    : Kattintson a **Létrehozás** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

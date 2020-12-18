@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e5b9b9ba71412244d42204f6cad712b939d7c15
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 82f3a2dc7f43bd484d6a81efaa8d07f13b746d9e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318998"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671080"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Oktatóanyag: az AHA integrálása! Azure Active Directory
 
@@ -51,14 +51,14 @@ Az AHA integrációjának konfigurálásához! Az Azure AD-ben fel kell vennie a
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **aha!** a keresőmezőbe.
 1. Válassza az **aha lehetőséget!** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-aha"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az AHA-ben!
 
-Az Azure AD SSO konfigurálása és tesztelése az AHA-sel egy **B. Simon**nevű teszt felhasználó használata. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és az AHA-beli kapcsolódó felhasználó között.
+Az Azure AD SSO konfigurálása és tesztelése az AHA-sel egy **B. Simon** nevű teszt felhasználó használata. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és az AHA-beli kapcsolódó felhasználó között.
 
 Az Azure AD SSO az AHA használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -73,11 +73,11 @@ Az Azure AD SSO az AHA használatával történő konfigurálásához és teszte
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)az **aha!** az alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **aha!** az alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
@@ -100,25 +100,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
     1. A **Név** mezőbe írja a következőt: `B.Simon`.  
     1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-    1. Kattintson a **Létrehozás** lehetőségre.
+    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az AHA-hez való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza az **aha!** lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -128,7 +128,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-aha-sso"></a>Az AHA konfigurálása! SSO
 
-1. Az AHA-en belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. Az AHA-en belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -138,19 +138,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Ha az AHA-et szeretné beállítani! Nyisson meg manuálisan egy új böngészőablakot, és jelentkezzen be az AHA-be! vállalati webhely rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. A felső menüben kattintson a **Beállítások**elemre.
+4. A felső menüben kattintson a **Beállítások** elemre.
 
     ![Beállítások](./media/aha-tutorial/IC798950.png "Beállítások")
 
-5. Kattintson a **fiók**lehetőségre.
-  
+5. Kattintson a **fiók** lehetőségre.
+
     ![Profil](./media/aha-tutorial/IC798951.png "Profil")
 
-6. Kattintson **a biztonság és az egyszeri bejelentkezés**lehetőségre.
+6. Kattintson **a biztonság és az egyszeri bejelentkezés** lehetőségre.
 
     ![Képernyőkép a biztonsági és az egyszeri bejelentkezési menüpont kiemeléséhez.](./media/aha-tutorial/IC798952.png "Biztonság és egyszeri bejelentkezés")
 
-7. Az **egyszeri bejelentkezés** szakaszban, az identitás- **szolgáltató**területen válassza az **SAML 2.0**elemet.
+7. Az **egyszeri bejelentkezés** szakaszban, az identitás- **szolgáltató** területen válassza az **SAML 2.0** elemet.
 
     ![Biztonság és egyszeri bejelentkezés](./media/aha-tutorial/IC798953.png "Biztonság és egyszeri bejelentkezés")
 
@@ -160,9 +160,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     a. A **név** szövegmezőbe írja be a konfiguráció nevét.
 
-    b. A **használatával történő konfiguráláshoz**válassza a **metaadat-fájl**lehetőséget.
+    b. A **használatával történő konfiguráláshoz** válassza a **metaadat-fájl** lehetőséget.
 
-    c. A letöltött metaadat-fájl feltöltéséhez kattintson a **Tallózás**gombra.
+    c. A letöltött metaadat-fájl feltöltéséhez kattintson a **Tallózás** gombra.
 
     d. Kattintson a **Frissítés** parancsra.
 
@@ -178,8 +178,8 @@ Amikor rákattint az aha! csempe a hozzáférési panelen automatikusan be kell 
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)

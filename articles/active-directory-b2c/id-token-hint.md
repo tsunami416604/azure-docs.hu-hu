@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951655"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669159"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>AZONOSÍTÓ jogkivonat-útmutató technikai profiljának definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -34,12 +34,12 @@ A id_token_hint a jogkivonat kiállítója (egy függő entitás vagy egy identi
 
 A id_token_hintnak érvényes JWT-tokennek kell lennie. A következő táblázat felsorolja a kötelező jogcímeket. További jogcímek megadása nem kötelező.
 
-| Name | Jogcím | Példaérték | Leírás |
+| Name | Jogcím | Példaérték | Description |
 | ---- | ----- | ------------- | ----------- |
-| Célközönség | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Azonosítja a jogkivonat kívánt címzettjét. Ez egy tetszőleges karakterlánc, amelyet a jogkivonat kiállítója meghatároz. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
-| Kiállító | `iss` |`https://localhost` | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez a jogkivonat-kiállító által definiált tetszőleges URI. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
-| Lejárati idő | `exp` | `1600087315` | Az az idő, amikor a jogkivonat érvénytelenné válik, és ez a korszak időpontjában jelenik meg. Azure AD B2C nem érvényesíti ezt a jogcímet. |
-| Nem előtte | `nbf` | `1599482515` | Az az idő, amikor a jogkivonat érvényes lesz, és az időpontokban jelenik meg. Ez az idő általában megegyezik a jogkivonat kiadásának időpontjával. Azure AD B2C nem érvényesíti ezt a jogcímet. |
+| Célközönség | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Azonosítja a jogkivonat kívánt címzettjét. A célközönség a jogkivonat-kiállító által definiált tetszőleges karakterlánc. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
+| Kiállító | `iss` |`https://localhost` | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). A kiállító a jogkivonat-kiállító által definiált tetszőleges URI. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
+| Lejárati idő | `exp` | `1600087315` | Az az idő, amikor a jogkivonat érvénytelenné válik, és ez a korszak időpontjában jelenik meg. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha a jogkivonat lejárt.|
+| Nem előtte | `nbf` | `1599482515` | Az az idő, amikor a jogkivonat érvényes lesz, és az időpontokban jelenik meg. Ez az idő általában megegyezik a jogkivonat kiadásának időpontjával. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha a jogkivonat élettartama érvénytelen. |
 
  Az alábbi jogkivonat egy érvényes azonosító tokent mutat be:
 
@@ -84,16 +84,16 @@ A szimmetrikus kulcs használatakor a következő metaadatok érvényesek.
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| kiállító | Igen | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ennek az értéknek meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belül. | 
-| IdTokenAudience | Igen | Azonosítja a jogkivonat kívánt címzettjét. Azonosnak kell lennie a `aud` jogcímek JWT token jogcímével. | 
+| kiállító | Yes | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ennek az értéknek meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belül. | 
+| IdTokenAudience | Yes | Azonosítja a jogkivonat kívánt címzettjét. Meg kell egyeznie a `aud` jogcímek JWT-jogkivonat jogcímen belüli jogcímevel. | 
 
 Aszimmetrikus kulcs használata esetén a következő metaadatok érvényesek. 
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| METAADATOK| Igen | Egy olyan URL-cím, amely egy jogkivonat-kiállítói konfigurációs dokumentumra mutat, amely az OpenID Well-known Configuration Endpoint néven is ismert.   |
-| kiállító | Nem | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
-| IdTokenAudience | Nem | Azonosítja a jogkivonat kívánt címzettjét. Azonosnak kell lennie a `aud` jogcímek JWT token jogcímével. |  
+| METAADATOK| Yes | Egy olyan URL-cím, amely egy jogkivonat-kiállítói konfigurációs dokumentumra mutat, amely az OpenID Well-known Configuration Endpoint néven is ismert.   |
+| kiállító | No | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
+| IdTokenAudience | No | Azonosítja a jogkivonat kívánt címzettjét. Meg kell egyeznie a `aud` jogcímek JWT-jogkivonat jogcímen belüli jogcímevel. |  
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -101,7 +101,7 @@ Szimmetrikus kulcs használatakor a **CryptographicKeys** elem a következő att
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_secret | Igen | Az JWT-jogkivonat aláírásának ellenőrzéséhez használt kriptográfiai kulcs.|
+| client_secret | Yes | Az JWT-jogkivonat aláírásának ellenőrzéséhez használt kriptográfiai kulcs.|
 
 
 ## <a name="how-to-guide"></a>Útmutató
@@ -137,7 +137,7 @@ Ugyanazt a kulcsot kell létrehoznia, amelyet a jogkivonat-kiállító használ 
    Lehet, hogy az előtag `B2C_1A_` automatikusan hozzá lesz adva.
 1. A **titok** mezőben adja meg a korábban létrehozott bejelentkezési kulcsot.
 1. A **kulcshasználat** esetében használja a **titkosítást**.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Erősítse meg, hogy létrehozta a kulcsot `B2C_1A_IdTokenHintKey` .
 
 
@@ -272,7 +272,7 @@ A szimmetrikus és az aszimmetrikus megközelítés esetében a `id_token_hint` 
     </RelyingParty>
     ```
 
-Az üzleti igényektől függően szükség lehet a jogkivonat-érvényesítések hozzáadására, például a jogkivonat lejáratának ellenőrzéséhez, az e-mail-cím formátumához és egyebekhez. Ehhez vegyen fel egy, a [jogcím-átalakítással kapcsolatos technikai profilt](claims-transformation-technical-profile.md)meghívó előkészítési lépést. Vegyen fel egy [önjelölt technikai profilt](self-asserted-technical-profile.md) is, amely egy hibaüzenetet jelenít meg. 
+Az üzleti igényektől függően szükség lehet a jogkivonat-érvényesítések hozzáadására, például az e-mail-cím formátumának ellenőrzéséhez. Ehhez vegyen fel egy, a [jogcím-átalakítással kapcsolatos technikai profilt](claims-transformation-technical-profile.md)meghívó előkészítési lépést. Vegyen fel egy [önjelölt technikai profilt](self-asserted-technical-profile.md) is, amely egy hibaüzenetet jelenít meg. 
 
 ### <a name="create-and-sign-a-token"></a>Token létrehozása és aláírása
 

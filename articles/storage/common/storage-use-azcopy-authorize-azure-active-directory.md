@@ -4,15 +4,15 @@ description: Azure Active Directory (Azure AD) segítségével hitelesítő adat
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 12/17/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617408"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672491"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>A Blobok hozzáférésének engedélyezése a AzCopy és a Azure Active Directory (Azure AD) használatával
 
@@ -185,7 +185,9 @@ Cserélje le a `<path-to-certificate-file>` helyőrzőt a tanúsítványfájl re
 
 ## <a name="authorize-without-a-secret-store"></a>Engedélyezés titkos tároló nélkül
 
-Ha az operációs rendszer nem rendelkezik titkos tárolóval (például linuxos *kulcstartóval*), a `azcopy login` parancs nem fog működni. Ehelyett a memóriában tárolt környezeti változók is megadhatók az egyes műveletek futtatása előtt. 
+A `azcopy login` parancs lekérdez egy OAuth jogkivonatot, majd elhelyezi a tokent egy titkos tárolóban a rendszeren. Ha az operációs rendszer nem rendelkezik titkos tárolóval (például linuxos *kulcstartóval*), a `azcopy login` parancs nem fog működni, mert nincs hová helyezni a tokent. 
+
+A parancs használata helyett `azcopy login` a memóriában tárolt környezeti változók is megadhatók. Ezután futtasson bármilyen AzCopy-parancsot. A AzCopy lekéri a művelet végrehajtásához szükséges hitelesítési tokent. A művelet befejezése után a jogkivonat eltűnik a memóriából. 
 
 ### <a name="authorize-a-user-identity"></a>Felhasználói identitás engedélyezése
 
@@ -249,8 +251,6 @@ A változók beállítása után bármilyen azcopy parancsot futtathat (példáu
 
 ### <a name="authorize-a-service-principal"></a>Egyszerű szolgáltatásnév engedélyezése
 
-A szkript futtatása előtt legalább egy alkalommal be kell jelentkeznie, hogy AzCopy biztosítson az egyszerű szolgáltatásnév hitelesítő adataival.  Ezeket a hitelesítő adatokat egy biztonságos és titkosított fájlban tárolja a rendszer, így a parancsfájlnak nem kell megadnia a bizalmas adatokat.
-
 Bejelentkezhet a fiókjába egy ügyfél titkos kódjával vagy egy olyan tanúsítvány jelszavával, amely társítva van a szolgáltatásnév alkalmazásának regisztrálásához.
 
 #### <a name="authorize-a-service-principal-by-using-a-client-secret"></a>Egyszerű szolgáltatásnév engedélyezése az ügyfél titkos kódjának használatával
@@ -291,7 +291,7 @@ Cserélje le a `<path-to-certificate-file>` helyőrzőt a tanúsítványfájl re
 
 Ezután futtasson bármely azcopy-parancsot (például: `azcopy list https://contoso.blob.core.windows.net` ).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a AzCopy-ről: [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
 

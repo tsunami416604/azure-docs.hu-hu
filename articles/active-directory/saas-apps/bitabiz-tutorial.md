@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: f762f4d81a71296d306e181f7b30a2b93b9ab52c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f564032873be6e4c70426d48c4576371862ea35d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457146"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673609"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Oktatóanyag: Azure Active Directory integráció a BitaBIZ
 
@@ -61,13 +61,13 @@ A BitaBIZ Azure AD-be való integrálásának konfigurálásához hozzá kell ad
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **BitaBIZ**kifejezést, válassza a **BitaBIZ** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **BitaBIZ** kifejezést, válassza a **BitaBIZ** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![BitaBIZ az eredmények listájában](common/search-new-app.png)
+    ![BitaBIZ az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az BitaBIZ-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az BitaBIZ-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a BitaBIZ kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés BitaBIZ való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés BitaBIZ való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **BitaBIZ** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **BitaBIZ** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés BitaBIZ való konfigurálásához hajtsa vé
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a BitaBIZ-bérlőbe.
 
-2. Kattintson a **telepítési rendszergazda**elemre.
+2. Kattintson a **telepítési rendszergazda** elemre.
 
     ![Képernyőfelvétel: a böngészőablak egy részét jeleníti meg a beállítási rendszergazda kiválasztásával.](./media/bitabiz-tutorial/settings1.png)
 
@@ -160,7 +160,7 @@ Az Azure AD egyszeri bejelentkezés BitaBIZ való konfigurálásához hajtsa vé
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -173,27 +173,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a BitaBIZ hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **BitaBIZ**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **BitaBIZ** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **BitaBIZ**lehetőséget.
+2. Az alkalmazások listában válassza a **BitaBIZ** lehetőséget.
 
     ![Az BitaBIZ hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -216,7 +216,7 @@ BitaBIZ esetén a kiépítés manuális feladat.
 
 1. Jelentkezzen be a BitaBIZ vállalati webhelyre rendszergazdaként.
 
-2. Kattintson a **telepítési rendszergazda**elemre.
+2. Kattintson a **telepítési rendszergazda** elemre.
 
     ![A képernyőfelvétel a böngészőablak egy részét jeleníti meg a beállítási rendszergazda kiválasztásával.](./media/bitabiz-tutorial/settings1.png)
 
@@ -224,7 +224,7 @@ BitaBIZ esetén a kiépítés manuális feladat.
 
     ![Képernyőfelvétel: a szervezet szakasza, ahol a felhasználók hozzáadása lehetőség be van jelölve.](./media/bitabiz-tutorial/user1.png)
 
-4. Kattintson az **új alkalmazott hozzáadása**lehetőségre.
+4. Kattintson az **új alkalmazott hozzáadása** lehetőségre.
 
     ![Képernyőfelvétel: felhasználók hozzáadása a kiválasztott új alkalmazott hozzáadásával.](./media/bitabiz-tutorial/user2.png)
 
@@ -242,7 +242,7 @@ BitaBIZ esetén a kiépítés manuális feladat.
 
     e. Más nem kötelező felhasználói attribútumok is megadhatók a felhasználó számára. További részletekért tekintse meg az [alkalmazott beállítási dokumentációját](https://help.bitabiz.dk/manage-or-set-up-your-account/on-boarding-employees/new-employee) .
 
-    f. Kattintson az **alkalmazott mentése**gombra.
+    f. Kattintson az **alkalmazott mentése** gombra.
 
     > [!NOTE]
     > A Azure Active Directory fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követve megerősíti a fiókját, mielőtt az aktívvá válna.

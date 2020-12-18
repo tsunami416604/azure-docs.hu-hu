@@ -1,42 +1,47 @@
 ---
-title: Több erőforrás lekérdezése az Azure Adatkezelő használatával Azure Monitor
-description: A Azure Monitor használatával több terméket érintő lekérdezéseket hajthat végre az Azure Adatkezelő, Log Analytics munkaterületek és a klasszikus Application Insights alkalmazások között Azure Monitorban.
+title: Több erőforrás lekérdezése az Azure Adatkezelő Azure Monitor használatával
+description: A Azure Monitor az Azure Adatkezelő, Log Analytics munkaterületek és a klasszikus Application Insights alkalmazások közötti, Azure Monitor-alapú lekérdezések végrehajtásához használható.
 author: orens
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 5cb2f7b3b07c20e09d61e97412bc35f03b15cb3b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: cb586d15e762f88620fe0c91152af41b3f607d74
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572150"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674429"
 ---
-# <a name="cross-resource-query-azure-data-explorer-using-azure-monitor"></a>Több erőforrás lekérdezése az Azure Adatkezelő használatával Azure Monitor
-Azure Monitor támogatja az Azure Adatkezelő, a [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)és a [log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs)közötti több szolgáltatás lekérdezését. Ezután lekérdezheti az Azure Adatkezelő-fürtöt Log Analytics/Application Insights eszközök használatával, és megtekintheti azt egy több szolgáltatásból álló lekérdezésben. A cikk bemutatja, hogyan végezheti el a több szolgáltatás lekérdezését.
+# <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Több erőforrás lekérdezése az Azure Adatkezelő Azure Monitor használatával
+Azure Monitor támogatja az Azure Adatkezelő, a [Application Insights](/azure/azure-monitor/app/app-insights-overview)és a [log Analytics](/azure/azure-monitor/platform/data-platform-logs)közötti szolgáltatások közötti lekérdezéseket. Ezután lekérdezheti az Azure Adatkezelő-fürtöt Log Analytics-vagy Application Insights-eszközök használatával, és megtekintheti azt egy több szolgáltatásból álló lekérdezésben. A cikk bemutatja, hogyan végezheti el a szolgáltatások közötti lekérdezést.
 
-A Azure Monitor Cross Service flow: az :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Azure monitor és az azure adatkezelő a szolgáltatások közötti folyamat.":::
+Az alábbi ábrán a Azure Monitor szolgáltatások közötti folyamat látható:
+
+:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="A felhasználó, a Azure Monitor, a proxy és az Azure Adatkezelő közötti lekérdezések folyamatát ábrázoló diagram.":::
 
 >[!NOTE]
->* Azure Monitor a több szolgáltatás lekérdezése privát előzetes verzióban érhető el – a AllowListing megadása kötelező.
->* Forduljon a [szolgáltatásért felelős csapathoz](mailto:ADXProxy@microsoft.com) bármilyen kérdéssel.
-## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Több lekérdezés Log Analytics vagy Application Insights erőforrások és az Azure Adatkezelő
+> Azure Monitor a szolgáltatások közötti lekérdezés privát előzetes verzióban érhető el. A Allowlisting megadása kötelező. Forduljon a [szolgáltatásért felelős csapathoz](mailto:ADXProxy@microsoft.com) bármilyen kérdéssel.
 
-A Kusto-lekérdezéseket támogató ügyféleszközök (például: Log Analytics webes felhasználói felület, munkafüzetek, PowerShell, REST API stb.) segítségével futtathat több erőforrás-lekérdezést.
+## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Log Analytics vagy Application Insights erőforrásainak és az Azure-nak a lekérdezése Adatkezelő
 
-* Adja meg egy Azure Adatkezelő-fürt azonosítóját egy lekérdezésben a "ADX" mintán belül, majd az adatbázis neve és táblázata alapján.
+Az Kusto-lekérdezéseket támogató ügyféleszközök használatával több erőforrásra kiterjedő lekérdezéseket is futtathat. Ilyen eszközök például a Log Analytics webes felhasználói felület, a munkafüzetek, a PowerShell és a REST API.
+
+Adja meg egy Azure Adatkezelő-fürt azonosítóját a mintában lévő lekérdezésben `adx` , majd az adatbázis neve és táblázata alapján.
 
 ```kusto
 adx('https://help.kusto.windows.net/Samples').StormEvents
 ```
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-cross-service-query-example.png" alt-text="Több szolgáltatás lekérdezése – példa.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-cross-service-query-example.png" alt-text="Képernyőkép, amely egy több szolgáltatásból álló lekérdezésre mutat példát.":::
 
 > [!NOTE]
 >* Az adatbázisok nevei megkülönböztetik a kis-és nagybetűket.
->* A több erőforrás lekérdezése riasztásként nem támogatott.
-## <a name="combining-azure-data-explorer-cluster-tables-using-union-and-join-with-la-workspace"></a>Az Azure Adatkezelő-fürtcsomópontok (Union és JOIN) és az LA Workspace együttes használata.
+>* A riasztások közötti erőforrás-lekérdezés nem támogatott.
+
+## <a name="combine-azure-data-explorer-cluster-tables-with-a-log-analytics-workspace"></a>Az Azure Adatkezelő-fürt tábláinak egyesítése Log Analytics-munkaterülettel
+
+A `union` paranccsal egyesítheti log Analytics munkaterülettel a fürtözött táblákat.
 
 ```kusto
 union customEvents, adx('https://help.kusto.windows.net/Samples').StormEvents
@@ -46,23 +51,27 @@ union customEvents, adx('https://help.kusto.windows.net/Samples').StormEvents
 let CL1 = adx('https://help.kusto.windows.net/Samples').StormEvents;
 union customEvents, CL1 | take 10
 ```
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-union-cross-query.png" alt-text="Több szolgáltatással végzett lekérdezés – példa az Unióval.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-union-cross-query.png" alt-text="Képernyőkép, amely a Union paranccsal egy több szolgáltatásra kiterjedő lekérdezési példát mutat be.":::
 
->[!Tip]
->* A Gyorsírás formátuma megengedett – ClusterName/InitialCatalog. Például a ADX (' Help/Samples ') le van fordítva a ADX (' Help. kusto. Windows. net/Samples ')
+> [!Tip]
+> A Gyorsírás formátuma engedélyezett: *ClusterName* / *InitialCatalog*. Például a `adx('help/Samples')` fordítása: `adx('help.kusto.windows.net/Samples')` .
+
 ## <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Adatok csatlakoztatása Azure Adatkezelő-fürtből egyik bérlőn egy másik Azure Monitor erőforrással
 
-A szolgáltatások közötti több-bérlős lekérdezések nem támogatottak. Egyetlen bérlőbe jelentkezett be a lekérdezés mindkét erőforrásra kiterjedő futtatásához.
+A szolgáltatások közötti több-bérlős lekérdezések nem támogatottak. Be van jelentkezve egyetlen bérlőbe a mindkét erőforrást átívelő lekérdezés futtatásához.
 
-Ha az Azure Adatkezelő erőforrás az "A" Bérlőben található, és Log Analytics munkaterület a "B" Bérlőben található, használja a következő két módszer egyikét:
+Ha az Azure Adatkezelő erőforrás az A bérlőn található, és a Log Analytics munkaterület a B bérlőn található, használja az alábbi módszerek egyikét:
 
-*  Az Azure Adatkezelő lehetővé teszi szerepkörök hozzáadását a különböző bérlők résztvevői számára. Adja hozzá felhasználói AZONOSÍTÓját a (z) B Bérlőben az Azure Adatkezelő-fürtön lévő meghatalmazott felhasználóként. Ellenőrizze, hogy az Azure Adatkezelő-fürt *["TrustedExternalTenant"](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* tulajdonsága tartalmazza-e a "B" bérlőt. Futtassa a teljes kereszt-lekérdezést a (z) "B" Bérlőben.
-*  A [világítótorony](https://docs.microsoft.com/azure/lighthouse/) használatával a Azure monitor-erőforrást az "a" bérlőhöz tervezheti.
+*  Az Azure Adatkezelő lehetővé teszi szerepkörök hozzáadását a különböző bérlők résztvevői számára. Adja hozzá a saját felhasználói AZONOSÍTÓját a B bérlőhöz egy meghatalmazott felhasználóként az Azure Adatkezelő-fürtön. Ellenőrizze, hogy az Azure Adatkezelő-fürt [TrustedExternalTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) tulajdonsága tartalmazza-e a B bérlőt. a teljes lekérdezést futtassa a b bérlőn.
+*  A [világítótorony](https://docs.microsoft.com/azure/lighthouse/) használatával a Azure monitor-erőforrást az a bérlőhöz tervezheti.
+
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Kapcsolódás Azure Adatkezelő-fürtökhöz különböző bérlők között
 
-A Kusto Explorer automatikusan aláírja azt a bérlőt, amelyhez a felhasználói fiók eredetileg tartozik. Ha a többi bérlő erőforrásait ugyanazzal a felhasználói fiókkal szeretné elérni, `tenantId` explicit módon meg kell adni azt a kapcsolati karakterláncban: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=` **TenantId**
+A Kusto Explorer automatikusan bejelentkezik arra a bérlőre, amelyhez a felhasználói fiók eredetileg tartozik. Ha más bérlők erőforrásait ugyanazzal a felhasználói fiókkal szeretné elérni, explicit módon meg kell adnia `TenantId` a kapcsolati karakterláncot:
 
-## <a name="next-steps"></a>További lépések
-* [Írási lekérdezések](https://docs.microsoft.com/azure/data-explorer/write-queries)
-* [Azure Monitor lekérdezése az Azure-Adatkezelő használatával](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
+`Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
+
+## <a name="next-steps"></a>Következő lépések
+* [Lekérdezések írása](https://docs.microsoft.com/azure/data-explorer/write-queries)
+* [Azure Monitor lekérdezése az Azure Adatkezelő használatával](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
 * [Erőforrás-naplózási lekérdezések végrehajtása Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)

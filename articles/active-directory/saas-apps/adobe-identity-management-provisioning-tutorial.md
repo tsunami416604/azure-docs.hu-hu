@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: a87a08db672c459138fc1efd865332dc0f19944e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586659"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673300"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>Oktatóanyag: az Adobe Identity Management konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -57,15 +57,15 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 2. Kattintson a **szinkronizálás hozzáadása** lehetőségre.
 
-      ![Hozzáadás](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
+    ![Hozzáadás](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
 
 3. Válassza **a felhasználók szinkronizálása Microsoft Azure** lehetőséget, majd kattintson a **tovább** gombra.
 
-      ![Képernyőfelvétel: a "felhasználók szinkronizálása Microsoft Azure Active Directory" beállítás látható.](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+    ![Képernyőfelvétel: a "felhasználók szinkronizálása Microsoft Azure Active Directory" beállítás látható.](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. Másolja és mentse a **bérlői URL-címet** és a **titkos jogkivonatot**. Ezek az értékek a **bérlői URL-cím** és a **titkos jogkivonat** mezőiben jelennek meg az Adobe Identity Management alkalmazás üzembe helyezés lapján a Azure Portal.
 
-      ![Sync](media/adobe-identity-management-provisioning-tutorial/token.png)
+    ![Sync](media/adobe-identity-management-provisioning-tutorial/token.png)
 
 ## <a name="step-3-add-adobe-identity-management-from-the-azure-ad-application-gallery"></a>3. lépés Adobe Identity Management hozzáadása az Azure AD Application Galleryből
 

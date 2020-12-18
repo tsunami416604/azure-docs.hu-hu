@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: 54cc31cdb0ddc7694568d60b1446f1cf99663e95
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 26289f6bdfa086708548d17125a6dfdf50b02a8f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616626"
+ms.locfileid: "97665165"
 ---
-## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású létrehozása (Citus)
+## <a name="create-a-hyperscale-citus-server-group"></a>Rugalmas skálázási (Citus) kiszolgálócsoport létrehozása
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 

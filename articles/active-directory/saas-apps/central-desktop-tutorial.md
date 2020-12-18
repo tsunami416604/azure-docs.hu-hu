@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 321c6bf52f4dac636f6bebb3a79d3a206c2ea11b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 36ba61c86082e191831c2c890de4466181f1a4db
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456432"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Oktatóanyag: Azure Active Directory integráció a központi asztallal
 
@@ -61,13 +61,13 @@ A központi asztal Azure AD-integrációjának konfigurálásához hozzá kell a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **központi asztal**kifejezést, válassza a **központi asztal** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **központi asztal** kifejezést, válassza a **központi asztal** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Központi asztal az eredmények listájában](common/search-new-app.png)
+    ![Központi asztal az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a központi asztallal a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a központi asztallal a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a központi asztal kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés központi asztallal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a központi asztallal való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **központi asztali** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **központi asztali** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -104,7 +104,7 @@ Az Azure AD egyszeri bejelentkezés a központi asztallal való konfigurálásá
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.centraldesktop.com`
 
     b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:
-    
+
     ```http
     https://<companyname>.centraldesktop.com/saml2-metadata.php
     https://<companyname>.imeetcentral.com/saml2-metadata.php
@@ -133,7 +133,7 @@ Az Azure AD egyszeri bejelentkezés a központi asztallal való konfigurálásá
 
 1. Jelentkezzen be a **központi asztali** bérlőbe.
 
-2. Válassza a **Beállítások lehetőséget**. Válassza a **speciális**lehetőséget, majd az **egyszeri bejelentkezés**lehetőséget.
+2. Válassza a **Beállítások lehetőséget**. Válassza a **speciális** lehetőséget, majd az **egyszeri bejelentkezés** lehetőséget.
 
     ![Beállítás – speciális](./media/central-desktop-tutorial/ic769563.png "Beállítás – speciális")
 
@@ -141,7 +141,7 @@ Az Azure AD egyszeri bejelentkezés a központi asztallal való konfigurálásá
 
     ![Egyszeri bejelentkezési beállítások](./media/central-desktop-tutorial/ic769564.png "Egyszeri bejelentkezés beállításai")
 
-    a. Válassza **az SAML v2 egyszeri bejelentkezés engedélyezése**lehetőséget.
+    a. Válassza **az SAML v2 egyszeri bejelentkezés engedélyezése** lehetőséget.
 
     b. Az **egyszeri bejelentkezési URL-cím** mezőben illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
@@ -152,14 +152,14 @@ Az Azure AD egyszeri bejelentkezés a központi asztallal való konfigurálásá
 4. Az **üzenet aláírása ellenőrzési módszer** szakaszban hajtsa végre a következő lépéseket:
 
     ![Üzenet-aláírás ellenőrzési módszere](./media/central-desktop-tutorial/ic769565.png "Üzenet-aláírás ellenőrzési módszere")
-    
+
     a. Válassza a **Tanúsítvány** elemet.
 
-    b. Az **SSO-tanúsítvány** listában válassza az **rsh sha256**elemet.
+    b. Az **SSO-tanúsítvány** listában válassza az **rsh sha256** elemet.
 
     c. Nyissa meg a letöltött tanúsítványt a Jegyzettömbben. Ezután másolja be a tanúsítvány tartalmát, és illessze be az **SSO-tanúsítvány** mezőbe.
 
-    d. Válassza **a SAMLv2-bejelentkezési oldal hivatkozásának megjelenítése**lehetőséget.
+    d. Válassza **a SAMLv2-bejelentkezési oldal hivatkozásának megjelenítése** lehetőséget.
 
     e. Válassza a **Frissítés** lehetőséget.
 
@@ -167,7 +167,7 @@ Az Azure AD egyszeri bejelentkezés a központi asztallal való konfigurálásá
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -180,27 +180,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a központi asztalhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **központi asztal**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **központi asztal** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **központi asztal**elemet.
+2. Az alkalmazások listában válassza a **központi asztal** elemet.
 
     ![A központi asztal hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -225,18 +225,18 @@ Ahhoz, hogy az Azure AD-felhasználók be tudják jelentkezni, a központi aszta
 
 1. Jelentkezzen be a központi asztali bérlőbe.
 
-2. Válassza a **személyek** lehetőséget, majd válassza a **belső Tagok hozzáadása**lehetőséget.
+2. Válassza a **személyek** lehetőséget, majd válassza a **belső Tagok hozzáadása** lehetőséget.
 
     ![People](./media/central-desktop-tutorial/ic781051.png "People")
 
-3. Az **új tagok E-mail címe** mezőbe írja be a kiépíteni kívánt Azure ad-fiókot, majd kattintson a **tovább**gombra.
+3. Az **új tagok E-mail címe** mezőbe írja be a kiépíteni kívánt Azure ad-fiókot, majd kattintson a **tovább** gombra.
 
     ![Új tagok e-mail-címei](./media/central-desktop-tutorial/ic781052.png "Új tagok e-mail-címei")
 
-4. Válassza a **belső tag (ok) hozzáadása**lehetőséget.
+4. Válassza a **belső tag (ok) hozzáadása** lehetőséget.
 
     ![Belső tag hozzáadása](./media/central-desktop-tutorial/ic781053.png "Belső tag hozzáadása")
-  
+
    > [!NOTE]
    > A hozzáadott felhasználók egy e-mailt kapnak, amely tartalmazza a fiókjuk aktiválásához szükséges megerősítési hivatkozást.
 

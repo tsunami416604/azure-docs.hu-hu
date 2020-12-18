@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0d8b90e18865afeb5cb0c171d21c89d7c6e932f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654285"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669227"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Salesforce-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -39,7 +39,9 @@ ms.locfileid: "97654285"
 
 Ha Azure Active Directory B2C (Azure AD B2C) Salesforce-fiókot szeretne használni, létre kell hoznia egy alkalmazást a Salesforce **app Managerben**. További információ: az [alapszintű csatlakoztatott alkalmazások beállításainak konfigurálása](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)és [az OAuth-beállítások engedélyezése az API-integrációhoz](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
-1. A **telepítőből** írja be az **alkalmazások** elemet a **gyors keresés** mezőbe, és válassza az **app Manager** lehetőséget.
+1. [Jelentkezzen be a Salesforce](https://login.salesforce.com/).
+1. A menüben válassza a **telepítés** lehetőséget.
+1.  Bontsa ki az **alkalmazások** csomópontot, majd válassza az **app Manager** lehetőséget.
 1. Válassza az **új csatlakoztatott alkalmazás** lehetőséget.
 1. Az **alapszintű információ** területen adja meg a következőket:
     1. **Csatlakoztatott alkalmazás neve** – a csatlakoztatott alkalmazás neve megjelenik az App Managerben és az App Launcher csempén. A névnek egyedinek kell lennie a szervezeten belül. 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 36d6d40b471edb20f2e4294a4ba29323fac2ebc6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8010bf25cc62d2de1b8b6ff9c0ecdc140c02c6a3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457486"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Oktatóanyag: Azure Active Directory integráció az autotask munkahellyel
 
@@ -65,13 +65,13 @@ Az autotask munkahely az Azure AD-be való integrálásának konfigurálásához
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **autotask munkahely**kifejezést, válassza az **autotask munkahely** lehetőséget az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **autotask munkahely** kifejezést, válassza az **autotask munkahely** lehetőséget az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az autotask munkaterülete az eredmények listájában](common/search-new-app.png)
+    ![Az autotask munkaterülete az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az autotask munkaterülettel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az autotask munkaterülettel konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az automatikus feladat-munkaterületen lévő kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés autotask munkahellyel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -89,7 +89,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés autotask munkahellyel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/)az **autotask munkahely** -integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/)az **autotask munkahely** -integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -145,13 +145,13 @@ Az Azure AD egyszeri bejelentkezés autotask munkahellyel való konfigurálásá
 
     a. Válassza ki az **XML-metaadatok fájlját** , majd töltse fel a letöltött **összevonási metaadatok XML** -t a Azure Portalból.
 
-    b. Kattintson az **egyszeri bejelentkezés engedélyezése**lehetőségre.
+    b. Kattintson az **egyszeri bejelentkezés engedélyezése** lehetőségre.
 
     ![Automatikus feladat egyszeri bejelentkezésének jóváhagyása](./media/autotaskworkplace-tutorial/tutorial_autotaskssoconfig2.png)
 
     c. Jelölje be a **megerősítem ezt az információt jelölőnégyzetet, és bízom benne, hogy ez a identitásszolgáltató** .
 
-    d. Kattintson a **jóváhagyás**gombra.
+    d. Kattintson a **jóváhagyás** gombra.
 
 > [!Note]
 > Ha segítségre van szüksége az autotask munkahely konfigurálásához, tekintse meg [ezt a lapot](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) , és kérjen segítséget a munkahelyi fiókjával.
@@ -160,7 +160,7 @@ Az Azure AD egyszeri bejelentkezés autotask munkahellyel való konfigurálásá
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -173,27 +173,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az autotask munkahely elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **autotask munkahely**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **autotask munkahely** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **autotask munkahely**elemet.
+2. Az alkalmazások listában válassza az **autotask munkahely** elemet.
 
     ![Az automatikus feladat munkaterületre mutató hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

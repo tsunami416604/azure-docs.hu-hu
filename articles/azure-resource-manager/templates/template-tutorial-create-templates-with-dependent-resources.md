@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1e5848e568f42fb8a77c65c775962f27a5a03df
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a77f64e51a26e1f916f9f96704c55412a870a509
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588036"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673936"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Oktatóanyag: ARM-sablonok létrehozása függő erőforrásokkal
 
@@ -28,6 +28,8 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * A sablon üzembe helyezése
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+
+Az erőforrás-függőségeket lefedi Microsoft Learn modul esetében lásd: [összetett Felhőbeli központi telepítések kezelése speciális ARM-sablonok használatával](/learn/modules/manage-deployments-advanced-arm-template-features/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

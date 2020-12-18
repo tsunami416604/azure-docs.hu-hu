@@ -2,13 +2,13 @@
 title: Erőforrások telepítési sorrendjének beállítása
 description: Ismerteti, hogyan lehet egy erőforrást egy másik erőforrástól függőként beállítani az üzembe helyezés során, hogy az erőforrások megfelelően legyenek telepítve a megfelelő sorrendben.
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 933764f1930bd6c9e21d4ccffbde1bb93bbc9613
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85255211"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672814"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Erőforrások üzembe helyezési sorrendjének meghatározása ARM-sablonokban
 
@@ -40,7 +40,7 @@ Az alábbi példa egy virtuálisgép-méretezési készletet mutat be, amely egy
 }
 ```
 
-Az előző példában egy **storageLoop**nevű másolási hurokon keresztül létrehozott erőforrások függősége szerepel. Példaként tekintse meg az [erőforrások több példányának létrehozása a Azure Resource Managerban](copy-resources.md)című témakört.
+Az előző példában egy **storageLoop** nevű másolási hurokon keresztül létrehozott erőforrások függősége szerepel. Példaként tekintse meg az [erőforrások több példányának létrehozása a Azure Resource Managerban](copy-resources.md)című témakört.
 
 A függőségek meghatározásakor belefoglalhatja az erőforrás-szolgáltatói névteret és az erőforrástípust is a kétértelműség elkerülése érdekében. Például egy olyan terheléselosztó és virtuális hálózat tisztázásához, amelynek neve azonos a többi erőforrás nevével, használja a következő formátumot:
 
@@ -57,7 +57,7 @@ Habár előfordulhat, hogy a dependsOn használatával leképezi az erőforráso
 
 Az erőforrások tulajdonság lehetővé teszi a definiált erőforráshoz kapcsolódó alárendelt erőforrások megadását. A gyermek erőforrások csak öt szint mélységben adhatók meg. Fontos megjegyezni, hogy egy implicit telepítési függőség nem jön létre egy alárendelt erőforrás és a fölérendelt erőforrás között. Ha a szülő erőforrás után telepíteni kell a gyermek erőforrást, explicit módon meg kell határoznia, hogy a dependsOn tulajdonságtól függ.
 
-Minden szülő erőforrás csak bizonyos típusú erőforrásokat fogad el alárendelt erőforrásként. Az elfogadott erőforrástípusok a szülő erőforrás [sablon sémájában](https://github.com/Azure/azure-resource-manager-schemas) vannak megadva. A gyermek erőforrástípus neve tartalmazza a szülő erőforrástípus nevét, például a **Microsoft. Web/Sites/config** és a **Microsoft. Web/Sites/Extensions** is a **Microsoft. Web/Sites**alárendelt erőforrásai.
+Minden szülő erőforrás csak bizonyos típusú erőforrásokat fogad el alárendelt erőforrásként. Az elfogadott erőforrástípusok a szülő erőforrás [sablon sémájában](https://github.com/Azure/azure-resource-manager-schemas) vannak megadva. A gyermek erőforrástípus neve tartalmazza a szülő erőforrástípus nevét, például a **Microsoft. Web/Sites/config** és a **Microsoft. Web/Sites/Extensions** is a **Microsoft. Web/Sites** alárendelt erőforrásai.
 
 Az alábbi példa egy logikai SQL Servert és adatbázist mutat be. Figyelje meg, hogy az adatbázis és a kiszolgáló között explicit függőség van meghatározva annak ellenére, hogy az adatbázis a kiszolgáló gyermeke.
 
@@ -147,9 +147,10 @@ A Resource Manager körkörös függőségeket azonosít a sablon érvényesít�
 
 További információ a telepítési sorrend kiértékeléséről és a függőségi hibák megoldásáról: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](common-deployment-errors.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az oktatóanyag lépéseinek megismeréséhez tekintse meg az [oktatóanyag: Azure Resource Manager sablonok létrehozása függő erőforrásokkal](template-tutorial-create-templates-with-dependent-resources.md)című témakört.
+* Az erőforrás-függőségeket lefedi Microsoft Learn modul esetében lásd: [összetett Felhőbeli központi telepítések kezelése speciális ARM-sablonok használatával](/learn/modules/manage-deployments-advanced-arm-template-features/).
 * A függőségek beállításával kapcsolatos javaslatokért lásd: [Azure Resource Manager sablon ajánlott eljárásai](template-best-practices.md).
 * Az üzembe helyezés során felmerülő hibák elhárításáról további információt [Az Azure telepítési hibáinak elhárítása a Azure Resource Manager](common-deployment-errors.md)használatával című témakörben talál.
 * Azure Resource Manager sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [sablonok készítése](template-syntax.md).
