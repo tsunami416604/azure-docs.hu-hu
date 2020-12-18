@@ -1,21 +1,21 @@
 ---
-title: Csempe réteg hozzáadása térképhez a Azure Maps Android SDK használatával
-description: Megtudhatja, hogyan adhat hozzá egy csempe réteget egy térképhez. Egy olyan példát láthat, amely a Microsoft Azure Maps Android SDK-t használja az időjárási radar átfedések térképhez való hozzáadásához.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 04/26/2019
-ms.topic: how-to
+title: Csempe réteg hozzáadása Android-térképekhez | Microsoft Azure térképek
+description: Megtudhatja, hogyan adhat hozzá egy csempe réteget egy térképhez. Egy olyan példát láthat, amely a Azure Maps Android SDK-t használja egy időjárási radar átfedésének egy térképhez való hozzáadásához.
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/08/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 22618a28f1a87e68c19467aedf639e96ec2fb91e
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 8ea6f44c47c5cd4d223b053640f65827f46db482
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532676"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679288"
 ---
-# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Csempe réteg hozzáadása térképhez a Azure Maps Android SDK használatával
+# <a name="add-a-tile-layer-to-a-map-android-sdk"></a>Csempe réteg hozzáadása térképhez (Android SDK)
 
 Ebből a cikkből megtudhatja, hogyan jelenítheti meg a csempéket a térképeken a Azure Maps Android SDK használatával. A csempe rétegek lehetővé teszik, hogy az alapszintű Térkép csempék fölé írja a képeket Azure Maps. Azure Maps csempe rendszerével kapcsolatos további információkért tekintse meg a [nagyítási szintek és a csempék rácsának](zoom-levels-and-tile-grid.md) dokumentációját.
 
@@ -23,10 +23,10 @@ Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a képeket
 
 * X, Y, nagyítási jelölés – a nagyítási szint alapján az x az oszlop, az Y pedig a csempén lévő csempe sor pozíciója.
 * Quadkey jelölés – x, y és nagyítási információ egyetlen karakterlánc-értékre, amely egy csempe egyedi azonosítója.
-* A határolókerethoz tartozó határoló mező koordinátáit a `{west},{south},{east},{north}` [webes leképezési szolgáltatások (WMS)](https://www.opengeospatial.org/standards/wms)által gyakran használt formátumú rendszerképek megadására lehet használni.
+* A határoló mezőhöz kötött koordinátákkal megadható, hogy milyen formátumú képet kell megadni `{west},{south},{east},{north}` , amelyet általában a [web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms)használ.
 
 > [!TIP]
-> A TileLayer nagyszerű lehetőséget mutat a nagyméretű adathalmazok megjelenítésére a térképen. Nem csak a csempe réteg hozható létre egy képből, de a vektoros adatok csempe rétegként is megjeleníthető. A vektoros adattároló rétegként való megjelenítésével a Térkép vezérlőelemnek csak be kell töltenie a csempéket, ami sokkal kisebb lehet a fájlméretnél, mint az általuk képviselt adatmennyiség. Ezt a technikát sokan használják, akiknek több millió sornyi adatsort kell megjeleníteniük a térképen.
+> A TileLayer nagyszerű lehetőséget mutat a nagyméretű adathalmazok megjelenítésére a térképen. Nem csak a csempe réteg hozható létre egy képből, de a vektoros adatok csempe rétegként is megjeleníthető. A vektoros adattároló rétegként való megjelenítésével a Térkép vezérlőelem csak a csempék betöltését igényli, ami sokkal kisebb lehet a fájlméretnél, mint az általuk képviselt adatmennyiség. Ezt a technikát sokan használják, akiknek több millió sornyi adatsort kell megjeleníteniük a térképen.
 
 A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lennie egy TileJSON-erőforráshoz vagy egy csempe URL-sablonhoz, amely a következő paramétereket használja: 
 
@@ -39,144 +39,34 @@ A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lenn
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) -t egy Térkép betöltéséhez.
-
+A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Android SDK](how-to-use-android-map-control-library.md) -t egy Térkép betöltéséhez.
 
 ## <a name="add-a-tile-layer-to-the-map"></a>Csempe réteg hozzáadása a térképhez
 
- Ez a minta bemutatja, hogyan hozhat létre csempéket tartalmazó csempe réteget. Ezek a csempék az "x, y, zoom" csemperendszer használatát használják. Ennek a csempe rétegnek a forrása az [Iowa Állami Egyetem Iowa környezeti Mesonet](https://mesonet.agron.iastate.edu/ogc/)származó időjárási radar. 
+Ez a minta bemutatja, hogyan hozhat létre csempéket tartalmazó csempe réteget. Ez a példa az "x, y, zoom" csempe rendszerét használja. Ennek a csempének a forrása a [OpenSeaMap projekt](https://openseamap.org/index.php), amely a tömegből származó tengeri diagramokat tartalmazza. A csempék rétegeinek megtekintésekor érdemes lehet tisztán látni a térképen található városok címkéit. Ez a viselkedés úgy érhető el, ha beszúrja a csempe réteget a Térkép feliratának rétegeibe.
 
-Az alábbi lépéseket követve hozzáadhat egy csempe réteget a térképhez.
+```java
+TileLayer layer = new TileLayer(
+    tileUrl("https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"),
+    opacity(0.8f),
+    tileSize(256),
+    minSourceZoom(7),
+    maxSourceZoom(17)
+);
 
-1. Módosítsa a **res > elrendezést > activity_main.xml** így néz ki az alábbiak közül:
+map.layers.add(layer, "labels");
+```
 
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="40.75"
-            app:mapcontrol_centerLng="-99.47"
-            app:mapcontrol_zoom="3"
-            />
-    
-    </FrameLayout>
-    ```
+Az alábbi képernyőfelvételen a fenti kód látható, amely egy sötét szürkeárnyalatos stílusú térképen jeleníti meg a hajózási adatok csempe rétegét.
 
-2. Másolja az alábbi kódrészletet az osztály **onCreate ()** metódusára `MainActivity.java` .
+![Az Android-Térkép csempét megjelenítő réteg](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
 
-    ```Java
-    mapControl.onReady(map -> {
-        //Add a tile layer to the map, below the map labels.
-        map.layers.add(new TileLayer(
-            tileUrl("https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png"),
-            opacity(0.8f),
-            tileSize(256)
-        ), "labels");
-    });
-    ```
-    
-    A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy `TileLayer` objektumot, és átadja egy formázott **XYZ** csempe URL-címét a `tileUrl` lehetőséghez. A réteg opacitása úgy van beállítva, hogy `0.8` a csempe szolgáltatás által használt csempék 256 képpont csempék legyenek, ez az információ átkerül a `tileSize` lehetőségbe. Ezután a csempe réteget a Maps Layer Manager továbbítja.
-
-    Miután hozzáadta a fenti kódrészletet, a `MainActivity.java` következőhöz hasonlóan kell kinéznie:
-    
-    ```Java
-    package com.example.myapplication;
-
-    import android.app.Activity;
-    import android.os.Bundle;
-    import android.support.v7.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.layer.TileLayer;
-    import java.util.Arrays;
-    import java.util.List;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import static com.microsoft.azure.maps.mapcontrol.options.TileLayerOptions.tileSize;
-    import static com.microsoft.azure.maps.mapcontrol.options.TileLayerOptions.tileUrl;
-        
-    public class MainActivity extends AppCompatActivity {
-    
-        static{
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-    
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-
-                //Add a tile layer to the map, below the map labels.
-                map.layers.add(new TileLayer(
-                    tileUrl("https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png"),
-                    opacity(0.8f),
-                    tileSize(256)
-                ), "labels");
-            });    
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }    
-    }
-    ```
-
-Ha most futtatja az alkalmazást, látnia kell egy vonalat a térképen az alábbi képen látható módon:
-
-<center>
-
-![Androidos Térkép sora](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Térkép stílusainak beállításával kapcsolatos további tudnivalókért tekintse meg a következő cikket.
 
 > [!div class="nextstepaction"]
-> [Térkép stílusainak módosítása Android-térképeken](./set-android-map-styles.md)
+> [Térkép stílusának módosítása](set-android-map-styles.md)
+
+> [!div class="nextstepaction"]
+> [Hő-Térkép hozzáadása](map-add-heat-map-layer-android.md)

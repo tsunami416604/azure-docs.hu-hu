@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 11/24/2020
+ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 01f61eac31c388cd0bf8a857beb7a10944187c6b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027900"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679519"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
@@ -25,8 +25,8 @@ Cognitive Search szolgáltatás létrehozásakor a következőket kapja:
 + Egy keresőmotor, amely indexelési és lekérdezés-végrehajtást végez
 + A létrehozott és kezelt keresési indexek állandó tárolása
 + Lekérdezési nyelv egyszerű és összetett lekérdezések létrehozásához
-+ AI-központú elemzés, kereshető tartalom létrehozása képekből, nyers szövegből, alkalmazásfájlokből
-+ Integráció az Azure-szolgáltatásokkal a keresési indexelő alkalmazással, az adatimportálás és-frissítés automatizálása
++ [Mesterséges intelligenciák](cognitive-search-concept-intro.md), kereshető tartalmak létrehozása képekből, nyers szövegből, alkalmazásfájlokből
++ Integráció más Azure-szolgáltatásokkal az adatkezeléshez, gépi tanuláshoz/AI-hoz és biztonsághoz
 
 A keresési szolgáltatás építészeti szempontból a nem indexelt adatokat tartalmazó külső adattárak között, valamint egy olyan ügyfélalkalmazás között ül, amely lekérdezési kérelmeket küld egy keresési indexnek, és kezeli a választ.
 
@@ -89,11 +89,11 @@ A felhőalapú szolgáltatók között az Azure Cognitive Search a teljes szöve
 A legfőbb előnyök közé tartoznak az alábbiak:
 
 + Azure-adatintegráció (webbejárók) az indexelő rétegben
-+ Azure Portal központi felügyelethez
-+ Az Azure ismert méretezhetősége, megbízhatósága és világszínvonalú rendelkezésre állása
-+ A nyers adatok mesterséges feldolgozásával kereshetővé válik, beleértve a képekből származó szöveget, vagy nem strukturált tartalomban talál mintákat.
++ Az Azure Private link integrációja az internetre vonatkozó biztonsági követelmények támogatásához
++ Integráció AI-feldolgozással a kereshető tartalomtípusok szövegének kereshetővé tételéhez.
 + Nyelvi és egyéni elemzési funkciók, teljes szöveges keresési elemzők 56 nyelvhez
-+ [Keresésközpontú alkalmazásokban gyakran használt funkciók](search-features-list.md): pontozás, jellemzőkezelés, javaslatok, szinonimák, földrajzi keresés és egyebek.
++ [Kritikus funkciók](search-features-list.md): gazdag lekérdezési nyelv, relevancia-hangolás, aspektus, automatikus kiegészítés, szinonimák, Geo-keresés és eredmény-összeállítás.
++ Az Azure ismert méretezhetősége, megbízhatósága és világszínvonalú rendelkezésre állása
 
 Ügyfeleink körében az Azure-Cognitive Search számos funkcióját kihasználhatja, például online katalógusokat, üzletági programokat és dokumentum-felderítési alkalmazásokat.
 

@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9964c99ddfb59811fc67df634b41cede5847ede0
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903615"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678858"
 ---
 # <a name="create-a-data-source"></a>Adatforrás létrehozása
 
 A Azure Maps web SDK adatforrásokban tárolja az adatforrásokat. Az adatforrások használata optimalizálja az adatműveleteket a lekérdezéshez és a megjelenítéshez. Jelenleg két típusú adatforrás létezik:
 
-- **GeoJSON forrás**: a nyers helyadatok helyi kezelése GeoJSON formátumban. A kis-és közepes adatkészletek esetében is jó (több százezer alakzat).
-- **Vektoros csempe forrása**: a térképes mozaikrendszer alapján betölti az aktuális leképezési nézethez tartozó vektorgrafikus csempéket. Ideális nagy-és nagyméretű adatkészletekhez (millió vagy több milliárd alakzat).
+* **GeoJSON forrás**: a nyers helyadatok helyi kezelése GeoJSON formátumban. A kis-és közepes adatkészletek esetében is jó (több százezer alakzat).
+* **Vektoros csempe forrása**: a térképes mozaikrendszer alapján betölti az aktuális leképezési nézethez tartozó vektorgrafikus csempéket. Ideális nagy-és nagyméretű adatkészletekhez (millió vagy több milliárd alakzat).
 
 ## <a name="geojson-data-source"></a>GeoJSON-adatforrás
 
@@ -50,8 +50,8 @@ A létrehozás után az adatforrások hozzáadhatók a térképhez a `map.source
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 ```
 
 A következő kód az GeoJSON különböző módjait mutatja be a-ben `DataSource` .
@@ -60,13 +60,13 @@ A következő kód az GeoJSON különböző módjait mutatja be a-ben `DataSourc
 //GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
 
 //Add geoJSON object to data source. 
-dataSource.add(geoJsonData);
+source.add(geoJsonData);
 
 //Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
-dataSource.importDataFromUrl(geoJsonUrl);
+source.importDataFromUrl(geoJsonUrl);
 
 //Overwrite all data in data source.
-dataSource.setShapes(geoJsonData);
+source.setShapes(geoJsonData);
 ```
 
 > [!TIP]
@@ -76,10 +76,10 @@ dataSource.setShapes(geoJsonData);
 
 A vektoros csempék forrása leírja, hogyan lehet hozzáférni a vektoros csempék rétegéhez. A [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) osztály használatával hozza létre a vektoros csempe forrását. A vektoros csempe rétegei hasonlóak a csempék rétegeihez, de nem azonosak. A csempe réteg egy raszteres rendszerkép. A vektoros csempe rétegek a **PBF** formátumában tömörített fájlok. Ez a tömörített fájl vektoros leképezési és egy vagy több réteget tartalmaz. A fájl az egyes rétegek stílusa alapján megjeleníthető és stílusú lehet az ügyfélen. A vektoros csempén lévő információk pontok, vonalak és sokszögek formájában található földrajzi funkciókat tartalmaznak. A raszteres csempe rétegei helyett több előnye van a vektoros csempék használatának:
 
- - A vektoros csempék fájlmérete általában sokkal kisebb, mint egy egyenértékű raszteres csempe. Így kevesebb sávszélesség van használatban. Kisebb késést, gyorsabb térképet és jobb felhasználói élményt jelent.
- - Mivel a rendszer a vektoros csempéket jeleníti meg az ügyfélen, alkalmazkodik a megjelenő eszköz feloldásához. Ennek eredményeképpen a megjelenített térképek jól definiálva jelennek meg, a Crystal Clear címkékkel.
- - A vektoros leképezésekben lévő adatstílus módosítása nem igényli újra az adatletöltést, mivel az új stílus alkalmazható az ügyfélen. Ezzel szemben a raszteres csempék rétegének módosítása általában a-kiszolgálóról származó csempék betöltését igényli, majd az új stílust alkalmazza.
- - Mivel az adat vektoros formában lett továbbítva, az adatelőkészítéshez kevesebb kiszolgálóoldali feldolgozás szükséges. Ennek eredményeképpen az újabb adatértékek gyorsabban elérhetővé tehetők.
+* A vektoros csempék fájlmérete általában sokkal kisebb, mint egy egyenértékű raszteres csempe. Így kevesebb sávszélesség van használatban. Kisebb késést, gyorsabb térképet és jobb felhasználói élményt jelent.
+* Mivel a rendszer a vektoros csempéket jeleníti meg az ügyfélen, alkalmazkodik a megjelenő eszköz feloldásához. Ennek eredményeképpen a megjelenített térképek jól definiálva jelennek meg, a Crystal Clear címkékkel.
+* A vektoros leképezésekben lévő adatstílus módosítása nem igényli újra az adatletöltést, mivel az új stílus alkalmazható az ügyfélen. Ezzel szemben a raszteres csempék rétegének módosítása általában a-kiszolgálóról származó csempék betöltését igényli, majd az új stílust alkalmazza.
+* Mivel az adat vektoros formában lett továbbítva, az adatelőkészítéshez kevesebb kiszolgálóoldali feldolgozás szükséges. Ennek eredményeképpen az újabb adatértékek gyorsabban elérhetővé tehetők.
 
 Azure Maps betartja a [Mapbox Vector csempe specifikációját](https://github.com/mapbox/vector-tile-spec), amely egy nyílt szabvány. Azure Maps a következő vektoros szolgáltatásokat nyújtja a platform részeként:
 
@@ -95,14 +95,14 @@ Ha a térképen a vektoros csempe forrásának adatait szeretné megjeleníteni,
 
 ```javascript
 //Create a vector tile source and add it to the map.
-var datasource = new atlas.source.VectorTileSource(null, {
+var source = new atlas.source.VectorTileSource(null, {
     tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
     maxZoom: 22
 });
-map.sources.add(datasource);
+map.sources.add(source);
 
 //Create a layer for traffic flow lines.
-var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+var flowLayer = new atlas.layer.LineLayer(source, null, {
     //The name of the data layer within the data source to pass into this rendering layer.
     sourceLayer: 'Traffic flow',
 
@@ -142,30 +142,30 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>Vector cs
 
 Az adatmegjelenítés a térképen renderelési rétegek használatával történik. Egyetlen adatforrás hivatkozhat egy vagy több renderelési rétegre. A következő megjelenítési rétegekhez adatforrásra van szükség:
 
-- [Buborék réteg](map-add-bubble-layer.md) – a térképre méretezett körökként jeleníti meg a pontok mennyiségét.
-- [Szimbólum réteg](map-add-pin.md) – megjelenítheti az adatpontokat ikonként vagy szövegként.
-- [Hő-Térkép réteg](map-add-heat-map-layer.md) – megjeleníti az adatpontok sűrűségének hő-térképét.
-- [Vonal réteg](map-add-shape.md) – vonalak renderelése és a sokszögek körvonalának megjelenítése. 
-- [Sokszög réteg](map-add-shape.md) – egy sokszög területének kitöltése folytonos színnel vagy képmintázattal.
+* [Buborék réteg](map-add-bubble-layer.md) – a térképre méretezett körökként jeleníti meg a pontok mennyiségét.
+* [Szimbólum réteg](map-add-pin.md) – megjelenítheti az adatpontokat ikonként vagy szövegként.
+* [Hő-Térkép réteg](map-add-heat-map-layer.md) – megjeleníti az adatpontok sűrűségének hő-térképét.
+* [Vonal réteg](map-add-shape.md) – vonalak renderelése és a sokszögek körvonalának megjelenítése. 
+* [Sokszög réteg](map-add-shape.md) – egy sokszög területének kitöltése folytonos színnel vagy képmintázattal.
 
 Az alábbi kód bemutatja, hogyan hozhat létre egy adatforrást, hogyan adhatja hozzá a térképhez, és hogyan csatlakoztathatja azt egy buborék-réteghez. Ezután importálja a GeoJSON pont adatait egy távoli helyről az adatforrásba. 
 
 ```javascript
 //Create a data source and add it to the map.
-var datasource = new atlas.source.DataSource();
-map.sources.add(datasource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a layer that defines how to render points in the data source and add it to the map.
-map.layers.add(new atlas.layer.BubbleLayer(datasource));
+map.layers.add(new atlas.layer.BubbleLayer(source));
 
 //Load the earthquake data.
-datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
+source.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
 ```
 
 Vannak olyan renderelési rétegek, amelyek nem csatlakoznak ezekhez az adatforrásokhoz, de közvetlenül betöltik a rendereléshez szükséges adatkereteket. 
 
-- [Képréteg](map-add-image-layer.md) – egyetlen rendszerképet fedi le a térképen, és a sarkokat megadott koordináták halmazához köti.
-- [Csempe réteg](map-add-tile-layer.md) – a Térkép tetején lévő raszteres csempe réteget rendeli.
+* [Képréteg](map-add-image-layer.md) – egyetlen rendszerképet fedi le a térképen, és a sarkokat megadott koordináták halmazához köti.
+* [Csempe réteg](map-add-tile-layer.md) – a Térkép tetején lévő raszteres csempe réteget rendeli.
 
 ## <a name="one-data-source-with-multiple-layers"></a>Egy adatforrás több réteggel
 
@@ -179,34 +179,40 @@ A Azure Maps esetében mindössze egyetlen sokszögre van szükség az adatforr�
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a polygon and add it to the data source.
-dataSource.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
+source.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
 
 //Create a polygon layer to render the filled in area of the polygon.
-var polygonLayer = new atlas.layer.PolygonLayer(dataSource, 'myPolygonLayer', {
+var polygonLayer = new atlas.layer.PolygonLayer(source, 'myPolygonLayer', {
      fillColor: 'rgba(255,165,0,0.2)'
 });
 
 //Create a line layer for greater control of rendering the outline of the polygon.
-var lineLayer = new atlas.layer.LineLayer(dataSource, 'myLineLayer', {
+var lineLayer = new atlas.layer.LineLayer(source, 'myLineLayer', {
      color: 'orange',
      width: 2
 });
 
 //Create a bubble layer to render the vertices of the polygon as scaled circles.
-var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
+var bubbleLayer = new atlas.layer.BubbleLayer(source, 'myBubbleLayer', {
      color: 'orange',
      radius: 5,
-     outlineColor: 'white',
-     outlineWidth: 2
+     strokeColor: 'white',
+     strokeWidth: 2
 });
 
 //Add all layers to the map.
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
+
+> [!TIP]
+> Ha a függvény használatával rétegeket ad hozzá a térképhez `map.layers.add` , a meglévő réteg azonosítóját vagy példányát második paraméterként is átadhatja. Ez azt jelzi, hogy a Térkép beszúrja a meglévő réteg alá felvett új réteget. A rétegbeli AZONOSÍTÓk átadása mellett a metódus a következő értékeket is támogatja.
+>
+> * `"labels"` – Beszúrja az új réteget a Térkép feliratának rétegeibe.
+> * `"transit"` – Beszúrja az új réteget a térképi út és az átviteli rétegek alá.
 
 ## <a name="next-steps"></a>Következő lépések
 

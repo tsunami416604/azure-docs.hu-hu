@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 6a7d29d8487c6be6915ae4171b3759f0980f5448
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 21bdbecdbba31eae112053bf81411781245cc170
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874356"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678682"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Azure-beli virtuális gép vész-helyreállításának engedélyezése rendelkezésre állási zónák között
 
@@ -20,7 +20,7 @@ Ez a cikk az Azure-beli virtuális gépek egyik rendelkezésre állási zónáb�
 
 >[!NOTE]
 >
->- A zóna és a zóna közötti vész-helyreállítás támogatása jelenleg két régióra korlátozódik: Délkelet-Ázsia és Egyesült Királyság déli régiója.  
+>- A zóna és a zóna közötti vész-helyreállítás támogatása jelenleg öt régióra korlátozódik: Délkelet-Ázsia, Egyesült Királyság déli régiója, Kelet-Japán, Kelet-Ausztrália és Nyugat-Európa.  
 >- A Site Recovery nem helyezi át és nem tárolja az ügyféladatokat azon a régión kívül, amelyben az ügyfél üzembe helyezése történik, amikor a felhasználó a zónát használja a zóna vész-helyreállítási feladataihoz. Az ügyfelek választhatnak egy Recovery Services-tárolót egy másik régióból is. A Recovery Services-tároló metaadatokat tartalmaz, de nincsenek tényleges ügyféladatok.
 
 A Site Recovery szolgáltatás a tervezett és nem tervezett leállások során az üzletmenet-folytonosságot és a vész-helyreállítási stratégiát segíti az üzleti alkalmazások működésének megtartásában. Az ajánlott vész-helyreállítási lehetőség, hogy az alkalmazásait akár regionális kimaradás esetén is meg kell őrizni.
@@ -67,7 +67,7 @@ A fentiekben leírtaknak megfelelően a Zone to Zone vész-helyreállítási szo
 
 Mielőtt üzembe helyezi a zónát a virtuális gépek számára a zóna vész-helyreállításához, fontos, hogy a virtuális gépen elérhető egyéb szolgáltatások a zónákhoz is használhatók legyenek.
 
-|Jellemző  | Támogatási nyilatkozat  |
+|Szolgáltatás  | Támogatási nyilatkozat  |
 |---------|---------|
 |A klasszikus virtuális gépeket   |     Nem támogatott    |
 |ARM virtuális gépek    |    Támogatott    |

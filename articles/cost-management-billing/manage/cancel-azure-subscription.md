@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444455"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503794"
 ---
 # <a name="cancel-your-azure-subscription"></a>Az Azure-előfizetés lemondása
 
@@ -30,6 +30,17 @@ Bár nem kötelező, a Microsoft *javasolja*, hogy végezze el az alábbi művel
 
 Ha egy fizetett Azure-támogatási csomagot mond le, az előfizetési időszak hátralévő ideje továbbra is ki lesz számlázva. További információkért tekintse meg az [Azure támogatási csomagokat](https://azure.microsoft.com/support/plans/).
 
+## <a name="who-can-cancel-a-subscription"></a>Ki mondhat le előfizetést?
+
+Az alábbi táblázat ismerteti az előfizetés lemondásához szükséges engedélyeket.
+
+|Előfizetés típusa     |Ki mondhatja le  |
+|---------|---------|
+|Az Azure webhelyen keresztül az Azure-ba való regisztrációkor létrehozott előfizetések. Erre példa az [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/), a [használatalapú fizetést használó fiók](https://azure.microsoft.com/offers/ms-azr-0003p/) és a [Visual Studio-előfizetés](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  A fiókadminisztrátor és az előfizetés tulajdonosai  |
+|[Microsoft Nagyvállalati Szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/) és [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  A fióktulajdonos és az előfizetés tulajdonosai       |
+|[Azure-csomag](https://azure.microsoft.com/offers/ms-azr-0017g/) és [Azure-csomag DevTesthez](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Az előfizetés tulajdonosai      |
+
+
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Előfizetés lemondása az Azure Portalon
 
 1. Válassza ki előfizetését az [Azure Portal Előfizetések oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
@@ -41,15 +52,13 @@ Ha egy fizetett Azure-támogatási csomagot mond le, az előfizetési időszak h
 > [!NOTE]
 > A partnerek felfüggeszthetik vagy megszüntethetik az előfizetést az ügyfél kérésére, illetve fizetéselmaradás vagy csalás esetén. További információ: [Előfizetés felfüggesztése vagy lemondása](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription).
 
-## <a name="who-can-cancel-a-subscription"></a>Ki mondhat le előfizetést?
+## <a name="cancel-a-support-plan"></a>Támogatási terv lemondása
 
-Az alábbi táblázat ismerteti az előfizetés lemondásához szükséges engedélyeket.
+Ha az Azure-webhelyen vagy Azure Portalon keresztül vásárolt támogatási tervet, vagy Microsoft Ügyfélszerződés alapján rendelkezik eggyel, lemondhatja a támogatási tervet. Ha a támogatási csomagot Microsoft-képviselőn vagy -partneren keresztül vásárolta meg, segítségért vegye fel vele a kapcsolatot. 
 
-|Előfizetés típusa     |Ki mondhatja le  |
-|---------|---------|
-|Az Azure webhelyen keresztül az Azure-ba való regisztrációkor létrehozott előfizetések. Erre példa az [ingyenes Azure-fiók](https://azure.microsoft.com/offers/ms-azr-0044p/), a [használatalapú fizetést használó fiók](https://azure.microsoft.com/offers/ms-azr-0003p/) és a [Visual Studio-előfizetés](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  A fiókadminisztrátor és az előfizetés tulajdonosai  |
-|[Microsoft Nagyvállalati Szerződés](https://azure.microsoft.com/pricing/enterprise-agreement/) és [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  A fióktulajdonos és az előfizetés tulajdonosai       |
-|[Azure-csomag](https://azure.microsoft.com/offers/ms-azr-0017g/) és [Azure-csomag DevTesthez](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Az előfizetés tulajdonosai      |
+1. Lépjen a **Költségkezelés + számlázás** menüponthoz az Azure Portalon.
+1. A **Számlázás** területen válassza az **Ismétlődő díjak** elemet.
+1. A támogatási csomag sor elemének jobb oldalán válassza a három pontot ( **...** ), majd válassza ki **Az automatikus megújítás kikapcsolása** lehetőséget.
 
 ## <a name="what-happens-after-subscription-cancellation"></a>Mi történik az előfizetés lemondása után?
 

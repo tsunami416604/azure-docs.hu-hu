@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 12/02/2020
-ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511916"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679187"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
@@ -156,7 +156,7 @@ A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amely
     1. A szkriptet és más egyéni erőforrásokat csomagolja egy zip-fájlba.
     1. Töltse fel a zip-fájlt **fájl adatkészletként** a studióba. 
     1. Húzza az adatkészlet modult a Designer authoring oldal bal oldali modul paneljének *adatkészletek* listájából. 
-    1. Az adatkészlet moduljának csatlakoztatása az **R-parancsfájl végrehajtása** modul **parancsfájl-köteg** portjához.
+    1. Az adatkészlet moduljának csatlakoztatása a **Python parancsfájl** -modul végrehajtása **parancsfájl-köteg** portjához.
     
     A feltöltött tömörített archívumban található összes fájl használható a folyamat végrehajtása során. Ha az Archívum tartalmaz egy címtár-struktúrát, a rendszer megőrzi a struktúrát.
  
@@ -343,6 +343,6 @@ Az előre telepített csomagok a következők:
 -    Werkzeug = = 0.16.1
 -    Wheel = = 0.34.2
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

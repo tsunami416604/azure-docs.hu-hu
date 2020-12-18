@@ -10,13 +10,13 @@ ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 12/17/2020
+ms.openlocfilehash: b5b0f6dcef728f0597e7eac8ba57c8fd240d19c9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591897"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680301"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és teljesítés az Azure Data Factoryben
 
@@ -28,7 +28,7 @@ A folyamatos integráció az a gyakorlat, amellyel a rendszer automatikusan és 
 
 Azure Data Factory a folyamatos integráció és a szállítás (CI/CD) azt jelenti, hogy Data Factory folyamatokat az egyik környezetből (fejlesztési, tesztelési, éles) áthelyezi egy másikra. A Azure Data Factory [Azure Resource Manager sablonokat](../azure-resource-manager/templates/overview.md) használ a különböző ADF-entitások (folyamatok, adatkészletek, adatforgalom stb.) konfigurációjának tárolásához. Két javasolt módszer áll rendelkezésre az adatelőállító más környezetbe való előléptetéséhez:
 
--    Automatikus üzembe helyezés a Data Factory Azure- [folyamatokkal](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) való integrálásával
+-    Automatikus üzembe helyezés a Data Factory Azure- [folyamatokkal](/azure/devops/pipelines/get-started/what-is-azure-pipelines) való integrálásával
 -    Manuálisan tölthet fel egy Resource Manager-sablont a Data Factory UX-integrációval Azure Resource Manager használatával.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -115,7 +115,7 @@ Az alábbi útmutató egy olyan Azure-beli folyamat-kiadás beállításához ny
 
 1.  A kiadási folyamat mentése.
 
-1. A kiadás elindításához válassza a **kiadás létrehozása** lehetőséget. A kiadások létrehozásának automatizálásához tekintse meg az [Azure DevOps kiadási eseményindítók](/azure/devops/pipelines/release/triggers?view=azure-devops) című témakört.
+1. A kiadás elindításához válassza a **kiadás létrehozása** lehetőséget. A kiadások létrehozásának automatizálásához tekintse meg az [Azure DevOps kiadási eseményindítók](/azure/devops/pipelines/release/triggers) című témakört.
 
    ![Válassza a kiadás létrehozása lehetőséget](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -207,6 +207,12 @@ Ha a fejlesztői gyárhoz tartozik egy társított git-tárház, felülbírálha
 
 * Automatikus CI/CD-t használ, és módosítani szeretné néhány tulajdonságot a Resource Manager üzembe helyezése során, de a tulajdonságok alapértelmezés szerint nem paraméterek.
 * A gyár olyan nagy méretű, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a maximálisan megengedett paraméterek (256).
+
+    Az 256-os egyéni paraméterek kezeléséhez 3 lehetőség közül választhat:    
+  
+    * Használja az egyéni paraméter fájlját, és távolítsa el azokat a tulajdonságokat, amelyek nem igényelnek paraméterezés, azaz olyan tulajdonságokat, amelyek megtarthatják az alapértelmezett értéket, és így csökkenthetik a paraméterek darabszámát.
+    * A adatfolyam újraértékelési logikája a paraméterek csökkentése érdekében, például a folyamat paramétereinek mindegyike azonos értékkel rendelkezik, csak a globális paramétereket használhatja.
+    * Az egyik adatfeldolgozót több adatfolyamatra is kioszthatja.
 
 Az alapértelmezett paraméterezés-sablon felülbírálásához nyissa meg a felügyeleti központot, és válassza a **paraméterezés sablon** lehetőséget a verziókövetés szakaszban. Válassza a **Sablon szerkesztése** lehetőséget a paraméterezés sablon kódjának megnyitásához. 
 
@@ -639,7 +645,7 @@ Tekintse meg az alábbi videót, amely részletesen ismerteti a környezetek gyo
 
 ## <a name="exposure-control-and-feature-flags"></a>A kitettség szabályozása és a funkció jelzői
 
-Ha egy csapaton dolgozik, vannak olyan példányok, amelyekben a módosításokat egyesítheti, de nem szeretné, hogy azok emelt szintű környezetekben fussanak, mint például a PROD és a QA. Ennek a forgatókönyvnek a kezeléséhez az ADF csapata [a DevOps koncepcióját javasolja a funkciók jelzői](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)alapján. Az ADF-ben egyesítheti a [globális paramétereket](author-global-parameters.md) és az [IF Condition tevékenységgel](control-flow-if-condition-activity.md) a logikai készletek elrejtését ezen környezeti jelzők alapján.
+Ha egy csapaton dolgozik, vannak olyan példányok, amelyekben a módosításokat egyesítheti, de nem szeretné, hogy azok emelt szintű környezetekben fussanak, mint például a PROD és a QA. Ennek a forgatókönyvnek a kezeléséhez az ADF csapata [a DevOps koncepcióját javasolja a funkciók jelzői](/azure/devops/migrate/phase-features-with-feature-flags)alapján. Az ADF-ben egyesítheti a [globális paramétereket](author-global-parameters.md) és az [IF Condition tevékenységgel](control-flow-if-condition-activity.md) a logikai készletek elrejtését ezen környezeti jelzők alapján.
 
 A szolgáltatás jelző beállításának megismeréséhez tekintse meg az alábbi videós oktatóanyagot:
 

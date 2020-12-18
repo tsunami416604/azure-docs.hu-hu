@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6271b83749c078b64c168a27f887ed7055e37d96
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638006"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678896"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>A Azure Data Factory költségeinek megtervezése és kezelése
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A Azure Data Factory a Felhőbeli méretezéshez készült, kiszolgáló nélküli és rugalmas adatintegrációs szolgáltatás.  Ez azt jelenti, hogy nem rögzített méretű számításra van szükség a maximális terhelés megtervezéséhez; Ehelyett megadhatja, hogy mennyi erőforrást kell igény szerint lefoglalni a művelethez, ami lehetővé teszi, hogy az ETL-folyamatokat sokkal méretezhető módon tervezze meg. Az ADF emellett egy fogyasztáson alapuló csomagra is kiszámlázható, ami azt jelenti, hogy csak a ténylegesen használt funkciókért kell fizetnie.
 

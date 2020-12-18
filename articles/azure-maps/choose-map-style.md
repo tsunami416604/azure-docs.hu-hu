@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889799"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680028"
 ---
 # <a name="change-the-style-of-the-map"></a>A térkép stílusának módosítása
 
@@ -29,9 +29,9 @@ A stílus beállításai a webes vezérlők inicializálásakor állíthatók be
 var map = new atlas.Map('map', {
     renderWorldCopies: false,
     showBuildingModels: false,
-    showLogo = true,
-    showFeedbackLink = true,
-    style='road'
+    showLogo: true,
+    showFeedbackLink: true,
+    style: 'road'
 
     //Additional map options.
 };
@@ -40,8 +40,8 @@ var map = new atlas.Map('map', {
 map.setStyle({
     renderWorldCopies: true,
     showBuildingModels: true,
-    showLogo = false,
-    showFeedbackLink = false
+    showLogo: false,
+    showFeedbackLink: false
 });
 ```
 
@@ -71,7 +71,7 @@ var map = new atlas.Map('map', {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='A stílus beállítása a Térkép betöltéséhez' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a Azure Maps () alapján a CodePen-on a <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>stílus betöltésére vonatkozó beállítást</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='A stílus beállítása a Térkép betöltéséhez' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a Azure Maps () alapján a CodePen-on a <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>stílus betöltésére vonatkozó beállítást</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ### <a name="update-the-base-map-style"></a>Az alapszintű Térkép stílusának frissítése
@@ -101,7 +101,7 @@ Az alábbi képen az elrendezésben megjelenő Style Picker vezérlőelem látha
 
 Az alábbi képen az elrendezésben megjelenő Style Picker vezérlőelem látható `list` .
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Style Picker ikon elrendezése":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Style Picker-lista elrendezése":::
 
 > [!IMPORTANT]
 > Alapértelmezés szerint a Style Picker vezérlő felsorolja az Azure Maps S0 díjszabási szintjénél elérhető összes stílust. Ha csökkenteni szeretné a listában szereplő stílusok számát, adja át a listában megjeleníteni kívánt stílusok tömbjét a `mapStyle` Style Picker (stílus kiválasztása) lehetőséggel. Ha S1-et használ, és az összes elérhető stílust meg szeretné jeleníteni, állítsa a `mapStyles` Style Picker kapcsolót a következőre: `"all"` .
@@ -129,10 +129,13 @@ További információ a cikkben használt osztályokról és módszerekről:
 > [!div class="nextstepaction"]
 > [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
-Vezérlőelemek hozzáadása a térképekhez:
+Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
 > [Térképvezérlők hozzáadása](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [Gombostű hozzáadása](map-add-pin.md)
+> [Szimbólumréteg hozzáadása](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Buborékréteg hozzáadása](map-add-bubble-layer.md)

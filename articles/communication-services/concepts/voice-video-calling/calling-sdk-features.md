@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: c801a276f3a116f00b34d750ca8bfec7e56d377b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505545"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680742"
 ---
 # <a name="calling-client-library-overview"></a>Hívási ügyfélkódtár áttekintése
 
@@ -56,15 +56,15 @@ Az alábbi lista azokat a funkciókat mutatja be, amelyek jelenleg elérhetők a
 |                   | Csoportos hívás elhelyezése PSTN-résztvevőkkel                                                                           | ✔️   | ✔️            | ✔️
 |                   | Egy-az-egyhez hívás előléptetése PSTN-résztvevővel egy csoportos hívásban                                                 | ✔️   | ✔️            | ✔️
 |                   | Tárcsázás egy csoportos hívásból PSTN-résztvevőként                                                                    | ✔️   | ✔️            | ✔️   
-| Általános kérdések           | A mikrofon, a hangszóró és a kamera tesztelése hangtesztelési szolgáltatással (elérhető a 8. hívással: echo123)                   |  ✔️  | ✔️            | ✔️   
+| Általános           | A mikrofon, a hangszóró és a kamera tesztelése hangtesztelési szolgáltatással (elérhető a 8. hívással: echo123)                   |  ✔️  | ✔️            | ✔️   
 
-## <a name="calling-client-library-browser-support"></a>Az ügyféloldali kódtár böngésző támogatásának meghívása
+## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>A JavaScript az operációs rendszer és a böngésző ügyféloldali függvénytárának támogatását hívja meg
 
 A következő táblázat a jelenleg elérhető támogatott böngészők és verziók készletét tartalmazza.
 
-|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    |
-| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ |
-| **Ügyféloldali kódtár hívása** | Chrome *, új Edge | Chrome *, Safari** | Chrome  | Chrome | Chrome | Safari * * |
+|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad operációs rendszer|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **Ügyféloldali kódtár hívása** | Chrome *, új Edge | Chrome *, Safari** | Chrome  | Chrome | Chrome | Safari * * | Safari * * |
 
 
 * Vegye figyelembe, hogy a Chrome legújabb verziója az előző két kiadáson felül támogatott.<br/>

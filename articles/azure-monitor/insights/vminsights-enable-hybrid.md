@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d994df4d56f4958784256ff9cd92ce1e6f3b3e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d866729d428e7667cd2225a5d37836b3fd75fa7
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642163"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680338"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Hibrid virtuális gépek Azure Monitor for VMsának engedélyezése
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs az Azure-on kívüli virtuális gépekhez, beleértve a helyszíni és más felhőalapú környezeteket is.
@@ -43,8 +43,8 @@ A függőségi ügynököt a következő helyekről töltheti le:
 
 | Fájl | Operációs rendszer | Verzió | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.5.10940 | C27A56D0BE9CF162DF73292DFBB2083F5FF749F2B80FCAD2545BC8B14B64A8D7  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.5.10940 | 71B4E1DA5116E61E03317C49C6702B5069F01A0C9A7CB860F6ACFAF5C198740E |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.7.12710 | CA29CC328F991D7301FD0360F4F56DF78275545BB8CDA853679899CA885E96F0  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.7.12710 | 98380DBEB2E2A5848F2202BC22422C68B20B62090C1BFC1DECAB37ED5451ED8C |
 
 
 ## <a name="install-the-dependency-agent-on-windows"></a>A függőségi ügynök telepítése Windows rendszeren
@@ -74,7 +74,7 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 
 ## <a name="install-the-dependency-agent-on-linux"></a>A függőségi ügynök telepítése Linux rendszeren
 
-A függőségi ügynök Linux-kiszolgálókra van telepítve a *InstallDependencyAgent-Linux64. bin*fájlból, amely egy önkicsomagoló bináris elemet tartalmazó rendszerhéj-parancsfájl. A fájlt futtathatja, `sh` vagy saját maga is végrehajthat végrehajtási engedélyeket.
+A függőségi ügynök Linux-kiszolgálókra van telepítve a *InstallDependencyAgent-Linux64. bin* fájlból, amely egy önkicsomagoló bináris elemet tartalmazó rendszerhéj-parancsfájl. A fájlt futtathatja, `sh` vagy saját maga is végrehajthat végrehajtási engedélyeket.
 
 >[!NOTE]
 > Az ügynök telepítéséhez vagy eltávolításához gyökérszintű hozzáférés szükséges.
@@ -86,9 +86,9 @@ A függőségi ügynök Linux-kiszolgálókra van telepítve a *InstallDependenc
 | -s | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
 | – Keresés | Győződjön meg arról, hogy az engedélyek és az operációs rendszer nem telepíti az ügynököt. |
 
-A telepítőprogramnak a paraméterrel való futtatásához például `-help` írja be a **InstallDependencyAgent-Linux64. bin-help**parancsot. Telepítse a Linux függőségi ügynököt root-ként a parancs futtatásával `sh InstallDependencyAgent-Linux64.bin` .
+A telepítőprogramnak a paraméterrel való futtatásához például `-help` írja be a **InstallDependencyAgent-Linux64. bin-help** parancsot. Telepítse a Linux függőségi ügynököt root-ként a parancs futtatásával `sh InstallDependencyAgent-Linux64.bin` .
 
-Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a hibák részletes ismertetéséhez. Linux-ügynökök esetén a */var/opt/Microsoft/Dependency-Agent/log*a naplózási könyvtár.
+Ha a függőségi ügynök nem indul el, ellenőrizze a naplókat a hibák részletes ismertetéséhez. Linux-ügynökök esetén a */var/opt/Microsoft/Dependency-Agent/log* a naplózási könyvtár.
 
 A függőségi ügynök fájljai a következő könyvtárakba kerülnek:
 
@@ -175,7 +175,7 @@ Ha látja a kiszolgálót a térképen, de nem rendelkezik folyamat-vagy adatszo
 Ellenőrizze a C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log fájlt (Windows) vagy a /var/opt/microsoft/dependency-agent/log/service.log fájlt (Linux). A fájl utolsó sorai jelzik, hogy a kernel miért nem töltődött be. Előfordulhat például, hogy a Linux nem támogatja a kernelt, ha frissítette a kernelt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a figyelés engedélyezve van a virtuális gépek számára, ezek az információk a Azure Monitor for VMssal való elemzéshez érhetők el.
 

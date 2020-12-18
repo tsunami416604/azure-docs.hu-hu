@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96003178"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680783"
 ---
-# <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Oktatóanyag: Azure Data Box exportálási sorrendjének létrehozása (előzetes verzió)
+# <a name="tutorial-create-export-order-for-azure-data-box"></a>Oktatóanyag: az Azure Data Box exportálási sorrendjének létrehozása
 
 A Azure Data Box egy hibrid megoldás, amely lehetővé teszi az Azure-ba való adatáthelyezést a helyükre. Ez az oktatóanyag leírja, hogyan hozhat létre Azure Data Box exportálási sorrendjét. Az exportálási sorrend létrehozásának fő oka a vész-helyreállítás, abban az esetben, ha a helyszíni tárolás biztonságban van, és vissza kell állítani a biztonsági mentést.
 
@@ -27,8 +27,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Data Box megrendelése exportáláshoz
 > * Az exportálási sorrend nyomon követése
 > * Az exportálási sorrend megszakítása
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,7 +58,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
    ![Erőforrás létrehozása](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
    ![Azure Data Box erőforrás létrehozása](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
@@ -244,7 +242,7 @@ Ha **az XML-fájl használata** lehetőséget választja, megadhatja az exportá
 
    ![Válassza az Exportálás lehetőséget, majd az új tároló beállításai elemet.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
    ![Válassza az Exportálás lehetőséget, majd hozzon létre új tárolót.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 
@@ -332,7 +330,7 @@ Néhány fontos pont az XML-fájlokra vonatkozóan:
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Leírás |
+   | Szelektor | BLOB elérési útja | Description (Leírás) |
    | --- | --- | --- |
    | Ezzel kezdődik |/ |A Storage-fiókban lévő összes blob exportálása |
    | Ezzel kezdődik |/$root/ |A gyökér tárolóban lévő összes blob exportálása |
@@ -421,7 +419,7 @@ The following xml shows an example of the copy log when the export has errors:
 </CopyLog>
 ``` -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 

@@ -5,31 +5,29 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/30/2020
-ms.openlocfilehash: c446a7f05dce2ea6979e9810e729bdac479ae153
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 12/17/2020
+ms.openlocfilehash: a8e3dac620873ab11ae24395310066037f6d2df4
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910491"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680640"
 ---
-# <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>Címzett hozzáadása meglévő adatmegosztáshoz az Azure-adatmegosztásban
+# <a name="how-to-add-a-recipient-to-your-share"></a>Címzett hozzáadása a megosztáshoz
 
-Ez a cikk bemutatja, hogyan adhat hozzá címzetteket egy meglévő adatmegosztáshoz.
+A címzettet új megosztás létrehozásakor vagy egy meglévő megosztásban adhatja hozzá. Az Azure-beli adatmegosztás felhasználói felületén a felhasználó Azure bejelentkezési e-mail-címével adhatja hozzá a címzettet.  Az API-ból a felhasználó/szolgáltatásnév és a bérlői azonosító kombinációját használhatja. Ha meg van adva egy bérlő azonosítója, a meghívót csak ebbe a bérlőbe lehet fogadni. Az API-ból is létrehozhat egy meghívót, anélkül, hogy e-mailt küldene a címzettnek. 
 
-A címzettek megosztás létrehozásakor történő hozzáadásával kapcsolatos információkért lásd az [adatok megosztása](share-your-data.md) oktatóanyagot.
-
-## <a name="navigate-to-a-sent-data-share"></a>Navigáljon az elküldett adatmegosztáshoz
+## <a name="add-recipient-to-an-existing-share"></a>Címzett hozzáadása egy meglévő megosztáshoz
 
 Az Azure-adatmegosztás területen navigáljon az elküldött megosztáshoz, és válassza a **meghívások** fület. Itt látható az adatmegosztásra vonatkozó meghívók összes címzettje. Új hozzáadásához kattintson a **Címzett hozzáadása** lehetőségre.
 
 ![Képernyőfelvétel: kijelölt címzett hozzáadása.](./media/how-to/how-to-add-recipients/add-recipient.png)
 
-A panel a lap jobb oldalán jelenik meg. Kattintson a **Címzett hozzáadása** lehetőségre, majd adja meg az új címzett e-mail-címét az üres sorban. Tetszőleges számú címzettet adhat hozzá.
+Előugrik egy panel az oldal jobb szélén. Kattintson a **Címzett hozzáadása** lehetőségre, majd adja meg az új címzett e-mail-címét az üres sorban. Győződjön meg arról, hogy a címzett Azure bejelentkezési e-mail-címét használja (az e-mail alias használata nem fog működni). 
 
 ![Képernyőfelvétel: a címzett hozzáadása panel, ahol meghívót adhat hozzá és küldhet.](./media/how-to/how-to-add-recipients/add-recipient-side.png)
 
-Kattintson **a Hozzáadás gombra, és küldje el a meghívót** . Az új címzett (ek) meghívói e-maileket küld erre az adatmegosztásra.
+Kattintson **a Hozzáadás gombra, és küldje el a meghívót**. Az új címzett (ek) e megosztás e-mail-címzettjei lesznek elküldve.
 
 ## <a name="next-steps"></a>Következő lépések
 További információ a [meghívások megosztásra való törléséről](how-to-delete-invitation.md).

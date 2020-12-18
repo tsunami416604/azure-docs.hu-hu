@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 37cd2051670221b8b78c075f249f633f9f447099
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: c1443dcefb12a063a287e89f1c292ba39bd38dc6
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674301"
+ms.locfileid: "97680354"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: a .NET Core (C#) használata egy adatbázis lekérdezéséhez Azure SQL Database vagy Azure SQL felügyelt példányban
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,17 +32,9 @@ Ebben a rövid útmutatóban a [.net Core](https://www.microsoft.com/net/) és a
 Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége:
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Egy adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist:
+- Egy adatbázis, amelyen futtathatja a lekérdezést. 
 
-  | Művelet | SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server | Azure Synapse Analytics |
-  |:--- |:--- |:---|:---|:---|
-  | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) | [Portál](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) | [Portál](/azure/synapse-analytics/quickstart-create-workspace.md) |
-  || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) | | [Parancssori felület](/azure/synapse-analytics/quickstart-create-workspace-cli.md) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md) | [PowerShell](/azure/synapse-analytics/quickstart-create-workspace-powershell.md) |
-  || | | [Üzembehelyezési sablon](/azure/azure-sql/virtual-machines/windows/create-sql-vm-resource-manager-template.md) | [Üzembehelyezési sablon](/azure/synapse-analytics/quickstart-deployment-template-workspaces.md) | 
-  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](firewall-create-server-level-portal-quickstart.md)| [Kapcsolódás virtuális gépről](../managed-instance/connect-vm-instance-configure.md)| |
-  |||[Helyszíni kapcsolat](../managed-instance/point-to-site-p2s-configure.md) | [Kapcsolódás SQL Server-példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) |
-  ||||
+[!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 - [.Net Core az operációs rendszer](https://www.microsoft.com/net/core) telepítéséhez.
 

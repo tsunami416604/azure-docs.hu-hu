@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/30/2020
-ms.openlocfilehash: 1fdf026e9271ef6eb30c2b4ca96a04880b65be75
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/17/2020
+ms.openlocfilehash: 4e62645dd5a7a8336df4fccf12daebc730a91168
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578093"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678430"
 ---
 # <a name="security-overview-for-azure-data-share"></a>Az Azure Data Share biztonsági áttekintése
 
@@ -23,7 +23,11 @@ Az Azure-adatmegosztás kihasználja az Azure által az inaktív és az átvitel
 
 Az Azure-adatmegosztás felügyelt identitást (korábbi nevén MSI) használ az adatok megosztásához használt adattárakhoz való hozzáféréshez. Az adatszolgáltató és az adatfogyasztó között nincs hitelesítő adatok cseréje. A felügyelt identitással kapcsolatos további információkért tekintse meg az [Azure-erőforrások felügyelt identitásait](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)ismertető témakört. Az adatok megosztásához szükséges szerepkörökről és engedélyekről a [szerepkörök és követelmények](concepts-roles-permissions.md)című témakörben olvashat bővebben.
 
-Az Azure-adatmegosztás hozzáférés-vezérlése beállítható az adatmegosztási erőforrás szintjén, így biztosítva, hogy azok elérhetők legyenek a jogosultak számára. 
+## <a name="access-control"></a>Hozzáférés-vezérlés
+
+Az Azure-adatmegosztás hozzáférés-vezérlése beállítható az adatmegosztási erőforrás szintjén, így biztosítva, hogy azok elérhetők legyenek a jogosultak számára. Az adatmegosztási erőforrások tulajdonosa és közreműködői megoszthatják az adatmegosztási megosztásokat, és módosíthatják a meglévő megosztásokat. Az adatmegosztási erőforrások olvasója megtekintheti a megosztásokat, de nem végezhet módosításokat. 
+
+A megosztások létrehozása vagy fogadása után a megfelelő engedélyekkel rendelkező felhasználók módosíthatják az adatmegosztási erőforrást. Ha egy megosztást létrehozó vagy fogadó felhasználó elhagyja a szervezetet, nem szakítja meg az adatforgalom megosztását vagy leállítását. Az adatmegosztási erőforrásra vonatkozó megfelelő engedélyekkel rendelkező felhasználók továbbra is kezelhetik a megosztást.
 
 ## <a name="share-data-from-or-to-data-stores-with-firewall-enabled"></a>Adatok megosztása a vagy a rendszerből az adattárakba az engedélyezett tűzfallal
 Ha be van kapcsolva az adatok és a között a tűzfalon keresztüli fiókok megosztása, engedélyeznie kell a **megbízható Microsoft-szolgáltatások használatát** a Storage-fiókban. További részletek: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](

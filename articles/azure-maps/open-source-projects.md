@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 138160eb1515d1443302dbc23bbafa482e2eb905
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 0f0d94dbc7b2c720faa1da41a88e3c3313dac377
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904550"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680759"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps Közösség – nyílt forráskódú projektek
 
@@ -24,7 +24,7 @@ A következő lista a legnépszerűbb Azure Maps nyílt forráskódú projekteke
 
 **Robotok**
 
-| Projekt neve | Leírás |
+| Projekt neve | Description (Leírás) |
 |-|-|
 | [Bot Framework – érdekes pont – szakértelem](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Az érdeklődési pont szakértelmet biztosít a POI-val kapcsolatos képességekhez egy virtuális asszisztens számára, amely a Azure Bot Service és a bot Framework használatával Azure Maps. |
 | [Botbuilder témakörben helye](https://github.com/Microsoft/BotBuilder-Location) | A Bing Maps REST Services által működtetett, nyílt forráskódú Location Picker Control a Microsoft bot Framework szolgáltatáshoz. |
@@ -35,31 +35,39 @@ A következő lista a legnépszerűbb Azure Maps nyílt forráskódú projekteke
 
 Az alábbi lista azokat a nyílt forráskódú projekteket sorolja fel, amelyek kibővítik a Azure Maps web SDK képességeit.
 
-| Projekt neve | Leírás |
+| Projekt neve | Description (Leírás) |
 |-|-|
 | [Azure Maps animációs modul](https://github.com/Azure-Samples/azure-maps-animations) | Az Azure Maps web SDK-val használható animációk gazdag könyvtára. |
+| [Az adatAzure Maps a nézet vezérlő modulba](https://github.com/Azure-Samples/azure-maps-bring-data-into-view-control) | Egy Azure Maps web SDK-modul, amely egy olyan vezérlőt biztosít, amely megkönnyíti a térképre betöltött adatterhelések megtekintését. |
 | [Azure Maps térinformatikai vezérlő modul](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Egy Azure Maps web SDK-modul, amely egy olyan vezérlőt biztosít, amely a böngésző Térinformatikai API-ját használja a felhasználó kereséséhez a térképen. |
 | [Azure Maps kockás-adatforrás modulja](https://github.com/Azure-Samples/azure-maps-gridded-data-source) | Egy modul a Azure Maps web SDK-hoz, amely olyan adatforrást biztosít, amely egy rácsos terület celláiba helyezi a fürtöket. Ezt a műveletet számos név, például a mozaikok, az adatdobozolási vagy a hexadecimális raktárhelyek is ismerik.  |
 | [Azure Maps teljes képernyős vezérlési modul](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Egy Azure Maps web SDK-modul, amely egy vezérlőt biztosít a Térkép teljes képernyős módban való megjelenítéséhez. |
+| [Azure Maps HTML-jelölő réteg modulja](https://github.com/Azure-Samples/azure-maps-html-marker-layer) | Egy Azure Maps web SDK-modul, amely egy olyan réteget biztosít, amely egy adatforrásból származó pont adatokat jelenít meg HTML-elemekként a térképen. |
+| [Azure Maps rendszerkép-exportőr modul](https://github.com/Azure-Samples/azure-maps-image-exporter) | Egy modul a Azure Maps web SDK-hoz, amely képernyőképeket készít a térképről. |
+| [Azure Maps áttekintő Térkép modul](https://github.com/Azure-Samples/azure-maps-overview-map) | Egy Azure Maps web SDK-modul, amely egy olyan vezérlőt biztosít, amely megjeleníti a fő Térkép középpontjának áttekintési térképét. |
+| [Azure Maps méretezési sáv vezérlő modul](https://github.com/Azure-Samples/azure-maps-scale-bar-control) | Egy Azure Maps web SDK-modul, amely egy olyan vezérlőt biztosít, amely a Térkép középpontjában a képpont felbontáshoz képest megjeleníti a méretezési sávot. |
 | [Azure Maps kiválasztási vezérlő modul](https://github.com/Azure-Samples/azure-maps-selection-control) | Egy Azure Maps web SDK-modul, amely a rajzeszközökkel vagy egy Route Range (sokszög) megadásával lehetővé teszi az adatforrásban lévő adatforrások kiválasztásának szabályozását. |
+| [Azure Maps Services FELHASZNÁLÓIFELÜLET-modul](https://github.com/Azure-Samples/azure-maps-services-ui) | Webes FELHASZNÁLÓIFELÜLET-vezérlők összessége, amelyek betakarják a Azure Maps REST-szolgáltatásokat. |
+| [Azure Maps Spider-fürtök modul](https://github.com/Azure-Samples/azure-maps-spider-clusters) | Egy modul a Azure Maps web SDK-hoz, amely egy vizualizációt helyez el a térképen, amely kibővíti a fürtöket egy spirális pók-elrendezésbe. |
+| [Azure Maps messzelátó-vezérlő modul](https://github.com/Azure-Samples/azure-maps-spyglass-control) | Egy Azure Maps web SDK-modul, amely egy olyan ablakot biztosít, amely egy messzelátó belül egy adatkészletet jelenít meg a térképen.  |
 | [Azure Maps elcsúsztatási Térkép modul](https://github.com/Azure-Samples/azure-maps-swipe-map) | Egy modul a Azure Maps web SDK-hoz, amely lehetővé teszi két egymást átfedő Térkép közötti leválasztást, ideális megoldás két átfedésben lévő adatkészlet összehasonlítására. |
 | [Azure Maps szinkronizálási Térkép modul](https://github.com/Azure-Samples/azure-maps-sync-maps) | Azure Maps web SDK-modul, amely két vagy több Térkép kameráit szinkronizálja. |
-| [Azure Maps Services FELHASZNÁLÓIFELÜLET-modul](https://github.com/Azure-Samples/azure-maps-services-ui) | Webes FELHASZNÁLÓIFELÜLET-vezérlők összessége, amelyek betakarják a Azure Maps REST-szolgáltatásokat. |
 
 **Példák**
 
-| Projekt neve | Leírás |
+| Projekt neve | Description (Leírás) |
 |-|-|
 | [Azure Maps kód mintái](https://github.com/Azure-Samples/AzureMapsCodeSamples) | A webalapú alkalmazások Azure Maps használatára szolgáló mintakód-gyűjtemény. |
 | [Azure Maps gov Cloud Code-minták](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Mintakód-gyűjtemény, amely a Azure Maps Azure Government felhőben való használatára. |
 | [Azure Maps & Azure Active Directory minták](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Példák gyűjteménye, amely bemutatja, hogyan használható a Azure Active Directory a Azure Maps használatával. | 
+| [LiveMaps](https://github.com/Azure-Samples/LiveMaps) | Példa arra, hogy élő beltéri térképeket jelenít meg a Azure Maps IoT-adatairól a Azure Maps Creator használatával |
 | [Azure Maps Jupyter Notebook minták](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Python-minták gyűjteménye a Azure Maps REST Services használatával. |
 | [Azure Maps .NET UWP IoT távvezérlés](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | Ez egy minta alkalmazás, amely bemutatja, hogyan hozhat létre távolról vezérelt térképet Azure Maps és IoT hub-szolgáltatások használatával. |
 | [IoT-térelemzés implementálása az Azure Maps használatával](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | A térben és időben előforduló releváns események nyomon követése és rögzítése gyakori IoT forgatókönyv. |
 
 **Eszközök és erőforrások**
 
-| Projekt neve | Leírás |
+| Projekt neve | Description (Leírás) |
 |-|-|
 | [Azure Maps docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Forrás az összes Azure Location Based Services dokumentációhoz. |
 | [Azure Maps Creator (előzetes verzió) eszközei](https://github.com/Azure-Samples/AzureMapsCreator) | Python Tools for Azure Maps Creator (előzetes verzió) eszközei. |

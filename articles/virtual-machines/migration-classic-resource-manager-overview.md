@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 219fe2d9d8ac46ba3dbeebe6aaae9dddc0883aa0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e7d013775861f290d532e0d7c132896ebeff8ae8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500410"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680217"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Platform által támogatott IaaS-erőforrások áttelepítése a klasszikusról Azure Resource Managerra Linuxon
 
@@ -22,7 +22,7 @@ ms.locfileid: "96500410"
 
 
 
-Ez a cikk azt ismerteti, hogyan telepíthet át szolgáltatásként (IaaS) elérhető erőforrásokat a Klasszikusból a Resource Manager-alapú üzemi modellekre, és hogyan csatlakozhat az előfizetésben található két üzemi modellből származó erőforrásokhoz a virtuális hálózatok közötti átjárók használatával. További információ: [Azure Resource Manager funkciók és előnyök](../azure-resource-manager/management/overview.md). 
+Ez a cikk áttekintést nyújt a platform által támogatott áttelepítési eszközről, az Azure Service Manager (ASM) Klasszikusról Resource Manager-alapú üzemi modellre való áttelepítésének módjáról, valamint arról, hogy miként lehet erőforrásokat összekapcsolni az előfizetésben lévő két üzembe helyezési modellből a virtuális hálózat helyek közötti átjárók használatával. További információ: [Azure Resource Manager funkciók és előnyök](../azure-resource-manager/management/overview.md). 
 
 ## <a name="goal-for-migration"></a>Cél az áttelepítéshez
 A Resource Manager lehetővé teszi összetett alkalmazások sablonokon keresztüli üzembe helyezését, a virtuális gépek virtuálisgép-bővítmények használatával történő konfigurálását, valamint a hozzáférés-kezelést és a címkézést. A Azure Resource Manager méretezhető, párhuzamos üzembe helyezést biztosít a virtuális gépek számára a rendelkezésre állási csoportokban. Az új üzembe helyezési modell a számítás, a hálózat és a tárolás életciklus-kezelését is biztosítja egymástól függetlenül. Végezetül a virtuális gépek virtuális gépei általi kényszerítésével a biztonsági beállítások alapértelmezés szerint is elérhetővé válik.
@@ -37,7 +37,7 @@ A klasszikus üzemi modellből majdnem minden funkció támogatott a számítás
 * Storage-fiókok
 * Virtuális hálózatok
 * VPN-átjárók
-* Express Route Gateways _(ugyanabban az előfizetésben, mint Virtual Network csak)_
+* [Express Route Gateways](https://docs.microsoft.com/azure/expressroute/expressroute-howto-move-arm) _(ugyanabban az előfizetésben, mint Virtual Network csak)_
 * Network Security Groups (Hálózati biztonsági csoportok)
 * Útvonaltáblák
 * Fenntartott IP-címek
@@ -114,7 +114,7 @@ Bizonyos funkciók és konfigurációk jelenleg nem támogatottak; a következő
 ### <a name="unsupported-features"></a>Nem támogatott funkciók
 A következő funkciók jelenleg nem támogatottak. Szükség esetén eltávolíthatja ezeket a beállításokat, áttelepítheti a virtuális gépeket, majd újból engedélyezheti a beállításokat a Resource Manager-alapú üzemi modellben.
 
-| Erőforrás-szolgáltató | Jellemző | Ajánlás |
+| Erőforrás-szolgáltató | Szolgáltatás | Ajánlás |
 | --- | --- | --- |
 | Compute | Nem társított virtuálisgép-lemezek. | A rendszer áttelepíti a virtuális merevlemezek mögötti blobokat, amikor a rendszer áttelepíti a Storage-fiókot |
 | Compute | Virtuálisgép-lemezképek. | A rendszer áttelepíti a virtuális merevlemezek mögötti blobokat, amikor a rendszer áttelepíti a Storage-fiókot |
@@ -145,7 +145,7 @@ A következő konfigurációk jelenleg nem támogatottak.
 | Microsoft Dynamics Lifecycle Services |A Dynamics Lifecycle Services által felügyelt virtuális gépeket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |
 | Azure API Management |Azure API Management üzemelő példányokat tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. A IaaS-VNET áttelepítéséhez módosítsa az API Management üzemelő példány VNET, amely nem leállási művelet. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](migration-classic-resource-manager-deep-dive.md)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md)

@@ -1,184 +1,150 @@
 ---
-title: Szimbólum-réteg hozzáadása térképhez Azure Maps Android SDK használatával
-description: Megtudhatja, hogyan adhat hozzá egy jelölőt egy térképhez. A Microsoft Azure Maps Android SDK-t használó példa olyan szimbólum-réteget ad hozzá, amely egy adatforrásból származó pont-alapú adatokból áll.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 11/24/2020
-ms.topic: how-to
+title: Szimbólum-réteg hozzáadása az Android Maps-hez | Microsoft Azure térképek
+description: Megtudhatja, hogyan adhat hozzá egy jelölőt egy térképhez. Egy olyan példát láthat, amely a Azure Maps Android SDK-t használja egy adatforrásból származó, pont-alapú adatokból álló szimbólum réteg hozzáadásához.
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/08/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 300a7968b2072459d6d7709e4d89388e1bcf59f3
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 040fcde35707074ffaf102ed6c224b2f47a084bb
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531207"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679330"
 ---
-# <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Szimbólum-réteg hozzáadása térképhez Azure Maps Android SDK használatával
+# <a name="add-a-symbol-layer-android-sdk"></a>Szimbólum réteg hozzáadása (Android SDK)
 
-Ebből a cikkből megtudhatja, hogyan jelenítheti meg a pontok adatait egy adatforrásból szimbólumként szolgáló rétegként a Azure Maps Android SDK használatával.
+Ebből a cikkből megtudhatja, hogyan jelenítheti meg a pontok adatait egy adatforrásból szimbólumként szolgáló rétegként a Azure Maps Android SDK használatával. A szimbólum-rétegek megjelenítési pontok képként és szövegként jelennek meg a térképen.
+
+> [!TIP]
+> A szimbólumok alapértelmezés szerint az adatforrásban lévő összes geometriá koordinátáit fogják megjeleníteni. Ha úgy szeretné korlátozni a réteget, hogy csak a pont geometriai funkcióit jelenítse meg, állítsa a réteg beállítását a következőre: `filter` `eq(geometryType(), "Point")` . Ha azt szeretné, hogy a multipoint-funkciók is szerepeljenek, állítsa a réteg beállítását a következőre: `filter` `any(eq(geometryType(), "Point"), eq(geometryType(), "MultiPoint"))` .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
-3. Töltse le és telepítse a [Azure Maps Android SDK](./how-to-use-android-map-control-library.md)-t.
+Győződjön meg arról, hogy a gyors útmutató [: Android-alkalmazás létrehozása](quick-android-map.md) dokumentum lépéseit kell végrehajtania. A cikkben szereplő kódrészletek behelyezhetők a Maps `onReady` Event handlerbe.
 
 ## <a name="add-a-symbol-layer"></a>Szimbólumréteg hozzáadása
 
-Ha a szimbólum réteg használatával szeretne jelölőt hozzáadni a térképhez, kövesse az alábbi lépéseket:
+Ahhoz, hogy hozzá lehessen adni egy szimbólum réteget a térképhez, néhány lépést végre kell hajtania. Először hozzon létre egy adatforrást, és adja hozzá a térképhez. Hozzon létre egy szimbólum réteget. Ezután továbbítsa az adatforrást a szimbólum rétegbe az adatoknak az adatforrásból való lekéréséhez. Végül vegyen fel egy adatforrást az adatforrásba, hogy valami legyen megjelenítve.
 
-1. Szerkessze a **res**  >  **layout**  >  **activity_main.xml** , hogy a következő XML-fájlhoz hasonlítson:
-    
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+Az alábbi kód azt mutatja be, hogy mit kell hozzáadni a térképhez a betöltését követően. Ez a minta egy pontot jelenít meg a térképen egy szimbólum réteg használatával.
 
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="47.64"
-            app:mapcontrol_centerLng="-122.33"
-            app:mapcontrol_zoom="12"
-            />
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
 
-    </FrameLayout>
-    ```
+//Create a point and add it to the data source.
+source.add(Point.fromLngLat(0, 0));
 
-2. Másolja az alábbi kódrészletet az osztály **onCreate ()** metódusára `MainActivity.java` .
+//Create a symbol layer to render icons and/or text at points on the map.
+SymbolLayer layer = new SymbolLayer(source);
 
-    ```Java
-    mapControl.onReady(map -> {
-    
-        //Create a data source and add it to the map.
-        DataSource dataSource = new DataSource();
-        map.sources.add(dataSource);
-    
-        //Create a point feature and add it to the data source.
-        dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
-    
-        //Add a red custom image icon to the map resources.
-        map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
-    
-        //Create a symbol layer and add it to the map.
-        map.layers.add(new SymbolLayer(dataSource,
-            iconImage("my-icon")));
-        });
-    
-    ```
-    
-    Miután hozzáadta a fenti kódrészletet, a `MainActivity.java` következőhöz hasonlóan kell kinéznie:
-    
-    ```Java
-    package com.example.myapplication;
-    
-    import android.app.Activity;
-    import android.os.Bundle;
-    import com.mapbox.geojson.Feature;
-    import com.mapbox.geojson.Point;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-    import static com.microsoft.azure.maps.mapcontrol.options.SymbolLayerOptions.iconImage;
-    public class MainActivity extends AppCompatActivity {
-        
-        static{
-                AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-            }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-    
-                //Create a data source and add it to the map.
-                DataSource dataSource = new DataSource();
-                map.sources.add(dataSource);
-            
-                //Create a point feature and add it to the data source.
-                dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
-            
-                //Add a custom image icon to the map resources.
-                map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
-            
-                //Create a symbol layer and add it to the map.
-                map.layers.add(new SymbolLayer(dataSource,
-                    iconImage("my-icon")));
-            });
-        }
-    
-        @Override
-        public void onStart() {
-            super.onStart();
-            mapControl.onStart();
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }
-    }
-    ```
+//Add the layer to the map.
+map.layers.add(layer);
+```
 
-Az alkalmazás futtatásakor egy jelölőt kell látnia a térképen, ahogy az itt látható:
+A térképhez három különböző típusú pont-adattípust lehet hozzáadni:
 
-![Androidos Térkép PIN-kódja](./media/how-to-add-symbol-to-android-map/android-map-pin.png)
+- GeoJSON pont geometriája – ez az objektum csak egy pont koordinátáit tartalmazza, semmi más. A `Point.fromLngLat` statikus metódus használatával egyszerűen hozhatók létre ezek az objektumok.
+- GeoJSON multipoint geometria – Ez az objektum több pont koordinátáit tartalmazza, és semmi mást nem. Adja át a pontok tömbjét az `MultiPoint` osztálynak az objektumok létrehozásához.
+- GeoJSON funkció – ez az objektum bármilyen GeoJSON geometriát és olyan tulajdonságokat tartalmaz, amelyek a geometriához társított metaadatokat tartalmaznak.
+
+További információkért lásd az [adatforrások létrehozása](create-data-source-android-sdk.md) című dokumentumot az adatok létrehozásához és a térképhez való hozzáadásához.
+
+Az alábbi mintakód egy GeoJSON pontot hoz létre, és átadja azt a GeoJSON szolgáltatásnak, és `title` hozzáadott egy értéket a tulajdonságaihoz. A `title` tulajdonság a Térkép szimbólum ikonja fölötti szövegként jelenik meg.
+
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a point feature.
+Feature feature = Feature.fromGeometry(Point.fromLngLat(0, 0));
+
+//Add a property to the feature.
+feature.addStringProperty("title", "Hello World!");
+
+//Add the feature to the data source.
+source.add(feature);
+
+//Create a symbol layer to render icons and/or text at points on the map.
+SymbolLayer layer = new SymbolLayer(source, 
+    //Get the title property of the feature and display it on the map.
+    textField(get("title"))
+);
+
+//Add the layer to the map.
+map.layers.add(layer);
+```
+
+Az alábbi képernyőfelvételen látható, hogy a fenti kód egy tépő egy ikon és egy szöveges címke használatával.
+
+![Leképezés a ponttal megjelenített ponttal egy szimbólum-réteggel, amely egy adott pont funkció ikonját és szöveges címkéjét jeleníti meg](media/how-to-add-symbol-to-android-map/android-map-pin.png)
 
 > [!TIP]
-> Alapértelmezés szerint a szimbólum-rétegek az átfedésben lévő szimbólumok elrejtésével optimalizálja a szimbólumok megjelenítését. A nagyításhoz a rejtett szimbólumok láthatóvá válnak. A funkció letiltásához és az összes szimbólum megjelenítéséhez állítsa be a beállítást a következőre: `iconAllowOverlap` `true` .
+> Alapértelmezés szerint a szimbólum-rétegek az átfedésben lévő szimbólumok elrejtésével optimalizálja a szimbólumok megjelenítését. A nagyításhoz a rejtett szimbólumok láthatóvá válnak. Ha le szeretné tiltani ezt a funkciót, és az összes szimbólumot le szeretné jeleníteni, állítsa a és a beállításokat a következőre: `iconAllowOverlap` `textAllowOverlap` `true` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Egyéni ikon hozzáadása egy szimbólum réteghez
 
-További információk a térképen való hozzáadásával kapcsolatban:
+A szimbólumok rétegei a WebGL használatával jelennek meg. Ennek megfelelően az összes erőforrást, például ikonokat be kell tölteni a WebGL-környezetbe. Ez a minta bemutatja, hogyan adhat hozzá egyéni ikont a Térkép erőforrásaihoz. Ezt az ikont ezután a rendszer a Térkép egyéni szimbólumával jeleníti meg. A `textField` szimbólum réteg tulajdonságának meg kell adni egy kifejezést. Ebben az esetben a hőmérséklet tulajdonságot szeretnénk megjeleníteni. Mivel a hőmérséklet egy szám, azt karakterlánccá kell konvertálni. Emellett szeretnénk hozzáfűzni a "°F" kifejezést. Ehhez az összefűzéshez kifejezés használható. `concat(Expression.toString(get("temperature")), literal("°F"))`.
+
+```java
+//Load a custom icon image into the image sprite of the map.
+map.images.add("my-custom-icon", R.drawable.showers);
+
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a point feature.
+Feature feature = Feature.fromGeometry(Point.fromLngLat(-73.985708, 40.75773));
+
+//Add a property to the feature.
+feature.addNumberProperty("temperature", 64);
+
+//Add the feature to the data source.
+source.add(feature);
+
+//Create a symbol layer to render icons and/or text at points on the map.
+SymbolLayer layer = new SymbolLayer(source,
+    iconImage("my-custom-icon"),
+    iconSize(0.5f),
+
+    //Get the title property of the feature and display it on the map.
+    textField(concat(Expression.toString(get("temperature")), literal("°F"))),
+    textOffset(new Float[]{0f, -1.5f})
+);
+```
+
+Ebben a példában a következő rendszerkép be lett töltve az alkalmazás megrajzolható mappájába.
+
+| ![Rain záporok ikonjának képe](media/how-to-add-symbol-to-android-map/showers.png)|
+|:-----------------------------------------------------------------------:|
+| showers.png                                                  |
+
+A következő képernyőfelvételen a fenti kód látható, amely egy egyéni ikon és egy tépő használatával formázott szöveg címkét tartalmaz.
+
+![Térkép megjelenítése az adott pont szolgáltatás egyéni ikonját és formázott szöveges címkéjét ábrázoló szimbólum-réteggel](media/how-to-add-symbol-to-android-map/android-custom-symbol-layer.png)
+
+> [!TIP]
+> Ha csak szimbólum réteget szeretne megjeleníteni, elrejtheti a ikont az `iconImage` ikon beállításainak tulajdonságának beállításával `"none"` .
+
+## <a name="next-steps"></a>Következő lépések
+
+Az alábbi cikkekben további kódokat talál a Maps-hez való hozzáadáshoz:
 
 > [!div class="nextstepaction"]
-> [Alakzatok hozzáadása Android-térképhez](./how-to-add-shapes-to-android-map.md)
+> [Adatforrás létrehozása](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Buborékréteg hozzáadása](map-add-bubble-layer-android.md)
+
+> [!div class="nextstepaction"]
+> [Adatvezérelt stíluskifejezések használata](data-driven-style-expressions-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Funkcióinformációk megjelenítése](display-feature-information-android.md)

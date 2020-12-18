@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 12/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28637f35294e9c70cbf0e96fb2cdcb1853d2ba39
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 9b40ff3a5c9ce2103cde00b26543711d4c05efb0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992726"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028376"
 ---
 ::: zone target="docs"
 
@@ -47,7 +47,7 @@ Ebben az oktatóanyagban az alábbi témaköröket ismerheti meg:
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 * Elvégezte az [Oktatóanyag: Adatok másolása az Azure Data Boxra, majd ellenőrzése](data-box-deploy-copy-data.md) lépéseit.
-* A másolási feladatok befejeződtek, és nem látható hiba a **Csatlakozás és másolás** oldalon. A szállítás előkészítése nem futtatható, ha másolási feladatok vannak folyamatban, vagy hibák láthatók a **Csatlakozás és másolás** oldalon.
+* A másolási feladatok befejeződtek, és nem látható hiba a **Csatlakozás és másolás** oldalon. **A szállítás előkészítése** nem futtatható, ha másolási feladatok vannak folyamatban, vagy hibák láthatók a **Csatlakozás és másolás** oldalon.
 
 ## <a name="prepare-to-ship"></a>A szállítás előkészítése
 
@@ -63,8 +63,8 @@ Az adatok másolásának befejeződése után előkészítheti és elküldheti a
 
 A szállítás előkészítése előtt győződjön meg arról, hogy a másolási feladatok befejeződtek.
 
-1. Nyissa meg a helyi webes kezelőfelület **Prepare to ship** (Szállítás előkészítése) lapját, és kezdje meg az előkészületeket a szállításra. 
-2. Kapcsolja ki az eszközt a helyi webes kezelőfelületen. Válassza le a kábeleket az eszközről. 
+1. Nyissa meg a helyi webes kezelőfelület **Prepare to ship** (Szállítás előkészítése) lapját, és kezdje meg az előkészületeket a szállításra.
+2. Kapcsolja ki az eszközt a helyi webes kezelőfelületen. Válassza le a kábeleket az eszközről.
 
 A következő lépések attól függenek, hogy hol küldi vissza az eszközt.
 
@@ -74,7 +74,7 @@ A következő lépések attól függenek, hogy hol küldi vissza az eszközt.
 
 ## <a name="ship-data-box-back"></a>Data Box visszaküldése
 
-Győződjön meg arról, hogy az adatok eszközre történő másolása befejeződött, és a **Szállításra való előkészítés** futtatása sikeres volt. Az eljárások attól függnek, hogy hol küldi vissza az eszközt.
+Győződjön meg arról, hogy az adatok eszközre történő másolása befejeződött, és **A szállítás előkészítése** futtatása sikeres volt. Az eljárások attól függnek, hogy hol küldi vissza az eszközt.
 
 ::: zone-end
 
@@ -82,14 +82,14 @@ Győződjön meg arról, hogy az adatok eszközre történő másolása befejez�
 
 Az alábbi lépéseket akkor végezze el, ha az eszközt az Egyesült Államokban, Kanadában vagy Európában küldi vissza.
 
-1. Győződjön meg arról, hogy az eszköz ki van kapcsolva, és a kábelek el lettek távolítva. 
+1. Győződjön meg arról, hogy az eszköz ki van kapcsolva, és a kábelek el lettek távolítva.
 2. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
 3. Győződjön meg arról, hogy a fuvarlevélcímke látható az E-ink kijelzőn, és egyeztesse a csomagfelvételt a szállítóval. Ha a címke sérült, elveszett vagy nem jelenik meg az E-ink kijelzőn, vegye fel a kapcsolatot a Microsoft ügyfélszolgálatával. Ha az ügyfélszolgálat azt javasolja, lépjen az Azure Portalon az **Áttekintés > Fuvarlevélcímke letöltése** területre. Töltse le a fuvarlevélcímkét, és rögzítse az eszközre. 
 4. Az eszköz visszaküldésekor egyeztessen egy csomagfelvételi időpontot a UPS-szel. Csomagfelvétel ütemezéséhez:
 
     * Hívja fel a helyi UPS-t (ország-/régióspecifikus ingyenes szám).
-    * A hívás során adja meg az E-ink kijelzőn vagy a nyomtatott címkén látható visszaszállítási fuvarlevélcímke nyomkövetési számát.
-    * Ha nem adja meg a nyomkövetési számot, felárat kell fizetnie a UPS-nek a csomagfelvételkor.
+    * A hívás során adja meg az E-ink kijelzőn vagy a nyomtatott címkén látható visszaszállítási fuvarlevélcímke nyomkövetési számát. Ha nem adja meg a nyomkövetési számot, felárat kell fizetnie a UPS-nek a csomagfelvételkor.
+    * Ha bármilyen probléma merül fel a felvétel ütemezésekor, vagy ha a rendszer kéri, hogy fizessen további díjakat, forduljon az Azure Data Box üzemeltetési csapatához. Küldjön egy e-mailt a következő címre: [adbops@microsoft.com](mailto:adbops@microsoft.com).
 
     A csomagfelvétel ütemezése helyett a legközelebbi átadóhelyen is leadhatja a Data Box Disket.
 4. Miután a futár felvette és beolvasta a Data Boxot, a rendelés állapota a portálon **Szállítás alatt** állapotra módosul. A nyomkövetési azonosító is megjelenik.
@@ -153,7 +153,7 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 
 6. A csomagfelvétel lefoglalása után megerősítő e-mailt kap a Quantium Solutionstől. A megerősítő e-mail a Chakubarai-fuvarlevéllel kapcsolatos információkat is tartalmazza.
 
-Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solutions támogatásával (japán nyelven): 
+Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solutions támogatásával (japán nyelven):
 
 * E-mail: Customerservice.JP@quantiumsolutions.com 
 * Telefon: 03-5755-0150 
@@ -173,7 +173,7 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 ## <a name="singapore"></a>[Szingapúr](#tab/in-singapore)
 
 1. Őrizze meg az eszköz szállításához használt eredeti dobozt a visszaküldéshez.
-2. Jegyezze fel a nyomkövetési számot (ez a Data Box helyi webes felhasználói felületének „Prepare to Ship” (Szállítás előkészítése) lapján hivatkozási számként (reference number) jelenik meg). Ez akkor érhető el, amikor a szállítás-előkészítési lépés sikeresen befejeződik. Töltse le a fuvarlevélcímkét erről az oldalról, és rögzítse a dobozra.
+2. Jegyezze fel a nyomkövetési számot (ez a Data Box helyi webes felhasználói felületének **„Prepare to Ship” (A szállítás előkészítése)** lapján hivatkozási számként (reference number) jelenik meg). A nyomkövetési szám akkor érhető el, amikor a **szállítás-előkészítési** (Prepare to ship) lépés sikeresen befejeződik. Töltse le a fuvarlevélcímkét erről az oldalról, és rögzítse a dobozra.
 3. Kapcsolja ki az eszközt, és távolítsa el a kábeleket.
 4. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában. 
 5. Írjon e-mailt a SingPost ügyfélszolgálatának a következő sablonnal, és adja meg a nyomkövetési számot.
@@ -209,7 +209,7 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 
 1. Az eszközt az eredeti dobozban küldje vissza.
 2. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
-3. Jegyezze fel a nyomkövetési számot (ez a Data Box helyi webes felhasználói felületének **Prepare to Ship** (Szállítás előkészítése) lapján hivatkozási számként (reference number) jelenik meg). Ez akkor érhető el, amikor a szállítás-előkészítési (Prepare to ship) lépés sikeresen befejeződik. Töltse le a fuvarlevélcímkét erről az oldalról, és rögzítse a dobozra.
+3. Jegyezze fel a nyomkövetési számot (ez a Data Box helyi webes felhasználói felületének **Prepare to Ship** (Szállítás előkészítése) lapján hivatkozási számként (reference number) jelenik meg). A nyomkövetési szám akkor érhető el, amikor a szállítás-előkészítési (Prepare to ship) lépés sikeresen befejeződik. Töltse le a fuvarlevélcímkét erről az oldalról, és rögzítse a dobozra.
 4. Kérjen egy visszatérési kódot az Azure Data Box üzemeltetési csapatától. A visszatérési kódra azért van szükség, hogy vissza lehessen küldeni a csomagot az adatközpontnak. Küldjön egy e-mailt a következő címre: [adbops@microsoft.com](mailto:adbops@microsoft.com). Jegyezze fel ezt a kódot a fuvarlevélcímkére a visszaküldési cím mellé, ügyelve rá, hogy jól látható legyen.
 5. Foglaljon csomagfelvételt a DHL-lel a következő módszerek egyikével:
  
@@ -251,14 +251,14 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 2. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
 3. Hívja a **Quantum Solutionst** a **(852) 2318 1213** telefonszámon munkaidőben (hétfőtől péntekig 9 és 18 óra között).  
 4. Hivatkozzon a Microsoft Azure-csomagfelvételre, és adja meg a hivatkozási számot és a visszaküldési címkén (a vonalkód fölött) lévő nyomkövetési számot az átvétel egyeztetéséhez.
-5. Szóbeli megerősítést kap a csomagátvételi ütemtervről. Ha a futár nem érkezik meg a csomagfelvételért, hívja a Quantium Solutions telefonszámát alternatív megoldásokért.
-6. A Quantiummal folytatott csomagfelvétel-egyeztetéskor továbbítsa a megerősítést a [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) felé az alábbi sablonnal:
+5. Szóbeli megerősítést kap a csomagfelvételi ütemtervről. Ha a futár nem érkezik meg a csomagfelvételért, hívja a Quantium Solutions telefonszámát alternatív megoldásokért.
+6. A Quantium Solutionsszal folytatott csomagfelvétel-egyeztetéskor továbbítsa a megerősítést a [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) felé az alábbi sablonnal:
 
     ```output
     To: adbo@microsoft.com
     Subject: Microsoft Data Box Job: [order name] has completed copy
     Body:
-    We have confirmed the pickup details with Quantium.
+    We have confirmed the pickup details with Quantium Solutions.
 
        * Requestor name:
        * Requestor contact number:
@@ -266,7 +266,7 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
        * Pickup time:
     ```
 
-Ha bármilyen probléma merülne fel, küldjön e-mailt a Data Box Operations Asia [adbo@microsoft.com](mailto:adbo@microsoft.com) címére. A tárgy fejlécében adja meg a feladat nevét és az észlelt problémát.
+Ha problémába ütközik, küldjön e-mailt a Data Box Operations Asia számára a következő címre: [adbo@microsoft.com](mailto:adbo@microsoft.com). Az e-mailben írja meg a tapasztalt probléma/problémák részleteit, a tárgysorban pedig adja meg a feladat nevét.
 
 ::: zone target="chromeless"
 
@@ -283,7 +283,7 @@ Ha az adatok az Azure-ba történő feltöltése befejeződött, a Data Box tör
 <!--## [In Korea](#tab/in-korea) 
 
 1. Retain the original box used to ship the device for return shipment.
-2. Note down the tracking number (shown as reference number on the Prepare to Ship page of the Data Box local web UI). This is available after the prepare to ship step successfully completes. Download the shipping label from this page and paste on the packing box. 
+2. Note down the tracking number (shown as reference number on the **Prepare to Ship** page of the Data Box local web UI). The tracking number is available after the **Prepare to ship** step successfully completes. Download the shipping label from this page and paste on the packing box. 
 3. Power off the device and remove the cables.
 4. Spool and securely place the power cord that was provided with the device in the back of the device. 
 
@@ -322,9 +322,9 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ## <a name="self-managed"></a>[Önállóan felügyelt](#tab/in-selfmanaged)
 
-Ha a Data Boxot az Egyesült Államok államigazgatási szerveinél, Japánban, Szingapúrban, Koreában, Indiában, a Dél-afrikai Köztársaságban vagy Nyugat-Európában használja, és a rendelés létrehozása során az önállóan felügyelt szállítás lehetőséget választotta, kövesse az alábbi utasításokat. 
+Ha a Data Boxot az Egyesült Államok államigazgatási szerveinél, Japánban, Szingapúrban, Koreában, Indiában, a Dél-afrikai Köztársaságban vagy Nyugat-Európában használja, és a rendelés létrehozása során az önállóan felügyelt szállítás lehetőséget választotta, kövesse az alábbi utasításokat.
 
-1. Jegyezze fel a hitelesítési kódot (Authorization code), amely a Data Box helyi webes felhasználói felületének „Prepare to Ship” (Szállítás előkészítése) lapján jelenik meg a lépés sikeres befejeződése után.
+1. Jegyezze fel a hitelesítési kódot (Authorization code), amely a Data Box helyi webes felhasználói felületének **„Prepare to Ship” (A szállítás előkészítése)** lapján jelenik meg a lépés sikeres befejeződése után.
 2. Kapcsolja ki az eszközt, és távolítsa el a kábeleket. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljánál.
 3. Az alábbi sablon használatával küldjön e-mailt az Azure Data Box üzemeltetési csapatának, ha készen áll az eszköz visszaküldésére.
 

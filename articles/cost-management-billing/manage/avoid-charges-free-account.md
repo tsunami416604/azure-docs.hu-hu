@@ -6,49 +6,45 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/04/2020
 ms.author: banders
-ms.openlocfilehash: 203a3b93f200a54ec40c96ee79c7fc822fac140b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dfbfa6c97ef23976ed791fb04482346d9f336bfe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270610"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584035"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Díjak elkerülése az ingyenes Azure-fiókkal
 
-Az [ingyenes Azure-fiókhoz](https://azure.microsoft.com/free/) 200 dollár értékű, 30 napig felhasználható Azure-kredit jár, valamint 12 hónapos, mennyiségileg korlátozott hozzáférés ingyenes szolgáltatásokhoz. Az ingyenes szolgáltatások korlátainak megismeréséhez tekintse meg [az ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/). Amíg a kredit nem jár le, vagy ha csak ingyenes szolgáltatásokat használ a korlátokon belül, nem számítunk fel díjat.
+Az arra jogosult új felhasználóknak az [ingyenes Azure-fiókhoz](https://azure.microsoft.com/free/) 200 dollár értékű, 30 napig felhasználható Azure-kredit jár, valamint 12 hónapos, mennyiségileg korlátozott hozzáférés ingyenes szolgáltatásokhoz. Az ingyenes szolgáltatások korlátainak megismeréséhez tekintse meg [az ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/). Amíg a kredit nem jár le, vagy ha csak ingyenes szolgáltatásokat használ a korlátokon belül, nem számítunk fel díjat.
 
 Vizsgáljunk meg néhány indokot, amelyek miatt költségek merülhetnek fel az ingyenes Azure-fiókja használatakor.
 
 ## <a name="your-credit-runs-out-or-is-expired"></a>Ha a kreditje elfogyott vagy lejárt
 
-Ha a kredit elfogyott vagy a 30 nap elteltével lejárt, az előfizetése és szolgáltatásai le lesznek tiltva. Az Azure-szolgáltatások további használatához frissítenie kell a fiókját. További információkért lásd az [ingyenes Azure-fiók frissítését](upgrade-azure-subscription.md) ismertető cikket. A frissítés után 12 hónapig még van hozzáférése az ingyenes szolgáltatásokhoz, és csak az ingyenes szolgáltatásokon és mennyiségeken felüli használatért kell fizetnie.
+Ha a kredit elfogyott vagy a 30 nap elteltével lejárt, az előfizetése és szolgáltatásai le lesznek tiltva. Az Azure-szolgáltatások további használatához frissítenie kell a fiókját. További információkért lásd az [ingyenes Azure-fiók frissítését](upgrade-azure-subscription.md) ismertető cikket. A frissítés után 12 hónapig még továbbra is van hozzáférése az ingyenes szolgáltatásokhoz, és csak az ingyenes szolgáltatásokon és mennyiségeken felüli használatért kell fizetnie.
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>Ha a használat meghaladja az ingyenes szolgáltatások korlátait
 
-Az ingyenes Azure-fiókhoz minden hónapban korlátozott mennyiségű ingyenes szolgáltatás jár. Az ingyenes mennyiség a hónap végén lejár, és nem vihető át a következő hónapra. Tegyük fel például, hogy havonta 5 GB File Storage-tárterületet kap. Ha egy hónapban csak 2 GB-ot használ fel, a fennmaradó 3 GB nem használható fel a következő hónapban. A felszámított díjak elkerülése érdekében ügyeljen rá, hogy a használata ne haladja meg a korlátokat. Az ingyenes szolgáltatások korlátainak megismeréséhez tekintse meg [az ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/). Az ingyenes szolgáltatások használatának ellenőrzéséhez tekintse meg [az ingyenes Azure-fiókhoz kapcsolódó ingyenes szolgáltatások használatának ellenőrzését](check-free-service-usage.md) ismertető szakaszt.
+Az ingyenes Azure-fiókhoz minden hónapban korlátozott mennyiségű ingyenes szolgáltatás jár. Az ingyenes mennyiség a hónap végén lejár, és nem vihető át a következő hónapra. Tegyük fel például, hogy havonta 5 GB File Storage-tárterületet kap. Ha egy hónapban csak 2 GB-ot használ fel, a fennmaradó 3 GB nem használható fel a következő hónapban. A felszámított díjak elkerülése érdekében ügyeljen rá, hogy a használata ne haladja meg a korlátokat. Az ingyenes szolgáltatások korlátainak megismeréséhez tekintse meg [az ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/). Az ingyenes szolgáltatások használatának ellenőrzéséhez tekintse meg [az ingyenes Azure-fiókhoz kapcsolódó ingyenes szolgáltatások használatának ellenőrzését](check-free-service-usage.md) ismertető szakaszt. Ha a használat meghaladja az ingyenes szolgáltatás meghatározott mennyiségét, a korláton felüli összeget használatalapú fizetés szerint kell kiegyenlítenie. A Microsoft e-mailben küld értesítést arról, ha kimerítette a keretét.
 
 ## <a name="you-used-some-services-that-arent-free"></a>Nem ingyenes szolgáltatásokat használt
 
-Miután frissítette a fiókját, az olyan szolgáltatások használatáért, amelyek nem tartoznak az ingyenes Azure-fiókhoz mellékelt ingyenes szolgáltatások közé, használatalapú díjszabás szerint kell fizetnie. Az ingyenes fiókhoz mellékelt szolgáltatások megismeréséhez tekintse meg [az ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/). A szolgáltatások használati adatait az Azure Portalon ellenőrizheti. További információ: [Váratlan költségek elemzése](../understand/analyze-unexpected-charges.md)
+Miután frissítette a fiókját, az olyan szolgáltatások használatáért, amelyek nem tartoznak az ingyenes Azure-fiókhoz mellékelt ingyenes szolgáltatások közé, használatalapú díjszabás szerint kell fizetnie. A szolgáltatásban csak bizonyos szintek ingyenesek. Az ingyenes fiókhoz mellékelt szolgáltatások megismeréséhez tekintse meg [az ingyenes Azure-fiókkal kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/free/free-account-faq/). A szolgáltatások használati adatait az Azure Portalon ellenőrizheti. További tudnivalókért lásd [a kiadások tervezéséről és kézben tartásáról](../cost-management-billing-overview.md#plan-and-control-expenses) szóló cikket.
 
 ## <a name="you-reached-the-end-of-your-free-12-months"></a>Ha letelt az ingyenes 12 hónap
 
 Az ingyenes szolgáltatások és mennyiségek igénybevételi joga a 12 hónap elteltével lejár. Az Azure Portalon megtekintheti az ingyenes szolgáltatások lejáratának dátumát.
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. A navigációs terület bal oldalán válassza ki a **Minden szolgáltatás** elemet.
+1.  Válassza az **Előfizetések** lehetőséget.
+1.  Válassza ki azt az előfizetést, amelyet az ingyenes fiók regisztrációjakor hozott létre.
+1.  Görgessen le, és keresse meg az ingyenes szolgáltatások rácsát. Válassza ki a rács bal felső részén található eszköztippet.
+    ![Képernyőkép, amely megmutatja, hol tekintheti meg az ingyenes fiók előnyeinek lejárati idejét](./media/avoid-charges-free-account/freeaccount-benefits-expiration-date.png)
 
-2. A navigációs terület bal oldalán válassza ki a **Minden szolgáltatás** elemet.
-
-3.  Válassza az **Előfizetések** lehetőséget.
-
-4.  Válassza ki azt az előfizetést, amelyet az ingyenes fiók regisztrációjakor hozott létre.
-
-5.  Görgessen le, és keresse meg az ingyenes szolgáltatások rácsát. Kattintson a rács bal felső részén található eszköztippre.
-
-![Képernyőkép, amely megmutatja, hol tekintheti meg az ingyenes fiók előnyeinek lejárati idejét](./media/avoid-charges-free-account/freeaccount-benefits-expiration-date.png)
-
+A Microsoft e-mailben küld értesítést arról, ha eljött a frissítés ideje.
 
 Az ingyenes szolgáltatások és mennyiségek lejárata után az esetlegesen használt szolgáltatások díját használatalapú díjszabással számítjuk fel. Az Azure Portal használatával törölheti a nem használt szolgáltatások erőforrásait. Ha nem szándékozik Azure-szolgáltatásokat használni, [megszüntetheti az előfizetését](cancel-azure-subscription.md).
 
@@ -56,5 +52,5 @@ Az ingyenes szolgáltatások és mennyiségek lejárata után az esetlegesen has
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Ingyenes Azure-fiók frissítése](upgrade-azure-subscription.md)

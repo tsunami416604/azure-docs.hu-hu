@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fc890dbaf717d3eb9ec87afcb69c87e80c7f14bc
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000453"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680955"
 ---
 # <a name="collect-data-from-models-in-production"></a>Adatok gyűjtése üzemi modellből
 
@@ -116,6 +116,12 @@ Az adatgyűjtés engedélyezéséhez a következőket kell tennie:
 
 1. Új rendszerkép létrehozásához és a Machine learning-modell üzembe helyezéséhez tekintse meg a [hogyan kell üzembe helyezni és hol](how-to-deploy-and-where.md).
 
+1. Adja hozzá az "Azure-monitoring" pip-csomagot a webszolgáltatás-környezet Conda:
+  ```Python
+    env = Environment('webserviceenv')
+    env.python.conda_dependencies = CondaDependencies.create(conda_packages=['numpy'],pip_packages=['azureml-defaults','azureml-monitoring','inference-schema[numpy-support]'])
+  ```
+
 
 ## <a name="disable-data-collection"></a>Adatgyűjtés letiltása
 
@@ -208,6 +214,6 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
 1. Az adatai megtekintéséhez és elemzéséhez kövesse a sablon lépéseit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gyűjtött adatokra vonatkozó [adateltolódás észlelése](how-to-monitor-datasets.md) .

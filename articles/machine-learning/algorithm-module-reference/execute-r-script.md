@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/02/2020
-ms.openlocfilehash: 57b4b6f3f49e9b82ada4b37c8e2de0697781e063
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 12/17/2020
+ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510590"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679103"
 ---
 # <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
@@ -50,6 +50,9 @@ További R-csomagok telepítéséhez használja a `install.packages()` metódust
 
 > [!NOTE]
 > A csomagok telepítésekor a CRAN-tárházat kell megadni, például: `install.packages("zoo",repos = "http://cran.us.r-project.org")` .
+
+> [!WARNING]
+> A Excute R script modul nem támogatja olyan csomagok telepítését, amelyek natív fordítást igényelnek, például a csomaghoz, amelyhez a `qdap` Java és a csomag szükséges, `drc` amelyekhez C++ szükséges. Ennek az az oka, hogy ez a modul egy olyan előre telepített környezetben fut, amely nem rendszergazdai jogosultsággal rendelkezik.
 
 Ez a példa bemutatja az állatkert telepítését:
 ```R
@@ -489,6 +492,6 @@ Jelenleg a következő előre telepített R-csomagok érhetők el:
 | zeallot      | 0.1.0      | 
 | zoo          | 1.8-6      | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

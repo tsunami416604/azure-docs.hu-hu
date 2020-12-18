@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f4b0642ce54b862b4d4c7b9663cf10e74b206281
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187068"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680489"
 ---
-# <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Oktatóanyag – Android-alkalmazás migrálása a Google Mapsből
+# <a name="tutorial-migrate-an-android-app-from-google-maps"></a>Oktatóanyag: Android-alkalmazás migrálása a Google Mapsből
 
 A Azure Maps Android SDK egy olyan API-felülettel rendelkezik, amely hasonló a web SDK-hoz. Ha ezekkel az SDK-k valamelyikével fejlesztett ki, akkor az egyes fogalmak, ajánlott eljárások és architektúrák közül sokat alkalmazunk. Az oktatóanyag során a következőket fogja elsajátítani:
 
@@ -33,9 +33,9 @@ Az összes példa a javában van megadva. a Kotlin azonban a Azure Maps Android 
 
 Az Android SDK Azure Maps használatával történő fejlesztésével kapcsolatos további információkért tekintse meg a [Azure Maps Android SDK útmutatói](how-to-use-android-map-control-library.md)útmutatóit.
 
-## <a name="prerequisites"></a>Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+1. Hozzon létre egy Azure Maps fiókot a [Azure Portalba](https://portal.azure.com)való bejelentkezéssel. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
@@ -46,14 +46,14 @@ A Google-t vagy Azure Mapst használó Android-alkalmazásokban hasonló lépés
 * Egy API-vagy előfizetési kulcs beszerzése a platformhoz való hozzáféréshez.
 * Adjon hozzá néhány XML-t egy tevékenységhez, hogy meghatározza, hol kell megjeleníteni a térképet, és hogy hogyan kell meghatározni.
 * Bírálja felül a Térkép nézetet tartalmazó tevékenység összes életciklus-módszerét a Map osztály megfelelő módszereire. Különösen a következő módszereket kell felülbírálnia:
-    * `onCreate(Bundle)`
-    * `onStart()`
-    * `onResume()`
-    * `onPause()`
-    * `onStop()`
-    * `onDestroy()`
-    * `onSaveInstanceState(Bundle)`
-    * `onLowMemory()`
+  * `onCreate(Bundle)`
+  * `onStart()`
+  * `onResume()`
+  * `onPause()`
+  * `onStop()`
+  * `onDestroy()`
+  * `onSaveInstanceState(Bundle)`
+  * `onLowMemory()`
 * Várjon, amíg a Térkép készen áll a hozzáférésre és a program futtatására.
 
 ### <a name="before-google-maps"></a>Előtte: Google Maps
@@ -165,9 +165,9 @@ Ha az Androidhoz készült Azure Maps SDK-val szeretne térképet megjeleníteni
 
 1. Nyissa meg a legfelső szintű **Build. gradle** fájlt, és adja hozzá a következő kódot a **minden projekt** blokk szakaszhoz:
 
-    ```JAVA
+    ```java
     maven {
-            url "https://atlas.microsoft.com/sdk/android"
+        url "https://atlas.microsoft.com/sdk/android"
     }
     ```
 
@@ -186,12 +186,12 @@ Ha az Androidhoz készült Azure Maps SDK-val szeretne térképet megjeleníteni
 
     3. Módosítsa a függőségek blokkját. Új implementációs függőségi vonal hozzáadása a legújabb Azure Maps Android SDK-hoz:
 
-        ```java
-        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
+        ```Java
+        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
         ```
 
         > [!Note]
-        > A Azure Maps Android SDK-t rendszeresen frissítjük és bővítettük. A legújabb Azure Maps verziószámának beszerzéséhez tekintse meg az [első lépések az Android Map Control](how-to-use-android-map-control-library.md) használatával című témakört. Azt is megteheti, hogy a verziószám a "0,2" értékről "0 +" értékre van állítva, hogy a kód mindig a legújabb verzióra mutasson.
+        > A verziószámot a "0 +" értékre állítva beállíthatja, hogy a kód mindig a legújabb verzióra mutasson.
 
     4. Nyissa meg a **fájlt** az eszköztáron, majd kattintson a **szinkronizálás projekt Gradle-fájlokkal** elemre.
 
@@ -224,98 +224,99 @@ Ha az Androidhoz készült Azure Maps SDK-val szeretne térképet megjeleníteni
 
     A Térkép vezérlőelem saját életciklus-metódusokat tartalmaz az Android OpenGL-életciklusának kezeléséhez. Ezeket a metódusokat közvetlenül a befoglalt tevékenységből kell meghívni. A Térkép vezérlőelem életciklus-módszereinek helyes meghívásához felül kell bírálnia a következő életciklus-metódusokat a Térkép vezérlőelemet tartalmazó tevékenységben. Hívja meg a megfelelő leképezés-vezérlési módszert.
 
-    * `onCreate(Bundle)` 
-    * `onStart()` 
-    * `onResume()` 
-    * `onPause()` 
-    * `onStop()` 
-    * `onDestroy()` 
-    * `onSaveInstanceState(Bundle)` 
+    * `onCreate(Bundle)`
+    * `onStart()`
+    * `onResume()`
+    * `onPause()`
+    * `onStop()`
+    * `onDestroy()`
+    * `onSaveInstanceState(Bundle)`
     * `onLowMemory()`
 
     Szerkessze a **MainActivity. Java** fájlt a következőképpen:
 
-    ```java
+    ```Java
     package com.example.myapplication;
-
-    import android.support.v7.app.AppCompatActivity;
-    import android.os.Bundle;
+    
+    //For older versions use: import android.support.v7.app.AppCompatActivity; 
+    import androidx.appcompat.app.AppCompatActivity;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
     import com.microsoft.azure.maps.mapcontrol.options.MapStyle;
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-
+    
     public class MainActivity extends AppCompatActivity {
-     
-        static {
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-
-        MapControl mapControl;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
-            mapControl = findViewById(R.id.mapcontrol);
-
-            mapControl.onCreate(savedInstanceState);
     
-            //Wait until the map resources are ready.
-            mapControl.onReady(map -> {
-                //Add your post map load code here.
-    
-            });
-        }
+    static {
+        AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
 
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-
-        @Override
-        protected void onStart(){
-            super.onStart();
-            mapControl.onStart();
-        }
-
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }
+        //Alternatively use Azure Active Directory authenticate.
+        //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
     }
+
+    MapControl mapControl;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mapControl = findViewById(R.id.mapcontrol);
+
+        mapControl.onCreate(savedInstanceState);
+
+        //Wait until the map resources are ready.
+        mapControl.onReady(map -> {
+            //Add your post map load code here.
+
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapControl.onResume();
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        mapControl.onStart();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapControl.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mapControl.onStop();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapControl.onLowMemory();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapControl.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapControl.onSaveInstanceState(outState);
+    }}
     ```
 
 Ha futtatja az alkalmazást, a Térkép vezérlőelem a következő képen látható módon lesz betöltve.
-
 
 ![Egyszerű Azure Maps](media/migrate-google-maps-android-app/simple-azure-maps.png)
 
@@ -359,7 +360,7 @@ static {
     AzureMaps.setLanguage("fr-FR");
 
     //Set the regional view to be used by Azure Maps.
-    AzureMaps.setView("auto");
+    AzureMaps.setView("Auto");
 }
 ```
 
@@ -371,7 +372,7 @@ A második lehetőség, hogy átadja a nyelvet, és megtekinti az adatokat a Té
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="auto"
+    app:mapcontrol_view="Auto"
     />
 ```
 
@@ -379,8 +380,10 @@ A harmadik lehetőség az, hogy a Maps metódussal program a nyelv és a region�
 
 ```java
 mapControl.onReady(map -> {
-    map.setStyle(StyleOptions.language("fr-FR"));
-    map.setStyle(StyleOptions.view("auto"));
+    map.setStyle(
+        language("fr-FR"),
+        view("Auto")
+    );
 });
 ```
 
@@ -436,7 +439,7 @@ A Térkép nézetet a Maps és a metódusok használatával lehet programozni `s
 ```java
 mapControl.onReady(map -> {
     //Set the camera of the map.
-    map.setCamera(center(35.0272, -111.0225), zoom(14));
+    map.setCamera(center(Point.fromLngLat(-111.0225, 35.0272)), zoom(14));
 
     //Set the style of the map.
     map.setStyle(style(MapStyle.SATELLITE));
@@ -492,10 +495,8 @@ mapControl.onReady(map -> {
 
 Az egyéni rendszerképeket egy térképen ábrázoló pontok ábrázolására lehet használni. Az alábbi példákban található Térkép egyéni rendszerképet használ egy pont megjelenítésére a térképen. A pont a következő szélességben: 51,5 és hosszúság:-0,2. A horgony kitolja a jelölő pozícióját, hogy a gombostű ikon a térképen a megfelelő pozícióval legyen igazítva.
 
-<center>
-
 ![sárga gombostű-rendszerkép](media/migrate-google-maps-web-app/yellow-pushpin.png)<br/>
-yellow-pushpin.png</center>
+yellow-pushpin.png
 
 Mindkét példában megjelenik a fenti rendszerkép az alkalmazások erőforrásainak megrajzolható mappájába.
 
@@ -666,6 +667,7 @@ mapControl.onReady(map -> {
         strokeWidth(2f)));
 });
 ```
+
 ![Azure Maps sokszög](media/migrate-google-maps-android-app/azure-maps-polygon.png)
 
 ## <a name="overlay-a-tile-layer"></a>Csempe rétegének átfedése
@@ -758,18 +760,13 @@ mapControl.onReady(map -> {
 
 ![Azure Maps forgalom](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+
+Nincs kitakarítható erőforrás.
+
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az Azure Maps Android SDK-ról:
+További információ a Azure Maps áttelepítéséről:
 
 > [!div class="nextstepaction"]
-> [Az Android Térkép vezérlőelem használata](how-to-use-android-map-control-library.md)
-
-> [!div class="nextstepaction"]
-> [Szimbólum réteg hozzáadása Android-térképhez](how-to-add-symbol-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [Alakzatok hozzáadása Android-térképhez](./how-to-add-shapes-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [Térkép stílusainak módosítása Android-térképeken](./set-android-map-styles.md)
+> [Androidos alkalmazás migrálása](migrate-from-google-maps-android-app.md)

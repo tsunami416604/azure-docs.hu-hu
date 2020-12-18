@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e64df21b31d686b72b210d2c62956745350891f5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cd64c80acceb1542c080fc45efbce59f287d448a
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895392"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680683"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>A Azure Maps térbeli IO-modul használata
 
@@ -30,10 +30,9 @@ Ebből az útmutatóból megtudhatja, hogyan integrálhatja és használhatja a 
 
 Ez a videó áttekintést nyújt a térbeli IO-modulról a Azure Maps web SDK-ban.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Térbeli adatainak egyszerű integrálása a Azure Mapsba – Microsoft Channel 9 videó"></iframe>
-
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player?format=ny]
 
 > [!WARNING]
 > Csak olyan adatok és szolgáltatások használata, amelyek egy megbízható forrásból származnak, különösen akkor, ha egy másik tartományban hivatkozik rá. A térbeli IO-modul a kockázatok minimalizálására tesz lépéseket, azonban a legbiztonságosabb megközelítés nem teszi lehetővé, hogy az alkalmazás danagerous-adatai bekezdődjön. 

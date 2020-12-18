@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 1035f7fb34ed5b2b11e3ef472ccda7cccc30f652
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4b5bbe19ddeda7c6b313186b7e24532a294f7253
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359030"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680843"
 ---
-# <a name="tutorial-return-azure-data-box-preview"></a>Oktatóanyag: visszatérési Azure Data Box (előzetes verzió)
+# <a name="tutorial-return-azure-data-box"></a>Oktatóanyag: visszatérési Azure Data Box
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet visszaadni Azure Data Box és az adattörlést, amint az eszköz beérkeznek az Azure-beli adatba.
 
@@ -27,8 +27,6 @@ Ebben az oktatóanyagban az alábbi témaköröket ismerheti meg:
 > * A szállítás előkészítése
 > * A Data Box elküldése a Microsoftnak
 > * Adatok törlése a Data Boxról
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 

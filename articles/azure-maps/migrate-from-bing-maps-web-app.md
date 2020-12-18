@@ -9,29 +9,46 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590001"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679394"
 ---
-# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Oktatóanyag – webalkalmazás migrálása a Bing Maps szolgáltatásból
+# <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Oktatóanyag: webalkalmazás migrálása a Bing Mapsből
 
-A Bing Maps szolgáltatást használó webalkalmazások gyakran a Bing Maps V8 JavaScript SDK-t használják. A Azure Maps web SDK a megfelelő Azure-alapú SDK, amelybe migrálni lehet. A Azure Maps web SDK lehetővé teszi, hogy az interaktív térképeket saját tartalmakkal és képekkel testreszabja a webes vagy mobil alkalmazásaiban való megjelenítéshez. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. Fejlessze az SDK-t JavaScript vagy írógéppel használatával.
+A Bing Maps szolgáltatást használó webalkalmazások gyakran a Bing Maps V8 JavaScript SDK-t használják. A Azure Maps web SDK a megfelelő Azure-alapú SDK, amelybe migrálni lehet. A Azure Maps web SDK lehetővé teszi, hogy az interaktív térképeket saját tartalmakkal és képekkel testreszabja a webes vagy mobil alkalmazásaiban való megjelenítéshez. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. Fejlessze az SDK-t JavaScript vagy írógéppel használatával. Az oktatóanyag során a következőket fogja elsajátítani:
+
+> [!div class="checklist"]
+> * Térkép betöltése
+> * Térkép honosítása
+> * Pushpins, vonalláncok és sokszögek hozzáadása.
+> * Információk megjelenítése előugró ablakban vagy bezárása
+> * KML-és GeoJSON-információk betöltése és megjelenítése
+> * Fürt pushpins
+> * Csempe rétegének átfedése
+> * Forgalomadatok megjelenítése
+> * Vízszintes átfedés hozzáadása
 
 Ha egy meglévő webalkalmazást telepít át, ellenőrizze, hogy a nyílt forráskódú Térkép vezérlőelem-függvénytárat, például a céziumot, a betegtájékoztatót és a OpenLayers használja-e. Ha így van, és továbbra is használni szeretné ezt a könyvtárat, akkor a Azure Maps csempe-szolgáltatásokhoz (a[közúti csempék](/rest/api/maps/render/getmaptile) \| [műholdas csempéi](/rest/api/maps/render/getmapimagerytile)) csatlakoztatható. Az alábbi hivatkozásokkal megtudhatja, hogyan használhatja a Azure Maps-t néhány gyakran használt nyílt forráskódú Térkép vezérlőelem-függvénytárban.
 
--   Cézium – a webes 3D Térkép vezérlőelem. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentáció](https://cesiumjs.org/)
--   Szórólap – kis méretű 2D Térkép vezérlőelem a weben. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentáció](https://leafletjs.com/)
--   OpenLayers – a kivetítéseket támogató webes 2D Térkép vezérlőelem. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentáció](https://openlayers.org/)
+* Cézium – a webes 3D Térkép vezérlőelem. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentáció](https://cesiumjs.org/)
+* Szórólap – kis méretű 2D Térkép vezérlőelem a weben. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentáció](https://leafletjs.com/)
+* OpenLayers – a kivetítéseket támogató webes 2D Térkép vezérlőelem. [Mintakód](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentáció](https://openlayers.org/)
 
 Ha JavaScript-keretrendszer használatával fejleszt, a következő nyílt forráskódú projektek egyike hasznos lehet:
 
-- [ng-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -szögletes 10 burkoló az Azure Maps-ben.
-- [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – Azure Maps Blazer-összetevő.
-- [Azure Maps reagáló összetevő](https://github.com/WiredSolutions/react-azure-maps) – a Azure Maps vezérlőre reagáló burkoló.
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – egy Azure Maps összetevő a Vue alkalmazáshoz.
+* [ng-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -szögletes 10 burkoló az Azure Maps-ben.
+* [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – Azure Maps Blazer-összetevő.
+* [Azure Maps reagáló összetevő](https://github.com/WiredSolutions/react-azure-maps) – a Azure Maps vezérlőre reagáló burkoló.
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – egy Azure Maps összetevő a Vue alkalmazáshoz.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 ## <a name="key-features-support"></a>A főbb funkciók támogatása
 
@@ -68,24 +85,24 @@ A Azure Maps számos további [nyílt forráskódú modult is tartalmaz a webes 
 
 A Bing Maps és a Azure Maps web SDK-k közötti főbb különbségek a következők:
 
--   Amellett, hogy a Azure Maps web SDK eléréséhez üzemeltetett végpontot biztosít, egy NPM-csomag is elérhető a web SDK alkalmazásba való beágyazásához, ha az előnyben részesített. További információkért tekintse meg ezt a [dokumentációt](./how-to-use-map-control.md) . Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz.
--   A Bing Maps az SDK két üzemeltetett ágát biztosítja. Kiadás és kísérleti. A kísérleti ág naponta több frissítést is kaphat, amikor új fejlesztés zajlik. Azure Maps csak a kiadási ágakat üzemelteti, de a kísérleti funkciók egyéni modulokként jönnek létre a nyílt forráskódú Azure Maps-mintakód projektben. A Bing Maps-ben egy fagyasztott ág is volt, amely ritkábban frissült, így csökkentve a kiadás miatti változtatások kockázatát. Itt Azure Maps használhatja a NPM modult, és rámutathat bármely korábbi alverzióra.
+* Amellett, hogy a Azure Maps web SDK eléréséhez üzemeltetett végpontot biztosít, egy NPM-csomag is elérhető a web SDK alkalmazásba való beágyazásához, ha az előnyben részesített. További információkért tekintse meg ezt a [dokumentációt](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) . Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz.
+* A Bing Maps az SDK két üzemeltetett ágát biztosítja. Kiadás és kísérleti. A kísérleti ág naponta több frissítést is kaphat, amikor új fejlesztés zajlik. Azure Maps csak a kiadási ágakat üzemelteti, de a kísérleti funkciók egyéni modulokként jönnek létre a nyílt forráskódú Azure Maps-mintakód projektben. A Bing Maps-ben egy fagyasztott ág is volt, amely ritkábban frissült, így csökkentve a kiadás miatti változtatások kockázatát. Itt Azure Maps használhatja a NPM modult, és rámutathat bármely korábbi alverzióra.
 
 > [!TIP]
 > Azure Maps közzéteszi az SDK minified és unminified verzióit is. Egyszerű eltávolítás `.min` a fájlnevek közül. A unminified verziója hasznos lehet a hibák hibakeresése során, de ügyeljen arra, hogy a minified-verziót éles környezetben használja, hogy kihasználhassa a kisebb fájlméretet.
 
--   Miután létrehozta a Térkép osztály egy példányát a Azure Mapsban, a kódnak meg kell várnia, amíg a térképek `ready` vagy az `load` esemény bekerül a térképre. Ezek az események biztosítják, hogy a Térkép összes erőforrása be legyen töltve, és készen álljon a hozzáférésre.
--   Mindkét platform egy hasonló csemperendszer használatát használja az alaptérképekhez, azonban a Bing Maps csempéi a dimenzióban 256 képpont méretűek, míg a Azure Maps csempéi 512 képpont méretűek. Ennek megfelelően, ha ugyanazt a leképezési nézetet szeretné levonni a Bing Maps Azure Maps, a Bing Maps-ben használt nagyítási szintet egy Azure Maps kell kivonnia.
--   A Bing Maps-koordinátákat úgy nevezzük, ahogy `latitude, longitude` Azure Maps használja `longitude, latitude` . Ez a formátum a `[x, y]` legtöbb GIS-platform által követett szabványhoz igazodik.
+* Miután létrehozta a Térkép osztály egy példányát a Azure Mapsban, a kódnak meg kell várnia, amíg a térképek `ready` vagy az `load` esemény bekerül a térképre. Ezek az események biztosítják, hogy a Térkép összes erőforrása be legyen töltve, és készen álljon a hozzáférésre.
+* Mindkét platform egy hasonló csemperendszer használatát használja az alaptérképekhez, azonban a Bing Maps csempéi a dimenzióban 256 képpont méretűek, míg a Azure Maps csempéi 512 képpont méretűek. Ennek megfelelően, ha ugyanazt a leképezési nézetet szeretné levonni a Bing Maps Azure Maps, a Bing Maps-ben használt nagyítási szintet egy Azure Maps kell kivonnia.
+* A Bing Maps-koordinátákat úgy nevezzük, ahogy `latitude, longitude` Azure Maps használja `longitude, latitude` . Ez a formátum a `[x, y]` legtöbb GIS-platform által követett szabványhoz igazodik.
 
--   A Azure Maps web SDK alakzatai a GeoJSON sémán alapulnak. A segítő osztályok az [Atlas. adatnévtéren](/javascript/api/azure-maps-control/atlas.data)keresztül érhetők el. Az Atlas is rendelkezésre áll [. ](/javascript/api/azure-maps-control/atlas.shape) Az GeoJSON objektumok becsomagolásához használható Shape osztály, amely lehetővé teszi, hogy a rendszer könnyen frissítse és karbantartsa azokat az adatkezelési módszerekkel.
--   A Azure Mapsban lévő koordináták olyan pozicionálási objektumok, amelyek egyszerű szám tömbként adhatók meg a formátumban `[longitude, latitude]` vagy `new atlas.data.Position(longitude, latitude)` .
+* A Azure Maps web SDK alakzatai a GeoJSON sémán alapulnak. A segítő osztályok az [Atlas. adatnévtéren](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)keresztül érhetők el. Az Atlas is rendelkezésre áll [. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) Az GeoJSON objektumok becsomagolásához használható Shape osztály, amely lehetővé teszi, hogy a rendszer könnyen frissítse és karbantartsa azokat az adatkezelési módszerekkel.
+* A Azure Mapsban lévő koordináták olyan pozicionálási objektumok, amelyek egyszerű szám tömbként adhatók meg a formátumban `[longitude, latitude]` vagy `new atlas.data.Position(longitude, latitude)` .
 
 > [!TIP]
 > A position osztály statikus segítő funkcióval rendelkezik a formátumú koordináták importálásához `latitude, longitude` . Az [Atlas. adat. position. fromLatLng](/javascript/api/azure-maps-control/atlas.data.position)függvény gyakran helyettesítheti a `new Microsoft.Maps.Location` függvényt a Bing Maps Code-ban.
 
--   Ahelyett, hogy a térképhez hozzáadott összes alakzaton adja meg a stílusra vonatkozó információkat, Azure Maps elkülöníti az adatok stílusait. Az adatforrások tárolják az adatforrásokat, és olyan renderelési rétegekhez kapcsolódnak, amelyeket Azure Maps kód használ az adatmegjelenítéshez. Ez a megközelítés nagyobb teljesítménybeli előnyt biztosít. Emellett számos réteg támogatja az adatvezérelt stílust, ahol az üzleti logika hozzáadhatók a Rétegstílus beállításaihoz, amely megváltoztatja az egyes alakzatok rétegen belüli megjelenítését az alakzatban definiált tulajdonságok alapján.
--   A Azure Maps számos hasznos térbeli matematikai függvényt biztosít a `atlas.math` névtérben, azonban ezek eltérnek a Bing Maps térbeli matematikai moduljában található adatoktól. Az elsődleges különbség az, hogy Azure Maps nem biztosít beépített függvényeket olyan bináris műveletekhez, mint például a Union és az metszet, azonban mivel a Azure Maps a nyílt szabványú GeoJSON alapul, számos nyílt forráskódú függvénytár érhető el. Egy népszerű lehetőség, amely jól működik Azure Maps és egy tonna térbeli matematikai képességet biztosít a [Turf js](http://turfjs.org/)-nek.
+* Ahelyett, hogy a térképhez hozzáadott összes alakzaton adja meg a stílusra vonatkozó információkat, Azure Maps elkülöníti az adatok stílusait. Az adatforrások tárolják az adatforrásokat, és olyan renderelési rétegekhez kapcsolódnak, amelyeket Azure Maps kód használ az adatmegjelenítéshez. Ez a megközelítés nagyobb teljesítménybeli előnyt biztosít. Emellett számos réteg támogatja az adatvezérelt stílust, ahol az üzleti logika hozzáadhatók a Rétegstílus beállításaihoz, amely megváltoztatja az egyes alakzatok rétegen belüli megjelenítését az alakzatban definiált tulajdonságok alapján.
+* A Azure Maps számos hasznos térbeli matematikai függvényt biztosít a `atlas.math` névtérben, azonban ezek eltérnek a Bing Maps térbeli matematikai moduljában található adatoktól. Az elsődleges különbség az, hogy Azure Maps nem biztosít beépített függvényeket olyan bináris műveletekhez, mint például a Union és az metszet, azonban mivel a Azure Maps a nyílt szabványú GeoJSON alapul, számos nyílt forráskódú függvénytár érhető el. Egy népszerű lehetőség, amely jól működik Azure Maps és egy tonna térbeli matematikai képességet biztosít a [Turf js](http://turfjs.org/)-nek.
 
 Lásd még a [Azure Maps szószedetet](./glossary.md) a Azure Mapshoz társított terminológia részletes listájához.
 
@@ -95,41 +112,40 @@ A következő gyűjtemény az egyes platformokra vonatkozik, amelyek általános
 
 **Témakörök**
 
-- [Térkép betöltése](#load-a-map)
-- [A Térkép honosítása](#localizing-the-map)
-- [A Térkép nézet beállítása](#setting-the-map-view)
-- [Gombostű hozzáadása](#adding-a-pushpin)
-- [Egyéni gombostű hozzáadása](#adding-a-custom-pushpin)
-- [Vonallánc hozzáadása](#adding-a-polyline)
-- [Sokszög hozzáadása](#adding-a-polygon)
-- [Bezárása megjelenítése](#display-an-infobox)
-- [Gombostű-fürtözés](#pushpin-clustering)
-- [Hő-Térkép hozzáadása](#add-a-heat-map)
-- [Csempe rétegének átfedése](#overlay-a-tile-layer)
-- [Forgalomadatok megjelenítése](#show-traffic-data)
-- [Vízszintes átfedés hozzáadása](#add-a-ground-overlay)
-- [KML-adatértékek hozzáadása a térképhez](#add-kml-data-to-the-map)
-- [Rajzolási eszközök hozzáadása](#add-drawing-tools)
-
+* [Térkép betöltése](#load-a-map)
+* [A Térkép honosítása](#localizing-the-map)
+* [A Térkép nézet beállítása](#setting-the-map-view)
+* [Gombostű hozzáadása](#adding-a-pushpin)
+* [Egyéni gombostű hozzáadása](#adding-a-custom-pushpin)
+* [Vonallánc hozzáadása](#adding-a-polyline)
+* [Sokszög hozzáadása](#adding-a-polygon)
+* [Bezárása megjelenítése](#display-an-infobox)
+* [Gombostű-fürtözés](#pushpin-clustering)
+* [Hő-Térkép hozzáadása](#add-a-heat-map)
+* [Csempe rétegének átfedése](#overlay-a-tile-layer)
+* [Forgalomadatok megjelenítése](#show-traffic-data)
+* [Vízszintes átfedés hozzáadása](#add-a-ground-overlay)
+* [KML-adatértékek hozzáadása a térképhez](#add-kml-data-to-the-map)
+* [Rajzolási eszközök hozzáadása](#add-drawing-tools)
 
 ### <a name="load-a-map"></a>Térkép betöltése
 
 A Térkép betöltése mindkét SDK-ban ugyanezeket a lépéseket követi;
 
--   Adjon hozzá egy hivatkozást a Map SDK-hoz.
--   Adjon hozzá egy `div` címkét az oldal törzséhez, amely helyőrzőként fog működni a térképen.
--   Hozzon létre egy JavaScript-függvényt, amely akkor lesz meghívva, amikor a lap betöltődött.
--   Hozza létre a megfelelő Térkép osztály egy példányát.
+* Adjon hozzá egy hivatkozást a Map SDK-hoz.
+* Adjon hozzá egy `div` címkét az oldal törzséhez, amely helyőrzőként fog működni a térképen.
+* Hozzon létre egy JavaScript-függvényt, amely akkor lesz meghívva, amikor a lap betöltődött.
+* Hozza létre a megfelelő Térkép osztály egy példányát.
 
 **Néhány kulcsfontosságú különbség**
 
--   A Bing Maps megköveteli az API-k vagy térképi beállítások parancsfájl-hivatkozásában megadott fiók kulcsát. A Azure Maps hitelesítési hitelesítő adatai a Map osztály beállításaiként vannak megadva. Ez lehet előfizetés-kulcs vagy Azure Active Directory-információ.
--   A Bing Maps egy visszahívási függvényt vesz igénybe az API parancsfájl-hivatkozásában, amely egy inicializálási függvény hívására szolgál a Térkép betöltéséhez. A Azure Maps a lap onload eseményét kell használni.
--   Ha AZONOSÍTÓval hivatkozik arra az `div` elemre, amelyet a Térkép megjelenít, a Bing Maps egy HTML-választót (azaz) használ `#myMap` , míg a Azure Maps csak az azonosító értéket (azaz) használja `myMap` .
--   A Azure Mapsban lévő koordináták olyan pozicionálási objektumok, amelyek egyszerű szám tömbként adhatók meg a formátumban `[longitude, latitude]` .
--   A Azure Maps nagyítási szintje a Bing Maps-hez képest egy szinttel alacsonyabb, a platformok közötti mozaik-rendszerméretek különbsége miatt.
--   Alapértelmezés szerint a Azure Maps nem ad hozzá navigációs vezérlőket a Térkép vászonhoz, például a nagyítás gombokat és a Térkép stílusa gombokat. A Térkép stílusú választó, a nagyítási gombok, az iránytű vagy a rotációs vezérlők hozzáadására, valamint a Pitch vezérlőelemre vonatkozó vezérlők is használhatók.
--   A rendszer egy eseménykezelőt ad a Azure Maps a `ready` Térkép példánya eseményének figyeléséhez. Ez akkor fog megjelenni, amikor a Térkép befejezte a WebGL-környezet és az összes szükséges erőforrás betöltését. Ebben az eseménykezelőben bármilyen utólagos betöltési kód is hozzáadható.
+* A Bing Maps megköveteli az API-k vagy térképi beállítások parancsfájl-hivatkozásában megadott fiók kulcsát. A Azure Maps hitelesítési hitelesítő adatai a Map osztály beállításaiként vannak megadva. Ez lehet előfizetés-kulcs vagy Azure Active Directory-információ.
+* A Bing Maps egy visszahívási függvényt vesz igénybe az API parancsfájl-hivatkozásában, amely egy inicializálási függvény hívására szolgál a Térkép betöltéséhez. A Azure Maps a lap onload eseményét kell használni.
+* Ha AZONOSÍTÓval hivatkozik arra az `div` elemre, amelyet a Térkép megjelenít, a Bing Maps egy HTML-választót (azaz) használ `#myMap` , míg a Azure Maps csak az azonosító értéket (azaz) használja `myMap` .
+* A Azure Mapsban lévő koordináták olyan pozicionálási objektumok, amelyek egyszerű szám tömbként adhatók meg a formátumban `[longitude, latitude]` .
+* A Azure Maps nagyítási szintje a Bing Maps-hez képest egy szinttel alacsonyabb, a platformok közötti mozaik-rendszerméretek különbsége miatt.
+* Alapértelmezés szerint a Azure Maps nem ad hozzá navigációs vezérlőket a Térkép vászonhoz, például a nagyítás gombokat és a Térkép stílusa gombokat. A Térkép stílusú választó, a nagyítási gombok, az iránytű vagy a rotációs vezérlők hozzáadására, valamint a Pitch vezérlőelemre vonatkozó vezérlők is használhatók.
+* A rendszer egy eseménykezelőt ad a Azure Maps a `ready` Térkép példánya eseményének figyeléséhez. Ez akkor fog megjelenni, amikor a Térkép befejezte a WebGL-környezet és az összes szükséges erőforrás betöltését. Ebben az eseménykezelőben bármilyen utólagos betöltési kód is hozzáadható.
 
 Az alábbi példák bemutatják, hogyan tölthető be egy olyan alapszintű Térkép, amely egy New York-i koordinátáin (földrajzi hosszúság:-73,985, szélesség: 40,747) található, és a 12. nagyítási szint a Bing Maps-ben.
 
@@ -152,7 +168,7 @@ A következő kód egy példa arra, Hogyan jeleníthető meg a Bing Térkép kö
         function initMap() {
             map = new Microsoft.Maps.Map('#myMap', {
                 credentials: '<Your Bing Maps Key>',
-          center: new Microsoft.Maps.Location(40.747, -73.985),
+                center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
         }
@@ -169,9 +185,7 @@ A következő kód egy példa arra, Hogyan jeleníthető meg a Bing Térkép kö
 
 A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a következő képhez hasonlóan néz ki:
 
-<center>
-
-![Bing Maps Térkép](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)</center>
+![Bing Maps Térkép](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)
 
 **Utána: Azure Maps**
 
@@ -209,10 +223,10 @@ A következő kód bemutatja, hogyan tölthetők be egy Térkép a Azure Maps az
             map.events.add('ready', function () {
                 //Add zoom and map style controls to top right of map.
                 map.controls.add([
-                    new atlas.control.StyleControl(),
-                    new atlas.control.ZoomControl()
-                ], {
-                    position: 'top-right'
+                        new atlas.control.StyleControl(),
+                        new atlas.control.ZoomControl()
+                    ], {
+                        position: 'top-right'
                 });
             });
         }
@@ -226,18 +240,16 @@ A következő kód bemutatja, hogyan tölthetők be egy Térkép a Azure Maps az
 
 A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a következő képhez hasonlóan néz ki:
 
-<center>
+![Azure Maps Térkép](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)
 
-![Azure Maps Térkép](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
-
-[Itt](./how-to-use-map-control.md)talál részletes dokumentációt arról, hogyan kell beállítani és használni a Azure Maps Térkép vezérlőelemet egy webalkalmazásban.
+[Itt](how-to-use-map-control.md)talál részletes dokumentációt arról, hogyan kell beállítani és használni a Azure Maps Térkép vezérlőelemet egy webalkalmazásban.
 
 > [!TIP]
 > Azure Maps közzéteszi az SDK minified és unminified verzióit is. Távolítsa el `.min` a fájlneveket. A unminified verziója hasznos lehet a hibák hibakeresése során, de ügyeljen arra, hogy a minified-verziót éles környezetben használja, hogy kihasználhassa a kisebb fájlméretet.
 
 **További források**
 
--   A Azure Maps navigációs vezérlőket is biztosít a Térkép nézet elforgatásához és feldobásához az [itt](./map-add-controls.md)dokumentált módon.
+* A Azure Maps navigációs vezérlőket is biztosít a Térkép nézet elforgatásához és feldobásához az [itt](map-add-controls.md)dokumentált módon.
 
 ### <a name="localizing-the-map"></a>A Térkép honosítása
 
@@ -253,13 +265,11 @@ A Bing Maps honosítása érdekében a nyelv és a régió a és paraméterek ha
 
 Itt látható egy példa arra, hogy a Bing Maps a "fr-FR" nyelvre van állítva.
 
-<center>
-
-![Honosított Bing Maps Térkép](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![Honosított Bing Maps Térkép](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 **Utána: Azure Maps**
 
-Azure Maps csak a Térkép nyelvének és regionális nézetének beállítására vonatkozó beállításokat biztosít. A szolgáltatások korlátozására a piac paraméterei nem használhatók. A Térkép nyelvének és regionális nézetének beállítása két különböző módon lehetséges. Az első lehetőség az, hogy hozzáadja ezt az információt a globális `atlas` névtérhez, amely az alkalmazás összes leképezés-vezérlési példányát eredményezi az alapértelmezett beállításokkal. A következő nyelvre állítja be a franciát ("fr-FR") és a regionális nézetet `"auto"` :
+Azure Maps csak a Térkép nyelvének és regionális nézetének beállítására vonatkozó beállításokat biztosít. A szolgáltatások korlátozására a piac paraméterei nem használhatók. A Térkép nyelvének és regionális nézetének beállítása két különböző módon lehetséges. Az első lehetőség az, hogy hozzáadja ezt az információt a globális `atlas` névtérhez, amely az alkalmazás összes leképezés-vezérlési példányát eredményezi az alapértelmezett beállításokkal. A következő nyelvre állítja be a franciát ("fr-FR") és a regionális nézetet `"Auto"` :
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -285,9 +295,7 @@ map = new atlas.Map('myMap', {
 
 Itt látható egy példa arra, hogy a "FR" és a "fr-FR" értékre beállított nyelv Azure Maps.
 
-<center>
-
-![Honosított Azure Maps Térkép](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![Honosított Azure Maps Térkép](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 ### <a name="setting-the-map-view"></a>A Térkép nézet beállítása
 
@@ -308,9 +316,7 @@ map.setView({
 });
 ```
 
-<center>
-
-![Bing Maps-set Térkép nézet](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)</center>
+![Bing Maps-set Térkép nézet](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)
 
 **Utána: Azure Maps**
 
@@ -327,9 +333,7 @@ map.setStyle({
 });
 ```
 
-<center>
-
-![Azure Maps térkép nézetének beállítása](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)</center>
+![Azure Maps térkép nézetének beállítása](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)
 
 **További források**
 
@@ -340,9 +344,9 @@ map.setStyle({
 
 Azure Maps több módon is lehet megjeleníteni az adatpontot a térképen;
 
--   HTML-jelölők – a pontokat a hagyományos DOM-elemek használatával jeleníti meg. A HTML-jelölők támogatják a húzást.
--   Szimbólum réteg – egy ikont és/vagy szöveget ábrázoló pontokat jelenít meg a WebGL környezetben.
--   Buborék réteg – a pontokat körökként jeleníti meg a térképen. A körök sugarait az Adattulajdonságok alapján lehet méretezni.
+* HTML-jelölők – a pontokat a hagyományos DOM-elemek használatával jeleníti meg. A HTML-jelölők támogatják a húzást.
+* Szimbólum réteg – egy ikont és/vagy szöveget ábrázoló pontokat jelenít meg a WebGL környezetben.
+* Buborék réteg – a pontokat körökként jeleníti meg a térképen. A körök sugarait az Adattulajdonságok alapján lehet méretezni.
 
 Mindkét szimbólum és buborék réteg a WebGL-környezeten belül jelenik meg, és képes a térképen nagyon nagy mennyiségű pont megjelenítésére. Ezeknek a rétegeknek az adatforrásokban való tárolásához szükségesek az adatforrások. Az esemény elkezdése után az adatforrásokat és a renderelési rétegeket fel kell venni a térképbe `ready` . A HTML-jelölők DOM-elemekként jelennek meg az oldalon belül, és nem használhatnak adatforrást. Minél több DOM-elem van a lapon, annál lassabb lesz az oldal. Ha a térképeken több száz pontot is megjelenít, javasolt inkább a renderelési rétegek egyikét használni.
 
@@ -374,9 +378,7 @@ var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(51.5, -0.2)
 map.entities.add(pushpin);
 ```
 
-<center>
-
-![Bing Maps – puspin hozzáadása](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)</center>
+![Bing Maps – puspin hozzáadása](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)
 
 **Utána: Azure Maps HTML-jelölők használatával**
 
@@ -390,9 +392,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure Maps jelölő hozzáadása](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![Azure Maps jelölő hozzáadása](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **Utána: Azure Maps egy szimbólum réteget használva**
 
@@ -456,9 +456,7 @@ Ha szimbólum réteget használ, az adatforráshoz és a réteghez csatolt adatf
 </html>
 ```
 
-<center>
-
-![Azure Maps a szimbólum hozzáadása réteget](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![Azure Maps a szimbólum hozzáadása réteget](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **További források**
 
@@ -481,7 +479,6 @@ Az egyéni rendszerképeket egy térképen ábrázoló pontok ábrázolására l
 |:-----------------------------------------------------------------------:|
 | yellow-pushpin.png                                                        |
 
-
 **Előtte: Bing Maps**
 
 A Bing Maps szolgáltatásban egy egyéni jelölő jön létre, amely egy adott gombostű mutató URL-címet továbbít egy rendszerképnek `icon` . `anchor`Ezzel a beállítással lehet a gombostű-kép pontját a térképen összehangolni. A Bing Maps-beli horgony értéke a rendszerkép bal felső sarkához viszonyítva.
@@ -497,9 +494,7 @@ layer.add(pushpin);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing Maps – egyéni puspin hozzáadása](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)</center>
+![Bing Maps – egyéni puspin hozzáadása](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)
 
 **Utána: Azure Maps HTML-jelölők használatával**
 
@@ -517,9 +512,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure Maps egyéni jelölő hozzáadása](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)</center>
+![Azure Maps egyéni jelölő hozzáadása](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)
 
 **Utána: Azure Maps egy szimbólum réteget használva**
 
@@ -584,9 +577,7 @@ A Azure Maps az egyéni rendszerképeket is támogatja, de a lemezképet elősz�
 </html>
 ```
 
-<center>
-
-![Bing Maps egyéni szimbólum hozzáadása réteg](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)</center>
+![Bing Maps egyéni szimbólum hozzáadása réteg](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)
 
 > [!TIP]
 > A pontok speciális renderelésének létrehozásához használjon több renderelési réteget együtt. Ha például több olyan pushpins szeretne, amelyeknek ugyanaz az ikonja különböző színű körökön, ahelyett, hogy minden egyes színhez több lemezképet hozna létre, az egyes színeknél egy szimbólum réteget kell létrehoznia, és hivatkozni kell ugyanarra az adatforrásra. Ez sokkal hatékonyabbá válik, mint a létrehozás, és a Térkép több különböző lemezképet tart fenn.
@@ -631,9 +622,7 @@ layer.add(polyline);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing Maps-vonallánc](media/migrate-bing-maps-web-app/bing-maps-line.jpg)</center>
+![Bing Maps-vonallánc](media/migrate-bing-maps-web-app/bing-maps-line.jpg)
 
 **Utána: Azure Maps**
 
@@ -662,9 +651,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure Maps vonal](media/migrate-bing-maps-web-app/azure-maps-line.jpg)</center>
+![Azure Maps vonal](media/migrate-bing-maps-web-app/azure-maps-line.jpg)
 
 **További források**
 
@@ -702,9 +689,7 @@ layer.add(polygon);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing Maps polyogn](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Bing Maps polyogn](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **Utána: Azure Maps**
 
@@ -738,9 +723,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure Maps polyogn](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Azure Maps polyogn](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **További források**
 
@@ -780,9 +763,7 @@ Microsoft.Maps.Events.addHandler(pushpin, 'click', function () {
 });
 ```
 
-<center>
-
-![Bing Maps bezárása](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)</center>
+![Bing Maps bezárása](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)
 
 **Utána: Azure Maps**
 
@@ -811,9 +792,7 @@ map.events.add('click', marker, function () {
 });
 ```
 
-<center>
-
-![Azure Maps előugró ablak](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)</center>
+![Azure Maps előugró ablak](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)
 
 > [!NOTE]
 > Ha ugyanezt a karaktert egy szimbólummal, buborékmal, vonal vagy sokszög réteggel szeretné elvégezni, adja át a réteget a Maps-eseménynek a jelölő helyett.
@@ -883,7 +862,7 @@ A Bing Maps-ben a GeoJSON adatai a GeoJSON modul használatával tölthetők be.
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';   //Default to lime green.
+            var fillColor = 'lime';     //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.
@@ -917,22 +896,20 @@ A Bing Maps-ben a GeoJSON adatai a GeoJSON modul használatával tölthetők be.
 </html>
 ```
 
-<center>
-
-![Bing Maps-fürtözés](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)</center>
+![Bing Maps-fürtözés](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)
 
 **Utána: Azure Maps**
 
 A Azure Mapsban az adatforrások felveszik és kezelik az adatforrásokat. A rétegek az adatforrásokhoz csatlakoznak, és a bennük tárolt adatmegjelenítést is lehetővé teszik. A `DataSource` Azure Maps osztály számos fürtszolgáltatási lehetőséget kínál.
 
--   `cluster` – Megadja az adatforrást a fürt pontjának. 
--   `clusterRadius` – A fürthöz tartozó, képpontban megadott sugár együtt.
--   `clusterMaxZoom` – A fürtözés során felmerülő maximális nagyítási szint. Ha ennél nagyobb nagyítást végez, a rendszer az összes pontot szimbólumként jeleníti meg.
--   `clusterProperties` – Meghatározza a kiszámított egyéni tulajdonságokat az egyes fürtökön lévő összes pontra vonatkozó kifejezések használatával, és hozzáadja az egyes fürtcsomópontok tulajdonságaihoz.
+* `cluster` – Megadja az adatforrást a fürt pontjának. 
+* `clusterRadius` – A fürthöz tartozó, képpontban megadott sugár együtt.
+* `clusterMaxZoom` – A fürtözés során felmerülő maximális nagyítási szint. Ha ennél nagyobb nagyítást végez, a rendszer az összes pontot szimbólumként jeleníti meg.
+* `clusterProperties` – Meghatározza a kiszámított egyéni tulajdonságokat az egyes fürtökön lévő összes pontra vonatkozó kifejezések használatával, és hozzáadja az egyes fürtcsomópontok tulajdonságaihoz.
 
 Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem fürtözött adatpontokat küld a renderelési rétegeknek. Az adatforrás több száz ezer adatpont fürtözésére képes. A fürtözött adatpontok a következő tulajdonságokkal rendelkeznek:
 
-| Tulajdonság neve               | Típus    | Leírás                                    |
+| Tulajdonság neve               | Típus    | Description (Leírás)                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e.     |
 | `cluster_id`                | sztring  | A fürt egyedi azonosítója, amely az `DataSource` osztályokkal `getClusterExpansionZoom` , valamint a függvények használatával használható `getClusterChildren` `getClusterLeaves` . |
@@ -941,7 +918,7 @@ Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem f�
 
 Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez a használatával `cluster_id` .
 
-| Függvény       | Visszatérési típus        | Leírás     |
+| Függvény       | Visszatérési típus        | Description (Leírás)     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyermekek alakzatokat és alfürtöket is tartalmazhatnak. Az alfürtök a fürt tulajdonságaival egyező tulajdonságokkal rendelkező funkciók lesznek. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kiszámítja azt a nagyítási szintet, amelyet a fürt elkezd kibővíteni vagy bontani.    |
@@ -1045,9 +1022,7 @@ A GeoJSON-adat közvetlenül importálható Azure Maps az `importDataFromUrl` os
 </html>
 ```
 
-<center>
-
-![Azure Maps fürtözés](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)</center>
+![Azure Maps fürtözés](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)
 
 **További források**
 
@@ -1113,9 +1088,7 @@ A Bing Maps-ben hozzon létre egy hő-térképet, és töltse be a Heat Map modu
 </html>
 ```
 
-<center>
-
-![Bing Maps hő](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)</center>
+![Bing Maps hő](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)
 
 **Utána: Azure Maps**
 
@@ -1177,9 +1150,7 @@ A Azure Mapsban töltse be a GeoJSON egy adatforrásba, és kapcsolja össze az 
 </html>
 ```
 
-<center>
-
-![Azure Maps hő](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)</center>
+![Azure Maps hő](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)
 
 **További források**
 
@@ -1207,9 +1178,7 @@ var weatherTileLayer = new Microsoft.Maps.TileLayer({
 map.layers.insert(weatherTileLayer);
 ```
 
-<center>
-
-![A Bing Maps súlyozott hő](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)</center>
+![A Bing Maps súlyozott hő](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)
 
 **Utána: Azure Maps**
 
@@ -1217,7 +1186,7 @@ Azure Maps a csempék rétegét ugyanúgy lehet a térképhez adni, mint bármel
 
 > [!TIP]
 > Azure Maps rétegekben könnyen megjeleníthető más rétegek alatt, beleértve az alapszintű leképezési rétegeket is. Gyakran érdemes a Térkép feliratai alatt megjeleníteni a csempe rétegeit, hogy azok könnyen olvashatók legyenek. A `map.layers.add` függvény a második réteg azonosítóját veszi át, amely az alábbi új réteget szúrja be. A Térkép felirat alatti csempe réteg beszúrásához a következő kód használható:
-> 
+>
 > `map.layers.add(myTileLayer, "labels");`
 
 ```javascript
@@ -1229,9 +1198,7 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-<center>
-
-![Súlyozott hő Azure Maps](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)</center>
+![Súlyozott hő Azure Maps](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)
 
 > [!TIP]
 > A csempe-kéréseket a `transformRequest` Térkép lehetőségével lehet rögzíteni. Ez lehetővé teszi, hogy szükség esetén módosítsa vagy adja hozzá a fejléceket a kéréshez.
@@ -1257,9 +1224,7 @@ Microsoft.Maps.loadModule('Microsoft.Maps.Traffic', function () {
 });
 ```
 
-<center>
-
-![Bing Maps-forgalom](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)</center>
+![Bing Maps-forgalom](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)
 
 **Utána: Azure Maps**
 
@@ -1272,15 +1237,11 @@ map.setTraffic({
 });
 ```
 
-<center>
-
-![Azure Maps forgalom](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)</center>
+![Azure Maps forgalom](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)
 
 Ha a Azure Maps egyik forgalmi ikonjára kattint, további információk jelennek meg a felugró ablakban.
 
-<center>
-
-![Azure Maps forgalmi felugró ablak](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)</center>
+![Azure Maps forgalmi felugró ablak](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)
 
 **További források**
 
@@ -1335,9 +1296,7 @@ Amikor a Bing Mapsben hoz létre egy terepi átfedést, meg kell adnia az átfed
 
 A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a következő képhez hasonlóan néz ki:
 
-<center>
-
-![Bing Maps – alapátfedés](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)</center>
+![Bing Maps – alapátfedés](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)
 
 **Utána: Azure Maps**
 
@@ -1398,9 +1357,7 @@ Azure Maps a georeferens képeket a osztály használatával lehet betakarni `at
 </html>
 ```
 
-<center>
-
-![Azure Maps](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)</center>
+![Azure Maps](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)
 
 **További források**
 
@@ -1433,7 +1390,7 @@ A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a köve
                 center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
-
+                
             Microsoft.Maps.loadModule('Microsoft.Maps.GeoXml', function () {
                 var callback = function (dataset) {
                     if (dataset.shapes) {
@@ -1461,9 +1418,7 @@ A kód böngészőben való futtatásakor megjelenik egy Térkép, amely a köve
 </html>
 ```
 
-<center>
-
-![Bing Maps – KML](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)</center>
+![Bing Maps – KML](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)
 
 **Utána: Azure Maps**
 
@@ -1558,9 +1513,7 @@ Azure Maps GeoJSON a web SDK-ban használt fő adatformátum, a további térbel
 </html>
 ```
 
-<center>
-
-![Azure Maps KML](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)</center>
+![Azure Maps KML](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)
 
 **További források**
 
@@ -1617,9 +1570,7 @@ A Bing Maps `DrawingTools` szolgáltatásban a modul a függvény használatáva
 
 ```
 
-<center>
-
-![Bing Maps Rajzeszközök](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)</center>
+![Bing Maps Rajzeszközök](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)
 
 **Utána: Azure Maps**
 
@@ -1649,8 +1600,8 @@ Azure Maps a rajzolási eszközök modulját be kell tölteni a JavaScript és a
             //Initialize a map instance.
             map = new atlas.Map('myMap', {
                 view: 'Auto',
-                
-                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
+
+                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.                
                 authOptions: {
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
@@ -1674,9 +1625,7 @@ Azure Maps a rajzolási eszközök modulját be kell tölteni a JavaScript és a
 </html>
 ```
 
-<center>
-
-![Azure Maps rajzolási eszközök](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)</center>
+![Azure Maps rajzolási eszközök](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)
 
 > [!TIP]
 > Azure Maps rétegekben a rajzolási eszközök több módszert biztosítanak a felhasználók számára az alakzatok rajzolására. Például egy sokszög rajzolásakor a felhasználó rákattinthat az egyes pontok hozzáadására, vagy lenyomva tartja a bal egérgombot, és az egér húzásával rajzolja meg az elérési utat. Ezt a `interactionType` beállításával módosíthatja `DrawingManager` .
@@ -1686,7 +1635,7 @@ Azure Maps a rajzolási eszközök modulját be kell tölteni a JavaScript és a
 -   [Dokumentáció](./set-drawing-options.md)
 -   [Kódminták](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="additional-resources"></a>További források
 
 Tekintse meg a [nyílt forráskódú Azure Maps web SDK-modulokat](open-source-projects.md#open-web-sdk-modules). Ezek a modulok rengeteg további funkciót biztosítanak, és teljes mértékben testreszabhatók.
 
@@ -1733,3 +1682,14 @@ További információ a Azure Maps web SDK-ról.
 
 > [!div class="nextstepaction"]
 > [Azure Maps web SDK szolgáltatás API-referenciájának dokumentációja](/javascript/api/azure-maps-control/)
+
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+
+Nincs kitakarítható erőforrás.
+
+## <a name="next-steps"></a>Következő lépések
+
+További információ a Bing Maps rendszerről Azure Mapsre való áttelepítésről.
+
+> [!div class="nextstepaction"]
+> [Webszolgáltatás migrálása](migrate-from-bing-maps-web-services.md)

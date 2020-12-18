@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64bb5e94c4b18626d1f85d7e61252aae74202eb9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660843"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680619"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>Oktatóanyag: adatok másolása Azure Data Boxról NFS-en keresztül (előzetes verzió)
+# <a name="tutorial-copy-data-from-azure-data-box-via-nfs"></a>Oktatóanyag: adatok másolása Azure Data Boxról NFS-en keresztül
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet csatlakozni a Data Box helyi webes FELÜLETéről egy helyszíni adatkiszolgálóba az NFS-en keresztül. A Data Box lévő adatok az Azure Storage-fiókból lesznek exportálva.
 
@@ -26,8 +26,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Előfeltételek
 > * Csatlakozás a Data Boxhoz
 > * Adatok másolása a Data Boxról
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +51,7 @@ Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigur�
 
         ![NFS-ügyfél-hozzáférés megnyitása](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
 
-    1. NFS-ügyfél hozzáadásához adja meg az ügyfél IP-címét, és kattintson a **Hozzáadás**gombra. Data Box egyszerre legfeljebb öt NFS-ügyfelet tud összekötni. Ha végzett, kattintson **az OK**gombra.
+    1. NFS-ügyfél hozzáadásához adja meg az ügyfél IP-címét, és kattintson a **Hozzáadás** gombra. Data Box egyszerre legfeljebb öt NFS-ügyfelet tud összekötni. Ha végzett, kattintson **az OK** gombra.
 
          ![NFS-ügyfél hozzáadása](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
 
@@ -71,7 +69,7 @@ Amennyiben Linux rendszerű gazdagépet használ, a következő módon konfigur�
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
-    **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
+    **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér* mappájába.
 
 ## <a name="copy-data-from-data-box"></a>Adatok másolása a Data Boxról
 
@@ -79,11 +77,11 @@ A Data Box-megosztásokhoz történő csatlakozás után a következő lépés a
 
 [!INCLUDE [data-box-export-review-logs](../../includes/data-box-export-review-logs.md)]
 
- Most már megkezdheti az Adatmásolást. Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  
+ Most már megkezdheti az Adatmásolást. Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. A Linux rendszerben elérhető alternatívák némelyike [`rsync`](https://rsync.samba.org/) , [FreeFileSync](https://www.freefilesync.org/), [egyszólamú](https://www.cis.upenn.edu/~bcpierce/unison/)vagy [Ultracopier](https://ultracopier.first-world.info/).  
 
 A `cp` parancs az egyik legjobb választás a könyvtárak másolására. A parancs használatáról [a cp tájékoztató oldalain](http://man7.org/linux/man-pages/man1/cp.1.html) talál további információt.
 
-Amennyiben az rsyncet használja többszálas másoláshoz, a következő irányelveket kell betartania:
+Ha `rsync` többszálas másolási lehetőséget használ, kövesse az alábbi irányelveket:
 
 * Telepítse a **CIFS Utils** vagy az **NFS Utils** csomagot, attól függően, hogy a Linux-ügyfél milyen fájlrendszert használ.
 
@@ -91,7 +89,7 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
 
     `sudo apt-get install nfs-utils`
 
-* Az **rsync** és a **Parallel** telepítése (a Linux elosztott verziótól függően változhat).
+* `rsync`A install és a **Parallel** (a Linux elosztott verziójától függően változhat).
 
     `sudo apt-get install rsync`
    

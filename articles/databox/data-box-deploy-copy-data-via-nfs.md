@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: bbebe3b3f63e6ccbb5f351abfc9ba3b846ca6fbe
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: d53a619dc6ca5fb0f43f6097664f50bf22943928
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337661"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678879"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: az Adatmásolás Azure Data Box NFS-en keresztül
 
@@ -98,11 +98,11 @@ A Data Box-megosztáshoz való kapcsolódás után a következő lépés az adat
 > [!IMPORTANT]
 > Gondoskodjon róla, hogy megtartja a forrásadatok egy másolatát addig, amíg ellenőrizheti, hogy a Data Box valóban átvitte-e az adatokat az Azure Storage-ba.
 
-Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  
+Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. A Linux rendszerben elérhető alternatívák némelyike [`rsync`](https://rsync.samba.org/) , [FreeFileSync](https://www.freefilesync.org/), [egyszólamú](https://www.cis.upenn.edu/~bcpierce/unison/)vagy [Ultracopier](https://ultracopier.first-world.info/).  
 
 A `cp` parancs az egyik legjobb választás a könyvtárak másolására. A parancs használatáról [a cp tájékoztató oldalain](http://man7.org/linux/man-pages/man1/cp.1.html) talál további információt.
 
-Amennyiben az rsyncet használja többszálas másoláshoz, a következő irányelveket kell betartania:
+Ha `rsync` többszálas másolás esetén a beállítást használja, kövesse az alábbi irányelveket:
 
 * Telepítse a **CIFS Utils** vagy az **NFS Utils** csomagot, attól függően, hogy a Linux-ügyfél milyen fájlrendszert használ.
 
@@ -110,7 +110,7 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
 
     `sudo apt-get install nfs-utils`
 
-* Az **rsync** és a **Parallel** telepítése (a Linux elosztott verziótól függően változhat).
+* `rsync`A install és a **Parallel** (a Linux elosztott verziójától függően változhat).
 
     `sudo apt-get install rsync`
    
@@ -157,7 +157,7 @@ Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kisz�
 
    ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 

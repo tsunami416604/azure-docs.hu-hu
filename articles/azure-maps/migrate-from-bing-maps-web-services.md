@@ -9,16 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904958"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679065"
 ---
-# <a name="tutorial---migrate-web-service-from-bing-maps"></a>Oktatóanyag – webszolgáltatás migrálása a Bing Mapsből
+# <a name="tutorial-migrate-web-service-from-bing-maps"></a>Oktatóanyag: webszolgáltatás migrálása a Bing Mapsből
 
-Az Azure és a Bing Maps is hozzáférést biztosít a térbeli API-khoz a REST-alapú webszolgáltatásokon keresztül. A platformok API-felületei hasonló funkciókat hajtanak végre, de eltérő elnevezési konvenciókat és válasz-objektumokat használnak.
+Az Azure és a Bing Maps is hozzáférést biztosít a térbeli API-khoz a REST-alapú webszolgáltatásokon keresztül. A platformok API-felületei hasonló funkciókat hajtanak végre, de eltérő elnevezési konvenciókat és válasz-objektumokat használnak. Az oktatóanyag során a következőket fogja elsajátítani:
+
+> * Helymeghatározáshoz továbbítása és sztornírozása
+> * Hasznos helyek keresése
+> * Útvonalak és irányok kiszámítása
+> * Térkép rendszerképének beolvasása
+> * Távolsági mátrix kiszámítása
+> * Időzóna részleteinek beolvasása
 
 Az alábbi táblázat tartalmazza a Azure Maps Service API-kat, amelyek hasonló funkciókat biztosítanak a felsorolt Bing Maps Service API-khoz.
 
@@ -59,6 +66,12 @@ A Azure Maps számos további REST-webszolgáltatással rendelkezik, amelyek ér
 -   [Ajánlott keresési eljárások](./how-to-use-best-practices-for-search.md)
 -   [Ajánlott eljárások az útválasztáshoz](./how-to-use-best-practices-for-routing.md)
 
+## <a name="prerequisites"></a>Előfeltételek
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
+
 ## <a name="geocoding-addresses"></a>Helymeghatározáshoz-címek
 
 A helymeghatározáshoz a címek (például `"1 Microsoft way, Redmond, WA"` ) egy koordináta (például a következő hosszúság:-122,1298, szélesség: 47,64005) átalakításának folyamata. A koordinátákat a rendszer gyakran arra használja, hogy a gombostű a térképen vagy középre mutasson.
@@ -91,9 +104,9 @@ Az alábbi táblázatok a Bing Maps API paramétereit a strukturált és a szaba
 
 A Azure Maps a következőket is támogatja:
 
--   `countrySecondarySubdivision` – Megye, körzet
--   `countryTertiarySubdivision` -Nevesített területek; kerületek, kantonok, közigazgatási területek
--   `ofs` – Az eredmények kombinációja a `maxResults` paraméterrel együtt.
+* `countrySecondarySubdivision` – Megye, körzet
+* `countryTertiarySubdivision` -Nevesített területek; kerületek, kantonok, közigazgatási területek
+* `ofs` – Az eredmények kombinációja a `maxResults` paraméterrel együtt.
 
 **Hely lekérdezés szerint (Free-Form címe sztring)**
 
@@ -109,10 +122,10 @@ A Azure Maps a következőket is támogatja:
 
 A Azure Maps a következőket is támogatja:
 
--   `typeahead` -Faj, ha a lekérdezés részleges bemenetként lesz értelmezve, és a keresés a prediktív módot (automatikus javaslat/automatikus kiegészítés) adja meg.
--   `countrySet` – A ISO2-országok azon kódjai vesszővel tagolt listája, amelyekben a keresést korlátozni szeretné.
--   `lat`/`lon`, `topLeft` / `btmRight` , `radius` – Itt adhatja meg a felhasználói helyet és a körzetet, hogy az eredmények továbbra is helyileg legyenek.
--   `ofs` – Az eredmények kombinációja a `maxResults` paraméterrel együtt.
+* `typeahead` -Faj, ha a lekérdezés részleges bemenetként lesz értelmezve, és a keresés a prediktív módot (automatikus javaslat/automatikus kiegészítés) adja meg.
+* `countrySet` – A ISO2-országok azon kódjai vesszővel tagolt listája, amelyekben a keresést korlátozni szeretné.
+* `lat`/`lon`, `topLeft` / `btmRight` , `radius` – Itt adhatja meg a felhasználói helyet és a körzetet, hogy az eredmények továbbra is helyileg legyenek.
+* `ofs` – Az eredmények kombinációja a `maxResults` paraméterrel együtt.
 
 A Search szolgáltatás használatának példáját [itt](./how-to-search-for-address.md)találja. Mindenképpen tekintse át az [ajánlott eljárásokat a keresési](./how-to-use-best-practices-for-search.md) dokumentációhoz.
 
@@ -142,15 +155,15 @@ Mindenképpen tekintse át az [ajánlott eljárásokat a keresési](./how-to-use
 
 A Azure Maps fordított helymeghatározáshoz API olyan további funkciókat tartalmaz, amelyek nem érhetők el a Bing Maps-ben, amelyek hasznosak lehetnek az alkalmazások áttelepítésekor való integráláshoz:
 
--   Sebességkorlátozás beolvasása.
--   Közúti használati információk beolvasása; helyi út, artériás, korlátozott hozzáférés, rámpa stb.
--   A koordináta azon oldala, ahová a koordináta tartozik.
+* Sebességkorlátozás beolvasása.
+* Közúti használati információk beolvasása; helyi út, artériás, korlátozott hozzáférés, rámpa stb.
+* A koordináta azon oldala, ahová a koordináta tartozik.
 
 **Entitás típusú összehasonlító táblázat**
 
 A következő táblázat a Bing Maps entitás típusú értékeket a Azure Mapsban található egyenértékű tulajdonságokra hivatkozik.
 
-| Bing Maps-entitás típusa | Hasonló Azure Maps entitás típusa               | Leírás                                |
+| Bing Maps-entitás típusa | Hasonló Azure Maps entitás típusa               | Description (Leírás)                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Cím*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Környékén*                             |
@@ -174,10 +187,10 @@ A Azure Maps Search API számos olyan prediktív módot támogat, amely az autom
 
 Az útvonalak és irányok kiszámításához Azure Maps használható. Azure Maps a Bing Maps útválasztási szolgáltatása számos különböző funkciót tartalmaz, például:;
 
--   érkezés és távozás időpontja
--   valós idejű és prediktív forgalmi útvonalak
--   különböző szállítási módok; vezetés, gyaloglás, kamion
--   Útpont Order Optimization (Utazási ügynökök)
+* érkezés és távozás időpontja
+* valós idejű és prediktív forgalmi útvonalak
+* különböző szállítási módok; vezetés, gyaloglás, kamion
+* Útpont Order Optimization (Utazási ügynökök)
 
 > [!NOTE]
 > Azure Maps az összes Útpontot koordinálni kell. Először a címeket kell geokódolva.
@@ -221,12 +234,12 @@ A Azure Maps Routing API a tehergépkocsi-útválasztást is támogatja ugyanazo
 | `vehicleLength` (`vl`)                   | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)               | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                 | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                 | **N/A**                                    |
+| `vehicleTrailers` (`vt`)                 | **N.A.**                                    |
 | `vehicleSemi` (`semi`)                   | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)             | **N/A**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)          | **N/A**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)         | **N/A**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)     | **N/A**                                    |
+| `vehicleMaxGradient` (`vmg`)             | **N.A.**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)          | **N.A.**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)         | **N.A.**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)     | **N.A.**                                    |
 | `vehicleHazardousMaterials` (`vhm`)      | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)        | `vehicleLoadType`                          |
 
@@ -237,21 +250,21 @@ Mindenképpen tekintse át az [útválasztási dokumentáció ajánlott eljárá
 
 A Azure Maps Routing API számos további funkcióval nem érhető el a Bing Maps-ben, amelyek hasznosak lehetnek az alkalmazás áttelepítéséhez:
 
--   Az útvonal típusának támogatása: legrövidebb, leggyorsabb, trilling és a legtöbb üzemanyag-takarékos.
--   További utazási módok támogatása: kerékpár, busz, motorkerékpár, taxi, tehergépkocsi és Furgon.
--   150-es útpontok támogatása.
--   Több utazási idő kiszámítása egyetlen kérelemben; korábbi forgalom, élő forgalom, forgalom nélkül.
--   Kerülje a további utak típusát: telekocsi utak, nem burkolt utak, már használatban lévő utak.
--   A motor specifikáció-alapú útválasztása. Kiszámítja az égési vagy az elektromos járművek útvonalait a fennmaradó tüzelőanyag/díj és a motor előírásai alapján.
--   A jármű maximális sebességének meghatározása.
+* Az útvonal típusának támogatása: legrövidebb, leggyorsabb, trilling és a legtöbb üzemanyag-takarékos.
+* További utazási módok támogatása: kerékpár, busz, motorkerékpár, taxi, tehergépkocsi és Furgon.
+* 150-es útpontok támogatása.
+* Több utazási idő kiszámítása egyetlen kérelemben; korábbi forgalom, élő forgalom, forgalom nélkül.
+* Kerülje a további utak típusát: telekocsi utak, nem burkolt utak, már használatban lévő utak.
+* A motor specifikáció-alapú útválasztása. Kiszámítja az égési vagy az elektromos járművek útvonalait a fennmaradó tüzelőanyag/díj és a motor előírásai alapján.
+* A jármű maximális sebességének meghatározása.
 
 ## <a name="snap-coordinates-to-road"></a>Koordináták igazítása a úthoz
 
 Több módon is összehangolhatja a koordinátákat Azure Maps-utakon.
 
--   A Route Directions API-val egy logikai útvonal koordinátáit a közúti hálózaton keresztül igazíthatja.
--   A Azure Maps web SDK-val az egyes koordinátákat a vektor csempén lévő legközelebbi úthoz igazíthatja.
--   Az egyes koordinátákat közvetlenül a Azure Maps vektor csempével lehet összepattintani.
+* A Route Directions API-val egy logikai útvonal koordinátáit a közúti hálózaton keresztül igazíthatja.
+* A Azure Maps web SDK-val az egyes koordinátákat a vektor csempén lévő legközelebbi úthoz igazíthatja.
+* Az egyes koordinátákat közvetlenül a Azure Maps vektor csempével lehet összepattintani.
 
 **Koordináták illesztése az útvonal irányának API használatával**
 
@@ -259,8 +272,8 @@ A Azure Maps az [Route Directions](/rest/api/maps/route/postroutedirections) API
 
 Az Route Directions API-val kétféleképpen lehet összehangolni az utakat.
 
--   Ha 150 koordináták vagy kevesebb van, azok a GET Route Directions API-ban adhatók át útpontokként. Ennek a módszernek a használatával két különböző típusú harapós adattípust lehet beolvasni; az útvonalra vonatkozó utasítások az egyes felhagyott Útpontokat tartalmazzák, míg az útvonal elérési útja olyan koordináta-készlettel fog rendelkezni, amely a koordináták közötti teljes elérési utat tölti ki.
--   Ha több mint 150 koordináta van, a POST Route Directions API használható. A koordináták kezdő és záró koordinátáit át kell adni a lekérdezési paraméternek, de az összes koordinátáit át lehet adni a `supportingPoints` post kérelem törzsében lévő paraméterbe, és a GeoJSON geometriai gyűjteményét formázhatja. Az ezzel a módszerrel elérhető egyetlen csattant adat az útvonal útvonala, amely a koordináták interpolált készletét adja meg, amely a koordináták közötti teljes elérési utat tölti ki. [Íme egy példa](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path) erre a megközelítésre a Azure Maps web SDK Services moduljának használatával.
+* Ha 150 koordináták vagy kevesebb van, azok a GET Route Directions API-ban adhatók át útpontokként. Ennek a módszernek a használatával két különböző típusú harapós adattípust lehet beolvasni; az útvonalra vonatkozó utasítások az egyes felhagyott Útpontokat tartalmazzák, míg az útvonal elérési útja olyan koordináta-készlettel fog rendelkezni, amely a koordináták közötti teljes elérési utat tölti ki.
+* Ha több mint 150 koordináta van, a POST Route Directions API használható. A koordináták kezdő és záró koordinátáit át kell adni a lekérdezési paraméternek, de az összes koordinátáit át lehet adni a `supportingPoints` post kérelem törzsében lévő paraméterbe, és a GeoJSON geometriai gyűjteményét formázhatja. Az ezzel a módszerrel elérhető egyetlen csattant adat az útvonal útvonala, amely a koordináták interpolált készletét adja meg, amely a koordináták közötti teljes elérési utat tölti ki. [Íme egy példa](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path) erre a megközelítésre a Azure Maps web SDK Services moduljának használatával.
 
 A következő táblázat kereszthivatkozásokat hivatkozik a Bing Maps API-paraméterekre a Azure Maps hasonló API-paramétereivel.
 
@@ -287,12 +300,12 @@ A Azure Maps Routing API a logikai útvonalak kiszámításának biztosítása �
 | `vehicleLength` (`vl`)                  | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)              | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                | **N/A**                                    |
+| `vehicleTrailers` (`vt`)                | **N.A.**                                    |
 | `vehicleSemi` (`semi`)                  | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)            | **N/A**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)         | **N/A**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)        | **N/A**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)    | **N/A**                                    |
+| `vehicleMaxGradient` (`vmg`)            | **N.A.**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)         | **N.A.**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)        | **N.A.**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)    | **N.A.**                                    |
 | `vehicleHazardousMaterials` (`vhm`)     | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)       | `vehicleLoadType`                          |
 
@@ -368,9 +381,7 @@ A Bing Maps-ben például az "AB" címkével ellátott piros gombostű a Koordin
 
 > `&pushpin=45,-110;7;AB`
 
-<center>
-
-![Bing Maps – statikus Térkép PIN-kódja](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)</center>
+![Bing Maps – statikus Térkép PIN-kódja](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)
 
 **Utána: Azure Maps**
 
@@ -384,21 +395,21 @@ Amikor PIN-kódokkal rendelkezik, Azure Maps megköveteli a koordináták `longi
 
 Az `iconType` érték határozza meg a létrehozandó PIN-kód típusát, és a következő értékeket veheti fel:
 
--   `default` – Az alapértelmezett PIN-kód ikon.
--   `none` – A ikon nem jelenik meg, csak a feliratok lesznek megjelenítve.
--   `custom` – Meghatározza, hogy egyéni ikont kell használni. Az ikon képére mutató URL-címet a rendszer a `pins` PIN-kód helye információinak lejárta után is hozzáadhatja a paraméter végéhez.
--   `{udid}` – Egyedi Adatazonosító (UDID) a Azure Maps adattárolási platformon tárolt ikonhoz.
+* `default` – Az alapértelmezett PIN-kód ikon.
+* `none` – A ikon nem jelenik meg, csak a feliratok lesznek megjelenítve.
+* `custom` – Meghatározza, hogy egyéni ikont kell használni. Az ikon képére mutató URL-címet a rendszer a `pins` PIN-kód helye információinak lejárta után is hozzáadhatja a paraméter végéhez.
+* `{udid}` – Egyedi Adatazonosító (UDID) a Azure Maps adattárolási platformon tárolt ikonhoz.
 
 A Azure Mapsban szereplő stílusokat a rendszer a formátummal adja hozzá `optionNameValue` , és több, pipe ( `|` ) karakterrel elválasztott stílust tartalmaz `iconType|optionName1Value1|optionName2Value2` . Megjegyzés: a beállítások nevei és értékei nincsenek elválasztva. A következő stílusú pushpins a Azure Mapsban használhatók:
 
--   `al` – Megadja a pushpins opacitását (alpha). 0 és 1 közötti szám lehet.
--   `an` – Megadja a PIN-kód horgonyát. A formátumban megadott X és y képpont értékeket adja meg `x y` .
--   `co` – A PIN-kód színe. 24 bites hexadecimális színnek kell lennie: `000000` `FFFFFF` .
--   `la` – Megadja a felirat horgonyát. A formátumban megadott X és y képpont értékeket adja meg `x y` .
--   `lc` – A címke színe. A következőnek kell lennie: `000000` `FFFFFF` .
--   `ls` – A felirat mérete képpontban megadva. 0-nál nagyobb szám lehet.
--   `ro` – Az ikon elforgatására szolgáló fokban megadott érték. A-360 és a 360 közötti szám lehet.
--   `sc` – A PIN-kód ikonjának méretezési értéke. 0-nál nagyobb szám lehet.
+* `al` – Megadja a pushpins opacitását (alpha). 0 és 1 közötti szám lehet.
+* `an` – Megadja a PIN-kód horgonyát. A formátumban megadott X és y képpont értékeket adja meg `x y` .
+* `co` – A PIN-kód színe. 24 bites hexadecimális színnek kell lennie: `000000` `FFFFFF` .
+* `la` – Megadja a felirat horgonyát. A formátumban megadott X és y képpont értékeket adja meg `x y` .
+* `lc` – A címke színe. A következőnek kell lennie: `000000` `FFFFFF` .
+* `ls` – A felirat mérete képpontban megadva. 0-nál nagyobb szám lehet.
+* `ro` – Az ikon elforgatására szolgáló fokban megadott érték. A-360 és a 360 közötti szám lehet.
+* `sc` – A PIN-kód ikonjának méretezési értéke. 0-nál nagyobb szám lehet.
 
 Az egyes PIN-kódokhoz meg kell adni a Label értékeket, nem pedig egyetlen feliratot, amely a helyek listájának összes pushpins érvényes. A címke értéke lehet több karakterből álló karakterlánc is, és az idézőjelek közé helyezhető, így biztosítható, hogy ne legyen helytelen a stílus vagy a hely értéke.
 
@@ -406,17 +417,13 @@ A Azure Maps például egy piros ( `FF0000` ) alapértelmezett ikon hozzáadás�
 
 > `&pins=default|coFF0000|la15 50||'Space Needle'-122.349300 47.620180`
 
-<center>
-
-![Azure Maps statikus Térkép PIN-kódja](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)</center>
+![Azure Maps statikus Térkép PIN-kódja](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)
 
 Az alábbi példában három PIN-kód szerepel az "1", a "2" és a "3" címke értékkel:
 
 > `&pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12`
 
-<center>
-
-![Azure Maps statikus Térkép több PIN-kód](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)</center>
+![Azure Maps statikus Térkép több PIN-kód](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)
 
 ### <a name="draw-curve-url-parameter-format-comparison"></a>Rajzolási görbe URL-paramétereinek formátumának összehasonlítása
 
@@ -436,9 +443,7 @@ Például a Bing Maps-ben egy 50%-os opacitású kék vonal és négy képpont v
 
 `&drawCurve=l,FF000088,4;45,-110_50,-100`
 
-<center>
-
-![Bing Maps – statikus Térkép sora](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)</center>
+![Bing Maps – statikus Térkép sora](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)
 
 **Utána: Azure Maps**
 
@@ -450,20 +455,18 @@ Az elérési utak helyein Azure Maps megköveteli a koordináták `longitude lat
 
 A Azure Mapsban lévő elérésiút-stílusok a következő formátummal lesznek hozzáadva `optionNameValue` , és több stílussal vannak elválasztva, mint például a pipe ( `|` ) karakter `optionName1Value1|optionName2Value2` . Megjegyzés: a beállítások nevei és értékei nincsenek elválasztva. A következő stílus-beállítási nevek használhatók a Azure Mapsi elérési utak stílusához:
 
--   `fa` – A sokszögek renderelése során használt kitöltési szín opacitása (alpha). 0 és 1 közötti szám lehet.
--   `fc` – A sokszög területének megjelenítéséhez használt kitöltési szín.
--   `la` – A vonalak és a sokszögek körvonalainak megjelenítéséhez használt vonal színopacitása (alpha). 0 és 1 közötti szám lehet.
--   `lc` – A vonalak megjelenítéséhez és a sokszögek körvonalához használt vonal színe.
--   `lw` – A vonal szélessége képpontban megadva.
--   `ra` – A körök sugarát adja meg méterben.
+* `fa` – A sokszögek renderelése során használt kitöltési szín opacitása (alpha). 0 és 1 közötti szám lehet.
+* `fc` – A sokszög területének megjelenítéséhez használt kitöltési szín.
+* `la` – A vonalak és a sokszögek körvonalainak megjelenítéséhez használt vonal színopacitása (alpha). 0 és 1 közötti szám lehet.
+* `lc` – A vonalak megjelenítéséhez és a sokszögek körvonalához használt vonal színe.
+* `lw` – A vonal szélessége képpontban megadva.
+* `ra` – A körök sugarát adja meg méterben.
 
 Azure Maps például egy 50%-os opacitású kék vonal és négy képpont vastagsága adható hozzá a térképhez a koordináták között (hosszúság:-110, szélesség: 45 és hosszúság:-100, Latitude: 50) a következő URL-lel:
 
 > `&path=lc0000FF|la.5|lw4||-110 45|-100 50`
 
-<center>
-
-![Azure Maps statikus leképezési sor](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)</center>
+![Azure Maps statikus leképezési sor](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)
 
 ## <a name="calculate-a-distance-matrix"></a>Távolsági mátrix kiszámítása
 
@@ -547,8 +550,8 @@ Mindenképpen tekintse át az [ajánlott eljárásokat a keresési](./how-to-use
 
 Azure Maps több API-t biztosít a forgalmi adatok beolvasásához. Kétféle forgalmi adatok érhetők el;
 
--   **Flow-adatok** – mérőszámokat biztosít a forgalom forgalmáról az utakon. Ezt gyakran használják a kód utak színezésére. Ezek az adatfrissítések 2 percenként frissülnek.
--   **Incidensek** – adatokat biztosít az építkezésről, a közúti bezárásokról, a balesetekről és az olyan egyéb incidensekről, amelyek befolyásolhatják a forgalmat. Ezeket az adatfájlokat percenként frissíti a rendszer.
+* **Flow-adatok** – mérőszámokat biztosít a forgalom forgalmáról az utakon. Ezt gyakran használják a kód utak színezésére. Ezek az adatfrissítések 2 percenként frissülnek.
+* **Incidensek** – adatokat biztosít az építkezésről, a közúti bezárásokról, a balesetekről és az olyan egyéb incidensekről, amelyek befolyásolhatják a forgalmat. Ezeket az adatfájlokat percenként frissíti a rendszer.
 
 A Bing Maps az interaktív térkép vezérlőelemekben biztosítja a forgalom és az incidensek adatmennyiségét, valamint szolgáltatásként elérhetővé teszi az incidensek számára elérhető adatokat is.
 
@@ -602,9 +605,9 @@ A Azure Maps platformon kívül számos további időzóna API is rendelkezésre
 
 A Bing Maps térbeli adatszolgáltatásai három kulcsfontosságú funkciót biztosítanak:
 
--   Batch helymeghatározáshoz – egyetlen kéréssel dolgozza fel a geocodes nagy kötegét.
--   Felügyeleti határokra vonatkozó adat beolvasása – egy koordináta használata, és egy adott entitás típusához tartozó metsző határ beolvasása.
--   Térbeli üzleti adatok üzemeltetése és lekérdezése – töltsön fel egy egyszerű 2D-s adattáblázatot, és néhány egyszerű térbeli lekérdezéssel férhet hozzá.
+* Batch helymeghatározáshoz – egyetlen kéréssel dolgozza fel a geocodes nagy kötegét.
+* Felügyeleti határokra vonatkozó adat beolvasása – egy koordináta használata, és egy adott entitás típusához tartozó metsző határ beolvasása.
+* Térbeli üzleti adatok üzemeltetése és lekérdezése – töltsön fel egy egyszerű 2D-s adattáblázatot, és néhány egyszerű térbeli lekérdezéssel férhet hozzá.
 
 ### <a name="batch-geocode-data"></a>Batch geocode-adatbázis
 
@@ -660,7 +663,11 @@ A Azure Maps a következő programozási nyelvekhez biztosít ügyféloldali kó
 
 Nyílt forráskódú ügyféloldali kódtárak más programozási nyelvekhez;
 
--   .NET Standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet csomag](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .NET Standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet csomag](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+
+Nincs kitakarítható erőforrás.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -668,15 +675,3 @@ További információ a Azure Maps REST Services szolgáltatásról.
 
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások a keresési szolgáltatás használatához](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Ajánlott eljárások az útválasztási szolgáltatás használatához](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [A Services modul (web SDK) használata](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure Maps REST Service API-referenciák dokumentációja](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [Kódminták](/samples/browse/?products=azure-maps)

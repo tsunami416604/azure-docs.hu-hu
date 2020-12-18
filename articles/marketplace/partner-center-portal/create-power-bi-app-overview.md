@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131428"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679146"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI alkalmazás-létrehozás áttekintése
 
@@ -33,7 +33,7 @@ A kereskedelmi piactéren való közzététel előnyei:
 
 Ezek a legfontosabb közzétételi lépések:
 
-1. Hozza létre az alkalmazást Power BIban. A csomag telepítési hivatkozását fogja kapni, amely az ajánlat fő technikai eszköze. Az ajánlat a partner Centerben való létrehozása előtt küldje el a tesztelési csomagot előzetes gyártásra. Részletekért lásd: [Mik a Power bi alkalmazások?](/power-bi/service-template-apps-overview).
+1. Hozza létre az alkalmazást Power BIban. A csomag telepítési hivatkozását fogja kapni, amely az ajánlat fő technikai eszköze. Az ajánlat a partner Centerben való létrehozása előtt küldje el a tesztelési csomagot előzetes gyártásra. Részletekért lásd: [Mik azok a Power bi alkalmazások?](/power-bi/service-template-apps-overview)
 2. Adja hozzá a marketing-anyagokat, például a hivatalos nevet, a leírást és az emblémákat.
 3. Adja meg az ajánlat jogi és támogatási dokumentumait, például a használati feltételeket, az adatvédelmi szabályzatot, a támogatási szabályzatot és a felhasználói súgót.
 4. Ajánlat létrehozása – a partner Center használatával szerkesztheti a részleteket, beleértve az ajánlat leírását, a marketing-anyagokat, a jogi információkat, a támogatási információkat és az eszközök specifikációit.

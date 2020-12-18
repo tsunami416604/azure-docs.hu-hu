@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352983"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560491"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -58,13 +58,14 @@ További információért lásd:  [Foglalás vásárlása](prepare-buy-reserva
 
 A foglalás számlázása az előfizetésnél rögzített fizetési móddal történik. Ha elérhető, a foglalás költsége a pénzügyi keret egyenlegéből lesz levonva. Ha a pénzügyi keret egyenlege nem fedezi a foglalás költségét, akkor a többletköltségek ki lesznek Önnek számlázva. Ha használatalapú díjas, egyéni csomagban rendelkezik előfizetéssel, akkor a rendszer az előre fizetendő vásárlással azonnal megterheli a fiókjához tartozó hitelkártyát. A havi kifizetések a számlán jelennek még, és a rendszer havonta terheli meg a hitelkártyáját. Számlás fizetés esetén a díjak a következő számlán jelennek meg. 
 
-## <a name="permissions-to-view-and-manage-reservations"></a>Engedélyek a foglalások megtekintésére és kezelésére 
+## <a name="who-can-manage-a-reservation-by-default"></a>Alapértelmezés szerint kik kezelhetik a foglalásokat?
 
-A foglalást vásárló felhasználó és a foglalás számlázásához használt előfizetés fiókadminisztrátora a Tulajdonos szerepkört kapja meg a foglalási rendelés és a foglalás tekintetében.
+Alapértelmezés szerint a következő felhasználók tekinthetik meg és kezelhetik a foglalásokat:
 
-Delegálhatja a foglalás kezelését, ha személyeket ad hozzá szerepkörökhöz a foglalási rendelésben vagy a foglalásban. Az Azure Portalon, illetve API-k és a PowerShell használatával rendelhet hozzá szerepköröket. 
+- A foglalást vásárló személyt és a foglalás vásárlásához használt számlázási előfizetés fiókadminisztrátorát a rendszer hozzáadja a foglalási rendeléshez.
+- Nagyvállalati Szerződéssel és Microsoft Ügyfélszerződéssel rendelkező számlázási rendszergazdák.
 
-További információk  [a foglalást kezelő felhasználók hozzáadásáról vagy módosításáról](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation) 
+A foglalások kezelésének engedélyezéséhez más személyek számára lásd: [Foglalások kezelése az Azure-erőforrásoknál](manage-reserved-vm-instance.md).
 
 ## <a name="get-reservation-details-and-utilization-after-purchase"></a>Foglalásrészletek és kihasználtság lekérése a vásárlás után
 

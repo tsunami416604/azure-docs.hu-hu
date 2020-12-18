@@ -7,23 +7,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 52772519cc3b9aebc42175e812ad47ae54b529e9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: dd71b03f55cc1522727f6c496c1bdbe0f42cb828
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336681"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678608"
 ---
 # <a name="what-is-azure-data-box"></a>Mi az az Azure Data Box?
 
 A Microsoft Azure Data Box Cloud megoldás lehetővé teszi, hogy gyors, költséges és megbízható módon küldjön terabájtos adatmennyiséget az Azure-ba. A biztonságos adatátvitelt egy saját fejlesztésű Data Box tárolóeszköz küldésével gyorsítjuk fel. Minden tárolóeszköz legfeljebb 80 TB használható tárolókapacitással rendelkezik, és egy regionális futár szállítja az Ön adatközpontjába. Az eszköz ütésálló tokkal rendelkezik, hogy az adatok az átvitel során védve legyenek.
 
-Az Azure-ból az adatok importálásához vagy exportálásához a Azure Portal segítségével rendelhet Data Box eszközt. Miután az eszköz megérkezett, gyorsan beállíthatja a helyi webes felhasználói felülettel. Attól függően, hogy importálja vagy exportálja az adatait, másolja az adatait a kiszolgálókról az eszközre, vagy fordítva, és küldje vissza az eszközt az Azure-ba. Ha az Azure-adatközpontban az Azure-ba importálja az adatait, a rendszer automatikusan feltölti az adatait az eszközről az Azure-ba. A teljes folyamatot végigkövetheti a Data Box szolgáltatásban, az Azure Portalon.
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
+Az Azure-ból az adatok importálásához vagy exportálásához a Azure Portal segítségével rendelhet Data Box eszközt. Miután az eszköz megérkezett, gyorsan beállíthatja a helyi webes felhasználói felülettel. Attól függően, hogy importálja vagy exportálja az adatait, másolja át az adatait a kiszolgálókról az eszközre vagy az eszközről a kiszolgálókra, és az eszközt visszaküldi az Azure-ba. Ha az Azure-adatközpontban az Azure-ba importálja az adatait, a rendszer automatikusan feltölti az adatait az eszközről az Azure-ba. A teljes folyamatot végigkövetheti a Data Box szolgáltatásban, az Azure Portalon.
 
 ## <a name="use-cases"></a>Használati esetek
 
@@ -43,7 +40,7 @@ Az alábbi forgatókönyvek az adatok Azure-ba történő importálásához hasz
 
 Az alábbi forgatókönyvek az Azure-ból származó adatok exportálására szolgáló Data Box használhatók.
 
-- Vész- **helyreállítás** – ha az Azure-ból származó adatok egy példánya egy helyszíni hálózatra lett visszaállítva. Ez általában olyan vész-helyreállítási forgatókönyv esetén történik, amelyben nagy mennyiségű Azure-adatmennyiséget exportálnak Data Boxba. A Microsoft ezt követően leszállítja ezt a Data Box és az adatait rövid idő alatt visszaállítja a helyszínen. 
+- Vész- **helyreállítás** – ha az Azure-ból származó adatok egy példánya egy helyszíni hálózatra lett visszaállítva. Egy tipikus vész-helyreállítási forgatókönyv esetén nagy mennyiségű Azure-adatmennyiséget exportál egy Data Boxba. A Microsoft ezután leszállítja ezt a Data Box, és rövid idő alatt visszaállítja az adatait a helyszínen.
 
 - **Biztonsági követelmények** – ha az Azure-t kormányzati vagy biztonsági követelmények miatt ki kell tudni exportálni az Azure-ba. Az Azure Storage például az Egyesült Államok titkos és titkos felhők területén érhető el, és a Data Box segítségével exportálhatja az Azure-ból az adatmennyiséget. 
 
@@ -54,14 +51,14 @@ Az alábbi forgatókönyvek az Azure-ból származó adatok exportálására szo
 
 A Data Box nagy mennyiségű adat az Azure-ba való átvitelére szolgál, és minimális hatással van a hálózat működésére. A megoldás a következő előnyökkel jár:
 
-- A **Speed** -Data Box 1 GB/s vagy 10 GB/s hálózati adaptereket használ az Azure-ba vagy onnan kifelé irányuló, akár 80 TB-os adatátvitelre.
+- A **Speed** -Data Box 1 vagy 10 GB/s hálózati adaptereket használ az Azure-ba és az Azure-ba irányuló akár 80 TB-os adatátvitelre.
 
 - **Biztonság** – A Data Box beépített védelmet biztosít az eszköz, az adatok és a szolgáltatás számára.
   - Az eszköz biztonsági tokkal rendelkezik illetéktelen hozzáférést gátló csavarokkal és az illetéktelen hozzáférést jelző matricákkal. 
   - Az eszközön lévő adatokat minden pillanatban 256 bites AES-titkosítás védi.
   - Az eszköz zárolása csak az Azure Portalon megadott jelszóval oldható fel.
   - A szolgáltatást az Azure biztonsági funkciói védik.
-  - Miután az adatok az Azure-ba lettek importálva importálás céljából, az eszközön lévő lemezeket a rendszer a NIST 800-88r1 szabványoknak megfelelően törli. Exportálási rendelés esetén a lemezek törlődnek, ha az eszköz eléri az Azure-adatközpontot.
+  - Miután az importálási rendelés adatait feltölti az Azure-ba, az eszközön lévő lemezeket a rendszer a NIST 800-88r1 szabványoknak megfelelően törli. Exportálási rendelés esetén a lemezek törlődnek, ha az eszköz eléri az Azure-adatközpontot.
     
     További információt [az Azure Data Box biztonsági és adatvédelmi szolgáltatásait](data-box-security.md) ismertető cikkben talál.
 
@@ -69,26 +66,26 @@ A Data Box nagy mennyiségű adat az Azure-ba való átvitelére szolgál, és m
 
 A Data Box eszköz jelen kiadása az alábbi funkciókkal rendelkezik.
 
-| Specifikációk                                          | Leírás              |
+| Specifikációk                                          | Description (Leírás)              |
 |---------------------------------------------------------|--------------------------|
 | Tömeg                                                  | < 22,7 kg                |
 | Dimenziók                                              | Eszköz – szélesség: 309 mm; magasság: 430,4 mm; mélység: 502 mm |            
 | Kiszolgálószekrény-terület                                              | 7 U a kiszolgálószekrénybe helyezve, az oldalára állítva (nem szerelhető rá az állványra)|
 | Szükséges kábelek                                         | 1 db tápkábel (a csomag tartalmazza) <br> 2 db RJ45-kábel <br> 2 db SFP+ Twinax-rézkábel|
-| Tárkapacitás                                        | A 100 TB-os eszköz 80 TB felhasználható kapacitással rendelkezik a RAID 5-védelem alkalmazása után|
+| Tárkapacitás                                        | 100 – a TB-os eszközön 80 TB vagy felhasználható kapacitás van a RAID 5 védelme után|
 | Energiaellátási minősítés                                            | Az áramellátási egység 700 W-ra van értékelve. <br> Az egység jellemzően a 375 W-ot hívja meg.|
-| Hálózati adapterek                                      | 2 db 1 GbE sávszélességű illesztő – MGMT, Data 3. <br> MGMT – a kezeléshez, felhasználó által nem konfigurálható, a kezdeti beállításhoz szükséges <br> DATA3 – az adatokhoz, felhasználó által konfigurálható, alapértelmezetten dinamikus <br> Az MGMT és a DATA 3 is működhet 10 GbE-ként <br> 2 db 10 GbE sávszélességű illesztő – DATA 1, DATA 2 <br> Mindkettő az adatokhoz, konfigurálhatók dinamikusra (alapértelmezés) vagy statikusra |
+| Hálózati adapterek                                      | 2 X 1 – GbE felület – MGMT, adat3. <br> MGMT – a kezeléshez, felhasználó által nem konfigurálható, a kezdeti beállításhoz szükséges <br> DATA3 – az adatokhoz, felhasználó által konfigurálható, alapértelmezetten dinamikus <br> Az MGMT és a DATA 3 is működhet 10 GbE-ként <br> 2 X 10 – GbE felület – 1. adattábla, 2. adattábla <br> Mindkettő az adatokhoz, konfigurálhatók dinamikusra (alapértelmezés) vagy statikusra |
 | Adatátvitel                                      | Az Importálás és az Exportálás is támogatott.  |
 | Adatátviteli felület                                     | RJ45, SFP + 10 GbE réz Ethernet  |
 | Biztonság                                                | Ütésálló eszköztok, az illetéktelen hozzáférést gátló, egyedi csavarokkal <br> Az illetéktelen hozzáférést jelző matricák az eszköz alján|
-| Adatátviteli sebesség                                      | Legfeljebb 80 TB naponta, 10 GbE sávszélességű hálózati adapter használata esetén        |
+| Adatátviteli sebesség                                      | Akár 80 TB-os nap egy 10 GbE hálózati adapteren keresztül        |
 | Kezelés                                              | Helyi webes felhasználói felület – egyszeri kezdeti beállítás és konfigurálás <br> Azure Portal – mindennapos eszközkezelés        |
 
 ## <a name="data-box-components"></a>Data Box-összetevők
 
 A Data Box a következő összetevőket tartalmazza:
 
-* **Data Box eszköz** – Egy fizikai eszköz, amely elsődleges tárolást biztosít, kezeli a felhőalapú tárolóval történő kommunikációt, és segít biztosítani az eszközön tárolt adatok biztonságát és titkosságát. A Data Box eszköz 80 TB hasznos tárolókapacitással rendelkezik. 
+* **Data Box eszköz** – olyan fizikai eszköz, amely elsődleges tárolót biztosít, kezeli a Felhőbeli tárolással folytatott kommunikációt, és segít az eszközön tárolt összes adat biztonságának és titkosságának biztosításában. A Data Box eszköz 80 TB hasznos tárolókapacitással rendelkezik. 
 
     ![A Data Box elöl- és hátulnézete](media/data-box-overview/data-box-combined.png)
 
@@ -138,18 +135,18 @@ Az exportálási folyamat során e-mailben értesítjük az összes állapotadat
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A Data Box a szolgáltatás üzembe helyezése, az adott ország/régió, valamint az adatok átviteléhez használt cél Azure Storage-fiók alapján tudja átvinni az adatok átvitelét. 
+A Data Box a szolgáltatás üzembe helyezése, az eszközt szállító ország vagy régió, valamint az adatok átviteléhez használt cél Azure Storage-fiók alapján továbbítja az adatok átvitelét.
 
 ### <a name="for-import"></a>Importáláshoz
 
-- **Szolgáltatás rendelkezésre állása** – ha az importálási vagy exportálási megrendelésekhez Data Box használ, a régió rendelkezésre állásával kapcsolatos információk eléréséhez nyissa meg az [Azure-termékeket régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). A Data Box exportálási funkciója jelenleg előzetes verzióban érhető el. 
+- **Szolgáltatás rendelkezésre állása** – ha az importálási vagy exportálási megrendelésekhez Data Box használ, a régió rendelkezésre állásával kapcsolatos információk eléréséhez nyissa meg az [Azure-termékeket régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
     Importálási rendelések esetén Data Box a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](../azure-government/documentation-government-welcome.md) 
 
 - **Cél Storage-fiókok** – az adattárolást tároló fiókok az összes Azure-régióban elérhetők, ahol a szolgáltatás elérhető.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box rendszerkövetelményeinek](data-box-system-requirements.md) áttekintése.
 - A [Data Box korlátjainak](data-box-limits.md) értelmezése.

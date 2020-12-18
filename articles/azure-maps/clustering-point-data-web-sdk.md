@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9ecde4cb0c8a3bfe3dd8fb2edb59423838e0751c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e80465cf8d43918e6ed6da8ebb3b96f3f197e887
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889867"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679956"
 ---
 # <a name="clustering-point-data"></a>Fürtözési pontra vonatkozó adatértékek
 
 Ha sok adatpontot jelenít meg a térképen, az adatpontok átfedésben lehetnek egymással. Az átfedés miatt előfordulhat, hogy a Térkép olvashatatlan és nehezen használható. A fürtözési pontra vonatkozó adatgyűjtési folyamat a pontok egymáshoz közel lévő és a térképen való megjelenítését jelenti egyetlen fürtözött adatpontként. Ahogy a felhasználó nagyítja a térképet, a fürtök az egyes adatpontokon kívülre kerülnek. Ha nagy számú adatpontot használ, a fürtözési folyamatokkal növelheti felhasználói élményét.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player?format=ny]
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Az adatforrások fürtözésének engedélyezése
 
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 Az alábbiakban az osztály által a `DataSource` fürtözéshez biztosított további módszerek érhetők el:
 
-| Módszer | Visszatérési típus | Leírás |
+| Módszer | Visszatérési típus | Description (Leírás) |
 |--------|-------------|-------------|
 | getClusterChildren (clusterId: szám) | &lt;A tömb &lt; funkcióinak &lt; geometriája, bármilyen &gt; \| alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
 | getClusterExpansionZoom (clusterId: szám) | Ígéret &lt; száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |
@@ -92,7 +92,7 @@ Tekintse meg a tollas <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>fürtö
 
 Ha az egér eseményei olyan rétegen történnek, amely fürtözött adatpontokat tartalmaz, a fürtözött adatpont GeoJSON pont szolgáltatás objektumként tér vissza az eseményre. Ennek a pontnak a funkciója a következő tulajdonságokkal fog rendelkezni:
 
-| Tulajdonság neve             | Típus    | Leírás   |
+| Tulajdonság neve             | Típus    | Description (Leírás)   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e. |
 | `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely használható az adatforrással `getClusterExpansionZoom` , `getClusterChildren` és `getClusterLeaves` metódusokkal. |
@@ -104,7 +104,7 @@ Ez a példa egy buborék réteget hoz létre, amely megjeleníti a fürtöket, �
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Fürt getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster getClusterExpansionZoom</a> Azure Maps () által a <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>-on található Pen cluster getClusterExpansionZoom.
+Tekintse meg <a href='https://codepen.io/azuremaps/pen/moZWeV/'></a> Azure Maps () által a <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>-on található Pen cluster getClusterExpansionZoom.
 </iframe>
 
 ## <a name="display-cluster-area"></a>A fürt környékének megjelenítése 

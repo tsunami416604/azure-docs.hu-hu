@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0418c11d84fb82ac4a4b181289f032407a29f92e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0b2346ae4777b31ce2e5c396fb03084d38b2008f
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500665"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678971"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>A Windows rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -88,7 +88,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |
@@ -98,7 +98,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 | certificateStoreName | MY | sztring |
 | linkOnRenewal | hamis | boolean |
 | certificateStoreLocation  | LocalMachine vagy CurrentUser (kis-és nagybetűk megkülönböztetése) | sztring |
-| requiredInitialSync | true | boolean |
+| requireInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate","https://myvault.vault.azure.net/secrets/mycertificate2"] | karakterlánc-tömb
 | msiEndpoint | http://169.254.169.254/metadata/identity | sztring |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | sztring |

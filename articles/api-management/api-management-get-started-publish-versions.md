@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: e6afa26c65f097683a5b471dc34621cca38c01e6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 4a107b4cc0dbf0b0845211ca64691fb0e792a47c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377398"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679093"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Oktatóanyag: az API több verziójának közzététele 
 
@@ -20,7 +20,7 @@ Vannak olyan időpontok, amikor nem praktikus, hogy az API-hívók pontosan ugya
 
 A háttérben lásd: [verziók & változatok](https://azure.microsoft.com/blog/versions-revisions/).
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Új verzió hozzáadása meglévő API-hoz
@@ -41,7 +41,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
 1. Válassza az **API-k** lehetőséget.
 1. Válassza a **Demo Conference API** lehetőséget az API-k listájából. 
-1. Válassza a **bemutató konferencia API** melletti helyi menüt ( **..**.).
+1. Válassza a **bemutató konferencia API** melletti helyi menüt (**..**.).
 1. Válassza a **verzió hozzáadása** lehetőséget.
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/add-version-menu.png" alt-text="API-környezet menü – verzió hozzáadása":::
@@ -83,8 +83,8 @@ Ahhoz, hogy a hívók láthassák az új verziót, hozzá kell adni azt egy *ter
 Ha például a verziót szeretné hozzáadni a **korlátlan** termékhez:
 1. A Azure Portal navigáljon a API Management-példányhoz.
 1. Válassza a **termékek**  >  **korlátlan**  >  **API**  >  **+ Hozzáadás** lehetőséget.
-1. Válassza a **bemutató konferencia API** , **v1** verzió elemet.
-1. Kattintson a **Kiválasztás** elemre.
+1. Válassza a **bemutató konferencia API**, **v1** verzió elemet.
+1. Válassza a **Kiválasztás** lehetőséget.
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="Verzió hozzáadása a termékhez":::
 
@@ -111,4 +111,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [A fejlesztői portál oldalstílusának testreszabása](api-management-customize-styles.md)
+> [A fejlesztői portál oldalstílusának testreszabása](api-management-howto-developer-portal-customize.md)

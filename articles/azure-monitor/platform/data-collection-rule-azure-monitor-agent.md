@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 94c926c555a4bc96ac3c6fbe773650e16554bcf2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: d04fa25b9c953d151fc16d11f304c48b7046ab76
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315702"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680398"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Adatgyűjtés konfigurálása a Azure Monitor-ügynökhöz (előzetes verzió)
 
@@ -35,6 +35,9 @@ Vegyünk például egy olyan környezetet, amely egy üzletági alkalmazást fut
 
 A Azure Portal használatával létrehozhat egy adatgyűjtési szabályt, és az előfizetésében lévő virtuális gépeket hozzárendelheti a szabályhoz. A rendszer automatikusan telepíti a Azure Monitor ügynököt, és felügyelt identitást hozott létre minden olyan virtuális géphez, amelyen még nincs telepítve.
 
+> [!IMPORTANT]
+> Jelenleg ismert probléma van, ha az adatgyűjtési szabály olyan virtuális gépen hoz létre felügyelt identitást, amely már rendelkezik felhasználó által hozzárendelt felügyelt identitással, a felhasználó által hozzárendelt identitás le van tiltva.
+
 A Azure Portal **Azure monitor** menüjében válassza az **adatgyűjtési szabályok** lehetőséget a **Beállítások** szakaszban. Új adatgyűjtési szabály és hozzárendelés hozzáadásához kattintson a **Hozzáadás** gombra.
 
 [![Adatgyűjtés szabályai](media/azure-monitor-agent/data-collection-rules.png)](media/azure-monitor-agent/data-collection-rules.png#lightbox)
@@ -52,7 +55,7 @@ Az adatgyűjtés **és** küldés lapon kattintson az **adatforrás hozzáadása
 [![Alapszintű adatforrás](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-Más naplók és teljesítményszámlálók megadásához válassza az **Egyéni** lehetőséget. Ezután megadhat egy [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) -értéket a gyűjtött értékek bármelyikéhez. Példák: példa a [DCR](data-collection-rule-overview.md#sample-data-collection-rule) -re.
+Ha más naplókat és teljesítményszámlálókat szeretne megadni a [jelenleg támogatott adatforrásokból](azure-monitor-agent-overview.md#data-sources-and-destinations) , vagy az eseményeket XPath-lekérdezések használatával szeretné szűrni, válassza az **Egyéni** lehetőséget. Ezután megadhat egy [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) -értéket a gyűjtött értékek bármelyikéhez. Példák: példa a [DCR](data-collection-rule-overview.md#sample-data-collection-rule) -re.
 
 [![Adatforrás egyéni](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 
