@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: c184d4758d6435659d737c11904357711f4f0a36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3337d66934c1fe317296cffaa9a663e212cce12d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455872"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673171"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Oktatóanyag: Azure Active Directory integráció a ClickTime
 
@@ -61,13 +61,13 @@ A ClickTime Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **ClickTime**kifejezést, válassza a **ClickTime** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **ClickTime** kifejezést, válassza a **ClickTime** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![ClickTime az eredmények listájában](common/search-new-app.png)
+    ![ClickTime az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az ClickTime-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az ClickTime-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a ClickTime kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés ClickTime való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés ClickTime való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **ClickTime** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **ClickTime** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -104,7 +104,7 @@ Az Azure AD egyszeri bejelentkezés ClickTime való konfigurálásához hajtsa v
     a. Az **azonosító** szövegmezőbe írja be az URL-címet: `https://app.clicktime.com/sp/`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
-    
+
     ```http
     https://app.clicktime.com/Login/
     https://app.clicktime.com/App/Login/Consume.aspx
@@ -128,25 +128,25 @@ Az Azure AD egyszeri bejelentkezés ClickTime való konfigurálásához hajtsa v
 
 1. Egy másik böngészőablakban jelentkezzen be a ClickTime vállalati webhelyre rendszergazdaként.
 
-1. A felső eszköztáron kattintson a **Beállítások**, majd a **biztonsági beállítások**elemre.
+1. A felső eszköztáron kattintson a **Beállítások**, majd a **biztonsági beállítások** elemre.
 
 1. Az **egyszeres Sign-On beállítások** konfigurálása szakaszban hajtsa végre a következő lépéseket:
-   
+
     ![Biztonsági beállítások](./media/clicktime-tutorial/tic777280.png "Biztonsági beállítások")
-   
+
     a.  Jelölje be az egyszeri Sign-On (SSO) használata az **Azure ad**- **vel jelölőnégyzetet** .
-   
+
     b. Az **Identity Provider végpont** szövegmezőben illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
-   
-    c.  Nyissa meg a **jegyzettömbben**Azure Portal letöltött **Base-64 kódolású tanúsítványt** , másolja ki a tartalmat, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
-   
+
+    c.  Nyissa meg a **jegyzettömbben** Azure Portal letöltött **Base-64 kódolású tanúsítványt** , másolja ki a tartalmat, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
+
     d.  Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -159,27 +159,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a ClickTime hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **ClickTime**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **ClickTime** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **ClickTime**lehetőséget.
+2. Az alkalmazások listában válassza a **ClickTime** lehetőséget.
 
     ![Az ClickTime hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -205,25 +205,25 @@ ClickTime esetén a kiépítés manuális feladat.
 
 1. Jelentkezzen be a **ClickTime** -bérlőbe.
 
-1. A felső eszköztáron kattintson a **vállalat**elemre, majd a **személyek**elemre.
-   
+1. A felső eszköztáron kattintson a **vállalat** elemre, majd a **személyek** elemre.
+
     ![Képernyőfelvétel: a ClickTime bérlő a vállalat és a kiválasztott személyek közül.](./media/clicktime-tutorial/tic777282.png "People")
 
-1. Kattintson a **személy hozzáadása**lehetőségre.
-   
+1. Kattintson a **személy hozzáadása** lehetőségre.
+
     ![Személy hozzáadása](./media/clicktime-tutorial/tic777283.png "Személy hozzáadása")
 
 1. Az új személy szakaszban hajtsa végre a következő lépéseket:
-   
+
     ![Képernyőfelvétel: a személy hozzáadása szakasz, ahol az ebben a lépésben szereplő információkat adhatja hozzá.](./media/clicktime-tutorial/tic777284.png "People")
-   
-    a.  A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét, például a **Britta Simon**nevet. 
-  
+
+    a.  A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét, például a **Britta Simon** nevet. 
+
     b.  Az **e-mail cím** szövegmezőbe írja be a felhasználó, például a **brittasimon \@ contoso.com**-e-mail-címét.
-       
+
     > [!NOTE]
     > Ha szeretné, az új személy objektum további tulajdonságait is megadhatja.
-   
+
     c.  Kattintson a **Mentés** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 

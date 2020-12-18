@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 08644c8b3c7967a2ba604cbddb58df2b29c6fc3e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b004394d3f0cc1c4d285c9eba9952a43e8cf65f2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457775"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Oktatóanyag: Azure Active Directory integráció a ArcGIS Online-nal
 
@@ -64,13 +64,13 @@ A ArcGIS Online Azure AD-be való integrálásának konfigurálásához a katal�
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **ArcGIS Online**kifejezést, válassza a **ArcGIS Online** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **ArcGIS Online** kifejezést, válassza a **ArcGIS Online** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![ArcGIS Online az eredmények listájában](common/search-new-app.png)
+    ![ArcGIS Online az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a ArcGIS Online-hoz konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a ArcGIS Online-hoz konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a ArcGIS Online kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a ArcGIS Online szolgáltatással való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -88,7 +88,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a ArcGIS Online szolgáltatással való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **ArcGIS Online** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **ArcGIS Online** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -115,25 +115,25 @@ Az Azure AD egyszeri bejelentkezés a ArcGIS Online szolgáltatással való konf
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-6. A **ArcGIS Online-on**belüli konfiguráció automatizálásához a **bővítmény telepítése**lehetőségre kattintva telepítenie kell **az alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
+6. A **ArcGIS Online-on** belüli konfiguráció automatizálásához a **bővítmény telepítése** lehetőségre kattintva telepítenie kell **az alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
 
     ![image](./media/arcgis-tutorial/install_extension.png)
 
-7. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítő ArcGIS Online** lehetőségre a ArcGIS Online-alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a ArcGIS Online-ba való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja a **ArcGIS Online egyszeri bejelentkezés konfigurálása**szakasz lépéseit.
+7. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítő ArcGIS Online** lehetőségre a ArcGIS Online-alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a ArcGIS Online-ba való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja a **ArcGIS Online egyszeri bejelentkezés konfigurálása** szakasz lépéseit.
 
 ### <a name="configure-arcgis-online-single-sign-on"></a>ArcGIS Online – egyetlen Sign-On konfigurálása
 
 1. Ha manuálisan szeretné beállítani a ArcGIS Online-t, nyisson meg egy új böngészőablakot, és jelentkezzen be a ArcGIS vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-2. Kattintson a **beállítások szerkesztése**elemre.
+2. Kattintson a **beállítások szerkesztése** elemre.
 
     ![Beállítások szerkesztése](./media/arcgis-tutorial/ic784742.png "Beállítások szerkesztése")
 
-3. Kattintson a **Biztonság**elemre.
+3. Kattintson a **Biztonság** elemre.
 
     ![Biztonság](./media/arcgis-tutorial/ic784743.png "Biztonság")
 
-4. A **vállalati bejelentkezések**területen kattintson az **Identity Provider beállítása**elemre.
+4. A **vállalati bejelentkezések** területen kattintson az **Identity Provider beállítása** elemre.
 
     ![Vállalati bejelentkezések](./media/arcgis-tutorial/ic784744.png "Vállalati bejelentkezések")
 
@@ -145,15 +145,15 @@ Az Azure AD egyszeri bejelentkezés a ArcGIS Online szolgáltatással való konf
 
     b. **A vállalati identitás-szolgáltató metaadatait a használatával fogja megadni**. Válasszon ki **egy fájlt**.
 
-    c. A letöltött metaadat-fájl feltöltéséhez kattintson a **fájl kiválasztása**lehetőségre.
+    c. A letöltött metaadat-fájl feltöltéséhez kattintson a **fájl kiválasztása** lehetőségre.
 
-    d. Kattintson a **személyazonosság-szolgáltató beállítása**elemre.
+    d. Kattintson a **személyazonosság-szolgáltató beállítása** elemre.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -166,27 +166,27 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a ArcGIS Online-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **ArcGIS Online**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **ArcGIS Online** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza a **ArcGIS Online**lehetőséget.
+2. Az alkalmazások listában írja be és válassza a **ArcGIS Online** lehetőséget.
 
     ![Az ArcGIS Online hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -209,25 +209,25 @@ ArcGIS Online esetén a kiépítés manuális feladat.
 
 1. Jelentkezzen be a **ArcGIS** -bérlőbe.
 
-2. Kattintson a **tagok meghívása**elemre.
-   
+2. Kattintson a **tagok meghívása** elemre.
+
     ![Tagok meghívása](./media/arcgis-tutorial/ic784747.png "Tagok meghívása")
 
-3. Válassza **a tagok hozzáadása automatikusan e-mail küldése nélkül**lehetőséget, majd kattintson a **tovább**gombra.
-   
+3. Válassza **a tagok hozzáadása automatikusan e-mail küldése nélkül** lehetőséget, majd kattintson a **tovább** gombra.
+
     ![Tagok automatikus hozzáadása](./media/arcgis-tutorial/ic784748.png "Tagok automatikus hozzáadása")
 
 4. A **tagok** párbeszédpanelen hajtsa végre a következő lépéseket:
-   
-     ![Hozzáadás és felülvizsgálat](./media/arcgis-tutorial/ic784749.png "Hozzáadás és felülvizsgálat")
-    
-     a. Adja meg a kiépíteni kívánt érvényes Azure AD **-fiók e-mail-címét**, **utónevét**és **vezetéknevét** .
-  
-     b. Kattintson **a Hozzáadás és áttekintés**gombra.
-5. Tekintse át a beírt adataikat, majd kattintson a **Tagok hozzáadása**lehetőségre.
-   
+
+    ![Hozzáadás és felülvizsgálat](./media/arcgis-tutorial/ic784749.png "Hozzáadás és felülvizsgálat")
+
+     a. Adja meg a kiépíteni kívánt érvényes Azure AD **-fiók e-mail-címét**, **utónevét** és **vezetéknevét** .
+
+     b. Kattintson **a Hozzáadás és áttekintés** gombra.
+5. Tekintse át a beírt adataikat, majd kattintson a **Tagok hozzáadása** lehetőségre.
+
     ![Tag hozzáadása](./media/arcgis-tutorial/ic784750.png "Tag hozzáadása")
-        
+
     > [!NOTE]
     > A Azure Active Directory fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követve erősítse meg a fiókját, mielőtt az aktívvá válna.
 

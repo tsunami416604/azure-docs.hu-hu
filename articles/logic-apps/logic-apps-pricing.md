@@ -1,6 +1,6 @@
 ---
 title: Díjszabás & számlázási modell
-description: Áttekintés arról, hogy a díjszabás és a számlázási modell hogyan működik a Azure Logic Apps
+description: A Azure Logic Apps díjszabásának és számlázásának áttekintése
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 520b4a0e87f27a90a604947ae0b558066b4ab82f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9243d089b4a000066ec03dbeeccd046db374f558
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937593"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673110"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>A Azure Logic Apps díjszabási modellje
 
@@ -65,11 +65,11 @@ Az ISE-ben létrehozott és futtatott Logic apps esetén a következő képessé
 
   * **Fejlesztői** ISE SKU: egyetlen [ingyenes rétegbeli](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrációs fiók
 
-  Az SKU-tól függetlenül minden ISE [korlátozott számú integrációs fiókot](logic-apps-limits-and-config.md#integration-account-limits)tartalmazhat. Ezt a korlátot további díjakra is kiemelheti:
+  További díjakért több integrációs fiókot is létrehozhat az ISE számára [a teljes korlátig](logic-apps-limits-and-config.md#integration-account-limits). 
 
-  * **Prémium** szintű ISE SKU: legfeljebb négy szabványos fiók. Nincsenek ingyenes vagy alapszintű fiókok.
+  * **Prémium** szintű ISE SKU: legfeljebb 19 további szabványos fiók. Ingyenes vagy alapszintű fiókok használata nem engedélyezett.
 
-  * **Fejlesztői** ISE SKU: akár 4 további standard fiók, vagy akár 5 teljes standard fiók. Nincsenek alapszintű fiókok.
+  * **Fejlesztői** ISE SKU: akár 19 további szabványos fiók, ha már rendelkezik ingyenes fiókkal vagy 20 teljes standard fiókkal, ha nem rendelkezik ingyenes fiókkal. Nem engedélyezett alapszintű fiók.
 
   További információ az integrációs fiók korlátairól: [Azure Logic apps korlátai és konfigurálása](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Az [integrációs fiók szintjeiről és azok díjszabási modelljéről](#integration-accounts) a jelen témakör későbbi részében olvashat bővebben.
 
@@ -118,7 +118,7 @@ A [rögzített díjszabási modell](https://azure.microsoft.com/pricing/details/
 
 A Azure Logic Apps ingyenes, alapszintű és standard integrációs fiókokat kínál. Az alapszintű és a standard szintű csomagokat a Logic Apps szolgáltatói szerződés (SLA) támogatja, az ingyenes szintet pedig SLA nem támogatja, és korlátozza a régió rendelkezésre állását, az átviteli sebességet és a használatot. Az ingyenes szintű integrációs fiókok kivételével az egyes Azure-régiókban több integrációs fiók is lehet. A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-Ha egy [ *integrációs szolgáltatási környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)van, az [SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-tól függetlenül, az ISE [korlátozott számú integrációs fiókkal](logic-apps-limits-and-config.md#integration-account-limits)rendelkezhet, de [ezt a korlátot felár ellenében is növelheti](#fixed-pricing). Ha szeretné megtudni, hogyan működik a rögzített díjszabási modell egy ISE esetében, tekintse meg a jelen témakör előző [rögzített díjszabási modell](#fixed-pricing) című szakaszát. A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
+Ha [ *integrációs szolgáltatási környezettel* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)rendelkezik, az ISE külön díj nélkül használhat egyetlen integrációs fiókot, bár a tartalmazott fióktípus az [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-tól függ. [További díjakért](#fixed-pricing)több integrációs fiókot is LÉTREHOZHAT az ISE számára az [integrációs fiókok teljes korlátozásával](logic-apps-limits-and-config.md#integration-account-limits). Ha szeretné megtudni, hogyan működik a rögzített díjszabási modell egy ISE esetében, tekintse meg a jelen témakör előző [rögzített díjszabási modell](#fixed-pricing) című szakaszát. A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Az ingyenes, az alapszintű vagy a standard integrációs fiók közötti választáshoz tekintse át az alábbi használati esetek leírását:
 

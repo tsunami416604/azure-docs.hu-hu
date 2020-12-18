@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179696"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673664"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>Oktatóanyag: a Clarizen konfigurálása az automatikus felhasználó-kiépítés számára
 
@@ -78,19 +78,19 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelt bemutató képernyőkép.](common/enterprise-applications.png)
+      ![A vállalati alkalmazások panelt bemutató képernyőkép.](common/enterprise-applications.png)
 
 1. Az alkalmazások listában válassza ki a **Clarizen egyet**.
 
-    ![Képernyőkép, amely a Clarizen egy hivatkozását mutatja az alkalmazások listájában.](common/all-applications.png)
+      ![Képernyőkép, amely a Clarizen egy hivatkozását mutatja az alkalmazások listájában.](common/all-applications.png)
 
 1. Válassza a **Kiépítés** lapot.
 
-    ![A kiépítési lapot megjelenítő képernyőkép.](common/provisioning.png)
+      ![A kiépítési lapot megjelenítő képernyőkép.](common/provisioning.png)
 
 1. A **kiépítési mód** beállítása **automatikusra**.
 
-    ![A kiépítési lap automatikus beállítását bemutató képernyőkép.](common/provisioning-automatic.png)
+      ![A kiépítési lap automatikus beállítását bemutató képernyőkép.](common/provisioning-automatic.png)
 
 1. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Clarizen egy **bérlői URL-címet** és egy **titkos jogkivonatot**. Válassza a **kapcsolat tesztelése** lehetőséget, hogy az Azure ad képes legyen csatlakozni a Clarizen. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Clarizen egy fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
@@ -100,7 +100,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Az értesítő e-mail-címet megjelenítő képernyőkép.](common/provisioning-notification-email.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók Clarizen egyet**.
 
@@ -162,15 +162,15 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 1. Ha **engedélyezni szeretné az** Azure ad kiépítési szolgáltatást a Clarizen, módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban.
 
-    ![A kiépítési állapotot bemutató képernyőkép a következőn:.](common/provisioning-toggle-on.png)
+      ![A kiépítési állapotot bemutató képernyőkép a következőn:.](common/provisioning-toggle-on.png)
 
 1. Adja meg a Clarizen kiépíteni kívánt felhasználókat vagy csoportokat, majd a **Beállítások** szakaszban válassza ki a kívánt értékeket a **hatókörben** .
 
-    ![A kiépítési hatókört bemutató képernyőkép.](common/provisioning-scope.png)
+      ![A kiépítési hatókört bemutató képernyőkép.](common/provisioning-scope.png)
 
 1. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget.
 
-    ![A kiépítési konfiguráció mentését bemutató képernyőkép.](common/provisioning-configuration-save.png)
+      ![A kiépítési konfiguráció mentését bemutató képernyőkép.](common/provisioning-configuration-save.png)
 
 Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát elindítja. A kezdeti ciklus elvégzése hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek az Azure AD átadási szolgáltatásának futtatása során körülbelül 40 percenként lesznek végrehajtva.
 

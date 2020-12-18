@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kezelheti a hibákat a Azure Functions Durable 
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 023f9dfcc421935c3f7515e847108925d5e5521e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081695"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673647"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Hibák feldolgozása a Durable Functionsban (Azure Functions)
 
@@ -196,11 +196,15 @@ Az előző példában szereplő tevékenység függvény hívása egy paraméter
 * **Leállítási együttható**: a leállítási növelésének mértékét meghatározó együttható. Az alapértelmezett érték 1.
 * **Maximális újrapróbálkozási időköz**: az újrapróbálkozási kísérletek között elvárt maximális időtartam.
 * **Újrapróbálkozás időtúllépése**: az újrapróbálkozások maximálisan elkölthető ideje. Az alapértelmezett viselkedés az, ha határozatlan ideig próbálkozik.
-* **Leíró**: a felhasználó által definiált visszahívás megadható annak megállapításához, hogy egy függvényt újra kell-e próbálni.
+* **Leíró**: a felhasználó által definiált visszahívás megadható annak megállapításához, hogy egy függvényt újra kell-e próbálni. 
+
+> [!NOTE]
+> A JavaScript () Durable Functions jelenleg nem támogatja a felhasználó által definiált visszahívásokat `context.df.RetryOptions` .
+
 
 ## <a name="function-timeouts"></a>Függvények időtúllépései
 
-Előfordulhat, hogy egy Orchestrator függvény hívását is el szeretné hagyni, ha túl sokáig tart a Befejezés. Ez a megfelelő módszer a (z) (.net) [durable timer](durable-functions-timers.md) , `context.CreateTimer` `context.df.createTimer` (JavaScript) vagy `context.create_timer` (Python) ( `Task.WhenAny` .net), `context.df.Task.any` (JavaScript) vagy (Python) együttes használatával történő tartós időzítő létrehozásával `context.task_any` , ahogy az alábbi példában is látható:
+Előfordulhat, hogy egy Orchestrator függvény hívását is el szeretné hagyni, ha túl sokáig tart a Befejezés. Ez a megfelelő módszer a (z) (.net) [](durable-functions-timers.md) , `context.CreateTimer` `context.df.createTimer` (JavaScript) vagy `context.create_timer` (Python) ( `Task.WhenAny` .net), `context.df.Task.any` (JavaScript) vagy (Python) együttes használatával történő tartós időzítő létrehozásával `context.task_any` , ahogy az alábbi példában is látható:
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -290,7 +294,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 Ha egy Orchestrator függvény nem kezelt kivétel miatt meghiúsul, a rendszer naplózza a kivétel részleteit, és a példány `Failed` állapota állapottal fejeződik be.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg az örök összeszereléseket](durable-functions-eternal-orchestrations.md)

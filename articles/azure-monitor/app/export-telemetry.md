@@ -3,12 +3,12 @@ title: Telemetria folyamatos exportálása a Application Insightsból | Microsof
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324335"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674137"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása az Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
@@ -38,7 +38,10 @@ A folyamatos exportálás nem **támogatja** a következő Azure Storage-funkci�
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> Folyamatos exportálás létrehozása
 
-1. Az alkalmazás Application Insights erőforrásában a bal oldali konfigurálás területen nyissa meg a folyamatos exportálás elemet, és válassza a **Hozzáadás**lehetőséget:
+> [!NOTE]
+> Az alkalmazások naponta nem exportálhatók több mint DEDUPLIKÁCIÓNAK. Ha a naponta több mint DEDUPLIKÁCIÓNAK exportálja, az Exportálás le lesz tiltva. A korlátozás nélküli exportáláshoz használjon [diagnosztikai beállításokon alapuló exportálást](#diagnostic-settings-based-export).
+
+1. Az alkalmazás Application Insights erőforrásában a bal oldali konfigurálás területen nyissa meg a folyamatos exportálás elemet, és válassza a **Hozzáadás** lehetőséget:
 
 2. Válassza ki az exportálni kívánt telemetria-adattípusokat.
 
@@ -96,9 +99,9 @@ Az adatmennyiség magában foglalja az Ön által beállított [rendelkezésre �
 >
 
 ## <a name="inspect-the-data"></a><a name="get"></a> Az adatgyűjtés ellenőrzése
-A tárolót közvetlenül a portálon ellenőrizheti. Kattintson a bal szélső menü Kezdőlap elemére, ahol az "Azure-szolgáltatások" lehetőséget választja a **Storage-fiókok**elemre, majd válassza ki a Storage-fiók nevét, az Áttekintés lapon a szolgáltatások területen válassza a **Blobok** lehetőséget, végül válassza ki a tároló nevét.
+A tárolót közvetlenül a portálon ellenőrizheti. Kattintson a bal szélső menü Kezdőlap elemére, ahol az "Azure-szolgáltatások" lehetőséget választja a **Storage-fiókok** elemre, majd válassza ki a Storage-fiók nevét, az Áttekintés lapon a szolgáltatások területen válassza a **Blobok** lehetőséget, végül válassza ki a tároló nevét.
 
-Az Azure Storage a Visual Studióban való vizsgálatához nyissa meg a **nézet**, **Cloud Explorer**lehetőséget. (Ha nem rendelkezik a menüparancsokkal, telepítenie kell az Azure SDK-t: Nyissa meg az **új projekt** párbeszédpanelt, bontsa ki a Visual C#/Cloud elemet, és válassza a **beolvasás Microsoft Azure SDK a .net-hez**lehetőséget.)
+Az Azure Storage a Visual Studióban való vizsgálatához nyissa meg a **nézet**, **Cloud Explorer** lehetőséget. (Ha nem rendelkezik a menüparancsokkal, telepítenie kell az Azure SDK-t: Nyissa meg az **új projekt** párbeszédpanelt, bontsa ki a Visual C#/Cloud elemet, és válassza a **beolvasás Microsoft Azure SDK a .net-hez** lehetőséget.)
 
 A blob-tároló megnyitásakor egy tárolót fog látni a blob-fájlokkal. A Application Insights-erőforrás nevéből származtatott fájlok URI-ja, a kialakítási kulcs, a telemetria-típus/dátum/idő. (Az erőforrás neve mind kisbetűs, és a kialakítási kulcs kihagyja a kötőjeleket.)
 
@@ -120,7 +123,7 @@ Ahol
 ## <a name="data-format"></a><a name="format"></a> Adatformátum
 * Minden blob egy szövegfájl, amely több "\n"-tagolt sort tartalmaz. Tartalmazza a feldolgozott telemetria körülbelül fél percen belül.
 * Az egyes sorok egy telemetria adatpontot jelölnek, például egy kérés vagy egy oldal nézetet.
-* Minden sor egy formázatlan JSON-dokumentum. Ha meg szeretné tekinteni a sorokat, nyissa meg a blobot a Visual Studióban, és válassza a **Edit**  >  **speciális**  >  **formátumú fájl**szerkesztése elemet:
+* Minden sor egy formázatlan JSON-dokumentum. Ha meg szeretné tekinteni a sorokat, nyissa meg a blobot a Visual Studióban, és válassza a   >  **speciális**  >  **formátumú fájl** szerkesztése elemet:
 
    ![A telemetria megtekintése megfelelő eszközzel](./media/export-telemetry/06-json.png)
 
@@ -178,7 +181,7 @@ Nagyobb lépték esetén vegye fontolóra a [HDInsight](https://azure.microsoft.
 ## <a name="q--a"></a>Kérdések és válaszok
 * *Azonban csak egy diagram egyszeri letöltésére van szükség.*  
 
-    Igen, ezt megteheti. A lap tetején kattintson az **adatexportálás**elemre.
+    Igen, ezt megteheti. A lap tetején kattintson az **adatexportálás** elemre.
 * *Egy exportálást állítottam be, de az áruházban nem találhatók adatkészletek.*
 
     Az Exportálás beállítása óta Application Insights kapott bármilyen telemetria az alkalmazástól? Csak az új adatgyűjtést fogja kapni.
@@ -207,6 +210,19 @@ Nagyobb lépték esetén vegye fontolóra a [HDInsight](https://azure.microsoft.
 * [Stream Analytics minta](export-stream-analytics.md)
 * [SQL-exportálás a Stream Analytics használatával][exportasa]
 * [Részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](export-data-model.md)
+
+## <a name="diagnostic-settings-based-export"></a>Diagnosztikai beállításokon alapuló exportálás
+
+A diagnosztikai beállításokon alapuló exportálás más sémát használ, mint a folyamatos exportálás. Emellett támogatja a folyamatos exportáláshoz hasonló funkciókat:
+
+* Azure Storage-fiókok vnet, tűzfalakkal és privát hivatkozásokkal.
+* Exportálás az Event hub-ba.
+
+Áttelepítés diagnosztikai beállításokon alapuló exportálásra:
+
+1. A jelenlegi folyamatos exportálás letiltása.
+2. [Alkalmazás migrálása munkaterület-alapúra](convert-classic-resource.md).
+3. A [diagnosztikai beállítások exportálásának engedélyezése](create-workspace-resource.md#export-telemetry). Válassza a **diagnosztikai beállítások > a diagnosztikai beállítás hozzáadása** lehetőséget a Application Insights erőforráson belül.
 
 <!--Link references-->
 

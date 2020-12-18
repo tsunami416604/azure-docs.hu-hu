@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2fa8794066739302d2f32acb13c936c524dc89a8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7e74a58a14bdcc2a6fe1e9f86305aae415c6abf7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422348"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674514"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Olvasási replikák létrehozása és kezelése az Azure CLI-ből, REST API
 
@@ -64,7 +64,7 @@ Az olvasási replikákat az Azure CLI használatával hozhatja létre és kezelh
 
 Az az [postgres Server replika Create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) paranccsal a következő paramétereket kell megadni:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Description  |
 | --- | --- | --- |
 | resource-group | myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létre lesz hozva.  |
 | name | mydemoserver – replika | A létrehozott új replika-kiszolgáló neve. |
@@ -85,7 +85,7 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 > [!NOTE]
 > Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
 
-Ha nem állította be a `azure.replication_support` paramétert **REPLICA** egy általános célú vagy a memóriára optimalizált elsődleges kiszolgálón, és újraindította a kiszolgálót, hibaüzenetet kap. A replika létrehozása előtt végezze el a két lépést.
+Ha nem állította be a `azure.replication_support` paramétert  egy általános célú vagy a memóriára optimalizált elsődleges kiszolgálón, és újraindította a kiszolgálót, hibaüzenetet kap. A replika létrehozása előtt végezze el a két lépést.
 
 > [!IMPORTANT]
 > Tekintse át az [olvasási replika áttekintése című témakör szempontjait](concepts-read-replicas.md#considerations).
@@ -168,7 +168,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
 
-Ha nem állította be a `azure.replication_support` paramétert **REPLICA** egy általános célú vagy a memóriára optimalizált elsődleges kiszolgálón, és újraindította a kiszolgálót, hibaüzenetet kap. A replika létrehozása előtt végezze el a két lépést.
+Ha nem állította be a `azure.replication_support` paramétert  egy általános célú vagy a memóriára optimalizált elsődleges kiszolgálón, és újraindította a kiszolgálót, hibaüzenetet kap. A replika létrehozása előtt végezze el a két lépést.
 
 A replika ugyanazokkal a számítási és tárolási beállításokkal jön létre, mint a főkiszolgáló. A replika létrehozása után több beállítás is módosítható az elsődleges kiszolgálótól függetlenül: számítási generáció, virtuális mag, tárterület és biztonsági mentési megőrzési időszak. Az árképzési szint külön is módosítható, kivéve az alapszintű csomagból vagy abból.
 
@@ -189,7 +189,7 @@ Az [Update API](/rest/api/postgresql/servers/update)használatával leállíthat
 Miután leállította a replikálást egy elsődleges kiszolgálóra és egy olvasási replikára, nem vonható vissza. Az olvasási replika önálló kiszolgáló lesz, amely támogatja az olvasást és az írást is. Az önálló kiszolgáló nem hozható létre újra replikába.
 
 ```http
-PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}?api-version=2017-12-01
+PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{replicaServerName}?api-version=2017-12-01
 ```
 
 ```json
@@ -209,6 +209,6 @@ Elsődleges kiszolgáló törlésekor a rendszer leállítja az összes olvasás
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}?api-version=2017-12-01
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [az olvasási replikákkal kapcsolatban Azure Database for PostgreSQL](concepts-read-replicas.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portalban](howto-read-replicas-portal.md).
