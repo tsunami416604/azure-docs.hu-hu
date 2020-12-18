@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: f016fd37efa2bd821b5ad2286a921bf29bbedfbd
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a921e51a3c63828602e7e21bfc96f507649236a5
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221264"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682828"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit
 
@@ -28,7 +28,7 @@ A Azure Stream Analytics projektben kattintson duplán a **script. asaql** elemr
  
 ### <a name="add-local-input"></a>Helyi bemenet hozzáadása
 
-A helyi statikus adatokra vonatkozó lekérdezés ellenőrzéséhez kattintson a jobb gombbal a bevitelre, és válassza a **helyi bemenet hozzáadása**elemet.
+A helyi statikus adatokra vonatkozó lekérdezés ellenőrzéséhez kattintson a jobb gombbal a bevitelre, és válassza a **helyi bemenet hozzáadása** elemet.
    
 ![Képernyőfelvétel: a helyi beviteli menü hozzáadása lehetőség.](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
@@ -58,11 +58,11 @@ Vizsgálja meg az eredményeket a helyi mappában.
    
 
 ### <a name="sample-input"></a>Példabemenet
-A bemeneti forrásokból is gyűjthet minta bemeneti adatokat egy helyi fájlba. Kattintson a jobb gombbal a bemeneti konfigurációs fájlra, és válassza a **mintaadatok**elemet. 
+A bemeneti forrásokból is gyűjthet minta bemeneti adatokat egy helyi fájlba. Kattintson a jobb gombbal a bemeneti konfigurációs fájlra, és válassza a **mintaadatok** elemet. 
 
 ![Adatmintavétel](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
 
-Csak Event Hubs vagy IoT hubokból származó adatfolyamokat lehet megtekinteni. Más bemeneti források nem támogatottak. Az előugró párbeszédpanelen töltse ki a helyi elérési utat a mintaadatok mentéséhez és a **minta**elem kiválasztásához.
+Csak Event Hubs vagy IoT hubokból származó adatfolyamokat lehet megtekinteni. Más bemeneti források nem támogatottak. Az előugró párbeszédpanelen töltse ki a helyi elérési utat a mintaadatok mentéséhez és a **minta** elem kiválasztásához.
 
 ![Mintaadatok konfigurálása](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
  
@@ -70,10 +70,9 @@ A folyamat előrehaladását a **kimenet** ablakban tekintheti meg.
 
 ![Mintaadatok kimenete](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
 * [A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez](stream-analytics-vs-tools.md)
 * [Élő adatellenőrzés helyi tesztelése a Visual Studio Azure Stream Analytics eszközeivel (előzetes verzió)](stream-analytics-live-data-local-testing.md)
-* [Oktatóanyag: Azure Stream Analytics-feladatok üzembe helyezése CI/CD-vel az Azure DevOps használatával](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Folyamatos integráció és fejlesztés a Stream Analytics eszközeivel](stream-analytics-tools-for-visual-studio-cicd.md)

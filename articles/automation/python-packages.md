@@ -3,15 +3,15 @@ title: Python 2 csomagok kezelése Azure Automation
 description: Ebből a cikkből megtudhatja, hogyan kezelheti a Python 2-csomagokat Azure Automationban.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/25/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ab0b2def1a22470c1d0b6339e1525cd683b4a0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd830afd5628591019902ca583f9cbc8e2a7ecad
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987570"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683398"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Python 2 csomagok kezelése Azure Automation
 
@@ -19,17 +19,17 @@ Azure Automation lehetővé teszi a Python 2 runbookok futtatását az Azure-ban
 
 ## <a name="import-packages"></a>Csomagok importálása
 
-Az Automation-fiókban válassza a **Python 2 csomag** lehetőséget a **megosztott erőforrások**területen. Kattintson **a + Python 2 csomag hozzáadása**lehetőségre.
+Az Automation-fiókban válassza a **Python 2 csomag** lehetőséget a **megosztott erőforrások** területen. Kattintson **a + Python 2 csomag hozzáadása** lehetőségre.
 
 :::image type="content" source="media/python-packages/add-python-package.png" alt-text="A Python 2 csomagok oldalának képernyőképe a bal oldali menüben a Python 2 csomagokat jeleníti meg, és egy kiemelt Python 2 csomagot ad hozzá.":::
 
 A Python 2 csomag hozzáadása lapon válasszon ki egy helyi csomagot a feltöltéshez. A csomag lehet egy **. WHL** vagy **. tar. gz** fájl. Ha a csomag ki van választva, kattintson **az OK** gombra a feltöltéshez.
 
-:::image type="content" source="media/python-packages/upload-package.png" alt-text="A Python 2 csomagok oldalának képernyőképe a bal oldali menüben a Python 2 csomagokat jeleníti meg, és egy kiemelt Python 2 csomagot ad hozzá.":::
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="A képernyőképen a Python 2 csomag hozzáadása oldal jelenik meg, amelyhez feltöltött tar. gz fájl van kijelölve.":::
 
-A csomag importálása után a rendszer az Automation-fiók Python 2 csomagok lapján jelenik meg. Ha el kell távolítania egy csomagot, válassza ki a csomagot, és kattintson a **Törlés**gombra.
+A csomag importálása után a rendszer az Automation-fiók Python 2 csomagok lapján jelenik meg. Ha el kell távolítania egy csomagot, válassza ki a csomagot, és kattintson a **Törlés** gombra.
 
-:::image type="content" source="media/python-packages/package-list.png" alt-text="A Python 2 csomagok oldalának képernyőképe a bal oldali menüben a Python 2 csomagokat jeleníti meg, és egy kiemelt Python 2 csomagot ad hozzá.":::
+:::image type="content" source="media/python-packages/package-list.png" alt-text="A csomag importálása után a képernyőkép a Python 2 csomagok oldalát jeleníti meg.":::
 
 ## <a name="import-packages-with-dependencies"></a>Csomagok importálása függőségekkel
 
@@ -47,14 +47,14 @@ A csomagok letöltése után importálhatja őket az Automation-fiókjába.
 
 ### <a name="runbook"></a>Forgatókönyv
 
- Runbook beszerzéséhez [importálja a Python 2 csomagokat a Azure Automation PyPI-ből](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) a katalógusból az Automation-fiókjába. Győződjön meg arról, hogy a futtatási beállítások az **Azure** -ra vannak beállítva, és a paraméterekkel indítják el a runbook. A runbook használatához az Automation-fiók működéséhez futtató fiókra van szükség. Minden paraméternél győződjön meg arról, hogy az alábbi listában és képen látható kapcsolóval indítja el:
+ Egy runbook beszerzéséhez [importálja a Python 2 csomagokat a Azure Automation PyPI-ből](https://github.com/azureautomation/import-python-2-packages-from-pypi-into-azure-automation-account) a Azure Automation GitHub-szervezetből az Automation-fiókjába. Győződjön meg arról, hogy a futtatási beállítások az **Azure** -ra vannak beállítva, és a paraméterekkel indítják el a runbook. A runbook használatához az Automation-fiók működéséhez futtató fiókra van szükség. Minden paraméternél győződjön meg arról, hogy az alábbi listában és képen látható kapcsolóval indítja el:
 
 * -s \<subscriptionId\>
 * -g \<resourceGroup\>
 * – a \<automationAccount\>
 * – m \<modulePackage\>
 
-:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="A Python 2 csomagok oldalának képernyőképe a bal oldali menüben a Python 2 csomagokat jeleníti meg, és egy kiemelt Python 2 csomagot ad hozzá.":::
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="A képernyőképen a jobb oldalon található Start Runbook (első lépések) ablaktáblán látható a import_py2package_from_pypi áttekintése oldal.":::
 
 A runbook lehetővé teszi a letölteni kívánt csomag megadását. A paraméter használata például `Azure` letölti az összes Azure-modult és az összes függőséget (körülbelül 105).
 
@@ -88,6 +88,6 @@ for group in groups:
 
 A Python 2 runbookok offline fejlesztéséhez és teszteléséhez használja a [Azure Automation Python által emulált eszközök](https://github.com/azureautomation/python_emulated_assets) modult a githubon. Ez a modul lehetővé teszi a megosztott erőforrások, például a hitelesítő adatok, a változók, a kapcsolatok és a tanúsítványok hivatkozását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Python-runbook előkészítéséhez tekintse meg [a Python-Runbook létrehozása](learn/automation-tutorial-runbook-textual-python2.md)című témakört.

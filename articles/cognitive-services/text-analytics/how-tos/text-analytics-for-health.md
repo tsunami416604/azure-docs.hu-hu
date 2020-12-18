@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 27af0ffdeb254dbb671a0618d0e9973336a7f529
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 8159010486371d619aa14a845050a0eb38aaeda8
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559014"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683525"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
 
@@ -31,7 +31,7 @@ A Text Analytics for Health a Text Analytics API szolgáltatás egyik funkciója
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az állapot Text Analytics az elnevezett entitások felismerése, a relációk kinyerése, az entitások kivonása és az angol nyelvű szöveggel összekapcsoló entitások a strukturálatlan klinikai és bioorvosi szövegek elemzését végzik.
 
@@ -68,7 +68,7 @@ Az orvosi tartalom értelmét nagy hatással van a módosítók, például a tag
 
 ---
 
-A támogatott entitások teljes listájáért tekintse meg az Text Analytics for Health által visszaadott [entitási kategóriákat](../named-entity-types.md?tabs=health) .
+A támogatott entitások teljes listájáért tekintse meg az Text Analytics for Health által visszaadott [entitási kategóriákat](../named-entity-types.md?tabs=health) . A megbízhatósági pontszámokkal kapcsolatos információkért tekintse meg a [text Analytics átláthatósági megjegyzését](/legal/cognitive-services/text-analytics/transparency-note#general-guidelines-to-understand-and-improve-performance?context=/azure/cognitive-services/text-analytics/context/context). 
 
 ### <a name="supported-languages-and-regions"></a>Támogatott nyelvek és régiók
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6d2ede8ab49b22a22d8959ce296182a2210640d0
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 259db10aa8f5cd2b711eca001bc6d48057d5280d
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905468"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683201"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
@@ -48,7 +48,7 @@ A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [A
 Az Azure-jegyzetfüzetek megismeréséhez és az első lépésekhez kövesse az [Azure notebook létrehozása](./tutorial-ev-routing.md#create-an-azure-notebooks-project)című témakör utasításait.
 
 > [!Note]
-> A projekthez tartozó Jupyter notebook-fájl az [időjárási térképek Jupyter notebook-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)tölthető le.
+> A projekthez tartozó Jupyter-jegyzetfüzet-fájl az [időjárási térképek Jupyter notebook adattárból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)tölthető le.
 
 ## <a name="load-the-required-modules-and-frameworks"></a>A szükséges modulok és keretrendszerek betöltése
 
@@ -197,7 +197,7 @@ Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a k�
 
 Azure Maps REST API-k teljes listájáért lásd: [Azure Maps REST API](./consumption-model.md)-k.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Notebooksről:
 

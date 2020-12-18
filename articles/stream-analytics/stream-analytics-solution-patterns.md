@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02276ebf8e8a2289db2a1f6eac506443cea61c31
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461544"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682719"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Az Azure Stream Analytics megoldásmintái
 
@@ -20,7 +20,7 @@ Az Azure-ban számos más szolgáltatáshoz hasonlóan a Stream Analytics a legj
 
 ## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Stream Analytics-feladatok létrehozása a valós idejű irányítópult-létrehozási élmény érdekében
 
-A Azure Stream Analytics használatával gyorsan felállíthatók a valós idejű irányítópultok és riasztások. Egy egyszerű megoldás Event Hubs vagy IoT Hubból származó eseményeket tölt be, és [az Power bi irányítópultot adatfolyam-adatkészlettel táplálja](/power-bi/service-real-time-streaming). További információkért tekintse meg a [telefonos hívások adatainak elemzése stream Analytics és az eredmények megjelenítése Power bi irányítópulton](stream-analytics-manage-job.md)című témakört.
+A Azure Stream Analytics használatával gyorsan felállíthatók a valós idejű irányítópultok és riasztások. Egy egyszerű megoldás Event Hubs vagy IoT Hubból származó eseményeket tölt be, és [az Power bi irányítópultot adatfolyam-adatkészlettel táplálja](/power-bi/service-real-time-streaming). További információkért tekintse meg a következő témakört: a [csalárd hívási adatok elemzése stream Analytics és az eredmények megjelenítése Power bi irányítópulton](stream-analytics-real-time-fraud-detection.md).
 
 ![ASA Power BI irányítópult](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 
@@ -180,7 +180,7 @@ Nem nehéz elképzelni, hogy az összes fent említett megoldási minta egyesít
 
 A legfontosabb, hogy megtervezze a rendszert a kiépíthető mintákban, így az egyes alrendszerek egymástól függetlenül létrehozhatók, vizsgálhatók, frissíthetők és helyreállíthatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Mostantól számos megoldási mintát látott Azure Stream Analytics használatával. Ezután megismerheti a részleteket, és létrehozhatja első Stream Analytics-feladatát:
 

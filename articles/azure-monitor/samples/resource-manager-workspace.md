@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 684f37ba3186a719aa9ce730ac07ca4ad42f113d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cc79edf50c4f056f413292d2d43aa8cf8e65136
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458059"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683474"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Resource Manager-sablonok – minták Log Analytics munkaterületekhez Azure Monitor
 Ez a cikk mintákat [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz log Analytics munkaterületek létrehozásához és konfigurálásához Azure monitorban. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -30,7 +30,7 @@ Az alábbi minta egy új üres Log Analytics munkaterületet hoz létre.
 
 ### <a name="notes"></a>Jegyzetek
 
-- Ha **ingyenes**díjszabási szintet ad meg, távolítsa el a **retentionInDays** elemet.
+- Ha **ingyenes** díjszabási szintet ad meg, távolítsa el a **retentionInDays** elemet.
 
 ### <a name="template-file"></a>Sablonfájl
 
@@ -698,7 +698,6 @@ Az alábbi minta [egyéni naplók](../platform/data-sources-custom-logs.md) gyű
           "properties": {
               "customLogName": "armlog_newline",
               "description": "this is a description",
-              "extractions": [],
               "inputs": [
                 {
                     "location": {

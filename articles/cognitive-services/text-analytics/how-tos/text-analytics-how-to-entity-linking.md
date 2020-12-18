@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 589f320f0099fdab829e9e707a86e3e77d51c21e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0b57629f5c21d933fc898258263199b5fc713fdb
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656291"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683358"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -35,7 +35,7 @@ A személyre szabott funkció az egyoldalas szolgáltatás része, és képes az
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Elnevezett entitás-felismerési funkciók és verziók
 
-| Funkció                                                         | V 3.0 | V 3.1 – előzetes verzió. 3 |
+| Szolgáltatás                                                         | V 3.0 | V 3.1 – előzetes verzió. 3 |
 |-----------------------------------------------------------------|--------|----------|
 | Egyszeri és batch-kérelmek módszerei                          | X      | X        |
 | Bővített entitások felismerése több kategória között           | X      | X        |
@@ -52,7 +52,7 @@ Elnevezett Entity Recognition v 3.1 – preview. 3 tartalmazza a v 3.0 észlelé
 * Egy opcionális `domain=phi` paraméter a bizalmas állapottal kapcsolatos információk észleléséhez ( `PHI` ).
 * [Aszinkron művelet](text-analytics-how-to-call-api.md) a `/analyze` végpont használatával.
 
-További információ: az [entitások kategóriái](../named-entity-types.md) című cikk és a [végpontok igénylése](#request-endpoints) című rész. 
+További információ: az [entitások kategóriái](../named-entity-types.md) című cikk és a [végpontok igénylése](#request-endpoints) című rész. A megbízhatósági pontszámokkal kapcsolatos további információkért tekintse meg a [text Analytics átláthatósági megjegyzését](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context). 
 
 ## <a name="sending-a-rest-api-request"></a>REST API kérelem küldése
 
@@ -473,7 +473,7 @@ Példa az általános célú válaszra:
 ---
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 
@@ -481,7 +481,7 @@ Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogal
 * A POST kéréseket egy vagy több végpontra küldi a rendszer, egy személyre szabott [hozzáférési kulccsal és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használva.
 * Bármely alkalmazásban használhatók olyan válaszok, amelyek összekapcsolt entitásokból (beleértve a megbízhatósági pontszámokat, az eltolásokat és a webes hivatkozásokat) tartalmazzák
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Az Text Analytics ügyféloldali kódtár használata](../quickstarts/client-libraries-rest-api.md)

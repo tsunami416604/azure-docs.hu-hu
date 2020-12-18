@@ -8,15 +8,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/14/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7352bde887648918cbfd2a9ebeaae83cddefc61e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673278"
+ms.locfileid: "97683494"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Oktatóanyag: az üzembe helyezési parancsfájlok használata önaláírt tanúsítvány létrehozásához
 
@@ -42,7 +42,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * **[Visual Studio Code](https://code.visualstudio.com/) a Resource Manager-eszközök bővítménnyel**. Lásd [a gyors útmutató: ARM-sablonok létrehozása a Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md)-ban című témakört.
 
-* **Felhasználó által hozzárendelt felügyelt identitás a közreműködő szerepkörrel az előfizetés szintjén**. Ez az identitás az üzembe helyezési parancsfájlok végrehajtásához használatos. A létrehozáshoz tekintse meg a [felhasználó által hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). A sablon üzembe helyezésekor szüksége lesz az azonosító AZONOSÍTÓra. Az identitás formátuma:
+* **Felhasználó által hozzárendelt felügyelt identitás**. Ez az identitás az Azure-specifikus műveletek végrehajtásához használatos a parancsfájlban. A létrehozáshoz tekintse meg a [felhasználó által hozzárendelt felügyelt identitást](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). A sablon üzembe helyezésekor szüksége lesz az azonosító AZONOSÍTÓra. Az identitás formátuma:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -255,7 +255,7 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
 
     Az `deploymentScripts` erőforrás a Key Vault-erőforrástól és a szerepkör-hozzárendelési erőforrástól függ. Ezek a tulajdonságok a következő tulajdonságokkal rendelkeznek:
 
-    * `identity`: Az üzembe helyezési parancsfájl felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához.
+    * `identity`: Az üzembe helyezési parancsfájl a felhasználó által hozzárendelt felügyelt identitás használatával hajtja végre a műveleteket a parancsfájlban.
     * `kind`: Adja meg a parancsfájl típusát. Jelenleg csak a PowerShell-parancsfájlok támogatottak.
     * `forceUpdateTag`: Határozza meg, hogy a telepítési parancsfájlt akkor is kell-e végrehajtani, ha a parancsfájl forrása nem változott. Lehet aktuális időbélyeg vagy GUID. További információ: [parancsfájl futtatása](./deployment-script-template.md#run-script-more-than-once)többször.
     * `azPowerShellVersion`: Megadja a használni kívánt Azure PowerShell modul verzióját. Az üzembe helyezési parancsfájl jelenleg a 2.7.0, a 2.8.0 és a 3.0.0 verziót támogatja.
@@ -350,7 +350,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Az erőforráscsoport összesen hat erőforrást fog látni.
 4. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja az üzembe helyezési szkriptet az ARM-sablonokban. Az Azure-erőforrások feltételek alapján való üzembe helyezésével kapcsolatban lásd:
 

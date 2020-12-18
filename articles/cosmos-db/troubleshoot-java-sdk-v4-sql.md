@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 4753f7c0b8b5e515d33da3f9df48a2cdd9d921cc
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017576"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683124"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>A Azure Cosmos DB Java SDK v4 SQL API-fiókokkal való használatakor felmerülő problémák elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,6 +39,13 @@ Kezdje a következő listával:
 * Tekintse át a Azure Cosmos DB Java SDK v4 [teljesítményével kapcsolatos tippeket](performance-tips-java-sdk-v4-sql.md) , és kövesse a javasolt eljárásokat.
 * Ha nem talál megoldást, olvassa el a cikk további részeit. Ezután egy [GitHub-problémát kell megadnia](https://github.com/Azure/azure-sdk-for-java/issues). Ha van lehetőség címkék hozzáadására a GitHub-problémákhoz, vegyen fel egy *Cosmos: v4-Item* címkét.
 
+### <a name="retry-logic"></a>Újrapróbálkozási logika <a id="retry-logics"></a>
+Cosmos DB SDK bármely i/o-hiba esetén megpróbálja megismételni a sikertelen műveletet, ha az SDK-ban az Újrapróbálkozás megoldható. Ha bármilyen hiba esetén újra próbálkozik, az írási hibák konkrét kezelése/újrapróbálása kötelező. Javasoljuk, hogy a legújabb SDK-t használja, mivel az újrapróbálkozási logikát folyamatosan fejleszti.
+
+1. Az i/o-hibák olvasása és lekérése az SDK-val újra próbálkozik a végfelhasználók nélkül.
+2. Az írások (létrehozás, Upsert, csere, törlés) nem idempotens, ezért az SDK nem mindig vakon próbálkozik a sikertelen írási műveletekkel. Szükség van arra, hogy a felhasználó alkalmazás-logikája kezelni tudja a hibát, és próbálkozzon újra.
+3. [Hibaelhárítási SDK-elérhetőség](troubleshoot-sdk-availability.md) – a többrégiós Cosmos db-fiókok újrapróbálkozásait ismerteti.
+
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Gyakori hibák és áthidaló megoldásaik
 
 ### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>Hálózati problémák, nettó olvasási időtúllépési hiba, alacsony átviteli sebesség, nagy késés
@@ -54,7 +61,7 @@ A kapcsolatok szabályozása akkor fordulhat elő, ha a gazdagép vagy az [Azure
 
 ##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>A gazdagépre vonatkozó kapcsolatonként
 Bizonyos linuxos rendszerek (például a Red Hat) felső korláttal rendelkeznek a megnyitott fájlok teljes számánál. A Linux rendszerű szoftvercsatornák fájlokként vannak megvalósítva, így ez a szám a kapcsolatok teljes számát is korlátozza.
-Futtassa az alábbi parancsot:
+Futtassa az alábbi parancsot.
 
 ```bash
 ulimit -a

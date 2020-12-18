@@ -3,14 +3,14 @@ title: Az Azure-ban Update Management üzembe helyezés előtti parancsfájlok �
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja és kezelheti az előzetes parancsfájlokat és a parancsfájlokat a frissítések telepítéséhez.
 services: automation
 ms.subservice: update-management
-ms.date: 05/17/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb2a272829374cfeba5c334ff87268c4928885f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 4c37fe107d9256461e5aa632f859ae02c5dc42f5
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222196"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683404"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Előzetes és utólagos szkriptek kezelése
 
@@ -96,13 +96,13 @@ Az összes tulajdonsággal rendelkező teljes példa a következő helyen talál
 
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Egy üzembe helyezés előtti vagy utáni parancsfájl használata
 
-Ha egy frissítés előtti vagy utáni parancsfájlt szeretne használni egy frissítési telepítésben, először hozzon létre egy frissítés központi telepítését. Válassza a **Pre-Scripts + post-Scripts**elemet. Ez a művelet megnyitja a **Select pre-Scripts + post-Scripts** oldalt.
+Ha egy frissítés előtti vagy utáni parancsfájlt szeretne használni egy frissítési telepítésben, először hozzon létre egy frissítés központi telepítését. Válassza a **Pre-Scripts + post-Scripts** elemet. Ez a művelet megnyitja a **Select pre-Scripts + post-Scripts** oldalt.
 
 ![Parancsfájlok kiválasztása](./media/pre-post-scripts/select-scripts.png)
 
-Válassza ki a használni kívánt parancsfájlt. Ebben a példában a **UpdateManagement-TurnOnVms** runbook használjuk. Amikor kiválasztja a runbook, megnyílik a **parancsfájl konfigurálása** oldal. Válassza az **előzetes parancsfájl**lehetőséget, majd kattintson **az OK gombra**.
+Válassza ki a használni kívánt parancsfájlt. Ebben a példában a **UpdateManagement-TurnOnVms** runbook használjuk. Amikor kiválasztja a runbook, megnyílik a **parancsfájl konfigurálása** oldal. Válassza az **előzetes parancsfájl** lehetőséget, majd kattintson **az OK gombra**.
 
-Ismételje meg ezt a folyamatot a **UpdateManagement-TurnOffVms** szkriptnél. Ha azonban a **parancsfájl típusát**választja, válassza a **post-script**elemet.
+Ismételje meg ezt a folyamatot a **UpdateManagement-TurnOffVms** szkriptnél. Ha azonban a **parancsfájl típusát** választja, válassza a **post-script** elemet.
 
 A **kijelölt elemek** szakasz most már a kijelölt parancsfájlokat is megjeleníti. Az egyik egy előzetes parancsfájl, a másik pedig egy parancsfájl utáni:
 
@@ -146,7 +146,7 @@ A feladatok előtti és utáni feladatokat futtató runbookok, és a telepítés
 * Futtató fiók
 * Egy futtatni kívánt runbook
 
-Az Azure-gépekkel való kommunikációhoz használja a [Meghívási-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) parancsmagot az Azure-beli virtuális gépekkel való kommunikációhoz. Ennek módjáról a runbook példa [Update Management – parancsfájl futtatása a Run paranccsal](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)című témakörben talál példát.
+Az Azure-gépekkel való kommunikációhoz használja a [Meghívási-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) parancsmagot az Azure-beli virtuális gépekkel való kommunikációhoz. Ennek módjáról a runbook példa [Update Management – parancsfájl futtatása a Run paranccsal](https://github.com/azureautomation/update-management-run-script-with-run-command)című témakörben talál példát.
 
 ### <a name="interact-with-non-azure-machines"></a>Interakció a nem Azure-beli gépekkel
 
@@ -157,7 +157,7 @@ A feladatok előtti és utáni feladatok az Azure-környezetben futnak, és nem 
 * Helyileg futtatni kívánt runbook
 * Egy szülő runbook
 
-A nem Azure-beli gépekkel való kommunikációhoz egy szülő runbook fut az Azure-környezetben. Ez a runbook a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) parancsmaggal hívja meg a gyermek runbook. Meg kell adnia a `RunOn` paramétert, és meg kell adnia annak a hibrid Runbook-feldolgozónak a nevét, amelyen futtatni szeretné a parancsfájlt. Tekintse meg a runbook példát [Update Management – parancsfájl helyi futtatása](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
+A nem Azure-beli gépekkel való kommunikációhoz egy szülő runbook fut az Azure-környezetben. Ez a runbook a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal hívja meg a gyermek runbook. Meg kell adnia a `RunOn` paramétert, és meg kell adnia annak a hibrid Runbook-feldolgozónak a nevét, amelyen futtatni szeretné a parancsfájlt. Tekintse meg a runbook példát [Update Management – parancsfájl helyi futtatása](https://github.com/azureautomation/update-management-run-script-locally).
 
 ## <a name="abort-patch-deployment"></a>Javítás telepítésének megszakítása
 
@@ -173,7 +173,7 @@ if (<My custom error logic>)
 
 ## <a name="samples"></a>Példák
 
-A parancsfájl-előkészítők és a szkriptek utáni parancsfájlok mintáit a [Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) -katalógusban és a [PowerShell-Galéria](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)is megtalálhatja, vagy importálhatja őket a Azure Portal használatával. Ehhez az Automation-fiók **folyamat automatizálása**területén válassza a **runbookok**-katalógus elemet. **Update Management** használata a szűrőhöz.
+A szkriptek előtti és utáni parancsfájlok mintái megtalálhatók a [Azure Automation GitHub-szervezetben](https://github.com/azureautomation) és a [PowerShell-galériaban](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22), vagy importálhatja őket a Azure Portal használatával. Ehhez az Automation-fiók **folyamat automatizálása** területén válassza a **runbookok**-katalógus elemet. **Update Management** használata a szűrőhöz.
 
 ![Katalógusok listája](./media/pre-post-scripts/runbook-gallery.png)
 
@@ -186,7 +186,7 @@ A parancsfájl neve alapján is megkeresheti őket, ahogy az a következő list�
 * Update Management parancsfájl futtatása a Run paranccsal
 
 > [!IMPORTANT]
-> A runbookok importálása után közzé kell tenni azokat a használatuk előtt. Ehhez keresse meg a runbook az Automation-fiókban, válassza a **Szerkesztés**lehetőséget, majd válassza a **Közzététel**lehetőséget.
+> A runbookok importálása után közzé kell tenni azokat a használatuk előtt. Ehhez keresse meg a runbook az Automation-fiókban, válassza a **Szerkesztés** lehetőséget, majd válassza a **Közzététel** lehetőséget.
 
 A mintákat a következő példában definiált alapszintű sablon alapján kell megadni. Ez a sablon a saját runbook létrehozására használható a parancsfájlok előtti és a parancsfájlok utáni használatra. Az Azure-ban való hitelesítéshez és a paraméter kezelésére szolgáló szükséges logika `SoftwareUpdateConfigurationRunContext` beletartozik.
 
@@ -242,8 +242,8 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](../automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
+> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](/powershell/module/az.accounts/connect-azaccount)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](../automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Az Update Management részletes ismertetését lásd: [a virtuális gépek frissítéseinek és javításának kezelése](manage-updates-for-vm.md).
+Az Update Management részletes ismertetését lásd: [a virtuális gépek frissítéseinek és javításának kezelése](manage-updates-for-vm.md).

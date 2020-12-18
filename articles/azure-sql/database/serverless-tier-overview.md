@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 12/8/2020
-ms.openlocfilehash: bd8f5a28b709a45e99e846fb4e242f774aca80c5
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b0d599b7d52d8a0e93f16761d1983ad25fa45c61
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902510"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97687399"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Azure SQL Database önálló adatbázisainak kiszolgáló nélküli számítási
 - A **minimális virtuális mag** és a **maximális virtuális mag** olyan konfigurálható paraméterek, amelyek meghatározzák az adatbázis számára elérhető számítási kapacitás tartományát. A memória és az i/o-korlátok arányosak a megadott virtuális mag-tartománnyal.  
 - Az automatikus **szüneteltetési késleltetés** egy konfigurálható paraméter, amely meghatározza azt az időtartamot, ameddig az adatbázisnak inaktívnak kell lennie, mielőtt a rendszer automatikusan szünetelteti az időt. A rendszer automatikusan folytatja az adatbázist, ha a következő bejelentkezés vagy más tevékenység történik.  Másik lehetőségként az autoszüneteltetés is letiltható.
 
-### <a name="cost"></a>Költségek
+### <a name="cost"></a>Költség
 
 - A kiszolgáló nélküli adatbázisok díja a számítási és a tárolási díjak összegzése.
 - Ha a számítási használat a minimális és a maximális korlát között van, a számítási díj a felhasznált virtuális mag és memória alapján történik.
@@ -128,7 +128,7 @@ Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgálta
 
 Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltételek bármelyike teljesül:
 
-|Jellemző|Trigger újraindítása|
+|Szolgáltatás|Trigger újraindítása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
 |Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
@@ -196,7 +196,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
-  -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
+  -e GeneralPurpose -f Gen5 --min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
 
@@ -276,7 +276,7 @@ A felhasználói erőforráskészlet egy adatbázis belső erőforrás-kezelési
 
 A kiszolgáló nélküli adatbázisok alkalmazáscsomag és felhasználói készlete erőforrás-használatának figyelésére szolgáló mérőszámok az alábbi táblázatban láthatók:
 
-|Entitás|Metrika|Leírás|Egység|
+|Entitás|Metric|Leírás|Egység|
 |---|---|---|---|
 |Alkalmazáscsomag|app_cpu_percent|Az alkalmazás által az alkalmazáshoz engedélyezett maximális virtuális mag képest használt virtuális mag százalékos aránya.|Százalék|
 |Alkalmazáscsomag|app_cpu_billed|A jelentési időszak során az alkalmazás számára számlázott számítási mennyiség. Az ebben az időszakban fizetett összeg a metrika terméke és a virtuális mag egység ára. <br><br>A metrika értékeit a rendszer a felhasznált CPU és a másodpercenként felhasznált memória maximális számának időbeli összesítésével határozza meg. Ha a felhasznált mennyiség kevesebb, mint a minimum virtuális mag és a minimális memória által beállított minimális mennyiség, akkor a kiosztott minimális összegért kell fizetnie.Ha a CPU-t számlázási célokra szeretné összehasonlítani a memóriával, a memória a virtuális mag-egységekbe van normalizálva azáltal, hogy a memória mennyiségét GB-ban, virtuális mag 3 GB-onként átméretezni.|Virtuális mag másodpercben|
@@ -333,7 +333,7 @@ Ezt a mennyiséget másodpercenként számítjuk ki, és 1 percenként összesí
 
 Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor a számítási számla nulla.  Ha egy kiszolgáló nélküli adatbázis nincs szüneteltetve, akkor a minimális számítási számla nem kevesebb, mint a Max (min. virtuális mag, minimális memória GB * 1/3) alapján megadott virtuális mag mennyisége.
 
-Példák:
+Angol nyelvű Példák:
 
 - Tegyük fel, hogy egy kiszolgáló nélküli adatbázis nincs szüneteltetve, és 8 maximális virtuális mag és 1 perc 3,0 GB-os memória-virtuális mag van konfigurálva.  Ezt követően a minimális számítási számla a Max (1 virtuális mag, 3,0 GB * 1 virtuális mag/3 GB) = 1 virtuális mag alapul.
 - Tegyük fel, hogy egy kiszolgáló nélküli adatbázis nincs szüneteltetve, és 4 maximális virtuális mag és 0,5 perces virtuális mag van konfigurálva, amely 2,1 GB-os memóriának felel meg.  Ezután a minimális számítási számla a Max (0,5 virtuális mag, 2,1 GB * 1 virtuális mag/3 GB) = 0,7 virtuális mag alapul.
@@ -366,7 +366,7 @@ A Azure Hybrid Benefit (AHB) és a fenntartott kapacitási kedvezmények nem von
 
 A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Kelet-Németország és US Gov Central (Iowa).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Első lépésként tekintse meg a rövid útmutató [: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](single-database-create-quickstart.md)című témakört.
 - Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).

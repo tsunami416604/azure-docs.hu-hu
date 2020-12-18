@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 95abf403dfd4abd4c0533b6e8b4a2f83b33fa18b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b145f5a37ea4209947e54cb276e16ff55c1da1
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045552"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682819"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez
 
@@ -32,7 +32,7 @@ A feladat nézettel a Visual studióból Azure Stream Analytics feladatokkal dol
 
 ### <a name="open-the-job-view"></a>A feladatok nézet megnyitása
 
-1. A **Server Explorerben**válassza **stream Analytics feladatok** elemet, majd válassza a **frissítés**lehetőséget. A feladatnak **stream Analytics feladatok**területen kell megjelennie.
+1. A **Server Explorerben** válassza **stream Analytics feladatok** elemet, majd válassza a **frissítés** lehetőséget. A feladatnak **stream Analytics feladatok** területen kell megjelennie.
 
     ![Stream Analytics Server Explorer-lista](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
@@ -56,7 +56,7 @@ A Stream Analytics Tools for Visual Studio jelenleg támogatja a Azure Data Lake
 
 A meglévő feladatok egy projektbe való exportálásának kétféleképpen lehetséges.
 
-1. A **Server Explorerben**a stream Analytics feladatok csomópontban kattintson a jobb gombbal a feladat csomópontra. Válassza **az Exportálás új stream Analytics projektbe**lehetőséget.
+1. A **Server Explorerben** a stream Analytics feladatok csomópontban kattintson a jobb gombbal a feladat csomópontra. Válassza **az Exportálás új stream Analytics projektbe** lehetőséget.
     
    ![Feladatok exportálása a projektbe](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
@@ -64,7 +64,7 @@ A meglévő feladatok egy projektbe való exportálásának kétféleképpen leh
     
    ![A megoldáskezelő](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. A feladatok nézetben válassza a **projekt előállítása**lehetőséget.
+2. A feladatok nézetben válassza a **projekt előállítása** lehetőséget.
     
    ![Projekt előállítása a feladatokból nézetből](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
@@ -82,5 +82,4 @@ A **tesztelési kapcsolatok** eredményei a **kimenet** ablakban jelennek meg.
 
 * [Azure Stream Analytics feladatok figyelése és kezelése a Visual Studióval](stream-analytics-monitor-jobs-use-vs.md)
 * [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
-* [Oktatóanyag: Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Folyamatos integráció és fejlesztés a Stream Analytics eszközeivel](stream-analytics-tools-for-visual-studio-cicd.md)
