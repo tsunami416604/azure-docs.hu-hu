@@ -1,246 +1,120 @@
 ---
-title: Forgalmi adatok megjelenítése az Android térképen | Microsoft Azure térképek
+title: Forgalmi adatok megjelenítése az Android-térképeken | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a forgalmi adatokat egy térképen a Microsoft Azure Maps Android SDK használatával.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 11/25/2020
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/04/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 5f7e67d159c2b7dea3ebac7fd4d0856f508cb298
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 113f39ac2976b870c9e07851cdd0919e2578940f
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532754"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680462"
 ---
-# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Forgalmi adatok megjelenítése a térképen Azure Maps Android SDK használatával
+# <a name="show-traffic-data-on-the-map-android-sdk"></a>Forgalmi adatok megjelenítése a térképen (Android SDK)
 
 A flow-adatok és az incidensek az adatok a térképen megjeleníthető kétféle forgalmi adatok. Ez az útmutató bemutatja, hogyan jelenítheti meg mindkét típusú forgalmi adatokat. Az incidensek olyan pont-és vonal-alapú adatmennyiségből állnak, mint a konstrukciók, a közúti bezárások és a balesetek. A flow adatai az úton lévő forgalom forgalmára vonatkozó metrikákat jelenítenek meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
-3. Töltse le és telepítse a [Azure Maps Android SDK](./how-to-use-android-map-control-library.md)-t.
+Győződjön meg arról, hogy a gyors útmutató [: Android-alkalmazás létrehozása](quick-android-map.md) dokumentum lépéseit kell végrehajtania. A cikkben szereplő kódrészletek behelyezhetők a Maps `onReady` Event handlerbe.
 
-## <a name="incidents-traffic-data"></a>Incidensek forgalmi adatok
+## <a name="show-traffic-on-the-map"></a>Forgalom megjelenítése a térképen
 
-A következő könyvtárakat kell importálnia a híváshoz `setTraffic` , és `incidents` :
+A Azure Mapsban kétféle forgalmi adatok érhetők el:
+
+- Incidensek – olyan pont-és vonal-alapú adatmennyiségből állnak, mint például az építőipar, a közúti bezárások és a balesetek.
+- Flow-adatok – mérőszámokat biztosít a forgalom forgalmáról az utakon. Gyakran a forgalmi forgalomra vonatkozó adatokat használják az utak színezésére. A színek attól függnek, hogy mekkora forgalom lassul le a folyamaton, a sebességkorlátozás vagy más metrika alapján. Négy érték adható át a `flow` Térkép forgalmi lehetőségéhez.
+
+    |Folyamat értéke | Description (Leírás)|
+    | :-- | :-- |
+    | Forgalomáramlási. NONE | Nem jeleníti meg a forgalmi adatokat a térképen |
+    | Forgalomáramlási. relatív | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |
+    | TrafficFlow.RELATIVE_DELAY | A várt átlagos késésnél lassabb területeket jelenít meg. |
+    | Forgalomáramlási. ABSOLUTE | Az összes jármű teljes sebességét jeleníti meg az úton |
+
+A következő kód bemutatja, hogyan jelenítheti meg a forgalmi adatokat a térképen.
 
 ```java
-import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
+//Show traffic on the map using the traffic options.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+);
 ```
 
- A következő kódrészlet bemutatja, hogyan jelenítheti meg a forgalmi adatokat a térképen. Egy logikai értéket adunk át a `incidents` metódusnak, és ezt adjuk át a `setTraffic` metódusnak. 
+Az alábbi képernyőfelvételen a fenti kódot tépő valós idejű forgalmi információk láthatók a térképen.
+
+![Valós idejű forgalmi adatokat megjelenítő Térkép](media/how-to-show-traffic-android/android-show-traffic.png)
+
+## <a name="get-traffic-incident-details"></a>Forgalmi incidens részleteinek beolvasása
+
+A forgalmi incidens részleteit az incidens a térképen való megjelenítéséhez használt funkció tulajdonságai között érheti el. A forgalmi incidenseket a rendszer a Azure Maps Traffic incidens Vector csempe szolgáltatással adja hozzá a térképhez. A vektoros csempék adatformátuma, ha [itt van dokumentálva](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles). A következő kód egy Click eseményt helyez el a térképhez, és lekéri a forgalmi incidens funkcióját, amelyre rákattintott, és egy Toast-üzenetet jelenít meg a részletek közül.
 
 ```java
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    mapControl.getMapAsync(map - > {
-        map.setTraffic(incidents(true));
+//Show traffic information on the map.
+map.setTraffic(
+    incidents(true),
+    flow(TrafficFlow.RELATIVE)
+);
+
+//Add a click event to the map.
+map.events.add((OnFeatureClick) (features) -> {
+
+    if (features != null && features.size() > 0) {
+        Feature incident = features.get(0);
+
+        //Ensure that the clicked feature is an traffic incident feature.
+        if (incident.properties() != null && incident.hasProperty("incidentType")) {
+
+            StringBuilder sb = new StringBuilder();
+            String incidentType = incident.getStringProperty("incidentType");
+
+            if (incidentType != null) {
+                sb.append(incidentType);
+            }
+
+            if (sb.length() > 0) {
+                sb.append("\n");
+            }
+
+            //If the road is closed, find out where it is closed from.
+            if ("Road Closed".equals(incidentType)) {
+                String from = incident.getStringProperty("from");
+
+                if (from != null) {
+                    sb.append(from);
+                }
+            } else {
+                //Get the description of the traffic incident.
+                String description = incident.getStringProperty("description");
+
+                if (description != null) {
+                    sb.append(description);
+                }
+            }
+
+            String message = sb.toString();
+
+            if (message.length() > 0) {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
+        }
     }
-}
+});
 ```
 
-## <a name="flow-traffic-data"></a>Flow forgalmi adatok
+Az alábbi képernyőfelvételen a tépő valós idejű forgalmi információi láthatók a térképen, és egy Toast üzenet jeleníti meg az incidens részleteit.
 
-Először importálnia kell a következő könyvtárakat a meghívásához `setTraffic` és `flow` :
+![A valós idejű forgalmi információk megjelenítése egy Toast üzenet megjelenítésével – incidens részletei](media/how-to-show-traffic-android/android-traffic-details.png)
 
-```java
-import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
-import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
-```
-
-Az alábbi kódrészlettel állíthatja be a forgalmi folyamatra vonatkozó adatokat. Az előző szakaszban szereplő kódhoz hasonlóan a metódus visszatérési értékét is átadjuk a `flow` `setTraffic` metódusnak. Négy érték adható át `flow` , és minden érték `flow` a megfelelő értéket adja vissza. A visszatérési értéke a következő `flow` argumentumként lesz átadva: `setTraffic` . A következő négy értéknél tekintse meg az alábbi táblázatot:
-
-|Folyamat értéke | Leírás|
-| :-- | :-- |
-| Forgalomáramlási. NONE | Nem jeleníti meg a forgalmi adatokat a térképen |
-| Forgalomáramlási. relatív | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |
-| TrafficFlow.RELATIVE_DELAY | A várt átlagos késésnél lassabb területeket jelenít meg. |
-| Forgalomáramlási. ABSOLUTE | Az összes jármű teljes sebességét jeleníti meg az úton |
-
-```java
-protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    mapControl.getMapAsync(map -> {
-        map.setTraffic(flow(TrafficFlow.RELATIVE)));
-    }
-}
-```
-
-## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>Incidens forgalmi adatok megjelenítése egy szolgáltatásra kattintva
-
-Egy adott szolgáltatás incidensének beszerzéséhez használhatja az alábbi kódot. Ha egy szolgáltatásra kattint, a kód logikája ellenőrzi az incidenseket, és létrehoz egy üzenetet az incidensről. Egy üzenet jelenik meg a képernyő alján a részletekkel.
-
-1. Először szerkesztenie kell `res > layout > activity_main.xml` , hogy az alábbihoz hasonlóan néz ki. A `mapcontrol_centerLat` , a és a `mapcontrol_centerLng` értékeket a `mapcontrol_zoom` kívánt értékekre cserélheti. Visszahívás: a nagyítási szint 0 és 22 közötti érték. A 0. nagyítási szinten a teljes világ egyetlen csempére illeszkedik.
-
-   ```XML
-   <?xml version="1.0" encoding="utf-8"?>
-   <FrameLayout
-       xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:app="http://schemas.android.com/apk/res-auto"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       >
-    
-       <com.microsoft.azure.maps.mapcontrol.MapControl
-           android:id="@+id/mapcontrol"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           app:mapcontrol_centerLat="47.6050"
-           app:mapcontrol_centerLng="-122.3344"
-           app:mapcontrol_zoom="12"
-           />
-
-   </FrameLayout>
-   ```
-
-2. Adja hozzá a következő kódot a **MainActivity. Java** fájlhoz. Alapértelmezés szerint a csomag szerepel, ezért ügyeljen arra, hogy a csomag felül legyen.
-
-   ```java
-   package <yourpackagename>;
-   import androidx.appcompat.app.AppCompatActivity;
-
-   import android.os.Bundle;
-   import android.widget.Toast;
-
-   import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-   import com.microsoft.azure.maps.mapcontrol.MapControl;
-   import com.mapbox.geojson.Feature;
-   import com.microsoft.azure.maps.mapcontrol.events.OnFeatureClick;
-
-   import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
-   import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
-   import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.incidents;
-
-   public class MainActivity extends AppCompatActivity {
-
-       static {
-           AzureMaps.setSubscriptionKey("Your Azure Maps Subscription Key");
-       }
-
-       MapControl mapControl;
-
-       @Override
-       protected void onCreate(Bundle savedInstanceState) {
-           super.onCreate(savedInstanceState);
-           setContentView(R.layout.activity_main);
-
-           mapControl = findViewById(R.id.mapcontrol);
-
-           mapControl.onCreate(savedInstanceState);
-
-           //Wait until the map resources are ready.
-           mapControl.getMapAsync(map -> {
-
-               map.setTraffic(flow(TrafficFlow.RELATIVE));
-               map.setTraffic(incidents(true));
-
-               map.events.add((OnFeatureClick) (features) -> {
-
-                   if (features != null && features.size() > 0) {
-                       Feature incident = features.get(0);
-                       if (incident.properties() != null) {
-
-
-                           StringBuilder sb = new StringBuilder();
-                           String incidentType = incident.getStringProperty("incidentType");
-                           if (incidentType != null) {
-                               sb.append(incidentType);
-                           }
-                           if (sb.length() > 0) sb.append("\n");
-                           if ("Road Closed".equals(incidentType)) {
-                               sb.append(incident.getStringProperty("from"));
-                           } else {
-                               String description = incident.getStringProperty("description");
-                               if (description != null) {
-                                   for (String word : description.split(" ")) {
-                                       if (word.length() > 0) {
-                                           sb.append(word.substring(0, 1).toUpperCase());
-                                           if (word.length() > 1) {
-                                               sb.append(word.substring(1));
-                                           }
-                                           sb.append(" ");
-                                       }
-                                   }
-                               }
-                           }
-                           String message = sb.toString();
-
-                           if (message.length() > 0) {
-                               Toast.makeText(this,message,Toast.LENGTH_LONG).show();
-                           }
-                       }
-                   }
-               });
-           });
-       }
-
-       @Override
-       public void onResume() {
-           super.onResume();
-           mapControl.onResume();
-       }
-
-       @Override
-       protected void onStart(){
-           super.onStart();
-           mapControl.onStart();
-       }
-
-       @Override
-       public void onPause() {
-           super.onPause();
-           mapControl.onPause();
-       }
-
-       @Override
-       public void onStop() {
-           super.onStop();
-           mapControl.onStop();
-       }
-
-       @Override
-       public void onLowMemory() {
-           super.onLowMemory();
-           mapControl.onLowMemory();
-       }
-
-       @Override
-       protected void onDestroy() {
-           super.onDestroy();
-           mapControl.onDestroy();
-       }
-
-       @Override
-       protected void onSaveInstanceState(Bundle outState) {
-           super.onSaveInstanceState(outState);
-           mapControl.onSaveInstanceState(outState);
-       }
-   }
-   ```
-
-3. Miután beépíti a fenti kódot az alkalmazásba, rákattinthat egy szolgáltatásra, és megtekintheti a forgalmi incidensek részleteit. A szélesség, a hosszúság és a **activity_main.xml** fájlban használt nagyítási szint értékeitől függően az alábbi képhez hasonló eredmények jelennek meg:
-
-
-    ![Incidens-Traffic-on-the-Map](./media/how-to-show-traffic-android/android-traffic.png)
-
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő útmutatókból megtudhatja, hogyan adhat hozzá további információkat a térképhez:
 
 > [!div class="nextstepaction"]
-> [Szimbólumréteg hozzáadása](how-to-add-symbol-to-android-map.md)
-
-> [!div class="nextstepaction"]
 > [Mozaikréteg hozzáadása](how-to-add-tile-layer-android-map.md)
-
-> [!div class="nextstepaction"]
-> [Alakzatok hozzáadása az Android térképhez](how-to-add-shapes-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [Funkcióinformációk megjelenítése](display-feature-information-android.md)

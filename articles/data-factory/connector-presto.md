@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása a Presto használatával Azure Data Factory (előzetes verzió)
+title: Adatok másolása a Presto használatával Azure Data Factory
 description: Megtudhatja, hogyan másolhat adatok a Presto-ból a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
@@ -9,22 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 15f4133b03c1fe77548425500445937e86ed5a8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af05983432c0f76a88ff82a3638d86a971ef77f5
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372501"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680702"
 ---
-# <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Adatok másolása a Presto használatával Azure Data Factory (előzetes verzió)
+# <a name="copy-data-from-presto-using-azure-data-factory"></a>Adatok másolása a Presto használatával Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok gyors másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
-
-> [!IMPORTANT]
-> Ez az összekötő jelenleg előzetes verzióban érhető el. Kipróbálhatja, és visszajelzést küldhet nekünk. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -49,12 +46,12 @@ A Presto társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **Presto** | Igen |
-| gazda | A Presto-kiszolgáló IP-címe vagy állomásneve. (például 192.168.222.160)  | Igen |
-| serverVersion | A Presto-kiszolgáló verziója. (például 0,148-t)  | Igen |
-| Katalógus | A kiszolgálóval kapcsolatos összes kérelem katalógusának kontextusa.  | Igen |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Presto** | Yes |
+| gazda | A Presto-kiszolgáló IP-címe vagy állomásneve. (például 192.168.222.160)  | Yes |
+| serverVersion | A Presto-kiszolgáló verziója. (például 0,148-t)  | Yes |
+| Katalógus | A kiszolgálóval kapcsolatos összes kérelem katalógusának kontextusa.  | Yes |
 | port | A Presto-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. Az alapértelmezett érték a 8080.  | Nem |
-| authenticationType | A Presto-kiszolgálóhoz való kapcsolódáshoz használt hitelesítési módszer. <br/>Az engedélyezett értékek a következők: **Névtelen**, **LDAP** | Igen |
+| authenticationType | A Presto-kiszolgálóhoz való kapcsolódáshoz használt hitelesítési módszer. <br/>Az engedélyezett értékek a következők: **Névtelen**, **LDAP** | Yes |
 | username | A Presto-kiszolgálóhoz való kapcsolódáshoz használt Felhasználónév.  | Nem |
 | jelszó | A felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Megadja, hogy a kiszolgálóval létesített kapcsolatok titkosítva vannak-e a TLS protokollal. Az alapértelmezett érték a hamis.  | Nem |
@@ -92,13 +89,13 @@ A Presto társított szolgáltatás a következő tulajdonságokat támogatja:
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Presto-adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatok gyors másolásához állítsa az adatkészlet Type (típus) tulajdonságát **PrestoObject**értékre. A következő tulajdonságok támogatottak:
+Az adatok gyors másolásához állítsa az adatkészlet Type (típus) tulajdonságát **PrestoObject** értékre. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PrestoObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **PrestoObject** | Yes |
 | schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| table | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -128,7 +125,7 @@ Az adatok gyors másolásához állítsa a forrás típusát a másolás tevéke
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PrestoSource** | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **PrestoSource** | Yes |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**
@@ -168,5 +165,5 @@ Az adatok gyors másolásához állítsa a forrás típusát a másolás tevéke
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

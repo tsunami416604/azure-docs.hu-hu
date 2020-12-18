@@ -1,24 +1,24 @@
 ---
-title: A vállalati rendszergazdai szerepkörök az Azure-ban
+title: A Nagyvállalati Szerződések (EA) rendszergazdai szerepkörei az Azure-ban
 description: Megismerheti a vállalati rendszergazdai szerepköröket az Azure-ban. Öt különböző adminisztratív szerepkört rendelhet hozzá.
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/10/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: e8420f68fba40ddb61d06770f9f5bc2fafe5616a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409200"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560525"
 ---
-# <a name="managing-azure-enterprise-roles"></a>Az Azure Enterprise szerepköreinek kezelése
+# <a name="managing-azure-enterprise-agreement-roles"></a>Az Azure Nagyvállalati Szerződés (EA) szerepköreinek kezelése
 
-A szervezet használati adatainak és költségeinek kezeléséhez a Nagyvállalati Szerződéssel (EA) rendelkező Azure-ügyfelek öt különféle rendszergazdai szerepkört rendelhetnek felhasználóikhoz:
+A szervezet használati adatainak és költségeinek kezeléséhez a Nagyvállalati Szerződéssel rendelkező Azure-ügyfelek öt különféle rendszergazdai szerepkört rendelhetnek felhasználóikhoz:
 
 - Vállalati rendszergazda
 - Vállalati rendszergazda (csak olvasási)<sup>1</sup>
@@ -82,6 +82,8 @@ Az ilyen szerepkörrel felruházott felhasználók rendelkeznek a legmagasabb sz
 - Értesítendő felek kezelése.
 - A fiókok használati adatainak megtekintése.
 - A fiókok nem számlázott díjainak megtekintése.
+- Minden foglalási rendelés és foglalás megtekintése és kezelése, amelyre a Nagyvállalati Szerződés vonatkozik.
+  - A vállalati rendszergazda (csak olvasási) megtekintheti a foglalási rendeléseket és foglalásokat. Nem kezelheti őket.
 
 Több vállalati rendszergazda is lehet egy vállalati regisztrációban. A vállalati rendszergazdákhoz rendelhet csak olvasási hozzáférést is. Mindegyikük örökli a részlegszintű rendszergazdai szerepkört.
 

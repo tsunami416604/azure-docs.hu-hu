@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.author: banders
-ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348984"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938477"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Azure-előfizetések számlázási tulajdonjogának beszerzése más fiókoktól
 
@@ -22,6 +22,14 @@ Az Azure-előfizetések számlázási tulajdonjogának átvételére akkor lehet
 Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel egy Microsoft-ügyfélszerződéshez](#check-for-access).
 
 Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **számlaszakaszok közreműködői** igényelhetnek. További tudnivalókért lásd a [számlaszakaszokra vonatkozó szerepkörök feladatait](understand-mca-roles.md#invoice-section-roles-and-tasks).
+
+A személynek, akitől számlázási tulajdonjogot igényel, a következő szerepkörök egyikét kell betöltenie:
+
+- Vállalati Microsoft Ügyfélszerződés esetén a felhasználónak számlázási tulajdonosnak kell lennie.
+- Nagyvállalati Szerződés esetén a felhasználónak fióktulajdonosnak kell lennie.
+- A Microsoft Online Services Programhoz tartozó számlázási fiók esetén fiókadminisztrátornak kell lennie.
+
+További információk: [A számlázási fiókok megjelenítése az Azure Portalon](view-all-accounts.md).
 
 ## <a name="request-billing-ownership"></a>Számlázási tulajdonjog kérése
 
@@ -42,7 +50,7 @@ Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **sz�
 1. Válasszon egy számlaszakaszt a listából. Az előfizetések használata a tulajdonjog átvétele után a számlázási profil számlájának ehhez a szakaszához lesz hozzárendelve.
 1. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget, majd az **Új kérelem hozzáadása** elemet.  
     [![Képernyőkép az átadási kérelmek kiválasztásáról](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. Adja meg annak a felhasználónak az e-mail-címét, akitől a számlázási tulajdonjogot kéri. A felhasználónak egy Microsoft Online Services Program számlázási fiókjának adminisztrátorának vagy egy Nagyvállalati Szerződéssel rendelkező fiók tulajdonosának kell lennie. További információk: [A számlázási fiókok megjelenítése az Azure Portalon](view-all-accounts.md). Válassza az **Átadási kérelem küldése** lehetőséget.  
+1. Adja meg annak a felhasználónak az e-mail-címét, akitől a számlázási tulajdonjogot kéri. Válassza az **Átadási kérelem küldése** lehetőséget.  
     [![Képernyőkép egy átadási kérelem küldéséről](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
 1. A felhasználó egy e-mailt kap, amely felszólítja az átadási kérelem áttekintéséra.  
     ![Képernyőkép egy átadási kérelem áttekintésére felszólító e-mailről](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
@@ -68,6 +76,7 @@ Számlázási tulajdonjogot csak a **számlaszakaszok tulajdonosai** és a **sz�
 1. Válassza ki a listából a számlaszakaszt, amelyre az elküldött átadási kérelem vonatkozik.
 1. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget. Az Átadási kérelmek lapon az alábbi információk jelennek meg:  
     [![Képernyőkép az átadási kérelmek listájáról](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
+
    |Oszlop|Meghatározás|
    |---------|---------|
    |Kérelem dátuma|Az átadási kérelem elküldésének dátuma|
