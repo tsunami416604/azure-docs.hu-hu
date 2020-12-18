@@ -30,8 +30,6 @@
       href: azuread-join-sso.md
     - name: Elsődleges frissítési jogkivonatok
       href: concept-primary-refresh-token.md
-    - name: Azure által felügyelt munkaállomások
-      href: concept-azure-managed-workstation.md
 - name: Útmutatók
   expanded: false
   items:
@@ -55,8 +53,6 @@
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: Virtuális asztali infrastruktúra
       href: howto-device-identity-virtual-desktop-infrastructure.md
-    - name: Azure által felügyelt munkaállomások üzembe helyezése
-      href: howto-azure-managed-workstation.md
     - name: Eszközidentitásokkal kapcsolatos problémák elhárítása
       items:
         - name: Jelenlegi hibrid Azure AD-csatlakoztatott Windows-eszközök hibaelhárítása

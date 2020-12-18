@@ -110,6 +110,8 @@
       items:
         - name: Kapacitási mérőszám
           href: api-management-capacity.md
+        - name: Költségtervezés és a költségek kezelése
+          href: plan-manage-costs.md
         - name: Frissítés és skálázás
           href: upgrade-and-scale.md
         - name: Automatikus skálázás konfigurálása
