@@ -18,7 +18,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 11/17/2020
 ms.locfileid: "94651855"
 ---
-# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory Application Proxy CORS kapcsolatos problémák megismerése és megoldása
+# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Az Azure Active Directory-alkalmazásproxy Proxy CORS-hibáinak megértése és elhárítása
 
 A [több eredetű erőforrás-megosztás (CORS)](https://www.w3.org/TR/cors/) időnként kihívást jelenthet a Azure Active Directory Application Proxyon közzétett alkalmazások és API-k számára. Ez a cikk az Azure AD Application Proxy CORS kapcsolatos problémákat és megoldásokat ismerteti.
 
@@ -42,9 +42,9 @@ Az azonos eredetű házirend megakadályozza, hogy az alkalmazások más eredet�
 
 A CORS problémák a böngésző hibakeresési eszközeivel azonosíthatók:
 
-1. Indítsa el a böngészőt, és keresse meg a webalkalmazást.
-1. Nyomja meg az **F12** billentyűt a hibakeresési konzol létrehozásához.
-1. Próbálja megismételni a tranzakciót, és tekintse át a konzol üzenetét. A CORS megsértése konzolos hibát eredményez a forrásról.
+1. Indítsa el a böngészőt, és nyissa meg a webalkalmazást.
+1. Nyomja le az **F12** billentyűt a hibakeresési konzol megnyitásához.
+1. Próbálja meg reprodukálni a tranzakciót, és tekintse át a konzol üzenetét. CORS-szabálysértések esetén az eredettel kapcsolatos hibaüzenetet jelenik meg.
 
 A következő képernyőképen a **kipróbálás** gomb kiválasztásával egy CORS hibaüzenetet okozott, amely szerint a https: \/ /corswebclient-contoso.msappproxy.net nem található a hozzáférés-vezérlés – engedélyezés-eredet fejlécben.
 
@@ -112,9 +112,9 @@ A CORS támogatásához módosíthatja az alkalmazást úgy, hogy a megfelelő �
 
 ### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>5. lehetőség: a hozzáférési jogkivonat élettartamának meghosszabbítása
 
-Bizonyos CORS problémák nem oldhatók fel, például amikor az alkalmazás átirányítja a *login.microsoftonline.com* a hitelesítésre, és a hozzáférési jogkivonat lejár. A CORS hívása sikertelen lesz. A forgatókönyv áthidaló megoldása a hozzáférési jogkivonat élettartamának meghosszabbítása annak megakadályozása érdekében, hogy a felhasználó munkamenete közben lejárjon. Ennek módjáról további információt a [konfigurálható jogkivonat-élettartamok az Azure ad-ben](../develop/active-directory-configurable-token-lifetimes.md)című témakörben talál.
+Bizonyos CORS problémák nem oldhatók fel, például amikor az alkalmazás átirányítja a *login.microsoftonline.com* a hitelesítésre, és a hozzáférési jogkivonat lejár. Ilyenkor a CORS-hívás sikertelen lesz. Ezt a helyzetet úgy lehet áthidalni, ha meghosszabbítja a hozzáférési jogkivonat élettartamát, hogy ne járjon le a felhasználó munkamenete során. Ennek módjáról további információt a [konfigurálható jogkivonat-élettartamok az Azure ad-ben](../develop/active-directory-configurable-token-lifetimes.md)című témakörben talál.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md) 
 - [Azure AD alkalmazás-proxy telepítési útmutató](application-proxy-deployment-plan.md) 
 - [Helyi alkalmazásokhoz való távoli hozzáférés Azure Active Directory Application Proxy](application-proxy.md)

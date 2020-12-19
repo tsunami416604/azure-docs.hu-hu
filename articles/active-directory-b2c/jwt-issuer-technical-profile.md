@@ -50,7 +50,7 @@ A következő példa egy technikai profilt mutat be `JwtIssuer` :
 
 ## <a name="input-output-and-persist-claims"></a>Bemeneti, kimeneti és megőrzési jogcímek
 
-A **szabályzattípushoz**, a **OutputClaims**és a **PersistClaims** elemek üresek vagy hiányoznak. A **InutputClaimsTransformations** és a **OutputClaimsTransformations** elemek is hiányoznak.
+A **szabályzattípushoz**, a **OutputClaims** és a **PersistClaims** elemek üresek vagy hiányoznak. A **InutputClaimsTransformations** és a **OutputClaimsTransformations** elemek is hiányoznak.
 
 ## <a name="metadata"></a>Metaadatok
 
