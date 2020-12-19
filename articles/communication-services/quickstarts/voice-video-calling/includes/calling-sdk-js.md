@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: d50ce842a1b2bca26ef14dfbc81aab90d4ac2d8c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94482678"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97691935"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +53,7 @@ A callAgent- `DeviceManager` példány eléréséhez először létre kell hozni
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationUserCredential(userToken);
-const callAgent = await callClient.createCallAgent(tokenCredential);
+const callAgent = await callClient.createCallAgent(tokenCredential, { displayName: 'optional ACS user name' });
 const deviceManager = await callClient.getDeviceManager()
 ```
 
@@ -89,7 +89,9 @@ const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 > Jelenleg legfeljebb egy kimenő helyi videó stream lehet.
 Videohívás létrehozásához a helyi kamerákat a deviceManager API használatával kell enumerálni `getCameraList` .
 Miután kiválasztotta a kívánt kamerát, használja egy példány összeállításához, `LocalVideoStream` és a `videoOptions` tömbben lévő elemen belül adja át `localVideoStream` a `call` metódusnak.
-A hívása után a rendszer automatikusan elindít egy videó streamet a kiválasztott kameráról a másik résztvevő (k) ra.
+A hívása után a rendszer automatikusan elindít egy video streamet a kiválasztott kamerából a többi résztvevő (k) felé.
+
+Ez a Call. Accept () video Options és a CallAgent. JOIN () videó beállításaira is vonatkozik.
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
@@ -99,13 +101,41 @@ const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
+### <a name="receiving-an-incoming-call"></a>Bejövő hívás fogadása
+```js
+callAgent.on('callsUpdated', e => {
+    e.added.forEach(addedCall => {
+        if(addedCall.isIncoming) {
+        addedCall.accept();
+    }
+    });
+})
+```
+
 ### <a name="join-a-group-call"></a>Csatlakozás csoportos híváshoz
 Új csoportos hívás indításához vagy egy folyamatos csoportos híváshoz való csatlakozáshoz használja a "Join" metódust, és adjon át egy objektumot egy `groupId` tulajdonsággal. Az értéknek GUID azonosítónak kell lennie.
 ```js
 
-const context = { groupId: <GUID>}
-const call = callAgent.join(context);
+const locator = { groupId: <GUID>}
+const call = callAgent.join(locator);
 
+```
+
+### <a name="join-a-teams-meeting"></a>Csatlakozás Teams-értekezlethez
+Ha csatlakozni szeretne egy csapathoz, használja a "Join" metódust, és adjon meg egy értekezlet-hivatkozást vagy egy értekezlet koordinátáit
+```js
+// Join using meeting link
+const locator = { meetingLink: <meeting link>}
+const call = callAgent.join(locator);
+
+// Join using meeting coordinates
+const locator = {
+    threadId: <thread id>,
+    organizerId: <organizer id>,
+    tenantId: <tenant id>,
+    messageId: <message id>
+}
+const call = callAgent.join(locator);
 ```
 
 ## <a name="call-management"></a>Híváskezelő
@@ -162,6 +192,11 @@ const callEndReason = call.callEndReason;
 * Ha meg szeretné tudni, hogy az aktuális hívás bejövő hívás-e, ellenőrizze a `isIncoming` tulajdonságot, és adja vissza `Boolean` .
 ```js
 const isIncoming = call.isIncoming;
+```
+
+* Annak ellenőrzéséhez, hogy a rendszer rögzíti-e a hívást, ellenőrizze a `isRecordingActive` tulajdonságot, és adja vissza `Boolean` .
+```js
+const isResordingActive = call.isRecordingActive;
 ```
 
 *  Annak ellenőrzéséhez, hogy az aktuális mikrofon el van-e némítva, ellenőrizze a `muted` tulajdonságot, és adja vissza `Boolean` .
