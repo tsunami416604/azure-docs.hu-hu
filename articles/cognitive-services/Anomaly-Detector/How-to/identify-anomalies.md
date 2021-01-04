@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: b2cd5e32503953de874ab470ca3f9413d2b37d59
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014647"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703432"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Útmutató: a rendellenesség-Kiderítő API használata az idősorozat-adatain  
 
@@ -68,7 +68,7 @@ Az alábbi példákban egy anomália-detektor API-nak a különböző érzékeny
 
 ![85 érzékenység](../media/sensitivity_85.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi az az Anomaly Detector API?](../overview.md)
-* [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália detektor használatával](../quickstarts/client-libraries.md)

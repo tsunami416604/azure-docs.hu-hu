@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 7e727d06670c9d07ec1aa18b92504433f6c519d6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 88cec878ca5d3ccab3a232888ff3a3c0b0faa1db
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518294"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705251"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése Azure-sablonnal
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -143,10 +143,10 @@ Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési csoportot az [az group deployment create](/cli/azure/group/deployment) paranccsal. Amikor a rendszer kéri, adja meg az egyes virtuálisgép-példányhoz hitelesítő adatként használt saját felhasználó nevét, például az *azureuser* nevet és a hozzá tartozó jelszót:
+Most hozzon létre egy virtuálisgép-méretezési [csoportot az az Deployment Group Create](/cli/azure/deployment/group)paranccsal. Amikor a rendszer kéri, adja meg az egyes virtuálisgép-példányhoz hitelesítő adatként használt saját felhasználó nevét, például az *azureuser* nevet és a hozzá tartozó jelszót:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json
 ```
@@ -257,7 +257,7 @@ Amint a **stress** segédprogram leáll a kezdeti virtuálisgép-példányokon, 
 Lépjen ki a *watch* segédprogramból a `Ctrl-c` paranccsal. A méretezési csoport folytatja az 5 percenkénti horizontális leskálázást, és eltávolít egy virtuálisgép-példányt, amíg el nem éri a minimális két példányos értéket.
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A méretezési csoport és további erőforrások eltávolításához törölje az erőforráscsoportot és az ahhoz tartozó összes erőforrást az [az group delete](/cli/azure/group) paranccsal:
 
 ```azurecli-interactive
@@ -265,7 +265,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan lehet automatikusan horizontálisan le- illetve felskálázni egy méretezési csoportot az Azure CLI használatával:
 
 > [!div class="checklist"]

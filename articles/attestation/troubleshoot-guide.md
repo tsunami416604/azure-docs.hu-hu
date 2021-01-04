@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182835"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704316"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure igazolás hibaelhárítási útmutatója
 
@@ -280,7 +280,7 @@ A PowerShell-galéria folytatásához futtassa a következő parancsot a Install
 A felhasználó hozzárendelve a megfelelő szerepkörökhöz. Azonban a hitelesítési házirendek a PowerShellen keresztüli kezelése során az engedélyezési problémákkal szembesülnek.
 
 ### <a name="error"></a>Hiba
-A (z) azonosítójú ügyfél <object Id>  nem rendelkezik engedéllyel a Microsoft. Authorization/RoleAssignments/Write Hatókörön kívüli művelet végrehajtásához a (z) subcriptions/ <subscriptionId> resourcegroups/secure_enclave_poc/Providers/Microsoft.Authorization/RoleAssignments/, <role assignmentId> vagy a hatókör érvénytelen. Ha a hozzáférés a közelmúltban lett megadva, frissítse a hitelesítő adatait
+Az objektumazonosító-azonosítójú ügyfél &lt; &gt;  nem rendelkezik a művelet végrehajtásához szükséges engedéllyel a Microsoft. Authorization/RoleAssignments/write (hatókör: "subcriptions/ &lt; subscriptionId &gt; resourcegroups/secure_enclave_poc/Providers/Microsoft.Authorization/RoleAssignments/ &lt; role assignmentId") &gt; vagy a hatókör érvénytelen. Ha a hozzáférés a közelmúltban lett megadva, frissítse a hitelesítő adatait
 
 ### <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 

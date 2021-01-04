@@ -1,0 +1,165 @@
+---
+title: 'Oktatóanyag: a Gtmhub konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a Gtmhub.
+services: active-directory
+documentationcenter: ''
+author: Zhchia
+writer: Zhchia
+manager: beatrizd
+ms.assetid: 10b68d00-a544-480b-9bd6-f6ac291a90d0
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 12/03/2020
+ms.author: Zhchia
+ms.openlocfilehash: 32c19622218d68f094c84d9e7ae54d418ea3fc2b
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97710035"
+---
+# <a name="tutorial-configure-gtmhub-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Gtmhub konfigurálása
+
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a Gtmhub és a Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az Azure AD kiépítési szolgáltatás [Gtmhub](https://www.gtmhub.com/) . A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md). 
+
+>[!NOTE]
+>Jelenleg az automatikus felhasználó-kiépítés konfigurálásakor az Azure AD csak a felhasználók és csoportok Gtmhub, valamint az Azure AD-létesítési szolgáltatással a saját csapatához rendeli hozzá a felhasználókat. Ha azonban 2021 az egyszeri bejelentkezés engedélyezve van a Gtmhub-ben, akkor a rendszer automatikusan kiépíti a felhasználókat az SSO-ba való bejelentkezéskor, és hozzárendeli őket a megfelelő csapathoz.
+
+
+## <a name="capabilities-supported"></a>Támogatott képességek
+> [!div class="checklist"]
+> * Távolítsa el a felhasználókat a Gtmhub, amikor már nincs szükség hozzáférésre.
+> * A felhasználói attribútumok szinkronizálása az Azure AD és a Gtmhub között.
+> * A felhasználókat automatikusan társíthatja a csapatokhoz, és összehangolhatja őket.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
+
+* [Egy Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* Vállalati Gtmhub-fiók.
+
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
+1. Ismerje meg [az átadási szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Határozza meg, hogy ki lesz [az átadás hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Határozza meg, hogy az [Azure ad és a Gtmhub között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+
+## <a name="step-2-configure-gtmhub-to-support-team-mapping-and-user-de-provisioning-with-azure-ad"></a>2. lépés A Gtmhub konfigurálása az Azure AD-vel való csoportos leképezés és a felhasználók általi kiépítés támogatásához
+
+Ahhoz, hogy a kiépítési alkalmazást a Gtmhub-fiókhoz lehessen kapcsolni, ki kell állítania egy SCIM-jogkivonatot, és le kell fordítania a bérlői URL-címet.
+
+### <a name="to-issue-a-new-scim-token"></a>Új SCIM-jogkivonat kiadása:
+
+1. Jelentkezzen be a **Gtmhub-fiókjába**. Navigáljon a **beállítások > Configuration > API-tokenek** elemre.
+
+    ![API-jogkivonatok lap](media/gtmhub-provisioning-tutorial/api-tokens.png)
+2. Kattintson a **probléma tokenre** , és válassza a **scim** lehetőséget. Adja meg a jogkivonat nevét, majd kattintson az **API-jogkivonat létrehozása** gombra.
+
+    ![Tokenek előállítása lap](media/gtmhub-provisioning-tutorial/generate-token.png)
+3. A jogkivonat létrehozása után az Azure AD-létesítési alkalmazásban másolhatja és használhatja azt.
+
+    ![Másolási jogkivonat](media/gtmhub-provisioning-tutorial/token.png)
+
+### <a name="to-compile-the-tenant-url"></a>A bérlői URL-cím fordítása:
+
+1. A bérlői URL-címnek a következő formátumúnak kell lennie:
+
+    `https://app.gtmhub.com/api/v1/scim/azure/{account_id}`
+
+2. Ha a Gtmhub-fiókja az USA-beli adatközpontban található, akkor az adatközpontot is hozzá kell adnia az URL-címhez:
+    
+     `https://app.us.gtmhub.com/api/v1/scim/azure/{account_id}`
+
+3. A fiók AZONOSÍTÓjának beszerzéséhez lépjen a **Beállítások** elemre, majd válassza az **API-tokenek** fület, és másolja a fiók azonosítóját:  ![ fiókazonosító](media/gtmhub-provisioning-tutorial/account-id.png)
+
+## <a name="step-3-add-gtmhub-from-the-azure-ad-application-gallery"></a>3. lépés Gtmhub hozzáadása az Azure AD Application Galleryből
+
+Vegyen fel Gtmhub az Azure AD-alkalmazás-katalógusból a Gtmhub való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a Gtmhub az SSO-hoz, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet. 
+
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
+
+Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) leírt hatókörszűrőt használhatja. 
+
+* Felhasználók és csoportok Gtmhub való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps). 
+
+* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+
+
+## <a name="step-5-configure-automatic-user-provisioning-to-gtmhub"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a Gtmhub 
+
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+
+### <a name="to-configure-automatic-user-provisioning-for-gtmhub-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Gtmhub az Azure AD-ben:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet.
+
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+
+2. Az alkalmazások listában válassza a **Gtmhub** lehetőséget.
+
+    ![Az Gtmhub hivatkozás az alkalmazások listájában](common/all-applications.png)
+
+3. Válassza a **Kiépítés** lapot.
+
+    ![Kiépítés lap](common/provisioning.png)
+
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
+
+    ![Kiépítés lap automatikus](common/provisioning-automatic.png)
+
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Gtmhub bérlői URL-címét és a titkos jogkivonatot. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Gtmhub. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Gtmhub-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+
+    ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
+
+6. Az **Értesítés e-mailben** mezőben adja meg annak a személynek vagy csoportnak az e-mail-címét, aki az átadással kapcsolatos hibaüzeneteket kapja, és jelölje be az **E-mail-értesítés küldése hiba esetén** jelölőnégyzetet.
+
+    ![Értesítés e-mailben](common/provisioning-notification-email.png)
+
+7. Kattintson a **Mentés** gombra.
+
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Gtmhub** lehetőséget.
+
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő Gtmhub. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Gtmhub felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a Gtmhub API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+
+   |Attribútum|Típus|Szűréshez támogatott|
+   |---|---|---|
+   |userName (Felhasználónév)|Sztring|&check;|
+   |externalId|Sztring|&check;|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
+
+10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+
+13. Az Azure AD-kiépítési szolgáltatás Gtmhub való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+
+    ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
+
+14. Adja meg a Gtmhub kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+
+    ![Átadási hatókör](common/provisioning-scope.png)
+
+15. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
+
+    ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
+
+Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát elindítja. A kezdeti ciklus elvégzése hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek az Azure AD átadási szolgáltatásának futtatása során körülbelül 40 percenként lesznek végrehajtva. 
+
+## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
+Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
+
+* Az [átadási naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
+* A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
+* Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.  
+
+## <a name="additional-resources"></a>További források
+
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+
+## <a name="next-steps"></a>További lépések
+
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../manage-apps/check-status-user-account-provisioning.md)

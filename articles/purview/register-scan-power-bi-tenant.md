@@ -1,18 +1,18 @@
 ---
 title: Power BI bérlő regisztrálása és bevizsgálása (előzetes verzió)
 description: Megtudhatja, hogyan regisztrálhat és vizsgálhat meg egy Power BI bérlőt az Azure hatáskörébe-portál használatával.
-author: viseshag
-ms.author: viseshag
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3813d58d894d87051b1bcf8b512c848d527a52bb
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615848"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696229"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI bérlő regisztrálása és bevizsgálása (előzetes verzió)
 
@@ -72,8 +72,6 @@ Most, hogy megadta a katalógus engedélyeit a Power BI bérlő felügyeleti API
 
 Első lépésként adjon hozzá egy speciális funkció-jelölőt a hatáskörébe URL-címéhez 
 
-1. Adja hozzá a következő karakterláncot a hatáskörébe tartozó példány URI-ja végéhez: `?feature.ext.catalog={"pbi":"true"}` . Ez engedélyezi a Power BI regisztrációs lehetőséget a katalógusban.
-
 1. Válassza ki a **felügyeleti központ** ikonját.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Felügyeleti központ ikonja":::
@@ -112,6 +110,5 @@ Első lépésként adjon hozzá egy speciális funkció-jelölőt a hatásköré
 
 ## <a name="next-steps"></a>További lépések
 
-Ha meg szeretné tudni, hogyan lehet PowerShell-parancsmagokkal regisztrálni és beolvasni egy Power BI bérlőt, tekintse meg a következőt:
-  
-- [A PowerShell használata a Power BI regisztrálásához és vizsgálatához](powershell-register-scan-power-bi.md)
+- [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
+- [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

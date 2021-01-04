@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8560acd9c5a11004c5144441d395863c8b85edba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461396"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705064"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Firewallt a Azure Machine Learning-munkaterülethez és a nyilvános internethez való hozzáférés szabályozásához. Ha többet szeretne megtudni a Azure Machine Learning biztonságossá tételéről, tekintse meg a [vállalati biztonság Azure Machine learning](concept-enterprise-security.md)
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Firewallt a Azure Machine Learning-munkaterülethez és a nyilvános internethez való hozzáférés szabályozásához. Ha többet szeretne megtudni a Azure Machine Learning biztonságossá tételéről, tekintse meg a [Azure Machine learning vállalati biztonsági szolgáltatásait](concept-enterprise-security.md)ismertető témakört.
+
+> [!WARNING]
+> A tűzfal mögötti adattárakhoz való hozzáférés csak a Code First experiences szolgáltatásban támogatott. A [Azure Machine learning Studio](overview-what-is-machine-learning-studio.md) használatával férhet hozzá a tűzfal mögötti adataihoz. Ahhoz, hogy az adattárolást egy privát hálózaton a Studióval működjön, először [be kell állítania egy virtuális hálózatot](../virtual-network/quick-create-portal.md) , és [a stúdiónak hozzá kell férnie a virtuális hálózaton belül tárolt](how-to-enable-studio-virtual-network.md)adatmennyiséghez.
 
 ## <a name="azure-firewall"></a>Azure Firewall
 

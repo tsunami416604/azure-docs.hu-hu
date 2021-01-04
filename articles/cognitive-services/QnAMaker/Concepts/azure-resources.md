@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5f7f494c9d0969fbf9431d0b552dafa21a5eace
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512045"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705404"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Makerhoz
 
@@ -268,8 +268,10 @@ A Azure Portal létrehozási ablak lehetővé teszi QnA Maker felügyelt (előze
 
 > [!div class="mx-imgBorder"]
 > ![A felügyelt QnA Maker (előzetes verzió) Azure Portal erőforrás-listájának képernyőképe](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
+
 > [!TIP]
 > Hozzon létre egy új erőforráscsoportot QnA Maker erőforrás létrehozásakor. Ez lehetővé teszi az QnA Maker felügyelt (előzetes verzió) erőforráshoz társított összes erőforrás megtekintését az erőforráscsoport keresésekor.
+
 > [!TIP]
 > Az erőforrás vagy az erőforráscsoport neve alapján megadhatja az árképzési szinteket a névadási konvenció alapján. Ha új Tudásbázis létrehozásával vagy új dokumentumok hozzáadásával kapcsolatos hibákat kap, akkor a Cognitive Search díjszabási szint korlátja gyakori probléma.
 

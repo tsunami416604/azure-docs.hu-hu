@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ce79fe88b33659241a226af7bbb7a966ede41abb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95496885"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696167"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Kapcsolatok és a kitalált módszer – keresés az Azure térbeli Horgonyokban
 
@@ -64,7 +64,7 @@ A térbeli horgonyokat több munkamenetben is összekapcsolhatjuk. Ezzel a móds
 
 Horgonyok összekötése több munkamenetben:
 
-1. Az alkalmazás létrehoz néhány horgonyt egy CloudSpatialAnchorSession.
+1. Az alkalmazás létrehoz néhány horgonyt (A és B horgonyt) egy CloudSpatialAnchorSession.
 2. Az alkalmazás egy másik időpontban megkeresi az egyik ilyen horgonyt (például A horgonyt) egy új CloudSpatialAnchorSession használatával.
 3. Új hely bejárása. A mögöttes vegyes valóság és a kibővített valóság platform nyomon követi a mozgást.
 4. Hozzon létre egy C horgonyt ugyanazzal a CloudSpatialAnchorSession. Az A, B és C horgonyok már csatlakoztatva vannak. A térbeli horgonyok szolgáltatás megtartja ezt a kapcsolatot.

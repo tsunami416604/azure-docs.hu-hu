@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 62651e9ea4e1b02b276e7870163453bfa55c3909
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2e55b1f18648ce6970b81b943cd8a6a0fc3e7e81
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587570"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705132"
 ---
 # <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>A felügyelt identitás (előzetes verzió) használatával hitelesítheti a Azure Stream Analytics feladatot az Azure-ban Blob Storage
 
@@ -98,7 +98,7 @@ A Azure Resource Manager használata lehetővé teszi, hogy teljes mértékben a
     A fenti feladatot az alábbi Azure CLI-parancs használatával telepítheti az erőforráscsoport **ExampleGroup** :
 
     ```azurecli
-    az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
+    az deployment group create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
 2. A feladatot a létrehozása után a Azure Resource Manager segítségével kérheti le a feladatok teljes definícióját.
@@ -239,7 +239,7 @@ A szolgáltatás jelenlegi korlátai a következők:
 
 4. A [felhasználó által hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md) nem támogatott. Ez azt jelenti, hogy a felhasználó nem tudja megadni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz használhatnak. Az egyszerű szolgáltatásnevet Azure Stream Analytics kell létrehozni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](./stream-analytics-define-outputs.md)
 * [Egyéni blob kimeneti particionálás Azure Stream Analytics](./stream-analytics-custom-path-patterns-blob-storage-output.md)

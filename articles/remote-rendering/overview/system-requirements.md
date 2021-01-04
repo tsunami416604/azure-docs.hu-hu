@@ -1,18 +1,19 @@
 ---
-title: Rendszerkövetelmények
+title: System requirements (Rendszerkövetelmények)
 description: Az Azure távoli renderelés rendszerkövetelményeit sorolja fel
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 536f5e7d2fa12d1f9a9f09a31b463d2096dcad37
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: references_regions
+ms.openlocfilehash: 4380f14610fb0775c82aa79ec7cda9dc70cf0715
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207410"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722691"
 ---
-# <a name="system-requirements"></a>Rendszerkövetelmények
+# <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 > [!IMPORTANT]
 > Az **Azure távoli renderelés** jelenleg nyilvános előzetes verzióban érhető el.
@@ -51,12 +52,12 @@ Fontos, hogy a legújabb HEVC-kodeket használja, mivel az újabb verziók jelen
 
 1. Indítsa el a **Microsoft Store**.
 1. Kattintson a jobb felső sarokban található **"..."** gombra.
-1. Válassza **a letöltések és frissítések**lehetőséget.
-1. Keresse meg az **eszköz gyártójától származó HEVC-videók**listáját. Ha ez az elem nem szerepel a frissítések területen, a legújabb verzió már telepítve van.
-1. Győződjön meg arról, hogy a felsorolt kodek legalább verziójú **1.0.21821.0**rendelkezik.
+1. Válassza **a letöltések és frissítések** lehetőséget.
+1. Keresse meg az **eszköz gyártójától származó HEVC-videók** listáját. Ha ez az elem nem szerepel a frissítések területen, a legújabb verzió már telepítve van.
+1. Győződjön meg arról, hogy a felsorolt kodek legalább verziójú **1.0.21821.0** rendelkezik.
 1. Kattintson a **frissítések beolvasása** gombra, és várjon, amíg a telepítés megtörténik.
 
-## <a name="network"></a>Hálózat
+## <a name="network"></a>Network (Hálózat)
 
 A jó felhasználói élmény érdekében elengedhetetlen a stabil, kis késleltetésű hálózati kapcsolatok használata.
 
@@ -64,7 +65,32 @@ Tekintse meg a [hálózati követelmények](../reference/network-requirements.md
 
 Hálózati problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](../resources/troubleshoot.md#unstable-holograms).
 
-### <a name="network-ports"></a>Hálózati portok
+### <a name="network-firewall"></a>Hálózati tűzfal
+
+### <a name="sdk-version--0176"></a>SDK-verzió >= 0.1.76
+
+A távoli renderelési virtuális gépek megosztott IP-címeket használnak a következő IP-tartományokból:
+
+| Név             | Régió         | IP-előtag         |
+|------------------|:---------------|:------------------|
+| Kelet-Ausztrália   | australiaeast  | 20.53.44.240/28   |
+| USA keleti régiója          | eastus         | 20.62.129.224/28  |
+| USA 2. keleti régiója        | eastus2        | 20.49.103.240/28  |
+| Kelet-Japán       | japaneast      | 20.191.165.112/28 |
+| Észak-Európa     | northeurope    | 52.146.133.64/28  |
+| USA déli középső régiója | southcentralus | 20.65.132.80/28   |
+| Délkelet-Ázsia   | southeastasia  | 20.195.64.224/28  |
+| Az Egyesült Királyság déli régiója         | uksouth        | 51.143.209.144/28 |
+| Nyugat-Európa      | westeurope     | 20.61.99.112/28   |
+| USA 2. nyugati régiója        | westus2        | 20.51.9.64/28     |
+
+Ügyeljen arra, hogy a tűzfalak (az eszközökön belül, az útválasztók stb.) ne tiltsa le ezeket az IP-tartományokat és a következő porttartomány-tartományokat:
+
+| Port              | Protokoll  | Engedélyezés    |
+|-------------------|---------- |----------|
+| 49152-65534       | TCP/UDP | Kimenő |
+
+#### <a name="sdk-version--0176"></a>SDK-verzió < 0.1.76
 
 Győződjön meg arról, hogy a tűzfalak (az eszközökön belül, az útválasztók stb.) nem blokkolja a következő portokat:
 
@@ -96,6 +122,6 @@ Az egységgel való fejlesztéshez telepítse a következőt:
   * **UWP** – univerzális Windows-platform-Build támogatása
   * **IL2CPP** – Windows Build-támogatás (IL2CPP)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)

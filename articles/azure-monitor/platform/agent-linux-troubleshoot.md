@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011897"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704894"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
 
@@ -241,23 +241,6 @@ A teljesítménnyel kapcsolatos hibák nem minden időben történnek, és nagyo
 3. Újraindítási a (z): <br/>
 `sudo scxadmin -restart`
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Probléma: nem jelenik meg a Azure Portalban lévő összes érték
-
-### <a name="probable-causes"></a>Lehetséges okok
-
-- A Azure Monitor bevezetése nem sikerült
-- A Azure Monitorhoz való kapcsolódás le van tiltva
-- A Linux-alapú adatLog Analytics-ügynök biztonsági mentése
-
-### <a name="resolution"></a>Feloldás
-1. Ellenőrizze, hogy sikeres volt-e a bevezetési Azure Monitor a következő fájl létezésének ellenőrzésével: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
-2. Újratelepítés a `omsadmin.sh` parancssori utasítások használatával
-3. Ha proxyt használ, tekintse meg a korábban megadott proxy-feloldási lépéseket.
-4. Bizonyos esetekben, ha a Linux rendszerhez készült Log Analytics-ügynök nem tud kommunikálni a szolgáltatással, az ügynökön lévő adat a teljes puffer méretére, amely 50 MB. Az ügynököt újra kell indítani a következő parancs futtatásával: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` . 
-
-    >[!NOTE]
-    >Ezt a problémát az Agent 1.1.0-28-as és újabb verzióiban rögzítették.
-
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Probléma: nem jelenik meg a továbbított syslog-üzenetek 
 
@@ -313,7 +296,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
 
 ### <a name="resolution"></a>Feloldás
 1. Adja hozzá a omsagent-felhasználót a Nagios-fájl olvasásához a következő [utasítások](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)követésével.
-2. A Linux rendszerhez készült általános konfigurációs fájljának Log Analytics ügynökében `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` ellenőrizze **both** , hogy a Nagios forrása és a szűrő sincs-e megadva.
+2. A Linux rendszerhez készült általános konfigurációs fájljának Log Analytics ügynökében `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` ellenőrizze  , hogy a Nagios forrása és a szűrő sincs-e megadva.
 
     ```
     <source>
@@ -335,6 +318,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
 * A Azure Monitorhoz való kapcsolódás le van tiltva
 * A virtuális gép újraindult
 * A program a következőhöz képest manuálisan frissített egy újabb verzióra, mint amit a Log Analytics Agent Linux-csomaggal telepített.
+* A OMS-ügynök zárolva van.
 * A DSC-erőforrás naplók *osztálya nem található* hibát a `omsconfig.log` naplófájlban
 * Log Analytics-ügynök biztonsági mentése
 * A DSC-naplók *jelenlegi konfigurációja nem létezik. Futtassa Start-DscConfiguration parancsot a-Path paraméterrel egy konfigurációs fájl megadásához, és először hozzon létre egy aktuális konfigurációt.* a `omsconfig.log` naplófájlban nem található naplóbejegyzés a `PerformRequiredConfigurationChecks` műveletekről.
@@ -345,6 +329,7 @@ Ez a hiba azt jelzi, hogy a Linux diagnosztikai bővítmény (LAD) a Log Analyti
 4. Ha proxyt használ, ellenőrizze a fenti proxy-hibaelhárítási lépéseket.
 5. Bizonyos Azure-beli terjesztési rendszerek esetében a nem indul el a virtuális gép újraindítása után. Ez azt eredményezi, hogy nem fog megjelenni a megoldással kapcsolatos változáskövetési vagy UpdateManagement. A megkerülő megoldás az, ha a következőt `sudo /opt/omi/bin/service_control restart` használja:
 6. Azt követően, hogy az új verzióra történő frissítés után a rendszer manuálisan újraindította a-csomagot, manuálisan kell újraindítani a Log Analytics-ügynök működésének folytatásához. Erre a lépésre akkor van szükség, ha a rendszer nem indítja el automatikusan a következő adatdisztribúciókat: Futtassa `sudo /opt/omi/bin/service_control restart` újra a következőt:.
+* Bizonyos helyzetekben a képpontok zárolva lesznek. A OMS-ügynök letiltott állapotra vár, amely az összes adatgyűjtést blokkolja. A OMS-ügynök folyamata futni fog, de nincs olyan tevékenység, amely nem jelent meg új naplófájlokat (például elküldett szívveréseket) `omsagent.log` . `sudo /opt/omi/bin/service_control restart`Az ügynök helyreállításához indítsa újra a következőt:.
 7. Ha a DSC-erőforrás *osztály nem található* a omsconfig. log naplófájlban, futtassa a következőt: `sudo /opt/omi/bin/service_control restart` .
 8. Bizonyos esetekben, ha a Linux Log Analytics-ügynöke nem tud kommunikálni Azure Monitor, az ügynökön lévő adat a teljes puffer méretére lesz mentve: 50 MB. Az ügynököt újra kell indítani a következő parancs futtatásával `/opt/microsoft/omsagent/bin/service_control restart` .
 

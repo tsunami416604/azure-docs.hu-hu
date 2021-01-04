@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 647e07fe32beedbd54ca6c5bb95c1de9564df2fd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 810ea58c5d88dec53463b9a2b04750169c70e137
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654013"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704027"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -42,12 +42,6 @@ Ez akkor fordulhat elő, ha a berendezés számítógépe proxy mögött van.
 - Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, adja hozzá [ezeket az URL-címeket](migrate-appliance.md#url-access) egy engedélyezési listához.
 - Ha elfogó proxyt használ az internethez való csatlakozáshoz, [ezeket a lépéseket követve](./migrate-appliance.md)importálja a tanúsítványt a berendezés virtuális gépén.
 
-
-## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>A "bejelentkezhessen" gombra kattintva megnyílik egy új lap, amely nem rendelkezik az eszköz kódjával
-
-Ha a bejelentkezhessen elemre való kattintás után egy új lap jelenik meg, amely kód nélkül nyílik meg, térjen vissza a készülék Configuration Manager lapjára, és keresse meg az eszköz kódját félkövér betűtípussal az alábbi képernyőképen látható "bejelentkezhessen" gomb alatt. Másolja be a kódot, és illessze be a login (bejelentkezés) lapra az Azure-beli hitelesítéshez.
-
-![Eszköz kódja](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Nem lehet bejelentkezni az Azure-ba a készülék webalkalmazásból
 
@@ -253,6 +247,6 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 | 10008: nem hozható létre fájl a kiszolgálón. | A probléma belső hiba miatt előfordulhat. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
 | 10009: nem lehet felderített metaadatokat írni a-kiszolgálón található fájlba. | A probléma belső hiba miatt fordulhat elő. | Megoldásért forduljon Microsoft ügyfélszolgálatahoz. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Állítson be egy berendezést a [VMware](how-to-set-up-appliance-vmware.md), a [Hyper-V](how-to-set-up-appliance-hyper-v.md)vagy a [fizikai kiszolgálók](how-to-set-up-appliance-physical.md)számára.

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/26/2020
-ms.openlocfilehash: 0858d448cf768dbe6ea48f07247725fac30da860
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/20/2020
+ms.openlocfilehash: ed5e4d05a693ff9b0bf8823ba31de17d000d0fb6
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758901"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706881"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és helyreállítása
 
@@ -19,7 +19,7 @@ Ez a cikk ismerteti az Azure Log Analytics Workspace Soft-delete fogalmát, vala
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Munkaterületek törlésekor megfontolandó szempontok
 
-Ha töröl egy Log Analytics munkaterületet, a rendszer egy törlési műveletet hajt végre, amely lehetővé teszi a munkaterület helyreállítását 14 napon belül, beleértve az adatmennyiséget és a csatlakoztatott ügynököket is, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e. A Soft-delete időszak után a munkaterület-erőforrás és az azokhoz tartozó adattárolók nem állíthatók vissza. a rendszer az adatsorokat állandó törlés céljából várólistára helyezi, és 30 napon belül teljesen el lesz távolítva. A munkaterület neve "Released", és használható egy új munkaterület létrehozásához.
+Ha töröl egy Log Analytics munkaterületet, a rendszer egy törlési műveletet hajt végre, amely lehetővé teszi a munkaterület helyreállítását 14 napon belül, beleértve az adatmennyiséget és a csatlakoztatott ügynököket is, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e. A Soft-delete időszak után a munkaterület-erőforrás és a hozzá tartozó adatfeldolgozás nem állítható vissza, és 30 napon belül teljes törlésre várólistára kerül. A munkaterület neve "Released", és használható egy új munkaterület létrehozásához.
 
 > [!NOTE]
 > Ha szeretné felülbírálni a törlési viselkedést és véglegesen törölni a munkaterületet, kövesse az [állandó munkaterület törlésének](#permanent-workspace-delete)lépéseit.
@@ -76,12 +76,15 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ## <a name="recover-workspace"></a>Munkaterület helyreállítása
 Ha véletlenül vagy szándékosan töröl egy Log Analytics munkaterületet, a szolgáltatás a munkaterületet egy olyan törlési állapotba helyezi, amely elérhetetlenné teszi a műveletet. A törölt munkaterület neve a törlési időszakban megmarad, és nem használható új munkaterület létrehozásához. A törlést követően a munkaterület nem állítható vissza, ezért a rendszer végleges törlésre és a hozzá tartozó névre ütemezi, és felhasználható egy új munkaterület létrehozásához.
 
-A munkaterületet helyreállíthatja a Soft-delete időszakban, beleértve az adatait, a konfigurációját és a csatlakoztatott ügynököket is. Az előfizetés és az erőforráscsoport közreműködői engedélyekkel kell rendelkeznie, ahol a munkaterület a törlési művelet előtt található. A munkaterület helyreállítását egy Log Analytics munkaterület létrehozásával végezheti el a törölt munkaterület részleteivel együtt, beleértve a következőket:
+A munkaterületet helyreállíthatja a Soft-delete időszakban, beleértve az adatait, a konfigurációját és a csatlakoztatott ügynököket is. Az előfizetés és az erőforráscsoport közreműködői engedélyekkel kell rendelkeznie, ahol a munkaterület a törlési művelet előtt található. A munkaterület-helyreállítást a Log Analytics munkaterület újbóli létrehozásával hajtja végre a törölt munkaterület részleteivel együtt, beleértve a következőket:
 
 - Előfizetés azonosítója
 - Erőforráscsoport neve
 - Munkaterület neve
-- Region
+- Régió
+
+> [!IMPORTANT]
+> Ha a munkaterületet az erőforráscsoport-törlési művelet részeként törölte, először újra létre kell hoznia az erőforráscsoportot.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -104,20 +107,19 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 
 A rendszer a helyreállítási művelet után visszaküldi a munkaterületet és az összes adatforrást. A megoldások és a társított szolgáltatások véglegesen el lettek távolítva a munkaterületről a törlés után, és ezeket újra kell konfigurálni, hogy a munkaterület a korábban konfigurált állapotba kerüljön. Előfordulhat, hogy egyes adatmennyiségek nem állnak rendelkezésre a lekérdezéshez a munkaterület helyreállítása után, amíg a társított megoldások újra nem települnek, és a sémáik hozzá lettek adva a munkaterülethez.
 
-> [!NOTE]
-> * Egy munkaterület újbóli létrehozása a Soft-delete időszakban azt jelzi, hogy a munkaterület neve már használatban van. 
- 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 A munkaterület törléséhez legalább *log Analytics közreműködői* engedélyekkel kell rendelkeznie.
 
-* Ha nem biztos abban, hogy a törölt munkaterület helyreállítható törlési állapotban van-e, és visszaállítható, kattintson a [helyreállítás](#recover-workspace) lehetőségre *log Analytics munkaterületek* lapon, hogy megtekintse az előfizetéshez tartozó, nem törölt munkaterületek listáját. A véglegesen törölt munkaterületek nem szerepelnek a listában.
+* Ha nem biztos abban, hogy a törölt munkaterület helyreállítható törlési állapotban van-e, és visszaállítható, kattintson a Lomtár [megnyitása](#recover-workspace) *log Analytics munkaterületek* lapon a nem kötelezően törölt munkaterületek listájának megtekintéséhez. A véglegesen törölt munkaterületek nem szerepelnek a listában.
 * Ha hibaüzenet jelenik meg, akkor *a munkaterület neve már használatban van* , vagy *ütközést* okoz a munkaterület létrehozásakor, az a következő lehet:
   * A munkaterület neve nem érhető el, és a szervezete vagy más ügyfél által használt személy használja.
-  * A munkaterületet az elmúlt 14 napban törölték, és a neve a törlési időszak számára fenntartott marad. Ha felül szeretné bírálni a munkaterületet, hogy az azonos nevű új munkaterületet hozzon létre, az alábbi lépéseket követve állítsa helyre a munkaterületet, és végezzen végleges törlést:<br>
+  * A munkaterületet az elmúlt 14 napban törölték, és a neve a törlési időszak számára fenntartott marad. Ha felül szeretné bírálni a munkaterületet, hogy az azonos nevű új munkaterületet hozzon létre, hajtsa végre az alábbi lépéseket, hogy először helyreállítsa a munkaterületet, majd véglegesen törölje a következőket:<br>
     1. [Állítsa helyre](#recover-workspace) a munkaterületet.
     2. A munkaterület [végleges törlése](#permanent-workspace-delete) .
     3. Hozzon létre egy új munkaterületet ugyanazzal a munkaterület-névvel.
-* Ha olyan 204-hibakódot lát, amely *nem található erőforrást* mutat, az ok lehet egymást követő kísérlet a munkaterület törlése művelet használatára. a 204 egy üres válasz, amely általában azt jelenti, hogy az erőforrás nem létezik, így a törlés semmit nem végez.
-  Miután a törlési hívást sikeresen befejezte a háttérben, visszaállíthatja a munkaterületet, és elvégezheti az állandó törlési műveletet a korábban javasolt metódusok egyikében.
+ 
+      Miután a törlési hívást sikeresen befejezte a háttérben, visszaállíthatja a munkaterületet, és elvégezheti az állandó törlési műveletet a korábban javasolt metódusok egyikében.
 
+* Ha 204-as hibakódot kap, és az *erőforrás nem található* a munkaterület törlésekor, egy egymást követő újrapróbálkozási művelet fordulhat elő. a 204 egy üres válasz, amely általában azt jelenti, hogy az erőforrás nem létezik, így a törlés semmit nem végez.
+* Ha törli az erőforráscsoportot és a benne foglalt munkaterületet, a törölt munkaterület megjelenik a [megnyitott](#recover-workspace) Lomtár lapon, azonban a helyreállítási művelet sikertelen lesz a 404 hibakód miatt, mert az erőforráscsoport nem létezik – hozza létre újra az erőforráscsoportot, és próbálkozzon újra a helyreállítással.

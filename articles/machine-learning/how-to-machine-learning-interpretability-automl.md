@@ -10,18 +10,18 @@ ms.custom: how-to, automl
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: cf1eb1c72cc93fcb72862b15f3884969915c24dd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ce13e0431827bb2c72a03ca33a1ecaefc53d4970
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360649"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702521"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Értelmezhetőség: modellmagyarázatok az automatizált gépi tanulásban (előzetes verzió)
 
 
 
-Ebből a cikkből megtudhatja, hogyan kérheti le a Azure Machine Learning automatikus gépi tanulás (ML) magyarázatát. Az automatikus ML segít megismerni a megtervezett funkciók fontosságát. 
+Ebből a cikkből megtudhatja, hogyan kérheti le a Azure Machine Learning automatikus gépi tanulás (AutoML) magyarázatát. A AutoML segítségével megismerheti a generált modellek funkcióinak fontosságát. 
 
 A 1.0.85 utáni összes SDK-verzió alapértelmezés szerint van beállítva `model_explainability=True` . Az SDK-verzió 1.0.85 és korábbi verzióiban a felhasználóknak be kell állítaniuk `model_explainability=True` az `AutoMLConfig` objektumban a modell-értelmező használata érdekében. 
 
@@ -34,15 +34,18 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Értelmező funkciók. Futtassa `pip install azureml-interpret` a parancsot a szükséges csomag beszerzéséhez.
-- Az automatizált ML-kísérletek létrehozásának ismerete. További információ az Azure Machine Learning SDK használatáról: a [regressziós modell oktatóanyagának](tutorial-auto-train-models.md) elvégzése, vagy az [automatikus ml-kísérletek konfigurálása](how-to-configure-auto-train.md).
+- A AutoML-kísérletek létrehozásának ismerete. További információ az Azure Machine Learning SDK használatáról: a [regressziós modell oktatóanyagának](tutorial-auto-train-models.md) elvégzése, illetve a [AutoML-kísérletek konfigurálása](how-to-configure-auto-train.md).
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>A legjobb modell képzésének értelmezése
 
-Kérje le a magyarázatot a alkalmazásból `best_run` , amely a megtervezett funkciók magyarázatait is tartalmazza.
+Kérje le a magyarázatot a alkalmazásból `best_run` , amely a nyers és a megtervezett funkciók magyarázatait is tartalmazza.
 
 > [!Warning]
 > A tolmácsolás, a legjobb modell magyarázata nem érhető el az automatikus ML-előrejelzési kísérletekhez, amelyek a következő algoritmusokat ajánlják a legjobb modellként: 
-> * ForecastTCN
+> * TCNForecaster
+> * AutoArima
+> * ExponentialSmoothing
+> * Próféta
 > * Átlag 
 > * Naiv
 > * Szezonális átlag 
@@ -62,7 +65,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>Értelmezés a modell betanítása során 
 
-Ha kiszámítja a modellre vonatkozó magyarázatokat, és megjeleníti őket, nem korlátozódik az automatizált ML-modellre vonatkozó, meglévő modellre. A modellre vonatkozó magyarázatot különböző tesztelési adataival is megtalálhatja. Az ebben a szakaszban ismertetett lépések bemutatják, hogyan számíthatja ki és jelenítheti meg a tesztelési adatokon alapuló, mérnöki funkciók fontosságát.
+Ha kiszámítja a modellre vonatkozó magyarázatokat, és megjeleníti őket, nem korlátozódik a AutoML-modell meglévő modelljére. A modellre vonatkozó magyarázatot különböző tesztelési adataival is megtalálhatja. Az ebben a szakaszban ismertetett lépések bemutatják, hogyan számíthatja ki és jelenítheti meg a tesztelési adatokon alapuló, mérnöki funkciók fontosságát.
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>Bármely más AutoML-modell beolvasása a képzésből
 
@@ -94,7 +97,7 @@ A AutoML-modellek magyarázatának létrehozásához használja a `MimicWrapper`
 
 - A magyarázó telepítő objektum
 - Munkaterülete
-- Helyettesítő modell az `fitted_model` automatikus ml-modell magyarázatához
+- Helyettesítő modell a AutoML-modell magyarázatához `fitted_model`
 
 A MimicWrapper arra az objektumra is kerül, `automl_run` ahol a megtervezett magyarázatok fel lesznek töltve.
 
@@ -113,7 +116,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>A MimicExplainer használata a mérnöki funkciók fontosságának meghatározásához és megjelenítéséhez
 
-Az `explain()` átalakított tesztelési mintákkal hívhatja meg a metódust a MimicWrapper-ben, hogy a funkció fontosságot kapjon a generált mérnöki funkciók számára. A segítségével `ExplanationDashboard` megtekintheti az automatikus ml featurizers használatával a generált mérnöki funkciók fontossági értékeinek irányítópult-vizualizációját is.
+Az `explain()` átalakított tesztelési mintákkal hívhatja meg a metódust a MimicWrapper-ben, hogy a funkció fontosságot kapjon a generált mérnöki funkciók számára. A segítségével `ExplanationDashboard` megtekintheti a AutoML featurizers által generált mérnöki funkciók fontossági értékeinek irányítópult-vizualizációját is.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
@@ -122,7 +125,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-inference"></a>Értelmezhető a következtetés során
 
-Ebből a szakaszból megtudhatja, hogyan működővé tenni egy olyan automatizált ML-modellt, amely az előző szakaszban ismertetett magyarázatok kiszámításához használatos.
+Ebből a szakaszból megtudhatja, hogyan működővé tenni egy AutoML-modellt az előző szakaszban ismertetett magyarázatok kiszámításához használt magyarázattal.
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>A modell és a pontozási magyarázat regisztrálása
 
@@ -200,7 +203,7 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>Következtetés tesztelési adattal
 
-Bizonyos tesztelési adatok alapján megtekintheti az automatikus ML-modellből származó előre jelzett értéket. Megtekintheti az előre jelzett értékhez tartozó mérnöki funkció fontosságát.
+Bizonyos tesztelési adatok alapján megtekintheti a AutoML modell előre jelzett értékét, amely jelenleg csak Azure Machine Learning SDK-ban támogatott. Tekintse meg az előre jelzett értékhez hozzájáruló funkció fontosságát. 
 
 ```python
 if service.state == 'Healthy':
@@ -217,10 +220,12 @@ if service.state == 'Healthy':
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Vizualizáció az adatmodellek és a magyarázatok észleléséhez a képzés ideje alatt
 
-A funkció fontossága diagramot a munkaterületen, [Azure Machine learning Studióban](https://ml.azure.com)jelenítheti meg. Az automatikus ML-Futtatás befejezése után válassza a **modell részleteinek megtekintése** lehetőséget egy adott Futtatás megtekintéséhez. A **magyarázatok lapon** megtekintheti a magyarázat megjelenítése irányítópultot.
+A funkció fontossága diagramot a munkaterületen, [Azure Machine learning Studióban](https://ml.azure.com)jelenítheti meg. Miután befejeződött a AutoML futtatása, válassza a **modell részleteinek megtekintése** lehetőséget egy adott Futtatás megtekintéséhez. A **magyarázatok lapon** megtekintheti a magyarázat megjelenítése irányítópultot.
 
-[![Machine Learning-értelmező architektúra](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![Machine Learning-értelmező architektúra](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
 
-## <a name="next-steps"></a>Következő lépések
+A magyarázó irányítópult-vizualizációkkal és az egyes mintaterületekkel kapcsolatos további információkért tekintse meg a következő [témakört: útmutató a tolmácsoláshoz](how-to-machine-learning-interpretability-aml.md).
+
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogyan engedélyezheti a modell magyarázatait és funkcióit a Azure Machine Learning SDK azon területein, amelyek [nem az automatizált](how-to-machine-learning-interpretability.md)gépi tanulást ismertetik.

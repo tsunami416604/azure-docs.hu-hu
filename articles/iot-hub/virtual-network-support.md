@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: f79b03884109ffbd856ff4f60909565daeb0e792
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 08f033cbe121135e281379a013e11a33ae962dfb
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549113"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703806"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub a magánhálózati és felügyelt identitású virtuális hálózatok támogatása
 
@@ -89,9 +89,15 @@ Ahhoz, hogy más szolgáltatások megbízható Microsoft-szolgáltatásként meg
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="A IoT Hub felügyelt identitásának bekapcsolását bemutató képernyőkép":::
 
+Az Azure CLI használata a felügyelt identitás bekapcsolásához:
+
+```azurecli-interactive
+az iot hub update --name <iot-hub-resource-name> --set identity.type="SystemAssigned"
+```
+
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Felügyelt identitás kiosztása a IoT Hub a létrehozáskor az ARM-sablon használatával
 
-Ha a felügyelt identitást erőforrás-kiépítési időpontban szeretné hozzárendelni az IoT hubhoz, használja az alábbi ARM-sablont:
+Ha a felügyelt identitást erőforrás-kiépítési időszakban szeretné hozzárendelni az IoT hubhoz, használja az alábbi ARM-sablont. Ez az ARM-sablon két szükséges erőforrással rendelkezik, és mindkettőt telepíteni kell, mielőtt más erőforrásokat hozna létre, például: `Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups` . 
 
 ```json
 {
@@ -115,9 +121,9 @@ Ha a felügyelt identitást erőforrás-kiépítési időpontban szeretné hozz�
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-02-01",
-      "name": "updateIotHubWithKeyEncryptionKey",
+      "name": "createIotHub",
       "dependsOn": [
-        "<provide-a-valid-resource-name>"
+        "[resourceId('Microsoft.Devices/IotHubs', '<provide-a-valid-resource-name>')]"
       ],
       "properties": {
         "mode": "Incremental",
@@ -284,7 +290,7 @@ A Python esetében töltse le a korlátozott verziót a GitHubról.
     > pip install./azure_iot_hub-2.2.0_limited-py2. py3-none-any. WHL
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozásokra kattintva további információt találhat IoT Hub szolgáltatásairól:
 

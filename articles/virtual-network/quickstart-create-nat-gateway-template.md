@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 95856db9288e5860dfab47dce506d1e7d6de1ffc
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 68e08b0f029e6297beee85135b4af1e4575d5470
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913330"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703789"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>Rövid útmutató: NAT Gateway-ARM-sablon létrehozása
 
@@ -53,15 +53,15 @@ Az Ubuntu virtuális gép a NAT-átjáró erőforrásához társított alhálóz
 
 A sablonban kilenc Azure-erőforrás van definiálva:
 
-* **[Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)** : létrehoz egy hálózati biztonsági csoportot.
-* **[Microsoft. Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)** : biztonsági szabály létrehozása.
-* **[Microsoft. Network/nyilvános IP](/azure/templates/microsoft.network/publicipaddresses)** : létrehoz egy nyilvános IP-címet.
-* **[Microsoft. Network/publicIPPrefixes](/azure/templates/microsoft.network/publicipprefixes)** : létrehoz egy nyilvános IP-előtagot.
-* **[Microsoft. számítás/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)** : létrehoz egy virtuális gépet.
-* **[Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)** : létrehoz egy virtuális hálózatot.
-* **[Microsoft. Network/natGateways](/azure/templates/microsoft.network/natgateways)** : létrehoz egy NAT Gateway-erőforrást.
-* **[Microsoft. Network/virtualNetworks/Subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)** : létrehoz egy virtuális hálózati alhálózatot.
-* **[Microsoft. Network/networkinterfaces](/azure/templates/microsoft.network/networkinterfaces)** : létrehoz egy hálózati adaptert.
+* **[Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)**: létrehoz egy hálózati biztonsági csoportot.
+* **[Microsoft. Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)**: biztonsági szabály létrehozása.
+* **[Microsoft. Network/nyilvános IP](/azure/templates/microsoft.network/publicipaddresses)**: létrehoz egy nyilvános IP-címet.
+* **[Microsoft. Network/publicIPPrefixes](/azure/templates/microsoft.network/publicipprefixes)**: létrehoz egy nyilvános IP-előtagot.
+* **[Microsoft. számítás/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)**: létrehoz egy virtuális gépet.
+* **[Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)**: létrehoz egy virtuális hálózatot.
+* **[Microsoft. Network/natGateways](/azure/templates/microsoft.network/natgateways)**: létrehoz egy NAT Gateway-erőforrást.
+* **[Microsoft. Network/virtualNetworks/Subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)**: létrehoz egy virtuális hálózati alhálózatot.
+* **[Microsoft. Network/networkinterfaces](/azure/templates/microsoft.network/networkinterfaces)**: létrehoz egy hálózati adaptert.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -76,7 +76,7 @@ az group create \
 --name $resourceGroupName \
 --location $location
 
-az group deployment create \
+az deployment group create \
 --resource-group $resourceGroupName \
 --template-uri  $templateUri
 ```
@@ -109,7 +109,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
     ![NAT-erőforráscsoport Virtual Network](./media/quick-create-template/nat-gateway-template-rg.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 **Azure CLI**
 
@@ -132,7 +132,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 

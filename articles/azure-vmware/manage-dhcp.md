@@ -2,13 +2,14 @@
 title: DHCP kezelése Azure VMware-megoldáshoz
 description: Ismerje meg, hogyan hozhat létre és kezelhet DHCP-t az Azure VMware-megoldás privát felhője számára.
 ms.topic: how-to
+ms.custom: contperf-fy21q2
 ms.date: 11/09/2020
-ms.openlocfilehash: 9143a8544fe1b98262c3e990ccdf56f5d5f65957
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: bcaba4274b0e6b423e9fa490c80fc57204d4e153
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335953"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708551"
 ---
 # <a name="manage-dhcp-for-azure-vmware-solution"></a>DHCP kezelése Azure VMware-megoldáshoz
 
@@ -28,7 +29,7 @@ Ha a NSX-T használatával szeretné üzemeltetni a DHCP-kiszolgálót, hozzon l
 
 1. A NSX-T Managerben válassza a **hálózati**  >  **DHCP** lehetőséget, majd válassza a **kiszolgáló hozzáadása** elemet.
 
-1. Válassza a **DHCP** lehetőséget a **kiszolgáló típusa mezőben** , adja meg a kiszolgáló nevét és IP-címét, majd kattintson a **Mentés** gombra.
+1. Válassza a **DHCP** lehetőséget a **kiszolgáló típusa mezőben**, adja meg a kiszolgáló nevét és IP-címét, majd kattintson a **Mentés** gombra.
 
    :::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="DHCP-kiszolgáló hozzáadása" border="true":::
 
@@ -90,7 +91,7 @@ Ha harmadik féltől származó külső DHCP-kiszolgálót szeretne használni, 
       
    :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="alhálózatok szerkesztése" border="true":::
       
-1. Válassza az **alkalmaz** , majd a **Mentés** lehetőséget. A szegmenshez hozzá van rendelve egy DHCP-kiszolgáló készlet.
+1. Válassza az **alkalmaz**, majd a **Mentés** lehetőséget. A szegmenshez hozzá van rendelve egy DHCP-kiszolgáló készlet.
       
    :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="A szegmenshez hozzárendelt DHCP-kiszolgáló készlete" border="true":::
 
@@ -99,7 +100,7 @@ Ha harmadik féltől származó külső DHCP-kiszolgálót szeretne használni, 
 
 Ha az Azure VMware Megoldásbeli virtuális gépekről DHCP-kéréseket szeretne küldeni az L2 kiterjesztett szegmensen a helyszíni DHCP-kiszolgálóra, létre kell hoznia egy biztonsági szegmens profilt. 
 
-1. Jelentkezzen be a helyszíni vCenter, és a Home ( **Kezdőlap** ) területen válassza a **HCX** lehetőséget.
+1. Jelentkezzen be a helyszíni vCenter, és a Home ( **Kezdőlap**) területen válassza a **HCX** lehetőséget.
 
 1. Válassza a **hálózati bővítmény** lehetőséget a **szolgáltatások** területen.
 

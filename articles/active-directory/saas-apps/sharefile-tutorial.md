@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/04/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182286"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723966"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Oktatóanyag: Azure Active Directory integráció a Citrix ShareFile
 
@@ -51,7 +51,7 @@ A Citrix ShareFile az Azure AD-be való integrálásának konfigurálásához a 
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Citrix ShareFile** kifejezést a keresőmezőbe.
 1. Válassza ki a **Citrix ShareFile** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-sso-for-citrix-sharefile"></a>Azure AD SSO konfigurálása és tesztelése a Citrix ShareFile-hez
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Citrix ShareFile konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Citrix ShareFile kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
@@ -60,10 +60,10 @@ Az Azure AD egyszeri bejelentkezés Citrix ShareFile való konfigurálásához �
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-    * **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+    1. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 2. A **[Citrix SHAREFILE SSO konfigurálása](#configure-citrix-sharefile-sso)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Hozzon létre Citrix ShareFile test User](#create-citrix-sharefile-test-user)** -t, hogy a Britta Simon a Citrix ShareFile, amely a felhasználó Azure ad-képviseletéhez van társítva.
+    1. **[Hozzon létre Citrix ShareFile test User](#create-citrix-sharefile-test-user)** -t, hogy a Britta Simon a Citrix ShareFile, amely a felhasználó Azure ad-képviseletéhez van társítva.
 3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -131,7 +131,15 @@ Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja
 
 ## <a name="configure-citrix-sharefile-sso"></a>A Citrix ShareFile SSO konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a **Citrix ShareFile** vállalati webhelyre rendszergazdaként.
+1. A **Citrix ShareFile** belül a konfiguráció automatizálásához a **bővítmény telepítése** lehetőségre kattintva telepítenie kell **az alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **Citrix ShareFile beállítása** elemre, majd a Citrix ShareFile alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a Citrix ShareFile való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-7-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha a Citrix ShareFile-t manuálisan szeretné beállítani, egy másik böngészőablakban jelentkezzen be a Citrix ShareFile vállalati webhelyre rendszergazdaként.
 
 1. Az **irányítópulton** kattintson a **Beállítások** elemre, és válassza a **rendszergazdai beállítások** lehetőséget.
 
@@ -184,15 +192,15 @@ Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-1. Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a Citrix ShareFile bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a Citrix ShareFile bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.
 
-2. Lépjen közvetlenül a Citrix ShareFile bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+* Lépjen közvetlenül a Citrix ShareFile bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-3. Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a Citrix ShareFile csempére kattint, a rendszer átirányítja a Citrix ShareFile bejelentkezési URL-címére. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Citrix ShareFile csempére kattint, a rendszer átirányítja a Citrix ShareFile bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Citrix ShareFile konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

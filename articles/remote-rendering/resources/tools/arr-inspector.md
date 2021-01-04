@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: 5ee9d39db130c76f683ca1f4d1ff64f9ed86d97e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204741"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723825"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>Az ArrInspector ellenőrző eszköz
 
@@ -25,7 +25,7 @@ Miután megszerezte az ARR-kiszolgáló hostname (végződés `mixedreality.azur
 Ha a meghívásos alkalmazás `ConnectToArrInspectorAsync` már fut egy számítógépen:
 
 * Ha az Unity-integrációt használja, előfordulhat, hogy automatikusan elindul.
-* Ellenkező esetben a ( * \\ LocalAppData) \\ [your_app] \\ AC \\ temp felhasználói mappákban*található fájlt fogja megtalálni.
+* Ellenkező esetben a ( *\\ LocalAppData) \\ [your_app] \\ AC \\ temp felhasználói mappákban* található fájlt fogja megtalálni.
 
 Ha az alkalmazás HoloLens fut:
 
@@ -108,17 +108,3 @@ A jobb felső sarokban egy kapcsoló segítségével szüneteltetheti a panelek 
 ![Szüneteltetési mód](./media/pause-mode.png)
 
 Az élő frissítés újbóli engedélyezésekor az összes panel alaphelyzetbe áll.
-
-## <a name="host-configuration"></a>Gazdagép konfigurációja
-
-Alapértelmezés szerint az eszköz csatlakozik az ArrInspector-t kiszolgáló, ugyanazon a gazdagépen futó ARR-kiszolgálóhoz. Azonban konfigurálhatja egy másik kiszolgáló vizsgálatára, feltéve, hogy egy ARR-példányt futtat a megnyitott szerszámozási porton.
-
-Ehhez nyissa meg a címsor bal oldalán található főmenüt, és válassza a *gazdagép konfigurációja*lehetőséget. Kattintson az **új gazdagép hozzáadása**elemre, és adja meg a nevet és az állomásnevet. Az *állomásnév* csak a-ban végződő állomásnevet használja `.mixedreality.azure.com` , ne tartalmazzon `http://` vagy egy portot.
-
-![Gazdagép konfigurációja](./media/host-configuration.png)
-
-Ha gyorsan át szeretné váltani az egyik gazdagépről a másikra, használja a jobb felső sarokban található legördülő listát.
-
-![Gazdagép kombinált listája](./media/host-switch-combo.png)
-
-A gazdagépek listáját a böngésző helyi tárolójában tárolja a rendszer, így az azonos böngésző újbóli megnyitásakor megmarad.

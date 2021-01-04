@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: a6739d092c2fe4594ae558414ccb882dd6f821bf
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630680"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704333"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
-A Azure Load Balancer használatának első lépései a Azure Portal a belső terheléselosztó és két virtuális gép létrehozásához.
+A Azure Load Balancer használatának első lépései a Azure Portal használatával belső terheléselosztó és három virtuális gép létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -100,7 +100,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Válassza a **Létrehozás** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-load-balancer"></a>Terheléselosztó létrehozása
 
@@ -112,7 +112,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az előző lépésben létrehozott **CreateIntLBQS-RG** elemet.|
-    | Name                   | **MyLoadBalancer** megadása                                   |
+    | Név                   | **MyLoadBalancer** megadása                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **belső** lehetőséget.                                        |
     | Termékváltozat           | **Standard** kiválasztása |
@@ -210,12 +210,12 @@ Ebben a szakaszban egy terheléselosztó-szabályt fog létrehozni:
 
 Ebben a szakaszban:
 
-* Hozzon létre két virtuális gépet a terheléselosztó backend-készletéhez.
+* Hozzon létre három virtuális gépet a terheléselosztó backend-készletéhez.
 * Telepítse az IIS-t a virtuális gépeken a terheléselosztó teszteléséhez.
 
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Ebben a szakaszban két virtuális gépet fog létrehozni (**myVM1** és **myVM2**).
+Ebben a szakaszban három virtuális gépet fog létrehozni (**myVM1**, **myVM2** és **myVM3**).
 
 Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléselosztó háttér-készletéből.
 
@@ -260,17 +260,17 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | Terheléselosztó kiválasztása | **MyLoadBalancer** kiválasztása  |
     | Háttérbeli készlet kiválasztása | **MyBackendPool** kiválasztása |
    
-5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
-7. Az 1 – 8. lépés végrehajtásával hozzon létre egy további virtuális gépet a következő értékekkel, valamint az összes többi beállítást, amely ugyanaz, mint a **myVM1**:
+7. Az 1 – 8. lépés végrehajtásával hozzon létre két további virtuális gépet a következő értékekkel és az összes többi beállítással, amely ugyanaz, mint a **myVM1**:
 
-    | Beállítás | VM 2|
-    | ------- | ----- |
-    | Name |  **myVM2** |
-    | A rendelkezésre állási zóna | **2** |
-    | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása|
+    | Beállítás | VM 2 | 3. VIRTUÁLIS GÉP |
+    | ------- | ----- | ---- |
+    | Név |  **myVM2** | **myVM3** |
+    | A rendelkezésre állási zóna | **2** | **3** |
+    | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása| Meglévő **myNSG** kiválasztása |
 
 
 # <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-1-create-internal-load-balancer-basic)
@@ -337,7 +337,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Válassza a **Létrehozás** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-load-balancer"></a>Terheléselosztó létrehozása
 
@@ -349,7 +349,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az előző lépésben létrehozott **CreateIntLBQS-RG** elemet.|
-    | Name                   | **MyLoadBalancer** megadása                                   |
+    | Név                   | **MyLoadBalancer** megadása                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **belső** lehetőséget.                                        |
     | Termékváltozat           | **Alapszintű** kiválasztása |
@@ -389,7 +389,7 @@ Hozza létre a háttér-címkészlet **myBackendPool** , hogy a virtuális gépe
     | Virtuális hálózat | Válassza a **myVNet** lehetőséget. |
     | Társítva ezzel: | **Virtuális gépek** kiválasztása |
 
-4. Válassza a **Hozzáadás** lehetőséget.
+4. Válassza a **Hozzáadás** elemet.
 
 ### <a name="create-a-health-probe"></a>Állapotminta létrehozása
 
@@ -449,13 +449,13 @@ Ebben a szakaszban egy terheléselosztó-szabályt fog létrehozni:
 
 Ebben a szakaszban:
 
-* Hozzon létre két virtuális gépet a terheléselosztó backend-készletéhez.
+* Hozzon létre három virtuális gépet a terheléselosztó backend-készletéhez.
 * Hozzon létre egy rendelkezésre állási készletet a virtuális gépek számára.
 * Telepítse az IIS-t a virtuális gépeken a terheléselosztó teszteléséhez.
 
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Ebben a szakaszban két virtuális gépet fog létrehozni (**myVM1** és **myVM2**).
+Ebben a szakaszban három virtuális gépet fog létrehozni (**myVM1**, **myVM2**, **myVM3**).
 
 A két virtuális gép egy **myAvailabilitySet** nevű rendelkezésre állási csoportba kerül.
 
@@ -498,17 +498,17 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | **Terheléselosztás**  |
     | Elhelyezi ezt a virtuális gépet egy meglévő terheléselosztási megoldás mögött? | Válassza a **nem** lehetőséget |
 
-5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
-7. Az 1 – 8. lépés végrehajtásával hozzon létre egy további virtuális gépet a következő értékekkel, valamint az összes többi beállítást, amely ugyanaz, mint a **myVM1**:
+7. Az 1 – 8. lépés végrehajtásával hozzon létre két további virtuális gépet a következő értékekkel és az összes többi beállítással, amely ugyanaz, mint a **myVM1**:
 
-    | Beállítás | VM 2 |
-    | ------- | ----- |
-    | Name |  **myVM2** |
-    | Rendelkezésre állási csoport| **MyAvailabilitySet** kiválasztása |
-    | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása|
+    | Beállítás | VM 2 | 3. VIRTUÁLIS GÉP |
+    | ------- | ----- | ---- |
+    | Név |  **myVM2** | **myVM3** |
+    | Rendelkezésre állási csoport | **MyAvailabilitySet** kiválasztása | **MyAvailabilitySet** kiválasztása |
+    | Hálózati biztonsági csoport | Meglévő **myNSG** kiválasztása | Meglévő **myNSG** kiválasztása |
 
 ### <a name="add-virtual-machines-to-the-backend-pool"></a>Virtuális gépek hozzáadása a háttérbeli készlethez
 
@@ -522,9 +522,9 @@ Az előző lépésekben létrehozott virtuális gépeket hozzá kell adni a **my
 
 4. A **Virtual Machines (virtuális gépek** ) szakaszban válassza a **+ Hozzáadás** lehetőséget.
 
-5. Jelölje be a **myVM1** és a **myVM2** melletti jelölőnégyzetet.
+5. Válassza ki a **myVM1**, a **MyVM2** és a **myVM3** melletti mezőket.
 
-6. Válassza a **Hozzáadás** lehetőséget.
+6. Válassza a **Hozzáadás** elemet.
 
 7. Válassza a **Mentés** lehetőséget.
 ---
@@ -567,7 +567,7 @@ Ebben a szakaszban létrehoz egy **myTestVM** nevű virtuális gépet.  Ezt a vi
     | NIC hálózati biztonsági csoport | Válassza a **speciális** lehetőséget|
     | Hálózati biztonsági csoport konfigurálása | Válassza ki az előző lépésben létrehozott **MyNSG** .|
        
-5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
@@ -602,7 +602,7 @@ Ebben a szakaszban létrehoz egy **myTestVM** nevű virtuális gépet.  Ezt a vi
    ```
 8. A megerősített munkamenet lezárása a **myVM1**.
 
-9. Az 1–6. lépés megismétlésével telepítse az IIS-t és a frissített iisstart.htm fájlt a **myVM2** gépen.
+9. Az 1–6. lépés megismétlésével telepítse az IIS-t és a frissített iisstart.htm fájlt a **myVM2** és **myVM3** gépeken.
 
 
 ## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
@@ -629,12 +629,12 @@ Ha látni szeretné, hogy a terheléselosztó mindkét virtuális gépen osztja 
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforrásokat tartalmazó **CreateIntLBQS-RG** erőforráscsoportot, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a következőket hajtja végre:
 
 * Létrehozott egy Azure standard vagy alapszintű belső terheléselosztó
-* 2 virtuális gép csatlakoztatva a terheléselosztó számára.
+* 3 virtuális gép csatlakoztatva a terheléselosztó számára.
 * Konfigurálta a terheléselosztó forgalmi szabályát, az állapot-mintavételt, majd tesztelte a terheléselosztó. 
 
 Ha többet szeretne megtudni a Azure Load Balancerről, folytassa a következővel:

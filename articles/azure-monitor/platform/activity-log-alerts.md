@@ -4,12 +4,12 @@ description: Értesítés küldése SMS-ben, webhookon, SMS-ben, e-mailben és m
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536081"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708432"
 ---
 # <a name="alerts-on-activity-log"></a>Tevékenységnaplóval kapcsolatos riasztások
 
@@ -18,7 +18,8 @@ ms.locfileid: "95536081"
 A műveletnapló riasztásai olyan riasztások, amelyek akkor [jelentkeznek](activity-log-schema.md) be, amikor a riasztásban megadott feltételeknek megfelelő új műveletnapló-esemény következik be. Az Azure-beli [tevékenység naplójában](platform-logs-overview.md)rögzített események sorrendje és mennyisége alapján a riasztási szabály tüzet fog eredményezni. A műveletnapló riasztási szabályai Azure-erőforrások, így a Azure Resource Manager sablon segítségével hozhatók létre. Emellett a Azure Portal is létrehozhatók, frissíthetők és törölhetők. Ez a cikk a tevékenység naplójának riasztásai mögötti fogalmakat ismerteti. A műveletnapló riasztási szabályainak létrehozásával és használatával kapcsolatos további információkért lásd: [műveletnapló riasztások létrehozása és kezelése](alerts-activity-log.md).
 
 > [!NOTE]
-> **Nem** hozhatók létre riasztások a tevékenység naplójának riasztási kategóriájában lévő eseményekhez.
+> * **Nem** hozhatók létre riasztások a tevékenység naplójának riasztási kategóriájában lévő eseményekhez.
+> * A biztonsági kategóriába tartozó riasztások a [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem) [új, frissített folyamatán](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal) is meghatározhatók.
 
 Az értesítések fogadásához általában a következő esetekben kell létrehoznia a tevékenység naplójának riasztásait:
 
@@ -56,7 +57,7 @@ Ha egy műveletnapló-riasztás aktiválva van, a műveletek vagy értesítések
 A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](action-groups.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A riasztások áttekintése](alerts-overview.md).
 - Tudnivalók a [műveletnapló-riasztások létrehozásáról és módosításáról](alerts-activity-log.md).

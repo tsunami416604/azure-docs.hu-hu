@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810052"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705166"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replikálás Azure Container Registry
 
@@ -59,6 +59,8 @@ A Azure Container Registry geo-replikációs funkciójának használatával ezek
 * A rendszerkép központi telepítésének egyetlen konfigurációjának kezelése, mivel az összes régió ugyanazt a rendszerkép-URL-címet használja: `contoso.azurecr.io/public/products/web:1.2`
 * Leküldés egyetlen beállításjegyzékbe, míg az ACR kezeli a Geo-replikálást. Az ACR csak egyedi rétegeket replikál, így csökkentve az adatátvitelt a régiók között. 
 * A regionális [webhookok](container-registry-webhook.md) konfigurálásával értesítheti az adott replikákban lévő eseményekről.
+
+A Azure Container Registry a [rendelkezésre állási zónákat](zone-redundancy.md) is támogatja egy rugalmas és magas rendelkezésre állású Azure Container Registry létrehozásához az Azure-régión belül. Egy régión belüli redundancia rendelkezésre állási zónáinak és a több régióban történő földrajzi replikálásnak a kombinációja fokozza a beállításjegyzék megbízhatóságát és teljesítményét.
 
 ## <a name="configure-geo-replication"></a>Aktív georeplikáció konfigurálása
 

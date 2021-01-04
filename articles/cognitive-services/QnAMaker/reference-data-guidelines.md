@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: fd4ea4b671ee8efa853109e288459fdc256bee23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d73fd6c7f49c10c8aca1060e91fc69b0e581738b
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776680"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707503"
 ---
 # <a name="import-and-export-data-reference"></a>Az adathivatkozás importálása és exportálása
 
@@ -18,4 +18,6 @@ Tekintse át ezt az importálási és exportálási referenciát a Tudásbázis 
 
 ## <a name="import-and-export-knowledge-base"></a>Tudásbázis importálása és exportálása
 
-Az exportált tudásbázisokból származó **TSV-és xls-fájlok**csak a QnA Maker portál **Settings (beállítások** ) lapján található fájlok importálásával használhatók. A Tudásbázis létrehozásakor nem használhatók adatforrásként, illetve a **Beállítások** lapon a **+ fájl hozzáadása** vagy a **+ URL** hozzáadása funkció.
+Az exportált tudásbázisokból származó **TSV-és xls-fájlok** csak a QnA Maker portál **Settings (beállítások** ) lapján található fájlok importálásával használhatók. A Tudásbázis létrehozásakor nem használhatók adatforrásként, illetve a **Beállítások** lapon a **+ fájl hozzáadása** vagy a **+ URL** hozzáadása funkció. 
+
+A Tudásbázis ezen **TSV-és XLS-fájlokon** keresztül történő importálásakor a rendszer hozzáadja a QnA-párokat a szerkesztői forráshoz, és nem a QnAs kinyert forrásait az exportált Tudásbázisban. 

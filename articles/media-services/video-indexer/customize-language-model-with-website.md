@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/10/2020
 ms.author: kumud
-ms.openlocfilehash: f9eedba6c8aee5c8aab73e2ed598a4511b4c5982
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd8b36340deb6c785989107461dd420e7fc0d985
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020456"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722572"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Nyelvi modell testreszabása a Video Indexer webhellyel
 
@@ -28,34 +28,27 @@ A következő témakörben leírtak szerint használhatja a Video Indexer webhel
 ## <a name="create-a-language-model"></a>Nyelvi modell létrehozása
 
 1. Lépjen a [video Indexer](https://www.videoindexer.ai/) webhelyére, és jelentkezzen be.
-2. Ha testre szeretné szabni a fiókban lévő modellt, válassza a **tartalom modell testreszabása** gombot a lap jobb felső sarkában.
+1. Ha testre szeretné szabni a fiókban lévő modelleket, válassza ki a **tartalom modell testreszabása** gombot a lap bal oldalán.
 
-   ![A tartalmi modell testreszabása Video Indexer](./media/content-model-customization/content-model-customization.png)
-
-3. Válassza a **nyelv** fület.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-language-model/model-customization.png" alt-text="A tartalmi modell testreszabása Video Indexer":::
+1. Válassza a **nyelv** fület.
 
     Ekkor megjelenik a támogatott nyelvek listája.
-
-    ![A Video Indexer nyelvi modelljeinek listája](./media/customize-language-model/customize-language-model.png)
-
-4. A kívánt nyelven válassza a **modell hozzáadása**elemet.
-5. Írja be a nyelvi modell nevét, és nyomja le az ENTER billentyűt.
+1. A kívánt nyelven válassza a **modell hozzáadása** elemet.
+1. Írja be a nyelvi modell nevét, és nyomja le az ENTER billentyűt.
 
     Ez a lépés létrehozza a modellt, és lehetőséget biztosít szöveges fájlok feltöltésére a modellbe.
+1. Szövegfájl hozzáadásához válassza a **fájl hozzáadása** lehetőséget. Megnyílik a fájlkezelő.
+1. Navigáljon a fájlhoz, és válassza ki a szövegfájlt. Több szövegfájlt is hozzáadhat egy nyelvi modellhez.
 
-6. Szövegfájl hozzáadásához válassza a **fájl hozzáadása**lehetőséget. Megnyílik a fájlkezelő.
-
-7. Navigáljon a fájlhoz, és válassza ki a szövegfájlt. Több szövegfájlt is hozzáadhat egy nyelvi modellhez.
-
-    Szövegfájl hozzáadásához kattintson a nyelvi modell jobb oldalán található **...** gombra, majd a **fájl hozzáadása**lehetőségre.
-
-8. Ha elkészült a szövegfájlok feltöltésével, válassza a zöld **vonat** lehetőséget.
-
-    ![Nyelvi modell betanítása Video Indexer](./media/customize-language-model/train-model.png)
+    Szövegfájl hozzáadásához kattintson a nyelvi modell jobb oldalán található **...** gombra, majd a **fájl hozzáadása** lehetőségre.
+1. Ha elkészült a szövegfájlok feltöltésével, válassza a zöld **vonat** lehetőséget.
 
 A betanítási folyamat eltarthat néhány percig. A képzés elvégzése után a modell **melletti képzést** láthatja. Megtekintheti, letöltheti és törölheti a fájlt a modellből.
 
-![Betanított nyelvi modell Video Indexer](./media/customize-language-model/preview-model.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/customize-language-model/customize-language-model.png" alt-text="A modell betanítása":::
 
 ### <a name="using-a-language-model-on-a-new-video"></a>Nyelvi modell használata új videón
 
@@ -64,28 +57,22 @@ Ha a nyelvi modellt új videón szeretné használni, hajtsa végre az alábbi m
 * Kattintson a lap tetején található **feltöltés** gombra.
 
     ![Feltöltés gomb Video Indexer](./media/customize-language-model/upload.png)
+* Dobja el hang-vagy videofájl-fájlját, vagy tallózással keresse meg a fájlt.
 
-* Dobja el a hang-vagy videofájlokat a körhöz, vagy tallózással keresse meg a fájlt.
+Lehetősége van kiválasztani a **videó forrásának nyelvét**. Válassza ki a legördülő listát, és válasszon ki egy, a listából létrehozott nyelvi modellt. Meg kell mondania a nyelvi modell nyelvét, valamint azt a nevet, amelyet zárójelben adott meg. Például:
 
-    ![Médiafájl feltöltése Video Indexer](./media/customize-language-model/upload2.png)
-
-Lehetősége van kiválasztani a **videó forrásának nyelvét**. Válassza ki a legördülő listát, és válasszon ki egy, a listából létrehozott nyelvi modellt. Meg kell mondania a nyelvi modell nyelvét, valamint azt a nevet, amelyet zárójelben adott meg.
+![A videó forrása nyelvének kiválasztása – a videó újraindexelése a Video Indexer](./media/customize-language-model/reindex.png)
 
 Válassza ki a **feltöltés** lehetőséget az oldal alján, és az új videó a nyelvi modell alapján lesz indexelve.
 
 ### <a name="using-a-language-model-to-reindex"></a>Nyelvi modell használata az újraindexeléshez
 
-Ha a nyelvi modellt szeretné használni a gyűjteményben lévő videók újraindexeléséhez, lépjen az [video Indexer](https://www.videoindexer.ai/) kezdőlapján található **fiókra** , és vigye az egérmutatót az átindexelni kívánt videó nevére.
+Ha a nyelvi modellt szeretné használni a gyűjteményben található videók újraindexeléséhez, kövesse az alábbi lépéseket:
 
-Megtekintheti a videó szerkesztésének lehetőségeit, a videó törlését és a videó újraindexelését. Válassza a videó újraindexelésének lehetőségét.
-
-![Újraindexelés Video Indexer](./media/customize-language-model/reindex1.png)
-
-Lehetősége van kiválasztani a **videó forrásának nyelvét** , hogy újra indexelje a videót a használatával. Válassza ki a legördülő listát, és válasszon ki egy, a listából létrehozott nyelvi modellt. Meg kell mondania a nyelvi modell nyelvét, valamint azt a nevet, amelyet zárójelben adott meg.
-
-![A videó forrása nyelvének kiválasztása – a videó újraindexelése a Video Indexer](./media/customize-language-model/reindex.png)
-
-Válassza az **újraindexelés** gombot, és a videó újraindexelve lesz a nyelvi modell használatával.
+1. Jelentkezzen be a [video Indexer](https://www.videoindexer.ai/) kezdőlapjára.
+1. Kattintson a videóban található **.** .. gombra, és válassza az **újraindexelés** lehetőséget.
+1. Lehetősége van kiválasztani a **videó forrásának nyelvét** , hogy újra indexelje a videót a használatával. Válassza ki a legördülő listát, és válasszon ki egy, a listából létrehozott nyelvi modellt. Meg kell mondania a nyelvi modell nyelvét, valamint azt a nevet, amelyet zárójelben adott meg.
+1. Válassza az **újraindexelés** gombot, és a videó újraindexelve lesz a nyelvi modell használatával.
 
 ## <a name="edit-a-language-model"></a>Nyelvi modell szerkesztése
 
@@ -95,27 +82,27 @@ Ha a nyelvi modellből fájlokat ad hozzá vagy töröl, a zöld **vonat** lehet
 
 ### <a name="rename-the-language-model"></a>A nyelvi modell átnevezése
 
-A nyelvi modell nevét a nyelvi modell jobb oldalán található három pont (**..**.) gombra kattintva módosíthatja, majd az **Átnevezés**lehetőséget választva.
+A nyelvi modell nevét a nyelvi modell jobb oldalán található három pont (**..**.) gombra kattintva módosíthatja, majd az **Átnevezés** lehetőséget választva.
 
 Írja be az új nevet, és nyomja le az ENTER billentyűt.
 
 ### <a name="add-files"></a>Fájlok hozzáadása
 
-Szövegfájl hozzáadásához válassza a **fájl hozzáadása**lehetőséget. Megnyílik a fájlkezelő.
+Szövegfájl hozzáadásához válassza a **fájl hozzáadása** lehetőséget. Megnyílik a fájlkezelő.
 
 Navigáljon a fájlhoz, és válassza ki a szövegfájlt. Több szövegfájlt is hozzáadhat egy nyelvi modellhez.
 
-Szövegfájlt is hozzáadhat a nyelvi modell jobb oldalán lévő három pont (**..**.) gomb kiválasztásával, majd a **fájl hozzáadása**lehetőség kiválasztásával.
+Szövegfájlt is hozzáadhat a nyelvi modell jobb oldalán lévő három pont (**..**.) gomb kiválasztásával, majd a **fájl hozzáadása** lehetőség kiválasztásával.
 
 ### <a name="delete-files"></a>Fájlok törlése
 
-Ha törölni szeretne egy fájlt a nyelvi modellből, kattintson a három pont (**..**.) gombra a szövegfájl jobb oldalán, majd válassza a **Törlés**lehetőséget. Egy új ablak jelenik meg, amely azt jelzi, hogy a törlés nem vonható vissza. Válassza a **Törlés** lehetőséget az új ablakban.
+Ha törölni szeretne egy fájlt a nyelvi modellből, kattintson a három pont (**..**.) gombra a szövegfájl jobb oldalán, majd válassza a **Törlés** lehetőséget. Egy új ablak jelenik meg, amely azt jelzi, hogy a törlés nem vonható vissza. Válassza a **Törlés** lehetőséget az új ablakban.
 
 Ez a művelet teljesen eltávolítja a fájlt a nyelvi modellből.
 
 ## <a name="delete-a-language-model"></a>Nyelvi modell törlése
 
-Ha törölni szeretne egy nyelvi modellt a fiókjából, válassza a nyelvi modell jobb oldalán található három pontot (**..**.), majd a **Törlés**lehetőséget.
+Ha törölni szeretne egy nyelvi modellt a fiókjából, válassza a nyelvi modell jobb oldalán található három pontot (**..**.), majd a **Törlés** lehetőséget.
 
 Egy új ablak jelenik meg, amely azt jelzi, hogy a törlés nem vonható vissza. Válassza a **Törlés** lehetőséget az új ablakban.
 
@@ -146,12 +133,10 @@ A Video Indexer támogatja a nyelvi modellek automatikus testreszabását a felh
     
 1. A tartalmi modell testreszabása lap Language (nyelv) lapján láthatók a megjelenő átiratok.
 
-    ![Nyelvi modell testreszabása – Video Indexer](./media/customize-language-model/customize.png)
-
    Ha meg szeretné nézni az egyes nyelvi modellekhez tartozó "feladói szerkesztések" fájlt, válassza ki azt a megnyitásához.
 
     ![Az átirat szerkesztése – Video Indexer](./media/customize-language-model/from-transcript-edits.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Nyelvi modell testreszabása API-k használatával](customize-language-model-with-api.md)

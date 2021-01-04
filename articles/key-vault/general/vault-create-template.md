@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285142"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704520"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Azure Key Vault és a tároló hozzáférési házirendjének létrehozása Resource Manager-sablonnal
 
@@ -176,14 +176,14 @@ További Key Vault sablonokat itt talál: [Key Vault Resource Manager-referenci�
 
 A Azure Portal az előző sablonok üzembe helyezéséhez használja a **saját sablon létrehozása a szerkesztőben** című témakört az itt leírtak szerint: [erőforrások üzembe helyezése egyéni sablonból](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-Az előző sablonokat fájlokat is mentheti, és a következő parancsokat használhatja:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
+Az előző sablonokat fájlokat is mentheti, és a következő parancsokat használhatja:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) és [az Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file key-vault-template.json
+az deployment group create --resource-group ExampleGroup --template-file key-vault-template.json
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -215,7 +215,7 @@ Write-Host "Press [ENTER] to continue..."
 - További információ a [Azure Resource Managerról](../../azure-resource-manager/management/overview.md).
 - Tekintse át [Azure Key Vault ajánlott eljárásokat](../general/best-practices.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Biztonságos hozzáférés a kulcstartóhoz](secure-your-key-vault.md)
 - [Hitelesítés a Key vaultban](authentication.md)

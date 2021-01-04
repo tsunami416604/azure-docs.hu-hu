@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/12/2020
+ms.date: 12/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75ea3eec50516c9ba08504dd149d4bd08f8abbb6
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 9e842e4d2a4dbd118840498587696df085b07700
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371934"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722895"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -48,7 +48,8 @@ Ha konkrét kérdései vannak, egy adott dokumentumra vagy folyamatra fogunk rá
 - Támogatott-e a harmadik féltől származó keret, HA a Windows és a pacemaker is működik? Tekintse meg az [SAP-támogatási Megjegyzés](https://launchpad.support.sap.com/#/notes/1928533) alsó részét #1928533
 - Mi a legjobb megoldás az Azure Storage számára a forgatókönyvhöz? [Az Azure Storage-típusok](./planning-guide-storage.md) beolvasása SAP számítási feladatokhoz
 - Az SAP támogatja az Oracle Enterprise Linux Red Hat kernelét? SAP [SAP-támogatási Megjegyzés](https://launchpad.support.sap.com/#/notes/1565179) olvasása #1565179
-- Miért nem tanúsítottak SAP HANA az Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [EA (k) VM-](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) családoknak? Az Azure Das/EAS virtuálisgép-családok az AMD processzorral vezérelt hardveren alapulnak. A SAP HANA nem támogatja az AMD-processzorokat, még virtualizált helyzetekben sem.
+- Miért nem tanúsítottak SAP HANA az Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [EA (k) VM-](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) családoknak? Az Azure Das/EAS virtuálisgép-családok az AMD processzorral vezérelt hardveren alapulnak. A SAP HANA nem támogatja az AMD processzorokat, még virtualizált helyzetekben sem
+- Miért vagyok a következő üzenet: "a RDTSCP utasításhoz tartozó CPU-jelzők vagy constant_tsc vagy nonstop_tsc CPU-jelzői nincsenek beállítva, vagy current_clocksource, és a available_clocksource nem megfelelően vannak konfigurálva" a SAP HANA, annak ellenére, hogy a legújabb Linux-kerneleket futtatom. A válaszhoz tekintse meg az [SAP-támogatási megjegyzés #2791572](https://launchpad.support.sap.com/#/notes/2791572) 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA az Azure-ban (nagyméretű példányok)
@@ -82,6 +83,7 @@ Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az 
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 12/21/2020: új minősítések hozzáadása az [elérhető SKU-HLI](./hana-available-skus.md) található HANA nagyméretű példányok SKU-hoz
 - 12/12/2020: a mutató hozzáadva az SAP-megjegyzéshez, amely részletesen ismerteti az SAP által támogatott Oracle Enterprise Linux-támogatást az Azure-beli [üzembe helyezések által támogatott SAP-szoftverekhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support)
 - 11/26/2020: az [Azure-beli virtuális gépek tárolási konfigurációinak](./hana-vm-operations-storage.md) és [Az Azure storage-típusok](./planning-guide-storage.md) SAP HANA hozzáigazítása az SAP számítási feladatokhoz az egyetlen virtuálisgép- [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) módosítása
 - 11/05/2020: új SAP-megjegyzésre mutató hivatkozás módosítása a HANA által támogatott fájlrendszer-típusokkal kapcsolatban [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](./hana-vm-operations-storage.md) 
@@ -179,9 +181,3 @@ Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az 
 - 2020. január 10.: a [SLES Azure-beli virtuális gépeken az SAP NetWeaver magas rendelkezésre állásának változásai a Azure NetApp Files for SAP Applications](./high-availability-guide-suse-netapp-files.md) és az [Azure Virtual Machines magas rendelkezésre állású SAP NetWeaver on RHEL, SAP-alkalmazások esetén pedig az Azure NetApp Files for SAP applications](./high-availability-guide-rhel-netapp-files.md) a Azure NetApp Files nfsv4 névleképezője-kötetek csatlakoztatására vonatkozó utasítások hozzáadásához.
 - 2019. december 23.: az [Azure-beli virtuális gépeken futó SAP NetWeaver magas rendelkezésre állásának kiadása a SLES multi-SID útmutatójában](./high-availability-guide-suse-multi-sid.md)
 - December 18., 2019: az [Azure-beli virtuális gépek készenléti csomópontjaival SAP HANA kibővíthető a Azure NetApp Files on RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md)
-- November 21., 2019: az [Azure-beli virtuális Azure NetApp Files gépek készenléti csomópontjának SAP HANA-méretezésének](./sap-hana-scale-out-standby-netapp-files-suse.md) változásai a SUSE Linux Enterprise Server használatával egyszerűbbé teszik az NFS-azonosítók hozzárendelésének konfigurációját, és a javasolt elsődleges hálózati adaptert az Útválasztás egyszerűsítése érdekében módosítják.
-- November 15., 2019: kisebb változások történtek a [magas rendelkezésre állásban az SAP NetWeaver esetében SUSE Linux Enterprise Server Azure NetApp Files az](high-availability-guide-suse-netapp-files.md) SAP-alkalmazások és a [magas rendelkezésre állás az sap netweaver esetében Red Hat Enterprise Linux Azure NetApp Files SAP-alkalmazások](high-availability-guide-rhel-netapp-files.md) esetében, hogy tisztázza a kapacitási készlet méretére vonatkozó korlátozásokat, és eltávolítsa az utasítást, hogy csak a NFSv3 verziója támogatott.
-- November 12.2019: az [SAP NetWeaver magas rendelkezésre állásának kiadása a Windows rendszeren Azure NetApp Files (SMB)](high-availability-guide-windows-netapp-files-smb.md)
-- November 8., 2019: a [SAP HANA magas rendelkezésre állásának változásai a SUSE Linux Enterprise Server Azure](sap-hana-high-availability.md)-beli [virtuális gépeken, SAP HANA rendszerreplikáció beállítása az Azure Virtual Machines szolgáltatásban (VM)](sap-hana-high-availability-rhel.md), [Azure Virtual Machines magas rendelkezésre állás for SAP NetWeaver on SUSE Linux Enterprise Server for sap Applications](high-availability-guide-suse.md), [Azure Virtual Machines magas rendelkezésre állás for SAP netweaver on SUSE Linux Enterprise Server with Azure NetApp Files](high-availability-guide-suse-netapp-files.md), [azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver on Red Hat Enterprise Linux](high-availability-guide-rhel.md), [Azure Virtual Machines magas rendelkezésre állású](high-availability-guide-rhel-netapp-files.md)SAP NetWeaver on Red Hat Enterprise Linux Azure NetApp Files, magas rendelkezésre állás az NFS-en az Azure-beli [virtuális gépeken](high-availability-guide-suse-nfs.md)a SUSE Linux Enterprise Server-on, GlusterFS az Azure-beli [virtuális gépeken](high-availability-guide-rhel-glusterfs.md)  
-- November 8., 2019: változások az [SAP munkaterhelés tervezési és üzembe helyezési ellenőrzőlista](sap-deployment-checklist.md) a titkosítási javaslatok tisztázásához  
-- November 4., 2019: a [pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban](high-availability-guide-suse-pacemaker.md) a fürt közvetlen, egyedi küldési konfigurációval való létrehozásához

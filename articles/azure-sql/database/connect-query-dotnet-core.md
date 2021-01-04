@@ -12,14 +12,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: c1443dcefb12a063a287e89f1c292ba39bd38dc6
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 1d25f43ef5a694d8b94710055bf1be72a7fcb45c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680354"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705214"
 ---
-# <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: a .NET Core (C#) használata egy adatbázis lekérdezéséhez Azure SQL Database vagy Azure SQL felügyelt példányban
+# <a name="quickstart-use-net-core-c-to-query-a-database"></a>Gyors útmutató: adatbázis lekérdezése a .NET Core (C#) használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Ebben a rövid útmutatóban a [.net Core](https://www.microsoft.com/net/) és a C# kódot fogja használni az adatbázishoz való kapcsolódáshoz. Ezután futtasson egy Transact-SQL-utasítást az adatok lekérdezéséhez.
@@ -32,34 +32,10 @@ Ebben a rövid útmutatóban a [.net Core](https://www.microsoft.com/net/) és a
 Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége:
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [.Net Core az operációs rendszer](https://www.microsoft.com/net/core) telepítéséhez.
 - Egy adatbázis, amelyen futtathatja a lekérdezést. 
 
-[!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
-
-- [.Net Core az operációs rendszer](https://www.microsoft.com/net/core) telepítéséhez.
-
-## <a name="get-server-connection-information"></a>Kiszolgáló-kapcsolatok adatainak beolvasása
-
-A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok lekérése. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-
-2. Navigáljon az **SQL-adatbázisok**  vagy az **SQL-felügyelt példányok** lapra.
-
-3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett, Azure SQL Database vagy a **gazdagép** melletti teljes kiszolgálónevet (vagy IP-címet) egy Azure SQL felügyelt példányhoz, vagy SQL Server az Azure virtuális gépen. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
-
-> [!NOTE]
-> SQL Server Azure-beli virtuális gépen való kapcsolódásával kapcsolatos információkért lásd: [kapcsolódás SQL Server-példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
-
-## <a name="get-adonet-connection-information-optional---sql-database-only"></a>ADO.NET-kapcsolatok adatainak beolvasása (nem kötelező – csak SQL Database)
-
-1. Navigáljon a Azure Portal adatbázis paneljére, és a **Beállítások** területen válassza a **kapcsolódási karakterláncok** lehetőséget.
-
-2. Tekintse át az **ADO.NET** teljes kapcsolati sztringjét.
-
-    ![ADO.NET kapcsolati sztring](./media/connect-query-dotnet-core/adonet-connection-string2.png)
-
-3. Ha használni kívánja, másolja a **ADO.net** -kapcsolódási karakterláncot.
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
   
 ## <a name="create-a-new-net-core-project"></a>Új .NET Core-projekt létrehozása
 
@@ -166,7 +142,7 @@ namespace sqltest
 
 3. Az alkalmazás ablakának bezárásához kattintson az **ENTER** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Bevezetés a .NET Core használatába Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
 - Ismerkedjen meg [a .NET-keretrendszer és a Visual Studio használatával a Azure SQL Database vagy az Azure SQL felügyelt példányának összekapcsolásával és lekérdezésével](connect-query-dotnet-visual-studio.md).  

@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a9b0090fa13a6d2f7a837a4f5ffee37d70893318
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5a5242cb9448b3d11e0921b2272cf00bef8f6c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116903"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722266"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Útmutató: az Azure AD-alkalmazás korlátozása egy Azure AD-bérlőben lévő felhasználók köré
 
@@ -49,40 +49,40 @@ Az engedélyezett felhasználói hozzárendeléssel kétféleképpen hozhatók l
 
 1. Lépjen a [**Azure Portalra**](https://portal.azure.com/) , és jelentkezzen be **globális rendszergazdaként**.
 1. A felső sávon válassza ki a bejelentkezett fiókot. 
-1. A **címtár**területen válassza ki azt az Azure ad-bérlőt, ahol az alkalmazás regisztrálva lesz.
-1. A bal oldali navigációs sávon válassza a **Azure Active Directory**lehetőséget. Ha Azure Active Directory nem érhető el a navigációs ablaktáblán, kövesse az alábbi lépéseket:
+1. A **címtár** területen válassza ki azt az Azure ad-bérlőt, ahol az alkalmazás regisztrálva lesz.
+1. A bal oldali navigációs sávon válassza a **Azure Active Directory** lehetőséget. Ha Azure Active Directory nem érhető el a navigációs ablaktáblán, kövesse az alábbi lépéseket:
 
     1. A bal oldali navigációs menü tetején válassza a **minden szolgáltatás** lehetőséget.
     1. Írja be a **Azure Active Directory** kifejezést a szűrő keresőmezőbe, majd válassza ki a **Azure Active Directory** elemet az eredményből.
 
 1. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások** lehetőséget a **Azure Active Directory** bal oldali navigációs menüjéből.
-1. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját.
+1. Válassza a **Minden alkalmazás** lehetőséget az összes alkalmazás listájának megtekintéséhez.
 
      Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás** lista tetején található különféle szűrőket a lista korlátozásához, vagy görgessen le a listából az alkalmazás megkereséséhez.
 
 1. Válassza ki azt az alkalmazást, amelyhez felhasználót vagy biztonsági csoportot szeretne hozzárendelni a listából.
 1. Az alkalmazás **Áttekintés** lapján válassza a **Tulajdonságok** lehetőséget az alkalmazás bal oldali navigációs menüjében.
-1. Keresse meg a **kötelező felhasználói hozzárendelés szükséges** beállítást, és állítsa **Igen**értékre. Ha ezt a beállítást az **Igen**értékre állítja, akkor a bérlőben lévő felhasználókat először hozzá kell rendelni ehhez az alkalmazáshoz, vagy nem lesznek képesek bejelentkezni az alkalmazásba.
+1. Keresse meg a **kötelező felhasználói hozzárendelés szükséges** beállítást, és állítsa **Igen** értékre. Ha ezt a beállítást az **Igen** értékre állítja, akkor a bérlőben lévő felhasználókat először hozzá kell rendelni ehhez az alkalmazáshoz, vagy nem lesznek képesek bejelentkezni az alkalmazásba.
 1. A konfigurációs módosítás mentéséhez válassza a **Mentés** lehetőséget.
 
 ### <a name="app-registration"></a>Alkalmazásregisztráció
 
 1. Lépjen a [**Azure Portal**](https://portal.azure.com/).
 1. A felső sávon válassza ki a bejelentkezett fiókot. 
-1. A **címtár**területen válassza ki azt az Azure ad-bérlőt, ahol az alkalmazás regisztrálva lesz.
-1. A bal oldali navigációs sávon válassza a **Azure Active Directory**lehetőséget.
+1. A **címtár** területen válassza ki azt az Azure ad-bérlőt, ahol az alkalmazás regisztrálva lesz.
+1. A bal oldali navigációs sávon válassza a **Azure Active Directory** lehetőséget.
 1. A **Azure Active Directory** ablaktáblán válassza az **alkalmazás-regisztrációk** lehetőséget a **Azure Active Directory** bal oldali navigációs menüjében.
 1. Hozza létre vagy válassza ki a kezelni kívánt alkalmazást. Az alkalmazás regisztrációjának **tulajdonosaként** kell lennie.
 1. Az alkalmazás **áttekintése** lapon kövesse a **felügyelt alkalmazás helyi címtárban** hivatkozását az oldal tetején található Essentials elem alatt. Ezzel az alkalmazás regisztrációjának _felügyelt vállalati alkalmazására_ kerül.
-1. A bal oldali navigációs panelen válassza a **Tulajdonságok**lehetőséget.
-1. Keresse meg a **kötelező felhasználói hozzárendelés szükséges** beállítást, és állítsa **Igen**értékre. Ha ezt a beállítást az **Igen**értékre állítja, akkor a bérlőben lévő felhasználókat először hozzá kell rendelni ehhez az alkalmazáshoz, vagy nem lesznek képesek bejelentkezni az alkalmazásba.
+1. A bal oldali navigációs panelen válassza a **Tulajdonságok** lehetőséget.
+1. Keresse meg a **kötelező felhasználói hozzárendelés szükséges** beállítást, és állítsa **Igen** értékre. Ha ezt a beállítást az **Igen** értékre állítja, akkor a bérlőben lévő felhasználókat először hozzá kell rendelni ehhez az alkalmazáshoz, vagy nem lesznek képesek bejelentkezni az alkalmazásba.
 1. A konfigurációs módosítás mentéséhez válassza a **Mentés** lehetőséget.
 
 ## <a name="assign-users-and-groups-to-the-app"></a>Felhasználók és csoportok társítása az alkalmazáshoz
 
 Ha úgy konfigurálta az alkalmazást, hogy engedélyezze a felhasználó-hozzárendelést, akkor a felhasználók és csoportok az alkalmazáshoz rendelhetők.
 
-1. Válassza ki a **felhasználók és csoportok** panelt az alkalmazás bal oldali navigációs menüjében.
+1. Válassza a **felhasználók és csoportok** panelt a vállalati alkalmazás bal oldali navigációs menüjében.
 1. A **felhasználók és csoportok** lista tetején válassza a **felhasználó hozzáadása** gombot a **hozzárendelés hozzáadása** ablaktábla megnyitásához.
 1. Válassza ki a **felhasználók** választót a **hozzárendelés hozzáadása** panelen. 
 

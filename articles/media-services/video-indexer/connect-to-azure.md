@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493100"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702637"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
 
@@ -107,9 +107,14 @@ Ha nem sikerült csatlakozni az Azure-hoz, a probléma megoldásához manuálisa
 
 1. Az [Azure](https://portal.azure.com/) Portal használatával hozzon létre egy Azure Media Services fiókot a [fiók létrehozása](../previous/media-services-portal-create-account.md)című témakörben leírtak szerint.
 
+     Győződjön meg arról, hogy a Media Services fiók a klasszikus API-kkal lett létrehozva. 
+ 
+    ![Klasszikus API Media Services](./media/create-account/enable-classic-api.png)
+
+
     A Media Services-fiókhoz tartozó Storage-fiók létrehozásakor válassza a **StorageV2** és a **geo-redundáns** (GRS) beállítást a replikálási mezőkhöz.
 
-    ![Új AMS-fiók](./media/create-account/create-ams-account1.png)
+    ![Új AMS-fiók](./media/create-account/create-new-ams-account.png)
 
     > [!NOTE]
     > Ügyeljen rá, hogy jegyezze fel a Media Services erőforrás és fiók nevét. Ehhez a következő szakaszban ismertetett lépéseket kell elvégeznie.
@@ -120,7 +125,7 @@ Ha nem sikerült csatlakozni az Azure-hoz, a probléma megoldásához manuálisa
 
     Az új Media Services fiókban válassza a **folyamatos átviteli végpontok** lehetőséget. Ezután válassza ki a folyamatos átviteli végpontot, és kattintson a Start gombra.
 
-    ![Streamvégpontok](./media/create-account/create-ams-account2.png)
+    ![Streamvégpontok](./media/create-account/create-ams-account-se.png)
 4. A Media Services API-val való hitelesítéshez Video Indexer létre kell hozni egy AD-alkalmazást. Az alábbi lépések végigvezetik az Azure ad- [hitelesítés használatának első lépései a Azure Portal használatával](../previous/media-services-portal-get-started-with-aad.md)című témakörben ismertetett Azure ad-hitelesítési folyamaton:
 
     1. Az új Media Services fiókban válassza az **API-hozzáférés** lehetőséget.
@@ -171,7 +176,9 @@ A fiók 90 nap múlva véglegesen törölve lesz.
 
 A következő Azure Media Services kapcsolódó megfontolások érvényesek:
 
-* Ha automatikusan kapcsolódik, megjelenik egy új erőforráscsoport, Media Services fiók és egy Storage-fiók az Azure-előfizetésében.
+* Ha meglévő Media Services-fiókhoz szeretne csatlakozni, győződjön meg arról, hogy a Media Services-fiók a klasszikus API-kkal lett létrehozva. 
+ 
+    ![Klasszikus API Media Services](./media/create-account/enable-classic-api.png)
 * Ha meglévő Media Services-fiókhoz csatlakozik, Video Indexer nem módosítja a meglévő Media szolgáltatás **számára fenntartott egységek** konfigurációját.
 
    Előfordulhat, hogy a tervezett terhelésnek megfelelően módosítania kell a Media szolgáltatás számára fenntartott egységek típusát és számát. Ne feledje, hogy ha a terhelés magas, és nincs elég egysége vagy sebessége, a videók feldolgozása időtúllépési hibát okozhat.

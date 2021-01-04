@@ -12,16 +12,18 @@ ms.date: 07/19/2017
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88118263"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703415"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Egy Sign-Out SAML protokoll
 
 Azure Active Directory (Azure AD) támogatja az SAML 2,0 webböngésző egyszeri kijelentkezési profilját. Az egyszeri bejelentkezés megfelelő működéséhez az alkalmazás **LogoutURL** explicit módon regisztrálni kell az Azure ad-ben az alkalmazás regisztrálása során. Az Azure AD a LogoutURL használatával irányítja át a felhasználókat, miután kijelentkezett.
+
+Az Azure AD támogatja az átirányítás kötését (HTTP GET), és nem HTTP POST kötést.
 
 Az alábbi ábra az Azure AD egyszeri kijelentkezési folyamatának munkafolyamatát mutatja be.
 
@@ -70,5 +72,5 @@ Az Azure AD ezt az értéket állítja be, ahol az az `https://login.microsofton
 
 Az elem értékének kiértékeléséhez `Issuer` használja az alkalmazás regisztrációja során megadott **alkalmazás-azonosító URI** azonosító értékét.
 
-### <a name="status"></a>status
+### <a name="status"></a>Állapot
 Az Azure AD az `StatusCode` `Status` elem eleme alapján jelzi a kijelentkezés sikerességét vagy sikertelenségét. Ha a kijelentkezési kísérlet sikertelen, `StatusCode` akkor az elem egyéni hibaüzeneteket is tartalmazhat.

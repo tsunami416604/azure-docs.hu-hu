@@ -15,6 +15,8 @@
       href: cognitive-services-custom-subdomains.md
     - name: Nyelvi támogatás
       href: language-support.md
+    - name: Költségtervezés és a költségek kezelése
+      href: plan-manage-costs.md
 - name: Rövid útmutatók
   items:
     - name: Új erőforrás létrehozása az Azure Portal használatával

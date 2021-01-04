@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533638"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696127"
 ---
 # <a name="register-for-azure-netapp-files"></a>Regisztrálás az Azure NetApp Filesra
 
@@ -30,7 +30,8 @@ Ebből a cikkből megtudhatja, hogyan regisztrálhat a Azure NetApp Files, hogy 
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>Várólista-kérelem küldése a szolgáltatás eléréséhez
 
-1. A Azure NetApp Files szolgáltatás eléréséhez a [Azure NetApp Files várólista-beküldési lapon](https://aka.ms/azurenetappfiles)keresztül küldje el a várólista-kérést. 
+1. Lépjen a következő lapra, és küldje el a várólista-kérést a Azure NetApp Files szolgáltatás eléréséhez:  
+    [**Azure NetApp Files várólista-beküldési oldal**](https://aka.ms/azurenetappfiles) 
 
     A várólista-regisztráció nem garantálja a szolgáltatás azonnali elérését. 
 
@@ -106,6 +107,6 @@ A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolg�
       ![Regisztrált Microsoft. NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [NetApp-fiók létrehozása](azure-netapp-files-create-netapp-account.md)

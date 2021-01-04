@@ -1,29 +1,26 @@
 ---
-title: Különbözeti adatvédelem implementálása a WhiteNoise-csomaggal (előzetes verzió)
+title: Különbözeti adatvédelem implementálása a SmartNoise-csomaggal (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogy mi a különbségi adatvédelem, és hogy a WhiteNoise-csomag milyen módon segít az adatvédelmet megőriző differenciált belső rendszerek megvalósításában.
+description: Ismerje meg, hogy mi a különbségi adatvédelem, és hogy a SmartNoise-csomag milyen módon segít az adatvédelmet megőriző differenciált belső rendszerek megvalósításában.
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/09/2020
+ms.date: 12/21/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 307786c0df744751122487b8c931d0e9572d5f22
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86199789"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723490"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>Az adatvédelem megőrzése a differenciált adatvédelem és a WhiteNoise-csomag (előzetes verzió) használatával
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>Az adatvédelem megőrzése a differenciált adatvédelem és a SmartNoise-csomag (előzetes verzió) használatával
 
-Ismerje meg, hogy mi a különbségi adatvédelem, és hogyan segíti a WhiteNoise-csomag a differentially-magánhálózatok megvalósításában.
+Ismerje meg, hogy mi a különbségi adatvédelem, és hogyan segíti a SmartNoise-csomag a differentially-magánhálózatok megvalósításában.
 
 Mivel a szervezet által gyűjtött és az elemzésekhez felhasznált adatok mennyisége növekszik, az adatvédelem és a biztonság terén is felmerülnek. Elemzések szükségesek az adatkezeléshez. Általában a modellek betanításához használt több adattal, annál pontosabban vannak. Ha a rendszer személyes adatokat használ ezekhez az elemzésekhez, különösen fontos, hogy az adatok a használat során is magánjellegűek maradjanak.
-
-> [!NOTE]
-> Vegye figyelembe, hogy átnevezjük az eszközkészletet, és az új nevet az elkövetkező hetekben fogjuk bevezetni. 
 
 ## <a name="how-differential-privacy-works"></a>A különbözeti adatvédelem működése
 
@@ -34,7 +31,7 @@ A differenciált adatvédelem olyan rendszerek és eljárások összessége, ame
 
 A hagyományos helyzetekben a nyers adatok tárolása a fájlokban és az adatbázisokban történik. Amikor a felhasználók elemeznek az adatelemzést, általában a nyers adattípust használják. Ez aggodalomra ad okot, mert sértheti az egyén adatvédelmét. A differenciált adatvédelem a "zaj" vagy az adatok véletlenszerű törlésével próbálkozik a probléma megoldásával, így a felhasználók nem azonosíthatják az egyes adatpontokat. Legalább egy ilyen rendszer kézenfekvő megtagadást biztosít.
 
-A differentially privát rendszerekben a **lekérdezéseknek**nevezett kérelmeken keresztül osztják meg az adatmegosztást. Amikor egy felhasználó adatlekérdezést küld, az **adatvédelmi mechanizmusként** ismert műveletek a kért adatokat is felvehetik. Az adatvédelmi mechanizmusok a nyers adatok helyett *az adatok közelítését* adják vissza. Ez az adatvédelmi megőrzési eredmény megjelenik egy **jelentésben**. A jelentések két részből állnak, a tényleges adatok kiszámításával és az adatok létrehozásának leírásával.
+A differentially privát rendszerekben a **lekérdezéseknek** nevezett kérelmeken keresztül osztják meg az adatmegosztást. Amikor egy felhasználó adatlekérdezést küld, az **adatvédelmi mechanizmusként** ismert műveletek a kért adatokat is felvehetik. Az adatvédelmi mechanizmusok a nyers adatok helyett *az adatok közelítését* adják vissza. Ez az adatvédelmi megőrzési eredmény megjelenik egy **jelentésben**. A jelentések két részből állnak, a tényleges adatok kiszámításával és az adatok létrehozásának leírásával.
 
 ## <a name="differential-privacy-metrics"></a>Különbözeti adatvédelmi mérőszámok
 
@@ -46,7 +43,7 @@ Egy másik érték, amely közvetlenül összefügg a epszilon- **különbözett
 
 ## <a name="privacy-budget"></a>Adatvédelmi költségvetés
 
-Annak érdekében, hogy az adatvédelem olyan rendszereken történjen, ahol több lekérdezés is engedélyezett, a különbözeti adatvédelem meghatározza a díjszabási korlátot. Ezt a korlátot **adatvédelmi költségvetésnek**nevezzük. Az adatvédelemmel kapcsolatos költségvetések epszilon, jellemzően 1 és 3 között vannak lefoglalva az újraazonosítás kockázatának csökkentése érdekében. A jelentések létrehozásakor az adatvédelmi költségvetés nyomon követheti az egyes jelentések epszilon értékét, valamint az összes jelentés összesítését. Az adatvédelem költségvetésének elköltése vagy kimerülése után a felhasználók már nem férhetnek hozzá az adatokhoz.  
+Annak érdekében, hogy az adatvédelem olyan rendszereken történjen, ahol több lekérdezés is engedélyezett, a különbözeti adatvédelem meghatározza a díjszabási korlátot. Ezt a korlátot **adatvédelmi költségvetésnek** nevezzük. Az adatvédelemmel kapcsolatos költségvetések epszilon, jellemzően 1 és 3 között vannak lefoglalva az újraazonosítás kockázatának csökkentése érdekében. A jelentések létrehozásakor az adatvédelmi költségvetés nyomon követheti az egyes jelentések epszilon értékét, valamint az összes jelentés összesítését. Az adatvédelem költségvetésének elköltése vagy kimerülése után a felhasználók már nem férhetnek hozzá az adatokhoz.  
 
 ## <a name="reliability-of-data"></a>Az adatbiztonság
 
@@ -54,10 +51,10 @@ Bár az adatvédelem megőrzése a cél, az adatok használhatósága és megbí
 
 ## <a name="implementing-differentially-private-systems"></a>Differentially-rendszerek implementálása
 
-A differentially privát rendszereinek megvalósítása nehéz feladat. A WhiteNoise egy nyílt forráskódú projekt, amely különböző összetevőket tartalmaz a globális differentially-alapú privát rendszerek létrehozásához. A WhiteNoise a következő legfelső szintű összetevőkből áll:
+A differentially privát rendszereinek megvalósítása nehéz feladat. A SmartNoise egy nyílt forráskódú projekt, amely különböző összetevőket tartalmaz a globális differentially-alapú privát rendszerek létrehozásához. A SmartNoise a következő legfelső szintű összetevőkből áll:
 
 - Mag
-- Rendszer
+- SDK
 
 ### <a name="core"></a>Mag
 
@@ -68,9 +65,9 @@ Az alapszintű függvénytár a következő adatvédelmi mechanizmusokat tartalm
 |Elemzés     | Tetszőleges számítások gráf-leírása. |
 |Validator     | Egy olyan, a rozsda-függvénytár, amely eszközöket tartalmaz az elemzéshez szükséges feltételek ellenőrzéséhez és lefoglalásához a differentially.          |
 |Futtatókörnyezet     | Az elemzés végrehajtásához szükséges adathordozó. A hivatkozási futtatókörnyezet rozsda, de a futtatókörnyezetek az adatigénytől függően bármilyen számítási keretrendszer, például az SQL és a Spark használatával írhatók.        |
-|Kötések     | Nyelvi kötések és segítő kódtárak elemzések készítéséhez. A WhiteNoise jelenleg Python-kötéseket biztosít. |
+|Kötések     | Nyelvi kötések és segítő kódtárak elemzések készítéséhez. A SmartNoise jelenleg Python-kötéseket biztosít. |
 
-### <a name="system"></a>Rendszer
+### <a name="sdk"></a>SDK
 
 A rendszerkönyvtár a következő eszközöket és szolgáltatásokat biztosítja a táblázatos és a kapcsolati adatokat kezelő szolgáltatásokhoz:
 
@@ -84,4 +81,4 @@ A rendszerkönyvtár a következő eszközöket és szolgáltatásokat biztosít
 
 Az adatvédelem [megőrzése](how-to-differential-privacy.md) Azure Machine Learningban.
 
-Ha többet szeretne megtudni a WhiteNoise összetevőiről, tekintse meg a [WhiteNoise Core csomag](https://github.com/opendifferentialprivacy/whitenoise-core)GitHub-tárházait, a [WhiteNoise-csomagokat](https://github.com/opendifferentialprivacy/whitenoise-system) és a [WhiteNoise-mintákat](https://github.com/opendifferentialprivacy/whitenoise-samples).
+Ha többet szeretne megtudni a SmartNoise összetevőiről, tekintse meg a [SmartNoise Core Package](https://github.com/opendifferentialprivacy/smartnoise-core), a [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)és a [SmartNoise minták](https://github.com/opendifferentialprivacy/smartnoise-samples)GitHub-tárházait.

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207529"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724140"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Oktatóanyag: az Azure távoli renderelés és a modell tárterületének védelme
 
@@ -172,10 +172,10 @@ Módosítsa a **RemoteRenderingCoordinator** egy egyéni modell betöltéséhez 
     * **Modell elérési útja**: a "outputFolderPath" és a "outputAssetFileName" kombinációja definiálva van a fájl *arrconfig.js* . A rövid útmutatóban ez a "outputFolderPath": "Converted/robot", "outputAssetFileName": "robot. arrAsset". Ennek eredményeképpen a modell elérési útja "konvertált/robot/robot. arrAsset" értékre vált, az értéke eltérő lesz.
 
     >[!TIP]
-    > Ha [a **Conversion.ps1** ](../../../quickstarts/convert-model.md#run-the-conversion) parancsfájlt a "-UseContainerSas" argumentum nélkül futtatja, a parancsfájl az SAS-token helyett a fenti értékeket fogja kiadni. ![Csatolt modell](./media/converted-output.png)
+    > Ha [a **Conversion.ps1**](../../../quickstarts/convert-model.md#run-the-conversion) parancsfájlt a "-UseContainerSas" argumentum nélkül futtatja, a parancsfájl az SAS-token helyett a fenti értékeket fogja kiadni. ![Csatolt modell](./media/converted-output.png)
 1. Az idő alatt távolítsa el vagy tiltsa le a GameObject **TestModel**, hogy helyet szabadítson fel az egyéni modell betöltéséhez.
 1. Próbálja ki a jelenetet, és kapcsolódjon egy távoli munkamenethez.
-1. Kattintson a jobb gombbal a **RemoteRenderingCoordinator** , és válassza a **társított egyéni modell betöltése**lehetőséget.
+1. Kattintson a jobb gombbal a **RemoteRenderingCoordinator** , és válassza a **társított egyéni modell betöltése** lehetőséget.
     ![Csatolt modell betöltése](./media/load-linked-model.png)
 
 Ezek a lépések megnövelték az alkalmazás biztonságát azáltal, hogy eltávolítják az SAS-jogkivonatot a helyi alkalmazásból.
@@ -190,7 +190,7 @@ Még egy "jelszó", a AccountKey a helyi alkalmazásból való eltávolításáh
 
 A HRE-hitelesítés lehetővé teszi annak meghatározását, hogy mely személyek vagy csoportok használják az ARR-t egy ellenőrzött módon. Az ARR beépített támogatást nyújt a [hozzáférési jogkivonatok](../../../../active-directory/develop/access-tokens.md) elfogadásához a fiók kulcsának használata helyett. Azt is megteheti, hogy a hozzáférési tokeneket időkorlátos, felhasználó-specifikus kulcsként tekinti át, amely csak a kért erőforrás bizonyos részeit oldja fel.
 
-A **RemoteRenderingCoordinator** parancsfájlhoz tartozik egy **ARRCredentialGetter**nevű delegált, amely egy olyan metódust tartalmaz, amely egy **AzureFrontendAccountInfo** objektumot ad vissza, amely a távoli munkamenetek felügyeletének konfigurálására szolgál. Hozzárendelhet egy másik módszert a **ARRCredentialGetter**, amely lehetővé teszi, hogy Azure bejelentkezési folyamatot használjon, amely egy Azure hozzáférési tokent tartalmazó **AzureFrontendAccountInfo** objektumot hoz létre. Ez a hozzáférési jogkivonat a bejelentkezett felhasználóra jellemző lesz.
+A **RemoteRenderingCoordinator** parancsfájlhoz tartozik egy **ARRCredentialGetter** nevű delegált, amely egy olyan metódust tartalmaz, amely egy **AzureFrontendAccountInfo** objektumot ad vissza, amely a távoli munkamenetek felügyeletének konfigurálására szolgál. Hozzárendelhet egy másik módszert a **ARRCredentialGetter**, amely lehetővé teszi, hogy Azure bejelentkezési folyamatot használjon, amely egy Azure hozzáférési tokent tartalmazó **AzureFrontendAccountInfo** objektumot hoz létre. Ez a hozzáférési jogkivonat a bejelentkezett felhasználóra jellemző lesz.
 
 1. Kövesse a következő [témakört: az üzembe helyezett alkalmazások hitelesítési](../../../how-tos/authentication.md#authentication-for-deployed-applications)hitelesítésének konfigurálása, pontosabban követheti az Azure térbeli horgonyok dokumentációjában az [Azure ad felhasználói hitelesítésben](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)felsorolt utasításokat. Ebbe beletartozik egy új Azure Active Directory alkalmazás regisztrálása és az ARR-példányhoz való hozzáférés konfigurálása.
 1. Miután konfigurálta az új HRE alkalmazást, tekintse meg a HRE-alkalmazást az alábbi képekkel:
@@ -206,7 +206,7 @@ A **RemoteRenderingCoordinator** parancsfájlhoz tartozik egy **ARRCredentialGet
     >[!NOTE]
     > A *tulajdonosi* szerepkör nem elegendő a munkamenetek kezeléséhez az ügyfélalkalmazás használatával. Minden olyan felhasználó számára, aki számára engedélyezni szeretné a munkamenetek kezelését, meg kell adnia a szerepkör **távoli renderelési ügyfelét**. Minden, a munkameneteket kezelő és a modellek átalakítására szolgáló felhasználó számára meg kell adnia a szerepkör **távoli renderelési rendszergazdáját**.
 
-A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon az éves tevékenységi szolgáltatáshoz. Ezt a **BaseARRAuthentication**egy példányának megvalósításával tesszük, amely egy új **AzureFrontendAccountInfo** objektumot ad vissza. Ebben az esetben a fiók adatai az Azure hozzáférési jogkivonattal lesznek konfigurálva.
+A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon az éves tevékenységi szolgáltatáshoz. Ezt a **BaseARRAuthentication** egy példányának megvalósításával tesszük, amely egy új **AzureFrontendAccountInfo** objektumot ad vissza. Ebben az esetben a fiók adatai az Azure hozzáférési jogkivonattal lesznek konfigurálva.
 
 1. Hozzon létre egy **AADAuthentication** nevű új parancsfájlt, és cserélje le a kódját a következőre:
 
@@ -255,6 +255,14 @@ A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon
             get => azureRemoteRenderingAccountID.Trim();
             set => azureRemoteRenderingAccountID = value;
         }
+    
+        [SerializeField]
+        private string azureRemoteRenderingAccountAuthenticationDomain;
+        public string AzureRemoteRenderingAccountAuthenticationDomain
+        {
+            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
+            set => azureRemoteRenderingAccountAuthenticationDomain = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
@@ -262,7 +270,7 @@ A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
-        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
 
         public void OnEnable()
         {
@@ -279,7 +287,7 @@ A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -359,7 +367,7 @@ A dolgok Azure-oldalán most módosítani kell, hogy a kód hogyan kapcsolódjon
 >[!NOTE]
 > Ez a kód nem fejeződött be, és nem áll készen a kereskedelmi alkalmazásokra. A minimális lehetőség például a kijelentkezés lehetőségét is felveheti. Ezt az `Task RemoveAsync(IAccount account)` ügyfélalkalmazás által biztosított módszer használatával teheti meg. Ez a kód csak az oktatóanyag használatára szolgál. a megvalósítás az alkalmazásra is vonatkozik.
 
-A kód először a **AquireTokenSilent**használatával kísérli meg a token lekérését. Ez sikeres lesz, ha a felhasználó korábban hitelesítette az alkalmazást. Ha nem sikerül, lépjen tovább a felhasználó által érintett stratégiára.
+A kód először a **AquireTokenSilent** használatával kísérli meg a token lekérését. Ez sikeres lesz, ha a felhasználó korábban hitelesítette az alkalmazást. Ha nem sikerül, lépjen tovább a felhasználó által érintett stratégiára.
 
 Ebben a kódban az [eszköz kódját](../../../../active-directory/develop/v2-oauth2-device-code.md) használjuk a hozzáférési token beszerzéséhez. Ez a folyamat lehetővé teszi, hogy a felhasználó bejelentkezzen az Azure-fiókjába egy számítógépre vagy mobileszközön, és az eredményül kapott tokent visszaküldje a HoloLens alkalmazásnak.
 
@@ -369,7 +377,7 @@ Ennek az osztálynak a legfontosabb része az ARR perspektívából ez a sor:
 return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Itt hozzunk létre egy új **AzureFrontendAccountInfo** -objektumot a fiók tartománya, a fiókazonosító és a hozzáférési jogkivonat használatával. Ezt a tokent az ARR szolgáltatás a távoli renderelési munkamenetek lekérdezéséhez, létrehozásához és csatlakoztatásához használja, feltéve, hogy a felhasználó a korábban konfigurált szerepköralapú engedélyek alapján van engedélyezve.
+Itt hozzunk létre egy új **AzureFrontendAccountInfo** -objektumot a fiók tartománya, a fiókazonosító, a fiók hitelesítési tartománya és a hozzáférési jogkivonat használatával. Ezt a tokent az ARR szolgáltatás a távoli renderelési munkamenetek lekérdezéséhez, létrehozásához és csatlakoztatásához használja, feltéve, hogy a felhasználó a korábban konfigurált szerepköralapú engedélyek alapján van engedélyezve.
 
 Ezzel a változással az alkalmazás jelenlegi állapota és az Azure-erőforrásokhoz való hozzáférése a következőképpen néz ki:
 
@@ -387,23 +395,24 @@ Ha a HRE-hitelesítés aktív, az Unity Editorban az alkalmazás indításakor m
 
 1. Adja meg az ügyfél-azonosító és a bérlő AZONOSÍTÓjának értékét. Ezek az értékek az alkalmazás regisztrációjának Áttekintés oldalán találhatók:
 
-    * A **fiók tartománya** ugyanaz a tartomány, amelyet a **RemoteRenderingCoordinator**fiókjának tartományában használt.
+    * A **fiók tartománya** ugyanaz a tartomány, amelyet a **RemoteRenderingCoordinator** fiókjának tartományában használt.
     * **Active Directory alkalmazás ügyfél-azonosítója** a HRE alkalmazás-regisztrációjában (lásd az alábbi képen) található *Application (Client) azonosítót* .
     * Az **Azure-bérlő azonosítója** a HRE-alkalmazás regisztrációjában található *címtár-(bérlői) azonosító* (lásd az alábbi képet).
-    * Az **Azure távoli renderelési fiók azonosítója** megegyezik a **REMOTERENDERINGCOORDINATOR**használt **fiók azonosítójával** .
+    * Az **Azure távoli renderelési fiók azonosítója** megegyezik a **REMOTERENDERINGCOORDINATOR** használt **fiók azonosítójával** .
+    * A **fiók hitelesítési tartománya** megegyezik a **RemoteRenderingCoordinator** használt **fiók-hitelesítési tartománnyal** .
 
     ![Képernyőkép, amely kiemeli az alkalmazás (ügyfél) AZONOSÍTÓját és könyvtárát (bérlői AZONOSÍTÓját).](./media/app-overview-data.png)
 
 1. Kattintson a Play (lejátszás) gombra az Unity Editorban, és a munkamenet futtatásához.
     Mivel a **AADAuthentication** összetevő rendelkezik egy nézet-vezérlővel, az automatikusan összekapcsolva jelenik meg a munkamenet-engedélyezési modális panel utáni rákérdezéssel.
-1. Kövesse a panelen található utasításokat a **AppMenu**jobb oldalán.
+1. Kövesse a panelen található utasításokat a **AppMenu** jobb oldalán.
     Ehhez a következőhöz hasonlónak kell megjelennie: ![ illusztráció, amely a AppMenu jobb oldalán megjelenő utasítás panelt jeleníti meg.](./media/device-flow-instructions.png)
     Miután megadta a megadott kódolást a másodlagos eszközön (vagy ugyanazon az eszközön található böngészőn), és bejelentkezik a hitelesítő adataival, a rendszer egy hozzáférési jogkivonatot ad vissza a kérelmező alkalmazásnak, ebben az esetben az Unity Editorban.
 1. Ezen pont után az alkalmazás minden elemének a szokásos módon kell megjelennie. Ha nem halad a várt módon, ellenőrizze az Unity-konzolt.
 
 ## <a name="build-to-device"></a>Kiépítés eszközre
 
-Ha MSAL használatával hoz létre alkalmazást, a projekt **eszközök** mappájában szerepelnie kell egy fájlnak. Ez segít a fordítónak helyesen felépíteni az alkalmazást az **oktatóanyag-eszközökben**foglalt *Microsoft.Identity.Client.dll* használatával.
+Ha MSAL használatával hoz létre alkalmazást, a projekt **eszközök** mappájában szerepelnie kell egy fájlnak. Ez segít a fordítónak helyesen felépíteni az alkalmazást az **oktatóanyag-eszközökben** foglalt *Microsoft.Identity.Client.dll* használatával.
 
 1. Adjon hozzá egy új fájlt a **link.xml** nevű **eszközökhöz** .
 1. Adja hozzá a következőt a fájlhoz:
@@ -418,11 +427,11 @@ Ha MSAL használatával hoz létre alkalmazást, a projekt **eszközök** mappá
     </linker>
     ```
 
-1. A módosítások mentése
+1. Mentse a módosításokat.
 
 Kövesse a rövid [útmutatóban található lépéseket: Unity minta üzembe helyezése HoloLens – a HoloLens való kiépítéshez](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag hátralévő része elméleti témákat tartalmaz az Azure távoli renderelést használó, éles használatra kész alkalmazások létrehozásához.
 

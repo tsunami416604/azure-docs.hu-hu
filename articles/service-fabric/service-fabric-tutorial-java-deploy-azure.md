@@ -4,12 +4,12 @@ description: Ez az oktatóanyag azt mutatja be, hogyan kell üzembe helyezni egy
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 89c49ae530b7a4716bc6e8bf0ea6ccb011847eb8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738909"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702157"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Java-alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
 
@@ -114,10 +114,10 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
 10. Hozzon létre egy Event Hubs-erőforrást a következő paranccsal. Az útmutatásokat követve adja meg a namespaceName, az eventHubName, a consumerGroupName, a sendAuthorizationRule és a receiveAuthorizationRule részleteit.
 
     ```azurecli
-    az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
+    az deployment group create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
-    az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
+    az deployment group create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
     Please provide string value for 'consumerGroupName' (? for help): testeventhubconsumergroup
@@ -176,8 +176,8 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
     }
     ```
 
-13. Megnyitja az **sfdeploy.parameters.json** -t. Módosítsa az alábbi paramétereket, majd mentse a fájlt.
-    - **clusterName** . Csak kisbetűket és számokat használjon.
+13. Megnyitja az **sfdeploy.parameters.json**-t. Módosítsa az alábbi paramétereket, majd mentse a fájlt.
+    - **clusterName**. Csak kisbetűket és számokat használjon.
     - **adminUserName** (ürestől eltérő értékre)
     - **adminPassword** (ürestől eltérő értékre)
 

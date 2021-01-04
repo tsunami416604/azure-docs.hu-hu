@@ -1,7 +1,7 @@
 ---
-title: Adatvédelem megőrzése a WhiteNoise-csomagokkal (előzetes verzió)
+title: Adatvédelem megőrzése a SmartNoise-csomagokkal (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan alkalmazhatja az WhiteNoise-csomagok használatával Azure Machine Learning modellekre vonatkozó differenciált adatvédelmi eljárásokat.
+description: Ismerje meg, hogyan alkalmazhatja az SmartNoise-csomagok használatával Azure Machine Learning modellekre vonatkozó differenciált adatvédelmi eljárásokat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,31 +10,27 @@ ms.custom: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 07/09/2020
-ms.openlocfilehash: 355d96fe5a617effab89fbd038f7f1785215f88f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/21/2020
+ms.openlocfilehash: f004f0f052e466441999c1bfd511823edd6b907e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897683"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722436"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Különbözeti adatvédelem használata Azure Machine Learningban (előzetes verzió)
 
-
-
-Ismerje meg, hogyan alkalmazhatja a modelleket a WhiteNoise Python-csomagok használatával, hogy a különböző adatvédelmi eljárásokat Azure Machine Learning modellekre alkalmazza.
+Ismerje meg, hogyan alkalmazhatja a modelleket a SmartNoise Python-csomagok használatával, hogy a különböző adatvédelmi eljárásokat Azure Machine Learning modellekre alkalmazza.
 
 A különbözeti adatvédelem az adatvédelem arany szabvány szerinti definíciója. Az adatvédelem ezen definícióját betartó rendszerek erős garanciát biztosítanak az adatújjáépítési és-azonosítási támadások széles körére, beleértve a kiegészítő információkat tartalmazó ellenfelek támadásait is. További információ a [differenciált adatvédelem működéséről](./concept-differential-privacy.md).
 
-> [!NOTE]
-> Vegye figyelembe, hogy átnevezjük az eszközkészletet, és az új nevet az elkövetkező hetekben fogjuk bevezetni. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-whitenoise-packages"></a>WhiteNoise-csomagok telepítése
+## <a name="install-smartnoise-packages"></a>SmartNoise-csomagok telepítése
 
 ### <a name="standalone-installation"></a>Önálló telepítés
 
@@ -42,45 +38,45 @@ A kódtárak elosztott Spark-fürtökből való működésre készültek, és ug
 
 Az alábbi utasítások azt feltételezik, hogy a `python` és a `pip` parancsok le vannak képezve a és a rendszerre `python3` `pip3` .
 
-A pip használatával telepítse a [WhiteNoise Python-csomagokat](https://pypi.org/project/opendp-whitenoise/).
+A pip használatával telepítse a [SmartNoise Python-csomagokat](https://pypi.org/project/opendp-smartnoise/).
 
-`pip install opendp-whitenoise`
+`pip install opendp-smartnoise`
 
 A csomagok telepítésének ellenőrzéséhez nyisson meg egy Python-parancssort, és írja be a következőt:
 
 ```python
-import opendp.whitenoise.core
-import opendp.whitenoise.sql
+import opendp.smartnoise.core
+import opendp.smartnoise.sql
 ```
 
 Ha az importálás sikeres, a rendszer telepíti a kódtárakat, és készen áll a használatra.
 
 ### <a name="docker-image"></a>Docker-rendszerkép
 
-WhiteNoise-csomagokat is használhat a Docker segítségével.
+SmartNoise-csomagokat is használhat a Docker segítségével.
 
-Kérje le a `opendp/whitenoise` rendszerképet, hogy a Docker-tároló belsejében a Spark, a Jupyter és a mintakód részét képező kódtárat használja.
+Kérje le a `opendp/smartnoise` rendszerképet, hogy a Docker-tároló belsejében a Spark, a Jupyter és a mintakód részét képező kódtárat használja.
 
 ```sh
-docker pull opendp/whitenoise:privacy
+docker pull opendp/smartnoise:privacy
 ```
 
 Ha kihúzta a rendszerképet, indítsa el a Jupyter-kiszolgálót:
 
 ```sh
-docker run --rm -p 8989:8989 --name whitenoise-run opendp/whitenoise:privacy
+docker run --rm -p 8989:8989 --name smartnoise-run opendp/smartnoise:privacy
 ```
 
-Ez egy Jupyter-kiszolgálót indít el a porton `8989` a `localhost` jelszóval `pass@word99` . Ha a fenti parancssor használatával indítja el a tárolót a névvel `whitenoise-privacy` , a Jupyter-kiszolgálón egy bash-terminált is megnyithat a következő futtatásával:
+Ez egy Jupyter-kiszolgálót indít el a porton `8989` a `localhost` jelszóval `pass@word99` . Ha a fenti parancssor használatával indítja el a tárolót a névvel `smartnoise-privacy` , a Jupyter-kiszolgálón egy bash-terminált is megnyithat a következő futtatásával:
 
 ```sh
-docker exec -it whitenoise-run bash
+docker exec -it smartnoise-run bash
 ```
 
 A Docker-példány törli az összes állapotot leállítás után, így elveszíti a futó példányban létrehozott jegyzetfüzeteket. Ennek orvoslásához kötést köthet egy helyi mappa csatlakoztatásához a tárolóhoz a indításakor:
 
 ```sh
-docker run --rm -p 8989:8989 --name whitenoise-run --mount type=bind,source=/Users/your_name/my-notebooks,target=/home/privacy/my-notebooks opendp/whitenoise:privacy
+docker run --rm -p 8989:8989 --name smartnoise-run --mount type=bind,source=/Users/your_name/my-notebooks,target=/home/privacy/my-notebooks opendp/smartnoise:privacy
 ```
 
 A *saját jegyzetfüzetek* mappájában létrehozott jegyzetfüzetek a helyi fájlrendszerben lesznek tárolva.
@@ -95,7 +91,7 @@ Ez a példa a kaliforniai nyilvános használati adatokra (PUMS) hivatkozik, ame
 import os
 import sys
 import numpy as np
-import opendp.whitenoise.core as wn
+import opendp.smartnoise.core as sn
 
 data_path = os.path.join('.', 'data', 'PUMS_california_demographics_1000', 'data.csv')
 var_names = ["age", "sex", "educ", "race", "income", "married", "pid"]
@@ -104,19 +100,19 @@ var_names = ["age", "sex", "educ", "race", "income", "married", "pid"]
 Ebben a példában az átlagot és a kor eltérését számítjuk ki.  A `epsilon` rendszer összesen 1,0 (epszilon adatvédelmi paramétert használunk, amely a számítási feladatokhoz tartozó két mennyiségre kiterjedő adatvédelmi költségvetést terjeszti. További információ az [adatvédelmi mérőszámokról](concept-differential-privacy.md#differential-privacy-metrics).
 
 ```python
-with wn.Analysis() as analysis:
+with sn.Analysis() as analysis:
     # load data
-    data = wn.Dataset(path = data_path, column_names = var_names)
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
     # get mean of age
-    age_mean = wn.dp_mean(data = wn.cast(data['age'], type="FLOAT"),
+    age_mean = sn.dp_mean(data = sn.cast(data['age'], type="FLOAT"),
                           privacy_usage = {'epsilon': .65},
                           data_lower = 0.,
                           data_upper = 100.,
                           data_n = 1000
                          )
     # get variance of age
-    age_var = wn.dp_variance(data = wn.cast(data['age'], type="FLOAT"),
+    age_var = sn.dp_variance(data = sn.cast(data['age'], type="FLOAT"),
                              privacy_usage = {'epsilon': .35},
                              data_lower = 0.,
                              data_upper = 100.,
@@ -152,23 +148,23 @@ A könyvtár használatával összetettebb elemzési diagramokat hozhat létre, 
 | Darabszám         | Gauss   | Típuskonverzió       |
 | Hisztogram     | Lévő értékek mértani  | Befogó   |
 | Középérték          | Laplace    | Digitalizálni   |
-| Kvantilisek     |            | Szűrő     |
+| Kvantilisek     |            | Szűrés     |
 | Sum           |            | Beszámítás |
 | Variancia/szórás |      | Átalakítás  |
 
-További részletekért tekintse meg az [adatelemzési jegyzetfüzetet](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
+További részletekért tekintse meg az [adatelemzési jegyzetfüzetet](https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
 
 ## <a name="approximate-utility-of-differentially-private-releases"></a>A differentially privát kiadásainak hozzávetőleges segédprogramja
 
 Mivel a differenciált adatvédelem a zaj kalibrálásával működik, az adatvédelmi kockázattól függően a kiadások segédprogramja eltérő lehet.  Általában az egyes személyek elleni védelemhez szükséges zaj elhanyagolható, mivel a mintavételezési méretek nagy méretűek, de az eredmény az, hogy egyetlen személyt céloznak meg.  Az elemzők megtekinthetik a kiadás pontossági információit annak meghatározására, hogy a kiadás milyen hasznos:
 
 ```python
-with wn.Analysis() as analysis:
+with sn.Analysis() as analysis:
     # load data
-    data = wn.Dataset(path = data_path, column_names = var_names)
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
     # get mean of age
-    age_mean = wn.dp_mean(data = wn.cast(data['age'], type="FLOAT"),
+    age_mean = sn.dp_mean(data = sn.cast(data['age'], type="FLOAT"),
                           privacy_usage = {'epsilon': .65},
                           data_lower = 0.,
                           data_upper = 100.,
@@ -202,11 +198,11 @@ A beépített `dp_histogram` függvény differentially saját hisztogramokat hoz
 ```python
 income_edges = list(range(0, 100000, 10000))
 
-with wn.Analysis() as analysis:
-    data = wn.Dataset(path = data_path, column_names = var_names)
+with sn.Analysis() as analysis:
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
-    income_histogram = wn.dp_histogram(
-            wn.cast(data['income'], type='int', lower=0, upper=100),
+    income_histogram = sn.dp_histogram(
+            sn.cast(data['income'], type='int', lower=0, upper=100),
             edges = income_edges,
             upper = 1000,
             null_value = 150,
@@ -216,11 +212,11 @@ with wn.Analysis() as analysis:
 
 Mivel a rendszer a hisztogram-raktárhelyek között különállóan particionálja az egyéneket, az adatvédelmi költségek csak egyszer szerepelnek a hisztogramon, még akkor is, ha a hisztogram sok raktárhelyet tartalmaz.
 
-További információt a hisztogramok [jegyzetfüzetben](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/histograms.ipynb)talál.
+További információt a hisztogramok [jegyzetfüzetben](https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/histograms.ipynb)talál.
 
 ## <a name="generate-a-covariance-matrix"></a>Szórási mátrix létrehozása
 
-A WhiteNoise három különböző funkciót kínál a `dp_covariance` működéséhez:
+A SmartNoise három különböző funkciót kínál a `dp_covariance` működéséhez:
 
 - Két vektor közötti eltérés
 - Mátrix szórási mátrixa
@@ -229,13 +225,13 @@ A WhiteNoise három különböző funkciót kínál a `dp_covariance` működés
 Az alábbi példa egy Skaláris szórásos számítást mutat be:
 
 ```python
-with wn.Analysis() as analysis:
-    wn_data = wn.Dataset(path = data_path, column_names = var_names)
+with sn.Analysis() as analysis:
+    wn_data = sn.Dataset(path = data_path, column_names = var_names)
 
-    age_income_cov_scalar = wn.dp_covariance(
-      left = wn.cast(wn_data['age'], 
+    age_income_cov_scalar = sn.dp_covariance(
+      left = sn.cast(wn_data['age'], 
       type = "FLOAT"), 
-      right = wn.cast(wn_data['income'], 
+      right = sn.cast(wn_data['income'], 
       type = "FLOAT"), 
       privacy_usage = {'epsilon': 1.0},
       left_lower = 0., 
@@ -247,8 +243,8 @@ with wn.Analysis() as analysis:
 ```
 
 További információ: a [szórásos jegyzetfüzet](
-https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/covariance.ipynb)
+https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/covariance.ipynb)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ismerkedjen meg a [WhiteNoise-minta notebookokkal](https://github.com/opendifferentialprivacy/whitenoise-samples/tree/master/analysis).
+- Ismerkedjen meg a [SmartNoise-minta notebookokkal](https://github.com/opendifferentialprivacy/smartnoise-samples/tree/master/analysis).

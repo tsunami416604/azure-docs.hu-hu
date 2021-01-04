@@ -1,14 +1,14 @@
 ---
 title: Az Azure arc-kompatibilis kiszolgálók ügynökének újdonságai
-description: Ebben a cikkben az Azure arc használatára képes kiszolgálók ügynökének kibocsátási megjegyzései szerepelnek. Számos összefoglaló probléma esetén további részletekre mutató hivatkozásokat talál.
+description: Ebben a cikkben az Azure arc használatára képes kiszolgálók ügynökének kibocsátási megjegyzései szerepelnek. Számos összefoglaló probléma esetén további részletekre mutató hivatkozások találhatók.
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 12/21/2020
+ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505647"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722521"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Az Azure arc-kompatibilis kiszolgálók ügynökének újdonságai
 
@@ -20,6 +20,8 @@ Az Azure arc-kompatibilis kiszolgálókhoz csatlakoztatott gépi ügynök folyam
 
 ## <a name="december-2020"></a>2020. december
 
+Verzió: 1,3
+
 ### <a name="new-feature"></a>Új funkció
 
 A Windows Server 2008 R2 támogatása
@@ -30,11 +32,15 @@ Megoldott probléma, amely megakadályozza, hogy a Linux egyéni parancsfájl-b�
 
 ## <a name="november-2020"></a>2020. november
 
+Verzió: 1,2
+
 ### <a name="fixed"></a>Rögzített méretű lemez
 
 Kijavítva a probléma, hogy a proxy konfigurációja elvész az RPM-alapú disztribúciók frissítése után.
 
 ## <a name="october-2020"></a>2020. október
+
+Verzió: 1.1
 
 ### <a name="fixed"></a>Rögzített méretű lemez
 
@@ -61,7 +67,7 @@ Verzió: 1,0 (általánosan elérhető)
 - `azcmagent show --json`Lehetőség a kimeneti ügynök állapotának könnyen értelmezhető formátumban való hozzáadására.
 - A kimenetben szereplő jelző hozzáadva `azcmagent show` azt jelzi, hogy a kiszolgáló az Azure-ban üzemeltetett virtuális gépen van-e.
 - Hozzáadott `azcmagent disconnect --force-local-only` beállítás, amely lehetővé teszi a helyi ügynök állapotának alaphelyzetbe állítását, ha az Azure-szolgáltatás nem érhető el.
-- Új `azcmagent connect --cloud` lehetőség a további felhők támogatásához. Ebben a kiadásban csak az Azure-t támogatja a szolgáltatás az ügynök kiadásának időpontjában.
+- `azcmagent connect --cloud`További lehetőség a más felhők támogatásához. Ebben a kiadásban csak az Azure-t támogatja a szolgáltatás az ügynök kiadásának időpontjában.
 - Az ügynök honosítva lett az Azure által támogatott nyelvekre.
 
 ### <a name="fixed"></a>Rögzített méretű lemez
@@ -83,6 +89,6 @@ Verzió: 0,11
 
 Ha a Linux-ügynök egy régebbi verzióját használja, és a proxykiszolgáló használatára van konfigurálva, akkor a frissítés után újra kell konfigurálnia a proxykiszolgáló-beállítást. Ehhez futtassa a parancsot `sudo azcmagent_proxy add http://proxyserver.local:83` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az arc-kompatibilis kiszolgálók több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények megismeréséhez, az ügynök műszaki részleteihez és a telepítési módszerekhez.

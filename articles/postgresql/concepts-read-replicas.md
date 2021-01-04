@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 8fabf8169270c3162604b6535a6cf2fb07cd9a9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: dc19b95e891235ac35c703adef50a23a9f70fbdb
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422144"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706796"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -71,6 +71,8 @@ Minden replika engedélyezve van a tárterület [automatikus növelésére](conc
 Az olvasási replika funkció PostgreSQL fizikai replikálást, nem logikai replikálást használ. A replikációs tárolóhelyek szolgáltatással történő folyamatos átvitel az alapértelmezett működési mód. Ha szükséges, a rendszer naplózza a szállítást a felzárkózás érdekében.
 
 Megtudhatja, hogyan [hozhat létre olvasási replikát a Azure Portalban](howto-read-replicas-portal.md).
+
+Ha a forrás PostgreSQL-kiszolgáló az ügyfél által felügyelt kulcsokkal van titkosítva, további szempontokért tekintse meg a [dokumentációt](concepts-data-encryption-postgresql.md) .
 
 ## <a name="connect-to-a-replica"></a>Kapcsolódás replikához
 Replika létrehozásakor nem örökli az elsődleges kiszolgáló tűzfalszabályok vagy VNet szolgáltatásának végpontját. Ezeket a szabályokat a replika egymástól függetlenül kell beállítani.
@@ -166,8 +168,8 @@ A tűzfalszabályok, a virtuális hálózati szabályok és a paraméterek beál
 A virtuális mag méretezése, illetve a általános célú és a memória optimalizálása:
 * A PostgreSQL megköveteli `max_connections` , hogy a másodlagos kiszolgáló beállítása nagyobb legyen, [mint az elsődlegesnél megadott beállítás](https://www.postgresql.org/docs/current/hot-standby.html), ellenkező esetben a másodlagos nem indul el.
 * Azure Database for PostgreSQL az egyes kiszolgálók maximálisan engedélyezett kapcsolatai a számítási SKU-ra vannak rögzítve, mivel a kapcsolatok memóriát foglalnak magukban. További információ a [max_connections és a számítási SKU közötti leképezésről](concepts-limits.md).
-* **Felskálázás** : először a replika számítási felskálázása, majd az elsődleges skálázás. Ez a sorrend megakadályozza, hogy a hibák megsértsék a `max_connections` követelményt.
-* **Lefelé méretezés** : először az elsődleges számítási felskálázás, majd a replika skálázása. Ha az elsődlegesnél alacsonyabbra próbálja méretezni a replikát, akkor a rendszer hibát jelez, mivel ez megsérti a `max_connections` követelményt.
+* **Felskálázás**: először a replika számítási felskálázása, majd az elsődleges skálázás. Ez a sorrend megakadályozza, hogy a hibák megsértsék a `max_connections` követelményt.
+* **Lefelé méretezés**: először az elsődleges számítási felskálázás, majd a replika skálázása. Ha az elsődlegesnél alacsonyabbra próbálja méretezni a replikát, akkor a rendszer hibát jelez, mivel ez megsérti a `max_connections` követelményt.
 
 Tárterület skálázása:
 * Az összes replikán engedélyezve van a tárterület automatikus növekedése, hogy megakadályozza a teljes replika replikálási problémáit. Ez a beállítás nem tiltható le.

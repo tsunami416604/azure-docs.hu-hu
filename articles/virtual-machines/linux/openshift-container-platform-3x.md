@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fab8f88a39730411503af273902a53f169e3fe57
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368149"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703736"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 üzembe helyezése az Azure-ban
 
@@ -32,11 +32,11 @@ Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manage
 
 ### <a name="private-clusters"></a>Privát fürtök
 
-A privát OpenShift-fürtök üzembe helyezéséhez többre van szükség, mint a Master Load Balancerhez (webkonzol) vagy az infra Load Balancerhez (útválasztó) tartozó nyilvános IP-címekhez való hozzáférés.  A privát fürtök általában egy egyéni DNS-kiszolgálót (nem az alapértelmezett Azure DNS), egy egyéni tartománynevet (például contoso.com) és előre definiált virtuális hálózatot (k) használnak.  A privát fürtök esetében előre be kell állítania a virtuális hálózatot az összes megfelelő alhálózattal és a DNS-kiszolgáló beállításaival.  Ezután a **existingMasterSubnetReference**, a **existingInfraSubnetReference**, a **existingCnsSubnetReference**és a **existingNodeSubnetReference** használatával adja meg a fürt által használt meglévő alhálózatot.
+A privát OpenShift-fürtök üzembe helyezéséhez többre van szükség, mint a Master Load Balancerhez (webkonzol) vagy az infra Load Balancerhez (útválasztó) tartozó nyilvános IP-címekhez való hozzáférés.  A privát fürtök általában egy egyéni DNS-kiszolgálót (nem az alapértelmezett Azure DNS), egy egyéni tartománynevet (például contoso.com) és előre definiált virtuális hálózatot (k) használnak.  A privát fürtök esetében előre be kell állítania a virtuális hálózatot az összes megfelelő alhálózattal és a DNS-kiszolgáló beállításaival.  Ezután a **existingMasterSubnetReference**, a **existingInfraSubnetReference**, a **existingCnsSubnetReference** és a **existingNodeSubnetReference** használatával adja meg a fürt által használt meglévő alhálózatot.
 
-Ha a titkos főkiszolgáló van kiválasztva (**masterClusterType**= Private), a **masterPrivateClusterIp**statikus magánhálózati IP-címet kell megadni.  Ezt az IP-címet a Master Load Balancer elülső végéhez rendeli a rendszer.  Az IP-nek a fő alhálózat CIDR belül kell lennie, és nincs használatban.  a **masterClusterDnsType** "Custom" értékre kell beállítani, és a **masterClusterDns**számára meg kell adni a fő DNS-nevet.  A DNS-névnek a statikus magánhálózati IP-címhez kell tartoznia, és a konzol a főcsomópontokon való elérésére lesz használva.
+Ha a titkos főkiszolgáló van kiválasztva (**masterClusterType**= Private), a **masterPrivateClusterIp** statikus magánhálózati IP-címet kell megadni.  Ezt az IP-címet a Master Load Balancer elülső végéhez rendeli a rendszer.  Az IP-nek a fő alhálózat CIDR belül kell lennie, és nincs használatban.  a **masterClusterDnsType** "Custom" értékre kell beállítani, és a **masterClusterDns** számára meg kell adni a fő DNS-nevet.  A DNS-névnek a statikus magánhálózati IP-címhez kell tartoznia, és a konzol a főcsomópontokon való elérésére lesz használva.
 
-Ha privát útválasztó van kiválasztva (**routerClusterType**= Private), meg kell adni egy statikus magánhálózati IP-címet a **routerPrivateClusterIp**számára.  Ezt az IP-címet az infra Load Balancer elülső végéhez rendeli hozzá a rendszer.  Az IP-nek az infra-alhálózat CIDR belül kell lennie, és nincs használatban.  a **routingSubDomainType** az "egyéni" értékre kell beállítani, és az Útválasztás helyettesítő karakteres DNS-nevét meg kell adni a **routingSubDomain**számára.  
+Ha privát útválasztó van kiválasztva (**routerClusterType**= Private), meg kell adni egy statikus magánhálózati IP-címet a **routerPrivateClusterIp** számára.  Ezt az IP-címet az infra Load Balancer elülső végéhez rendeli hozzá a rendszer.  Az IP-nek az infra-alhálózat CIDR belül kell lennie, és nincs használatban.  a **routingSubDomainType** az "egyéni" értékre kell beállítani, és az Útválasztás helyettesítő karakteres DNS-nevét meg kell adni a **routingSubDomain** számára.  
 
 Ha a Private Masters és a Private router van kiválasztva, akkor az egyéni tartománynevet is meg kell adni a **tartománynévhez** .
 
@@ -295,9 +295,9 @@ A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért 
 | `existingInfraSubnetReference` | Teljes hivatkozás az infra-csomópontok meglévő alhálózatára. Új vNet/alhálózat létrehozásakor nem szükséges |  |  |
 | `existingCnsSubnetReference` | Teljes hivatkozás a meglévő alhálózatra a CNS-csomópontok számára. Új vNet/alhálózat létrehozásakor nem szükséges |  |  |
 | `existingNodeSubnetReference` | Teljes hivatkozás a meglévő alhálózatra a számítási csomópontok számára. Új vNet/alhálózat létrehozásakor nem szükséges |  |  |
-| `masterClusterType` | Annak megadása, hogy a fürt magán-vagy nyilvános főkiszolgálói csomópontokat használ-e. Ha a Private lehetőséget választotta, a fő csomópontok nem lesznek elérhetők az interneten nyilvános IP-címen keresztül. Ehelyett a saját IP-címet fogja használni a `masterPrivateClusterIp` | nyilvános <br> titkos | nyilvános |
+| `masterClusterType` | Annak megadása, hogy a fürt magán-vagy nyilvános főkiszolgálói csomópontokat használ-e. Ha a Private lehetőséget választotta, a fő csomópontok nem lesznek elérhetők az interneten nyilvános IP-címen keresztül. Ehelyett a saját IP-címet fogja használni a `masterPrivateClusterIp` | public <br> titkos | public |
 | `masterPrivateClusterIp` | Ha a titkos főcsomópontok ki vannak választva, akkor meg kell adni egy magánhálózati IP-címet a főcsomópontok belső terheléselosztó általi használatra. Ennek a statikus IP-nek a főalhálózat CIDR-blokkjában kell lennie, és még nincs használatban. Ha a nyilvános főkiszolgálói csomópontok ki vannak választva, ez az érték nem lesz használatban, de még meg kell adni. |  | 10.1.0.200 |
-| `routerClusterType` | Annak megadása, hogy a fürt magán-vagy nyilvános infra-csomópontokat használ-e. Ha a Private lehetőséget választotta, az infra-csomópontok nem lesznek elérhetők az interneten nyilvános IP-címen keresztül. Ehelyett a saját IP-címet fogja használni a `routerPrivateClusterIp` | nyilvános <br> titkos | nyilvános |
+| `routerClusterType` | Annak megadása, hogy a fürt magán-vagy nyilvános infra-csomópontokat használ-e. Ha a Private lehetőséget választotta, az infra-csomópontok nem lesznek elérhetők az interneten nyilvános IP-címen keresztül. Ehelyett a saját IP-címet fogja használni a `routerPrivateClusterIp` | public <br> titkos | public |
 | `routerPrivateClusterIp` | Ha privát infra-csomópontok vannak kiválasztva, akkor meg kell adni egy magánhálózati IP-címet, amelyet az infra-csomópontok belső terheléselosztó használ. Ennek a statikus IP-nek az infra-alhálózat CIDR-blokkjában kell lennie, és még nincs használatban. Ha a nyilvános infra-csomópontok ki vannak választva, ez az érték nem lesz használatban, de továbbra is meg kell adni. |  | 10.2.0.200 |
 | `routingCertType` | Egyéni tanúsítvány használata az útválasztási tartományhoz vagy az alapértelmezett önaláírt tanúsítványhoz – kövesse az **Egyéni tanúsítványok** szakasz utasításait. | selfsigned <br> egyéni | selfsigned |
 | `masterCertType` | Egyéni tanúsítvány használata a főtartományhoz vagy az alapértelmezett önaláírt tanúsítványhoz – kövesse az **Egyéni tanúsítványok** szakasz utasításait. | selfsigned <br> egyéni | selfsigned |
@@ -312,7 +312,7 @@ A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért 
 A következő példa a OpenShift-fürtöt és az összes kapcsolódó erőforrást egy openshiftrg nevű erőforráscsoporthoz helyezi üzembe a myOpenShiftCluster központi telepítési nevével. A sablon közvetlenül a GitHub-tárházból van hivatkozva, és a azuredeploy.parameters.jsfájl nevű helyi Parameters fájl van használatban.
 
 ```azurecli 
-az group deployment create -g openshiftrg --name myOpenShiftCluster \
+az deployment group create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```
@@ -330,7 +330,7 @@ Ha nem szeretné összekapcsolni a parancssort, amíg a telepítés befejeződik
 
 ## <a name="connect-to-the-openshift-cluster"></a>Kapcsolódás a OpenShift-fürthöz
 
-Az üzembe helyezés befejezésekor a rendszer lekéri a kapcsolódást a központi telepítés kimenet szakaszából. Kapcsolódjon a OpenShift-konzolhoz a böngészőben a **OpenShift-konzol URL-címének**használatával. Azt is megteheti, hogy SSH-t használ a megerősített gazdagépen. Az alábbi példa egy olyan példát mutat be, ahol a rendszergazdai Felhasználónév clusteradmin, a megerősített nyilvános IP-cím DNS teljes tartományneve pedig bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Az üzembe helyezés befejezésekor a rendszer lekéri a kapcsolódást a központi telepítés kimenet szakaszából. Kapcsolódjon a OpenShift-konzolhoz a böngészőben a **OpenShift-konzol URL-címének** használatával. Azt is megteheti, hogy SSH-t használ a megerősített gazdagépen. Az alábbi példa egy olyan példát mutat be, ahol a rendszergazdai Felhasználónév clusteradmin, a megerősített nyilvános IP-cím DNS teljes tartományneve pedig bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

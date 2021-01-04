@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: e8b8c89b94b2fbb191eee0ea57e957802a54204e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 35231eda43e766b5febd8ba90c4d92a44537e0ef
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126974"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703755"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics kimenet Azure Cosmos DB  
 A Azure Stream Analytics a JSON-kimenethez [Azure Cosmos db](https://azure.microsoft.com/services/documentdb/) , így lehetővé teszi az adatarchiválást és az alacsony késésű lekérdezéseket a strukturálatlan JSON-adatokat illetően. Ez a dokumentum a konfiguráció megvalósításának ajánlott eljárásait ismerteti. Javasoljuk, hogy a 1,2-as kompatibilitási szintre állítsa be a feladatot, ha kimenetként Azure Cosmos DB használ.
@@ -21,7 +21,7 @@ A Azure Stream Analytics a JSON-kimenethez [Azure Cosmos db](https://azure.micro
 Ha nem ismeri a Azure Cosmos DBt, az első lépésekhez tekintse meg a [Azure Cosmos db dokumentációját](../cosmos-db/index.yml) . 
 
 > [!Note]
-> A Stream Analytics jelenleg csak az *SQL API* -n keresztül támogatja a Azure Cosmos db való kapcsolódást.
+> A Stream Analytics jelenleg csak az *SQL API*-n keresztül támogatja a Azure Cosmos db való kapcsolódást.
 > Más Azure Cosmos DB API-k még nem támogatottak. Ha a Stream Analytics Azure Cosmos DB más API-kkal létrehozott fiókokra mutat, előfordulhat, hogy az adathalmazok nem lesznek megfelelően tárolva. 
 
 ## <a name="basics-of-azure-cosmos-db-as-an-output-target"></a>A Azure Cosmos DB alapjai a kimeneti célként
@@ -97,7 +97,7 @@ A bejövő események aránya Event Hubsban két alkalommal magasabb, mint Azure
 
 ![Azure Cosmos DB mérőszámok összehasonlítása](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-A 1,2-as verzióban a Stream Analytics sokkal intelligensebb a rendelkezésre álló átviteli sebesség 100 százalékának kihasználásával Azure Cosmos DB és a szabályozástól és a díjszabástól való korlátozástól függően nagyon kevés újraküldéssel. Ez jobb felhasználói élményt nyújt más számítási feladatokhoz, például a tárolón futó lekérdezésekhez. Ha szeretné megtekinteni, hogy a Stream Analytics hogyan méretezi a Azure Cosmos DB-et a 1 000-10 000 üzenetek másodpercenkénti fogadójának, próbálja ki  [ezt az Azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)-beli projektet.
+A 1,2-as verzióban a Stream Analytics sokkal intelligensebb a rendelkezésre álló átviteli sebesség 100 százalékának kihasználásával Azure Cosmos DB és a szabályozástól és a díjszabástól való korlátozástól függően nagyon kevés újraküldéssel. Ez jobb felhasználói élményt nyújt más számítási feladatokhoz, például a tárolón futó lekérdezésekhez. Ha szeretné megtekinteni, hogy a Stream Analytics hogyan méretezi a Azure Cosmos DB-et a 1 000-10 000 üzenetek másodpercenkénti fogadójának, próbálja ki  [ezt az Azure](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb)-beli projektet.
 
 A Azure Cosmos DB kimenetének teljesítménye megegyezik a 1,0-es és a 1,1-es értékkel. Azt *javasoljuk* , hogy a Stream Analytics kompatibilitási 1,2 szintjének használatát Azure Cosmos db.
 
@@ -146,7 +146,7 @@ Ha egy átmeneti hiba, a szolgáltatás nem érhető el, vagy a szabályozás ne
 
 3. Az `Id` oszlop nem létezik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md) 
 * [Azure Stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md)

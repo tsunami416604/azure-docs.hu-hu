@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512171"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723978"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
@@ -160,7 +160,7 @@ Lehetősége van a Premium Storage (SSD) kiválasztására az Azure-fájlmegoszt
 
 Még mindig nem biztos?
 
-* Ha [prémium szintű Azure-fájlmegosztás teljesítményére](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)van szüksége, válassza a Premium Storage lehetőséget.
+* Ha [prémium szintű Azure-fájlmegosztás teljesítményére](understanding-billing.md#provisioned-billing)van szüksége, válassza a Premium Storage lehetőséget.
 * Válassza a standard Storage lehetőséget az általános célú fájlkiszolgáló számítási feladataihoz, amely magában foglalja a gyors és az archivált adatok mennyiségét. Akkor is válassza a standard Storage-t, ha a felhőben lévő megosztáson csak a terhelés Azure File Sync.
 
 #### <a name="account-kind"></a>Fiók altípusa
@@ -267,7 +267,7 @@ Az áttelepítési terv részeként dönthet úgy, hogy a StorSimple-köteten l�
 
 A leképezés balról jobbra: [\Source Path] \> [\Target Path].
 
-|Szemantikai karakter          | Jelentés  |
+|Szemantikai karakter          | Értelmezés  |
 |:---------------------------|:---------|
 | **\\**                     | Legfelső szintű kijelző.       |
 | **\>**                     | [Forrás] és [cél-hozzárendelés] operátor.     |
@@ -419,7 +419,7 @@ A Azure Portal használatával megtekintheti, hogy a névtér teljesen megérkez
 
 * Jelentkezzen be a Azure Portalba, és lépjen a szinkronizálási csoportba. A szinkronizálási csoport és a kiszolgálói végpont szinkronizálási állapotának bejelölése.
 * Az érdekes irány letöltése. Ha a kiszolgálói végpont újonnan lett kiépítve, akkor megjelenik a **kezdeti szinkronizálás**, ami azt jelzi, hogy a névtér még mindig leáll.
-Ezt követően a névtér teljes mértékben **Initial sync** ki lesz töltve a kiszolgálón. Most már folytathatja a helyi RoboCopyt is.
+Ezt követően a névtér teljes mértékben ki lesz töltve a kiszolgálón. Most már folytathatja a helyi RoboCopyt is.
 
 #### <a name="windows-server-event-viewer"></a>Windows Server Eseménynapló
 
@@ -430,7 +430,7 @@ A Windows Server-példányon lévő Eseménynapló is megadhatja, ha a névtér 
 1. Keresse meg a legutóbbi, **9102**-as eseményt, amely megfelel egy befejezett szinkronizálási munkamenetnek.
 1. Válassza a **részletek** lehetőséget, és győződjön meg arról, hogy egy olyan eseményt keres, ahol a **SyncDirection** érték **le van letöltve**.
 1. Arra az időre, amikor a névtér befejezte a letöltést a-kiszolgálóra, egyetlen esemény lesz a **forgatókönyv**, a **FullGhostedSync** érték és a **HResult**  =  **0**.
-1. Ha kihagyja ezt az eseményt, további **9102 eseményt** is megkereshet a **SyncDirection**  =  **letöltésével** és a **Scenario**  =  **"RegularSync"** forgatókönyvvel. Az események egyikének megkeresése azt is jelzi, hogy a névtér befejezte a letöltést és a szinkronizálást a rendszeres szinkronizálási munkamenetek miatt, függetlenül attól, hogy van-e valami szinkronizálás, vagy sem.
+1. Ha kihagyja ezt az eseményt, további **9102 eseményt** is megkereshet a **SyncDirection**  =  **letöltésével** és a   =  **"RegularSync"** forgatókönyvvel. Az események egyikének megkeresése azt is jelzi, hogy a névtér befejezte a letöltést és a szinkronizálást a rendszeres szinkronizálási munkamenetek miatt, függetlenül attól, hogy van-e valami szinkronizálás, vagy sem.
 
 ### <a name="a-final-robocopy"></a>A végső RoboCopy
 
@@ -567,7 +567,7 @@ A Migrálás befejeződött.
 > Továbbra is kérdése van vagy probléma merült fel?</br>
 > Itt segítünk AzureFilesMigration@microsoft.com .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg [Azure file Syncával: aka.MS/AFS](./storage-sync-files-planning.md).
 * Ismerje meg a [felhőre vonatkozó szintű](storage-sync-cloud-tiering.md) házirendek rugalmasságát.

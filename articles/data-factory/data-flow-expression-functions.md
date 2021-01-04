@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/01/2020
-ms.openlocfilehash: 875b84613bede922b01b1043f2d6dab9aedbc2e8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 12/18/2020
+ms.openlocfilehash: f715a51367a82f190d394ecb8e10dea24ca70e97
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436929"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706915"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban
 
@@ -1890,6 +1890,28 @@ Oszlop értékének kiválasztása az adatfolyamban lévő relatív pozíció (1
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+
+## <a name="cached-lookup-functions"></a>Gyorsítótárazott keresési függvények
+A következő függvények csak akkor érhetők el, ha gyorsítótárazott keresést használ a gyorsítótáras fogadó betöltéséhez.
+___
+### <code>lookup</code>
+<code><b>lookup(key, key2, ...) => complex[]</b></code><br/><br/>
+Megkeresi az első sort a gyorsítótárazott fogadóból a megadott kulcsokkal, amelyek megfelelnek a gyorsítótárazott fogadó kulcsainak.
+* ``cacheSink#lookup(movieId)``  
+___
+### <code>mlookup</code>
+<code><b>mlookup(key, key2, ...) => complex[]</b></code><br/><br/>
+A gyorsítótárazott fogadó összes egyező sorát megkeresi a megadott kulcsokkal, amelyek megfelelnek a gyorsítótárazott fogadó kulcsainak.
+* ``cacheSink#mlookup(movieId)``  
+___
+### <code>output</code>
+<code><b>output() => any</b></code><br/><br/>
+A gyorsítótár-fogadó eredményének első sorát adja vissza. * ``cacheSink#output()``  
+___
+### <code>outputs</code>
+<code><b>output() => any</b></code><br/><br/>
+A gyorsítótár-fogadó eredményének teljes kimeneti sorát adja vissza. * ``cacheSink#outputs()``
+___
 
 ## <a name="window-functions"></a>Ablakfunkciók
 A következő függvények csak az ablakos átalakításokban érhetők el.

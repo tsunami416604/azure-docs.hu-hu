@@ -11,18 +11,18 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: a87c08d81724a6639fce6b6673b139b3ef94e410
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.date: 12/19/2020
+ms.openlocfilehash: 8fb6d319cacf85630b2c400cd18d14487725f925
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680050"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703967"
 ---
-# <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányban lévő adatbázis lekérdezése a Python használatával
+# <a name="quickstart-use-python-to-query-a-database"></a>Gyors útmutató: adatbázisok lekérdezése a Python használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Ebben a rövid útmutatóban a Python használatával csatlakozhat Azure SQL Database vagy az Azure SQL felügyelt példányához, és a T-SQL-utasítások használatával adatokat kérdez le.
+Ebben a rövid útmutatóban a Python használatával kapcsolódhat Azure SQL Databasehoz, az Azure SQL felügyelt példányához vagy a szinapszis SQL Database-hez, és T-SQL-utasítások használatával adatokat lehet lekérdezni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +30,9 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-[!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
+- Egy adatbázis, amelyen le fogja futtatni a lekérdezést.
+
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 - [Python](https://python.org/downloads) 3 és kapcsolódó szoftverek
 
@@ -57,27 +59,11 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
 ---
 A Python és az adatbázis Azure SQL Databaseban való megismeréséhez lásd: [Azure SQL Database kódtárak a Pythonhoz](/python/api/overview/azure/sql), a [pyodbc adattárhoz](https://github.com/mkleehammer/pyodbc/wiki/)és egy [pyodbc-mintához](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
-## <a name="get-server-connection-information"></a>Kiszolgáló-kapcsolatok adatainak beolvasása
-
-A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok lekérése. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-
-2. Nyissa meg az **SQL-adatbázisok**  vagy az SQL- **felügyelt példányok** lapot.
-
-3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett, Azure SQL Database vagy a **gazdagép** melletti teljes kiszolgálónevet (vagy IP-címet) egy Azure SQL felügyelt példányhoz, vagy SQL Server az Azure virtuális gépen. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
-
-> [!NOTE]
-> SQL Server Azure-beli virtuális gépen való kapcsolódásával kapcsolatos információkért lásd: [kapcsolódás SQL Server-példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
-
 ## <a name="create-code-to-query-your-database"></a>Kód létrehozása az adatbázis lekérdezéséhez 
 
 1. Egy szövegszerkesztőben hozzon létre egy új, *sqltest.py* nevű fájlt.  
    
-1. Adja hozzá a következő kódot. Helyettesítse be a, a, a és a saját értékeit \<server> \<database> \<username> \<password> .
-   
-   >[!IMPORTANT]
-   >Az ebben a példában szereplő kód a minta AdventureWorksLT-adatait használja, amelyeket az adatbázis létrehozásakor választhat forrásként. Ha az adatbázis különböző adatokkal rendelkezik, a SELECT lekérdezésben használja a saját adatbázisában lévő táblákat. 
+1. Adja hozzá a következő kódot. Szerezze be a kapcsolatok adatait az előfeltételek szakaszban, és cserélje le a,,, és a saját értékeit \<server> \<database> \<username> \<password> .
    
    ```python
    import pyodbc
@@ -105,9 +91,9 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
    python sqltest.py
    ```
 
-1. Győződjön meg arról, hogy a 20 legfontosabb kategória/termék sorait adja vissza, majd zárjuk be a parancssorablakot.
+1. Győződjön meg arról, hogy az adatbázisokat és azok rendezéseit adja vissza, majd a parancsablakban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)
 - [Microsoft Python-illesztőprogramok a SQL Server](/sql/connect/python/python-driver-for-sql-server/)

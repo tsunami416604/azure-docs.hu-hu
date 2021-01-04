@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: b2bf406dcab626b3ac08caf1a21ffea9332d3ca2
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672644"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706932"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -30,7 +30,7 @@ A függőségi befecskendezés használata előtt telepítenie kell a következ�
 
 - A [Microsoft. net. SDK. functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) csomag 1.0.28 vagy újabb verziója
 
-- [Microsoft. bővítmény. DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (jelenleg csak 3. x és korábbi verziók támogatottak)
+- [Microsoft. Extensions. DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (jelenleg csak 3. x és korábbi verziók támogatottak)
 
 ## <a name="register-services"></a>Szolgáltatások regisztrálása
 
@@ -190,7 +190,7 @@ A naplózási szintekkel kapcsolatos további információkért lásd: a [napló
 
 A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
 
-|Szolgáltatástípus|Élettartama|Description|
+|Szolgáltatástípus|Élettartama|Leírás|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|
@@ -310,7 +310,7 @@ Alapértelmezés szerint a konfigurációs fájlok (például *aappsettings.js* 
 > [!IMPORTANT]
 > A felhasználási vagy prémium csomagokban futó Function apps esetében az eseményindítókban használt konfigurációs értékek módosítása a skálázási hibákhoz vezethet. Ha az osztály ezen tulajdonságok bármelyikét megváltoztatja, a `FunctionsStartup` Function app indítási hibát eredményez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387557"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704418"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>DPDK beállítása Linux rendszerű virtuális gépen
 
@@ -50,7 +50,7 @@ Az Azure Marketplace-ről a következő disztribúciók támogatottak:
 
 **Egyéni kernel-támogatás**
 
-A nem felsorolt Linux kernel-verziók esetében lásd: az [Azure-ban hangolt Linux-kernel létrehozásához szükséges javítások](https://github.com/microsoft/azure-linux-kernel). További információért vegye fel a kapcsolatot a következővel: [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) . 
+A nem felsorolt Linux kernel-verziók esetében lásd: az [Azure-ban hangolt Linux-kernel létrehozásához szükséges javítások](https://github.com/microsoft/azure-linux-kernel). További információért vegye fel a kapcsolatot a következővel: [aznetdpdk@microsoft.com](mailto:aznetdpdk@microsoft.com) . 
 
 ## <a name="region-support"></a>Régiós támogatás
 

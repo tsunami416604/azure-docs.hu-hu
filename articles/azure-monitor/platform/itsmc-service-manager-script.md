@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 4babd015b05527cb03d2747b1c9b9a34941634ab
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d620df0b55b024cd5d7c25ea17d9b09c5c5da8ff
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657005"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722878"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager Webalkalmazás létrehozása az automatikus parancsfájl használatával
 
-A következő szkripttel hozza létre a webalkalmazást a Service Manager példányához. Service Manager kapcsolattal kapcsolatos további információkért tekintse meg a [következőt: Service Manager webalkalmazás](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+A következő szkripttel hozza létre a webalkalmazást a Service Manager példányához. Service Manager kapcsolattal kapcsolatos további információkért tekintse meg a [következőt: Service Manager webalkalmazás](./itsmc-connections-scsm.md)
 
 Futtassa a szkriptet a következő szükséges részletek megadásával:
 
@@ -29,9 +29,6 @@ Futtassa a szkriptet a következő szükséges részletek megadásával:
 A szkript létrehozza a webalkalmazást a megadott névvel (néhány további sztringtel együtt, hogy egyedivé tegye azt). Létrehozza a **webalkalmazás URL-címét**, az **ügyfél-azonosítót** és az **ügyfél titkos kulcsát**.
 
 Mentse ezeket az értékeket, ha IT-szolgáltatásmenedzsmenti csatoló-vel létesített kapcsolatokat hoz létre.
-
-> [!NOTE]
-> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -320,6 +317,6 @@ if(!$err)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
-[A hibrid kapcsolatok konfigurálása](./itsmc-connections.md#configure-the-hybrid-connection).
+## <a name="next-steps"></a>További lépések
+[A hibrid kapcsolatok konfigurálása](./itsmc-connections-scsm.md#configure-the-hybrid-connection).
 

@@ -12,14 +12,6 @@
       items:
         - name: Anomáliadetektor-ügyfélkódtárak
           href: ./quickstarts/client-libraries.md
-    - name: REST API
-      items:
-        - name: A C# használata
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: A Java használata
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: A Python használata
-          href: quickstarts/detect-data-anomalies-python.md
 - name: Oktatóanyagok
   items:
     - name: Rendellenességek vizualizálása kötegként a Power BI használatával

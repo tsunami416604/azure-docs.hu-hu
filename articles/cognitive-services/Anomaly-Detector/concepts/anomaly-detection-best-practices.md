@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: b02ccea396fc65f9ecfe1d59e953da7440e87951
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363643"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705149"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Ajánlott eljárások az anomália-detektor API használatához
 
@@ -104,4 +104,4 @@ Ha a folyamatos átviteli adatokat rövid időn belül (például másodpercben 
 ## <a name="next-steps"></a>További lépések
 
 * [Mi az az Anomaly Detector API?](../overview.md)
-* [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália detektor használatával](../quickstarts/client-libraries.md)

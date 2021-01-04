@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/2/2020
-ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.date: 12/18/2020
+ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533607"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722130"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
 
@@ -137,6 +137,18 @@ INTO    output
 FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
+
+## <a name="iot-edge-jobs"></a>IoT Edge feladatok
+
+Stream Analytics Edge-feladatok esetében csak a helyi hivatkozási adatok támogatottak. Ha egy feladatot központilag telepítenek IoT Edge eszközre, a felhasználó által megadott fájl elérési útjából betölti a hivatkozási adatait. Az eszközön készen áll egy hivatkozási adatfájl. Windows-tároló esetén helyezze a hivatkozási adatfájlt a helyi meghajtón, és ossza meg a helyi meghajtót a Docker-tárolóval. Linux-tároló esetén hozzon létre egy Docker-kötetet, és töltse fel az adatfájlt a kötetre.
+
+IoT Edge frissítésre vonatkozó referenciákat egy központi telepítés indítja el. Az aktiválás után a Stream Analytics modul a futó feladatok leállítása nélkül kiválasztja a frissített adatok körét.
+
+A referenciák frissítése kétféleképpen lehetséges:
+
+* A Stream Analytics-feladatokban szereplő hivatkozási adatútvonal frissítése Azure Portalból.
+
+* Frissítse a IoT Edge üzemelő példányt.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

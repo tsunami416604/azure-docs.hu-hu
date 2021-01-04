@@ -3,25 +3,37 @@ title: A Azure Key Vault Recovery áttekintése | Microsoft Docs
 description: Key Vault a helyreállítási funkciók célja, hogy megakadályozza a Key vaultban tárolt kulcstartók, titkos kulcsok és tanúsítványok véletlen vagy rosszindulatú törlését.
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
-author: ShaneBala-keyvault
-ms.author: sudbalas
-manager: ravijan
-ms.date: 12/15/2020
-ms.openlocfilehash: 485da2230de80150c9a5d13b262d1857c8c172fc
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.topic: how-to
+ms.author: mbaldwin
+author: msmbaldwin
+manager: rkarlin
+ms.date: 09/30/2020
+ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587111"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704214"
 ---
-# <a name="how-to-enable-soft-delete-and-purge-protection"></a>A Soft delete és a Purge Protection engedélyezése
+# <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault helyreállítási felügyelet a Soft delete és a Purge Protection szolgáltatással
 
 Ez a cikk a Azure Key Vault két helyreállítási funkcióját ismerteti, a Soft delete és a Purge Protection szolgáltatást. Ez a dokumentum áttekintést nyújt ezekről a funkciókról, és bemutatja, hogyan felügyelheti őket a Azure Portal, az Azure CLI és a Azure PowerShell használatával.
 
+További információ a Key Vaultról:
+- [A Key Vault áttekintése](overview.md)
+- [A kulcsok, a titkok és a tanúsítványok Azure Key Vault áttekintése](about-keys-secrets-certificates.md)
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/dotnet)
+* [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* [Azure CLI](/cli/azure/install-azure-cli)
+* A Key Vault létrehozhat egyet [Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)használatával, vagy [Azure PowerShell](../general/quick-create-powershell.md)
+
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Mi a Soft delete és a Purge Protection
 
-A Soft delete és a Purge Protection két különböző Key Vault helyreállítási funkció.
+A [Soft delete](soft-delete-overview.md) és a Purge Protection két különböző Key Vault helyreállítási funkció.
+
 > [!IMPORTANT]
 > A Soft delete bekapcsolása kritikus fontosságú annak biztosítása érdekében, hogy a kulcstartók és a hitelesítő adatok a véletlen törléssel védve legyenek. A Soft delete bekapcsolása azonban nem változik, mivel előfordulhat, hogy módosítania kell az alkalmazás logikáját, vagy további engedélyeket kell megadnia az egyszerű szolgáltatásokhoz. Mielőtt a Soft delete bekapcsolja az alábbi utasításokat, ellenőrizze, hogy az alkalmazás kompatibilis-e a dokumentum használatával [ .](soft-delete-change.md)
 
@@ -33,6 +45,8 @@ A **védelem kiürítése** arra szolgál, hogy megakadályozza a kulcstároló,
 
 > [!NOTE]
 > A védelem kiürítése úgy lett kialakítva, hogy egyetlen rendszergazdai szerepkör vagy engedély se legyen felülbírálva, letiltva vagy megkerüléssel. **Ha a kiürítési védelem engedélyezve van, nem tiltható le, és nem bírálható el senki, például a Microsoft.** Ez azt jelenti, hogy helyre kell állítani egy törölt kulcstartót, vagy várnia kell, amíg a megőrzési időtartam el nem telik a kulcstároló nevének újrahasználata előtt.
+
+A helyreállítható törléssel kapcsolatos további információkért lásd: [Azure Key Vault-törlés – áttekintés](soft-delete-overview.md)
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -370,3 +384,14 @@ A **védelem kiürítése** arra szolgál, hogy megakadályozza a kulcstároló,
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
+---
+
+## <a name="next-steps"></a>További lépések
+
+- [PowerShell-parancsmagok Azure Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault)
+- [Azure CLI-parancsok Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+- [Azure Key Vault biztonsági mentés](backup.md)
+- [Key Vault naplózás engedélyezése](howto-logging.md)
+- [Biztonságos hozzáférés a kulcstartóhoz](secure-your-key-vault.md)
+- [Azure Key Vault fejlesztői útmutató](developers-guide.md)
+- [Ajánlott eljárások a Key Vault használatához](best-practices.md)

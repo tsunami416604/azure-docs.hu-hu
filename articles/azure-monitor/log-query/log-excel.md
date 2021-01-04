@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: d903d1bb16ba3576d0092979f1cc6b82fac1c0be
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 6fa181a35c46ed16e4e8c1884e66c54984c418ca
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507527"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703449"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>A Log Analytics és az Excel integrálása
 
-Az M Query és a Log Analytics API használatával integrálhatja Azure Monitor Log Analytics és a Microsoft Excel alkalmazást.  Ez az integráció lehetővé teszi a 500 000-rekordok Excelbe küldését.
+Az M Query és a Log Analytics API használatával integrálhatja Azure Monitor Log Analytics és a Microsoft Excel alkalmazást. Ez az integráció lehetővé teszi legfeljebb 500 000 rekord küldését az Excel programba, feltéve, hogy az eredmények teljes mennyisége nem haladja meg a 61MiB.
 
 > [!NOTE]
 > Mivel az Excel egy helyi ügyfélalkalmazás, a helyi hardverek és szoftverek korlátozásai befolyásolják a teljesítményt és a nagy adatkészletek feldolgozásának képességét.
@@ -93,15 +93,18 @@ A lekérdezés importálásához.
 
    :::image type="content" source="media/log-excel/advanced-editor-2.png" alt-text="Üres lekérdezés létrehozása" border="true":::
  
-1. Válassza a **kész** , majd a **betöltés és bezárás** lehetőséget. Az Excel a log Analytics API használatával hajtja végre a lekérdezést, és az eredményhalmaz ekkor megjelenik.
+1. Válassza a **kész**, majd a **betöltés és bezárás** lehetőséget. Az Excel a log Analytics API használatával hajtja végre a lekérdezést, és az eredményhalmaz ekkor megjelenik.
  
 
    :::image type="content" source="media/log-excel/excel-query-result.png" alt-text="Lekérdezés eredményei az Excelben" border="true":::
+
+> [!Note]
+> Ha a rekordok száma a vártnál kisebb, akkor az eredmények mennyisége túllépte a 61MiB korlátot. Próbálkozzon a `project` vagy `project-away` a lekérdezésével, hogy korlátozza az oszlopokat, amelyekre szüksége van.
 
 ##  <a name="refreshing--data"></a>Adatfrissítés
 
 Az adatok közvetlenül az Excelből is frissíthetők. **Az Excel menüszalag adatmenü csoportjában** kattintson a **frissítés** gombra.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Excel külső adatforrásokkal való integrálásával kapcsolatos további információkért lásd: [adatok importálása külső adatforrásokból (Power Query)](https://support.office.com/article/import-data-from-external-data-sources-power-query-be4330b3-5356-486c-a168-b68e9e616f5a)

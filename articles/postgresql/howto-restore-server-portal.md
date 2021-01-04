@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: debdbf6e08af7b9005336231abd6c998a871c525
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82cec4cc448f0ec30aecf6f8a69f399e0abbdde0
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708084"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706949"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Kiszolgálók biztonsági mentése és visszaállítása Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal használatával
 
@@ -33,11 +33,11 @@ Amikor a Azure Portalon keresztül hoz létre kiszolgálót, a **díjszabási r�
 További információ ezekről az értékekről a létrehozás során: [Azure Database for PostgreSQL Server](quickstart-create-server-database-portal.md)gyors üzembe helyezése.
 
 A kiszolgáló biztonsági mentési megőrzési időszaka a következő lépésekkel módosítható:
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza ki az Azure Database for PostgreSQL kiszolgálóját. Ez a művelet megnyitja az **Áttekintés** lapot.
-3. Válassza ki az **árképzési szintet** a menü **Beállítások**területén. A csúszka használatával megváltoztathatja a **biztonsági mentés megőrzési időtartamát** 7 és 35 nap között.
+3. Válassza ki az **árképzési szintet** a menü **Beállítások** területén. A csúszka használatával megváltoztathatja a **biztonsági mentés megőrzési időtartamát** 7 és 35 nap között.
 Az alábbi képernyőképen a 34 napra nőtt.
-:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="A biztonsági másolatok megőrzési időszaka nagyobb":::
 
 4. A módosítás megerősítéséhez kattintson **az OK** gombra.
 
@@ -51,17 +51,17 @@ Ha például egy táblázatot véletlenül a mai napig dobott el, akkor a vissza
 A következő lépésekkel állíthatja vissza a kiszolgálót egy időpontra:
 1. A Azure Portal válassza ki a Azure Database for PostgreSQL kiszolgálót. 
 
-2. A kiszolgáló **Áttekintés** lapjának eszköztárán válassza a **visszaállítás**lehetőséget.
+2. A kiszolgáló **Áttekintés** lapjának eszköztárán válassza a **visszaállítás** lehetőséget.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL – áttekintés – visszaállítás gomb":::
 
 3. Töltse ki a Visszaállítás űrlapot a szükséges információkkal:
 
-   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for PostgreSQL – adatok visszaállítása":::
    - **Visszaállítási pont**: válassza ki azt az időpontot, amelyet vissza szeretne állítani.
    - **Célkiszolgáló**: adja meg az új kiszolgáló nevét.
    - **Hely**: nem választhatja ki a régiót. Alapértelmezés szerint ugyanaz, mint a forráskiszolgáló.
-   - **Díjszabási**csomag: ezeket a paramétereket nem módosíthatja az időponthoz tartozó visszaállítás során. Ugyanaz, mint a forráskiszolgálóé. 
+   - **Díjszabási** csomag: ezeket a paramétereket nem módosíthatja az időponthoz tartozó visszaállítás során. Ugyanaz, mint a forráskiszolgálóé. 
 
 4. Kattintson **az OK** gombra, ha vissza szeretné állítani a kiszolgálót egy adott időpontra való visszaállításhoz. 
 
@@ -71,23 +71,25 @@ Az időponthoz tartozó visszaállítás által létrehozott új kiszolgáló ug
 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található tűzfalszabályokkal vagy VNet-szolgáltatásvégpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz.
 
+Ha a forrás PostgreSQL-kiszolgáló az ügyfél által felügyelt kulcsokkal van titkosítva, további szempontokért tekintse meg a [dokumentációt](concepts-data-encryption-postgresql.md) .
+
 ## <a name="geo-restore"></a>Geo-visszaállítás
 
 Ha a kiszolgálót földrajzilag redundáns biztonsági mentésre konfigurálta, akkor a rendszer létrehoz egy új kiszolgálót a meglévő kiszolgáló biztonsági másolatából. Ezt az új kiszolgálót bármely olyan régióban létre lehet hozni, amely Azure Database for PostgreSQL elérhető.  
 
-1. Válassza az **erőforrás létrehozása** gombot (+) a portál bal felső sarkában. Válassza az **adatbázisok**  >  **Azure Database for PostgreSQL**elemet.
+1. Válassza az **erőforrás létrehozása** gombot (+) a portál bal felső sarkában. Válassza az **adatbázisok**  >  **Azure Database for PostgreSQL** elemet.
 
-   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
+   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Navigáljon Azure Database for PostgreSQL.":::
 
 2. Válassza az **egykiszolgálós** telepítés lehetőséget.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Válassza Azure Database for PostgreSQL – Egykiszolgálós telepítés lehetőséget.":::
  
 3. Adja meg az előfizetést, az erőforráscsoportot és az új kiszolgáló nevét. 
 
-4. **Adatforrásként**válassza a **biztonsági mentés** lehetőséget. Ez a művelet betölti a legördülő listát, amely felsorolja azokat a kiszolgálókat, amelyeken engedélyezve vannak a Geo redundáns biztonsági másolatok.
+4. **Adatforrásként** válassza a **biztonsági mentés** lehetőséget. Ez a művelet betölti a legördülő listát, amely felsorolja azokat a kiszolgálókat, amelyeken engedélyezve vannak a Geo redundáns biztonsági másolatok.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Válassza ki az adatforrást.":::
     
    > [!NOTE]
    > A kiszolgálók első létrehozásakor előfordulhat, hogy a Geo-visszaállításhoz nem lesz azonnal elérhető. A szükséges metaadatok feltöltése néhány órát is igénybe vehet.
@@ -95,21 +97,21 @@ Ha a kiszolgálót földrajzilag redundáns biztonsági mentésre konfigurálta,
 
 5. Válassza ki a **biztonsági mentés** legördülő menüt.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Válassza a biztonsági mentés legördülő menüt.":::
 
 6. Válassza ki a visszaállítani kívánt forráskiszolgáló-kiszolgálót.
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Válassza a biztonsági mentés lehetőséget.":::
 
-7. A kiszolgáló alapértelmezés szerint a **virtuális mag**számának, a **biztonsági másolatok megőrzési idejének**, a **biztonsági mentési redundancia beállításnak**, a **motor verziószámának**és a **rendszergazdai hitelesítő adatoknak**a értékét fogja megadni Válassza a **Folytatás** lehetőséget. 
+7. A kiszolgáló alapértelmezés szerint a **virtuális mag** számának, a **biztonsági másolatok megőrzési idejének**, a **biztonsági mentési redundancia beállításnak**, a **motor verziószámának** és a **rendszergazdai hitelesítő adatoknak** a értékét fogja megadni Válassza a **Folytatás** lehetőséget. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása":::
+   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Folytassa a biztonsági mentéssel.":::
 
-8. Adja meg a többi űrlapot a beállításokkal. Bármelyik **helyet**kiválaszthatja.
+8. Adja meg a többi űrlapot a beállításokkal. Bármelyik **helyet** kiválaszthatja.
 
-    A hely kiválasztása után a **kiszolgáló konfigurálása** lehetőség kiválasztásával frissítheti a **számítási generációt** (ha elérhető a kiválasztott régióban), a **virtuális mag**, a **biztonsági mentés megőrzési idejét**és a **biztonsági mentési redundancia beállítást**. Az **árképzési szint** (alapszintű, általános célú vagy memória optimalizálása) vagy a **tárolási** méret módosítása a visszaállítás során nem támogatott.
+    A hely kiválasztása után a **kiszolgáló konfigurálása** lehetőség kiválasztásával frissítheti a **számítási generációt** (ha elérhető a kiválasztott régióban), a **virtuális mag**, a **biztonsági mentés megőrzési idejét** és a **biztonsági mentési redundancia beállítást**. Az **árképzési szint** (alapszintű, általános célú vagy memória optimalizálása) vagy a **tárolási** méret módosítása a visszaállítás során nem támogatott.
 
-   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Díjszabási réteg – a biztonsági másolatok redundanciának kiválasztása"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Űrlap kitöltése"::: 
 
 9. Válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások áttekintéséhez. 
 
@@ -119,7 +121,9 @@ A földrajzi visszaállítás által létrehozott új kiszolgáló ugyanazzal a 
 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található tűzfalszabályokkal vagy VNet-szolgáltatásvégpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz.
 
+Ha a forrás PostgreSQL-kiszolgáló az ügyfél által felügyelt kulcsokkal van titkosítva, további szempontokért tekintse meg a [dokumentációt](concepts-data-encryption-postgresql.md) .
 
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="next-steps"></a>További lépések
 - További információ a szolgáltatás [biztonsági mentéséről](concepts-backup.md).
 - További információ az [üzletmenet-folytonossági](concepts-business-continuity.md) lehetőségekről.

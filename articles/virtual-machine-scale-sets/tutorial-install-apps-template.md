@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 2d748f787b40bb26e9faebb028d71c6c3e30ee55
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d5eba5486e7d26e62379e0112cd4b95322e6dae1
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516560"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705234"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportokban Azure-sablonnal
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Egy korábbi oktatóanyagból megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképeket a virtuálisgép-példányok üzembe helyezéséhez. Ez az egyéni rendszerkép tartalmazott manuális alkalmazástelepítéseket és -konfigurációkat. Az egyes virtuálisgép-példányok üzembe helyezése után lehetősége van az alkalmazások méretezési csoportokon történő telepítésének automatizálására, vagy egy a méretezési csoporton már futó alkalmazás frissítésére. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -40,7 +40,7 @@ Az egyéni szkriptbővítmény működés közbeni megtekintéséhez hozzon lét
 
 
 ## <a name="create-custom-script-extension-definition"></a>Definíció létrehozása az egyéni szkriptek bővítményéhez
-Amikor Azure-sablonnal határoz meg egy virtuálisgép-méretezési csoportot, a *Microsoft.Compute/virtualMachineScaleSets* erőforrás-szolgáltató tartalmazhat egy a bővítményekre vonatkozó szakaszt is. Az *extensionsProfile* paraméter megadja a méretezési csoport virtuálisgép-példányain alkalmazandó bővítményeket. Az egyéni szkriptbővítmény használatához adja meg kiadóként a *Microsoft.Azure.Extensions* , típusnak pedig a *CustomScript* értéket.
+Amikor Azure-sablonnal határoz meg egy virtuálisgép-méretezési csoportot, a *Microsoft.Compute/virtualMachineScaleSets* erőforrás-szolgáltató tartalmazhat egy a bővítményekre vonatkozó szakaszt is. Az *extensionsProfile* paraméter megadja a méretezési csoport virtuálisgép-példányain alkalmazandó bővítményeket. Az egyéni szkriptbővítmény használatához adja meg kiadóként a *Microsoft.Azure.Extensions*, típusnak pedig a *CustomScript* értéket.
 
 A *fileUris* tulajdonság használatával meghatározhatók a forrásként szolgáló telepítési szkriptek vagy csomagok. A telepítési folyamat elindításához szükséges szkriptek a *commandToExecute* mezőben vannak meghatározva. Az alábbi példa egy mintaszkriptet határoz meg a GitHubról, amely telepíti és konfigurálja az NGINX-webkiszolgálót:
 
@@ -76,10 +76,10 @@ A mintasablon használatával hozzunk létre egy méretezési csoportot, és alk
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy virtuálisgép-méretezési csoportot az [az group deployment create](/cli/azure/group/deployment) paranccsal. Amikor a rendszer kéri, adja meg az egyes virtuálisgép-példányhoz hitelesítő adatként használt saját felhasználó nevét és jelszavát:
+Most hozzon létre egy virtuálisgép-méretezési [csoportot az az Deployment Group Create](/cli/azure/deployment/group)paranccsal. Amikor a rendszer kéri, adja meg az egyes virtuálisgép-példányhoz hitelesítő adatként használt saját felhasználó nevét és jelszavát:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy.json
 ```
@@ -134,10 +134,10 @@ Az egyéni szkriptbővítmény definíciójának frissítéséhez módosítsa a 
 }
 ```
 
-Alkalmazza újra az egyéni szkriptbővítmény konfigurációját a méretezési csoport virtuálisgép-példányain az [az group deployment create](/cli/azure/group/deployment) paranccsal. Ez az *azuredeployv2.json* nevű sablon az alkalmazás frissített verziójának alkalmazására használatos. Gyakorlatban módosítania kell a létező *azuredeploy.json* sablont úgy, hogy az a frissített telepítési szkriptre hivatkozzon, ahogy az az előző szakaszban is látható. Amikor a rendszer kéri, adja meg a méretezési csoport első létrehozásakor használt felhasználónevet és jelszót:
+Alkalmazza az egyéni szkriptek bővítményének konfigurációját a méretezési csoportban lévő virtuálisgép-példányokra az [az Deployment Group Create](/cli/azure/deployment/group)paranccsal. Ez az *azuredeployv2.json* nevű sablon az alkalmazás frissített verziójának alkalmazására használatos. Gyakorlatban módosítania kell a létező *azuredeploy.json* sablont úgy, hogy az a frissített telepítési szkriptre hivatkozzon, ahogy az az előző szakaszban is látható. Amikor a rendszer kéri, adja meg a méretezési csoport első létrehozásakor használt felhasználónevet és jelszót:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy_v2.json
 ```
@@ -147,7 +147,7 @@ A méretezési csoport összes virtuálisgép-példánya automatikusan frissül 
 ![Frissített weboldal az NGINX-ben](media/tutorial-install-apps-template/running-nginx-updated.png)
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és a hozzá tartozó összes erőforrást az [az Group delete](/cli/azure/group)paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
@@ -155,7 +155,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogy telepíthet és frissíthet alkalmazásokat automatikusan a méretezési csoportban Azure-sablonok segítségével:
 
 > [!div class="checklist"]

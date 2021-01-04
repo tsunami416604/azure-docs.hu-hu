@@ -1,7 +1,7 @@
 ---
-title: Modellek újratanítása Azure Machine Learning Designer használatával
+title: Modellek újratanítása a tervezőben a folyamat paramétereinek használatával
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan lehet a gépi tanulási modelleket Azure Machine Learning Designerben közzétett folyamatokkal áttanítani.
+description: Modellek újratanítása a közzétett folyamatokkal és folyamat-paraméterekkel Azure Machine Learning Designerben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437116"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708466"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Modellek újratanítása Azure Machine Learning designerrel
+# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Modellek újratanítása a tervezőben a folyamat paramétereinek használatával
 
 
-Ebben a útmutatóban megismerheti, hogyan végezheti el a gépi tanulási modell újratanítását a Azure Machine Learning Designer használatával. A közzétett folyamatok segítségével automatizálhatja a munkafolyamatot, és paramétereket állíthat be a modell új adatokra való betanításához. 
+Ebben a útmutatóban megismerheti, hogyan lehet a Azure Machine Learning Designer használatával újratanítani a gépi tanulási modelleket a folyamat paramétereinek használatával. A közzétett folyamatok segítségével automatizálhatja a munkafolyamatot, és paramétereket állíthat be a modell új adatokra való betanításához. A folyamat paramétereinek segítségével újra felhasználhatja a meglévő folyamatokat a különböző feladatokhoz.  
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -70,7 +70,7 @@ Ebben a példában egy rögzített értékről egy paraméterre módosítja a be
 
    ![Képernyőkép, amely bemutatja, hogyan lehet létrehozni egy folyamat paramétert](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
    > [!NOTE]
    > Leválaszthatja a modul paraméterét a modul részletes ablaktábláján található folyamat paraméterből is, hasonlóan a folyamat paramétereinek hozzáadásához.

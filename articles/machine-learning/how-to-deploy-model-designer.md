@@ -10,17 +10,19 @@ author: likebupt
 ms.reviewer: peterlu
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.custom: how-to, deploy, studio
-ms.openlocfilehash: 23c6417741d0753fcdaaf30c89c8f51348cc5dc5
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.custom: how-to, deploy, studio, designer
+ms.openlocfilehash: 35acfc51ae76fdacef11f03b1fbd91ad58650ae6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554682"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722623"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>A Studio használata a Designerben betanított modellek üzembe helyezéséhez
 
-Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy betanított modellt a tervezőből valós idejű végpontként Azure Machine Learning Studióban.
+Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy tervezői modellt valós idejű végpontként Azure Machine Learning Studióban.
+
+A regisztrálás vagy a letöltés után a tervező által betanított modellek ugyanúgy használhatók, mint bármely más modell. Az exportált modellek olyan használati esetekben telepíthetők, mint például az IoT és a helyi telepítések.
 
 A Studióban történő üzembe helyezés a következő lépésekből áll:
 
@@ -35,7 +37,7 @@ A tervezőben betanított modellek az SDK vagy a parancssori felület (CLI) hasz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Azure Machine Learning munkaterület](how-to-manage-workspace.md)
+* [Egy Azure Machine Learning-munkaterület](how-to-manage-workspace.md)
 
 * Egy befejezett betanítási folyamat, amely a következő modulok egyikét tartalmazza:
     - [Betanítási modell modul](./algorithm-module-reference/train-model.md)
@@ -61,7 +63,6 @@ A betanítási folyamat befejeződése után regisztrálja a betanított modellt
 A modell regisztrálása után megkeresheti a Studio **modellek** eszköz lapján.
     
 ![Képernyőfelvétel a regisztrált modellről a modellek eszköz lapján](./media/how-to-deploy-model-designer/models-asset-page.png)
-
 
 ## <a name="download-the-entry-script-file-and-conda-dependencies-file"></a>A bejegyzési parancsfájl és a Conda függőségi fájl letöltése
 
@@ -296,7 +297,7 @@ score_params = dict(
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Modell betanítása a tervezőben](tutorial-designer-automobile-price-train-score.md)
 * [Modellek üzembe helyezése Azure Machine Learning SDK-val](how-to-deploy-and-where.md)
