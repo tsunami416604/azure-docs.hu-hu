@@ -11,16 +11,16 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 07ff656c5eacbbcdc16c6c7cf098478ca6baf745
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8d3145639d2d4fb64bdb374f1dea0a7b70e4151c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509291"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724714"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>A munkaterület használata egyéni DNS-kiszolgálóval
 
-Ha Azure Machine Learning munkaterületet használ privát végponttal, a [DNS-névfeloldás többféleképpen is kezelhető](../private-link/private-endpoint-dns.md). Alapértelmezés szerint az Azure automatikusan kezeli a munkaterület és a magánhálózati végpont névfeloldását. Ha ehelyett _saját, egyéni DNS-kiszolgálót használ_, akkor manuálisan kell létrehoznia a munkaterület DNS-bejegyzéseit.
+Ha Azure Machine Learning munkaterületet használ privát végponttal, a [DNS-névfeloldás többféleképpen is kezelhető](../private-link/private-endpoint-dns.md). Alapértelmezés szerint az Azure automatikusan kezeli a munkaterület és a magánhálózati végpont névfeloldását. Ha ehelyett _saját, egyéni DNS-kiszolgálót használ_, akkor manuálisan kell létrehoznia a DNS-bejegyzéseket, vagy feltételes továbbítókat kell használnia a munkaterülethez.
 
 > [!IMPORTANT]
 > Ez a cikk csak a teljes tartománynév (FQDN) és az IP-címek megkeresését ismerteti ezen bejegyzések esetében, ezért nem nyújt információt ezen elemek DNS-rekordjainak konfigurálásáról. A rekordok hozzáadásával kapcsolatos információkért olvassa el a DNS-szoftver dokumentációját.
@@ -37,9 +37,9 @@ Ha Azure Machine Learning munkaterületet használ privát végponttal, a [DNS-n
 
 - Opcionálisan, [Azure CLI](/cli/azure/install-azure-cli) vagy [Azure PowerShell](/powershell/azure/install-az-ps).
 
-## <a name="find-the-ip-addresses"></a>IP-címek keresése
-
-A következő lista tartalmazza a munkaterület és a privát végpont által használt teljes tartományneveket (FQDN):
+## <a name="fqdns-in-use"></a>Használatban lévő teljes tartománynevek
+### <a name="these-fqdns-are-in-use-in-the-following-regions-eastus-southcentralus-and-westus2"></a>Ezek a teljes tartománynevek a következő régiókban vannak használatban: eastus, southcentralus és westus2.
+Az alábbi lista tartalmazza a munkaterület által használt teljes tartományneveket (FQDN):
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
@@ -51,6 +51,19 @@ A következő lista tartalmazza a munkaterület és a privát végpont által ha
 
     > [!NOTE]
     > A számítási példányok csak a virtuális hálózaton belül érhetők el.
+    
+### <a name="these-fqdns-are-in-use-in-all-other-regions"></a>Ezek a teljes tartománynevek az összes többi régióban használatban vannak
+Az alábbi lista tartalmazza a munkaterület által használt teljes tartományneveket (FQDN):
+
+* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
+* `<workspace-GUID>.workspace.<region>.api.azureml.ms`
+* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
+* `<instance-name>.<region>.instances.azureml.ms`
+
+    > [!NOTE]
+    > A számítási példányok csak a virtuális hálózaton belül érhetők el.
+
+## <a name="find-the-ip-addresses"></a>IP-címek keresése
 
 A VNet lévő teljes tartománynevek belső IP-címeinek megkereséséhez használja az alábbi módszerek egyikét:
 
@@ -89,7 +102,7 @@ Az összes metódus által visszaadott információ ugyanaz; az erőforrások te
 | `ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net` | `10.1.0.6` |
 
 > [!IMPORTANT]
-> Egyes teljes tartománynevek nem jelennek meg a privát végpontok listáján, de a munkaterület számára szükséges. Ezek a teljes tartománynevek az alábbi táblázatban láthatók, és a DNS-kiszolgálóhoz is hozzá kell adni:
+> Egyes teljes tartománynevek nem jelennek meg a privát végpontok listáján, de a munkaterület a eastus, a southcentralus és a westus2 számára szükséges. Ezek a teljes tartománynevek az alábbi táblázatban láthatók, és a DNS-kiszolgálóhoz és/vagy egy Azure saját DNS zónához is hozzá kell adni:
 >
 > * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
@@ -102,3 +115,5 @@ Az összes metódus által visszaadott információ ugyanaz; az erőforrások te
 ## <a name="next-steps"></a>További lépések
 
 A Azure Machine Learning virtuális hálózattal való használatával kapcsolatos további információkért lásd a [virtuális hálózat áttekintését](how-to-network-security-overview.md).
+
+A privát végpontok DNS-konfigurációba való integrálásával kapcsolatos további információkért lásd: [Azure Private Endpoint DNS-konfiguráció](https://docs.microsoft.com/azure/private-link/private-endpoint-dns).

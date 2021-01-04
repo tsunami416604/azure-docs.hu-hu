@@ -1,14 +1,14 @@
 ---
 title: Az Azure arc-kompatibilis kiszolgálók ügynökének kezelése
 description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti, amelyeket általában az Azure arc-kompatibilis kiszolgálók csatlakoztatott számítógép-ügynök életciklusa során fog elvégezni.
-ms.date: 10/30/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107192"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724374"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
 
@@ -61,7 +61,7 @@ A Windows rendszerhez készült csatlakoztatott számítógép-ügynök frissít
 
 * [Windows agent Windows Installer csomag](https://aka.ms/AzureConnectedMachineAgent) a Microsoft letöltőközpontból.
 
-Az ügynök a szoftverfrissítési felügyeleti folyamat támogatásának számos módszerét követően frissíthető. A Microsoft Updatetól való beszerzésen kívül a parancssorból, egy parancsfájlból vagy más automatizálási megoldásból, illetve a végrehajtásával a felhasználói felület varázslóból manuálisan is letöltheti és futtathatja a parancsot `AzureConnectedMachine.msi` .
+Az ügynök a szoftverfrissítési felügyeleti folyamat támogatásának különböző módszerein keresztül frissíthető. A Microsoft Updatetól való beszerzésen kívül a parancssorból, egy parancsfájlból vagy más automatizálási megoldásból, illetve a végrehajtásával a felhasználói felület varázslóból manuálisan is letöltheti és futtathatja a parancsot `AzureConnectedMachine.msi` .
 
 > [!NOTE]
 > * Az ügynök frissítéséhez *rendszergazdai* engedélyekkel kell rendelkeznie.
@@ -189,7 +189,7 @@ Ha a rendszergazda jogú bejelentkezett hitelesítő adataival szeretne csatlako
 
 ### <a name="disconnect"></a>Leválasztás
 
-Ez a paraméter egy olyan erőforrást határoz meg Azure Resource Manager, amely a gépet jelképezi az Azure-ban. Nem törli az ügynököt a gépről, ezt külön lépésként kell elvégezni. Ha a gép le van választva, ha újra szeretné regisztrálni az Azure arc-kompatibilis kiszolgálókon, akkor az `azcmagent connect` Azure-ban létrehoz egy új erőforrást.
+Ez a paraméter egy olyan erőforrást határoz meg Azure Resource Manager, amely a gépet jelképezi az Azure-ban. Nem távolítja el az ügynököt a gépről, külön távolítsa el az ügynököt. Ha a gép le van választva, ha újra szeretné regisztrálni az Azure arc-kompatibilis kiszolgálókon, akkor az `azcmagent connect` Azure-ban létrehoz egy új erőforrást.
 
 > [!NOTE]
 > Ha telepített egy vagy több Azure-beli virtuálisgép-bővítményt az ív használatára képes kiszolgálóra, és törli a regisztrációját az Azure-ban, a bővítmények továbbra is települnek. Fontos megérteni, hogy a telepített bővítménytől függően aktívan végrehajtja a funkcióját. A kivonni kívánt vagy az arc-kompatibilis kiszolgálók által már nem felügyelt gépeknek először el kell távolítaniuk a bővítményeket az Azure-beli regisztráció eltávolítása előtt.
@@ -208,7 +208,7 @@ Az emelt szintű bejelentkezett hitelesítő adatokkal (interaktív) való levá
 
 ## <a name="remove-the-agent"></a>Az ügynök eltávolítása
 
-Az alábbi módszerek egyikével távolíthatja el a Windows vagy Linux rendszerű csatlakoztatott gépi ügynököt a gépről. Az ügynök eltávolítása nem törli az ív-kompatibilis kiszolgálókkal rendelkező gép regisztrációját, vagy eltávolíthatja a telepített Azure virtuálisgép-bővítményeket. Ezeket a lépéseket külön kell végrehajtania, ha már nincs szükség a gép felügyeletére az Azure-ban, és az ügynök eltávolítása előtt el kell végezni őket.
+Az alábbi módszerek egyikével távolíthatja el a Windows vagy Linux rendszerű csatlakoztatott gépi ügynököt a gépről. Az ügynök eltávolítása nem törli az ív-kompatibilis kiszolgálókkal rendelkező gép regisztrációját, vagy eltávolíthatja a telepített Azure virtuálisgép-bővítményeket. Törölje a gép regisztrációját, és távolítsa el a telepített virtuálisgép-bővítményeket, ha már nincs szükség a gép Azure-ban való felügyeletére, és ezeket a lépéseket az ügynök eltávolítása előtt kell végrehajtani.
 
 ### <a name="windows-agent"></a>Windows-ügynök
 
@@ -287,6 +287,10 @@ Ha azt tervezi, hogy leállítja a gép felügyeletét az Azure-ban támogató s
 
 Ha úgy szeretné konfigurálni az ügynököt, hogy proxykiszolgálón keresztül kommunikáljon a szolgáltatással, vagy távolítsa el ezt a konfigurációt az üzembe helyezés után, vagy használja az alábbi módszerek egyikét a feladat elvégzéséhez.
 
+> [!NOTE]
+> Az ív használatára képes kiszolgálók nem támogatják [log Analytics átjáró](../../azure-monitor/platform/gateway.md) proxyként való használatát a csatlakoztatott gépi ügynökhöz.
+>
+
 ### <a name="windows"></a>Windows
 
 A proxykiszolgáló környezeti változójának beállításához futtassa a következő parancsot:
@@ -323,7 +327,7 @@ Ha úgy szeretné konfigurálni az ügynököt, hogy a proxykiszolgáló haszná
 sudo azcmagent_proxy remove
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A hibaelhárítási információ a [csatlakoztatott gép ügynökének hibaelhárítása című útmutatóban](troubleshoot-agent-onboard.md)található.
 

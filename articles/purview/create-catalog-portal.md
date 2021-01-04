@@ -1,18 +1,18 @@
 ---
 title: 'Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portalban (előzetes verzió)'
 description: Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot, és hogyan konfigurálhat engedélyeket a használatának megkezdéséhez.
-author: hophanms
-ms.author: hophan
+author: nayenama
+ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fe83425230a157be245e3aa1ad088c32596ea5ed
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400386"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693374"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Gyors útmutató: Azure-beli hatáskörébe tartozó fiók létrehozása a Azure Portal
 
@@ -171,7 +171,7 @@ Ha már nincs szüksége erre az Azure-beli hatáskörébe fiókra, törölje a 
 
 2. Válassza ki a rövid útmutató elején létrehozott Azure-beli hatáskörébe tartozó fiókot. Válassza a **Törlés** lehetőséget, adja meg a fiók nevét, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure-beli hatáskörébe tartozó fiókot.
 

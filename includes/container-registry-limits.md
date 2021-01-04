@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: f4d8f8783e9f6eece4de8dc1c35740fa7aaf03f8
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3fe1b966b56142fd312850ac5d77839b7d9db434
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532102"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97706224"
 ---
 | Erőforrás | Alapszintű | Standard | Prémium |
 |---|---|---|---|
@@ -26,6 +26,7 @@ ms.locfileid: "97532102"
 | Feltöltési sávszélesség (Mbps)<sup>2</sup> | 10 | 20 | 50 |
 | Webhookok | 2 | 10 | 500 |
 | Georeplikáció | N.A. | N.A. | [Támogatott][geo-replication] |
+| Rendelkezésreállási zónák | N.A. | N.A. | [Előnézet][zones] |
 | Tartalommegbízhatóság | N.A. | N.A. | [Támogatott][content-trust] |
 | Privát kapcsolat privát végpontokkal | N.A. | N.A. | [Támogatott][plink] |
 | &bull; Privát végpontok | N.A. | N.A. | 10 |
@@ -55,3 +56,4 @@ ms.locfileid: "97532102"
 [plink]: ../articles/container-registry/container-registry-private-link.md
 [cmk]: ../articles/container-registry/container-registry-customer-managed-keys.md
 [token]: ../articles/container-registry/container-registry-repository-scoped-permissions.md
+[zones]: ../articles/container-registry/zone-redundancy.md

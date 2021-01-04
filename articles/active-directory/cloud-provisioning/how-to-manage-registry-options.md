@@ -15,12 +15,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3bd938355d138e660958e34d046d7af03e75c7
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: edb602e3d55ae07f49d5448283ae0d2b6da4b0cb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371134"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694159"
 ---
 # <a name="manage-agent-registry-options"></a>Ügynök beállításjegyzék-beállításainak kezelése
 
@@ -64,10 +64,34 @@ Az alábbi lépéseket követve bekapcsolhatja az átirányítást:
 1. Indítsa újra a Azure AD Connect kiépítési szolgáltatást a *szolgáltatások* konzolról.
 1. Ha több kiépítési ügynököt telepített, alkalmazza a beállításjegyzék módosítását az összes ügynökre a konzisztencia érdekében.
 
+## <a name="skip-gmsa-configuration"></a>GMSA-konfiguráció kihagyása
+Az ügynök 1.1.281.0 + verziójának használatakor alapértelmezés szerint az ügynök konfigurációja varázsló futtatásakor a rendszer felszólítja a [csoportosan felügyelt szolgáltatásfiók (GMSA)](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)beállítására. A varázsló által a GMSA beállítás minden szinkronizálási és kiépítési művelethez használatos. 
+
+Ha az ügynök egy korábbi verziójáról frissít, és egyéni szolgáltatásfiókot állított be a Active Directory topológiára vonatkozó delegált szervezeti szintű engedélyekkel, érdemes kihagyni/elhalasztania a GMSA konfigurációját, és terveznie a módosítást. 
+
+> [!NOTE]
+> Ez az útmutató kifejezetten azokra az ügyfelekre vonatkozik, akik a 1.1.281.0 előtt konfigurálták a HR (munkanap/SuccessFactors) szolgáltatást, és egyéni szolgáltatásfiókot állítanak be az ügynök műveleteihez. Hosszú távon ajánlott eljárásként váltson a GMSA-re.  
+
+Ebben az esetben továbbra is frissítheti az ügynök bináris fájljait, és kihagyhatja a GMSA-konfigurációt az alábbi lépések végrehajtásával: 
+
+1. Jelentkezzen be rendszergazdaként az Azure AD Connect üzembe helyezési ügynököt futtató Windows-kiszolgálón.
+1. Az új ügynök bináris fájljainak telepítéséhez futtassa az ügynök telepítőjét. Az ügynök konfigurálása varázsló bezárásával automatikusan megnyílik a telepítés sikeres elindítása után. 
+1. A *Futtatás* menüpont használatával nyissa meg a beállításszerkesztőt (regedit.exe) 
+1. Keresse meg a kulcs mappáját **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure AD Connect Agents\Azure AD Connect Provisioning Agent**
+1. Kattintson a jobb gombbal, és válassza a "New-> DWORD Value" lehetőséget.
+1. Adja meg a nevet: `UseCredentials`
+1. Kattintson duplán az **érték nevére** , és adja meg a Value (érték `1` ) értéket.  
+    > [!div class="mx-imgBorder"]
+    > ![Hitelesítő adatok használata](media/how-to-manage-registry-options/use-credentials.png)
+1. Indítsa újra a Azure AD Connect kiépítési szolgáltatást a *szolgáltatások* konzolról.
+1. Ha több kiépítési ügynököt telepített, alkalmazza a beállításjegyzék módosítását az összes ügynökre a konzisztencia érdekében.
+1. Az asztal rövid kivágása alatt futtassa az ügynök konfigurációja varázslót. A varázsló kihagyja a GMSA-konfigurációt. 
+
+
 > [!NOTE]
 > A beállításjegyzék beállításait a [részletes naplózás](how-to-troubleshoot.md#log-files)engedélyezésével ellenőrizheti. Az ügynök indításakor kibocsátott naplók megjelenítik a beállításjegyzékből kiválasztott konfigurációs értékeket. 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

@@ -3,16 +3,14 @@ title: Nagyméretű üzenetek kezelése a darabolás használatával
 description: Megtudhatja, hogyan kezelheti a nagyméretű üzenetek méretét a Azure Logic Apps használatával létrehozott automatizált feladatok és munkafolyamatok darabolásával.
 services: logic-apps
 ms.suite: integration
-author: DavidCBerry13
-ms.author: daberry
 ms.topic: article
-ms.date: 12/03/2019
-ms.openlocfilehash: 1b23c92ec70b80a6cd08fc42a05ffec1e5b43b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 12/18/2020
+ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656767"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695877"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Nagy méretű üzenetek kezelése Azure Logic Apps
 
@@ -40,8 +38,57 @@ A Logic Apps kommunikáló szolgáltatások rendelkezhetnek saját üzenetek mé
 
 A darabolást támogató összekötők esetében az alapul szolgáló adatdarabolási protokoll láthatatlan a végfelhasználók számára. Azonban nem minden összekötő támogatja a darabolást, így ezek az összekötők futásidejű hibákat eredményeznek, ha a bejövő üzenetek túllépik az összekötők méretének korlátait.
 
-> [!NOTE]
-> A darabolást használó műveletek esetében nem lehet átadni az trigger törzsét, és nem használhat kifejezéseket, például `@triggerBody()?['Content']` az adott műveletekben. Ehelyett szöveges vagy JSON-fájl tartalma esetén megpróbálhatja az [ **összeállítási** műveletet](../logic-apps/logic-apps-perform-data-operations.md#compose-action) használni, vagy [létrehozhat egy változót](../logic-apps/logic-apps-create-variables-store-values.md) a tartalom kezeléséhez. Ha az trigger törzse más tartalomtípusokat is tartalmaz, például médiafájlokat, más lépéseket kell végrehajtania a tartalom kezeléséhez.
+
+Olyan műveletek esetén, amelyek támogatják és engedélyezik a darabolást, nem használhat trigger-törzseket, változókat és kifejezéseket, például `@triggerBody()?['Content']` azért, mert ezek közül bármelyik bemenet használatával meggátolja a darabolási műveletet. Ehelyett használja az [ **összeállítás** műveletet](../logic-apps/logic-apps-perform-data-operations.md#compose-action). Pontosabban létre kell hoznia egy `body` mezőt az **összeállítás** művelettel, amely az adatkimenetet az trigger törzsének, változójának, kifejezésének és egyéb adatainak tárolására használja, például:
+
+```json
+"Compose": {
+    "inputs": {
+        "body": "@variables('myVar1')"
+    },
+    "runAfter": {
+        "Until": [
+            "Succeeded"
+        ]
+    },
+    "type": "Compose"
+},
+```
+Ezután az adatdarabolási műveletben használja a következőt: `@body('Compose')` .
+
+```json
+"Create_file": {
+    "inputs": {
+        "body": "@body('Compose')",
+        "headers": {
+            "ReadFileMetadataFromServer": true
+        },
+        "host": {
+            "connection": {
+                "name": "@parameters('$connections')['sftpwithssh_1']['connectionId']"
+            }
+        },
+        "method": "post",
+        "path": "/datasets/default/files",
+        "queries": {
+            "folderPath": "/c:/test1/test1sub",
+            "name": "tt.txt",
+            "queryParametersSingleEncoded": true
+        }
+    },
+    "runAfter": {
+        "Compose": [
+            "Succeeded"
+        ]
+    },
+    "runtimeConfiguration": {
+        "contentTransfer": {
+            "transferMode": "Chunked"
+        }
+    },
+    "type": "ApiConnection"
+},
+```
 
 <a name="set-up-chunking"></a>
 
@@ -113,7 +160,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
 1. A logikai alkalmazás egy kezdeti HTTP POST-vagy PUT-kérést küld egy üres üzenet törzsének. A kérelem fejléce tartalmazza ezt az információt arról a tartalomról, amelyet a logikai alkalmazás fel szeretne tölteni a darabokban:
 
-   | Logic Apps kérelem fejlécének mezője | Érték | Típus | Description |
+   | Logic Apps kérelem fejlécének mezője | Érték | Típus | Leírás |
    |---------------------------------|-------|------|-------------|
    | **x-MS – átvitel üzemmód** | darabolásos | Sztring | Azt jelzi, hogy a tartalom fel van töltve a darabokban |
    | **x-MS-Content-Length** | <*Content-Length*> | Egész szám | A teljes tartalom mérete bájtban a darabolás előtt |
@@ -123,8 +170,8 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    | Végpont válaszának fejléce mező | Típus | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-darab-méret** | Egész szám | No | A javasolt adathalmaz mérete bájtban |
-   | **Hely** | Sztring | Yes | A HTTP-javítási üzenetek küldésének helye |
+   | **x-MS-darab-méret** | Egész szám | Nem | A javasolt adathalmaz mérete bájtban |
+   | **Hely** | Sztring | Igen | A HTTP-javítási üzenetek küldésének helye |
    ||||
 
 3. A logikai alkalmazás a következő adatokat tartalmazó HTTP-javítási üzeneteket hozza létre és küldi el:
@@ -133,7 +180,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    * Ezek a fejlécek az egyes javítási üzenetekben küldött tartalmi adattömbökkel kapcsolatos adatokat tartalmazzák:
 
-     | Logic Apps kérelem fejlécének mezője | Érték | Típus | Description |
+     | Logic Apps kérelem fejlécének mezője | Érték | Típus | Leírás |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*tartomány*> | Sztring | Az aktuális tartalom adatrészletének bájtjai, beleértve a kezdő értéket, a záró értéket és a tartalom teljes méretét, például: "Bytes = 0-1023/10100" |
      | **Content-Type** | <*Content-Type*> | Sztring | A darabolásos tartalom típusa |
@@ -144,8 +191,8 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    | Végpont válaszának fejléce mező | Típus | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
-   | **Tartomány** | Sztring | Yes | A végpont által fogadott tartalomhoz tartozó bájtok köre, például: "Bytes = 0-1023" |   
-   | **x-MS-darab-méret** | Egész szám | No | A javasolt adathalmaz mérete bájtban |
+   | **Tartomány** | Sztring | Igen | A végpont által fogadott tartalomhoz tartozó bájtok köre, például: "Bytes = 0-1023" |   
+   | **x-MS-darab-méret** | Egész szám | Nem | A javasolt adathalmaz mérete bájtban |
    ||||
 
 Ez a műveleti definíció például egy HTTP POST-kérést mutat be a darabolásos tartalom egy végpontra való feltöltéséhez. A művelet `runTimeConfiguration` tulajdonságában a tulajdonság a következőre van `contentTransfer` kijelölve `transferMode` `chunked` :

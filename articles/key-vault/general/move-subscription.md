@@ -2,21 +2,21 @@
 title: A tár másik előfizetésre való áthelyezése Azure Key Vault | Microsoft Docs
 description: Útmutató a kulcstartó egy másik előfizetéshez való áthelyezéséhez.
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
-ms.author: sudbalas
+ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e0cd4cad74257dbf83ec8d30405eacca341a8d31
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d881394391b7967fe602155eefc9844e013de34e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289528"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724748"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault áthelyezése másik előfizetésre
 
@@ -29,11 +29,16 @@ ms.locfileid: "93289528"
 > Ügyeljen rá, hogy megértse a változás hatását, és figyelmesen kövesse a cikk útmutatását, mielőtt a Key Vault új előfizetésre való áthelyezését döntene.
 > Ha felügyelt szolgáltatásbeli identitásokat (MSI-t) használ, olvassa el a dokumentum végén található áthelyezés utáni utasításokat. 
 
-Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure Active Directory bérlői AZONOSÍTÓhoz kapcsolódik ahhoz az előfizetéshez, amelyben létrehozták. A hozzáférési szabályzatok minden bejegyzése is ehhez a bérlőazonosítóhoz kapcsolódik. Ha áthelyezi az Azure-előfizetését az A bérlőtől a B bérlőhöz, a meglévő kulcstartók elérhetetlenné válnak a B bérlőhöz tartozó egyszerű szolgáltatásnév (felhasználók és alkalmazások) számára. A probléma megoldásához a következőket kell tennie:
+A [Azure Key Vault](overview.md) automatikusan az alapértelmezett [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) bérlői azonosítóhoz van kötve ahhoz az előfizetéshez, amelyben létrehozták. Az előfizetéshez társított bérlői azonosítót az [útmutató](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)követésével érheti el. Az összes hozzáférési házirend bejegyzése és szerepkör-hozzárendelése ehhez a bérlői AZONOSÍTÓhoz is kötődik.  Ha áthelyezi az Azure-előfizetését az A bérlőtől a B bérlőhöz, a meglévő kulcstartók elérhetetlenné válnak a B bérlőhöz tartozó egyszerű szolgáltatásnév (felhasználók és alkalmazások) számára. A probléma megoldásához a következőket kell tennie:
 
 * Módosítsa az előfizetésben lévő összes meglévő kulcstartóhoz tartozó bérlői azonosítót a B bérlőre.
 * Törölnie kell minden meglévő hozzáférésiszabályzat-bejegyzést.
 * Adja hozzá a B bérlőhöz társított új hozzáférési szabályzatok bejegyzéseit.
+
+További információ a Azure Key Vault és a Azure Active Directoryról:
+- [Információk az Azure Key Vaultról](overview.md)
+- [Mi az Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+- [A bérlőazonosító megkeresése](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -42,40 +47,31 @@ Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure 
 
 Egyes egyszerű szolgáltatások (felhasználók és alkalmazások) egy adott bérlőhöz vannak kötve. Ha áthelyezi a kulcstartót egy másik bérlőn lévő előfizetésbe, akkor előfordulhat, hogy nem fogja tudni visszaállítani az adott egyszerű szolgáltatáshoz való hozzáférést. Győződjön meg arról, hogy az összes alapvető szolgáltatásnév létezik abban a bérlőben, ahová a kulcstartót helyezi át.
 
-## <a name="design-considerations"></a>Kialakítási szempontok
-
-Előfordulhat, hogy a szervezete az előfizetési szinten kikényszerített vagy kizáró Azure Policy implementált. Előfordulhat, hogy az előfizetésben egy másik szabályzat-hozzárendelés szerepel, és az előfizetés, amelyben a kulcstartót helyezi át. A házirend-követelmények ütközésének lehetősége van az alkalmazások megszakítására.
-
-### <a name="example"></a>Példa
-
-Van egy olyan alkalmazás, amely a Key vaulthoz csatlakozik, és két évig érvényes tanúsítványokat hoz létre. Annak az előfizetésnek, amelyen át szeretné helyezni a kulcstartót, rendelkezik egy olyan szabályzat-hozzárendeléssel, amely letiltja az egy évnél hosszabb ideig érvényes tanúsítványok létrehozását. Miután áthelyezte a kulcstartót az új előfizetésre, a műveletet egy Azure-szabályzat-hozzárendelés letiltja, amely két évre érvényes tanúsítványt hoz létre.
-
-### <a name="solution"></a>Megoldás
-
-Győződjön meg arról, hogy a Azure Portal Azure Policy lapjára mutat, és tekintse meg a jelenlegi előfizetéshez tartozó szabályzat-hozzárendeléseket, valamint azt az előfizetést, amelybe áthelyezi, és ellenőrizze, hogy nincsenek-e eltérések.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Közreműködői szintű hozzáférés vagy magasabb a jelenlegi előfizetéshez, ahol a kulcstartó létezik.
-* Közreműködői szintű hozzáférés vagy magasabb ahhoz az előfizetéshez, ahová át szeretné helyezni a kulcstartót.
-* Egy erőforráscsoport az új előfizetésben.
+* [Közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) szintű hozzáférés vagy magasabb a jelenlegi előfizetéshez, ahol a kulcstartó létezik. Szerepkört a [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)vagy a [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)használatával rendelhet hozzá.
+* [Közreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) szintű hozzáférés vagy magasabb ahhoz az előfizetéshez, ahová át szeretné helyezni a kulcstartót. Szerepkört a [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)vagy a [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)használatával rendelhet hozzá.
+* Egy erőforráscsoport az új előfizetésben. A [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal), a [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell)vagy az [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-cli)használatával hozhat létre egyet.
 
-## <a name="procedure"></a>Eljárás
+A meglévő szerepköröket a [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal), a [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-cli)vagy a [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-rest)használatával lehet megtekinteni.
 
-### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>Key Vault áthelyezése egy új előfizetésre ugyanazon a bérlőn belül
 
-1. Bejelentkezés az Azure Portalra
-2. Navigáljon a kulcstartóhoz
+## <a name="moving-a-key-vault-to-a-new-subscription"></a>Kulcstartó áthelyezése új előfizetésre
+
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+2. Navigáljon a [kulcstartóhoz](overview.md)
 3. Kattintson az "áttekintés" fülre
 4. Válassza az "áthelyezés" gombot
 5. Válassza a "áthelyezés másik előfizetésre" lehetőséget a legördülő listából.
 6. Válassza ki azt az erőforráscsoportot, amelyben át szeretné helyezni a kulcstartót
 7. Az erőforrások áthelyezésével kapcsolatos figyelmeztetés nyugtázása
-8. Válassza az OK lehetőséget
+8. Válassza az OK gobot.
 
-### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>További lépések, ha áthelyezte a Key vaultot egy új bérlőn lévő előfizetésbe
+## <a name="additional-steps-when-subscription-is-in-a-new-tenant"></a>További lépések az előfizetés új bérlőben való létrehozásakor
 
-Ha áthelyezte a kulcstartót egy új bérlő egyik előfizetéséhez, manuálisan kell frissítenie a bérlő AZONOSÍTÓját, és el kell távolítania a régi hozzáférési házirendeket. Ezek a lépések a PowerShell és az Azure CLI-ben című témakörben találhatók. Ha a PowerShellt használja, akkor előfordulhat, hogy az alábbi, az aktuálisan kijelölt Hatókörön kívüli erőforrások megtekintését lehetővé tevő Clear-AzContext parancsot kell futtatnia. 
+Ha áthelyezte a kulcstartót egy új bérlő egyik előfizetéséhez, manuálisan kell frissítenie a bérlő AZONOSÍTÓját, és el kell távolítania a régi hozzáférési házirendeket és a szerepkör-hozzárendeléseket. Ezek a lépések a PowerShell és az Azure CLI-ben című témakörben találhatók. Ha a PowerShellt használja, előfordulhat, hogy az alábbi dokumentált Clear-AzContext parancsot kell futtatnia, hogy az aktuálisan kiválasztott hatókörön kívül is megjelenjenek az erőforrások. 
+
+### <a name="update-tenant-id-in-a-key-vault"></a>A bérlő AZONOSÍTÓjának frissítése a Key vaultban
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription
@@ -97,12 +93,37 @@ tenantId=$(az account show --query tenantId)                               # Get
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
+### <a name="update-access-policies-and-role-assignments"></a>Hozzáférési szabályzatok és szerepkör-hozzárendelések frissítése
 
-Most, hogy a tároló hozzá van rendelve a megfelelő bérlői AZONOSÍTÓhoz és a régi hozzáférési szabályzatok bejegyzéseihez, az új hozzáférési szabályzat bejegyzéseit a Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) parancsmaggal vagy az Azure CLI az Key [Vault set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal teheti meg.
+> [!NOTE]
+> Ha Key Vault az [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) engedély modelljét használja. A Key Vault szerepkör-hozzárendeléseket is el kell távolítania. A szerepkör-hozzárendeléseket az [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)vagy a [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)használatával távolíthatja el. 
 
-Ha felügyelt identitást használ az Azure-erőforrásokhoz, frissítenie kell az új Azure Active Directory bérlőre is. A felügyelt identitásokkal kapcsolatos további információkért [tekintse át a felügyelt identitások áttekintése](../../active-directory/managed-identities-azure-resources/overview.md)című témakört.
+Most, hogy a tároló hozzá van rendelve a megfelelő bérlői AZONOSÍTÓhoz és a régi hozzáférési házirend bejegyzéseihez, vagy a szerepkör-hozzárendelések el lettek távolítva, új hozzáférési szabályzat-bejegyzéseket vagy szerepkör-hozzárendeléseket
+
+A házirendek hozzárendelésével kapcsolatban lásd:
+- [Hozzáférési szabályzat kiosztása a portál használatával](assign-access-policy-portal.md)
+- [Hozzáférési szabályzat kiosztása az Azure CLI-vel](assign-access-policy-cli.md)
+- [Hozzáférési szabályzat kiosztása a PowerShell használatával](assign-access-policy-powershell.md)
+
+A szerepkör-hozzárendelések hozzáadásával kapcsolatban lásd:
+- [Szerepkör-hozzárendelés hozzáadása a portál használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Szerepkör-hozzárendelés hozzáadása az Azure CLI-vel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+- [Szerepkör-hozzárendelés hozzáadása a PowerShell használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)
+
+
+### <a name="update-managed-identities"></a>Felügyelt identitások frissítése
+
+Ha teljes előfizetést továbbít, és felügyelt identitást használ az Azure-erőforrásokhoz, frissítenie kell azt az új Azure Active Directory bérlőre is. A felügyelt identitásokkal kapcsolatos további információkért [tekintse át a felügyelt identitások áttekintése](../../active-directory/managed-identities-azure-resources/overview.md)című témakört.
 
 Ha felügyelt identitást használ, az identitást is frissítenie kell, mert a régi identitás többé nem lesz a megfelelő Azure Active Directory bérlőn. A probléma megoldásához tekintse meg a következő dokumentumokat. 
 
 * [MSI frissítése](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
 * [Előfizetés átszállítása új könyvtárba](../../role-based-access-control/transfer-subscription.md)
+
+## <a name="next-steps"></a>További lépések
+
+- További információ a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-certificates.md)
+- Elméleti információk, beleértve a Key Vault naplók értelmezését: [Key Vault naplózás](logging.md)
+- [Key Vault fejlesztői útmutató](../general/developers-guide.md)
+- [A Key Vault biztonságossá tétele](secure-your-key-vault.md)
+- [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](network-security.md)

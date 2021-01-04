@@ -1,18 +1,18 @@
 ---
 title: Egyéni besorolási és besorolási szabály létrehozása (előzetes verzió)
 description: Ez a cikk azt ismerteti, hogyan hozhat létre egyéni besorolásokat az adattípusok definiálásához az adatkészletben, amelyek egyediek a szervezet számára. Emellett leírja az egyéni besorolási szabályok létrehozását is, amelyek lehetővé teszik, hogy a megadott adatait az adatközpontban találja.
-author: chandrakavya
-ms.author: kchandra
+author: animukherjee
+ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/1/2020
-ms.openlocfilehash: 16a714cff506117c5d6f7fd4921fbd5346bfda39
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552670"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693457"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Egyéni besorolások az Azure hatáskörébe 
 
@@ -110,6 +110,6 @@ Az **adatminta** területen két lehetőség közül választhat:
 
 - **Minimális egyezési küszöb**: ezzel a beállítással megadható, hogy az adatértékek hány százalékos aránya legyen a képolvasó által az alkalmazandó besoroláshoz. A javasolt érték 60%. Ennek a beállításnak Körültekintőnek kell lennie. Ha csökkenti a 60% alatti szintet, akkor előfordulhat, hogy hamis pozitív besorolásokat vezet be a katalógusba. Ha több Adatmintázatot is megad, ez a beállítás le van tiltva, és az érték 60%-on lesz javítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy létrehozta a besorolási szabályt, készen áll a beolvasási szabálykészlet hozzáadására, hogy a vizsgálat a szabályt használja a vizsgálat során. További információkért lásd: [ellenőrzési szabálykészlet létrehozása](create-a-scan-rule-set.md).

@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 – teljesítmény finombeállítása
 description: Ismerje meg, hogyan használható az összes rendelkezésre álló átviteli sebesség Azure Data Lake Storage Gen1 a legjobb teljesítmény eléréséhez a lehető legtöbb olvasást és írást kell végrehajtania.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: stewu
-ms.openlocfilehash: e9a589b43490613834a810a68636c426e45c2656
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.author: twooley
+ms.openlocfilehash: c7f16dd9ea450185893164e10928c7022d6ab5a6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332518"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724680"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 teljesítményének hangolása
 
@@ -65,7 +65,7 @@ Időnként az adatfolyamatok korlátozott mértékben szabályozzák a sok kis f
 
 A kaptár-és ADLA számítási feladataihoz az idősoros adatok partícióinak metszése segíthet néhány lekérdezésnek az adatok egy részhalmazát olvasni, ami javítja a teljesítményt.
 
-Azok a folyamatok, amelyek idősoros adatot töltenek be, gyakran a fájlok és mappák strukturált elnevezésével helyezik el a fájljaikat. A következő gyakori példa a dátum: *\dataset\yyyy\mm\dd\ datafile_YYYY_MM_DD. TSV*alapján strukturált adatok esetében látható.
+Azok a folyamatok, amelyek idősoros adatot töltenek be, gyakran a fájlok és mappák strukturált elnevezésével helyezik el a fájljaikat. A következő gyakori példa a dátum: *\dataset\yyyy\mm\dd\ datafile_YYYY_MM_DD. TSV* alapján strukturált adatok esetében látható.
 
 Figyelje meg, hogy a DateTime információ a mappák és a fájlnév között is megjelenik.
 
@@ -131,7 +131,7 @@ A fenti általános irányelvek mellett minden alkalmazás különböző paramé
 | [MapReduce a HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. csökkentse a memóriát</li><li>MapReduce. job. csökkenti</li></ul> |
 | [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>Munkavégző folyamatok száma</li><li>Kiöntő végrehajtó példányainak száma</li><li>A bolt végrehajtó példányainak száma </li><li>Kiöntő feladatok száma</li><li>Bolti feladatok száma</li></ul>|
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Ismerkedés az Azure Data Lake Analytics szolgáltatással](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

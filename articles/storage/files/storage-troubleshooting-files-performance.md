@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 960b3c29f97c43e1247018a60f6c6310c7cf02de
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512069"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724663"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Az Azure file shares teljesítményével kapcsolatos problémák elhárítása
 
@@ -46,7 +46,7 @@ Annak ellenőrzéséhez, hogy a megosztást szabályozzák-e, elérheti és hasz
 ### <a name="solution"></a>Megoldás
 
 - Ha szabványos fájlmegosztást használ, engedélyezze a [nagyméretű fájlmegosztást](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) a Storage-fiókban. A nagyméretű fájlmegosztás akár 10 000 IOPS-t is támogat.
-- Ha prémium szintű fájlmegosztást használ, növelje a kiosztott fájlmegosztás méretét, hogy növelje a IOPS korlátját. További információ: "a prémium szintű fájlmegosztás kiépítés ismertetése" szakasz, [Azure Files tervezési útmutató](./storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
+- Ha prémium szintű fájlmegosztást használ, növelje a kiosztott fájlmegosztás méretét, hogy növelje a IOPS korlátját. További információt a [prémium szintű fájlmegosztás kiépítés ismertetése](./understanding-billing.md#provisioned-billing)című témakörben talál.
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>2. ok: a metaadatok vagy a névtér nagy terhelése
 
@@ -285,7 +285,7 @@ Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, t
 
 Ha többet szeretne megtudni a Azure Monitor riasztások konfigurálásáról, tekintse meg [a Microsoft Azure riasztások áttekintése]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)című témakört.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 - [A Windows Azure Files hibáinak megoldása](storage-troubleshoot-windows-file-connection-problems.md)  
 - [A Linux Azure Files hibáinak megoldása](storage-troubleshoot-linux-file-connection-problems.md)  
 - [Gyakori kérdések az Azure Files-szal kapcsolatban](storage-files-faq.md)
