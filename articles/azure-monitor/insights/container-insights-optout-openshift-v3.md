@@ -3,12 +3,12 @@ title: Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása | Micros
 description: Ez a cikk azt ismerteti, hogyan állíthatja le a Azure Monitor for containers szolgáltatással az Azure Red Hat OpenShift-fürt figyelését.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6c21b17fd9faed7b133cd8ecad767ae7bd4aa868
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 7e6ab46940ed29a98b3988c00c92d6c691d6e0f0
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216531"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695616"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása
 
@@ -108,7 +108,7 @@ Futtassa a következő parancsot az Azure CLI-vel Linuxon a megoldás eltávolí
 ```azurecli
 az login   
 az account set --subscription "Subscription Name"
-az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
+az deployment group create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
 A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, az alábbihoz hasonló üzenet jelenik meg, amely tartalmazza a kapott eredményt:
@@ -135,6 +135,6 @@ A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, a
 ProvisioningState       : Succeeded
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a munkaterület csak a fürt figyelésének támogatásához lett létrehozva, és már nincs rá szükség, manuálisan kell törölnie. Ha nem ismeri a munkaterület törlésének módját, tekintse meg [Az Azure log Analytics munkaterület törlése](../platform/delete-workspace.md)című témakört.

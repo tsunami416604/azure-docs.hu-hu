@@ -10,12 +10,12 @@ ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c8d07e53e259fff28e662f0c1ca3934eabf015e8
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d05c95c22d75e4287283318095c4d053763f349e
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357449"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702377"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -98,7 +98,7 @@ az login
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
@@ -215,7 +215,7 @@ read resourceGroupName &&
 echo "Enter the location (i.e. centralus):" &&
 read location &&
 az group create --name $resourceGroupName --location "$location" &&
-az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+az deployment group create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
 > [!NOTE]
@@ -281,7 +281,7 @@ Másik lehetőségként törölheti az erőforráscsoportot, amely törli a Stor
 >
 > Ha egy Azure virtuális géppel társított tárfiókot próbál törölni, egy hibaüzenetet kaphat, amely szerint a tárfiók még használatban van. A hiba elhárításához a Storage- [fiókok törlésekor a hibák elhárítása](../../virtual-machines/troubleshooting/index.yml)című témakörben talál segítséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tárfiókok áttekintése](storage-account-overview.md)
 - [Frissítés általános célú v2-tárfiókra](storage-account-upgrade.md)

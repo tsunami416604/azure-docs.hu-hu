@@ -3,12 +3,12 @@ title: Tesztkörnyezet konfigurálása Távoli asztali átjáró használatára 
 description: Megtudhatja, hogyan konfigurálhat labort Azure DevTest Labs egy távoli asztali átjáróval, hogy biztosítsa a laboratóriumi virtuális gépek biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b48a0709deb21ca0f8a27d1cf953c7d8d4ba2cc8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144704"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695682"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>A labor konfigurálása Azure DevTest Labs távoli asztali átjáró használatához
 Azure DevTest Labs egy távoli asztali átjárót konfigurálhat a laborhoz, így biztosíthatja a labor virtuális gépek (VM-EK) biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni. A labor központi helyet biztosít a labor felhasználói számára az összes olyan virtuális gép megtekintésére és a hozzájuk való kapcsolódásra, amelyhez hozzáférése van. A **virtuális gép** oldalon a **Kapcsolódás** gomb egy, a géphez való kapcsolódáshoz megnyitható RDP-fájlt hoz létre. Az RDP-kapcsolatot tovább testreszabhatja és biztonságossá teheti úgy, hogy a labort egy távoli asztali átjáróhoz csatlakoztatja. 
@@ -66,10 +66,10 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 Konfigurálja a labort a jogkivonat-hitelesítés használatára az alábbi lépések segítségével:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 1. A Labs listából válassza ki a **labort**.
-1. A labor lapon válassza a **konfiguráció és házirendek**lehetőséget.
-1. A bal oldali menüben, a **Beállítások** szakaszban válassza a **labor-beállítások**elemet.
+1. A labor lapon válassza a **konfiguráció és házirendek** lehetőséget.
+1. A bal oldali menüben, a **Beállítások** szakaszban válassza a **labor-beállítások** elemet.
 1. A **Távoli asztal** szakaszban adja meg a távoli asztali szolgáltatások átjárójának vagy farmjának teljes tartománynevét (FQDN) vagy IP-címét az **átjáró állomásneve** mezőhöz. Ennek az értéknek meg kell egyeznie az átjáró gépeken használt TLS/SSL-tanúsítvány teljes tartománynevével.
 
     ![Távoli asztal beállításai a labor beállításaiban](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
@@ -82,7 +82,7 @@ Konfigurálja a labort a jogkivonat-hitelesítés használatára az alábbi lép
     > A **Save (Mentés**) gombra kattintva elfogadja [Távoli asztali átjáró licencfeltételeket](https://www.microsoft.com/licensing/product-licensing/products). A távoli átjáróval kapcsolatos további információkért tekintse meg a távoli asztali környezet [Távoli asztali szolgáltatásokét](/windows-server/remote/remote-desktop-services/Welcome-to-rds) és [üzembe helyezését](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure)ismertető témakört.
 
 
-Ha a labor automatizáláson keresztüli konfigurálását részesíti előnyben, tekintse meg a minta PowerShell-parancsfájl [Set-DevTestLabGateway.ps1át ](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) az **átjáró állomásneve** és az **átjáró-jogkivonat titkos** beállításainak beállításához. A [Azure DevTest Labs GitHub-tárház](https://github.com/Azure/azure-devtestlab) egy Azure Resource Manager sablont is biztosít, amely létrehoz vagy frissít egy labort az **átjárói állomásnév** és az **átjáró-jogkivonat titkos** beállításainak használatával.
+Ha a labor automatizáláson keresztüli konfigurálását részesíti előnyben, tekintse meg a minta PowerShell-parancsfájl [Set-DevTestLabGateway.ps1át](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) az **átjáró állomásneve** és az **átjáró-jogkivonat titkos** beállításainak beállításához. A [Azure DevTest Labs GitHub-tárház](https://github.com/Azure/azure-devtestlab) egy Azure Resource Manager sablont is biztosít, amely létrehoz vagy frissít egy labort az **átjárói állomásnév** és az **átjáró-jogkivonat titkos** beállításainak használatával.
 
 ## <a name="configure-network-security-group"></a>Hálózati biztonsági csoport konfigurálása
 A labor további biztonságossá tételéhez hálózati biztonsági csoportot (NSG) adhat hozzá a labor virtuális gépek által használt virtuális hálózathoz. A NSG beállításával kapcsolatos útmutatásért lásd: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](../virtual-network/manage-network-security-group.md).
@@ -135,7 +135,7 @@ Kövesse az alábbi lépéseket a távoli asztali átjáró farmhoz tartozó min
     A sablon a következő paranccsal helyezhető üzembe az Azure CLI használatával:
 
     ```azurecli
-    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
+    az deployment group create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
     ```
 
     A paraméterek leírása a következő:
@@ -157,5 +157,5 @@ Kövesse az alábbi lépéseket a távoli asztali átjáró farmhoz tartozó min
 
     Ha az átjárót és a labort is konfigurálta **, akkor a kapcsolódáskor** létrehozott kapcsolatfájl automatikusan tartalmazza a jogkivonat-hitelesítés használatával történő kapcsolódáshoz szükséges információkat.     
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Távoli asztali szolgáltatások: [Távoli asztali szolgáltatások dokumentációjának](/windows-server/remote/remote-desktop-services/Welcome-to-rds) megismeréséhez tekintse meg a következő cikket.
