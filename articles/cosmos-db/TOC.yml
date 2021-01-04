@@ -1002,6 +1002,8 @@
               href: cassandra-spark-aggregation-ops.md
             - name: Táblaadatok másolása
               href: cassandra-spark-table-copy-ops.md
+        - name: Cassandra és Kafka
+          href: cassandra-kafka-connect.md
         - name: Kezelés Resource Manager-sablonokkal
           href: templates-samples-cassandra.md
           displayName: ARM

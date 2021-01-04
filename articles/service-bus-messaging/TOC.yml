@@ -96,6 +96,22 @@
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: Teljesítmény optimalizálása
       href: service-bus-performance-improvements.md
+    - name: Összevonás
+      items:
+        - name: Üzenetreplikáció és régiók közötti összevonás
+          href: service-bus-federation-overview.md
+        - name: Üzenetreplikációs feladatok és alkalmazások
+          href: service-bus-federation-replicator-functions.md
+        - name: Üzenetreplikációs feladatminták
+          href: service-bus-federation-patterns.md
+        - name: Konfigurált replikációs feladatok
+          href: service-bus-federation-configuration.md
+        - name: Események replikálása Service Bus-entitások között
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy'
+        - name: Üzenetek replikálása az Event Hubsba
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
+        - name: Üzenetek lekérése az Event Hubsról
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
     - name: Georeplikációs vészhelyreállítás és georeplikáció
       href: service-bus-geo-dr.md
     - name: Aszinkrón üzenetkezelés és magas rendelkezésre állás

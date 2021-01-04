@@ -57,8 +57,6 @@
   items:
     - name: IoT Explorer telepítése és használata
       href: howto-use-iot-explorer.md
-    - name: Az IoT Plug and Play-híd telepítése és használata
-      href: howto-use-iot-pnp-bridge.md
     - name: DTDL tartalomkészítő eszközök telepítése és használata
       href: howto-use-dtdl-authoring-tools.md
     - name: Embedded C használata
@@ -67,6 +65,10 @@
       href: howto-manage-digital-twin.md
     - name: Eszköz minősítése
       href: howto-certify-device.md
+    - name: Az IoT Plug and Play-híd telepítése és használata
+      href: howto-use-iot-pnp-bridge.md
+    - name: 'IoT Plug and Play-híd létrehozása, üzembe helyezése és bővítése'
+      href: howto-build-deploy-extend-pnp-bridge.md
 - name: Referencia
   items:
     - name: Kódtárak és SDK-k

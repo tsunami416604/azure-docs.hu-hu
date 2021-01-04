@@ -290,6 +290,8 @@
         - name: Állapot-ellenőrzés használata a Deployment Managerben
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
+    - name: Sablonokkal kapcsolatos Microsoft Learn-útvonal
+      href: /learn/paths/deploy-manage-resource-manager-templates/
 - name: Alapelvek
   items:
     - name: Ajánlott eljárások a sablonok használatához

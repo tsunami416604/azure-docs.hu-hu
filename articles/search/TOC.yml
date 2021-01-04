@@ -372,7 +372,7 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: Hozzáférés privát végpontokon keresztül
               href: search-indexer-howto-access-private.md
-        - name: Identitás-alapú hozzáférés
+        - name: Dokumentumszintű biztonság
           items:
             - name: Biztonsági szűrők
               href: search-security-trimming-for-azure-search.md
@@ -550,6 +550,8 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: Fejlesztői képzés (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: Partneri megoldások
+      href: resource-partners-knowledge-mining.md
     - name: GYIK
       href: search-faq-frequently-asked-questions.md
     - name: Díjszabás

@@ -59,6 +59,8 @@
               href: solutions-windows-virtual-desktop.md
     - name: Gyakori kérdések az Azure NetApp Filesról
       href: azure-netapp-files-faqs.md
+    - name: Mi az az Azure-beli alkalmazáskonzisztens pillanatkép-készítési eszköz?
+      href: azacsnap-introduction.md
 - name: Útmutatók
   items:
     - name: Regisztrálás az Azure NetApp Filesra
@@ -131,6 +133,32 @@
       href: /rest/api/netapp/
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Azure-beli alkalmazáskonzisztens pillanatkép-készítési eszköz (AzAcSnap)
+      items:
+        - name: Bevezetés az AzAcSnap használatába
+          href: azacsnap-get-started.md
+        - name: Az AzAcSnap telepítése
+          href: azacsnap-installation.md
+        - name: Vészhelyreállítás az AzAcSnap használatával
+          href: azacsnap-disaster-recovery.md
+        - name: Tippek és trükkök az AzAcSnap használatához
+          href: azacsnap-tips.md
+        - name: Az AzAcSnap hibaelhárítása
+          href: azacsnap-troubleshoot.md
+        - name: Az AzAcSnap parancsdokumentációja
+          items:
+            - name: Az AzAcSnap konfigurálása
+              href: azacsnap-cmd-ref-configure.md
+            - name: Az AzAcSnap tesztelése
+              href: azacsnap-cmd-ref-test.md
+            - name: Biztonsági mentés az AzAcSnap használatával
+              href: azacsnap-cmd-ref-backup.md
+            - name: Részletes adatok beszerzése az AzAcSnap használatával
+              href: azacsnap-cmd-ref-details.md
+            - name: Törlés az AzAcSnap használatával
+              href: azacsnap-cmd-ref-delete.md
+            - name: Visszaállítás az AzAcSnap használatával
+              href: azacsnap-cmd-ref-restore.md
 - name: További források
   items:
     - name: Díjszabás

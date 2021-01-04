@@ -89,6 +89,22 @@
       href: event-hubs-availability-and-consistency.md
     - name: Méretezhetőség
       href: event-hubs-scalability.md
+    - name: Összevonás
+      items:
+        - name: Többhelyes és többrégiós összevonás
+          href: event-hubs-federation-overview.md
+        - name: Eseményreplikációs feladatok és alkalmazások
+          href: event-hubs-federation-replicator-functions.md
+        - name: Eseményreplikációs feladatminták
+          href: event-hubs-federation-patterns.md
+        - name: Konfigurált replikációs feladatok
+          href: event-hubs-federation-configuration.md
+        - name: Események replikálása eseményközpontok között
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy'
+        - name: Események küldése az Azure Service Bus számára
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
+        - name: Események lekérése az Azure Service Busról
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
     - name: Geo-vészhelyreállítás
       items:
         - name: Georeplikációs vészhelyreállítás és georeplikáció

@@ -367,21 +367,9 @@
                   href: quickstart-custom-commands-application.md
             - name: Útmutatók
               items:
-                - name: Fejlesztés
-                  items:
-                    - name: Alkalmazás létrehozása egyszerű parancsokkal
-                      href: how-to-custom-commands-create-application-with-simple-commands.md
-                    - name: Paraméterek hozzáadása parancsokhoz
-                      href: how-to-custom-commands-add-parameters-to-commands.md
-                    - name: Konfigurációk hozzáadása parancsparaméterekhez
-                      href: how-to-custom-commands-add-parameter-configuration.md
-                    - name: Használati szabályok hozzáadása
-                      href: how-to-custom-commands-add-interaction-rules.md
-                    - name: Nyelvlétrehozási sablonok hozzáadása Speech-válaszokhoz
-                      href: how-to-custom-commands-add-language-generation-templates.md
-                    - name: A Custom Voice használata
-                      href: how-to-custom-commands-use-custom-voice.md
-                - name: Integrálás
+                - name: Custom Commands-alkalmazások fejlesztése és testreszabása
+                  href: how-to-develop-custom-commands-application.md
+                - name: Integrálás ügyfélalkalmazásokkal
                   items:
                     - name: Integrálás ügyfélalkalmazással a Speech SDK használatával
                       href: how-to-custom-commands-setup-speech-sdk.md
@@ -395,26 +383,18 @@
                       href: how-to-custom-commands-update-command-from-client.md
                     - name: Parancsok frissítése webes végpontról
                       href: how-to-custom-commands-update-command-from-web-endpoint.md
-                - name: Üzembe helyezés
-                  items:
-                    - name: Folyamatos üzembe helyezés az Azure DevOps használatával
-                      href: how-to-custom-commands-deploy-cicd.md
-                - name: Tesztelés
-                  items:
-                    - name: Custom Commands-alkalmazás tesztelése
-                      href: how-to-custom-commands-developer-flow-test.md
-                - name: Hibakeresés
-                  items:
-                    - name: Hibakeresés az alkalmazás létrehozásakor
-                      href: how-to-custom-commands-debug-build-time.md
-                    - name: Hibakeresés az alkalmazás futtatásakor
-                      href: how-to-custom-commands-debug-runtime.md
-                - name: Referencia
-                  items:
-                    - name: A Custom Commands alapelvei
-                      href: custom-commands-references.md
-            - name: További források
+                - name: Folyamatos üzembe helyezés az Azure DevOps használatával
+                  href: how-to-custom-commands-deploy-cicd.md
+                - name: Custom Commands-alkalmazások tesztelése
+                  href: how-to-custom-commands-developer-flow-test.md
+                - name: Hibakeresés az alkalmazás létrehozásakor
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Hibakeresés az alkalmazás futtatásakor
+                  href: how-to-custom-commands-debug-runtime.md
+            - name: Erőforrások
               items:
+                - name: A Custom Commands alapelvei
+                  href: custom-commands-references.md
                 - name: Custom Commands-minták (GitHub)
                   href: 'https://aka.ms/speech/cc-samples'
                 - name: Hangvezérelt asszisztensek mintái (GitHub)

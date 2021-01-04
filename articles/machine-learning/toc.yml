@@ -165,6 +165,8 @@
       href: concept-model-management-and-deployment.md
     - name: Modell hordozhatósága (ONNX)
       href: concept-onnx.md
+    - name: Nyílt forráskódú integrációk
+      href: concept-open-source.md
     - name: Gépi tanulási folyamatok
       href: concept-ml-pipelines.md
     - name: Biztonság
@@ -370,6 +372,8 @@
           href: how-to-train-pytorch.md
         - name: Képzés egyéni Docker-rendszerkép használatával
           href: how-to-train-with-custom-image.md
+        - name: Migrálás becslőkből a ScriptRunConfigba
+          href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: Képzés nyomon követése és monitorozása
           items:
             - name: 'Futtatások indítása, monitorozása vagy megszakítása'
@@ -513,8 +517,6 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: ML-folyamatok üzembe helyezése (Python)
           href: how-to-deploy-pipelines.md
-        - name: Folyamat ütemezése (Python)
-          href: how-to-schedule-pipelines.md
         - name: Folyamat aktiválása
           href: how-to-trigger-published-pipeline.md
         - name: Tervező (áthúzás)
