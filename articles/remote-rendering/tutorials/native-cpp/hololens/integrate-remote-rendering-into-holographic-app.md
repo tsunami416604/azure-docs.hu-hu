@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: 56e889778e3b598dc4ded5f64eef20101c542b6a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 44c80703466f91ccdfa33934efa0a05e699fd5de
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207512"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724391"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Oktatóanyag: távoli renderelés integrálása HoloLens holografikus alkalmazásba
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag a szükséges bitek natív mintához való hozzáadását ism
 
 Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
-* A fiók adatai (fiókazonosító, fiók kulcsa, előfizetés azonosítója). Ha nem rendelkezik fiókkal, [hozzon létre egy fiókot](../../../how-tos/create-an-account.md).
+* Fiók adatai (fiókazonosító, fiók kulcsa, fiók tartománya, előfizetés azonosítója). Ha nem rendelkezik fiókkal, [hozzon létre egy fiókot](../../../how-tos/create-an-account.md).
 * Windows SDK 10.0.18362.0 [(letöltés)](https://developer.microsoft.com/windows/downloads/windows-10-sdk).
 * A Visual Studio 2019 [(letöltés)](https://visualstudio.microsoft.com/vs/older-downloads/)legújabb verziója.
 * [Visual Studio-eszközök vegyes valósághoz](/windows/mixed-reality/install-the-tools). A következő számítási *feladatok* telepítése kötelező:
@@ -169,7 +169,8 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
         RR::AzureFrontendAccountInfo init;
         init.AccountId = "00000000-0000-0000-0000-000000000000";
         init.AccountKey = "<account key>";
-        init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+        init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+        init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
         m_modelURI = "builtin://Engine";
         m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
 
@@ -220,7 +221,7 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
 
 A kód meghívja a member functions `SetNewSession` -t `SetNewState` , amelyet a következő bekezdésben fog megvalósítani, valamint a többi állapotjelző gépi kóddal együtt.
 
-Vegye figyelembe, hogy a hitelesítő adatok a mintában rögzítettek, és ki kell tölteni a helyet ([fiókazonosító, fiók kulcsa](../../../how-tos/create-an-account.md#retrieve-the-account-information)és [tartomány](../../../reference/regions.md)).
+Vegye figyelembe, hogy a hitelesítő adatok a mintában rögzítettek, és ki kell tölteni a helyet ([fiókazonosító, fiók kulcsa, fiók tartománya](../../../how-tos/create-an-account.md#retrieve-the-account-information)és [távoli megjelenítési tartomány](../../../reference/regions.md)).
 
 A destruktor törzsének végén a deinicializálás szimmetrikusan és fordított sorrendben történik:
 
@@ -587,7 +588,7 @@ Ha a minta megfelelően fut, az azt jelzi, hogy közvetlenül az Ön előtt, a m
 
 A megfelelő állapot megjelenítéséhez egy szöveges panelen tekintse meg az oktatóanyag előre definiált verzióját a GitHubon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogy milyen lépéseket kell tennie ahhoz, hogy távoli renderelést lehessen felvenni egy Stock **holografikus alkalmazás** C++/DirectX11-mintába.
 Saját modell átalakításához tekintse meg a következő rövid útmutatót:

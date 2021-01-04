@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565908"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740504"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 
@@ -25,6 +25,11 @@ Ebből a cikkből megtudhatja:
 > - [Eszközök és erőforrások kezelése](#manage-assets-and-resources) a Studióban.
 > - A [Azure Machine learning Studio és ml Studio (klasszikus)](#ml-studio-classic-vs-azure-machine-learning-studio)közötti különbségek.
 
+Javasoljuk, hogy használja az operációs rendszerével kompatibilis böngésző legújabb verzióját. A következő böngészők támogatottak:
+  * Microsoft Edge (az új Microsoft Edge, legújabb verzió. Nem a Microsoft Edge örökölt)
+  * Safari (csak Mac, legújabb verzió)
+  * Chrome (legújabb verzió)
+  * Firefox (legújabb verzió)
 
 ## <a name="author-machine-learning-projects"></a>Gépi tanulási projektek készítése
 
@@ -33,6 +38,8 @@ A Studio a projekt típusától és a felhasználói élmény szintjétől függ
 + **Jegyzetfüzetek**
 
   Saját kódot írhat és futtathat felügyelt [Jupyter notebook-kiszolgálókon](how-to-run-jupyter-notebooks.md) , amelyek közvetlenül a studióba vannak integrálva. 
+
+:::image type="content" source="media/overview-what-is-azure-ml-studio/notebooks.gif" alt-text="Képernyőfelvétel: kód írása és futtatása jegyzetfüzetben":::
 
 + **Azure Machine Learning Designer**
 
@@ -61,7 +68,7 @@ A gépi tanulási eszközöket közvetlenül a böngészőben kezelheti. Az eszk
 - Notebooks
 - Kísérletek
 - Naplók futtatása
-- Pipelines 
+- Folyamatok 
 - Folyamat végpontjai
 
 Még ha tapasztalt fejlesztő is, a Studio leegyszerűsítheti a munkaterület-erőforrások kezelését.
@@ -80,7 +87,7 @@ Azt javasoljuk, hogy az új felhasználók ML Studio (klasszikus) helyett **Azur
 
 Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Learning közötti fő különbségeket.
 
-| Jellemző | ML Studio (klasszikus) | Azure Machine Learning |
+| Szolgáltatás | ML Studio (klasszikus) | Azure Machine Learning |
 |---| --- | --- |
 | Húzási interfész | Klasszikus felhasználói élmény | Frissített tapasztalat – [Azure Machine learning Designer](concept-designer.md)| 
 | SDK-kód | Nem támogatott | Teljes mértékben integrált [Azure Machine learning Python](/python/api/overview/azure/ml/) és [R](tutorial-1st-r-experiment.md) SDK-k |
@@ -94,8 +101,11 @@ Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Le
 | Adateltolódás észlelése | Nem támogatott | [Támogatott](how-to-monitor-datasets.md) |
 | Adatcímkéző projektek | Nem támogatott | [Támogatott](how-to-create-labeling-projects.md) |
 
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-## <a name="next-steps"></a>Következő lépések
+* **Hiányzó felhasználói felületi elemek a Studióban** Az Azure szerepköralapú hozzáférés-vezérléssel korlátozható a Azure Machine Learningkal végrehajtható műveletek korlátozása. Ezek a korlátozások megakadályozhatják, hogy a felhasználói felület elemei megjelenjenek a Azure Machine Learning Studióban. Ha például olyan szerepkört rendelt hozzá, amely nem tud számítási példányt létrehozni, akkor a számítási példány létrehozásának lehetősége nem fog megjelenni a Studióban. További információ: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
+
+## <a name="next-steps"></a>További lépések
 
 Látogasson el a [studióba](https://ml.azure.com), vagy Ismerje meg a különböző szerzői lehetőségeket a következő oktatóanyagokkal:  
 

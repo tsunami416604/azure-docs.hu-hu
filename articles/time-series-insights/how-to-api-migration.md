@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 3aedbef079ba62f42ea79afdcd9995d7ee23d9fa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020725"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740555"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Áttelepítés új Azure Time Series Insights Gen2 API-verzióra
 
@@ -76,7 +76,7 @@ Ha a Power BI-összekötővel generált lekérdezéseket, a rendszer hívásokat
 Ha frissíteni szeretné a lekérdezéseket az új API-verzió és az új idősorozat-kifejezés szintaxisának használatára, a lekérdezéseket újra létre kell hozni az Intézőből. További információ [a lekérdezések létrehozásáról az Power bi-összekötő használatával](./how-to-connect-power-bi.md).
 
 > [!NOTE]
-> A Power BI Desktop júliusi 2020-es verzióját kell használnia. Ha nem jelenik meg, a [lekérdezési hasznos adatok verziószáma érvénytelen](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect).
+> Legalább a Power BI Desktop júliusi 2020-es verzióját kell használnia. Ha nem, az "érvénytelen lekérdezési tartalom verziója" hibaüzenet jelenhet meg.
 
 ## <a name="migrate-custom-applications"></a>Egyéni alkalmazások migrálása
 
@@ -385,6 +385,6 @@ Ha a következő hibaüzenet jelenik meg, akkor az új API-verziót () használj
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A környezetet a [Azure Time Series Insights Explorerrel](./concepts-ux-panels.md) vagy az egyéni alkalmazáson keresztül tesztelheti.

@@ -3,15 +3,15 @@ title: Kapcsolatok kezelése Azure Automationban
 description: Ez a cikk azt ismerteti, hogyan kezelheti a külső szolgáltatásokhoz vagy alkalmazásokhoz való Azure Automation kapcsolatokat, és hogyan dolgozhat velük a runbookok-ben.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/13/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8deb249dc042701ec02c3e5e30f3603be132d0ec
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071761"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733994"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Kapcsolatok kezelése Azure Automationban
 
@@ -43,10 +43,10 @@ Az alábbi táblázatban található parancsmagok automatizálási kapcsolatokat
 
 |Parancsmag|Leírás|
 |---|---|
-|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Adatokat kér le egy kapcsolatban.|
-|[Új – AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Új kapcsolatot hoz létre.|
-|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Eltávolítja a meglévő kapcsolatokat.|
-|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Beállítja egy létező kapcsolat adott mezőjének az értékét.|
+|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection)|Adatokat kér le egy kapcsolatban.|
+|[Új – AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection)|Új kapcsolatot hoz létre.|
+|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection)|Eltávolítja a meglévő kapcsolatokat.|
+|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue)|Beállítja egy létező kapcsolat adott mezőjének az értékét.|
 
 ## <a name="internal-cmdlets-to-access-connections"></a>A kapcsolatok elérését szolgáló belső parancsmagok
 
@@ -59,9 +59,9 @@ A következő táblázatban található belső parancsmag a runbookok és a DSC-
 >[!NOTE]
 >Ne használjon változókat a `Name` paraméterrel `Get-AutomationConnection` . Ebben az esetben a változók használata megnehezítheti a runbookok vagy DSC-konfigurációk és a kapcsolati erőforrások közötti függőségek felderítését a tervezési időszakban.
 
-## <a name="python-2-functions-to-access-connections"></a>A Python 2 függvények a kapcsolatok eléréséhez
+## <a name="python-functions-to-access-connections"></a>A kapcsolatok elérésére szolgáló Python-függvények
 
-A következő táblázatban szereplő függvény a kapcsolatoknak a Python 2 runbook való elérésére szolgál.
+A következő táblázatban található függvény a Python 2 és 3 runbook lévő kapcsolatok elérésére szolgál. A Python 3 runbookok jelenleg előzetes verzióban érhető el.
 
 | Függvény | Leírás |
 |:---|:---|
@@ -76,7 +76,7 @@ A következő táblázatban szereplő függvény a kapcsolatoknak a Python 2 run
 
 Új kapcsolatok létrehozása a Azure Portalban:
 
-1. Az Automation-fiókban kattintson a **kapcsolatok** elemre a **megosztott erőforrások**területen.
+1. Az Automation-fiókban kattintson a **kapcsolatok** elemre a **megosztott erőforrások** területen.
 2. Kattintson a **+ kapcsolat hozzáadása** lehetőségre a kapcsolatok lapon.
 4. Az új kapcsolatok ablaktábla **típus** mezőjében válassza ki a létrehozandó kapcsolódási típust. A lehetőségek a következők:, `Azure` `AzureServicePrincipal` és `AzureClassicCertificate` . 
 5. Az űrlap megjeleníti a kiválasztott kapcsolattípus tulajdonságait. Töltse ki az űrlapot, és kattintson a **Létrehozás** gombra az új kapcsolódás mentéséhez.
@@ -97,7 +97,7 @@ Az Automation-fiók létrehozásakor a szolgáltatás alapértelmezés szerint t
 
 ## <a name="add-a-connection-type"></a>Kapcsolattípus hozzáadása
 
-Ha a runbook vagy a DSC-konfiguráció egy külső szolgáltatáshoz csatlakozik, akkor egy integrációs modul nevű [Egyéni modulban](shared-resources/modules.md#custom-modules) kell megadnia a kapcsolat típusát. Ez a modul tartalmaz egy metaadat-fájlt, amely megadja a kapcsolattípus tulajdonságait, és neve ** &lt; ModuleName &gt;-Automation.js, a**tömörített **. zip** fájl modul mappájában található. Ez a fájl tartalmazza a kapcsolat azon mezőit, amelyek szükségesek a modul által reprezentált rendszerhez vagy szolgáltatáshoz való kapcsolódáshoz. A fájl használatával beállíthatja a mezők nevét, az adattípusokat, a titkosítási állapotot és a választható állapotot a kapcsolattípus számára. 
+Ha a runbook vagy a DSC-konfiguráció egy külső szolgáltatáshoz csatlakozik, akkor egy integrációs modul nevű [Egyéni modulban](shared-resources/modules.md#custom-modules) kell megadnia a kapcsolat típusát. Ez a modul tartalmaz egy metaadat-fájlt, amely megadja a kapcsolattípus tulajdonságait, és neve **&lt; ModuleName &gt;-Automation.js, a** tömörített **. zip** fájl modul mappájában található. Ez a fájl tartalmazza a kapcsolat azon mezőit, amelyek szükségesek a modul által reprezentált rendszerhez vagy szolgáltatáshoz való kapcsolódáshoz. A fájl használatával beállíthatja a mezők nevét, az adattípusokat, a titkosítási állapotot és a választható állapotot a kapcsolattípus számára. 
 
 Az alábbi példa egy **. JSON** fájlformátumú sablon, amely a Felhasználónév és a jelszó tulajdonságait határozza meg egy egyéni kapcsolattípus számára, a következő néven `MyModuleConnection` :
 
@@ -124,9 +124,9 @@ Az alábbi példa egy **. JSON** fájlformátumú sablon, amely a Felhasználón
 
 ## <a name="get-a-connection-in-a-runbook-or-dsc-configuration"></a>Runbook vagy DSC-konfigurációban lévő kapcsolatok beszerzése
 
-Egy runbook vagy DSC-konfigurációban lévő, belső parancsmaggal létesített kapcsolatok beolvasása `Get-AutomationConnection` . Ez a parancsmag előnyben részesített a parancsmag felett, mert a kapcsolatra `Get-AzAutomationConnection` vonatkozó információk helyett a kapcsolati értékeket kéri le. 
+Egy runbook vagy DSC-konfigurációban lévő, belső parancsmaggal létesített kapcsolatok beolvasása `Get-AutomationConnection` . Ez a parancsmag előnyben részesített a parancsmag felett, mert a kapcsolatra `Get-AzAutomationConnection` vonatkozó információk helyett a kapcsolati értékeket kéri le.
 
-### <a name="textual-runbook-example"></a>Szöveges runbook példa
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Az alábbi példa bemutatja, hogyan használható a futtató fiók a runbook Azure Resource Manager erőforrásainak hitelesítéséhez. A futtató fiókot jelképező, a tanúsítványon alapuló egyszerű szolgáltatásra hivatkozó összekötőt használ.
 
@@ -135,19 +135,9 @@ $Conn = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 ```
 
-### <a name="graphical-runbook-examples"></a>Grafikus runbook-példák
+# <a name="python"></a>[Python](#tab/python2)
 
-Hozzáadhat egy tevékenységet a belső `Get-AutomationConnection` parancsmaghoz egy grafikus runbook. Kattintson a jobb gombbal a kapcsolódásra a grafikus szerkesztő könyvtár paneljén, és válassza a **Hozzáadás a vászonhoz**lehetőséget.
-
-![Hozzáadás a vászonhoz](media/automation-connections/connection-add-canvas.png)
-
-Az alábbi ábrán egy példa látható, hogy egy grafikus runbook egy kapcsolattípus használatával. Ez a példa a `Constant value` tevékenység adatkészletét használja `Get RunAs Connection` , amely a hitelesítéshez egy kapcsolatok objektumot használ. Itt szerepel egy [folyamat hivatkozása](automation-graphical-authoring-intro.md#use-links-for-workflow) , mert a `ServicePrincipalCertificate` paraméter-készlet egyetlen objektumot vár.
-
-![kapcsolatok beolvasása](media/automation-connections/automation-get-connection-object.png)
-
-### <a name="python-2-runbook-example"></a>Python 2 runbook – példa
-
-Az alábbi példa azt szemlélteti, hogyan lehet hitelesíteni a hitelesítést a Python 2 runbook futtató kapcsolódási funkciójával.
+Az alábbi példa bemutatja, hogyan végezhet hitelesítést a futtató kiszolgáló használatával a Python 2 és 3 runbook.
 
 ```python
 """ Tutorial to show how to authenticate against Azure resource manager resources """
@@ -155,7 +145,7 @@ import azure.mgmt.resource
 import automationassets
 
 def get_automation_runas_credential(runas_connection):
-    """ Returns credentials to authenticate against Azure resoruce manager """
+    """ Returns credentials to authenticate against Azure resource manager """
     from OpenSSL import crypto
     from msrestazure import azure_active_directory
     import adal
@@ -190,7 +180,19 @@ runas_connection = automationassets.get_automation_connection(
 azure_credential = get_automation_runas_credential(runas_connection)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+---
+
+### <a name="graphical-runbook-examples"></a>Grafikus runbook-példák
+
+Hozzáadhat egy tevékenységet a belső `Get-AutomationConnection` parancsmaghoz egy grafikus runbook. Kattintson a jobb gombbal a kapcsolódásra a grafikus szerkesztő könyvtár paneljén, és válassza a **Hozzáadás a vászonhoz** lehetőséget.
+
+![Hozzáadás a vászonhoz](media/automation-connections/connection-add-canvas.png)
+
+Az alábbi ábrán egy példa látható, hogy egy grafikus runbook egy kapcsolattípus használatával. Ez a példa a `Constant value` tevékenység adatkészletét használja `Get RunAs Connection` , amely a hitelesítéshez egy kapcsolatok objektumot használ. Itt szerepel egy [folyamat hivatkozása](automation-graphical-authoring-intro.md#use-links-for-workflow) , mert a `ServicePrincipalCertificate` paraméter-készlet egyetlen objektumot vár.
+
+![kapcsolatok beolvasása](media/automation-connections/automation-get-connection-object.png)
+
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a kapcsolatok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](shared-resources/modules.md)című témakört.
 * A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](automation-runbook-execution.md).

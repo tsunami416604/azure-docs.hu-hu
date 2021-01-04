@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 2197d5be91af4c93e9691e1dc2b953198669deaf
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d8918181024715a57c6029d3ad0a36ea75140fcb
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027407"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739943"
 ---
 # <a name="configure-and-submit-training-runs"></a>Betanítási futtatások konfigurálása és elküldése
 
@@ -173,7 +173,39 @@ Tekintse meg ezeket a jegyzetfüzeteket a futtatások konfigurálására példá
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+ * **ModuleErrors (nincs nevű modul)**: Ha a ModuleErrors-ben fut a kísérletek Azure ml-ben való elküldése közben, a betanítási szkript egy telepítendő csomagot vár, de nem adja hozzá. A csomag nevének megadása után az Azure ML telepíti a csomagot a betanítási futtatáshoz használt környezetben.
+
+    Ha a becslések-t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` `conda_packages` a kalkulátoron keresztül vagy paraméterrel, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. Egy YML-fájlt is megadhat az összes függőségének használatával, `conda_dependencies_file` vagy listázhatja az összes pip-követelményét egy txt-fájlban a `pip_requirements_file` paraméter használatával. Ha rendelkezik saját Azure ML-környezetbeli objektummal, amellyel felül szeretné bírálni a kalkulátor által használt alapértelmezett rendszerképet, megadhatja ezt a környezetet a `environment` kalkulátor konstruktorának paraméterén keresztül.
+    
+    Az Azure ML által karbantartott Docker-rendszerképek és azok tartalma [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers)láthatók.
+    A keretrendszer-specifikus függőségek a vonatkozó keretrendszer dokumentációjában találhatók:
+    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    *  [SKLearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    
+    > [!Note]
+    > Ha úgy gondolja, hogy egy adott csomag elég gyakori ahhoz, hogy hozzá lehessen adni az Azure ML karbantartott lemezképekhez és környezetekhez, hozzon létre GitHub-problémát a [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers). 
+ 
+* **NameError (név nincs meghatározva), AttributeError (objektum nem rendelkezik attribútummal)**: Ez a kivétel a betanítási szkriptből származik. A naplófájlokat a Azure Portalból tekintheti meg, ha további információt szeretne kapni a nem definiált névvel vagy az attribútum hibával kapcsolatban. Az SDK segítségével `run.get_details()` megtekintheti a hibaüzenetet. Ekkor a rendszer a futtatáshoz létrehozott összes naplófájlt is felsorolja. Győződjön meg arról, hogy megtekinti a betanítási szkriptet, és javítsa ki a hibát, mielőtt elküldené a futtatást. 
+
+
+* A **Run vagy a Experiment művelet törlése**: a kísérletek a [kísérlet. Archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) metódussal vagy a Azure Machine learning Studio-ügyfél kísérlet lapjának az "Archive Experiment" gomb használatával is archiválható. Ez a művelet elrejti a kísérletet a lekérdezések és nézetek listájában, de nem törli azt.
+
+    Az egyes kísérletek vagy futtatások végleges törlése jelenleg nem támogatott. További információ a munkaterület-eszközök törléséről: [Machine learning szolgáltatás-munkaterület adatainak exportálása vagy törlése](how-to-export-delete-data.md).
+
+* A **metrikai dokumentum túl nagy**: a Azure Machine learning belső korláttal rendelkezik azon metrikai objektumok méretén, amelyek bejelentkezhetnek a betanítási futtatás során. Ha „a metrikadokumentum túl nagy” hibát észlel egy értéklistát tartalmazó metrika naplózásakor, próbálja meg felosztani a listát kisebb tömbökre, például:
+
+    ```python
+    run.log_list("my metric name", my_metric[:N])
+    run.log_list("my metric name", my_metric[N:])
+    ```
+
+    Az Azure ML belsőleg egy összefüggő listává fűzi össze az ugyanazzal a metrikanévvel rendelkező tömböket.
+
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Megtudhatja, hogyan taníthat modelleket konkrét ML-keretrendszerekkel, például a [Scikit-Learn](how-to-train-scikit-learn.md), a [TensorFlow](how-to-train-tensorflow.md)és a [PyTorch](how-to-train-pytorch.md).

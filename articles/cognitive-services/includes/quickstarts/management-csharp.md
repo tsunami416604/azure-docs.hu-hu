@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 1b50fbfa0ec4116f7d0b5988e5be70d0db086732
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 74f9ed5913ca089e12d5958fe96eeb1552c9137a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95095915"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745719"
 ---
 [Dokumentáció](/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="c-prerequisites"></a>C# előfeltételek
 
 * Érvényes Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
@@ -86,6 +86,10 @@ Adja hozzá a következő kódot a **Main** metódushoz a rendelkezésre álló 
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services-erőforrás létrehozása
 
+Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja a **create** metódust. Ez a metódus új számlázható erőforrást hoz létre az Ön által beadott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet. A következő metódus ezeket argumentumként fogadja el, és létrehoz egy erőforrást.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_create)]
+
 ### <a name="choose-a-service-and-pricing-tier"></a>Válasszon ki egy szolgáltatást és egy díjszabási szintet
 
 Új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint a kívánt [árképzési szintet](https://azure.microsoft.com/pricing/details/cognitive-services/) (vagy SKU-t). Ezt és egyéb információkat paraméterekként fogja használni az erőforrás létrehozásakor. A következő módszer meghívásával megkeresheti a rendelkezésre álló kognitív szolgáltatások listáját a parancsfájlban:
@@ -95,12 +99,6 @@ Adja hozzá a következő kódot a **Main** metódushoz a rendelkezésre álló 
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
 [!INCLUDE [SKUs and pricing](./sku-pricing.md)]
-
-## <a name="create-a-cognitive-services-resource"></a>Cognitive Services-erőforrás létrehozása
-
-Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja a **create** metódust. Ez a metódus új számlázható erőforrást hoz létre az Ön által beadott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet. A következő metódus ezeket argumentumként fogadja el, és létrehoz egy erőforrást.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_create)]
 
 ## <a name="view-your-resources"></a>Erőforrások megtekintése
 
@@ -114,7 +112,7 @@ A következő metódus törli a megadott erőforrást az adott erőforráscsopor
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_delete)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
 
@@ -122,7 +120,7 @@ Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccs
 dotnet run
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Az Azure Management SDK dokumentációja](/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet)
 * [Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)

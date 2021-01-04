@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c75fcd1fd20e41df5018fcaa07fe83051d7e5f1a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010928"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740368"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Eszköz regisztrálása az Azure-ból IoT Hub Device Provisioning Service
 
@@ -26,7 +26,7 @@ Az eszközök kiépítési szolgáltatásban [való regisztrálása](about-iot-d
 
 ## <a name="disallow-devices-by-using-an-individual-enrollment-entry"></a>Eszközök letiltása egyéni beléptetési bejegyzés használatával
 
-Az egyes regisztrációk egyetlen eszközre vonatkoznak, és az igazolási mechanizmusként X. 509 tanúsítványokat vagy SAS-jogkivonatokat (valós vagy virtuális TPM-ben) is használhatnak. (Az SAS-tokeneket használó eszközök az igazolási mechanizmusként csak egy egyéni regisztráción keresztül helyezhetők üzembe.) Ha egy olyan eszközt szeretne letiltani, amely egyéni regisztrációval rendelkezik, letilthatja vagy törölheti a beléptetési bejegyzést. 
+Az egyes regisztrációk egyetlen eszközre érvényesek, és az X. 509 tanúsítványokat, a TPM-kiterjesztési kulcsokat (valós vagy virtuális TPM-ben) vagy SAS-jogkivonatokat használhatnak igazolási mechanizmusként. Ha egy olyan eszközt szeretne letiltani, amely egyéni regisztrációval rendelkezik, letilthatja vagy törölheti a beléptetési bejegyzést. 
 
 Ha átmenetileg le szeretné tiltani az eszközt a beléptetési bejegyzés letiltásával: 
 

@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 66a9c9d605911a9d3b30a55d47e16026e26e502a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4c457ef2c4957308735c222488ad04dac80235df
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447264"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740385"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 
@@ -79,6 +79,8 @@ A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra va
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
+
+A Azure Container Registry (ACR) jelenleg nem támogatja a Unicode-karaktereket az erőforráscsoport-nevekben. A probléma megoldásához használjon olyan erőforráscsoportot, amely nem tartalmazza ezeket a karaktereket.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

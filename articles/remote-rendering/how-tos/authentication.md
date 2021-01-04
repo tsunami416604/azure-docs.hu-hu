@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427460"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724881"
 ---
 # <a name="configure-authentication"></a>A hitelesítés konfigurálása
 
@@ -19,14 +19,17 @@ Az Azure távoli renderelés ugyanazt a hitelesítési mechanizmust használja, 
 * **AccountKey**: a Azure Portal távoli renderelési fiókjához tartozó Keys (kulcsok) lapon szerezhető be. A fiók kulcsai csak fejlesztési/prototípus-készítéshez ajánlottak.
     ![Fiókazonosító](./media/azure-account-primary-key.png)
 
+* **AccountDomain**: a távoli megjelenítési fiók "áttekintés" lapján olvasható be a Azure Portal.
+    ![Fiók tartománya](./media/azure-account-domain.png)
+
 * **AuthenticationToken**: egy Azure ad-jogkivonat, amelyet a [MSAL-könyvtár](../../active-directory/develop/msal-overview.md)használatával lehet beszerezni. Több különböző folyamat is elérhető a felhasználói hitelesítő adatok elfogadásához és a hitelesítő adatok használatával hozzáférési jogkivonat beszerzéséhez.
 
-* **MRAccessToken**: egy Mr token, amely az Azure Mixed Reality biztonságijogkivonat-szolgáltatás (STS) használatával szerezhető be. A `https://sts.mixedreality.azure.com` végpontról a következő híváshoz hasonló Rest-hívással lehet lekérni:
+* **MRAccessToken**: egy Mr token, amely az Azure Mixed Reality biztonságijogkivonat-szolgáltatás (STS) használatával szerezhető be. A `https://sts.<accountDomain>` végpontról a következőhöz hasonló Rest-hívással lehet lekérni:
 
     ```rest
-    GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+    GET https://sts.southcentralus.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-    Host: sts.mixedreality.azure.com
+    Host: sts.southcentralus.mixedreality.azure.com
     Connection: Keep-Alive
 
     HTTP/1.1 200 OK

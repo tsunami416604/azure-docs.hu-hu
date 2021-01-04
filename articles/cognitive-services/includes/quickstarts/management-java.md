@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: a7fc96127d4449cfe0333ba81532d3c5c4ec19fe
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ed85faf9ffe38489eb00ed5a71b3eb841c399d24
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95097747"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745716"
 ---
 [Dokumentáció](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="java-prerequisites"></a>A Java előfeltételei
 
 * Érvényes Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * A [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) aktuális verziója
@@ -96,6 +96,10 @@ Adja hozzá a következő kódot a **Main** metódushoz a rendelkezésre álló 
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services-erőforrás létrehozása
 
+Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja a **create** metódust. Ez a metódus új számlázható erőforrást hoz létre az Ön által beadott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet. A következő metódus ezeket argumentumként fogadja el, és létrehoz egy erőforrást.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_create)]
+
 ### <a name="choose-a-service-and-pricing-tier"></a>Válasszon ki egy szolgáltatást és egy díjszabási szintet
 
 Új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint a kívánt [árképzési szintet](https://azure.microsoft.com/pricing/details/cognitive-services/) (vagy SKU-t). Ezt és egyéb információkat paraméterekként fogja használni az erőforrás létrehozásakor. Az elérhető kognitív szolgáltatások listáját a következő módszer meghívásával érheti el:
@@ -105,12 +109,6 @@ Adja hozzá a következő kódot a **Main** metódushoz a rendelkezésre álló 
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
 [!INCLUDE [SKUs and pricing](./sku-pricing.md)]
-
-## <a name="create-a-cognitive-services-resource"></a>Cognitive Services-erőforrás létrehozása
-
-Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja a **create** metódust. Ez a metódus új számlázható erőforrást hoz létre az Ön által beadott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet. A következő metódus ezeket argumentumként fogadja el, és létrehoz egy erőforrást.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_create)]
 
 ## <a name="view-your-resources"></a>Erőforrások megtekintése
 
@@ -124,7 +122,7 @@ A következő metódus törli a megadott erőforrást az adott erőforráscsopor
 
 [!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_delete)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Az Azure Management SDK dokumentációja](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
 * [Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 12/2/2020
 ms.author: radwiv
-ms.openlocfilehash: c6aa2b63344ef629d55f5a4efb66e4ee0e55975e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661035"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733806"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>A csomagok rögzítésének konfigurálása a VPN-átjárók számára
 
@@ -31,6 +31,7 @@ Az alábbi JSON-és JSON-sémák az egyes tulajdonságok magyarázatát tartalma
 - Egyszerre több, az átjáróra kiterjedő csomagok rögzítése nem futtatható.
 - Egyszerre nem futtathat több csomagot egyetlen kapcsolaton. Egyszerre több csomagot is futtathat különböző kapcsolatokon.
 - Egy átjárón belül legfeljebb öt csomagot lehet futtatni párhuzamosan. A csomagok rögzítése az egész átjáróra kiterjedő csomagok rögzítése és a kapcsolaton belüli csomagok rögzítésének kombinációja lehet.
+- A MaxPacketBufferSize mértékegysége bájt, a MaxFileSize pedig megabájt.
 
 ### <a name="example-json"></a>Példa JSON-ra
 ```JSON-interactive
@@ -358,6 +359,6 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a VPN Gatewayről: [Mi az VPN Gateway?](vpn-gateway-about-vpngateways.md)

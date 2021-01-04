@@ -1,14 +1,14 @@
 ---
 title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
-ms.date: 12/15/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0532441e1ab0d2676e7800c9d63878f9bf3bb3dc
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616161"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723269"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -82,6 +82,10 @@ Az Azure-ba irányuló adatátvitel biztonságának biztosítása érdekében ha
 
 A Linux és a Windows rendszerhez csatlakoztatott gépi ügynök a 443-as TCP-porton keresztül kommunikál az Azure-beli ív felé. Ha a gép tűzfalon vagy proxykiszolgálón keresztül csatlakozik az interneten keresztüli kommunikációhoz, tekintse át a következőt a hálózati konfigurációs követelmények megismeréséhez.
 
+> [!NOTE]
+> Az ív használatára képes kiszolgálók nem támogatják [log Analytics átjáró](../../azure-monitor/platform/gateway.md) proxyként való használatát a csatlakoztatott gépi ügynökhöz.
+>
+
 Ha a kimenő kapcsolatot a tűzfal vagy a proxykiszolgáló korlátozza, győződjön meg arról, hogy az alább felsorolt URL-címek nincsenek letiltva. Ha csak az ügynöknek a szolgáltatással való kommunikációhoz szükséges IP-tartományokat vagy tartományneveket engedélyezi, engedélyeznie kell a következő szolgáltatás-címkék és URL-címek elérését.
 
 Szolgáltatás címkéi:
@@ -97,9 +101,11 @@ URLs
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
+|`login.microsoftonline.com`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
 |`*.guestconfiguration.azure.com` |Vendégkonfiguráció|
 |`*.his.arc.azure.com`|Hibrid identitási szolgáltatás|
+|`www.office.com`|Office 365|
 
 Az előzetes verziójú ügynököknek (0,11-es és alacsonyabb verzió) a következő URL-címekhez is hozzáférést kell adni:
 
@@ -110,7 +116,7 @@ Az előzetes verziójú ügynököknek (0,11-es és alacsonyabb verzió) a köve
 
 Az egyes szolgáltatási címkék/régiók IP-címeinek listáját lásd: JSON-fájl – [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519). A Microsoft az egyes Azure-szolgáltatásokat és az általa használt IP-tartományokat tartalmazó heti frissítéseket tesz közzé. További információkért tekintse át a [szolgáltatás címkéit](../../virtual-network/network-security-groups-overview.md#service-tags).
 
-Az előző táblázatban szereplő URL-címeket a szolgáltatási címke IP-címtartomány információi mellett is meg kell adni, mivel a szolgáltatások többsége jelenleg nem rendelkezik a szolgáltatási címke regisztrálásával. Ennek megfelelően az IP-címek változhatnak. Ha a tűzfal-konfigurációhoz IP-címtartományok szükségesek, akkor a **AzureCloud** szolgáltatás címkét kell használni az összes Azure-szolgáltatás elérésének engedélyezéséhez. Ne tiltsa le ezen URL-címek biztonsági figyelését vagy ellenőrzését, és engedélyezze azokat más internetes forgalomként.
+Az előző táblázatban szereplő URL-címeket a szolgáltatási címke IP-címtartomány információi mellett is meg kell adni, mivel a legtöbb szolgáltatás jelenleg nem rendelkezik szolgáltatás-címkézési regisztrációval. Ennek megfelelően az IP-címek változhatnak. Ha a tűzfal-konfigurációhoz IP-címtartományok szükségesek, akkor a **AzureCloud** szolgáltatás címkét kell használni az összes Azure-szolgáltatás elérésének engedélyezéséhez. Ne tiltsa le ezen URL-címek biztonsági figyelését vagy ellenőrzését, és engedélyezze azokat más internetes forgalomként.
 
 ### <a name="register-azure-resource-providers"></a>Azure-erőforrás-szolgáltatók regisztrálása
 
@@ -163,7 +169,7 @@ A Windows rendszerhez készült csatlakoztatott számítógép-ügynök a követ
 * Manuálisan futtassa a Windows Installer csomagot `AzureConnectedMachineAgent.msi` a parancs-rendszerhéjból.
 * Egy PowerShell-munkamenetből egy parancsfájlból álló metódus használatával.
 
-A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése után a rendszer a következő további rendszerszintű konfigurációs módosításokat alkalmazza.
+A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése után a rendszer a következő rendszerszintű konfigurációs módosításokat alkalmazza.
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 
@@ -215,7 +221,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 A Linux rendszerhez csatlakoztatott számítógép-ügynök a terjesztés előnyben részesített csomag formátumban van megadva (. RPM vagy. DEB), amely a Microsoft [Package adattárában](https://packages.microsoft.com/)található. Az ügynök telepítve van és konfigurálva van a shell script Bundle [Install_linux_azcmagent. sh](https://aka.ms/azcmagent).
 
-A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után a következő további rendszerszintű konfigurációs módosítások lesznek alkalmazva.
+A Linux rendszerhez készült csatlakoztatott gépi ügynök telepítése után a következő rendszerszintű konfigurációs módosítások lesznek alkalmazva.
 
 * A telepítés során a következő telepítési mappák jönnek létre.
 

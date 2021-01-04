@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/29/2020
+ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: a960bb3590138ca5efa5146988240db1707a3cf0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c26224f388c09ec758373c877004f5485bb420df
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182121"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725080"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-cloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Terraform-felhővel
 
@@ -76,7 +76,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
     Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.terraform.io/sso/saml/samlconf-<ID>/metadata`
 
@@ -116,7 +116,15 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-terraform-cloud-sso"></a>Terraform Cloud SSO konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a Terraform Cloud webhelyre.
+1. A Terraform-felhőben lévő konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, a **Terraform-felhő beállítása** elemre kattintva megnyithatja a Terraform Cloud alkalmazást. Itt adja meg a rendszergazdai hitelesítő adatokat a Terraform-felhőbe való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a Terraform-felhőt, egy másik böngészőablakban jelentkezzen be a Terraform Cloud vállalati webhelyre rendszergazdaként.
 
 2. Lépjen a **beállítások > SSO > beállítások szerkesztése** menüpontra.
 
@@ -155,6 +163,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a Terraform felhő csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a Terraform-felhőbe, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Terraform-felhő konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

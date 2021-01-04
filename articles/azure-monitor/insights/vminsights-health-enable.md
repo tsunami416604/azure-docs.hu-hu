@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: references_regions
+ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444780"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740470"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs vendég állapotának engedélyezése (előzetes verzió)
 Azure Monitor for VMs vendég állapota lehetővé teszi egy virtuális gép állapotának megtekintését, amelyet a rendszeres időközönként mintavételnek alávetett teljesítmény-mérések határoznak meg. Ez a cikk bemutatja, hogyan engedélyezheti ezt a funkciót az előfizetésében, és hogyan engedélyezheti a vendég figyelését az egyes virtuális gépeken.
@@ -20,31 +21,51 @@ Azure Monitor for VMs vendég állapota lehetővé teszi egy virtuális gép ál
 Azure Monitor for VMs vendég állapota a nyilvános előzetes verzióban a következő korlátozásokkal rendelkezik:
 
 - Jelenleg csak az Azure-beli virtuális gépek támogatottak. A kiszolgálókhoz készült Azure arc jelenleg nem támogatott.
-- A virtuális gépnek az alábbi operációs rendszerek egyikét kell futtatnia: 
+
+
+## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
+A virtuális gépnek az alábbi operációs rendszerek egyikét kell futtatnia: 
+
   - Ubuntu 16,04 LTS, Ubuntu 18,04 LTS
   - Windows Server 2012 vagy újabb
-- A virtuális gépnek az alábbi régiók egyikében kell elhelyezkednie:
-  - Kelet-Ausztrália
-  - Délkelet-Ausztrália
-  - Közép-India
-  - USA középső régiója
-  - USA keleti régiója
-  - USA 2. keleti régiója
-  - USA 2. keleti – EUAP
-  - Középnyugat-Németország
-  - Kelet-Japán
-  - USA északi középső régiója
-  - Észak-Európa
-  - USA déli középső régiója
-  - Délkelet-Ázsia
-  - Az Egyesült Királyság déli régiója
-  - Nyugat-Európa
-  - USA nyugati régiója
-  - USA 2. nyugati régiója
-- Log Analytics munkaterület a következő régiók egyikében kell, hogy legyen:
-  - USA keleti régiója
-  - USA 2. keleti – EUAP
-  - Nyugat-európai régió
+
+## <a name="supported-regions"></a>Támogatott régiók
+
+A virtuális gépnek az alábbi régiók egyikében kell elhelyezkednie:
+
+- Ausztrália középső régiója
+- Kelet-Ausztrália
+- Délkelet-Ausztrália
+- Közép-India
+- USA középső régiója
+- Kelet-Ázsia
+- USA keleti régiója
+- USA 2. keleti régiója
+- USA 2. keleti – EUAP
+- Középnyugat-Németország
+- Kelet-Japán
+- USA északi középső régiója
+- Észak-Európa
+- USA déli középső régiója
+- Délkelet-Ázsia
+- Az Egyesült Királyság déli régiója
+- USA nyugati középső régiója
+- Nyugat-Európa
+- USA nyugati régiója
+- USA 2. nyugati régiója
+
+
+Log Analytics munkaterület a következő régiók egyikében kell, hogy legyen:
+
+- USA középső régiója
+- USA keleti régiója
+- USA 2. keleti régiója
+- USA 2. keleti – EUAP
+- Észak-Európa
+- Délkelet-Ázsia
+- Az Egyesült Királyság déli régiója
+- Nyugat-európai régió
+- USA 2. nyugati régiója
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,9 +73,8 @@ Azure Monitor for VMs vendég állapota a nyilvános előzetes verzióban a köv
 - A bevezetési lépéseket végrehajtó felhasználónak legalább közreműködői szintű hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyben a virtuális gép és az adatgyűjtési szabály található.
 - A szükséges Azure-erőforrás-szolgáltatókat a következő szakaszban leírtak szerint kell regisztrálni.
 
-
 ## <a name="register-required-azure-resource-providers"></a>A szükséges Azure-erőforrás-szolgáltatók regisztrálása
-A következő Azure-erőforrás-szolgáltatóknak regisztrálniuk kell az előfizetéséhez Azure Monitor for VMs vendég állapotának engedélyezéséhez. 
+A következő Azure-erőforrás-szolgáltató regisztrálva van az előfizetéséhez Azure Monitor for VMs vendég állapotának engedélyezéséhez. 
 
 - Microsoft. WorkloadMonitor
 - Microsoft. bepillantások

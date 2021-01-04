@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: d6dfa8ccc35b36bf7f1e85e6ab213bd4e4783eaf
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 616ad26e28db46f8c28aaa3fb763e2f0acf15409
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95097348"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745718"
 ---
 [Dokumentáció](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices)  |  [Csomag (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/)  |  [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="python-prerequisites"></a>A Python előfeltételei
 
 * Érvényes Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * [Python 3.x](https://www.python.org/)
@@ -58,6 +58,10 @@ Ezután adja hozzá a következő kódot egy **CognitiveServicesManagementClient
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services-erőforrás létrehozása
 
+Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja a **create** függvényt. Ez a függvény új számlázható erőforrást hoz létre az Ön által beadott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet. A következő függvény végrehajtja az összes ilyen argumentumot, és létrehoz egy erőforrást.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/azure_management_service/create_delete_resource.py?name=snippet_create)]
+
 ### <a name="choose-a-service-and-pricing-tier"></a>Válasszon ki egy szolgáltatást és egy díjszabási szintet
 
 Új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint a kívánt [árképzési szintet](https://azure.microsoft.com/pricing/details/cognitive-services/) (vagy SKU-t). Ezt és egyéb információkat paraméterekként fogja használni az erőforrás létrehozásakor. A következő függvény felsorolja az elérhető kognitív szolgáltatások "típusait".
@@ -67,12 +71,6 @@ Ezután adja hozzá a következő kódot egy **CognitiveServicesManagementClient
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
 [!INCLUDE [SKUs and pricing](./sku-pricing.md)]
-
-## <a name="create-a-cognitive-services-resource"></a>Cognitive Services-erőforrás létrehozása
-
-Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja a **create** függvényt. Ez a függvény új számlázható erőforrást hoz létre az Ön által beadott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet. A következő függvény végrehajtja az összes ilyen argumentumot, és létrehoz egy erőforrást.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/azure_management_service/create_delete_resource.py?name=snippet_create)]
 
 ## <a name="view-your-resources"></a>Erőforrások megtekintése
 
@@ -92,7 +90,7 @@ Adja hozzá a következő kódot a szkript aljához a fenti függvények meghív
 
 [!code-python[](~/cognitive-services-quickstart-code/python/azure_management_service/create_delete_resource.py?name=snippet_calls)]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az alkalmazást a parancssorból a `python` paranccsal.
 
@@ -100,7 +98,7 @@ Futtassa az alkalmazást a parancssorból a `python` paranccsal.
 python <your-script-name>.py
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Az Azure Management SDK dokumentációja](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python)
 * [Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)

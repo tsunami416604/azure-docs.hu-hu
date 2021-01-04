@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a2f76df05878151405d56b1bff5e588f426d9d92
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: df511e79b73256833ec54c5906bb6acbc852bc46
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093553"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739620"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Oktatóanyag: az első gépi tanulási modell betanítása (4. rész)
 
@@ -111,8 +111,33 @@ A következő vezérlő szkript és a "Hello World!" küldéséhez használt kü
 
 Hozzon létre egy új Python-fájlt a (z) `tutorial` nevű könyvtárban `04-run-pytorch.py` :
 
-:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/04-run-pytorch.py":::
+```python
+# 04-run-pytorch.py
+from azureml.core import Workspace
+from azureml.core import Experiment
+from azureml.core import Environment
+from azureml.core import ScriptRunConfig
 
+if __name__ == "__main__":
+    ws = Workspace.from_config()
+    experiment = Experiment(workspace=ws, name='day1-experiment-train')
+    config = ScriptRunConfig(source_directory='./src',
+                             script='train.py',
+                             compute_target='cpu-cluster')
+
+    # set up pytorch environment
+    env = Environment.from_conda_specification(
+        name='pytorch-env',
+        file_path='./.azureml/pytorch-env.yml'
+    )
+    config.run_config.environment = env
+
+    run = experiment.submit(config)
+
+    aml_url = run.get_portal_url()
+    print(aml_url)
+```    
+    
 ### <a name="understand-the-code-changes"></a>A kód módosításainak megismerése
 
 :::row:::
@@ -246,7 +271,7 @@ Ez alkalommal, amikor felkeresi a stúdiót, ugorjon a **metrikák** lapra, ahol
 > [!div class="nextstepaction"]
 > [Újraküldöttem a futtatást](?success=resubmit-with-logging#next-steps) [egy hibába](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a munkamenetben egy alapszintű "Helló világból" frissítünk. parancsfájlt egy reálisabb betanítási parancsfájlhoz, amely egy adott Python-környezet futtatásához szükséges. Megismerte, hogyan végezheti el a helyi Conda-környezetet a felhőben Azure Machine Learning környezettel. Végül azt is láttuk, hogy a kódok néhány sorában hogyan naplózhatja a mérőszámokat Azure Machine Learningba.
 

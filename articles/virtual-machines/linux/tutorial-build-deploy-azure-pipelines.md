@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 6bc6776df889c5c8ccc6acfe5764549ccf7354a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320200"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739705"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Oktatóanyag: alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken az Azure DevOps Services és az Azure-folyamatok használatával
 
@@ -102,8 +102,8 @@ A virtuális gépeket erőforrásként lehet felvenni [környezetekben](/azure/d
 
 Létrehozhat egy környezetet a "**környezetek**" csomóponton belül a "**folyamatok**" szakaszban.
 1.  Jelentkezzen be az Azure DevOps-szervezetbe, és navigáljon a projekthez.
-2.  A projektben navigáljon a **folyamatok** lapra. Ezután válassza a **környezetek** lehetőséget, majd kattintson a **környezet létrehozása**lehetőségre. Adja meg a környezet és a **Leírás** **nevét** (kötelező).
-3.  Válassza a **Virtual Machines** lehetőséget a környezethez hozzáadni kívánt **erőforrásként** , majd kattintson a **tovább**gombra.
+2.  A projektben navigáljon a **folyamatok** lapra. Ezután válassza a **környezetek** lehetőséget, majd kattintson a **környezet létrehozása** lehetőségre. Adja meg a környezet és a **Leírás** **nevét** (kötelező).
+3.  Válassza a **Virtual Machines** lehetőséget a környezethez hozzáadni kívánt **erőforrásként** , majd kattintson a **tovább** gombra.
 4.  Válassza az operációs rendszer (Windows/Linux) lehetőséget, és **másolja a PS regisztrációs parancsfájlt**. 
 5.  Most futtassa az átmásolt parancsfájlt egy rendszergazdai PowerShell-parancssorból az egyes megcélzott virtuális gépeken, amelyek regisztrálva lesznek a környezetben.
     > [!NOTE]
@@ -118,7 +118,7 @@ Létrehozhat egy környezetet a "**környezetek**" csomóponton belül a "**foly
 
     ![VMresource_view](media/tutorial-deploy-vms-azure-pipelines/vm-resourceview.png)
 
-9. Hozzáadhat címkéket a virtuális géphez az interaktív PS regisztrációs parancsfájl részeként (vagy), ha az erőforrások nézetben az egyes virtuálisgép-erőforrások végén lévő három pontra kattint, az erőforrás nézetből is hozzáadhat vagy eltávolíthat.
+9. Hozzáadhat címkéket a virtuális géphez az interaktív PowerShell regisztrációs parancsfájl részeként (vagy), ha az erőforrások nézetben az egyes virtuálisgép-erőforrások végén lévő három pontra kattint, az erőforrás nézetből is hozzáadhat vagy eltávolíthat.
 
    A hozzárendelt címkék lehetővé teszik, hogy meghatározott virtuális gépekre korlátozza a telepítést, ha a környezet egy telepítési feladatokban van használatban. A címkék mindegyike 256 karakterből állhat, de a használható címkék száma nem korlátozott.
 
@@ -202,7 +202,7 @@ További útmutatásért kövesse a [Node.js alkalmazás felépítése a Nyelő]
 
 - Tekintse meg a folyamatot, hogy megtudja, mi ez. Győződjön meg arról, hogy az összes alapértelmezett bemenet megfelel a kódnak.
 
-- Válassza a **Mentés és Futtatás**lehetőséget, majd válassza **a végrehajtás közvetlenül a főágra**lehetőséget, majd kattintson a **Mentés és Futtatás** gombra.
+- Válassza a **Mentés és Futtatás** lehetőséget, majd válassza **a végrehajtás közvetlenül a fő ágat** lehetőséget, majd válassza a **Mentés és Futtatás** újra lehetőséget.
 
 - A rendszer elindít egy új futtatást. Várja meg, amíg a futtatás befejeződik.
 
@@ -224,7 +224,7 @@ További útmutatásért kövesse a [Node.js alkalmazás felépítése a Nyelő]
 2. A környezetből kiválaszthatja a virtuális gépek meghatározott készleteit, hogy a központi telepítést a környezetben minden egyes virtuális géphez definiált **címkék** megadásával kapja meg.
 [Itt](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) látható az üzembe helyezési feladatokhoz tartozó teljes YAML séma.
 
-3. Eithor `runOnce` vagy telepítési stratégiát is megadhat `rolling` . 
+3. Megadhatja `runOnce` a vagy `rolling` a as telepítési stratégiát is. 
 
    `runOnce` a legegyszerűbb üzembe helyezési stratégia, amelyben minden életciklus-Hook, azaz a `preDeploy` `deploy` `routeTraffic` és a `postRouteTraffic` , egyszerre kerül végrehajtásra. Ezt követően a `on:` `success` vagy `on:` `failure` a végrehajtása történik.
 

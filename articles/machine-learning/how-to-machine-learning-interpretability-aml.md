@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 14d15f54befba162b071b40e06e589f980708fd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862343"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740487"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Az adatelemzési csomag használata a Python (előzetes verzió) &i előrejelzésekben
 
@@ -296,41 +296,7 @@ Az alábbi példa bemutatja, hogyan használható az `ExplanationClient` osztál
 
 ## <a name="visualizations"></a>Vizualizációk
 
-Miután letöltötte a magyarázatokat a helyi Jupyter Notebook, a vizualizáció irányítópultján megismerheti és értelmezheti a modelljét.
-
-### <a name="understand-entire-model-behavior-global-explanation"></a>A teljes modell működésének megismerése (globális magyarázat) 
-
-A következő mintaterületek átfogó képet nyújtanak a betanított modellről, valamint az előrejelzéseit és magyarázatait.
-
-|Telek|Leírás|
-|----|-----------|
-|Adatelemzés| Az adatkészlet áttekintését jeleníti meg az előrejelzési értékekkel együtt.|
-|Globális fontosság|Az összesítések az egyes datapoints fontossági értékeit jelenítik meg a modell általános felső K (a konfigurálható K) fontos funkcióinak megjelenítéséhez. Segít az alapul szolgáló modell általános működésének megértésében.|
-|Magyarázat feltárása|Azt mutatja be, hogy a szolgáltatás hogyan befolyásolja a modell előrejelzési értékeinek változását, vagy az előrejelzési értékek valószínűségét. A funkciók interakciójának hatását mutatja.|
-|Összefoglalás fontossága|Az egyes szolgáltatásokra vonatkozó fontossági értékeket használ az összes adatponthoz, hogy megjelenjenek az egyes funkciók eloszlása az előrejelzési értékre. Ennek a diagramnak a használatával megvizsgálja, hogy a szolgáltatás értékei milyen irányba érintik az előrejelzési értékeket.
-|
-
-[![Vizualizációs irányítópult – globális](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
-
-### <a name="understand-individual-predictions-local-explanation"></a>Egyéni előrejelzések ismertetése (helyi magyarázat) 
-
-Bármilyen adatponthoz betöltheti az egyes funkció fontossági területét, ha az összes adatpontra kattint a teljes mintaterületeken.
-
-|Telek|Leírás|
-|----|-----------|
-|Helyi fontosság|Megjeleníti az egyes előrejelzésekhez tartozó legfontosabb funkciókat (K). Segít bemutatni az alapul szolgáló modell helyi viselkedését egy adott adatponton.|
-|Perturbáció-feltárás (mi a teendő, ha elemzés)|Lehetővé teszi a kijelölt adatponthoz tartozó szolgáltatások értékének módosítását, és megfigyelheti az előrejelzés értékének változásait.|
-|Egyéni feltételes várakozás (ICE)| Lehetővé teszi a szolgáltatás értékének a minimális értékről a maximális értékre való módosítását. Segít bemutatni, hogy az adatpont előrejelzése hogyan változik meg egy szolgáltatás módosításakor.|
-
-[![Vizualizációs irányítópult helyi funkciójának fontossága](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
-
-
-[![Vizualizációs irányítópult funkció perturbáció](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
-
-
-[![Vizualizációs irányítópult jég ábrázolása](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
-
-A vizualizációs irányítópult betöltéséhez használja a következő kódot.
+Miután letöltötte a magyarázatokat a helyi Jupyter Notebook, a vizualizáció irányítópultján megismerheti és értelmezheti a modelljét. A vizualizációs irányítópult widgetnek a Jupyter Notebook való betöltéséhez használja a következő kódot:
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -338,11 +304,58 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
+A vizualizáció mind a mérnöki, mind a nyers funkciók magyarázatait támogatja. A nyers magyarázatok az eredeti adatkészlet szolgáltatásain alapulnak, és a megtervezett magyarázatok az adatkészlet azon szolgáltatásain alapulnak, amelyek az adathalmazt használják.
+
+Ha az eredeti adatkészletre vonatkozó modellt próbál értelmezni, ajánlott nyers magyarázatot használni, mivel az egyes funkciók fontossága megegyezik az eredeti adatkészlet egy oszlopával. Az egyik forgatókönyv, ahol a megtervezett magyarázatok hasznosak lehetnek, az egyes kategóriáknak a kategorikus funkcióból való hatásának vizsgálatakor. Ha egy-egy gyors kódolást alkalmaz egy kategorikus szolgáltatásra, akkor az eredményül kapott magyarázatok eltérő fontossági értéket tartalmaznak kategóriánként, egy-egy gyors tervezésű funkció alapján. Ez akkor lehet hasznos, ha leszűkíti, hogy az adatkészlet mely része a modellnek.
+
+> [!NOTE]
+> A tervezés és a nyers magyarázatok egymás után vannak kiszámítva. Először a modell-és featurization folyamat alapján létrehoztak egy megtervezett magyarázatot. Ezt követően a rendszer a megjelenő magyarázat alapján hozza létre a nyers magyarázatot úgy, hogy összegyűjti az azonos nyers szolgáltatásból származó mérnök funkciók fontosságát.
+
+### <a name="create-edit-and-view-dataset-cohorts"></a>Adathalmazok létrehozása, szerkesztése és megtekintése
+
+A felső szalag a modell és az adatok összesített statisztikáit jeleníti meg. Az adatokat adatkészletbeli kohorszok vagy alcsoportok számára is kioszthatja és felszámíthatja, hogy kivizsgálja vagy összehasonlítsa a modell teljesítményét és magyarázatait ezen definiált alcsoportokon belül. Ha összehasonlítja az adatkészlet statisztikáit és magyarázatait ezekben az alcsoportokban, láthatja, hogy a lehetséges hibák miért történnek egy csoportban, és egy másikkal szemben.
+
+[![Adatkészletek kohorszok létrehozása, szerkesztése és megtekintése](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif#lightbox)
+
+### <a name="understand-entire-model-behavior-global-explanation"></a>A teljes modell működésének megismerése (globális magyarázat) 
+
+A magyarázatok irányítópultjának első három lapja a betanított modell átfogó elemzését, valamint annak előrejelzéseit és magyarázatait tartalmazza.
+
+#### <a name="model-performance"></a>A modell teljesítménye
+Értékelje ki a modell teljesítményét, és vizsgálja meg az előrejelzési értékek eloszlását, valamint a modell teljesítmény-metrikáinak értékeit. A modell további vizsgálatához tekintse meg a teljesítményének összehasonlító elemzését az adathalmaz különböző kohorszok vagy alcsoportjai között. Válassza a szűrők lehetőséget az y-érték és az x-érték között a különböző dimenziók közötti kivágáshoz. Megtekintheti a mérőszámokat, például a pontosságot, a pontosságot, a visszahívást, a hamis pozitív arányt (FPR) és a hamis negatív (FNR) értéket
+
+[![A modell teljesítmény lapja a magyarázó vizualizációban](./media/how-to-machine-learning-interpretability-aml/model-performance.gif)](./media/how-to-machine-learning-interpretability-aml/model-performance.gif#lightbox)
+
+#### <a name="dataset-explorer"></a>Adatkészlet-kezelő
+Az adatkészletek statisztikáit úgy tekintheti meg, hogy különböző szűrőket választ ki az X, Y és Color tengelyeken az adatok különböző dimenziók mentén történő szeleteléséhez. Hozzon létre adatkészletet a fentiekben, hogy elemezze az adatkészlet statisztikáit olyan szűrőkkel, mint az előre jelzett eredmény, az adatkészlet szolgáltatásai és a hibajelentések. A Graph-típusok módosításához használja a gráf jobb felső sarkában található fogaskerék ikont.
+
+[![Az adatkészlet Explorer lapja a magyarázati vizualizációban](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif#lightbox)
+
+#### <a name="aggregate-feature-importance"></a>Összesítő funkció fontossága
+Ismerkedjen meg az általános modell-előrejelzéseket (más néven globális magyarázatot) érintő legfontosabb funkciókkal. A csúszka használatával jelenítheti meg a csökkenő funkciók fontossági értékeit. Válassza ki a legfeljebb három kohorszot, és tekintse meg a funkció fontossági értékeit egymás mellett. Kattintson a Graph valamelyik funkciójának egyikére, és tekintse meg, hogy a kiválasztott funkció milyen hatással van a modell előrejelzésére az alábbi függőségi ábrán.
+
+[![Összesítő funkció fontossága lap a magyarázó vizualizációban](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif)](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif#lightbox)
+
+### <a name="understand-individual-predictions-local-explanation"></a>Egyéni előrejelzések ismertetése (helyi magyarázat) 
+
+A magyarázat lap negyedik lapja lehetővé teszi az egyéni Datapoint és az egyes funkciók fontosságának részletezését. Bármely adatponthoz betöltheti az egyes funkció fontossági területét, ha a fő pontdiagram bármelyik adatpontján rákattint, vagy kiválasztja a jobb oldali panel varázsló egy adott Datapoint.
+
+|Telek|Leírás|
+|----|-----------|
+|Az egyes funkciók fontossága|Az egyéni előrejelzés legfontosabb funkcióit jeleníti meg. Segít bemutatni az alapul szolgáló modell helyi viselkedését egy adott adatponton.|
+|What-If elemzése|Lehetővé teszi a kijelölt valós adatponthoz tartozó szolgáltatások értékének módosítását, és megfigyelheti az előrejelzési értékhez képest létrejövő változásokat egy feltételezett Datapoint az új szolgáltatás értékeivel való létrehozásával.|
+|Egyéni feltételes várakozás (ICE)|Lehetővé teszi a szolgáltatás értékének a minimális értékről a maximális értékre való módosítását. Segít bemutatni, hogy az adatpont előrejelzése hogyan változik meg egy szolgáltatás módosításakor.|
+
+[![Az egyes funkciók fontossága és a magyarázat irányítópultja](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif)](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif#lightbox)
+
+> [!NOTE]
+> Ezek a magyarázatok számos közelítésen alapulnak, és nem az előrejelzések oka. Az oksági következtetések szigorú matematikai szilárdsága nélkül nem javasoljuk, hogy a felhasználók a What-If eszköz funkcióinak perturbations alapuló valós döntéseket hozzanak. Ez az eszköz elsősorban a modell és a hibakeresés megismerésére szolgál.
+
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Vizualizáció a Azure Machine Learning Studióban
 
-Ha elvégezte a [távoli értelmezési](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) lépéseket (a generált magyarázat feltöltése Azure Machine learning futtatási előzményekre), megtekintheti a vizualizációs irányítópultot [Azure Machine learning Studióban](https://ml.azure.com). Ez az irányítópult a fenti vizualizációs irányítópult egyszerűbb verziója (a magyarázat feltárása és a jég-mintaterületek le vannak tiltva, mert nincs olyan aktív számítási lehetőség a Studióban, amely valós idejű számításokat képes végrehajtani).
+Ha elvégezte a [távoli értelmezési](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) lépéseket (a generált magyarázat feltöltése Azure Machine learning futtatási előzményekre), megtekintheti a vizualizációs irányítópultot [Azure Machine learning Studióban](https://ml.azure.com). Ez az irányítópult a vizualizációk irányítópultjának a fent ismertetett egyszerűbb verziója. What-If a Datapoint-generáció és a jég-mintaterületek le vannak tiltva, mert a Azure Machine Learning Studióban nincs aktív számítási művelet, amely valós idejű számításokat végezhet.
 
-Ha az adatkészlet, a globális és a helyi magyarázat is elérhető, az adatok az összes lapot feltöltik (kivéve a perturbáció feltárása és a jég kivételével). Ha csak globális magyarázat érhető el, az összefoglalás fontossága lap és az összes helyi magyarázat lap le van tiltva.
+Ha az adatkészlet, a globális és a helyi magyarázat elérhető, az adatok feltöltik az összes lapot. Ha csak globális magyarázat áll rendelkezésre, az egyes funkciók fontossága lap le lesz tiltva.
 
 Kövesse az alábbi elérési utakat a vizualizációs irányítópult eléréséhez Azure Machine Learning Studióban:
 
@@ -351,7 +364,7 @@ Kövesse az alábbi elérési utakat a vizualizációs irányítópult elérés�
   1. Válasszon ki egy adott kísérletet a kísérlet összes futtatásának megtekintéséhez.
   1. Válasszon egy futtatást, majd a **magyarázatok lapot a** magyarázatok vizualizációs irányítópultján.
 
-   [![Vizualizációs irányítópult helyi funkciójának fontossága a AzureML Studióban a kísérletek során](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![Vizualizációs irányítópult összesített funkcióval a AzureML Studióban a kísérletek során](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png)](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png#lightbox)
 
 * **Modellek** panel
   1. Ha regisztrálta az eredeti modelljét a [modellek Azure Machine learning használatával történő üzembe helyezésének](./how-to-deploy-and-where.md)lépéseivel, a bal oldali ablaktáblán kiválaszthatja a **modelleket** , és megtekintheti.
@@ -359,7 +372,7 @@ Kövesse az alábbi elérési utakat a vizualizációs irányítópult elérés�
 
 ## <a name="interpretability-at-inference-time"></a>Tolmácsolás a következtetés időpontjában
 
-A magyarázatot az eredeti modellel is üzembe helyezheti, és a következtetési idő alatt megadhatja az egyes funkciók fontossági értékeit (helyi magyarázat) az új Datapoint. A könnyebb súlyú pontozási magyarázatokat is kínáljuk, amelyekkel javítható az értelmező teljesítmény a következtetések idején. A könnyebb súlyozású pontozási elmagyarázó üzembe helyezésének folyamata hasonló a modellek üzembe helyezéséhez, és a következő lépéseket tartalmazza:
+A magyarázatot az eredeti modellel is üzembe helyezheti, és a következtetési idő alatt megadhatja az egyes funkciók fontossági értékeit (helyi magyarázatot) minden új Datapoint. A könnyebb súlyú pontozási magyarázatokat is kínáljuk, amelyek az értelmező teljesítményének javulására szolgálnak, ami jelenleg csak Azure Machine Learning SDK-ban támogatott. A könnyebb súlyozású pontozási elmagyarázó üzembe helyezésének folyamata hasonló a modellek üzembe helyezéséhez, és a következő lépéseket tartalmazza:
 
 1. Hozzon létre egy magyarázat objektumot. Például a `TabularExplainer` következőket használhatja:
 
@@ -548,7 +561,18 @@ A magyarázatot az eredeti modellel is üzembe helyezheti, és a következtetés
 
    Központilag telepített webszolgáltatás törléséhez használja a következőt: `service.delete()` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+* A **ritka adatmennyiségek nem támogatottak**: a modell magyarázatának irányítópultja megszakítja a jelentős mennyiségű funkciót, ezért jelenleg nem támogatott a ritka adatformátum. Emellett az általános memóriával kapcsolatos problémák nagy adatkészletekkel és nagy számú funkcióval is felmerülhetnek. 
+
+* Az **előrejelzési modellek nem támogatottak a modell magyarázatával**: az értelmezés, a legjobb modell magyarázata nem érhető el a következő algoritmusokat a legjobb modellként támogató AutoML-előrejelzési kísérletekhez: TCNForecaster, AutoArima, próféta, ExponentialSmoothing, Average, naiv, szezonális átlag és szezonális naiv. A AutoML előrejelzése regressziós modelleket tartalmaz, amelyek támogatják a magyarázatot. A magyarázat irányítópulton azonban az "egyéni funkciók fontossága" lap nem támogatott az előrejelzéshez az adatfolyamatok összetettsége miatt.
+
+* Az **adatindex helyi magyarázata**: a magyarázat irányítópultja nem támogatja a helyi fontossági értékeket az eredeti ellenőrzési adatkészlet sorainak azonosítójára, ha az adatkészlet nagyobb, mint 5000 datapoints, mivel az irányítópult véletlenszerűen downsamples az adatokat. Az irányítópult azonban megjeleníti a nyers adatkészlet-szolgáltatás értékeit az irányítópulton az egyes szolgáltatások fontossága lap alatt átadott Datapoint vonatkozóan. A felhasználók a nyers adatkészlet szolgáltatás értékeinek megfelelő módon leképezhetők a helyi fontosságot az eredeti adatkészletbe. Ha az érvényesítési adatkészlet mérete kisebb, mint 5000 minta, a `index` AzureML Studio funkciója az érvényesítési adatkészletben szereplő indexnek fog megfelelni.
+
+* A Studio: What-If és az egyéni feltételes várakozási (jég) mintaterületek **nem támogatottak** a Azure Machine learning Studióban a magyarázatok lapon, mivel a feltöltött magyarázatnak aktív számításra van szüksége az előrejelzések és a zaklatott funkciók valószínűségének újraszámításához. Jelenleg a Jupyter notebookok esetében támogatott, ha az SDK-val widgetet használ.
+
+
+## <a name="next-steps"></a>További lépések
 
 [További információ a modell értelmezéséről](how-to-machine-learning-interpretability.md)
 

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5abb222a6211e2f3f92c002a49987ac54edc78e2
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: cd35cea28e23e88ba97bb7a27dc252d6bebd65e4
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346656"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739654"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
@@ -257,7 +257,18 @@ A kókusz-fájl a Azure Machine Learning munkaterület alapértelmezett blob-tá
 
 ![Exportált adatkészlet](./media/how-to-create-labeling-projects/exported-dataset.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha ezeket a problémákat látja, használja ezeket a tippeket.
+
+|Probléma  |Feloldás  |
+|---------|---------|
+|Csak a blob-adattárolók által létrehozott adatkészletek használhatók.     |  Ez az aktuális kiadás ismert korlátozása.       |
+|A létrehozást követően a projekt hosszú ideig az "inicializálás" kifejezést jeleníti meg.     | Manuálisan frissítse a lapot. Az inicializálásnak másodpercenként körülbelül 20 datapoints kell lennie. Az AutoFrissítés hiánya ismert probléma.         |
+|Képek áttekintésekor az újonnan címkézett képek nem jelennek meg.     |   Az összes címkézett kép betöltéséhez válassza az **első** gombot. Az **első** gomb a lista elejére kerül, de az összes címkével ellátott adattal betöltődik.      |
+|Az ESC billentyű lenyomásával az objektumok észlelése során a rendszer nulla méretű címkét hoz létre a bal felső sarokban. Az ebben az állapotban lévő címkék elküldése sikertelen.     |   Törölje a címkét a mellette lévő kereszt jelre kattintva.  |
+
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: az első képbesorolási címkézési projekt létrehozása](tutorial-labeling.md).
 * [Képbesorolás vagy objektum-észlelési](how-to-label-images.md) lemezképek címkézése

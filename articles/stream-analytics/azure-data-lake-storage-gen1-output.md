@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 688cd7c2e54a6b4c6b5a11705e10c33604324f09
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0445126046a6f4140dd68b2969221b196b8bef8b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576281"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740453"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>1. generációs kimenet Azure Data Lake Storage Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Stream Analytics Azure Data Lake Storage kimenete nem érhető el az Azure China
 
 A következő táblázat felsorolja a tulajdonságok nevét és a hozzájuk tartozó leírásokat a Data Lake Storage 1. generációs kimenetének konfigurálásához.
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének Data Lake Storeba való irányítására szolgál. |
 | Előfizetés | Az Azure Data Lake Storage-fiókot tartalmazó előfizetés. |
@@ -48,9 +48,5 @@ Az üzenetek maximális méretéhez lásd: [Data Lake Storage korlátok](../azur
 
 ## <a name="next-steps"></a>További lépések
 
+* [Stream Analytics hitelesítése Azure Data Lake Storage Gen1 felügyelt identitások használatával (előzetes verzió)](stream-analytics-managed-identities-adls.md)
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
-* [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)
-* [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása ARM-sablon használatával](quick-create-azure-resource-manager.md)
-* [Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md)

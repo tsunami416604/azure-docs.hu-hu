@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583432"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740657"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Oktatóanyag: Azure Data Box Gateway kiépítése a Hyper-V-ben
 
@@ -23,7 +23,7 @@ Az oktatóanyag azt mutatja be, hogyan lehet üzembe helyezni a Data Box Gateway
 
 A virtuális eszközök üzembe helyezéséhez és konfigurálásához rendszergazdai jogosultság szükséges. Az üzembe helyezés és a kezdeti beállítás körülbelül 10 percet vesz igénybe. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -57,8 +57,8 @@ Az eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
   * Legalább 4 mag.
   * Legalább 8 GB RAM.
   * Egy hálózati adapter.
-  * 250 GB-os operációsrendszer-lemez.
-  * 2 TB-os virtuális lemez az adatok számára.
+  * Egy 250 GB-OS operációsrendszer-lemez.
+  * Egy 2 TB-os virtuális lemez az adathoz.
 
 ### <a name="for-the-network-in-the-datacenter"></a>Az adatközpont hálózata esetén
 
@@ -78,8 +78,8 @@ Virtuális eszköz létrehozásához a következőkre lesz szüksége:
   * Legalább 4 virtuális processzor.
   * Legalább 8 GB RAM.
   * Egy, a hálózatra csatlakozó hálózati adapter, amely képes a forgalmat az internetre irányítani.
-  * 250 GB-os operációsrendszer-lemez.
-  * 2 TB-os virtuális lemez a rendszeradatok számára.
+  * Egy 250 GB-OS operációsrendszer-lemez.
+  * Egy 2 TB-os virtuális lemez a rendszeradathoz.
 
 ## <a name="bitlocker-considerations"></a>BitLocker-megfontolások
 
@@ -92,10 +92,11 @@ Virtuális eszköz létrehozásához a következőkre lesz szüksége:
 A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipervizoron.
 
 1. A Windows Server-gazdagépen másolja a virtuális eszköz rendszerképét a helyi meghajtóra. Ezt a VHDX-rendszerképet az Azure Portalról töltötte le. Jegyezze fel a helyet, ahová a rendszerképet másolta, mivel az eljárás későbbi szakaszában szükség lesz rá.
+
 2. Nyissa meg a **Kiszolgálókezelőt**. A jobb felső sarokban kattintson az **eszközök** elemre, és válassza a **Hyper-V kezelője** elemet.
 
-    ![A Hyper-V kezelőjének kiválasztása a Kiszolgálókezelőben](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
-  
+    ![A Hyper-V kezelőjének kiválasztása a Kiszolgálókezelőben](./media/data-box-gateway-deploy-provision-hyperv/image1.png)
+
 3. A **Hyper-V kezelője** hatókörpanelén kattintson jobb gombbal a rendszercsomópontra, majd a megnyíló helyi menüben kattintson az **Új** > **Virtuális gép** elemre.
 
    ![Új virtuális gép létrehozása a Hyper-V kezelőjében](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
@@ -118,13 +119,13 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 10. Tekintse át az **összefoglalást**, majd kattintson a **Befejezés** gombra a virtuális gép létrehozásához.
 
     ![Az új virtuális gép varázsló oldalának befejezése](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
-11. A minimális követelmények teljesítéséhez 4 virtuális processzorra van szükség. A 4 virtuális processzor hozzáadásához válassza ki a gazdarendszert a **Hyper-V kezelő** ablakában. A jobb oldali panel **Virtuális gépek** listájában keresse meg az imént létrehozott virtuális gépet. Jelölje ki, kattintson a jobb gombbal a gép nevére, majd válassza a **Beállítások** elemet.
+11. A minimális követelmények teljesítéséhez négy virtuális processzorra van szükség. Négy virtuális processzor hozzáadásához válassza ki a gazdagép rendszerét a **Hyper-V kezelőjének** ablakban. A jobb oldali panel **Virtuális gépek** listájában keresse meg az imént létrehozott virtuális gépet. Jelölje ki, kattintson a jobb gombbal a gép nevére, majd válassza a **Beállítások** elemet.
 
     ![A virtuális gép beállításai](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
 12. A **Beállítások** lap bal oldali panelén kattintson a **Processzor** lehetőségre. A jobb oldali panelen állítsa a **virtuális processzorok számát** 4-re (vagy többre). Kattintson az **Alkalmaz** gombra.
 
     ![Virtuális processzorok számának beállítása a beállítások lapon](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
-13. Ahhoz, hogy megfeleljen a minimális követelményeknek, egy 2 TB méretű virtuális adatlemezt is hozzá kell adnia. A **Beállítások** lapon:
+13. A minimális követelmények teljesítéséhez egy 2 TB-os virtuális adatlemezt is hozzá kell adnia. A **Beállítások** lapon:
 
     1. A bal oldali panelen válassza az **SCSI-vezérlő** lehetőséget.
     2. A jobb oldali panelen válassza a **Merevlemez** lehetőséget, és kattintson a **Hozzáadás** gombra.
@@ -138,12 +139,12 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 17. A **Lemeztípus kiválasztása** lapon állítsa a virtuális merevlemez típusát a **Dinamikusan bővülő** típusra (ajánlott). A **Rögzített méretű** lemez is működhet, de előfordulhat, hogy túl sokat kellene várnia. Azt javasoljuk, hogy ne alkalmazza a **Különbség** beállítást. Kattintson a **Tovább** gombra.
 
     ![Lemez típusának kiválasztása lap](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
-18. A **Név és hely megadása** lapon adja meg az adatlemez **nevét** és **helyét** (ez utóbbit tallózva is megkeresheti). Kattintson a **Tovább** gombra.
+18. A **név és hely megadása** lapon adjon meg egy **nevet** és egy **helyet** (megkeresheti az egyiket) az adatlemez számára. Kattintson a **Tovább** gombra.
 
     ![Név és hely megadása lap](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. A **Lemez beállítása** lapon válassza az **Új üres virtuális merevlemez létrehozása** lehetőséget, és adjon meg legalább **2 TB** méretet.
+19. A **lemez konfigurálása** lapon válassza az **új üres virtuális merevlemez létrehozása** lehetőséget, és adja meg a **2 TB** (vagy több) méretet.
 
-    Bár a minimális méretkövetelmény a 2 TB, mindig megadhat ennél nagyobb méretű lemezt is. Vegye figyelembe, hogy a lemez mérete az üzembe helyezést követően nem csökkenthető, A lemez lekicsinyítésére tett kísérlet során a rendszer az eszközön lévő összes helyi adatvesztés elvesztését eredményezi. Az adatlemez kiterjesztése nem támogatott. Kattintson a **Tovább** gombra.
+    Bár a minimális méretkövetelmény a 2 TB, mindig megadhat ennél nagyobb méretű lemezt is. Vegye figyelembe, hogy a lemez kiépítés után nem csökkenthető. A lemez lekicsinyítésére tett kísérlet során a rendszer az eszközön lévő összes helyi adatvesztés elvesztését eredményezi. Az adatlemez kiterjesztése nem támogatott. Kattintson a **Tovább** gombra.
 
     ![Lemez konfigurálása lap](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. Az **Összefoglalás** lapon tekintse át a virtuális adatlemez adatait, és ha elégedett, kattintson a **Befejezés** gombra a lemez létrehozásához. A varázsló bezáródik, és a rendszer hozzáadja a virtuális merevlemezt a géphez.
@@ -152,6 +153,11 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 21. Lépjen vissza a **Beállítások** lapra. Az **OK** gombra kattintva zárja be a **Beállítások** lapot, és lépjen vissza a Hyper-V kezelőjének ablakára.
 
     ![Beállítások lap](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
+
+A virtuális gép most már teljesen konfigurálva van.
+
+> [!NOTE]
+> Nem lehet új Data Box Gateway kiépíteni a konfigurált VHD-fájl másolásával. Minden új Data Box Gateway virtuális eszközt a Azure Portalból letöltött Hyper-V virtuális eszköz rendszerképéből kell kiépíteni.
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>A virtuális eszköz elindítása és az IP-cím lekérése
 

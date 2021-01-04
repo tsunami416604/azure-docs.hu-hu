@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 63d03559b2a30020ed2e8bd1cd030855b8fb20b7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 65752321f94bfa1403839889ead284d46b5f7191
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445105"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740062"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Az Azure szinapszis Analytics kimenete Azure Stream Analytics
 
@@ -28,20 +28,16 @@ Ha az Azure Szinapszisot kimenetként szeretné használni, győződjön meg arr
 
 A következő táblázat felsorolja a tulajdonságok nevét és leírásait az am Azure szinapszis Analytics kimenetének létrehozásához.
 
-|Tulajdonság neve|Description|
+|Tulajdonság neve|Leírás|
 |-|-|
 |Kimeneti alias |Egy rövid név, amely a lekérdezésekben a lekérdezés kimenetének az adatbázisba való irányításához használatos. |
 |Adatbázis |a dedikált SQL-címkészlet neve, ahová a kimenetet küldi. |
 |Kiszolgálónév |Az Azure szinapszis-kiszolgáló neve.  |
 |Felhasználónév |Az adatbázishoz írási hozzáféréssel rendelkező Felhasználónév. A Stream Analytics csak az SQL-hitelesítést támogatja. |
 |Jelszó |Az adatbázishoz való kapcsolódáshoz használt jelszó. |
-|Tábla  | A tábla neve, ahol a kimenet meg van írva. A tábla neve megkülönbözteti a kis-és nagybetűket. A táblázat sémájának pontosan meg kell egyeznie a feladatok által létrehozott mezők és típusok számával.|
+|Táblázat  | A tábla neve, ahol a kimenet meg van írva. A tábla neve megkülönbözteti a kis-és nagybetűket. A táblázat sémájának pontosan meg kell egyeznie a feladatok által létrehozott mezők és típusok számával.|
 
 ## <a name="next-steps"></a>További lépések
 
+* [Felügyelt identitások használata Azure SQL Database vagy Azure szinapszis Analytics eléréséhez egy Azure Stream Analytics feladatokból (előzetes verzió)](sql-database-output-managed-identity.md)
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
-* [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)
-* [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása ARM-sablon használatával](quick-create-azure-resource-manager.md)
-* [Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md)

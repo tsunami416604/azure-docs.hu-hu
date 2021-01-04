@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 626246f34cbd037db60bd13fd120f0ba133f8924
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 87b032b3a8382f632c1db56d2724b267c2db6727
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488272"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734419"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>A Azure PowerShell modullal engedélyezheti a végpontok közötti titkosítást a gazdagépen lévő titkosítás használatával
 
@@ -35,7 +35,7 @@ A virtuális gépek méreteit programozott módon is megtalálhatja. Ha szeretn�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy a virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz titkosítást lehessen használni a gazdagépen, be kell szereznie a funkciót az előfizetésében. Küldjön egy e-mailt a. com-ra az encryptionAtHost@microsoft előfizetési azonosítókkal, hogy a funkció engedélyezve legyen az előfizetésekhez.
+Ahhoz, hogy a virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz titkosítást lehessen használni a gazdagépen, be kell szereznie a funkciót az előfizetésében. Küldjön egy e-mailt az encryptionAtHost@microsoft.com előfizetési azonosítókkal, hogy a szolgáltatás engedélyezve legyen az előfizetésekhez.
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>Azure Key Vault és DiskEncryptionSet létrehozása
 
@@ -272,7 +272,7 @@ $VMSS.VirtualMachineProfile.SecurityProfile.EncryptionAtHost
 
 A régi virtuálisgép-méretek nem támogatottak. A támogatott virtuálisgép-méretek listáját a következők valamelyikével érheti el:
 
-Az [erőforrás-SKU API](/rest/api/compute/resourceskus/list) meghívása és annak ellenőrzése, hogy a képesség igaz értékre van-e `EncryptionAtHostSupported` állítva **True**.
+Az [erőforrás-SKU API](/rest/api/compute/resourceskus/list) meghívása és annak ellenőrzése, hogy a képesség igaz értékre van-e `EncryptionAtHostSupported` állítva .
 
 ```json
     {

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 4a102fc805750f7dd460c1878a730b9ca4ce1c37
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 2fcba81bcd20db321d791fcda589f40fb0699702
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359370"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733073"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>SQL Server biztonsági mentése és visszaállítása Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ Az alábbi táblázat az Azure-beli virtuális gépek SQL Serverának különbö
 | Stratégia | SQL-verziók | Leírás |
 |---|---|---|
 | [Automatikus biztonsági mentés](#automated) | 2014<br/> 2016<br/> 2017 | Az automatikus biztonsági mentés lehetővé teszi a SQL Server VM összes adatbázisának rendszeres biztonsági mentését. A biztonsági mentések tárolása az Azure Storage-ban akár 30 napig is eltartható. A SQL Server 2016-es verziójától kezdve az automatizált Backup v2 további lehetőségeket kínál, például a manuális ütemezés konfigurálását, valamint a teljes és naplózott biztonsági másolatok gyakoriságát. |
-| [Azure Backup SQL-alapú virtuális gépekhez](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | A Azure Backup nagyvállalati szintű biztonsági mentési képességet biztosít a SQL Server Azure-beli virtuális gépeken. Ezzel a szolgáltatással központilag kezelheti a biztonsági mentéseket több kiszolgáló és több ezer adatbázis között. Az adatbázisok visszaállíthatók egy adott időpontban a portálon. Testreszabható adatmegőrzési szabályzatot kínál, amely évekig képes biztonsági mentéseket fenntartani. |
+| [Azure Backup SQL-alapú virtuális gépekhez](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017<br/> 2019 | A Azure Backup nagyvállalati szintű biztonsági mentési képességet biztosít a SQL Server Azure-beli virtuális gépeken. Ezzel a szolgáltatással központilag kezelheti a biztonsági mentéseket több kiszolgáló és több ezer adatbázis között. Az adatbázisok visszaállíthatók egy adott időpontban a portálon. Testreszabható adatmegőrzési szabályzatot kínál, amely évekig képes biztonsági mentéseket fenntartani. |
 | [Manuális biztonsági mentés](#manual) | Mind | A SQL Server verziójától függően számos módszer áll rendelkezésre az Azure-beli virtuális gépen futó SQL Server manuális biztonsági mentésére és visszaállítására. Ebben az esetben Ön felelős az adatbázisok biztonsági mentésének, valamint a biztonsági másolatok tárolási helyének és kezelésének módjáról. |
 
 Az alábbi szakaszok részletesebben ismertetik az egyes lehetőségeket. A cikk utolsó szakasza egy szolgáltatás-mátrix formájában összefoglalást tartalmaz.
@@ -148,7 +148,7 @@ Az alábbi táblázat összefoglalja az Azure-ban SQL Server virtuális gépek b
 | Biztonsági mentési feladatok figyelése SSMS vagy Transact-SQL-parancsfájlok segítségével | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) |
 | Adatbázisok visszaállítása SSMS vagy Transact-SQL-parancsfájlokkal | ![Zöld pipa](./media/backup-restore/yes.png) |   | ![Zöld pipa](./media/backup-restore/yes.png) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha SQL Server Azure-beli virtuális gépen történő üzembe helyezését tervezi, akkor a következő útmutatóban talál kiépítési útmutatót: [Windows SQL Server virtuális gép kiépítése a Azure Portal](create-sql-vm-portal.md).
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/18/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 0433c0fdc1584ce209eb0409b0e8f5cbfc2719ed
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 21e5da3884cce6e3a7beff297e40fdc48a3ac761
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454405"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724357"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az EasySSO for BitBucket
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a EasySSO a BitBuc
 * Vezérlés az Azure AD-ben, aki hozzáfér a BitBucket EasySSO.
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a BitBucket EasySSO az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
-
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](../manage-apps/what-is-single-sign-on.md)használatával című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,25 +39,24 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A EasySSO for BitBucket támogatja az SP által kezdeményezett és a identitásszolgáltató által kezdeményezett egyszeri bejelentkezést.
 * A EasySSO for BitBucket támogatja az "igény szerinti" felhasználói üzembe helyezést.
-* A BitBucket EasySSO konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-easysso-for-bitbucket-from-the-gallery"></a>EasySSO hozzáadása a BitBucket a gyűjteményből
 
 A BitBucket-EasySSO az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a EasySSO a BitBucket a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **EasySSO a BitBucket** mezőbe a keresőmezőbe.
 1. Az eredmények közül válassza ki a **BitBucket EasySSO** , majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-bitbucket"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a BitBucket-hez készült EasySSO
+## <a name="configure-and-test-azure-ad-sso-for-easysso-for-bitbucket"></a>Az Azure AD SSO konfigurálása és tesztelése az BitBucket-hez készült EasySSO
 
-Konfigurálja és tesztelje az Azure AD SSO-t az EasySSO for BitBucket használatával egy **B. Simon**nevű tesztelési felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a EasySSO for BitBucket-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t az EasySSO for BitBucket használatával egy **B. Simon** nevű tesztelési felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a EasySSO for BitBucket-ben.
 
-Az Azure AD SSO konfigurálásához és a BitBucket EasySSO való teszteléséhez hajtsa végre a következő lépéseket:
+Az Azure AD SSO konfigurálásához és teszteléséhez a BitBucket EasySSO használatával hajtsa végre a következő lépéseket:
 
 1. [Konfigurálja az Azure ad SSO](#configure-azure-ad-sso) -t, hogy a felhasználók használhatják ezt a funkciót.
     1. [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -72,8 +69,8 @@ Az Azure AD SSO konfigurálásához és a BitBucket EasySSO való teszteléséhe
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **EasySSO a BitBucket** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A Azure Portal **EasySSO a BitBucket** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
    ![Képernyőfelvétel az egyszeri Sign-On az SAML-oldallal való beállításáról, a ceruza ikon kiemelve](common/edit-urls.png)
@@ -84,7 +81,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. A **Válasz URL-cím** szövegmezőbe írja be a következő mintát használó URL-címet: `https://<server-base-url>/plugins/servlet/easysso/saml`
 
-1. Válassza a **további URL-címek beállítása**lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+1. Válassza a **további URL-címek beállítása** lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     - A **bejelentkezési URL** szövegmezőbe írja be a következő mintát használó URL-címet: `https://<server-base-url>/login.jsp`
 
@@ -97,7 +94,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A BitBucket alkalmazás EasySSO Emellett néhány további attribútumot is vár az SAML-válaszban. A következő táblázat ezeket mutatja be. Ezek az attribútumok előre fel vannak töltve, de a követelmények szerint áttekinthetők.
     
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ---------------| --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | User. userPrincipalName |
     | urn: OID: 0.9.2342.19200300.100.1.3 | User. mail |
@@ -111,17 +108,17 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Képernyőkép az SAML aláíró tanúsítványról, a letöltési hivatkozások kiemelésével](./media/easysso-for-bitbucket-tutorial/certificate.png)
     
-    Ha manuálisan szeretné konfigurálni a BitBucket EasySSO a tanúsítvánnyal, a **bejelentkezési URL-címet** és az **Azure ad-azonosítót**is át kell másolnia, és mentenie kell a számítógépére.
+    Ha manuálisan szeretné konfigurálni a BitBucket EasySSO a tanúsítvánnyal, a **bejelentkezési URL-címet** és az **Azure ad-azonosítót** is át kell másolnia, és mentenie kell a számítógépére.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót (B. Simon) hoz létre a Azure Portal.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-   1. A **név**mezőbe írja be a következőt: `B.Simon` .  
-   1. A **Felhasználónév**mezőbe írja be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. A **név** mezőbe írja be a következőt: `B.Simon` .
+   1. A **Felhasználónév** mezőbe írja be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszót.
    1. Kattintson a **Létrehozás** gombra.
 
@@ -129,30 +126,36 @@ Ebben a szakaszban egy tesztelési felhasználót (B. Simon) hoz létre a Azure 
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a EasySSO a BitBucket.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a EasySSO lehetőséget a **BitBucket**elemnél.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a EasySSO lehetőséget a **BitBucket** elemnél.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
-   ![Képernyőfelvétel a kezelés szakaszról, Kiemelt felhasználók és csoportok](common/users-groups-blade.png)
-
-1. Válassza a **Felhasználó hozzáadása** elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![Képernyőkép a felhasználók és csoportok oldalról, a felhasználó hozzáadása elem kiemelésével](common/add-assign-user.png)
+1. Válassza a **Felhasználó hozzáadása** elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza ki az **B. Simon** elemet a **felhasználók** listából, majd a képernyő alján válassza a **kiválasztás** lehetőséget.
-1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ## <a name="configure-easysso-for-bitbucket-sso"></a>EasySSO konfigurálása a BitBucket SSO-hoz
 
-1. Jelentkezzen be a Atlassian BitBucket-példányba rendszergazdai jogosultságokkal, és lépjen az **Adminisztráció** szakaszhoz. 
+1. A konfigurációnak a nagyításban való automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **Nagyítás beállítása** lehetőségre a nagyítási alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a nagyításhoz való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-10-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a nagyítást, egy másik böngészőablakban jelentkezzen be a nagyítású vállalati webhelyre rendszergazdaként.
+
+1. Lépjen az **Adminisztráció** szakaszhoz.
 
     ![Képernyőkép a BitBucket-példányról, a fogaskerék ikon kiemelve](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-1.png)
 1. Keresse meg és válassza ki a **EasySSO**.
 
     ![Képernyőkép az egyszerű SSO lehetőségről](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-2.png)
 
-1. Válassza az **SAML**lehetőséget. Ekkor megjelenik az SAML konfigurációs szakasza.
+1. Válassza az **SAML** lehetőséget. Ekkor megjelenik az SAML konfigurációs szakasza.
 
     ![Képernyőkép a EasySSO-felügyeleti oldalról, az SAML kiemelve](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-3.png)
 
@@ -164,7 +167,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     - Használja a letöltött alkalmazás-összevonási **metaadat-fájlt** a számítógép helyi fájljába. Válassza a Radio **feltöltése** gombot, és kövesse az operációs rendszerének megfelelő elérési utat.
 
-    - Nyissa meg az alkalmazás-összevonási **metaadatokat tartalmazó fájlt** , és tekintse meg a fájl tartalmát bármely egyszerű szövegszerkesztőben. Másolja a vágólapra. Válassza a **bevitel**lehetőséget, majd illessze be a vágólap tartalmát a szövegmezőbe.
+    - Nyissa meg az alkalmazás-összevonási **metaadatokat tartalmazó fájlt** , és tekintse meg a fájl tartalmát bármely egyszerű szövegszerkesztőben. Másolja a vágólapra. Válassza a **bevitel** lehetőséget, majd illessze be a vágólap tartalmát a szövegmezőbe.
  
     - Végezzen el egy teljesen manuális konfigurációt. Nyissa meg az alkalmazás-összevonási **tanúsítványt (Base64)** a fájl tartalmának megtekintéséhez bármilyen egyszerű szövegszerkesztőben. Másolja a vágólapra, majd illessze be az **identitásszolgáltató jogkivonat-aláíró tanúsítványok** szövegmezőbe. Ezután nyissa meg az **általános** lapot, és adja meg a **post kötési URL-címet** és az entitás- **azonosító** mezőket a korábban mentett **bejelentkezési URL-cím** és az **Azure ad-azonosító** megfelelő értékeivel.
  
@@ -186,38 +189,20 @@ Ha azonban nem szeretné engedélyezni az automatikus felhasználói kiépítés
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-### <a name="idp-initiated-workflow"></a>Identitásszolgáltató által kezdeményezett munkafolyamat
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával tesztelheti.
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-Amikor kiválasztja a BitBucket csempéhez tartozó EasySSO, automatikusan be kell jelentkeznie arra a BitBucket-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a EasySSO a BitBucket bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.
 
-### <a name="sp-initiated-workflow"></a>Az SP által kezdeményezett munkafolyamat
+* Lépjen a EasySSO a BitBucket bejelentkezési URL-címére, és indítsa el innen a bejelentkezési folyamatot.
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a BitBucket **SAML-bejelentkezés** gomb segítségével tesztelheti.
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-![Képernyőkép a bejelentkezés képernyőről, az SAML-bejelentkezés kiemelve](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-7.png)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a BitBucket-EasySSO, amelyhez be szeretné állítani az egyszeri bejelentkezést
 
-Ez a forgatókönyv feltételezi, hogy engedélyezte az **SAML-bejelentkezést** a BitBucket EasySSO konfigurációs lapjának **Look & Feel (megjelenés** ) lapján. A meglévő munkamenetek zavarásának elkerülése érdekében nyissa meg a BitBucket bejelentkezési URL-címét a böngésző inkognitóban módjában. Válassza az **SAML-bejelentkezés**lehetőséget, és a rendszer átirányítja az Azure ad felhasználói hitelesítési folyamatára. A sikeres befejezést követően a rendszer átirányítja a BitBucket-példányra az SAML-n keresztül hitelesített felhasználóként.
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások EasySSO a BitBucket csempére kattint, akkor ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a BitBucket EasySSO, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-Az Azure AD-ből való átirányítást követően a következő képernyőt tapasztalhatja:
+## <a name="next-steps"></a>További lépések
 
-![Képernyőkép a EasySSO-meghibásodási képernyőről, Kiemelt hivatkozási számmal](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-8.png)
-
-Ha ezt teszi, kövesse az [ezen az oldalon található utasításokat](https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS) a **Atlassian-bitbucket. log** fájl eléréséhez. A hiba részleteit a EasySSO-hiba oldalon található hivatkozási azonosító fogja tartalmazni.
-
-Ha bármilyen problémája van, lépjen kapcsolatba a [EasySSO támogatási csapatával](mailto:support@techtime.co.nz).
-
-## <a name="additional-resources"></a>További források
-
-- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](./tutorial-list.md)
-
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [A BitBucket EasySSO kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
-
-- [A speciális láthatóságot és vezérlést biztosító BitBucket EasySSO elleni védelem](/cloud-app-security/proxy-intro-aad)
+A BitBucket EasySSO konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

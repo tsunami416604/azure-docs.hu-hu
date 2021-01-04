@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591988"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739858"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Az adatimportálás Azure Machine Learning designerbe
 
@@ -47,8 +47,7 @@ Ha a modul kimeneti adatokat táblázatos formátumban adja meg, akkor a kimenet
  - A **fájl adatkészlete** fájl adatkészletként regisztrálja a modul kimeneti mappáját. A kimeneti mappa tartalmaz egy adatfájlt és egy olyan metataget, amelyet a Designer belsőleg használ. Válassza ezt a lehetőséget, ha továbbra is használni szeretné a regisztrált adatkészletet a tervezőben. 
 
  - A **táblázatos adatkészlet** csak a modul kimeneti adatfájlját regisztrálja táblázatos adatkészletként. Ezt a formátumot más eszközök is könnyen felhasználják, például automatizált Machine Learning vagy a Python SDK-ban. Akkor válassza ezt a lehetőséget, ha a regisztrált adatkészletet a tervezőn kívül szeretné használni.  
-
-
+ 
 
 ### <a name="use-a-dataset"></a>Adatkészlet használata
 
@@ -62,6 +61,14 @@ Ha a fájl adatkészletét regisztrálja, az adatkészlet kimeneti portjának t�
 > [!NOTE]
 > A tervező támogatja az [adatkészlet verziószámozását](how-to-version-track-datasets.md). Határozza meg az adatkészlet verzióját az adatkészlet moduljának tulajdonságok paneljén.
 
+### <a name="limitations"></a>Korlátozások 
+
+- Jelenleg csak táblázatos adatkészletet jeleníthet meg a tervezőben. Ha a tervezőn kívüli adatkészletet regisztrál, nem jelenítheti meg a tervező vásznon.
+- Az adatkészletet a Virtual Network (VNet) tárolja. Ha szeretné megjeleníteni, engedélyeznie kell a munkaterület felügyelt identitását az adattárban.
+    1. Lépjen a kapcsolódó adattárra, és kattintson a **hitelesítő** adatok frissítése 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="frissítési hitelesítő adatok frissítése"::: elemre.
+    1. Válassza az **Igen** lehetőséget a munkaterület felügyelt identitásának engedélyezéséhez.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Munkaterület által felügyelt identitás engedélyezése":::
 
 ## <a name="import-data-using-the-import-data-module"></a>Adatimportálás az Adatimportálási modul használatával
 
@@ -107,6 +114,6 @@ A tervezőben lévő modulokat a számítási cél mérete korlátozza. Nagyobb 
 
 Ha a munkaterület virtuális hálózatban található, további konfigurációs lépéseket kell végrehajtania a tervezőben lévő adatok megjelenítéséhez. További információ az adattárolók és adatkészletek virtuális hálózatban való használatáról: [Azure Machine learning Studio használata Azure-beli virtuális hálózaton](how-to-enable-studio-virtual-network.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megismerheti a tervezői alapismereteket [: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: a9d20732c3ae08718c400faff44137000e98fffd
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: e572f1f6a9452ccab9deddb62a5e219a81df5d47
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629429"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739994"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktív hibakeresés a Visual Studio Code-ban
 
@@ -532,8 +532,14 @@ A tároló leállításához használja a következő parancsot:
 docker stop debug
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy beállította a VS Code Remote szolgáltatást, számítási példányt használhat távoli számításként a VS Code-ból a kód interaktív hibakereséséhez. 
 
-[Oktatóanyag: az első ml-modell betanítása](tutorial-1st-experiment-sdk-train.md) azt mutatja be, hogyan használható a számítási példány egy integrált jegyzetfüzettel.
+További információ a hibaelhárításról:
+
+* [Helyi modell üzembe helyezése](how-to-troubleshoot-deployment-local.md)
+* [Távoli modell üzembe helyezése](how-to-troubleshoot-deployment.md)
+* [Machine Learning-folyamatok](how-to-debug-pipelines.md)
+* [ParallelRunStep](how-to-debug-parallel-run-step.md)
+

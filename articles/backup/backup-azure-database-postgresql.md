@@ -4,12 +4,12 @@ description: Ismerkedjen meg Azure Database for PostgreSQL biztonsági mentésse
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: edbfdb6ea741cdb344a121acdbee3b8bd4bc743c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927889"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734640"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL biztonsági mentés hosszú távú adatmegőrzéssel (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ezt a megoldást önállóan vagy az Azure PostgreSQL által kínált natív biz
 
 |Támogatás  |Részletek  |
 |---------|---------|
-|Támogatott központi telepítések   |  Önálló egyetlen kiszolgáló Azure Database for PostgreSQL     |
+|Támogatott központi telepítések   |  [Azure Database for PostgreSQL – Önálló kiszolgáló](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
 |Támogatott Azure-régiók |  USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA déli középső régiója, USA nyugati régiója, USA 2. nyugati régiója, Dél-Brazília, Közép-Kanada, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Középnyugat-Németország, Észak-Svájc, Nyugat-Svájc, Kelet-Ázsia, Dél-Ausztrália, Kelet-Japán, Nyugat-Japán, Dél-Korea  |
 |Támogatott Azure PostgreSQL-verziók    |   9,5, 9,6, 10, 11      |
 
@@ -71,11 +71,11 @@ Az alábbi utasítások részletes útmutatóul szolgálnak az Azure PostgreSQL-
 
 1. Kétféleképpen lehet megkezdeni a folyamatot:
 
-    1. Nyissa meg a [Backup Center](backup-center-overview.md)  ->  **– Áttekintés**  ->  **biztonsági mentést** .
+    1. Nyissa meg a [Backup Center](backup-center-overview.md)  ->  **– Áttekintés**  ->  **biztonsági mentést**.
 
         ![Ugrás a biztonsági mentési központba](./media/backup-azure-database-postgresql/backup-center.png)
 
-        A **kezdeményezése: biztonsági mentés konfigurálása** területen válassza ki az **adatforrás típusát** **Azure Database for PostgreSQLként** .
+        A **kezdeményezése: biztonsági mentés konfigurálása** területen válassza ki az **adatforrás típusát** **Azure Database for PostgreSQLként**.
 
         ![A kezdeményezése: biztonsági mentés konfigurálása területen válassza az adatforrás típusa lehetőséget.](./media/backup-azure-database-postgresql/initiate-configure-backup.png)
 
@@ -89,7 +89,7 @@ Az alábbi utasítások részletes útmutatóul szolgálnak az Azure PostgreSQL-
 
     ![Backup-tároló kiválasztása a biztonsági mentés konfigurálása területen](./media/backup-azure-database-postgresql/configure-backup.png)
 
-1. Válasszon ki vagy hozzon létre egy **biztonsági mentési szabályzatot** .
+1. Válasszon ki vagy hozzon létre egy **biztonsági mentési szabályzatot**.
 
     ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-database-postgresql/backup-policy.png)
 
@@ -121,7 +121,7 @@ Az alábbi utasítások részletes útmutatóul szolgálnak az Azure PostgreSQL-
 
 ## <a name="create-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
 
-1. Válassza a **Backup Center**  ->  **biztonsági mentési szabályzatok**  ->  **Hozzáadás** lehetőséget. Azt is megteheti, hogy a **Backup** -  ->  **tároló biztonsági mentési szabályzatának**  ->  **hozzáadása** lehetőségre kattint.
+1. Válassza a **Backup Center**  ->  **biztonsági mentési szabályzatok**  ->  **Hozzáadás** lehetőséget. Azt is megteheti, hogy a **Backup**-  ->  **tároló biztonsági mentési szabályzatának**  ->  **hozzáadása** lehetőségre kattint.
 
     ![Biztonsági mentési szabályzat hozzáadása](./media/backup-azure-database-postgresql/add-backup-policy.png)
 
@@ -157,15 +157,15 @@ Az adatbázist bármely Azure PostgreSQL-kiszolgálóra visszaállíthatja ugyan
 A visszaállítás elindításához kövesse ezt a lépésenkénti útmutatót:
 
 1. A visszaállítási folyamat két módon indítható el:
-    1. Nyissa meg a [Backup Center](backup-center-overview.md)  ->  **Áttekintés**  ->  **visszaállítását** .
+    1. Nyissa meg a [Backup Center](backup-center-overview.md)  ->  **Áttekintés**  ->  **visszaállítását**.
 
     ![Visszaállítás kiválasztása a Backup Centerben](./media/backup-azure-database-postgresql/backup-center-restore.png)
 
-    A **kezdeményezés: visszaállítás** alatt válassza ki az **adatforrás típusát** **Azure Database for PostgreSQLként** . Válassza ki a **biztonsági mentési példányt** .
+    A **kezdeményezés: visszaállítás** alatt válassza ki az **adatforrás típusát** **Azure Database for PostgreSQLként**. Válassza ki a **biztonsági mentési példányt**.
 
     ![Adatforrás típusának kiválasztása a kezdeményezés: visszaállítás](./media/backup-azure-database-postgresql/initiate-restore.png)
 
-    1. Azt is megteheti, hogy közvetlenül a **Backup** -  ->  **tároló biztonsági mentési példányait** nyitja meg. Válassza ki a visszaállítani kívánt adatbázishoz tartozó **biztonsági mentési példányt** .
+    1. Azt is megteheti, hogy közvetlenül a **Backup**-  ->  **tároló biztonsági mentési példányait** nyitja meg. Válassza ki a visszaállítani kívánt adatbázishoz tartozó **biztonsági mentési példányt** .
 
     ![Biztonsági mentési példányok visszaállításhoz](./media/backup-azure-database-postgresql/backup-instances-restore.png)
 
@@ -179,9 +179,9 @@ A visszaállítás elindításához kövesse ezt a lépésenkénti útmutatót:
 
     ![Helyreállítási pontok listája](./media/backup-azure-database-postgresql/list-recovery-points.png)
 
-1. Bemeneti **visszaállítási paraméterek** . Ezen a ponton két visszaállítási típus közül választhat: **visszaállítás adatbázisként** és **visszaállítás fájlként** .
+1. Bemeneti **visszaállítási paraméterek**. Ezen a ponton két visszaállítási típus közül választhat: **visszaállítás adatbázisként** és **visszaállítás fájlként**.
 
-1. **Visszaállítás adatbázisként** : állítsa vissza a biztonsági mentési adatkészletet egy új adatbázis létrehozásához a cél PostgreSQL-kiszolgálón.
+1. **Visszaállítás adatbázisként**: állítsa vissza a biztonsági mentési adatkészletet egy új adatbázis létrehozásához a cél PostgreSQL-kiszolgálón.
 
     - A célkiszolgáló megegyező lehet a forráskiszolgálón. Az eredeti adatbázis felülírása azonban nem támogatott.
     - A kiszolgáló közül választhat az összes előfizetésben, de a tárolóval megegyező régióban is.
@@ -189,7 +189,7 @@ A visszaállítás elindításához kövesse ezt a lépésenkénti útmutatót:
 
     ![Visszaállítás adatbázisként](./media/backup-azure-database-postgresql/restore-as-database.png)
 
-1. **Visszaállítás fájlként** : a biztonságimásolat-fájlok kiírása a célként megadott Storage-fiókba (Blobok).
+1. **Visszaállítás fájlként**: a biztonságimásolat-fájlok kiírása a célként megadott Storage-fiókba (Blobok).
 
     - A Storage-fiókok közül választhat az összes előfizetésben, de a tárolóval megegyező régióban is.
     - Válassza ki a kiválasztott Storage-fiókhoz szűrni kívánt tárolót a tároló listából.
@@ -207,7 +207,7 @@ A Azure Backup szigorú biztonsági irányelveket követ. Annak ellenére, hogy 
 
 ## <a name="manage-the-backed-up-azure-postgresql-databases"></a>Az Azure PostgreSQL-adatbázisok biztonsági mentésének kezelése
 
-A következő felügyeleti műveletek végezhetők el a **biztonsági mentési példányokon** :
+A következő felügyeleti műveletek végezhetők el a **biztonsági mentési példányokon**:
 
 ### <a name="on-demand-backup"></a>Igény szerinti biztonsági mentés
 
@@ -228,7 +228,7 @@ A biztonsági másolati elemek védelmét leállíthatja. Ezzel a beállítássa
 
 A kapcsolódó házirendet megváltoztathatja egy biztonsági mentési példánnyal.
 
-1. Válassza ki a **biztonsági mentési példány**  ->  **változási szabályzatát** .
+1. Válassza ki a **biztonsági mentési példány**  ->  **változási szabályzatát**.
 
     ![Házirend módosítása](./media/backup-azure-database-postgresql/change-policy.png)
 
@@ -280,7 +280,7 @@ Lépések:
 
 Active Directory-rendszergazda hozzáadása az OSS-kiszolgálóhoz:
 
-Ez a lépés szükséges ahhoz, hogy egy olyan felhasználón keresztül kapcsolódjon az adatbázishoz, amely hitelesíti magát Azure Active Directory jelszó helyett. Az Azure AD rendszergazdai felhasználója Azure Database for PostgreSQL a szerepkör **azure_ad_admin** . Csak **azure_ad_admin** -szerepkör hozhat létre olyan új adatbázis-felhasználókat, akik hitelesíteni tudják az Azure ad-t.
+Ez a lépés szükséges ahhoz, hogy egy olyan felhasználón keresztül kapcsolódjon az adatbázishoz, amely hitelesíti magát Azure Active Directory jelszó helyett. Az Azure AD rendszergazdai felhasználója Azure Database for PostgreSQL a szerepkör **azure_ad_admin**. Csak **azure_ad_admin** -szerepkör hozhat létre olyan új adatbázis-felhasználókat, akik hitelesíteni tudják az Azure ad-t.
 
 1. Nyissa meg a Active Directory adminisztrátor lapot a kiszolgáló nézet bal oldali navigációs paneljén, és adja hozzá magát (vagy valaki másnak) a Active Directory-rendszergazdaként.
 
@@ -323,6 +323,6 @@ Hozzon létre hálózati vonalat, ha engedélyezi az **Azure-szolgáltatások ho
 
         ![Tár nevének keresése](./media/backup-azure-database-postgresql/search-for-vault-name.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Backup-tárolók áttekintése](backup-vault-overview.md)

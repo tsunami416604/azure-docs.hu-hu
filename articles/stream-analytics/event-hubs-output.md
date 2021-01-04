@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 86a6c1a15d804a6c758e90dbd4bdd7057a7a2716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e01a4418681e0f78864eacbf70016cfb33fa6f53
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295274"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739637"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure Stream Analytics Event Hubs kimenete
 
@@ -33,7 +33,7 @@ A következő táblázat az Event hubokból kimenetként konfigurált adatstream
 | Eseményszerializációs formátum | A kimeneti adatmennyiség szerializálási formátuma. A JSON, a CSV és a Avro támogatottak. |
 | Encoding | A CSV és a JSON esetében jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
 | Elválasztó | Csak a CSV-szerializáláshoz alkalmazható. Stream Analytics számos gyakori elhatárolót támogat a CSV-formátumú adatszerializáláshoz. A támogatott értékek a következők: vessző, pontosvessző, szóköz, TAB és függőleges sáv. |
-| Formátum | Csak a JSON-szerializáláshoz alkalmazható. A **sor elválasztva** érték azt jelenti, hogy a kimenet formázása úgy történik, hogy minden JSON-objektum új sorral van elválasztva. Ha a **sor elválasztva**lehetőséget választja, a JSON egyszerre csak egy objektumot olvas be. A teljes tartalom önmagában nem érvényes JSON. A **Array** beállítás azt adja meg, hogy a kimenet a JSON-objektumok tömbje legyen formázva.  |
+| Formátum | Csak a JSON-szerializáláshoz alkalmazható. A **sor elválasztva** érték azt jelenti, hogy a kimenet formázása úgy történik, hogy minden JSON-objektum új sorral van elválasztva. Ha a **sor elválasztva** lehetőséget választja, a JSON egyszerre csak egy objektumot olvas be. A teljes tartalom önmagában nem érvényes JSON. A **Array** beállítás azt adja meg, hogy a kimenet a JSON-objektumok tömbje legyen formázva.  |
 | Tulajdonságok oszlopai | Választható. Vesszővel tagolt oszlopokat kell csatolni a kimenő üzenet felhasználói tulajdonságaihoz a hasznos adatok helyett. A szolgáltatással kapcsolatos további információkért lásd: [Egyéni metaadatok tulajdonságai a kimenethez](#custom-metadata-properties-for-output). |
 
 ## <a name="partitioning"></a>Particionálás
@@ -62,13 +62,9 @@ A következő példában a mezők és a `DeviceId` `DeviceStatus` metaadatokhoz 
 
 Az alábbi ábrán a EventHub által a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)használatával megtekintett kimeneti üzenet várt tulajdonságai láthatók.
 
-:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="Tulajdonságok oszlopai":::
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="Egyéni esemény tulajdonságai":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
+* [Felügyelt identitások használata az Event hub Azure Stream Analytics feladatokból való eléréséhez (előzetes verzió)](event-hubs-managed-identity.md)
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
-* [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)
-* [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása ARM-sablon használatával](quick-create-azure-resource-manager.md)
-* [Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md)

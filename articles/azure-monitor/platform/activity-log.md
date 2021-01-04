@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 00e264cea34c7c3e7223b47217ecf5a59b76ba41
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6eae805b6edce4c414d26f1b79d52ac33f8f2d9d
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592466"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709112"
 ---
 # <a name="azure-activity-log"></a>Azure-tevékenységnapló
 A Tevékenységnapló az Azure előfizetési szintű eseményekkel kapcsolatos megállapításokat biztosító [platformnaplója](platform-logs-overview.md). Olyan információkat tartalmaz, mint az erőforrások módosításának vagy a virtuális gépek indításának az időpontja. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. További funkciókért hozzon létre egy diagnosztikai beállítást, amely elküldi a tevékenység naplóját [Azure monitor naplókba](data-platform-logs.md), az Azure Event Hubs az Azure-on kívülre vagy az Azure Storage-ba az archiváláshoz. Ez a cikk részletesen ismerteti a tevékenység naplójának megtekintését és a különböző célhelyekre való küldését.
@@ -67,14 +67,14 @@ Ha például meg szeretné tekinteni az egyes kategóriákhoz tartozó műveletn
 
 ```kusto
 AzureActivity
-| summarize count() by Category
+| summarize count() by CategoryValue
 ```
 
 A felügyeleti kategória összes rekordjának lekéréséhez használja a következő lekérdezést.
 
 ```kusto
 AzureActivity
-| where Category == "Administrative"
+| where CategoryValue == "Administrative"
 ```
 
 
@@ -278,6 +278,7 @@ A következő táblázat oszlopai elavultak a frissített sémában. Továbbra i
 |:---|:---|
 | ActivityStatus    | ActivityStatusValue    |
 | ActivitySubstatus | ActivitySubstatusValue |
+| Kategória          | CategoryValue          |
 | OperationName     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |
 
@@ -397,7 +398,7 @@ Hamarosan többé nem fogja tudni felvenni a tevékenység naplóinak elemzési 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A platform naplófájljainak áttekintése](platform-logs-overview.md)
 * [A műveletnapló esemény sémájának áttekintése](activity-log-schema.md)

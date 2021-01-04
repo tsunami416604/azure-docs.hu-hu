@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96842706"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724228"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Azure Files](storage-files-introduction.md) kétféleképpen helyezhető üzembe: a kiszolgáló nélküli Azure-fájlmegosztás közvetlen csatlakoztatásával vagy az Azure-fájlmegosztás helyszíni gyorsítótárazásával Azure file Sync használatával. Az üzembe helyezési lehetőségek közül válassza ki azokat a beállításokat, amelyeket figyelembe kell vennie az üzemelő példány tervezésekor. 
@@ -114,56 +114,6 @@ További információ: [Az Azure Storage komplex veszélyforrások elleni védel
 
 ## <a name="storage-tiers"></a>Tárolási szintek
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="understanding-provisioning-for-premium-file-shares"></a>A prémium fájlmegosztás kiépítés ismertetése
-A prémium fájlmegosztást rögzített GiB/IOPS/átviteli sebesség alapján kell kiépíteni. Az összes megosztási méret a minimális alapkonfigurációt/átviteli sebességet, és a burst számára engedélyezett. Minden egyes GiB-kiosztás esetén a megosztás minimális IOPS/átviteli sebességre, valamint egy IOPS és 0,1 MiB/s átviteli sebességre lesz kiállítva a maximálisan megengedettnél. A minimálisan engedélyezett kiépítés 100 GiB minimális IOPS/átviteli sebességgel. 
-
-A prémium szintű megosztások teljes mértékben díjmentesen használhatók. Az összes megosztási méret akár 4 000 IOPS vagy akár három IOPS is kiosztható egy kiépített GiB-ban, amelyik nagyobb adattört IOPS biztosít a megosztáshoz. Az összes megosztás legfeljebb 60 percnél hosszabb időt vehet igénybe a maximális burst értéknél. Az új megosztások a kiosztott kapacitás alapján kezdődnek a teljes burst Kredittel.
-
-A megosztásokat 1 GiB-onként kell kiépíteni. A minimális méret 100 GiB, a következő méret 101 GiB, és így tovább.
-
-> [!TIP]
-> Alapterv IOPS = 400 + 1 * kiépített GiB. (Max. 100 000 IOPS).
->
-> Burst Limit = MAX (4 000, 3 * alapterv IOPS). (a korlát értéke nagyobb, akár 100 000 IOPS max.).
->
-> kimenő forgalom aránya = 60 MiB/s + 0,06 * kiépített GiB
->
-> bejövő forgalom sebessége = 40 MiB/s + 0,04 * kiépített GiB
-
-A kiosztott megosztási méretet a megosztási kvóta határozza meg. A megosztási kvóta bármikor megnövelhető, de csak a legutóbbi növekedés óta 24 óra elteltével csökkenthető. Ha a várakozás után 24 órán keresztül nem növekszik a kvóta, a megosztási kvótát tetszőleges számú időpontra csökkentheti, amíg újra nem növelné. A IOPS/átviteli sebesség változásai a méret megváltozása után néhány percen belül érvénybe lépnek.
-
-Lehetséges, hogy csökkentse a kiosztott megosztás méretét a használt GiB alatt. Ha ezt teszi, nem veszíti el az adatvesztést, de továbbra is a felhasznált méret után kell fizetnie, és meg kell kapnia a kiépített megosztás teljesítményét (alapkonfiguráció IOPS, átviteli sebességét és burst IOPS), nem a felhasznált méretet.
-
-Az alábbi táblázat néhány példát mutat be a kiosztott megosztási méretekre:
-
-|Kapacitás (GiB) | Alapterv IOPS | Burst IOPS | Kimenő forgalom (MiB/s) | Bejövő forgalom (MiB/s) |
-|---------|---------|---------|---------|---------|
-|100         | 500     | Akár 4 000     | 66   | 44   |
-|500         | 900     | Akár 4 000  | 90   | 60   |
-|1 024       | 1 424   | Akár 4 000   | 122   | 81   |
-|5 120       | 5 520   | Akár 15 360  | 368   | 245   |
-|10 240      | 10 640  | Akár 30 720  | 675   | 450   |
-|33 792      | 34 192  | Akár 100 000 | 2 088 | 1 392   |
-|51 200      | 51 600  | Akár 100 000 | 3 132 | 2 088   |
-|102 400     | 100.000 | Akár 100 000 | 6 204 | 4 136   |
-
-Fontos megjegyezni, hogy az érvényes fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek és a párhuzamosságok érvényesek, többek között. Például a 8 KiB írási/olvasási IO-méretekkel rendelkező belső tesztelésen alapuló, egyetlen Windowsos virtuális gép, amely nem engedélyezett többcsatornás SMB-t használ, a *Standard F16s_v2*, a prémium szintű fájlmegosztás SMB-vel való csatlakoztatása 20000 olvasási IOPS és 15 000 FORDULAT írási IOPS. Az 512 MiB-írási/írási IO-méretekkel ugyanez a virtuális gép elérheti a 1,1 GiB/s kimenő forgalmat és a 370 MiB/s adatátviteli sebességet. Ugyanaz az ügyfél akár 3x-os teljesítményt is elérhet, \~ Ha a többcsatornás SMB engedélyezve van a prémium szintű megosztásokon. A maximális teljesítmény érdekében engedélyezze a [többcsatornás SMB](storage-files-enable-smb-multichannel.md) -t, és terjessze a terhelést több virtuális gép között. A gyakori teljesítménnyel kapcsolatos problémákkal és a megkerülő megoldásokkal kapcsolatban tekintse meg a [többcsatornás SMB-teljesítményt](storage-files-smb-multichannel-performance.md) és a [hibaelhárítási útmutatót](storage-troubleshooting-files-performance.md) .
-
-#### <a name="bursting"></a>Tele
-Ha a számítási feladatnak a maximális igény kielégítése érdekében további teljesítményre van szüksége, akkor a megosztás a megosztási alapkonfiguráció IOPS korlátján keresztül is felhasználhatja, hogy az igényeinek megfelelő megosztási teljesítményt nyújtson. A prémium szintű fájlmegosztás akár 4 000-ig, akár három tényezővel is feltörte a IOPS, attól függően, hogy melyik a magasabb érték. A bursás automatizált, és kreditrendszer alapján működik. Az adatbontás a legjobb megoldás, és a burst-korlát nem garantálható, a *fájlmegosztás legfeljebb 60* perces korlátot vehet igénybe.
-
-A kreditek felhalmozódnak egy burst gyűjtőben, amikor a fájlmegosztás forgalma az alapszintű IOPS alatt van. Egy 100 GiB-megosztás például 500 alapterv-IOPS rendelkezik. Ha a megosztás tényleges forgalma 100 IOPS volt egy adott 1 másodperces intervallumhoz, akkor a 400 fel nem használt IOPS jóváírásra kerül egy burst gyűjtőn. Ehhez hasonlóan az 1. inaktív 1 TiB-megosztás is feltörte a 1 424 IOPS. Ezeket a krediteket később akkor fogjuk használni, amikor a műveletek túllépik az alapkonfiguráció IOPS.
-
-Ha egy megosztás túllépi az alapszintű IOPS, és a kreditek egy burst gyűjtőben vannak, akkor a maximálisan megengedett legmagasabb terhelési arányban lesz kitört. A megosztások továbbra is lemerülhetnek, amíg a kreditek megmaradnak, akár legfeljebb 60 percet is igénybe vehet, de ez a felhalmozott burst-kreditek számától függ. Az alapkonfiguráció IOPS túli minden egyes IO egy kreditet használ, és ha az összes kredit felhasználható, a megosztás visszatér az alapkonfiguráció IOPS.
-
-A megosztási kreditek három állapottal rendelkeznek:
-
-- Ha a fájlmegosztás az alapkonfigurációnál kisebb IOPS használja.
-- Csökken, ha a fájlmegosztás több, mint az alapszintű IOPS és a burst módban használja.
-- Állandó, a fájlmegosztás a fájlmegosztás pontosan az alapkonfiguráció IOPS használja, vagy nincsenek felhalmozva vagy felhasználható kreditek.
-
-Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben. A burst kreditek nem lesznek felhalmozva, ha a megosztás IOPS az alapszintű IOPS alá esik a kiszolgáló általi szabályozás miatt.
 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>A standard fájlmegosztás engedélyezése akár 100 TiB-re is terjedhet
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]

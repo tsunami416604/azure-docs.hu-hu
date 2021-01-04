@@ -6,24 +6,24 @@ ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
-ms.date: 07/27/2020
-ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/22/2020
+ms.openlocfilehash: 2625da3a397c2cdcf7880fb371d13e63caeb9ab1
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95750532"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740572"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Azure Monitor for VMs Log Analytics munkaterület konfigurálása
 Azure Monitor for VMs adatokat gyűjt a Azure Monitor egy vagy több Log Analytics munkaterületéről. Az ügynökök bevezetését megelőzően létre kell hoznia és konfigurálnia kell egy munkaterületet. Ez a cikk a munkaterület követelményeit és a Azure Monitor for VMs konfigurálását ismerteti.
 
 ## <a name="overview"></a>Áttekintés
-Egy előfizetés tetszőleges számú munkaterületet használhat, attól függően, hogy a munkaterületnek csak egy támogatott helyén kell lennie, és hogy az *VMInsights* -megoldással legyen konfigurálva.
+Egyetlen előfizetés tetszőleges számú munkaterületet használhat a követelményektől függően. A munkaterület egyetlen követelménye, hogy egy támogatott helyen legyen elhelyezve, és a *VMInsights* -megoldással legyen konfigurálva.
 
-Miután konfigurálta a munkaterületet, a rendelkezésre álló lehetőségek bármelyikével telepítheti a szükséges ügynököket a virtuális gépen és a VMSS, és megadhatja, hogy az adott munkaterületet elküldi az adatküldéshez. A Azure Monitor for VMs minden konfigurált munkaterületről gyűjt adatokat az előfizetésében.
+Miután konfigurálta a munkaterületet, a rendelkezésre álló lehetőségek bármelyikével telepítheti a szükséges ügynököket a virtuális gépen és a virtuálisgép-méretezési csoporton, és megadhatja a munkaterületet, amellyel elküldheti őket. A Azure Monitor for VMs minden konfigurált munkaterületről gyűjt adatokat az előfizetésében.
 
 > [!NOTE]
-> Ha a Azure Portal használatával engedélyezi a Azure Monitor for VMst egyetlen virtuális gépen vagy VMSS, lehetősége van egy meglévő munkaterület kiválasztására, vagy újat létrehozni. Ha még nem tette meg, akkor a *VMInsights* -megoldás erre a munkaterületre lesz telepítve. Ezt a munkaterületet más ügynökök számára is használhatja.
+> Ha a Azure Portal használatával engedélyezi a Azure Monitor for VMs használatát egyetlen virtuális gépen vagy virtuálisgép-méretezési csoporton, lehetősége van egy meglévő munkaterület kiválasztására, vagy újat létrehozni. Ha még nem tette meg, akkor a *VMInsights* -megoldás erre a munkaterületre lesz telepítve. Ezt a munkaterületet más ügynökök számára is használhatja.
 
 
 ## <a name="create-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
@@ -44,29 +44,13 @@ Az alábbi módszerek bármelyikével létrehozhat egy új Log Analytics munkate
 * [Azure Resource Manager](../samples/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>Támogatott régiók
+Azure Monitor for VMs a [log Analytics által támogatott régiók](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) egyikében log Analytics munkaterületet támogat, a következők kivételével:
 
-A Azure Monitor for VMs Log Analytics munkaterületeket támogat a következő régiókban, de a virtuális gépek bármelyik régióban figyelhetők. Maguk a virtuális gépek nem korlátozódnak a Log Analytics munkaterület által támogatott régiókra.
+- Középnyugat-Németország
+- Dél-Korea középső régiója
 
-- USA nyugati középső régiója
-- USA nyugati régiója
-- USA 2. nyugati régiója
-- USA déli középső régiója
-- USA keleti régiója
-- USA 2. keleti régiója
-- Az USA középső régiója
-- USA északi középső régiója
-- US Gov az
-- US Gov VA
-- Közép-Kanada
-- Az Egyesült Királyság déli régiója
-- Észak-Európa
-- Nyugat-Európa
-- Kelet-Ázsia
-- Délkelet-Ázsia
-- Közép-India
-- Kelet-Japán
-- Kelet-Ausztrália
-- Délkelet-Ausztrália
+>[!NOTE]
+>Bármelyik régióban nyomon követheti az Azure-beli virtuális gépeket. Maguk a virtuális gépek nem korlátozódnak a Log Analytics munkaterület által támogatott régiókra.
 
 ## <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
 A Azure Monitor for VMs szolgáltatásainak engedélyezéséhez és eléréséhez a munkaterületen a [log Analytics közreműködő szerepkörrel](../platform/manage-access.md#manage-access-using-azure-permissions) kell rendelkeznie. A teljesítmény-, állapot-és leképezési adat megtekintéséhez az Azure-beli virtuális gép [figyelési olvasójának szerepkörrel](../platform/roles-permissions-security.md#built-in-monitoring-roles) kell rendelkeznie. A Log Analytics munkaterület elérésének szabályozásáról a [munkaterületek kezelése](../platform/manage-access.md)című témakörben olvashat bővebben.
@@ -80,7 +64,7 @@ Ahhoz, hogy egy Log Analytics munkaterület használható legyen a Azure Monitor
 ### <a name="azure-portal"></a>Azure Portal
 A Azure Portal használatával három lehetőség közül választhat egy meglévő munkaterület konfigurálásához. Mindegyiket alább mutatjuk be.
 
-Egyetlen munkaterület konfigurálásához lépjen a **Azure monitor** menü **Virtual Machines** lehetőségére, válassza ki a többi bevezetési **lehetőséget**, majd **konfigurálja a munkaterületet**. Válasszon egy előfizetést és egy munkaterületet, majd kattintson a **Konfigurálás** elemre.
+Egyetlen munkaterület konfigurálásához lépjen a **Virtual Machines** lehetőségre a **Azure monitor** menüben, válassza ki a **többi** bevezetési beállítást, majd **konfigurálja a munkaterületet**. Válasszon egy előfizetést és egy munkaterületet, majd kattintson a **Konfigurálás** elemre.
 
 [![Munkaterület konfigurálása](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 
@@ -89,7 +73,7 @@ Több munkaterület konfigurálásához válassza a Azure Portal **figyelés** m
 [![Munkaterület konfigurálása](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
 
 
-Ha a Azure Portal használatával engedélyezi a Azure Monitor for VMst egyetlen virtuális gépen vagy VMSS, lehetősége van egy meglévő munkaterület kiválasztására, vagy újat létrehozni. Ha még nem tette meg, akkor a *VMInsights* -megoldás erre a munkaterületre lesz telepítve. Ezt a munkaterületet más ügynökök számára is használhatja.
+Ha a Azure Portal használatával engedélyezi a Azure Monitor for VMs használatát egyetlen virtuális gépen vagy virtuálisgép-méretezési csoporton, lehetősége van egy meglévő munkaterület kiválasztására, vagy újat létrehozni. Ha még nem tette meg, akkor a *VMInsights* -megoldás erre a munkaterületre lesz telepítve. Ezt a munkaterületet más ügynökök számára is használhatja.
 
 [![Egyetlen virtuális gép engedélyezése a portálon](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png#lightbox)
 

@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 01c85311c9ea49be3543edee405cdd66a0659797
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130680"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733005"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integrálása Azure Machine Learning (előzetes verzió)
 
@@ -51,13 +51,13 @@ A Stream Analytics feladathoz közvetlenül a Azure Portal vagy a Visual Studio 
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="UDF hozzáadása a VS Code-ban":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="UDF hozzáadása a VS Code-ban":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Azure Machine Learning UDF hozzáadása a VS Code-ban":::
 
 2. Adja meg a függvény nevét, és töltse ki a konfigurációs fájlban lévő beállításokat a Codelensben- **előfizetések közül a kiválasztás** lehetőség használatával.
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="UDF hozzáadása a VS Code-ban":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Azure Machine Learning UDF kiválasztása a VS Code-ban":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="UDF hozzáadása a VS Code-ban":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Azure Machine Learning UDF konfigurálása a VS Code-ban":::
 
 Az alábbi táblázat a Stream Analytics Azure Machine Learning Service functions egyes tulajdonságait ismerteti.
 
@@ -83,7 +83,7 @@ INTO output
 FROM input
 ```
 
-A Stream Analytics csak Azure Machine Learning függvények esetében támogatja a Passing paramétert. Előfordulhat, hogy elő kell készítenie az adatokat, mielőtt bemenetként továbbítja azt a Machine learning UDF-nek.
+A Stream Analytics csak Azure Machine Learning függvények esetében támogatja a Passing paramétert. Előfordulhat, hogy elő kell készítenie az adatokat, mielőtt bemenetként továbbítja azt a Machine learning UDF-nek. Győződjön meg arról, hogy a bemeneti ML UDF nem null értékű, mert a null bemenetek sikertelenek lesznek.
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>Több bemeneti paraméter átadása az UDF-nek
 
@@ -104,11 +104,18 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 Miután hozzáadta a JavaScript UDF-t a feladatokhoz, a következő lekérdezéssel hívhatja a Azure Machine Learning UDF-t:
 
 ```SQL
-SELECT udf.score(
-udf.createArray(vendorid, weekday, pickuphour, passenger, distance)
-)
-INTO output
+WITH 
+ModelInput AS (
+#use JavaScript UDF to construct array that will be used as input to ML UDF
+SELECT udf.createArray(vendorid, weekday, pickuphour, passenger, distance) as inputArray
 FROM input
+)
+
+SELECT udf.score(inputArray)
+INTO output
+FROM ModelInput
+#validate inputArray is not null before passing it to ML UDF to prevent job from failing
+WHERE inputArray is not null
 ```
 
 A következő JSON egy példa erre a kérelemre:
@@ -180,7 +187,7 @@ Optimális skálázás esetén a Stream Analyticsi feladatnak több párhuzamos 
 
 Az ilyen késések elkerülése érdekében győződjön meg arról, hogy az Azure Kubernetes szolgáltatás (ak) fürtjének [megfelelő számú csomóponttal és replikával](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli)lett kiépítve. Fontos, hogy a webszolgáltatás nagy rendelkezésre állású legyen, és sikeres válaszokat ad vissza. Ha a feladat egy szolgáltatás nem érhető el választ (503) kap a webszolgáltatástól, a rendszer folyamatosan újrapróbálkozik az exponenciális visszalépéssel. Ha a sikertől (200) és a szolgáltatástól (503) nem érhető el válasz, a művelet sikertelen állapotba kerül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei](stream-analytics-javascript-user-defined-functions.md)
 * [Stream Analytics-feladat skálázása Azure Machine Learning Studio (klasszikus) függvénnyel](stream-analytics-scale-with-machine-learning-functions.md)

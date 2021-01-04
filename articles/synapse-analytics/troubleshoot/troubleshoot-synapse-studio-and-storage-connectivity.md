@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8cf440a517c1a3496b3df438fdd0d2534609908f
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445317"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733111"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Az Azure Synapse Analytics, a Synapse Studio és a tároló közötti kapcsolat hibaelhárítása
 
@@ -24,7 +24,11 @@ Ha a Storage-fiókja nem rendelkezik a megfelelő engedélyekkel, nem tudja kibo
 
 A részletes hibaüzenet változhat, de a hibaüzenet általános jelentése: "Ez a kérelem nem jogosult a művelet végrehajtására."
 
-![Storage-kapcsolati probléma 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.1.png)
+A csatolt tár csomópontban:  
+![Storage-kapcsolati probléma 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1.png)
+
+A tároló-tároló csomópontban:  
+![Tárolási kapcsolódási probléma (1a)](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
 **Megoldás**: a fiók megfelelő szerepkörhöz rendeléséhez lásd: [a Azure Portal használata Azure-szerepkör hozzárendeléséhez a blob-és üzenetsor-információk eléréséhez](../../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -33,7 +37,11 @@ A részletes hibaüzenet változhat, de a hibaüzenet általános jelentése: "E
 
 Amikor kijelöli a nyilat, hogy kibontsa a tárolási struktúrát a szinapszis Studióban található "adat"--> "csatolt" elemnél, a bal oldali panelen a "REQUEST_SEND_ERROR" probléma látható. Tekintse meg a probléma tünetét az alábbi képernyőképen:
 
-![Storage-kapcsolati probléma 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.2.png)
+A csatolt tár csomópontban:  
+![Storage-kapcsolati probléma 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2.png)
+
+A tároló-tároló csomópontban:  
+![Tárolási kapcsolat – 2a. probléma](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2a.png)
 
 A probléma több lehetséges oka is lehet:
 
@@ -51,6 +59,7 @@ Az "nslookup \<storage-account-name\> . DFS.Core.Windows.net" parancs használat
 
 * Az elérni kívánt tárolási erőforrás Azure Data Lake Storage Gen2, és egy tűzfal-és vNet (a tároló magánhálózati végpontja konfigurálva) mögött található.
 * Az elérni kívánt tároló-erőforrás törölve lett, vagy nem létezik.
+* Átkelés – bérlő: az a munkaterület-bérlő, amelyet a felhasználó a bejelentkezéshez használt, nem egyezik meg a Storage-fiók Bérlővel. 
 
 
 ## <a name="next-steps"></a>További lépések

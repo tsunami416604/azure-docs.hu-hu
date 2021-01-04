@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 12/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 830e0a8733d3f5a49cede09b331dc0298ee1ce4d
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449361"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734730"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro telepítése GPU-val
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag leírja, hogyan telepíthet egy Azure Stack Edge Pro fizikai 
 
 A telepítés elvégzése körülbelül két órát is igénybe vehet.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Az eszköz kicsomagolása
@@ -166,7 +166,7 @@ Az eszköz kábelezésének megkezdése előtt a következőkre lesz szüksége:
 - Legalább egy 1-GbE RJ-45 hálózati kábel a felügyeleti felülethez való csatlakozáshoz. Az eszközön két 1-GbE hálózati adapter (egy felügyeleti és egy adathálózati) található.
 - Egy 25-GbE SFP+ rézkábel minden konfigurálni kívánt adathálózati adapterhez. Legalább egy adathálózati adaptert a 2. port, a 3. port, az 5. port vagy a 6-os port közül kell csatlakoztatni az internethez (az Azure-hoz való csatlakozással).  
 - Hozzáférés két energiaellátási egységhez (ajánlott).
-- Legalább 1 1-GbE hálózati kapcsolóval egy 1 GbE hálózati adapter csatlakozik az internethez az adatkapcsolathoz. A helyi webes felhasználói felület nem lesz elérhető, ha a csatlakoztatott kapcsoló nem legalább 1 GbE. Ha 25/10 GbE felületet használ az adataihoz, akkor 25 GbE vagy 10 GbE kapcsolóra van szüksége. 
+- Legalább 1 1-GbE hálózati kapcsolóval egy 1 GbE hálózati adapter csatlakozik az internethez az adatkapcsolathoz. A helyi webes felhasználói felület nem lesz elérhető, ha a csatlakoztatott kapcsoló nem legalább 1 GbE. Ha 25/10 – GbE felületet használ az adataihoz, akkor 25 GbE vagy 10 GbE kapcsolóra van szüksége.
 
 > [!NOTE]
 > - Ha csak egy adathálózati adaptert csatlakoztat, javasoljuk, hogy használjon 25/10 GbE hálózati adaptert, például a 3. portot, a 4-es portot, az 5. portot vagy a 6-os PORTOT az Azure-ba való adatküldéshez. 
@@ -186,14 +186,14 @@ Azure Stack Edge Pro-eszközön:
     - 4 25 – Gbps felületek, amelyek 10 GB/s illesztőfelületként is használhatók.
     - Egy alaplapi felügyeleti vezérlő (BMC).
 
-- A háttérrendszer két hálózati kártyával rendelkezik, amelyek megfelelnek a 6 portnak:
+- A hátsó síkon két hálózati kártya felel meg a hat portnak:
 
-    - **Egyéni Microsoft Qlogic Cavium 25G NDC adapter** – 1. port a 4. porton keresztül.
+    - **Egyéni Microsoft `Qlogic` Cavium 25G NDC-adapter** – 1. port a 4. porton keresztül.
     - **Mellanox Dual port 25G ConnectX-4 csatornás hálózati adapter** -5. és 6. port.
 
 A hálózati kártyák által támogatott kábelek, kapcsolók és adóvevők teljes listájáért keresse fel a következőt:
 
-- [Qlogic Cavium 25G NDC adapter együttműködési mátrixa](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+- [ `Qlogic` CAVIUM 25G NDC-adapter együttműködési mátrixa](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
 - [Mellanox Dual port 25G ConnectX-4 csatornás hálózati adapter kompatibilis termékek](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).  
 
  
@@ -201,15 +201,15 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
 
 1. Azonosítsa az eszköz hátsó síkja különböző portokat. Előfordulhat, hogy az eszközön a GPU-k számától függően az alábbi eszközök egyike érkezett a gyárból.
 
-    - Eszköz 2 perifériás Component Interconnect (PCI) bővítőhelytel és egy GPU-val
+    - Eszköz két perifériás Component Interconnect-(PCI-) tárolóhelytel és egy GPU-val
 
         ![Kábeles eszköz hátsó síkja](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
-    - Eszköz 3 PCI bővítőhelytel és egy GPU-val
+    - Eszköz három PCI bővítőhelytel és egy GPU-val
 
         ![Kábeles eszköz hátsó síkja 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
-    - Eszköz 3 PCI bővítőhelytel és két GPU-val
+    - Eszköz három PCI bővítőhelytel és két GPU-val
 
         ![Kábeles eszköz hátsó síkja 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 

@@ -1,18 +1,18 @@
 ---
 title: Ajánlott eljárások a sablonokhoz
-description: A Azure Resource Manager sablonok létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
+description: A Azure Resource Manager sablonok (ARM-sablonok) létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497979"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724986"
 ---
 # <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
 
-Ez a cikk bemutatja, hogyan használhatók az ajánlott eljárások az ARM-sablon összeállításakor. Ezek a javaslatok segítenek elkerülni a gyakori problémákat, amikor egy ARM-sablont használ egy megoldás üzembe helyezéséhez.
+Ez a cikk bemutatja, hogyan használhatók az ajánlott eljárások az Azure Resource Manager-sablon (ARM-sablon) összeállításakor. Ezek a javaslatok segítenek elkerülni a gyakori problémákat, amikor egy ARM-sablont használ egy megoldás üzembe helyezéséhez.
 
 ## <a name="template-limits"></a>Sablonok korlátai
 
@@ -26,7 +26,7 @@ A következőket is korlátozhatja:
 * 64 kimeneti értékek
 * 24 576 karakter egy sablon kifejezésében
 
-Az egyes sablonokra vonatkozó korlátokat egy beágyazott sablon használatával lehet meghaladni. További információ: az [Azure-erőforrások üzembe helyezéséhez csatolt sablonok használata](linked-templates.md). A paraméterek, változók és kimenetek számának csökkentése érdekében több értéket is egyesítheti egy objektumban. További információ: [objektumok paraméterként](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Az egyes sablonokra vonatkozó korlátokat egy beágyazott sablon használatával lehet meghaladni. További információ: [csatolt és beágyazott sablonok használata Azure-erőforrások telepítésekor](linked-templates.md). A paraméterek, változók és kimenetek számának csökkentése érdekében több értéket is egyesítheti egy objektumban. További információ: [objektumok paraméterként](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 ## <a name="resource-group"></a>Erőforráscsoport
 
@@ -48,32 +48,32 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
 
 * Használja az egyszerű azonosításhoz megadni kívánt erőforrásnevek paramétereit.
 
-* Adja meg a metaadatokban szereplő összes paraméter leírását:
+* Adja meg a metaadatok összes paraméterének leírását.
 
-   ```json
-   "parameters": {
-       "storageAccountType": {
-           "type": "string",
-           "metadata": {
-               "description": "The type of the new storage account created to store the VM disks."
-           }
-       }
-   }
-   ```
-
-* A nem bizalmas paraméterek alapértelmezett értékének meghatározása. Az alapértelmezett érték megadásával megkönnyíti a sablon üzembe helyezését, a sablon felhasználói pedig egy megfelelő értéket láthatnak. Egy paraméter alapértelmezett értékének érvényesnek kell lennie az alapértelmezett telepítési konfigurációban lévő összes felhasználó számára. 
-   
-   ```json
-   "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_GRS",
-            "metadata": {
-                "description": "The type of the new storage account created to store the VM disks."
-            }
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
         }
-   }
-   ```
+      }
+    }
+    ```
+
+* A nem bizalmas paraméterek alapértelmezett értékének meghatározása. Az alapértelmezett érték megadásával megkönnyíti a sablon üzembe helyezését, a sablon felhasználói pedig egy megfelelő értéket láthatnak. Egy paraméter alapértelmezett értékének érvényesnek kell lennie az alapértelmezett telepítési konfigurációban lévő összes felhasználó számára.
+
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "defaultValue": "Standard_GRS",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
+        }
+      }
+    }
+    ```
 
 * Egy opcionális paraméter megadásához ne használjon üres karakterláncot alapértelmezett értékként. Ehelyett használjon literál értéket vagy nyelvi kifejezést egy érték létrehozásához.
 
@@ -84,7 +84,7 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
      "metadata": {
        "description": "Name of the storage account"
      }
-   },
+   }
    ```
 
 * Használjon `allowedValues` takarékosan. Csak akkor használja, ha meg kell győződnie arról, hogy néhány érték nem szerepel az engedélyezett beállítások között. Ha `allowedValues` túl széles körben használja, letilthatja az érvényes központi telepítéseket, ha nem tartja naprakészen a listát.
@@ -95,18 +95,18 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
 
 * Mindig használja a felhasználónevek és jelszavak (vagy titkos kódok) paramétereit.
 
-* `securestring`Minden jelszóhoz és titokhoz használható. Ha bizalmas adatokat továbbít egy JSON-objektumban, használja a `secureObject` típust. A biztonságos karakterláncot vagy biztonságos objektumtípust tartalmazó sablon-paraméterek nem olvashatók be az erőforrás-telepítés után. 
-   
-   ```json
-   "parameters": {
-       "secretValue": {
-           "type": "securestring",
-           "metadata": {
-               "description": "The value of the secret to store in the vault."
-           }
-       }
-   }
-   ```
+* `securestring`Minden jelszóhoz és titokhoz használható. Ha bizalmas adatokat továbbít egy JSON-objektumban, használja a `secureObject` típust. A biztonságos karakterláncot vagy biztonságos objektumtípust tartalmazó sablon-paraméterek nem olvashatók be az erőforrás-telepítés után.
+
+    ```json
+    "parameters": {
+      "secretValue": {
+        "type": "securestring",
+        "metadata": {
+          "description": "The value of the secret to store in the vault."
+        }
+      }
+    }
+    ```
 
 * Ne adja meg az alapértelmezett értékeket a felhasználónevek, jelszavak vagy bármely olyan érték számára, amelyhez `secureString` típus szükséges.
 
@@ -114,7 +114,7 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
 
 ### <a name="location-recommendations-for-parameters"></a>Paraméterekre vonatkozó javaslatok
 
-* Egy paraméter használatával adja meg az erőforrások helyét, és állítsa be az alapértelmezett értéket `resourceGroup().location` . A Location paraméter megadása lehetővé teszi a sablon felhasználói számára, hogy olyan helyet adjon meg, amelyben a telepítésük engedéllyel rendelkezik.
+* Egy paraméter használatával adja meg az erőforrások helyét, és állítsa be az alapértelmezett értéket `resourceGroup().location` . A Location paraméter megadása lehetővé teszi a sablon felhasználói számára egy olyan hely megadását, ahol az erőforrások üzembe helyezésére jogosultak.
 
    ```json
    "parameters": {
@@ -125,7 +125,7 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
          "description": "The location in which the resources should be deployed."
        }
      }
-   },
+   }
    ```
 
 * Ne határozza meg `allowedValues` a Location paramétert. Előfordulhat, hogy a megadott webhelyek nem érhetők el az összes felhőben.
@@ -144,7 +144,7 @@ A következő információk hasznosak lehetnek a [változók](template-variables
 
 * Használjon változókat a sablon függvények összetett elrendezése alapján létrehozott értékekhez. A sablon könnyebben olvasható, ha a komplex kifejezés csak a változókban jelenik meg.
 
-* A [hivatkozási](template-functions-resource.md#reference) függvény nem használható a sablon **változók** szakaszában. A **Reference** függvény az erőforrás futásidejű állapotáról származtatja az értékét. A változók azonban a sablon kezdeti elemzése során is megoldhatók. Olyan értékeket kell megadnia, amelyeknek a **hivatkozási** függvényt közvetlenül a sablon **erőforrások** vagy **kimenetek** szakaszában kell megadniuk.
+* A [hivatkozási](template-functions-resource.md#reference) függvény nem használható a `variables` sablon szakaszában. A `reference` függvény az erőforrás futásidejű állapotáról származtatja az értékét. A változók azonban a sablon kezdeti elemzése során is megoldhatók. Olyan értékeket kell megadnia, amelyeknek a `reference` függvényt közvetlenül a `resources` sablon vagy szakaszában kell megadniuk `outputs` .
 
 * Adja meg azokat az erőforrásnevek változóit, amelyeknek egyedinek kell lenniük.
 
@@ -166,7 +166,7 @@ Ne használjon változókat az API-verzióhoz. Különösen ne használja a [pro
 
 A beállított [függőségek](define-resource-dependency.md) meghatározásakor kövesse az alábbi irányelveket:
 
-* Használja a **hivatkozási** függvényt, és adja meg az erőforrás nevét, és adjon meg egy implicit függőséget olyan erőforrások között, amelyeknek meg kell osztaniuk egy tulajdonságot. `dependsOn`Ha már definiált implicit függőséget, ne adjon hozzá explicit elemet. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát. Az implicit függőség beállítására példát az [implicit függőség](define-resource-dependency.md#reference-and-list-functions)című témakörben talál.
+* Használja a `reference` függvényt, és adja meg az erőforrás nevét a tulajdonság megosztásához szükséges erőforrások közötti implicit függőség beállításához. `dependsOn`Ha már definiált implicit függőséget, ne adjon hozzá explicit elemet. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát. Egy implicit függőség beállítására példát a [hivatkozás és lista függvények](define-resource-dependency.md#reference-and-list-functions)című témakörben talál.
 
 * Adja meg a gyermek erőforrást a szülő erőforrástól függőként.
 
@@ -180,109 +180,108 @@ A beállított [függőségek](define-resource-dependency.md) meghatározásakor
 
 A következő információk hasznosak lehetnek az [erőforrásokkal](template-syntax.md#resources)való munka során:
 
-* Annak érdekében, hogy más közreműködők is megértsék az erőforrás célját, a sablonban szereplő egyes erőforrások **megjegyzéseit** kell megadnia:
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2019-06-01",
-         "location": "[resourceGroup().location]",
-         "comments": "This storage account is used to store the VM disks.",
-         ...
-     }
-   ]
-   ```
+* Annak érdekében, hogy más közreműködők is megértsék az erőforrás célját, az `comments` egyes erőforrásokhoz a sablonban kell megadni.
 
-* Ha *nyilvános végpontot* használ a sablonban (például egy Azure Blob Storage nyilvános végpontot), *ne* a névteret. A névtér dinamikus beolvasásához használja a **Reference** függvényt. Ezt a módszert használhatja a sablon különböző nyilvános névtérbeli környezetekben történő üzembe helyezéséhez anélkül, hogy manuálisan módosítaná a végpontot a sablonban. Állítsa az API-verziót ugyanarra a verzióra, amelyet a sablonban használt Storage-fiókhoz használ:
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
-   
-   Ha a Storage-fiók ugyanabban a sablonban van telepítve, amelyet Ön hoz létre, és a Storage-fiók neve nincs megosztva a sablonban lévő másik erőforrással, nem kell megadnia a szolgáltatói névteret vagy a apiVersion, amikor az erőforrásra hivatkozik. Az alábbi példa az egyszerűsített szintaxist szemlélteti:
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-       }
-   }
-   ```
-     
-   Hivatkozhat egy másik erőforráscsoporthoz tartozó meglévő Storage-fiókra is:
+    ```json
+    "resources": [
+      {
+        "name": "[variables('storageAccountName')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "location": "[resourceGroup().location]",
+        "comments": "This storage account is used to store the VM disks.",
+          ...
+      }
+    ]
+    ```
 
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
+* Ha *nyilvános végpontot* használ a sablonban (például egy Azure Blob Storage nyilvános végpontot), *ne* a névteret. A `reference` függvény használatával dinamikusan kérheti le a névteret. Ezt a módszert használhatja a sablon különböző nyilvános névtérbeli környezetekben történő üzembe helyezéséhez anélkül, hogy manuálisan módosítaná a végpontot a sablonban. Állítsa az API-verziót ugyanarra a verzióra, amelyet a sablonban használt Storage-fiókhoz használ.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   Ha a Storage-fiók ugyanabban a sablonban van telepítve, amelyet Ön hoz létre, és a Storage-fiók neve nincs megosztva a sablonban lévő másik erőforrással, nem kell megadnia a szolgáltatói névteret vagy az `apiVersion` erőforrásra való hivatkozáskor. Az alábbi példa az egyszerűsített szintaxist mutatja be.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   Hivatkozhat egy másik erőforráscsoporthoz tartozó meglévő Storage-fiókra is.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
 
 * Csak akkor rendeljen nyilvános IP-címeket a virtuális géphez, ha egy alkalmazáshoz szükség van. A virtuális géphez (VM) való kapcsolódáshoz, illetve felügyeleti vagy felügyeleti célból a bejövő NAT-szabályokat, a virtuális hálózati átjárókat vagy a Jumpbox használhatja.
-   
+
      A virtuális gépekhez való csatlakozásról további információt a következő témakörben talál:
-   
+
    * [Virtuális gépek futtatása N szintű architektúrához az Azure-ban](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [WinRM-hozzáférés beállítása virtuális gépekhez Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Külső hozzáférés engedélyezése a virtuális géphez a Azure Portal használatával](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Külső hozzáférés engedélyezése a virtuális géphez a PowerShell használatával](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [Külső hozzáférés engedélyezése linuxos virtuális géphez az Azure CLI használatával](../../virtual-machines/linux/nsg-quickstart.md)
 
-* A nyilvános IP-címek **domainnamelabel értékkel** tulajdonságának egyedinek kell lennie. A **domainnamelabel értékkel** értékének 3 és 63 karakter közöttinek kell lennie, és követnie kell az ebben a reguláris kifejezésben megadott szabályokat: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Mivel a **uniqueString** függvény 13 karakter hosszúságú karakterláncot hoz létre, a **dnsPrefixString** paraméter 50 karakterre van korlátozva:
+* A `domainNameLabel` nyilvános IP-címek tulajdonságának egyedinek kell lennie. Az `domainNameLabel` értéknek 3 – 63 karakter hosszúnak kell lennie, és követnie kell az ebben a reguláris kifejezésben megadott szabályokat: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Mivel a `uniqueString` függvény 13 karakter hosszúságú karakterláncot hoz létre, a `dnsPrefixString` paraméter 50 karakterre van korlátozva.
 
-   ```json
-   "parameters": {
-       "dnsPrefixString": {
-           "type": "string",
-           "maxLength": 50,
-           "metadata": {
-               "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
-           }
-       }
-   },
-   "variables": {
-       "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
-   }
-   ```
+    ```json
+    "parameters": {
+      "dnsPrefixString": {
+        "type": "string",
+        "maxLength": 50,
+        "metadata": {
+          "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
+        }
+      }
+    },
+    "variables": {
+      "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
+    }
+    ```
 
-* Amikor jelszót ad hozzá egy egyéni parancsfájl-bővítményhez, használja a **commandToExecute** tulajdonságot a **protectedsettingsfromkeyvault** tulajdonságban:
-   
-   ```json
-   "properties": {
-       "publisher": "Microsoft.Azure.Extensions",
-       "type": "CustomScript",
-       "typeHandlerVersion": "2.0",
-       "autoUpgradeMinorVersion": true,
-       "settings": {
-           "fileUris": [
-               "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
-           ]
-       },
-       "protectedSettings": {
-           "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
-       }
-   }
-   ```
-   
+* Amikor jelszót ad hozzá egy egyéni parancsfájl-bővítményhez, használja a tulajdonságot `commandToExecute` a `protectedSettings` tulajdonságban.
+
+    ```json
+    "properties": {
+      "publisher": "Microsoft.Azure.Extensions",
+      "type": "CustomScript",
+      "typeHandlerVersion": "2.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "fileUris": [
+          "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
+        ]
+      },
+      "protectedSettings": {
+        "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
+      }
+    }
+    ```
+
    > [!NOTE]
-   > Annak biztosítása érdekében, hogy a titkos kódok titkosítva legyenek a virtuális gépek és bővítmények paraméterként való átadásakor, használja a megfelelő bővítmények **protectedsettingsfromkeyvault** tulajdonságát.
-   > 
+   > Annak biztosítása érdekében, hogy a titkos kódok titkosítva legyenek a virtuális gépek és bővítmények paraméterként való átadásakor, használja a `protectedSettings` megfelelő bővítmények tulajdonságát.
 
 ## <a name="use-test-toolkit"></a>A test Toolkit használata
 
 Az ARM-sablon tesztelési eszközkészlete egy olyan parancsfájl, amely ellenőrzi, hogy a sablon ajánlott eljárásokat használ-e. Ha a sablon nem felel meg az ajánlott eljárásoknak, a figyelmeztetések listáját adja vissza a javasolt módosításokkal. A test Toolkit segítségével megtudhatja, hogyan implementálhatja az ajánlott eljárásokat a sablonban.
 
-A sablon befejezése után futtassa a tesztelési eszközkészletet, és ellenőrizze, hogy van-e lehetőség az informatikai megvalósítás javítására. További információ: [ARM template test Toolkit](test-toolkit.md).
+A sablon befejezése után futtassa a tesztelési eszközkészletet, és ellenőrizze, hogy van-e lehetőség a megvalósításának javítására. További információkért lásd: [ARM-sablon tesztelési eszközkészlet használata](test-toolkit.md).
 
 ## <a name="next-steps"></a>További lépések
 

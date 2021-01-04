@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: d9731455edf0afbe4c0768ae40a51316ac71ad94
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537575"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734232"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Gépi tanulási modell üzembe helyezése az Azure cache for Redis Azure Functions 
 
@@ -43,7 +43,7 @@ Az alapszintű, standard vagy prémium szintű gyorsítótár-példánnyal Azure
 
 1. Lépjen a Azure Portal kezdőlapjára, vagy nyissa meg a Sidebar menüt, majd válassza az **erőforrás létrehozása** lehetőséget. 
    
-1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára** .
+1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Válassza ki az Azure cache-t a Redis.":::
    
@@ -81,7 +81,7 @@ Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a foly
 
 A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webszolgáltatásként való futtatásához. Az alábbi lista a központi telepítéshez szükséges alapvető elemeket ismerteti:
 
-* Egy __bejegyzési parancsfájl__ . Ez a szkript fogadja a kéréseket, a modell használatával szerzi a kérést, és visszaadja az eredményeket.
+* Egy __bejegyzési parancsfájl__. Ez a szkript fogadja a kéréseket, a modell használatával szerzi a kérést, és visszaadja az eredményeket.
 
     > [!IMPORTANT]
     > A bejegyzési parancsfájl a modellre jellemző. meg kell ismernie a bejövő kérelmek adatainak formátumát, a modell által várt adatformátumot, valamint az ügyfeleknek visszaadott adatformátumot.
@@ -123,7 +123,7 @@ def run(data):
 
 További információ a belépési parancsfájlról: [pontozási kód definiálása.](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-entry-script)
 
-* **Függőségek** , például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
+* **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
 
 Ezek az entitások egy __következtetési konfigurációba__ vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
@@ -149,7 +149,7 @@ További információ a környezetekről: [környezetek létrehozása és kezel�
 További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-inference-configuration).
 
 > [!IMPORTANT]
-> A függvények telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__ .
+> A függvények telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__.
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>Az SDK előzetes csomagjának telepítése a függvények támogatásához
 
@@ -283,18 +283,18 @@ Ezen a ponton a Function alkalmazás elkezdi betölteni a rendszerképet.
 > [!IMPORTANT]
 > A rendszerkép betöltése előtt több percet is igénybe vehet. A Azure Portal használatával figyelheti a folyamat előrehaladását.
 
-## <a name="test-azure-function-http-trigger"></a>Azure Function HTTP-trigger tesztelése 
+## <a name="test-azure-functions-http-trigger"></a>Azure Functions HTTP-trigger tesztelése 
 
-Ekkor futtatjuk és teszteljük az Azure Function HTTP-triggert.
+Ekkor futtatjuk és teszteljük a Azure Functions HTTP-triggert.
 
-1. Nyissa meg az Azure Function alkalmazást a Azure Portal.
+1. Nyissa meg a Function alkalmazást a Azure Portal.
 1. A fejlesztő területen válassza a **Code + test** elemet. 
 1. A jobb oldalon válassza a **bevitel** lapot. 
-1. Kattintson a **Futtatás** gombra az Azure Function http-trigger teszteléséhez. 
+1. Kattintson a **Futtatás** gombra a Azure functions http-trigger teszteléséhez. 
 
 Sikeresen üzembe helyezett egy modellt az Azure Machine Learning-ból, amely a Redis-példányhoz tartozó Azure cache-t használó Function-alkalmazás. A Redis készült Azure cache-ről az alábbi szakaszban található hivatkozásokra kattintva tudhat meg többet.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -307,15 +307,15 @@ Ellenkező esetben, ha elkészült a gyors üzembe helyezéssel, törölheti az 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-2. A **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. Az erőforráscsoport eredménylistájában válassza a **...** , majd az **Erőforráscsoport törlése** lehetőséget.
+2. A **Szűrés név alapján** mezőbe írja be az erőforráscsoport nevét. Az erőforráscsoport eredménylistájában válassza a **...**, majd az **Erőforráscsoport törlése** lehetőséget.
 
-A rendszer az erőforráscsoport törlésének megerősítését kéri. A megerősítéshez írja be az erőforráscsoport nevét, és válassza a **Törlést** .
+A rendszer az erőforráscsoport törlésének megerősítését kéri. A megerősítéshez írja be az erőforráscsoport nevét, és válassza a **Törlést**.
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak erőforrásait.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 * További információ a [Redis készült Azure cache](./cache-overview.md) -ről
-* Ismerje meg, hogyan konfigurálhatja a functions alkalmazást a [functions](../azure-functions/functions-create-function-linux-custom-image.md) dokumentációjában.
+* Ismerje meg, hogyan konfigurálhatja a Function alkalmazást [a functions dokumentációjában](../azure-functions/functions-create-function-linux-custom-image.md) .
 * [API-referencia](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
 * [Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez](./cache-python-get-started.md)

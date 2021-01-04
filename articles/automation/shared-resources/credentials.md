@@ -3,14 +3,14 @@ title: Hitelesítő adatok kezelése az Azure Automationben
 description: Ez a cikk azt ismerteti, hogyan hozhatók létre hitelesítőadat-eszközök, és hogyan használhatók runbook vagy DSC-konfigurációban.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/03/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558835"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734827"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Hitelesítő adatok kezelése az Azure Automationben
 
@@ -51,9 +51,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > Kerülje a változók használatát a `Name` paraméterében `Get-AutomationPSCredential` . A használatuk megnehezítheti a runbookok vagy DSC-konfigurációk és a hitelesítő adatok közötti függőségek felderítését a tervezési időszakban.
 
-## <a name="python-2-functions-that-access-credentials"></a>A hitelesítő adatokhoz hozzáférő Python 2 függvények
+## <a name="python-functions-that-access-credentials"></a>A hitelesítő adatokhoz hozzáférő Python-függvények
 
-A következő táblázatban szereplő függvény a hitelesítő adatoknak a Python 2 runbook való elérésére szolgál.
+A következő táblázatban szereplő függvény a hitelesítő adatoknak a Python 2 és 3 runbook való elérésére szolgál. A Python 3 runbookok jelenleg előzetes verzióban érhető el.
 
 | Függvény | Leírás |
 |:---|:---|
@@ -104,6 +104,8 @@ Azt is megteheti, hogy a [GetNetworkCredential](/dotnet/api/system.management.au
 
 ### <a name="textual-runbook-example"></a>Szöveges runbook példa
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Az alábbi példa bemutatja, hogyan használhatók PowerShell-hitelesítő adatok egy runbook. Lekéri a hitelesítő adatokat, és hozzárendeli a felhasználónevet és a jelszót a változókhoz.
 
 ```powershell
@@ -126,6 +128,36 @@ $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$sec
 Connect-AzAccount -Credential $myPsCred
 ```
 
+# <a name="python-2"></a>[Python 2](#tab/python2)
+
+Az alábbi példa egy példát mutat be a hitelesítő adatok elérésére a Python 2 runbookok.
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print cred["username"]
+print cred["password"]
+```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+A következő példa egy példát mutat be a hitelesítő adatok elérésére a Python 3 runbookok (előzetes verzió).
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print (cred["username"])
+print (cred["password"])
+```
+
+---
+
 ### <a name="graphical-runbook-example"></a>Példa grafikus runbook
 
 Hozzáadhat egy tevékenységet a belső `Get-AutomationPSCredential` parancsmaghoz egy grafikus runbook. ehhez kattintson a jobb gombbal a hitelesítő adatokra a grafikus szerkesztő könyvtár paneljén, és válassza a **Hozzáadás a vászonhoz** lehetőséget.
@@ -139,20 +171,6 @@ Az alábbi képen egy példa látható a hitelesítő adatok grafikus runbook va
 ## <a name="use-credentials-in-a-dsc-configuration"></a>Hitelesítő adatok használata DSC-konfigurációban
 
 Habár a Azure Automation DSC-konfigurációja a hitelesítő adatokkal is működhet a használatával `Get-AutomationPSCredential` , a hitelesítő adatokat a paraméterek segítségével is átadhatják. További információ: [konfigurációk fordítása Azure Automation DSC-ben](../automation-dsc-compile.md#credential-assets).
-
-## <a name="use-credentials-in-a-python-2-runbook"></a>Hitelesítő adatok használata Python 2 runbook
-
-Az alábbi példa egy példát mutat be a hitelesítő adatok elérésére a Python 2 runbookok.
-
-```python
-import automationassets
-from automationassets import AutomationAssetNotFound
-
-# get a credential
-cred = automationassets.get_automation_credential("credtest")
-print cred["username"]
-print cred["password"]
-```
 
 ## <a name="next-steps"></a>További lépések
 

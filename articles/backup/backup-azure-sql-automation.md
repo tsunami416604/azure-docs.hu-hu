@@ -4,12 +4,12 @@ description: Az SQL-adatbázisok biztonsági mentése és visszaállítása Azur
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 0b3b943a53c1da0f6f1e938b5b234dc82541b46d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a3467ffa3a67ac9ad593748948cea8da59e3e6b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901662"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734538"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>SQL-adatbázisok biztonsági mentése és visszaállítása az Azure-beli virtuális gépeken a PowerShell-lel
 
@@ -172,7 +172,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > A kezdési időt csak 30 percenként kell megadnia. A fenti példában csak "01:00:00" vagy "02:30:00" lehet. A kezdési időpont nem lehet "01:15:00".
 
-A következő példa az ütemezett házirendet és a változókban tárolt adatmegőrzési szabályzatot tárolja. Ezután ezeket a változókat paraméterekként használja egy új szabályzathoz ( **NewSQLPolicy** ). A **NewSQLPolicy** naponta teljes biztonsági mentést készít, és 180 napig tart, és 2 óránként biztonsági másolatot készít a naplóról
+A következő példa az ütemezett házirendet és a változókban tárolt adatmegőrzési szabályzatot tárolja. Ezután ezeket a változókat paraméterekként használja egy új szabályzathoz (**NewSQLPolicy**). A **NewSQLPolicy** naponta teljes biztonsági mentést készít, és 180 napig tart, és 2 óránként biztonsági másolatot készít a naplóról
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
@@ -268,7 +268,7 @@ A Azure Backup az Azure-beli virtuális gépeken futó SQL Server-adatbázisokat
 * Állítsa vissza egy adott dátumra vagy időpontra (a másodikra) a tranzakciónaplók biztonsági másolatainak használatával. Azure Backup automatikusan meghatározza a megfelelő teljes különbözeti biztonsági mentést, valamint a visszaállításhoz szükséges naplók láncát, amely a kijelölt idő alapján állítható vissza.
 * Egy adott helyreállítási pontra való visszaállításhoz állítson vissza egy adott teljes vagy különbözeti biztonsági másolatot.
 
-Az SQL-adatbázisok visszaállítása előtt tekintse meg az [itt](restore-sql-database-azure-vm.md#prerequisites) említett előfeltételeket.
+Az SQL-adatbázisok visszaállítása előtt tekintse meg az [itt](restore-sql-database-azure-vm.md#restore-prerequisites) említett előfeltételeket.
 
 Először a [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) PowerShell-parancsmag használatával olvassa be a megfelelő biztonsági mentést az SQL-adatbázishoz.
 

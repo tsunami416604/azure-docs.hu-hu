@@ -6,19 +6,19 @@ ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 420ff7ed838bc9fa14c1276ae0a70220fc7e11a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8042e1d3f93b870cdc669628a28fcbad54b69150
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90024060"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724845"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Hitelesítés az Azure előtérbeli API-k használatával
 
 Ebben a szakaszban bemutatjuk, hogyan használhatja az API-t a hitelesítéshez és a munkamenetek kezeléséhez.
 
 > [!CAUTION]
-> Az ebben a fejezetben ismertetett függvények a kiszolgálón belüli REST-hívásokat adnak meg. Ahogy az összes REST-hívás esetében is, ezek a parancsok túl gyakran küldenek a kiszolgálónak a hibák szabályozására és visszaküldésére. Ebben az esetben a `SessionGeneralContext.HttpResponseCode` tag értéke 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
+> Az ebben a fejezetben ismertetett függvények a kiszolgálón belüli REST-hívásokat adnak meg. Ahogy az összes REST-hívás esetében is, ezek a parancsok túl gyakran küldenek a kiszolgálónak a hibák szabályozására és visszaküldésére. Ebben az esetben a `SessionGeneralContext.HttpResponseCode` tag értéke 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces** késleltetésnek kell lennie.
 
 
 ## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
@@ -31,7 +31,11 @@ A fontos mezők a következők:
 
 public class AzureFrontendAccountInfo
 {
-    // Something akin to "<region>.mixedreality.azure.com"
+    // Domain that will be used for account authentication for the Azure Remote Rendering service, in the form [region].mixedreality.azure.com.
+    // [region] should be set to the domain of the Azure Remote Rendering account.
+    public string AccountAuthenticationDomain;
+    // Domain that will be used to generate sessions for the Azure Remote Rendering service, in the form [region].mixedreality.azure.com.
+    // [region] should be selected based on the region closest to the user. For example, westus2.mixedreality.azure.com or westeurope.mixedreality.azure.com.
     public string AccountDomain;
 
     // Can use one of:
@@ -50,6 +54,7 @@ A C++ munkatársainak így kell kinéznie:
 ```cpp
 struct AzureFrontendAccountInfo
 {
+    std::string AccountAuthenticationDomain{};
     std::string AccountDomain{};
     std::string AccountId{};
     std::string AccountKey{};
@@ -431,9 +436,9 @@ void StopRenderingSession(ApiHandle<AzureSession> session)
 
 ```cs
 private ArrInspectorAsync _pendingAsync = null;
-void ConnectToArrInspector(AzureSession session, string hostname)
+void ConnectToArrInspector(AzureSession session)
 {
-    _pendingAsync = session.ConnectToArrInspectorAsync(hostname);
+    _pendingAsync = session.ConnectToArrInspectorAsync();
     _pendingAsync.Completed +=
         (ArrInspectorAsync res) =>
         {
@@ -463,9 +468,9 @@ void ConnectToArrInspector(AzureSession session, string hostname)
 ```
 
 ```cpp
-void ConnectToArrInspector(ApiHandle<AzureSession> session, std::string hostname)
+void ConnectToArrInspector(ApiHandle<AzureSession> session)
 {
-    ApiHandle<ArrInspectorAsync> pendingAsync = *session->ConnectToArrInspectorAsync(hostname);
+    ApiHandle<ArrInspectorAsync> pendingAsync = *session->ConnectToArrInspectorAsync();
     pendingAsync->Completed([](ApiHandle<ArrInspectorAsync> res)
     {
         if (res->GetIsRanToCompletion())
@@ -482,7 +487,7 @@ void ConnectToArrInspector(ApiHandle<AzureSession> session, std::string hostname
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Fiók létrehozása](create-an-account.md)
 * [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)

@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832687"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739185"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning számítási fürt létrehozása
 
@@ -212,7 +212,15 @@ Lásd: [felügyelt identitás beállítása a Studióban](how-to-create-attach-c
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Előfordulhat, hogy néhány felhasználó létrehozta Azure Machine Learning munkaterületét a Azure Portal, mielőtt a GA-kiadás nem tud AmlCompute létrehozni a munkaterületen. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
+
+Ha a Azure Machine Learning számítási fürt a csomópont állapotának átméretezése (0 – > 0) miatt megakadt, akkor ezt az Azure-erőforrás zárolása okozhatja.
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
+
+## <a name="next-steps"></a>További lépések
 
 A számítási fürt használatával:
 

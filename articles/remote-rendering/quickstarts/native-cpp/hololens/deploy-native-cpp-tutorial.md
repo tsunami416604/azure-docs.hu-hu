@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4513a1997dc2955e1c5488a4a3740afa88f51623
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d35d6e75b45c2ea263c2e986c5fc6f414cad16e4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207274"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724969"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Gyors útmutató: natív C++ minta üzembe helyezése a HoloLens-ben
 
@@ -39,7 +39,7 @@ A következő szoftvereket kell telepíteni:
 
 ## <a name="clone-the-arr-samples-repository"></a>Az ARR-minták tárházának klónozása
 
-Első lépésként a git-tárházat klónozottuk, amely a nyilvános Azure-beli távoli renderelési mintákat képezi. Nyisson meg egy parancssort (írja be `cmd` a Windows Start menüjét), és váltson arra a könyvtárba, ahol az ARR-minta projektet tárolni szeretné.
+Első lépésként a git-tárházat klónozottuk, amely a globális Azure-alapú távoli renderelési mintákat képezi. Nyisson meg egy parancssort (írja be `cmd` a Windows Start menüjét), és váltson arra a könyvtárba, ahol az ARR-minta projektet tárolni szeretné.
 
 Futtassa az alábbi parancsot:
 
@@ -51,13 +51,13 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 Az utolsó parancs létrehoz egy alkönyvtárat az ARR könyvtárban, amely az Azure távoli renderelés különböző mintáit tartalmazza.
 
-A C++ HoloLens oktatóanyag a *NativeCpp/HoloLens*alkönyvtárban található.
+A C++ HoloLens oktatóanyag a *NativeCpp/HoloLens* alkönyvtárban található.
 
 ## <a name="build-the-project"></a>A projekt felépítése
 
 Nyissa meg a *NativeCpp/HoloLens* alkönyvtárában található *HolographicApp. SLN* fájlt a Visual Studio 2019-ben.
 
-Váltson a Build konfigurációra a *hibakereséshez* (vagy *kiadáshoz*) és a *ARM64*. Győződjön meg arról is, hogy a hibakereső üzemmód az *eszközre* van beállítva, a *távoli gép*helyett:
+Váltson a Build konfigurációra a *hibakereséshez* (vagy *kiadáshoz*) és a *ARM64*. Győződjön meg arról is, hogy a hibakereső üzemmód az *eszközre* van beállítva, a *távoli gép* helyett:
 
 ![Visual Studio-konfiguráció](media/vs-config-native-cpp-tutorial.png)
 
@@ -70,7 +70,8 @@ Mivel a fiók hitelesítő adatai az oktatóanyag hardcoded találhatók, módos
     RR::AzureFrontendAccountInfo init;
     init.AccountId = "00000000-0000-0000-0000-000000000000";
     init.AccountKey = "<account key>";
-    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+    init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
     m_modelURI = "builtin://Engine";
     m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
     m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
@@ -78,8 +79,8 @@ Mivel a fiók hitelesítő adatai az oktatóanyag hardcoded találhatók, módos
 ```
 
 Pontosabban módosítsa a következő értékeket:
-* `init.AccountId` és `init.AccountKey` a fiókja adatait is használhatja. Lásd: a [fiókadatok beolvasása](../../../how-tos/create-an-account.md#retrieve-the-account-information).
-* A karakterlánc régiójának része `init.AccountDomain` más régiókban, mint `westus2` például `"westeurope.mixedreality.azure.com"`
+* `init.AccountId`, `init.AccountKey` és `init.AccountAuthenticationDomain` a fiókja adatait is használhatja. Lásd: a [fiókadatok beolvasása](../../../how-tos/create-an-account.md#retrieve-the-account-information).
+* Itt adhatja meg, hogy hol szeretné létrehozni a távoli renderelési munkamenetet a karakterlánc régió részének más régiókban való módosításával, például: `init.AccountDomain` `westus2` `"westeurope.mixedreality.azure.com"` .
 * Emellett a `m_sessionOverride` meglévő munkamenet-azonosítóra is módosítható. A munkamenetek ezen a mintán kívül is létrehozhatók, például [a PowerShell-parancsfájl](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) használatával vagy a [munkamenet-REST API](../../../how-tos/session-rest-api.md#create-a-session) közvetlen használatával.
 Ha a mintát többször kell futtatni, akkor a mintán kívüli munkamenet létrehozása ajánlott. Ha a rendszer nem ad át munkamenetet, a minta minden indításkor létrehoz egy új munkamenetet, amely több percet is igénybe vehet.
 
@@ -95,7 +96,7 @@ A minta alkalmazásnak el kell indulnia, és egy szöveges panelnek kell megjele
 
  Ha később el szeretné indítani a mintát, azt a HoloLens Start menüjéből is megtalálhatja, de előfordulhat, hogy egy lejárt munkamenet-AZONOSÍTÓval van lefordítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a rövid útmutató egy olyan oktatóanyag eredményein alapul, amely elmagyarázza, hogyan integrálható a távoli rendereléssel kapcsolatos összes darab egy készlet *holografikus alkalmazásba*. A szükséges lépések elsajátításához kövesse az alábbi oktatóanyagot:
 

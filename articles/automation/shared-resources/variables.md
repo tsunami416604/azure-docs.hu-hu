@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461455"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734776"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Változók kezelése a Azure Automationban
 
@@ -38,7 +38,7 @@ Ha a Azure Portal változót hoz létre, meg kell adnia egy adattípust a legör
 * Sztring
 * Egész szám
 * DateTime
-* Logikai érték
+* Logikai
 * Null
 
 A változó nem korlátozódik a megadott adattípusra. A változót a Windows PowerShell használatával kell beállítani, ha más típusú értéket szeretne megadni. Ha a jelzést adja meg `Not defined` , a változó értéke null. Az értéket a [set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) parancsmaggal vagy a belső `Set-AutomationVariable` parancsmaggal kell beállítani.
@@ -65,7 +65,7 @@ Az alábbi táblázatban található parancsmagok automatizálási változókat 
 
 A következő táblázatban található belső parancsmagok a runbookok és a DSC-konfigurációk változóinak elérésére szolgálnak. Ezek a parancsmagok a globális modulhoz tartoznak `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](modules.md#internal-cmdlets).
 
-| Belső parancsmag | Description |
+| Belső parancsmag | Leírás |
 |:---|:---|
 |`Get-AutomationVariable`|Egy létező változó értékét kérdezi le.|
 |`Set-AutomationVariable`|Beállítja egy létező változó értékét.|
@@ -80,11 +80,11 @@ $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
 ```
 
-## <a name="python-2-functions-to-access-variables"></a>A Python 2 függvények a változók eléréséhez
+## <a name="python-functions-to-access-variables"></a>A Python függvények a változók eléréséhez
 
-A következő táblázatban szereplő függvények a Python 2 runbook változóinak elérésére szolgálnak.
+A következő táblázatban szereplő függvények a Python 2 és 3 runbook lévő változók elérésére szolgálnak. A Python 3 runbookok jelenleg előzetes verzióban érhető el.
 
-|Python 2 függvények|Description|
+|Python-függvények|Leírás|
 |:---|:---|
 |`automationassets.get_automation_variable`|Egy létező változó értékét kérdezi le. |
 |`automationassets.set_automation_variable`|Beállítja egy létező változó értékét. |
@@ -135,9 +135,10 @@ $vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 $vmName = $vmValue.Name
 $vmExtensions = $vmValue.Extensions
 ```
+
 ## <a name="textual-runbook-examples"></a>Szöveges runbook-példák
 
-### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>Egyszerű érték beolvasása és beállítása egy változóból
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Az alábbi példa bemutatja, hogyan állíthat be és kérhet le egy változót egy szöveges runbook. Ez a példa feltételezi, hogy egy nevű egész szám típusú változót és `NumberOfIterations` `NumberOfRunnings` egy nevű karakterlánc-változót hoz létre `SampleMessage` .
 
@@ -154,7 +155,7 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
 Set-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 ```
 
-### <a name="retrieve-and-set-a-variable-in-a-python-2-runbook"></a>Változó beolvasása és beállítása Python 2 runbook
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 A következő minta bemutatja, hogyan lehet változót beolvasni, változót beállítani és kezelni egy nem létező változót egy Python 2 runbook.
 
@@ -177,6 +178,32 @@ try:
 except AutomationAssetNotFound:
     print "variable not found"
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+Az alábbi példa bemutatja, hogyan lehet változót beolvasni, változót beállítani és egy nem létező változóhoz tartozó kivételt kezelni egy Python 3 runbook (előzetes verzió).
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a variable
+value = automationassets.get_automation_variable("test-variable")
+print value
+
+# set a variable (value can be int/bool/string)
+automationassets.set_automation_variable("test-variable", True)
+automationassets.set_automation_variable("test-variable", 4)
+automationassets.set_automation_variable("test-variable", "test-string")
+
+# handle a non-existent variable exception
+try:
+    value = automationassets.get_automation_variable("nonexisting variable")
+except AutomationAssetNotFound:
+    print ("variable not found")
+```
+
+---
 
 ## <a name="graphical-runbook-examples"></a>Grafikus runbook-példák
 

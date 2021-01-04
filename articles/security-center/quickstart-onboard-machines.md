@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 572c657dd44db73b1401c72f0750fe8e000985ac
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 8d0d4726763e36bd889c2f564d116d454b2f62b9
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734354"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740606"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Nem Azure-beli gépek összekapcsolásának Security Center
 
@@ -135,8 +135,8 @@ Gratulálunk! Az Azure-és a nem Azure-beli gépeket most már egyetlen helyen l
 
   ![Az Azure arc-kiszolgáló ASC ikonja](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Azure arc-kompatibilis kiszolgáló
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezen az oldalon bemutatjuk, hogyan adhat hozzá a nem Azure-beli gépeket Azure Security Centerhoz. Az állapotuk figyeléséhez használja a leltári eszközöket a következő oldalon leírtak szerint:
 
-- [Erőforrások megismerése és kezelése az eszközök leltározásával és felügyeleti eszközeivel](asset-inventory.md)
+- [Erőforrások megismerése és kezelése az eszközök leltározásával](asset-inventory.md)

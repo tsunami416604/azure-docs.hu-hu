@@ -3,12 +3,12 @@ title: SQL Server adatbázis biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási információk az Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentéséhez Azure Backup-mel.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332780"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733925"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
 
@@ -18,7 +18,7 @@ További információ a biztonsági mentési folyamatról és a korlátozásokr�
 
 ## <a name="sql-server-permissions"></a>Engedélyek SQL Server
 
-Ha egy SQL Server adatbázis védelmét szeretné konfigurálni egy virtuális gépen, telepítenie kell a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. Ha a **UserErrorSQLNoSysadminMembership**hibaüzenetet kap, az azt jelenti, hogy az SQL Server-példány nem rendelkezik a szükséges biztonsági mentési engedélyekkel. A hiba elhárításához kövesse a [virtuális gép engedélyeinek beállítása](backup-azure-sql-database.md#set-vm-permissions)című témakör lépéseit.
+Ha egy SQL Server adatbázis védelmét szeretné konfigurálni egy virtuális gépen, telepítenie kell a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. Ha a **UserErrorSQLNoSysadminMembership** hibaüzenetet kap, az azt jelenti, hogy az SQL Server-példány nem rendelkezik a szükséges biztonsági mentési engedélyekkel. A hiba elhárításához kövesse a [virtuális gép engedélyeinek beállítása](backup-azure-sql-database.md#set-vm-permissions)című témakör lépéseit.
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>Felderítési és konfigurálási problémák hibaelhárítása
 
@@ -46,7 +46,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
     `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBackupWindowsWorkload`
 
-    Cserélje le a `C:\` betűt a *rendszermeghajtó*betűjelére.
+    Cserélje le a `C:\` betűt a *rendszermeghajtó* betűjelére.
 
 1. Zárja ki a virtuális gépen belül futó következő három folyamatot víruskereső vizsgálatból:
 
@@ -56,13 +56,47 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 1. Az SQL Emellett néhány útmutatót is biztosít a víruskereső programokkal való együttműködéshez. További részletekért tekintse meg [ezt a cikket](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) .
 
+## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>Hibás példány egy olyan virtuális gépen, amelyen több SQL Server példány található
+
+Az SQL virtuális gépekre csak akkor állítható vissza, ha a virtuális gépen futó összes SQL-példány kifogástalan állapotú. Ha egy vagy több példány "hibás", a virtuális gép nem jelenik meg visszaállítási célként. Így előfordulhat, hogy ez lehet az oka annak, hogy egy többpéldányos virtuális gép ne jelenjen meg a "kiszolgáló" legördülő menüben a visszaállítási művelet során.
+
+A virtuális gépen található összes SQL-példány biztonsági mentési készültségét a **biztonsági mentés konfigurálása** területen ellenőrizheti:
+
+![Biztonsági mentés készültségének ellenőrzése](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
+
+Ha a kifogástalan SQL-példányok visszaállítását szeretné elindítani, hajtsa végre a következő lépéseket:
+
+1. Jelentkezzen be az SQL virtuális gépre, és nyissa meg a következőt: `C:\Program Files\Azure Workload Backup\bin` .
+1. Hozzon létre egy nevű JSON `ExtensionSettingsOverrides.json` -fájlt (ha még nem létezik). Ha a fájl már megtalálható a virtuális gépen, folytassa a használatát.
+1. Adja hozzá a következő tartalmat a JSON-fájlhoz, és mentse a fájlt:
+
+    ```json
+    {
+                  "<ExistingKey1>":"<ExistingValue1>",
+                    …………………………………………………… ,
+              "whitelistedInstancesForInquiry": "FaultyInstance_1,FaultyInstance_2"
+            }
+            
+            Sample content:        
+            { 
+              "whitelistedInstancesForInquiry": "CRPPA,CRPPB "
+            }
+
+    ```
+
+1. Indítsa el az adatbázis **újrafelderítése** műveletet az érintett kiszolgálón a Azure Portal (a biztonsági mentés felkészültségének helyét is megtekintheti). A virtuális gép a visszaállítási műveletek céljaként fog megjelenni.
+
+    ![Adatbázisok újbóli felderítése](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
+
+1. A visszaállítási művelet befejezése után távolítsa el a *whitelistedInstancesForInquiry* bejegyzést a ExtensionSettingsOverrides.jsfájlból.
+
 ## <a name="error-messages"></a>Hibaüzenetek
 
 ### <a name="backup-type-unsupported"></a>A biztonsági mentés típusa nem támogatott
 
 | Súlyosság | Leírás | Lehetséges okok | Javasolt művelet |
 |---|---|---|---|
-| Figyelmeztetés | Az adatbázis jelenlegi beállításai nem támogatják a társított szabályzatban található egyes biztonsági mentési típusokat. | <li>A Master adatbázison csak a teljes adatbázis biztonsági mentési művelete hajtható végre. A különbözeti biztonsági mentés és a tranzakciónapló biztonsági mentése nem lehetséges. </li> <li>Az egyszerű helyreállítási modellben lévő adatbázisok nem teszik lehetővé a tranzakciónaplók biztonsági mentését.</li> | Az adatbázis-beállítások módosítása – a házirendben szereplő összes biztonsági mentési típus támogatott. Vagy módosítsa úgy a jelenlegi szabályzatot, hogy csak a támogatott biztonsági mentési típusokat tartalmazza. Ellenkező esetben a rendszer kihagyja a nem támogatott biztonsági mentési típusokat az ütemezett biztonsági mentés során, vagy a biztonsági mentési feladat sikertelen lesz az igény szerinti biztonsági mentés során.
+| Figyelmeztetés | Az adatbázis jelenlegi beállításai nem támogatják a társított szabályzatban található egyes biztonsági mentési típusokat. | <li>A Master adatbázison csak a teljes adatbázis biztonsági mentési művelete hajtható végre. A különbözeti biztonsági mentés és a tranzakciónapló biztonsági mentése nem lehetséges. </li> <li>Az egyszerű helyreállítási modellben lévő adatbázisok nem teszik lehetővé a tranzakciónaplók biztonsági mentését.</li> | Módosítsa az adatbázis beállításait, hogy a szabályzat összes biztonsági mentési típusa támogatott legyen. Vagy módosítsa úgy a jelenlegi szabályzatot, hogy csak a támogatott biztonsági mentési típusokat tartalmazza. Ellenkező esetben a rendszer kihagyja a nem támogatott biztonsági mentési típusokat az ütemezett biztonsági mentés során, vagy a biztonsági mentési feladat sikertelen lesz az igény szerinti biztonsági mentés során.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -75,7 +109,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-| Az SQL-adatbázis nem létezik. | Az adatbázist törölték vagy átnevezték. | Ellenőrizze, hogy a rendszer véletlenül törölte vagy átnevezte-e az adatbázist.<br/><br/> Ha az adatbázist véletlenül törölték, a biztonsági mentések folytatásához állítsa vissza az adatbázist az eredeti helyére.<br/><br/> Ha törölte az adatbázist, és nem igényel jövőbeli biztonsági mentést, akkor a Recovery Services-tárolóban válassza a biztonsági mentés **leállítása** a biztonsági **mentési adat megőrzése** vagy a **biztonsági mentési adat törlése**lehetőséget. További információ: a [biztonsági másolatok SQL Server adatbázisainak kezelése és figyelése](manage-monitor-sql-database-backup.md).
+| Az SQL-adatbázis nem létezik. | Az adatbázist törölték vagy átnevezték. | Ellenőrizze, hogy a rendszer véletlenül törölte vagy átnevezte-e az adatbázist.<br/><br/> Ha az adatbázist véletlenül törölték, a biztonsági mentések folytatásához állítsa vissza az adatbázist az eredeti helyére.<br/><br/> Ha törölte az adatbázist, és nem igényel jövőbeli biztonsági mentést, akkor a Recovery Services-tárolóban válassza a biztonsági mentés **leállítása** a biztonsági **mentési adat megőrzése** vagy a **biztonsági mentési adat törlése** lehetőséget. További információ: a [biztonsági másolatok SQL Server adatbázisainak kezelése és figyelése](manage-monitor-sql-database-backup.md).
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 
@@ -130,7 +164,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-| A helyreállításhoz használt naplóalapú biztonsági mentés tömegesen naplózott módosításokat tartalmaz. Nem használható az SQL-irányelvek alapján tetszőleges időpontban történő leállításra. | Ha egy adatbázis tömegesen naplózott helyreállítási módban van, a tömegesen naplózott tranzakció és a következő naplózási tranzakció közötti adatmennyiség nem állítható helyre. | Válasszon egy másik időpontot a helyreállításhoz. [További információk](/sql/relational-databases/backup-restore/recovery-models-sql-server).
+| A helyreállításhoz használt naplóalapú biztonsági mentés tömegesen naplózott módosításokat tartalmaz. Nem használható az SQL-irányelvek alapján tetszőleges időpontban történő leállításra. | Ha egy adatbázis tömegesen naplózott helyreállítási módban van, a tömegesen naplózott tranzakció és a következő naplózási tranzakció közötti adatmennyiség nem állítható helyre. | Válasszon egy másik időpontot a helyreállításhoz. [További információ](/sql/relational-databases/backup-restore/recovery-models-sql-server).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -192,7 +226,7 @@ A következő tünetek közül egyet vagy többet kell megvizsgálnia az isméte
 Ezek a tünetek a következő okok valamelyike miatt merülhetnek fel:
 
 - A bővítmény törölve lett vagy el lett távolítva a portálról.
-- A rendszer eltávolít egy bővítményt a virtuális gépen a **Vezérlőpultról** a **program eltávolítása vagy módosítása**lehetőség alatt.
+- A rendszer eltávolít egy bővítményt a virtuális gépen a **Vezérlőpultról** a **program eltávolítása vagy módosítása** lehetőség alatt.
 - A virtuális gép időben vissza lett állítva a helyi lemez visszaállítása révén.
 - A virtuális gép leállt egy hosszabb ideig, így lejárt a bővítmény konfigurációja.
 - A virtuális gép törölve lett, és egy másik virtuális gép lett létrehozva ugyanazzal a névvel és ugyanabban az erőforráscsoporthoz, mint a törölt virtuális gép.
@@ -216,7 +250,7 @@ Most rendezze a következő formátumot:
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-Bemutatunk egy példát:
+Íme egy példa:
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -245,7 +279,7 @@ A fájl tartalmának a következő formátumúnak kell lennie:
 ]
 ```
 
-Bemutatunk egy példát:
+Íme egy példa:
 
 ```json
 [
@@ -272,6 +306,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
 
 Ezt a fájlt a visszaállítási művelet elindítása előtt kell elhelyezni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A SQL Server virtuális gépek (nyilvános előzetes verzió) Azure Backupával kapcsolatos további információkért lásd: [Azure Backup SQL virtuális gépekhez](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup).

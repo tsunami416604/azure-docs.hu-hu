@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6ca96f76287482a445d8a9a1cdc441333b36efbd
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107606"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739603"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval
 
@@ -57,7 +57,7 @@ A következő az átjáró által használt teljes tartománynevek.
 | *.frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |Az internetkapcsolat tesztelésére használható, ha az átjáró nem érhető el a Power BI szolgáltatás számára. |
+| *.msftncsi.com |80 |Az internetkapcsolat tesztelésére használható, ha az átjáró nem érhető el a Power BI szolgáltatás számára. |
 | *.microsoftonline-p.com |443 |Hitelesítésre használható a konfigurációtól függően. |
 | dc.services.visualstudio.com    |443 |A AppInsights használja a telemetria gyűjtésére. |
 

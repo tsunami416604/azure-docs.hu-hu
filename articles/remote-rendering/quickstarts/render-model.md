@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 74bad563de60abc0c1eb7623a81c83fea03f5ee6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207223"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724932"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Gyors útmutató: modell megjelenítése egységgel
 
@@ -68,14 +68,14 @@ A megjelenített alapértelmezett modell egy [beépített minta modell](../sampl
 ### <a name="enter-your-account-info"></a>Adja meg a fiók adatait
 
 1. Az Unity-eszköz böngészőben navigáljon a *jelenetek* mappára, és nyissa meg a gyors üzembe helyezési **jelenetet.**
-1. A *hierarchiában*válassza ki a **RemoteRendering** játék objektumot.
-1. Az *ellenőrben*adja meg a [fiókja hitelesítő adatait](../how-tos/create-an-account.md). Ha még nem rendelkezik fiókkal, [hozzon létre egyet](../how-tos/create-an-account.md).
+1. A *hierarchiában* válassza ki a **RemoteRendering** játék objektumot.
+1. Az *ellenőrben* adja meg a [fiókja hitelesítő adatait](../how-tos/create-an-account.md). Ha még nem rendelkezik fiókkal, [hozzon létre egyet](../how-tos/create-an-account.md).
 
 ![ARR-fiók adatai](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Az Azure Portalon a fiók tartománya csak *mixedreality.Azure.com*-ként jelenik meg. Ez nem elegendő a sikeres csatlakozáshoz.
-> Állítsa be a **AccountDomain** a értékre `<region>.mixedreality.azure.com` , ahol az `<region>` az [elérhető régiók egyike](../reference/regions.md).
+> Állítsa be a **AccountDomain** a értékre `<region>.mixedreality.azure.com` , ahol az `<region>` az [egyik elérhető régió a közelben](../reference/regions.md). \
+> Az Azure Portalon megjelenő **AccountAuthenticationDomain** beállítása a [fiók tartományához](../how-tos/create-an-account.md#retrieve-the-account-information) .
 
 Később telepíteni szeretnénk ezt a projektet egy HoloLens, és az adott eszközről csatlakozunk a távoli renderelési szolgáltatáshoz. Mivel a hitelesítő adatok nem írhatók be az eszközön, a gyors üzembe helyezési minta a **hitelesítő adatokat az egység jelenetében fogja menteni**.
 
@@ -92,9 +92,7 @@ Gratulálunk! Most megtekint egy távolról renderelt modellt!
 
 ## <a name="inspecting-the-scene"></a>A jelenet vizsgálata
 
-A távoli renderelési kapcsolatok futtatása után a felügyelő panel további állapotinformációkat is frissít:
-
-![Unity minta lejátszása](./media/arr-sample-configure-session-running.png)
+Miután a távoli renderelési szolgáltatás fut, a felügyelői panel további állapotinformációkat is frissít: ![ Unity Sample Playing](./media/arr-sample-configure-session-running.png)
 
 Most már felfedezheti a jelenet gráfot úgy, hogy kijelöli az új csomópontot, és rákattint a **gyermekek megjelenítése** lehetőségre a felügyelőben.
 
@@ -106,7 +104,7 @@ A jelenetben van egy [kivágott sík](../overview/features/cut-planes.md) objekt
 
 Az átalakítások szinkronizálásához kattintson a **szinkronizálás most** lehetőségre, vagy jelölje be a **minden keret szinkronizálása** beállítást. Összetevő-tulajdonságok esetében csak a módosítása elég.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő rövid útmutatóban a mintát egy HoloLens fogjuk üzembe helyezni, hogy az eredeti méretben megtekintse a távolról renderelt modellt.
 

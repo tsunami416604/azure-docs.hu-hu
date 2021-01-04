@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503556"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734181"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Fejlesztői környezet konfigurálása telepítési parancsfájlok telepítéséhez a sablonokban
 
@@ -155,7 +155,10 @@ A következő ARM-sablon létrehoz egy tároló-példányt és egy fájlmegoszt�
 ```
 A csatlakoztatási útvonal alapértelmezett értéke **deploymentScript**.  Ez a tároló példányának elérési útja, amely a fájlmegosztás számára van csatlakoztatva.
 
-A sablonban megadott alapértelmezett tároló-rendszerkép **MCR.microsoft.com/azuredeploymentscripts-PowerShell:az4.3 "**.  A támogatott Azure PowerShell-verziók és az Azure CLI-verziók listáját az [Azure PowerShell vagy az Azure CLI](./deployment-script-template.md#prerequisites)című részben tekintheti meg.
+A sablonban megadott alapértelmezett tároló-rendszerkép **MCR.microsoft.com/azuredeploymentscripts-PowerShell:az4.3 "**.   Tekintse meg a [támogatott Azure PowerShell verziók](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listáját. Tekintse meg a [támogatott Azure CLI-verziók](https://mcr.microsoft.com/v2/azure-cli/tags/list)listáját.
+
+  >[!IMPORTANT]
+  > A telepítési parancsfájl a Microsoft Container Registry (MCR) által elérhető CLI-rendszerképeket használja. Egy hónapot vesz igénybe, hogy az üzembe helyezési parancsfájlhoz tartozó CLI-rendszerképet hitelesítse. Ne használja a 30 napon belül kiadott CLI-verziókat. A képek kiadási dátumait az [Azure CLI kibocsátási megjegyzései](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)című témakörben találja. Ha nem támogatott verziót használ, a hibaüzenet felsorolja a támogatott verziókat.
 
 A sablon felfüggeszti a 1800 másodperces tároló-példányt. 30 perccel azelőtt, hogy a tároló példánya terminál állapotba kerül, és a munkamenet véget ér.
 
@@ -200,7 +203,7 @@ A fájlt a Azure Portal és az Azure CLI használatával is feltöltheti.
 1. Válassza a **kapcsolat**, majd a **kapcsolat** lehetőséget. Ha nem tud csatlakozni a Container-példányhoz, indítsa újra a tároló csoportot, és próbálkozzon újra.
 1. A konzol ablaktábláján futtassa a következő parancsokat:
 
-    ```
+    ```console
     cd deploymentScript
     ls
     pwsh ./hello.ps1 "John Dole"
@@ -209,6 +212,14 @@ A fájlt a Azure Portal és az Azure CLI használatával is feltöltheti.
     A kimenet **Hello John Dole**.
 
     ![üzembehelyezési parancsfájl-tároló példányának tesztelése](./media/deployment-script-template-configure-dev/deployment-script-container-instance-test.png)
+
+1. Ha az az CLI Container rendszerképét használja, futtassa a következő kódot:
+
+   ```console
+   cd /mnt/azscripts/azscriptinput
+   ls
+   ./userscript.sh
+   ```
 
 ## <a name="use-docker"></a>A Docker használata
 
@@ -257,7 +268,7 @@ A fájlmegosztást úgy is be kell állítania, hogy csatlakoztassa a könyvtár
 
 A parancsfájl sikeres tesztelése után a sablonban használható üzembe helyezési parancsfájlként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a telepítési parancsfájlokat. Útmutató az üzembe helyezési parancsfájlhoz:
 

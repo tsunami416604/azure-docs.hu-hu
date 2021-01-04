@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 0eb7f4c8daf74c629e7b83ce05e6ac17719755ba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fec95dc033eb5eacaf79f5bbd2b6b294628667b9
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454422"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725082"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Bamboo EasySSO
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a EasySSO a Bamboo
 * A Bambuszhoz hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Bamboo-ba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,25 +39,24 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A Bamboo EasySSO az **SP és a identitásszolgáltató** által kezdeményezett SSO-t támogatja
 * A Bamboo EasySSO a felhasználók üzembe helyezésének **időpontját is** támogatja
-* Miután konfigurálta a EasySSO a Bamboo-hoz, kikényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-easysso-for-bamboo-from-the-gallery"></a>A Bamboo EasySSO hozzáadása a gyűjteményből
 
 A Bamboo EasySSO az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a EasySSO a Bamboo-hoz a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **EasySSO for Bamboo** kifejezést.
 1. Válassza az **EasySSO for Bamboo** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-bamboo"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Bamboo EasySSO
+## <a name="configure-and-test-azure-ad-sso-for-easysso-for-bamboo"></a>Az Azure AD SSO konfigurálása és tesztelése a Bamboo EasySSO
 
-Konfigurálja és tesztelje az Azure AD SSO-t az EasySSO for Bamboo használatával egy **B. Simon**nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a EasySSO for Bamboo szolgáltatásban.
+Konfigurálja és tesztelje az Azure AD SSO-t az EasySSO for Bamboo használatával egy **B. Simon** nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a EasySSO for Bamboo szolgáltatásban.
 
-Az Azure AD SSO és a Bamboo EasySSO konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO a Bamboo EasySSO való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -72,8 +69,8 @@ Az Azure AD SSO és a Bamboo EasySSO konfigurálásához és teszteléséhez haj
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Bamboo** Application Integration EasySSO lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A Azure Portal a Bamboo Application Integration **EasySSO** lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -97,7 +94,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül az EasySSO for Bamboo alkalmazása néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ---------------| --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | User. userPrincipalName |
     | urn: OID: 0.9.2342.19200300.100.1.3 | User. mail |
@@ -117,7 +114,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -129,23 +126,29 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a EasySSO a Bamboo-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a EasySSO lehetőséget a **Bamboo**elemnél.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a EasySSO lehetőséget a **Bamboo** elemnél.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-easysso-for-bamboo-sso"></a>EasySSO konfigurálása a Bamboo SSO-hoz
 
-1. Jelentkezzen be a Atlassian bambusz-példányba rendszergazdai jogosultságokkal, és navigáljon az **Alkalmazások kezelése** szakaszhoz. 
+1. A konfigurációnak a nagyításban való automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **Nagyítás beállítása** lehetőségre a nagyítási alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a nagyításhoz való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-10-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a nagyítást, egy másik böngészőablakban jelentkezzen be a nagyítású vállalati webhelyre rendszergazdaként.
+
+1. Navigáljon az **Alkalmazások kezelése** szakaszra. 
 
     ![Alkalmazások kezelése](./media/easysso-for-bamboo-tutorial/bamboo-admin-1.png)
 
@@ -175,7 +178,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
  
 6. Kattintson a lap alján található **Save (Mentés** ) gombra. Ekkor megjelenik a metaadatok vagy a tanúsítványfájl tartalmának elemzése a konfigurációs mezőkbe. A bambusz-konfiguráció EasySSO befejeződött.
 
-7. A legjobb tesztelési élmény érdekében keresse meg **& a Feel (nézet** ) fület, és ellenőrizze az **SAML bejelentkezési gombját** . Ezzel a lehetőséggel külön gomb jelenik meg a bambusz-bejelentkezési képernyőn, amely az Azure AD SAML-integráció teljes körű tesztelését teszi lehetővé. Ezt a gombot bekapcsolhatja, és beállíthatja az elhelyezését, színét és fordítását is az éles üzemmódra.
+7. A legjobb tesztelési élmény érdekében keresse meg **& a Feel (nézet** ) fület, és ellenőrizze az **SAML bejelentkezési gombját** . Ezzel a lehetőséggel külön gomb jelenik meg a bambusz-bejelentkezési képernyőn, amely az Azure AD SAML-integráció teljes körű tesztelését teszi lehetővé. Ezt a gombot meghagyhatja, és beállíthatja az elhelyezést, a színt és a fordítást az éles üzemmódra is.
 
     ![Look & Feel](./media/easysso-for-bamboo-tutorial/bamboo-admin-5.png)
 
@@ -194,9 +197,9 @@ Ha azonban nem kívánja engedélyezni az automatikus felhasználó-kiépítés 
 
 ### <a name="idp-initiated-workflow"></a>Identitásszolgáltató által kezdeményezett munkafolyamat
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a saját alkalmazások használatával tesztelheti az Azure AD egyszeri bejelentkezési konfigurációját.
 
-Ha a hozzáférési panelen a bambusz csempéhez tartozó EasySSO kattint, akkor automatikusan be kell jelentkeznie a Bamboo-példányba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+Ha a saját alkalmazások EasySSO a bambusz csempére kattint, akkor automatikusan be kell jelentkeznie a Bamboo-példányba, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
 ### <a name="sp-initiated-workflow"></a>Az SP által kezdeményezett munkafolyamat
 
@@ -214,16 +217,6 @@ Ebben az esetben az [oldalon található utasításokat]( https://techtime.co.nz
 
 Ha problémák merülnek fel a naplóüzenetek kivonatolásával kapcsolatban, lépjen kapcsolatba a [EasySSO támogatási csapatával](mailto:support@techtime.co.nz).
 
-## <a name="additional-resources"></a>További források
+## <a name="next-steps"></a>További lépések
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
-
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [A Bamboo EasySSO kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
-
-- [A Bamboo EasySSO elleni védelem speciális láthatósággal és vezérlőkkel](/cloud-app-security/proxy-intro-aad)
+Miután konfigurálta a EasySSO a Bamboo-hoz, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

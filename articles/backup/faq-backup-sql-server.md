@@ -4,12 +4,12 @@ description: Válaszok az Azure-beli virtuális gépeken található SQL Server 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 89316770dc137bff031e6268db5ece156edd4f25
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172371"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734113"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
 
@@ -37,7 +37,7 @@ Alapértelmezés szerint minden felhasználó számára engedélyezve van az aut
 - Mentse a módosításokat, és zárjuk be a fájlt.
 - A SQL Server-példányon nyissa meg a **feladat kezelése** , majd a **AzureWLBackupCoordinatorSvc** szolgáltatás újraindítása műveletet.
 
-## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Szabályozható, hogy hány párhuzamos biztonsági mentés fut az SQL Serveren?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Szabályozhatom, hogy hány biztonsági mentés futhat egyidejűleg az SQL-kiszolgálón?
 
 Igen. A biztonsági mentési házirend futási arányának szabályozásával csökkentheti a SQL Server-példányra gyakorolt hatást. A beállítás módosítása:
 
@@ -62,7 +62,7 @@ Az SQL-korlátozások alapján a csak a teljes biztonsági mentés másolása a 
 
 Nem. A Azure Backup az Azure-ban futó SQL Server-adatbázisokat védi. Ha egy rendelkezésre állási csoport (AG) az Azure és a helyszíni gépek között oszlik el, az AG védelme csak akkor lehetséges, ha az elsődleges replika az Azure-ban fut. Emellett a Azure Backup csak azokat a csomópontokat védi, amelyek ugyanabban az Azure-régióban futnak, mint a Recovery Services-tároló.
 
-## <a name="can-i-protect-availability-groups-across-regions"></a>Biztosíthatok védelmet különböző régiókban található rendelkezésre állási csoportok számára?
+## <a name="can-i-protect-availability-groups-across-regions"></a>Biztosíthatom a rendelkezésre állási csoportok kivédését a régiók között?
 
 A Azure Backup Recovery Services-tároló képes felderíteni és védelemmel ellátni az összes olyan csomópontot, amely ugyanabban a régióban található, mint a tároló. Ha a SQL Server always on rendelkezésre állási csoport több Azure-régióra is kiterjed, állítsa be a biztonsági mentést az elsődleges csomóponttal rendelkező régióból. A Azure Backup a biztonsági mentési beállításoknak megfelelően felismeri és védetté teheti a rendelkezésre állási csoportban lévő összes adatbázist. Ha a biztonsági mentési beállítások nem teljesülnek, a biztonsági mentések sikertelenek lesznek, és a rendszer hibaüzenetet küld.
 
@@ -78,7 +78,7 @@ A **biztonsági mentési feladatok** menü megjeleníti az összes ütemezett é
 
 Igen, az [automatikus védelem](backup-sql-server-database-azure-vms.md#enable-auto-protection)révén elérheti ezt a képességet.  
 
-## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Ha törölek egy adatbázist egy automatikusan védett példányból, mi fog történni a biztonsági másolatokban?
+## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Ha törlök egy adatbázist egy automatikus védelemmel ellátott példányról, mi történik a biztonsági másolatokkal?
 
 Ha egy adatbázis eldobása egy, a védett példányból történik, a rendszer továbbra is megkísérli az adatbázis biztonsági mentését. Ez azt jelenti, hogy a törölt adatbázis nem Kifogástalan állapotba kerül, a **biztonsági mentési elemek** alatt, és továbbra is védve van.
 
@@ -86,7 +86,7 @@ Az adatbázis védelmének leállítására szolgáló helyes módszer a **bizto
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Ha leállítom egy automatikusan védett adatbázis biztonsági mentési műveletét, mi lesz a viselkedése?
 
-Ha nem állítja be a **biztonsági mentést az adatmegőrzéssel**, a rendszer nem hajtja végre a jövőbeli biztonsági mentéseket, és a meglévő helyreállítási pontok érintetlenek maradnak. Az adatbázist továbbra is védettnek tekinti a rendszer, és a **biztonsági mentési elemek**alatt jelenik meg.
+Ha nem állítja be a **biztonsági mentést az adatmegőrzéssel**, a rendszer nem hajtja végre a jövőbeli biztonsági mentéseket, és a meglévő helyreállítási pontok érintetlenek maradnak. Az adatbázist továbbra is védettnek tekinti a rendszer, és a **biztonsági mentési elemek** alatt jelenik meg.
 
 Ha nem **törli az adatokat a biztonsági mentésből**, a rendszer nem hajtja végre a jövőbeli biztonsági mentéseket, és a meglévő helyreállítási pontokat is törli. Az adatbázis nem védettnek minősül, és a példány alatt jelenik meg a biztonsági mentés konfigurálása területen. Azonban a más, manuálisan kiválasztható vagy az általa védett adatbázisokkal ellentétben az adatbázis szürkén jelenik meg, és nem választható ki. Az adatbázis újbóli védelmének egyetlen módja az automatikus védelem letiltása a példányon. Most kiválaszthatja ezt az adatbázist, és konfigurálhatja a védelmet, vagy újból engedélyezheti az automatikus védelmet a példányon.
 
@@ -98,14 +98,19 @@ Kiválaszthatja az adatbázist, amely már átnevezve van és konfigurálhatja a
 
 ## <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>Miért nem látok hozzáadott adatbázist egy, az autoprotected példányhoz?
 
-Előfordulhat, hogy nem jelenik meg azonnal a védett elemek alatt egy olyan adatbázis, amelyet hozzáad egy, az egy adott, az adott egy adott [példányhoz](backup-sql-server-database-azure-vms.md#enable-auto-protection) . Ennek az az oka, hogy a felderítés általában 8 óránként fut. Az új adatbázisokat azonban azonnal felderítheti és védetté teheti, ha manuálisan futtat egy felderítést, **Ha kiválasztja az**alábbi ábrán látható módon:
+Előfordulhat, hogy nem jelenik meg azonnal a védett elemek alatt egy olyan adatbázis, amelyet hozzáad egy, az egy adott, az adott egy adott [példányhoz](backup-sql-server-database-azure-vms.md#enable-auto-protection) . Ennek az az oka, hogy a felderítés általában 8 óránként fut. Az új adatbázisokat azonban azonnal felderítheti és védetté teheti, ha manuálisan futtat egy felderítést, **Ha kiválasztja az** alábbi ábrán látható módon:
 
   ![Újonnan hozzáadott adatbázis manuális felderítése](./media/backup-azure-sql-database/view-newly-added-database.png)
   
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>Megadhatok olyan adatbázisokat, amelyeken be van kapcsolva a TDE (transzparens adattitkosítás), és az adatbázis a teljes biztonsági mentési folyamaton keresztül titkosítva marad?
 
-Igen, Azure Backup támogatja SQL Server adatbázisok vagy kiszolgálók biztonsági mentését, ha a TDE engedélyezve van. A Backup támogatja a [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) az Azure által kezelt kulcsokkal, illetve az ügyfél által felügyelt kulcsokkal (BYOK).  A biztonsági mentés nem végez SQL-titkosítást a biztonsági mentési folyamat részeként, így az adatbázis titkosítva marad a biztonsági mentés során.
+Igen, Azure Backup támogatja SQL Server adatbázisok vagy kiszolgálók biztonsági mentését, ha a TDE engedélyezve van. A Backup támogatja a [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) az Azure által kezelt kulcsokkal, illetve az ügyfél által felügyelt kulcsokkal (BYOK).  A biztonsági mentés nem végez SQL-titkosítást a biztonsági mentési folyamat részeként, így az adatbázis titkosítva marad a biztonsági mentés során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Végrehajt Azure Backup ellenőrzőösszeg-műveletet az adatfolyamon?
+
+Az adatfolyamon ellenőrzőösszeg-műveletet végzünk. Ez azonban nem tévesztendő össze az [SQL ellenőrzőösszeggel](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
+Az Azure munkaterhelés biztonsági mentése kiszámítja az adatstream ellenőrzőösszegét, és a biztonsági mentési művelet során explicit módon tárolja azokat. Ezt követően az ellenőrzőösszeg-adatfolyamot a rendszer referenciának tekinti, és az adatfolyam ellenőrzőösszegével együtt ellenőrzi a visszaállítási művelet során, hogy megbizonyosodjon róla, hogy az adatmennyiség konzisztens.
+
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

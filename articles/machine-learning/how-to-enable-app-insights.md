@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 13b99fe129191b89b5bb2d7f5473e910fa619ce7
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536591"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739841"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Adatok ML-webszolgáltatási végpontokról való monitorozása és gyűjtése
 
@@ -157,14 +157,24 @@ Az Azure Application Insights a Azure Machine Learning studióból is engedélye
 
 ### <a name="query-logs-for-deployed-models"></a>Telepített modellek naplófájljainak lekérdezése
 
-A `get_logs()` függvény használatával lekérheti a naplókat egy korábban telepített webszolgáltatásból. Előfordulhat, hogy a naplók részletes információkat tartalmaznak az üzembe helyezés során felmerülő hibákról.
+A valós idejű végpontok naplófájljai a vásárlói adatmennyiség. A `get_logs()` függvény használatával lekérheti a naplókat egy korábban telepített webszolgáltatásból. Előfordulhat, hogy a naplók részletes információkat tartalmaznak az üzembe helyezés során felmerülő hibákról.
 
 ```python
+from azureml.core import Workspace
 from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
 
 # load existing web service
 service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
+```
+
+Ha több Bérlővel rendelkezik, előfordulhat, hogy a következő hitelesítő kódot kell megadnia, mielőtt `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ### <a name="view-logs-in-the-studio"></a>Naplók megtekintése a Studióban
@@ -210,7 +220,7 @@ Az adatok egy blob Storage-fiókba való exportálásához Application Insights 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Folyamatos exportálás":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan engedélyezheti a naplózást és megtekintheti a webszolgáltatási végpontok naplóit. Próbálja ki ezeket a cikkeket a következő lépésekhez:
 

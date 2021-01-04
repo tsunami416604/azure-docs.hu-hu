@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380901"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708940"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker Tudásbázis korlátai és határai
 
@@ -74,7 +74,7 @@ A metaadatok mezőinek maximális száma a Tudásbázisban az Azure- **[Cognitiv
 
 A metaadatok nevének és értékének hosszát és elfogadható karaktereit a következő táblázat tartalmazza.
 
-|Item|Engedélyezett karakterek|Regex-minta egyezése|Karakterek maximális száma|
+|Elem|Engedélyezett karakterek|Regex-minta egyezése|Karakterek maximális száma|
 |--|--|--|--|
 |Név (kulcs)|Lehetővé teszi<br>alfanumerikus karakterek (betűk és számjegyek)<br>`_` aláhúzásjellel<br> Nem tartalmazhat szóközt.|`^[a-zA-Z0-9_]+$`|100|
 |Érték|Mindent lehetővé tesz, kivéve<br>`:` kettőspont<br>`|` (függőleges cső)<br>Csak egy érték engedélyezett.|`^[^:|]+$`|500|
@@ -82,10 +82,10 @@ A metaadatok nevének és értékének hosszát és elfogadható karaktereit a k
 
 ## <a name="knowledge-base-content-limits"></a>A Tudásbázis tartalmi korlátai
 A Tudásbázis tartalmának általános korlátai:
-* Válasz szövegének hossza: 25 000
-* A szóban forgó szöveg hossza: 1 000
-* A metaadat-kulcs szövegének hossza: 100
-* A metaadatok értékének hossza szöveg: 500
+* A válasz szövegének hossza: 25 000 karakter
+* A szóban forgó szöveg hossza: 1 000 karakter
+* A metaadatok kulcsának hossza szöveg: 100 karakter
+* A metaadatok értékének hossza szöveg: 500 karakter
 * A metaadatok nevének támogatott karakterei: ábécék, számjegyek és `_`
 * A metaadatok értékének támogatott karaktereinek száma: az összes kivételével `:` , és `|`
 * Fájlnév hossza: 200
@@ -107,6 +107,6 @@ Ezek a frissítési műveletek korlátainak felelnek meg; a UpdateKnowledgeBase 
 * A hozzáadott vagy törölt metaadat-mezők maximális száma: 10
 * A frissíthető URL-címek maximális száma: 5
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, mikor és hogyan módosíthatja a [szolgáltatás díjszabási szintjeit](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku).

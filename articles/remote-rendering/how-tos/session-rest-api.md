@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d957c5d6521010c7393e2297be16cd7bef41c35f
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023754"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724068"
 ---
 # <a name="use-the-session-management-rest-api"></a>A munkamenet-kezelési REST API használata
 
 Az Azure távoli renderelési funkciójának használatához létre kell hoznia egy *munkamenetet*. Minden egyes munkamenet megfelel egy virtuális géphez (VM), amely az Azure-ban van lefoglalva, és arra vár, hogy csatlakoztasson egy ügyfélszámítógépet. Amikor egy eszköz csatlakozik a szolgáltatáshoz, a virtuális gép megjeleníti a kért adatforrásokat, és a videó streamként szolgáltatja az eredményt. A munkamenet létrehozása során kiválaszthatja, hogy melyik kiszolgálót szeretné futtatni, amely meghatározza a díjszabást. Ha a munkamenetet már nem szükséges, le kell állítani. Ha a munkamenet *címbérleti ideje* lejár, a rendszer automatikusan leállítja, ha nem állítja be manuálisan.
 
-Biztosítunk egy PowerShell-szkriptet az [ARR Samples adattárában](https://github.com/Azure/azure-remote-rendering) a *Scripts* mappában, amelyet a *RenderingSession.ps1*nevezünk, amely a szolgáltatás használatát mutatja be. A szkriptet és annak konfigurációját itt találja: [példa PowerShell-parancsfájlok](../samples/powershell-example-scripts.md)
+Biztosítunk egy PowerShell-szkriptet az [ARR Samples adattárában](https://github.com/Azure/azure-remote-rendering) a *Scripts* mappában, amelyet a *RenderingSession.ps1* nevezünk, amely a szolgáltatás használatát mutatja be. A szkriptet és annak konfigurációját itt találja: [példa PowerShell-parancsfájlok](../samples/powershell-example-scripts.md)
 
 > [!TIP]
 > A lapon felsorolt PowerShell-parancsok célja, hogy kiegészítsék egymást. Ha az összes parancsfájlt ugyanabban a PowerShell-parancssorban futtatja, akkor azok egymásra épülnek.
@@ -25,7 +25,7 @@ Biztosítunk egy PowerShell-szkriptet az [ARR Samples adattárában](https://git
 
 Tekintse meg az [elérhető régiók listáját](../reference/regions.md) az alapurl-címek számára, hogy elküldje a kérelmeket.
 
-Az alábbi minta-szkriptek esetében a *westus2*régiót választottuk.
+Az alábbi minta-szkriptek esetében a *westus2* régiót választottuk.
 
 ### <a name="example-script-choose-an-endpoint"></a>Példa parancsfájlra: válasszon végpontot
 
@@ -35,13 +35,16 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 ## <a name="accounts"></a>Fiókok
 
-Ha nem rendelkezik távoli megjelenítési fiókkal, [hozzon létre egyet](create-an-account.md). Minden erőforrást egy *accountId*azonosít, amelyet a rendszer a munkamenet API-k során használ.
+Ha nem rendelkezik távoli megjelenítési fiókkal, [hozzon létre egyet](create-an-account.md). Minden erőforrást egy *accountId* azonosít, amelyet a rendszer a munkamenet API-k során használ.
 
-### <a name="example-script-set-accountid-and-accountkey"></a>Példa szkriptre: set accountId és accountKey
+### <a name="example-script-set-accountid-accountkey-and-account-domain"></a>Példa szkriptre: set accountId, accountKey és account domain
+
+A fiók tartománya a távoli renderelési fiók helye. Ebben a példában a fiók helye a régió *eastus*.
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
 $accountKey = "*******************************************="
+$accountDomain = "eastus.mixedreality.azure.com"
 ```
 
 ## <a name="common-request-headers"></a>Gyakori kérelmek fejlécei
@@ -52,7 +55,7 @@ $accountKey = "*******************************************="
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 $token = $response.AccessToken;
 ```
@@ -69,7 +72,7 @@ Ez a parancs létrehoz egy munkamenetet. Az új munkamenet AZONOSÍTÓját adja 
 |-----------|:-----------|
 | /v1/accounts/*accountId*/Sessions/Create | POST |
 
-**Kérés törzse:**
+**Kérelem törzse:**
 
 * maxLeaseTime (TimeSpan): időtúllépési érték, ha a rendszer automatikusan leszereli a munkamenetet
 * modellek (Array): eszközök tárolójának URL-címei a Preload számára
@@ -122,7 +125,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 Van néhány parancs a meglévő munkamenetek paramétereinek lekérdezéséhez vagy módosításához.
 
 > [!CAUTION]
-> Ahogy az összes REST-hívás esetében is, ezek a parancsok túl gyakran küldenek a kiszolgálónak a hibák szabályozására és visszaküldésére. Ebben az esetben az állapotkód 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
+> Ahogy az összes REST-hívás esetében is, ezek a parancsok túl gyakran küldenek a kiszolgálónak a hibák szabályozására és visszaküldésére. Ebben az esetben az állapotkód 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces** késleltetésnek kell lennie.
 
 ### <a name="update-session-parameters"></a>Munkamenet paramétereinek frissítése
 
@@ -135,7 +138,7 @@ Ez a parancs frissíti a munkamenet paramétereit. Jelenleg csak egy munkamenet 
 |-----------|:-----------|
 | /v1/accounts/*accountID*/Sessions/*munkamenet* -azonosító | JAVÍTÁS |
 
-**Kérés törzse:**
+**Kérelem törzse:**
 
 * maxLeaseTime (TimeSpan): időtúllépési érték, ha a rendszer automatikusan leszereli a munkamenetet
 
@@ -288,6 +291,6 @@ Headers           : {[MS-CV, YDxR5/7+K0KstH54WG443w.0], [Date, Thu, 09 May 2019 
 RawContentLength  : 0
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0793547c4eafcad256664546240a07c1bcb0e628
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656751"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709010"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integráció az Azure AD Application Proxy hálózati eszközök tanúsítványigénylési szolgáltatásának (NDES) kiszolgálóján
 
@@ -81,7 +81,7 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
 
 1. Az alkalmazás mentéséhez válassza a **+ Hozzáadás** lehetőséget.
 
-1. Tesztelje, hogy az Azure AD-alkalmazásproxy segítségével hozzáférhet-e a NDES-kiszolgálóhoz a 10. lépésben a böngészőben másolt hivatkozás beillesztésével. Ekkor meg kell jelennie az alapértelmezett IIS-kezdőlapnak.
+1. Ellenőrizze, hogy az Azure AD-alkalmazásproxy segítségével hozzáférhet-e a NDES-kiszolgálóhoz a 15. lépésben a böngészőben másolt hivatkozás beillesztésével. Ekkor meg kell jelennie az alapértelmezett IIS-kezdőlapnak.
 
 1. Végső tesztként adja hozzá a *mscep.dll* elérési utat az előző lépésben beillesztett meglévő URL-címhez:
 
@@ -94,6 +94,6 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
    * Configuration Manager esetében lépjen a tanúsítvány regisztrációs pontjára, és módosítsa az URL-címet. Ezt az URL-címet kell meghívnia az eszközökre, és be kell mutatnia a feladatát.
    * Az Intune önálló verziójában szerkessze vagy hozzon létre egy új SCEP-házirendet, és adja hozzá az új URL-címet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A NDES-mel integrált Azure-AD Application Proxy alkalmazások közzétételét teszik elérhetővé a felhasználók számára. További információ: [alkalmazások közzététele az Azure ad Application proxy használatával](./application-proxy-add-on-premises-application.md).

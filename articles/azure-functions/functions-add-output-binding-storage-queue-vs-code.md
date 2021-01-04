@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1729e0b27dd50519359cf6a39bfa81ba7b3b41e9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e280fddbe83da2a7ee89185046883f6c2c77167a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185147"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739815"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Functions összekötése az Azure Storage-ba a Visual Studio Code használatával
 
@@ -148,6 +148,8 @@ A kötés meghatározása után a `name` kötést használhatja a függvény al�
 
 [!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
 
+## <a name="update-the-test-set"></a>A tesztelési készlet frissítése
+
 [!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
 
 ::: zone-end  
@@ -169,6 +171,8 @@ A kötés meghatározása után a `name` kötést használhatja a függvény al�
 A **rendszer létrehoz** egy új üzenetsor-várólistát a Storage-fiókban a functions futtatókörnyezetben a kimeneti kötés első használatakor. A Storage Explorer segítségével ellenőrizheti, hogy a várólista létrejött-e az új üzenettel együtt.
 
 ::: zone pivot="programming-language-java"  
+
+## <a name="update-the-tests"></a>A tesztek frissítése
 
 [!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
 
@@ -224,7 +228,7 @@ E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának
 
 [!INCLUDE [functions-cleanup-resources-vs-code-inner.md](../../includes/functions-cleanup-resources-vs-code-inner.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. Most már többet is megtudhat a függvények a Visual Studio Code használatával történő fejlesztéséről:
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92544766"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734623"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
 Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurációkat ismerteti. Ez a témakör az Azure cache alapértelmezett Redis-kiszolgáló-konfigurációját is ismerteti Redis-példányok esetén.
@@ -28,7 +28,7 @@ Az Azure cache for Redis beállításait az **erőforrás menü** használatáva
 
 ![Azure cache a Redis beállításaihoz](./media/cache-configure/redis-cache-settings.png)
 
-A következő beállításokat tekintheti meg és konfigurálhatja az **erőforrás menüben** .
+A következő beállításokat tekintheti meg és konfigurálhatja az **erőforrás menüben**.
 
 * [Áttekintés](#overview)
 * [Tevékenységnapló](#activity-log)
@@ -50,7 +50,7 @@ A következő beállításokat tekintheti meg és konfigurálhatja az **erőforr
     * [Zárolások](#locks)
     * [Automation-szkript](#automation-script)
 * Felügyelet
-    * [Adatok importálása](#importexport)
+    * [Adatimportálás](#importexport)
     * [Adatok exportálása](#importexport)
     * [Újraindítás](#reboot)
 * [Figyelés](#monitoring)
@@ -145,7 +145,7 @@ A **maxmemory fenntartott** beállítás azt a memóriát konfigurálja, amely a
 
 A **maxfragmentationmemory fenntartott** beállítás azt a memóriát konfigurálja, amely a fürt MB-ban megadott mennyiségét tartalmazza, és amely a memória töredezettségének kielégítésére van fenntartva. Ennek az értéknek a beállítása lehetővé teszi, hogy konzisztens Redis-kiszolgáló élményt biztosítson, ha a gyorsítótár megtelt, vagy a teljes és a töredezettségi arány magas. Ha a memória le van foglalva az ilyen műveletekhez, nem érhető el a gyorsítótárazott adatok tárolása.
 
-Az új memória foglalási értékének ( **maxmemory** vagy **maxfragmentationmemory** ) kiválasztásakor figyelembe kell venni, hogy ez a változás milyen hatással lehet egy olyan gyorsítótárra, amely már fut nagy mennyiségű adattal. Ha például egy 53 GB-os gyorsítótárban 49 GB adat található, akkor a foglalás értékét 8 GB-ra kell módosítania, ez a módosítás a rendszer számára a maximális rendelkezésre álló memóriát is leállítja a 45 GB-ra. Ha a jelenlegi `used_memory` vagy az `used_memory_rss` értéke meghaladja az új 45 GB-os korlátot, akkor a rendszernek el kell zárnia az adatait, amíg mindkettő `used_memory` és `used_memory_rss` 45 GB alá nem kerül. A kizárás növelheti a kiszolgáló terhelését és a memória töredezettségét. A gyorsítótár-metrikákkal, például a-vel és a-vel kapcsolatos további információkért `used_memory` `used_memory_rss` lásd: [elérhető metrikák és jelentéskészítési időközök](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Az új memória foglalási értékének (**maxmemory** vagy **maxfragmentationmemory**) kiválasztásakor figyelembe kell venni, hogy ez a változás milyen hatással lehet egy olyan gyorsítótárra, amely már fut nagy mennyiségű adattal. Ha például egy 53 GB-os gyorsítótárban 49 GB adat található, akkor a foglalás értékét 8 GB-ra kell módosítania, ez a módosítás a rendszer számára a maximális rendelkezésre álló memóriát is leállítja a 45 GB-ra. Ha a jelenlegi `used_memory` vagy az `used_memory_rss` értéke meghaladja az új 45 GB-os korlátot, akkor a rendszernek el kell zárnia az adatait, amíg mindkettő `used_memory` és `used_memory_rss` 45 GB alá nem kerül. A kizárás növelheti a kiszolgáló terhelését és a memória töredezettségét. A gyorsítótár-metrikákkal, például a-vel és a-vel kapcsolatos további információkért `used_memory` `used_memory_rss` lásd: [elérhető metrikák és jelentéskészítési időközök](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > A **maxmemory fenntartott** és a **maxfragmentationmemory számára fenntartott** beállítások csak a standard és a prémium szintű gyorsítótárak esetében érhetők el.
@@ -290,7 +290,7 @@ A **felügyelet** szakaszban található beállítások lehetővé teszik a köv
 
 ![Felügyelet](./media/cache-configure/redis-cache-administration.png)
 
-* [Adatok importálása](#importexport)
+* [Adatimportálás](#importexport)
 * [Adatok exportálása](#importexport)
 * [Újraindítás](#reboot)
 
@@ -363,7 +363,7 @@ A **támogatási és hibaelhárítási** szakaszban található beállítások l
 A **Resource Health** figyeli az erőforrást, és jelzi, hogy a várt módon fut-e. Az Azure Resource Health szolgáltatással kapcsolatos további információkért lásd: az [Azure Resource Health áttekintése](../service-health/resource-health-overview.md).
 
 > [!NOTE]
-> A Resource Health jelenleg nem tud jelentést készíteni az Azure cache állapotáról a virtuális hálózatban üzemeltetett Redis-példányok esetében. További információ: az [összes gyorsítótár-funkció működése a GYORSÍTÓTÁR VNET való üzemeltetése során?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+> A Resource Health jelenleg nem tud jelentést készíteni az Azure cache állapotáról a virtuális hálózatban üzemeltetett Redis-példányok esetében. További információ: az [összes gyorsítótár-funkció működése a GYORSÍTÓTÁR VNET való üzemeltetése során?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network)
 >
 >
 
@@ -382,7 +382,7 @@ A Redis-példányok új Azure gyorsítótára a következő alapértelmezett Red
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
-> A konfigurálható értékek (például a **maximális memória-házirend** ) a Azure Portal vagy parancssori felügyeleti eszközök, például az Azure CLI vagy a PowerShell használatával konfigurálhatók.
+> A konfigurálható értékek (például a **maximális memória-házirend**) a Azure Portal vagy parancssori felügyeleti eszközök, például az Azure CLI vagy a PowerShell használatával konfigurálhatók.
 >
 >
 
@@ -504,5 +504,5 @@ A gyorsítótárat áthelyezheti egy új előfizetésre az **Áthelyezés** gomb
 
 További információ az erőforrások egyik erőforráscsoporthoz egy másikra való áthelyezéséről, illetve az egyik előfizetésről a másikra: [erőforrások áthelyezése új erőforrás-csoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a Redis-parancsok használatáról: [Hogyan futtathatók a Redis parancsok?](cache-development-faq.md#how-can-i-run-redis-commands)
