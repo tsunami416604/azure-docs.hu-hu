@@ -1,18 +1,18 @@
 ---
 title: 'Oktatóanyag: Szószedetbeli kifejezések létrehozása és importálása az Azure hatáskörébe (előzetes verzió)'
 description: Ez az oktatóanyag leírja, hogyan hozhat létre Szószedet-kifejezéseket, hogyan adhat hozzá Szószedet-kifejezéseket egy adott objektumhoz, és hogyan importálhatja a szószedetet.
-author: hophanms
-ms.author: hophan
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 4dc8dd84c22d094c87c82f5a920015f886780df2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0ea6fcaff1ec699431da8b67adee68735a8611a8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399808"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696085"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Oktatóanyag: Szószedetbeli kifejezések létrehozása és importálása az Azure hatáskörébe (előzetes verzió)
 
@@ -23,7 +23,7 @@ A Szószedet egy fontos eszköz a katalógus karbantartásához és rendszerezé
 
 Ez az oktatóanyag *egy öt részből álló oktatóanyag-Sorozat 5. része* , amelyben megtudhatja, hogyan kezelheti az adatkezelési szabályozást az Azure hatáskörébe. Ez az oktatóanyag a 4. részben elvégzett munkára épül [: az Azure hatáskörébe (előzetes verzió) az erőforrás-készletek, a részletek, a sémák és a besorolások megismerése](tutorial-schemas-and-classifications.md).
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >

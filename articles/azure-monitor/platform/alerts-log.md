@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 61aba3e5792d1cc20da16686d052de91744dab76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a8dbadd3af9dc21ced54af151e4de705f854e011
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186779"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696068"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
@@ -312,7 +312,7 @@ Azure Resource Manager parancssori felületet is használhatja a [sablonok](./al
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file mylogalerttemplate.json \
@@ -321,7 +321,7 @@ az group deployment create \
 
 A létrehozás sikeressége érdekében a 201 értéket adja vissza. A frissítés sikerességéről a 200 értéket adja vissza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [naplózási riasztásokról](./alerts-unified-log.md).
 * Napló-riasztások létrehozása [Azure Resource Manager-sablonok](./alerts-log-create-templates.md)használatával.

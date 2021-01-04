@@ -3,12 +3,12 @@ title: Metrikai riasztások Azure Monitorről tárolók számára
 description: Ez a cikk a Azure Monitor for containers nyilvános előzetes verziójában elérhető javasolt metrikai riasztásokat tekinti át.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 16995246578dc8d3c009253d8384c6d7ff3911d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a81dfb3fab57b378a56bfa8ac8102d723a50dbbc
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186881"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695955"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Ajánlott metrikai riasztások (előzetes verzió) Azure Monitorről tárolók számára
 
@@ -186,7 +186,7 @@ Az alapszintű lépések a következők:
     ```azurecli
     az login
 
-    az group deployment create \
+    az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file templateFileName.json \
@@ -246,7 +246,7 @@ A ConfigMap konfigurációs fájljának konfigurálásához hajtsa végre az al�
 
 A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása; nem minden alkalommal indulnak újra. Az újraindítások befejezését követően megjelenik egy üzenet, amely az alábbi példához hasonlóan jelenik meg, és tartalmazza a következő eredményt: `configmap "container-azm-ms-agentconfig" created` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtekintheti a [napló lekérdezési példáit](container-insights-log-search.md#search-logs-to-analyze-data) , amelyekkel előre definiált lekérdezéseket és példákat tekinthet meg a fürtök riasztásának, megjelenítésének vagy elemzésének kiértékeléséhez és testreszabásához.
 

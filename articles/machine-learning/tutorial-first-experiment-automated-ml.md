@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 90c827774f38f07b9791a6399a53b0304bbe28c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921887"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695219"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Oktatóanyag: besorolási modell létrehozása automatizált ML-vel Azure Machine Learning
 
@@ -100,11 +100,9 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
         Elválasztó|Egy vagy több karakter, amely egy &nbsp; egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt. |Vessző
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájlnak azonos fejléce van
-        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincs
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| None
 
-    1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ehhez a példához válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlethez. Kattintson a **Tovább** gombra.
-
-        ![Előnézet lap konfigurációja](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
+    1. A **séma** űrlap lehetővé teszi az adatai további konfigurálását a kísérlethez. Ebben a példában nem teszünk meg beállításokat. Kattintson a **Tovább** gombra.
 
     1. A **részletek megerősítése** űrlapon ellenőrizze, hogy az információ megegyezik-e a korábban az **alapinformációk, az adattár és a fájl kiválasztása,** valamint a **beállítások és az előnézeti** űrlapok alapján.
     
@@ -112,32 +110,44 @@ A kísérlet konfigurálása előtt töltse fel az adatfájlt a munkaterületre 
     
     1. Válassza ki az adatkészletet, amint megjelenik a listában.
     
-    1. Tekintse át az **adatelőnézett**  , és győződjön meg arról, hogy nem tartalmaz **day_of_week** , majd kattintson **az OK gombra**.
+    1. Tekintse át az **adatelőnézett**  , és győződjön meg arról, hogy nem tartalmaz **day_of_week** , majd válassza a **Bezárás** lehetőséget.
 
     1. Válassza a  **tovább** lehetőséget.
 
-## <a name="configure-experiment-run"></a>Kísérlet futtatásának konfigurálása
+## <a name="configure-run"></a>Futtatás konfigurálása
 
 Az adatai betöltését és konfigurálását követően beállíthatja a kísérletet. Ez a beállítás olyan kísérleti tervezési feladatokat is magában foglal, mint például a számítási környezet méretének kiválasztásával és a megjósolni kívánt oszlop megadásával. 
+
+1. Kattintson az **új választógomb létrehozása** gombra.
 
 1. Töltse fel a **Run (Futtatás** ) űrlapot a következőképpen:
     1. Adja meg a kísérlet nevét: `my-1st-automl-experiment`
 
     1. Válassza az **y** elemet a cél oszlopként, amit meg szeretne jósolni. Ebben az oszlopban látható, hogy az ügyfél előfizetett-e egy lejárati időszakra.
     
-    1. Válassza az **új számítás létrehozása** és a számítási cél konfigurálása lehetőséget. A számítási cél egy helyi vagy felhőalapú erőforrás-környezet, amely a betanítási parancsfájl futtatására vagy a szolgáltatás központi telepítésének üzemeltetésére szolgál. Ebben a kísérletben felhőalapú számítást használunk. 
+    1. Válassza az **+ új számítás létrehozása** és a számítási cél konfigurálása lehetőséget. A számítási cél egy helyi vagy felhőalapú erőforrás-környezet, amely a betanítási parancsfájl futtatására vagy a szolgáltatás központi telepítésének üzemeltetésére szolgál. Ebben a kísérletben felhőalapú számítást használunk. 
+        1. Töltse ki a **virtuális gép** űrlapját a számítás beállításához.
 
-        Mező | Leírás | Az oktatóanyag értéke
-        ----|---|---
-        Számítási név |A számítási környezet azonosítására szolgáló egyedi név.|automl – számítás
-        Virtuális &nbsp; gép &nbsp; típusa| Válassza ki a virtuális gép típusát a számítási feladatokhoz.|CPU (központi feldolgozó egység)
-        Virtuális &nbsp; gép &nbsp; mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
-        Csomópontok minimális/maximális száma| A profilhoz legalább 1 csomópontot kell megadnia.|Minimális csomópontok: 1<br>Csomópontok maximális száma: 6
-        Leskálázás előtt üresjárati másodperc | Üresjárati idő a fürt automatikus skálázása előtt a csomópontok minimális száma szerint.|120 (alapértelmezett)
-        Speciális beállítások | Beállítások egy virtuális hálózat konfigurálásához és engedélyezéséhez a kísérlethez.| Nincs
-        1. A számítási cél beszerzéséhez válassza a **Létrehozás** lehetőséget. 
+            Mező | Leírás | Az oktatóanyag értéke
+            ----|---|---
+            Virtuális &nbsp; gép &nbsp; prioritása |Válassza ki, hogy milyen prioritással rendelkezzen a kísérlet| Dedikált
+            Virtuális &nbsp; gép &nbsp; típusa| Válassza ki a virtuális gép típusát a számítási feladatokhoz.|CPU (központi feldolgozó egység)
+            Virtuális &nbsp; gép &nbsp; mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz. Az ajánlott méretek listája az adatai és a kísérlet típusa alapján érhető el. |Standard_DS12_V2
+        
+        1. Válassza a **tovább** lehetőséget a **beállítások konfigurálása űrlap** feltöltéséhez.
+        
+            Mező | Leírás | Az oktatóanyag értéke
+            ----|---|---
+            Számítási név |  A számítási környezet azonosítására szolgáló egyedi név. | automl – számítás
+            Csomópontok minimális/maximális száma| A profilhoz legalább 1 csomópontot kell megadnia.|Minimális csomópontok: 1<br>Csomópontok maximális száma: 6
+            Leskálázás előtt üresjárati másodperc | Üresjárati idő a fürt automatikus skálázása előtt a csomópontok minimális száma szerint.|120 (alapértelmezett)
+            Speciális beállítások | Beállítások egy virtuális hálózat konfigurálásához és engedélyezéséhez a kísérlethez.| None               
+
+        1. Válassza a **Létrehozás** lehetőséget a számítási cél létrehozásához. 
 
             **Ez eltarthat néhány percet.** 
+
+             ![Beállítások lap](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
 
         1. A létrehozás után válassza ki az új számítási célt a legördülő listából.
 
@@ -153,20 +163,24 @@ Az adatai betöltését és konfigurálását követően beállíthatja a kísé
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
         A legjobb modell ismertetése| A automatikusan mutatja az automatizált ML által létrehozott legjobb modell magyarázatát.| Engedélyezés
-        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| Nincs
+        Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| None
         Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Betanítási &nbsp; feladatok &nbsp; ideje (óra): 1 <br> Metrika &nbsp; pontszámának &nbsp; küszöbértéke: nincs
         Érvényesítés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szeres &nbsp; keresztek ellenőrzése <br> <br> Érvényességek száma: 2
         Egyidejűség| A másodpercenként végrehajtott párhuzamos ismétlések maximális száma| &nbsp;Egyidejű &nbsp; Ismétlések maximális száma: 5
         
-        Kattintson a **Mentés** gombra.
+        Válassza a **Mentés** lehetőséget.
+    
+    1. Válassza a **featurization-beállítások megtekintése** lehetőséget. Ebben a példában válassza ki a **day_of_week** funkció váltási kapcsolóját, hogy ne tartalmazza azt a kísérlet featurization.
 
-1. A kísérlet futtatásához kattintson a **Befejezés** gombra. Megnyílik a **futtatási részletek**  képernyő, amelyen a kísérlet előkészítésének megkezdése után a **Futtatás állapota** látható.
+        ![Featurization kiválasztása](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
+ 
+        Válassza a **Mentés** lehetőséget.
+
+1. A kísérlet futtatásához kattintson a **Befejezés** gombra. Megnyílik a **futtatási részletek**  képernyő, amelyen a kísérlet előkészítésének megkezdése után a **Futtatás állapota** látható. Ez az állapot frissíti a kísérlet előrehaladását. Az értesítések a Studio jobb felső sarkában is megjelennek, hogy tájékoztassák a kísérlet állapotáról.
 
 >[!IMPORTANT]
 > Az előkészítés **10-15 percet** vesz igénybe a kísérlet futtatásának előkészítése érdekében.
-> A futása után **az egyes iterációk esetében 2-3 percet** vesz igénybe.  
-> Válassza a rendszeres **frissítés** lehetőséget, hogy megtekintse a kísérlet előrehaladásának állapotát.
->
+> A futása után **az egyes iterációk esetében 2-3 percet** vesz igénybe.  <br> <br>
 > Éles környezetben valószínűleg egy kicsit. Ebben az oktatóanyagban azonban azt javasoljuk, hogy kezdje el a tesztelt algoritmusok vizsgálatát a **models (modellek** ) lapon, amíg a többiek még futnak. 
 
 ##  <a name="explore-models"></a>Modellek megismerése
@@ -233,12 +247,12 @@ Csak a központi telepítési példányt törölje a Azure Machine Learning a ht
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az automatizált gépi tanulási oktatóanyagban a besorolási modell létrehozásához és üzembe helyezéséhez Azure Machine Learning automatikus ML-interfészét használta. További információkat és további lépéseket a következő cikkekben talál:
 
 > [!div class="nextstepaction"]
-> [Webszolgáltatás felhasználása](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Webszolgáltatás felhasználása](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + További információ az [automatizált gépi tanulásról](concept-automated-ml.md).
 + A besorolási metrikákkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md) című cikket.

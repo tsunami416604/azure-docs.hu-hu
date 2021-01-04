@@ -3,12 +3,12 @@ title: Virtuális gép Azure Resource Manager sablonjának megtekintése és has
 description: Megtudhatja, hogyan használhatja a Azure Resource Manager sablont egy virtuális gépről más virtuális gépek létrehozásához
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb7cb38dfb2c1664017f0e342fefecdd464df45f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282493"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696013"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Virtuális gépek létrehozása Azure Resource Manager sablon használatával 
 
@@ -25,7 +25,7 @@ A DevTest Labs-ben kétféleképpen hozhatók létre virtuális gépek a Resourc
 
    ![Képernyőkép, amely a virtuális gépek listáját jeleníti meg egyetlen elemként a DevTest Labs virtuális gépek listájában.](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   Ezt a típusú Resource Manager-sablont a **New-AzResourceGroupDeployment Azure PowerShell-** paranccsal vagy az Azure CLI-parancs az az **Group Deployment Create**parancsával lehet kiépíteni. Rendszergazdai engedélyekre van szükség, így a DevTest Labs felhasználói szerepkörhöz hozzárendelt felhasználók nem hajthatják végre a telepítést. 
+   Ezt a típusú Resource Manager-sablont a **New-AzResourceGroupDeployment Azure PowerShell-** paranccsal vagy az Azure CLI-parancs az **Deployment Group Create** parancsával lehet kiépíteni. Rendszergazdai engedélyekre van szükség, így a DevTest Labs felhasználói szerepkörhöz hozzárendelt felhasználók nem hajthatják végre a telepítést. 
 
 - A Microsoft. számítási/virtualmachines erőforrástípus használó Resource Manager-sablonok több virtuális gépet is kiépíthetnek egyetlen környezetként a DevTest Labs virtuális gépek listájában:
 
@@ -41,7 +41,7 @@ A cikk további része a Microsoft. segédösszetevője/Labs/virtualmachines szo
 1. A virtuális gép létrehozásának megkezdéséhez kövesse az első virtuális gép [tesztkörnyezetben való létrehozásához](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) szükséges lépéseket.
 1. Adja meg a virtuális gép szükséges adatait, és adja hozzá az ehhez a virtuális GÉPHEZ használni kívánt összetevőket.
 1. Váltson a **Speciális beállítások** lapra. 
-1. A beállítások konfigurálása ablak alján kattintson az ARM- **sablon megtekintése**elemre.
+1. A beállítások konfigurálása ablak alján kattintson az ARM- **sablon megtekintése** elemre.
 1. Másolja ki és mentse el a Resource Manager-sablont később egy másik virtuális gép létrehozásához.
 
    ![A későbbi használatra menteni kívánt Resource Manager-sablon](./media/devtest-lab-use-arm-template/devtestlab-lab-copy-rm-template.png)
@@ -57,7 +57,7 @@ Olyan forgatókönyvek esetén, mint például a képzés, a bemutatók és a pr
 
 
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [hozhat létre több virtuális gépre kiterjedő környezeteket Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md).
 * [Resource Manager-sablon üzembe helyezése virtuális gép létrehozásához](devtest-lab-create-environment-from-arm.md#automate-deployment-of-environments)
 * Ismerkedjen meg a DevTest Labs automationhez készült Resource Manager-sablonokkal a [nyilvános DevTest Labs GitHub](https://github.com/Azure/azure-quickstart-templates)-tárházában.

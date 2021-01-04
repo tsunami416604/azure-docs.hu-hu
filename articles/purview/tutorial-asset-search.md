@@ -1,18 +1,18 @@
 ---
 title: 'Oktatóanyag: navigáljon az Azure-beli helyi webhelyre, és keressen rá egy eszközre'
 description: Ez az oktatóanyag azt ismerteti, hogyan használhatók a szolgáltatások az Azure hatáskörébe kezdőlapon, és hogyan kereshetők meg a katalógusban.
-author: hophanms
-ms.author: hophan
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 46c2ee284c33cc8ffb7b0bd3bc536905cf4e2052
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399876"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693348"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>Oktatóanyag: navigáljon az Azure-beli hatáskörébe (előzetes verzió) kezdőlapra, és keressen rá egy adott eszközre.
 
@@ -95,7 +95,7 @@ Az alábbi lépéseket követve megkeresheti az adategységeket, és megjelölhe
 
     A leírás, a tulajdonos neve és a szakértő neve mező már fel van töltve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Mielőtt továbblép a következő oktatóanyagra ebben a sorozatban, szánjon néhány további időt az Azure hatáskörébe tartozó Kezdőlap megismerésére. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

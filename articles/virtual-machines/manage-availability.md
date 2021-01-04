@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: b2f50ba910e3e47c55a63f58bc9f5e978e80e95a
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0ae4a311bc4f5084ff930b97d68482d64671a782
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401185"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695753"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Linux rendszerű virtuális gépek rendelkezésre állásának kezelése
 
@@ -40,7 +40,6 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 * Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre
 * Az egyes alkalmazásrétegek külön rendelkezésre állási csoportokba konfigurálása
 * Terheléselosztó kombinálása rendelkezésre állási zónákkal vagy készletekkel
-* A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez
 
@@ -113,5 +112,5 @@ Ha a terheléselosztó nem úgy van konfigurálva, hogy a terhelést elossza tö
 A rendelkezésre állási zónák közötti terheléselosztással kapcsolatos oktatóanyagért lásd [: oktatóanyag: virtuális gépek terheléselosztása rendelkezésre állási zónák között standard Load Balancer a Azure Portal használatával](../load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a virtuális gépek terheléselosztásáról, tekintse meg a [virtuális gépek](../load-balancer/load-balancer-overview.md)terheléselosztását ismertető témakört.

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/11/2019
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: dbdd4c7d23f56618c0e76649abe4faad86c5804c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743301"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696021"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Támogatási jegy megnyitása Azure Stack Edge Pro-hoz és Azure Data Box Gateway
 
@@ -24,36 +24,36 @@ Ez a cikk Azure Stack Edge Pro-re vonatkozik, és Azure Data Box Gateway mindket
 
 ## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
 
-Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
+Hozzon létre egy támogatási kérést a következő lépésekkel:
 
-1. Lépjen a Azure Stack Edge Pro-vagy Data Box Gateway-sorrendbe. Navigáljon a **támogatás + hibaelhárítás** szakaszhoz, majd válassza az **új támogatási kérelem**lehetőséget.
+1. Lépjen a Azure Stack Edge Pro-vagy Data Box Gateway-sorrendbe. Navigáljon a **támogatás + hibaelhárítás** szakaszhoz, majd válassza az **új támogatási kérelem** lehetőséget.
 
-2. Az **új támogatási kérelemben**az **alapok** lapon végezze el a következő lépéseket:
+2. Az **új támogatási kérelemben** az **alapok** lapon végezze el a következő lépéseket:
 
-    1. A **probléma típusa** legördülő listából válassza a **technikai**lehetőséget.
+    1. A **probléma típusa** legördülő listából válassza a **technikai** lehetőséget.
     2. Válassza ki az **Előfizetést**.
-    3. A **szolgáltatás**alatt keresse meg **a saját szolgáltatások**szolgáltatást. A legördülő listából válassza a **Azure stack Edge Pro és a Data Box Gateway**lehetőséget.
+    3. A **szolgáltatás** alatt keresse meg **a saját szolgáltatások** szolgáltatást. A legördülő listából válassza a **Azure stack Edge Pro és a Data Box Gateway** lehetőséget.
     4. Válassza ki az **erőforrást**. Ez megfelel a megrendelés nevének.
     5. Adja meg a tapasztalt probléma rövid **összefoglalását** . 
     6. Válassza ki a **probléma típusát**.
     7. A kiválasztott probléma típusa alapján válasszon ki egy megfelelő **problémát altípust**.
     8. Válassza a **tovább lehetőséget: megoldások >>**.
 
-        ![Alapvető beállítások](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
+        ![Alapbeállítások](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
 3. A **részletek** lapon hajtsa végre a következő lépéseket:
 
     1. Adja meg a probléma kezdő dátumát és időpontját.
     2. Adja meg a probléma **leírását** .
-    3. A **fájl feltöltése**lapon válassza a mappa ikont a feltölteni kívánt fájlok tallózásához.
-    4. A **diagnosztikai adatok megosztásának**megadásához.
+    3. A **fájl feltöltése** lapon válassza a mappa ikont a feltölteni kívánt fájlok tallózásához.
+    4. A **diagnosztikai adatok megosztásának** megadásához.
     5. Az előfizetés alapján a rendszer automatikusan kitölti a **támogatási csomagot** .
     6. A legördülő listából válassza ki a **súlyosságot**.
     7. Válasszon ki egy **előnyben részesített kapcsolattartási módszert**.
     8. Az előfizetési terv alapján a rendszer automatikusan kiválasztja a **válaszidőt** .
-    9. Adja meg a kívánt nyelvet a támogatáshoz.
-    10. A **kapcsolattartási adatok**területen adja meg a nevét, e-mail-címét, telefonszámát, nem kötelező elérhetőségét, országát/régióját. Microsoft ügyfélszolgálata ezeket az információkat a további információk, a diagnosztika és a megoldás eléréséhez használja fel. 
-    11. Válassza a **Tovább: Áttekintés + >>létrehozása **elemet.
+    9. Adja meg a támogatni kívánt nyelvet.
+    10. A **kapcsolattartási adatok** területen adja meg a nevét, e-mail-címét, telefonszámát, nem kötelező elérhetőségét, országát/régióját. Microsoft ügyfélszolgálata ezeket az információkat a további információk, a diagnosztika és a megoldás eléréséhez használja fel. 
+    11. Válassza a **Tovább: Áttekintés + >>létrehozása** elemet.
 
         ![Probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
 
@@ -61,13 +61,13 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
     ![2. probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
-    Miután létrehozta a támogatási jegyet, a támogatási szakember a lehető leghamarabb kapcsolatba lép Önnel, hogy folytassa a kérést.
+    A támogatási jegy létrehozása után a támogatási szakember a lehető leghamarabb kapcsolatba lép Önnel, hogy folytassa a kérést.
 
 ## <a name="get-hardware-support"></a>Hardveres támogatás beszerzése
 
 Ez az információ csak Azure Stack eszközre vonatkozik. A hardveres problémák jelentésének folyamata a következő:
 
-1. Hardveres probléma esetén nyisson meg egy támogatási jegyet a Azure Portal. A **probléma típusa**területen válassza a **Azure stack hardver**lehetőséget. Válassza ki a **probléma altípusát** **hardverhibaként**.
+1. Hardveres probléma esetén nyisson meg egy támogatási jegyet a Azure Portal. A **probléma típusa** területen válassza a **Azure stack hardver** lehetőséget. Válassza ki a **probléma altípusát** **hardverhibaként**.
 
     ![Hardveres probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
 
@@ -75,10 +75,10 @@ Ez az információ csak Azure Stack eszközre vonatkozik. A hardveres problémá
 
 2. Ha Microsoft ügyfélszolgálata megállapítja, hogy ez egy hardveres probléma, akkor a következő műveletek egyike történik:
 
-    * A rendszer elküldje egy mező típusú helyettesítő egységet a meghibásodott hardver részhez. Jelenleg a tápegységek és a merevlemezek az egyetlen támogatott FRUs.
+    * A rendszer elküldje egy mező típusú helyettesítő egységet a meghibásodott hardver részhez. Jelenleg a tápegységek és a szilárdtest-meghajtók az egyetlen támogatott FRUs.
     * A következő munkanapon belül csak a FRUs lesznek lecserélve, minden más esetben teljes rendszer-cserét (FSR) kell leszállítani.
 
-3. Ha a támogatási jegyet a helyi idő szerint (hétfőtől péntekig) 4:30 óráig emelik ki, akkor a helyszíni technikus a következő munkanapon elküldi azt a helyet, amely egy cserélhető eszköz vagy teljes eszköz cseréjét hajt végre.
+3. Ha a támogatási jegyet a helyi idő szerint (hétfőtől péntekig) 4:30 óráig emelik ki, akkor a helyszíni technikust a következő munkanapon kell elküldeni a rendszerbe a cserélhető adatcsere végrehajtásához. A teljes rendszer cseréje általában sokkal hosszabb időt vesz igénybe, mivel a részek szállítása a gyárból történik, és a szállítás és a késedelmes késések is vonatkozhatnak rájuk.
 
 ## <a name="manage-a-support-request"></a>Támogatási kérelem kezelése
 
@@ -86,17 +86,17 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 ### <a name="to-manage-your-support-requests"></a>A támogatási kérések kezelése
 
-1. A Súgó és támogatás lapon keresse meg a **tallózás > Súgó + támogatás**menüpontot.
+1. A Súgó és támogatás lapon keresse meg a **tallózás > Súgó + támogatás** menüpontot.
 
     ![Támogatási kérelmek kezelése](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)
 
-2. A **Súgó és támogatás**szolgáltatásban megjelenik a **legújabb támogatási kérelmek** táblázatos listája.
+2. A **Súgó és támogatás** szolgáltatásban megjelenik a **legújabb támogatási kérelmek** táblázatos listája.
 
     <!--[Manage support requests](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)--> 
 
 3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan lehet [elhárítani a Azure stack Edge Pro-val kapcsolatos problémákat](azure-stack-edge-troubleshoot.md).
 Ismerje meg, hogyan lehet [elhárítani a Data Box Gateway kapcsolatos problémákat](data-box-gateway-troubleshoot.md).
