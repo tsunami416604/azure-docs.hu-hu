@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 860b880faae9c5fe37a2c7eab2ef3a068ed4da3e
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.openlocfilehash: 127a9568d4f129763bee26210efedeaee8fe4aa1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299090"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709374"
 ---
 # <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Oktatóanyag: a PaperCut Cloud Print Management konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -37,9 +37,9 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a PaperCut Cloud Pr
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* [Egy Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). 
 * Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
-* Felhasználói fiók a PaperCut Cloud Print Management szolgáltatásban rendszergazdai engedélyekkel
+* Egy PaperCut Cloud Print Management rendszergazdai fiók.
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
@@ -52,7 +52,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 1. Jelentkezzen be a [PaperCut Pocket felügyeleti konzol](https://pocket.papercut.com/) vagy a [PaperCut struktúra felügyeleti konzolba](https://hive.papercut.com/).
 
-2. Keresse meg **Add-ons**  >  az **összes bővítményt**, és keresse meg a **Microsoft Azure ad User Sync addon**.
+2. Keresse meg   >  az **összes bővítményt**, és keresse meg a **Microsoft Azure ad User Sync addon**.
 
 3. Kattintson a **továbbiak** gombra, és kattintson a **Hozzáadás** gombra a telepítéshez.
 
@@ -76,7 +76,7 @@ Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek ha
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a PaperCut Cloud Print Management szolgáltatásba
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, valamint a felhasználók és/vagy csoportok PaperCut való létrehozásához, frissítéséhez és letiltásához az Azure AD-ban felhasználói és/vagy csoport-hozzárendelések alapján.
 
 ### <a name="to-configure-automatic-user-provisioning-for-papercut-cloud-print-management-in-azure-ad"></a>Az Azure AD-ben a PaperCut Cloud Print Management automatikus felhasználó-kiépítés beállítása:
 
@@ -106,7 +106,8 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók PaperCut a Felhőbeli nyomtatás kezelése** lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók kiépítése** lehetőséget.
+   ![HRE leképezése](media/papercut-cloud-print-management-provisioning-tutorial/mapping.png)
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-leképezési** szakaszban található PaperCut Felhőbeli nyomtatási felügyelethez. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a PaperCut Cloud Print Management felhasználói fiókjainak a frissítési műveletekhez való egyeztetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a PaperCut Cloud Print Management API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 

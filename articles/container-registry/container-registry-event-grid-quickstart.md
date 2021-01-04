@@ -4,12 +4,12 @@ description: Ebben a rövid útmutatóban engedélyezheti Event Grid eseményeit
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074216"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694390"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Gyors útmutató: események küldése a privát tároló beállításjegyzékből a Event Gridba
 
@@ -25,7 +25,7 @@ A cikk lépéseinek elvégzése után a tároló-beállításjegyzékből eljutt
 
 - A cikkben szereplő Azure CLI-parancsok a **bash** -rendszerhéjhoz vannak formázva. Ha más, például PowerShell-vagy parancssor-rendszerhéjt használ, lehetséges, hogy a sor folytatási karaktereit vagy a változók hozzárendelési sorait ennek megfelelően kell módosítania. Ez a cikk változók használatával minimálisra csökkentheti a parancsok szerkesztésének szükséges mennyiségét.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelyben üzembe helyezheti és felügyelheti Azure-erőforrásait. A következő az [Group Create][az-group-create] parancs létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban. Ha más nevet szeretne használni az erőforráscsoport számára, állítsa `RESOURCE_GROUP_NAME` egy másik értékre.
 
@@ -78,7 +78,7 @@ A minta alkalmazás üzembe helyezéséhez állítson be `SITE_NAME` egy egyedi 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
@@ -202,11 +202,11 @@ Az alábbi képernyőfelvételen a három eseménnyel rendelkező minta alkalmaz
 
 Gratulálunk! Ha a és az `ImagePushed` `ImageDeleted` eseményeket látja, a beállításjegyzék az eseményeket Event Gridba küldi, és Event Grid továbbítja ezeket az eseményeket a webalkalmazás-végpontnak.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült az ebben a rövid útmutatóban létrehozott erőforrásokkal, az alábbi Azure CLI-paranccsal törölheti őket. Egy erőforráscsoport törlésekor a benne lévő összes erőforrás véglegesen törlődik.
 
-**Figyelmeztetés** : Ez a művelet nem visszafordíthatatlan. A parancs futtatása előtt győződjön meg arról, hogy már nincs szüksége a csoport erőforrásaira.
+**Figyelmeztetés**: Ez a művelet nem visszafordíthatatlan. A parancs futtatása előtt győződjön meg arról, hogy már nincs szüksége a csoport erőforrásaira.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME
@@ -218,7 +218,7 @@ A Event Grid dokumentációjában találhatja meg az Azure Container Registry es
 
 [Container Registry Azure Event Gridi esemény sémája](../event-grid/event-schema-container-registry.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy tároló-beállításjegyzéket, amely egy ACR-feladatokból álló képet készített, törölte azt, és felhasználta a beállításjegyzék eseményeit Event Grid egy minta alkalmazással. Ezután lépjen be az ACR-feladatok oktatóanyagba, ahol többet tudhat meg a Felhőbeli tároló-lemezképek létrehozásáról, beleértve az alapszintű lemezkép frissítésének automatizált buildeit is:
 

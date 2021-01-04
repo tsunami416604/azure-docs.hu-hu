@@ -3,17 +3,17 @@ title: Indexelőkkel kapcsolatos hibák és figyelmeztetések
 titleSuffix: Azure Cognitive Search
 description: Ez a cikk olyan gyakori hibákkal és figyelmeztetésekkel kapcsolatos információkat és megoldásokat tartalmaz, amelyeket az AI az Azure Cognitive Search-ban való gyarapítása során felmerülhet.
 manager: nitinme
-author: amotley
-ms.author: abmotley
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: dcdc05ae696a207546eb62160fe89ea38d307058
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c65c9265d8eb4a06ea354c6d753cc6ed847eb6db
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492267"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724289"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 

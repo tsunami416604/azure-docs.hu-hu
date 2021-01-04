@@ -3,12 +3,12 @@ title: A AMQP 1,0-es verziójának áttekintése Azure Service Bus
 description: Ismerje meg, hogyan támogatja a Azure Service Bus a Advanced Message Queueing Protocol (AMQP), egy nyílt szabványú protokollt.
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: e585fcc905d1651d49008b623b01a6c2f8a04fcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 241a6b7fb9f9055ce610e44e5cd37dba87c77554
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498778"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709282"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>AMQP 1,0-támogatás Service Bus
 A Azure Service Bus Cloud Service a kommunikáció elsődleges kommunikációs eszközeként a [1,0 Advanced Message Queuing protokollt (AMQP)](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) használja. A Microsoft az iparágban, az ügyfelekkel és a versengő üzenetkezelési közvetítőket használó partnerekkel együttműködve fejleszti és fejleszti a AMQP az elmúlt évtizedben, és új bővítményeket fejlesztett ki az [Oasis AMQP technikai bizottságban](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). A AMQP 1,0 egy ISO és IEC szabvány ([iso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -42,7 +42,7 @@ Október 2011-án a fejlesztési munka a szervezeten belüli technikai bizottsá
 * **Technológiai szállítók**: Axway szoftver, Huawei Technologies, IIT szoftver, INETCO-rendszerek, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, folyamatjelző szoftver, Red Hat, a, a Software AG, a vigaszrendszer, a VMware, a WSO2 és a Zenika.
 * **Felhasználói cégek**: Bank of America, Credit Suisse, Deutsche Boerse, Goldman Sachs, JPMorgan Chase.
 
-Az [OASIS AMQP műszaki Bizottság] aktuális elnökei (a https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) Red Hat és a Microsoft képviselők.
+Az [Oasis AMQP műszaki bizottságának](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) aktuális elnökei a Red Hat és a Microsoft.
 
 A nyílt szabványok általánosan idézett előnyei többek között a következők:
 
@@ -76,7 +76,7 @@ Emellett a Service Bus bármely AMQP 1,0-kompatibilis protokoll-veremből is has
 
 [!INCLUDE [messaging-oss-amqp-stacks.md](../../includes/messaging-oss-amqp-stacks.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 * A AMQP 1,0 egy nyílt, megbízható üzenetkezelési protokoll, amellyel többplatformos hibrid alkalmazások hozhatók létre. A AMQP 1,0 egy oázis standard.
 
 ## <a name="next-steps"></a>További lépések

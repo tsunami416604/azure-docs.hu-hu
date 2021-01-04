@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347795"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724306"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Mondat párosítása és igazítása párhuzamos dokumentumokban
 
@@ -22,7 +22,7 @@ A dokumentumok feltöltése után a párhuzamos dokumentumokban lévő mondatok 
 
 ## <a name="pairing-and-alignment-process"></a>Párosítási és igazítási folyamat
 
-Az egyéni fordító egyszerre tanulja meg a mondatok egy mondatának fordítását. Beolvasott egy mondatot a forrástól, majd a mondat fordítását a célhelyről. Ezután a két mondatban található szavakat és kifejezéseket egymáshoz igazítja. Ez a folyamat lehetővé teszi, hogy egy mondatban hozza létre a szavakat és kifejezéseket tartalmazó térképet az ennek a mondatnak a fordításában szereplő egyenértékű szavakra és kifejezésekre. Az igazítás megkísérli biztosítani, hogy a rendszer olyan mondatokat használjon, amelyek egymást fordítanak.
+Az egyéni fordító egyszerre tanulja meg a mondatok egy mondatának fordítását. Beolvas egy mondatot a forrás szövegből, majd a mondat fordítását a célként megadott szövegből. Ezután a két mondatban található szavakat és kifejezéseket egymáshoz igazítja. Ez a folyamat lehetővé teszi, hogy egy mondatban hozza létre a szavakat és kifejezéseket tartalmazó térképet a mondat fordításában szereplő egyenértékű kifejezéseknek és kifejezéseknek. Az igazítás megkísérli biztosítani, hogy a rendszer olyan mondatokat használjon, amelyek egymást fordítanak.
 
 ## <a name="pre-aligned-documents"></a>Előre igazított dokumentumok
 
@@ -46,6 +46,6 @@ Ahhoz, hogy egy képzés sikeres legyen, az alábbi táblázat az egyes dokument
 > - A hangolás és a tesztelés nem kötelező. Ha nem adja meg őket, a rendszer eltávolítja a megfelelő százalékot az ellenőrzéshez és teszteléshez használt képzésből. 
 > - A modelleket csak a szótárak adatai alapján lehet betanítani. Tekintse meg a [Mi az a szótár](./what-is-dictionary.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan használhat [szótárt](what-is-dictionary.md) az egyéni fordítóban.

@@ -5,21 +5,21 @@ description: Az Azure Blob Storage-ra irányuló kérelmeket használó ügyfele
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: abdc83019205fc39e1e85a53da7e49f8a7d4f11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcc5c02c4a37e205622470260d3c620ad76d07d8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618726"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694694"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>Titkosítási kulcs megadása a blob Storage-kérelemben
 
-Az Azure Blob Storage-ra irányuló kérelmeket használó ügyfelek számára a kérések alapján a titkosítási kulcs megadására van lehetőség. A kérelemben szereplő titkosítási kulcs részletesen szabályozható a blob Storage-műveletek titkosítási beállításai között. A felhasználó által megadott kulcsok Azure Key Vault vagy egy másik kulcstárolóban tárolhatók.
+Az Azure Blob Storage-ra irányuló kérelmeket használó ügyfelek számára lehetőség van egy AES-256 titkosítási kulcs megadására kéréses alapon. A kérelemben szereplő titkosítási kulcs részletesen szabályozható a blob Storage-műveletek titkosítási beállításai között. A felhasználó által megadott kulcsok Azure Key Vault vagy egy másik kulcstárolóban tárolhatók.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -45,7 +45,7 @@ REST-hívások esetén az ügyfelek a következő fejlécek segítségével bizt
 |---------------|-------------|
 |`x-ms-encryption-key` |Írási és olvasási kérelmek esetén egyaránt szükséges. Base64 kódolású AES-256 titkosítási kulcs értéke. |
 |`x-ms-encryption-key-sha256`| Írási és olvasási kérelmek esetén egyaránt szükséges. A titkosítási kulcs Base64 kódolású SHA256. |
-|`x-ms-encryption-algorithm` | Írási kérésekhez szükséges, az olvasási kérelmek esetében nem kötelező. Meghatározza az adattitkosításhoz használt algoritmust a megadott kulccsal. AES256 kell lennie. |
+|`x-ms-encryption-algorithm` | Írási kérésekhez szükséges, az olvasási kérelmek esetében nem kötelező. Meghatározza az adattitkosításhoz használt algoritmust a megadott kulccsal.  A fejléc értékének a következőnek kell lennie: `AES256` . |
 
 A kérelemben szereplő titkosítási kulcsok megadása nem kötelező. Ha azonban egy írási művelethez a fent felsorolt fejlécek egyikét adja meg, akkor mindegyiket meg kell adnia.
 
@@ -76,7 +76,7 @@ A Blobok titkosításához használt titkosítási kulcs elforgatásához tölts
 >
 > Ügyeljen arra, hogy a blob Storage-ba irányuló kérelemben megadott titkosítási kulcsot a Azure Key Vault. Ha a titkosítási kulcs nélküli tárolón vagy blobon próbálkozik írási művelettel, a művelet sikertelen lesz, és nem fog tudni hozzáférni az objektumhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ügyfél által megadott kulcs meghatározása a blob Storage-hoz a .NET-tel](storage-blob-customer-provided-key.md)
 - [Inaktív adatok Azure Storage-titkosítása](../common/storage-service-encryption.md)

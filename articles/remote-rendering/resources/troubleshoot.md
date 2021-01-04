@@ -5,25 +5,25 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203670"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722232"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
 Ezen a lapon az Azure távoli renderelést akadályozó gyakori problémák és a megoldási módszerek találhatók.
 
-## <a name="cant-link-storage-account-to-arr-account"></a>A Storage-fiók nem csatolható ARR-fiókhoz
+## <a name="cant-link-storage-account-to-arr-account"></a>A tárfiókot nem lehet csatlakoztatni az ARR-fiókhoz
 
-Néha a [Storage-fiók összekapcsolása](../how-tos/create-an-account.md#link-storage-accounts) során a távoli renderelési fiók nem szerepel a listáján. A probléma megoldásához nyissa meg a Azure Portal ARR-fiókját, és válassza az **identitás** elemet a bal oldali **Beállítások** csoportban. Győződjön **meg**arról, hogy az **állapot** beállítása be értékre van állítva.
+Néha a [Storage-fiók összekapcsolása](../how-tos/create-an-account.md#link-storage-accounts) során a távoli renderelési fiók nem szerepel a listáján. A probléma megoldásához nyissa meg a Azure Portal ARR-fiókját, és válassza az **identitás** elemet a bal oldali **Beállítások** csoportban. Győződjön **meg** arról, hogy az **állapot** beállítása be értékre van állítva.
 ![Unity frame Debugger](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>Az ügyfél nem tud csatlakozni a kiszolgálóhoz
 
-Győződjön meg arról, hogy a tűzfalak (az eszközön belül, az útválasztók stb.) nem blokkolja a [rendszerkövetelményekben](../overview/system-requirements.md#network-ports)említett portokat.
+Győződjön meg arról, hogy a tűzfalak (az eszközön belül, az útválasztók stb.) nem blokkolja a [rendszerkövetelményekben](../overview/system-requirements.md#network-firewall)említett portokat.
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>Hiba: " `Disconnected: VideoFormatNotAvailable` "
 
@@ -33,7 +33,7 @@ Ha két GPU-val rendelkező laptopon dolgozik, akkor előfordulhat, hogy az alap
 
 ## <a name="retrieve-sessionconversion-status-fails"></a>A munkamenet/átalakítás állapotának lekérése sikertelen
 
-Ha túl gyakran küld REST API parancsokat, a kiszolgáló leszabályozását és a hibák visszaadását fogja eredményezni. A szabályozási esetben a http-állapotkód 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
+Ha túl gyakran küld REST API parancsokat, a kiszolgáló leszabályozását és a hibák visszaadását fogja eredményezni. A szabályozási esetben a http-állapotkód 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces** késleltetésnek kell lennie.
 
 Vegye figyelembe, hogy ez a korlát nem csupán a REST API hívásokra van hatással, amikor a hívás közvetlenül, de C#/C + +, például,, `Session.GetPropertiesAsync` `Session.RenewAsync` vagy `Frontend.GetAssetConversionStatusAsync` .
 
@@ -159,7 +159,7 @@ Ezután a megjelenítő [megkeresi a szabványos konfiguráció méretére vonat
 
 Ügyeljen arra, hogy kövesse az [Unity oktatóanyagot: a távoli modellek pontosan megtekinthetők](../tutorials/unity/view-remote-models/view-remote-models.md) . A lefelé irányuló kép azt jelzi, hogy az egységnek a képernyőn kívüli megjelenítési cél létrehozásához kell tartoznia. Ez a viselkedés jelenleg nem támogatott, és óriási teljesítménybeli hatást eredményez a 2. HoloLens.
 
-A probléma oka a MSAA, a HDR vagy a post Processing engedélyezése lehet. Győződjön meg arról, hogy az alacsony színvonalú profil van kiválasztva, és alapértelmezettként van beállítva az egységben. Ehhez lépjen a *> projekt beállításainak szerkesztése... > minőség*gombra.
+A probléma oka a MSAA, a HDR vagy a post Processing engedélyezése lehet. Győződjön meg arról, hogy az alacsony színvonalú profil van kiválasztva, és alapértelmezettként van beállítva az egységben. Ehhez lépjen a *> projekt beállításainak szerkesztése... > minőség* gombra.
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>A távoli renderelési API-t használó Unity kód nem fordítható le
 
@@ -247,9 +247,9 @@ Az egymáshoz tartozó felületek számos különböző oka lehet:
 
 ## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Multi-pass sztereó renderelést használó grafikus összetevők natív C++-alkalmazásokban
 
-Bizonyos esetekben a [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) meghívása után olyan egyéni natív C++-alkalmazások, amelyek többcsatornás sztereó renderelési módot használnak a helyi tartalomhoz (a bal és a jobb oldali megjelenítésre külön-külön haladnak), az illesztőprogram hibájának meghívása után. A hiba a nem determinisztikus raszterizálási-hibákat eredményezi, ami a helyi tartalom egyes háromszögeit vagy háromszögeit véletlenszerűen eltűnnek. A teljesítménnyel kapcsolatos okokból ajánlott a helyi tartalom megjelenítése egy modern, Egylépéses sztereó renderelési technikával, például **SV_RenderTargetArrayIndex**használatával.
+Bizonyos esetekben a [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) meghívása után olyan egyéni natív C++-alkalmazások, amelyek többcsatornás sztereó renderelési módot használnak a helyi tartalomhoz (a bal és a jobb oldali megjelenítésre külön-külön haladnak), az illesztőprogram hibájának meghívása után. A hiba a nem determinisztikus raszterizálási-hibákat eredményezi, ami a helyi tartalom egyes háromszögeit vagy háromszögeit véletlenszerűen eltűnnek. A teljesítménnyel kapcsolatos okokból ajánlott a helyi tartalom megjelenítése egy modern, Egylépéses sztereó renderelési technikával, például **SV_RenderTargetArrayIndex** használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Rendszerkövetelmények](../overview/system-requirements.md)
 * [A hálózatra vonatkozó követelmények](../reference/network-requirements.md)

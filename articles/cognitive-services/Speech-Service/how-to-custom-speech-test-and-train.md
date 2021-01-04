@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: a5457dc94082f089d3adf02c9614d05d2c5db244
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: af5ed0296ce99a4450fffec6b047285307ed0ff2
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484005"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709299"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése a Custom Speech szolgáltatáshoz
 
@@ -47,8 +47,10 @@ Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adatt
 | Adattípus | Teszteléshez használatos | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
 | [Audió](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N.A. |
-| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Igen | 1 – 1000 órányi hang |
+| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Igen | 1-20 órányi hang |
 | [Kapcsolódó szöveg](#related-text-data-for-training) | Nem | N/a | Igen | 1-200 MB kapcsolódó szöveg |
+
+Új modell betanításakor Kezdje a [kapcsolódó szöveggel](#related-text-data-for-training). Ezek az adatmennyiségek már javítják a speciális kifejezések és kifejezések felismerését.
 
 A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és. zip fájlként kell feltölteni. Az egyes adatkészletek csak egyetlen adattípust tartalmazhatnak.
 
@@ -91,7 +93,7 @@ Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van
 
 A <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> használatával ellenőrizze a hangtulajdonságokat, vagy alakítsa át a meglévő hangokat a megfelelő formátumokba. Az alábbiakban néhány példát láthat arra, hogyan végezheti el ezeket a tevékenységeket a SoX parancssorban:
 
-| Tevékenység | Description | SoX-parancs |
+| Tevékenység | Leírás | SoX-parancs |
 |----------|-------------|-------------|
 | Hangformátum keresése | Ezzel a paranccsal ellenőrizhető<br>a hangfájl formátuma. | `sox --i <filename>` |
 | Hangformátum konvertálása | A parancs használata a konvertáláshoz<br>a hangfájl egyetlen csatornára, 16 bites, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -117,7 +119,7 @@ A hangfájlok a rögzítés elején és végén is lehetnek csendben. Ha lehets�
 > [!NOTE]
 > A képzés és a tesztelési célú adatfeldolgozás során a. zip fájl mérete nem haladhatja meg a 2 GB-ot. Csak *egyetlen* adatkészletből lehet tesztelni, ügyeljen arra, hogy a fájl a megfelelő fájlméreten belül maradjon. Emellett az egyes betanítási fájlok nem haladhatják meg a 60 másodpercet, ellenkező esetben hiba történik.
 
-A Word törlési vagy helyettesítési problémák megoldásához jelentős mennyiségű adattal kell foglalkoznia az elismerés javítása érdekében. Általánosságban elmondható, hogy nagyjából 10 – 1 000 órányi hanganyagot biztosít a Word-by-Word típusú átírásoknak. Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
+A Word törlési vagy helyettesítési problémák megoldásához jelentős mennyiségű adattal kell foglalkoznia az elismerés javítása érdekében. Általánosságban elmondható, hogy nagyjából 10 – 20 órányi hangátvitelt biztosít a Word-by-Word típusú átírásoknak. Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tartalmaznia. Az átiratfájl minden sorának egy hangfájl nevét és az annak megfelelő átiratot kell tartalmaznia. A fájlnevet és az átiratot tabulátorral (\t) kell elválasztani.
 
   Például:
 ```
@@ -135,6 +137,8 @@ A hangfájlok és a megfelelő átírások összegyűjtése után egyetlen. zip 
 
 > [!div class="mx-imgBorder"]
 > ![Hang kiválasztása a Speech Portalon](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+
+Lásd: az [Azure-fiók beállítása](custom-speech-overview.md#set-up-your-azure-account) az ajánlott régiók listájához a Speech Service-előfizetésekhez. A beszédfelismerési előfizetések ezen régiók egyikében való beállítása csökkenti a modell betanításához szükséges időt.
 
 ## <a name="related-text-data-for-training"></a>Kapcsolódó szöveges adat a betanításhoz
 

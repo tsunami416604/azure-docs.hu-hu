@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 09957461fd92114d1181a570550ee1a189edd8ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 874d44e3900b1edf24c2f6bee95d787c5fc3988d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009866"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704841"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>Azure Container instance-erőforrás létrehozása
+## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>Azure Container instance-erőforrás létrehozása a Azure Portal használatával
 
 1. Lépjen a Container Instances [Létrehozás](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) lapjára.
 
@@ -43,9 +43,9 @@ ms.locfileid: "96009866"
 
     | Kulcs | Érték |
     |--|--|
-    |`apikey`|Az erőforrás **kulcsok** lapjáról másolt. Egy 32 alfanumerikus karakterből álló karakterlánc, szóköz vagy kötőjel nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .|
-    |`billing`|Az erőforrás **Áttekintés** lapjáról lett másolva.|
-    |`eula`|`accept`|
+    |`ApiKey`|Az erőforrás **kulcsainak és végpontjának** lapjáról lett másolva. Egy 32 alfanumerikus karakterből álló karakterlánc, szóköz vagy kötőjel nélkül `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .|
+    |`Billing`| A végpont URL-címe az erőforrás **kulcsok és végpont** lapján lett másolva.|
+    |`Eula`|`accept`|
 
 5. Kattintson **a felülvizsgálat és létrehozás** gombra.
 6. Az ellenőrzés után kattintson a **Létrehozás** gombra a létrehozási folyamat befejezéséhez.

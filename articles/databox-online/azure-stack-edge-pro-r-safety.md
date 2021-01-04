@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac3f2cc1c68ea552b2858d932217a28055fee0fd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466740"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709437"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R biztonsági utasítások
 
@@ -27,14 +27,14 @@ Az Azure Stack Edge Pro R-eszköz használata előtt olvassa el az ebben a cikkb
 
 A következő jelzési szavak a veszélyforrások riasztási jelei:
 
-| Ikon | Description |
+| Ikon | Leírás |
 |:--- |:--- |
 | ![Kockázati szimbólum](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)| **Veszély:** Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. <br> **Figyelmeztetés:** Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. <br> **Vigyázat:** Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet.|
 |
 
 Az Azure Stack Edge Pro R Edge-eszköz beállításakor és futtatásakor a következő kockázati ikonokat kell figyelembe venni:
 
-| Ikon | Description |
+| Ikon | Leírás |
 |:--- |:--- |
 | ![Először olvassa el az összes utasítást](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Először olvassa el az összes utasítást |
 | ![Kockázati szimbólum](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Kockázati szimbólum |
@@ -86,6 +86,7 @@ Az Azure Stack Edge Pro R Edge-eszköz beállításakor és futtatásakor a köv
   * Elszigetelten a villamossági eszközök által előállított erős elektromágneses mezőkből.
   * Megfelelően megalapozott kivezetéssel biztosítva.
   * Elegendő lemezterülettel rendelkezik a tápkábel (ek) eléréséhez, mert a termék fő energiaellátási leválasztását szolgálják.
+* Az Ethernet-kábelek nincsenek megadva a termékhez. Az elektromágneses interferencia csökkentése érdekében ajánlott a Cat 6 védett sodrott (STP) kábelezés használata.
 * Állítsa be a készüléket olyan munkaterületre, amely lehetővé teszi a megfelelő légáramlást a berendezések körül; Győződjön meg arról, hogy az első és a hátsó borító teljesen el van távolítva az eszköz futása közben.
 * A berendezést hőmérséklet által vezérelt területre kell telepíteni, amely nem szennyező anyagokból áll, és lehetővé teszi a megfelelő légáramlást a berendezések körül.
 * A berendezéseket a folyadék és a túlzottan párás környezetek forrásaiból is megtarthatja.
@@ -115,6 +116,11 @@ Az Azure Stack Edge Pro R Edge-eszköz beállításakor és futtatásakor a köv
   * Az eszköz el lett dobva, és az eszköz burkolata sérült.
   * Azt gyanítja, hogy az eszköznek szolgáltatásra vagy javításra van szüksége.
 * Véglegesen kihúzza az egységet, mielőtt áthelyezi, vagy ha úgy gondolja, hogy bármilyen módon megsérült.
+* A nagy szivárgások elkerülése érdekében, ha egyetlen továbbítási eset egynél több megszakítás nélküli tápegységgel rendelkezik (UPS), azt javasoljuk, hogy mindegyik UPS független fiókirodához kapcsolódjon. Azonban abban az esetben, ha az egyik elosztó egység (PDU) vagy más eszköz is használatban van, ahol az egyes UPS-ek biztonsági alapjai a PDU egyetlen feeder-kivezetési karmesterén alapulnak, az egyes UPS-ket tartalmazó terminált is fel kell használni egy kiegészítő épületbe.
+
+  > [!NOTE]
+  > Ha olyan PDU-t használ, amely már rendelkezik egy kiegészítő bevezetési vezetővel, nem szükséges a további, az UPS-hez tartozó terminált használni.
+
 * Adjon meg egy megfelelő áramforrást elektromos túlterhelés elleni védelemmel a következő energiaellátási követelmények teljesítéséhez:
 
   * Feszültség: 100 – 240 v AC
@@ -157,7 +163,7 @@ Az eszköz az alábbi környezetekben való működésre lett tervezve:
 |:--- |:--- |
 |Hőmérséklet-specifikációk | <ul><li>Tárolási hőmérséklet: – 33 &deg; c – 63 &deg; C (– 28 &deg; f – 145 &deg; f) </li><li>Folyamatos művelet: 5 &deg; c – 43 &deg; c (41 &deg; f – 110 &deg; f)</li><li>Maximális hőmérséklet-átmenet (működési és tárolási): 20 &deg; C/h (68 &deg; F/h)</li></ul> |
 |Relatív páratartalom-specifikációk | <ul><li>Tárolás: 5% – 95% RH és 33 &deg; C (91 &deg; F) maximális harmatpont. A légkörnek mindig nem lecsapódó kell lennie.</li><li>Üzemeltetés: 5% – 85% relatív páratartalom 29 &deg; C-vel (84,2 &deg; F) maximális harmatpont</li></ul> |
-| Maximális magassági specifikációk | <ul><li>Operációs (UPS nélkül): 15 000 Ft (4 572 méter)</li><li>Üzemeltetés (UPS-vel): 6,561 Ft (2 000 méter)</li><li>Tárolás: 40 000 Ft (12 192 méter)</li></ul> |
+| Maximális magassági specifikációk | <ul><li>Operációs (UPS nélkül): 15 000 Ft (4 572 méter)</li><li>Üzemeltetés (UPS-vel): 10 000 Ft (3 048 méter)</li><li>Tárolás: 40 000 Ft (12 192 méter)</li></ul> |
 
 <!--|Standard operating temperature specifications | <ul>Continuous operation (for altitude less than 950 m or 3117 ft): +5&deg;C–45&deg;C (41&deg;F–113&deg;F) with no direct sunlight on the equipment</ui>
 |Expanded operating temperature specifications | <ul><li>Continuous operation: 5&deg;C to 45&deg;C at 5% to 85% RH with 29&deg;C dew point.</li><li></= 1% of annual operating hours: –5&deg;C to 55&deg;C at 5% to 90% RH with 29&deg;C dew point. |

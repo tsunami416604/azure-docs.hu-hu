@@ -9,12 +9,12 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95484610"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722963"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
 
@@ -110,7 +110,7 @@ A Azure Active Directory felhasználókat célzó alkalmazások esetében javaso
    3.    Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
    1.    [Válasszon egy szerepkört](#azure-role-based-access-control).
    2.    A **kiválasztás** mezőbe írja be azoknak a felhasználóknak, csoportoknak és/vagy alkalmazásoknak a nevét, amelyekhez hozzáférést szeretne rendelni.
-   3.    Kattintson a **Mentés** gombra.
+   3.    Válassza a **Mentés** lehetőséget.
 
 **A kódban**
 1.    Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját és átirányítási URI azonosítóját használja az **ügyfél-azonosító** és az **RedirectUri** paraméterekhez a MSAL-ben.
@@ -188,12 +188,12 @@ Az Azure AD hozzáférési jogkivonatot a [MSAL](../../active-directory/develop/
               > [!NOTE]
               > A **szerepkör-hozzárendelés hozzáadása** panelen, a **hozzáférés hozzárendelése**, válassza az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** lehetőséget.
 
-        6.    Kattintson a **Mentés** gombra.
+        6.    Válassza a **Mentés** lehetőséget.
 
 **A kódban**
 
 >[!NOTE]
-> Használhatja a GitHubon elérhető szolgáltatási mintát.
+> Használhatja a [térbeli horgonyok mintájának](https://github.com/Azure/azure-spatial-anchors-samples)részeként elérhető [szolgáltatási mintát](https://github.com/Azure/azure-spatial-anchors-samples/tree/master/Sharing/SharingServiceSample) .
 
 1.    Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját, az alkalmazás titkos kulcsát és átirányítási URI-JÁT a MSAL **ügyfél-azonosító**, **titkos** és **RedirectUri** paramétereként használja.
 2.    Állítsa be a bérlő AZONOSÍTÓját saját Azure AD-bérlői AZONOSÍTÓra a MSAL-ben a **Authority** paraméterben.
@@ -270,7 +270,7 @@ A szolgáltatás alkalmazásaihoz, szolgáltatásaihoz vagy az Azure AD-felhaszn
 - **Térbeli horgonyok fiók közreműködője**. A szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat és lekérdezéseket hozhatnak létre, de nem törölhetik őket.
 - **Térbeli horgonyok fiókjának olvasója**. Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók csak térbeli horgonyokat tudnak lekérdezni. Nem hozhatnak létre újakat, törölhetik a meglévőket, vagy frissíthetik a metaadatokat. Ez a szerepkör jellemzően olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, de mások csak a környezetbe helyezett horgonyokat tudják visszahívni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozza létre első alkalmazását az Azure térbeli Horgonyokkal:
 

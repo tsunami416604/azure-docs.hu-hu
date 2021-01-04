@@ -4,7 +4,7 @@
   items:
     - name: Mi az a Translator?
       href: translator-info-overview.md
-    - name: Gyorsútmutató
+    - name: Első lépések
       href: quickstart-translator.md
     - name: Nyelvi támogatás
       href: language-support.md
@@ -56,30 +56,20 @@
       items:
         - name: 3-as verziójú Translator-referencia
           href: reference/v3-0-reference.md
-          items:
-            - name: Nyelvek
-              href: reference/v3-0-languages.md
-            - name: Fordítás
-              href: reference/v3-0-translate.md
-            - name: Átírás
-              href: reference/v3-0-transliterate.md
-            - name: Észlelés
-              href: reference/v3-0-detect.md
-            - name: BreakSentence
-              href: reference/v3-0-break-sentence.md
-            - name: Keresés a szótárban
-              href: reference/v3-0-dictionary-lookup.md
-            - name: Szótár – példák
-              href: reference/v3-0-dictionary-examples.md
-        - name: 2-es verziójú Translator-referencia (elavult)
-          href: reference/v2-0-reference.md
-          items:
-            - name: Szöveg átalakítása
-              href: transform-text.md
-            - name: A Collaborative Translation Framework (CTF) jelentéskészítés használata
-              href: ctf-reporting.md
-            - name: Az N számú legjobb fordítás visszaadása
-              href: return-n-best-translations.md
+        - name: Nyelvek
+          href: reference/v3-0-languages.md
+        - name: Fordítás
+          href: reference/v3-0-translate.md
+        - name: Átírás
+          href: reference/v3-0-transliterate.md
+        - name: Észlelés
+          href: reference/v3-0-detect.md
+        - name: BreakSentence
+          href: reference/v3-0-break-sentence.md
+        - name: Keresés a szótárban
+          href: reference/v3-0-dictionary-lookup.md
+        - name: Szótár – példák
+          href: reference/v3-0-dictionary-examples.md
         - name: Kérelmekre vonatkozó korlátok
           href: request-limits.md
     - name: További források

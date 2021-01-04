@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/15/2020
+ms.date: 12/21/2020
 ms.author: yohaddad
-ms.openlocfilehash: 2fb1ae2bbda55a04f4e76505a55b28372af00f33
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 7f683b5002fd31b599ae6fadeb82e5c6f5ce56a0
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606674"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708906"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
@@ -79,34 +79,31 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 
 
 ## <a name="november-2020-guest-os"></a>November 2020 vendég operációs rendszer
->[!NOTE] 
-
->A november vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások a november vendég operációs rendszer részét képezik. A lista módosítása változhat. 
 
 | Product Category (Termék kategóriája) | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
 | --- | --- | --- | --- | --- |
-|  Rel 20-11 OOB |  [4594442]  |  Legújabb összesítő frissítés | 6,25 | November 17, 2020 |
-|  Rel 20-11 OOB |  [4594441]  |  Legújabb összesítő frissítés | 5,49 | November 19., 2020 |
-|  Rel 20-11 |  [4580325]  |  Flash-frissítés | 3,91, 4,84, 5,49, 6,25 | Október 13., 2020 |
-|  Rel 20-11 |  [4586768]  |  IE összesítő frissítés | 2,104, 3,91, 4,84 | November 10, 2020 |
-|  Rel 20-11 |  [4578952]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | 2,104 | November 10, 2020 |
-|  Rel 20-11 |  [4578955]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | 2,104 | November 10, 2020 |
-|  Rel 20-11 |  [4578953]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | 4,84 | November 10, 2020 |
-|  Rel 20-11 |  [4578956]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | 4,84 | November 10, 2020 |
-|  Rel 20-11 |  [4578950]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | 3,91 | November 10, 2020 |
-|  Rel 20-11 |  [4578954]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | 3,91 | November 10, 2020 |
-|  Rel 20-11 |  [4578966]  |  A .NET-keretrendszer 3,5-es és 4.7.2 összesített frissítése | 6,25 | Október 13., 2020 |
-|  Rel 20-11 |  [4586827]  |  Havi összesítés | 2,104 | November 10, 2020 |
-|  Rel 20-11 |  [4586834]  |  Havi összesítés | 3,91 | November 10, 2020 |
-|  Rel 20-11 |  [4586845]  |  Havi összesítés | 4,84 | November 10, 2020 |
-|  Rel 20-11 |  [4566426]  |  Karbantartási verem frissítése | 3,91 | Július 14., 2020 |
-|  Rel 20-11 |  [4566425]  |  Karbantartási verem frissítése | 4,84 | Július 14., 2020 |
-|  Rel 20-11 OOB |  [4578013]  |  Önálló biztonsági frissítés | 4,84 | Augusztus 19., 2020 |
-|  Rel 20-11 |  [4576750]  |  Karbantartási verem frissítése | 5,49 | Sep 8, 2020 |
-|  Rel 20-11 |  [4580970]  |  Karbantartási verem frissítése | 2,104 | Október 13., 2020 |
-|  Rel 20-11 |  [4587735]  |  Karbantartási verem frissítése | 6,25 | November 10, 2020 |
-|  Rel 20-11 |  [4494175]  |  Mikrokód | 5,49 | Sep 1, 2020 |
-|  Rel 20-11 |  [4494174]  |  Mikrokód | 6,25 | Sep. szeptember 3., 2020 |
+|  Rel 20-11 OOB |  [4594442]  |  Legújabb összesítő frissítés | [6,25] | November 17, 2020 |
+|  Rel 20-11 OOB |  [4594441]  |  Legújabb összesítő frissítés | [5,49] | November 19., 2020 |
+|  Rel 20-11 |  [4580325]  |  Flash-frissítés | [3,91], [4,84], [5,49], [6,25] | Október 13., 2020 |
+|  Rel 20-11 |  [4586768]  |  IE összesítő frissítés | [2,104], [3,91], [4,84] | November 10, 2020 |
+|  Rel 20-11 |  [4578952]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | [2,104] | November 10, 2020 |
+|  Rel 20-11 |  [4578955]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | [2,104] | November 10, 2020 |
+|  Rel 20-11 |  [4578953]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | [4,84] | November 10, 2020 |
+|  Rel 20-11 |  [4578956]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | [4,84] | November 10, 2020 |
+|  Rel 20-11 |  [4578950]  |  A .NET-keretrendszer 3,5 biztonsági és minőségi összesítése | [3,91] | November 10, 2020 |
+|  Rel 20-11 |  [4578954]  |  A .NET-keretrendszer 4.5.2-es biztonsági és minőségi összesítése | [3,91] | November 10, 2020 |
+|  Rel 20-11 |  [4578966]  |  A .NET-keretrendszer 3,5-es és 4.7.2 összesített frissítése | [6,25] | Október 13., 2020 |
+|  Rel 20-11 |  [4586827]  |  Havi összesítés | [2,104] | November 10, 2020 |
+|  Rel 20-11 |  [4586834]  |  Havi összesítés | [3,91] | November 10, 2020 |
+|  Rel 20-11 |  [4586845]  |  Havi összesítés | [4,84] | November 10, 2020 |
+|  Rel 20-11 |  [4566426]  |  Karbantartási verem frissítése | [3,91] | Július 14., 2020 |
+|  Rel 20-11 |  [4566425]  |  Karbantartási verem frissítése | [4,84] | Július 14., 2020 |
+|  Rel 20-11 OOB |  [4578013]  |  Önálló biztonsági frissítés | [4,84] | Augusztus 19., 2020 |
+|  Rel 20-11 |  [4576750]  |  Karbantartási verem frissítése | [5,49] | Sep 8, 2020 |
+|  Rel 20-11 |  [4580970]  |  Karbantartási verem frissítése | [2,104] | Október 13., 2020 |
+|  Rel 20-11 |  [4587735]  |  Karbantartási verem frissítése | [6,25] | November 10, 2020 |
+|  Rel 20-11 |  [4494175]  |  Mikrokód | [5,49] | Sep 1, 2020 |
+|  Rel 20-11 |  [4494174]  |  Mikrokód | [6,25] | Sep. szeptember 3., 2020 |
 
 [4594442]: https://support.microsoft.com/kb/4594442
 [4594441]: https://support.microsoft.com/kb/4594441
@@ -130,6 +127,11 @@ Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Micr
 [4587735]: https://support.microsoft.com/kb/4587735
 [4494175]: https://support.microsoft.com/kb/4494175
 [4494174]: https://support.microsoft.com/kb/4494174
+[2,104]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3,91]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4,84]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5,49]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6,25]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 
 
