@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979963"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881509"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
@@ -51,7 +51,7 @@ A Change Analysis egy alkalmazás központi telepítési és konfigurációs ál
 
 Az erőforrás-függőségek változásai a webalkalmazások hibáit is okozhatják. Ha például egy webalkalmazás meghívja a Redis cache-t, a Redis cache SKU hatással lehet a webalkalmazás teljesítményére. A függőségek változásainak észleléséhez a Change Analysis ellenőrzi a webalkalmazás DNS-rekordját. Így minden olyan alkalmazás-összetevő változását azonosítja, amely problémákat okozhat.
 Jelenleg a következő függőségek támogatottak:
-- Web Apps
+- Webalkalmazások
 - Azure Storage
 - Azure SQL
 
@@ -183,7 +183,6 @@ Ha első alkalommal tekinti meg a változási előzményeket az alkalmazás-mód
     ```
 
 - **Nem sikerült regisztrálni a Microsoft. ChangeAnalysis erőforrás-szolgáltatót**. Ez az üzenet azt jelenti, hogy a felhasználói felület azonnal leállt, mert az erőforrás-szolgáltató regisztrálására irányuló kérést küldött, és nem kapcsolódik a jogosultsági problémákhoz. Valószínűleg ideiglenes internetkapcsolati probléma lehet. Próbálja meg frissíteni a lapot, és ellenőrizze az internetkapcsolatot. Ha a hiba továbbra is fennáll, forduljon a következőhöz: changeanalysishelp@microsoft.com
-- Nem **sikerült lekérdezni a Microsoft. ChangeAnalysis erőforrás-szolgáltatót** az *Azure Lighthouse-előfizetéssel nem támogatott, a módosítások csak az előfizetés otthoni bérlője esetében érhetők el*. A Change Analysis erőforrás-szolgáltatóra vonatkozó korlátozás most már regisztrálva van az Azure Lighthouse-előfizetésen keresztül a hazai bérlőn kívüli felhasználók számára. A közeljövőben várhatóan ez a korlátozás. Ha ez egy blokkolási probléma az Ön számára, van egy áthidaló megoldás, amely magában foglalja egy egyszerű szolgáltatásnév létrehozását és a szerepkör explicit módon történő hozzárendelését a hozzáférés engedélyezéséhez.  További információért forduljon a szolgáltatáshoz changeanalysishelp@microsoft.com .
 
 - **Ez a vártnál több időt vesz** igénybe. Ez az üzenet azt jelenti, hogy a regisztráció 2 percnél hosszabb időt vesz igénybe. Ez szokatlan, de nem feltétlenül jelenti azt, hogy valamilyen hiba történt. Megtekintheti az **előfizetéseket | Erőforrás-szolgáltató** a **Microsoft. ChangeAnalysis** erőforrás-szolgáltató regisztrációs állapotának kereséséhez. A felhasználói felület használatával törölheti, újra regisztrálhatja vagy frissítheti a regisztrációt, és megtekintheti, hogy ez segít-e. Ha a probléma továbbra is fennáll, forduljon changeanalysishelp@microsoft.com a támogatási szolgálathoz.
     ![Az RP-regisztráció túl hosszú ideig történő hibaelhárítása](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
@@ -192,7 +191,11 @@ Ha első alkalommal tekinti meg a változási előzményeket az alkalmazás-mód
 
 ![Képernyőkép a virtuális gép legutóbbi változásainak hibaelhárítási eszközének csempéről.](./media/change-analysis/analyze-recent-changes.png)
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="azure-lighthouse-subscription-is-not-supported"></a>Az Azure Lighthouse-előfizetés nem támogatott
+
+- Nem **sikerült lekérdezni a Microsoft. ChangeAnalysis erőforrás-szolgáltatót** az *Azure Lighthouse-előfizetéssel nem támogatott, a módosítások csak az előfizetés otthoni bérlője esetében érhetők el*. A Change Analysis erőforrás-szolgáltatóra vonatkozó korlátozás most már regisztrálva van az Azure Lighthouse-előfizetésen keresztül a hazai bérlőn kívüli felhasználók számára. A közeljövőben várhatóan ez a korlátozás. Ha ez egy blokkolási probléma az Ön számára, van egy áthidaló megoldás, amely magában foglalja egy egyszerű szolgáltatásnév létrehozását és a szerepkör explicit módon történő hozzárendelését a hozzáférés engedélyezéséhez.  További információért forduljon a szolgáltatáshoz changeanalysishelp@microsoft.com .
+
+## <a name="next-steps"></a>További lépések
 
 - Az [Azure app Services-alkalmazások](azure-web-apps.md)Application Insights engedélyezése.
 - Engedélyezze Application Insights az [Azure-beli virtuális gépek és az Azure-beli virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazásai](azure-vm-vmss-apps.md)számára.

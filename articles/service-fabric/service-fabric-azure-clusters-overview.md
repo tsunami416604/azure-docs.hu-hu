@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 25e6854491f35dd0aa46b5de218d312f57854760
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018919"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882211"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure-beli Service Fabric-fürtök áttekintése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürt részét képező számítógépet vagy virtuális gépet fürtcsomópont-csomópontnak nevezzük. A fürtök több ezer csomópontra is méretezhetők. Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével kiegyensúlyozza a szolgáltatás partíciójának replikáit és példányait. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric újra kiegyenlíti a partíciók replikáit és példányait a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon.
@@ -75,7 +75,7 @@ A Service Fabric a hozzáférés-vezérlést is támogatja, hogy korlátozza a h
 
 További információért olvassa el [Service Fabric szerepköralapú hozzáférés-vezérlés](service-fabric-cluster-security.md#service-fabric-role-based-access-control)című témakört.
 
-### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok) 
+### <a name="network-security-groups"></a>Hálózati biztonsági csoportok 
 Hálózati biztonsági csoportok (NSG) egy alhálózat, virtuális gép vagy adott hálózati adapter bejövő és kimenő forgalmát vezérlik.  Alapértelmezés szerint, ha több virtuális gép kerül ugyanarra a virtuális hálózatra, akkor bármely porton keresztül kommunikálhatnak egymással.  Ha korlátozni szeretné a számítógépek közötti kommunikációt, megadhatja a NSG a hálózat szegmentálásához vagy a virtuális gépek elkülönítéséhez.  Ha egy fürtben több csomópont-típus található, akkor a NSG az alhálózatokra is alkalmazhatja, hogy megakadályozza, hogy a különböző csomópont-típusokhoz tartozó gépek egymással kommunikáljanak egymással.  
 
 További információkért lásd: [biztonsági csoportok](../virtual-network/network-security-groups-overview.md)
@@ -86,7 +86,7 @@ Az alkalmazás iránti igények időbeli változása. Előfordulhat, hogy növel
 
 További információért olvassa el az [Azure-fürtök méretezését](service-fabric-cluster-scaling.md)ismertető témakört.
 
-## <a name="upgrading"></a>Frissítése
+## <a name="upgrading"></a>Frissítés
 Az Azure Service Fabric-fürt olyan erőforrás, amelyet Ön birtokol, de részben a Microsoft felügyeli. A Microsoft feladata, hogy kijavítja a mögöttes operációs rendszert, és Service Fabric Runtime-frissítéseket végezzen a fürtön. Beállíthatja, hogy a fürt automatikusan megkapja az automatikus futtatókörnyezet-frissítéseket, amikor a Microsoft új verziót szabadít fel, vagy egy támogatott futásidejű verziót szeretne kiválasztani. A futtatókörnyezet frissítésein kívül a fürtkonfiguráció, például a tanúsítványok vagy az alkalmazások portjai is frissíthetők.
 
 További információért olvassa el a [fürtök frissítését](service-fabric-cluster-upgrade.md)ismertető témakört.
@@ -94,16 +94,17 @@ További információért olvassa el a [fürtök frissítését](service-fabric-
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 A következő operációs rendszereket futtató virtuális gépeken hozhat létre fürtöket:
 
-| Operációs rendszer | A legkorábbi támogatott Service Fabric verziója |
-| --- | --- |
-| Windows Server 2012 R2 | Az összes verzió |
-| Windows Server 2016 | Az összes verzió |
-| Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6.0 |
-| Linux Ubuntu 18,04 | 7.1 |
+| Operációs rendszer | A legkorábbi támogatott Service Fabric verziója | Az utolsó támogatott Service Fabric verziója |
+| --- | --- | --- | 
+| Windows Server 2019 | 6.4.654.9590 | N.A. |
+| Windows Server 2016 | Az összes verzió | N.A. |
+| Windows Server 20H2 | 7.2.445.9590 | N.A. |
+| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
+| Windows Server 1803 | 6.4 | 7.2.445.9590 |
+| Windows Server 1709 | 6.0 | 7.2.445.9590 |
+| Windows Server 2012 | Az összes verzió | N.A. | 
+| Linux Ubuntu 16,04 | 6.0 | N.A. |
+| Linux Ubuntu 18,04 | 7.1 | N.A. |
 
 További információ: [támogatott fürtözött verziók az Azure-ban](./service-fabric-versions.md#supported-operating-systems)
 

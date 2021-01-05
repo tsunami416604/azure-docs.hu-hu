@@ -6,18 +6,18 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3213df378bc3b8403ebd11f899d722106de67a65
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094845"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882024"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-trigger Azure Functions
 
 A blob Storage-trigger új vagy frissített blob észlelésekor egy függvényt indít el. A blob tartalma [bemenetként van megadva a függvénynek](./functions-bindings-storage-blob-input.md).
 
-Az Azure Blob Storage-triggerhez általános célú Storage-fiók szükséges. A [hierarchikus névterekkel](../storage/blobs/data-lake-storage-namespace.md) rendelkező Storage v2-fiókok szintén támogatottak. Ha csak blobos fiókot szeretne használni, vagy ha az alkalmazás speciális igényekkel rendelkezik, tekintse át a trigger használatára vonatkozó alternatívákat.
+Az Azure Blob Storage-triggerhez általános célú Storage-fiók szükséges. A [hierarchikus névtereket](../storage/blobs/data-lake-storage-namespace.md) tartalmazó Storage v2-fiókok szintén támogatottak. Ha csak blobos fiókot szeretne használni, vagy ha az alkalmazás speciális igényekkel rendelkezik, tekintse át a trigger használatára vonatkozó alternatívákat.
 
 További információ a telepítésről és a konfigurációról: [Áttekintés](./functions-bindings-storage-blob.md).
 
@@ -114,6 +114,24 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Ez a függvény naplót ír a tárolóban lévő Blobok hozzáadásakor vagy frissítésekor `myblob` .
+
+```java
+@FunctionName("blobprocessor")
+public void run(
+  @BlobTrigger(name = "file",
+               dataType = "binary",
+               path = "myblob/{name}",
+               connection = "MyStorageAccountAppSetting") byte[] content,
+  @BindingName("name") String filename,
+  final ExecutionContext context
+) {
+  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő példa egy blob trigger kötést mutat be egy *function.jsa* fájlban és a [JavaScript-kódban](functions-reference-node.md) , amely a kötést használja. A függvény naplót ír, amikor egy blobot vesznek fel vagy frissülnek a `samples-workitems` tárolóban.
@@ -146,6 +164,34 @@ module.exports = function(context) {
     context.log('Node.js Blob trigger function processed', context.bindings.myBlob);
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Az alábbi példa bemutatja, hogyan hozhat létre olyan függvényt, amely akkor fut le, amikor egy fájlt hozzáadnak a `source` blob Storage-tárolóhoz.
+
+A függvény konfigurációs fájlja (_function.json_) tartalmaz egy kötést a (z) és a (z) értékkel `type` `blobTrigger` `direction` `in` .
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "source/{name}",
+      "connection": "MyStorageAccountConnectionString"
+    }
+  ]
+}
+```
+
+Itt látható a _run.ps1_ fájlhoz tartozó kód.
+
+```powershell
+param([byte[]] $InputBlob, $TriggerMetadata)
+
+Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($InputBlob.Length) bytes"
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -185,24 +231,6 @@ def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-Ez a függvény naplót ír a tárolóban lévő Blobok hozzáadásakor vagy frissítésekor `myblob` .
-
-```java
-@FunctionName("blobprocessor")
-public void run(
-  @BlobTrigger(name = "file",
-               dataType = "binary",
-               path = "myblob/{name}",
-               connection = "MyStorageAccountAppSetting") byte[] content,
-  @BindingName("name") String filename,
-  final ExecutionContext context
-) {
-  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
-}
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
@@ -213,7 +241,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  Az attribútum konstruktora egy elérésiút-karakterláncot vesz fel, amely jelzi a tárolót, és opcionálisan egy [blob-nevet](#blob-name-patterns). Bemutatunk egy példát:
+  Az attribútum konstruktora egy elérésiút-karakterláncot vesz fel, amely jelzi a tárolót, és opcionálisan egy [blob-nevet](#blob-name-patterns). Íme egy példa:
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -267,17 +295,21 @@ A használandó Storage-fiók a következő sorrendben van meghatározva:
 
 A C# parancsfájl nem támogatja az attribútumokat.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Az `@BlobTrigger` attribútummal hozzáférést biztosíthat a függvényt kiváltó blobhoz. A részletekért tekintse meg az [trigger példáját](#example) .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A PowerShell nem támogatja az attribútumokat.
+
 # <a name="python"></a>[Python](#tab/python)
 
 A Python nem támogatja az attribútumokat.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Az `@BlobTrigger` attribútummal hozzáférést biztosíthat a függvényt kiváltó blobhoz. A részletekért tekintse meg az [trigger példáját](#example) .
 
 ---
 
@@ -305,17 +337,21 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+Az `@BlobTrigger` attribútummal hozzáférést biztosíthat a függvényt kiváltó blobhoz. A részletekért tekintse meg az [trigger példáját](#example) .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A Blobok adataihoz való hozzáférés `context.bindings.<NAME>` `<NAME>` a *function.js* által megadott értéknek felel meg.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A blob-adatelérést olyan paraméterrel érheti el, amely megegyezik a kötés Name paraméterében megadott névvel a fájl _function.js_ .
+
 # <a name="python"></a>[Python](#tab/python)
 
-A blob-adatelérést a [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)típussal megadott paraméterrel érheti el. A részletekért tekintse meg az [trigger példáját](#example) .
-
-# <a name="java"></a>[Java](#tab/java)
-
-Az `@BlobTrigger` attribútummal hozzáférést biztosíthat a függvényt kiváltó blobhoz. A részletekért tekintse meg az [trigger példáját](#example) .
+A blob-adatelérést a [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true)típussal megadott paraméterrel érheti el. A részletekért tekintse meg az [trigger példáját](#example) .
 
 ---
 
@@ -374,6 +410,10 @@ Ha a blob neve *{20140101}-soundfile.mp3*, a `name` függvény kódjában talál
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+A metaadatok nem érhetők el a javában.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
@@ -383,13 +423,13 @@ module.exports = function (context, myBlob) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A metaadatok a `$TriggerMetadata` paraméterrel érhetők el.
+
 # <a name="python"></a>[Python](#tab/python)
 
 A metaadatok nem érhetők el a Pythonban.
-
-# <a name="java"></a>[Java](#tab/java)
-
-A metaadatok nem érhetők el a javában.
 
 ---
 
@@ -399,11 +439,11 @@ A Azure Functions futtatókörnyezet biztosítja, hogy a blob trigger függvény
 
 Azure Functions a blob-visszaigazolásokat egy *Azure-webjobs* nevű tárolóban tárolja – az Azure Storage-fiókban lévő gazdagépeket a Function alkalmazáshoz (amelyet az alkalmazás-beállítás határoz meg `AzureWebJobsStorage` ). A blob-visszaigazolás a következő információkat tartalmazhatja:
 
-* Az aktivált függvény ("*&lt; Function alkalmazás neve>*. Funkciók. a *&lt; függvény neve>*", például:" MyFunctionApp. functions. CopyBlob ")
+* Az aktivált függvény ( `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>` például: `MyFunctionApp.Functions.CopyBlob` )
 * A tároló neve
-* A blob típusa ("BlockBlob" vagy "PageBlob")
+* A blob típusa ( `BlockBlob` vagy `PageBlob` )
 * A blob neve
-* A ETag (a blob verziószáma, például: "0x8D1DC6E70A277EF")
+* A ETag (a blob verziószáma, például: `0x8D1DC6E70A277EF` )
 
 Egy blob újrafeldolgozásának kényszerítéséhez törölje az adott blobhoz tartozó blob-elismervényt az *Azure-webjobs-hosts* tárolóból manuálisan. Előfordulhat, hogy az újrafeldolgozás nem azonnal, hanem egy későbbi időpontban történik. Az azonnali újrafeldolgozáshoz az *Azure-webjobs-hosts/blobscaninfo* *scaninfo* -blob is frissíthető. Minden olyan blob, amelynek utolsó módosítási időbélyege a tulajdonság ismételt vizsgálatát követően történik `LatestScan` .
 
@@ -413,11 +453,11 @@ Ha egy blob trigger-függvény meghibásodik egy adott blobnál, Azure Functions
 
 Ha mind az 5 próbálkozás sikertelen, Azure Functions hozzáadja az üzenetet egy *webjobs-blobtrigger-méreg* nevű Storage-várólistához. Az újrapróbálkozások maximális száma konfigurálható. Ugyanez a MaxDequeueCount-beállítás a blob-kezelő és a méreg üzenetsor-üzenetek kezelésére szolgál. A méreg-Blobok üzenetsor-üzenete egy JSON-objektum, amely a következő tulajdonságokat tartalmazza:
 
-* FunctionId (a Format *&lt; függvény alkalmazásának neve>*. Funkciók. *&lt; függvény neve>*)
-* BlobType ("BlockBlob" vagy "PageBlob")
+* FunctionId (formátum `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>` )
+* BlobType ( `BlockBlob` vagy `PageBlob` )
 * ContainerName
 * BlobName
-* ETag (blob-verzió azonosítója, például: "0x8D1DC6E70A277EF")
+* ETag (blob-verzió azonosítója, például: `0x8D1DC6E70A277EF` )
 
 ## <a name="concurrency-and-memory-usage"></a>Egyidejűség és memóriahasználat
 
@@ -427,7 +467,7 @@ A blob-trigger belsőleg használ egy várólistát, így az egyidejű függvén
 
 A JavaScript és a Java függvények a teljes blobot a memóriába töltik be, a C#-függvények pedig a következőhöz kötődnek: `string` vagy `Byte[]` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [BLOB Storage-adat olvasása függvény futtatásakor](./functions-bindings-storage-blob-input.md)
 - [BLOB Storage-adatok írása függvényből](./functions-bindings-storage-blob-output.md)

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a093fe330ccbecc33cd8dac03d6425655e90366d
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 085ba4d9d4e78acec4505ddb0e9e89d4e0b5c4a3
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760469"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881480"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>ML-modellek betanítása és nyomon követése MLflow és Azure Machine Learning (előzetes verzió)
 
@@ -65,6 +65,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
 * Telepítse az `azureml-mlflow` csomagot. 
     * Ez a csomag automatikusan bevezeti a `azureml-core` [Azure Machine learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t, amely biztosítja a kapcsolatot a MLflow a munkaterület eléréséhez.
 * [Hozzon létre egy Azure Machine learning-munkaterület](how-to-manage-workspace.md).
+    * Megtudhatja, [hogy mely hozzáférési engedélyek szükségesek a MLflow műveleteinek elvégzéséhez a munkaterületen](how-to-assign-roles.md#mlflow-operations).
 
 ## <a name="track-local-runs"></a>Helyi futtatások nyomon követése
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/04/2021
 ms.author: victorh
-ms.openlocfilehash: 197d48a2f5368111ec194a18f86aedf5ad78e1b2
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 855c06b610fb8166f6f2dfcf37af34efb3713ffe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565619"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883221"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure Firewall DNS-beállítások
 
@@ -29,7 +29,7 @@ A DNS-kiszolgáló karbantartja és feloldja a tartományneveket az IP-címekre.
 
 1. A Azure Firewall **Beállítások** területen válassza a **DNS-beállítások** elemet.
 2. A **DNS-kiszolgálók** területen beírhatja vagy hozzáadhat olyan meglévő DNS-kiszolgálókat, amelyek korábban meg lettek adva a virtuális hálózaton.
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
 A tűzfal most átirányítja a DNS-forgalmat a megadott DNS-kiszolgálókra a névfeloldáshoz.
 
@@ -65,13 +65,16 @@ $azFw | Set-AzFirewall
 
 Beállíthatja, hogy a Azure Firewall DNS-proxyként működjön. A DNS-proxy az ügyfél virtuális gépei által a DNS-kiszolgálóra irányuló DNS-kérések közti közvetítő. Ha egyéni DNS-kiszolgálót állít be, akkor engedélyezze a DNS-proxyt a DNS-feloldások elkerüléséhez, és engedélyezze a teljes tartománynevek (FQDN) szűrését a hálózati szabályokban.
 
+:::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="D N S proxy-konfiguráció egy egyéni D N kiszolgáló használatával.":::
+
+
 Ha nem engedélyezi a DNS-proxyt, akkor előfordulhat, hogy az ügyféltől érkező DNS-kérések egy másik időpontban utaznak egy DNS-kiszolgálóra, vagy más választ adnak vissza a tűzfalhoz képest. A DNS-proxy Azure Firewall az ügyfelek kéréseinek elérési útjában az inkonzisztencia elkerülése érdekében.
 
 Ha Azure Firewall DNS-proxy, két gyorsítótárazási függvény lehetséges:
 
-- **Pozitív gyorsítótár** : a DNS-feloldás sikeres. A tűzfal a csomag vagy objektum TTL (time to Live) értékét használja. 
+- **Pozitív gyorsítótár**: a DNS-feloldás sikeres. A tűzfal a csomag vagy objektum TTL (time to Live) értékét használja. 
 
-- **Negatív gyorsítótár** : a DNS-feloldás nem válaszol, vagy nincs megoldás. A tűzfal egy órára gyorsítótárazza ezt az információt.
+- **Negatív gyorsítótár**: a DNS-feloldás nem válaszol, vagy nincs megoldás. A tűzfal egy órára gyorsítótárazza ezt az információt.
 
 A DNS-proxy az összes megoldott IP-címet tárolja a hálózati szabályok teljes tartománynevéről. Ajánlott eljárásként használjon olyan teljes tartományneveket, amelyek egy IP-címhez vannak feloldva.  
 
@@ -92,7 +95,7 @@ A DNS-proxy konfigurálásához konfigurálnia kell a virtuális hálózati DNS-
 2. A **Beállítások** területen válassza a **DNS-kiszolgálók** elemet.
 3. A **DNS-kiszolgálók** területen válassza az **Egyéni** lehetőséget.
 4. Adja meg a tűzfal magánhálózati IP-címét.
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 6. Indítsa újra a virtuális hálózathoz csatlakozó virtuális gépeket, hogy azok hozzá legyenek rendelve az új DNS-kiszolgáló beállításaihoz. A virtuális gépek továbbra is a jelenlegi DNS-beállításokat használják, amíg újra nem indulnak.
 
 ##### <a name="enable-dns-proxy"></a>DNS-proxy engedélyezése
@@ -101,7 +104,7 @@ A DNS-proxy konfigurálásához konfigurálnia kell a virtuális hálózati DNS-
 2. A **Beállítások** területen válassza a **DNS-beállítások** elemet.
 3. Alapértelmezés szerint a **DNS-proxy** le van tiltva. Ha ez a beállítás engedélyezve van, a tűzfal figyeli a 53-es portot, és továbbítja a DNS-kéréseket a konfigurált DNS-kiszolgálókra.
 4. Tekintse át a **DNS-kiszolgálók** konfigurációját, és győződjön meg arról, hogy a beállítások megfelelőek-e a környezetéhez.
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
 :::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="A D N S proxy beállításait bemutató képernyőkép.":::
 
@@ -158,6 +161,6 @@ $azFw.DNSEnableProxy = $true
 $azFw | Set-AzFirewall
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [FQDN-szűrés a hálózati szabályokban](fqdn-filtering-network-rules.md)

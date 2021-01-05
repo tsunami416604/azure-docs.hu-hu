@@ -2,13 +2,13 @@
 title: Az Azure Event Hubs rögzített adatok beolvasása egy Python-alkalmazásból (legújabb)
 description: Ebből a cikkből megtudhatja, hogyan írhat Python-kódot az Event hub számára elküldett adatok rögzítéséhez, és beolvashatja az Azure Storage-fiókból a rögzített események adatait.
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: f513b35e300141f16ee4c4880bc54aaf37945d65
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.date: 01/04/2021
+ms.openlocfilehash: acc2ce04add5fd837e9edc789e9616a9f04fb4b9
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109912"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883197"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Az Azure Storage-ban tárolt Event Hubs-információk rögzítése és olvasása a Python használatával (Azure-eventhub)
 
@@ -27,7 +27,11 @@ Ebben a rövid útmutatóban a következőket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Python 2,7 és 3,5 vagy újabb, a PIP telepítve és frissítve.  
+- A Python és a PIP, valamint a következő csomagok vannak telepítve. A cikkben szereplő kód ezen verziók alapján lett tesztelve. 
+    - Python 3.7
+    - Azure-eventhub 5.2.0
+    - Azure-Storage – blob 12.6.0
+    - Avro – python3 1.10.1
 - Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.  
 - Aktív Event Hubs névtér és Event hub.
 [Hozzon létre egy Event Hubs névteret és egy Event hubot a névtérben](event-hubs-create.md). Jegyezze fel a Event Hubs névtér nevét, az Event hub nevét és a névtér elsődleges elérési kulcsát. A hozzáférési kulcs beszerzéséhez tekintse meg [Event Hubs kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)című témakört. Az alapértelmezett kulcsnév a *RootManageSharedAccessKey*. Ebben a rövid útmutatóban csak az elsődleges kulcsra van szükség. Nincs szüksége a kapcsolatok karakterláncára.  
@@ -155,6 +159,13 @@ Ebben a példában a rögzített adattárolók tárolása az Azure Blob Storage-
    pip install azure-eventhub
    pip install avro-python3
    ```
+
+    > [!NOTE]
+    > A cikkben szereplő kód ezen verziók alapján lett tesztelve. 
+    > - Python 3.7
+    > - Azure-eventhub 5.2.0
+    > - Azure-Storage – blob 12.6.0
+    > - Avro – python3 1.10.1
 2. Módosítsa a könyvtárat arra a könyvtárba, ahová a *Sender.py* és a *capturereader.py* mentette, majd futtassa a következő parancsot:
    
    ```
@@ -170,7 +181,7 @@ Ebben a példában a rögzített adattárolók tárolása az Azure Blob Storage-
 
    Ez a rögzítési processzor a helyi könyvtár használatával tölti le az összes blobot a Storage-fiókból és-tárolóból. Feldolgozza azokat, amelyek nem üresek, és az eredményeket CSV-fájlként írja a helyi könyvtárba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse [meg a Python-mintákat a githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples). 
 
 

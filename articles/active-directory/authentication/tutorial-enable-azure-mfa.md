@@ -10,18 +10,18 @@ ms.author: justinha
 author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32228e90e3cfc064cd5be9cd0655f321ab3e2809
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741150"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881310"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>Oktatóanyag: a felhasználói bejelentkezési események biztonságossá tétele az Azure AD-vel Multi-Factor Authentication
 
 A többtényezős hitelesítés (MFA) olyan folyamat, amelyben a rendszer a bejelentkezési esemény során kéri a felhasználót, hogy további azonosítási formákat keressen. Ezt a kérést lehet megadnia a mobiloddal vagy egy ujjlenyomat-vizsgálat megadásához. Ha a hitelesítés második formáját igényli, a biztonság megnövekszik, mivel ez a további tényező nem a támadók számára könnyen beszerezhető vagy duplikálható.
 
-Az Azure AD Multi-Factor Authentication és a feltételes hozzáférési házirendek rugalmasságot biztosítanak a felhasználók számára az adott bejelentkezési események során a többtényezős hitelesítés engedélyezéséhez.
+Az Azure AD Multi-Factor Authentication és a feltételes hozzáférési házirendek rugalmasságot biztosítanak a felhasználók számára az adott bejelentkezési események során a többtényezős hitelesítés engedélyezéséhez. A következő [videó bemutatja, hogyan konfigurálhatja és kényszerítheti a többtényezős hitelesítés használatát a bérlőben](https://www.youtube.com/watch?v=qNndxl7gqVM) (**ajánlott**)
 
 > [!IMPORTANT]
 > Ez az oktatóanyag egy rendszergazdát mutat be az Azure AD-Multi-Factor Authentication engedélyezéséhez.

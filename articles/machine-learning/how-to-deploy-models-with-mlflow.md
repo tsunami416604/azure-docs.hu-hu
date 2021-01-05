@@ -11,27 +11,27 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1159a6cfda6b877f04573c85fa437ce3bff81af1
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: b905b050752e2a6b7acd11e82420c0b0203dfcd1
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97761744"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882194"
 ---
 # <a name="deploy-mlflow-models-with-azure-machine-learning-preview"></a>MLflow-modellek üzembe helyezése Azure Machine Learningsal (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan helyezheti üzembe a MLflow-modellt Azure Machine Learning webszolgáltatásként, így kihasználhatja és alkalmazhatja Azure Machine Learning modell-kezelési és adateltolódás-észlelési képességeit az éles modellekben.
+Ebből a cikkből megtudhatja, hogyan helyezheti üzembe a [MLflow](https://www.mlflow.org) -modellt Azure Machine learning webszolgáltatásként, így kihasználhatja és alkalmazhatja Azure Machine learning modell-kezelési és adateltolódás-észlelési képességeit az éles modellekben.
 
 Azure Machine Learning a következő telepítési konfigurációkat kínálja:
 * Az Azure Container instance (ACI), amely egy megfelelő választás egy gyors fejlesztési-tesztelési üzembe helyezéshez.
 * Az Azure Kubernetes szolgáltatás (ak), amely méretezhető éles környezetekben való üzembe helyezéshez ajánlott.
 
-A [MLflow](https://www.mlflow.org) egy nyílt forráskódú kódtár a gépi tanulási kísérletek életciklusának kezeléséhez. A Azure Machine Learning való integrációja lehetővé teszi, hogy ezt a kezelést a modell betanítási fázisán túlmenően az éles modell üzembe helyezési fázisában is kiterjessze.
+A MLflow egy nyílt forráskódú kódtár a gépi tanulási kísérletek életciklusának kezeléséhez. A Azure Machine Learning való integrációja lehetővé teszi, hogy ezt a kezelést a modell betanítási fázisán túlmenően az üzemi modell üzembe helyezési fázisán keresztül bővítse.
 
 >[!NOTE]
 > A nyílt forráskódú kódtár MLflow gyakran változnak. Ennek megfelelően a Azure Machine Learning és a MLflow-integráción keresztül elérhető funkciókat előzetes verziónak kell tekinteni, és a Microsoft nem támogatja teljes mértékben.
 
-A következő ábra azt mutatja be, hogy a MLflow üzembe helyezési API-val a meglévő MLflow-modelljét üzembe helyezheti Azure Machine Learning webszolgáltatásként, a keretrendszerük, a PyTorch, a Tensorflow, a scikit-Learn, a ONNX stb., valamint az üzemi modellek a munkaterületen való kezeléséhez.
+Az alábbi ábra azt mutatja be, hogy a MLflow üzembe helyezése API-val és Azure Machine Learning a népszerű keretrendszerekkel létrehozott modelleket, például a PyTorch, a Tensorflow, a scikit-Learn vagy a Azure Machine Learning webszolgáltatásokat, valamint a munkaterületen felügyelheti. 
 
 ![ mlflow-modellek üzembe helyezése az Azure Machine learning szolgáltatással](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
@@ -40,9 +40,11 @@ A következő ábra azt mutatja be, hogy a MLflow üzembe helyezési API-val a m
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Állítsa be a MLflow követési URI-t a Azure Machine learning összekapcsolásához](how-to-use-mlflow.md).
+* Gépi tanulási modell. Ha nem rendelkezik betanított modellel, keresse meg az [ebben](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) a tárházban legjobban illeszkedő jegyzetfüzet-példát, és kövesse az útmutatását. 
+* [Állítsa be a MLflow követési URI-t a Azure Machine learning összekapcsolásához](how-to-use-mlflow.md#track-local-runs).
 * Telepítse az `azureml-mlflow` csomagot. 
     * Ez a csomag automatikusan bevezeti a `azureml-core` [Azure Machine learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t, amely biztosítja a kapcsolatot a MLflow a munkaterület eléréséhez.
+* Megtudhatja, [hogy mely hozzáférési engedélyek szükségesek a MLflow műveleteinek elvégzéséhez a munkaterületen](how-to-assign-roles.md#mlflow-operations). 
 
 ## <a name="deploy-to-aci"></a>Üzembe helyezés az ACI-ban
 
@@ -140,7 +142,7 @@ Ha nem tervezi az üzembe helyezett webszolgáltatás használatát, `service.de
 
 ## <a name="example-notebooks"></a>Példajegyzetfüzetek
 
-Az [Azure ml jegyzetfüzetekkel rendelkező MLflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
+A [Azure Machine learning notebookokkal rendelkező MLflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
 
 > [!NOTE]
 > A mlflow-t használó példák Közösség által vezérelt tárháza a következő címen érhető el: https://github.com/Azure/azureml-examples .
@@ -150,3 +152,4 @@ Az [Azure ml jegyzetfüzetekkel rendelkező MLflow](https://github.com/Azure/Mac
 * [A modellek kezelése](concept-model-management-and-deployment.md).
 * Figyelje az [adateltolódáshoz](./how-to-enable-data-collection.md)használt üzemi modelleket.
 * [Nyomon követheti Azure Databricks futtatását a MLflow](how-to-use-mlflow-azure-databricks.md).
+

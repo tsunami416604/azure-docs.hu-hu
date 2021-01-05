@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5f9a110247d4ec93c8f3fb95fc9ed61eb6806787
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305161"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883248"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -75,7 +75,7 @@ Azure Policy a beépített és a minták a [Azure Policy mintákban](../samples/
 A **DisplayName** és a **Leírás** használatával azonosíthatja a házirend-definíciót, és megadhatja a környezetét a használathoz. a **DisplayName** maximális hossza _128_ karakter, és a **Leírás** legfeljebb _512_ karakter hosszúságú lehet.
 
 > [!NOTE]
-> A házirend-definíció létrehozása vagy frissítése során a JSON-on kívüli tulajdonságok definiálják az **azonosítót** , a **típust** és a **nevet** , és nem szükségesek a JSON-fájlban. Az SDK-n keresztüli szabályzat-definíció beolvasása az **azonosító** , a **típus** és a **név** tulajdonságokat adja vissza a JSON részeként, de mindegyik írásvédett információ a házirend-definícióhoz kapcsolódik.
+> A házirend-definíció létrehozása vagy frissítése során a JSON-on kívüli tulajdonságok definiálják az **azonosítót**, a **típust** és a **nevet** , és nem szükségesek a JSON-fájlban. Az SDK-n keresztüli szabályzat-definíció beolvasása az **azonosító**, a **típus** és a **név** tulajdonságokat adja vissza a JSON részeként, de mindegyik írásvédett információ a házirend-definícióhoz kapcsolódik.
 
 ## <a name="type"></a>Típus
 
@@ -106,7 +106,7 @@ Javasoljuk, hogy a legtöbb esetben állítsa be a **módot** `all` . A portálo
 
 A következő erőforrás-szolgáltatói mód teljes mértékben támogatott:
 
-- `Microsoft.Kubernetes.Data` Az Azure-beli Kubernetes-fürtök kezeléséhez. Az erőforrás-szolgáltatói üzemmódot használó definíciók a következő hatásokat használják: _naplózás_ , _Megtagadás_ és _Letiltva_. A [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effektus használata _elavult_.
+- `Microsoft.Kubernetes.Data` Az Azure-beli Kubernetes-fürtök kezeléséhez. Az erőforrás-szolgáltatói üzemmódot használó definíciók a következő hatásokat használják: _naplózás_, _Megtagadás_ és _Letiltva_. A [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effektus használata _elavult_.
 
 A következő erőforrás-szolgáltatói módok jelenleg **előzetes** verzióként támogatottak:
 
@@ -128,7 +128,7 @@ A választható `metadata` tulajdonság a házirend-definícióval kapcsolatos a
 - `deprecated` (Boolean): igaz vagy hamis jelző, ha a házirend-definíció _elavultként_ van megjelölve.
 
 > [!NOTE]
-> A Azure Policy szolgáltatás a, a `version` `preview` és a tulajdonságot használja a `deprecated` beépített szabályzat-definícióra vagy kezdeményezésre és állapotra való váltáshoz. A formátuma `version` : `{Major}.{Minor}.{Patch}` . Bizonyos állapotokat (például az _elavult_ vagy az _előnézet_ ) a `version` tulajdonsághoz vagy egy másik tulajdonsághoz ( **Boolean** ) kell hozzáfűzni. További információ a Azure Policy-verziókról: [beépített verziószámozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
+> A Azure Policy szolgáltatás a, a `version` `preview` és a tulajdonságot használja a `deprecated` beépített szabályzat-definícióra vagy kezdeményezésre és állapotra való váltáshoz. A formátuma `version` : `{Major}.{Minor}.{Patch}` . Bizonyos állapotokat (például az _elavult_ vagy az _előnézet_) a `version` tulajdonsághoz vagy egy másik tulajdonsághoz ( **Boolean**) kell hozzáfűzni. További információ a Azure Policy-verziókról: [beépített verziószámozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
 
 ## <a name="parameters"></a>Paraméterek
 
@@ -143,7 +143,7 @@ A paraméterek ugyanúgy működnek, mint a házirendek létrehozásakor. A ház
 A paraméter a következő tulajdonságokkal rendelkezik, amelyek a szabályzat-definícióban használatosak:
 
 - `name`: A paraméter neve. A házirend- `parameters` szabályon belüli központi telepítési függvény használja. További információ: [paraméter értékének használata](#using-a-parameter-value).
-- `type`: Meghatározza, hogy a paraméter **karakterlánc** , **tömb** , **objektum** , **logikai** , **egész** , **lebegőpontos** vagy **datetime**.
+- `type`: Meghatározza, hogy a paraméter **karakterlánc**, **tömb**, **objektum**, **logikai**, **egész**, **lebegőpontos** vagy **datetime**.
 - `metadata`: Meghatározza a Azure Portal által elsődlegesen használt altulajdonságokat a felhasználóbarát információk megjelenítéséhez:
   - `description`: Annak magyarázata, hogy mit használ a paraméter. A használható az elfogadható értékek példáinak megadására.
   - `displayName`: A (z) paraméterben a portálon megjelenő rövid név.
@@ -189,7 +189,7 @@ Ez a példa a **allowedLocations** paraméterre hivatkozik, amely a [paraméter 
 
 ### <a name="strongtype"></a>strongType
 
-A `metadata` tulajdonságon belül a **strongType** használatával több választási lehetőséget is megadhat a Azure Portalon belül. a **strongType** lehet egy támogatott _erőforrástípus_ vagy egy megengedett érték. Annak megállapításához, hogy az _erőforrástípus_ érvényes-e a **strongType** , használja a [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider). A **strongType** _erőforrástípus_ formátuma `<Resource Provider>/<Resource Type>` . Például: `Microsoft.Network/virtualNetworks/subnets`.
+A `metadata` tulajdonságon belül a **strongType** használatával több választási lehetőséget is megadhat a Azure Portalon belül. a **strongType** lehet egy támogatott _erőforrástípus_ vagy egy megengedett érték. Annak megállapításához, hogy az _erőforrástípus_ érvényes-e a **strongType**, használja a [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider). A **strongType** _erőforrástípus_ formátuma `<Resource Provider>/<Resource Type>` . Például: `Microsoft.Network/virtualNetworks/subnets`.
 
 Bizonyos, a **Get-AzResourceProvider** által nem visszaadott _erőforrástípusok_ támogatottak. Ezek a típusok a következők:
 
@@ -284,7 +284,7 @@ A feltétel azt értékeli, hogy egy **mező** vagy az **érték** -hozzáféré
   `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
-**Kevesebb** , **lessOrEquals** , **nagyobb** és **greaterOrEquals** esetén, ha a tulajdonság típusa nem egyezik a feltétel típusával, a rendszer hibát jelez. A karakterlánc-összehasonlítások használata a használatával történik `InvariantCultureIgnoreCase` .
+**Kevesebb**, **lessOrEquals**, **nagyobb** és **greaterOrEquals** esetén, ha a tulajdonság típusa nem egyezik a feltétel típusával, a rendszer hibát jelez. A karakterlánc-összehasonlítások használata a használatával történik `InvariantCultureIgnoreCase` .
 
 A **hasonló** és **notLike** feltételek használatakor helyettesítő karaktert kell megadni `*` az értékben.
 Az érték legfeljebb egy helyettesítő karakterből állhat `*` .
@@ -358,7 +358,7 @@ A következő példában a `concat` **TagName** paraméter értékének megadás
 A feltételek az **érték** használatával is létrehozhatók. az **érték** a [paraméterekkel](#parameters), a [támogatott sablon-funkciókkal](#policy-functions)vagy a literálokkal kapcsolatos feltételeket ellenőrzi. az **érték** a támogatott [feltételekkel](#conditions)párosítva van.
 
 > [!WARNING]
-> Ha egy _sablon függvény_ eredménye hibát jelez, a szabályzat kiértékelése sikertelen lesz. A sikertelen értékelés implicit **Megtagadás**. További információ: a [sablon meghibásodásának elkerülése](#avoiding-template-failures). A [enforcementMode](./assignment-structure.md#enforcement-mode) használatával **DoNotEnforce** megakadályozhatja az új vagy frissített erőforrások sikertelen értékelésének hatását az új házirend-definíció tesztelése és érvényesítése során.
+> Ha egy _sablon függvény_ eredménye hibát jelez, a szabályzat kiértékelése sikertelen lesz. A sikertelen értékelés implicit **Megtagadás**. További információ: a [sablon meghibásodásának elkerülése](#avoiding-template-failures). A [enforcementMode](./assignment-structure.md#enforcement-mode) használatával  megakadályozhatja az új vagy frissített erőforrások sikertelen értékelésének hatását az új házirend-definíció tesztelése és érvényesítése során.
 
 #### <a name="value-examples"></a>Példák az értékekre
 
@@ -418,7 +418,7 @@ A _template functions_ in **Value** használata számos összetett beágyazott f
 }
 ```
 
-A fenti példában az [alsztring ()](../../../azure-resource-manager/templates/template-functions-string.md#substring) érték a **név** első három karakterének **ABC** -re való összevetését használja. Ha a **név** rövidebb, mint három karakter, a `substring()` függvény hibát eredményez. Ez a hiba azt eredményezi, hogy a házirend **megtagadási** hatást vált ki.
+A fenti példában az [alsztring ()](../../../azure-resource-manager/templates/template-functions-string.md#substring) érték a **név** első három karakterének **ABC**-re való összevetését használja. Ha a **név** rövidebb, mint három karakter, a `substring()` függvény hibát eredményez. Ez a hiba azt eredményezi, hogy a házirend **megtagadási** hatást vált ki.
 
 Ehelyett a [IF ()](../../../azure-resource-manager/templates/template-functions-logical.md#if) függvény használatával ellenőrizze, hogy az első három **karakter egyenlő-e** az **ABC** -vel anélkül, hogy a **név** három karakternél rövidebb legyen, ami hibát okozhat:
 
@@ -436,7 +436,7 @@ Ehelyett a [IF ()](../../../azure-resource-manager/templates/template-functions-
 }
 ```
 
-A módosított szabályzattal rendelkező szabály a `if()` **név** hosszát ellenőrzi, mielőtt egy olyan értéket próbál meg elérni, `substring()` amely kevesebb mint három karakterből áll. Ha a **név** túl rövid, a "nem az ABC-től kezdődően" értéket adja vissza, és az **ABC** -hez képest. Az **ABC** -vel nem kezdődő rövid névvel rendelkező erőforrás továbbra is meghiúsul a házirend-szabályban, de az értékelés során már nem okoz hibát.
+A módosított szabályzattal rendelkező szabály a `if()` **név** hosszát ellenőrzi, mielőtt egy olyan értéket próbál meg elérni, `substring()` amely kevesebb mint három karakterből áll. Ha a **név** túl rövid, a "nem az ABC-től kezdődően" értéket adja vissza, és az **ABC**-hez képest. Az **ABC** -vel nem kezdődő rövid névvel rendelkező erőforrás továbbra is meghiúsul a házirend-szabályban, de az értékelés során már nem okoz hibát.
 
 ### <a name="count"></a>Darabszám
 
@@ -569,13 +569,13 @@ További információ a tömb tulajdonságainak Azure Policy való használatár
 
 Azure Policy a következő típusú hatásokat támogatja:
 
-- **Hozzáfűzés** : hozzáadja a mezők meghatározott készletét a kéréshez.
-- **Naplózás** : figyelmeztetési esemény generálása a tevékenység naplójában, de a kérelem nem sikerül
-- **AuditIfNotExists** : figyelmeztetési eseményt állít elő a tevékenység naplójában, ha nem létezik kapcsolódó erőforrás
-- **Megtagadás** : eseményt hoz létre a tevékenység naplójában, és sikertelenül kéri a kérést.
-- **DeployIfNotExists** : egy kapcsolódó erőforrás üzembe helyezése, ha még nem létezik
-- **Letiltva** : nem értékeli ki a házirend-szabálynak való megfeleléshez szükséges erőforrásokat
-- **Módosítás** : a definiált címkék hozzáadását, frissítését vagy eltávolítását egy erőforrásból
+- **Hozzáfűzés**: hozzáadja a mezők meghatározott készletét a kéréshez.
+- **Naplózás**: figyelmeztetési esemény generálása a tevékenység naplójában, de a kérelem nem sikerül
+- **AuditIfNotExists**: figyelmeztetési eseményt állít elő a tevékenység naplójában, ha nem létezik kapcsolódó erőforrás
+- **Megtagadás**: eseményt hoz létre a tevékenység naplójában, és sikertelenül kéri a kérést.
+- **DeployIfNotExists**: egy kapcsolódó erőforrás üzembe helyezése, ha még nem létezik
+- **Letiltva**: nem értékeli ki a házirend-szabálynak való megfeleléshez szükséges erőforrásokat
+- **Módosítás**: a definiált címkék hozzáadását, frissítését vagy eltávolítását egy erőforrásból
 - **EnforceOPAConstraint** (elavult): az Azure-beli önfelügyelt Kubernetes-fürtökhöz az Open Policy Agent beléptetési vezérlőt konfigurálja forgalomirányító v3-vel
 - **EnforceRegoPolicy** (elavult): az Azure Kubernetes Service-ben az Open Policy Agent beléptetési vezérlőt a forgalomirányító v2 protokollal konfigurálja
 
@@ -600,16 +600,16 @@ Az összes [Resource Manager-sablon funkció](../../../azure-resource-manager/te
 
 A következő függvény használható egy házirend-szabályban, de eltér a használattól egy Azure Resource Manager sablonban (ARM-sablon):
 
-- `utcNow()` – Az ARM-sablonoktól eltérően ez a tulajdonság a _defaultValue_ -n kívül is használható.
+- `utcNow()` – Az ARM-sablonoktól eltérően ez a tulajdonság a _defaultValue_-n kívül is használható.
   - Egy olyan karakterláncot ad vissza, amely az univerzális ISO 8601 DateTime formátumú aktuális dátumra és időpontra van beállítva `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
 
 A következő függvények csak a házirend-szabályokban érhetők el:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **datetime** : [Required] String-String az univerzális ISO 8601 datetime formátumban éééé-hh-NNTóó: PP: mm. FFFFFFFZ'
-  - **numberOfDaysToAdd** : [kötelező] egész szám – hozzáadandó napok száma
+  - **datetime**: [Required] String-String az univerzális ISO 8601 datetime formátumban éééé-hh-NNTóó: PP: mm. FFFFFFFZ'
+  - **numberOfDaysToAdd**: [kötelező] egész szám – hozzáadandó napok száma
 - `field(fieldName)`
-  - **Mezőnév** : [kötelező] karakterlánc – a beolvasandó [mező](#fields) neve
+  - **Mezőnév**: [kötelező] karakterlánc – a beolvasandó [mező](#fields) neve
   - Annak az erőforrásnak az értékét adja vissza, amelyet az IF feltétel kiértékel.
   - `field` elsődlegesen a **AuditIfNotExists** és a **DeployIfNotExists** használja a kiértékelt erőforráson található hivatkozási mezőkre. Erre a használatra példa látható az [DeployIfNotExists példában](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
@@ -629,8 +629,8 @@ A következő függvények csak a házirend-szabályokban érhetők el:
 
 
 - `ipRangeContains(range, targetRange)`
-    - **tartomány** : [kötelező] karakterlánc – karakterlánc, amely az IP-címek tartományát határozza meg.
-    - **targetRange** : [kötelező] karakterlánc-karakterlánc, amely az IP-címek tartományát határozza meg.
+    - **tartomány**: [kötelező] karakterlánc – karakterlánc, amely az IP-címek tartományát határozza meg.
+    - **targetRange**: [kötelező] karakterlánc-karakterlánc, amely az IP-címek tartományát határozza meg.
 
     Azt adja vissza, hogy a megadott IP-címtartomány tartalmazza-e a célként megadott IP-címtartományt. Az üres tartományok, illetve az IP-családok közötti keverés nem engedélyezett, és kiértékelési hibát eredményez.
 
@@ -669,25 +669,6 @@ Az aliasok listája mindig növekszik. A Azure Policy által jelenleg támogatot
   A [Visual Studio Code](../how-to/extension-for-vscode.md) -hoz készült Azure Policy-bővítmény használatával megtekintheti és derítheti fel az erőforrás-tulajdonságok aliasait.
 
   :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Képernyőkép a Visual Studio Code-hoz készült Azure Policy-bővítményről, amely egy tulajdonsággal jeleníti meg az aliasok nevét." border="false":::
-
-- Azure Resource Graph
-
-  Az `project` operátor használatával jelenítheti meg az erőforrások **aliasát** .
-
-  ```kusto
-  Resources
-  | where type=~'microsoft.storage/storageaccounts'
-  | limit 1
-  | project aliases
-  ```
-  
-  ```azurecli-interactive
-  az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-  ```
-  
-  ```azurepowershell-interactive
-  Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-  ```
 
 - Azure PowerShell
 
@@ -750,7 +731,7 @@ Egy [mező](#fields) feltételben való használatakor a tömb aliasai lehetőv�
 
 További információkat és példákat a [tömb erőforrás-tulajdonságainak hivatkozása](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [kezdeményezési definíció szerkezetét](./initiative-definition-structure.md)
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).

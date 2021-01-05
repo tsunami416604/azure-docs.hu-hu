@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483627"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881905"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -38,16 +38,23 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 >
 > Részletekért lásd: [a Media Services v3 Azure Portal korlátozásai](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+## <a name="december-2020"></a>2020. december
+
+### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+
+A Azure Media Services mostantól elérhető az Azure Portal Norvégia keleti régiójában.  Ebben a régióban nincs restV2.
+
 ## <a name="october-2020"></a>2020. október
 
 ### <a name="basic-audio-analysis"></a>Alapszintű hang elemzése
+
 A hangelemzési beállításkészlet mostantól egy alapszintű mód díjszabási szintjét is tartalmazza. Az új alapszintű hangelemző mód alacsony díjszabású lehetőséget biztosít a beszédfelismerési átiratok kinyerésére, valamint a kimeneti feliratok és feliratok formázására. Ez a mód beszéd – szöveg típusú átírást és VTT alcím/képaláírás-fájl létrehozását végzi. A mód kimenete tartalmaz egy bepillantást nem tartalmazó JSON-fájlt, amely csak a kulcsszavakat, az átírást és az időzítési adatokat tartalmazza. Ez a mód nem tartalmazza az automatikus nyelvfelismerés és a hangszórók diarization. Tekintse meg a [támogatott nyelvek listáját.](analyzing-video-audio-files-concept.md#built-in-presets)
 
 Az indexelő v1 és az indexelő v2-et használó ügyfeleknek át kell térniük az alapszintű hangelemzési készletre.
 
 További információ az alapszintű audio Analyzer módból: [videó-és hangfájlok elemzése](analyzing-video-audio-files-concept.md).  Az alapszintű hangelemző mód és a REST API használatának megismeréséhez tekintse meg az [alapszintű hang átalakításának létrehozása](how-to-create-basic-audio-transform.md)című témakört.
 
-## <a name="live-events"></a>Élő események
+### <a name="live-events"></a>Élő események
 
 A legtöbb tulajdonság frissítése mostantól engedélyezett az élő események leállításakor. Emellett a felhasználók megadhatnak egy előtagot a statikus állomásnévhez az élő esemény bemeneti és előnézeti URL-címeihez. A VanityUrl most úgy lett meghívva `useStaticHostName` , hogy jobban tükrözze a tulajdonság szándékát.
 
@@ -57,7 +64,7 @@ Egy élő esemény támogatja A különböző bemeneti méretarányok fogadásá
 
 Az élő kódolás mostantól lehetővé teszi a rögzített kulcstároló-töredékek 0,5 – 20 másodperc közötti kiépítésének lehetőségét.
 
-## <a name="accounts"></a>Fiókok
+### <a name="accounts"></a>Fiókok
 
 > [!WARNING]
 > Ha a 2020-05-01 API-verzióval rendelkező Media Services fiókot hoz létre, az nem fog működni a RESTv2 
@@ -427,7 +434,7 @@ A .NET SDK-ban a következő funkciók találhatók:
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 [Áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
 

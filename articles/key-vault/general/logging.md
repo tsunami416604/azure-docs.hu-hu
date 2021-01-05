@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b1f7b115c5a8198b53e36672a891903a41a9511b
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704129"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883384"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -150,9 +150,38 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 
 | operationName | REST API parancs |
 | --- | --- |
-
-| **CertificateGet**  | [Tanúsítvány adatainak beolvasása](/rest/api/keyvault/getcertificate) | | **CertificateCreate**  | [Tanúsítvány létrehozása](/rest/api/keyvault/createcertificate) | | **CertificateImport**  | [Tanúsítvány importálása egy tárba](/rest/api/keyvault/importcertificate) | | **CertificateUpdate**  | [Tanúsítvány frissítése](/rest/api/keyvault/updatecertificate) | | **CertificateList**  | Tárolóban lévő [tanúsítványok listázása](/rest/api/keyvault/getcertificates) | | **CertificateListVersions**  | A [tanúsítvány verzióinak listázása](/rest/api/keyvault/getcertificateversions) | | **CertificateDelete**  | [Tanúsítvány törlése](/rest/api/keyvault/deletecertificate) | | **CertificatePurge**  | [Tanúsítvány kiürítése](/rest/api/keyvault/purgedeletedcertificate) | | **CertificateBackup**  | [Tanúsítvány biztonsági mentése](/rest/api/keyvault/backupcertificate) | | **CertificateRestore**  | [Tanúsítvány visszaállítása](/rest/api/keyvault/restorecertificate) | | **CertificateRecover**  | [Tanúsítvány helyreállítása](/rest/api/keyvault/recoverdeletedcertificate) | | **CertificateGetDeleted**  | [Törölt tanúsítvány beolvasása](/rest/api/keyvault/getdeletedcertificate) | | **CertificateListDeleted**  | Tárolóban lévő [törölt tanúsítványok listázása](/rest/api/keyvault/getdeletedcertificates) | | **CertificatePolicyGet**  | [Tanúsítvány-házirend beszerzése](/rest/api/keyvault/getcertificatepolicy) | | **CertificatePolicyUpdate**  | [Tanúsítvány-házirend frissítése](/rest/api/keyvault/updatecertificatepolicy) | | **CertificatePolicySet**  | [Tanúsítvány-házirend létrehozása](/rest/api/keyvault/createcertificate) | | **CertificateContactsGet**  | [Tanúsítvány-kapcsolattartók beolvasása](/rest/api/keyvault/getcertificatecontacts) | | **CertificateContactsSet**  | A [tanúsítványhoz tartozó névjegyek beállítása](/rest/api/keyvault/setcertificatecontacts) | | **CertificateContactsDelete**  | [Tanúsítvány-kapcsolattartók törlése](/rest/api/keyvault/deletecertificatecontacts) | | **CertificateIssuerGet**  | [Tanúsítvány kiállítójának beolvasása](/rest/api/keyvault/getcertificateissuer) | | **CertificateIssuerSet**  | A [tanúsítvány kiállítójának beállítása](/rest/api/keyvault/setcertificateissuer) | | **CertificateIssuerUpdate**  | [Tanúsítvány-kiállító frissítése](/rest/api/keyvault/updatecertificateissuer) | | **CertificateIssuerDelete**  | [Tanúsítvány kiállítójának törlése](/rest/api/keyvault/deletecertificateissuer) | | **CertificateIssuersList**  | [A tanúsítvány-kibocsátók listázása](/rest/api/keyvault/getcertificateissuers) | | **CertificateEnroll** | Tanúsítvány regisztrálása | | **CertificateRenew** | Tanúsítvány megújítása | | **CertificatePendingGet** | Függőben lévő tanúsítvány beolvasása | | **CertificatePendingMerge** | Tanúsítvány egyesítése függőben | | **CertificatePendingUpdate** | Tanúsítvány frissítése függőben | | **CertificatePendingDelete** | Függőben lévő tanúsítvány törlése | | **CertificateNearExpiryEventGridNotification** | Tanúsítvány közel lejárati eseményének közzététele |
-<a name="-certificateexpiredeventgridnotification-certificate-expired-event-published-"></a>|**CertificateExpiredEventGridNotification** | Lejárt a tanúsítvány közzétett eseménye |
+| **CertificateGet** |[Tanúsítvány adatainak beolvasása](/rest/api/keyvault/getcertificate) |
+| **CertificateCreate** |[Tanúsítvány létrehozása](/rest/api/keyvault/createcertificate) |
+| **CertificateImport** |[Tanúsítvány importálása egy tárba](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[Tanúsítvány frissítése](/rest/api/keyvault/updatecertificate) |
+| **CertificateList** |[Tárban lévő tanúsítványok listázása](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[A tanúsítvány verzióinak listázása](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[Tanúsítvány törlése](/rest/api/keyvault/deletecertificate) |
+| **CertificatePurge** |[Tanúsítvány kiürítése](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[Tanúsítvány biztonsági mentése](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[Tanúsítvány visszaállítása](/rest/api/keyvault/restorecertificate) |
+| **CertificateRecover** |[Tanúsítvány helyreállítása](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[Törölt tanúsítvány beolvasása](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[Tárolóban lévő törölt tanúsítványok listázása](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[Tanúsítvány-házirend beszerzése](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[Tanúsítvány-házirend frissítése](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[Tanúsítvány-házirend létrehozása](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[Tanúsítványhoz tartozó névjegyek beolvasása](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[A tanúsítvány névjegyeinek beállítása](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[Tanúsítványhoz tartozó névjegyek törlése](/rest/api/keyvault/deletecertificatecontacts) |
+| **CertificateIssuerGet** |[Tanúsítvány kiállítójának beolvasása](/rest/api/keyvault/getcertificateissuer) |
+| **CertificateIssuerSet** |[Tanúsítvány kiállítójának beállítása](/rest/api/keyvault/setcertificateissuer) |
+| **CertificateIssuerUpdate** |[Tanúsítvány kiállítójának frissítése](/rest/api/keyvault/updatecertificateissuer) |
+| **CertificateIssuerDelete** |[Tanúsítvány kiállítójának törlése](/rest/api/keyvault/deletecertificateissuer) |
+| **CertificateIssuersList** |[A tanúsítvány kiállítóinak listázása](/rest/api/keyvault/getcertificateissuers) |
+| **CertificateEnroll** |Tanúsítvány regisztrálása |
+| **CertificateRenew** |Tanúsítvány megújítása |
+| **CertificatePendingGet** |Függőben lévő tanúsítvány beolvasása |
+| **CertificatePendingMerge** |Tanúsítvány egyesítése folyamatban |
+| **CertificatePendingUpdate** |Tanúsítvány frissítése függőben |
+| **CertificatePendingDelete** |Függőben lévő tanúsítvány törlése |
+| **CertificateNearExpiryEventGridNotification** |Tanúsítvány közel lejárati eseménye közzétéve |
+| **CertificateExpiredEventGridNotification** |A tanúsítvány lejárt esemény közzétéve |
 ---
 
 ## <a name="use-azure-monitor-logs"></a>Az Azure Monitor-naplók használata

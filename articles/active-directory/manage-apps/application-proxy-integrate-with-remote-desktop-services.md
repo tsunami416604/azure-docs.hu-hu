@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 666b3c609224c1665c150718b2b89c4bac72577e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488068"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882228"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Távoli asztal közzététele Azure AD-alkalmazásproxy használatával
 
@@ -42,18 +42,13 @@ Az RDS-alapú környezetben a távoli asztali webes szerepkör és a RD-átjár�
 ## <a name="requirements"></a>Követelmények
 
 - A távoli asztali webes és RD-átjáró végpontoknak ugyanazon a gépen és közös gyökérrel kell elhelyezkedniük. A távoli asztali webes és RD-átjáró egyetlen alkalmazásként jelennek meg az alkalmazásproxy használatával, így a két alkalmazás között egyszeri bejelentkezéses élményben lehet része.
-
-- Ha már [telepítette az RDS](/windows-server/remote/remote-desktop-services/rds-in-azure)-t, és [engedélyezte az alkalmazásproxy használatát](application-proxy-add-on-premises-application.md).
-
+- Ha már [telepítette az RDS](/windows-server/remote/remote-desktop-services/rds-in-azure)-t, és [engedélyezte az alkalmazásproxy használatát](application-proxy-add-on-premises-application.md). Győződjön meg arról, hogy az alkalmazásproxy engedélyezéséhez, például az összekötő telepítéséhez, a szükséges portok és URL-címek megnyitásához, valamint a TLS 1,2 engedélyezéséhez szükséges előfeltételek teljesültek a kiszolgálón.
 - A végfelhasználóknak kompatibilis böngészőt kell használniuk a távoli asztali webes vagy a távoli asztali webes ügyfélhez való kapcsolódáshoz. További részletekért lásd [az ügyfél-konfigurációk támogatását](#support-for-other-client-configurations)ismertető témakört.
-
 - A távoli asztali webes közzététel során ajánlott ugyanazt a belső és külső FQDN-t használni. Ha a belső és külső teljes tartománynevek eltérnek, akkor le kell tiltania a kérelem fejlécének fordítását, hogy az ügyfél ne kapjon érvénytelen hivatkozásokat.
-
 - Ha az Internet Explorerben használja a távoli asztali webes szolgáltatást, engedélyeznie kell az RDS ActiveX-bővítményt.
-
 - Ha a távoli asztali webes ügyfelet használja, akkor az alkalmazásproxy- [összekötő 1.5.1975 vagy újabb verzióját](./application-proxy-release-version-history.md)kell használnia.
-
 - Az Azure AD előhitelesítési folyamata esetében a felhasználók csak a **RemoteApp-és asztali számítógépek** ablaktáblán a számukra közzétett erőforrásokhoz tudnak csatlakozni. A felhasználók nem tudnak csatlakozni az asztalhoz a **Kapcsolódás távoli számítógéphez** panel használatával.
+- Ha a Windows Server 2019-et használja, előfordulhat, hogy le kell tiltania a HTTP2 protokollt. További információ: [oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez az Application proxyn keresztül Azure Active Directory](application-proxy-add-on-premises-application.md).
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>A közös RDS-és alkalmazásproxy-forgatókönyv üzembe helyezése
 

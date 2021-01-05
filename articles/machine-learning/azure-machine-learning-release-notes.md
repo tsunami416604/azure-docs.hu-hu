@@ -9,17 +9,29 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760112"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881820"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referenciát tartalmazó oldalt.
 
+## <a name="2020-12-31"></a>2020-12-31
+### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio notebookok felülete (decemberi frissítés)
++ **Új funkciók**
+  + Felhasználói Fájlnév keresése. A felhasználók mostantól képesek a munkaterületre mentett összes fájl keresésére.
+  + Markdown egymás melletti támogatással. Egy jegyzetfüzet-cellában a felhasználók mostantól megtekinthetik a megjelenített Markdown és a Markdown-szintaxist is.
+  + Cella állapotsora Az állapotsor azt jelzi, hogy milyen állapotban van a kód cellája, hogy a cella futtatása sikeres volt-e, és hogy mennyi ideig tartott a Futtatás. 
+   
++ **Hibajavítások és javítások**
+  + Továbbfejlesztett oldal betöltési ideje
+  + Jobb teljesítmény 
+  + Továbbfejlesztett sebesség és kernel megbízhatóság
+  
 ## <a name="2020-12-07"></a>2020-12-07
 
 ### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Azure Machine Learning SDK a Python v 1.19.0
@@ -83,7 +95,19 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
     + A Nccl és a gloo a PyTorchConfiguration és a ScriptRunConfig használatával való használata helyett a kalkulátor-osztályok érvényes típusú bemenetének elavulttá vált. 
     + A MpiConfiguration és a ScriptRunConfig használatával az MPI használata a kalkulátor-osztályok érvényes bemeneti típusaként elavult.
 
+## <a name="2020-11-30"></a>2020-11-30
+### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio notebookok felülete (novemberi frissítés)
++ **Új funkciók**
+   + Natív terminál. A felhasználók mostantól hozzáférhetnek egy integrált terminálhoz, valamint a git-művelethez az [integrált terminálon](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) keresztül is.
+  + Duplikált mappa 
+  + Költségszámítás a számítási legördülő listához 
+  + Offline számítási Pylance 
 
++ **Hibajavítások és javítások**
+  + Továbbfejlesztett oldal betöltési ideje
+  + Jobb teljesítmény 
+  + Továbbfejlesztett sebesség és kernel megbízhatóság
+  + Nagyméretű fájlfeltöltés. Most már feltöltheti a fájlt >95mb
 
 ## <a name="2020-11-09"></a>2020-11-09
 

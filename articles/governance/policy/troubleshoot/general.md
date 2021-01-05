@@ -3,12 +3,12 @@ title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a szabályzat-definíciókat, a különböző SDK-t és a Kubernetes bővítményét.
 ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b88d00575adb571c59b562d25067c4a1716fb50f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510998"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882976"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Hibák elhárítása a Azure Policy használatával
 
@@ -36,7 +36,7 @@ Egy házirend-definícióban helytelen vagy nem létező alias van használatban
 
 #### <a name="resolution"></a>Feloldás
 
-Először ellenőrizze, hogy a Resource Manager-tulajdonságnak van-e aliasa. Az elérhető aliasok megkereséséhez használja [Azure Policy bővítményt a Visual Studio Code](../how-to/extension-for-vscode.md), az [Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values)vagy az SDK használatával. Ha egy Resource Manager-tulajdonság aliasa nem létezik, hozzon létre egy támogatási jegyet.
+Először ellenőrizze, hogy a Resource Manager-tulajdonságnak van-e aliasa. Az elérhető aliasok megkereséséhez használja [a Azure Policy bővítményt a Visual Studio Code](../how-to/extension-for-vscode.md) -hoz vagy az SDK-hoz. Ha egy Resource Manager-tulajdonság aliasa nem létezik, hozzon létre egy támogatási jegyet.
 
 ### <a name="scenario-evaluation-details-not-up-to-date"></a>Forgatókönyv: az értékelés részletei nem naprakészek
 

@@ -2,14 +2,14 @@
 title: Erőforrások, erőforráscsoportok és előfizetések címkézése a logikai szervezet számára
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e47d3acf15ce5e4f5cb70444419b76beb21ae98b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 3d1161eb99e1145c7a003326310db1922ec3d55c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558147"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881748"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
@@ -438,9 +438,12 @@ Ha a címke neve vagy értéke szóközt tartalmaz, tegye idézőjelek közé.
 az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
-## <a name="templates"></a>Sablonok
+## <a name="arm-templates"></a>ARM-sablonok
 
-Resource Manager-sablonnal az üzembe helyezés során erőforrásokat, erőforráscsoportokat és előfizetéseket címkézheti.
+Az üzembe helyezés során egy Azure Resource Manager sablonnal (ARM-sablonnal) címkézheti az erőforrásokat, az erőforráscsoportokat és az előfizetéseket.
+
+> [!NOTE]
+> Az ARM-sablonon keresztül alkalmazott címkék felülírják a meglévő címkéket.
 
 ### <a name="apply-values"></a>Értékek alkalmazása
 
@@ -448,7 +451,7 @@ Az alábbi példa három címkével rendelkező Storage-fiókot telepít. A cím
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcShort": {
@@ -487,7 +490,7 @@ Megadhat olyan objektumparamétert, amely több címkét tartalmaz, majd alkalma
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -525,7 +528,7 @@ Ha több értéket szeretne tárolni egyetlen címkében, alkalmazzon a megfelel
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -558,7 +561,7 @@ Ha címkéket szeretne alkalmazni egy erőforrás-csoportból egy erőforrásra,
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {

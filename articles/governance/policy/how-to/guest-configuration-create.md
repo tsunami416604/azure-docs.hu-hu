@@ -3,12 +3,12 @@ title: Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 85ffda54d58db0544858ca8ab61335b61f18299e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755973"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881786"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 
@@ -138,9 +138,32 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
+Ha az erőforráshoz szükséges tulajdonságok vannak, akkor azokat `Get-TargetResource` a osztállyal párhuzamosan is vissza kell adni `reasons` . Ha `reasons` nem tartalmazza a szolgáltatást, a szolgáltatás tartalmazza a "catch-all" viselkedést, amely összehasonlítja a bemeneteket `Get-TargetResource` és a által visszaadott értékeket `Get-TargetResource` , és részletes összehasonlítást biztosít a következővel: `reasons` .
+
 ### <a name="configuration-requirements"></a>Konfigurációs követelmények
 
 Az egyéni konfiguráció nevének mindenütt konzisztensnek kell lennie. A Content csomag. zip fájljának nevét, a MOF-fájlban található konfiguráció nevét, valamint a Azure Resource Manager sablonban (ARM-sablon) lévő vendég-hozzárendelés nevét meg kell egyeznie.
+
+### <a name="policy-requirements"></a>Házirend-követelmények
+
+A házirend `metadata` -definíció szakasznak tartalmaznia kell két tulajdonságot a vendég konfigurációs szolgáltatás számára a vendég-konfigurációs hozzárendelések kiosztásának és jelentéskészítésének automatizálásához. A `category` tulajdonságot "Guest Configuration" értékre kell beállítani, és a nevű szakasznak `Guest Configuration` tartalmaznia kell a vendég-konfiguráció hozzárendelésével kapcsolatos információkat. A `New-GuestConfigurationPolicy` parancsmag automatikusan létrehozza ezt a szöveget.
+Tekintse meg az oldalon található lépésenkénti útmutatót.
+
+Az alábbi példa bemutatja a `metadata` szakaszt.
+
+```json
+    "metadata": {
+      "category": "Guest Configuration",
+      "guestConfiguration": {
+        "name": "test",
+        "version": "1.0.0",
+        "contentType": "Custom",
+        "contentUri": "CUSTOM-URI-HERE",
+        "contentHash": "CUSTOM-HASH-VALUE-HERE",
+        "configurationParameter": {}
+      }
+    },
+```
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>Vendég konfigurációs projekt állványzata
 

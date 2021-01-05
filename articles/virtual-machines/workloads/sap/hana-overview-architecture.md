@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0144c57549e374404d3dde0fe997ba41adc8606b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967584"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880987"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Mi az SAP HANA az Azure-ban (nagy méretű példányok)?
 
@@ -35,12 +35,14 @@ Az infrastruktúra-bélyegzőn belüli ügyfél-elkülönítést a bérlők vég
 
 Ezek az operációs rendszer nélküli kiszolgálói egységek csak SAP HANA futtatására használhatók. A virtuális gépeken futó SAP-alkalmazás rétege vagy munkaterhelése. Az Azure-ban (nagyméretű példányok) lévő SAP HANAt futtató infrastruktúra-bélyegek az Azure hálózati szolgáltatások gerincéhez csatlakoznak. Így az Azure-beli (nagyméretű példányok) egységek és a virtuális gépek közötti SAP HANA kis késleltetésű kapcsolat van megadva.
 
-Július 2019-én megkülönböztetjük a HANA nagy példányszámú bélyegek két különböző változatát és az üzemelő példányok helyét:
+Január 2021-én megkülönböztetjük a HANA nagy példányszámú bélyegek két különböző változatát és az üzemelő példányok helyét:
 
 - "3. változat" (Rev 3): azok a bélyegek, amelyeket az ügyfél számára elérhetővé tettek a 2019 júliusa előtt.
 - "4. változat" (Rev 4): új Stamp-kialakítás, amely az Azure-beli virtuálisgép-gazdagépek közelében van üzembe helyezve, és amely eddig a következő Azure-régiókban jelent meg:
     -  USA 2. nyugati régiója 
-    -  USA keleti régiója 
+    -  USA keleti régiója
+    -  Kelet-RÉGIÓJA (két Availability Zones között)
+    -  USA déli középső régiója (két Availability Zones)
     -  Nyugat-Európa
     -  Észak-Európa
 

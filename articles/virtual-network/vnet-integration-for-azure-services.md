@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 814158ad68e63760c1f2a1bce3eeff812de3c13e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938732"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882364"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Azure-szolgáltatások integrálása virtuális hálózatokkal hálózati elkülönítéshez
 
 A Virtual Network (VNet) Azure-szolgáltatásokhoz való integrációja lehetővé teszi, hogy a szolgáltatáshoz való hozzáférést csak a virtuális hálózati infrastruktúrához lehessen lezárni. A VNet-infrastruktúra többek között a virtuális hálózatokat és a helyszíni hálózatokat is tartalmazza.
 
 A VNet-integráció biztosítja az Azure-szolgáltatásokat a hálózat elkülönítésének előnyeivel, és az alábbi módszerek közül egyet vagy többet is végrehajthat:
-- [A szolgáltatás dedikált példányainak üzembe helyezése virtuális hálózatban](virtual-network-service-endpoints-overview.md). A szolgáltatások ezután a virtuális hálózaton és a helyszíni hálózatokon is elérhetők.
+- [A szolgáltatás dedikált példányainak üzembe helyezése virtuális hálózatban](virtual-network-for-azure-services.md). A szolgáltatások ezután a virtuális hálózaton és a helyszíni hálózatokon is elérhetők.
 - Privát [végpont](../private-link/private-endpoint-overview.md) használata, amely az [Azure Private-kapcsolaton](../private-link/private-link-overview.md)keresztül kapcsolódik a szolgáltatáshoz, és biztonságosan csatlakozik az Ön számára. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a virtuális hálózatba.
 - A szolgáltatás elérése nyilvános végpontokkal a virtuális hálózatnak a szolgáltatáshoz való kiterjesztésével, [szolgáltatási végpontokon](virtual-network-service-endpoints-overview.md)keresztül. A szolgáltatási végpontok lehetővé teszik a szolgáltatási erőforrások védelmét a virtuális hálózattal.
 - A [szolgáltatás-címkék](service-tags-overview.md) használatával engedélyezheti vagy megtagadhatja az Azure-erőforrásokra irányuló forgalmat a nyilvános IP-végpontokra.
@@ -74,7 +74,7 @@ A szolgáltatás-címkék használatával hálózati elkülönítést érhet el,
 
 További információ az azokat támogató szolgáltatási címkékről és Azure-szolgáltatásokról: a [szolgáltatási címkék áttekintése](service-tags-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [integrálhatja az alkalmazást egy Azure-hálózattal](../app-service/web-sites-integrate-with-vnet.md).
 - Megtudhatja, hogyan [korlátozhatja az erőforrásokhoz való hozzáférést a szolgáltatás-címkék használatával](tutorial-restrict-network-access-to-resources.md).

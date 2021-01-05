@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70387717c15dade349a323e663ac0fd31935a15f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c48e23de6832999b262283c0bf6664b4dfe88ee7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859878"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881565"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 
@@ -84,10 +84,11 @@ Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a 
    ```powershell
    $Setting = $Template.CreateDirectorySetting()
    ```  
-4. Ezután frissítse a használati útmutató értékét:
+4. Ezután frissítse a Settings objektumot egy új értékkel. Az alábbi két példa megváltoztatja a használati irányelv értékét, és engedélyezi az érzékenységi címkéket. Adja meg az alábbi beállításokat vagy a sablon bármely más beállítását, ha szükséges:
   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = "https://guideline.example.com"
+   $Setting["EnableMIPLabels"] = "True"
    ```  
 5. Ezután alkalmazza a beállítást:
   
@@ -118,7 +119,7 @@ A UsageGuideLinesUrl értékének a beállítás sablonban való frissítéséhe
    ```powershell
     Name                          Value
     ----                          -----
-    EnableMIPLabels               false
+    EnableMIPLabels               True
     CustomBlockedWordsList
     EnableMSStandardBlockedWords  False
     ClassificationDescriptions

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ceead297ea726e256d806c08c22810b39296793
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 15a878eb863b71a4519e75def2598f013152dfb7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917171"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881633"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>A Azure.Search.Documents használata C# .NET-alkalmazásokban
 
@@ -31,7 +31,7 @@ A korábbi verziókhoz hasonlóan a következő függvénytárat használhatja:
 + Keresési dokumentumok betöltése és kezelése egy indexben
 + Lekérdezések végrehajtása anélkül, hogy a HTTP-és JSON-adatokkal kellene foglalkoznia
 
-A kódtárat egyetlen [Azure.Search.DocUment NuGet-csomagként](https://www.nuget.org/packages/Azure.Search.Documents/)terjesztik, amely magában foglalja a keresési szolgáltatásokhoz való programozott hozzáféréshez használt összes API-t.
+A kódtárat egyetlen [Azure.Search.DocUments NuGet-csomagként](https://www.nuget.org/packages/Azure.Search.Documents/)terjesztik, amely magában foglalja a keresési szolgáltatásokhoz való programozott hozzáféréshez használt összes API-t.
 
 Az ügyféloldali függvénytár olyan osztályokat határoz meg, mint `SearchIndex` `SearchField` a, és, valamint `SearchDocument` a és a (z `SearchIndexClient.CreateIndex` ) és `SearchClient.Search` `SearchIndexClient` `SearchClient` osztályokhoz hasonló műveletek. Ezek az osztályok a következő névterekben vannak rendszerezve:
 
@@ -58,7 +58,7 @@ Ha a .NET SDK korábbi verzióját használta, és a jelenlegi általánosan el�
 
 A .NET-hez készült Azure SDK megfelel a .net [Standard 2,0](/dotnet/standard/net-standard#net-implementation-support)-nek, ami a .NET-keretrendszer 4.6.1-es és a .net Core 2,0-as minimális követelmény.
 
-## <a name="example-application"></a>Példa alkalmazás
+## <a name="example-application"></a>Példaalkalmazás
 
 Ez a cikk "tanítja példaként", amely a GitHubon található [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) -programkódra támaszkodik, amely az Azure Cognitive Search alapvető fogalmait mutatja be – konkrétan a keresési indexek létrehozását, betöltését és lekérdezését.
 
@@ -637,7 +637,7 @@ WriteDocuments(results);
 
 Ez a szakasz a .NET SDK bevezetését vonja le, de itt nem áll le. A következő szakasz további forrásokat javasol az Azure Cognitive Search programozásával kapcsolatos további információk megismeréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + Az [Azure.Search.Documents](/dotnet/api/azure.search.documents) és [REST API](/rest/api/searchservice/) API-referenciájának dokumentációja
 

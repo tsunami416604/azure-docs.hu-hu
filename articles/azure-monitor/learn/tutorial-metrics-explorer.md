@@ -6,17 +6,17 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 6ce9183fad50c43ea7070f5fa09e0d445caf89df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451261"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881293"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Oktatóanyag: metrikai diagram létrehozása Azure Monitor
 Azure Portal a metrikák Explorer a Azure Monitor egyik funkciója, amely lehetővé teszi, hogy diagramokat hozzon létre a metrikák értékeiből, vizuálisan korrelálja a trendeket, és vizsgálja meg a mérőszámok és a dips értékeit. A metrikák Explorerrel megvizsgálhatja az Azure-erőforrások állapotát és kihasználtságát, illetve diagramokat rajzolhat az egyéni metrikák használatával. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Válassza ki azt a metrikát, amelynek diagramját ábrázolni szeretné
@@ -40,7 +40,7 @@ A metrikák Explorert a Azure Monitor menüjéből vagy a Azure Portal erőforr�
 
 1. Válassza a **metrikák** lehetőséget a **Azure monitor** menüből vagy az erőforrás menüjének **figyelés** szakaszában.
 
-1. Válassza ki a **hatókört**, amely az az erőforrás, amelynek a metrikáit meg szeretné jeleníteni. A hatókör már fel van töltve, ha az erőforrás menüjéből megnyitotta a metrikák Explorert.
+1. Válassza ki a **hatókört**, amely az az erőforrás, amelynek a metrikáit meg szeretné jeleníteni. A hatókör már fel van töltve, ha az erőforrás menüjéből megnyitotta a metrikák Explorert. Ha többet szeretne megtudni az erőforrás-hatókör választójának különböző képességeiről, tekintse meg [ezt a cikket](../platform/metrics-charts.md#resource-scope-picker).
 
     ![Hatókör kiválasztása](media/tutorial-metrics-explorer/scope-picker.png)
 

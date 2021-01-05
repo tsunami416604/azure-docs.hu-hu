@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 82b786f3c90a7ef482ccbcd6e66fb9abfc4eea5f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561936"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882959"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>PHP-beli Vendégkönyv állapot nélküli alkalmazás üzembe helyezése a Redis on arc enabled Kubernetes-fürtön Azure Stack Edge Pro GPU-val
 
@@ -27,6 +27,8 @@ Az üzembe helyezés a Azure Stack Edge Pro-eszközön a GitOps használatával 
 
 Ez az eljárás azok számára készült, akik áttekintették a Kubernetes számítási feladatait [Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-workload-management.md) , és ismeri az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](../azure-arc/kubernetes/overview.md)fogalmait.
 
+> [!NOTE]
+> Ez a cikk a Slave kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,7 +110,6 @@ A következő lépésekkel konfigurálhatja az Azure arc-erőforrást a GitOps-k
 1. Az üzembe helyezés pár percet vesz igénybe. Az üzembe helyezés befejeztével a **kezelő állapota** **telepítettként** jelenik meg.
 
     ![Képernyőfelvétel: az Azure arc-kompatibilis Kubernetes-fürt telepített állapotban van.](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
-
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 

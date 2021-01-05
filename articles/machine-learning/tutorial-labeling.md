@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347506"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882466"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt létrehozása a többosztályos képek besorolásához 
 
@@ -104,7 +104,8 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 1. Használja a következő inputot az **adatkészlet létrehozása adattárból** űrlapból:
 
     1. Az **alapszintű információ** űrlapon adjon meg egy nevet, itt a **képek-for-tutorial** használatát fogjuk használni.  Ha szeretné, adja meg a leírást.  Ezután kattintson a **Tovább** gombra.
-    1. Az **adattár kiválasztása** űrlapon a legördülő listából válassza ki a **korábban létrehozott** adattárat, például **tutorial_images (Azure Blob Storage)**
+    1. Az **adattár kiválasztása** űrlapon válassza a **korábban létrehozott adattár** lehetőséget, majd kattintson az adattár nevére, és válassza az **adattár kiválasztása** lehetőséget.
+    1. A következő lapon ellenőrizze, hogy a jelenleg kijelölt adattár helyes-e. Ha nem, válassza a **korábban létrehozott adattár** lehetőséget, és ismételje meg az előző lépést.
     1. Ezután továbbra is az **adattár kiválasztása** űrlapon válassza a **Tallózás** lehetőséget, majd válassza a **többosztályos DogsCats** lehetőséget.  Válassza a **Mentés** lehetőséget a **/MultiClass-DogsCats** elérési útvonalként való használatához.
     1. A **tovább** gombra kattintva erősítse meg a részleteket, majd **hozzon** létre az adatkészlet létrehozásához.
     1. Válassza ki az adatkészlet neve melletti kört a listában, például **képek-for-tutorial**.
@@ -206,7 +207,7 @@ A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) va
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a képeket címkézte.  Most használja a címkével ellátott adatait:
 

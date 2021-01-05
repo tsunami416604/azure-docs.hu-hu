@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/24/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 45f02850797582f97220e91d1582b04b3be711c0
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97671165"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882483"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -132,9 +132,9 @@ A korábbi díjszabási szintek egyike sem rendelkezik regionális alapú díjsz
 
 ## <a name="change-the-data-retention-period"></a>Az adatmegőrzési időtartam módosítása
 
-A következő lépések azt írják le, hogyan kell konfigurálni, hogy a rendszer mennyi ideig tárolja a napló adatait a munkaterületen. Az adatmegőrzés az összes munkaterülethez 30 – 730 napig (2 év) állítható be, kivéve, ha az örökölt ingyenes díjszabási szintet használják. [További](https://azure.microsoft.com/pricing/details/monitor/) információ a hosszabb adatmegőrzés díjszabásáról. 
+A következő lépések azt írják le, hogyan kell konfigurálni, hogy a rendszer mennyi ideig tárolja a napló adatait a munkaterületen. Az adatmegőrzés a munkaterület szintjén 30 – 730 nap (2 év) lehet az összes munkaterülethez, kivéve, ha az örökölt ingyenes díjszabási szintet használják. [További](https://azure.microsoft.com/pricing/details/monitor/) információ a hosszabb adatmegőrzés díjszabásáról. Az egyes adattípusok megőrzése akár 4 napig is beállítható. 
 
-### <a name="default-retention"></a>Alapértelmezett megőrzés
+### <a name="workspace-level-default-retention"></a>Munkaterület-szint alapértelmezett megőrzése
 
 A munkaterület alapértelmezett megőrzésének beállításához 
  
@@ -158,7 +158,7 @@ Vegye figyelembe, hogy a Log Analytics [kiürítési API-ja](/rest/api/loganalyt
 
 ### <a name="retention-by-data-type"></a>Megőrzés adattípus szerint
 
-Az egyes adattípusok esetében több adatmegőrzési beállítást is megadhat 30 – 730 napig (kivéve a korábbi ingyenes díjszabási szinten lévő munkaterületek esetében). Minden adattípus a munkaterület alerőforrása. A SecurityEvent tábla például a következő módon kezelhető [Azure Resource Managerban](../../azure-resource-manager/management/overview.md) :
+Az egyes adattípusok eltérő megőrzési beállításait is megadhatja 4 – 730 nap (kivéve az örökölt ingyenes díjszabási szinten lévő munkaterületek esetében), amelyek felülbírálják a munkaterület alapértelmezett megőrzését. Minden adattípus a munkaterület alerőforrása. A SecurityEvent tábla például a következő módon kezelhető [Azure Resource Managerban](../../azure-resource-manager/management/overview.md) :
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -350,7 +350,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution 
+| render columnchart
 ```
 
 A () záradéka `TimeGenerated` csak annak biztosítására szolgál, hogy a Azure Portal lekérdezési élménye az alapértelmezett 24 órában is megtekinthető maradjon. A használati adatok típusának használatakor, `StartTime` valamint `EndTime` az eredmények megjelenítéséhez használt időgyűjtők. 
@@ -364,7 +365,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType 
+| render columnchart
 ```
 
 Vagy megtekintheti az előző hónapra vonatkozó táblát megoldás és típus szerint.
@@ -639,7 +641,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 
 Az adatgyűjtés leállításakor az OperationStatus állapota: **Figyelmeztetés**. Az adatgyűjtés indításakor az OperationStatus állapota: **Sikeres**. Az alábbi táblázat leírja, hogy az adatgyűjtés miért leáll és egy javasolt művelet az adatgyűjtés folytatásához:  
 
-|Az OK gyűjtése leáll| Megvalósítás| 
+|Az OK gyűjtése leáll| Megoldás| 
 |-----------------------|---------|
 |Elérte a munkaterület napi korlátját|Várjon, amíg a gyűjtemény automatikusan újraindul, vagy növelje a napi adatmennyiség kezelése című témakörben leírt napi adatmennyiség korlátját. A napi korlát alaphelyzetbe állításának ideje a **napi korlát** oldalon látható. |
 | A munkaterület elérte az [adatfeldolgozási kötet sebességét](../service-limits.md#log-analytics-workspaces) | Az Azure-erőforrásokról diagnosztikai beállítások használatával küldött adatok alapértelmezett maximális adatfeldolgozási sebessége munkaterületenként körülbelül 6 GB/perc. Ez egy hozzávetőleges érték, mivel a tényleges méret a napló hosszától és a tömörítési aránytól függően eltérő lehet az adattípusok között. Ez a korlátozás nem vonatkozik az ügynökökről vagy a Data Collector API-ról küldött adatokra. Ha egy adott munkaterületre nagyobb sebességgel küld adatokat, egyes adatok elvesznek, és a rendszer 6 óránként eseményt küld a munkaterület műveleti táblájára, amíg meg nem szűnik a küszöb túllépése. Ha a betöltési mennyiség továbbra is meghaladja a sebességkorlátot, vagy ha úgy gondolja, hogy nemsokára el fogja az érni, akkor az LAIngestionRate@microsoft.com címre küldött e-mailben vagy egy támogatási kérés megnyitásával kérheti a sebesség növelését a munkaterületen. Az adatfeldolgozási sebességkorlátot jelző esemény az `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"` lekérdezéssel kereshető meg. |
@@ -653,7 +655,7 @@ Ha értesítést szeretne kapni az adatgyűjtés leállításakor, kövesse a *n
 Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díjszabási szintjétől függ. Ezeket az Azure- [előfizetések és-szolgáltatások korlátozásai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)dokumentálják.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A keresési nyelv használatának megismeréséhez tekintse meg a [naplóban megkeresett Azure monitor naplókat](../log-query/log-query-overview.md) . A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
 - Az [új naplózási riasztás létrehozásával kapcsolatos](alerts-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.
@@ -661,4 +663,5 @@ Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díj
 - Egy hatékony esemény-gyűjtési házirend konfigurálásához tekintse át [Azure Security Center szűrési házirendet](../../security-center/security-center-enable-data-collection.md).
 - [Teljesítményszámláló konfigurációjának](data-sources-performance-counters.md)módosítása
 - Az események gyűjtési beállításainak módosításához tekintse át az [Eseménynapló konfigurációját](data-sources-windows-events.md).
+- A syslog-gyűjtemény beállításainak módosításához tekintse át a [syslog konfigurációját](data-sources-syslog.md).
 - A syslog-gyűjtemény beállításainak módosításához tekintse át a [syslog konfigurációját](data-sources-syslog.md).

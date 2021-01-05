@@ -3,12 +3,12 @@ title: Virtuális hálózat használatára vonatkozó forgatókönyvek
 description: Forgatókönyvek, erőforrások és korlátozások a tároló-csoportok Azure-beli virtuális hálózatra való üzembe helyezéséhez.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5e9c1d1606a9ad491ba7a7e623f1606717aa5b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569169"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882432"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Virtuális hálózati forgatókönyvek és erőforrások
 
@@ -41,6 +41,7 @@ Az Azure-beli virtuális hálózatba üzembe helyezett tároló-csoportok a köv
 * Nem használhat [felügyelt identitást](container-instances-managed-identity.md) egy virtuális hálózatra központilag telepített tároló csoportba.
 * Egy virtuális hálózatra központilag üzembe helyezett tároló csoportban nem engedélyezhető az [élő](container-instances-liveness-probe.md) vagy a [készültségi](container-instances-readiness-probe.md) mintavétel.
 * Az érintett további hálózati erőforrások miatt a virtuális hálózatra történő központi telepítések általában lassabbak, mint a standard Container-példányok üzembe helyezése.
+* Ha egy Azure Storage-fiókhoz csatlakoztatja a tároló-csoportot, hozzá kell adnia egy [szolgáltatási végpontot](../virtual-network/virtual-network-service-endpoints-overview.md) az erőforráshoz.
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
@@ -74,7 +75,7 @@ A következő ábrán számos tároló csoport lett telepítve egy Azure Contain
 
 ![Virtuális hálózaton belüli tároló-csoportok][aci-vnet-01]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure CLI-vel történő üzembe helyezési példákat lásd: [Container instances telepítése Azure-beli virtuális hálózatba](container-instances-vnet.md).
 * Ha új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot szeretne üzembe helyezni Resource Manager-sablonnal, tekintse meg [Az Azure Container Group létrehozása a VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14a65b83195bff48934668ff029f925e13884bad
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743700"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881242"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Újrahitelesítéssel kapcsolatos kérések optimalizálása és az Azure AD-munkamenet élettartamának megértése Multi-Factor Authentication
 
@@ -108,7 +108,7 @@ A *továbbra is bejelentkezett* lehetőség konfigurálásához vagy ellenőrzé
 1. Válassza a **vállalati arculat** lehetőséget, majd az egyes területi beállításoknál válassza a **Megjelenítés lehetőséget, hogy továbbra is bejelentkezve maradjon**.
 1. Válassza az *Igen*, majd a **Mentés** lehetőséget.
 
-A többtényezős hitelesítési beállítások megadásához hajtsa végre a következő lépéseket:
+A többtényezős hitelesítési beállítások a megbízható eszközökön való megadásához hajtsa végre a következő lépéseket:
 
 1. Az Azure AD-portálon keresse meg és válassza ki a *Azure Active Directory*.
 1. Válassza a **Biztonság**, majd a **MFA** elemet.

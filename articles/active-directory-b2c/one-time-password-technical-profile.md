@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172661"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881191"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Egyszeri jelszóval kapcsolatos technikai profil definiálása egy Azure AD B2C egyéni házirendben
 
@@ -24,7 +24,7 @@ ms.locfileid: "92172661"
 
 A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt az egyszeri jelszavak létrehozásának és ellenőrzésének kezeléséhez. Használjon egy technikai profilt a kód létrehozásához, majd később ellenőrizze a kódot.
 
-Az egyszeri jelszóval kapcsolatos technikai profil a kód ellenőrzése során hibaüzenetet is jelez. Tervezze meg az integrációt az egyszeri jelszóval egy **érvényesítési technikai profil**használatával. Az érvényesítési technikai profil a kód ellenőrzéséhez az egyszeri jelszó-technikai profilt hívja meg. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott, a felhasználói utazás előtt megjelenő adatmennyiséget. Az érvényesítési technikai profillal egy önérvényesített oldalon egy hibaüzenet jelenik meg.
+Az egyszeri jelszóval kapcsolatos technikai profil a kód ellenőrzése során hibaüzenetet is jelez. Tervezze meg az integrációt az egyszeri jelszóval egy **érvényesítési technikai profil** használatával. Az érvényesítési technikai profil a kód ellenőrzéséhez az egyszeri jelszó-technikai profilt hívja meg. Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott, a felhasználói utazás előtt megjelenő adatmennyiséget. Az érvényesítési technikai profillal egy önérvényesített oldalon egy hibaüzenet jelenik meg.
 
 ## <a name="protocol"></a>Protokoll
 
@@ -45,7 +45,7 @@ Az alábbi példa egy egyszeri jelszóval rendelkező technikai profilt mutat be
 
 ## <a name="generate-code"></a>Kód létrehozása
 
-Ennek a technikai profilnak az első módja egy kód létrehozása. Alább láthatók az ehhez a módhoz konfigurálható beállítások.
+Ennek a technikai profilnak az első módja egy kód létrehozása. Alább láthatók az ehhez a módhoz konfigurálható beállítások. A létrehozott kódok és a kísérletek követése a munkameneten belül történik. 
 
 ### <a name="input-claims"></a>Bemeneti jogcímek
 
@@ -73,7 +73,7 @@ A kód generálási módjának konfigurálásához a következő beállításoka
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Nem | A kód lejárati ideje másodpercben. Minimum: `60` ; Maximum: `1200` ; Alapértelmezett: `600` . Minden alkalommal, amikor kódot adnak meg (ugyanazt a kódot használja `ReuseSameCode` , vagy egy új kódot használ), a kód lejárata kiterjeszthető.  |
+| CodeExpirationInSeconds | Nem | A kód lejárati ideje másodpercben. Minimum: `60` ; Maximum: `1200` ; Alapértelmezett: `600` . Minden alkalommal, amikor kódot adnak meg (ugyanazt a kódot használja `ReuseSameCode` , vagy egy új kódot használ), a kód lejárata kiterjeszthető. Ez az idő az újrapróbálkozási időtúllépés beállítására is használatos (a maximális próbálkozások elérésekor a felhasználó ki van zárva az új kódok megszerzésére, amíg az idő lejár) |
 | CodeLength | Nem | A kód hossza. Az alapértelmezett érték `6`. |
 | CharacterSet | Nem | A kód karakterkészlete, amely normál kifejezésben való használatra van formázva. Például: `a-z0-9A-Z`. Az alapértelmezett érték `0-9`. A karakterkészletnek legalább 10 különböző karaktert kell tartalmaznia a megadott készletben. |
 | NumRetryAttempts | Nem | Az ellenőrzési kísérletek száma, mielőtt a kód érvénytelennek minősül. Az alapértelmezett érték `5`. |
@@ -170,7 +170,7 @@ A következő példa `TechnicalProfile` egy kód ellenőrzéséhez használható
 </TechnicalProfile>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan használhatja az egyéni e-mail-ellenőrzéssel rendelkező egyszeri jelszavas technikai profilt:
 

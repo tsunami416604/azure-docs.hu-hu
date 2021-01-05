@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 10/08/2020
 ms.author: alkohli
-ms.openlocfilehash: e93a7fd7aec5463a3d77bd9d6bb17d7072097870
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5e6f411fef5d3e27b6ad61b720f1c64fb6f8c9a0
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447639"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883333"
 ---
 # <a name="troubleshoot-activation-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure Stack Edge Pro GPU-eszköz aktiválási problémáinak elhárítása 
 
@@ -31,7 +31,7 @@ A következő táblázat összefoglalja az eszköz aktiválásával és a megfel
 | Ha az aktiváláshoz használt Azure Key Vault törölve lett, mielőtt az eszköz aktiválva lett az aktiválási kulccsal, akkor ezt a hibaüzenetet kapja. <br> ![Key Vault – 1. hiba](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-1.png)  | Ha a Key Vault törölve lett, akkor helyreállíthatja a kulcstartót, ha a tároló a kiürítési időtartam alatt van. Kövesse a [Key Vault helyreállításának](../key-vault/general/key-vault-recovery.md#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates)lépéseit. <br>Ha a kiürítési védelem időtartama eltelt, akkor a kulcstartó nem állítható helyre. A további lépésekhez kérjen segítséget a Microsoft ügyfélszolgálatától. |
 | Ha a Azure Key Vault törölve lett az eszköz aktiválása után, majd megpróbál végrehajtani bármilyen műveletet, amely magában foglalja a titkosítást, például: **felhasználó hozzáadása**, **megosztás hozzáadása**, **számítás konfigurálása**, majd ezt a hibaüzenetet kapja. <br> ![Key Vault – 2. hiba](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-2.png)    | Ha a Key Vault törölve lett, akkor helyreállíthatja a kulcstartót, ha a tároló a kiürítési időtartam alatt van. Kövesse a Key Vault helyreállításának lépéseit. <br>Ha a kiürítési védelem időtartama eltelt, akkor a kulcstartó nem állítható helyre. A további lépésekhez kérjen segítséget a Microsoft ügyfélszolgálatától. |
 | Ha a Azure Key Vault csatorna integritási kulcsa törölve van, majd megpróbál végrehajtani bármilyen műveletet, amely magában foglalja a titkosítást, például: **felhasználó hozzáadása**, **megosztás hozzáadása**, **számítás konfigurálása** – ezt a hibaüzenetet fogja kapni. <br> ![Key Vault – 3. hiba](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-3.png) | Ha a Key vaultban a csatorna integritási kulcsa törlődik, de továbbra is a kiürítés időtartama alá esik, kövesse a [Key Vault-kulcs eltávolításának visszavonása](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)című témakör lépéseit. <br>Ha a kiürítési védelem időtartama eltelt, és ha a kulcs biztonsági mentése megtörtént, akkor a biztonsági másolatból visszaállíthatja, hogy a kulcs nem állítható helyre. A további lépésekhez kérjen segítséget a Microsoft ügyfélszolgálatától. |
-| Ha az aktiválási kulcs létrehozása valamilyen hiba miatt meghiúsul, akkor ezt a hibaüzenetet kapja. További részletek jelennek meg az értesítésben. <br> ![Key Vault – 4. hiba](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-4.png)   | Várjon néhány percet, és ismételje meg a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
+| Ha az aktiválási kulcs létrehozása valamilyen hiba miatt meghiúsul, akkor ezt a hibaüzenetet kapja. További részletek jelennek meg az értesítésben. <br> ![Key Vault – 4. hiba](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-4.png)   | Győződjön meg arról, hogy a tűzfal [mögötti hozzáférési Azure Key Vaultban](../key-vault/general/access-behind-firewall.md) megadott portok és URL-címek nyitva vannak a tűzfalon a Key Vault eléréséhez. Várjon néhány percet, és ismételje meg a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
 | Ha a felhasználó csak olvasási jogosultsággal rendelkezik, akkor a felhasználó nem jogosult az aktiválási kulcs előállítására, és ez a hiba jelenik meg. <br> ![Key Vault – 5. hiba](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-5.png) | Ennek oka az lehet, hogy nincs megfelelő hozzáférése, vagy a  *Microsoft.* kulcstartó nincs regisztrálva.<li>Ellenőrizze, hogy rendelkezik-e tulajdonosi vagy közreműködői hozzáféréssel az Azure Stack Edge-erőforráshoz használt erőforráscsoport szintjén.</li><li>Győződjön meg arról, hogy a Microsoft. kulcstartó erőforrás-szolgáltató regisztrálva van. Az erőforrás-szolgáltató regisztrálásához lépjen az Azure Stack Edge-erőforráshoz használt előfizetésre. Lépjen az **erőforrás-szolgáltatók** elemre, keresse meg a *Microsoft.* kulcstartót, és válassza ki és **regisztrálja**.</li> |
 
 ## <a name="next-steps"></a>További lépések

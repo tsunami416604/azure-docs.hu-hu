@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: c2496959f851b55f8cc66c0e793b641cdafb003a
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: e3d657f5f666caf159a082d121d551b839699158
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808334"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882993"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>A titkos kulcs elforgatásának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -222,8 +222,15 @@ Figyelje meg, hogy `value` a kulcs ugyanaz, mint a Key Vault titkos kulcsa:
 
 ## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>Key Vault rotációs függvények két hitelesítő adathoz
 
-- [Storage-fiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
-- [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
+A rotációs függvények sablon két hitelesítő adathoz és több használatra kész függvényhez:
+
+- [Function sablon a PowerShellben](https://github.com/Azure/KeyVault-Secrets-Rotation-Template-PowerShell)
+- [Redis Cache](https://github.com/Azure/KeyVault-Secrets-Rotation-Redis-PowerShell)
+- [Storage-fiók](https://github.com/Azure/KeyVault-Secrets-Rotation-StorageAccount-PowerShell)
+- [Cosmos DB](https://github.com/Azure/KeyVault-Secrets-Rotation-CosmosDB-PowerShell)
+
+> [!NOTE]
+> A fenti rotációs funkciókat a Közösség egy tagja hozza létre, és nem a Microsoft. A közösségi Azure Functions semmilyen Microsoft támogatási program vagy szolgáltatás esetében nem támogatottak, és a rendelkezésére álló feltételek semmilyen garanciát nem JELENTenek.
 
 ## <a name="next-steps"></a>További lépések
 

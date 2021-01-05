@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: c7e859b05450b95cf9c75421599dd9c54a639cdc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606844"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882415"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
 
@@ -256,7 +256,7 @@ Tekintse meg a [szótári keresési](reference/v3-0-dictionary-lookup.md) és a 
 | Norvég      | `nb`          |
 | perzsa      | `fa`          |
 | Lengyel      | `pl`          |
-| Portugál (Brazília)     | `pt-br`          |
+| Portugál (Brazília)     | `pt`          |
 | Román      | `ro`          |
 | Orosz      | `ru`          |
 | Szerb (latin betűs)      | `sr-Latn`          |

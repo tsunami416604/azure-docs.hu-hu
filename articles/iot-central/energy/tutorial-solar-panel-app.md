@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: napelemes figyelési alkalmazás létrehozása IoT Central'
-description: 'Oktatóanyag: Ismerje meg, hogyan hozhat létre napelem-alkalmazást az Azure IoT Central alkalmazás-sablonok használatával.'
+title: 'Oktatóanyag: Solar panel monitoring-alkalmazás létrehozása az Azure IoT Central'
+description: 'Oktatóanyag: Ismerje meg, hogyan hozhat létre napelem-alkalmazást Azure IoT Central alkalmazás-sablonok használatával.'
 author: op-ravi
 ms.author: omravi
 ms.date: 12/11/2020
@@ -8,104 +8,102 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d006bae8290c1f6ea564f9985727f4d6ff70bb04
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 9ea1db982a6944bd12b458624545b3888881508f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516758"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881918"
 ---
-# <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Oktatóanyag: létrehozás és útmutató a napelemek figyelésére szolgáló alkalmazás sablonja 
+# <a name="tutorial-create-and-explore-the-solar-panel-monitoring-app-template"></a>Oktatóanyag: a napelem-figyelő alkalmazás sablonjának létrehozása és megismerése 
 
-Ez az oktatóanyag végigvezeti Önt a napelemes figyelő alkalmazás létrehozásának folyamatán, amely egy szimulált adattal rendelkező minta-eszköz modellt tartalmaz. Ezen oktatóanyag segítségével elsajátíthatja a következőket:
+Ez az oktatóanyag végigvezeti Önt a napelemes figyelő alkalmazás létrehozásának folyamatán, amely egy szimulált adattal rendelkező minta-eszköz modellt tartalmaz. Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 
 > [!div class="checklist"]
-> * A Solar panel alkalmazás ingyenes létrehozása
-> * Alkalmazás végigvezeti
+> * Ingyenes Solar panel-alkalmazás létrehozása
+> * Az alkalmazás végigvezeti
 > * Az erőforrások eltávolítása
 
 
-Ha nincs előfizetése, [hozzon létre egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/free)
+Ha nem rendelkezik előfizetéssel, [hozzon létre egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/free).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Nincs
-* Az Azure-előfizetés használata ajánlott, de nem szükséges a kipróbáláshoz
+
+Az oktatóanyag elvégzéséhez nincsenek előfeltételek. Az Azure-előfizetések használata ajánlott, de nem kötelező.
 
 
 ## <a name="create-a-solar-panel-monitoring-app"></a>Napelempanel monitorozására szolgáló alkalmazás létrehozása 
 
 Ezt az alkalmazást három egyszerű lépésben hozhatja létre:
 
-1. Nyissa meg az [Azure IoT Central kezdőlapját](https://apps.azureiotcentral.com) , és kattintson a **Build** (létrehozás) gombra egy új alkalmazás létrehozásához. 
+1. Nyissa meg az [Azure IoT Central](https://apps.azureiotcentral.com). Új alkalmazás létrehozásához válassza a **Létrehozás** lehetőséget. 
 
-1. Válassza **az energia** fület, majd kattintson az alkalmazás **létrehozása** elemre a **napelem figyelése** alkalmazás csempén. 
+1. Válassza az **energia** lapot. A **nap panel figyelés** területén válassza az **alkalmazás létrehozása** lehetőséget. 
 
     > [!div class="mx-imgBorder"]
-    > ![Alkalmazás összeállítása](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
+    > ![Képernyőkép az Azure IoT Central Build lehetőségeiről.](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
-1. Az alkalmazás **létrehozása** megnyitja az **új alkalmazás** űrlapot. Adja meg a kért adatokat az alábbi ábrán látható módon:
-    * **Alkalmazás neve**: válasszon egy nevet a IoT Central alkalmazás számára. 
-    * **URL**: válasszon egy IoT Central URL-címet, a platform ellenőrzi annak egyediségét.
-    * **7 napos ingyenes próbaverzió**: Ha már rendelkezik Azure-előfizetéssel, az alapértelmezett beállítás ajánlott. Ha nem rendelkezik Azure-előfizetéssel, kezdje az ingyenes próbaverzióval.
+1. Az **új alkalmazás** párbeszédpanelen adja meg a kért adatokat, majd válassza a **Létrehozás** lehetőséget:
+    * **Alkalmazásnév**: válasszon egy nevet az Azure IoT Central alkalmazás számára. 
+    * **URL**: válasszon ki egy Azure IoT Central URL-címet. A platform ellenőrzi az egyediségét.
+    * **Díjszabási csomag**: Ha már rendelkezik Azure-előfizetéssel, az alapértelmezett beállítás ajánlott. Ha nem rendelkezik Azure-előfizetéssel, kezdje az ingyenes próbaverzióval.
     * **Számlázási információ**: maga az alkalmazás ingyenes. Az alkalmazás erőforrásainak kiépítéséhez a címtár, az Azure-előfizetés és a régió részletei szükségesek.
-    * Kattintson a lap alján található **Létrehozás** gombra, és az alkalmazás egy percen belül létrejön.
-        ![Új alkalmazás űrlapja](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        ![Képernyőkép az új alkalmazásról.](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
         
-        ![Új alkalmazás-űrlap számlázási adatai](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
+        ![Képernyőkép a számlázási adatokról.](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Az alkalmazás és a szimulált adatértékek ellenőrzése
 
-Az újonnan létrehozott napelemes alkalmazás az Ön alkalmazása, és bármikor módosítható. Győződjön meg arról, hogy az alkalmazás telepítve van, és a módosítás előtt a várt módon működik.
+Bármikor módosíthatja az új Solar panel alkalmazást. Egyelőre ellenőrizze, hogy az alkalmazás telepítve van-e, és megfelelően működik-e a módosítás előtt.
 
-Az alkalmazás létrehozásának és adatszimulációjának ellenőrzéséhez nyissa meg az **irányítópultot**. Ha a csempék adatai megtekinthetők, az alkalmazás üzembe helyezése sikeres volt. Az adat-szimuláció eltarthat néhány percig az adat létrehozásakor, így 1-2 percet is igénybe vehet. 
+Az alkalmazás létrehozásának és adatszimulációjának ellenőrzéséhez nyissa meg az **irányítópultot**. Ha a csempék adatai megtekinthetők, az alkalmazás üzembe helyezése sikeres volt. Az adatszimuláció eltarthat néhány percig az adat létrehozásakor. 
 
 ## <a name="application-walk-through"></a>Alkalmazás végigvezeti
-Az alkalmazás sikeres üzembe helyezése után a minta intelligens fogyasztásmérő eszköz, az eszköz modellje és az irányítópult is megtalálható.
+Az alkalmazás sablonjának sikeres üzembe helyezése után érdemes megvizsgálni az alkalmazást. Figyelje meg, hogy a minta intelligens fogyasztásmérő eszköz, eszköz modell és irányítópult.
 
-A adatum egy fiktív energetikai cég, aki figyeli és kezeli a napelemeket. A napelem-figyelési irányítópulton a napelemek tulajdonságai, az adathalmazok és a minták parancsai láthatók. Lehetővé teszi a kezelők és a támogatási csapatok számára, hogy proaktív módon végezzék el a következő tevékenységeket, mielőtt a támogatási incidensekre váltanak:
-* Tekintse át a panel legújabb információit és a telepített helyét a térképen
-* Proaktív módon ellenőrizhető a panel állapota és a kapcsolatok állapota
-* Tekintse át az energia-generálási és hőmérsékleti trendeket, hogy bármilyen rendellenes mintázatot kapj
-* Az energia teljes generációjának nyomon követése tervezési és számlázási célokra
-* Parancs-és vezérlési műveletek, például aktiválási panel és a belső vezérlőprogram verziójának frissítése. A sablonban a parancsgombok a lehetséges funkciókat mutatják, és nem küldenek valós parancsokat.
+A adatum egy fiktív energetikai cég, amely a napelemeket figyeli és kezeli. A napelem-figyelési irányítópulton a napelemek tulajdonságai, az adathalmazok és a minták parancsai láthatók. Ez az irányítópult lehetővé teszi, hogy a támogatási csapat proaktív módon hajtsa végre a következő tevékenységeket, mielőtt bármilyen probléma további támogatásra szorul:
+* Tekintse át a panel legújabb adatait és a hozzá tartozó telepített helyet a térképen.
+* Keresse meg a panel állapotát és a kapcsolatok állapotát.
+* Tekintse át az energia-előállítási és hőmérsékleti trendeket, hogy minden rendellenes mintázatot elkapjon.
+* Nyomon követheti a teljes energiatermelést tervezési és számlázási célokra.
+* Ha szükséges, aktiválja a panelt, és frissítse a belső vezérlőprogram verzióját. A sablonban a parancsgombok a lehetséges funkciókat mutatják, és nem küldenek valódi parancsokat.
 
 > [!div class="mx-imgBorder"]
-> ![A napelem monitorozási irányítópultja](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
+> ![Képernyőfelvétel a napelem figyelési sablonjának irányítópultról.](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
 
 ### <a name="devices"></a>Eszközök
-Az alkalmazás egy minta napelemes eszközt tartalmaz. Az eszköz adatait a **Devices (eszközök** ) lapra kattintva tekintheti meg.
+Az alkalmazás egy minta napelemes eszközt tartalmaz. Az eszköz részleteinek megtekintéséhez válassza az **eszközök** lehetőséget.
 
 > [!div class="mx-imgBorder"]
-> ![Napelemes eszközök](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
+> ![Képernyőkép a napelemes figyelési sablon eszközeiről.](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
 
-
-Az eszköz részleteinek megtekintéséhez kattintson a minta eszköz **SP0123456789** hivatkozására. A **frissítés tulajdonságai** lapon frissítheti az eszköz írható tulajdonságait, és megjelenítheti a frissített értékeket az irányítópulton. 
+Válassza ki a minta eszközt, **SP0123456789**. A **frissítés tulajdonságai** lapon frissítheti az eszköz írható tulajdonságait, és megtekintheti a frissített értékek vizualizációját az irányítópulton. 
 
 > [!div class="mx-imgBorder"]
-> ![Napelem tulajdonságai](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
+> ![Képernyőfelvétel a napelem-figyelési sablon frissítés tulajdonságai lapról.](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
 
 
 ### <a name="device-template"></a>Eszköz sablonja
-A napelemes eszköz modell megjelenítéséhez kattintson az **eszköz sablonok** lapfülre. A modell előre definiált felületet tartalmaz az adattípushoz, a tulajdonsághoz, a parancsokhoz és a nézetekhez.
+A napelemes eszköz modell megjelenítéséhez válassza az **eszközök sablonok** fület. A modell előre definiált csatolókat tartalmaz az adattípusokhoz, a tulajdonságokhoz, a parancsokhoz és a nézetekhez.
 
 > [!div class="mx-imgBorder"]
-> ![Napelemes eszközök sablonja](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
+> ![Képernyőfelvétel a napelemek figyeléséhez sablon eszköz sablonjairól.](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha úgy dönt, hogy nem folytatja az alkalmazás használatát, törölje az alkalmazást a következő lépésekkel:
+Ha úgy dönt, hogy nem folytatja az alkalmazás használatát, törölje az alkalmazást az alábbi lépésekkel:
 
-1. A bal oldali ablaktáblában nyissa meg az adminisztráció lapot.
-1. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
+1. A bal oldali panelen válassza az **Adminisztráció** lehetőséget.
+1. Válassza az **Alkalmazásbeállítások**  >  **Törlés** lehetőséget. 
 
     > [!div class="mx-imgBorder"]
-    > ![Alkalmazás törlése](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
+    > ![Képernyőkép a napelem figyelési sablon felügyeletéről.](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
 
 ## <a name="next-steps"></a>További lépések
-* A napelemes alkalmazások architektúrájának megismerése 
+ 
 > [!div class="nextstepaction"]
-> [a koncepcióról szóló cikk](./concept-iot-central-solar-panel-app.md)
-* Solar panel-alkalmazások sablonjainak létrehozása ingyen: [napelemes](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) alkalmazás
-* További információ a IoT Centralről: [IoT Central áttekintése](../index.yml)
+> [Azure IoT Central – napelemes alkalmazások architektúrája](./concept-iot-central-solar-panel-app.md)
+* [Solar panel-alkalmazás sablonjainak létrehozása ingyen](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
+* [Az Azure IoT Central áttekintése](../index.yml)

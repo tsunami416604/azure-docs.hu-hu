@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 11/18/2020
+ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 14e4fda6ef36dd8fc57529046473d8afa916ef2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830870"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880970"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével
 
@@ -168,7 +168,7 @@ A TLS/SSL-tanúsítványok lejárnak, és meg kell újítani. Ez általában év
 
 ### <a name="update-a-microsoft-generated-certificate"></a>Microsoft által generált tanúsítvány frissítése
 
-Ha a tanúsítványt eredetileg a Microsoft hozta létre (ha a *leaf_domain_label* a szolgáltatás létrehozásához használja), az alábbi példák egyikével frissítheti a tanúsítványt:
+Ha a tanúsítványt eredetileg a Microsoft generálta (ha a *leaf_domain_label* a szolgáltatás létrehozásához használja), **akkor a rendszer automatikusan megújítja** , ha szükséges. Ha manuálisan szeretné megújítani, használja az alábbi példák egyikét a tanúsítvány frissítéséhez:
 
 > [!IMPORTANT]
 > * Ha a meglévő tanúsítvány még érvényes, használja az `renew=True` (SDK) vagy a `--ssl-renew` (CLI) beállítást a konfiguráció megújításához. Ha például a meglévő tanúsítvány 10 napig érvényes, és nem használja `renew=True` , előfordulhat, hogy a tanúsítvány nem újítható meg.

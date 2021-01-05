@@ -3,12 +3,12 @@ title: Az Azure-erőforrások áttekintése
 description: Ismerje meg, hogyan használhatja az erőforrás-diagram lekérdezési nyelvét, és hogyan derítheti fel, hogyan kapcsolódnak egymáshoz.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2b0ef3935d865618a9d4dda2825f7d4383baf772
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 01f9c0c574d8a8d6d4b5f06fc1398313649cfb8d
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056242"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882908"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
@@ -147,7 +147,7 @@ Most láthatjuk, hogy hány virtuális gép van az egyes Azure-régiókban.
 
 ### <a name="virtual-machines-by-sku"></a>Virtuális gépek SKU szerint
 
-Lépjen vissza az eredeti virtuális gép tulajdonságaiba, és próbálja meg megkeresni az összes olyan virtuális gépet, amelynek az SKU mérete **Standard_B2s**. A visszaadott JSON-t láthatjuk, hogy az a **Properties. hardwareprofile. vmsize**fájlban van tárolva. A lekérdezés frissítésével megkeresheti az összes olyan virtuális gépet, amely megfelel az adott méretnek, és csak a virtuális gép és a régió nevét adja vissza.
+Lépjen vissza az eredeti virtuális gép tulajdonságaiba, és próbálja meg megkeresni az összes olyan virtuális gépet, amelynek az SKU mérete **Standard_B2s**. A visszaadott JSON-t láthatjuk, hogy az a **Properties. hardwareprofile. vmsize** fájlban van tárolva. A lekérdezés frissítésével megkeresheti az összes olyan virtuális gépet, amely megfelel az adott méretnek, és csak a virtuális gép és a régió nevét adja vissza.
 
 ```kusto
 Resources
@@ -174,9 +174,6 @@ Resources
 | where disk.storageAccountType == 'Premium_LRS'
 | project disk.id
 ```
-
-> [!NOTE]
-> Az SKU beszerzésének egy másik módja a **Microsoft. számítási/virtualMachines/SKU. name** **aliasok** tulajdonságának használata. Tekintse meg az [aliasok megjelenítése](../samples/starter.md#show-aliases) és a [különböző alias-értékek megjelenítése](../samples/starter.md#distinct-alias-values) példákat.
 
 ```azurecli-interactive
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -307,7 +304,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddr
 
 Ha szeretné megtudni, hogyan hajthatja végre ezeket a lépéseket egyetlen lekérdezésben az `join` operátorral, tekintse meg a [virtuális gépek listázása hálózati interfésszel és nyilvános IP-](../samples/advanced.md#join-vmpip) címmel című mintát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [lekérdezési nyelvről](query-language.md).
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.

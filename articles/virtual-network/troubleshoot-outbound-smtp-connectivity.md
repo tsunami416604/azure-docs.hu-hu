@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2018
+ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 0a69df8a20c4e1502de151c38c60b54667c2d4dc
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814482"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883112"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>A kimenő SMTP-kapcsolati problémák elhárítása az Azure-ban
 
@@ -76,10 +76,6 @@ A 2017. november 15. után létrehozott következő típusok előfizetései tech
 Ha közvetlenül az Azure-beli virtuális gépekről szeretne e-mailt küldeni a külső e-mail-szolgáltatók számára (hitelesített SMTP-továbbítás használata nélkül), a következő probléma típusának használatával egy támogatási eset megnyitásával teheti meg a kérelmet: **technikai**  >  **Virtual Network** a  >  **kapcsolat**  >  **nem tud e-mailt küldeni (SMTP/port 25)**. Győződjön meg arról, hogy a központi telepítésnek miért kell közvetlenül a levelezési szolgáltatónak küldenie a leveleket a hitelesített továbbító használata helyett. A kérelmeket a Microsoft saját belátása szerint fogja felülvizsgálni és jóváhagyni. A rendszer csak a további csalás elleni ellenőrzések befejezését követően kap kérelmeket. 
 
 Az előfizetés kivétele és a virtuális gépek leállítása és újraindítása után a Azure Portal az előfizetésben lévő összes virtuális gép mentesül. A kivétel csak a kért előfizetésre vonatkozik, és csak az internethez közvetlenül átirányított VM-forgalomra érvényes.
-
-## <a name="restrictions-and-limitations"></a>Korlátozások és korlátozások
-
-A 25-ös porton keresztüli forgalom az Azure Pásti-szolgáltatások (például [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) ) használatával nem támogatott.
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 

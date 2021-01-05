@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a78cf9b7d78078030ac0db8bd2f0fddb93a8dda4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859963"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881396"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Érzékenységi címkék kiosztása Microsoft 365 csoportokhoz Azure Active Directory
 
@@ -48,7 +48,7 @@ A közzétett címkék csoportokba való alkalmazásához először engedélyezn
     ```
 
     > [!NOTE]
-    > Ha nem hoztak létre csoportházirend-beállításokat ehhez az Azure AD-szervezethez, először létre kell hoznia a beállításokat. Az Azure AD-szervezethez tartozó csoportházirend-beállítások létrehozásához kövesse a [Azure Active Directory parancsmagok](../enterprise-users/groups-settings-cmdlets.md) című szakasz lépéseit.
+    > Ha nem hoztak létre csoportházirend-beállításokat ehhez az Azure AD-szervezethez, hibaüzenet jelenik meg a fenti parancsmagban, amely a következőt olvassa be: "nem köthető argumentum a (z)" id "paraméterhez, mert null". Ebben az esetben először létre kell hoznia a beállításokat. Az Azure AD-szervezethez tartozó csoportházirend-beállítások létrehozásához kövesse a [Azure Active Directory parancsmagok](../enterprise-users/groups-settings-cmdlets.md) című szakasz lépéseit.
 
 1. Ezután jelenítse meg az aktuális csoport beállításait.
 
@@ -136,7 +136,7 @@ A címkék bármikor felcserélhetők, ha ugyanazokat a lépéseket használják
 1. Válassza a **csoportok** lehetőséget.
 1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
 1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy új érzékenységi címkét a listából.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>A csoportok a közzétett címkékre vonatkozó módosításait nem frissítik a csoportokon
 
@@ -144,7 +144,7 @@ Ajánlott eljárásként Azt javasoljuk, hogy a címke beállításait a csoport
 
 Ha módosítania kell a módosításokat, az [Azure ad PowerShell-parancsfájllal](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1) manuálisan alkalmazhatja az érintett csoportok frissítéseit. Ezzel a módszerrel gondoskodhat arról, hogy minden meglévő csoport érvényesítse az új beállítást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Microsoft Teams, a Microsoft 365 csoportok és a SharePoint-webhelyek érzékenységi feliratainak használata](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 - [Csoportok frissítése a címkézési házirend módosítása után manuálisan az Azure AD PowerShell-parancsfájllal](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
