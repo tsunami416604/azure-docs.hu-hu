@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492046"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858688"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>A Windows (SMB) Azure Files problémáinak elhárítása
 
@@ -406,6 +406,8 @@ A parancsmag az alábbi ellenőrzéseket hajtja végre egymás után, és útmut
 5. CheckSidHasAadUser: Győződjön meg róla, hogy a bejelentkezett AD-felhasználó szinkronizálva van az Azure AD-vel. Ha szeretné megkeresni, hogy egy adott AD-felhasználó szinkronizálva van-e az Azure AD-val, megadhatja a-UserName és a-domain paramétert a bemeneti paraméterekben. 
 6. CheckGetKerberosTicket: a Storage-fiókhoz való kapcsolódásra irányuló Kerberos-jegy beszerzésére tett kísérlet. Ha nincs érvényes Kerberos-jogkivonat, futtassa a klist Get CIFS/Storage-Account-Name. file. Core. Windows. net parancsmagot, és vizsgálja meg a hibakódot a fő – a jegy lekérési hibája miatt.
 7. CheckStorageAccountDomainJoined: Ellenőrizze, hogy az AD-hitelesítés engedélyezve van-e, és hogy a fiók AD-tulajdonságainak feltöltése megtörtént-e. Ha nem, tekintse meg a AD DS hitelesítés engedélyezése Azure Fileson című [témakör utasításait](./storage-files-identity-ad-ds-enable.md) . 
+8. CheckUserRbacAssignment: Ellenőrizze, hogy az AD-felhasználó rendelkezik-e a megfelelő RBAC-szerepkör-hozzárendeléssel, hogy hozzáférést biztosítson a megosztási szinten a Azure Files eléréséhez Ha nem, tekintse meg az [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) található utasításokat a megosztási szint engedélyének konfigurálásához. (Támogatott a AzFilesHybrid v 0.2.3 + verziójában)
+9. CheckUserFileAccess: Ellenőrizze, hogy az AD-felhasználó rendelkezik-e a megfelelő könyvtár/fájl engedéllyel (Windows ACL) a Azure Files eléréséhez. Ha nem, tekintse meg az [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) található utasításokat a könyvtár/fájl szintű engedély konfigurálásához. (Támogatott a AzFilesHybrid v 0.2.3 + verziójában)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nem lehet konfigurálni a címtár/fájl szintű engedélyeket (Windows ACL) a Windows fájlkezelővel
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 76e19c36f0fa4096966c5dd23d2384b6b30f2271
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498860"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845618"
 ---
 # <a name="business-card-concepts"></a>Névjegykártyákra vonatkozó fogalmak
 
@@ -374,7 +374,7 @@ Tekintse meg a sikeres JSON-válasz következő példáját: a "readResults" cso
 }
 ```
 
-Az névjegykártya-adatok kinyeréséhez a Python és a REST API használatával hajtsa végre az névjegykártya- [adatok](./QuickStarts/python-business-cards.md) kinyerése című témakört.
+A gyors üzembe helyezési útmutatóval a Python és a REST API segítségével implementálhatja [a névjegykártya](./QuickStarts/client-library.md) -adatgyűjtést.
 
 ## <a name="customer-scenarios"></a>Felhasználói forgatókönyvek  
 
@@ -385,13 +385,13 @@ A Business Card API-val kinyert adatok különféle feladatok elvégzésére has
 * Tartsa nyomon az értékesítési érdeklődőket.  
 * A meglévő névjegykártya-rendszerképekből tömegesen kinyerheti a kapcsolattartási adatokat. 
 
-A Business Card API a [AIBuilder névjegykártya-feldolgozási funkciót](/ai-builder/prebuilt-business-card)is felhasználja.
+A Business Card API a [mesterséges intelligencia-készítő névjegykártya-feldolgozási funkciót](/ai-builder/prebuilt-business-card)is felhasználja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Kövesse a [Business Cards API Python](./quickstarts/python-business-cards.md) gyors útmutatóját, és ismerkedjen meg az üzleti kártyák felismerésével.
+- A gyors üzembe helyezéshez [kövesse az üzleti](./quickstarts/client-library.md) kártyák felismerésének első lépéseit.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Form Recognizer?](./overview.md)
 * [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)

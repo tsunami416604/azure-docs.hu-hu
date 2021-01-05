@@ -2,20 +2,22 @@
 title: BareMetal-példányok egységei az Azure-ban
 description: Ismerje meg, hogyan azonosíthatja és kezelheti a BareMetal-példányok egységeit a Azure Portalon keresztül.
 ms.topic: how-to
-ms.date: 12/31/2020
-ms.openlocfilehash: 927baa79519781ef74920b17bc9fcd858f0f6c6f
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829188"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861041"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Operációs rendszer nélküli példányok kezelése az Azure Portalon
  
 Ez a cikk bemutatja, hogyan jeleníti meg a [Azure Portal](https://portal.azure.com/) a [BareMetal-példányokat](baremetal-overview-architecture.md). Ez a cikk azokat a tevékenységeket mutatja be, amelyeket a Azure Portal az üzembe helyezett BareMetal-példányok egységével végezhet el. 
  
 ## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
-A BareMetal-példányok Azure-erőforrás-szolgáltatója biztosítja a Azure Portalban lévő példányok láthatóságát, amely jelenleg nyilvános előzetes verzióban érhető el. Alapértelmezés szerint a BareMetal példányok üzembe helyezéséhez használt Azure-előfizetés regisztrálja a *BareMetalInfrastructure* erőforrás-szolgáltatót. Ha nem látja a telepített BareMetal-példányok egységét, regisztrálnia kell az erőforrás-szolgáltatót az előfizetésében. Az BareMetal-példány erőforrás-szolgáltatóját kétféleképpen lehet regisztrálni:
+A BareMetal-példányok Azure-erőforrás-szolgáltatója biztosítja a Azure Portalban lévő példányok láthatóságát, amely jelenleg nyilvános előzetes verzióban érhető el. Alapértelmezés szerint a BareMetal példányok üzembe helyezéséhez használt Azure-előfizetés regisztrálja a *BareMetalInfrastructure* erőforrás-szolgáltatót. Ha nem látja a telepített BareMetal-példányok egységét, regisztrálnia kell az erőforrás-szolgáltatót az előfizetésében. 
+
+Az BareMetal-példány erőforrás-szolgáltatóját kétféleképpen lehet regisztrálni:
  
 * [Azure CLI](#azure-cli)
  
@@ -85,15 +87,15 @@ A rendszerképben szereplő attribútumok nem sokban különböznek az Azure vir
 A jobb oldalon megjelenik az egység neve, az operációs rendszer (OS), az IP-cím és az SKU, amely a CPU-szálak és a memória számát jeleníti meg. Ekkor megjelenik az energiagazdálkodási állapot és a hardver verziója is (az BareMetal-példány bélyegzője). A tápellátási állapot azt jelzi, hogy a hardvereszköz be van-e kapcsolva vagy ki van-e kapcsolva. Az operációs rendszer részletei azonban nem jelzik, hogy működik-e.
  
 A lehetséges hardver-változatok a következők:
+
+* 3. változat (Rev 3)
+
+* 4. változat (Rev 4)
  
-* 3. változat
- 
-* 4. változat
- 
-* 4,2-es változat
+* 4,2-es változat (Rev 4,2)
  
 >[!NOTE]
->A 4,2-es változat a legújabb rebranded BareMetal-infrastruktúra a 4. változat architektúrán keresztül. Jelentős mértékben javult az Azure-beli virtuális gépek és a 4. változatban vagy sorokban üzembe helyezett BareMetal-példányok közötti hálózati késés. További információ a különböző változatokról: BareMetal-infrastruktúra az [Azure](baremetal-overview-architecture.md)-ban.
+>A Rev 4,2 a legújabb, a meglévő Rev 4 architektúrát használó BareMetal-infrastruktúra. A Rev 4 Az Azure-beli virtuális gépek (VM) gazdagépei számára biztosít szorosabb közelséget. Az Azure-beli virtuális gépek és a BareMetal-példányok közötti hálózati késés jelentős javulása a Rev 4-bélyegekben vagy-sorokban van üzembe helyezve. A BareMetal-példányok a Azure Portalon keresztül érhetők el és kezelhetők. További információ: BareMetal- [infrastruktúra az Azure](baremetal-overview-architecture.md)-ban.
  
 Emellett a jobb oldalon megtalálja az [Azure Proximity-elhelyezési csoport](../../../virtual-machines/linux/co-location.md) nevét, amely automatikusan létrejön az egyes üzembe helyezett BareMetal-példányok egysége számára. Az alkalmazás réteget futtató Azure-beli virtuális gépek üzembe helyezése esetén hivatkozzon a közelségi csoportra. Ha az BareMetal-példány egységéhez tartozó közelségi elhelyezési csoportot használja, győződjön meg arról, hogy az Azure-beli virtuális gépek üzembe helyezése a BareMetal-példány egységéhez közel van.
  

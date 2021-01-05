@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025650"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857358"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>A Custom Speech pontosságának értékelése és javítása
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan mérjük és javíthatja a Microsoft besz�
 
 ## <a name="evaluate-custom-speech-accuracy"></a>A Custom Speech pontosságának értékelése
 
-A modell pontosságának méréséhez használt iparági szabvány a *Word Error Rate* (WER). A WER megszámolja az elismerés során azonosított helytelen szavak számát, majd az emberi címkével ellátott átiratban szereplő szavak teljes számát (N). Végezetül ezt a számot 100%-kal kell megszorozni a WER kiszámításához.
+A modell pontosságának méréséhez használt iparági szabvány a [Word Error Rate](https://en.wikipedia.org/wiki/Word_error_rate) (WER). A WER megszámolja az elismerés során azonosított helytelen szavak számát, majd az emberi címkével ellátott átiratban szereplő szavak teljes számát (N). Végezetül ezt a számot 100%-kal kell megszorozni a WER kiszámításához.
 
 ![WER-képlet](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -33,9 +33,11 @@ A helytelenül azonosított szavak három kategóriába sorolhatók:
 * Törlés (D): a hipotézis átiratában nem észlelhető szavak
 * Helyettesítő (k): a hivatkozás és a hipotézis között helyettesített szavak
 
-Bemutatunk egy példát:
+Íme egy példa:
 
 ![Helytelenül azonosított szavak – példa](./media/custom-speech/custom-speech-dis-words.png)
+
+Ha helyileg szeretné replikálni a WER-méréseket, használhatja a sclite-t a [SCTK](https://github.com/usnistgov/SCTK)-ből.
 
 ## <a name="resolve-errors-and-improve-wer"></a>Hibák elhárítása és a WER fejlesztése
 
@@ -56,7 +58,7 @@ Modellek kiértékelése egymás mellett:
 3. Kattintson a **teszt hozzáadása** gombra.
 4. Válassza ki a **pontosság kiértékelése** elemet. Adja meg a teszt nevét, leírását, és válassza ki a hang + emberi-címkével ellátott átírási adatkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
-6. Kattintson a **Létrehozás** gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
 A teszt sikeres létrehozása után összehasonlíthatja az eredményeket egymás mellett.
 
@@ -68,7 +70,7 @@ A teszt befejezése után az állapot változása *sikeres* volt, a tesztben sze
 
 A beszédfelismerési forgatókönyvek a hangminőség és a nyelv (szókincs és beszéd stílus) szerint változnak. A következő táblázat a négy gyakori forgatókönyvet vizsgálja:
 
-| Használati eset | Hangminőség | Szókincs | Beszéd stílusa |
+| Eset | Hangminőség | Szókincs | Beszéd stílusa |
 |----------|---------------|------------|----------------|
 | Call Center | Az alacsony, 8 kHz-es lehet 2 ember 1 hangcsatornán, tömörítve | Keskeny, egyedi tartományhoz és termékekhez | Társalgási, lazán strukturált |
 | Hangsegéd (például Cortana vagy áteresztő ablak) | Magas, 16 kHz | Entitás – nehéz (Song titles, Products, locations) | Egyértelműen megadott szavak és kifejezések |
@@ -77,7 +79,7 @@ A beszédfelismerési forgatókönyvek a hangminőség és a nyelv (szókincs é
 
 A különböző forgatókönyvek eltérő minőségi eredményeket hoznak létre. Az alábbi táblázat azt vizsgálja, hogy a négy forgatókönyv tartalma milyen arányban szerepel a [Word Error Rate (WER)](how-to-custom-speech-evaluate-data.md)alapján. A táblázat az egyes forgatókönyvekben leggyakrabban használt hibákat mutatja.
 
-| Használati eset | Beszédfelismerési minőség | Beszúrási hibák | Törlési hibák | Helyettesítési hibák |
+| Eset | Beszédfelismerési minőség | Beszúrási hibák | Törlési hibák | Helyettesítési hibák |
 |----------|----------------------------|------------------|-----------------|---------------------|
 | Call Center | Közepes (< 30% WER) | Alacsony, kivéve, ha mások a háttérben beszélgetnek | Magas lehet. A Call Centers lehet zajos, az átfedésben lévő hangszórók pedig megzavarják a modellt | Közepes. A termékek és a személyek nevei okozhatják ezeket a hibákat |
 | Hangvezérelt asszisztens | Magas (lehet < 10% WER) | Alacsony | Alacsony | Közepes, a dalok címei, terméknév vagy helyei miatt |
@@ -96,7 +98,7 @@ A következő szakaszok azt ismertetik, hogy a további betanítási informáci�
 
 ### <a name="add-related-text-sentences"></a>Kapcsolódó szöveges mondatok hozzáadása
 
-A további kapcsolódó szöveges mondatok elsősorban csökkentik a gyakori szavak és a tartományra vonatkozó szavak hibás felismerésével kapcsolatos helyettesítési hibákat, ha azok kontextusban vannak megjelenítve. A tartományra vonatkozó szavak nem lehetnek gyakoriak vagy felkészített szavak, de a kiejtésnek Egyértelműnek kell lennie.
+Új egyéni modell betanításakor Kezdje a kapcsolódó szöveg hozzáadásával, hogy javítsa a tartományra vonatkozó szavak és kifejezések felismerését. A kapcsolódó szöveges mondatok elsősorban csökkentik a gyakori szavak és a tartományra vonatkozó szavak felismerésével kapcsolatos helyettesítési hibákat, ha azok kontextusban jelennek meg. A tartományra vonatkozó szavak nem lehetnek gyakoriak vagy felkészített szavak, de a kiejtésnek Egyértelműnek kell lennie.
 
 > [!NOTE]
 > Kerülje a kapcsolódó szöveges mondatokat, például a nem felismerhető karaktereket vagy szavakat.
@@ -111,6 +113,12 @@ Tekintse meg az alábbi adatokat:
 * Kerülje az átírási hibákat tartalmazó mintákat, de a hangminőség sokféleségét is.
 * Kerülje azokat a mondatokat, amelyek nem kapcsolódnak a problémás tartományhoz. A nem kapcsolódó mondatok károsíthatják a modellt.
 * Ha az átiratok minősége változó, a kivételesen jó mondatok (például a kiváló átiratok, amelyek tartalmazzák a kulcsfontosságú kifejezéseket) megismétlődnek a súlyozásuk növeléséhez.
+* A beszédfelismerési szolgáltatás automatikusan az átiratokkal javítja a tartományra vonatkozó szavak és kifejezések felismerését, mintha a hozzá kapcsolódó szövegként lett hozzáadva.
+* A hanggal való képzés a legtöbb előnyt biztosítja, ha a hang az emberek számára is nehezen érthető. A legtöbb esetben a betanítást csak a kapcsolódó szöveg használatával kezdheti meg.
+* A betanítási művelet elvégzése több napot is igénybe vehet. A képzés sebességének növelése érdekében mindenképpen hozzon létre egy olyan [régióban, amely dedikált hardverrel rendelkezik](custom-speech-overview.md#set-up-your-azure-account) a betanításhoz.
+
+> [!NOTE]
+> Nem minden alapmodell támogatja a hangfelvételt. Ha egy alapmodell nem támogatja azt, a beszédfelismerési szolgáltatás csak az átiratokból származó szöveget fogja használni, és figyelmen kívül hagyja a hangot.
 
 ### <a name="add-new-words-with-pronunciation"></a>Új szavak hozzáadása a kiejtéssel
 
@@ -123,14 +131,14 @@ A létrehozott vagy különösen specializált szavak egyedi kiejtésekkel rende
 
 A következő táblázat a hangfelismerési forgatókönyveket mutatja be, és felsorolja azokat a forrás anyagokat, amelyeket figyelembe kell venni a fent felsorolt három képzési tartalom kategóriáján belül.
 
-| Használati eset | Kapcsolódó szöveges mondatok | Hang + emberi – címkézett átiratok | Új szavak a kiejtéssel |
+| Eset | Kapcsolódó szöveges mondatok | Hang + emberi – címkézett átiratok | Új szavak a kiejtéssel |
 |----------|------------------------|------------------------------|------------------------------|
 | Call Center             | marketing dokumentumok, webhely, a Call Center tevékenységgel kapcsolatos termékekkel kapcsolatos felülvizsgálatok | az emberek által átadott Call Center-hívások | nem egyértelmű kiejtésekkel rendelkező kifejezések (lásd a fenti Xbox-t) |
 | Hangvezérelt asszisztens         | mondatok listázása a parancsok és entitások összes kombinációjának használatával | hangokat rögzíthet az eszközön, és szöveget is leír | egyedi kiejtésekkel rendelkező nevek (filmek, dalok, termékek) |
 | Diktálás               | írásos bevitel, például azonnali üzenetek vagy e-mailek | a fentiekhez hasonlóan | a fentiekhez hasonlóan |
 | Videós kódolt feliratok | TV show-szkriptek, filmek, marketing-tartalmak, videó-összefoglalók | videók pontos átiratai | a fentiekhez hasonlóan |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Modell betanítása és üzembe helyezése](how-to-custom-speech-train-model.md)
 

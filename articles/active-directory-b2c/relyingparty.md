@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9c50bd71f4e2e5bbe12518f5a5d1cd486af9723a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f0f3b6ffcb7ee12a692470b922cf23a3f0f40f0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509751"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858434"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -231,6 +231,7 @@ Ha a protokoll `SAML` , a metaadat elem a következő elemeket tartalmazza.
 | KeyEncryptionMethod| Nem | Azt a metódust jelzi, amelyet a Azure AD B2C az adattitkosításhoz használt kulcs másolatának titkosítására használ. A metaadatok az  `<EncryptedKey>` SAML-válasz elemének értékét vezérlik. Lehetséges értékek: ` Rsa15` (alapértelmezett) – RSA nyilvános kulcsú kriptográfiai standard (PKCS) Version 1,5 algoritmus, ` RsaOaep` -RSA optimális aszimmetrikus titkosítási kitöltés (OAEP) titkosítási algoritmus. |
 | UseDetachedKeys | Nem |  Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a értékre van állítva `true` , Azure ad B2C módosítja a titkosított érvényesítések formátumát. A leválasztott kulcsok használata a titkosított állítást a EncrytedAssertion gyermekének adja hozzá a EncryptedData szemben. |
 | WantsSignedResponses| Nem | Azt jelzi, hogy Azure AD B2C aláírja-e az `Response` SAML-válasz szakaszát. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .  |
+| RemoveMillisecondsFromDateTime| Nem | Azt jelzi, hogy a millisconds el lesz-e távolítva az SAML-válasz datetime értékeiből (ezek közé tartozik a IssueInstant, a NotBefore, a NotOnOrAfter és a AuthnInstant). Lehetséges értékek: `false` (alapértelmezett) vagy `true` .  |
 
 ### <a name="outputclaims"></a>OutputClaims
 

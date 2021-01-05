@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317554"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857426"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
 
@@ -64,7 +64,7 @@ A log analyticshez hasonlóan az időtartomány is a megadott tartományra korl�
 
 Egy lekérdezés például 60 percet vizsgál, ha az időtartomány 60 perc, még akkor is, ha a szöveg már tartalmazza a **következőt: ago (1d)**. Az időtartománynak és a lekérdezési idő szűrésének meg kell egyeznie. A példában az **adott időszakra** vonatkozó  /  **felülbírálás lekérdezési időtartománya** egy napra változik, a várt módon fog működni.
 
-### <a name="measure"></a>Measure
+### <a name="measure"></a>Mérték
 
 A naplózási riasztások olyan numerikus értékekre jelentkeznek be, amelyek kiértékelése lehetséges. Két különböző dolgot mérhető fel:
 
@@ -120,6 +120,8 @@ A munkaterületek és a Application Insights esetében ez csak **metrikus méré
 ### <a name="split-by-alert-dimensions"></a>Felosztás riasztási méretek alapján
 
 A riasztások szám vagy karakterlánc típusú oszlopokból való felosztása különálló riasztásokra az egyedi kombinációk csoportosításával. Az erőforrás-központú riasztások méretezéskor (előfizetés vagy erőforráscsoport-hatókör) való létrehozásakor az Azure erőforrás-azonosító oszlopával lehet felosztani. Az Azure Resource ID oszlop felosztása megváltoztatja a riasztás célját a megadott erőforrásra.
+
+Az Azure Resource ID oszlop szerinti felosztás ajánlott, ha ugyanazon feltételt szeretné figyelni több Azure-erőforráson. Például az összes virtuális gép figyelése a CPU használatára 80% felett. Dönthet úgy is, hogy nem bontja a felosztást, ha a hatókörben több erőforrásra vonatkozó feltételt szeretne használni, például a figyelést, hogy az erőforráscsoport hatókörében legalább öt gépen van CPU-használat a 80%-nál.
 
 A munkaterületek és a Application Insights esetében ez csak **metrikus mérési** mértékekben támogatott. A mező neve **Összesítés**. Legfeljebb három oszlop lehet. A lekérdezés oszlopainak több mint három csoportja nem várt eredményekhez vezethet. Az összes többi erőforrástípus esetében a feltétel **felosztási dimenziók** szakasza (legfeljebb hat felosztás) van konfigurálva.
 
@@ -182,7 +184,7 @@ A munkaterületek és a Application Insights esetében ez a **riasztások letilt
 
 Tekintse meg ezt a riasztási kiértékelési példát:
 
-| Idő    | Naplózási feltétel kiértékelése | Result 
+| Idő    | Naplózási feltétel kiértékelése | Eredmény 
 | ------- | ----------| ----------| ------- 
 | 00:05 | HAMIS | A riasztás nem tűz. Nincs hívott művelet.
 | 00:10 | IGAZ  | Riasztási tüzek és műveleti csoportok hívása. Új riasztási állapot aktív.

@@ -2,17 +2,17 @@
 title: Apache Kafka MirrorMaker használata – Azure Event Hubs | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Kafka-MirrorMaker a Kafka-fürtök AzureEvent-Hubokban való tükrözéséhez.
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: f2e7ac6951c84adfd8fc313995724021640ee0ab
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 01/04/2021
+ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503199"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97860994"
 ---
-# <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>A Kafka MirrorMaker használata a Event Hubs for Apache Kafka
+# <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>Apache Kafka MirrorMaker használata Event Hubs
 
-Ez az oktatóanyag bemutatja, hogyan tükrözheti a Kafka-közvetítőt egy Event hub-ban a Kafka MirrorMaker használatával.
+Ez az oktatóanyag bemutatja, hogyan tükrözheti a Kafka-közvetítőt egy Azure Event hub-ban a Kafka MirrorMaker használatával. Ha a CNCF Strimzi operátor használatával Apache Kafka üzemelteti a Kubernetes-t, akkor a [blogbejegyzésben](https://strimzi.io/blog/2020/06/09/mirror-maker-2-eventhub/) találhatja meg a Kafka használatát a Strimzi és a Mirror Maker 2 segítségével. 
 
    ![Kafka-MirrorMaker Event Hubs](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag bemutatja, hogyan tükrözheti a Kafka-közvetítőt egy Even
 > [!NOTE]
 > Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
 > * A példaprojekt klónozása
@@ -31,9 +31,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A Kafka MirrorMaker futtatása
 
 ## <a name="introduction"></a>Bevezetés
-A modern felhőalapú méretezési alkalmazások egyik fő szempontja az infrastruktúra frissítése, javítása és módosítása a szolgáltatás megszakítása nélkül. Ez az oktatóanyag azt mutatja be, hogy az Event hub és a Kafka MirrorMaker hogyan integrálhat egy meglévő Kafka-folyamatot az Azure-ba a "tükrözés" a Kafka-bemeneti streamnek a Event Hubs szolgáltatásban. 
+Ez az oktatóanyag azt mutatja be, hogy az Event hub és a Kafka MirrorMaker hogyan integrálhat egy meglévő Kafka-folyamatot az Azure-ba a "tükrözés" a Event Hubs-szolgáltatásban található Kafka bemeneti streamtel, amely lehetővé teszi Apache Kafka streamek integrálását több [összevonási minta](event-hubs-federation-overview.md)használatával. 
 
-Az Azure Event Hubs Kafka-végpont lehetővé teszi, hogy a Kafka-protokoll (azaz Kafka-ügyfelek) használatával kapcsolódjon az Azure Event Hubshoz. Egy Kafka-alkalmazás minimális módosításaival csatlakozhat az Azure Event Hubshoz, és élvezheti az Azure-ökoszisztéma előnyeit. A Event Hubs jelenleg a Kafka 1,0-es és újabb verzióit támogatja.
+Az Azure Event Hubs Kafka-végpont lehetővé teszi, hogy a Kafka-protokoll (azaz Kafka-ügyfelek) használatával kapcsolódjon az Azure Event Hubshoz. Egy Kafka-alkalmazás minimális módosításaival csatlakozhat az Azure Event Hubshoz, és élvezheti az Azure-ökoszisztéma előnyeit. A Event Hubs jelenleg Apache Kafka 1,0-es és újabb verziókban támogatja a protokollt.
+
+A Apache Kafka MirrorMaker 1 központilag Apache Kafkaról Event Hubsre is használhatja. A 2. MirrorMaker mindkét irányban használható, de a (MirrorMaker) 2. verziójában [ `MirrorCheckpointConnector` `MirrorHeartbeatConnector` konfigurálható](https://cwiki.apache.org/confluence/display/KAFKA/KIP-382%3A+MirrorMaker+2.0) , hogy mindkettőt úgy kell konfigurálni, hogy az Apache Kafka-közvetítőre mutasson, és ne Event Hubs. Ez az oktatóanyag az 1. MirrorMaker konfigurálását mutatja be.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -124,7 +126,7 @@ Tekintse meg a következő mintákat a GitHubon:
 - [Mintakód ehhez az oktatóanyaghoz a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
 - [Azure Event Hubs Kafka-MirrorMaker Azure Container-példányon futtatva](https://github.com/djrosanova/EventHubsMirrorMaker)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a Kafka-Event Hubsről, tekintse meg a következő cikkeket:  
 
 - [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)

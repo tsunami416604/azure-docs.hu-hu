@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88750190"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845421"
 ---
 # <a name="durable-orchestrations"></a>Tartós összeszerelések
 
@@ -48,7 +48,7 @@ A Durable Functions az események beszerzését transzparens módon használja. 
 Ha egy összehangoló függvény több munkát tesz elérhetővé (például válaszüzenet érkezik vagy tartós időzítő lejár), a Orchestrator felébred, és újból végrehajtja a teljes függvényt az elejétől a helyi állapot újraépítéséhez. Ha a kód megpróbál meghívni egy függvényt (vagy bármilyen más aszinkron munkát hajt végre), akkor az állandó feladat-keretrendszer az aktuális előkészítés végrehajtási előzményeit kérdezi le. Ha úgy találja, hogy a [tevékenységi függvény](durable-functions-types-features-overview.md#activity-functions) már végre lett hajtva, és eredményként eredményezte, akkor az a függvény eredményét játssza le, és a Orchestrator-kód továbbra is futni fog. A visszajátszás addig folytatódik, amíg a függvény kódja be nem fejeződik, vagy amíg be nem ütemezi az új aszinkron munkát.
 
 > [!NOTE]
-> Ahhoz, hogy az újrajátszás mintája megfelelően működjön és megbízható legyen, a Orchestrator függvény kódjának *determinisztikus*kell lennie. A Orchestrator függvények kódjainak korlátozásával kapcsolatos további információkért lásd a [Orchestrator-függvényekre](durable-functions-code-constraints.md) vonatkozó korlátozásokkal foglalkozó témakört.
+> Ahhoz, hogy az újrajátszás mintája megfelelően működjön és megbízható legyen, a Orchestrator függvény kódjának *determinisztikus* kell lennie. A Orchestrator függvények kódjainak korlátozásával kapcsolatos további információkért lásd a [Orchestrator-függvényekre](durable-functions-code-constraints.md) vonatkozó korlátozásokkal foglalkozó témakört.
 
 > [!NOTE]
 > Ha egy Orchestrator-függvény naplófájlokat bocsát ki, a visszajátszás viselkedése duplikált üzeneteket eredményezhet. Tekintse meg a [naplózási](durable-functions-diagnostics.md#app-logging) témakört, ahol további információt talál a működésével és megoldásával kapcsolatban.
@@ -124,7 +124,7 @@ Az ellenőrzőpont befejezését követően a Orchestrator függvény szabadon e
 
 Befejezésekor a korábban bemutatott függvény előzményei a következő táblázathoz hasonlóan jelennek meg az Azure Table Storage (illusztrációs célokra rövidítve):
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | Bevitel | Név             | Eredmény                                                    | status |
+| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Bevitel | Név             | Eredmény                                                    | Állapot |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
@@ -293,7 +293,7 @@ Nem lehet átadni több paramétert egy tevékenységi függvénynek közvetlen�
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-A .NET-ben használhat [ValueTuples](/dotnet/csharp/tuples) objektumokat is. A következő minta a [ValueTuples](/dotnet/csharp/tuples) új funkcióit használja a [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples)használatával:
+A .NET-ben használhat [ValueTuple](/dotnet/csharp/tuples) objektumokat is. A következő minta a [ValueTuple](/dotnet/csharp/tuples) új funkcióit használja a [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples)használatával:
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

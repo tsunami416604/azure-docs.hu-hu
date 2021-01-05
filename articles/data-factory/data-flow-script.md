@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/03/2020
-ms.openlocfilehash: 69b2713e928707479945df0bb242ac2fbc001c32
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.date: 12/23/2020
+ms.openlocfilehash: 3f5a6171ba81b858d649f381ed316be0637a2571
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600659"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858654"
 ---
 # <a name="data-flow-script-dfs"></a>Adatfolyam-parancsfájl (DFS)
 
@@ -245,6 +245,18 @@ derive(each(match(type=='string'), $$ = 'string'),
     each(match(type=='timestamp'), $$ = 'timestamp'),
     each(match(type=='boolean'), $$ = 'boolean'),
     each(match(type=='double'), $$ = 'double')) ~> DerivedColumn1
+```
+
+### <a name="fill-down"></a>Kitöltés lefelé
+Itt megtudhatja, hogyan hajthatja végre az adathalmazok közös "kitöltése" problémáját, ha NULL értékeket kíván cserélni a sorozat előző nem NULL értékének értékével. Vegye figyelembe, hogy ez a művelet negatív teljesítménybeli következményekkel járhat, mivel a teljes adathalmazon létre kell hoznia egy szintetikus ablakot egy "dummy" kategóriájú értékkel. Emellett egy érték alapján kell rendeznie a megfelelő adatsorozatot, hogy megkeresse az előző nem NULL értéket. Az alábbi kódrészlet a szintetikus kategóriát "dummy"-ként hozza létre, és egy helyettesítő kulcs alapján rendezi. Eltávolíthatja a helyettesítő kulcsot, és használhatja a saját adataihoz tartozó rendezési kulcsot is. Ez a kódrészlet feltételezi, hogy már hozzáadta a forrás-átalakítást ```source1```
+
+```
+source1 derive(dummy = 1) ~> DerivedColumn
+DerivedColumn keyGenerate(output(sk as long),
+    startAt: 1L) ~> SurrogateKey
+SurrogateKey window(over(dummy),
+    asc(sk, true),
+    Rating2 = coalesce(Rating, last(Rating, true()))) ~> Window1
 ```
 
 ## <a name="next-steps"></a>További lépések

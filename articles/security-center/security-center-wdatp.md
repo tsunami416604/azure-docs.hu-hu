@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296811"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854842"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -42,10 +42,10 @@ A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti bizton
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Kiadás állapota:                  | Általánosan elérhető (GA)                                                                                                                                                                                                                                                                                      |
 | Árképzési                        | [Az Azure Defender for Servers](security-center-pricing.md) használatát igényli                                                                                                                                                                                                                                             |
-| Támogatott platformok:            | ![Yes](./media/icons/yes-icon.png) Windows rendszerű Azure-gépek<br>![Yes](./media/icons/yes-icon.png) Windows rendszerű Azure arc-gépek|
-| A Windows támogatott verziói:  | Az Endpoint védője a Windows 10 1703 (és újabb) és a Windows Server 2019 rendszerbe van építve.<br>A Security Center támogatja az észlelést a Windows Server 2016, 2012 R2 és 2008 R2 SP1 rendszeren.<br>A kiszolgálói végpont monitorozása ezzel az integrációval le lett tiltva az Office 365 GCC-ügyfelek számára. |
-| Szükséges szerepkörök és engedélyek: | Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa** vagy **előfizetéshez tartozó közreműködő**                         |
-| Felhők                         | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők.<br>![No](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov                                                        |
+| Támogatott platformok:            | Windows rendszerű Azure-gépek<br>Windows rendszerű Azure arc-gépek|
+| A Windows támogatott verziói:  |  • A Security Center támogatja az észlelést a Windows Server 2016, 2012 R2 és 2008 R2 SP1 rendszerben<br> • A kiszolgálói végpont monitorozása ezzel az integrációval le lett tiltva az Office 365 GCC-ügyfelek számára<br> • Nincs támogatás a Windows Server 2019, a Windows 10 1703 (és újabb) vagy a Linux rendszerhez|
+| Szükséges szerepkörök és engedélyek: | Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa** vagy **előfizetéshez tartozó közreműködő**|
+| Felhők                         | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov<br>![Nem](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -94,7 +94,7 @@ A hely konfigurálása után nem módosítható. Ha át kell helyeznie az adatai
 
 ## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>Hozzáférés a Microsoft Defender for Endpoint portálhoz
 
-1. Győződjön meg arról, hogy a felhasználói fiók rendelkezik a szükséges engedélyekkel. [További információk](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
+1. Győződjön meg arról, hogy a felhasználói fiók rendelkezik a szükséges engedélyekkel. [További információ](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
 1. Győződjön meg arról, hogy rendelkezik-e olyan proxyval vagy tűzfallal, amely blokkolja a névtelen forgalmat. Az Endpoint szenzorhoz tartozó Defender a rendszerkörnyezetből csatlakozik, így a névtelen forgalomnak engedélyezettnek kell lennie. A következő témakörben található útmutatást követve biztosíthatja, hogy a rendszer ne akadályozza meg a Defender számára a végponti portált: a [hozzáférés engedélyezése a szolgáltatás URL-címeihez a proxykiszolgálón](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
@@ -132,7 +132,7 @@ A nem a Microsofttól származó végponti megoldásról történő váltásra v
   
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Security Center által támogatott platformok és szolgáltatások](security-center-os-coverage.md)
 - [Azure Security Center biztonsági javaslatainak kezelése](security-center-recommendations.md): Ismerje meg, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.

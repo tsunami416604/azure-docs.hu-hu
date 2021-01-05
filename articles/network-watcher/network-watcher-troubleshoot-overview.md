@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: f27cb217b60c23f3cf89f48effb933837269000e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960325"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858637"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Az erőforrás-hibaelhárítás bemutatása az Azure Network Watcher
 
@@ -208,7 +208,10 @@ Elapsed Time            330 sec
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="considerations"></a>Megfontolandó szempontok 
+* CLI-hiba: Ha az Azure CLI-t használja a parancs futtatásához, akkor a VPN Gatewaynak és a Storage-fióknak ugyanabban az erőforráscsoporthoz kell lennie. A különböző erőforráscsoportok erőforrásaival rendelkező ügyfelek Ehelyett a PowerShellt vagy a Azure Portal használhatják.  
+
+## <a name="next-steps"></a>További lépések
 
 Ha meg szeretné tudni, hogyan diagnosztizálhatja az átjáróval vagy átjáróval kapcsolatos problémákat, tekintse meg a [hálózatok közötti kommunikációs problémák diagnosztizálását](diagnose-communication-problem-between-networks.md)ismertető témakört.
 <!--Image references-->

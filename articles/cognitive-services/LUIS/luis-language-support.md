@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96021571"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845466"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelv és régió támogatása
 
@@ -30,12 +30,12 @@ LUIS a következő nyelveken ismeri fel a hosszúságú kimondott szöveg:
 
 | Nyelv |Területi beállítás  |  Előre elkészített tartomány | Előre elkészített entitás | Kifejezések listája – javaslatok | **[Szöveges elemzés](../text-analytics/language-support.md)<br>(Hangulat és<br>Kulcsszavak|
 |--|--|:--:|:--:|:--:|:--:|
-| angol (Egyesült Államok) |`en-US` | ✔ | ✔  |✔|✔|
 | Arab (előzetes verzió – modern standard arab) |`ar-AR`|-|-|-|-|
 | *[kínai](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Holland |`nl-NL` |✔|-|-|✔|
-| Francia (Franciaország) |`fr-FR` |✔| ✔ |✔ |✔|
+| angol (Egyesült Államok) |`en-US` | ✔ | ✔  |✔|✔|
 | Francia (Kanada) |`fr-CA` |-|-|-|✔|
+| Francia (Franciaország) |`fr-FR` |✔| ✔ |✔ |✔|
 | Német |`de-DE` |✔| ✔ |✔ |✔|
 | gudzsaráti | `gu-IN`|-|-|-|-|
 | Hindi | `hi-IN`|-|✔|-|-|
@@ -44,8 +44,8 @@ LUIS a következő nyelveken ismeri fel a hosszúságú kimondott szöveg:
 | Koreai |`ko-KR` |✔|-|-|Csak a kulcs kifejezése|
 | marathi | `mr-IN`|-|-|-|-|
 | Portugál (Brazília) |`pt-BR` |✔| ✔ |✔ |nem minden alkultúra|
-| Spanyol (Spanyolország) |`es-ES` |✔| ✔ |✔|✔|
 | Spanyol (Mexikó)|`es-MX` |-|-|✔|✔|
+| Spanyol (Spanyolország) |`es-ES` |✔| ✔ |✔|✔|
 | tamil | `ta-IN`|-|-|-|-|
 | telugu | `te-IN`|-|-|-|-|
 | Török | `tr-TR` |✔|✔|-|Csak hangulat|

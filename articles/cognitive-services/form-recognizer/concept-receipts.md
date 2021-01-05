@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492210"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845477"
 ---
 # <a name="receipt-concepts"></a>Nyugtákra vonatkozó fogalmak
 
@@ -456,14 +456,13 @@ A nyugta kimenete is hasznos lehet az üzleti vagy személyes használatra való
 
 A nyugták hasznos információkat tartalmaznak, amelyek segítségével elemezheti a fogyasztói viselkedést és a vásárlási trendeket.
 
-A beérkezési API a [AIBuilder-visszaigazolás feldolgozási funkcióját](/ai-builder/prebuilt-receipt-processing)is felhasználja.
+A beérkezési API a [mesterséges intelligencia-készítő bevételezés feldolgozási funkcióját](/ai-builder/prebuilt-receipt-processing)is felhasználja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Töltse ki az [űrlap-felismerő ügyféloldali függvénytárának](quickstarts/client-library.md) rövid útmutatóját, hogy megkezdje a nyugták feldolgozását a választott nyelven az űrlap-felismerővel.
-- Vagy kövesse a [beérkezési API Python](./quickstarts/python-receipts.md) rövid útmutatóját a visszaigazolások felismeréséhez a REST API használatával.
+- Egy [űrlap-felismerő](quickstarts/client-library.md) gyors üzembe helyezésével megkezdheti a nyugták feldolgozására szolgáló alkalmazás megírását a választott nyelven.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Form Recognizer?](./overview.md)
 * [REST API dokumentációs dokumentumok](./index.yml)

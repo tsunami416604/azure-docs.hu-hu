@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 513d98ae274c668197b066c742119055248f37f9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911715"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845588"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Betanítási adatkészlet létrehozása egyéni modellhez
 
@@ -68,16 +68,13 @@ Ha az alábbi tartalmat adja hozzá a kérelem törzséhez, az API az almappákb
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan hozhat létre egy betanítási adatkészletet, egy rövid útmutató segítségével betaníthat egy egyéni űrlap-felismerő modellt, és megkezdheti az űrlapokon való használatát.
 
-* [Modell betanítása és űrlapadatok kinyerése az ügyféloldali kódtár használatával](./quickstarts/client-library.md)
-* [Modellek betanítása és űrlapos adatok kinyerése a cURL használatával](./quickstarts/curl-train-extract.md)
-* [Modellek betanítása és űrlapos adatok kinyerése a REST API és a Python használatával](./quickstarts/python-train-extract.md)
+* [Modellek betanítása és űrlapadatok kinyerése az ügyféloldali kódtár vagy REST API használatával](./quickstarts/client-library.md)
 * [Betanítás címkék használatával a minta feliratozási eszközzel](./quickstarts/label-tool.md)
-* [Betanítás címkékkel a REST API és Python használatával](./quickstarts/python-labeled-data.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Form Recognizer?](./overview.md)

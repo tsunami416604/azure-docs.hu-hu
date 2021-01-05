@@ -3,12 +3,12 @@ title: Az Event hub használata Apache Kafka alkalmazásból – Azure Event Hub
 description: Ez a cikk az Azure Event Hubs Apache Kafka támogatásáról nyújt információt.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: d9aa8af30d5ef5e1a985e4d73a9d4a8921ac7d45
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369590"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861340"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Az Azure Event Hubs használata Apache Kafka alkalmazásokból
 A Event Hubs egy olyan végpontot biztosít, amely kompatibilis a Apache Kafka® gyártóval és a fogyasztói API-kkal, amelyeket a legtöbb meglévő Apache Kafka ügyfélalkalmazás használhat a saját Apache Kafka-fürt futtatására. A Event Hubs a Apache Kafka gyártói és fogyasztói API-ügyfelét támogatja a 1,0-es és újabb verziókban.
@@ -118,9 +118,7 @@ Az Event hub-események hasznos adatai egy bájtos adatfolyamok, és a tartalom 
 
 ### <a name="log-compaction"></a>Naplózási tömörítés
 
-A Apache Kafka log tömörítés egy olyan szolgáltatás, amely lehetővé teszi az egyes kulcsok összes rekordjának kivonását egy partícióból, ami gyakorlatilag egy Apache Kafka témakört egy olyan kulcs-érték tárolóba kapcsol, amelyben az utolsó hozzáadott érték felülbírálja az előzőt. Az adatbázis-szolgáltatások, például a [Azure Cosmos db](../cosmos-db/introduction.md)sokkal jobb támogatást nyújt a kulcs-érték tárolási mintához, akár gyakori frissítésekkel is.
-
-A Kafka-tömörítési funkciót a Kafka-kapcsolat és a Kafka-adatfolyamok ügyfél-keretrendszerek használják.
+A Apache Kafka log tömörítés egy olyan szolgáltatás, amely lehetővé teszi az egyes kulcsok összes rekordjának kivonását egy partícióból, ami gyakorlatilag egy Apache Kafka témakört egy olyan kulcs-érték tárolóba kapcsol, amelyben az utolsó hozzáadott érték felülbírálja az előzőt. Ezt a funkciót jelenleg nem az Azure Event Hubs implementálja. Az adatbázis-szolgáltatások, például a [Azure Cosmos db](../cosmos-db/introduction.md)sokkal jobb támogatást nyújt a kulcs-érték tárolási mintához, akár gyakori frissítésekkel is. További részletekért tekintse meg a Event Hubs összevonási útmutatójának [log vetületét](event-hubs-federation-overview.md#log-projections) ismertető témakört. 
 
 ### <a name="kafka-streams"></a>Kafka streamek
 
@@ -143,5 +141,5 @@ A felsorolt szolgáltatások és keretrendszerek általában a különböző for
 
 Ha az Azure-beli Kafka Streams keretrendszert kell használnia, [Apache Kafka a HDInsight-on](../hdinsight/kafka/apache-kafka-introduction.md) keresztül biztosítjuk Önnek ezt a lehetőséget. A Apache Kafka on HDInsight teljes körűen szabályozhatja Apache Kafka összes konfigurációs aspektusát, miközben az Azure platform különböző szempontjaival teljes mértékben integrálva van, a hiba/frissítés tartományból a hálózat elkülönítésére az integráció figyelése érdekében. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk a Kafka-Event Hubs bevezetését ismertette. További információ: [Apache Kafka fejlesztői útmutató az Azure Event Hubshoz](apache-kafka-developer-guide.md).

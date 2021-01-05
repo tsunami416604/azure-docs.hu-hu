@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85516263"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861411"
 ---
 # <a name="azure-for-network-engineers"></a>Azure hálózattervezőknek
 Hagyományos hálózati mérnökként olyan fizikai eszközökkel foglalkozott, mint az útválasztók, kapcsolók, kábelek, tűzfalak az infrastruktúra kiépítéséhez. Egy logikai rétegben konfigurálta a virtuális helyi hálózatot (VLAN), az átfedő faprotokollot (STP), az útválasztási protokollokat (RIP, OSPF, BGP). Felügyeli a hálózatot a felügyeleti eszközök és a parancssori felület használatával. A felhőben való hálózatkezelés más, mint a hálózati végpontok logikai és az útválasztási protokollok használata minimális. Az Azure-beli eszközök konfigurálásához és kezeléséhez Azure Resource Manager API-val, az Azure CLI-vel és a PowerShell-lel fog dolgozni. A hálózati utazást a felhőben az Azure Networking alapbérlők megismerésével indíthatja el. 
@@ -67,7 +67,7 @@ Ha versengő bejegyzéseket tartalmaz egy útválasztási táblában, az Azure a
 
 ## <a name="security"></a>Biztonság
 
-Hálózati biztonsági csoportok használatával szűrheti a virtuális hálózatban lévő erőforrásokra irányuló és onnan érkező hálózati forgalmat. A nád hálózati virtuális berendezéseket (NVA-ket) is használ, például a más gyártóktól származó Azure Firewallokat vagy tűzfalakat. Megadhatja, hogyan irányítja az Azure az alhálózatokból érkező forgalmat. Azt is korlátozhatja, hogy a szervezeten belül kik is dolgozhatnak a virtuális hálózatok erőforrásaival.
+Hálózati biztonsági csoportok használatával szűrheti a virtuális hálózatban lévő erőforrásokra irányuló és onnan érkező hálózati forgalmat. Használhat hálózati virtuális berendezéseket (NVA) is, például Azure Firewall vagy más gyártóktól származó tűzfalakat. Megadhatja, hogyan irányítja az Azure az alhálózatokból érkező forgalmat. Azt is korlátozhatja, hogy a szervezeten belül kik is dolgozhatnak a virtuális hálózatok erőforrásaival.
 
 A hálózati biztonsági csoport (NSG) tartalmazza a hozzáférés-vezérlési (ACL) szabályok listáját, amelyek megszabják, hogy milyen típusú hálózati forgalom juthat el az alhálózatokhoz, a hálózati adapterekhez vagy mindkettőhöz. Az NSG-ket alhálózatokhoz vagy alhálózathoz csatlakoztatott hálózati adapterekhez lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuális gépre. Emellett egy adott hálózati adapterre irányuló forgalmat korlátozni is lehet azáltal, hogy egy NSG-t közvetlenül a hálózati adapterhez rendelnek.
 

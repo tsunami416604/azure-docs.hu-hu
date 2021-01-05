@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokumentumok feldolgozása
-ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96009330"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845547"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -106,7 +106,7 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
    Ezzel a paranccsal a minta feliratozási eszköz elérhetővé válik egy webböngészőn keresztül. Nyissa meg a következőt: `http://localhost:3000`.
 
 > [!NOTE]
-> A dokumentumokat és a betanítási modelleket a Form felismerő REST API használatával is címkézheti. A REST API betanításához és elemzéséhez lásd: [a betanítás a REST API és a Python használatával](./python-labeled-data.md).
+> A dokumentumokat és a betanítási modelleket a Form felismerő REST API használatával is címkézheti. A REST API betanításához és elemzéséhez lásd: [a betanítás a REST API és a Python használatával](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="set-up-input-data"></a>Bemeneti adatok beállítása
 
@@ -137,7 +137,9 @@ Töltse ki a mezőket a következő értékekkel:
 
 * **Megjelenítendő név** – a kapcsolatok megjelenítendő neve.
 * **Leírás** – a projekt leírása.
-* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása** elemet. A lejárati időt állítsa be egy későbbi időpontra, amikor már nem fogja használni a szolgáltatást. Győződjön meg arról, hogy az **olvasási**, **írási**, **törlési** és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás** gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+
+   :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="SAS URL-cím lekérése":::
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
 
@@ -223,7 +225,7 @@ Kövesse a fenti lépéseket az űrlapok legalább öt megjelöléséhez.
 
 ### <a name="specify-tag-value-types"></a>Címke típusú értékek megadása
 
-Opcionálisan megadhatja az egyes címkék várt adattípusát. Nyissa meg a címke jobb oldalán a helyi menüt, és válasszon egy típust a menüből. Ez a funkció lehetővé teszi, hogy az észlelési algoritmus bizonyos feltételezéseket tegyen elérhetővé, amelyek javítják a szöveg-észlelési pontosságot. Azt is biztosítja, hogy a rendszer az észlelt értékeket a végső JSON-kimenet szabványosított formátumában adja vissza. 
+Opcionálisan megadhatja az egyes címkék várt adattípusát. Nyissa meg a címke jobb oldalán a helyi menüt, és válasszon egy típust a menüből. Ez a funkció lehetővé teszi, hogy az észlelési algoritmus bizonyos feltételezéseket tegyen elérhetővé, amelyek javítják a szöveg-észlelési pontosságot. Azt is biztosítja, hogy a rendszer az észlelt értékeket a végső JSON-kimenet szabványosított formátumában adja vissza. Az érték típusának adatait a rendszer a (z) fájlban lévő *fields.js* menti, a címkézett fájlokkal megegyező elérési úton.
 
 > [!div class="mx-imgBorder"]
 > ![Értéktípus kiválasztása a minta címkézési eszközzel](../media/whats-new/formre-value-type.png)
@@ -266,7 +268,7 @@ A következő típusú értékek és változatok jelenleg támogatottak:
 
 Kattintson a vonat ikonra a bal oldali ablaktáblán a képzés lap megnyitásához. Ezután kattintson a **vonat** gombra a modell tanításának megkezdéséhez. A betanítási folyamat befejezése után a következő információk láthatók:
 
-* **Modell azonosítója** – a létrehozott és betanított modell azonosítója. Minden betanítási hívás létrehoz egy új modellt a saját azonosítójával. A karakterlánc másolása biztonságos helyre; szüksége lesz rá, ha az [REST API](./curl-train-extract.md) vagy az [ügyféloldali függvénytáron](./client-library.md)keresztül szeretne előrejelzési hívásokat végezni.
+* **Modell azonosítója** – a létrehozott és betanított modell azonosítója. Minden betanítási hívás létrehoz egy új modellt a saját azonosítójával. A karakterlánc másolása biztonságos helyre; szüksége lesz rá, ha az [REST API](./client-library.md?pivots=programming-language-rest-api) vagy az [ügyféloldali függvénytáron](./client-library.md)keresztül szeretne előrejelzési hívásokat végezni.
 * **Átlagos pontosság** – a modell átlagos pontossága. A modell pontosságát úgy javíthatja, ha további űrlapokat és képzést is felcímkéz, és új modellt hoz létre. Javasoljuk, hogy öt űrlap feliratozásával kezdjen hozzá, és szükség esetén további űrlapokat adjon hozzá.
 * A címkék és a becsült pontosság a címkén.
 
@@ -276,7 +278,7 @@ Kattintson a vonat ikonra a bal oldali ablaktáblán a képzés lap megnyitásá
 A betanítás befejezése után vizsgálja meg az **átlagos pontossági** értéket. Ha alacsony, adjon hozzá további bemeneti dokumentumokat, és ismételje meg a fenti lépéseket. A már címkézett dokumentumok a projekt indexében maradnak.
 
 > [!TIP]
-> A betanítási folyamatot REST API hívással is futtathatja. Ennek megismeréséhez tekintse meg a [címkék a Python használatával történő betanítását](./python-labeled-data.md)ismertető témakört.
+> A betanítási folyamatot REST API hívással is futtathatja. Ennek megismeréséhez tekintse meg a [címkék a Python használatával történő betanítását](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)ismertető témakört.
 
 ## <a name="compose-trained-models"></a>Betanított modellek összeállítása
 
@@ -299,7 +301,7 @@ A minta feliratozási eszköz modelljeinek összeállításához kattintson a ba
 Kattintson a bal oldali előrejelzés (villanykörte) ikonra a modell teszteléséhez. Töltse fel a betanítási folyamatban még nem használt űrlap-dokumentumot. Ezután kattintson a jobb oldali **Előrejelzés** gombra az űrlaphoz tartozó kulcs/érték előrejelzések beszerzéséhez. Az eszköz címkét fog alkalmazni a határolókeret mezőiben, és az egyes címkék megbízhatóságát fogja jelenteni.
 
 > [!TIP]
-> Az elemzés API-t REST-hívással is futtathatja. Ennek megismeréséhez tekintse meg a [címkék a Python használatával történő betanítását](./python-labeled-data.md)ismertető témakört.
+> Az elemzés API-t REST-hívással is futtathatja. Ennek megismeréséhez tekintse meg a [címkék a Python használatával történő betanítását](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)ismertető témakört.
 
 ## <a name="improve-results"></a>Az eredmények javítása
 
@@ -326,7 +328,7 @@ Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megny
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az űrlap-felismerő minta címkézési eszközt egy olyan modell betanításához, amely manuálisan címkézett adattal rendelkezik. Ha saját eszközt szeretne felépíteni a betanítási adatok címkézéséhez, használja a megcímkézett adatok betanításával foglalkozó REST API-kat.
 
 > [!div class="nextstepaction"]
-> [Betanítás címkékkel a Python használatával](./python-labeled-data.md)
+> [Betanítás címkékkel a Python használatával](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
 
 * [Mi a Form Recognizer?](../overview.md)
-* [Űrlap-felismerő ügyféloldali kódtár rövid útmutatói](client-library.md)
+* [Űrlap-felismerő rövid útmutatója](client-library.md)

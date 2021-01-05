@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 12/02/2020
+ms.date: 01/04/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 042139a39c28ee4944a7f3f766fc61b163629843
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 57e3a059a5dd846250ba162513ef118e084c4b87
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574394"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861600"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Felhasználók listájának letöltése Azure Active Directory portálon
 
@@ -26,20 +26,20 @@ Azure Active Directory (Azure AD) támogatja a tömeges felhasználói importál
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-A felhasználók listájának az Azure AD felügyeleti központból való letöltéséhez be kell jelentkeznie egy, az Azure AD-ben egy vagy több szervezeti szintű rendszergazdai szerepkörhöz hozzárendelt felhasználóval (a felhasználó rendszergazdája a minimálisan szükséges szerepkör). A vendég meghívója és az alkalmazás fejlesztője nem tekintendő rendszergazdai szerepkörnek.
+Ha le szeretné tölteni a felhasználók listáját az Azure Active Directory felügyeleti központjából, olyan felhasználói fiókkal kell bejelentkeznie, amely legalább egy szervezeti szintű adminisztrátori szerepkörrel rendelkezik az Azure Active Directoryban (legalább Felhasználói adminisztrátor szintű jogosultságra van szükség). A vendégmeghívói és az alkalmazásfejlesztői szerepkör nem minősül adminisztrátori szerepkörnek.
 
 ## <a name="to-download-a-list-of-users"></a>A felhasználók listájának letöltése
 
 1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy felhasználói rendszergazdai fiókkal a szervezeten belül.
-2. Navigáljon Azure Active Directory > felhasználóhoz. Ezután válassza ki a letöltéshez használni kívánt felhasználókat, ha a bal oldali oszlopban lévő jelölőnégyzetet bejelöli az egyes felhasználók mellett. Megjegyzés: jelenleg nincs lehetőség az összes felhasználó kiválasztására az exportáláshoz. Mindegyiket külön kell kiválasztani.
+2. Válassza az Azure Active Directory > Felhasználók lehetőséget. Jelölje ki a letöltendő listába belefoglalni kívánt felhasználókat úgy, hogy bejelöli a nevüktől balra található oszlopban lévő jelölőnégyzetet. Megjegyzés: Jelenleg nincs lehetőség arra, hogy az összes felhasználót kijelölje exportálás céljából. Mindegyiket külön-külön kell kijelölnie.
 3. Az Azure ad-ben válassza a **felhasználók**  >  **Letöltés felhasználók** lehetőséget.
-4. A **felhasználók letöltése** lapon kattintson a **Start** gombra a felhasználói profil tulajdonságait tartalmazó CSV-fájl fogadásához. Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmazó fájlt a tömeges művelet eredményei lapon. A fájl az egyes hibák okát tartalmazza.
+4. A **felhasználók letöltése** lapon kattintson a **Start** gombra a felhasználói profil tulajdonságait tartalmazó CSV-fájl fogadásához. Ha hibák lépnek fel, a Tömeges művelet eredményei oldalon letöltheti és megnézheti az eredményeket tartalmazó fájlt. A fájl az egyes hibák okát is tartalmazza.
 
    ![Válassza ki, hova szeretné listázni a letölteni kívánt felhasználókat](./media/users-bulk-download/bulk-download.png)
 
-   A letöltési fájl a felhasználók szűrt listáját fogja tartalmazni.
+   A letöltött fájlban a felhasználók szűrt listáját találja.
 
-   A következő felhasználói attribútumok szerepelnek:
+   Ezeket a felhasználói attribútumokat tartalmazza a fájl:
 
    - userPrincipalName
    - displayName
@@ -48,7 +48,7 @@ A felhasználók listájának az Azure AD felügyeleti központból való letöl
    - givenName
    - objectId
    - userType
-   - Beosztás
+   - jobTitle
    - Részleg
    - accountEnabled
    - usageLocation
@@ -57,10 +57,9 @@ A felhasználók listájának az Azure AD felügyeleti központból való letöl
    - ország
    - physicalDeliveryOfficeName
    - city
-   - Irányítószám
+   - postalCode
    - telephoneNumber
    - mobil
-   - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber
    - authenticationEmail
    - alternateEmailAddress

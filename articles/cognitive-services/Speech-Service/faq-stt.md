@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 32f6a9dae1a5b0be604b53d814ebc85cb7813b91
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353765"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857324"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
@@ -25,7 +25,7 @@ Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb 
 
 **K: mi a különbség az alapmodell és a szöveges modell egyéni beszéde között?**
 
-**A**: az alapmodell a Microsoft tulajdonában lévő adataival lett kiképezve, és már telepítve van a felhőben. Egyéni modell használatával úgy alakíthatja ki a modelleket, hogy jobban illeszkedjen egy adott környezethez, amely adott környezeti zajt vagy nyelvet tartalmaz. A gyári szintekhez, autókhoz vagy zajos utcákhoz alkalmazkodó akusztikai modellre van szükség. A biológia, a fizika, a radiológia, a terméknév és az egyéni betűszók által használt témákhoz alkalmazkodó nyelvi modellre van szükség.
+**A**: az alapmodell a Microsoft tulajdonában lévő adataival lett kiképezve, és már telepítve van a felhőben. Egyéni modell használatával úgy alakíthatja ki a modelleket, hogy jobban illeszkedjen egy adott környezethez, amely adott környezeti zajt vagy nyelvet tartalmaz. A gyári szintekhez, autókhoz vagy zajos utcákhoz alkalmazkodó akusztikai modellre van szükség. A biológia, a fizika, a radiológia, a terméknév és az egyéni betűszók által használt témákhoz alkalmazkodó nyelvi modellre van szükség. Egyéni modell betanításakor a kapcsolódó szöveggel kell kezdenie a speciális kifejezések és kifejezések felismerésének javítását.
 
 **K: hol kezdjek, ha alapmodellt szeretnék használni?**
 
@@ -49,9 +49,15 @@ Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb 
 
 **A**: jelenleg nem állítható vissza akusztikai vagy nyelvi adaptációs folyamat. Az importált adattípusokat és modelleket törölheti, ha azok egy terminál-állapotban vannak.
 
-**K: mi a különbség a keresési és a diktálási modell és a társalgási modell között?**
+**K: több eredményt kapok az egyes kifejezésekhez a részletes kimeneti formátummal. Melyiket érdemes használni?**
 
-Válasz **: több** alapmodell közül választhat a Speech Service-ben. A társalgási modell hasznos lehet a beszélgetési stílusban beszélt beszéd felismeréséhez. Ez a modell ideális a telefonhívások átírásához. A keresési és a diktálási modell ideális a hangvezérelt alkalmazások számára. Az univerzális modell egy új modell, amelynek célja mindkét forgatókönyv kezelése. Az univerzális modell jelenleg a legtöbb területi szinten a társalgási modell minőségi szintjén van vagy magasabb.
+**A**: mindig az első eredményt használja, még akkor is, ha egy másik eredmény ("N-Best") nagyobb megbízhatósági értékkel rendelkezik. A beszédfelismerési szolgáltatás az első eredményt a legjobbnak tekinti. Ha a rendszer nem ismerte fel a beszédfelismerést, üres sztring is lehet.
+
+A többi eredmény valószínűleg rosszabb, és előfordulhat, hogy nem rendelkezik teljes körű nagybetűvel és írásjelekkel. Ezek az eredmények olyan speciális forgatókönyvekben hasznosak, mint például a felhasználók számára, hogy kiválasszák a listából vagy a helytelenül felismert parancsok kezelését.
+
+**K: Miért vannak különböző alapmodellek?**
+
+Válasz **: több** alapmodell közül választhat a beszédfelismerési szolgáltatásban. Minden modell neve tartalmazza a hozzáadásának dátumát. Az egyéni modellek betanításakor a legújabb modell segítségével érheti el a legjobb pontosságot. A régebbi alapmodellek továbbra is elérhetők egy új modell elérhetővé tételének ideje alatt. Továbbra is használhatja azt a modellt, amelyet már dolgozott a kivonásig (lásd a [modell életciklusát](custom-speech-overview.md#model-lifecycle)). A jobb pontosság érdekében továbbra is ajánlott a legújabb alapmodellre váltani.
 
 **K: frissíthetem a meglévő modellt (a modell halmozását)?**
 
@@ -59,19 +65,27 @@ Válasz **: több** alapmodell közül választhat a Speech Service-ben. A társ
 
 A régi adatkészletet és az új adatkészletet egyetlen. zip fájlban (akusztikai adatokat) vagy egy. txt fájlban (nyelvi adatokat) kell egyesíteni. Az adaptáció befejezése után az új, frissített modellt újra kell telepíteni új végpont beszerzéséhez.
 
-**K: ha elérhető egy alapkonfiguráció új verziója, az üzembe helyezésem automatikusan frissül?**
+**K: ha elérhető az alapmodell új verziója, az üzembe helyezésem automatikusan frissül?**
 
 **A: az üzemelő** példányok nem frissülnek automatikusan.
 
-Ha kiigazította és telepítette az alapkonfiguráció 1.0-s verziójával rendelkező modellt, akkor az üzemelő példány a következőképpen marad. Az ügyfelek leszerelik az üzembe helyezett modellt, újra alkalmazkodnak az alapkonfiguráció újabb verziójához, és újból üzembe helyezik azokat.
+Ha kiigazította és telepítette a modellt, akkor az üzemelő példány a következőképpen marad. Leszerelheti az üzembe helyezett modellt, újraigazíthatja az alapmodell újabb verzióját, és a jobb pontosság érdekében újból üzembe helyezheti azokat.
+
+Egy kis idő elteltével az alapmodelleket és az egyéni modelleket is kivonják (lásd a [modell életciklusát](custom-speech-overview.md#model-lifecycle)).
 
 **K: le tudom tölteni a modellt, és helyileg futtatom?**
 
-**A: a** modellek nem tölthetők le és nem hajthatók végre helyileg.
+**A**: helyileg is futtathat egy egyéni modellt egy [Docker-tárolóban](speech-container-howto.md?tabs=cstt).
+
+**K: másolhatok vagy áthelyezhetek adatkészleteket, modelleket és központi telepítéseket egy másik régióba vagy előfizetésbe?**
+
+**A**: a [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) használatával másolhat egy egyéni modellt egy másik régióba vagy előfizetésbe. Az adatkészletek vagy központi telepítések nem másolhatók. Egy másik előfizetésben is importálhat egy adatkészletet, és létrehozhat végpontokat a modell másolatainak használatával.
 
 **K: a rendszer naplózza a kérelmeket?**
 
-**A**: alapértelmezés szerint a kérelmek nincsenek naplózva (sem hang, sem átírás). Ha szükséges, kiválaszthatja a *naplózási tartalmat ebből a végpontból* beállítást, ha [Egyéni végpontot hoz létre](./how-to-custom-speech-train-model.md) a nyomkövetés engedélyezéséhez. Ezt követően a rendszer a biztonságos tárolóban naplózza a kérelmeket az Azure-ban.
+**A**: alapértelmezés szerint a kérelmek nincsenek naplózva (sem hang, sem átírás). Ha szükséges, kiválaszthatja a *tartalom naplózása ebből a végpontból* lehetőséget, amikor [Egyéni végpontot hoz létre](./how-to-custom-speech-train-model.md). Az egyéni végpontok létrehozása nélkül is engedélyezheti a hangnaplózást a [SPEECH SDK](speech-sdk.md) -ban a kérelmek alapján. A kérések hang-és felismerési eredményei mindkét esetben a biztonságos tárolóban lesznek tárolva. A Microsoft tulajdonában lévő tárolót használó előfizetések esetén 30 napig lesznek elérhetők.
+
+A naplózott fájlokat a Speech Studio központi telepítési lapján exportálhatja, ha olyan egyéni végpontot használ, amelyen engedélyezve van a *naplózási tartalom ebből a végpontból* . Ha az SDK-n keresztül engedélyezte a hangnaplózást, hívja meg az [API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) -t a fájlok eléréséhez.
 
 **K: a kérelmek szabályozva vannak?**
 
@@ -92,7 +106,7 @@ Lásd: [a Speech Services kvótái és korlátai](speech-services-quotas-and-lim
 
 **K: mekkora a korlátja egy adatkészlet méretének, és miért korlátozza a korlátot?**
 
-**A**: a korlátot a http-feltöltéshez használt fájl méretének korlátozása okozza. Lásd a tényleges korlátot a [Speech Services kvótái és korlátai](speech-services-quotas-and-limits.md) című részben.
+**A**: a korlátot a http-feltöltéshez használt fájl méretének korlátozása okozza. Lásd a tényleges korlátot a [Speech Services kvótái és korlátai](speech-services-quotas-and-limits.md) című részben. Az adatokat több adatkészletbe is feloszthatja, és kiválaszthatja az összeset a modell betanításához.
 
 **K: használhatom a szövegfájlom zip-fájljait, hogy feltölthető legyen egy nagyobb szövegfájl?**
 
@@ -118,21 +132,19 @@ Lásd: [a Speech Services kvótái és korlátai](speech-services-quotas-and-lim
 
 **K: szeretném magam átírni az adaptációs adatszolgáltatásokat?**
 
-Válasz **: igen**! Saját maga is lemásolhatja, vagy használhat Professional transzkripciós szolgáltatást. Egyes felhasználók előnyben részesítettek a professzionális átiratokkal, mások pedig a közösségi használják, vagy magukra az átírásokra.
+**A**: igen. Saját maga is lemásolhatja, vagy használhat Professional transzkripciós szolgáltatást. Egyes felhasználók előnyben részesítettek a professzionális átiratokkal, mások pedig a közösségi használják, vagy magukra az átírásokra.
+
+**K: mennyi ideig tart egy egyéni modell hangadatainak betanítása?**
+
+**A**: hangadatokkal rendelkező modell képzése hosszadalmas folyamat. Az adatmennyiségtől függően több napot is igénybe vehet, hogy egyéni modellt hozzon létre. Ha egy héten belül nem végezhető el, a szolgáltatás megszakíthatja a betanítási műveletet, és sikertelenként jelentheti a modellt. A gyorsabb eredmény érdekében használja az egyik olyan [régiót](custom-speech-overview.md#set-up-your-azure-account) , ahol a dedikált hardver elérhető a betanításhoz. A teljes körűen betanított modellt egy másik régióba másolhatja a [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)használatával. A csak szöveggel rendelkező képzés sokkal gyorsabb, és általában percek alatt fejeződik be.
+
+Egyes alapmodellek nem szabhatók testre a hangadatokkal. Számukra a szolgáltatás csak az átirat szövegét fogja használni a betanításhoz, és elveti a hangadatokat. A képzések ezután sokkal gyorsabbak lesznek, és az eredmények ugyanúgy fognak megjelenni, mint a csak szöveggel végzett képzés.
 
 ## <a name="accuracy-testing"></a>Pontosság tesztelése
 
-**K: használhatom az egyéni akusztikai modellem offline tesztelését egyéni nyelvi modell használatával?**
-
-Válasz **: igen**, egyszerűen válassza ki az egyéni nyelvi modellt a legördülő menüben az offline teszt beállításakor.
-
-**K: használhatom az egyéni nyelvi modell offline tesztelését egyéni akusztikai modell használatával?**
-
-Válasz **: igen**, egyszerűen válassza ki az egyéni akusztikai modellt a legördülő menüben az offline teszt beállításakor.
-
 **K: mi a Word Error Rate (WER) és hogyan számítható ki?**
 
-**A**: a wer a beszédfelismerés értékelési mérőszáma. A WER a hibák teljes száma, amely tartalmazza a beszúrásokat, a törléseket és a behelyettesítéseket, a hivatkozás átírásakor a szavak teljes száma szerint elosztva. További információ: [Word Error Rate](https://en.wikipedia.org/wiki/Word_error_rate).
+**A**: a wer a beszédfelismerés értékelési mérőszáma. A WER a hibák teljes száma, amely tartalmazza a beszúrásokat, a törléseket és a behelyettesítéseket, a hivatkozás átírásakor a szavak teljes száma szerint elosztva. További információ: [Custom Speech pontosságának kiértékelése](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy).
 
 **K: Hogyan megállapítani, hogy jók-e a pontossági tesztek eredményei?**
 

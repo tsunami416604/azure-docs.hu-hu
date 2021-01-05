@@ -4,14 +4,14 @@ description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokka
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 01/03/2021
 ms.subservice: alerts
-ms.openlocfilehash: fc54d2ba3ca4e7a150a1602c671b99f58197bc44
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657294"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857341"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Az Azure Monitor metrikaalapú riasztásaival kapcsolatos hibák elhárítása 
 
@@ -266,6 +266,23 @@ Javasoljuk, hogy a *kiértékelés gyakorisága* nagyobb mértékű *összesít�
 -   Metrikus riasztási szabály, amely több erőforrást figyel – új erőforrás a hatókörhöz való hozzáadásakor
 -   Metrikus riasztási szabály, amely nem folyamatosan kibocsátott mérőszámot figyel (ritka metrika) – Ha a mérőszámot 24 óránál hosszabb időt követően bocsátják ki a rendszer, amelyben nem lett kibocsátva
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>Úgy tűnik, hogy a dinamikus küszöbértékek szegélyei nem férnek hozzá az adattartalomhoz
+
+Ha a metrika viselkedése nemrég módosult, a módosítások nem lesznek szükségszerűen tükrözve a dinamikus küszöbértékek (felső és alsó határok) esetében, mivel ezek kiszámítása az elmúlt 10 napban mért metrikai adatok alapján történik. Egy adott metrika dinamikus küszöbértékének megtekintésekor ügyeljen arra, hogy az elmúlt hét metrikai trendjét ne csak az elmúlt órában vagy napban tekintse meg.
+
+## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>Miért nem észlelhetők a dinamikus küszöbértékek a heti szezonálisan?
+
+A heti szezonális időpontok azonosításához a dinamikus küszöbértékek modellhez legalább három héttel korábbi adatmennyiség szükséges. Ha elegendő korábbi adat áll rendelkezésre, a rendszer a metrikus adatokban található heti szezonális időpontokat fogja azonosítani, és ennek megfelelően módosítja a modellt. 
+
+## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>A dinamikus küszöbértékek negatív alsó határt mutatnak a metrikához, annak ellenére, hogy a metrika mindig pozitív értékeket tartalmaz
+
+Ha egy metrika nagy ingadozást mutat be, a dinamikus küszöbértékek egy szélesebb modellt fognak kiépíteni a mérőszámok köréből, ami az alsó szegély nulla alatti értékhez vezethet. Pontosabban ez a következő esetekben fordulhat elő:
+1. Az érzékenység értéke alacsony 
+2. A középértékek értéke nullához közeledik
+3. A metrika szabálytalan viselkedést mutat a nagy variancia (az adatokban tüskék vagy dipsok találhatók)
+
+Ha az alsó határ negatív értékkel rendelkezik, ez azt jelenti, hogy a metrika a metrika szabálytalan viselkedése miatt nem éri el a nulla értéket. Érdemes lehet nagyobb érzékenységet vagy nagyobb *összesítési részletességet (időszakot)* választani, hogy a modell kevésbé érzékeny legyen, vagy az *adatok figyelmen kívül hagyása* lehetőséggel kizárjon egy legutóbbi irregulaity a modell összeállításához használt korábbi adatokból.
+
+## <a name="next-steps"></a>További lépések
 
 - A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).

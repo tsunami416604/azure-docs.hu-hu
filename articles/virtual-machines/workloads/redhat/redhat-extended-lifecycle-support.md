@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f31cc982e5e7f92cfe7e8adf588dd96628f2c6f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: fd36d365eb02819352bc14caf9d8e258a8663c70
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744041"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861395"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) bővített életciklus-támogatás
 Ez a cikk a Red Hat Enterprise-lemezképek kiterjesztett életciklus-támogatásával kapcsolatos információkat tartalmaz:
@@ -39,8 +39,14 @@ A 2020. november 30-án kezdődően a Red Hat Enterprise Linux 6 a karbantartás
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>Mi a kiegészítő díj a Red Hat Enterprise Linux kiterjesztett életciklus-támogatás (ELS) bővítmény használatához?
 A kiterjesztett életciklus-támogatással kapcsolatos költségek az [els űrlap](https://aka.ms/els-form) használatával találhatók
 
+#### <a name="ive-deployed-a-vm-by-using-custom-image-how-can-i-add-extended-lifecycle-support-to-this-vm"></a>Egyéni rendszerkép használatával telepítettem a virtuális gépet. Hogyan adhatok hozzá bővített életciklus-támogatást ehhez a virtuális géphez?
+Közvetlenül a Red Hat-hoz kell fordulnia, és közvetlenül is kaphat támogatást.
 
-## <a name="next-steps"></a>Következő lépések
+#### <a name="ive-deployed-a-vm-by-using-custom-image-can-i-convert-this-vm-to-a-payg-vm"></a>Egyéni rendszerkép használatával telepítettem a virtuális gépet. Át lehet alakítani a virtuális gépet egy TB virtuális gépre?
+Nem. Az átalakítás jelenleg nem támogatott az Azure-ban.
+
+
+## <a name="next-steps"></a>További lépések
 
 * Az Azure-ban elérhető RHEL-lemezképek teljes listájának megtekintéséhez lásd: [Red Hat Enterprise Linux (RHEL) lemezképek az Azure-ban](./redhat-imagelist.md).
 * További információ az Azure Red Hat frissítési infrastruktúráról: [Red Hat frissítési infrastruktúra az igény szerinti RHEL virtuális gépekhez az Azure-ban](./redhat-rhui.md).

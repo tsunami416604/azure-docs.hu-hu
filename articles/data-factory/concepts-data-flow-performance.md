@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022360"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858586"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -169,7 +169,7 @@ Azure SQL Database a tábla vagy SQL-lekérdezés használatával olvashatja el.
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure szinapszis analitikai források
 
-Az Azure szinapszis Analytics használatakor a forrás beállításai között az **átmeneti engedélyezés** nevű beállítás található. Ez lehetővé teszi az ADF-nek a szinapszis használatával történő olvasását ```Polybase``` , ami jelentősen javítja az olvasási teljesítményt. Az engedélyezéshez ```Polybase``` meg kell adnia egy Azure Blob Storage vagy Azure Data Lake Storage Gen2-előkészítési helyet az adatfolyam tevékenység beállításainál.
+Az Azure szinapszis Analytics használatakor a forrás beállításai között az **átmeneti engedélyezés** nevű beállítás található. Ez lehetővé teszi az ADF-nek a szinapszis használatával történő olvasását ```Staging``` , ami jelentősen javítja az olvasási teljesítményt. Az engedélyezéshez ```Staging``` meg kell adnia egy Azure Blob Storage vagy Azure Data Lake Storage Gen2-előkészítési helyet az adatfolyam tevékenység beállításainál.
 
 ![Előkészítés engedélyezése](media/data-flow/enable-staging.png "Előkészítés engedélyezése")
 
@@ -216,9 +216,9 @@ Ezek az Azure SQL DB-ben vagy a szinapszis-tárolón belül, az adatfolyamatok l
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure szinapszis Analytics-mosogatók
 
-Az Azure szinapszis Analyticsbe való íráskor győződjön meg arról, hogy az **előkészítés engedélyezése** True (igaz) értékre van állítva. Ez lehetővé teszi, hogy az ADF olyan [albase](/sql/relational-databases/polybase/polybase-guide) használatával legyen írható, amely hatékonyan betölti az adatok tömeges betöltését. Egy Azure Data Lake Storage Gen2 vagy Azure Blob Storage-fiókra kell hivatkoznia, amely az adatok előkészítését teszi elérhetővé a Base használatakor.
+Az Azure szinapszis Analyticsbe való íráskor győződjön meg arról, hogy az **előkészítés engedélyezése** True (igaz) értékre van állítva. Ez lehetővé teszi az ADF számára az [SQL Copy parancs](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) használatával történő írást, amely hatékonyan tölti fel az adatmennyiséget. Az átmeneti tárolás használatakor Azure Data Lake Storage Gen2 vagy Azure Blob Storage-fiókra kell hivatkoznia.
 
-A kiindulási módszertől eltérő módon ugyanazok az ajánlott eljárások érvényesek az Azure szinapszis Analyticsre Azure SQL Databaseként.
+Az előkészítésen kívül ugyanezek az ajánlott eljárások az Azure szinapszis Analyticsre is érvényesek Azure SQL Databaseként.
 
 ### <a name="file-based-sinks"></a>Fájl alapú mosogatók 
 
@@ -309,6 +309,14 @@ A feladatok egymás utáni futtatása valószínűleg a leghosszabb időt vesz i
 ### <a name="overloading-a-single-data-flow"></a>Egy adatfolyam túlterhelése
 
 Ha egyetlen adatfolyamba helyezi az összes logikát, akkor az ADF egyetlen Spark-példányon hajtja végre a teljes feladatot. Habár ez úgy tűnhet, mint a költségek csökkentése, összekeveri a különböző logikai folyamatokat, és nehéz lehet figyelni és hibakeresést végezni. Ha egy összetevő meghibásodik, a feladat összes többi része is sikertelen lesz. Az Azure Data Factory csapat az adatfolyamatok független üzleti logikával való szervezését javasolja. Ha az adatfolyam túl nagy lesz, a különálló összetevőkre való felosztás egyszerűbbé teszi a figyelést és a hibakeresést. Habár az adatforgalomban az átalakítások száma nem korlátozott, túl sok lesz a feladatsor.
+
+### <a name="execute-sinks-in-parallel"></a>A mosogatók párhuzamos végrehajtása
+
+Az adatfolyam-elsüllyedés alapértelmezett viselkedése az egyes fogadók egymás utáni, soros módon történő végrehajtása, valamint az adatfolyamatok meghibásodása, amikor hiba történik a fogadóban. Emellett az összes mosogató alapértelmezés szerint ugyanahhoz a csoporthoz tartozik, hacsak nem lép be az adatfolyam tulajdonságaiba, és nem állítja be a mosdók különböző prioritásait.
+
+Az adatfolyamatok lehetővé teszik, hogy csoportosítsa a mosogatókat csoportokba a felhasználói felületi tervező adatáramlás tulajdonságai lapján. Egyszerre állíthatja be a mosogatók végrehajtásának sorrendjét, valamint a mosogatók csoportosítását az azonos csoport számával együtt. A csoportok kezelésének megkönnyítéséhez megkérheti az ADF-et, hogy ugyanabban a csoportban futtassa a mosogatókat, hogy párhuzamosan fusson.
+
+A folyamat "fogadó tulajdonságai" szakasza alatt az adatfolyamatok végrehajtása művelettel bekapcsolhatja a párhuzamos fogadó betöltését. Ha engedélyezi a "Futtatás párhuzamosan" lehetőséget, akkor az adatfolyamatokat a csatlakoztatott mosdóba kell írni, nem pedig szekvenciális módon. A párhuzamos lehetőség kihasználásához a nyelők csoportba kell tartoznia, és ugyanahhoz az adatfolyamhoz kell csatlakoznia egy új ág vagy feltételes felosztás használatával.
 
 ## <a name="next-steps"></a>További lépések
 

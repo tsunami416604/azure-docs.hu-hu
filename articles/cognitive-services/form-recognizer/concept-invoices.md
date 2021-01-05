@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602444"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845578"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Űrlap-felismerő előre összeépített számlázási modellje
 
@@ -34,7 +34,7 @@ Az űrlap-felismerő számlázási szolgáltatás kipróbálásához nyissa meg 
 > [!div class="nextstepaction"]
 > [Előre elkészített modellek kipróbálása](https://fott-preview.azurewebsites.net/)
 
-Szüksége lesz egy Azure-előfizetésre ([hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)), az [űrlap-Recognzier](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) pedig az erőforrás-végpontot és a kulcsot, hogy kipróbálja az űrlap-felismerő számlázási szolgáltatását. 
+Szüksége lesz egy Azure-előfizetésre ([hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)) és egy [űrlap-felismerő erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) -végpontot és kulcsot az űrlap-felismerő számlázási szolgáltatás kipróbálásához. 
 
 ![Elemzett számlázási példa](./media/analyze-invoice.png)
 
@@ -107,8 +107,8 @@ A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 szám
 ## <a name="next-steps"></a>További lépések
 
 - Próbálja ki saját számláit és mintáit az [űrlap-felismerő minta felhasználói felületén](https://fott-preview.azurewebsites.net/).
-- Töltse ki az [űrlap-felismerő ügyféloldali függvénytárának](quickstarts/client-library.md) rövid útmutatóját, hogy megkezdje a számla-feldolgozó alkalmazás írását az űrlap felismerővel az Ön által választott nyelven.
-- Vagy kövesse a [Számlázási adatok kinyerése](./quickstarts/python-invoices.md) lehetőséget a számlázási adatok kinyerésének a Python és a REST API használatával történő megvalósításához.
+- Az [űrlap](quickstarts/client-library.md) -felismerő gyors üzembe helyezésével megkezdheti a számla-feldolgozó alkalmazás írását a választott nyelven.
+
 ## <a name="see-also"></a>További információ
 
 * [Mi a Form Recognizer?](./overview.md)

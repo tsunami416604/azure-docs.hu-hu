@@ -3,12 +3,12 @@ title: Esemény-replikációs feladat mintái – Azure Event Hubs | Microsoft D
 description: Ez a cikk részletes útmutatást nyújt az adott esemény-replikációs feladat-mintázatok megvalósításához
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 494de442b636d535fa1ed6fdeeeda28db9783952
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803986"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861375"
 ---
 # <a name="event-replication-tasks-patterns"></a>Esemény-replikációs feladatok mintái
 
@@ -20,7 +20,7 @@ Ebben a cikkben részletesen ismertetjük a megvalósítási útmutatót az Átt
 
 A replikációs minta az eseményeket egy adott esemény központból a következőre másolja, vagy egy Event hub-ból egy másik célhelyre, például egy Service Bus-várólistára. Az események továbbítása az esemény hasznos adatainak módosítása nélkül történik.
 
-Ennek a mintának a megvalósítását az Event Hubs és az esemény-replikálás közötti, [Event Hubs és Service Busi minták közötti](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) [esemény replikálása](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) szabályozza.
+Ennek a mintának a megvalósítását a [Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) és az [esemény replikációja Event Hubs és Service Bus minták között](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) , valamint a [Apache Kafka MirrorMaker használata Event Hubs](event-hubs-kafka-mirror-maker-tutorial.md) oktatóanyagban az adatok Apache Kafka-átvitelszervezőből Event Hubsba való replikálásának konkrét esetére.
 
 ### <a name="streams-and-order-preservation"></a>Adatfolyamok és megrendelés megőrzése
 

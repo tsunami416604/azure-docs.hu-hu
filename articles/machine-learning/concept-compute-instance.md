@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 7d07dda7741aa075b8d853a8d06d3d3218ca901a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: fafa4c1e8c12ce26a90cfdf9df940823abf5ff25
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563817"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857443"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -98,11 +98,11 @@ A legújabb Azure Machine Learning mintákat a munkaterület fájlmegosztás fel
 
 A kisméretű fájlok írása a hálózati meghajtókon lassabb lehet, mint a számítási példány helyi lemezének írásakor.  Ha sok kis fájlt ír, próbálkozzon közvetlenül a számítási példányon, például a `/tmp` címtárban. Vegye figyelembe, hogy ezek a fájlok nem lesznek elérhetők más számítási példányokból. 
 
-Az `/tmp` ideiglenes adatokhoz használhatja a számítási példány könyvtárát is.  A számítási példány operációsrendszer-lemezén azonban ne írjon nagy mennyiségű adatfájlt.  Használjon [datastores](concept-azure-machine-learning-architecture.md#datasets-and-datastores) helyette adattárolókat. Ha telepítette a JupyterLab git-bővítményt, akkor a számítási példányok teljesítményének lelassulását is eredményezheti.
+Az `/tmp` ideiglenes adatokhoz használhatja a számítási példány könyvtárát is.  A számítási példány operációsrendszer-lemezén azonban ne írjon nagy mennyiségű adatfájlt.  Használjon [](concept-azure-machine-learning-architecture.md#datasets-and-datastores) helyette adattárolókat. Ha telepítette a JupyterLab git-bővítményt, akkor a számítási példányok teljesítményének lelassulását is eredményezheti.
 
 ## <a name="managing-a-compute-instance"></a>Számítási példány kezelése
 
-Azure Machine Learning Studio munkaterületén válassza a **számítás** , majd a felül található **számítási példány** elemet.
+Azure Machine Learning Studio munkaterületén válassza a **számítás**, majd a felül található **számítási példány** elemet.
 
 ![Számítási példány kezelése](./media/concept-compute-instance/manage-compute-instance.png)
 
@@ -130,7 +130,12 @@ Ezeket a műveleteket az Azure RBAC is szabályozhatja:
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/leállítás/művelet*
 * *Microsoft. MachineLearningServices/munkaterületek/számítások/újraindítás/művelet*
 
-### <a name="create-a-compute-instance"></a><a name="create"></a>Új számítási példány létrehozása
+Vegye figyelembe, hogy egy számítási példány felhasználójának a következő műveletekhez szükséges engedélyekkel kell rendelkeznie:
+* *Microsoft. MachineLearningServices/munkaterületek/számítások/írás*
+* *Microsoft. MachineLearningServices/munkaterületek/checkComputeNameAvailability/művelet*
+
+
+### <a name="create-a-compute-instance"></a><a name="create"></a>Számítási példány létrehozása
 
 A Azure Machine Learning Studio munkaterületén [hozzon létre egy új számítási példányt](how-to-create-attach-compute-studio.md#compute-instance) a **számítási** szakaszból vagy a **jegyzetfüzetek** szakaszban, amikor készen áll az egyik jegyzetfüzet futtatására. 
 
@@ -184,7 +189,7 @@ A munkaterület-fájlmegosztás és a munkaterület-adattárakban tárolt adatok
 Nem hozhatók létre új virtuális gépek a notebookon. Azonban továbbra is elérheti és használhatja a létrehozott notebook-alapú virtuális gépeket a teljes funkcionalitással. A számítási példányok a meglévő notebook virtuális gépekkel megegyező munkaterületen hozhatók létre.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Számítási példány létrehozása és kezelése](how-to-create-manage-compute-instance.md)
 * [Oktatóanyag: az első ml-modell betanítása](tutorial-1st-experiment-sdk-train.md) azt mutatja be, hogyan használható a számítási példány egy integrált jegyzetfüzettel.

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 11/24/2020
-ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 01/03/2021
+ms.openlocfilehash: 3eff23a42a6ac5f5360bdebfcc692e13acb3e8b0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095083"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858780"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység Azure Data Factory
 
@@ -38,6 +38,8 @@ Az adatfolyam tevékenységgel átalakíthatja és áthelyezheti az adatait a le
          "computeType": "General"
       },
       "traceLevel": "Fine",
+      "runConcurrently": true,
+      "continueOnError": true,      
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -95,6 +97,14 @@ Ha az Azure szinapszis Analytics szolgáltatást fogadóként vagy forrásként 
 Ha nincs szüksége az adatáramlási tevékenységek minden folyamatának végrehajtására az összes részletes telemetria-napló teljes naplózásához, igény szerint beállíthatja a naplózási szintet az "alapszintű" vagy a "None" értékre. Ha az adatfolyamatokat "részletes" módban hajtja végre (alapértelmezés), az automatikus lapadagolóba az adatátalakítás során minden egyes partíciós szinten teljes körű naplózási tevékenységet kér. Ez költséges művelet lehet, ezért csak akkor engedélyezze a részletes műveleteket, ha a hibaelhárítás javítja a teljes adatfolyamatot és a folyamat teljesítményét. Az "alapszintű" mód csak az átalakítási időtartamokat fogja naplózni, míg a "None" csak az időtartamok összegzését tartalmazza.
 
 ![Naplózási szint](media/data-flow/logging.png "Naplózási szint beállítása")
+
+## <a name="sink-properties"></a>Fogadó tulajdonságai
+
+Az adatfolyamatok csoportosítási funkciója lehetővé teszi, hogy egyszerre állítsa be a mosogatók végrehajtásának sorrendjét, valamint a nyelők csoportosítását az azonos csoport számával együtt. A csoportok kezeléséhez az ADF-et arra is kérheti, hogy párhuzamosan futtassa a mosogatókat ugyanabban a csoportban. A fogadó csoportot úgy is beállíthatja, hogy a folytatás akkor is megtörténjen, ha az egyik mosogató hibát észlel.
+
+Az adatfolyam-elsüllyedés alapértelmezett viselkedése az egyes fogadók egymás utáni, soros módon történő végrehajtása, valamint az adatfolyamatok meghibásodása, amikor hiba történik a fogadóban. Emellett az összes mosogató alapértelmezés szerint ugyanahhoz a csoporthoz tartozik, hacsak nem lép be az adatfolyam tulajdonságaiba, és nem állítja be a mosdók különböző prioritásait.
+
+![Fogadó tulajdonságai](media/data-flow/sink-properties.png "Fogadó tulajdonságainak beállítása")
 
 ## <a name="parameterizing-data-flows"></a>Parameterizing-adatfolyamok
 
@@ -163,7 +173,7 @@ A (z) "source1" nevű forrásból beolvasott sorok számának lekéréséhez has
 > [!NOTE]
 > Ha a fogadó nulla sorból áll, akkor nem jelenik meg a mérőszámokban. A létezés ellenőrizhető a függvény használatával `contains` . Például `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` megvizsgálhatja, hogy a sorok sink1-e.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: Data Factory által támogatott vezérlési flow-tevékenységek: 
 

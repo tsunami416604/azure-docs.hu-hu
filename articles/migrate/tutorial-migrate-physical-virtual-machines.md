@@ -5,14 +5,14 @@ author: rahulg1190
 ms.author: rahugup
 ms.manager: bsiva
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: af1c321e5c537fbd3af770cb392c538e6056e075
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: bd560a6ef4a3b4ab5eb4632e7741c764f6e314e1
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752872"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854927"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Gépek migrálása fizikai kiszolgálóként az Azure-ba
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan telepítheti át a gépeket fizikai kiszolgálókén
 - Nyilvános felhőkben (például Amazon Web Services (AWS) vagy Google Cloud Platform (GCP) futó virtuális gépek áttelepítésére.
 
 
-Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan lehet felmérni és áttelepíteni a fizikai kiszolgálókat az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan lehet felmérni és áttelepíteni a fizikai kiszolgálókat az Azure-ba. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Felkészülés az Azure használatára a Azure Migrate használatával: kiszolgáló áttelepítése.
@@ -109,7 +109,7 @@ Készítse elő a berendezés központi telepítését a következőképpen:
 - Készítse elő a gépet a replikációs berendezés üzemeltetéséhez. [Tekintse át](migrate-replication-appliance.md#appliance-requirements) a gép követelményeit.
 - A replikációs berendezés a MySQL-t használja. Tekintse át a MySQL telepítésének [lehetőségeit](migrate-replication-appliance.md#mysql-installation) a készüléken.
 - Tekintse át a replikációs berendezés számára a [nyilvános](migrate-replication-appliance.md#url-access) és a [kormányzati](migrate-replication-appliance.md#azure-government-url-access) felhők eléréséhez szükséges Azure URL-címeket.
-- Tekintse át a következőt: [port] (Migrálás-replikáció-berendezés. MD # port-Access) a replikációs berendezés hozzáférési követelményei.
+- Tekintse át a replikációs berendezés [portra](migrate-replication-appliance.md#port-access) vonatkozó hozzáférési követelményeit.
 
 > [!NOTE]
 > A replikációs berendezést nem szabad olyan számítógépre telepíteni, amelyet replikálni szeretne, vagy a Azure Migrate felderítési és értékelési berendezésen, amelyre korábban már telepítve van.

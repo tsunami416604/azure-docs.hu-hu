@@ -2,13 +2,13 @@
 title: Sablon functions – erőforrások
 description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó függvényeket ismerteti az erőforrásokra vonatkozó értékek lekéréséhez.
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 166e9104a9d791ac6d82ed0e8e2d3659efd2ae0d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/04/2021
+ms.openlocfilehash: f16e8e06bf5deb2b66af7758f2944fe256cfa268
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919994"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861427"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Resource functions
 
@@ -175,7 +175,7 @@ A beépített szabályzat-definíciók a bérlői szintű erőforrások. A beép
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-A függvény szintaxisa a lista műveleteinek nevével változik. Minden implementáció a lista műveletét támogató erőforrástípus értékeit adja vissza. A művelet nevének a (z) értékkel kell kezdődnie `list` . Néhány gyakori használat:, `listKeys` `listKeyValue` és `listSecrets` .
+A függvény szintaxisa a lista műveleteinek nevével változik. Minden implementáció a lista műveletét támogató erőforrástípus értékeit adja vissza. A művelet nevének kezdődnie kell, `list` és lehet utótagja. Néhány gyakori használat:, `list` , `listKeys` `listKeyValue` és `listSecrets` .
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -284,7 +284,7 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Microsoft. Network/applicationSecurityGroups | listIpConfigurations |
 | Microsoft. NotificationHubs/névterek/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft. NotificationHubs/névterek/NotificationHubs/engedélyezési szabályok | [listkeys műveletének beolvasása](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Microsoft. OperationalInsights/munkaterületek | [list](/rest/api/loganalytics/workspaces/list) |
+| Microsoft. OperationalInsights/munkaterületek | [listáját](/rest/api/loganalytics/workspaces/list) |
 | Microsoft. OperationalInsights/munkaterületek | Listkeys műveletének beolvasása |
 | Microsoft. PolicyInsights/szervizelések | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
 | Microsoft. RedHatOpenShift/openShiftClusters | [listCredentials](/rest/api/openshift/openshiftclusters/listcredentials) |
@@ -313,15 +313,15 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Microsoft. Web/Locations | listwsdlinterfaces |
 | Microsoft. Web/apimanagementaccounts/API-k/kapcsolatok | listconnectionkeys |
 | Microsoft. Web/apimanagementaccounts/API-k/kapcsolatok | listsecrets |
-| Microsoft. Web/Sites/Backups | [list](/rest/api/appservice/webapps/listbackups) |
-| Microsoft. Web/Sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
+| Microsoft. Web/Sites/Backups | [listáját](/rest/api/appservice/webapps/listbackups) |
+| Microsoft. Web/Sites/config | [listáját](/rest/api/appservice/webapps/listconfigurations) |
 | Microsoft. Web/Sites/functions | [listkeys műveletének beolvasása](/rest/api/appservice/webapps/listfunctionkeys)
 | Microsoft. Web/Sites/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | Microsoft. Web/Sites/hybridconnectionnamespaces/Relays | [listkeys műveletének beolvasása](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | Microsoft. Web/Sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
 | Microsoft. Web/Sites/Slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
-| Microsoft. Web/Sites/Slots/Backups | [list](/rest/api/appservice/webapps/listbackupsslot) |
-| Microsoft. Web/Sites/Slots/config | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
+| Microsoft. Web/Sites/Slots/Backups | [listáját](/rest/api/appservice/webapps/listbackupsslot) |
+| Microsoft. Web/Sites/Slots/config | [listáját](/rest/api/appservice/webapps/listconfigurationsslot) |
 | Microsoft. Web/Sites/Slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
 Annak megállapításához, hogy mely erőforrástípusok rendelkeznek lista-művelettel, a következő lehetőségek közül választhat:
@@ -1630,7 +1630,7 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az ARM-sablon fejezeteinek leírását az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk tartalmazza.
 * Több sablon egyesítéséhez tekintse meg a [csatolt és beágyazott sablonok használata Azure-erőforrások telepítésekor](linked-templates.md)című témakört.

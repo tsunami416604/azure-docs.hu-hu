@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan engedélyezheti az identitás-alapú hitelesít
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: deed7c3dce2d7da1940a8a4871efac7453e2cf60
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 340455450cd6a18adfd8d0843fee423f82f10a45
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033680"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858399"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services hitelesítés engedélyezése Azure Files
 
@@ -22,8 +22,7 @@ ms.locfileid: "97033680"
 Ha még nem ismeri az Azure-fájlmegosztás újdonságait, javasoljuk, hogy olvassa el a [tervezési útmutatót](storage-files-planning.md) , mielőtt elolvassa a következő cikksorozatot.
 
 > [!NOTE]
-> Azure Files támogatja a Kerberos-hitelesítést az Azure AD DS és az RC4-HMAC titkosítás révén. Az AES Kerberos-titkosítás még nem támogatott.
-> A Azure Files az Azure AD-vel való teljes szinkronizálással támogatja az Azure AD DS hitelesítését. Ha engedélyezte a hatókörön belüli szinkronizálást az Azure AD DSban, amely csak korlátozott számú identitást szinkronizál az Azure AD-ből, a hitelesítés és az engedélyezés nem támogatott.
+> A Azure Files támogatja a Kerberos-hitelesítést az Azure AD DS az RC4-HMAC és AES 256 titkosítással. A Azure Files az Azure AD-vel való teljes szinkronizálással támogatja az Azure AD DS hitelesítését. Ha engedélyezte a hatókörön belüli szinkronizálást az Azure AD DSban, amely csak korlátozott számú identitást szinkronizál az Azure AD-ből, a hitelesítés és az engedélyezés nem támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,7 +58,7 @@ Mielőtt engedélyezte az Azure AD-t az Azure-fájlmegosztás SMB-en keresztül,
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Az Azure AD DS Azure Files hitelesítése az [összes nyilvános Azure-és gov-régióban](https://azure.microsoft.com/global-infrastructure/locations/)elérhető.
+Az Azure AD DS Azure Files hitelesítés az [összes Azure Public, gov és China régióban](https://azure.microsoft.com/global-infrastructure/locations/)elérhető.
 
 ## <a name="overview-of-the-workflow"></a>A munkafolyamat áttekintése
 
@@ -89,7 +88,7 @@ Ha engedélyezni szeretné az Azure AD DS hitelesítést az SMB protokollon kere
 1. A Azure Portal nyissa meg a meglévő Storage-fiókot, vagy [hozzon létre egy Storage-fiókot](../common/storage-account-create.md).
 1. A **Beállítások** szakaszban válassza a **Konfigurálás** lehetőséget.
 1. A **fájlmegosztás identitás-alapú hozzáférése** területen kapcsolja be a **Azure Active Directory tartományi szolgáltatás (HRE DS)** kapcsolóját, hogy **engedélyezve** legyen.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Az alábbi képen bemutatjuk, hogyan engedélyezhető az Azure AD DS hitelesítés az SMB protokollon keresztül a Storage-fiókhoz.
 
@@ -144,7 +143,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 Sikeresen engedélyezte az Azure AD DS hitelesítést az SMB protokollon keresztül, és hozzárendelt egy egyéni szerepkört, amely hozzáférést biztosít egy Azure-fájlmegosztás Azure AD-identitással való eléréséhez. Ha további felhasználóknak szeretne hozzáférést adni a fájlmegosztás eléréséhez, kövesse a [hozzáférési engedélyek hozzárendelése](#assign-access-permissions-to-an-identity) az identitás használatához és az NTFS- [engedélyek SMB-szakaszokon keresztüli konfigurálásához](#configure-ntfs-permissions-over-smb)című témakör utasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Files és az Azure AD SMB használatával történő használatáról további információt az alábbi forrásokban talál:
 

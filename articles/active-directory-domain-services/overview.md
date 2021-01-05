@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/03/2020
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 99a207810f51949b0da0e78b1cb0e0a7f8bc95e3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 765aa10e57c472d7a1af0952364783bb1d711078
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027339"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861514"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Mi az Azure Active Directory Domain Services?
 
@@ -41,7 +41,7 @@ A helyszíni AD DS környezettel rendelkező hibrid környezetekben a [Azure ad 
 
 ![Szinkronizálás Azure AD Domain Services az Azure AD-vel és helyszíni AD DS az AD-kapcsolat használatával](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-Az Azure AD DS az Azure AD-ből replikálja az azonosító adatokat, így az Azure AD-bérlők csak felhőalapú módon működnek, vagy a helyszíni (AD DS-környezettel szinkronizálva). Ugyanezek az Azure AD DS-funkciók is léteznek mindkét környezetben.
+Az Azure AD DS az Azure AD-ből replikálja az azonosító adatokat, így az Azure AD-bérlők csak felhőben működnek, vagy egy helyszíni AD DS-környezettel szinkronizálhatók. Ugyanezek az Azure AD DS-funkciók is léteznek mindkét környezetben.
 
 * Ha meglévő helyszíni AD DS-környezettel rendelkezik, a felhasználói fiókadatok szinkronizálásával konzisztens identitást biztosíthat a felhasználóknak. További információ: [az objektumok és a hitelesítő adatok szinkronizálása felügyelt tartományokban][synchronization].
 * A csak felhőalapú környezetekhez nincs szükség hagyományos helyszíni AD DS környezetre az Azure AD DS központi identitási szolgáltatásainak használatához.
@@ -84,7 +84,7 @@ A felügyelt tartomány néhány kulcsfontosságú aspektusa a következőket fo
 
 A helyszíni AD DSt futtató hibrid környezetek esetében nem szükséges az AD-replikáció kezelése a felügyelt tartományhoz. A helyszíni címtárból származó felhasználói fiókok, csoporttagság és hitelesítő adatok az Azure AD-vel [Azure ad Connecton][azure-ad-connect]keresztül szinkronizálhatók. Ezek a felhasználói fiókok, csoporttagság és hitelesítő adatok automatikusan elérhetők a felügyelt tartományon belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az Azure AD DS más identitási megoldásokkal való összehasonlításáról és a szinkronizálás működéséről, tekintse meg a következő cikkeket:
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999440"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854944"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása egy Azure-beli virtuális hálózattal
 
@@ -122,7 +122,7 @@ Ha átjáróval megkövetelt VNet-integrációt használ a társításhoz, néh�
 
 ## <a name="manage-vnet-integration"></a>Virtuálishálózat-integráció kezelése
 
-A VNet való csatlakozás és a kapcsolat bontása alkalmazási szinten történik. A több alkalmazás közötti VNet-integrációt befolyásoló műveletek a App Servicei csomag szintjén találhatók. Az alkalmazás > **hálózatkezelés**  >  **VNet-integrációs** portálján megtekintheti a VNet adatait. A app Servicei terv szintjén hasonló információkat tekinthet meg a **App Service plan**  >  **hálózatkezelés**  >  **VNet-integrációs** portál app Service megtervezése című témakörben.
+A VNet való csatlakozás és a kapcsolat bontása alkalmazási szinten történik. A több alkalmazás közötti VNet-integrációt befolyásoló műveletek a App Servicei csomag szintjén találhatók. Az alkalmazás > **hálózatkezelés**  >  **VNet-integrációs** portálján megtekintheti a VNet adatait. A app Servicei terv szintjén hasonló információkat tekinthet meg a   >  **hálózatkezelés**  >  **VNet-integrációs** portál app Service megtervezése című témakörben.
 
 Az egyetlen művelet, amelyet a VNet-integrációs példány alkalmazás nézetében elvégezhet, az alkalmazás leválasztása a VNet, amelyhez jelenleg csatlakozik. Az alkalmazás VNet való leválasztásához válassza a **Leválasztás** lehetőséget. Az alkalmazás újraindul, amikor leválaszt egy VNet. A kapcsolat bontása nem módosítja a VNet. Az alhálózat vagy átjáró nem törlődik. Ha ezt követően törölni szeretné a VNet, először válassza le az alkalmazást a VNet, és törölje az abban lévő erőforrásokat, például az átjárókat.
 
@@ -152,6 +152,7 @@ Az átjáróhoz szükséges VNet-integrációs funkció három díjat tartalmaz:
 
 > [!NOTE]
 > A VNET-integráció nem támogatott a App Service Docker-összeállítási forgatókönyvek esetén.
+> A Azure Functions hozzáférési korlátozásokat a rendszer figyelmen kívül hagyja, ha van privát végpont.
 >
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]

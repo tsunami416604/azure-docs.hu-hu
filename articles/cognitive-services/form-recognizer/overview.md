@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizált adatfeldolgozás, dokumentumok feldolgozása, automatizált adatbevitel, űrlapok feldolgozása
-ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353680"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845530"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -108,23 +108,21 @@ A Business Cards modell lehetővé teszi olyan információk kinyerését, mint 
 
 Használja a [minta űrlap-felismerő eszközt](https://fott.azurewebsites.net/) , vagy kövessen egy rövid útmutatót az adatok űrlapokból való kinyerésének megkezdéséhez. Javasoljuk, hogy az ingyenes szolgáltatást használja a technológia megismerése során. Ne feledje, hogy a szabad lapok száma legfeljebb 500 havonta.
 
-* [Ügyféloldali kódtárak](./quickstarts/client-library.md) (az összes nyelv, több forgatókönyv)
+* [Ügyféloldali kódtár/REST API](./quickstarts/client-library.md) rövid útmutató (minden nyelv, több forgatókönyv)
 * Webes felhasználói felület rövid útmutatói
   * [Vonat címkékkel – minta címkézési eszköz](quickstarts/label-tool.md)
-* REST-útmutató
+* REST-minták (GitHub)
  * Szöveg, kiválasztási jelek és tábla szerkezetének kinyerése dokumentumokból
-    * [Elrendezési adatok kinyerése – Python](quickstarts/python-layout.md)
+    * [Elrendezési adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
   * Egyéni modellek betanítása és űrlapadatok kinyerése
-    * [Vonat címkék nélkül – cURL](quickstarts/curl-train-extract.md)
-    * [Betanítás címkék nélkül – Python](quickstarts/python-train-extract.md)
-    * [Betanítás címkékkel – Python](quickstarts/python-labeled-data.md)
+    * [Betanítás címkék nélkül – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+    * [Betanítás címkékkel – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
   * Adatok kinyerése a számlákból
-    * [Számlázási adatok kinyerése – Python](quickstarts/python-invoices.md)
+    * [Számlázási adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
   * Adatok kinyerése az értékesítési visszaigazolásokból
-    * [Bevételezési adatok kinyerése – cURL](quickstarts/curl-receipts.md)
-    * [Bevételezési adatok kinyerése – Python](quickstarts/python-receipts.md)
+    * [Bevételezési adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
   * Adatok kinyerése névjegykártyákból
-    * [Névjegykártya-adatok kinyerése – Python](quickstarts/python-business-cards.md)
+    * [Névjegykártya-adatok kinyerése – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
 
 ### <a name="review-the-rest-apis"></a>A REST API-k áttekintése
 
@@ -162,4 +160,4 @@ Akárcsak az összes kognitív szolgáltatás esetében, az űrlap-felismerő sz
 
 ## <a name="next-steps"></a>További lépések
 
-Töltse ki az [ügyféloldali kódtár](quickstarts/client-library.md) gyors kezdését, hogy megkezdje az űrlapok feldolgozását az űrlap felismerővel az Ön által választott nyelven.
+Fejezze be [a](quickstarts/client-library.md) gyors üzembe helyezési útmutatót, amellyel megkezdheti az űrlapok feldolgozását az űrlap-felismerővel az Ön által választott nyelven.

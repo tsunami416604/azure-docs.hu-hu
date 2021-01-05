@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 34efef4a01b58cc26fd1567336184837a703ade2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7bbac0d8593d47c3162a8ea43e928343a88f2de4
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839892"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861446"
 ---
 # <a name="manage-the-on-premises-management-console"></a>A helyszíni felügyeleti konzol kezelése
 
@@ -298,6 +298,26 @@ A jelszó alaphelyzetbe állítása:
 
 > [!NOTE]
 > Az érzékelő ahhoz az előfizetéshez van csatolva, amelyhez eredetileg kapcsolódott. A jelszót csak azzal az előfizetéssel állíthatja helyre, amelyhez hozzá van csatolva.
+
+## <a name="update-the-software-version"></a>A szoftver verziójának frissítése
+
+Az alábbi eljárás ismerteti, hogyan frissítheti a helyszíni felügyeleti konzol szoftverének verzióját. A frissítési folyamat körülbelül 30 percet vesz igénybe.
+
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/).
+
+1. Nyissa meg a Defender for IoT.
+
+1. Nyissa meg a **frissítések** lapot.
+
+1. Válasszon egy verziót a helyszíni felügyeleti konzol szakaszban.
+
+1. Válassza a **Letöltés** lehetőséget, és mentse a fájlt.
+
+1. Jelentkezzen be a helyszíni felügyeleti konzolba, és válassza a **System Settings (rendszerbeállítások** ) lehetőséget az oldal menüből.
+
+1. A **verzió frissítése** panelen válassza a **frissítés** lehetőséget.
+
+1. Válassza ki azt a fájlt, amelyet a Defender for IoT **Updates** lapon töltött le.
 
 ## <a name="see-also"></a>További információ
 

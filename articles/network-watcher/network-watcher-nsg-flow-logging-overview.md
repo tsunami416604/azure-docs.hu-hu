@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 79f442c5ab7db92e69f5396f3f9205212bdf4d4d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d6b916ce03c6850f78217f1aac0b63048a6aff3b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399247"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858501"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok folyamatnaplózásába
 
@@ -353,6 +353,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 A **Storage-fiókkal kapcsolatos megfontolások**: 
 
 - Hely: a használt Storage-fióknak ugyanabban a régióban kell lennie, mint a NSG.
+- Teljesítményi szint: jelenleg csak a standard szintű Storage-fiókok támogatottak.
 - A kulcs önálló kezelése: Ha módosítja vagy elforgatja a hozzáférési kulcsokat a Storage-fiókhoz, a NSG-naplók nem fognak működni. A probléma megoldásához le kell tiltania, majd újra engedélyeznie kell a NSG folyamat naplóit.
 
 A **flow naplózási költségei**: a NSG folyamatának naplózása a létrehozott naplók mennyiségétől függ. A nagy forgalmú kötetek nagy flow-naplózási kötetet és a hozzájuk kapcsolódó költségeket okozhatják. A NSG-forgalmi napló díjszabása nem tartalmazza a tárterület alapjául szolgáló költségeket. Az adatmegőrzési házirend szolgáltatás NSG flow-naplózással való használata esetén a tárolási költségek hosszabb ideig tartanak. Ha nincs szüksége az adatmegőrzési házirend funkcióra, azt javasoljuk, hogy állítsa 0 értékre. További információkért tekintse meg a [Network Watcher díjszabását](https://azure.microsoft.com/pricing/details/network-watcher/) és az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető témakört.
@@ -374,7 +375,7 @@ Nem **kompatibilis szolgáltatások**: az aktuális NSG miatt az Azure-szolgált
 **NSG-naplózás engedélyezése az erőforráshoz csatolt összes NSG**: az Azure-ban a flow naplózása a NSG-erőforráson van konfigurálva. Egy folyamat csak egyetlen NSG-szabályhoz lesz társítva. Az olyan forgatókönyvekben, ahol több NSG van használatban, javasoljuk, hogy engedélyezze a NSG flow-naplókat az erőforrás alhálózatán vagy hálózati adapterén alkalmazott összes NSG az összes forgalom rögzítésének biztosítása érdekében. További információ: a hálózati biztonsági csoportokban lévő [forgalom kiértékelésének módja](../virtual-network/network-security-group-how-it-works.md) . 
 
 Néhány gyakori forgatókönyv:
-1. **Több NSG egy hálózati adapteren**: Ha több NSG van csatolva egy hálózati adapterhez, a flow naplózást mindegyiken engedélyezni kell
+1. **Több hálózati adapter egy** virtuális gépen: abban az esetben, ha több hálózati adapter van csatlakoztatva egy virtuális géphez, a folyamat naplózását engedélyezni kell mindegyiken
 1. A **hálózati adapteren és az alhálózaton is NSG**: abban az esetben, ha a NSG a hálózati adapteren, valamint az alhálózati szinten van konfigurálva, akkor a folyamat naplózását mindkét NSG engedélyezni kell. 
 
 **Tárolási kiépítés**: a tárterületet a várt flow-naplózási kötetnek megfelelően kell kiépíteni.

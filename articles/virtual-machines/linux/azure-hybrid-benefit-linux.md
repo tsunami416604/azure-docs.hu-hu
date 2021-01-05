@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a153f832fdfc075cdde03241f7dae19faa2334ce
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ba7081c877f3c3adae6e678280592c9445a95d1b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631365"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858807"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>A Linux rendszerű virtuális gépekre vonatkozó Azure Hybrid Benefit alkalmazása
 
@@ -39,7 +39,7 @@ Azure Hybrid Benefit elérhető az Azure Marketplace-ről származó összes RHE
 
 A fenntartott példányok, az Azure dedikált gazdagép példányai és az SQL Hybrid előnyök nem jogosultak Azure Hybrid Benefitre, ha már használja a Linux rendszerű virtuális gépek előnyeit.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 ### <a name="red-hat-customers"></a>Red Hat-ügyfelek
 
@@ -172,7 +172,7 @@ A Red Hat-előfizetések megfelelőségével, a szoftverfrissítések és a Azur
 
 ### <a name="suse"></a>SUSE
 
-Ha a SLES virtuális gépekhez Azure Hybrid Benefit szeretne használni, először regisztrálnia kell a [SUSE nyilvános felhő programban](https://www.suse.com/media/guide/suse_public_cloud_service_provider_program_overview.pdf). Miután megvásárolta a SUSE-előfizetéseket, regisztrálnia kell az előfizetéseket használó virtuális gépeket a saját frissítési forrásaiba. Ehhez a regisztrációhoz használja a SUSE Customer centert, az előfizetés-kezelési eszköz kiszolgálóját vagy a SUSE Managert.
+Ha a SLES-alapú virtuális gépekhez Azure Hybrid Benefit szeretne használni, és a SLES-TB a BYOS-re vagy a SLES BYOS-re való áttéréssel kapcsolatos információkért lásd: [SUSE Linux Enterprise és Azure Hybrid Benefit](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/). 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 *K: használhatok `RHEL_BYOS` SLES-lemezképpel rendelkező licencet, vagy fordítva?*
@@ -210,6 +210,10 @@ A: nem. A fenntartott példányok jelenleg nem a RHEL és a SLES Azure Hybrid Be
 *K: használhatom a Azure Hybrid Benefitt a RHEL-lemezképeken SQL Server üzembe helyezett virtuális gépen?*
 
 A: nem. A virtuális gépek támogatásához nincs terv.
+
+*K: használhatom Azure Hybrid Benefit a RHEL Virtual adatközpont-előfizetéshez?*
+
+A: nem. A VDC nem támogatott az Azure-ban, beleértve a AHB is.  
  
 
 ## <a name="common-problems"></a>Gyakori problémák
@@ -219,5 +223,5 @@ Ez a szakasz az esetlegesen felmerülő gyakori problémákat és a mérséklés
 | ----- | ---------- |
 | "A műveletet nem lehetett befejezni, mert a rekordok azt mutatják, hogy az Azure-előfizetésében nem sikerült engedélyezni a Red Hat Cloud Access használatát..." | A RHEL virtuális gépekkel való ellátás használatához először [regisztrálnia kell az Azure-előfizetéseket a Red Hat Cloud Access](https://access.redhat.com/management/cloud)használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Megtudhatja, hogyan hozhat létre és frissíthet virtuális gépeket, és hogyan adhat hozzá licenceket (RHEL_BYOS, SLES_BYOS) az Azure CLI-vel való Azure Hybrid Benefithoz](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)

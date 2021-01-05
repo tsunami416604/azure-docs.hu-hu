@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: acb85a04b8a1ca491058702510079a36b93fc657
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3d69b72012819e3d9099e447b9048fe07aea86d3
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151046"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858705"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással
 
@@ -24,7 +24,7 @@ Ez a cikk a Signaler szolgáltatással integrált Azure Function-alkalmazások f
 
 Az Azure Signaler szolgáltatás különböző módokon konfigurálható. Azure Functions használata esetén a szolgáltatást *kiszolgáló* nélküli módban kell konfigurálni.
 
-A Azure Portal keresse meg a szignáló szolgáltatás erőforrásának *Beállítások* lapját. Állítsa a *szolgáltatási módot* *kiszolgáló*nélküli értékre.
+A Azure Portal keresse meg a szignáló szolgáltatás erőforrásának *Beállítások* lapját. Állítsa a *szolgáltatási módot* *kiszolgáló* nélküli értékre.
 
 ![Jelző szolgáltatás üzemmódja](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
@@ -49,11 +49,11 @@ A hitelesített tokenek létrehozásáról a [app Service hitelesítés használ
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>A Signaler szolgáltatásból küldött üzenetek kezelése
 
-A signaler- *trigger* kötésének használatával kezelheti a jelző szolgáltatásból küldött üzeneteket. Akkor aktiválható, ha az ügyfelek üzeneteket vagy ügyfeleket küldenek a csatlakozáshoz vagy a kapcsolat bontásához.
+A signaler- *trigger* kötésének használatával kezelheti a jelző szolgáltatásból küldött üzeneteket. Értesítést kaphat, ha az ügyfelek üzeneteket vagy ügyfeleket küldenek a csatlakozáshoz vagy a kapcsolat bontásához.
 
 További információ: a [ *jelző trigger* kötési hivatkozása](../azure-functions/functions-bindings-signalr-service-trigger.md).
 
-Emellett a függvény végpontját is be kell állítania, hogy a szolgáltatás elindítsa a függvényt, ahol az ügyféltől érkezett üzenet. A felsőbb réteg konfigurálásával kapcsolatos további tudnivalókért tekintse [meg ezt a](concept-upstream.md)dokumentumot.
+Emellett a függvény végpontját is be kell állítania, hogy a szolgáltatás elindítsa a függvényt, ha az ügyfélről érkezik üzenet. A felsőbb réteg konfigurálásával kapcsolatos további tudnivalókért tekintse [meg ezt a](concept-upstream.md)dokumentumot.
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Üzenetek küldése és csoporttagság kezelése
 
@@ -107,11 +107,11 @@ public class SignalRTestHub : ServerlessHub
 }
 ```
 
-Minden olyan függvénynek, amely a Class-alapú modellt kívánja használni, a **ServerlessHub**örökölt osztály metódusának kell lennie. A példában szereplő osztálynév `SignalRTestHub` a hub neve.
+Minden olyan függvénynek, amely a Class-alapú modellt kívánja használni, a **ServerlessHub** örökölt osztály metódusának kell lennie. A példában szereplő osztálynév `SignalRTestHub` a hub neve.
 
 ### <a name="define-hub-method"></a>Hub-metódus megadása
 
-Az összes hub-metódusnak rendelkeznie **kell** `InvocationContext` `[SignalRTrigger]` attribútummal, és a paraméter nélküli konstruktort kell használnia. Ezt követően a **metódus neve** paraméter **eseményként**lesz kezelve.
+Az összes hub-metódusnak rendelkeznie **kell** `InvocationContext` `[SignalRTrigger]` attribútummal, és a paraméter nélküli konstruktort kell használnia. Ezt követően a **metódus neve** paraméter **eseményként** lesz kezelve.
 
 Alapértelmezés szerint `category=messages` a metódus neve csak a következő nevek egyike lehet:
 
@@ -325,6 +325,6 @@ public static Task SendMessage(
 
 Más nyelvekkel kapcsolatos információkért tekintse meg az [Azure signaler szolgáltatás kötéseit](../azure-functions/functions-bindings-signalr-service.md) Azure functions-referenciához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan fejlesztheti és konfigurálhatja a kiszolgáló nélküli Signal Service-alkalmazásokat Azure Functions használatával. Hozzon létre egy alkalmazást saját maga a [signaler szolgáltatás áttekintés lapján](index.yml)található gyors indítás vagy oktatóanyag használatával.

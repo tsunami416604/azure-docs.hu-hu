@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353697"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845555"
 ---
 # <a name="form-recognizer-layout-service"></a>Űrlap-felismerő elrendezési szolgáltatás
 
@@ -89,10 +89,9 @@ Az elrendezés kibontja a dokumentumok kiválasztási jeleit is. Kinyert kijelö
 ## <a name="next-steps"></a>További lépések
 
 - Saját elrendezés kinyerésének kipróbálása az [űrlap-felismerő minta felhasználói felületének](https://fott-preview.azurewebsites.net/) használatával
-- Töltse ki az [űrlap-felismerő ügyféloldali függvénytárának](quickstarts/client-library.md) gyors kezdését, hogy megkezdje az elrendezések kinyerését az Ön által választott nyelven.
-- Vagy kövesse az [elrendezési adatok](./QuickStarts/python-layout.md) kinyerése az elrendezési adatok kinyerése a Python és a REST API használatával történő megvalósításához című témakört.
+- Az [űrlap-felismerő](quickstarts/client-library.md) gyors üzembe helyezésével megkezdheti az elrendezések kinyerését az Ön által választott nyelven.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Form Recognizer?](./overview.md)
 * [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)

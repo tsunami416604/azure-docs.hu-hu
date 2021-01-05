@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/25/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8205ecab3abfc7a944c12db1aca2bf594f6cd98f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ab335c8cc682f6b33dcb30509d682186a178c676
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349452"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861073"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-hez készült Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,7 +24,7 @@ Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott, többmo
 
 ## <a name="wire-protocol-compatibility"></a>Huzal protokoll kompatibilitása
 
-Azure Cosmos DB megvalósítja a MongoDB átviteli protokollt. Ez a megvalósítás lehetővé teszi az átlátható kompatibilitást a natív MongoDB ügyféloldali SDK-k, illesztőprogramok és eszközök használatával. Azure Cosmos DB üzemelteti a MongoDB-adatbázis motorját. A MongoDB által támogatott szolgáltatások részletei itt találhatók: 
+Azure Cosmos DB megvalósítja a MongoDB átviteli protokollt. Ez a megvalósítás lehetővé teszi az átlátható kompatibilitást a natív MongoDB ügyféloldali SDK-k, illesztőprogramok és eszközök használatával. Azure Cosmos DB nem üzemelteti a MongoDB-adatbázis motorját. A MongoDB által támogatott szolgáltatások részletei itt találhatók: 
 - [Azure Cosmos DB API a Mongo DB Engine 3,6-es verziójához](mongodb-feature-support-36.md)
 - [Azure Cosmos DB API a Mongo DB Engine 3,2-es verziójához](mongodb-feature-support.md)
 

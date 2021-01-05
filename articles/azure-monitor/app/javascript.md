@@ -4,12 +4,12 @@ description: Megtekintheti az oldal nézetét és a munkamenetek számát, a web
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0588a3eac4ced6cec1e7aea431c6555bbe8bff0a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559879"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858552"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -339,7 +339,7 @@ Az SDK v2 verziójában feltört változások:
 - A jobb API-aláírások engedélyezéséhez néhány API-hívás (például a trackPageView és a trackException) frissült. Az Internet Explorer 8 és a böngésző korábbi verziói nem támogatottak.
 - Az telemetria-borítékban az Adatséma frissítései miatt a mező neve és szerkezete módosul.
 - Áthelyezve a következő helyre: `context.operation` `context.telemetryTrace` . Egyes mezők is módosultak ( `operation.id`  -->  `telemetryTrace.traceID` ).
-  - Az aktuális oldalmegtekintési azonosító (például a SPA-alkalmazások) manuális frissítéséhez használja a következőt: `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` .
+  - Az aktuális oldalmegtekintési azonosító (például a SPA-alkalmazások) manuális frissítéséhez használja a következőt: `appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` .
     > [!NOTE]
     > A nyomkövetési azonosító egyediként való megtartásához, ahol korábban már használta, használja a következőt: `Util.newId()` `Util.generateW3CId()` . Mindkét esetben végül a művelet azonosítója jelenik meg.
 

@@ -1,15 +1,15 @@
 ---
 title: A BareMetal-infrastruktúra előzetes verziójának áttekintése az Azure-ban
-description: A BareMetal-infrastruktúra üzembe helyezésének áttekintése az Azure-ban.
+description: A BareMetal-infrastruktúra áttekintése az Azure-ban.
 ms.custom: references_regions
 ms.topic: conceptual
-ms.date: 12/31/2020
-ms.openlocfilehash: db974d9260344d1f6050235bb2a9fbaa0420659b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: eb4dc129719dc410f7101598e3d72e68f17809c1
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829203"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97860978"
 ---
 #  <a name="what-is-baremetal-infrastructure-preview-on-azure"></a>Mi a BareMetal-infrastruktúra előzetes verziója az Azure-on?
 
@@ -25,7 +25,7 @@ A BareMetal-infrastruktúra specializált és általános célú számítási fe
 - USA déli középső régiója
 
 >[!NOTE]
->A " **rev 4,2** " a legújabb, a meglévő Rev 4 architektúrát használó BareMetal-infrastruktúra.  A Rev 4 Az Azure-beli virtuális gépek (VM) gazdagépekhez való közelségét és az Azure-beli virtuális gépek és a BareMetal-példányok közötti késleltetést csökkenti. A BareMetal-példányok a Azure Portalon keresztül érhetők el és kezelhetők. 
+>A **rev 4,2** a legújabb, a meglévő Rev 4 architektúrát használó BareMetal-infrastruktúra.  A Rev 4 Az Azure-beli virtuális gépek (VM) gazdagépei számára biztosít szorosabb közelséget. Az Azure-beli virtuális gépek és a BareMetal-példányok közötti hálózati késés jelentős javulása a Rev 4-bélyegekben vagy-sorokban van üzembe helyezve.  A BareMetal-példányok a Azure Portalon keresztül érhetők el és kezelhetők. 
 
 ## <a name="support"></a>Támogatás
 A BareMetal-infrastruktúra az ISO 27001, az ISO 27017, a SOC 1 és a SOC 2 szabványnak felel meg.  Emellett a saját licencű (BYOL) modellt is használja: operációs rendszer, speciális munkaterhelés és külső alkalmazások.  
@@ -35,13 +35,13 @@ A root Access és a teljes hozzáférés megszerzését követően a következő
 - Az operációs rendszer és a harmadik féltől származó szoftverek licencelése, biztonsága és támogatása
 
 A Microsoft felelős a következőkért:
-- Minősített hardverek biztosítása a speciális munkaterhelésekhez 
+- A hardver speciális számítási feladatokhoz való biztosítása 
 - Az operációs rendszer üzembe helyezése
 
 :::image type="content" source="media/baremetal-support-model.png" alt-text="BareMetal-infrastruktúra támogatási modellje" border="false":::
 
 ## <a name="compute"></a>Compute
-A BareMetal-infrastruktúra több SKU-t biztosít a speciális munkaterhelésekhez. Rendelkezésre álló SKU-tartomány a kisebb, két szoftvercsatorna-rendszerről a 24 socket rendszerre. A speciális számítási feladatokhoz használja a munkaterhelés-specifikus hitelesített SKU-ket.
+A BareMetal-infrastruktúra több SKU-t kínál a speciális számítási feladatokhoz. Rendelkezésre álló SKU-tartomány a kisebb, két szoftvercsatorna-rendszerről a 24 socket rendszerre. A speciális számítási feladatokhoz használja a munkaterhelés-specifikus SKU-ket.
 
 A BareMetal-példány bélyegzője maga ötvözi a következő összetevőket:
 
@@ -72,10 +72,10 @@ Az elérhető linuxos operációsrendszer-verziók a következők:
    - SLES 15 SP1
 
 ## <a name="storage"></a>Storage
-Az adott SKU-típuson alapuló BareMetal-példányok meghatározott munkaterhelés-típus alapján előre definiált NFS-tárolóval rendelkeznek. A BareMetal kiépítésekor a becsült növekedés alapján további tárhelyet is kiépítheti egy támogatási kérelem elküldésével. Az összes tárterület a 4,2-es verzióban található, az NFSv3-t és a Nfsv4 névleképezője-t támogató összes flash-lemezt tartalmaz. A 4,5 NVMe SSD újabb verziója elérhető lesz. A tárolók méretezésével kapcsolatos további információkért tekintse meg a [BareMetal munkaterhelés típusa](../../../virtual-machines/workloads/sap/get-started.md) szakaszt.
+Az adott SKU-típuson alapuló BareMetal-példányok előre definiált NFS-tárolóval rendelkeznek az adott munkaterhelés-típushoz. A BareMetal kiépítésekor a becsült növekedés alapján több tárhelyet is kiépítheti egy támogatási kérelem elküldésével. Az összes tárterület a 4,2-es verzióban található, az NFSv3-t és a Nfsv4 névleképezője-t támogató összes flash-lemezt tartalmaz. A 4,5 NVMe SSD újabb verziója elérhető lesz. A tárolók méretezésével kapcsolatos további információkért tekintse meg a [BareMetal munkaterhelés típusa](../../../virtual-machines/workloads/sap/get-started.md) szakaszt.
 
 >[!NOTE]
->A BareMetal használt tárterület megfelel az FIPS 140-2 biztonsági követelményeknek, és alapértelmezés szerint a titkosítást a nyugalmi állapotban kínálja. Az adatlemezek tárolása biztonságos.
+>A BareMetal-hez használt tárterület megfelel a [Federal Information Processing standard (FIPS) 140-2-es kiadványnak](/microsoft-365/compliance/offering-fips-140-2) , amely alapértelmezés szerint a titkosítást kínál a nyugalmi állapotban. Az adatlemezek tárolása biztonságos.
 
 ## <a name="networking"></a>Hálózat
 Az Azure hálózati szolgáltatások architektúrája kulcsfontosságú összetevő a speciális számítási feladatok BareMetal-példányokban való sikeres üzembe helyezéséhez. Valószínű, hogy az összes IT-rendszer nem az Azure-ban található. Az Azure olyan hálózati technológiát kínál, amellyel az Azure úgy néz ki, mint egy virtuális adatközpont a helyszíni szoftverek központi telepítéséhez. Az BareMetal-példányokhoz szükséges Azure-hálózati funkciók a következőek:
@@ -91,10 +91,10 @@ Az BareMetal-példányok az Azure VNET-kiszolgáló IP-címtartomány keretében
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-infrastructure-diagram.png" alt-text="Azure BareMetal-infrastruktúra diagramja" lightbox="media/baremetal-infrastructure-portal/baremetal-infrastructure-diagram.png" border="false":::
 
 A bemutatott architektúra három szakaszra oszlik:
-- **Balra:** Megjeleníti az ügyfél helyszíni infrastruktúráját, amely különböző alkalmazásokat futtat, és a partner vagy a helyi peremhálózati útválasztón keresztül csatlakozik, például Equinix. További információ [: kapcsolati szolgáltatók és helyszínek: Azure ExpressRoute](../../../expressroute/expressroute-locations.md).
-- **Központ:** Az Azure-előfizetéssel az Azure Edge Network szolgáltatással létesített kapcsolattal kiépített [ExpressRoute](../../../expressroute/expressroute-introduction.md) jeleníti meg.
-- **Jobb:** Megjeleníti az Azure IaaS, és ebben az esetben a virtuális gépek használatával üzemeltetheti az alkalmazásokat, amelyek az Azure Virtual Networkben vannak kiépítve.
-- **Alul:** Azt mutatja, hogy az ExpressRoute-átjárót a [ExpressRoute FastPath](../../../expressroute/about-fastpath.md) használatával engedélyezte a BareMetal-kapcsolat alacsony késéssel.   
+- **Left:** a helyszíni infrastruktúrát jeleníti meg, amely különböző alkalmazásokat futtat, és a partner vagy a helyi peremhálózati útválasztón keresztül csatlakozik, például Equinix. További információ [: kapcsolati szolgáltatók és helyszínek: Azure ExpressRoute](../../../expressroute/expressroute-locations.md).
+- **Központ:** az Azure-előfizetéssel az Azure Edge Network szolgáltatással létesített kapcsolattal kiépített [ExpressRoute](../../../expressroute/expressroute-introduction.md) jeleníti meg.
+- **Right:** megjeleníti az Azure IaaS, és ebben az esetben a virtuális gépeket az Azure Virtual Networkben üzembe helyezendő alkalmazások üzemeltetésére használja.
+- **Alul:** az ExpressRoute-átjáró használatát mutatja be a [ExpressRoute FastPath](../../../expressroute/about-fastpath.md) a BareMetal-kapcsolathoz, amely alacsony késést biztosít.   
    >[!TIP]
    >Ennek támogatásához a ExpressRoute-átjárónak UltraPerformance kell lennie.  További információ: [a ExpressRoute virtuális hálózati átjárók ismertetése](../../../expressroute/expressroute-about-virtual-network-gateways.md).
 

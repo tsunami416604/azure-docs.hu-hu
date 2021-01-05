@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, azonosítás
-ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 64169069bc0a1ccd126d1b79ee89a5666e1caeb1
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000546"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861053"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Face containers telepítése és futtatása (előzetes verzió)
 
@@ -84,7 +84,7 @@ Miután a tároló a [gazdagépen](#the-host-computer)található, a következő
 
 A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{ENDPOINT_URI}` `{API_KEY}` .
 
-[Examples](face-resource-container-config.md#example-docker-run-commands) A parancs például `docker run` elérhető.
+[](face-resource-container-config.md#example-docker-run-commands) A parancs például `docker run` elérhető.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -138,11 +138,7 @@ Az arc Service-tárolók számlázási adatokat küldenek az Azure-nak az Azure-
 
 További információ ezekről a beállításokról: [tárolók konfigurálása](./face-resource-container-config.md).
 
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
-
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebből a cikkből megtudhatta, hogyan töltheti le, telepítheti és futtathatja a Face Service-tárolókat. Összegezve:
 
