@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 6aa54f65b504e61a5e74ed584c5dad51e49eb087
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031453"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827427"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -151,7 +151,7 @@ Néhány példa:
    ```
 
 
-1. Az előrejelzési feladatokhoz további beállítások szükségesek. további részletekért tekintse meg az [idősorozat-előrejelzési modell automatikus betanítását](how-to-auto-train-forecast.md) ismertető cikket. 
+1. Az előrejelzési feladatokhoz további beállítások szükségesek, további részletekért tekintse meg a [Time-Series előrejelzési modell autotrain](how-to-auto-train-forecast.md) című cikkét. 
 
     ```python
     time_series_settings = {
@@ -184,7 +184,7 @@ A következő táblázat összefoglalja a feladattípus által támogatott model
 > [!NOTE]
 > Ha úgy tervezi, hogy az automatikus ML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, csak a * * értékkel jelzett algoritmusok alakíthatók át a ONNX formátumba. További információ a [modellek ONNX való átalakításáról](concept-automated-ml.md#use-with-onnx). <br> <br> Azt is vegye figyelembe, hogy a ONNX jelenleg csak a besorolási és a regressziós feladatokat támogatja. 
 
-Osztályozás | Regresszió | Idősoros előrejelzés
+Besorolás | Regresszió | Idősoros előrejelzés
 |-- |-- |--
 [Logisztikai regresszió](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -206,7 +206,7 @@ A `primary metric` paraméter határozza meg, hogy milyen mérőszámot kell has
 
 Ismerje meg a mérőszámok konkrét definícióit az [automatizált gépi tanulás eredményeinek megismeréséhez](how-to-understand-automated-ml.md).
 
-|Osztályozás | Regresszió | Idősoros előrejelzés
+|Besorolás | Regresszió | Idősoros előrejelzés
 |--|--|--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
@@ -321,7 +321,7 @@ from azureml.core.experiment import Experiment
 ws = Workspace.from_config()
 
 # Choose a name for the experiment and specify the project folder.
-experiment_name = 'automl-classification'
+experiment_name = 'Tutorial-automl'
 project_folder = './sample_projects/automl-classification'
 
 experiment = Experiment(ws, experiment_name)
@@ -375,7 +375,110 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
 > [!NOTE]
 > A magyarázat-ügyfél jelenleg nem támogatja a ForecastTCN modellt. Ez a modell nem ad vissza magyarázat-irányítópultot, ha az a legjobb modellként lett visszaadva, és nem támogatja az igény szerinti magyarázatok futtatását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+* A **`AutoML` függőségek újabb verzióra való frissítése megszakítja a kompatibilitást**: az SDK verziójának 1.13.0 a modelleket a rendszer nem tölti be a régebbi SDK-k között, mert a korábbi csomagokban rögzített korábbi verziók és a most rögzített újabb verziók nem kompatibilisek. A következő hibaüzenetet fogja látni:
+  * A modul nem található: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
+  * Importálási hibák: pl. `ImportError: cannot import name 'RollingOriginValidator'` ,
+  * Attribútum hibái: pl. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+  
+  A probléma megkerüléséhez végezze el az alábbi két lépés valamelyikét az `AutoML` SDK-képzés verziójától függően:
+    * Ha az `AutoML` SDK-képzés verziója meghaladja a 1.13.0-t, akkor a és a is szükséges `pandas == 0.25.1` `sckit-learn==0.22.1` . Ha a verzió nem egyezik, frissítse a scikit-Learn és/vagy a pandák verziót a megfelelő verzióra az alább látható módon:
+      
+      ```bash
+         pip install --upgrade pandas==0.25.1
+         pip install --upgrade scikit-learn==0.22.1
+      ```
+      
+    * Ha az `AutoML` SDK-képzés verziója kisebb vagy egyenlő, mint a 1.12.0, akkor a és a értékre van szüksége `pandas == 0.23.4` `sckit-learn==0.20.3` . Ha a verzió nem egyezik, a scikit-Learn és/vagy a pandák verzióját az alább látható módon kell kijavítani:
+  
+      ```bash
+        pip install --upgrade pandas==0.23.4
+        pip install --upgrade scikit-learn==0.20.3
+      ```
+
+* **Sikertelen üzembe helyezés**: a (z) <= 1.18.0 verziók esetében a központi telepítéshez létrehozott alaprendszerkép a következő hiba miatt meghiúsulhat: "ImportError: a név nem importálható `cached_property` `werkzeug` ". 
+
+  A probléma megoldásához a következő lépések használhatók:
+  1. A modell csomag letöltése
+  2. A csomag kicsomagolása
+  3. Üzembe helyezés a kibontott eszközök használatával
+
+* Az **előrejelzési R2 pontszáma mindig nulla**: Ez a probléma akkor fordul elő, ha a megadott betanítási adatsorozatban az utolsó `n_cv_splits`  +  `forecasting_horizon` adatpontok esetében azonos érték szerepel. Ha ez a minta várható az idősorozatban, átválthatja az elsődleges metrikát normalizált, legfelső szintű négyzetes hibára.
+ 
+* **TensorFlow**: az SDK-ból származó 1.5.0-es verziótól kezdve az automatikus gépi tanulás nem telepíti a TensorFlow-modelleket alapértelmezés szerint. A TensorFlow telepítéséhez és az automatikus ML-kísérletekhez való használatához telepítse a TensorFlow = = 1.12.0-et a CondaDependecies-n keresztül. 
+ 
+   ```python
+   from azureml.core.runconfig import RunConfiguration
+   from azureml.core.conda_dependencies import CondaDependencies
+   run_config = RunConfiguration()
+   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
+  ```
+
+* **Kísérletezési diagramok**: a bináris besorolású diagramok (precíziós visszahívás, ROC, nyereség görbe stb.) az automatizált ml-kísérletek ismétlései között nem megfelelően jelennek meg a felhasználói felületen a 4/12 óta. A diagram ábrázolása jelenleg inverz eredményeket mutat, ahol a jobb teljesítményű modellek alacsonyabb eredményekkel jelennek meg. Egy megoldás a vizsgálat alatt áll.
+
+* **Automatikus gépi tanulási Databricks megszakítása**: Ha Azure Databrickson automatikus gépi tanulási funkciót használ, a Futtatás megszakításához és az új kísérlet futtatásához indítsa újra a Azure Databricks-fürtöt.
+
+* **Databricks >10 iteráció az automatizált gépi tanuláshoz**: az automatikus gépi tanulási beállításokban, ha több mint 10 iteráció van, akkor állítsa `show_output` be `False` a parancsot a futtatáskor.
+
+* **A Azure Machine learning SDK és az automatizált gépi tanulás Databricks widgetje**: az Azure Machine learning SDK widget nem támogatott a Databricks-jegyzetfüzetekben, mert a jegyzetfüzetek nem tudják elemezni a HTML widgeteket. A widgetet a portálon tekintheti meg a Azure Databricks notebook-cellában található Python-kód használatával:
+
+    ```
+    displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
+    ```
+* **automl_setup sikertelen**: 
+    * Windows rendszeren futtasson automl_setup egy Anaconda-parancssorból. Ezzel a hivatkozással [telepítheti a Miniconda](https://docs.conda.io/en/latest/miniconda.html).
+    * A parancs futtatásával győződjön meg arról, hogy a 64 bites Conda telepítve van, és nem 32 bites `conda info` . A legyen `platform` `win-64` Windows vagy Mac rendszerű `osx-64` .
+    * Győződjön meg arról, hogy a Conda 4.4.10 vagy újabb verziója telepítve van. A verziót a paranccsal lehet megtekinteni `conda -V` . Ha telepítve van egy korábbi verziója, a paranccsal frissítheti a parancsot: `conda update conda` .
+    * Linux `gcc: error trying to exec 'cc1plus'`
+      *  Ha a `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` hiba előfordul, telepítse a Build Essentials parancsot a paranccsal `sudo apt-get install build-essential` .
+      * Új Conda-környezet létrehozásához adjon meg egy új nevet az első paraméterként automl_setup. Megtekintheti a meglévő Conda-környezeteket `conda env list` , és eltávolíthatja őket a használatával `conda env remove -n <environmentname>` .
+      
+* a **automl_setup_linux. sh sikertelen**: ha a automl_setup_linus. sh sikertelen Ubuntu Linux a következő hibával:`unable to execute 'gcc': No such file or directory`-
+  1. Győződjön meg arról, hogy a 53-es és a 80-es kimenő portok engedélyezve vannak. Egy Azure-beli virtuális gépen ezt elvégezheti a Azure Portal a virtuális gép kiválasztásával, majd a hálózatkezelés elemre kattintva.
+  2. Futtassa a parancsot: `sudo apt-get update`
+  3. Futtassa a parancsot: `sudo apt-get install build-essential --fix-missing`
+  4. Futtatás `automl_setup_linux.sh` újra
+
+* a **Configuration. ipynb sikertelen**:
+  * A helyi Conda esetében először győződjön meg arról, hogy a automl_setup sikeresen futott.
+  * Győződjön meg arról, hogy a subscription_id helyes. Keresse meg a subscription_id a Azure Portal a minden szolgáltatás, majd az előfizetések lehetőség kiválasztásával. A (z) "<" és a ">" karakterek nem szerepelhetnek a subscription_id értékben. Például `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` érvényes a formátuma.
+  * Győződjön meg arról, hogy a közreműködő vagy a tulajdonos hozzáférése van az előfizetéshez.
+  * Győződjön meg arról, hogy a régió a támogatott régiók egyike:,,,,,, `eastus2` `eastus` `westcentralus` `southeastasia` `westeurope` `australiaeast` `westus2` , `southcentralus` .
+  * A Azure Portal használatával győződjön meg arról, hogy a régióhoz fér hozzá.
+  
+* **`import AutoMLConfig` sikertelen**: módosult a csomag módosítása a gépi tanulási 1.0.76, amely megköveteli az előző verzió eltávolítását az új verzióra való frissítés előtt. Ha a `ImportError: cannot import name AutoMLConfig` rendszer a v 1.0.76 v 1.0.76 vagy újabb verzióra történő frissítés után észlelt, hárítsa el a hibát a következő parancs futtatásával: `pip uninstall azureml-train automl` és `pip install azureml-train-auotml` . A automl_setup. cmd parancsfájl ezt automatikusan elvégzi. 
+
+* **Workspace.from_config sikertelen**: Ha a ws = Workspace.from_config () hívása sikertelen –
+  1. Győződjön meg arról, hogy a Configuration. ipynb jegyzetfüzet sikeresen futott.
+  2. Ha a jegyzetfüzet olyan mappából fut, amely nem a `configuration.ipynb` futtatott mappában található, másolja a aml_config mappát, és a fájl config.jsaz új mappába. Workspace.from_config beolvassa az config.jsa jegyzetfüzet mappájába vagy a szülőmappa mappájába.
+  3. Ha új előfizetést, erőforráscsoportot, munkaterületet vagy régiót használ, győződjön meg arról, hogy a `configuration.ipynb` jegyzetfüzetet újra futtatja. config.jsközvetlen módosítása csak akkor működik, ha a munkaterület már létezik a megadott erőforrás-csoportban a megadott előfizetésben.
+  4. Ha módosítani szeretné a régiót, módosítsa a munkaterületet, az erőforráscsoportot vagy az előfizetést. `Workspace.create` a nem hoz létre vagy frissít egy munkaterületet, ha már létezik, még akkor is, ha a megadott régió eltér.
+  
+* A **minta jegyzetfüzet sikertelen**: Ha egy minta jegyzetfüzet hibát jelez, a tulajdonság, a metódus vagy a könyvtár nem létezik:
+  * Győződjön meg arról, hogy a megfelelő kernel van kiválasztva a Jupyter Notebook. A kernel a notebook oldal jobb felső sarkában jelenik meg. Az alapértelmezett érték azure_automl. A rendszer a rendszermagot a jegyzetfüzet részeként menti. Ha tehát új Conda-környezetre vált, ki kell választania az új kernelt a jegyzetfüzetben.
+      * Azure Notebooks esetén a Python 3,6-es értéknek kell lennie. 
+      * Helyi Conda környezetekben a automl_setupban megadott Conda-környezeti nevet kell megadni.
+  * Győződjön meg arról, hogy a jegyzetfüzet a használt SDK-verzióhoz készült. Az SDK verziójának ellenőrzéséhez hajtsa végre `azureml.core.VERSION` Jupyter notebook cellát. A minta jegyzetfüzetek előző verzióját a GitHubról töltheti le, ha a `Branch` gombra kattint, majd kiválasztja a `Tags` fület, majd kiválasztja a verziót.
+
+* **`import numpy` nem sikerül a Windows** rendszerben: egyes Windows-környezetekben a NumPy a legújabb Python-verzió 3.6.8 való betöltésekor hiba jelenik meg. Ha ezt a problémát látja, próbálkozzon a Python-verzió 3.6.7.
+
+* **`import numpy` sikertelen**: az automatikus ml Conda-környezetben keresse meg a TensorFlow verzióját. A támogatott verziók a következők: < 1,13. Távolítsa el a TensorFlow a környezetből, ha a verzió >= 1,13. A TensorFlow és az Eltávolítás verzióját a következőképpen tekintheti meg:
+  1. Indítsa el a parancssort, aktiválja a Conda-környezetet, amelyben az automatikus ml-csomagok telepítve vannak.
+  2. Adja meg `pip freeze` és keresse meg `tensorflow` , ha található, a felsorolt verziónak < 1,13
+  3. Ha a felsorolt verzió nem támogatott verziójú, a `pip uninstall tensorflow` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.
+  
+ * **A Futtatás sikertelen `jwt.exceptions.DecodeError` a** következővel: pontos hibaüzenet: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
+ 
+    Érdemes lehet a AutoML SDK legújabb verziójára frissíteni: `pip install -U azureml-sdk[automl]` . 
+    
+    Ha ez nem életképes, ellenőrizze a PyJWT verzióját. A támogatott verziók < 2.0.0. Távolítsa el a PyJWT a környezetből, ha a verzió >= 2.0.0. A PyJWT verzióját a következőképpen tekintheti meg, távolíthatja el és telepítheti a megfelelő verziót:
+    1. Indítsa el a parancssort, aktiválja a Conda-környezetet, amelyben az automatikus ml-csomagok telepítve vannak.
+    2. Adja meg `pip freeze` és keresse meg `PyJWT` , ha található, a felsorolt verziónak < 2.0.0 kell lennie
+    3. Ha a felsorolt verzió nem támogatott verziójú, a `pip uninstall PyJWT` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.
+    4. Telepítés a használatával `pip install 'PyJWT<2.0.0'` .
+
+## <a name="next-steps"></a>További lépések
 
 + További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

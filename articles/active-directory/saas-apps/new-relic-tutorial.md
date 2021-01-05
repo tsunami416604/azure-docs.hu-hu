@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e93b5c4fd2a169da5cdcc42aaabdd29a2c22bb7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 2a7d191af78da417d0ee2ade12b1576912643b6c
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522463"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827461"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az új ereklye fiókkal
 
@@ -49,14 +49,14 @@ Az új ereklye az Azure AD-be való integrálásának konfigurálásához új Er
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az új ereklye a következőt **: fiók** .
 1. Válassza ki az **új ereklye a fiókból** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-new-relic-by-account"></a>Azure AD-beli egyszeri bejelentkezés konfigurálása és tesztelése fiókkal az új ereklye számára
 
-Konfigurálja és tesztelje az Azure AD SSO-t új ereklye fiókkal egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között az új ereklye fiókkal.
+Konfigurálja és tesztelje az Azure AD SSO-t új ereklye fiókkal egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között az új ereklye fiókkal.
 
 Az Azure AD SSO az új ereklye fiókkal való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -71,8 +71,8 @@ Az Azure AD SSO az új ereklye fiókkal való konfigurálásához és tesztelés
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)az **új ereklye a fiók** alkalmazás-integrációja oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **új ereklye a fiók** alkalmazás-integrációja oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -80,7 +80,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` -Ne felejtse el helyettesíteni az `acc_id` új ereklye fiók azonosítóját.
+    `https://rpm.newrelic.com:443/accounts/{acc_id}/sso/saml/finalize` -Ne felejtse el helyettesíteni az `acc_id` új ereklye fiók azonosítóját.
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `rpm.newrelic.com`
 
@@ -102,7 +102,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -114,13 +114,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az új ereklye fiókhoz való hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **új ereklye a fiók alapján**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **új ereklye a fiók alapján** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -132,7 +132,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be az **új ereklye** helyre a fiók vállalati webhelyén rendszergazdaként.
 
-2. A felső menüben kattintson a **Fiókbeállítások**lehetőségre.
+2. A felső menüben kattintson a **Fiókbeállítások** lehetőségre.
    
     ![Képernyőfelvétel: a kiválasztott fiók beállításait tartalmazó üdvözlő oldal.](./media/new-relic-tutorial/ic797036.png "Fiókbeállítások")
 
@@ -150,17 +150,17 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
    
     c. A **kijelentkezési URL-cím** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-címet**, amelyet a Azure Portalból másolt.
 
-    d. Kattintson **a módosítások mentése**gombra.
+    d. Kattintson **a módosítások mentése** gombra.
 
 ### <a name="create-new-relic-by-account-test-user"></a>Új ereklye létrehozása fiók tesztelése felhasználó alapján
 
 1. Jelentkezzen be az **új ereklyebe a fiók** vállalati webhelyén rendszergazdaként.
 
-2. A felső menüben kattintson a **Fiókbeállítások**lehetőségre.
+2. A felső menüben kattintson a **Fiókbeállítások** lehetőségre.
    
     ![A képernyőképen az üdvözlőlapon kiválasztott Fiókbeállítások láthatók.](./media/new-relic-tutorial/ic797040.png "Fiókbeállítások")
 
-3. A bal oldali **fiók** ablaktáblán kattintson az **Összefoglalás**, majd a **felhasználó hozzáadása**elemre.
+3. A bal oldali **fiók** ablaktáblán kattintson az **Összefoglalás**, majd a **felhasználó hozzáadása** elemre.
    
     ![Képernyőfelvétel: az összefoglalás panel, ahol kiválaszthatja a felhasználó hozzáadása elemet.](./media/new-relic-tutorial/ic797041.png "Fiókbeállítások")
 
@@ -170,9 +170,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
    
     a. Az **e-mail** szövegmezőbe írja be a kiépíteni kívánt érvényes Azure Active Directory-felhasználó e-mail-címét.
 
-    b. A **szerepkört** válassza a **felhasználó**lehetőségre.
+    b. A **szerepkört** válassza a **felhasználó** lehetőségre.
 
-    c. Kattintson **a felhasználó hozzáadása**elemre.
+    c. Kattintson **a felhasználó hozzáadása** elemre.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez a fiókhoz tartozó felhasználói fiók létrehozása vagy az új ereklye által biztosított API-k segítségével bármilyen más új ereklye is használható.

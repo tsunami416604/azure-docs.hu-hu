@@ -13,20 +13,20 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2020
+ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 36f6638614d5c0b55b2adc202e8f8d6f9450aaf3
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674412"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827512"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
 
 >[!NOTE]
->A Rev 4,2 esetében kövesse az [BareMetal-példányok kezelése a Azure Portal](baremetal-infrastructure-portal.md) témakör utasításait.
+>A Rev 4,2 esetében kövesse az [BareMetal-példányok kezelése a Azure Portal](../../../baremetal-infrastructure/workloads/sap/baremetal-infrastructure-portal.md) témakör utasításait.
 
 Ez a dokumentum azt ismerteti, hogyan jelennek meg a [Hana nagyméretű példányai](./hana-overview-architecture.md) [Azure Portalban](https://portal.azure.com) , és milyen tevékenységek hajthatók végre az Ön számára üzembe helyezett Hana nagyméretű példány-egységekkel Azure Portal használatával. A HANA nagyméretű példányainak láthatósága Azure Portal egy Azure-erőforrás-szolgáltatón keresztül érhető el a HANA nagyméretű példányain, amelyek jelenleg nyilvános előzetes verzióban érhetők el
 
@@ -162,7 +162,7 @@ A különböző problémák típusai közül választhatja ki a probléma altíp
 
 A kérdések megválaszolásával és további részletek megadásával a következő lépéssel ellenőrizheti a támogatási kérést és a küldést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SAP HANA (nagyméretű példányok) figyelése az Azure-ban](./troubleshooting-monitoring.md)
 - [HANA-oldali monitorozás és hibaelhárítás](./hana-monitor-troubleshoot.md)

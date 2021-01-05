@@ -10,13 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 872958f87e7d75427d5939aed73314920cfaf3ea
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.custom: how-to
+ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631091"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830870"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével
 
@@ -73,14 +73,17 @@ Ha tanúsítványt kér, meg kell adnia a webszolgáltatáshoz használni kívá
 
 ## <a name="enable-tls-and-deploy"></a><a id="enable"></a> A TLS engedélyezése és üzembe helyezése
 
-A szolgáltatás a TLS-vel való üzembe helyezéséhez (vagy újbóli üzembe helyezéséhez) állítsa a *ssl_enabled* paramétert "true" értékre, ahol alkalmazható. Állítsa a *ssl_certificate* paramétert a *tanúsítványfájl* értékére. Állítsa a *ssl_key* értékét a *kulcsfájl* értékére.
+**AK**-beli telepítés esetén engedélyezheti a TLS-t, amikor [egy AK-fürtöt hoz létre vagy csatlakoztat](how-to-create-attach-kubernetes.md) a pénzmosás-munkaterületen. Az AK-modell üzembe helyezésének ideje letilthatja a TLS-leállást a telepítési konfigurációs objektummal, ellenkező esetben az összes AK-modell üzembe helyezése alapértelmezés szerint a TLS-megszakítást engedélyezi az AK-fürt létrehozásakor vagy az idő csatolásakor
+
+ACI-telepítés esetén engedélyezheti a TLS-megszakítást a modell központi telepítésének ideje alatt a telepítési konfigurációs objektummal.
+
 
 ### <a name="deploy-on-azure-kubernetes-service"></a>Üzembe helyezés az Azure Kubernetes Service-ben
 
   > [!NOTE]
   > Az ebben a szakaszban található információk akkor is érvényesek, ha biztonságos webszolgáltatást telepít a tervezőhöz. Ha nem ismeri a Python SDK használatát, tekintse [meg a mi a Pythonhoz készült Azure Machine learning SDK?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)című témakört.
 
-A **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** és a **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** egyaránt olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik, és a TLS engedélyezéséhez **enable_ssl** metódust is használhat.
+Ha a pénzmosás-munkaterületen [létrehoz vagy csatol egy AK-fürtöt](how-to-create-attach-kubernetes.md) , engedélyezheti a TLS-megszakítást **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** és **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurációs objektummal. Mindkét metódus olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik, és a TLS engedélyezéséhez használhatja a **enable_ssl** metódust.
 
 A TLS-t a Microsoft-tanúsítvánnyal vagy a CA-ból vásárolt egyéni tanúsítvánnyal engedélyezheti. 
 
@@ -256,7 +259,7 @@ update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbiak végrehajtásának módját ismerheti meg:
 + [Webszolgáltatásként üzembe helyezett gépi tanulási modell felhasználása](how-to-consume-web-service.md)
 + [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)

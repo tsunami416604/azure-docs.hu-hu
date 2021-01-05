@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a657f43ef2d889cad1608d34e9235b1d5e7cb576
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 85534d1f64b273e42a2ea063e67286ee7bb4a90a
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894150"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827155"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Speech Service-tárolók – gyakori kérdések (GYIK)
 
@@ -169,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**2. Válasz:** Meg kell adnia a megfelelő hangnevet a kérelemben, amely megkülönbözteti a kis-és nagybetűket. Tekintse át a teljes szolgáltatásnév leképezését. A-t kell használnia `en-US-JessaRUS` , mivel `en-US-JessaNeural` jelenleg nem érhető el a szöveges – beszéd tároló verziójában.
+**2. Válasz:** Meg kell adnia a megfelelő hangnevet a kérelemben, amely megkülönbözteti a kis-és nagybetűket. Tekintse át a teljes szolgáltatásnév leképezését.
 
 **3. hiba:**
 
@@ -292,7 +292,7 @@ Segíthet az alábbi tesztelési mérőszámok kitöltésében, beleértve a tes
 
 | Végpont                                                | Funkcionális teszt                                                   | SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Szintetizáló szöveg (szöveg – beszéd)                                  |     | Yes      |
+| `/speech/synthesize/cognitiveservices/v1`               | Szintetizáló szöveg (szöveg – beszéd)                                  |     | Igen      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services on-Prem diktálás v1 WebSocket-végpont        | Igen | Nem       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | A Cognitive Services on-Prem Interactive v1 WebSocket-végpont  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | A kognitív szolgáltatások on-Prem beszélgetés v1 WebSocket-végpont |     |          |
@@ -309,6 +309,8 @@ A megkerülő megoldás vagy váltás a kód folyamatos felismerésének haszná
 A kód esetében állítsa a végpontot/Speech/Recognition/Interactive/cognitiveservices/v1 értékre. `host:port`
 
 A különböző módokon lásd a beszédfelismerési módokat – lásd alább:
+
+## <a name="speech-modes---interactive-conversation-dictation"></a>Beszédfelismerési módok – interaktív, beszélgetés, diktálás
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
@@ -558,6 +560,8 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 </summary>
 
 **Válasz:** A beszédfelismerési tároló három végpontot használ a különböző használatokhoz, ezek a beszédfelismerési módokként vannak meghatározva – lásd alább:
+
+## <a name="speech-modes"></a>Beszédfelismerési módok
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 

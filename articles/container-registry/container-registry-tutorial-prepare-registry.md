@@ -3,13 +3,13 @@ title: Oktatóanyag – földrajzilag replikált beállításjegyzék létrehoz�
 description: Létrehozhat egy Azure Container Registryt, georeplikációt konfigurálhat, előkészíthet egy Docker-rendszerképet, és üzembe helyezheti azt a tárolójegyzékben. Ez egy háromrészes sorozat első része.
 ms.topic: tutorial
 ms.date: 06/30/2020
-ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 804f07762bef596f4631fbc5f694ecc6b308bfad
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 6abf1b7a524bc7dd28f1704a362749ac84de2389
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027227"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826070"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 
@@ -50,14 +50,14 @@ Válassza **az erőforrás létrehozása**  >  **tárolók**  >  **Azure Contain
 
 Konfigurálja az új beállításjegyzéket a következő beállításokkal. Az **alapvető beállítások** lapon:
 
-* **Regisztrációs adatbázis neve** : Olyan nevet hozzon létre a tárolójegyzékhez, amely globálisan egyedi az Azure-ban, és 5–50 alfanumerikus karakterből áll.
-* **Erőforráscsoport** : **új létrehozása** > `myResourceGroup`
-* **Hely** : `West US`
-* **SKU** : `Premium` (Geo-replikáláshoz szükséges)
+* **Regisztrációs adatbázis neve**: Olyan nevet hozzon létre a tárolójegyzékhez, amely globálisan egyedi az Azure-ban, és 5–50 alfanumerikus karakterből áll.
+* **Erőforráscsoport**: **új létrehozása** > `myResourceGroup`
+* **Hely**: `West US`
+* **SKU**: `Premium` (Geo-replikáláshoz szükséges)
 
 Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget a beállításjegyzék-példány létrehozásához.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Tároló-beállításjegyzék létrehozása az Azure Portalon":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Tároló-beállításjegyzék konfigurálása a Azure Portal":::
 
 Az oktatóanyag további részében `<acrName>` helyőrzőként használjuk a kiválasztott tároló **beállításjegyzék-nevét** .
 
@@ -70,19 +70,19 @@ Most, hogy egy prémium szintű tárolójegyzékkel rendelkezik, konfigurálhatj
 
 Navigáljon az új tároló-beállításjegyzékbe a Azure Portal, és válassza a **szolgáltatások** területen a **replikálások** lehetőséget:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Tároló-beállításjegyzék létrehozása az Azure Portalon":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Replikációk az Azure Portal tárolójegyzékeinek felhasználói felületén":::
 
 Megjelenik egy térkép a georeplikációhoz elérhető Azure-régiókat jelző zöld hatszögekkel:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Tároló-beállításjegyzék létrehozása az Azure Portalon":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Régiótérkép az Azure Portalon":::
 
 Replikálja a tárolójegyzékét az USA keleti régiójába a zöld hatszög kiválasztásával, majd válassza a **Replikáció létrehozása** területen lévő **Létrehozás** lehetőséget:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Tároló-beállításjegyzék létrehozása az Azure Portalon":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Replikáció létrehozásának felhasználói felülete az Azure Portalon":::
 
 A replikáció befejezése után a portál mindkét régió esetén a *Kész* állapotot jeleníti meg. A **Frissítés** gombbal frissítse a replikáció állapotát. Körülbelül egy percbe telhet a replikák létrehozása és szinkronizálása.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Tároló-beállításjegyzék létrehozása az Azure Portalon":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Replikációs állapot felhasználói felülete az Azure Portalon":::
 
 
 ## <a name="enable-admin-account"></a>Rendszergazdai fiók engedélyezése
@@ -91,7 +91,7 @@ A következő oktatóanyagokban egy tároló lemezképet helyez üzembe a beáll
 
 Nyissa meg az új tároló-beállításjegyzéket a Azure Portal, és válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások** területen. A **Rendszergazdai felhasználó** elem alatt válassza az **Engedélyezés** lehetőséget.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Tároló-beállításjegyzék létrehozása az Azure Portalon":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Rendszergazdai fiók engedélyezése a Azure Portal":::
 
 
 ## <a name="container-registry-login"></a>Bejelentkezés a tárolóregisztrációs adatbázisba
@@ -110,7 +110,7 @@ A parancs a `Login Succeeded` értéket adja vissza, ha befejeződött.
 
 Az oktatóanyagban foglalt példa egy, az [ASP.NET Core][aspnet-core] használatával létrehozott kis webalkalmazást tartalmaz. Az alkalmazás egy HTML-oldalt működtet, amely azt a régiót jeleníti meg, amelyről az Azure Container Registry a rendszerképet üzembe helyezte.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Tároló-beállításjegyzék létrehozása az Azure Portalon":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Az oktatóanyag alkalmazása böngészőben megjelenítve":::
 
 Töltse le a mintát a Git használatával egy helyi könyvtárba, és a `cd` használatával lépjen be a könyvtárba:
 
@@ -169,7 +169,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-Ezután frissítse az `ENV DOCKER_REGISTRY` sort a tárolójegyzék bejelentkezési kiszolgálójának teljes tartománynevével. Ebben a példában a példa tárolójegyzékének neve ( *uniqueregistryname* ) látható:
+Ezután frissítse az `ENV DOCKER_REGISTRY` sort a tárolójegyzék bejelentkezési kiszolgálójának teljes tartománynevével. Ebben a példában a példa tárolójegyzékének neve (*uniqueregistryname*) látható:
 
 ```Dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
@@ -212,7 +212,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 
 ## <a name="push-image-to-azure-container-registry"></a>Rendszerkép leküldése az Azure Container Registrybe
 
-Ezután a `docker push` paranccsal küldje le az *acr-helloworld* -rendszerképet a tárolójegyzékbe. Cserélje le a `<acrName>` elemet a tárolójegyzék nevére.
+Ezután a `docker push` paranccsal küldje le az *acr-helloworld*-rendszerképet a tárolójegyzékbe. Cserélje le a `<acrName>` elemet a tárolójegyzék nevére.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -233,7 +233,7 @@ a75caa09eb1f: Pushed
 v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543970 size: 1792
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy privát, georeplikált tárolójegyzéket, felépített egy tárolórendszerképet, majd ezt a rendszerképet leküldte a tárolójegyzékbe.
 

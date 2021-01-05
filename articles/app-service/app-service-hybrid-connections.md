@@ -6,13 +6,13 @@ ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.custom: seodec18, fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: c7900341cfcda52dafcb269b833f5ad8dd0f55b7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: 16f6a0660fa9aa20f636ee412f3f337bd5dea9b5
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739752"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825973"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatai
 
@@ -56,7 +56,7 @@ Hibrid kapcsolatok többek között az alábbiakat teheti meg:
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Hibrid kapcsolatok hozzáadása és létrehozása az alkalmazásban ##
 
-Hibrid kapcsolatok létrehozásához nyissa meg a [Azure Portal][portal] , és válassza ki az alkalmazást. Válassza **Networking**  >  **a hálózat beállítása a hibrid kapcsolati végpontok** lehetőséget. Itt láthatja az alkalmazáshoz konfigurált Hibrid kapcsolatok.  
+Hibrid kapcsolatok létrehozásához nyissa meg a [Azure Portal][portal] , és válassza ki az alkalmazást. Válassza   >  **a hálózat beállítása a hibrid kapcsolati végpontok** lehetőséget. Itt láthatja az alkalmazáshoz konfigurált Hibrid kapcsolatok.  
 
 ![Képernyőkép a hibrid kapcsolatok listájáról][2]
 
@@ -160,7 +160,7 @@ Ha engedélyezni szeretné, hogy az előfizetésen kívüli személy egy HCM-pé
 
 ![Hibrid kapcsolatok manuális hozzáadása][11]
 
-### <a name="upgrade"></a>Upgrade ###
+### <a name="upgrade"></a>Frissítés ###
 
 Az hibridkapcsolat-kezelő rendszeres időközönként frissülnek a problémák megoldásához vagy a javításokhoz. Amikor megjelent a frissítések, megjelenik egy előugró ablak a HCM felhasználói felületen. A frissítés alkalmazása alkalmazza a módosításokat, majd újraindítja a HCM-t. 
 
@@ -201,7 +201,7 @@ Bárki, aki `Reader` hozzáféréssel rendelkezik a továbbítóhoz, _megtekinth
 
 ## <a name="troubleshooting"></a>Hibaelhárítás ##
 
-A "Connected" állapot azt jelenti, hogy legalább egy HCM a hibrid kapcsolattal van konfigurálva, és képes elérni az Azure-t. Ha a hibrid kapcsolat állapota nem **kapcsolódik a hálózathoz** , a hibrid kapcsolat nincs KONFIGURÁLVA olyan HCM-re, amely hozzáfér az Azure-hoz.
+A "Connected" állapot azt jelenti, hogy legalább egy HCM a hibrid kapcsolattal van konfigurálva, és képes elérni az Azure-t. Ha a hibrid kapcsolat állapota nem **kapcsolódik a hálózathoz**, a hibrid kapcsolat nincs KONFIGURÁLVA olyan HCM-re, amely hozzáfér az Azure-hoz.
 
 Annak az elsődleges oka, hogy az ügyfelek nem tudnak csatlakozni a végponthoz, mert a végpontot IP-cím használatával adták meg a DNS-név helyett. Ha az alkalmazás nem tudja elérni a kívánt végpontot, és IP-címet használt, váltson olyan DNS-névre, amely érvényes azon a gazdagépen, amelyen a HCM fut. Győződjön meg arról is, hogy a DNS-név megfelelően van feloldva azon a gazdagépen, amelyen a HCM fut. Ellenőrizze, hogy van-e kapcsolat azon a gazdagépen, amelyen az HCM fut a hibrid kapcsolat végpontján.  
 

@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: fbf8c1987a66cad6d9d9bc9dab829af4b42a224e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 236390529ddaf84416448138d7b5bdf31caf681b
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971557"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827495"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>A rendszerindítási diagnosztika használata az Azure-beli virtuális gépek hibáinak megoldásához
 
@@ -52,7 +52,7 @@ Győződjön meg arról, hogy a **felügyelet lap figyelés** területén be van
 ![Virtuális gép létrehozása](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> A rendszerindítási diagnosztika funkció nem támogatja a Premium Storage-fiók vagy a Zone redundent-fiók típusát. Ha a Premium Storage-fiókot használja a rendszerindítási diagnosztika számára, előfordulhat, hogy a virtuális gép indításakor a StorageAccountTypeNotSupported hibaüzenet jelenik meg.
+> A rendszerindítási diagnosztika funkció nem támogatja a Premium Storage-fiók vagy a zóna redundáns tárolási fiókjának típusát. Ha a Premium Storage-fiókot használja a rendszerindítási diagnosztika számára, előfordulhat, hogy a virtuális gép indításakor a StorageAccountTypeNotSupported hibaüzenet jelenik meg.
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>Üzembe helyezés egy Azure Resource Manager sablonból
@@ -86,8 +86,8 @@ Az erőforrások sablonok használatával történő telepítésével kapcsolato
 A rendszerindítási diagnosztika meglévő virtuális gépen való engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd válassza ki a virtuális gépet.
-2. A **támogatás + hibaelhárítás** szakaszban válassza a **rendszerindítási diagnosztika**lehetőséget, majd kattintson a **Beállítások** fülre.
-3. A **rendszerindítási diagnosztika** beállításaiban módosítsa az állapotot **be értékre, majd**a **Storage-fiók** legördülő listából válassza ki a Storage-fiókot. 
+2. A **támogatás + hibaelhárítás** szakaszban válassza a **rendszerindítási diagnosztika** lehetőséget, majd kattintson a **Beállítások** fülre.
+3. A **rendszerindítási diagnosztika** beállításaiban módosítsa az állapotot **be értékre, majd** a **Storage-fiók** legördülő listából válassza ki a Storage-fiókot. 
 4. Mentse a módosításokat.
 
     ![Létező virtuális gép frissítése](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)

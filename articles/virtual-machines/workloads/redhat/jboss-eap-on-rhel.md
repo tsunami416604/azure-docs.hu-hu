@@ -8,14 +8,14 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bd6ff46807c22309679ba7e8518685bb05cc77e2
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500189"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830717"
 ---
-# <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Vállalati Java-alkalmazások üzembe helyezése az Azure-ban a JBoss EAP használatával Red Hat Enterprise Linux
+# <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Vállalati Java-alkalmazások üzembe helyezése az Azure-on a JBoss EAP használatával Red Hat Enterprise Linux rendszeren
 
 Az ebben a cikkben található Azure rövid útmutatók bemutatják, hogyan helyezhet üzembe a [JBoss Enterprise Application platformot (EAP)](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) a [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) használatával Azure-beli virtuális gépeken (VM) és virtuálisgép-méretezési csoportokon. A telepítés ellenőrzéséhez egy minta Java-alkalmazást fog használni. 
 
@@ -152,7 +152,7 @@ A TB virtuális gépek díjszabásával kapcsolatos részletekért tekintse meg 
 Ahhoz, hogy a RHEL operációs rendszer BYOS használhassa, érvényes Red Hat-előfizetéssel kell rendelkeznie a RHEL operációs rendszer Azure-ban való használatához. Mielőtt telepítené a RHEL operációs rendszert a BYOS-modellel, hajtsa végre a következő előfeltételeket:
 
 1. Győződjön meg arról, hogy rendelkezik a Red Hat-előfizetéséhez csatolt RHEL operációs rendszer-és JBoss EAP-jogosultságokkal.
-2. Engedélyezze az Azure-előfizetés AZONOSÍTÓját a RHEL BYOS-lemezképek használatához. A folyamat befejezéséhez kövesse a [Red Hat előfizetés-kezelési dokumentációját](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs) , amely a következő lépéseket tartalmazza:
+2. Engedélyezze az Azure-előfizetés AZONOSÍTÓját a RHEL BYOS-lemezképek használatához. A folyamat befejezéséhez kövesse a [Red Hat előfizetés-kezelési dokumentációját](https://access.redhat.com/documentation/red_hat_subscription_management/1/) , amely a következő lépéseket tartalmazza:
 
    1. Engedélyezze a Microsoft Azure szolgáltatóként a Red Hat Cloud Access irányítópultján.
 
@@ -160,7 +160,7 @@ Ahhoz, hogy a RHEL operációs rendszer BYOS használhassa, érvényes Red Hat-e
 
    1. Új termékek felhőalapú elérésének engedélyezése Microsoft Azureon.
     
-   1. Az Azure-előfizetéshez tartozó Red Hat Gold-lemezképek aktiválása. További információ: [Red Hat Gold images on Microsoft Azure](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).
+   1. Az Azure-előfizetéshez tartozó Red Hat Gold-lemezképek aktiválása. További információ: [Red Hat Gold images on Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access).
 
    1. Várjon, amíg a Red Hat Gold images elérhetővé válik az Azure-előfizetésében. Ezek a lemezképek általában három órán belül elérhetők.
     
@@ -212,7 +212,7 @@ A sablont a következő módokon helyezheti üzembe:
   ```
 
   ```
-  az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
+  az deployment group create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
   Az Azure CLI telepítésének és konfigurálásának részletes ismertetését lásd: [a CLI telepítése](/cli/azure/install-azure-cli).

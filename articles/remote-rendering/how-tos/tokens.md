@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7e8e2f3f9dd49693faa26eaaab309fcad58f6f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9721685fc3ccd2c1c80b55e9118d6d347cc97a9c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076157"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830700"
 ---
 # <a name="get-service-access-tokens"></a>Szolgáltatás-hozzáférési jogkivonatok lekérése
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan hozhat létre ilyen hozzáférési tokent.
 
 ## <a name="token-service-rest-api"></a>Jogkivonat-szolgáltatás REST API
 
-Hozzáférési tokenek létrehozásához a *biztonságos jogkivonat szolgáltatás* egyetlen REST API biztosít. Az ARR STS-szolgáltatás URL-címe https: \/ /STS.mixedreality.Azure.com.
+Hozzáférési tokenek létrehozásához a *biztonságos jogkivonat szolgáltatás* egyetlen REST API biztosít. Az STS szolgáltatás URL-címe a távoli renderelési fiók fiókjának tartományából függ. Ez az űrlap https://sts . [ fiók tartománya], például: `https://sts.southcentralus.mixedreality.azure.com`
 
 ### <a name="get-token-request"></a>"Jogkivonat beolvasása" kérés
 
@@ -56,9 +56,10 @@ Az alábbi PowerShell-kód azt mutatja be, hogyan kell elküldeni a szükséges 
 ```PowerShell
 $accountId = "<account_id_from_portal>"
 $accountKey = "<account_key_from_portal>"
+$accountDomain = "<account_domain_from_portal>
 
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 
 Write-Output "Token: $($response.AccessToken)"
@@ -66,7 +67,7 @@ Write-Output "Token: $($response.AccessToken)"
 
 A szkript egyszerűen kinyomtatja a tokent a kimenetre, ahonnan másolhatja & beillesztheti. Valós projekt esetén automatizálja ezt a folyamatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)
 * [Azure frontend API-k](../how-tos/frontend-apis.md)

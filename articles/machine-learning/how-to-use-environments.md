@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 67b2dacb9debae1990d51be8ca47c76b7342cf67
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: f464664737ab56b43ca0c0a159837487494a1eaa
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660117"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826049"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Hozzon létre & a szoftveres környezetek használatával Azure Machine Learning
 
@@ -430,7 +430,7 @@ Töltse le a regisztrált környezetet a következő parancs használatával.
 az ml environment download -n myenv -d downloaddir
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha felügyelt számítási célt kíván használni a modell betanításához, tekintse meg az [oktatóanyag: modell](tutorial-train-models-with-aml.md)betanítása című témakört.
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).

@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata sor�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02ff1581bafe62a092be87d16df51c7ca8c020b4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751478"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830938"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -439,7 +439,7 @@ A 1.15.0- **nál régebbi** Kubernetes-verziók esetén hibaüzenet jelenhet meg
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Miért nem sikerül a Kubernetes 1,16-es frissítés, ha kubernetes.io előtaggal rendelkező csomópont-címkéket használ
 
-A Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) -as verzióban a kubelet [csak a kubernetes.IO előtaggal rendelkező címkék meghatározott részhalmazát](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) alkalmazhatja a csomópontok számára. Az AK nem tudja eltávolítani az aktív címkéket az Ön nevében beleegyező módon, mivel az állásidőt befolyásoló számítási feladatokhoz vezethet.
+A Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) -as verzióban a kubelet [csak a kubernetes.IO előtaggal rendelkező címkék meghatározott részhalmazát](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/) alkalmazhatja a csomópontok számára. Az AK nem tudja eltávolítani az aktív címkéket az Ön nevében beleegyező módon, mivel az állásidőt befolyásoló számítási feladatokhoz vezethet.
 
 Ennek eredményeképpen a probléma enyhítése érdekében a következőket teheti:
 

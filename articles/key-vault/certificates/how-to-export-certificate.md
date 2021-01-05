@@ -7,15 +7,15 @@ tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
-ms.custom: mvc, devx-track-azurecli
+ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 4339e8217702e9f25877bc8c250b5363e2c59a42
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483695"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826127"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Tanúsítványok exportálása Azure Key Vaultból
 
@@ -25,7 +25,7 @@ Ismerje meg, hogyan exportálhat tanúsítványokat a Azure Key Vaultból. A tan
 
 A Azure Key Vault lehetővé teszi digitális tanúsítványok egyszerű kiépítését, kezelését és üzembe helyezését a hálózaton. Emellett biztonságos kommunikációt tesz lehetővé az alkalmazások számára. További információért tekintse meg [Azure Key Vault tanúsítványokat](./about-certificates.md) .
 
-### <a name="composition-of-a-certificate"></a>Tanúsítvány összetétele
+### <a name="composition-of-a-certificate"></a>A tanúsítványok összetétele
 
 Key Vault-tanúsítvány létrehozásakor egy megcímezhető kulcs és *titkos* *kód* jön létre, amelynek neve azonos. A Key Vault kulcs lehetővé teszi a legfontosabb műveleteket. A Key Vault titkos kód lehetővé teszi a tanúsítvány értékének beolvasását titkos kulcsként. A Key Vault tanúsítvány A nyilvános x509 tanúsítvány-metaadatokat is tartalmaz. További információért látogasson el a [tanúsítvány összeállítására](./about-certificates.md#composition-of-a-certificate) .
 
@@ -42,10 +42,10 @@ További információ: [tudnivalók Azure Key Vault tanúsítványokról](./abou
 
 ## <a name="export-stored-certificates"></a>Tárolt tanúsítványok exportálása
 
-Az Azure CLI, a Azure PowerShell vagy a Azure Portal használatával exportálhatja Azure Key Vault tárolt tanúsítványait.
+Az Azure CLI, az Azure PowerShell vagy az Azure Portal használatával exportálhat tárolt tanúsítványokat az Azure Key Vaultba.
 
 > [!NOTE]
-> A tanúsítványnak a kulcstartóba való importálásakor csak tanúsítvány jelszava szükséges. Key Vault nem menti a társított jelszót. A tanúsítvány exportálásakor a jelszó üres.
+> A tanúsítványnak a kulcstartóba való importálásakor csak tanúsítvány jelszava szükséges. A Key Vault nem menti a társított jelszót. A tanúsítvány exportálásakor a jelszó üres.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

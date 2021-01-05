@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/05/2020
-ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 12/29/2020
+ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741099"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827478"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps REST API-val
 
@@ -69,9 +69,7 @@ A kérelem fejlécében adja meg a következő tulajdonságokat:
 
 A kérelem törzsében adja meg az ISE létrehozásához használandó erőforrás-definíciót, beleértve az ISE-ben engedélyezni kívánt további funkciókra vonatkozó információkat is, például:
 
-* Ha olyan ISE-t szeretne létrehozni, amely lehetővé teszi egy olyan önaláírt tanúsítvány használatát, amely a helyen van telepítve `TrustedRoot` , foglalja bele az `certificates` OBJEKTUMOT az ISE definíciójának `properties` szakaszában, ahogy ezt a cikket később ismertetjük.
-
-  Ha ezt a funkciót egy meglévő ISE-re szeretné engedélyezni, csak az objektumra vonatkozó javítási kérelmet küldhet `certificates` . További információ az önaláírt tanúsítványok használatáról: [biztonságos hozzáférés és adathozzáférés a kimenő hívások számára más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
+* Ha olyan ISE-t szeretne létrehozni, amely lehetővé teszi egy, a helyen telepített vállalati hitelesítésszolgáltató által kiadott önaláírt tanúsítvány és tanúsítvány használatát `TrustedRoot` , vegye fel az `certificates` OBJEKTUMOT az ISE definíciójának `properties` szakaszán belül, ahogy ezt a cikket később ismertetjük.
 
 * A rendszer által hozzárendelt vagy felhasználó által hozzárendelt felügyelt identitást használó ISE létrehozásához adja `identity` meg az objektumot a felügyelt identitás típusával és az egyéb szükséges információkkal az ISE-definícióban, ahogy ezt a cikket később ismertetjük.
 
@@ -123,7 +121,7 @@ Itt látható a kérelem törzsének szintaxisa, amely leírja az ISE létrehoz�
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certificate support
+      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -183,6 +181,45 @@ A példaként szolgáló kérelem törzse a következő minta értékeket jelen�
             "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
             "kind": "TrustedRoot"
          }
+      }
+   }
+}
+```
+## <a name="add-custom-root-certificates"></a>Egyéni főtanúsítványok hozzáadása
+
+Gyakran egy ISE használatával kapcsolódhat az egyéni szolgáltatásokhoz a virtuális hálózaton vagy a helyszínen. Ezeket az egyéni szolgáltatásokat gyakran egy egyéni legfelső szintű hitelesítésszolgáltató által kiadott tanúsítvány védi, például egy vállalati hitelesítésszolgáltató vagy egy önaláírt tanúsítvány. További információ az önaláírt tanúsítványok használatáról: [biztonságos hozzáférés és adathozzáférés a kimenő hívások számára más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Ahhoz, hogy az ISE sikeresen csatlakozhasson ezekhez a szolgáltatásokhoz Transport Layer Security (TLS) protokollon keresztül, az ISE-nek hozzá kell férnie ezekhez a főtanúsítványokhoz. Az ISE egyéni megbízható főtanúsítvánnyal való frissítéséhez tegye a következő HTTPS- `PATCH` kérést:
+
+`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+
+A művelet elvégzése előtt tekintse át a következő szempontokat:
+
+* Ügyeljen arra, hogy feltöltse a főtanúsítványt *és* az összes köztes tanúsítványt. A tanúsítványok maximális száma 20.
+
+* A főtanúsítványok feltöltése olyan helyettesítő művelet, amelyben a legújabb feltöltés felülírja a korábbi feltöltéseket. Ha például olyan kérelmet küld, amely feltölt egy tanúsítványt, majd egy másik kérést küld egy másik tanúsítvány feltöltésére, az ISE csak a második tanúsítványt használja. Ha mindkét tanúsítványt használni szeretné, vegye fel őket együtt ugyanabban a kérelemben.  
+
+* A főtanúsítványok feltöltése egy aszinkron művelet, amely hosszabb időt is igénybe vehet. Az állapot vagy az eredmény ellenőrzéséhez ugyanazzal az URI-val küldheti el a `GET` kérelmet. A válaszüzenet olyan `provisioningState` mezővel rendelkezik, amely visszaadja az `InProgress` értéket, ha a feltöltési művelet továbbra is működik. Ha `provisioningState` értéke `Succeeded` , a feltöltési művelet befejeződött.
+
+#### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>Kérelem törzsének szintaxisa egyéni főtanúsítványok hozzáadásához
+
+Itt látható a kérelem törzsének szintaxisa, amely leírja a főtanúsítványok hozzáadásakor használandó tulajdonságokat:
+
+```json
+{
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "name": "{ISE-name}",
+   "type": "Microsoft.Logic/integrationServiceEnvironments",
+   "location": "{Azure-region}",
+   "properties": {
+      "certificates": {
+         "testCertificate1": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         },
+         "testCertificate2": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
+      }
    }
 }
 ```

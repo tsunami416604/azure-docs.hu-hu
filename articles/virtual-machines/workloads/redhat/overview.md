@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 3e4a770a33f5cdb3c3b2de09cbcb8431b2fc3fbb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 09612ff3d86c669801f9e824d367a2b9a5bb10ac
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968655"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830649"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat számítási feladatok az Azure-ban
 
@@ -36,7 +36,7 @@ Az utólagos elszámolású képeket érdemes lehet használni, ha nem szeretné
 ### <a name="red-hat-gold-images"></a>Red Hat Gold-képek
 
 Az Azure Red Hat Gold images ( `rhel-byos` )-t is kínál. Ezek a képek hasznosak lehetnek a már meglévő Red Hat-előfizetésekkel rendelkező ügyfelek számára, és ezeket az Azure-ban szeretné használni. Az Azure-ban való használat előtt engedélyeznie kell a Red Hat Cloud Access meglévő Red Hat-előfizetéseit. A rendszerképekhez való hozzáférés automatikusan megtörténik, ha a Red Hat-előfizetések engedélyezve vannak a Felhőbeli hozzáféréshez, és megfelelnek a jogosultsági követelményeknek. Ezeknek a lemezképeknek a használatával az ügyfél elkerülheti a kettős számlázást, amely az utólagos elszámolású képek használatából merülhet fel.
-* Megtudhatja, hogyan [engedélyezheti a Red Hat-előfizetéseket a Felhőbeli hozzáféréshez az Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs)-ban.
+* Megtudhatja, hogyan [engedélyezheti a Red Hat-előfizetéseket a Felhőbeli hozzáféréshez az Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)-ban.
 * Megtudhatja, hogyan [keresheti meg a Red Hat Gold images-képeket a Azure Portalban, az Azure CLI-ben vagy a PowerShell-parancsmagban](./byos.md).
 
 > [!NOTE]
@@ -56,7 +56,7 @@ Az Azure csak az utólagos elszámolású RHEL virtuális gépekhez nyújt Red H
 
 A RHUI-frissítéshez kapcsolódó RHEL-lemezképek alapértelmezés szerint a RHEL legújabb másodlagos verziójára csatlakoznak, amikor a `yum update` fut. Ez azt jelenti, hogy egy RHEL 7,4 virtuális gép frissíthető a RHEL 7,7-re, ha egy `yum update` művelet fut rajta. Ez a viselkedés a RHUI kialakításán alapul. A frissítési viselkedés enyhítése érdekében váltson át a normál RHEL-adattárakból a [kiterjesztett frissítési támogatási tárházra](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [Azure-beli RHEL-lemezképekről](./redhat-images.md).
 * További információ a [Red Hat frissítési infrastruktúráról](./redhat-rhui.md).

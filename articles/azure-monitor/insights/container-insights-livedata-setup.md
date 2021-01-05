@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan állíthatja be a tároló-naplók val�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 45ed931f734e874e81af837fff5c4a326349cb21
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530182"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830785"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) beállításának beállítása
 
@@ -48,7 +48,7 @@ A Azure Portal megkéri, hogy ellenőrizze a Azure Active Directory-fürt bejele
 
 Annak érdekében, hogy ne kelljen további konfigurációs módosításokat alkalmaznia ahhoz, hogy a Kubernetes felhasználói szerepköre **clusterUser** az élő adat (előzetes verzió) szolgáltatáshoz a [Kubernetes RBAC](#configure-kubernetes-rbac-authorization) engedélyezésének engedélyezése után, az AK felvette a **Kubernetes** nevű új clusterMonitoringUser. Ez a fürtcsomópont-kötés minden szükséges engedéllyel rendelkezik a Kubernetes API és a végpontok eléréséhez az élő adat (előzetes verzió) funkció kihasználása érdekében.
 
-Ahhoz, hogy az élő adat (előzetes verzió) funkciót ezzel az új felhasználóval is használni lehessen, a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkör tagjának kell lennie az AK-fürt erőforrásán. A tárolók Azure Monitor, ha engedélyezve van, alapértelmezés szerint ez a felhasználó használja a hitelesítést. Ha a clusterMonitoringUser szerepkör-kötés nem létezik a fürtön, a rendszer a **clusterUser** használja a hitelesítéshez.
+Ahhoz, hogy az élő adat (előzetes verzió) funkció ezzel az új felhasználóval használható legyen, az [Azure Kubernetes Service cluster felhasználói](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) vagy [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepkör tagjának kell lennie az AK-fürt erőforrásán. A tárolók Azure Monitor, ha engedélyezve vannak, alapértelmezés szerint a clusterMonitoringUser használatával történő hitelesítésre van konfigurálva. Ha a clusterMonitoringUser szerepkör-kötés nem létezik a fürtön, a rendszer a **clusterUser** használja a hitelesítéshez. A közreműködő hozzáférést biztosít a clusterMonitoringUser (ha létezik), és az Azure Kuberenetes Service-fürt felhasználója hozzáférést biztosít a clusterUser. Ezen két szerepkör bármelyike elegendő hozzáférést biztosít a szolgáltatás használatához.
 
 Az AK január 2020-én kiadta ezt az új szerepkör-kötést, így a január 2020 előtt létrehozott fürtök nem rendelkeznek. Ha olyan fürtöt hoz létre, amely a január 2020 előtt lett létrehozva, akkor az új **clusterMonitoringUser** hozzáadhatja egy meglévő fürthöz, ha VÉGREHAJT egy Put műveletet a fürtön, vagy bármilyen más műveletet hajt végre a fürtön, amely egy Put műveletet végez a fürtön, például frissíti a fürt verzióját.
 
@@ -138,6 +138,6 @@ Minden Azure AD-fióknak engedéllyel kell rendelkeznie a megfelelő API-khoz a 
 
 Az AK-fürt **ClusterRoleBinding** konfigurálásával kapcsolatos további segítségért lásd: [Kubernetes RBAC-kötés létrehozása](../../aks/azure-ad-integration-cli.md#create-kubernetes-rbac-binding).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy beállította a hitelesítést, a fürtből valós időben megtekintheti a [metrikákat](container-insights-livedata-metrics.md), a [központi telepítéseket](container-insights-livedata-deployments.md), valamint az [eseményeket és a naplókat](container-insights-livedata-overview.md) .
