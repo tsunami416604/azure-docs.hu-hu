@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 3c880d570cfa6e1b1388e59557836a3070d7cdc7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824655"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862554"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -29,7 +29,7 @@ A vezérlési sík API-k az Azure Digital Twins-példányok egészének kezelés
 A jelenlegi Control Plant API-verzió a _**2020-12-01**_.
 
 A vezérlő sík API-k használata:
-* Az API-kat közvetlenül hívhatja a [vezérlési sík hencegő mappájában](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)található legújabb hencegés hivatkozásával. Ez a tárház a használatot bemutató példákat is tartalmaz.
+* Az API-kat közvetlenül hívhatja a [vezérlési sík hencegő](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable)tárházának legújabb hencegő mappájára hivatkozva. Ez a mappa a használatot bemutató példákat tartalmazó mappát is tartalmaz.
 * Jelenleg a vezérlési API-k számára érhető el az SDK-ban...
   - [**.Net (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([hivatkozás [automatikusan generált]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([forrás](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
   - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([hivatkozás [automatikusan generált]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true)) ([forrás](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
@@ -51,7 +51,7 @@ A legfrissebb adatsíkok API-verziója _**2020-10-31**_.
 
 Az adatsík API-k használata:
 * Az API-kat közvetlenül, a... alapján hívhatja le.
-   - az adatsík felvágási [mappájában](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)lévő legújabb hencegés hivatkozása. Ez a tárház a használatot bemutató példákat is tartalmaz. 
+   - a legfrissebb hencegő mappára hivatkozik az [adatközpontban](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins). Ez a mappa a használatot bemutató példákat tartalmazó mappát is tartalmaz. 
    - az [API-referenciák dokumentációjának](/rest/api/azure-digitaltwins/)megtekintése.
 * Használhatja a **.net (C#) SDK-** t. A .NET SDK használata...
    - a csomagot a NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)fájlból tekintheti meg és adhatja hozzá. 

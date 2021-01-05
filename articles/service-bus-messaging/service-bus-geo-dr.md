@@ -2,22 +2,31 @@
 title: Azure Service Bus geo-vész-helyreállítás | Microsoft Docs
 description: A földrajzi régiók használata feladatátvételhez és a vész-helyreállítás elvégzéséhez Azure Service Bus
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/04/2021
+ms.openlocfilehash: c07721c07923a40da9fe28e0e3116bfd6a52210f
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372523"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862354"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-vész-helyreállítás
 
-Ha a teljes Azure-régiók vagy-adatközpontok (ha nincsenek használatban [rendelkezésre állási zónák](../availability-zones/az-overview.md) ) a tapasztalatok leállását tapasztalják, kritikus fontosságú, hogy az adatfeldolgozás továbbra is egy másik régióban vagy adatközpontban működjön. Ennek megfelelően a *geo-vész-helyreállítás* bármely vállalat számára fontos funkció. Azure Service Bus támogatja a földrajzi katasztrófa utáni helyreállítást a névtér szintjén.
+Az adatfeldolgozási erőforrások katasztrofális leállása elleni rugalmasság számos vállalat számára szükséges, és bizonyos esetekben az iparági szabályozásoknak is meg kell követelniük. 
 
-A Geo-vész-helyreállítási funkció globálisan elérhető a Service Bus Premium SKU-hoz. 
+Azure Service Bus már az egyes gépek katasztrofális meghibásodásának kockázatát, vagy akár olyan fürtöket is teljesít, amelyek egy adatközponton belül több meghibásodási tartományt foglalnak magukban, és olyan átlátható hibák észlelését és feladatátvételi mechanizmusokat valósít meg, amelyek biztosítják, hogy a szolgáltatás továbbra is működőképes maradjon a biztosított szolgáltatási szinten, és ez általában nem észlelhető megszakítások esetén. Ha a [rendelkezésre állási zónákhoz](../availability-zones/az-overview.md)engedélyezett Service Bus névteret hoztak létre, a kockázat kiesési kockázat a három fizikailag különálló létesítmény között tovább terjed, és a szolgáltatás elegendő kapacitási tartalékokkal rendelkezik, amelyek azonnal megbirkóznak a teljes létesítmény teljes, katasztrofális elvesztésével. 
 
->[!NOTE]
-> Geo-Disaster a helyreállítás jelenleg csak a metaadatokat (várólisták, témakörök, előfizetések, szűrők) másolja át az elsődleges névtérről a másodlagos névtérre, ha párosítva van.
+A rendelkezésre állási zóna támogatásával rendelkező minden aktív Azure Service Bus fürtcsomópont a helyszíni üzenetkezelési termékhez képest nagyobb rugalmasságot biztosít a súlyos hardveres hibák és a teljes adatközpont-létesítmények katasztrofális elvesztése tekintetében. Mégis előfordulhat, hogy súlyos helyzetek merülnek fel a fizikai megsemmisüléssel szemben, hogy még ezek az intézkedések is nem megfelelő védelmet biztosítanak. 
+
+A Service Bus geo-vész-helyreállítási funkció úgy lett kialakítva, hogy könnyebben helyreállítható legyen a nagy mennyiségű katasztrófa miatt, és a hibás Azure-régiót kihagyhatja a megfelelő, és nem kell módosítania az alkalmazás konfigurációját. Az Azure-régiók felhagyása jellemzően számos szolgáltatást foglal magában, és ez a funkció elsősorban az összetett alkalmazások konfigurációjának integritásának biztosítását célozza meg. A szolgáltatás globálisan elérhető a Service Bus Premium SKU-hoz. 
+
+A Geo-Disaster Recovery funkció biztosítja, hogy a rendszer a névterek (várólisták, témakörök, előfizetések, szűrők) teljes konfigurációját folyamatosan replikálja egy elsődleges névtérből egy másodlagos névtérbe, ha párosítva van, és lehetővé teszi, hogy egy egyszeri feladatátvételt kezdeményezzen az elsődlegesről a másodlagosra, bármikor. A feladatátvételi áthelyezés a névtér kiválasztott aliasának nevét a másodlagos névtérre irányítja át, majd megszakítja a párosítást. A feladatátvétel majdnem azonnal megkezdődik. 
+
+> [!IMPORTANT]
+> A szolgáltatás lehetővé teszi a műveletek azonnali folytonosságát ugyanazzal a konfigurációval, de nem **replikálja a várólistákban tárolt üzeneteket, illetve az előfizetéseket és a kézbesítetlen levelek várólistáit**. A várólista-szemantika megőrzése érdekében az ilyen replikáláshoz nem csak az üzenetek replikálása szükséges, hanem a közvetítő minden állapotának változása esetén is. A legtöbb Service Bus névtér esetében a szükséges replikálási forgalom messze meghaladja az alkalmazás forgalmát és a nagy átviteli sebességű várólistákat, a legtöbb üzenet továbbra is a másodlagosra replikálódik, miközben az elsődlegestől már törölve lett, ami túlzottan pazarló forgalmat okoz. A nagy késleltetésű replikációs útvonalak esetében, amelyek a földrajzi katasztrófa utáni helyreállításhoz választott számos párosításra érvényesek, előfordulhat, hogy a replikálási forgalom tartósan megtartja az alkalmazások forgalmát a késés okozta szabályozási hatások miatt.
+ 
+> [!TIP]
+> A várólisták és a témakör-előfizetések tartalmának replikálásához, valamint az aktív/aktív konfigurációk megfelelő névterének működéséhez az kimaradások és a katasztrófák megbirkózása érdekében ne támaszkodjon erre a földrajzi katasztrófa utáni helyreállítási szolgáltatásra, de kövesse a [replikálási útmutatót](service-bus-federation-overview.md).  
 
 ## <a name="outages-and-disasters"></a>Kimaradások és katasztrófák
 
@@ -51,14 +60,14 @@ A következő szakasz áttekintést nyújt a névterek közötti párosítás be
 
 A telepítési folyamat a következő:
 
-1. ***Elsődleges*** Service Bus prémium szintű névtér kiépítése.
+1. Hozzon létre egy **elsődleges** _ Service Bus Premium-névteret.
 
-2. ***Másodlagos*** Service Bus Premium-névtér kiépítése egy olyan régióban, amely *eltér az elsődleges névtér*kiépítésének helyétől. Ez segít a hibák elkülönítésében a különböző adatközpont-régiók között.
+2. Hozzon létre egy _*_másodlagos_*_ Service Bus Premium-névteret egy olyan régióban, _different, ahonnan az elsődleges névtér kiépítése * történik. Ez segít a hibák elkülönítésében a különböző adatközpont-régiók között.
 
-3. Hozzon létre párosítást az elsődleges névtér és a másodlagos névtér között az ***alias***beszerzéséhez.
+3. Hozzon létre párosítást az elsődleges névtér és a másodlagos névtér között az ***alias** _ beszerzéséhez.
 
     >[!NOTE] 
-    > Ha [áttelepítette a Azure Service Bus standard névteret a prémium szintű Azure Service Busre](service-bus-migrate-standard-premium.md), akkor a vész-helyreállítási konfigurációt a **PS/CLI** vagy a **REST API**használatával kell létrehoznia a korábban meglévő alias (azaz a Service Bus standard névtér-kapcsolódási karakterlánc) segítségével.
+    > Ha [áttelepítette a Azure Service Bus standard névteret a prémium szintű Azure Service Busre](service-bus-migrate-standard-premium.md), akkor a vész-helyreállítási konfigurációt a _ *PS/CLI** vagy a **REST API** használatával kell létrehoznia a meglévő alias (azaz az Service Bus standard névtér-kapcsolódási karakterlánc) segítségével.
     >
     >
     > Ennek az az oka, hogy az áttelepítés során a Azure Service Bus a szabványos névtér-kapcsolódási karakterlánc/DNS-név alias lesz a Azure Service Bus Premium-névtérhez.
@@ -68,7 +77,7 @@ A telepítési folyamat a következő:
     > Ha a portál használatával adja meg a vész-helyreállítási konfigurációt, akkor a portál ezt a kikötést elküldi Önnek.
 
 
-4. Használja a 3. lépésben beszerzett ***aliast*** az ügyfélalkalmazások a Geo-Dr-kompatibilis elsődleges névtérhez való összekapcsolásához. Az alias kezdetben az elsődleges névtérre mutat.
+4. Az ügyfélalkalmazások a Geo-DR-kompatibilis elsődleges névtérhez való összekapcsolásához használja a 3. lépésben megszerzett **_aliast_*. Az alias kezdetben az elsődleges névtérre mutat.
 
 5. Választható Vegyen fel némi figyelést annak észleléséhez, hogy szükség van-e feladatátvételre.
 
@@ -80,7 +89,7 @@ A feladatátvételt manuálisan indítja el az ügyfél (explicit módon egy par
 
 A feladatátvétel elindítása után –
 
-1. Az ***alias*** -kapcsolódási karakterlánc frissült, hogy a másodlagos prémium névtérre mutasson.
+1. Az _*_alias_*_ -kapcsolódási karakterlánc frissült, hogy a másodlagos prémium névtérre mutasson.
 
 2. Az ügyfelek (küldők és fogadók) automatikusan csatlakoznak a másodlagos névtérhez.
 
@@ -170,14 +179,14 @@ Tegyük fel, hogy két virtuális hálózattal rendelkezik: VNET-1, VNET-2 és e
 
 Ennek a megközelítésnek az az előnye, hogy a feladatátvétel a Service Bus névtértől független alkalmazási rétegben történhet. Vegyük példaként a következő forgatókönyveket: 
 
-**Csak alkalmazáson belüli feladatátvétel:** Itt az alkalmazás nem létezik a VNET-1 helyen, de a VNET-2 értékre lép. Mivel a magánhálózati végpontok mind a VNET-1, mind a VNET-2 esetében mind az elsődleges, mind a másodlagos névtér esetében konfigurálva vannak, az alkalmazás csak működni fog. 
+_ *Csak alkalmazás feladatátvétele:** itt az alkalmazás nem létezik a VNET-1 helyen, de a VNET-2 értékre lép. Mivel a magánhálózati végpontok mind a VNET-1, mind a VNET-2 esetében mind az elsődleges, mind a másodlagos névtér esetében konfigurálva vannak, az alkalmazás csak működni fog. 
 
 **Service Bus csak névtér feladatátvétele**: itt újra, mivel mindkét magánhálózati végpont mind az elsődleges, mind a másodlagos névterek esetében mindkét virtuális hálózaton konfigurálva van, az alkalmazás csak működni fog. 
 
 > [!NOTE]
 > A virtuális hálózatok földrajzi katasztrófa utáni helyreállításával kapcsolatos útmutatásért lásd: [Virtual Network – üzletmenet folytonossága](../virtual-network/virtual-network-disaster-recovery-guidance.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a Geo-vész-helyreállítási [REST API referenciát](/rest/api/servicebus/stable/disasterrecoveryconfigs).
 - Futtassa a Geo-vész-helyreállítási [mintát a githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2).

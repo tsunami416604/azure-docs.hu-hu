@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 71b57eae1a66e6966f61123e638c4790410ef445
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960750"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862534"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services-tárolók – gyakori kérdések (GYIK)
 
@@ -22,7 +22,7 @@ ms.locfileid: "94960750"
 
 **K: mi érhető el?**
 
-**A:** Az Azure Cognitive Services tárolók lehetővé teszik a fejlesztők számára az Azure-ban elérhető intelligens API-k használatát, de a tárolókra bontás [előnyeit](../cognitive-services-container-support.md#features-and-benefits) . Egyes tárolók egy megtekinthető előzetes verzióként érhetők el, amelyekhez szükség lehet egy alkalmazás elérésére. Más tárolók nyilvánosan elérhetők az előzetes verzióként, vagy általánosan elérhetők. A tárolók teljes listáját és azok rendelkezésre állását az Azure-beli [tároló-támogatásban találja Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) cikkben. A tárolókat a [Docker hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)-ban is megtekintheti.
+**A:** Az Azure Cognitive Services tárolók lehetővé teszik a fejlesztők számára az Azure-ban elérhető intelligens API-k használatát, de a tárolókra bontás [előnyeit](../cognitive-services-container-support.md#features-and-benefits) . Egyes tárolók egy megtekinthető előzetes verzióként érhetők el, amelyekhez szükség lehet egy alkalmazás elérésére. Más tárolók nyilvánosan elérhetők az előzetes verzióként, vagy általánosan elérhetők. A tárolók teljes listáját és azok rendelkezésre állását az Azure-beli [tároló-támogatásban találja Cognitive Services](../cognitive-services-container-support.md) cikkben. A tárolókat a [Docker hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)-ban is megtekintheti.
 
 **K: van különbség a Cognitive Services felhő és a tárolók között?**
 
@@ -164,7 +164,7 @@ Tekintse át az alábbi címkéket az igényeihez igazodó lehetséges kérdése
  
 **K: Hogyan észleli a tárolókat?**
 
-**A:** Cognitive Services tárolók különböző helyszíneken érhetők el, például a Azure Portal, a Docker hub és az Azure Container nyilvántartó rendszerekben. A legutóbbi tárolóhelyek esetében tekintse meg a [tároló-Tárházak és-lemezképek](../cognitive-services-container-support.md#container-repositories-and-images)című témakört.
+**A:** Cognitive Services tárolók különböző helyszíneken érhetők el, például a Azure Portal, a Docker hub és az Azure Container nyilvántartó rendszerekben. A legfrissebb tárolóhelyek esetében tekintse meg a [tárolók lemezképeit](container-image-tags.md).
 
 **K: Hogyan hasonlítják össze Cognitive Services tárolók az AWS-t és a Google-ajánlatokat?**
 

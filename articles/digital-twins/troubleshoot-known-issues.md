@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: a9735e355244d51464c66c10e02f97f03d2e67cd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d0c26255e6d9d35d51390ed2b432b9c5dc9ab2be
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673468"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862464"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -37,15 +37,23 @@ Ez a cikk az Azure Digital Twins szolgáltatással kapcsolatos ismert problémá
 | --- | --- | --- |
 | Annak megállapításához, hogy a szerepkör-hozzárendelés sikeresen be lett-e állítva a parancsfájl futtatása után, kövesse a telepítési cikk [*felhasználói szerepkör-hozzárendelés ellenőrzése*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) szakaszának utasításait. Ha a felhasználó nem jelenik meg ezzel a szerepkörrel, ez a probléma hatással van. | A személyes [Microsoft-fiók (MSA)](https://account.microsoft.com/account)szolgáltatásban bejelentkezett felhasználók esetében a felhasználó egyszerű azonosítója, amely a felhasználó bejelentkezési e-mail-címétől eltérő lehet, így megnehezíti a szkript felderítését és használatát a szerepkör megfelelő hozzárendeléséhez. | A megoldáshoz manuálisan is beállíthatja a szerepkör-hozzárendelést a [CLI-utasítások](how-to-set-up-instance-cli.md#set-up-user-access-permissions) vagy a [Azure Portal utasítások](how-to-set-up-instance-portal.md#set-up-user-access-permissions)használatával. |
 
-## <a name="issue-with-interactive-browser-authentication"></a>Probléma az interaktív böngésző-hitelesítéssel
+## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Probléma az Azure-beli interaktív böngésző-hitelesítéssel. Identity 1.2.0
 
 **Probléma leírása:** Az Azure-beli digitális Twins-alkalmazásokban az **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) metódussal. Ez az "Azure. Identity. AuthenticationFailedException" hibaüzenetként jelenik meg, amikor egy böngészőablakban próbál hitelesíteni. Előfordulhat, hogy a böngészőablak nem indul el teljesen, vagy úgy tűnik, hogy sikeresen hitelesíti a felhasználót, míg az ügyfélalkalmazás továbbra is a hibával meghiúsul.
 
 | Ez hatással van rám? | Ok | Feloldás |
 | --- | --- | --- |
-| Az &nbsp; érintett &nbsp; módszert &nbsp; a &nbsp; &nbsp; &nbsp; &nbsp; következő cikkek használják:<br><br>[*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)<br><br>[*Útmutató: az alkalmazás-hitelesítési kód írása*](how-to-authenticate-client.md)<br><br>[*Útmutató: az Azure Digital Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md) | Egyes felhasználók ezt a problémát a könyvtár verziójának **1.2.0** `Azure.Identity` . | A megoldásához frissítse alkalmazásait a [legújabb verziójának](https://www.nuget.org/packages/Azure.Identity) használatára `Azure.Identity` . A könyvtár verziójának frissítése után a böngészőnek be kell töltenie és hitelesítenie kell a várt módon. |
+| Az &nbsp; érintett &nbsp; módszert &nbsp; a &nbsp; &nbsp; &nbsp; &nbsp; következő cikkek használják:<br><br>[*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)<br><br>[*Útmutató: az alkalmazás-hitelesítési kód írása*](how-to-authenticate-client.md)<br><br>[*Útmutató: az Azure Digital Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md) | Egyes felhasználók ezt a problémát a könyvtár verziójának **1.2.0** `Azure.Identity` . | A megoldásához frissítse alkalmazásait a [újabb verziójának](https://www.nuget.org/packages/Azure.Identity) használatára `Azure.Identity` . A könyvtár verziójának frissítése után a böngészőnek be kell töltenie és hitelesítenie kell a várt módon. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Hiba az Azure-beli hitelesítő adatok alapértelmezett hitelesítésével. Identity 1.3.0
+
+**Probléma leírása:** Ha a hitelesítési kódot az Azure **[. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) Library** **1.3.0** használatával írja be az Azure Digital Twins-alkalmazásaiba, akkor előfordulhat, hogy a dokumentációban számos mintában használt [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) metódussal kapcsolatban problémák merülhetnek fel. Ez az "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential hitelesítés sikertelen" hibaüzenetet jeleníti meg, amikor a kód megpróbál hitelesíteni.
+
+| Ez hatással van rám? | Ok | Feloldás |
+| --- | --- | --- |
+| A DefaultAzureCredential a legtöbb dokumentációs példa, amely tartalmazza a hitelesítést. Ha hitelesítési kódot ír a DefaultAzureCredential használatával, és a könyvtár Version 1.3.0 használja `Azure.Identity` , ez valószínűleg hatással lesz rá. | Ez a probléma akkor jelent meg, ha a DefaultAzureCredential-t használja a könyvtár **1.3.0** `Azure.Identity` . | A megoldáshoz váltson át az alkalmazás 1.2.2-es [verziójának](https://www.nuget.org/packages/Azure.Identity/1.2.2) használatára `Azure.Identity` . A könyvtár verziójának módosítása után a hitelesítés a vártnál sikeresnek kell lennie. |
+
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Digital Twins biztonságáról és engedélyeiről:
 * [*Fogalmak: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md)

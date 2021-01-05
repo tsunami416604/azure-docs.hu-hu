@@ -4,13 +4,13 @@ description: Riasztások létrehozása gépi tanuláson alapuló dinamikus küsz
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 02/16/2020
-ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/04/2021
+ms.openlocfilehash: 92fafc9357ca08cd31c9ba7badbf7f6433f44f86
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012339"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862582"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikus riasztások dinamikus küszöbértékekkel Azure Monitor
 
@@ -39,7 +39,7 @@ A dinamikus küszöbértékek folyamatosan tanulják a metrikai sorozat adatait,
 A küszöbértékek úgy vannak kiválasztva, hogy a küszöbértéktől való eltérés a metrika viselkedésében anomália.
 
 > [!NOTE]
-> Az időszakos minta észlelése egy óra, nap vagy hét intervallumra van beállítva. Ez azt jelenti, hogy nem észlelhető más mintázatok, például a bihourly minta vagy a semiweekly.
+> A dinamikus küszöbértékek óránkénti, napi vagy heti minták esetében is észlelhetők. Előfordulhat, hogy a rendszer nem észleli más mintákat, például a kétórás vagy a részben heti szezonális évszakot. A heti szezonális megjelenítés észleléséhez legalább három héttel korábbi adatmennyiségre van szükség. 
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Mit jelent a dinamikus küszöbértékek "érzékenység" beállítása?
 

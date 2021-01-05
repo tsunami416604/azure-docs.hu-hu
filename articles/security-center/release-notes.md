@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 12/28/2020
 ms.author: memildin
-ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: f0015177332aa07ed65f9d0345a11bfdad170104
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560253"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862607"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -40,6 +40,12 @@ A decemberi frissítések a következők:
 - [A globális rendszergazdák mostantól bérlői szintű engedélyeket is biztosíthatnak](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [Két új Azure Defender-csomag: az Azure Defender for DNS és az Azure Defender for Resource Manager (előzetes verzió)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 - [Új biztonsági riasztások oldal a Azure Portal (előzetes verzió)](#new-security-alerts-page-in-the-azure-portal-preview)
+- [A Azure SQL Database & SQL felügyelt példányának revitalizáló Security Center felülete](#revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance)
+- [Tárgyieszköz-leltári eszközök és szűrők frissítve](#asset-inventory-tools-and-filters-updated)
+- [Javaslatok az SSL-tanúsítványokat kérő webalkalmazásokról, amelyek már nem részei a biztonságos pontszámnak](#recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score)
+- [A javaslatok oldalon új szűrők találhatók a környezethez, a súlyossághoz és a rendelkezésre álló válaszokhoz](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
+- [A folyamatos exportálás új adattípusokat és továbbfejlesztett deployifnotexist szabályzatokat kap](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
+
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Általánosan elérhető az Azure Defender az SQL-kiszolgálókhoz a gépeken
 
@@ -114,6 +120,87 @@ Az új felület eléréséhez használja a "kipróbálás most" hivatkozást a b
 :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Az új előzetes riasztási élményre mutató hivatkozást tartalmazó szalagcím":::
 
 A riasztások új felhasználói élményből való létrehozásával kapcsolatban lásd: [minta Azure Defender-riasztások](security-center-alert-validation.md#generate-sample-azure-defender-alerts)létrehozása.
+
+
+### <a name="revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának revitalizáló Security Center felülete 
+
+Az SQL-en belüli Security Center élmény hozzáférést biztosít a következő Security Center és az Azure Defender for SQL-funkciókhoz:
+
+- **Biztonsági javaslatok** – a Security Center rendszeresen elemzi az összes csatlakoztatott Azure-erőforrás biztonsági állapotát, hogy azonosítsa a lehetséges biztonsági hibás konfigurációkat. Ezután javaslatokat tesz a biztonsági rések orvoslására és a szervezetek biztonsági helyzetének javítására.
+- **Biztonsági riasztások** – olyan észlelési szolgáltatás, amely folyamatosan figyeli az Azure SQL-tevékenységeket olyan fenyegetésekkel szemben, mint például az SQL-injektálás, a találgatásos támadás és a jogosultságok elleni visszaélés. Ez a szolgáltatás részletes és működés közbeni biztonsági riasztásokat indít a Security Centerban, és lehetőségeket biztosít az Azure Sentinel, a Microsoft Azure-natív SIEM megoldásának folytatására.
+- **Megállapítások** – sebezhetőségi felmérési szolgáltatás, amely folyamatosan figyeli az Azure SQL-konfigurációkat, és segít elhárítani a biztonsági réseket. Az értékelési vizsgálatok áttekintést nyújtanak az Azure SQL biztonsági állapotáról, valamint részletes biztonsági eredményeket tartalmaznak.     
+
+:::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="A Azure Security Center SQL-alapú biztonsági funkciói elérhetők az Azure SQL-en belül":::
+
+
+### <a name="asset-inventory-tools-and-filters-updated"></a>Tárgyieszköz-leltári eszközök és szűrők frissítve
+
+A Azure Security Center leltár lapja a következő változásokkal frissült:
+
+- Az eszköztárhoz hozzáadott **útmutatók és visszajelzések** . Ekkor megnyílik egy ablaktábla, amely a kapcsolódó információkra és eszközökre mutató hivatkozásokat tartalmaz. 
+- Az **előfizetések szűrő** az erőforrások számára elérhető alapértelmezett szűrőkhöz lett hozzáadva.
+- A **lekérdezési hivatkozás megnyitása** az aktuális szűrési beállítások Azure Resource Graph-lekérdezésként való megnyitásához (korábbi nevén "View in Resource Graph Explorer").
+- Az egyes szűrők **operátori beállításai** . Mostantól a "=" helyett további logikai operátorokat is választhat. Előfordulhat például, hogy az összes olyan erőforrást meg kívánja találni, amelynek a címei tartalmazzák a "titkosítás" karakterláncot. 
+
+    :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="Az Asset Inventory szűrők operátori beállításának vezérlői":::
+
+További információ a leltárban az [erőforrások az eszközök leltározásával való megismeréséhez és kezeléséhez](asset-inventory.md).
+
+
+### <a name="recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score"></a>Javaslatok az SSL-tanúsítványokat kérő webalkalmazásokról, amelyek már nem részei a biztonságos pontszámnak
+
+A "Web Apps szolgáltatásnak az összes bejövő kérelemhez SSL-tanúsítványt kell igényelnie" a biztonsági vezérlő a **hozzáférés és az engedélyek kezelése** (maximum 4 pont) értékre való áthelyezése után a biztonsági **bevált eljárások megvalósítására** (ami nem áll fenn pontok). 
+
+Gondoskodhat arról, hogy a webalkalmazások a tanúsítványokat biztosan biztonságosabbá tegyék. A nyilvános webes alkalmazások esetében azonban lényegtelen. Ha HTTP-n keresztül fér hozzá a webhelyhez, és nem HTTPS-kapcsolaton keresztül, akkor nem fog ügyféltanúsítványt kapni. Tehát ha az alkalmazáshoz Ügyféltanúsítványok szükségesek, akkor a HTTP-n keresztül nem engedélyezheti a kérelmeket az alkalmazásnak. További információ: a [TLS kölcsönös hitelesítésének konfigurálása Azure app Servicehoz](../app-service/app-service-web-configure-tls-mutual-auth.md).
+
+Ezzel a módosítással a javaslat mostantól javasolt ajánlott eljárás, amely nem befolyásolja a pontszámát. 
+
+Ismerje meg, hogy mely javaslatok szerepelnek a [biztonsági ellenőrzésekben és javaslataikban](secure-score-security-controls.md#security-controls-and-their-recommendations).
+
+
+### <a name="recommendations-page-has-new-filters-for-environment-severity-and-available-responses"></a>A javaslatok oldalon új szűrők találhatók a környezethez, a súlyossághoz és a rendelkezésre álló válaszokhoz
+
+Azure Security Center figyeli az összes kapcsolódó erőforrást, és biztonsági javaslatokat hoz létre. Ezekkel az ajánlásokkal megerősítheti a hibrid Felhőbeli testtartást, és nyomon követheti a szervezet, az iparág és az ország szempontjából releváns szabályzatokat és szabványokat.
+
+Ahogy Security Center továbbra is bővíti a lefedettségét és funkcióit, a biztonsági javaslatok listája havonta növekszik. Az [Azure biztonsági teljesítményteszt lefedettségének növeléséhez](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)például tekintse meg az előzetes verzióhoz hozzáadott 29. javaslatokat.
+
+A növekvő listával a legnagyobb érdeklődésre számot tartó ajánlásokra képesnek kell lennie a szűrésre. Novemberben hozzáadunk szűrőket a javaslatok oldalhoz (lásd a [javaslatok listája mostantól tartalmazza a szűrőket](#recommendations-list-now-includes-filters)).
+
+Az ebben a hónapban hozzáadott szűrők lehetővé teszik a javaslatok listájának pontosítását az alábbiak szerint:
+
+- **Környezet** – az AWS-, GCP-vagy Azure-erőforrásokra vonatkozó ajánlások megtekintése (vagy bármely kombináció)
+- **Súlyosság** – a Security Center által meghatározott súlyossági besorolásnak megfelelő ajánlások megtekintése
+- **Response Actions** – a javaslatok megtekintése a Security Center válaszának rendelkezésre állása alapján: gyors javítás, megtagadás és betartatás
+
+    > [!TIP]
+    > A Response Actions szűrő lecseréli az **elérhető gyors javítás (igen/nem)** szűrőt. 
+    > 
+    > További információ az egyes válaszok lehetőségeiről:
+    > - [Gyors javítás szervizelése](security-center-remediate-recommendations.md#quick-fix-remediation)
+    > - [Helytelen konfigurációk megelőzése Kényszerítés/Megtagadás javaslatokkal](prevent-misconfigurations.md)
+
+:::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="Biztonsági ellenőrzés szerint csoportosított javaslatok" lightbox="./media/release-notes/added-recommendations-filters.png":::
+
+### <a name="continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies"></a>A folyamatos exportálás új adattípusokat és továbbfejlesztett deployifnotexist szabályzatokat kap
+
+Azure Security Center folyamatos exportálási eszközei lehetővé teszik Security Center javaslatainak és riasztásoknak az exportálását a környezetében lévő más figyelési eszközökkel való használatra.
+
+A folyamatos exportálással teljes mértékben testreszabhatja, hogy mi történjen az exportálásban, és hová fog menni. A részletekért lásd:  [Security Center adatok folyamatos exportálása](continuous-export.md).
+
+Ezek az eszközök a következő módokon lettek kibővítve és kiterjesztve:
+
+- **A folyamatos exportálás deployifnotexist-házirendjeinek továbbfejlesztése**. A szabályzatok most:
+
+    - **Győződjön meg arról, hogy a konfiguráció engedélyezve van-e.** Ha nem, a szabályzat nem megfelelőként jelenik meg, és megfelelő erőforrást hoz létre. A [folyamatos exportálás beállításával](continuous-export.md#set-up-a-continuous-export)kapcsolatos további Azure Policy információkért tekintse meg a következő témakört: a "központi telepítés méretezése a Azure Policy lapon" című szakasz.
+
+    - **A biztonsági eredmények exportálásának támogatása.** A Azure Policy-sablonok használatakor beállíthatja a folyamatos exportálást, hogy tartalmazza a megállapításokat. Ez akkor fontos, ha olyan javaslatok exportálására van szükség, amelyek "alárendelt" javaslatokkal rendelkeznek, például a sebezhetőségi felmérési képolvasók vagy a "szülő" javaslat rendszerfrissítéseinek adott rendszerfrissítései a számítógépekre telepíthetők.
+    
+    - **A biztonságos pontszámok adatexportálásának támogatása.**
+
+- **A szabályzatok megfelelőségi felmérésének adatszolgáltatása (előzetes verzió).** Mostantól folyamatosan exportálhatja a frissítéseket a szabályozási megfelelőségi vizsgálatokra, beleértve az egyéni kezdeményezéseket Log Analytics munkaterületre vagy az Event hub-ra is. Ez a funkció nem érhető el a nemzeti/szuverén felhőkben.
+
+    :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="A szabályozásnak megfelelő értékelési információkra vonatkozó beállítások a folyamatos exportálási adatokkal.":::
+
 
 ## <a name="november-2020"></a>2020. november
 
@@ -464,7 +551,7 @@ Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapot�
 
 Ha bármilyen erőforráshoz függőben lévő javaslatok vannak, akkor azok megjelennek a leltárban.
 
-További információ: [erőforrások felderítése és kezelése az eszközök leltározásával és felügyeleti eszközeivel](asset-inventory.md).
+További információ: [erőforrások felderítése és kezelése az eszközök leltározásával](asset-inventory.md).
 
 
 
@@ -805,7 +892,7 @@ Az adaptív alkalmazás-vezérlők funkció két jelentős frissítést kapott:
 
     * Az elérési út végén található helyettesítő karakter használata a mappában és az almappákban található összes végrehajtható fájl engedélyezéséhez
 
-    * Egy elérési út közepén található helyettesítő karakter használatával engedélyezhető egy ismert végrehajtható név (például személyes felhasználói mappák ismert végrehajtható fájlokkal, automatikusan létrehozott mappák nevei stb.).
+    * Egy elérési út közepén lévő helyettesítő karakter használatával engedélyezheti egy ismert végrehajtható név módosítását a mappanév (például személyes felhasználói mappák ismert végrehajtható fájlokkal, automatikusan létrehozott mappanevek stb.).
 
 
 [További információ az adaptív alkalmazások vezérlőinek használatáról](security-center-adaptive-application.md).

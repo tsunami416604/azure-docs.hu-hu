@@ -1,14 +1,14 @@
 ---
 title: Tudnivalók a virtuális gépek tartalmának naplózásáról
-description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
+description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügyfelet a beállítások naplózására a virtuális gépeken belül.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7d7aa14038c834747240d17441c61d000ac6bb74
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 58fe1c630de4abfb2fe04ddedb45b360cfebd423
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347880"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862319"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -58,9 +58,9 @@ A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-
 
 ## <a name="supported-client-types"></a>Támogatott ügyfelek típusai
 
-A vendég-konfigurációs szabályzatok definíciói az új verziókhoz tartoznak. Az Azure Marketplace-en elérhető operációs rendszerek régebbi verziói ki vannak zárva, ha a vendég konfigurációs ügynök nem kompatibilis. Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
+A vendég-konfigurációs szabályzatok definíciói az új verziókhoz tartoznak. Az Azure Marketplace-en elérhető operációs rendszerek régebbi verziói nem lesznek kizárva, ha a vendég konfigurációs ügyfél nem kompatibilis. Az alábbi táblázat az Azure-lemezképekben támogatott operációs rendszerek listáját tartalmazza:
 
-|Publisher|Name|Verziók|
+|Publisher|Név|Verziók|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 – 18,04|
 |Credativ|Debian|8 és újabb verziók|
@@ -150,9 +150,9 @@ A vendég-konfiguráció házirendjének definíciói jelenleg csak egyszer kell
 
 A vendég konfigurációs bővítmény naplófájlokat ír a következő helyszínekre:
 
-Windows `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
+Windows: `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Linux `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+Linux: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 Ahol `<version>` az aktuális verziószámra hivatkozik.
 
@@ -191,7 +191,7 @@ A vendég konfiguráció beépített házirendjének mintái a következő helys
 - [Beépített kezdeményezések – vendég konfigurációja](../samples/built-in-initiatives.md#guest-configuration)
 - [Azure Policy Samples GitHub-tárház](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest%20Configuration)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan tekintheti meg az egyes beállításokat a [vendég konfiguráció megfelelősége nézetből](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).

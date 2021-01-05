@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d39f26d86792214c1ef0300bc39404bf6581826f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2af8db1a6e8c774f1004b380c8aaaa06ba61d8c3
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629478"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862339"
 ---
 # <a name="deploy-azure-file-sync"></a>Az Azure File Sync üzembe helyezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -157,10 +157,10 @@ A Storage Sync szolgáltatás üzembe helyezéséhez lépjen a [Azure Portal](ht
 
 A megnyíló panelen adja meg a következőket:
 
-- **Name (név** ): a Storage Sync szolgáltatás egyedi neve (régiónként).
-- **Előfizetés** : az előfizetés, amelyben létre szeretné hozni a Storage Sync szolgáltatást. A szervezet konfigurációs stratégiájától függően előfordulhat, hogy egy vagy több előfizetéshez fér hozzá. Az Azure-előfizetés az egyes felhőalapú szolgáltatások (például a Azure Files) számlázásának legalapvetőbb tárolója.
-- **Erőforráscsoport** : az erőforráscsoport az Azure-erőforrások logikai csoportja, például egy Storage-fiók vagy egy Storage Sync szolgáltatás. Létrehozhat egy új erőforráscsoportot, vagy használhat meglévő erőforráscsoportot Azure File Synchoz. (Az erőforráscsoportok tárolóként való használatát javasoljuk, hogy a szervezet számára logikailag elkülönítse az erőforrásokat, például a HR-erőforrások vagy egy adott projekt erőforrásainak csoportosítását.)
-- **Hely** : az a régió, amelyben a Azure file Sync központilag telepíteni kívánja. Ebben a listában csak a támogatott régiók érhetők el.
+- **Name (név**): a Storage Sync szolgáltatás egyedi neve (régiónként).
+- **Előfizetés**: az előfizetés, amelyben létre szeretné hozni a Storage Sync szolgáltatást. A szervezet konfigurációs stratégiájától függően előfordulhat, hogy egy vagy több előfizetéshez fér hozzá. Az Azure-előfizetés az egyes felhőalapú szolgáltatások (például a Azure Files) számlázásának legalapvetőbb tárolója.
+- **Erőforráscsoport**: az erőforráscsoport az Azure-erőforrások logikai csoportja, például egy Storage-fiók vagy egy Storage Sync szolgáltatás. Létrehozhat egy új erőforráscsoportot, vagy használhat meglévő erőforráscsoportot Azure File Synchoz. (Az erőforráscsoportok tárolóként való használatát javasoljuk, hogy a szervezet számára logikailag elkülönítse az erőforrásokat, például a HR-erőforrások vagy egy adott projekt erőforrásainak csoportosítását.)
+- **Hely**: az a régió, amelyben a Azure file Sync központilag telepíteni kívánja. Ebben a listában csak a támogatott régiók érhetők el.
 
 Ha elkészült, válassza a **Létrehozás** lehetőséget a Storage Sync szolgáltatás telepítéséhez.
 
@@ -295,9 +295,9 @@ A bejelentkezést követően a rendszer a következő információk megadását 
 
 ![A kiszolgáló regisztrációs felhasználói felület képernyőképe](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
-- **Azure-előfizetés** : a Storage Sync szolgáltatást tartalmazó előfizetés (lásd: [a Storage Sync szolgáltatás üzembe helyezése](#deploy-the-storage-sync-service)). 
-- **Erőforráscsoport** : a Storage Sync szolgáltatást tartalmazó erőforráscsoport.
-- **Storage Sync szolgáltatás** : annak a Storage Sync szolgáltatásnak a neve, amellyel regisztrálni kíván.
+- **Azure-előfizetés**: a Storage Sync szolgáltatást tartalmazó előfizetés (lásd: [a Storage Sync szolgáltatás üzembe helyezése](#deploy-the-storage-sync-service)). 
+- **Erőforráscsoport**: a Storage Sync szolgáltatást tartalmazó erőforráscsoport.
+- **Storage Sync szolgáltatás**: annak a Storage Sync szolgáltatásnak a neve, amellyel regisztrálni kíván.
 
 Miután kiválasztotta a megfelelő adatokat, válassza a **regisztráció** lehetőséget a kiszolgáló regisztrációjának befejezéséhez. A regisztrációs folyamat részeként a rendszer újabb bejelentkezésre kéri fel.
 
@@ -322,16 +322,16 @@ A Felhőbeli végpont egy Azure-fájlmegosztás mutatója. Minden kiszolgálói 
 A Felhőbeli végpontot létrehozó rendszergazdának a felügyeleti szerepkör **tulajdonosának** kell lennie ahhoz a Storage-fiókhoz, amely tartalmazza azt az Azure-fájlmegosztást, amelyre a felhő végpontja mutat. Ez a Storage-fiókhoz tartozó Azure Portal **Access Control (iam)** lehetőséggel konfigurálható.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-Egy szinkronizálási csoport létrehozásához nyissa meg a [Azure Portal](https://portal.azure.com/)a Storage Sync Service-t, majd válassza a **+ szinkronizálás csoport** :
+Egy szinkronizálási csoport létrehozásához nyissa meg a [Azure Portal](https://portal.azure.com/)a Storage Sync Service-t, majd válassza a **+ szinkronizálás csoport**:
 
 ![Új szinkronizálási csoport létrehozása az Azure portálon](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
 
 A megnyíló panelen adja meg a következő információkat a szinkronizálási csoport létrehozásához egy felhőbeli végponttal:
 
-- **Szinkronizálási csoport neve** : a létrehozandó szinkronizálási csoport neve. A Társzinkronizálási szolgáltatáson belül egyedinek kell lennie a névnek, de lehet bármilyen Ön számára logikus név.
-- **Előfizetés** : az előfizetés, amelyben üzembe helyezte a Storage Sync szolgáltatást a [Storage Sync szolgáltatás üzembe helyezése](#deploy-the-storage-sync-service)során.
-- **Storage-fiók** : Ha a **Storage-fiók kiválasztása** lehetőséget választja, egy másik panel jelenik meg, ahol kiválaszthatja azt a Storage-fiókot, amelyhez a szinkronizálni kívánt Azure-fájlmegosztás tartozik.
-- **Azure-fájlmegosztás** : annak az Azure-fájlmegosztásnak a neve, amellyel szinkronizálni kíván.
+- **Szinkronizálási csoport neve**: a létrehozandó szinkronizálási csoport neve. A Társzinkronizálási szolgáltatáson belül egyedinek kell lennie a névnek, de lehet bármilyen Ön számára logikus név.
+- **Előfizetés**: az előfizetés, amelyben üzembe helyezte a Storage Sync szolgáltatást a [Storage Sync szolgáltatás üzembe helyezése](#deploy-the-storage-sync-service)során.
+- **Storage-fiók**: Ha a **Storage-fiók kiválasztása** lehetőséget választja, egy másik panel jelenik meg, ahol kiválaszthatja azt a Storage-fiókot, amelyhez a szinkronizálni kívánt Azure-fájlmegosztás tartozik.
+- **Azure-fájlmegosztás**: annak az Azure-fájlmegosztásnak a neve, amellyel szinkronizálni kíván.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 A szinkronizálási csoport létrehozásához hajtsa végre a következő PowerShellt. Ne felejtse el lecserélni a `<my-sync-group>` szinkronizálási csoport kívánt nevére.
@@ -414,11 +414,11 @@ Kiszolgálói végpont hozzáadásához nyissa meg az újonnan létrehozott szin
 
 A **Kiszolgálói végpont felvétele** panelen adja meg a következő információkat a kiszolgálói végpont létrehozásához:
 
-- **Regisztrált kiszolgáló** : annak a kiszolgálónak vagy fürtnek a neve, amelyben létre kívánja hozni a kiszolgálói végpontot.
-- **Elérési út** : a szinkronizálási csoport részeként szinkronizálandó Windows Server-elérési út.
-- **Felhőbeli rétegek** : a felhőalapú rétegek engedélyezésére vagy letiltására szolgáló kapcsoló. A felhő-előállítók esetében a ritkán használt vagy a hozzáfért fájlok Azure Files.
-- **Kötet szabad területe** : a kiszolgáló végpontját tartalmazó köteten foglalható szabad terület. Ha például a kötet szabad területe 50%-ra van állítva egy olyan köteten, amely egyetlen kiszolgálói végponttal rendelkezik, az adatmennyiség nagyjából fele lesz a Azure Files. Függetlenül attól, hogy engedélyezve van-e a felhőalapú rétegek használata, az Azure-fájlmegosztás mindig a szinkronizálási csoportban lévő összes adattal rendelkezik.
-- **Kezdeti letöltési mód** : ez egy opcionális lehetőség, amely az ügynök 11-es verziójától kezdve hasznos lehet, ha az Azure-fájlmegosztás fájljai vannak, de a kiszolgálón nem. Ilyen helyzet létezhet például, ha létrehoz egy kiszolgálói végpontot egy másik fiókirodai kiszolgáló egy szinkronizálási csoportba való felvételéhez, vagy egy hibás kiszolgáló meghibásodása esetén. Ha a felhő-rétegek engedélyezve vannak, az alapértelmezés szerint csak a névteret kell visszahívnia, kezdetben nincs fájl tartalma. Ez akkor hasznos, ha úgy gondolja, hogy a felhasználói hozzáférési kérelmeknek el kell dönteniük, hogy milyen fájlokra hívja fel a rendszer a kiszolgálót. Ha a felhő-réteg le van tiltva, az alapértelmezett érték az, hogy a rendszer először letölti a névteret, majd a rendszer visszahívja a fájlokat a legutóbbi módosítás időbélyegzője alapján, amíg el nem éri a helyi kapacitást. A kezdeti letöltési mód azonban csak a névtérre módosítható. A harmadik mód csak akkor használható, ha a Felhőbeli rétegek letiltva ezen a kiszolgálói végponton. Ez a mód elkerüli a névtér visszahívását. A fájlok csak akkor jelennek meg a helyi kiszolgálón, ha teljes mértékben le lettek letöltve. Ez a mód akkor lehet hasznos, ha például egy alkalmazásnak teljes fájlokra van szüksége, és nem tudja elviselni a rétegű fájlokat a névtérben.
+- **Regisztrált kiszolgáló**: annak a kiszolgálónak vagy fürtnek a neve, amelyben létre kívánja hozni a kiszolgálói végpontot.
+- **Elérési út**: a szinkronizálási csoport részeként szinkronizálandó Windows Server-elérési út.
+- **Felhőbeli rétegek**: a felhőalapú rétegek engedélyezésére vagy letiltására szolgáló kapcsoló. A felhő-előállítók esetében a ritkán használt vagy a hozzáfért fájlok Azure Files.
+- **Kötet szabad területe**: a kiszolgáló végpontját tartalmazó köteten foglalható szabad terület. Ha például a kötet szabad területe 50%-ra van állítva egy olyan köteten, amely egyetlen kiszolgálói végponttal rendelkezik, az adatmennyiség nagyjából fele lesz a Azure Files. Függetlenül attól, hogy engedélyezve van-e a felhőalapú rétegek használata, az Azure-fájlmegosztás mindig a szinkronizálási csoportban lévő összes adattal rendelkezik.
+- **Kezdeti letöltési mód**: ez egy opcionális lehetőség, amely az ügynök 11-es verziójától kezdve hasznos lehet, ha az Azure-fájlmegosztás fájljai vannak, de a kiszolgálón nem. Ilyen helyzet létezhet például, ha létrehoz egy kiszolgálói végpontot egy másik fiókirodai kiszolgáló egy szinkronizálási csoportba való felvételéhez, vagy egy hibás kiszolgáló meghibásodása esetén. Ha a felhő-rétegek engedélyezve vannak, az alapértelmezés szerint csak a névteret kell visszahívnia, kezdetben nincs fájl tartalma. Ez akkor hasznos, ha úgy gondolja, hogy a felhasználói hozzáférési kérelmeknek el kell dönteniük, hogy milyen fájlokra hívja fel a rendszer a kiszolgálót. Ha a felhő-réteg le van tiltva, az alapértelmezett érték az, hogy a rendszer először letölti a névteret, majd a rendszer visszahívja a fájlokat a legutóbbi módosítás időbélyegzője alapján, amíg el nem éri a helyi kapacitást. A kezdeti letöltési mód azonban csak a névtérre módosítható. A harmadik mód csak akkor használható, ha a Felhőbeli rétegek letiltva ezen a kiszolgálói végponton. Ez a mód elkerüli a névtér visszahívását. A fájlok csak akkor jelennek meg a helyi kiszolgálón, ha teljes mértékben le lettek letöltve. Ez a mód akkor lehet hasznos, ha például egy alkalmazásnak teljes fájlokra van szüksége, és nem tudja elviselni a rétegű fájlokat a névtérben.
 
 A kiszolgálói végpont hozzáadásához válassza a **Létrehozás** lehetőséget. A fájlok most már szinkronban vannak az Azure-fájlmegosztás és a Windows Server között. 
 
@@ -581,7 +581,7 @@ Az új korlát érvénybe léptetéséhez újra kell futtatnia a parancsmagot a 
 
 Az ügynök 11-es verziójában az új mód elérhetővé válik egy kiszolgálói végponton. Ez a mód lehetővé teszi a globálisan elosztott vállalatok számára, hogy a kiszolgálói gyorsítótárat egy előre kitöltött távoli régióban is használják, még mielőtt a helyi felhasználók hozzáférjenek a fájlokhoz. Ha engedélyezve van egy kiszolgálói végponton, ez a mód azt eredményezi, hogy a kiszolgáló felidézi az Azure-fájlmegosztás során létrehozott vagy módosított fájlokat.
 
-### <a name="scenario"></a>Használati eset
+### <a name="scenario"></a>Eset
 
 A globálisan elosztott vállalatok fiókirodái az Egyesült Államokban és Indiában találhatóak. A délelőtti (amerikai idő) információkkal dolgozó szakemberek új mappát és új fájlokat hoznak létre egy új projekthez, és egész nap dolgozhatnak hozzájuk. Azure File Sync fogja szinkronizálni a mappát és a fájlokat az Azure-fájlmegosztás (Felhőbeli végpont) számára. Az indiai információs szakemberek továbbra is a projekten dolgoznak a saját időzónájában. Amikor reggel érkeznek, az indiai helyi Azure File Sync-kiszolgáló számára elérhetővé kell tennie ezeket az új fájlokat helyileg, így az indiai csapat hatékonyan dolgozhat ki helyi gyorsítótárból. Ha engedélyezi ezt a módot, azzal megakadályozza, hogy az igény szerinti visszahívás miatt a kezdeti fájlhoz való hozzáférés lassabb legyen, és lehetővé teszi a kiszolgáló számára, hogy az Azure-fájlmegosztás módosításakor vagy létrehozásakor proaktív módon felidézze a fájlokat.
 

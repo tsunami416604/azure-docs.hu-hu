@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753892"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861951"
 ---
 # <a name="agent-based-migration-architecture"></a>Ügynökalapú migrálási architektúra
 
@@ -99,7 +99,7 @@ Az ebben a táblázatban szereplő értékek alapján megállapíthatja, hogy sz
 --- | --- | --- | --- | ---
 8 vCPU (2 szoftvercsatorna * 4 mag \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB vagy kevesebb | < 100 gép 
 12 vCPU (2 szoftvercsatorna * 6 mag \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB – 1 TB | 100-150 gép.
-16 vCPU (2 szoftvercsatorna * 8 mag \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB – 2 TB | 151-200 gép.
+16 vCPU (2 szoftvercsatorna * 8 mag \@ 2,5 GHz) | 32 GB |  1 TB | 1 TB – 2 TB | 151-200 gép.
 
 ### <a name="sizing-scale-out-process-servers"></a>Méretezési Felskálázási folyamat kiszolgálói
 
@@ -108,7 +108,7 @@ Ha egy kibővíthető folyamat-kiszolgálót kell üzembe helyeznie, használja 
 **Folyamatkiszolgáló** | **Szabad terület az adatgyorsítótárazáshoz** | **Adatforgalom aránya** | **Replikációs korlátok**
 --- | --- | --- | --- 
 4 vCPU (2 szoftvercsatorna * 2 mag \@ 2,5 GHz), 8 GB memória | 300 GB | 250 GB vagy kevesebb | Akár 85 gép 
-8 vCPU (2 szoftvercsatorna * 4 mag \@ 2,5 GHz), 12 GB memória | 600 GB | 251 GB – 1 TB    | 86-150 gép.
+8 vCPU (2 szoftvercsatorna * 4 mag \@ 2,5 GHz), 12 GB memória | 600 GB | 251 GB – 1 TB | 86-150 gép.
 12 vCPU (2 szoftvercsatorna * 6 mag \@ 2,5 GHz), 24 GB memória | 1 TB | 1-2 TB | 151-225 gép.
 
 ## <a name="throttle-upload-bandwidth"></a>Sávszélesség-feltöltés szabályozása.
