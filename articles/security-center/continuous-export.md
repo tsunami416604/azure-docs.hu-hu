@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862462"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832709"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center-adatfeldolgozás folyamatos exportálása
 
@@ -24,6 +24,7 @@ A **folyamatos exportálással** teljes mértékben testreszabhatja, hogy *mi* t
 - Az összes magas súlyosságú riasztást egy Azure Event hub-ba küldi a rendszer
 - Az SQL Server-kiszolgálók biztonsági rések felmérésével kapcsolatos összes közepes vagy magasabb súlyossági megállapítást egy adott Log Analytics-munkaterületre kell elküldeni
 - Konkrét javaslatok érkeznek egy Event hub-vagy Log Analytics-munkaterületre, amikor létrehozzák őket 
+- Az előfizetés biztonságos pontszámát egy Log Analytics munkaterületre küldi a rendszer, ha a vezérlőelem pontszáma 0,01 vagy újabb értékkel változik 
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Analytics munkaterületekre vagy az Azure Event Hubsra.
 
@@ -45,8 +46,18 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Anal
 |||
 
 
+## <a name="what-data-types-can-be-exported"></a>Milyen adattípusokat lehet exportálni?
 
+A folyamatos exportálás a következő adattípusokat exportálhatja, valahányszor változnak:
 
+- Biztonsági riasztások
+- Biztonsági javaslatok 
+- Biztonsági megállapítások, amelyek a sebezhetőségi felmérési képolvasók vagy adott rendszerfrissítések eredményeire vonatkozó "alárendelt" javaslatokként is megtekinthetők. Kiválaszthatja, hogy a "fölérendelt" javaslatokkal együtt tartalmazza a "rendszerfrissítéseket a számítógépekre".
+- Biztonságos pontszám (előfizetés vagy vezérlés alapján)
+- Szabályozási megfelelőségi adatszolgáltatások
+
+> [!NOTE]
+> A biztonságos pontszám és a szabályozás megfelelőségi adatexportálása előzetes funkció, és nem érhető el a kormányzati felhőkben. 
 
 ## <a name="set-up-a-continuous-export"></a>Folyamatos exportálás beállítása 
 
@@ -67,7 +78,7 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
     Itt láthatja az exportálási beállításokat. Minden elérhető exportálási célponthoz van egy lap. 
 
 1. Válassza ki az exportálni kívánt adattípust, és válasszon az egyes típusok szűrőinek közül (például csak a nagy súlyosságú riasztások exportálása).
-1. Ha a választás a következő négy javaslat egyikét tartalmazza, akkor a sebezhetőségi felmérés eredményei együttesen is felvehetők:
+1. Ha a kijelölés magában foglalja a javaslatok egyikét is, a sebezhetőségi felmérés eredményei együttesen is felvehetők:
     - A sebezhetőségi felmérés eredményeit az SQL-adatbázisokban szervizelni kell
     - A biztonsági rések felmérésének eredményeit a gépeken lévő SQL-kiszolgálókon szervizelni kell (előzetes verzió)
     - A Azure Container Registry lemezképekben található biztonsági réseket szervizelni kell (Qualys-alapú)
@@ -79,7 +90,7 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
     :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban" :::
 
 1. Az "exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="use-the-rest-api"></a>[**A REST API használata**](#tab/rest-api)
 
@@ -216,6 +227,9 @@ Nem. A folyamatos Exportálás az **események** folyamatos továbbítására k�
 
 - Az Exportálás engedélyezése előtt fogadott **riasztások** nem lesznek exportálva.
 - A **javaslatok** akkor lesznek elküldve, amikor egy erőforrás megfelelőségi állapota megváltozik. Például, ha egy erőforrás kifogástalan állapotról sérültre vált. Ezért a riasztásokhoz hasonlóan a nem módosult erőforrásokra vonatkozó ajánlásokat is, mivel az exportálás nem lesz exportálva.
+- A **biztonságos pontszám (előzetes verzió)** biztonsági vezérléssel vagy előfizetéssel akkor kerül elküldésre, ha a biztonsági vezérlő pontszáma 0,01 vagy újabb értékre változik. 
+- A rendszer elküldi a megfelelőségi **állapotot (előzetes verzió)** az erőforrás megfelelőségi változásainak állapota esetén.
+
 
 
 ### <a name="why-are-recommendations-sent-at-different-intervals"></a>A javaslatok elküldése miért különböző időközönként történik?
@@ -235,7 +249,7 @@ Igen! Vegye figyelembe, hogy sok Security Center riasztás csak akkor érhető e
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja a javaslatok és riasztások folyamatos exportálását. Azt is megtanulta, hogyan töltheti le a riasztási adatait CSV-fájlként. 
 

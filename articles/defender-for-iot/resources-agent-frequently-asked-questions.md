@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 9862519a2003eb373c43fef1b660986a8d830327
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f584f11603e41b63f3c96749ed6c720eb5ce07a8
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094457"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835057"
 ---
 # <a name="azure-defender-for-iot-agent-frequently-asked-questions"></a>Azure Defender a IoT-ügynökhöz – gyakori kérdések
 
 Ez a cikk a IoT-ügynök Defender szolgáltatásával kapcsolatos gyakori kérdések és válaszok listáját tartalmazza.
-
 
 ## <a name="do-i-have-to-install-an-embedded-security-agent"></a>Telepíteni kell egy beágyazott biztonsági ügynököt?
 
@@ -41,7 +40,6 @@ Az ügynök telepítése a IoT-eszközökön nem kötelező, hogy a Defender IoT
 A Defender for IoT-ügynök az eszközök konfigurálására, viselkedésére és hozzáférésére (a konfiguráció vizsgálatával) biztosítja az eszköz szintű veszélyforrások lefedettségét, feldolgozza & a kapcsolatot. A IoT biztonsági ügynök Defender nem vizsgálja meg az üzleti tevékenységgel kapcsolatos adatait vagy tevékenységeit.
 
 A Defender for IoT biztonsági ügynök nyílt forráskódú, és elérhető a GitHubon a 32 bites és a 64-bites Windows-és Linux-verziókon: https://github.com/Azure/Azure-IoT-Security .
-
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Mik az ügynök függőségei és előfeltételei?
 
@@ -87,13 +85,11 @@ Az ügynök nem kapcsolható ki.
 
 Ha az ügynök leállítja a kommunikációt, vagy nem tudja elküldeni a biztonsági üzeneteket, az **eszköz csendes** riasztást generál.
 
-
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni arról, hogyan kezdheti meg a Defendert a IoT-hez, tekintse meg a következő cikkeket:
 
 - Olvassa el a Defender for IoT [áttekintését](overview.md)
-- A [szolgáltatás előfeltételeinek](service-prerequisites.md) ellenőrzése
-- További információ az [első lépésekről](getting-started.md)
+- A [Előfeltételek](quickstart-system-prerequisites.md) ellenőrzése
+- További információ a [IoT Defender](getting-started.md) használatába való használatáról
 - [A Defender IoT biztonsági riasztások](concept-security-alerts.md) megismerése

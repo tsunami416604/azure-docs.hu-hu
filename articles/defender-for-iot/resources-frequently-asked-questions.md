@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 5e7eabd44ea8c56fbb102f9e48812745a31de62a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089196"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835023"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Azure Defender a IoT-hez – gyakori kérdések
 
@@ -79,15 +79,11 @@ Igen. Az előre meghatározott viselkedések, például az IP-címek és a nyito
 
 Az érzékelők és ügynökök továbbra is futtatják és tárolják az adataikat, amíg az eszköz fut. A rendszer a biztonsági üzenet gyorsítótárában tárolja az adatmennyiséget a méret konfigurációjának megfelelően. Amikor az eszköz visszanyeri a kapcsolatot, a biztonsági üzenetek folytatják a küldést.
 
-
-
-
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni arról, hogyan kezdheti meg a Defendert a IoT-hez, tekintse meg a következő cikkeket:
 
 - Olvassa el a Defender for IoT [áttekintését](overview.md)
-- A [szolgáltatás előfeltételeinek](service-prerequisites.md) ellenőrzése
-- További információ az [első lépésekről](getting-started.md)
+- A [Előfeltételek](quickstart-system-prerequisites.md) ellenőrzése
+- További információ a [IoT Defender](getting-started.md) használatába való használatáról
 - [A Defender IoT biztonsági riasztások](concept-security-alerts.md) megismerése

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 64d90b4d9dc3efbe877230bbc20780b1c4f2d213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5773f7af3bb065976e8f05d7b54c58b90da2d3d2
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90939753"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835125"
 ---
 # <a name="security-agent-reference-architecture"></a>Biztonsági ügynök hivatkozási architektúrája
 
@@ -45,13 +45,13 @@ A IoT biztonsági ügynökök védelmezője nyílt forráskódú projektként va
 
 A Defender for IoT különböző telepítő ügynököket kínál a 32 bites és 64 bites Windows rendszerekhez, és ugyanezt a 32 bites és 64 bites Linux rendszeren. Győződjön meg arról, hogy rendelkezik a megfelelő ügynök-telepítővel az egyes eszközökhöz az alábbi táblázat szerint:
 
-| Architektúra | Linux | Windows |    Részletek|
-|----------|----------------------------------------------|-------------|-------------------------------------------|
-| bitesként  | C#  | C#  ||
-| 64bit  | C# vagy C           | C#      | Azt javasoljuk, hogy a C ügynököt olyan eszközökön használja, amelyeken korlátozottabb vagy minimális erőforrású eszköz van.|
-|
+| Architektúra | Linux | Windows | Részletek |
+|--|--|--|--|
+| bitesként | C# | C# |  |
+| 64bit | C# vagy C | C# | Azt javasoljuk, hogy a C ügynököt olyan eszközökön használja, amelyeken korlátozottabb vagy minimális erőforrású eszköz van. |
 
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta a IoT biztonsági ügynök architektúrájának és az elérhető telepítőknek a Defender szolgáltatását.
 
@@ -59,6 +59,6 @@ A Defender IoT-telepítéssel való használatának folytatásához használja a
 
 - A [biztonsági ügynök hitelesítési módszereinek](concept-security-agent-authentication-methods.md) megismerése
 - [Biztonsági ügynök](how-to-deploy-agent.md) kiválasztása és központi telepítése
-- A Defender IoT [szolgáltatás előfeltételeinek](service-prerequisites.md) áttekintése
+- Tekintse át a Defender IoT [rendszerkövetelményeit](quickstart-system-prerequisites.md)
 - Ismerje meg, hogyan [engedélyezheti a Defender for IoT szolgáltatást a IoT hub](quickstart-onboard-iot-hub.md)
 - További információ a szolgáltatásról a [Defender for IoT – gyakori kérdések](resources-frequently-asked-questions.md)

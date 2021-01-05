@@ -3,14 +3,14 @@
 - name: Áttekintés
   expanded: true
   items:
-    - name: Tudnivalók a Security Centerről
+    - name: Mi az az Azure Security Center?
+      href: security-center-introduction.md
+    - name: Rendelkezésre állás
       items:
-        - name: Mi az az Azure Security Center?
-          href: security-center-introduction.md
         - name: Támogatott platformok
           displayName: coverage
           href: security-center-os-coverage.md
-        - name: Virtuális gépek funkciólefedettsége
+        - name: 'Lefedettség az operációs rendszer, a gép típusa és a felhő alapján'
           href: security-center-services.md
         - name: Azure PaaS-erőforrások funkciólefedettsége
           href: features-paas.md
@@ -110,6 +110,8 @@
       href: tutorial-security-incident.md
     - name: Előírásoknak való megfelelés javítása
       href: security-center-compliance-dashboard.md
+    - name: Biztonsági szabályzatok kezelése
+      href: tutorial-security-policy.md
 - name: Alapelvek
   items:
     - name: Felhőbeli biztonsági helyzet kezelése
@@ -120,11 +122,6 @@
           href: secure-score-security-controls.md
         - name: Biztonsági javaslatok áttekintése
           href: security-center-recommendations.md
-        - name: A biztonsági szabályzatok áttekintése
-          href: tutorial-security-policy.md
-        - name: Beépített biztonsági szabályzatok
-          displayName: 'samples, policy'
-          href: ./policy-reference.md
         - name: Javaslatok használata a biztonság növelése érdekében
           href: security-center-using-recommendations.md
         - name: Biztonsági alapkonfiguráció
@@ -224,14 +221,9 @@
         - name: A Docker-gazdagépek megerősítése
           displayName: containers
           href: harden-docker-hosts.md
-    - name: Az SQL-hez készült Azure Defender használata
-      items:
-        - name: Az SQL-hez készült Azure Defender konfigurálása Azure-beli virtuális gépeken
+        - name: Az SQL-hez készült Azure Defender használata
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: Az SQL Information Protection-szabályzat testreszabása
-          displayName: 'sql, database, data discovery'
-          href: security-center-info-protection-policy.md
     - name: Az Azure Defender használata tárolóregisztrációs adatbázisokhoz
       items:
         - name: Biztonsági rések meglétének ellenőrzése a regisztrációs adatbázis rendszerképei kapcsán
@@ -281,6 +273,9 @@
       href: security-center-investigation-user-data.md
     - name: Bérlőszintű áttekintés
       href: security-center-management-groups.md
+    - name: Az SQL Information Protection-szabályzat testreszabása
+      displayName: 'sql, database, data discovery'
+      href: security-center-info-protection-policy.md
 - name: Referencia
   items:
     - name: REST API-k
@@ -297,6 +292,9 @@
           href: faq-vms.md
         - name: Meglévő Azure Log Analytics-felhasználók
           href: faq-azure-monitor-logs.md
+    - name: Beépített biztonsági szabályzatok
+      displayName: 'samples, policy'
+      href: policy-reference.md
     - name: Az Azure-ütemterv blogja
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Végpontvédelmi értékelés és javaslatok

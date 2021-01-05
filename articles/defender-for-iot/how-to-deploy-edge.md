@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 75a9d1267a8824801e3c24fc25c687f29a808187
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c2b440413599ce07112231af17daa0bc14817b76
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339931"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832777"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
 
@@ -53,7 +53,7 @@ A következő lépésekkel telepítheti a Defender for IoT biztonsági modulját
 
 1. Válassza a **eszközök internetes hálózata** lehetőséget, majd keresse meg a **Defender for IoT** elemet, és jelölje ki.
 
-   ![IoT-védő kiválasztása](media/howto/edge-onboarding-8.png)
+   :::image type="content" source="media/howto/edge-onboarding-8.png" alt-text="IoT-védő kiválasztása":::
 
 1. A telepítés konfigurálásához kattintson a **Létrehozás** gombra.
 
@@ -139,7 +139,7 @@ Hajtsa végre az egyes lépéseket, hogy elvégezze a IoT IoT Edge-telepítésé
     }
     ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. Kattintson a **Tovább** gombra.
 

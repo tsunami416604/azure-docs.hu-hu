@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: erhopf
-ms.openlocfilehash: 818ea89822b67c9bca99a4b8934a08d9b384f8b6
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 3814f52034922c7814b1d45822ca1e9d5f248825
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736442"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844967"
 ---
 # <a name="language-support-for-form-recognizer"></a>Nyelvi támogatás az űrlap-felismerőhöz
 
@@ -24,12 +24,12 @@ Ez a táblázat felsorolja az űrlap-felismerő szolgáltatás által támogatot
 
 |Nyelv| Nyelvkód | Űrlap-felismerő v 2.0 | Űrlap felismerő v 2.1 – előzetes verzió|
 |:-----|:----:|:-----:|:---:|
-|Angol (nyomtatott & kézzel írott) | `en` | ✔ | ✔|
 |Kínai (egyszerűsített) | `zh-Hans`| | ✔ |
-|Japán | `ja` |  | ✔|
 |Holland | `nl` | | ✔ |
+|Angol (nyomtatott & kézzel írott) | `en` | ✔ | ✔|
 |Francia | `fr` | | ✔ |
 |Német | `de` | | ✔ |
 |Olasz | `it` | | ✔ |
+|Japán | `ja` |  | ✔|
 |Portugál | `pt` | | ✔ |
 |Spanyol | `es` | | ✔ |

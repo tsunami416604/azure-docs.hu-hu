@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: b4acd431656eb008702f62dc1ecf12bda62dae17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176060700f50a6ce6e8cb5cf622ee4c922e5a952
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051083"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845364"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Nyelvi és területi támogatás a tinta-felismerő API-hoz
 
@@ -41,10 +41,10 @@ Ez a cikk ismerteti, hogy a tinta-felismerő API Milyen nyelveket támogat. Az A
 | Holland (Hollandia)                        |     `nl-NL`     |
 | Angol (Ausztrália)                        |     `en-AU`     |
 | Angol (Kanada)                           |     `en-CA`     |
-| angol (Egyesült Királyság)                   |     `en-GB`     |
 | Angol (India)                            |     `en-IN`     |
+| angol (Egyesült Királyság)                   |     `en-GB`     |
 | angol (Egyesült Államok)                    |     `en-US`     |
-| Finn                                    |     `fi-FI`     |
+| finn                                    |     `fi-FI`     |
 | Francia (Franciaország)                            |     `fr-FR`     |
 | Gallego                                   |     `gl-ES`     |
 | Német (Svájc)                      |     `de-CH`     |
@@ -67,23 +67,23 @@ Ez a cikk ismerteti, hogy a tinta-felismerő API Milyen nyelveket támogat. Az A
 | Lengyel                                     |     `pl-PL`     |
 | Portugál (Brazília)                        |     `pt-BR`     |
 | Portugál (Portugália)                      |     `pt-PT`     |
-| Réto                                    |     `rm-CH`     |
 | Román                                   |     `ro-RO`     |
+| Réto                                    |     `rm-CH`     |
 | Orosz                                    |     `ru-RU`     |
 | Skót gael                            |     `gd-GB`     |
-| Sesotho sa szoto                           |    `nso-ZA`     |
 | Szerb (cirill betűs, Bosznia-Hercegovina) |  `sr-Cyrl-BA`   |
 | Szerb (cirill betűs, Montenegró)             |  `sr-Cyrl-ME`   |
 | Szerb (cirill, Szerbia)                 |  `sr-Cyrl-RS`   |
 | Szerb (latin betűs, Bosznia-Hercegovina)    |  `sr-Latn-BA`   |
 | Szerb (latin betűs, Montenegró)                |  `sr-Latn-ME`   |
 | Szerb (latin, Szerbia)                    |  `sr-Latn-RS`   |
+| Sesotho sa szoto                           |    `nso-ZA`     |
 | Setswana (Dél-Afrika)                    |     `tn-ZA`     |
 | Szlovák                                     |     `sk-SK`     |
 | Szlovén                                  |     `sl-SI`     |
 | Spanyol (Argentína)                        |     `es-AR`     |
-| Spanyol (Spanyolország)                            |     `es-ES`     |
 | Spanyol (Mexikó)                           |     `es-MX`     |
+| Spanyol (Spanyolország)                            |     `es-ES`     |
 | Svéd (Svédország)                           |     `sv-SE`     |
 | Török                                    |     `tr-TR`     |
 | walesi                                      |     `cy-GB`     |
@@ -91,7 +91,7 @@ Ez a cikk ismerteti, hogy a tinta-felismerő API Milyen nyelveket támogat. Az A
 | xhosza                                      |     `xh-ZA`     |
 | zulu                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi az Ink Recognizer API?](overview.md)
 * [Digitális tollvonások küldése a tinta-felismerő API-nak](concepts/send-ink-data.md)

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: b3a633c1eff6adf2a33b4f3bfc818eb51ff5ee85
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 180de56e3c158802460d2ff995041e8572d4dcd7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653095"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844972"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 nyelvi támogatás 
 
@@ -61,9 +61,9 @@ ms.locfileid: "97653095"
 | Nyelv               | Nyelvkód | v 2.1 támogatás | v3 támogatás | A v3 modell verziójától kezdve: |       Jegyzetek        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arab                |     `ar`      |     ✓      |            |                                 |                    |
-| cseh                 |     `cs`      |     ✓      |            |                                 |                    |
 | Chinese-Simplified     |   `zh-hans`   |     ✓      |            |                                 | `zh` szintén elfogadva |
 | Chinese-Traditional   |   `zh-hant`   |     ✓      |            |                                 |                    |
+| cseh                 |     `cs`      |     ✓      |            |                                 |                    |
 | dán                |     `da`      |     ✓      |            |                                 |                    |
 | Holland                 |     `nl`      |     ✓      |            |                                 |                    |
 | Angol                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
@@ -77,14 +77,14 @@ ms.locfileid: "97653095"
 | Koreai                |     `ko`      |     ✓      |            |                                 |                    |
 | Norvég (nyelven)   |     `no`      |     ✓      |            |                                 | `nb` szintén elfogadva |
 | Lengyel                |     `pl`      |     ✓      |            |                                 |                    |
-| Portugál (Portugália) |    `pt-PT`    |     ✓      |            |                                 | `pt` szintén elfogadva |
 | Portugál (Brazília)   |    `pt-BR`    |     ✓      |            |                                 |                    |
+| Portugál (Portugália) |    `pt-PT`    |     ✓      |            |                                 | `pt` szintén elfogadva |
 | Orosz              |     `ru`      |     ✓      |            |                                 |                    |
 | Spanyol               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | svéd               |     `sv`      |     ✓      |            |                                 |                    |
 | Török               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Kulcskifejezések kinyerése](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Fő kifejezés kibontása](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > A 2020-07-01 előtti Kulcsszókeresés modellek 64 karakteres korláttal rendelkeznek. Ez a korlát nem szerepel a modell későbbi verzióiban.
@@ -101,8 +101,8 @@ ms.locfileid: "97653095"
 | Koreai                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Norvég (nyelven)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` szintén elfogadva |
 | Lengyel                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Portugál (Portugália) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` szintén elfogadva |
 | Portugál (Brazília)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Portugál (Portugália) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` szintén elfogadva |
 | Orosz               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Spanyol               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | svéd               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -217,6 +217,6 @@ Ha olyan tartalommal rendelkezik, amely ritkábban használt nyelven van kifejez
 
 ---
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Text Analytics API?](overview.md)   

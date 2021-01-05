@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352507"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835159"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>Gyors útmutató: az Azure Defender beléptetése a IoT szolgáltatásba IoT Hub
 
@@ -33,7 +33,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezheti a Defender for IoT szolgáltatá
   - Alapértelmezés szerint két típusú információt tárol a Log Analytics munkaterületen, a Defender for IoT; **biztonsági riasztások** és **javaslatok**.
   - Dönthet úgy is, hogy hozzáad egy további adattípust, **nyers eseményeket**. Vegye figyelembe, hogy a Log Analytics **nyers események** tárolása további tárolási költségekkel jár.
 - IoT Hub (standard szint)
-- Az összes [szolgáltatás előfeltételeinek](service-prerequisites.md) teljesítése
+- Teljesítse a [előfeltételeket](quickstart-system-prerequisites.md).
 
 ## <a name="enable-defender-for-iot-on-your-iot-hub"></a>A Defender engedélyezése a IoT a IoT Hub
 

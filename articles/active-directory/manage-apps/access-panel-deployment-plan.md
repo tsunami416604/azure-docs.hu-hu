@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 209760b51e0f3ab931fa43ef88406f15c75ac079
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835662"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832539"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory saját alkalmazások üzembe helyezésének megtervezése
 
@@ -54,7 +54,7 @@ A **robusztus naplózás és használat nyomon követését teszi lehetővé**: 
 
 Az alkalmazások ingyenesek, és nem igényelnek alapszintű licencet. A címtárban lévő objektumok száma és a telepíteni kívánt további funkciók azonban további licenceket igényelhetnek. A licencelési követelményekkel rendelkező gyakori Azure AD-forgatókönyvek a következő biztonsági funkciókat tartalmazzák:
 
-* [Azure AD-Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * [Csoport alapú tagság](../fundamentals/active-directory-manage-groups.md)
 * [Új jelszó önkiszolgáló kérése](../authentication/tutorial-enable-sspr.md)
 * [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
@@ -74,8 +74,8 @@ Az alábbi táblázat a saját alkalmazások központi telepítésének legfonto
 
 | Terület| Leírás |
 | - | - |
-| Access| A saját alkalmazások portál a vállalati hálózaton belüli vállalati és személyes eszközökről érhető el. |
-|Access | A saját alkalmazások portál a vállalati hálózaton kívüli vállalati eszközökről is elérhető. |
+| Hozzáférés| A saját alkalmazások portál a vállalati hálózaton belüli vállalati és személyes eszközökről érhető el. |
+|Hozzáférés | A saját alkalmazások portál a vállalati hálózaton kívüli vállalati eszközökről is elérhető. |
 | Naplózás| A használati adatok legalább 29 naponta letöltődnek a vállalati rendszerbe. |
 | Szabályozás| Az Azure AD-hez csatlakoztatott alkalmazások és csoportok felhasználói hozzárendeléseinek életciklusa definiálva és figyelve van. |
 | Biztonság| Az erőforrásokhoz való hozzáférést felhasználói és csoportos hozzárendelések segítségével szabályozhatja. Csak a jogosult felhasználók kezelhetik az erőforrás-hozzáférést. |
@@ -303,13 +303,13 @@ A legkevesebb Kiemelt szerepkörrel hajtson végre egy szükséges feladatot a A
 
 | Szerepek| Szerepkörök| Azure AD-szerepkör  |
 | - | -| -|
-| Segélyszolgálat rendszergazdája| 1. szintű támogatás| Nincs |
+| Segélyszolgálat rendszergazdája| 1. szintű támogatás| None |
 | Identity admin| Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén| Globális rendszergazda |
-| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincs |
+| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
 | Infrastruktúra-rendszergazdák| Tanúsítvány-átváltási tulajdonos| Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| Nincs |
+| Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
 
 A [Privileged Identity Management](../privileged-identity-management/pim-configure.md) segítségével kezelheti a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot biztosítson a címtár-jogosultságokkal rendelkező felhasználók számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../authentication/howto-mfa-getstarted.md)

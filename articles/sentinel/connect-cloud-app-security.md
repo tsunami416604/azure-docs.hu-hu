@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 9827e93f793ef47a835aa0a5fb2005e2830a0824
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3312eed71865508e5e83d37c7ced8cf220f13ca9
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655714"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835108"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Adatok összekapcsolásának Microsoft Cloud App Security 
 
@@ -48,7 +48,7 @@ Ha Cloud App Security üzembe helyezése és az adatai betöltése történik, a
 
 1. Kattintson a **módosítások alkalmazása** lehetőségre.
 
-1. Kiválaszthatja, hogy szeretné-e, hogy az Azure Defender-riasztások automatikusan előállítsák a Azure Security Center az Azure Sentinelben. Az **incidensek létrehozása** területen válassza az **engedélyezve** lehetőséget az alapértelmezett elemzési szabály bekapcsolásához, amely automatikusan létrehozza az incidenseket a riasztásokból. Ezt a szabályt az **elemzés** területen módosíthatja az  **aktív szabályok** lapon.
+1. Kiválaszthatja, hogy a Cloud App Security riasztások automatikusan előállítanak-e incidenseket az Azure Sentinel szolgáltatásban. Az **incidensek létrehozása alatt – ajánlott!** lehetőségnél válassza az **engedélyezve** lehetőséget, hogy bekapcsolja az alapértelmezett elemzési szabályt, amely automatikusan létrehozza az incidenseket a riasztásokból. Ezt a szabályt az **elemzés** területen módosíthatja az  **aktív szabályok** lapon.
 
 1. Ha Cloud App Security riasztásokhoz a Log Analytics vonatkozó sémát szeretné használni, írja be a következőt `SecurityAlert` a lekérdezési ablakba:. A Cloud Discovery naplók sémája mezőbe írja be a következőt: `McasShadowItReporting` .
 
@@ -57,7 +57,7 @@ Ha Cloud App Security üzembe helyezése és az adatai betöltése történik, a
 >
 > Mivel Cloud Discovery adatokat összesítenek napi rendszerességgel, vegye figyelembe, hogy a legfrissebb adatokat akár 24 órányi érték nem fogja tükrözni az Azure Sentinelben. Abban az esetben, ha egy alacsony szintű vizsgálat több azonnali adatra van szüksége, közvetlenül a forrás berendezésben vagy olyan szolgáltatásban kell elvégezni, ahol a nyers adat található.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat Microsoft Cloud App Security az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerkedjen meg a fenyegetések észlelésével az Azure Sentinel használatával, [beépített](./tutorial-detect-threats-built-in.md) vagy [Egyéni](tutorial-detect-threats-custom.md) szabályokkal.

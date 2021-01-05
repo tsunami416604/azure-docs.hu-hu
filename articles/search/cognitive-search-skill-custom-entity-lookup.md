@@ -8,17 +8,17 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936112"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844952"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Egyéni entitások keresése – kognitív képesség (előzetes verzió)
 
 > [!IMPORTANT] 
-> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs portál vagy .NET SDK-támogatás.
+> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs portál vagy .NET SDK-támogatás.
 
 Az **egyéni entitás keresési** képessége szövegeket keres a szavak és kifejezések egyéni, felhasználó által definiált listájából. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség emellett olyan zavaros egyezést is támogat, amely a hasonló, de nem pontos egyezések keresésére is alkalmazható.  
 
@@ -41,7 +41,9 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 | `entitiesDefinitionUri`    | Egy olyan JSON-vagy CSV-fájl elérési útja, amely az összes célként megadott szöveget tartalmazza. Az entitás definíciója az indexelő futtatásának elején olvasható. a fájlhoz tartozó összes frissítés nem lesz megvalósítva, amíg az újabb futtatások nem futnak. A konfigurációnak HTTPS protokollon keresztül kell elérhetőnek lennie. A várt CSV-vagy JSON-sémához lásd alább az [egyéni entitás-definíció](#custom-entity-definition-format) formátumát.|
 |`inlineEntitiesDefinition` | Beágyazott JSON-entitások definíciói. Ez a paraméter felülírja a entitiesDefinitionUri paramétert, ha van ilyen. Legfeljebb 10 KB konfigurációt lehet megadni. A várt JSON-sémáért lásd alább az [egyéni entitások definícióját](#custom-entity-definition-format) . |
 |`defaultLanguageCode` |    Választható A bemeneti szöveg tokenize és körülhatárolása során használt szövegbeviteli szöveg nyelvi kódja. A következő nyelvek támogatottak: `da, de, en, es, fi, fr, it, ko, pt` . Az alapértelmezett érték az angol ( `en` ). Ha languagecode-országhívószám formátumot továbbít, a rendszer csak a formátum languagecode-részét használja.  |
-
+|`globalDefaultCaseSensitive` | Választható A szakértelem alapértelmezett kis-és nagybetűs értéke. Ha `defaultCaseSensitive` nincs megadva egy entitás értéke, ez az érték lesz az `defaultCaseSensitive` adott entitás értéke. |
+|`globalDefaultAccentSensitive` | Választható A szakértelem alapértelmezett ékezetes értéke. Ha `defaultAccentSensitive` nincs megadva egy entitás értéke, ez az érték lesz az `defaultAccentSensitive` adott entitás értéke. |
+|`globalDefaultFuzzyEditDistance` | Választható A szakértelem alapértelmezett fuzzy szerkesztési távolságának értéke. Ha `defaultFuzzyEditDistance` nincs megadva egy entitás értéke, ez az érték lesz az `defaultFuzzyEditDistance` adott entitás értéke. |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
@@ -103,7 +105,7 @@ Az alapszintű JSON egyéni entitások listájának definíciója az egyeztetend
 ]
 ```
 
-A JSON-definíció összetettebb példája opcionálisan megadhatja az egyes entitások azonosítóját, leírását, típusát és altípusát, valamint más *aliasokat*is. Ha egy alias-kifejezés egyezik, a rendszer az entitást is visszaadja:
+A JSON-definíció összetettebb példája opcionálisan megadhatja az egyes entitások azonosítóját, leírását, típusát és altípusát, valamint más *aliasokat* is. Ha egy alias-kifejezés egyezik, a rendszer az entitást is visszaadja:
 
 ```json
 [ 
@@ -151,8 +153,10 @@ Az alábbi táblázatok részletesen ismertetik a különböző konfigurációs 
 | `subtype` | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
 | `id` | Választható Ez a mező a megfeleltetett szöveg (ek) egyéni metaadatait továbbítóként is használható. Ennek a mezőnek az értéke megjelenik a képzettségi kimenetben lévő entitás minden egyezésével. |
 | `caseSensitive` | Választható Az alapértelmezett érték a false. Logikai érték, amely azt jelzi, hogy az entitás nevével való összehasonlításnak érzékenynek kell lennie a karakterkészletre. Példa a kis-és nagybetűket megkülönböztető "Microsoft" találatokra: Microsoft, microSoft, MICROSOFT |
+| `accentSensitive` | Választható Az alapértelmezett érték a false. Logikai érték, amely azt jelzi, hogy az ékezetes és az ékezetes karakterek, például az "é" és az "e" azonosak-e. |
 | `fuzzyEditDistance` | Választható Az alapértelmezett érték 0. A maximális érték 5. Annak az eltérő karaktereknek az elfogadható számát jelöli, amelyek továbbra is egyeznek az entitás nevével. A rendszer a megadott egyezések legkisebb lehetséges bizonytalanság adja vissza.  Ha például a szerkesztési távolság értéke 3, a "Windows 10" továbbra is egyezik a "Windows", a "Windows10" és a "Windows 7" értékkel. <br/> Ha a kis-és nagybetűk megkülönböztetése hamis értékre van állítva, a kis-és nagybetűk nem számítanak bele a bizonytalanság-tűrésbe, de máskülönben |
-| `defaultCaseSensitive` | Választható Az entitás alapértelmezett érzékenységi értékének módosítása. Az összes alias caseSensitive értékének alapértelmezett értékének módosítására szolgál. |
+| `defaultCaseSensitive` | Választható Az entitás alapértelmezett érzékenységi értékének módosítása. Az összes alias caseSensitive alapértelmezett értékének módosítására használható. |
+| `defaultAccentSensitive` | Választható Megváltoztatja az entitás alapértelmezett ékezetes érzékenységi értékét. Az összes alias accentSensitive alapértelmezett értékének módosítására használható.|
 | `defaultFuzzyEditDistance` | Választható Megváltoztatja az entitás alapértelmezett homályos szerkesztési távolságának értékét. Az összes alias fuzzyEditDistance alapértelmezett értékének módosítására használható. |
 | `aliases` | Választható Összetett objektumok tömbje, amellyel alternatív helyesírásokat vagy szinonimákat adhat meg a gyökér entitás nevéhez. |
 
@@ -160,6 +164,7 @@ Az alábbi táblázatok részletesen ismertetik a különböző konfigurációs 
 |------------------|-------------|
 | `text`  | Egy megcélzott entitás nevének alternatív helyesírása vagy ábrázolása.  |
 | `caseSensitive` | Választható Ugyanaz, mint a legfelső szintű "caseSensitive" paraméter, de csak erre az aliasra vonatkozik. |
+| `accentSensitive` | Választható Ugyanaz, mint a legfelső szintű "accentSensitive" paraméter, de csak erre az aliasra vonatkozik. |
 | `fuzzyEditDistance` | Választható Ugyanaz, mint a legfelső szintű "fuzzyEditDistance" paraméter, de csak erre az aliasra vonatkozik. |
 
 
@@ -302,7 +307,7 @@ Ha úgy dönt, hogy az entitások definíciós fájljára mutató mutatót ad me
 
 Ez a figyelmeztetés akkor jelenik meg, ha az észlelt egyezések száma meghaladja a maximálisan megengedettet. Ebben az esetben az ismétlődő egyezéseket is leállítjuk. Ha ez nem fogadható el, küldjön egy [támogatási jegyet](https://ms.portal.azure.com/#create/Microsoft.Support) , hogy segítséget nyújtson az egyéni használati esetekhez.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 + [Beépített képességek](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

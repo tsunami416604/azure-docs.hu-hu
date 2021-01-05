@@ -4,21 +4,21 @@ description: Ismerje meg az Azure Defender IoT architektúra-és információár
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: rkarlin
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/08/2020
-ms.author: rkarlin
-ms.openlocfilehash: a8697094a3366e3b82ca65f1b962101243b22f84
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 12/02/2020
+ms.author: shhazam
+ms.openlocfilehash: 3b5a586b5db4fb15a32090e601bac5610ece1427
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548919"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832574"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender a IoT architektúrához
 
@@ -42,18 +42,17 @@ A IoT készült Azure Defender a következő összetevőket tartalmazza:
 - Azure Defender IoT-érzékelő virtuális géphez vagy készülékhez
 - Helyszíni felügyeleti konzol a helyi hely kezeléséhez
 
-
-![Defender a IoT architektúrához](./media/architecture/defender-iot-security-architecture.png)
+:::image type="content" source="./media/architecture/defender-iot-security-architecture-v3.png" alt-text="A Defender IoT-hez készült architektúrája.":::
 
 ### <a name="azure-defender-for-iot-sensors"></a>Azure Defender IoT-érzékelőkhöz
 
-A Defender for IoT érzékelők felderítik és folyamatosan figyelik a hálózati eszközöket. Az érzékelők összegyűjtik az INTERNETKAPCSOLATtal rendelkező hálózati forgalmat passzív (ügynök nélküli) figyeléssel a IoT és az OT-eszközökön. 
+A Defender for IoT érzékelők felfedik és folyamatosan figyelik a hálózati eszközöket. Az érzékelők összegyűjtik az INTERNETKAPCSOLATtal rendelkező hálózati forgalmat passzív (ügynök nélküli) figyeléssel a IoT és az OT-eszközökön. 
  
 A IoT és az OT-hálózatok számára készült, az ügynök nélküli technológia részletesen betekintést nyújt a IoT és az OT-ra, hogy percek alatt a hálózathoz kapcsolódjon. A hálózatra és a hálózati eszközökre a nem invazív, a Network Traffic Analysis (NTA) megközelítés miatt nulla teljesítménnyel kapcsolatos hatással van. 
  
 A szabadalmaztatott, a IoT és az OT-Aware viselkedés-elemzés és a 7. rétegbeli mély csomag vizsgálata (DPI) lehetővé teszi a hagyományos aláírás-alapú megoldások elemzését, hogy a rendellenes vagy jogosulatlan tevékenységek alapján azonnal észlelje a speciális IoT és a fenyegetéseket (például a fájl nélküli kártevőket). 
   
-A IoT érzékelőkhöz tartozó Defender egy SPAN porthoz vagy hálózati KOPPINTÁShoz csatlakozik, és azonnal megkezdi a DPI-t a IoT-on és az OT hálózati forgalomban. 
+A IoT érzékelőkhöz tartozó Defender egy SPAN porthoz vagy egy hálózati KOPPINTÁShoz csatlakozik, és azonnal megkezdi a DPI-t a IoT és az OT hálózati forgalomban. 
  
 Az adatgyűjtés,-feldolgozás,-elemzés és-riasztás közvetlenül az érzékelőn történik. Ez ideális megoldás az alacsony sávszélességű vagy nagy késésű kapcsolattal rendelkező helyekhez, mivel csak a metaadatok a felügyeleti konzolra kerülnek át.
 
@@ -72,8 +71,7 @@ Az ipari kártevő-észlelési motor az ismert kártevők, például a Conficker
 Az anomáliák észlelési motorja észleli a gépek közötti szokatlan kommunikációt és viselkedést. Az ICS-hálózatok az állapotok és átmenetek determinisztikus való modellezésével a platform rövidebb tanulási időszakot igényel, mint az általános matematikai megközelítések vagy az eredetileg az OT-nál nem használt elemzések. Emellett a hibák gyors észlelését is észleli, minimális téves pozitív értékekkel. A rendellenesség-észlelési motor riasztásai közé tartozik a túlzott SMB-bejelentkezési kísérletek száma, és a PLC-vizsgálat riasztásokat észlelt.
 
 #### <a name="operational-incident-detection"></a>Működési incidensek észlelése
-A működési incidensek észlelése olyan működési problémákat észlel, mint például az átmeneti kapcsolat, amely jelzi a berendezések meghibásodásának korai jeleit. Előfordulhat például, hogy az eszköz le van választva (nem válaszol), és a Siemens S7 stop PLC parancs riasztásokat küld.
-
+A működési incidensek észlelése olyan működési problémákat észlel, mint például az átmeneti kapcsolat, amely jelzi a berendezések meghibásodásának korai jeleit. Előfordulhat például, hogy az eszköz le van választva (nem válaszol), és a Siemens S7 stop PLC paranccsal riasztásokat küld.
 
 ### <a name="management-consoles"></a>Felügyeleti konzolok
 Az Azure Defender a hibrid környezetekben való IoT két felügyeleti portálon keresztül valósítható meg: 
@@ -82,9 +80,9 @@ Az Azure Defender a hibrid környezetekben való IoT két felügyeleti portálon
 - Azure Portal
 
 #### <a name="sensor-console"></a>Érzékelő konzol
-Az érzékelők észlelései az érzékelő konzolján jelennek meg, ahol megtekinthetők, megtekinthetők és elemezhetők egy hálózati Térkép, az eszközök leltára, valamint a jelentések széles köre, például a kockázatértékelési jelentések, az adatbányászati lekérdezések és a támadási vektorok. A-konzol segítségével megtekintheti és kezelheti az érzékelő-motorok által észlelt fenyegetéseket, továbbíthatja az információkat a harmadik féltől származó rendszerekre, kezelheti a felhasználókat és egyebeket.
+Az érzékelők észlelései az érzékelő konzolján jelennek meg, ahol megtekinthetők, megtekinthetők és elemezhetők egy hálózati Térkép, az eszközök leltára, valamint a jelentések széles köre, például a kockázatértékelési jelentések, az adatbányászati lekérdezések és a támadási vektorok. A-konzol segítségével megtekintheti és kezelheti az érzékelő-motorok által észlelt fenyegetéseket, továbbíthatja az információkat a partneri rendszereknek, kezelheti a felhasználókat és egyéb műveleteket is.
 
-![Defender a IoT-érzékelő konzolján](./media/architecture/sensor-console.png)
+:::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender a IoT-érzékelő konzolján":::
 
 #### <a name="on-premises-management-console"></a>Helyszíni felügyeleti konzol
 A helyszíni felügyeleti konzol lehetővé teszi, hogy a Security Operations Center (SOC) operátorai több érzékelőből származó riasztásokat kezelnek és elemezzenek egyetlen irányítópulton, és átfogó képet adjanak az OT-hálózatok állapotáról.
@@ -93,23 +91,38 @@ Ez az architektúra átfogó, egységes nézetet biztosít a hálózatról a SOC
 
 A több-bérlős, a monitorozási, az adatelemzési és a központosított érzékelő-távvezérlés mellett a felügyeleti konzol további rendszerkarbantartási eszközöket (például riasztások kizárása) és a távoli berendezések teljes körű testreszabott jelentéskészítési funkcióit biztosítja. Ez a skálázható architektúra a helyi felügyeletet is támogatja a helyek szintjén, a zóna szintjén, valamint a globális felügyeletet a SOC-n belül.
 
-A felügyeleti konzol a magas rendelkezésre állású konfigurációhoz helyezhető üzembe, amely egy biztonsági mentési konzolt biztosít, amely rendszeresen fogadja a helyreállításhoz szükséges összes konfigurációs fájl biztonsági másolatait. Ha a főkonzol meghibásodik, a helyi telephely-felügyeleti berendezések automatikusan átveszik a feladatokat a biztonsági mentési konzollal való szinkronizálásra, hogy a rendelkezésre állás megszakítás nélkül is fenntartható legyen.
+A felügyeleti konzol a magas rendelkezésre állású konfigurációhoz helyezhető üzembe, amely egy biztonsági mentési konzolt biztosít, amely rendszeresen fogadja a helyreállításhoz szükséges összes konfigurációs fájl biztonsági másolatait. Ha az elsődleges konzol meghibásodik, a helyi hely felügyeleti berendezései automatikusan átveszik a feladatokat a biztonsági mentési konzollal a rendelkezésre állás megszakítás nélkül történő fenntartása érdekében.
+
+A SOC-munkafolyamatokkal szorosan integrálva és a könyvek futtatásával egyszerűen rangsorolhatja a kockázatcsökkentő tevékenységeket és a fenyegetések közötti összefüggéseket.
+
+- Holisztikus – a bonyolultság csökkentése egyetlen egységesített platformmal az eszközkezelés, a kockázatkezelés és a sebezhetőségek kezelése terén, valamint a fenyegetések figyelése az incidensek megválaszolásával.
+
+- Összesítés és korreláció – az összes helyről összegyűjtött adatok és riasztások megjelenítése, összesítése és elemzése.
+
+- Az összes érzékelő vezérlése – egyetlen helyről konfigurálhatja és figyelheti az összes érzékelőt.
+
+   :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="Kezelheti az összes riasztást és információt.":::
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Az Azure-ban a IoT-portál Defender az alábbiakkal segíti Önt: ·   Megoldási berendezések vásárlása ·   Szoftver telepítése és frissítése ·   Érzékelők bevezetése az Azure-ba ·   Veszélyforrások elleni intelligencia-csomagok frissítése
+Az Azure-beli IoT-portál Defender az alábbiakkal segíti Önt:
+
+- Megoldási berendezések vásárlása
+- Szoftver telepítése és frissítése
+- Érzékelők bevezetése az Azure-ba
+- Veszélyforrások elleni intelligencia-csomagok frissítése
 
 ## <a name="embedded-security-agent-built-in-mode"></a>Beágyazott biztonsági ügynök: beépített üzemmód
 
-A **beépített** módban a Defender for IoT engedélyezve van, ha úgy dönt, hogy bekapcsolja a **biztonsági** beállítást a IoT hub. A valós idejű monitorozást, ajánlásokat és riasztásokat kínáló beépített üzemmód egylépéses eszköz-láthatóságot és páratlan biztonságot nyújt. A beépített módban nem szükséges az ügynök telepítése semmilyen eszközön, és a naplózott tevékenységekben a speciális elemzések segítségével elemezheti és védetté teheti a terepi eszközt és az IoT hubot.
+A **beépített** módban a Defender for IoT engedélyezve van, ha úgy dönt, hogy bekapcsolja az IoT hub **biztonsági** beállítását. A valós idejű monitorozást, ajánlásokat és riasztásokat kínáló beépített üzemmód egylépéses eszköz-láthatóságot és páratlan biztonságot nyújt. A beépített módban nem szükséges az ügynök telepítése semmilyen eszközön, és a naplózott tevékenységekben a speciális elemzések segítségével elemezheti és védetté teheti a terepi eszközt és az IoT hubot.
 
 ## <a name="embedded-security-agent-enhanced-mode"></a>Beágyazott biztonsági ügynök: bővített mód
 
-**Bővített** módban a IoT hub **biztonsági** beállításának bekapcsolása és a Defender telepítése a IoT az eszközökön, az ügynökök a nyers biztonsági események gyűjtését, összesítését és elemzését végzik az eszközökről. A nyers biztonsági események közé tartozhatnak az IP-kapcsolatok, a folyamatok létrehozása, a felhasználói bejelentkezések és egyéb fontos információk. A IoT-ügynökök védelmezője az események összesítését is kezeli, hogy elkerülje a hálózat magas átviteli sebességét. Az ügynökök nagy mértékben testreszabhatók, így adott feladatokhoz is használhatók, például csak a leggyorsabb SLA-ban, vagy a kiterjedt biztonsági információk és környezetek nagyobb szegmensekre történő elküldésével, a magasabb szolgáltatási költségek elkerülésével.
+**Bővített** módban, miután bekapcsolta az IoT hub **biztonsági** beállítását, és telepíti a Defendert a IoT-eszközökön az eszközökön, az ügynökök összegyűjtik, összesítik és elemzik a nyers biztonsági eseményeket az eszközökről. A nyers biztonsági események közé tartozhatnak az IP-kapcsolatok, a folyamatok létrehozása, a felhasználói bejelentkezések és egyéb fontos információk. A IoT-ügynökök védelmezője az események összesítését is kezeli, így elkerülhető a hálózati átviteli sebesség. Az ügynökök nagy mértékben testreszabhatók, így adott feladatokhoz is használhatók, például csak a leggyorsabb SLA-ban, vagy a kiterjedt biztonsági információk és környezetek nagyobb szegmensekre történő elküldésével, a magasabb szolgáltatási költségek elkerülésével.
 
-Az eszközök ügynökei és más alkalmazásai az **Azure Security Message SDK** használatával biztonsági információkat küldhetnek az Azure IoT hubba. IoT Hub beolvassa ezt az információt, és továbbítja azt a Defender for IoT szolgáltatásnak.
+Az eszközök ügynökei és más alkalmazásai az **Azure Send Security Message SDK** használatával biztonsági adatokat küldhetnek az Azure IoT hub-ba. Az IoT hub beolvassa ezeket az információkat, és továbbítja a Defender for IoT szolgáltatásnak.
 
-Ha a Defender for IoT szolgáltatás engedélyezve van, a továbbított adatokon felül a IoT Hub a Defender által az IoT-hoz történő elemzéshez is küldi a belső adatokat. Ezek az adategységek a Felhőbeli műveleti naplókat, az eszköz identitásait és a hub konfigurációját tartalmazzák. Mindezen információk segítenek létrehozni a Defendert a IoT Analytics-folyamathoz.
+Ha a Defender for IoT szolgáltatás engedélyezve van, a továbbított adatokon felül a IoT hub az összes belső adatmennyiségét is elküldi a IoT Defender által végzett elemzéshez. Ezek az adategységek a Felhőbeli műveleti naplókat, az eszköz identitásait és a hub konfigurációját tartalmazzák. Mindezen információk segítenek létrehozni a Defendert a IoT Analytics-folyamathoz.
 
 A IoT Analytics-folyamat Defender a Microsoft és a Microsoft partnerei által használt különböző forrásokból származó további veszélyforrások elleni intelligenciát is megkapja. A IoT teljes elemzési folyamatának védelmezője a szolgáltatásban végzett összes ügyfél-konfigurációval működik (például az egyéni riasztások és a biztonsági üzenet küldése SDK használata).
 
@@ -117,13 +130,8 @@ Az elemzési folyamat használatával a Defender for IoT az összes adatfolyamot
 
 A IoT ajánlásai és értesítései (analitikai folyamat kimenete) az egyes ügyfelek Log Analytics munkaterületére íródnak. A munkaterületen található nyers események, valamint a riasztások és javaslatok segítségével a gyanús tevékenységek pontos részleteivel részletesen elmerülhetnek a felderítéssel kapcsolatos vizsgálatok és lekérdezések.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>További információ
 
-Ebből a cikkből megtudhatta, hogyan hozhatja ki a Defender IoT-megoldás alapszintű architektúráját és munkafolyamatát. Ha többet szeretne megtudni az előfeltételekről, az első lépésekről és a biztonsági megoldás engedélyezéséről IoT Hubban, tekintse meg a következő cikkeket:
+[Defender for IoT – gyakori kérdések](resources-frequently-asked-questions.md)
 
-- [A szolgáltatás előfeltételei](service-prerequisites.md)
-- [Bevezetés](getting-started.md)
-- [A megoldás konfigurálása](quickstart-configure-your-solution.md)
-- [A IoT Hub biztonságának engedélyezése](quickstart-onboard-iot-hub.md)
-- [Defender for IoT – gyakori kérdések](resources-frequently-asked-questions.md)
-- [IoT biztonsági riasztások védelmezője](concept-security-alerts.md)
+[Rendszerkövetelmények](quickstart-system-prerequisites.md)

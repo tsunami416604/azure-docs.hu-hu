@@ -2,24 +2,23 @@
 title: Gyakori kérdések
 description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.author: dikamath
-ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/22/2020
+ms.openlocfilehash: 941708003558dda601aa43459bc83133788687fd
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861408"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835193"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
-Ez a cikk az Azure VMware megoldással kapcsolatos gyakori kérdésekre ad választ.
+Ebben a cikkben az Azure VMware-megoldással kapcsolatos gyakori kérdésekre fogunk válaszolni.
 
 ## <a name="general"></a>Általános kérdések
 
 #### <a name="what-is-azure-vmware-solution"></a>Mi az az Azure VMware Solution?
 
-Mivel a vállalatok az informatikai modernizációs stratégiákat követve javítják az üzleti rugalmasságot, csökkentik a költségeket, és felgyorsítják az innovációt, a hibrid felhőalapú platformok az ügyfelek digitális átalakításának kulcsfontosságú segítői jelentek meg. Az Azure VMware-megoldás a VMware Software-Defined adatközpont-(SDDC-) szoftverét kombinálja Microsoft Azure globális felhőalapú szolgáltatás-ökoszisztémával. Az Azure VMware megoldás a teljesítményre, a rendelkezésre állásra, a biztonságra és a megfelelőségre vonatkozó követelmények teljesítése érdekében van kezelve.
+Mivel a vállalatok az informatikai modernizációs stratégiákat követve javítják az üzleti rugalmasságot, csökkentik a költségeket, és felgyorsítják az innovációt, a hibrid felhőalapú platformok az ügyfelek digitális átalakításának kulcsfontosságú segítői jelentek meg. Az Azure VMware megoldás a VMware Software-Defined adatközpont-(SDDC-) szoftverét ötvözi a Microsoft Azure globális felhőalapú szolgáltatás-ökoszisztémával. Az Azure VMware megoldás a teljesítményre, a rendelkezésre állásra, a biztonságra és a megfelelőségre vonatkozó követelmények teljesítésére szolgál.
 
 ## <a name="azure-vmware-solution-service"></a>Azure VMware megoldás szolgáltatás
 
@@ -59,13 +58,11 @@ Magának a szolgáltatásnak a frissítései a Microsoft Azure szokásos módos�
 
 Az új Azure VMware-megoldással a Microsoft és a VMware közvetlen felhőalapú szolgáltatói partnerséggel rendelkezik. Az új megoldást a Microsoft tervezte, építi és támogatja, és a VMware támogatja. Az építészeti megoldások konzisztensek, és a VMware Technology stack egy dedikált Azure-infrastruktúrán fut.
 
-
-
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Az Azure VMware-megoldás virtuális gépei a VMRC-ben kezelhetők?
-Igen, ha a telepített rendszer be van kapcsolva, hozzáférhet a saját Felhőbeli vCenter, és nyilvános DNS-t használ az ESXi-állomásnevek feloldásához.
+Igen. Ha a telepített rendszer be van kapcsolva, hozzáférhet a saját Felhőbeli vCenter, és nyilvános DNS-t használ az ESXi-gazdagépek feloldásához.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Van-e speciális útmutatás a VMRC Azure VMware-megoldású virtuális gépekkel történő telepítéséhez és használatához?
-Nem. A [VMware által megadott utasításokat](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) követve teljesítheti az utasításokban meghatározott virtuálisgép-előfeltételeket. 
+Nem. A virtuális gépek előfeltételeinek teljesítéséhez kövesse a [VMware utasításait](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html). 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>A VMware HCX támogatott a VPN-en?
 Nem, a sávszélesség és a késési követelmények miatt.
@@ -77,13 +74,13 @@ Az Azure Bastion az a szolgáltatás, amely a Jump Box-hoz való kapcsolódásho
 Nem. A belső Azure Load Balancer csak az Azure IaaS virtuális gépeket támogatja. A Azure Load Balancer nem támogatja az IP-alapú háttér-készletek használatát; csak azok az Azure-beli virtuális gépek vagy virtuálisgép-méretezési csoport objektumai, amelyekben az Azure VMware megoldás virtuális gépei nem Azure-objektumok.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Használható meglévő ExpressRoute-átjáró az Azure VMware-megoldáshoz való kapcsolódáshoz?
-Igen, használhat egy meglévő ExpressRoute-átjárót az Azure VMware-megoldáshoz való kapcsolódáshoz, ha az nem lépi túl a virtuális hálózatban lévő négy ExpressRoute áramköri korlátot.  Ahhoz azonban, hogy a helyszíni Azure VMware-megoldás elérhető legyen a ExpressRoute-on keresztül, rendelkeznie kell ExpressRoute Global Reach, mivel a ExpressRoute-átjáró nem biztosít tranzitív útválasztást a csatlakoztatott áramkörök között.
+Igen. Egy meglévő ExpressRoute-átjáró használatával csatlakozhat az Azure VMware-megoldáshoz, ha nem lépi túl a virtuális hálózatban lévő négy ExpressRoute áramköri korlátot. Ahhoz, hogy a ExpressRoute-en keresztül hozzáférhessen az Azure VMware-megoldáshoz a helyszínen, rendelkeznie kell ExpressRoute Global Reach, mivel a ExpressRoute-átjáró nem biztosít tranzitív útválasztást a csatlakoztatott áramkörök között.
 
 ## <a name="compute-network-storage-and-backup"></a>Számítás, hálózat, tárolás és biztonsági mentés
 
 #### <a name="is-there-more-than-one-type-of-host-available"></a>Több típusú gazdagép is elérhető?
 
-A gazdagépnek csak egy típusa érhető el.
+Csak egy típusú gazdagép érhető el.
 
 #### <a name="what-are-the-cpu-specifications-in-each-type-of-host"></a>Mik a CPU-specifikációk az egyes típusú gazdagépeken?
 
@@ -105,9 +102,9 @@ Az Azure VMware-megoldás minden ESXi-állomása 4 25 GB/s hálózati adapterekk
 
 Igen, a rendszer alapértelmezés szerint titkosítja az összes vSAN-adatfájlt a Azure Key Vaultban tárolt kulcsok használatával.
 
-#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendors-isvs-backup-solutions"></a>Dokumentálja, hogy a CommVault, a Veritas és a Veeam kibővítette a biztonsági mentési megoldásait az Azure VMware megoldással való együttműködéshez. Mi a helyzet a más független szoftvergyártók (ISV) biztonsági mentési megoldásaival?
+####  <a name="what-independent-software-vendors-isvs-backup-solutions-work-with-azure-vmware-solution"></a>Milyen független szoftvergyártók (ISV-ket) biztonsági mentési megoldások működnek az Azure VMware megoldással?
 
-Amennyire tudjuk, minden olyan biztonsági mentési megoldás, amely a HotAdd átviteli móddal VMware VADP-t használ, azonnal működnie kell az Azure VMware megoldáson.
+A CommVault, a Veritas és a Veeam kiterjesztette a biztonsági mentési megoldásaikat az Azure VMware megoldással való együttműködéshez.  Azonban minden olyan biztonsági mentési megoldás, amely a HotAdd átviteli móddal VMware VADP-t használ, azonnal működni fog az Azure VMware-megoldás dobozán.
 
 #### <a name="what-about-support-for-isv-backup-solutions"></a>Mi a helyzet az ISV Backup-megoldások támogatásával?
 
@@ -127,7 +124,7 @@ Nem.
 
 Nem, a saját Felhőbeli gazdagépek és fürtök dedikált és biztonságos törlésre kerülnek a használat előtt és után.
 
-#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>Mi a minimális és a gazdagépek maximális száma egy fürtön?
+#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>A gazdagépek minimális és maximális száma egy fürtön
 
 A fürtök 3 és 16 ESXi-gazdagép között is méretezhetők. A próbaverziós fürtök három gazdagépre korlátozódnak.
 
@@ -147,7 +144,8 @@ Nem. A csúcsminőségű ESXi-gazdagépek az üzemi fürtökön való használat
 
 #### <a name="what-versions-of-vmware-software-is-used-in-private-clouds"></a>A VMware-szoftverek milyen verzióit használják a privát felhők?
 
-A privát felhők a vSphere 6,7 U3, a vSAN 6,7 U3, a VMware HCX és a NSX-T 2,5 használatát használják.  További információ: [a VMware szoftver verziójának követelményei](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
+
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>A privát felhők a VMware NSX-t használják?
 
@@ -188,11 +186,11 @@ A Azure Portalban engedélyezze az internetkapcsolatot egy privát felhőben. A 
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>Korlátozni kell az internetről a virtuális gépekre való hozzáférést a privát felhőben található logikai hálózatokon?
 
-Nem. Alapértelmezés szerint az internetről közvetlenül a privát felhőkbe bejövő hálózati forgalom nem engedélyezett.  Az Azure VMware-megoldás virtuális gépei azonban elérhetők az interneten keresztül a Azure Portal [nyilvános IP-címe](public-ip-usage.md) lehetőséggel az Azure VMware-megoldás saját felhője számára.
+Nem. Alapértelmezés szerint az internetről közvetlenül a privát felhőkbe bejövő hálózati forgalom nem engedélyezett.  Az Azure VMware-megoldás virtuális gépei azonban elérhetővé válnak az interneten keresztül a Azure Portal [nyilvános IP-](public-ip-usage.md) címén keresztül az Azure VMware-megoldás privát felhője számára.
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>Korlátozni kell az internetről a virtuális gépekről a logikai hálózatokon az internetre való hozzáférést?
 
-Igen. A NSX-T Manager használatával olyan tűzfalat kell létrehoznia, amely korlátozza a virtuális gépek internet-hozzáférését.
+Igen. A virtuális gépek internet-hozzáférésének korlátozásához a NSX-T Manager használatával kell létrehoznia a tűzfalat.
 
 
 #### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Használható az Azure VMware-megoldás az Azure Virtual WAN üzemeltetett ExpressRoute-átjárók használatával?
@@ -201,6 +199,9 @@ Igen.
 #### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>Lehet-e tranzit kapcsolatot létesíteni a helyszíni és az Azure VMware megoldás között az Azure Virtual WAN ExpressRoute-Global Reach keresztül?
 Az Azure Virtual WAN nem biztosít tranzitív útválasztást két csatlakoztatott ExpressRoute-áramkör és nem virtuális WAN ExpressRoute-átjáró között. A ExpressRoute Global Reach használata lehetővé teszi a helyszíni és az Azure VMware-megoldás közötti kapcsolatot, de a virtuális WAN-központ helyett a Microsoft globális hálózatán halad át.
 
+#### <a name="could-i-use-hcx-through-public-internet-communications-as-a-workaround-for-the-non-supportability-of-hcx-when-using-vpn-s2s-with-vwan-for-on-premises-communications"></a>Használhatom-e a HCX a nyilvános internetes kommunikáción keresztül, megkerülő megoldásként a HCX nem támogatásához, amikor VPN-S2S használ a vWAN a helyszíni kommunikációhoz?
+
+Jelenleg az egyetlen támogatott módszer a HCX a ExpressRoute-on keresztül.
 
 ## <a name="accounts-and-privileges"></a>Fiókok és jogosultságok
 
@@ -245,7 +246,7 @@ Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>A Red Hat-megoldások támogatottak az Azure VMware-megoldásokban?
 
-A Microsoft és a Red Hat egy integrált, közös elhelyezésű támogatási csapattal rendelkezik, amely egységes kapcsolattartási pontot biztosít az Azure platformon futó Red Hat-ökoszisztémák számára.  A Red Hat Enterprise Linux-t használó egyéb Azure platform-szolgáltatásokhoz hasonlóan az Azure VMware megoldás a felhőalapú hozzáférés és az integrált támogatás égisze alá tartozik. A Red Hat Enterprise Linux az Azure VMware-megoldáson belüli futtatására is használható.
+A Microsoft és a Red hat olyan integrált, közösen elhelyezett támogatási csapattal rendelkezik, amely egységes kapcsolattartási pontot biztosít az Azure platformon futó Red Hat-ökoszisztémák számára.  A Red Hat Enterprise Linux-t használó egyéb Azure platform-szolgáltatásokhoz hasonlóan az Azure VMware megoldás a felhőalapú hozzáférés és az integrált támogatás égisze alá tartozik. A Red Hat Enterprise Linux az Azure VMware-megoldáson belüli futtatására is használható.
 
 #### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>Elérhető a VMware HCX Enterprise, és ha igen, Mennyibe kerül?
 
@@ -294,11 +295,11 @@ Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jeg
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
    ```
 
-   Az erőforrás-szolgáltató regisztrálásának további módjaiért tekintse meg az [Azure erőforrás-szolgáltatók és-típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört. 
+   Az erőforrás-szolgáltató regisztrálásának további módjai: [Azure erőforrás-szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md). 
 
 #### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>Elérhetőek-e a fenntartott példányok a Cloud Solution Provider (CSP) programon keresztül?
 
-Igen. A CSP fenntartott példányokat is vásárolhat ügyfelei számára. További információkért tekintse meg a [költségek mentése fenntartott példányokkal foglalkozó](reserved-instance.md) cikket. 
+Igen. A CSP fenntartott példányokat is vásárolhat ügyfelei számára. További információkért lásd: [költségek mentése fenntartott példánnyal](reserved-instance.md). 
 
 #### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Az Azure VMware-megoldás több-bérlős szolgáltatást kínál a CSP-partnerek üzemeltetéséhez?
 

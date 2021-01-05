@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a80eaecc02fa3c8c6618341c02e22241f0dc7faf
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562803"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845091"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Az Azure Metrikaböngésző speciális funkciói
 
@@ -22,6 +22,35 @@ ms.locfileid: "97562803"
 ## <a name="metrics-in-azure"></a>Metrikák az Azure-ban
 
 A [Azure monitor metrikái](data-platform-metrics.md) a mért értékek, valamint a begyűjtött és az idő múlásával tárolt számok sorozata. Léteznek standard (vagy "platform") mérőszámok és egyéni metrikák. A standard mérőszámokat maga az Azure platform kapja meg. A standard mérőszámok az Azure-erőforrások állapot-és használati statisztikáit tükrözik. Míg az egyéni metrikákat az alkalmazások az Application Insights API használatával küldik el az Azure-ba az [Egyéni eseményekhez és mérőszámokhoz](../app/api-custom-events-metrics.md), a  [Windows Azure Diagnostics (wad) bővítményhez](./diagnostics-extension-overview.md)vagy [Azure monitor Rest APIhoz](./metrics-store-custom-rest-api.md).
+
+## <a name="resource-scope-picker"></a>Erőforrás hatókör-választója
+Az erőforrás hatókör-választója lehetővé teszi, hogy az egyes és a több erőforráson belüli mérőszámokat megtekinthesse. Az alábbi utasítások az erőforrás-hatókörű választó használatát ismertetik. 
+
+### <a name="selecting-a-single-resource"></a>Egyetlen erőforrás kiválasztása
+Válassza a **metrikák** lehetőséget a **Azure monitor** menüből vagy az erőforrás menüjének **figyelés** szakaszában. Kattintson a "hatókör kiválasztása" gombra a hatókör-választó megnyitásához, amely lehetővé teszi, hogy kiválassza azokat az erőforrásokat, amelyeknek a metrikáit meg szeretné jeleníteni. Ha az erőforrás menüjéből megnyitotta a metrikák Explorert, ezt már fel kell töltenie. 
+
+![Az erőforrás hatókör-választójának képernyőképe](./media/metrics-charts/scope-picker.png)
+
+Bizonyos erőforrások esetében egyszerre csak egyetlen erőforrás metrikáját lehet megtekinteni. Ezek az erőforrások a "minden erőforrástípus" szakaszban találhatók az erőforrástípusok legördülő listában.
+
+![Egyetlen erőforrás képernyőképe](./media/metrics-charts/single-resource-scope.png)
+
+Miután rákattintott a kívánt erőforrásra, megjelenik az adott erőforrást tartalmazó összes előfizetés és erőforráscsoport.
+
+![Képernyőfelvétel a rendelkezésre álló erőforrásokról](./media/metrics-charts/available-single-resource.png)
+
+> [!TIP]
+> Ha egyszerre több erőforrás metrikáját szeretné megtekinteni, vagy egy előfizetésben vagy egy erőforráscsoport mérőszámait, kattintson a felmondási gombra.
+
+Ha elégedett a kijelöléssel, kattintson az Alkalmaz gombra.
+
+### <a name="viewing-metrics-across-multiple-resources"></a>Metrikák megtekintése több erőforrás között
+Egyes erőforrástípusok lehetővé tették a metrikák lekérdezését több erőforráson keresztül, feltéve, hogy ugyanazon az előfizetésen és helyen belül vannak. Ezek az erőforrástípusok az "erőforrástípusok" legördülő lista tetején találhatók. Ha további részleteket szeretne megtudni arról, hogyan tekintheti meg a mérőszámokat több erőforrás között, tekintse meg [ezt a dokumentumot](metrics-dynamic-scope.md#selecting-multiple-resources).
+
+![Képernyőkép a több erőforrás-típusról](./media/metrics-charts/multi-resource-scope.png)
+
+A többerőforrásos kompatibilis típusok esetében lekérdezheti a metrikákat egy előfizetésben vagy több erőforráscsoport között is. Ennek elvégzéséhez tekintse meg [ezt a cikket](metrics-dynamic-scope.md#selecting-a-resource-group-or-subscription)
+
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Nézetek létrehozása több metrikával és diagrammal
 
@@ -61,11 +90,25 @@ Tegyük fel például, hogy a diagram a **kiszolgáló válaszideje** mérőszá
 
 A mérőszámok Explorerben öt alapvető statisztikai összesítési típus érhető el: **Sum**, **Count**, **min**, **Max** és **Average**. Az **összeg** összesítését időnként a **teljes** összesítésnek is nevezzük. Számos metrika esetében Metrikaböngésző elrejti a teljesen lényegtelen összesítéseket, és nem használható.
 
-- **Sum (összeg** ) – az összesítési intervallumban rögzített összes érték összege
-- **Count (darabszám** ) – az összesítési intervallumban rögzített mértékegységek száma. Vegye figyelembe, hogy a **Count** értéke megegyezik az **összeggel** abban az esetben, ha a metrikát az 1 értékkel együtt mindig rögzíti a rendszer. Ez gyakran előfordul, ha a metrika nyomon követi a különböző események számát, és az egyes mérések egy eseményt jelölnek (azaz a kód egy metrikai rekord kikapcsolását minden alkalommal, amikor új kérés érkezik)
-- **Átlag** – az összesítési intervallumban rögzített metrikai értékek átlaga
-- **Min** – az összesítési intervallumban rögzített legkisebb érték
-- **Max** – az összesítési intervallumban rögzített legnagyobb érték
+**Sum (összeg** ) – az összesítési intervallumban rögzített összes érték összege
+
+![A kérelem összegét bemutató képernyőkép](./media/metrics-charts/request-sum.png)
+
+**Count (darabszám** ) – az összesítési intervallumban rögzített mértékegységek száma. Vegye figyelembe, hogy a **Count** értéke megegyezik az **összeggel** abban az esetben, ha a metrikát az 1 értékkel együtt mindig rögzíti a rendszer. Ez gyakran előfordul, ha a metrika nyomon követi a különböző események számát, és az egyes mérések egy eseményt jelölnek (azaz a kód egy metrikai rekord kikapcsolását minden alkalommal, amikor új kérés érkezik)
+
+![A kérések számának képernyőképe](./media/metrics-charts/request-count.png)
+
+**Átlag** – az összesítési intervallumban rögzített metrikai értékek átlaga
+
+![Képernyőkép az átlagos kérelemről](./media/metrics-charts/request-avg.png)
+
+**Min** – az összesítési intervallumban rögzített legkisebb érték
+
+![A minimális kérés képernyőképe](./media/metrics-charts/request-min.png)
+
+**Max** – az összesítési intervallumban rögzített legnagyobb érték
+
+![A kérés max. képernyőképe](./media/metrics-charts/request-max.png)
 
 ## <a name="apply-filters-to-charts"></a>Szűrők alkalmazása diagramokra
 
