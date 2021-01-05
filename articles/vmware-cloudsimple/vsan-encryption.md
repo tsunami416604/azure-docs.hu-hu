@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple – vSAN-titkosítás konfigurálása a privát felhőhöz
 description: Leírja, hogy miként konfigurálható a vSAN szoftveres titkosítási funkciója, hogy a CloudSimple saját felhője az Azure-beli virtuális hálózaton futó Kulcskezelő kiszolgálóval is működjön.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5da05c7f3c6878b0804799360e512676b9002d3
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77020641"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899048"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>VSAN-titkosítás konfigurálása a CloudSimple privát felhőhöz
 
@@ -65,7 +65,7 @@ A telepítés folytatásához szüksége lesz az engedélyezési kulcsra és a E
 1. Hozzon létre egy virtuális hálózati átjárót a virtuális hálózathoz a [ExpressRoute virtuális hálózati átjáró konfigurálása a Azure Portal használatával](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)című témakör útmutatását követve.
 2. Kapcsolja össze a virtuális hálózatot a CloudSimple ExpressRoute-áramkörrel a [virtuális hálózat csatlakoztatása egy ExpressRoute-áramkörhöz a portál használatával](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)című témakör útmutatását követve.
 3. Az üdvözlő e-mailben kapott CloudSimple ExpressRoute-áramköri információinak használatával a CloudSimple-ből összekapcsolhatja a virtuális hálózatot az Azure-beli CloudSimple ExpressRoute-áramkörrel.
-4. Adja meg az engedélyezési kulcsot és a társ-áramköri URI-t, adjon nevet a kapcsolatnak, majd kattintson **az OK**gombra.
+4. Adja meg az engedélyezési kulcsot és a társ-áramköri URI-t, adjon nevet a kapcsolatnak, majd kattintson **az OK** gombra.
 
 ![Adja meg a CS társközi áramköri URI-t a virtuális hálózat létrehozásakor](media/vsan-azureportal01.png) 
 
@@ -83,7 +83,7 @@ Ha HyTrust-vezérlő fürtöt szeretne üzembe helyezni a virtuális hálózat A
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI: a KMIP-kiszolgáló konfigurálása
 
-Nyissa meg a https://*Public-IP*címet, ahol a *Public-IP* a távvezérlési csomópont virtuális gépe nyilvános IP-címe. Kövesse az alábbi lépéseket a [HyTrust dokumentációjában](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0).
+Nyissa meg a https://*Public-IP* címet, ahol a *Public-IP* a távvezérlési csomópont virtuális gépe nyilvános IP-címe. Kövesse az alábbi lépéseket a [HyTrust dokumentációjában](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0).
 
 1. [KMIP-kiszolgáló konfigurálása](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
 2. [Tanúsítványfájl létrehozása VMware-titkosításhoz](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)

@@ -9,16 +9,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/15/2018
+ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: d259f3ab6434a75a641050acfaf3a3409e3555d9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8b1eedc47d2a89b9552c22b3ae770f655f926945
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492794"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898776"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -166,7 +166,7 @@ A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 
 A fiókjának a következő [Azure beépített szerepkörök](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)egyikének kell lennie:
 
-|Üzembehelyezési modell   | Role                   |
+|Üzembehelyezési modell   | Szerepkör                   |
 |---------          |---------               |
 |Resource Manager   | Tulajdonos                  |
 |                   | Közreműködő            |
@@ -427,7 +427,7 @@ Rosszindulatú forgalmat észlelt a környezetében? Honnan származnak? Hol van
 
 Ha választ szeretne kapni a gyakori kérdésekre, tekintse meg a [Traffic Analytics – gyakori](traffic-analytics-faq.md)kérdések című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A flow-naplók engedélyezésével kapcsolatos további információkért lásd: a [NSG folyamat naplózásának engedélyezése](network-watcher-nsg-flow-logging-portal.md).
 - A Traffic Analytics sémájának és feldolgozási adatainak megismeréséhez tekintse meg a [Traffic Analytics-séma](traffic-analytics-schema.md)című témakört.

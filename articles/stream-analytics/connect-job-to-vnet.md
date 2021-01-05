@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: a2d26689a3036f05d7c8e7f417fbbb447402aedc
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: f140384ee2c78b38982c99dab5912bc451584a42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762860"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898147"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>Stream Analytics feladatok összekötése az erőforrásokkal egy Azure-Virtual Network (VNet)
 
@@ -41,9 +41,9 @@ A feladatok az alábbi Azure-szolgáltatásokhoz kapcsolódhatnak a következő 
 1. [Blob Storage vagy Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/stream-analytics/blob-output-managed-identity) – a feladatok Storage-fiókja, a streaming bemenete vagy kimenete lehet.
 2. [Azure Event Hubs](https://docs.microsoft.com/azure/stream-analytics/event-hubs-managed-identity) – a feladatok folyamatos átviteli bemenete vagy kimenete lehet.
 
-Ha a feladatoknak más bemeneti vagy kimeneti típusokhoz kell csatlakozniuk, az egyetlen lehetőség, hogy Stream Analytics-fürtökben használja a magánhálózati végpontokat.
+Ha a feladatainak más bemeneti vagy kimeneti típusokhoz kell csatlakozniuk, a Stream Analyticstól írhat, hogy először Event Hubs a kimenetet, majd a tetszőleges célra, a Azure Functions használatával. Ha a VNet vagy tűzfalban védett más kimeneti típusokhoz közvetlenül szeretne írni Stream Analytics, akkor az egyetlen lehetőség, hogy Stream Analytics-fürtökben használja a privát végpontokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Privát végpontok létrehozása és eltávolítása Stream Analytics-fürtökben](https://docs.microsoft.com/azure/stream-analytics/private-endpoints)
 * [Kapcsolódás Event Hubshoz a VNet felügyelt Identitásos hitelesítés használatával](https://docs.microsoft.com/azure/stream-analytics/event-hubs-managed-identity)

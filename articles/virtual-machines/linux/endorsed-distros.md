@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 01/03/2021
 ms.author: guybo
-ms.openlocfilehash: b27b7344d84ce1361d8294fa4f3490c50afbb4c3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9d278582840404702bfef3e5fc9af395f659d844
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489658"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898079"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Támogatott Linux-disztribúciók az Azure-ban
 
@@ -36,7 +36,7 @@ Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-lemezké
 | --- | --- | --- | --- |
 | CentOS a szélhámos Wave szoftverrel |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [lis Letöltés](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: a kernelben |Csomag [: a tárházban a "](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> A CoreOS mostantól a 2020. május 26-án [véget ért](https://coreos.com/os/eol/) . |Már nem érhető el | | |
-| Debian by Credativ |8.x, 9.x |A kernelben |Csomag: a tárházban a "waagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Debian by Credativ |8. x, 9. x, 10. x |A kernelben |Csomag: a tárházban a "waagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 |Flatcar-tároló linuxos Kinvolk szerint| Pro, STABLE, Beta| A kernelben | a WA-Linux-Agent már telepítve van a/usr/share/OEM/bin/waagent-ben |
 | Oracle-Oracle Linux |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | [A Red Hat Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple – optimalizálja saját CloudSimple az Oracle RAC-hoz
 description: Leírja, hogyan helyezhet üzembe egy új fürtöt, és hogyan optimalizálhat egy virtuális gépet az Oracle Real Application Clusters (RAC) telepítéséhez és konfigurálásához
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 980ba86a9916e13dd2ac7639bd06d3ab8546d2f1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3959aae5f490af10c6747cfa67d9960e0c4a203f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424699"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899269"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizálja CloudSimple saját Felhőjét az Oracle RAC telepítéséhez
 
@@ -46,14 +46,14 @@ A következő példa az alábbi táblázatban definiált lemezeket használja.
 
 | Lemez                                      | Cél                                       | Megosztott lemez |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| Operációs rendszer                                        | Operációsrendszer-lemez                         | Nem          |
-| RÁCS                                      | Az Oracle Grid szoftver telepítési helye     | Nem          |
-| ADATBÁZIS                                  | Az Oracle Database szoftver telepítési helye | Nem          |
-| ORAHOME                                   | Az Oracle Database bináris fájljainak alaphelye    | Nem          |
-| DATA1, DATA2, DATA3, DATA4                | Az Oracle-adatbázisfájlok tárolására szolgáló lemez   | Igen         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Naplófájlok visszaállítása                                | Igen         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Szavazó lemezek                                  | Igen         |
-| FRA1, FRA2                                | Gyors helyreállítási területek lemezei                      | Igen         |
+| Operációs rendszer                                        | Operációsrendszer-lemez                         | No          |
+| RÁCS                                      | Az Oracle Grid szoftver telepítési helye     | No          |
+| ADATBÁZIS                                  | Az Oracle Database szoftver telepítési helye | No          |
+| ORAHOME                                   | Az Oracle Database bináris fájljainak alaphelye    | No          |
+| DATA1, DATA2, DATA3, DATA4                | Az Oracle-adatbázisfájlok tárolására szolgáló lemez   | Yes         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Naplófájlok visszaállítása                                | Yes         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Szavazó lemezek                                  | Yes         |
+| FRA1, FRA2                                | Gyors helyreállítási területek lemezei                      | Yes         |
 
 ![Oracle virtuális gép lemezének konfigurációja](media/oracle-vmdk.png)
 
@@ -74,7 +74,7 @@ Minden Oracle-virtuális gép több lemezzel van konfigurálva a gazda operáci�
     * Operációsrendszer-lemez
     * Az Oracle Grid tárolására szolgáló lemez fájlok telepítése
     * Az Oracle Database telepítési fájljainak tárolására szolgáló lemez
-* A lemezek dinamikusan **kiosztottként**konfigurálhatók.
+* A lemezek dinamikusan **kiosztottként** konfigurálhatók.
 * Az egyes lemezek az első SCSI-vezérlőre (SCSI0) vannak csatlakoztatva.  
 * A megosztás beállítása **nem megosztás**.
 * A redundancia a vSAN szabályzatok használatával van definiálva a tárolón.  
@@ -87,8 +87,8 @@ Az adatlemezeket elsődlegesen az adatbázisfájlok tárolására használják.
 
 * Négy lemez virtuális lemezként van konfigurálva, és minden Oracle RAC virtuális gépen csatlakoztatva van.
 * Minden lemez egy másik SCSI-vezérlőre van csatlakoztatva.
-* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül**van konfigurálva.  
-* A megosztás a **többszörös író**értékre van állítva.  
+* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül** van konfigurálva.  
+* A megosztás a **többszörös író** értékre van állítva.  
 * A lemezeket automatikus Storage Management-(ASM-) lemezcsoportként kell konfigurálni.  
 * A redundancia a vSAN szabályzatok használatával van definiálva a tárolón.  
 * Az ASM-redundancia **külső** redundanciára van beállítva.
@@ -102,8 +102,8 @@ A naplófájlok az adatbázison végrehajtott módosítások másolatának táro
 * A naplófájlok visszaállítását több lemezcsoport-csoportként kell konfigurálni.  
 * A rendszer hat lemezt hoz létre és csatlakoztat az összes Oracle RAC virtuális géphez.
 * A lemezek különböző SCSI-vezérlőkhöz vannak csatlakoztatva
-* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül**van konfigurálva.
-* A megosztás a **többszörös író**értékre van állítva.  
+* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül** van konfigurálva.
+* A megosztás a **többszörös író** értékre van állítva.  
 * A lemezeket két ASM-lemez csoportként kell konfigurálni.
 * Minden ASM-lemez csoport három lemezt tartalmaz, amelyek különböző SCSI-vezérlőkön találhatók.  
 * Az ASM-redundancia **normál** redundanciára van beállítva.
@@ -130,8 +130,8 @@ A szavazó lemezek további kommunikációs csatornaként biztosítják a kvóru
 
 * A rendszer öt lemezt hoz létre és csatlakoztat az összes Oracle RAC virtuális géphez.
 * A lemezek egy SCSI-vezérlőhöz vannak csatlakoztatva
-* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül**van konfigurálva.
-* A megosztás a **többszörös író**értékre van állítva.  
+* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül** van konfigurálva.
+* A megosztás a **többszörös író** értékre van állítva.  
 * A lemezeket ASM-lemez csoportként kell konfigurálni.  
 * Az ASM-redundancia **magas** redundanciára van beállítva.
 
@@ -143,8 +143,8 @@ A gyors helyreállítási területet (FRA) az Oracle ASM-lemez csoport által ke
 
 * A rendszer két lemezt hoz létre és csatlakoztat az összes Oracle RAC virtuális géphez.
 * A lemezek különböző SCSI-vezérlőkhöz vannak csatlakoztatva
-* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül**van konfigurálva.
-* A megosztás a **többszörös író**értékre van állítva.  
+* Minden virtuális lemez **sűrűn kiépítve, türelmetlenül** van konfigurálva.
+* A megosztás a **többszörös író** értékre van állítva.  
 * A lemezeket ASM-lemez csoportként kell konfigurálni.  
 * Az ASM-redundancia **külső** redundanciára van beállítva.
 
@@ -170,13 +170,13 @@ A vSphere-fürt saját felhőben történő üzembe helyezéséhez kövesse az a
 a vSAN-szabályzatok meghatározzák a virtuálisgép-lemezeken tárolt adattárolási és lemezes csíkozási hibákat.  A létrehozott tárolási szabályzatot a virtuális gép létrehozásakor kell alkalmazni a virtuálisgép-lemezeken.
 
 1. [Jelentkezzen be a privát felhő vSphere-ügyfelébe](./vcenter-access.md) .
-2. A felső menüben válassza a **házirendek és profilok**lehetőséget.
-3. A bal oldali menüben válassza ki a virtuálisgép- **tárolási házirendek** elemet, majd válassza **a virtuális gép tárolási házirendjének létrehozása**lehetőséget.
-4. Írjon be egy értelmes nevet a Szabályzathoz, majd kattintson a **tovább**gombra.
-5. A **házirend szerkezete** szakaszban válassza a **vSAN-tárolás szabályainak engedélyezése** lehetőséget, és kattintson a **tovább**gombra.
+2. A felső menüben válassza a **házirendek és profilok** lehetőséget.
+3. A bal oldali menüben válassza ki a virtuálisgép- **tárolási házirendek** elemet, majd válassza **a virtuális gép tárolási házirendjének létrehozása** lehetőséget.
+4. Írjon be egy értelmes nevet a Szabályzathoz, majd kattintson a **tovább** gombra.
+5. A **házirend szerkezete** szakaszban válassza a **vSAN-tárolás szabályainak engedélyezése** lehetőséget, és kattintson a **tovább** gombra.
 6. A **vSAN**  >  **rendelkezésre állása** szakaszban válassza a **nincs lehetőséget** a hely vész-tűréshatára elemnél. Az elviselni kívánt meghibásodások esetén válassza ki a **RAID-tükrözés** lehetőséget a kívánt pénzügyi tranzakcióhoz.
     ![vSAN beállításai ](media/oracle-rac-storage-wizard-vsan.png) .
-7. A **speciális** szakaszban válassza ki a csíkozott lemezek számát. Az objektum területének foglalásához válassza a **vastag kiosztott**lehetőséget. Jelölje be az **objektum ellenőrzőösszegének letiltása**jelölőnégyzetet. Kattintson a **tovább**gombra.
+7. A **speciális** szakaszban válassza ki a csíkozott lemezek számát. Az objektum területének foglalásához válassza a **vastag kiosztott** lehetőséget. Jelölje be az **objektum ellenőrzőösszegének letiltása** jelölőnégyzetet. Kattintson a **tovább** gombra.
 8. Kövesse a képernyőn megjelenő utasításokat a kompatibilis vSAN-adattárolók listájának megtekintéséhez, tekintse át a beállításokat, és fejezze be a telepítést.
 
 ## <a name="create-oracle-vms-and-create-shared-vm-disks-for-oracle"></a>Oracle-alapú virtuális gépek létrehozása és megosztott VM-lemezek létrehozása az Oracle-hoz
@@ -186,18 +186,18 @@ Ha Oracle-alapú virtuális gépet szeretne létrehozni, klónozott egy meglév�
 ### <a name="create-vms"></a>Virtuális gépek létrehozása
 
 1. A vCenter-ben kattintson a **gazdagépek és fürtök** ikonra. Válassza ki az Oracle-hoz létrehozott fürtöt.
-2. Kattintson a jobb gombbal a fürtre, és válassza az **új virtuális gép**lehetőséget.
-3. Válassza az **új virtuális gép létrehozása** lehetőséget, majd kattintson a **tovább**gombra.
-4. Nevezze el a gépet, válassza ki az Oracle virtuális gép helyét, majd kattintson a **tovább**gombra.
-5. Válassza ki a fürterőforrás-t, és kattintson a **tovább**gombra.
-6. Válassza ki a fürt vSAN adattárát, és kattintson a **tovább**gombra.
-7. Tartsa meg az alapértelmezett ESXi 6,5 kompatibilitási beállítást, majd kattintson a **tovább**gombra.
-8. Válassza ki az ISO-t a létrehozandó virtuális géphez tartozó vendég operációs rendszernek, és kattintson a **tovább**gombra.
+2. Kattintson a jobb gombbal a fürtre, és válassza az **új virtuális gép** lehetőséget.
+3. Válassza az **új virtuális gép létrehozása** lehetőséget, majd kattintson a **tovább** gombra.
+4. Nevezze el a gépet, válassza ki az Oracle virtuális gép helyét, majd kattintson a **tovább** gombra.
+5. Válassza ki a fürterőforrás-t, és kattintson a **tovább** gombra.
+6. Válassza ki a fürt vSAN adattárát, és kattintson a **tovább** gombra.
+7. Tartsa meg az alapértelmezett ESXi 6,5 kompatibilitási beállítást, majd kattintson a **tovább** gombra.
+8. Válassza ki az ISO-t a létrehozandó virtuális géphez tartozó vendég operációs rendszernek, és kattintson a **tovább** gombra.
 9. Válassza ki az operációs rendszer telepítéséhez szükséges merevlemez méretét.
-10. Ha az alkalmazást egy másik eszközön szeretné telepíteni, kattintson az **új eszköz hozzáadása**lehetőségre.
+10. Ha az alkalmazást egy másik eszközön szeretné telepíteni, kattintson az **új eszköz hozzáadása** lehetőségre.
 11. Válassza a hálózati beállítások lehetőséget, és rendelje hozzá a nyilvános hálózathoz létrehozott elosztott portot.
 12. További hálózati adapterek hozzáadásához kattintson az **új eszköz hozzáadása** lehetőségre, és válassza ki a magánhálózaton létrehozott elosztott portot.
-13. Új DC/DVD-meghajtó esetén válassza ki az adattároló ISO-fájlját, amely az elsődleges operációs rendszer telepítéséhez szükséges ISO-fájlt tartalmazza. Válassza ki az ISO-fájlok és Sablonok mappába korábban feltöltött fájlt, majd kattintson **az OK**gombra.
+13. Új DC/DVD-meghajtó esetén válassza ki az adattároló ISO-fájlját, amely az elsődleges operációs rendszer telepítéséhez szükséges ISO-fájlt tartalmazza. Válassza ki az ISO-fájlok és Sablonok mappába korábban feltöltött fájlt, majd kattintson **az OK** gombra.
 14. Tekintse át a beállításokat, majd kattintson az **OK** gombra az új virtuális gép létrehozásához.
 15. Kapcsolja be a virtuális gépet. Telepítse az operációs rendszert és a szükséges frissítéseket
 
@@ -209,9 +209,9 @@ Az Oracle megosztott lemezt használ az adatfájlok, a naplók és a naplófájl
 
 #### <a name="create-disks-on-the-first-vm"></a>Lemezek létrehozása az első virtuális gépen
 
-1. A vCenter kattintson a jobb gombbal az egyik Oracle virtuális gépre, és válassza a **beállítások szerkesztése**lehetőséget.
-2. Az új eszköz szakaszban válassza az **SCSI-vezérlő** elemet, majd kattintson a **Hozzáadás**gombra.
-3. Az új eszköz szakaszban válassza az **új merevlemez** elemet, majd kattintson a **Hozzáadás**gombra.
+1. A vCenter kattintson a jobb gombbal az egyik Oracle virtuális gépre, és válassza a **beállítások szerkesztése** lehetőséget.
+2. Az új eszköz szakaszban válassza az **SCSI-vezérlő** elemet, majd kattintson a **Hozzáadás** gombra.
+3. Az új eszköz szakaszban válassza az **új merevlemez** elemet, majd kattintson a **Hozzáadás** gombra.
 4. Bontsa ki az új merevlemez tulajdonságait.
 5. A merevlemez méretének megadása.
 6. Itt adhatja meg, hogy a virtuális gép tárolási szabályzata a korábban megadott vSAN-tárolási házirend legyen.
@@ -226,9 +226,9 @@ Ismételje meg a 2 – 10. lépést az Oracle-adatfájlokhoz,-naplókhoz és-nap
 
 #### <a name="attach-disks-to-second-vm"></a>Lemezek csatlakoztatása a második virtuális géphez
 
-1. A vCenter kattintson a jobb gombbal az egyik Oracle virtuális gépre, és válassza a **beállítások szerkesztése**lehetőséget.
-2. Az új eszköz szakaszban válassza az **SCSI-vezérlő** elemet, majd kattintson a **Hozzáadás**gombra.
-3. Az új eszköz szakaszban válassza a **meglévő merevlemez** elemet, majd kattintson a **Hozzáadás**gombra.
+1. A vCenter kattintson a jobb gombbal az egyik Oracle virtuális gépre, és válassza a **beállítások szerkesztése** lehetőséget.
+2. Az új eszköz szakaszban válassza az **SCSI-vezérlő** elemet, majd kattintson a **Hozzáadás** gombra.
+3. Az új eszköz szakaszban válassza a **meglévő merevlemez** elemet, majd kattintson a **Hozzáadás** gombra.
 4. Keresse meg azt a helyet, ahol az első virtuális géphez létrehozta a lemezt, és válassza ki a VMDK fájlt.
 5. Itt adhatja meg, hogy a virtuális gép tárolási szabályzata a korábban megadott vSAN-tárolási házirend legyen.
 6. A lemezes kiépítés esetében válassza a **vastag kiépítés lelkesen nulla értéket**.
@@ -245,21 +245,21 @@ A virtuális gépek közötti affinitási szabályok biztosítják, hogy a virtu
 
 1. A CloudSimple-portálon a cloudowner-felhasználó [jogosultságait is kiterjesztheti](escalate-private-cloud-privileges.md) .
 2. Jelentkezzen be a privát felhő vSphere-ügyfelébe.
-3. Az vSphere-ügyfélen válassza ki azt a fürtöt, amelyen az Oracle virtuális gépek telepítve vannak, majd kattintson a **Konfigurálás**gombra.
-4. A konfigurálás területen válassza a **virtuális gép/gazda csoportok**lehetőséget.
+3. Az vSphere-ügyfélen válassza ki azt a fürtöt, amelyen az Oracle virtuális gépek telepítve vannak, majd kattintson a **Konfigurálás** gombra.
+4. A konfigurálás területen válassza a **virtuális gép/gazda csoportok** lehetőséget.
 5. Kattintson a elemre **+** .
 6. Adjon hozzá egy virtuálisgép-csoportot. Válassza ki a virtuálisgép- **csoportot** típusként. Adja meg a csoport nevét. Válassza ki a virtuális gépeket, majd kattintson az **OK** gombra a csoport létrehozásához.
 6. Adjon hozzá egy gazda csoportot. Válassza ki a **gazda csoportot** típusként. Adja meg a csoport nevét. Válassza ki azokat a gazdagépeket, amelyeken a virtuális gépek futni fognak, majd kattintson az **OK** gombra a csoport létrehozásához.
-7. Szabály létrehozásához kattintson a **virtuális gép/gazdagép szabályai**elemre.
+7. Szabály létrehozásához kattintson a **virtuális gép/gazdagép szabályai** elemre.
 8. Kattintson a elemre **+** .
-9. Adja meg a szabály nevét, és jelölje be az **Engedélyezés**gombot.
-10. A szabály típusa beállításnál válassza a **Virtual Machines a gazdagéphez**lehetőséget.
+9. Adja meg a szabály nevét, és jelölje be az **Engedélyezés** gombot.
+10. A szabály típusa beállításnál válassza a **Virtual Machines a gazdagéphez** lehetőséget.
 11. Válassza ki az Oracle-alapú virtuális gépeket tartalmazó virtuálisgép-csoportot.
 12. Válassza **a kötelező beállítást a csoportban lévő gazdagépeken**.
 13. Válassza ki a létrehozott gazda csoportot.
 14. A szabály létrehozásához kattintson az **OK** gombra.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 * [Tudnivalók a vSAN-szabályzatokról](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [VMware multi-Writer attribútum megosztott VMDK](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

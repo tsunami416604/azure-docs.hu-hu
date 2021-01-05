@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás a ExpressRoute-t használó helyszíni CloudSimple
 description: Ismerteti, hogyan lehet helyszíni internetkapcsolatot igényelni a ExpressRoute használatával a CloudSimple region Networkből
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019621"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899235"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával
 
@@ -49,12 +49,12 @@ A ExpressRoute-kapcsolat létrehozásához létre kell hoznia egy engedélyt a E
 
 1. Jelentkezzen be az Azure portálra.
 
-2. A felső keresési sávban keresse meg a **ExpressRoute áramkört** , és kattintson a **szolgáltatások**területen található **ExpressRoute-áramkörök** elemre.
+2. A felső keresési sávban keresse meg a **ExpressRoute áramkört** , és kattintson a **szolgáltatások** területen található **ExpressRoute-áramkörök** elemre.
     [![ExpressRoute-áramkörök](media/azure-expressroute-transit-search.png)](media/azure-expressroute-transit-search.png)
 
 3. Válassza ki azt a ExpressRoute-áramkört, amelyhez csatlakozni kíván a CloudSimple-hálózathoz.
 
-4. A ExpressRoute lapon kattintson az **engedélyek**elemre, adja meg az engedély nevét, majd kattintson a **Mentés**gombra.
+4. A ExpressRoute lapon kattintson az **engedélyek** elemre, adja meg az engedély nevét, majd kattintson a **Mentés** gombra.
     [![ExpressRoute-áramkör engedélyezése](media/azure-expressroute-transit-authorizations.png)](media/azure-expressroute-transit-authorizations.png)
 
 5. Másolja az erőforrás-azonosítót és az engedélyezési kulcsot a másolás ikonra kattintva. Illessze be az azonosítót és a kulcsot egy szövegfájlba.
@@ -77,6 +77,6 @@ A ExpressRoute-kapcsolat létrehozásához létre kell hoznia egy engedélyt a E
     > [!IMPORTANT]
     > Az alapértelmezett útvonal küldése lehetővé teszi, hogy az összes internetes forgalmat a saját helyszíni internetkapcsolatával küldje el a privát felhőből.  Ha le szeretné tiltani a privát felhőben konfigurált alapértelmezett útvonalat, és a helyszíni kapcsolat alapértelmezett útvonalát szeretné használni, adja meg a támogatási jegy részleteit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ az Azure hálózati kapcsolatairól](cloudsimple-azure-network-connection.md)  

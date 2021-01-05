@@ -2,19 +2,19 @@
 title: Privát Felhőbeli tevékenység figyelése
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Az Azure VMware megoldás CloudSimple-környezettel, például riasztásokkal, eseményekkel, feladatokkal és naplózással kapcsolatos tevékenységeit ismerteti.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019672"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899303"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware-megoldás figyelése CloudSimple-tevékenység alapján
 
@@ -42,7 +42,7 @@ Kattintson egy oszlop fejlécére a Megjelenítés rendezéséhez.  A megtekinth
 
 A riasztások a CloudSimple-környezetben felmerülő jelentős tevékenységekről szóló értesítések.  A riasztások olyan eseményeket érintenek, amelyek befolyásolják a számlázási vagy a felhasználói hozzáférést.
 
-A riasztások elfogadásához és a listából való eltávolításához válasszon ki egyet vagy többet a listából, majd kattintson az **nyugtázás**gombra.
+A riasztások elfogadásához és a listából való eltávolításához válasszon ki egyet vagy többet a listából, majd kattintson az **nyugtázás** gombra.
 
 A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
 
@@ -88,7 +88,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
 | Indítás | A feladat kezdési időpontja. |
 | Befejezés | A feladat befejezési időpontja. |
-| status | Aktuális feladat állapota. |
+| Állapot | Aktuális feladat állapota. |
 | Eltelt idő | Az az idő, ameddig a feladat befejeződik (ha elkészült) vagy éppen folyamatban van (ha folyamatban van). |
 | Leírás | Feladat leírása. |
 
@@ -110,7 +110,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Igénybe vett idő | A feladat elvégzéséhez szükséges idő. |
 | Leírás | A művelet leírása. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * További információ a [privát felhőkről](cloudsimple-private-cloud.md)

@@ -1,19 +1,19 @@
 ---
 title: Az Azure VMware-megoldás csökkentése a CloudSimple privát felhővel
 description: Ismerje meg, hogy miként lehet dinamikusan zsugorodni egy CloudSimple egy meglévő vSphere-fürtből vagy egy teljes fürt eltávolításával.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 07/01/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2759b35c9ba521a63eaf54c4c696598d545120b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a99b9b56f17b78a98f37d47dcefab26dd9c859de
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141737"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899133"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő zsugorítása
 
@@ -39,7 +39,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 3. Kattintson a használni kívánt privát felhőre
 
-4. Az összefoglalás lapon kattintson a **zsugorodás**elemre.
+4. Az összefoglalás lapon kattintson a **zsugorodás** elemre.
 
     ![Privát felhő zsugorítása](media/shrink-private-cloud.png)
 
@@ -47,7 +47,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
     ![Privát felhő zsugorítása – fürt kiválasztása](media/shrink-private-cloud-select-cluster.png)
 
-6. Válassza az **egyetlen csomópont eltávolítása** vagy **a teljes fürt törlése**lehetőséget. 
+6. Válassza az **egyetlen csomópont eltávolítása** vagy **a teljes fürt törlése** lehetőséget. 
 
 7. A fürt kapacitásának ellenőrzése
 

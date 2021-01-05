@@ -1,19 +1,19 @@
 ---
 title: Rövid útmutató – Azure VMware virtuális gép létrehozása privát felhőben – Azure VMware-megoldás CloudSimple
 description: Ismerje meg, hogyan hozhat létre VMware-alapú virtuális gépet a CloudSimple privát felhőben. Nyissa meg a CloudSimple portált a Azure Portal.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c741f01ccc3e34ec991aa77fc850fd9f60c4d8aa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427771"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899286"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>VMware virtuális gépek létrehozása a saját felhőben
 
@@ -26,7 +26,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 ## <a name="access-the-cloudsimple-portal"></a>Hozzáférés a CloudSimple portáljához
 
 1. Válassza az **Összes szolgáltatás** elemet.
-2. Keressen rá a **CloudSimple Services**kifejezésre.
+2. Keressen rá a **CloudSimple Services** kifejezésre.
 3. Válassza ki azt a CloudSimple-szolgáltatást, amelyen létre szeretné hozni a saját Felhőjét.
 4. Az **Áttekintés** lapon kattintson **az Ugrás a CloudSimple portálra** elemre, és nyissa meg a CloudSimple-portál új böngésző lapját.  Ha a rendszer kéri, jelentkezzen be az Azure bejelentkezési hitelesítő adataival.  
 
@@ -36,7 +36,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Most már elindíthatja a vCenter-t a virtuális gépek és házirendek beállításához.
 
-A vCenter eléréséhez Kezdje a CloudSimple portálról. A Kezdőlap **Általános feladatok**területén kattintson az **vSphere-ügyfél indítása**lehetőségre.  Válassza ki a privát felhőt, majd kattintson a **vSphere-ügyfél indítása** lehetőségre a privát felhőben.
+A vCenter eléréséhez Kezdje a CloudSimple portálról. A Kezdőlap **Általános feladatok** területén kattintson az **vSphere-ügyfél indítása** lehetőségre.  Válassza ki a privát felhőt, majd kattintson a **vSphere-ügyfél indítása** lehetőségre a privát felhőben.
 
    ![VSphere-ügyfél elindítása](media/launch-vcenter-from-cloudsimple-portal.png)
 
@@ -46,42 +46,42 @@ A vCenter eléréséhez Kezdje a CloudSimple portálról. A Kezdőlap **Általá
   > Az ISO-feltöltéshez használja a vSphere HTML5-ügyfelet.  A Flash-ügyfél használata hibát okozhat.
 
 1. Szerezze be a vCenter feltölteni kívánt ISO-vagy vSphere-sablont, és hozzon létre egy virtuális gépet, és legyen elérhető a helyi rendszeren.
-2. A vCenter-ben kattintson a **lemez** ikonra, és válassza a **vsanDatastore**lehetőséget. Kattintson a **fájlok** , majd az **új mappa**elemre.
+2. A vCenter-ben kattintson a **lemez** ikonra, és válassza a **vsanDatastore** lehetőséget. Kattintson a **fájlok** , majd az **új mappa** elemre.
     ![vCenter ISO](media/vciso00.png)
 
 3. Hozzon létre egy "ISO-és sablonok" nevű mappát.
 
-4. Navigáljon az ISOs mappába az ISO-fájlok és a sablonok területen, majd kattintson a **fájlok feltöltése**elemre. Az ISO feltöltéséhez kövesse a képernyőn megjelenő utasításokat.
+4. Navigáljon az ISOs mappába az ISO-fájlok és a sablonok területen, majd kattintson a **fájlok feltöltése** elemre. Az ISO feltöltéséhez kövesse a képernyőn megjelenő utasításokat.
 
 ## <a name="create-a-virtual-machine-in-vcenter"></a>Virtuális gép létrehozása a vCenter-ben
 
 1. A vCenter-ben kattintson a **gazdagépek és fürtök** ikonra.
 
-2. Kattintson a jobb gombbal a **munkaterhelés** elemre, és válassza az **új virtuális gép**lehetőséget.
+2. Kattintson a jobb gombbal a **munkaterhelés** elemre, és válassza az **új virtuális gép** lehetőséget.
     ![Képernyőkép, amely kiemeli az új virtuális gép menüpontot.](media/vcvm01.png)
 
-3. Válassza az **új virtuális gép létrehozása** lehetőséget, majd kattintson a **tovább**gombra.
+3. Válassza az **új virtuális gép létrehozása** lehetőséget, majd kattintson a **tovább** gombra.
     ![Képernyőkép, amely kiemeli az új virtuális gép létrehozása lehetőséget.](media/vcvm02.png)
 
-4. Nevezze el a gépet, válassza ki a számítási **feladatok virtuális** gépe helyét, majd kattintson a **tovább**gombra.
+4. Nevezze el a gépet, válassza ki a számítási **feladatok virtuális** gépe helyét, majd kattintson a **tovább** gombra.
     ![Képernyőfelvétel: a számítási feladatok virtuális gépei lehetőség.](media/vcvm03.png)
 
-5. Válassza ki a **munkaterhelés** számítási erőforrását, és kattintson a **tovább**gombra.
+5. Válassza ki a **munkaterhelés** számítási erőforrását, és kattintson a **tovább** gombra.
     ![Képernyőkép, amely kiemeli a számítási feladatok számítási erőforrását.](media/vcvm04.png)
 
-6. Válassza a **vsanDatastore** lehetőséget, majd kattintson a **tovább**gombra.
+6. Válassza a **vsanDatastore** lehetőséget, majd kattintson a **tovább** gombra.
     ![Képernyőkép, amely kiemeli a vsanDatastore beállítást.](media/vcvm05.png)
 
-7. Tartsa meg az alapértelmezett ESXi 6,5 kompatibilitási beállítást, majd kattintson a **tovább**gombra.
+7. Tartsa meg az alapértelmezett ESXi 6,5 kompatibilitási beállítást, majd kattintson a **tovább** gombra.
     ![A kiválasztott ESXi 6,5 kompatibilitási beállítást bemutató képernyőkép.](media/vcvm06.png)
 
-8. Válassza ki az ISO-t a létrehozandó virtuális géphez tartozó vendég operációs rendszernek, és kattintson a **tovább**gombra.
+8. Válassza ki az ISO-t a létrehozandó virtuális géphez tartozó vendég operációs rendszernek, és kattintson a **tovább** gombra.
     ![Képernyőkép, amely bemutatja, hogyan választhatja ki a virtuális gép ISO-guese operációs rendszerét.](media/vcvm07.png)
 
-9. Válassza a merevlemez és hálózati beállítások lehetőséget. Új CD/DVD-meghajtó esetén válassza az **ADATTÁR ISO-fájlja**lehetőséget.  Ha engedélyezni szeretné a nyilvános IP-címről érkező forgalmat erre a virtuális gépre, válassza a hálózatot **VM-1-** ként.
+9. Válassza a merevlemez és hálózati beállítások lehetőséget. Új CD/DVD-meghajtó esetén válassza az **ADATTÁR ISO-fájlja** lehetőséget.  Ha engedélyezni szeretné a nyilvános IP-címről érkező forgalmat erre a virtuális gépre, válassza a hálózatot **VM-1-** ként.
     ![Képernyőkép, amely kiemeli az adattár ISO-fájljának kiválasztását.](media/vcvm08.png)
 
-10. Megnyílik egy kiválasztási ablak. Válassza ki az ISO-fájlok és Sablonok mappába korábban feltöltött fájlt, majd kattintson **az OK**gombra.
+10. Megnyílik egy kiválasztási ablak. Válassza ki az ISO-fájlok és Sablonok mappába korábban feltöltött fájlt, majd kattintson **az OK** gombra.
     ![Új virtuális gép](media/vcvm10.png)
 
 11. Tekintse át a beállításokat, majd kattintson az **OK** gombra a virtuális gép létrehozásához.
@@ -133,7 +133,7 @@ A CloudSimple-portál hálózati lapjai lehetővé teszik a tűzfalak és a virt
 ### <a name="allocate-public-ips"></a>Nyilvános IP-címek lefoglalása
 
 1. Navigáljon a CloudSimple **-portál hálózati > nyilvános IP** -címére.
-2. Kattintson a **nyilvános IP-cím lefoglalása**elemre.
+2. Kattintson a **nyilvános IP-cím lefoglalása** elemre.
 3. Adja meg az IP-cím bejegyzését azonosító nevet.
 4. Tartsa meg az alapértelmezett helyet.
 5. Ha szükséges, használja a csúszkát az Üresjárati időkorlát módosításához.
@@ -179,7 +179,7 @@ Manuálisan engedélyezze újra a felületet.
 sudo ifup eth0
 ```
 
-Alapértelmezés szerint a rendszer **megtagadja**az internetről érkező összes bejövő forgalmat. Ha bármilyen más portot szeretne megnyitni, hozzon létre egy [Tűzfalszabály-táblázatot](firewall.md).
+Alapértelmezés szerint a rendszer **megtagadja** az internetről érkező összes bejövő forgalmat. Ha bármilyen más portot szeretne megnyitni, hozzon létre egy [Tűzfalszabály-táblázatot](firewall.md).
 
 Miután a belső IP-címet statikus IP-címként konfigurálta, ellenőrizze, hogy elérhető-e az Internet a virtuális gépről.
 
@@ -223,7 +223,7 @@ A saját felhőalapú vCenter-környezete teljes körű kihasználása érdekéb
 
 Megoldás telepítéséhez további jogosultságokat kell megadnia korlátozott időtartamra. Lásd: a [jogosultságok kiterjesztésének](escalate-private-cloud-privileges.md)megtalálása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](on-premises-connection.md)

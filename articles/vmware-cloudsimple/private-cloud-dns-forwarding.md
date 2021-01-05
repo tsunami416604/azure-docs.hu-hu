@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás – DNS-továbbítás a privát felhőből a helyi környezetbe
 description: Ismerteti, hogyan engedélyezheti a CloudSimple saját felhőalapú DNS-kiszolgálójának a helyszíni erőforrások keresésének továbbítását
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 02/29/2020
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3481e21a93fbf5f658c5ca00513ea179c8f95400
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091249"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899201"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>A CloudSimple-alapú privát Felhőbeli DNS-kiszolgálók engedélyezése a helyszíni erőforrások DNS-keresésének továbbítására a DNS-kiszolgálókra
 
@@ -51,7 +51,7 @@ Ha engedélyezni szeretné a DNS-továbbítást a privát felhőből a helyszín
 * Adja meg a helyszíni tartomány tartománynevét a részletek ablaktáblán.
 * Adja meg azoknak a helyszíni DNS-kiszolgálóknak a listáját, amelyekhez a rendszer továbbítja a keresést a privát felhőből a részleteket tartalmazó ablaktáblán.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a helyszíni tűzfal konfigurálásáról](on-premises-firewall-configuration.md)
 * [Helyszíni DNS-kiszolgáló konfigurációja](on-premises-dns-setup.md)

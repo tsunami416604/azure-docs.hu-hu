@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple – vCenter-identitások beállítása a privát felhőben
 description: Ismerteti, hogyan állítható be a saját Felhőbeli vCenter a vCenter való Active Directory hitelesítéshez a VMware-rendszergazdák számára a eléréséhez
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 60090dec56a177fac6ddad946d97142b484355af
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a76fecb942c5c6da926e37149245e82dcbc4661b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425739"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899150"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitások beállítása a Active Directory használatára
 
@@ -33,7 +33,7 @@ Ez az útmutató ismerteti azokat a feladatokat, amelyekkel Active Directory tar
 [Az Identity forrás hozzáadása előtt átmenetileg megnövelheti](#add-an-identity-source-on-vcenter) [a vCenter-jogosultságokat](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  A vSphere webes felhasználói felületén csak a szolgáltatási fiókokat kell felvenni a *rendszergazdák* csoportjába, és a szolgáltatásfiókok nem használhatók.   
+> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group* szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  A vSphere webes felhasználói felületén csak a szolgáltatási fiókokat kell felvenni a *rendszergazdák* csoportjába, és a szolgáltatásfiókok nem használhatók.   
 
 
 ## <a name="identity-source-options"></a>Személyazonossági forrás beállításai
@@ -113,11 +113,11 @@ A hálózati kapcsolatok létrejötte után kövesse a helyszíni [Active Direct
 
 2. Jelentkezzen be a vCenter a saját felhőbe.
 
-3. Válassza a **kezdőlap > felügyelet**lehetőséget.
+3. Válassza a **kezdőlap > felügyelet** lehetőséget.
 
     ![Felügyelet](media/OnPremAD01.png)
 
-4. Válassza **az egyszeri bejelentkezés > konfiguráció**lehetőséget.
+4. Válassza **az egyszeri bejelentkezés > konfiguráció** lehetőséget.
 
     ![Egyszeri bejelentkezés](media/OnPremAD02.png)
 
@@ -125,12 +125,12 @@ A hálózati kapcsolatok létrejötte után kövesse a helyszíni [Active Direct
 
     ![Azonosító források](media/OnPremAD03.png)
 
-6. Válassza ki a **Active Directory LDAP-kiszolgálóként** , majd kattintson a **tovább**gombra.
+6. Válassza ki a **Active Directory LDAP-kiszolgálóként** , majd kattintson a **tovább** gombra.
 
     ![Képernyőfelvétel: a Active Directory LDAP-kiszolgálóként való kiemelése.](media/OnPremAD04.png)
 
-7. Adja meg a környezet Identity Source paramétereit, majd kattintson a **tovább**gombra.
+7. Adja meg a környezet Identity Source paramétereit, majd kattintson a **tovább** gombra.
 
     ![Active Directory](media/OnPremAD05.png)
 
-8. Tekintse át a beállításokat, majd kattintson a **Befejezés**gombra.
+8. Tekintse át a beállításokat, majd kattintson a **Befejezés** gombra.

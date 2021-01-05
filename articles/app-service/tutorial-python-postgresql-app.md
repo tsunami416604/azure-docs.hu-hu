@@ -3,7 +3,7 @@ title: 'Oktatóanyag: Python Django-alkalmazás üzembe helyezése a postgres-me
 description: Hozzon létre egy PostgreSQL-adatbázist tartalmazó Python-webalkalmazást, és telepítse azt az Azure-ba. Az oktatóanyag a Django keretrendszert használja, és az alkalmazás Azure App Service Linux rendszeren található.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/02/2020
+ms.date: 01/04/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: b106b403022f3407a3838b7f65222baf41cbfff5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852965"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898589"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -233,17 +233,14 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 
     Ha nem tud csatlakozni az SSH-munkamenethez, akkor maga az alkalmazás nem indult el. [A részletekért olvassa el a diagnosztikai naplókat](#6-stream-diagnostic-logs) . Ha például még nem hozta létre az alkalmazáshoz szükséges beállításokat az előző szakaszban, a naplók jelzik majd `KeyError: 'DBNAME'` .
 
-1. Az SSH-munkamenetben futtassa a következő parancsokat (a **CTRL** + **SHIFT** V használatával is beilleszthet parancsokat + **V**):
+1. Az SSH-munkamenetben futtassa a következő parancsokat (a **CTRL** + **SHIFT** V használatával is beilleszthet parancsokat + ):
 
     ```bash
-    # Change to the folder where the app code is deployed
-    cd site/wwwroot
+    # Change to the app folder
+    cd $APP_PATH
     
-    # Activate default virtual environment in App Service container
+    # Activate the venv (requirements.txt is installed automatically)
     source /antenv/bin/activate
-
-    # Install packages
-    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -251,6 +248,8 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
+
+    Ha az adatbázishoz való csatlakozással kapcsolatos hibákba ütközik, tekintse meg az előző szakaszban létrehozott Alkalmazásbeállítások értékeit.
 
 1. A `createsuperuser` parancs a rendszergazdai hitelesítő adatok megadását kéri. Ebben az oktatóanyagban használja az alapértelmezett felhasználónevet `root` , nyomja le az **ENTER** billentyűt az e-mail-címre, hogy üresen hagyja, és adja meg a `Pollsdb1` jelszót.
 
@@ -260,13 +259,13 @@ Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](
     
 ### <a name="44-create-a-poll-question-in-the-app"></a>4,4 lekérdezési kérdés létrehozása az alkalmazásban
 
-1. A böngészőben nyissa meg az URL-címet `http://<app-name>.azurewebsites.net` . Az alkalmazásnak meg kell jelennie a "nincs elérhető lekérdezés" üzenetnek, mert az adatbázisban még nincsenek adott lekérdezések.
+1. A böngészőben nyissa meg az URL-címet `http://<app-name>.azurewebsites.net` . Az alkalmazásnak meg kell jelennie a "lekérdezési alkalmazás" és a "nincsenek elérhető lekérdezések" üzenetnek, mert az adatbázisban még nincsenek adott lekérdezések.
 
     Ha az "alkalmazáshiba" üzenet jelenik meg, akkor valószínű, hogy az előző lépésben nem hozta létre a szükséges beállításokat, [konfigurálja a környezeti változókat az adatbázishoz való kapcsolódáshoz](#42-configure-environment-variables-to-connect-the-database), vagy ha ezek az értékek hibákat tartalmaznak. A `az webapp config appsettings list` beállítások megadásához futtassa a parancsot. [A diagnosztikai naplókban](#6-stream-diagnostic-logs) is megtekintheti az alkalmazások indításakor megadott hibákat. Ha például nem hozta létre a beállításokat, a naplók a következő hibaüzenetet fogják látni: `KeyError: 'DBNAME'` .
 
     Miután frissítette a beállításokat a hibák kijavítása érdekében, adjon egy percet az alkalmazásnak, majd frissítse a böngészőt.
 
-1. Nyissa meg a következő címet: `http://<app-name>.azurewebsites.net/admin`. Jelentkezzen be a rendszergazdai hitelesítő adatokkal az előző szakaszban ( `root` és `Pollsdb1` ). A **lekérdezések** területen válassza a **Hozzáadás** a **kérdések** mellett lehetőséget, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
+1. Nyissa meg a következő címet: `http://<app-name>.azurewebsites.net/admin`. Jelentkezzen be a Django rendszergazdai hitelesítő adataival az előző szakaszban ( `root` és `Pollsdb1` ). A **lekérdezések** területen válassza a **Hozzáadás** a **kérdések** mellett lehetőséget, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
 
 1. Tallózással lépjen újra a gombra, `http://<app-name>.azurewebsites.net` és erősítse meg, hogy a kérdések most már jelen vannak a felhasználó számára. Válaszoljon a kérdésekre, azonban szeretne valamilyen adathalmazt előállítani az adatbázisban.
 
@@ -292,7 +291,7 @@ Futtassa a következő parancsokat egy terminálablakban. Ügyeljen arra, hogy k
 python3 -m venv venv
 source venv/bin/activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -310,7 +309,7 @@ py -3 -m venv venv
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 venv\scripts\activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -327,7 +326,7 @@ python manage.py runserver
 py -3 -m venv venv
 venv\scripts\activate
 
-:: Install packages
+:: Install dependencies
 pip install -r requirements.txt
 :: Run Django migrations
 python manage.py migrate
@@ -350,7 +349,7 @@ Tesztelje az alkalmazást helyileg a következő lépésekkel:
 
 1. Lépjen a *http: \/ /localhost: 8000* elemre, és válaszolja meg az alkalmazás tesztelésének kérdését. 
 
-1. A **CTRL** C billentyűkombináció lenyomásával állítsa le a Django-kiszolgálót + **C**.
+1. A **CTRL** C billentyűkombináció lenyomásával állítsa le a Django-kiszolgálót + .
 
 Helyileg futtatva az alkalmazás egy helyi Sqlite3-adatbázist használ, és nem zavarja az éles adatbázisát. Igény szerint helyi PostgreSQL-adatbázist is használhat az éles környezet jobb szimulálása érdekében.
 
@@ -374,7 +373,7 @@ python manage.py migrate
 
 Futtassa újra a fejlesztői kiszolgálót, `python manage.py runserver` és tesztelje az alkalmazást a *http: \/ /localhost: 8000/admin* címen:
 
-Állítsa le újra a Django webkiszolgálót a **CTRL C billentyűkombinációval** + **C**.
+Állítsa le újra a Django webkiszolgálót a **CTRL C billentyűkombinációval** + .
 
 Problémák léptek fel? Először olvassa el a [hibaelhárítási útmutatót](configure-language-python.md#troubleshooting), ha nem, [tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 
@@ -397,11 +396,8 @@ Mivel módosította az adatmodellt, újra kell futtatnia az adatbázis-áttelep�
 Nyisson meg egy SSH-munkamenetet a böngészőben, és navigáljon a következőre: `https://<app-name>.scm.azurewebsites.net/webssh/host` . Ezután futtassa le a következő parancsokat:
 
 ```
-cd site/wwwroot
-
-# Activate default virtual environment in App Service container
+cd $APP_PATH
 source /antenv/bin/activate
-# Run database migrations
 python manage.py migrate
 ```
 
@@ -425,7 +421,7 @@ az webapp log tail
 
 Ha nem jelennek meg azonnal a konzolnaplófájlok, ellenőrizze ismét 30 másodperc múlva.
 
-Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + **C**.
+Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + .
 
 Problémák léptek fel? [Tudassa velünk](https://aka.ms/DjangoCLITutorialHelp).
 

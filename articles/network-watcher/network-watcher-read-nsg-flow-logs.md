@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2017
+ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 1f9b9e91cda93a986fdaaf0f53d8987544e783a2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d465106725e9b936172fb74e1cc265c14942f662
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966462"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898096"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
 
@@ -27,7 +27,7 @@ A NSG egy Storage-fiókban tárolódnak, amely [blokkolja a blobokat](/rest/api/
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Eset
 
 A következő esetben egy Storage-fiókban tárolt folyamat naplója van. Megtudhatja, hogyan olvashatja el a legújabb eseményeket a NSG flow naplóiban. Ebben a cikkben a PowerShellt használja, azonban a cikkben tárgyalt fogalmak nem korlátozódnak a programozási nyelvre, és alkalmazhatók az Azure Storage API-k által támogatott összes nyelvre.
 

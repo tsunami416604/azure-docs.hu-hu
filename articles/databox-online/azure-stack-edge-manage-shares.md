@@ -1,27 +1,27 @@
 ---
-title: Azure Stack Edge Pro-megosztások kezelése | Microsoft Docs
-description: Ismerteti, hogyan kezelheti a Azure Portal az Azure Stack Edge Pro-beli megosztások kezeléséhez.
+title: Azure Stack Edge Pro-FPGA megosztások kezelése | Microsoft Docs
+description: Ismerteti, hogyan kezelheti a Azure Portal az Azure Stack Edge Pro-FPGA megosztások kezeléséhez.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2019
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d43b70c8f958ad37b6ac2d0ee043d5f07d11da9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444584"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898235"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>A Azure Portal használata a megosztások kezeléséhez Azure Stack Edge Pro-ban
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>A Azure Portal használata a megosztások kezeléséhez Azure Stack Edge Pro-FPGA 
 
-Ez a cikk bemutatja, hogyan kezelheti a megosztásokat a Azure Stack Edge Pro-ban. A Azure Stack Edge Pro-t a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A megosztásokhoz társított Storage-fiókhoz használja a Azure Portal a megosztások hozzáadásához, törléséhez, frissítéséhez vagy a Storage-kulcs szinkronizálásához.
+Ez a cikk bemutatja, hogyan kezelheti a megosztásokat az Azure Stack Edge Pro FPGA-eszközön. Az Azure Stack Edge Pro FPGA eszközt a Azure Portal vagy a helyi webes felületen keresztül felügyelheti. A megosztásokhoz társított Storage-fiókhoz használja a Azure Portal a megosztások hozzáadásához, törléséhez, frissítéséhez vagy a Storage-kulcs szinkronizálásához.
 
 ## <a name="about-shares"></a>Információk a megosztásokról
 
-Az adatok Azure-ba történő átviteléhez megosztásokat kell létrehoznia a Azure Stack Edge Pro-ban. Az Azure Stack Edge Pro-eszközön hozzáadott megosztások lehetnek helyi megosztások vagy megosztások, amelyek leküldik az adatforgalomot a felhőbe.
+Az adatok Azure-ba történő átviteléhez megosztásokat kell létrehoznia a Azure Stack Edge Pro-FPGA. Az Azure Stack Edge Pro-eszközön hozzáadott megosztások lehetnek helyi megosztások vagy megosztások, amelyek leküldik az adatforgalomot a felhőbe.
 
  - **Helyi megosztások**: akkor használja ezeket a megosztásokat, amikor azt szeretné, hogy az eszközön helyileg dolgozzák fel az adatfeldolgozást.
  - **Megosztások**: akkor használja ezeket a megosztásokat, ha azt szeretné, hogy az eszköz adatai automatikusan a felhőben legyenek leküldve a Storage-fiókba. Az összes Felhőbeli funkció, például a **frissítési** és **szinkronizálási tárolási kulcsok** a megosztásokra vonatkoznak.
@@ -39,7 +39,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Portalon.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások** lehetőséget. Válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **Cloud Storage Gateway** elemre. Lépjen a **megosztások** elemre, majd válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
 
     ![Válassza a megosztás hozzáadása elemet.](media/azure-stack-edge-manage-shares/add-share-1.png)
 
@@ -72,7 +72,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 ## <a name="add-a-local-share"></a>Helyi megosztás hozzáadása
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások** lehetőséget. Válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **Cloud Storage gateway > megosztások** pontra. Válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
 
    ![Válassza a 2. megosztás hozzáadása lehetőséget](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -96,15 +96,13 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
    ![Frissítések megosztásának megtekintése panel](media/azure-stack-edge-manage-shares/add-local-share-3.png)
     
-    Válassza ki a megosztást a megosztás peremhálózati számítási moduljainak helyi csatlakoztatási pont megtekintéséhez.
 
-   ![Helyi megosztás részleteinek megtekintése](media/azure-stack-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>Megosztás csatlakoztatása
 
 Ha létrehozott egy megosztást, mielőtt beállította a számítást a Azure Stack Edge Pro-eszközön, csatlakoztatnia kell a megosztást. A megosztás csatlakoztatásához hajtsa végre az alábbi lépéseket.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások** lehetőséget. A megosztások listájában válassza ki a csatlakoztatni kívánt megosztást. A **számítási** oszlophoz használt érték a kiválasztott megosztásnál **letiltott** állapotot jeleníti meg.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **Cloud Storage gateway > megosztások** pontra. A megosztások listájában válassza ki a csatlakoztatni kívánt megosztást. A **számítási** oszlophoz használt érték a kiválasztott megosztásnál **letiltott** állapotot jeleníti meg.
 
    ![3. megosztás kiválasztása](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
@@ -122,13 +120,13 @@ Ha létrehozott egy megosztást, mielőtt beállította a számítást a Azure S
 
 5. A megosztás helyi csatlakoztatási pont megtekintéséhez válassza újra a megosztást. Az Edge számítási modul ezt a helyi csatlakoztatási pont használja a megosztáshoz.
 
-   ![A megosztás helyi csatlakoztatási pont](media/azure-stack-edge-manage-shares/share-mountpoint.png)
+   ![A megosztás helyi csatlakoztatási pont](media/azure-stack-edge-manage-shares/share-mountpoint.png) 
 
 ## <a name="unmount-a-share"></a>Megosztás leválasztása
 
 A megosztás leválasztásához hajtsa végre az alábbi lépéseket a Azure Portalben.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások** lehetőséget.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **Cloud Storage gateway > megosztások** pontra.
 
    ![4. megosztás kiválasztása](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
@@ -148,13 +146,13 @@ A megosztás leválasztásához hajtsa végre az alábbi lépéseket a Azure Por
 
 Megosztás törléséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
-1. A megosztások listájában jelölje ki a törölni kívánt megosztást, majd kattintson rá.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **Cloud Storage gateway > megosztások** pontra. A megosztások listájában jelölje ki a törölni kívánt megosztást, majd kattintson rá.
 
    ![5. megosztás kiválasztása](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
-2. Kattintson a **Törlés** gombra.
+2. Válassza a **Törlés** elemet.
 
-   ![Kattintson a Törlés gombra](media/azure-stack-edge-manage-shares/delete-share-2.png)
+   ![Törlés kiválasztása](media/azure-stack-edge-manage-shares/delete-share-2.png)
 
 3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra.
 
@@ -173,15 +171,15 @@ A frissítési funkció lehetővé teszi egy megosztás tartalmának frissítés
 
 Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
-1. Az Azure Portalon lépjen a **Megosztások** területre. Jelölje ki a frissíteni kívánt megosztást, majd kattintson rá.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **Cloud Storage gateway > megosztások** pontra. Jelölje ki a frissíteni kívánt megosztást, majd kattintson rá.
 
    ![6. megosztás kiválasztása](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
-2. Kattintson a **Frissítés** gombra.
+2. Válassza **az Adatfrissítés** lehetőséget.
 
-   ![Kattintson a Frissítés gombra](media/azure-stack-edge-manage-shares/refresh-share-2.png)
+   ![Frissítés kiválasztása](media/azure-stack-edge-manage-shares/refresh-share-2.png)
  
-3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A rendszer ekkor egy feladatot indít a helyszíni megosztás tartalmának frissítésére.
+3. Ha a rendszer megerősítést kér, válassza az **Igen** lehetőséget. A rendszer ekkor egy feladatot indít a helyszíni megosztás tartalmának frissítésére.
 
    ![Frissítés megerősítése](media/azure-stack-edge-manage-shares/refresh-share-3.png)
 
@@ -199,7 +197,7 @@ Ha a tárfiók kulcsai le lettek cserélve, akkor szinkronizálni kell a tárel�
 
 A tárelérési kulcsok szinkronizálásához hajtsa végre a következő lépéseket az Azure Portalon.
 
-1. Lépjen az erőforrás **Áttekintés** területére. A megosztások listájában válassza ki a szinkronizálni kívánt tárfiókhoz tartozó megosztást, majd kattintson rá.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **Cloud Storage gateway > megosztások** pontra. A megosztások listájában válassza ki a szinkronizálni kívánt tárfiókhoz tartozó megosztást, majd kattintson rá.
 
     ![Megosztás kiválasztása a megfelelő Storage-fiókkal](media/azure-stack-edge-manage-shares/sync-storage-key-1.png)
 
@@ -212,6 +210,6 @@ A tárelérési kulcsok szinkronizálásához hajtsa végre a következő lépé
 >[!NOTE]
 > Ezt a műveletet csak egyszer kell elvégezni az egyes tárfiókok esetében, nem kell megismételni minden egyes, ugyanazon tárfiókhoz tartozó megosztásnál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [kezelheti a felhasználókat az Azure Portalon keresztül](azure-stack-edge-manage-users.md).

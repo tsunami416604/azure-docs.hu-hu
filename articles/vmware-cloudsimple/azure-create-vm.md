@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple – virtuális gép létrehozása az Azure-ban virtuálisgép-sablonokkal
 description: Ismerteti, hogyan hozhat létre virtuális gépeket az Azure-ban virtuálisgép-sablonokkal a saját CloudSimple-felhőhöz készült VMware-infrastruktúrában
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014501"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898759"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Virtuális gép létrehozása az Azure-ban virtuálisgép-sablonok használatával a VMware-infrastruktúrában
 
@@ -44,7 +44,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     | ------------ | ------------- |
     | Előfizetés | A saját felhőhöz társított Azure-előfizetés.  |
     | Erőforráscsoport | Az erőforráscsoport, amelyhez a virtuális gép hozzá lesz rendelve. Választhat egy meglévő csoportot, vagy létrehozhat egy újat. |
-    | Név | A virtuális gép azonosítására szolgáló név.  |
+    | Name | A virtuális gép azonosítására szolgáló név.  |
     | Hely | Az az Azure-régió, amelyben a virtuális gép üzemeltetve van.  |
     | Magánfelhő | CloudSimple, ahol létre szeretné hozni a virtuális gépet. |
     | Erőforráskészlet | A virtuális géphez hozzárendelt erőforráskészlet. Válasszon a rendelkezésre álló erőforráskészlet közül. |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 552322b9452d380dd5507fb579d7cc44e1a456fe
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763965"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898915"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Oktatóanyag: a G Suite konfigurálása automatikus felhasználók kiépítési feladatokhoz
 
@@ -63,15 +63,15 @@ Mielőtt konfigurálja a G Suite-t az Azure AD-vel való automatikus felhasznál
 
 1. Jelentkezzen be a [G Suite felügyeleti konzolra](https://admin.google.com/) a rendszergazdai fiókjával, majd válassza a **Biztonság** elemet. Ha nem látja a hivatkozást, akkor előfordulhat, hogy a képernyő alján található **további vezérlők** menü alatt rejtve van.
 
-    ![G Suite biztonság](./media/google-apps-provisioning-tutorial/gapps-security.png)
+    ![G Suite biztonság](./media/g-suite-provisioning-tutorial/gapps-security.png)
 
 2. A **Biztonság** lapon válassza az **API-hivatkozás** lehetőséget.
 
-    ![G Suite API](./media/google-apps-provisioning-tutorial/gapps-api.png)
+    ![G Suite API](./media/g-suite-provisioning-tutorial/gapps-api.png)
 
 3. Válassza az **API-hozzáférés engedélyezése** lehetőséget.
 
-    ![G Suite API engedélyezve](./media/google-apps-provisioning-tutorial/gapps-api-enabled.png)
+    ![G Suite API engedélyezve](./media/g-suite-provisioning-tutorial/gapps-api-enabled.png)
 
     > [!IMPORTANT]
    > Minden, a G Suite-nak kiépíteni kívánt felhasználó számára az **Azure ad-** beli felhasználónevét egy egyéni tartományhoz kell kötni. Például az így megjelenő felhasználóneveket a bob@contoso.onmicrosoft.com G Suite nem fogadja el. Másrészről bob@contoso.com elfogadjuk. A meglévő felhasználó tartományát az [itt](../fundamentals/add-custom-domain.md)található útmutatás alapján módosíthatja.
@@ -80,15 +80,15 @@ Mielőtt konfigurálja a G Suite-t az Azure AD-vel való automatikus felhasznál
 
     a. A [G Suite felügyeleti konzolon](https://admin.google.com/)válassza a **tartományok** lehetőséget.
 
-    ![G Suite-tartományok](./media/google-apps-provisioning-tutorial/gapps-domains.png)
+    ![G Suite-tartományok](./media/g-suite-provisioning-tutorial/gapps-domains.png)
 
     b. Válassza **a tartomány hozzáadása vagy a tartományi alias** lehetőséget.
 
-    ![G Suite tartomány hozzáadása](./media/google-apps-provisioning-tutorial/gapps-add-domain.png)
+    ![G Suite tartomány hozzáadása](./media/g-suite-provisioning-tutorial/gapps-add-domain.png)
 
     c. Válassza a **másik tartomány hozzáadása** lehetőséget, majd írja be a hozzáadni kívánt tartomány nevét.
 
-    ![G Suite – másik hozzáadása](./media/google-apps-provisioning-tutorial/gapps-add-another.png)
+    ![G Suite – másik hozzáadása](./media/g-suite-provisioning-tutorial/gapps-add-another.png)
 
     d. Válassza **a Folytatás lehetőséget, és ellenőrizze a tartomány tulajdonjogát**. Ezután kövesse a lépéseket annak ellenőrzéséhez, hogy a tartománynév tulajdonosa-e. A tartomány a Google-vel való ellenőrzésével kapcsolatos részletes utasításokért lásd: [a hely tulajdonjogának ellenőrzése](https://support.google.com/webmasters/answer/35179).
 
@@ -96,11 +96,11 @@ Mielőtt konfigurálja a G Suite-t az Azure AD-vel való automatikus felhasznál
 
 5. Ezután határozza meg, hogy melyik rendszergazdai fiókot szeretné használni a G Suite-ban a felhasználók üzembe helyezésének kezeléséhez. Navigáljon a **rendszergazdai szerepkörök** elemre.
 
-    ![G Suite-rendszergazda](./media/google-apps-provisioning-tutorial/gapps-admin.png)
+    ![G Suite-rendszergazda](./media/g-suite-provisioning-tutorial/gapps-admin.png)
 
 6. A fiók **rendszergazdai szerepköréhez** szerkessze az adott szerepkörhöz tartozó **jogosultságokat** . Ügyeljen arra, hogy az összes **rendszergazdai API-jogosultságot** engedélyezze, hogy ez a fiók használható legyen az üzembe helyezéshez.
 
-    ![A G Suite rendszergazdai jogosultságai](./media/google-apps-provisioning-tutorial/gapps-admin-privileges.png)
+    ![A G Suite rendszergazdai jogosultságai](./media/g-suite-provisioning-tutorial/gapps-admin-privileges.png)
 
 ## <a name="step-3-add-g-suite-from-the-azure-ad-application-gallery"></a>3. lépés G csomag hozzáadása az Azure AD Application Galleryből
 
@@ -126,9 +126,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet. A felhasználóknak be kell jelentkezniük a portal.azure.com, és nem fogják tudni használni a aad.portal.azure.com
 
-    ![Vállalati alkalmazások panel](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](./media/g-suite-provisioning-tutorial/enterprise-applications.png)
 
-    ![Minden alkalmazás panel](./media/google-apps-provisioning-tutorial/all-applications.png)
+    ![Minden alkalmazás panel](./media/g-suite-provisioning-tutorial/all-applications.png)
 
 2. Az alkalmazások listában válassza a **G Suite** elemet.
 
@@ -138,7 +138,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a felügyeleti lehetőségek kezeléséről a kiépítési lehetőséggel.](common/provisioning.png)
 
-      ![Első lépések panel](./media/google-apps-provisioning-tutorial/get-started.png)
+      ![Első lépések panel](./media/g-suite-provisioning-tutorial/get-started.png)
 
 4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
@@ -146,11 +146,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés** elemre. A rendszer átirányítja az új böngészőablakban található Google-engedélyezési párbeszédpanelre.
 
-      ![G Suite engedélyezése](./media/google-apps-provisioning-tutorial/authorize-1.png)
+      ![G Suite engedélyezése](./media/g-suite-provisioning-tutorial/authorize-1.png)
 
 6. Győződjön meg arról, hogy az Azure AD-beli engedélyeket szeretné megadni a G Suite-bérlő módosításához. Válassza ki az **Elfogadás** lehetőséget.
 
-     ![G Suite bérlői hitelesítés](./media/google-apps-provisioning-tutorial/gapps-auth.png)
+     ![G Suite bérlői hitelesítés](./media/g-suite-provisioning-tutorial/gapps-auth.png)
 
 7. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad tud csatlakozni a G Suite-hoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a G Suite-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra. Ezután próbálja megismételni az **Engedélyezés** lépést.
 

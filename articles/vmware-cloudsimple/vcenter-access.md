@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple – hozzáférés vSphere-ügyfélhez
 description: Ismerteti, hogyan érheti el a vCenter a saját felhőben.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/30/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 18d9463bc512257034860e1188372879524924f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e62042a84f7ac2615762e3d9b036e4340bd8c73
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77022664"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899116"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>Hozzáférés a saját felhőalapú vCenter-portálhoz
 
@@ -38,7 +38,7 @@ A vCenter-portált elindíthatja saját felhőből Azure Portalról.
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-2. Keressen rá a **CloudSimple Services**kifejezésre.
+2. Keressen rá a **CloudSimple Services** kifejezésre.
 
 3. Válassza ki azt a CloudSimple-szolgáltatást, amelyhez csatlakozni szeretne.
 
@@ -46,7 +46,7 @@ A vCenter-portált elindíthatja saját felhőből Azure Portalról.
 
     ![A CloudSimple szolgáltatás áttekintése](media/cloudsimple-service-overview.png)
 
-5. Válassza ki a privát felhőt a privát felhők listájából, és kattintson az **vSphere-ügyfél indítása**lehetőségre.
+5. Válassza ki a privát felhőt a privát felhők listájából, és kattintson az **vSphere-ügyfél indítása** lehetőségre.
 
     ![VSphere-ügyfél elindítása](media/cloudsimple-service-launch-vsphere-client.png)
 
@@ -56,7 +56,7 @@ A privát felhő vCenter-portálját a CloudSimple portálról indíthatja el.
 
 1. Hozzáférés a [CloudSimple-portálhoz](access-cloudsimple-portal.md).
 
-2. Az **erőforrások** közül válassza ki a privát felhőt, amelyet szeretne elérni, és kattintson a **vSphere-ügyfél indítása**lehetőségre.
+2. Az **erőforrások** közül válassza ki a privát felhőt, amelyet szeretne elérni, és kattintson a **vSphere-ügyfél indítása** lehetőségre.
 
     ![VSphere-ügyfél elindítása – erőforrások](media/cloudsimple-portal-resources-launch-vcenter.png)
 
@@ -64,7 +64,7 @@ A privát felhő vCenter-portálját a CloudSimple portálról indíthatja el.
 
     ![VSphere-ügyfél indítása – összefoglalás](media/cloudsimple-resources-summary-launch-vcenter.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VLAN-ok/alhálózatok létrehozása és kezelése saját felhők számára](create-vlan-subnet.md)
 * [A VMware vCenter CloudSimple saját felhőalapú engedélyezési modellje](learn-private-cloud-permissions.md)

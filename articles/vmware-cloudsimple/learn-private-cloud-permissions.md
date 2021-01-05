@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple-Private Cloud Permission Model
 description: A CloudSimple saját felhőalapú engedélyezési modelljét, csoportjait és kategóriáit ismerteti
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c8cfeda008955006f2fbad1df58c8047bd36541
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77014946"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898045"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>A VMware vCenter CloudSimple saját felhőalapú engedélyezési modellje
 
@@ -43,7 +43,7 @@ Egy **Cloud-Owner-Group** nevű csoport jön létre egy privát felhő üzembe h
 Ha az egyes felhasználók számára engedélyezni szeretné a saját felhő felügyeletét, hozzon létre felhasználói fiókokat a megfelelő csoportokhoz való hozzáadáshoz.
 
 > [!CAUTION]
-> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  A vSphere webes felhasználói felületén csak a szolgáltatási fiókokat kell felvenni a *rendszergazdák* csoportjába, és a szolgáltatásfiókok nem használhatók.
+> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group* szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  A vSphere webes felhasználói felületén csak a szolgáltatási fiókokat kell felvenni a *rendszergazdák* csoportjába, és a szolgáltatásfiókok nem használhatók.
 
 ## <a name="list-of-vcenter-privileges-for-default-roles"></a>Az alapértelmezett szerepkörökhöz tartozó vCenter-jogosultságok listája
 
@@ -54,7 +54,7 @@ Ha az egyes felhasználók számára engedélyezni szeretné a saját felhő fel
 | **Riasztások** | Riasztás nyugtázása <br> Riasztás létrehozása <br> Riasztási művelet letiltása <br> Riasztás módosítása <br> Riasztás eltávolítása <br> Riasztás állapotának beállítása |
 | **Engedélyek** | Módosítási engedély |
 | **Tartalomtár** | Függvénytár-elem hozzáadása <br> Helyi könyvtár létrehozása <br> Előfizetett tár létrehozása <br> Függvénytár-elemek törlése <br> Helyi könyvtár törlése <br> Előfizetett tár törlése <br> Fájlok letöltése <br> Függvénytár-elemek kizárása <br> Előfizetett tár kizárása <br> Tároló importálása <br> Mintavételi előfizetés adatai <br> Tár olvasása <br> Könyvtár-elemek szinkronizálása <br> Előfizetett tár szinkronizálása <br> Betekintés típusa <br> Konfigurációs beállítások frissítése <br> Fájlok frissítése <br> Könyvtár frissítése <br> Függvénytár-elemek frissítése <br> Helyi könyvtár frissítése <br> Előfizetett tár frissítése <br> Konfigurációs beállítások megtekintése |
-| **Titkosítási műveletek** | Lemez hozzáadása <br> Klónozás <br> Visszafejtés <br> Direct Access <br> Titkosítás <br> Új titkosítás <br> KMS kezelése <br> Titkosítási házirendek kezelése <br> Kulcsok kezelése <br> Migrate (Áttelepítés) <br> Recrypt <br> Virtuális gép regisztrálása <br> Gazdagép regisztrálása |
+| **Titkosítási műveletek** | Lemez hozzáadása <br> Klónozás <br> Visszafejtés <br> Direct Access <br> Titkosítás <br> Új titkosítás <br> KMS kezelése <br> Titkosítási házirendek kezelése <br> Kulcsok kezelése <br> Migrate <br> Recrypt <br> Virtuális gép regisztrálása <br> Gazdagép regisztrálása |
 | **dvPort csoport** | Létrehozás <br> Törlés <br> Módosítás <br> Házirend-művelet <br> Hatókör-művelet |
 | **Adattár** | Tárterület foglalása <br> Adattár tallózása <br> Adattár konfigurálása <br> Alacsony szintű fájlok műveletei <br> Adattár áthelyezése <br> Adattár eltávolítása <br> Fájl eltávolítása <br> Adattár átnevezése <br> Virtuálisgép-fájlok frissítése <br> Virtuális gép metaadatainak frissítése |
 | **ESX-ügynök kezelője** | Konfigurálás <br> Módosítás <br> Nézet |
@@ -76,7 +76,7 @@ Ha az egyes felhasználók számára engedélyezni szeretné a saját felhő fel
 | **Profil alapú tárolás** | Profil-vezérelt tároló frissítése <br> Profil alapú tárolási nézet |
 | **Tárolási nézetek** | Szolgáltatás konfigurálása <br> Nézet |
 | **Feladatok** | Feladat létrehozása <br> Feladat frissítése |
-| **Szállítási szolgáltatás**| Kezelés <br> Figyelés |
+| **Szállítási szolgáltatás**| Kezelés <br> Monitor |
 | **vApp** | Virtuális gép hozzáadása <br> Erőforráskészlet kiosztása <br> VApp-hozzárendelés <br> Klónozás <br> Létrehozás <br> Törlés <br> Exportálás <br> Importálás <br> Áthelyezés <br> Kikapcsolás <br> Bekapcsolás <br> Átnevezés <br> Felfüggesztés <br> Regisztrálás törlése <br> OVF-környezet megtekintése <br> vApp-alkalmazás konfigurációja <br> vApp-példány konfigurációja <br> vApp többé-konfiguráció <br> vApp erőforrás-konfiguráció |
 | **VRMPolicy** | VRMPolicy lekérdezése <br> VRMPolicy frissítése |
 | **Virtuális gép > konfigurációja** | Meglévő lemez hozzáadása <br> Új lemez hozzáadása <br> Eszköz hozzáadása vagy eltávolítása <br> Felsőfokú <br> CPU-szám módosítása <br> Erőforrás módosítása <br> Többé konfigurálása <br> Lemez változásának követése <br> Lemez bérlete <br> Kapcsolatbeállítások megjelenítése <br> Virtuális lemez kiterjesztése <br> Gazdagép USB-eszköze <br> Memória <br> Eszközbeállítások módosítása <br> Hibatűrő kompatibilitási lekérdezés <br> A nem birtokolt fájlok lekérdezése <br> Nyers eszköz <br> Újratöltés az elérési útról <br> Lemez eltávolítása <br> Átnevezés <br> Vendég adatainak alaphelyzetbe állítása <br> Jegyzet beállítása <br> Beállítások <br> Swapfile elhelyezése <br> Elágazás szülőjének váltása <br> Virtuális gép feloldása <br> A virtuális gépek kompatibilitásának frissítése |

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple – a számítási feladatok virtuális gépei biztonsági mentése a privát felhőben a Veeam használatával
 description: A cikk azt ismerteti, hogyan készíthet biztonsági mentést egy Azure-alapú CloudSimple-beli privát felhőben futó virtuális gépekről a Veeam B&R 9,5 használatával
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7be606b3e23a594e67acf3f169d88353403d8577
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92419939"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899337"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Munkaterhelési virtuális gépek biztonsági mentése a CloudSimple privát felhőben a Veeam B&R használatával
 
@@ -246,12 +246,12 @@ A Veeam-konzol használatával konfigurálja a Veeam biztonsági mentési és he
 
 5. Biztonsági mentési feladatok konfigurálása.
     * A biztonsági mentési feladatok konfigurálásához kövesse a [biztonsági mentési feladat létrehozása](https://www.youtube.com/watch?v=YHxcUFEss4M)című témakör utasításait.
-    * Engedélyezze a biztonságimásolat-fájlok titkosítását a **Speciális beállítások > tároló**területen.
+    * Engedélyezze a biztonságimásolat-fájlok titkosítását a **Speciális beállítások > tároló** területen.
 
 6. A biztonsági másolatok másolásával kapcsolatos feladatok konfigurálása.
 
     * A biztonsági másolatok másolási feladatainak konfigurálásához kövesse a videóban található utasításokat a [biztonsági](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)másolat készítéséhez.
-    * Engedélyezze a biztonságimásolat-fájlok titkosítását a **Speciális beállítások > tároló**területen.
+    * Engedélyezze a biztonságimásolat-fájlok titkosítását a **Speciális beállítások > tároló** területen.
 
 ### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple-portál: az Veeam-hozzáférés beállítása és a deeszkalációs jogosultságok
 Hozzon létre egy nyilvános IP-címet a Veeam biztonsági mentési és helyreállítási kiszolgálójának. Útmutatásért lásd: [nyilvános IP-címek lefoglalása](public-ips.md).
@@ -260,7 +260,7 @@ Hozzon létre egy tűzfalszabály használatával, amely lehetővé teszi, hogy 
 
 A jogosultságok megszüntetéséhez tekintse meg a [jogosultságok dekiterjesztését](escalate-private-cloud-privileges.md#de-escalate-privileges)ismertető témakört.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 ### <a name="cloudsimple-references"></a>CloudSimple-referenciák
 

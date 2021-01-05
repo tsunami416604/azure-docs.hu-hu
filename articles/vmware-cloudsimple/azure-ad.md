@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple használatával – az Azure AD-t használhatja a saját Felhőbeli identitás forrásaként
 description: Ismerteti, hogyan lehet az Azure AD-t identitás-szolgáltatóként hozzáadni a saját CloudSimple-felhőben az Azure-CloudSimple hozzáférő felhasználók hitelesítéséhez
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f55a0f52f5e028f9cbf7a9fabbb3c24ad43c3800
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532528"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898606"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Az Azure AD használata identitás-szolgáltatóként a vCenter a CloudSimple Private Cloud szolgáltatásban
 
@@ -90,9 +90,9 @@ Opcionálisan más Azure AD-funkciókat is konfigurálhat.  Ezek nem szükséges
     | **Tartománynév** | A tartomány teljes tartományneve, például example.com. Ne adjon meg IP-címet ebben a szövegmezőben. |
     | **Tartomány aliasa** | *(nem kötelező)* A tartomány NetBIOS-neve. Adja hozzá a Active Directory tartomány NetBIOS-nevét az Identity forrás aliasként, ha az SSPI-hitelesítést használja. |
     | **A csoportok alapszintű megkülönböztető neve** | A csoportok alapszintű megkülönböztető neve. Az Azure AD esetében használja a következőt: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  példa: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>Használja a formátumot  `ldaps://hostname:port` . A port általában a 636 LDAP-kapcsolatokhoz. <br><br>Az  `ldaps://`   elsődleges vagy másodlagos LDAP URL-cím használata esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
+    | **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>Használja a következő formátumot: `ldaps://hostname:port`. A port általában a 636 LDAP-kapcsolatokhoz. <br><br>Az `ldaps://` elsődleges vagy másodlagos LDAP URL-cím használata esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
     | **Másodlagos kiszolgáló URL-címe** | A feladatátvételhez használt másodlagos tartományvezérlői LDAP-kiszolgáló címe. |
-    | **Tanúsítvány kiválasztása** | Ha LDAPs-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor  `ldaps://`   az URL-cím szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
+    | **Tanúsítvány kiválasztása** | Ha LDAPs-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor `ldaps://` az URL-cím szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
     | **Felhasználónév** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
     | **Jelszó** | A Felhasználónév által megadott felhasználó jelszava. |
 
@@ -101,7 +101,7 @@ Opcionálisan más Azure AD-funkciókat is konfigurálhat.  Ezek nem szükséges
 5. Felhasználók/csoportok hozzáadása az Azure AD-ből vCenter-csoportokhoz a következő témakörben leírtak szerint: [Tagok hozzáadása vCenter egyetlen Sign-On csoporthoz](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 > [!CAUTION]
-> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  Csak a *rendszergazdák* csoporthoz kell tartoznia a szolgáltatásfiókok hozzáadásához.
+> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group* szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  Csak a *rendszergazdák* csoporthoz kell tartoznia a szolgáltatásfiókok hozzáadásához.
 
 ## <a name="next-steps"></a>Következő lépések
 

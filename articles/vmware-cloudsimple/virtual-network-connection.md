@@ -1,19 +1,19 @@
 ---
 title: Azure-beli virtuális hálózat összekötése a CloudSimple ExpressRoute-Azure VMware-megoldással a CloudSimple használatával
 description: Útmutató az Azure-beli virtuális hálózat és a CloudSimple-környezet közötti kapcsolathoz kapcsolódó információk megszerzéséhez
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6b20ee4e04a4443529ecceca8c6fc2206f7df39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fedfbe55fd8ea3d2b4cc910df631e40bc74e210
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77563990"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899065"
 ---
 # <a name="connect-azure-virtual-network-to-cloudsimple-using-expressroute"></a>Azure-beli virtuális hálózat összekötése a CloudSimple a ExpressRoute használatával
 
@@ -32,7 +32,7 @@ A privát felhő és az Azure virtuális hálózat közötti ExpressRoute-kapcso
 
 ## <a name="get-peering-information-from-cloudsimple-portal"></a>Egyenrangú információk beolvasása a CloudSimple-portálról
 
-A kapcsolat beállításához létre kell hoznia egy kapcsolatot az Azure Virtual Network és a CloudSimple-környezet között.  Az eljárás részeként meg kell adnia a társ-áramköri URI-t és az engedélyezési kulcsot. Szerezze be az URI és az engedélyezési kulcsot a [CloudSimple portálról](access-cloudsimple-portal.md).  Válassza a **hálózat** lehetőséget az oldalsó menüben, majd válassza az **Azure hálózati kapcsolatok**lehetőséget. Vagy válassza a **fiók** lehetőséget az oldalsó menüben, majd válassza az **Azure hálózati kapcsolatok**lehetőséget.
+A kapcsolat beállításához létre kell hoznia egy kapcsolatot az Azure Virtual Network és a CloudSimple-környezet között.  Az eljárás részeként meg kell adnia a társ-áramköri URI-t és az engedélyezési kulcsot. Szerezze be az URI és az engedélyezési kulcsot a [CloudSimple portálról](access-cloudsimple-portal.md).  Válassza a **hálózat** lehetőséget az oldalsó menüben, majd válassza az **Azure hálózati kapcsolatok** lehetőséget. Vagy válassza a **fiók** lehetőséget az oldalsó menüben, majd válassza az **Azure hálózati kapcsolatok** lehetőséget.
 
 Másolja a társ-áramköri URI-t és az egyes régiókhoz tartozó engedélyezési kulcsot a *Másolás* ikon használatával. Minden olyan CloudSimple-régióhoz, amelyhez csatlakozni szeretne:
 
@@ -45,7 +45,7 @@ Másolja ki az **elérhető** állapotban lévő engedélyezési kulcsot és a t
 
 Az Azure-beli virtuális hálózat CloudSimple való beállításával kapcsolatos további információkért lásd: a [CloudSimple saját felhőalapú környezetének csatlakoztatása az Azure Virtual networkhez a ExpressRoute használatával](azure-expressroute-connection.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-beli virtuális hálózati kapcsolatok a privát felhőhöz](azure-expressroute-connection.md)
 * [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](on-premises-connection.md)

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple – VPN konfigurálása a helyszíni és a privát felhő között
 description: Útmutató helyek közötti vagy pont – hely típusú VPN-kapcsolat konfigurálásához a helyszíni hálózat és a CloudSimple privát felhője között
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424669"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899218"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>VPN-kapcsolat konfigurálása saját CloudSimple-felhőhöz
 
@@ -34,8 +34,8 @@ Pont – hely típusú VPN-átjáró létrehozásával kapcsolatban lásd: [pont
 
 A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szükséges.  Töltse le a Windowshoz készült [OpenVPN-ügyfelet](https://openvpn.net/community-downloads/) , illetve a MacOS és az OS X [viszkozitását](https://www.sparklabs.com/viscosity/download/) .
 
-1. Indítsa el a CloudSimple portált, és válassza a **hálózat**lehetőséget.
-2. Válassza a **VPN Gateway**lehetőséget.
+1. Indítsa el a CloudSimple portált, és válassza a **hálózat** lehetőséget.
+2. Válassza a **VPN Gateway** lehetőséget.
 3. A VPN-átjárók listájában kattintson a pont – hely VPN-átjáróra.
 4. Válassza a **Felhasználók** lehetőséget.
 5. Kattintson a **saját VPN-konfiguráció letöltése** elemre.
@@ -57,11 +57,11 @@ Az alábbi példa azt mutatja be, hogyan importálhatók a kapcsolatok a **viszk
 
 2. Nyissa meg a viszkozitást a számítógépén.
 
-3. Kattintson az **+** ikonra, és válassza a **kapcsolatok importálása**  >  **fájlból**lehetőséget.
+3. Kattintson az **+** ikonra, és válassza a **kapcsolatok importálása**  >  **fájlból** lehetőséget.
 
     ![VPN-konfiguráció importálása fájlból](media/import-p2s-vpn-config.png)
 
-4. Válassza ki a használni kívánt protokollhoz tartozó OpenVPN konfigurációs fájlt (. ovpn), majd kattintson a **Megnyitás**gombra.
+4. Válassza ki a használni kívánt protokollhoz tartozó OpenVPN konfigurációs fájlt (. ovpn), majd kattintson a **Megnyitás** gombra.
 
     ![Képernyőkép a kiválasztható OpenVPN konfigurációs fájlokra.](media/import-p2s-vpn-config-choose-ovpn.png)
 
@@ -81,11 +81,11 @@ A pont – hely típusú VPN-kapcsolat feloldja a létrehozott első saját felh
 
 2. Navigáljon az **erőforrások**  >  **privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
 
-3. A privát felhő **Összegzés** lapján másolja a saját FELHŐBELI DNS-kiszolgáló IP-címét az **alapszintű adatok**területen.
+3. A privát felhő **Összegzés** lapján másolja a saját FELHŐBELI DNS-kiszolgáló IP-címét az **alapszintű adatok** területen.
 
     ![Privát Felhőbeli DNS-kiszolgálók](media/private-cloud-dns-server.png)
 
-4. Kattintson a jobb gombbal a számítógép rendszertálcán található viszkozitás ikonra, és válassza a **Beállítások**lehetőséget.
+4. Kattintson a jobb gombbal a számítógép rendszertálcán található viszkozitás ikonra, és válassza a **Beállítások** lehetőséget.
 
     ![VPN](media/vis00.png)
 
@@ -97,7 +97,7 @@ A pont – hely típusú VPN-kapcsolat feloldja a létrehozott első saját felh
 
     ![VPN-kapcsolat szerkesztése](media/viscosity-edit-connection.png)
 
-7. Kattintson a **hálózatkezelés** lapra, és adja meg a saját FELHŐbeli DNS-kiszolgáló IP-címét vesszővel vagy szóközzel elválasztva, valamint a tartományt ```cloudsimple.io``` .  Válassza **a VPN-kiszolgáló által eljuttatott DNS-beállítások mellőzése**lehetőséget.
+7. Kattintson a **hálózatkezelés** lapra, és adja meg a saját FELHŐbeli DNS-kiszolgáló IP-címét vesszővel vagy szóközzel elválasztva, valamint a tartományt ```cloudsimple.io``` .  Válassza **a VPN-kiszolgáló által eljuttatott DNS-beállítások mellőzése** lehetőséget.
 
     ![VPN-hálózatkezelés](media/viscosity-edit-connection-networking.png)
 

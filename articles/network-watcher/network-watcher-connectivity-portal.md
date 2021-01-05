@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/03/2017
+ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: e8d46d6428204727bc6d63dc156eda195040c513
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f33c5f0fdf69737df0d8bd83499ded1e0e0f4f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494171"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898113"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Az Azure Network Watcher-kapcsolatok hibáinak megoldása a Azure Portal használatával
 
@@ -55,7 +55,7 @@ Ha szeretné megnézni a kapcsolatot és a késést egy távoli végponton, akko
 
 ![Webhely csatlakozási eredményeinek ellenőrzése][2]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuálisgép-riasztásokkal a [riasztások által aktivált csomagok létrehozása](network-watcher-alert-triggered-packet-capture.md) funkció megtekintésével
 

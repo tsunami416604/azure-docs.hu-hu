@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2b71bee620ab7d5b1ef98b60013d1978f49d127f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505886"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898725"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -185,6 +185,14 @@ Meghatározza a nyelv munkavégző folyamatainak maximális számát, alapértel
 |Kulcs|Mintaérték|
 |---|------------|
 |FUNCTIONs \_ munkavégző \_ folyamatok \_ száma|2|
+
+## <a name="python_threadpool_thread_count"></a>PYTHON \_ szálkészlet munkaszála belépett \_ szálak \_ száma
+
+Meghatározza, hogy a Python nyelvi feldolgozó hány szálat használjon a függvények meghívásának végrehajtásához, a `1` Python-verzió alapértelmezett értékével és az `3.8` alatta. `3.9`A Python és újabb verziók esetében az érték a következőre van beállítva: `None` . Vegye figyelembe, hogy ez a beállítás nem garantálja, hogy hány szálat kell beállítani a végrehajtás során. A beállítás lehetővé teszi a Python számára a szálak számának a megadott értékre való kiterjesztését. A beállítás csak a Python functions-alkalmazásokra vonatkozik. Emellett a beállítás a szinkron függvények meghívására, és nem a munkarutinokra is vonatkozik.
+
+|Kulcs|Mintaérték|Maximális érték|
+|---|------------|---------|
+|PYTHON \_ szálkészlet munkaszála belépett \_ szálak \_ száma|2|32|
 
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONs \_ Worker \_ futtatókörnyezet

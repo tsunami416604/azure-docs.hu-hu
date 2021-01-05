@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple használatával – VPN-átjáró beállítása
 description: Útmutató pont – hely típusú VPN-átjáró és helyek közötti VPN-átjáró beállításához, valamint kapcsolatok létrehozása a helyszíni hálózat és a CloudSimple privát felhője között
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78f78bfbf885cbae7708a75cb54ce2d41e7b526c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872000"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899099"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>VPN-átjárók beállítása a CloudSimple hálózaton
 
@@ -38,13 +38,13 @@ Egy pont – hely típusú VPN-átjáró lehetővé teszi az új felhasználók 
 
 ## <a name="set-up-a-site-to-site-vpn-gateway"></a>Helyek közötti VPN-átjáró beállítása
 
-1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat**lehetőséget.
-2. Válassza a **VPN Gateway**lehetőséget.
-3. Kattintson az **új VPN Gateway**elemre.
+1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat** lehetőséget.
+2. Válassza a **VPN Gateway** lehetőséget.
+3. Kattintson az **új VPN Gateway** elemre.
 
     ![VPN-átjáró létrehozása](media/create-vpn-gateway.png)
 
-4. Az **átjáró konfigurálása**lapon írja be a következő beállításokat, majd kattintson a **tovább**gombra.
+4. Az **átjáró konfigurálása** lapon írja be a következő beállításokat, majd kattintson a **tovább** gombra.
 
     * Válassza a **helyek közötti VPN** lehetőséget átjáró típusaként.
     * Adjon meg egy nevet az átjáró azonosításához.
@@ -56,17 +56,17 @@ Egy pont – hely típusú VPN-átjáró lehetővé teszi az új felhasználók 
     > [!WARNING]
     > A magas rendelkezésre állás engedélyezéséhez a helyszíni VPN-eszköznek két IP-címhez való csatlakozást kell támogatnia. Ez a beállítás nem tiltható le, ha a VPN-átjáró telepítve van.
 
-5. Hozza létre az első csatlakozni a helyszíni hálózatból, és kattintson a **tovább**gombra.
+5. Hozza létre az első csatlakozni a helyszíni hálózatból, és kattintson a **tovább** gombra.
 
     * Adjon meg egy nevet a kapcsolódás azonosításához.
     * A társ IP esetében adja meg a helyszíni VPN-átjáró nyilvános IP-címét.
     * Adja meg a helyszíni VPN-átjáró társ-azonosítóját.  A társ-azonosító általában a helyszíni VPN-átjáró nyilvános IP-címe.  Ha konfigurált egy adott azonosítót az átjárón, adja meg az azonosítót.
     * Másolja a helyi VPN-átjáróval létesített kapcsolathoz használni kívánt megosztott kulcsot.  Ha módosítani szeretné az alapértelmezett megosztott kulcsot, és megad egy újat, kattintson a Szerkesztés ikonra.
-    * Helyszíni **előtagok**esetén adja meg a helyszíni CIDR előtagokat, amelyek a CloudSimple-hálózathoz fognak hozzáférni.  A kapcsolat létrehozásakor több CIDR-előtagot is hozzáadhat.
+    * Helyszíni **előtagok** esetén adja meg a helyszíni CIDR előtagokat, amelyek a CloudSimple-hálózathoz fognak hozzáférni.  A kapcsolat létrehozásakor több CIDR-előtagot is hozzáadhat.
 
     ![Helyek közötti VPN Gateway-kapcsolat létrehozása](media/create-vpn-gateway-s2s-connection.png)
 
-6. Engedélyezze a saját felhőalapú hálózatán a helyszíni hálózatról elérhető VLAN/alhálózatokat, majd kattintson a **tovább**gombra.
+6. Engedélyezze a saját felhőalapú hálózatán a helyszíni hálózatról elérhető VLAN/alhálózatokat, majd kattintson a **tovább** gombra.
 
     * Felügyeleti VLAN/alhálózat hozzáadásához engedélyezze a **privát felhők felügyeleti VLAN-ok/alhálózatok hozzáadását**.  A vMotion és vSAN alhálózatok esetében felügyeleti alhálózatra van szükség.
     * VMotion alhálózatok hozzáadásához engedélyezze a **vMotion-hálózat hozzáadása lehetőséget a privát felhőknél**.
@@ -75,36 +75,36 @@ Egy pont – hely típusú VPN-átjáró lehetővé teszi az új felhasználók 
 
     ![Kapcsolat létrehozása](media/create-vpn-gateway-s2s-connection-vlans.png)
 
-7. Tekintse át a beállításokat, majd kattintson a **Küldés**gombra.
+7. Tekintse át a beállításokat, majd kattintson a **Küldés** gombra.
 
     ![Helyek közötti VPN-átjáró áttekintése és létrehozása](media/create-vpn-gateway-s2s-review.png)
 
 ## <a name="create-point-to-site-vpn-gateway"></a>Pont – hely típusú VPN-átjáró létrehozása
 
-1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat**lehetőséget.
-2. Válassza a **VPN Gateway**lehetőséget.
-3. Kattintson az **új VPN Gateway**elemre.
+1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat** lehetőséget.
+2. Válassza a **VPN Gateway** lehetőséget.
+3. Kattintson az **új VPN Gateway** elemre.
 
     ![VPN-átjáró létrehozása](media/create-vpn-gateway.png)
 
-4. Az **átjáró konfigurálása**lapon írja be a következő beállításokat, majd kattintson a **tovább**gombra.
+4. Az **átjáró konfigurálása** lapon írja be a következő beállításokat, majd kattintson a **tovább** gombra.
 
     * Válassza a **pont – hely típusú VPN** lehetőséget átjáró típusaként.
     * Adjon meg egy nevet az átjáró azonosításához.
     * Válassza ki azt az Azure-helyet, ahol a CloudSimple szolgáltatás telepítve van.
     * A pont – hely átjáróhoz tartozó ügyféloldali alhálózat megadása.  A DHCP-címeket a rendszer a csatlakozáskor az ügyfél alhálózatában adja meg.
 
-5. A **kapcsolatok/felhasználók**területen válassza a következő beállításokat, majd kattintson a **tovább**gombra.
+5. A **kapcsolatok/felhasználók** területen válassza a következő beállításokat, majd kattintson a **tovább** gombra.
 
-    * Ha automatikusan engedélyezni szeretné az összes jelenlegi és jövőbeli felhasználó számára a privát felhő elérését a pont – hely átjárón keresztül, válassza az **összes felhasználó automatikus hozzáadása**lehetőséget. Ha bejelöli a beállítást, a rendszer a felhasználói listán szereplő összes felhasználót automatikusan kijelöli. Az automatikus beállítást felülbírálhatja az egyes felhasználók törlésével a listában.
+    * Ha automatikusan engedélyezni szeretné az összes jelenlegi és jövőbeli felhasználó számára a privát felhő elérését a pont – hely átjárón keresztül, válassza az **összes felhasználó automatikus hozzáadása** lehetőséget. Ha bejelöli a beállítást, a rendszer a felhasználói listán szereplő összes felhasználót automatikusan kijelöli. Az automatikus beállítást felülbírálhatja az egyes felhasználók törlésével a listában.
     * Az egyes felhasználók kiválasztásához kattintson a felhasználók listájában található jelölőnégyzetekre.
 
 6. A VLAN-ok/alhálózatok szakaszban megadhatja az átjáróhoz és a kapcsolatokhoz tartozó felügyeleti és felhasználói VLAN-okat/alhálózatokat.
 
     * Az **automatikus hozzáadási** beállítások az átjáróhoz tartozó globális házirendet határozzák meg. A beállítások az aktuális átjáróra érvényesek. A beállítások felülbírálása a **Select** területen lehetséges.
-    * Válassza a **felügyeleti VLAN-ok vagy a privát felhők alhálózatok hozzáadása**lehetőséget. 
-    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a  **felhasználó által definiált VLAN-ok/alhálózatok hozzáadása**lehetőségre.
-    * A beállítások **kiválasztása** felülbírálja a globális beállításokat az **automatikus Hozzáadás**területen.
+    * Válassza a **felügyeleti VLAN-ok vagy a privát felhők alhálózatok hozzáadása** lehetőséget. 
+    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a  **felhasználó által definiált VLAN-ok/alhálózatok hozzáadása** lehetőségre.
+    * A beállítások **kiválasztása** felülbírálja a globális beállításokat az **automatikus Hozzáadás** területen.
 
 7. A beállítások áttekintéséhez kattintson a **tovább** gombra. A módosítások elvégzéséhez kattintson a Szerkesztés ikonra.
 8. A VPN-átjáró létrehozásához kattintson a **Létrehozás** gombra.
