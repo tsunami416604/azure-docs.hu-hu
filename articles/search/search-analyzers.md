@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/20/2020
+ms.date: 12/18/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbda4268ca00d1c12f851517e2b35add7fba7f9b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013819"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694287"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban való szövegszerkesztés elemzői
 
@@ -315,55 +315,61 @@ Ha a .NET SDK-kód mintáit használja, ezeket a példákat az elemzők használ
 
 Bármely, konfiguráció nélkül használt analizátor meg van adva egy mező definíciójában. Nincs szükség bejegyzés létrehozására az index **[elemzők]** szakaszában. 
 
-Ez a példa a Microsoft angol és francia elemzőit rendeli hozzá a Description (Leírás) mezőkhöz. Ez egy olyan kódrészlet, amely a [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) minta Hotels.cs fájljában a Hotel osztály használatával jön létre.
+A nyelvi elemzők a következőképpen használhatók:. A használathoz hívja meg a [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer)-t, és adja meg az Azure Cognitive Search által támogatott szöveges elemzőt biztosító [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) -típust.
 
-Hívja meg a [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer), adja meg az Azure Cognitive Search által támogatott szöveges elemzőt biztosító [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) típusát.
+Az egyéni elemzők hasonló módon vannak megadva a mező definíciójában, de ahhoz, hogy működjön, meg kell adnia az analizátort az index definíciójában, a következő szakaszban leírtak szerint.
 
 ```csharp
     public partial class Hotel
     {
        . . . 
-
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
-        [JsonProperty("description")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
         public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrLucene)]
-        [JsonProperty("description_fr")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrLucene)]
+        [JsonPropertyName("Description_fr")]
         public string DescriptionFr { get; set; }
 
+        [SearchableField(AnalyzerName = "url-analyze")]
+        public string Url { get; set; }
       . . .
     }
 ```
+
 <a name="Define-a-custom-analyzer"></a>
 
 ### <a name="define-a-custom-analyzer"></a>Egyéni analizátor definiálása
 
-Ha testreszabásra vagy konfigurálásra van szükség, hozzá kell adnia egy Analyzer-szerkezetet egy indexhez. A Definiálás után hozzáadhatja a mező definícióját az előző példában bemutatott módon.
+Ha testreszabásra vagy konfigurálásra van szükség, vegyen fel egy Analyzer-szerkezetet egy indexbe. A Definiálás után hozzáadhatja a mező definícióját az előző példában bemutatott módon.
 
-Hozzon létre egy [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) objektumot. További Példákért lásd: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Hozzon létre egy [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) objektumot. Az egyéni elemző egy ismert tokenizer felhasználó által definiált kombinációja, nulla vagy több jogkivonat-szűrő, valamint nulla vagy több karakteres szűrő neve:
+
++ [CustomAnalyzer.Tokenizer](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer)
++ [CustomAnalyzer.TokenFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenfilters)
++ [CustomAnalyzer.CharFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.charfilters)
+
+Az alábbi példa egy "URL-elemzés" nevű egyéni elemzőt hoz létre, amely a [uax_url_email tokenizer](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer) és a [kisbetűs jogkivonat-szűrőt](/dotnet/api/microsoft.azure.search.models.tokenfiltername.lowercase)használja.
 
 ```csharp
+private static void CreateIndex(string indexName, SearchIndexClient adminClient)
 {
-   var definition = new Index()
+   FieldBuilder fieldBuilder = new FieldBuilder();
+   var searchFields = fieldBuilder.Build(typeof(Hotel));
+
+   var analyzer = new CustomAnalyzer("url-analyze", "uax_url_email")
    {
-         Name = "hotels",
-         Fields = FieldBuilder.BuildForType<Hotel>(),
-         Analyzers = new[]
-            {
-               new CustomAnalyzer()
-               {
-                     Name = "url-analyze",
-                     Tokenizer = TokenizerName.UaxUrlEmail,
-                     TokenFilters = new[] { TokenFilterName.Lowercase }
-               }
-            },
+         TokenFilters = { TokenFilterName.Lowercase }
    };
 
-   serviceClient.Indexes.Create(definition);
+   var definition = new SearchIndex(indexName, searchFields);
+
+   definition.Analyzers.Add(analyzer);
+
+   adminClient.CreateOrUpdateIndex(definition);
+}
 ```
+
+További Példákért lásd: [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -375,7 +381,7 @@ Hozzon létre egy [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.mo
 
 + [Egyéni elemzők konfigurálása](index-add-custom-analyzers.md) az egyes mezők minimális feldolgozásához vagy speciális feldolgozásához.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
  [Dokumentumok keresése – REST API](/rest/api/searchservice/search-documents) 
 

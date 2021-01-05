@@ -1,18 +1,18 @@
 ---
 title: 'Útmutató: a Data Catalog tallózása'
 description: Ez a cikk áttekintést nyújt arról, hogyan böngészhet az Azure-beli hatáskörébe Data Catalog az eszköz típusa alapján.
-author: hrasheed-msft
-ms.author: hrasheed
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: b8cdbbc29472ae10920c347dde308c352bf0b68a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: dd2fd4fbc9d8aecd9821d668dd02bd4b68659cf6
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552480"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695054"
 ---
 # <a name="browse-the-azure-purview-data-catalog"></a>Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása
 
@@ -64,7 +64,7 @@ Az eszköz részletei lapon megtekintheti az egyéb kapcsolódó adategységeket
 
     :::image type="content" source="media/how-to-browse-catalog/select-different-hierarchy.jpg" alt-text="Válasszon másik hierarchiát" border="true":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Szószedet használati feltételeinek létrehozása, importálása és exportálása](how-to-create-import-export-glossary.md)
 - [Az üzleti kifejezések sablonjának kezelése Szószedet](how-to-manage-term-templates.md)

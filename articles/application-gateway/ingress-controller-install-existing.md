@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018698"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693737"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Application Gateway beáramlási vezérlő (AGIC) telepítése meglévő Application Gateway használatával
 
@@ -323,7 +323,7 @@ AGIC engedélyek kiterjesztése a rel:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Meglévő AGIC-telepítés engedélyezése
-Tegyük fel, hogy már van egy működő AK-beli, Application Gateway és konfigurált AGIC a fürtben. A rendszer beérkező adatokat biztosít a számára, `prod.contosor.com` és sikeresen kiszolgálja az AK-ból érkező adatforgalmat. Hozzá szeretnénk adni a `staging.contoso.com` meglévő Application Gatewayhoz, de azt egy [virtuális gépen](https://azure.microsoft.com/services/virtual-machines/)kell üzemeltetni. Újra felhasználjuk a meglévő Application Gateway, és manuálisan konfiguráljuk a figyelő és a háttér-készleteket `staging.contoso.com` . De a Application Gateway konfiguráció manuális csípése (a [portálon](https://portal.azure.com), az [ARM API](/rest/api/resources/) -kon vagy a [Terraform](https://www.terraform.io/)-on keresztül) ütközne a teljes tulajdonú AGIC. Röviddel a módosítások alkalmazása után a AGIC felülírja vagy törli őket.
+Tegyük fel, hogy már van egy működő AK-beli, Application Gateway és konfigurált AGIC a fürtben. A rendszer beérkező adatokat biztosít a számára, `prod.contoso.com` és sikeresen kiszolgálja az AK-ból érkező adatforgalmat. Hozzá szeretnénk adni a `staging.contoso.com` meglévő Application Gatewayhoz, de azt egy [virtuális gépen](https://azure.microsoft.com/services/virtual-machines/)kell üzemeltetni. Újra felhasználjuk a meglévő Application Gateway, és manuálisan konfiguráljuk a figyelő és a háttér-készleteket `staging.contoso.com` . De a Application Gateway konfiguráció manuális csípése (a [portálon](https://portal.azure.com), az [ARM API](/rest/api/resources/) -kon vagy a [Terraform](https://www.terraform.io/)-on keresztül) ütközne a teljes tulajdonú AGIC. Röviddel a módosítások alkalmazása után a AGIC felülírja vagy törli őket.
 
 A AGIC megtilthatja, hogy a konfiguráció egy részhalmaza módosítható legyen.
 

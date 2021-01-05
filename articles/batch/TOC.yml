@@ -65,6 +65,8 @@
           href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+        - name: Ajánlott biztonsági eljárások
+          href: security-best-practices.md
     - name: A Batch szolgáltatás munkafolyamata és erőforrásai
       displayName: developer features
       href: batch-service-workflow-features.md

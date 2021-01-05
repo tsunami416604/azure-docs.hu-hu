@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: 58cdd025587823f7eb702164c965ab622a7325d3
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 5b48d326efad889adbcf25d487ee27b8200f558f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615647"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693911"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: hálózati konfigurációval kapcsolatos riasztások Azure Active Directory Domain Services
 
@@ -45,6 +45,8 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 | 65000    | AllVnetInBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerInBound | Bármelyik | Bármelyik | AzureLoadBalancer | Bármelyik | Engedélyezés |
 | 65500    | DenyAllInBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Megtagadás |
+
+
 <sup>1</sup> Hibakereséshez nem kötelező. Engedélyezze, ha szükséges a speciális hibaelhárításhoz.
 
 > [!NOTE]

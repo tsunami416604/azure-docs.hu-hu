@@ -1,18 +1,18 @@
 ---
 title: Az Azure Storage-blob vizsgálata
 description: Ismerje meg, hogyan vizsgálhatja meg az Azure Blob Storage-t az Azure hatáskörébe tartozó adatkatalógusban.
-author: hophanms
-ms.author: hophan
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1bcd8390a298d7fc46f9c04633f610eb4492d33d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9fc5c115486c7cbf84fc0bd98ff7996c674f2e24
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400709"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694814"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Az Azure Blob Storage regisztrálása és vizsgálata
 
@@ -128,7 +128,7 @@ A **források regisztrálása (Azure Blob Storage)** képernyőn tegye a követk
 
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

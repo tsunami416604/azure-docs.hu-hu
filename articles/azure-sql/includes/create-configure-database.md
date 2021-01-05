@@ -5,12 +5,12 @@ ms.subservice: operations
 ms.topic: include
 ms.date: 12/17/2020
 ms.author: jovanpop
-ms.openlocfilehash: a898b56e3f99d10a0a78ca9e075ba0c6e3788bbc
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d1422d029bc2c5d41330e4ac2d21ff14e4fa82ab
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674267"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703966"
 ---
   Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist:
 
@@ -22,4 +22,5 @@ ms.locfileid: "97674267"
   || | | [Üzembehelyezési sablon](../virtual-machines/windows/create-sql-vm-resource-manager-template.md) | [Üzembehelyezési sablon](../../synapse-analytics/quickstart-deployment-template-workspaces.md) | 
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](../database/firewall-create-server-level-portal-quickstart.md)| [Kapcsolódás virtuális gépről](../managed-instance/connect-vm-instance-configure.md)| |
   |||[Helyszíni kapcsolat](../managed-instance/point-to-site-p2s-configure.md) | [Kapcsolódás SQL Server-példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) |
-  ||||
+  | Kapcsolatadatok lekérése | [Azure SQL](../database/connect-query-content-reference-guide.md#get-server-connection-information)|[Azure SQL](../database/connect-query-content-reference-guide.md#get-server-connection-information)| [SQL-ALAPÚ VIRTUÁLIS GÉP](../virtual-machines/windows/sql-vm-create-portal-quickstart.md?#connect-to-sql-server)| [Synapse SQL](../../synapse-analytics/sql/connect-overview.md#find-your-server-name)|
+  |||||

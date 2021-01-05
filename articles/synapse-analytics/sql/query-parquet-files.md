@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462576"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694680"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -38,9 +38,9 @@ from openrowset(
 Győződjön meg arról, hogy el tudja érni ezt a fájlt. Ha a fájl SAS-kulccsal vagy egyéni Azure-identitással védett, akkor az SQL-bejelentkezéshez be kell állítania a [kiszolgálói szintű hitelesítő adatokat](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy UTF-8 adatbázis-rendezést használ (például `Latin1_General_100_CI_AS_SC_UTF8` ), mert a parkettázott fájlokban lévő karakterlánc-értékek UTF-8 kódolással vannak kódolva.
+> Győződjön meg arról, hogy UTF-8 adatbázis-rendezést használ (például `Latin1_General_100_BIN2_UTF8` ), mert a parkettázott fájlokban lévő karakterlánc-értékek UTF-8 kódolással vannak kódolva.
 > A PARQUEt fájlban lévő szöveg kódolása nem egyezik, és a rendezés váratlan konverziós hibákat okozhat.
-> Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_BIN2_UTF8`
 
 ### <a name="data-source-usage"></a>Adatforrás használata
 
@@ -74,10 +74,10 @@ from openrowset(
 ```
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy a explicilty valamilyen UTF-8 rendezést határoz meg (például `Latin1_General_100_CI_AS_SC_UTF8` ) a záradékban található összes karakterlánc-oszlophoz, `WITH` vagy állítson be néhány UTF-8 rendezést az adatbázis szintjén.
+> Győződjön meg arról, hogy a explicilty valamilyen UTF-8 rendezést határoz meg (például `Latin1_General_100_BIN2_UTF8` ) a záradékban található összes karakterlánc-oszlophoz, `WITH` vagy állítson be néhány UTF-8 rendezést az adatbázis szintjén.
 > A fájl-és karakterlánc-oszlopok rendezésének szöveges kódolása nem megfelelő, ezért váratlan konverziós hibák merülhetnek fel.
-> Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
-> A UnitPrice-típusok rendezését könnyedén megadhatja a következő definíció használatával: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8`
+> Az aktuális adatbázis alapértelmezett rendezését az alábbi T-SQL-utasítás használatával egyszerűen módosíthatja: `alter database current collate Latin1_General_100_BIN2_UTF8`
+> A UnitPrice-típusok rendezését könnyedén megadhatja a következő definíció használatával: `geo_id varchar(6) collate Latin1_General_100_BIN2_UTF8`
 
 A következő részekben láthatja, hogyan lehet lekérdezni a különböző típusú parketta-fájlokat.
 

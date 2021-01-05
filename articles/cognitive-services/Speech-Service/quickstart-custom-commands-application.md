@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d89f9330947d1c5d0146b8531f265d86d0fd5160
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.custom: references_regions
+ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329151"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694184"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Hangvezérelt asszisztens létrehozása egyéni parancsokkal
 
@@ -27,12 +28,12 @@ Jelenleg az egyéni parancsok támogatják a következő régiókban létrehozot
 * USA 2. nyugati régiója
 * USA keleti régiója
 * USA 2. keleti régiója
+* USA nyugati középső régiója
 * Észak-Európa
 * Nyugat-Európa
-* USA nyugati középső régiója
-* Közép-India
 * Kelet-Ázsia
 * Délkelet-Ázsia
+* Közép-India
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,8 +51,8 @@ Jelenleg az egyéni parancsok támogatják a következő régiókban létrehozot
    > [!NOTE]
    > Ha nem jelenik meg az előfizetés kiválasztása lap, akkor a felső sáv beállítások menüjében válassza a "Speech Resources" (beszédfelismerési erőforrások) lehetőséget.
 
-1. Válassza ki a beszédfelismerési előfizetést, majd válassza a **Ugrás a studióba**lehetőséget.
-1. Válassza az **egyéni parancsok**lehetőséget.
+1. Válassza ki a beszédfelismerési előfizetést, majd válassza a **Ugrás a studióba** lehetőséget.
+1. Válassza az **egyéni parancsok** lehetőséget.
 
    Az alapértelmezett nézet a kiválasztott előfizetéshez tartozó egyéni parancsok alkalmazásának listája.
 
@@ -66,7 +67,7 @@ Jelenleg az egyéni parancsok támogatják a következő régiókban létrehozot
     > [!div class="mx-imgBorder"]
     > ![Projekt létrehozása](media/custom-commands/import-project.png)
 
-1.  A **Luis authoring Resource** listán válasszon ki egy authoring-erőforrást. Ha nincsenek érvényes authoring-erőforrások, hozzon létre egyet az  **új Luis authoring-erőforrás létrehozása**lehetőség kiválasztásával.
+1.  A **Luis authoring Resource** listán válasszon ki egy authoring-erőforrást. Ha nincsenek érvényes authoring-erőforrások, hozzon létre egyet az  **új Luis authoring-erőforrás létrehozása** lehetőség kiválasztásával.
 
     > [!div class="mx-imgBorder"]
     > ![Erőforrás létrehozása](media/custom-commands/create-new-luis-resource.png)
@@ -102,7 +103,7 @@ Ahhoz, hogy hozzáférhessen az alkalmazáshoz a Speech studión kívül, közz�
 
 
 1. Válassza a bal oldali ablaktábla **Beállítások** elemét, majd a középső ablaktáblán válassza a  **Luis-erőforrások** lehetőséget.
-1. Válasszon előrejelzési erőforrást, vagy hozzon létre egyet az **új erőforrás létrehozása**lehetőség kiválasztásával.
+1. Válasszon előrejelzési erőforrást, vagy hozzon létre egyet az **új erőforrás létrehozása** lehetőség kiválasztásával.
 1. Válassza a **Mentés** lehetőséget.
     
     > [!div class="mx-imgBorder"]
@@ -120,11 +121,11 @@ Azt is megteheti, hogy ezeket az értékeket a **Beállítások**  >  **általá
 ### <a name="access-application-from-client"></a>Alkalmazás elérése az ügyféltől
 
 A jelen cikk hatókörében az előfeltételek részeként letöltött Windows Voice Assistant-ügyfelet fogjuk használni. Csomagolja ki a mappát.
-1. **VoiceAssistantClient.exe**elindítása.
-1. Hozzon létre egy új közzétételi profilt, és adja meg a **kapcsolatprofil**értékét. Az **általános beállítások** szakaszban adja meg az értékek **előfizetési kulcsát** (ez ugyanaz, mint az alkalmazás közzétételekor mentett **beszédfelismerési erőforrás kulcsának** értéke), az **előfizetési kulcs régiója** és az **egyéni parancsok alkalmazás-azonosítója**.
+1. **VoiceAssistantClient.exe** elindítása.
+1. Hozzon létre egy új közzétételi profilt, és adja meg a **kapcsolatprofil** értékét. Az **általános beállítások** szakaszban adja meg az értékek **előfizetési kulcsát** (ez ugyanaz, mint az alkalmazás közzétételekor mentett **beszédfelismerési erőforrás kulcsának** értéke), az **előfizetési kulcs régiója** és az **egyéni parancsok alkalmazás-azonosítója**.
     > [!div class="mx-imgBorder"]
     > ![Képernyőfelvétel: a WVAC-profil létrehozásához szükséges általános beállítások szakasz.](media/custom-commands/create-profile.png)
-1. Válassza **a Mentés és a profil alkalmazása**lehetőséget.
+1. Válassza **a Mentés és a profil alkalmazása** lehetőséget.
 1. Most próbálja ki a következő bemeneteket beszéd/szöveg használatával
     > [!div class="mx-imgBorder"]
     > ![WVAC-profil létrehozása](media/custom-commands/conversation.png)

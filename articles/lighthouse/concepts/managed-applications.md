@@ -1,23 +1,33 @@
 ---
 title: Azure Lighthouse és Azure Managed Applications
-description: Ismerje meg, hogy az Azure Lighthouse és az Azure által felügyelt alkalmazások hogyan segíthetnek a különböző forgatókönyvek engedélyezésében, és hogyan használhatók együtt.
-ms.date: 08/12/2020
+description: Ismerje meg, hogyan használhatók együtt az Azure Lighthouse és az Azure által felügyelt alkalmazások.
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436521"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693972"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse és Azure Managed Applications
 
-Az Azure Managed Applications és az Azure Lighthouse is működik azáltal, hogy lehetővé teszi a szolgáltató számára az ügyfél bérlője által használt erőforrások elérését. Hasznos lehet megérteni a különbségeket a működésük módjában, valamint azokat a forgatókönyveket, amelyekkel a szolgáltatás lehetővé teszi, valamint hogy hogyan használhatók együtt.
+Az Azure Managed Applications és az Azure Lighthouse is működik azáltal, hogy lehetővé teszi a szolgáltató számára az ügyfél bérlője által használt erőforrások elérését. Hasznos lehet megérteni a különbségeket a működésük módjában, valamint az azokhoz a forgatókönyvekben, amelyek segítenek az engedélyezésben, és hogy hogyan használhatók együtt.
 
 > [!TIP]
 > Bár a jelen témakörben a szolgáltatók és az ügyfelekre is hivatkozunk, a [több bérlőt kezelő vállalatok](enterprise.md) ugyanazokat a folyamatokat és eszközöket használhatják.
 
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Az Azure Lighthouse és az Azure által felügyelt alkalmazások összehasonlítása
+
+Ez a táblázat olyan magas szintű különbségeket mutat be, amelyek hatással lehetnek az Azure Lighthouse vagy az Azure által felügyelt alkalmazások használatára. Ahogy az alábbi ábrán is látható, megtervezheti azokat a megoldásokat, amelyek együtt használják azokat.
+
+|Megfontolandó  |Azure Lighthouse  |Azure felügyelt alkalmazások  |
+|---------|---------|---------|
+|Tipikus felhasználó     |Több bérlőt kezelő szolgáltatók vagy vállalatok         |Független szoftvergyártók (ISV-ket)         |
+|A bérlők közötti hozzáférés hatóköre     |Előfizetés (ok) vagy erőforráscsoport (ok)         |Erőforráscsoport (egyetlen alkalmazás hatóköre)         |
+|Megvásárolható az Azure Marketplace-en     |Nem (az ajánlatokat közzéteheti az Azure Marketplace-en, de az ügyfeleket külön számlázzák)        |Igen         |
+|IP-védelem     |Igen (az IP maradhat a szolgáltató bérlője)        |Igen (a tervezés szerint az erőforráscsoport zárolva van az ügyfelek számára)         |
+|Megtagadás-hozzárendelések     |Nem         |Igen        |
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
@@ -51,3 +61,4 @@ Előfordulhat, hogy az ügyfelek több szolgáltató által felügyelt alkalmaz�
 
 - További információ az [Azure által felügyelt alkalmazásokról](../../azure-resource-manager/managed-applications/overview.md).
 - Ismerje meg, hogyan lehet [előfizetést bevezetni az Azure Lighthouse](../how-to/onboard-customer.md)szolgáltatásba.
+- Ismerje meg az [ISV-forgatókönyveket az Azure Lighthouse](isv-scenarios.md)-ben.

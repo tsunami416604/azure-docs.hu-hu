@@ -1,7 +1,7 @@
 ---
-title: Featurization a AutoML-kísérletekben
+title: Featurization automatizált gépi tanulással
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, milyen featurization-beállításokat Azure Machine Learning az ajánlatokat, és hogyan támogatja az automatikus ML-kísérletek a szolgáltatások fejlesztését.
+description: Megtudhatja Azure Machine Learning featurization beállításait, és hogyan szabhatja testre ezeket a funkciókat az automatizált ML-kísérleteknél.
 author: nibaccam
 ms.author: nibaccam
 ms.reviewer: nibaccam
@@ -9,25 +9,24 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, automl
-ms.date: 05/28/2020
-ms.openlocfilehash: 658db1604895515525e5a4826a43c0b21d9698b1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to,automl,contperf-fy21q2
+ms.date: 12/18/2020
+ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359629"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694011"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>Jellemzőkre bontás az automatizált gépi tanulásban
+# <a name="data-featurization-in-automated-machine-learning"></a>Az automatizált gépi tanulásban tárolt featurization
 
 
 
-Ebben az útmutatóban a következőket tanulhatja meg:
+Ismerkedjen meg a Azure Machine Learning featurization beállításaival, és hogyan szabhatja testre ezeket a szolgáltatásokat [AUTOMATIZÁLT ml-kísérletek](concept-automated-ml.md)esetén.
 
-- Milyen featurization-beállítások Azure Machine Learning ajánlatokat.
-- A funkciók testre szabása [automatizált gépi tanulási kísérletekhez](concept-automated-ml.md).
+## <a name="feature-engineering-and-featurization"></a>Szolgáltatások mérnöki és featurization
 
-A *szolgáltatás-mérnöki* folyamat az adat tartományon alapuló ismeretét használja olyan funkciók létrehozásához, amelyek segítenek a Machine learning (ml) algoritmusok jobb megismerésében. Azure Machine Learning az adatméretezési és-normalizálás technikákat a funkciók mérnöki működésének megkönnyítésére alkalmazza a rendszer. Ezeket a technikákat és a szolgáltatás-fejlesztéseket együttesen *featurization* nevezzük az automatizált gépi tanulásban, vagy *AutoML* , kísérletekben.
+A *szolgáltatás-mérnöki* folyamat az adat tartományon alapuló ismeretét használja olyan funkciók létrehozásához, amelyek segítenek a Machine learning (ml) algoritmusok jobb megismerésében. Azure Machine Learning az adatméretezési és-normalizálás technikákat a funkciók mérnöki működésének megkönnyítésére alkalmazza a rendszer. Ezeket a technikákat és a szolgáltatás-fejlesztéseket együttesen *featurization* nevezzük az automatizált gépi tanulásban, vagy *autoML*, kísérletekben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +37,7 @@ Ez a cikk azt feltételezi, hogy már tudja, hogyan konfigurálhat egy AutoML-k�
 
 ## <a name="configure-featurization"></a>Featurization konfigurálása
 
-Az automatikus [skálázási és normalizáló technikákat](#featurization) minden automatizált gépi tanulási kísérlet során alapértelmezés szerint alkalmazza a rendszer az adataira. Ezek a technikák olyan featurization-típusok, amelyek *bizonyos* , különböző léptékű funkciókra érzékeny algoritmusokat nyújtanak. Engedélyezheti azonban a további featurization, például a *hiányzó értékek imputálási* , *kódolását* és *átalakítását* is.
+Az automatikus [skálázási és normalizáló technikákat](#featurization) minden automatizált gépi tanulási kísérlet során alapértelmezés szerint alkalmazza a rendszer az adataira. Ezek a technikák olyan featurization-típusok, amelyek *bizonyos* , különböző léptékű funkciókra érzékeny algoritmusokat nyújtanak. Több featurization is engedélyezheti, például a *hiányzó értékeket imputálási*, *kódolást* és *átalakításokat*.
 
 > [!NOTE]
 > Az automatizált gépi tanulási featurization (például a funkciók normalizálása, a hiányzó adatokat kezelő vagy a numerikus szöveg konvertálása) lépései az alapul szolgáló modell részévé válnak. Ha az előrejelzési modellt használja, a betanítás során alkalmazott featurization-lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
@@ -49,7 +48,7 @@ A következő táblázat a `featurization` [AutoMLConfig osztály](/python/api/a
 
 |Featurization-konfiguráció | Leírás|
 ------------- | ------------- |
-|`"featurization": 'auto'`| Azt határozza meg, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](#featurization) . Ez az alapértelmezett beállítás.|
+|`"featurization": 'auto'`| Azt határozza meg, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails](#data-guardrails) és a [featurization lépéseket](#featurization) . Ez az alapértelmezett beállítás.|
 |`"featurization": 'off'`| Meghatározza, hogy a featurization lépések ne legyenek automatikusan elvégezve.|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Megadja, hogy a rendszer testreszabott featurization-lépéseket használ. [Megtudhatja, hogyan szabhatja testre a featurization](#customize-featurization).|
 
@@ -66,7 +65,7 @@ Az alábbi táblázat összefoglalja az adataira automatikusan alkalmazott techn
 | ------------- | ------------- |
 |**Drop magas fokú vagy nem variancia funkciók** _ |Ezeket a funkciókat a betanítási és az ellenőrzési készletekből dobja el. Az összes hiányzó értékkel rendelkező szolgáltatásokra vonatkozik, amelyek az összes sorban azonos értékkel rendelkeznek, vagy magas fokú (például kivonatok, azonosítók vagy GUID azonosítók).|
 |_*Hiányzó értékek imputált értéke**_ |Numerikus funkciók esetében az érték az oszlopban szereplő értékek átlagát tartalmazza.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell eltulajdonítani a bevonást.|
-|_*További funkciók előállítása**_ |A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br><br> _For előrejelzési feladatok, * ezek a további DateTime-funkciók a következők: ISO év, félév, naptári hónap karakterláncként, hét, hét napja karakterláncként, negyedév napja, év napja, AM/PM (0, ha az óra délig van (12 óra), 1 egyéb), AM/PM as sztring, óra (12 HR alapján)<br/><br/>A szöveges funkciókhoz: unigrams, bigrams és Trigrams alapuló kifejezés gyakorisága. További információ arról, [hogy ez hogyan történik a bertban.](#bert-integration)|
+|_*További funkciók előállítása**_ |A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br><br> _For előrejelzési feladatok, * ezek a további DateTime-funkciók a következők: ISO év, félév, naptári hónap karakterláncként, hét, hét napja karakterláncként, a negyedév napja, az év napja, AM/PM (0, ha az óra délig van (12 PM), 1 egyéb), AM/PM as sztring, óra nap (12 – HR)<br/><br/>A szöveges funkciókhoz: unigrams, bigrams és Trigrams alapuló kifejezés gyakorisága. További információ arról, [hogy ez hogyan történik a bertban.](#bert-integration)|
 |**Átalakítás és kódolás** _|A több egyedi értékkel rendelkező numerikus funkciók átalakítása kategorikus funkciókba.<br/><br/>A kis-és nagymértékű kategorikus funkciók esetében egy gyors kódolást használunk. A rendszer egy-egy gyors kivonatoló kódolást használ a magas fokú, kategorikus funkciókhoz.|
 |_ *Word-beágyazások**|A szöveges Képtulajdonság egy előre betanított modell használatával alakítja át a szöveges tokenek vektorait a mondatokra. Az egyes Word-dokumentumok beágyazási vektora a többivel együtt a dokumentum-szolgáltatás vektorának előállítására szolgál.|
 |**Cél kódolások**|A kategorikus funkciók esetében ez a lépés leképezi az egyes kategóriákat a regressziós problémák átlagos céljával, valamint az osztályok valószínűségét az egyes osztályok számára a besorolási problémák esetében. A rendszer a gyakoriságon alapuló súlyozást és a k-fold kereszt-ellenőrzést alkalmazza, hogy csökkentse a ritka adatkategóriák által okozott leképezés és zaj túlillesztését.|
@@ -80,7 +79,7 @@ Az *adatok guardrails* segítségével azonosíthatja az adataival kapcsolatos l
 
 A rendszer alkalmazza az guardrails:
 
-- **SDK-kísérletek esetén** : Ha a paraméterek `"featurization": 'auto'` vagy az `validation=auto` `AutoMLConfig` objektumban vannak megadva.
+- **SDK-kísérletek esetén**: Ha a paraméterek `"featurization": 'auto'` vagy az `validation=auto` `AutoMLConfig` objektumban vannak megadva.
 - **Studio-kísérletek** esetén: Ha engedélyezve van az automatikus featurization.
 
 A kísérlethez tartozó guardrails áttekintéséhez tekintse át a következőt:
@@ -103,7 +102,7 @@ Az adatguardrails három állapot egyikét jeleníti meg:
 
 A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint a kísérlet elküldésekor esetlegesen megjelenő társított állapotokat:
 
-Guardrail|status|Trigger feltétele &nbsp; &nbsp;
+Guardrail|Állapot|Trigger feltétele &nbsp; &nbsp;
 ---|---|---
 **Hiányzó szolgáltatási értékek imputálási** |Telt <br><br><br> Kész| A betanítási adatok nem észleltek hiányzó szolgáltatási értékeket. További információ a [hiányzó értékű imputálási.](./how-to-use-automated-ml-for-ml-models.md#customize-featurization) <br><br> A rendszer hiányzó szolgáltatási értékeket észlelt a betanítási adatokban, és imputáltak voltak.
 **Magas fokú szolgáltatások kezelését** |Telt <br><br><br> Kész| A rendszer elemezte a bemeneteket, és nem észlelt magas szintű funkciókat. <br><br> A rendszer a Kiemelt funkciókat észlelte a bemenetekben, és kezelte azokat.
@@ -120,7 +119,7 @@ A featurizations testreszabásához adja meg `"featurization": FeaturizationConf
 
 A támogatott testreszabások a következők:
 
-|Testreszabás|Definíció|
+|Testreszabás|Meghatározás|
 |--|--|
 |**Oszlop céljának frissítése**|Felülbírálja a megadott oszlop automatikus észlelési funkciójának típusát.|
 |**A transzformátor paraméterének frissítése** |Frissítse a megadott átalakító paramétereit. Jelenleg támogatja az *imputált* (mean, leggyakoribb és közepes) és a *HashOneHotEncoder*.|
@@ -207,7 +206,7 @@ Kimenet
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   |Kimenet|Definíció|
+   |Kimenet|Meghatározás|
    |----|--------|
    |RawFeatureName|A megadott adatkészlet bemeneti funkciójának vagy oszlopának neve.|
    |TypeDetected|A bemeneti funkció észlelt adattípusa.|
@@ -303,22 +302,24 @@ class_prob = fitted_model.predict_proba(X_test)
 
 Ha az alapul szolgáló modell nem támogatja a `predict_proba()` függvényt, vagy helytelen a formátum, a modell osztályra jellemző kivételt fog dobni. Tekintse meg a [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) és a [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) dokumentációját, amely példákat tartalmaz arra, hogy a függvény hogyan legyen implementálva különböző típusú modellekhez.
 
-## <a name="bert-integration"></a>BERT-integráció
+<a name="bert-integration"></a>
+
+## <a name="bert-integration-in-automated-ml"></a>BERT-integráció automatizált ML-ben
 
 A [Bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) a AutoML featurization rétegében van használatban. Ebben a rétegben, ha egy oszlop tartalmaz szabad szöveget vagy más típusú adattípusokat, például időbélyegeket vagy egyszerű számokat, akkor a featurization ennek megfelelően lesz alkalmazva.
 
 BERT esetében a modell a felhasználó által megadott címkék használatával jól hangolt és betanított. Innentől kezdve a dokumentumok beágyazásai olyan funkciók, mint a többi, például timestamp-alapú funkciók, a hét napja. 
 
 
-### <a name="bert-steps"></a>BERT lépések
+### <a name="steps-to-invoke-bert"></a>A BERT meghívásának lépései
 
-A BERT meghívásához be kell állítania a  `enable_dnn: True` automl_settings, és GPU-számítást kell használnia (például `vm_size = "STANDARD_NC6"` vagy magasabb GPU-t). Ha CPU-számítást használ, akkor a BERT helyett a AutoML engedélyezi a BiLSTM DNN Képtulajdonság.
+A BERT meghívásához állítsa be a  `enable_dnn: True` automl_settings, és használjon GPU-számítást ( `vm_size = "STANDARD_NC6"` vagy egy magasabb GPU-t). Ha CPU-számítást használ, akkor a BERT helyett a AutoML engedélyezi a BiLSTM DNN Képtulajdonság.
 
 A AutoML a következő lépéseket hajtja végre a BERT esetében. 
 
 1. **Az összes szöveges oszlop előfeldolgozása és jogkivonatok létrehozása**. Például a "StringCast" átalakító a végső modell featurization összegzésében található. [Ebben a jegyzetfüzetben](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)egy példát láthat a modell featurization összegzésének elkészítésére.
 
-2. Az **összes szöveges oszlop összefűzése egyetlen szöveges oszlopba** , ezért a `StringConcatTransformer` végső modellben. 
+2. Az **összes szöveges oszlop összefűzése egyetlen szöveges oszlopba**, ezért a `StringConcatTransformer` végső modellben. 
 
     A BERT implementációja a betanítási minta teljes szöveges hosszát 128 tokenre korlátozza. Ez azt jelenti, hogy az összes szöveges oszlop összefűzése esetén ideális esetben legfeljebb 128 tokennek kell lennie. Ha több oszlop van jelen, az egyes oszlopokat metszeni kell, hogy ez a feltétel teljesül. Ellenkező esetben az összefűzött oszlopok hossza >128 tokens BERT tokenizer rétege csonkolja ezt a bemenetet 128-tokenekre.
 
@@ -327,9 +328,10 @@ A AutoML a következő lépéseket hajtja végre a BERT esetében.
 A BERT általában hosszabb ideig fut a többi featurizers. A jobb teljesítmény érdekében javasoljuk, hogy a "STANDARD_NC24r" vagy a "STANDARD_NC24rs_V3" használatával RDMA képességeiket. 
 
 A AutoML több csomóponton is terjeszti a BERTs-képzést, ha elérhetők (legfeljebb nyolc csomópontot). Ezt megteheti az `AutoMLConfig` objektumban úgy, `max_concurrent_iterations` hogy a paraméter értéke 1-nél nagyobb. 
-### <a name="supported-languages"></a>Támogatott nyelvek
 
-A AutoML jelenleg 100 nyelvet támogat, és az adatkészlet nyelvétől függően a AutoML kiválasztja a megfelelő BERT modellt. Német nyelven a német BERT modellt használjuk. Angol nyelven az angol BERT modellt használjuk. Minden más nyelven a többnyelvű BERT modellt használjuk.
+## <a name="supported-languages-for-bert-in-automl"></a>A BERT által támogatott nyelvek a autoML-ben 
+
+A AutoML jelenleg 100 nyelvet támogat, és az adatkészlet nyelvétől függően a autoML kiválasztja a megfelelő BERT modellt. Német nyelven a német BERT modellt használjuk. Angol nyelven az angol BERT modellt használjuk. Minden más nyelven a többnyelvű BERT modellt használjuk.
 
 A következő kódban a német BERT modellt indítja el a rendszer, mivel az adatkészlet nyelve meg van adva `deu` , a német nyelvhez tartozó három betűs nyelvi kód az [ISO besorolás](https://iso639-3.sil.org/code/deu)szerint:
 
@@ -350,7 +352,7 @@ automl_settings = {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan állíthatja be az automatikus ML-kísérleteket:
 
