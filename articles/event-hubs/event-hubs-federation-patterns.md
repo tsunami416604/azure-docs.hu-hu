@@ -3,12 +3,12 @@ title: Esemény-replikációs feladat mintái – Azure Event Hubs | Microsoft D
 description: Ez a cikk részletes útmutatást nyújt az adott esemény-replikációs feladat-mintázatok megvalósításához
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 370c0f2d5c5c591668aa2dadf0512760a4a9b2f5
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663652"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803986"
 ---
 # <a name="event-replication-tasks-patterns"></a>Esemény-replikációs feladatok mintái
 
@@ -136,7 +136,7 @@ A következő pattok variációi:
 
 Az első két minta variációja triviális, és nem különbözik az egyszerű replikálási feladatoktól.
 
-Az utolsó forgatókönyvhöz szükséges, hogy a már replikált események ne legyenek replikálva. A technikát a [EventHubToEventHubMerge](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/main/code/EventHubToEventHubMerge) -minta mutatja be és ismerteti.
+Az utolsó forgatókönyvhöz szükséges, hogy a már replikált események ne legyenek replikálva. A technikát a [EventHubToEventHubMerge](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/code/EventHubMerge) -minta mutatja be és ismerteti.
 
 ## <a name="editor"></a>Szerkesztő
 
@@ -228,7 +228,7 @@ public static async Task Eh1ToCosmosDb1Json(
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Event replikátor alkalmazások Azure Functions][1]
 - [Események replikálása Event Hubs között][2]

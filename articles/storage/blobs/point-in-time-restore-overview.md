@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca09e41e6d5b83f14d2dfee4107135585b7e945a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908795"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803867"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Időponthoz való visszaállítás a blokk Blobok esetében
 
@@ -43,7 +43,7 @@ A **blob-tartományok visszaállítása** művelet egy visszaállítási azonos�
 > A másodlagos hely olvasási műveletei a visszaállítási művelet során folytatódnak, ha a Storage-fiók földrajzilag replikálódik.
 
 > [!CAUTION]
-> Az időponthoz való visszaállítás támogatja a csak blokkos Blobok műveleteinek visszaállítását. A tárolók műveletei nem állíthatók vissza. Ha töröl egy tárolót a Storage-fiókból a [tároló törlése](/rest/api/storageservices/delete-container) művelet meghívásával, a tároló nem állítható vissza visszaállítási művelettel. Tároló törlése helyett törölje az egyes blobokat, ha vissza szeretné állítani őket.
+> Az időponthoz való visszaállítás támogatja a csak blokkos Blobok műveleteinek visszaállítását. A tárolók műveletei nem állíthatók vissza. Ha töröl egy tárolót a Storage-fiókból a [tároló törlése](/rest/api/storageservices/delete-container) művelet meghívásával, a tároló nem állítható vissza visszaállítási művelettel. A teljes tároló törlése helyett törölje az egyes blobokat, ha később szeretné visszaállítani őket.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Az időponthoz tartozó visszaállítás előfeltételei
 
@@ -57,9 +57,12 @@ Az időponthoz való visszaállításhoz az alábbi Azure Storage-funkciók enge
 
 Amikor engedélyezi az időponthoz való visszaállítást egy Storage-fiókhoz, meg kell adnia egy megőrzési időtartamot. A Storage-fiókban lévő Blobok a megőrzési időszak alatt visszaállíthatók.
 
-A megőrzési idő az időponthoz tartozó visszaállítás engedélyezésekor kezdődik. Ne feledje, hogy a Blobok nem állíthatók vissza a megőrzési időszak kezdete előtt állapotba. Ha például az 1. május 1-től engedélyezte az időponthoz való visszaállítást 30 nap megtartásával, akkor a május 15-én legfeljebb 15 napig állíthatja vissza. Június 1-jén az adatok 1 és 30 nap között állíthatók vissza.
+A megőrzési időtartam néhány percet vesz igénybe, miután engedélyezte az időponthoz tartozó visszaállítást. Ne feledje, hogy a Blobok nem állíthatók vissza a megőrzési időszak kezdete előtt állapotba. Ha például az 1. május 1-től engedélyezte az időponthoz való visszaállítást 30 nap megtartásával, akkor a május 15-én legfeljebb 15 napig állíthatja vissza. Június 1-jén az adatok 1 és 30 nap között állíthatók vissza.
 
 Az időponthoz tartozó visszaállítás megőrzési időtartamának legalább egy nappal kisebbnek kell lennie a helyreállítható törléshez megadott megőrzési időtartamnál. Ha például a helyreállítható törlés megőrzési időtartama 7 nap, akkor az időponthoz tartozó visszaállítás megőrzési időtartama 1 és 6 nap között lehet.
+
+> [!IMPORTANT]
+> Az adatok egy halmazának visszaállításához szükséges idő a visszaállítási időszakban végrehajtott írási és törlési műveletek számától függ. Például egy 1 000 000 objektummal rendelkező, naponta hozzáadott 3 000-objektummal rendelkező fiók, valamint a naponta törölt 1 000-objektumok esetében körülbelül két óra elteltével vissza kell állítani egy 30 napos pontot a múltban. A megőrzési időtartam és a helyreállítás több mint 90 nappal a múltban nem ajánlott olyan fiók esetében, amely ezen a változási aránnyal rendelkezik.
 
 ### <a name="permissions-for-point-in-time-restore"></a>Az időponthoz való visszaállításhoz szükséges engedélyek
 

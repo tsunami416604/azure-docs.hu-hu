@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/07/2020
+ms.date: 12/28/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181203"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803527"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -44,6 +44,7 @@ Ez a témakör áttekintést nyújt a kiépítési jelentésről.
 ### <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 * Az alkalmazás tulajdonosai megtekinthetik a saját alkalmazások naplóit
 * Felhasználók a biztonsági rendszergazda, a biztonsági olvasó, a jelentéskészítő, az alkalmazás rendszergazdája és a Felhőbeli alkalmazás rendszergazdai szerepkörei
+* Egyéni szerepkörbe tartozó felhasználók a [provisioningLogs engedéllyel](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)
 * Globális rendszergazdák
 
 
@@ -56,12 +57,12 @@ A bérlőnek prémium szintű Azure AD licenccel kell rendelkeznie ahhoz, hogy l
 A kiépítési naplók a következő kérdésekre adnak választ:
 
 * Milyen csoportokat sikerült létrehozni a ServiceNow-ben?
-* Milyen szerepkörök lettek importálva a Amazon Web Services?
+* Milyen felhasználókat sikerült eltávolítani az Adobe-ból?
 * Mely felhasználók lettek sikeresen létrehozva a DropBoxban?
 
 A kiépítési naplókat úgy érheti el, ha kijelöli a **kiépítési** naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **figyelés** szakaszában. Akár két órát is igénybe vehet, hogy egyes kiépítési rekordok megjelenjenek a portálon.
 
-![Naplók kiépítés](./media/concept-provisioning-logs/access-provisioning-logs.png "Üzembehelyezési naplók")
+![Üzembehelyezési naplók](./media/concept-provisioning-logs/access-provisioning-logs.png "Üzembehelyezési naplók")
 
 
 A kiépítési napló egy alapértelmezett listanézet, amely a következőket jeleníti meg:
@@ -86,7 +87,7 @@ További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített m
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrő")
+![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrés")
 
 
 ## <a name="filter-provisioning-activities"></a>Kiépítési tevékenységek szűrése
@@ -100,7 +101,7 @@ Az alapértelmezett nézetben a következő szűrőket választhatja ki:
 - Művelet
 
 
-![Szűrők hozzáadása](./media/concept-provisioning-logs/default-filter.png "Szűrő")
+![Szűrők hozzáadása](./media/concept-provisioning-logs/default-filter.png "Szűrés")
 
 Az **Identity** szűrő segítségével megadhatja a nevet vagy az Ön számára fontos identitást. Ez az identitás lehet felhasználó, csoport, szerepkör vagy más objektum. Az objektum neve vagy azonosítója alapján kereshet. Az azonosító forgatókönyv szerint változik. Ha például egy objektumot kiépít az Azure AD-ből a SalesForce-be, a forrás azonosítója az Azure AD-beli felhasználó objektumazonosítóa, míg a TargetID a Salesforce felhasználójának azonosítója. Ha a munkahelyről a Active Directoryre való kiépítés után a forrás azonosítója a munkanap munkavégző alkalmazottjának azonosítója. Vegye figyelembe, hogy a felhasználó neve nem mindig szerepel az Identity oszlopban. Mindig egy azonosító lesz. 
 
@@ -173,7 +174,7 @@ A részletek a következő kategóriák alapján vannak csoportosítva:
 
 - Módosított tulajdonságok
 
-- Összefoglalás
+- Összegzés
 
 
 ![Kiépítés részletei](./media/concept-provisioning-logs/provisioning-tabs.png "Tabulátorok")
@@ -191,7 +192,7 @@ A **lépések** lapon az objektum kiépítéséhez szükséges lépések szerepe
 
 
 
-![Képernyőfelvétel: a lépések lap, amely a kiépítési lépéseket mutatja be.](./media/concept-provisioning-logs/steps.png "Szűrő")
+![Képernyőfelvétel: a lépések lap, amely a kiépítési lépéseket mutatja be.](./media/concept-provisioning-logs/steps.png "Szűrés")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Hibák és javaslatok
@@ -205,7 +206,7 @@ A **hibakeresés és javaslatok** lap a hibakódot és az okot adja meg. A hiba 
 A **módosított tulajdonságok** a régi értéket és az új értéket jelenítik meg. Olyan esetekben, amikor nincs régi érték, a régi érték oszlop üres. 
 
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonosítókat tartalmaz a forrás és a cél rendszer objektumához. 
 
@@ -219,7 +220,9 @@ Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonos
 
 - A kihagyott eseményeket a hatókörön kívüli felhasználók számára is megtekintheti. Ez várható, különösen akkor, ha a szinkronizálási hatókör az összes felhasználóra és csoportra van beállítva. A szolgáltatás a bérlő összes objektumát kiértékeli, még a hatókörön kívül is. 
 
-- A kiépítési naplók jelenleg nem érhetők el a kormányzati felhőben. Ha nem tudja elérni a kiépítési naplókat, használja a naplókat ideiglenes megkerülő megoldásként.  
+- A kiépítési naplók jelenleg nem érhetők el a kormányzati felhőben. Ha nem tudja elérni a kiépítési naplókat, használja a naplókat ideiglenes megkerülő megoldásként. 
+
+- A kiépítési naplók nem jelenítik meg a szerepkör-importálásokat (az AWS, a SalesForce és a ZenDesk esetében érvényesek). A szerepkör-importálások naplófájljai a naplókban találhatók. 
 
 ## <a name="error-codes"></a>Hibakódok
 
@@ -247,7 +250,7 @@ Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg 
 |EntrySynchronizationSkipped | A kiépítési szolgáltatás sikeresen lekérdezte a forrás rendszerét, és azonosította a felhasználót. A felhasználóra vonatkozóan nem történt további művelet, és a rendszer kihagyta őket. A kihagyás oka az lehet, hogy a felhasználó hatókörén kívül esik, vagy a felhasználó már meglévő a célszámítógépen, és nincs szükség további módosításokra.|
 |SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Amikor lekéréses kérelmet küld egy felhasználó vagy csoport beolvasására, a válaszban több felhasználót vagy csoportot kaptunk. A rendszer csak egy felhasználót vagy csoportot várt a válaszban. Ha [például](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group)lekéri egy csoport lekérését, és egy szűrőt biztosít a tagok kizárásához, és a scim-végpont visszaadja a tagokat, ezt a hibát fogjuk kidobni.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A felhasználó kiépítési állapotának megtekintése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](../app-provisioning/application-provisioning-config-problem.md)

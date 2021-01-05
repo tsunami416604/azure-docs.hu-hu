@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 12/28/2020
 ms.author: duau
-ms.openlocfilehash: e9354dade695367ed058506533603318c3cfc288
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 533b0f4d2c786506aa36810c3e5c0ea855cdbb24
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561698"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803850"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -229,7 +229,7 @@ Ha távoli, és nem rendelkezik száloptikás kapcsolattal, vagy más csatlakoz�
 | **New York** |Equinix, Megaport | Altice Business, Crown Castle, Spectrum Enterprise, WEBAIR |
 | **Párizs** | Equinix | Proximus |
 | **Quebec város** | Megaport | Fibrenoire |
-| **Sao Paula** | Equinix | Venha Pra Nuvem |
+| **Sao Paulo** | Equinix | Venha Pra Nuvem |
 | **Seattle** |Equinix | Alaska Communications |
 | **Szilícium-völgy** |Coresite, Equinix | Cox Business, Spectrum Enterprise, windstream, X2nsat Inc. |
 | **Szingapúr** |Equinix |1CLOUDSTAR, BICS, CMC Telecom, epszilon távközlés Limited, LGA Telecom, Egyesült információs autópálya (UIH) |

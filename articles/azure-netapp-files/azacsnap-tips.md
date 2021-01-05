@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: d73bfd19a4135d09e9e19fcbcfedd50dbc1f7067
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 86d7b1a6d361ebbc0d8419d184f9a11d390a37f1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632678"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803187"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>Tippek és trükkök az Azure Application konzisztens pillanatkép-eszköz (előzetes verzió) használatához
 
@@ -132,7 +132,7 @@ A tárolási kötetek pillanatképét új kötetre () lehet visszaállítani `-c
 
 A pillanatképek visszamásolhatók a SAP HANA adatterületre, de a SAP HANA nem futhatnak másolat készítésével ( `cp /hana/data/H80/mnt00001/.snapshot/hana_hourly.2020-06-17T113043.1586971Z/*` ).
 
-Az Azure-beli nagyméretű példányok esetében a Microsoft operatív csapatának megnyitásával kérheti a kívánt pillanatkép visszaállítását a meglévő elérhető pillanatképekről. Megnyithat egy szolgáltatási kérelmet Azure Portal: <https://portal.azure.com.>
+Az Azure-beli nagyméretű példányok esetében a Microsoft operatív csapatának megnyitásával kérheti a kívánt pillanatkép visszaállítását a meglévő elérhető pillanatképekről. Megnyithat egy szolgáltatási kérelmet Azure Portal: <https://portal.azure.com>
 
 Ha úgy dönt, hogy elvégzi a vész-helyreállítási feladatátvételt, a `azacsnap -c restore --restore revertvolume` Dr helyen található parancs automatikusan elérhetővé teszi a legújabb ( `/hana/data` és `/hana/logbackups` ) kötet-pillanatképeket a SAP HANA helyreállításhoz. Ezt a parancsot körültekintően kell használni, mivel megszakítja a replikációt a termelési és a DR-helyek között.
 
@@ -249,7 +249,7 @@ A "rendszerindítási" pillanatkép a következőképpen állítható vissza:
 
 1. Az ügyfélnek le kell állítania a kiszolgálót.
 1. A kiszolgáló leállítása után az ügyfélnek meg kell nyitnia egy szolgáltatási kérelmet, amely tartalmazza a visszaállítani kívánt számítógép-azonosítót és pillanatképet.
-    > Az ügyfelek megnyitnak egy szolgáltatási kérelmet a Azure Portal: <https://portal.azure.com.>
+    > Az ügyfelek megnyitnak egy szolgáltatási kérelmet a Azure Portal: <https://portal.azure.com>
 1. A Microsoft a megadott számítógép-azonosító és pillanatkép használatával állítja vissza az operációs rendszer logikai egységét, majd elindítja a kiszolgálót.
 1. Az ügyfélnek ezután meg kell erősítenie a kiszolgálót, és kifogástalan állapotban kell lennie.
 
@@ -273,6 +273,6 @@ A tárolási kötetek pillanatképének főbb attribútumai:
 - **A pillanatkép mérete:** Az adatbázis szintjének méretétől/változásaitól függ.
 - **Naplófájl helye:** A parancsok által generált naplófájlok a JSON konfigurációs fájlban meghatározott mappákba kerülnek, ami alapértelmezés szerint egy almappa, amelyben a parancs fut (például: `./logs` ).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hibaelhárítás](azacsnap-troubleshoot.md)

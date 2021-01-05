@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936539"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802507"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
@@ -112,7 +112,7 @@ Az SAS-jogkivonat egy olyan karakterlánc, amelyet az ügyfél oldalán állít 
 
 Az ügyfélalkalmazások a kérelem részeként biztosítják az SAS URI-JÁT az Azure Storage-hoz. Ezután a szolgáltatás ellenőrzi a SAS-paramétereket és az aláírást annak ellenőrzéséhez, hogy érvényes-e. Ha a szolgáltatás ellenőrzi, hogy érvényes-e az aláírás, akkor a kérelem engedélyezve lesz. Ellenkező esetben a kérelem elutasítása a 403-as hibakódtal (tiltott) történik.
 
-Az alábbi egy példa a szolgáltatásban használt SAS URI-kra, amelyek magukban foglalják az adott erőforrás URI-azonosítóját és SAS-jogkivonatát:
+Az alábbi példa egy szolgáltatás SAS URI-JÁT mutatja be, amely az erőforrás URI-JÁT és az SAS-tokent jeleníti meg. Mivel az SAS-jogkivonat az URI-lekérdezési karakterláncot tartalmazza, az erőforrás-URI-t először egy kérdőjel, majd az SAS-token követi:
 
 ![A Service SAS URI összetevői](./media/storage-sas-overview/sas-storage-uri.png)
 
@@ -200,7 +200,7 @@ A közös hozzáférésű aláírások megkezdéséhez tekintse meg az egyes SAS
 
 - [Fiók SAS létrehozása a .NET-tel](storage-account-sas-create-dotnet.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzáférés delegálása közös hozzáférési aláírással (REST API)](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 - [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas)

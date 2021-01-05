@@ -3,16 +3,16 @@ title: Mik az Azure-IoT Centralban található alkalmazások sablonjai | Microso
 description: Az Azure IoT Central alkalmazás-sablonok lehetővé teszik, hogy beugorjon a IoT megoldás-fejlesztésbe.
 author: philmea
 ms.author: philmea
-ms.date: 10/25/2019
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: dae2461336316defb6f2cfc63b775c67cf2196d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813066"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797128"
 ---
 # <a name="what-are-application-templates"></a>Mik azok az alkalmazássablonok?
 
@@ -57,6 +57,6 @@ Az Azure IoT Central az iparági független alkalmazások platformja. Az alkalma
 
 A sablonok adott IoT Central alkalmazás-verziókhoz vannak társítva. Az alkalmazások verzióját az alkalmazás [névjegye](./howto-get-app-info.md) oldalon találja a **Súgó** hivatkozásra kattintva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy tudja, mi IoT Central alkalmazás-sablonok, első lépésként [hozzon létre egy IoT Central alkalmazást](quick-deploy-iot-central.md).

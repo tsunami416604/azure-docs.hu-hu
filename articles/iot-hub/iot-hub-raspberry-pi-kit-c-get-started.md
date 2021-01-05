@@ -10,12 +10,12 @@ ms.date: 02/14/2019
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: b21b161a03be7a37fe1d3e872e10d4de437670db
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 52da3c28faa375f8b308e3fe78329fec4f996af9
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145864"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804054"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Málna PI összekötése az Azure IoT Hub (C)
 
@@ -99,7 +99,7 @@ Készítse elő a microSD-kártyát a Raspbian-rendszerkép telepítéséhez.
 
 1. Töltse le a Raspbian.
 
-   1. [Töltse le a Raspbian stretch asztalt](https://www.raspberrypi.org/downloads/raspbian/) (a. zip fájlt).
+   1. [Töltse le a Raspbian stretch asztalt](https://www.raspberrypi.org/software/) (a. zip fájlt).
 
    2. Bontsa ki a Raspbian-rendszerképet a számítógép egyik mappájába.
 
@@ -125,7 +125,7 @@ Készítse elő a microSD-kártyát a Raspbian-rendszerkép telepítéséhez.
 
    ![A Raspbian beállítások menü](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-3. Az **illesztőfelületek** lapon állítsa be az **SPI** -t és az **SSH** -t az **engedélyezéshez**, majd kattintson **az OK**gombra. Ha nem rendelkezik fizikai érzékelőkkel, és szimulált érzékelőt szeretne használni, ezt a lépést nem kötelező megadni.
+3. Az **illesztőfelületek** lapon állítsa be az **SPI** -t és az **SSH** -t az **engedélyezéshez**, majd kattintson **az OK** gombra. Ha nem rendelkezik fizikai érzékelőkkel, és szimulált érzékelőt szeretne használni, ezt a lépést nem kötelező megadni.
 
    ![SPI és SSH engedélyezése a málna PI-ben](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
@@ -236,7 +236,7 @@ Az IoT hub által az eszközről fogadott üzenetek figyelésének egyik módja 
 
 Az eszköz által elküldhető adatfeldolgozás további módjairól folytassa a következő szakasszal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy minta alkalmazást futtatott az érzékelő adatainak összegyűjtéséhez és az IoT hubhoz való elküldéséhez.
 

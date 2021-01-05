@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b17729437b238b98f60e2cd97664fa6aafcccd4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462453"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803969"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Az IoT Plug and Play-eszközök minősítése
 
@@ -41,7 +41,7 @@ A minősítési követelmények teljesítéséhez az eszköznek a következőket
 - Csatlakozás az Azure IoT Hubhoz a [DPS](../iot-dps/about-iot-dps.md)használatával.
 - Telemetria, tulajdonságok vagy parancsok implementálása a IoT Plug and Play konvenciót követve.
 - Írja le az eszköz interakcióit egy [DTDL v2](https://aka.ms/dtdl) -modellel.
-- Tegye közzé a modellt és az összes szükséges felületet az [Azure IoT nyilvános modell adattárában](https://devicemodels.azureiotsolutions.com/) .
+- Tegye közzé a modellt és az összes szükséges felületet az Azure IoT nyilvános modell adattárában.
 - Küldje el a modell AZONOSÍTÓját a DPS- [regisztráció](./concepts-developer-guide-device.md#dps-payload) során a DPS kiépítési hasznos adattartalomban.
 - Bejelenti a modell AZONOSÍTÓját a [MQTT-kapcsolatban](./concepts-developer-guide-device.md#model-id-announcement).
 - Minden eszköz modellnek kompatibilisnek kell lennie az [Azure IoT Centralával](../iot-central/core/overview-iot-central-developer.md).
@@ -174,7 +174,7 @@ Az alábbi lépések bemutatják, hogyan használhatja az [Azure Certified Devic
 
 A [minősítési portál](https://aka.ms/acdp)használatához Azure Active Directory kell használnia a munkahelyi vagy iskolai bérlőtől.
 
-Ha közzé szeretné tenni a modelleket az Azure IoT nyilvános modell adattárában, a fióknak a [Microsoft Partner Network](https://partner.microsoft.com)tagjának kell lennie. A rendszer ellenőrzi, hogy a Microsoft Partner Network-azonosító létezik-e, és hogy a fiók teljes mértékben át lett-e adva az eszköz-katalógusba való közzététel előtt.
+Ha közzé szeretné tenni a modelleket az [Azure IoT nyilvános modell adattárában](https://github.com/Azure/iot-plugandplay-models), a fióknak a [Microsoft Partner Network](https://partner.microsoft.com)tagjának kell lennie. A rendszer ellenőrzi, hogy a Microsoft Partner Network-azonosító létezik-e, és hogy a fiók teljes mértékben át lett-e adva az eszköz-katalógusba való közzététel előtt.
 
 ### <a name="company-profile"></a>Vállalati profil
 

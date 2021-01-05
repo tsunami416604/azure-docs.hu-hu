@@ -2,37 +2,35 @@
 title: Feladat függőségeinek létrehozása feladatok futtatásához
 description: Olyan feladatokat hozhat létre, amelyek a MapReduce stílusának és a hasonló big data munkaterheléseknek a Azure Batch-ban történő feldolgozásához szükségesek.
 ms.topic: how-to
-ms.date: 05/22/2017
+ms.date: 12/28/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 05b1bb289c215208be448d8ca7de144c82b313b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef05a98fffc3c0684ad0fa29f2f9f039b388f5ad
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936979"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803935"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Tevékenységek függőségeinek létrehozása a más feladatoktól függő feladatok futtatásához
 
-Megadhatja a tevékenységek függőségeit, hogy csak a fölérendelt feladat befejeződése után futtasson feladatot vagy feladatokat. Néhány esetben a feladatok függőségei hasznosak lehetnek:
+A Batch-feladatok függőségeivel olyan feladatokat hozhat létre, amelyek egy vagy több szülő feladat befejezése után a számítási csomópontokon való végrehajtásra vannak ütemezve. Létrehozhat például egy olyan feladatot, amely egy 3D-film egyes kereteit különálló, párhuzamos feladatokkal jeleníti meg. Végső feladat – az "egyesítési feladat" – a megjelenített kereteket csak akkor egyesíti a teljes filmben, ha az összes keret sikeresen meg lett jelenítve.
+
+Néhány esetben a feladatok függőségei hasznosak lehetnek:
 
 - MapReduce-stílusú számítási feladatok a felhőben.
 - Azok a feladatok, amelyek adatfeldolgozási feladatait irányított aciklikus gráfként (DAG) lehet kifejezni.
 - A renderelés előtti és utáni folyamatokat, ahol minden tevékenységnek a következő feladat megkezdése előtt végre kell hajtania.
 - Minden egyéb feladat, amelyben az alárendelt feladatok a felsőbb rétegbeli tevékenységek kimenetének függvényei.
 
-A Batch-feladatok függőségeivel olyan feladatokat hozhat létre, amelyek egy vagy több szülő feladat befejezése után a számítási csomópontokon való végrehajtásra vannak ütemezve. Létrehozhat például egy olyan feladatot, amely egy 3D-film egyes kereteit különálló, párhuzamos feladatokkal jeleníti meg. Végső feladat – az "egyesítési feladat" – a megjelenített kereteket csak akkor egyesíti a teljes filmben, ha az összes keret sikeresen meg lett jelenítve.
-
-Alapértelmezés szerint a függő tevékenységek csak a fölérendelt feladat sikeres befejezése után lesznek ütemezve végrehajtásra. Megadhat egy függőségi műveletet, amely felülbírálja az alapértelmezett viselkedést, és futtatja a feladatokat, ha a fölérendelt feladat meghiúsul. A részletekért tekintse meg a [függőségi műveletek](#dependency-actions) szakaszt.  
-
-Létrehozhat olyan feladatokat, amelyek az egy-az-egyhez vagy egy-a-többhöz kapcsolat más feladataitól függenek. Létrehozhat olyan tartomány-függőséget is, amelyben a feladatok egy adott munkacsoportnak a tevékenységek egy adott tartományán belüli befejeződésétől függenek. Ezt a három alapvető forgatókönyvet kombinálhatja több-a-többhöz kapcsolat létrehozásához.
+Alapértelmezés szerint a függő tevékenységek csak a fölérendelt feladat sikeres befejezése után lesznek ütemezve végrehajtásra. Megadhat egy [függőségi műveletet](#dependency-actions)  , amely felülbírálja az alapértelmezett viselkedést, és futtatja a feladatokat, ha a fölérendelt feladat meghiúsul.
 
 ## <a name="task-dependencies-with-batch-net"></a>Feladatok függőségei a Batch .NET-tel
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a feladatok függőségeit a [Batch .net][net_msdn] -kódtár használatával. Először bemutatjuk, hogyan lehet engedélyezni a feladatok [függőségét](#enable-task-dependencies) a feladatokon, majd bemutatjuk, hogyan [konfigurálhatja a feladatokat függőségekkel](#create-dependent-tasks). Azt is leírjuk, hogyan adhat meg függőségi műveletet a függő feladatok futtatásához, ha a szülő meghibásodik. Végezetül megbeszéljük a Batch által támogatott [függőségi helyzeteket](#dependency-scenarios) .
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a feladatok függőségeit a [Batch .net](/dotnet/api/microsoft.azure.batch) -kódtár használatával. Először bemutatjuk, hogyan lehet engedélyezni a feladatok [függőségét](#enable-task-dependencies) a feladatokon, majd bemutatjuk, hogyan [konfigurálhatja a feladatokat függőségekkel](#create-dependent-tasks). Azt is leírjuk, hogyan adhat meg függőségi műveletet a függő feladatok futtatásához, ha a szülő meghibásodik. Végezetül megbeszéljük a Batch által támogatott [függőségi helyzeteket](#dependency-scenarios) .
 
 ## <a name="enable-task-dependencies"></a>Feladat függőségeinek engedélyezése
 
-A feladatok függőségeinek a Batch-alkalmazásban való használatához először a feladat-függőségek használatára kell konfigurálnia a feladatot. A Batch .NET-ben engedélyezze a [CloudJob][net_cloudjob] a [UsesTaskDependencies][net_usestaskdependencies] tulajdonságának beállításához a következőre `true` :
+A feladatok függőségeinek a Batch-alkalmazásban való használatához először a feladat-függőségek használatára kell konfigurálnia a feladatot. A Batch .NET-ben engedélyezze a [CloudJob](/dotnet/api/microsoft.azure.batch.cloudjob) a [UsesTaskDependencies](/dotnet/api/microsoft.azure.batch.cloudjob.usestaskdependencies) tulajdonságának beállításához a következőre `true` :
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -42,11 +40,11 @@ CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
 unboundJob.UsesTaskDependencies = true;
 ```
 
-Az előző kódrészletben a "batchClient" a [batchClient][net_batchclient] osztály egy példánya.
+Az előző kódrészletben a "batchClient" a [batchClient](/dotnet/api/microsoft.azure.batch.batchclient) osztály egy példánya.
 
 ## <a name="create-dependent-tasks"></a>Függő feladatok létrehozása
 
-Egy vagy több fölérendelt feladat befejeződésétől függő feladat létrehozásához megadhatja, hogy a feladat a többi feladattól függ. A Batch .NET-ben konfigurálja a [CloudTask][net_cloudtask]. [DependsOn][net_dependson] tulajdonság a [TaskDependencies][net_taskdependencies] osztály egy példányával:
+Egy vagy több fölérendelt feladat befejeződésétől függő feladat létrehozásához megadhatja, hogy a feladat a többi feladattól függ. A Batch .NET-ben konfigurálja a [CloudTask. DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) tulajdonságot a [TaskDependencies](/dotnet/api/microsoft.azure.batch.taskdependencies) osztály egy példányával:
 
 ```csharp
 // Task 'Flowers' depends on completion of both 'Rain' and 'Sun'
@@ -60,26 +58,26 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Ez a kódrészlet létrehoz egy függő feladatot a "Flowers" AZONOSÍTÓJÚ feladathoz. A "virágok" feladat az "Rain" és a "Sun" tevékenységtől függ. A "Flowers" feladat csak akkor lesz ütemezve a számítási csomópontokon való futtatásra, ha az "Rain" és a "Sun" feladatok végrehajtása sikeresen befejeződött.
 
 > [!NOTE]
-> Alapértelmezés szerint a rendszer úgy tekinti a feladatot, hogy a **befejezett** állapotban van, és a **kilépési kódja** is sikeres `0` . A Batch .NET-ben ez egy [CloudTask][net_cloudtask]jelent. Az [állapot][net_taskstate] tulajdonság értéke `Completed` és a CloudTask [TaskExecutionInformation][net_taskexecutioninformation].[ A ExitCode][net_exitcode] tulajdonság értéke: `0` . Ennek módjáról a [függőségi műveletek](#dependency-actions) című szakaszban olvashat.
+> Alapértelmezés szerint a rendszer úgy tekinti a feladatot, hogy a befejezett állapotban van, és a kilépési kódja is sikeres `0` . A Batch .NET-ben ez azt jelenti, hogy a [CloudTask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state) tulajdonság értéke, `Completed` a CloudTask [TaskExecutionInformation. ExitCode](/dotnet/api/microsoft.azure.batch.taskexecutioninformation.exitcode) tulajdonság értéke pedig `0` . Ennek módjáról a [függőségi műveletek](#dependency-actions) című szakaszban olvashat.
 
 ## <a name="dependency-scenarios"></a>Függőségi helyzetek
 
-Három alapvető feladat-függőségi forgatókönyv használható Azure Batchban: egy-az-egyhez, egy-a-többhöz és a feladat-azonosító tartomány függőségei. Ezek kombinálhatók úgy, hogy egy negyedik forgatókönyvet, több a többhöz.
+Három alapvető feladat-függőségi forgatókönyv használható Azure Batchban: egy-az-egyhez, egy-a-többhöz és a feladat-azonosító tartomány függőségei. Ez a három forgatókönyv össze lehet kapcsolni egy negyedik forgatókönyvet: több-a-többhöz.
 
 | Forgatókönyv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Példa | Ábrán |
 |:---:| --- | --- |
-|  [Egy-az-egyhez](#one-to-one) |a *taskB* a *Taska* függvénytől függ <p/> a *taskB* nem lesz ütemezve végrehajtásra, amíg a *Taska* sikeresen nem fejeződött be. |![Diagram: egy-az-egyhez típusú feladat-függőség][1] |
-|  [Egy-a-többhöz](#one-to-many) |A *taskC* a *taskA* és a *taskB* tevékenységtől is függ <p/> a *taskC* nem lesz ütemezve a végrehajtáshoz, amíg a *taske* és a *taskB* sikeresen nem fejeződött be. |![Diagram: egy-a-többhöz feladat-függőség][2] |
-|  [Feladat-azonosító tartománya](#task-id-range) |a *feladat* számos feladattól függ <p/> a *feladat* nem lesz ütemezve végrehajtásra, amíg az *1* – *10* azonosítójú feladatok sikeresen befejeződtek. |![Ábra: a feladat-azonosító tartományának függősége][3] |
+|  [Egy-az-egyhez](#one-to-one) |a *taskB* a *Taska* függvénytől függ <p/> a *taskB* nem lesz ütemezve végrehajtásra, amíg a *Taska* sikeresen nem fejeződött be. |:::image type="content" source="media/batch-task-dependency/01_one_to_one.png" alt-text="Az egy-az-egyhez feladat-függőségi forgatókönyvet ábrázoló diagram."::: |
+|  [Egy-a-többhöz](#one-to-many) |A *taskC* a *taskA* és a *taskB* tevékenységtől is függ <p/> a *taskC* nem lesz ütemezve a végrehajtáshoz, amíg a *taske* és a *taskB* sikeresen nem fejeződött be. |:::image type="content" source="media/batch-task-dependency/02_one_to_many.png" alt-text="Az egy-a-többhöz feladat-függőségi forgatókönyvet ábrázoló diagram."::: |
+|  [Feladat-azonosító tartománya](#task-id-range) |a *feladat* számos feladattól függ <p/> a *feladat* nem lesz ütemezve végrehajtásra, amíg az *1* – *10* azonosítójú feladatok sikeresen befejeződtek. |:::image type="content" source="media/batch-task-dependency/03_task_id_range.png" alt-text="A feladat-azonosító tartomány feladatának függőségi forgatókönyvét ábrázoló diagram."::: |
 
 > [!TIP]
 > **Több-a-többhöz** kapcsolatot is létrehozhat, például a C, D, E és F feladatok mindegyike az a és B feladatoktól függ. Ez hasznos lehet például olyan párhuzamos előfeldolgozási forgatókönyvekben, ahol az alsóbb rétegbeli tevékenységek több felsőbb rétegbeli feladat kimenetének függvényei.
 > 
-> Az ebben a szakaszban szereplő példákban egy függő feladat csak a fölérendelt feladatok sikeres befejeződése után fut le. Ez a viselkedés egy függő feladat alapértelmezett viselkedése. A fölérendelt feladat végrehajtása után futtathat egy függő feladatot egy függőségi művelet megadásával, amely felülbírálja az alapértelmezett viselkedést. A részletekért tekintse meg a [függőségi műveletek](#dependency-actions) szakaszt.
+> Az ebben a szakaszban szereplő példákban egy függő feladat csak a fölérendelt feladatok sikeres befejeződése után fut le. Ez a viselkedés egy függő feladat alapértelmezett viselkedése. A fölérendelt feladat végrehajtása után futtathat egy függő feladatot egy [függőségi művelet](#dependency-actions)  megadásával, amely felülbírálja az alapértelmezett viselkedést.
 
 ### <a name="one-to-one"></a>Egy-az-egyhez
 
-Egy-az-egyhez kapcsolat esetén a feladat egy fölérendelt feladat sikeres befejezését határozza meg. A függőség létrehozásához adjon meg egy feladat-azonosítót a [TaskDependencies][net_taskdependencies]. [OnId][net_onid] statikus metódus a [CloudTask][net_cloudtask] [DependsOn][net_dependson] tulajdonságának feltöltésekor.
+Egy-az-egyhez kapcsolat esetén a feladat egy fölérendelt feladat sikeres befejezését határozza meg. A függőség létrehozásához adjon meg egyetlen [TaskDependencies. OnId](/dotnet/api/microsoft.azure.batch.taskdependencies.onid) statikus metódust az [CloudTask. DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) tulajdonság feltöltésekor.
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -94,7 +92,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 
 ### <a name="one-to-many"></a>Egy-a-többhöz
 
-Egy-a-többhöz kapcsolat esetén a feladatok több szülő feladat befejeződésétől függenek. A függőség létrehozásához adja meg a [TaskDependencies][net_taskdependencies]gyűjteményét. [OnIds][net_onids] statikus metódus a [CloudTask][net_cloudtask] [DependsOn][net_dependson] tulajdonságának feltöltésekor.
+Egy-a-többhöz kapcsolat esetén a feladatok több szülő feladat befejeződésétől függenek. A függőség létrehozásához adjon meg egy [TaskDependencies. OnIds](/dotnet/api/microsoft.azure.batch.taskdependencies.onids) statikus metódust a [CloudTask. DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) tulajdonság feltöltésekor.
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -107,19 +105,19 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 {
     DependsOn = TaskDependencies.OnIds("Rain", "Sun")
 },
-``` 
+```
 
 ### <a name="task-id-range"></a>Feladat-azonosító tartománya
 
 A fölérendelt feladatok számos függősége esetén a feladatok attól függnek, hogy az azonosítók milyen tartományon belül találhatók.
-A függőség létrehozásához adja meg a tartomány első és utolsó feladatának azonosítóját a [TaskDependencies][net_taskdependencies]. [OnIdRange][net_onidrange] statikus metódus a [CloudTask][net_cloudtask] [DependsOn][net_dependson] tulajdonságának feltöltésekor.
+A függőség létrehozásához adja meg a tartomány első és utolsó feladatának azonosítóját a [TaskDependencies](/dotnet/api/microsoft.azure.batch.taskdependencies.onidrange) statikus metódushoz, amikor feltölti az [CloudTask. DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) tulajdonságot.
 
 > [!IMPORTANT]
-> Ha a függőségek esetében feladatsor-tartományt használ, csak az egész értékeket megadó feladatokat fogja kiválasztani a tartomány. Így a tartomány `1..10` kiválaszthatja a feladatokat `3` `7` , de nem `5flamingoes` . 
+> Ha a függőségek esetében feladatsor-tartományt használ, csak az egész értékeket megadó feladatokat fogja kiválasztani a tartomány. A tartomány például kiválasztja a `1..10` feladatokat `3` `7` , de nem `5flamingoes` .
 >
 > A bevezető nullák nem jelentősek a tartomány függőségeinek kiértékelése során, így a karakterlánc-azonosítókkal rendelkező tevékenységek `4` , `04` és `004` mind a tartományon *belül* lesznek, és az összes feladatot feladatnak tekinti `4` , így az első befejezési művelet megfelel a függőségnek.
 >
-> A tartomány minden tevékenységének meg kell felelnie a függőségnek, akár a sikeres befejezést követően, akár egy, a függőségi művelethez hozzárendelt hibával, amely **megfelel a követelményeknek**. A részletekért tekintse meg a [függőségi műveletek](#dependency-actions) szakaszt.
+> A tartomány minden tevékenységének meg kell felelnie a függőségnek, akár a sikeres befejezést követően, akár egy, a [függőségi művelethez](#dependency-actions) beállított hibával, amely **megfelel a követelményeknek**.
 
 ```csharp
 // Tasks 1, 2, and 3 don't depend on any other tasks. Because
@@ -141,22 +139,24 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 ## <a name="dependency-actions"></a>Függőségi műveletek
 
-Alapértelmezés szerint a függő feladat vagy a tevékenységek halmaza csak a fölérendelt feladat sikeres befejeződése után fut. Bizonyos helyzetekben érdemes lehet függő feladatokat futtatni, még akkor is, ha a fölérendelt feladat meghiúsul. A függőségi műveletek megadásával felülbírálhatja az alapértelmezett viselkedést. A függőségi műveletek határozzák meg, hogy egy függő feladat futtatható-e a fölérendelt feladat sikeressége vagy meghibásodása alapján. 
+Alapértelmezés szerint a függő feladat vagy a tevékenységek halmaza csak a fölérendelt feladat sikeres befejeződése után fut. Bizonyos helyzetekben érdemes lehet függő feladatokat futtatni, még akkor is, ha a fölérendelt feladat meghiúsul. A függőségi műveletek megadásával felülbírálhatja az alapértelmezett viselkedést.
 
-Tegyük fel például, hogy egy függő feladat a felsőbb rétegbeli feladat befejezésekor vár az adatokra. Ha a felsőbb rétegbeli feladat meghiúsul, előfordulhat, hogy a függő feladat továbbra is futtatható a régebbi adatok használatával. Ebben az esetben a függőségi művelet megadhatja, hogy a függő tevékenység a fölérendelt feladat meghibásodása ellenére is futtatható legyen.
+A függőségi műveletek határozzák meg, hogy egy függő feladat futtatható-e a fölérendelt feladat sikeressége vagy meghibásodása alapján. Tegyük fel például, hogy egy függő feladat a felsőbb rétegbeli feladat befejezésekor vár az adatokra. Ha a felsőbb rétegbeli feladat meghiúsul, előfordulhat, hogy a függő feladat továbbra is futtatható a régebbi adatok használatával. Ebben az esetben a függőségi művelet megadhatja, hogy a függő tevékenység a fölérendelt feladat meghibásodása ellenére is futtatható legyen.
 
-A függőségi műveletek a fölérendelt feladat kilépési feltételén alapulnak. A következő kilépési feltételek bármelyikéhez megadhat függőségi műveletet: a .NET esetében a részletekért tekintse meg a [ExitConditions][net_exitconditions] osztályt:
+A függőségi műveletek a fölérendelt feladat kilépési feltételén alapulnak. A következő kilépési feltételek bármelyikéhez megadhat függőségi műveletet:
 
 - Előfeldolgozási hiba esetén.
 - Fájl feltöltésekor felmerülő hiba esetén. Ha a feladat kilép egy **exitCodes** -vagy **exitCodeRanges**-n keresztül megadott kilépési kóddal, és a fájl feltöltési hibába ütközik, a kilépési kód által megadott művelet elsőbbséget élvez.
 - Ha a feladat kilép a **ExitCodes** tulajdonság által meghatározott kilépési kóddal.
 - Ha a feladat kilép egy kilépési kóddal, amely a **ExitCodeRanges** tulajdonság által megadott tartományon belül esik.
-- Az alapértelmezett eset, ha a feladat kilép egy **ExitCodes** vagy **ExitCodeRanges**által nem definiált kilépési kóddal, vagy ha a feladat egy előfeldolgozási hiba miatt kilép, és a **PreProcessingError** tulajdonság nincs beállítva, vagy ha a feladat meghiúsul, és a **FileUploadError** tulajdonság nincs beállítva. 
+- Az alapértelmezett eset, ha a feladat kilép egy **ExitCodes** vagy **ExitCodeRanges** által nem definiált kilépési kóddal, vagy ha a feladat egy előfeldolgozási hiba miatt kilép, és a **PreProcessingError** tulajdonság nincs beállítva, vagy ha a feladat meghiúsul, és a **FileUploadError** tulajdonság nincs beállítva. 
 
-Ha függőségi műveletet szeretne megadni a .NET-ben, állítsa be a [ExitOptions][net_exitoptions]. A kilépési feltétel [DependencyAction][net_dependencyaction] tulajdonsága. A **DependencyAction** tulajdonság két érték egyikét veszi figyelembe:
+A .NET esetében tekintse meg a [ExitConditions](/dotnet/api/microsoft.azure.batch.exitconditions) osztályt az ilyen feltételekkel kapcsolatos további részletekért.
 
-- Ha a **DependencyAction** tulajdonságot a **megfelelő** értékre állítja, azt jelzi, hogy a függő tevékenységek jogosultak a futtatására, ha a fölérendelt feladat megadott hibával kilép.
-- Ha a **DependencyAction** tulajdonságot a **Letiltás** értékre állítja, azt jelzi, hogy a függő tevékenységek nem jogosultak a futtatásra.
+Ha függőségi műveletet szeretne megadni a .NET-ben, állítsa a kilépési feltételhez a [ExitOptions. DependencyAction](/dotnet/api/microsoft.azure.batch.exitoptions.dependencyaction) tulajdonságot a következők egyikére:
+
+- **Megfelelő**: azt jelzi, hogy a függő tevékenységek futtatására jogosultak, ha a fölérendelt feladat megadott hibával kilép.
+- **Letiltás**: azt jelzi, hogy a függő tevékenységek nem jogosultak a futtatásra.
 
 A **DependencyAction** tulajdonság alapértelmezett beállítása a 0. kilépési kód és az összes többi kilépési feltétel **blokkolását** is **kielégíti** .
 
@@ -197,37 +197,13 @@ new CloudTask("B", "cmd.exe /c echo B")
 
 ## <a name="code-sample"></a>Kódminta
 
-A [TaskDependencies][github_taskdependencies] minta projekt a githubon lévő [Azure batch Code-minták][github_samples] egyike. Ez a Visual Studio-megoldás a következőket mutatja be:
+A GitHubon a [TaskDependencies](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies) -minta projekt a következőket mutatja be:
 
-- Feladat-függőség engedélyezése egy feladathoz
-- Egyéb feladatoktól függő feladatok létrehozása
+- Feladat-függőség engedélyezése egy feladathoz.
+- Más feladatoktól függő feladatok létrehozása.
 - A feladatok végrehajtása számítási csomópontok készletén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A Batch [alkalmazáscsomag](batch-application-packages.md) szolgáltatásának segítségével egyszerűen telepítheti és futtathatja a tevékenységek által a számítási csomópontokon végrehajtott alkalmazásokat.
-- A csomópontok feladatok futtatására való felkészülési módszereinek áttekintését lásd: [alkalmazások telepítése és az adatok előkészítése a Batch számítási csomópontjain][forum_post] a Azure batch fórumban. A Azure Batch csapat tagjainak egyike írta, ez a bejegyzés egy jó alapozó az alkalmazások másolásának különböző módjairól, a feladatok bemeneti adatairól és más fájlokról a számítási csomópontok számára.
-
-[forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
-[github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
-[github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
-[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
-[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
-[net_dependson]: /dotnet/api/microsoft.azure.batch.cloudtask
-[net_exitcode]: /dotnet/api/microsoft.azure.batch.taskexecutioninformation
-[net_exitconditions]: /dotnet/api/microsoft.azure.batch.exitconditions
-[net_exitoptions]: /dotnet/api/microsoft.azure.batch.exitoptions
-[net_dependencyaction]: /dotnet/api/microsoft.azure.batch.exitoptions
-[net_msdn]: /dotnet/api/microsoft.azure.batch
-[net_onid]: /dotnet/api/microsoft.azure.batch.taskdependencies
-[net_onids]: /dotnet/api/microsoft.azure.batch.taskdependencies
-[net_onidrange]: /dotnet/api/microsoft.azure.batch.taskdependencies
-[net_taskexecutioninformation]: /dotnet/api/microsoft.azure.batch.taskexecutioninformation
-[net_taskstate]: /dotnet/api/microsoft.azure.batch.common.taskstate
-[net_usestaskdependencies]: /dotnet/api/microsoft.azure.batch.cloudjob
-[net_taskdependencies]: /dotnet/api/microsoft.azure.batch.taskdependencies
-
-[1]: ./media/batch-task-dependency/01_one_to_one.png "Diagram: egy-az-egyhez függőség"
-[2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: egy-a-többhöz függőség"
-[3]: ./media/batch-task-dependency/03_task_id_range.png "Ábra: a feladat-azonosító tartományának függősége"
+- Ismerkedjen meg a Batch [alkalmazáscsomag](batch-application-packages.md) szolgáltatásával, amely egyszerű módszert biztosít a tevékenységek által a számítási csomópontokon futtatott alkalmazások üzembe helyezésére és verziójának telepítésére.
+- A [feladatok és a feladatok hibakeresésének](batch-job-task-error-checking.md)ismertetése.

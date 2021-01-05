@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bc6b7553d240de05404d24f828a5f7db14772f93
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 279a00a6146d756e6a518dbf86b88f471d170b3a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657511"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805673"
 ---
 ## <a name="what-is-a-replication-task"></a>Mi az a replikációs feladat?
 
@@ -22,11 +22,11 @@ A legtöbb replikációs feladat változatlanul továbbítja az eseményeket, é
 
 A replikációs feladatok általában állapot nélküliek, ami azt jelenti, hogy nem osztják meg az állapotot vagy más mellékhatásokat a feladatok szekvenciális vagy párhuzamos végrehajtása során. Ez a kötegek és a láncolás esetében is igaz, ami a stream meglévő állapotának tetején is megvalósítható. 
 
-Így a replikációs feladatok eltérnek az összesítési feladatoktól, amelyek általában állapottal rendelkeznek, és az elemzési keretrendszerek és szolgáltatások (például a [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction.md)) tartománya.
+Így a replikációs feladatok eltérnek az összesítési feladatoktól, amelyek általában állapottal rendelkeznek, és az elemzési keretrendszerek és szolgáltatások (például a [Azure stream Analytics](/azure/stream-analytics/stream-analytics-introduction)) tartománya.
 
 ## <a name="replication-applications-and-tasks-in-azure-functions"></a>A Azure Functions replikációs alkalmazásai és feladatai
 
-Azure Functions a replikációs feladat egy olyan [trigger](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings.md) használatával valósul meg, amely egy vagy több bemeneti üzenetet szerzi be egy konfigurált forrásból, valamint egy [kimeneti kötést](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings.md#binding-direction) , amely továbbítja a forrásból a konfigurált célra küldött üzeneteket. 
+Azure Functions a replikációs feladat egy olyan [trigger](/azure/azure-functions/functions-triggers-bindings) használatával valósul meg, amely egy vagy több bemeneti üzenetet szerzi be egy konfigurált forrásból, valamint egy [kimeneti kötést](/azure/azure-functions/functions-triggers-bindings#binding-direction) , amely továbbítja a forrásból a konfigurált célra küldött üzeneteket. 
 
 | Eseményindító  | Kimenet |
 |----------|--------|
@@ -57,17 +57,17 @@ Az Event Hubs és Service Bus közötti üzeneteket másoló egyszerű replikác
 
 ### <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 
-Ha el szeretné kerülni az adatvesztést egy replikációs függvény egyik oldalán, az újrapróbálkozási házirendet robusztus értékre kell állítania. Az újrapróbálkozási szabályzat konfigurálásához tekintse meg az újrapróbálkozások [Azure functions dokumentációját](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md) . 
+Ha el szeretné kerülni az adatvesztést egy replikációs függvény egyik oldalán, az újrapróbálkozási házirendet robusztus értékre kell állítania. Az újrapróbálkozási szabályzat konfigurálásához tekintse meg az újrapróbálkozások [Azure functions dokumentációját](/azure/azure-functions/functions-bindings-error-pages) . 
 
 A példában szereplő projektekhez kiválasztott házirend-beállítások egy exponenciális leállítási [stratégiát állítanak be az](https://github.com/Azure-Samples/azure-messaging-replication-dotnet) újrapróbálkozási időközökkel 5 másodperctől 15 percre, az adatvesztés elkerülése érdekében pedig végtelen újrapróbálkozást végeznek. 
 
-Service Bus esetében tekintse át az eseményindítók [használatának az eseményindító rugalmassága](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) érdekében című szakaszt az eseményindítók interakciójának és a várólista számára meghatározott maximális kézbesítések számának megismeréséhez.
+Service Bus esetében tekintse át az eseményindítók [használatának az eseményindító rugalmassága](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) érdekében című szakaszt az eseményindítók interakciójának és a várólista számára meghatározott maximális kézbesítések számának megismeréséhez.
 
 ### <a name="setting-up-a-replication-application-host"></a>Replikációs alkalmazás gazdagépének beállítása
 
 Egy replikációs alkalmazás egy vagy több replikációs feladat végrehajtási gazdagépe. 
 
-Ez egy Azure Functions alkalmazás, amely a (z) vagy a (z) Azure Functions Premium csomagon történő futtatásra van konfigurálva. Minden replikációs alkalmazásnak [rendszer vagy felhasználó által hozzárendelt felügyelt identitás](https://docs.microsoft.com/azure/app-service/overview-managed-identity.md)alatt kell futnia. 
+Ez egy Azure Functions alkalmazás, amely a (z) vagy a (z) Azure Functions Premium csomagon történő futtatásra van konfigurálva. Minden replikációs alkalmazásnak [rendszer vagy felhasználó által hozzárendelt felügyelt identitás](/azure/app-service/overview-managed-identity)alatt kell futnia. 
 
 A csatolt Azure Resource Manager (ARM-) Sablonok replikációs alkalmazást hoznak létre és konfigurálnak a következővel:
 
@@ -135,9 +135,9 @@ A replikációs feladatok figyelésének különösen hasznos eszköze a Applica
 
 Az azonnali diagnosztikai információkhoz használhatja az [élő metrika](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) portál eszközt, amely kis késleltetésű vizualizációt biztosít a naplózási adatokhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Azure Functions üzemelő példányok](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies.md)
-* [Azure Functions diagnosztika](https://docs.microsoft.com/azure/azure-functions/functions-diagnostics.md)
-* [Azure Functions hálózati beállítások](https://docs.microsoft.com/azure/azure-functions/functions-networking-options.md)
-* [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview.md)
+* [Azure Functions üzemelő példányok](/azure/azure-functions/functions-deployment-technologies)
+* [Azure Functions diagnosztika](/azure/azure-functions/functions-diagnostics)
+* [Azure Functions hálózati beállítások](/azure/azure-functions/functions-networking-options)
+* [Azure Application Insights](/azure/azure-monitor/app/app-insights-overview)

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895723"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803918"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Időponthoz tartozó visszaállítás végrehajtása a blob-adatok blokkolása közben
 
@@ -23,7 +23,7 @@ Az időponthoz tartozó visszaállítással visszaállíthat egy vagy több blok
 Ha többet szeretne megtudni az időponthoz tartozó visszaállításról, tekintse meg [az időponthoz való visszaállítást a blokkos Blobok esetében](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Az időponthoz való visszaállítás támogatja a csak blokkos Blobok műveleteinek visszaállítását. A tárolók műveletei nem állíthatók vissza. Ha töröl egy tárolót a Storage-fiókból a [tároló törlése](/rest/api/storageservices/delete-container) művelet meghívásával, a tároló nem állítható vissza visszaállítási művelettel. Tároló törlése helyett törölje az egyes blobokat, ha vissza szeretné állítani őket.
+> Az időponthoz való visszaállítás támogatja a csak blokkos Blobok műveleteinek visszaállítását. A tárolók műveletei nem állíthatók vissza. Ha töröl egy tárolót a Storage-fiókból a [tároló törlése](/rest/api/storageservices/delete-container) művelet meghívásával, a tároló nem állítható vissza visszaállítási művelettel. A teljes tároló törlése helyett törölje az egyes blobokat, ha később szeretné visszaállítani őket.
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Időponthoz tartozó visszaállítás engedélyezése és konfigurálása
 
@@ -107,6 +107,8 @@ A rendszer csak a blokk blobokat állítja vissza. Az oldal blobok és a hozzáf
 > Ha visszaállítási műveletet hajt végre, az Azure Storage blokkolja a művelet időtartamára visszaállított tartományokban lévő Blobok adatműveleteit. Az olvasási, írási és törlési műveletek blokkolva vannak az elsődleges helyen. Ezért az olyan műveletek, mint például a tárolók listázása a Azure Portalban előfordulhat, hogy nem a várt módon hajtják végre a visszaállítási műveletet.
 >
 > A másodlagos hely olvasási műveletei a visszaállítási művelet során folytatódnak, ha a Storage-fiók földrajzilag replikálódik.
+>
+> Az adatok egy halmazának visszaállításához szükséges idő a visszaállítási időszakban végrehajtott írási és törlési műveletek számától függ. Például egy 1 000 000 objektummal rendelkező, naponta hozzáadott 3 000-objektummal rendelkező fiók, valamint a naponta törölt 1 000-objektumok esetében körülbelül két óra elteltével vissza kell állítani egy 30 napos pontot a múltban. A megőrzési időtartam és a helyreállítás több mint 90 nappal a múltban nem ajánlott olyan fiók esetében, amely ezen a változási aránnyal rendelkezik.
 
 ### <a name="restore-all-containers-in-the-account"></a>A fiókban lévő összes tároló visszaállítása
 

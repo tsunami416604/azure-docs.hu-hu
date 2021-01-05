@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0d833c32000eb91511782184ef4455bc1973a714
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563262"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807909"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure szinapszis Analytics – gyakori kérdések
 
@@ -71,7 +71,7 @@ A: a Apache Spark szinapszis hivatkozása a GA. A kiszolgáló nélküli SQL-ké
 
 Válasz: igen! A folyamat összes összetevője, jegyzetfüzete, SQL-szkriptje és Spark-feladatának definíciója a git-ben fog megjelenni. Az összes készlet-definíciót a git as ARM-sablonokban tárolja a rendszer. A dedikált SQL Pool-objektumokat (sémákat, táblákat, nézeteket stb.) a CI/CD-támogatással rendelkező adatbázis-projektekkel felügyeli a rendszer.
 
-## <a name="pipelines"></a>Pipelines
+## <a name="pipelines"></a>Folyamatok
 
 ### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>K: Hogyan arról, hogy tudom, milyen hitelesítő adatokat használ a folyamat futtatásához? 
 

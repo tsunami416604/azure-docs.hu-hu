@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: thvankra
-ms.openlocfilehash: f5f2cb5ac8c354df38310cdcb47b98e1da5b6cfa
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c969e4fac3ae30088cfe47a7b0edff22c578cb8b
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97521824"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802371"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API gyakori problémáinak elhárítása
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -23,12 +23,12 @@ Ez a cikk a Azure Cosmos DB Cassandra APIt használó alkalmazások általános 
 
 ## <a name="common-errors-and-solutions"></a>Gyakori hibák és megoldások
 
-| Hiba               |  Leírás             | Megvalósítás  |
+| Hiba               |  Leírás             | Megoldás  |
 |---------------------|--------------------------|-----------|
 | OverloadedException (Java) | A felhasználható kérelmek teljes száma meghaladja a tárterületre vagy a táblára kiépített kérések mennyiségét. Így a kérelmek szabályozása megtörténik. | Érdemes megfontolni a Azure Portal a térközhez vagy a táblához rendelt átviteli sebesség méretezését (lásd [itt](manage-scale-cassandra.md) : méretezési műveletek a Cassandra APIban), vagy egy újrapróbálkozási házirendet is megvalósíthat. A Java esetében lásd: újrapróbálkozási minták a [v3. x illesztőprogramhoz](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) és a [v4. x illesztőprogramhoz](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4). Lásd még: [Azure Cosmos Cassandra Extensions for Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) |
 | OverloadedException (Java) még elegendő átviteli sebességgel | A rendszer úgy tűnik, hogy a kérések mennyisége és/vagy az elfogyasztott kérések egységenkénti ára alapján a kérelmek szabályozása megfelelő átviteli sebesség  | Cassandra API a séma szintű műveletekhez (CREATE TABLE, ALTER TABLE, DROP TABLE) implementálja a rendszer átviteli sebességének költségvetését. Ennek a költségvetésnek elegendőnek kell lennie az éles rendszer sémájának műveleteihez. Ha azonban nagy számú séma-szintű művelet van, akkor lehetséges, hogy túllépi ezt a korlátot. Mivel ez a költségvetés nem a felhasználó által vezérelt, érdemes megfontolni a futtatott séma-műveletek számának csökkentését. Ha a művelet végrehajtása nem oldja meg a problémát, vagy nem valósítható meg a munkaterhelés esetében, [hozzon létre egy Azure-támogatási kérelmet](../azure-portal/supportability/how-to-create-azure-support-request.md).|
 | ClosedConnectionException (Java) | A sikeres kapcsolatok utáni üresjárati időtartam után az alkalmazás nem tud csatlakozni| Ezt a hibát az Azure LoadBalancers üresjárati időtúllépése okozhatja, amely 4 percet vesz igénybe. Állítsa be a Keep Alive beállítást az illesztőprogramban (lásd alább), és növelje a Keep-Alive beállításokat az operációs rendszeren, vagy [állítsa be a tétlen időtúllépést Azure Load Balancerban](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). |
-| Egyéb átmeneti kapcsolódási hibák (Java) | A kapcsolatok váratlanul elvesznek vagy időtúllépést veszítenek | A Javához készült Apache Cassandra-illesztőprogramok két natív újracsatlakoztatási szabályzatot biztosítanak: `ExponentialReconnectionPolicy` és `ConstantReconnectionPolicy` . A mező alapértelmezett értéke: `ExponentialReconnectionPolicy`. Azure Cosmos DB Cassandra API esetében azonban ajánlott `ConstantReconnectionPolicy` 2 másodperces késleltetés. Tekintse meg a Java v4. x illesztőprogramhoz tartozó [illesztőprogram-dokumentációt](https://docs.datastax.com/developer/java-driver/4.9/manual/core/reconnection/)  , és [itt](https://docs.datastax.com/developer/java-driver/3.7/manual/reconnection/) találja a Java 3. x útmutatót (lásd még az alábbi példákat is).|
+| Egyéb átmeneti kapcsolódási hibák (Java) | A kapcsolatok váratlanul elvesznek vagy időtúllépést veszítenek | A Javához készült Apache Cassandra-illesztőprogramok két natív újracsatlakoztatási szabályzatot biztosítanak: `ExponentialReconnectionPolicy` és `ConstantReconnectionPolicy` . A mező alapértelmezett értéke: `ExponentialReconnectionPolicy`. Azure Cosmos DB Cassandra API esetében azonban ajánlott `ConstantReconnectionPolicy` 2 másodperces késleltetés. Tekintse meg a Java v4. x illesztőprogramhoz tartozó [illesztőprogram-dokumentációt](https://docs.datastax.com/en/developer/java-driver/4.9/manual/core/reconnection/)  , és [itt](https://docs.datastax.com/en/developer/java-driver/3.7/manual/reconnection/) találja a Java 3. x útmutatót (lásd még az alábbi példákat is).|
 
 Ha a hiba nem szerepel a fentiekben, és a rendszer hibát tapasztal a [Cassandra APIban támogatott művelet](cassandra-support.md)végrehajtásakor, ahol a hiba nem jelenik meg *natív Apache Cassandra használata* esetén, [hozzon létre egy Azure-támogatási kérést](../azure-portal/supportability/how-to-create-azure-support-request.md)
 

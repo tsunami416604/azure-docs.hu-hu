@@ -3,12 +3,12 @@ title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097388"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803952"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -37,7 +37,7 @@ A szabályzatok kiértékelésének idejével és módjával kapcsolatos részle
 
 ### <a name="control-the-response-to-an-evaluation"></a>A kiértékelésre adott válasz szabályozása
 
-A nem megfelelő erőforrások kezelésére vonatkozó üzleti szabályok széles körben változnak a szervezetek között. Példák arra, hogy a szervezet hogyan szeretné a platformot egy nem panasszal kapcsolatos erőforrásra válaszolni:
+A nem megfelelő erőforrások kezelésére vonatkozó üzleti szabályok széles körben változnak a szervezetek között. Példák arra, hogy a szervezet hogyan szeretné a platformot egy nem megfelelő erőforrásra válaszolni:
 
 - Az erőforrás módosításának megtagadása
 - Az erőforrás módosításának naplózása
@@ -94,7 +94,7 @@ Azure Policy kiértékeli az összes erőforrást az Azure-ban és az ív enged�
 - Definíciók és hozzárendelések létrehozásakor vegye fontolóra a szervezeti hierarchiákat. Javasoljuk, hogy a definíciókat olyan magasabb szinteken hozza létre, mint a felügyeleti csoport vagy az előfizetés szintje. Ezután hozza létre a hozzárendelést a következő gyermek szinten. Ha létrehoz egy definíciót egy felügyeleti csoportban, a hozzárendelés az adott felügyeleti csoportban lévő előfizetésre vagy erőforráscsoporthoz is felhasználható.
 
 - Javasoljuk, hogy egyetlen házirend-definícióhoz is hozzon létre és rendeljen hozzá kezdeményezési definíciókat.
-  Például megadhatja a szabályzat-definíció _policyDefA_ , és létrehozhatja azt a Initiative definition _initiativeDefC_alatt. Ha később új szabályzat-definíciót hoz létre a _definícióéhoz_ -hoz a _policyDefA_hasonló célokkal, akkor hozzáadhatja azt a _initiativeDefC_ alatt, és nyomon követheti azokat.
+  Például megadhatja a szabályzat-definíció _policyDefA_ , és létrehozhatja azt a Initiative definition _initiativeDefC_ alatt. Ha később új szabályzat-definíciót hoz létre a _definícióéhoz_ -hoz a _policyDefA_ hasonló célokkal, akkor hozzáadhatja azt a _initiativeDefC_ alatt, és nyomon követheti azokat.
 
 - A kezdeményezési hozzárendelés létrehozása után a kezdeményezéshez hozzáadott szabályzat-definíciók is részévé válnak a kezdeményezés hozzárendeléseinek.
 
@@ -107,7 +107,7 @@ Azure Policy kiértékeli az összes erőforrást az Azure-ban és az ív enged�
 
 Az Azure Policyban a szabályzatok létrehozásának és bevezetésének folyamata egy szabályzatdefiníció létrehozásával kezdődik. Mindegyik szabályzatdefiníció feltételekkel rendelkezik, amelyek teljesülése esetén életbe lép. Továbbá egy meghatározott hatással van, amely a feltételek teljesülése esetén zajlik.
 
-Azure Policy számos beépített szabályzatot kínálunk, amelyek alapértelmezés szerint elérhetők. Példa:
+Azure Policy számos beépített szabályzatot kínálunk, amelyek alapértelmezés szerint elérhetők. Például:
 
 - **Engedélyezett Storage-fiók SKU** -jának (megtagadás): meghatározza, hogy az üzembe helyezett Storage-fiók SKU-méreteken belül van-e. Ennek hatására az összes olyan Storage-fiók megtagadható, amely nem felel meg a definiált SKU-méretek készletének.
 - **Engedélyezett erőforrástípus** (megtagadás): meghatározza az üzembe helyezhető erőforrástípusok típusát. Ennek hatására az összes olyan erőforrást meg kell tagadni, amely nem része ennek a definiált listának.
@@ -153,7 +153,7 @@ Vegyünk példának egy olyan helyzetet, ahol egy kezdeményezési definícióho
 Ebben a forgatókönyvben három lehetőség van a **C kezdeményezés** kezdeményezési paramétereinek megadására:
 
 - A kezdeményezésen belüli szabályzatdefiníciók paramétereinek használata. Ebben az esetben az _allowedLocations_ és az _allowedSingleLocation_ lesz a **C kezdeményezés** kezdeményezési paramétere.
-- Értékek megadása a kezdeményezési definíción belüli szabályzatdefiníciók paramétereihez. Ebben a példában megadhat egy listát a **policya**paraméterhez – **allowedLocations** és **b szabályzat**paraméter – **allowedSingleLocation**. Az értékeket az adott kezdeményezés hozzárendelésekor is megadhatja.
+- Értékek megadása a kezdeményezési definíción belüli szabályzatdefiníciók paramétereihez. Ebben a példában megadhat egy listát a **policya** paraméterhez – **allowedLocations** és **b szabályzat** paraméter – **allowedSingleLocation**. Az értékeket az adott kezdeményezés hozzárendelésekor is megadhatja.
 - Adjon meg egy listát mindazon lehetséges _értékekről_, amelyeket használhat a kezdeményezés hozzárendelésekor. A kezdeményezés hozzárendelésekor a kezdeményezésen belüli szabályzatdefiníciók örökölt paraméterei csak olyan értékekkel rendelkezhetnek, amelyek ebben a listában szerepelnek.
 
 Ha egy kezdeményezési definícióban értéket hoz létre, nem adhat meg más értéket a kezdeményezési hozzárendelés során, mert nem része a listának.

@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c10b2041dec0f4084578de1a72cb59cf1d7a949b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: d9bad49b7c3d71304a33691cf5004c853228f8e8
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631074"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797230"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>Kerasz-modellek betanítása méretekben Azure Machine Learning
 
@@ -199,7 +199,7 @@ A feladatok ScriptRunConfig-vel való konfigurálásával kapcsolatos további i
 A [Run objektum](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
 
 ```Python
-run = Experiment(workspace=ws, name='keras-mnist').submit(src)
+run = Experiment(workspace=ws, name='Tutorial-Keras-Minst').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
@@ -238,7 +238,7 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy kerasz-modellt képzett és regisztrált Azure Machine Learningon. A modellek üzembe helyezésének megismeréséhez folytassa a modell üzembe helyezésével kapcsolatos cikket.
 

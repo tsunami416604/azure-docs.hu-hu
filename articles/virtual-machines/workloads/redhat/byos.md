@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 6f2c15518a12a99ca1390284165ad2d48156e06a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9a53eb1004d68045781903b71d02c3416f494be2
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968672"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803816"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -209,11 +209,11 @@ A Azure Disk Encryption alkalmazására vonatkozó lépésekért lásd: [Azure D
 
 - Ha az Automation használatával helyez üzembe virtuális gépeket a RHEL BYOS-lemezképből, meg kell adnia a minta parancsaiban láthatóhoz hasonló csomag-paramétereket. Ha például a Terraform-t használja, megadhatja a terv információit egy [csomag blokkban](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Red Hat Cloud Access további információi a [Red Hat nyilvános felhő dokumentációjában](https://access.redhat.com/public-cloud) találhatók
 - A Felhőbeli hozzáférés részletes útmutatóját és a program részleteit a [Red Hat Cloud Access dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)találja.
 - Ha többet szeretne megtudni a Red Hat frissítési infrastruktúráról, tekintse meg az [Azure Red Hat frissítési infrastruktúráját](./redhat-rhui.md)ismertető témakört.
 - Ha többet szeretne megtudni az Azure-beli Red Hat-lemezképekről, tekintse meg a [dokumentációs oldalt](./redhat-images.md).
 - A RHEL összes verziójának Red Hat-támogatási házirendjeivel kapcsolatos információkért tekintse meg a [Red Hat Enterprise Linux életciklusát](https://access.redhat.com/support/policy/updates/errata) ismertető oldalt.
-- A RHEL Gold images-ről további dokumentációt a [Red Hat dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)talál.
+- A RHEL Gold images-ről további dokumentációt a [Red Hat dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access)talál.

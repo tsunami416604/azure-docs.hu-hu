@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522328"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807552"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Az Azure privát végpont kapcsolati problémáinak hibaelhárítása
 
@@ -100,12 +100,28 @@ Tekintse át ezeket a lépéseket annak biztosításához, hogy az összes szok�
     
        ![NSG kimenő szabályai](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
+1. A forrásként szolgáló virtuális gépnek a hálózati adapterek tényleges útvonalai között InterfaceEndpoints kell lennie a magánhálózati végponti IP-címhez következő ugrásként. 
+
+    a. Ha nem tudja megtekinteni a privát végpont útvonalát a forrás virtuális gépen, ellenőrizze, hogy 
+     - A forrásoldali virtuális gép és a magánhálózati végpont ugyanahhoz a VNET tartozik. Ha igen, akkor támogatni kell a támogatást. 
+     - A forrás virtuális gép és a magánhálózati végpont különböző virtuális hálózatok részét képezi, majd keresse meg az IP-kapcsolatot a virtuális hálózatok között. Ha IP-kapcsolat van, és még nem látja az útvonalat, folytassa a támogatással. 
+
 1. Ha a kapcsolat érvényesített eredményekkel rendelkezik, a csatlakozási probléma az alkalmazási rétegben található titkokkal, jogkivonatokkal és jelszavakkal kapcsolatos egyéb szempontokhoz is kapcsolódhat.
-   - Ebben az esetben tekintse át a privát végponthoz társított magánhálózati kapcsolati erőforrás konfigurációját. További információt az [Azure Private link hibaelhárítási útmutatójában](troubleshoot-private-link-connectivity.md)talál.
+   - Ebben az esetben tekintse át a privát végponthoz társított magánhálózati kapcsolati erőforrás konfigurációját. További információ: az [Azure Private link hibaelhárítási útmutatója](troubleshoot-private-link-connectivity.md)
+   
+1. A támogatási jegy előléptetése előtt mindig érdemes leszűkíteni. 
+
+    a. Ha a forrás helyszíni kapcsolattal csatlakozik az Azure-beli privát végponthoz, akkor próbálkozzon a csatlakozással 
+      - Egy másik virtuális gépre a helyszínen, és ellenőrizze, hogy rendelkezik-e IP-kapcsolattal a Virtual Network a helyszínen. 
+      - A Virtual Network egy virtuális gépről a privát végpontra.
+      
+    b. Ha a forrás az Azure-beli, és a magánhálózati végpont különböző Virtual Networkban van, akkor próbálkozzon a kapcsolódással 
+      - Egy másik forrásból származó privát végponthoz. Ezzel elkülönítheti a virtuálisgép-specifikus problémákat. 
+      - Bármely olyan virtuális géphez, amely a privát végpont ugyanazon Virtual Network részét képezi.  
 
 1. Ha a probléma továbbra is megoldatlan, forduljon az [Azure ügyfélszolgálatához](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , és a kapcsolati probléma továbbra is fennáll.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
  * [Hozzon létre egy privát végpontot a frissített alhálózaton (Azure Portal)](./create-private-endpoint-portal.md)
  * [Az Azure Private link hibaelhárítási útmutatója](troubleshoot-private-link-connectivity.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002391"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797196"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -57,7 +57,7 @@ Az alábbi táblázat a korábbi felhasználói profilok technológiáinak előn
 
 A UPD a teljesítményre vonatkozó követelmények kielégítéséhez [közvetlen tárolóhelyek (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) szükséges. A UPD Server Message Block (SMB) protokollt használ. Átmásolja a profilt arra a virtuális gépre, amelyben a felhasználó naplózva van. A UPD és a S2D a Windows rendszerű virtuális asztali környezethez ajánlott megoldás.
 
-#### <a name="cost"></a>Költségek
+#### <a name="cost"></a>Költség
 
 Bár a S2D-fürtök a szükséges teljesítményt érik el, a nagyvállalati ügyfelek számára költséges költség, különösen a kis-és közepes méretű vállalkozások (SMB) ügyfelei számára. Ebben a megoldásban a vállalatok a Storage-lemezekért fizetnek, valamint a megosztások lemezeit használó virtuális gépek költségeit.
 
@@ -87,12 +87,12 @@ Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali k�
 
 - Azure Files Storage-fióknak ugyanabban a régióban kell lennie, mint a munkamenet-gazdagép virtuális gépei.
 - Azure Files engedélyeknek meg kell egyezniük a [követelmények – profil tárolók](/fslogix/fslogix-storage-config-ht)című cikkben ismertetett engedélyekkel.
-- Mindegyik gazdagépnek azonos típusú és méretű virtuális gépről kell kiépíteni, ugyanazon fő rendszerkép alapján.
+- Minden egyes gazdagép-készlet virtuális gépnek azonos típusú és méretű virtuális gépről kell kiépíteni ugyanazon fő lemezkép alapján.
 - Minden egyes gazdagép-készlet virtuális gépnek ugyanabban az erőforráscsoporthoz kell tartoznia, hogy segítse a felügyeletet, a skálázást és a frissítést.
 - Az optimális teljesítmény érdekében a tárolási megoldásnak és a FSLogix-profil tárolójának ugyanabban az adatközpont-helyen kell lennie.
 - A fő lemezképet tartalmazó Storage-fióknak ugyanabban a régióban és előfizetésben kell lennie, ahol a virtuális gépek üzembe lettek kiépítve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő útmutatók segítségével állíthatja be a Windows rendszerű virtuális asztali környezetet.
 

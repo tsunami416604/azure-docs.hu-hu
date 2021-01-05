@@ -4,12 +4,12 @@ description: Valós időben figyelheti a webalkalmazást egyéni metrikákkal, �
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 1b8b4c43c559831810db9b92da6c2743556cd2ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c50f7e57c520321d752d6d46e36c45c615b5e785
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973581"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803578"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő metrikastream: figyelje & diagnosztizálása 1 másodperces késéssel
 
@@ -36,6 +36,7 @@ Az élő metrikák jelenleg a ASP.NET, a ASP.NET Core, a Azure Functions, a Java
    * [ASP.net Core](./asp-net-core.md)– az élő metrikák alapértelmezés szerint engedélyezve vannak.
    * [.Net/.net Core Console/Worker](./worker-service.md)– az élő metrikák alapértelmezés szerint engedélyezve vannak.
    * [.NET-alkalmazások – engedélyezheti a kód használatát](#enable-livemetrics-using-code-for-any-net-application).
+    * A [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) -Live metrikák alapértelmezés szerint engedélyezve vannak.
    * [Node.js](./nodejs.md#live-metrics)
 
 2. A [Azure Portal](https://portal.azure.com)nyissa meg az alkalmazás Application Insights erőforrását, majd nyissa meg élő stream.
@@ -152,7 +153,7 @@ Az élő hírcsatornában található elemek részleteinek megtekintéséhez kat
 
 ## <a name="filter-by-server-instance"></a>Szűrés kiszolgálópéldány szerint
 
-Ha egy adott kiszolgálói szerepkör-példányt szeretne figyelni, akkor a kiszolgáló alapján szűrhet. Ha szűrni szeretné a kiszolgáló nevét, válassza a *kiszolgálók*elemet.
+Ha egy adott kiszolgálói szerepkör-példányt szeretne figyelni, akkor a kiszolgáló alapján szűrhet. Ha szűrni szeretné a kiszolgáló nevét, válassza a *kiszolgálók* elemet.
 
 ![Mintául szolgáló élő hibák](./media/live-stream/filter-by-server.png)
 
@@ -180,7 +181,7 @@ A applicationinsights.config fájlban adja hozzá a AuthenticationApiKey a Quick
 </Add>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET-mag
+### <a name="aspnet-core"></a>ASP.NET Core
 
 [ASP.net Core](./asp-net-core.md) alkalmazások esetében kövesse az alábbi utasításokat.
 
@@ -259,7 +260,7 @@ Az alapszintű mérőszámok közé tartozik a kérelem, a függőség és a kiv
 
 Élő metrikastream eltérő IP-címeket használ, mint a többi Application Insights telemetria. Győződjön meg arról, hogy az [IP-címek](./ip-addresses.md) meg vannak nyitva a tűzfalon. Győződjön meg arról is, hogy a [kimenő portok élő metrikastream](./ip-addresses.md#outgoing-ports) a kiszolgálók tűzfalán vannak megnyitva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Használat figyelése Application Insights](./usage-overview.md)
 * [A diagnosztikai keresés használata](./diagnostic-search.md)

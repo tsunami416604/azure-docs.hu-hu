@@ -1,6 +1,6 @@
 ---
 title: Javaslatok szervizelése Azure Security Centerban | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan javíthatja a javaslatokat a Azure Security Centerban az erőforrások védelme és a biztonsági szabályzatok betartása érdekében.
+description: Ez a cikk azt ismerteti, hogyan lehet reagálni a Azure Security Center ajánlásaira az erőforrások védelme és a biztonsági szabályzatok kielégítése érdekében.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: dabd7e9e2c3c74225efc4611c7ad3523a6c76ba5
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637088"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807990"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Helyreállítási javaslatok az Azure Security Centerben
 
@@ -26,41 +26,41 @@ A javaslatok segítséget nyújtanak az erőforrások jobb biztonságossá téte
 
 ## <a name="remediation-steps"></a>Szervizelési lépések <a name="remediation-steps"></a>
 
-Az összes javaslat áttekintése után döntse el, hogy melyiket kell elsőként kijavítani. Javasoljuk, hogy a [biztonságos pontszám hatása](security-center-recommendations.md#monitor-recommendations) alapján rangsorolja, hogy mi az első.
+Az összes javaslat áttekintése után döntse el, hogy melyiket kell elsőként kijavítani. Javasoljuk, hogy rangsorolja a biztonsági ellenőrzéseket a lehető legnagyobb potenciállal a biztonságos pontszám növeléséhez.
 
-1. A listában kattintson a javaslatra.
+1. Válasszon ki egy javaslatot a listából.
 
 1. Kövesse a **szervizelési lépések** szakaszban található utasításokat. Minden javaslathoz saját utasítások vannak megadva. Az alábbi képernyőképen az alkalmazások konfigurálásához szükséges szervizelési lépések láthatók a HTTPS protokollon keresztüli adatforgalom engedélyezéséhez.
 
-    ![Javaslat részletei](./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png)
+    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png" alt-text="Javaslatok manuális szervizelési lépései" lightbox="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png":::
 
-1. Ha elkészült, egy értesítés jelenik meg, amely tájékoztatja, ha a szervizelés sikeres volt.
+1. Ha elkészült, egy értesítés jelenik meg, amely tájékoztatja, hogy a probléma megoldódott-e.
 
-## <a name="quick-fix-remediation"></a>Gyors javítás szervizelése<a name="one-click"></a>
+## <a name="quick-fix-remediation"></a>Gyors javítás szervizelése
 
-A gyors javítás leegyszerűsíti a szervizelést, és lehetővé teszi a biztonsági pontszám gyors növelését, a környezet biztonságának javítását.
+A szervizelés egyszerűsítése és a környezet biztonságának javítása érdekében (és a biztonságos pontszám növeléséhez) számos javaslat tartalmaz egy gyors javítási lehetőséget.
 
-A gyors javítás lehetővé teszi, hogy gyorsan javítsa a több erőforrásra vonatkozó javaslatait. 
+A gyors javítással gyorsan szervizelheti a több erőforrásra vonatkozó javaslatait.
 
 > [!TIP]
-> A gyors javítás csak bizonyos javaslatok esetében érhető el. A gyors javítási lehetőséggel rendelkező javaslatok megkereséséhez használja a javaslatok listájának tetején található dedikált szűrőt:
+> A gyors javítási megoldások csak bizonyos javaslatok esetében érhetők el. Az elérhető gyors javítással rendelkező javaslatok megkereséséhez használja a **Response Actions** szűrőt a javaslatok listájához:
 > 
 > :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="A javaslatok lista fölötti szűrők használatával megtalálhatja a gyors javítás lehetőséget tartalmazó javaslatokat":::
 
-Gyors javítási szervizelés megvalósítása:
+Gyors javítási megoldás megvalósítása:
 
-1. A **gyors javítást** tartalmazó javaslatok listájáról címkére, kattintson a javaslatra.
+1. A **gyors javítást** tartalmazó javaslatok listájáról címkére, válasszon ki egy javaslatot.
 
-    [![Válassza a gyors javítás lehetőséget.](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
+    [![Válassza a gyors javítás lehetőséget.](media/security-center-remediate-recommendations/security-center-quick-fix-select.png)](media/security-center-remediate-recommendations/security-center-quick-fix-select.png#lightbox)
 
-1. A nem kifogástalan **erőforrások** lapon válassza ki azokat az erőforrásokat, amelyekhez javaslatot kíván végrehajtani, majd kattintson a **szervizelés** elemre.
+1. A nem kifogástalan **erőforrások** lapon válassza ki azokat az erőforrásokat, amelyekhez javaslatot kíván végrehajtani, majd válassza a **szervizelés** lehetőséget.
 
     > [!NOTE]
     > Előfordulhat, hogy a felsorolt erőforrások némelyike le van tiltva, mert nem rendelkezik a megfelelő engedélyekkel a módosításhoz.
 
 1. A megerősítés mezőben olvassa el a szervizelés részleteit és a következményeket.
 
-    ![Gyors javítás](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
+    ![Gyors javítás](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
 
     > [!NOTE]
     > A következmények a javítás után megnyíló **erőforrások szervizelése** ablak szürke mezőjében jelennek **meg.** Felsorolja, hogy milyen változások történnek a gyors javítás szervizelésének folytatásakor.
@@ -79,7 +79,7 @@ A Szervizelési művelet sablon-telepítési vagy REST-javító API-hívást has
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a dokumentumból megtudhatta, hogyan javíthatja az ajánlásokat a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő témaköröket:
+Ebből a dokumentumból megtudhatta, hogyan javíthatja az ajánlásokat a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
 
 * [Biztonsági szabályzatok beállítása Azure Security Centerban](tutorial-security-policy.md) – megtudhatja, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és-erőforráscsoportok számára.
 * A [Azure Security Center biztonsági állapotának monitorozása](security-center-monitoring.md) – megismerheti az Azure-erőforrások állapotának figyelését.

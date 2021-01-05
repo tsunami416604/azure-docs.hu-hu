@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 968ca6fa293e7bcc01bae6f48164c48c19b8267b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: db3eaef240e1f76e4c61a454e104336806666a7c
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501716"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803901"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>A Azure Active Directory szerepköreinek megismerése
 
@@ -44,7 +44,7 @@ Ha külön szerepkör-alapú hozzáférés-vezérlési rendszert választunk. Ez
 
 ## <a name="why-some-azure-ad-roles-are-for-other-services"></a>Bizonyos Azure AD-szerepkörök miért más szolgáltatásokhoz tartoznak
 
-Microsoft 365 számos szerepköralapú hozzáférés-vezérlési rendszerrel rendelkezik, amelyek egymástól függetlenül, a saját szolgáltatási portálján vannak kifejlesztve. Annak érdekében, hogy az Azure AD-portálról Microsoft 365 az identitást, az egyes szolgáltatásokra jellemző beépített szerepköröket is hozzáadta, amelyek mindegyike rendszergazdai hozzáférést biztosít egy Microsoft 365 szolgáltatáshoz. Ilyen például az Exchange-rendszergazdai szerepkör az Azure AD-ben. Ez a szerepkör egyenértékű a [szervezeti felügyeleti szerepkör-csoporttal](/exchange/organization-management-exchange-2013-help) az Exchange szerepköralapú hozzáférés-vezérlési rendszerében, és képes kezelni az Exchange összes aspektusát. Hasonlóképpen hozzáadjuk az Intune rendszergazdai szerepkört, a Teams Administratort, a SharePoint-rendszergazdát és így tovább. A kiszolgáló-specifikus szerepkörök az Azure AD beépített szerepköreinek egyik kategóriája a következő szakaszban.
+Microsoft 365 számos szerepköralapú hozzáférés-vezérlési rendszerrel rendelkezik, amelyek egymástól függetlenül, a saját szolgáltatási portálján vannak kifejlesztve. Annak érdekében, hogy az Azure AD-portálról Microsoft 365 az identitást, az egyes szolgáltatásokra jellemző beépített szerepköröket is hozzáadta, amelyek mindegyike rendszergazdai hozzáférést biztosít egy Microsoft 365 szolgáltatáshoz. Ilyen például az Exchange-rendszergazdai szerepkör az Azure AD-ben. Ez a szerepkör egyenértékű a [szervezeti felügyeleti szerepkör-csoporttal](/exchange/organization-management-exchange-2013-help) az Exchange szerepköralapú hozzáférés-vezérlési rendszerében, és képes kezelni az Exchange összes aspektusát. Hasonlóképpen hozzáadjuk az Intune rendszergazdai szerepkört, a Teams Administratort, a SharePoint-rendszergazdát és így tovább. A szolgáltatás-specifikus szerepkörök az Azure AD beépített szerepköreinek egyik kategóriája a következő szakaszban.
 
 ## <a name="categories-of-azure-ad-roles"></a>Azure AD-szerepkörök kategóriái
 
@@ -58,7 +58,7 @@ Az Azure AD beépített szerepkörei eltérnek a használatuk helyétől, amelye
 
 A következő táblázat segítséget nyújt a szerepkör-kategóriák megismeréséhez. A kategóriák neve tetszőlegesen elnevezhető, és nem jelenti azt, hogy a [dokumentált szerepkörre vonatkozó engedélyeken](permissions-reference.md)kívül más képességeket sem kíván.
 
-Category | Role
+Kategória | Szerepkör
 ---- | ----
 Azure AD-specifikus szerepkörök | alkalmazás-rendszergazda<br>Alkalmazásfejlesztő<br>Hitelesítés rendszergazdája<br>B2C IEF kulcskészlet rendszergazdája<br>B2C IEF házirend rendszergazdája<br>Felhőalkalmazás-rendszergazda<br>Felhőalapú eszköz rendszergazdája<br>Feltételes hozzáférésű rendszergazda<br>Eszközrendszergazdák<br>Directory-olvasók<br>Címtár-szinkronizálási fiókok<br>Címtár-írók<br>Külső azonosító – felhasználói folyamat rendszergazdája<br>Külső azonosító felhasználói flow-attribútumának rendszergazdája<br>Külső identitás-szolgáltató rendszergazdája<br>Csoportok rendszergazdája<br>Vendég meghívója<br>Segélyszolgálat rendszergazdája<br>Hibrid identitás-rendszergazda<br>Licenc rendszergazdája<br>Partneri Tier1-támogatás<br>Partneri szint-támogatás<br>Jelszó-rendszergazda<br>Kiemelt jogosultságú hitelesítés rendszergazdája<br>Kiemelt szerepkörű rendszergazda<br>Jelentések olvasója<br>Felhasználói fiók rendszergazdája
 Szolgáltatások közötti szerepkörök | Vállalati rendszergazda<br>Megfelelőségi rendszergazda<br>Megfelelőségi adatkezelő<br>Globális olvasó<br>Biztonsági rendszergazda<br>Biztonsági operátor<br>Biztonsági olvasó<br>Szolgáltatás-támogatási rendszergazda

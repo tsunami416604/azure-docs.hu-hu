@@ -10,12 +10,13 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aa3329c3d9e241fb8224ecc69199779d53027474
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+adobe-target: true
+ms.openlocfilehash: 0334e259f75440cae25f1e165c0621c85f7c7705
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183141"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804003"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -25,7 +26,7 @@ Ez az útmutató a Java-fejlesztőknek App Service használatával kapcsolatos f
 
 ## <a name="deploying-your-app"></a>Az alkalmazás üzembe helyezése
 
-A [mavenhez készült Azure Web App beépülő modullal](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) üzembe helyezheti a. War vagy a. jar fájlokat. A népszerű ide-val történő üzembe helyezést a [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) vagy [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse)is támogatja.
+A [mavenhez készült Azure Web App beépülő modullal](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) üzembe helyezheti a. War vagy a. jar fájlokat. A népszerű ide-val történő üzembe helyezést a [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) vagy [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse)is támogatja.
 
 Ellenkező esetben a telepítési módszer az archiválás típusától függ:
 
@@ -725,7 +726,7 @@ A fejlesztők letölthetik az Azul Zulu Enterprise JDK éles kiadását helyi fe
 
 Az Azure [által támogatott Azul ZULU JDK-](https://www.azul.com/downloads/azure-only/zulu/) vel kapcsolatos terméktámogatás a Microsofton keresztül érhető el az Azure-hoz való fejlesztéshez, illetve a [Azure stack](https://azure.microsoft.com/overview/azure-stack/) egy [minősített Azure-támogatási csomaggal](https://azure.microsoft.com/support/plans/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Látogasson el az Azure [for Java Developers](/java/azure/) Center webhelyre, ahol megtalálhatja az Azure rövid útmutatók, oktatóanyagok és a Java-dokumentációt.
 

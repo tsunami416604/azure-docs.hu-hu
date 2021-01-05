@@ -4,14 +4,14 @@ description: Ez a cikk áttekintést nyújt az Azure Event Hubs többhelyes és 
 ms.topic: article
 ms.date: 12/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 02057d505308902d780e20e095bc248d1eaa1a74
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7deb6fe04241225f1f97a204cc62b4aefad9f440
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657392"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804037"
 ---
-# <a name="multi-site-and-multi-region-federation"></a>Több hely és többrégiós összevonás
+# <a name="multi-site-and-multi-region-federation"></a>Többhelyes és többrégiós összevonás
 
 Számos kifinomult megoldás esetében ugyanaz az esemény-adatfolyamok elérhetővé válnak több helyen történő felhasználáshoz, vagy az esemény-adatfolyamokat több helyen kell gyűjteni, majd egy adott helyre kell összevonni őket a felhasználáshoz. Az esemény-adatfolyamok bővítésére és csökkentésére is szükség van, vagy az Event Format konverziót is meg kell adni egyetlen régión és megoldáson belül is.
 
@@ -148,9 +148,9 @@ A fenti minták megvalósításához méretezhető és megbízható végrehajtá
 
 A legjobb megvalósítási lehetőség olyan állapot-replikációs alkalmazások esetében, amelyeknek meg kell fontolniuk az események közötti kapcsolatokat, összetett eseményeket kell létrehoznia, eseményeket kell bővíteni, vagy csökkentenie kell az eseményeket, létre kell hoznia az adatok [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) összesítéseit
 
-A Azure Stream Analyticsban olyan [feladatokat hoz létre](../stream-analytics/stream-analytics-quick-create-portal.md) , amelyek integrálják a [bemeneteket](../stream-analytics/stream-analytics-add-inputs.md) és [kimeneteket](../stream-analytics/stream-analytics-define-outputs.md) , és integrálják az adatokat a bemeneteken keresztül a kimeneteken elérhetővé tett eredményeket eredményező [lekérdezésekkel](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md) .
+A Azure Stream Analyticsban olyan [feladatokat hoz létre](../stream-analytics/stream-analytics-quick-create-portal.md) , amelyek integrálják a [bemeneteket](../stream-analytics/stream-analytics-add-inputs.md) és [kimeneteket](../stream-analytics/stream-analytics-define-outputs.md) , és integrálják az adatokat a bemeneteken keresztül a kimeneteken elérhetővé tett eredményeket eredményező [lekérdezésekkel](/stream-analytics-query/stream-analytics-query-language-reference) .
 
-A lekérdezések az SQL- [lekérdezés nyelvén](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md) alapulnak, és az adatátviteli adatokat egyszerűen szűrheti, rendezheti, összesítheti és csatlakoztathatja egy adott időszakban. Ezt az SQL nyelvet a [JavaScript](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) és a [C# felhasználó által definiált függvények (UDF)](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md)használatával is kiterjesztheti. Az összesítési műveletek egyszerű nyelvi szerkezeteken és/vagy konfigurációkon keresztül történő végrehajtásával egyszerűen beállíthatja az események rendezésének beállításait és időtartamát a Windowsban.
+A lekérdezések az SQL- [lekérdezés nyelvén](/stream-analytics-query/stream-analytics-query-language-reference) alapulnak, és az adatátviteli adatokat egyszerűen szűrheti, rendezheti, összesítheti és csatlakoztathatja egy adott időszakban. Ezt az SQL nyelvet a [JavaScript](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) és a [C# felhasználó által definiált függvények (UDF)](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md)használatával is kiterjesztheti. Az összesítési műveletek egyszerű nyelvi szerkezeteken és/vagy konfigurációkon keresztül történő végrehajtásával egyszerűen beállíthatja az események rendezésének beállításait és időtartamát a Windowsban.
 
 Minden feladathoz tartozik egy vagy több kimenet az átalakított adatokhoz, és szabályozható, hogy mi történik az elemzett információkra adott válaszként. Megteheti például a következőt:
 
@@ -191,7 +191,7 @@ Ebben a cikkben számos összevonási mintát ismertetünk, és kifejtjük Azure
 
 Ezután érdemes elolvasnia, hogyan állíthat be egy replikátor-alkalmazást Azure Stream Analytics vagy Azure Functions, majd hogyan replikálhatja az esemény-folyamatokat a Event Hubs és a különböző egyéb esemény-és üzenetkezelő rendszerek között:
 
-- [Esemény-replikációs feladat mintái][10]
+- [Eseményreplikációs feladatminták][10]
 - [Az adatfeldolgozás Azure Stream Analytics][9]
 - [Event replikátor alkalmazások Azure Functions][1]
 - [Események replikálása Event Hubs között][2]

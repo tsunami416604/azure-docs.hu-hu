@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528227"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797275"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Erőforrások áthelyezése régiók között (erőforráscsoport)
 
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan helyezhet át egy adott erőforráscsoport
 - *Tulajdonosi* hozzáférésre van szüksége azon az előfizetésen, amelyben az áthelyezni kívánt erőforrások találhatók.
     - Amikor először ad hozzá egy erőforrást egy adott forrás-és cél-hozzárendeléshez egy Azure-előfizetésben, az erőforrás-mozgató létrehoz egy [rendszerhez rendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (korábbi nevén felügyelt szolgáltatás azonosítása (MSI)), amelyet az előfizetés megbízhatónak tekint.
     - Az identitás létrehozásához, valamint a szükséges szerepkör (közreműködő vagy felhasználói hozzáférés rendszergazdája a forrás-előfizetésben) való hozzárendeléséhez az erőforrások hozzáadásához használt fióknak *tulajdonosi* engedélyekkel kell rendelkeznie az előfizetésben. [További](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) információ az Azure-szerepkörökről.
-- Az előfizetéshez elegendő kvóta szükséges ahhoz, hogy a forrás erőforrásokat létrehozza a célként megadott régióban. Ha nem, igényeljen további korlátozásokat. [További információk](../azure-resource-manager/management/azure-subscription-service-limits.md).
+- Az előfizetéshez elegendő kvóta szükséges ahhoz, hogy a forrás erőforrásokat létrehozza a célként megadott régióban. Ha nem, igényeljen további korlátozásokat. [További információ](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Ellenőrizze, hogy a virtuális gépeket áthelyező cél régióhoz tartozó díjszabást és díjakat kell-e használni. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával segítséget nyújthat.
 - Győződjön meg arról, hogy az áthelyezni kívánt erőforrások támogatottak az erőforrás-mozgató:
     - Azure-beli virtuális gépek és kapcsolódó lemezek
@@ -58,9 +58,12 @@ Ebből a cikkből megtudhatja, hogyan helyezhet át egy adott erőforráscsoport
 
 Válassza ki az áthelyezni kívánt erőforrásokat. Erőforrásokat helyez át egy adott régióba a forrás régió előfizetésében. Ha módosítani szeretné az előfizetést, ezt az erőforrások áthelyezése után teheti meg.
 
+> [!NOTE]
+>  Ne válassza a társított lemezek lehetőséget, vagy a művelet sikertelen lesz. A társított lemezek automatikusan bekerülnek a virtuális gépekbe.
+
 1. A Azure Portal nyissa meg a megfelelő erőforráscsoportot.
 2. Az erőforráscsoport lapon válassza ki az áthelyezni kívánt erőforrásokat.
-3. Válassza **Move**  >  **az áthelyezés másik régióba** lehetőséget.
+3. Válassza   >  **az áthelyezés másik régióba** lehetőséget.
 
     ![Az erőforrások másik régióba való áthelyezésének kiválasztása](./media/move-region-within-resource-group/select-move-region.png)
     
@@ -264,7 +267,7 @@ A következőképpen törölheti:
     - A cache Storage-fiók neve ```resmovecache<guid>```
     - A tár neve: ```ResourceMove-<sourceregion>-<target-region>-GUID``` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 [További](about-move-process.md) információ az áthelyezési folyamatról.

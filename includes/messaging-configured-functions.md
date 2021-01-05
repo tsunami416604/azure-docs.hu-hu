@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 5070d1dc19995b635ebff6b98fec07e2b7d9fc70
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9cc19548f0b969421974afe3e274fc5334590cb0
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663663"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805653"
 ---
 Azure Functions lehetővé teszi olyan konfigurációs replikációs feladatok létrehozását, amelyek egy előre elkészített belépési pontra támaszkodnak. A [Azure functions konfiguráció-alapú replikációs mintái](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) bemutatják, hogyan használhatja fel az [előre elkészített segítőket](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) a saját kódjában, vagy elkerülheti a kód teljes kezelését, és csak a konfigurációt használja.
 
@@ -218,9 +218,9 @@ A következő táblázat a források és a célok kombinációinak helyes érté
 
 ### <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 
-Az újrapróbálkozási szabályzat konfigurálásához tekintse meg az újrapróbálkozások [Azure functions dokumentációját](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md) . Az ebben a tárházban lévő projektekben kiválasztott házirend-beállítások egy exponenciális leállítási stratégiát állítanak be az újrapróbálkozási időközökkel 5 másodperc és 5 perc között, és az adatvesztés elkerülése érdekében az újrapróbálkozások száma végtelen.
+Az újrapróbálkozási szabályzat konfigurálásához tekintse meg az újrapróbálkozások [Azure functions dokumentációját](/azure/azure-functions/functions-bindings-error-pages) . Az ebben a tárházban lévő projektekben kiválasztott házirend-beállítások egy exponenciális leállítási stratégiát állítanak be az újrapróbálkozási időközökkel 5 másodperc és 5 perc között, és az adatvesztés elkerülése érdekében az újrapróbálkozások száma végtelen.
 
-Service Bus esetében tekintse át az eseményindítók [használatának az eseményindító rugalmassága](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) érdekében című szakaszt az eseményindítók interakciójának és a várólista számára meghatározott maximális kézbesítések számának megismeréséhez.
+Service Bus esetében tekintse át az eseményindítók [használatának az eseményindító rugalmassága](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) érdekében című szakaszt az eseményindítók interakciójának és a várólista számára meghatározott maximális kézbesítések számának megismeréséhez.
 
 ### <a name="build-deploy-and-configure"></a>Létrehozás, üzembe helyezés és konfigurálás
 

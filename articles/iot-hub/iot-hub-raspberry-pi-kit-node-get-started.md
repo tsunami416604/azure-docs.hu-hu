@@ -13,12 +13,12 @@ ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
-ms.openlocfilehash: 1d6a51e2e9c052be0c59435b287c5fdde459f55d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334191"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802524"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Málna PI összekötése az Azure IoT Hub (Node.js)
 
@@ -81,7 +81,7 @@ A következő elemek választhatók:
 > [!NOTE]
 > Ha nem rendelkezik a választható elemekkel, szimulált érzékelő adatokat használhat.
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -97,7 +97,7 @@ Készítse elő a microSD-kártyát a Raspbian-rendszerkép telepítéséhez.
 
 1. Töltse le a Raspbian.
 
-   a. [Raspbian Buster és Desktop](https://www.raspberrypi.org/downloads/raspbian/) (a. zip fájl).
+   a. [Raspbian Buster és Desktop](https://www.raspberrypi.org/software/) (a. zip fájl).
 
    b. Bontsa ki a Raspbian-rendszerképet a számítógép egyik mappájába.
 
@@ -125,7 +125,7 @@ Készítse elő a microSD-kártyát a Raspbian-rendszerkép telepítéséhez.
 
    ![A Raspbian beállítások menü](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
-4. Az **illesztőfelületek** lapon állítsa az **I2C** és az **SSH** lehetőséget az **engedélyezéshez**, majd kattintson **az OK**gombra. Ha nem rendelkezik fizikai érzékelőkkel, és szimulált érzékelőt szeretne használni, ezt a lépést nem kötelező megadni.
+4. Az **illesztőfelületek** lapon állítsa az **I2C** és az **SSH** lehetőséget az **engedélyezéshez**, majd kattintson **az OK** gombra. Ha nem rendelkezik fizikai érzékelőkkel, és szimulált érzékelőt szeretne használni, ezt a lépést nem kötelező megadni.
 
    ![Az I2C és az SSH engedélyezése a málna PI-ben](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -257,7 +257,7 @@ Az IoT hub által az eszközről fogadott üzenetek figyelésének egyik módja 
 
 Az eszköz által elküldhető adatfeldolgozás további módjairól folytassa a következő szakasszal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy minta alkalmazást futtatott az érzékelő adatainak összegyűjtéséhez és az IoT hubhoz való elküldéséhez.
 

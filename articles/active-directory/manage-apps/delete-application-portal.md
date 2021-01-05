@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 12/28/2020
 ms.author: kenwith
-ms.openlocfilehash: 677c9c0123c174fdf2cf8e94f9c8110656d21306
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e2b8bd47f7d124562a38413d36b849d1f7efacee
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649398"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802762"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás törlése a Azure Active Directory (Azure AD) bérlőből
 
@@ -51,8 +51,8 @@ Alkalmazás törlése az Azure AD-bérlőből:
 
 Ha elkészült ezzel a rövid útmutatóval, érdemes törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlése ebben a rövid útmutatóban szerepelt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Elvégezte a gyors üzembe helyezési sorozatot! Következő lépésként olvassa el az App Management ajánlott eljárásait ismertető témakört.
+Elvégezte a gyors üzembe helyezési sorozatot! Következő lépésként Ismerkedjen meg az egyszeri Sign-Onsal (SSO), lásd: [Mi az SSO?](what-is-single-sign-on.md) Vagy olvassa el az App Management ajánlott eljárásait.
 > [!div class="nextstepaction"]
 > [Alkalmazások kezelése – ajánlott eljárások](application-management-fundamentals.md)

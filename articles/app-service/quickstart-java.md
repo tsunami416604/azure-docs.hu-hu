@@ -10,12 +10,13 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3c5a04bd14bdcbf250908db78c622b963f191d91
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+adobe-target: true
+ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333086"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802473"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service
 
@@ -66,9 +67,9 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>A Maven beépülő moduljának konfigurálása
 
-A Azure App Service üzembe helyezési folyamata automatikusan az Azure CLI-vel fogja használni az Azure-beli hitelesítő adatait. Ha az Azure CLI nincs helyileg telepítve, akkor a Maven beépülő modul a OAuth vagy az eszköz bejelentkezésével fog hitelesíteni. További információ: [hitelesítés a Maven beépülő](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)modulokkal.
+Az Azure App Service-ben történő üzembe helyezés folyamata automatikusan az Ön Azure CLI-ből származó Azure-beli hitelesítő adatait fogja használni. Ha az Azure CLI nincs helyileg telepítve, akkor a Maven beépülő modul a OAuth vagy az eszköz bejelentkezésével fog hitelesíteni. További információ: [hitelesítés a Maven beépülő](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)modulokkal.
 
-Futtassa az alábbi Maven-parancsot az üzemelő példány konfigurálásához. Ez a parancs segítséget nyújt a App Service operációs rendszer, a Java-verzió és a Tomcat-verzió beállításához.
+Futtassa az alábbi Maven-parancsot az üzembe helyezés konfigurálásához. Ez a parancs segítséget nyújt a App Service operációs rendszer, a Java-verzió és a Tomcat-verzió beállításához.
 
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
@@ -78,12 +79,12 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
+1. Amikor a rendszer a **Subscription** (előfizetés) értékre kérdez rá, adja meg a helyes `Subscription` értéket a sor elején álló szám beírásával.
 1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, válassza a **Windows** lehetőséget a beírásával `3` .
 1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
-1. Használja az alapértelmezett Java-verziót ( **Java 8** ) az ENTER billentyű lenyomásával.
-1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
+1. Használja az alapértelmezett Java-verziót ( **Java 8**) az ENTER billentyű lenyomásával.
+1. Végül az utolsó kérdésnél hagyja jóvá a beállításokat az Enter billentyűvel.
 
     Az összefoglalás kimenete az alább látható kódrészlethez hasonlóan fog kinézni.
 
@@ -110,13 +111,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
+1. Amikor a rendszer a **Subscription** (előfizetés) értékre kérdez rá, adja meg a helyes `Subscription` értéket a sor elején álló szám beírásával.
 1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, válassza a **Windows** lehetőséget a beírásával `3` .
 1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
-1. Használja az alapértelmezett Java-verziót ( **Java 8** ) az ENTER billentyű lenyomásával.
+1. Használja az alapértelmezett Java-verziót ( **Java 8**) az ENTER billentyű lenyomásával.
 1. A **Tomcat 8,5** alapértelmezett webes tárolót az ENTER billentyű lenyomásával használhatja.
-1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
+1. Végül az utolsó kérdésnél hagyja jóvá a beállításokat az Enter billentyűvel.
 
     Az összefoglalás kimenete az alább látható kódrészlethez hasonlóan fog kinézni.
 
@@ -148,12 +149,12 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
+1. Amikor a rendszer a **Subscription** (előfizetés) értékre kérdez rá, adja meg a helyes `Subscription` értéket a sor elején álló szám beírásával.
 1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, az ENTER billentyű lenyomásával válassza a **Linux** lehetőséget.
 1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
-1. Használja az alapértelmezett Java-verziót ( **Java 8** ) az ENTER billentyű lenyomásával.
-1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
+1. Használja az alapértelmezett Java-verziót ( **Java 8**) az ENTER billentyű lenyomásával.
+1. Végül az utolsó kérdésnél hagyja jóvá a beállításokat az Enter billentyűvel.
 
     ```
     Please confirm webapp properties
@@ -177,13 +178,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Ha a rendszer megkérdezi az **előfizetést** , válassza ki a megfelelő értéket, ha `Subscription` beírja a kívánt számú nyomtatást a sor elején.
+1. Amikor a rendszer a **Subscription** (előfizetés) értékre kérdez rá, adja meg a helyes `Subscription` értéket a sor elején álló szám beírásával.
 1. Ha a rendszer rákérdez a **webalkalmazás** lehetőségre, fogadja el a defaut lehetőséget az `<create>` ENTER billentyű lenyomásával vagy egy meglévő alkalmazás kiválasztásával.
 1. Ha a rendszer az **operációs rendszer** beállítását kéri, az ENTER billentyű lenyomásával válassza a **Linux** lehetőséget.
 1. Ha a rendszer a **díjszabási** csomaggal kéri, válassza a **B2** lehetőséget a beírásával `2` .
-1. Használja az alapértelmezett Java-verziót ( **Java 8** ) az ENTER billentyű lenyomásával.
+1. Használja az alapértelmezett Java-verziót ( **Java 8**) az ENTER billentyű lenyomásával.
 1. A **Tomcat 8,5** alapértelmezett webes tárolót az ENTER billentyű lenyomásával használhatja.
-1. Végül nyomja le az ENTER billentyűt az utolsó üzenetben, hogy erősítse meg a beállításokat.
+1. Végül az utolsó kérdésnél hagyja jóvá a beállításokat az Enter billentyűvel.
 
     ```
     Please confirm webapp properties
@@ -217,7 +218,7 @@ Tulajdonság | Kötelező | Leírás | Verzió
 `<subscriptionId>` | hamis | Határozza meg az előfizetés azonosítóját. | 0.1.0 +
 `<resourceGroup>` | true | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
 `<appName>` | true | A webalkalmazás neve. | 0.1.0 +
-`<region>` | true | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) szakaszban található összes érvényes régió. | 0.1.0 +
+`<region>` | true | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) szakaszban található összes érvényes régió. | 0.1.0 +
 `<pricingTier>` | hamis | A webalkalmazás díjszabási szintje. Az alapértelmezett érték az éles számítási feladatokhoz **P1V2** , a **B2** pedig a javasolt minimum a Java dev/testhez. [További információ](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 +
 `<runtime>` | true | A futásidejű környezet konfigurációja a részleteket [itt](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)tekintheti meg. | 0.1.0 +
 `<deployment>` | true | A központi telepítés konfigurálásával [itt](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)láthatja a részleteket. | 0.1.0 +
@@ -241,7 +242,7 @@ Ezután az alábbi paranccsal telepítheti a Java-alkalmazást az Azure-ba.
 mvn package azure-webapp:deploy
 ```
 
-Az üzembe helyezés befejezése után az alkalmazás készen áll `http://<appName>.azurewebsites.net/` ( `http://helloworld-1590394316693.azurewebsites.net` a bemutatóban). Nyissa meg az URL-címet a helyi webböngészővel, és tekintse meg a következőt:
+Az üzembe helyezés befejezése után az alkalmazás készen áll a `http://<appName>.azurewebsites.net/` (a demóban `http://helloworld-1590394316693.azurewebsites.net`) címen. Nyissa meg az URL-címet a helyi webböngészővel, és tekintse meg a következőt:
 
 ![Azure App Service futó minta alkalmazás](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -252,7 +253,7 @@ Az üzembe helyezés befejezése után az alkalmazás készen áll `http://<appN
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha nem várható, hogy a jövőben szüksége lenne ezekre az erőforrásokra, törölje az erőforráscsoportot a portálról, vagy futtassa a következő parancsot a Cloud Shellban:
+Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje az erőforráscsoportot a portálon, vagy a Cloud Shellben kiadott alábbi paranccsal:
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes

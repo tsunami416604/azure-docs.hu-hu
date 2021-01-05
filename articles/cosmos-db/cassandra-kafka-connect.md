@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: abhishgu
 ms.reviewer: abhishgu
-ms.openlocfilehash: a233845e8f19cc44cd9d00a0392b1341db297fd6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 25972ba2bb30c39838c4822a42af292e8d8b1dba
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632751"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803629"
 ---
 # <a name="ingest-data-from-apache-kafka-into-azure-cosmos-db-cassandra-api-using-kafka-connect"></a>Adatok beolvasása Apache Kafkaból Azure Cosmos DB Cassandra API a Kafka-kapcsolat használatával
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -22,7 +22,7 @@ A meglévő Cassandra-alkalmazások könnyen dolgozhatnak a [Azure Cosmos DB Cas
 
 Apache Kafkaban (témakörökben) lévő adatmennyiség csak más alkalmazások általi felhasználás vagy más rendszerbe való betöltés esetén hasznos. A [Kafka producer/fogyasztói](https://kafka.apache.org/documentation/#api) API-k segítségével létrehozhat egy megoldást, amely az [Ön által választott nyelven és ügyfél-SDK-](https://cwiki.apache.org/confluence/display/KAFKA/Clients)val lehetséges. A Kafka-kapcsolat alternatív megoldást kínál. Ez egy platform, amely a Apache Kafka és más rendszerek közötti adatátvitelt méretezhető és megbízható módon biztosítja. Mivel a Kafka-csatlakozás támogatja az olyan polcos összekötőket, mint a Cassandra, nem kell egyéni kódot írnia a Kafka Azure Cosmos DB Cassandra API való integrálásához. 
 
-Ebben a cikkben a nyílt forráskódú [DataStax Apache Kafka-összekötőt](https://docs.datastax.com/kafka/doc/kafka/kafkaIntro.html)fogjuk használni, amely a Kafka-kapcsolati keretrendszeren belül működik, hogy egy Kafka-témakörből származó rekordokat egy vagy több Cassandra-tábla soraiba foglalja. A példa egy újrafelhasználható telepítőt biztosít a Docker-összeállítás használatával. Ez elég kényelmes, mivel lehetővé teszi az összes szükséges összetevő helyi indítását egyetlen paranccsal. Ezek az összetevők többek között a Kafka, a Zookeeper, a Kafka-összekötő és a Sample adatgenerátor-alkalmazás.
+Ebben a cikkben a nyílt forráskódú [DataStax Apache Kafka-összekötőt](https://docs.datastax.com/en/kafka/doc/kafka/kafkaIntro.html)fogjuk használni, amely a Kafka-kapcsolati keretrendszeren belül működik, hogy egy Kafka-témakörből származó rekordokat egy vagy több Cassandra-tábla soraiba foglalja. A példa egy újrafelhasználható telepítőt biztosít a Docker-összeállítás használatával. Ez elég kényelmes, mivel lehetővé teszi az összes szükséges összetevő helyi indítását egyetlen paranccsal. Ezek az összetevők többek között a Kafka, a Zookeeper, a Kafka-összekötő és a Sample adatgenerátor-alkalmazás.
 
 Itt látható az összetevők és a szolgáltatási definíciók részletezése – a GitHub-tárház teljes `docker-compose` fájljára [](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/docker-compose.yaml)hivatkozhat.
 
@@ -187,7 +187,7 @@ select * from weather.data_by_station where station_id IN ('station-2', 'station
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md) 
 * [A partíciós kulcs ajánlott eljárásai](partitioning-overview.md#choose-partitionkey)

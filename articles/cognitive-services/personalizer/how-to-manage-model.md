@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: f82adad5273f1c5559cbeb1924f59e57c863f6b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e954eab9da5dfc638f93a7c4e55c675c4f2ac9
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303454"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797247"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Modell-és tanulási beállítások kezelése
 
@@ -18,13 +18,13 @@ A gép által megtanult modell-és tanulási beállítások a saját verzióköv
 
 ## <a name="export-the-personalizer-model"></a>A személyre szabott modell exportálása
 
-A **modell-és tanulási beállítások**erőforrás-kezelés szakaszában tekintse át a modell létrehozásának és utolsó frissítésének dátumát, és exportálja az aktuális modellt. A Azure Portal vagy a személyre szabható API-k használatával archiválhatja a modelleket archiválás céljából.
+A **modell-és tanulási beállítások** erőforrás-kezelés szakaszában tekintse át a modell létrehozásának és utolsó frissítésének dátumát, és exportálja az aktuális modellt. A Azure Portal vagy a személyre szabható API-k használatával archiválhatja a modelleket archiválás céljából.
 
 ![Aktuális személyre szabott modell exportálása](media/settings/export-current-personalizer-model.png)
 
 ## <a name="clear-data-for-your-learning-loop"></a>Az adatgyűjtési hurokhoz tartozó adattörlés
 
-1. A Azure Portal a személyre szabott erőforráshoz a **modell és tanulás beállításai** lapon válassza az **adattörlés**lehetőséget.
+1. A Azure Portal a személyre szabott erőforráshoz a **modell és tanulás beállításai** lapon válassza az **adattörlés** lehetőséget.
 1. Az összes érték törléséhez és a tanulási hurok eredeti állapotba való visszaállításához jelölje be a 3 jelölőnégyzetet.
 
     ![A Azure Portalban törölje a jelet az adatok személyre szabása erőforrásból elemre.](./media/settings/clear-data-from-personalizer-resource.png)
@@ -53,6 +53,6 @@ A képzési [szabályzat](concept-active-learning.md#understand-learning-policy-
 1. Válassza ki a **modell-és tanulási beállításokat** az **Erőforrás-kezelés** szakaszban.
 1. A **tanulási beállítások importálása** gombra kattintva válassza a **tanulási Beállítások exportálása** gombot. Ezzel menti a `json` fájlt a helyi számítógépre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Útmutató a képzési szabályzatok kezeléséhez](how-to-manage-model.md)
+[A tanulási hurok elemzése offline kiértékeléssel](how-to-offline-evaluation.md)

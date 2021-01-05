@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: wamota
-ms.openlocfilehash: fcc44bb1c8017d63ee7926a31177aebaafd832fc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 05f3b5b461e42c29a12f126928f69069b45007d3
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336377"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797269"
 ---
 # <a name="what-is-azure-orbital-preview"></a>Mi az az Azure Orbital? (Előzetes verzió)
 
@@ -21,11 +21,11 @@ Az Azure orbitális egy teljes körűen felügyelt, felhőalapú szolgáltatás,
 [:::image type="content" source="./media/azure-orbital-overview/orbital-all-ignite-link.png" alt-text="Azure orbitális Ignite – videó indítása":::](https://aka.ms/orbitalatignite) 
  [Tekintse meg az Azure orbitális bejelentését az Ignite-on az Azure YouTube-csatornán](https://aka.ms/orbitalatignite)
 
-Az Azure orbiting egy partneri ökoszisztéma kiépítését, amely lehetővé teszi az ügyfeleknek, hogy az integrált Felhőbeli modemeken kívül a partneri földterületeket is használják az orbitális állomásokon, valamint a partneri Felhőbeli modemeket is.   A partnerekkel együttműködve az iparági vezetők, például a KSAT, más földi állomások/teleport-szolgáltatók, például a ViaSat Real-Time Earth (RTE valós idejű föld) és az USA elektrodinamika Inc. is elérhetők. Ez a partnerség a iskolatáska Telecom-szolgáltatók, például a SES és más földi állomások/teleport-szolgáltatók, a ViaSat valós idejű föld (RTE) és az USA elektrodinamika Inc. számára is elérhetővé teszi, így példátlan kapcsolódást kínálhat, például a LEO/MEO-flotta globális elérését, illetve a kommunikációs konstellációk közvetlen Azure-hozzáférését, illetve a LEO/MEO-flottához való globális A következő lépésekkel virtualizáljuk az RF-jelet és a partnert vezetők – például Kratos és Amergint – használatával, hogy a modemek a piactéren legyenek elérhetők. Célunk, hogy ügyfeleinknek nagyobb és nagy teljesítményű rendszereket építsünk ki a sokoldalú, skálázható és rugalmasan méretezhető, nagyteljesítményű, rugalmasan méretezhető, magas szintű helyszíni szolgáltatási platformmal.
+Az Azure orbiting egy partneri ökoszisztéma kiépítését, amely lehetővé teszi az ügyfeleknek, hogy az integrált Felhőbeli modemeken kívül a partneri földterületeket is használják az orbitális állomásokon, valamint a partneri Felhőbeli modemeket is. Az Azure orbitális az iparági vezetők, például a KSAT, valamint a más földi állomások/teleport-szolgáltatók, például a ViaSat valós idejű föld (RTE) és az USA elektrodinamika Inc. közötti együttműködésre összpontosít. Ez a partnerség a iskolatáska Telecom-szolgáltatók, például a SES és más földi állomások/teleport-szolgáltatók, a ViaSat valós idejű föld (RTE) és az USA elektrodinamika Inc. számára is elérhetővé teszi, így példátlan kapcsolódást kínálhat, például a LEO/MEO-flotta globális elérését, illetve a kommunikációs konstellációk közvetlen Azure-hozzáférését, illetve a LEO/MEO-flottához való globális A következő lépésekkel virtualizáljuk az RF-jelet és a partnert vezetők – például Kratos és Amergint – használatával, hogy a modemek a piactéren legyenek elérhetők. Célunk, hogy ügyfeleinknek nagyobb és nagy teljesítményű rendszereket építsünk ki a sokoldalú, skálázható és rugalmasan méretezhető, nagyteljesítményű, rugalmasan méretezhető, magas szintű helyszíni szolgáltatási platformmal.
 
 Az Azure orbitális több felhasználási esetet tesz lehetővé ügyfeleink számára, beleértve a föld megfigyelését és a globális kommunikációt. Olyan platformot is biztosít, amely lehetővé teszi a meglévő földterületek digitális átalakítását a virtualizáció használatával. Közvetlen hozzáférést biztosít az összes Azure-szolgáltatáshoz, az Azure globális infrastruktúrához, a piactérhez és a világszínvonalú partner-ökoszisztémához a szolgáltatáson keresztül.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Azure orbitális Ignite – videó indítása":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Az Azure orbitális áttekintése":::
 
 **Az Azure orbitális-felhasználók számára az érték-kiosztások a következők:**
 
@@ -49,13 +49,13 @@ Az előzetes verzióval kapcsolatos további információkért, vagy az előzete
 
 ## <a name="earth-observation"></a><a name="earth-observation"></a>Föld megfigyelése
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure orbitális Ignite – videó indítása" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure orbitális a Föld megfigyelési adatfolyam" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
 
 Az Azure orbitális használatával a kapcsolatait a downlink és a hasznos adattartalomra vonatkozó, utólagos elszámolású ügyfelek ütemezhetik. Használja az ütemezett hozzáférési időpontokat az adatok műholdról való betöltéséhez, a műhold állapotának és állapotának figyeléséhez, illetve a parancsok műholdra küldéséhez. A rendszer a bejövő adatait a saját virtuális hálózatának továbbítja, amely lehetővé teszi, hogy az Azure-ban feldolgozza vagy tárolja azt.
 
 Mivel a szolgáltatás teljes mértékben digitalizálva van, az Kratos és a Amergint szoftveres modem a moduláció/demoduláció és a kódolási/dekódolási függvények végrehajtásához használható az adatok helyreállításához. Lehetősége van megvásárolni a piactéren, vagy az Ön számára, hogy Ön is kezelje ezt a részt. Emellett integrálja a Kubos-nal, hogy teljes körűen kihasználja a flotta-és telemetria,-követési, &-vezérlési (TT-&C) függvények felügyeletéhez szükséges teljes körű megoldást. Az Azure-erőforrások és-eszközkészletek segítségével implementálhatja az Azure-beli számítási feladatokat a hasznos adatoknak a végső ajánlatokban való kezeléséhez.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Azure orbitális Ignite – videó indítása":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Az Azure orbitális for Earth megfigyelési ütemezése":::
 
 ### <a name="scheduling-contacts"></a><a name="scheduling-contacts"></a>Névjegyek ütemezése
 
@@ -71,7 +71,7 @@ Az előzetes verzióval kapcsolatos további információkért, vagy az előzete
 
 ## <a name="global-communication"></a><a name="global-communication"></a>Globális kommunikáció
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure orbitális Ignite – videó indítása":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure orbitális globális kommunikációs Useflow":::
 
 Azok a műholdas szolgáltatók, akik globális kommunikációs képességeket biztosítanak ügyfeleiknek, az Azure orbitális szolgáltatással az Azure-adatközpontokban vagy az Azure-hálózat peremén is használhatják az új földterületeket Ezután a globális Microsoft-hálózatra irányítják a forgalmat, és az Azure-hálózat szélétől kihasználhatják az internetes kitörést, hogy internetes szolgáltatásokat és más felügyelt szolgáltatásokat nyújtsanak ügyfeleiknek.
 
@@ -85,7 +85,7 @@ A saját földterületek kiépítése mellett az Azure orbitális lehetővé tes
 
 A terepi állomás vagy a teleport-szolgáltatók az Azure orbitális partnerrel csatlakozhatnak a terepi állomások digitális átalakításához. Ennek köszönhetően az ügyfelek ezekkel a földterületekkel ütemezhetik a névjegyeket a szatellitekre, miközben a platform és az orbitális partnerek által kínált összes szoftveres rádió-feldolgozási és adatfeldolgozási képességet kihasználják a piactéren. A szolgáltatás szorosan integrálva van a Felhőbeli számítási feladatokkal, valamint a harmadik féltől származó megoldások vibráló ökoszisztémáját a piactéren, például a modemeken, az erőforrás-kezelésen és a Mission Control servicesen keresztül. Az Azure-beli kis késleltetésű és magas megbízhatóságú globális száloptikai hálózat is az összes adattal kihasználható. Úgy véljük, hogy a lehető legszélesebb körű lefedettségi & rugalmasságot biztosítunk ügyfeleinknek, hogy a legmagasabb fokú gyorsasággal és megbízhatósággal kommunikáljanak a műholdakkal.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Azure orbitális Ignite – videó indítása":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Azure orbitális digitális átalakításhoz":::
 
 Az előzetes verzióval kapcsolatos további információkért, vagy az előzetes verzióban való részvételhez kérjük, töltse ki a kapcsolatfelvételi űrlapot [itt](https://aka.ms/iaminterested), vagy küldjön e-mailt a következő címre: [MSAzureOrbital@microsoft.com](mailto:MSAzureOrbital@microsoft.com) .
 
@@ -93,7 +93,7 @@ Az előzetes verzióval kapcsolatos további információkért, vagy az előzete
 
 Ahogy haladunk a területünk felé, további partnereket fogunk felvenni az ökoszisztémába, hogy ügyfeleink könnyebben tudják elérni az Azure orbitális szolgáltatását. Az Azure orbitális kialakítása során partnereink által vezetett megközelítésünk lesz. Célunk, hogy a partnereink vibráló ökoszisztémáját közösen hozzuk létre a partnereink és ügyfeleink számára is. Gondoljon rá, mint egy Coral Reef!
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure orbitális Ignite – videó indítása":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure orbitális-partnerek":::
 
 A következő szakaszokban a partnerek kategóriái és az Azure orbitális-partnerek listája látható, amelyek már részei az orbitális ökoszisztémának:
 
@@ -113,7 +113,7 @@ A SES globális gerinc-hálózatot használ a forgalom globális átirányítás
 
 ### <a name="ttc-solution-partner"></a>TT&C megoldási partner
 
-A [Kubos](https://www.kubos.com/) -szel együttműködve a főbb Tom-t, a felhőalapú Mission Control szoftvert, az Azure Marketplace-t az Azure orbitális ügyfelei számára.
+A [Kubos](https://www.kubos.com/) -szel együttműködve a főbb Tom-t, a Cloud-Based-ellenőrzési szoftvert, az Azure Marketplace-t az Azure-beli orbitális ügyfeleknek ajánljuk.
 
 ## <a name="next-steps"></a>További lépések
 

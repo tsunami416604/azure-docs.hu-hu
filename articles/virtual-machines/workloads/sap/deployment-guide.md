@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: ed30c271e4c2458a33784cbcfc682001b542f2b6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d57512d631685f1f8da7dcd22181bf4d4223937f
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964949"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807569"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -1070,8 +1070,14 @@ Az SAP új virtuálisgép-bővítménye a virtuális géphez hozzárendelt felü
     Példa:
 
     ```azurecli
+    # Azure CLI on Linux
     spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
     rgId=$(az group show -g <resource-group-name> --query id --out tsv)
+    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
+
+    # Azure CLI on Windows/PowerShell
+    $spID=az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines
+    $rgId=az group show -g <resource-group-name> --query id --out tsv
     az role assignment create --assignee $spID --role 'Reader' --scope $rgId
     ```
 
@@ -1079,11 +1085,19 @@ Az SAP új virtuálisgép-bővítménye a virtuális géphez hozzárendelt felü
     A bővítmény jelenleg csak a AzureCloud támogatott. Az Azure China 21Vianet, Azure Government vagy más speciális környezetek még nem támogatottak.
 
     ```azurecli
-    # For Linux machines
+    # Azure CLI on Linux
+    ## For Linux machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
 
-    #For Windows machines
+    ## For Windows machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
+
+    # Azure CLI on Windows/PowerShell
+    ## For Linux machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
+
+    ## For Windows machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
     ```
 
 ## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Ellenőrzések és hibaelhárítás
@@ -1140,7 +1154,7 @@ Az eredményül kapott értékeket a következőképpen értelmezheti:
 | **Állapot** |Csak az OK, ha a visszatérési állapot **az OK gombra** mutat. |
 | **Diagnosztika** |Az állapottal kapcsolatos részletes információk. |
 
-Ha az **Állapot értéke nem megfelelő,** kövesse az Azure-BŐVÍTMÉNY az [SAP-konfigurációra vonatkozó állapot-ellenőrzési beállítását][deployment-guide-5.2]ismertető témakört. **OK**
+Ha az **Állapot értéke nem megfelelő,** kövesse az Azure-BŐVÍTMÉNY az [SAP-konfigurációra vonatkozó állapot-ellenőrzési beállítását][deployment-guide-5.2]ismertető témakört. 
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>A készültségi vizsgálat futtatása Linux rendszerű virtuális gépen
 
@@ -1496,7 +1510,7 @@ Az ebben az útmutatóban található, [az SAP-hez készült Azure-bővítmény 
 
 Ha a hibák nem szűnnek meg, [forduljon az ügyfélszolgálathoz][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel a támogatási szolgáltatással
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Kapcsolatfelvétel az ügyfélszolgálattal
 
 Váratlan hiba történt, vagy nincs ismert megoldás. Gyűjtsön a C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) vagy a/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) mappában található AzureEnhancedMonitoring_service. log fájlt, és további segítségért forduljon az SAP támogatási szolgálatához.
 
