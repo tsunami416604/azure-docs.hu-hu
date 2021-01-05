@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e7b4a1b2e1d737dad0054cbdf08443436ac2c181
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705557"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861900"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Oktatóanyag: Hyper-V virtuális gépek felderítése kiszolgáló-értékeléssel
 
@@ -42,7 +42,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 **Követelmény** | **Részletek**
 --- | ---
 **Hyper-V gazdagép** | Azok a Hyper-V-gazdagépek, amelyeken a virtuális gépek találhatók, önállóak vagy fürtben is.<br/><br/> A gazdagépen a Windows Server 2019, a Windows Server 2016 vagy a Windows Server 2012 R2 rendszernek kell futnia.<br/><br/> Ellenőrizze, hogy a bejövő kapcsolatok engedélyezve vannak-e a WinRM 5985-es portján (HTTP), hogy a készülék csatlakozni tud-e a lekéréses virtuális gépek metaadatainak és teljesítményadatait a CIM (CIM) munkamenet használatával.
-**Berendezések üzembe helyezése** | A Hyper-v-gazdagépnek erőforrásokra van szüksége ahhoz, hogy lefoglaljon egy virtuális gépet a készülékhez:<br/><br/> - Windows Server 2016<br/><br/> – 16 GB RAM<br/><br/> – Nyolc vCPU<br/><br/> -Körülbelül 80 GB lemezes tárterület.<br/><br/> – Külső virtuális kapcsoló.<br/><br/> -Internet-hozzáférés a virtuális géphez közvetlenül vagy egy proxyn keresztül.
+**Berendezések üzembe helyezése** | A Hyper-V-gazdagépnek erőforrásokra van szüksége ahhoz, hogy lefoglaljon egy virtuális gépet a készülékhez:<br/><br/> - Windows Server 2016<br/><br/> – 16 GB RAM<br/><br/> – Nyolc vCPU<br/><br/> -Körülbelül 80 GB lemezes tárterület.<br/><br/> – Külső virtuális kapcsoló.<br/><br/> -Internet-hozzáférés a virtuális géphez közvetlenül vagy egy proxyn keresztül.
 **Virtuális gépek** | A virtuális gépek Windows vagy Linux operációs rendszert is használhatnak. 
 
 Mielőtt elkezdené, [áttekintheti a](migrate-appliance.md#collected-data---hyper-v) készülék által a felderítés során gyűjtött adatokat.
@@ -88,7 +88,7 @@ Rendszergazdai hozzáféréssel rendelkező fiók beállítása a Hyper-V-gazdag
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
 
-új Azure Migrate projekt létrehozása.
+Hozzon létre egy új Azure Migrate projektet.
 
 1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
 2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: helyszíni, Docker, tároló
-ms.openlocfilehash: 778fe388ae3db68d836384299a8a1c7c06e31f41
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2bef6aa4e624386750a4c989d7e56cc1b22aaa5e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96001803"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861995"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>Docker-tárolók telepítése és futtatása a LUIS-hoz
 
@@ -203,7 +203,7 @@ A verzióval ellátott csomag letöltéséhez tekintse meg az [API dokumentáci�
 
 A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{ENDPOINT_URI}` `{API_KEY}` .
 
-[Examples](luis-container-configuration.md#example-docker-run-commands) A parancs például `docker run` elérhető.
+[](luis-container-configuration.md#example-docker-run-commands) A parancs például `docker run` elérhető.
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -374,10 +374,7 @@ A LUIS-tároló számlázási adatokat küld az Azure-nak az Azure-fiókja _Cogn
 
 További információ ezekről a beállításokról: [tárolók konfigurálása](luis-container-configuration.md).
 
-<!--blogs/samples/video courses -->
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
-
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta a Language Understanding (LUIS) tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 

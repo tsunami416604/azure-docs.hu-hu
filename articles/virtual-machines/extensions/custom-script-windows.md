@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960971"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861789"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
@@ -61,7 +61,7 @@ Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szüks
 * A szkript futtatásának engedélyezett időtartama 90 perc. Ha egy szkript ennél tovább fut, az a bővítmény üzembe helyezésének meghiúsulását eredményezi.
 * A szkript ne váltson ki újraindításokat, mert ez a művelet problémákat okoz a telepítés alatt álló többi bővítményben. Újraindítás után a bővítmény nem fog tovább működni.
 * Ha olyan szkripttel rendelkezik, amely újraindítást eredményez, majd telepíti az alkalmazásokat, és futtatja a parancsfájlokat, ütemezheti az újraindítást egy Windows ütemezett feladattal, vagy használhat olyan eszközöket, mint a DSC, a Chef vagy a Puppet Extensions.
-* Nem ajánlott olyan parancsfájlt futtatni, amely a virtuálisgép-ügynök leállítását vagy frissítését eredményezi. Ez lehetővé teszi, hogy a bővítmény átmeneti állapotba kerüljön, ami időtúllépést okoz.
+* Nem ajánlott olyan parancsfájlt futtatni, amely a virtuálisgép-ügynök leállítását vagy frissítését eredményezi. Ez a bővítmény átmeneti állapotba hagyható, ami időtúllépést eredményez.
 * A bővítmény egy szkriptet csak egyszer futtat. Ha egy szkriptet minden indításkor futtatni szeretne, létre kell hoznia egy ütemezett Windows-feladatot a bővítménnyel.
 * Ha ütemezni szeretné, hogy mikor fusson egy szkript, hozzon létre egy ütemezett Windows-feladatot a bővítménnyel.
 * Amikor a szkript fut, az Azure Portalon vagy a CLI-n a bővítmény „átmeneti” állapotát fogja látni. Ha gyakoribb állapotfrissítést szeretne egy futó szkripthez, létre kell hoznia a saját megoldását.
@@ -123,7 +123,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa | Adattípus |
+| Név | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft.Compute | sztring |
@@ -180,7 +180,7 @@ Ha a rendszer által hozzárendelt identitást szeretné használni a cél virtu
 
 Ha a felhasználó által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, konfigurálja a "managedidentity" mezőt az ügyfél-AZONOSÍTÓval vagy a felügyelt identitás objektum-azonosítójával.
 
-> Példák:
+> Angol nyelvű Példák:
 >
 > ```json
 > {

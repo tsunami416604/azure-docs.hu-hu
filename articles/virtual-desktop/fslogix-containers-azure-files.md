@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali FSLogix-profilok fájljai – Azure
 description: Ez a cikk a Windows rendszerű virtuális asztali és az Azure Files FSLogix-profilok tárolóit ismerteti.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 01/04/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: ef7f19d835f4fef1a911da01015321b2dda67682
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797196"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861881"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -70,7 +70,7 @@ A S2D-fürtök olyan operációs rendszert igényelnek, amely egy javított, fri
 2018. november 19-én a [Microsoft megszerezte a FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). A FSLogix számos profillal kapcsolatos kihívást jelent. A kulcsok közül a következők:
 
 - **Teljesítmény:** A [FSLogix-profil tárolói](/fslogix/configure-profile-container-tutorial/) nagy teljesítményű és olyan teljesítménnyel kapcsolatos problémák megoldására szolgálnak, amelyek történelmileg letiltották a gyorsítótáras Exchange üzemmódot.
-- **OneDrive:** FSLogix-profilok nélkül a OneDrive for Business nem állandó RDSH-vagy VDI-környezetekben nem támogatott. [A OneDrive for Business és az FSLogix ajánlott eljárásai](/fslogix/overview/) ismertetik, hogyan hatnak egymásra. További információ: [a szinkronizálási ügyfél használata a virtuális asztalokon](/deployoffice/rds-onedrive-business-vdi/).
+- **OneDrive:** FSLogix-profilok nélkül a OneDrive for Business nem állandó RDSH-vagy VDI-környezetekben nem támogatott. A [ONEDRIVE VDI-támogatás lapján](/onedrive/sync-vdi-support) megtudhatja, hogyan hatnak egymásra. További információ: [a szinkronizálási ügyfél használata a virtuális asztalokon](/deployoffice/rds-onedrive-business-vdi/).
 - **További mappák:** A FSLogix lehetővé teszi a felhasználói profilok kiterjesztését további mappák befoglalására.
 
 A beszerzés óta a Microsoft megkezdte a meglévő felhasználói profil-megoldások, például a UPD FSLogix-profilok tárolására való lecserélését.

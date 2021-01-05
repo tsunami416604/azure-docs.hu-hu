@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 673852f8f9aa81c838a7c1db68681bb9ee0b7e0b
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000223"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862012"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Jekyll-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
@@ -90,23 +90,23 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
 
-1. Kattintson **az erőforrás létrehozása**elemre.
+1. Kattintson **az erőforrás létrehozása** elemre.
 
-1. **Statikus Web Apps**keresése.
+1. **Statikus Web Apps** keresése.
 
 1. Kattintson a **statikus Web Apps (előzetes verzió)** elemre.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
-1. Az **előfizetés**mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
+1. Az **előfizetés** mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
 
-1. Az _erőforráscsoport_területen válassza az **új**lehetőséget. Az _Új erőforráscsoport neve_mezőbe írja be a **Jekyll-static-app** nevet, majd kattintson **az OK gombra**.
+1. Az _erőforráscsoport_ területen válassza az **új** lehetőséget. Az _Új erőforráscsoport neve_ mezőbe írja be a **Jekyll-static-app** nevet, majd kattintson **az OK gombra**.
 
 1. Ezután adja meg az alkalmazás nevét a _név_ mezőben. Érvényes karakterek a következők:, `a-z` `A-Z` `0-9` és `-` .
 
-1. A _régió_területen válasszon ki egy elérhető régiót.
+1. A _régió_ területen válasszon ki egy elérhető régiót.
 
-1. Az _SKU_esetében válassza az **ingyenes**lehetőséget.
+1. Az _SKU_ esetében válassza az **ingyenes** lehetőséget.
 
     :::image type="content" source="./media/publish-jekyll/basic-app-details.png" alt-text="Részletek kitöltve":::
 
@@ -116,9 +116,9 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Válassza ki a **Jekyll-static-app** _adattárat_.
 
-1. A _ág_ válassza a **Master**elemet.
+1. A _ág_ válassza a **Master** elemet.
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Részletek kitöltve":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
 
 ### <a name="build"></a>Létrehozás
 
@@ -150,7 +150,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
     ```yml
     - name: Set up Ruby
-      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      uses: ruby/setup-ruby@v1.59.1
       with:
         ruby-version: 2.6
     - name: Install dependencies
@@ -171,13 +171,13 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 1. A Azure Portal _Áttekintés_ ablakában kattintson az _URL_ hivatkozásra az üzembe helyezett alkalmazás megnyitásához.
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Részletek kitöltve":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

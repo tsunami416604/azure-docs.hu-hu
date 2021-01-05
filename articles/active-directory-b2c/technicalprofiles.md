@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 99ed7d3ad81202ab6fe67bf52888bbdbf0b28d2a
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387088"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861859"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -52,7 +52,7 @@ A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemene
 ![A műszaki profil folyamatát ábrázoló diagram](./media/technical-profiles/technical-profile-flow.png)
 
 1. **Egyszeri bejelentkezéses (SSO) munkamenet-kezelés** – a technikai profil munkamenet-állapotának visszaállítása az [egyszeri bejelentkezéses munkamenet-kezelés](custom-policy-reference-sso.md)használatával.
-1. **Bemeneti jogcím-átalakítás** – a technikai profil elindítása előtt Azure ad B2C futtatja a következőt: [jogcím-átalakítás]. (claimstransformations.md).
+1. **Bemeneti jogcím-átalakítás** – a technikai profil elindítása előtt Azure ad B2C futtatja a bemeneti [jogcímek átalakítását](claimstransformations.md).
 1. **Bemeneti jogcímek** – a jogcímeket a technikai profilhoz használt jogcímek alapján kell kiválasztani.
 1. **Technikai profil végrehajtása** – a technikai profil a jogcímeket a konfigurált fél számára cseréli. Például:
     - A bejelentkezés befejezéséhez irányítsa át a felhasználót az identitás-szolgáltatóra. A sikeres bejelentkezés után a felhasználó visszatér, és a technikai profil végrehajtása folytatódik.

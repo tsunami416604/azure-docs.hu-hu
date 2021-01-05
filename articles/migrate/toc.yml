@@ -172,12 +172,12 @@
           href: how-to-migrate.md
         - name: Gépek előkészítése migrálásra
           href: prepare-for-migration.md
+        - name: Windows 2003-kiszolgálók előkészítése migrálásra
+          href: prepare-windows-server-2003-migration.md
         - name: VMware virtuális gépek migrálása
           items:
             - name: VMware virtuális gépek migrálása titkosított Azure-beli virtuális gépekbe
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
-            - name: Windows 2003-kiszolgálók előkészítése migrálásra
-              href: prepare-windows-server-2003-migration.md
         - name: Migrálás skálázása
           items:
             - name: Nagy számú virtuális gép migrálásának automatizálása
