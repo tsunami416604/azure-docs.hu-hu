@@ -54,6 +54,22 @@
           href: ../azure-functions/functions-bindings-signalr-service.md
         - name: Felsőbb rétegbeli beállítások
           href: concept-upstream.md
+    - name: Rendelkezésre állás
+      items:
+        - name: Az alkalmazáskiszolgáló szabályos leállítása.
+          href: server-graceful-shutdown.md
+    - name: Biztonság
+      items:
+        - name: Engedélyezés
+          items:
+            - name: Azure Active Directoryval való hozzáférés engedélyezése
+              href: authorize-access-azure-active-directory.md
+        - name: Hitelesítés
+          items:
+            - name: Hitelesítés egy alkalmazásból
+              href: authenticate-application.md
+            - name: Hitelesítés felügyelt identitással
+              href: authenticate-managed-identity.md
     - name: Magas rendelkezésre állás
       items:
         - name: Rugalmasság és vészhelyreállítás

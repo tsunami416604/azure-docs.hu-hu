@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: c17ade2af751b80e612aa104a9af1a22c4325413
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: ff3e8916a6634c564aa98b21b7e8d7c89fa1b17e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695741"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897178"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról
 
@@ -150,7 +150,7 @@ A következő táblázatban található erőforrások klasszikus üzemi modellj�
 
 | Klasszikus ábrázolás | Resource Manager-ábrázolás | Jegyzetek |
 | --- | --- | --- |
-| Felhőszolgáltatás neve |DNS-név |A migrálás során minden felhőszolgáltatáshoz egy új erőforráscsoport jön létre a következő elnevezési mintának megfelelően: `<cloudservicename>-migrated`. Ez az erőforráscsoport tartalmazza az összes erőforrást. A felhőszolgáltatás egy DNS-névvé alakul, amely a nyilvános IP-címhez van társítva. |
+| Felhőalapú szolgáltatás neve (üzemeltetett szolgáltatás neve) |DNS-név |A migrálás során minden felhőszolgáltatáshoz egy új erőforráscsoport jön létre a következő elnevezési mintának megfelelően: `<cloudservicename>-migrated`. Ez az erőforráscsoport tartalmazza az összes erőforrást. A felhőszolgáltatás egy DNS-névvé alakul, amely a nyilvános IP-címhez van társítva. |
 | Virtuális gép |Virtuális gép |A virtuális gépre jellemző tulajdonságok a migrálás során nem változnak. Bizonyos osProfile-információk, például a számítógépnév nem a klasszikus üzemi modellben tárolódnak, és az áttelepítés után üresek maradnak. |
 | A virtuális géphez csatolt lemezerőforrások |A virtuális géphez csatolt implicit lemezek |A lemezek nem legfelső szintű erőforrásként vannak modellezve a Resource Manager-alapú üzemi modellben. A virtuális gép implicit lemezeiként lesznek migrálva. Jelenleg csak a virtuális géphez csatolt lemezek támogatottak. A Resource Manager-alapú virtuális gépek mostantól a klasszikus üzemi modellben használhatják a Storage-fiókokat, ami lehetővé teszi, hogy a lemezek a frissítés nélkül is könnyen áttelepíthetők legyenek. |
 | Virtuálisgép-bővítmények |Virtuálisgép-bővítmények |Az összes erőforrás-bővítmény, az XML-bővítmények kivételével, migrálva lett a klasszikus üzemi modellből. |
@@ -179,7 +179,7 @@ A következő táblázatban található erőforrások klasszikus üzemi modellj�
 Az erőforrások klasszikus üzemi modellből a Resource Manager-alapú üzemi modellbe való áttelepítésének részeként frissítenie kell a meglévő automatizálást vagy eszközöket, hogy az a Migrálás után is működjön.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A IaaS-erőforrások platform által támogatott áttelepítésének áttekintése klasszikusról Azure Resource Manager](migration-classic-resource-manager-overview.md)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md)

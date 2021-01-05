@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás a CloudSimple-ben – a VMware Site Recovery Manager használatával helyreállítási helyként állíthatja be a privát felhőt
 description: Ismerteti, hogyan állíthatja be a CloudSimple saját Felhőjét vész-helyreállítási webhelyként a VMware Site Recovery Manager használatával.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6714b2c5d87141fd94d0f96d9cf07913442d18d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d71f8aec1f35514ac6c10b17b6f7b69b79b05bd
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267057"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897909"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Saját felhő beállítása vész-helyreállítási célként a VMware Site Recovery Managerrel
 
@@ -65,7 +65,7 @@ Az útmutatóban szereplő konfigurációkra az alábbi kompatibilitási követe
 
 A kapcsolódó VMware-dokumentációra és a kompatibilitási információkra mutató hivatkozásokat a [vmware site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/index.html) dokumentációjában talál.
 
-A vCenter és a PSC saját Felhőbeli verzióinak megkereséséhez nyissa meg a CloudSimple portált. Lépjen az **erőforrások**elemre, válassza ki saját felhőjét, majd kattintson a **vSphere felügyeleti hálózat** fülre.
+A vCenter és a PSC saját Felhőbeli verzióinak megkereséséhez nyissa meg a CloudSimple portált. Lépjen az **erőforrások** elemre, válassza ki saját felhőjét, majd kattintson a **vSphere felügyeleti hálózat** fülre.
 
 ![vCenter & PSC-verziók a Private Cloud-ban](media/srm-resources.png)
 
@@ -122,7 +122,7 @@ Mielőtt elkezdené, ellenőrizze, hogy rendelkezik-e a következőkkel:
 
 Útmutatásért lásd: [VPN-kapcsolat konfigurálása saját CloudSimple-felhőhöz](set-up-vpn.md). A lépések hasonlóak a helyszíni telepítéshez.
 
-A CloudSimple az IP-címek helyett a vRA és az SRM telepítésekor javasolja a teljes tartománynevek használatát. Ha szeretné megtudni a vCenter és a PSC teljes tartománynevét a privát felhőben, nyissa meg a CloudSimple portált. Lépjen az **erőforrások**elemre, válassza ki saját felhőjét, majd kattintson a **vSphere felügyeleti hálózat** fülre.
+A CloudSimple az IP-címek helyett a vRA és az SRM telepítésekor javasolja a teljes tartománynevek használatát. Ha szeretné megtudni a vCenter és a PSC teljes tartománynevét a privát felhőben, nyissa meg a CloudSimple portált. Lépjen az **erőforrások** elemre, válassza ki saját felhőjét, majd kattintson a **vSphere felügyeleti hálózat** fülre.
 
 ![A vCenter/PSC teljes tartományneve megkeresése a privát felhőben](media/srm-resources.png)
 

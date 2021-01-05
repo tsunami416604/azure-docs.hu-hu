@@ -86,7 +86,7 @@
       href: overview-vnet-service-endpoints.md
 - name: Útmutatók
   items:
-    - name: Hitelesítés
+    - name: Hitelesítés és engedélyezés
       items:
         - name: Hitelesítés a Key Vaultban
           href: authentication.md
@@ -104,10 +104,6 @@
           href: rbac-migration.md
         - name: Hozzáférési problémák elhárítása
           href: troubleshooting-access-issues.md
-    - name: Helyreállítható törlés és végleges törlés elleni védelem engedélyezése
-      href: key-vault-recovery.md
-    - name: Naplózás engedélyezése
-      href: howto-logging.md
     - name: Fejlesztés
       items:
         - name: Az Azure Key Vault fejlesztői útmutatója
@@ -118,21 +114,31 @@
           href: vs-key-vault-add-connected-service.md
     - name: Monitorozás és szabályozás
       items:
-        - name: Az Azure Key Vault monitorozásának és riasztásának konfigurálása
+        - name: Event Grid-értesítések
+          items:
+            - name: Értesítések fogadása a Logic Appsben
+              href: event-grid-logicapps.md
+            - name: Értesítések fogadása az Azure Automationben
+              href: event-grid-tutorial.md
+        - name: Naplózás engedélyezése
+          href: howto-logging.md
+        - name: Az Azure Key Vault monitorozásának és riasztásának konfigurálása az Azure Monitorral
           href: alert.md
+        - name: Helyreállítási felügyelet helyreállítható törléssel és végleges törlés elleni védelemmel
+          href: key-vault-recovery.md
         - name: Az Azure Key Vault integrálása az Azure Policyval
           href: azure-policy.md
-        - name: Értesítések fogadása az Azure Event Gridben és a Logic Appsben
-          href: event-grid-logicapps.md
-        - name: Értesítések fogadása az Azure Event Gridben és az Azure Automationben
-          href: event-grid-tutorial.md
         - name: Biztonsági másolat készítése az egyes Key Vault-objektumokról
           href: backup.md
     - name: Biztonságos
       items:
-        - name: Integrálás az Azure Private Link szolgáltatással
-          href: private-link-service.md
-        - name: Az Azure Key Vault elérése tűzfal mögött – Azure Key Vault
+        - name: Azure Private Link
+          items:
+            - name: Integrálás az Azure Private Link szolgáltatással
+              href: private-link-service.md
+            - name: A privát kapcsolatok konfigurációs problémáinak diagnosztizálása
+              href: private-link-diagnostics.md
+        - name: A Key Vault elérése tűzfal mögött
           href: access-behind-firewall.md
     - name: A Key Vault áthelyezése
       items:
@@ -142,10 +148,6 @@
           href: move-subscription.md
         - name: A Key Vault áthelyezése egy másik régióba
           href: move-region.md
-    - name: Hálózat
-      items:
-        - name: A privát kapcsolatok konfigurációs problémáinak diagnosztizálása
-          href: private-link-diagnostics.md
 - name: Referencia
   items:
     - name: Újdonságok

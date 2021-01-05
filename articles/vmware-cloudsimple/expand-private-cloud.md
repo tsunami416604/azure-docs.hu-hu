@@ -1,19 +1,19 @@
 ---
 title: Az Azure VMware-megoldás kibontása a CloudSimple Private Cloud használatával
 description: Ismerteti, hogyan bővíthető egy meglévő CloudSimple-felhő a kapacitás meglévő vagy új fürthöz való hozzáadásához
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c469ea3f104e71eb80010d4a5cd421eab6184fcf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025299"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895856"
 ---
 # <a name="expand-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő kibontása
 
@@ -41,20 +41,20 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 2. Nyissa meg az **erőforrások** lapot, és válassza ki azt a privát felhőt, amelynek ki szeretné bővíteni a szolgáltatását.
 
-3. Az összefoglalás szakaszban kattintson a **Kibontás**elemre.
+3. Az összefoglalás szakaszban kattintson a **Kibontás** elemre.
 
     ![Privát felhő kibontása](media/resources-expand-private-cloud.png)
 
 4. Adja meg, hogy ki szeretné-e bontani a meglévő fürtöt, vagy új vSphere-fürtöt szeretne létrehozni. A módosítások elvégzése közben a lapon található összegző információk frissülnek.
 
-    * A meglévő fürt kibontásához kattintson a **meglévő fürt kibontása**elemre. Válassza ki a kibontani kívánt fürtöt, és adja meg a hozzáadandó csomópontok számát. Minden fürt legfeljebb 16 csomópontot tartalmazhat.
-    * Új fürt hozzáadásához kattintson az **új fürt létrehozása**lehetőségre. Adjon egy nevet a fürtnek. Válasszon egy meglévő adatközpontot, vagy adjon meg egy nevet egy új adatközpont létrehozásához. Válassza ki a csomópont típusát. Új vSphere-fürt létrehozásakor választhat másik csomópont-típust is, de a meglévő vSphere-fürt kibővítésekor nem. Válassza ki a csomópontok számát. Minden új fürtnek legalább három csomóponttal kell rendelkeznie.
+    * A meglévő fürt kibontásához kattintson a **meglévő fürt kibontása** elemre. Válassza ki a kibontani kívánt fürtöt, és adja meg a hozzáadandó csomópontok számát. Minden fürt legfeljebb 16 csomópontot tartalmazhat.
+    * Új fürt hozzáadásához kattintson az **új fürt létrehozása** lehetőségre. Adjon egy nevet a fürtnek. Válasszon egy meglévő adatközpontot, vagy adjon meg egy nevet egy új adatközpont létrehozásához. Válassza ki a csomópont típusát. Új vSphere-fürt létrehozásakor választhat másik csomópont-típust is, de a meglévő vSphere-fürt kibővítésekor nem. Válassza ki a csomópontok számát. Minden új fürtnek legalább három csomóponttal kell rendelkeznie.
 
     ![Privát felhő kibontása – csomópontok hozzáadása](media/resources-expand-private-cloud-add-nodes.png)
 
 5. Kattintson a **Submit (Küldés** ) elemre a privát felhő kibontásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * További információ a [privát felhőkről](cloudsimple-private-cloud.md)

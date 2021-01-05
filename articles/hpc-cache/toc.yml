@@ -42,8 +42,14 @@
       href: hpc-cache-mount.md
     - name: A gyorsítótár kezelése
       href: hpc-cache-manage.md
-    - name: Opcionális beállítások konfigurálása
-      href: configuration.md
+    - name: Választható beállítások használata
+      items:
+        - name: Opcionális beállítások konfigurálása
+          href: configuration.md
+        - name: Hozzáférési szabályzatok testreszabása
+          href: access-policies.md
+        - name: Címtárszolgáltatások beállítása
+          href: directory-services.md
 - name: Referencia
   items:
     - name: Azure CLI

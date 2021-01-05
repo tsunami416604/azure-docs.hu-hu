@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/24/2018
+ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: e4782bf09b8c27132417f6021927408e18755104
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9b19beae43f1d4a5b0788d9d7662828355c3dd2c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494018"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895886"
 ---
 # <a name="what-is-azure-network-watcher"></a>Mi az az Azure Network Watcher?
 
@@ -100,6 +100,6 @@ Lehetősége van engedélyezni az Azure hálózati erőforrások (pl. hálózati
 ## <a name="network-watcher-automatic-enablement"></a>Automatikus engedélyezés Network Watcher
 Amikor virtuális hálózatot hoz létre vagy módosít az előfizetésben, a Network Watcher automatikusan engedélyezve lesz a virtuális hálózat régiójában. A Network Watcher automatikus engedélyezése az Ön erőforrásait nem érinti, és nem jár költségekkel. További információ: [Network Watcher Create](network-watcher-create.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikk az Azure Network Watcherről nyújtott áttekintést. A Network Watcher használatának első lépéseként diagnosztizálja egy virtuális gép bejövő és kimenő kommunikációjának egy gyakori problémáját az IP-forgalom ellenőrzése funkcióval. Ennek ismertetését a [virtuális gépek hálózatiforgalom-szűrési problémájának diagnosztizálását](diagnose-vm-network-traffic-filtering-problem.md) ismertető rövid útmutatóban találja.

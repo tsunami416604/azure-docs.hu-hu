@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás kezelése CloudSimple privát felhővel
 description: Ismerteti a CloudSimple saját Felhőbeli erőforrásainak és tevékenységének kezeléséhez rendelkezésre álló képességeket
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/10/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f2f66c2e1e2e8aa596393d4c69a757138ab5a91
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86524996"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895206"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Saját Felhőbeli erőforrások és tevékenységek kezelése
 
@@ -47,7 +47,7 @@ A kiválasztott privát felhő átfogó összefoglalásának megtekintése.  Az 
 * [Megvásárlási csomópontok](create-nodes.md). Csomópontok hozzáadása ehhez a privát felhőhöz.
 * [Bontsa ki](expand-private-cloud.md)a elemet. Csomópontok hozzáadása ehhez a privát felhőhöz.
 * **Frissítés**. Az oldalon található információk frissítése.
-* **Törlés**. A privát felhőt bármikor törölheti. **A törlés előtt győződjön meg róla, hogy minden rendszerről és adattal készített biztonsági másolatot.** A privát felhő törlése törli az összes virtuális gépet, a vCenter-konfigurációt és az összes adathalmazt. Kattintson a **Törlés** lehetőségre a kiválasztott privát felhő Összegzés szakaszában. A törlést követően az összes magánjellegű Felhőbeli adat törlődik egy biztonságos, szigorúan kompatibilis törlési folyamatba.
+* **Delete**. A privát felhőt bármikor törölheti. **A törlés előtt győződjön meg róla, hogy minden rendszerről és adattal készített biztonsági másolatot.** A privát felhő törlése törli az összes virtuális gépet, a vCenter-konfigurációt és az összes adathalmazt. Kattintson a **Törlés** lehetőségre a kiválasztott privát felhő Összegzés szakaszában. A törlést követően az összes magánjellegű Felhőbeli adat törlődik egy biztonságos, szigorúan kompatibilis törlési folyamatba.
 * [VSphere-jogosultságok módosítása](escalate-private-cloud-privileges.md)  A jogosultságokat a privát felhőben is kiterjesztheti.
 
 ## <a name="private-cloud-vlanssubnets"></a>Privát felhő VLAN-ok/alhálózatok
@@ -88,7 +88,7 @@ A saját felhőben jelenleg konfigurált VMware felügyeleti erőforrások és v
 
 ![Saját felhőalapú vSphere felügyeleti hálózat](media/private-cloud-vsphere-management-network.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * További információ a [privát felhőkről](cloudsimple-private-cloud.md)

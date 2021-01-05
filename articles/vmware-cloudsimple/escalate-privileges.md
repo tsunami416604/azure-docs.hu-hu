@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple szerint – CloudSimple jogosultságok kiemelése
 description: Ismerteti, hogyan lehet megtekinteni a CloudSimple engedélyeket a rendszergazdai feladatok elvégzéséhez a saját Felhőbeli vCenter
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d481717a79856583d23f61107678d2ecd1af68d6
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025333"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895727"
 ---
 # <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>CloudSimple-jogosultságok kiemelése rendszergazdai funkciók elvégzéséhez a saját Felhőbeli vCenter
 
@@ -35,6 +35,6 @@ A CloudSimple-portálon a CloudOwner helyi felhasználó jogosultságait a vCent
 A további személyazonossági forrásokból származó felhasználókat hozzá kell adni a CloudOwner csoport tagjaként.
 
 > [!CAUTION]
-> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  A vSphere webes felhasználói felületén csak a szolgáltatási fiókokat kell felvenni a *rendszergazdák* csoportjába, és a szolgáltatásfiókok nem használhatók.
+> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group* szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  A vSphere webes felhasználói felületén csak a szolgáltatási fiókokat kell felvenni a *rendszergazdák* csoportjába, és a szolgáltatásfiókok nem használhatók.
 
 A eszkalációs időszak alatt a CloudSimple az automatizált figyelést használja a kapcsolódó riasztási értesítésekkel, hogy azonosítsa a környezet véletlen módosításait.

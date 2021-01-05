@@ -2,19 +2,19 @@
 title: Erőforráskészlet létrehozása az Azure-előfizetések leképezésével
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Ismerteti, hogyan lehet erőforráskészletokat létrehozni saját felhőhöz az Azure-előfizetés leképezésével
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 474ef03d482288b6bf7b5a8b1c224349a8e2d3a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7be4a4c601d3f33972c1e52596ef623116dcadd4
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77014963"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897076"
 ---
 # <a name="create-resource-pools-for-your-private-cloud-with-azure-subscription-mapping"></a>Erőforráskészlet létrehozása saját felhőhöz az Azure-előfizetés leképezésével
 Az Azure-előfizetések leképezése lehetővé teszi erőforráskészlet létrehozását a saját felhőhöz az elérhető vSphere-erőforrás-készletekből. A CloudSimple-portálon megtekintheti és kezelheti a privát Felhőkhöz tartozó Azure-előfizetést.
@@ -23,8 +23,8 @@ Az Azure-előfizetések leképezése lehetővé teszi erőforráskészlet létre
 > Az erőforráskészlet leképezése szintén leképezi az összes alárendelt erőforrás-készletet. A szülő erőforráskészlet nem képezhető le, ha a gyermek-erőforrások készlete már le van képezve.
 
 1. [Nyissa meg a CloudSimple portált](access-cloudsimple-portal.md).
-2. Nyissa meg az **erőforrások** lapot, és válassza az **Azure-előfizetések hozzárendelése**elemet.  
-3. Kattintson az **Azure-előfizetések leképezésének szerkesztése**elemre.  
+2. Nyissa meg az **erőforrások** lapot, és válassza az **Azure-előfizetések hozzárendelése** elemet.  
+3. Kattintson az **Azure-előfizetések leképezésének szerkesztése** elemre.  
 4. Az elérhető erőforráskészlet hozzárendeléséhez jelölje ki őket a bal oldalon, majd kattintson a jobbra mutató nyílra. 
 5. A leképezések eltávolításához jelölje ki őket a jobb oldalon, majd kattintson a balra mutató nyílra. 
 

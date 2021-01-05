@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás a CloudSimple által – CloudSimple saját felhő létrehozása
 description: Ismerteti, hogyan hozhat létre CloudSimple-alapú privát felhőt a VMware számítási feladatok felhőbe való kiterjesztéséhez, működési rugalmassággal és folytonossággal
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f4af4a36e719cbf15b3f0af77db81a32f2f2e42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024789"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896277"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple saját felhő létrehozása
 
@@ -48,20 +48,20 @@ Nyissa meg a [CloudSimple portált](access-cloudsimple-portal.md).
 ## <a name="create-a-new-private-cloud"></a>Új privát felhő létrehozása
 
 1. Válassza az **Összes szolgáltatás** elemet.
-2. Keressen rá a **CloudSimple Services**kifejezésre.
+2. Keressen rá a **CloudSimple Services** kifejezésre.
 3. Válassza ki azt a CloudSimple-szolgáltatást, amelyen létre szeretné hozni a saját Felhőjét.
-4. Az **Áttekintés**lapon kattintson a **privát felhő létrehozása** elemre a CloudSimple-portál új böngésző lapjának megnyitásához. Ha a rendszer kéri, jelentkezzen be az Azure bejelentkezési hitelesítő adataival.
+4. Az **Áttekintés** lapon kattintson a **privát felhő létrehozása** elemre a CloudSimple-portál új böngésző lapjának megnyitásához. Ha a rendszer kéri, jelentkezzen be az Azure bejelentkezési hitelesítő adataival.
 
     ![Privát felhő létrehozása az Azure-ból](media/create-private-cloud-from-azure.png)
 
 5. A CloudSimple-portálon adja meg a saját felhő nevét.
 6. Válassza ki a saját felhő **helyét** .
 7. Válassza ki a **csomópont típusát**, amely megfelel az Azure-ban kiépített lehetőségeknek.
-8. **Csomópontok számának**meghatározása  A privát felhő létrehozásához legalább három csomópont szükséges.
+8. **Csomópontok számának** meghatározása  A privát felhő létrehozásához legalább három csomópont szükséges.
 
     ![Privát felhő létrehozása – alapszintű információ](media/create-private-cloud-basic-info.png)
 
-9. Kattintson a **Tovább: speciális beállítások**elemre.
+9. Kattintson a **Tovább: speciális beállítások** elemre.
 10. Adja meg a vSphere/vSAN alhálózatok CIDR tartományát. Győződjön meg arról, hogy a CIDR-tartomány nem fedi átfedésben a helyszíni vagy más Azure-alhálózatokkal (virtuális hálózatokkal) vagy az átjáró-alhálózattal.
 
     **CIDR-tartomány beállításai:** /24,/23,/22, vagy/21. Az a/24 CIDR-tartomány legfeljebb kilenc csomópontot támogat, a/23 CIDR-tartomány akár 41 csomópontot is támogat, a/22 és/21 CIDR tartomány pedig legfeljebb 64 csomópontot támogat (a csomópontok maximális száma a privát felhőben).
@@ -70,8 +70,8 @@ Nyissa meg a [CloudSimple portált](access-cloudsimple-portal.md).
     > A vSphere/vSAN CIDR-tartomány IP-címei a saját felhőalapú infrastruktúra számára vannak fenntartva.  Ne használja az IP-címet ebben a tartományban bármely virtuális gépen.
 
 11. Kattintson **a Tovább gombra: Áttekintés és létrehozás**.
-12. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző**gombra.
-13. Kattintson a **Létrehozás** elemre.
+12. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző** gombra.
+13. Kattintson a **Létrehozás** lehetőségre.
 
 Elindul a felhőalapú kiépítési folyamat. A privát felhő üzembe helyezése akár két óráig is eltarthat.
 

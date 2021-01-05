@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 57b350c7772d42e5dbd89c1d03c89f905a26398b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315583"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895529"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.
@@ -54,7 +54,7 @@ A Azure Monitor ügynök nyilvános előzetes verziója a következő korlátoz�
 
 - A Azure Monitor ügynök nem támogatja a megoldásokat és az adatAzure Monitor for VMsokat, például a és a Azure Security Center. Az egyetlen jelenleg támogatott forgatókönyv az adatok gyűjtése a konfigurált adatgyűjtési szabályok használatával. 
 - Az adatgyűjtési szabályokat ugyanabban a régióban kell létrehozni, mint a célhelyként használt Log Analytics munkaterület.
-- Az Azure Virtual Machines és az Azure arc-kompatibilis kiszolgálók jelenleg támogatottak. A virtuálisgép-méretezési csoportok, az Azure Kubernetes szolgáltatás és más számítási erőforrástípusok jelenleg nem támogatottak.
+- Az Azure Virtual Machines, a virtuálisgép-méretezési csoportok és az Azure arc-kompatibilis kiszolgálók jelenleg támogatottak. Az Azure Kubernetes szolgáltatás és más számítási erőforrástípusok jelenleg nem támogatottak.
 - A virtuális gépnek hozzá kell férnie a következő HTTPS-végpontokhoz:
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com

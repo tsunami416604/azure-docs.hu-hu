@@ -94,6 +94,8 @@
       href: backup-architecture.md
     - name: Útmutatás és ajánlott eljárások
       href: guidance-best-practices.md
+    - name: Kifejezések jegyzéke
+      href: azure-backup-glossary.md
 - name: Útmutatók
   items:
     - name: Kulcstartók
@@ -164,6 +166,8 @@
               href: backup-azure-manage-vms.md
             - name: Helyreállítási pontok kezelése
               href: manage-recovery-points.md
+            - name: A biztonsági mentési szabályzat módosítása az Azure CLI-vel
+              href: modify-vm-policy-cli.md
     - name: Azure-beli virtuális gépen tárolt SQL Server-adatbázis biztonsági mentése
       items:
         - name: Áttekintés

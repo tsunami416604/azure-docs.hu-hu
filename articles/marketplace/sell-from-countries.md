@@ -8,17 +8,17 @@ ms.custom: references_regions
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 09/02/2020
-ms.openlocfilehash: fd33ebebf35e0407f7ce39c609ee372a7d1d4a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/04/2021
+ms.openlocfilehash: 48a0c3484b6cbeac4d71d3fbf383bb1c14466a9d
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250504"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897331"
 ---
 # <a name="supported-publisher-countries-and-regions"></a>Támogatott közzétevő országok és régiók
 
-Ha közzé szeretne tenni egy ajánlatot a Microsoft kereskedelmi piactéren, az alábbi országok vagy régiók egyikében kell megadnia a tartózkodási helyét.
+Ha közzé szeretne tenni egy ajánlatot a Microsoft kereskedelmi piactéren, a vállalatának jogilag a következő országok vagy régiók egyikében kell tartózkodnia:
 
 - Afganisztán
 - Åland-szigetek
@@ -134,7 +134,6 @@ Ha közzé szeretne tenni egy ajánlatot a Microsoft kereskedelmi piactéren, az
 - Kazahsztán
 - Kenya
 - Kiribati
-- Dél-Korea
 - Koszovó
 - Kuvait
 - Kirgizisztán
@@ -223,7 +222,8 @@ Ha közzé szeretne tenni egy ajánlatot a Microsoft kereskedelmi piactéren, az
 - Salamon-szigetek
 - Szomália
 - Dél-afrikai Köztársaság
-- Déli-Georgia és Déli-Sandwich-szigetek
+- Dél-Georgia és Déli-Sandwich-szigetek
+- Dél-Korea (Koreai Köztársaság)
 - Dél-Szudán
 - Spanyolország
 - Srí Lanka
@@ -248,7 +248,7 @@ Ha közzé szeretne tenni egy ajánlatot a Microsoft kereskedelmi piactéren, az
 - Türkmenisztán
 - Turks- és Caicos-szigetek
 - Tuvalu
-- Az Amerikai Egyesült Államok lakatlan külbirtokai
+- Amerikai Egyesült Államok lakatlan külbirtokai
 - Amerikai Virgin-szigetek
 - Uganda
 - Ukrajna

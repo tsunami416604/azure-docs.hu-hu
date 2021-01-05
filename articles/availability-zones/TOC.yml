@@ -12,7 +12,7 @@
       href: az-overview.md
     - name: Rendelkezésre állási zónák dokumentációja
       items:
-        - name: Az Availability Zones használatát támogató régiók
+        - name: A rendelkezésreállási zónákat támogató Azure-szolgáltatások
           href: az-region.md
         - name: Virtual machines (Virtuális gépek)
           items:

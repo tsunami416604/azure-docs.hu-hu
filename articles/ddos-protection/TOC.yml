@@ -15,9 +15,11 @@
 - name: Oktatóanyagok
   items:
     - name: DDoS Protection-telemetria megtekintése és konfigurálása
-      href: telemetry-monitoring-alerting.md
-    - name: DDoS-támadások mérséklési jelentéseinek és forgalomnaplóinak konfigurálása
-      href: reports-and-flow-logs.md
+      href: telemetry.md
+    - name: DDoS-diagnosztikai naplózás megtekintése és konfigurálása
+      href: diagnostic-logging.md
+    - name: DDoS Protection-riasztások megtekintése és konfigurálása
+      href: alerts.md
 - name: Alapelvek
   items:
     - name: A támadások típusai

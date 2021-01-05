@@ -30,16 +30,17 @@
           href: create-cluster.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Feladat létrehozása/kezelése
-      href: stream-analytics-manage-job.md
-    - name: 2 – Az Azure Functions futtatása
+    - name: Rosszindulatú hívások vizualizációja a Power BI-ban
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Az Azure Functions futtatása
       href: stream-analytics-with-azure-functions.md
-    - name: 3 – Üzembe helyezés CI/CD-vel az Azure Pipelinesban
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: 4 – C# UDF futtatása
+    - name: C# UDF futtatása
       href: stream-analytics-edge-csharp-udf.md
-    - name: 5 – Egyéni .NET-deszerializáló létrehozása
+    - name: Egyéni .NET-deszerializáló létrehozása
       href: custom-deserializer.md
+    - name: IoT Edge-feladat létrehozása
+      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      maintainContext: true
 - name: Példák
   items:
     - name: Kódminták
@@ -56,6 +57,8 @@
       href: develop-locally.md
     - name: Biztonság
       items:
+        - name: Feladatok csatlakoztatása az Azure Virtual Networkhöz (VNet-hez)
+          href: connect-job-to-vnet.md
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -129,6 +132,8 @@
           href: repartition.md
         - name: A feladat átviteli sebességének növelése
           href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: Feladat állapotai
       href: job-states.md
     - name: Ablakfunkciók
@@ -181,35 +186,31 @@
           href: stream-analytics-job-reliability.md
         - name: SQL-referenciaadatok használata
           href: sql-reference-data.md
-        - name: Hitelesítés felügyelt identitással
-          items:
-            - name: ADLS Gen 1
-              href: stream-analytics-managed-identities-adls.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Blob Storage
-              href: blob-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Event Hubs
-              href: event-hubs-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Power BI
-              href: powerbi-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL és Azure Synapse
-              href: sql-database-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
         - name: Adatok titkosítása
           href: data-protection.md
         - name: Georedundancia
           href: geo-redundancy.md
+    - name: Hitelesítés felügyelt identitással
+      items:
+        - name: ADLS Gen 1
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Blob Storage
+          href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Event Hubs
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL és Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: Megoldások kiépítése
       items:
         - name: Twitter-hangulatelemzés
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: Csalások valós idejű észlelése
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: Feladatok futtatása az IoT Edge-en
-          href: stream-analytics-edge.md
         - name: Feladatok futtatása az Azure Stacken
           href: on-azure-stack.md
         - name: Fizetőkapu érzékelőadatainak elemzése
@@ -287,6 +288,8 @@
           href: debug-locally-using-job-diagram-vs-code.md
         - name: Feladatok böngészése
           href: visual-studio-code-explore-jobs.md
+        - name: Egyéni .NET-deszerializálók létrehozása és hibakeresése
+          href: visual-studio-code-custom-deserializer.md
         - name: JobConfig.json-mezők
           href: job-config-json.md
     - name: Hibaelhárítás

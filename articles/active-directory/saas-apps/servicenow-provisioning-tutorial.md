@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5894a57e6495ca02002c8f32b893e696c7f5679b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350704"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897285"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés ServiceNow konfigurálása
 
@@ -50,7 +50,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 1. Azonosítsa a ServiceNow-példány nevét. A ServiceNow eléréséhez használt URL-címen megkeresheti a példány nevét. Az alábbi példában a példány neve dev35214.
 
-   ![ServiceNow-példány](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow-példány](media/servicenow-provisioning-tutorial/servicenow-instance.png)
 
 2. Hitelesítő adatok beszerzése egy rendszergazda számára a ServiceNow-ben. Navigáljon a felhasználói profilhoz a ServiceNow-ben, és ellenőrizze, hogy a felhasználó rendelkezik-e rendszergazdai szerepkörrel. 
 
@@ -94,7 +94,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a ServiceNow rendszergazdai hitelesítő adatait és a felhasználónevet. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a ServiceNow. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a ServiceNow-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Képernyőfelvétel: a szolgáltatás kiépítési lapja, ahol rendszergazdai hitelesítő adatokat adhat meg.](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![Képernyőfelvétel: a szolgáltatás kiépítési lapja, ahol rendszergazdai hitelesítő adatokat adhat meg.](./media/servicenow-provisioning-tutorial/servicenow-provisioning.png)
 
 6. Az **Értesítés e-mailben** mezőben adja meg annak a személynek vagy csoportnak az e-mail-címét, aki az átadással kapcsolatos hibaüzeneteket kapja, és jelölje be az **E-mail-értesítés küldése hiba esetén** jelölőnégyzetet.
 
@@ -142,11 +142,16 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   Ez a hiba azt jelzi, hogy a ServiceNow-példánnyal kommunikáló probléma történt. Győződjön meg arról, hogy a következő beállítások *le vannak tiltva* a ServiceNow:
+   Ez a hiba azt jelzi, hogy a ServiceNow-példánnyal kommunikáló probléma történt. 
+   
+   Ha teszteli a kapcsolódási problémákat, próbálja meg **letiltani** a következő beállításokat a ServiceNow:
    
    1. Válassza a **rendszerbiztonsági**  >  **magas biztonsági beállítások**  >  **alapszintű hitelesítés szükséges a bejövő séma-kérelmekhez** beállítást.
    2. Válassza a **Rendszertulajdonságok**  >  **webszolgáltatások**  >  **alapszintű hitelesítés szükséges a bejövő SOAP-kérelmekhez** lehetőséget.
 
+   ![SOAP-kérelem engedélyezése](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
+
+   Ha feloldja a problémákat, lépjen kapcsolatba a ServiceNow támogatási szolgálatával, és kérje meg őket, hogy a hibaelhárításhoz bekapcsolják a SOAP-hibakeresést. 
 ## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -85,6 +85,8 @@
       href: ./how-to-ingest-data-event-hub.md
     - name: Csatlakozás az IoT Hubhoz
       href: ./how-to-ingest-data-iot-hub.md
+    - name: Az Azure Time Series Insights monitorozása
+      href: ./how-to-monitor-tsi.md
     - name: Erőforrások kezelése sablonokkal
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
     - name: Azure Time Series Insights Gen2
@@ -171,6 +173,8 @@
       items:
         - name: JavaScript ügyféloldali SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
+    - name: Adatreferencia monitorozása
+      href: how-to-monitor-tsi-reference.md
     - name: Azure CLI
       href: /cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest
 - name: További források

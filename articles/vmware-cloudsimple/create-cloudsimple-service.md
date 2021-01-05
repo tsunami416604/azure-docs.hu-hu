@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás a CloudSimple által – CloudSimple szolgáltatás létrehozása
 description: Ismerje meg, hogyan hozhatja létre a CloudSimple szolgáltatást a Azure Portalban. Mielőtt elkezdené, tekintse át a szükséges konfigurációt.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53f2d0fc9f73985bd70792c8c3b7607eb4c560fa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140547"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896294"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Az Azure VMware-megoldás létrehozása a CloudSimple szolgáltatással
 
@@ -30,13 +30,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 ## <a name="create-the-service"></a>A szolgáltatás létrehozása
 
 1. Válassza az **Összes szolgáltatás** elemet.
-2. Keressen rá a **CloudSimple Services**kifejezésre.
+2. Keressen rá a **CloudSimple Services** kifejezésre.
     ![CloudSimple szolgáltatás keresése](media/create-cloudsimple-service-search.png)
-3. Válassza a **CloudSimple Services**elemet.
+3. Válassza a **CloudSimple Services** elemet.
 4. Új szolgáltatás létrehozásához kattintson a **Hozzáadás** gombra.
     ![CloudSimple szolgáltatás hozzáadása](media/create-cloudsimple-service-add.png)
 5. Válassza ki azt az előfizetést, amelyben létre szeretné hozni a CloudSimple szolgáltatást.
-6. Válassza ki a szolgáltatáshoz tartozó erőforráscsoportot. Új erőforráscsoport hozzáadásához kattintson az **új létrehozása**lehetőségre.
+6. Válassza ki a szolgáltatáshoz tartozó erőforráscsoportot. Új erőforráscsoport hozzáadásához kattintson az **új létrehozása** lehetőségre.
 7. A szolgáltatás azonosításához adja meg a nevet.
 8. Adja meg a CIDR a Service Gateway számára. Olyan/28 alhálózatot ad meg, amely nem fedi át a helyszíni alhálózatok, az Azure-alhálózatok vagy a tervezett CloudSimple alhálózatok egyikét sem. A CIDR nem módosítható a szolgáltatás létrehozása után.
 

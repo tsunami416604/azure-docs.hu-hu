@@ -1,19 +1,19 @@
 ---
 title: Gyakori kérdések – Azure VMware-megoldás a CloudSimple
 description: 'Ezek a gyakori kérdések az Azure VMware-megoldással kapcsolatban: kapcsolat, hálózatkezelés, biztonság, tárolás, Azure-integráció és egyéb CloudSimple.'
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140887"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895563"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Gyakori kérdések a VMware-megoldásról a CloudSimple
 
@@ -50,7 +50,7 @@ A CloudSimple egy ütemezett karbantartási időszak előtt több nappal biztos�
 * **CloudSimple-infrastruktúra**.  A CloudSimple-infrastruktúra kiválóan elérhető.  Az ilyen típusú karbantartási időszak során a redundáns összetevők egyszerre frissülnek, hogy elkerülje a szolgáltatás megszakadását. Ön gondoskodik a saját felhőalapú vCenter, az összes virtuális géphez, a saját Felhőbeli internetkapcsolatról, valamint a helyszíni vagy az Azure-hoz való csatlakozásról.
 * **CloudSimple-portál**. Az ilyen típusú karbantartási időszak során előfordulhat, hogy a CloudSimple-portál néhány funkciója le van tiltva vagy nem érhető el.  A karbantartási időközt megelőzően az értesítés a szolgáltatásra vonatkozó korlátozásokkal kapcsolatos részleteket tartalmaz, miközben karbantartás zajlik.
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 **Milyen csatlakozási lehetőségek vannak a CloudSimple-régió hálózatához?**
 
@@ -72,7 +72,7 @@ Az Azure ExpressRoute áramkör nagy sebességű, kis késleltetésű és bizton
 
 A hálózati kimenő forgalomért nem számítunk fel CloudSimple díjat.  Az Azure standard díjszabása a virtuális hálózatról vagy a helyszíni ExpressRoute áramkörről érkező kimenő forgalomra vonatkozik.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 **Milyen hálózatkezelési funkciók érhetők el a saját felhőhöz?**
 
@@ -114,7 +114,7 @@ A CloudSimple a következő gazdagép-típusokat kínálja:
 
 A CloudSimple platform és a szolgáltatási operatív csapatok folyamatosan figyelik az összes CloudSimple-infrastruktúrát.  Ha hardverhiba észlelhető, egy új csomópont kerül a saját felhőbe, és a rendszer eltávolítja a meghibásodott csomópontot.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 **Milyen típusú tárterület támogatott a privát felhőben?**
 
@@ -150,7 +150,7 @@ A CloudSimple nem hajtja végre a privát felhőre telepített alkalmazások fri
 
 **Mely Azure-szolgáltatások támogatottak?**
 
-A CloudSimple Azure-beli ExpressRoute-kapcsolódást biztosít az Azure-előfizetéshez.  Az előfizetésben futó összes szolgáltatás kapcsolódhat a saját felhőhöz.  Példák erre vonatkozóan:
+A CloudSimple Azure-beli ExpressRoute-kapcsolódást biztosít az Azure-előfizetéshez.  Az előfizetésben futó összes szolgáltatás kapcsolódhat a saját felhőhöz.  Példák:
 
 * **Azure Active Directory** identitás forrásaként a CloudSimple-vCenter.
 * **Azure Storage** biztonsági másolatok, képek és egyéb adatok tárolására a saját felhőből.

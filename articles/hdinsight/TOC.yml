@@ -419,9 +419,9 @@
               href: ./spark/apache-spark-improve-performance-iocache.md
             - name: Notebookok használata az Apache Sparkban
               items:
-                - name: Helyi Jupyter notebook használata
+                - name: Helyi Jupyter-notebook használata
                   href: ./spark/apache-spark-jupyter-notebook-install-locally.md
-                - name: Jupyter notebookkernelek
+                - name: Jupyter-notebookkernelek
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: 'Külső csomagok használata Jupyterrel, cellafunkciók használatával'
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
@@ -437,7 +437,7 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Hibaelhárítás
           items:
-            - name: Nem sikerült létrehozni a Jupyter Notebook-jegyzetfüzetet
+            - name: Nem sikerült létrehozni a Jupyter-notebookot
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: OutOfMemoryError kivétel
               href: ./spark/apache-spark-troubleshoot-outofmemory.md

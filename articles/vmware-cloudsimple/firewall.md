@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple használatával – tűzfalszabályok és szabályok beállítása
 description: Leírja, hogyan állítható be a saját felhőalapú tűzfalak táblái és szabályai az alhálózatokon és a VLAN-ok forgalmának korlátozására.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32dcfb0c6cd26b5f34afad328db8f383fa1c2a6f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85846878"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895631"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Tűzfalszabályok és szabályok beállítása privát Felhőkhöz
 
@@ -25,8 +25,8 @@ A tűzfalak és a kapcsolódó szabályok lehetővé teszik, hogy korlátozások
 ## <a name="add-a-new-firewall-table"></a>Új tűzfalszabály hozzáadása
 
 1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat** lehetőséget az oldalsó menüben.
-2. Válassza a **Tűzfalszabályok**lehetőséget.
-3. Válassza a **Tűzfalszabály létrehozása**lehetőséget.
+2. Válassza a **Tűzfalszabályok** lehetőséget.
+3. Válassza a **Tűzfalszabály létrehozása** lehetőséget.
 
     ![VLAN/alhálózat lap](media/firewall-tables-page.png)
 
@@ -47,7 +47,7 @@ A tűzfalszabályok határozzák meg, hogy a tűzfal hogyan kezelje a különbö
 
 1. A következő módokon jelenítheti meg a tűzfalszabályok létrehozásához szükséges beállításokat:
     * A tűzfalszabály létrehozásakor kattintson a **szabály hozzáadása** elemre.
-    * Válasszon ki egy adott tűzfal-táblázatot a **hálózat > a tűzfalszabályok** lapon, és kattintson az **Új tűzfalszabály létrehozása**lehetőségre.
+    * Válasszon ki egy adott tűzfal-táblázatot a **hálózat > a tűzfalszabályok** lapon, és kattintson az **Új tűzfalszabály létrehozása** lehetőségre.
 2. Állítsa be a szabályt a következőképpen:
     * **Név**. Adjon nevet a szabálynak.
     * **Prioritás**. Rendeljen hozzá egy prioritást a szabályhoz. A rendszer először az alacsonyabb számú szabályokat hajtja végre.
@@ -74,6 +74,6 @@ A tűzfalszabályok definiálása után megadhatja azokat az alhálózatokat, am
 
 1. A **hálózati**  >  **tűzfal táblái** lapon válasszon ki egy tűzfal-táblázatot.
 2. Nyissa meg a **csatolt VLAN-ok/alhálózat** lapot.
-3. Kattintson **a csatolás egy VLAN/alhálózat**elemre.
+3. Kattintson **a csatolás egy VLAN/alhálózat** elemre.
 4. Válassza ki a privát felhőt és a VLAN-t. Megjelenik a társított alhálózat neve és CIDR-blokkja.
 5. Kattintson a **Submit (Küldés**) gombra.

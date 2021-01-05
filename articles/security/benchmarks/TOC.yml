@@ -153,6 +153,8 @@
       href: ../../azure-signalr/security-baseline.md
     - name: Az Azure SQL Database biztonsági alapkonfigurációja
       href: ../../azure-sql/database/security-baseline.md
+    - name: Az Azure Stack Edge biztonsági alapkonfigurációja
+      href: ../../databox-online/security-baseline.md
     - name: Az Azure Storage biztonsági alapkonfigurációja
       href: ../../storage/common/security-baseline.md
     - name: Az Azure Web Application Firewall biztonsági alapkonfigurációja

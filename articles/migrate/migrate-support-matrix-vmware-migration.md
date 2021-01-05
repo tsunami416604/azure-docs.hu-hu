@@ -6,14 +6,14 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: fa8f9ad2d15730d2a0a2c1a722aa3970bbc8f173
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6e80b1446142786cbd77245a2b6696cac1bb9272
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033986"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897093"
 ---
-# <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
+# <a name="support-matrix-for-vmware-migration"></a>A VMware-migrálás támogatási mátrixa
 
 Ez a cikk a VMware virtuális gépek [Azure Migrate: kiszolgáló áttelepítéssel](migrate-services-overview.md#azure-migrate-server-migration-tool) történő áttelepítésére vonatkozó támogatási beállításokat és korlátozásokat foglalja össze. Ha a VMware virtuális gépeknek az Azure-ba való áttelepítésre való vizsgálatával kapcsolatos információkat keres, tekintse át az [értékelés támogatási mátrixát](migrate-support-matrix-vmware.md).
 
@@ -59,7 +59,7 @@ A táblázat összefoglalja a VMware virtuális gépek ügynök nélküli áttel
 **Linux rendszerű virtuális gépek az Azure-ban** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek.<br/><br/> A Linux rendszerben a Azure Migrate automatikusan végrehajtja a módosításokat a következő operációs rendszereken:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Más operációs rendszerekhez manuálisan végezze el a [szükséges módosításokat](prepare-for-migration.md#verify-required-changes-before-migrating) .
 **Linux rendszerű rendszerindítás** | Ha a/boot dedikált partíción van, akkor az operációsrendszer-lemezen kell lennie, és nem szabad több lemezre osztania.<br/> Ha a/boot a gyökér (/) partíció része, akkor a "/" partíciónak az operációsrendszer-lemezen kell lennie, és nem szabad más lemezekre kiterjednie.
 **UEFI-rendszerindítás** | Támogatott. Az UEFI-alapú virtuális gépek migrálása az Azure 2. generációs virtuális gépekre történik. 
-**Lemez mérete** | 2 TB-OS operációsrendszer-lemez (BIOS-rendszerindítás); 4 TB-OS operációsrendszer-lemez (UEFI-rendszerindítás); 32 TB adatlemezek esetében.
+**Lemez mérete** | 2 TB operációsrendszer-lemez;  32 TB adatlemezek esetében.
 **Lemezterület-korlátok** |  Akár 60 lemez/virtuális gép.
 **Titkosított lemezek/kötetek** | A titkosított lemezekkel/kötetekkel rendelkező virtuális gépek migrálása nem támogatott.
 **Megosztott lemezes fürt** | Nem támogatott.
@@ -122,7 +122,7 @@ A táblázat összefoglalja a VMware VM-támogatást az áttelepíteni kívánt 
 **UEFI-rendszerindítás** | Támogatott. Az UEFI-alapú virtuális gépek migrálása az Azure 2. generációs virtuális gépekre történik. 
 **UEFI – biztonságos rendszerindítás**         | Migrálás esetén nem támogatott.
 **Céllemez** | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, standard SSD, prémium SSD) az Azure-ban.
-**Lemez mérete** | 2 TB-OS operációsrendszer-lemez (BIOS-rendszerindítás); 4 TB-OS operációsrendszer-lemez (UEFI-rendszerindítás); 8 TB adatlemezek esetében.
+**Lemez mérete** | 2 TB operációsrendszer-lemez; 32 TB adatlemezek esetében.
 **Lemezterület-korlátok** |  Akár 63 lemez/virtuális gép.
 **Titkosított lemezek/kötetek** | A titkosított lemezekkel/kötetekkel rendelkező virtuális gépek migrálása nem támogatott.
 **Megosztott lemezes fürt** | Nem támogatott.

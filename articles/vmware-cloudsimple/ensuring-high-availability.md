@@ -1,19 +1,19 @@
 ---
 title: Az alkalmazások magas rendelkezésre állásának biztosítása az Azure-beli VMware-ben való futtatáskor
 description: A CloudSimple magas rendelkezésre állási funkcióit ismerteti a CloudSimple privát felhőben futó alkalmazások általános alkalmazáshiba-forgatókönyvei esetében
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bb1f8bb2aaeab88e5a9ea19534c8983af8c1626
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025350"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895750"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Az alkalmazások magas rendelkezésre állásának biztosítása az Azure-beli VMware-ben való futtatáskor
 
@@ -32,7 +32,7 @@ A CloudSimple megoldás magas rendelkezésre állást biztosít a VMware-en fut�
 | Rack-hiba | IGEN | Elhelyezési csoportok |  |  |
 | Hálózati kapcsolat a helyszíni TARTOMÁNYVEZÉRLŐvel | IGEN  | Redundáns hálózati szolgáltatások |  | Redundáns ER-áramkörök |
 | Az Azure-hoz való hálózati kapcsolat | IGEN | |  | Redundáns ER-áramkörök |
-| Adatközpont-hiba | IGEN |  |  | Rendelkezésre állási zónák |
+| Adatközpont-hiba | IGEN |  |  | Rendelkezésreállási zónák |
 | Regionális hiba | IGEN  |  |  | Azure-régiók |
 
 A CloudSimple által biztosított Azure VMware-megoldás a következő magas rendelkezésre állási funkciókat biztosítja.
@@ -45,7 +45,7 @@ A CloudSimple vezérlő síkja szoftver folyamatosan figyeli a VMware-fürtök �
 
 Egy privát felhőt létrehozó felhasználó kijelölhet egy Azure-régiót és egy elhelyezési csoportot a kiválasztott régión belül. Az elhelyezési csoport több állványon, de ugyanazon a gerincen lévő hálózati szegmensen belül elterjedt csomópontok halmaza. Az azonos elhelyezési csoportban lévő csomópontok legfeljebb két további ugrással rendelkezhetnek egymással. Az elhelyezési csoportok mindig egyetlen Azure rendelkezésre állási zónán belül találhatók, és több állványra is kiterjednek. A CloudSimple-vezérlési sík a saját felhő csomópontjait több állványra osztja el, a legjobb erőfeszítés alapján. A különböző elhelyezési csoportokban lévő csomópontok garantáltan különböző állványokra helyezhetők.
 
-## <a name="availability-zones"></a>Rendelkezésre állási zónák
+## <a name="availability-zones"></a>Rendelkezésreállási zónák
 
 A rendelkezésre állási zónák olyan magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régióban található speciális fizikai helyek. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. Minden régió rendelkezik egy rendelkezésre állási zónával. További információ: [Mi a Availability Zones az Azure-ban?](../availability-zones/az-overview.md).
 

@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: c65833e5bf581c6326bf9362c7e5fc00a985d301
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 01/04/2021
+ms.openlocfilehash: ca27df7188c5edd1da94fc41707f6c25eb4034bf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355029"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895138"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Felügyelt identitások használata az Event hub Azure Stream Analytics feladatokból való eléréséhez (előzetes verzió)
 
@@ -21,13 +21,16 @@ A felügyelt identitás egy Azure Active Directoryban regisztrált felügyelt al
 
 Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást egy Stream Analytics-feladathoz tartozó Event Hubs beviteléhez vagy kimenetéhez a Azure Portalon keresztül.A felügyelt identitás engedélyezése előtt rendelkeznie kell egy Stream Analytics feladatokkal és az Event hub-erőforrással.
 
+### <a name="limitation"></a>Korlátozás
+Az előzetes verzióban a Event Hubs on Azure Portal mintavételi bemenete nem fog működni a felügyelt Identitásos hitelesítési mód használata esetén.
+
 ## <a name="create-a-managedidentity"></a>Felügyelt identitás létrehozása  
 
 Először létre kell hoznia egy felügyelt identitást a Azure Stream Analytics feladatokhoz.  
 
 1. A Azure Portal nyissa meg a Azure Stream Analytics feladatot.  
 
-1. A bal oldali navigációs menüben válassza a konfigurálás területen található **felügyelt identitás** elemet    *Configure*. Ezután jelölje be a **rendszerhez rendelt felügyelt identitás használata** melletti jelölőnégyzetet,   majd válassza a **Mentés** lehetőséget.
+1. A bal oldali navigációs menüben válassza a konfigurálás területen található **felügyelt identitás** elemet    **. Ezután jelölje be a **rendszerhez rendelt felügyelt identitás használata** melletti jelölőnégyzetet,   majd válassza a **Mentés** lehetőséget.
 
    :::image type="content" source="media/event-hubs-managed-identity/system-assigned-managed-identity.png" alt-text="Rendszerhez rendelt felügyelt identitás":::  
 
@@ -51,9 +54,9 @@ Ahhoz, hogy a Stream Analytics-feladatok felügyelt identitás használatával f
 
    |Paraméter|Érték|
    |---------|-----|
-   |Role|Az Azure Event Hubs adattulajdonos|
+   |Szerepkör|Az Azure Event Hubs adattulajdonos|
    |Hozzáférés hozzárendelése ehhez|Felhasználó, csoport vagy egyszerű szolgáltatásnév|
-   |Válassza ezt:|Adja meg a Stream Analytics-feladatoknak a nevét|
+   |Kiválasztás|Adja meg a Stream Analytics-feladatoknak a nevét|
 
    :::image type="content" source="media/event-hubs-managed-identity/add-role-assignment.png" alt-text="Szerepkör-hozzárendelés hozzáadása":::
 
@@ -81,7 +84,7 @@ Most, hogy beállította a felügyelt identitását, készen áll arra, hogy hoz
 
 1. Töltse ki a többi tulajdonságot, és válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics Event Hubs kimenete](event-hubs-output.md)
 * [Adatok streamelése az Event Hubsból](stream-analytics-define-inputs.md#stream-data-from-event-hubs)

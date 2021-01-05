@@ -213,14 +213,20 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
             - name: Virtuális gépek üzembe helyezése – sablonok
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: Virtuális gépek üzembe helyezése – GPU
+              href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
             - name: Virtuális gépek üzembe helyezése – Azure PowerShell-parancsmagok
-              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
             - name: Virtuális gépek üzembe helyezése – Azure PowerShell-szkript
-              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell-script.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
             - name: Virtuális gépek üzembe helyezése – Azure CLI/Python
               href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+            - name: Egyéni szkriptbővítmények üzembe helyezése virtuális gépeken
+              href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: Virtuálisgép-rendszerkép létrehozása
-              href: azure-stack-edge-j-series-create-virtual-machine-image.md
+              href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: Támogatott virtuálisgép-méretek és -típusok
+              href: azure-stack-edge-gpu-virtual-machine-sizes.md
         - name: Tanúsítványok kezelése
           items:
             - name: Követelmények
@@ -293,8 +299,6 @@
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: Megosztott referencia
       items:
-        - name: 'IoT Edge-szerepkör API-n, SDK-n és PowerShellen keresztül'
-          href: azure-stack-edge-gpu-iot-edge-api-update.md
         - name: Azure PowerShell
           href: /powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge
         - name: REST API
@@ -389,6 +393,10 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet
+- name: Biztonság
+  items:
+    - name: Biztonsági alapkonfiguráció
+      href: security-baseline.md
 - name: További források
   items:
     - name: Azure Stack Edge Pro C#-mintamodulok (.NET)

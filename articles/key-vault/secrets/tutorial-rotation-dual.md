@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: e3d657f5f666caf159a082d121d551b839699158
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: e6f0c694a478b32098327d6af838ff00c8eb877a
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882993"
+ms.locfileid: "97897059"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>A titkos kulcs elforgatásának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -224,15 +224,15 @@ Figyelje meg, hogy `value` a kulcs ugyanaz, mint a Key Vault titkos kulcsa:
 
 A rotációs függvények sablon két hitelesítő adathoz és több használatra kész függvényhez:
 
-- [Function sablon a PowerShellben](https://github.com/Azure/KeyVault-Secrets-Rotation-Template-PowerShell)
-- [Redis Cache](https://github.com/Azure/KeyVault-Secrets-Rotation-Redis-PowerShell)
-- [Storage-fiók](https://github.com/Azure/KeyVault-Secrets-Rotation-StorageAccount-PowerShell)
-- [Cosmos DB](https://github.com/Azure/KeyVault-Secrets-Rotation-CosmosDB-PowerShell)
+- [Function sablon a PowerShellben](https://serverlesslibrary.net/sample/bc72c6c3-bd8f-4b08-89fb-c5720c1f997f)
+- [Redis Cache](https://serverlesslibrary.net/sample/0d42ac45-3db2-4383-86d7-3b92d09bc978)
+- [Storage-fiók](https://serverlesslibrary.net/sample/0e4e6618-a96e-4026-9e3a-74b8412213a4)
+- [Cosmos DB](https://serverlesslibrary.net/sample/bcfaee79-4ced-4a5c-969b-0cc3997f47cc)
 
 > [!NOTE]
 > A fenti rotációs funkciókat a Közösség egy tagja hozza létre, és nem a Microsoft. A közösségi Azure Functions semmilyen Microsoft támogatási program vagy szolgáltatás esetében nem támogatottak, és a rendelkezésére álló feltételek semmilyen garanciát nem JELENTenek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Oktatóanyag: [a titkok rotációja a hitelesítő adatok egy készlete esetében](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
 - Áttekintés: [Key Vault figyelése Azure Event Grid](../general/event-grid-overview.md)

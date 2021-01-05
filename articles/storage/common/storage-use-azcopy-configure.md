@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: a54c77844498beb4fd052153cbcf8cbe498cdb75
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132210"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897858"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -28,13 +28,13 @@ Az AzCopy egy parancssori segédprogram, amellyel blobokat és fájlokat másolh
 
 ## <a name="configure-proxy-settings"></a>Proxybeállítások konfigurálása
 
-A AzCopy proxybeállítások konfigurálásához állítsa be a `https_proxy` környezeti változót. Ha Windows rendszeren futtatja az AzCopyt, az AzCopy automatikusan észleli a proxybeállításokat, így Windows rendszeren nem kell használnia ezt a beállítást. Ha ezen beállítás használata mellett dönt Windows rendszeren, az felülírja az automatikus észlelést.
+A AzCopy proxybeállítások konfigurálásához állítsa be a `HTTPS_PROXY` környezeti változót. Ha Windows rendszeren futtatja az AzCopyt, az AzCopy automatikusan észleli a proxybeállításokat, így Windows rendszeren nem kell használnia ezt a beállítást. Ha ezen beállítás használata mellett dönt Windows rendszeren, az felülírja az automatikus észlelést.
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
-| **Windows** | A parancssorban használja a következőket: `set https_proxy=<proxy IP>:<proxy port>`<br> A PowerShellben használja a következőket: `$env:https_proxy="<proxy IP>:<proxy port>"`|
-| **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | A parancssorban használja a következőket: `set HTTPS_PROXY=<proxy IP>:<proxy port>`<br> A PowerShellben használja a következőket: `$env:HTTPS_PROXY="<proxy IP>:<proxy port>"`|
+| **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
+| **macOS** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
 
 A AzCopy jelenleg nem támogatja az NTLM-vagy Kerberos-hitelesítést igénylő proxykat.
 

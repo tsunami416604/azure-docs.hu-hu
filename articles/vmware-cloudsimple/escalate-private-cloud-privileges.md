@@ -2,19 +2,19 @@
 title: Privát Felhőbeli jogosultságok kiterjesztve
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Ismerteti, hogyan lehet jogosultságokat kibővíteni a privát felhőben a vCenter felügyeleti funkcióihoz
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/05/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 628824a3d303184e199452b0974c7f99d99a4933
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2215bd9a60fdcf76077c3a1f2a91631dc0dbe88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86998952"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895822"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Saját Felhőbeli vCenter jogosultságok kiemelése a CloudSimple-portálról
 
@@ -35,7 +35,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 2. Nyissa meg az **erőforrások** lapot, és válassza ki azt a privát felhőt, amelynek a jogosultságait meg szeretné jeleníteni.
 
-3. Az összefoglalás lap alján, a **vSphere-jogosultságok módosítása**területen kattintson a **kiterjesztés**elemre.
+3. Az összefoglalás lap alján, a **vSphere-jogosultságok módosítása** területen kattintson a **kiterjesztés** elemre.
 
     ![VSphere jogosultság módosítása](media/escalate-private-cloud-privilege.png)
 
@@ -57,15 +57,15 @@ A jogosultságok eszkalációja megkezdődik, és a kijelölt intervallum végé
 > Csak egy felhasználó rendelkezhet megadható jogosultságokkal.  Mielőtt egy másik felhasználó jogosultságait kiterjesztheti, meg kell szüntetnie a felhasználó jogosultságait.
 
 > [!CAUTION]
-> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group*szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  A vSphere webes felhasználói felületén csak a szolgáltatási fiókokat kell felvenni a *rendszergazdák* csoportjába, és a szolgáltatásfiókok nem használhatók.
+> Az új felhasználókat csak a *Cloud-Owner-Group*, a *Cloud-Global-cluster-admin-Group*, a *Cloud-Global-Storage-admin-Group*, a *Cloud-Global-Network-admin-Group* vagy a *Cloud-Global-VM-admin-Group* szolgáltatáshoz kell hozzáadni.  A *rendszergazdák* csoportba felvett felhasználók automatikusan el lesznek távolítva.  A vSphere webes felhasználói felületén csak a szolgáltatási fiókokat kell felvenni a *rendszergazdák* csoportjába, és a szolgáltatásfiókok nem használhatók.
 
 ## <a name="extend-privilege-escalation"></a>Jogosultságok kiterjesztésének kiterjesztése
 
 Ha további időre van szüksége a feladatok elvégzéséhez, kiterjesztheti a jogosultság-eszkalációs időszakot.  Válassza ki a további eszkalációs időszakot, amely lehetővé teszi a felügyeleti feladatok végrehajtását.
 
-1. A **Resources**  >  CloudSimple-portál erőforrások**privát felhők** területén válassza ki azt a privát felhőt, amelynek ki szeretné terjeszteni a jogosultságok eszkalációját.
+1. A   >  CloudSimple-portál erőforrások **privát felhők** területén válassza ki azt a privát felhőt, amelynek ki szeretné terjeszteni a jogosultságok eszkalációját.
 
-2. Az összefoglalás lap alján kattintson a **jogosultságok kiterjesztésének kiterjesztése**elemre.
+2. Az összefoglalás lap alján kattintson a **jogosultságok kiterjesztésének kiterjesztése** elemre.
 
     ![Jogosultságok kiterjesztésének kiterjesztése](media/de-escalate-private-cloud-privilege.png)
 
@@ -79,14 +79,14 @@ A rendszergazdai feladatok elvégzése után meg kell szüntetnie a jogosultság
 
 1. A CloudSimple-portál **erőforrások**  >  **privát felhők** területén válassza ki azt a privát felhőt, amelynek a jogosultságait ki szeretné bővíteni.
 
-2. Kattintson a **deeszkaláció**elemre.
+2. Kattintson a **deeszkaláció** elemre.
 
 3. Kattintson az **OK** gombra.
 
 > [!IMPORTANT]
 > A hibák elkerülése érdekében jelentkezzen ki a vCenter, és jelentkezzen be ismét a defokozódó jogosultságok után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VCenter-identitások beállítása a Active Directory használatára](./set-vcenter-identity.md)
 * Biztonsági mentési megoldás telepítése a számítási [feladatok virtuális gépei](./backup-workloads-veeam.md) számára

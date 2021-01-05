@@ -13,7 +13,7 @@
       items:
         - name: A webes portál használata
           href: getting-started-build-a-classifier.md
-        - name: A Custom Vision SDK használata
+        - name: A Custom Vision SDK vagy REST API használata
           href: quickstarts/image-classification.md
     - name: Objektumérzékelő készítése
       items:

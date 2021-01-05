@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: ead878daaab977c77b3ab36f42ccfe4d01d7bc03
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548630"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897501"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
@@ -51,13 +51,13 @@ Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely tov�
 1. A **1,2 alatt telepítse a CEF-gyűjtőt a Linux** rendszerű gépre, másolja a **következő szkript futtatásához tartozó hivatkozást a CEF-gyűjtő telepítéséhez és alkalmazásához**, vagy az alábbi szövegből (a munkaterület-azonosító és az elsődleges kulcs alkalmazása a helyőrzők helyett):
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. A szkript futtatása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
     - Előfordulhat, hogy egy olyan üzenetet kap, amely egy parancs futtatásával kijavít egy problémát a *számítógép* mező leképezésével. A részletekért tekintse [meg a telepítési parancsfájl magyarázatát](#mapping-command) .
 
-1. Folytassa a [2. lépéssel: a biztonsági megoldás konfigurálása a CEF-üzenetek továbbítására](connect-cef-solution-config.md) .
+1. Folytassa a [2. lépéssel: a biztonsági megoldás konfigurálása a CEF-üzenetek továbbítására](connect-cef-solution-config.md).
 
 
 > [!NOTE]
@@ -189,8 +189,7 @@ A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
         A fájl tartalma `security-config-omsagent.conf` :
 
         ```bash
-        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};destination oms_destination {tcp(\"127.0.0.1\" port(25226));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 

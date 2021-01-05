@@ -11,48 +11,58 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/07/2020
-  ms.openlocfilehash: 18f3f2f14d4e04c523a355f699eaf24b8c93bb81
-  ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+  ms.openlocfilehash: 00cef8a146a84c4261dde46785f2ea9bb1c03173
+  ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/15/2020
-  ms.locfileid: "92090012"
+  ms.lasthandoff: 12/31/2020
+  ms.locfileid: "97832335"
 landingContent:
-- title: Az Azure Defender for IoT ismertetése
+- title: Bevezetés az Azure Defender for IoT használatába
   linkLists:
   - linkListType: overview
     links:
     - text: Az Azure Defender for IoT bemutatása
       url: overview.md
-    - text: Az Azure RTOS biztonsági moduljai
-      url: iot-security-azure-rtos.md
-    - text: A megoldás megtervezése
-      url: service-prerequisites.md
-  - linkListType: architecture
-    links:
-    - text: Az Azure Defender for IoT architektúrájának megismerése
+    - text: Megoldásarchitektúra
       url: architecture.md
-    - text: Azure Defender for IoT-ügynökök
-      url: security-agent-architecture.md
+    - text: A beállítás áttekintése
+      url: getting-started.md
+- title: Beállítás és előkészítés – Ügynök nélküli megoldás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: A hálózat beállítása
+      url: how-to-set-up-your-network.md
+    - text: A szükséges berendezések azonosítása
+      url: how-to-identify-required-appliances.md
+    - text: Szoftvertelepítés
+      url: how-to-install-software.md
+- title: A hálózat monitorozása – Ügynök nélküli megoldás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Csatlakoztatott eszközök megtekintése
+      url: how-to-work-with-the-sensor-device-map.md
+    - text: Eszközkészletek megtekintése
+      url: how-to-investigate-sensor-detections-in-a-device-inventory.md
+    - text: Riasztások vizsgálata
+      url: how-to-work-with-alerts-on-your-sensor.md
+    - text: Jelentések előállítása
+      url: how-to-generate-reports.md
+    - text: Az észlelendő forgalom szabályozása
+      url: how-to-control-what-traffic-is-monitored.md
+    - text: Csatlakozás az Azure Sentinelhez
+      url: how-to-configure-with-sentinel.md
+- title: Azure Defender for IoT – Ügynökalapú megoldás
+  linkLists:
+  - linkListType: overview
+    links:
     - text: Biztonsági Edge-modul
       url: security-edge-architecture.md
-- title: Az Azure Defender for IoT előkészítése az IoT Hubba
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Bevezetés az Azure Defender for IoT használatába
-      url: getting-started.md
-    - text: IoT Hub
-      url: iot-hub-integration.md
-    - text: Az Azure RTOS biztonsági modul használatának első lépései
-      url: concept-rtos-security-module.md
-    - text: Biztonsági ügynökök
-      url: security-agents.md
-- title: A megoldás konfigurálása
-  linkLists:
   - linkListType: quickstart
     links:
-    - text: Az Azure Defender for IoT engedélyezése az IoT Hubban
+    - text: Az IoT Hub engedélyezése – Ügynökalapú megoldások
       url: quickstart-onboard-iot-hub.md
     - text: IoT-biztonsági megoldás konfigurálása
       url: quickstart-configure-your-solution.md
@@ -64,40 +74,6 @@ landingContent:
       url: quickstart-create-custom-alerts.md
     - text: Biztonsági riasztások vizsgálata
       url: quickstart-investigate-security-alerts.md
-- title: A megoldás testreszabása
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Az Azure RTOS biztonsági moduljának testreszabása
-      url: how-to-azure-rtos-security-module.md
-    - text: Ügynök kiválasztása
-      url: how-to-deploy-agent.md
-    - text: C#-alapú Azure Defender for IoT biztonsági ügynök üzembe helyezése Windowson
-      url: how-to-deploy-windows-cs.md
-    - text: C#-alapú Azure Defender for IoT biztonsági ügynök üzembe helyezése Linuxon
-      url: how-to-deploy-linux-cs.md
-    - text: C-alapú Azure Defender for IoT biztonsági ügynök üzembe helyezése Linuxon
-      url: how-to-deploy-linux-c.md
-    - text: Biztonsági Edge-modul üzembe helyezése
-      url: how-to-deploy-edge.md
-    - text: Biztonsági ügynökök konfigurálása
-      url: how-to-agent-configuration.md
-    - text: Saját biztonsági üzenetek küldése
-      url: how-to-send-security-messages.md
-    - text: Hozzáférés a nyers biztonsági adatokhoz
-      url: how-to-security-data-access.md
-    - text: Eszköz vizsgálata
-      url: how-to-investigate-device.md
-- title: Biztonsági ügynök hibaelhárítása
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Biztonsági ügynök hibaelhárítási útmutatója (Linux)
-      url: troubleshoot-agent.md
-    - text: A LocalConfiguration.json fájl ismertetése – C-ügynök
-      url: azure-iot-security-local-configuration-c.md
-    - text: A lokális konfigurációs fájl ismertetése – C#-ügynök
-      url: azure-iot-security-local-configuration-csharp.md
 - title: Az Azure Defender for IoT-megoldás erőforrásai
   linkLists:
   - linkListType: video

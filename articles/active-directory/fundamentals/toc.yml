@@ -25,6 +25,28 @@
   items:
     - name: Biztonság
       items:
+        - name: Biztonságos külső hozzáférés az erőforrásokhoz
+          items:
+            - name: A biztonságos külső hozzáférés áttekintése
+              href: secure-external-access-resources.md
+            - name: 1. A biztonsági helyzet meghatározása
+              href: 1-secure-access-posture.md
+            - name: 2. A jelenlegi állapot meghatározása
+              href: 2-secure-access-current-state.md
+            - name: 3. Biztonsági terv létrehozása
+              href: 3-secure-access-plan.md
+            - name: 4. A hozzáférés biztonságossá tétele csoportokkal
+              href: 4-secure-access-groups.md
+            - name: 5. A hozzáférés biztonságossá tétele B2B-együttműködéssel
+              href: 5-secure-access-b2b.md
+            - name: 6. A hozzáférés biztonságossá tétele jogosultságkezeléssel
+              href: 6-secure-access-entitlement-managment.md
+            - name: 7. A hozzáférés biztonságossá tétele feltételes hozzáféréssel
+              href: 7-secure-access-conditional-access.md
+            - name: 8. A hozzáférés biztonságossá tétele bizalmassági címkékkel
+              href: 8-secure-access-sensitivity-labels.md
+            - name: '9. A Teamshez, a SharePointhoz és a OneDrive-hoz való hozzáférés biztonságossá tétele'
+              href: 9-secure-access-teams-sharepoint.md
         - name: MFA engedélyezése
           href: concept-fundamentals-mfa-get-started.md
         - name: Alapértelmezett biztonsági szabályok

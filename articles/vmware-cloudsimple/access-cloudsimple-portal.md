@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás elérése a CloudSimple-portálon
 description: Leírja, hogyan érhető el a VMware Solution by CloudSimple portálja az Azure Portalról
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/04/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0ea178655646f7f130476acaffc35c60181968ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0aa7a9a1f19a9d4fb2c555b08753e0b57c657974
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87058706"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895155"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>A VMware-megoldás elérése a CloudSimple-portálon a Azure Portal
 
@@ -40,11 +40,11 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-2. Keressen rá a **CloudSimple Services**kifejezésre.
+2. Keressen rá a **CloudSimple Services** kifejezésre.
 
 3. Válassza ki azt a CloudSimple-szolgáltatást, amelyen létre szeretné hozni a saját Felhőjét.
 
-4. Az **Áttekintés** lapon kattintson **az Ugrás a CloudSimple portálra**elemre.  Ha első alkalommal éri el a CloudSimple-Azure Portal portált, a rendszer felszólítja, hogy engedélyezze a [CloudSimple szolgáltatás-engedélyezési](#consent-to-cloudsimple-service-authorization-application) alkalmazást. 
+4. Az **Áttekintés** lapon kattintson **az Ugrás a CloudSimple portálra** elemre.  Ha első alkalommal éri el a CloudSimple-Azure Portal portált, a rendszer felszólítja, hogy engedélyezze a [CloudSimple szolgáltatás-engedélyezési](#consent-to-cloudsimple-service-authorization-application) alkalmazást. 
 
     ![A CloudSimple-portál elindítása](media/launch-cloudsimple-portal.png)
 
@@ -69,7 +69,7 @@ Ha az engedélyei nem engedélyezik a hozzáférést a CloudSimple-portálhoz, f
 
 ![Hozzájárulás a CloudSimple szolgáltatás engedélyezéséhez – rendszergazdákat igényel](media/cloudsimple-azure-consent-requires-administrator.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [hozhat létre saját felhőt](./create-private-cloud.md)
 * Ismerje meg, hogyan [konfigurálhatja a saját felhőalapú környezetét](quickstart-create-private-cloud.md)

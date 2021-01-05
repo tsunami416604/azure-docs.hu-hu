@@ -544,18 +544,40 @@
           href: platform/alerts-resource-move.md
         - name: Informatikai szolgáltatásfelügyelet
           items:
-            - name: Informatikai szolgáltatásfelügyeleti összekötő
+            - name: Az ITSM-összekötő áttekintése
               href: platform/itsmc-overview.md
-            - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
-              href: platform/itsmc-connections.md
-            - name: Informatikai szolgáltatásfelügyeleti összekötő definíciója
+            - name: Partnerek beállítása az ITSM-összekötőben
+              items:
+                - name: Áttekintés
+                  href: platform/itsmc-connections.md
+                - name: ServiceNow
+                  href: platform/itsmc-connections-servicenow.md
+                - name: System Center Service Manager
+                  items:
+                    - name: Telepítés
+                      href: platform/itsmc-connections-scsm.md
+                    - name: Service Manager-webalkalmazás létrehozása
+                      href: platform/itsmc-service-manager-script.md
+                - name: Cherwell
+                  href: platform/itsmc-connections-cherwell.md
+                - name: Provance
+                  href: platform/itsmc-connections-provance.md
+            - name: Az ITSM-összekötő Azure-beli konfigurálása
               href: platform/itsmc-definition.md
-            - name: Service Manager-webalkalmazás létrehozása
-              href: platform/itsmc-service-manager-script.md
+            - name: Az ITSM-termékből szinkronizált adatok
+              href: platform/itsmc-synced-data.md
             - name: Hibaelhárítás az ITSM-összekötőben
               href: platform/itsmc-resync-servicenow.md
             - name: Integrálás a Secure Exporttal
-              href: platform/it-service-management-connector-secure-webhook-connections.md
+              items:
+                - name: Áttekintés
+                  href: platform/it-service-management-connector-secure-webhook-connections.md
+                - name: Azure-konfiguráció biztonságos exportálása
+                  href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
+                - name: BMC
+                  href: platform/itsmc-secure-webhook-connections-bmc.md
+                - name: ServiceNow
+                  href: platform/itsmc-secure-webhook-connections-servicenow.md
         - name: Klasszikus riasztási szabályok migrálása
           items:
             - name: A klasszikus riasztások bemutatása
@@ -790,6 +812,8 @@
               href: app/snapshot-debugger.md
             - name: Pillanatkép-hibakereső engedélyezése App Service-hez
               href: app/snapshot-debugger-appservice.md
+            - name: Pillanatkép-hibakereső engedélyezése függvényalkalmazáshoz
+              href: app/snapshot-debugger-function-app.md
             - name: Pillanatkép-hibakereső engedélyezése más környezetekhez
               href: app/snapshot-debugger-vm.md
             - name: A Snapshot Debugger frissítése

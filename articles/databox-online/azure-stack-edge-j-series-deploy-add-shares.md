@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/22/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 919ec1c3c2b71b7d9aecb90d434aa919c7188d38
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740912"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897614"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Oktatóanyag: adatok átvitele megosztásokon keresztül Azure Stack Edge Pro GPU-val
 
@@ -43,7 +43,7 @@ Mielőtt megkezdené a megosztások hozzáadását Azure Stack Edge Pro-hoz, üg
 
 Megosztás létrehozásához hajtsa végre a következő eljárást:
 
-1. A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stack Edge-erőforrást, majd lépjen az **Áttekintés** elemre. Az eszköznek online állapotban kell lennie.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stack Edge-erőforrást, majd lépjen az **Áttekintés** elemre. Az eszköznek online állapotban kell lennie. Válassza a **felhőalapú tároló-átjáró** elemet.
 
    ![Eszköz online](./media/azure-stack-edge-j-series-deploy-add-shares/device-online-1.png)
 
@@ -51,7 +51,7 @@ Megosztás létrehozásához hajtsa végre a következő eljárást:
 
    ![Megosztás hozzáadása](./media/azure-stack-edge-j-series-deploy-add-shares/select-add-share-1.png)
 
-3. A **megosztás hozzáadása** panelen hajtsa végre a következő eljárást:
+3. A **megosztás hozzáadása** panelen hajtsa végre az alábbi lépéseket:
 
     a. A **név** mezőben adjon meg egy egyedi nevet a megosztáshoz.  
     A megosztás neve csak betűket, számokat és kötőjeleket tartalmazhat. 3 – 63 karakter hosszúnak kell lennie, és betűvel vagy számmal kell kezdődnie. A kötőjelek előtt betűnek vagy számnak kell lennie, és utána kell következnie.
@@ -185,7 +185,7 @@ Az Azure Stack Edge Pro-eszközhöz csatlakoztatott Linux-ügyfélen hajtsa vég
 > - Egy fájl megosztásból való törlése nem törli a bejegyzést az Azure Storage-fiókban.
 > - Ha az `rsync` NFS-en keresztül történő másolásra használja, használja a `--inplace` jelzőt. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következő Azure Stack Edge Pro-témaköröket:
 

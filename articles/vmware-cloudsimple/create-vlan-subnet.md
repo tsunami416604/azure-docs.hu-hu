@@ -1,19 +1,19 @@
 ---
 title: VLAN-ok/alhálózatok létrehozása – Azure VMware-megoldás CloudSimple
 description: Azure VMware Solutions by CloudSimple – ismerteti, hogyan hozhat létre és kezelhet VLAN-okat/alhálózatokat a privát felhők számára, majd alkalmazhatja a tűzfalszabályok alkalmazását.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c0160513eb9abca54adbc3819b982348dc202c90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06bebcb7369f6604fc79c1d3d0a4a6afa8b0a1da
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77565995"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896311"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>VLAN-ok/alhálózatok létrehozása és kezelése saját felhők számára
 
@@ -22,8 +22,8 @@ Nyissa meg a hálózat oldalon a VLAN-ok/alhálózatok lapot, és hozzon létre 
 ## <a name="create-a-vlansubnet"></a>VLAN/alhálózat létrehozása
 
 1. [Nyissa meg a CloudSimple-portált](access-cloudsimple-portal.md) , és válassza a **hálózat** lehetőséget az oldalsó menüben.
-2. Válassza a **VLAN-ok/alhálózatok**lehetőséget.
-3. Kattintson a **VLAN/alhálózat létrehozása**lehetőségre.
+2. Válassza a **VLAN-ok/alhálózatok** lehetőséget.
+3. Kattintson a **VLAN/alhálózat létrehozása** lehetőségre.
 
     ![VLAN/alhálózat lap](media/vlan-subnet-page.png)
 
@@ -56,7 +56,7 @@ A tűzfalak és a kapcsolódó szabályok a **Network > Firewall Tables** lapon 
 
 ## <a name="edit-a-vlansubnet"></a>VLAN/alhálózat szerkesztése
 
-Egy VLAN/alhálózat beállításainak szerkesztéséhez válassza ki a **VLAN-ok/alhálózatok** lapon, és kattintson a **Szerkesztés** ikonra. Módosítsa a módosításokat, és kattintson a **Submet**elemre.
+Egy VLAN/alhálózat beállításainak szerkesztéséhez válassza ki a **VLAN-ok/alhálózatok** lapon, és kattintson a **Szerkesztés** ikonra. Módosítsa a módosításokat, és kattintson a **Submet** elemre.
 
 ## <a name="delete-a-vlansubnet"></a>VLAN/alhálózat törlése
 

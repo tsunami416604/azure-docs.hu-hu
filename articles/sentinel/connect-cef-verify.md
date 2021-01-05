@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 974418a1b3c1e7fe93b2f6839c16169e5bd5abc5
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 557f53e39781406674b9903dcf0bb3cb536cd804
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696999"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897484"
 ---
 # <a name="step-3-validate-connectivity"></a>3. lépés: a kapcsolat ellenőrzése
 
@@ -44,7 +44,7 @@ Vegye figyelembe, hogy körülbelül 20 percet vesz igénybe, amíg a naplók me
 1. Futtassa a következő szkriptet a log továbbítón (a munkaterület AZONOSÍTÓjának alkalmazása a helyőrző helyett) a biztonsági megoldás, a naplózási továbbító és az Azure Sentinel közötti kapcsolat vizsgálatához. Ez a szkript ellenőrzi, hogy a démon figyeli-e a megfelelő portokat, hogy a továbbítás megfelelően van-e konfigurálva, és hogy semmi sem blokkolja a démon és a Log Analytics ügynök közötti kommunikációt. Emellett a "TestCommonEventFormat" nevű ál-üzeneteket is elküldi a végpontok közötti kapcsolat vizsgálatához. <br>
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
     ```
 
    - Előfordulhat, hogy egy olyan üzenetet kap, amely egy parancs futtatásával kijavít egy problémát a ***számítógép* mező leképezésével**. A részletekért tekintse [meg az érvényesítési parancsfájl magyarázatát](#mapping-command) .
@@ -207,8 +207,7 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
     - Konfigurációs fájl: `/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
         ```bash
-        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};destination oms_destination {tcp(\"127.0.0.1\" port(25226));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 

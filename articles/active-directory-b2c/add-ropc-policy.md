@@ -12,12 +12,12 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: edeee364ca4db1439688bba1a206b3de247d19ec
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 6afe9814757d894c61ab3154bbff02791a830ddd
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618759"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895070"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>Erőforrás-tulajdonosi jelszó hitelesítő adatainak beállítása Azure Active Directory B2C
 
@@ -308,7 +308,7 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 A tényleges POST-kérelem a következő példához hasonlóan néz ki:
 
 ```https
-POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1A_ROPC_Auth HTTP/1.1
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1A_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -369,6 +369,6 @@ A sikeres válasz a következő példához hasonlít:
 
 Azure AD B2C megfelel a OAuth 2,0 szabványoknak a nyilvános ügyfél erőforrás-tulajdonos jelszavának hitelesítő adataihoz, és kompatibilisnek kell lennie a legtöbb ügyféloldali SDK-val. A legfrissebb információkért tekintse meg a [OAuth 2,0-hez készült natív app SDK-t és az OpenID connectet a modern ajánlott eljárások megvalósításához](https://appauth.io/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Töltse le a GitHubról, [az Android](https://aka.ms/aadb2cappauthropc) és [az iOS](https://aka.ms/aadb2ciosappauthropc)rendszerhez készült Azure ad B2C használatára konfigurált munkamintákat.

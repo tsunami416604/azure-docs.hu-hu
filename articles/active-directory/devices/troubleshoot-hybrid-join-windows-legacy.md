@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 057ff064264485a9aea6fc2b31fe57ce37c805ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079019"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895614"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz 
 
@@ -32,7 +32,7 @@ Windows 10 vagy Windows Server 2016 esetén tekintse meg a következőt: a [hibr
 
 Ez a cikk azt feltételezi, hogy a [hibrid Azure Active Directory csatlakoztatott eszközöket úgy konfigurálta](hybrid-azuread-join-plan.md) , hogy támogassa a következő forgatókönyveket:
 
-- Eszköz alapú feltételes hozzáférés
+- Eszközalapú feltételes hozzáférés
 
 Ez a cikk a lehetséges problémák megoldásával kapcsolatos hibaelhárítási útmutatást nyújt.  
 
@@ -44,6 +44,7 @@ Ez a cikk a lehetséges problémák megoldásával kapcsolatos hibaelhárítási
 - A felhasználói adatok lapon több bejegyzést is megadhat egy eszközhöz az operációs rendszer újratelepítése, illetve a manuális ismételt regisztráció miatt.
 - Az eszközök kezdeti regisztrálása/csatlakoztatása úgy van konfigurálva, hogy a bejelentkezés vagy a zárolás/zárolás feloldására irányuló kísérletet végezzen. Egy Feladatütemező feladat 5 perces késleltetést váltott ki. 
 - Győződjön meg arról, hogy a [KB4284842](https://support.microsoft.com/help/4284842) telepítve van a Windows 7 SP1 vagy a windows Server 2008 R2 SP1 esetén. Ez a frissítés megakadályozza a jövőbeli hitelesítési hibákat, mivel a jelszó módosítása után az ügyfél a védett kulcsokhoz való hozzáférésének elvesztése miatt megszakadt.
+- A hibrid Azure AD-csatlakozás meghiúsulhat, ha egy felhasználó UPN-módosítása megtörtént, és a zökkenőmentes SSO-hitelesítési folyamat megszakad. Az illesztési folyamat során láthatja, hogy továbbra is elküldi a régi UPN-t az Azure AD-nek, kivéve, ha a böngésző-munkamenet cookie-jait törlik, vagy a felhasználó explicit módon kijelentkezik, és eltávolítja a régi UPN-t.
 
 ## <a name="step-1-retrieve-the-registration-status"></a>1. lépés: a regisztrációs állapot beolvasása 
 
@@ -65,7 +66,7 @@ Ha az eszköz nem csatlakozott a hibrid Azure AD-hez, az "összekapcsolás" gomb
 
 - Helytelenül konfigurált AD FS vagy Azure AD-vagy hálózati probléma
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. Az e-mail-címet tartalmazó szöveg azt jelzi, hogy egy adott eszköz egy munkahelyhez csatlakozik." border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. A szöveges jelentések azt jelzik, hogy hiba történt a fiók hitelesítése során." border="false":::
     
    - A Autoworkplace.exe nem tud csendes hitelesítést végezni az Azure AD-vel vagy AD FSval. Ezt okozhatja a hiányzó vagy helytelenül konfigurált AD FS (összevont tartományok esetében), illetve hiányzik vagy helytelenül konfigurált Azure AD zökkenőmentes önálló Sign-On (felügyelt tartományokhoz) vagy hálózati problémák. 
    - Előfordulhat, hogy a többtényezős hitelesítés (MFA) engedélyezve van/konfigurálva van a felhasználóhoz, és a WIAORMULTIAUTHN nincs konfigurálva a AD FS-kiszolgálón. 
@@ -76,7 +77,7 @@ Ha az eszköz nem csatlakozott a hibrid Azure AD-hez, az "összekapcsolás" gomb
    - A szervezet az Azure AD zökkenőmentes egyszeri bejelentkezést használja, `https://autologon.microsoftazuread-sso.com` vagy `https://aadg.windows.net.nsatc.net` nem szerepel az eszköz IE intranetes beállításain, és az **állapotsoron keresztüli frissítés engedélyezése parancsfájl használatával** nincs engedélyezve az intranetes zónában.
 - Nincs bejelentkezve tartományi felhasználóként
 
-   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. Az e-mail-címet tartalmazó szöveg azt jelzi, hogy egy adott eszköz egy munkahelyhez csatlakozik." border="false":::
+   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. A szöveges jelentések azt jelzik, hogy hiba történt a fiók ellenőrzése során." border="false":::
 
    Ez a következő okok miatt fordulhat elő:
 
@@ -84,11 +85,11 @@ Ha az eszköz nem csatlakozott a hibrid Azure AD-hez, az "összekapcsolás" gomb
    - Az ügyfél nem tud csatlakozni a tartományvezérlőhöz.    
 - Elérte A kvótát
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. Az e-mail-címet tartalmazó szöveg azt jelzi, hogy egy adott eszköz egy munkahelyhez csatlakozik." border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. A szöveg hibát jelez, mert a felhasználó elérte a csatlakoztatott eszközök maximális számát." border="false":::
 
 - A szolgáltatás nem válaszol 
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. Az e-mail-címet tartalmazó szöveg azt jelzi, hogy egy adott eszköz egy munkahelyhez csatlakozik." border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="A Windows Workplace Join párbeszédpanel képernyőképe. A szöveges jelentések azt jelzik, hogy hiba történt, mert a kiszolgáló nem válaszolt." border="false":::
 
 Az állapotadatok az eseménynaplóban találhatók: **alkalmazások és szolgáltatások Log\Microsoft-Workplace JOIN**
   

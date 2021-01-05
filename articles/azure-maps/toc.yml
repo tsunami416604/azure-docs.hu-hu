@@ -9,6 +9,8 @@
   items:
     - name: Webalkalmazás létrehozása
       href: quick-demo-map-app.md
+    - name: Android-alkalmazás létrehozása
+      href: quick-android-map.md
 - name: Oktatóanyagok
   items:
     - name: Webes SDK – oktatóanyagok
@@ -21,6 +23,10 @@
           href: tutorial-prioritized-routes.md
         - name: Tárolólokátor létrehozása
           href: tutorial-create-store-locator.md
+    - name: Android SDK-oktatóanyagok
+      items:
+        - name: GeoJSON-adatok betöltése térképbe
+          href: tutorial-load-geojson-file-android.md
     - name: REST API – oktatóanyagok
       items:
         - name: Beltéri térképek létrehozása
@@ -238,16 +244,28 @@
           href: how-to-use-android-map-control-library.md
         - name: A térkép stílusának módosítása
           href: set-android-map-styles.md
+        - name: Adatforrás létrehozása
+          href: create-data-source-android-sdk.md
         - name: Szimbólumréteg hozzáadása
           href: how-to-add-symbol-to-android-map.md
+        - name: Buborékréteg hozzáadása
+          href: map-add-bubble-layer-android.md
         - name: Alakzatok hozzáadása
           href: how-to-add-shapes-to-android-map.md
+        - name: Hőtérképréteg hozzáadása
+          href: map-add-heat-map-layer-android.md
+        - name: Vonalréteg hozzáadása
+          href: android-map-add-line-layer.md
         - name: Funkcióinformációk megjelenítése
           href: display-feature-information-android.md
         - name: Mozaikréteg hozzáadása
           href: how-to-add-tile-layer-android-map.md
         - name: Forgalomadatok megjelenítése
           href: how-to-show-traffic-android.md
+        - name: Adatvezérelt kifejezések használata
+          href: data-driven-style-expressions-android-sdk.md
+        - name: Reagálás az eseményekre
+          href: android-map-events.md
     - name: Az Azure Maps használata a Power BI-ban
       items:
         - name: Első lépések

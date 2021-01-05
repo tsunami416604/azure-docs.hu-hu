@@ -297,6 +297,9 @@
         - name: Git-integráció
           displayName: github gitlab
           href: concept-train-model-git-integration.md
+        - name: Környezetek hibaelhárítása
+          displayName: 'troubleshoot, envrionment, debug, image'
+          href: how-to-troubleshoot-environments.md
     - name: Adatok használata
       items:
         - name: Adatcímkézés
@@ -354,14 +357,6 @@
         - name: Hiperparaméterek hangolása
           displayName: 'parameter, hyperparameter, hyperdrive'
           href: how-to-tune-hyperparameters.md
-        - name: Az MLflow használata
-          items:
-            - name: Kísérletek nyomon követése az MLflow használatával
-              displayName: 'log, monitor, deploy, metrics,  model registry, register'
-              href: how-to-use-mlflow.md
-            - name: Azure Databricks-futtatások nyomon követése az MLflow használatával
-              displayName: 'log, monitor, deploy, metrics, databricks'
-              href: how-to-use-mlflow-azure-databricks.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -404,6 +399,17 @@
           href: how-to-use-secrets-in-runs.md
         - name: Megerősítő tanulás
           href: how-to-use-reinforcement-learning.md
+    - name: Az MLflow használata
+      items:
+        - name: Kísérletek nyomon követése az MLflow használatával
+          displayName: 'log, monitor, metrics, model registry, register'
+          href: how-to-use-mlflow.md
+        - name: Azure Databricks-futtatások nyomon követése az MLflow használatával
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-use-mlflow-azure-databricks.md
+        - name: MLflow-modellek üzembe helyezése
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-deploy-models-with-mlflow.md
     - name: Automatizált gépi tanulás
       displayName: 'automl, auto ml'
       items:
@@ -468,9 +474,9 @@
               href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA-következtetés
               href: how-to-deploy-fpga-web-service.md
-        - name: Hibakeresés és hibaelhárítás
+        - name: Üzembe helyezés hibaelhárítása
           href: how-to-troubleshoot-deployment.md
-        - name: Hibakeresés és hibaelhárítás (helyi)
+        - name: Üzemelő példány (helyi) hibaelhárítása
           href: how-to-troubleshoot-deployment-local.md
         - name: Webszolgáltatás felhasználása
           displayName: create client consume request response synchronous
@@ -536,12 +542,12 @@
             - name: Python-kód futtatása
               displayName: 'feature extraction, feature engineering'
               href: how-to-designer-python.md
-        - name: Folyamatok hibakeresése és hibaelhárítása
+        - name: Folyamatok hibaelhárítása
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: Folyamatadatok naplózása az Application Insightsba
           href: how-to-log-pipelines-application-insights.md
-        - name: Párhuzamos futtatási lépés hibakeresése és hibaelhárítása
+        - name: A ParallelRunStep hibaelhárítása
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
     - name: Azure Pipelines a CI/CD-hez
@@ -601,11 +607,10 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: Szolgáltatási korlátozások
+      href: resource-limits-quotas-capacity.md
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Ismert problémák
-      displayName: 'bugs, errors, troubleshoot'
-      href: resource-known-issues.md
     - name: Felhasználói fórum
       href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow

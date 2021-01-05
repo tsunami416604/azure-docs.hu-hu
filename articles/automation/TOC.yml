@@ -27,6 +27,8 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Python-runbook létrehozása
       href: learn/automation-tutorial-runbook-textual-python2.md
+    - name: Python 3-runbook létrehozása
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: Alapelvek
   items:
     - name: Az Automation-fiókok hitelesítésének áttekintése
@@ -96,6 +98,8 @@
           href: shared-resources/variables.md
         - name: Python 2-csomagok kezelése
           href: python-packages.md
+        - name: Python 3-csomagok kezelése
+          href: python-3-packages.md
         - name: Megosztott erőforrások hibaelhárítása
           href: troubleshoot/shared-resources.md
     - name: Folyamatautomatizálás

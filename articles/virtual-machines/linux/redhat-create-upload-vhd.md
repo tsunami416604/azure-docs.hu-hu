@@ -1,24 +1,26 @@
 ---
 title: Red Hat Enterprise Linux VHD létrehozása és feltöltése az Azure-ban való használatra
 description: Ismerje meg, hogyan hozhat létre és tölthet fel egy Red Hat Linux operációs rendszert tartalmazó Azure-beli virtuális merevlemezt (VHD-t).
-author: gbowerman
+author: danielsollondon
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 05/17/2019
-ms.author: guybo
-ms.openlocfilehash: 8c352b9e6b067724fbfc00bf5b0338baf8514421
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/01/2020
+ms.author: danis
+ms.openlocfilehash: 065b4348675fcd48088fd26db0e0293eb2d7a387
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500495"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896464"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése az Azure-beli használatra
 Ebből a cikkből megtudhatja, hogyan készítheti elő Red Hat Enterprise Linux (RHEL) virtuális gépet az Azure-ban való használatra. A cikkben tárgyalt RHEL-verziók 6,7 + és 7.1 +. A cikkben tárgyalt, a Hyper-V, a kernel-alapú virtuális gép (KVM) és a VMware. A Red Hat felhőalapú hozzáférési programjában való részvételre vonatkozó jogosultsági követelményekkel kapcsolatos további információkért tekintse [meg a Red Hat Cloud Access webhelyét](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) , és [futtassa a RHEL az Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)-ban című témakört. A RHEL-lemezképek készítésének automatizálásához tekintse meg az [Azure Image Builder](./image-builder-overview.md)című témakört.
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Red Hat-alapú virtuális gép előkészítése a Hyper-V kezelőjéből
+## <a name="hyper-v-manager"></a>Hyper-V kezelője
+
+Ebből a szakaszból megtudhatja, hogyan készítse elő a [RHEL 6](#rhel-6-using-hyper-v-manager) vagy a [RHEL 7](#rhel-7-using-hyper-v-manager) rendszerű virtuális gépet a Hyper-V kezelőjével.
 
 ### <a name="prerequisites"></a>Előfeltételek
 Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat webhelyről, és telepítette a RHEL-lemezképet egy virtuális merevlemezre (VHD). A Hyper-V kezelőjének operációsrendszer-rendszerkép telepítéséhez való használatával kapcsolatos további információkért lásd: [a Hyper-v szerepkör telepítése és a virtuális gép konfigurálása](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
@@ -28,12 +30,13 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 * Az Azure nem támogatja a VHDX formátumot. Az Azure csak a rögzített VHD-t támogatja. A Hyper-V kezelőjével átalakíthatja a lemezt VHD formátumba, vagy használhatja a convert-VHD parancsmagot is. Ha VirtualBox-t használ, a lemez létrehozásakor válassza a **rögzített méret** lehetőséget a dinamikusan lefoglalt alapértelmezett beállítással szemben.
 * Az Azure támogatja a Gen1 (BIOS rendszerindítási) & Gen2 (UEFI rendszerindítási) virtuális gépeket.
 * A VHD számára engedélyezett maximális méret 1 023 GB.
-* A logikai kötet-kezelő (LVM) támogatott, és az operációsrendszer-lemezen vagy az Azure-beli virtuális gépeken található adatlemezeken is használható. Általánosságban azonban ajánlott standard partíciókat használni az operációsrendszer-lemezen az LVM helyett. Ezzel a gyakorlattal elkerülhető, hogy az LVM Name ütközik a klónozott virtuális gépekkel, különösen akkor, ha az operációs rendszer lemezét egy másik azonos virtuális géphez kell csatlakoztatni a hibaelhárításhoz. Lásd még: az  [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és a [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dokumentációja.
-* Az univerzális lemezes formázású (UDF-) fájlrendszerek kernel-támogatása szükséges. Az Azure első indításakor a vendéghez csatlakoztatott UDF formátumú adathordozó továbbítja a kiépítési konfigurációt a linuxos virtuális gépre. Az Azure Linux-ügynöknek képesnek kell lennie az UDF fájlrendszer csatlakoztatására a konfigurációjának olvasásához és a virtuális gép kiépítéséhez.
-* Ne állítson be swap partíciót az operációs rendszer lemezén. A Linux-ügynök úgy konfigurálható, hogy lapozófájlt hozzon létre az ideiglenes erőforrás lemezén.  Erről további információt a következő lépésekben találhat.
+* A logikai kötet-kezelő (LVM) támogatott, és az operációsrendszer-lemezen vagy az Azure-beli virtuális gépeken található adatlemezeken is használható. Általánosságban azonban ajánlott standard partíciókat használni az operációsrendszer-lemezen az LVM helyett. Ezzel a gyakorlattal elkerülhető, hogy az LVM Name ütközik a klónozott virtuális gépekkel, különösen akkor, ha az operációs rendszer lemezét egy másik azonos virtuális géphez kell csatlakoztatni a hibaelhárításhoz. Lásd még: az  [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és a [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dokumentációja.
+* Az **univerzális lemezes formázású (UDF-) fájlrendszerek kernel-támogatása szükséges**. Az Azure első indításakor a vendéghez csatlakoztatott UDF formátumú adathordozó továbbítja a kiépítési konfigurációt a linuxos virtuális gépre. Az Azure Linux-ügynöknek képesnek kell lennie csatlakoztatni az UDF fájlrendszert a konfigurációjának olvasásához és a virtuális gép üzembe helyezéséhez, így a kiépítés sikertelen lesz.
+* Ne állítson be swap partíciót az operációs rendszer lemezén. Erről további információt a következő lépésekben találhat.
+
 * Az Azure-ban az összes virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről VHD-re való konvertáláskor gondoskodnia kell arról, hogy a nyers lemez mérete a konverzió előtt egy 1MB többszöröse legyen. További részleteket az alábbi lépésekben találhat. További információért lásd a [Linux telepítési megjegyzéseit](create-upload-generic.md#general-linux-installation-notes) is.
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>RHEL 6 virtuális gép előkészítése a Hyper-V kezelőjéből
+### <a name="rhel-6-using-hyper-v-manager"></a>RHEL 6 a Hyper-V kezelőjével
 
 1. A Hyper-V kezelőjében válassza ki a virtuális gépet.
 
@@ -156,7 +159,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 1. Kattintson a **művelet**  >  **leállítása** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>RHEL 7 virtuális gép előkészítése a Hyper-V kezelőjéből
+### <a name="rhel-7-using-hyper-v-manager"></a>RHEL 7 a Hyper-V kezelőjével
 
 1. A Hyper-V kezelőjében válassza ki a virtuális gépet.
 
@@ -235,25 +238,89 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     # sudo systemctl enable waagent.service
     ```
 
-1. Ne hozzon létre lapozófájlt az operációs rendszer lemezén.
-
-    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, megfelelően módosítsa a következő paramétereket `/etc/waagent.conf` :
+1. A Cloud-init telepítése a kiépítés kezelésére
 
     ```console
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # Configure waagent for cloud-init
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo Removing swapfile - RHEL uses a swapfile by default
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
+
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
     ```
 
+1. A swap konfiguráció nem hoz létre lapozófájlt az operációs rendszer lemezén.
+
+    Korábban az Azure Linux-ügynököt a virtuális géphez a virtuális gép üzembe helyezése után az Azure-ban való kiépítés után a rendszer automatikusan konfigurálja a swap-helyet. Ezt azonban a Cloud-init kezeli, **nem szabad** a Linux-ügynököt az erőforrás lemezének formázására használni, megfelelően módosítani a következő paramétereket `/etc/waagent.conf` :
+
+    ```console
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+    ```
+
+    Ha a csatlakoztatást, a formázást és a cserét szeretné létrehozni, az alábbiakat teheti:
+    * Minden egyes virtuális gép létrehozásakor adja át ezt a felhő-init konfigurációként
+    * Használjon egy Felhőbeli init direktívát, amely a virtuális gép létrehozásakor minden alkalommal megteszi ezt a képet:
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
 1. Ha törölni szeretné az előfizetés regisztrációját, futtassa a következő parancsot:
 
     ```console
     # sudo subscription-manager unregister
     ```
 
-1. Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
+1. Megszüntetése
+
+    Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
 
     ```console
     # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
@@ -268,8 +335,11 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 1. Kattintson a **művelet**  >  **leállítása** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>Red Hat-alapú virtuális gép előkészítése KVM-ből
-### <a name="prepare-a-rhel-6-virtual-machine-from-kvm"></a>RHEL 6 virtuális gép előkészítése a KVM-ből
+## <a name="kvm"></a>KVM
+
+Ebből a szakaszból megtudhatja, hogyan készíthet [RHEL 6](#rhel-6-using-kvm) vagy [RHEL 7](#rhel-7-using-kvm) disztribúciót az Azure-ba való feltöltéshez a KVM használatával. 
+
+### <a name="rhel-6-using-kvm"></a>RHEL 6 a KVM használatával
 
 1. Töltse le a RHEL 6 KVM-rendszerképét a Red Hat webhelyről.
 
@@ -420,7 +490,12 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     ```console
     # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
     # skip the deprovision step
-    # waagent -force -deprovision
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    
 
     # export HISTSIZE=0
 
@@ -465,7 +540,7 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     ```
 
         
-### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a>RHEL 7 virtuális gép előkészítése a KVM-ből
+### <a name="rhel-7-using-kvm"></a>7. RHEL a KVM használatával
 
 1. Töltse le a RHEL 7 KVM-rendszerképét a Red Hat webhelyről. Ez az eljárás a RHEL 7 módszert használja példaként.
 
@@ -596,17 +671,13 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     # systemctl enable waagent.service
     ```
 
-1. Ne hozzon létre lapozófájlt az operációs rendszer lemezén.
+1. A Cloud-init telepítése kövesse a "RHEL 7 virtuális gép előkészítése a Hyper-V kezelőjéből", 12. lépés, "a Cloud-init telepítése a kiépítés kezelésére" című szakasz lépéseit.
 
-    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, megfelelően módosítsa a következő paramétereket `/etc/waagent.conf` :
+1. Konfiguráció cseréje 
 
-    ```config-conf
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-    ```
+    Ne hozzon létre lapozófájlt az operációs rendszer lemezén.
+    Kövesse a "RHEL 7 virtuális gép előkészítése a Hyper-V kezelőjéből", a 13. lépés: "a konfiguráció cseréje" című szakasz lépéseit.
+
 
 1. A következő parancs futtatásával szüntesse meg az előfizetés regisztrációját (ha szükséges):
 
@@ -614,17 +685,10 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     # subscription-manager unregister
     ```
 
-1. Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
 
-    ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
-    # sudo waagent -force -deprovision
+1. Megszüntetése
 
-    # export HISTSIZE=0
-
-    # logout
-    ```
+    Kövesse a "RHEL 7 virtuális gép előkészítése a Hyper-V kezelőjéből" című szakasz lépéseit, 15. lépés: "megszüntetés"
 
 1. Állítsa le a virtuális gépet a KVM-ben.
 
@@ -663,7 +727,10 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Red Hat-alapú virtuális gép előkészítése VMware-ről
+## <a name="vmware"></a>VMware
+
+Ebből a szakaszból megtudhatja, hogyan készítse elő a [RHEL 6](#rhel-6-using-vmware) vagy [RHEL 7](#rhel-6-using-vmware)  disztribúciót a VMware-ről.
+
 ### <a name="prerequisites"></a>Előfeltételek
 Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet a VMware-ben. A VMware operációs rendszer telepítésével kapcsolatos további információkért lásd: a [VMware vendég operációs rendszer telepítési útmutatója](https://partnerweb.vmware.com/GOSIG/home.html).
 
@@ -671,7 +738,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
 * Ne állítson be swap partíciót az operációs rendszer lemezén. A Linux-ügynököt beállíthatja úgy, hogy lapozófájlt hozzon létre az ideiglenes erőforrás lemezén. Erről további információt az alábbi lépésekben találhat.
 * A virtuális merevlemez létrehozásakor válassza a **virtuális lemez tárolása egyetlen fájlként** lehetőséget.
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>RHEL 6 virtuális gép előkészítése VMware-ről
+### <a name="rhel-6-using-vmware"></a>RHEL 6 a VMware használatával
 1. A RHEL 6 hálózatkezelő az Azure Linux-ügynököt is zavarhatja. A következő parancs futtatásával távolítsa el a csomagot:
 
     ```console
@@ -788,7 +855,12 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
     ```console
     # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
     # skip the deprovision step
-    # sudo waagent -force -deprovision
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    
 
     # export HISTSIZE=0
 
@@ -830,7 +902,7 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
     ```
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>RHEL 7 virtuális gép előkészítése VMware-ről
+### <a name="rhel-7-using-vmware"></a>RHEL 7 a VMware használatával
 1. Hozza létre vagy szerkessze a `/etc/sysconfig/network` fájlt, és adja hozzá a következő szöveget:
 
     ```config
@@ -918,17 +990,14 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
     # sudo systemctl enable waagent.service
     ```
 
-1. Ne hozzon létre lapozófájlt az operációs rendszer lemezén.
+1. A Cloud-init telepítése
 
-    Az Azure Linux-ügynök a virtuális gép üzembe helyezése után automatikusan konfigurálhatja a swap-helyet a virtuális géphez csatlakoztatott helyi erőforrás-lemez használatával. Vegye figyelembe, hogy a helyi erőforrás lemeze egy ideiglenes lemez, és a virtuális gép kiépítése után kiüríthető. Miután telepítette az Azure Linux-ügynököt az előző lépésben, megfelelően módosítsa a következő paramétereket `/etc/waagent.conf` :
+    Kövesse a "RHEL 7 virtuális gép előkészítése a Hyper-V kezelőjéből", 12. lépés, "a Cloud-init telepítése a kiépítés kezelésére" című szakasz lépéseit.
 
-    ```config-conf
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-    ```
+1. Konfiguráció cseréje
+
+    Ne hozzon létre lapozófájlt az operációs rendszer lemezén.
+    Kövesse a "RHEL 7 virtuális gép előkészítése a Hyper-V kezelőjéből", a 13. lépés: "a konfiguráció cseréje" című szakasz lépéseit.
 
 1. Ha törölni szeretné az előfizetés regisztrációját, futtassa a következő parancsot:
 
@@ -936,17 +1005,10 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
     # sudo subscription-manager unregister
     ```
 
-1. Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
+1. Megszüntetése
 
-    ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
-    # sudo waagent -force -deprovision
+    Kövesse a "RHEL 7 virtuális gép előkészítése a Hyper-V kezelőjéből" című szakasz lépéseit, 15. lépés: "megszüntetés"
 
-    # export HISTSIZE=0
-
-    # logout
-    ```
 
 1. Állítsa le a virtuális gépet, és alakítsa át a VMDK-fájlt a VHD formátumba.
 
@@ -983,8 +1045,11 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>Red Hat-alapú virtuális gép előkészítése ISO-fájlból egy Kickstart-fájl automatikus használatával
-### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>RHEL 7 virtuális gép előkészítése egy Kickstart-fájlból
+## <a name="kickstart-file"></a>Kickstart-fájl
+
+Ebből a szakaszból megtudhatja, hogyan készítse elő a RHEL 7 disztribúciót egy ISO-fájlból egy Kickstart-fájllal.
+
+### <a name="rhel-7-from-a-kickstart-file"></a>RHEL 7 egy Kickstart-fájlból
 
 1.  Hozzon létre egy olyan Kickstart-fájlt, amely tartalmazza a következő tartalmat, és mentse a fájlt. A Kickstart telepítésével kapcsolatos részletekért tekintse meg a [Kickstart telepítési útmutatóját](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).
 
@@ -1075,12 +1140,46 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
     # Enable waaagent at boot-up
     systemctl enable waagent
 
+    # Install cloud-init
+    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # Configure waagent for cloud-init
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+
     # Disable the root account
     usermod root -p '!!'
 
-    # Configure swap in WALinuxAgent
-    sed -i 's/^\(ResourceDisk\.EnableSwap\)=[Nn]$/\1=y/g' /etc/waagent.conf
-    sed -i 's/^\(ResourceDisk\.SwapSizeMB\)=[0-9]*$/\1=2048/g' /etc/waagent.conf
+    # Disabke swap in WALinuxAgent
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+
+    # Configure swap using cloud-init
+    cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+    #cloud-config
+    # Generated by Azure cloud image build
+    disk_setup:
+    ephemeral0:
+        table_type: mbr
+        layout: [66, [33, 82]]
+        overwrite: True
+    fs_setup:
+    - device: ephemeral0.1
+        filesystem: ext4
+    - device: ephemeral0.2
+        filesystem: swap
+    mounts:
+    - ["ephemeral0.1", "/mnt"]
+    - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+    EOF
 
     # Set the cmdline
     sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"/g' /etc/default/grub
@@ -1105,7 +1204,14 @@ Ez a szakasz azt feltételezi, hogy már telepített egy RHEL virtuális gépet 
     EOF
 
     # Deprovision and prepare for Azure if you are creating a generalized image
-    waagent -force -deprovision
+    sudo cloud-init clean --logs --seed
+    sudo rm -rf /var/lib/cloud/
+    sudo rm -rf /var/lib/waagent/
+    sudo rm -f /var/log/waagent.log
+
+    sudo waagent -force -deprovision+user
+    rm -f ~/.bash_history
+    export HISTSIZE=0
 
     %end
     ```
@@ -1151,7 +1257,7 @@ Initramfs újraépítése:
 
 További részletekért tekintse meg a [initramfs újjáépítésével](https://access.redhat.com/solutions/1958)kapcsolatos információkat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Most már készen áll a Red Hat Enterprise Linux virtuális merevlemez használatára az Azure-beli új virtuális gépek létrehozásához. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.
 * A Red Hat Enterprise Linux futtatására jogosult hypervisorokkal kapcsolatos további részletekért tekintse meg [a Red Hat webhelyét](https://access.redhat.com/certified-hypervisors).
 * Ha többet szeretne megtudni a RHEL BYOS-lemezképek használatáról, látogasson el a [BYOS](../workloads/redhat/byos.md)dokumentációs oldalára.

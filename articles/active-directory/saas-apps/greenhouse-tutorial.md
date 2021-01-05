@@ -9,37 +9,36 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/18/2019
+ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 2206f0e1cfbe9e362937c6299c65eee2ebbb6253
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0eb64ebe5e55bc054b6a280ac249cf451bb027db
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448008"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897377"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Oktatóanyag: Azure Active Directory üvegházhatású integrációval
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az üvegházhatást Azure Active Directory (Azure AD) használatával.
-Az üvegház az Azure AD-vel való integrálása a következő előnyöket biztosítja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az üvegházhatást Azure Active Directory (Azure AD) használatával. Az üvegház az Azure AD-vel való integrálásakor a következőket teheti:
 
-* Megadhatja, hogy az Azure AD-ben melyik az Üvegházhoz való hozzáférés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az üvegházba (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* Az Üvegházhoz hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az üvegházba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció az Üvegházral való konfigurálásához a következő elemek szükségesek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Üvegházhatású egyszeri bejelentkezés engedélyezett előfizetése
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Az üvegházhatást okozó egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+
+> [!NOTE] 
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben. 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * Az üvegház támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
@@ -47,59 +46,38 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 
 Az üvegház Azure AD-integrációjának konfigurálásához az üvegházat hozzá kell adnia a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha az üvegházat a katalógusból szeretné hozzáadni, hajtsa végre a következő lépéseket:**
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be az **üvegházhatás** kifejezést a keresőmezőbe.
+1. Válassza az **üvegház** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-greenhouse"></a>Az Azure AD SSO konfigurálása és tesztelése az üvegházban
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+Konfigurálja és tesztelje az Azure AD SSO-t az üvegház használatával egy **B. Simon** nevű teszt felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az üvegházban.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+Az Azure AD SSO az Üvegházral történő konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+    1. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+2. Az **[üvegházhatású egyszeri bejelentkezés konfigurálása](#configure-greenhouse-sso)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre egy üvegházhatást okozó tesztet használó felhasználót](#create-greenhouse-test-user)** – hogy rendelkezzen egy olyan Britta, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
+3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-4. A keresőmezőbe írja be az **üvegház**kifejezést, válassza az **üvegház** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-     ![Üvegház az eredmények listájában](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az üvegházhatású **Britta Simon**nevű felhasználói teszt alapján konfigurálja és teszteli.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az üvegházban lévő kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
-
-Az Azure AD egyszeri bejelentkezésének az üvegházhatású szolgáltatással történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
-
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[üvegházhatású egyszeri bejelentkezés konfigurálása](#configure-greenhouse-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre egy üvegházhatást okozó tesztet használó felhasználót](#create-greenhouse-test-user)** – hogy rendelkezzen egy olyan Britta, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezésének az üvegházhatású szolgáltatással való konfigurálásához hajtsa végre a következő lépéseket:
-
-1. Az [Azure Portal](https://portal.azure.com/)az **üvegházhatású** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+1. A Azure Portal az **üvegházhatású** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
-
-    ![Az üvegházhatású tartomány és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.greenhouse.io`
 
@@ -116,66 +94,57 @@ Az Azure AD egyszeri bejelentkezésének az üvegházhatású szolgáltatással 
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
 
-    b. Azure ad-azonosító
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-    c. Kijelentkezési URL-cím
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-### <a name="configure-greenhouse-single-sign-on"></a>Az üvegházhatást okozó egyszeri Sign-On konfigurálása
-
-Az egyszeri bejelentkezés az **üvegházi** oldalon való konfigurálásához el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt URL-címeket Azure Portalról az [üvegházhatást okozó támogatási csoportba](https://www.greenhouse.io/contact). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
-
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
-
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
-
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
-    Például: BrittaSimon@contoso.com
-
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
-
-    d. Kattintson a **Létrehozás** lehetőségre.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az Üvegházhoz való hozzáférés biztosításával.
+Ebben a szakaszban a B. Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az Üvegházhoz való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **üvegház**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **üvegház** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+## <a name="configure-greenhouse-sso"></a>Üvegházhatású SSO konfigurálása
 
-2. Az alkalmazások listában válassza az **üvegház**lehetőséget.
+1. Egy másik böngészőablakban jelentkezzen be az üvegházhatású webhelyre rendszergazdaként.
 
-    ![Az üvegházhatású hivatkozás az alkalmazások listájában](common/all-applications.png)
+1. Lépjen a **Configure > fejlesztői központ > egyszeri bejelentkezés elemre**.
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+    ![az SSO-oldal képernyőképe](./media/greenhouse-tutorial/configure.png)
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+1. Hajtsa végre a következő lépéseket az egyetlen Sign-On oldalon.
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+    ![az SSO konfigurációs oldalának képernyőképe](./media/greenhouse-tutorial/sso-page.png)
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    a. Másolja az SSO-azonosító **fogyasztói URL-címét** értékre, illessze be ezt az értéket a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszában található **Válasz URL** szövegmezőbe.
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+    b. Az **entitás azonosítója/kiállító** szövegmezőbe illessze be azt az **Azure ad-azonosító** értéket, amelyet a Azure Portal másolt.
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+    c. Az **egyszeres Sign-On URL** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+    d. Nyissa meg a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** a Azure Portal a Jegyzettömbben, és illessze be a tartalmat a **identitásszolgáltató Certificate ujjlenyomat** szövegmezőbe.
+
+    e. Válassza ki a **név azonosítójának formátuma** értéket a legördülő listából.
+
+    f. Kattintson a **tesztelés megkezdése** elemre.
+
+    >[!NOTE]
+    >Azt is megteheti, hogy az **összevonási metaadatok XML-** fájlját is feltölti a **fájl kiválasztása** lehetőségre kattintva.
 
 ### <a name="create-greenhouse-test-user"></a>Üvegházhatású teszt felhasználó létrehozása
 
@@ -188,17 +157,13 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az üvegházba, az üveg
 
 1. Jelentkezzen be az **üvegházhatást okozó** céges webhelyre rendszergazdaként.
 
-2. A felső menüben kattintson a **Konfigurálás**elemre, majd kattintson a **felhasználók**elemre.
+2. Ugrás a **> felhasználók konfigurálása új felhasználók >**
    
-    ![Felhasználók](./media/greenhouse-tutorial/ic790791.png "Felhasználók")
+    ![Felhasználók](./media/greenhouse-tutorial/create-user-1.png "Felhasználók")
 
-3. Kattintson az **új felhasználók**elemre.
+4. Az **új felhasználók hozzáadása** szakaszban hajtsa végre a következő lépéseket:
    
-    ![Új felhasználó](./media/greenhouse-tutorial/ic790792.png "Új felhasználó")
-
-4. Az **új felhasználó hozzáadása** szakaszban hajtsa végre a következő lépéseket:
-   
-    ![Új felhasználó hozzáadása](./media/greenhouse-tutorial/ic790793.png "Új felhasználó hozzáadása")
+    ![Új felhasználó hozzáadása](./media/greenhouse-tutorial/create-user-2.png "Új felhasználó hozzáadása")
 
     a. A **felhasználói e-mailek megadása** szövegmezőbe írja be a kiépíteni kívánt érvényes Azure Active Directory fiók e-mail-címét.
 
@@ -207,16 +172,17 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az üvegházba, az üveg
       >[!NOTE]
       >A Azure Active Directory fiók tulajdonosai e-mailt kapnak, beleértve a fiók megerősítését, mielőtt az aktív állapotba kerül.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Amikor a hozzáférési panelen az üvegház csempére kattint, automatikusan be kell jelentkeznie az üvegházba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja az üvegházhatást okozó bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen közvetlenül az üvegházhatású bejelentkezési URL-címre, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások üvegház csempére kattint, a rendszer átirányítja az üvegházhatást okozó bejelentkezési URL-címre. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Következő lépések
+
+Az üvegház konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

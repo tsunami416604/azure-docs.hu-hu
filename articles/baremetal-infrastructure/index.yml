@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: A BareMetal Infrastructure dokumentációja
+summary: Ismerje meg, hogyan hozhat létre, helyezhet üzembe és kezelhet virtuális gépeket a Microsoft Azure-ban a BareMetal Infrastructure használatával.
+metadata:
+  title: A BareMetal Infrastructure dokumentációja
+  description: Ismerje meg, hogyan hozhat létre, helyezhet üzembe és kezelhet virtuális gépeket a Microsoft Azure-ban a BareMetal Infrastructure használatával.
+  services: virtual-machines
+  ms.service: baremetal-infrastructure
+  ms.topic: landing-page
+  author: shortpatti
+  ms.author: v-patsho
+  ms.date: 12/31/2020
+  ms.openlocfilehash: 884a47c5ddc8c4a28719822af4a4c0f22809fcdd
+  ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 12/31/2020
+  ms.locfileid: "97828927"
+landingContent:
+- title: A BareMetal Infrastructure névjegye
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure-beli BareMetal Infrastructure?
+      url: workloads/sap/baremetal-overview-architecture.md
+    - text: A feltételek megismerése
+      url: know-baremetal-terms.md
+  - linkListType: reference
+    links:
+    - text: BareMetal-számításifeladatok típusai
+      url: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/context/context
+- title: BareMetal-példányegységek
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: BareMetal-példányegységek kezelése az Azure-ban
+      url: workloads/sap/baremetal-infrastructure-portal.md

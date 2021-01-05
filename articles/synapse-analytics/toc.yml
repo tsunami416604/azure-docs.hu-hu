@@ -502,7 +502,7 @@
               items:
                 - name: Azure Stream Analytics-feladat hozzáadása
                   href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Eszközök a Synapse-munkaterületekhez való csatlakozáshoz
+        - name: Csatlakozás eszközökhöz és alkalmazásokhoz
           items:
             - name: Áttekintés
               href: sql/connect-overview.md
@@ -510,14 +510,20 @@
               href: sql/get-started-azure-data-studio.md
             - name: Kapcsolati sztringek
               href: sql/connection-strings.md
-            - name: Lekérdezés az sqlcmd használatával
-              href: sql/get-started-connect-sqlcmd.md
             - name: Lekérdezés az SSMS használatával
               href: sql/get-started-ssms.md
-            - name: Query with Visual Studio
-              href: sql/get-started-visual-studio.md
             - name: Csatlakozás a Power BI Desktophoz
               href: sql/get-started-power-bi-professional.md
+            - name: Lekérdezés a Visual Studio SSDT használatával
+              href: sql/get-started-visual-studio.md
+            - name: Lekérdezés a .NET Core használatával
+              href: ../azure-sql/database/connect-query-dotnet-core.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Lekérdezés a Visual Studio .NET használatával
+              href: ../azure-sql/database/connect-query-dotnet-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Lekérdezés a Python használatával
+              href: ../azure-sql/database/connect-query-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Lekérdezés az sqlcmd használatával
+              href: sql/get-started-connect-sqlcmd.md
 - name: Apache Spark
   items:
     - name: Áttekintés
@@ -1107,6 +1113,10 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: A Cognitive Services konfigurálása az Azure Synapse-hez
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: Használati útmutató
+  items:
+    - name: Költségtervezés és a költségek kezelése
+      href: plan-manage-costs.md
 - name: Referencia
   items:
     - name: Azure CLI

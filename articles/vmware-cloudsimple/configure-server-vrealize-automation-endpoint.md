@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás CloudSimple – vCenter beállítása a privát felhőben a vRealize Automation szolgáltatáshoz
 description: Leírja, hogyan állíthat be VMware vCenter-kiszolgálót a CloudSimple privát felhőben a VMware vRealize Automation végpontja
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b6c6a320e6299808a91214476c8c0460f9f53d9
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024840"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895053"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>VCenter beállítása a saját felhőben a VMware vRealize Automation szolgáltatáshoz
 
@@ -48,14 +48,14 @@ Végezze el ezeket a feladatokat a vCenter-kiszolgáló konfigurálása előtt:
 2. Telepítsen egy vSphere-ügynököt a vRealize Automation-végponthoz.
     1. Nyissa meg a https://*VRA-URL*: 5480/Installer címet, ahol a *VRA-URL-* cím az a URL-cím, amelyet a vRealize Automation felügyeleti felhasználói felületének eléréséhez használ.
     2. A telepítő letöltéséhez kattintson a **IaaS-telepítőre** .<br>
-    A telepítési fájl elnevezési konvenciója setup_*VRA-URL* @5480.exe .
+    A telepítési fájl elnevezési konvenciója setup_ *VRA-URL* @5480.exe .
     3. Indítsa el a telepítőt. Az üdvözlőképernyőn kattintson a **Tovább** gombra.
-    4. Fogadja el a LICENCSZERZŐDÉSt, és kattintson a **tovább**gombra.
-    5. Adja meg a bejelentkezési adatokat, kattintson a **tanúsítvány elfogadása**elemre, majd kattintson a **tovább**gombra.
+    4. Fogadja el a LICENCSZERZŐDÉSt, és kattintson a **tovább** gombra.
+    5. Adja meg a bejelentkezési adatokat, kattintson a **tanúsítvány elfogadása** elemre, majd kattintson a **tovább** gombra.
     ![vRA hitelesítő adatai](media/configure-vra-endpoint-login.png)
-    6. Válassza az **egyéni telepítési** és **proxy ügynökök** lehetőséget, majd kattintson a **tovább**gombra.
+    6. Válassza az **egyéni telepítési** és **proxy ügynökök** lehetőséget, majd kattintson a **tovább** gombra.
     ![vRA telepítésének típusa](media/configure-vra-endpoint-install-type.png)
-    7. Adja meg a IaaS-kiszolgáló bejelentkezési adatait, és kattintson a **tovább**gombra. Ha Active Directory használ, írja be a felhasználónevet **tartomány \ felhasználó** formátumban. Ellenkező esetben használja a **user@domain** Format (formátum) formátumot.
+    7. Adja meg a IaaS-kiszolgáló bejelentkezési adatait, és kattintson a **tovább** gombra. Ha Active Directory használ, írja be a felhasználónevet **tartomány \ felhasználó** formátumban. Ellenkező esetben használja a **user@domain** Format (formátum) formátumot.
     ![vRA bejelentkezési adatok](media/configure-vra-endpoint-account.png)
     8. A proxybeállítások esetében adja meg a **vSphere** értéket az **ügynök típusaként**. Adja meg az ügynök nevét.
     9. Adja meg a IaaS-kiszolgáló teljes tartománynevét a **Manager Service Host** és a **Model Manager webszolgáltatás gazdagép** mezőiben. Kattintson a **test (tesztelés** ) elemre a minden FQDN-értékhez tartozó kapcsolatok teszteléséhez. Ha a teszt sikertelen, módosítsa a DNS-beállításokat úgy, hogy az IaaS-kiszolgáló állomásneve fel legyen oldva.
@@ -68,11 +68,11 @@ Végezze el ezeket a feladatokat a vCenter-kiszolgáló konfigurálása előtt:
 
 ## <a name="configure-the-vsphere-agent"></a>A vSphere-ügynök konfigurálása
 
-1. Nyissa meg a https://*VRA-URL*/vcac, és jelentkezzen be **ConfigurationAdmin**néven.
-2. Válassza az **infrastruktúra**-  >  **végpontok**  >  **végpontok**lehetőséget.
-3. Válassza az **új**  >  **virtuális**  >  **vSphere**lehetőséget.
+1. Nyissa meg a https://*VRA-URL*/vcac, és jelentkezzen be **ConfigurationAdmin** néven.
+2. Válassza az **infrastruktúra**-  >  **végpontok**  >  **végpontok** lehetőséget.
+3. Válassza az **új**  >  **virtuális**  >  **vSphere** lehetőséget.
 4. Adja meg az előző eljárásban megadott vSphere-végpont nevét.
-5. A **cím**mezőbe írja be a Private Cloud vCenter Server URL-címét a https://*vCenter-FQDN*/SDK formátumban, ahol a *vCenter-FQDN* a vCenter-kiszolgáló neve.
+5. A **cím** mezőbe írja be a Private Cloud vCenter Server URL-címét a https://*vCenter-FQDN*/SDK formátumban, ahol a *vCenter-FQDN* a vCenter-kiszolgáló neve.
 6. Adja meg a vRealize Automation IaaS rendszergazda felhasználójának hitelesítő adatait, amelyet a CloudSimple-támogatás hoztak létre.
 7. A felhasználói hitelesítő adatok ellenőrzéséhez kattintson a **Kapcsolódás tesztelése** gombra. Ha a teszt sikertelen, ellenőrizze az URL-címet, a fiók adatait és a [végpont nevét](#verify-the-endpoint-name) , majd a tesztet.
 8. Sikeres tesztelés után kattintson az **OK** gombra az vSphere-végpont létrehozásához.

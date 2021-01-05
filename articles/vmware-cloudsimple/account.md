@@ -1,19 +1,19 @@
 ---
 title: Fiókkezelés – Azure VMware-megoldás a CloudSimple-portálon
 description: Ismerteti, hogyan kezelheti a fiókokat az Azure VMware-megoldásban a CloudSimple-portálon
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c26d5accce77ce6fd8c9b6c2b519b93f95013ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025367"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895172"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Fiókok kezelése az Azure VMware-megoldásban a CloudSimple-portálon
 
@@ -27,11 +27,11 @@ Válassza az **Összefoglalás** lehetőséget a vállalat CloudSimple-konfigur�
 
 Bármely olyan személy e-mail-címét felveheti, akit értesíteni szeretne a saját Felhőbeli konfiguráció változásairól.
 
-1. A **további e-mail-riasztások** területen kattintson az **új hozzáadása**lehetőségre.
+1. A **további e-mail-riasztások** területen kattintson az **új hozzáadása** lehetőségre.
 2. Adja meg az e-mail-címet.
 3. Nyomja le az ENTER billentyűt.  
 
-Egy bejegyzés eltávolításához kattintson az **X**gombra.
+Egy bejegyzés eltávolításához kattintson az **X** gombra.
 
 ## <a name="cloudsimple-operator-access"></a>CloudSimple-kezelő hozzáférése
 

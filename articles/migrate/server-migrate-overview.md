@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5e4aaea5b565e126f633b04215bbc3a24faf2cde
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 075f113975e5f340493fe33584d8072190be77c8
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753603"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896481"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware áttelepítési lehetőség kiválasztása
 
@@ -42,8 +42,8 @@ A korlátozások áttekintése után megismerheti, hogy az egyes megoldások üz
 
 **Feladat** | **Részletek** |**Ügynök nélküli** | **Ügynök-alapú**
 --- | --- | --- | ---
-**Az Azure Migrate-berendezés üzembe helyezése** | Egy, a VMware virtuális gépen futó, kis méretű készülék.<br/><br/> A berendezés a gépek felderítésére és értékelésére, valamint a gépek ügynök nélküli áttelepítéssel történő áttelepítésére szolgál. | Kötelező.<br/><br/> Ha már beállította a készüléket az értékeléshez, ugyanazt a készüléket használhatja az ügynök nélküli áttelepítés számára. | Nem kötelező.<br/><br/> Ha már beállított egy készüléket az értékeléshez, hagyja azt helyben, vagy távolítsa el, ha elkészült az értékeléssel.
-**A kiszolgáló-Assessment eszköz használata** | Mérje fel a gépeket a Azure Migrate: Server Assessment Tool eszközzel. | A gépeket a Migrálás előtt is felhasználhatja, de nem kell. | Az értékelés nem kötelező | Az értékelés nem kötelező.
+**Az Azure Migrate-berendezés üzembe helyezése** | Egy, a VMware virtuális gépen futó, kis méretű készülék.<br/><br/> A berendezés a gépek felderítésére és értékelésére, valamint a gépek ügynök nélküli áttelepítéssel történő áttelepítésére szolgál. | Kötelező.<br/><br/> Ha már beállította a készüléket az értékeléshez, ugyanazt a készüléket használhatja az ügynök nélküli áttelepítés számára. | Nem szükségesek.<br/><br/> Ha már beállított egy készüléket az értékeléshez, hagyja azt helyben, vagy távolítsa el, ha elkészült az értékeléssel.
+**A kiszolgáló-Assessment eszköz használata** | Mérje fel a gépeket a Azure Migrate: Server Assessment Tool eszközzel. | A gépeket a Migrálás előtt is felhasználhatja, de nem kell. | Az értékelés nem kötelező.
 **A kiszolgáló áttelepítési eszközének használata** | Adja hozzá a Azure Migrate Server áttelepítési eszközt a Azure Migrate projektben. | Kötelező | Kötelező
 **A VMware előkészítése áttelepítésre** | Konfigurálja a beállításokat a VMware-kiszolgálókon és a virtuális gépeken. | Kötelező | Kötelező
 **A mobilitási szolgáltatás telepítése virtuális gépeken** | A mobilitási szolgáltatás minden olyan virtuális gépen fut, amelyet replikálni szeretne | Nem szükséges | Kötelező
@@ -54,7 +54,7 @@ A korlátozások áttekintése után megismerheti, hogy az egyes megoldások üz
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [VMWare virtuális gépek migrálása](tutorial-migrate-vmware.md) ügynök nélküli áttelepítéssel.
 

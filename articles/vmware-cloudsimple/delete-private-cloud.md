@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-megoldás törlése a CloudSimple privát felhővel
 description: Megtudhatja, hogyan törölhet CloudSimple saját felhőt. Ha töröl egy privát felhőt, az összes fürt törölve lesz.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 11fda35f5b236a4930b3d90eb7e3a62ea60207cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7db967955dc86db39db4dcb2b3a2baf8906efb20
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142230"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896260"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő törlése
 
@@ -26,7 +26,7 @@ A privát felhő törlése törli a teljes privát felhőt.  A rendszer törli a
 A privát felhő összetevői a következők:
 
 * CloudSimple-csomópontok
-* Virtual machines (Virtuális gépek)
+* Virtuális gépek
 * Virtuális helyi hálózatok vagy alhálózatok
 * A privát felhőben tárolt összes felhasználói érték
 * Az összes tűzfalszabály melléklete egy VLAN/alhálózat számára
@@ -43,11 +43,11 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 3. Kattintson a törölni kívánt privát felhőre
 
-4. Az összefoglalás lapon kattintson a **Törlés**gombra.
+4. Az összefoglalás lapon kattintson a **Törlés** gombra.
 
     ![Privát felhő törlése](media/delete-private-cloud.png)
 
-5. A jóváhagyás lapon adja meg a saját felhő nevét, majd kattintson a **Törlés**gombra. 
+5. A jóváhagyás lapon adja meg a saját felhő nevét, majd kattintson a **Törlés** gombra. 
 
     ![Privát felhő törlése – megerősítés](media/delete-private-cloud-confirm.png)
 

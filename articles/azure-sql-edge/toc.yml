@@ -28,14 +28,6 @@
       href: tutorial-sync-data-factory.md
     - name: Adatok szinkronizálása az SQL Data Synckel
       href: tutorial-sync-data-sync.md
-    - name: Teljes körű IoT-megoldás kiépítése az SQL Edge használatával
-      items:
-        - name: Az Azure-erőforrások beállítása
-          href: tutorial-deploy-azure-resources.md
-        - name: IoT Edge-modulok beállítása
-          href: tutorial-set-up-iot-edge-modules.md
-        - name: Modell üzembe helyezése az SQL Edge-ben
-          href: tutorial-run-ml-model-on-sql-edge.md
 - name: Alapelvek
   items:
     - name: Üzembe helyezés
@@ -138,11 +130,23 @@
       href: create-stream-analytics-job.md
     - name: Üzembe helyezési problémák elhárítása
       href: troubleshoot.md
+- name: Példák
+  items:
+    - name: Vasércre vonatkozó kovasav-előrejelzés
+      items:
+        - name: Az Azure-erőforrások beállítása
+          href: tutorial-deploy-azure-resources.md
+        - name: IoT Edge-modulok beállítása
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: Modell üzembe helyezése az SQL Edge-ben
+          href: tutorial-run-ml-model-on-sql-edge.md
+    - name: Megújuló energia – szélturbinák elemzése
+      href: tutorial-renewable-energy-demo.md
 - name: Referencia
   items:
     - name: Transact-SQL- (T-SQL-) referencia
       href: /sql/t-sql/language-reference
-- name: Források
+- name: További források
   items:
     - name: Partnerek
       items:
