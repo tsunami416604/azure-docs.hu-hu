@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: a prediktív modell létrehozása jegyzetfüzettel (2. rész)'
+title: 'Oktatóanyag: a prediktív modell létrehozása jegyzetfüzet használatával (2. rész)'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt egy Jupyter Notebook kóddal, így a Microsoft Power BIban megjósolhatja az eredményeket.
+description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt egy Jupyter Notebook programkódjának használatával. A modell segítségével előre megjósolhatja a Microsoft Power BIban elérhető eredményeket.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,69 +10,70 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: f8209c0d26cf8c572d10666696231b0468cfcbc6
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97370217"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814771"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-notebook-part-1-of-2"></a>Oktatóanyag: Power BI integráció – a prediktív modell létrehozása jegyzetfüzettel (2. rész)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>Oktatóanyag: Power BI integráció – a prediktív modell létrehozása Jupyter Notebook használatával (2. rész)
 
-Az oktatóanyag első részében egy prediktív gépi tanulási modellt fog betanítani és üzembe helyezni egy Jupyter Notebook kódot használva. A 2. részben a modellt fogja használni a Microsoft Power BIban várható eredmények előrejelzéséhez.
+Az oktatóanyag 1. részében egy prediktív gépi tanulási modellt kell betanítania és üzembe helyezni egy Jupyter Notebook programkód használatával. A 2. részben a modellt fogja használni a Microsoft Power BIban várható eredmények előrejelzéséhez.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Jupyter-notebook létrehozása
-> * Azure Machine Learning számítási példány létrehozása
-> * Regressziós modell betanítása a scikit használatával – Learn
-> * A modell üzembe helyezése valós idejű pontozási végponton
+> * Jupyter Notebook létrehozása.
+> * Hozzon létre egy Azure Machine Learning számítási példányt.
+> * Egy regressziós modell betanítása a scikit-Learn használatával.
+> * A modell üzembe helyezése valós idejű pontozási végponton.
 
-Az Power BIban három különböző módon hozhatja létre és helyezheti üzembe a modellt.  Ez a cikk A (z) "A" lehetőséget ismerteti A modellek jegyzetfüzetekkel való betanításához és üzembe helyezéséhez  Ez a beállítás egy, a Azure Machine Learning Studióban üzemeltetett Jupyter notebookok használatával kapcsolatos kód-első szerzői tapasztalatot jeleníti meg. 
+A Power BI-ben használni kívánt modell létrehozása és üzembe helyezése három módon történik.  Ez a cikk az "A" lehetőséget ismerteti, amely a modellek jegyzetfüzetek használatával történő betanítását és üzembe helyezését mutatja be.  Ez a lehetőség a kód első létrehozási felülete. A Azure Machine Learning Studio üzemeltetett Jupyter jegyzetfüzeteket használja. 
 
-Ehelyett használhatja a következőket:
+Ehelyett használhatja a további lehetőségek egyikét:
 
-* [B. lehetőség: modellek betanítása és üzembe helyezése a Designer használatával](tutorial-power-bi-designer-model.md)– a tervező (a fogd és vidd felhasználói felület) használatával alacsony kódú szerzői élmény.
-* [C. lehetőség: modellek betanítása és üzembe helyezése AUTOMATIZÁLT ml használatával](tutorial-power-bi-automated-model.md) – a kód nélküli létrehozási élmény, amely teljes mértékben automatizálja az adatelőkészítést és a modell betanítását.
+* [B. lehetőség: modellek betanítása és üzembe helyezése a Azure Machine learning Designer használatával](tutorial-power-bi-designer-model.md). Ez az alacsony kódú szerzői művelet egy fogd és vidd felhasználói felületet használ.
+* [C. lehetőség: modellek betanítása és üzembe helyezése automatizált gépi tanulás használatával](tutorial-power-bi-automated-model.md). Ez a kód nélküli létrehozási élmény teljes mértékben automatizálja az adatelőkészítést és a modell betanítását.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés ([ingyenes próbaverzió érhető el](https://aka.ms/AMLFree)). 
-- Egy Azure Machine Learning-munkaterület. Ha még nem rendelkezik munkaterülettel, kövesse [az Azure Machine learning-munkaterület létrehozását ismertető témakört](./how-to-manage-workspace.md#create-a-workspace).
+- Azure-előfizetés. Ha még nincs előfizetése, használhat [ingyenes próbaverziót](https://aka.ms/AMLFree). 
+- Egy Azure Machine Learning-munkaterület. Ha még nem rendelkezik munkaterülettel, tekintse meg [Azure Machine learning munkaterületek létrehozása és kezelése](./how-to-manage-workspace.md#create-a-workspace)című témakört.
 - A Python nyelv és a gépi tanulási munkafolyamatok bevezető ismerete.
 
 ## <a name="create-a-notebook-and-compute"></a>Jegyzetfüzet és számítás létrehozása
 
-A [Azure Machine learning Studio](https://ml.azure.com) kezdőlapon válassza a **Létrehozás új** **jegyzetfüzetet** követve:
+A [**Azure Machine learning Studio**](https://ml.azure.com) kezdőlapon válassza az **új**  >  **Jegyzetfüzet** létrehozása elemet:
 
-:::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="A jegyzetfüzetek létrehozását bemutató képernyőkép":::
+:::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="Képernyőkép a jegyzetfüzetek létrehozásáról.":::
  
-Megjelenik egy párbeszédpanel, ahol **új fájlt hozhat létre** :
+Az **új fájl létrehozása** lapon:
 
-1. A notebookhoz tartozó fájlnév (például `my_model_notebook` )
-1. **Fájl típusának** módosítása **jegyzetfüzetre**
+1. Nevezze el a jegyzetfüzetet (például *my_model_notebook*).
+1. Módosítsa a **fájltípust** **jegyzetfüzetre**.
+1. Kattintson a **Létrehozás** gombra. 
+ 
+Ezután futtassa a kód celláit, hozzon létre egy számítási példányt, és csatolja a jegyzetfüzethez. Első lépésként válassza a plusz ikont a jegyzetfüzet tetején:
 
-Kattintson a **Létrehozás** gombra. Ezután létre kell hoznia néhány számítást, és csatolnia kell a notebookhoz a kód celláinak futtatásához. Ehhez válassza a plusz ikont a jegyzetfüzet tetején:
+:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="A számítási példányok létrehozását bemutató képernyőkép.":::
 
-:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="A számítási példány létrehozását bemutató képernyőkép":::
+A **számítási példány létrehozása** lapon:
 
-Ezután a **számítási példány létrehozása** lapon:
-
-1. Válassza ki a CPU virtuálisgép-méretet – ebben az oktatóanyagban egy **Standard_D11_v2** (két mag, 14 GB RAM) lesz.
+1. Válassza ki a CPU virtuális gép méretét. Ebben az oktatóanyagban választhat egy **Standard_D11_v2**, 2 maggal és 14 GB RAM memóriával.
 1. Kattintson a **Tovább** gombra. 
-1. A **beállítások konfigurálása** lapon adjon meg egy érvényes **számítási nevet** (az érvényes karakterek: felső és kisbetűk, számjegyek és a-karakter).
+1. A **beállítások konfigurálása** lapon adjon meg egy érvényes **számítási nevet**. Az érvényes karakterek: nagybetűk, kisbetűk, számjegyek és kötőjelek (-).
 1. Kattintson a **Létrehozás** gombra.
 
-Megjelenhet a jegyzetfüzetben, hogy a **számítási** funkció melletti kör a cián színre vált, ami azt jelzi, hogy a számítási példány létrehozása folyamatban van:
+A jegyzetfüzetben észreveheti, hogy a **kiszámított** ciánkék (számítás) elem melletti kör is látható. Ez a színváltozás azt jelzi, hogy a számítási példány létrehozása folyamatban van:
 
-:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="A létrehozott számítást ábrázoló képernyőfelvétel":::
+:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="Képernyőfelvétel a létrehozott számítási feladatokról.":::
 
 > [!NOTE]
-> A számítási kapacitás kiépítés körülbelül 2-4 percet vesz igénybe.
+> A számítási példány 2 – 4 percet is igénybe vehet.
 
-Miután kiépítte a számítást, a jegyzetfüzet használatával is végrehajthatja a kód celláit. Írja be például a cellába a következőt:
+A számítás kiépítés után a jegyzetfüzet használatával futtathat programkódot. A cellában például beírhatja a következő kódot:
 
 ```python
 import numpy as np
@@ -80,20 +81,20 @@ import numpy as np
 np.sin(3)
 ```
 
-Majd a **SHIFT-ENTER** (vagy a **Control-ENTER** ) billentyűt, vagy kattintson a cella melletti lejátszás gombra. A következő kimenetnek kell megjelennie:
+Ezután válassza a SHIFT + ENTER (vagy a CTRL + ENTER billentyűkombinációt, vagy kattintson a cella melletti **Lejátszás** gombra). A következő kimenetnek kell megjelennie:
 
-:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="A cella-végrehajtást ábrázoló képernyőfelvétel":::
+:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="A cella kimenetét ábrázoló képernyőkép.":::
 
-Most már készen áll egy Machine Learning modell létrehozására!
+Most már készen áll a gépi tanulási modell létrehozására.
 
-## <a name="build-a-model-using-scikit-learn"></a>Modell létrehozása a scikit használatával – Learn
+## <a name="build-a-model-by-using-scikit-learn"></a>Modell létrehozása a scikit használatával – Learn
 
-Ebben az oktatóanyagban a [diabétesz](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html)adatkészletet használja, amely elérhető az [Azure Open adatkészletekben](https://azure.microsoft.com/services/open-datasets/). 
+Ebben az oktatóanyagban a [cukorbetegség adatkészletet](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html)használja. Ez az adatkészlet elérhető az [Azure Open adatkészletekben](https://azure.microsoft.com/services/open-datasets/).
 
 
 ### <a name="import-data"></a>Adatok importálása
 
-Az adatimportáláshoz másolja és illessze be az alábbi kódot egy új, a jegyzetfüzetbe tartozó **cellába** :
+Az adatimportáláshoz másolja a következő kódot, és illessze be egy új, a jegyzetfüzetbe beillesztett *cellába* .
 
 ```python
 from azureml.opendatasets import Diabetes
@@ -106,11 +107,11 @@ y_df = y.to_pandas_dataframe()
 X_df.info()
 ```
 
-A `X_df` pandák adatkeret 10 alapszintű bemeneti változót tartalmaz (például kor, nem, testtömeg-index, átlagos vérnyomás és hat Vérszérum-mérés). A `y_df` Panda adatkerete az a cél változó, amely a betegség előrehaladásának mennyiségi mértékét tartalmazza egy évvel az alapkonfiguráció után. Összesen 442 rekord van.
+A `X_df` pandák adatkeret 10 alapszintű bemeneti változót tartalmaz. Ezek a változók például az életkor, a szex, a testtömeg-index, az átlagos vérnyomás és a hat Vérszérum mérése. A `y_df` pandák adatkeret a cél változó. A betegség előrehaladásának mennyiségi mértékét egy évvel az alaptervet követően egy évig tartalmazza. Az adatkeret 442 rekordot tartalmaz.
 
-### <a name="train-model"></a>Modell betanítása
+### <a name="train-the-model"></a>A modell betanítása
 
-Hozzon létre egy új **kódrészletet** a jegyzetfüzetben, és másolja és illessze be az alábbi kódrészletet, amely létrehoz egy Ridge regressziós modellt, és szerializálja a modellt a Python savanyúság-formátumának használatával:
+Hozzon létre egy új *kódlapot* a jegyzetfüzetben. Ezután másolja be a következő kódot, és illessze be a cellába. Ez a kódrészlet egy Ridge regressziós modellt hoz létre, és a modellt a Python-lé formátum használatával szerializálja.
 
 ```python
 import joblib
@@ -122,9 +123,11 @@ joblib.dump(model, 'sklearn_regression_model.pkl')
 
 ### <a name="register-the-model"></a>A modell regisztrálása
 
-A modell fájlján kívül a regisztrált modell is a modell metaadatait – a modell leírását, a címkéket és a keretrendszer információit – fogja használni, ami hasznos lehet a munkaterületen található modellek kezelésekor és telepítésekor. A címkék használatával például kategorizálhatja a modelleket, és szűrőket alkalmazhat a munkaterület modelljeinek listázásához. Emellett a modellnek a scikit-Learn keretrendszerrel való megjelölése leegyszerűsíti a webszolgáltatásként való üzembe helyezést, ahogy azt a későbbiekben látni fogjuk.
+A modell fájlján kívül a regisztrált modell a metaadatokat is tárolja. A metaadatok tartalmazzák a modell leírását, a címkéket és a keretrendszer információit. 
 
-Másolja és illessze be az alábbi kódot egy új, a jegyzetfüzetbe tartozó **cellába** :
+A metaadatok akkor hasznosak, ha a munkaterületen a modelleket kezeli és telepíti. A címkék használatával például kategorizálhatja a modelleket, és szűrőket alkalmazhat a munkaterület modelljeinek listázásához. Ha ezt a modellt a scikit-Learn keretrendszerrel jelöli meg, egyszerűbbé válik a webes szolgáltatásként való üzembe helyezése.
+
+Másolja a következő kódot, majd illessze be egy új, a jegyzetfüzetbe beillesztett *cellába* .
 
 ```python
 import sklearn
@@ -150,21 +153,21 @@ print('Name:', model.name)
 print('Version:', model.version)
 ```
 
-A modellt Azure Machine Learning Studio is megtekintheti, ha a bal oldali menüben a **végpontok** lehetőségre navigál:
+A modellt Azure Machine Learning Studio is megtekintheti. A bal oldali menüben válassza a **modellek** elemet:
 
-:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="A modellt bemutató képernyőkép":::
+:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="A modellek megtekintését bemutató képernyőkép.":::
 
 ### <a name="define-the-scoring-script"></a>Pontozási parancsfájl definiálása
 
-A Microsoft Power BIba integrált modell telepítésekor meg kell határoznia egy Python *pontozási parancsfájlt* és egy egyéni környezetet. A pontozási parancsfájl két függvényt tartalmaz:
+Ha olyan modellt telepít, amely integrálva lesz Power BIba, meg kell határoznia egy Python- *pontozási parancsfájlt* és egy egyéni környezetet. A pontozási parancsfájl két függvényt tartalmaz:
 
-- `init()` – ezt a függvényt a szolgáltatás elindításakor hajtja végre a rendszer. Ez a függvény betölti a modellt (vegye figyelembe, hogy a modellt a rendszer automatikusan letölti a modell beállításjegyzékből) és deszerializálja.
-- `run(data)` – Ez a függvény akkor kerül végrehajtásra, ha a szolgáltatás hívása olyan bemeneti adatokkal történik, amelyeknek pontozásra van szükségük. 
+- A `init()` függvény a szolgáltatás indításakor fut. Betölti a modellt (amelyet a rendszer automatikusan letölt a modell beállításjegyzékből) és deszerializálja.
+- A `run(data)` függvény akkor fut le, ha a szolgáltatás hívása olyan bemeneti adatokat tartalmaz, amelyeket fel kell venni. 
 
 >[!NOTE]
-> A Python dekoratőr segítségével definiáljuk a bemeneti és kimeneti adatok sémáját, ami fontos a Microsoft Power BI-integráció működéséhez.
+> Ez a cikk a Python dekoratőr használatával határozza meg a bemeneti és kimeneti adatok sémáját. Ez a beállítás fontos a Power BI integrációhoz.
 
-Másolja és illessze be az alábbi kódot egy új, a jegyzetfüzetbe tartozó **cellába** . Az alábbi kódrészlethez tartozik egy cella Magic, amely a kódot egy iktatott score.py fogja írni.
+Másolja be a következő kódot, és illessze be egy új *kódrészletbe* a jegyzetfüzetben. A következő kódrészlet tartalmaz egy cella magict, amely a kódot egy *score.py* nevű fájlba írja.
 
 ```python
 %%writefile score.py
@@ -219,7 +222,7 @@ def run(data):
         result = model.predict(data)
         print("result.....")
         print(result)
-    # You can return any data type, as long as it is JSON serializable.
+    # You can return any data type, as long as it can be serialized by JSON.
         return result.tolist()
     except Exception as e:
         error = str(e)
@@ -228,9 +231,9 @@ def run(data):
 
 ### <a name="define-the-custom-environment"></a>Egyéni környezet definiálása
 
-Ezután meg kell határozni a környezetet a modell pontozásához – ebben a környezetben meg kell határozni a fentiekben definiált pontozási szkript (score.py) által igényelt Python-csomagokat, például a pandák, a scikit-Learn stb.
+Ezután adja meg a környezetet a modell kiértékeléséhez. A környezetben adja meg a Python-csomagokat, például a pandák és a scikit-Learn csomagot, hogy a pontozási parancsfájl (*score.py*) megköveteli.
 
-A környezet definiálásához másolja és illessze be az alábbi kódot egy új, a jegyzetfüzetbe tartozó **cellába** :
+A környezet definiálásához másolja a következő kódot, és illessze be egy új *kódrészletbe* a jegyzetfüzetben.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -252,7 +255,7 @@ inference_config = InferenceConfig(entry_script='./score.py',environment=environ
 
 ### <a name="deploy-the-model"></a>A modell üzembe helyezése
 
-A modell üzembe helyezéséhez másolja és illessze be az alábbi kódot egy új, a jegyzetfüzetbe tartozó **cellába** :
+A modell üzembe helyezéséhez másolja a következő kódot, és illessze be a jegyzetfüzet új *kódjába* :
 
 ```python
 service_name = 'my-diabetes-model'
@@ -262,9 +265,9 @@ service.wait_for_deployment(show_output=True)
 ```
 
 >[!NOTE]
-> A szolgáltatás üzembe helyezése 2-4 percet is igénybe vehet.
+> A szolgáltatás üzembe helyezése 2 – 4 percet is igénybe vehet.
 
-A sikeresen üzembe helyezett szolgáltatás következő kimenetét kell látnia:
+Ha a szolgáltatás sikeresen települ, a következő kimenetnek kell megjelennie:
 
 ```txt
 Tips: You can try get_logs(): https://aka.ms/debugimage#dockerlog or local deployment: https://aka.ms/debugimage#debug-locally to debug if deployment takes longer than 10 minutes.
@@ -273,11 +276,11 @@ Succeeded
 ACI service creation operation finished, operation "Succeeded"
 ```
 
-A szolgáltatást Azure Machine Learning Studio is megtekintheti, ha a bal oldali menüben a **végpontok** elemre navigál:
+A szolgáltatást Azure Machine Learning Studio is megtekintheti. A bal oldali menüben válassza a **végpontok** lehetőséget:
 
-:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="A végpontot ábrázoló képernyőkép":::
+:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="A szolgáltatás megtekintését bemutató képernyőkép.":::
 
-Javasoljuk, hogy tesztelje a webszolgáltatást, és győződjön meg arról, hogy az a vártnak megfelelően működik-e. A Azure Machine Learning Studio bal oldali menüjében a **jegyzetfüzetek** lehetőség kiválasztásával térhet vissza a jegyzetfüzethez. A szolgáltatás teszteléséhez másolja és illessze be az alábbi kódot a jegyzetfüzet új **kódjába** :
+Javasoljuk, hogy tesztelje a webszolgáltatást, és győződjön meg róla, hogy az a vártnak megfelelően működik-e. A jegyzetfüzet visszaküldéséhez Azure Machine Learning Studio a bal oldali menüben válassza a **jegyzetfüzetek** lehetőséget. Ezután másolja be a következő kódot, és illessze be a jegyzetfüzet új *kódjába* a szolgáltatás teszteléséhez.
 
 ```python
 import json
@@ -295,9 +298,9 @@ print(output)
 
 A kimenetnek a következő JSON-struktúrához hasonlóan kell kinéznie: `{'predict': [[205.59], [68.84]]}` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre és helyezhet üzembe egy modellt úgy, hogy azok a Microsoft Power BI által felhasználható módon legyenek felhasználhatók. A következő részben megtudhatja, hogyan használja ezt a modellt egy Power BI jelentésből.
+Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre és helyezhet üzembe egy modellt, hogy Power BI lehessen használni. A következő részben megtudhatja, hogyan használhatja ezt a modellt egy Power BI-jelentésben.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: modell felhasználása Power BI](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)

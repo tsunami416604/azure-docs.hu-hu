@@ -3,16 +3,14 @@ title: Fogalmak – a privát felhő frissítései és frissítései
 description: Ismerje meg az Azure VMware-megoldás legfontosabb frissítési folyamatait és funkcióit.
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 380e97eae559145a9ef5ed7b6e7bf14f18039eed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb65a0e192fbf1f054857223b3fdaf58fc6a903
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316800"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809649"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware-megoldás saját Felhőbeli frissítései és frissítései
-
-## <a name="overview"></a>Áttekintés
 
 Az Azure VMware-megoldás privát felhők egyik legfőbb előnye, hogy a platform karbantartás alatt áll. A platform karbantartása magában foglalja a VMware ellenőrzött szoftvercsomag automatizált frissítéseit, így biztosítva, hogy az ellenőrzött Azure VMware-megoldás saját felhőalapú szoftverének legújabb verzióját használja.
 
@@ -57,7 +55,7 @@ Meghibásodás esetén az Azure VMware-megoldás visszaállíthatja ezeket a kon
 
 A VMware-szoftverekkel kapcsolatos további információkért lásd a [privát felhők és fürtök fogalmát ismertető cikket](concepts-private-clouds-clusters.md) és a [gyakori kérdéseket](faq.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépés [egy privát felhő létrehozása](tutorial-create-private-cloud.md).
 

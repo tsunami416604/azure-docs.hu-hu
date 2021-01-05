@@ -1,35 +1,36 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: cognitive-services
-author: roy-har
-manager: diberry
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.date: 06/03/2020
+ms.date: 12/29/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
-ms.author: roy-har
-ms.openlocfilehash: 8e67a6d0c98a3839922a79e9b452465087da1b69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: aahi
+ms.reviewer: roy-har
+ms.openlocfilehash: 7aa2fba6ef551a745ccaf5b00f36021b9d8680ce
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84418032"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820584"
 ---
 1. Válassza a [pizza-app-for-luis-v6.json](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) lehetőséget a fájl GitHub-oldalának megadásához `pizza-app-for-luis.json` .
 1. Kattintson a jobb gombbal a **RAW** gombra, és válassza a **hivatkozás mentése másként** lehetőséget a számítógépre való mentéshez `pizza-app-for-luis.json` .
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai).
 1. Válassza [a saját alkalmazások](https://www.luis.ai/applications)lehetőséget.
 1. A **saját alkalmazások** lapon válassza az **+ új alkalmazás lehetőséget a beszélgetéshez**.
-1. Válassza **az IMPORTÁLÁS JSON-ként**lehetőséget.
+1. Válassza **az IMPORTÁLÁS JSON-ként** lehetőséget.
 1. Az **új alkalmazás importálása** párbeszédpanelen kattintson a **fájl kiválasztása** gombra.
-1. Válassza ki a `pizza-app-for-luis.json` letöltött fájlt, majd kattintson a **Megnyitás**gombra.
+1. Válassza ki a `pizza-app-for-luis.json` letöltött fájlt, majd kattintson a **Megnyitás** gombra.
 1. Az **új alkalmazás importálása** párbeszédpanel **név** mezőjébe írja be a pizza-alkalmazás nevét, majd kattintson a **kész** gombra.
 
 Az alkalmazás importálva lesz.
 
-Ha megjelenik **egy hatékony Luis-alkalmazás létrehozásának**párbeszédpanele, akkor zárjuk be a párbeszédpanelt.
+Ha megjelenik **egy hatékony Luis-alkalmazás létrehozásának** párbeszédpanele, akkor zárjuk be a párbeszédpanelt.
 
 ## <a name="train-and-publish-the-pizza-app"></a>A pizza-alkalmazás betanítása és közzététele
 
@@ -47,7 +48,7 @@ Az új pizza-alkalmazás használatához szüksége lesz a pizza-alkalmazáshoz 
 
 A következő értékek megkeresése:
 
-1. A **leképezések** lapon válassza a **kezelés**lehetőséget.
+1. A **leképezések** lapon válassza a **kezelés** lehetőséget.
 1. Az **Alkalmazásbeállítások** lapon jegyezze fel az **alkalmazás azonosítóját**.
 1. Válassza az **Azure Resources** (Azure-erőforrások) lehetőséget.
 1. Az **Azure-erőforrások** lapon jegyezze fel az **elsődleges kulcsot**. Ez az érték az előrejelzési kulcs.

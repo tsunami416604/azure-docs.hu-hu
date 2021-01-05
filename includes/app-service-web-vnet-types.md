@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: 93b92da999c15255f543abca346fc2bf8840006c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0b93111357cf0d6e57eeb5495d50bd18a15dca77
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999438"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97812782"
 ---
 * A több-bérlős rendszerek, amelyek támogatják az elkülönített díjszabási csomagok teljes skáláját.
 * A App Service Environment, amely üzembe helyezi a VNet, és támogatja az elkülönített díjszabási csomagot.
@@ -33,7 +33,7 @@ Vannak olyan dolgok, amelyeket a VNet-integráció nem támogat, például:
 * Active Directory integráció.
 * NetBIOS.
 
-Az átjáróval megkövetelt VNet-integráció csak a célként megadott VNet, illetve a VNet és a virtuális magánhálózatok használatával csatlakozó hálózatokban biztosít hozzáférést az erőforrásokhoz. Az átjáróval megkövetelt VNet-integráció nem teszi lehetővé az Azure ExpressRoute-kapcsolatokon keresztül elérhető erőforrásokhoz való hozzáférést, vagy szolgáltatási végpontokkal működik.
+Az átjáróval megkövetelt VNet-integráció csak a célként megadott VNet, illetve a VNet és a virtuális magánhálózatok használatával csatlakozó hálózatokban biztosít hozzáférést az erőforrásokhoz. Az átjáróval megkövetelt VNet-integráció nem teszi lehetővé az Azure ExpressRoute-kapcsolatokon keresztül elérhető erőforrásokhoz való hozzáférést, vagy a szolgáltatási végpontokkal való munkát.
 
 A használt verziótól függetlenül a VNet integrációja lehetővé teszi az alkalmazás számára a VNet lévő erőforrásokhoz való hozzáférést, de nem biztosít bejövő privát hozzáférést az alkalmazáshoz a VNet. A privát helyhez való hozzáférés arra utal, hogy az alkalmazás csak a magánhálózaton keresztül érhető el, például egy Azure-VNet belülről. A VNet-integráció csak az alkalmazásból kimenő hívásokat tesz a VNet.
 

@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 097b5c7d71076c11cdc30fce618f3a4ac4ef67a1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c2496959f851b55f8cc66c0e793b641cdafb003a
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655458"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808334"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>A titkos kulcs elforgatásának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -39,14 +39,15 @@ Ebben a megoldásban Azure Key Vault a Storage-fiókhoz tartozó egyéni hozzáf
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés. [Hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure [Cloud Shell](https://shell.azure.com/). Ez az oktatóanyag a portál Cloud Shell a PowerShell env használatával
 * Azure Key Vault.
 * Két Azure Storage-fiók.
 
 Ezt a telepítési hivatkozást akkor használhatja, ha nem rendelkezik meglévő kulcstartóval és meglévő Storage-fiókokkal:
 
-[![Az Azure-ba felcímkézett hivatkozás.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+[![Az Azure-ba felcímkézett hivatkozás.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget. Nevezze el a csoport **akvrotation** , majd kattintson **az OK gombra**.
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget. Nevezze el a csoport **vaultrotation** , majd kattintson **az OK gombra**.
 1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget.
 
@@ -55,7 +56,7 @@ Ezt a telepítési hivatkozást akkor használhatja, ha nem rendelkezik meglév�
 Most már rendelkezik egy Key vaulttal és két Storage-fiókkal. A telepítőt az Azure CLI-ben ellenőrizheti a következő parancs futtatásával:
 
 ```azurecli
-az resource list -o table -g akvrotation
+az resource list -o table -g vaultrotation
 ```
 
 Az eredmény az alábbihoz hasonló kimenetet fog kinézni:
@@ -63,9 +64,9 @@ Az eredmény az alábbihoz hasonló kimenetet fog kinézni:
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-akvrotation-kv         akvrotation      eastus      Microsoft.KeyVault/vaults
-akvrotationstorage     akvrotation      eastus      Microsoft.Storage/storageAccounts
-akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAccounts
+vaultrotation-kv         vaultrotation      westus      Microsoft.KeyVault/vaults
+vaultrotationstorage     vaultrotation      westus      Microsoft.Storage/storageAccounts
+vaultrotationstorage2    vaultrotation      westus      Microsoft.Storage/storageAccounts
 ```
 
 ## <a name="create-and-deploy-the-key-rotation-function"></a>A Key rotációs függvény létrehozása és üzembe helyezése
@@ -82,70 +83,79 @@ A Function app rotációs funkciója a következő összetevőket és konfigurá
 
 1. Válassza ki az Azure-sablon központi telepítési hivatkozását: 
 
-   [![Azure-sablonok üzembe helyezési hivatkozása.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
+   [![Azure-sablonok üzembe helyezési hivatkozása.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FFunction%2Fazuredeploy.json)
 
-1. Az **erőforráscsoport** listában válassza a **akvrotation** lehetőséget.
+1. Az **erőforráscsoport** listában válassza a **vaultrotation** lehetőséget.
 1. A **Storage-fiók RG** mezőjébe írja be annak az erőforráscsoportnak a nevét, amelyben a Storage-fiók található. Tartsa meg az alapértelmezett **[resourceGroup (). name]** értéket, ha a Storage-fiókja már ugyanabban az erőforráscsoportban található, ahol a Key rotációs funkciót telepíteni fogja.
-1. A **Storage-fiók neve** mezőbe írja be annak a Storage-fióknak a nevét, amely a forgatni kívánt hozzáférési kulcsokat tartalmazza.
+1. A **Storage-fiók neve** mezőbe írja be annak a Storage-fióknak a nevét, amely a forgatni kívánt hozzáférési kulcsokat tartalmazza. Az [Előfeltételekben](#prerequisites)létrehozott Storage-fiók használata esetén tartsa meg az alapértelmezett értéket **[concat (resourceGroup (). name, "Storage")]** .
 1. A **Key Vault RG** mezőben adja meg az erőforráscsoport nevét, amelyben a kulcstartó található. Tartsa meg az alapértelmezett **[resourceGroup (). name]** értéket, ha a kulcstartó már létezik ugyanabban az erőforráscsoportban, ahol a Key rotációs funkciót üzembe helyezi.
-1. A **Key Vault neve** mezőbe írja be a Key Vault nevét.
+1. A **Key Vault neve** mezőbe írja be a Key Vault nevét. Ha az [Előfeltételek](#prerequisites)között a Key vaultot használja, tartsa meg az alapértelmezett értéket **[concat (resourceGroup (). name, "-kV")]** .
+1. A **app Service csomag típusa** mezőben válassza a üzemeltetési terv elemet. A **prémium csomagra** csak akkor van szükség, ha a kulcstartó a tűzfal mögött van.
 1. A **Függvényalkalmazás neve** mezőbe írja be a Function alkalmazás nevét.
 1. A **titkos kulcs neve** mezőbe írja be annak a titoknak a nevét, ahová a hozzáférési kulcsokat tárolni fogja.
-1. A tárház **URL-címe** mezőbe írja be a függvény kódjának GitHub-helyét: **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** .
+1. A tárház **URL-címe** mezőbe írja be a függvény kódjának GitHub-helyét. Ebben az oktatóanyagban használhatja a következőt: **https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell.git** .
 1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget.
 
-   ![Képernyőkép, amely bemutatja, hogyan hozhatja létre az első Storage-fiókot.](../media/secrets/rotation-dual/dual-rotation-2.png)
+   ![A függvény létrehozásának és üzembe helyezésének módját bemutató képernyőkép.](../media/secrets/rotation-dual/dual-rotation-2.png)
 
-Az előző lépések elvégzése után egy Storage-fiók, egy kiszolgálófarm, egy Function-alkalmazás és egy Application Insights fog rendelkezni. Az üzembe helyezés befejezésekor a következő oldal jelenik meg: képernyőfelvétel, ![ amely az üzembe helyezés befejezését mutatja.](../media/secrets/rotation-dual/dual-rotation-3.png)
+Az előző lépések elvégzése után egy Storage-fiók, egy kiszolgálófarm, egy Function-alkalmazás és egy Application Insights fog rendelkezni. Az üzembe helyezés befejezésekor a következő oldal jelenik meg:
+
+   ![Az üzembe helyezés befejezését bemutató képernyőkép.](../media/secrets/rotation-dual/dual-rotation-3.png)
 > [!NOTE]
 > Ha hiba lép fel, az **újratelepítése** lehetőség kiválasztásával befejezheti az összetevők központi telepítését.
 
 
-A [githubon](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)megtalálhatja a rotációs függvény üzembe helyezési sablonjait és kódját is.
+Az [Azure-mintákban](https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell)megtalálhatja az elforgatási függvény üzembe helyezési sablonjait és kódját is.
 
 ## <a name="add-the-storage-account-access-keys-to-key-vault"></a>Adja hozzá a Storage-fiók hozzáférési kulcsait Key Vault
 
-Először állítsa be a hozzáférési szabályzatot, és adja meg a felhasználók számára a **titkos kulcsok kezelésére** vonatkozó engedélyeket:
+Először állítsa be a hozzáférési szabályzatot, és adja meg a felhasználói tag számára a **titkos kulcsok kezeléséhez** szükséges engedélyeket:
 
 ```azurecli
-az keyvault set-policy --upn <email-address-of-user> --name akvrotation-kv --secret-permissions set delete get list
+az keyvault set-policy --upn <email-address-of-user> --name vaultrotation-kv --secret-permissions set delete get list
 ```
 
 Most már létrehozhat egy új titkot egy Storage-fiók elérési kulcsával az értékeként. Szüksége lesz a Storage-fiók erőforrás-AZONOSÍTÓra, a titkos kulcs érvényességi idejére és a kulcs AZONOSÍTÓra, hogy a titkos kulcshoz legyen hozzáadva, így a rotációs függvény újra létrehozhatja a kulcsot a Storage-fiókban.
 
 Határozza meg a Storage-fiók erőforrás-AZONOSÍTÓját. Ezt az értéket a `id` tulajdonságban találja.
+
 ```azurecli
-az storage account show -n akvrotationstorage
+az storage account show -n vaultrotationstorage
 ```
 
 Sorolja fel a Storage-fiók hozzáférési kulcsait, hogy megkapják a kulcs értékeit:
 
 ```azurecli
-az storage account keys list -n akvrotationstorage 
+az storage account keys list -n vaultrotationstorage 
 ```
 
-Futtassa ezt a parancsot a (z) és a következő lekért értékeivel `key1Value` `storageAccountResourceId` :
+Adja hozzá a titkos kulcsot a Key vaulthoz a lejárati dátummal a holnap értékre, a 60 napos érvényességi időszakra és a Storage-fiók erőforrás- Futtassa ezt a parancsot a (z) és a következő lekért értékeivel `key1Value` `storageAccountResourceId` :
 
 ```azurecli
 $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
-az keyvault secret set --name storageKey --vault-name akvrotation-kv --value <key1Value> --tags "CredentialId=key1" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
+az keyvault secret set --name storageKey --vault-name vaultrotation-kv --value <key1Value> --tags "CredentialId=key1" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
 
-Ha rövid lejárati dátummal hoz létre egy titkos kulcsot, a `SecretNearExpiry` rendszer néhány percen belül közzétesz egy eseményt. Ez az esemény ezután aktiválja a függvényt a titok elforgatásához.
+A titkos kód `SecretNearExpiry` több percen belül elindítja az eseményt. Ez az esemény ezután aktiválja a függvényt, hogy a titkos kulcsot 60 napra állítsa a lejárattal. Ebben a konfigurációban a "SecretNearExpiry" esemény 30 naponként aktiválódik (30 nappal a lejárat előtt), és a rotációs függvény a key1 és a key2 közötti váltást is eredményezi.
 
-Ellenőrizze, hogy a hozzáférési kulcsok újragenerálása a Storage-fiók kulcsának és a Key Vault titoknak a beolvasásával és összehasonlításával ellenőrizhető-e.
+A hozzáférési kulcsok újragenerálása a Storage-fiók kulcsának és a Key Vault titoknak a beolvasásával ellenőrizhető, és összehasonlíthatja őket.
 
 Ezzel a paranccsal kérheti le a titkos adatokat:
 ```azurecli
-az keyvault secret show --vault-name akvrotation-kv --name storageKey
+az keyvault secret show --vault-name vaultrotation-kv --name storageKey
 ```
-Figyelje meg, hogy `CredentialId` a rendszer frissíti a másikat, `keyName` és `value` újragenerálta a ![ következőt: képernyőkép, amely az első Storage-fiókhoz tartozó z kulcstartó titkos Megjelenítés parancs kimenetét jeleníti meg.](../media/secrets/rotation-dual/dual-rotation-4.png)
+
+Figyelje meg, hogy `CredentialId` a rendszer frissíti a másikat, `keyName` és `value` újragenerálta a következőt:
+
+![Képernyőkép, amely az első Storage-fiókhoz tartozó, a z kulcstartó Secret show parancs kimenetét jeleníti meg.](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 Az értékek összehasonlításához a hozzáférési kulcsok beolvasása:
 ```azurecli
-az storage account keys list -n akvrotationstorage 
+az storage account keys list -n vaultrotationstorage 
 ```
+Figyelje meg, hogy `value` a kulcs ugyanaz, mint a Key Vault titkos kulcsa:
+
 ![Képernyőkép, amely az első Storage-fiókhoz tartozó z Storage-fiók kulcsainak listáját jeleníti meg.](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-storage-accounts-for-rotation"></a>Storage-fiókok hozzáadása a rotációhoz
@@ -158,10 +168,12 @@ A Storage-fiók kulcsainak egy meglévő függvényhez való hozzáadásához a 
 
 1. Válassza ki az Azure-sablon központi telepítési hivatkozását: 
 
-   [![Azure-sablonok üzembe helyezési hivatkozása.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscriptions%2Fazuredeploy.json)
+   [![Azure-sablonok üzembe helyezési hivatkozása.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FAdd-Event-Subscriptions%2Fazuredeploy.json)
 
-1. Az **erőforráscsoport** listában válassza a **akvrotation** lehetőséget.
+1. Az **erőforráscsoport** listában válassza a **vaultrotation** lehetőséget.
+1. A **Storage-fiók RG** mezőjébe írja be annak az erőforráscsoportnak a nevét, amelyben a Storage-fiók található. Tartsa meg az alapértelmezett **[resourceGroup (). name]** értéket, ha a Storage-fiókja már ugyanabban az erőforráscsoportban található, ahol a Key rotációs funkciót telepíteni fogja.
 1. A **Storage-fiók neve** mezőbe írja be annak a Storage-fióknak a nevét, amely a forgatni kívánt hozzáférési kulcsokat tartalmazza.
+1. A **Key Vault RG** mezőben adja meg az erőforráscsoport nevét, amelyben a kulcstartó található. Tartsa meg az alapértelmezett **[resourceGroup (). name]** értéket, ha a kulcstartó már létezik ugyanabban az erőforráscsoportban, ahol a Key rotációs funkciót üzembe helyezi.
 1. A **Key Vault neve** mezőbe írja be a Key Vault nevét.
 1. A **Függvényalkalmazás neve** mezőbe írja be a Function alkalmazás nevét.
 1. A **titkos kulcs neve** mezőbe írja be annak a titoknak a nevét, ahová a hozzáférési kulcsokat tárolni fogja.
@@ -174,40 +186,48 @@ A Storage-fiók kulcsainak egy meglévő függvényhez való hozzáadásához a 
 
 Határozza meg a Storage-fiók erőforrás-AZONOSÍTÓját. Ezt az értéket a `id` tulajdonságban találja.
 ```azurecli
-az storage account show -n akvrotationstorage2
+az storage account show -n vaultrotationstorage2
 ```
 
 Sorolja fel a Storage-fiók hozzáférési kulcsait, hogy a key2 értéket kapja:
 
 ```azurecli
-az storage account keys list -n akvrotationstorage2 
+az storage account keys list -n vaultrotationstorage2 
 ```
 
-Futtassa ezt a parancsot a (z) és a következő lekért értékeivel `key2Value` `storageAccountResourceId` :
+Adja hozzá a titkos kulcsot a Key vaulthoz a lejárati dátummal a holnap értékre, a 60 napos érvényességi időszakra és a Storage-fiók erőforrás- Futtassa ezt a parancsot a (z) és a következő lekért értékeivel `key2Value` `storageAccountResourceId` :
 
 ```azurecli
-tomorrowDate=`date -d tomorrow -Iseconds -u | awk -F'+' '{print $1"Z"}'`
-az keyvault secret set --name storageKey2 --vault-name akvrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
+$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+az keyvault secret set --name storageKey2 --vault-name vaultrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
 
 Ezzel a paranccsal kérheti le a titkos adatokat:
 ```azurecli
-az keyvault secret show --vault-name akvrotation-kv --name storageKey2
+az keyvault secret show --vault-name vaultrotation-kv --name storageKey2
 ```
-Figyelje meg, hogy `CredentialId` a rendszer frissíti a másikat, `keyName` és `value` újragenerálta a ![ következőt: képernyőkép, amely a második Storage-fiókhoz tartozó z kulcstartó titkos Megjelenítés parancs kimenetét jeleníti meg.](../media/secrets/rotation-dual/dual-rotation-8.png)
+
+Figyelje meg, hogy `CredentialId` a rendszer frissíti a másikat, `keyName` és `value` újragenerálta a következőt:
+
+![Képernyőkép, amely a második Storage-fiókhoz tartozó a z kulcstartó Secret show parancs kimenetét jeleníti meg.](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 Az értékek összehasonlításához a hozzáférési kulcsok beolvasása:
 ```azurecli
-az storage account keys list -n akvrotationstorage 
+az storage account keys list -n vaultrotationstorage 
 ```
+
+Figyelje meg, hogy `value` a kulcs ugyanaz, mint a Key Vault titkos kulcsa:
+
 ![Képernyőkép, amely a második Storage-fiókhoz tartozó z Storage-fiók kulcsainak listáját jeleníti meg.](../media/secrets/rotation-dual/dual-rotation-9.png)
 
-## <a name="key-vault-dual-credential-rotation-functions"></a>Key Vault kettős hitelesítő adatok elforgatási funkciói
+## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>Key Vault rotációs függvények két hitelesítő adathoz
 
 - [Storage-fiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
+- Oktatóanyag: [a titkok rotációja a hitelesítő adatok egy készlete esetében](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
 - Áttekintés: [Key Vault figyelése Azure Event Grid](../general/event-grid-overview.md)
 - Útmutató: az [első függvény létrehozása a Azure Portalban](../../azure-functions/functions-create-first-azure-function.md)
 - Útmutató: [e-mailek fogadása Key Vault titkos kód módosításakor](../general/event-grid-logicapps.md)

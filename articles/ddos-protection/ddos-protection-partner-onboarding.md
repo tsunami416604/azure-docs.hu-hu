@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 4cc0fd970f9adc26f5fdb024f501dcb0edf77bde
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 962f6bcf7747a82749e7ccab95de34f7834a8372
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992420"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814210"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerkapcsolat a Azure DDoS Protection standard csomaggal
 Ez a cikk a Azure DDoS Protection szabvány által engedélyezett partneri lehetőségeket ismerteti. Ez a cikk úgy lett kialakítva, hogy segítse a termék-kezelőket és az üzleti fejlesztési szerepköröket a befektetési útvonalak megismerésében, és betekintést nyújt a partneri értékek kiosztására.
@@ -40,8 +40,8 @@ Az Azure DDoS Protection standard minden védett alkalmazás esetében automatik
 Azure DDoS Protection a DDoS-támadások azonosítását és enyhítését felhasználói beavatkozás nélkül.
 
 - Ha a védett erőforrás a Azure Security Center alatt lévő előfizetésben található, DDoS Protection a standard automatikusan riasztást küld a Security Center, amikor DDoS-támadás észlelhető, és a védett alkalmazással szembeni enyhítése történik.
-- Azt is megteheti, hogy értesítést kap, ha a védett nyilvános IP-címek esetében aktív megoldás van érvényben, a metrikát a DDoS-támadás alatt is [konfigurálhatja](telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics) .
-- Emellett dönthet úgy is, hogy riasztásokat hoz létre a többi DDoS mérőszámhoz, és [konfigurálja a támadási elemzéseket](telemetry-monitoring-alerting.md) a támadás skálázása, a forgalom eldobása, a támadási vektorok, a legfontosabb közreműködők és egyéb részletek megismerése érdekében.
+- Azt is megteheti, hogy értesítést kap, ha a védett nyilvános IP-címek esetében aktív megoldás van érvényben, a metrikát a DDoS-támadás alatt is [konfigurálhatja](alerts.md) .
+- Emellett dönthet úgy is, hogy riasztásokat hoz létre a többi DDoS mérőszámhoz, és [konfigurálja a támadási telemetria](telemetry.md) , hogy megértse a támadás mértékét, a forgalom eldobását, a támadási vektorokat, a legfontosabb közreműködőket és egyéb részleteket.
 
 ![DDoS-metrikák](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
 
@@ -71,7 +71,7 @@ A következő lépések szükségesek ahhoz, hogy a partnerek a Azure DDoS Prote
 3. Engedélyezze a Azure DDoS Protection standard szolgáltatást azon szolgáltatás virtuális hálózatán, amely nyilvános végpontokkal rendelkezik az első lépésben létrehozott DDoS Protection terv használatával. A stpe részletes ismertetését lásd: a [DDoS standard Protection-csomag engedélyezése](manage-ddos-protection.md#enable-ddos-protection-for-an-existing-virtual-network)
    > [!IMPORTANT] 
    > Miután a Azure DDoS Protection standard engedélyezve van egy virtuális hálózaton, a virtuális hálózaton belüli összes nyilvános IP-cím automatikusan védett lesz. Ezeknek a nyilvános IP-címeknek a forrása lehet az Azure-ban (ügyfél-előfizetés) vagy az Azure-on kívül is. 
-4. Ha szeretné, integrálja Azure DDoS Protection standard telemetria és a támadási elemzést az alkalmazásra vonatkozó, az ügyfél felé irányuló irányítópulton. További információ a telemetria használatáról: [DDoS Protection telemetria megtekintése és konfigurálása](telemetry-monitoring-alerting.md). 
+4. Ha szeretné, integrálja Azure DDoS Protection standard telemetria és a támadási elemzést az alkalmazásra vonatkozó, az ügyfél felé irányuló irányítópulton. További információ a telemetria használatáról: [DDoS Protection telemetria megtekintése és konfigurálása](telemetry.md). 
 
 ### <a name="onboarding-guides-and-technical-documentation"></a>Előkészítési útmutatók és műszaki dokumentáció
 
@@ -80,7 +80,7 @@ A következő lépések szükségesek ahhoz, hogy a partnerek a Azure DDoS Prote
 - [Azure DDoS Protection API-hivatkozás](/rest/api/virtualnetwork/ddosprotectionplans)
 - [Azure Virtual Network API-dokumentáció](/rest/api/virtualnetwork/virtualnetworks)
 
-### <a name="get-help"></a>Segítség kérése
+### <a name="get-help"></a>Segítségkérés
 
 - Ha kérdése van az alkalmazással, a szolgáltatással vagy a termék-integrációval kapcsolatban Azure DDoS Protection standard rendszerrel, akkor az [Azure biztonsági közössége](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)is elérhető.
 - [Stack overflow](https://stackoverflow.com/tags/azure-ddos/)-beszélgetések követése.
@@ -90,7 +90,7 @@ A következő lépések szükségesek ahhoz, hogy a partnerek a Azure DDoS Prote
 - A Microsofttal való partneri kapcsolat elsődleges programja a [Microsoft Partner Network](https://partner.microsoft.com/). – Microsoft Graph biztonsági integrációk az [MPN független szoftvergyártó (ISV)](https://partner.microsoft.com/saas-solution-guide) nyomon követéséhez tartoznak.
 - A Microsoft [intelligens biztonsági társítás](https://www.microsoft.com/security/business/intelligent-security-association?rtc=1) a program kifejezetten a Microsoft biztonsági partnerei számára a biztonsági termékek gazdagítása és a Microsoft biztonsági termékeibe való integrációjuk javítása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Meglévő partner-integrációk megtekintése:
 
 - [Barracuda WAF-szolgáltatás](https://www.barracuda.com/waf-as-a-service)

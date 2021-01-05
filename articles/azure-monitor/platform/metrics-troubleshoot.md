@@ -7,28 +7,16 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 1a9286ff15834fafe4a69907836ce1abd17abca6
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7c3af0865282475ded0172d18aecad1dfb61721b
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168069"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814261"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Metrikadiagramok hibaelhárítása
 
 Ez a cikk akkor használható, ha a diagramok létrehozásával, testreszabásával vagy értelmezésével kapcsolatos problémákba ütközik az Azure mérőszámok Explorerben. Ha még nem ismeri a metrikákat, ismerkedjen meg a mérőszámok [Explorerrel](metrics-getting-started.md) és [a metrikák Explorer speciális funkcióival](metrics-charts.md). Megtekintheti a konfigurált metrikai diagramokra vonatkozó [példákat](metric-chart-samples.md) is.
-
-## <a name="cant-find-your-resource-to-select-it"></a>Nem található az erőforrás a kiválasztáshoz
-
-Az **Erőforrás kiválasztása** elemre kattintott, de nem látja az erőforrását az erőforrás-választó párbeszédpanelen.
-
-**Megoldás:** A metrikák Explorer használatához az elérhető erőforrások listázása előtt ki kell választania az előfizetéseket és az erőforráscsoportokat. Ha nem látja az erőforrását:
-
-1. Győződjön meg arról, hogy a megfelelő előfizetést választotta ki az **Előfizetés** legördülő menüben. Ha az előfizetés nincs a listában, kattintson a **Címtár + Előfizetés beállításai** elemre és adja hozzá az erőforrását tartalmazó előfizetést.
-
-1. Győződjön meg arról, hogy a megfelelő erőforráscsoport van kiválasztva.
-    > [!WARNING]
-    > A legjobb teljesítmény érdekében a metrikaböngésző első megnyitásakor az **Erőforráscsoport** legördülő menüben nincs előre kijelölt erőforráscsoport. Legalább egy csoportot ki kell választania ahhoz, hogy megjelenjenek az erőforrások.
 
 ## <a name="chart-shows-no-data"></a>A diagram nem jelenít meg adattípust
 
@@ -72,23 +60,23 @@ A **vendég operációs rendszerre** vonatkozó metrikák gyűjteményéhez konf
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>"Hiba történt az adatok beolvasása közben" üzenet az irányítópulton
 
-Ez a probléma akkor fordulhat elő, amikor az irányítópult olyan metrikával jött létre, amely később elavult, és el lett távolítva az Azure-ból. Ennek ellenőrzéséhez nyissa meg az erőforrás **Metrikák** lapját, és ellenőrizze az elérhető metrikákat a metrikaválasztóban. Ha nem jelenik meg metrika, akkor a metrika el lett távolítva az Azure-ból. Egy metrika elavulása rendszerint azt jelenti, hogy rendelkezésre áll egy új, jobb metrika, amely hasonlóan mutatja be az erőforrás állapotát.
+Ez a probléma akkor fordulhat elő, amikor az irányítópult olyan metrikával jött létre, amely később elavult, és el lett távolítva az Azure-ból. Annak ellenőrzéséhez, hogy a helyzet van-e, nyissa meg az erőforrás **metrikák** lapját, és ellenőrizze az elérhető metrikákat a metrika-választóban. Ha nem jelenik meg metrika, akkor a metrika el lett távolítva az Azure-ból. Egy metrika elavulása rendszerint azt jelenti, hogy rendelkezésre áll egy új, jobb metrika, amely hasonlóan mutatja be az erőforrás állapotát.
 
 **Megoldás:** Módosítsa a hibás csempét úgy, hogy kiválaszt egy alternatív metrikát a diagramhoz az irányítópulton. [Megtekintheti az Azure-szolgáltatásokhoz elérhető metrikák listáját](metrics-supported.md).
 
-## <a name="chart-shows-dashed-line"></a>A diagram szaggatott vonalat mutat
+## <a name="chart-shows-dashed-line"></a>A diagramban szaggatott vonal jelenik meg
 
 Az Azure-metrikák diagramjai szaggatott vonal stílusát használják annak jelzésére, hogy a hiányzó érték (más néven "Null érték") két ismert időszelet adatpontja között van. Ha például az időválasztóban az "1 perc" idő részletességét adta meg, de a mérőszámot 07:26, 07:27, 07:29 vagy 07:30 értéken jelentették (jegyezze fel a második és harmadik adatpontok közötti percenkénti eltérést), akkor egy szaggatott vonal fogja összekapcsolni az 07:27 és az 07:29, és egy folytonos vonal fogja összekapcsolni az összes többi adatpontot. A szaggatott vonal nullára csökken, ha a metrika a **darabszámot** és a **Sum** összesítést használja. Az **AVG**, **min** vagy **Max** összesítések esetében a szaggatott vonal két legközelebbi ismert adatpontot kapcsol össze. Ha pedig az adatok a diagram jobb vagy bal szélén hiányoznak, akkor rendszer meghosszabbítja a szaggatott vonalat a hiányzó adatpont irányába.
-  ![Képernyőfelvétel: a diagram jobb szélső vagy bal szélső oldalán lévő adat hiánya esetén a szaggatott vonal a hiányzó adatpont irányára bővül.](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
+  ![Képernyőfelvétel: a diagram jobb szélső vagy bal szélső oldalán lévő adat hiánya esetén a szaggatott vonal a hiányzó adatpont irányára bővül.](./media/metrics-troubleshoot/dashed-line.png)
 
-**Megoldás:** Ez a viselkedés a tervezés szerint történik. Ez a hiányzó adatpontok azonosításához hasznos. A vonalas diagram kiváló választás a nagy sűrűségű mérőszámok trendjeinek megjelenítéséhez, de nehéz lehet értelmezni a ritka értékekkel rendelkező metrikákat, különösen akkor, ha fontosak az időgabona-vel kapcsolatos kapcsolódó értékek. A szaggatott vonal megkönnyíti az ilyen diagramok leolvasását, ha azonban a diagram még mindig nem egyértelmű, érdemes lehet más diagramtípussal megtekinteni a metrikákat. Az egyazon mérőszámhoz tartozó elszórt diagram például világosan mutatja, hogy az egyes időkeretek csak akkor jelennek meg, ha van érték, és az adatpontot teljesen kihagyja, ha az érték hiányzik: ![ képernyőkép, amely kiemeli a pontdiagram menüpontot.](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
+**Megoldás:** Ez a viselkedés a tervezés szerint történik. Ez a hiányzó adatpontok azonosításához hasznos. A vonalas diagram kiváló választás a nagy sűrűségű mérőszámok trendjeinek megjelenítéséhez, de nehéz lehet értelmezni a ritka értékekkel rendelkező metrikákat, különösen akkor, ha fontosak az időgabona-vel kapcsolatos kapcsolódó értékek. A szaggatott vonal megkönnyíti az ilyen diagramok leolvasását, ha azonban a diagram még mindig nem egyértelmű, érdemes lehet más diagramtípussal megtekinteni a metrikákat. Az egyazon mérőszámhoz tartozó elszórt diagram például világosan mutatja, hogy az egyes időkeretek csak akkor jelennek meg, ha van érték, és az adatpontot teljesen kihagyja, ha az érték hiányzik: ![ képernyőkép, amely kiemeli a pontdiagram menüpontot.](./media/metrics-troubleshoot/scatter-plot.png)
 
    > [!NOTE]
    > Ha továbbra is vonaldiagramot szeretne használni a metrikához, akkor mozgassa az egérmutatót a diagram fölé, így az egérmutató helyén lévő adatpont kiemelése révén könnyebben felmérheti az időrészletességet.
 
-## <a name="chart-shows-unexpected-drop-in-values"></a>A diagram az értékek váratlan csökkenését mutatja.
+## <a name="chart-shows-unexpected-drop-in-values"></a>A diagramban az értékek váratlan csökkenése látható
 
-Sok esetben a metrikaértékek észlelt csökkenése a diagramon látható adatokkal kapcsolatos félreértésből ered. Az összegek vagy a számok csökkenése félrevezető lehet, ha a diagramon a legfrissebb percek láthatók, mert az Azure még nem kapta meg vagy nem dolgozta fel a legutóbbi metrikaadatpontokat. A szolgáltatástól függően a metrikák feldolgozásának késése néhány perces lehet. Az 1 vagy 5 perces részletességgel rendelkező legutóbbi időtartományt bemutató diagramok esetében az elmúlt néhány percben az érték egy cseppe ![ látható: képernyőfelvétel, amely az utolsó pár percben az érték csökkenését mutatja.](./media/metrics-troubleshoot/drop-in-values.png)
+Sok esetben a metrikaértékek észlelt csökkenése a diagramon látható adatokkal kapcsolatos félreértésből ered. Az összegek vagy a számok csökkenése félrevezető lehet, ha a diagramon a legfrissebb percek láthatók, mert az Azure még nem kapta meg vagy nem dolgozta fel a legutóbbi metrikaadatpontokat. A szolgáltatástól függően a metrikák feldolgozásának késése néhány perces lehet. Az 1 vagy 5 perces részletességgel rendelkező legutóbbi időtartományt bemutató diagramok esetében az elmúlt néhány percben az érték egy cseppe ![ látható: képernyőfelvétel, amely az utolsó pár percben az érték csökkenését mutatja.](./media/metrics-troubleshoot/unexpected-dip.png)
 
 **Megoldás:** Ez a viselkedés a tervezés szerint történik. Úgy gondoljuk, hogy az adatok lehető legkorábban történő megjelenítése akkor is előnyös, ha az adatok *részlegesek* vagy *nem teljesek*. Ennek köszönhetően hamarabb juthat fontos következtetésekre, és azonnal megkezdheti a vizsgálatot. Egy, a hibák számát megjelenítő metrika esetén például az X részleges érték elárulja, hogy egy adott percben legalább X hiba fordult elő. Azonnal megkezdheti a probléma vizsgálatát, és nem kell megvárnia, hogy pontosan hány hiba történt ebben a percben, ami talán nem is olyan fontos. A diagram a teljes adatkészlet fogadásakor frissül, de ekkor új nem teljes adatpontokat is jeleníthet meg a még frissebb percekből.
 
@@ -98,7 +86,7 @@ A virtuális gépeknek és virtuálisgép-méretezési csoportoknak két metrika
 
 Alapértelmezés szerint a Vendég operációs rendszer típusú metrikákat az Azure-tárfiók tartalmazza, amelyet az erőforrás **Diagnosztikai beállítások** lapján választhat ki. Ha a vendég operációs rendszer metrikáit nem gyűjti a rendszer, vagy a metrikaböngésző nem tudja elérni őket, akkor csak a **Virtuálisgép-gazda** metrika névterét látja:
 
-![metrika képe](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
+![metrika képe](./media/metrics-troubleshoot/vm.png)
 
 **Megoldás:** Ha nem látja a **vendég operációs rendszer (klasszikus)** névterét és mérőszámait a metrikák Explorerben:
 

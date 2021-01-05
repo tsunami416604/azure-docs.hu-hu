@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/15/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d9e118620cb38e94cfc18d01d31888ac0a444bb7
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179268"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813428"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ekarda
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a ekarda a Azure A
 * A ekarda-hez hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti, hogy a felhasználók Azure AD-fiókjaik használatával automatikusan bejelentkezzenek a ekarda.
 * A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
-
-Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az egyszeri bejelentkezés (SSO)?](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,13 +39,12 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * a ekarda támogatja az SP által kezdeményezett és a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést.
 * a ekarda támogatja az igény szerinti felhasználói üzembe helyezést.
-* A ekarda konfigurálása után kényszerítheti a munkamenet-vezérlést. Ez a figyelmeztetés védelmet nyújt a szervezete bizalmas adatainak valós idejű kiszűrése és beszivárgása ellen. A munkamenet-vezérlő kiterjeszthető feltételes hozzáférést biztosító alkalmazás-vezérlőról. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-ekarda-from-the-gallery"></a>Ekarda hozzáadása a gyűjteményből
 
 A ekarda Azure AD-be való integrálásának konfigurálásához adja hozzá a ekarda a katalógusból a felügyelt SaaS-alkalmazások listájához:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók használatával.
 
 1. A bal oldali panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
@@ -55,7 +52,7 @@ A ekarda Azure AD-be való integrálásának konfigurálásához adja hozzá a e
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **ekarda** kifejezést a keresőmezőbe.
 1. Válassza ki a **ekarda** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a ekarda
+## <a name="configure-and-test-azure-ad-sso-for-ekarda"></a>Azure AD SSO konfigurálása és tesztelése a ekarda-hez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a ekarda egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a ekarda-ben.
 
@@ -73,7 +70,7 @@ Az Azure AD SSO és a ekarda konfigurálásához és teszteléséhez hajtsa vég
 
 Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az Azure portálra.
 1. A **ekarda** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon válassza a ceruza ikont az **alapszintű SAML-konfigurációs** beállítások szerkesztéséhez.
@@ -95,7 +92,7 @@ Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 
 1. Ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni, válassza a **további URL-címek beállítása** lehetőséget, és tegye a következőket:
 
-    * A **bejelentkezési URL** szövegmezőbe írja be azt az URL-címet, amely a következő mintát követi: `https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`
+    A **bejelentkezési URL** szövegmezőbe írja be azt az URL-címet, amely a következő mintát követi:  `https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`
 
     > [!NOTE]
     > Az előző két lépés értékei nem valósak. Frissítse őket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címek értékével. Az értékek lekéréséhez forduljon a ekarda ügyfélszolgálati [csapatához](mailto:contact@ekarda.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -129,20 +126,25 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza a **ekarda** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
-   ![Képernyőfelvétel a kezelés szakaszról, a Kiemelt felhasználók és csoportok lehetőséggel.](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A felhasználók és csoportok szakasz képernyőképe, a felhasználó hozzáadása Kiemelt színnel.](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza ki a felhasználók listájából a **B. Simon** elemet. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
-1. Ha az SAML-kijelentésben bármilyen szerepkörre számíthat, válassza ki a megfelelő szerepkört a felhasználó számára a **szerepkör kiválasztása** párbeszédpanel listájában. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ## <a name="configure-ekarda-sso"></a>Ekarda SSO konfigurálása
 
-1. Egy másik webböngésző-ablakban jelentkezzen be a ekarda vállalati webhelyre rendszergazdaként.
-1. Válassza **Admin**  >  **a rendszergazda saját fiók** lehetőséget.
+1. A ekarda belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **Ekarda beállítása** elemre, majd a ekarda alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a ekarda való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a ekarda, egy másik böngészőablakban jelentkezzen be a ekarda vállalati webhelyre rendszergazdaként.
+
+1. Válassza   >  **a rendszergazda saját fiók** lehetőséget.
 
     ![Képernyőkép a ekarda-hely felhasználói felületéről a fiókom kiemelve a felügyeleti menüben.](./media/ekarda-tutorial/ekarda.png)
 
@@ -166,16 +168,20 @@ Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a ekarda-ben. a 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a saját alkalmazások portál használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-Amikor kiválasztja a ekarda csempét a saját alkalmazások portálon, automatikusan be kell jelentkeznie arra a ekarda-helyre, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a saját alkalmazások portálján: [Bevezetés a My apps portálra](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-## <a name="additional-resources"></a>További források
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a ekarda bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.
 
-* [Az SaaS-alkalmazások Azure Active Directory-vel való integrálására szolgáló oktatóanyagok listája](./tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-* [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
-* [A ekarda kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-* A [ekarda vállalati ecard-megoldásával](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise) tetszőleges számú munkatárs elküldheti a képeslapokat, a márkát a céges emblémával, az ügyfeleivel és kollégáival. További információ az [ekarda egyszeri bejelentkezési megoldásként való üzembe](https://support.ekarda.com/#SSO-Implementation)helyezéséről.
-* [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
-* [A ekarda és a speciális láthatóság és vezérlők elleni védelem](/cloud-app-security/proxy-intro-aad)
+* Lépjen közvetlenül a ekarda bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
+
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a ekarda, amelyhez be szeretné állítani az egyszeri bejelentkezést
+
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások ekarda csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat kezdeményezéséhez, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a ekarda, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+
+## <a name="next-steps"></a>További lépések
+
+A ekarda konfigurálása után kényszerítheti a munkamenet-vezérlést. Ez a figyelmeztetés védelmet nyújt a szervezete bizalmas adatainak valós idejű kiszűrése és beszivárgása ellen. A munkamenet-vezérlő kiterjeszthető feltételes hozzáférést biztosító alkalmazás-vezérlőról. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

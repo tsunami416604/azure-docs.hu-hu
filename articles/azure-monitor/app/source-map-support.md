@@ -2,16 +2,16 @@
 title: Forrás-hozzárendelési támogatás JavaScript-alkalmazásokhoz – Azure Monitor Application Insights
 description: Megtudhatja, hogyan tölthet fel forrás térképeket a saját Storage-fiók blob-tárolójába Application Insights használatával.
 ms.topic: conceptual
-author: markwolff
-ms.author: marwolff
+author: DavidCBerry13
+ms.author: daberry
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6403ecd534d17298a10ffcf8f089a2b010fa3a51
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9326531d9071305ad804e9c60f8ac90bcb5eaee6
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536455"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809632"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>A JavaScript-alkalmazások forrás-hozzárendelési támogatása
 
@@ -81,7 +81,7 @@ A portálon található bármely felhasználónak, amely ezt a funkciót haszná
     - Például `/static/js/main.4e2ca5fa.chunk.js` megkeresi a nevű blobot. `main.4e2ca5fa.chunk.js.map`
 3. Ellenőrizze, hogy a böngésző konzolján látható-e a hibák naplózása. Adja meg ezt minden támogatási jegyben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure file Copy feladat](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)
 

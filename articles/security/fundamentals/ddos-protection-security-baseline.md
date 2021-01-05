@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492250"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814499"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Az Azure biztonsági alapterve Azure DDoS Protection standard szintű
 
@@ -38,7 +38,7 @@ Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítményteszttel
 
 Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. A tevékenységi naplók betekintést nyújtanak az Azure-gyorsítótárban végrehajtott műveletekre a Redis-példányok szintjén. Az Azure-tevékenység naplójának adatai alapján meghatározhatja a "mit, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) a Azure DDoS Protection példányok vezérlési síkja szintjén.
 
-- [Riasztások konfigurálása DDoS Protection-mérőszámokhoz](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS diagnosztikai naplózás megtekintése és konfigurálása](../../ddos-protection/diagnostic-logging.md)
 
 - [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje
 
 **Útmutató**: az Azure-műveletnapló diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics munkaterületre. Lekérdezéseket hajthat végre Log Analytics a kifejezések kereséséhez, a trendek azonosításához, a mintázatok elemzéséhez, valamint számos más elemzéshez a Recovery Services-tárolók által összegyűjtött tevékenység-naplózási adatok alapján.
 
-- [A telemetria, a naplók és a támadási elemzések DDoS Protection standard szintű szolgáltatáshoz való hozzáférésének ismertetése](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [A telemetria, a naplók és a támadási elemzések DDoS Protection standard szintű szolgáltatáshoz való hozzáférésének ismertetése](../../ddos-protection/telemetry.md)
 
 - [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../../azure-monitor/platform/activity-log.md)
 
@@ -76,7 +76,7 @@ Engedélyezze az Azure-műveletnapló diagnosztikai beállításait, és küldje
 
 Egy Log Analytics munkaterület bevezetését az Azure Sentinelbe, mivel ez egy biztonsági előkészítési automatikus válasz-(felszárnyaló) megoldást biztosít. Ez lehetővé teszi a forgatókönyvek (automatizált megoldások) létrehozását és a biztonsági problémák megoldására való felhasználását. Emellett Azure Monitor használatával is létrehozhat egyéni napló-riasztásokat a Log Analytics munkaterületen.
 
-- [Riasztások konfigurálása a DDoS-mérőszámokhoz](https://azure.microsoft.com/blog/holiday-season-is-ddos-season/)
+- [Riasztások konfigurálása a DDoS-mérőszámokhoz](../../ddos-protection/alerts.md)
 
 - [Az Azure Sentinel előkészítése](../../sentinel/quickstart-onboard.md)
 
@@ -142,7 +142,7 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 - [Az ügyfélalkalmazás (egyszerű szolgáltatásnév) regisztrálása az Azure AD-vel](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-- [Azure DDos Protection API-információk](/rest/api/virtual-network/)
+- [API-információk Azure DDoS Protection](/rest/api/virtual-network/)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -166,7 +166,7 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 - [Biztonságos, Azure által felügyelt munkaállomás üzembe helyezése](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-- [Felhőalapú Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Felhőalapú Azure AD Multi-Factor Authentication-telepítés megtervezése](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -384,7 +384,7 @@ Az Azure Resource Graph használatával lekérdezheti és felderítheti az előf
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató**: az Azure DDos Protection szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. Network" névtérben egyéni szabályzatok létrehozásához a Recovery Services-tárolók konfigurációjának naplózásához vagy érvénybe léptetéséhez.
+**Útmutató**: a Azure Policy Azure DDoS Protection szabványos biztonsági konfigurációinak meghatározása és implementálása. Használjon Azure Policy aliasokat a "Microsoft. Network" névtérben egyéni szabályzatok létrehozásához a Recovery Services-tárolók konfigurációjának naplózásához vagy érvénybe léptetéséhez.
 
 - [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -524,7 +524,7 @@ Tesztelje a feltételezéseket arról, hogy a szolgáltatásai hogyan reagálnak
 
 Válassza ki a rendelkezésre álló DDoS-védelmi mérőszámok bármelyikét, hogy riasztást küldjön, ha a támadás során aktív megoldás van a Azure Monitor riasztás konfigurációjának használatával. Ha a feltételek teljesülnek, a megadott cím riasztási e-mailt kap
 
-- [Riasztások konfigurálása DDoS Protection-mérőszámokhoz](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [Riasztások konfigurálása DDoS Protection-mérőszámokhoz](../../ddos-protection/alerts.md)
 
 - [Folyamatos exportálás konfigurálása](../../security-center/continuous-export.md)
 

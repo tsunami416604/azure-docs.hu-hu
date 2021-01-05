@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: ac14f6331d01325302dd7dda753695ca3a129c27
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582481"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808589"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
@@ -129,6 +129,8 @@ Az alkalmazás **FormRecognizer** osztályában hozzon létre változókat az er
 Az alkalmazás **fő** metódusában adjon hozzá hívásokat az ebben a rövid útmutatóban használt módszerekhez. Ezeket később is megadhatja. Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a hivatkozásokat.
 
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL-cím lekérése":::
 * Egy olyan űrlap URL-címének lekéréséhez, amely a teszteléshez használható, a fenti lépésekkel lekérheti egy egyedi dokumentum SAS URL-címét a blob Storage-ban. Vagy vegyen fel egy máshol található dokumentum URL-címét.
 * A fenti módszer használatával beolvashatja a beérkezési képek URL-címét is.
 
@@ -519,7 +521,7 @@ try {
 
 A Javához készült Azure SDK-k egységes naplózási történetet biztosítanak az alkalmazások hibáinak elhárításához és a megoldásuk felgyorsításához. A létrehozott naplók rögzítik az alkalmazások folyamatát, mielőtt elérnék a terminál állapotát, hogy megtalálják a probléma gyökerét. Tekintse meg a naplózási [wikit](https://github.com/Azure/azure-sdk-for-java/wiki/Logging-with-Azure-SDK) , amely útmutatást nyújt a naplózás engedélyezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban az űrlap felismerő Java ügyféloldali függvénytárát használta a modellek tanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

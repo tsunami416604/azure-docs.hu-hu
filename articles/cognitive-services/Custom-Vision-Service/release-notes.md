@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: ccf742e5ff612816cae1056ef7bf0e64fc9dbb5b
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 3724a7d515197c1f969bb051fc201b82bee64c42
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616467"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813496"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service kibocsátási megjegyzések
 
@@ -41,7 +41,7 @@ ms.locfileid: "94616467"
 
 - A Custom Vision Service általánosan elérhetővé tette az Azure-ban!
 - Fejlett betanítási funkció új gépi tanulási háttérrel a jobb teljesítmény érdekében, különösen a kihívást jelentő adatkészletek és a részletes besorolás tekintetében. A speciális betanítással megadhatja a betanítási és a Custom Vision számítási idő költségvetést, amely a legjobb képzési és bővítési beállítások kipróbálását is lehetővé teszi. A gyors iterációk esetében továbbra is használhatja a meglévő gyors képzést.
-- 3,0 API-k bevezetése. Az előzetes verziójú 3,0 API-k az 2019-es október 1-én elavultak. Az első lépésekhez a [.net](./quickstarts/image-classification.md), a [Python](./quickstarts/image-classification.md), a [Node](./quickstarts/image-classification.md), a [Java](./quickstarts/image-classification.md)vagy a [Go](./quickstarts/image-classification.md) dokumentációjában találhat példákat.
+- 3,0 API-k bevezetése. Az előzetes verziójú 3,0 API-k az 2019-es október 1-én elavultak. Az első lépésekhez [a dokumentációban](./quickstarts/image-classification.md) talál példákat.
 - Az "alapértelmezett iterációk" helyébe a 3,0 API-k közzétételi/visszavonási lehetőségeit cserélték.
 - Új modell-exportálási célok lettek hozzáadva. A Docker export frissítve lett a következőhöz: málna PI 3. Az exportálási támogatás hozzá lett adva a [jövőkép AI fejlesztői csomaghoz.](https://visionaidevkit.com/)
 - Megnövelt számú címke/projekt – 500 a S0 szinten. Nagyobb számú lemezkép projektenként és 100 000 a S0 szinten.

@@ -3,16 +3,16 @@ title: Az AWS-fiók összekötése Azure Security Center
 description: Az AWS-erőforrások figyelése Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 12/29/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 23609613cace2f9be90ad5c88d4d51bb1c2f1a9b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4c919115efb39a8e8c008eab69dc087792f7b105
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573510"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814312"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS-fiókok összekötése Azure Security Center
 
@@ -41,7 +41,7 @@ Az alábbi képernyőképen megtekintheti az AWS-fiókokat Security Center átte
 |----|:----|
 |Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Árképzési|[Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli|
-|Szükséges szerepkörök és engedélyek:|A kapcsolódó Azure-előfizetéshez tartozó **tulajdonos** vagy **közreműködő**|
+|Szükséges szerepkörök és engedélyek:|A kapcsolódó Azure-előfizetéshez tartozó **tulajdonos**<br>A **közreműködő** az AWS-fiók összekapcsolását is lehetővé teszi, ha egy tulajdonos megadja az egyszerű szolgáltatásnév adatait|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
@@ -154,7 +154,7 @@ Az AWS Systems Manager szükséges a feladatok AWS-erőforrásokon keresztüli a
     1. Válassza ki azt az **erőforráscsoportot** és **Azure-régiót** , amelyet a felderített AWS-EC2s a kijelölt előfizetésbe fog bevezetni.
     1. Adja meg az Azure-ív egyszerű szolgáltatás- **azonosítóját** és az **egyszerű szolgáltatás ügyfél-titkos kulcsát** , az itt leírtak szerint [: egyszerű szolgáltatás létrehozása a méretezéshez](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)
     1. Ha a gép egy proxykiszolgálón keresztül csatlakozik az internethez, adja meg a proxykiszolgáló IP-címét, vagy azt a nevet és portszámot, amelyet a gép használ a proxykiszolgálóhoz való kommunikációhoz. Adja meg az értéket a formátumban ```http://<proxyURL>:<proxyport>```
-    1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+    1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
         Az összegző információk áttekintése
 

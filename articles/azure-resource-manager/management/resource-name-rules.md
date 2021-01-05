@@ -2,13 +2,13 @@
 title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
-ms.date: 12/04/2020
-ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.date: 12/29/2020
+ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608316"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814380"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -170,7 +170,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | katalógusok | erőforráscsoport | 1–80 | Alfanumerikus karakterek és időszakok.<br><br>Kezdő és záró alfanumerikus karakterek. |
 > | galériák/alkalmazások | katalógus | 1–80 | Alfanumerikus karakterek, kötőjelek és időszakok.<br><br>Kezdő és záró alfanumerikus karakterek. |
 > | galériák/alkalmazások/verziók | alkalmazás | 32 bites egész szám | Számok és időszakok. |
-> | galériák/lemezképek | katalógus | 1–80 | Alfanumerikus karakterek, kötőjelek és időszakok.<br><br>Kezdő és záró alfanumerikus karakterek. |
+> | galériák/lemezképek | katalógus | 1–80 | Alfanumerikus karakterek, aláhúzások, kötőjelek és időszakok.<br><br>Kezdő és záró alfanumerikus karakterek. |
 > | galériák/lemezképek/verziók | image | 32 bites egész szám | Számok és időszakok. |
 > | images | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
 > | pillanatképek | erőforráscsoport | 1–80 | Alfanumerikus karakterek, aláhúzások, időszakok és kötőjelek.<br><br>Kezdje alfanumerikusan. Az alfanumerikus vagy aláhúzás karakterrel végződik. |
@@ -453,7 +453,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
 > | munkaterületek | erőforráscsoport | 3-33 | Alfanumerikus karakterek és kötőjelek. |
-> | munkaterületek/számítások | munkaterület | 2-16 | Alfanumerikus karakterek és kötőjelek. |
+> | munkaterületek/számítások | munkaterület | 2–16 | Alfanumerikus karakterek és kötőjelek. |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
@@ -537,7 +537,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
 > | fürtök | erőforráscsoport | 4-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
-> | munkaterületek | erőforráscsoport | 4-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
+> | munkaterületek | globális | 4-63 | Alfanumerikus karakterek és kötőjelek.<br><br>Kezdő és záró alfanumerikus karakterek. |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 

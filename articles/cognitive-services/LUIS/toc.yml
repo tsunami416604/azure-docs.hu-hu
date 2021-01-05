@@ -36,8 +36,6 @@
       items:
         - name: Bizonytalan előrejelzések javítása
           href: luis-tutorial-review-endpoint-utterances.md
-        - name: Adatkészletek kötegelt tesztelése
-          href: luis-tutorial-batch-testing.md
         - name: Minták hozzáadása az előrejelzések javításához
           href: luis-tutorial-pattern.md
     - name: Használat robottal
@@ -93,8 +91,6 @@
       items:
         - name: Interaktív tesztelés
           href: luis-concept-test.md
-        - name: Kötegelt tesztelés
-          href: luis-concept-batch-test.md
     - name: Adatkezelés
       items:
         - name: Adatok módosítása
@@ -229,7 +225,7 @@
         - name: Tárolók konfigurálása
           href: luis-container-configuration.md
         - name: A Container Instances használata
-          href: deploy-luis-on-container-instances.md
+          href: ../containers/azure-container-instance-recipe.md
         - name: Tárolókorlátozások
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'

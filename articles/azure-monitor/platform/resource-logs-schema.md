@@ -4,12 +4,12 @@ description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatás
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: c1c5ed715527add4218378c05602ed3352e55461
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f5ea6d3f28fe85cf1453f3cf2b9eb0132bda0013
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586941"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808300"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Az Azure-erőforrás naplóihoz tartozó általános és szolgáltatás-specifikus séma
 
@@ -77,7 +77,7 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 | Load Balancer |[Naplóelemzés az Azure Load Balancerhez](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B egyéni követési séma](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Hálózati biztonsági csoportok) |[Naplóelemzés hálózati biztonsági csoportokhoz](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| Védelem DDOS-támadások ellen | [Azure DDoS Protection standard kezelése](../../ddos-protection/reports-and-flow-logs.md#sample-log-outputs) |
+| Védelem DDOS-támadások ellen | [Azure DDoS Protection standard kezelése](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Power BI – dedikált | [Power BI Embedded naplózása az Azure-ban](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Azure Backup adatmodellje](../../backup/backup-azure-reports-data-model.md)|
 | Keresés |[A keresési Traffic Analytics engedélyezése és használata](../../search/search-traffic-analytics.md) |

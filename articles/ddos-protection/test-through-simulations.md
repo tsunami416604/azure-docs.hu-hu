@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: eff738e24b3abce52e80291c55a3ae64c3c8c853
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 55692122461ef1b22b43b0def43e826ac7aeae30
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905494"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813785"
 ---
 # <a name="test-through-simulations"></a>Tesztelés szimulációk használatával
 
@@ -44,7 +44,7 @@ A [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud)-t,
     |Portszám   | Adja meg a _443_ értéket.                       |
     |DDoS-profil | Válassza a **TCP SYN FLOOD** lehetőséget.|
     |Teszt mérete       | Válassza **a több mint 200.000 PPS, 100 Mbps és 8 forrás IP-** címek elemet.                                  |
-    |Teszt időtartama | Válasszon **10 percet** .|
+    |Teszt időtartama | Válasszon **10 percet**.|
 
 Ekkor az alábbihoz hasonlónak kell megjelennie:
 
@@ -54,15 +54,19 @@ Ekkor az alábbihoz hasonlónak kell megjelennie:
 
 1. Jelentkezzen be, https://portal.azure.com és nyissa meg az előfizetését.
 1. Válassza ki azt a nyilvános IP-címet, amelyen a támadást tesztelte.
-1. A **Figyelés** alatt kattintson a **Metrikák** elemre.
-1. A **metrika** beállításnál válassza a _DDoS Attack vagy a not (nem_ ) lehetőséget.
+1. A **Figyelés** területen kattintson a **Metrikák** elemre.
+1. A **metrika** beállításnál válassza a _DDoS Attack vagy a not (nem_) lehetőséget.
 
 Ha az erőforrás támadás alatt áll, látnia kell, hogy az érték **0** és **1** között változik, az alábbi képhez hasonlóan:
 
 ![DDoS Attack – szimulációs példa: portál](./media/ddos-attack-simulation/ddos-attack-simulation-example-2.png)
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="breakingpoint-cloud-api-script"></a>BreakingPoint Cloud API-szkript
 
-- Megtudhatja [, hogyan tekintheti meg és konfigurálhatja a DDoS Protection telemetria](telemetry-monitoring-alerting.md).
-- Megtudhatja, hogyan [konfigurálhatja a DDOS-támadások enyhítésére vonatkozó jelentéseket és a folyamat naplófájljait](reports-and-flow-logs.md).
+Ezzel az [API-szkripttel](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Breaking%20Point%20SDK) automatizálhatja a DDoS-teszteket, ha egyszer vagy a cron használatával futtatja a normál teszteket. Ez akkor hasznos, ha ellenőrizni szeretné, hogy a naplózás megfelelően van-e konfigurálva, és hogy az észlelési és a reagálási eljárások érvényesek-e A szkriptek Linux operációs rendszerre (Ubuntu 18,04 LTS) és Python 3-ra van szükség. Telepítse az előfeltételeket és az API-ügyfelet a mellékelt parancsfájllal vagy a [BreakingPoint Cloud](http://breakingpoint.cloud/) webhelyén található dokumentáció használatával.
+
+## <a name="next-steps"></a>További lépések
+
+- Megtudhatja [, hogyan tekintheti meg és konfigurálhatja a DDoS Protection telemetria](telemetry.md).
+- Megtudhatja, hogyan [tekintheti meg és konfigurálhatja a DDoS diagnosztikai naplózást](diagnostic-logging.md).
 - Ismerje meg, hogyan [vehet fel DDoS gyors választ](ddos-rapid-response.md).

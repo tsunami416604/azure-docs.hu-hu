@@ -4,12 +4,12 @@ description: Hozzon létre egy GitHub-műveletet, amely automatizálja a szüks�
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 7dfa2a66851db760049e7c3dc3446223c7dffad1
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: c6c030e05953dc98c82c573704018c3b482d2fea
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609156"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814278"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub-művelet konfigurálása tárolópéldány létrehozásához
 
@@ -56,7 +56,7 @@ A GitHub-munkafolyamatban Azure-beli hitelesítő adatokat kell megadnia az Azur
 Először kérje le az erőforráscsoport erőforrás-AZONOSÍTÓját. Helyettesítse be a csoport nevét a következő az [Group show][az-group-show] paranccsal:
 
 ```azurecli
-$groupId=$(az group show \
+groupId=$(az group show \
   --name <resource-group-name> \
   --query id --output tsv)
 ```

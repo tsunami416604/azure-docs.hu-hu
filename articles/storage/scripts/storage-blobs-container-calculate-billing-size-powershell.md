@@ -7,18 +7,21 @@ ms.service: storage
 ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/29/2020
 ms.author: fryu
-ms.openlocfilehash: 2d921a968f50f64788ccbd7637bc04c8492a3f90
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: dfc338844e310102447e2498ee9cce8f28a79b9f
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96010894"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809564"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>BLOB-tároló teljes számlázási méretének kiszámítása
 
 Ez a szkript kiszámítja egy tároló méretét az Azure Blob Storage-ban a számlázási költségek becslése céljából. A parancsfájl a tárolóban lévő Blobok méretét összesíti.
+
+> [!IMPORTANT]
+> Előfordulhat, hogy a cikkben megadott parancsfájl nem tudja pontosan kiszámítani a blob-Pillanatképek számlázási méretét.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -44,6 +47,7 @@ For-Each Signed Identifier[512 bytes]
 ```
 
 A következő részletezés:
+
 * 48 bájt az egyes tárolók esetében az utolsó módosítás időpontja, az engedélyek, a nyilvános beállítások és néhány rendszer-metaadat szerepel.
 
 * A tároló nevét Unicode-ként tárolja a rendszer, ezért a karakterek számát és a szorzást két értékre kell helyezni.

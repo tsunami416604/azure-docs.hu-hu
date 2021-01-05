@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 76695d4d8dbc3e3a6b04b89b8f34e41b83a92963
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 88af554faab9479a402dd393b0a7eed0835ce59e
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965187"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814346"
 ---
-# <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
+# <a name="manage-security-policies"></a>Biztonsági szabályzatok kezelése
 
 Ez a cikk ismerteti a biztonsági házirendek konfigurálásának módját, valamint azt, hogy miként lehet megtekinteni őket a Security Centerban. 
 
@@ -121,14 +121,14 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
 
    ![házirend letiltása](./media/tutorial-security-policy/disable-policy.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
    > [!NOTE]
    > A házirend-letiltási módosítások érvénybe léptetéséhez akár 12 órát is igénybe vehet.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk a biztonsági szabályzatokat ismerteti. A kapcsolódó információk a következő cikkekben találhatók:
 
 - [Ismerje meg, hogyan állíthatja be a szabályzatokat a PowerShell használatával](../governance/policy/assign-policy-powershell.md) - 

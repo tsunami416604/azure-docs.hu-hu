@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b8e400e9d386fff8f35756a77139e61bbaff1
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74666375"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809292"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Sémák és adatösszesítések Traffic Analytics
 
@@ -39,11 +39,11 @@ Traffic Analytics egy felhőalapú megoldás, amely láthatóságot biztosít a 
 5. FlowStartTime_t mező jelzi, hogy az ilyen aggregált folyamat első előfordulása (ugyanaz a négy rekord) a folyamat naplójának feldolgozási intervallumában, a "FlowIntervalStartTime_t" és a "FlowIntervalEndTime_t" között.
 6. A TA-ban lévő erőforrások esetében a felhasználói felületen jelzett folyamatok a NSG által látott összes folyamat, de Log Analytics felhasználó csak az egyetlen, kisebb rekordot fogja látni. Az összes folyamat megjelenítéséhez használja a blob_id mezőt, amely hivatkozhat a tárolóból. A rekord teljes folyamatábrája megegyezik a blobban látható egyes folyamatokkal.
 
-Az alábbi lekérdezés segítséget nyújt az elmúlt 30 napban a helyszíni folyamatok összes naplójának megtekintéséhez.
+Az alábbi lekérdezés segítségével megtekintheti az elmúlt 30 napban nem Azure-beli nyilvános IP-címekkel kommunikáló alhálózatokat.
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
-| project Subnet_s  
+| project Subnet1_s, Subnet2_s  
 ```
 A fent említett lekérdezésben szereplő folyamatok blob elérési útjának megtekintéséhez használja az alábbi lekérdezést:
 

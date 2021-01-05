@@ -5,18 +5,22 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 06/15/2020
-ms.openlocfilehash: fffe337a59ff343164a155fcd0f4d5616a32bf41
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52f8aad0a429d3378d46265fab719b1cb9f07fd0
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334616"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813190"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="december-2020"></a>2020. december
+
+* Minden LUIS [-felhasználónak egy Luis authorint-erőforrásra kell áttérnie](luis-migration-authoring.md)
 
 ### <a name="june-2020"></a>2020. június
 

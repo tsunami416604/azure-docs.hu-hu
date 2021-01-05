@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490057"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813615"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Ügynökök és bővítmények automatikus kiépítés a Azure Security Centerból
 
@@ -30,6 +30,17 @@ Az adatok gyűjtése a használatával történik:
 > Ahogy a Security Center nőtt, a megfigyelhető erőforrások típusai is megnőttek. A bővítmények száma is megnőtt. Az automatikus kiépítés kibővült a további erőforrástípusok támogatásához a Azure Policy képességeinek kihasználásával.
 
 :::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="Security Center automatikus kiépítési beállításainak lapja":::
+
+
+## <a name="availability"></a>Rendelkezésre állás
+
+| Szempont                  | Részletek                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Kiadás állapota:          | **Szolgáltatás**: az automatikus kiépítés általánosan elérhető (GA)<br>**Ügynök és bővítmények**: log Analytics Azure-beli virtuális gépek ügynöke, a Microsoft függőségi ügynök előzetes verzióban érhető el, a Kubernetes házirend-bővítménye a ga                |
+| Árképzési                | Ingyenes                                                                                                                                                                                                                         |
+| Támogatott célhelyek: | ![Igen](./media/icons/yes-icon.png) Azure-gépek<br>![Nem](./media/icons/no-icon.png) Azure arc-gépek<br>![Nem](./media/icons/no-icon.png) Kubernetes-csomópontok<br>![Nem](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Felhők                 | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov, Kína gov, egyéb gov                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
 
 
 ## <a name="why-use-auto-provisioning"></a>Miért érdemes az automatikus kiépítés használatára?
@@ -120,7 +131,7 @@ A log Analytics ügynökön kívüli bővítmény automatikus kiépítés enged�
 
 1. Válassza a **Mentés** lehetőséget. Az Azure-szabályzat hozzá van rendelve, és létrejön egy szervizelési feladat.
 
-    |Kiterjesztés  |Szabályzat  |
+    |Mellék  |Szabályzat  |
     |---------|---------|
     |Kubernetes vonatkozó házirend-bővítmény|[Azure Policy bővítmény üzembe helyezése az Azure Kubernetes Service-fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
     |Microsoft függőségi ügynök (előzetes verzió) (Windows rendszerű virtuális gépek)|[Windows rendszerű virtuális gépek függőségi ügynökének telepítése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |

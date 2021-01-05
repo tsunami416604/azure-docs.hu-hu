@@ -1,6 +1,6 @@
 ---
 title: A kimenő SMTP-kapcsolatok hibáinak megoldása az Azure-ban | Microsoft Docs
-description: Ismerje meg a javasolt módszert az e-mailek küldéséhez és az Azure-beli kimenő SMTP-kapcsolatok hibáinak elhárításához.
+description: Ismerje meg a javasolt módszert az e-mailek küldéséhez és az Azure-beli kimenő SMTP-kapcsolattal kapcsolatos problémák elhárításához.
 services: virtual-network
 author: genlin
 manager: dcscontentpm
@@ -12,60 +12,75 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: d2e5996da5a1fe3f5b154d57ee509f25e54e30ac
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0a69df8a20c4e1502de151c38c60b54667c2d4dc
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862360"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814482"
 ---
-# <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>A kimenő SMTP-kapcsolati problémák elhárítása az Azure-ban
+# <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>A kimenő SMTP-kapcsolati problémák elhárítása az Azure-ban
 
-A (z) 2017. november 15-én kezdődően a kimenő e-mailek, amelyeket közvetlenül a külső tartományokra (például outlook.com és gmail.com) küldenek egy virtuális gépről (VM), csak az egyes előfizetési típusok számára érhetők el Microsoft Azureban. A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok blokkolva lettek. (A 25-ös port elsődlegesen a nem hitelesített e-mail-küldéshez használatos.)
+A (z) 2017. november 15-én kezdődően a virtuális gépről (például outlook.com és gmail.com) közvetlenül küldött kimenő e-mail-üzenetek csak bizonyos előfizetési típusok számára érhetők el az Azure-ban. A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok blokkolva lettek. (A 25-ös portot főleg a nem hitelesített e-mailek kézbesítésére használják.)
 
-Ez a változás csak az új előfizetésekre és az új üzemelő példányokra vonatkozik, a 2017. november 15. óta.
+Ez a viselkedési változás csak az 2017. november 15. után létrehozott előfizetésekre és központi telepítésekre vonatkozik.
 
 ## <a name="recommended-method-of-sending-email"></a>E-mailek küldésének ajánlott módja
 
-Javasoljuk, hogy használjon hitelesített SMTP Relay-szolgáltatásokat (amelyek jellemzően a 587-es vagy a 443-es TCP-porton keresztül csatlakoznak, de más portokat is támogatnak) az Azure-beli virtuális gépekről vagy az Azure App Services-ról Ezek a szolgáltatások az IP-címek és a tartományok hírnevének fenntartására szolgálnak, hogy a harmadik féltől származó e-mail-szolgáltatók ne utasítsa el az üzenetet. Az ilyen SMTP-továbbító szolgáltatások közé tartoznak a [SendGrid](https://sendgrid.com/partners/azure/), de nem korlátozódnak. Az is lehetséges, hogy rendelkezik egy olyan biztonságos SMTP Relay szolgáltatással, amely a helyszínen fut.
+Javasoljuk, hogy hitelesített SMTP Relay-szolgáltatásokat használjon az Azure-beli virtuális gépekről vagy Azure App Serviceról küldött e-mailek küldéséhez. (Ezek a továbbító szolgáltatások jellemzően a 587-es vagy 443-es TCP-porton keresztül csatlakoznak, de más portokat is támogatnak.) Ezek a szolgáltatások az IP-címek és a tartományok hírnevének fenntartására szolgálnak, hogy a harmadik féltől származó e-mail-szolgáltatók elutasítsák az üzeneteket. A [SendGrid](https://sendgrid.com/partners/azure/) egy ilyen SMTP-továbbító szolgáltatás, de mások is vannak. Előfordulhat, hogy egy, a helyszínen futó biztonságos SMTP-továbbító szolgáltatást is tartalmaz, amelyet használhat.
 
 Az e-mailes kézbesítési szolgáltatások használata nem korlátozódik az Azure-ban, az előfizetés típusától függetlenül.
 
 ## <a name="enterprise-agreement"></a>Nagyvállalati Szerződés
 
-Nagyvállalati Szerződés Azure-felhasználók esetében a technikai képesség nem változik, hogy hitelesített továbbító használata nélkül küldjön e-mailt. Az új és a meglévő Nagyvállalati Szerződés felhasználók is kipróbálhatják a kimenő e-mailek küldését az Azure-beli virtuális gépekről az Azure-platform korlátozásai nélkül. Habár nem garantált, hogy az e-mail-szolgáltatók elfogadják a bejövő e-maileket az adott felhasználótól, az Azure platform nem blokkolja a Nagyvállalati Szerződés előfizetéseken belüli virtuális gépekre vonatkozó kézbesítési kísérleteket. Az üzenetek kézbesítésével vagy a levélszemét szűrésével kapcsolatos olyan problémák megoldásához, amelyek bizonyos szolgáltatókra vonatkoznak, közvetlenül kell működnie az e-mail-szolgáltatókkal.
+Nagyvállalati Szerződés Azure-felhasználók esetében a technikai képesség nem változik, hogy hitelesített továbbító használata nélkül küldjön e-mailt. Az új és a meglévő Nagyvállalati Szerződés felhasználók is kipróbálhatják a kimenő e-mailek küldését az Azure-beli virtuális gépekről az Azure-platform korlátozásai nélkül. Nincs garancia arra, hogy az e-mail-szolgáltatók elfogadják a bejövő e-maileket az adott felhasználótól. Az Azure platform azonban nem blokkolja a Nagyvállalati Szerződés-előfizetéseken belüli virtuális gépek kézbesítési kísérleteit. Az üzenetek kézbesítésével vagy a levélszemét szűrésével kapcsolatos olyan problémák megoldásához, amelyeket az adott szolgáltatók érintenek, közvetlenül az e-mail-szolgáltatókkal kell dolgoznia.
 
-## <a name="pay-as-you-go"></a>Utólagos, használatalapú fizetés
+## <a name="pay-as-you-go"></a>Utólagos elszámolás
 
-Ha az utólagos elszámolású előfizetéshez tartozó 2017. november 15. előtt regisztrált, akkor a kimenő e-mail-kézbesítés kipróbálásának technikai lehetősége nem változik. Az Azure-beli virtuális gépekről a kimenő e-mailek kézbesítését továbbra is kipróbálhatja közvetlenül a külső e-mail-szolgáltatók számára, az Azure platform korlátozásai nélkül. Ismét nem garantált, hogy az e-mail-szolgáltatók elfogadják a bejövő e-maileket bármely adott felhasználótól, és a felhasználóknak közvetlenül kell dolgozniuk az e-mail szolgáltatókkal az üzenetek kézbesítési vagy levélszemét-szűrési problémáinak kijavításához.
+Ha az utólagos elszámolású előfizetéshez a 2017. november 15. előtt regisztrált, akkor a technikai képesség nem változik a kimenő e-mailek kézbesítésének kipróbálása során. Az Azure-beli virtuális gépekről a kimenő e-mailek kézbesítését továbbra is kipróbálhatja közvetlenül a külső e-mail-szolgáltatók számára, az Azure platform korlátozásai nélkül. Nem garantáljuk, hogy az e-mail-szolgáltatók elfogadják a bejövő e-maileket az adott felhasználótól. A felhasználóknak közvetlenül kell működniük az e-mail-szolgáltatókkal, hogy javítsák az üzenetek kézbesítésével vagy a levélszemét szűrésével kapcsolatos, bizonyos szolgáltatókra vonatkozó problémákat.
 
-A 2017. november 15. után létrehozott utólagos elszámolású előfizetések esetében technikai korlátozások lesznek érvényesek, amelyek letiltják a közvetlenül az előfizetésekben lévő virtuális gépekről küldött e-maileket. Ha azt szeretné, hogy az Azure-beli virtuális gépekről közvetlenül küldjön e-maileket a külső e-mail-szolgáltatók számára (nem hitelesített SMTP-továbbító használatával), és Ön rendelkezik egy fizetési előzményekkel rendelkező fiókkal, akkor a Azure Portal Azure Virtual Network erőforrásának **diagnosztizálás és megoldás** paneljének a **kapcsolata** című részében kérheti le a korlátozást. Ha minősített, az előfizetés engedélyezve lesz, vagy a következő lépésekre vonatkozó utasításokat fog kapni. 
+A 2017. november 15. után létrehozott utólagos elszámolású előfizetések esetében technikai korlátozások lesznek érvényesek, amelyek letiltják a közvetlenül az előfizetésen belüli virtuális gépekről küldött e-maileket. Ha közvetlenül az Azure-beli virtuális gépekről szeretne e-mailt küldeni a külső e-mail-szolgáltatók számára (hitelesített SMTP-továbbítás használata nélkül), és a fizetési előzményekkel rendelkező fiókkal rendelkezik, kérheti, hogy a rendszer eltávolítsa a korlátozást. Ezt a Azure Portal Azure Virtual Network erőforrásának **diagnosztika és megoldás** paneljének **kapcsolat** szakaszában teheti meg. Ha elfogadja a kérelmét, az előfizetése engedélyezve lesz, vagy a következő lépésekre vonatkozó utasításokat fogja kapni. 
 
-Az utólagos elszámolású előfizetések kivételt képeznek, és a virtuális gépeket leállították és elindították a Azure Portal, az előfizetésben lévő összes virtuális gép mentesül a továbbításra. A kivétel csak a kért előfizetésre vonatkozik, és csak az internethez közvetlenül átirányított VM-forgalomra érvényes.
+Az utólagos elszámolású előfizetés után a rendszer leállítja és újraindítja a virtuális gépeket a Azure Portal az előfizetésben lévő összes virtuális gépet. A kivétel csak a kért előfizetésre vonatkozik, és csak az internethez közvetlenül átirányított VM-forgalomra érvényes.
 
 > [!NOTE]
-> A Microsoft fenntartja a jogot arra, hogy visszavonja ezt a kivételt, ha megállapítják, hogy a szolgáltatási feltételek megsértése történt.
+> A Microsoft fenntartja a jogot a kivételek visszavonására, ha megállapítják, hogy a szolgáltatási feltételek megsértése történt.
 
-## <a name="msdn-azure-pass-azure-in-open-education-azure-for-students-vistual-studio-and-free-trial"></a>MSDN, Azure Pass, Azure in Open licencprogram, oktatás, Azure diákoknak, Visual Studio és ingyenes próbaverzió
+## <a name="msdn-azure-pass-azure-in-open-education-azure-for-students-visual-studio-and-free-trial"></a>MSDN, Azure Pass, Azure in Open licencprogram, oktatás, Azure diákoknak, Visual Studio és ingyenes próbaverzió
 
-Ha a 2017. november 15. után létrehozott MSDN-, Azure Pass-, Azure in Open licencprogram-, oktatási, Azure Student-, ingyenes próbaverziós vagy bármely Visual Studio-előfizetést, technikai korlátozásokkal rendelkezik, amelyek letiltják a virtuális gépeken belül küldött e-maileket az e-mail-szolgáltatók számára. A korlátozásokat a rendszer a visszaélések megelőzése érdekében hajtja végre. Nem kell megadnia a korlátozás eltávolítására irányuló kérelmeket.
+Ha a következő előfizetési típusok egyikét hozta létre a 2017. november 15. után, akkor technikai korlátozásokkal rendelkezik, amelyek letiltják az előfizetésben található virtuális gépekről küldött e-maileket közvetlenül az e-mail-szolgáltatók számára:
+- MSDN
+- Azure Pass
+- Azure in Open
+- Education
+- Azure for Students
+- Ingyenes próba
+- Bármely Visual Studio-előfizetés  
 
-Ha ezeket az előfizetési típusokat használja, javasoljuk, hogy használja az SMTP Relay-szolgáltatásokat a jelen cikk korábbi részében ismertetett módon, vagy módosítsa az előfizetés típusát.
+A korlátozások a visszaélések megelőzése érdekében vannak érvényben. A korlátozások eltávolítására irányuló kérelmek nem lesznek megadva.
 
-## <a name="cloud-service-provider-csp"></a>Felhőalapú szolgáltató (CSP)
+Ha ezeket az előfizetési típusokat használja, javasoljuk, hogy az SMTP Relay-szolgáltatásokat a jelen cikk korábbi részében ismertetett módon használja, vagy módosítsa az előfizetés típusát.
 
-Ha az Azure-erőforrásokat a CSP-n keresztül használja, megadhatja a korlátozást az Azure Portal Virtual Network erőforrásának **diagnosztizálás és megoldás** paneljének **kapcsolat** szakaszában. Ha minősített, az előfizetés engedélyezve lesz, vagy a következő lépésekre vonatkozó utasításokat fog kapni.
+## <a name="cloud-solution-provider"></a>Felhőszolgáltató
 
-## <a name="microsoft-partner-network-mpn-bizspark-plus-or-azure-sponsorship"></a>Microsoft Partner Network (MPN), BizSpark Plus vagy Azure Sponsorship
+Ha felhőalapú megoldás-szolgáltatón keresztül használja az Azure-erőforrásokat, akkor a Azure Portal egy virtuális hálózati erőforrásának **diagnosztizálás és megoldás** ablaktáblájának **kapcsolat** szakaszában távolítsa el a korlátozást. Ha elfogadja a kérelmét, az előfizetése engedélyezve lesz, vagy a következő lépésekre vonatkozó utasításokat fogja kapni.
 
-Az Microsoft Partner Network (MPN), a BizSpark Plus vagy a Azure Sponsorship 2017-es, a-es év november 15. után létrehozott előfizetések esetében technikai korlátozásokat kell letiltani, amelyek letiltja a közvetlenül az előfizetésekben található virtuális gépekről küldött e-mail Ha azt szeretné, hogy az Azure-beli virtuális gépekről küldjön e-maileket közvetlenül a külső e-mail-szolgáltatók számára (nem hitelesített SMTP-továbbító használatával), akkor a következő probléma típusának használatával egy támogatási eset megnyitásával teheti meg a kérelmet: **technikai**  >  **Virtual Network** a  >  **kapcsolat**  >  **nem tud e-mailt küldeni (SMTP/port 25)**. Győződjön meg arról, hogy a központi telepítésnek miért kell közvetlenül a levelezési szolgáltatónak küldenie a leveleket a hitelesített továbbító használata helyett. A kérelmeket a Microsoft saját belátása szerint fogja felülvizsgálni és jóváhagyni. A kérelmek csak akkor adhatók meg, ha további csalás elleni csalások is befejeződik. 
+## <a name="microsoft-partner-network-bizspark-plus-or-azure-sponsorship"></a>Microsoft Partner Network, BizSpark Plus vagy Azure Sponsorship
 
-Az előfizetés kivétele és a virtuális gépek leállítása és elindítása után a Azure Portalon az előfizetésben lévő összes virtuális gép mentesül. A kivétel csak a kért előfizetésre vonatkozik, és csak az internethez közvetlenül átirányított VM-forgalomra érvényes.
+A 2017. november 15. után létrehozott következő típusok előfizetései technikai korlátozásokat tartalmaznak, amelyek letiltják a közvetlenül az előfizetésen belüli virtuális gépekről küldött e-maileket:
+
+- Microsoft Partner Network (MPN)
+- BizSpark plusz
+- Azure Sponsorship
+
+Ha közvetlenül az Azure-beli virtuális gépekről szeretne e-mailt küldeni a külső e-mail-szolgáltatók számára (hitelesített SMTP-továbbítás használata nélkül), a következő probléma típusának használatával egy támogatási eset megnyitásával teheti meg a kérelmet: **technikai**  >  **Virtual Network** a  >  **kapcsolat**  >  **nem tud e-mailt küldeni (SMTP/port 25)**. Győződjön meg arról, hogy a központi telepítésnek miért kell közvetlenül a levelezési szolgáltatónak küldenie a leveleket a hitelesített továbbító használata helyett. A kérelmeket a Microsoft saját belátása szerint fogja felülvizsgálni és jóváhagyni. A rendszer csak a további csalás elleni ellenőrzések befejezését követően kap kérelmeket. 
+
+Az előfizetés kivétele és a virtuális gépek leállítása és újraindítása után a Azure Portal az előfizetésben lévő összes virtuális gép mentesül. A kivétel csak a kért előfizetésre vonatkozik, és csak az internethez közvetlenül átirányított VM-forgalomra érvényes.
 
 ## <a name="restrictions-and-limitations"></a>Korlátozások és korlátozások
 
-- A 25-ös porton keresztüli forgalom az Azure Pásti-szolgáltatások (például [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) ) használatával nem támogatott.
+A 25-ös porton keresztüli forgalom az Azure Pásti-szolgáltatások (például [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) ) használatával nem támogatott.
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 
-Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldásához a következő probléma típusának használatával: **technikai**  >  **Virtual Network** a  >  **kapcsolat**  >  **nem tud e-mailt küldeni (SMTP/port 25)**.
+Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és kérje meg a probléma gyors megoldását. A probléma típusa: a **technikai**  >  **Virtual Network**  >  **kapcsolat**  >  **nem tud e-mailt küldeni (SMTP/port 25)**.

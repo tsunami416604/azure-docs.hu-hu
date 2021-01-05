@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 49fa0c849a6b2eab0647922a711c50b4fe762584
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 69f9b5a74566879ecf8f15f23e689ebb731da45a
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095662"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814142"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>Rövid útmutató: Azure DDoS Protection standard létrehozása és konfigurálása Azure PowerShell használatával
 
@@ -89,7 +89,7 @@ Get-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtecti
 
 Ellenőrizze, hogy a parancs visszaadja-e a DDoS Protection-terv helyes részleteit.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A következő oktatóanyagban megtarthatja az erőforrásait. Ha már nincs rá szükség, törölje a _MyResourceGroup_ erőforráscsoportot. Az erőforráscsoport törlésekor a DDoS elleni védelmi tervet és az ahhoz kapcsolódó összes erőforrást is törli. 
 
@@ -109,9 +109,9 @@ $vnet | Set-AzVirtualNetwork
 
 Ha törölni szeretné a DDoS Protection-csomagot, először el kell távolítania az összes virtuális hálózatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtudni, hogyan tekintheti meg és konfigurálhatja a DDoS elleni védelmi terv telemetria, folytassa az oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
-> [DDoS Protection-telemetria megtekintése és konfigurálása](telemetry-monitoring-alerting.md)
+> [DDoS Protection-telemetria megtekintése és konfigurálása](telemetry.md)

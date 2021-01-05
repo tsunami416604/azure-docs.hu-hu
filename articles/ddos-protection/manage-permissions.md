@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 08ab78171376f702aecb1f49571dda583eae5d82
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989411"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813870"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>DDoS Protection csomagok kezelése: engedélyek és korlátozások
 
@@ -30,7 +30,7 @@ A DDoS elleni védelmi terv különböző régiókban és előfizetésekben műk
 
 A DDoS elleni védelmi tervekkel való együttműködéshez a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Műveletek                                            | Name                                     |
+| Művelet                                            | Név                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/ddosProtectionPlans/READ        | DDoS Protection-csomag beolvasása              |
 | Microsoft. Network/ddosProtectionPlans/Write       | DDoS elleni védelmi terv létrehozása vagy frissítése  |
@@ -46,9 +46,9 @@ A legtöbb szervezet esetében nem szükséges több csomag létrehozása. A cso
 Azon ügyfelek esetében, akik különböző előfizetésekkel rendelkeznek, és a bérlőn belül egyetlen csomagot szeretne biztosítani a Cost Control számára, a Azure Policy segítségével [korlátozhatja Azure DDoS Protection standard csomagok létrehozását](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy). Ez a szabályzat letiltja a DDoS-csomagok létrehozását, kivéve, ha az előfizetés korábban kivételként van megjelölve. Ez a szabályzat az összes olyan előfizetés listáját is megjeleníti, amelynek a DDoS-terve telepítve van, de nem.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretné megtudni, hogyan tekintheti meg és konfigurálhatja a DDoS elleni védelmi terv telemetria, folytassa az oktatóanyagokkal.
 
 > [!div class="nextstepaction"]
-> [DDoS Protection-telemetria megtekintése és konfigurálása](telemetry-monitoring-alerting.md)
+> [DDoS Protection-telemetria megtekintése és konfigurálása](telemetry.md)

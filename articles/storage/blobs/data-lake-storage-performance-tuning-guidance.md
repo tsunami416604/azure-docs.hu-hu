@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 834672274ade1f8551e86e7c636c4625368d997c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652194"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814465"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 optimalizálása a teljesítményhez
 
@@ -21,11 +21,11 @@ A Azure Data Lake Storage Gen2 nagy átviteli sebességet biztosít az I/O-inten
 
 ![Data Lake Storage Gen2 teljesítmény](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-A Data Lake Storage Gen2 méretezheti, hogy az összes elemzési forgatókönyv esetében elérhető legyen a szükséges átviteli sebesség. Alapértelmezés szerint egy Data Lake Storage Gen2 fiók automatikusan elegendő átviteli sebességet biztosít, hogy megfeleljen a használati esetek széles kategóriájának. Azokban az esetekben, amikor az ügyfelek az alapértelmezett korláton futnak, a Data Lake Storage Gen2 fiók úgy konfigurálható, hogy az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/faq/)további átviteli sebességet biztosítson.
+A Data Lake Storage Gen2 méretezheti, hogy az összes elemzési forgatókönyv esetében elérhető legyen a szükséges átviteli sebesség. Alapértelmezés szerint a Data Lake Storage Gen2 fiók az alapértelmezett konfigurációban elegendő átviteli sebességet biztosít a használati esetek széles kategóriájának kielégítéséhez. Azokban az esetekben, amikor az ügyfelek az alapértelmezett korláton futnak, a Data Lake Storage Gen2 fiók úgy konfigurálható, hogy az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/faq/)további átviteli sebességet biztosítson.
 
 ## <a name="data-ingestion"></a>Adatfeldolgozás
 
-Amikor adatfeldolgozást végez egy forrásoldali rendszerből a Data Lake Storage Gen2ba, fontos figyelembe venni, hogy a forrás hardver, a forrás hálózati hardver és a Data Lake Storage Gen2 hálózati kapcsolata a szűk keresztmetszet.  
+Amikor adatfeldolgozást végez egy forrásoldali rendszerből a Data Lake Storage Gen2ba, fontos figyelembe venni, hogy a forrás hardver, a forrás hálózati hardver vagy a Data Lake Storage Gen2 hálózati kapcsolata a szűk keresztmetszet.  
 
 ![Diagram, amely azokat a tényezőket mutatja be, amelyeket figyelembe kell venni, amikor egy forrásoldali rendszerből Data Lake Storage Gen2ba tölt be adatot.](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
@@ -37,7 +37,7 @@ Függetlenül attól, hogy a helyszíni gépeket vagy virtuális gépeket haszn�
 
 ### <a name="network-connectivity-to-data-lake-storage-gen2"></a>Data Lake Storage Gen2 hálózati kapcsolat
 
-A forrásadatok és a Data Lake Storage Gen2 közötti hálózati kapcsolat esetenként szűk keresztmetszetet jelenthet. Ha a forrásadatok helyszíniek, érdemes lehet dedikált hivatkozást használni az [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . Ha a forrásadatok az Azure-ban találhatók, akkor a teljesítmény akkor a legjobb, ha az adat ugyanabban az Azure-régióban található, mint a Data Lake Storage Gen2 fiók.
+A forrásadatok és a Data Lake Storage Gen2 közötti hálózati kapcsolat esetenként szűk keresztmetszetet jelenthet. Ha a forrásadatok helyszíniek, érdemes lehet dedikált hivatkozást használni az [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/). Ha a forrásadatok az Azure-ban találhatók, akkor a teljesítmény akkor a legjobb, ha az adat ugyanabban az Azure-régióban található, mint a Data Lake Storage Gen2 fiók.
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Adatfeldolgozási eszközök konfigurálása a maximális párhuzamos
 
@@ -138,5 +138,5 @@ A fenti általános irányelvek mellett minden alkalmazás különböző paramé
 | [MapReduce a HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. csökkentse a memóriát</li><li>MapReduce. job. csökkenti</li></ul> |
 | [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Munkavégző folyamatok száma</li><li>Kiöntő végrehajtó példányainak száma</li><li>A bolt végrehajtó példányainak száma </li><li>Kiöntő feladatok száma</li><li>Bolti feladatok száma</li></ul>|
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 * [A Azure Data Lake Storage Gen2 áttekintése](data-lake-storage-introduction.md)

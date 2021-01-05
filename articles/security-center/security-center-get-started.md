@@ -12,20 +12,27 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/30/2020
 ms.author: memildin
-ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d3ed064547b1202aa562fffdfde85a28cbe8514e
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187170"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809547"
 ---
-# <a name="quickstart-setting-up-azure-security-center"></a>Gyors útmutató: Azure Security Center beállítása
+# <a name="quickstart-set-up-azure-security-center"></a>Gyors útmutató: Azure Security Center beállítása
 
 Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Habár az ingyenes funkciók csak korlátozott biztonságot biztosítanak az Azure-erőforrások számára, az Azure Defender lehetővé teszi, hogy a helyszíni és egyéb felhőkre is kiterjessze ezeket a képességeket. Az Azure Defender segítségével megtalálhatja és elháríthatja a biztonsági réseket, a hozzáférés-vezérlést és az alkalmazás-vezérlőket a kártékony tevékenységek blokkolására, az elemzések és az intelligencia használatával észlelt fenyegetések észlelésére, valamint a támadás Az Azure Defender szolgáltatás díjmentesen kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
-Ebben a cikkben a biztonsági rések és fenyegetések figyelése érdekében az Azure Defender rendszerre való frissítéssel bővült a biztonság, és telepítheti a Log Analytics-ügynököt a gépekre.
+Ez a rövid útmutató bemutatja, hogyan engedélyezheti az Azure Defender számára a biztonságot, és telepítheti a Log Analytics-ügynököt a gépeken a biztonsági rések és fenyegetések figyelése érdekében.
+
+A következő lépéseket kell végrehajtania:
+
+> [!div class="checklist"]
+> * Security Center engedélyezése az Azure-előfizetésben
+> * Azure Defender engedélyezése az Azure-előfizetésben
+> * Automatikus adatgyűjtés engedélyezése
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
@@ -35,7 +42,7 @@ Az Azure Defender előfizetésre való engedélyezéséhez hozzá kell rendelnie
 
 ## <a name="enable-security-center-on-your-azure-subscription"></a>Security Center engedélyezése az Azure-előfizetésben
 
-1. Jelentkezzen be az [Azure Portalon](https://azure.microsoft.com/features/azure-portal/).
+1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
 
 1. A portál menüjében válassza a **Security Center** lehetőséget. 
 
@@ -82,7 +89,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 1. A Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki az adott előfizetést.
 1. Az **adatgyűjtés** lapon állítsa be az **automatikus kiépítés** **a** következőre:.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Az log Analytics-ügynök automatikus kiépítés engedélyezése":::
 
@@ -96,7 +103,7 @@ A gépekre telepített ügynökkel Security Center további, a rendszerfrissít�
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban engedélyezte az Azure Defender használatát, és kiépítte a Log Analytics ügynököt az egységes biztonsági felügyelet és a fenyegetések elleni védelem érdekében a hibrid felhőalapú számítási feladatokhoz. Ha többet szeretne megtudni a Security Center használatáról, folytassa a helyszínen és egyéb felhőszolgáltatásokban található Windows rendszerű számítógépek felvételével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]

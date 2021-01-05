@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 12/29/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095896"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814329"
 ---
 # <a name="initiate-a-storage-account-failover"></a>A Storage-fiók feladatátvételének kezdeményezése
 
@@ -38,6 +38,13 @@ Mielőtt elvégzi a fiók feladatátvételét a Storage-fiókjában, ellenőrizz
 
 Az Azure Storage redundanciával kapcsolatos további információkért lásd: [Azure Storage redundancia](storage-redundancy.md).
 
+Ne feledje, hogy a fiók feladatátvétele nem támogatja a következő szolgáltatásokat és szolgáltatásokat:
+
+- A Azure File Sync nem támogatja a Storage-fiók feladatátvételét. A Azure File Syncben felhőbeli végpontként használt Azure-fájlmegosztásokat tartalmazó tárfiókokon nem lehet feladatátvételt végezni. Feladatátvétel esetén a szinkronizálás leáll, és az újonnan rétegzett fájlok esetében váratlan adatvesztést is okozhat.
+- ADLS Gen2 Storage-fiókok (a hierarchikus névteret engedélyező fiókok) jelenleg nem támogatottak.
+- A prémium szintű blokk blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. A prémium szintű blokk blobokat támogató Storage-fiókok jelenleg nem támogatják a Geo-redundanciát.
+- Nem lehet felvenni egy olyan Storage-fiókot, amely bármely, a [módosíthatatlansági házirendet](../blobs/storage-blob-immutable-storage.md) engedélyező tárolót tartalmaz. Zárolt/zárolt időalapú adatmegőrzési vagy jogszabályi szabályzatok megakadályozzák a feladatátvételt a megfelelőség fenntartása érdekében.
+
 ## <a name="initiate-the-failover"></a>A feladatátvétel kezdeményezése
 
 ## <a name="portal"></a>[Portál](#tab/azure-portal)
@@ -45,7 +52,7 @@ Az Azure Storage redundanciával kapcsolatos további információkért lásd: [
 A fiók feladatátvételének elindításához a Azure Portal hajtsa végre az alábbi lépéseket:
 
 1. Nyissa meg a tárfiókot.
-1. A **Beállítások**területen válassza a **Georeplikáció** lehetőséget. Az alábbi képen egy Storage-fiók geo-replikálási és feladatátvételi állapota látható.
+1. A **Beállítások** területen válassza a **Georeplikáció** lehetőséget. Az alábbi képen egy Storage-fiók geo-replikálási és feladatátvételi állapota látható.
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="A földrajzi replikálást és a feladatátvételi állapotot ábrázoló képernyőkép":::
 
@@ -54,7 +61,7 @@ A fiók feladatátvételének elindításához a Azure Portal hajtsa végre az a
 1. Kattintson a **Feladatátvétel előkészítése** lehetőségre.
 1. Tekintse át a megerősítő párbeszédpanelt. Ha elkészült, az **Igen** gombra kattintva erősítse meg és kezdeményezheti a feladatátvételt.
 
-    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="A földrajzi replikálást és a feladatátvételi állapotot ábrázoló képernyőkép":::
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="A fiók feladatátvételének megerősítési párbeszédpanelét bemutató képernyőkép":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -62,7 +69,7 @@ A fiók feladatátvételi funkciója általánosan elérhető, de továbbra is a
 
 1. Távolítsa el a Azure PowerShell összes korábbi telepítését:
 
-    - Távolítsa el a Azure PowerShell korábbi telepítését a Windows rendszerből a **Beállítások**területen található **alkalmazások & szolgáltatások** beállítással.
+    - Távolítsa el a Azure PowerShell korábbi telepítését a Windows rendszerből a **Beállítások** területen található **alkalmazások & szolgáltatások** beállítással.
     - Távolítsa el az összes **Azure** -modult `%Program Files%\WindowsPowerShell\Modules` .
 
 1. Győződjön meg arról, hogy a PowerShellGet legújabb verziója van telepítve. Nyisson meg egy Windows PowerShell-ablakot, és futtassa a következő parancsot a legújabb verzió telepítéséhez:

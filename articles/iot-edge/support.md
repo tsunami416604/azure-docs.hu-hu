@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a08fc25083ecd6917f658f27cb954391228adf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 063ef6b76e031277d93297512e16d30a86aae45c
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188700"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808521"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
@@ -95,7 +95,7 @@ Az alábbi táblázatban felsorolt rendszerek kompatibilisek Azure IoT Edge, de 
 <sup>1</sup> a Debian 10 rendszer, köztük a MÁLNA PI os Buster, az OpenSSL olyan verzióját használja, IoT Edge nem támogatja. A következő parancs használatával telepítsen egy korábbi verziót a IoT Edge telepítése előtt:
 
 ```bash
-sudo apt-get install libssl1.0.2
+sudo apt-get install libssl1.1
 ```
 
 <sup>2</sup> a [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases) tárházból származó Debian 9 csomagoknak az Ubuntu 20,04-mel kell működniük a dobozban.

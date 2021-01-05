@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f4d9cc4c02ab062c73e9dbd977d9ea9e6ccdb60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cd03e8f4a66d18adc33c943481002ff7b326d3
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532684"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813207"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Az Azure Storage integrálása értesítésekhez és biztonsági mentésekhez
 
@@ -62,7 +62,7 @@ Most, hogy már rendelkezik az integrációs URL-címekkel, létrehozhat egy új
 
 ### <a name="create-new-project"></a>Új projekt létrehozása
 
-Ha meghívja a [CreateProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeae) API-t, adja hozzá a _ExportModelContainerUri_ és a _notificationQueueUri_választható paramétereket. Rendelje hozzá az előző szakaszban kapott URL-értékeket. 
+Ha meghívja a [CreateProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeae) API-t, adja hozzá a _ExportModelContainerUri_ és a _notificationQueueUri_ választható paramétereket. Rendelje hozzá az előző szakaszban kapott URL-értékeket. 
 
 ```curl
 curl -v -X POST "{endpoint}/customvision/v3.3/Training/projects?exportModelContainerUri={inputUri}&notificationQueueUri={inputUri}&name={inputName}"
@@ -203,7 +203,8 @@ Emellett értesítést fog kapni a várólistában az Exportálás befejeződés
 
 `"exportStatus"`Lehetséges, hogy a mező `"ExportCompleted"` vagy `"ExportFailed"` . A `"modelUri"` mező tartalmazza a tárolóban tárolt biztonsági mentési modell URL-címét, feltéve, hogy az elején az integrált üzenetsor-értesítések szerepelnek. Ha nem, akkor a `"modelUri"` mező a Custom Vision modell blobjának sas URL-címét jeleníti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban megtanulta, hogyan másolhat és helyezhet át egy projektet Custom Vision erőforrások között. Ezután tekintse meg az API-referenciák dokumentációját, hogy megtudja, mit tehet a Custom Vision.
-* [REST API dokumentáció](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API dokumentáció (képzés)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API dokumentáció (előrejelzés)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.1/operations/5eb37d24548b571998fde5f3)

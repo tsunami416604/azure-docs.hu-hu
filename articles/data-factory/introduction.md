@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: d8b6a852ff0aeb287b12d63bfa689a38a56d418f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 00ae812536e73f432b9bddb93fc1b4a958b379f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485034"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97812868"
 ---
 # <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
 
@@ -56,14 +56,13 @@ Miután az adatok szerepelnek egy központi adattárban a felhőben, a gyűjtöt
 Ha inkább a kód átalakítását részesíti előnyben, az ADF támogatja a külső tevékenységeket az átalakítások végrehajtásához olyan számítási szolgáltatásokon, mint a HDInsight Hadoop, a Spark, a Data Lake Analytics és az Machine Learning.
 
 ### <a name="cicd-and-publish"></a>CI/CD és közzététel
-A Data Factory teljes körű támogatást nyújt az adatfolyamatok CI/CD-hez az Azure DevOps és a GitHub használatával. Ez lehetővé teszi az ETL-folyamatok fokozatos fejlesztését és továbbítását a végtermék közzététele előtt. Miután a nyers adatok át lettek alakítva üzleti használatra kész formába, feltöltheti azokat az Azure Data Warehouse-ba, az Azure SQL Database-be, az Azure CosmosDB-be vagy bármely olyan elemzési motorra, amelyre üzleti felhasználói intelligens üzleti eszközeikkel rámutathatnak.
-
-### <a name="monitor"></a>Monitor
+A [Data Factory teljes körű támogatást nyújt](continuous-integration-deployment.md) az adatfolyamatok CI/CD-hez az Azure DevOps és a GitHub használatával. Ez lehetővé teszi az ETL-folyamatok fokozatos fejlesztését és továbbítását a végtermék közzététele előtt. Miután a nyers adatok át lettek alakítva üzleti használatra kész formába, feltöltheti azokat az Azure Data Warehouse-ba, az Azure SQL Database-be, az Azure CosmosDB-be vagy bármely olyan elemzési motorra, amelyre üzleti felhasználói intelligens üzleti eszközeikkel rámutathatnak.
+### <a name="monitor"></a>Figyelés
 Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, kövesse figyelemmel az ütemezett tevékenységek és folyamatok sikerességi arányát. A Azure Data Factory beépített támogatást nyújt a folyamat-figyeléshez Azure Monitor, API, PowerShell, Azure Monitor naplók és az Azure Portal található állapotadatok használatával.
 
 ## <a name="top-level-concepts"></a>Legfelső szintű fogalmak
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. Azure Data Factory a legfontosabb összetevőkből áll.
-- Pipelines
+- Folyamatok
 - Tevékenységek
 - Adathalmazok
 - Társított szolgáltatások
@@ -119,7 +118,7 @@ A következő, fontos dokumentumok a következők:
 
 - [Adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md)
 - [Folyamatok és tevékenységek](concepts-pipelines-activities.md)
-- [Integration Runtime](concepts-integration-runtime.md)
+- [Integrációs modul](concepts-integration-runtime.md)
 - [Adatfolyamok leképezése](concepts-data-flow-overview.md)
 - [Data Factory felhasználói felülete az Azure Portalon](quickstart-create-data-factory-portal.md)
 - [Adatok másolása eszköz az Azure Portalon](quickstart-create-data-factory-copy-data-tool.md)

@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359812"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808255"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Az űrlap-felismerő modelljeinek biztonsági mentése és helyreállítása
 
-Amikor létrehoz egy űrlap-felismerő erőforrást a Azure Portal, meg kell adnia egy régiót. Ettől kezdve az erőforrás és a hozzá tartozó összes művelet az adott Azure-kiszolgáló régiójához tartozik. Ritka, de nem lehetetlen, hogy olyan hálózati problémát tapasztaljon, amely egy teljes régiót üt. Ha a megoldásnak mindig elérhetőnek kell lennie, akkor tervezze meg a feladatátvételt egy másik régióba, vagy Ossza szét a munkaterhelést két vagy több régió között. Mindkét módszer esetében legalább két, különböző régiókban található felismerő erőforrásra van szükség, és az [egyéni modellek](./quickstarts/curl-train-extract.md) szinkronizálhatók a régiók között.
+Amikor létrehoz egy űrlap-felismerő erőforrást a Azure Portal, meg kell adnia egy régiót. Ettől kezdve az erőforrás és a hozzá tartozó összes művelet az adott Azure-kiszolgáló régiójához tartozik. Ritka, de nem lehetetlen, hogy olyan hálózati problémát tapasztaljon, amely egy teljes régiót üt. Ha a megoldásnak mindig elérhetőnek kell lennie, akkor tervezze meg a feladatátvételt egy másik régióba, vagy Ossza szét a munkaterhelést két vagy több régió között. Mindkét módszer esetében legalább két, különböző régiókban található felismerő erőforrásra van szükség, és az egyéni modellek szinkronizálhatók a régiók között.
 
 A copy API ezt a forgatókönyvet teszi lehetővé azáltal, hogy lehetővé teszi az egyéni modellek másolását az egyik űrlap-felismerő fiókból vagy másokba, amelyek bármely támogatott földrajzi régióban létezhetnek. Ez az útmutató bemutatja, hogyan használható a copy REST API a cURL használatával. HTTP-kérelmeket is használhat, például a Poster szolgáltatást a kérések kiadásához.
 
@@ -162,7 +162,7 @@ curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecogniz
 curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban megtanulta, hogyan használhatja a copy API-t az egyéni modellek másodlagos űrlap-felismerő erőforrásra történő biztonsági mentésére. Ezután tekintse meg az API-referenciák dokumentációját, hogy megtudja, mit tehet az űrlap-felismerővel.
 * [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
