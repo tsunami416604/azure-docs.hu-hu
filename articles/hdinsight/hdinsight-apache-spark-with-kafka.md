@@ -1,6 +1,6 @@
 ---
 title: Streaming Apache Spark Apache Kafka-Azure HDInsight
-description: Megtudhatja, hogyan használhatja a Apache Sparkt az adatátvitelhez vagy a Apache Kafka DStreams használatával történő továbbításához. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.
+description: Megtudhatja, hogyan használhatja a Apache Sparkt az adatátvitelhez vagy a Apache Kafka DStreams használatával történő továbbításához. Ebben a példában az adatok továbbítása a Spark on HDInsight Jupyter Notebook használatával végezhető el.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: e2f4bbe6157e1affa4975f6dcee2ad0f1d98a71b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88a62b2d1ebee3bf933729ab82bc9e37a3db066b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086092"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821179"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Spark streaming (DStream) példa a Apache Kafka on HDInsight
 
@@ -55,7 +55,7 @@ Habár az Azure Virtual Network, a Kafka és a Spark-fürtök manuálisan is lé
     |---|---|
     |Erőforráscsoport|Hozzon létre egy csoportot, vagy válasszon ki egy meglévőt.|
     |Hely|Válasszon ki egy földrajzilag közel lévő helyet.|
-    |Alap fürt neve|A rendszer ezt az értéket használja a Spark-és Kafka-fürtök alapneveként. A **hdistreaming** megadása például egy __Spark-hdistreaming__ nevű Spark-fürtöt és egy **Kafka-hdistreaming**nevű Kafka-fürtöt hoz létre.|
+    |Alap fürt neve|A rendszer ezt az értéket használja a Spark-és Kafka-fürtök alapneveként. A **hdistreaming** megadása például egy __Spark-hdistreaming__ nevű Spark-fürtöt és egy **Kafka-hdistreaming** nevű Kafka-fürtöt hoz létre.|
     |Fürt bejelentkezési felhasználóneve|A Spark és a Kafka fürtök rendszergazdai felhasználóneve.|
     |Fürt bejelentkezési jelszava|A Spark-és Kafka-fürtök rendszergazdai felhasználói jelszava.|
     |SSH-felhasználónév|A Spark-és Kafka-fürtökhöz létrehozandó SSH-felhasználó.|
@@ -65,7 +65,7 @@ Habár az Azure Virtual Network, a Kafka és a Spark-fürtök manuálisan is lé
 
 1. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
 
-1. Végül válassza a **vásárlás**lehetőséget. A fürtök létrehozása körülbelül 20 percet vesz igénybe.
+1. Végül válassza a **vásárlás** lehetőséget. A fürtök létrehozása körülbelül 20 percet vesz igénybe.
 
 Az erőforrások létrehozása után megjelenik egy összefoglaló lap.
 

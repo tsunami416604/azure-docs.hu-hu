@@ -3,15 +3,15 @@ title: A függvények hivatkozási útmutatója kifejezésekben
 description: Útmutató a függvények Azure Logic Apps és az automatizáláshoz kifejezésekben való működéséhez
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: a4646263eeb93a33a03e32107b46bb6dc104ce06
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5c03d9b64f957f6ef8450197477f185dc8d15b2d
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326301"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825865"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>A függvények kifejezésekben való használatát ismertető útmutató a Azure Logic Apps és az energiagazdálkodás automatizálásához
 
@@ -22,7 +22,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Power automati
 
 Például kiszámíthatja az értékeket matematikai függvények, például az [Add ()](../logic-apps/workflow-definition-language-functions-reference.md#add) függvény használatával, ha az egész számot vagy az úszót szeretné megadni. Az alábbi példa a functions által elvégezhető műveleteket is végrehajtja:
 
-| Feladat | Függvény szintaxisa | Result |
+| Feladat | Függvény szintaxisa | Eredmény |
 | ---- | --------------- | ------ |
 | Karakterláncot ad vissza kisbetűs formátumban. | toLower (' <*text*> ') <p>Például: toLower (' Hello ') | Hello |
 | Globálisan egyedi azonosító (GUID) visszaadása. | GUID () |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
@@ -153,7 +153,7 @@ Az érték típusának vagy formátumának módosításához használhatja ezeke
 | [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Egy sztring Base64 kódolású verziójának visszaadása. |
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Egy Base64 kódolású karakterlánc bináris verziójának visszaadása. |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Egy Base64 kódolású karakterlánc karakterlánc-verziójának visszaadása. |
-| [binary](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Egy bemeneti érték bináris verziójának visszaadása. |
+| [bináris](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Egy bemeneti érték bináris verziójának visszaadása. |
 | [logikai](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Egy bemeneti érték logikai verziójának visszaadása. |
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Tömb visszaadása több bemenetből. |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Egy bemeneti értékhez tartozó adat URI-azonosítójának visszaadása. |
@@ -353,7 +353,7 @@ action().outputs.body.<property>
 
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*tulajdonság*> | Nem | Sztring | A műveleti objektum azon tulajdonságának neve, amelynek a kívánt értéke: **név**, **startTime** kezdési **időpont, Befejezés**, **bemenet**, **kimenet**, **állapot**, **kód**, **trackingId** és **clientTrackingId**. A Azure Portal a tulajdonságok megkereséséhez tekintse át az adott futtatási előzmények részleteit. További információ: [REST API – munkafolyamat-futtatási műveletek](/rest/api/logic/workflowrunactions/get). |
+| <*tulajdonság*> | Nem | Sztring | A műveleti objektum azon tulajdonságának neve, amelynek a kívánt értéke: **név**, kezdési **időpont, Befejezés**, **bemenet**, **kimenet**, **állapot**, **kód**, **trackingId** és **clientTrackingId**. A Azure Portal a tulajdonságok megkereséséhez tekintse át az adott futtatási előzmények részleteit. További információ: [REST API – munkafolyamat-futtatási műveletek](/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Visszatérítési érték | Típus | Leírás |
@@ -494,7 +494,7 @@ actions('<actionName>').outputs.body.<property>
 | Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | Sztring | Annak a műveleti objektumnak a neve, amelynek a kimenetét szeretné  |
-| <*tulajdonság*> | Nem | Sztring | A műveleti objektum azon tulajdonságának neve, amelynek a kívánt értéke: **név**, **startTime** kezdési **időpont, Befejezés**, **bemenet**, **kimenet**, **állapot**, **kód**, **trackingId** és **clientTrackingId**. A Azure Portal a tulajdonságok megkereséséhez tekintse át az adott futtatási előzmények részleteit. További információ: [REST API – munkafolyamat-futtatási műveletek](/rest/api/logic/workflowrunactions/get). |
+| <*tulajdonság*> | Nem | Sztring | A műveleti objektum azon tulajdonságának neve, amelynek a kívánt értéke: **név**, kezdési **időpont, Befejezés**, **bemenet**, **kimenet**, **állapot**, **kód**, **trackingId** és **clientTrackingId**. A Azure Portal a tulajdonságok megkereséséhez tekintse át az adott futtatási előzmények részleteit. További információ: [REST API – munkafolyamat-futtatási műveletek](/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Visszatérítési érték | Típus | Leírás |
@@ -1678,7 +1678,7 @@ decodeUriComponent('<value>')
 Ez a példa dekódolású verziókkal helyettesíti a karakterlánc Escape-karaktereit:
 
 ```
-decodeUriComponent('http%3A%2F%2Fcontoso.com')
+decodeUriComponent('https%3A%2F%2Fcontoso.com')
 ```
 
 És visszaadja ezt az eredményt: `"https://contoso.com"`
@@ -1753,7 +1753,7 @@ Ez a példa egy URI-kódolású verziót hoz létre ehhez a karakterlánchoz:
 encodeUriComponent('https://contoso.com')
 ```
 
-És visszaadja ezt az eredményt: `"http%3A%2F%2Fcontoso.com"`
+És visszaadja ezt az eredményt: `"https%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
@@ -4174,7 +4174,7 @@ Ez a példa egy olyan tömböt hoz létre a "feedUrl" kulcs értékében egy RSS
 triggerFormDataMultiValues('feedUrl')
 ```
 
-És ezt a tömböt adja vissza példaként eredményként: `["http://feeds.reuters.com/reuters/topNews"]`
+És ezt a tömböt adja vissza példaként eredményként: `["https://feeds.a.dj.com/rss/RSSMarketsMain.xml"]`
 
 <a name="triggerFormDataValue"></a>
 
@@ -4205,7 +4205,7 @@ Ez a példa egy RSS-trigger űrlap-vagy űrlap-kódolású kimenetében lévő "
 triggerFormDataValue('feedUrl')
 ```
 
-És ezt a karakterláncot adja vissza példaként eredményként: `"http://feeds.reuters.com/reuters/topNews"`
+És ezt a karakterláncot adja vissza példaként eredményként: `"https://feeds.a.dj.com/rss/RSSMarketsMain.xml"`
 
 <a name="triggerMultipartBody"></a>
 
@@ -4336,7 +4336,7 @@ Ez a példa egy URI-kódolású verziót hoz létre ehhez a karakterlánchoz:
 uriComponent('https://contoso.com')
 ```
 
-És visszaadja ezt az eredményt: `"http%3A%2F%2Fcontoso.com"`
+És visszaadja ezt az eredményt: `"https%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
@@ -4363,7 +4363,7 @@ uriComponentToBinary('<value>')
 Ez a példa az URI-kódolású karakterlánc bináris verzióját hozza létre:
 
 ```
-uriComponentToBinary('http%3A%2F%2Fcontoso.com')
+uriComponentToBinary('https%3A%2F%2Fcontoso.com')
 ```
 
 És visszaadja ezt az eredményt:
@@ -4398,7 +4398,7 @@ uriComponentToString('<value>')
 Ez a példa az URI-kódolású karakterlánc dekódolt karakterlánc-verzióját hozza létre:
 
 ```
-uriComponentToString('http%3A%2F%2Fcontoso.com')
+uriComponentToString('https%3A%2F%2Fcontoso.com')
 ```
 
 És visszaadja ezt az eredményt: `"https://contoso.com"`
@@ -4458,7 +4458,7 @@ uriPath('<uri>')
 Ez a példa megkeresi az `path` URI értékét:
 
 ```
-uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPath('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 És visszaadja ezt az eredményt: `"/catalog/shownew.htm"`
@@ -4488,7 +4488,7 @@ uriPathAndQuery('<uri>')
 Ez a példa megkeresi az `path` `query` URI azonosítóját és értékeit:
 
 ```
-uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPathAndQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 És visszaadja ezt az eredményt: `"/catalog/shownew.htm?date=today"`
@@ -4518,7 +4518,7 @@ uriPort('<uri>')
 Ez a példa az `port` URI értékét adja vissza:
 
 ```
-uriPort('http://www.localhost:8080')
+uriPort('https://www.localhost:8080')
 ```
 
 És visszaadja ezt az eredményt: `8080`
@@ -4548,7 +4548,7 @@ uriQuery('<uri>')
 Ez a példa az `query` URI értékét adja vissza:
 
 ```
-uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 És visszaadja ezt az eredményt: `"?date=today"`
@@ -4578,7 +4578,7 @@ uriScheme('<uri>')
 Ez a példa az `scheme` URI értékét adja vissza:
 
 ```
-uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriScheme('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 És visszaadja ezt az eredményt: `"http"`
@@ -4918,16 +4918,16 @@ Az eredmény: `30`
 
 *8. példa*
 
-Ebben a példában tegyük fel, hogy ezt az XML-karakterláncot tartalmazza, beleértve az XML-dokumentum névterét `xmlns="http://contoso.com"` :
+Ebben a példában tegyük fel, hogy ezt az XML-karakterláncot tartalmazza, beleértve az XML-dokumentum névterét `xmlns="https://contoso.com"` :
 
 ```xml
-<?xml version="1.0"?><file xmlns="http://contoso.com"><location>Paris</location></file>
+<?xml version="1.0"?><file xmlns="https://contoso.com"><location>Paris</location></file>
 ```
 
-Ezek a kifejezések XPath kifejezéssel `/*[name()="file"]/*[name()="location"]` vagy `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` a csomópontnak megfelelő csomópontok keresésére használhatók `<location></location>` . Ezek a példák a Logic app Designerben vagy a kifejezés-szerkesztőben használt szintaxist mutatják be:
+Ezek a kifejezések XPath kifejezéssel `/*[name()="file"]/*[name()="location"]` vagy `/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]` a csomópontnak megfelelő csomópontok keresésére használhatók `<location></location>` . Ezek a példák a Logic app Designerben vagy a kifejezés-szerkesztőben használt szintaxist mutatják be:
 
 * `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
-* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
+* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]')`
 
 Itt látható az eredmény csomópont, amely megfelel a `<location></location>` csomópontnak: 
 

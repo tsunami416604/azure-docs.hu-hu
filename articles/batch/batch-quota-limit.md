@@ -2,14 +2,14 @@
 title: Szolgáltatási kvóták és korlátok
 description: Ismerje meg az alapértelmezett Azure Batch kvótákat, korlátozásokat és korlátozásokat, valamint a kvóta növelésének módját
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f529d388cb883f635b6225801af5ce41b8c997a
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614514"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814635"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -33,7 +33,7 @@ Azt is vegye figyelembe, hogy a kvóták nem garantált értékek. A kvóták a 
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Magok kvótái a Batch szolgáltatás módban
 
-A dedikált alapkvóták betartatása folyamatban van, és az összes batch-fiókra vonatkozóan a módosítások a 2020. december végéig elérhetők és befejeződtek.
+A dedikált alapkvóták betartatása folyamatban van, és az összes batch-fiókra vonatkozóan a módosításokat a 2021. január végéig elérhetővé teszik.
 
 A Batch által támogatott összes virtuálisgép-sorozathoz alapvető kvóták tartoznak, amelyek a portál **kvóták** lapján jelennek meg. A virtuálisgép-sorozatokra vonatkozó kvóták a lent részletezett támogatási kéréssel frissíthetők.
 
@@ -70,7 +70,7 @@ A készlet méretének korlátait a Batch szolgáltatás állítja be. Az [erőf
 
 ## <a name="other-limits"></a>Egyéb korlátok
 
-A Batch szolgáltatás által beállított további korlátok. Az [erőforrás-kvótákkal](#resource-quotas)ellentétben ezek az értékek nem módosíthatók.
+Ezeket a további korlátokat a Batch szolgáltatás állítja be. Az [erőforrás-kvótákkal](#resource-quotas)ellentétben ezek az értékek nem módosíthatók.
 
 | **Erőforrás** | **Felső korlát** |
 | --- | --- |
@@ -80,6 +80,7 @@ A Batch szolgáltatás által beállított további korlátok. Az [erőforrás-k
 | Alkalmazáscsomag/készlet | 10 |
 | Feladat maximális élettartama | 180 nap<sup>1</sup> |
 | [Csatlakoztatások](virtual-file-mount.md) /számítási csomópontok | 10 |
+| Tanúsítványok/készlet | 12 |
 
 <sup>1</sup> a feladat maximális élettartama, amikor a feladat bekerül a feladatba, 180 nap. A Befejezett feladatok hét napig fennmaradnak; a maximális élettartamon belül nem befejezett feladatok adatai nem érhetők el.
 
@@ -91,7 +92,7 @@ A Batch-fiók kvótáinak megtekintése a [Azure Portalban](https://portal.azure
 1. Válassza a **kvóták** lehetőséget a Batch-fiók menüjében.
 1. A Batch-fiókra jelenleg alkalmazott kvóták megtekintése.
 
-:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch-fiókok kvótái":::
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Képernyőfelvétel a Azure Portal batch-fiókokra vonatkozó kvóták megjelenítéséről.":::
 
 ## <a name="increase-a-quota"></a>Kvóta emelése
 
@@ -100,26 +101,26 @@ A Batch-fiókra vagy az előfizetésre vonatkozó kvóta növelését a [Azure P
 1. Válassza a **Súgó + támogatás** csempét a portál irányítópultján, vagy a portál jobb felső sarkában látható kérdőjelet (**?**).
 1. Válassza az **új támogatási kérelem**  >  **alapjai** lehetőséget.
 1. Az **alapjaiban**:
-   
+
     1. **Probléma típusa**  >  **Szolgáltatás-és előfizetési korlátok (kvóták)**
-   
+
     1. Válassza ki előfizetését.
-   
+
     1. **Kvóta típusa**  >  **Köteg**
-      
+
        Kattintson a **Tovább** gombra.
-    
+
 1. A **Details** (Részletek) lapon:
-      
+
     1. A **részletek** megadása területen adja meg a helyet, a kvóta típusát és a Batch-fiókot.
-    
-       ![Batch-kvóta növekedése][quota_increase]
+
+       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="A kvóta részletei képernyő képernyőképe a kvóta növelésének kérelmezése során.":::
 
        A kvóta típusai a következők:
 
        * **/Batch-fiók**  
          Egyetlen batch-fiókhoz tartozó értékek, beleértve a dedikált és alacsony prioritású magokat, valamint a feladatok és készletek számát.
-        
+
        * **Régiónként**  
          Egy adott régióban lévő összes batch-fiókra vonatkozó értékek, valamint a Batch-fiókok száma régiónként/előfizetéssel.
 
@@ -130,11 +131,11 @@ A Batch-fiókra vagy az előfizetésre vonatkozó kvóta növelését a [Azure P
        Kattintson a **Tovább** gombra.
 
 1. A **kapcsolattartási adatok**:
-   
+
     1. Válasszon ki egy **előnyben részesített kapcsolattartási módszert**.
-   
+
     1. Ellenőrizze, és adja meg a szükséges kapcsolattartási adatokat.
-   
+
        Válassza a **Létrehozás** lehetőséget a támogatási kérelem elküldéséhez.
 
 A támogatási kérelem elküldését követően az Azure-támogatás kapcsolatba lép Önnel. A kvóta-kérelmek néhány percen belül, vagy akár két munkanapon belül is elvégezhető.

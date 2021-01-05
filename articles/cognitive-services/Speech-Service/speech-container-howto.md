@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: helyszíni, Docker, tároló
-ms.openlocfilehash: 9ca5229200b39f0a3c68da152f4d89f842d021ca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2123098aafb414495f55d557ac1546819c25fdad
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95996429"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822063"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Docker-tárolók telepítése és futtatása a Speech Service API-khoz 
 
@@ -39,7 +39,7 @@ A Speech-tárolókkal az ügyfelek beszédalapú alkalmazások architektúrájá
 >
 > A beszédfelismerési tárolók használatához online kérelmet kell elküldenie, és azt jóvá kell hagynia. További információért tekintse **meg a kérelem jóváhagyása a tároló futtatása** című szakaszt.
 
-| Tároló | Szolgáltatások | Legutóbbi |
+| Tároló | Funkciók | Legutóbbi |
 |--|--|--|
 | Diktálás | Elemzi az érzelmeket, és átírja a folyamatos valós idejű beszédet vagy a Batch hangfelvételeket közbenső eredményekkel.  | 2.7.0 |
 | Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.7.0 |
@@ -292,7 +292,7 @@ Miután a tároló a [gazdagépen](#the-host-computer)található, a következő
 
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a `docker run`
 
-A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{Endpoint_URI}` `{API_Key}` . A [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` parancshoz további példák is elérhetők.
+A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{Endpoint_URI}` `{API_Key}` . A [](speech-container-configuration.md#example-docker-run-commands) `docker run` parancshoz további példák is elérhetők.
 
 # <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
@@ -312,6 +312,10 @@ A parancs a következőket hajtja végre:
 * 4 CPU-magot és 4 GB memóriát foglal le.
 * Elérhetővé teszi a 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
 * A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
+
+> [!NOTE]
+> A tárolók támogatják a tömörített hangbevitelt a Speech SDK-hoz a GStreamer használatával.
+> A GStreamer tárolóban történő telepítéséhez kövesse a Linux-utasítások a GStreamer-ben című témakörben található, [a SPEECH SDK-val való tömörítéshez használt kodeket](how-to-use-codec-compressed-audio-input-streams.md).
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Az érzelmek elemzése a beszédfelismerési kimenetre 
@@ -587,7 +591,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 > [!NOTE]
 > Ha több tárolót futtat, használjon egyedi portszámot.
 
-| Containers | SDK-gazda URL-címe | Protokoll |
+| Tárolók | SDK-gazda URL-címe | Protokoll |
 |--|--|--|
 | Normál beszéd – szöveg és Custom Speech – szöveg | `ws://localhost:5000` | WS |
 | Szöveg-beszéd (beleértve a standard, az egyéni és a neurális), a beszédfelismerés nyelvének észlelése | `http://localhost:5000` | HTTP |
@@ -749,7 +753,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta a beszédfelismerési tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 

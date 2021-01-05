@@ -10,13 +10,13 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 6721357464c2a49331d9c02982841d36aa207cc6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: 46b8f153e65f436fa1062a0606e0fb0136d972a5
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324985"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824614"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>A meglévő modell üzembe helyezése Azure Machine Learning
 
@@ -27,7 +27,7 @@ A cikkben szereplő fogalmakkal és kifejezésekkel kapcsolatos további inform�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Azure Machine Learning munkaterület](how-to-manage-workspace.md)
+* [Egy Azure Machine Learning-munkaterület](how-to-manage-workspace.md)
   + A Python-példák azt feltételezik, hogy a `ws` változó a Azure Machine learning munkaterületre van beállítva. A munkaterülethez való kapcsolódással kapcsolatos további információkért tekintse meg a [Pythonhoz készült Azure Machine learning SDK dokumentációját](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=trueworkspace).
   
   + A CLI-példák a és a helyőrzőit használják `myworkspace` `myresourcegroup` , amelyeket a munkaterület nevével és az azt tartalmazó erőforráscsoporthoz kell cserélni.
@@ -100,7 +100,7 @@ inference_config = InferenceConfig(entry_script="score.py",
                                    environment=myenv)
 ```
 
-További információkat az következő cikkekben talál:
+További információért tekintse át a következő cikkeket:
 
 + [Környezetek használata](how-to-use-environments.md).
 + [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) -hivatkozás.
@@ -293,7 +293,7 @@ print(response.json())
 
 Az üzembe helyezett szolgáltatás használatáról további információt az [ügyfél létrehozása](how-to-consume-web-service.md)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 421993ac4aaba551b6fcbd002783d44559ce377d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7a2044e9bb0110eda666d12e29a715547381e2be
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995335"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822335"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Apache Spark-alkalmazások hibakeresése HDInsight-fürtön Azure Toolkit for IntelliJ SSH-n keresztül
 
@@ -63,7 +63,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
    ![Új IntelliJ-projekt kiválasztása Spark-verzió](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
-1. Válassza a **Befejezés** lehetőséget. A projekt elérhetővé válása néhány percet igénybe vehet. Tekintse meg a jobb alsó sarokban a folyamat előrehaladását.
+1. Válassza a **Befejezés** gombot. A projekt elérhetővé válása néhány percet igénybe vehet. Tekintse meg a jobb alsó sarokban a folyamat előrehaladását.
 
 1. Bontsa ki a projektet, és navigáljon az **src**  >  **Main**  >  **Scala**-  >  **mintához**. Kattintson duplán a **SparkCore_WasbIOTest** elemre.
 
@@ -178,7 +178,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 * [Apache Spark-alkalmazások távoli hibakeresése a Azure Toolkit for IntelliJ használatával VPN-en keresztül](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Apache Spark alkalmazások létrehozásához használja a Azure Toolkit for Eclipse HDInsight-eszközeit](./apache-spark-eclipse-tool-plugin.md)
 * [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
-* [Apache Spark a Jupyter notebookhoz elérhető kernelek a HDInsight-fürtön a](apache-spark-jupyter-notebook-kernels.md)
+* [A HDInsight Apache Spark-fürtben Jupyter Notebook számára elérhető kernelek](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

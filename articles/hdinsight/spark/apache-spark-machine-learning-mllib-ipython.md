@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6407f7c3b1e8570cdc6b36dceec79fba58689c7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230415"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822182"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Gépi tanulási alkalmazások készítése és adatkészletek elemzése Apache Spark MLlib használatával
 
@@ -21,7 +21,7 @@ Ismerje meg, hogyan hozhat létre gépi tanulási alkalmazást a Apache Spark ML
 
 A MLlib egy alapvető Spark-könyvtár, amely számos, a gépi tanulási feladatokhoz hasznos segédprogramot biztosít, például:
 
-* Osztályozás
+* Besorolás
 * Regresszió
 * Fürtözés
 * Modellezés
@@ -32,21 +32,21 @@ A MLlib egy alapvető Spark-könyvtár, amely számos, a gépi tanulási feladat
 
 Az *osztályozás*, amely egy népszerű gépi tanulási feladat, a bemeneti adatok kategóriákba rendezésének folyamata. A besorolási algoritmus feladata, hogy kiderítse, hogyan rendeljen hozzá "címkéket" a megadott adatokhoz. Tegyük fel például, hogy egy gépi tanulási algoritmust használ, amely inputként fogadja az adatkészleteket. Ezután két kategóriába osztja a készletet: a készleteket, amelyeket érdemes eladni, és a készleteket kell megőrizni.
 
-A logisztikai regresszió a besoroláshoz használt algoritmus. A Spark logisztikai regressziós API-ját *bináris besoroláshoz*vagy a bemeneti adatok két csoportba való besorolásához lehet hasznos. További információ a logisztikai regressziókkal kapcsolatban: [wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
+A logisztikai regresszió a besoroláshoz használt algoritmus. A Spark logisztikai regressziós API-ját *bináris besoroláshoz* vagy a bemeneti adatok két csoportba való besorolásához lehet hasznos. További információ a logisztikai regressziókkal kapcsolatban: [wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
 
-Összefoglalva, a logisztikai regressziós folyamat egy *logisztikai funkciót*hoz létre. A függvénnyel megjósolhatja, hogy egy bemeneti vektor egy csoportba vagy a másikba tartozik-e.  
+Összefoglalva, a logisztikai regressziós folyamat egy *logisztikai funkciót* hoz létre. A függvénnyel megjósolhatja, hogy egy bemeneti vektor egy csoportba vagy a másikba tartozik-e.  
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>Prediktív elemzési példa az élelmiszer-ellenőrzési adataira
 
-Ebben a példában a Spark használatával végez némi prediktív elemzést az élelmiszer-ellenőrzési adatain (**Food_Inspections1.csv**). A [Chicago adatportálon](https://data.cityofchicago.org/)keresztül beszerzett adatmennyiség. Ez az adatkészlet a Chicago-ban végrehajtott élelmiszer-létesítési vizsgálatokról tartalmaz információkat. Beleértve az egyes létesítményekkel kapcsolatos információkat, a megtalált szabálysértéseket (ha vannak ilyenek) és a vizsgálat eredményeit. A CSV-adatfájl már elérhető a (z) **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**fürthöz társított Storage-fiókban.
+Ebben a példában a Spark használatával végez némi prediktív elemzést az élelmiszer-ellenőrzési adatain (**Food_Inspections1.csv**). A [Chicago adatportálon](https://data.cityofchicago.org/)keresztül beszerzett adatmennyiség. Ez az adatkészlet a Chicago-ban végrehajtott élelmiszer-létesítési vizsgálatokról tartalmaz információkat. Beleértve az egyes létesítményekkel kapcsolatos információkat, a megtalált szabálysértéseket (ha vannak ilyenek) és a vizsgálat eredményeit. A CSV-adatfájl már elérhető a (z) **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv** fürthöz társított Storage-fiókban.
 
 Az alábbi lépésekben egy modellt fejleszt ki, amelyből megtudhatja, mit kell tennie az élelmiszer-ellenőrzés elvégzéséhez vagy elutasításához.
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib Machine learning-alkalmazás létrehozása
 
-1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért tekintse meg a [Jupyter-jegyzetfüzet-fájl létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)című témakört.
+1. Hozzon létre egy Jupyter Notebookt a PySpark kernel használatával. Az utasításokért tekintse meg a [Jupyter notebook fájl létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)című témakört.
 
-2. Importálja az alkalmazáshoz szükséges típusokat. Másolja és illessze be a következő kódot egy üres cellába, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt.
+2. Importálja az alkalmazáshoz szükséges típusokat. Másolja és illessze be a következő kódot egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt.
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -121,7 +121,7 @@ A Spark kontextus használatával a nyers CSV-adat a memóriában strukturálatl
     df.registerTempTable('CountResults')
     ```
 
-    A dataframe szereplő négy oszlop az **azonosító**, a **név**, az **eredmények**és a **szabálysértés**.
+    A dataframe szereplő négy oszlop az **azonosító**, a **név**, az **eredmények** és a **szabálysértés**.
 
 4. A következő kód futtatásával szerezzen be egy kis mintát az adathoz:
 
@@ -196,8 +196,8 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
 
     Az élelmiszer-ellenőrzés eredményeinek előrejelzéséhez ki kell dolgoznia egy modellt a szabálysértések alapján. Mivel a logisztikai regresszió bináris besorolású módszer, érdemes a következő két kategóriába csoportosítani az eredményeket: **Fail** és **pass**:
 
-   - Pass
-       - Pass
+   - Sikeres
+       - Sikeres
        - H/feltételek továbbítása
    - Sikertelen
        - Sikertelen
@@ -235,7 +235,7 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
 
 ## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>Logisztikai regressziós modell létrehozása a bemeneti dataframe
 
-Az utolsó feladat a címkézett adatok konvertálása. Alakítsa át az adatformátumot a logisztikai regresszió alapján elemezhető formátumra. A logisztikai regressziós algoritmus bemenetéhez *címke-funkciós vektoros párokra*van szükség. Ahol a "szolgáltatás vektora" a bemeneti pontot jelölő számok vektora. Ezért át kell alakítania a "szabálysértések" oszlopot, amely részben strukturált, és számos megjegyzést tartalmaz a szabad szövegben. Alakítsa át az oszlopot egy olyan valós számokból álló tömbre, amelyeket a gép könnyedén megértett.
+Az utolsó feladat a címkézett adatok konvertálása. Alakítsa át az adatformátumot a logisztikai regresszió alapján elemezhető formátumra. A logisztikai regressziós algoritmus bemenetéhez *címke-funkciós vektoros párokra* van szükség. Ahol a "szolgáltatás vektora" a bemeneti pontot jelölő számok vektora. Ezért át kell alakítania a "szabálysértések" oszlopot, amely részben strukturált, és számos megjegyzést tartalmaz a szabad szövegben. Alakítsa át az oszlopot egy olyan valós számokból álló tömbre, amelyeket a gép könnyedén megértett.
 
 A természetes nyelv feldolgozásának egyik szabványos gépi tanulási módszere az, hogy minden különböző szót "index"-ként rendeljen hozzá. Ezután továbbítson egy vektort a gépi tanulási algoritmusba. Úgy, hogy minden egyes index értéke tartalmazza a szó relatív gyakoriságát a szöveges karakterláncban.
 
@@ -252,7 +252,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>Modell kiértékelése egy másik adatkészlet használatával
 
-A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellenőrzések eredményei milyen eredményeket kapnak. A jóslatok a megfigyelt szabálysértéseken alapulnak. Ezt a modellt a **Food_Inspections1.csv**adatkészleten tanítja ki. A modell erősségének *kiértékeléséhez* használhat egy második adatkészletet ( **Food_Inspections2.csv**). Ez a második adathalmaz (**Food_Inspections2.csv**) a fürthöz társított alapértelmezett tárolóban található.
+A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellenőrzések eredményei milyen eredményeket kapnak. A jóslatok a megfigyelt szabálysértéseken alapulnak. Ezt a modellt a **Food_Inspections1.csv** adatkészleten tanítja ki. A modell erősségének *kiértékeléséhez* használhat egy második adatkészletet ( **Food_Inspections2.csv**). Ez a második adathalmaz (**Food_Inspections2.csv**) a fürthöz társított alapértelmezett tárolóban található.
 
 1. A következő kód futtatásával hozzon létre egy új dataframe, amely a modell által generált **predictionsDf** tartalmazza. A kódrészlet létrehoz egy, az **előrejelzések** alapján létrehozott ideiglenes táblát is a dataframe alapján.
 
@@ -313,7 +313,7 @@ A korábban létrehozott modellt használva *megjósolhatja* , hogy az új ellen
 
 Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményeinek indoklásában.
 
-1. Első lépésként Kinyeri a korábban létrehozott **előrejelzési** ideiglenes tábla különböző előrejelzéseit és eredményeit. A következő lekérdezések elkülönítik a kimenetet *true_positive*, *false_positive*, *true_negative*és *false_negativeként*. Az alábbi lekérdezésekben kapcsolja ki a vizualizációt a használatával, `-q` és mentse a kimenetet (a használatával `-o` ) a dataframes, amelyet aztán használhat a Magic segítségével `%%local` .
+1. Első lépésként Kinyeri a korábban létrehozott **előrejelzési** ideiglenes tábla különböző előrejelzéseit és eredményeit. A következő lekérdezések elkülönítik a kimenetet *true_positive*, *false_positive*, *true_negative* és *false_negativeként*. Az alábbi lekérdezésekben kapcsolja ki a vizualizációt a használatával, `-q` és mentse a kimenetet (a használatával `-o` ) a dataframes, amelyet aztán használhat a Magic segítségével `%%local` .
 
     ```PySpark
     %%sql -q -o true_positive
@@ -335,7 +335,7 @@ Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményein
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```
 
-1. Végül használja az alábbi kódrészletet a mintaterület **Matplotlib**használatával történő létrehozásához.
+1. Végül használja az alábbi kódrészletet a mintaterület **Matplotlib** használatával történő létrehozásához.
 
     ```PySpark
     %%local
@@ -359,7 +359,7 @@ Most létrehozhat egy végső vizualizációt, amely segít a teszt eredményein
 
 Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez a művelet leállítja és bezárja a notebookot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 176b89c9fc80b198a8a639afdd14185ab0008aed
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e75661b54ce9a74013938d11ca7f13d9c3698c76
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029440"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822046"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Mi az az Azure HDInsight-alapú Apache Spark?
 
@@ -29,10 +29,10 @@ a Spark alapelemeket nyújt a memórián belüli fürtszámításhoz. A Spark-fe
 
 A HDInsight-alapú Spark-fürtök teljes körűen felügyelt Spark szolgáltatást nyújtanak. A HDInsight-alapú Spark-fürt létrehozásának előnyeit ez a lista foglalja össze.
 
-| Funkció | Leírás |
+| Szolgáltatás | Leírás |
 | --- | --- |
 | Könnyű létrehozás |Az Azure Portal, az Azure PowerShell vagy a HDInsight .NET SDK használatával percek alatt létrehozható egy új Spark-fürt a HDInsight platformon. Lásd: Ismerkedés [a Apache Spark-fürttel a HDInsight-ben](apache-spark-jupyter-spark-sql-use-portal.md). |
-| Egyszerű használat |A HDInsight-beli Spark-fürt tartalmazza a Jupyter-és az Apache Zeppelin-jegyzetfüzeteket. Ezeket a notebookokat interaktív adatfeldolgozásra és -vizualizációra használhatja. Lásd: az [Apache Zeppelin notebookok használata a Apache Spark](apache-spark-zeppelin-notebook.md) és az [adatbetöltések és lekérdezések futtatása Apache Spark fürtön](apache-spark-load-data-run-query.md).|
+| Egyszerű használat |A HDInsight-beli Spark-fürt tartalmazza a Jupyter-jegyzetfüzeteket és az Apache Zeppelin-jegyzetfüzeteket. Ezeket a notebookokat interaktív adatfeldolgozásra és -vizualizációra használhatja. Lásd: az [Apache Zeppelin notebookok használata a Apache Spark](apache-spark-zeppelin-notebook.md) és az [adatbetöltések és lekérdezések futtatása Apache Spark fürtön](apache-spark-load-data-run-query.md).|
 | REST API-k |A HDInsight-beli Spark-fürtök közé tartozik az [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server), egy REST API-alapú Spark-feladat, amely a feladatok távoli elküldésére és figyelésére szolgál. Lásd: [Apache Spark REST API használata távoli feladatok HDInsight Spark-fürtbe való küldéséhez](apache-spark-livy-rest-interface.md).|
 | Azure Storage-támogatás | A HDInsight-alapú Spark-fürtök a Azure Data Lake Storage Gen1/Gen2 is használhatják elsődleges tárolóként vagy további tárolóként. További információ a Data Lake Storage Gen1ről: [Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-overview.md). További információ a Data Lake Storage Gen2ről: [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).|
 | Integráció az Azure-szolgáltatásokkal |A HDInsight-alapú Spark-fürt Azure Event Hubs-összekötőt is tartalmaz. A Event Hubs használatával adatfolyam-alkalmazásokat hozhat létre. Beleértve a Apache Kafka, amely már elérhető a Spark részeként. |
@@ -50,7 +50,7 @@ A HDInsight Apache Spark-fürtök a következő összetevőket tartalmazzák, am
 * [Spark mag](https://spark.apache.org/docs/latest/). A következőket tartalmazza: Spark mag, Spark SQL, Spark streamelési API-k, GraphX és MLlib.
 * [Anaconda](https://docs.continuum.io/anaconda/)
 * [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
-* [Jupyter notebook](https://jupyter.org)
+* [Jupyter Notebook](https://jupyter.org)
 * [Apache Zeppelin notebook](http://zeppelin-project.org/)
 
 A HDInsight Spark-fürtök egy [ODBC-illesztőt](https://go.microsoft.com/fwlink/?LinkId=616229) biztosítanak a BI-eszközök, például a Microsoft Power bi közötti kapcsolathoz.
@@ -93,7 +93,7 @@ A HDInsight-alapú Spark széles körű támogatást nyújt a valós idejű elem
 * [A Apache Spark streaming áttekintése](apache-spark-streaming-overview.md)
 * [Strukturált streaming Apache Spark áttekintése](apache-spark-structured-streaming-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az áttekintésben az Azure HDInsight Apache Sparkának alapszintű ismerete van.  A következő cikkekből többet is megtudhat a HDInsight-Apache Sparkről, és létrehozhat egy HDInsight Spark-fürtöt, és további futtathat néhány példa Spark-lekérdezést:
 

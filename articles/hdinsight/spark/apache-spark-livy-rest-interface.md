@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: fcb845904216fbe4cb05828877775ea2178c45e9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b5795172517ba2e707d66ebe486c51d31575bd0d
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539156"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821876"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Az Apache Spark REST API használata távoli feladatok küldéséhez egy HDInsight Spark-fürtre
 
@@ -126,7 +126,7 @@ Hajtsa végre a következő lépéseket:
     {"from":0,"total":0,"sessions":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Figyelje meg, hogy a kimenet utolsó sora **összesen: 0** , amely nem javasol futó kötegeket.
+    Figyelje meg, hogy a kimenet utolsó sora **összesen: 0**, amely nem javasol futó kötegeket.
 
 1. Most küldje el a Batch-feladatot. Az alábbi kódrészlet egy bemeneti fájl (input.txt) használatával továbbítja a jar nevét és az osztály nevét paraméterként. Ha ezeket a lépéseket egy Windows rendszerű számítógépről futtatja, az ajánlott módszer a bemeneti fájl használata.
 
@@ -155,7 +155,7 @@ Hajtsa végre a következő lépéseket:
     {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Figyelje meg, hogy a kimenet utolsó sora az **állapotot mutatja: indítás** . Azt is mondja, **azonosító: 0** . Itt a **0** a Batch-azonosító.
+    Figyelje meg, hogy a kimenet utolsó sora az **állapotot mutatja: indítás**. Azt is mondja, **azonosító: 0**. Itt a **0** a Batch-azonosító.
 
 1. Most már lekérheti az adott köteg állapotát a Batch-azonosító használatával.
 
@@ -177,7 +177,7 @@ Hajtsa végre a következő lépéseket:
     {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://myspar.lpel.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Ekkor a kimenet **állapota: sikeres** , ami azt sugallja, hogy a feladatot sikerült befejezni.
+    Ekkor a kimenet **állapota: sikeres**, ami azt sugallja, hogy a feladatot sikerült befejezni.
 
 1. Ha szeretné, most törölheti a köteget.
 
@@ -209,7 +209,7 @@ A HDInsight 3,5-es és újabb fürtökön alapértelmezés szerint letiltja a he
 
 Ha egy Azure-Virtual Networkon belül csatlakozik egy HDInsight Spark-fürthöz, közvetlenül kapcsolódhat a Livy a fürtön. Ebben az esetben a Livy-végpont URL-címe: `http://<IP address of the headnode>:8998/batches` . Itt a **8998** az a port, amelyen a Livy fut a fürt átjárócsomóponthoz. A nem nyilvános portokon található szolgáltatások elérésével kapcsolatos további információkért lásd: [Apache Hadoop Services által használt portok a HDInsight-on](../hdinsight-hadoop-port-settings-for-services.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Apache Livy REST API dokumentáció](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)

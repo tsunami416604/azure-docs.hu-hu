@@ -3,12 +3,12 @@ title: Fogalmak – privát felhők és fürtök
 description: Ismerje meg az Azure VMware Solution szoftver által meghatározott adatközpontok és vSphere-fürtök főbb képességeit.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967380"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825071"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – saját felhő és fürt – fogalmak
 
@@ -48,18 +48,8 @@ A fürtök létrehozásához vagy méretezéséhez használt gazdagépek a gazda
 
 ## <a name="vmware-software-versions"></a>VMware-szoftverek verziói
 
-Az Azure VMware-megoldás saját felhőalapú fürtjében használt VMware-szoftver aktuális szoftververzió a következők:
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
-| Szoftverek              |    Verzió   |
-| :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6,7 U3    | 
-| ESXi                  |    6,7 U3    | 
-| vSAN                  |    6,7 U3    |
-| NSX – T                 |      2.5     |
-
-A privát felhőben lévő összes új fürt esetében a szoftver verziója megegyezik a jelenleg futó verzióval. Egy előfizetéshez tartozó új privát felhő esetén a szoftveres verem legújabb verziója lesz telepítve.
-
-Az általános frissítési szabályzatokat és folyamatokat a [saját Felhőbeli frissítések és verziófrissítések](concepts-upgrades.md)című cikkben ismertetett Azure VMware Solution platform szoftverhez tekintheti meg.
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Gazdagép-karbantartás és életciklus-kezelés
 
@@ -74,7 +64,7 @@ A Microsoft felelős a NSX-T készülékek életciklus-kezelésért, például a
 
 A Private Cloud vCenter és a NSX-T konfigurációk óránkénti biztonsági mentési ütemtervtel rendelkeznek.  A biztonsági mentések három napig tartanak. Ha biztonsági másolatból kell visszaállítani, nyisson meg egy [támogatási kérést](https://rc.portal.azure.com/#create/Microsoft.Support) a Azure Portal a visszaállítás kéréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépés a [Hálózatkezelés és az összekapcsolási fogalmak](concepts-networking.md)megismerése.
 

@@ -1,6 +1,6 @@
 ---
 title: Apache Spark & Apache Kafka Cosmos DB-Azure HDInsight
-description: Megtudhatja, hogyan használhatja Apache Spark strukturált adatfolyamot az adatok Apache Kafkaból való beolvasásához, majd Azure Cosmos DBba való tárolásához. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.
+description: Megtudhatja, hogyan használhatja Apache Spark strukturált adatfolyamot az adatok Apache Kafkaból való beolvasásához, majd Azure Cosmos DBba való tárolásához. Ebben a példában az adatok továbbítása a Spark on HDInsight Jupyter Notebook használatával végezhető el.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/18/2019
-ms.openlocfilehash: 387eb4f4c73b2103a7461c0d06c4d0e0562ec9db
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0f07cf563a3b1ce9d105fc5ca5c4f2869b13d2da
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842464"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821774"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark strukturált adatfolyam használata Apache Kafka és Azure Cosmos DB
 
@@ -97,7 +97,7 @@ resourceGroupName='myresourcegroup'
 name='mycosmosaccount'
 
 # WARNING: If you change the databaseName or collectionName
-#          then you must update the values in the Jupyter notebook
+#          then you must update the values in the Jupyter Notebook
 databaseName='kafkadata'
 collectionName='kafkacollection'
 
@@ -134,7 +134,7 @@ A dokumentumban ismertetett példa kódja a következő címen érhető el: [htt
 
 A következő lépésekkel töltheti fel a jegyzetfüzeteket a projektből a Spark on HDInsight-fürtre:
 
-1. A webböngészőben csatlakozzon a Spark-fürtön lévő Jupyter notebookhoz. A következő URL-címben cserélje le a `CLUSTERNAME` elemet a __Spark__-fürt nevére.
+1. A böngészőben kapcsolódjon a Spark-fürt Jupyter Notebook. A következő URL-címben cserélje le a `CLUSTERNAME` elemet a __Spark__-fürt nevére.
 
     ```http
     https://CLUSTERNAME.azurehdinsight.net/jupyter
@@ -156,7 +156,7 @@ A fájlok feltöltése után válassza ki a __stream-taxi-adat-to-Kafka. ipynb__
 
 A [Jupyter notebook](https://jupyter.org/) kezdőlapon válassza ki a __stream-from-Kafka-to-Cosmos-db. ipynb__ bejegyzést. Kövesse a jegyzetfüzetben található lépéseket a Kafka-ből származó adatok továbbításához és a Azure Cosmos DB a Spark Structured streaming használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte Apache Spark strukturált adatfolyam használatát, tekintse meg a következő dokumentumokat, ahol további információt talál a Apache Spark, a Apache Kafka és a Azure Cosmos DB használatáról:
 

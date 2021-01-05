@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
-ms.openlocfilehash: 8e7a484ff968454f3c5b31422b87123dcee03726
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: b8744d86300287403ca390d93c70b25215bcac4f
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682986"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822131"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Oktatóanyag: a hamis hívási adatmennyiség elemzése Stream Analytics és az eredmények megjelenítése Power BI irányítópulton
 
@@ -54,7 +54,7 @@ Eseményközpont létrehozásához, majd az adatok az eseményközpontba küldé
 
    |**Beállítás**  |**Ajánlott érték** |**Leírás**  |
    |---------|---------|---------|
-   |Name     | asaTutorialEventHub        |  Az eseményközpont névterének azonosítására szolgáló egyedi név.       |
+   |Név     | asaTutorialEventHub        |  Az eseményközpont névterének azonosítására szolgáló egyedi név.       |
    |Előfizetés     |   \<Your subscription\>      |   Válasszon ki egy Azure-előfizetést, ahol létre kívánja hozni az eseményközpontot.      |
    |Erőforráscsoport     |   MyASADemoRG      |  Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét.       |
    |Hely     |   USA 2. nyugati régiója      |    Az a hely, ahol az eseményközpont-névtér üzembe helyezhető.     |
@@ -283,17 +283,14 @@ Ha adatfolyam-továbbítási adatokkal csatlakozik, az illesztésnek bizonyos ko
 1. Illessze be a következő lekérdezést a lekérdezés-szerkesztőbe:
 
     ```SQL
-    SELECT  System.Timestamp as Time, 
-        CS1.CallingIMSI, 
-        CS1.CallingNum as CallingNum1, 
-        CS2.CallingNum as CallingNum2, 
-        CS1.SwitchNum as Switch1, 
-        CS2.SwitchNum as Switch2 
-    FROM CallStream CS1 TIMESTAMP BY CallRecTime 
-        JOIN CallStream CS2 TIMESTAMP BY CallRecTime 
-        ON CS1.CallingIMSI = CS2.CallingIMSI 
-        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5 
+    SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
+    INTO "MyPBIoutput"
+    FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
+    JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
+    ON CS1.CallingIMSI = CS2.CallingIMSI
+    AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
     WHERE CS1.SwitchNum != CS2.SwitchNum
+    GROUP BY TumblingWindow(Duration(second, 1))
     ```
 
     Ez a lekérdezés bármilyen SQL-csatlakoztatáshoz hasonló, kivéve a `DATEDIFF` JOIN függvényt. A jelen verziója a `DATEDIFF` streaming Analytics szolgáltatásra vonatkozik, és meg kell jelennie a `ON...BETWEEN` záradékban. A paraméterek egy időegység (a példában szereplő másodpercek) és az illesztés két forrásainak aliasai. Ez eltér a szabványos SQL- `DATEDIFF` függvénytől.

@@ -5,17 +5,18 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/16/2020
+ms.date: 12/30/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654592"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822284"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Az Azure Data Factory hibaelhárítása
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori hibaelhárítási módszereit vizsgálja.
@@ -498,7 +499,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **Üzenet**: `There are duplicate files in the resource folder.`
 
-- **OK**: a folderPath különböző almappáiban több azonos nevű fájl található.
+- **OK**: több azonos nevű fájl található a folderPath különböző almappáiban.
 
 - **Javaslat**: az egyéni tevékenységek lelapulják a folderPath a mappa szerkezetét. Ha meg kell őriznie a mappa szerkezetét, zip-fájlt kell kibontania Azure Batch egy unzip paranccsal.
    
@@ -545,7 +546,6 @@ A következő táblázat a Azure Batchra vonatkozik.
 - **OK**: belső hiba történt a szolgáltatásnév beolvasására tett kísérlet során vagy az MSI-hitelesítés példányának létrehozásakor.
 
 - **Javaslat**: érdemes megfontolni egy egyszerű szolgáltatásnév biztosítását, amely jogosult a HDInsight-fürt létrehozására a megadott előfizetésben, majd próbálkozzon újra. Ellenőrizze, hogy az [Identitások kezelése helyesen van](../hdinsight/hdinsight-managed-identities.md)-e beállítva.
-
 
 ### <a name="error-code-2300"></a>Hibakód: 2300
 
@@ -952,6 +952,16 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **Javaslat**: adjon meg egy Azure Blob Storage-fiókot további tárolóként a HDInsight igény szerinti társított szolgáltatáshoz.
 
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>SSL-hiba a társított szolgáltatás HDInsight ESP-fürttel való csatolásakor
+
+- **Üzenet**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **OK**: a probléma valószínűleg a rendszer-megbízhatósági tárolóval kapcsolatos.
+
+- **Megoldás**: Nyissa meg az elérési utat a **Microsoft Integration RUNTIME\4.0\SHARED\ODBC Drivers\Microsoft kaptár ODBC Driver\lib** , és nyissa meg DriverConfiguration64.exe a beállítás módosításához.
+
+    ![Törölje a rendszermegbízhatósági tároló használata jelölőnégyzet jelölését.](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 ## <a name="web-activity"></a>Webes tevékenység
 
 ### <a name="error-code-2128"></a>Hibakód: 2128
@@ -1001,7 +1011,7 @@ A **Hegedűs** használata a figyelt webalkalmazás http-munkamenetének létreh
 
 1. Kapcsolja be újra a forgalom rögzítését, és fejezze be a problémás tranzakciót az oldalon.
 
-1. Ugrás: **fájl**–  >  **Save**  >  **minden munkamenet** mentése.
+1. Ugrás: **fájl**–  >    >  **minden munkamenet** mentése.
 
 További információ: [Bevezetés a Hegedűs](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)használatába.
 
@@ -1015,11 +1025,11 @@ Ha azt tapasztalja, hogy a tevékenység sokkal hosszabb ideig fut, mint a norm�
 
 **Hibaüzenet:**`The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**OK:** Az egyes tevékenységekhez tartozó adattartalom magában foglalja a tevékenység konfigurációját, a kapcsolódó adatkészleteket és a társított szolgáltatás (oka) t, ha vannak ilyenek, és a Rendszertulajdonságok egy kis részét a tevékenység típusa szerint generálták. Az ilyen hasznos adatok mérete 896KB a [Data Factory korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) szakaszban említettek szerint.
+**OK:** Az egyes tevékenységekhez tartozó adattartalom magában foglalja a tevékenység konfigurációját, a kapcsolódó adatkészleteket és a társított szolgáltatás (oka) t, és ha vannak ilyenek, a Rendszertulajdonságok egy kis részét. Az ilyen hasznos adatok mérete 896 KB, [Data Factory korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) szakaszban említettek szerint.
 
 **Javaslat:** Ezt a korlátot valószínűleg azért éri el, mert egy vagy több nagyobb paraméter-értéket ad át a felsőbb rétegbeli tevékenységek kimenetéről vagy külsőről, különösen akkor, ha tényleges adatokat ad át a vezérlési folyamat tevékenységei között. Ellenőrizze, hogy a nagyméretű paraméterek méretének csökkentése vagy a folyamat logikájának hangolása révén elkerülhető-e az értékek átadása a tevékenységek között, és hogyan kezelheti azt a tevékenységen belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 

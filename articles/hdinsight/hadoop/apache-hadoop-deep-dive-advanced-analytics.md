@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13dd960cc7c900882acbcb9b17a5b8a1f32f956c
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504349"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821502"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Deep Dive – fejlett Analitika
 
 ## <a name="what-is-advanced-analytics-for-hdinsight"></a>Mi a HDInsight fejlett elemzési funkciója?
 
-A HDInsight lehetővé teszi értékes információk beszerzését nagy mennyiségű strukturált, strukturálatlan és gyorsan mozgó adatból. A speciális elemzések kiválóan méretezhető architektúrák, statisztikai és gépi tanulási modellek, valamint intelligens irányítópultok használatával biztosítanak értelmes elemzéseket. A gépi tanulás vagy a *prediktív elemzés*az adatokban található kapcsolatok azonosítására és megismerésére szolgáló algoritmusokat használ az előrejelzések készítéséhez és a döntések elsajátításához.
+A HDInsight lehetővé teszi értékes információk beszerzését nagy mennyiségű strukturált, strukturálatlan és gyorsan mozgó adatból. A speciális elemzések kiválóan méretezhető architektúrák, statisztikai és gépi tanulási modellek, valamint intelligens irányítópultok használatával biztosítanak értelmes elemzéseket. A gépi tanulás vagy a *prediktív elemzés* az adatokban található kapcsolatok azonosítására és megismerésére szolgáló algoritmusokat használ az előrejelzések készítéséhez és a döntések elsajátításához.
 
 ## <a name="advanced-analytics-process"></a>Fejlett elemzési folyamat
 
@@ -44,7 +44,7 @@ A legjobban illeszkedő algoritmus (ok) kiválasztásával együtt kell megfonto
 
 | Algoritmus kategóriája| Használat | Tanulás típusa | Algoritmusok |
 | --- | --- | --- | -- |
-| Osztályozás | Személyek vagy dolgok csoportokba való besorolása | Felügyelt | Döntési fák, logisztikai regresszió, neurális hálózatok |
+| Besorolás | Személyek vagy dolgok csoportokba való besorolása | Felügyelt | Döntési fák, logisztikai regresszió, neurális hálózatok |
 | Fürtözés | Példák halmazának elosztása homogén csoportokba | Unsupervised | K – fürtözés |
 | Mintázat észlelése | Az adatkezelés gyakori hozzárendeléseinek azonosítása | Unsupervised | Társítási szabályok |
 | Regresszió | Numerikus eredmények előrejelzése | Felügyelt | Lineáris regresszió, neurális hálózatok |
@@ -91,7 +91,7 @@ Ebben a fejlett elemzési forgatókönyvben három kulcsfontosságú feladat van
 
 1. Hozzon létre egy Azure HDInsight Hadoop fürtöt egy Apache Spark 2.1.0-eloszlással.
 2. Egyéni parancsfájl futtatásával Microsoft Cognitive Toolkit telepíthet egy Azure HDInsight Spark-fürt összes csomópontjára.
-3. Töltse fel a HDInsight Spark-fürthöz egy előre összeállított Jupyter-jegyzetfüzetet, amely egy Azure Blob Storage-fiókban lévő, a Spark Python API-t (PySpark) használó, betanított Microsoft Cognitive Toolkit mély tanulási modellt alkalmaz.
+3. A Spark Python API (PySpark) használatával feltölthet egy előre összeállított Jupyter Notebookt a HDInsight Spark-fürthöz, amely egy betanított Microsoft Cognitive Toolkit mély tanulási modellt alkalmaz egy Azure Blob Storage-fiókban lévő fájlokra.
 
 Ez a példa a CIFAR-10 képkészletet használja, amelyet Alex Krizhevsky, vino Siro és Geoffrey Hinton lefordított és elosztott. A CIFAR-10 adatkészlet 60 000 32 × 32 színes képet tartalmaz, amelyek a 10 egymást kölcsönösen kizáró osztályhoz tartozóak:
 
@@ -114,7 +114,7 @@ Az 10 000-es lemezképek teljes előfeldolgozása/pontozása kevesebb mint egy p
 
 A megoldás teljes körű megvalósításához kövesse [az oktatóanyagot](../spark/apache-spark-microsoft-cognitive-toolkit.md) : hozzon létre egy HDInsight Spark-fürtöt, telepítse a Cognitive Toolkitt, és futtassa a 10 000-es SZÁMú CIFAR-rendszerképekből álló Jupyter notebook.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Apache Hive és Azure Machine Learning
 

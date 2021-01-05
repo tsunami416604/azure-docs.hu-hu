@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: b8f9759d19089f74d62def41b205d862ce9a7d43
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0d732fd484e9ca4788204d726286503296bec8ab
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359727"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822097"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 – áttekintés
 
@@ -105,7 +105,7 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 * A Spark SQL Ranger integrációja a sor-és az oszlop biztonsága elavult
 * A Spark 2,4 és a Kafka 2,1 a HDInsight 4,0-ban érhető el, így a Spark 2,3 és a Kafka 1,1 már nem támogatott. Javasoljuk, hogy a Spark 2,4 & Kafka 2,1-es vagy újabb verzióját használja a HDInsight 4,0-ban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [HBase áttelepítési útmutató](./hbase/apache-hbase-migrate-new-version.md)
 * [Struktúra áttelepítési útmutatója](./interactive-query/apache-hive-migrate-workloads.md)

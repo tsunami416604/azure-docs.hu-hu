@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: fa1b19ef4ece3011c97c3158d54edd1d39efc09d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: how-to, devx-track-python, devx-track-csharp
+ms.openlocfilehash: dddecb3dba6d707e16241731a25df3b3749be103
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832636"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825410"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása
 
@@ -679,6 +679,6 @@ Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való
 
 A webszolgáltatás az üzembe helyezése után a Power BI-adatfolyamokból használható. [Megtudhatja, hogyan használhat Azure Machine learning webszolgáltatást Power BIból](/power-bi/service-machine-learning-integration).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Python és a Deep learning modellek valós idejű pontozására szolgáló hivatkozási architektúra megtekintéséhez nyissa meg az [Azure Architecture centert](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

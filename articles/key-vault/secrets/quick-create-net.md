@@ -7,13 +7,13 @@ ms.date: 09/23/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e0141d4a5658b8612ee083c6ed1825b10c0009ec
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7dd5725e55800034fc3d142ef47c61275dc165d1
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631708"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824607"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Rövid útmutató: Azure Key Vault a .NET-hez készült titkos ügyféloldali kódtár (SDK v4)
 
@@ -244,7 +244,7 @@ Deleting your secret from <your-unique-keyvault-name> ... done.
 Purging your secret from <your-unique-keyvault-name> ... done.
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, tekintse meg a következő cikkeket:
 

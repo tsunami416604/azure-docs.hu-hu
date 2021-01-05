@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65163225853037ac4cb97a02c0bdaf554b509fb1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084642"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822199"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Ismert problémák a Apache Spark-fürtön a HDInsight-on
 
@@ -81,7 +81,7 @@ A Jupyter-jegyzetfüzetekkel kapcsolatos ismert problémák a következők.
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Nem ASCII-karaktereket tartalmazó jegyzetfüzetek a fájlnevekben
 
-Ne használjon nem ASCII-karaktereket a Jupyter notebook fájlnevében. Ha a Jupyter felhasználói felületén próbál meg feltölteni egy fájlt, amely nem ASCII fájlnévvel rendelkezik, hibaüzenet nélkül meghiúsul. A Jupyter nem teszi lehetővé a fájl feltöltését, de nem mutat látható hibát sem.
+Ne használjon nem ASCII-karaktereket Jupyter Notebook fájlnevekben. Ha a Jupyter felhasználói felületén próbál meg feltölteni egy fájlt, amely nem ASCII fájlnévvel rendelkezik, hibaüzenet nélkül meghiúsul. A Jupyter nem teszi lehetővé a fájl feltöltését, de nem mutat látható hibát sem.
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Hiba történt a nagyobb méretű jegyzetfüzetek betöltésekor
 
@@ -100,15 +100,15 @@ Ha meg szeretné akadályozni, hogy ez a hiba a jövőben is megtörténjen, kö
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>A jegyzetfüzet kezdeti indítása a vártnál hosszabb időt vesz igénybe
 
-A Spark Magic használatával a Jupyter notebook első Code utasítása több mint egy percet is igénybe vehet.  
+A Spark Magic használatával Jupyter Notebook első kód utasítása több mint egy percet is igénybe vehet.  
 
 **Magyarázat**
 
 Ez azért történik, mert az első kód cellájának futtatásakor. A háttérben ez a munkamenet-konfiguráció, a Spark, az SQL és a kaptár környezetek beállítását indítja el. A kontextusok beállítása után az első utasítás fut, és ez azt a benyomást kelti, hogy az utasítás végrehajtása hosszú ideig tartott.
 
-### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter-jegyzetfüzet időtúllépése a munkamenet létrehozásakor
+### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter Notebook időtúllépés a munkamenet létrehozásakor
 
-Ha a Spark-fürt erőforrás-kifogyott, a Jupyter-jegyzetfüzetben található Spark-és PySpark-kernel időtúllépési kísérletet tesz a munkamenet létrehozásához.
+Ha a Spark-fürt erőforrásai nem állnak rendelkezésre, akkor a Jupyter Notebook Spark és PySpark kernele időtúllépési kísérletet tesz a munkamenet létrehozásához.
 
 **Enyhítését**
 
@@ -119,7 +119,7 @@ Ha a Spark-fürt erőforrás-kifogyott, a Jupyter-jegyzetfüzetben található S
 
 2. Indítsa újra az elindítani próbált jegyzetfüzetet. Elegendő erőforrást kell elérhetőnek lennie ahhoz, hogy most létrehozza a munkamenetet.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
@@ -140,7 +140,7 @@ Ha a Spark-fürt erőforrás-kifogyott, a Jupyter-jegyzetfüzetben található S
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [A HDInsight Apache Spark-fürtben Jupyter Notebook számára elérhető kernelek](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

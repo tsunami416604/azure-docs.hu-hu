@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5b39ccc365575853a4a74a471023989f34ebc577
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621603"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821485"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
@@ -149,7 +149,7 @@ Amikor [új SaaS-ajánlatot hoz létre](create-new-saas-offer.md) a partner Cent
 5. Használati feltételek
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
-8. Összefoglalás
+8. Összegzés
 9. Leírás
 10. Képernyőképek/videók
 11. Dokumentumok
@@ -250,7 +250,7 @@ Az alábbi példa a költségek és a kifizetések mintájának részletezését
 | A Microsoft a licencelési díj 80%-ában fizet<br>`*` A minősített SaaS-alkalmazások esetében a Microsoft a licencelési díj 90%-ában fizet| $80,00/hó<br>``*`` $90,00/hó |
 |||
 
-**`*` Csökkentett Piactéri szolgáltatási díj** – a kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incentivized kell megjelölni. A jogosultságot minden naptári hónap végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkapják a Marketplace szolgáltatási díját a hónapban. Az IP-címek közös értékesítésének támogathatóságával kapcsolatos további információkért lásd: [a közös értékesítésre vonatkozó követelmények](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). A csökkentett Piactéri szolgáltatási díj az Azure IP-incentivized virtuális gépekre, a felügyelt alkalmazásokra és minden más, a kereskedelmi piactéren elérhetővé tett IaaS-ajánlatra is vonatkozik.
+**`*` Csökkentett Piactéri szolgáltatási díj** – a kereskedelmi piactéren közzétett egyes SaaS-ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incentivized kell megjelölni. A jogosultságot minden naptári hónap végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkapják a Piactéri szolgáltatási díjat. Ha a jogosultság teljesül, a csökkentett szolgáltatási díjat az összes tranzakció a következő hónap első napján érvényes, és továbbra is érvényben marad, amíg az Azure-beli IP-címek közös értékesítésének incentivized állapota elvész. Az IP-címek közös értékesítésének támogathatóságával kapcsolatos további információkért lásd: [a közös értékesítésre vonatkozó követelmények](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). A csökkentett Piactéri szolgáltatási díj az Azure IP-incentivized virtuális gépekre, a felügyelt alkalmazásokra és minden más, a kereskedelmi piactéren elérhetővé tett IaaS-ajánlatra is vonatkozik.
 
 ## <a name="additional-sales-opportunities"></a>További értékesítési lehetőségek
 

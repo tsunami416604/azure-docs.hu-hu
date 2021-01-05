@@ -8,12 +8,12 @@ ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 56505c95e65911cafbaaa403cd09332695439d97
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149000"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825676"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Rövid útmutató: Azure-alkalmazás konfigurációs tárolójának létrehozása ARM-sablonnal
 
@@ -46,10 +46,10 @@ A rövid útmutató a `copy` kulcs-érték erőforrás több példányának lét
 
 Két Azure-erőforrás van definiálva a sablonban:
 
-- [Microsoft. AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-06-01/configurationstores): hozzon létre egy alkalmazás-konfigurációs tárolót.
-- Microsoft. AppConfiguration/configurationStores/Key értékek: hozzon létre egy kulcs-értéket az alkalmazás konfigurációs tárolóján belül.
+- [Microsoft. AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores): hozzon létre egy alkalmazás-konfigurációs tárolót.
+- [Microsoft. AppConfiguration/configurationStores/Key értékek](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores/keyvalues): hozzon létre egy kulcs-értéket az alkalmazás konfigurációs tárolóján belül.
 
-> [!NOTE]
+> [!TIP]
 > Az `keyValues` Erőforrás neve a kulcs és a címke kombinációja. A kulcs és a címke a határolójeltel van összekötve `$` . A címke nem kötelező. A fenti példában a `keyValues` Name nevű erőforrás egy `myKey` címke nélküli kulcs-értéket hoz létre.
 >
 > A kódolás, más néven URL-kódolás, lehetővé teszi, hogy a kulcsok vagy címkék olyan karaktereket tartalmazzanak, amelyek nem engedélyezettek az ARM-sablon erőforrásainak neveiben. `%` a nem engedélyezett karakter vagy, ezért a `~` helyén kell használni. A név megfelelő kódolásához kövesse az alábbi lépéseket:
@@ -59,6 +59,13 @@ Két Azure-erőforrás van definiálva a sablonban:
 > 3. Csere `%` erre `~`
 >
 > Ha például kulcs-érték párokat szeretne létrehozni a kulcsnévvel `AppName:DbEndpoint` és a címke nevével `Test` , az erőforrás nevének a következőnek kell lennie: `AppName~3ADbEndpoint$Test` .
+
+> [!NOTE]
+> Az alkalmazás konfigurációja lehetővé teszi a kulcs-érték adatelérést a virtuális hálózatról származó [privát kapcsolaton](concept-private-endpoint.md) keresztül. Alapértelmezés szerint, ha a szolgáltatás engedélyezve van, a rendszer megtagadja az alkalmazás konfigurációs adataira vonatkozó összes kérést a nyilvános hálózaton. Mivel az ARM-sablon a virtuális hálózaton kívül fut, az ARM-sablonból való adathozzáférés nem engedélyezett. Ha engedélyezni szeretné az adathozzáférést egy ARM-sablonból privát hivatkozás használata esetén, az alábbi Azure CLI-paranccsal engedélyezheti a nyilvános hálózati hozzáférést. Fontos figyelembe venni a nyilvános hálózati hozzáférés engedélyezésének biztonsági következményeit ebben a forgatókönyvben.
+>
+> ```azurecli-interactive
+> az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
+> ```
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -84,9 +91,9 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A Azure Portal keresőmezőbe írja be az **alkalmazás konfigurációja**kifejezést. Válassza ki az **alkalmazás konfigurációját** a listából.
+1. A Azure Portal keresőmezőbe írja be az **alkalmazás konfigurációja** kifejezést. Válassza ki az **alkalmazás konfigurációját** a listából.
 1. Válassza ki az újonnan létrehozott alkalmazás-konfigurációs erőforrást.
-1. A **műveletek**területen kattintson a **Configuration Explorer**elemre.
+1. A **műveletek** területen kattintson a **Configuration Explorer** elemre.
 1. Ellenőrizze, hogy a két kulcs-érték létezik-e.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -99,7 +106,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt az Azure-alkalmazás konfigurálásával kapcsolatos egyéb alkalmazások létrehozásáról a következő cikkben talál:
 

@@ -4,16 +4,16 @@ description: Gyakori problémák, megkerülő megoldások és diagnosztikai lép
 author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 03/13/2020
+ms.date: 12/29/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9fc5da214a50cb000d2154d08bb9b6f6f98ac5ec
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1b7b82ea07b7e00d281739011c9c9f83ab4dff73
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340532"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825625"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problémák diagnosztizálása és hibaelhárítása Azure Functions trigger használatakor Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -85,16 +85,18 @@ A "módosítás" fogalma egy dokumentumon végzett művelet. A leggyakoribb forg
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>Néhány módosítás hiányzik a saját triggerben
 
-Ha azt tapasztalja, hogy az Azure Cosmos-tárolóban történt módosítások közül néhányat nem az Azure-függvény vette fel, akkor a kezdeti vizsgálati lépésnek kell megtörténnie.
+Ha azt tapasztalja, hogy az Azure Cosmos-tárolóban történt módosítások közül néhányat nem vesz fel az Azure-függvény, vagy bizonyos változások hiányoznak a célhelyről a másolás során, kövesse az alábbi lépéseket.
 
 Amikor az Azure-függvény megkapja a módosításokat, gyakran dolgozza fel őket, és igény szerint elküldheti az eredményt egy másik célhelyre. Ha a hiányzó módosításokat vizsgálja, győződjön meg arról, hogy a **betöltési ponton milyen változások érkeznek** (az Azure-függvény indításakor), nem a célhelyen.
 
 Ha néhány módosítás hiányzik a célhelyről, ez azt jelentheti, hogy hiba történt az Azure-függvény végrehajtása során a módosítások fogadása után.
 
-Ebben az esetben a legjobb megoldás, ha blokkokat ad hozzá a `try/catch` kódban, és azon a hurkon belül, amely feldolgozza a módosításokat, hogy észlelje az elemek adott részhalmaza meghibásodását, és ennek megfelelően kezeli azokat (további elemzés vagy újrapróbálkozás céljából elküldheti őket egy másik tárolóba). 
+Ebben az esetben a legjobb megoldás, ha blokkokat ad hozzá a `try/catch` kódban, és azon a hurkon belül, amely feldolgozza a módosításokat, hogy észlelje az elemek adott részhalmaza meghibásodását, és ennek megfelelően kezeli azokat (további elemzés vagy újrapróbálkozás céljából elküldheti őket egy másik tárolóba).
 
 > [!NOTE]
 > Az Azure Functions Cosmos DB-eseményindítója alapértelmezés szerint nem próbálkozik újra a módosításköteggel, ha a kódvégrehajtás során nem kezelt kivétel lépett fel. Ez azt jelenti, hogy a módosítások nem érkeznek meg a célhelyre, mert nem kell feldolgoznia azokat.
+
+Ha a cél egy másik Cosmos-tároló, és Upsert műveletet végez az elemek másolásához, **ellenőrizze, hogy a partíciós kulcs definíciója mind a figyelt, mind a cél tárolóban azonos**-e. A Upsert műveletek ezen konfigurációs különbség miatt több forrásoldali elemet is menthetnek a célhelyen.
 
 Ha úgy találja, hogy a trigger nem fogadta el a módosításokat, a leggyakoribb forgatókönyv az, hogy **egy másik Azure-függvény fut**. Lehet, hogy egy másik Azure-függvény üzembe helyezése az Azure-ban vagy egy olyan Azure-függvény, amely egy olyan fejlesztői gépen fut, amely **pontosan ugyanazokkal a konfigurációval** rendelkezik (ugyanazokkal a figyelt és bérlet tárolókkal), és ez az Azure-függvény ellopja az Azure-függvény feldolgozására várható változások egy részhalmazát.
 

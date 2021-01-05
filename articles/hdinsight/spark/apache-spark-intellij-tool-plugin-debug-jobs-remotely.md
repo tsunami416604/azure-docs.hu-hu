@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: afe92351fe82a4e07665789c2ed4d4631be8731f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2e6da1783c3bec4958783494cb6928f5a6a69a58
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547452"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822352"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Apache Spark-alkalmazások távoli hibakeresése a HDInsight a VPN-en keresztül a Azure Toolkit for IntelliJ használatával
 
@@ -29,13 +29,13 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a Azure T
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy Azure-előfizetés** . További információkért lásd az [Azure ingyenes próbaverziójának beszerzését](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)ismertető témakört.
-* **Egy Apache Spark-fürt a HDInsight-ben** . További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* **Oracle Java Development Kit** . Telepítheti az [Oracle webhelyéről](/azure/developer/java/fundamentals/java-jdk-long-term-support).
-* **INTELLIJ ötlet** . Ez a cikk a 2017,1-es verziót használja. A [JetBrains webhelyről](https://www.jetbrains.com/idea/download/)telepítheti.
-* **Azure Toolkit for IntelliJ HDInsight eszközei** . A IntelliJ HDInsight eszközei a Azure Toolkit for IntelliJ részeként érhetők el. Az Azure Toolkit telepítésével kapcsolatos utasításokért lásd: [install Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-installation).
-* **Jelentkezzen be az Azure-előfizetésbe a INTELLIJ Idea-ból** . [Apache Spark alkalmazások HDInsight-fürthöz való létrehozásához kövesse az Azure Toolkit for IntelliJ használata](apache-spark-intellij-tool-plugin.md)című részben leírt utasításokat.
-* **Kivételt megkerülő megoldás** . Előfordulhat, hogy a Windows rendszerű számítógépeken a Spark Scala alkalmazás a távoli hibakereséshez való futtatásakor kivételt tapasztal. Ezt a kivételt a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) ismerteti, és a Windows rendszer hiányzó WinUtils.exe fájlja miatt következik be. A hiba megkerüléséhez le kell töltenie [Winutils.exet](https://github.com/steveloughran/winutils) egy olyan helyre, mint például a **C:\WinUtils\bin** . Vegyen fel egy **HADOOP_HOME** környezeti változót, majd állítsa a változó értékét **C\WinUtils** értékre.
+* **Egy Azure-előfizetés**. További információkért lásd az [Azure ingyenes próbaverziójának beszerzését](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)ismertető témakört.
+* **Egy Apache Spark-fürt a HDInsight-ben**. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
+* **Oracle Java Development Kit**. Telepítheti az [Oracle webhelyéről](/azure/developer/java/fundamentals/java-jdk-long-term-support).
+* **INTELLIJ ötlet**. Ez a cikk a 2017,1-es verziót használja. A [JetBrains webhelyről](https://www.jetbrains.com/idea/download/)telepítheti.
+* **Azure Toolkit for IntelliJ HDInsight eszközei**. A IntelliJ HDInsight eszközei a Azure Toolkit for IntelliJ részeként érhetők el. Az Azure Toolkit telepítésével kapcsolatos utasításokért lásd: [install Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-installation).
+* **Jelentkezzen be az Azure-előfizetésbe a INTELLIJ Idea-ból**. [Apache Spark alkalmazások HDInsight-fürthöz való létrehozásához kövesse az Azure Toolkit for IntelliJ használata](apache-spark-intellij-tool-plugin.md)című részben leírt utasításokat.
+* **Kivételt megkerülő megoldás**. Előfordulhat, hogy a Windows rendszerű számítógépeken a Spark Scala alkalmazás a távoli hibakereséshez való futtatásakor kivételt tapasztal. Ezt a kivételt a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) ismerteti, és a Windows rendszer hiányzó WinUtils.exe fájlja miatt következik be. A hiba megkerüléséhez le kell töltenie [Winutils.exet](https://github.com/steveloughran/winutils) egy olyan helyre, mint például a **C:\WinUtils\bin**. Vegyen fel egy **HADOOP_HOME** környezeti változót, majd állítsa a változó értékét **C\WinUtils** értékre.
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>1. lépés: Azure-beli virtuális hálózat létrehozása
 
@@ -63,13 +63,13 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     ![A fő csomópont megkeresése az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
-1. A megnyíló oldal alján található _ *Summary* * ablaktáblán másolja a fő csomópont és az **állomásnév** **IP-címét** .
+1. A megnyíló oldal alján található _ *Summary** ablaktáblán másolja a fő csomópont és az **állomásnév** **IP-címét** .
 
     ![Az IP-cím megkeresése az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 
 1. Adja hozzá az IP-címet és a fő csomópont állomásnevét a **gazdagépek** fájljához azon a számítógépen, amelyen futtatni kívánja, majd a Spark-feladatot távolról kell elvégeznie. Ez lehetővé teszi, hogy az IP-cím, valamint az állomásnév használatával kommunikáljon a fő csomóponttal.
 
-   a. Nyisson meg egy jegyzettömb-fájlt emelt szintű engedélyekkel. A **fájl** menüben válassza a **Megnyitás** elemet, majd keresse meg a Hosts fájl helyét. A Windows rendszerű számítógépeken a hely **C:\Windows\System32\Drivers\etc\hosts** .
+   a. Nyisson meg egy jegyzettömb-fájlt emelt szintű engedélyekkel. A **fájl** menüben válassza a **Megnyitás** elemet, majd keresse meg a Hosts fájl helyét. A Windows rendszerű számítógépeken a hely **C:\Windows\System32\Drivers\etc\hosts**.
 
    b. Adja hozzá a következő adatokat a **gazdagépek** fájljához:
 
@@ -98,16 +98,16 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     ![A IntelliJ IDEA új projekt sablonjának kiválasztása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a. Válassza **HDInsight**  >  **a HDInsight Spark on HDInsight (Scala)** lehetőséget.
+    a. Válassza   >  **a HDInsight Spark on HDInsight (Scala)** lehetőséget.
 
     b. Kattintson a **Tovább** gombra.
-1. A következő **új projekt** párbeszédpanelen tegye a következőket, majd kattintson a **Befejezés gombra** :
+1. A következő **új projekt** párbeszédpanelen tegye a következőket, majd kattintson a **Befejezés gombra**:
 
     - Adja meg a projekt nevét és helyét.
 
-    - A **Project SDK** (Projekt SDK) legördülő listából Spark 2.x-fürt esetében válassza a **Java 1.8** , Spark 1.x-fürt esetében pedig a **Java 1.7** lehetőséget.
+    - A **Project SDK** (Projekt SDK) legördülő listából Spark 2.x-fürt esetében válassza a **Java 1.8**, Spark 1.x-fürt esetében pedig a **Java 1.7** lehetőséget.
 
-    - A **Spark-verzió** legördülő listában a Scala projekt létrehozása varázsló integrálja a Spark SDK és a Scala SDK megfelelő verzióját. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a következő verziót használja: **Spark 2.0.2 (Scala 2.11.8)** .
+    - A **Spark-verzió** legördülő listában a Scala projekt létrehozása varázsló integrálja a Spark SDK és a Scala SDK megfelelő verzióját. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a következő verziót használja: **Spark 2.0.2 (Scala 2.11.8)**.
   
    ![A Project SDK és a Spark verziójának kiválasztása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
   
@@ -183,7 +183,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     ![IntelliJ IDEA – válassza ki a Main osztályt](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
 
-1. Az **új Scala-osztály létrehozása** párbeszédpanelen adjon meg egy nevet, válassza ki **az objektum** elemet a **fajta** mezőben, majd kattintson **az OK gombra** .
+1. Az **új Scala-osztály létrehozása** párbeszédpanelen adjon meg egy nevet, válassza ki **az objektum** elemet a **fajta** mezőben, majd kattintson **az OK gombra**.
 
     ![IntelliJ IDEA új Scala-osztály létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
 
@@ -299,7 +299,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     ![IntelliJ IDEA hibakereső konzol kimenete](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
 
-## <a name="next-steps"></a><a name="seealso"></a>Következő lépések
+## <a name="next-steps"></a><a name="seealso"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
@@ -326,7 +326,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 * [Apache Spark-alkalmazások távoli hibakeresése az Azure Toolkit for IntelliJ használatával SSH-n keresztül](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [Apache Spark alkalmazások létrehozásához használja a Azure Toolkit for Eclipse HDInsight-eszközeit](./apache-spark-eclipse-tool-plugin.md)
 * [Apache Zeppelin-jegyzetfüzetek használata Apache Spark-fürttel a HDInsight-ben](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek egy Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [A HDInsight Apache Spark-fürtben Jupyter Notebook számára elérhető kernelek](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

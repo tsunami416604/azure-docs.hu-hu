@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
-ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85c4298c0c83480c244cc12238c21160a4a4282e
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77198888"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822114"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Oktatóanyag: Adatok betöltése és lekérdezések futtatása egy Apache Spark-fürtön az Azure HDInsightban
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre dataframe egy csv-fájlból, és hogyan futtathat interaktív Spark SQL-lekérdezéseket egy [Apache Spark](https://spark.apache.org/) -fürtön az Azure HDInsight. A Sparkban az adathalmazok olyan elosztott adatgyűjtemények, amelyek megnevezett oszlopokba vannak rendezve. Az adathalmazok elméleti szinten azonosak a relációs adatbázisokban található táblákkal vagy R/Python-adathalmazokkal.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Adathalmaz létrehozása egy CSV-fájlból
 > * Lekérdezések futtatása az adathalmazon
@@ -28,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Apache Spark-fürt megléte a HDInsightban. Lásd: [Apache Spark-fürt létrehozása](./apache-spark-jupyter-spark-sql-use-portal.md).
 
-## <a name="create-a-jupyter-notebook"></a>Jupyter notebook létrehozása
+## <a name="create-a-jupyter-notebook"></a>Jupyter-notebook létrehozása
 
 A Jupyter Notebook egy interaktív notebook-környezet, amely számos programozási nyelvet támogat. A notebook lehetővé teszi az adatai használatát, a kódok és markdown-szövegek egyesítését, valamint egyszerű vizualizációk elvégzését.
 
@@ -49,7 +49,7 @@ Az alkalmazások közvetlenül a távoli tárolóban található fájlokból vag
 
 ![Az interaktív Spark SQL-lekérdezésre vonatkozó adatok pillanatképe](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Az interaktív Spark SQL-lekérdezésre vonatkozó adatok pillanatképe")
 
-1. Illessze be a következő kódot a Jupyter jegyzetfüzet egyik üres cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához. A kód importálja az alábbi forgatókönyvhöz szükséges típusokat:
+1. Illessze be a következő kódot a Jupyter Notebook egy üres cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához. A kód importálja az alábbi forgatókönyvhöz szükséges típusokat:
 
     ```python
     from pyspark.sql import *
@@ -89,7 +89,7 @@ A tábla létrehozása után az adatokon interaktív lekérdezéseket futtathat.
 
     ![Az interaktív Spark-lekérdezés eredményének terület gráfja](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Az interaktív Spark-lekérdezés eredményének terület gráfja")
 
-3. A notebook menüsávban navigáljon a **fájl**  >  **Mentés és ellenőrzőpont**elemre.
+3. A notebook menüsávban navigáljon a **fájl**  >  **Mentés és ellenőrzőpont** elemre.
 
 4. Ha most kezd bele a [következő oktatóanyagba](apache-spark-use-bi-tools.md), hagyja nyitva a notebookot. Ha nem, állítsa le a jegyzetfüzetet a fürterőforrások felszabadításához: a jegyzetfüzet menüsorában navigáljon a **fájl**  >   **bezárásához és leállításához**.
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656937"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824655"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -81,15 +81,9 @@ Az Azure Digital Twins .NET (C#) SDK része a .NET-hez készült Azure SDK-nak. 
 > [!NOTE]
 > Az SDK kialakításával kapcsolatos további információkért tekintse meg az Azure SDK-k általános [tervezési alapelveit](https://azure.github.io/azure-sdk/general_introduction.html) és az adott [.net tervezési irányelveket](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
-Az SDK használatához foglalja bele az **Azure. DigitalTwins. Core** NuGet-csomagot a projektbe. Az **Azure. Identity** csomag legújabb verziójára is szüksége lesz.
-
-* A Visual Studióban hozzáadhat csomagokat a NuGet Package Managerrel (az eszközökön keresztül érhető el *> NuGet csomagkezelő > NuGet-csomagok kezelése a megoldáshoz*). 
-* A .NET parancssori eszköz használatával a következőket végezheti el:
-
-    ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
-    ```
+Az SDK használatához foglalja bele az **Azure. DigitalTwins. Core** NuGet-csomagot a projektbe. Az **Azure. Identity** csomag legújabb verziójára is szüksége lesz. A Visual Studióban ezeket a csomagokat a NuGet Package Managerrel veheti fel (az eszközökön keresztül érhető el *> NuGet csomagkezelő > NuGet-csomagok kezelése a megoldáshoz*). Azt is megteheti, hogy a .NET parancssori eszközt használja az alábbi NuGet-csomag hivatkozásaiban található parancsokkal a projekthez való hozzáadáshoz:
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Ez a csomag a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-hoz. 
+* [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Ez a kódtár eszközöket biztosít az Azure-beli hitelesítéshez.
 
 Az API-k gyakorlatban való használatának részletes ismertetését az [*oktatóanyag: az ügyfélalkalmazás kódolása*](tutorial-code.md)című témakörben tekintheti meg. 
 
@@ -302,7 +296,7 @@ A portál kezdőlapján keresse meg az Azure Digital Twins-példányát, és adj
 
 Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg, hogyan lehet közvetlen kérelmeket készíteni az API-khoz a Poster használatával:
 * [*Útmutató: kérelmek küldése a Poster használatával*](how-to-use-postman.md)

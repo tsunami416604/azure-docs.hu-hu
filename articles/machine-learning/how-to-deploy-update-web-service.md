@@ -9,13 +9,13 @@ ms.reviewer: larryfr
 ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
-ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: ddd075a5880899a065ee6eaaa4ff0636b6590370
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: deploy
+ms.openlocfilehash: f955ee3f8bc150982c19107271fe7e7bdb1368cb
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840780"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824559"
 ---
 # <a name="update-a-deployed-web-service"></a>Központilag telepített webszolgáltatás frissítése
 
@@ -88,7 +88,7 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 
 További információt az az [ml Service Update](/cli/azure/ext/azure-cli-ml/ml/service?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) dokumentációjában talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Sikertelen üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)

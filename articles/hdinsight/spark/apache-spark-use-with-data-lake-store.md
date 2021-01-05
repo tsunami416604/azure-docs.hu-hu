@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 6abdb3cc6981a4fbdd52b88a75457c37709597f5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 42b9958678c76c1d0eed67cc9d97361c84f1dea9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020789"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821162"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Az HDInsight Spark-fürt használata Data Lake Storage Gen1ban lévő adatelemzéshez
 
@@ -62,7 +62,7 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>HDInsight Spark-fürt használata Data Lake Storage Gen1
 
-1. A [Azure Portal](https://portal.azure.com/)a kezdőpulton kattintson a Apache Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a **Tallózás az összes** HDInsight-fürt területen is megnyithatja  >  **HDInsight Clusters**.
+1. A [Azure Portal](https://portal.azure.com/)a kezdőpulton kattintson a Apache Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a **Tallózás az összes** HDInsight-fürt területen is megnyithatja  >  .
 
 2. A Spark-fürt panelén kattintson a **Quick Links** (Gyorshivatkozások) lehetőségre, majd a **Cluster Dashboard** (Fürt irányítópultja) panelen a **Jupyter Notebook** elemre. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
@@ -73,7 +73,7 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
 
 3. Hozzon létre új notebookot. Kattintson a **New** (Új), majd a **PySpark** elemre.
 
-    ![Új Jupyter notebook létrehozása](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Új Jupyter notebook létrehozása")
+    ![Új Jupyter Notebook létrehozása](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Új Jupyter Notebook létrehozása")
 
 4. Mivel a notebook PySpark kernel használatával jött létre, explicit módon semmilyen tartalmat nem kell létrehozni. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. Ennek az első lépése a jelen forgatókönyvhöz szükséges típusok importálása. Ehhez illessze be a következő kódrészletet a cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt.
 
@@ -83,7 +83,7 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
 
     Minden alkalommal, amikor a Jupyterben feladatot futtat, a webböngésző ablakának címsorában **(Foglalt)** állapot jelenik meg a notebook neve mellett. A jobb felső sarokban lévő **PySpark** felirat mellett ekkor egy teli kör is megjelenik. A feladat befejezését követően ez a jel üres körre változik.
 
-     ![A Jupyter notebook feladat állapota](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "A Jupyter notebook feladat állapota")
+     ![Jupyter Notebook feladatok állapota](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter Notebook feladatok állapota")
 
 5. Az Data Lake Storage Gen1-fiókba másolt **HVAC.csv** fájl használatával helyezzen be mintaadatok egy ideiglenes táblába. A Data Lake Storage fiókban lévő adatai a következő URL-minta használatával érhetők el.
 

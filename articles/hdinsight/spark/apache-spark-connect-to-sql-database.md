@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97c326bd1d2f61ba3fb9d6e381f5a8711bd0ca1d
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023976"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821196"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Az HDInsight Spark-fürt használata az Azure SQL Databaseba való adatolvasásra és írásra
 
@@ -36,20 +36,20 @@ Megtudhatja, hogyan csatlakoztatható Apache Spark-fürt az Azure HDInsight-ben 
 Kezdje a Spark-fürthöz társított Jupyter Notebook létrehozásával. Ezt a jegyzetfüzetet használja a cikkben használt kódrészletek futtatásához.
 
 1. A [Azure Portal](https://portal.azure.com/)nyissa meg a fürtöt.
-1. A jobb oldalon válassza a **Jupyter notebook** alatt a **fürt irányítópultok** elemet.  Ha nem látja a **fürt irányítópultját**, válassza az **Áttekintés** lehetőséget a bal oldali menüben. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
+1. A jobb oldalon válassza ki **Jupyter notebook** a **fürt irányítópultok** alatt.  Ha nem látja a **fürt irányítópultját**, válassza az **Áttekintés** lehetőséget a bal oldali menüben. Ha a rendszer felkéri rá, adja meg a fürthöz tartozó rendszergazdai hitelesítő adatokat.
 
-    ![Jupyter notebook on Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter notebook a Sparkban")
+    ![Jupyter Notebook on Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter Notebook a Sparkban")
 
    > [!NOTE]  
-   > A Jupyter-jegyzetfüzetet a Spark-fürtön is elérheti, ha megnyitja a következő URL-címet a böngészőben. Cserélje le a **CLUSTERNAME** nevet a fürt nevére:
+   > A Spark-fürt Jupyter Notebook a böngészőben a következő URL-cím megnyitásával is elérheti. Cserélje le a **CLUSTERNAME** nevet a fürt nevére:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. A Jupyter jegyzetfüzetben, a jobb felső sarokban kattintson az **új** elemre, majd a **Spark** elemre a Scala notebook létrehozásához. A HDInsight Spark-fürtön található Jupyter-jegyzetfüzetek a Python2-alkalmazások **PySpark** -kernelét, valamint a PySpark3-alkalmazások **Python3** -kernelét is biztosítják. Ebben a cikkben egy Scala-jegyzetfüzetet hozunk létre.
+1. A Jupyter Notebook a jobb felső sarokban kattintson az **új** elemre, majd a **Spark** elemre a Scala notebook létrehozásához. A HDInsight Spark-fürtön található Jupyter-jegyzetfüzetek a Python2-alkalmazások **PySpark** -kernelét, valamint a PySpark3-alkalmazások **Python3** -kernelét is biztosítják. Ebben a cikkben egy Scala-jegyzetfüzetet hozunk létre.
 
-    ![Kernelek Jupyter notebookhoz a Sparkban](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Kernelek Jupyter notebookhoz a Sparkban")
+    ![Kernelek Jupyter Notebook a Sparkban](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Kernelek Jupyter Notebook a Sparkban")
 
-    A kernelekkel kapcsolatos további információkért lásd: [Jupyter notebookkernelek használata Apache Spark-fürtökkel a HDInsightban](apache-spark-jupyter-notebook-kernels.md).
+    További információ a kernelekről: [Jupyter notebook kernelek használata Apache Spark-fürtökkel a HDInsight-ben](apache-spark-jupyter-notebook-kernels.md).
 
    > [!NOTE]  
    > Ebben a cikkben a Spark (Scala) kernelt használjuk, mert a Sparkból a SQL Databaseba érkező adatfolyam-adatok csak a Scala és a Java szolgáltatásban támogatottak. Bár az SQL-re való olvasás és az SQL-be való írás a Python használatával végezhető el, az ebben a cikkben szereplő konzisztencia érdekében mindhárom művelethez a Scalat használjuk.
@@ -64,7 +64,7 @@ Most már megkezdheti az alkalmazás létrehozását.
 
 Ebben a szakaszban egy tábla (például **SalesLT. címe**) adatait olvassa be a AdventureWorks-adatbázisban.
 
-1. Egy új Jupyter jegyzetfüzetben írja be a következő kódrészletet, és cserélje le a helyőrző értékeket az adatbázis értékeire.
+1. Egy új Jupyter Notebook a kód cellában illessze be a következő kódrészletet, és cserélje le a helyőrző értékeket az adatbázis értékeire.
 
     ```scala
     // Declare the values for your database
@@ -121,7 +121,7 @@ Ebben a szakaszban egy tábla (például **SalesLT. címe**) adatait olvassa be 
 
 Ebben a szakaszban egy CSV-fájlt használunk a fürtben, amely egy táblázatot hoz létre az adatbázisban, és feltölti azokat az adatokkal. A minta CSV-fájl (**HVAC.csv**) az összes HDInsight-fürtön elérhető a következő helyen: `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` .
 
-1. Egy új Jupyter jegyzetfüzetben írja be a következő kódrészletet, és cserélje le a helyőrző értékeket az adatbázis értékeire.
+1. Egy új Jupyter Notebook a kód cellában illessze be a következő kódrészletet, és cserélje le a helyőrző értékeket az adatbázis értékeire.
 
     ```scala
     // Declare the values for your database
@@ -192,7 +192,7 @@ Ebben a szakaszban az előző szakaszban létrehozott adatátviteli folyamatokat
     TRUNCATE TABLE [dbo].[hvactable]
     ```
 
-1. Hozzon létre egy új Jupyter-jegyzetfüzetet a HDInsight Spark-fürtön. Illessze be a következő kódrészletet a kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt:
+1. Hozzon létre egy új Jupyter Notebook a HDInsight Spark-fürtön. Illessze be a következő kódrészletet a kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt:
 
     ```scala
     import org.apache.spark.sql._

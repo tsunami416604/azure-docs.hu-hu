@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 772b136c00dc9c20f8bc35d7ebb324175a56e885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82c61fe77e7bffea6a20e47c71561ab6dc86d12b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061716"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822250"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Külső csomagok használata Jupyter notebookokkal Apache Spark-fürtökben a HDInsight-ben
 
@@ -21,7 +21,7 @@ Megtudhatja, hogyan konfigurálhat egy [Jupyter Notebookt](https://jupyter.org/)
 
 A [Maven-tárházban](https://search.maven.org/) megkeresheti a rendelkezésre álló csomagok teljes listáját. Lekérheti az egyéb forrásokból származó elérhető csomagok listáját is. A közösségi hozzájárulású csomagok teljes listája például a [Spark-csomagokban](https://spark-packages.org/)érhető el.
 
-Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomagot a Jupyter notebook használatával.
+Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomagot a Jupyter notebook.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,9 +35,9 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
 1. Navigáljon `https://CLUSTERNAME.azurehdinsight.net/jupyter` oda, ahol `CLUSTERNAME` a a Spark-fürt neve.
 
-1. Hozzon létre új notebookot. Válassza az **új**, majd a **Spark**lehetőséget.
+1. Hozzon létre új notebookot. Válassza az **új**, majd a **Spark** lehetőséget.
 
-    ![Új Spark Jupyter-jegyzetfüzet létrehozása](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Új Jupyter notebook létrehozása")
+    ![Új Spark-Jupyter Notebook létrehozása](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Új Jupyter Notebook létrehozása")
 
 1. Az új notebook létrejött, és Untitled.pynb néven nyílt meg. Válassza ki a jegyzetfüzet nevét a tetején, és adjon meg egy rövid nevet.
 
@@ -57,9 +57,9 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
     a. Keresse meg a csomagot a Maven-tárházban. Ebben a cikkben a [Spark-CSV-](https://mvnrepository.com/artifact/com.databricks/spark-csv)t használjuk.
 
-    b. A tárházból Gyűjtse össze a **GroupID**, a **ArtifactId**és a **verzió**értékeit. Győződjön meg arról, hogy az összegyűjtött értékek megfelelnek a fürtnek. Ebben az esetben a Scala 2,11 és a Spark 1.5.0 csomagot használjuk, de előfordulhat, hogy a fürt megfelelő Scala vagy Spark verziójának különböző verzióit kell kiválasztania. A Scala verzióját a fürtön a `scala.util.Properties.versionString` Spark Jupyter kernelen vagy a Spark beküldésen futtatva találja meg. A Spark-verziót a fürtön a Jupyter notebookokon futtatva találja meg `sc.version` .
+    b. A tárházból Gyűjtse össze a **GroupID**, a **ArtifactId** és a **verzió** értékeit. Győződjön meg arról, hogy az összegyűjtött értékek megfelelnek a fürtnek. Ebben az esetben a Scala 2,11 és a Spark 1.5.0 csomagot használjuk, de előfordulhat, hogy a fürt megfelelő Scala vagy Spark verziójának különböző verzióit kell kiválasztania. A Scala verzióját a fürtön a `scala.util.Properties.versionString` Spark Jupyter kernelen vagy a Spark beküldésen futtatva találja meg. A Spark-verziót a fürtön a Jupyter notebookokon futtatva találja meg `sc.version` .
 
-    ![Külső csomagok használata Jupyter notebooktal](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Külső csomagok használata Jupyter notebooktal")
+    ![Külső csomagok használata Jupyter Notebook](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Külső csomagok használata Jupyter Notebook")
 
     c. Összefűzi a három értéket kettősponttal elválasztva (**:**).
 
@@ -93,7 +93,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
     df.select("Time").count()
     ```
 
-## <a name="see-also"></a><a name="seealso"></a>Lásd még
+## <a name="see-also"></a><a name="seealso"></a>További információ
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
@@ -115,7 +115,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [A HDInsight Apache Spark-fürtben Jupyter Notebook számára elérhető kernelek](apache-spark-jupyter-notebook-kernels.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Erőforrások kezelése

@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Apache Spark streaming & Apache Kafka – Azure HDInsight'
-description: Megtudhatja, hogyan használhatja az Apache Spark streamelést az adatok az Apache Kafkába való betöltéséhez, illetve az onnan való exportálásához. Ebben az oktatóanyagban egy Jupyter notebookkal streamelünk adatokat a Spark on HDInsightból.
+description: Megtudhatja, hogyan használhatja az Apache Spark streamelést az adatok az Apache Kafkába való betöltéséhez, illetve az onnan való exportálásához. Ebben az oktatóanyagban az adatok továbbítása a Spark on HDInsight Jupyter Notebook használatával végezhető el.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 8aa7401a2ee7a0d87736e6b18fc814f983e2afa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9af0349326cf82ed9d050c367b6ed784c9ea9ce9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82184197"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821128"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Spark strukturált stream használata az Apache Kafkával a HDInsighton
 
@@ -21,7 +21,7 @@ Ez az oktatóanyag azt mutatja be, hogyan használhatók az [Apache Spark strukt
 
 A Spark strukturált streaming egy Spark SQL-re épülő stream-feldolgozó motor. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében.  
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Fürtök létrehozása Azure Resource Manager sablon használatával
@@ -154,7 +154,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
 
     ![A testreszabott sablon képernyőképe](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
-3. Olvassa el a **használati**feltételeket, majd válassza **az Elfogadom a fenti feltételeket és**kikötéseket lehetőséget.
+3. Olvassa el a **használati** feltételeket, majd válassza **az Elfogadom a fenti feltételeket és** kikötéseket lehetőséget.
 
 4. Válassza a **Vásárlás** lehetőséget.
 

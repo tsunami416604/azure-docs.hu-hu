@@ -11,13 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-- devx-track-azurecli
-ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792463"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825166"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub eszköz streamek (előzetes verzió)
 
@@ -57,7 +56,7 @@ Az eszköz SDK-val való programozott létrehozása a következő lépésekkel j
 
 1. Az eszköz a visszahívást előzetesen regisztrálja, hogy értesítést kapjon, amikor új adatfolyamot kezdeményeznek az eszközre. Ez a lépés általában akkor történik meg, amikor az eszköz elindul, és csatlakozik IoT Hubhoz.
 
-2. Ha szükséges, az eszköz AZONOSÍTÓját ( _nem_ az IP-címet) adja meg a szolgáltatási oldali program.
+2. Ha szükséges, az eszköz AZONOSÍTÓját (_nem_ az IP-címet) adja meg a szolgáltatási oldali program.
 
 3. Az IoT hub az 1. lépésben regisztrált visszahívás meghívásával értesíti az eszközön található programot. Az eszköz elfogadhatja vagy elutasíthatja a stream kezdeményezési kérelmét. Ez a logika az alkalmazási forgatókönyvre is jellemző lehet. Ha az eszköz elutasítja az adatfolyam-kérelmet, IoT Hub ennek megfelelően értesíti a szolgáltatást; Ellenkező esetben kövesse az alábbi lépéseket.
 
@@ -183,7 +182,7 @@ A helyi proxy minta azt mutatja be, hogyan lehet engedélyezni egy meglévő alk
 
 Ez a szakasz azt ismerteti, hogyan használhatók az adatfolyamok a felhasználó számára az eszközökön keresztüli SSH-eszközökre (az RDP vagy más ügyfél/kiszolgáló alkalmazás esetében a protokoll megfelelő portjának használatával).
 
-A telepítő két *helyi proxykiszolgálót* használ az alábbi ábrán látható módon, azaz az *eszköz helyi proxyját* és a *szolgáltatás helyi proxyját* . A helyi proxy programok felelősek az [eszköz stream-kezdeményezési kézfogásának](#device-stream-creation-flow) elvégzéséhez IoT hub használatával, valamint az SSH-ügyfél és az SSH démon és a normál ügyfél/kiszolgáló szoftvercsatornák használatával való interakció.
+A telepítő két *helyi proxykiszolgálót* használ az alábbi ábrán látható módon, azaz az *eszköz helyi proxyját* és a *szolgáltatás helyi proxyját*. A helyi proxy programok felelősek az [eszköz stream-kezdeményezési kézfogásának](#device-stream-creation-flow) elvégzéséhez IoT hub használatával, valamint az SSH-ügyfél és az SSH démon és a normál ügyfél/kiszolgáló szoftvercsatornák használatával való interakció.
 
 !["Az eszköz stream-proxy beállítása SSH/RDP-hez"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 
@@ -213,7 +212,7 @@ Az alábbi hivatkozásokra kattintva megtudhatja, hogyan futtathatja a helyi pro
 
 * [C eszköz program](quickstart-device-streams-proxy-c.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg az eszközök streamekről.
 

@@ -3,13 +3,13 @@ title: Azure Functions figyelésének konfigurálása
 description: Megtudhatja, hogyan csatlakoztatható a Function app Application Insights a figyeléshez, és hogyan konfigurálhatja az adatgyűjtést.
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperf-fy21q2, devx-track-azurecli
-ms.openlocfilehash: 5c4e9795109a9b4b5a6e9ceeec6b22e0168eb28f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 77cc87e44990f471ef38871c0225835660779a3c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027628"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825763"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>A Azure Functions figyelésének konfigurálása
 
@@ -143,7 +143,7 @@ A naplózási szint beállításával `None` megakadályozhatja, hogy a naplók 
 
 ## <a name="configure-the-aggregator"></a>A gyűjtő konfigurálása
 
-Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a függvények végrehajtásával kapcsolatos adatokat egy adott időszakban. Az alapértelmezett időtartam 30 másodperc vagy 1 000 fut, amelyik előbb eléri a értéket. Ezt a beállítást a fájl [host.js] is konfigurálhatja.  Bemutatunk egy példát:
+Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a függvények végrehajtásával kapcsolatos adatokat egy adott időszakban. Az alapértelmezett időtartam 30 másodperc vagy 1 000 fut, amelyik előbb eléri a értéket. Ezt a beállítást a fájl [host.js] is konfigurálhatja.  Íme egy példa:
 
 ```json
 {
@@ -156,7 +156,7 @@ Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a fü
 
 ## <a name="configure-sampling"></a>Mintavételezés konfigurálása
 
-Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételezésthost.js- [ on](./functions-host-json.md#applicationinsights)is konfigurálhatja.  Bemutatunk egy példát:
+Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételezésthost.js- [ on](./functions-host-json.md#applicationinsights)is konfigurálhatja.  Íme egy példa:
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
@@ -278,7 +278,7 @@ A Application Insights engedélyezésekor tiltsa le az Azure Storage-t használ�
 
 A beépített naplózás letiltásához törölje az `AzureWebJobsDashboard` alkalmazás beállítását. Az Alkalmazásbeállítások a Azure Portalban való törlésével kapcsolatos további információkért tekintse meg a [functions-alkalmazás kezelésével](functions-how-to-use-azure-function-app-settings.md#settings)foglalkozó témakör **Alkalmazásbeállítások** szakaszát. Az Alkalmazásbeállítások törlése előtt győződjön meg arról, hogy az azonos Function alkalmazásban lévő meglévő függvények nem használják az Azure Storage-eseményindítók és-kötések beállítását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A figyeléssel kapcsolatos további tudnivalókért tekintse meg a következő témakört:
 

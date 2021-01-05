@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3397c57f793c6994847786ff8247e5ccfa453ec0
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087470"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821247"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Azure Machine Learning számítási feladatok futtatása automatikus gépi tanulással a HDInsight-ben Apache Spark
 
@@ -24,7 +24,7 @@ Az automatizált gépi tanulással kapcsolatos általános útmutatókért lásd
 Az összes új HDInsight-Spark-fürt előre telepítve van a AzureML-AutoML SDK-val.
 
 > [!Note]
-> Azure Machine Learning csomagok települnek a Python3 Conda-környezetbe. A telepített Jupyter-jegyzetfüzetet a PySpark3 kernel használatával kell futtatni.
+> Azure Machine Learning csomagok települnek a Python3 Conda-környezetbe. A telepített Jupyter Notebook a PySpark3 kernel használatával kell futtatni.
 
 A Zeppelin notebookok használatával is használhatja a AutoML-t.
 
@@ -35,7 +35,7 @@ A Zeppelin notebookok használatával is használhatja a AutoML-t.
 
 A Munkaterületek létrehozása és a kísérlet elküldése hitelesítési jogkivonatot igényel. Ez a jogkivonat [Azure ad-alkalmazással](../../active-directory/develop/app-objects-and-service-principals.md)hozható létre. Az [Azure ad-felhasználó](/azure/python/python-sdk-azure-authenticate) a szükséges hitelesítési jogkivonat létrehozásához is használható, ha a többtényezős hitelesítés nincs engedélyezve a fiókban.  
 
-A következő kódrészlet létrehoz egy hitelesítési tokent egy **Azure ad-alkalmazás**használatával.
+A következő kódrészlet létrehoz egy hitelesítési tokent egy **Azure ad-alkalmazás** használatával.
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -46,7 +46,7 @@ auth_sp = ServicePrincipalAuthentication(
 )
 ```
 
-Az alábbi kódrészlet egy **Azure ad-felhasználó**használatával hoz létre hitelesítési jogkivonatot.
+Az alábbi kódrészlet egy **Azure ad-felhasználó** használatával hoz létre hitelesítési jogkivonatot.
 
 ```python
 from azure.common.credentials import UserPassCredentials

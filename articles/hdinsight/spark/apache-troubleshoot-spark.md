@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e60903aaa61cae63d406d459937d33317eee394
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4cfcc860e40415403952efeda13bac513a2c6347
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022251"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822148"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Az Apache Spark hibaelhárítása az Azure HDInsighttal
 
@@ -37,7 +37,7 @@ A Spark konfigurációs értékei a Apache Spark alkalmazás kivételének elker
 
 1. Állítsa be az értéket az ajánlott beállításra. Ehhez a beállításhoz a **2048m** érték használata javasolt.
 
-1. Mentse az értéket, majd mentse a konfigurációt. Kattintson a **Mentés** gombra.
+1. Mentse az értéket, majd mentse a konfigurációt. Válassza a **Mentés** lehetőséget.
 
     ![Érték módosítása 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
@@ -75,9 +75,9 @@ A Spark konfigurációs értékei a Apache Spark alkalmazás kivételének elker
 
 Ezek a változások a fürtre kiterjedő, de a Spark-feladatok elküldésekor felülbírálható.
 
-## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Hogyan konfigurálható egy Apache Spark-alkalmazás egy Jupyter Notebook-jegyzetfüzet fürtökön történő használatával?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Hogyan konfiguráljon egy Apache Spark alkalmazást a fürtökön lévő Jupyter Notebook használatával?
 
-A Jupyter jegyzetfüzet első cellájában, a **%% configure** direktíva után adja meg a Spark-konfigurációkat érvényes JSON formátumban. Módosítsa a tényleges értékeket szükség szerint:
+A Jupyter Notebook első cellájában a **(z)%% configure** direktíva után adja meg a Spark-konfigurációkat érvényes JSON formátumban. Módosítsa a tényleges értékeket szükség szerint:
 
 ![Konfiguráció hozzáadása](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 

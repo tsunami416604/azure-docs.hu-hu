@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 898c106fb961373889fbae87db6c755fe2495ff8
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621263"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822386"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
@@ -40,7 +40,7 @@ A Transact kapcsoló használata esetén a Microsoft engedélyezi harmadik félt
 
 A Transact Publishing lehetőség jelenleg a következő típusú ajánlatok esetében támogatott:
 
-- Virtual machines (Virtuális gépek)
+- Virtuális gépek
 - Azure-alkalmazások
 - SaaS-alkalmazás
 
@@ -90,7 +90,7 @@ Ez a lehetőség nagyobb vagy alacsonyabb díjszabást tesz lehetővé, mint a n
 
 20%-os standard tárolási szolgáltatási díjat számítunk fel, amikor az ügyfelek a kereskedelmi piactéren vásárolják meg a Transact ajánlatot. A díj részleteiért lásd: a [Microsoft kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560)5c. szakasza.
 
-Bizonyos, a kereskedelmi piactéren közzétett Transact-ajánlatok esetén 10%-os csökkentett tárolási szolgáltatási díjat igényelhet. Ahhoz, hogy az ajánlat megfelelő legyen, a Microsoft számára meg kell jelölnie az Azure IP közös értékesítésének incentivized. A jogosultságot az egyes naptári hónapok végét megelőzően legalább öt munkanapon belül teljesíteni kell, hogy megkapják a Marketplace szolgáltatási díját a hónapban. Az IP-címek közös értékesítésének támogathatóságával kapcsolatos további információkért lásd: [a közös értékesítésre vonatkozó követelmények](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+Bizonyos, a kereskedelmi piactéren közzétett Transact-ajánlatok esetén 10%-os csökkentett tárolási szolgáltatási díjat igényelhet. Ahhoz, hogy az ajánlat megfelelő legyen, a Microsoft számára meg kell jelölnie az Azure IP közös értékesítésének incentivized. A jogosultságot az egyes naptári hónapok végét megelőzően legalább öt munkanapon belül teljesíteni kell, hogy megkapják a Piactéri szolgáltatási díjat. Ha a jogosultság teljesül, a csökkentett szolgáltatási díjat az összes tranzakció a következő hónap első napján érvényesnek ítéli meg, amíg az Azure-beli IP-címek közös értékesítésének incentivized állapota elvész. Az IP-címek közös értékesítésének támogathatóságával kapcsolatos további információkért lásd: [a közös értékesítésre vonatkozó követelmények](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
 
 A Piactéri szolgáltatási díj az Azure IP-incentivized SaaS, virtuális gépek, felügyelt alkalmazások és minden más, a kereskedelmi piactéren elérhetővé tett IaaS-megoldásra vonatkozik. Az egy Microsoft Teams-alkalmazáshoz vagy legalább két Microsoft 365-bővítményhez (Excel, PowerPoint, Word, Outlook és SharePoint) társított fizetős SaaS-ajánlatok a következő kedvezményt kapják meg Microsoft AppSource is.
 

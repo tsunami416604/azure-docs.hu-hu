@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: ARO, openshift, az ARO, Red Hat, CLI, Azure file
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: db87e61166da87300a5e1fb8433a42f3f47cf832
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fe80698b71ae0ba808991d79b423d49abfacdf7c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493824"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825920"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Files StorageClass létrehozása az Azure Red Hat OpenShift 4-ben
 
@@ -52,14 +52,14 @@ az storage account create \
 ## <a name="set-permissions"></a>Engedélyek beállítása
 ### <a name="set-resource-group-permissions"></a>Erőforráscsoport engedélyeinek beállítása
 
-Az ARO egyszerű szolgáltatásának az új Azure Storage-fiók erőforráscsoporthoz a "Listkeys műveletének beolvasása" engedélyre van szüksége. Rendelje hozzá a közreműködői szerepkört az eléréséhez. 
+Az ARO egyszerű szolgáltatásának az új Azure Storage-fiók erőforráscsoporthoz a "Listkeys műveletének beolvasása" engedélyre van szüksége. Rendelje hozzá a közreműködői szerepkört az eléréséhez.
 
 ```bash
 ARO_RESOURCE_GROUP=aro-rg
 CLUSTER=cluster
-ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER –-query servicePrincipalProfile.clientId -o tsv)
+ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER --query servicePrincipalProfile.clientId -o tsv)
 
-az role assignment create –-role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
+az role assignment create --role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
 ```
 
 ### <a name="set-aro-cluster-permissions"></a>ARO-fürt engedélyeinek beállítása
@@ -90,7 +90,7 @@ metadata:
 provisioner: kubernetes.io/azure-file
 parameters:
   location: $LOCATION
-  skuName: Standard_LRS 
+  skuName: Standard_LRS
   storageAccount: $AZURE_STORAGE_ACCOUNT_NAME
   resourceGroup: $AZURE_FILES_RESOURCE_GROUP
 reclaimPolicy: Delete
@@ -131,7 +131,7 @@ oc exec $POD -- bash -c "echo 'azure file storage' >> /data/test.txt"
 oc exec $POD -- bash -c "cat /data/test.txt"
 azure file storage
 ```
-A test.txt fájl is látható lesz a Azure Portal Storage Explorer keresztül. 
+A test.txt fájl is látható lesz a Azure Portal Storage Explorer keresztül.
 
 ## <a name="next-steps"></a>További lépések
 

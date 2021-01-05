@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 6482b2ec07a0473ddbea2098d37c5d67c8b68704
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 770c73cb6f1309e64cd44c5a1b1570899108e4e7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539700"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821043"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Munka Apache Hadoop ökoszisztémán a HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL
 
@@ -85,14 +85,14 @@ A HDInsight Apache Spark-fürtök közé tartoznak az Apache Zeppelin jegyzetfü
 Ha olyan helyzetbe kerül, ahol olyan eszközt vagy technológiát kell használnia, amely csak Linux rendszeren érhető el, vegye figyelembe a következő lehetőségeket:
 
 * A **bash on Ubuntu on Windows 10** Linux alrendszert biztosít a Windows rendszeren. A bash lehetővé teszi a Linux-segédprogramok közvetlen futtatását anélkül, hogy egy dedikált Linux-telepítést kellene fenntartania. A telepítési lépésekért lásd: [Windows-alrendszer Linux-telepítési útmutató Windows 10](/windows/wsl/install-win10) rendszerhez.  Más [UNIX-rendszerhéj](https://www.gnu.org/software/bash/) is működik.
-* A **Windows Docker** számos Linux-alapú eszközhöz biztosít hozzáférést, és közvetlenül a Windows rendszerből is futtatható. A Docker használatával például közvetlenül a Windowsból futtathatja a Beeline-ügyfelet a Kaptárhoz. Azt is megteheti, hogy a Docker használatával futtat egy helyi Jupyter notebookot, és távolról csatlakozik a Spark on HDInsight. [Ismerkedés a Windowshoz készült Docker szolgáltatással](https://docs.docker.com/docker-for-windows/)
+* A **Windows Docker** számos Linux-alapú eszközhöz biztosít hozzáférést, és közvetlenül a Windows rendszerből is futtatható. A Docker használatával például közvetlenül a Windowsból futtathatja a Beeline-ügyfelet a Kaptárhoz. A Docker használatával helyi Jupyter Notebook is futtathat, és távolról csatlakozhat a Spark on HDInsight. [Ismerkedés a Windowshoz készült Docker szolgáltatással](https://docs.docker.com/docker-for-windows/)
 * A **[MobaXTerm](https://mobaxterm.mobatek.net/)** lehetővé teszi, hogy grafikusan tallózással keresse meg a fürt FÁJLRENDSZERét SSH-kapcsolaton keresztül.
 
 ## <a name="cross-platform-tools"></a>Platformfüggetlen eszközök
 
 Az Azure parancssori felülete (CLI) a Microsoft platformfüggetlen parancssori felülete, amely Azure-erőforrások felügyeletére szolgál.  További információ: [Azure Command-Line Interface (CLI)](/cli/azure/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha most ismerkedik a Linux-alapú fürtökkel, tekintse meg a következő cikkeket:
 * [Apache Hadoop, Apache Kafka, Apache Spark vagy más fürtök beállítása](hdinsight-hadoop-provision-linux-clusters.md)

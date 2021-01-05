@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ec2db1799919eb395996b56d08b77e3be7ff5a
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083797"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822369"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Webhelyek naplóinak elemzése egyéni Python-kódtár használatával Apache Spark-fürttel a HDInsight-on
 
-Ez a jegyzetfüzet azt mutatja be, hogyan elemezheti a naplózási adataikat egy egyéni kódtár használatával, Apache Spark a HDInsight. Az általunk használt egyéni könyvtár egy **iislogparser.py**nevű Python-könyvtár.
+Ez a jegyzetfüzet azt mutatja be, hogyan elemezheti a naplózási adataikat egy egyéni kódtár használatával, Apache Spark a HDInsight. Az általunk használt egyéni könyvtár egy **iislogparser.py** nevű Python-könyvtár.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,15 +31,15 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
 
 1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net/jupyter` , ahol a a `CLUSTERNAME` fürt neve.
 
-1. Hozzon létre új notebookot. Válassza az **új**, majd a **PySpark**lehetőséget.
+1. Hozzon létre új notebookot. Válassza az **új**, majd a **PySpark** lehetőséget.
 
-    ![Új Apache Jupyter-jegyzetfüzet létrehozása](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Új Jupyter notebook létrehozása")
+    ![Új Apache-Jupyter Notebook létrehozása](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Új Jupyter Notebook létrehozása")
 
 1. Az új notebook létrejött, és Untitled.pynb néven nyílt meg. Válassza ki a jegyzetfüzet nevét a tetején, és adjon meg egy rövid nevet.
 
     ![A notebook elnevezése](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "A notebook elnevezése")
 
-1. Mivel a PySpark kernel használatával létrehozott egy jegyzetfüzetet, nem kell explicit módon létrehoznia a környezeteket. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. Először importálja a forgatókönyvhöz szükséges típusokat. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt.
+1. Mivel a PySpark kernel használatával létrehozott egy jegyzetfüzetet, nem kell explicit módon létrehoznia a környezeteket. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. Először importálja a forgatókönyvhöz szükséges típusokat. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt.
 
     ```pyspark
     from pyspark.sql import Row

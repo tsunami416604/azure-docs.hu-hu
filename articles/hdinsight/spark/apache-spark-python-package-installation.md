@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 5a0f9f9f972ec42987d6152c16e4377e399cdba5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 21423f7200d25c9a5b3b63d2371e56977cd9d227
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896412"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821375"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -164,7 +164,7 @@ Létezik egy ismert hiba a anaconda-verzió `4.7.11` , a és a esetében `4.7.12
 
 A anaconda verziójának megadásához SSH-t használhat a fürt fejlécére, és futtathatja a parancsot `/usr/bin/anaconda/bin/conda --v` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [Külső csomagok Jupyter notebookokkal Apache Spark](apache-spark-jupyter-notebook-use-external-packages.md)

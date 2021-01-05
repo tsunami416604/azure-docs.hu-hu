@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive, devx-track-azurecli
+ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 66b14e435b777595e23fcf5a98d4820f36d21a1a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0722119b35ecebf3ed1e7a377707de02a6c127bf
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742041"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825202"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Apache Kafka használata a HDInsight az Azure-ban IoT Hub
 
@@ -35,7 +35,7 @@ A csatlakozási API-val kapcsolatos további információkért lásd: [https://k
 
 * Egy peremhálózati csomópont a Kafka-fürtben. További információ: [Edge-csomópontok használata HDInsight](../hdinsight-apps-use-edge-node.md) -dokumentummal.
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Azure-IoT Hub és-eszköz. Ebben a cikkben érdemes lehet a [Kapcsolódás a málna PI online szimulátorhoz az Azure IoT hub](../../iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md).
 
@@ -123,7 +123,7 @@ Az alábbi lépésekkel konfigurálhatja a Kafka-t a peremhálózati csomópontr
     |`bootstrap.servers=localhost:9092`|Cserélje le az `localhost:9092` értéket az előző lépésben szereplő Broker-gazdagépekre.|Az Edge-csomópont önálló konfigurációját konfigurálja a Kafka-közvetítők megtalálásához.|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|Ez a módosítás lehetővé teszi, hogy tesztelje a Kafka által tartalmazott konzolos gyártót. Előfordulhat, hogy más gyártók és fogyasztók számára is különböző átalakítók szükségesek. További információ az átalakítók értékének használatáról: [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) .|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Ugyanaz, mint a fenti.|
-    |N/A|`consumer.max.poll.records=10`|Hozzáadás a fájl végéhez. Ennek a változásnak a célja, hogy megakadályozza a fogadó összekötő időtúllépéseit úgy, hogy egyszerre 10 rekordra korlátozza azt. További információ: [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
+    |N.A.|`consumer.max.poll.records=10`|Hozzáadás a fájl végéhez. Ennek a változásnak a célja, hogy megakadályozza a fogadó összekötő időtúllépéseit úgy, hogy egyszerre 10 rekordra korlátozza azt. További információ: [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
 
 1. A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__ __, majd__ __írja be__ a következőt:.
 
@@ -162,7 +162,7 @@ Az összekötő által használt IoT hub-információk lekéréséhez kövesse a
         > [!IMPORTANT]  
         > A portál végpontjának értéke tartalmazhat további szöveget, amely nem szükséges ebben a példában. A mintának megfelelő szöveg kinyerése `sb://<randomnamespace>.servicebus.windows.net/` .
 
-   * __Az [Azure CLI](/cli/azure/get-started-with-azure-cli)__ -ben használja a következő parancsot:
+   * __Az [Azure CLI](/cli/azure/get-started-with-azure-cli)__-ben használja a következő parancsot:
 
        ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -176,7 +176,7 @@ Az összekötő által használt IoT hub-információk lekéréséhez kövesse a
        "Partitions": 2
        ```
 
-2. Szerezze be a __megosztott hozzáférési szabályzatot__ és a __kulcsot__ . Ehhez a példához használja a __szolgáltatás__ kulcsát. Ezen információk beszerzéséhez használja a következő módszerek egyikét:
+2. Szerezze be a __megosztott hozzáférési szabályzatot__ és a __kulcsot__. Ehhez a példához használja a __szolgáltatás__ kulcsát. Ezen információk beszerzéséhez használja a következő módszerek egyikét:
 
     * __A [Azure Portal](https://portal.azure.com/)__ hajtsa végre a következő lépéseket:
 
@@ -184,7 +184,7 @@ Az összekötő által használt IoT hub-információk lekéréséhez kövesse a
         2. Másolja az __elsődleges kulcs__ értékét.
         3. Másolja a __kapcsolatok karakterláncát – elsődleges kulcs__ értékét.
 
-    * __Az [Azure CLI](/cli/azure/get-started-with-azure-cli)__ -ben használja a következő parancsot:
+    * __Az [Azure CLI](/cli/azure/get-started-with-azure-cli)__-ben használja a következő parancsot:
 
         1. Az elsődleges kulcs értékének beszerzéséhez használja a következő parancsot:
 
@@ -354,7 +354,7 @@ Az üzenetek összekötőn keresztüli elküldéséhez kövesse az alábbi lép�
 
 További információ a fogadó összekötő használatáról: [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan használhatja a Apache Kafka kapcsolódási API-t a IoT Kafka-összekötő elindításához a HDInsight-en. Az alábbi hivatkozásokat követve megismerheti a Kafka használatának egyéb módjait:
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: ebed7d87ba538b2f886155527bb89c1ffd2bcf58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c8ce1a66d6dbf215c3d49740f2aec47ab01f7591
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545701"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822318"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Hiba a Spark-feladatok hibakereséséhez Azure Toolkit for IntelliJ (előzetes verzió)
 
@@ -56,7 +56,7 @@ Hozzon létre egy Spark 2.3.2-projektet a hibák hibakeresésének folytatásáh
 
    c. A **Spark-verzió** legördülő listában válassza a **Spark 2.3.2 (Scala 2.11.8)** elemet.
 
-   d. Válassza a **Befejezés** lehetőséget.
+   d. Válassza a **Befejezés** gombot.
 
 3. Válassza a **src**  >  **Main**  >  **Scala** elemet a kód a projektben való megnyitásához. Ez a példa a **AgeMean_Div ()** parancsfájlt használja.
 
@@ -72,7 +72,7 @@ Hozzon létre egy Spark Scala/Java-alkalmazást, majd futtassa az alkalmazást e
 
    ![IntelliJ új konfiguráció hozzáadása](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Váltson **távoli futtatásra a fürt** lapon. Adja meg a **név** , a **Spark-fürt** és a **fő osztály nevét** . Eszközeink támogatják a **végrehajtókkal** való hibakeresést. A **numExectors** , az alapértelmezett érték 5, és jobb, ha nem nagyobb, mint 3. A futási idő csökkentése érdekében a **Spark. fonál. maxAppAttempts** felveheti a **feladatok konfigurációba** , és az értéket 1-re állíthatja. A konfiguráció mentéséhez kattintson **az OK** gombra.
+3. Váltson **távoli futtatásra a fürt** lapon. Adja meg a **név**, a **Spark-fürt** és a **fő osztály nevét**. Eszközeink támogatják a **végrehajtókkal** való hibakeresést. A **numExectors**, az alapértelmezett érték 5, és jobb, ha nem nagyobb, mint 3. A futási idő csökkentése érdekében a **Spark. fonál. maxAppAttempts** felveheti a **feladatok konfigurációba** , és az értéket 1-re állíthatja. A konfiguráció mentéséhez kattintson **az OK** gombra.
 
    ![IntelliJ új hibakeresési konfigurációk futtatása](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
@@ -90,7 +90,7 @@ Hozzon létre egy Spark Scala/Java-alkalmazást, majd futtassa az alkalmazást e
 
 Ha a feladatok elküldése meghiúsul, a további hibakereséshez letöltheti a sikertelen feladatot a helyi gépre.
 
-1. Nyissa meg **Microsoft Azure Storage Explorer** , keresse meg a sikertelen feladatokhoz tartozó fürt HDInsight-fiókját, töltse le a sikertelen feladatok erőforrásait a megfelelő helyről: **\hdp\spark2-Events \\ . \\ \<application ID> Spark – hibák** egy helyi mappába. A **tevékenységek** ablakban megjelennek a letöltési folyamat.
+1. Nyissa meg **Microsoft Azure Storage Explorer**, keresse meg a sikertelen feladatokhoz tartozó fürt HDInsight-fiókját, töltse le a sikertelen feladatok erőforrásait a megfelelő helyről: **\hdp\spark2-Events \\ . \\ \<application ID> Spark – hibák** egy helyi mappába. A **tevékenységek** ablakban megjelennek a letöltési folyamat.
 
    ![Azure Storage Explorer letöltési hiba](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
@@ -114,7 +114,7 @@ Ha a feladatok elküldése meghiúsul, a további hibakereséshez letöltheti a 
 
 1. A hibakeresés után, ha a projekt sikeresen befejeződik, újra elküldheti a sikertelen feladatot a Spark on HDInsight-fürtön.
 
-## <a name="next-steps"></a><a name="seealso"></a>Következő lépések
+## <a name="next-steps"></a><a name="seealso"></a>További lépések
 
 * [Áttekintés: Apache Spark alkalmazások hibakeresése](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 
@@ -142,7 +142,7 @@ Ha a feladatok elküldése meghiúsul, a további hibakereséshez letöltheti a 
 * [A IntelliJ HDInsight-eszközeinek használata a Hortonworks-homokozóban](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
 * [Apache Spark alkalmazások létrehozásához használja a Azure Toolkit for Eclipse HDInsight-eszközeit](./apache-spark-eclipse-tool-plugin.md)
 * [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
-* [Apache Spark a Jupyter notebookhoz elérhető kernelek a HDInsight-fürtön a](apache-spark-jupyter-notebook-kernels.md)
+* [A HDInsight Apache Spark-fürtben Jupyter Notebook számára elérhető kernelek](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
 

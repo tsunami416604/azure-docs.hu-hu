@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 10/19/2020
-ms.openlocfilehash: ead367568762d4b76de7164feb56b7a31cd53e0d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e28942a77a1d695a17f3231901f337695e602c64
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129116"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825558"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>SAS URI létrehozása virtuálisgép-rendszerképhez
 
@@ -34,8 +34,8 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
 ### <a name="using-tool-1-azure-storage-explorer"></a>Az 1. eszköz használata: Azure Storage Explorer
 
-1. Nyissa meg a **Storage-fiókját** .
-1. Nyissa meg **Storage Explorer** .
+1. Nyissa meg a **Storage-fiókját**.
+1. Nyissa meg **Storage Explorer**.
 
     :::image type="content" source="media/create-vm/storge-account-explorer.png" alt-text="Storage-fiók ablaka.":::
 
@@ -62,7 +62,7 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 1. Töltse le és telepítse a [Microsoft Azure CL](/cli/azure/install-azure-cli)I-t. A verziók a Windows, a macOS és a Linux különböző disztribúciói számára érhetők el.
 2. Hozzon létre egy PowerShell-fájlt (. ps1 kiterjesztésű fájlt), másolja a következő kódot, majd mentse helyileg.
 
-    ```JSON
+    ```azurecli-interactive
     az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net’ --name <vhd-name> --permissions rl --start ‘<start-date>’ --expiry ‘<expiry-date>’
     ```
 
@@ -70,13 +70,14 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
     - fiók neve – az Azure Storage-fiók neve.
     - Account-Key – az Azure Storage-fiók kulcsa.
-    - VHD-név – a VHD neve.
     - Start-Date – engedély kezdő dátuma a VHD-hozzáféréshez. Adja meg a dátumot egy nappal az aktuális dátum előtt.
     - lejárati dátum – a VHD-hozzáférés engedélyének lejárati dátuma. Legalább három héttel az aktuális dátum után adjon meg egy dátumot.
 
     Íme egy példa a paraméterek megfelelő értékeire (az írás időpontjában):
 
-    `az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name vhds -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’`
+    ```azurecli-interactive
+    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name vhds -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’
+    ```
 
 1. Mentse a módosításokat.
 2. A következő módszerek egyikének használatával futtassa ezt a parancsfájlt rendszergazdai jogosultságokkal SAS-kapcsolati karakterlánc létrehozásához a tároló szintű hozzáféréshez:
@@ -88,7 +89,7 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
 6. Másolja az SAS-kapcsolódási karakterláncot, és mentse a fájlt egy biztonságos helyen lévő szövegfájlba. Szerkessze ezt a karakterláncot a VHD-hely adatainak hozzáadásához a végső SAS URI létrehozásához.
 7. A Azure Portal nyissa meg a blob Storage-t, amely tartalmazza az új URI-hoz társított virtuális merevlemezt.
-8. Másolja a thebBlob szolgáltatási végpontjának URL-címét:
+8. Másolja a blob Service-végpont URL-címét:
 
     ![A blob Service-végpont URL-címének másolása.](media/vm/create-sas-uri-blob-endpoint.png)
 
@@ -105,7 +106,7 @@ Győződjön meg arról, hogy az SAS URI-ja közzé van adva a partner Centerben
 - Ha `sr=c` megjelenik, az azt jelenti, hogy a tároló szintű hozzáférés meg van adva.
 - Másolja és illessze be az URI-t egy böngészőbe a blob letöltéséhez (a letöltés befejezése előtt megszakíthatja a műveletet).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha problémákba ütközik, lásd: [VM sas-hibaüzenetek](azure-vm-sas-failure-messages.md).
 - [Bejelentkezés a partner központba](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)

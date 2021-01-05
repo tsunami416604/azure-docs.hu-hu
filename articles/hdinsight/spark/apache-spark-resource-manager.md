@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f7cac8ef41ff49f2d623e2b86dff271adcd71ff1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017032"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821417"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Apache Spark-fürt erőforrásainak kezelése az Azure HDInsight
 
@@ -34,7 +34,7 @@ A fonal felhasználói felületét használhatja a Spark-fürtön jelenleg futó
     ![A fonal felhasználói felületének indítása](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületén navigáljon **YARN** az  >  Active **Quick Links**  >  **Active**  >  **Resource Manager felhasználói felületén** található fonalak gyors hivatkozásaihoz.
+   > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületén navigáljon az  >  Active  >    >  **Resource Manager felhasználói felületén** található fonalak gyors hivatkozásaihoz.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Fürtök optimalizálása Spark-alkalmazásokhoz
 
@@ -56,9 +56,9 @@ A három konfigurációs paramétert a fürt szintjén lehet konfigurálni (a f�
 
     ![Szolgáltatások újraindítása](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
-### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter notebookon futó alkalmazás paramétereinek módosítása
+### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook futó alkalmazás paramétereinek módosítása
 
-A Jupyter notebookon futó alkalmazások esetén a Magic használatával módosíthatja `%%configure` a konfigurációt. Ideális esetben az első kódrészlet futtatása előtt el kell végeznie az ilyen módosításokat az alkalmazás elején. Ezzel biztosíthatja, hogy a rendszer a konfigurációt a Livy-munkamenetre alkalmazza, amikor a rendszer létrehozza. Ha az alkalmazás egy későbbi szakaszában szeretné módosítani a konfigurációt, a paramétert kell használnia `-f` . Ezzel azonban az alkalmazás minden folyamata elvész.
+A Jupyter Notebook futó alkalmazások esetén a Magic használatával módosíthatja `%%configure` a konfigurációt. Ideális esetben az első kódrészlet futtatása előtt el kell végeznie az ilyen módosításokat az alkalmazás elején. Ezzel biztosíthatja, hogy a rendszer a konfigurációt a Livy-munkamenetre alkalmazza, amikor a rendszer létrehozza. Ha az alkalmazás egy későbbi szakaszában szeretné módosítani a konfigurációt, a paramétert kell használnia `-f` . Ezzel azonban az alkalmazás minden folyamata elvész.
 
 A következő kódrészlet azt mutatja be, hogyan lehet módosítani egy Jupyter-ben futó alkalmazás konfigurációját.
 
@@ -146,7 +146,7 @@ Indítsa el a fonal felhasználói felületét a cikk elején látható módon. 
 
     ![App2 leölése](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "App2 leölése")
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Apache Spark-fürtön futó feladatok nyomon követése és hibakeresése a HDInsightban](apache-spark-job-debugging.md)
 
@@ -164,6 +164,6 @@ Indítsa el a fonal felhasználói felületét a cikk elején látható módon. 
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
 * [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [A HDInsight Apache Spark-fürtben Jupyter Notebook számára elérhető kernelek](apache-spark-jupyter-notebook-kernels.md)
 * [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
