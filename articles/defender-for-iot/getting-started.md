@@ -1,72 +1,134 @@
 ---
-title: Üzembe helyezési beállítások
-description: Ismerkedjen meg a Defender alapszintű munkafolyamatával a IoT szolgáltatásainak és szolgáltatásának megismeréséhez.
+title: Első lépések
+description: Ismerkedés a Defender alapszintű munkafolyamatainak IoT-telepítéssel való megismerésével.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 6aa525fd7f2d82194baa2e2a0c910cb71509c2d5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 12/26/2020
+ms.author: shhazam
+ms.openlocfilehash: ed6c88826b41df0bdfef8cbbcb2569b3cea8f868
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340016"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832386"
 ---
-# <a name="getting-started-with-azure-defender-for-iot"></a>Ismerkedés az Azure Defender IoT
+# <a name="getting-started-with-defender-for-iot"></a>Ismerkedés a Defender IoT-vel való használatába
 
-Ez a cikk azokat az üzembe helyezési és előkészítési folyamatokat ismerteti, amelyek szükségesek ahhoz, hogy az Azure Defender IoT fusson. További lépések is szükségesek. Javasoljuk, hogy Ismerje meg ezeket a lépéseket, és ismerkedjen meg a kapcsolódó dokumentumokkal kapcsolatos információkkal.
+Ez a cikk áttekintést nyújt az Azure Defender IoT való beállításához szükséges lépésekről. A folyamathoz a következőket kell tennie:
 
-Az összes lépés elvégzése után a IoT-érzékelőkhöz készült Azure Defender a hálózatot fogja figyelni. A megoldás beállításának módjától függően az észlelések a helyszíni felügyeleti konzolra vagy a IoT Hubra is küldhetők.
+- Regisztrálja előfizetését és érzékelőkét az Azure Defender for IoT portálon.
+- Telepítse az érzékelőt és a helyszíni felügyeleti konzol szoftverét.
+- Hajtsa végre az érzékelő és a felügyeleti konzol kezdeti aktiválását.
 
-Az Azure Defender IoT való üzembe helyezéséhez hajtsa végre az alábbi lépéseket.
+## <a name="permission-requirements"></a>Engedélyekre vonatkozó követelmények
 
-## <a name="1-set-up-azure"></a>1. az Azure beállítása
+Néhány telepítési lépéshez konkrét felhasználói engedélyek szükségesek.
 
-- Hozzon létre egy Azure-fiókot. További információ: Azure- [fiók létrehozása](/learn/modules/create-an-azure-account/).
+A rendszergazda felhasználói engedélyek szükségesek az érzékelő és a felügyeleti konzol aktiválásához, az SSL/TLS-tanúsítványok feltöltéséhez és új jelszavak létrehozásához.
 
-- Tűzfal vagy proxy: Ha tűzfallal vagy hasonló beavatkozó hálózati eszközzel rendelkezik, amely lehetővé teszi a megadott kapcsolatok engedélyezését, ellenőrizze, hogy a *. azure-devices.net:443 meg van-e nyitva a tűzfal vagy a proxy számára. Ha a helyettesítő karakterek nem támogatottak, vagy ha több vezérlőt szeretne használni, akkor az adott IoT Hub teljes tartománynevet meg kell nyitni az FW-ben vagy a proxyban. További információ: [Reference-IoT hub végpontok](../iot-hub/iot-hub-devguide-endpoints.md).
+Az alábbi táblázat az Azure Defender IoT-portál eszközeire vonatkozó felhasználói hozzáférési engedélyeket ismerteti:
 
-## <a name="2-deploy-hardware-software-and-onboard-to-sensor"></a>2. hardverek, szoftverek és bevezetések üzembe helyezése az érzékelőn
+| Engedély | Biztonsági olvasó | Biztonsági rendszergazda | Előfizetés közreműködői | Előfizetés tulajdonosa |
+|--|--|--|--|--|
+| A IoT-képernyők és-az összes Defender megtekintése | ✓ | ✓ | ✓ | ✓ |
+| Érzékelő előkészítése  |  |  ✓ | ✓ | ✓ |
+| Frissítés díjszabása  |  |  ✓ | ✓ | ✓ |
+| Jelszó helyreállítása  | ✓  |  ✓ | ✓ | ✓ |
 
-- Sensor-hardver vásárlása és szoftver telepítése. Kövesse az itt ismertetett lépéseket, és további információkért tekintse meg ezt a cikket és a [Defender for IoT útmutatót](https://aka.ms/AzureDefenderforIoTBareMetalAppliance) és a [telepítési útmutatót](https://aka.ms/AzureDefenderforIoTInstallSensorISO).
+## <a name="1-identify-the-solution-infrastructure"></a>1. a megoldási infrastruktúra azonosítása
 
-  - Az érzékelő telepítése után biztonságosan rögzítheti az érzékelő bejelentkezési hitelesítő adatait. Szüksége lesz a hitelesítő adatokra az aktiválási fájlnak az érzékelőre való feltöltéséhez.
+**A hálózat telepítési igényeinek tisztázása**
 
-  - Ha helyileg felügyelt érzékelőkkel dolgozik, biztonságosan rögzítse az érzékelő IP-címét vagy a telepítésben definiált érzékelő nevét. A IoT-portál Defender-regisztrációja során érdemes lehet használni az érzékelő nevének létrehozásakor. Később az Azure Defender for IoT portál regisztrációs neve és az érzékelő konzolon megjelenő üzembe helyezett érzékelő IP-címe között könnyebben nyomon követheti és konzisztens elnevezéseket biztosíthat.
+A hálózati architektúra, a figyelt sávszélesség és az egyéb hálózati adatok kutatása. További információ: [Az Azure Defender IoT-hálózat beállítása](how-to-set-up-your-network.md).
 
-- Regisztrálja az érzékelőt a Defender for IoT portálon, és töltse le az érzékelő aktiválási fájlját.
+**Annak tisztázása, hogy mely érzékelőkre és felügyeleti konzolra vonatkozó berendezések szükségesek a hálózati terhelés kezeléséhez**
 
-- Töltse fel az aktiválási fájlt az érzékelőbe.
+A IoT készült Azure Defender mind a fizikai, mind a virtuális üzemelő példányokat támogatja. A fizikai telepítések esetében különböző tanúsítvánnyal rendelkező berendezéseket vásárolhat. További információkért lásd a [szükséges berendezések azonosítását](how-to-identify-required-appliances.md)ismertető témakört.
 
-## <a name="3-perform-network-setup-for-sensor-monitoring-and-management"></a>3. az érzékelő figyelésének és felügyeletének hálózati beállítása
+Javasoljuk, hogy számítsa ki a figyelni kívánt eszközök hozzávetőleges számát. Később, amikor regisztrálja Azure-előfizetését a portálon, a rendszer kérni fogja, hogy adja meg ezt a számot. A számok 1 000 másodperces időközökben adhatók hozzá. A figyelt eszközök számát *véglegesített eszközöknek* nevezzük.
 
-- Kapcsolja össze az érzékelőt a hálózattal. A [hálózati telepítési útmutatóban](https://aka.ms/AzureDefenderForIoTNetworkSetup)olvasható.
+## <a name="2-register-with-azure-defender-for-iot"></a>2. Regisztráljon az Azure Defender for IoT
 
-## <a name="4-start-discovering-your-network"></a>4. a hálózat felfedezésének megkezdése
+A regisztráció a következőket tartalmazza:
 
-- A rendszerbeállítások csípése az érzékelő konzolon.
+- Azure-előfizetések bevezetése a Defender for IoT.
+- Véglegesített eszközök definiálása.
+- Aktiválási fájl letöltése a helyszíni felügyeleti konzolhoz.
 
-- Szenzorok összekapcsolása egy helyszíni felügyeleti konzolon.
+Regisztráció:
 
-További információ: az [Azure Defender for IoT szenzor felhasználói útmutatója](https://aka.ms/AzureDefenderforIoTUserGuide) és a [IoT helyszíni felügyeleti konzol felhasználói útmutatója](https://aka.ms/DefenderForIoTManagementConsole).
+1. Nyissa meg az Azure Defender for IoT portált.
+1. Válassza ki a **fedélzeti előfizetés** elemet.
+1. A **díjszabás** lapon válasszon ki egy előfizetést, vagy hozzon létre egy újat, és adja hozzá a véglegesített eszközök számát.
+1. Válassza a helyszíni **felügyeleti konzol letöltése** lapot, és mentse a letöltött aktiválási fájlt. Ez a fájl tartalmazza az Ön által megadott összesített véglegesített eszközöket. A rendszer a kezdeti bejelentkezés után feltölti a fájlt a felügyeleti konzolra.
 
-## <a name="5-populate-azure-sentinel-with-alert-information"></a>5. az Azure Sentinel feltöltése riasztási információkkal
+## <a name="3-install-and-set-up-the-on-premises-management-console"></a>3. a helyszíni felügyeleti konzol telepítése és beállítása
 
-- Ha riasztási információkat szeretne küldeni az Azure Sentinelnek, konfigurálja az Azure Sentinelt: [az adatok összekapcsolását a Defendertől az Azure Sentinel IoT](how-to-configure-with-sentinel.md).
- 
+A helyszíni felügyeleti konzol berendezésének megvásárlása után:
 
-## <a name="next-steps"></a>További lépések
+- Töltse le az ISO-csomagot az Azure Defender for IoT portálról.
+- Telepítse a szoftvert.
+- A kezdeti felügyeleti konzol telepítésének aktiválása és elvégzése.
 
-- [A Defender engedélyezése a IoT](quickstart-onboard-iot-hub.md)
-- A [megoldás](quickstart-configure-your-solution.md) konfigurálása
-- [Biztonsági modulok létrehozása](quickstart-create-security-twin.md)
-- [Egyéni riasztások](quickstart-create-custom-alerts.md) konfigurálása
-- [Biztonsági ügynök üzembe helyezése](how-to-deploy-agent.md)
+A telepítése és beállítása:
+
+1. Válassza a **első lépések** lehetőséget a Defender for IoT portálon.
+1. Válassza a helyszíni **felügyeleti konzol** fület.
+1. Válasszon egy verziót, és válassza a **Letöltés** lehetőséget.
+1. Telepítse a helyszíni felügyeleti konzol szoftverét. További információ: [Defender for IoT telepítés](how-to-install-software.md).
+1. Aktiválja és állítsa be a felügyeleti konzolt. További információkért lásd: [a helyszíni felügyeleti konzol aktiválása és beállítása](how-to-activate-and-set-up-your-on-premises-management-console.md).
+
+## <a name="4-onboard-a-sensor"></a>4. érzékelő előkészítése
+
+Érzékelők beléptetése az Azure Defender IoT való regisztrálásával és az érzékelő aktiválási fájljának letöltésével:
+
+1. Határozza meg az érzékelő nevét, és társítsa azt egy előfizetéshez.
+1. Válasszon érzékelő-felügyeleti módot:
+
+   - **Felhőalapú csatlakoztatott érzékelők**: az érzékelők észlelésére szolgáló információk az érzékelő konzolon jelennek meg. Emellett a riasztási adatokat egy IoT hub továbbítja, és más Azure-szolgáltatásokkal, például az Azure Sentinelrel is megosztható.
+
+   - **Helyileg felügyelt érzékelők**: az érzékelők észlelésére szolgáló információk az érzékelő konzolon jelennek meg. Ha gapped hálózaton dolgozik, és szeretné, hogy a több helyileg felügyelt érzékelők által észlelt összes információ egységes legyen, működjön együtt a helyszíni felügyeleti konzollal. 
+
+1. Töltse le az érzékelő aktiválási fájlját.
+
+További információkért lásd: érzékelők beléptetése [és kezelése a Defender for IoT portálon](how-to-manage-sensors-on-the-cloud.md).
+
+## <a name="5-install-and-set-up-the-sensor"></a>5. az érzékelő telepítése és beállítása
+
+Töltse le az ISO-csomagot az Azure Defender for IoT portálról, telepítse a szoftvert, és állítsa be az érzékelőt.
+
+1. Válassza a **első lépések** lehetőséget a Defender for IoT portálon.
+1. Válassza az **érzékelő beállítása** lehetőséget.
+1. Válasszon egy verziót, és válassza a **Letöltés** lehetőséget.
+1. Telepítse az érzékelő szoftverét. További információ: [Defender for IoT telepítés](how-to-install-software.md).
+1. Aktiválja és állítsa be az érzékelőt. További információ: [Bejelentkezés és az érzékelő aktiválása](how-to-activate-and-set-up-your-sensor.md).
+
+## <a name="6-connect-sensors-to-an-on-premises-management-console"></a>6. érzékelők összekapcsolása helyszíni felügyeleti konzolhoz
+
+Kapcsolja össze az érzékelőket a felügyeleti konzolon, és győződjön meg arról, hogy:
+
+- Az érzékelők a riasztási és az eszköz leltározási adatait a helyszíni felügyeleti konzolra küldik.
+
+- A helyszíni felügyeleti konzol képes a biztonsági mentések elvégzésére, a riasztások kezelésére, az érzékelők észlelésére, az érzékelő leválasztásának kivizsgálására és a csatlakoztatott érzékelőkkel kapcsolatos egyéb tevékenységek végrehajtására.
+
+Azt javasoljuk, hogy több érzékelőt is egy zónában ugyanazokat a hálózatokat figyelje. Ezzel egyesítheti a több érzékelő által gyűjtött információkat.
+
+További információ: [érzékelők összekapcsolása a helyszíni felügyeleti konzolon](how-to-activate-and-set-up-your-on-premises-management-console.md#connect-sensors-to-the-on-premises-management-console).
+
+## <a name="7-populate-azure-sentinel-with-alert-information-optional"></a>7. az Azure Sentinel feltöltése riasztási információkkal (opcionális)
+
+Riasztási információk küldése az Azure Sentinelnek az Azure Sentinel konfigurálásával. Lásd: [adatok összekötése a defenderből a IoT az Azure Sentinel](how-to-configure-with-sentinel.md)szolgáltatásba.
+
+## <a name="see-also"></a>További információ
+
+- [Üdvözli a IoT készült Azure Defender!](overview.md)
+
+- [Azure Defender a IoT architektúrához](architecture.md)

@@ -1,163 +1,188 @@
 ---
 title: Az Azure Service Fabric az aktiválási és inaktiválási életciklust üzemelteti
-description: Ismerteti az alkalmazások és a szervizcsomagok életciklusát egy csomóponton
+description: Ismerje meg az alkalmazások életciklusát és a csomóponton lévő szervizcsomagot.
 author: tugup
 ms.topic: conceptual
-ms.date: 05/1/2020
+ms.date: 05/01/2020
 ms.author: tugup
-ms.openlocfilehash: f049b19703d37412d1ee1961aee6cb327efabe7c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d8585d0b39e4a4ef9cf77f40ea878ddb47bcb0de
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779600"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831822"
 ---
-# <a name="azure-service-fabric-hosting-lifecycle"></a>Azure Service Fabric üzemeltetési életciklus
+# <a name="azure-service-fabric-hosting-life-cycle"></a>Azure Service Fabric üzemeltetési életciklus
 
-Ez a cikk áttekintést nyújt az Azure Service Fabricban megjelenő eseményekről, amikor egy alkalmazás aktiválva van egy csomóponton, és különböző, a viselkedés szabályozására használt fürtkonfiguráció.
+Ez a cikk áttekintést nyújt az Azure Service Fabricban előforduló eseményekről, amikor egy alkalmazás aktiválva van egy csomóponton. A viselkedést befolyásoló különböző fürtkonfiguráció.
 
-A folytatás előtt győződjön meg arról, hogy tisztában van a különböző fogalmakkal és kapcsolatokkal az [alkalmazás modellezése Service Fabricban][a1]. 
+Mielőtt továbblépne, tekintse át az [alkalmazás modellben Service Fabricban][a1]ismertetett fogalmakat és kapcsolatokat. 
 
 > [!NOTE]
-> Ebben a cikkben, kivéve, ha explicit módon említi, hogy valami más:
+> Ez a cikk speciális módszerekkel kapcsolatos terminológiát használ. Hacsak másként nincs jelezve:
 >
 > - A *replika* egy állapot-nyilvántartó szolgáltatás replikáját és egy állapot nélküli szolgáltatás egy példányát jelenti.
-> - A *CodePackage* egy *ServiceHost* -folyamattal egyenértékűként kezeli a rendszer, amely regisztrálja a *ServiceType*, és az adott *ServiceType* tartozó szolgáltatások replikáit tárolja.
+> - A *CodePackage* egy ServiceHost-folyamatnak megfelelőként kezeli a rendszer, amely regisztrálja a ServiceType. Az adott ServiceType tartozó szolgáltatások replikáit tárolja.
 >
 
-## <a name="activation-of-applicationservicepackage"></a>Alkalmazás/szervizcsomag aktiválása
+## <a name="activate-an-applicationpackage-or-servicepackage"></a>ApplicationPackage vagy szervizcsomag aktiválása
 
-Az aktiválási folyamat a következő:
+ApplicationPackage vagy szervizcsomag aktiválása:
 
-1. Töltse le a ApplicationPackage. Például: ApplicationManifest.xml stb.
-2. Környezet beállítása az alkalmazáshoz: felhasználók létrehozása stb.
-3. Az inaktiváláshoz tartozó alkalmazás követésének megkezdése.
-4. Töltse le a szervizcsomagot. Például: ServiceManifest.xml, kód, konfiguráció, adatcsomagok stb.
-5. Környezet beállítása a szervizcsomaghoz: telepítési tűzfal, portok lefoglalása a végpontokhoz stb.
-6. Megkezdheti az inaktiváláshoz szükséges szervizcsomagok nyomon követését.
-7. Indítsa el a CodePackages SetupEntryPoint, és várjon a befejezésig.
-8. A CodePackages MainEntryPoint elindítása.
+1. Töltse le a ApplicationPackage (például *ApplicationManifest.xml*).
+2. Környezet beállítása az alkalmazáshoz. A lépések közé tartozik például a felhasználók létrehozása.
+3. Az alkalmazás az inaktiváláshoz való nyomon követésének megkezdése.
+4. Töltse le a szervizcsomagot (például *ServiceManifest.xml*, kód, konfigurációs fájlok és adatcsomagok).
+5. Környezet beállítása a szervizcsomaghoz. A lépések közé tartozik például a tűzfal beállítása és portok lefoglalása a végpontokhoz.
+6. Az inaktiváláshoz szükséges szervizcsomagok nyomon követésének megkezdése.
+7. Indítsa el a CodePackages SetupEntryPoint, és várjon, amíg befejeződik.
+8. Indítsa el a CodePackages MainEntryPoint.
 
-### <a name="servicetype-blocklisting"></a>ServiceType Blocklisting
-A **ServiceTypeDisableFailureThreshold** meghatározza a hibák (aktiválás, letöltés, CodePackage hibák) számát, amely után a ServiceType ütemezve van a blocklisting. Az első aktiválási hiba, a letöltési hiba vagy a CodePackage összeomlása a ServiceType blocklisting fogja ütemezni. A **ServiceTypeDisableGraceInterval** konfiguráció határozza meg azt a türelmi intervallumot, amely után a ServiceType blocklisted van megjelölve a csomóponton. Noha Mindez történik, az aktiválás, a letöltés és a CodePackage-újraindítás párhuzamosan próbálkozik. Az újrapróbálkozás például azt jelenti, hogy a CodePackage az összeomlás után újraindul, vagy a Service Fabric megkísérli a csomagok újbóli letöltését.
+### <a name="servicetype-blocklisting"></a>ServiceType blocklisting
+`ServiceTypeDisableFailureThreshold` meghatározza a megengedett aktiválási, letöltési és CodePackage hibák számát. A küszöbérték elérésekor a ServiceType a blocklisting ütemezve van. Az első aktiválási hiba, a letöltési hiba vagy a CodePackage összeomlása a ServiceType blocklisting ütemezhet. 
 
-Ha a ServiceType értéke blocklisted, a rendszer "" System. hosting "hibát jelzett a következő tulajdonságnál:" ServiceTypeRegistration: ServiceType ". A ServiceType le lett tiltva a csomóponton. "
+A `ServiceTypeDisableGraceInterval` konfiguráció meghatározza a türelmi intervallumot, mielőtt a ServiceType blocklisted a csomóponton. Ahogy a folyamat lejátssza, az aktiválás, a letöltés és a CodePackage újraindítása párhuzamosan próbálkozik. Az újrapróbálkozás például azt jelenti, hogy a CodePackage az összeomlás után újraindul, vagy a Service Fabric megkísérli a csomagok újbóli letöltését.
 
-Ha a következők valamelyike történik, a ServiceType ismét engedélyezve lesz a csomóponton:
-- Az aktiválás sikeres vagy eléri a **ActivationMaxFailureCount** újrapróbálkozásait.
-- A letöltés sikeres, vagy a **DeploymentMaxFailureCount** újrapróbálkozások sikertelenek lesznek.
+Ha a ServiceType blocklisted, a következő állapot jelenik meg: `'System.Hosting' reported Error for property 'ServiceTypeRegistration:ServiceType'. The ServiceType was disabled on the node.`
+
+A ServiceType engedélyezve van a csomóponton, ha a következő események bármelyike előfordul:
+- Az aktiválás sikeres. Vagy ha ez nem sikerül, az `ActivationMaxFailureCount` újrapróbálkozások maximális száma eléri.
+- A letöltés sikeres. Vagy ha ez nem sikerül, az `DeploymentMaxFailureCount` újrapróbálkozások maximális száma eléri.
 - Az összeomlást okozó CodePackage elindul, és sikeresen regisztrálja a ServiceType.
 
-A **ActivationMaxFailureCount** és a **DeploymentMaxFailureCount** a próbálkozások maximális száma, Service Fabric az alkalmazás aktiválását vagy letöltését végzi egy csomóponton, amely után Service Fabric engedélyezi a ServiceType aktiválását. Ez azt eredményezi, hogy a szolgáltatás egy másik lehetőség az aktiváláshoz, ami sikeres lehet, ami a probléma automatikus gyógyulását eredményezi. Egy replika elhelyezésével és aktiválásával aktivált új aktiválási/letöltési művelet újból elindíthatja a ServiceType blocklisting, vagy sikeres lehet.
+`ActivationMaxFailureCount``DeploymentMaxFailureCount`a kísérletek maximális száma Service Fabric a csomóponton lévő alkalmazások aktiválását vagy letöltését teszi elérhetővé. A maximális érték elérésekor a Service Fabric engedélyezi a ServiceType aktiválását. 
+
+Ezek a küszöbértékek lehetővé teszi, hogy a szolgáltatás egy másik lehetőséget biztosítson az aktiválásra. Ha az aktiválás sikeres, a rendszer automatikusan meggyógyítja a problémát. 
+
+Egy újonnan elhelyezett vagy aktivált replika új aktiválási vagy letöltési műveletet indíthat el. Ez a művelet vagy sikeres lesz, vagy elindítja a ServiceType blocklisting.
 
 > [!NOTE]
-> Ha a CodePackage, amely nem regisztrálja a ServiceType, a rendszer összeomlik, nem befolyásolja a ServiceType. Csak a replika-összeomlást üzemeltető CodePackage befolyásolja a ServiceType.
+> A ServiceType nem regisztráló összeomlási CodePackage nem befolyásolja a ServiceType. Csak a replikát tároló összeomlik CodePackage befolyásolja a ServiceType.
 >
 
 ### <a name="codepackage-crash"></a>CodePackage összeomlása
-Ha egy CodePackage összeomlik, Service Fabric egy leállítási használatával indítja el újra. A leállítási független attól, hogy a programkód regisztrálta-e a Service Fabric futtatókörnyezettel rendelkező típust.
+Ha egy CodePackage összeomlik, Service Fabric egy leállítási használatával indítja el újra. A rendszer attól függetlenül alkalmazza a leállítási, hogy a CodePackage regisztrálva van-e a Service Fabric futtatókörnyezettel.
 
-A leállítási értéke min (RetryTime, **ActivationMaxRetryInterval**), a leállítási értéke pedig állandó, lineáris vagy exponenciális értékben növekszik a **ActivationRetryBackoffExponentiationBase** konfigurációs beállítás alapján.
+A leállítási értéke `Min(RetryTime, ActivationMaxRetryInterval)` . Az érték a következő konfigurációs beállítás alapján állandó, lineáris vagy exponenciális értékek szerint növekszik `ActivationRetryBackoffExponentiationBase` :
 
-- Állandó: if **ActivationRetryBackoffExponentiationBase** = = 0, RetryTime = **ActivationRetryBackoffInterval**;
-- Lineáris: Ha  **ActivationRetryBackoffExponentiationBase** = = 0, akkor a RetryTime = ContinuousFailureCount * **ActivationRetryBackoffInterval** , ahol a ContinousFailureCount az a szám, ahányszor egy CodePackage összeomlik vagy nem sikerül aktiválni.
-- Exponenciális: RetryTime = (**ActivationRetryBackoffInterval** másodpercben) * (**ActivationRetryBackoffExponentiationBase** ^ ContinuousFailureCount);
+- **Állandó**: Ha `ActivationRetryBackoffExponentiationBase == 0` , akkor `RetryTime = ActivationRetryBackoffInterval` .
+- **Lineáris**: Ha  `ActivationRetryBackoffExponentiationBase == 0` , akkor `RetryTime = ContinuousFailureCount ActivationRetryBackoffInterval` , ahol a `ContinuousFailureCount` CodePackage-összeomlások vagy sikertelen aktiválások száma.
+- **Exponenciális**: `RetryTime = (ActivationRetryBackoffInterval in seconds) * (ActivationRetryBackoffExponentiationBase ^ ContinuousFailureCount)` .
     
-A viselkedést az értékek módosításával szabályozhatja. Ha például több gyors újraindítási kísérletre van szüksége, a **ActivationRetryBackoffExponentiationBase** 0 értékre és **ActivationRetryBackoffInterval** értékre állításával is használhatja a lineáris értéket. Ha ezekkel a beállításokkal összeomlott egy CodePackage, a kezdési időköz 10 másodperc után fog megjelenni. Ha a csomag továbbra is összeomlott, a leállítási 20, 30, 40 másodpercig és így tovább, egészen addig, amíg a CodePackage-aktiválás sikeres vagy a kód csomag inaktiválása megtörtént. 
+A viselkedést az értékek módosításával szabályozhatja. Ha például több gyors újraindítási kísérletet szeretne, a lineáris értékeket a értékre való beállítással és a értékre való `ActivationRetryBackoffExponentiationBase` `0` beállítással használhatja `ActivationRetryBackoffInterval` `10` . Tehát ha egy CodePackage összeomlik, a kezdési időköz 10 másodperc után fog megjelenni. Ha a csomag továbbra is összeomlik, a leállítási 20 másodperc, 30 másodperc, 40 másodperc és így tovább változik, egészen addig, amíg a CodePackage-aktiválás sikeres vagy a CodePackage inaktiválva van. 
     
-A maximális idő Service Fabric a biztonsági mentést (vár) a **ActivationMaxRetryInterval** által a meghibásodást követően.
+A Service Fabric biztonsági mentésének maximális ideje (azaz vár), miután a hibát a következő szabályozza: `ActivationMaxRetryInterval` .
     
-Ha a CodePackage összeomlik, és biztonsági mentést készít, a Service Fabric **CodePackageContinuousExitFailureResetInterval** kell maradnia, hogy az állapota Kifogástalan legyen, és ekkor a rendszer felülírja az előző hiba állapotáról szóló jelentést az ok és a ContinousFailureCount alaphelyzetbe állítása után.
+Ha a CodePackage összeomlik, és biztonsági másolatot készít, a által megadott időszakra kell maradnia `CodePackageContinuousExitFailureResetInterval` . Az intervallum után Service Fabric a CodePackage kifogástalannak tekinti. Service Fabric ezután felülírja az előző hiba állapotára vonatkozó jelentést az OK gombra, és visszaállítja a következőt: `ContinuousFailureCount` .
 
 ### <a name="codepackage-not-registering-servicetype"></a>A CodePackage nem regisztrálja a ServiceType
-Ha egy CodePackage életben marad, és várhatóan regisztrál egy ServiceType az Egyesült Államokban, de nem, Service Fabric figyelmeztetési állapotjelentés fog eredményezni a **ServiceTypeRegistrationTimeout** után, mondván, hogy a ServiceType nincs regisztrálva a várt időtartamon belül.
+Ha egy CodePackage marad, és a rendszer egy ServiceType regisztrál, de nem, a Service Fabric figyelmeztetési állapotra vonatkozó jelentést generál a után `ServiceTypeRegistrationTimeout` . A jelentés azt jelzi, hogy a ServiceType nincs regisztrálva a várt időtartamon belül.
 
 ### <a name="activation-failure"></a>Aktiválási hiba
-A Service Fabric mindig lineáris visszalépést használ (ugyanaz, mint a CodePackage Crash), amikor hibát talál az aktiválás során. Ez azt jelenti, hogy az aktiválási művelet a következő után fog megjelenni: (0 + 10 + 20 + 30 + 40) = 100 másodperc (az első újrapróbálkozás azonnali). Az aktiválás után a rendszer nem próbálkozik újra.
+Ha a Service Fabric hibát észlel az aktiválás során, mindig lineáris leállítási használ, mivel a CodePackage összeomlik. Az aktiválási művelet az újrapróbálkozások után az alábbi időközönként ad lehetőséget: (0 + 10 + 20 + 30 + 40) = 100 másodperc. (Az első újrapróbálkozás azonnali.) A folyamat után az aktiválás nem próbálkozik újra.
     
-Az aktiválási leállítási maximálisan **ActivationMaxRetryInterval** , és újrapróbálkozhat a **ActivationMaxFailureCount**.
+A maximális aktiválási leállítási lehet `ActivationMaxRetryInterval` . Az újrapróbálkozás lehet `ActivationMaxFailureCount` .
 
 ### <a name="download-failure"></a>Letöltési hiba
-Service Fabric mindig lineáris biztonsági mentést használ, ha a letöltés során hiba lép fel. Ez azt jelenti, hogy az aktiválási művelet a következő után fog megjelenni: (0 + 10 + 20 + 30 + 40) = 100 másodperc (az első újrapróbálkozás azonnali). Ezt követően a letöltés nem próbálkozik újra. A letöltés lineáris visszakapcsolási értéke a ContinuousFailureCount **_DeploymentRetryBackoffInterval_* , és a maximálisan visszatérhet a **DeploymentMaxRetryInterval**. Az aktiválásokhoz hasonlóan a letöltési művelet is újra próbálkozik a **ActivationMaxFailureCount**.
+Service Fabric mindig lineáris leállítási használ, ha hibát talál a letöltés során. Az aktiválási művelet az újrapróbálkozások után az alábbi időközönként ad lehetőséget: (0 + 10 + 20 + 30 + 40) = 100 másodperc. (Az első újrapróbálkozás azonnali.) A folyamat után a letöltés nem próbálkozik újra. 
+
+A letöltés lineáris leállítási egyenlő a következővel: `ContinuousFailureCount`  *  `DeploymentRetryBackoffInterval` . A maximális leállítási lehet `DeploymentMaxRetryInterval` . Az aktiválásokhoz hasonlóan a letöltési műveletek is újra megpróbálkoznak a `ActivationMaxFailureCount` korláttal.
 
 > [!NOTE]
-> Mielőtt módosítaná ezeket a beállításokat, néhány példát figyelembe kell vennie.
-
-* Ha a CodePackage összeomlik, és a biztonsági mentés ki van kapcsolva, a ServiceType le lesz tiltva. Ha azonban az aktiválási konfiguráció egy gyors újraindítással rendelkezik, akkor a CodePackage néhány alkalommal elérheti, mielőtt a ServiceType ténylegesen blocklisted. Például: tegyük fel, hogy a CodePackage megérkezik, regisztrálja Service Fabric, majd összeomlik a ServiceType. Ebben az esetben az **ServiceTypeDisableGraceInterval** időszak megszakadása esetén a rendszer megszakítja a regisztráció típusát. Ez pedig megismételhető, amíg a CodePackage a  **ServiceTypeDisableGraceInterval** -nál nagyobb értékre vált, majd a ServiceType a csomóponton blocklisted lesz. A ServiceType blocklisted maytake hosszabb ideig tart.
-
-* Aktiválások esetén, amikor Service Fabric rendszernek replikát kell elhelyeznie egy csomóponton, a RA (ReconfigurationAgent) megkérdezi az alrendszert, hogy aktiválja az alkalmazást, és 15 másodpercenként újrapróbálkozik az aktiválási kéréssel (a **RAPMessageRetryInterval** konfigurációs beállítás szabályozza). Service Fabric tudnia kell, hogy a ServiceType blocklisted lett, az üzemeltetési aktiválási műveletnek hosszabb ideig kell élnie, mint az újrapróbálkozási időköz és a **ServiceTypeDisableGraceInterval**. Példa: tegyük fel, hogy a fürt **ActivationMaxFailureCount** 5 értékre van állítva, és a **ActivationRetryBackoffInterval** értéke 1 másodperc. Ez azt jelenti, hogy az aktiválási művelet a következő után fog megjelenni: (0 + 1 + 2 + 3 + 4) = 10 másodperc (emlékeztetve arra, hogy az első újrapróbálkozás azonnali), majd azt követően, hogy a gazdagép újrapróbálkozik. Ebben az esetben az aktiválási művelet befejezve lesz, és 15 másodperc elteltével nem próbálkozik újra. Ez azért történik, mert a Service Fabric 15 másodpercen belül elfogyott az összes engedélyezett újrapróbálkozás. Így a ReconfigurationAgent minden újrapróbálkozása új aktiválási műveletet hoz létre az alrendszer üzemeltetése során, és a minta megismétli. Ennek eredményeképpen a ServiceType soha nem lesz blocklisted a csomóponton. Mivel a ServiceType nem kap blocklisted a csomóponton, a replikát a rendszer nem helyezi át és próbálkozik egy másik csomóponton.
+> Mielőtt módosítaná ezeket a beállításokat, vegye figyelembe az alábbi példákat:
+>
+>* Ha a CodePackage összeomlik és biztonsági mentést végez, a ServiceType le lesz tiltva. Ha azonban az aktiválási konfiguráció gyors újraindítást tartalmaz, akkor a CodePackage néhány alkalommal elérheti, mielőtt a ServiceType ténylegesen blocklisted. 
+>
+>    Tegyük fel például, hogy a CodePackage bekövetkezik, regisztrálja a ServiceType Service Fabric, majd összeomlik. Ebben az esetben az üzemeltetési típus regisztrálását követően a `ServiceTypeDisableGraceInterval` rendszer megszakítja az időszakot. Ez a folyamat csak akkor ismételhető, ha a CodePackage az adott időszaknál nagyobb értékre áll vissza `ServiceTypeDisableGraceInterval` . Ezt követően a rendszer a ServiceType blocklisted a csomóponton. A ServiceType blocklisting a vártnál több időt vehet igénybe.
+>
+>* Aktiválások esetén, amikor egy Service Fabric rendszernek replikát kell elhelyeznie egy csomóponton, az újrakonfigurálási ügynök az alkalmazás aktiválására kéri az üzemeltetési alrendszert. 15 másodpercenként újrapróbálkozik az aktiválási kéréssel. (Az időtartamot a `RAPMessageRetryInterval` konfigurációs beállítás szabályozza.) Service Fabric nem tudja, hogy a ServiceType meg lett blocklisted, kivéve, ha a gazdagépen az aktiválási művelet hosszabb ideig tart, mint az újrapróbálkozási időköz és a `ServiceTypeDisableGraceInterval` . 
+>
+>    Tegyük fel például, hogy a fürt értéke 5, a értéke pedig `ActivationMaxFailureCount` `ActivationRetryBackoffInterval` 1 másodperc. Ebben az esetben az aktiválási művelet a (0 + 1 + 2 + 3 + 4) = 10 másodperces intervallumok után adja meg a műveletet. (Az első újrapróbálkozás azonnali.) Ha ezt a sorozatot futtatja, a tárhely újrapróbálkozik. Az aktiválási művelet befejeződik, és 15 másodperc elteltével nem próbálkozik újra. 
+>
+>    A Service Fabric 15 másodpercen belül kimerítette az összes engedélyezett újrapróbálkozást. Így az újrakonfigurálási ügynök minden újrapróbálkozása egy új aktiválási műveletet hoz létre az üzemeltetési alrendszerben, és a minta megismétli. Ennek eredményeképpen a ServiceType soha nem blocklisted a csomóponton. Mivel a ServiceType nem lesz blocklisted a csomóponton, a replika nem helyezhető át és nem próbálkozik egy másik csomóponton.
 > 
 
 ## <a name="deactivation"></a>Inaktiválása
 
-Ha egy csomóponton aktiválják a szervizcsomagot, az inaktiválást nyomon követik. 
+Ha egy csomóponton aktiválják a szervizcsomagot, az Inaktiválás nyomon követhető. Az Inaktiválás két módon működik:
 
-Az Inaktiválás két módon működik:
+- **Rendszeres inaktiválás**: `DeactivationScanInterval` a rendszer minden esetben ellenőrzi, hogy a rendszer *nem* adott-e meg replikát, és az inaktiválásra jelöltként jelöli meg őket.
+- **ReplicaClose inaktiválása**: Ha egy replika be van zárva, a deaktiváló egy `DecrementUsageCount` . A darabszám 0, ha a szervizcsomag nem tartalmaz replikát, így a szervizcsomag az inaktiválásra jelölt.
 
-- Időnként: minden **DeactivationScanInterval** ellenőrzi azokat a ServicePackages, amelyek soha nem üzemeltettek replikát, és az inaktiválásra jelöltként jelöli meg őket.
-- ReplicaClose: Ha egy replika be van zárva, a Deactivator beolvas egy DecrementUsageCount. Ha a Count 0 értéket mutat, az azt jelenti, hogy a szervizcsomag nem üzemeltet replikát, ezért az inaktiválásra jelölt.
+Az aktiválási mód határozza meg, hogy mikor legyen ütemezve a jelöltek inaktiválásra. Megosztott módban az inaktiválásra jelölt pályázók a következő után lesznek ütemezve `DeactivationGraceInterval` . Exkluzív módban a rendszer a után ütemezi őket `ExclusiveModeDeactivationGraceInterval` . Ha az ilyen időpontok között új replika érkezik, a rendszer megszakítja az inaktiválást. 
 
- A [kizárólagos/megosztott][a2]aktiválási mód alapján a Deaktiválásra jelölt pályázók a SharedMode **DeactivationGraceInterval** után és a ExclusiveMode **ExclusiveModeDeactivationGraceInterval** után lesznek ütemezve. Ha ebben az időszakban egy új replika elhelyezése történik, a rendszer megszakítja az inaktiválást.
+További információ: [exkluzív mód és megosztott mód][a2].
 
-### <a name="periodically"></a>Rendszeresen
-Beszéljünk néhány példát az időszakos inaktiválásra:
+### <a name="periodic-deactivation"></a>Rendszeres inaktiválás
+Íme néhány példa az időszakos inaktiválásra:
 
-1. példa: tegyük fel, hogy a Deactivator a következő időpontban végez vizsgálatot: T (**DeactivationScanInterval**). A következő vizsgálat a következő időpontban fog megjelenni: 2T. Tegyük fel, hogy a szervizcsomag aktiválása a T + 1 időpontban történt. Ez a szervizcsomag nem üzemeltet replikát, ezért inaktiválva kell lennie. Ahhoz, hogy a szervizcsomagok inaktiválásra legyenek kijelöltként, a rendszernek nem kell replikát használnia a atleast T-időre vonatkozóan. Ez azt jelenti, hogy a rendszer a 2T + 1 címen inaktiválásra jogosult. Így a 2T-vizsgálat nem találja ezt a szervizcsomagot inaktiválásra jelöltként. A következő inaktiválási ciklus 3T ezt a szervizcsomagot inaktiválásra fogja ütemezni, mert most már nem volt replika állapotban a T ideje.  
+* **1. példa**: tegyük fel, hogy a Deactivator elindít egy vizsgálatot a T időpontban (a `DeactivationScanInterval` ). A következő vizsgálat a következő időpontban fog megjelenni: 2T. Tegyük fel, hogy a szervizcsomag aktiválása a T + 1 időpontban történt. Ez a szervizcsomag nem üzemeltet replikát, ezért inaktiválva kell lennie. 
 
-2. példa: tegyük fel, hogy a rendszer a T-1 időpontban aktiválja a szervizcsomagot, és a deélénkítő ellenőrzi a T-T. A szervizcsomag nem üzemeltet replikát. Ezután a következő vizsgálat 2T ez a szervizcsomag inaktiválásra jelöltként lesz megtalálva, ezért az inaktiválásra lesz ütemezve.  
+    Ha az inaktiválásra jelöltnek kell lennie, a szervizcsomagnak legalább T-nál nem kell replikát üzemeltetni. Az inaktiválásra jogosult a következő helyen: 2T + 1. Így a 2T-vizsgálat nem azonosítja ezt a szervizcsomagot inaktiválásra jelöltként. 
 
-3. példa: tegyük fel, hogy egy szervizcsomag a T-1-ben aktiválva lesz, és a Deactivator a T-T vizsgálja. A szervizcsomag még nem üzemeltet replikát. Most a T + 1 replika lesz elhelyezve, azaz Az üzemeltetés egy IncrementUsageCount kap, ami azt jelenti, hogy létrejön egy replika. Most, 2T ez a szervizcsomag nem lesz ütemezve inaktiválásra. Mivel a rendszer replikát tartalmaz, az Inaktiválás az alább ismertetett ReplicaClose logika felé mozdul.
+    A következő inaktiválási ciklusban a 3T ezt a szervizcsomagot fogja ütemezni az inaktiváláshoz, mert a csomag már nem replika állapotban van a (T) időpontra vonatkozóan.  
 
-4. példa: tegyük fel, hogy a szervizcsomag nagy méretű, azaz 10 GB, és a csomóponton egy kis időt vehet igénybe. Az alkalmazás aktiválása után a Deactivator nyomon követi az életciklusát. Ha a **DeactivationScanInterval** -konfiguráció egy kis értékre van állítva, akkor előfordulhat, hogy olyan problémákba ütközik, amelyekben a szervizcsomag nem kap időt az aktiválásra a csomóponton, mert az idő múlásával a letöltés már megtörtént. A probléma megoldásához [előre letöltheti a szervizcsomagot a csomóponton][p1] , vagy növelheti a **DeactivationScanInterval**. 
+* **2. példa**: tegyük fel, hogy egy szervizcsomag a t-1 időpontban aktiválódik, és a deélénkítő elindít egy vizsgálatot a t-ben. A szervizcsomag nem üzemeltet replikát. A következő vizsgálatban a 2T a rendszer az inaktiválásra jelöltként azonosítja a szervizcsomagot, így az inaktiválásra lesz ütemezve.  
 
-> [!NOTE]
-> A szervizcsomagok bárhonnan inaktiválva lehetnek (**DeactivationScanInterval** – 2 **_DeactivationScanInterval_*) + **DeactivationGraceInterval** /** ExclusiveModeDeactivationGraceInterval * *. 
->
+* **3. példa**: tegyük fel, hogy egy szervizcsomag a t-1 időpontban aktiválódik, és a deaktiváló elindít egy vizsgálatot a t-ben. A szervizcsomag még nem üzemeltet replikát. Most a T + 1 helyen egy replika kerül elhelyezésre. Ez azt jelenti, hogy az üzemeltetéshez egy `IncrementUsageCount` replika jön létre. 
 
-### <a name="replica-close"></a>Replika lezárása:
-Az Inaktiválás a szervizcsomagok által birtokolt replikák számát tartja fenn. Ha a szervizcsomag egy replikát tárol, és a replika le/le van zárva, a gazdagép DecrementUsageCount kap. Egy replika megnyitásakor a gazdagép IncrementUsageCount kap. A csökkentés azt jelenti, hogy a szervizcsomag jelenleg egy kevesebb replikát üzemeltet, és ha a számláló 0-ra csökken, akkor a szervizcsomag inaktiválásra van ütemezve, és az az idő, amely után az inaktiválva lesz, a **DeactivationGraceInterval** / **ExclusiveModeDeactivationGraceInterval**. 
+    A 2T esetében ez a szervizcsomag nem lesz ütemezve inaktiválásra. Mivel a csomag tartalmaz egy replikát, az Inaktiválás a ReplicaClose logikát követi, ahogy a cikk következő szakasza is ismerteti.
 
-Például: tegyük fel, hogy a T és a (z) 2t + X (**DeactivationGraceInterval** / **ExclusiveModeDeactivationGraceInterval**) esetében az inaktiválásra van ütemezve. Ha ez idő alatt a gazdagép egy IncrementUsage, ami azt jelenti, hogy létrejön egy replika, akkor a rendszer megszakítja az inaktiválást.
+* **4. példa**: tegyük fel, hogy a SZERVIZCSOMAG 10 GB. Mivel a csomag nagyméretű, időbe telik a letöltés a csomóponton. Ha egy alkalmazás aktiválva van, a deélénkítő nyomon követi a életciklusát. Ha a értéke `DeactivationScanInterval` kis értékre van állítva, előfordulhat, hogy a szervizcsomag nem rendelkezik a letöltendő idő miatti aktiválással a csomóponton. A probléma megoldásához [töltse le a szervizcsomagot előre a csomópontra][p1] , vagy növelje a következőt: `DeactivationScanInterval` . 
 
 > [!NOTE]
-> Mit jelentenek ezek a konfigurációs beállítások?
-**DeactivationGraceInterval** / **ExclusiveModeDeactivationGraceInterval**: az az idő, amelyet a szervizcsomagok egy másik replikát üzemeltetnek a replikák futtatása után. 
-**DeactivationScanInterval**: az a legkisebb idő, amelyet a szervizcsomagnak a replika üzemeltetéséhez kell adni, ha soha nem üzemeltetett replikát, azaz Ha nincs használatban.
+> A szervizcsomagok bárhol inaktiválva lehetnek ( `DeactivationScanInterval` – 2 * `DeactivationScanInterval` ) + `DeactivationGraceInterval` / `ExclusiveModeDeactivationGraceInterval` . 
 >
 
-### <a name="ctrlc"></a>Ctrl+C
-Ha a szervizcsomag átadja a **DeactivationGraceInterval** / **ExclusiveModeDeactivationGraceInterval** , és továbbra sem replikát üzemeltet, az Inaktiválás nem visszavonhatatlan. A CodePackage egy CTRL + C kezelőt állítanak ki, amely azt jelenti, hogy most az inaktiválási folyamatnak végig kell haladnia, hogy leállítsa a folyamatot. Ebben az időszakban, ha az ugyanarra a szervizcsomagra vonatkozó új replika megpróbál bekerülni, a művelet sikertelen lesz, mert nem lehet áttérni az inaktiválásról az aktiválásra.
+### <a name="replicaclose-deactivation"></a>ReplicaClose inaktiválása
 
-## <a name="cluster-configs"></a>Fürt konfigurációi
+> [!NOTE]
+> Ez a szakasz a következő konfigurációs beállításokra hivatkozik:
+> - **DeactivationGraceInterval** / **ExclusiveModeDeactivationGraceInterval**: az az idő, amelyet a szervizcsomag egy másik replika üzemeltetésére adott, ha már futtatott egy replikát. 
+> - **DeactivationScanInterval**: egy olyan replika üzemeltetéséhez szükséges minimális idő, amely egy replikát *üzemeltet, azaz ha még nem* használta a replikát.
+>
 
-Az aktiválási/decativation befolyásoló alapértékekkel rendelkező konfigurációk.
+A rendszer megtartja a szervizcsomagok által birtokolt replikák számát. Ha a szervizcsomag egy replikát tárol, és a replika le van zárva vagy leállt, a rendszer a gazdagépet kapja `DecrementUsageCount` . Egy replika megnyitásakor a rendszer a gazdagépet kapja `IncrementUsageCount` . 
+
+Az érték csökkentése azt jelzi, hogy a szervizcsomag által üzemeltetett replikák száma egy replikával csökkent. Ha a szám 0-ra csökken, a szervizcsomag inaktiválásra van ütemezve. Az az idő, amely után a rendszer inaktiválja a következőt: `DeactivationGraceInterval` / `ExclusiveModeDeactivationGraceInterval` . 
+
+Tegyük fel például, hogy a csökkenés a T értéknél történik, és a szervizcsomag a 2T + X () időpontban inaktiválásra van ütemezve `DeactivationGraceInterval` / `ExclusiveModeDeactivationGraceInterval` . Ez idő alatt `IncrementUsage` a rendszer megszakítja az inaktiválást, ha a gazdagép egy replikát hoz létre.
+
+### <a name="ctrl--c"></a>Ctrl + C
+Ha a szervizcsomag átadja a `DeactivationGraceInterval` / `ExclusiveModeDeactivationGraceInterval` -t, és továbbra sem replikát üzemeltet, az inaktiválást nem lehet megszakítani. A CodePackages egy CTRL + C kezelőt kap. Így most az inaktiválási folyamatnak be kell fejeznie a folyamatot. 
+
+Ebben az időszakban, ha az azonos szervizcsomaggal rendelkező új replikát próbál meg elhelyezni, a művelet sikertelen lesz, mert a folyamat nem tud inaktiválásról aktiválásra áttérni.
+
+## <a name="cluster-configurations"></a>Fürtkonfigurációk
+
+Ez a szakasz felsorolja azokat a konfigurációkat, amelyek az aktiválást és az inaktiválást befolyásoló alapértelmezett beállításokkal rendelkeznek.
 
 ### <a name="servicetype"></a>ServiceType
-**ServiceTypeDisableFailureThreshold**: alapértelmezett 1. A hibák számának küszöbértéke, amely után az FM (FailoverManager) értesítést kap, hogy letiltsa a szolgáltatás típusát a csomóponton, és egy másik csomópontot próbál meg elhelyezésre.
-**ServiceTypeDisableGraceInterval**: alapértelmezés szerint 30 mp. Az az időtartam, amely után a szolgáltatástípus le lehet tiltani.
-**ServiceTypeRegistrationTimeout**: alapértelmezett 300 másodperc. A ServiceType Service Fabric való regisztrálásának időtúllépése.
+- **ServiceTypeDisableFailureThreshold**: default: 1. A hibák számának küszöbértéke; Ha elérte ezt a küszöbértéket, a FailoverManager értesíti a szolgáltatás típusát a csomóponton, és egy másik csomópontot próbál meg elhelyezésre.
+- **ServiceTypeDisableGraceInterval**: alapértelmezett: 30 másodperc. Az az időtartam, amely után a szolgáltatástípus le lehet tiltani.
+- **ServiceTypeRegistrationTimeout**: Default: 300 másodperc. A ServiceType Service Fabric való regisztrálásának időtúllépése.
 
 ### <a name="activation"></a>Aktiválás
-**ActivationRetryBackoffInterval**: alapértelmezett 10 mp. Leállítási időköz minden aktiválási hiba esetén.
-**ActivationMaxFailureCount**: alapértelmezett 20. A maximális darabszám, amely után a rendszer újrapróbálkozik a sikertelen aktiválással. 
-**ActivationRetryBackoffExponentiationBase**: alapértelmezett 1,5.
-**ActivationMaxRetryInterval**: alapértelmezett 3600 másodperc. Max. a hibák elhárítása az aktiváláshoz.
-**CodePackageContinuousExitFailureResetInterval**: alapértelmezett 300 másodperc. A CodePackage folyamatos kilépési hibáinak számának alaphelyzetbe állítására szolgáló időkorlát.
+- **ActivationRetryBackoffInterval**: alapértelmezett: 10 másodperc. Leállítási időköz minden aktiválási hiba esetén.
+- **ActivationMaxFailureCount**: alapértelmezett: 20. A maximális darabszám, amely után a rendszer újrapróbálkozik a sikertelen aktiválás előtt. 
+- **ActivationRetryBackoffExponentiationBase**: Default: 1,5.
+- **ActivationMaxRetryInterval**: Default: 3 600 másodperc. Az aktiválás maximális leállítási újrapróbálkozási időköze a hibák után.
+- **CodePackageContinuousExitFailureResetInterval**: Default: 300 másodperc. Időtúllépési időköz a CodePackage folyamatos kilépési hibáinak számának alaphelyzetbe állításához.
 
 ### <a name="download"></a>Letöltés
-**DeploymentRetryBackoffInterval**: alapértelmezett 10. Az üzembe helyezési hiba időkorlátja.
-**DeploymentMaxRetryInterval**: alapértelmezett 3600 másodperc. A telepítéshez szükséges maximális biztonsági mentés a hibák esetén.
-**DeploymentMaxFailureCount**: alapértelmezett 20. Az alkalmazás központi telepítése újra próbálkozik a DeploymentMaxFailureCount, mielőtt az alkalmazás telepítése a csomóponton meghiúsul.
+- **DeploymentRetryBackoffInterval**: default: 10. Az üzembe helyezési hiba leállítási időköze.
+- **DeploymentMaxRetryInterval**: Default: 3 600 másodperc. A központi telepítés maximális leállítási időköze a hibák után.
+- **DeploymentMaxFailureCount**: alapértelmezett: 20. Az alkalmazás központi telepítése újra próbálkozik az `DeploymentMaxFailureCount` adott alkalmazásnak a csomóponton való üzembe helyezésének sikertelensége előtt.
 
 ### <a name="deactivation"></a>Inaktiválása
-**DeactivationScanInterval**: alapértelmezett 600 másodperc. Egy replika üzemeltetéséhez szükséges minimális idő a szervizcsomag tárolására, ha még soha nem üzemeltetett replikát, azaz Ha nincs használatban.
-**DeactivationGraceInterval**: alapértelmezett 60 másodperc. A szervizcsomagnak egy másik replika futtatására adott idő, ha **megosztott** négyszínes modell esetén replikát üzemeltetett.
-**ExclusiveModeDeactivationGraceInterval**: alapértelmezett 1 MP. Az az idő, amelyet a szervizcsomagnak egy másik replikát kell üzemeltetni, ha a **kizárólagos** folyamatmodell esetében bármilyen replikát futtatott.
+- **DeactivationScanInterval**: Default: 600 másodperc. A szervizcsomag tárolására szolgáló minimális idő, ha még soha nem üzemeltetett replikát (azaz ha nincs használatban).
+- **DeactivationGraceInterval**: Default: 60 másodperc. Egy *megosztott* négyszínes modellben a szervizcsomaghoz adott idő, amely egy újabb replikát futtat, miután már üzemeltetett replikát.
+- **ExclusiveModeDeactivationGraceInterval**: alapértelmezett: 1 másodperc. Egy *kizárólagos* folyamatmodell esetében a szervizcsomaghoz adott idő egy újabb replika futtatására szolgál, miután már futtatta a replikát.
 
 ## <a name="next-steps"></a>További lépések
-[Alkalmazás becsomagolása][a3] és üzembe helyezése készen áll a telepítésre.
 
-[Alkalmazások telepítése és eltávolítása][a4]. Ez a cikk azt ismerteti, hogyan használható a PowerShell az alkalmazások példányainak kezeléséhez.
+- [Alkalmazás becsomagolása][a3] és üzembe helyezése készen áll a telepítésre.
+- [Alkalmazások telepítése és eltávolítása][a4] a PowerShellben.
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [a1]: service-fabric-application-model.md

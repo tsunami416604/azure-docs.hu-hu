@@ -51,7 +51,7 @@
       href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Frissítés 5-ös verzióról 7-es verzióra
       href: bing-video-upgrade-guide-v5-to-v7.md
-- name: Fogalmak
+- name: Alapelvek
   items:
     - name: Videók lekérése a webről
       href: concepts/get-videos.md
@@ -66,7 +66,7 @@
     - name: SDK-k
       items:
         - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/bingvideosearch?view=azure-dotnet
+          href: /dotnet/api/overview/azure/cognitiveservices/bing-video-search-readme?view=azure-dotnet
         - name: Java
           href: /java/api/overview/azure/cognitiveservices/client/bingvideosearch?view=azure-java-stable
         - name: Python

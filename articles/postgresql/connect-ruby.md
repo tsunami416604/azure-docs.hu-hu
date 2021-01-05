@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: bb2ff066089e3348c40f5a22bd73ea376ecef6de
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 20e45454284af230da74896d5b3f5e9da676dbb4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341399"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831703"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Ruby használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
@@ -31,8 +31,8 @@ A következőket is telepítenie kell:
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver** ).
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/).
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  :::image type="content" source="./media/connect-ruby/1-connection-string.png" alt-text="Azure Database for PostgreSQL-kiszolgáló neve":::
@@ -43,7 +43,7 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
 ## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
 A következő kód segítségével csatlakozzon, és hozzon létre egy táblát a **CREATE TABLE** SQL-utasítással, majd az **INSERT INTO** SQL-utasítással adjon hozzá sorokat a táblához.
 
-A kód egy olyan objektumot használ, amely ```PG::Connection``` létrehoz egy konstruktort ```new``` Azure Database for PostgreSQLhoz való kapcsolódáshoz. Ezután meghívja a metódust ```exec()``` a drop, a CREATE TABLE és a INSERT INTO parancs futtatásához. A kód a osztály használatával ellenőrzi a hibákat ```PG::Error``` . Ezután meghívja a metódust ```close()``` , hogy lezárja a kapcsolódást a megszakítás előtt. Ezen osztályokkal és módszerekkel kapcsolatos további információkért tekintse meg a [Ruby PG dokumentációját](https://www.rubydoc.info/gems/pg/PG) .
+A kód egy olyan objektumot használ, amely ```PG::Connection``` létrehoz egy konstruktort ```new``` Azure Database for PostgreSQLhoz való kapcsolódáshoz. Ezután meghívja a metódust ```exec()``` a drop, a CREATE TABLE és a INSERT INTO parancs futtatásához. A kód a osztály használatával ellenőrzi a hibákat ```PG::Error``` . Ezután meghívja a metódust ```close()``` , hogy lezárja a kapcsolódást a megszakítás előtt. Ezen osztályokkal és módszerekkel kapcsolatos további információkért tekintse meg a Ruby PG dokumentációját.
 
 Cserélje le a `host`, `database`, `user`, és `password` sztringeket a saját értékekre.
 
@@ -87,7 +87,7 @@ end
 ## <a name="read-data"></a>Adatok olvasása
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **SELECT** SQL-utasítás segítségével.
 
-A kód egy olyan objektumot használ, amely  ```PG::Connection``` létrehoz egy konstruktort ```new``` Azure Database for PostgreSQLhoz való kapcsolódáshoz. Ezt követően a metódus meghívásával ```exec()``` futtatja a Select parancsot, és megtartja az eredményeket egy eredményhalmaz alapján. Az eredményhalmaz gyűjtése többször is végrehajtódik a `resultSet.each do` ciklus használatával, megőrizve az aktuális sor értékeit a `row` változóban. A kód a osztály használatával ellenőrzi a hibákat ```PG::Error``` . Ezután meghívja a metódust ```close()``` , hogy lezárja a kapcsolódást a megszakítás előtt. Ezen osztályokkal és módszerekkel kapcsolatos további információkért tekintse meg a [Ruby PG dokumentációját](https://www.rubydoc.info/gems/pg/PG) .
+A kód egy olyan objektumot használ, amely  ```PG::Connection``` létrehoz egy konstruktort ```new``` Azure Database for PostgreSQLhoz való kapcsolódáshoz. Ezt követően a metódus meghívásával ```exec()``` futtatja a Select parancsot, és megtartja az eredményeket egy eredményhalmaz alapján. Az eredményhalmaz gyűjtése többször is végrehajtódik a `resultSet.each do` ciklus használatával, megőrizve az aktuális sor értékeit a `row` változóban. A kód a osztály használatával ellenőrzi a hibákat ```PG::Error``` . Ezután meghívja a metódust ```close()``` , hogy lezárja a kapcsolódást a megszakítás előtt. Ezen osztályokkal és módszerekkel kapcsolatos további információkért tekintse meg a Ruby PG dokumentációját.
 
 Cserélje le a `host`, `database`, `user`, és `password` sztringeket a saját értékekre.
 
@@ -121,7 +121,7 @@ end
 ## <a name="update-data"></a>Adatok frissítése
 A következő kód használatával csatlakozhat, és frissítheti az adatokat az **UPDATE** SQL-utasítással.
 
-A kód egy olyan objektumot használ, amely  ```PG::Connection``` létrehoz egy konstruktort ```new``` Azure Database for PostgreSQLhoz való kapcsolódáshoz. Ezután meghívja a metódust ```exec()``` az Update parancs futtatásához. A kód a osztály használatával ellenőrzi a hibákat ```PG::Error``` . Ezután meghívja a metódust ```close()``` , hogy lezárja a kapcsolódást a megszakítás előtt. Ezen osztályokkal és módszerekkel kapcsolatos további információkért tekintse meg a [Ruby PG dokumentációját](https://www.rubydoc.info/gems/pg/PG) .
+A kód egy olyan objektumot használ, amely  ```PG::Connection``` létrehoz egy konstruktort ```new``` Azure Database for PostgreSQLhoz való kapcsolódáshoz. Ezután meghívja a metódust ```exec()``` az Update parancs futtatásához. A kód a osztály használatával ellenőrzi a hibákat ```PG::Error``` . Ezután meghívja a metódust ```close()``` , hogy lezárja a kapcsolódást a megszakítás előtt. Ezen osztályokkal és módszerekkel kapcsolatos további információkért tekintse meg a [Ruby PG dokumentációját](https://rubygems.org/gems/pg) .
 
 Cserélje le a `host`, `database`, `user`, és `password` sztringeket a saját értékekre.
 
@@ -200,4 +200,4 @@ az group delete \
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md) <br/>
 > [!div class="nextstepaction"]
-> [A Ruby PG dokumentációja](https://www.rubydoc.info/gems/pg/PG)
+> [A Ruby PG dokumentációja](https://rubygems.org/gems/pg)

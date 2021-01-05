@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 20e51100eba595f9261be24e0e3675aa565479cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4eba3fabee50e0011d5a63297c726a9647dd84c0
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535554"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831533"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a Ruby használatával csatlakozhat és lekérdezheti Azure Database for MySQL
 
@@ -58,7 +58,7 @@ Telepítse a Rubyt, a Gemet és a MySQL2 könyvtárat a saját számítógépér
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver** ).
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  :::image type="content" source="./media/connect-ruby/1_server-overview-name-login.png" alt-text="A MySQL-hez készült Azure Database-kiszolgáló neve":::
@@ -72,7 +72,7 @@ Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szüks�
 ## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
 A következő kód használatával csatlakozhat, és létrehozhat egy táblát a **CREATE TABLE** SQL-utasítással, majd az **INSERT INTO** SQL-utasításokkal sorokat adhat hozzá a táblához.
 
-A kód egy [mysql2:: Client](https://www.rubydoc.info/gems/mysql2) osztályt használ a MySQL-kiszolgálóhoz való kapcsolódáshoz. Ezután meghívja a metódust ```query()``` a drop, a CREATE TABLE és a INSERT INTO parancs futtatásához. Végül hívja meg a ```close()``` -t, és zárja be a kapcsolódást a megszakítás előtt.
+A kód egy mysql2:: Client osztályt használ a MySQL-kiszolgálóhoz való kapcsolódáshoz. Ezután meghívja a metódust ```query()``` a drop, a CREATE TABLE és a INSERT INTO parancs futtatásához. Végül hívja meg a ```close()``` -t, és zárja be a kapcsolódást a megszakítás előtt.
 
 Cserélje le a `host`, `database`, `username`, és `password` sztringeket a saját értékekre.
 ```ruby
@@ -117,7 +117,7 @@ end
 ## <a name="read-data"></a>Adatok olvasása
 A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással.
 
-A kód egy [mysql2:: Client](https://www.rubydoc.info/gems/mysql2) osztályt használ a Azure Database for MySQLhoz való kapcsolódáshoz a ```new()``` metódussal. Ezután meghívja a metódust ```query()``` a Select parancsok futtatásához. Ezután meghívja a metódust ```close()``` , hogy lezárja a kapcsolódást a megszakítás előtt.
+A kód egy mysql2:: Client osztályt használ a Azure Database for MySQLhoz való kapcsolódáshoz a ```new()``` metódussal. Ezután meghívja a metódust ```query()``` a Select parancsok futtatásához. Ezután meghívja a metódust ```close()``` , hogy lezárja a kapcsolódást a megszakítás előtt.
 
 Cserélje le a `host`, `database`, `username`, és `password` sztringeket a saját értékekre.
 
@@ -156,7 +156,7 @@ end
 ## <a name="update-data"></a>Adatok frissítése
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok módosítását egy **UPDATE** SQL-utasítás segítségével.
 
-A kód a [mysql2::client](https://www.rubydoc.info/gems/mysql2) class .new() metódust használja a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Ezután meghívja a metódust ```query()```  a frissítési parancsok futtatásához. Ezután meghívja a metódust ```close()``` , hogy lezárja a kapcsolódást a megszakítás előtt.
+A kód a [mysql2::client](https://rubygems.org/gems/mysql2-client-general_log) class .new() metódust használja a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Ezután meghívja a metódust ```query()```  a frissítési parancsok futtatásához. Ezután meghívja a metódust ```close()``` , hogy lezárja a kapcsolódást a megszakítás előtt.
 
 Cserélje le a `host`, `database`, `username`, és `password` sztringeket a saját értékekre.
 
@@ -226,7 +226,7 @@ ensure
 end
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
 
@@ -236,10 +236,10 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./concepts-migrate-import-export.md) <br/>
 
 > [!div class="nextstepaction"]
-> [További információ az MySQL2-ügyfélről](https://www.rubydoc.info/gems/mysql2) <br/>
+> [További információ az MySQL2-ügyfélről](https://rubygems.org/gems/mysql2-client-general_log) <br/>
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 512776f2498a88f1fda9b5e7f0e2db0ddd32b955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36dfbf0fda060a8f273fee64098d6234b575088c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962328"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831839"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések az Azure-beli Web Apps
 
@@ -27,15 +27,15 @@ Ez a cikk a [Azure App Service Web Apps funkciójának](https://azure.microsoft.
 A PHP-naplózás bekapcsolása:
 
 1. Jelentkezzen be a **kudu webhelyére** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
-2. A felső menüben válassza a **Debug konzol**  >  **cmd**elemet.
+2. A felső menüben válassza a **Debug konzol**  >  **cmd** elemet.
 3. Válassza ki a **hely** mappáját.
 4. Válassza ki a **wwwroot** mappát.
-5. Válassza ki az **+** ikont, majd válassza az **új fájl**elemet.
+5. Válassza ki az **+** ikont, majd válassza az **új fájl** elemet.
 6. Adja meg a fájl nevét **.user.ini**.
-7. Válassza a **.user.ini**melletti ceruza ikont.
+7. Válassza a **.user.ini** melletti ceruza ikont.
 8. A fájlban adja hozzá a következő kódot: `log_errors=on`
-9. Kattintson a **Mentés** gombra.
-10. Válassza a **wp-config. php**melletti ceruza ikont.
+9. Válassza a **Mentés** lehetőséget.
+10. Válassza a **wp-config. php** melletti ceruza ikont.
 11. Módosítsa a szöveget a következő kódra:
     ```php
     //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
@@ -54,8 +54,8 @@ A Node.js alkalmazás verziójának módosításához a következő lehetősége
 
 * Az Azure Portalban használja az **Alkalmazásbeállítások alkalmazást**.
   1. A Azure Portal nyissa meg a webalkalmazást.
-  2. A **Beállítások** panelen válassza az **Alkalmazásbeállítások**lehetőséget.
-  3. Az **Alkalmazásbeállítások**között megadhatja a kulcsként WEBSITE_NODE_DEFAULT_VERSION, valamint az értékként használni kívánt Node.js verzióját.
+  2. A **Beállítások** panelen válassza az **Alkalmazásbeállítások** lehetőséget.
+  3. Az **Alkalmazásbeállítások** között megadhatja a kulcsként WEBSITE_NODE_DEFAULT_VERSION, valamint az értékként használni kívánt Node.js verzióját.
   4. Nyissa meg a **kudu-konzolt** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
   5. A Node.js verziójának vizsgálatához írja be a következő parancsot:  
      ```
@@ -169,9 +169,9 @@ Egy másik megkerülő megoldás egy olyan Webjobs írása, amely egy ütemezett
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>Hol találhatók a Jetty naplófájljai?
 
-A piactér és az egyéni telepítések esetében a naplófájl a D:\home\site\wwwroot\bin\jetty-Distribution-9.1.2.v20140210\logs mappában található. Vegye figyelembe, hogy a mappa helye a használt Jetty verziójától függ. Például az itt megadott elérési út a Jetty 9.1.2. Keresse meg a jetty_*YYYY_MM_DD*. stderrout. log naplófájlt.
+A piactér és az egyéni telepítések esetében a naplófájl a D:\home\site\wwwroot\bin\jetty-Distribution-9.1.2.v20140210\logs mappában található. Vegye figyelembe, hogy a mappa helye a használt Jetty verziójától függ. Például az itt megadott elérési út a Jetty 9.1.2. Keresse meg a jetty_ *YYYY_MM_DD*. stderrout. log naplófájlt.
 
-A portál alkalmazás telepítése esetén a naplófájl a következő helyen található: D:\home\LogFiles. Keresse meg a jetty_*YYYY_MM_DD*. stderrout. log naplófájlt
+A portál alkalmazás telepítése esetén a naplófájl a következő helyen található: D:\home\LogFiles. Keresse meg a jetty_ *YYYY_MM_DD*. stderrout. log naplófájlt
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>Küldhetek e-mailt az Azure-webalkalmazásból?
 
@@ -181,24 +181,24 @@ App Service nem rendelkezik beépített e-mail-funkcióval. Az alkalmazásból �
 
 Ha nemrég áttelepítette az Azure-ba, a WordPress átirányíthatja a régi tartomány URL-címét. Ezt a MySQL-adatbázis egyik beállítása okozza.
 
-A WordPress Buddy + egy Azure-beli hely bővítmény, amellyel az átirányítási URL-cím közvetlenül az adatbázisban frissíthető. A WordPress Buddy + használatával kapcsolatos további információkért lásd: [a WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)segítségével.
+A WordPress Buddy + egy Azure-beli hely bővítmény, amellyel az átirányítási URL-cím közvetlenül az adatbázisban frissíthető. A WordPress Buddy + használatával kapcsolatos további információkért lásd: [a WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows)segítségével.
 
 Ha az átirányítási URL-címet az SQL-lekérdezések vagy a PHPMyAdmin használatával szeretné manuálisan frissíteni, tekintse meg a [WordPress: átirányítást a helytelen URL-címre](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hogyan módosítja a WordPress bejelentkezési jelszavát?
 
-Ha elfelejtette a WordPress bejelentkezési jelszavát, akkor a WordPress Buddy + használatával frissítheti azt. A jelszó alaphelyzetbe állításához telepítse a WordPress Buddy + Azure site bővítményt, majd hajtsa végre a [WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)használatával című témakörben ismertetett lépéseket.
+Ha elfelejtette a WordPress bejelentkezési jelszavát, akkor a WordPress Buddy + használatával frissítheti azt. A jelszó alaphelyzetbe állításához telepítse a WordPress Buddy + Azure site bővítményt, majd hajtsa végre a [WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows)használatával című témakörben ismertetett lépéseket.
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Nem tudok bejelentkezni a WordPress webalkalmazásba. Hogyan oldhatom meg ezt?
 
-Ha úgy találja, hogy kizárta a WordPresst, miután nemrég telepített egy beépülő modult, lehet, hogy hibás a beépülő modul. A WordPress Buddy + egy Azure-beli bővítmény, amely segítséget nyújt a beépülő modulok letiltásához a WordPress webhelyén. További információ: [WordPress-eszközök és MySQL-áttelepítés a WordPress Buddy +-vel](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+Ha úgy találja, hogy kizárta a WordPresst, miután nemrég telepített egy beépülő modult, lehet, hogy hibás a beépülő modul. A WordPress Buddy + egy Azure-beli bővítmény, amely segítséget nyújt a beépülő modulok letiltásához a WordPress webhelyén. További információ: [WordPress-eszközök és MySQL-áttelepítés a WordPress Buddy +-vel](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows).
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>Hogyan áttelepíteni a WordPress-adatbázist?
 
 A WordPress-webhelyhez csatlakoztatott MySQL-adatbázis áttelepítésének több lehetősége van:
 
 * Fejlesztők: a [parancssor vagy a phpMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service) használata
-* Nem fejlesztőknek: a [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) használata
+* Nem fejlesztőknek: a [WordPress Buddy +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) használata
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hogyan segít a WordPress biztonságosabbá tételében?
 

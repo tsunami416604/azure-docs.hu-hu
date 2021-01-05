@@ -4,21 +4,21 @@ description: Ismerje meg a Defender for IoT szolgáltatással kapcsolatos költs
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/04/2020
-ms.author: mlottner
-ms.openlocfilehash: 24ae6c4014948639aa737a0d2d88ec15f98a7cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/08/2020
+ms.author: shhazam
+ms.openlocfilehash: a97bcbf5ba47289a2e68b0eaa587ea39d7fb705a
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936292"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832352"
 ---
 # <a name="pricing-and-associated-costs"></a>Díjszabás és kapcsolódó költségek
 
@@ -46,9 +46,9 @@ Beállítások módosítása:
 
 1. Nyissa meg IoT Hub.
 
-1. A **Biztonság**alatt kattintson a **Beállítások**elemre.
+1. A **Biztonság** alatt kattintson a **Beállítások** elemre.
 
-1. Kattintson **az adatgyűjtés**elemre.
+1. Kattintson **az adatgyűjtés** elemre.
 
 Az alábbi táblázat az egyes lehetőségek kapcsolódó költségeinek és következményeinek összegzését tartalmazza.
 
@@ -71,7 +71,7 @@ Az alábbi táblázat az egyes lehetőségek kapcsolódó költségeinek és kö
 | | A [riasztások](concept-security-alerts.md) és [javaslatok](concept-recommendations.md) vizsgálatának részletei nem érhetők el |
 |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - A [nyers biztonsági adataihoz](how-to-security-data-access.md) való hozzáférés
 - [Eszköz vizsgálata](how-to-investigate-device.md)

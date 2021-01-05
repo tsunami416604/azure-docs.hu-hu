@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy, devx-track-azurecli
+ms.custom: how-to, contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: d7540066ccc0d3a62dbd4012eee100d8e8aea98f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505086"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831727"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 
@@ -91,6 +91,55 @@ Az előtér-összetevő (azureml-FE), amely a bejövő következtetési kérelme
 A Azureml-Fe egyszerre több magot használ, és (horizontálisan) több hüvelyt használ. A vertikális Felskálázási döntés végrehajtásakor a rendszer a bejövő következtetési kérelmek továbbításához szükséges időt használja. Ha ez az idő meghaladja a küszöbértéket, felskálázás történik. Ha a bejövő kérelmek átirányításának ideje továbbra is meghaladja a küszöbértéket, kibővíthető.
 
 A-re és a-re történő skálázáskor a rendszer a CPU-használatot használja. Ha a CPU-használat küszöbértéke teljesül, a rendszer először az előtér végét fogja méretezni. Ha a CPU-használat csökken a skálázási küszöbértékre, akkor a méretezési művelet történik. A fel-és kiskálázás csak akkor történik meg, ha elegendő fürterőforrás áll rendelkezésre.
+
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>A kapcsolati követelmények ismertetése az AK-beli viszonyítási fürthöz
+
+Ha Azure Machine Learning létrehoz vagy csatlakoztat egy AK-fürtöt, az AK-fürt a következő két hálózati modell egyikével van telepítve:
+* Kubenet hálózatkezelés – a hálózati erőforrásokat általában a rendszer az AK-fürt üzembe helyezésével hozza létre és konfigurálja.
+* Azure Container Network Interface (CNI) hálózatkezelés – Az AKS-fürt a meglévő virtuális hálózati erőforrásokhoz és konfigurációkhoz csatlakozik.
+
+Az első hálózati mód esetében a hálózat létrehozása és konfigurálása a Azure Machine Learning szolgáltatás számára megfelelő. A második hálózati mód esetében, mivel a fürt meglévő virtuális hálózathoz van csatlakoztatva, különösen akkor, ha a meglévő virtuális hálózathoz egyéni DNS van használatban, az ügyfeleknek külön figyelmet kell fordítaniuk a kapcsolati követelményekre az AK-ra hivatkozó fürthöz, és biztosítaniuk kell a DNS-feloldást és a kimenő kapcsolatot az AK-alapú következtetésekhez.
+
+Az alábbi ábra az AK-hoz kapcsolódó összes kapcsolódási követelményt rögzíti. A fekete nyilak a tényleges kommunikációt jelölik, a kék nyilak pedig a tartományneveket jelölik, amelyet az ügyfél által vezérelt DNS-nek fel kell oldania.
+
+ ![Kapcsolati követelmények az AK-hoz való hivatkozáshoz](./media/how-to-deploy-aks/aks-network.png)
+
+### <a name="overall-dns-resolution-requirements"></a>Általános DNS-feloldási követelmények
+A meglévő VNET belüli DNS-feloldás az ügyfél vezérlése alatt áll. A következő DNS-bejegyzéseket feloldhatónak kell lennie:
+* AK API-kiszolgáló \<cluster\> . HCP. \<region\> . azmk8s.io
+* Microsoft Container Registry (MCR): mcr.microsoft.com
+* Az ügyfél Azure Container Registry (ARC) a \<ACR name\> . azurecr.IO formájában
+* Azure Storage-fiók \<account\> . table.Core.Windows.net és \<account\> . blob.Core.Windows.net formátumban
+* Választható HRE-hitelesítés esetén: api.azureml.ms
+* Pontozási végponti tartománynév, amelyet az Azure ML vagy Egyéni tartománynév automatikusan generált. Az automatikusan létrehozott tartománynév a következőhöz hasonlít: \<leaf-domain-label \+ auto-generated suffix\> . \<region\> . cloudapp.azure.com
+
+### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>A kapcsolódási követelmények időrendi sorrendben: a fürt létrehozásáról modellre történő telepítésre
+
+Az AK létrehozása vagy csatolása folyamatban az Azure ML-útválasztó (azureml-FE) üzembe helyezése az AK-fürtön történik. Az Azure ML-útválasztó üzembe helyezéséhez az AK-csomópontnak képesnek kell lennie:
+* DNS feloldása az AK API-kiszolgálóhoz
+* A MCR DNS-feloldása az Azure ML-útválasztó Docker-rendszerképének letöltéséhez
+* Lemezképek letöltése a MCR, ahol a kimenő kapcsolat szükséges
+
+Közvetlenül a azureml-Fe üzembe helyezése után a rendszer megkísérli az indítást, és ehhez a következőket kell tennie:
+* DNS feloldása az AK API-kiszolgálóhoz
+* Az AK API-kiszolgáló lekérdezése saját maga is felderíthető (több-Pod szolgáltatás)
+* Kapcsolódás más példányokhoz
+
+A azureml-Fe elindítása után további kapcsolatra van szükség a megfelelő működéshez:
+* Kapcsolódás az Azure Storage-hoz a dinamikus konfiguráció letöltéséhez
+* Oldja fel a DNS-t a HRE hitelesítési kiszolgáló api.azureml.ms, és kommunikáljon vele, ha a telepített szolgáltatás HRE-hitelesítést használ.
+* AK API-kiszolgáló lekérdezése telepített modellek felderítéséhez
+* Kommunikáció az üzembe helyezett modell Hüvelyével
+
+A modell üzembe helyezésének ideje alatt a sikeres modell üzembe helyezési AK-csomópontjának képesnek kell lennie a következőre: 
+* A DNS feloldása az ügyfél ACR-hez
+* Lemezképek letöltése az ügyfél ACR-ből
+* A DNS feloldása az Azure-Blobokban, ahol a modell tárolva van
+* Modellek letöltése az Azure-Blobokból
+
+A modell üzembe helyezése és a szolgáltatás elindítása után a azureml-Fe automatikusan észleli az AK API-t, és készen áll arra, hogy átirányítsa a kérést. Képesnek kell lennie kommunikálni a modell Hüvelyével.
+>[!Note]
+>Ha a telepített modellhez bármilyen kapcsolat szükséges (például külső adatbázis vagy más REST-szolgáltatás lekérdezése, BLOG letöltése stb.), akkor a DNS-feloldást és a kimenő kommunikációt is engedélyezni kell a szolgáltatásokhoz.
 
 ## <a name="deploy-to-aks"></a>Üzembe helyezés az AKS-ben
 
@@ -330,7 +379,7 @@ print(token)
 
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Az erőforrások vizsgálatához és a javaslatainak követéséhez engedélyeznie kell Azure Security Center. További információ: az [Azure Kubernetes Services és a Security Center integrációja](../security-center/defender-for-kubernetes-introduction.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure RBAC használata az Kubernetes-hitelesítéshez](../aks/manage-azure-rbac.md)
 * [Biztonságos következtetési környezet az Azure Virtual Network](how-to-secure-inferencing-vnet.md)

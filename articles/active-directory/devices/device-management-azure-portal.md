@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4077ade7de93470aaf03acef1dc1cefca8bd3d4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7f142aa4ca203a65c45741f87853579ca60e1879
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837362"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831754"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Eszközidentitások kezelése az Azure Portal használatával
 
@@ -165,10 +165,10 @@ A Azure Portal eszköz beállításainak megtekintéséhez vagy kezeléséhez a 
 
 - **További helyi rendszergazdák az Azure ad-hez csatlakoztatott eszközökön** : kiválaszthatja azokat a felhasználókat, akik helyi rendszergazdai jogosultságokat kapnak az eszközön. Ezeket a felhasználókat a rendszer az Azure AD-ben adja hozzá az *eszköz-rendszergazdák* szerepkörhöz. A globális rendszergazdák az Azure AD-ben és az eszközök tulajdonosai alapértelmezés szerint helyi rendszergazdai jogosultságokat kapnak. Ez a lehetőség egy prémium kiadású funkció, amely olyan termékeken keresztül érhető el, mint a prémium szintű Azure AD vagy a nagyvállalati mobilitási csomag (EMS).
 - A **felhasználók regisztrálhatják eszközeiket az Azure ad** -ben – ezt a beállítást úgy kell konfigurálni, hogy engedélyezze a Windows 10 személyes, iOS-, Android-és MacOS-eszközök regisztrálását az Azure ad-ben. Ha a **nincs** lehetőséget választja, az eszközök nem regisztrálhatnak az Azure ad-ben. A regisztráláshoz Microsoft Intune vagy mobileszköz-felügyelettel (MDM) regisztrálni kell a Microsoft 365. Ha ezen szolgáltatások valamelyikét konfigurálta, akkor az **összes** kiválasztva, a **none** érték nem érhető el.
-- **Többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** – megadhatja, hogy a felhasználóknak további hitelesítési tényezőt kell-e biztosítaniuk az eszközük Azure ad-hez való csatlakoztatásához. Az alapértelmezett érték a **nem**. Az eszközök regisztrálásakor javasoljuk a többtényezős hitelesítés megkövetelését. Mielőtt engedélyezi a többtényezős hitelesítést a szolgáltatáshoz, meg kell győződnie arról, hogy a többtényezős hitelesítés konfigurálva van az eszközeit regisztráló felhasználók számára. Az Azure AD Multi-Factor Authentication szolgáltatásaival kapcsolatos további információkért tekintse meg az [Azure ad multi-Factor Authentication első lépéseivel foglalkozó](../authentication/concept-mfa-howitworks.md)témakört. 
+- **Többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** – megadhatja, hogy a felhasználóknak szükségük van-e további hitelesítési tényezőre az eszköznek az Azure ad-hez való csatlakoztatásához vagy regisztrálásához. Az alapértelmezett érték a **nem**. A többtényezős hitelesítés megkövetelése az eszköz regisztrálása vagy csatlakoztatása során ajánlott. Mielőtt engedélyezi a többtényezős hitelesítést a szolgáltatáshoz, meg kell győződnie arról, hogy a többtényezős hitelesítés konfigurálva van az eszközeit regisztráló felhasználók számára. Az Azure AD Multi-Factor Authentication szolgáltatásaival kapcsolatos további információkért tekintse meg az [Azure ad multi-Factor Authentication első lépéseivel foglalkozó](../authentication/concept-mfa-howitworks.md)témakört. 
 
 > [!NOTE]
-> A **többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** beállítás az Azure ad-hez csatlakoztatott vagy az Azure ad által regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre.
+> A **többtényezős hitelesítés megkövetelése az eszközök csatlakoztatásához** beállítás az Azure ad-hez csatlakoztatott (bizonyos kivételekkel rendelkező) vagy az Azure ad által regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre, az Azure [ad-hez csatlakoztatott virtuális gépekre az Azure-ban és az](/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows#enabling-azure-ad-login-in-for-windows-vm-in-azure) Azure ad-hez csatlakoztatott eszközökön a [Windows Autopilot öntelepítő üzemmód](/mem/autopilot/self-deploying)használatával.
 
 - **Eszközök maximális száma** – ez a beállítás lehetővé teszi, hogy kiválassza az Azure ad-hez csatlakoztatott vagy az Azure ad-ban regisztrált eszközök maximális számát, amelyet a felhasználók az Azure ad-ben használhatnak. Ha a felhasználó eléri ezt a kvótát, nem tud további eszközöket hozzáadni, amíg a meglévő eszközök közül egy vagy több el nem távolítva. Az alapértelmezett érték a **50**.
 
@@ -177,7 +177,7 @@ A Azure Portal eszköz beállításainak megtekintéséhez vagy kezeléséhez a 
 
 - [Vállalati állapothordozás](enterprise-state-roaming-overview.md)
 
-## <a name="audit-logs"></a>Auditnaplók
+## <a name="audit-logs"></a>Naplók
 
 Az eszközök tevékenységeit a tevékenység naplóiban érheti el. Ezek a naplók az eszköz regisztrációs szolgáltatása és a felhasználók által aktivált tevékenységeket foglalják magukban:
 
@@ -213,7 +213,7 @@ A szűrők mellett megkeresheti az adott bejegyzéseket is.
 
 :::image type="content" source="./media/device-management-azure-portal/65.png" alt-text="Képernyőkép a naplózási adatszűrő vezérlőelemekről, a kategória, a tevékenység erőforrástípus, a tevékenység, a dátumtartomány, a cél és a Actor mezők és a keresési mezők közül." border="false":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c823f0034db7d5fbe1f6b46f6af74e9fa374a6de
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548851"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832369"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>Defender a IoT esemény összesítéséhez
 
@@ -89,7 +89,7 @@ Módosítsa a Defender konfigurációját a IoT esemény összesítéséhez az *
 | aggregationIntervalProcessTerminate | PT1H|
 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan IoT a Defender a biztonsági ügynök összesítését, és az elérhető esemény-konfigurációs beállításokat.
 
@@ -97,6 +97,6 @@ A Defender IoT-telepítéssel való használatának folytatásához használja a
 
 - A [biztonsági ügynök hitelesítési módszereinek](concept-security-agent-authentication-methods.md) megismerése
 - [Biztonsági ügynök](how-to-deploy-agent.md) kiválasztása és központi telepítése
-- A Defender áttekintése a IoT [szolgáltatás előfeltételeihez](service-prerequisites.md)
+- A Defender áttekintése a IoT [rendszer előfeltételeihez](quickstart-system-prerequisites.md)
 - Ismerje meg, hogyan [engedélyezheti a Defender for IoT szolgáltatást a IoT hub](quickstart-onboard-iot-hub.md)
 - További információ a szolgáltatásról a [Defender for IoT – gyakori kérdések](resources-frequently-asked-questions.md)

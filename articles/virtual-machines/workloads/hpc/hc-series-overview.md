@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 672175d5bb92c8ab6dc347ece5ad6b14d8232ef4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b9fe978da9accd28ea0e538f458325f10c9c5d8d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024078"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831890"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>A HC sorozatú virtuális gépek áttekintése
 
@@ -58,6 +58,6 @@ Az alábbi ábrán az Azure Hypervisort és a HC-sorozatú virtuális gép szám
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az [Intel Xeon SP architektúráról](https://bit.ly/2RCYkiE).
+- További információ az [Intel Xeon SP architektúráról](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html).
 - Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - A HPC-munkaterhelések futtatásának magasabb szintű építészeti áttekintését lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

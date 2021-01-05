@@ -3,12 +3,12 @@ title: SAP HANA-adatbázis biztonsági mentése az Azure-ba Azure Backup
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy SAP HANA-adatbázisról az Azure-beli virtuális gépekre a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: f7957670b3ba98c640ebc53c6427273ca75a4e6d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 87111660983e2626d8f61ddc65fdc13394509a4f
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682849"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831635"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -90,6 +90,9 @@ A következő teljes tartományneveket is használhatja a szükséges szolgálta
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>HTTP-proxykiszolgáló használata a forgalom irányításához
 
 Ha egy Azure-beli virtuális gépen futó SAP HANA adatbázisról készít biztonsági másolatot, a virtuális gépen található biztonsági mentési bővítmény a HTTPS API-k használatával küldi el a felügyeleti parancsokat a Azure Backup és az Azure Storage-ba történő adattároláshoz. A biztonsági mentési bővítmény az Azure AD-t is használja a hitelesítéshez. Irányítsa a biztonsági mentési bővítmény a három szolgáltatáshoz kapcsolódó forgalmát a HTTP-proxyn keresztül. A fent említett IP-címek és FQDN-k listájának használata a szükséges szolgáltatásokhoz való hozzáférés engedélyezéséhez. A hitelesített proxykiszolgálók nem támogatottak.
+
+> [!NOTE]
+> A szolgáltatási szint proxyja nem támogatott. Ez azt jelentheti, hogy a proxyn keresztüli forgalom csak néhány vagy kiválasztott szolgáltatásból (Azure Backup Services) nem támogatott. A teljes adatokat vagy forgalmat proxy útján lehet irányítani.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -207,18 +210,18 @@ Ha egy olyan adatbázis helyi biztonsági másolatát kívánja használni, amel
 
 1. Várjon, amíg befejeződik az adatbázis teljes vagy naplózott biztonsági mentése. Az állapot ellenõrzése SAP HANA Studio/pilótafülkében.
 1. Tiltsa le a naplók biztonsági mentését, és állítsa a biztonsági mentési katalógust a fájlrendszerre a megfelelő adatbázishoz.
-1. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >  **Configuration**  >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
+1. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >    >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
 1. A **enable_auto_log_backup** beállítása **nem** értékre.
 1. **Log_backup_using_backint** beállítása **hamis** értékre.
 1. **Catalog_backup_using_backint** beállítása **hamis** értékre.
 1. Igény szerint készítsen teljes biztonsági mentést az adatbázisról.
 1. Várjon, amíg befejeződik a teljes biztonsági mentés és a katalógus biztonsági mentése.
 1. A korábbi beállítások visszaállítása az Azure-ba:
-    * Állítsa **enable_auto_log_backup** a Enable_auto_log_backup **értéket igen** értékre.
+    * Állítsa  a Enable_auto_log_backup **értéket igen** értékre.
     * A **log_backup_using_backint** beállítása **igaz** értékre.
     * A **catalog_backup_using_backint** beállítása **igaz** értékre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [állíthatja vissza az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokat](./sap-hana-db-restore.md)
 * Megtudhatja, hogyan [kezelheti SAP HANA-adatbázisok biztonsági mentését a Azure Backup használatával](./sap-hana-db-manage.md)

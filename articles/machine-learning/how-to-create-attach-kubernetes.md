@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e773c2db9c7849dd9680f8ae0c600405f422d7e1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463182"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831924"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -126,7 +126,7 @@ Result
 1.16.13
 ```
 
-Ha **programozottan szeretné megtekinteni az elérhető verziókat**, használja a [Container Service ügyfél-lista](/rest/api/container-service/container%20service%20client/listorchestrators) rendszerszervezőket REST API. Az elérhető verziók megkereséséhez tekintse meg a következő bejegyzéseket: `orchestratorType` `Kubernetes` . A társított `orchestrationVersion` bejegyzések tartalmazzák a munkaterülethez csatlakoztatható elérhető **attached** verziókat.
+Ha **programozottan szeretné megtekinteni az elérhető verziókat**, használja a [Container Service ügyfél-lista](/rest/api/container-service/container%20service%20client/listorchestrators) rendszerszervezőket REST API. Az elérhető verziók megkereséséhez tekintse meg a következő bejegyzéseket: `orchestratorType` `Kubernetes` . A társított `orchestrationVersion` bejegyzések tartalmazzák a munkaterülethez csatlakoztatható elérhető  verziókat.
 
 A fürt Azure Machine Learningon keresztüli **létrehozásakor** használt alapértelmezett verzió megkereséséhez keresse meg azt a bejegyzést, ahol `orchestratorType` az a `Kubernetes` és `default` az `true` . A társított `orchestratorVersion` érték az alapértelmezett verzió. A következő JSON-kódrészlet egy példa bejegyzést mutat be:
 
@@ -281,6 +281,78 @@ Az AK-fürtök portálon való csatlakoztatásával kapcsolatos információkér
 
 ---
 
+## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>AK-fürt létrehozása vagy csatolása TLS-megszakítással
+AK- [fürt létrehozásakor vagy csatolásakor](how-to-create-attach-kubernetes.md)engedélyezheti a TLS-megszakítást **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** és a **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurációs objektumokkal. Mindkét metódus olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik, és a TLS engedélyezéséhez használhatja a **enable_ssl** metódust.
+
+Az alábbi példa bemutatja, hogyan engedélyezheti a TLS-leállítást a TLS-tanúsítványok automatikus létrehozásával és konfigurálásával a motorháztető alatti Microsoft-tanúsítvány használatával.
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # Enable TLS termination when you create an AKS cluster by using provisioning_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+   
+   # Enable TLS termination when you attach an AKS cluster by using attach_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   attach_config.enable_ssl(leaf_domain_label = "contoso")
+
+
+```
+Az alábbi példa bemutatja, hogyan engedélyezheti a TLS-lezárást egyéni tanúsítvánnyal és egyéni tartománynévvel. Egyéni tartomány és tanúsítvány esetén frissítenie kell a DNS-rekordot úgy, hogy az a pontozási végpont IP-címére mutasson, lásd: [a DNS frissítése](how-to-secure-web-service.md#update-your-dns)
+
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+
+   # Enable TLS termination with custom certificate and custom domain when creating an AKS cluster
+   
+   provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+    
+   # Enable TLS termination with custom certificate and custom domain when attaching an AKS cluster
+
+   attach_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
+
+```
+>[!NOTE]
+> További információ arról, hogyan biztosítható a modell üzembe helyezése az AK-fürtökön: a [TLS használata webszolgáltatások biztonságossá tételéhez Azure Machine learning](how-to-secure-web-service.md)
+
+## <a name="create-or-attach-an-aks-cluster-to-use-internal-load-balancer-with-private-ip"></a>AK-fürt létrehozása vagy csatolása belső Load Balancer használatára magánhálózati IP-címmel
+AK-fürt létrehozásakor vagy csatolásakor beállíthatja, hogy a fürt belső Load Balancer használjon. A belső Load Balancer a központi telepítések pontozási végpontjai a virtuális hálózaton belül egy magánhálózati IP-címet használnak. A következő kódrészletek bemutatják, hogyan konfigurálhat belső Load Balancert egy AK-fürthöz.
+```python
+   
+   from azureml.core.compute.aks import AksUpdateConfiguration
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # When you create an AKS cluster, you can specify Internal Load Balancer to be created with provisioning_config object
+   provisioning_config = AksCompute.provisioning_configuration(load_balancer_type = 'InternalLoadBalancer')
+
+   # when you attach an AKS cluster, you can update the cluster to use internal load balancer after attach
+   aks_target = AksCompute(ws,"myaks")
+
+   # Change to the name of the subnet that contains AKS
+   subnet_name = "default"
+   # Update AKS configuration to use an internal load balancer
+   update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
+   aks_target.update(update_config)
+   # Wait for the operation to complete
+   aks_target.wait_for_completion(show_output = True)
+   
+   
+```
+>[!IMPORTANT]
+> A Azure Machine Learning nem támogatja a TLS-megszakítást belső Load Balancerokkal. A belső Load Balancer magánhálózati IP-címmel rendelkezik, és a magánhálózati IP-cím lehet egy másik hálózaton, és a tanúsítvány recused is lehet. 
+
+>[!NOTE]
+> További információ a következtető környezet védelméről: [Azure Machine learning következtetni kívánó környezet biztonságossá tétele](how-to-secure-inferencing-vnet.md)
+
 ## <a name="detach-an-aks-cluster"></a>AK-fürt leválasztása
 
 A fürt munkaterületről való leválasztásához használja az alábbi módszerek egyikét:
@@ -305,6 +377,52 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 Azure Machine Learning Studióban válassza ki a __számítás__, a __következtetési fürtök__ és az eltávolítani kívánt fürtöt. A fürt leválasztásához használja a __leválasztási__ hivatkozást.
+
+---
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+### <a name="update-the-cluster"></a>A fürt frissítése
+
+Az Azure Kubernetes Service-fürtben telepített Azure Machine Learning-összetevők frissítéseit manuálisan kell alkalmazni. 
+
+Ezeket a frissítéseket úgy alkalmazhatja, hogy leválasztja a fürtöt a Azure Machine Learning munkaterületről, majd újra csatolja a fürtöt a munkaterülethez. Ha a TLS engedélyezve van a fürtben, a fürt újbóli csatolásakor meg kell adnia a TLS/SSL-tanúsítványt és a titkos kulcsot. 
+
+```python
+compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
+compute_target.detach()
+compute_target.wait_for_completion(show_output=True)
+
+attach_config = AksCompute.attach_configuration(resource_group=resourceGroup, cluster_name=kubernetesClusterName)
+
+## If SSL is enabled.
+attach_config.enable_ssl(
+    ssl_cert_pem_file="cert.pem",
+    ssl_key_pem_file="key.pem",
+    ssl_cname=sslCname)
+
+attach_config.validate_configuration()
+
+compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceName, attach_configuration=attach_config)
+compute_target.wait_for_completion(show_output=True)
+```
+
+Ha már nem rendelkezik a TLS/SSL-tanúsítvánnyal és a titkos kulccsal, vagy ha Azure Machine Learning által létrehozott tanúsítványt használ, lekérheti a fájlokat a fürt leválasztása előtt a fürthöz való csatlakozással `kubectl` és a titok beolvasásával `azuremlfessl` .
+
+```bash
+kubectl get secret/azuremlfessl -o yaml
+```
+
+>[!Note]
+>A Kubernetes Base-64 kódolású formátumban tárolja a titkokat. Ahhoz, hogy a titkokat el tudja végezni, a 64-es alapszintű dekódolást `cert.pem` és a `key.pem` titkok összetevőit kell megadnia `attach_config.enable_ssl` . 
+
+### <a name="webservice-failures"></a>Webszolgáltatási hibák
+
+Az AK-ban számos webszolgáltatási hiba feloldható a fürthöz való csatlakozással a használatával `kubectl` . Az `kubeconfig.json` AK-fürtöket a következő futtatásával kérheti le:
+
+```azurecli-interactive
+az aks get-credentials -g <rg> -n <aks cluster name>
+```
 
 ## <a name="next-steps"></a>További lépések
 
