@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447319"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739586"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-munkaterületek létrehozása és kezelése 
 
@@ -25,12 +25,14 @@ Az igények változásának vagy az automatizálásra vonatkozó követelmények
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 * Ha a Python SDK-t használja, [telepítse az SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.
 
 ## <a name="limitations"></a>Korlátozások
 
 [!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
+
+Alapértelmezés szerint a Munkaterületek létrehozása is létrehoz egy Azure Container Registry (ACR).  Mivel az ACR jelenleg nem támogatja a Unicode-karaktereket az erőforráscsoport-nevekben, olyan erőforráscsoportot használjon, amely nem tartalmazza ezeket a karaktereket.
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
@@ -154,6 +156,8 @@ Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure M
  1. Az új munkaterület megtekintéséhez válassza az **Ugrás erőforráshoz** lehetőséget.
  
 ---
+
+
 
 ### <a name="networking"></a>Hálózat  
 
@@ -368,6 +372,16 @@ A [Azure Portal](https://portal.azure.com/)a törölni kívánt munkaterület te
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
+
+* A **Azure Machine learning Studio által támogatott böngészők**: javasoljuk, hogy az operációs rendszerével kompatibilis legújabb böngészőt használja. A következő böngészők támogatottak:
+  * Microsoft Edge (az új Microsoft Edge, legújabb verzió. Nem a Microsoft Edge örökölt)
+  * Safari (csak Mac, legújabb verzió)
+  * Chrome (legújabb verzió)
+  * Firefox (legújabb verzió)
+
+* **Azure Portal**: 
+  * Ha az SDK-ból vagy a Azure Portalból közvetlenül a munkaterületre lép, nem tekintheti meg a szabványos **Áttekintés** lapot, amely előfizetési adatokat tartalmaz a bővítményben. Ebben a forgatókönyvben nem válthat másik munkaterületre is. Ha egy másik munkaterületet szeretne megtekinteni, lépjen közvetlenül a [Azure Machine learning studióra](https://ml.azure.com) , és keresse meg a munkaterület nevét.
+  * Minden eszköz (adatkészletek, kísérletek, számítások stb.) csak [Azure Machine learning Studióban](https://ml.azure.com)érhető el. *Nem* érhetők el a Azure Portal.
 
 ### <a name="resource-provider-errors"></a>Erőforrás-szolgáltatói hibák
 

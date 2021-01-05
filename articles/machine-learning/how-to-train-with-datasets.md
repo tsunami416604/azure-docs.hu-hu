@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b6ec9d7035194efc471fc06befad9822c8684a5d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685579"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740674"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 
@@ -30,7 +30,7 @@ Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítana
 
 Az adatkészletek létrehozásához és betanításához a következők szükségesek:
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 
@@ -220,6 +220,7 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+
 ## <a name="directly-access-datasets-in-your-script"></a>A parancsfájlban lévő adatkészletek közvetlen elérése
 
 A regisztrált adatkészletek helyileg és távolról is elérhetők a számítási fürtökön, például az Azure Machine Learning számítási feladatokhoz. A regisztrált adatkészlet kísérletek közötti eléréséhez használja a következő kódot a munkaterület és a regisztrált adatkészlet név szerinti eléréséhez. Alapértelmezés szerint az [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) osztályban lévő metódus a `Dataset` munkaterülethez regisztrált adatkészlet legújabb verzióját adja vissza.
@@ -255,9 +256,36 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="notebook-examples"></a>Jegyzetfüzet-példák
 
 + Az [adatkészlet jegyzetfüzetei](https://aka.ms/dataset-tutorial) bemutatják és kibővítik az ebben a cikkben szereplő fogalmakat.
-+ Ismerje meg, hogyan [parametize adatkészleteket az ml-folyamatokban](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb).
++ Ismerje meg, hogyan [parametrize adatkészleteket az ml-folyamatokban](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+* **Az adatkészlet inicializálása nem sikerült: várakozás a csatlakoztatási pont készenléti időkorlátja**: 
+  * Ha nem rendelkezik kimenő [hálózati biztonsági csoportra](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) vonatkozó szabályokkal, és a-t használja `azureml-sdk>=1.12.0` , a frissítés `azureml-dataset-runtime` és a függőségek a legújabbak lesznek az adott alverziónál, vagy ha fut, akkor hozza létre újra a környezetet, hogy az a javítással rendelkezzen a legújabb javítással. 
+  * Ha a `azureml-sdk<1.12.0` -t használja, frissítsen a legújabb verzióra.
+  * Ha kimenő NSG-szabályokkal rendelkezik, győződjön meg arról, hogy van egy kimenő szabály, amely engedélyezi a szolgáltatás címkéjének minden forgalmát `AzureResourceMonitor` .
+
+### <a name="overloaded-azurefile-storage"></a>Túlterhelt AzureFile-tároló
+
+Ha hibaüzenetet kap `Unable to upload project files to working directory in AzureFile because the storage is overloaded` , alkalmazza a következő megkerülő megoldásokat.
+
+Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmegosztást, a javasolt a Blobok használata, hogy a fájlmegosztás díjmentesen használható legyen a futtatások elküldéséhez. A számítási feladatok felosztása két különböző munkaterület között is lehetséges.
+
+### <a name="passing-data-as-input"></a>Adatok továbbítása bemenetként
+
+*  **TypeError: FileNotFound: nincs ilyen fájl vagy könyvtár**: Ez a hiba akkor fordul elő, ha a megadott elérési út nem az a fájl, ahol a fájl található. Meg kell győződnie arról, hogy a fájlra vonatkozó hivatkozás konzisztens, ha az adatkészletet a számítási célra csatlakoztatta. A determinisztikus állapotának biztosítása érdekében javasoljuk, hogy az absztrakt elérési utat használja az adatkészlet számítási célra való csatlakoztatásakor. A következő kódban például az adathalmazt csatlakoztatjuk a számítási cél fájlrendszerének gyökeréhez `/tmp` . 
+    
+    ```python
+    # Note the leading / in '/tmp/dataset'
+    script_params = {
+        '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+    } 
+    ```
+
+    Ha nem tartalmazza a Lead Forward perjelet, a "/" előtagot kell létrehoznia a munkakönyvtárhoz, például a `/mnt/batch/.../tmp/dataset` számítási célra, hogy jelezze, hová szeretné csatlakoztatni az adatkészletet.
+
+
+## <a name="next-steps"></a>További lépések
 
 * [Gépi tanulási modellek automatikus tanítása](how-to-auto-train-remote.md) a TabularDatasets.
 

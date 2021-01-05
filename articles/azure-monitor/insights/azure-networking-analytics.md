@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: c304354f378708c43c25ef8b92b7b80b37ac03af
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563109"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707690"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure hálózatkezelési figyelési megoldások Azure Monitor
 
@@ -104,6 +104,21 @@ A "részletes mérőszámok megtekintése" lapon megnyílik az előre feltöltö
 
 [![Képernyőkép Application Gateway munkafüzetről](media/azure-networking-analytics/azure-appgw-workbook.png)](media/azure-networking-analytics/application-gateway-workbook.png#lightbox)
 
+### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Új képességek Azure Monitor hálózati adatáttekintési munkafüzettel
+
+> [!NOTE]
+> Azure Monitor bepillantást nem tartalmazó munkafüzethez nem jár további költségek. Log Analytics munkaterület továbbra is használati díjként lesz számlázva.
+
+A hálózati áttekintési munkafüzet lehetővé teszi a Azure Monitor és Log Analytics legújabb képességeinek kihasználását, beleértve a következőket:
+
+* Központosított konzol figyeléshez és hibaelhárításhoz mind a [metrikai](../insights/network-insights-overview.md#resource-health-and-metrics) , mind a naplózási adatokkal.
+
+* Rugalmas vászon az egyéni Rich [vizualizációk](../platform/workbooks-overview.md#visualizations)létrehozásának támogatásához.
+
+* A [munkafüzet-sablonok](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) szélesebb közösséggel való felhasználása és megosztása.
+
+Az új munkafüzet-megoldás képességeivel kapcsolatos további információkért tekintse meg a [munkafüzetek – áttekintés](../platform/workbooks-overview.md)
+
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Migrálás az Azure Gateway Analytics megoldásból Azure Monitor munkafüzetekbe
 
 > [!NOTE]
@@ -119,21 +134,6 @@ A "részletes mérőszámok megtekintése" lapon megnyílik az előre feltöltö
 3. Miután megtekintheti az összes mérőszámot és naplózási információt, hogy kiürítse az Azure Gateway Analytics megoldást a munkaterületről, törölheti a megoldást a megoldás erőforrás-oldaláról.
 
 [![Képernyőkép az Azure Application Gateway Analytics megoldás törlési lehetőségéről.](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
-
-### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Új képességek Azure Monitor hálózati adatáttekintési munkafüzettel
-
-> [!NOTE]
-> Azure Monitor bepillantást nem tartalmazó munkafüzethez nem jár további költségek. Log Analytics munkaterület továbbra is használati díjként lesz számlázva.
-
-A hálózati áttekintési munkafüzet lehetővé teszi a Azure Monitor és Log Analytics legújabb képességeinek kihasználását, beleértve a következőket:
-
-* Központosított konzol figyeléshez és hibaelhárításhoz mind a [metrikai](../insights/network-insights-overview.md#resource-health-and-metrics) , mind a naplózási adatokkal.
-
-* Rugalmas vászon az egyéni Rich [vizualizációk](../platform/workbooks-overview.md#visualizations)létrehozásának támogatásához.
-
-* A [munkafüzet-sablonok](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) szélesebb közösséggel való felhasználása és megosztása.
-
-Az új munkafüzet-megoldás képességeivel kapcsolatos további információkért tekintse meg a [munkafüzetek – áttekintés](../platform/workbooks-overview.md)
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Azure hálózati biztonsági csoport elemzési megoldása Azure Monitor
 

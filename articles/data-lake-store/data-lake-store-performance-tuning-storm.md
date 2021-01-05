@@ -1,17 +1,17 @@
 ---
 title: Teljesítmény-Finomhangolás – Storm és Azure Data Lake Storage Gen1
 description: Megismerheti azokat a tényezőket, amelyeket figyelembe kell venni az Azure Storm-topológiák teljesítményének finomhangolása során, beleértve a gyakori problémák elhárítását is.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 68f30079d85e2064b92718c65b38dbb5069d810b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.author: twooley
+ms.openlocfilehash: 95619c75d332ec1bf68af97fc3dddbc67b6706ed
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101647"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725037"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a Storm on HDInsight és Azure Data Lake Storage Gen1
 
@@ -126,7 +126,7 @@ Ha eléri a Data Lake Storage Gen1 által biztosított sávszélesség korlátai
 
 Ha szeretné megtekinteni, hogy a rendszer leszabályozza-e a szabályozást, engedélyezze a hibakeresési naplózást az ügyféloldali oldalon:
 
-1. A **Ambari**  >  **Storm**  >  **config**  >  **Advanced Storm-Worker-log4j**, Change ** &lt; root level = "info &gt; "** a ** &lt; root level = "debug &gt; "**. A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
+1. A **Ambari**  >  **Storm**  >  **config**  >  **Advanced Storm-Worker-log4j**, Change **&lt; root level = "info &gt; "** a **&lt; root level = "debug &gt; "**. A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
 2. Figyelje a Storm-topológiák naplóit a munkavégző csomópontokon (a/var/log/Storm/Worker-artifacts/ &lt; TopologyName &gt; / &lt; &gt; -port/Worker.log alatt) Data Lake Storage Gen1 szabályozási kivételek esetében.
 
 ## <a name="next-steps"></a>További lépések

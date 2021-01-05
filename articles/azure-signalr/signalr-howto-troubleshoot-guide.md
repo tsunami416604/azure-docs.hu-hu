@@ -1,17 +1,17 @@
 ---
 title: Hibaelhárítási útmutató az Azure SignalR Service-hez
 description: Tudnivalók a gyakori problémák elhárításáról
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 55ad9c90129a5d732f377ac1b6c905c14de319dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607423"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707673"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Hibaelhárítási útmutató az Azure Signaler szolgáltatás gyakori problémáira
 
@@ -63,6 +63,8 @@ services.MapAzureSignalR(GetType().FullName, options =>
             });
 ```
 
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="tls-12-required"></a>TLS 1,2 szükséges
 
 ### <a name="possible-errors"></a>Lehetséges hibák:
@@ -104,11 +106,15 @@ Adja hozzá a következő kódot az indításhoz:
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="400-bad-request-returned-for-client-requests"></a>400 helytelen kérelem érkezett az ügyfelek kéréseihez
 
 ### <a name="root-cause"></a>Gyökérok
 
 Ellenőrizze, hogy az ügyfél kérésére több `hub` lekérdezési karakterlánc van-e. `hub` egy megőrzött lekérdezési paraméter, a 400 pedig kidobja, ha a szolgáltatás egynél többt észlel a `hub` lekérdezésben.
+
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="401-unauthorized-returned-for-client-requests"></a>A rendszer 401-es (Jogosulatlan) hibát ad vissza az ügyfélkérésekre
 
@@ -122,11 +128,13 @@ A ASP.NET Core a jelző más típusú átviteli típusát, az SSE-t és a hossz�
 
 A ASP.NET-jelző esetében az ügyfél időről időre elküld egy életben tartási `/ping` kérelmet a szolgáltatásnak, amikor a `/ping` művelet meghiúsul, az ügyfél **megszakítja** a kapcsolatot, és soha nem csatlakozik újra. Ez azt jelenti, hogy a ASP.NET-jelző esetében az alapértelmezett jogkivonat élettartama **legfeljebb** 1 órát tart a teljes átviteli típushoz.
 
-### <a name="solution"></a>Megvalósítás
+### <a name="solution"></a>Megoldás
 
 Biztonsági okokból az élettartam meghosszabbítása nem ajánlott. Javasoljuk, hogy az ügyfél újracsatlakozási logikájának hozzáadásával indítsa újra a kapcsolatot, ha az 401 történik. Amikor az ügyfél újraindítja a kapcsolódást, a rendszer egyezteti az App Serverrel, hogy újra lekérje az JWT-tokent, és megújított jogkivonatot kapjon.
 
 Az ügyfélkapcsolatok újraindítását [itt](#restart_connection) tekintheti meg.
+
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="404-returned-for-client-requests"></a>A rendszer 404-es hibát ad vissza az ügyfélkérésekre
 
@@ -138,9 +146,13 @@ A Signaler állandó kapcsolat esetén először `/negotiate` Az Azure signaler 
 * Győződjön meg arról, hogy a kérelem URL-címe 404 történik. Ha az URL-cím a webalkalmazásra irányul, és a következőhöz hasonló `{your_web_app}/hubs/{hubName}` , ellenőrizze, hogy az ügyfél `SkipNegotiation` `true` . Az Azure-jelző használatakor az ügyfél megkapja az átirányítási URL-címet, amikor először egyeztet az alkalmazás-kiszolgálóval. Az ügyfél nem hagyhatja figyelmen **kívül** az egyeztetést az Azure-jelző használatakor.
 * Egy másik 404 akkor fordulhat elő, ha a kapcsolódási kérelem a hívása után **5** másodpercnél több időt vesz igénybe `/negotiate` . Ellenőrizze az ügyfél kérelmének időbélyegét, és nyisson meg egy problémát, ha a szolgáltatásra irányuló kérés lassú választ ad.
 
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-aspnet-signalrs-reconnect-request"></a>404 visszaadott ASP.NET-jelző újracsatlakoztatási kérelméhez
 
 A ASP.NET-jelző esetében, amikor az [ügyfél kapcsolata csökken](#client_connection_drop), a kapcsolat leállítása előtt ugyanezt a három alkalommal is újracsatlakoztatja `connectionId` . `/reconnect` segíthet, ha a kapcsolat eldobása olyan hálózati időszakos problémák miatt történik, amelyek `/reconnect` az állandó kapcsolat sikeres újraépítését teszik lehetővé. Más körülmények között például az ügyfélkapcsolatot a rendszer az útválasztásos kiszolgáló kapcsolatainak eldobása miatt eldobta, vagy olyan belső hibákat tartalmaz, mint például a példány újraindítása/feladatátvétel/üzembe helyezés, a kapcsolódás már nem létezik, így `/reconnect` visszatér `404` . Ez a várt viselkedés a `/reconnect` három alkalommal újra próbálkozik a kapcsolatok leállásával. A kapcsolódás leállításakor javasoljuk a [kapcsolatok újraindítási](#restart_connection) logikáját.
+
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>429 (túl sok kérés) lett visszaküldve az ügyfél kéréseihez
 
@@ -155,6 +167,8 @@ A kapcsolatok az ügyfél és a kiszolgáló kapcsolatait is tartalmazzák. [itt
 ### <a name="too-many-negotiate-requests-at-the-same-time"></a>Túl sok egyeztetési kérelem van egy időben.
 
 Javasoljuk, hogy az újrakapcsolódás előtt véletlenszerű késleltetést [adjon meg,](#restart_connection) és próbálkozzon újra a mintákkal.
+
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 hiba az egyeztetés során: az Azure Signaler szolgáltatás még nincs csatlakoztatva, próbálkozzon újra később.
 
@@ -215,6 +229,8 @@ A (z) >= SDK-verzió használatakor `1.0.0` a következők hozzáadásával enge
 
 <a name="client_connection_drop"></a>
 
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="client-connection-drops"></a>Ügyfélkapcsolat-vesztés
 
 Ha az ügyfél az Azure-jelzőhöz csatlakozik, az ügyfél és az Azure-jelző közötti állandó kapcsolat esetenként különböző okok miatt csökkenhet. Ez a szakasz számos olyan lehetőséget ismertet, amely az ilyen jellegű kapcsolatok eldobását okozza, és útmutatást nyújt a kiváltó ok azonosításához.
@@ -240,6 +256,7 @@ Az ügyfélkapcsolatok különféle körülmények között csökkenhetnek:
 2. Tekintse meg az App kiszolgálóoldali eseménynaplóját, és ellenőrizze, hogy az alkalmazáskiszolgáló újraindult-e
 3. Hozzon létre egy problémát, amely megadja az időkeretet, és küldje el nekünk az erőforrás nevét
 
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="client-connection-increases-constantly"></a>Az Ügyfélkapcsolat folyamatosan növekszik
 
@@ -259,7 +276,7 @@ Az ügyfélkapcsolatok hosszú ideje folyamatosan növekednek az Azure-jelző Me
 
 1. Ellenőrizze, hogy a jelző ügyfele **soha nem** zárul-e le.
 
-### <a name="solution"></a>Megvalósítás
+### <a name="solution"></a>Megoldás
 
 Ellenőrizze, hogy be van-e zárva a kapcsolatok. Manuálisan hívja `HubConnection.DisposeAsync()` meg a kapcsolatok leállítását a használat után.
 
@@ -287,13 +304,15 @@ finally
 
 Ez a probléma gyakran fordul elő, ha valaki a Signal-ügyfélkapcsolatot az Azure Function metódusban hozza létre ahelyett, hogy statikus tagot kellene létesítenie a Function osztályba. Előfordulhat, hogy csak egy ügyfélkapcsolatot kell létrehoznia, de az ügyfél-kapcsolatok száma folyamatosan növekszik a Azure Portal erőforrás menüjének figyelés szakaszában lévő mérőszámok között, és ezek a kapcsolatok csak az Azure-függvény vagy az Azure-jelző szolgáltatás újraindítása után jelennek meg. Ennek az az oka, hogy **minden** kérelem esetében az Azure Function **egy** ügyfélkapcsolatot hoz létre, ha nem állítja le az ügyfélkapcsolatot a Function metódusban, az ügyfél életben tartja a kapcsolatokat az Azure signaler szolgáltatásban.
 
-#### <a name="solution"></a>Megvalósítás
+#### <a name="solution"></a>Megoldás
 
 * Ne felejtse el lezárva az ügyfélkapcsolatot, ha a Signaler-ügyfeleket az Azure-függvényben használja, vagy ha a Signaler-ügyfelet különállóként
 * A Signaler-ügyfelek az Azure-függvényben való használata helyett a Signaler-ügyfelek bárhol létrehozhatók, és az [Azure signaler szolgáltatáshoz Azure functions kötések](https://github.com/Azure/azure-functions-signalrservice-extension) használatával [egyeztetik](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/samples/simple-chat/csharp/FunctionApp/Functions.cs#L22) az ügyfelet az Azure-jelzővel. Emellett a kötést is használhatja az [üzenetek küldéséhez](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/samples/simple-chat/csharp/FunctionApp/Functions.cs#L40). Az ügyfél egyeztetésére és az üzenetek küldésére szolgáló mintákat [itt](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples)találja. További információt [itt](https://github.com/Azure/azure-functions-signalrservice-extension)találhat.
 * Ha a Signaler-ügyfeleket az Azure-függvényben használja, a forgatókönyvnek jobb architektúrája lehet. Ellenőrizze, hogy megfelelő kiszolgáló nélküli architektúrát tervez-e. A [Azure functions-ben a signaler szolgáltatás kötéseivel valós idejű kiszolgáló nélküli alkalmazásokat](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService)is megtekintheti.
 
 <a name="server_connection_drop"></a>
+
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="server-connection-drops"></a>A kiszolgáló kapcsolatainak adatvesztése
 
@@ -320,6 +339,8 @@ A kiszolgáló-szolgáltatással létesített kapcsolatokat a **ASRS**(A zure **
 1. Nyissa meg az alkalmazás-kiszolgálóoldali naplót, és ellenőrizze, hogy van-e rendellenes
 2. Tekintse meg az App kiszolgálóoldali eseménynaplóját, és ellenőrizze, hogy az alkalmazáskiszolgáló újraindult-e
 3. Hozzon létre egy problémát, amely megadja az időkeretet, és küldje el nekünk az erőforrás nevét
+
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="tips"></a>Tippek
 
@@ -352,6 +373,8 @@ Vegyen fel ASP.NET Core egyet például (a ASP.NET egy hasonló):
     * [ASP.NET C#-ügyfél](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
     * [ASP.NET JavaScript-ügyfél](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
+
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,17 +1,17 @@
 ---
 title: Az Azure Signaler szolgáltatás hibaelhárítási gyakorlata
 description: Ismerje meg, hogy miként lehet elhárítani a kapcsolódási és üzenetek kézbesítési problémáit
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183957"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707656"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>A kapcsolat és az üzenetek kézbesítésével kapcsolatos problémák elhárítása
 
@@ -28,6 +28,8 @@ Először ellenőriznie kell az Azure Portal, hogy a [ServiceMode](./concept-ser
 * A `Classic` mód esetében tekintse meg a [klasszikus mód hibaelhárítását ismertető témakört](#classic_mode_tsg) .
 
 <a name="default_mode_tsg"></a>
+
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="default-mode-troubleshooting"></a>Alapértelmezett mód hibaelhárítása
 
@@ -73,6 +75,7 @@ A *Kiszolgálói kapcsolatok* a hálózat instabilitása vagy az Azure signaler 
 
 Tekintse meg a kiszolgálóoldali hálózati nyomkövetést az állapotkód megállapításához, és a hiba részletes leírását, a *kiszolgáló kapcsolatának* a *szolgáltatás* által elvetett vagy visszautasított állapotát, valamint a [hibaelhárítási útmutatóban](./signalr-howto-troubleshoot-guide.md)megjelenő kiváltó okot.
 
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ### <a name="how-to-add-logs"></a>Naplók hozzáadása
 
@@ -166,6 +169,8 @@ A [diagnosztikai naplókat](./signalr-howto-diagnostic-logs.md) az Azure signale
 
 <a name="serverless_mode_tsg"></a>
 
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="serverless-mode-troubleshooting"></a>Kiszolgáló nélküli mód – hibaelhárítás
 
 Ha a **ASRS** *kiszolgáló* nélküli módban van, csak **ASP.net Core-jelző** támogatja a `Serverless` módot, és a **ASP.net-jelző** **nem** támogatja ezt a módot.
@@ -174,11 +179,15 @@ A kapcsolati problémák megoldásához `Serverless` a legközvetlenebb tovább�
 
 <a name="classic_mode_tsg"></a>
 
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="classic-mode-troubleshooting"></a>Klasszikus mód hibaelhárítása
 
 `Classic` a mód elavult, és nem javasolt használni. Ebben a módban az Azure Signaler szolgáltatás a csatlakoztatott *kiszolgáló kapcsolatai* alapján határozza meg, hogy az aktuális szolgáltatás `default` mód vagy mód-e `serverless` . Ez bizonyos köztes ügyfélkapcsolati problémákhoz vezethet, mert ha az összes csatlakoztatott *kiszolgáló kapcsolata* hirtelen csökken, például a hálózati instabilitás miatt, az Azure-jelző úgy véli, hogy most már `serverless` üzemmódra vált, és az ebben az időszakban csatlakoztatott ügyfelek soha nem lesznek átirányítva az üzemeltetett alkalmazás-kiszolgálóra. Engedélyezze a [szolgáltatás-oldalsó naplókat](#add_logs_server) , és ellenőrizze, hogy vannak-e olyan ügyfelek, amelyek úgy vannak rögzítve, mintha futtatta `ServerlessModeEntered` az App Servert, azonban néhány ügyfél soha nem éri el az alkalmazáskiszolgáló oldalát Ha van ilyen, [szakítsa meg ezeket az ügyfélkapcsolatokat](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md#API) , és hagyja, hogy az ügyfelek újraindítása segítséget nyújtson.
 
 A hibaelhárítási `classic` mód kapcsolata és az üzenetek kézbesítési problémái hasonlóak az [alapértelmezett módú problémák elhárításához](#default_mode_tsg).
+
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="service-health"></a>Szolgáltatás állapota
 
@@ -196,7 +205,9 @@ A szolgáltatás állapotának állapot API-ját is megtekintheti.
 
 További információ a vész- [helyreállítási](./signalr-concept-disaster-recovery.md)szolgáltatásról.
 
-## <a name="next-steps"></a>Következő lépések
+[Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
+
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban megtanulta, hogyan lehet elhárítani a kapcsolódási és üzenetek kézbesítési problémáit. Azt is megtudhatja, hogyan kezelheti a gyakori problémákat. 
 

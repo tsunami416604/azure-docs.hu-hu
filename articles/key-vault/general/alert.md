@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018120"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724697"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Figyelés és riasztás a Azure Key Vault
 
@@ -40,7 +40,7 @@ Tár **rendelkezésre állása** – ez a metrika mindig a 100%-os lehet. Ez egy
 
 Tár **telítettsége** – a Key Vault által kiszolgálható kérelmek másodpercenkénti száma az elvégezhető művelet típusától függ. Egyes tár-műveleteknél kisebb kérelmek másodpercenkénti száma. Ez a mérőszám összesíti a kulcstartó teljes használatát az összes működési típusban, hogy a rendszer az aktuális kulcstartó-használatot jelző százalékos értéket jelenítse meg. A Key Vault szolgáltatási korlátainak teljes listáját a következő dokumentum tartalmazza. [Az Azure Key Vault szolgáltatáskorlátozásai](service-limits.md)
 
-**Szolgáltatás API-késése** – ez a metrika a Key Vault hívásának átlagos késését mutatja. Bár a kulcstartó a szolgáltatási korlátokon belül lehet, a Key Vault magas kihasználtsága olyan késést eredményezhet, amely az alkalmazások meghibásodását okozza. 
+**Szolgáltatás API-késése** – ez a metrika a Key Vault felé irányuló hívások átlagos késését mutatja a szolgáltatásban mérve. Nem tartalmazza az ügyfél vagy a hálózat által az ügyfél és a szolgáltatás között felhasznált időt.
 
 **API-találatok összesen** – ez a metrika a kulcstartón végrehajtott összes hívást mutatja. Ez segít azonosítani, hogy mely alkalmazások hívja meg a kulcstartót. 
 

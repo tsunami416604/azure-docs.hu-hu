@@ -1,29 +1,29 @@
 ---
-title: Gyors útmutató – Azure Key Vault titkos ügyféloldali kódtár Javához
-description: Gyors útmutató a Azure Key Vault Secret ügyféloldali kódtára Javához.
+title: Gyors útmutató – a Azure Key Vault-tanúsítvány ügyféloldali kódtára a Javához
+description: A Java-hoz készült Azure Key Vault-tanúsítvány ügyféloldali függvénytárának rövid útmutatója.
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
-ms.date: 10/20/2019
+ms.date: 12/18/2020
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 35133b32360f65d70aa1931b31fac6886fd00b02
+ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
 ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732954"
+ms.locfileid: "97733504"
 ---
-# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Rövid útmutató: Azure Key Vault titkos ügyféloldali kódtár a Javához
-Ismerkedjen meg a Javához készült Azure Key Vault Secret ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a csomagot, és próbálja ki az alapszintű feladatokhoz tartozó kódot.
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>Gyors útmutató: Azure Key Vault-tanúsítvány ügyféloldali könyvtára Javához
+Ismerkedjen meg a Javához készült Azure Key Vault-tanúsítvány ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a csomagot, és próbálja ki az alapszintű feladatokhoz tartozó kódot.
 
 További források:
 
-* [Forráskód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets)
+* [Forráskód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates)
 * [API-referenciadokumentáció](https://azure.github.io/azure-sdk-for-java/keyvault.html)
 * [Termékdokumentáció](index.yml)
-* [Példák](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
+* [Példák](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates/src/samples/java/com/azure/security/keyvault/certificates)
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -50,11 +50,11 @@ Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatáva
 2. A böngészőben jelentkezzen be fiókja hitelesítő adataival.
 
 ### <a name="create-a-new-java-console-app"></a>Új Java-konzol alkalmazás létrehozása
-A konzol ablakban a `mvn` parancs használatával hozzon létre egy új Java-konzol alkalmazást a névvel `akv-secrets-java` .
+A konzol ablakban a `mvn` parancs használatával hozzon létre egy új Java-konzol alkalmazást a névvel `akv-certificates-java` .
 
 ```console
-mvn archetype:generate -DgroupId=com.keyvault.secrets.quickstart
-                       -DartifactId=akv-secrets-java
+mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
+                       -DartifactId=akv-certificates-java
                        -DarchetypeArtifactId=maven-archetype-quickstart
                        -DarchetypeVersion=1.4
                        -DinteractiveMode=false
@@ -66,16 +66,16 @@ A projekt generálásának kimenete a következőképpen fog kinézni:
 [INFO] ----------------------------------------------------------------------------
 [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
 [INFO] ----------------------------------------------------------------------------
-[INFO] Parameter: groupId, Value: com.keyvault.secrets.quickstart
-[INFO] Parameter: artifactId, Value: akv-secrets-java
+[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: artifactId, Value: akv-certificates-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Parameter: package, Value: com.keyvault.secrets.quickstart
+[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
 [INFO] Parameter: packageInPathFormat, Value: com/keyvault/quickstart
-[INFO] Parameter: package, Value: com.keyvault.secrets.quickstart
-[INFO] Parameter: groupId, Value: com.keyvault.secrets.quickstart
-[INFO] Parameter: artifactId, Value: akv-secrets-java
+[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: artifactId, Value: akv-certificates-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-secrets-java
+[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-certificates-java
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
@@ -84,10 +84,10 @@ A projekt generálásának kimenete a következőképpen fog kinézni:
 [INFO] ------------------------------------------------------------------------
 ```
 
-Módosítsa a könyvtárat az újonnan létrehozott `akv-secrets-java/` mappára.
+Módosítsa a könyvtárat az újonnan létrehozott `akv-certificates-java/` mappára.
 
 ```console
-cd akv-secrets-java
+cd akv-certificates-java
 ```
 
 ### <a name="install-the-package"></a>A csomag telepítése
@@ -96,8 +96,8 @@ Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá az alábbi f�
 ```xml
     <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-security-keyvault-secrets</artifactId>
-      <version>4.2.3</version>
+      <artifactId>azure-security-keyvault-certificates</artifactId>
+      <version>4.1.3</version>
     </dependency>
 
     <dependency>
@@ -111,10 +111,10 @@ Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá az alábbi f�
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 #### <a name="grant-access-to-your-key-vault"></a>Hozzáférés biztosítása a kulcstartóhoz
-Hozzon létre egy hozzáférési szabályzatot a kulcstartóhoz, amely titkos engedélyeket biztosít a felhasználói fiókjához.
+Hozzon létre egy hozzáférési szabályzatot a kulcstartó számára, amely engedélyeket biztosít a felhasználói fióknak.
 
 ```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --secret-permissions delete get list set purge
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Környezeti változók beállítása
@@ -135,7 +135,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
 ## <a name="object-model"></a>Objektummodell
-A Java-hez készült Azure Key Vault titkos ügyféloldali kódtár lehetővé teszi a titkok kezelését. A [példák](#code-examples) az ügyfelek létrehozására, a titkos kulcs beolvasására és a titkos kód törlésére mutatnak.
+A Java-hoz készült Azure Key Vault-tanúsítvány lehetővé teszi a tanúsítványok kezelését. A [példák](#code-examples) az ügyfelek létrehozására, a tanúsítványok létrehozására, a tanúsítványok lekérésére és a tanúsítványok törlésére mutatnak.
 
 A teljes konzolos alkalmazás [alább](#sample-code)látható.
 
@@ -147,10 +147,13 @@ Adja hozzá a következő irányelveket a kód elejéhez:
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.secrets.SecretClient;
-import com.azure.security.keyvault.secrets.SecretClientBuilder;
-import com.azure.security.keyvault.secrets.models.DeletedSecret;
-import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
+import com.azure.security.keyvault.certificates.CertificateClient;
+import com.azure.security.keyvault.certificates.CertificateClientBuilder;
+import com.azure.security.keyvault.certificates.models.CertificateOperation;
+import com.azure.security.keyvault.certificates.models.CertificatePolicy;
+import com.azure.security.keyvault.certificates.models.DeletedCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
@@ -162,48 +165,44 @@ Az alábbi példában a kulcstartó neve a Key Vault URI-ra van kibontva, a "htt
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
 String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-SecretClient secretClient = new SecretClientBuilder()
+CertificateClient certificateClient = new CertificateClientBuilder()
     .vaultUrl(keyVaultUri)
     .credential(new DefaultAzureCredentialBuilder().build())
     .buildClient();
 ```
 
 ### <a name="save-a-secret"></a>Titkos kód mentése
-Most, hogy az alkalmazás hitelesítése megtörtént, a metódus használatával titkos kulcsot helyezhet a kulcstartóba `secretClient.setSecret` . Ehhez meg kell adni a titkos kulcsot – a "keresési kifejezésként" értéket hozzá kell rendelni az ebben a `secretName` példában szereplő változóhoz.
+Most, hogy az alkalmazás hitelesítése megtörtént, létrehozhat egy tanúsítványt a kulcstartóban a `certificateClient.beginCreateCertificate` metódus használatával. Ehhez a tanúsítványhoz és a tanúsítvány házirendjéhez nevet kell rendelni – a "myCertificate" értéket a `certificateName` mintában lévő változóhoz rendeltük, és alapértelmezett szabályzatot kell használni.
+
+A tanúsítvány létrehozása hosszú ideig futó művelet, amellyel lekérdezheti az előrehaladását, vagy megvárhatja, hogy befejeződjön.
 
 ```java
-secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
+SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
+    certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
+certificatePoller.waitForCompletion();
 ```
 
-Ellenőrizze, hogy a titkos kulcs be van-e állítva az az kulcstartó [Secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) paranccsal:
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
-```
-
-### <a name="retrieve-a-secret"></a>Titkos kód beolvasása
-Most már lekérheti a korábban beállított titkot a `secretClient.getSecret` metódussal.
+A tanúsítványt a létrehozás után a következő hívással szerezheti be:
 
 ```java
-KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
+KeyVaultCertificate createdCertificate = certificatePoller.getFinalResult();
+```
+
+### <a name="retrieve-a-certificate"></a>Tanúsítvány lekérése
+Most már lekérheti a korábban létrehozott tanúsítványt a `certificateClient.getCertificate` metódussal.
+
+```java
+KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
  ```
 
-Most már elérheti a beolvasott titok értékét a használatával `retrievedSecret.getValue()` .
+Most már elérheti a beolvasott tanúsítvány részleteit a (z `retrievedCertificate.getName` ), stb. hasonló műveletekkel `retrievedCertificate.getProperties` . Valamint annak tartalma `retrievedCertificate.getCer` .
 
-### <a name="delete-a-secret"></a>Titkos kulcs törlése
-Végül törölje a titkos kulcsot a Key vaultból a `secretClient.beginDeleteSecret` metódussal.
-
-A titkos törlés hosszú ideig futó művelet, amellyel lekérdezheti az előrehaladását, vagy megvárhatja, hogy befejeződjön.
+### <a name="delete-a-certificate"></a>Tanúsítvány törlése
+Végül törölje a tanúsítványt a kulcstartóból a `certificateClient.beginDeleteCertificate` metódussal, amely szintén hosszú ideig futó művelet.
 
 ```java
-SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(secretName);
+SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
 deletionPoller.waitForCompletion();
-```
-
-Az az kulcstartó [Secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) paranccsal ellenőrizheti, hogy a titkos kulcs törölve lett-e:
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -219,65 +218,57 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="sample-code"></a>Mintakód
 ```java
-package com.keyvault.secrets.quickstart;
-
-import java.io.Console;
+package com.keyvault.certificates.quickstart;
 
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.secrets.SecretClient;
-import com.azure.security.keyvault.secrets.SecretClientBuilder;
-import com.azure.security.keyvault.secrets.models.DeletedSecret;
-import com.azure.security.keyvault.secrets.models.KeyVaultSecret
+import com.azure.security.keyvault.certificates.CertificateClient;
+import com.azure.security.keyvault.certificates.CertificateClientBuilder;
+import com.azure.security.keyvault.certificates.models.CertificateOperation;
+import com.azure.security.keyvault.certificates.models.CertificatePolicy;
+import com.azure.security.keyvault.certificates.models.DeletedCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
 
 public class App {
     public static void main(String[] args) throws InterruptedException, IllegalArgumentException {
         String keyVaultName = System.getenv("KEY_VAULT_NAME");
         String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-        System.out.printf("key vault name = %s and key vault URI = %s \n", keyVaultName, keyVaultUri);
+        System.out.printf("key vault name = %s and kv uri = %s \n", keyVaultName, keyVaultUri);
 
-        SecretClient secretClient = new SecretClientBuilder()
-            .vaultUrl(keyVaultUri)
-            .credential(new DefaultAzureCredentialBuilder().build())
-            .buildClient();
+        CertificateClient certificateClient = new CertificateClientBuilder()
+                .vaultUrl(keyVaultUri)
+                .credential(new DefaultAzureCredentialBuilder().build())
+                .buildClient();
 
-        Console con = System.console();  
+        String certificateName = "myCertificate";
 
-        String secretName = "mySecret";
+        System.out.print("Creating a certificate in " + keyVaultName + " called '" + certificateName + " ... ");
 
-        System.out.println("Please provide the value of your secret > ");
-        
-        String secretValue = con.readLine();
+        SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
+                certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
+        certificatePoller.waitForCompletion();
 
-        System.out.print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with value '" + secretValue + "` ... ");
+        System.out.print("done.");
+        System.out.println("Retrieving certificate from " + keyVaultName + ".");
 
-        secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
+        KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
 
-        System.out.println("done.");
-        System.out.println("Forgetting your secret.");
-        
-        secretValue = "";
-        System.out.println("Your secret's value is '" + secretValue + "'.");
+        System.out.println("Your certificate's ID is '" + retrievedCertificate.getId() + "'.");
+        System.out.println("Deleting your certificate from " + keyVaultName + " ... ");
 
-        System.out.println("Retrieving your secret from " + keyVaultName + ".");
-
-        KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
-
-        System.out.println("Your secret's value is '" + retrievedSecret.getValue() + "'.");
-        System.out.print("Deleting your secret from " + keyVaultName + " ... ");
-
-        SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(secretName);
+        SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
         deletionPoller.waitForCompletion();
 
-        System.out.println("done.");
+        System.out.print("done.");
     }
 }
 ```
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban létrehozta a Key vaultot, tárolt egy titkos kulcsot, lekérte, majd törölte. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
+Ebben a rövid útmutatóban létrehozott egy kulcstartót, létrehozott egy tanúsítványt, lekérte, majd törölte. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
 - Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](../general/developers-guide.md)

@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853925"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732104"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -29,7 +29,7 @@ A privát hivatkozással a következőket teheti:
 
 További információ:  [a privát hivatkozás legfontosabb előnyei](../../private-link/private-link-overview.md#key-benefits).
 
-## <a name="how-it-works"></a>A működési elv
+## <a name="how-it-works"></a>Működés
 
 Azure Monitor a privát hivatkozás hatóköre olyan csoportosítási erőforrás, amely egy vagy több privát végpont (és így a virtuális hálózatok) egy vagy több Azure Monitor erőforráshoz való csatlakoztatására szolgál. Az erőforrások közé tartoznak Log Analytics munkaterületek és Application Insights összetevők.
 
@@ -155,7 +155,7 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
  
    d.    Az érvényesítési fázis engedélyezése. 
  
-   e.    Kattintson a **Létrehozás** gombra. 
+   e.    Kattintson a **Létrehozás** lehetőségre. 
 
     ![Képernyőkép a Select Private Endpoint2 létrehozásáról](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -215,9 +215,9 @@ A hozzáférés ezen a módon való korlátozása csak a Application Insights er
 
 ## <a name="use-apis-and-command-line"></a>API-k és parancssor használata
 
-A korábban ismertetett folyamatot Azure Resource Manager sablonok és parancssori felületek segítségével automatizálhatja.
+A korábban ismertetett folyamatot Azure Resource Manager sablonok, REST és parancssori felületek használatával automatizálhatja.
 
-A privát hivatkozások hatókörének létrehozásához és kezeléséhez használja [az az monitor Private-link-scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)lehetőséget. Ezzel a paranccsal hatóköröket hozhat létre, Log Analytics munkaterületeket és Application Insights összetevőket rendelhet hozzá, és hozzáadhat/eltávolíthat/engedélyezhet privát végpontokat.
+A privát hivatkozások hatókörének létrehozásához és kezeléséhez használja a [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) vagy az [Azure CLI-t (az monitor Private-link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
 
 A hálózati hozzáférés kezeléséhez használja a jelzőket `[--ingestion-access {Disabled, Enabled}]` és `[--query-access {Disabled, Enabled}]` [log Analytics munkaterületeket](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) , vagy [Application Insights összetevőket](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
 
@@ -264,6 +264,6 @@ Csomagolja be a JavaScript-kódot a parancsfájlba, hogy a böngésző ne kísé
 
 Ha privát kapcsolaton keresztül csatlakozik a Azure Monitor-erőforrásokhoz, ezen erőforrás felé irányuló forgalomnak a hálózaton konfigurált privát végponton kell haladnia. A magánhálózati végpont engedélyezéséhez frissítse a DNS-beállításokat a [Kapcsolódás privát végponthoz](#connect-to-a-private-endpoint)című részben leírtak szerint. Egyes böngészők a beállított beállítások helyett a saját DNS-beállításait használják. Előfordulhat, hogy a böngésző megpróbál csatlakozni Azure Monitor nyilvános végpontokhoz, és teljesen megkerüli a privát hivatkozást. Győződjön meg arról, hogy a böngészők beállításai nem felülbírálják vagy gyorsítótárazzák a régi DNS-beállításokat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a [privát tárterületről](private-storage.md)

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 12/16/2020
 ms.custom: generated
-ms.openlocfilehash: c9638ce3509ba181e9f716b3bb427128e50c80ac
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9318ea9d811f2fd490ed6e796b9719c5c482d513
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652891"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707639"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -88,7 +88,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. CognitiveServices](#microsoftcognitiveservices) |
 | [Microsoft. MachineLearning](#microsoftmachinelearning) |
 | [Microsoft.MachineLearningServices](#microsoftmachinelearningservices) |
-| **Eszközök internetes hálózata** |
+| **Dolgok internetes hálózata** |
 | [Microsoft.Devices](#microsoftdevices) |
 | [Microsoft. IoTCentral](#microsoftiotcentral) |
 | [Microsoft. NotificationHubs](#microsoftnotificationhubs) |
@@ -121,7 +121,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. segédösszetevője](#microsoftdevtestlab) |
 | [Microsoft. LabServices](#microsoftlabservices) |
 | [Microsoft. VisualStudio](#microsoftvisualstudio) |
-| **Migrate** |
+| **Migrate (Áttelepítés)** |
 | [Microsoft. Migrálás](#microsoftmigrate) |
 | [Microsoft. OffAzure](#microsoftoffazure) |
 | **Figyelés** |
@@ -638,7 +638,7 @@ Azure-szolgáltatás: [Service Fabric](../service-fabric/index.yml)
 > | Microsoft. ServiceFabric/Locations/Operations/READ | Bármilyen művelet beolvasása hely szerint |
 > | Microsoft. ServiceFabric/Operations/READ | Az összes elérhető művelet beolvasása |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 ### <a name="microsoftcdn"></a>Microsoft. CDN
 
@@ -1887,7 +1887,7 @@ Azure-szolgáltatás: [StorSimple](../storsimple/index.yml)
 > | Microsoft. StorSimple/Managers/storageDomains/operationResults/READ | A művelet eredményeinek megjelenítése vagy beolvasása |
 > | Microsoft. StorSimple/Operations/READ | A műveletek listája vagy beolvasása |
 
-## <a name="web"></a>Webes
+## <a name="web"></a>Web
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
@@ -4651,13 +4651,13 @@ Azure-szolgáltatás: [Power bi Embedded](/azure/power-bi-embedded/)
 > | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. PowerBIDedicated/regisztráció/művelet | Regisztrálja Power BI dedikált erőforrás-szolgáltatót. |
-> | Microsoft. PowerBIDedicated/kapacitások/olvasás | A megadott Power BI dedikált kapacitás információinak beolvasása. |
-> | Microsoft. PowerBIDedicated/kapacitás/írás | Létrehozza vagy frissíti a megadott Power BI dedikált kapacitást. |
-> | Microsoft. PowerBIDedicated/kapacitások/törlés | Törli a Power BI dedikált kapacitást. |
+> | Microsoft. PowerBIDedicated/kapacitások/olvasás | A megadott Power BI kapacitás információinak beolvasása. |
+> | Microsoft. PowerBIDedicated/kapacitás/írás | Létrehozza vagy frissíti a megadott Power BI kapacitást. |
+> | Microsoft. PowerBIDedicated/kapacitások/törlés | Törli a Power BI kapacitást. |
 > | Microsoft. PowerBIDedicated/kapacitások/felfüggesztés/művelet | Felfüggeszti a kapacitást. |
 > | Microsoft. PowerBIDedicated/kapacitások/folytatás/művelet | Folytatja a kapacitást. |
 > | Microsoft. PowerBIDedicated/kapacitás/SKU/READ | Rendelkezésre álló SKU-információk beolvasása a kapacitáshoz |
-> | Microsoft. PowerBIDedicated/Locations/checkNameAvailability/Action | Ellenőrzi, hogy a megadott Power BI dedikált kapacitás neve érvényes-e, és nincs-e használatban. |
+> | Microsoft. PowerBIDedicated/Locations/checkNameAvailability/Action | Ellenőrzi, hogy a megadott Power BI kapacitás neve érvényes-e, és nincs-e használatban. |
 > | Microsoft. PowerBIDedicated/Locations/operationresults/READ | A megadott műveleti eredmény információinak beolvasása. |
 > | Microsoft. PowerBIDedicated/Locations/operationstatuses/READ | Lekéri a megadott műveleti állapot adatait. |
 > | Microsoft. PowerBIDedicated/Operations/READ | A műveletek információinak lekérése |
@@ -7066,7 +7066,7 @@ Azure-szolgáltatás: [Azure DevOps](/azure/devops/)
 > | Microsoft. VisualStudio/Project/delete | Projekt törlése |
 > | Microsoft. VisualStudio/Project/READ | Projekt beolvasása |
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrate (Áttelepítés)
 
 ### <a name="microsoftmigrate"></a>Microsoft. Migrálás
 
@@ -9556,7 +9556,7 @@ Azure-szolgáltatás: [Azure digitális Twins](../digital-twins/index.yml)
 > | Microsoft. DigitalTwins/modellek/írás | Bármely modell létrehozása vagy frissítése |
 > | Microsoft. DigitalTwins/models/delete | Bármely modell törlése |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Beépített Azure-szerepkörök](built-in-roles.md)

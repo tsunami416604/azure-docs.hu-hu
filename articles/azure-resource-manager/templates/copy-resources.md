@@ -2,13 +2,13 @@
 title: Több erőforrás-példány üzembe helyezése
 description: A másolási művelet és tömbök használata Azure Resource Manager sablonban (ARM-sablon) az erőforrástípus többszöri üzembe helyezéséhez.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 7a894ee6a31a43dd8da3d84d88276824c6bbc9f7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 12/21/2020
+ms.openlocfilehash: c9bcb22ec53129520fd9574d0eb58b1e5777531e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672831"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724493"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Erőforrás-iteráció az ARM-sablonokban
 
@@ -189,43 +189,6 @@ Ha például a Storage-fiókokat egyszerre két sorba szeretné telepíteni, has
 
 A `mode` tulajdonság szintén **párhuzamosan** fogadja el az alapértelmezett értéket.
 
-## <a name="depend-on-resources-in-a-loop"></a>Egy hurok erőforrásaitól függ
-
-Azt határozza meg, hogy egy erőforrás központi telepítése egy másik erőforrás után történik a `dependsOn` elem használatával. Ha olyan erőforrást szeretne üzembe helyezni, amely egy hurokban lévő erőforrások gyűjteményéből függ, adja meg a másolási hurok nevét a dependsOn elemben. Az alábbi példa bemutatja, hogyan helyezhet üzembe három Storage-fiókot a virtuális gép telepítése előtt. A virtuális gép teljes definíciója nem jelenik meg. Figyelje meg, hogy a másolási elem neve `storagecopy` és a virtuális gép dependsOn eleme is be van állítva `storagecopy` .
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "copy": {
-        "name": "storagecopy",
-        "count": 3
-      },
-      "properties": {}
-    },
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2015-06-15",
-      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
-      "dependsOn": ["storagecopy"],
-      ...
-    }
-  ],
-  "outputs": {}
-}
-```
-
 ## <a name="iteration-for-a-child-resource"></a>Gyermek erőforrás iterációja
 
 Alárendelt erőforráshoz nem használhat másolási hurkot. Ha egy erőforrás több példányát szeretné létrehozni, amelyet általában egy másik erőforrásban ágyaznak be, ehelyett legfelső szintű erőforrásként kell létrehoznia az erőforrást. A szülő erőforrással létesített kapcsolatot a típus és a név tulajdonsággal határozhatja meg.
@@ -281,16 +244,15 @@ A következő példa a megvalósítást mutatja be:
 
 Az alábbi példák egy erőforrás vagy tulajdonság egynél több példányának létrehozására vonatkozó gyakori forgatókönyveket mutatnak be.
 
-|Sablon  |Description  |
+|Sablon  |Leírás  |
 |---------|---------|
 |[Tárterület másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Egynél több Storage-fiókot telepít a névben. |
 |[Soros másolási tár](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Egyszerre több Storage-fiókot helyez üzembe. A név tartalmazza az index számát. |
 |[Tároló másolása tömbvel](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Több Storage-fiók üzembe helyezése. A név egy tömbből származó értéket tartalmaz. |
-|[VM-telepítés változó számú adatlemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Több adatlemez üzembe helyezése virtuális géppel. |
-|[Több biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Több biztonsági szabályt telepít egy hálózati biztonsági csoportra. A biztonsági szabályokat egy paraméter alapján hozza létre. A paraméternél tekintse meg a [több NSG-paramétert tartalmazó fájlt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
+* A másolási hurokban létrehozott erőforrásokra vonatkozó függőségek beállításához tekintse meg [az erőforrások ARM-sablonokban való üzembe helyezési sorrendjének meghatározása](define-resource-dependency.md)című témakört.
 * Az oktatóanyag lépéseinek megismeréséhez tekintse meg [az oktatóanyag: több erőforrás-példány létrehozása ARM-sablonokkal](template-tutorial-create-multiple-instances.md)című témakört.
 * Az erőforrás-másolást lefedi Microsoft Learn modul esetében lásd: [összetett Felhőbeli központi telepítések kezelése speciális ARM-sablonok használatával](/learn/modules/manage-deployments-advanced-arm-template-features/).
 * A másolási elem egyéb felhasználási módjaiért lásd:

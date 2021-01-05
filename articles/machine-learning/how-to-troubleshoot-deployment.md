@@ -1,7 +1,7 @@
 ---
-title: Távoli webszolgáltatás központi telepítésének hibáinak megoldása
+title: Távoli modellek központi telepítésének hibaelhárítása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogy miként lehet megkerülni, megoldani és elhárítani az általános Docker-telepítési hibákat az Azure Kubernetes Service és a Azure Container Instances használatával.
+description: Ismerje meg, hogy miként lehet megkerülni, megoldani és elhárítani néhány gyakori Docker-telepítési hibát az Azure Kubernetes Service és a Azure Container Instances használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 92cd70e864ae0490ce3f9e7435d9518241f93c8e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4224e301d6410fc97da1f98cd0dd9577c6341cd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031504"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740623"
 ---
-# <a name="troubleshoot-model-deployment"></a>Modell központi telepítésének megoldása
+# <a name="troubleshooting-remote-model-deployment"></a>Távoli modellek központi telepítésének hibaelhárítása 
 
-Megtudhatja, hogyan oldhatja fel a távoli Docker-telepítési hibákat a Azure Container Instances (ACI) és az Azure Kubernetes Service (ak) használatával a Azure Machine Learning segítségével.
+Ismerje meg, hogy miként lehet elhárítani és megoldani a modelleket a Azure Container Instances (ACI) és az Azure Kubernetes Service (ak) szolgáltatással való üzembe helyezése során felmerülő gyakori hibák elhárításához és megoldásához Azure Machine Learning használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -178,6 +178,16 @@ A 504 állapotkód azt jelzi, hogy a kérelem túllépte az időkorlátot. Az al
 
 A felesleges hívások eltávolításához módosítsa a score.py, vagy próbálja meg felgyorsítani a szolgáltatást. Ha ezek a műveletek nem orvosolják a problémát, a jelen cikkben található információk segítségével a score.py-fájl hibakeresését végezheti el. A kód nem válaszoló állapotban vagy végtelen hurokban is lehet.
 
+## <a name="other-error-messages"></a>Egyéb hibaüzenetek
+
+Tegye a következő hibákat a műveletekhez:
+
+|Hiba  | Feloldás  |
+|---------|---------|
+|Rendszerkép-létrehozási hiba a webszolgáltatás telepítésekor     |  A "pynacl = = 1.2.1" hozzáadása pip-függőségként a Conda-fájlhoz a rendszerkép-konfigurációhoz       |
+|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   A központi telepítésben használt virtuális gépek SKU-jának módosítása több memóriával. |
+|FPGA hiba     |  A modelleket nem fogja tudni telepíteni a FPGA, amíg nem kérelmezi és nem hagyta jóvá a FPGA-kvótát. A hozzáférés kéréséhez töltse ki a kvóta kérése űrlapot: https://aka.ms/aml-real-time-ai       |
+
 ## <a name="advanced-debugging"></a>Speciális hibakeresés
 
 Előfordulhat, hogy interaktív hibakeresést kell végeznie a modell üzemelő példányában található Python-kódon. Ha például a bejegyzési parancsfájl meghibásodik, és az ok nem határozható meg további naplózással. A Visual Studio Code és a debugpy használatával a Docker-tárolón belül futó kód is csatolható.
@@ -186,7 +196,7 @@ További információkért tekintse meg az [interaktív hibakeresést a vs Code 
 
 ## <a name="model-deployment-user-forum"></a>[Modell üzembe helyezésének felhasználói fóruma](/answers/topics/azure-machine-learning-inference.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk az üzembe helyezésről:
 

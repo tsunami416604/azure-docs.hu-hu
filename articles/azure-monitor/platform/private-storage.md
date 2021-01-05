@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0a2439f0ed18cf93691a1d0389e049b1b7993d93
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095304"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732060"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Ügyfél által felügyelt Storage-fiókok használata Azure Monitor Log Analytics
 
@@ -32,11 +32,11 @@ Támogatott adattípusok:
 * IIS-naplók
 
 ## <a name="using-private-links"></a>Privát hivatkozások használata
-Az ügyfelek által felügyelt tárolási fiókok bizonyos használati esetekben szükségesek, ha Azure Monitor erőforrásokhoz való kapcsolódásra használják a magánhálózati hivatkozásokat. Az egyik ilyen eset az egyéni naplók vagy az IIS-naplók betöltése. Ezek az adattípusok először blobként lesznek feltöltve egy közvetítő Azure Storage-fiókba, és csak ezután kerülnek be a munkaterületre. Hasonlóképpen, egyes Azure Monitor megoldások a Storage-fiókokat is használhatják a Azure Security Center megoldás által használt nagyméretű fájlok, például a Watson-memóriaképek tárolására. 
+Az ügyfelek által felügyelt tárolási fiókok bizonyos használati esetekben szükségesek, ha Azure Monitor erőforrásokhoz való kapcsolódásra használják a magánhálózati hivatkozásokat. Az egyik ilyen eset az egyéni naplók vagy az IIS-naplók betöltése. Ezek az adattípusok először blobként lesznek feltöltve egy közvetítő Azure Storage-fiókba, és csak ezután kerülnek be a munkaterületre. Hasonlóképpen előfordulhat, hogy egyes Azure Monitor megoldások a Storage-fiókokat a nagyméretű fájlok, például a Azure Security Center (ASC) tárolására használják, amelyeknek szükségük lehet fájlok feltöltésére. 
 
 ##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>Ügyfél által felügyelt tárolót igénylő privát hivatkozásokra vonatkozó forgatókönyvek
 * Egyéni naplók és IIS-naplók betöltése
-* Az ASC-megoldás engedélyezése a Watson-memóriaképek gyűjtéséhez
+* ASC-megoldás engedélyezése fájlok feltöltéséhez
 
 ### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>Ügyfél által felügyelt Storage-fiók használata privát kapcsolaton keresztül
 ##### <a name="workspace-requirements"></a>Munkaterület-követelmények
@@ -45,13 +45,14 @@ Amikor privát kapcsolaton keresztül csatlakozik Azure Monitorhoz, Log Analytic
 Ahhoz, hogy a Storage-fiók sikeresen csatlakozhasson a privát kapcsolathoz, a következőket kell tennie:
 * A VNet vagy egy összekapcsolt hálózaton található, és privát kapcsolaton keresztül csatlakozik a VNet. Ez lehetővé teszi a VNet lévő ügynökök számára a naplók küldését a Storage-fiókba.
 * Ugyanazon a régión kell lennie, mint a munkaterületnek, amelyhez kapcsolódik.
-* A Storage-fiók elérésének engedélyezése Azure Monitor számára. Ha úgy döntött, hogy csak a hálózatok kiválasztását engedélyezi a Storage-fiókhoz, akkor ezt a kivételt is engedélyeznie kell: "a megbízható Microsoft-szolgáltatások hozzáférhetnek ehhez a Storage-fiókhoz". Ez lehetővé teszi Log Analytics számára, hogy beolvassa a Storage-fiókba betöltött naplókat.
+* A Storage-fiók elérésének engedélyezése Azure Monitor számára. Ha úgy döntött, hogy csak a hálózatokat választja a Storage-fiókjához, válassza a "megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiókhoz" kivételt.
+![Storage-fiók megbízhatósága MS Services-rendszerkép](./media/private-storage/storage-trust.png)
 * Ha a munkaterület más hálózatokból is kezeli a forgalmat, akkor konfigurálnia kell a Storage-fiókot, hogy engedélyezze a kapcsolódó hálózatokból/internetről érkező bejövő forgalmat.
 
 ##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>A Storage-fiók összekapcsolása egy Log Analytics munkaterülettel
 A Storage-fiók a munkaterülethez az [Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) -n vagy a [Rest APIon](/rest/api/loganalytics/linkedstorageaccounts)keresztül kapcsolható. Alkalmazható dataSourceType-értékek:
 * CustomLogs – az egyéni naplók és az IIS-naplók tárterületének használata a betöltés során.
-* AzureWatson – használja az ASC (Azure Security Center) megoldás által feltöltött Watson-memóriaképek tárolását. További információ az adatmegőrzés kezeléséről, a társított Storage-fiók lecseréléséről és a Storage-fiók tevékenységének figyeléséről: a [társított Storage-fiókok kezelése](#managing-linked-storage-accounts). 
+* AzureWatson – használja az ASC (Azure Security Center) megoldás által feltöltött fájlok tárolóját. További információ az adatmegőrzés kezeléséről, a társított Storage-fiók lecseréléséről és a Storage-fiók tevékenységének figyeléséről: a [társított Storage-fiókok kezelése](#managing-linked-storage-accounts). 
 
 ## <a name="encrypting-data-with-cmk"></a>Az adattitkosítás a CMK
 Az Azure Storage-ban a Storage-fiókokban tárolt összes adatok titkosítva vannak. Alapértelmezés szerint a Microsoft által felügyelt kulcsokkal (MMK) titkosítja az adataikat. Az Azure Storage azonban lehetővé teszi az ügyfél által felügyelt kulcs (CMK) használatát az Azure Key vaultból a tárolási adatok titkosításához. Importálhatja a saját kulcsait Azure Key Vaultba, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához.
@@ -94,7 +95,7 @@ A Storage-fiókok bizonyos terhelésű olvasási és írási kérelmeket képese
 A Storage-fiókokat a tárolt adatmennyiség, a tároló típusa és a redundancia típusa alapján számítjuk fel. Részletekért lásd: a [Blobok díjszabásának](https://azure.microsoft.com/pricing/details/storage/blobs) és a [Table Storage díjszabásának](https://azure.microsoft.com/pricing/details/storage/tables)blokkolása.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudnivalók az [Azure Private-hivatkozás használatáról a hálózatok Azure monitorhoz való biztonságos csatlakoztatásához](private-link-security.md)
 - Ismerkedjen meg [Azure monitor ügyfél által felügyelt kulcsokkal](customer-managed-keys.md)

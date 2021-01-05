@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: db24fa4721e2e502c5098b415c4cf06da80f697d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 504d3a834760605149c93c0beea84bbe1b59e263
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175678"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707554"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Gyors útmutató: Java-függvény létrehozása az Azure-ban a parancssorból
 
@@ -73,7 +73,7 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     ---
 
     > [!IMPORTANT]
-    > + Akkor használja, `-DjavaVersion=11` Ha a függvényeit Java 11 rendszeren szeretné futtatni. További információ: Java- [verziók](functions-reference-java.md#java-versions). 
+    > + Akkor használja `-DjavaVersion=11` , ha azt szeretné, hogy a függvények Java 11 rendszeren fussanak. További információ: Java- [verziók](functions-reference-java.md#java-versions). 
     > + A `JAVA_HOME` környezeti változót a JDK megfelelő verziójának telepítési helyére kell beállítani a cikk elvégzéséhez.
 
 1. A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse.   
@@ -111,7 +111,7 @@ A válaszüzenetet a [HttpResponseMessage. Builder](/java/api/com.microsoft.azur
 
 #### <a name="pomxml"></a>pom.xml
 
-Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállításai a beépülő modul **konfigurációs** elemében vannak meghatározva a **groupId** `com.microsoft.azure` generált pom.xml fájl GroupID. Az alábbi konfigurációs elem például arra utasítja a Maven-alapú telepítést, hogy hozzon létre egy Function alkalmazást a `java-functions-group` régióban található erőforráscsoporthoz `westus` . A Function alkalmazás maga fut a csomagban lévő Windows rendszeren `java-functions-app-service-plan` , amely alapértelmezés szerint kiszolgáló nélküli fogyasztási csomag.
+Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállításai a beépülő modul **konfigurációs** elemében vannak meghatározva a  `com.microsoft.azure` generált pom.xml fájl GroupID. Az alábbi konfigurációs elem például arra utasítja a Maven-alapú telepítést, hogy hozzon létre egy Function alkalmazást a `java-functions-group` régióban található erőforráscsoporthoz `westus` . A Function alkalmazás maga fut a csomagban lévő Windows rendszeren `java-functions-app-service-plan` , amely alapértelmezés szerint kiszolgáló nélküli fogyasztási csomag.
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
@@ -146,7 +146,7 @@ Az archetípus is létrehoz egy egység tesztet a függvényhez. Ha módosítja 
     </pre>
     
     > [!NOTE]  
-    > Ha a HttpExample nem jelenik meg az alább látható módon, valószínűleg elindította a gazdagépet a projekt gyökérkönyvtárán kívülről. Ebben az esetben a **CTRL** + **C** billentyűkombinációval állítsa le a gazdagépet, navigáljon a projekt gyökérmappa mappájához, és futtassa újra az előző parancsot.
+    > Ha a HttpExample nem jelenik meg a fentiekben látható módon, valószínűleg elindította a gazdagépet a projekt gyökérkönyvtárán kívülről. Ebben az esetben a **CTRL** + **C** billentyűkombinációval állítsa le a gazdagépet, navigáljon a projekt gyökérmappa mappájához, és futtassa újra az előző parancsot.
 
 1. Másolja a függvény URL-címét `HttpExample` ebből a kimenetből egy böngészőbe, és fűzze hozzá a lekérdezési karakterláncot `?name=<YOUR_NAME>` , így a teljes URL-címet, például: `http://localhost:7071/api/HttpExample?name=Functions` . A böngészőben a következőhöz hasonló üzenetnek kell megjelennie `Hello Functions` :
 
@@ -154,7 +154,7 @@ Az archetípus is létrehoz egy egység tesztet a függvényhez. Ha módosítja 
     
     A terminál, amelyben elindította a projektet, a naplók kimenetét is megjeleníti a kérések elkészítésekor.
 
-1. Ha elkészült, használja a **CTRL C billentyűt**, + **C** és válassza `y` a functions gazdagép leállítását.
+1. Ha elkészült, használja a **CTRL C billentyűt**, +  és válassza `y` a functions gazdagép leállítását.
 
 ## <a name="deploy-the-function-project-to-azure"></a>A Function projekt üzembe helyezése az Azure-ban
 
@@ -220,7 +220,7 @@ Remove-AzResourceGroup -Name java-functions-group
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-java)

@@ -1,7 +1,7 @@
 ---
-title: Webszolgáltatás-telepítés helyi hibáinak megoldása
+title: Helyi modell telepítésének hibaelhárítása
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan javíthatja a gyakori Azure Machine Learning Docker-telepítési hibák megoldását és hibaelhárítását helyileg.
+description: Próbálja ki a modell üzembe helyezésével kapcsolatos hibák elhárításának első lépéseként a helyi modell központi telepítését.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 01a5f600acf9542c5adabcdf2523a42ca44233af
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: a879a81ae2bcb4e659c69a801f7c299c10ab3d77
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680509"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740640"
 ---
-# <a name="troubleshoot-model-deployment-locally"></a>Modell telepítésének helyi megoldása
+# <a name="troubleshooting-with-a-local-model-deployment"></a>Hibaelhárítás helyi modell-telepítéssel
 
-Megtudhatja, hogyan oldhatja fel a gyakori Azure Machine Learning Docker-webszolgáltatások központi telepítési hibáit, és hogyan oldható meg a hibaelhárítás és a megoldás.
+Próbálja ki a helyi modell központi telepítését az Azure Container Instances (ACI) vagy az Azure Kubernetes Service (ak) üzembe helyezésének hibaelhárítása során.  A helyi webszolgáltatás használatával egyszerűbbé válik a gyakori Azure Machine Learning Docker-webszolgáltatások telepítési hibáinak kijavítása és javítása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,8 +33,6 @@ Megtudhatja, hogyan oldhatja fel a gyakori Azure Machine Learning Docker-webszol
     A Docker-telepítés ellenőrzéséhez használja a parancsot `docker run hello-world` egy terminálról vagy parancssorból. A Docker telepítésével vagy a Docker-hibák elhárításával kapcsolatos információkért tekintse meg a [Docker dokumentációját](https://docs.docker.com/).
 
 ## <a name="debug-locally"></a>Helyi hibakeresés
-
-Ha a modell ACI-vagy AK-beli üzembe helyezése során problémák merülnek fel, telepítse helyi webszolgáltatásként. Helyi webszolgáltatás használatával könnyebben háríthatók el a problémák.
 
 A [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) -tárházban talál egy [helyi telepítési jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb) egy futtatható-példa megismeréséhez.
 
@@ -123,7 +121,7 @@ print(ws.webservices['mysvc'].get_logs())
 Ha úgy látja, hogy a sor többször is `Booting worker with pid: <pid>` előfordul a naplókban, az azt jelenti, hogy nincs elég memória a feldolgozó elindításához.
 A hibát a következő értékének növelésével kezelheti: `memory_gb``deployment_config`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információk az üzembe helyezésről:
 

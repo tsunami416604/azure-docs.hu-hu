@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: f273902aee47a22bcf29bdf507f617efe242f5a4
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: dd7a336df5ff187b874876db32abb45915e00f3b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505137"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739382"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 
@@ -314,13 +314,13 @@ A modell telepítése során előfordulhat, hogy a szolgáltatás állapota megv
 
 Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 
-| Webszolgáltatás állapota | Description | Végső állapot?
+| Webszolgáltatás állapota | Leírás | Végső állapot?
 | ----- | ----- | ----- |
-| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | No |
-| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | No |
-| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | No |
-| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Yes |
-| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Yes |
+| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
+| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
+| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | Nem |
+| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Igen |
+| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Igen |
 
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Batch-következtetés
@@ -350,8 +350,7 @@ További információ: a [webszolgáltatások dokumentációja. Delete ()](/pyth
 
 ---
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Sikertelen üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
 * [Üzembe helyezés az Azure Kubernetes Service-ben](how-to-deploy-azure-kubernetes-service.md)
