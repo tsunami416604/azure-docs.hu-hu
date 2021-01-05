@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: MT
+ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400675"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746728"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -89,9 +89,67 @@ Az engedélyezési és az Azure Storage-típusok következő kombinációit hasz
 
 \* Az SAS-token és az Azure AD-identitás használható a tűzfallal védett tárolók eléréséhez.
 
-> [!IMPORTANT]
-> A tűzfallal védett tárterület elérésekor csak a felügyelt identitás használható. Engedélyeznie kell a [megbízható Microsoft-szolgáltatásokat... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)az adott erőforrás [-példány rendszerhez rendelt felügyelt identitásának](../../active-directory/managed-identities-azure-resources/overview.md) beállítása és explicit módon történő [hozzárendelése](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) . Ebben az esetben a példányhoz való hozzáférés hatóköre megfelel a felügyelt identitáshoz rendelt Azure-szerepkörnek.
->
+
+### <a name="querying-firewall-protected-storage"></a>Tűzfal által védett tároló lekérdezése
+
+A tűzfallal védett tárolók eléréséhez használhatja a **felhasználói identitást** vagy a **felügyelt identitást**.
+
+#### <a name="user-identity"></a>Felhasználói identitás
+
+A tűzfallal védett tárhely felhasználói identitáson keresztüli eléréséhez az az. Storage PowerShell-modult használhatja.
+#### <a name="configuration-via-powershell"></a>Konfigurálás a PowerShell használatával
+
+Az alábbi lépéseket követve konfigurálja a Storage-fiók tűzfalát, és vegyen fel egy kivételt a szinapszis-munkaterületre.
+
+1. A PowerShell megnyitása vagy a [PowerShell telepítése](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+2. Telepítse a frissített az. Storage-modul: 
+    ```powershell
+    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    ```
+    > [!IMPORTANT]
+    > Győződjön meg arról, hogy az 3.0.1-es vagy újabb verziót használja. Az az. Storage verzióját a következő parancs futtatásával tekintheti meg:  
+    > ```powershell 
+    > Get-Module -ListAvailable -Name  Az.Storage | select Version
+    > ```
+    > 
+
+3. Kapcsolódjon az Azure-bérlőhöz: 
+    ```powershell
+    Connect-AzAccount
+    ```
+4. Változók definiálása a PowerShellben: 
+    - Erőforráscsoport neve – a szinapszis munkaterület áttekintésében találhatja meg Azure Portal.
+    - Fióknév – a tűzfalszabályok által védett Storage-fiók neve.
+    - Bérlő azonosítója – a bérlői adatok Azure Active Directory Azure Portalban találhatja meg.
+    - Erőforrás-azonosító – Azure Portal a szinapszis munkaterület áttekintésében találhatja meg.
+
+    ```powershell
+        $resourceGroupName = "<resource group name>"
+        $accountName = "<storage account name>"
+        $tenantId = "<tenant id>"
+        $resourceId = "<Synapse workspace resource id>"
+    ```
+    > [!IMPORTANT]
+    > Győződjön meg arról, hogy az erőforrás-azonosító megfelel a sablonnak.
+    >
+    > Fontos, hogy a **resourcegroups** -et kisbetűvel írja.
+    > Példa egy erőforrás-azonosítóra: 
+    > ```
+    > /subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Synapse/workspaces/{name-of-workspace}
+    > ```
+    > 
+5. Tárolási hálózati szabály hozzáadása: 
+    ```powershell
+        Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
+    ```
+6. Ellenőrizze, hogy a szabály alkalmazva lett-e a Storage-fiókban: 
+    ```powershell
+        $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
+        $rule.ResourceAccessRules
+    ```
+
+#### <a name="managed-identity"></a>Felügyelt identitás
+Engedélyeznie kell a [megbízható Microsoft-szolgáltatásokat... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)az adott erőforrás [-példány rendszerhez rendelt felügyelt identitásának](../../active-directory/managed-identities-azure-resources/overview.md) beállítása és explicit módon történő [hozzárendelése](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) . Ebben az esetben a példányhoz való hozzáférés hatóköre megfelel a felügyelt identitáshoz rendelt Azure-szerepkörnek.
 
 ## <a name="credentials"></a>Hitelesítő adatok
 
@@ -130,7 +188,7 @@ A kiszolgáló szintű HITELESÍTő adatok nevének meg kell egyeznie a Storage-
 | -------------------------- | ------ | --------------------------------------------------- |
 | Azure Blob Storage         | https  | <storage_account>. blob.core.windows.net             |
 | 1. generációs Azure Data Lake Storage | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| 2. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
+| 2\. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
 
 A kiszolgáló-hatókörű hitelesítő adatok lehetővé teszik az Azure Storage elérését a következő hitelesítési típusok használatával:
 
@@ -318,7 +376,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE 
 GO
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alább felsorolt cikkek segítenek megismerni a különböző típusú mappák, fájltípusok és a nézetek létrehozásának és használatának a lekérdezését:
 

@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: c628ba780ae64fceb32322fdb2004d69e2ebf24b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2645842130b83fe7b4cfb33b9389b19a1306506d
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452755"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756024"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
@@ -21,7 +21,7 @@ ms.locfileid: "96452755"
 
 Ebben az oktatóanyagban a titkokat az Azure Key vaultban érheti el és kéri le, a Secrets Store Container Storage Interface (CSI) illesztőprogram használatával a titkokat a Kubernetes hüvelybe csatlakoztatni.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy egyszerű szolgáltatásnevet, vagy használjon felügyelt identitásokat.
@@ -81,7 +81,7 @@ Fejezze be az [Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI ha
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. A létrehozott AK-fürt metaadatainak megjelenítéséhez használja a következő parancsot. Másolja a **principalId**, a **clientId**, a **subscriptionId** és a **nodeResourceGroup** a későbbi használatra. Ha a KÉRDÉSes fürt nem lett engedélyezve a felügyelt identitásokkal, a **principalId** és a **clientId** null értékű lesz. 
+1. A létrehozott AK-fürt metaadatainak megjelenítéséhez használja a következő parancsot. Másolja a **principalId**, a **clientId**, a **subscriptionId** és a **nodeResourceGroup** a későbbi használatra. Ha az AK-fürt nem lett engedélyezve a felügyelt identitásokkal, a **principalId** és a **clientId** értéke NULL lesz. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup

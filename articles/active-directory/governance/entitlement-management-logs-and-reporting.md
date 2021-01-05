@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783821"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746643"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archiválási naplók és jelentéskészítés az Azure AD-jogosultságok kezelésében Azure Monitor
 
@@ -39,22 +39,22 @@ Az Azure AD-naplók archiválásához a Azure Monitor Azure-előfizetésben kell
  
 1. Válassza ki **Azure Active Directory** majd a bal oldali navigációs menü figyelés területén kattintson a **diagnosztikai beállítások** elemre. Ellenőrizze, hogy van-e már egy beállítás, amely elküldi a naplókat az adott munkaterületnek.
 
-1. Ha még nincs beállítva beállítás, kattintson a **diagnosztikai beállítás hozzáadása**elemre. Az Azure ad- [naplók Azure monitor naplókba való integrálásához](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md#send-logs-to-azure-monitor) kövesse az Azure ad-naplófájlok integrálása az Azure monitor munkaterületre című cikk utasításait.
+1. Ha még nincs beállítva beállítás, kattintson a **diagnosztikai beállítás hozzáadása** elemre. Az Azure ad- [naplók Azure monitor naplókba való integrálásához](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md#send-logs-to-azure-monitor) kövesse az Azure ad-naplófájlok integrálása az Azure monitor munkaterületre című cikk utasításait.
 
     ![Diagnosztikai beállítások ablaktábla](./media/entitlement-management-logs-and-reporting/audit-log-diagnostics-settings.png)
 
 
-1. Miután a rendszer elküldje a naplót Azure Monitorre, válassza a **log Analytics munkaterületek**lehetőséget, majd válassza ki az Azure ad-naplókat tartalmazó munkaterületet.
+1. Miután a rendszer elküldje a naplót Azure Monitorre, válassza a **log Analytics munkaterületek** lehetőséget, majd válassza ki az Azure ad-naplókat tartalmazó munkaterületet.
 
-1. Válassza a **használat és becsült költségek** lehetőséget, majd kattintson **az adatmegőrzés**elemre. Módosítsa a csúszkát arra a napra, ameddig meg szeretné őrizni az adatait, hogy megfeleljenek a naplózási követelményeknek.
+1. Válassza a **használat és becsült költségek** lehetőséget, majd kattintson **az adatmegőrzés** elemre. Módosítsa a csúszkát arra a napra, ameddig meg szeretné őrizni az adatait, hogy megfeleljenek a naplózási követelményeknek.
 
     ![Log Analytics munkaterületek panel](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
 
 1. Később, a munkaterületen tárolt dátumok tartományának megtekintéséhez használhatja az *archivált naplózási dátumtartomány* munkafüzetet:  
     
-    1. Válassza a **Azure Active Directory** lehetőséget, majd kattintson a **munkafüzetek**elemre. 
+    1. Válassza a **Azure Active Directory** lehetőséget, majd kattintson a **munkafüzetek** elemre. 
     
-    1. Bontsa ki a **Azure Active Directory hibaelhárítás**szakaszt, és kattintson az **archivált naplózási dátumtartomány**elemre. 
+    1. Bontsa ki a **Azure Active Directory hibaelhárítás** szakaszt, és kattintson az **archivált naplózási dátumtartomány** elemre. 
 
 
 ## <a name="view-events-for-an-access-package"></a>Hozzáférési csomag eseményeinek megtekintése  
@@ -69,11 +69,11 @@ Egy hozzáférési csomag eseményeinek megtekintéséhez hozzá kell férnie az
 
 Az események megtekintéséhez kövesse az alábbi eljárást: 
 
-1. A Azure Portal válassza a **Azure Active Directory** lehetőséget, majd kattintson a **munkafüzetek**elemre. Ha csak egy előfizetéssel rendelkezik, lépjen tovább a 3. lépésre. 
+1. A Azure Portal válassza a **Azure Active Directory** lehetőséget, majd kattintson a **munkafüzetek** elemre. Ha csak egy előfizetéssel rendelkezik, lépjen tovább a 3. lépésre. 
 
 1. Ha több előfizetéssel rendelkezik, válassza ki a munkaterületet tartalmazó előfizetést.  
 
-1. Válassza ki az *Access Package tevékenység*nevű munkafüzetet. 
+1. Válassza ki az *Access Package tevékenység* nevű munkafüzetet. 
 
 1. Ebben a munkafüzetben válasszon ki egy időtartományt (az **összes** , ha nem biztos), és válassza ki a hozzáférési csomag azonosítóját az adott időtartományban tevékenységet folytató összes hozzáférési csomag legördülő listájából. A rendszer megjeleníti a kiválasztott időtartományban bekövetkezett hozzáférési csomaghoz kapcsolódó eseményeket.  
 
@@ -87,7 +87,7 @@ Létrehozhat saját lekérdezéseket az Azure AD-naplózási eseményeken, bele�
 
 1. A Azure Portal Azure Active Directory kattintson a bal oldali navigációs menü figyelés szakaszában található **naplók** elemre egy új lekérdezési oldal létrehozásához.
 
-1. A munkaterület a lekérdezési oldal bal felső részén jelenik meg. Ha több Azure Monitor munkaterülettel rendelkezik, és az Azure AD-naplózási események tárolására használt munkaterület nem látható, kattintson a **hatókör kiválasztása**elemre. Ezután válassza ki a megfelelő előfizetést és munkaterületet.
+1. A munkaterület a lekérdezési oldal bal felső részén jelenik meg. Ha több Azure Monitor munkaterülettel rendelkezik, és az Azure AD-naplózási események tárolására használt munkaterület nem látható, kattintson a **hatókör kiválasztása** elemre. Ezután válassza ki a megfelelő előfizetést és munkaterületet.
 
 1. Ezután a lekérdezés szövege területen törölje a "keresés *" karakterláncot, és cserélje le a következő lekérdezésre:
 
@@ -95,7 +95,7 @@ Létrehozhat saját lekérdezéseket az Azure AD-naplózási eseményeken, bele�
     AuditLogs | where Category == "EntitlementManagement"
     ```
 
-1. Ezután kattintson a **Futtatás**gombra. 
+1. Ezután kattintson a **Futtatás** gombra. 
 
     ![A lekérdezés indításához kattintson a Futtatás gombra.](./media/entitlement-management-logs-and-reporting/run-query.png)
 
@@ -128,7 +128,7 @@ A szerepkör-hozzárendelés beállításához és a lekérdezés létrehozásá
 
     ![Szerepkör-hozzárendelés hozzáadása](./media/entitlement-management-logs-and-reporting/workspace-set-role-assignment.png)
 
-### <a name="install-azure-powershell-module"></a>Azure PowerShell modul telepítése
+### <a name="install-azure-powershell-module"></a>Azure PowerShell-modul telepítése
 
 Ha rendelkezik a megfelelő szerepkör-hozzárendeléssel, indítsa el a PowerShellt, és [telepítse a Azure PowerShell modult](/powershell/azure/install-az-ps?view=azps-3.3.0) (ha még nem tette meg), írja be a következőt:
 

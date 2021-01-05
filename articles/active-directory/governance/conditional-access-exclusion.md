@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4a18ad04064ef8356e21d106843d6c946f50741
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 426e28048ae370919529ea710717a3a3867d999d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362722"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746252"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok használata a feltételes hozzáférési házirendből kizárt felhasználók felügyeletéhez
 
@@ -63,17 +63,17 @@ Az alábbi lépéseket követve hozzon létre egy új Azure AD-csoportot és egy
 
 ### <a name="create-an-exclusion-group"></a>Kizárási csoport létrehozása
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
-2. A bal oldali navigációs sávon kattintson a **Azure Active Directory** , majd a **csoportok**elemre.
+2. A bal oldali navigációs sávon kattintson a **Azure Active Directory** , majd a **csoportok** elemre.
 
 3. A felső menüben kattintson az **új csoport** elemre a csoport ablaktábla megnyitásához.
 
-4. A **csoport típusa** listában válassza a **Biztonság**elemet. Adja meg a nevet és a leírást.
+4. A **csoport típusa** listában válassza a **Biztonság** elemet. Adja meg a nevet és a leírást.
 
 5. Ügyeljen arra, hogy a **tagság** típusa legyen **hozzárendelve**.
 
-6. Válassza ki a kizárási csoport részét képező felhasználókat, majd kattintson a **Létrehozás**gombra.
+6. Válassza ki a kizárási csoport részét képező felhasználókat, majd kattintson a **Létrehozás** gombra.
 
 ![Új csoport ablaktábla Azure Active Directory](./media/conditional-access-exclusion/new-group.png)
 
@@ -87,11 +87,11 @@ Mostantól létrehozhat egy olyan feltételes hozzáférési szabályzatot, amel
 
 3. Adjon meg egy nevet.
 
-4. A hozzárendelések területen kattintson a **felhasználók és csoportok**elemre.
+4. A hozzárendelések területen kattintson a **felhasználók és csoportok** elemre.
 
-5. A **beágyazás** lapon válassza a **minden felhasználó**lehetőséget.
+5. A **beágyazás** lapon válassza a **minden felhasználó** lehetőséget.
 
-6. A **kizárás** lapon jelölje be a **felhasználók és csoportok** jelölőnégyzetet, majd kattintson a **kizárt felhasználók kiválasztása**lehetőségre.
+6. A **kizárás** lapon jelölje be a **felhasználók és csoportok** jelölőnégyzetet, majd kattintson a **kizárt felhasználók kiválasztása** lehetőségre.
 
 7. Válassza ki a létrehozott kizárási csoportot.
 
@@ -164,7 +164,7 @@ Most, hogy mindent megtesz a hely, a csoport, a feltételes hozzáférési szab�
 
 Rendszergazdaként biztos lehet abban, hogy a kizárási csoportok a szabályzatokhoz való kezelése időnként elkerülhetetlen. A csoportok karbantartásával azonban rendszeresen, a vállalat tulajdonosa vagy a felhasználók is megtekinthetik őket, és az Azure AD hozzáférési felülvizsgálatokkal könnyebben ellenőrizhetők a változások.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)
 - [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

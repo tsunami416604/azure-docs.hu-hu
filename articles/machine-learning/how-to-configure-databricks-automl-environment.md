@@ -1,7 +1,7 @@
 ---
-title: Fejlesztés a autoML & Azure Databricks
+title: Fejlesztés a AutoML & Azure Databricks
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan állíthat be fejlesztési környezetet Azure Machine Learning és Azure Databricks. Használja az Azure ML SDK-kat Databricks és Databricks a autoML-mel.
+description: Ismerje meg, hogyan állíthat be fejlesztési környezetet Azure Machine Learning és Azure Databricks. Használja az Azure ML SDK-kat Databricks és Databricks a AutoML-mel.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ef8ee7718aabb443fda6cd7b276ee53472261913
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 878e6f11645a6478c0d536e9d6d6dac4518c5349
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424348"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740963"
 ---
-# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Fejlesztési környezet beállítása Azure Databricks-és autoML a Azure Machine Learning 
+# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Fejlesztési környezet beállítása Azure Databricks-és AutoML a Azure Machine Learning 
 
 Megtudhatja, hogyan konfigurálhat olyan fejlesztési környezetet Azure Machine Learningban, amely Azure Databricks és automatizált ML-t használ.
 
@@ -32,9 +32,9 @@ További információ a gépi tanulási fejlesztési környezetekről: a [Python
 Azure Machine Learning munkaterület. Ha még nem rendelkezik ilyennel, létrehozhat egy Azure Machine Learning munkaterületet az [Azure Portal](how-to-manage-workspace.md), az [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)és a [Azure Resource Manager sablonok](how-to-create-workspace-template.md)segítségével.
 
 
-## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Databricks Azure Machine Learning és autoML
+## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Databricks Azure Machine Learning és AutoML
 
-A Azure Databricks a Azure Machine Learning és annak autoML képességeivel integrálódik. 
+A Azure Databricks a Azure Machine Learning és annak AutoML képességeivel integrálódik. 
 
 Használhatja Azure Databricks:
 
@@ -68,7 +68,7 @@ Ha a fürt fut, [hozzon létre egy függvénytárat](https://docs.databricks.com
 Az automatikus ML használatához ugorjon [Az Azure ml SDK és a AutoML hozzáadásához](#add-the-azure-ml-sdk-with-automl-to-databricks).
 
 
-1. Kattintson a jobb gombbal arra a munkaterület-mappára, ahol a könyvtárat tárolni szeretné. Válassza **Create** a  >  **könyvtár** létrehozása lehetőséget.
+1. Kattintson a jobb gombbal arra a munkaterület-mappára, ahol a könyvtárat tárolni szeretné. Válassza a  >  **könyvtár** létrehozása lehetőséget.
     
     > [!TIP]
     > Ha régi SDK-verzióval rendelkezik, törölje a fürtöt a telepített tárak közül, és váltson a kukába. Telepítse az új SDK-verziót, és indítsa újra a fürtöt. Ha az újraindítás után probléma merül fel, válassza le és csatlakoztassa újra a fürtöt.
@@ -97,7 +97,7 @@ Az automatikus ML használatához ugorjon [Az Azure ml SDK és a AutoML hozzáad
   ![Azure Machine Learning SDK a Databricks-hez](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>Adja hozzá az Azure ML SDK-t a AutoML és a Databricks
-Ha a fürt Databricks Runtime 7,1-as vagy újabb verzióval lett létrehozva ( *nem* ml), futtassa a következő parancsot a jegyzetfüzet első cellájában a pénzmosás SDK telepítéséhez.
+Ha a fürt Databricks Runtime 7,1-as vagy újabb verzióval lett létrehozva (*nem* ml), futtassa a következő parancsot a jegyzetfüzet első cellájában a pénzmosás SDK telepítéséhez.
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
@@ -120,6 +120,44 @@ Próbálja ki:
  ![ panelt](./media/how-to-configure-environment/azure-db-import.png)
 
 + Megtudhatja, hogyan [hozhat létre egy folyamatot a Databricks, mint a betanítási számításokat](how-to-create-your-first-pipeline.md).
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+* **Hiba a csomagok telepítésekor**
+
+    Azure Machine Learning SDK telepítése sikertelen Azure Databricks Ha további csomagok vannak telepítve. Bizonyos csomagok, például a `psutil` , ütközéseket okozhatnak. A telepítési hibák elkerülése érdekében telepítse a csomagokat a könyvtár verziószámának lefagyasztásával. Ez a probléma a Databricks és nem a Azure Machine Learning SDK-val kapcsolatos. Előfordulhat, hogy ezt a problémát más kódtárak is megtapasztalják. Példa:
+    
+    ```python
+    psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+    ```
+
+    Azt is megteheti, hogy init-parancsfájlokat használ, ha a Python-kódtárakkal együtt tartja a telepítési problémákat. Ez a megközelítés nem támogatott hivatalosan. További információ: [fürtökre kiterjedő init-parancsfájlok](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+
+* **Importálási hiba: a név nem importálható `Timedelta` innen `pandas._libs.tslibs`**: Ha az automatikus gépi tanulást használja, futtassa a következő két sort a jegyzetfüzetben:
+    ```
+    %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
+    %sh /databricks/python/bin/pip install pandas==0.23.4
+    ```
+
+* **Importálási hiba: nincs "pandák. Core. Indexes" nevű modul**: Ha a következő hibaüzenetet látja, amikor automatikus gépi tanulást használ:
+
+    1. Futtassa ezt a parancsot két csomag telepítéséhez a Azure Databricks-fürtön:
+    
+       ```bash
+       scikit-learn==0.19.1
+       pandas==0.22.0
+       ```
+    
+    1. Válassza le, majd csatlakoztassa újra a fürtöt a jegyzetfüzethez.
+    
+    Ha ezek a lépések nem oldják meg a problémát, próbálja meg újraindítani a fürtöt.
+
+* **FailToSendFeather**: Ha `FailToSendFeather` Azure Databricks-fürtön lévő adatolvasáskor hibaüzenet jelenik meg, tekintse át a következő megoldásokat:
+    
+    * `azureml-sdk[automl]`A csomag frissítése a legújabb verzióra.
+    * Adja hozzá a `azureml-dataprep` 1.1.8 vagy újabb verziót.
+    * Adja hozzá a `pyarrow` 0,11-es vagy újabb verziót.
+  
 
 ## <a name="next-steps"></a>További lépések
 

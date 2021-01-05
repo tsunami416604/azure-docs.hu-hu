@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhat további beállítá
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 12/21/2020
 ms.author: v-erkel
-ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497199"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760503"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>További Azure HPC-gyorsítótár beállításainak konfigurálása
 
@@ -29,7 +29,7 @@ A beállítások megjelenítéséhez nyissa meg a gyorsítótár **konfiguráci�
 ## <a name="adjust-mtu-value"></a>MTU értékének módosítása
 <!-- linked from troubleshoot-nas article -->
 
-A gyorsítótár maximális átviteli egységének mérete a legördülő menüben az **MTU-méret**lehetőség kiválasztásával adható meg.
+A gyorsítótár maximális átviteli egységének mérete a legördülő menüben az **MTU-méret** lehetőség kiválasztásával adható meg.
 
 Az alapértelmezett érték 1500 bájt, de módosíthatja azt 1400-ra.
 
@@ -43,7 +43,7 @@ Ha nem szeretné módosítani az MTU-beállításokat más rendszerösszetevők�
 További információ az Azure Virtual Networks MTU-beállításairól: [TCP/IP teljesítmény-hangolás az Azure](../virtual-network/virtual-network-tcpip-performance-tuning.md)-beli virtuális gépekhez.
 
 ## <a name="configure-root-squash"></a>A root squash konfigurálása
-<!-- linked from troubleshoot -->
+<!-- linked from troubleshoot and from access policies -->
 
 A **root squash engedélyezése** beállítás azt szabályozza, hogy az Azure HPC-gyorsítótár hogyan kezeli az ügyfélszámítógépeken a legfelső szintű felhasználótól érkező kéréseket.
 
@@ -54,6 +54,9 @@ Ha a root squash le van tiltva, a rendszer az ügyfél gyökérszintű felhaszn�
 A gyorsítótárban lévő legfelső szintű squash beállításával kompenzálhatja a szükséges ``no_root_squash`` beállítást a tárolási célként használt NAS-rendszereken. (További információ az [NFS-tárolási cél előfeltételeiről](hpc-cache-prerequisites.md#nfs-storage-requirements).) Emellett az Azure Blob Storage-célokkal való használatkor is javíthatja a biztonságot.
 
 Az alapértelmezett beállítás az **Igen**. (A 2020 áprilisa előtt létrehozott gyorsítótárak esetében az alapértelmezett beállítás **nem**.)
+
+> [!TIP]
+> Az [ügyfél-hozzáférési házirendek](access-policies.md#root-squash)testreszabásával is beállíthatja a root squash-t az adott tárolási exportáláshoz.
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>BLOB Storage-célokhoz tartozó Pillanatképek megtekintése
 

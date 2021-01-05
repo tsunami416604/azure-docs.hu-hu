@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 959837ff540fd95d186497858d7b9de1f8b1124d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3fef2f85ca7e7b4034c8582477796d49446ea44
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274010"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746779"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Az Azure AD hozzáférési felülvizsgálatokban lévő csoportok és alkalmazások hozzáférésének áttekintése
 
@@ -69,7 +69,7 @@ Ha megnyitotta a hozzáférési felülvizsgálatot, a hozzáférését láthatja
 
 1. Az **Igen** gombra kattintva megtarthatja a hozzáférését, vagy a **nem** gombra kattintva eltávolíthatja a hozzáférését.
 
-1. Ha az **Igen**gombra kattint, lehet, hogy meg kell adnia egy indoklást az **OK** mezőben.
+1. Ha az **Igen** gombra kattint, lehet, hogy meg kell adnia egy indoklást az **OK** mezőben.
 
     ![Képernyőkép, amely egy befejezett hozzáférési felülvizsgálatot mutat be, amely megkérdezi, hogy továbbra is szüksége van-e egy csoport elérésére, az "igen" beállítással.](./media/review-your-access/perform-access-review-submit.png)
 
@@ -117,7 +117,7 @@ Az új felhasználói felületet a saját hozzáférés a frissített felhaszná
 3. Folytatás a **hozzáférési felülvizsgálat végrehajtása** szakaszban
 
 >[!NOTE]
->Ha a Start Review (indítás) gombra kattint, a **saját alkalmazások** elemre kattintva követheti a **saját alkalmazások portál**című részében ismertetett lépéseket.
+>Ha a Start Review (indítás) gombra kattint, a **saját alkalmazások** elemre kattintva követheti a **saját alkalmazások portál** című részében ismertetett lépéseket.
 
 ### <a name="directly-at-my-access"></a>Közvetlenül a saját hozzáférés
 
@@ -150,7 +150,7 @@ A függőben lévő hozzáférési felülvizsgálatokat a böngésző használat
 
 1. Válassza az **Igen** lehetőséget a hozzáférésének megtartásához, vagy válassza a **nem** lehetőséget a hozzáférés eltávolításához.
 
-1. Ha az **Igen**gombra kattint, lehet, hogy meg kell adnia egy indoklást az **OK** mezőben.
+1. Ha az **Igen** gombra kattint, lehet, hogy meg kell adnia egy indoklást az **OK** mezőben.
 
     ![A hozzáférési felülvizsgálat befejezésével megkérdezte, hogy továbbra is szüksége van-e egy csoport elérésére](./media/review-your-access/review-access-yes-preview.png)
 
@@ -163,6 +163,6 @@ A függőben lévő hozzáférési felülvizsgálatokat a böngésző használat
     > [!NOTE]
     > Ha azt jelezte, hogy már nincs szüksége a hozzáférésre, nem távolítja el azonnal. Ha a felülvizsgálat véget ért, vagy ha a rendszergazda leállítja a felülvizsgálatot, a rendszer eltávolítja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md)

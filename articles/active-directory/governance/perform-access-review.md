@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5cd7a5737b2d13e63eabbbddd076cfc7aff83ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265681"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746796"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférésének áttekintése az Azure AD hozzáférési felülvizsgálatokban
 
@@ -76,15 +76,15 @@ Két módon engedélyezheti vagy tilthatja le a hozzáférést:
     - Egyetlen felhasználó hozzáférésének jóváhagyásához vagy megtagadásához kattintson a sorra egy ablak megnyitásához a végrehajtandó művelet megadásához. 
     - Több felhasználó hozzáférésének jóváhagyásához vagy megtagadásához vegyen fel ellenőrző jeleket a felhasználók mellett, majd kattintson az **X felhasználó ellenőrzése** gombra egy ablak megnyitásához a végrehajtandó művelet megadásához.
 
-1. Kattintson a **jóváhagyás** vagy a **Megtagadás**gombra. 
+1. Kattintson a **jóváhagyás** vagy a **Megtagadás** gombra. 
 
     ![A jóváhagyást, megtagadást és nem ismerő beállításokat tartalmazó művelet ablaka](./media/perform-access-review/approve-deny.png)
     >[!NOTE]
-    > Ha nem biztos benne, akkor kattintson a **nem tudom**gombra. a felhasználó pedig megtartja a hozzáférését, és az Ön választása a naplókban van rögzítve.
+    > Ha nem biztos benne, akkor kattintson a **nem tudom** gombra. a felhasználó pedig megtartja a hozzáférését, és az Ön választása a naplókban van rögzítve.
 
 1. Előfordulhat, hogy a hozzáférési felülvizsgálat rendszergazdája megkövetelheti, hogy adjon meg egy **okot az OK mezőben a** döntéshez. Még akkor is, ha nincs szükség okra. Továbbra is megadhatja a döntés okát, és a benne foglalt információk elérhetők lesznek más felülvizsgálók számára.
 
-1. Miután megadta a végrehajtandó műveletet, kattintson a **Mentés**gombra.
+1. Miután megadta a végrehajtandó műveletet, kattintson a **Mentés** gombra.
 
     >[!NOTE]
     > Bármikor módosíthatja a választ, mielőtt a hozzáférési felülvizsgálat véget ér. Ha módosítani szeretné a választ, válassza ki a sort, és frissítse a választ. Jóváhagyhat például egy korábban megtagadott felhasználót, vagy megtagadhatja a korábban jóváhagyott felhasználókat.
@@ -97,7 +97,7 @@ Két módon engedélyezheti vagy tilthatja le a hozzáférést:
 
 Ahhoz, hogy a hozzáférési felülvizsgálatok könnyebben és gyorsabban elérhetők legyenek, javaslatokat is biztosítunk, amelyek egyetlen kattintással elfogadhatók. A javaslatok a felhasználó bejelentkezési tevékenysége alapján jönnek létre.
 
-1. A lap alján található kék sávban kattintson a **javaslatok elfogadása**elemre.
+1. A lap alján található kék sávban kattintson a **javaslatok elfogadása** elemre.
 
     ![Képernyőkép: a megnyitási javaslatok kiválasztása gomb kiválasztásával megjelenítheti az Open Access felülvizsgálati listáját.](./media/perform-access-review/accept-recommendations.png)
 
@@ -138,7 +138,7 @@ Az új véleményezői élményt a saját hozzáférés frissített felhasznál�
    2. A hozzáférési felülvizsgálat megnyitásához kattintson a **Start Review (áttekintés** ) hivatkozásra.
 
 >[!NOTE]
->Ha a Start Review (indítás) gombra kattint, a **saját alkalmazások** elemre kattintva követheti a **saját alkalmazások portál**című részében ismertetett lépéseket.
+>Ha a Start Review (indítás) gombra kattint, a **saját alkalmazások** elemre kattintva követheti a **saját alkalmazások portál** című részében ismertetett lépéseket.
 
 ### <a name="navigate-to-my-access-directly"></a>Közvetlen hozzáférés
 
@@ -175,7 +175,7 @@ Két módon engedélyezheti vagy tilthatja le a hozzáférést:
 1. Tekintse át a felhasználók listáját, és döntse el, hogy jóváhagyja vagy megtagadja a folyamatos hozzáférést.
 2. Válasszon ki egy vagy több felhasználót a nevük melletti körre kattintva.
 3. Válassza a fenti sáv **jóváhagyás** vagy **Megtagadás** elemét.
-    - Ha nem biztos benne, akkor kattintson a **nem tudom**gombra. A felhasználónak meg kell őriznie a hozzáférését, és az Ön választása a naplókban van rögzítve. Fontos, hogy ne feledje, hogy az Ön által megadott bármilyen információ elérhető lesz a többi felülvizsgáló számára. Elolvashatják a megjegyzéseit, és figyelembe veszik azokat, amikor áttekintik a kérést.
+    - Ha nem biztos benne, akkor kattintson a **nem tudom** gombra. A felhasználónak meg kell őriznie a hozzáférését, és az Ön választása a naplókban van rögzítve. Fontos, hogy ne feledje, hogy az Ön által megadott bármilyen információ elérhető lesz a többi felülvizsgáló számára. Elolvashatják a megjegyzéseit, és figyelembe veszik azokat, amikor áttekintik a kérést.
 
     ![Nyissa meg a hozzáférési felülvizsgálatot, amely felsorolja a felülvizsgálatot igénylő felhasználókat](./media/perform-access-review/user-list-preview.png)
 
@@ -192,7 +192,7 @@ Két módon engedélyezheti vagy tilthatja le a hozzáférést:
 
 Ahhoz, hogy a hozzáférési felülvizsgálatok könnyebben és gyorsabban elérhetők legyenek, javaslatokat is biztosítunk, amelyek egyetlen kattintással elfogadhatók. A javaslatok a felhasználó bejelentkezési tevékenysége alapján jönnek létre.
 
-1. Válasszon ki egy vagy több felhasználót, majd kattintson a **javaslatok elfogadása**elemre.
+1. Válasszon ki egy vagy több felhasználót, majd kattintson a **javaslatok elfogadása** elemre.
 
     ![Hozzáférés-felülvizsgálati lista megnyitása a javaslatok elfogadása gomb megjelenítéséhez](./media/perform-access-review/accept-recommendations-preview.png)
 
@@ -203,6 +203,6 @@ Az összes felhasználóra vonatkozó javaslatok elfogadásához győződjön me
 >[!NOTE]
 >A javaslatok elfogadását követően a korábbi döntések nem változnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának befejezése](complete-access-review.md)

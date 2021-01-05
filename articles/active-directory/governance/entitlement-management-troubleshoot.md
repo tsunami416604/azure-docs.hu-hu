@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bca78195d4fb7bb265c4a7fd8d78ea49a35335b6
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447004"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746711"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Az Azure AD-jogosultságok kezelése – problémamegoldás
 
@@ -69,7 +69,7 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 * Ha egy, a címtárban még nem szereplő felhasználó jelentkezik be a Saját hozzáférés portálra hozzáférési csomag igénylése céljából, akkor meg kell győződni arról, hogy a hitelesítést a szervezeti fiók használatával végzi el. A szervezeti fiók lehet egy fiók az erőforráskönyvtárban vagy egy olyan könyvtárban, amely a hozzáférési csomag valamelyik szabályzatában szerepel. Ha a felhasználó fiókja nem szervezeti fiók, vagy a hitelesítés helyéül szolgáló könyvtár nem szerepel a szabályzatban, akkor a felhasználó nem fogja látni a hozzáférési csomagot. További információ: hozzáférés [kérése egy hozzáférési csomaghoz](entitlement-management-request-access.md).
 
-* Ha a felhasználó számára le van tiltva az erőforráskönyvtárba való bejelentkezés, akkor nem fog tudni hozzáférést kérni a Saját hozzáférés portálon. Ahhoz, hogy a felhasználó hozzáférést igényelhessen, el kell távolítani a bejelentkezés letiltását a felhasználó profiljából. A bejelentkezési blokk eltávolításához kattintson a Azure Portal **Azure Active Directory**, majd a **felhasználók**elemre, majd a felhasználó elemre, végül a **profil**elemre. Szerkessze a **Settings (beállítások** ) szakaszt, és módosítsa a **Letiltás bejelentkezést** a **nem**értékre. További információ: [felhasználói profil adatainak hozzáadása vagy frissítése Azure Active Directory használatával](../fundamentals/active-directory-users-profile-azure-portal.md).  Azt is megtekintheti, hogy a felhasználó blokkolva lett-e egy [Identity Protection-házirend](../identity-protection/howto-identity-protection-remediate-unblock.md)miatt.
+* Ha a felhasználó számára le van tiltva az erőforráskönyvtárba való bejelentkezés, akkor nem fog tudni hozzáférést kérni a Saját hozzáférés portálon. Ahhoz, hogy a felhasználó hozzáférést igényelhessen, el kell távolítani a bejelentkezés letiltását a felhasználó profiljából. A bejelentkezési blokk eltávolításához kattintson a Azure Portal **Azure Active Directory**, majd a **felhasználók** elemre, majd a felhasználó elemre, végül a **profil** elemre. Szerkessze a **Settings (beállítások** ) szakaszt, és módosítsa a **Letiltás bejelentkezést** a **nem** értékre. További információ: [felhasználói profil adatainak hozzáadása vagy frissítése Azure Active Directory használatával](../fundamentals/active-directory-users-profile-azure-portal.md).  Azt is megtekintheti, hogy a felhasználó blokkolva lett-e egy [Identity Protection-házirend](../identity-protection/howto-identity-protection-remediate-unblock.md)miatt.
 
 * Ha a saját hozzáférési portálon, ha a felhasználó egy kérelmező és egy jóváhagyó is, a **jóváhagyások** lapon nem fogja látni a hozzáférési csomagra vonatkozó kérelmét. Ez a viselkedés szándékos – a felhasználók nem hagyhatják jóvá a saját kéréseiket. Győződjön meg arról, hogy a felhasználó által kérelmezett hozzáférési csomaghoz további jóváhagyók vannak konfigurálva a szabályzatban. További információ: [hozzáférési csomag kérésének és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md).
 
@@ -77,15 +77,15 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa, Access Package Manager vagy Access Package hozzárendelés-kezelő
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a **kérelmek**elemre.
+1. Kattintson a **kérelmek** elemre.
 
 1. Válassza ki a megtekinteni kívánt kérelmet.
 
-    Ha a kérelem kézbesítési hibával rendelkezik, a kérelem állapota nem **kézbesítve** vagy **részben kézbesítve**lesz.
+    Ha a kérelem kézbesítési hibával rendelkezik, a kérelem állapota nem **kézbesítve** vagy **részben kézbesítve** lesz.
 
     Ha kézbesítési hibák merülnek fel, a kérelem részletei ablaktábláján megjelennek a kézbesítési hibák száma.
 
@@ -99,21 +99,21 @@ Csak olyan kérelmeket lehet újra feldolgozni, amelyeknek a **kézbesítési á
 
 ![Szürkén jelenik meg a gomb újrafeldolgozása](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
-- Ha a hiba a próbaverziók ablakában van kijavítva, a kérelem állapota a **kézbesítés**értékre változik. A kérés a felhasználó további műveletei nélkül újra fel lesz dolgozva.
+- Ha a hiba a próbaverziók ablakában van kijavítva, a kérelem állapota a **kézbesítés** értékre változik. A kérés a felhasználó további műveletei nélkül újra fel lesz dolgozva.
 
 - Ha a hiba nem lett javítva a próbaverziók ablakban, előfordulhat, hogy a kérelem **kézbesítése nem sikerült** vagy **részben kézbesítve**. Ezután használhatja az **újrafeldolgozás** gombot. A kérelem újrafeldolgozása hét nap múlva elvégezhető.
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa, Access Package Manager vagy Access Package hozzárendelés-kezelő
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a **kérelmek**elemre.
+1. Kattintson a **kérelmek** elemre.
 
 1. Kattintson az újradolgozni kívánt kérelemre.
 
-1. A kérelem részletei ablaktáblán kattintson a **kérelem újrafeldolgozása**elemre.
+1. A kérelem részletei ablaktáblán kattintson a **kérelem újrafeldolgozása** elemre.
 
     ![Sikertelen kérelem újrafeldolgozása](./media/entitlement-management-troubleshoot/reprocess-request.png)
 
@@ -123,15 +123,15 @@ Csak olyan függőben lévő kérést lehet megszakítani, amely még nem lett k
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa, Access Package Manager vagy Access Package hozzárendelés-kezelő
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Kattintson a **kérelmek**elemre.
+1. Kattintson a **kérelmek** elemre.
 
 1. Kattintson a megszakítani kívánt kérelemre.
 
-1. A kérelem részletei ablaktáblán kattintson a **kérelem megszakítása**elemre.
+1. A kérelem részletei ablaktáblán kattintson a **kérelem megszakítása** elemre.
 
 ## <a name="multiple-policies"></a>Több házirend
 
@@ -150,7 +150,7 @@ Csak olyan függőben lévő kérést lehet megszakítani, amely még nem lett k
     
     Ha bármelyik szabályzat magasabb prioritású kategóriába tartozik, a rendszer figyelmen kívül hagyja az alacsonyabb prioritású kategóriákat. Ha például azt szeretné, hogy az azonos prioritású házirendek hogyan jelenjenek meg a kérelmező számára, tekintse meg a szabályzat [kiválasztása](entitlement-management-request-access.md#select-a-policy)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Külső felhasználók hozzáférésének szabályozása](entitlement-management-external-users.md)
 - [A felhasználók hozzáférési jogosultságok kezelésével kapcsolatos jelentések megtekintése](entitlement-management-reports.md)

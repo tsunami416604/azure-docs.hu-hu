@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22cef5919e597d4cd83ad80f5758a0427c52e2bb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e1031df9f305015048de7f708123a51875776e1b
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219734"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760588"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Adatok tárolása a peremhálózaton az Azure Blob Storage az IoT Edge-ben segítségével
 
@@ -71,7 +71,7 @@ Egy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az A
 
 ## <a name="devicetocloudupload-and-deviceautodelete-properties"></a>deviceToCloudUpload és deviceAutoDelete tulajdonságai
 
-A **deviceToCloudUploadProperties** és a **deviceAutoDeleteProperties**beállításához használja a modul kívánt tulajdonságait. A kívánt tulajdonságok az üzembe helyezés során állíthatók be, és később is megváltozhatnak, ha a modult az újbóli üzembe helyezés nélkül szerkeszti. Javasoljuk, hogy ellenőrizze a "Twin modul" `reported configuration` értékét, és győződjön `configurationValidation` meg arról, hogy az értékek megfelelően propagálva vannak.
+A **deviceToCloudUploadProperties** és a **deviceAutoDeleteProperties** beállításához használja a modul kívánt tulajdonságait. A kívánt tulajdonságok az üzembe helyezés során állíthatók be, és később is megváltozhatnak, ha a modult az újbóli üzembe helyezés nélkül szerkeszti. Javasoljuk, hogy ellenőrizze a "Twin modul" `reported configuration` értékét, és győződjön `configurationValidation` meg arról, hogy az értékek megfelelően propagálva vannak.
 
 ### <a name="devicetoclouduploadproperties"></a>deviceToCloudUploadProperties
 
@@ -81,7 +81,7 @@ A beállítás neve: `deviceToCloudUploadProperties` . Ha a IoT Edge szimulátor
 | ----- | ----- | ---- |
 | uploadOn | igaz, hamis | Alapértelmezett értékre van állítva `false` . Ha be szeretné kapcsolni a szolgáltatást, állítsa ezt a mezőt a következőre: `true` . <br><br> Környezeti változó: `deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst, OldestFirst | Lehetővé teszi az Azure-ba történő adatmásolási sorrend kiválasztását. Alapértelmezett értékre van állítva `OldestFirst` . A sorrendet a blob utolsó módosítási ideje határozza meg. <br><br> Környezeti változó: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` a egy olyan kapcsolódási karakterlánc, amely lehetővé teszi, hogy megadja azt a Storage-fiókot, amelyhez az adatait fel szeretné tölteni. Itt adhatja meg:, `Azure Storage Account Name` `Azure Storage Account Key` `End point suffix` . Adja hozzá a megfelelő EndpointSuffix az Azure-ban, ahol az adatfeltöltés megtörténik, és ez a globális Azure, a Government Azure és a Microsoft Azure Stack számára is változhat. <br><br> Itt adhatja meg az Azure Storage SAS-kapcsolódási karakterláncát. Ezt a tulajdonságot azonban akkor kell frissítenie, amikor lejár. <br><br> Környezeti változó: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` a egy olyan kapcsolódási karakterlánc, amely lehetővé teszi, hogy megadja azt a Storage-fiókot, amelyhez az adatait fel szeretné tölteni. Itt adhatja meg:, `Azure Storage Account Name` `Azure Storage Account Key` `End point suffix` . Adja hozzá a megfelelő EndpointSuffix az Azure-ban, ahol az adatfeltöltés megtörténik, és ez a globális Azure, a Government Azure és a Microsoft Azure Stack számára is változhat. <br><br> Itt adhatja meg az Azure Storage SAS-kapcsolódási karakterláncát. Ezt a tulajdonságot azonban akkor kell frissítenie, amikor lejár. Az SAS-engedélyek tartalmazhatják tárolók elérését, valamint a blobokhoz való hozzáférés létrehozását, írását és hozzáadását.  <br><br> Környezeti változó: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Lehetővé teszi az Azure-ba feltölteni kívánt tárolók nevének megadását. Ez a modul lehetővé teszi a forrás és a cél tároló nevének megadását. Ha nem adja meg a cél tároló nevét, a rendszer automatikusan hozzárendeli a tároló nevét `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` . Létrehozhat sablon sztringeket a cél tároló neveként, tekintse meg a lehetséges értékek oszlopot. <br>*% h – > IoT Hub neve (3-50 karakter). <br>*% d – > IoT Edge eszköz azonosítója (1 – 129 karakter). <br>*% m – > modul neve (1 – 64 karakter). <br>*% c – > a forrás tárolójának neve (3 – 63 karakter). <br><br>A tároló nevének maximális mérete 63 karakter, a cél tároló nevének automatikus kiosztása, ha a tároló mérete meghaladja az 63 karaktert, az egyes szakaszokat (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) 15 karakterre fogja felmetszeni. <br><br> Környezeti változó: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | igaz, hamis | Alapértelmezett értékre van állítva `false` . Ha a értékre van állítva `true` , akkor a rendszer automatikusan törli az adatok törlését a felhőalapú tárhelyre való feltöltés befejezésekor. <br><br> **Vigyázat**: Ha hozzáfűzési blobokat használ, ez a beállítás a sikeres feltöltés után törli a helyi tárolóban lévő hozzáfűzési blobokat, és a Blobok további hozzáfűzési műveletei sikertelenek lesznek. Ezt a beállítást körültekintően használja, ne engedélyezze ezt, ha az alkalmazás nem gyakori hozzáfűzési műveleteket végez, vagy nem támogatja a folyamatos hozzáfűzési műveleteket<br><br> Környezeti változó: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` . |
 
@@ -143,7 +143,7 @@ sudo chown -R 11000:11000 /srv/containerdata
 sudo chmod -R 700 /srv/containerdata
 ```
 
-Ha a szolgáltatást a **absie**eltérő felhasználóként kell futtatnia, akkor az egyéni felhasználói azonosítót a CreateOptions "felhasználó" tulajdonságában adhatja meg a telepítési jegyzékben. Ebben az esetben az alapértelmezett vagy a gyökérszintű csoport AZONOSÍTÓját kell használnia `0` .
+Ha a szolgáltatást a **absie** eltérő felhasználóként kell futtatnia, akkor az egyéni felhasználói azonosítót a CreateOptions "felhasználó" tulajdonságában adhatja meg a telepítési jegyzékben. Ebben az esetben az alapértelmezett vagy a gyökérszintű csoport AZONOSÍTÓját kell használnia `0` .
 
 ```json
 "createOptions": {
@@ -300,7 +300,7 @@ Visszajelzése fontos számunkra, hogy ez a modul és funkciói hasznos és kön
 
 A következő címen érhető el: absiotfeedback@microsoft.com
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [helyezheti üzembe az Azure Blob Storaget IoT Edge](how-to-deploy-blob.md)
 

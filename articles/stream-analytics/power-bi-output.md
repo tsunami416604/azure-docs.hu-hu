@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 29bd4dc5cabe8b29efe7b89395c5e7d36bd0347a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cc48d26c217f52dfa52ac6cd3d7f18a806c93927
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129779"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740980"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics Power BI kimenete
 
@@ -29,7 +29,7 @@ A következő táblázat felsorolja a tulajdonságok nevét és leírásait a Po
 | Kimeneti alias |Adjon meg egy rövid nevet, amelyet a lekérdezésekben használ a lekérdezés kimenetének a Power BI kimenetre való irányításához. |
 | Csoport munkaterülete |Ha az adatmegosztást más Power BI felhasználókkal szeretné engedélyezni, válassza ki a csoportokat a Power BI-fiókban, vagy válassza **a saját munkaterület** lehetőséget, ha nem szeretne írni egy csoportba. Egy meglévő csoport frissítéséhez a Power BI hitelesítés megújítása szükséges. |
 | Adatkészlet neve |Adja meg azt az adatkészlet-nevet, amelyet a Power BI kimenetének használni szeretne. |
-| Tábla neve |Adja meg a tábla nevét a Power BI kimenetének adatkészletében. Jelenleg Power BI Stream Analytics feladatokból származó kimenetnek csak egy táblája lehet egy adatkészletben. |
+| Table name (Táblázat neve) |Adja meg a tábla nevét a Power BI kimenetének adatkészletében. Jelenleg Power BI Stream Analytics feladatokból származó kimenetnek csak egy táblája lehet egy adatkészletben. |
 | Kapcsolat engedélyezése | A kimeneti beállítások konfigurálásához engedélyeznie kell a Power BI. Miután engedélyezte ezt a kimenetet a Power BI-irányítópulthoz, visszavonhatja a hozzáférést a felhasználói fiók jelszavának módosításával, a feladatok kimenetének törlésével vagy a Stream Analytics feladatok törlésével. | 
 
 A Power BI kimenetének és irányítópultjának konfigurálásához lásd: [Azure stream Analytics és Power bi](stream-analytics-power-bi-dashboard.md) oktatóanyag.
@@ -78,11 +78,7 @@ Datetime | Sztring | Sztring |  Datetime | Sztring
 
 A kimeneti köteg mérete: [Power bi REST API-korlátok](/power-bi/developer/automation/api-rest-api-limitations).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
+* [Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI (előzetes verzió)](powerbi-output-managed-identity.md)
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
-* [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)
-* [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása ARM-sablon használatával](quick-create-azure-resource-manager.md)
-* [Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
-* [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md)

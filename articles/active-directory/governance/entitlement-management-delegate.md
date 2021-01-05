@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2cf3784cc5f6014b04b4668517faf3f319ce55d5
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362552"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746677"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében
 
@@ -139,7 +139,7 @@ Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhaszná
 
 Egy feladat legkevésbé Kiemelt szerepkörének meghatározásához [a rendszergazdai szerepkörök a Azure Active Directoryban](../roles/delegate-by-task.md#entitlement-management)is hivatkozhatnak a rendszergazda szerepkörre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzáférési szabályozás delegálása a katalógus-létrehozók számára](entitlement-management-delegate-catalog.md)
 - [Erőforrások katalógusának létrehozása és kezelése](entitlement-management-catalog-create.md)

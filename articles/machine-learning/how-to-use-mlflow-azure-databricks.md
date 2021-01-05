@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 72079cc399eea249bce4d285e2c3c4fbf9304708
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319031"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760605"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Azure Databricks ML-kísérletek nyomon követése MLflow és Azure Machine Learning (előzetes verzió)
 
@@ -43,7 +43,7 @@ További MLflow és Azure Machine Learning funkciók integrálásához tekintse 
 
 A MLflow követése Azure Machine Learning lehetővé teszi a naplózott metrikák és összetevők tárolását a Azure Databricks a következőkre: 
 
-* Azure Databricks-munkaterület.
+* Azure Databricks munkaterület.
 * Azure Machine Learning-munkaterület
 
 Miután létrehozta a Azure Databricks-munkaterületet és a fürtöt, 
@@ -156,9 +156,9 @@ A modell betanítása után naplózhatja és regisztrálhatja a modelleket a há
 
 Alapértelmezés szerint a háttér-nyomkövetési kiszolgáló a Azure Databricks munkaterület. Ha úgy döntött, hogy a [MLflow-követést csak a Azure Machine learning munkaterület nyomon követésére állítja be](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace), akkor a háttér-követési kiszolgáló a Azure Machine learning munkaterület.   
 
-* **Ha a nevű regisztrált modell nem létezik** , a metódus regisztrálja az 1. verziót, és egy ModelVersion MLflow objektumot ad vissza. 
+* **Ha a nevű regisztrált modell nem létezik**, a metódus regisztrálja az 1. verziót, és egy ModelVersion MLflow objektumot ad vissza. 
 
-* **Ha már létezik ilyen nevű regisztrált modell** , a metódus létrehoz egy új modell-verziót, és visszaadja a Version objektumot. 
+* **Ha már létezik ilyen nevű regisztrált modell**, a metódus létrehoz egy új modell-verziót, és visszaadja a Version objektumot. 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -180,8 +180,8 @@ Ha készen áll egy végpont létrehozására az ML-modellekhez. A következők�
 A [mlflow. azureml. Deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) API-t használhatja modell üzembe helyezéséhez a Azure Machine learning munkaterületen. Ha a modellt csak a Azure Databricks munkaterületre regisztrálta, a [modellek regisztrálása MLflow](#register-models-with-mlflow) szakaszban leírtak szerint, akkor a `model_name` modellnek Azure Machine learning munkaterületre való regisztrálásához a paramétert kell megadnia. 
 
 Azure Databricks futtatások a következő végpontokra telepíthetők. 
-* [Azure Container Instance](how-to-use-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-use-mlflow.md#deploy-to-aks)
+* [Azure Container-példány](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
+* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>Modellek üzembe helyezése az ADB-végpontokon a Batch-pontozáshoz 
 
@@ -224,13 +224,13 @@ Ha nem tervezi a naplózott metrikák és összetevők használatát a munkater�
 
 1. Válassza az **Erőforráscsoport törlése** elemet.
 
-1. Adja meg az erőforráscsoport nevét. Ezután válassza a **Törlés** elemet.
+1. Írja be az erőforráscsoport nevét. Ezután válassza a **Törlés** elemet.
 
 ## <a name="example-notebooks"></a>Példajegyzetfüzetek
 
 A [Azure Machine learning notebookokkal rendelkező MLflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A modellek kezelése](concept-model-management-and-deployment.md).
 * [A kísérlet futtatásának nyomon követése és végpontok létrehozása a MLflow és a Azure Machine learning](how-to-use-mlflow.md). 

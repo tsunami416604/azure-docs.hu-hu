@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: c3931cafb6c755c6119bf8deb4ecc6b58ea7bc51
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5e633b5e4b2ff2ce884bfaf99e3730968150cbed
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938443"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746371"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Az Azure DDoS Protection Standard áttekintése
 
@@ -33,8 +33,8 @@ Az Azure DDoS Protection nem tárolja az ügyféladatokat.
 ## <a name="features"></a>Funkciók
 
 - **Natív platform-integráció:** Natív módon integrálva az Azure-ba. A Azure Portal konfigurációját tartalmazza. A DDoS Protection standard értelmezése az erőforrásokat és az erőforrás-konfigurációt.
-- **Kulcsrakész védelem:** Az egyszerűsített konfiguráció azonnal megvédi a virtuális hálózat összes erőforrását, amint DDoS Protection standard engedélyezve van. Nincs szükség beavatkozásra vagy felhasználói definícióra. A rendszer azonnal DDoS Protection a standardot, és automatikusan csökkenti a támadásokat, amint azt észlelte.
-- **Folyamatos forgalom figyelése:** Az alkalmazás forgalmi mintáit napi 24 órában, hetente 7 nappal figyelik, a DDoS-támadások mutatóit keresve. A rendszer a védelmi házirendek túllépése esetén csökkenti a megoldást.
+- **Kulcsrakész védelem:** Az egyszerűsített konfiguráció azonnal megvédi a virtuális hálózat összes erőforrását, amint DDoS Protection standard engedélyezve van. Nincs szükség beavatkozásra vagy felhasználói definícióra. 
+- **Folyamatos forgalom figyelése:** Az alkalmazás forgalmi mintáit napi 24 órában, hetente 7 nappal figyelik, a DDoS-támadások mutatóit keresve. A rendszer azonnal DDoS Protection a standardot, és automatikusan csökkenti a támadásokat, amint azt észlelte.
 - **Adaptív hangolás:** Az intelligens forgalmi profilkészítés az idő múlásával megtanulja az alkalmazás forgalmát, és kiválasztja és frissíti a szolgáltatás számára legmegfelelőbb profilt. A profil a forgalmi változások időbeli változásával változik.
 - **Többrétegű védelem:** A teljes verem DDoS-védelmet biztosít webalkalmazási tűzfallal való használat esetén, hogy a hálózati réteg (3. réteg és Azure DDoS Protection 4. réteg) és az alkalmazási réteg (a WAF által kínált 7. réteg) esetében is védelmet kapjon. A WAF-ajánlatok közé tartoznak az Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , valamint az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)elérhető, harmadik féltől származó webalkalmazási tűzfalak is.
 - **Széleskörű kockázatcsökkentő skála:** Több mint 60 különböző támadási típust lehet mérsékelni, globális kapacitással, hogy védelmet nyújtson a legnagyobb ismert DDoS-támadásokkal szemben.
@@ -42,13 +42,13 @@ Az Azure DDoS Protection nem tárolja az ügyféladatokat.
 - **Támadási metrikák:** Az egyes támadások összesített metrikái a Azure Monitoron keresztül érhetők el.
 - **Támadási riasztások:** A riasztások a támadás indításakor és leállításakor, valamint a támadás időtartamán keresztül konfigurálhatók a beépített támadási metrikák használatával. A riasztások integrálva vannak az operatív szoftverbe, például Microsoft Azure a monitorozási naplók, a splunk, az Azure Storage, az E-mail és a Azure Portal.
 - **DDoS gyors válasz**: a DDoS Protection Rapid Response (DRR) csapatának segítségére van a támadás kivizsgálásához és elemzéséhez. További információ: [DDoS gyors válasz](ddos-rapid-response.md).
-- **Cost garancia:** Adatátviteli és alkalmazás-kibővített szolgáltatási kreditek a dokumentált DDoS-támadásokhoz.
+- **Cost garancia:** Az adatátviteli és az alkalmazás-kibővített szolgáltatási kreditek fogadása a DDoS-támadások miatt felmerülő erőforrás-költségekért.
 
 ## <a name="pricing"></a>Díjszabás
 
 A standard díjszabással kapcsolatos további információkért tekintse meg a [Azure DDoS Protection standard díjszabást](https://azure.microsoft.com/pricing/details/ddos-protection/)Azure DDoS Protection.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [DDoS Protection terv létrehozása](manage-ddos-protection.md)

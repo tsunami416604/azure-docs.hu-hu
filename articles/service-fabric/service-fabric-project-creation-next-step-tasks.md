@@ -2,16 +2,23 @@
 title: Service Fabric a projekt létrehozásának következő lépései
 description: Ismerje meg a Visual Studióban létrehozott alkalmazás-projektet.  Ismerje meg, hogyan hozhat létre szolgáltatásokat oktatóanyagokkal, és hogyan fejlesztheti Service Fabric szolgáltatásainak fejlesztését.
 ms.topic: conceptual
-ms.date: 12/07/2017
-ms.openlocfilehash: 01a69016e0c299fba0365fab5332b572fd2ca87a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 12/21/2020
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314470"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760435"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Az Service Fabric alkalmazás és a következő lépések
-Az Azure Service Fabric-alkalmazás létrejött. Ez a cikk néhány olyan oktatóanyagot ismertet, amely kipróbálható, a projekt sminkje, néhány további információ, amely érdekli, és lehetséges a következő lépések.
+Az Azure Service Fabric-alkalmazás létrejött. Ez a cikk számos erőforrást tartalmaz, néhány további információt és a lehetséges [következő lépéseket](#next-steps).
+
+Az új felhasználók hasznos [oktatóanyagokat, bemutatókat és mintákat](#get-started-with-tutorials-walk-throughs-and-samples) találhatnak. A [létrehozott alkalmazás-projekt struktúrájának](#the-application-project)vizsgálatára is hasznos lehet. Emellett az Service Fabric [programozási modelljeinek](#learn-more-about-the-programming-models), a szolgáltatás- [kommunikációnak](#learn-about-service-communication), az [alkalmazások biztonságának](#learn-about-configuring-application-security)és az [alkalmazás-életciklusnak](#learn-about-the-application-lifecycle)a leírását is tartalmazza.
+
+A tapasztaltabb felhasználók megtalálhatják az Service Fabric [ajánlott eljárások](#learn-about-best-practices) szakaszt, amelyből megtudhatja, hogyan hasznosíthatja a platformot és a strukturált alkalmazásokat a maximális hatékonyság érdekében.
+
+Ha kérdése vagy visszajelzése van, vagy ki szeretne jelenteni egy problémát, tekintse meg a [megfelelő szakaszt](#have-questions-or-feedback--need-to-report-an-issue).
 
 ## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Ismerkedés az oktatóanyagokkal, a bemutatókkal és a mintákkal
 Készen áll?  
@@ -26,11 +33,6 @@ Vagy próbálja ki az alábbi lépések egyikét, és hozza létre az elsőt...
 
 Érdemes lehet a [minta alkalmazásaink](/samples/browse/?products=azure)kipróbálására is.
 
-## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Kérdése van, vagy visszajelzést küldene?  Problémát kell jelentenie?
-Olvassa el a [gyakori kérdéseket](service-fabric-common-questions.md) , és válaszoljon arra, hogy mit tehet a Service Fabric és hogyan használható.
-
-A [támogatási lehetőségek](service-fabric-support.md) felsorolják a StackOverflow és az MSDN fórumait a kérdések feltevésére, valamint a problémák jelentésére, a támogatás beszerzésére és a termékkel kapcsolatos visszajelzések elküldésére vonatkozó lehetőségeket.
-
 ## <a name="the-application-project"></a>Az alkalmazás projektje
 Minden új alkalmazás tartalmaz egy alkalmazás-projektet. A választott szolgáltatás típusától függően egy vagy két további projekt is lehet.
 
@@ -41,8 +43,6 @@ Az alkalmazás-projekt a következőkből áll:
 * Három alkalmazás-paraméter fájl (megegyezik a fentivel), amelyekkel karbantarthatja a környezettel kapcsolatos alkalmazás-konfigurációkat, például a szolgáltatáshoz létrehozandó partíciók számát. Ismerje meg, hogyan [konfigurálhatja alkalmazását több környezethez](service-fabric-manage-multiple-environment-app-configuration.md).
 * Központi telepítési parancsfájl, amellyel az alkalmazást a parancssorból vagy egy automatizált, folyamatos integrációs és üzembe helyezési folyamat részeként helyezheti üzembe. További információ az [alkalmazások PowerShell használatával történő üzembe helyezéséről](service-fabric-deploy-remove-applications.md).
 * Az alkalmazás jegyzékfájlja, amely leírja az alkalmazást. A jegyzékfájlt a ApplicationPackageRoot mappában találja. További információ az [alkalmazás-és szolgáltatás-jegyzékekről](service-fabric-application-model.md).
-
-
 
 ## <a name="learn-more-about-the-programming-models"></a>További információ a programozási modellekről
 A Service Fabric többféle módszert kínál a szolgáltatások írására és kezelésére.  Az alábbiakban áttekintheti az [állapot nélküli és állapot](service-fabric-reliable-services-introduction.md)-nyilvántartó Reliable Services, a [Reliable Actors](service-fabric-reliable-actors-introduction.md), a [tárolók](service-fabric-containers-overview.md), a [vendég végrehajtható fájlok](service-fabric-guest-executables-introduction.md), valamint az [állapot nélküli és állapot-nyilvántartó ASP.net Core szolgáltatásokat](service-fabric-reliable-services-communication-aspnetcore.md).
@@ -58,7 +58,27 @@ Az alkalmazás olyan bizalmas adatokat is tartalmazhat, mint például a tárol�
 ## <a name="learn-about-the-application-lifecycle"></a>Az alkalmazások életciklusának megismerése
 Más platformokhoz hasonlóan a Service Fabric alkalmazások általában a következő fázisokon haladnak át: tervezés, fejlesztés, tesztelés, üzembe helyezés, frissítés, karbantartás és eltávolítás. [Ez a cikk](service-fabric-application-lifecycle.md) áttekintést nyújt az API-król, valamint arról, hogyan használják a különböző szerepkörök a Service Fabric alkalmazás életciklusának fázisaiban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="learn-about-best-practices"></a>További információ az ajánlott eljárásokról
+Service Fabric számos cikket tartalmaz az [ajánlott eljárásokkal](./service-fabric-best-practices-overview.md)kapcsolatban. Használja ki ezt az információt, hogy biztosítsa a fürt és az alkalmazás futtatását, valamint a lehetséges műveleteket.
+A témakörök a következőket foglalják magukban:
+* [Biztonság](./service-fabric-best-practices-security.md)
+* [Hálózat](./service-fabric-best-practices-networking.md)
+* [Számítási teljesítmény tervezése és méretezése](./service-fabric-best-practices-capacity-scaling.md)
+* [Infrastruktúra mint kód](./service-fabric-best-practices-infrastructure-as-code.md)
+* [Monitorozás és diagnosztika](./service-fabric-best-practices-monitoring.md)
+* [Az alkalmazás kialakítása](./service-fabric-best-practices-applications.md)
+
+Az is tartalmaz egy [éles készültségi ellenőrzőlistát](./service-fabric-production-readiness-checklist.md) , amely az összes ajánlott eljárási információt egy könnyen fogyasztható formátumban integrálja.
+
+## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Kérdése van, vagy visszajelzést küldene?  Problémát kell jelentenie?
+Olvassa el a [gyakori kérdéseket](service-fabric-common-questions.md) , és válaszoljon arra, hogy mit tehet a Service Fabric és hogyan használható.
+
+A [hibaelhárítási útmutatók](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides) hasznosak lehetnek a Service Fabric-fürtökben előforduló gyakori problémák diagnosztizálásához és megoldásához.
+
+A [támogatási lehetőségek](service-fabric-support.md) felsorolják a StackOverflow és az MSDN fórumait a kérdések feltevésére, valamint a problémák jelentésére, a támogatás beszerzésére és a termékkel kapcsolatos visszajelzések elküldésére vonatkozó lehetőségeket.
+
+
+## <a name="next-steps"></a>További lépések
 - [Hozzon létre egy Windows-fürtöt az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 - Jelenítse meg a fürtöt, beleértve az üzembe helyezett alkalmazásokat és a fizikai elrendezést [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)segítségével.
 - [A szolgáltatások verziója és frissítése](service-fabric-application-upgrade-tutorial.md)

@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: d969b1639dbb39b920c985964abe1239f068d740
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 81d2804d99896200ea6f68592ea168112e172c20
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185343"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762604"
 ---
 Válassza a **Létrehozás** lehetőséget. A megnyíló ablaktáblán válasszon ki egy mappát, amelybe exportálni szeretné a Xcode projektet.
 
@@ -30,9 +30,9 @@ open ./Unity-iPhone.xcodeproj
 
 Válassza ki a root **Unity-iPhone** csomópontot a projekt beállításainak megtekintéséhez, majd válassza az **általános** lapot.
 
-Az **aláírás** területen győződjön meg arról, hogy az **aláírás automatikus kezelése** engedélyezve van. Ha nem, engedélyezze, majd állítsa alaphelyzetbe a Build-beállításokat a megjelenő ablaktábla **automatikus engedélyezése** elemének kiválasztásával.
+Győződjön meg arról, hogy az üzembe **helyezési adatok** területen az **iOS 11,0** értékre van beállítva.
 
-Győződjön meg arról, hogy a központi **telepítési adatok** területen a **11,0** **érték van beállítva** .
+Válassza az **aláírás & képességek** fület, és győződjön meg arról, hogy az **aláírás automatikus kezelése** engedélyezve van. Ha nem, engedélyezze, majd állítsa alaphelyzetbe a Build-beállításokat a megjelenő ablaktábla **automatikus engedélyezése** elemének kiválasztásával.
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Az alkalmazás üzembe helyezése iOS-eszközön
 

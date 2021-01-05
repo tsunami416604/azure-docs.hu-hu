@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 602bb98f2cdc8a96874eba8dadfa33f3267d19ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937321"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746558"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Az Azure DDoS Protection Standard szolgáltatásai
 
@@ -24,23 +24,23 @@ A következő részekben a Azure DDoS Protection standard szolgáltatás fő fun
 
 ## <a name="always-on-traffic-monitoring"></a>Folyamatos forgalom figyelése
 
-DDoS Protection standard figyeli a tényleges forgalom kihasználtságát, és folyamatosan összehasonlítja a DDoS-szabályzatban meghatározott küszöbértékekkel. Ha túllépi a forgalom küszöbértékét, a DDoS-megoldás automatikusan indul el. Ha a forgalom a küszöbérték alatti értéket adja vissza, a rendszer eltávolítja a megoldást.
+DDoS Protection standard figyeli a tényleges forgalom kihasználtságát, és folyamatosan összehasonlítja a DDoS-szabályzatban meghatározott küszöbértékekkel. Ha túllépi a forgalom küszöbértékét, a DDoS-megoldás automatikusan indul el. Ha a forgalom a küszöbértékek alatti értéket adja vissza, a rendszer leállítja a megoldást.
 
 ![Azure DDoS Protection standard enyhítés](./media/ddos-protection-overview/mitigation.png)
 
-A mérséklés során a rendszer átirányítja a védett erőforrásnak továbbított forgalmat a DDoS Protection szolgáltatástól, és számos ellenőrzést végez, például a következő ellenőrzéseket:
+A kockázatcsökkentő folyamat során a védett erőforrásnak továbbított forgalmat a DDoS Protection szolgáltatás átirányítja, és számos ellenőrzést végeznek, például a következőket:
 
 - Győződjön meg arról, hogy a csomagok megfelelnek az Internet-specifikációknak, és nem hibásak.
 - Az ügyféllel együttműködve megállapíthatja, hogy a forgalom potenciálisan hamis csomag-e (pl.: SYN Auth vagy SYN cookie, vagy egy csomag eldobása a forrás számára az újraküldéshez).
 - Díjszabás – korlátozza a csomagokat, ha nem hajtható végre más kényszerítési módszer.
 
-A DDoS Protection blokkolja a támadó adatforgalmat, a fennmaradó forgalmat pedig az eredeti célhelyre továbbítja. Az észlelt támadásokról az Azure Monitor metrikái néhány percen belül értesítést küldenek. Ha a naplózást DDoS Protection standard telemetria konfigurálja, a naplókat a jövőbeli elemzésekhez elérhető lehetőségek közül is megírhatja. DDoS Protection standard esetén a Azure Monitor metrikus adatokat 30 napig őrzi meg a rendszer.
+A DDoS Protection elveszíti a támadási forgalmat, és továbbítja a fennmaradó forgalmat a kívánt célra. Az észlelt támadásokról az Azure Monitor metrikái néhány percen belül értesítést küldenek. Ha a naplózást DDoS Protection standard telemetria konfigurálja, a naplókat a jövőbeli elemzésekhez elérhető lehetőségek közül is megírhatja. DDoS Protection standard esetén a Azure Monitor metrikus adatokat 30 napig őrzi meg a rendszer.
 
 ## <a name="adaptive-real-time-tuning"></a>Adaptív valós idejű hangolás
 
-A Azure DDoS Protection alapszintű szolgáltatás segíti az ügyfeleket, és megakadályozza a más ügyfelekkel szembeni hatásokat. Ha például egy szolgáltatás kiépítése egy olyan, a megbízható bejövő forgalomra jellemző kötetre vonatkozik, amely kisebb, mint az infrastruktúra-szintű DDoS Protection házirend *kiváltási aránya* , akkor előfordulhat, hogy az ügyfél erőforrásainak DDoS-támadása nem lesz észrevehetetlen. Általánosságban elmondható, hogy a legutóbbi támadások (például a többvektoros DDoS) összetettsége és a bérlők alkalmazásspecifikus viselkedése az ügyfélre vonatkozó, testreszabott védelmi szabályzatokat hívja meg. A szolgáltatás két bepillantással hajtja végre ezt a testreszabást:
+A Azure DDoS Protection alapszintű szolgáltatás segíti az ügyfeleket, és megakadályozza a más ügyfelekkel szembeni hatásokat. Ha például egy szolgáltatás kiépítése egy olyan, a megbízható bejövő forgalomra jellemző kötetre vonatkozik, amely kisebb, mint az infrastruktúra-szintű DDoS Protection házirend *kiváltási aránya* , akkor előfordulhat, hogy az ügyfél erőforrásainak DDoS-támadása nem lesz észrevehetetlen. Általánosságban elmondható, hogy a legutóbbi támadások (például a többvektoros DDoS) összetettsége és a bérlők alkalmazásspecifikus viselkedése az ügyfelekre szabott, testreszabott védelmi szabályzatokat hívja meg. A szolgáltatás a következő két bepillantást hajtja végre:
 
-- A 3. és a 4. rétegbeli ügyfélen belüli (/IP-) forgalom automatikus megtanulása.
+- Az ügyfélen belüli (felhasználónkénti IP-) forgalom automatikus megtanulása a 3. és a 4. rétegben.
 
 - A téves pozitív érték minimalizálása, figyelembe véve, hogy az Azure mérete lehetővé teszi, hogy jelentős mennyiségű forgalmat vegyen fel.
 
@@ -48,7 +48,7 @@ A Azure DDoS Protection alapszintű szolgáltatás segíti az ügyfeleket, és m
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS Protection telemetria, figyelés és riasztások
 
-DDoS Protection a standard szintű telemetria a DDoS-támadás idejére [Azure Monitorn](../azure-monitor/overview.md) keresztül teszi elérhetővé. A riasztásokat konfigurálhatja a DDoS Protection által használt Azure Monitor metrikák bármelyikéhez. A splunk (Azure Event Hubs), a Azure Monitor naplók és az Azure Storage szolgáltatással integrálhatja a naplózást a Azure Monitor Diagnostics felületén keresztül a speciális elemzésekhez.
+A DDoS Protection standard szintű telemetria [Azure monitoron](../azure-monitor/overview.md)keresztül teszi elérhetővé. A riasztásokat konfigurálhatja a DDoS Protection által használt Azure Monitor metrikák bármelyikéhez. A splunk (Azure Event Hubs), a Azure Monitor naplók és az Azure Storage szolgáltatással integrálhatja a naplózást a Azure Monitor Diagnostics felületén keresztül a speciális elemzésekhez.
 
 ### <a name="ddos-mitigation-policies"></a>DDoS-mérséklési szabályzatok
 
@@ -86,6 +86,6 @@ Az alkalmazások egymástól függetlenül figyelhetők. Egy alkalmazás normál
 
 Ismerje meg, hogyan reagálnak a szolgáltatások a támadásokra a [szimulációk tesztelésével](test-through-simulations.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [hozhat létre DDoS Protection-tervet](manage-ddos-protection.md).

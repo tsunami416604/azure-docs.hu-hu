@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: 1943aae3a2b01490dca687bcdea99d76da238d51
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187255"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760275"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>A kiépített átviteli sebesség és a kiszolgáló nélküli választás
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,7 +25,7 @@ Azure Cosmos DB két különböző kapacitású üzemmódban érhető el: [kiép
 | Feltételek | Kiosztott átviteli sebesség | Kiszolgáló nélküli |
 | --- | --- | --- |
 | Állapot | Általánosan elérhető | Előzetes verzióban |
-| Legmegfelelőbb a következőhöz: | Kiszámítható teljesítményt igénylő, kritikus fontosságú számítási feladatok | Kis-és közepes, nem kritikus fontosságú számítási feladatok könnyű és időszakos forgalommal |
+| Legmegfelelőbb a következőhöz: | Kiszámítható teljesítményt igénylő, kritikus fontosságú számítási feladatok | Kis-és közepes méretű munkaterhelések, amelyek nehezen megbecsülhető, könnyű és időszakos forgalommal rendelkeznek |
 | Működés | Az egyes tárolók esetében bizonyos mennyiségű átviteli sebességet kell kiépíteni a [kérelmek](request-units.md) száma másodpercenként. Másodpercenként ez a kérelmek mennyisége elérhető az adatbázis műveleteihez. A kiépített átviteli sebesség manuálisan frissíthető, és automatikus [méretezéssel](provision-throughput-autoscale.md)automatikusan módosítható. | Az adatbázis-műveleteket a tárolók nélkül futtathatja anélkül, hogy kapacitást kellene kiépíteni. |
 | Földrajzi eloszlás | Elérhető (korlátlan számú Azure-régió) | Nem érhető el (a kiszolgáló nélküli fiókok csak 1 Azure-régióban futhatnak) |
 | Tárolók maximális száma | Korlátlan | 50 GB |
@@ -54,7 +54,7 @@ Bizonyos helyzetekben előfordulhat, hogy nem egyértelmű, hogy egy adott szám
 > [!NOTE]
 > Az előző példában bemutatott költségek csak demonstrációs célokat szolgálnak. A legfrissebb díjszabási információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [adatforgalom kiépítési teljesítményéről Azure Cosmos db](set-throughput.md)
 - További információ a [Azure Cosmos db kiszolgáló](serverless.md) nélküli használatáról

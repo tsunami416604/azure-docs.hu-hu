@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 12/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 68cac756a3c84d0360d475a4bf88a392e3961f1d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447557"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740912"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Oktatóanyag: adatok átvitele megosztásokon keresztül Azure Stack Edge Pro GPU-val
 
@@ -24,7 +24,7 @@ Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá és csatlakozhat a Azure S
 
 A folyamat elvégzése körülbelül 10 percet vesz igénybe.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -72,8 +72,7 @@ Megosztás létrehozásához hajtsa végre a következő eljárást:
    
     f. Attól függően, hogy létrehozott-e SMB-megosztást vagy NFS-megosztást, hajtsa végre a következő lépések egyikét: 
      
-    - **SMB-megosztás**: **az összes jogosultság helyi felhasználó** területen válassza az **új létrehozása** vagy a **meglévő használata** lehetőséget. Ha új helyi felhasználót hoz létre, adjon meg egy felhasználónevet és egy jelszót, majd erősítse meg a jelszót. Ez a művelet engedélyeket rendel a helyi felhasználóhoz. Az itt hozzárendelt engedélyeket később a Fájlkezelővel módosíthatja.
-    Ha bejelöli a **csak olvasási műveletek engedélyezése** jelölőnégyzetet ehhez a megosztási adatokhoz, megadhat csak olvasási jogosultsággal rendelkező felhasználókat.
+    - **SMB-megosztás**: **az összes jogosultság helyi felhasználó** területen válassza az **új létrehozása** vagy a **meglévő használata** lehetőséget. Ha új helyi felhasználót hoz létre, adjon meg egy felhasználónevet és egy jelszót, majd erősítse meg a jelszót. Ez a művelet engedélyeket rendel a helyi felhasználóhoz. A megosztási szintű engedélyek módosítása jelenleg nem támogatott. Ha bejelöli a **csak olvasási műveletek engedélyezése** jelölőnégyzetet ehhez a megosztási adatokhoz, megadhat csak olvasási jogosultsággal rendelkező felhasználókat.
     
         ![SMB-megosztás hozzáadása](./media/azure-stack-edge-j-series-deploy-add-shares/add-share-smb-1.png)
    

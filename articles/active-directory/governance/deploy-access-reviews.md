@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/14/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f3e825f908ffe475b05a5e6748d9505e7283b50
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362699"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746303"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory hozzáférési felülvizsgálatok központi telepítésének tervezése
 
@@ -244,9 +244,9 @@ Hozzáférési felülvizsgálati szabályzat létrehozásához a következő inf
 | Összetevő| Érték |
 | - | - |
 | **Áttekinthető erőforrások**| Hozzáférés a Microsoft Dynamicshoz |
-| **Felülvizsgálati gyakoriság**| Havi |
+| **Felülvizsgálati gyakoriság**| havonta |
 | **A felülvizsgálatot végző személy**| Dynamics Business Group program-kezelők |
-| **Értesítés**| E-mailt 24 órával az alias áttekintése előtt Dynamics-Pms<p>Bemutatjuk, hogy a megvásárolt egyéni üzenetet a felülvizsgálók számára is ösztönözzék |
+| **Értesítési**| E-mailt 24 órával az alias áttekintése előtt Dynamics-Pms<p>Bemutatjuk, hogy a megvásárolt egyéni üzenetet a felülvizsgálók számára is ösztönözzék |
 | **Idővonal**| 48 óra az értesítésből |
 |**Automatikus műveletek**| Távolítsa el a hozzáférést bármely olyan fiókból, amely 90 napon belül nem rendelkezik interaktív bejelentkezéssel, ha eltávolítja a felhasználót a biztonsági csoport Dynamics-Access szolgáltatásból. <p>*Műveleteket hajthat végre, ha nem tekinti át az időkeretet.* |
 | **Manuális műveletek**| A felülvizsgálók elvégezhetik az Eltávolítás jóváhagyását az automatizált művelet előtt, ha szükséges. |
@@ -511,7 +511,7 @@ A hozzáférési felülvizsgálatok tevékenységeit a rendszer rögzíti, és e
 
 A hozzáférési felülvizsgálatok részletesebb lekérdezése és elemzése, valamint a módosítások és a felülvizsgálatok befejezésének nyomon követése érdekében javasoljuk, hogy az Azure AD-naplókat az [azure log Analytics](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) vagy az Azure Event hub szolgáltatásba exportálja. Az Azure Log Analytics-ban való tárolás során használhatja a [hatékony elemzési nyelvet](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md) , és saját irányítópultokat építhet ki.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az alábbi kapcsolódó technológiákat.
 

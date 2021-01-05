@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 8715fd3d71a5f65695b045f8a32a1b88bcfdd308
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d9e575d68fe4fef607bdf443ece1ddd04f085533
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672542"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746456"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ kimeneti kötés a Azure Functions áttekintéséhez
 
 > [!NOTE]
-> A RabbitMQ-kötések csak a **Windows Premium és a dedikált** csomagok esetében teljes mértékben támogatottak. A felhasználás és a Linux jelenleg nem támogatott.
+> A RabbitMQ-kötések csak a **prémium és a dedikált** csomagok esetében teljes mértékben támogatottak. A felhasználás nem támogatott.
 
 Az RabbitMQ kimeneti kötés használatával üzeneteket küldhet egy RabbitMQ-várólistába.
 
@@ -31,7 +31,7 @@ Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat 
 
 ```cs
 [FunctionName("RabbitMQOutput")]
-[return: RabbitMQ("outputQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]
+[return: RabbitMQ(QueueName = "outputQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]
 public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
 {
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
@@ -44,34 +44,35 @@ Az alábbi példa bemutatja, hogyan használható az IAsyncCollector felület az
 ```cs
 [FunctionName("RabbitMQOutput")]
 public static async Task Run(
-[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "TriggerConnectionString")] string rabbitMQEvent,
-[RabbitMQ("destinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<string> outputEvents,
+[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] string rabbitMQEvent,
+[RabbitMQ(QueueName = "destinationQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]IAsyncCollector<string> outputEvents,
 ILogger log)
 {
-    // processing:
-    var myProcessedEvent = DoSomething(rabbitMQEvent);
-    
      // send the message
-    await outputEvents.AddAsync(JsonConvert.SerializeObject(myProcessedEvent));
+    await outputEvents.AddAsync(JsonConvert.SerializeObject(rabbitMQEvent));
 }
 ```
 
 Az alábbi példa bemutatja, hogyan küldhet üzeneteket a POCOs néven.
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
-
-[FunctionName("RabbitMQOutput")]
-public static async Task Run(
-[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "TriggerConnectionString")] TestClass rabbitMQEvent,
-[RabbitMQ("destinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<TestClass> outputPocObj,
-ILogger log)
-{
-    // send the message
-    await outputPocObj.Add(rabbitMQEvent);
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
+    public static class RabbitMQOutput{
+        [FunctionName("RabbitMQOutput")]
+        public static async Task Run(
+        [RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass rabbitMQEvent,
+        [RabbitMQ(QueueName = "destinationQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]IAsyncCollector<TestClass> outputPocObj,
+        ILogger log)
+        {
+            // send the message
+            await outputPocObj.AddAsync(rabbitMQEvent);
+        }
+    }
 }
 ```
 
@@ -107,7 +108,7 @@ A *function.js* fájlban található kötési adatfájlok:
 
 A C# szkript kódja:
 
-```csx
+```C#
 using System;
 using Microsoft.Extensions.Logging;
 
@@ -193,12 +194,14 @@ A *function.js* fájlban található kötési adatfájlok:
 }
 ```
 
+Az *_\_ init_ \_ .* a:
+
 ```python
 import azure.functions as func
 
-def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpResponse:
     input_msg = req.params.get('message')
-    msg.set(input_msg)
+    outputMessage.set(input_msg)
     return 'OK'
 ```
 
@@ -263,7 +266,7 @@ További részletekért tekintse meg a kimeneti kötési [példát](#example) .
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `RabbitMQ` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a | "RabbitMQ" értékre kell állítani.|
 |**irányba** | n/a | "Out" értékre kell állítani. |
@@ -273,7 +276,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |**userName**|**UserName**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>Annak az alkalmazás-beállításnak a neve, amely a várólistához való hozzáféréshez használt felhasználónevet tartalmazza. Például: UserNameSetting: "< UserNameFromSettings >"|
 |**alaphelyzetbe állítása**|**Jelszó**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>Annak az alkalmazás-beállításnak a neve, amely a várólista eléréséhez szükséges jelszót tartalmazza. Például: UserNameSetting: "< UserNameFromSettings >"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Annak az RabbitMQ a neve, amely az üzenetsor-kapcsolatok karakterláncát tartalmazza. Vegye figyelembe, hogy ha a (z) local.settings.json lévő alkalmazás-beállításon keresztül közvetlenül adja meg a kapcsolatok karakterláncát, akkor az trigger nem fog működni. (Pl.: *function.json*: connectionStringSetting: "rabbitMQConnection" <br> *local.settings.json*: "rabbitMQConnection": "< ActualConnectionstring >")|
-|**Port**|**Port**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0.|
+|**Port**|**Port**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0, amely a rabbitmq-ügyfél alapértelmezett portjának beállítására mutat: 5672.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -321,6 +324,6 @@ A kimeneti kötéshez használja a következő paramétereket:
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása RabbitMQ-üzenet létrehozásakor (trigger)](./functions-bindings-rabbitmq-trigger.md)

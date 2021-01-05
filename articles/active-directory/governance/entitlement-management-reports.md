@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85078127"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746626"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Jelentések és naplók megtekintése az Azure AD-jogosultságok kezelésében
 
@@ -37,15 +37,15 @@ Ez a jelentés lehetővé teszi a felhasználó által igényelhető összes hoz
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
 
-1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás**elemre.
+1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás** elemre.
 
-1. A bal oldali menüben kattintson a **jelentések**elemre.
+1. A bal oldali menüben kattintson a **jelentések** elemre.
 
-1. Kattintson **a felhasználók hozzáférési csomagjai**elemre.
+1. Kattintson **a felhasználók hozzáférési csomagjai** elemre.
 
 1. Kattintson a **felhasználók kiválasztása** lehetőségre a felhasználók kiválasztása ablaktábla megnyitásához.
 
-1. Keresse meg a felhasználót a listában, majd kattintson a **kiválasztás**elemre.
+1. Keresse meg a felhasználót a listában, majd kattintson a **kiválasztás** elemre.
 
     A kérhető **kérelem** lap megjeleníti a felhasználó által kérhető hozzáférési csomagok listáját. Ezt a listát a hozzáférési csomagokhoz definiált [kérési szabályzatok](entitlement-management-access-package-request-policy.md#for-users-in-your-directory) határozzák meg. 
 
@@ -61,15 +61,15 @@ Ez a jelentés lehetővé teszi, hogy a jogosultságok kezelésében jelenleg a 
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
 
-1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás**elemre.
+1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás** elemre.
 
-1. A bal oldali menüben kattintson a **jelentések**elemre.
+1. A bal oldali menüben kattintson a **jelentések** elemre.
 
-1. Kattintson **a felhasználó erőforrás-hozzárendelései**elemre.
+1. Kattintson **a felhasználó erőforrás-hozzárendelései** elemre.
 
 1. Kattintson a **felhasználók kiválasztása** lehetőségre a felhasználók kiválasztása ablaktábla megnyitásához.
 
-1. Keresse meg a felhasználót a listában, majd kattintson a **kiválasztás**elemre.
+1. Keresse meg a felhasználót a listában, majd kattintson a **kiválasztás** elemre.
 
     Megjelenik a felhasználóhoz jelenleg hozzárendelt erőforrások listája. A lista tartalmazza azt a hozzáférési csomagot és házirendet is, amelyhez az erőforrás-szerepkör származik, valamint a hozzáférés kezdési és befejezési dátumát.
     
@@ -81,7 +81,7 @@ Ez a jelentés lehetővé teszi, hogy a jogosultságok kezelésében jelenleg a 
 
 Ha további részleteket szeretne megtudni arról, hogy a felhasználó hogyan kért és kapott hozzáférést egy hozzáférési csomaghoz, használhatja az Azure AD naplót. A és a kategóriákban található naplóbejegyzések használatával `EntitlementManagement` `UserManagement` További részleteket tudhat meg az egyes kérelmek feldolgozási lépéseiről.  
 
-1. Kattintson a **Azure Active Directory** , majd a **naplók**elemre.
+1. Kattintson a **Azure Active Directory** , majd a **naplók** elemre.
 
 1. A felső részen módosítsa a **kategóriát** a vagy a értékre `EntitlementManagement` `UserManagement` a keresett naplózási rekordtól függően.  
 
@@ -89,7 +89,7 @@ Ha további részleteket szeretne megtudni arról, hogy a felhasználó hogyan k
 
 1. A naplók letöltéséhez kattintson a **Download (Letöltés**) gombra.
 
-Amikor az Azure AD új kérést kap, egy naplózási rekordot ír, amelyben a **Kategória** szerepel, `EntitlementManagement` és a **tevékenység** általában `User requests access package assignment` .  A Azure Portalban létrehozott közvetlen hozzárendelés esetén a naplózási rekord **tevékenység** mezőjében a `Administrator directly assigns user to access package` **ActorUserPrincipalName**azonosítja a hozzárendelést végrehajtó felhasználót.
+Amikor az Azure AD új kérést kap, egy naplózási rekordot ír, amelyben a **Kategória** szerepel, `EntitlementManagement` és a **tevékenység** általában `User requests access package assignment` .  A Azure Portalban létrehozott közvetlen hozzárendelés esetén a naplózási rekord **tevékenység** mezőjében a `Administrator directly assigns user to access package` **ActorUserPrincipalName** azonosítja a hozzárendelést végrehajtó felhasználót.
 
 Az Azure AD további naplózási rekordokat fog írni, amíg a kérelem folyamatban van, beleértve a következőket:
 
@@ -111,4 +111,4 @@ Ha a felhasználó hozzáférési csomagjának hozzárendelése lejár, a felhas
 
 - [Jelentések és naplók archiválása](entitlement-management-logs-and-reporting.md)
 - [Az Azure AD-jogosultságok kezelése – problémamegoldás](entitlement-management-troubleshoot.md)
-- [Gyakori helyzetek](entitlement-management-scenarios.md)
+- [Gyakori forgatókönyvek](entitlement-management-scenarios.md)

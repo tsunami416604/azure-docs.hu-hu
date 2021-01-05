@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: a38015d9f7560930d77d5d50ac70dca5bcdde6a6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 2a480f25821f5022295b18ca24abfd2c0fb8a50c
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672508"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746524"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions RabbitMQ-kötések – áttekintés
 
 > [!NOTE]
-> A RabbitMQ-kötések csak a **Windows Premium és a dedikált** csomagok esetében teljes mértékben támogatottak. A felhasználás és a Linux jelenleg nem támogatott.
+> A RabbitMQ-kötések csak a **prémium és a dedikált** csomagok esetében teljes mértékben támogatottak. A felhasználás nem támogatott.
 
 A Azure Functions [triggerek és kötések](./functions-triggers-bindings.md)használatával integrálható a [RabbitMQ](https://www.rabbitmq.com/) . A Azure Functions RabbitMQ bővítmény lehetővé teszi üzenetek küldését és fogadását a RabbitMQ API és a functions használatával.
 
@@ -34,7 +34,7 @@ A bővítmény fejlesztésének megkezdéséhez győződjön meg arról, hogy el
 
 Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra hivatkozzon. A NuGet csomag a .NET-osztály könyvtáraihoz használatos, míg a kiterjesztési köteg minden más alkalmazás típusához használatos.
 
-| Nyelv                                        | Hozzáadás...                                   | Megjegyzések 
+| Nyelv                                        | Hozzáadás...                                   | Megjegyzések
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | A 4. x verziójú [NuGet-csomag]telepítése | |
 | C# parancsfájl, Java, JavaScript, Python, PowerShell | A [kiterjesztési csomag] regisztrálása          | Az [Azure Tools bővítmény] használata ajánlott a Visual Studio Code használatával. |
@@ -50,7 +50,7 @@ Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra 
 
 A RabbitMQ kötési bővítmények nem támogatottak az 1. x és 2. x függvényeknél. Használja a 3. x és újabb függvényeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása RabbitMQ-üzenet létrehozásakor (trigger)](./functions-bindings-rabbitmq-trigger.md)
 - [RabbitMQ üzenetek küldése Azure Functionsból (kimeneti kötés)](./functions-bindings-rabbitmq-output.md)

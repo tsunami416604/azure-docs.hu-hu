@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 9b2ab664f319de07fd70bd1a22b1ba6d64ac208f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05dadfe88ed64aea8066b02298ba158a44a03c6f
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320255"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760183"
 ---
 # <a name="metric-chart-examples"></a>Metrikus diagram – példák 
 
@@ -24,7 +24,7 @@ Szeretné megosztani a nagyszerű diagramok példáit a világgal? Járuljon hoz
 
 Ez a diagram azt mutatja, hogy egy App Service PROCESSZORa az elfogadható tartományon belül van-e, és a példányok lebontásával megállapítja, hogy a terhelés megfelelően van-e elosztva. A diagramon láthatja, hogy az alkalmazás egy adott kiszolgálói példányon fut a 6. előtt, majd egy másik példány hozzáadásával felskálázást végez.
 
-![A CPU átlagos százalékos arányának diagramja kiszolgálópéldány szerint](./media/metric-chart-samples/cpu-by-instance.png)
+![A CPU átlagos százalékos arányának diagramja kiszolgálópéldány szerint](./media/metrics-charts/cpu-by-instance.png)
 
 ### <a name="how-to-configure-this-chart"></a>Hogyan konfigurálható a diagram?
 
@@ -34,21 +34,21 @@ Válassza ki a App Service erőforrást, és keresse meg a **CPU százalékos** 
 
 Megtekintheti az alkalmazás elérhetőségét régiónként, és meghatározhatja, hogy mely földrajzi helyeknél van probléma. Ez a diagram a Application Insights rendelkezésre állási metrikáját mutatja be. Láthatja, hogy a figyelt alkalmazás nem jelent problémát az USA keleti adatközpontjának rendelkezésre állása miatt, de az USA nyugati régiójában lévő, részlegesen rendelkezésre álló probléma tapasztalható, és Kelet-Ázsia.
 
-![Helyek közötti átlagos elérhetőség diagramja](./media/metric-chart-samples/availability-run-location.png)
+![Helyek közötti átlagos elérhetőség diagramja](./media/metrics-charts/availability-by-location.png)
 
 ### <a name="how-to-configure-this-chart"></a>Hogyan konfigurálható a diagram?
 
 Először be kell kapcsolni [Application Insights rendelkezésre állásának](../app/monitor-web-app-availability.md) figyelését a webhelyén. Ezt követően válassza ki Application Insights erőforrását, és válassza ki a rendelkezésre állási metrikát. Alkalmazzon felosztást a **futtatási hely** dimenzión.
 
-## <a name="volume-of-storage-account-transactions-by-api-name"></a>A Storage-fiók tranzakcióinak mennyisége API-név szerint
+## <a name="volume-of-failed-storage-account-transactions-by-api-name"></a>Sikertelen tárolási fiókok tranzakcióinak mennyisége API-név szerint
 
-A Storage-fiók erőforrása túlzott mennyiségű tranzakciót tapasztal. A tranzakciók metrikájának használatával meghatározhatja, hogy melyik API felelős a felesleges terhelésért. Figyelje meg, hogy az alábbi diagram a szűrés és a felosztás során ugyanazzal a dimenzióval (API-névvel) van konfigurálva, hogy szűkítse a nézetet csak a kamat API-hívásokra:
+A Storage-fiók erőforrása túlzott mennyiségű sikertelen tranzakciót észlelt. A tranzakciók metrikájának használatával meghatározhatja, hogy melyik API felelős a felesleges meghibásodásért. Figyelje meg, hogy a következő diagram ugyanazzal a dimenzióval (API-névvel) van konfigurálva a sikertelen válasz típusa szerinti felosztás és szűrés során:
 
-![API-tranzakciók oszlopdiagram](./media/metric-chart-samples/transactions-by-api.png)
+![API-tranzakciók oszlopdiagram](./media/metrics-charts/split-and-filter-example.png)
 
 ### <a name="how-to-configure-this-chart"></a>Hogyan konfigurálható a diagram?
 
-A metrika-választóban válassza ki a Storage-fiókot és a **tranzakciók** metrikáját. Diagram típusának váltása **oszlopdiagram**. Kattintson a **felosztás alkalmazása** elemre, és válassza a dimenzió **API neve**elemet. Ezután kattintson a **szűrő hozzáadása** lehetőségre, majd válassza ki az **API-név** dimenziót újra. A szűrő párbeszédpanelen válassza ki a diagramon ábrázolni kívánt API-kat.
+A metrika-választóban válassza ki a Storage-fiókot és a **tranzakciók** metrikáját. Diagram típusának váltása **oszlopdiagram**. Kattintson a **felosztás alkalmazása** elemre, és válassza a dimenzió **API neve** elemet. Ezután kattintson a **szűrő hozzáadása** lehetőségre, majd válassza ki az **API-név** dimenziót újra. A szűrő párbeszédpanelen válassza ki a diagramon ábrázolni kívánt API-kat.
 
 ## <a name="next-steps"></a>További lépések
 

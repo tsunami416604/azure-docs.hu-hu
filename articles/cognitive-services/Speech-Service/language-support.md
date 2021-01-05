@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 1b73b018432e5fb9a8af90fc141d009d1bb7b799
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617051"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762962"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -137,6 +137,11 @@ A Microsoft Speech SDK és a REST API-k egyaránt támogatják ezeket a hangokat
 A neurális szövegek és a beszédek egy új, mély neurális hálózatok által vezérelt beszédfelismerési típusú hangszintézis. Neurális hang használatakor a szintetizált beszéd szinte nem különbözteti meg az emberi felvételeket.
 
 A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakcióra, így természetesebb és vonzó, digitális szövegeket, például e-könyveket készíthet hangoskönyvekbe, és hatékonyabbá teheti az autós navigációs rendszereket. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelési fáradtságot, amikor a felhasználók interakcióba lépnek az AI-rendszerekkel.
+
+> [!NOTE]
+> A neurális hangok a 24 kHz-es mintavételi sebességet használó mintákból jönnek létre.
+> A szintetizálás során minden hang megtekinthető vagy felbontáscsökkentéséhez más mintavételi sebességre.
+
 
 | Nyelv | Területi beállítás | Nem | Hang neve | Stílus támogatása |
 |---|---|---|---|---|
@@ -294,6 +299,11 @@ A következő témakörből megtudhatja, hogyan konfigurálhat és állíthat be
 
 Több mint 75 standard hang érhető el több mint 45 nyelven és területi beállításban, amely lehetővé teszi szöveg konvertálását a szintetizált beszédbe. További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
 
+> [!NOTE]
+> Két kivétel esetén a standard hangok a 16 kHz-es mintavételi sebességet használó mintákból jönnek létre.
+> **Az en-us-AriaRUS és az** **en-us-GuyRUS** hangokat a 24 kHz-es mintavételi sebességet használó mintákból is létrehozták.
+> A szintetizálás során minden hang megtekinthető vagy felbontáscsökkentéséhez más mintavételi sebességre.
+
 | Nyelv | Területi beállítás (BCP-47) | Nem | Hang neve |
 |--|--|--|--|
 | Arab (arab) | `ar-EG` | Nő | `ar-EG-Hoda`|
@@ -325,7 +335,7 @@ Több mint 75 standard hang érhető el több mint 45 nyelven és területi beá
 | angol (Egyesült Királyság) | `en-GB` | Nő | `en-GB-Susan`|
 | angol (Egyesült Államok) | `en-US` | Férfi | `en-US-BenjaminRUS`|
 | angol (Egyesült Államok) | `en-US` | Férfi | `en-US-GuyRUS`|
-| angol (Egyesült Államok) | `en-US` | Nő | `en-US-JessaRUS`|
+| angol (Egyesült Államok) | `en-US` | Nő | `en-US-AriaRUS`|
 | angol (Egyesült Államok) | `en-US` | Nő | `en-US-ZiraRUS`|
 | Finn (Finnország) | `fi-FI` | Nő | `fi-FI-HeidiRUS`|
 | Francia (Kanada) | `fr-CA` | Nő | `fr-CA-Caroline`|
@@ -467,7 +477,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Speaker Recognition
+## <a name="speaker-recognition"></a>Beszélőfelismerés
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 

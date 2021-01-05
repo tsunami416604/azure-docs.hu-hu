@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 302f1a081ca44cf6436f2c318b03e227f6640489
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001966"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746609"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -37,7 +37,7 @@ Az előfeltételek teljesítése után a Spark & kaptár Tools for Visual Studio
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-2. A menüsávban navigáljon a **View**  >  **bővítmények** megtekintéséhez.
+2. A menüsávban navigáljon a   >  **bővítmények** megtekintéséhez.
 
 3. A keresőmezőbe írja be a **Spark & kaptár** kifejezést.
 
@@ -73,7 +73,7 @@ A nemzeti Felhőbeli felhasználók számára az alábbi lépéseket követve á
 
 Ahhoz, hogy parancsfájlokat küldhessen a fürtökhöz a Visual Studio Code-ból, a felhasználó bejelentkezhet az Azure-előfizetésbe, vagy [csatolhat HDInsight-fürtöt](#link-a-cluster)is. A HDInsight-fürthöz való csatlakozáshoz használja az ESP-fürthöz tartozó Ambari Felhasználónév/jelszó vagy tartományhoz csatlakoztatott hitelesítő adatokat. Az Azure-hoz való kapcsolódáshoz kövesse az alábbi lépéseket:
 
-1. A menüsávban navigáljon a **View**  >  **parancs paletta megtekintése...** elemre, és írja be az **Azure: bejelentkezés**:
+1. A menüsávban navigáljon a   >  **parancs paletta megtekintése...** elemre, és írja be az **Azure: bejelentkezés**:
 
    ![A Spark & struktúra eszközei a Visual Studio Code-beli bejelentkezéshez](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
@@ -85,7 +85,7 @@ Ahhoz, hogy parancsfájlokat küldhessen a fürtökhöz a Visual Studio Code-bó
 
 Az [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználónév használatával összekapcsolhatja a normál fürtöt, vagy a biztonságos Hadoop-fürtöt tartományi Felhasználónév használatával is összekapcsolhatja (például: `user1@contoso.com` ).
 
-1. A menüsávban navigáljon a **View**  >  **parancs paletta megtekintése...** elemre, és írja be a **Spark/kaptár: fürt csatolása** elemet.
+1. A menüsávban navigáljon a   >  **parancs paletta megtekintése...** elemre, és írja be a **Spark/kaptár: fürt csatolása** elemet.
 
    ![A Command paletta link cluster parancsa](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -108,7 +108,7 @@ Az [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználóné
 
 ### <a name="link-generic-livy-endpoint"></a>Hivatkozás: általános Livy végpont
 
-1. A menüsávban navigáljon a **View**  >  **parancs paletta megtekintése...** elemre, és írja be a **Spark/kaptár: fürt csatolása** elemet.
+1. A menüsávban navigáljon a   >  **parancs paletta megtekintése...** elemre, és írja be a **Spark/kaptár: fürt csatolása** elemet.
 
 2. Válassza a csatolt fürt típusa **általános Livy végpont** elemet.
 
@@ -124,7 +124,7 @@ Az [Apache Ambari](https://ambari.apache.org/)által felügyelt Felhasználóné
 
 ## <a name="list-clusters"></a>Fürtök listázása
 
-1. A menüsávban navigáljon a **View**  >  **parancs paletta** megtekintése... elemre, és írja be a **Spark/kaptár: List cluster** parancsot.
+1. A menüsávban navigáljon a   >  **parancs paletta** megtekintése... elemre, és írja be a **Spark/kaptár: List cluster** parancsot.
 
 2. Válassza ki a kívánt előfizetést.
 
@@ -203,7 +203,7 @@ A PySpark interaktív parancs használatával küldje el a lekérdezéseket, kö
 
    ![A képernyőképen a PySpark telepítésének kihagyására szolgáló lehetőség látható.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
-5. Ha később is telepítenie kell, navigáljon a fájl beállításait **tartalmazó**  >  **Preference**  >  **Beállítások** területére, majd törölje a jelet a **HDInsight: a Pyspark kihagyása** jelölőnégyzet bejelölésének engedélyezése lehetőségre. 
+5. Ha később is telepítenie kell, navigáljon a fájl beállításait **tartalmazó**  >    >  **Beállítások** területére, majd törölje a jelet a **HDInsight: a Pyspark kihagyása** jelölőnégyzet bejelölésének engedélyezése lehetőségre. 
     
     ![A képernyőképen a Pyspark-telepítés kihagyásának engedélyezése látható.](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
@@ -211,29 +211,31 @@ A PySpark interaktív parancs használatával küldje el a lekérdezéseket, kö
 
    ![a pyspark telepítése sikerült](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. A menüsávban navigáljon a parancs-paletta **megtekintéséhez**.  >  **..** vagy használja a **SHIFT + CTRL + P** billentyűparancsot, és írja be a **Python: Select tolmács elemet a Jupyter-kiszolgáló indításához**.
+7. Futtassa a parancssorban a **pip install NumPy = = 1.19.3** parancsot, majd újra töltse újra a VSCode ablakot.
+
+8. A menüsávban navigáljon a parancs-paletta **megtekintéséhez**.  >  **..** vagy használja a **SHIFT + CTRL + P** billentyűparancsot, és írja be a **Python: Select tolmács elemet a Jupyter-kiszolgáló indításához**.
 
    ![a jupyter-kiszolgáló indításához válassza a tolmács elemet.](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-8. Válassza ki az alábbi Python-beállítást.
+9. Válassza ki az alábbi Python-beállítást.
 
    ![Válassza az alábbi lehetőséget](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-9. A menüsávban navigáljon a parancs-paletta **megtekintéséhez**.  >  **..** vagy használja a **SHIFT + CTRL + P** billentyűparancsot, és adja meg a **fejlesztő: újratöltési ablak** elemet.
+10. A menüsávban navigáljon a parancs-paletta **megtekintéséhez**.  >  **..** vagy használja a **SHIFT + CTRL + P** billentyűparancsot, és adja meg a **fejlesztő: újratöltési ablak** elemet.
 
-   ![ablak újratöltése](./media/hdinsight-for-vscode/reload-window.png)
+    ![ablak újratöltése](./media/hdinsight-for-vscode/reload-window.png)
 
-10. [Kapcsolódjon](#connect-to-an-azure-account) az Azure-fiókjához, vagy kapcsolja össze a fürtöt, ha még nem tette meg.
+11. [Kapcsolódjon](#connect-to-an-azure-account) az Azure-fiókjához, vagy kapcsolja össze a fürtöt, ha még nem tette meg.
 
-11. Válassza ki az összes kódot, kattintson a jobb gombbal a parancsfájl-szerkesztőre, majd válassza a **Spark: PySpark Interactive/szinapszis: PySpark Interactive** parancsot a lekérdezés elküldéséhez. 
+12. Válassza ki az összes kódot, kattintson a jobb gombbal a parancsfájl-szerkesztőre, majd válassza a **Spark: PySpark Interactive/szinapszis: PySpark Interactive** parancsot a lekérdezés elküldéséhez. 
 
     ![pyspark interaktív helyi menü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-12. Ha nem adott meg alapértelmezett fürtöt, válassza ki a fürtöt. Néhány pillanat elteltével a **Python interaktív** eredményei egy új lapon jelennek meg. Kattintson a PySpark elemre a kernel **PySpark/szinapszis PySpark** való átváltásához, és a kód futtatása sikeresen megtörténik. Ha a szinapszis Pyspark kernelre szeretne váltani, tiltsa le az Azure Portal automatikus beállításait. Ellenkező esetben hosszú időt vehet igénybe a fürt felébresztése és a szinapszis-kernel első használatba vételének beállítása. Ha az eszközök azt is lehetővé teszik, hogy a teljes parancsfájl helyett programkódot küldjön a helyi menü használatával:
+13. Ha nem adott meg alapértelmezett fürtöt, válassza ki a fürtöt. Néhány pillanat elteltével a **Python interaktív** eredményei egy új lapon jelennek meg. Kattintson a PySpark elemre a kernel **PySpark/szinapszis PySpark** való átváltásához, és a kód futtatása sikeresen megtörténik. Ha a szinapszis Pyspark kernelre szeretne váltani, tiltsa le az Azure Portal automatikus beállításait. Ellenkező esetben hosszú időt vehet igénybe a fürt felébresztése és a szinapszis-kernel első használatba vételének beállítása. Ha az eszközök azt is lehetővé teszik, hogy a teljes parancsfájl helyett programkódot küldjön a helyi menü használatával:
 
     ![pyspark interaktív Python interaktív ablak](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-13. Adja meg a **%% info** értéket, majd nyomja le a SHIFT + ENTER billentyűkombinációt a feladatok adatainak megtekintéséhez (nem kötelező):
+14. Adja meg a **%% info** értéket, majd nyomja le a SHIFT + ENTER billentyűkombinációt a feladatok adatainak megtekintéséhez (nem kötelező):
 
     ![pyspark interaktív megtekintési feladatának adatai](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -266,7 +268,8 @@ Az eszköz a **Spark SQL** -lekérdezést is támogatja:
 
 
 > [!NOTE]
-> Az MS-Python >= 2020.5.78807 verziója nem támogatott ezen a mértéknél [ismert probléma](#known-issues).
+>
+> ["Az MS-python >= 2020.5.78807 verziója nem támogatott ezen a kiterjesztésen"](#issues-changed) . Most már a legújabb MS-Python verziót is használhatja.
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark-kötegelt feladatok elküldése
 
@@ -458,7 +461,7 @@ Ha a feladatot egy HDInsight-fürtre küldi, a rendszer arra kéri, hogy kapcsol
    >
    >![Spark &-struktúra eszközei a Visual Studio Code Readerhez csatolt](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
-## <a name="azure-data-lake-storage-gen2"></a>2. generációs Azure Data Lake Storage
+## <a name="azure-data-lake-storage-gen2"></a>2\. generációs Azure Data Lake Storage
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2-fiók tallózása
 
@@ -484,15 +487,12 @@ A HDInsight-fürthöz Data Lake Storage Gen2 használatával küldhet el feladat
 
 ## <a name="sign-out"></a>Kijelentkezés  
 
-A menüsávban válassza a parancs- **View**  >  **paletta** megtekintése elemet, majd írja be az **Azure: kijelentkezés** lehetőséget.
+A menüsávban válassza a parancs-   >  **paletta** megtekintése elemet, majd írja be az **Azure: kijelentkezés** lehetőséget.
 
-## <a name="known-issues"></a>Ismert problémák
+## <a name="issues-changed"></a>Megváltoztatott problémák
 
-### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>az MS-Python >= 2020.5.78807 verziója nem támogatott ezen a mértékben 
+Ebben az esetben a "MS-Python >= 2020.5.78807 verzió nem támogatott ezen a kiterjedésen", a **legújabb MS-Python verziót** használhatja most.
 
-"Nem sikerült csatlakozni a Jupyter notebookhoz." ismert probléma a Python-verzió >= 2020.5.78807. A probléma elkerülése érdekében javasoljuk, hogy a felhasználók az MS-Python **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** -verzióját használják.
-
-![ismert problémák](./media/hdinsight-for-vscode/known-issue.png)
 
 ## <a name="next-steps"></a>További lépések
 

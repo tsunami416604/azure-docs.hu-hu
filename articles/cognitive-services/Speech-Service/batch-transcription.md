@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621095"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755769"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
-A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű hang tárolását. A hangfájlokra egy tipikus URI vagy egy közös hozzáférésű aláírás (SAS) URI használatával, valamint az átírási eredmények aszinkron fogadásával is rámutathat. A v 3.0 API-val egy vagy több hangfájlt is átadhat, vagy feldolgozhatja a teljes tárolót.
+A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű hang tárolását. A hangfájlokra egy tipikus URI vagy egy [közös hozzáférésű aláírás (SAS)](../../storage/common/storage-sas-overview.md) URI használatával, valamint az átírási eredmények aszinkron fogadásával is rámutathat. A v 3.0 API-val egy vagy több hangfájlt is átadhat, vagy feldolgozhatja a teljes tárolót.
 
 A Batch átírása REST API-kkal a következő módszereket hívhatja:
 
@@ -66,7 +66,7 @@ Rendezett végleges átirat létrehozásához használja a kiíráskor generált
 
 ### <a name="configuration"></a>Konfiguráció
 
-A konfigurációs paraméterek JSON-ként vannak megadva.
+A konfigurációs paraméterek JSON-ként vannak megadva. 
 
 **Egy vagy több különálló fájl átirata.** Ha egynél több fájlt szeretne átírni, javasoljuk, hogy több fájlt küldjön egy kérelembe. Az alábbi példa három fájlt használ:
 
@@ -85,7 +85,7 @@ A konfigurációs paraméterek JSON-ként vannak megadva.
 }
 ```
 
-**Teljes tároló feldolgozása:**
+**Teljes tároló feldolgozása.** A tároló [sas](../../storage/common/storage-sas-overview.md) -nak tartalmaznia kell `r` (olvasási) és `l` (lista) engedélyeket:
 
 ```json
 {
@@ -177,10 +177,10 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Opcionális URL-cím a [Service ad hoc sas](../../storage/common/storage-sas-overview.md) -vel egy írható tárolóba az Azure-ban. Az eredmény ebben a tárolóban tárolódik. A tárolt hozzáférési házirenddel rendelkező SAS **nem** támogatott. Ha nincs megadva, a Microsoft az eredményeket a Microsoft által kezelt tároló tárolóban tárolja. Ha az átírást törli az [átírás](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)meghívásával, a rendszer törli az eredményül kapott adatértéket is.
+      Opcionális URL-cím [ad hoc sas](../../storage/common/storage-sas-overview.md) -vel egy írható tárolóhoz az Azure-ban. Az eredmény ebben a tárolóban tárolódik. A tárolt hozzáférési házirenddel rendelkező SAS **nem** támogatott. Ha nincs megadva, a Microsoft az eredményeket a Microsoft által kezelt tároló tárolóban tárolja. Ha az átírást törli az [átírás](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)meghívásával, a rendszer törli az eredményül kapott adatértéket is.
 :::row-end:::
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 
 A Batch-átírás képes a nyilvánosan látható internetes URI-n keresztül olvasni a hanganyagot, és az [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md)-t használó sas URI-val képes hang-és írási átírásokat olvasni.
 

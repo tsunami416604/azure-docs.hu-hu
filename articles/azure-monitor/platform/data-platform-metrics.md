@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: f64a91e3b285c265296c361366a10443eda18201
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b7af6b489aeb919fd1db0e45ddba58a21b1c3633
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489427"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760137"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Azure Monitor mérőszámok áttekintése
 Azure Monitor mérőszámok olyan Azure Monitor szolgáltatása, amely a [figyelt erőforrások](../monitor-reference.md) numerikus adatait egy idősorozat-adatbázisba gyűjti. A metrikák olyan numerikus értékek, amelyeket rendszeres időközönként gyűjtenek, és egy adott rendszer bizonyos aspektusait egy adott időpontban írják le. A Azure Monitor metrikái nagyon egyszerűek, és a közel valós idejű forgatókönyvek támogatása révén különösen hasznosak lehetnek a riasztások és a problémák gyors észlelése érdekében. A mérőszámok Explorerrel interaktív módon elemezheti őket, és proaktívan értesítheti a riasztást, ha egy érték átlép egy küszöbértéket, vagy egy munkafüzetben vagy irányítópulton jeleníti meg őket.
@@ -56,7 +56,7 @@ Az Azure Monitor által összegyűjtött mérőszámok három alapvető forrása
 ## <a name="metrics-explorer"></a>Metrikaböngésző
 A [Metrikaböngésző](metrics-charts.md) használatával interaktív módon elemezheti a metrikus adatbázisban lévő adatokat, és az idő múlásával több mérőszám értékét ábrázolhatja. A diagramokat rögzítheti egy irányítópulton, és megtekintheti azokat más vizualizációkkal. A metrikákat az [Azure monitoring REST API](rest-api-walkthrough.md)használatával is lekérheti.
 
-![Metrikaböngésző](media/data-platform/metrics-explorer.png)
+![Metrikaböngésző](media/data-platform-metrics/metrics-explorer.png)
 
 - A metrikák Explorer használatának megkezdéséhez tekintse meg [a Azure monitor mérőszámok Explorer](metrics-getting-started.md) használatába című témakört.
 
@@ -71,13 +71,13 @@ Azure Monitor metrikák által gyűjtött adatokat egy idősorozat-adatbázis t�
 * Egyes mérőszámok több dimenzióval rendelkezhetnek, a [többdimenziós metrikák](#multi-dimensional-metrics)részben leírtak szerint. Az egyéni metrikák legfeljebb 10 dimenzióval rendelkezhetnek.
 
 ## <a name="multi-dimensional-metrics"></a>Többdimenziós metrikák
-A metrikus adatok egyik kihívása, hogy gyakran korlátozott információkkal szolgálnak az összegyűjtött értékek kontextusának biztosításához. Azure Monitor ez a kihívás többdimenziós metrikákkal foglalkozik. A mérőszámok méretei olyan név-érték párok, amelyek további adatokat hordoznak a metrika értékének leírásához. Egy metrikus _rendelkezésre álló_ lemezterület például rendelkezhet a " _C:_ , _D:_ " értékkel rendelkező _meghajtóval_ , amely lehetővé tenné a rendelkezésre álló lemezterület megtekintését az összes meghajtón vagy az egyes meghajtókon.
+A metrikus adatok egyik kihívása, hogy gyakran korlátozott információkkal szolgálnak az összegyűjtött értékek kontextusának biztosításához. Azure Monitor ez a kihívás többdimenziós metrikákkal foglalkozik. A mérőszámok méretei olyan név-érték párok, amelyek további adatokat hordoznak a metrika értékének leírásához. Egy metrikus _rendelkezésre álló_ lemezterület például rendelkezhet a " _C:_, _D:_" értékkel rendelkező _meghajtóval_ , amely lehetővé tenné a rendelkezésre álló lemezterület megtekintését az összes meghajtón vagy az egyes meghajtókon.
 
 Az alábbi példa egy _hálózati átviteli sebességű_ feltételezett metrikai adatkészleteket mutat be. Az első adatkészlet nem rendelkezik dimenziókkal. A második adatkészlet a két dimenziót, az _IP-címet_ és az _irányt_ tartalmazó értékeket jeleníti meg:
 
 ### <a name="network-throughput"></a>Hálózati átviteli sebesség
 
-| Timestamp     | Metrika értéke |
+| Időbélyeg     | Metrika értéke |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1 331,8 kbps |
 | 8/9/2017 8:15 | 1 141,4 kbps |
@@ -87,7 +87,7 @@ Ez a nem dimenziós metrika csak olyan alapvető kérdésekre tud válaszolni, m
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Hálózati átviteli sebesség + két dimenzió ("IP" és "irány")
 
-| Timestamp     | "IP" dimenzió   | Dimenzió "iránya" | Metrika értéke|
+| Időbélyeg     | "IP" dimenzió   | Dimenzió "iránya" | Metrika értéke|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP = "192.168.5.2" | Direction = "Küldés"    | 646,5 kbps |
 | 8/9/2017 8:14 | IP = "192.168.5.2" | Direction = "fogadás" | 420,1 kbps |

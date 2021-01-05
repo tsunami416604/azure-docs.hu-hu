@@ -3,15 +3,15 @@ title: Az Azure Service Bus-üzenetkezelés áttekintése | Microsoft Docs
 description: Ez a cikk átfogó áttekintést nyújt a Azure Service Busről, amely egy teljes körűen felügyelt Enterprise Integration Message Broker.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: b795d0c5b429a812d90e0759fbcde3d348b86e22
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602716"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755735"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
-A Microsoft Azure Service Bus egy teljes körűen felügyelt Enterprise Message Broker Üzenetsor-kezeléssel és nyilvános előfizetési témakörökkel. Service Bus az alkalmazások és szolgáltatások egymástól való elválasztására szolgálnak, a következő előnyöket biztosítva:
+A Microsoft Azure Service Bus egy teljes körűen felügyelt vállalati üzenetsor az üzenetsor-kezelés és a közzététel – előfizetés témakörökben. Service Bus az alkalmazások és szolgáltatások egymástól való elválasztására szolgálnak, a következő előnyöket biztosítva:
 
 - Terheléselosztási munka a versengő feldolgozók között
 - Biztonságos Útválasztás és adatátvitel és vezérlés a szolgáltatás és az alkalmazások határai között

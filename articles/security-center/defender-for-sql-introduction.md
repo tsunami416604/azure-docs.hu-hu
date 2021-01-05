@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e9a2259f1e15a94ad1f2a9eabf7d3a2f3ed419f1
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387802"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755990"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Az SQL-hez készült Azure Defender bemutatása
 
@@ -53,7 +53,9 @@ Ez a két csomag a lehetséges adatbázis-sebezhetőségek azonosítására és 
 
 - [Sebezhetőségi felmérés](../azure-sql/database/sql-vulnerability-assessment.md) – a szkennelési szolgáltatás felderíti, nyomon követheti és segítheti a lehetséges adatbázis-rések szervizelését. Az értékelési vizsgálatok áttekintést nyújtanak az SQL-gépek biztonsági állapotáról, valamint a biztonsági eredmények részleteiről.
 
-- Komplex [veszélyforrások elleni védelem](../azure-sql/database/threat-detection-overview.md) – az észlelési szolgáltatás, amely folyamatosan FIGYELI az SQL-kiszolgálókat olyan fenyegetésekkel szemben, mint például az SQL-injektálás, a találgatásos támadás és a jogosultságokkal való visszaélés. Ez a szolgáltatás lehetővé teszi, hogy a rendszer részletes biztonsági riasztásokat biztosítson Azure Security Center a gyanús tevékenység részleteit, útmutatást nyújt a fenyegetések enyhítéséhez, valamint az Azure Sentinel használatával folytatott vizsgálatok folytatásának lehetőségeiről.
+- Komplex [veszélyforrások elleni védelem](../azure-sql/database/threat-detection-overview.md) – az észlelési szolgáltatás, amely folyamatosan FIGYELI az SQL-kiszolgálókat olyan fenyegetésekkel szemben, mint például az SQL-injektálás, a találgatásos támadás és a jogosultságokkal való visszaélés. Ez a szolgáltatás lehetővé teszi, hogy a rendszer részletes biztonsági riasztásokat biztosítson Azure Security Center a gyanús tevékenység részleteit, útmutatást nyújt a fenyegetések enyhítéséhez, valamint az Azure Sentinel használatával folytatott vizsgálatok folytatásának lehetőségeiről. 
+    > [!TIP]
+    > Tekintse meg az SQL Server rendszerhez készült biztonsági riasztások listáját [a riasztások hivatkozása lapon](alerts-reference.md#alerts-sql-db-and-warehouse).
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>Milyen típusú riasztások biztosítják az Azure Defender for SQL szolgáltatást?
@@ -68,14 +70,9 @@ A riasztások tartalmazzák az azokat kiváltó incidens részleteit, valamint a
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta az SQL-hez készült Azure Defendert.
 
 > [!div class="nextstepaction"]
 > [Az Azure Defender szolgáltatással kapcsolatos biztonsági rések ellenőrzése az SQL-kiszolgálókon](defender-for-sql-usage.md)
-
-A kapcsolódó anyagokkal kapcsolatban tekintse meg a következő cikkeket: 
-
-- [Az Azure Defender engedélyezése az SQL Database-kiszolgálókhoz](../azure-sql/database/azure-defender-for-sql.md)
-- [Az SQL Server-alapú biztonsági riasztások listája](alerts-reference.md#alerts-sql-db-and-warehouse)

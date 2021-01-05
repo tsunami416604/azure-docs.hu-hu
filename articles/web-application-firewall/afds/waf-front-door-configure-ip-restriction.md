@@ -5,20 +5,20 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: f260bfc7b097931cc1a978e790c1d9dd966703ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563511"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746762"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>IP-korlátozási szabály konfigurálása az Azure-hoz készült webalkalmazási tűzfallal
 
 Ez a cikk bemutatja, hogyan konfigurálhat IP-korlátozási szabályokat egy webalkalmazási tűzfalon (WAF) az Azure bejárati ajtóhoz a Azure Portal, az Azure CLI, a Azure PowerShell vagy egy Azure Resource Manager sablon használatával.
 
-Az IP-cím alapú hozzáférés-vezérlési szabály egy egyéni WAF-szabály, amely lehetővé teszi a webalkalmazásokhoz való hozzáférés szabályozását. Ezt úgy végezheti el, hogy az IP-címek és az IP-címtartományok listáját az osztály nélküli Inter-Domain útválasztási (CIDR) formátumban határozza meg.
+Az IP-cím alapú hozzáférés-vezérlési szabály egy egyéni WAF-szabály, amely lehetővé teszi a webalkalmazásokhoz való hozzáférés szabályozását. Ezt úgy végezheti el, hogy az IP-címek és az IP-címtartományok listáját az osztály nélküli Inter-Domain útválasztási (CIDR) formátumban határozza meg. Az IP-címek egyeztetése, a **RemoteAddr** és a **SocketAddr** kétféle egyezési változóval rendelkezik. A RemoteAddr az az eredeti ügyfél IP-címe, amelyet általában X-továbbított-kérelem fejlécre küldenek. A SocketAddr a forrás IP-WAF látja. Ha a felhasználó proxy mögött található, a SocketAddr gyakran a proxykiszolgáló címe.
 
 Alapértelmezés szerint a webalkalmazás elérhető az internetről. Ha szeretné korlátozni az ügyfelek hozzáférését az ismert IP-címek vagy IP-címtartományok listájáról, létrehozhat egy olyan IP-megfeleltetési szabályt, amely az IP-címek listáját tartalmazza egyező értékként, és beállítja az operátort a "not" (tagadás igaz) és a **blokkolt** művelet számára. Az IP-korlátozási szabály alkalmazása után az ezen az engedélyezett listán kívüli címekről származó kérelmek 403-es tiltott választ kapnak.
 
@@ -109,7 +109,7 @@ Az az [Network elülső WAF-Policy Custom-Rule Create](/cli/azure/ext/front-door
 
 Az alábbi példákban:
 -  Cserélje le a *IPAllowPolicyExampleCLI* -t a korábban létrehozott egyedi szabályzatra.
--  Cserélje le az *IP-cím-Range-1* , *IP-cím-Range-2* tartományt a saját tartományára.
+-  Cserélje le az *IP-cím-Range-1*, *IP-cím-Range-2* tartományt a saját tartományára.
 
 Először hozzon létre egy IP-engedélyezési szabályt az előző lépésben létrehozott házirendhez. 
 > [!NOTE]
@@ -190,7 +190,7 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 
 ### <a name="define-an-ip-match-condition"></a>IP-egyeztetési feltétel definiálása
 A [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) parancs használatával határozza meg az IP-egyeztetés feltételeit.
-Az alábbi példában cserélje le az *IP-cím-tartomány-1* , *IP-cím-tartomány-2* értékét a saját tartományára.    
+Az alábbi példában cserélje le az *IP-cím-tartomány-1*, *IP-cím-tartomány-2* értékét a saját tartományára.    
 ```powershell
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
@@ -243,6 +243,6 @@ WAF házirend-objektum csatolása meglévő előtér-gazdagéphez és az Azure-b
 Ha meg szeretné tekinteni a sablont, amely létrehoz egy Azure-beli bejárati házirendet és egy WAF szabályzatot egyéni IP-korlátozási szabályokkal, lépjen a [githubra](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [hozhat létre Azure-beli bejárati profilt](../../frontdoor/quickstart-create-front-door.md).

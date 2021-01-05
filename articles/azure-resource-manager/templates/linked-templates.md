@@ -1,22 +1,22 @@
 ---
 title: Sablonok csatolása az üzembe helyezéshez
-description: Azt ismerteti, hogyan használhatók a Azure Resource Manager sablonban található csatolt sablonok a moduláris sablonok megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
+description: Ismerteti, hogyan használhatók a csatolt sablonok egy Azure Resource Manager sablonban (ARM-sablon) egy moduláris sablon megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 1e2ccc57b42f8072c9aa28612d534507b9a674ed
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: cac63ccdd13e245baf97695e9b138c29d3db4958
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852098"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760622"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor
 
-Összetett megoldások üzembe helyezéséhez számos kapcsolódó sablonban megszakíthatja a sablont, majd egy fő sablonon keresztül is üzembe helyezheti azokat. A kapcsolódó sablonok a fő sablonba ágyazott fájlok vagy sablon-szintaxisok lehetnek. Ez a cikk a **társított sablon** kifejezését használja egy külön sablonfájl használatára, amelyre a fő sablon hivatkozásán keresztül hivatkozik. A **beágyazott sablon kifejezést használja** a beágyazott sablon szintaxisára a fő sablonon belül.
+Összetett megoldások üzembe helyezéséhez a Azure Resource Manager-sablont (ARM-sablont) több kapcsolódó sablonba is felhasználhatja, majd egy fő sablonon keresztül telepítheti őket. A kapcsolódó sablonok a fő sablonba ágyazott fájlok vagy sablon-szintaxisok lehetnek. Ez a cikk a **társított sablon** kifejezését használja egy külön sablonfájl használatára, amelyre a fő sablon hivatkozásán keresztül hivatkozik. A **beágyazott sablon kifejezést használja** a beágyazott sablon szintaxisára a fő sablonon belül.
 
 Kis és közepes mérető megoldások esetében könnyebb egyetlen sablont megérteni és karbantartani. Így az összes erőforrás és értéke egyetlen fájlban látható. Speciális felhasználási helyzetekben a megoldás csatolt sablonokkal bontható fel a kívánt összetevőkre. Az ilyen sablonok egyszerűen felhasználhatók újra más helyzetekben.
 
-Oktatóanyagért lásd [: csatolt Azure Resource Manager sablonok létrehozása](./deployment-tutorial-linked-template.md).
+Oktatóanyagért lásd [: oktatóanyag: csatolt sablon üzembe helyezése](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
 > Csatolt vagy beágyazott sablonok esetén a telepítési módot csak [növekményes](deployment-modes.md)értékre állíthatja. A fő sablon azonban teljes módban is üzembe helyezhető. Ha a fősablont a teljes módban telepíti, és a csatolt vagy beágyazott sablon ugyanazt az erőforráscsoportot célozza meg, a csatolt vagy beágyazott sablonban üzembe helyezett erőforrások a teljes telepítési mód kiértékelése részét képezik. A fő sablonban és a csatolt vagy beágyazott sablonokban üzembe helyezett erőforrások összevont gyűjteménye össze van hasonlítva az erőforráscsoport meglévő erőforrásaival. Az egyesített gyűjteményben nem szereplő erőforrások törlődnek.
@@ -26,7 +26,7 @@ Oktatóanyagért lásd [: csatolt Azure Resource Manager sablonok létrehozása]
 
 ## <a name="nested-template"></a>Beágyazott sablon
 
-Sablon beágyazásához vegyen fel egy [központi telepítési erőforrást](/azure/templates/microsoft.resources/deployments) a fő sablonba. A **sablon** tulajdonságban határozza meg a sablon szintaxisát.
+Sablon beágyazásához vegyen fel egy [központi telepítési erőforrást](/azure/templates/microsoft.resources/deployments) a fő sablonba. A `template` tulajdonságban határozza meg a sablon szintaxisát.
 
 ```json
 {
@@ -283,7 +283,7 @@ Az alábbi példa egy SQL Servert telepít, és lekéri a jelszóhoz használand
 
 ## <a name="linked-template"></a>Csatolt sablon
 
-Sablon csatolásához vegyen fel egy [központi telepítési erőforrást](/azure/templates/microsoft.resources/deployments) a fő sablonba. A **templateLink** tulajdonságban adja meg a felvenni kívánt sablon URI-ját. Az alábbi példa egy, a Storage-fiókban található sablonra mutató hivatkozásokat tartalmaz.
+Sablon csatolásához vegyen fel egy [központi telepítési erőforrást](/azure/templates/microsoft.resources/deployments) a fő sablonba. A `templateLink` tulajdonságban adja meg a felvenni kívánt sablon URI-ját. Az alábbi példa egy, a Storage-fiókban található sablonra mutató hivatkozásokat tartalmaz.
 
 ```json
 {
@@ -310,9 +310,9 @@ Sablon csatolásához vegyen fel egy [központi telepítési erőforrást](/azur
 }
 ```
 
-Csatolt sablonra való hivatkozás esetén a `uri` nem lehet helyi fájl vagy olyan fájl, amely csak a helyi hálózaton érhető el. A Azure Resource Managernak képesnek kell lennie a sablon elérésére. Olyan URI-értéket adjon meg, amely **http** -vagy **https**-fájlként letölthető. 
+Csatolt sablonra való hivatkozás esetén a `uri` nem lehet helyi fájl vagy olyan fájl, amely csak a helyi hálózaton érhető el. A Azure Resource Managernak képesnek kell lennie a sablon elérésére. Olyan URI-értéket adjon meg, amely HTTP-vagy HTTPS-fájlként letölthető.
 
-A sablonokat a **http** vagy **HTTPS protokollt** tartalmazó paraméterekkel lehet hivatkozni. Például egy általános minta a `_artifactsLocation` paraméter használata. A csatolt sablon a következőhöz hasonló kifejezéssel állítható be:
+A sablonokat a HTTP vagy HTTPS protokollt tartalmazó paraméterekkel lehet hivatkozni. Például egy általános minta a `_artifactsLocation` paraméter használata. A csatolt sablon a következőhöz hasonló kifejezéssel állítható be:
 
 ```json
 "uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
@@ -324,47 +324,49 @@ Ha a GitHub-sablonhoz kapcsolódik, használja a nyers URL-címet. A hivatkozás
 
 ### <a name="parameters-for-linked-template"></a>Csatolt sablon paraméterei
 
-A csatolt sablon paramétereit külső fájlban vagy beágyazottan is megadhatja. Külső paraméterérték megadásakor használja a **parametersLink** tulajdonságot:
+A csatolt sablon paramétereit külső fájlban vagy beágyazottan is megadhatja. Külső paraméterérték megadásakor használja a (z) `parametersLink` tulajdonságot:
 
 ```json
 "resources": [
   {
-  "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
-  "name": "linkedTemplate",
-  "properties": {
-    "mode": "Incremental",
-    "templateLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-      "contentVersion":"1.0.0.0"
-    },
-    "parametersLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
-      "contentVersion":"1.0.0.0"
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
+      "templateLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "parametersLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+        "contentVersion": "1.0.0.0"
+      }
     }
-  }
   }
 ]
 ```
 
-A paraméterek értékének megadásához használja a **Parameters** tulajdonságot.
+A paraméterek értékének megadásához használja a `parameters` tulajdonságot.
 
 ```json
 "resources": [
   {
-   "type": "Microsoft.Resources/deployments",
-   "apiVersion": "2019-10-01",
-   "name": "linkedTemplate",
-   "properties": {
-     "mode": "Incremental",
-     "templateLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-      "contentVersion":"1.0.0.0"
-     },
-     "parameters": {
-      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
+      "templateLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "parameters": {
+        "storageAccountName": {
+          "value": "[parameters('storageAccountName')]"
+        }
+      }
     }
-   }
   }
 ]
 ```
@@ -394,7 +396,7 @@ Nem kell megadnia a `contentVersion` tulajdonságot a `templateLink` vagy `param
 
 Az előző példák a sablon hivatkozásainak rögzített URL-értékeit mutatták. Ez a megközelítés egy egyszerű sablon esetében működhet, de a moduláris sablonok nagy készlete esetében nem működik megfelelően. Ehelyett létrehozhat egy statikus változót, amely alapszintű URL-címet tárol a fő sablon számára, majd dinamikusan létrehozza a csatolt sablonok URL-címeit az alap URL-címről. Ennek a megközelítésnek az az előnye, hogy könnyedén áthelyezheti vagy leképezheti a sablont, mert csak a fősablonban lévő statikus változót kell módosítania. A fő sablon a kibontott sablonban a megfelelő URI-ket adja át.
 
-Az alábbi példa bemutatja, hogyan használható egy alap URL-cím két URL-cím létrehozásához csatolt sablonokhoz (**sharedTemplateUrl** és **vmTemplate**).
+Az alábbi példa bemutatja, hogyan használható egy alap URL-cím két URL-cím létrehozásához csatolt sablonokhoz ( `sharedTemplateUrl` és `vmTemplateUrl` ).
 
 ```json
 "variables": {
@@ -404,7 +406,7 @@ Az alábbi példa bemutatja, hogyan használható egy alap URL-cím két URL-cí
 }
 ```
 
-Az [üzembe helyezés ()](template-functions-deployment.md#deployment) használatával lekérheti az aktuális sablon alap URL-címét, és ezzel az adott helyen található más sablonok URL-címét is lekérheti. Ez a megközelítés akkor lehet hasznos, ha a sablon helye megváltozik, vagy ha el szeretné kerülni a sablonban rögzített URL-címeket. A templateLink tulajdonságot csak akkor adja vissza a rendszer, ha egy távoli sablonhoz URL-címmel kapcsolódik. Ha helyi sablont használ, akkor ez a tulajdonság nem érhető el.
+Az [üzembe helyezés ()](template-functions-deployment.md#deployment) használatával lekérheti az aktuális sablon alap URL-címét, és ezzel az adott helyen található más sablonok URL-címét is lekérheti. Ez a megközelítés akkor lehet hasznos, ha a sablon helye megváltozik, vagy ha el szeretné kerülni a sablonban rögzített URL-címeket. A `templateLink` tulajdonságot csak akkor adja vissza a rendszer, amikor egy URL-címmel rendelkező távoli sablonhoz kapcsolódik. Ha helyi sablont használ, akkor ez a tulajdonság nem érhető el.
 
 ```json
 "variables": {
@@ -423,49 +425,49 @@ Végső soron a változót `uri` egy tulajdonság tulajdonságában fogja haszn�
 
 ## <a name="using-copy"></a>Másolás használata
 
-Ha egy erőforrás több példányát szeretné létrehozni beágyazott sablonnal, adja hozzá a másolás elemet a **Microsoft. Resources/Deployments** erőforrás szintjén. Ha a hatókör belső, a másolást a beágyazott sablonon belül is hozzáadhatja.
+Ha egy erőforrás több példányát szeretné létrehozni beágyazott sablonnal, adja hozzá az `copy` elemet az `Microsoft.Resources/deployments` erőforrás szintjén. Vagy ha a hatókör, a `inner` másolást a beágyazott sablonon belül is hozzáadhatja.
 
-Az alábbi példa bemutatja, hogyan használható a másolás beágyazott sablonnal.
+Az alábbi példa bemutatja, hogyan használható `copy` beágyazott sablonnal.
 
 ```json
 "resources": [
   {
-  "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
-  "name": "[concat('nestedTemplate', copyIndex())]",
-  // yes, copy works here
-  "copy":{
-    "name": "storagecopy",
-    "count": 2
-  },
-  "properties": {
-    "mode": "Incremental",
-    "expressionEvaluationOptions": {
-    "scope": "inner"
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "[concat('nestedTemplate', copyIndex())]",
+    // yes, copy works here
+    "copy": {
+      "name": "storagecopy",
+      "count": 2
     },
-    "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-      {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(variables('storageName'), copyIndex())]",
-      "location": "West US",
-      "sku": {
-        "name": "Standard_LRS"
+    "properties": {
+      "mode": "Incremental",
+      "expressionEvaluationOptions": {
+        "scope": "inner"
       },
-      "kind": "StorageV2"
-      // Copy works here when scope is inner
-      // But, when scope is default or outer, you get an error
-      //"copy":{
-      //  "name": "storagecopy",
-      //  "count": 2
-      //}
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "resources": [
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[concat(variables('storageName'), copyIndex())]",
+            "location": "West US",
+            "sku": {
+              "name": "Standard_LRS"
+            },
+            "kind": "StorageV2"
+            // Copy works here when scope is inner
+            // But, when scope is default or outer, you get an error
+            //"copy":{
+            //  "name": "storagecopy",
+            //  "count": 2
+            //}
+          }
+        ]
       }
-    ]
     }
-  }
   }
 ]
 ```
@@ -476,7 +478,7 @@ Egy csatolt sablon kimeneti értékének lekéréséhez a tulajdonság értéké
 
 Ha egy kimeneti tulajdonságot egy csatolt sablonból olvas be, a tulajdonság neve nem tartalmazhat kötőjelet.
 
-Az alábbi példák bemutatják, hogyan hivatkozhat egy csatolt sablonra, és hogyan kérhet le egy kimeneti értéket. A csatolt sablon egy egyszerű üzenetet ad vissza.  Először a csatolt sablon:
+Az alábbi példák bemutatják, hogyan hivatkozhat egy csatolt sablonra, és hogyan kérhet le egy kimeneti értéket. A csatolt sablon egy egyszerű üzenetet ad vissza. Először a csatolt sablon:
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworld.json":::
 
@@ -613,28 +615,28 @@ Az alábbi példa bemutatja, hogyan lehet átadni egy SAS-tokent egy sablonhoz v
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-  "containerSasToken": { "type": "securestring" }
+    "containerSasToken": { "type": "securestring" }
   },
   "resources": [
-  {
-    "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
-    "name": "linkedTemplate",
-    "properties": {
-    "mode": "Incremental",
-    "templateLink": {
-      "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
-      "contentVersion": "1.0.0.0"
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "linkedTemplate",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
     }
-    }
-  }
   ],
   "outputs": {
   }
 }
 ```
 
-A PowerShellben kap egy jogkivonatot a tárolóhoz, és telepíti a sablonokat az alábbi parancsokkal. Figyelje meg, hogy a **containerSasToken** paraméter a sablonban van definiálva. Nem paraméter a **New-AzResourceGroupDeployment** parancsban.
+A PowerShellben kap egy jogkivonatot a tárolóhoz, és telepíti a sablonokat az alábbi parancsokkal. Figyelje meg, hogy a `containerSasToken` paraméter a sablonban van definiálva. Nem paraméter a `New-AzResourceGroupDeployment` parancsban.
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -678,9 +680,9 @@ Az alábbi példák a csatolt sablonok gyakori használatát mutatják be.
 |[Load Balancer nyilvános IP-címmel](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |A társított sablonból származó nyilvános IP-címet adja vissza, és beállítja a terheléselosztó értékét. |
 |[Több IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [csatolt sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Több nyilvános IP-címet hoz létre a társított sablonban.  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Az oktatóanyagot a következő témakörben tekintheti meg [: oktatóanyag: csatolt Azure Resource Manager-sablonok létrehozása](./deployment-tutorial-linked-template.md).
-* Az erőforrások telepítési sorrendjének definiálásával kapcsolatos további információkért lásd: [függőségek meghatározása Azure Resource Manager sablonokban](define-resource-dependency.md).
-* Ha meg szeretné tudni, hogyan határozhat meg egy erőforrást, de több példányt is létrehozhat, tekintse meg az [erőforrások több példányának létrehozása Azure Resource Manager](copy-resources.md).
-* A sablonok Storage-fiókban való beállításával és az SAS-token létrehozásával kapcsolatos lépésekért lásd: [erőforrások üzembe helyezése Resource manager Azure PowerShell-sablonokkal és](deploy-powershell.md) [az erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](deploy-cli.md).
+* Az oktatóanyagot az oktatóanyag [: csatolt sablon üzembe helyezése](./deployment-tutorial-linked-template.md)című témakörben tekintheti meg.
+* Az erőforrások telepítési sorrendjének definiálásával kapcsolatos további információkért lásd: [erőforrások üzembe helyezési sorrendjének meghatározása az ARM-sablonokban](define-resource-dependency.md).
+* Ha meg szeretné tudni, hogyan határozhat meg egy erőforrást, de több példányt is létrehozhat, tekintse meg [az erőforrás-iteráció az ARM-sablonokban című részt](copy-resources.md)
+* A sablonok Storage-fiókban való beállításával és az SAS-token létrehozásával kapcsolatban lásd: [erőforrások üzembe helyezése ARM-Azure PowerShell sablonokkal](deploy-powershell.md) , illetve [az erőforrások üzembe helyezése ARM-sablonokkal és az Azure CLI-vel](deploy-cli.md).

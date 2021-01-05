@@ -4,18 +4,18 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztons�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41869ac4dfc0d3964fb48463e5f142b8391e2d94
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: f146bed9ee607fe1b1b6062f9fe372fbb9b9ba6a
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579252"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746745"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen az Azure CLI használatával
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére szolgál. Ez a dokumentáció részletesen ismerteti a SAP HANA adatbázis biztonsági mentését és az igény szerinti biztonsági mentések elindítását – mindezt az Azure CLI használatával. Ezeket a lépéseket a [Azure Portal](./backup-azure-sap-hana-database.md)használatával is végrehajthatja.
 
-Ez a dokumentum azt feltételezi, hogy már rendelkezik egy Azure-beli virtuális gépen telepített SAP HANA-adatbázissal. ( [Virtuális gépet is létrehozhat az Azure CLI használatával](../virtual-machines/linux/quick-create-cli.md)). Az oktatóanyag végére a következőket teheti:
+Ez a dokumentum azt feltételezi, hogy már rendelkezik egy Azure-beli virtuális gépen telepített SAP HANA-adatbázissal. ( [Virtuális gépet is létrehozhat az Azure CLI használatával](../virtual-machines/linux/quick-create-cli.md)). Az oktatóanyag végére a következőkre lesz képes:
 
 > [!div class="checklist"]
 >
@@ -126,8 +126,8 @@ Egy adatbázis biztonsági mentésének védelméhez és konfigurálásához has
 ```azurecli-interactive
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
     --policy-name saphanaPolicy \
-    --protectable-item-name saphanadatabase;hxe;hxe  \
-    --protectable-item-type SAPHANADatabse \
+    --protectable-item-name "saphanadatabase;hxe;hxe"  \
+    --protectable-item-type SAPHANADatabase \
     --server-name hxehost \
     --workload-type SAPHANA \
     --output table
@@ -180,7 +180,7 @@ A válasz megadja a feladatnév nevét. Ez a feladatnév használható a feladat
 >
 > Az Azure Backup jelenleg nem támogatja a növekményes biztonsági mentéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha meg szeretné tudni, hogyan állíthatja vissza SAP HANA adatbázist az Azure virtuális gépen a parancssori felület használatával, folytassa az Oktatóanyaggal – [SAP HANA adatbázis visszaállítása az Azure virtuális gépen a CLI használatával](tutorial-sap-hana-restore-cli.md)
 

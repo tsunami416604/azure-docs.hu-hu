@@ -4,12 +4,12 @@ description: Egy Azure-beli virtuális gép visszaállítása helyreállítási 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: baae35c87f306f5773fa8061f27e9793754ccc9c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4be107a1647ac1aa95aea9c1c68e6f024be82b1c
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008503"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746405"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
@@ -270,7 +270,7 @@ A virtuális gépek visszaállítása után számos dolgot érdemes megjegyezni:
 - Ha egy virtuális gépet ugyanarra az erőforráscsoporthoz állítja vissza, mint az eredetileg mentett virtuális gép neve, a Backup a virtuális gépen folytatódik a visszaállítás után.
 - Ha egy másik erőforráscsoporthoz állítja vissza a virtuális gépet, vagy ha a visszaállított virtuális gép számára más nevet adott meg, be kell állítania a visszaállított virtuális gép biztonsági mentését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha a visszaállítási folyamat során nehézségekbe ütközik, [tekintse át](backup-azure-vms-troubleshoot.md#restore) a gyakori problémákat és hibákat.
 - A virtuális gép visszaállítása után megismerheti a [virtuális gépek kezelését](backup-azure-manage-vms.md) .

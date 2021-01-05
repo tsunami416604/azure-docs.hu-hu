@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfiguráci
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f6308250717d35dc725b097575bf3921646c6a0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302701"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755871"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Vendégkonfigurációs szabályzatok létrehozása Linux rendszeren
 
@@ -329,10 +329,15 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>Szabályzat életciklusa
 
-A házirend-definíció frissítésének kiadásához három, figyelmet igénylő mező szükséges.
+Ha a szabályzat frissítését szeretné kibocsátani, végezze el a módosítást a vendég konfigurációs csomag és a Azure Policy definíció részleteit is.
 
 > [!NOTE]
 > A `version` vendég konfiguráció-hozzárendelés tulajdonsága csak a Microsoft által üzemeltetett csomagokat gyakorolja. Az egyéni tartalom verziószámozásának ajánlott eljárása, hogy tartalmazza a verziót a fájl nevében.
+
+Először is, ha fut `New-GuestConfigurationPackage` , adja meg a csomag nevét, amely egyedivé teszi az előző verzióktól. Megadhat egy verziószámot is a névben, például: `PackageName_1.0.0` .
+Az ebben a példában szereplő számot csak a csomag egyedivé tételéhez használja a rendszer, és nem határozza meg, hogy a csomagnak újabb vagy régebbinek kell lennie, mint a többi csomagnak.
+
+Másodszor, frissítse a parancsmaghoz használt paramétereket az `New-GuestConfigurationPolicy` alábbi magyarázatok mindegyikével.
 
 - **Verzió**: a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.
 - **contentUri**: a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia egy URI-t a csomag helyéhez. A fájl nevében szereplő csomag verziószáma biztosítja, hogy a tulajdonság értéke az egyes kiadásokban is megváltozik.

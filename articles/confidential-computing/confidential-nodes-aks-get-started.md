@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan hozhat létre egy olyan AK-fürtöt, amely biza
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 9/22/2020
+ms.date: 12/11/2020
 ms.author: amgowda
-ms.openlocfilehash: 95626836afb09ada286cf7e171f97db450167999
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 92b4cd58b496602b479a24bab81a1d9322e732b0
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564344"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760639"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése bizalmas számítástechnikai csomópontokkal az Azure CLI használatával (előzetes verzió)
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli-preview"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése bizalmas számítástechnikai csomópontokkal (DCsv2) az Azure CLI használatával (előzetes verzió)
 
 Ez a rövid útmutató olyan fejlesztők vagy fürtök számára készült, akik gyorsan létrehozhatnak egy AK-fürtöt, és üzembe helyezhetik az alkalmazásokat az Azure felügyelt Kubernetes szolgáltatásának használatával.
 
@@ -24,21 +24,24 @@ Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy Azure K
 > [!NOTE]
 > A bizalmas számítástechnikai DCsv2 virtuális gépek olyan speciális hardvereket használnak, amelyek a magasabb díjszabás és a régió rendelkezésre állása alá esnek. További információ: a virtuális gépek oldal a [rendelkezésre álló SKU-és támogatott régiókhoz](virtual-machine-solutions.md).
 
+> A DCsv2 a 2. generációs Virtual Machines az Azure-ban, ez a 2. generációs virtuális gép előzetes verziójú szolgáltatás, amely az AK-t használja. 
+
 ### <a name="deployment-pre-requisites"></a>Üzembe helyezési előfeltételek
+A telepítési utasítások a következőket feltételezik:
 
 1. Aktív Azure-előfizetéssel rendelkezik. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot a](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Kezdés előtt
 1. Az Azure CLI 2.0.64 vagy újabb verzióját kell telepítenie és konfigurálnia az üzembe helyezési gépen (Futtatás a `az --version` verzió megkereséséhez). Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](../container-registry/container-registry-get-started-azure-cli.md) ismertető témakört.
 1. [AK – előzetes verziójú bővítmény](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) minimális verziója 0.4.62 
-1. Legalább hat **DC <x> s-v2** mag érhető el az előfizetésben a használathoz. Alapértelmezés szerint a virtuális gép az Azure-előfizetések 8 maggal kapcsolatos bizalmas számítástechnikai kvótáját is felszámítja. Ha olyan fürtöt szeretne kiépíteni, amely több mint 8 magot igényel, kövesse az [alábbi](../azure-portal/supportability/per-vm-quota-requests.md) utasításokat a kvóta növeléséhez
+1. A virtuálisgép-magok kvótájának rendelkezésre állása. Legalább hat **DC <x> s-v2** mag érhető el az előfizetésben a használathoz. Alapértelmezés szerint a virtuális gép az Azure-előfizetések 8 maggal kapcsolatos bizalmas számítástechnikai kvótáját is felszámítja. Ha olyan fürtöt szeretne kiépíteni, amely több mint 8 magot igényel, kövesse az [alábbi](../azure-portal/supportability/per-vm-quota-requests.md) utasításokat a kvóta növeléséhez
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>A bizalmas számítástechnikai csomópont funkciói (DC <x> s-v2)
 
 1. Csak Linux-tárolókat támogató linuxos munkavégző csomópontok
-1. Ubuntu 2. generációs 18,04 Virtual Machines
+1. 2. generációs VM Ubuntu 18,04 Virtual Machines csomópontokkal
 1. Intel SGX ENKLÁVÉHOZ-alapú CPU titkosított oldal gyorsítótár-memóriával (EPC). [További információk](./faq.md)
-1. Kubernetes-verzió 1.16 +
-1. Az Intel SGX ENKLÁVÉHOZ előre telepített DCAP illesztőprogramja. [További információk](./faq.md)
-1. A CLI-alapú üzembe helyezés az előzetes verzióban
+1. Támogató Kubernetes-verzió 1.16 +
+1. Az Intel SGX ENKLÁVÉHOZ DCAP illesztőprogramja előre telepítve van az AK-csomópontokon. [További információk](./faq.md)
+1. Az előzetes verzióban üzembe helyezett CLI-támogatás a portálon alapuló kiépítés után.
 
 
 ## <a name="installing-the-cli-pre-requisites"></a>A CLI Előfeltételek telepítése
@@ -54,16 +57,35 @@ A következő Azure CLI-parancsokkal frissítheti az AK-előnézeti CLI-bővítm
 ```azurecli-interactive
 az extension update --name aks-preview
 ```
-
-Regisztrálja a Gen2VMPreview:
+### <a name="generation-2-vms-feature-registration-on-azure"></a>2. generációs virtuális gépek funkciójának regisztrálása az Azure-ban
+Regisztrálja a Gen2VMPreview az Azure-előfizetésben. Ez a funkció lehetővé teszi, hogy a 2. generációs Virtual Machinest AK-beli csomópont-készletekként kiépítse:
 
 ```azurecli-interactive
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
-Több percet is igénybe vehet, amíg az állapot regisztrálva jelenik meg. A regisztrációs állapotot az "az Feature List" parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot regisztrálva jelenik meg. A regisztrációs állapotot az "az Feature List" parancs használatával tekintheti meg. Ez a szolgáltatás regisztrációja csak egyszer érhető el az előfizetések esetében. Ha korábban már regisztrálták, ugorja át a fenti lépést:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
+```
+Ha az állapot regisztrálva értékre van állítva, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az "az Provider Register" parancs használatával:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="azure-confidential-computing-feature-registration-on-azure-optional-but-recommended"></a>Azure bizalmas számítástechnikai funkciók regisztrálása az Azure-ban (nem kötelező, de ajánlott)
+A AKS-ConfidentialComputinAddon regisztrálása az Azure-előfizetésben. Ez a funkció két daemonsets fog felvenni, ahogy az [itt](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon)látható a részletek között:
+1. SGX ENKLÁVÉHOZ illesztőprogram beépülő modul
+2. SGX ENKLÁVÉHOZ-igazolási ajánlat segítője
+
+```azurecli-interactive
+az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
+```
+Több percet is igénybe vehet, amíg az állapot regisztrálva jelenik meg. A regisztrációs állapotot az "az Feature List" parancs használatával tekintheti meg. Ez a szolgáltatás regisztrációja csak egyszer érhető el az előfizetések esetében. Ha korábban már regisztrálták, ugorja át a fenti lépést:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
 ```
 Ha az állapot regisztrálva értékre van állítva, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az "az Provider Register" parancs használatával:
 
@@ -81,56 +103,65 @@ Először hozzon létre egy erőforráscsoportot a fürthöz az az Group Create 
 az group create --name myResourceGroup --location westus2
 ```
 
-Most hozzon létre egy AK-fürtöt az az AK Create paranccsal. A következő példa egy olyan fürtöt hoz létre, amelynek mérete egyetlen csomópont `Standard_DC2s_v2` . További támogatott DCsv2 SKU-ket is választhat a következő [listából:](../virtual-machines/dcv2-series.md)
+Most hozzon létre egy AK-fürtöt az az AK Create paranccsal.
 
 ```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --node-vm-size Standard_DC2s_v2 \
-    --node-count 3 \
-    --enable-addon confcom \
-    --network-plugin azure \
-    --vm-set-type VirtualMachineScaleSets \
-    --aks-custom-headers usegen2vm=true
+# Create a new AKS cluster with  system node pool with Confidential Computing addon enabled
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom
 ```
-A fenti parancsnak egy, a **DC <x> s-v2** csomópont-készletekkel rendelkező új AK-fürtöt kell kiépítenie, és automatikusan telepítenie kell két démon-készletet – ( [SGX enklávéhoz-eszköz beépülő modul](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX enklávéhoz](confidential-nodes-aks-overview.md#sgx-quote)
+A fenti létrehoz egy új AK-fürtöt a rendszercsomópont-készlettel. Most folytassa a bizalmas számítástechnikai Nodepool típusú felhasználói csomópont hozzáadását az AK-ban (DCsv2)
+
+Az alábbi példa egy felhasználói nodepool hoz létre, amelynek mérete 3 csomópont `Standard_DC2s_v2` . A DCsv2 SKU-i és régiók más támogatott listáját [itt](../virtual-machines/dcv2-series.md)választhatja ki:
+
+```azurecli-interactive
+az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-vm-size Standard_DC2s_v2 --aks-custom-headers usegen2vm=true
+```
+A fenti parancsnak hozzá kell adnia egy új, **DC <x> s-v2** típusú csomópontot, amely automatikusan futtat két daemonsets ezen a csomópont-készleten – ([SGX enklávéhoz-eszköz beépülő modul](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX enklávéhoz-ajánlat segítője](confidential-nodes-aks-overview.md#sgx-quote))
 
 Kérje le az AK-fürt hitelesítő adatait az az az AK Get-hitelesítőadats parancs használatával:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
-Győződjön meg arról, hogy a csomópontok megfelelően lettek létrehozva, és a SGX ENKLÁVÉHOZ-hez kapcsolódó démon-készletek a **DC <x> s-v2** csomópont-készleteken futnak a kubectl get hüvelyek & Nodes paranccsal az alábbiak szerint:
+Győződjön meg arról, hogy a csomópontok megfelelően lettek létrehozva, és a SGX ENKLÁVÉHOZ-hez kapcsolódó daemonsets **DC <x> s-v2** csomópont-készleteken futnak a kubectl get hüvelyek & Nodes parancs használatával, az alábbiak szerint:
 
 ```console
 $ kubectl get pods --all-namespaces
 
 output
 kube-system     sgx-device-plugin-xxxx     1/1     Running
+kube-system     sgx-quote-helper-xxxx      1/1     Running
 ```
 Ha a kimenet megfelel a fentinek, akkor az AK-fürt most már készen áll a bizalmas alkalmazások futtatására.
 
 Nyissa meg [„Helló világ!” alkalmazás az enklávé](#hello-world) üzembe helyezése szakaszát, hogy tesztelje az alkalmazást egy enklávéban. Vagy kövesse az alábbi utasításokat további Node-készletek hozzáadásához az AK-ban (az AK támogatja a SGX ENKLÁVÉHOZ-csomópontok és a nem SGX ENKLÁVÉHOZ csomópont-készletek keverését)
 
->Ha a SGX ENKLÁVÉHOZ kapcsolódó démon-készletek nincsenek telepítve a DCSv2-csomópontok készletén, futtassa az alábbi parancsot.
-
-```azurecli-interactive
-az aks update --enable-addons confcom --resource-group myResourceGroup --name myAKSCluster
-```
-
-![DCSv2 AK-fürt létrehozása](./media/confidential-nodes-aks-overview/CLIAKSProvisioning.gif)
-
-## <a name="adding-confidential-computing-node-to-existing-aks-cluster"></a>Bizalmas számítástechnikai csomópont hozzáadása meglévő AK-fürthöz<a id="existing-cluster"></a>
+## <a name="adding-confidential-computing-node-pool-to-existing-aks-cluster"></a>Bizalmas számítástechnikai csomópont-készlet hozzáadása meglévő AK-fürthöz<a id="existing-cluster"></a>
 
 Ez a szakasz azt feltételezi, hogy rendelkezik egy már működő AK-fürttel, amely megfelel az előfeltételek szakaszban felsorolt feltételeknek.
 
-Először is lehetővé teszi a bizalmas számítástechnikai szolgáltatásokkal kapcsolatos AK-bővítmények létrehozását a meglévő fürtön:
+Először is lehetővé teszi a funkció hozzáadását az Azure-előfizetéshez
+
+```azurecli-interactive
+az feature register --name AKS-ConfidentialComputinAddon --namespace Microsoft.ContainerService
+```
+Több percet is igénybe vehet, amíg az állapot regisztrálva jelenik meg. A regisztrációs állapotot az "az Feature List" parancs használatával tekintheti meg. Ez a szolgáltatás regisztrációja csak egyszer érhető el az előfizetések esetében. Ha korábban már regisztrálták, ugorja át a fenti lépést:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+```
+Ha az állapot regisztrálva értékre van állítva, frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját az "az Provider Register" parancs használatával:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+Ezután engedélyezheti a bizalmas számítástechnikagel kapcsolatos AK-bővítményeket a meglévő fürtön:
 
 ```azurecli-interactive
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
-Most adjon hozzá egy **DC <x> s-v2 csomópont-** készletet a fürthöz
+Most adjon hozzá egy **DC <x> s-v2** felhasználói csomópont-készletet a fürthöz
     
 > [!NOTE]
 > Ahhoz, hogy használni lehessen a bizalmas számítástechnikai funkciót, a meglévő AK-fürtnek legalább egy **DC <x> s-v2** VM SKU-alapú csomópont-készlettel kell rendelkeznie. További információ a bizalmas számítástechnikai DCsv2 VM SKU itt [elérhető SKU-k és támogatott régiók](virtual-machine-solutions.md).
@@ -160,7 +191,7 @@ kube-system     sgx-quote-helper-xxxx      1/1     Running
 Ha a kimenet megfelel a fentinek, akkor az AK-fürt most már készen áll a bizalmas alkalmazások futtatására.
 
 ## <a name="hello-world-from-isolated-enclave-application"></a>„Helló világ!” alkalmazás izolált enklávé alkalmazásból <a id="hello-world"></a>
-Hozzon létre egy *Hello-World-enklávé. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. Ez a nyílt enklávé-alapú minta alkalmazás kódja az [Open enklávé projektben](https://github.com/openenclave/openenclave/tree/master/samples/helloworld)található.
+Hozzon létre egy *Hello-World-enklávé. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. Ez a nyílt enklávé-alapú minta alkalmazás kódja az [Open enklávé projektben](https://github.com/openenclave/openenclave/tree/master/samples/helloworld)található. Az alábbi központi telepítés feltételezi, hogy telepítette a "confcom" addon.
 
 ```yaml
 apiVersion: batch/v1
@@ -239,7 +270,7 @@ Removing the confidential computing node pool
 az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resource-group myResourceGroup
 ``````
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Python, node stb. futtatása Bizalmas tárolókban bizalmasan kezelheti az alkalmazásokat a [bizalmas tárolók mintáinak](https://github.com/Azure-Samples/confidential-container-samples)meglátogatásával.
 

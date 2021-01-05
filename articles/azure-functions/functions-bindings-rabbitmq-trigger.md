@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673987"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760401"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ-trigger Azure Functions – áttekintés
 
 > [!NOTE]
-> A RabbitMQ-kötések csak a **Windows Premium és a dedikált** csomagok esetében teljes mértékben támogatottak. A felhasználás és a Linux jelenleg nem támogatott.
+> A RabbitMQ-kötések csak a **prémium és a dedikált** csomagok esetében teljes mértékben támogatottak. A felhasználás nem támogatott.
 
 A RabbitMQ trigger használatával válaszolhat az RabbitMQ-üzenetsor üzeneteire.
 
@@ -43,18 +43,23 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
 Az alábbi példa bemutatja, hogyan olvashatja el az üzenetet POCOként.
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
 
-[FunctionName("RabbitMQTriggerCSharp")]
-public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
-    ILogger logger
-    )
-{
-    logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {Encoding.UTF8.GetString(pocObj)}");
+    public class RabbitMQTriggerCSharp{
+        [FunctionName("RabbitMQTriggerCSharp")]
+        public static void RabbitMQTrigger_BasicDeliverEventArgs(
+            [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
+            ILogger logger
+            )
+        {
+            logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {pocObj}");
+        }
+    }
 }
 ```
 
@@ -82,7 +87,7 @@ A *function.js* fájlban található kötési adatfájlok:
 
 A C# szkript kódja:
 
-```csx
+```C#
 using System;
 
 public static void Run(string myQueueItem, ILogger log)
@@ -206,7 +211,7 @@ További részletekért tekintse meg az trigger [példáját](#example) .
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `RabbitMQTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a | "RabbitMQTrigger" értékre kell állítani.|
 |**irányba** | n/a | "In" értékre kell állítani.|
@@ -216,7 +221,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>Annak az alkalmazás-beállításnak a neve, amely a várólistához való hozzáféréshez használt felhasználónevet tartalmazza. Például: UserNameSetting: "% < UserNameFromSettings >%"|
 |**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>Annak az alkalmazás-beállításnak a neve, amely a várólista eléréséhez szükséges jelszót tartalmazza. Például: PasswordSetting: "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Annak az RabbitMQ a neve, amely az üzenetsor-kapcsolatok karakterláncát tartalmazza. Vegye figyelembe, hogy ha a (z) local.settings.json lévő alkalmazás-beállításon keresztül közvetlenül adja meg a kapcsolatok karakterláncát, akkor az trigger nem fog működni. (Pl.: *function.json*: connectionStringSetting: "rabbitMQConnection" <br> *local.settings.json*: "rabbitMQConnection": "< ActualConnectionstring >")|
-|**Port**|**Port**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0.|
+|**Port**|**Port**|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0, amely a rabbitmq-ügyfél alapértelmezett portjának beállítására mutat: 5672.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -275,12 +280,12 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |prefetchCount|30|Lekérdezi vagy beállítja az üzenet fogadója által egyidejűleg kérelmezhető és gyorsítótárazott üzenetek számát.|
 |queueName|n/a| Azon várólista neve, amelyről üzeneteket szeretne fogadni.|
 |connectionString|n/a|A RabbitMQ üzenet-várólista-kapcsolatok karakterlánca. Vegye figyelembe, hogy a kapcsolatok karakterlánca közvetlenül itt van megadva, és nem az alkalmazás beállításain keresztül.|
-|port|0|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0.|
+|port|0|(a connectionString használatával figyelmen kívül hagyva) Lekérdezi vagy beállítja a használt portot. Az alapértelmezett érték 0, amely a rabbitmq-ügyfél alapértelmezett portjának beállítására mutat: 5672.|
 
 ## <a name="local-testing"></a>Helyi tesztelés
 
@@ -303,11 +308,26 @@ Ha a helyi tesztelést nem a kapcsolatok karakterlánca nélkül végzi, állít
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|hostName|n/a|(ConnectStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista állomásneve (pl.: 10.26.45.210)|
-|userName (Felhasználónév)|n/a|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista eléréséhez használandó név |
-|jelszó|n/a|(ConnectionStringSetting használata esetén figyelmen kívül hagyva) <br>A várólista eléréséhez szükséges jelszó|
+|hostName|n/a|(a connectionString használatával figyelmen kívül hagyva) <br>A várólista állomásneve (pl.: 10.26.45.210)|
+|userName (Felhasználónév)|n/a|(a connectionString használatával figyelmen kívül hagyva) <br>A várólista eléréséhez használandó név |
+|jelszó|n/a|(a connectionString használatával figyelmen kívül hagyva) <br>A várólista eléréséhez szükséges jelszó|
+
+
+## <a name="enable-runtime-scaling"></a>Futtatókörnyezet Skálázásának engedélyezése
+
+Ahhoz, hogy a RabbitMQ trigger több példányra is felskálázásra kerüljön, engedélyezni kell a **futásidejű skálázás figyelési** beállítását. 
+
+A portálon ez a beállítás a Function alkalmazás **konfigurációs**  >  **függvény futtatókörnyezetének beállításaiban** található.
+
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
+
+A CLI-ben a következő parancs használatával engedélyezheti a **futásidejű méretezési figyelést** :
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
+```
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>RabbitMQ-végpont figyelése
 A várólisták és az egyes RabbitMQ-végpontok cseréjének figyelése:
@@ -315,6 +335,6 @@ A várólisták és az egyes RabbitMQ-végpontok cseréjének figyelése:
 * A [RabbitMQ-kezelő beépülő modul](https://www.rabbitmq.com/management.html) engedélyezése
 * Keresse meg a http://{node-hostname}: 15672, és jelentkezzen be a felhasználónevével és jelszavával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [RabbitMQ üzenetek küldése Azure Functionsból (kimeneti kötés)](./functions-bindings-rabbitmq-output.md)

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf6e02ebad2ac5150be4775ad0ff6069fe3db89f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980044"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745963"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében
 
@@ -31,21 +31,21 @@ A katalógus erőforrások és hozzáférési csomagok tárolója. Létre kell h
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus létrehozója
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
-1. A bal oldali menüben kattintson a **katalógusok**elemre.
+1. A bal oldali menüben kattintson a **katalógusok** elemre.
 
     ![Jogosultsági felügyeleti katalógusok a Azure Portal](./media/entitlement-management-catalog-create/catalogs.png)
 
-1. Kattintson az **új katalógus**lehetőségre.
+1. Kattintson az **új katalógus** lehetőségre.
 
 1. Adjon meg egy egyedi nevet a katalógus számára, és adjon meg egy leírást.
 
     A felhasználók ezeket az információkat egy hozzáférési csomag részleteiben látják.
 
-1. Ha azt szeretné, hogy a katalógushoz tartozó hozzáférési csomagok elérhetők legyenek a felhasználók számára a létrehozásuk után, állítsa az **engedélyezve** beállítást **Igen**értékre.
+1. Ha azt szeretné, hogy a katalógushoz tartozó hozzáférési csomagok elérhetők legyenek a felhasználók számára a létrehozásuk után, állítsa az **engedélyezve** beállítást **Igen** értékre.
 
-1. Ha engedélyezni szeretné a kiválasztott külső címtárakban lévő felhasználók számára a hozzáférési csomagok kérését ebben a katalógusban, akkor a **külső felhasználók számára engedélyezze a** beállítást **Igen**értékre.
+1. Ha engedélyezni szeretné a kiválasztott külső címtárakban lévő felhasználók számára a hozzáférési csomagok kérését ebben a katalógusban, akkor a **külső felhasználók számára engedélyezze a** beállítást **Igen** értékre.
 
     ![Új katalógus panel](./media/entitlement-management-shared/new-catalog.png)
 
@@ -61,15 +61,15 @@ Ahhoz, hogy egy hozzáférési csomagban erőforrásokat tartalmazzon, az erőfo
 
 **Előfeltételként szükséges szerepkör:** [Erőforrások katalógusba való felvételéhez szükséges szerepkörök](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **katalógusok** lehetőségre, majd nyissa meg azt a katalógust, amelyhez erőforrásokat szeretne hozzáadni.
 
-1. A bal oldali menüben kattintson az **erőforrások**elemre.
+1. A bal oldali menüben kattintson az **erőforrások** elemre.
 
-1. Kattintson az **erőforrások hozzáadása**lehetőségre.
+1. Kattintson az **erőforrások hozzáadása** lehetőségre.
 
-1. Kattintson egy erőforrás típusára: **csoportok, csapatok**, **alkalmazások**vagy **SharePoint-webhelyek**.
+1. Kattintson egy erőforrás típusára: **csoportok, csapatok**, **alkalmazások** vagy **SharePoint-webhelyek**.
 
     Ha nem lát olyan erőforrást, amelyet hozzá szeretne adni, vagy nem tud hozzáadni egy erőforrást, győződjön meg arról, hogy rendelkezik a szükséges Azure AD-címtárbeli szerepkörrel és jogosultság-kezelési szerepkörrel. Előfordulhat, hogy a szükséges szerepkörökkel rendelkező személynek hozzá kell adnia az erőforrást a katalógushoz. További információ: a [szükséges szerepkörök az erőforrások katalógushoz való hozzáadásához](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
@@ -77,7 +77,7 @@ Ahhoz, hogy egy hozzáférési csomagban erőforrásokat tartalmazzon, az erőfo
 
     ![Erőforrások hozzáadása egy katalógushoz](./media/entitlement-management-catalog-create/catalog-add-resources.png)
 
-1. Ha elkészült, kattintson a **Hozzáadás**gombra.
+1. Ha elkészült, kattintson a **Hozzáadás** gombra.
 
     Ezek az erőforrások mostantól a katalógusban lévő hozzáférési csomagokba is belefoglalhatók.
 
@@ -91,15 +91,15 @@ A katalógusból eltávolíthatja az erőforrásokat. Egy erőforrás csak akkor
 
 **Előfeltételként szükséges szerepkör:** [Erőforrások katalógusba való felvételéhez szükséges szerepkörök](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **katalógusok** lehetőségre, majd nyissa meg azt a katalógust, amelyből el szeretné távolítani az erőforrásokat.
 
-1. A bal oldali menüben kattintson az **erőforrások**elemre.
+1. A bal oldali menüben kattintson az **erőforrások** elemre.
 
 1. Válassza ki az eltávolítani kívánt erőforrásokat.
 
-1. Kattintson az **Eltávolítás** gombra (vagy kattintson a három pontra (**...**), majd az **erőforrás eltávolítása**gombra.
+1. Kattintson az **Eltávolítás** gombra (vagy kattintson a három pontra (**...**), majd az **erőforrás eltávolítása** gombra.
 
 
 ## <a name="add-additional-catalog-owners"></a>További katalógus-tulajdonosok hozzáadása
@@ -110,11 +110,11 @@ Az alábbi lépéseket követve rendelhet hozzá felhasználókat a katalógus t
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **katalógusok** lehetőségre, majd nyissa meg azt a katalógust, amelyhez hozzá szeretné adni a rendszergazdákat.
 
-1. A bal oldali menüben kattintson a **szerepkörök és rendszergazdák**elemre.
+1. A bal oldali menüben kattintson a **szerepkörök és rendszergazdák** elemre.
 
     ![A szerepkörök és a rendszergazdák katalógusa](./media/entitlement-management-shared/catalog-roles-administrators.png)
 
@@ -128,11 +128,11 @@ Szerkesztheti a katalógus nevét és leírását. A felhasználók ezt az infor
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **katalógusok** lehetőségre, majd nyissa meg a szerkeszteni kívánt katalógust.
 
-1. A katalógus **Áttekintés** lapján kattintson a **Szerkesztés**elemre.
+1. A katalógus **Áttekintés** lapján kattintson a **Szerkesztés** elemre.
 
 1. Szerkessze a katalógus nevét, leírását vagy engedélyezett beállításait.
 
@@ -146,18 +146,18 @@ A katalógust törölheti, de csak akkor, ha nincs hozzáférési csomagja.
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **katalógusok** lehetőségre, majd nyissa meg a törölni kívánt katalógust.
 
-1. A katalógus **áttekintésében**kattintson a **Törlés**elemre.
+1. A katalógus **áttekintésében** kattintson a **Törlés** elemre.
 
-1. A megjelenő üzenetablakban kattintson az **Igen**gombra.
+1. A megjelenő üzenetablakban kattintson az **Igen** gombra.
 
 ### <a name="deleting-a-catalog-programmatically"></a>Katalógus programozott törlése
 
 A katalógust Microsoft Graph használatával is törölheti.  Egy megfelelő szerepkörbe tartozó felhasználó, aki a delegált engedéllyel rendelkezik, `EntitlementManagement.ReadWrite.All` meghívhatja az API-t [egy accessPackageCatalog törlésére](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzáférési szabályozás delegálása a csomagkezelő-kezelők eléréséhez](entitlement-management-delegate-managers.md)

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0dd5f6a48175bad35b37155c8ff881e352922ca7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674470"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756058"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
 
@@ -121,11 +121,11 @@ A naplófájlok nélkülözhetetlen erőforrást biztosítanak az Azure ML-munka
 Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban látható mappákban.
 
 > [!NOTE]
-> Információ arról, hogy a felhasználónak akkor is meg kell jelennie, ha a skimmingYou nem feltétlenül fogja látni az összes fájl minden futtatását. A 20_image_build_log *. txt például csak akkor jelenik meg, ha új rendszerkép van felépítve (például ha módosítja a környezetet).
+> Minden futtatáskor nem feltétlenül fog megjelenni minden fájl. A 20_image_build_log *. txt például csak akkor jelenik meg, ha új rendszerkép van felépítve (például ha módosítja a környezetet).
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` mappa
 
-|Fájl  |Description  |
+|Fájl  |Leírás  |
 |---------|---------|
 |20_image_build_log.txt     | Docker-rendszerkép-létrehozási napló a betanítási környezethez, nem kötelező, egy Futtatás. Csak a környezet frissítésekor alkalmazható. Máskülönben a pénzmosás felhasználja a gyorsítótárazott rendszerképet. Ha a művelet sikeres, a rendszerkép beállításjegyzékének részleteit tartalmazza a megfelelő rendszerképhez.         |
 |55_azureml-Execution-<node_id # C1.txt     | StdOut/stderr log of Host Tool, egy csomóponton. A rendszerkép lekérése a számítási célra. Megjegyzés: Ez a napló csak akkor jelenik meg, ha biztonságos számítási erőforrásokkal rendelkezik.         |
@@ -138,7 +138,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` mappa
 
-|Fájl  |Description  |
+|Fájl  |Leírás  |
 |---------|---------|
 |110_azureml. log      |         |
 |job_prep_azureml. log     |   rendszernapló a feladat-előkészítéshez        |
@@ -148,7 +148,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 Ha az oldalkocsi engedélyezve van, a feladatok előkészítési és a feladatok kiadására szolgáló szkriptek az oldalkocsis tárolón belül lesznek futtatva.  Mindegyik csomóponthoz egy mappa van. 
 
-|Fájl  |Description  |
+|Fájl  |Leírás  |
 |---------|---------|
 |start_cms.txt     |  Az oldalkocsi-tároló indításakor megjelenő folyamat naplózása       |
 |prep_cmd.txt      |   A futtatáskor megadott ContextManagers naplója `job_prep.py` (ennek egy része a következőre lesz továbbítva: `azureml-logs/65-job_prep` )       |
@@ -182,7 +182,7 @@ Ha figyelni szeretné a futtatásokat egy adott számítási célra a böngész�
 A Futtatás befejezése után már nem jelenik meg ezen a lapon. A befejezett futtatásokkal kapcsolatos információk megtekintéséhez látogasson el a Studio __kísérletek__ szakaszára, és válassza ki a kísérletet, majd futtassa a parancsot. További információért lásd a [befejezett futtatások metrikáinak megtekintése](#view-the-experiment-in-the-web-portal)című szakaszt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki a következő lépéseket a Azure Machine Learning használatának megismeréséhez:
 

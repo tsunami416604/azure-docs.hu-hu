@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: ea55762aa40360d8eea94223a030f08aad504206
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b0059e986b9a6ba8152a1a61f8d696f1caa4646a
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95485392"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755905"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Oktatóanyag: a blézer-kiszolgáló csevegési alkalmazásának létrehozása
 
@@ -433,7 +433,6 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 >    "Azure": {
 >      "SignalR": {
 >        "Enabled": true,
->        "ServerStickyMode": "Required",
 >        "ConnectionString": <your-connection-string>
 >      }
 >    }
@@ -453,7 +452,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 
 Ha törölni szeretné a jelen oktatóanyag elvégzése során létrehozott erőforrásokat, törölje az erőforráscsoportot az Azure Portalon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 

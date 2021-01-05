@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77a8321ba8bac0ecaf577bce6c3c05d10508128e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: references_regions
+ms.openlocfilehash: bfdea5f2e2bd20a35ee948e99b3be9bf55038b13
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020160"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760656"
 ---
 # <a name="text-to-speech-rest-api"></a>Szövegfelolvasás REST API
 
@@ -34,7 +35,7 @@ Az API használata előtt Ismerje meg a következőket:
 * A szöveg-beszéd REST API engedélyezési fejlécet igényel. Ez azt jelenti, hogy a szolgáltatás eléréséhez ki kell fejeznie egy jogkivonat-Exchange-t. További információért lásd: [Hitelesítés](#authentication).
 
 > [!TIP]
-> Lásd: az Azure Government [dokumentációja](../../azure-government/compare-azure-government-global-azure.md) a Government Cloud (FairFax) végpontokhoz.
+> Lásd: az [Azure Government dokumentációja](/azure/azure-government/compare-azure-government-global-azure) a Government Cloud (FairFax) végpontokhoz.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -44,12 +45,12 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 
 ### <a name="regions-and-endpoints"></a>Régiók és végpontok
 
-| Region | Végpont |
+| Régió | Végpont |
 |--------|----------|
 | Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Dél-Brazília | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Közép-Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Az USA középső régiója | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA középső régiója | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kelet-Ázsia | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA keleti régiója | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA 2. keleti régiója | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -65,6 +66,9 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 | Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+
+> [!TIP]
+> Az előzetes verzióban megjelenő [hangok](language-support.md#neural-voices-in-preview) csak a következő 3 régióban érhetők el: USA keleti régiója, Nyugat-Európa és Délkelet-Ázsia.
 
 ### <a name="request-headers"></a>Kérésfejlécek
 
@@ -98,46 +102,78 @@ Ez a válasz a válasz szerkezetének szemléltetésére lett csonkítva.
 
 ```json
 [
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+    "DisplayName": "Hoda",
+    "LocalName": "هدى",
+    "ShortName": "ar-EG-Hoda",
+    "Gender": "Female",
+    "Locale": "ar-EG",
+    "SampleRateHertz": "16000",
+    "VoiceType": "Standard",
+    "Status": "GA"
+  },
+
+...
+      
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
-        "ShortName": "ar-EG-Hoda",
-        "Gender": "Female",
-        "Locale": "ar-EG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
-        "ShortName": "ar-SA-Naayf",
-        "Gender": "Male",
-        "Locale": "ar-SA",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
-        "ShortName": "bg-BG-Ivan",
-        "Gender": "Male",
-        "Locale": "bg-BG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
-        "ShortName": "ca-ES-HerenaRUS",
-        "Gender": "Female",
-        "Locale": "ca-ES",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
-        "ShortName": "zh-CN-XiaoxiaoNeural",
-        "Gender": "Female",
-        "Locale": "zh-CN",
-        "SampleRateHertz": "24000",
-        "VoiceType": "Neural"
-    },
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+    "DisplayName": "Aria",
+    "LocalName": "Aria",
+    "ShortName": "en-US-AriaNeural",
+    "Gender": "Female",
+    "Locale": "en-US",
+    "StyleList": [
+      "chat",
+      "customerservice",
+      "newscast-casual",
+      "newscast-formal",
+      "cheerful",
+      "empathetic"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "GA"
+  },
+  
+  ...
+    
+     {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ga-IE, OrlaNeural)",
+    "DisplayName": "Orla",
+    "LocalName": "Orla",
+    "ShortName": "ga-IE-OrlaNeural",
+    "Gender": "Female",
+    "Locale": "ga-IE",
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
+  
+  ...
+    
+   {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
+    "DisplayName": "Yunxi",
+    "LocalName": "云希",
+    "ShortName": "zh-CN-YunxiNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "StyleList": [
+      "Calm",
+      "Fearful",
+      "Cheerful",
+      "Disgruntled",
+      "Serious",
+      "Angry",
+      "Sad",
+      "Depressed",
+      "Embarrassed"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
 
     ...
 ]
@@ -208,23 +244,17 @@ Ez a HTTP-kérelem SSML használ a hang és a nyelv megadásához. Ha a törzs h
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
 
-X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+X-Microsoft-OutputFormat: raw-24khz-16bit-mono-pcm
 Content-Type: application/ssml+xml
 Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-AriaRUS'>
+    name='en-US-AriaNeural'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
-
-Tekintse meg a nyelvspecifikus példákat:
-
-* [.NET Core, C #](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](./get-started-text-to-speech.md?pivots=programming-language-python)
-* [Node.js](./get-started-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP-állapotkódok
 
@@ -235,7 +265,6 @@ Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 | 200 | OK | A kérelem sikeres volt; a válasz törzse egy hangfájl. |
 | 400 | Hibás kérés | Egy kötelező paraméter hiányzik, üres vagy NULL értékű. Vagy a kötelező vagy választható paraméternek átadott érték érvénytelen. Gyakori probléma egy túl hosszú fejléc. |
 | 401 | Nem engedélyezett | A kérés nincs engedélyezve. Győződjön meg arról, hogy az előfizetési kulcs vagy token érvényes, és a megfelelő régióban található. |
-| 413 | A kérelem entitása túl nagy | A SSML bemenete hosszabb 1024 karakternél. |
 | 415 | Nem támogatott adathordozó-típus | Lehetséges, hogy a helytelen `Content-Type` volt megadva. `Content-Type` értékre kell állítani `application/ssml+xml` . |
 | 429 | Túl sok kérelem | Túllépte az előfizetéshez engedélyezett kvótát vagy kérelmek arányát. |
 | 502 | Hibás átjáró    | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejléceket is jelezhet. |
@@ -245,5 +274,5 @@ Ha a HTTP-állapot értéke `200 OK` , a válasz törzse egy hangfájlt tartalma
 ## <a name="next-steps"></a>További lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
-- [Aszinkron szintézis a hosszú formátumú hangokhoz](./long-audio-api.md)
+- [Aszinkron szintézis a hosszú formátumú hangokhoz](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [Bevezetés a Custom Voice szolgáltatásba](how-to-custom-voice.md)

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb9bc252c733f3445cbf8b27281c2f455d5f2f36
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 76aeb63feb006e6962efeb3687363f18acb59904
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696965"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746694"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -122,6 +122,6 @@ Egyes szervezeteknél előfordulhat, hogy a vendégek nem ismerik a csoport tags
 
 5. Távolítsa el a vendég hozzáférést a megtagadott vendégek számára, nem fejezte be a felülvizsgálatot, vagy korábban nem fogadta el a meghívót. Ha a vendégek némelyike olyan kapcsolattartó, aki kiválasztotta a felülvizsgálatban való részvételt, vagy korábban nem fogadtak el meghívót, letilthatja a fiókjaikat a Azure Portal vagy a PowerShell használatával. Ha a vendégnek már nincs szüksége a hozzáférésre, és nem egy partner, akkor a Azure Portal vagy a PowerShell használatával törölheti a felhasználói objektumot a címtárból a vendég felhasználói objektum törléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)

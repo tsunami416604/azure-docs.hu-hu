@@ -3,12 +3,12 @@ title: Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 124f747a1e7c7925efc2519ee826d62034e69cc5
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302696"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755973"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 
@@ -491,10 +491,15 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>Szabályzat életciklusa
 
-Ha a szabályzat frissítését szeretné kibocsátani, három, figyelmet igénylő mező szükséges.
+Ha a szabályzat frissítését szeretné kibocsátani, végezze el a módosítást a vendég konfigurációs csomag és a Azure Policy definíció részleteit is.
 
 > [!NOTE]
 > A `version` vendég konfiguráció-hozzárendelés tulajdonsága csak a Microsoft által üzemeltetett csomagokat gyakorolja. Az egyéni tartalom verziószámozásának ajánlott eljárása, hogy tartalmazza a verziót a fájl nevében.
+
+Először is, ha fut `New-GuestConfigurationPackage` , adja meg a csomag nevét, amely egyedivé teszi az előző verzióktól. Megadhat egy verziószámot is a névben, például: `PackageName_1.0.0` .
+Az ebben a példában szereplő számot csak a csomag egyedivé tételéhez használja a rendszer, és nem határozza meg, hogy a csomagnak újabb vagy régebbinek kell lennie, mint a többi csomagnak.
+
+Másodszor, frissítse a parancsmaghoz használt paramétereket az `New-GuestConfigurationPolicy` alábbi magyarázatok mindegyikével.
 
 - **Verzió**: a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia a jelenleg közzétett verziónál nagyobb verziószámot.
 - **contentUri**: a parancsmag futtatásakor meg `New-GuestConfigurationPolicy` kell adnia egy URI-t a csomag helyéhez. A fájl nevében szereplő csomag verziószáma biztosítja, hogy a tulajdonság értéke az egyes kiadásokban is megváltozik.

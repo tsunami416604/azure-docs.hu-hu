@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 12/23/2020
 ms.author: manayar
-ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e22e8b81382614c2930c72a8150606f859be501d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744731"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762979"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Előzetes verzió: Automatikus virtuálisgép-vendég-javítás konfigurálása windowsos virtuális gépek esetében az Azure-ban
 
@@ -34,11 +34,11 @@ Az automatikus VM-vendég javításának jellemzői a következők:
 
 Ha az automatikus virtuális gép vendégének javítása engedélyezve van egy virtuális gépen, akkor a rendszer automatikusan letölti és alkalmazza a rendelkezésre álló *kritikus* és *biztonsági* javításokat a virtuális gépen. Ez a folyamat minden hónapban automatikusan indul el, amikor az új javítások Windows Updateon keresztül jelennek meg. A javítások értékelése és telepítése automatikusan történik, és a folyamat a virtuális gép szükség szerinti újraindítását is magában foglalja.
 
-A virtuális gépet rendszeresen értékelni kell a virtuális gép megfelelő javításának megállapításához. A javítások a virtuális gépen a virtuális gép futási ideje alatt akár naponta is telepíthetők. Ez az automatikus értékelés biztosítja, hogy a hiányzó javítások a lehető legkorábbi módon legyenek felderítve.
+A virtuális gépet az adott virtuális gép megfelelő javításának megállapítása érdekében néhány naponként és többször, a 30 napos időszakon belül többször kell ellenőrizni. A javítások a virtuális gépen a virtuális gép futási ideje alatt akár naponta is telepíthetők. Ez az automatikus értékelés biztosítja, hogy a hiányzó javítások a lehető legkorábbi módon legyenek felderítve.
 
-A javítások a havi Windows Update kiadástól számított 30 napon belül települnek, a rendelkezésre állást követő első összehangolás után. A javítások a virtuális gép időzónájától függően csak a virtuális gép időzónája szerint lesznek telepítve. Ahhoz, hogy a javítások automatikusan telepítve legyenek, a virtuális gépnek le kell futnia a leállási idő alatt. Ha egy virtuális gép ki van kapcsolva egy időszakos értékelés során, a rendszer automatikusan kiértékeli a virtuális gépet, és a rendszer automatikusan telepíti a megfelelő javításokat a következő időszakos értékelés során, amikor a virtuális gép be van kapcsolva.
+A javítások a havi Windows Update kiadástól számított 30 napon belül települnek, a rendelkezésre állást követő első összehangolás után. A javítások a virtuális gép időzónájától függően csak a virtuális gép időzónája szerint lesznek telepítve. Ahhoz, hogy a javítások automatikusan telepítve legyenek, a virtuális gépnek le kell futnia a leállási idő alatt. Ha egy virtuális gép ki van kapcsolva egy időszakos értékelés során, a rendszer automatikusan értékeli a virtuális gépet, és a rendszer automatikusan telepíti a megfelelő javításokat a következő időszakos értékelés során (általában néhány napon belül), amikor a virtuális gép be van kapcsolva.
 
-Ha a javításokat más javítási besorolásokkal szeretné telepíteni, vagy a javítások telepítését a saját egyéni karbantartási időszakán belül szeretné ütemezni, használhatja a [Update Management](tutorial-config-management.md#manage-windows-updates).
+A definíciós frissítések és a nem *kritikusként* vagy *biztonságként* besorolt egyéb javítások nem TELEPÜLNEK az automatikus virtuális gép vendégének javításával. Ha a javításokat más javítási besorolásokkal szeretné telepíteni, vagy a javítások telepítését a saját egyéni karbantartási időszakán belül szeretné ütemezni, használhatja a [Update Management](tutorial-config-management.md#manage-windows-updates).
 
 ### <a name="availability-first-patching"></a>Rendelkezésre állás – első javítás
 
@@ -69,11 +69,11 @@ A következő platformos SKU-EK jelenleg támogatottak (és a továbbiak rendsze
 
 | Publisher               | Operációs rendszer ajánlata      |  SKU               |
 |-------------------------|---------------|--------------------|
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter – Server-Core |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter – Server-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter    |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter – Server-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter-Core |
 
 ## <a name="patch-orchestration-modes"></a>Javítások előkészítési módjai
 Az Azure-beli Windows rendszerű virtuális gépek mostantól a következő javítás-előkészítési módokat támogatják:
@@ -83,7 +83,7 @@ Az Azure-beli Windows rendszerű virtuális gépek mostantól a következő jav�
 - Ez a mód szükséges a rendelkezésre álláshoz – az első javításhoz.
 - A mód beállítása a Windows rendszerű virtuális gépen lévő natív automatikus frissítéseket is letiltja a Duplikálás elkerülése érdekében.
 - Ez a mód csak olyan virtuális gépek esetén támogatott, amelyek a fenti támogatott operációsrendszer-platform rendszerképekkel lettek létrehozva.
-- Ha ezt a módot szeretné használni, állítsa be a tulajdonságot `osProfile.windowsConfiguration.enableAutomaticUpdates=true` , és állítsa be a tulajdonságot  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` a virtuálisgép-sablonban.
+- Ha ezt a módot szeretné használni, állítsa be a tulajdonságot `osProfile.windowsConfiguration.enableAutomaticUpdates=true` , és állítsa be a tulajdonságot  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform` a virtuálisgép-sablonban.
 
 **AutomaticByOS:**
 - Ez a mód lehetővé teszi az automatikus frissítések használatát a Windows rendszerű virtuális gépen, a javítások pedig automatikusan települnek a virtuális gépre.
@@ -107,7 +107,7 @@ Az Azure-beli Windows rendszerű virtuális gépek mostantól a következő jav�
 - A virtuális gépnek képesnek kell lennie Windows Update végpontokhoz való hozzáférésre. Ha a virtuális gép Windows Server Update Services (WSUS) használatára van konfigurálva, a megfelelő WSUS-kiszolgálói végpontoknak elérhetőnek kell lenniük.
 - A számítási API 2020-06-01-es vagy újabb verzióját használja.
 
-Az előzetes verzió működésének engedélyezéséhez egyszeri bejelentkezésre van szükség az *InGuestAutoPatchVMPreview* szolgáltatáshoz, az alábbiakban részletezett módon.
+Az előzetes verzió működésének engedélyezéséhez egyszeri bejelentkezésre van szükség az **InGuestAutoPatchVMPreview** szolgáltatáshoz, az alábbiakban részletezett módon.
 
 ### <a name="rest-api"></a>REST API
 Az alábbi példa azt ismerteti, hogyan engedélyezhető az előfizetés előnézete:
@@ -254,10 +254,10 @@ A virtuális gép javításának telepítési eredményeit a szakasz alatt tekin
 ## <a name="on-demand-patch-assessment"></a>Igény szerinti javítás értékelése
 Ha az automatikus virtuális gép vendégének javítása már engedélyezve van a virtuális gépen, a virtuális gép időszakos javítási értékelését a virtuális gép futási ideje alatt végezheti el. Ez a folyamat automatikusan történik, és a legújabb értékelés eredményei áttekinthetők a virtuális gép példányának nézetében, a jelen dokumentum korábbi részében leírtak szerint. Bármikor elindíthat egy igény szerinti javítási értékelést is a virtuális géphez. A javítás értékelése eltarthat néhány percig, és a legújabb értékelés állapota frissül a virtuális gép példányának nézetében.
 
-Az előzetes verzió funkciójának engedélyezéséhez egyszeri bejelentkezésre van szükség a *InGuestPatchVMPreview* szolgáltatás előfizetéséhez. Az igény szerinti javítás értékelése funkció előzetes verziójának engedélyezése a korábban ismertetett [előzetes engedélyezési folyamat](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) után engedélyezhető a virtuális gép vendégének javításához.
+Az előzetes verzió funkciójának engedélyezéséhez egyszeri bejelentkezésre van szükség a **InGuestPatchVMPreview** szolgáltatás előfizetéséhez. Ez a szolgáltatás előzetes verziója eltér a virtuális gépek automatikus javítási funkciójának a **InGuestAutoPatchVMPreview**-ben végzett regisztrációjának. A további funkció előzetes verziójának engedélyezése külön és további követelmény. Az igény szerinti javítás értékelése funkció előzetes verziójának engedélyezése a korábban ismertetett [előzetes engedélyezési folyamat](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) után engedélyezhető a virtuális gép vendégének javításához.
 
 > [!NOTE]
->Az igény szerinti javítás kiértékelése nem aktiválja automatikusan a javítás telepítését. A virtuális gép értékelése és a rájuk vonatkozó javítások csak a virtuális gép leállási ideje alatt települnek, a jelen dokumentumban korábban ismertetett rendelkezésre állási – első javítási folyamat után.
+>Az igény szerinti javítás kiértékelése nem aktiválja automatikusan a javítás telepítését. Ha engedélyezte az automatikus virtuális gép vendég javítását, akkor a virtuális gép kiértékelése és az arra vonatkozó javítások a virtuális gép leállási ideje alatt lesznek telepítve, a jelen dokumentumban korábban ismertetett rendelkezésre állási – első javítási folyamat után.
 
 ### <a name="rest-api"></a>REST API
 ```
@@ -278,6 +278,6 @@ Használja az [az VM értékelés-Patchs](/cli/azure/vm#az-vm-assess-patches) le
 az vm assess-patches --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [További információ a Windows rendszerű virtuális gépek létrehozásáról és kezeléséről](tutorial-manage-vm.md)
