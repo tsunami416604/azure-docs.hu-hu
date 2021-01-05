@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan módosíthatja az új és a meglévő felügyel
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 11/19/2020
+ms.date: 01/05/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a868d5d236cf4c5a8d29f15490909c2f1a53546f
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 625fb1e3dd0b433da6b60f995aa6b380c23ec9ce
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96016580"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901025"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>A teljesítmény szintjeinek módosítása a Azure Portal használatával
 
@@ -47,12 +47,12 @@ A következő lépések azt ismertetik, hogyan lehet módosítani egy meglévő 
 1. Vagy szabadítson fel a virtuális gépet, vagy válassza le a lemezt.
 1. Válassza ki a lemezt
 1. Válassza a **méret + teljesítmény** lehetőséget.
-1. A **teljesítményszint** legördülő menüben válasszon olyan szintet, amely eltér a lemez aktuális alaptervtől.
+1. A **teljesítményszint** legördülő menüben válasszon egy, a lemez aktuális teljesítményi szintjétől eltérő szintet.
 1. Válassza ki az **Átméretezés** lehetőséget.
 
 :::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="Képernyőkép a size + Performance (teljesítmény) panelről, a teljesítmény szintje ki van emelve." lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha át kell méreteznie egy lemezt a magasabb teljesítményszint kihasználásához, tekintse meg a következő cikkeket:
 

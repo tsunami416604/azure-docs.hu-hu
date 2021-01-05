@@ -1,34 +1,35 @@
 ---
 title: Figyelés és naplózás – Azure
-description: Ez a cikk áttekintést nyújt az élő videók elemzéséről IoT Edge figyelésről és naplózásról.
+description: Ez a cikk áttekintést nyújt a IoT Edge élő videó-elemzések monitorozásáról és naplózásáról.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 8ae455a4157cd649f610620e486323ac2c0a5744
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6a7251b62421642ad9f5dba4f4c2a15ce74cd5cf
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401049"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900875"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 
-Ebből a cikkből megtudhatja, hogyan fogadhat eseményeket az élő videó-elemzésből IoT Edge modulban a távoli figyeléshez. 
+Ebből a cikkből megtudhatja, hogyan fogadhat eseményeket a távoli monitorozáshoz a IoT Edge modul Live Video Analytics szolgáltatásában. 
 
-Azt is megismerheti, hogyan szabályozhatja a modul által generált naplókat.
+Azt is megtudhatja, hogyan vezérelheti a modul által generált naplókat.
 
 ## <a name="taxonomy-of-events"></a>Az események osztályozása
 
-A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria az alábbi besorolásnak megfelelően.
+Az élő videó-elemzések IoT Edge a következő besorolás szerint bocsátanak ki eseményeket vagy telemetria-adatelemzést:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Az események osztályozása":::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Az események besorolását ábrázoló diagram.":::
 
-* Működés: a felhasználó által végrehajtott műveletek részeként vagy egy [adathordozó-gráf](media-graph-concept.md)végrehajtása során generált események.
+* Működés: egy felhasználó műveletei által vagy egy [adathordozó-gráf](media-graph-concept.md) végrehajtása során létrehozott események
    
-   * Kötet: várhatóan alacsony (néhány percenként, vagy akár alacsonyabb arányban).
-   * Példák:
+   * Kötet: várhatóan alacsony (néhány percenként vagy akár kevesebb)
+   * Angol nyelvű Példák:
 
-      Rögzítés elindítva (alább), rögzítés leállítva
+      - Rögzítés elindítva (az alábbi példában látható)
+      - Rögzítés leállítva
       
       ```
       {
@@ -45,12 +46,13 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
         }
       }
       ```
-* Diagnosztika: olyan események, amelyek segítenek diagnosztizálni a problémákat és/vagy a teljesítménnyel kapcsolatos problémákat.
+* Diagnosztika: a teljesítménnyel kapcsolatos problémák diagnosztizálását segítő események
 
-   * Kötet: lehet magas (percenként többször is).
-   * Példák:
+   * Kötet: lehet magas (percenként többször)
+   * Angol nyelvű Példák:
    
-      Az RTSP- [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) kapcsolatos információk (alább) vagy a bejövő videóban található hézagok.
+      - Az RTSP [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) kapcsolatos információk (a következő példában látható) 
+      - Hiányosságok a bejövő videó adatcsatornájában
 
       ```
       {
@@ -66,12 +68,13 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
         }
       }
       ```
-* Elemzés: a videó-elemzés részeként generált események.
+* Elemzés: a videó elemzése részeként generált események
 
-   * Kötet: lehet magas (több alkalommal percenként vagy gyakrabban).
-   * Példák:
+   * Kötet: lehet magas (több alkalommal egy perc vagy több)
+   * Angol nyelvű Példák:
       
-      A rendszer észlelte a mozgást (alább), a következtetés eredményét.
+      - A rendszer a mozgást észlelte (az alábbi példában látható) 
+      - Következtetés eredménye
 
    ```      
    {
@@ -101,19 +104,19 @@ A IoT Edge élő videó-elemzések eseményeket bocsátanak ki vagy telemetria a
    }
    ```
 
-A modul által kibocsátott eseményeket a rendszer a [IoT Edge hubhoz](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)továbbítja, és innen más célhelyekre is átirányítható. 
+A modul által kibocsátott eseményeket a rendszer a [IoT Edge hubhoz](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)továbbítja. Innen más célhelyekre is irányíthatók. 
 
 ### <a name="timestamps-in-analytic-events"></a>Az analitikus események időbélyegei
 
-A fentiekben leírtaknak megfelelően a videó-elemzés részeként generált események időbélyegzővel vannak társítva. Ha a gráf topológiájának részeként [rögzítette az élő videót](video-recording-concept.md) , akkor ez az időbélyegző segít megkeresni, hogy a rögzített videó hol található az adott esemény bekövetkezésekor. A következő irányelvek azt ismertetik, hogyan képezhető le egy elemzési esemény időbélyege az [Azure Media Service-eszközbe](terminology.md#asset)rögzített videó idővonalára.
+Amint azt korábban említettük, a videó elemzése részeként generált események időbélyeggel vannak társítva. Ha a gráf topológiájának részeként [rögzítette az élő videót](video-recording-concept.md) , ezek az időbélyegek segítenek megkeresni, hogy a rögzített videó hol található az adott esemény bekövetkezésekor. Az alábbi útmutatást követve megtudhatja, hogyan képezhető le egy elemzési esemény időbélyege egy [Azure Media Services](terminology.md#asset)objektumba rögzített videó idővonalára.
 
-Először bontsa ki az `eventTime` értéket. Használja ezt az értéket egy [időtartomány-szűrőben](playback-recordings-how-to.md#time-range-filters) a rögzítés megfelelő részének lekéréséhez. Előfordulhat például, hogy olyan videót szeretne beolvasni, amely 30 másodpercet indít el az előtt `eventTime` , és 30 másodperccel később ér véget. A fenti példában, ahol a `eventTime` 2020-05-12T23:33:09.381 z, a +/-30-as időszakra vonatkozó HLS-jegyzékfájl iránti kérelem a következőhöz hasonlóan fog kinézni:
+Először bontsa ki az `eventTime` értéket. Használja ezt az értéket egy [időtartomány-szűrőben](playback-recordings-how-to.md#time-range-filters) a rögzítés megfelelő részének lekéréséhez. Előfordulhat például, hogy olyan videót szeretne beolvasni, amely 30 másodpercet indít el az előtt `eventTime` , és 30 másodperccel később ér véget. Az előző példában, ahol a `eventTime` a 2020-05-12T23:33:09.381 z, egy HLS-jegyzékfájl iránti kérelem a 30 másodperc előtt és után a `eventTime` következőhöz hasonló:
 
 ```
 https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
 ```
 
-A fenti URL-cím egy úgynevezett [fő listát](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)ad vissza, amely az URL-címeket tartalmazza a média lejátszási listáihoz. A média lista a következőhöz hasonló bejegyzéseket tartalmaz:
+Az előző URL-cím egy [fő listát](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming) ad vissza, amely a média-lejátszási listák URL-címét tartalmazza. A média lista a következőhöz hasonló bejegyzéseket tartalmaz:
 
 ```
 ...
@@ -121,21 +124,21 @@ A fenti URL-cím egy úgynevezett [fő listát](https://developer.apple.com/docu
 Fragments(video=143039375031270,format=m3u8-aapl)
 ...
 ```
-A fentiekben a bejegyzés azt jelzi, hogy egy videó töredék elérhető, amely időbélyeg-értékkel kezdődik `143039375031270` . Az `timestamp` analitikai eseményben szereplő érték ugyanazt az időkeretet használja, mint a média-lejátszási lista, és felhasználható a kapcsolódó videó-töredék azonosítására, és a megfelelő keretre való rákeresésre.
+Az előző bejegyzés azt jelzi, hogy egy videó töredék elérhető, amely a `timestamp` értékével kezdődik `143039375031270` . Az `timestamp` analitikai eseményben szereplő érték ugyanazt az időkeretet használja, mint a média-lejátszási lista. Felhasználható a kapcsolódó videó részletének azonosítására és a megfelelő keretre való rákeresésre.
 
-További információért olvassa el a HLS-ben található, a frame-ben pontos kereséssel foglalkozó [cikk](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) egyikét.
+További információkért tekintse meg ezeket [a cikkeket a HLS-ben való pontos kereséshez](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) .
 
 ## <a name="controlling-events"></a>Az események irányítása
 
-A következő modul-Twin tulajdonságokat használhatja a modul [Twin JSON-sémájában](module-twin-configuration-schema.md)leírtaknak megfelelően az élő videó Analytics IoT Edge modulban közzétett operatív és diagnosztikai események vezérléséhez.
+A következő modul két tulajdonságával szabályozhatja az élő videó Analytics által közzétett operatív és diagnosztikai eseményeket IoT Edge modulon. Ezek a tulajdonságok a [modul Twin JSON-sémájában](module-twin-configuration-schema.md)vannak dokumentálva.
 
-`diagnosticsEventsOutputName` – a tulajdonsághoz tartozó (bármilyen) érték belefoglalása és megadása, hogy a modul diagnosztikai eseményeket kapjon. Hagyja ki, vagy hagyja üresen a modult a diagnosztikai események közzétételének leállításához.
+- `diagnosticsEventsOutputName`: A modul diagnosztikai eseményeinek beszerzéséhez vegye fel ezt a tulajdonságot, és adjon meg egy értéket. Hagyja ki, vagy hagyja üresen, hogy leállítsa a modult a diagnosztikai események közzétételéhez.
    
-`operationalEventsOutputName` – a tulajdonsághoz tartozó (bármely) érték belefoglalása és megadása (bármilyen) a modul működési eseményeinek beszerzése érdekében. Hagyja ki, vagy hagyja üresen a modul működési események közzétételének leállításához.
+- `operationalEventsOutputName`: A modul működési eseményeinek beszerzéséhez vegye fel ezt a tulajdonságot, és adjon meg egy értéket. Hagyja ki, vagy hagyja üresen a modul működési események közzétételének leállításához.
    
-Az elemzési eseményeket olyan csomópontok hozza létre, mint például a mozgásészlelési processzor vagy a HTTP-bővítmény processzora, az IoT hub-fogadó pedig az IoT Edge hubhoz küldi el őket. 
+Az elemzési eseményeket olyan csomópontok hozza létre, mint a mozgásészlelési processzor vagy a HTTP-bővítmény processzora. Az IoT hub-fogadó az IoT Edge hubhoz küldi őket. 
 
-A [fenti események útválasztását](../../iot-edge/module-composition.md#declare-routes) a $edgeHub modul twin (az üzembe helyezési jegyzékben) kívánt tulajdonságán keresztül szabályozhatja:
+Az [összes korábbi esemény útválasztását](../../iot-edge/module-composition.md#declare-routes) az `desired` `$edgeHub` üzembe helyezési jegyzékben található Twin modul tulajdonságának használatával szabályozhatja:
 
 ```
  "$edgeHub": {
@@ -151,38 +154,38 @@ A [fenti események útválasztását](../../iot-edge/module-composition.md#decl
  }
 ```
 
-A fentiekben a lvaEdge az élő videó Analytics neve IoT Edge modulon, és az útválasztási szabály a [deklarált útvonalakban](../../iot-edge/module-composition.md#declare-routes)definiált sémát követi.
+Az előző JSON-ban a `lvaEdge` IoT Edge modul Live Video Analytics neve. Az útválasztási szabály a [deklarált útvonalakban](../../iot-edge/module-composition.md#declare-routes)definiált sémát követi.
 
 > [!NOTE]
-> Annak érdekében, hogy az elemzési események elérjék a IoT Edge központot, egy IoT hub-fogadó csomópontnak kell lennie, amely a mozgásérzékelő processzor-és/vagy bármely HTTP-bővítmény processzor-csomópontján felül van.
+> Annak érdekében, hogy az elemzési események elérjék az IoT Edge hub-t, rendelkeznie kell egy IoT hub-fogadó csomóponttal, amely a mozgásérzékelő processzor-és/vagy bármely HTTP-bővítmény processzor-csomópontjának végén van.
 
 ## <a name="event-schema"></a>Eseményséma
 
-Az események a peremhálózati eszközről származnak, és a peremhálózati vagy a felhőben is felhasználhatók. A IoT Edge élő videó-elemzés által generált események megfelelnek az Azure IoT Hub által létrehozott [streaming Messaging-mintának](../../iot-hub/iot-hub-devguide-messages-construct.md) , a rendszer tulajdonságai, az alkalmazás tulajdonságai és a törzs alapján.
+Az események a peremhálózati eszközről származnak, és a peremhálózati vagy a felhőben is felhasználhatók. A IoT Edge élő videó-elemzés által generált események megfelelnek az Azure IoT Hub által létrehozott [streaming Messaging-mintának](../../iot-hub/iot-hub-devguide-messages-construct.md) . A minta a Rendszertulajdonságok, az alkalmazások tulajdonságai és a törzsből áll.
 
 ### <a name="summary"></a>Összefoglalás
 
-A IoT Hubon keresztül megfigyelt minden esemény az alább leírtak szerint egy közös tulajdonsággal fog rendelkezni.
+A IoT Hubon keresztül megfigyelt minden esemény általános tulajdonságokkal rendelkezik:
 
-|Tulajdonság   |Tulajdonságtípus| Adattípus   |Leírás|
+|Tulajdonság   |Tulajdonság típusa| Adattípus   |Leírás|
 |---|---|---|---|
-|üzenet-azonosító |rendszer |guid|  Egyedi eseményazonosító.|
-|témakör| applicationProperty |sztring|    Azure Resource Manager a Media Services-fiók elérési útja.|
-|tárgy|   applicationProperty |sztring|    Az eseményt kibocsátó entitás alútvonala.|
-|eventTime| applicationProperty|    sztring| Az esemény létrehozásának ideje.|
-|eventType| applicationProperty |sztring|    Eseménytípus azonosítója (lásd alább).|
-|body (Törzs)|body (Törzs)  |object|    Adott esemény adatai.|
-|dataVersion    |applicationProperty|   sztring  |{Major}. Kisebb|
+|`message-id`   |rendszer |guid|  Egyedi eseményazonosító.|
+|`topic`|   applicationProperty |sztring|    Azure Resource Manager a Azure Media Services-fiók elérési útja.|
+|`subject`| applicationProperty |sztring|    Az eseményt kibocsátó entitás alútvonala.|
+|`eventTime`|   applicationProperty|    sztring| Az esemény létrehozásának ideje.|
+|`eventType`|   applicationProperty |sztring|    Eseménytípus azonosítója. (Lásd a következő szakaszt.)|
+|`body`|body (Törzs)    |object|    Adott esemény adatai.|
+|`dataVersion`  |applicationProperty|   sztring  |{Major}. Kisebb|
 
 ### <a name="properties"></a>Tulajdonságok
 
 #### <a name="message-id"></a>üzenet-azonosító
 
-Esemény globálisan egyedi azonosítója (GUID)
+Egy globálisan egyedi azonosító (GUID) az eseményhez.
 
 #### <a name="topic"></a>témakör
 
-A gráfhoz társított Azure Media Service-fiókot jelöli.
+A gráfhoz társított Azure Media Services fiókot jelöli.
 
 `/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Media/mediaServices/{accountName}`
 
@@ -195,52 +198,52 @@ Az eseményt kibocsátó entitás:
 `/graphInstances/{graphInstanceName}/processors/{processorName}`<br/>
 `/graphInstances/{graphInstanceName}/sinks/{sinkName}`
 
-A tulajdonos tulajdonság lehetővé teszi, hogy az általános események le legyenek képezve a generáló modulra. Például érvénytelen RTSP-Felhasználónév vagy jelszó esetén a generált esemény a `Microsoft.Media.Graph.Diagnostics.ProtocolError` `/graphInstances/myGraph/sources/myRtspSource` csomóponton lenne.
+A `subject` tulajdonság lehetővé teszi az általános események leképezését a létrehozó modulba. Például egy érvénytelen RTSP-Felhasználónév vagy jelszó esetén a generált esemény a `Microsoft.Media.Graph.Diagnostics.ProtocolError` `/graphInstances/myGraph/sources/myRtspSource` csomóponton lenne.
 
 #### <a name="event-types"></a>Eseménytípusok
 
-Az Eseménytípus a következő sémának megfelelő névtérhez van rendelve:
+Az események típusai a következő séma alapján vannak hozzárendelve a névtérhez:
 
 `Microsoft.Media.Graph.{EventClass}.{EventType}`
 
 #### <a name="event-classes"></a>Eseményosztályok
 
-|Osztály neve|Description|
+|Osztály neve|Leírás|
 |---|---|
 |Elemzés  |A tartalom elemzése részeként generált események.|
-|Diagnosztika    |A problémák és a teljesítmény diagnosztizálását segítő események.|
+|Diagnosztika    |Események, amelyek segítenek a problémák és a teljesítmény diagnosztizálásában.|
 |Működik    |Az erőforrás-művelet részeként generált események.|
 
 Az események típusai az egyes események osztályokra jellemzőek.
 
-Példák:
+Angol nyelvű Példák:
 
-* Microsoft. Media. Graph. Analytics. következtetés
-* Microsoft. Media. Graph. Diagnostics. AuthorizationError
-* Microsoft. Media. Graph. Operational. GraphInstanceStarted
+* `Microsoft.Media.Graph.Analytics.Inference`
+* `Microsoft.Media.Graph.Diagnostics.AuthorizationError`
+* `Microsoft.Media.Graph.Operational.GraphInstanceStarted`
 
 ### <a name="event-time"></a>Esemény időpontja
 
-Az esemény időpontját a ISO8601 karakterlánc írja le, és ez az esemény időpontjában következik be.
+Az esemény időpontja ISO 8601 karakterláncban van formázva. Ez az esemény időpontját jelöli.
 
-### <a name="azure-monitor-collection-using-telegraf"></a>Azure Monitor-gyűjtemény a-ben Graf használatával
+### <a name="azure-monitor-collection-via-telegraf"></a>Azure Monitor gyűjtemény a
 
-Ezek a metrikák a IoT Edge modul Live Video Analytics szolgáltatását jelentik majd:  
+Ezek a metrikák a IoT Edge modul Live Video Analytics szolgáltatásában lesznek jelezve:  
 
-|Metrika neve|Típus|Címke|Description|
+|Metrika neve|Típus|Címke|Leírás|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Kijelző|iothub, edge_device, module_name, graph_topology|Az aktív gráfok teljes száma topológia szerint.|
-|lva_received_bytes_total|Számláló|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Egy csomópont által fogadott bájtok teljes száma. Csak RTSP-források esetén támogatott|
-|lva_data_dropped_total|Számláló|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node, data_kind|Az eldobott adatmennyiség (események, adathordozók stb.) számlálója|
+|lva_received_bytes_total|Számláló|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Egy csomópont által fogadott bájtok teljes száma. Csak az RTSP-források esetében támogatott.|
+|lva_data_dropped_total|Számláló|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node, data_kind|Az eldobott adatmennyiség (események, adathordozók stb.) számlálója.|
 
 > [!NOTE]
-> A [Prometheus-végpont](https://prometheus.io/docs/practices/naming/) a tároló **9600** -es portjánál van kitéve. Ha az élő videó-elemzést IoT Edge "lvaEdge" modulban nevezi el, akkor hozzáférhet a metrikához, ha a GET kérelmet küld http://lvaEdge:9600/metrics .   
+> A [Prometheus-végpont](https://prometheus.io/docs/practices/naming/) a tároló 9600-es portjánál van kitéve. Ha az élő videó-elemzést IoT Edge "lvaEdge" modulban nevezi el, akkor elérheti a metrikákat egy GET kérelem küldésével http://lvaEdge:9600/metrics .   
 
 A következő lépésekkel engedélyezheti a metrikák gyűjteményét az élő videó Analytics IoT Edge modulban:
 
-1. Hozzon létre egy mappát a fejlesztői gépen, és navigáljon a mappára
+1. Hozzon létre egy mappát a fejlesztői számítógépen, és nyissa meg a mappát.
 
-1. A mappában hozzon létre egy `telegraf.toml` fájlt a következő tartalommal
+1. A mappában hozzon létre egy `telegraf.toml` fájlt, amely a következő konfigurációkat tartalmazza:
     ```
     [agent]
         interval = "30s"
@@ -256,25 +259,26 @@ A következő lépésekkel engedélyezheti a metrikák gyűjteményét az élő 
       resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
     ```
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy lecserélte a tartalmi fájlban lévő változókat (a `{ }` ).
+    > Ügyeljen arra, hogy a. toml fájlban lévő változókat cserélje le. A változókat kapcsos zárójelek () szerint jelöli `{}` .
 
-1. A mappában hozzon létre egy- `.dockerfile` t a következő tartalommal
+1. Ugyanebben a mappában hozzon létre egy, `.dockerfile` a következő parancsokat tartalmazó mappát:
     ```
         FROM telegraf:1.15.3-alpine
         COPY telegraf.toml /etc/telegraf/telegraf.conf
     ```
 
-1. Mostantól a Docker CLI-parancs használatával hozza **létre a Docker-fájlt** , és tegye közzé a rendszerképet a Azure Container Registry.
-    1. Útmutató a [Docker-rendszerképek leküldéséhez és lekéréséhez – Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).  További információ: Azure Container Registry (ACR) [itt](https://docs.microsoft.com/azure/container-registry/)található.
+1. Docker CLI-parancsok használatával hozza létre a Docker-fájlt, és tegye közzé a rendszerképet az Azure Container registryben.
+    
+   További információ arról, hogy a Docker CLI-vel hogyan lehet leküldeni a tároló-beállításjegyzéket: [leküldéses és lekéréses Docker-rendszerképek](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli). A Azure Container Registry kapcsolatos további információkért tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/container-registry/).
 
 
-1. Miután befejeződött a leküldéses ACR, a telepítési jegyzékfájlban adja hozzá a következő csomópontot:
+1. A leküldéses Azure Container Registry befejezését követően adja hozzá a következő csomópontot a telepítési jegyzékfájlhoz:
     ```
     "telegraf": 
     {
       "settings": 
         {
-            "image": "{ACR_LINK_TO_YOUR_TELEGRAF_IMAGE}"
+            "image": "{AZURE_CONTAINER_REGISTRY_LINK_TO_YOUR_TELEGRAF_IMAGE}"
         },
       "type": "docker",
       "version": "1.0",
@@ -288,64 +292,72 @@ A következő lépésekkel engedélyezheti a metrikák gyűjteményét az élő 
         }
     ``` 
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy lecserélte a tartalmi fájlban lévő változókat (a `{ }` ).
+    > Ne felejtse el lecserélni a jegyzékfájl változóit. A változókat kapcsos zárójelek () szerint jelöli `{}` .
 
 
-1. **Hitelesítés**
-    1. A Azure Monitor az [egyszerű szolgáltatásnév hitelesíti](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication).
-        1. A Azure Monitor Graf beépülő modul [számos hitelesítési módszert](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication)tesz elérhetővé. A következő környezeti változókat kell beállítani az egyszerű szolgáltatásnév hitelesítés használatára.  
-            • AZURE_TENANT_ID: azt a bérlőt adja meg, amelynek a hitelesítését végzi.  
-            • AZURE_CLIENT_ID: a használni kívánt alkalmazás ügyfél-AZONOSÍTÓját adja meg.  
-            • AZURE_CLIENT_SECRET: a használni kívánt alkalmazás titkát adja meg.  
-    >[!TIP]
-    > Az egyszerű szolgáltatásnév a "**figyelési mérőszámok közzétevője**" szerepkört is megadhatja.
+   Azure Monitor az [egyszerű szolgáltatásnév használatával hitelesíthető](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication).
+        
+   A Azure Monitor Graf beépülő modul [számos hitelesítési módszert](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication)tesz elérhetővé. 
 
-1. A modulok üzembe helyezése után a metrikák egyetlen névtérben jelennek meg Azure Monitorban, és a Prometheus által kibocsátott metrikák neveivel egyezőek lesznek. 
-    1. Ebben az esetben a Azure Portalban navigáljon a IoT Hub, majd a bal oldali navigációs ablaktáblán kattintson a "**metrikák**" hivatkozásra. Itt kell látnia a metrikákat.
+  1. Az egyszerű szolgáltatás hitelesítésének használatához állítsa be a következő környezeti változókat:  
+     `AZURE_TENANT_ID`: A hitelesítést végző bérlőt adja meg.  
+     `AZURE_CLIENT_ID`: Megadja a használni kívánt alkalmazás ügyfél-AZONOSÍTÓját.  
+     `AZURE_CLIENT_SECRET`: A használni kívánt alkalmazás titkát adja meg.  
+     
+     >[!TIP]
+     > Az egyszerű szolgáltatás a **figyelési metrikák közzétevői** szerepkörének megadására szolgál.
+
+1. A modulok üzembe helyezése után a metrikák egyetlen névtér alatt jelennek meg Azure Monitorban. A metrikák nevei megegyeznek a Prometheus által kibocsátott jelekkel. 
+
+   Ebben az esetben a Azure Portalban nyissa meg az IoT hubot, és válassza a **metrikák** lehetőséget a bal oldali ablaktáblán. Itt kell látnia a metrikákat.
+
 ## <a name="logging"></a>Naplózás
 
-Más IoT Edge modulokhoz hasonlóan a peremhálózati eszközön is ellenőrizheti [a tároló naplóit](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . A naplókba írt adatokat a [következő modul Twin](module-twin-configuration-schema.md) tulajdonságai szabályozzák:
+Más IoT Edge modulokhoz hasonlóan a peremhálózati eszközön is ellenőrizheti [a tároló naplóit](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . A naplókba írt adatokat a [következő modul két](module-twin-configuration-schema.md) tulajdonságának használatával konfigurálhatja:
 
-* Naplózási szint
+* `logLevel`
 
-   * Az engedélyezett értékek: részletes, információ, figyelmeztetés, hiba, nincs.
-   * Az alapértelmezett érték az információ – a naplók hibát, figyelmeztetést és információt tartalmaznak. üzenetek.
-   * Ha a figyelmeztetés értéket állítja be, a naplók hibaüzeneteket és figyelmeztető üzeneteket tartalmaznak
-   * Ha a hiba értékre állítja a értéket, a naplók csak hibaüzeneteket fognak tartalmazni.
-   * Ha a none értéket állítja be, a rendszer nem generál naplókat (ez nem ajánlott).
-   * A részletes elemzést csak akkor használja, ha a problémák diagnosztizálásához Azure-támogatással kell megosztania a naplókat.
-* logCategories
+   * Az engedélyezett értékek:,,, `Verbose` `Information` `Warning` `Error` és `None` .
+   * Az alapértelmezett érték `Information`. A naplók hibaüzeneteket, figyelmeztetéseket és tájékoztató üzeneteket tartalmaznak.
+   * Ha a értékre állítja a értéket `Warning` , a naplók hibaüzeneteket és figyelmeztető üzeneteket fognak tartalmazni.
+   * Ha a értékre állítja a értéket `Error` , a naplók csak hibaüzeneteket fognak tartalmazni.
+   * Ha a értéket adja meg `None` , a rendszer nem generál naplókat. (Ezt a konfigurációt nem javasoljuk.)
+   * `Verbose`Csak akkor használja, ha a probléma diagnosztizálásához meg kell osztania a naplókat az Azure-támogatással.
 
-   * Vesszővel tagolt lista a következők közül egy vagy több közül: alkalmazás, események, MediaPipeline.
-   * Alapértelmezett: alkalmazás, események.
-   * Alkalmazás – ez a modul magas szintű információi, például a modul indítási üzenetei, környezeti hibák és közvetlen metódus-hívások.
-   * Események – ezek a cikkben korábban ismertetett események.
-   * MediaPipeline – ezek olyan alacsony szintű naplók, amelyek betekintést nyújthatnak a hibák elhárítása érdekében, például az RTSP-kompatibilis kamerával létesített kapcsolatok létesítésével kapcsolatos nehézségeket.
+* `logCategories`
+
+   * Egy vagy több alábbi érték vesszővel tagolt listája: `Application` , `Events` , `MediaPipeline` .
+   * Az alapértelmezett érték `Application, Events`.
+   * `Application`: A modul magas szintű információi, például a modul indítási üzenetei, környezeti hibák és közvetlen metódus-hívások.
+   * `Events`: Az ebben a cikkben korábban ismertetett összes esemény.
+   * `MediaPipeline`: Alacsony szintű naplók, amelyek betekintést nyújthatnak a problémák elhárítása során, például az RTSP-kompatibilis kamerával való kapcsolatfelvételt okozó nehézségeket.
    
 ### <a name="generating-debug-logs"></a>Hibakeresési naplók generálása
 
-Bizonyos esetekben előfordulhat, hogy a fentiekben leírtnál részletesebb naplókat kell létrehoznia, hogy az Azure támogatási szolgálata segítsen a probléma megoldásában. Ennek elvégzéséhez két lépés szükséges.
+Bizonyos esetekben az Azure-támogatás problémáinak elhárítása érdekében előfordulhat, hogy a korábban leírtnál részletesebb naplókat kell létrehoznia. A naplók létrehozásához:
 
-Először [csatolja a modul tárterületét az createOptions-](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) on keresztül. Ha az [üzembe helyezési jegyzék sablonját](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) a gyors indítással vizsgálja, a következőt fogja látni:
+1. [Kapcsolja össze a modul tárterületét az eszköz tárolóján](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) keresztül `createOptions` . Ha a rövid útmutatókban egy [üzembe helyezési jegyzékfájlt tartalmazó sablont](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) tekint meg, akkor a következő kód jelenik meg:
 
-```
-"createOptions": {
-   …
-   "Binds": [
-     "/var/local/mediaservices/:/var/lib/azuremediaservices/"
-   ]
- }
-```
+   ```
+   "createOptions": {
+     …
+     "Binds": [
+       "/var/local/mediaservices/:/var/lib/azuremediaservices/"
+     ]
+    }
+   ```
 
-A fentiek lehetővé teszi, hogy az Edge-modul a (Device) tároló "/var/local/Mediaservices/" elérési útjába írjon naplókat. Ha a következő kívánt tulajdonságot adja hozzá a modulhoz:
+   Ez a kód lehetővé teszi, hogy az Edge-modul írási naplókat írjon az eszköz tárterületének elérési útjához `/var/local/mediaservices/` . 
 
-`"debugLogsDirectory": "/var/lib/azuremediaservices/debuglogs/",`
+ 1. Adja hozzá a következő `desired` tulajdonságot a modulhoz:
 
-Ezután a modul bináris formában fogja írni a hibakeresési naplókat az (eszköz) tárolási útvonal/var/local/Mediaservices/debuglogs/, amelyet az Azure-támogatással oszthat meg.
+    `"debugLogsDirectory": "/var/lib/azuremediaservices/debuglogs/",`
+
+A modul mostantól bináris formában fogja írni a hibakeresési naplókat az eszköz tárterületének elérési útjára `/var/local/mediaservices/debuglogs/` . Ezeket a naplókat az Azure-támogatással is megoszthatja.
 
 ## <a name="faq"></a>GYIK
 
-[Gyakori kérdések](faq.md#monitoring-and-metrics)
+Ha kérdése van, tekintse meg a [figyelés és mérőszámok – gyakori kérdések](faq.md#monitoring-and-metrics)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

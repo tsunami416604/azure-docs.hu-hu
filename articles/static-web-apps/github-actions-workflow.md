@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 3518935991409d87917582558a34ad7c54841e23
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173662"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901198"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub-műveletek munkafolyamatok az Azure statikus Web Apps előzetes verziójában
 
@@ -63,7 +63,7 @@ jobs:
         ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
         app_location: '/' # App source code path
         api_location: 'api' # Api source code path - optional
-        app_artifact_location: 'dist' # Built app content directory - optional
+        output_location: 'dist' # Built app content directory - optional
         ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
@@ -132,15 +132,15 @@ with:
     ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
     app_location: '/' # App source code path
     api_location: 'api' # Api source code path - optional
-    app_artifact_location: 'dist' # Built app content directory - optional
+    output_location: 'dist' # Built app content directory - optional
     ###### End of Repository/Build Configurations ######
 ```
 
 | Tulajdonság | Leírás | Kötelező |
 |---|---|---|
-| `app_location` | Az alkalmazás kódjának helye.<br><br>Adja meg például, `/` hogy az alkalmazás forráskódja a tárház gyökerében található-e, vagy `/app` Ha az alkalmazás kódja egy nevű könyvtárban található `app` . | Igen |
-| `api_location` | A Azure Functions kódjának helye.<br><br>Adja meg például a következőt:, `/api` Ha az alkalmazás kódja egy nevű mappában található `api` . Ha nem észleli Azure Functions alkalmazást a mappában, a Build nem sikerül, a munkafolyamat feltételezi, hogy nem szeretne API-t használni. | Nem |
-| `app_artifact_location` | A Build kimeneti könyvtárának helye a következőhöz képest: `app_location` .<br><br>Ha például az alkalmazás forráskódja a (z) helyen található `/app` , és a Build szkript a mappába helyezi a fájlt, `/app/build` akkor a értékeként állítsa be a `build` `app_artifact_location` értéket. | Nem |
+| `app_location` | Az alkalmazás kódjának helye.<br><br>Adja meg például, `/` hogy az alkalmazás forráskódja a tárház gyökerében található-e, vagy `/app` Ha az alkalmazás kódja egy nevű könyvtárban található `app` . | Yes |
+| `api_location` | A Azure Functions kódjának helye.<br><br>Adja meg például a következőt:, `/api` Ha az alkalmazás kódja egy nevű mappában található `api` . Ha nem észleli Azure Functions alkalmazást a mappában, a Build nem sikerül, a munkafolyamat feltételezi, hogy nem szeretne API-t használni. | No |
+| `output_location` | A Build kimeneti könyvtárának helye a következőhöz képest: `app_location` .<br><br>Ha például az alkalmazás forráskódja a (z) helyen található `/app` , és a Build szkript a mappába helyezi a fájlt, `/app/build` akkor a értékeként állítsa be a `build` `output_location` értéket. | No |
 
 A `repo_token` , a `action` és az értékeket az `azure_static_web_apps_api_token` Azure statikus Web Apps állítja be, ezért nem szabad manuálisan módosítani.
 
@@ -163,7 +163,7 @@ Testreszabhatja a munkafolyamatot, hogy megkeresse a [routes.jsa](routes.md) tá
 |---------------------|-------------|
 | `routes_location` | Meghatározza azt a könyvtárat, ahol a _routes.js_ fájl található. Ez a hely a tárház gyökeréhez képest relatív. |
 
- Ha az előtér-keretrendszer létrehozási lépése nem helyezi át ezt a fájlt a (z) rendszerre, akkor különösen fontos, hogy a _routes.js_ fájljának helye legyen explicit `app_artifact_location` .
+ Ha az előtér-keretrendszer létrehozási lépése nem helyezi át ezt a fájlt a (z) rendszerre, akkor különösen fontos, hogy a _routes.js_ fájljának helye legyen explicit `output_location` .
 
 ## <a name="environment-variables"></a>Környezeti változók
 
@@ -189,7 +189,7 @@ jobs:
           ###### Repository/Build Configurations
           app_location: "/"
           api_location: "api"
-          app_artifact_location: "public"
+          output_location: "public"
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0

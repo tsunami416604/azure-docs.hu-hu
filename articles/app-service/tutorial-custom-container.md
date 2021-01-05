@@ -7,18 +7,18 @@ ms.author: msangapu
 keywords: Azure app Service, webalkalmazás, Linux, Windows, Docker, tároló
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: b3507e22c691f3e3ca9f9e6562a313e95e42f080
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558606"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900195"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Egyéni szoftver migrálása Azure App Service egyéni tároló használatával
 
 ::: zone pivot="container-windows"  
 
-Az [Azure App Service](overview.md) előre meghatározott, IIS-en futó alkalmazáscsoportokat biztosít Windows rendszeren, például az ASP.NET-et vagy a Node.js-t. Az előre konfigurált Windows-környezet letiltja az operációs rendszeren például a rendszergazdai hozzáférést, a szoftvertelepítést vagy a globális szerelvény-gyorsítótár módosítását (lásd [az operációs rendszer Azure App Service-funkcionalitásával foglalkozó részt](operating-system-functionality.md)). Ha azonban a App Service (előzetes verzió) egyéni Windows-tárolót használ, lehetővé teszi az alkalmazás által igényelt operációsrendszer-módosításokat, így egyszerűen áttelepítheti a helyszíni alkalmazást, amely egyéni operációs rendszert és szoftver-konfigurációt igényel. Ez az oktatóanyag bemutatja egy Windows betűkészlet-könyvtárba telepített egyéni betűkészletet használó ASP.NET-alkalmazás az App Service-be való áttelepítésének menetét. Egy Visual Studióból származó egyénileg konfigurált Windows-rendszerképet kell üzembe helyeznie az [Azure Container Registryben](../container-registry/index.yml), majd futtatnia az App Service-ben.
+Az [Azure App Service](overview.md) előre meghatározott, IIS-en futó alkalmazáscsoportokat biztosít Windows rendszeren, például az ASP.NET-et vagy a Node.js-t. Az előre konfigurált Windows-környezet letiltja az operációs rendszeren például a rendszergazdai hozzáférést, a szoftvertelepítést vagy a globális szerelvény-gyorsítótár módosítását (lásd [az operációs rendszer Azure App Service-funkcionalitásával foglalkozó részt](operating-system-functionality.md)). Egy egyéni Windows-tároló az App Service-ben való használata lehetővé teszi az alkalmazáshoz szükséges operációs rendszer-módosítások végrehajtását, így egyszerűen áttelepítheti az egyéni operációsrendszer- és szoftverkonfigurációkat igénylő helyszíni alkalmazásokat. Ez az oktatóanyag bemutatja egy Windows betűkészlet-könyvtárba telepített egyéni betűkészletet használó ASP.NET-alkalmazás az App Service-be való áttelepítésének menetét. Egy Visual Studióból származó egyénileg konfigurált Windows-rendszerképet kell üzembe helyeznie az [Azure Container Registryben](../container-registry/index.yml), majd futtatnia az App Service-ben.
 
 ![Megjeleníti a Windows-tárolóban futó webalkalmazást.](media/tutorial-custom-container/app-running.png)
 
@@ -30,7 +30,7 @@ Az oktatóanyag elvégzéséhez:
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows rendszerhez készült Docker telepítése</a>.
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">A Docker átváltása Windows-tárolók futtatására</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse a Visual Studio 2019</a> -et a **ASP.net, valamint a webes fejlesztési** és az **Azure-fejlesztési** számítási feladatokkal. Ha már telepítette a Visual Studio 2019-et:
-    - A **Help**  >  **frissítések keresése** lehetőségre kattintva telepítse a legújabb frissítéseket a Visual Studióban.
+    - A   >  **frissítések keresése** lehetőségre kattintva telepítse a legújabb frissítéseket a Visual Studióban.
     - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök**  >  **beolvasása eszközök és szolgáltatások lekérése** elemre kattintva.
 
 ## <a name="set-up-the-app-locally"></a>Az alkalmazás helyi beállítása
@@ -161,7 +161,7 @@ A **Docker** lapon konfigurálja az egyéni Windows-tárolót az alábbi táblá
 | ----------------- | ------------ |
 |**Kép forrása**| Azure Container-regisztráció |
 |**Registry**| Válassza ki [a korábban létrehozott beállításjegyzéket](#publish-to-azure-container-registry). |
-|**Rendszerkép**| customfontsample |
+|**Kép**| customfontsample |
 |**Tag**| legújabb |
 
 ### <a name="complete-app-creation"></a>Alkalmazás létrehozásának befejezése
@@ -213,7 +213,7 @@ A streamelt naplók a következőképpen néznek ki:
 
 A Azure App Service a Docker-tároló technológiáját használja a beépített rendszerképek és az Egyéni rendszerképek üzemeltetéséhez. A beépített rendszerképek listájának megtekintéséhez futtassa az ["az WebApp List-Runtimes--Linux"](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-list-runtimes)nevű Azure CLI-parancsot. Ha ezek a képek nem felelnek meg az igényeinek, létrehozhat és üzembe helyezhet egyéni lemezképeket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy egyéni rendszerképet, ha a beépített rendszerkép nem elégíti ki az igényeinek megfelelőt
@@ -261,7 +261,7 @@ cd docker-django-webapp-linux
 
 ### <a name="download-from-github"></a>Letöltés a GitHubról
 
-A git-klón használata helyett látogasson el a klónozás lehetőségre, [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) majd válassza a **zip letöltése** lehetőséget. **Clone** 
+A git-klón használata helyett látogasson el a klónozás lehetőségre, [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) majd válassza a **zip letöltése** lehetőséget.  
 
 Csomagolja ki a ZIP-fájlt egy *Docker-Django-WebApp-Linux* nevű mappába. 
 
@@ -548,7 +548,7 @@ Ebben a szakaszban módosítja a webalkalmazás kódját, újraépíti a tárol�
 
     A naplófájlokat a böngészőből is megtekintheti a következő címen: `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
 
-1. Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + **C**.
+1. Ha bármikor le szeretné állítani a naplózási adatfolyamot, írja be a **CTRL C billentyűt** + .
 
 ## <a name="connect-to-the-container-using-ssh"></a>Csatlakozás a tárolóhoz SSH használatával
 
@@ -607,7 +607,7 @@ az group delete --name AppSvc-DockerTutorial-rg
 
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak elvégzését ismerte meg:
 

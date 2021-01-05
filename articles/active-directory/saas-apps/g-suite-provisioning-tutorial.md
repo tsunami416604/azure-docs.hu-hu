@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 552322b9452d380dd5507fb579d7cc44e1a456fe
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: c3f61c3fe688a0b7533902fb0caa19b67f883482
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898915"
+ms.locfileid: "97901589"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Oktatóanyag: a G Suite konfigurálása automatikus felhasználók kiépítési feladatokhoz
 
@@ -24,13 +24,6 @@ Ez az oktatóanyag a G Suite és a Azure Active Directory (Azure AD) szolgáltat
 
 > [!NOTE]
 > Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md).
-
-> [!NOTE]
-> A G Suite-összekötőt nemrég, október 2019-én frissítették. A G Suite-összekötőn végrehajtott módosítások a következők:
->
-> * További támogatás a G Suite-felhasználók és-csoportok további attribútumaihoz.
-> * A G Suite-cél attribútumainak neve megegyezik az [itt](https://developers.google.com/admin-sdk/directory)definiált értékekkel.
-> * Az alapértelmezett attribútum-hozzárendelések frissítve.
 
 > [!NOTE]
 > Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
@@ -276,7 +269,13 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 
 1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
 2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
-3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
+3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.  
+
+## <a name="change-log"></a>Változási napló
+
+* 10/17/2020 – további támogatás a G Suite-felhasználók és-csoportok további attribútumaihoz.
+* 10/17/2020 – a G Suite-beli célként megadott attribútumok neve megegyezik az [itt](https://developers.google.com/admin-sdk/directory)definiált értékkel.
+* 10/17/2020 – az alapértelmezett attribútum-hozzárendelések frissítve.
 
 ## <a name="additional-resources"></a>További források
 

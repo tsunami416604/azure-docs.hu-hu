@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 2e5edb0ccf20ab0dba14864487f2b2ddef7d57e7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c074c29b7a37f49d5a4c7a5fab00b9a3e41c6893
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544207"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901538"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private-hivatkozás – gyakori kérdések (GYIK)
 
-## <a name="private-link"></a>Private Link
+## <a name="private-link"></a>Privát kapcsolat
 
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Mi az Azure Private Endpoint és az Azure Private link Service?
 
@@ -43,8 +43,8 @@ Igen. Több privát végpont is szerepelhet ugyanabban a VNet vagy alhálózatba
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>Szükség van dedikált alhálózatra a privát végpontokhoz? 
 Nem. Nincs szükség dedikált alhálózatra a privát végpontokhoz. A privát végponti IP-címet bármely alhálózatból kiválaszthatja abban a VNet, ahol a szolgáltatás telepítve van.  
  
-### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>A privát végpont Azure Active Directory bérlők között csatlakozhat a privát kapcsolati szolgáltatáshoz? 
-Igen. A privát végpontok a Private link Serviceshez vagy az Azure Pástihez is csatlakozhatnak az AD-bérlők között.  
+### <a name="can-a-private-endpoint-connect-to-private-link-services-across-azure-active-directory-tenants"></a>Csatlakozhatnak privát végpontok a privát kapcsolati szolgáltatásokhoz Azure Active Directory bérlők között? 
+Igen. A privát végpontok kapcsolódhatnak a privát kapcsolati szolgáltatásokhoz vagy az Azure-beli Azure Active Directory-bérlők között. A bérlők közötti kapcsolattal rendelkező privát végpontok manuális kérelem-jóváhagyást igényelnek. 
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Csatlakozhatnak a privát végpontok az Azure Pásti-erőforrásokhoz az Azure-régiók között?
 Igen. A privát végpontok Azure Pásti-erőforrásokhoz is csatlakozhatnak az Azure-régiók között.
@@ -70,7 +70,7 @@ Igen. Egy privát kapcsolati szolgáltatás több privát végpontról is fogadh
 Az expozíciót a magánjellegű kapcsolat szolgáltatás láthatósági konfigurációjának használatával szabályozhatja. A láthatóság három beállítást támogat:
 
 - A nem csak az Azure **RBAC-hozzáféréssel** rendelkező előfizetések megkereshetik a szolgáltatást. 
-- **Restrictive** A csak a jóváhagyott és az Azure RBAC hozzáféréssel rendelkező előfizetések megkereshetik a szolgáltatást. 
+-  A csak a jóváhagyott és az Azure RBAC hozzáféréssel rendelkező előfizetések megkereshetik a szolgáltatást. 
 - **Minden** – mindenki megtalálja a szolgáltatást. 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Létrehozhatok egy alapszintű Load balancert tartalmazó privát hivatkozási szolgáltatást? 

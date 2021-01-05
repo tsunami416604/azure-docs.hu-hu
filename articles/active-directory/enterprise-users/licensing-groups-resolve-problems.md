@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3dce8bb51299eb78bd2958eebf7a69594318a4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3bba64f8c07545107d57f79ae94dab96e517815f
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546471"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900705"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
@@ -68,7 +68,6 @@ Ha szeretné megtekinteni, hogy mely felhasználók és csoportok használják a
 
 Gondolja át a következő példát. A felhasználó rendelkezik az Office 365 Enterprise *E1* -licenccel közvetlenül hozzárendelt licenctel, és minden csomag engedélyezve van. A felhasználó hozzá lett adva egy olyan csoporthoz, amelyhez az Office 365 Enterprise *E3* termék hozzá van rendelve. Az E3 termék olyan szolgáltatási csomagokat tartalmaz, amelyek nem fedik át az E1-ben foglalt csomagokat, így a csoportos licenc-hozzárendelés meghiúsul az "ütköző szolgáltatási csomagok" hibával. Ebben a példában az ütköző szolgáltatási csomagok a következők:
 
-- A SharePoint Online (2. csomag) ütközik a SharePoint Online-val (1. csomag).
 - Az Exchange Online (2. csomag) ütközik az Exchange Online-val (1. csomag).
 
 Az ütközés megoldásához le kell tiltania a csomagok két részét. Letilthatja a felhasználóhoz közvetlenül hozzárendelt E1-licencet. Vagy módosítania kell a teljes csoport licenc-hozzárendelését, és le kell tiltania a terveket az E3-licencben. Azt is megteheti, hogy eltávolítja az E1-licencet a felhasználótól, ha az az E3 licenc kontextusában redundáns.

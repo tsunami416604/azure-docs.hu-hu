@@ -3,12 +3,12 @@ title: Koncepció – Azure VMware-megoldás üzembe helyezésének integrálás
 description: Ismerje meg, hogyan integrálhat egy Azure-beli VMware-megoldás üzembe helyezését az Azure-ban a sugaras architektúrával.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967448"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901385"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware-megoldás integrálása egy sugaras architektúrával
 
@@ -128,7 +128,7 @@ Ajánlott biztonsági eljárásként a központi virtuális hálózaton belül �
 
 Azure DNS felbontás esetén két lehetőség érhető el:
 
--   A központban üzembe helyezett Azure Active Directory-(Azure AD-) tartományvezérlőket használja névkiszolgálókként (lásd az [identitással kapcsolatos szempontokat](#identity-considerations)).
+-   Használja az elosztón üzembe helyezett tartományvezérlőket (lásd az [identitással kapcsolatos szempontokat](#identity-considerations)) névkiszolgálókként.
 
 -   Azure DNS privát zóna üzembe helyezése és konfigurálása.
 
@@ -136,7 +136,7 @@ A legjobb megoldás, ha az Azure VMware-megoldás, a helyszíni környezet és a
 
 Általános tervezési javaslatként használja a meglévő Azure DNS infrastruktúrát (ebben az esetben Active Directory integrált DNS-t), amely legalább két, a hub virtuális hálózatban üzembe helyezett Azure-beli virtuális gépre van telepítve, és a küllős virtuális hálózatokban van konfigurálva, hogy a DNS-beállításokban ezeket a Azure DNS kiszolgálókat használják.
 
-Használhatja az Azure saját DNSt, ahol az Azure saját DNS-zóna a virtuális hálózatra mutat.  A DNS-kiszolgálók hibrid feloldóként használhatók feltételes továbbítással a helyszíni vagy az Azure VMware-megoldáshoz, amely az Azure saját DNS-infrastruktúrát használó DNS-t használja. 
+Használhatja az Azure saját DNSt, ahol az Azure saját DNS-zóna a virtuális hálózatra mutat.  A DNS-kiszolgálók hibrid feloldóként használhatók feltételes továbbítással a DNS-t használó helyszíni vagy Azure VMware-megoldáshoz az Azure saját DNS infrastruktúra használatával. 
 
 Ha automatikusan szeretné kezelni a DNS-rekordok életciklusát a küllős virtuális hálózatokon belül üzembe helyezett virtuális gépek esetében, engedélyezze az automatikus regisztrációt. Ha engedélyezve van, a magánhálózati DNS-zónák maximális száma csak egy. Ha le van tiltva, a maximális szám 1000.
 
@@ -144,7 +144,7 @@ A helyszíni és az Azure VMware megoldás-kiszolgálókat feltételes továbbí
 
 ## <a name="identity-considerations"></a>Identitással kapcsolatos megfontolások
 
-Az azonosításhoz ajánlott módszer az, ha legalább egy AD-tartományvezérlő üzembe helyezését végzi a központban. Két megosztott szolgáltatási alhálózatot használjon a zónák elosztott vagy a virtuális gép rendelkezésre állási csoportjában. A helyszíni AD-tartomány Azure-ra való kiterjesztését [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) tekintheti meg.
+Az azonosításhoz ajánlott módszer az, ha legalább egy tartományvezérlőt üzembe helyez a központban. Két megosztott szolgáltatási alhálózatot használjon a zónák elosztott vagy a virtuális gép rendelkezésre állási csoportjában. A helyszíni Active Directory (AD) tartomány Azure-ra való kiterjesztésével kapcsolatos további információkért lásd: [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 Emellett helyezzen üzembe egy másik tartományvezérlőt az Azure VMware megoldás oldalán, hogy identitásként és DNS-forrásként működjön a vSphere-környezetben.
 

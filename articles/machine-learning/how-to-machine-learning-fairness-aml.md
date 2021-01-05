@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 17b0564b4b73f5a5032343dcb78669cbf4cabd5a
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 057f965c67c25d486771a4c037e13153a7f2cf66
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516146"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901147"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning használata a Fairlearn nyílt forráskódú csomaggal, amellyel mérhető az ML-modellek tisztasága (előzetes verzió)
 
@@ -46,7 +46,7 @@ A Fairlearn újabb verziói a következő példában is működnek.
 
 Az alábbi példa bemutatja, hogyan használható a méltányos csomag. Azure Machine Learning és a Azure Machine Learning Studióban tekintjük meg a méltányos értékelés irányítópultját.
 
-1. Egy minta modell betanítása Jupyter-jegyzetfüzetbe. 
+1. Egy minta modell betanítása Jupyter Notebookban. 
 
     Az adatkészlet esetében a jól ismert felnőtt népszámlálás adatkészletet használjuk, amelyet a OpenML kapunk le. Tegyük fel, hogy a címkével kapcsolatban probléma merült fel, amely azt jelzi, hogy egy adott személy visszafizette-e az előző kölcsönt. Betanítunk egy modellt, amely azt jelzi, hogy a korábban láthatatlan személyek fizetnek-e hitelt. Ezt a modellt felhasználhatja a hitelek meghozatalához.
 
@@ -343,7 +343,7 @@ Több modell kimutatása egyetlen futtatásban – lehetővé teszi a modellek �
 [![Modell összehasonlító Fairlearn irányítópultja](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
     
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a modell tisztaságáról](concept-fairness-ml.md)
 

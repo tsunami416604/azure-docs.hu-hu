@@ -2,13 +2,13 @@
 title: Sablon létrehozása a csatolt sablonokkal
 description: Útmutató sablon létrehozásához csatolt sablonokkal.
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 038fb3e6bbb6086535b83a69de7a3fe49a8e60bb
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.date: 01/05/2021
+ms.openlocfilehash: e5725ece165f5716480afbcb4ef9098274c09993
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518889"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900637"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Oktatóanyag: spec sablon létrehozása csatolt sablonokkal (előzetes verzió)
 
@@ -191,7 +191,7 @@ az ts create \
   --version "1.0.0.0" \
   --resource-group templateSpecRG \
   --location "westus2" \
-  --template-file "c:\Templates\linkedTS\azuredeploy.json"
+  --template-file "<path-to-main-template>"
 ```
 
 ---
@@ -237,7 +237,7 @@ az group create \
   --name webRG \
   --location westus2
 
-id = $(az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
+id = $(az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
 
 az deployment group create \
   --resource-group webRG \
@@ -249,6 +249,6 @@ az deployment group create \
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretne többet megtudni a sablon specifikációjának csatolt sablonként való üzembe helyezéséről, tekintse meg a következő [oktatóanyagot: a sablon specifikációjának telepítése csatolt sablonként](template-specs-deploy-linked-template.md).

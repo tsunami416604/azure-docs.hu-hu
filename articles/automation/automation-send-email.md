@@ -3,14 +3,14 @@ title: E-mail küldése egy Azure Automation runbook
 description: Ez a cikk azt ismerteti, hogyan küldhet e-mailt egy runbook belülről.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/15/2019
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: a81ae680a5f04eca0a6cc01ee24b474cc5daabea
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 65fa226b368baa3b1d4f376600e610a518c48c02
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005205"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900321"
 ---
 # <a name="send-an-email-from-a-runbook"></a>E-mail küldése runbookból
 
@@ -67,7 +67,7 @@ A Azure Key Vault létrehozásának és a titkos kulcs tárolásának egyéb mó
 
 Ha Azure Key Vaultt szeretne használni a runbook belül, a következő modulokat kell importálnia az Automation-fiókjába:
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts)
 * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 Útmutatásért lásd: [Importálás az modulok](shared-resources/modules.md#import-az-modules).
@@ -142,7 +142,7 @@ Ha kezdetben nem látja a teszt e-mail-címét, ellenőrizze a **Levélszemét**
 
 1. Ha a runbook már nincs rá szükség, válassza ki a runbook listában, és kattintson a **Törlés** gombra.
 
-2. Törölje a Key Vault a [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) parancsmag használatával.
+2. Törölje a Key Vault a [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault) parancsmag használatával.
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"

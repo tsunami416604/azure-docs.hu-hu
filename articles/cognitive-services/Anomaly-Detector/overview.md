@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/05/2021
 ms.author: mbullwin
 keywords: anomáliák észlelése, gépi tanulás, algoritmusok
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705081"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901368"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Mi az az Anomaly Detector API?
 
@@ -83,8 +83,17 @@ Regisztráció után:
 
 Ha többet szeretne megtudni a Microsoft által fejlesztett SR-CNN-algoritmusokról, olvassa el a Microsoft (KDD 2019 által elfogadott) [Time-sorozati anomália-észlelési szolgáltatást](https://arxiv.org/abs/1906.03821) .
 
-
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="service-availability-and-redundancy"></a>Szolgáltatás rendelkezésre állása és redundancia
+
+### <a name="is-the-anomaly-detector-service-zone-resilient"></a>A rendellenesség-Kiderítő szolgáltatási zóna rugalmas?
+
+Igen. A rendellenesség-Kiderítő szolgáltatás alapértelmezés szerint zónához rugalmas.
+
+### <a name="how-do-i-configure-the-anomaly-detector-service-to-be-zone-resilient"></a>Hogyan úgy konfigurálja az anomália-detektor szolgáltatást, hogy a zóna rugalmas legyen?
+
+A zóna rugalmasságának engedélyezéséhez nincs szükség ügyfél-konfigurációra. Az adatkezelési felderítő erőforrások rugalmassága alapértelmezés szerint elérhető, és maga a szolgáltatás kezeli.
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolók használatával
 
@@ -95,7 +104,7 @@ Az API-funkciók helyszíni üzembe helyezéséhez [használjon anomáliát érz
 * Csatlakozás az [anomália-detektor Advisors csoportjához a Microsoft Teams](https://aka.ms/AdAdvisorsJoin) szolgáltatásban
 * A kiválasztott [felhasználó által létrehozott tartalom](user-generated-content.md) megjelenítése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyors útmutató: anomáliák észlelése az idősoros adataiban az anomália detektor használatával](quickstarts/client-libraries.md)
 * Az anomália érzékelő API [online bemutatója](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)

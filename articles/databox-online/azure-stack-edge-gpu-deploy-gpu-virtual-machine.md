@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 6fa8705221e1f1f9a9143f274a53db21b657988f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0a7f54d991d31594a6ab522dbf9e73958cde3023
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763829"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900144"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>GPU virtuális gépek a Azure Stack Edge Pro-eszközhöz
 
@@ -338,7 +338,7 @@ További információ: [az NVIDIA GPU illesztőprogram-bővítmény a Windowshoz
 
 ### <a name="gpu-extension-for-linux"></a>GPU-bővítmény Linux rendszerhez
 
-Egy meglévő virtuális gép NVIDIA GPU-illesztőprogramjainak telepítéséhez szerkessze a `addGPUExtLinuxVM.parameters.json` paramétereket tartalmazó fájlt, majd telepítse a sablont `addGPUextensiontoVM.json` .
+Egy meglévő virtuális gép NVIDIA GPU-illesztőprogramjainak telepítéséhez szerkessze a paramétereket tartalmazó fájlt, majd telepítse a sablont `addGPUextensiontoVM.json` . Az Ubuntu és a Red Hat Enterprise Linux (RHEL) paraméterek fájljai az alábbi szakaszokban leírtak szerint vannak.
 
 #### <a name="edit-parameters-file"></a>Paraméterek szerkesztése fájl
 
@@ -371,8 +371,7 @@ Ubuntu használata esetén a `addGPUExtLinuxVM.parameters.json` fájl a követke
     }
     }
 ```
-Red Hat Enterprise Linux (RHEL) használata esetén a fájl a következő paramétereket veszi figyelembe:
-
+Red Hat Enterprise Linux (RHEL) használata esetén a `addGPUExtensionRHELVM.parameters.json` fájl a következő paramétereket veszi figyelembe:
 
 ```powershell
 {
@@ -639,6 +638,6 @@ Requestld IsSuccessStatusCode StatusCode ReasonPhrase
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Resource Manager-parancsmagok](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

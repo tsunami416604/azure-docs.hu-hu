@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 8bffe0c3871eae12f3b875a96301136d11dfc516
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783793"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900654"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -61,22 +61,25 @@ Ha nincs olyan szerepköre, amely felügyeleti rétegbeli engedélyeket biztosí
 Ha blob-tárolókat vagy-várólistákat szeretne elérni, az Azure-beli hitelesítő adataival csatolhatja ezeket az erőforrásokat.
 
 1. Nyissa meg a csatlakozási párbeszédpanelt.
-2. Válassza az erőforrás hozzáadása Azure Active Directory használatával (Azure AD) lehetőséget. Kattintson a Tovább gombra.
+2. Válassza az "erőforrás hozzáadása Azure Active Directory (Azure AD)" lehetőséget. Kattintson a Tovább gombra.
 3. Válassza ki azt a felhasználói fiókot és bérlőt, amelyhez hozzá kívánja rendelni az erőforrást. Kattintson a Tovább gombra.
-4. Válassza ki az erőforrás típusát, adja meg az erőforrás URL-címét, és adjon meg egy egyedi megjelenítendő nevet a kapcsolódáshoz. Kattintson a Tovább gombra. Kattintson a Csatlakozás gombra.
+4. Válassza ki az erőforrás típusát, adja meg az erőforrás URL-címét, és adjon meg egy egyedi megjelenítendő nevet a kapcsolódáshoz. Válassza a tovább, majd a kapcsolat lehetőséget.
 
 Más erőforrástípusok esetében jelenleg nem áll rendelkezésre Azure RBAC kapcsolatos megoldás. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Ajánlott Azure beépített szerepkörök
 
 Több Azure-beli beépített szerepkör is rendelkezésre áll, amelyek biztosítják a Storage Explorer használatához szükséges engedélyeket. A szerepkörök némelyike:
-- [Tulajdonos](../../role-based-access-control/built-in-roles.md#owner): mindent kezelhet, beleértve az erőforrásokhoz való hozzáférést is. **Megjegyzés** : Ez a szerepkör a kulcs elérését biztosítja.
-- [Közreműködő](../../role-based-access-control/built-in-roles.md#contributor): mindent kezelhet, kivéve az erőforrásokhoz való hozzáférést. **Megjegyzés** : Ez a szerepkör a kulcs elérését biztosítja.
-- [Olvasó](../../role-based-access-control/built-in-roles.md#reader): erőforrások olvasása és listázása.
-- [Storage-fiók közreműködői](../../role-based-access-control/built-in-roles.md#storage-account-contributor): teljes körű felügyelet a Storage-fiókok esetében. **Megjegyzés** : Ez a szerepkör a kulcs elérését biztosítja.
-- [Storage blob-adat tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): teljes hozzáférés az Azure Storage blob-tárolók és-adattárakhoz.
-- [Storage blob-adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): az Azure Storage-tárolók és-Blobok olvasása, írása és törlése.
-- [Storage blob Adatolvasó](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): az Azure Storage-tárolók és-Blobok olvasása és listázása.
+- [Tulajdonos](/azure/role-based-access-control/built-in-roles#owner): mindent kezelhet, beleértve az erőforrásokhoz való hozzáférést is.
+- [Közreműködő](/azure/role-based-access-control/built-in-roles#contributor): mindent kezelhet, kivéve az erőforrásokhoz való hozzáférést.
+- [Olvasó](/azure/role-based-access-control/built-in-roles#reader): erőforrások olvasása és listázása.
+- [Storage-fiók közreműködői](/azure/role-based-access-control/built-in-roles#storage-account-contributor): teljes körű felügyelet a Storage-fiókok esetében.
+- [Storage blob-adat tulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): teljes hozzáférés az Azure Storage blob-tárolók és-adattárakhoz.
+- [Storage blob-adatközreműködői](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): az Azure Storage-tárolók és-Blobok olvasása, írása és törlése.
+- [Storage blob Adatolvasó](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): az Azure Storage-tárolók és-Blobok olvasása és listázása.
+
+> [!NOTE]
+> A tulajdonos, a közreműködő és a Storage-fiók közreműködői szerepkörei biztosítják a fiók kulcsának elérését.
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hiba: önaláírt tanúsítvány a tanúsítványláncot (és hasonló hibák)
 
@@ -88,7 +91,7 @@ A tanúsítványok hibái általában az alábbi helyzetekben fordulnak elő:
 Ha Storage Explorer egy önaláírt vagy nem megbízható tanúsítványt lát, már nem tudja, hogy megváltozott-e a kapott HTTPS-üzenet. Ha rendelkezik az önaláírt tanúsítvány egy példányával, akkor a következő lépések végrehajtásával utasíthatja Storage Explorer megbízni:
 
 1. Szerezze be a tanúsítvány Base-64 kódolású X. 509 (. cer) másolatát.
-2. Nyissa **meg az**  >  **SSL-tanúsítványok**  >  **importálása tanúsítványokat** , majd a file Picker használatával keresse meg, válassza ki és nyissa meg a. cer fájlt.
+2. Nyissa **meg az**  >  **SSL-tanúsítványok**  >  **importálása tanúsítványokat**, majd a file Picker használatával keresse meg, válassza ki és nyissa meg a. cer fájlt.
 
 Ez a probléma akkor is előfordulhat, ha több tanúsítvány van (root és Intermediate). A hiba kijavításához mindkét tanúsítványt hozzá kell adni.
 
@@ -100,7 +103,7 @@ Ha nem biztos abban, hogy honnan származik a tanúsítvány, kövesse az alább
 2. Futtassa az OpenSSL-t.
     * Windows: Nyissa meg a telepítési könyvtárat, válassza a **/bin/** lehetőséget, majd kattintson duplán a **openssl.exe** elemre.
     * Mac és Linux: Futtatás `openssl` terminálról.
-3. Futtassa a `s_client -showcerts -connect microsoft.com:443` parancsot.
+3. Futtassa az `s_client -showcerts -connect microsoft.com:443` parancsot.
 4. Keresse meg az önaláírt tanúsítványokat. Ha nem biztos abban, hogy mely tanúsítványok önaláírtak, jegyezze fel a tárgyat és a `("s:")` kiállítót bárhol `("i:")` .
 5. Ha önaláírt tanúsítványokat talál, mindegyikhez másolja ki és illessze be a (és a (többek között) `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` új. cer kiterjesztésű fájlba.
 6. Nyissa meg Storage Explorer, és **kattintson az**  >  **SSL-tanúsítványok**  >  **importálása tanúsítványok importálása** gombra. Ezután a file Picker használatával megkeresheti, kiválaszthatja és megnyithatja a létrehozott. cer fájlokat.
@@ -113,7 +116,7 @@ Ha a fenti lépések követésével nem talál önaláírt tanúsítványokat, l
 
 Az üres bejelentkezési párbeszédpanelek leggyakrabban akkor fordulnak elő, ha a Active Directory összevonási szolgáltatások (AD FS) (AD FS) az elektron által nem támogatott átirányítás elvégzésére kéri Storage Explorer. A probléma megkerüléséhez próbálja meg a bejelentkezéshez használni az eszköz kódjának folyamatát. Ehhez kövesse az alábbi lépéseket:
 
-1. A bal oldali függőleges eszköztáron nyissa meg a **Beállítások menüpontot** . A beállítások panelen lépjen az alkalmazás- **Application**  >  **Bejelentkezés** elemre. Engedélyezze **az eszköz kódjának áramlását a bejelentkezést** .
+1. A bal oldali függőleges eszköztáron nyissa meg a **Beállítások menüpontot**. A beállítások panelen lépjen az alkalmazás-   >  **Bejelentkezés** elemre. Engedélyezze **az eszköz kódjának áramlását a bejelentkezést**.
 2. Nyissa meg a **Csatlakoztatás** párbeszédpanelt (vagy a bal oldali függőleges sávban a dugó ikonra kattintva vagy a fiók **hozzáadása** a fiók paneljén).
 3. Válassza ki azt a környezetet, amelyre be szeretné jelentkezni.
 4. Válassza **a bejelentkezés** lehetőséget.
@@ -175,9 +178,9 @@ Ha a sikeres bejelentkezést követően nem tudja lekérni az előfizetéseket, 
 
 Ha nem távolíthat el egy csatolt fiókot vagy tárolási erőforrást a felhasználói felületen, manuálisan törölheti az összes csatolt erőforrást a következő mappák törlésével:
 
-* Windows `%AppData%/StorageExplorer`
+* Windows: `%AppData%/StorageExplorer`
 * MacOS `/Users/<your_name>/Library/Application Support/StorageExplorer`
-* Linux `~/.config/StorageExplorer`
+* Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
 > A mappák törlése előtt Storage Explorer bezárásához.
@@ -187,46 +190,62 @@ Ha nem távolíthat el egy csatolt fiókot vagy tárolási erőforrást a felhas
 
 ## <a name="proxy-issues"></a>Proxyval kapcsolatos problémák
 
-Először ellenőrizze, hogy helyesek-e a megadott adatok:
+Storage Explorer támogatja az Azure Storage-erőforrásokhoz való csatlakozást egy proxykiszolgálón keresztül. Ha az Azure-hoz proxyn keresztüli csatlakozással kapcsolatos problémákat tapasztal, itt talál néhány javaslatot.
 
-* A proxy URL-címe és portszáma
-* Felhasználónév és jelszó, ha a proxyhoz szükség van
+> [!NOTE]
+> Storage Explorer csak a proxykiszolgálók alapszintű hitelesítését támogatja. Más hitelesítési módszerek, például az NTLM, nem támogatottak.
 
 > [!NOTE]
 > A Storage Explorer nem támogatja a proxy automatikus konfigurációs fájljait a proxybeállítások konfigurálásához.
 
-### <a name="common-solutions"></a>Gyakran használt megoldások
+### <a name="verify-storage-explorer-proxy-settings"></a>Storage Explorer proxybeállítások ellenőrzése
 
-Ha továbbra is problémákat tapasztal, próbálkozzon az alábbi hibaelhárítási módszerekkel:
+Az **alkalmazás → Proxy → proxy konfigurációs** beállítás határozza meg, hogy melyik forrás Storage Explorer szerzi be a proxy konfigurációját.
 
-* Ha a proxy használata nélkül tud csatlakozni az internethez, győződjön meg arról, hogy a Storage Explorer a proxybeállítások engedélyezése nélkül működik. Ebben az esetben előfordulhat, hogy probléma van a proxy beállításaival. A problémák azonosításához működjön együtt a rendszergazdájával.
-* Ellenőrizze, hogy a proxykiszolgálót használó más alkalmazások a várt módon működnek-e.
-* Ellenőrizze, hogy tud-e csatlakozni a használni kívánt Azure-környezethez a portálhoz.
-* Ellenőrizze, hogy kaphat-e válaszokat a szolgáltatási végpontokról. Adja meg az egyik végpont URL-címét a böngészőben. Ha csatlakozni tud, a InvalidQueryParameterValue vagy egy hasonló XML-választ kell kapnia.
-* Ha valaki más is Storage Explorert használ a proxykiszolgálóhoz, ellenőrizze, hogy tud-e kapcsolatot létesíteni. Ha lehetséges, kapcsolatba kell lépnie a proxykiszolgáló rendszergazdájával.
+Ha a "környezeti változók használata" lehetőséget választja, ügyeljen a `HTTPS_PROXY` vagy `HTTP_PROXY` környezeti változók beállítására (a környezeti változók megkülönböztetik a kis-és nagybetűket, ezért ügyeljen arra, hogy a helyes változókat állítsa be). Ha a változók nincsenek meghatározva vagy érvénytelenek, Storage Explorer nem használ proxyt. A környezeti változók módosítása után indítsa újra Storage Explorer.
+
+Ha az "alkalmazás-proxybeállítások használata" lehetőséget választja, ellenőrizze, hogy helyesek-e az alkalmazáson belüli proxy beállításai.
+
+### <a name="steps-for-diagnosing-issues"></a>A problémák diagnosztizálásának lépései
+
+Ha továbbra is problémákat tapasztal, próbálkozzon a következő hibaelhárítási módszerekkel:
+
+1. Ha a proxy használata nélkül tud csatlakozni az internethez, győződjön meg arról, hogy a Storage Explorer a proxybeállítások engedélyezése nélkül működik. Ha Storage Explorer sikeresen csatlakozik, lehet, hogy probléma van a proxykiszolgálóhoz. A problémák azonosításához működjön együtt a rendszergazdájával.
+2. Ellenőrizze, hogy a proxykiszolgálót használó más alkalmazások a várt módon működnek-e.
+3. Ellenőrizze, hogy tud-e csatlakozni a használni kívánt Azure-környezethez a portálhoz.
+4. Ellenőrizze, hogy kaphat-e válaszokat a szolgáltatási végpontokról. Adja meg az egyik végpont URL-címét a böngészőben. Ha csatlakozni tud, egy `InvalidQueryParameterValue` vagy hasonló XML-választ kell kapnia.
+5. Győződjön meg arról, hogy valaki más használja-e a Storage Explorert ugyanazzal a proxykiszolgálón keresztül. Ha lehetséges, kapcsolatba kell lépnie a proxykiszolgáló rendszergazdájával.
 
 ### <a name="tools-for-diagnosing-issues"></a>Problémák diagnosztizálására szolgáló eszközök
 
-Ha van hálózati eszköze, például a Hegedűs a Windowshoz, akkor a következő módon diagnosztizálhatja a problémákat:
+A hálózati eszközök, például a Hegedűs, segíthetnek a problémák diagnosztizálásában.
 
-* Ha a proxyn keresztül kell dolgoznia, előfordulhat, hogy a hálózati eszközt úgy kell konfigurálnia, hogy a proxyn keresztül csatlakozhasson.
-* Keresse meg a hálózati eszköz által használt portszámot.
-* Adja meg a helyi gazdagép URL-címét és a hálózati eszköz portszámát a Storage Explorer proxybeállításait. Ha ezt a lehetőséget választja, a hálózati eszköz elindítja a Storage Explorer által a felügyeleti és szolgáltatási végpontoknak küldött hálózati kérések naplózását. Adja meg például a `https://cawablobgrs.blob.core.windows.net/` blob-végpontot egy böngészőben, és egy olyan választ fog kapni, amely a következőhöz hasonló:
+1. Konfigurálja a hálózati eszközt a helyi gazdagépen futó proxykiszolgálóként. Ha továbbra is a tényleges proxy mögött kell dolgoznia, előfordulhat, hogy konfigurálnia kell a hálózati eszközt a proxyn keresztüli csatlakozáshoz.
+2. Keresse meg a hálózati eszköz által használt portszámot.
+3. Konfigurálja Storage Explorer proxybeállításokat a helyi gazdagép és a hálózati eszköz portszámának (például "localhost: 8888") használatára.
+ 
+Ha helyesen van beállítva, a hálózati eszköz naplózza Storage Explorer által a felügyeleti és a szolgáltatási végpontoknak küldött hálózati kérelmeket.
+ 
+Ha a hálózatkezelési eszköz nem úgy tűnik, hogy naplózza Storage Explorer forgalmat, próbálja meg tesztelni az eszközt egy másik alkalmazással. Adja meg például az egyik tároló-erőforrás végpontjának URL-címét (például `https://contoso.blob.core.windows.net/` ) egy webböngészőben, és a következőhöz hasonló választ kap:
 
   ![Kódminta](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
-  Ez a válasz azt sugallja, hogy az erőforrás létezik, még akkor is, ha nem fér hozzá.
+  A válasz azt sugallja, hogy az erőforrás létezik, még akkor is, ha nem fér hozzá.
+
+Ha a hálózati eszköz csak más alkalmazásokból származó forgalmat mutat, előfordulhat, hogy módosítania kell a proxybeállításokat a Storage Explorerban. Ellenkező esetben módosítania kell az eszköz beállításait.
 
 ### <a name="contact-proxy-server-admin"></a>Kapcsolatfelvétel a proxykiszolgáló rendszergazdájával
 
 Ha a proxybeállítások helyesek, előfordulhat, hogy a következőkre kell felvennie a kapcsolatot a proxykiszolgáló rendszergazdájával:
 
 * Győződjön meg arról, hogy a proxy nem blokkolja az Azure-felügyeletre vagy az erőforrás-végpontokra irányuló forgalmat.
-* Ellenőrizze a proxykiszolgáló által használt hitelesítési protokollt. Storage Explorer jelenleg nem támogatja az NTLM-proxykat.
+* Ellenőrizze a proxykiszolgáló által használt hitelesítési protokollt. Storage Explorer csak az alapszintű hitelesítési protokollok használatát támogatja. A Storage Explorer nem támogatja az NTLM-proxykat.
 
 ## <a name="unable-to-retrieve-children-error-message"></a>"Nem sikerült beolvasni a gyermekeket" hibaüzenet jelenik meg
 
-Ha egy proxyn keresztül csatlakozik az Azure-hoz, ellenőrizze, hogy helyesek-e a proxybeállítások. Ha hozzáférést kap az erőforráshoz az előfizetés vagy a fiók tulajdonosa, ellenőrizze, hogy rendelkezik-e az adott erőforráshoz tartozó olvasási vagy listázási engedélyekkel.
+Ha egy proxyn keresztül csatlakozik az Azure-hoz, ellenőrizze, hogy helyesek-e a proxybeállítások.
+
+Ha egy előfizetés vagy fiók tulajdonosa hozzáférést kapott egy erőforráshoz, ellenőrizze, hogy rendelkezik-e az adott erőforráshoz tartozó olvasási vagy listázási engedélyekkel.
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>A kapcsolatok karakterlánca nem rendelkezik teljes konfigurációs beállításokkal
 
@@ -265,7 +284,7 @@ Miután az összes kapcsolaton áthaladt, az összes nem hozzáadott kapcsolat n
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 1. A **Start** menüben keresse meg a **hitelesítőadat-kezelőt** , és nyissa meg.
-2. Nyissa meg a **Windows rendszerbeli hitelesítő adatokat** .
+2. Nyissa meg a **Windows rendszerbeli hitelesítő adatokat**.
 3. Az **általános hitelesítő adatok** területen keresse meg a kulcsot tartalmazó bejegyzéseket `<connection_type_key>/<corrupted_connection_name>` (például: `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Törölje ezeket a bejegyzéseket, majd adja hozzá újra a kapcsolatokat.
 

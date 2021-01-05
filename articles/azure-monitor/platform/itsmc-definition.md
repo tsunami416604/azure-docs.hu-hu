@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 20c59e5ecc24dfe5c9eadb05899bf37d39ce09e7
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: b26643daede9e26f2bf1807ae99a6ced5d1cb08c
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882283"
+ms.locfileid: "97901572"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -58,7 +58,7 @@ Azon ITSM-termék alapján, amelyhez csatlakozik, válassza a következő hivatk
 - [ServiceNow](./itsmc-connections-servicenow.md)
 - [System Center Service Manager](./itsmc-connections-scsm.md)
 - [Cherwell](./itsmc-connections-cherwell.md)
-- [Megjelenő](./itsmc-connections-provance.md)
+- [Provance](./itsmc-connections-provance.md)
 
 Miután elő a ITSM-eszközöket, hajtsa végre a következő lépéseket a kapcsolatok létrehozásához:
 
@@ -76,7 +76,7 @@ Miután elő a ITSM-eszközöket, hajtsa végre a következő lépéseket a kapc
     - [ServiceNow](./itsmc-connections-servicenow.md)
     - [System Center Service Manager](./itsmc-connections-scsm.md)
     - [Cherwell](./itsmc-connections-cherwell.md)
-    - [Megjelenő](./itsmc-connections-provance.md)
+    - [Provance](./itsmc-connections-provance.md)
 
    > [!NOTE]
    >
@@ -127,29 +127,31 @@ Műveleti csoportok létrehozásához kövesse az alábbi eljárást:
 
 8. Ha rögzített értékekkel rendelkező, beépített mezőket szeretne kitölteni, válassza az **egyéni sablon használata** lehetőséget. Ellenkező esetben válasszon egy meglévő [sablont](#template-definitions) a **sablon** listáról, és adja meg a rögzített értékeket a sablon mezőiben.
 
-9. Ha **az egyes konfigurációs elemekhez az egyes** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz. Azt jelenti, hogy konfigurációs elemként egy munkaelem fog működni.
+9. A művelet ITSM-definíciójának utolsó szakaszában megadhatja, hogy az egyes riasztások hány riasztást hozzanak létre. Ez a szakasz csak a keresési riasztások naplózására vonatkozik.
 
-    * Ha a munkaelem legördülő menüben a "incidens" vagy a "riasztás" lehetőséget választja: 
-        * Ha bejelöli az egyes **konfigurációs elemek egyéni** munkaelemének létrehozása jelölőnégyzetet, minden riasztás létrehoz egy új munkaelemet. A ITSM-rendszeren több munkaelem is szerepelhet egy konfigurációs elemnél.
+    * Ha a munkaelem legördülő menüben a "incidens" vagy a "riasztás" lehetőséget választja:
+        * Ha bejelöli az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása jelölőnégyzetet, minden riasztásban minden konfigurációs elem új munkaelemet fog létrehozni. A ITSM-rendszeren több munkaelem is szerepelhet egy konfigurációs elemnél.
 
             Például:
-            1) 1. riasztás 3 konfigurációs elemmel: A, B, C 3 munkaelemet fog létrehozni.
-            2) 2. riasztás 1 konfigurációs elemmel: a D 1 munkaelemet hoz létre.
+            1) 1. riasztás 3 konfigurációs elemmel: A, B, C – 3 munkaelemet fog létrehozni.
+            2) 2. riasztás 1 konfigurációs elemmel: D – 1 munkaelemet fog létrehozni.
 
                 **A folyamat végén 4 riasztás jelenik meg**
         * Ha törli az egyes **konfigurációs elemek egyéni munkaelemeinek létrehozása** jelölőnégyzet jelölését, akkor olyan riasztások jelennek meg, amelyek nem hoznak létre új munkaelemet. a munkaelemek a riasztási szabály szerint lesznek egyesítve.
 
             Például:
-            1) 1. riasztás 3 konfigurációs elemmel: A, B, C 1 munkaelemet fog létrehozni.
-            2) 2. riasztás ugyanahhoz a riasztási szabályhoz az 1. fázisban 1 konfigurációs elemmel: D az 1. fázisban lévő munkaelembe lesz egyesítve.
-            3) 3. riasztás egy másik riasztási szabályhoz 1 konfigurációs elemmel: az E 1 munkaelemet hoz létre.
+            1) 1. riasztás 3 konfigurációs elemmel: A, B, C – 1 munkaelemet fog létrehozni.
+            2) 2. riasztás ugyanahhoz a riasztási szabályhoz az 1. fázisban 1 konfigurációs elemmel: a D – egyesítve lesz az 1. fázisban lévő munkaelembe.
+            3) 3. riasztás egy másik riasztási szabályhoz 1 konfigurációs elemmel: az E-1 munkaelemet hoz létre.
 
                 **A folyamat végén 2 riasztás lesz**
 
        ![A ITSM incidens ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration.png)
 
-    * Ha a munkaelem legördülő menüben a "esemény" lehetőséget választja: Ha a választógombok kiválasztásakor a különböző munkaelemek **létrehozása** lehetőséget választja, minden riasztás új munkaelemet fog létrehozni. Ha a választógombok kiválasztásakor az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz.
-   ![Képernyőkép, amely a ITSM esemény ablakát jeleníti meg.](media/itsmc-overview/itsm-action-configuration-event.png)
+    * Ha a munkaelem legördülő menüben a "esemény" lehetőséget választja:
+        * Ha a választógombok kiválasztásakor az egyes **naplókhoz tartozó egyéni munkaelemek létrehozása** lehetőséget választja, a rendszer minden egyes sorban létrehoz egy riasztást a napló keresési riasztási lekérdezés keresési eredményei között. A riasztás hasznos adatai között a Description (Leírás) tulajdonság a keresési eredmények sorát fogja tartalmazni.
+        * Ha a választógombok kiválasztásakor az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása lehetőséget választja, akkor minden egyes riasztás minden konfigurációs eleme létrehoz egy új munkaelemet. A ITSM-rendszeren több munkaelem is szerepelhet egy konfigurációs elemnél. Ez ugyanaz lesz, mint az incidens/riasztás szakaszban lévő jelölőnégyzet ellenőrzése.
+    ![Képernyőkép, amely a ITSM esemény ablakát jeleníti meg.](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. Válassza az **OK** lehetőséget.
 
@@ -162,6 +164,6 @@ Azure-riasztási szabály létrehozásakor vagy szerkesztésekor használjon egy
 >
 >- A riasztási szabály definíciójának rövid leírása mezője 40 karakterre van korlátozva, ha a ITSM művelettel küldi el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hibaelhárítás az ITSM-összekötőben](./itsmc-resync-servicenow.md)

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 4b1bc58b6b4a87cd6e5e09e83020a38261b8746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905377"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901232"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Előtér-keretrendszerek és-kódtárak konfigurálása az Azure statikus Web Apps előzetes verziójával
 
@@ -24,7 +24,7 @@ A következő táblázat felsorolja a keretrendszerek és<sup>a kódtárak</sup>
 
 A táblázat oszlopainak szándékát a következő elemek magyarázzák:
 
-- **Alkalmazás**-összetevő helye: felsorolja a (z `app_artifact_location` ) értékét, amely az [Alkalmazásfájlok beépített verzióihoz tartozó mappa](github-actions-workflow.md#build-and-deploy).
+- **Kimeneti hely**: a (z) értékét listázza `output_location` , amely az [Alkalmazásfájlok beépített verzióihoz tartozó mappa](github-actions-workflow.md#build-and-deploy).
 
 - **Egyéni Build parancs**: Ha a keretrendszer a vagy rendszertől eltérő parancsot igényel `npm run build` `npm run azure:build` , [Egyéni Build-parancsot](github-actions-workflow.md#custom-build-commands)is meghatározhat.
 

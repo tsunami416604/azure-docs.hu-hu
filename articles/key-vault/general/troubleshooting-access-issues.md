@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616388"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901215"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Az Azure Key Vault hozzáférési szabályzatával kapcsolatos problémák elhárítása
 
@@ -32,10 +32,10 @@ A szolgáltatás skálázásának megkezdése után a Key vaultba küldött kér
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Nem tudom módosítani a hozzáférési szabályzatot, hogyan lehet engedélyezni?
 A felhasználónak elegendő HRE engedéllyel kell rendelkeznie a hozzáférési szabályzat módosításához. Ebben az esetben a felhasználónak magasabb közreműködő szerepkörrel kell rendelkeznie.
 
-### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>"Unkwown szabályzat" hibaüzenet jelenik meg. Ez mit jelent?
+### <a name="i-am-seeing-unknown-policy-error-what-does-that-mean"></a>"Ismeretlen házirend" hibaüzenet jelenik meg. Ez mit jelent?
 Az ismeretlen szakaszban két különböző lehetőség van a hozzáférési szabályzat megtekintésére:
 * Előfordulhat, hogy egy korábbi felhasználónak van hozzáférése, és valamilyen okból kifolyólag a felhasználó nem létezik.
-* Ha a hozzáférési szabályzatot a PowerShell használatával adja hozzá, és a hozzáférési szabályzatot hozzáadja az alkalmazás ObjectId a szolgáltatás sajátosságaikkal elvének helyett.
+* Ha a hozzáférési szabályzatot a PowerShell használatával adja hozzá, és a hozzáférési szabályzatot hozzáadja az alkalmazás ObjectId az egyszerű szolgáltatásnév helyett.
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Hogyan lehet hozzáférés-vezérlést rendelni Key Vault-objektumhoz? 
 
@@ -69,6 +69,6 @@ Egy másik lehetőség, amely segíthet ehhez a forgatókönyvhöz, hogy az Azur
 ### <a name="what-are-the-best-practices-i-should-implement-when-key-vault-is-getting-throttled"></a>Milyen bevált eljárásokat kell megvalósítani a Key Vault szabályozásakor?
 Kövesse az [itt](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits) dokumentált ajánlott eljárásokat
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan lehet elhárítani a Key Vault hitelesítési hibáit: [Key Vault hibaelhárítási útmutató](rest-error-codes.md).

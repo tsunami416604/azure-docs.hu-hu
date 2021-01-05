@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: ARO, openshift, az ARO, Red Hat, CLI, Azure file
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: fe80698b71ae0ba808991d79b423d49abfacdf7c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 201ec3293943f53179bcabde45259d15ce6208a6
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825920"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901283"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Files StorageClass létrehozása az Azure Red Hat OpenShift 4-ben
 
@@ -59,7 +59,7 @@ ARO_RESOURCE_GROUP=aro-rg
 CLUSTER=cluster
 ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER --query servicePrincipalProfile.clientId -o tsv)
 
-az role assignment create --role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
+az role assignment create --role Contributor --assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
 ```
 
 ### <a name="set-aro-cluster-permissions"></a>ARO-fürt engedélyeinek beállítása
@@ -81,6 +81,8 @@ oc adm policy add-cluster-role-to-user azure-secret-reader system:serviceaccount
 
 Ez a lépés létrehoz egy StorageClass egy Azure Files-kiépítő. A StorageClass-jegyzékben a Storage-fiók részletei szükségesek, hogy az ARO-fürt tudja megtekinteni az aktuális erőforráscsoporthoz kívüli Storage-fiókot.
 
+A tárolási kiépítés során a rendszer létrehoz egy secretName nevű titkos kulcsot a csatlakoztatási hitelesítő adatokhoz. Több-bérlős környezetben erősen ajánlott az secretNamespace explicit módon beállítani, ellenkező esetben a Storage-fiók hitelesítő adatait más felhasználók is elolvashatják.
+
 ```bash
 cat << EOF >> azure-storageclass-azure-file.yaml
 kind: StorageClass
@@ -90,6 +92,7 @@ metadata:
 provisioner: kubernetes.io/azure-file
 parameters:
   location: $LOCATION
+  secretNamespace: kube-system
   skuName: Standard_LRS
   storageAccount: $AZURE_STORAGE_ACCOUNT_NAME
   resourceGroup: $AZURE_FILES_RESOURCE_GROUP
@@ -116,7 +119,7 @@ Hozzon létre egy új alkalmazást, és rendelje hozzá a tárolóhoz.
 
 ```bash
 oc new-project azfiletest
-oc new-app –template httpd-example
+oc new-app -template httpd-example
 
 #Wait for the pod to become Ready
 curl $(oc get route httpd-example -n azfiletest -o jsonpath={.spec.host})
@@ -133,7 +136,7 @@ azure file storage
 ```
 A test.txt fájl is látható lesz a Azure Portal Storage Explorer keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a dinamikus állandó tárterületet Microsoft Azure fájlok és az Azure Red Hat OpenShift 4 használatával hozta létre. Megtanulta végrehajtani az alábbi műveleteket:
 

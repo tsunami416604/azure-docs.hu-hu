@@ -4,12 +4,12 @@ description: Ismerje meg a webhook URL-címére küldött JSON sémáját, ha a 
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 026613c3f5710137fb110153b34f9ed74bbf8a7b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522787"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901436"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure-beli tevékenység naplójának értesítéseihez
 A műveleti csoport definíciójának részeként konfigurálhat webhook-végpontokat a műveletnapló riasztási értesítéseinek fogadására. A webhookok segítségével ezeket az értesítéseket más rendszerekre irányíthatja a feldolgozás utáni vagy egyéni műveletekhez. Ez a cikk bemutatja, hogyan néz ki a HTTP-POST webhookhoz tartozó hasznos adat.
@@ -27,6 +27,19 @@ A webhook igény szerint jogkivonat-alapú hitelesítést is használhat a hitel
 
 ## <a name="payload-schema"></a>Hasznos adatok sémája
 A POST műveletben található JSON-adattartalom eltér a hasznos adatok. Context. activityLog. eventSource mező alapján.
+
+> [!NOTE]
+> Jelenleg a tevékenység napló eseményének részét képező Leírás a fired **"Alert Description" (riasztás leírása** ) tulajdonságba másolódik.
+>
+> A tevékenység naplójának más típusú riasztásokhoz való igazításához 2021. április 1-től kezdődően a **"Description"** utasítás a riasztási szabály leírását fogja tartalmazni.
+>
+> A módosítás előkészítéseként létrehoztunk egy új **"Activity log Event Description"** tulajdonságot a tevékenység naplózott riasztására. Ez az új tulajdonság a **"Leírás"** tulajdonsággal lesz kitöltve, amely már használható. Ez azt jelenti, hogy az új **"műveletnapló esemény leírása"** mező tartalmazza a tevékenység napló eseményének részét képező leírást.
+>
+> Tekintse át a riasztási szabályokat, a műveleti szabályokat, a webhookokat, a logikai alkalmazásokat vagy bármely más konfigurációt, ahol a **"Leírás"** tulajdonságot felhasználhatja a kilőtt riasztásból, és lecserélheti a **"műveletnapló esemény leírása"** tulajdonságra.
+>
+> Ha a feltétele (a műveleti szabályok, a webhookok, a logikai alkalmazás vagy más konfigurációk) jelenleg a **"Leírás"** tulajdonságon alapul a tevékenység-naplózási riasztások esetében, akkor előfordulhat, hogy módosítania kell azt a **"műveletnapló esemény leírása"** tulajdonság alapján.
+>
+> Az új **"Leírás"** tulajdonság kitöltéséhez hozzáadhat egy leírást a riasztási szabály definíciójában.
 
 ### <a name="common"></a>Közös
 

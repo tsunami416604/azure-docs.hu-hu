@@ -3,12 +3,12 @@ title: Oktatóanyag – helyszíni környezetek saját felhőbe
 description: Megtudhatja, hogyan hozhat létre ExpressRoute Global Reach-társítást egy Azure VMware-megoldásban található privát felhőbe.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 4d10972a693f7c4c3ae25a5bc986f6c15e978294
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: cf209071074fd4546ce64336b2b3b91fbcd4cb3b
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912497"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901453"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Oktatóanyag: helyszíni helyszíni környezetek egy privát felhőhöz
 
@@ -16,10 +16,10 @@ A ExpressRoute Global Reach összekapcsolja a helyszíni környezetet az Azure V
 
 Az [Azure – Private felhő hálózatkezelésének konfigurálásakor](tutorial-configure-networking.md) használt ExpressRoute-áramkör engedélyezési kulcsok létrehozását és használatát igényli.  Már használt egy engedélyezési kulcsot a ExpressRoute áramkörből, és ebben az oktatóanyagban egy másodikat fog létrehozni a helyszíni ExpressRoute-áramkörhöz.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
-> * Második engedélyezési kulcs létrehozása a _Circuit 2_ , a Private Cloud ExpressRoute áramkörhöz
+> * Második engedélyezési kulcs létrehozása a _Circuit 2_, a Private Cloud ExpressRoute áramkörhöz
 > * Használja a [Azure Portal](#azure-portal-method) vagy az Azure CLI-t az _1. áramkör_ -előfizetés egyik [Cloud Shell metódusában](#azure-cli-in-a-cloud-shell-method) , hogy lehetővé tegye a helyszíni – privát Felhőbeli ExpressRoute Global REACH
 
 
@@ -33,24 +33,25 @@ Mielőtt engedélyezi a kapcsolatot a két ExpressRoute-áramkör között a Exp
 - Kapcsolat létesítése egy Azure VMware-megoldás saját ExpressRoute-áramkörével és egy Azure-beli virtuális hálózatban (VNet) található ExpressRoute-átjáróval, amely a _2. áramköri_ eljárásokból áll.  
 - Egy különálló, működő ExpressRoute-áramkör, amely a helyszíni környezetek Azure-hoz való összekapcsolására szolgál – amely az _1. áramköri_ eljárás perspektívája.
 - Egy/29 nem átfedésben lévő [hálózati címterület](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) a ExpressRoute Global REACH-társításhoz.
+- Győződjön meg arról, hogy az összes útválasztó, beleértve a ExpressRoute-szolgáltató szolgáltatást, támogatja a 4 bájtos autonóm rendszer számát (ASN). Az Azure VMware-megoldás 4 bájtos nyilvános ASN használ az útvonalak reklámozására.
 
 > [!TIP]
-> Ezeknek az előfeltételeknek a kontextusában a helyszíni ExpressRoute áramkör _1_ , a saját Felhőbeli ExpressRoute áramkör pedig egy másik előfizetésben és _2_ . címkével ellátott áramkörben található. 
+> Ezeknek az előfeltételeknek a kontextusában a helyszíni ExpressRoute áramkör _1_, a saját Felhőbeli ExpressRoute áramkör pedig egy másik előfizetésben és _2_. címkével ellátott áramkörben található. 
 
 
 ## <a name="create-an-expressroute-authorization-key-in-the-private-cloud"></a>ExpressRoute-engedélyezési kulcs létrehozása a privát felhőben
 
-1. A Private Cloud **Overview** (kezelés) területen válassza a **kapcsolat > ExpressRoute > az engedélyezési kulcs igénylése** lehetőséget.
+1. A Private Cloud **Overview**(kezelés) területen válassza a **kapcsolat > ExpressRoute > az engedélyezési kulcs igénylése** lehetőséget.
 
    :::image type="content" source="media/expressroute-global-reach/start-request-auth-key.png" alt-text="Válassza a kapcsolat > ExpressRoute > az új kérés indításához kérjen egy engedélyezési kulcsot.":::
 
 2. Adja meg az engedélyezési kulcs nevét, majd válassza a **Létrehozás** lehetőséget. 
 
-   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Válassza a kapcsolat > ExpressRoute > az új kérés indításához kérjen egy engedélyezési kulcsot.":::
+   :::image type="content" source="media/expressroute-global-reach/create-global-reach-auth-key.png" alt-text="Válassza a létrehozás lehetőséget egy új engedélyezési kulcs létrehozásához. ":::
 
    A létrehozást követően az új kulcs megjelenik a privát felhőhöz tartozó engedélyezési kulcsok listájában. 
 
-   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Válassza a kapcsolat > ExpressRoute > az új kérés indításához kérjen egy engedélyezési kulcsot.":::
+   :::image type="content" source="media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="Győződjön meg arról, hogy az új engedélyezési kulcs megjelenik a titkos felhőhöz tartozó kulcsok listájában. ":::
 
 3. Jegyezze fel az engedélyezési kulcsot és a ExpressRoute AZONOSÍTÓját, valamint a/29-címterület számát. A következő lépésben a társítás befejezéséhez fogja használni őket. 
 
@@ -62,9 +63,9 @@ Most, hogy létrehozott egy engedélyezési kulcsot a saját felhőalapú Expres
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) ugyanazzal az előfizetéssel, mint a helyszíni ExpressRoute áramkörrel.
 
-1. A Private Cloud **Overview** (kezelés) területen válassza a **kapcsolat > ExpressRoute Global REACH > Hozzáadás** lehetőséget.
+1. A Private Cloud **Overview**(kezelés) területen válassza a **kapcsolat > ExpressRoute Global REACH > Hozzáadás** lehetőséget.
 
-   :::image type="content" source="./media/expressroute-global-reach/expressroute-global-reach-tab.png" alt-text="Válassza a kapcsolat > ExpressRoute > az új kérés indításához kérjen egy engedélyezési kulcsot.":::
+   :::image type="content" source="./media/expressroute-global-reach/expressroute-global-reach-tab.png" alt-text="A menüben válassza a kapcsolat, a ExpressRoute Global Reach fület, és adja hozzá a következőt:.":::
 
 1. A következő lehetőségek közül választhat a helyszíni Felhőbeli kapcsolatok létrehozásához:
 
@@ -76,7 +77,7 @@ Most, hogy létrehozott egy engedélyezési kulcsot a saját felhőalapú Expres
 >[!TIP]
 >A listából törölheti vagy leválaszthatja a kapcsolatot a **továbbiak** lehetőség kiválasztásával.  
 >
-> :::image type="content" source="./media/expressroute-global-reach/on-premises-connection-disconnect.png" alt-text="Válassza a kapcsolat > ExpressRoute > az új kérés indításához kérjen egy engedélyezési kulcsot.":::
+> :::image type="content" source="./media/expressroute-global-reach/on-premises-connection-disconnect.png" alt-text="Helyszíni kapcsolat leválasztása vagy törlése":::
 
 ### <a name="azure-cli-in-a-cloud-shell-method"></a>Azure CLI Cloud Shell metódusban
 
@@ -88,9 +89,13 @@ A [CLI-parancsokat](../expressroute/expressroute-howto-set-global-reach-cli.md) 
 
 1. Jelentkezzen be a Azure Portalba ugyanazzal az előfizetéssel, mint a helyszíni ExpressRoute áramkörrel, és nyisson meg egy Cloud Shell. Hagyja a shellt bash-ként.
  
-   :::image type="content" source="media/expressroute-global-reach/open-cloud-shell.png" alt-text="Válassza a kapcsolat > ExpressRoute > az új kérés indításához kérjen egy engedélyezési kulcsot." című rész 3. lépésében](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions)használt parancson alapul.
+   :::image type="content" source="media/expressroute-global-reach/open-cloud-shell.png" alt-text="Jelentkezzen be a Azure Portalba, és nyisson meg egy Cloud Shell.":::
+ 
+2. Adja meg az Azure CLI-parancsot a társítás létrehozásához. Használja az adott információt és erőforrás-azonosítót, az engedélyezési kulcsot és/29 CIDR hálózati blokkot. 
 
-   :::image type="content" source="media/expressroute-global-reach/azure-command-with-results.png" alt-text="Válassza a kapcsolat > ExpressRoute > az új kérés indításához kérjen egy engedélyezési kulcsot.":::
+   A képen egy példa látható a használni kívánt parancsra, valamint a sikeres társat jelző kimenetre. A példában szereplő parancs a ["ExpressRoute-áramkörök közötti kapcsolat engedélyezése különböző Azure-előfizetésekben" című rész 3. lépésében](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions)használt parancson alapul.
+
+   :::image type="content" source="media/expressroute-global-reach/azure-command-with-results.png" alt-text="Hozzon létre ExpressRoute Global Reach-társítást az Azure CLI-paranccsal egy Cloud Shell.":::
  
    A helyi környezetekről a saját felhőhöz kapcsolódhat a ExpressRoute Global Reach-társításon keresztül.
 

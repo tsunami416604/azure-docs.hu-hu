@@ -3,12 +3,12 @@ title: Fürt frissítése a tanúsítvány köznapi nevének használatára
 description: Megtudhatja, hogyan alakíthatja át az Azure Service Fabric-fürt tanúsítványát ujjlenyomat-alapú deklarációk és köznapi nevek között.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 013b8190390a4b05791b0a56072487f249956ec5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495210"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900790"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Fürtözött tanúsítványok konvertálása az ujjlenyomat-alapú deklarációk és köznapi nevek között
 
@@ -63,8 +63,11 @@ A konverziónak több érvényes indítási állapota is van. A Invariant azt mu
 #### <a name="valid-starting-states"></a>Érvényes indítási állapotok
 
 - `Thumbprint: GoalCert, ThumbprintSecondary: None`
-- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, ahol `GoalCert` a későbbi, `NotAfter` mint `OldCert1`
-- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, ahol `GoalCert` a későbbi, `NotAfter` mint `OldCert1`
+- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, ahol `GoalCert` a későbbi, `NotBefore` mint `OldCert1`
+- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, ahol `GoalCert` a későbbi, `NotBefore` mint `OldCert1`
+
+> [!NOTE]
+> A 7.2.445 (7,2 CU4) verzió előtt Service Fabric kiválasztotta a legtávolabbi lejáró tanúsítványt (a legtávolabbi "a" detafter "tulajdonsággal rendelkező tanúsítványt), így a fenti kiinduló állapotok 7,2 CU4 megkövetelik, hogy a GoalCert későbbi `NotAfter` dátummal rendelkezzen `OldCert1`
 
 Ha a fürt nem szerepel a korábban leírt érvényes állapotok valamelyikében, tekintse meg a cikk végén található, az állapot elérését ismertető szakaszt.
 
@@ -79,7 +82,7 @@ Győződjön meg arról, hogy jól ismeri a különbségeket, és hogy milyen ha
    >
    > Ha nem ad meg kiállítót, vagy a lista üres, akkor a rendszer elfogadja a tanúsítványt a hitelesítéshez, ha a lánca felépíthető. A tanúsítvány ezután egy, az érvényesítő által megbízhatónak tartott gyökérben végződik. Ha meg van adva egy vagy több kiállító ujjlenyomatai megfelelnek, a rendszer elfogadja a tanúsítványt, ha a közvetlen kiállítójának a láncból kinyert ujjlenyomata megegyezik az ebben a mezőben megadott értékekkel. A tanúsítvány el lesz fogadva, hogy a gyökér megbízható-e.
    >
-   > A nyilvános kulcsokra épülő infrastruktúra különböző hitelesítésszolgáltatók (más *néven kiállítók) használatával*aláírja a tanúsítványokat egy adott tárgyhoz. Ezért fontos megadnia a tárgyhoz tartozó összes várható kiállítói ujjlenyomatai megfelelnek. Más szóval a tanúsítvány megújítása nem garantált, hogy ugyanazzal a kibocsátóval aláírja a megújítani kívánt tanúsítványt.
+   > A nyilvános kulcsokra épülő infrastruktúra különböző hitelesítésszolgáltatók (más *néven kiállítók) használatával* aláírja a tanúsítványokat egy adott tárgyhoz. Ezért fontos megadnia a tárgyhoz tartozó összes várható kiállítói ujjlenyomatai megfelelnek. Más szóval a tanúsítvány megújítása nem garantált, hogy ugyanazzal a kibocsátóval aláírja a megújítani kívánt tanúsítványt.
    >
    > A kibocsátó meghatározása ajánlott eljárásnak minősül. Ha kihagyja a kiállítót, továbbra is működni fog a megbízható legfelső szintű tanúsítványok esetében, de ez a viselkedés korlátozásokat tartalmaz, és a közeljövőben fokozatosan elvégezhető. Az Azure-ban üzembe helyezett fürtök, amelyek a privát PKI által kiadott X509-tanúsítványokkal vannak védve, és előfordulhat, hogy a tulajdonos nem tudja érvényesíteni a Service Fabric (a fürtök és a szolgáltatások közötti kommunikáció esetében). Az érvényesítéshez a PKI tanúsítvány-szabályzatának felderíthetőnek, elérhetőnek és elérhetőnek kell lennie.
 
@@ -217,11 +220,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 
 | Indítás állapota | 1. frissítés | 2. frissítés |
 | :--- | :--- | :--- |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` és `GoalCert` egy későbbi `NotAfter` dátummal rendelkezik, mint `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` és `OldCert1` egy későbbi `NotAfter` dátummal rendelkezik, mint `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
-| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, ahol `OldCert1` egy későbbi `NotAfter` dátummal rendelkezik, mint `GoalCert` | Frissítés erre `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
-| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, ahol `OldCert1` egy későbbi `NotAfter` dátummal rendelkezik, mint `GoalCert` | Frissítés erre `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` és `GoalCert` egy későbbi `NotBefore` dátummal rendelkezik, mint `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` és `OldCert1` egy későbbi `NotBefore` dátummal rendelkezik, mint `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
+| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, ahol `OldCert1` egy későbbi `NotBefore` dátummal rendelkezik, mint `GoalCert` | Frissítés erre `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, ahol `OldCert1` egy későbbi `NotBefore` dátummal rendelkezik, mint `GoalCert` | Frissítés erre `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
 | `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | Az egyik `OldCert1` vagy az `OldCert2` állapot eltávolítása `Thumbprint: OldCertx, ThumbprintSecondary: None` | Folytatás az új kezdő állapotból |
+
+> [!NOTE]
+> A 7.2.445 (7,2 CU4) verzió előtti verziókban lévő fürtök esetében cserélje le a `NotBefore` `NotAfter` -t a fenti állapotokra.
 
 A frissítések bármelyikének végrehajtásával kapcsolatos útmutatásért lásd: [tanúsítványok kezelése Azure Service Fabric-fürtben](service-fabric-cluster-security-update-certs-azure.md).
 

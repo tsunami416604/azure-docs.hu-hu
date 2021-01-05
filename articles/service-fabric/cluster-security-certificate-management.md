@@ -4,12 +4,12 @@ description: További információ az X. 509 tanúsítvánnyal védett Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: aba681157d71f94914462b8d9fc13b90d4d6b153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653664"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901266"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Tanúsítványkezelő Service Fabric-fürtökben
 
@@ -109,9 +109,12 @@ Megjegyzés: az IETF [RFC 3647](https://tools.ietf.org/html/rfc3647) hivatalosan
 
 Korábban láttuk, hogy Azure Key Vault támogatja az automatikus tanúsítvány-elforgatást: a tanúsítvány-hozzárendelési házirend határozza meg az időpontot, akár nappal a lejárat előtt, akár a teljes élettartam százalékát, amikor a tanúsítvány a tárolóban van elforgatva. A kiépítési ügynököt ezen időpont után kell meghívni, és a most már korábbi tanúsítvány lejárta előtt el kell juttatni az új tanúsítványt a fürt összes csomópontjára. Service Fabric segít az állapot-figyelmeztetések növelésében, ha a tanúsítvány lejárati dátuma (és amely jelenleg a fürtben van használatban van) az előre meghatározott intervallumnál hamarabb következik be. Egy automatikus kiépítési ügynök (azaz a kulcstartó virtuálisgép-bővítménye), amely a tár tanúsítványának megfigyelésére van konfigurálva, rendszeres időközönként lekérdezi a tárolót, észleli az elforgatást, és lekéri és telepíti az új tanúsítványt. A kiépítés a VM/VMSS "Secrets" szolgáltatáson keresztül történik, ha egy jogosult kezelőnek frissítenie kell a virtuális gépet/VMSS az új tanúsítványnak megfelelő, verzióval ellátott kulcstartó URI azonosítóval.
 
-Mindkét esetben az elforgatott tanúsítvány már az összes csomópontra kiépítve van, és ismertetjük a mechanizmust, Service Fabric alkalmazva a Forgások észlelésére; Nézzük meg, hogy mi történik a következő lépéssel – feltételezve, hogy a tulajdonos köznapi neve által deklarált (a jelen írás időpontjában érvényes) és a Service Fabric Runtime Version 7.1.409 esetében érvényes elforgatást alkalmazza a rendszer:
-  - az új, valamint a fürtön belüli kapcsolatok esetében a Service Fabric futtatókörnyezet megkeresi és kiválasztja a legtávolabbi lejárati dátummal rendelkező megfelelő tanúsítványt (a tanúsítvány "nem a" () "detafter" tulajdonságát, amely gyakran "Na"-ként van rövidítve)
+Mindkét esetben az elforgatott tanúsítvány már az összes csomópontra kiépítve van, és ismertetjük a mechanizmust, Service Fabric alkalmazva a Forgások észlelésére; Nézzük meg, hogy mi történik a következő lépéssel – feltételezve, hogy a tulajdonos köznapi neve szerint deklarált, a fürt tanúsítványára alkalmazott rotációt
+  - az új, valamint a fürtön belüli kapcsolatok esetében a Service Fabric futtatókörnyezet megkeresi és kiválasztja a legutóbb kiállított megfelelő tanúsítványt (a "NotBefore" tulajdonság legnagyobb értéke). Vegye figyelembe, hogy ez a Service Fabric futtatókörnyezet korábbi verzióiról vált változást.
   - a meglévő kapcsolatok továbbra is életben maradnak/megengedettek a természet lejárta után, vagy más módon leállnak; egy belső kezelő értesítést kap arról, hogy létezik egy új egyezés
+
+> [!NOTE] 
+> A 7.2.445 (7,2 CU4) verzió előtt Service Fabric kiválasztotta a legtávolabbi lejáró tanúsítványt (a legtávolabbi "nem tAfter" tulajdonsággal rendelkező tanúsítványt).
 
 Ez a következő fontos észrevételeket fordítja le:
   - A megújítási tanúsítvány figyelmen kívül hagyható, ha a lejárati dátuma korábbi, mint a jelenleg használt tanúsítvány.
@@ -134,8 +137,11 @@ Ismertetjük a mechanizmusokat, a korlátozásokat, a bonyolult szabályokat és
 
 A sorozat teljes mértékben parancsfájlként használható/automatizált, és lehetővé teszi a tanúsítvány automatikus átváltására konfigurált fürt felhasználói érintés nélküli üzembe helyezését. Alább részletes lépéseket talál. A PowerShell-parancsmagok és a JSON-sablonok töredékei vegyesen használhatók. Ugyanez a funkció az Azure-ban való interakció összes támogatott eszközével elérhető.
 
-[!NOTE] Ez a példa feltételezi, hogy már létezik egy tanúsítvány a tárolóban; a kulcstartó által felügyelt tanúsítvány beléptetéséhez és megújításához a cikkben korábban ismertetett előfeltételek kézi lépések szükségesek. Éles környezetekben a kulcstartó által felügyelt tanúsítványok használata – a Microsoft belső PKI-hez tartozó minta parancsfájlt alább találja.
-A tanúsítvány autorollover csak a CA által kiállított tanúsítványokra van értelme; önaláírt tanúsítványok használata, beleértve azokat is, amelyek a Service Fabric-fürtnek a Azure Portal való telepítésekor jönnek létre, értelmetlenek, de a helyi és a fejlesztő által üzemeltetett üzemelő példányok esetében is lehetséges, ha a kibocsátói ujjlenyomatot a levél tanúsítványának megfelelően deklarálja.
+> [!NOTE]
+> Ez a példa feltételezi, hogy már létezik egy tanúsítvány a tárolóban; a kulcstartó által felügyelt tanúsítvány beléptetéséhez és megújításához a cikkben korábban ismertetett előfeltételek kézi lépések szükségesek. Éles környezetekben a kulcstartó által felügyelt tanúsítványok használata – a Microsoft belső PKI-hez tartozó minta parancsfájlt alább találja.
+
+> [!NOTE]
+> A tanúsítvány autorollover csak a CA által kiállított tanúsítványokra van értelme; önaláírt tanúsítványok használata, beleértve azokat is, amelyek a Service Fabric-fürtnek a Azure Portal való telepítésekor jönnek létre, értelmetlenek, de a helyi és a fejlesztő által üzemeltetett üzemelő példányok esetében is lehetséges, ha a kibocsátói ujjlenyomatot a levél tanúsítványának megfelelően deklarálja.
 
 ### <a name="starting-point"></a>Kezdőpont
 A rövidség kedvéért a következő indítási állapotot feltételezzük:
@@ -455,7 +461,7 @@ Biztonsági szempontból ne felejtse el, hogy a virtuális gép (méretezési cs
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>Hibaelhárítás és gyakran ismételt kérdések
 
 *K*: Hogyan lehet programozott módon regisztrálni egy kulcstartó által felügyelt tanúsítványba?
-Válasz *: keresse*meg a kiállító nevét a kulcstartó dokumentációjában, majd cserélje le az alábbi szkriptre.  
+Válasz *: keresse* meg a kiállító nevét a kulcstartó dokumentációjában, majd cserélje le az alábbi szkriptre.  
 ```PowerShell
   $issuerName=<depends on your PKI of choice>
     $clusterVault="sftestcus"

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171493"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900773"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Hugo-hely közzététele az Azure statikus Web Apps előzetes verziójában
 
@@ -77,7 +77,7 @@ Hugo-alkalmazás létrehozása a Hugo parancssori felület (CLI) használatával
 
 Az Azure statikus Web Appshoz való csatlakozáshoz a GitHubon egy adattárra van szükség. A következő lépések bemutatják, hogyan hozhat létre tárházat a webhelyhez.
 
-1. Hozzon létre egy üres GitHub-tárházat (ne hozzon létre README) a [https://github.com/new](https://github.com/new) named **Hugo-static-app**névvel.
+1. Hozzon létre egy üres GitHub-tárházat (ne hozzon létre README) a [https://github.com/new](https://github.com/new) named **Hugo-static-app** névvel.
 
 1. Adja hozzá a GitHub-adattárat a helyi tárházhoz. Ügyeljen arra, hogy a GitHub-felhasználónevet a helyőrző helyén adja hozzá `<YOUR_USER_NAME>` a következő parancsban.
 
@@ -105,17 +105,17 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
    :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="Azure statikus Web Apps-erőforrás létrehozása a portálon":::
 
-1. Az **előfizetés**mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
+1. Az **előfizetés** mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
 
-1. Az _erőforráscsoport_területen válassza az **új**lehetőséget. Az _Új erőforráscsoport neve_mezőbe írja be a **Hugo-static-app** nevet, majd kattintson **az OK gombra**.
+1. Az _erőforráscsoport_ területen válassza az **új** lehetőséget. Az _Új erőforráscsoport neve_ mezőbe írja be a **Hugo-static-app** nevet, majd kattintson **az OK gombra**.
 
 1. Ezután adja meg az alkalmazás nevét a **név** mezőben. Érvényes karakterek a következők:, `a-z` `A-Z` `0-9` és `-` .
 
-1. A _régió_területen válasszon ki egy elérhető régiót.
+1. A _régió_ területen válasszon ki egy elérhető régiót.
 
-1. Az _SKU_esetében válassza az **ingyenes**lehetőséget.
+1. Az _SKU_ esetében válassza az **ingyenes** lehetőséget.
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Azure statikus Web Apps-erőforrás létrehozása a portálon":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Részletek kitöltve":::
 
 1. Kattintson a **Bejelentkezés a GitHub** gombbal gombra.
 
@@ -123,11 +123,11 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Válassza ki a **Hugo-static-app** _adattárat_ .
 
-1. A _ág_ válassza a **Master**elemet.
+1. A _ág_ válassza a **Master** elemet.
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Azure statikus Web Apps-erőforrás létrehozása a portálon":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
 
-### <a name="build"></a>Buildelés
+### <a name="build"></a>Létrehozás
 
 Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létrehozási folyamat az alkalmazás létrehozásához használ. Az alábbi beállítások a GitHub-művelet munkafolyamat-fájlját konfigurálja.
 
@@ -149,7 +149,7 @@ Ezután adja hozzá azokat a konfigurációs beállításokat, amelyeket a létr
 
 1. Az újonnan létrehozott Azure statikus Web Apps erőforrás Azure Portal _áttekintése_ ablakában kattintson az _URL-_ hivatkozásra a telepített alkalmazás megnyitásához.
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Azure statikus Web Apps-erőforrás létrehozása a portálon":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
 
 #### <a name="custom-hugo-version"></a>Egyéni Hugo-verzió
 
@@ -176,7 +176,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "api" # Api source code path - optional
-          app_artifact_location: "public" # Built app content directory - optional
+          output_location: "public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
           HUGO_VERSION: 0.58.0

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f82fc060586e2df5acefa6b0836171e558aa4a
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 536a9641b68ccd2510a7891b46483a322fb6ecb7
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615767"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900926"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -102,6 +102,7 @@ Ez a beállítás a következő iOS-és Android-alkalmazásokra vonatkozik:
 - Microsoft Word
 - Microsoft-Yammer
 - Microsoft faliújság
+- Microsoft 365-rendszergazda
 
 **Megjegyzések**
 
@@ -168,7 +169,7 @@ Ha a jelszó-módosítási vezérlő használatával konfigurál egy házirendet
 
 Ha a szervezet létrehozta a használati feltételeket, az engedélyezési vezérlők területen további beállítások is láthatók. Ezek a beállítások lehetővé teszik a rendszergazdák számára, hogy a szabályzat által védett erőforrások elérésének feltétele megkövetelje a használati feltételek visszaigazolását. A használati feltételekkel kapcsolatos további információkért tekintse meg a cikkben [Azure Active Directory használati feltételeket](terms-of-use.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltételes hozzáférés: munkamenet-vezérlők](concept-conditional-access-session.md)
 

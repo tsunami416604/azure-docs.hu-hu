@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 55692122461ef1b22b43b0def43e826ac7aeae30
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813785"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900360"
 ---
 # <a name="test-through-simulations"></a>Tesztelés szimulációk használatával
 
@@ -42,9 +42,9 @@ A [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud)-t,
     |---------      |---------                                          |
     |Cél IP-címe           | Adja meg a tesztelni kívánt nyilvános IP-cím egyikét.                     |
     |Portszám   | Adja meg a _443_ értéket.                       |
-    |DDoS-profil | Válassza a **TCP SYN FLOOD** lehetőséget.|
-    |Teszt mérete       | Válassza **a több mint 200.000 PPS, 100 Mbps és 8 forrás IP-** címek elemet.                                  |
-    |Teszt időtartama | Válasszon **10 percet**.|
+    |DDoS-profil | A lehetséges értékek közé tartozik a **DNS-árvíz**, a **NTPv2-árvíz**, az **SSDP-árvíz**, a **TCP syn-árvíz**, az **UDP 64b**-árvíz, az **UDP-128B**, az UDP- **256B** árvíz, az **UDP 512B**-árvíz, az **UDP 1024B**-árvíz, az **UDP 1514B Flood** **, UDP-** **töredezettség**|
+    |Teszt mérete       | A lehetséges értékek a következők lehetnek: **100k PPS, 50 Mbps és 4 forrás IP**-cím, **több mint 200.000 PPS, 100 Mbps és 8 forrás IP**-cím, **400K PPS, MB/s és 16 forrás IP**-cím, **800K PPS, 400 Mbps és 32 forrás IP**-címek.                                  |
+    |Teszt időtartama | A lehetséges értékek a következők lehetnek: **10 perc**, **15 perc**, **20 perc**, **25 perc**, **30 perc**.|
 
 Ekkor az alábbihoz hasonlónak kell megjelennie:
 
@@ -65,7 +65,7 @@ Ha az erőforrás támadás alatt áll, látnia kell, hogy az érték **0** és 
 
 Ezzel az [API-szkripttel](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Breaking%20Point%20SDK) automatizálhatja a DDoS-teszteket, ha egyszer vagy a cron használatával futtatja a normál teszteket. Ez akkor hasznos, ha ellenőrizni szeretné, hogy a naplózás megfelelően van-e konfigurálva, és hogy az észlelési és a reagálási eljárások érvényesek-e A szkriptek Linux operációs rendszerre (Ubuntu 18,04 LTS) és Python 3-ra van szükség. Telepítse az előfeltételeket és az API-ügyfelet a mellékelt parancsfájllal vagy a [BreakingPoint Cloud](http://breakingpoint.cloud/) webhelyén található dokumentáció használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja [, hogyan tekintheti meg és konfigurálhatja a DDoS Protection telemetria](telemetry.md).
 - Megtudhatja, hogyan [tekintheti meg és konfigurálhatja a DDoS diagnosztikai naplózást](diagnostic-logging.md).

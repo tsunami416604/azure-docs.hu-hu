@@ -3,15 +3,15 @@ title: Erőforráscsoportok kezelése – Azure CLI
 description: Az Azure CLI-vel kezelheti az erőforráscsoportokat Azure Resource Manager használatával. Megjeleníti az erőforráscsoportok létrehozását, listázását és törlését.
 author: mumian
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 01/05/2021
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4a9a4ed4ebba7f6f2470bb9e7000a899ebc26323
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: db4a938d2f773ed24d4c7a48d747dd5cc22c0bd2
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185810"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900280"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure Resource Manager erőforráscsoportok kezelése az Azure CLI használatával
 
@@ -84,14 +84,14 @@ A csoportban található erőforrásokat áthelyezheti egy másik erőforráscso
 
 ## <a name="lock-resource-groups"></a>Erőforráscsoportok zárolása
 
-A zárolás megakadályozza a szervezet más felhasználói számára a kritikus erőforrások, például az Azure-előfizetés, az erőforráscsoport vagy az erőforrás véletlen törlését vagy módosítását. 
+A zárolás megakadályozza a szervezet más felhasználói számára a kritikus erőforrások, például az Azure-előfizetés, az erőforráscsoport vagy az erőforrás véletlen törlését vagy módosítását.
 
 Az alábbi parancsfájl zárol egy erőforráscsoportot, így az erőforráscsoport nem törölhető.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName  
+az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName
 ```
 
 Az alábbi parancsfájl egy erőforráscsoport összes zárolását lekéri:
@@ -99,7 +99,7 @@ Az alábbi parancsfájl egy erőforráscsoport összes zárolását lekéri:
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock list --resource-group $resourceGroupName  
+az lock list --resource-group $resourceGroupName
 ```
 
 A következő szkript törli a zárolást:
@@ -125,13 +125,88 @@ Az erőforráscsoport sikeres beállítása után érdemes megtekinteni az erőf
 - Automatizálja a megoldás jövőbeli üzembe helyezéseit, mert a sablon tartalmazza az összes teljes infrastruktúrát.
 - A sablon szintaxisának megismeréséhez tekintse meg a megoldást jelölő JavaScript Object Notation (JSON).
 
+Egy erőforráscsoport összes erőforrásának exportálásához használja az [az Group export](/cli/azure/group?view=azure-cli-latest#az_group_export&preserve-view=true) nevű csoportot, és adja meg az erőforráscsoport nevét.
+
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az group export --name $resourceGroupName  
+az group export --name $resourceGroupName
 ```
 
-A parancsfájl megjeleníti a sablont a konzolon.  Másolja a JSON-t, és mentse fájlként.
+A parancsfájl megjeleníti a sablont a konzolon. Másolja a JSON-t, és mentse fájlként.
+
+Az erőforráscsoport összes erőforrásának exportálása helyett kiválaszthatja, hogy mely erőforrásokat szeretné exportálni.
+
+Egy erőforrás exportálásához adja át az erőforrás-azonosítót.
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the storage account name:" &&
+read storageAccountName &&
+storageAccount=$(az resource show --resource-group $resourceGroupName --name $storageAccountName --resource-type Microsoft.Storage/storageAccounts --query id --output tsv) &&
+az group export --resource-group $resourceGroupName --resource-ids $storageAccount
+```
+
+Több erőforrás exportálásához adja át a szóközzel tagolt erőforrás-azonosítókat. Az összes erőforrás exportálásához ne adja meg ezt az argumentumot, vagy adja meg a következőt: "*".
+
+```azurecli-interactive
+az group export --resource-group <resource-group-name> --resource-ids $storageAccount1 $storageAccount2
+```
+
+A sablon exportálásakor megadhatja, hogy a rendszer milyen paramétereket használ a sablonban. Alapértelmezés szerint az erőforrásnevek paraméterei szerepelnek, de nem rendelkeznek alapértelmezett értékkel. A paraméter értékét át kell adni az üzembe helyezés során.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "type": "String"
+  }
+}
+```
+
+Az erőforrásban a nevet a paraméter használja.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "[parameters('serverfarms_demoHostPlan_name')]",
+    ...
+  }
+]
+```
+
+Ha a (z `--include-parameter-default-value` ) paramétert használja a sablon exportálásakor, a Template paraméter egy alapértelmezett értéket tartalmaz, amely az aktuális értékre van beállítva. Ezt az alapértelmezett értéket használhatja, vagy felülírhatja az alapértelmezett értéket egy másik érték megadásával.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": "demoHostPlan",
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": "webSite3bwt23ktvdo36",
+    "type": "String"
+  }
+}
+```
+
+Ha a (z `--skip-resource-name-params` ) paramétert használja a sablon exportálásakor, az erőforrásnevek paraméterei nem szerepelnek a sablonban. Ehelyett az erőforrás neve közvetlenül az erőforráson az aktuális értékre van beállítva. A név nem szabható testre a telepítés során.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "demoHostPlan",
+    ...
+  }
+]
+```
 
 A sablon exportálása funkció nem támogatja Azure Data Factory erőforrások exportálását. A Data Factory-erőforrások exportálásával kapcsolatos további tudnivalókért lásd: az [adatfeldolgozó másolása vagy klónozása Azure Data Factory-ben](../../data-factory/copy-clone-data-factory.md).
 

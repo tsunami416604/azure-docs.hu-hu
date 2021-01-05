@@ -3,12 +3,12 @@ title: X. 509 tanúsítványalapú hitelesítés Service Fabric fürtben
 description: Ismerje meg a tanúsítványalapú hitelesítést Service Fabric-fürtökben, valamint a tanúsítványokkal kapcsolatos problémák észlelését, enyhítését és javítását.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4d81cb9d224bdc2e3002c621c86729df235e0d81
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574768"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901249"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X. 509 tanúsítványalapú hitelesítés Service Fabric-fürtökben
 
@@ -170,7 +170,10 @@ A csomópont típusú tanúsítványokat a tulajdonos köznapi neve is deklarál
   </NodeTypes>
 ```
 
-Bármelyik deklaráció esetében egy Service Fabric csomópont beolvassa a konfigurációt az indításkor, megkeresi és betölti a megadott tanúsítványokat, és rendezi őket csökkenő sorrendben. a lejárt tanúsítványokat a rendszer figyelmen kívül hagyja, és a lista első eleme van kiválasztva az ügyfél hitelesítő adataiként a csomópont által megkísérelt bármely Service Fabric-kapcsolatban. (Ennek hatására Service Fabric a legtávolabbi lejáró tanúsítványt részesíti előnyben.)
+Bármelyik deklaráció esetében egy Service Fabric csomópont beolvassa a konfigurációt az indításkor, megkeresi és betölti a megadott tanúsítványokat, és a NotBefore attribútum csökkenő sorrendjében rendezi őket. a lejárt tanúsítványokat a rendszer figyelmen kívül hagyja, és a lista első eleme van kiválasztva az ügyfél hitelesítő adataiként a csomópont által megkísérelt bármely Service Fabric-kapcsolatban. (Valójában Service Fabric a legutóbb kiállított tanúsítványt támogatja.)
+
+> [!NOTE]
+> A 7.2.445 (7,2 CU4) verzió előtt Service Fabric kiválasztotta a legtávolabbi lejáró tanúsítványt (a legtávolabbi "nem tAfter" tulajdonsággal rendelkező tanúsítványt).
 
 Vegye figyelembe, hogy a köznapi név alapú megjelenítési deklarációk esetében a tanúsítvány akkor minősül megfelelőnek, ha a tulajdonos köznapi neve megkülönbözteti a kis-és nagybetűket megkülönböztető X509FindValue (vagy X509FindValueSecondary). Ez ellentétben áll az érvényesítési szabályokkal, amely támogatja a helyettesítő karakterek egyeztetését, valamint a kis-és nagybetűk megkülönböztetését.  
 

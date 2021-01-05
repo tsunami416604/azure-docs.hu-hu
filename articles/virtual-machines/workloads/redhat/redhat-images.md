@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 5cac21046b6b4afdefc4213f6a1fab438d62cca3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957537"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900501"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux rendszerképek áttekintése
 
@@ -22,7 +22,7 @@ Ez a cikk az Azure Marketplace-en elérhető Red Hat Enterprise Linux-(RHEL-) le
 További információ a RHEL összes verziójának Red Hat-támogatási szabályzatáról: [Red Hat Enterprise Linux életciklusa](https://access.redhat.com/support/policy/updates/errata). A díjszabással kapcsolatos részletekért lásd: az [Azure díjszabási kalkulátora](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 >[!IMPORTANT]
-> Az Azure Marketplace-en jelenleg elérhető RHEL-lemezképek a saját előfizetések (BYOS) vagy az utólagos elszámolású licencelési modellek használatát támogatják. A BYOS és az utólagos elszámolású licencelés közötti [Azure Hybrid use Benefit](../../windows/hybrid-use-benefit-licensing.md) és dinamikus váltás nem támogatott. A licencelési mód váltásához újra kell telepítenie a virtuális gépet a megfelelő rendszerképből.
+> Az Azure Marketplace-en jelenleg elérhető RHEL-lemezképek a saját előfizetések (BYOS) vagy az utólagos elszámolású licencelési modellek használatát támogatják. A BYOS és az utólagos elszámolású licencelés közötti dinamikus váltás a [Azure Hybrid use Benefiton](../../linux/azure-hybrid-benefit-linux.md)keresztül végezhető el.
 
 >[!NOTE]
 > Az Azure Marketplace-en található RHEL-lemezképekkel kapcsolatos bármilyen probléma esetén a Microsoft támogatási jegyet nyújt.

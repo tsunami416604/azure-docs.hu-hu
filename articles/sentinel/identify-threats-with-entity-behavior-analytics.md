@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95494777"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900892"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználók és az entitások viselkedésének elemzésével (UEBA) kapcsolatos fejlett veszélyforrások azonosítása az Azure Sentinelben
 
@@ -177,6 +177,8 @@ Az entitások lapjai több használati forgatókönyv részét képezik, és az 
 | **ActivityInsights**      | a tevékenységek kontextus szerinti elemzése a profilkészítés alapján              |
 | **InvestigationPriority** | anomália pontszám, 0-10 között (0 = jóindulatú, 10 = nagyon rendellenes)         |
 |
+
+A **UsersInsights**, a **DevicesInsights** és a **ActivityInsights** témakörben hivatkozott környezetfüggő bővítések teljes készletét a UEBA-bővítési [dokumentációban](ueba-enrichments.md)tekintheti meg.
 
 ### <a name="querying-behavior-analytics-data"></a>Viselkedés-elemzési adatbázis lekérdezése
 

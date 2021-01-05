@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669227"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900399"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Salesforce-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -48,10 +48,12 @@ Ha Azure Active Directory B2C (Azure AD B2C) Salesforce-fiókot szeretne haszná
     1. **API neve** 
     1. **Kapcsolattartási E-mail cím** – a Salesforce tartozó kapcsolattartási e-mail cím
 1. Az **API (OAuth-beállítások engedélyezése)** területen válassza a **OAuth-beállítások engedélyezése** lehetőséget.
-1. A **visszahívási URL-cím** mezőbe írja be a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a helyére a `your-tenant-name` bérlő nevét. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
-1. A **kiválasztott OAuth-hatókörökben** válassza **a hozzáférés az alapvető információkhoz (azonosító, profil, e-mail cím, telefonszám)** lehetőséget, és **engedélyezze az egyedi azonosítóhoz (OpenID) való hozzáférést**.
-1. Válassza **a titkos kód megkövetelése webkiszolgálói folyamathoz** lehetőséget.
-1. Válassza az **azonosító jogkivonat konfigurálása** lehetőséget, majd válassza a **standard jogcímek belefoglalása** lehetőséget.
+    1. A **visszahívási URL-cím** mezőbe írja be a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a helyére a `your-tenant-name` bérlő nevét. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
+    1. A **kiválasztott OAuth-hatókörökben** válassza **a hozzáférés az alapvető információkhoz (azonosító, profil, e-mail cím, telefonszám)** lehetőséget, és **engedélyezze az egyedi azonosítóhoz (OpenID) való hozzáférést**.
+    1. Válassza **a titkos kód megkövetelése webkiszolgálói folyamathoz** lehetőséget.
+1. Adja meg a **configure ID tokent** 
+    1. Állítsa a **jogkivonatot** 5 percig érvényes értékre.
+    1. Válassza a **standard jogcímek belefoglalása** lehetőséget.
 1. Kattintson a **Mentés** gombra.
 1. Másolja a **fogyasztói kulcs** és a **fogyasztói titok** értékeit. Mindkettőre szüksége lesz, hogy konfigurálja a Salesforce identitás-szolgáltatóként a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
 
@@ -63,10 +65,10 @@ Ha Azure Active Directory B2C (Azure AD B2C) Salesforce-fiókot szeretne haszná
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider** lehetőséget.
 1. Adjon meg egy **nevet**. Írja be például a következőt: *Salesforce*.
-1. A **metaadatok URL-címéhez** adja meg a következő URL-címet a `{org}` Salesforce-szervezetnél:
+1. A **metaadatok URL-címe** mezőben adja meg az [Salesforce OpenID Connect konfigurációs dokumentum](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm)URL-címét. A homokozóban a login.salesforce.com helyére a test.salesforce.com kerül. Egy Közösség esetében a login.salesforce.com helyére a közösségi URL-cím kerül, például a username.force.com/.well-known/openid-configuration. Az URL-címnek HTTPS-nek kell lennie.
 
     ```
-    https://{org}.my.salesforce.com/.well-known/openid-configuration
+    https://login.salesforce.com/.well-known/openid-configuration
     ```
 
 1. Az **ügyfél-azonosító** mezőben adja meg a korábban rögzített alkalmazás azonosítóját.
@@ -80,7 +82,7 @@ Ha Azure Active Directory B2C (Azure AD B2C) Salesforce-fiókot szeretne haszná
     - **Megjelenítendő név**: *név*
     - **Utónév**: *given_name*
     - **Vezetéknév**: *family_name*
-    - **E-mail**: *preferred_username*
+    - **E-mail**: *e-mail*
 
 1. Válassza a **Mentés** lehetőséget.
 ::: zone-end
@@ -121,8 +123,7 @@ A Salesforce-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáad
           <DisplayName>Salesforce</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <!-- Update the {org} below to your Salesforce organization -->
-            <Item Key="METADATA">https://{org}.my.salesforce.com/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.salesforce.com/.well-known/openid-configuration</Item>
             <Item Key="response_types">code</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid id profile email</Item>
@@ -154,7 +155,7 @@ A Salesforce-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáad
     </ClaimsProvider>
     ```
 
-4. Állítsa be a **metaadatok** URI-ját `{org}` a Salesforce-szervezettel.
+4. A **metaadatok** a [Salesforce OpenID Connect konfigurációs dokumentum](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm)URL-címére vannak beállítva. A homokozóban a login.salesforce.com helyére a test.salesforce.com kerül. Egy Közösség esetében a login.salesforce.com helyére a közösségi URL-cím kerül, például a username.force.com/.well-known/openid-configuration. Az URL-címnek HTTPS-nek kell lennie.
 5. **Client_id** beállítása az alkalmazás-azonosítóhoz az alkalmazás regisztrációja során.
 6. Mentse a fájlt.
 

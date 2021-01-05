@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 7904269a8ca87d3d801c7ff78def1b60f242b9ab
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425870"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901555"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Élő videó-elemzések frissítése IoT Edge 1,0 – 2,0
 
@@ -19,7 +19,7 @@ Ez a cikk ismerteti a különbségeket és azokat a különböző szempontokat, 
 ## <a name="change-list"></a>Lista módosítása
 
 > [!div class="mx-tdCol4BreakAll"]
-> |Cím|Élő videó Analytics 1,0|Élő videó Analytics 2,0|Description|
+> |Cím|Élő videó Analytics 1,0|Élő videó Analytics 2,0|Leírás|
 > |-------------|----------|---------|---------|
 > |Tároló képe|mcr.microsoft.com/media/live-video-analytics:1.0.0|mcr.microsoft.com/media/live-video-analytics:2.0.0|Microsoft közzétett Docker-rendszerképek az élő videók elemzéséhez Azure IoT Edge|
 > |**MediaGraph-csomópontok** |    |   |   |
@@ -169,7 +169,7 @@ Ezzel a kiadással a a (Azure Monitor) mérőszámok küldésére használható.
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="Az események osztályozása":::
 
-A Docker használatával könnyedén létrehozhat egy, a saját konfigurációval rendelkező Grafi rendszerképet. További információ erről a [figyelés és naplózás](monitoring-logging.md#azure-monitor-collection-using-telegraf) lapon található.
+A Docker használatával könnyedén létrehozhat egy, a saját konfigurációval rendelkező Grafi rendszerképet. További információ erről a [figyelés és naplózás](monitoring-logging.md#azure-monitor-collection-via-telegraf) lapon található.
 
 ## <a name="next-steps"></a>Következő lépések
 
