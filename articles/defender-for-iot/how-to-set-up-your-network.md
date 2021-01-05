@@ -4,15 +4,15 @@ description: Ismerkedjen meg a megoldási architektúrával, a hálózati elők�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/03/2021
+ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861962"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97840844"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Tudnivalók az Azure Defender for IoT Network telepítőről
 
@@ -54,7 +54,7 @@ A hely adatainak rögzítése, például:
 
 - Konfigurációs munkaállomás.
 
-- SSL-tanúsítványok (nem kötelező, de ajánlott).
+- SSL-tanúsítványok (nem kötelező).
 
 - SMTP-hitelesítés (nem kötelező). Ha az SMTP-kiszolgálót hitelesítéssel szeretné használni, készítse elő a kiszolgálóhoz szükséges hitelesítő adatokat.
 
@@ -569,7 +569,7 @@ Az ipari hálózat diagramjának áttekintése lehetővé teszi, hogy meghatáro
     > [!NOTE]
     > A IoT készülékhez tartozó Defendernek egy alacsonyabb szintű kapcsolóhoz kell csatlakoznia, amely a kapcsolón lévő portok közötti forgalmat látja.  
 
-2. Adja meg a figyelni kívánt hálózati eszközök hozzávetőleges számát. Ezekre az információkra szüksége lesz, amikor előkészíti az előfizetést az Azure Defender for IoT portálra. A bevezetési folyamat során a rendszer felszólítja, hogy adja meg az eszközök számát a 1000-es növekményekben.
+2. Adja meg az eszközök hozzávetőleges számát a hálózatokban (nem kötelező).
 
 3. Adjon meg egy alhálózati listát az üzemi hálózatokhoz és egy leírást (nem kötelező). 
 
