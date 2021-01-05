@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 119f1eaa838b404a3dbdc22f692f559816810dde
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 55221fa529688fbae1698a094ea31f6a3f765100
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578688"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796244"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Oktatóanyag: modellek betanítása és üzembe helyezése a parancssori felületről
 
@@ -37,7 +37,7 @@ Ismerje meg, hogyan végezheti el a következő műveleteket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből** szeretné használni, szüksége lesz az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-re.
 
@@ -307,10 +307,10 @@ A konfigurációs fájlok futtatásával kapcsolatos további információkért 
 A következő parancs futtatásával indíthatja el a betanítást a `cpu-cluster` számítási célra:
 
 ```azurecli-interactive
-az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
+az ml run submit-script -c mnist -e tutorial-cli --source-directory scripts -t runoutput.json
 ```
 
-Ez a parancs a kísérlet () nevét adja meg `myexperiment` . A kísérlet a munkaterületen lévő futtatással kapcsolatos adatokat tárolja.
+Ez a parancs a kísérlet () nevét adja meg `tutorial-cli` . A kísérlet a munkaterületen lévő futtatással kapcsolatos adatokat tárolja.
 
 A `-c mnist` paraméter határozza meg a `.azureml/mnist.runconfig` fájlt.
 
@@ -327,7 +327,7 @@ Ezt a szöveget a betanítási szkript naplózza, és megjeleníti a modell pont
 
 Ha megvizsgálja a betanítási szkriptet, megfigyelheti, hogy az alfa értéket is használja, amikor a betanított modellt tárolja `outputs/sklearn_mnist_model.pkl` .
 
-A modell mentve lett a `./outputs` könyvtárba azon a számítási célhelyen, ahol a rendszer betanított. Ebben az esetben a Azure Machine Learning számítási példány az Azure-felhőben. A betanítási folyamat automatikusan feltölti a `./outputs` könyvtár tartalmát a számítási célhelyről, ahol a képzés bekerül a Azure Machine learning munkaterületre. A kísérlet részeként tárolódik ( `myexperiment` ebben a példában).
+A modell mentve lett a `./outputs` könyvtárba azon a számítási célhelyen, ahol a rendszer betanított. Ebben az esetben a Azure Machine Learning számítási példány az Azure-felhőben. A betanítási folyamat automatikusan feltölti a `./outputs` könyvtár tartalmát a számítási célhelyről, ahol a képzés bekerül a Azure Machine learning munkaterületre. A kísérlet részeként tárolódik ( `tutorial-cli` ebben a példában).
 
 ## <a name="register-the-model"></a>A modell regisztrálása
 
@@ -345,13 +345,13 @@ A parancs kimenete a következő JSON-hoz hasonló:
 {
   "createdTime": "2019-09-19T15:25:32.411572+00:00",
   "description": "",
-  "experimentName": "myexperiment",
+  "experimentName": "tutorial-cli",
   "framework": "Custom",
   "frameworkVersion": null,
   "id": "mymodel:1",
   "name": "mymodel",
   "properties": "",
-  "runId": "myexperiment_1568906070_5874522d",
+  "runId": "tutorial-cli_1568906070_5874522d",
   "tags": "",
   "version": 1
 }
@@ -471,7 +471,7 @@ Az erőforráscsoport és az ebben a dokumentumban létrehozott összes Azure-er
 az group delete -g <resource-group-name> -y
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az Azure Machine Learning oktatóanyagban a Machine learning parancssori felületét használta a következő feladatokhoz:
 

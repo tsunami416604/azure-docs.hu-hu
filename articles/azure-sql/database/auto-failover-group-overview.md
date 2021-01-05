@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 11/16/2020
-ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/26/2020
+ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988544"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792500"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -229,7 +229,7 @@ Ha az alkalmazás az SQL felügyelt példányát használja adatcsomagként, kö
 
 ### <a name="creating-the-secondary-instance"></a>A másodlagos példány létrehozása
 
-Annak biztosítása érdekében, hogy az elsődleges és a másodlagos példányok feladatátvétele ne legyen megszakítva az elsődleges SQL felügyelt példányhoz, mind ugyanabban a DNS-zónában kell lennie. A szolgáltatás garantálja, hogy ugyanaz a többtartományos (SAN) tanúsítvány használható az ügyfélkapcsolatok hitelesítésére a feladatátvételi csoport két példányának egyikén. Ha az alkalmazás készen áll az éles környezetben való üzembe helyezésre, hozzon létre egy másodlagos SQL felügyelt példányt egy másik régióban, és ellenőrizze, hogy a DNS-zónát megosztja-e az elsődleges SQL felügyelt példánnyal. Ezt megteheti a választható paraméter megadásával `DNS Zone Partner` a Azure Portal, a PowerShell vagy a REST API használatával.
+Annak biztosítása érdekében, hogy az elsődleges és a másodlagos példányok feladatátvétele ne legyen megszakítva az elsődleges SQL felügyelt példányhoz, mind ugyanabban a DNS-zónában kell lennie. A szolgáltatás garantálja, hogy ugyanaz a többtartományos (SAN) tanúsítvány használható az ügyfélkapcsolatok hitelesítésére a feladatátvételi csoport két példányának egyikén. Ha az alkalmazás készen áll az éles környezetben való üzembe helyezésre, hozzon létre egy másodlagos SQL felügyelt példányt egy másik régióban, és ellenőrizze, hogy a DNS-zónát megosztja-e az elsődleges SQL felügyelt példánnyal. Ezt a nem kötelező paraméter megadásával teheti meg a létrehozás során. Ha a PowerShellt vagy a REST API használja, akkor a választható paraméter neve, a `DNS Zone Partner` Azure Portal a megfelelő választható mező neve pedig elsődleges felügyelt példány.
 
 > [!IMPORTANT]
 > Az alhálózatban létrehozott első felügyelt példány határozza meg a DNS-zónát az azonos alhálózaton lévő összes további példányhoz. Ez azt jelenti, hogy az azonos alhálózatból származó két példány nem tartozhat különböző DNS-zónákhoz.
@@ -485,7 +485,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Részletes oktatóanyagok:
   - [SQL Database hozzáadása feladatátvételi csoporthoz](failover-group-add-single-database-tutorial.md)

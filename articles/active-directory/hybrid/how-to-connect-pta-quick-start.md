@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507676"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792432"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory átmenő hitelesítés: gyors útmutató
 
@@ -51,7 +51,7 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben.
 
 ### <a name="in-your-on-premises-environment"></a>Helyszíni környezetben
 
-1. Azure AD Connect futtatásához azonosítson egy Windows Server 2012 R2 vagy újabb rendszert futtató kiszolgálót. Ha már nincs engedélyezve, [engedélyezze a TLS 1,2-et a kiszolgálón](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Adja hozzá a kiszolgálót ugyanahhoz a Active Directory erdőhöz, mint azon felhasználók számára, akiknek a jelszavát ellenőrizni kell.
+1. Azure AD Connect futtatásához azonosítson egy Windows Server 2012 R2 vagy újabb rendszert futtató kiszolgálót. Ha már nincs engedélyezve, [engedélyezze a TLS 1,2-et a kiszolgálón](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Adja hozzá a kiszolgálót ugyanahhoz a Active Directory erdőhöz, mint azon felhasználók számára, akiknek a jelszavát ellenőrizni kell. Fontos megjegyezni, hogy Pass-Through hitelesítési ügynök telepítése a Windows Server Core verziókon nem támogatott. 
 2. Telepítse a [Azure ad Connect legújabb verzióját](https://www.microsoft.com/download/details.aspx?id=47594) az előző lépésben azonosított kiszolgálóra. Ha már Azure AD Connect fut, győződjön meg arról, hogy a verzió 1.1.750.0 vagy újabb.
 
     >[!NOTE]

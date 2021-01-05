@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése és helyreállítása a
 description: Az Azure-beli virtuális gépek biztonsági mentését és helyreállítását ismerteti a PowerShell-lel Azure Backup használatával
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978369"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797060"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -259,6 +259,8 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Ha a Azure Government-felhőt használja, használja a `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` **ServicePrincipalName** paraméter értékét a [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsmagban.
 >
 
+Ha szelektíven szeretne biztonsági mentést készíteni néhány lemezről, és nem szeretné kizárni másokat az [ilyen forgatókönyvekben](selective-disk-backup-restore.md#scenarios)említettek szerint, akkor a védelmet és a biztonsági mentést csak a megfelelő lemezekről tekintheti [meg.](selective-disk-backup-restore.md#enable-backup-with-powershell)
+
 ## <a name="monitoring-a-backup-job"></a>Biztonsági mentési feladatok figyelése
 
 A hosszú ideig futó műveleteket, például a biztonsági mentési feladatokat a Azure Portal használata nélkül is figyelheti. A folyamatban lévő feladatok állapotának lekéréséhez használja a [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) parancsmagot. Ez a parancsmag egy adott tár biztonsági mentési feladatait olvassa be, és azt a tároló környezetében adja meg. A következő példa lekérdezi a folyamatban lévő feladatok állapotát tömbként, és a $joblist változóban tárolja az állapotot.
@@ -338,6 +340,10 @@ $bkpPol.AzureBackupRGName="Contosto_"
 $bkpPol.AzureBackupRGNameSuffix="ForVMs"
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
+
+### <a name="exclude-disks-for-a-protected-vm"></a>Lemezek kizárása egy védett virtuális géphez
+
+Az Azure virtuális gépek biztonsági mentése lehetővé teszi, hogy szelektíven kizárjon vagy tartalmazzon olyan lemezeket, amelyek hasznosak lehetnek [ezekben a forgatókönyvekben](selective-disk-backup-restore.md#scenarios). Ha a virtuális gépet már az Azure-beli virtuális gép biztonsági mentése védi, és ha az összes lemezről biztonsági mentés készül, akkor a védelem módosításával szelektíven belefoglalhatja vagy kizárhatja a lemezeket az [itt](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell)említettek szerint.
 
 ### <a name="trigger-a-backup"></a>Biztonsági mentés indítása
 
@@ -511,6 +517,13 @@ A visszaállítási feladatok befejezését követően a [Get-AzRecoveryServices
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="restore-selective-disks"></a>Szelektív lemezek visszaállítása
+
+A felhasználók a teljes biztonsági mentés helyett több lemezt is Visszaállíthatnak. Adja meg a szükséges lemezes logikai egységeket paraméterként, hogy a teljes készlet helyett csak az [itt](selective-disk-backup-restore.md#restore-selective-disks-with-powershell)leírt módon állítsa vissza őket.
+
+> [!IMPORTANT]
+> Az egyiknek a lemezek szelektív biztonsági mentését kell végeznie a lemezek szelektív visszaállításához. További részletek [itt](selective-disk-backup-restore.md#selective-disk-restore)találhatók.
 
 A lemezek visszaállítása után lépjen a következő szakaszra a virtuális gép létrehozásához.
 

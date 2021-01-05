@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: ff55528013ac89be48454c25e1fc86deac2bca6f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 885ee993748a0a571f396cc0dc28f2c0c1a4a0c3
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357232"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792517"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés ThousandEyes konfigurálása
 
@@ -55,15 +55,22 @@ Ez a szakasz végigvezeti az Azure AD-nek a ThousandEyes felhasználói fiók l�
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>A felhasználói fiókok automatikus üzembe helyezésének beállítása az Azure AD-beli ThousandEyes
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás**  szakaszt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **Vállalati alkalmazások** lehetőséget, majd a **Minden alkalmazás** elemet.
+
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
 2. Ha már konfigurálta a ThousandEyes az egyszeri bejelentkezéshez, keresse meg a ThousandEyes-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **ThousandEyes** az alkalmazás-gyűjteményben. Válassza a ThousandEyes lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
+    ![Az ThousandEyes hivatkozás az alkalmazások listájában](common/all-applications.png)
+    
 3. Válassza ki a ThousandEyes példányát, majd válassza a **kiépítés** lapot.
+
+    ![Kiépítés lap](common/provisioning.png)
 
 4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![Képernyőfelvétel: a ThousandEyes kiépítés lapján az automatikus kiépítési mód kiválasztására szolgáló lap jelenik meg.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+![Képernyőfelvétel: a ThousandEyes kiépítés lapján az automatikus kiépítési mód kiválasztására szolgáló lap jelenik meg.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+    
 
 5. A **rendszergazdai hitelesítő adatok**  szakaszban adja meg a ThousandEyes fiókja által generált **OAuth tulajdonosi jogkivonatot** (a ThousandEyes fiók **profilja** szakaszban találhatja meg és generálhatja a jogkivonatot).
 
@@ -71,27 +78,54 @@ Ez a szakasz végigvezeti az Azure AD-nek a ThousandEyes felhasználói fiók l�
 
 6. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a ThousandEyes-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a ThousandEyes-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra az 5. lépéssel.
 
-7. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az értesítő e-mail-értesítéseket az **értesítési e-mail** mezőben, és jelölje be az "e-mail-értesítés küldése hiba esetén" jelölőnégyzetet.
+7. Az **Értesítés e-mailben** mezőben adja meg annak a személynek vagy csoportnak az e-mail-címét, aki az átadással kapcsolatos hibaüzeneteket kapja, és jelölje be az **E-mail-értesítés küldése hiba esetén** jelölőnégyzetet.
+
+    ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 8. Kattintson a **Mentés** gombra.
 
 9. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a ThousandEyes** lehetőséget.
 
-10. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az ThousandEyes-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a ThousandEyes felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
+10. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő ThousandEyes. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a frissítési műveletekben elemezhető felhasználói fiókok egyeztetésére szolgálnak. Ha úgy dönt, hogy megváltoztatja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy az elemezhető API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-11. Az Azure AD-kiépítési szolgáltatás ThousandEyes való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
+     |Attribútum|Típus|Szűréshez támogatott|
+     |---|---|---|
+     |externalId|Sztring|&check;|
+     |userName (Felhasználónév)|Sztring|&check;|
+     |active|Logikai|
+     |displayName|Sztring|
+     |emails[type eq "work"].value|Sztring|
+     |név. formázott|Sztring|
 
-12. Kattintson a **Mentés** gombra.
 
-Ez a művelet elindítja a felhasználók és csoportok szakaszban ThousandEyes rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz használatával figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek a kiépítési szolgáltatás által végrehajtott összes műveletet leírják.
+11. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+12. Az Azure AD-kiépítési szolgáltatás ThousandEyes való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
-## <a name="additional-resources"></a>További erőforrások
+    ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
-* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+13. Adja meg a ThousandEyes kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+
+    ![Átadási hatókör](common/provisioning-scope.png)
+
+14. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
+
+    ![Átadási konfiguráció mentése](common/provisioning-configuration-save.png)
+
+Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát elindítja. A kezdeti ciklus elvégzése hosszabb időt vesz igénybe, mint a későbbi ciklusok, amelyek az Azure AD átadási szolgáltatásának futtatása során körülbelül 40 percenként lesznek végrehajtva. 
+
+## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
+Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
+
+1. Az [átadási naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
+2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
+3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.  
+
+## <a name="additional-resources"></a>További források
+
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../manage-apps/check-status-user-account-provisioning.md)

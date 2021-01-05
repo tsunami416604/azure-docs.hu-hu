@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: a441d1d22f938e1d1e05aea547929fa3b315d406
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cb8e71d9f94441f79dd7ce2fd5ee6458987563c3
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012900"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795920"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Modell betanítása egyéni Docker-rendszerkép használatával
 
@@ -158,14 +158,14 @@ Ha egy objektum használatával küld el egy képzést `ScriptRunConfig` , a met
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'fastai-custom-image').submit(src)
+run = Experiment(ws,'Tutorial-fastai').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
 > Azure Machine Learning a teljes forrás könyvtár másolásával futtatja a betanítási parancsfájlokat. Ha olyan bizalmas adatokkal rendelkezik, amelyeket nem szeretne felvenni, használja az [. ignore fájlt](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) , vagy ne adja meg a forrás könyvtárában. Ehelyett egy [adattár](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)használatával férhet hozzá az adataihoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben egy modellt egy egyéni Docker-rendszerkép használatával oktatott. Ezekről a cikkekről további tudnivalókat talál a Azure Machine Learning:
 * A [futtatási metrikák nyomon követése](how-to-track-experiments.md) a betanítás során.
 * [Modell üzembe helyezése](how-to-deploy-custom-docker-image.md) egyéni Docker-rendszerkép használatával.

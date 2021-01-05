@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: c18ee43eefe9c6cf9cba7f4e8f6c3fd3f55bba5a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368698"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796295"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -69,6 +69,7 @@ Korlátozások:
 
 - A felügyelt SQL-példányok segítségével biztonsági mentést készíthet egy példány-adatbázisról egy akár 32-es szalagos biztonsági másolatra, amely elegendő a 4 TB-ig terjedő adatbázisokhoz, ha biztonsági mentési tömörítést használ.
 - Nem hajtható végre `BACKUP DATABASE ... WITH COPY_ONLY` olyan adatbázis, amely a szolgáltatás által felügyelt transzparens adattitkosítással (TDE) van titkosítva. A szolgáltatás által felügyelt TDE a biztonsági mentések belső TDE-kulccsal lesznek titkosítva. A kulcs nem exportálható, így a biztonsági mentés nem állítható vissza. Használjon automatikus biztonsági mentést és időponthoz való visszaállítást, vagy használja helyette az [ügyfél által felügyelt (BYOK) TDE](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key) . Emellett letilthatja a titkosítást az adatbázison.
+- Felügyelt példányon végrehajtott natív biztonsági másolatok nem állíthatók vissza SQL Server. Ennek az az oka, hogy a felügyelt példány a SQL Server bármely verziójához képest magasabb belső adatbázis-verzióval rendelkezik.
 - A biztonsági mentési sáv maximális mérete az `BACKUP` SQL felügyelt példányának parancsával 195 GB, amely a blob maximális mérete. Növelje meg a sávok számát a Backup parancsban, hogy csökkentse az egyes sávok méretét, és a korláton belül maradjon.
 
     > [!TIP]
@@ -548,7 +549,7 @@ A felügyelt SQL-példányok következő MSDB-sémáinak a megfelelő előre def
 
 Az SQL felügyelt példánya részletes információkat helyez el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [SQL felügyelt példány – sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) vagy [SQL felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példány?](sql-managed-instance-paas-overview.md)
 - A szolgáltatások és összehasonlítások listájáért lásd: az [Azure SQL felügyelt példány funkcióinak összehasonlítása](../database/features-comparison.md).

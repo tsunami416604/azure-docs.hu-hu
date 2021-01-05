@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/25/2020
 ms.author: memildin
-ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791885"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795986"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok az Azure Security Centerben 
 Ez a témakör azt ismerteti, hogyan lehet megtekinteni és értelmezni a Azure Security Centerban található javaslatokat az Azure-erőforrások védelmének elősegítése érdekében.
@@ -42,7 +42,11 @@ Security Center elemzi az erőforrások biztonsági állapotát, hogy azonosíts
 
 1. A Security Center menüjében nyissa meg a **javaslatok** lapot, ahol megtekintheti a környezetére vonatkozó ajánlásokat. A javaslatok biztonsági vezérlőkbe vannak csoportosítva.
 
-      ![Biztonsági ellenőrzés szerint csoportosított javaslatok](./media/security-center-recommendations/view-recommendations.png)
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="Biztonsági ellenőrzés szerint csoportosított javaslatok" lightbox="./media/security-center-recommendations/view-recommendations.png":::
+
+1. Ha az erőforrás típusára, súlyosságára, környezetre vagy egyéb feltételére vonatkozó ajánlásokat szeretne megkeresni, használja a választható szűrőket a javaslatok listáján.
+
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Azure Security Center javaslatok listájának finomítására szolgáló szűrők":::
 
 1. Bontson ki egy vezérlőelemet, és válasszon egy konkrét javaslatot a javaslat részletei lap megtekintéséhez.
 
@@ -60,7 +64,7 @@ Security Center elemzi az erőforrások biztonsági állapotát, hogy azonosíts
         - Nem megfelelő **állapotú erőforrások** – az azonosított probléma által továbbra is érintett erőforrások.
         - **Nem alkalmazható erőforrások** – olyan erőforrások, amelyekhez az ajánlás nem adhat végleges választ. A nem alkalmazható lap az egyes erőforrások okait is tartalmazza. 
 
-            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Javaslat részletei lap":::
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Nem alkalmazható erőforrások az okok miatt.":::
     1. Az ajánlás szervizeléséhez vagy logikai alkalmazás aktiválásához szükséges műveletek gombjai.
 
 ## <a name="preview-recommendations"></a>Előzetes javaslatok
@@ -71,9 +75,9 @@ Ha lehetséges, még mindig szervizelni kell őket, hogy ha az előzetes verzió
 
 Példa az előzetes verziójú javaslatra:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Javaslat részletei lap":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Javaslat az előnézet jelölővel":::
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a dokumentumban a Security Center biztonsági javaslataira került sor. Kapcsolódó információk:
 

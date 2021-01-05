@@ -7,19 +7,19 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 0c3b86fc823e4b563dc747a5604fcb2e04995fed
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 480051680ea98b82627a9a2b3ea004d9472f7124
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752651"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797094"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök-alapú)
 
-Ebből a cikkből megtudhatja, hogyan telepítheti át a helyszíni VMware virtuális gépeket az Azure-ba a [Azure Migrate: Server áttelepítési](migrate-services-overview.md#azure-migrate-server-migration-tool) eszközzel, az ügynök-alapú áttelepítés segítségével.  A VMware virtuális gépeket ügynök-alapú áttelepítéssel is áttelepítheti. [Hasonlítsa össze](server-migrate-overview.md#compare-migration-methods) a metódusokat.
+Ebből a cikkből megtudhatja, hogyan telepítheti át a helyszíni VMware virtuális gépeket az Azure-ba a [Azure Migrate: Server áttelepítési](migrate-services-overview.md#azure-migrate-server-migration-tool) eszközzel, az ügynök-alapú áttelepítés segítségével.  A VMware virtuális gépeket ügynök nélküli áttelepítéssel is áttelepítheti. [Hasonlítsa össze](server-migrate-overview.md#compare-migration-methods) a metódusokat.
 
 
- Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+ Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Készítse elő az Azure-t a Azure Migrate való együttműködéshez.
 > * Felkészülés az ügynök alapú áttelepítésre. Hozzon létre egy VMware-fiókot, hogy Azure Migrate képes legyen felderíteni a gépeket az áttelepítéshez. Állítson be egy fiókot, hogy a mobilitási szolgáltatás ügynöke telepíthető legyen az áttelepíteni kívánt gépekre, és készítse elő a gépet, hogy a replikációs berendezésként működjön.
@@ -175,7 +175,7 @@ A OVF-sablon letöltése után importálja a VMware-be a replikációs alkalmaz�
 5. A **név és mappa kiválasztása** és a **konfiguráció kiválasztása lapon** fogadja el az alapértelmezett beállításokat.
 6. A **tárterület kiválasztása** területen  >  **válassza a virtuális lemez formátum** lehetőséget, a legjobb teljesítményhez válassza a **vastag kiépítés lelkesen nulla értéket**.
 7. A varázsló többi lapján fogadja el az alapértelmezett beállításokat.
-8. A **készen áll**, ha a virtuális gépet az alapértelmezett beállításokkal szeretné beállítani, válassza a **bekapcsolás az üzembe helyezés után** lehetőséget  >  **Finish**.
+8. A **készen áll**, ha a virtuális gépet az alapértelmezett beállításokkal szeretné beállítani, válassza a **bekapcsolás az üzembe helyezés után** lehetőséget  >  .
 
    > [!TIP]
    > Ha további hálózati adaptert szeretne hozzáadni, törölje **a bekapcsolást az üzembe helyezés**  >  **befejezése** után. Alapértelmezés szerint a sablon egyetlen hálózati adaptert tartalmaz. Az üzembe helyezés után további hálózati adaptereket is hozzáadhat.
@@ -211,7 +211,7 @@ A replikációs berendezés beállításának és regisztrálásának befejezés
 12. Válassza a **Konfiguráció véglegesítése** elemet a regisztráció befejezéséhez.
 
 
-A replikációs berendezés regisztrálása után Azure Migrate Server Assessment a megadott beállítások használatával csatlakozik a VMware-kiszolgálókhoz, és felfedi a virtuális gépeket. **Manage**  >  A felderített virtuális gépeket a **többi** lapon tekintheti meg a **felderített elemek** kezelése lehetőséggel.
+A replikációs berendezés regisztrálása után Azure Migrate Server Assessment a megadott beállítások használatával csatlakozik a VMware-kiszolgálókhoz, és felfedi a virtuális gépeket.   >  A felderített virtuális gépeket a **többi** lapon tekintheti meg a **felderített elemek** kezelése lehetőséggel.
 
 
 

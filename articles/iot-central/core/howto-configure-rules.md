@@ -3,17 +3,17 @@ title: Szabályok és műveletek konfigurálása az Azure IoT Centralban | Micro
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a telemetria szabályokat és műveleteket az Azure IoT Central alkalmazásban.
 author: vavilla
 ms.author: vavilla
-ms.date: 11/27/2019
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8391202e991c240b03bd79b947c1c3c6dcc9afd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 378a1dbcfbc89cdf9b24dc2490db583f1135b9a2
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362537"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796788"
 ---
 # <a name="configure-rules"></a>Szabályok konfigurálása
 
@@ -39,7 +39,7 @@ A következő képernyőképen a feltételek azt állapítják meg, hogy a hőm�
 
 Egy Felhőbeli tulajdonságra hivatkozhat egy feltétel **Value (érték** ) mezőjében található eszköz sablonjában. A Cloud Property és a telemetria értékének hasonló típusúnak kell lennie. Ha például a **hőmérséklet** egy dupla, akkor a **Value** legördülő menüben csak a dupla megjelenítés típusú felhő tulajdonságai érhetők el.
 
-Ha egy eseménytípus telemetria értéket választ, az **érték** legördülő menü tartalmazza a **bármely**lehetőséget. A **bármely** beállítás azt jelenti, hogy a szabály akkor következik be, amikor az alkalmazás egy ilyen típusú eseményt kap, függetlenül a hasznos adatoktól.
+Ha egy eseménytípus telemetria értéket választ, az **érték** legördülő menü tartalmazza a **bármely** lehetőséget. A **bármely** beállítás azt jelenti, hogy a szabály akkor következik be, amikor az alkalmazás egy ilyen típusú eseményt kap, függetlenül a hasznos adatoktól.
 
 ## <a name="use-aggregate-windowing"></a>Összesítő ablak használata
 
@@ -51,6 +51,6 @@ A szabályok kiértékelik a Windows összesített időkorlátját. Az alábbi k
 
 Korlátozás vonatkozik a IoT Edge modulokra alkalmazott szabályokra. A különböző modulok telemetria vonatkozó szabályok nem érvényes szabályokként vannak kiértékelve. Példaként végezze el az alábbiakat. A szabály első feltétele az A modul egy hőmérsékleti telemetria. A szabály második feltétele a B modul nedvességtartalmának telemetria. Mivel a két feltétel különböző modulokból származik, ez a feltételek érvénytelenek. A szabály nem érvényes, és a rendszer hibát jelez a szabály mentésekor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan konfigurálhat egy szabályt az Azure IoT Central alkalmazásban, megtudhatja, hogyan [konfigurálhat speciális szabályokat](howto-configure-rules-advanced.md) a Power automatizálás vagy a Azure Logic Apps használatával.

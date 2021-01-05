@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: nibaccam
 author: aniththa
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 7cd704dad3d0ede55e4df4d9e222ff83fd7ae350
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4539936007de0b45ab33dbd391baacc8f7d2ce2a
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919641"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796057"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learning
 
@@ -31,7 +31,7 @@ Python-kód alapú felhasználói felület esetén [konfigurálja az automatizá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md). 
 
@@ -91,7 +91,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
         Kattintson a **Tovább** gombra.
 1. Válassza ki az újonnan létrehozott adatkészletet, amint megjelenik. Emellett megtekintheti az adatkészlet és a minta statisztikáinak előnézetét is. 
 
-1. A **Run (Futtatás** ) űrlapon adja meg a kísérlet egyedi nevét.
+1. A **futtatási űrlap konfigurálása** lapon válassza az **új létrehozása** elemet, és írja be az **oktatóanyag-automl-Deploy** parancsot a kísérlet neveként.
 
 1. Válasszon ki egy cél oszlopot; Ez az az oszlop, amelynek a előrejelzéseit el szeretné végezni.
 
@@ -164,7 +164,7 @@ Imputált| Válassza ki, hogy milyen értékkel kell bevennie a hiányzó érté
 A kísérlet futtatásához kattintson a **Befejezés** gombra. A kísérlet előkészítése akár 10 percet is igénybe vehet. A betanítási feladatok és az egyes folyamatok futtatásának befejezése további 2-3 percet is igénybe vehet.
 
 > [!NOTE]
-> Az automatizált ML-algoritmusok olyan véletlenszerű adatmennyiséget alkalmaznak, amely kisebb eltérést okozhat az ajánlott modellek végső mérőszámok pontszámában, például a pontosságban. Az automatizált ML olyan adatokra is végrehajt műveleteket, mint például a vonat-teszt felosztása, a vonat-ellenőrzés felosztása vagy a kereszt-érvényesítés, ha szükséges. Tehát ha egy kísérletet ugyanazzal a konfigurációs beállításokkal és az elsődleges metrikával többször is futtat, akkor valószínű, hogy az egyes kísérleteknél a végső metrikák pontszáma a következő tényezők miatt fog megjelenni. 
+> A (z) automatizált ML-algoritmusok olyan véletlenszerű adatmennyiséget alkalmaznak, amely kisebb eltérést okozhat az ajánlott modell végleges mérőszámok pontszámában, például a pontosságban. Az automatizált ML olyan adatokra is végrehajt műveleteket, mint például a vonat-teszt felosztása, a vonat-ellenőrzés felosztása vagy a kereszt-érvényesítés, ha szükséges. Tehát ha egy kísérletet ugyanazzal a konfigurációs beállításokkal és az elsődleges metrikával többször is futtat, akkor valószínű, hogy az egyes kísérleteknél a végső metrikák pontszáma a következő tényezők miatt fog megjelenni. 
 
 ### <a name="view-experiment-details"></a>A kísérlet részleteinek megtekintése
 
@@ -172,7 +172,7 @@ Megnyílik a **Futtatás részletei** képernyő a **részletek** lapon. Ez a k�
 
 A **Modellek** lapon a létrehozott modellek listája található metrikaérték szerint rendezve. Alapértelmezés szerint az a modell, amely a kiválasztott metrika alapján a legmagasabb értékű, a lista tetején jelenik meg. A betanítási feladat több modellt is kipróbál, amelyek sorra felkerülnek a listára. Ennek segítségével gyorsan összehasonlíthatja az addig létrehozott modellek metrikáját.
 
-[![Futtatás részletei irányítópult](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
+![Futtatás részletei](./media/how-to-use-automated-ml-for-ml-models/explore-models.gif)
 
 ### <a name="view-training-run-details"></a>Képzések futtatási részleteinek megtekintése
 
@@ -216,10 +216,10 @@ Az automatizált ML segít programozás nélkül üzembe helyezni a modellt:
 1. Válassza az **Üzembe helyezés** lehetőséget. Az üzembe helyezés nagyjából 20 percet vesz igénybe.
     Az üzembe helyezés megkezdése után megjelenik a **Modell összegzése** lap. Az üzembe helyezés folyamatát az **Üzembe helyezés állapota** szakaszban követheti nyomon. 
 
-Ezzel használatba állított egy előrejelzéseket készítő webszolgáltatást! Az előrejelzések teszteléséhez kérdezze le a szolgáltatást a [Power BI beépített Azure Machine Learning-támogatásából](how-to-consume-web-service.md#consume-the-service-from-power-bi).
+Ezzel használatba állított egy előrejelzéseket készítő webszolgáltatást! Az előrejelzések teszteléséhez kérdezze le a szolgáltatást a [Power BI beépített Azure Machine Learning-támogatásából](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Ismerje meg, hogyan használhat webszolgáltatásokat](./how-to-consume-web-service.md).
+* [Ismerje meg, hogyan használhat webszolgáltatásokat](how-to-consume-web-service.md).
 * Az [automatizált gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md).
 * [További információ az automatikus gépi tanulásról és a](concept-automated-ml.md) Azure Machine Learningról.

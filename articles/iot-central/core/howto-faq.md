@@ -3,16 +3,16 @@ title: Azure IoT Central gyakori kérdések | Microsoft Docs
 description: Azure IoT Central gyakori kérdések (GYIK) és válaszok
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/23/2020
+ms.date: 12/20/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: cbe0dbe55f903c25556698a5d510bf9e67b408be
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: acabaf843f8acfe7bc0b5e9456dee09bde74bef7
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126720"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796040"
 ---
 # <a name="frequently-asked-questions-for-iot-central"></a>Gyakori kérdések a IoT Central
 
@@ -38,11 +38,11 @@ Ha egy operátor feloldja egy eszköz zárolását, az állapot visszatér az el
 
 Ha az eszköz állapota **jóváhagyásra vár** az **eszközök** lapon, az azt jelenti, hogy az **automatikus jóváhagyás** lehetőség le van tiltva:
 
-:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="A letiltott eszközt bemutató képernyőfelvétel":::
+:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="Képernyőfelvétel: az alkalmazást letiltotta az automatikus jóváhagyás lehetőséggel.":::
 
 Az operátornak explicit módon jóvá kell hagynia az eszközt az adatok küldésének megkezdése előtt. Az **Eszközök lapon nem** regisztrált eszközök, de az érvényes hitelesítő adatokkal való kapcsolat az eszköz állapota **jóváhagyásra vár**. Az operátorok a **jóváhagyás** gomb használatával hagyhatják jóvá ezeket az eszközöket az **eszközök** lapról:
 
-:::image type="content" source="media/howto-faq/approve-device.png" alt-text="A letiltott eszközt bemutató képernyőfelvétel":::
+:::image type="content" source="media/howto-faq/approve-device.png" alt-text="Az eszköz jóváhagyását bemutató képernyőkép":::
 
 **Hogyan az eszközt társítja egy eszköz sablonnal?**
 

@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 334e0c745257354d9548a6f9c8cee4d43fa8da6d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744733"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763540"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure-beli virtuálisgép-méretezési csoport operációsrendszer-képének automatikus frissítései
 
@@ -45,6 +45,9 @@ A frissítési folyamat a következőképpen működik:
 
 A méretezési csoport operációs rendszerének frissítése Orchestrator az összes köteg frissítése előtt ellenőrzi a teljes méretezési csoport állapotát. Egy köteg frissítése közben más párhuzamos tervezett vagy nem tervezett karbantartási tevékenységek lehetnek, amelyek hatással lehetnek a méretezési csoport példányainak állapotára. Ilyen esetekben, ha a méretezési csoport példányainak több mint 20%-a állapota sérült, akkor a méretezési csoport frissítése az aktuális köteg végén leáll.
 
+> [!NOTE]
+>Az operációs rendszer automatikus frissítése nem frissíti a méretezési csoport hivatkozási rendszerképének SKU-át. Az SKU (például Ubuntu 16,04-LTS – 18,04-LTS) módosításához a [méretezési csoport modelljét](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) közvetlenül a kívánt rendszerkép SKU-jának megfelelően kell frissíteni. A rendszerkép közzétevője és az ajánlat nem módosítható egy meglévő méretezési csoport esetében.  
+
 ## <a name="supported-os-images"></a>Támogatott operációsrendszer-lemezképek
 Jelenleg csak bizonyos operációsrendszer-platform-lemezképek támogatottak. Az egyéni lemezképek akkor [támogatottak,](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) ha a méretezési csoport egyéni lemezképeket használ a [megosztott](shared-image-galleries.md)képkatalóguson keresztül.
 
@@ -54,16 +57,15 @@ A következő platformos SKU-EK jelenleg támogatottak (és a továbbiak rendsze
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18,04 – LTS          |
-| Rogue Wave (OpenLogic)  | CentOS        | 7,5                |
-| CoreOS                  | CoreOS        | Stable             |
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter – Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2016 – Datacenter – tárolók |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter – Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2019 – Datacenter – tárolók |
-| Microsoft Corporation   | WindowsServer | Datacenter-Core-1903-with-containers-smalldisk |
+| OpenLogic               | CentOS        | 7,5                |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter    |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter – Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Datacenter – tárolók |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter – Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Datacenter – tárolók |
+| MicrosoftWindowsServer  | WindowsServer | Datacenter-Core-1903-with-containers-smalldisk |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Az operációsrendszer-rendszerkép automatikus frissítésének konfigurálására vonatkozó követelmények
@@ -295,5 +297,5 @@ A sablonok használatával olyan méretezési csoport helyezhető üzembe, amely
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Azure." /></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha további példákat szeretne arról, hogyan használhatók az operációs rendszerek automatikus frissítése a méretezési csoportokkal, tekintse át a [GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade)-tárházat.

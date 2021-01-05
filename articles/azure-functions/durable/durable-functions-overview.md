@@ -3,15 +3,15 @@ title: Durable Functions áttekintése – Azure
 description: A Azure Functions Durable Functions bővítményének bemutatása.
 author: cgillum
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89669247"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763574"
 ---
 # <a name="what-are-durable-functions"></a>Mik azok a tartós függvények?
 
@@ -23,9 +23,11 @@ A Durable Functions jelenleg a következő nyelveket támogatja:
 
 * **C#**: mindkét előre [lefordított osztály kódtára](../functions-dotnet-class-library.md) és [C# parancsfájl](../functions-reference-csharp.md).
 * **JavaScript**: csak az Azure functions futtatókörnyezet 2. x verziójára támogatott. A Durable Functions-bővítmény vagy újabb verzió 1.7.0 szükséges. 
-* **Python**: az Durable functions-bővítmény vagy egy újabb verzió 1.8.5 szükséges. A Durable Functions támogatása jelenleg nyilvános előzetes verzióban érhető el.
+* **Python**: az Durable functions bővítmény 2.3.1-es vagy újabb verziójára van szükség. A Durable Functions támogatása jelenleg nyilvános előzetes verzióban érhető el.
 * **F #**: előre lefordított osztály kódtárak és F # szkript. Az F # parancsfájl csak az Azure Functions futtatókörnyezet 1. x verziójában támogatott.
 * **PowerShell**: a Durable functions támogatása jelenleg nyilvános előzetes verzióban érhető el. Csak a Azure Functions futtatókörnyezet 3. x verziójára és a PowerShell 7 verzióra támogatott. A Durable Functions-bővítmény, illetve egy újabb verzió 2.2.2-es verziójának megadását igényli. Jelenleg csak a következő minták támogatottak: [függvények láncolása](#chaining), [ventilátor-kijelentkezés/ventilátor](#fan-in-out), [aszinkron http API](#async-http)-k.
+
+A legújabb szolgáltatások és frissítések eléréséhez ajánlott a Durable Functions bővítmény legújabb verzióinak és a nyelvspecifikus Durable Functions kódtáraknak a használata. További információ a [Durable functions verziókról](durable-functions-versions.md).
 
 Durable Functions célja az összes [Azure functions nyelv](../supported-languages.md)támogatása. További nyelvek támogatásához tekintse meg a [Durable functions problémák listáját](https://github.com/Azure/azure-functions-durable-extension/issues) a legújabb munkaállapotról.
 
@@ -38,7 +40,7 @@ Durable Functions elsődleges használati esete az összetett, állapot-nyilván
 * [Függvényláncolás](#chaining)
 * [Elosztás/összevonás](#fan-in-out)
 * [Aszinkron HTTP API-k](#async-http)
-* [Nyomon követés](#monitoring)
+* [Figyelés](#monitoring)
 * [Emberi beavatkozás](#human)
 * [Gyűjtő (állapot-nyilvántartó entitások)](#aggregator)
 
@@ -556,7 +558,7 @@ Az emberi interakció jelenleg nem támogatott a PowerShellben.
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>Minta #6: aggregátor (állapot-nyilvántartó entitások)
 
-A hatodik minta az események adatainak egy adott, címezhető *entitásba*való összesítésére szolgál. Ebben a mintában az összesíteni kívánt adatok több forrásból származhatnak, a kötegekben is elhelyezhetők, vagy hosszú időn keresztül elszórtan lehetnek. Előfordulhat, hogy a gyűjtőnek műveleteket kell végeznie az események érkezésekor, és előfordulhat, hogy a külső ügyfeleknek le kell kérdezni az összesített adatokat.
+A hatodik minta az események adatainak egy adott, címezhető *entitásba* való összesítésére szolgál. Ebben a mintában az összesíteni kívánt adatok több forrásból származhatnak, a kötegekben is elhelyezhetők, vagy hosszú időn keresztül elszórtan lehetnek. Előfordulhat, hogy a gyűjtőnek műveleteket kell végeznie az események érkezésekor, és előfordulhat, hogy a külső ügyfeleknek le kell kérdezni az összesített adatokat.
 
 ![Összesítő diagram](./media/durable-functions-concepts/aggregator.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 9a5cb1e589481bb424507d08879da8cc1b14ff1c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0dd66e246e5e172ad359f5e6e953b360e6e74ebd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448197"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796975"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Google Cloud (G Suite) összekötővel
 
@@ -37,7 +37,7 @@ Első lépésként a következő elemeket kell megadnia:
 - Google Apps-előfizetés vagy Google Cloud Platform-előfizetés.
 
 > [!NOTE]
-> Az oktatóanyag lépéseinek teszteléséhez nem javasoljuk éles környezet használatát. Ez a dokumentum az új felhasználói egyszeri bejelentkezés használatával lett létrehozva. Ha továbbra is a régit használja, a telepítő eltérő lesz. A G-Suite alkalmazás egyszeri bejelentkezés beállításaiban engedélyezheti az új felhasználói élményt. Nyissa meg az **Azure ad-t, a vállalati alkalmazásokat**, válassza a **Google Cloud (G Suite) összekötőt**, válassza az **egyszeri bejelentkezés** lehetőséget, majd kattintson az **új felhasználói élmény kipróbálása**lehetőségre.
+> Az oktatóanyag lépéseinek teszteléséhez nem javasoljuk éles környezet használatát. Ez a dokumentum az új felhasználói egyszeri bejelentkezés használatával lett létrehozva. Ha továbbra is a régit használja, a telepítő eltérő lesz. A G-Suite alkalmazás egyszeri bejelentkezés beállításaiban engedélyezheti az új felhasználói élményt. Nyissa meg az **Azure ad-t, a vállalati alkalmazásokat**, válassza a **Google Cloud (G Suite) összekötőt**, válassza az **egyszeri bejelentkezés** lehetőséget, majd kattintson az **új felhasználói élmény kipróbálása** lehetőségre.
 
 Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
 
@@ -82,7 +82,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A Google Cloud (G Suite)-összekötő támogatja az **SP** által kezdeményezett egyszeri bejelentkezést
 
-* A Google Cloud (G Suite) összekötő támogatja a [felhasználók **automatikus** kiépítési felállítását](./google-apps-provisioning-tutorial.md)
+* A Google Cloud (G Suite) összekötő támogatja a [felhasználók **automatikus** kiépítési felállítását](g-suite-provisioning-tutorial.md)
 * Miután konfigurálta a Google Cloud (G Suite) összekötőt, kikényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>Google Cloud (G Suite) összekötő hozzáadása a katalógusból
@@ -91,14 +91,14 @@ A Google Cloud (G Suite)-összekötő Azure AD-be való integrálásának konfig
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Google Cloud (G Suite) összekötőt** a keresőmezőbe.
 1. Válassza ki a **Google Cloud (G Suite) összekötőt** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-google-cloud-g-suite-connector"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Google Cloud (G Suite) összekötőhöz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Google Cloud (G Suite) összekötővel egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Google Cloud (G Suite) összekötőben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Google Cloud (G Suite) összekötővel egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Google Cloud (G Suite) összekötőben.
 
 Az Azure AD SSO és a Google Cloud (G Suite) összekötő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -113,8 +113,8 @@ Az Azure AD SSO és a Google Cloud (G Suite) összekötő konfigurálásához é
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Google Cloud (G Suite) Connector** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Google Cloud (G Suite) Connector** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -179,7 +179,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -191,13 +191,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Google Cloud (G Suite) összekötőhöz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **Google Cloud (G Suite) összekötőt**.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -209,7 +209,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Nyisson meg egy új fület a böngészőben, és jelentkezzen be a [Google Cloud (G Suite) Connector felügyeleti konzolra](https://admin.google.com/) a rendszergazdai fiókjával.
 
-2. Kattintson a **Biztonság**elemre. Ha nem látja a hivatkozást, akkor előfordulhat, hogy a képernyő alján található **további vezérlők** menü alatt rejtve van.
+2. Kattintson a **Biztonság** elemre. Ha nem látja a hivatkozást, akkor előfordulhat, hogy a képernyő alján található **további vezérlők** menü alatt rejtve van.
 
     ![Kattintson a Biztonság elemre.][10]
 
@@ -221,7 +221,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Egyszeri bejelentkezés konfigurálása][12]
 
-    a. Válassza **a beállítás egyszeri bejelentkezés külső szolgáltatótól**lehetőséget.
+    a. Válassza **a beállítás egyszeri bejelentkezés külső szolgáltatótól** lehetőséget.
 
     b. A Google Cloud (G Suite) összekötő **bejelentkezési oldal URL-címe** mezőjébe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
 
@@ -230,7 +230,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     > [!NOTE]
     > A Google Cloud (G Suite) az SAML kijelentkezési protokollon alapul. Ezért a kijelentkezési **oldal URL-címe** mezőben az SAML kijelentkezési URL-címét, azaz a bejelentkezési URL-címet kell használnia, mint az értéket.
 
-    d. A Google Cloud (G Suite) összekötőben az **ellenőrző tanúsítványhoz**töltse fel a Azure Portalról letöltött tanúsítványt.   
+    d. A Google Cloud (G Suite) összekötőben az **ellenőrző tanúsítványhoz** töltse fel a Azure Portalról letöltött tanúsítványt.   
 
     e. Jelölje be/törölje a **tartományi specifikus kiállítói lehetőség használata** lehetőséget az Azure ad fenti **alapszintű SAML-konfiguráció** szakaszában említett Megjegyzés alapján.
 
@@ -242,7 +242,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 Ennek a szakasznak a célja [egy olyan felhasználó létrehozása a Google Cloud (G Suite) összekötőn](https://support.google.com/a/answer/33310?hl=en) , amelynek neve B. Simon. Miután a felhasználó manuálisan létrejött a Google Cloud (G Suite) összekötőben, a felhasználó bejelentkezhet a Microsoft 365 bejelentkezési hitelesítő adataival.
 
-A Google Cloud (G Suite) összekötő a felhasználók automatikus üzembe helyezését is támogatja. Az automatikus felhasználó-kiépítés konfigurálásához először [konfigurálnia kell a Google Cloud (G Suite) összekötőt a felhasználók automatikus kiépítési felállításához](./google-apps-provisioning-tutorial.md).
+A Google Cloud (G Suite) összekötő a felhasználók automatikus üzembe helyezését is támogatja. Az automatikus felhasználó-kiépítés konfigurálásához először [konfigurálnia kell a Google Cloud (G Suite) összekötőt a felhasználók automatikus kiépítési felállításához](g-suite-provisioning-tutorial.md).
 
 > [!NOTE]
 > Győződjön meg arról, hogy a felhasználó már létezik a Google Cloud (G Suite) összekötőben, ha az Azure AD-ben való kiépítés nincs bekapcsolva az egyszeri bejelentkezés tesztelése előtt.
@@ -264,7 +264,7 @@ Ha a hozzáférési panelen a Google Cloud (G Suite) összekötő csempére katt
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 
-- [A felhasználók üzembe helyezésének konfigurálása](./google-apps-provisioning-tutorial.md)
+- [A felhasználók üzembe helyezésének konfigurálása](g-suite-provisioning-tutorial.md)
 
 - [Próbálja ki a Google Cloud (G Suite)-összekötőt az Azure AD-vel](https://aad.portal.azure.com/)
 

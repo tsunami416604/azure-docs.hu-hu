@@ -6,16 +6,18 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212581"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763513"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>A signaler szolgáltatás triggerének kötése Azure Functions
 
 A *signaler* trigger-kötés használatával válaszolhat az Azure Signaler szolgáltatásból küldött üzenetekre. Ha a függvény aktiválódik, a függvénynek átadott üzenetek JSON-objektumként vannak értelmezve.
+
+A Signaler Service kiszolgáló nélküli módban a Signaler szolgáltatás a [felsőbb rétegbeli](../azure-signalr/concept-upstream.md) szolgáltatással küld üzeneteket az ügyféltől a függvényalkalmazás. A és a függvényalkalmazás a Signaler szolgáltatás triggerének kötését használja az üzenetek kezelésére. Az általános architektúra alább látható: a :::image type="content" source="media/functions-bindings-signalr-service/signalr-trigger.png" alt-text="Signal trigger architektúrája":::
 
 További információ a telepítésről és a konfigurációról: [Áttekintés](functions-bindings-signalr-service.md).
 
@@ -203,15 +205,22 @@ A InvocationContext tartalmazza az üzenetben a Signaler szolgáltatásból kül
 
 ## <a name="using-parameternames"></a>Az `ParameterNames` használata
 
-A tulajdonsága `ParameterNames` `SignalRTrigger` lehetővé teszi, hogy a Meghívási üzenetek argumentumait a függvények paramétereinek megfelelően kösse. Ez kényelmes módot biztosít az argumentumai eléréséhez `InvocationContext` .
+A tulajdonsága `ParameterNames` `SignalRTrigger` lehetővé teszi, hogy a Meghívási üzenetek argumentumait a függvények paramétereinek megfelelően kösse. A megadott név más kötésben vagy a kódban szereplő paraméterekként is használható a [kötési kifejezések](../azure-functions/functions-bindings-expressions-patterns.md) részeként. Ez kényelmes módot biztosít az argumentumai eléréséhez `InvocationContext` .
 
-Tegyük fel, hogy rendelkezik egy JavaScript-jelzővel, amely `broadcast` két argumentummal próbálkozik az Azure-függvény metódusának meghívásával.
+Tegyük fel, hogy van egy JavaScript Signaler-ügyfél `broadcast` , amely két argumentummal próbálkozik az Azure-függvény metódusának meghívásához `message1` `message2` .
 
 ```javascript
 await connection.invoke("broadcast", message1, message2);
 ```
 
-Ezt a két argumentumot elérheti a paraméterből, valamint hozzárendelheti a paraméter típusát is a használatával `ParameterNames` .
+A beállítás után `parameterNames` a megadott név az ügyfél oldalán elküldett argumentumoknak felel meg. 
+
+```cs
+[SignalRTrigger(parameterNames: new string[] {"arg1, arg2"})]
+```
+
+Ezután a `arg1` fogja tartalmazni a tartalmát `message1` , és `arg2` a tartalmait fogja tartalmazni `message2` .
+
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -219,20 +228,28 @@ A paraméter kötése esetén a sorrend számít. A használata esetén `Paramet
 
 `ParameterNames` és az attribútum `[SignalRParameter]` **nem** használható egyszerre, vagy kivételt fog kapni.
 
-## <a name="send-messages-to-signalr-service-trigger-binding"></a>Üzenetek küldése a jelző szolgáltatás triggerének kötéséhez
+## <a name="signalr-service-integration"></a>A signaler szolgáltatás integrációja
 
-Az Azure Function létrehoz egy URL-címet a jelző szolgáltatás triggerének kötéséhez, és a következőképpen van formázva:
+A signaler szolgáltatásnak szüksége van egy URL-címre a függvényalkalmazás eléréséhez, ha a jelző szolgáltatás triggerének kötését használja. Az URL-címet a jeladó szolgáltatás oldalán lévő **felsőbb rétegbeli beállításokban** kell konfigurálni. 
+
+:::image type="content" source="../azure-signalr/media/concept-upstream/upstream-portal.png" alt-text="Felsőbb rétegbeli portál":::
+
+A Signaler szolgáltatás triggerének használatakor az URL-cím egyszerű és formázható, ahogy az alábbi ábrán is látható:
 
 ```http
-https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>
 ```
 
-Az az `API_KEY` Azure Function által generált. A `API_KEY` from Azure Portal a signaler szolgáltatás-trigger kötésének használatakor kérheti le.
+A `Function_App_URL` Függvényalkalmazás áttekintése oldalon található, `API_KEY` amelyet az Azure Function generál. A `API_KEY` from elemet `signalr_extension` a függvényalkalmazás **alkalmazás kulcsok** paneljén érheti el.
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API-kulcs":::
 
-Ezt az URL-címet a `UrlTemplate` signaler szolgáltatás felsőbb rétegbeli beállításainál kell beállítania.
+Ha egynél több függvényalkalmazást szeretne használni egy Signaler-szolgáltatással együtt, az upstream is támogathatja az összetett útválasztási szabályokat. További részleteket a [felsőbb rétegbeli beállításokban](../azure-signalr/concept-upstream.md)talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="step-by-step-sample"></a>Lépésről lépésre minta
+
+A GitHubon található minta követheti a csevegési helyiség üzembe helyezését függvényalkalmazás a Signal Service trigger kötésével és a felsőbb rétegbeli szolgáltatással: [kétirányú csevegési szoba minta](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)
+
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](../azure-signalr/signalr-concept-serverless-development-config.md)
-* [A signaler szolgáltatás Triggerének kötési mintája](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples/bidirectional-chat)
+* [A signaler szolgáltatás Triggerének kötési mintája](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

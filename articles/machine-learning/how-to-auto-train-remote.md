@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: 65ce11581972c83b0294c0afcbe95e5a35ef2471
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: d6d21acc685ba840b585ada43e59230fdd73787f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920576"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796380"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellek betanítása automatizált gépi tanulással a felhőben
 
@@ -159,7 +159,7 @@ Most küldje el a konfigurációt az algoritmus, a Hyper-paraméterek és a mode
 
 ```python
 from azureml.core.experiment import Experiment
-experiment = Experiment(ws, 'automl_remote')
+experiment = Experiment(ws, 'Tutorial-automl-remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
@@ -228,7 +228,7 @@ A következő [Jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [, hogyan konfigurálhatja az automatikus betanítás beállításait](how-to-configure-auto-train.md).
 * Lásd: [útmutató](how-to-machine-learning-interpretability-automl.md) a modell-értelmező funkcióinak engedélyezéséhez az automatikus ml-kísérleteknél.

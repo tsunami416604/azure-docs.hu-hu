@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 3b29245aed1b2c7767c340cbe8cd35dfa38610b9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8e310ea487818f6d82869fe1973c8e9ed0b04195
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656682"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797111"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -216,6 +216,186 @@ Az alábbi példa egy Event hub REST-kérelmére szolgál, ahol az Event hub nev
   }
 }
 ```
+
+# <a name="template"></a>[Sablon](#tab/json)
+
+A következő parancs használatával hozzon létre egy adatexportálási szabályt egy Storage-fiókhoz sablon használatával.
+
+```
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "defaultValue": "workspace-name",
+            "type": "String"
+        },
+        "workspaceLocation": {
+            "defaultValue": "workspace-region",
+            "type": "string"
+        },
+        "storageAccountRuleName": {
+            "defaultValue": "storage-account-rule-name",
+            "type": "string"
+        },
+        "storageAccountResourceId": {
+            "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.operationalinsights/workspaces",
+            "apiVersion": "2020-08-01",
+            "name": "[parameters('workspaceName')]",
+            "location": "[parameters('workspaceLocation')]",
+            "resources": [
+                {
+                  "type": "microsoft.operationalinsights/workspaces/dataexports",
+                  "apiVersion": "2020-08-01",
+                  "name": "[concat(parameters('workspaceName'), '/' , parameters('storageAccountRuleName'))]",
+                  "dependsOn": [
+                      "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]"
+                  ],
+                  "properties": {
+                      "destination": {
+                          "resourceId": "[parameters('storageAccountResourceId')]"
+                      },
+                      "tableNames": [
+                          "Heartbeat",
+                          "InsightsMetrics",
+                          "VMConnection",
+                          "Usage"
+                      ],
+                      "enable": true
+                  }
+              }
+            ]
+        }
+    ]
+}
+```
+
+A következő parancs használatával hozzon létre egy adatexportálási szabályt egy Event hub-sablon használatával. Minden táblához külön Event hub jön létre.
+
+```
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "defaultValue": "workspace-name",
+            "type": "String"
+        },
+        "workspaceLocation": {
+            "defaultValue": "workspace-region",
+            "type": "string"
+        },
+        "eventhubRuleName": {
+            "defaultValue": "event-hub-rule-name",
+            "type": "string"
+        },
+        "namespacesResourceId": {
+            "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/microsoft.eventhub/namespaces/namespaces-name",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.operationalinsights/workspaces",
+            "apiVersion": "2020-08-01",
+            "name": "[parameters('workspaceName')]",
+            "location": "[parameters('workspaceLocation')]",
+            "resources": [
+              {
+                  "type": "microsoft.operationalinsights/workspaces/dataexports",
+                  "apiVersion": "2020-08-01",
+                  "name": "[concat(parameters('workspaceName'), '/', parameters('eventhubRuleName'))]",
+                  "dependsOn": [
+                      "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]"
+                  ],
+                  "properties": {
+                      "destination": {
+                          "resourceId": "[parameters('namespacesResourceId')]"
+                      },
+                      "tableNames": [
+                          "Usage",
+                          "Heartbeat"
+                      ],
+                      "enable": true
+                  }
+              }
+            ]
+        }
+    ]
+}
+```
+
+A következő parancs használatával hozzon létre egy adatexportálási szabályt egy adott Event hubhoz sablon használatával. Az összes tábla a megadott Event hub-névre lesz exportálva.
+
+```
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "defaultValue": "workspace-name",
+            "type": "String"
+        },
+        "workspaceLocation": {
+            "defaultValue": "workspace-region",
+            "type": "string"
+        },
+        "eventhubRuleName": {
+            "defaultValue": "event-hub-rule-name",
+            "type": "string"
+        },
+        "namespacesResourceId": {
+            "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/microsoft.eventhub/namespaces/namespaces-name",
+            "type": "String"
+        },
+        "eventhubName": {
+            "defaultValue": "event-hub-name",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.operationalinsights/workspaces",
+            "apiVersion": "2020-08-01",
+            "name": "[parameters('workspaceName')]",
+            "location": "[parameters('workspaceLocation')]",
+            "resources": [
+              {
+                  "type": "microsoft.operationalinsights/workspaces/dataexports",
+                  "apiVersion": "2020-08-01",
+                  "name": "[concat(parameters('workspaceName'), '/', parameters('eventhubRuleName'))]",
+                  "dependsOn": [
+                      "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]"
+                  ],
+                  "properties": {
+                      "destination": {
+                          "resourceId": "[parameters('namespacesResourceId')]",
+                          "metaData": {
+                              "eventHubName": "[parameters('eventhubName')]"
+                          }
+                      },
+                      "tableNames": [
+                          "Usage",
+                          "Heartbeat"
+                      ],
+                      "enable": true
+                  }
+              }
+            ]
+        }
+    ]
+}
+```
+
 ---
 
 ## <a name="view-data-export-rule-configuration"></a>Adatexportálási szabály konfigurációjának megtekintése
@@ -243,6 +423,11 @@ Az alábbi kérelem használatával megtekintheti az adatexportálási szabály 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+
+# <a name="template"></a>[Sablon](#tab/json)
+
+N.A.
+
 ---
 
 ## <a name="disable-an-export-rule"></a>Exportálási szabály letiltása
@@ -265,7 +450,7 @@ az monitor log-analytics workspace data-export update --resource-group resourceG
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-Az alábbi kérelem használatával tilthatja le az adatexportálási szabályt a REST API használatával. A kérelemnek tulajdonosi jogkivonat-hitelesítést kell használnia.
+Az exportálási szabályok letilthatók, így leállíthatja az exportálást, ha nem kell megtartania az adott időszakra vonatkozó adatmegőrzési időt, például ha a teszt végrehajtása folyamatban van. Az alábbi kérelem használatával tilthatja le az adatexportálási szabályt a REST API használatával. A kérelemnek tulajdonosi jogkivonat-hitelesítést kell használnia.
 
 ```rest
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
@@ -285,6 +470,11 @@ Content-type: application/json
     }
 }
 ```
+
+# <a name="template"></a>[Sablon](#tab/json)
+
+Az exportálási szabályok letilthatók, így leállíthatja az exportálást, ha nem kell megtartania az adott időszakra vonatkozó adatmegőrzési időt, például ha a teszt végrehajtása folyamatban van. Állítsa be a ```"enable": false``` sablont az adatexportálás letiltásához.
+
 ---
 
 ## <a name="delete-an-export-rule"></a>Exportálási szabály törlése
@@ -312,6 +502,11 @@ Az alábbi kérelem használatával törölheti az adatexportálási szabályt a
 ```rest
 DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+
+# <a name="template"></a>[Sablon](#tab/json)
+
+N.A.
+
 ---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>A munkaterület összes adatexportálási szabályának megtekintése
@@ -339,6 +534,11 @@ A következő kérelem használatával megtekintheti a munkaterület összes ada
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports?api-version=2020-08-01
 ```
+
+# <a name="template"></a>[Sablon](#tab/json)
+
+N.A.
+
 ---
 
 ## <a name="unsupported-tables"></a>Nem támogatott táblák
@@ -525,6 +725,6 @@ A támogatott táblázatok jelenleg az alább megadott értékekre korlátozódn
 | WVDManagement | |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az exportált adatok lekérdezése az Azure Adatkezelőból](azure-data-explorer-query-storage.md).

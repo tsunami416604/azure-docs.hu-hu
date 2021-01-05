@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4758e937a0ed105bf136acf7e78f2d44c84e74fb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e80f33e6c36e1525eff954376d17c8a8b76204cb
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536054"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796023"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit betanítása – a modellek Azure Machine Learning
 
@@ -132,7 +132,7 @@ src = ScriptRunConfig(source_directory='.',
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'train-iris').submit(src)
+run = Experiment(ws,'Tutorial-TrainIRIS').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
@@ -142,13 +142,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Mi történik a Futtatás végrehajtásakor
 A Futtatás végrehajtásakor a következő szakaszokon halad végig:
 
-- **Előkészítés** : a Docker-rendszerkép a definiált környezetnek megfelelően jön létre. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők. Ha helyette egy kurátori környezet van megadva, akkor a rendszer a kiválasztott gyorsítótárazott rendszerképet fogja használni.
+- **Előkészítés**: a Docker-rendszerkép a definiált környezetnek megfelelően jön létre. A rendszer feltölti a rendszerképet a munkaterület tároló-Hivatalához, és a gyorsítótárba helyezi a későbbi futtatásokhoz. A naplók a futtatási előzményekre is továbbítva lesznek, és a folyamat figyelésére is megtekinthetők. Ha helyette egy kurátori környezet van megadva, akkor a rendszer a kiválasztott gyorsítótárazott rendszerképet fogja használni.
 
-- **Skálázás** : a fürt akkor kísérli meg a skálázást, ha a Batch AI fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
+- **Skálázás**: a fürt akkor kísérli meg a skálázást, ha a Batch AI fürthöz több csomópont szükséges a jelenleg elérhető futtatáshoz.
 
-- **Futtatás** : a rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és `script` végrehajtja a szolgáltatást. Az stdout és a **./logs** mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
+- **Futtatás**: a rendszer a parancsfájl mappájában lévő összes parancsfájlt feltölti a számítási célra, az adattárakat csatlakoztatja vagy másolja, és `script` végrehajtja a szolgáltatást. Az stdout és a **./logs** mappa kimeneteit a rendszer a futtatási előzményekre továbbítja, és a Futtatás figyelésére használható.
 
-- **Utómunka** : a Futtatás **./outputs** mappáját a rendszer átmásolja a futtatási előzményekbe.
+- **Utómunka**: a Futtatás **./outputs** mappáját a rendszer átmásolja a futtatási előzményekbe.
 
 ## <a name="save-and-register-the-model"></a>A modell mentése és regisztrálása
 
@@ -199,7 +199,7 @@ Megjegyzés: ezeket a függőségeket az előre elkészített scikit-Learn köve
 A teljes körű [útmutató](how-to-deploy-and-where.md) a Azure Machine learning nagyobb részletességgel történő üzembe helyezését ismerteti.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a scikit-Learn modell betanítását és regisztrálását, valamint az üzembe helyezési lehetőségek megismerését ismertetjük. Ezekről a cikkekről további tudnivalókat talál a Azure Machine Learningról.
 

@@ -1,18 +1,18 @@
 ---
 title: Sablon szintaxisa és kifejezések
-description: A Azure Resource Manager-sablonok deklaratív JSON-szintaxisát ismerteti.
+description: Ismerteti Azure Resource Manager-sablonok deklaratív JSON-szintaxisát (ARM-sablonok).
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a386ed849771dfba717c8d1414e64422d0c7bd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82203828"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797043"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok szintaxisa és kifejezései
+# <a name="syntax-and-expressions-in-arm-templates"></a>Szintaxis és kifejezések az ARM-sablonokban
 
-A sablon alapszintű szintaxisa a JSON. A kifejezésekkel azonban a sablonban elérhető JSON-értékeket is kiterjesztheti.  A kifejezések szögletes zárójellel kezdődnek és végződnek: `[` és `]`. A kifejezés értékét a rendszer a sablon üzembe helyezésekor értékeli ki. A kifejezés lehet sztring, egész szám, logikai érték, tömb vagy objektum.
+A Azure Resource Manager sablon (ARM-sablon) alapszintű szintaxisa JavaScript Object Notation (JSON). A kifejezésekkel azonban a sablonban elérhető JSON-értékeket is kiterjesztheti.  A kifejezések szögletes zárójellel kezdődnek és végződnek: `[` és `]`. A kifejezés értékét a rendszer a sablon üzembe helyezésekor értékeli ki. A kifejezés lehet sztring, egész szám, logikai érték, tömb vagy objektum.
 
 A sablon kifejezése nem lehet hosszabb 24 576 karakternél.
 
@@ -31,7 +31,7 @@ A Azure Resource Manager a sablonban használható [függvényeket](template-fun
 
 A kifejezésen belül a szintaxis `resourceGroup()` meghívja az egyik olyan függvényt, amelyet a Resource Manager biztosít a sablonon belüli használatra. Ebben az esetben ez a [resourceGroup](template-functions-resource.md#resourcegroup) függvény. A JavaScripthez hasonlóan a függvények hívásai is a következőképpen vannak formázva: `functionName(arg1,arg2,arg3)` . A szintaxis `.location` egy tulajdonságot kérdez le a függvény által visszaadott objektumból.
 
-A sablon függvények és azok paramétereinek kis-és nagybetűk megkülönböztetése. A Resource Manager például feloldja a **változókat ("var1")** és a **változókat ("var1")** . A kiértékeléskor, ha a függvény kifejezetten nem módosítja a kis-és nagybetűket (például toUpper vagy toLower), a függvény megőrzi a kis-és nagybetűket. Bizonyos erőforrástípusok rendelkezhetnek a függvények kiértékelésének módjától eltérő eseti követelményekkel.
+A sablon függvények és azok paramétereinek kis-és nagybetűk megkülönböztetése. A Resource Manager például feloldja `variables('var1')` és `VARIABLES('VAR1')` ugyanaz. A kiértékeléskor, ha a függvény kifejezetten nem módosítja a kis-és nagybetűket (például `toUpper` vagy `toLower` ), a függvény megőrzi a kis-és nagybetűket. Bizonyos erőforrástípusok rendelkezhetnek a függvények kiértékelésének módjától eltérő eseti követelményekkel.
 
 Ha karakterlánc-értéket szeretne átadni paraméterként egy függvénynek, használjon aposztrófot.
 
@@ -123,7 +123,7 @@ Ugyanez a formázás vonatkozik az értékek egy paraméter fájlból való áta
 
 ## <a name="null-values"></a>Null-értékek
 
-Ha a tulajdonságot NULL értékre kívánja beállítani, használhatja a null vagy a **[JSON ("NULL")]** **értéket** . A [JSON-függvény](template-functions-object.md#json) üres objektumot ad vissza, ha `null` paraméterként adja meg. A Resource Manager-sablonok mindkét esetben úgy bánnak, mintha a tulajdonság nincs jelen.
+Ha egy tulajdonságot null értékre szeretne beállítani, használja a következőket: `null` vagy `[json('null')]`. A [JSON-függvény](template-functions-object.md#json) üres objektumot ad vissza, ha `null` paraméterként adja meg. A Resource Manager-sablonok mindkét esetben úgy bánnak, mintha a tulajdonság nincs jelen.
 
 ```json
 "stringValue": null,
@@ -132,5 +132,5 @@ Ha a tulajdonságot NULL értékre kívánja beállítani, használhatja a null 
 
 ## <a name="next-steps"></a>További lépések
 
-* A sablon függvények teljes listájáért lásd: [Azure Resource Manager template functions](template-functions.md).
-* További információ a sablonfájlokről: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).
+* A sablon függvények teljes listájáért lásd: [ARM-sablon függvények](template-functions.md).
+* További információ a sablonfájlokat: [az ARM-sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).

@@ -3,15 +3,15 @@ title: Konfigurálás az Azure IoT Central irányítópulton | Microsoft Docs
 description: A Builder segítségével megtudhatja, hogyan konfigurálhatja az alapértelmezett Azure IoT Central alkalmazás-irányítópultot csempék használatával.
 author: TheJasonAndrew
 ms.author: v-anjaso
-ms.date: 11/06/2020
+ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 73c78f514f974b97eb178177f12dc4ceff7ede63
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491998"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797009"
 ---
 # <a name="configure-the-application-dashboard"></a>Az alkalmazás irányítópultjának konfigurálása
 
@@ -30,7 +30,7 @@ A **Szerkesztés** vagy az **új** lehetőség kiválasztása után az irányít
 
 1. Válasszon ki egy **eszközt** , majd válassza ki az eszközöket az **eszközök** legördülő menüben a csempén való megjelenítéshez. Ekkor megjelenik az eszközökön elérhető telemetria, tulajdonságok és parancsok.
 
-1. Ha szükséges, a legördülő listából válassza ki a csempén megjelenítendő telemetria értéket. További elemeket is hozzáadhat a csempéhez a **+ telemetria** , **+ tulajdonság** vagy a **+ Cloud tulajdonság** kiválasztásával.
+1. Ha szükséges, a legördülő listából válassza ki a csempén megjelenítendő telemetria értéket. További elemeket is hozzáadhat a csempéhez a **+ telemetria**, **+ tulajdonság** vagy a **+ Cloud tulajdonság** kiválasztásával.
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Hőmérséklet-telemetria csempe hozzáadása az irányítópulthoz":::
 
@@ -53,7 +53,7 @@ A csempék szerkesztéséhez szerkesztési módban kell lennie.  Az elérhető t
 
 A következő táblázat ismerteti az irányítópulthoz felvehető különböző típusú csempéket:
 
-| Csempe             | Description |
+| Csempe             | Leírás |
 | ---------------- | ----------- |
 | Markdown         | A Markdown csempéi olyan csempék, amelyek fejléceket és leírásokat jelenítenek meg a Markdown használatával formázott szövegekben. Az URL-cím lehet relatív hivatkozás az alkalmazás egy másik oldalára, vagy egy külső helyre mutató abszolút hivatkozás.|
 | Kép            | A képcsempék egy egyéni rendszerképet jelenítenek meg, és megadhatók. Az URL-cím lehet relatív hivatkozás az alkalmazás egy másik oldalára, vagy egy külső helyre mutató abszolút hivatkozás.|
@@ -87,7 +87,7 @@ A karakterlánc-tulajdonságokat vagy telemetria értékeket megjelenítő csemp
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Karakterlánc megjelenítésének módosítása csempén":::
 
-A numerikus **KPI** , az **utolsó ismert érték** és a **tulajdonságlapok** esetében feltételes formázást használhat a csempe színének a jelenlegi érték alapján történő testreszabásához. A feltételes formázás hozzáadásához válassza a **Konfigurálás** lehetőséget a csempén, majd válassza a **feltételes formázás** ikont az érték mellett a testreszabáshoz:
+A numerikus **KPI**, az **utolsó ismert érték** és a **tulajdonságlapok** esetében feltételes formázást használhat a csempe színének a jelenlegi érték alapján történő testreszabásához. A feltételes formázás hozzáadásához válassza a **Konfigurálás** lehetőséget a csempén, majd válassza a **feltételes formázás** ikont az érték mellett a testreszabáshoz:
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="A csempék konfigurálási beállításának megkeresését bemutató képernyőkép, majd a feltételes formázás ikonja":::
 

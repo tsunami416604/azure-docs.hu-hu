@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 08/31/2020
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 3a17e73c66c2296cc36b24e3b0a8abfcab00e46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2443765ecc9116193cefbc729ced25fa5657e59
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419399"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763428"
 ---
 Mielőtt üzembe helyezi a virtuális gépeket az Azure Stack Edge-eszközön, konfigurálnia kell az ügyfelet, hogy Azure Resource Manageron keresztül kapcsolódjon az eszközhöz Azure PowerShellon keresztül. A részletes lépésekért lépjen a [kapcsolódás Azure Resource Managerhoz az Azure stack Edge-eszközön](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md).
 
@@ -34,13 +34,15 @@ Győződjön meg arról, hogy a következő lépések használhatók az eszköz 
 
     A hálózati adapteren engedélyezze a számítást. Azure Stack Edge létrehoz és felügyel egy, az adott hálózati adapternek megfelelő virtuális kapcsolót. Jelenleg ne adjon meg adott IP-címeket a Kubernetes számára. A számítás engedélyezése több percet is igénybe vehet.
 
-    <!--If you decide to use another network interface for compute, make sure that you:
-    
-    - Delete all the VMs that you have deployed using Azure Resource Manager.
-    
-    - Delete all virtual network interfaces and the virtual network associated with this network interface. 
-    
-    - You can now enable another network interface for compute.-->
+    > [!NOTE]
+    > Ha GPU virtuális gépeket hoz létre, válassza ki az internethez csatlakozó hálózati adaptert. Ez lehetővé teszi a GPU-bővítmény telepítését az eszközön.
 
-<!--1. You may also need to configure TLS 1.2 on your client machine if running older versions of AzCopy.--> 
 
+1. Virtuálisgép-szerepkör engedélyezése a Azure Portal. Ez a lépés létrehoz egy egyedi előfizetést az eszközhöz, amely a virtuális gépek helyi API-k használatával történő létrehozására szolgál. 
+
+    1. A virtuálisgép-szerepkör engedélyezéséhez lépjen a Azure Portal Azure Stack Edge-erőforrásra az Azure Stack Edge-eszközhöz. Ugrás az **Edge számítási > Virtual Machines**.
+
+        ![VM-rendszerkép hozzáadása 1](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
+
+    1. Válassza a **Virtual Machines** lehetőséget az **Áttekintés** oldalra való ugráshoz. A virtuális gépek Felhőbeli felügyeletének **engedélyezése** .
+        ![VM-rendszerkép hozzáadása 2](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)

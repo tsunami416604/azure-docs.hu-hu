@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 1446808b77e5eea78a9912db4c7a8e2dd783f33a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104376"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763489"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
 
@@ -18,6 +18,7 @@ Ez a cikk azt ismerteti, hogyan lehet valós idejű üzeneteket hitelesíteni é
 
 | Művelet | Típus |
 |---------|---------|
+| A Signaler szolgáltatás üzeneteinek kezelése | [Trigger kötése](./functions-bindings-signalr-service-trigger.md) |
 | A szolgáltatási végpont URL-címének és hozzáférési jogkivonatának visszaküldése | [Bemeneti kötés](./functions-bindings-signalr-service-input.md) |
 | Szignáló szolgáltatás üzeneteinek küldése |[Kimeneti kötés](./functions-bindings-signalr-service-output.md) |
 
@@ -55,5 +56,6 @@ Ahhoz, hogy használni lehessen a Signaler szolgáltatás megjegyzéseit a Java-
 
 ## <a name="next-steps"></a>További lépések
 
+- [A Signaler szolgáltatás üzeneteinek kezelése (trigger kötése)](./functions-bindings-signalr-service-trigger.md)
 - [A szolgáltatási végpont URL-címének és hozzáférési jogkivonatának visszaadása (bemeneti kötés)](./functions-bindings-signalr-service-input.md)
 - [Szignáló szolgáltatás üzeneteinek küldése (kimeneti kötés)](./functions-bindings-signalr-service-output.md)

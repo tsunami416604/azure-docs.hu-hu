@@ -4,12 +4,12 @@ description: Ismerteti, hogyan lehet Service Bus várólistákat és témakörö
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8fd845ba24fd96ad6de566a7f55b25bd7129074d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930432"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796635"
 ---
 # <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
@@ -29,8 +29,9 @@ Ha egy ügyfél egy particionált várólistáról vagy egy particionált témak
 A nem particionált entitások betekintés művelete mindig a legrégebbi üzenetet adja vissza, de nem particionált entitáson. Ehelyett egy olyan partíció legrégebbi üzenetét adja vissza, amelynek a Message Broker először válaszol. Nem garantálható, hogy a visszaadott üzenet az összes partíció legrégebbi tagja. 
 
 Az üzenetek elküldésekor vagy egy particionált várólistából vagy témakörből való üzenetküldés esetén nincs további díj.
->[!NOTE]
-> A betekintés művelet a sorszám alapuló legrégebbi üzenetet adja vissza a részből. A partioned entitások esetében a sorozatszám a partícióhoz viszonyítva jelenik meg. További információ: [üzenetek sorrendbe rendezése és időbélyegek](../service-bus-messaging/message-sequencing.md).
+
+> [!NOTE]
+> A betekintés művelet a partíció legrégebbi üzenetét adja vissza a sorszám alapján. Particionált entitások esetén a sorozatszám a partícióhoz viszonyítva jelenik meg. További információ: [üzenetek sorrendbe rendezése és időbélyegek](../service-bus-messaging/message-sequencing.md).
 
 ## <a name="enable-partitioning"></a>Particionálás engedélyezése
 
@@ -144,7 +145,7 @@ Jelenleg Service Bus a következő korlátozásokat szabja meg a particionált v
 * A particionált várólisták és témakörök nem támogatják a különböző munkamenetekhez tartozó üzenetek küldését egyetlen tranzakcióban.
 * A Service Bus névterenként jelenleg 100 particionált üzenetsort vagy témakört képes kezelni. Minden particionált üzenetsor vagy témakör a 10 000 entitások névterében számítja fel a kvótát (a prémium szintű csomagra nem vonatkozik).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el a AMQP 1,0 üzenetküldési specifikációjának alapvető fogalmait a [AMQP 1,0 protokoll útmutatójában](service-bus-amqp-protocol-guide.md).
 

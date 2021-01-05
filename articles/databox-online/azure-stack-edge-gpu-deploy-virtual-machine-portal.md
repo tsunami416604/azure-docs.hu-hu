@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 89ef196cb5a124b8b1100871c408400f3fceef5c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466542"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763455"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön a Azure Portal használatával
 
@@ -122,8 +122,8 @@ Az alábbi lépéseket követve hozzon létre egy virtuális gépet, miután lé
     |Paraméter |Leírás  |
     |---------|---------|
     |Virtuális gép neve     |         |
-    |Rendszerkép     | Válassza ki az eszközön elérhető virtuálisgép-lemezképeket.        |
-    |Méret     | Válasszon a [virtuális gépek támogatott méretei](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#supported-vm-sizes)közül.        |
+    |Kép     | Válassza ki az eszközön elérhető virtuálisgép-lemezképeket.        |
+    |Méret     | Válasszon a [virtuális gépek támogatott méretei](azure-stack-edge-gpu-virtual-machine-sizes.md)közül.        |
     |Felhasználónév     | Használja az alapértelmezett Felhasználónév *azureuser*.        |
     |Hitelesítéstípus    | Válasszon az SSH nyilvános kulcs vagy a felhasználó által megadott jelszó közül.       |
     |Jelszó     | Adjon meg egy jelszót a virtuális gépre való bejelentkezéshez. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott [összetettségi követelményeknek](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).        |

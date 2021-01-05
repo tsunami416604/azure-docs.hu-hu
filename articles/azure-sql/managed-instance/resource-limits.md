@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
+ms.sourcegitcommit: e8bd58dbcfe0eae45979d86e071778b9aec40b6c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400573"
+ms.lasthandoff: 12/25/2020
+ms.locfileid: "97770961"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>A felügyelt Azure SQL-példány erőforráskorlátainak áttekintése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -65,7 +65,7 @@ Az SQL felügyelt példányának két szolgáltatási szintje van: [általános 
 > [!Important]
 > A üzletileg kritikus Service-szintű szolgáltatás a felügyelt SQL-példány (másodlagos replika) egy további beépített példányát biztosítja, amely csak olvasható számítási feladatokhoz használható. Ha elkülönítheti az írási és olvasási lekérdezéseket és a csak olvasható/analitikai/jelentéskészítési lekérdezéseket, akkor a virtuális mag és a memóriát is megkezdheti ugyanarra az árakra. Előfordulhat, hogy a másodlagos replika néhány másodperccel az elsődleges példány mögött van, ezért olyan jelentéskészítési/elemzési munkaterhelések kiszervezésére lett kialakítva, amelyeknek nincs szükségük pontos aktuális állapotára. Az alábbi táblázatban a **csak olvasható lekérdezések** a másodlagos replikán végrehajtott lekérdezések.
 
-| **Funkció** | **Általános célú** | **Üzletileg kritikus** |
+| **Szolgáltatás** | **Általános célú** | **Üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4:8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*A csak olvasható lekérdezések esetében azonos számú virtuális mag van hozzárendelve. |
 | Maximális memória | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB-408 GB (5.1 GB/virtuális mag) olvasási és írási lekérdezésekhez<br/>+ további 20,4 GB – 408 GB (5.1 GB/virtuális mag) a csak olvasható lekérdezésekhez.<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
@@ -84,7 +84,7 @@ Az SQL felügyelt példányának két szolgáltatási szintje van: [általános 
 | Munkamenetek maximális száma | 30000 | 30000 |
 | Egyidejű feldolgozók maximális száma (kérelem) | Gen4: 210 x virtuális magok száma + 800<br>Gen5: 105 x virtuális magok száma + 800 | Gen4: 210 x virtuális magok száma + 800<br>Gen5: 105 x virtuális magok száma + 800 |
 | [Írásvédett replikák](../database/read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
-| Számítási elkülönítés | Gen5<br/>– 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|Gen5<br/>– 60, 64, 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|
+| Számítási elkülönítés | A Gen5 nem támogatott, mert általános célú példányok megoszthatják a fizikai hardvereszközöket más példányokkal<br/>Az Gen4 nem támogatott az elavultság miatt|Gen5<br/>– 40, 64, 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|
 
 
 Néhány további szempont: 
@@ -150,7 +150,7 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional és MSDN platformok|2|32|
 
-\* Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben az SQL felügyelt példánya telepítve van, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
+\* Az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben az SQL felügyelt példánya telepítve van, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
 
 \*\* A nagyobb alhálózat-és virtuális mag korlátozások a következő régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, Dél-Európa, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
 
@@ -161,7 +161,7 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 
 Ha az aktuális régiókban több példányra van szüksége, küldjön egy támogatási kérést a kvóta kiterjesztéséhez a Azure Portal használatával. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](../database/quota-increase-request.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - A díjszabással kapcsolatos információkért lásd: az [SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

@@ -3,14 +3,14 @@ title: Az első tartós funkció létrehozása az Azure-ban a Python használat�
 description: Azure tartós funkciót hozhat létre és tehet közzé a Pythonban a Visual Studio Code használatával.
 author: anthonychu
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0cc321563de645aeb1d204b67b0ab72053d79c7e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012629"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763557"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Az első tartós függvény létrehozása a Pythonban
 
@@ -40,9 +40,9 @@ Az oktatóanyag elvégzéséhez:
 
 Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi Azure Functions projektet. 
 
-1. A Visual Studio Code-ban nyomja le az F1 billentyűt (vagy a CTRL/cmd + SHIFT + P billentyűkombinációt) a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Create New Project...` .
+1. A Visual Studio Code-ban nyomja le az F1 billentyűt (vagy a <kbd>CTRL/cmd + SHIFT + P</kbd>billentyűkombinációt) a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Create New Project...` .
 
-    ![Függvény létrehozása](media/quickstart-python-vscode/functions-create-project.png)
+    ![Create függvény](media/quickstart-python-vscode/functions-create-project.png)
 
 1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás** lehetőséget.
 
@@ -60,18 +60,33 @@ A Visual Studio Code szükség esetén telepíti a Azure Functions Core Tools. E
 
 A gyökérmappa egy requirements.txt fájlt is létrehoz. Meghatározza a Function alkalmazás futtatásához szükséges Python-csomagokat.
 
+## <a name="update-azure-functions-extension-bundles-version"></a>Azure Functions Extension csomagok verziójának frissítése
+
+A Python Azure Functions [Azure functions Extension csomagok](../functions-bindings-register.md#access-extensions-in-non-net-languages)2. x verzióját igénylik. A bővítmények *host.js* be vannak állítva.
+
+1. Nyissa meg *host.jsa* projektben. Frissítse a bővítmény csomagot a következőre: `version` `[2.*, 3.0.0)` . Ez egy 2,0-nál nagyobb vagy azzal egyenlő verziószámot ad meg, amely kisebb, mint 3,0.
+
+    ```json
+    "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.*, 3.0.0)"
+    }
+    ```
+
+1. A VS Code-ot újra kell tölteni, mielőtt a frissített kiterjesztési köteg verziója tükröződik. A parancssorban futtassa a következőt: Keresés a *fejlesztői: reload Window* parancshoz, és futtassa.
+
 ## <a name="install-azure-functions-durable-from-pypi"></a>Az Azure-functions-instrapabíró telepítése a PyPI-ből
 
 A projekt létrehozásakor a Azure Functions VS Code bővítmény automatikusan létrehozott egy virtuális környezetet a kiválasztott Python-verzióval. Egy terminálon aktiválnia kell a virtuális környezetet, és telepítenie kell a Azure Functions és Durable Functions által igényelt függőségeket.
 
-1. Nyissa meg `requirements.txt` a szerkesztőt, és módosítsa a tartalmát a következőre:
+1. Nyissa meg *requirements.txt* a szerkesztőben, és módosítsa a tartalmát a következőre:
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b6
+    azure-functions-durable>=1.0.0b12
     ```
 
-1. Nyissa meg a szerkesztő integrált terminálját az aktuális mappában ( `` Ctrl-Shift-` `` ).
+1. Nyissa meg a szerkesztő integrált terminálját az aktuális mappában (<kbd>CTRL + SHIFT +</kbd>).
 
 1. Az integrált terminálon aktiválja a virtuális környezetet az aktuális mappában:
 
@@ -203,7 +218,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
     }
     ```
 
-1. A hibakeresés leállításához nyomja le a **SHIFT + F5** billentyűkombinációt a vs Code-ban.
+1. A hibakeresés leállításához nyomja le a <kbd>SHIFT + F5</kbd> billentyűkombinációt a vs Code-ban.
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 

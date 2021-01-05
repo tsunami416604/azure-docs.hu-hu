@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c82b1ffbb005542822016a55346d9067e23050b2
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 41231e19960edfe1a4f0521b8738fa62a463c927
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630870"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796465"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>TensorFlow-modellek betanítása méretekben Azure Machine Learning
 
@@ -223,7 +223,7 @@ A feladatok ScriptRunConfig-vel való konfigurálásával kapcsolatos további i
 A [Run objektum](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
 
 ```Python
-run = Experiment(workspace=ws, name='tf-mnist').submit(src)
+run = Experiment(workspace=ws, name='Tutorial-TF-Mnist').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 ### <a name="what-happens-during-run-execution"></a>Mi történik a Futtatás végrehajtásakor
@@ -357,7 +357,7 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 A teljes körű [útmutató](how-to-deploy-and-where.md) a Azure Machine learning nagyobb részletességgel történő üzembe helyezését ismerteti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy TensorFlow-modellt oktatott és regisztrált, és megismerte az üzembe helyezési lehetőségeket. Ezekről a cikkekről további tudnivalókat talál a Azure Machine Learningról.
 

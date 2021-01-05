@@ -2,21 +2,35 @@
 title: Az Azure VMware-megoldás erőforrás-szolgáltatójának regisztrálása
 description: Az Azure VMware-megoldás erőforrás-szolgáltatójának regisztrálásához szükséges lépések.
 ms.topic: include
-ms.date: 09/21/2020
-ms.openlocfilehash: 96d15546c5102a69a0b19f92de33d35d2e9ab6c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/24/2020
+ms.openlocfilehash: 7d24ce86f24c941c7d48d3b73576dcdfda120f51
+ms.sourcegitcommit: 489ce69c0ff3f5188889ecfef5ffa76f7121e0d3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575741"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97770823"
 ---
 <!-- Used in avs-deployment.md and tutorial-create-private-cloud.md -->
 
-Az Azure VMware-megoldás használatához először regisztrálnia kell az erőforrás-szolgáltatót az előfizetésében.
+Az Azure VMware-megoldás használatához először regisztrálnia kell az erőforrás-szolgáltatót az előfizetésében.  
+
+### <a name="azure-cli"></a>Azure CLI 
 
 ```azurecli-interactive
 az provider register -n Microsoft.AVS --subscription <your subscription ID>
 ```
 
->[!TIP]
->Azt is megteheti, hogy a grafikus felhasználói felület használatával regisztrálja a **Microsoft. AVS** erőforrás-szolgáltatót.  További információt az [erőforrás-szolgáltató és-típusok regisztrálása](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) című cikkben talál.  
+
+### <a name="azure-portal"></a>Azure Portal
+ 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+
+1. Az Azure Portal menüjében válassza a **Minden szolgáltatás** lehetőséget.
+
+1. A **minden szolgáltatás** mezőben adja meg az **előfizetés** elemet, majd válassza az **előfizetések** lehetőséget.
+
+1. Válassza ki az előfizetést az előfizetés listából a megtekintéshez.
+
+1. Válassza az **erőforrás-szolgáltatók** lehetőséget, és írja be a **Microsoft. AVS** kifejezést a keresésbe. 
+ 
+1. Ha az erőforrás-szolgáltató nincs regisztrálva, válassza a **regisztráció** lehetőséget.

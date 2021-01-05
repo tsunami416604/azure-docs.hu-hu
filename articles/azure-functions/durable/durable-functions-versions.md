@@ -3,14 +3,14 @@ title: Durable Functions verziók áttekintése – Azure Functions
 description: További információ a Durable Functions verziókról.
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/23/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4d10bab06428295bbc8c5319bd47787d7b1fb34
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88719410"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763370"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions verziók áttekintése
 
@@ -24,7 +24,7 @@ Ez a szakasz a 2. x verzióban hozzáadott Durable Functions funkcióit ismertet
 
 Durable Functions 2. x verzióban egy új [Entity functions](durable-functions-entities.md) koncepciót vezettünk be.
 
-Az Entity functions olyan műveleteket határoz meg, amelyek olyan kis méretű állapotok olvasására és frissítésére szolgálnak, amelyek *tartós entitások*. A Orchestrator függvényekhez hasonlóan az Entity functions is egy speciális trigger típussal, az *entitások triggerével*működik. A Orchestrator függvényektől eltérően az Entity functions nem rendelkezik konkrét kód megkötésekkel. Az Entity functions emellett explicit módon kezeli az állapotot, nem pedig implicit módon jelképezi az állapotot a vezérlési folyamaton keresztül.
+Az Entity functions olyan műveleteket határoz meg, amelyek olyan kis méretű állapotok olvasására és frissítésére szolgálnak, amelyek *tartós entitások*. A Orchestrator függvényekhez hasonlóan az Entity functions is egy speciális trigger típussal, az *entitások triggerével* működik. A Orchestrator függvényektől eltérően az Entity functions nem rendelkezik konkrét kód megkötésekkel. Az Entity functions emellett explicit módon kezeli az állapotot, nem pedig implicit módon jelképezi az állapotot a vezérlési folyamaton keresztül.
 
 További információt a [tartós entitások](durable-functions-entities.md) című cikkben talál.
 
@@ -50,6 +50,8 @@ Telepítse a projektben a Durable Functions kötések bővítményének legújab
 
 Durable Functions 2. x a [Azure functions Extension Bundle](../functions-bindings-register.md#extension-bundles)2. x verziójában érhető el.
 
+A Durable Functions Python-támogatásához Durable Functions 2. x szükséges.
+
 Ha frissíteni szeretné a bővítmény csomagjának verzióját a projektben, nyissa meg a host.jst, és frissítse a `extensionBundle` szakaszt a 2. x () verzió használatára `[2.*, 3.0.0)` .
 
 ```json
@@ -61,6 +63,9 @@ Ha frissíteni szeretné a bővítmény csomagjának verzióját a projektben, n
     }
 }
 ```
+
+> [!NOTE]
+> Ha a Visual Studio Code nem jeleníti meg a megfelelő sablonokat a kiterjesztési csomag verziójának módosítása után, töltse be újra az ablakot a *fejlesztői: újratöltési ablak* parancs futtatásával (<kbd>CTRL + r</kbd> Windows és Linux rendszeren, <kbd>Command + r</kbd> a MacOS rendszeren).
 
 #### <a name="net"></a>.NET
 

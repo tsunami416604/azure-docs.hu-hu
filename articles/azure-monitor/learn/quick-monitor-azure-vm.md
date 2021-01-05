@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: ef0e3a451a5687278acaf1e857012027a5e657a3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bf38291e26c46d26bbf8cb110d18e9526fb3f777
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186762"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797179"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Gyors útmutató: Azure-beli virtuális gép figyelése Azure Monitor
 [Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-beli virtuális gépekről a létrehozásuk pillanatában. Ebben a rövid útmutatóban röviden ismerteti az Azure-beli virtuális gépek számára automatikusan összegyűjtött adatokat, valamint azt, hogy miként tekintheti meg a Azure Portalban. Ezután engedélyezi [Azure monitor for VMS](../insights/vminsights-overview.md) a virtuális géphez, amely lehetővé teszi az ügynökök számára a virtuális gép számára az adatok gyűjtését és elemzését a vendég operációs rendszerből, beleértve a folyamatokat és a függőségeiket.
@@ -73,7 +73,7 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
 ### <a name="data-collection-from-linux-vm"></a>Adatgyűjtés Linux rendszerű virtuális gépekről
 
-1. Válassza a **Syslog** elemet.  
+1. Válassza **az** adatelemet, majd válassza a **syslog** lehetőséget.
 
 2. Adjon hozzá egy eseménynaplót a napló nevének beírásával.  Írja be a **syslog** -t, majd válassza ki a plusz jelet **+** .  
 
@@ -103,7 +103,7 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
     ![Log Analytics](media/quick-monitor-azure-vm/log-analytics.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban engedélyezte a Azure Monitor for VMst egy virtuális géphez, és konfigurálta az Log Analytics munkaterületet a vendég operációs rendszer eseményeinek gyűjtésére. Az adatok megtekintésének és elemzésének ismertetéséhez lépjen tovább az útmutatóhoz.
 
 > [!div class="nextstepaction"]

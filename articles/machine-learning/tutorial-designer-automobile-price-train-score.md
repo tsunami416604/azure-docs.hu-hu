@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575975"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796108"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Oktatóanyag: Autó árának előrejelzése a tervezővel
 
@@ -272,7 +272,7 @@ Most, hogy elvégezte a folyamat minden beállítását, elküldheti a folyamat 
     > [!NOTE]
     > A kísérletek csoport hasonló folyamata együtt fut. Ha többször is futtat egy folyamatot, kiválaszthatja ugyanazt a kísérletet egymást követő futtatásokhoz.
 
-    1. Adjon meg egy leíró nevet az **új kísérlet neveként**.
+    1. Az **új kísérlet neve** mezőbe írja be a következőt: **tutorial-CarPrices**.
 
     1. Válassza a **Küldés** lehetőséget.
     

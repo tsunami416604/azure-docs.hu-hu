@@ -4,15 +4,15 @@ description: Fájlok feltöltésének konfigurálása az eszközökről a felhő
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/06/2020
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: d6fbf84ec3822195f62970dbf08115059ffb7e4a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ed2eff4d6ccbb9f85dfaf7049fa3cc18711bae0f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122602"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796905"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>Fájlok feltöltése az eszközökről a felhőbe
 
@@ -38,7 +38,7 @@ Az eszköz fájlfeltöltés beállítása:
 
 1. Ha szükséges, módosítsa a feltöltési időtúllépést, amely meghatározza, hogy a feltöltési kérések meddig érvényesek maradnak. Az érvényes értékek 1 – 24 óra.
 
-1. Kattintson a **Mentés** gombra. Ha az **állapot megjelenik,** készen áll arra, hogy fájlokat töltsön fel az eszközökről.
+1. Válassza a **Mentés** lehetőséget. Ha az **állapot megjelenik,** készen áll arra, hogy fájlokat töltsön fel az eszközökről.
 
 :::image type="content" source="media/howto-configure-file-uploads/file-upload-configuration.png" alt-text="Fájlfeltöltés konfigurálása az alkalmazásban":::
 
@@ -56,7 +56,7 @@ Ha le szeretné tiltani az eszköz fájljának feltöltését a IoT Central alka
 
 A IoT Central IoT Hub fájl feltöltési képességét használja az eszközök fájlok feltöltésének engedélyezéséhez. A fájlok eszközökről történő feltöltését bemutató mintakód: [IoT Central fájlfeltöltés eszköz minta](/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már tudja, hogyan konfigurálhatja és implementálhatja az eszköz fájljának feltöltését IoT Centralban, a következő lépés a további eszköz-fájlok feltöltésének megismerése:
 

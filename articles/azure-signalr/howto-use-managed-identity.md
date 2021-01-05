@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: 9b6141e6009cb868d63429836f8c8f050c792ee5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4f70cbacf686210c1188cb0a87e6116af8ed4b01
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152308"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763156"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Felügyelt identitások az Azure Signaler szolgáltatáshoz
 
@@ -26,9 +26,9 @@ A Azure Portal felügyelt identitásának beállításához először létre kel
 
 1. A szokásos módon hozzon létre egy Azure Signaler Service-példányt a portálon. Tallózással keresse meg a portálon.
 
-2. Válassza az **identitás**lehetőséget.
+2. Válassza az **identitás** lehetőséget.
 
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Válassza a **Mentés** lehetőséget.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/system-identity-portal.png" alt-text="Rendszerhez rendelt identitás hozzáadása a portálon":::
 
@@ -40,13 +40,13 @@ A felhasználó által hozzárendelt identitással rendelkező Azure Signaler sz
 
 2. A szokásos módon hozzon létre egy Azure Signaler Service-példányt a portálon. Tallózással keresse meg a portálon.
 
-3. Válassza az **identitás**lehetőséget.
+3. Válassza az **identitás** lehetőséget.
 
-4. A **felhasználó által hozzárendelt** lapon válassza a **Hozzáadás**lehetőséget.
+4. A **felhasználó által hozzárendelt** lapon válassza a **Hozzáadás** lehetőséget.
 
-5. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** lehetőséget.
+5. Keresse meg a korábban létrehozott identitást, és válassza ki azt. Válassza a **Hozzáadás** elemet.
 
-    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Rendszerhez rendelt identitás hozzáadása a portálon":::
+    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Felhasználó által hozzárendelt identitás hozzáadása a portálon":::
 
 ## <a name="use-a-managed-identity-in-serverless-scenarios"></a>Felügyelt identitás használata kiszolgáló nélküli forgatókönyvekben
 
@@ -56,9 +56,12 @@ Az Azure Signaler szolgáltatás egy teljes körűen felügyelt szolgáltatás, 
 
 1. Rendszerhez rendelt identitás vagy felhasználó által hozzárendelt identitás hozzáadása.
 
-2. Konfigurálja a felsőbb rétegbeli beállításokat, és használja az **ManagedIdentity** -t **hitelesítési** beállításokként. A felsőbb rétegbeli beállítások hitelesítéssel történő létrehozásával kapcsolatos további információkért lásd: [felsőbb rétegbeli beállítások](concept-upstream.md).
+2. Vegyen fel egy felsőbb rétegbeli beállítást, és kattintson bármelyik csillagra, hogy az alább látható részletes lapra kerüljön.
+    :::image type="content" source="media/signalr-howto-use-managed-identity/pre-msi-settings.png" alt-text="MSI előtti beállítás":::
+    
+    :::image type="content" source="media/signalr-howto-use-managed-identity/msi-settings.png" alt-text="MSI – beállítás":::
 
-3. A felügyelt identitás hitelesítési beállításai **erőforrás**esetében megadhatja a cél erőforrást. Az erőforrás a `aud` beszerzett hozzáférési jogkivonat jogcíme lesz, amely a felsőbb rétegbeli végpontok érvényesítésének részeként használható. Az erőforrás a következők egyike lehet:
+3. A felügyelt identitás hitelesítési beállításai **erőforrás** esetében megadhatja a cél erőforrást. Az erőforrás a `aud` beszerzett hozzáférési jogkivonat jogcíme lesz, amely a felsőbb rétegbeli végpontok érvényesítésének részeként használható. Az erőforrás a következők egyike lehet:
     - Üres
     - Az egyszerű szolgáltatásnév alkalmazás-(ügyfél-) azonosítója
     - Az egyszerű szolgáltatásnév alkalmazásspecifikus AZONOSÍTÓjának URI-ja
@@ -77,6 +80,37 @@ A Azure Active Directory (Azure AD) middleware beépített képességekkel rende
 
 Olyan kódtárakat és kódokat biztosítunk, amelyek bemutatják a jogkivonat-érvényesítés kezelését. A JSON Web Token (JWT) érvényesítéséhez több nyílt forráskódú partneri függvénytár is elérhető. Szinte minden platformhoz és nyelvhez legalább egy lehetőség van. További információ az Azure AD-hitelesítési könyvtárakról és a mintakód-mintákról: [Microsoft Identity platform Authentication librarys](../active-directory/develop/reference-v2-libraries.md).
 
-## <a name="next-steps"></a>Következő lépések
+#### <a name="authentication-in-function-app"></a>Hitelesítés függvényalkalmazás
+
+A hozzáférési jogkivonat érvényesítésének beállítása a függvényalkalmazásban egyszerű és hatékony, kód nélkül működik.
+
+1. A **hitelesítés/engedélyezés** lapon váltson **app Service hitelesítésre** **a** következőn:.
+
+2. **Ha a kérelem nem hitelesítve van**, válassza a **Bejelentkezés a következővel Azure Active Directory** műveletet.
+
+3. A hitelesítési szolgáltatóban kattintson a into **Azure Active Directory**
+
+4. Az új oldalon. Válassza az **expressz** lehetőséget, és **hozzon létre új ad-alkalmazást** , majd kattintson **az OK** :::image type="content" source="media/signalr-howto-use-managed-identity/function-aad.png" alt-text="függvény HRE"::: elemre.
+
+5. Navigáljon a Signaler szolgáltatáshoz, és kövesse a [lépéseket](howto-use-managed-identity.md#add-a-system-assigned-identity) egy rendszerhez rendelt identitás vagy felhasználó által hozzárendelt identitás hozzáadásához.
+
+6. Ismerkedjen meg a Signaler szolgáltatásban a **felsőbb rétegbeli beállításokkal** , és válassza a **felügyelt identitás használata** lehetőséget, és **válasszon a meglévő alkalmazások** közül. Válassza ki a korábban létrehozott alkalmazást.
+
+Ezen beállítások után a függvényalkalmazás a fejlécben hozzáférési jogkivonat nélkül fogja elutasítani a kérelmeket.
+
+## <a name="use-a-managed-identity-for-key-vault-reference"></a>Felügyelt identitás használata Key Vault-hivatkozáshoz
+
+A signaler szolgáltatás a felügyelt identitás használatával tud hozzáférni Key Vaulthoz.
+
+1. Rendszerhez rendelt identitás vagy felhasználó által hozzárendelt identitás hozzáadása az Azure Signaler szolgáltatáshoz.
+
+2. Adja meg a titkos olvasási engedélyt a felügyelt identitáshoz a Key Vault hozzáférési házirendjeiben. Lásd: [Key Vault hozzáférési szabályzat kiosztása a Azure Portal használatával](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+
+Ez a funkció jelenleg a következő helyzetekben használható:
+
+- [Hivatkozási titok a felsőbb rétegbeli URL-mintában](./concept-upstream.md#key-vault-secret-reference-in-url-template-settings)
+
+
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](signalr-concept-serverless-development-config.md)

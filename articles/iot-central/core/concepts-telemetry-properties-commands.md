@@ -3,17 +3,17 @@ title: Telemetria-, tulajdonság-és parancssori adattartalom az Azure IoT Centr
 description: Az Azure IoT Central-sablonjai lehetővé teszik az eszközök telemetria, tulajdonságainak és parancsainak megadását. Megtudhatja, hogy az eszközök milyen formátumban cserélhetik az IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/05/2020
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121769"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795343"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonságok és parancsok hasznos adatai
 
@@ -719,7 +719,7 @@ IoT Central az eszköztől az írható tulajdonságok frissítéseire választ v
 
 | Érték | Címke | Leírás |
 | ----- | ----- | ----------- |
-| `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
+| `'ac': 200` | Befejezve | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202`  vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben van vagy folyamatban van |
 | `'ac': 4xx` | Hiba | A kért tulajdonság módosítása érvénytelen volt, vagy hiba történt. |
 | `'ac': 5xx` | Hiba | Az eszköz váratlan hibát észlelt a kért módosítás feldolgozása során. |

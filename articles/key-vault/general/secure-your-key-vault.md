@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 5e1f8a099256040e14db1cdab288551a228512cd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ee1c59c71834ab9d80f1ed66a002e211bdcacbbf
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655373"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796499"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -130,7 +130,7 @@ A Key Vault tűzfallal és virtuális hálózatokkal kapcsolatos további inform
 
 ## <a name="private-endpoint-connection"></a>Magánhálózati végponti kapcsolatok
 
-Ha teljes mértékben le kell tiltani Key Vault a nyilvános expozíciót, egy Azure-beli [privát végpont](../../private-link/private-endpoint-overview.md) is használható. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
+Ha teljes mértékben le kell tiltani Key Vault a nyilvánosságnak való kitettséget, egy [Azure-beli magánhálózati végpont](../../private-link/private-endpoint-overview.md) is használható. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
 Az Azure-szolgáltatások privát hivatkozásának használatának gyakori forgatókönyvei:
 
@@ -185,10 +185,10 @@ A következő táblázat összefoglalja a szerepkörök és alkalmazások hozzá
 | Szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei – tár-hozzáférési szabályzatok | Adatsík engedélyei – Azure RBAC (előzetes verzió)  |
 | --- | --- | --- | --- |
 | Biztonsági csapat | [Key Vault közreműködő](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Tanúsítványok: minden művelet <br> Kulcsok: minden művelet <br> Titkok: minden művelet | [Key Vault rendszergazda (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
-| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincs | Nincs |
-| Ellenőrök | Nincs | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
-| Azure Storage-tárfiók neve | Nincs | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | [Titkosítási szolgáltatás titkosítása Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
-| Alkalmazás | Nincs | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault Secret User (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
+| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | None | None |
+| Ellenőrök | None | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
+| Azure Storage-tárfiók neve | None | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | [Titkosítási szolgáltatás titkosítása Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
+| Alkalmazás | None | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | [Key Vault olvasó (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault Secret User (előzetes verzió)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 A három csoport szerepköreinek más erőforrásokhoz való hozzáférésre van szükségük Key Vault engedélyekkel együtt. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek telepíteniük kell a hozzáférést. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, ahol a Key Vault-naplókat tárolják.
 
@@ -205,7 +205,7 @@ Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli for
 - [Azure RBAC-vel](../../role-based-access-control/overview.md)
 - [Privát kapcsolat](../../private-link/private-link-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hitelesítés az Azure Key Vaulttal](authentication.md)
 

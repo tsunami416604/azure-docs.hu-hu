@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: ce86da7697341e769ada120dc7a941319b64fc18
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 935aa8297e8b244bfd05483f07aad3eadb485f1b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109538"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797077"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Oktatóanyag: AWS-példányok felderítése kiszolgáló-értékeléssel
 
@@ -20,7 +20,7 @@ Az Azure-ba való Migrálás részeként felderítheti a kiszolgálókat az ért
 
 Ez az oktatóanyag bemutatja, hogyan derítheti fel Amazon Web Services-(AWS-) példányokat a Azure Migrate: Server Assessment Tool használatával, egy egyszerű Azure Migrate berendezéssel. A készüléket fizikai kiszolgálóként kell üzembe helyezni a gépek és a teljesítmény metaadatainak folyamatos felderítése érdekében.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Azure-fiókot.
@@ -42,7 +42,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 --- | ---
 **Berendezés** | Szüksége van egy EC2 virtuális gépre, amelyen futtatni szeretné a Azure Migrate készüléket. A gépnek a következőket kell tartalmaznia:<br/><br/> – A Windows Server 2016 telepítve van. A készülék futtatása a Windows Server 2019 rendszerű gépen nem támogatott.<br/><br/> -16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület, valamint egy külső virtuális kapcsoló.<br/><br/> -Statikus vagy dinamikus IP-cím, internet-hozzáféréssel, közvetlenül vagy proxyn keresztül.
 **Windows-példányok** | Engedélyezze a bejövő kapcsolatokat a WinRM 5985-as porton (HTTP), hogy a készülék lekérje a konfiguráció és a teljesítmény metaadatait.
-**Linux-példányok** | Bejövő kapcsolatok engedélyezése a 22-es porton (TCP).
+**Linux-példányok** | Bejövő kapcsolatok engedélyezése a 22-es porton (TCP).<br/><br/> A példányok `bash` alapértelmezett rendszerhéjként használhatók, ellenkező esetben a felderítés sikertelen lesz.
 
 ## <a name="prepare-an-azure-user-account"></a>Azure-beli felhasználói fiók előkészítése
 
@@ -222,11 +222,16 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 ### <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
 1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **kiszolgáló értékelése> felderítés> a meglévő berendezések kezelése** lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
-1. Kattintson a **Bejelentkezés** elemre. Egy új böngésző lapon nyit meg egy Azure-beli bejelentkezési kérést. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
-1. Az új lapon jelentkezzen be az Azure-beli felhasználónevével és jelszavával.
+1. Szüksége lesz egy eszköz kódjára az Azure-beli hitelesítéshez. A **Bejelentkezés** gombra kattintva megnyílik egy modális az eszköz kódjával az alább látható módon.
+
+    ![Az eszköz kódját ábrázoló modális](./media/tutorial-discover-vmware/device-code.png)
+
+1. Kattintson a **kód másolása & a bejelentkezés** elemre az eszköz kódjának másolásához és egy új böngésző lapon található Azure-beli bejelentkezési kérés megnyitásához. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
+1. Az új lapon illessze be az eszköz kódját, és jelentkezzen be az Azure-beli felhasználónevével és jelszavával.
    
    A PIN-kóddal való bejelentkezés nem támogatott.
-3. A sikeres bejelentkezést követően térjen vissza a webalkalmazáshoz. 
+3. Ha a bejelentkezés lapot véletlenül a bejelentkezés nélkül zárta be, frissítenie kell a készülék Configuration Manager böngésző lapját, hogy ismét engedélyezze a bejelentkezés gombot.
+1. Miután sikeresen bejelentkezett, lépjen vissza az előző lapra a készülék Configuration Managerrel.
 4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő [engedélyekkel](./tutorial-discover-physical.md) a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
 1. A készülék sikeres regisztrálása után a **részletek megtekintése** lehetőségre kattintva megtekintheti a regisztráció részleteit.
 
@@ -243,6 +248,10 @@ Most kapcsolódjon a készülékről a felderíteni kívánt fizikai kiszolgál�
     - Azure Migrate támogatja az ssh-keygen parancs által generált SSH titkos kulcsot RSA, DSA, ECDSA és ed25519 algoritmusok használatával.
     - A Azure Migrate jelenleg nem támogatja a jelszó-alapú SSH-kulcsot. Jelszó nélkül használjon SSH-kulcsot.
     - Jelenleg Azure Migrate nem támogatja a PuTTY által generált SSH titkos kulcs fájlját.
+    - Azure Migrate támogatja az SSH titkos kulcs fájljának OpenSSH formátumát az alábbiak szerint:
+    
+    ![A titkos SSH-kulcs támogatott formátuma](./media/tutorial-discover-physical/key-format.png)
+
 
 1. Ha egyszerre több hitelesítő adatot szeretne felvenni, kattintson a **továbbiak hozzáadása** elemre, és adjon hozzá további hitelesítő adatokat. A fizikai kiszolgálók felderítéséhez több hitelesítő adat is támogatott.
 1. A **2. lépés: fizikai vagy virtuális kiszolgáló adatainak** megadása elemnél kattintson a **felderítési forrás hozzáadása** lehetőségre a kiszolgáló **IP-címének/teljes tartománynevének** és a kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítő adatok rövid nevének megadásához.
@@ -269,7 +278,7 @@ A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjele
 1. Nyissa meg az Azure Migrate irányítópultját.
 2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók** darabszámát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure-beli virtuális gépekre való Migrálás [fizikai kiszolgálóinak felmérése](tutorial-migrate-aws-virtual-machines.md) .
 - [Tekintse át a](migrate-appliance.md#collected-data---physical) berendezés által a felderítés során gyűjtött adatokat.
