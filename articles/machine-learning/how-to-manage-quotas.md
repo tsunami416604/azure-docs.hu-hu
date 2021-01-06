@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 58dacc9e65da6502d083446cb7202c222cb7e795
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1b43a1ceb1f9e098e4932b405553ae8f33e27262
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034037"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937348"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kvótáinak kezelése és növelése Azure Machine Learning
 
@@ -29,7 +29,7 @@ Az Azure korlátozza a korlátokat és a kvótákat, hogy megakadályozza a köl
 > + A kvóta kérése növekszik.
 > + Magánhálózati végpontok és DNS-kvóták.
 
-A kvóták kezelése mellett megismerheti a [Azure Machine learning költségeinek megtervezését és kezelését](concept-plan-manage-cost.md).
+A kvóták kezelése mellett megtudhatja, hogyan [tervezheti meg és kezelheti Azure Machine learning](concept-plan-manage-cost.md) vagy [Azure Machine learning szolgáltatási korlátozásait](resource-limits-quotas-capacity.md).
 
 ## <a name="special-considerations"></a>Különleges szempontok
 
@@ -53,7 +53,9 @@ Ebben a szakaszban az alábbi erőforrásokra vonatkozó alapértelmezett és ma
 + Azure Storage
 
 > [!IMPORTANT]
-> A korlátozások változhatnak. A legfrissebb információkért tekintse meg az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md) az Azure-ban.
+> A korlátozások változhatnak. A legfrissebb információkért lásd:  [szolgáltatási korlátozások a Azure Machine Learningban](resource-limits-quotas-capacity.md).
+
+
 
 ### <a name="azure-machine-learning-assets"></a>Eszközök Azure Machine Learning
 Az eszközökön a következő korlátozások vonatkoznak a munkaterület alapján. 
@@ -104,7 +106,7 @@ A következő táblázat a platform további korlátozásait mutatja be. Ha kiv�
 #### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning folyamatok
 [Azure Machine learning folyamatok](concept-ml-pipelines.md) a következő korlátokkal rendelkeznek.
 
-| **Erőforrás** | **Korlát** |
+| **Erőforrás** | **Korlátot** |
 | --- | --- |
 | A folyamat lépései | 30 000 |
 | Munkaterületek erőforráscsoport szerint | 800 |
@@ -207,6 +209,7 @@ Ezen forgatókönyvek esetében a következő lépések végrehajtásával igén
 
 :::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="Képernyőkép a privát végpontról és a saját DNS-kvóta növeléséről.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [A Azure Machine Learning költségeinek megtervezése és kezelése](concept-plan-manage-cost.md)
++ [Szolgáltatási korlátozások a Azure Machine Learning](resource-limits-quotas-capacity.md)
