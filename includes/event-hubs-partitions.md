@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 11/24/2020
+ms.date: 01/05/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ce906ad62b51956cb85f854846740fa09e06895d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 780da47e6f071d854a16ca1d1c5cd02dbdd6bef0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97665195"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955644"
 ---
 Az Event hub egy vagy több partícióba rendezi az események szakaszait. Ahogy újabb események érkeznek, a rendszer hozzáadja a sorozatot a végéhez. A partíció elképzelhető egy „véglegesítési naplóként”.
 
@@ -21,11 +21,11 @@ A partíciók az esemény törzsét tartalmazó eseményvezérelt adatokat, a fe
 
 ![Diagram, amely megjeleníti a régebbi és újabb események eseménysorozat.](./media/event-hubs-partitions/partition.png)
 
-Event Hubs úgy lett kialakítva, hogy segítse a nagyon nagy mennyiségű esemény feldolgozását, és a particionálás a következő két módon segít:
+Event Hubs úgy lett kialakítva, hogy segítse a nagy mennyiségű esemény feldolgozását, és a particionálás két módon segít:
 
 Először is, bár Event Hubs egy Pásti szolgáltatás, van egy fizikai valóság, és az események sorrendjének megőrzéséhez szükséges napló fenntartása megköveteli, hogy ezeket az eseményeket a mögöttes tárolóban és a replikákban is megőrizze, ami egy ilyen napló teljesítményének felső határát eredményezi. A particionálás lehetővé teszi, hogy több párhuzamos naplót lehessen használni ugyanahhoz az Event hub-hoz, és így megszorozza a rendelkezésre álló nyers IO-átviteli kapacitást.
 
-Másodszor, a saját alkalmazásainak képesnek kell lenniük az Event hub-ba küldött események mennyiségének feldolgozására. Ez elég összetett lehet, és jelentős, kibővített, párhuzamos feldolgozási kapacitást igényel. A partíciók indoklása ugyanaz, mint a fenti: az események kezelésére szolgáló egyetlen folyamat kapacitása korlátozott, ezért több folyamatra van szükség, és a partíciók a megoldás a folyamatokat is kihasználják, és egyúttal gondoskodnak arról, hogy minden eseménynek legyen egyértelmű feldolgozó tulajdonosa. 
+Másodszor, a saját alkalmazásainak képesnek kell lenniük az Event hub-ba küldött események mennyiségének feldolgozására. Összetett lehet, és jelentős, kibővített, párhuzamos feldolgozási kapacitást igényel. A partíciók indoklása ugyanaz, mint a fenti: az események kezelésére szolgáló egyetlen folyamat kapacitása korlátozott, ezért több folyamatra van szükség, és a partíciók a megoldás a folyamatokat is kihasználják, és egyúttal gondoskodnak arról, hogy minden eseménynek legyen egyértelmű feldolgozó tulajdonosa. 
 
 Event Hubs megőrzi az összes partícióra vonatkozó beállított megőrzési idő eseményeit. Az események automatikusan törlődnek a megőrzési időtartam elérésekor. Ha egy nap megőrzési időtartamot ad meg, az esemény az elfogadás után nem lesz elérhető pontosan 24 órával. Az eseményeket nem lehet explicit módon törölni. 
 
@@ -51,7 +51,7 @@ A partíciós kulcs megadásával a kapcsolódó események együtt ugyanabban a
 
 Egy partíciós kulcs által azonosított események egy része egy *adatfolyam*. A partíciók több ilyen streamhez készült, multiplexes naplófájlok. 
 
-Az Event hub partícióinak száma megnövelhető az Event hub létrejötte után, de a partíciók közötti elosztás megváltozhat, amikor a partíciós kulcsok a partíciók változásaihoz való leképezése történik, ezért a változtatások elkerülése érdekében nehéz elkerülni az ilyen módosításokat, ha az alkalmazásban az események relatív sorrendje is fennáll.
+Egy [dedikált Event Hubs-fürtben](../articles/event-hubs/event-hubs-dedicated-overview.md) lévő Event hub partícióinak száma [megnövelhető](../articles/event-hubs/dynamically-add-partitions.md) az Event hub létrehozása után, de a partíciók közötti elosztás a partíciók közötti eloszlásban változik, ha a partíciós kulcsok a partíciók változásaihoz való leképezése történik, ezért nehéz elkerülni az ilyen módosításokat, ha az adott alkalmazásban az események relatív sorrendje is fennáll.
 
 A maximálisan megengedett értékhez tartozó partíciók számának beállítása csábító, de mindig vegye figyelembe, hogy az esemény-adatfolyamokat strukturálni kell, hogy valóban több partíciót is kihasználhassanak. Ha az összes esemény vagy csak néhány ALStream esetében abszolút megrendelés-megőrzésre van szüksége, akkor előfordulhat, hogy nem tudja kihasználni a sok partíciót. Emellett sok partíció is összetettebbvé teszi a feldolgozási oldalt. 
 

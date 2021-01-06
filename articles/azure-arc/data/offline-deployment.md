@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 575903654a165bef0d09ac6abf0793af3f6784e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fa0b6ca41349d20614a64006536e78d8ee71844
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940608"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955365"
 ---
 # <a name="offline-deployment-overview"></a>Offline üzembe helyezés – áttekintés
 
@@ -22,7 +22,7 @@ Az Azure arc-adatvezérlő létrehozásához használt tároló-lemezképek jell
 
 Mivel az Azure arc-kompatibilis adatszolgáltatások esetében havi frissítések vannak megadva, és nagy számú tároló-lemezkép van, a legjobb megoldás a tároló lemezképének lekérése és lekérése egy privát tároló-beállításjegyzékbe parancsfájl használatával.  A parancsfájl automatizálható vagy manuálisan is futtatható.
 
-Egy [minta parancsfájl](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) az Azure arc GitHub-tárházban található.
+Egy [minta parancsfájl](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) az Azure arc GitHub-tárházban található.
 
 > [!NOTE]
 > Ehhez a parancsfájlhoz a Python és a [Docker parancssori](https://docs.docker.com/install/)felület telepítése szükséges.

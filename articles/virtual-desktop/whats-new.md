@@ -3,17 +3,17 @@ title: A Windows rendszerű virtuális asztal újdonságai – Azure
 description: Új szolgáltatások és Termékfrissítések a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: overview
-ms.date: 12/02/2020
+ms.date: 01/06/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: df3dd8b5b18ec2997ee20ad4955ffd7bc1dc573d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617357"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955008"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -25,6 +25,44 @@ A Windows rendszerű virtuális asztali frissítések rendszeres időközönkén
 - Hibajavítások
 
 Ez a cikk havonta frissül. Ügyeljen arra, hogy az új frissítések megtartása érdekében gyakran térjen vissza ide.
+
+## <a name="december-2020"></a>2020. december
+
+A következőképpen módosult a 2020 decemberében: 
+
+### <a name="azure-monitor-for-windows-virtual-desktop"></a>Azure Monitor a Windows rendszerű virtuális asztalhoz
+
+A Windows rendszerű virtuális asztali Azure Monitor nyilvános előzetes verziója már elérhető. Ez az új szolgáltatás olyan robusztus irányítópultot tartalmaz, amely Azure Monitor munkafüzetekre épül, így az informatikai szakemberek megismerhetik a Windows rendszerű virtuális asztali környezeteket. További részletekért tekintse [meg a blogon bejelentést](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587) . 
+
+### <a name="azure-resource-manager-template-change"></a>Azure Resource Manager sablon módosítása 
+
+A legújabb frissítés során a rendszer eltávolította az összes nyilvános IP-cím paramétert a Azure Resource Manager sablonból a gazdagépek létrehozásához és üzembe helyezéséhez. Javasoljuk, hogy ne használjon nyilvános IP-címeket a Windows rendszerű virtuális asztali környezet számára a központi telepítés biztonságának megőrzése érdekében. Ha a központi telepítés nyilvános IP-címekre támaszkodik, akkor újra kell konfigurálnia a magánhálózati IP-címek használatára, ellenkező esetben a telepítés nem fog megfelelően működni.
+
+### <a name="msix-app-attach-public-preview"></a>Nyilvános előzetes MSIX alkalmazás 
+
+A MSIX-alkalmazás csatolása egy másik szolgáltatás, amely ebben a hónapban megkezdte a nyilvános előzetes verziót. A MSIX-alkalmazás csatolása egy olyan szolgáltatás, amely dinamikusan mutatja be a MSIX-alkalmazásokat a Windows rendszerű virtuális asztali munkamenetgazda-alapú virtuális gépek számára. További részletekért tekintse [meg a blogon bejelentést](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231) . 
+
+### <a name="screen-capture-protection"></a>Képernyőfelvételek védelme 
+
+Ebben a hónapban a képernyőfelvételek védelméhez a nyilvános előzetes verzió elején is meg lett jelölve. Ezzel a szolgáltatással megakadályozhatja a bizalmas adatok rögzítését az ügyfél-végpontokon. A képernyőfelvételek védelmének megadásához nyissa meg [ezt a lapot](https://aka.ms/WVDScreenCaptureProtection).  
+
+### <a name="built-in-roles"></a>Beépített szerepkörök
+
+Új beépített szerepköröket adtunk hozzá a Windows virtuális asztal rendszergazdai engedélyeihez. További információ: [beépített szerepkörök a Windows rendszerű virtuális asztali gépekhez](rbac.md). 
+
+### <a name="application-group-limit-increase"></a>Application Group-korlát növekedése
+
+Megnövelte az alapértelmezett alkalmazáscsoport-korlátot Azure Active Directory bérlőről 200 csoportra.
+
+### <a name="client-updates-for-december-2020"></a>Ügyfelek frissítései december 2020
+
+A következő ügyfelek új verzióit adtuk ki: 
+
+- Android
+- macOS
+- Windows
+
+Az ügyfelek frissítéseivel kapcsolatos további információkért lásd: [ügyfelek frissítései](whats-new.md#client-updates).
 
 ## <a name="november-2020"></a>2020. november
 

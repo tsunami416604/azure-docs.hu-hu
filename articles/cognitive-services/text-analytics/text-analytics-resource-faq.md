@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 01/05/2021
 ms.author: aahi
-ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364938"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955042"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Gyakori kérdések (GYIK) a Text Analytics kognitív szolgáltatásról
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Gyakran ismételt kérdések (GYIK) a Text Analytics API
 
- Válaszok az Azure-beli Microsoft Cognitive Services Text Analytics API kapcsolatos fogalmakkal, kódokkal és forgatókönyvekkel kapcsolatos gyakori kérdésekre.
+ Az Azure Cognitive Services Text Analytics API kapcsolódó fogalmakkal, kóddal és forgatókönyvekkel kapcsolatos gyakori kérdésekre adott válaszokat talál.
 
 ## <a name="can-text-analytics-identify-sarcasm"></a>Képes Text Analytics azonosítani a szarkazmust?
 
@@ -47,11 +47,21 @@ A kimenet általában a mondatok és a mondat objektumaiból áll. A kimenet fon
 
 A modellek és algoritmusok fejlesztése akkor jelent meg, ha a módosítás jelentős, vagy ha a frissítés kisebb, akkor a szolgáltatás csendesen slipstreamed. Az idő múlásával előfordulhat, hogy ugyanaz a szöveges bevitel egy másik hangulati pontszám vagy a kulcs kifejezésének kimenetét eredményezi. Ez a felügyelt gépi tanulási erőforrások Felhőbeli használatának normális és szándékos következménye.
 
+## <a name="service-availability-and-redundancy"></a>Szolgáltatás rendelkezésre állása és redundancia
+
+### <a name="is-text-analytics-service-zone-resilient"></a>A Text Analytics szolgáltatási zóna rugalmas?
+
+Igen. A Text Analytics szolgáltatás alapértelmezés szerint rugalmas zónában van.
+
+### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>Hogyan konfigurálja a Text Analytics szolgáltatást zónákra rugalmasan?
+
+A zóna rugalmasságának engedélyezéséhez nincs szükség ügyfél-konfigurációra. A Text Analytics erőforrások rugalmassága alapértelmezés szerint elérhető, és maga a szolgáltatás kezeli.
+
 ## <a name="next-steps"></a>További lépések
 
 Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Javasoljuk, hogy a [UserVoice webhelyén](https://cognitive.uservoice.com/forums/555922-text-analytics)kérjen vagy szavazzon.
 
 ## <a name="see-also"></a>Lásd még
 
- [StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ * [StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ * [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

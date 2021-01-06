@@ -4,15 +4,15 @@ description: Érzékelők és a helyszíni felügyeleti konzol felhasználóinak
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c3a9e1c7e96d0392e1f94b71549f612738622dea
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840964"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955112"
 ---
 # <a name="about-defender-for-iot-console-users"></a>A IoT-konzol felhasználói
 
@@ -89,8 +89,8 @@ Ez a szakasz a felhasználók definiálásának módját ismerteti. A Cyberx, a 
 Felhasználó definiálása:
 
 1. Az érzékelő vagy a helyszíni felügyeleti konzol bal oldali ablaktábláján válassza a **felhasználók** lehetőséget.
-2. A **felhasználók** ablakban válassza a **felhasználó létrehozása** lehetőséget.
-3. A **felhasználó létrehozása** panelen adja meg a következő paramétereket:
+1. A **felhasználók** ablakban válassza a **felhasználó létrehozása** lehetőséget.
+1. A **felhasználó létrehozása** panelen adja meg a következő paramétereket:
 
    - **Felhasználónév**: adjon meg egy felhasználónevet.
    - **E-mail**: adja meg a felhasználó e-mail-címét.
@@ -122,7 +122,7 @@ A parancs elérése:
 
 1. Jelentkezzen be a CLI-be az érzékelő vagy a helyszíni felügyeleti konzolhoz a Defender használatával a IoT rendszergazdai hitelesítő adataival.
 
-2. Írja be a következő szöveget: `sudo nano /var/cyberx/properties/authentication`.
+1. Írja be a következő szöveget: `sudo nano /var/cyberx/properties/authentication`.
 
 ```azurecli-interactive
     infinity_session_expiration = true
@@ -138,7 +138,6 @@ A parancs elérése:
 A funkció letiltásához váltson át a következőre: `infinity_session_expiration = true` `infinity_session_expiration = false` .
 
 A kijelentkezési számlálási időszakok frissítéséhez módosítsa az `= <number>` értéket a szükséges időpontra.
-
 
 ## <a name="track-user-activity"></a>Felhasználói tevékenység nyomon követése 
 
@@ -171,11 +170,11 @@ Active Directory konfigurálása:
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Megtekintheti Active Directory rendszerbeállításait.":::
 
-2. A **Rendszerbeállítások** panelen válassza a **Active Directory** lehetőséget.
+1. A **Rendszerbeállítások** panelen válassza a **Active Directory** lehetőséget.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Szerkessze Active Directory konfigurációját.":::
 
-3. Az **Active Directory konfigurációjának szerkesztése** párbeszédpanelen válassza a **Active Directory integráció engedélyezve**  >  **Mentés** lehetőséget. A **Active Directory konfigurációjának szerkesztése** párbeszédpanel kibontja, és megadhatja a Active Directory konfigurálásához szükséges paramétereket.
+1. Az **Active Directory konfigurációjának szerkesztése** párbeszédpanelen válassza a **Active Directory integráció engedélyezve**  >  **Mentés** lehetőséget. A **Active Directory konfigurációjának szerkesztése** párbeszédpanel kibontja, és megadhatja a Active Directory konfigurálásához szükséges paramétereket.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Adja meg a Active Directory konfigurálásához szükséges paramétereket.":::
 
@@ -184,7 +183,7 @@ Active Directory konfigurálása:
     > - Az összes Active Directory paraméternél csak kisbetűset használjon. A kisbetűset akkor is használja, ha a Active Directory konfigurációi nagybetűket használnak.
     > - Ugyanahhoz a tartományhoz nem állítható be az LDAP és az LDAP. Ugyanakkor a különböző tartományokhoz is használhat egyszerre egy időben.
 
-4. Állítsa be a Active Directory kiszolgáló paramétereit az alábbiak szerint:
+1. Állítsa be a Active Directory kiszolgáló paramétereit az alábbiak szerint:
 
    | Kiszolgáló paraméter | Leírás |
    |--|--|
@@ -194,11 +193,81 @@ Active Directory konfigurálása:
    | Active Directory csoportok | Adja meg az LDAP-kiszolgálón Active Directory konfigurációjában definiált csoportnevet. |
    | Megbízható tartományok | Megbízható tartomány hozzáadásához adja hozzá a tartománynevet és a megbízható tartomány kapcsolódási típusát. <br />A megbízható tartományokat csak a felhasználók által definiált felhasználók számára állíthatja be. |
 
-5. Válassza a **Mentés** lehetőséget.
+1. Válassza a **Mentés** lehetőséget.
 
-6. Megbízható kiszolgáló hozzáadásához válassza a **kiszolgáló hozzáadása** lehetőséget, és konfigurálja a másik kiszolgálót.
+1. Megbízható kiszolgáló hozzáadásához válassza a **kiszolgáló hozzáadása** lehetőséget, és konfigurálja a másik kiszolgálót.
 
-## <a name="see-also"></a>További információ
+## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>A felhasználó jelszavának alaphelyzetbe állítása az érzékelő vagy a helyszíni felügyeleti konzol esetében
+
+### <a name="cyberx-or-support-user"></a>CyberX vagy támogató felhasználó
+
+Csak a **CyberX** és a **támogatási** felhasználó férhet hozzá a **Jelszó-helyreállítási** szolgáltatáshoz. Ha a **CyberX** vagy a **támogatási** felhasználó elfelejtette a jelszavát, akkor a jelszó- **helyreállítási** lehetőséggel visszaállíthatja a jelszót a IoT bejelentkezési oldalára.
+
+CyberX vagy támogató felhasználó jelszavának alaphelyzetbe állítása:
+
+1. A IoT-beli Defender-bejelentkezési képernyőn válassza a  **jelszó-helyreállítás** lehetőséget. Megnyílik a **Jelszó-helyreállítási** képernyő.
+
+1. Válassza a **CyberX** vagy a **támogatás** lehetőséget, és másolja ki az egyedi azonosítót.
+
+1. Navigáljon a Azure Portal, és válassza a **helyek és érzékelők** lehetőséget.  
+
+1. Válassza ki az **előfizetés-szűrő** ikont :::image type="icon" source="media/password-recovery-images/subscription-icon.png" border="false":::  a felső eszköztáron, és válassza ki azt az előfizetést, amelyhez az érzékelő csatlakozik.
+
+1. Jelölje be a helyszíni **felügyeleti konzol jelszavának helyreállítása** lapot.
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="A helyreállítási fájl letöltéséhez kattintson a helyszíni felügyelet helyreállítása gombra.":::
+
+1. Adja meg a **Jelszó-helyreállítási** képernyőn kapott egyedi azonosítót, és kattintson a **helyreállítás** elemre. A `password_recovery.zip` Fájl letöltése megtörténik.
+
+    > [!NOTE]
+    > Ne változtassa meg a jelszó-helyreállítási fájlt. Ez egy aláírt fájl, és nem fog működni, ha Ön nem módosítja.
+
+1. A **Jelszó-helyreállítási** képernyőn válassza a **feltöltés** lehetőséget. Ekkor megnyílik **a jelszó feltöltése helyreállítási fájl** ablak.
+
+   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="Töltse fel a helyreállítási fájlt új jelszó beszerzéséhez.":::
+
+1. Válassza a **Tallózás** lehetőséget a fájl megkereséséhez `password_recovery.zip` , vagy húzza a fájlt az `password_recovery.zip` ablakra.
+
+    > [!NOTE]
+    > Hibaüzenet jelenhet meg, amely azt jelzi, hogy a fájl érvénytelen. A hibaüzenet kijavításához győződjön meg arról, hogy a megfelelő előfizetést választotta a letöltés előtt, `password_recovery.zip` majd töltse le újra.  
+
+1. Ezután a **tovább** gombra, a felhasználó és a rendszer által létrehozott jelszó jelenik meg a felügyeleti konzolon.
+
+### <a name="administrator-security-analyst-and-read-only-user"></a>Rendszergazda, biztonsági elemző és csak olvasási jogosultsággal rendelkező felhasználó
+
+Az írásvédett és a biztonsági elemzők nem tudják visszaállítani a saját jelszavukat, és a jelszavuk alaphelyzetbe állításához fel kell venniük a kapcsolatot a rendszergazdával, a támogatással vagy a CyberX szerepkörrel rendelkező felhasználóval. A rendszergazdának kapcsolatba kell lépnie a **CyberX** vagy a **támogatási** felhasználóval a jelszavuk alaphelyzetbe állításához.
+
+A felhasználó jelszavának alaphelyzetbe állítása az érzékelőn:
+
+1. A rendszergazdának, a támogatásnak vagy a CyberX szerepkör-felhasználónak be kell jelentkeznie az érzékelőbe.
+
+1. Válassza a **felhasználók** lehetőséget a bal oldali panelen.
+
+   :::image type="content" source="media/password-recovery-images/sensor-page.png" alt-text="Válassza ki a felhasználó lehetőséget a bal oldali ablaktáblán.":::
+
+1. Keresse meg a felhasználót, és válassza a **Szerkesztés** lehetőséget a **műveletek** legördülő menüből.
+
+   :::image type="content" source="media/password-recovery-images/edit.png" alt-text="Válassza a szerkesztés lehetőséget a műveletek legördülő menüből.":::
+
+1. Adja meg az új jelszót az **új jelszóban, és** **erősítse meg az új jelszó** mezőket.
+
+1. Válassza a **Frissítés** lehetőséget.
+
+A felhasználó jelszavának alaphelyzetbe állítása a helyszíni felügyeleti konzolon:
+
+1. A rendszergazdának, a támogatásnak vagy a CyberX szerepkör-felhasználónak be kell jelentkeznie az érzékelőbe.
+
+1. Válassza a **felhasználók** lehetőséget a bal oldali panelen.
+
+   :::image type="content" source="media/password-recovery-images/console-page.png" alt-text="A bal oldali panelen válassza a felhasználó lehetőséget.":::
+
+1. Keresse meg a felhasználót, és kattintson a Szerkesztés ikonra :::image type="icon" source="media/password-recovery-images/edit-icon.png" border="false"::: .
+
+1. Adja meg az új jelszót az **új jelszóban, és** **erősítse meg az új jelszó** mezőket.
+
+1. Válassza a **Frissítés** lehetőséget.
+
+## <a name="see-also"></a>Lásd még
 
 [Az érzékelő](how-to-activate-and-set-up-your-sensor.md) 
  aktiválása és beállítása [A helyszíni felügyeleti konzol](how-to-activate-and-set-up-your-on-premises-management-console.md) 

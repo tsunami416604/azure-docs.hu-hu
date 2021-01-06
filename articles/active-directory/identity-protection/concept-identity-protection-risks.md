@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180642"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954485"
 ---
 # <a name="what-is-risk"></a>Mit jelent a kockázat?
 
@@ -63,6 +63,9 @@ Ezek a kockázatok valós időben vagy a Microsoft belső és külső veszélyfo
 | Gyanús beérkezett fájlok kezelésére vonatkozó szabályok | Offline | Ezt az észlelést [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)észlelte. Ez az észlelési profil a környezetet, és riasztást küld, ha gyanús szabályok vannak beállítva, amelyek üzeneteket vagy mappákat törölnek vagy helyeznek át egy felhasználó postaládájába. Ez az észlelés azt jelezheti, hogy a felhasználó fiókja biztonságban van, hogy az üzenetek szándékosan rejtettek, és a postaláda a levélszemét vagy a kártevők terjesztésére szolgál a szervezetben. |
 | Jelszó spray | Offline | A jelszó-szórásos támadás olyankor történik, ahol több felhasználónevet is megtámadnak a gyakori jelszavakkal egy egységes találgatásos kényszerített módon a jogosulatlan hozzáférés megszerzéséhez. Ez a kockázati észlelés akkor aktiválódik, ha jelszó-szórásos támadást hajtottak végre. |
 | Lehetetlen utazás | Offline | Ezt az észlelést [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel)észlelte. Ez az észlelés két felhasználói tevékenységet azonosít (egy vagy több munkamenet), amely a földrajzilag távoli helyekről származik, és a felhasználó az első helyről a másikra való utazásnál rövidebb időt vett igénybe, ami azt jelzi, hogy egy másik felhasználó ugyanazokat a hitelesítő adatokat használja. |
+| Új ország | Offline | Ezt az észlelést [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country)észlelte. Ez az észlelés a múltbeli tevékenységek helyét vizsgálja meg az új és a ritkán használt helyszínek meghatározásához. Az anomáliák észlelési motorja a szervezet felhasználói által használt korábbi helyekre vonatkozó adatokat tárolja. |
+| Névtelen IP-címről származó tevékenység | Offline | Ezt az észlelést [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses)észlelte. Ez az észlelés azt azonosítja, hogy a felhasználók olyan IP-címről voltak aktívak, amelyet névtelen proxy IP-címként azonosítottak. |
+| Gyanús beérkezett fájlok továbbítása | Offline | Ezt az észlelést [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding)észlelte. Ez az észlelés gyanús e-mail továbbítási szabályokat keres, például ha egy felhasználó létrehozott egy beérkezett fájlok nevű szabályt, amely az összes e-mail-másolatát egy külső címre továbbítja. |
 
 ### <a name="other-risk-detections"></a>Egyéb kockázati észlelések
 
@@ -107,7 +110,7 @@ Ha még nem látott kiszivárgott hitelesítőadat-kockázati eseményt, az a k�
 
 A hitelesítő adatok feldolgozása közvetlenül a megtalálása után történik, általában naponta több kötegben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A kockázatok enyhítésére rendelkezésre álló szabályzatok](concept-identity-protection-policies.md)
 - [Biztonsági áttekintés](concept-identity-protection-security-overview.md)

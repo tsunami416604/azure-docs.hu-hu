@@ -4,12 +4,12 @@ description: Ebben a cikkben a Microsoft Azure Backup-kiszolgálóval (MABS) és
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1663a842b7e00c611543451d4caef96b5b5a913f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172573"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954991"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server és DPM – gyakori kérdések
 
@@ -35,7 +35,7 @@ Igen. Először is be kell állítania a DPM, majd telepítenie kell a Azure Bac
 
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Miért nem lehet külső DPM-kiszolgálót felvenni a HASZNÁLNA 7 és a legújabb Azure Backup ügynök telepítése után?
 
-A felhőben védett adatforrásokkal rendelkező DPM-kiszolgálók esetében (a 7. kumulatív frissítésnél korábbi kumulatív frissítés használatával) a HASZNÁLNA 7 és a legújabb Azure Backup ügynök telepítése után meg kell várnia a **külső DPM-kiszolgáló hozzáadásának**megkezdését. Az egynapos időszak szükséges ahhoz, hogy feltöltse a DPM védelmi csoportok metaadatait az Azure-ba. A védelmi csoport metaadatait a rendszer első alkalommal feltölti egy éjszakai feladattal.
+A felhőben védett adatforrásokkal rendelkező DPM-kiszolgálók esetében (a 7. kumulatív frissítésnél korábbi kumulatív frissítés használatával) a HASZNÁLNA 7 és a legújabb Azure Backup ügynök telepítése után meg kell várnia a **külső DPM-kiszolgáló hozzáadásának** megkezdését. Az egynapos időszak szükséges ahhoz, hogy feltöltse a DPM védelmi csoportok metaadatait az Azure-ba. A védelmi csoport metaadatait a rendszer első alkalommal feltölti egy éjszakai feladattal.
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Vannak javaslatok a víruskereső szoftverek kizárásának konfigurálására?
 
@@ -57,6 +57,10 @@ Nincs szükség külön licencelésre a VMware/Hyper-V-védelemhez.
 - Ha Ön a System Center-ügyfél, használja a System Center Data Protection Manager (DPM) szolgáltatást a VMware virtuális gépek elleni védelemhez.
 - Ha nem a System Center-ügyfél, használhatja a Azure Backup Server (utólagos elszámolású) lehetőséget a VMware virtuális gépek elleni védelemhez.
 
+### <a name="can-i-restore-a-backup-of-a-hyper-v-or-vmware-vm-stored-in-azure-to-azure-as-an-azure-vm"></a>Vissza lehet állítani egy Hyper-V vagy VMware virtuális gép biztonsági másolatát az Azure-ban tárolt Azure-beli virtuális gépekre?
+
+Nem, ez jelenleg nem lehetséges. Csak helyszíni gazdagépre lehet visszaállítani.
+
 ## <a name="sharepoint"></a>SharePoint
 
 ### <a name="can-i-recover-a-sharepoint-item-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson-with-protection-on-disk"></a>Helyreállítható egy SharePoint-elem az eredeti helyre, ha a SharePoint az SQL AlwaysOn használatával van konfigurálva (a lemezes védelemmel)?
@@ -67,7 +71,7 @@ Igen, az elem visszaállítható az eredeti SharePoint-webhelyre.
 
 Mivel a SharePoint-adatbázisok konfigurálva vannak az SQL-AlwaysOn, csak akkor módosíthatók, ha a rendelkezésre állási csoport el lett távolítva. Ennek eredményeképpen a DPM nem tudja visszaállítani az adatbázist az eredeti helyére. SQL Server-adatbázist egy másik SQL Server-példányra is helyreállíthatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További gyakori kérdéseket is áttekinthet:
 

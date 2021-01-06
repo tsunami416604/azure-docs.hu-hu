@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: a6f4b0a503e942b79dff28212863831055892246
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916558"
+ms.locfileid: "97955212"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch-tesztelés példaként megadott hosszúságú kimondott szöveg
 
@@ -168,7 +168,7 @@ A diagram két része zöld színnel egyezik a várt előrejelzéssel.
 
 A LUIS lehetővé teszi a kötegelt tesztelést a LUIS portál és a REST API használatával. A REST API végpontjai alább láthatók. További információ a Batch-tesztelésről a LUIS-portál használatával [: oktatóanyag: batch test adatkészletek](luis-tutorial-batch-testing.md). Használja az alábbi teljes URL-címeket, és cserélje le a helyőrző értékeket a saját LUIS előrejelzési kulcsára és a végpontra. 
 
-Ne feledje, hogy adja hozzá a LUIS-kulcsot a `Apim-Subscription-Id` fejléchez, és állítsa a következőre: `Content-Type` `application/json` .
+Ne feledje, hogy adja hozzá a LUIS-kulcsot a `Ocp-Apim-Subscription-Key` fejléchez, és állítsa a következőre: `Content-Type` `application/json` .
 
 ### <a name="start-a-batch-test"></a>Batch-teszt elindítása
 
@@ -259,7 +259,7 @@ Az API több objektumot ad vissza:
 * Megadott hosszúságú kimondott szöveg az előre jelzett és címkézett leképezési nevekkel
 * A hamis pozitív entitások listája, valamint a hamis negatív entitások listája.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, a további hosszúságú kimondott szöveg címkézésével vagy funkciók hozzáadásával javíthatja a LUIS-alkalmazás teljesítményét.
 

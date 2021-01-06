@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan csatlakoztathat Azure Files kötetet az állapo
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: afebdcdc9d9c5852d7fe66ed06ac457c1dbb0afb
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881803"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954974"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure-fájlmegosztás csatlakoztatása az Azure Container Instancesben
 
-Az Azure Container Instances alapértelmezés szerint állapot nélküli. Ha a tároló összeomlik vagy leáll, az összes állapota elvész. Ha azt szeretné, hogy az állapot a tároló élettartamán túl is megmaradjon, külső tárból kell csatlakoztatnia egy kötetet. Ahogy az ebben a cikkben is látható, Azure Container Instances csatlakoztathat [Azure Files](../storage/files/storage-files-introduction.md)használatával létrehozott Azure-fájlmegosztást. A Azure Files teljes körűen felügyelt, az Azure Storage-ban üzemeltetett fájlmegosztást kínál, amelyek az iparági szabványnak megfelelő SMB protokollon keresztül érhetők el. Az Azure-fájlmegosztás Azure Container Instances használatával olyan fájlmegosztási funkciókat biztosít, mint az Azure-fájlmegosztás Azure-beli virtuális gépekkel való használata.
+Az Azure Container Instances alapértelmezés szerint állapot nélküli. Ha a tároló újraindul, összeomlik vagy leáll, az összes állapota elvész. Ha azt szeretné, hogy az állapot a tároló élettartamán túl is megmaradjon, külső tárból kell csatlakoztatnia egy kötetet. Ahogy az ebben a cikkben is látható, Azure Container Instances csatlakoztathat [Azure Files](../storage/files/storage-files-introduction.md)használatával létrehozott Azure-fájlmegosztást. A Azure Files teljes körűen felügyelt, az Azure Storage-ban üzemeltetett fájlmegosztást kínál, amelyek az iparági szabványnak megfelelő SMB protokollon keresztül érhetők el. Az Azure-fájlmegosztás Azure Container Instances használatával olyan fájlmegosztási funkciókat biztosít, mint az Azure-fájlmegosztás Azure-beli virtuális gépekkel való használata.
 
 > [!NOTE]
 > Egy Azure Files-megosztás csatlakoztatása jelenleg csak Linux-tárolók számára engedélyezett. A platform aktuális eltéréseit az [áttekintésben](container-instances-overview.md#linux-and-windows-containers)találja.

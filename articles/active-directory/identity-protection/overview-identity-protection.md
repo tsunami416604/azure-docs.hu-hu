@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/24/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 242e0e4614994c30d0a14b8fe3d7a5c2b217bb5a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033340"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955399"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
 
@@ -49,13 +49,16 @@ Az Identity Protection a következő besorolások kockázatait azonosítja:
 
 | Kockázat észlelésének típusa | Leírás |
 | --- | --- |
-| Szokatlan utazás | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. |
 | Névtelen IP-cím | Jelentkezzen be egy névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek). |
-| Szokatlan bejelentkezési tulajdonságok | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára. |
+| Szokatlan utazás | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. |
 | Kártevők társított IP-címe | Jelentkezzen be egy kártevővel összekapcsolt IP-címről. |
+| Szokatlan bejelentkezési tulajdonságok | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára. |
 | Kiszivárgott hitelesítő adatok | Azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott. |
 | Jelszó spray | Azt jelzi, hogy a rendszer több felhasználónevet is megtámad a közös jelszavakkal egyesített, találgatásos módon. |
 | Azure AD-fenyegetések felderítése | A Microsoft belső és külső veszélyforrások hírszerzési forrásai ismert támadási mintát azonosítottak. |
+| Új ország | Ezt az észlelést [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country)észlelte. |
+| Névtelen IP-címről származó tevékenység | Ezt az észlelést [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses)észlelte. |
+| Gyanús beérkezett fájlok továbbítása | Ezt az észlelést [Microsoft Cloud app Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding)észlelte. |
 
 A kockázatokról és azok kiszámításáról további részleteket a cikkben [találhat.](concept-identity-protection-risks.md)
 
@@ -116,7 +119,7 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 
 A részletes jelentésekkel kapcsolatos további információkért tekintse meg a következő témakört [: a kockázatkezelés kivizsgálása](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Biztonsági áttekintés](concept-identity-protection-security-overview.md)
 

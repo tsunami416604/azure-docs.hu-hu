@@ -1,20 +1,20 @@
 ---
-title: Az érzékelő és a helyszíni felügyeleti konzol hibáinak megoldása
+title: Az érzékelő és a helyszíni felügyeleti konzol hibaelhárítása
 description: Az érzékelő és a helyszíni felügyeleti konzol hibaelhárításával elháríthatja az esetlegesen felmerülő problémákat.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/12/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a57db4f88de4a3b32b4fb315fb331500f955d501
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b91827fc0a6fb8380c9f8aa87a3def3bc1819523
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97840697"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955433"
 ---
-# <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Az érzékelő és a helyszíni felügyeleti konzol hibáinak megoldása
+# <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Az érzékelő és a helyszíni felügyeleti konzol hibaelhárítása
 
 Ez a cikk az érzékelő és a helyszíni felügyeleti konzol alapszintű hibaelhárítási eszközeit ismerteti. Az itt ismertetett elemek mellett a következő módokon is megtekintheti a rendszere állapotát:
 
@@ -28,22 +28,33 @@ Ez a cikk az érzékelő és a helyszíni felügyeleti konzol alapszintű hibael
 
 ### <a name="investigate-password-failure-at-initial-sign-in"></a>Jelszó-meghibásodás vizsgálata a kezdeti bejelentkezéskor
 
-Amikor első alkalommal jelentkezik be egy előre konfigurált nyíl-érzékelőbe, a következő jelszó-helyreállítást kell végrehajtania:
+Amikor először jelentkezik be egy előre konfigurált nyíl-érzékelőbe, el kell végeznie a jelszó-helyreállítást.
 
-1. A IoT-bejelentkezési képernyőn válassza a **Jelszó-helyreállítási** lehetőséget. 
+A jelszó helyreállítása:
 
-   Megnyílik a **Jelszó-helyreállítási** képernyő. A rendszer kéri, hogy válassza ki a felhasználót és az előfizetést, és egyedi azonosítót kap.
+1. A IoT-beli Defender-bejelentkezési képernyőn válassza a  **jelszó-helyreállítás** lehetőséget. Megnyílik a **Jelszó-helyreállítási** képernyő.
 
-1. Nyissa meg a Defender for IoT **Sites and sensors** lapot, és válassza a **saját jelszó helyreállítása** lapot.
+1. Válassza a **CyberX** vagy a **támogatás** lehetőséget, és másolja ki az egyedi azonosítót.
+
+1. Navigáljon a Azure Portal, és válassza a **helyek és érzékelők** lehetőséget.  
+
+1. Jelölje be a helyszíni **felügyeleti konzol jelszavának helyreállítása** lapot.
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="A helyreállítási fájl letöltéséhez kattintson a helyszíni felügyelet helyreállítása gombra.":::
 
 1. Adja meg a **Jelszó-helyreállítási** képernyőn kapott egyedi azonosítót, és kattintson a **helyreállítás** elemre. A `password_recovery.zip` Fájl letöltése megtörténik.
 
-   > [!NOTE]
-   > Ne módosítsa az aktiválási fájlt. Ez egy aláírt fájl, és nem fog működni, ha Ön nem módosítja.
+    > [!NOTE]
+    > Ne változtassa meg a jelszó-helyreállítási fájlt. Ez egy aláírt fájl, és nem fog működni, ha Ön nem módosítja.
 
-1. A **Jelszó-helyreállítási** képernyőn töltse fel a `password_recovery.zip` fájlt, és kattintson a **Tovább gombra**.
+1. A **Jelszó-helyreállítási** képernyőn válassza a **feltöltés** lehetőséget. Ekkor megnyílik **a jelszó feltöltése helyreállítási fájl** ablak.
 
-Ezután megkapja a rendszer által létrehozott jelszót a felügyeleti konzolhoz. 
+1. Válassza a **Tallózás** lehetőséget a fájl megkereséséhez `password_recovery.zip` , vagy húzza a fájlt az `password_recovery.zip` ablakra.
+
+1. Ezután a **tovább** gombra, a felhasználó és a rendszer által létrehozott jelszó jelenik meg a felügyeleti konzolon.
+
+    > [!NOTE]
+    > Ha első alkalommal jelentkezik be az érzékelőbe vagy a helyszíni felügyeleti konzolba, akkor ahhoz az előfizetéshez lesz csatolva, amelyhez csatlakoztatta. Ha alaphelyzetbe kell állítania a CyberX vagy a támogató felhasználó jelszavát, ki kell választania az előfizetést. A CyberX helyreállításával vagy a felhasználói jelszavak támogatásával kapcsolatos további információkért lásd: a [felhasználó jelszavának alaphelyzetbe állítása az érzékelő vagy a helyszíni felügyeleti konzol](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console) számára
 
 ### <a name="investigate-a-lack-of-traffic"></a>Forgalom hiányának vizsgálata
 
@@ -65,35 +76,35 @@ A rendszerteljesítmény ellenõrzése:
 
    :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/dashboard-view-v2.png" alt-text="Képernyőkép a minta-irányítópultról."::: 
 
-2. Az oldalsó menüben válassza az **eszközök** lehetőséget.
+1. Az oldalsó menüben válassza az **eszközök** lehetőséget.
 
-3. Az **eszközök** ablakban ellenőrizze, hogy az eszközök felderítése folyamatban van-e.
+1. Az **eszközök** ablakban ellenőrizze, hogy az eszközök felderítése folyamatban van-e.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/discovered-devices.png" alt-text="Győződjön meg arról, hogy az eszközök fel vannak derítve.":::
 
-4. Az oldalsó menüben válassza az **adatbányászat** lehetőséget.
+1. Az oldalsó menüben válassza az **adatbányászat** lehetőséget.
 
-5. Az **adatbányászat** ablakban válassza az **összes** lehetőséget, és készítsen jelentést.
+1. Az **adatbányászat** ablakban válassza az **összes** lehetőséget, és készítsen jelentést.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="Új jelentés létrehozása az adatbányászat használatával.":::
 
-6. Győződjön meg arról, hogy a jelentés tartalmaz adatfájlokat.
+1. Győződjön meg arról, hogy a jelentés tartalmaz adatfájlokat.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="Győződjön meg arról, hogy a jelentés tartalmaz-e adatfájlokat.":::
 
-7. Az oldalsó menüben válassza a **trendek & statisztikák** lehetőséget.
+1. Az oldalsó menüben válassza a **trendek & statisztikák** lehetőséget.
 
-8. A **trendek & statisztika** ablakban válassza a **widget hozzáadása** elemet.
+1. A **trendek & statisztika** ablakban válassza a **widget hozzáadása** elemet.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/add-widget.png" alt-text="A widget hozzáadásához válassza ki azt.":::
 
-9. Adjon hozzá egy widgetet, és győződjön meg róla, hogy az adatmegjelenítések láthatók
+1. Adjon hozzá egy widgetet, és győződjön meg róla, hogy az adatmegjelenítések láthatók
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/widget-data.png" alt-text="Győződjön meg arról, hogy a widget megjeleníti az adatfájlokat.":::
 
-10. Az oldalsó menüben válassza a **riasztások** lehetőséget. Megjelenik a **riasztások** ablak.
+1. Az oldalsó menüben válassza a **riasztások** lehetőséget. Megjelenik a **riasztások** ablak.
 
-11. Győződjön meg arról, hogy a riasztások létrejöttek.
+1. Győződjön meg arról, hogy a riasztások létrejöttek.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/alerts-created.png" alt-text="Győződjön meg arról, hogy a riasztások létrejöttek.":::
 
@@ -154,9 +165,9 @@ A konfiguráció kijavítása:
 
 1. Kattintson a jobb gombbal a felhő ikonjára az eszköz térképen, és válassza az **IP-címek exportálása** lehetőséget. Másolja a magánjellegű nyilvános tartományokat, és adja hozzá őket az alhálózati listához. További információ: [alhálózatok konfigurálása](how-to-control-what-traffic-is-monitored.md#configure-subnets).
 
-2. Új adatbányászati jelentés létrehozása az internetes kapcsolatokhoz.
+1. Új adatbányászati jelentés létrehozása az internetes kapcsolatokhoz.
 
-3. Az adatbányászati jelentésben válassza :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: a rendszergazdai mód megadását és az internetkapcsolattal rendelkező eszközök IP-címeinek törlését.
+1. Az adatbányászati jelentésben válassza :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: a rendszergazdai mód megadását és az internetkapcsolattal rendelkező eszközök IP-címeinek törlését.
 
 ### <a name="tweak-the-sensors-quality-of-service"></a>Az érzékelő minőségi szolgáltatásának csípése
 
@@ -179,7 +190,7 @@ A szolgáltatás minőségének megcsípése:
    > [!NOTE]
    > Fizikai készülék esetén használja a em1 felületet.
 
-2. Az illesztőfelület korlátozásának törléséhez írja be a következőt: `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` .
+1. Az illesztőfelület korlátozásának törléséhez írja be a következőt: `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` .
 
 ## <a name="on-premises-management-console-troubleshooting-tools"></a>A helyszíni felügyeleti konzol hibaelhárítási eszközei
 
@@ -203,7 +214,7 @@ A szolgáltatás minőségének megcsípése:
 
 1. Jelentkezzen be Defenderként a IoT-felhasználó számára. 
 
-2. Ellenőrizze az alapértelmezett értékeket:
+1. Ellenőrizze az alapértelmezett értékeket:
 
    ```bash
    grep \"notifications\" /var/cyberx/properties/management.properties
@@ -216,20 +227,20 @@ A szolgáltatás minőségének megcsípése:
    notifications.max_time_to_report=10 (seconds)
    ```
 
-3. Az alapértelmezett beállítások szerkesztése:
+1. Az alapértelmezett beállítások szerkesztése:
 
    ```bash
    sudo nano /var/cyberx/properties/management.properties
    ```
 
-4. Szerkessze a következő sorok beállításait:
+1. Szerkessze a következő sorok beállításait:
 
    ```bash
    notifications.max_number_to_report=50
    notifications.max_time_to_report=10 (seconds)
    ```
 
-5. Mentse a módosításokat. Újraindításra nincs szükség.
+1. Mentse a módosításokat. Újraindításra nincs szükség.
 
 ## <a name="export-information-for-troubleshooting"></a>Információk exportálása hibaelhárításhoz
 
@@ -239,13 +250,13 @@ Naplók exportálása:
 
 1. A bal oldali ablaktáblán válassza a **Rendszerbeállítások** elemet.
 
-2. Válassza a **Naplók exportálása** elemet.
+1. Válassza a **Naplók exportálása** elemet.
 
     :::image type="content" source="media/how-to-export-information-for-troubleshooting/export-a-log.png" alt-text="Napló exportálása a rendszertámogatásba.":::
 
-3. A **fájl neve** mezőbe írja be a napló exportálásához használni kívánt fájlnevet. Az alapértelmezett érték az aktuális dátum.
+1. A **fájl neve** mezőbe írja be a napló exportálásához használni kívánt fájlnevet. Az alapértelmezett érték az aktuális dátum.
 
-4. Az exportálni kívánt adatkategóriák meghatározásához válassza ki az adatkategóriákat:  
+1. Az exportálni kívánt adatkategóriák meghatározásához válassza ki az adatkategóriákat:  
 
     | Exportálási kategória | Leírás |
     |--|--|
@@ -261,21 +272,21 @@ Naplók exportálása:
     | **Webalkalmazás-naplók** | Ezzel a beállítással információkat kérhet le az alkalmazás webes felületéről küldött összes kérelemről. |
     | **Rendszerbiztonsági mentés** | Ezzel a beállítással exportálhatja az összes Rendszerinformáció biztonsági másolatát, hogy a rendszer pontos állapotát vizsgálja. |
     | **Szakaszok statisztikája** | Ezzel a beállítással engedélyezheti a protokollok statisztikájának speciális vizsgálatát. |
-    | **Adatbázis-naplók** | Válassza ezt a lehetőséget a naplók a Rendszeradatbázisból való exportálásához. A rendszernaplók kivizsgálása segíti a rendszerproblémák azonosítását. |
+    | **Adatbázis-naplók** | Válassza ezt a lehetőséget a naplók a Rendszeradatbázisból való exportálásához. A rendszernaplók kivizsgálása segít a rendszerproblémák azonosításában. |
     | **Konfigurálás** | Ezzel a beállítással exportálhatja az összes konfigurálható paraméter adatait, így meggyőződhet arról, hogy minden megfelelően van-e konfigurálva. |
 
-5. Az összes beállítás kiválasztásához válassza az **összes kiválasztása** lehetőséget a **Kategóriák kiválasztása** lehetőségnél.
+1. Az összes beállítás kiválasztásához válassza az **összes kiválasztása** lehetőséget a **Kategóriák kiválasztása** lehetőségnél.
 
-6. Válassza a **Naplók exportálása** elemet.
+1. Válassza a **Naplók exportálása** elemet.
 
 Az exportált naplók bekerülnek az **archivált naplók** listájára. Küldje el az egyszeri jelszavas támogatást a támogatási csapatnak egy külön üzenetben, és közepes az exportált naplókból. A támogatási csapat csak a naplók titkosításához használt egyedi egyszeri jelszavas hitelesítéssel képes kinyerni az exportált naplókat.
 
 Az archivált naplók listája legfeljebb öt elemet tartalmazhat. Ha a listában szereplő elemek száma túllépi ezt a számot, a rendszer a legkorábbi elemet törli.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Riasztások megtekintése](how-to-view-alerts.md)
 
-- [SNMP MIB-figyelés beállítása](how-to-set-up-snmp-mib-monitoring.md)
+- [Az SNMP MIB-monitorozás beállítása](how-to-set-up-snmp-mib-monitoring.md)
 
 - [Az érzékelő leválasztási eseményeinek ismertetése](how-to-manage-sensors-from-the-on-premises-management-console.md#understand-sensor-disconnection-events)

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 051a7f506d351a17764e38c760ffba06d224cc38
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422569"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955280"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Azure arc-adatkezelő létrehozása a Kubernetes-eszközökkel
 
@@ -38,11 +38,9 @@ Ha korábban már telepítette az Azure arc-adatkezelőt, ugyanazon a fürtön, 
 ```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
-kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
-kubectl delete postgresql-11s.arcdata.microsoft.com 
-kubectl delete postgresql-12s.arcdata.microsoft.com
-kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
-kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete crd postgresql-11s.arcdata.microsoft.com 
+kubectl delete crd postgresql-12s.arcdata.microsoft.com
 ```
 
 ## <a name="overview"></a>Áttekintés
@@ -59,7 +57,7 @@ Az Azure arc-adatkezelő létrehozása a következő magas szintű lépésekkel 
 Futtassa az alábbi parancsot az egyéni erőforrás-definíciók létrehozásához.  **[A Kubernetes-fürt rendszergazdai engedélyei szükségesek]**
 
 ```console
-kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
+kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
 ```
 
 ## <a name="create-a-namespace-in-which-the-data-controller-will-be-created"></a>Hozzon létre egy névteret, amelyben az adatkezelő létrehozva lesz
@@ -79,7 +77,7 @@ A bootstrapper szolgáltatás kezeli a bejövő kérelmeket olyan egyéni erőfo
 A következő parancs futtatásával hozzon létre egy bootstrapper-szolgáltatást, egy szolgáltatásfiókot a bootstrapper szolgáltatáshoz, valamint egy szerepkör-és szerepkör-kötést a bootstrapper szolgáltatás fiókhoz.
 
 ```console
-kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/bootstrapper.yaml
+kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/bootstrapper.yaml
 ```
 
 Ellenőrizze, hogy fut-e az bootstrapper Pod a következő paranccsal.  Előfordulhat, hogy néhány alkalommal futtatnia kell, amíg az állapot meg nem változik `Running` .
@@ -102,7 +100,7 @@ containers:
       - env:
         - name: ACCEPT_EULA
           value: "Y"
-        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-oct-2020  <-- template value to change
+        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-dec-2020  <-- template value to change
         image: <your registry DNS name or IP address>/<your repo>/arc-bootstrapper:<your tag>
         imagePullPolicy: IfNotPresent
         name: bootstrapper
@@ -150,7 +148,7 @@ echo '<your string to encode here>' | base64
 # echo 'example' | base64
 ```
 
-A Felhasználónév és a jelszó kódolása után létrehozhat egy fájlt a [sablonfájl](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/controller-login-secret.yaml) alapján, és lecserélheti a felhasználónevet és a jelszót.
+A Felhasználónév és a jelszó kódolása után létrehozhat egy fájlt a [sablonfájl](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/controller-login-secret.yaml) alapján, és lecserélheti a felhasználónevet és a jelszót.
 
 Ezután futtassa a következő parancsot a titkos kulcs létrehozásához.
 
@@ -165,26 +163,26 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 
 Most már készen áll az adatvezérlő létrehozására.
 
-Először hozzon létre egy másolatot a [sablonból](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/data-controller.yaml) a számítógépen, hogy az egyes beállítások módosíthatók legyenek.
+Először hozzon létre egy másolatot a [sablonból](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/data-controller.yaml) a számítógépen, hogy az egyes beállítások módosíthatók legyenek.
 
 Szükség szerint szerkessze a következőket:
 
 **SZÜKSÉGES**
-- **hely** : módosítsa ezt úgy, hogy az az Azure-beli hely legyen, ahol a rendszer az adatvezérlő _metaadatait_ tárolja.  Az elérhető Azure-helyszínek listáját az [adatkezelő létrehozása – áttekintés](create-data-controller.md) című cikkben tekintheti meg.
-- **resourceGroup** : az Azure-erőforráscsoport, amelyben létre szeretné hozni az adatkezelő Azure-erőforrását Azure Resource Manager.  Ez az erőforráscsoport általában már létezik, de az adatok Azure-ba történő feltöltésekor nem szükséges.
-- **előfizetés** : annak az előfizetésnek az Azure-előfizetésének GUID azonosítója, amelyhez az Azure-erőforrásokat létre kívánja hozni.
+- **hely**: módosítsa ezt úgy, hogy az az Azure-beli hely legyen, ahol a rendszer az adatvezérlő _metaadatait_ tárolja.  Az elérhető Azure-helyszínek listáját az [adatkezelő létrehozása – áttekintés](create-data-controller.md) című cikkben tekintheti meg.
+- **resourceGroup**: az Azure-erőforráscsoport, amelyben létre szeretné hozni az adatkezelő Azure-erőforrását Azure Resource Manager.  Ez az erőforráscsoport általában már létezik, de az adatok Azure-ba történő feltöltésekor nem szükséges.
+- **előfizetés**: annak az előfizetésnek az Azure-előfizetésének GUID azonosítója, amelyhez az Azure-erőforrásokat létre kívánja hozni.
 
 **AJÁNLOTT ÁTTEKINTENI ÉS MÓDOSÍTANI AZ ALAPÉRTELMEZETT ÉRTÉKEKET**
-- **tárterület.. Osztálynév** : az adatkezelő és a naplófájlok számára használandó tárolási osztály.  Ha nem biztos abban, hogy a rendelkezésre álló tárolási osztályok a Kubernetes-fürtben találhatók, futtassa a következő parancsot: `kubectl get storageclass` .  Az alapértelmezett érték azt `default` feltételezi, hogy a tárolási osztály létezik, és a neve `default` nem az alapértelmezett tárolási osztály. _is_  Megjegyzés: két osztálynév-beállítást kell beállítani a kívánt tárolási osztályra – egyet az adathalmazra, egyet pedig a naplókhoz.
-- **ServiceType** : módosítsa a szolgáltatás típusát arra az értékre, `NodePort` Ha nem használ terheléselosztó.  Megjegyzés: két serviceType-beállítást kell módosítani.
+- **tárterület.. Osztálynév**: az adatkezelő és a naplófájlok számára használandó tárolási osztály.  Ha nem biztos abban, hogy a rendelkezésre álló tárolási osztályok a Kubernetes-fürtben találhatók, futtassa a következő parancsot: `kubectl get storageclass` .  Az alapértelmezett érték azt `default` feltételezi, hogy a tárolási osztály létezik, és a neve `default` nem az alapértelmezett tárolási osztály.   Megjegyzés: két osztálynév-beállítást kell beállítani a kívánt tárolási osztályra – egyet az adathalmazra, egyet pedig a naplókhoz.
+- **ServiceType**: módosítsa a szolgáltatás típusát arra az értékre, `NodePort` Ha nem használ terheléselosztó.  Megjegyzés: két serviceType-beállítást kell módosítani.
 
 **VÁLASZTHATÓ**
-- **Name (név** ): az adatvezérlő alapértelmezett neve `arc` , de szükség esetén módosíthatja.
-- **DisplayName** : ezt a tulajdonságot a fájl tetején található name attribútummal megegyező értékre kell beállítani.
-- **beállításjegyzék** : a Microsoft Container Registry az alapértelmezett.  Ha a képeket a Microsoft Container Registryból húzza át, és [egy privát tároló-beállításjegyzékbe szeretné őket](offline-deployment.md)leküldeni, itt adja meg a beállításjegyzék IP-címét vagy DNS-nevét.
-- **dockerRegistry** : a kép lekérési titka, hogy szükség esetén lekérje a képeket egy privát tároló-beállításjegyzékből.
-- **adattár** : a Microsoft Container Registry alapértelmezett tárháza `arcdata` .  Ha privát tároló-beállításjegyzéket használ, adja meg az Azure ARR-kompatibilis adatszolgáltatások tárolójának rendszerképeit tartalmazó mappa/tárház elérési útját.
-- **imageTag** : a sablon aktuális legfrissebb címkéje alapértelmezés szerint a sablonban van, de ha régebbi verziót szeretne használni, akkor módosíthatja azt.
+- **Name (név**): az adatvezérlő alapértelmezett neve `arc` , de szükség esetén módosíthatja.
+- **DisplayName**: ezt a tulajdonságot a fájl tetején található name attribútummal megegyező értékre kell beállítani.
+- **beállításjegyzék**: a Microsoft Container Registry az alapértelmezett.  Ha a képeket a Microsoft Container Registryból húzza át, és [egy privát tároló-beállításjegyzékbe szeretné őket](offline-deployment.md)leküldeni, itt adja meg a beállításjegyzék IP-címét vagy DNS-nevét.
+- **dockerRegistry**: a kép lekérési titka, hogy szükség esetén lekérje a képeket egy privát tároló-beállításjegyzékből.
+- **adattár**: a Microsoft Container Registry alapértelmezett tárháza `arcdata` .  Ha privát tároló-beállításjegyzéket használ, adja meg az Azure ARR-kompatibilis adatszolgáltatások tárolójának rendszerképeit tartalmazó mappa/tárház elérési útját.
+- **imageTag**: a sablon aktuális legfrissebb címkéje alapértelmezés szerint a sablonban van, de ha régebbi verziót szeretne használni, akkor módosíthatja azt.
 
 Példa egy befejezett adatkezelő YAML-fájlra:
 ```yaml
@@ -200,7 +198,7 @@ spec:
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
-    imageTag: public-preview-oct-2020 
+    imageTag: public-preview-dec-2020 
     registry: mcr.microsoft.com
     repository: arcdata
   security:

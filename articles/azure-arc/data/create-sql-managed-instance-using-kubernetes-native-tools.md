@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2902274cfff11ac256459abd4fe0378146ee067b
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: dde2794e459e9375a231b7792bc1bd5ab21561bf
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280179"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955229"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Felügyelt Azure SQL-példány létrehozása a Kubernetes-eszközök használatával
 
@@ -34,7 +34,7 @@ SQL felügyelt példány létrehozásához létre kell hoznia egy Kubernetes tit
 
 ## <a name="create-a-yaml-file"></a>YAML-fájl létrehozása
 
-A [sablon YAML](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/sqlmi.yaml) -fájlja kiindulási pontként használható a saját egyéni SQL felügyelt példány YAML fájljának létrehozásához.  Töltse le ezt a fájlt a helyi számítógépre, és nyissa meg egy szövegszerkesztőben.  Hasznos egy szövegszerkesztő, például a [vs Code](https://code.visualstudio.com/download) használata, amely támogatja a szintaxis kiemelését és a YAML-fájlok használatát.
+A [sablon YAML](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/sqlmi.yaml) -fájlja kiindulási pontként használható a saját egyéni SQL felügyelt példány YAML fájljának létrehozásához.  Töltse le ezt a fájlt a helyi számítógépre, és nyissa meg egy szövegszerkesztőben.  Hasznos egy szövegszerkesztő, például a [vs Code](https://code.visualstudio.com/download) használata, amely támogatja a szintaxis kiemelését és a YAML-fájlok használatát.
 
 Ez egy példa a YAML fájlra:
 
@@ -173,6 +173,6 @@ kubectl describe po/<pod name> --namespace arc
 
 Ha bármilyen problémába ütközik a létrehozással kapcsolatban, tekintse meg a [hibaelhárítási útmutatót](troubleshoot-guide.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Kapcsolódás az Azure arc használatára képes SQL felügyelt példányhoz](connect-managed-instance.md)

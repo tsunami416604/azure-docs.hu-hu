@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761668"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955246"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozása a Kubernetes Tools használatával
 
@@ -34,7 +34,7 @@ A PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozásához létre kell
 
 ## <a name="create-a-yaml-file"></a>YAML-fájl létrehozása
 
-A [sablon YAML](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) -fájlját kiindulási pontként használhatja a saját egyéni PostgreSQL nagy kapacitású-YAML-fájl létrehozásához.  Töltse le ezt a fájlt a helyi számítógépre, és nyissa meg egy szövegszerkesztőben.  Hasznos egy szövegszerkesztő, például a [vs Code](https://code.visualstudio.com/download) használata, amely támogatja a szintaxis kiemelését és a YAML-fájlok használatát.
+A [sablon YAML](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) -fájlját kiindulási pontként használhatja a saját egyéni PostgreSQL nagy kapacitású-YAML-fájl létrehozásához.  Töltse le ezt a fájlt a helyi számítógépre, és nyissa meg egy szövegszerkesztőben.  Hasznos egy szövegszerkesztő, például a [vs Code](https://code.visualstudio.com/download) használata, amely támogatja a szintaxis kiemelését és a YAML-fájlok használatát.
 
 Ez egy példa a YAML fájlra:
 

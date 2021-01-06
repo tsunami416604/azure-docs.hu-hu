@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 054d18337e50a367cf1f6f004f4e1d1652c7751e
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827427"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954404"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -468,15 +468,17 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
   2. Adja meg `pip freeze` és keresse meg `tensorflow` , ha található, a felsorolt verziónak < 1,13
   3. Ha a felsorolt verzió nem támogatott verziójú, a `pip uninstall tensorflow` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.
   
- * **A Futtatás sikertelen `jwt.exceptions.DecodeError` a** következővel: pontos hibaüzenet: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
- 
-    Érdemes lehet a AutoML SDK legújabb verziójára frissíteni: `pip install -U azureml-sdk[automl]` . 
-    
-    Ha ez nem életképes, ellenőrizze a PyJWT verzióját. A támogatott verziók < 2.0.0. Távolítsa el a PyJWT a környezetből, ha a verzió >= 2.0.0. A PyJWT verzióját a következőképpen tekintheti meg, távolíthatja el és telepítheti a megfelelő verziót:
+ * **A Futtatás sikertelen `jwt.exceptions.DecodeError` a** következővel: pontos hibaüzenet: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` .
+
+    A (<= SDK-1.17.0 tartozó verziók esetében a telepítés a PyJWT nem támogatott verzióját eredményezheti. A PyJWT verziójának ellenőrzését az automatikus ml Conda-környezetben. A támogatott verziók < 2.0.0. A PyJWT verzióját a következőképpen lehet megtekinteni:
     1. Indítsa el a parancssort, aktiválja a Conda-környezetet, amelyben az automatikus ml-csomagok telepítve vannak.
     2. Adja meg `pip freeze` és keresse meg `PyJWT` , ha található, a felsorolt verziónak < 2.0.0 kell lennie
-    3. Ha a felsorolt verzió nem támogatott verziójú, a `pip uninstall PyJWT` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.
-    4. Telepítés a használatával `pip install 'PyJWT<2.0.0'` .
+
+    Ha a felsorolt verzió nem támogatott verzió:
+    1. Érdemes lehet a AutoML SDK legújabb verziójára frissíteni: `pip install -U azureml-sdk[automl]` .
+    2. Ha ez nem életképes, távolítsa el a PyJWT a környezetből, és telepítse a megfelelő verziót a következőképpen:
+        - `pip uninstall PyJWT` a parancs-rendszerhéjban, és adja meg `y` a megerősítést.
+        - Telepítés a használatával `pip install 'PyJWT<2.0.0'` .
 
 ## <a name="next-steps"></a>További lépések
 

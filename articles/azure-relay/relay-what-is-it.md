@@ -3,12 +3,12 @@ title: Mi az Azure Relay? | Microsoft Docs
 description: Ez a cikk az Azure Relay szolgáltatásról nyújt áttekintést, amely a vállalati hálózaton futó, helyszíni szolgáltatásokat használó felhőalkalmazások fejlesztését teszi lehetővé anélkül, hogy meg kellene nyitni egy tűzfalkapcsolatot, vagy zavaró módosításokat kellene végrehajtani a hálózati infrastruktúrán.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322638"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955382"
 ---
 # <a name="what-is-azure-relay"></a>Mi az Azure Relay?
 Az Azure Relay szolgáltatás biztonságosan lehetővé teszi a vállalati hálózaton futó szolgáltatások közzétételét a nyilvános felhőben. Ezt úgy teheti meg, hogy nem nyit meg egy portot a tűzfalon, vagy zavaró módosításokat végez a vállalati hálózati infrastruktúrában. 
@@ -17,7 +17,7 @@ A Relay szolgáltatás az alábbi, helyszíni szolgáltatások és felhőben vag
 
 - Hagyományos egyirányú, kérelem/válasz típusú és társközi kommunikáció; 
 - Eseményterjesztés az internetes tartományban, lehetővé téve különböző közzétételi/előfizetési forgatókönyveket; 
-- Hálózathatárokon átívelő, kétirányú és nem pufferelt szoftvercsatornás kommunikáció.
+- Kétirányú és nem pufferelt szoftvercsatorna-kommunikáció a hálózati határokon keresztül
 
 Az Azure Relay abban tér el a hálózati szintű integrációs technológiáktól (például a VPN-től), hogy egyetlen gép adott alkalmazásvégpontjára is fókuszálható. A VPN technológia ennél jóval agresszívabb, hiszen a hálózati környezet módosítására támaszkodik. 
 
@@ -30,7 +30,7 @@ A továbbítón keresztüli adatátviteli minta alapszintű lépései a követke
 4. A továbbítási szolgáltatás ezután *továbbítja* az adatokat a helyszíni szolgáltatásba az ügyfél számára kijelölt kétirányú szoftvercsatornán keresztül. Az ügyfélnek nincs szüksége közvetlen kapcsolatra a helyszíni szolgáltatással, nem kell ismernie a szolgáltatás helyét sem, a helyszíni szolgáltatásnak pedig nincs szüksége megnyitott bejövő portra a tűzfalon.
 
 
-## <a name="features"></a>Szolgáltatások 
+## <a name="features"></a>Funkciók 
 Az Azure Relay két funkciója:
 
 - [Hibrid kapcsolatok](#hybrid-connections) – A többplatformos forgatókönyveket lehetővé tevő WebSockets nyílt szabványt használja.
@@ -56,7 +56,7 @@ A Hibrid kapcsolatok és a WCF Relay szolgáltatás egyaránt lehetővé teszi a
 | **WCF** |x | |
 | **.NET Core** | |x |
 | **.NET-keretrendszer** |x |x |
-| **JavaScript/Node.JS** | |x |
+| **JavaScript/Node.js** | |x |
 | **Szabványon alapuló nyílt protokoll** | |x |
 | **RPC programozási modellek** | |x |
 

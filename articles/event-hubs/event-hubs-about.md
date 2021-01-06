@@ -3,15 +3,15 @@ title: Mi az Azure Event Hubs? – Big adatfeldolgozási szolgáltatás | Micros
 description: További tudnivalók az Azure Event Hubsról, amely egy másodpercenként több millió eseményt feldolgozó Big Data streamszolgáltatás.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 6669760bceee558a058878fbb89342aedda80117
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0124f023eab6638c986beb2305b1c4c375b47ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927901"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954345"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – A big data streaming platform és az esemény-betöltési szolgáltatás
-Az Azure Event Hubs egy big data streaming platform és esemény-betöltési szolgáltatás. Másodpercenként több millió esemény fogadására és feldolgozására képes. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
+Az Azure Event Hubs egy big data streaming platform és esemény-betöltési szolgáltatás. Másodpercenként több millió eseményt képes fogadni és feldolgozni. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
 
 A következő forgatókönyvek néhány olyan forgatókönyvet érintenek, amelyekben a Event Hubs használható:
 
@@ -52,10 +52,9 @@ Az Event Hubs szolgáltatással megabájtokban kezdheti az adatstreameket, és o
 
 ## <a name="rich-ecosystem"></a>Gazdag ökoszisztéma
 
-[A Apache Kafka ökoszisztémák Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) [Apache Kafka (1,0 és újabb)](https://kafka.apache.org/) ügyfelek és alkalmazások számára lehetővé teszi, hogy Event Hubsekkel beszéljenek. Nem kell beállítania, konfigurálnia és felügyelni saját Kafka-fürtöket.
+Az iparági szabványnak megfelelő AMQP 1,0 protokollon alapuló, széles körű ökoszisztémával, amely a [.net](https://github.com/Azure/azure-sdk-for-net/), a [Java](https://github.com/Azure/azure-sdk-for-java/), a [Python](https://github.com/Azure/azure-sdk-for-python/)és a [JavaScript](https://github.com/Azure/azure-sdk-for-js/)különböző nyelveken érhető el, könnyedén megkezdheti a streamek feldolgozását Event Hubs. Az összes támogatott ügyfélnyelv alacsony szintű integrációt biztosít. Az ökoszisztéma olyan zökkenőmentes integrációt is biztosít az Azure-szolgáltatásokkal, mint például a Azure Stream Analytics és a Azure Functions, így kiszolgáló nélküli architektúrákat hozhat létre.
 
-A [.net](https://github.com/Azure/azure-sdk-for-net/), [Java](https://github.com/Azure/azure-sdk-for-java/), [Python](https://github.com/Azure/azure-sdk-for-python/)és [JavaScript](https://github.com/Azure/azure-sdk-for-js/)különböző nyelveken elérhető széles ökoszisztémával könnyedén elindíthatja a streamek feldolgozását Event Hubsról. Az összes támogatott ügyfélnyelv alacsony szintű integrációt biztosít. Az ökoszisztéma olyan zökkenőmentes integrációt is biztosít az Azure-szolgáltatásokkal, mint például a Azure Stream Analytics és a Azure Functions, így kiszolgáló nélküli architektúrákat hozhat létre.
-
+[A Apache Kafka ökoszisztémák Event Hubs a](event-hubs-for-kafka-ecosystem-overview.md) [Apache Kafka (1,0 és újabb)](https://kafka.apache.org/) ügyfelek és alkalmazások számára is lehetővé teszi, hogy Event Hubsekkel beszéljenek. Nem kell beállítania, konfigurálnia és felügyelni a saját Kafka-és Zookeeper-fürtöket, vagy egy olyan, az Azure-ban nem natív szolgáltatás-szolgáltatást kínál.
 ## <a name="key-architecture-components"></a>Az architektúra legfontosabb összetevői
 Az Event Hubs az alábbi [fő összetevőket](event-hubs-features.md) foglalja magába:
 

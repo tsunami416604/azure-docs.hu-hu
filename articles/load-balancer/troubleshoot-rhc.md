@@ -11,16 +11,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696319"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955620"
 ---
-# <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Az erőforrás-állapot, a frontend és a háttérbeli rendelkezésre állási problémák elhárítása 
+# <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>Erőforrás-állapot és a bejövő rendelkezésre állással kapcsolatos problémák elhárítása 
 
 Ez a cikk egy útmutató a terheléselosztó előtérbeli IP-és háttér-erőforrásainak rendelkezésre állását befolyásoló problémák kivizsgálásához. 
+
+A terheléselosztó állapotának meghatározásához a Load Balancer Resource Health-ellenőrzését (RHC) használja a rendszer. A szolgáltatás az adatelérési út rendelkezésre állási metrikáját **2 percenként** elemzi, hogy meghatározza, hogy a terheléselosztási végpontok, a előtérbeli IP-címek és a előtér-portok a terheléselosztási szabályokkal együtt használhatók-e.
+
+Az alábbi táblázat ismerteti a terheléselosztó állapotának megállapításához használt RHC logikát.
+
+| Erőforrás állapotának állapota | Leírás |
+| --- | --- |
+| Elérhető | A standard Load Balancer erőforrása kifogástalan és elérhető. |
+| Csökkentett teljesítményű | A standard Load Balancer platform vagy felhasználó által kezdeményezett események hatással vannak a teljesítményre. Az adatelérési út rendelkezésre állására vonatkozó metrika 90%-osnál rosszabb, de 25%-osnál jobb állapotot jelentett legalább két percig. A teljesítmény mérsékelten befolyásolhatja a teljesítményt. 
+| Nem érhető el | A standard Load Balancer erőforrás nem kifogástalan állapotú. A DataPath rendelkezésre állási metrikája kevesebb, mint 25%-os állapotot jelentett legalább két percen belül. Jelentős teljesítménybeli hatást vagy a bejövő kapcsolatok elérhetőségének hiányát tapasztalhatja. Előfordulhat, hogy a felhasználó vagy a platform eseményei nem állnak rendelkezésre. |
+| Ismeretlen | A standard Load Balancer erőforrás erőforrás-állapotának állapota még nem frissült, vagy nem kapott adatelérési utat az elmúlt 10 percben. Ennek az állapotnak átmenetinek kell lennie, és a megfelelő állapot fog megjelenni, amint az adatok beérkeznek. |
+
 
 ## <a name="about-the-metrics-well-use"></a>Tudnivalók a használatban lévő mérőszámokról
 A használandó két mérőszám az *adatelérési út rendelkezésre állása* és az *állapot mintavételi állapota* , és fontos megérteni a jelentését a helyes elemzések elvégzéséhez. 
@@ -57,7 +69,7 @@ Tegyük fel, hogy ellenőrizzük az állapot mintavételi állapotát, és megtu
 
 Ha már elvégezte ezt az ellenőrzőlistát, és még mindig észlelte az állapot-mintavételi hibákat, előfordulhat, hogy ritka platform-problémák léptek fel a mintavételi szolgáltatásban a példányok esetében. Ebben az esetben az Azure visszatért, és automatikusan riasztást küld a csapatnak, hogy gyorsan megoldja az összes platformmal kapcsolatos problémát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ a Azure Load Balancer Health mintavételről](load-balancer-custom-probe-overview.md)
 * [További információ a Azure Load Balancer mérőszámokról](load-balancer-standard-diagnostics.md)

@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: e70d02c02ba9a3f14d1659851919fbccf71776d1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 555c41a9d53b27119299e5e9dca7c9e392fc5e25
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487354"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955484"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -55,7 +55,7 @@ Ez a csomag kisebb táblázatos modellekkel, korlátozott felhasználói párhuz
 |B1    |    40     |    10     |
 |B2    |    80     |    16     |
 
-### <a name="standard-tier"></a>Standard szint
+### <a name="standard-tier"></a>Standard csomag
 
 Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokhoz ideális, amelyek rugalmasságot követelnek meg a párhuzamos felhasználói tevékenységekre vonatkozóan, és amelyek gyorsan növekvő adatmodelleket használnak. Támogatja a speciális adatfrissítést az adatmodellek közel valós idejű frissítése érdekében, valamint az összes táblázatos modellezési funkciót is.
 
@@ -79,7 +79,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
@@ -99,7 +99,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="europe"></a>Európa
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Észak-Európa     |    S8v2, S9v2      |    3     |
@@ -109,7 +109,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Kelet-Ausztrália     |    S8v2, S9v2    |    1     |
@@ -164,7 +164,7 @@ Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai szá
 
 A kiszolgáló szintjén a Analysis Services tűzfalat, Azure-hitelesítést, kiszolgálói rendszergazdai szerepköröket és Server-Side titkosítást biztosít. Az adatmodell szintjén a felhasználói szerepkörök, a sorcsoport és az objektumorientált biztonság gondoskodik az adatai biztonságáról, és azokat csak azok a felhasználók látják, akik számára a célja.
 
-### <a name="firewall"></a>Tűzfal
+### <a name="firewall"></a>Firewall
 
 Az Azure Analysis Services tűzfala minden olyan ügyfélkapcsolatot blokkol, amelyek IP-címe nincs megadva a szabályokban. Alapértelmezés szerint a tűzfalbeállítások nincs engedélyezve az új kiszolgálókon. Az ajánlott tűzfalbeállítások engedélyezve van, és a szabályok konfigurálása a kiszolgáló létesítési parancsfájljának részeként vagy a portálon közvetlenül a kiszolgáló létrehozása után történik. Az engedélyezett IP-címeket meghatározó szabályok egyesével, ügyfél IP-címenként vagy tartományonként is konfigurálhatók. A Power BI- (szolgáltatási) kapcsolatok szintén engedélyezhetők vagy blokkolhatók. A tűzfalat és a szabályokat a portálon vagy a PowerShell használatával konfigurálhatja. További információ: [Kiszolgálószintű tűzfal konfigurálása](analysis-services-qs-firewall.md).
 
@@ -211,7 +211,7 @@ Modellek fejlesztése és üzembe helyezése a Visual Studióval Analysis Servic
 
 A Microsoft Analysis Services projektek ingyenes telepíthető VSIX-csomagként érhetők el. [Letöltés a Marketplace-ről](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). A bővítmény a Visual Studio 2017-es és újabb verzióival működik együtt, beleértve az ingyenes közösségi kiadást is.
 
-### <a name="sql-server-management-studio"></a>Sql Server Management Studio
+### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
 Felügyelheti kiszolgálóit és modelladatbázisait az [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) segítségével. Kapcsolódhat a felhőalapú kiszolgálóihoz. Közvetlenül az XMLA lekérdezési ablakból futtathat TMSL-szkripteket. A feladatokat e szkriptekkel és a PowerShell használatával automatizálhatja. Gyakran jelennek meg új szolgáltatások és funkciók – az SSMS havonta frissül.
 

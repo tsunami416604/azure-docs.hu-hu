@@ -1,5 +1,5 @@
 ---
-title: Konfigurációk üzembe helyezése a GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
+title: Konfigurációk üzembe helyezése a GitOps használatával Arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,14 +8,14 @@ author: mlearned
 ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt (előzetes verzió) konfigurálása a GitOps használatával
 keywords: GitOps, Kubernetes, K8s, Azure, arc, Azure Kubernetes szolgáltatás, AK, tárolók
-ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653452"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955331"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Konfigurációk üzembe helyezése a GitOps használatával Arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
 
 A GitOps, ahogy az a Kubernetes vonatkozik, az a gyakorlat, hogy deklarálja a Kubernetes-konfiguráció (központi telepítések, névterek stb.) kívánt állapotát a git-tárházban, majd egy operátor használatával lekérdezi és lekéréses módon telepítette ezeket a konfigurációkat a fürtön. Ez a dokumentum az Azure arc-kompatibilis Kubernetes-fürtökön futó ilyen munkafolyamatok beállítását ismerteti.
 
@@ -150,7 +150,7 @@ A konfiguráció testreszabásához több paramétert is használhat:
 
 `--helm-operator-chart-version` : Nem *kötelező* diagram-verzió a Helm-kezelőhöz (ha engedélyezve van). Alapértelmezett: "1.2.0".
 
-`--operator-namespace` : Az operátori névtér neve nem *kötelező* . Alapértelmezett: "default"
+`--operator-namespace` : Az operátori névtér neve nem *kötelező* . Alapértelmezett: "default". Max. 23 karakter.
 
 `--operator-params` : Nem *kötelező* paraméterek a kezelőhöz. Egy idézőjelek között kell megadni. Például: ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
 
@@ -169,12 +169,6 @@ A-operátor-params támogatott beállításai
 | – git-e-mail  | A git-végrehajtáshoz használandó e-mail-cím. |
 
 * Ha a "--git-user" vagy a "--git-email" nincs beállítva (ami azt jelenti, hogy nem szeretné, hogy a Flux írni a tárházba), akkor a--git-ReadOnly automatikusan be lesz állítva (ha még nem állította be).
-
-* Ha a enableHelmOperator értéke igaz, akkor a operatorInstanceName + operatorNamespace karakterláncok nem haladhatják meg a 47 karaktert.  Ha nem sikerül betartania ezt a korlátot, a következő hibaüzenetet kapja:
-
-   ```console
-   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-   ```
 
 További információ: Flux- [dokumentáció](https://aka.ms/FluxcdReadme).
 
@@ -251,7 +245,7 @@ A kiépítési folyamat során a `sourceControlConfiguration` átkerül néhány
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Konfiguráció alkalmazása privát git-tárházból
 
-Ha privát git-tárházat használ, akkor konfigurálnia kell az SSH nyilvános kulcsát a tárházban. A nyilvános kulcsot a git-tárházon vagy a tárházhoz hozzáféréssel rendelkező git-felhasználón is konfigurálhatja. Az SSH nyilvános kulcs lesz az Ön által megadott vagy a Flux által generált egyik.
+Ha privát git-tárházat használ, akkor konfigurálnia kell az SSH nyilvános kulcsát a tárházban. A nyilvános kulcsot a megadott git-tárházon vagy a tárházhoz hozzáféréssel rendelkező git-felhasználón is konfigurálhatja. Az SSH nyilvános kulcs lesz az Ön által megadott vagy a Flux által generált egyik.
 
 **Saját nyilvános kulcs beszerzése**
 
@@ -260,7 +254,7 @@ Ha létrehozta a saját SSH-kulcsait, akkor már rendelkezik a privát és a nyi
 **Nyilvános kulcs beszerzése az Azure CLI használatával (hasznos, ha a Flux létrehozza a kulcsokat)**
 
 ```console
-$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
+$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --cluster-type connectedClusters --query 'repositoryPublicKey' 
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```
@@ -367,7 +361,7 @@ az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Helm használata a verziókövetés konfigurációjával](./use-gitops-with-helm.md)
 - [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

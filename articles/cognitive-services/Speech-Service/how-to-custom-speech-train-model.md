@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 5a912790b4a7a86c44576b98ce7e95f44b810c9e
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857375"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955195"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>A Custom Speech-modellek betanítása és üzembe helyezése
 
@@ -48,6 +48,11 @@ A **betanítási** táblázat egy új bejegyzést jelenít meg, amely megfelel a
 
 A Custom Speech modell pontosságának kiértékelésével és javításával kapcsolatban lásd: [útmutató](how-to-custom-speech-evaluate-data.md) . Ha a pontosság tesztelését választja, fontos, hogy olyan akusztikai adatkészletet válasszon, amely eltér a modell teljesítményének reális értelmezéséhez.
 
+> [!NOTE]
+> Az alapmodelleket és az egyéni modelleket csak egy adott dátummal lehet használni (lásd a [modell életciklusát](custom-speech-overview.md#model-lifecycle)). A Speech Studio ezt a dátumot jeleníti meg az egyes modellek és végpontok **lejárati** oszlopában. Ezt követően a kérelem egy végpontra vagy egy batch-átírásra sikertelen lehet, vagy visszaesik az alapmodellbe.
+>
+> A modell újratanítása a legújabb alapmodellel a pontossági eredmények kihasználása és a modell lejáratának elkerülése érdekében.
+
 ## <a name="deploy-a-custom-model"></a>Egyéni modell üzembe helyezése
 
 Az adatok feltöltése és ellenőrzése, a pontosság kiértékelése és az egyéni modell betanítása után üzembe helyezhet egy egyéni végpontot, amelyet az alkalmazásaihoz, eszközeihez és termékeihez használhat. 
@@ -63,7 +68,7 @@ Ezután válassza a **végpont hozzáadása** lehetőséget, és adja meg az egy
 
 Ezután válassza a **Létrehozás** lehetőséget. Ez a művelet visszaadja az **üzembe helyezési** lapot. A tábla mostantól egy olyan bejegyzést tartalmaz, amely megfelel az egyéni végpontnak. A végpont állapota megjeleníti a jelenlegi állapotát. Akár 30 percet is igénybe vehet, ha új végpontot hoz létre az egyéni modellek használatával. Ha a központi telepítés állapota **Befejezettre** változik, a végpont készen áll a használatra.
 
-A végpont üzembe helyezése után a végpont neve hivatkozásként jelenik meg. A hivatkozásra kattintva megtekintheti a végpontra vonatkozó adatokat, például a végpont kulcsát, a végpont URL-címét és a mintakód.
+A végpont üzembe helyezése után a végpont neve hivatkozásként jelenik meg. A hivatkozásra kattintva megtekintheti a végpontra vonatkozó adatokat, például a végpont kulcsát, a végpont URL-címét és a mintakód. Jegyezze fel a lejárati dátumot, és frissítse a végpont modelljét a megszakítás nélküli szolgáltatás biztosításához.
 
 ## <a name="view-logging-data"></a>Naplózási adatgyűjtés megtekintése
 

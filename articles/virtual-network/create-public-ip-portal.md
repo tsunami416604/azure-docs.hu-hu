@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: add763b713b93604e089d7aec586876fecd2887c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895638"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954141"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Gyors útmutató: nyilvános IP-cím létrehozása a Azure Portal használatával
 
@@ -36,7 +36,8 @@ A következő lépések végrehajtásával hozzon létre egy **myStandardZRPubli
     | ---                     | ---                         |
     | IP-verzió              | IPv4 kiválasztása                 |    
     | Termékváltozat                     | **Standard** kiválasztása         |
-    | Név                    | *MyStandardZRPublicIP* megadása          |
+    | Szintű (ha megjelenik *)                  | **Régió** kiválasztása         |
+    | Name                    | *MyStandardZRPublicIP* megadása          |
     | IP-cím hozzárendelése   | Vegye figyelembe, hogy ez a "statikus" értékként lesz zárolva.                                        |
     | Üresjárati időkorlát (perc)  | Hagyja meg az értéket 4        |
     | DNS-névcímke          | Hagyja üresen az értéket    |
@@ -46,6 +47,8 @@ A következő lépések végrehajtásával hozzon létre egy **myStandardZRPubli
     | Rendelkezésre állási zóna       | Válasszon **zónát – redundáns** vagy válasszon ki egy adott zónát (lásd az alábbi megjegyzést) |
 
 Vegye figyelembe, hogy ezek csak a [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)-val rendelkező régiókban érvényesek.  (Kiválaszthat egy adott zónát ezekben a régiókban, bár nem lesz rugalmas a zónabeli meghibásodás miatt.)
+
+\* = A réteg a [régiók közötti Load Balancer](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) funkcióra vonatkozik, amely jelenleg előzetes verzióban érhető el.
 
 # <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-create-public-ip-basic)
 
@@ -61,7 +64,7 @@ A következő lépésekkel hozzon létre egy **myBasicPublicIP** nevű alapszint
     | ---                     | ---                         |
     | IP-verzió              | IPv4 kiválasztása                 |    
     | Termékváltozat                     | **Standard** kiválasztása         |
-    | Név                    | *MyBasicPublicIP* megadása          |
+    | Name                    | *MyBasicPublicIP* megadása          |
     | IP-cím hozzárendelése   | Válassza a **statikus** lehetőséget (lásd az alábbi megjegyzést)                                     |
     | Üresjárati időkorlát (perc)  | Hagyja meg az értéket 4        |
     | DNS-névcímke          | Hagyja üresen az értéket    |

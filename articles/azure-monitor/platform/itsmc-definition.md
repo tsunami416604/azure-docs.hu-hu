@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: b26643daede9e26f2bf1807ae99a6ced5d1cb08c
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 072abffcc74b8b060d98c07d1f310413c7b323ef
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901572"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954940"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -43,7 +43,7 @@ A kapcsolatok létrehozása előtt hozzá kell adnia a ITSMC.
    >[!NOTE]
    >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már *log Analytics munkaterületek*.
 
-5. Válassza az **OK** lehetőséget.
+5. Kattintson az **OK** gombra.
 
 A ITSMC-erőforrás telepítésekor az ablak jobb felső sarkában megjelenik egy értesítés.
 
@@ -127,33 +127,37 @@ Műveleti csoportok létrehozásához kövesse az alábbi eljárást:
 
 8. Ha rögzített értékekkel rendelkező, beépített mezőket szeretne kitölteni, válassza az **egyéni sablon használata** lehetőséget. Ellenkező esetben válasszon egy meglévő [sablont](#template-definitions) a **sablon** listáról, és adja meg a rögzített értékeket a sablon mezőiben.
 
-9. A művelet ITSM-definíciójának utolsó szakaszában megadhatja, hogy az egyes riasztások hány riasztást hozzanak létre. Ez a szakasz csak a keresési riasztások naplózására vonatkozik.
+9. A művelet ITSM-definíciójának utolsó szakaszában megadhatja, hogy hány munkaelem jön létre az egyes riasztásokhoz.
+
+    >[!NOTE]
+    >
+    > * Ez a szakasz csak a keresési riasztások naplózására vonatkozik.
+    > * A metrikus riasztások és a műveletnapló riasztásai minden esetben egy munkaelemet hoznak létre riasztásként.
 
     * Ha a munkaelem legördülő menüben a "incidens" vagy a "riasztás" lehetőséget választja:
-        * Ha bejelöli az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása jelölőnégyzetet, minden riasztásban minden konfigurációs elem új munkaelemet fog létrehozni. A ITSM-rendszeren több munkaelem is szerepelhet egy konfigurációs elemnél.
+        * Ha bejelöli az "egyéni munkaelemek **létrehozása az egyes konfigurációs elemekhez"** jelölőnégyzetet, minden riasztásban minden konfigurációs elem új munkaelemet fog létrehozni. A ITSM-rendszeren több munkaelem is szerepelhet egy konfigurációs elemnél.
 
             Például:
             1) 1. riasztás 3 konfigurációs elemmel: A, B, C – 3 munkaelemet fog létrehozni.
-            2) 2. riasztás 1 konfigurációs elemmel: D – 1 munkaelemet fog létrehozni.
+            2) 2. riasztás 1 konfigurációs elemmel: A-létrehoz 1 munkaelemet.
 
-                **A folyamat végén 4 riasztás jelenik meg**
-        * Ha törli az egyes **konfigurációs elemek egyéni munkaelemeinek létrehozása** jelölőnégyzet jelölését, akkor olyan riasztások jelennek meg, amelyek nem hoznak létre új munkaelemet. a munkaelemek a riasztási szabály szerint lesznek egyesítve.
+        * Ha törli az "egyéni munkaelemek **létrehozása az egyes konfigurációs elemekhez"** jelölőnégyzetet, akkor az ITSM-összekötő egyetlen munkaelemet hoz létre minden egyes riasztási szabályhoz, és hozzáfűzi az összes érintett konfigurációs elemhez. Új munkaelem jön létre, ha az előző lezárult.
+        >[!NOTE]
+        > Ebben az esetben a kilőtt riasztások némelyike nem hoz majd új munkaelemeket a ITSM eszközben.
 
-            Például:
-            1) 1. riasztás 3 konfigurációs elemmel: A, B, C – 1 munkaelemet fog létrehozni.
-            2) 2. riasztás ugyanahhoz a riasztási szabályhoz az 1. fázisban 1 konfigurációs elemmel: a D – egyesítve lesz az 1. fázisban lévő munkaelembe.
-            3) 3. riasztás egy másik riasztási szabályhoz 1 konfigurációs elemmel: az E-1 munkaelemet hoz létre.
-
-                **A folyamat végén 2 riasztás lesz**
+            For example:
+            1) Alert 1 with 3 Configuration Items: A, B, C - will create 1 work item.
+            2) Alert 2 for the same alert rule as phase 1 with 1 Configuration Item: D - will be merged to the work item in phase 1.
+            3) Alert 3 for a different alert rule with 1 Configuration Item: E - will create 1 work item.
 
        ![A ITSM incidens ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration.png)
 
     * Ha a munkaelem legördülő menüben a "esemény" lehetőséget választja:
-        * Ha a választógombok kiválasztásakor az egyes **naplókhoz tartozó egyéni munkaelemek létrehozása** lehetőséget választja, a rendszer minden egyes sorban létrehoz egy riasztást a napló keresési riasztási lekérdezés keresési eredményei között. A riasztás hasznos adatai között a Description (Leírás) tulajdonság a keresési eredmények sorát fogja tartalmazni.
-        * Ha a választógombok kiválasztásakor az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása lehetőséget választja, akkor minden egyes riasztás minden konfigurációs eleme létrehoz egy új munkaelemet. A ITSM-rendszeren több munkaelem is szerepelhet egy konfigurációs elemnél. Ez ugyanaz lesz, mint az incidens/riasztás szakaszban lévő jelölőnégyzet ellenőrzése.
+        * Ha **a "különálló munkaelemek létrehozása az egyes naplókhoz" lehetőséget választja (a konfigurációs elem mezője nincs kitöltve. Nagy számú munkaelemet eredményezhet.) "** a választógombok kiválasztásakor a rendszer minden egyes sorban létrehoz egy riasztást a naplóbeli keresés riasztási lekérdezés keresési eredményei között. A riasztás hasznos adatai között a Description (Leírás) tulajdonság a keresési eredmények sorát fogja tartalmazni.
+        * Ha az "egyéni munkaelemek **létrehozása az egyes konfigurációs elemekhez"** lehetőséget választja, a választógombok kiválasztásakor minden egyes riasztás konfigurációs eleme új munkaelemet fog létrehozni. A ITSM-rendszeren több munkaelem is szerepelhet egy konfigurációs elemnél. Ez ugyanaz lesz, mint az incidens/riasztás szakaszban lévő jelölőnégyzet ellenőrzése.
     ![Képernyőkép, amely a ITSM esemény ablakát jeleníti meg.](media/itsmc-overview/itsm-action-configuration-event.png)
 
-10. Válassza az **OK** lehetőséget.
+10. Kattintson az **OK** gombra.
 
 Azure-riasztási szabály létrehozásakor vagy szerkesztésekor használjon egy ITSM műveletet tartalmazó műveleti csoportot. A riasztás indításakor a rendszer létrehozza vagy frissíti a munkaelemet a ITSM eszközben.
 
@@ -164,6 +168,6 @@ Azure-riasztási szabály létrehozásakor vagy szerkesztésekor használjon egy
 >
 >- A riasztási szabály definíciójának rövid leírása mezője 40 karakterre van korlátozva, ha a ITSM művelettel küldi el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Hibaelhárítás az ITSM-összekötőben](./itsmc-resync-servicenow.md)

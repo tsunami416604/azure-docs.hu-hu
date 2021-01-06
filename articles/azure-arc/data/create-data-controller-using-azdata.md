@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 0b4cf72622df78e13add723853d935fc97649b4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358996"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955297"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure arc-adatkezelő létrehozása a használatával [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -271,12 +271,12 @@ A parancs futtatása után folytassa a következővel: a [létrehozási állapot
 Mielőtt létrehozza az adatvezérlőt az Azure Red Hat OpenShift, bizonyos biztonsági környezeti korlátozásokat (SCC) kell alkalmaznia. Az előzetes kiadás esetében ezek a biztonsági korlátozások ellazítására használhatók. A jövőbeli kiadások a frissített SCC-t nyújtják.
 
 1. Töltse le az egyéni biztonsági környezet korlátozását (SCC). Használja a következők egyikét: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Nyers](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([Nyers](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
    - `curl` A következő parancs letölti az ív-adathalmazt. YAML:
 
       ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
       ```
 
 1. SCC létrehozása
@@ -329,12 +329,12 @@ A parancs futtatása után folytassa a következővel: a [létrehozási állapot
 Mielőtt létrehozta az adatvezérlőt a Red Hat OCP, bizonyos biztonsági környezeti korlátozásokat (SCC) kell alkalmaznia. Az előzetes kiadás esetében ezek a biztonsági korlátozások ellazítására használhatók. A jövőbeli kiadások a frissített SCC-t nyújtják.
 
 1. Töltse le az egyéni biztonsági környezet korlátozását (SCC). Használja a következők egyikét: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Nyers](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([Nyers](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
    - `curl` A következő parancs letölti az ív-adathalmazt. YAML:
 
       ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
       ```
 
 1. SCC létrehozása

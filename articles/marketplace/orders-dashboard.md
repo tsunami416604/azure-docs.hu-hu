@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450768"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955025"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>A Rendelések irányítópult a kereskedelmi piactér-elemzésekben
 
 Ez a cikk a partner Center orders (megrendelések) irányítópultján tartalmaz információkat. Ez az irányítópult a rendelésekkel kapcsolatos információkat jeleníti meg, beleértve a növekedési trendeket, amelyek grafikus és letölthető formátumban jelennek meg.
 
-Ha az Orders (megrendelések) irányítópultot szeretné elérni a partner Centerben, **[Analyze](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a **kereskedelmi piactér** területen válassza a  >  **megrendelések** elemzése lehetőséget.
+Ha az Orders (megrendelések) irányítópultot szeretné elérni a partner Centerben, **[](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a **kereskedelmi piactér** területen válassza a  >  **megrendelések** elemzése lehetőséget.
 
 >[!NOTE]
 > Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).
@@ -109,14 +109,13 @@ Az Order Details (megrendelés részletei) tábla a 1 000 Top orders (beszerzés
 - A rendszer kinyeri az adathalmazt. CSV vagy. TSV-fájl, ha a rekordok száma kisebb, mint 1 000.
 - Ha a 1 000-es számú rekordok száma, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
 - Alkalmazzon szűrőket az **Order details** táblára, hogy csak azokat az adatokat jelenítse meg, amelyekre kíváncsi. Szűrés ország/régió szerint, Azure-licenc típusa, kereskedelmi piactér licencelési típusa, ajánlat típusa, megrendelés állapota, ingyenes nyomvonalak, kereskedelmi piactér-előfizetés azonosítója, ügyfél-azonosító, és a vállalat neve.
-- Mivel az Azure Marketplace-en vagy Microsoft AppSource-on keresztül vásárolt SaaS-ajánlatokat nem szükséges Azure-előfizetés, a piactér-előfizetés azonosítója a **részletes rendelések** adatszakaszának 00000000-0000-0000-0000-000000000000-es formájában fog megjelenni.
 - Ha a rendelést egy védett ügyfél vásárolja meg, a **megrendelések részletes adatainak** maszkolása (* * * * * * * * * * * *).
 
 **_1. táblázat: az adatszótár kifejezése_* _
 
 | Oszlop neve | Attribútum neve | Definíció |
 | ------------ | ------------- | ------------- |
-| Piactér-előfizetés azonosítója | Piactér-előfizetés azonosítója | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a kereskedelmi Piactéri ajánlat megvásárlásához használt. Az azonosító korábban az Azure-előfizetés GUID-azonosítója volt. |
+| Piactér-előfizetés azonosítója | Piactér-előfizetés azonosítója | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a kereskedelmi Piactéri ajánlat megvásárlásához használt. Az infrastruktúra-ajánlatok esetében ez az ügyfél Azure-előfizetési GUID-azonosítója. Az SaaS-ajánlatok esetében ez nulla értékként jelenik meg, mivel az SaaS-vásárlásokhoz nincs szükség Azure-előfizetésre. |
 | MonthStartDate | Hónap kezdő dátuma | A hónap kezdő dátuma a vásárlás hónapját jelöli. |
 | Ajánlat típusa | Ajánlat típusa | A kereskedelmi piactér kínálatának típusa. |
 | Azure-licenc típusa | Azure-licenc típusa | Az ügyfelek által az Azure megvásárlásához használt licencelési szerződés típusa. Más néven csatorna. Lehetséges értékek:<ul><li>Felhőszolgáltató</li><li>Enterprise</li><li>Enterprise a viszonteladón keresztül</li><li>Utólagos fizetés</li></ul> |

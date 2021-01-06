@@ -4,12 +4,12 @@ description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatás
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: f5ea6d3f28fe85cf1453f3cf2b9eb0132bda0013
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 56de1f4f275eba46d5f8b146829e444a75eabb88
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808300"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955314"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Az Azure-erőforrás naplóihoz tartozó általános és szolgáltatás-specifikus séma
 
@@ -23,7 +23,7 @@ Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category
 
 ## <a name="top-level-common-schema"></a>Legfelső szintű közös séma
 
-| Név | Kötelező vagy nem kötelező | Leírás |
+| Name | Kötelező vagy nem kötelező | Leírás |
 |---|---|---|
 | time | Kötelező | Az esemény időbélyegzője (UTC). |
 | resourceId | Kötelező | Az eseményt kibocsátó erőforrás erőforrás-azonosítója. A bérlői szolgáltatások esetében ez a/tenants/Tenant-ID/Providers/Provider-Name. formátumú. |
@@ -77,7 +77,7 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 | Load Balancer |[Naplóelemzés az Azure Load Balancerhez](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B egyéni követési séma](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Hálózati biztonsági csoportok) |[Naplóelemzés hálózati biztonsági csoportokhoz](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| Védelem DDOS-támadások ellen | [Azure DDoS Protection standard kezelése](../../ddos-protection/diagnostic-logging.md#log-schemas) |
+| DDoS Protection | [Azure DDoS Protection standard naplózása](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Power BI – dedikált | [Power BI Embedded naplózása az Azure-ban](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Azure Backup adatmodellje](../../backup/backup-azure-reports-data-model.md)|
 | Keresés |[A keresési Traffic Analytics engedélyezése és használata](../../search/search-traffic-analytics.md) |
@@ -90,7 +90,7 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A gyűjtött erőforrás-naplózási kategóriák megtekintése](resource-logs-categories.md)
 * [További információ az erőforrás-naplókról](./platform-logs-overview.md)

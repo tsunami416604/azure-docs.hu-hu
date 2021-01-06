@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460479"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954277"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Az ügyfelek irányítópultja a kereskedelmi piactér elemzésében
 
 Ez a cikk a partner Center ügyfelek irányítópultján tartalmaz információkat. Ez az irányítópult az ügyfelekkel kapcsolatos információkat jeleníti meg, beleértve a növekedési trendeket, amelyek grafikus és letölthető formátumban jelennek meg.
 
-Ha az ügyfelek irányítópultot szeretné elérni a partner Centerben, a **kereskedelmi piactér** területen válassza az **[Analyze](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **ügyfelek** elemzése lehetőséget.
+Ha az ügyfelek irányítópultot szeretné elérni a partner Centerben, a **kereskedelmi piactér** területen válassza az **[](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **ügyfelek** elemzése lehetőséget.
 
 >[!NOTE]
 > Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).
@@ -144,7 +144,7 @@ _**1. táblázat: az adatszótár kifejezése**_
 
 | Oszlop neve | Attribútum neve | Definíció |
 | ------------ | ------------- | ------------- |
-| Piactér-előfizetés azonosítója | Piactér-előfizetés azonosítója | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a kereskedelmi Piactéri ajánlat megvásárlásához használt. Az azonosító korábban az Azure-előfizetés GUID-azonosítója volt. |
+| Piactér-előfizetés azonosítója | Piactér-előfizetés azonosítója | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a kereskedelmi Piactéri ajánlat megvásárlásához használt. Az infrastruktúra-ajánlatok esetében ez az ügyfél Azure-előfizetési GUID-azonosítója. Az SaaS-ajánlatok esetében ez nulla értékként jelenik meg, mivel az SaaS-vásárlásokhoz nincs szükség Azure-előfizetésre. |
 | DateAcquired | Beszerzés dátuma | Az első dátum, amikor az ügyfél megvásárolta a közzétett ajánlatot. |
 | DateLost | Elveszett dátum | Az utolsó időpont, amikor az ügyfél megszakította az utolsó összes korábban megvásárolt ajánlatot. |
 | Szolgáltató neve | Szolgáltató neve | A Microsoft és az ügyfél közötti kapcsolatban részt vevő szolgáltató neve. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP. |
