@@ -2,13 +2,13 @@
 title: Tároló-példányok figyelése
 description: A számítási erőforrások (például a processzor és a memória) használatának figyelése a tárolók Azure Container Instancesban.
 ms.topic: article
-ms.date: 04/24/2019
-ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/17/2020
+ms.openlocfilehash: 83a8a5ab2c8c49f4044564c2d899685914103b0b
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007256"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916080"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Tároló-erőforrások figyelése az Azure Container Instances-ben
 
@@ -27,11 +27,11 @@ Jelenleg Azure Monitor mérőszámok csak Linux-tárolók esetén érhetők el.
 
 A Azure Monitor a következő [metrikákat biztosítja a Azure Container Instanceshoz][supported-metrics]. Ezek a metrikák a tárolók és az egyes tárolók számára érhetők el. Alapértelmezés szerint a metrikák összesítése átlagként történik.
 
-* **CPU-használat** – a **millicores**-ben mérve. Az egyik millicore egy CPU-mag 1/1000th, így a 500 millicores a 0,5 CPU Core használatát jelöli.
-
-* **Memóriahasználat** – bájtban megadva.
-
-* A másodpercenként **fogadott hálózati bájtok** és a másodpercenként **továbbított hálózati bájtok** száma. 
+- **CPU-használat** a **millicores**-ben mérve. 
+  - Az egyik millicore egy CPU-mag 1/1000th, így a 500 millicores a 0,5 CPU Core használatát jelöli.
+- **Memória kihasználtsága** bájtban
+- Másodpercenként **fogadott hálózati bájtok** száma
+- Másodpercenként **továbbított hálózati bájtok** száma 
 
 ## <a name="get-metrics---azure-portal"></a>Metrika beolvasása – Azure Portal
 
@@ -39,7 +39,7 @@ Tárolócsoport létrehozásakor az Azure Monitor adatai elérhetők az Azure Po
 
 ![kettős diagram][dual-chart]
 
-Egy több tárolót tartalmazó tároló csoportban használjon [dimenziót][monitor-dimension] a mérőszámok tároló alapján történő megjelenítéséhez. Az egyes tárolómetrikák diagramjának létrehozásához hajtsa végre az alábbi lépéseket:
+Egy több tárolót tartalmazó tároló csoportban használjon egy [dimenziót][monitor-dimension] a metrikák tároló alapján történő megjelenítéséhez. Az egyes tárolómetrikák diagramjának létrehozásához hajtsa végre az alábbi lépéseket:
 
 1. Az **Áttekintés** oldalon válassza ki az egyik mérőszám-diagramot, például a **processzort**. 
 1. Válassza a **felosztás alkalmazása** gombot, és válassza a **tároló neve** lehetőséget.
@@ -64,18 +64,11 @@ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output t
 ```output
 Timestamp            Name       Average
 -------------------  ---------  ---------
-2019-04-23 22:59:00  CPU Usage
-2019-04-23 23:00:00  CPU Usage
-2019-04-23 23:01:00  CPU Usage  0.0
-2019-04-23 23:02:00  CPU Usage  0.0
-2019-04-23 23:03:00  CPU Usage  0.5
-2019-04-23 23:04:00  CPU Usage  0.5
-2019-04-23 23:05:00  CPU Usage  0.5
-2019-04-23 23:06:00  CPU Usage  1.0
-2019-04-23 23:07:00  CPU Usage  0.5
-2019-04-23 23:08:00  CPU Usage  0.5
-2019-04-23 23:09:00  CPU Usage  1.0
-2019-04-23 23:10:00  CPU Usage  0.5
+2020-12-17 23:34:00  CPU Usage
+. . .
+2020-12-18 00:25:00  CPU Usage
+2020-12-18 00:26:00  CPU Usage  0.4
+2020-12-18 00:27:00  CPU Usage  0.0
 ```
 
 Módosítsa a `--metric` paraméter értékét a parancsban más [támogatott metrikák][supported-metrics]beszerzéséhez. Használja például a következő parancsot a **memóriahasználat** metrikáinak beolvasásához. 
@@ -136,7 +129,7 @@ Timestamp            Name          Containername             Average
 2019-04-23 23:10:00  Memory Usage  aci-tutorial-sidecar  847872.0
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-alapú figyelésről további információt az [Azure-alapú figyelés áttekintése][azure-monitoring] szakaszban talál.
 

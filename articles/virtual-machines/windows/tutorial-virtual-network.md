@@ -10,16 +10,16 @@ ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 84da38fe71446c54f17c4d4329c7294c5e5176d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22993e8a1513ae34b3752ebd80c60761467f396e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87800194"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912665"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és felügyelete Windows rendszerű virtuális gépeken az Azure PowerShell-lel
 
-Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyagban szereplő példák azt feltételezik, hogy a virtuális gépek egy adatbázis-háttérrel rendelkező webalkalmazást üzemeltetnek, azonban az oktatóanyagban nincs telepítve az alkalmazás. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyagban szereplő példák azt feltételezik, hogy a virtuális gépek egy adatbázis-háttérrel rendelkező webalkalmazást üzemeltetnek, azonban az oktatóanyagban nincs telepítve az alkalmazás. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Virtuális hálózat és alhálózat létrehozása
@@ -127,7 +127,7 @@ $frontendNic = New-AzNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) paranccsal. Ezekkel a hitelesítő adatokkal csatlakozhat a virtuális géphez a további lépésekben:
+A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) paranccsal. Ezekkel a hitelesítő adatokkal csatlakozhat a virtuális géphez a további lépésekben:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -269,7 +269,7 @@ New-AzVM `
 
 Ebben a példában a rendszerkép SQL Server telepítve van, de ez az oktatóanyag nem használható. Ennek részeként megtudhatja, hogyan konfigurálhat egy virtuális gépet a webes forgalom és az adatbázis-kezelés kezelésére szolgáló virtuális gép használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosította az Azure-hálózatokat. 
 

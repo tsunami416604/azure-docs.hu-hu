@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: d8918181024715a57c6029d3ad0a36ea75140fcb
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: a3427be85314f06b5408c4450e0415768122879f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739943"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913005"
 ---
 # <a name="configure-and-submit-training-runs"></a>Betanítási futtatások konfigurálása és elküldése
 
@@ -205,7 +205,19 @@ Tekintse meg ezeket a jegyzetfüzeteket a futtatások konfigurálására példá
 
     Az Azure ML belsőleg egy összefüggő listává fűzi össze az ugyanazzal a metrikanévvel rendelkező tömböket.
 
-## <a name="next-steps"></a>További lépések
+* **A Futtatás sikertelen `jwt.exceptions.DecodeError` a** következővel: pontos hibaüzenet: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
+    
+    Érdemes lehet a azureml-Core legújabb verziójára frissíteni: `pip install -U azureml-core` .
+    
+    Ha a problémát helyi futtatások esetén is futtatja, ellenőrizze a környezetében telepített PyJWT verzióját, ahol a futtatást elindítja. A PyJWT támogatott verziói < 2.0.0. Távolítsa el a PyJWT a környezetből, ha a verzió >= 2.0.0. A PyJWT verzióját a következőképpen tekintheti meg, távolíthatja el és telepítheti a megfelelő verziót:
+    1. Indítsa el a parancssort, aktiválja a Conda környezetet, ahol a azureml-Core telepítve van.
+    2. Adja meg `pip freeze` és keresse meg `PyJWT` , ha található, a felsorolt verziónak < 2.0.0 kell lennie
+    3. Ha a felsorolt verzió nem támogatott verziójú, a `pip uninstall PyJWT` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.
+    4. Végezze el a telepítést a `pip install 'PyJWT<2.0.0'` paranccsal
+    
+    Ha a futtatásával felhasználó által létrehozott környezetet küld, érdemes lehet a azureml-Core legújabb verzióját használni ebben a környezetben. Verziók >= a azureml-Core 1.18.0 már PyJWT < 2.0.0. Ha a azureml-Core < 1.18.0 verzióját kell használnia a beküldött környezetben, ügyeljen arra, hogy a PyJWT < 2.0.0 a pip-függőségekben.
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Megtudhatja, hogyan taníthat modelleket konkrét ML-keretrendszerekkel, például a [Scikit-Learn](how-to-train-scikit-learn.md), a [TensorFlow](how-to-train-tensorflow.md)és a [PyTorch](how-to-train-pytorch.md).

@@ -14,14 +14,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 01/05/2021
 ms.author: radeltch
-ms.openlocfilehash: 13644872fca06ad8fc5806326736aea23e504520
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: a152735d21a347262ce6485e6110f9e040a0071a
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608656"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916235"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server 
 
@@ -249,7 +249,7 @@ A következő utasítások feltételezik, hogy már létrehozta az erőforráscs
 
     d. Válassza a **hálózatkezelés** lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `storage` `hana` alhálózatokat.  
     
-    e. Válassza a **Save** (Mentés) lehetőséget. 
+    e. Válassza a **Mentés** lehetőséget. 
  
     f. Ismételje meg a b – e lépéseket a fennmaradó virtuális gépek esetében (példánkban a  **hanadb2** és a **hanadb3**).
  
@@ -362,11 +362,13 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     # Add the following entries in the configuration file
     ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
-    net.ipv4.ip_local_port_range = 40000 65300
     net.ipv4.conf.all.rp_filter = 0
     sunrpc.tcp_slot_table_entries = 128
     vm.swappiness=10
     </code></pre>
+
+> [!TIP]
+> Ne állítson be net.ipv4.ip_local_port_range és net.ipv4.ip_local_reserved_ports explicit módon a sysctl konfigurációs fájljaiban, hogy az SAP-gazdagép ügynöke kezelhesse a porttartomány-tartományokat. További részletek: SAP-Megjegyzés [2382421](https://launchpad.support.sap.com/#/notes/2382421).  
 
 4. **[A]** a sunrpc beállításait a [NetApp SAP-alkalmazásokban javasolt Microsoft Azure a Azure NetApp Files használatával][anf-sap-applications-azure].  
 
@@ -856,7 +858,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

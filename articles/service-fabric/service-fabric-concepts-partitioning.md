@@ -1,18 +1,21 @@
 ---
 title: Service Fabric szolgáltatások particionálása
-description: Útmutató Service Fabric állapot-nyilvántartó szolgáltatások particionálásához. A partíciók lehetővé teszik az adattárolást a helyi gépeken, hogy az adatok és a számítások együtt is méretezhetők legyenek.
+description: Ismerje meg, hogyan particionálhat Service Fabric állapot nélküli és állapot-nyilvántartó szolgáltatásokat
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199ae9d9844149c1931da638633110f717fe0517
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005428"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915895"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Service Fabric Reliable Services particionálása
-Ez a cikk bevezetést nyújt az Azure Service Fabric megbízható szolgáltatások particionálásának alapvető fogalmait illetően. A cikkben használt forráskód a [githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)is elérhető.
+Ez a cikk bevezetést nyújt az Azure Service Fabric megbízható szolgáltatások particionálásának alapvető fogalmait illetően. A particionálás lehetővé teszi az adattárolást a helyi gépeken, hogy az adatok és a számítások együtt is méretezhetők legyenek.
+
+> [!TIP]
+> A cikkben található kód [teljes mintája](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) elérhető a githubon.
 
 ## <a name="partitioning"></a>Particionálás
 A particionálás nem egyedi a Service Fabric. Valójában a skálázható szolgáltatások létrehozásának egyik alapvető mintázata. Tágabb értelemben azt gondoljuk, hogy a particionálási állapot (adatok) felosztása és a kisebb elérhető egységekre való számítás fogalma a méretezhetőség és a teljesítmény javítása érdekében. A particionálás jól ismert formája az [adatparticionálás][wikipartition], más néven horizontális felskálázás.
@@ -348,14 +351,14 @@ Ahogy a szó szoros értelmében egy partícióra van szükségünk, az alacsony
     
     ![Böngésző képernyőképe](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-A minta teljes forráskódja elérhető a [githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+A cikkben használt kód teljes megoldása itt érhető el: https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions .
 
 ## <a name="next-steps"></a>Következő lépések
-Service Fabric fogalmakkal kapcsolatos információkért tekintse meg a következőket:
+További információ a Service Fabric szolgáltatásairól:
 
+* [A Service Fabric-szolgáltatásokkal való kapcsolattartás és kommunikáció](service-fabric-connect-and-communicate-with-services.md)
 * [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
 * [Service Fabric szolgáltatások skálázhatósága](service-fabric-concepts-scalability.md)
-* [Service Fabric alkalmazások kapacitásának megtervezése](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 12/16/2020
-ms.openlocfilehash: b3fa9767310bfc300087c9dc7384f33993aca70d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675881"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914110"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Nyílt forráskódú integráció Azure Machine Learning projektekkel
 
@@ -52,7 +52,7 @@ A mély tanulási modellek a semmiből való betanítása gyakran nagy mennyisé
 
 A megerősítő tanulás olyan mesterséges intelligencia-módszer, amely a modelleket a műveletek, az állapotok és a jutalmak használatával hajtja végre: a megerősítő tanulási ügynökök olyan előre definiált műveletek készletét tanulják meg, amelyek a környezet aktuális állapota alapján maximalizálják a megadott díjakat. 
 
-A [Ray RLLib](https://github.com/ray-project/ray) projekt egy olyan készlettel rendelkezik, amely lehetővé teszi a nagy skálázhatóságot a betanítási folyamat során. Az iterációs folyamat egyszerre és erőforrás-igényes, mivel a megerősítő tanulási ügynökök megpróbálják megtanulni a feladatok megvalósításának optimális módját.  A Ray RLLib natív módon támogatja a Deep learning-keretrendszereket, például a TensorFlow és a PyTorch.  
+A [Ray RLLib](https://github.com/ray-project/ray) projekt olyan szolgáltatásokat tartalmaz, amelyek lehetővé teszik a nagy skálázhatóságot a betanítási folyamat során. Az iterációs folyamat egyszerre és erőforrás-igényes, mivel a megerősítő tanulási ügynökök megpróbálják megtanulni a feladatok megvalósításának optimális módját.  A Ray RLLib natív módon támogatja a Deep learning-keretrendszereket, például a TensorFlow és a PyTorch.  
 
 Ha meg szeretné tudni, hogyan használható a Ray RLLib Azure Machine Learning használatával, tekintse meg a [megerősítő tanulási modell betanítása](how-to-use-reinforcement-learning.md)című témakört.
 
@@ -101,4 +101,4 @@ A Machine Learning Operations (MLOps), amely a gépi tanuláshoz használt DevOp
 
 A DevOps eljárások, például a folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) használatával automatizálhatja a teljes gépi tanulási életciklust, és megtalálhatja az irányítási adatai körét. Megadhatja a [gépi tanulás CI/CD-folyamatát a GitHub-műveletekben](./how-to-github-actions-machine-learning.md) Azure Machine learning képzési és üzembe helyezési feladatok futtatásához. 
 
-A szoftveres függőségek, a metrikák, a metaadatok, az adatok és a modellek verziószámozása fontos részét képezi a MLOps folyamatnak, így átlátható, reprodukálható és naplózható folyamatok hozhatók létre. Ehhez a feladathoz használhatja [a MLFlow Azure Machine learning](how-to-use-mlflow.md) , valamint a [gépi tanulási modellek Azure Databricks](./how-to-use-mlflow-azure-databricks.md).
+A szoftveres függőségek, a metrikák, a metaadatok, az adatok és a modellek verziószámozása fontos részét képezi a MLOps folyamatnak, így átlátható, reprodukálható és naplózható folyamatok hozhatók létre. Ehhez a feladathoz használhatja [a MLFlow Azure Machine learning](how-to-use-mlflow.md) , valamint a [gépi tanulási modellek Azure Databricks](./how-to-use-mlflow-azure-databricks.md). A MLflow- [modelleket Azure-webszolgáltatásként is üzembe helyezheti](how-to-deploy-mlflow-models.md). 

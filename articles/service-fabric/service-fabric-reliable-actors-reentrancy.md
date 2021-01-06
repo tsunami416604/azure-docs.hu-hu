@@ -4,12 +4,12 @@ description: A Service Fabric Reliable Actors újbóli belépés bemutatása, am
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2356db0eee82a133afad6aa95299ced0595db32
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9578b676e46d21fe5d30de92ad59c852a8b05f70
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576060"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915878"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors újbóli belépés
 A Reliable Actors futtatókörnyezet alapértelmezés szerint lehetővé teszi a logikai hívás kontextus-alapú újbóli belépés. Ez lehetővé teszi, hogy a szereplők újra bejelentkeznek, ha ugyanabban a hívási környezeti láncban vannak. Az A-Actor például üzenetet küld a B színésznek, aki üzenetet küld a C-nek. Az üzenet feldolgozásának részeként, ha a színész A "A" résztvevőt hívja meg, az üzenet újra bejelentkező, így engedélyezve lesz. A másik hívási környezet részét képező más üzeneteket a rendszer letiltja a (z)
@@ -100,5 +100,5 @@ static class Program
 ```
 
 
-## <a name="next-steps"></a>További lépések
-* További információ a újbóli belépés a [Actor API-dokumentációjában](/previous-versions/azure/dn971626(v=azure.100))
+## <a name="next-steps"></a>Következő lépések
+* További információ a újbóli belépés a [Actor API-dokumentációjában](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet))

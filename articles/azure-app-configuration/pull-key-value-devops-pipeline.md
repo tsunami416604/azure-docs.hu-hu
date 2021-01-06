@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 1c28b4e9821f31f927ef4f640aa664d330cf8792
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570994"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914960"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Beállítások lekérése az alkalmazás konfigurálásához az Azure-folyamatokkal
 
@@ -73,7 +73,7 @@ Ez a szakasz bemutatja, hogyan használható az Azure-alkalmazás konfiguráció
 
 Ez a szakasz bemutatja, hogyan használható az Azure-alkalmazás konfigurációs feladata az Azure DevOps kiadási folyamatában.
 
-1. Navigáljon a folyamat kiadása lapra a **folyamatok** kiadásai lehetőség kiválasztásával  >  **Releases**. A kiadási folyamat dokumentációjában tekintse meg a [folyamatok kiadásával](/azure/devops/pipelines/release?view=azure-devops)foglalkozó témakört.
+1. Navigáljon a folyamat kiadása lapra a **folyamatok** kiadásai lehetőség kiválasztásával  >  . A kiadási folyamat dokumentációjában tekintse meg a [folyamatok kiadásával](/azure/devops/pipelines/release?view=azure-devops)foglalkozó témakört.
 1. Válasszon ki egy meglévő kiadási folyamatot. Ha még nem rendelkezik ilyennel, kattintson az **új folyamat** elemre, és hozzon létre egy újat.
 1. A kiadási folyamat szerkesztéséhez kattintson a jobb felső sarokban található **Szerkesztés** gombra.
 1. Válassza ki a **szakaszt** a feladat hozzáadásához. További információ a szakaszokról: [szakaszok, függőségek, & feltételek hozzáadása](/azure/devops/pipelines/release/environments?view=azure-devops).
@@ -103,6 +103,9 @@ Ha például egy későbbi feladat PowerShell-parancsfájlt futtat, akkor a köv
 echo "$env:myBuildSetting"
 ```
 És a rendszer kinyomtatja az értéket a konzolon.
+
+> [!NOTE]
+> Az alkalmazás-konfiguráción belüli Azure Key Vault-hivatkozások feloldhatók és [titkos változókként](/azure/devops/pipelines/process/variables#secret-variables)lesznek beállítva. Az Azure-folyamatokban a titkos változók a naplóból vannak kitakarva. Környezeti változókként nem lesznek átadva a feladatoknak, és ehelyett bemenetként kell átadni őket. 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

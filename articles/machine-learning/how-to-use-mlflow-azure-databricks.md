@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 776db820ffb1a216c3f6f7e9c6d6b8d90913a063
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 9e0102cdb7e8494a8540b1970932f0d9f7f39fde
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881463"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912917"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Azure Databricks ML-kísérletek nyomon követése MLflow és Azure Machine Learning (előzetes verzió)
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a MLflow követési URI-é
 
 A [MLflow](https://www.mlflow.org) egy nyílt forráskódú kódtár a gépi tanulási kísérletek életciklusának kezeléséhez. A MLFlow Tracking a MLflow egy olyan összetevője, amely naplózza és nyomon követi a képzések futtatási metrikáit és a modelleket. További információ a [Azure Databricks és a MLflow](/azure/databricks/applications/mlflow/). 
 
-További MLflow és Azure Machine Learning funkciók integrálásához tekintse meg a [kísérlet futtatásának nyomon követése és a végpontok létrehozása a MLflow és a Azure Machine learning segítségével](how-to-use-mlflow.md) című témakört.
+További MLflow és Azure Machine Learning funkciók integrálásával kapcsolatban tekintse meg a következő témakört: a [kísérlet nyomon követése a MLflow és a Azure Machine learning](how-to-use-mlflow.md) .
 
 >[!NOTE]
 > A nyílt forráskódú kódtár MLflow gyakran változnak. Ennek megfelelően a Azure Machine Learning és a MLflow-integráción keresztül elérhető funkciókat előzetes verziónak kell tekinteni, és a Microsoft nem támogatja teljes mértékben.
@@ -181,8 +181,8 @@ Ha készen áll egy végpont létrehozására az ML-modellekhez. A következők�
 A [mlflow. azureml. Deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) API-t használhatja modell üzembe helyezéséhez a Azure Machine learning munkaterületen. Ha a modellt csak a Azure Databricks munkaterületre regisztrálta, a [modellek regisztrálása MLflow](#register-models-with-mlflow) szakaszban leírtak szerint, akkor a `model_name` modellnek Azure Machine learning munkaterületre való regisztrálásához a paramétert kell megadnia. 
 
 Azure Databricks futtatások a következő végpontokra telepíthetők. 
-* [Azure Container-példány](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
+* [Azure Container-példány](how-to-deploy-mlflow-models.md#deploy-to-azure-container-instance-aci)
+* [Azure Kubernetes Service](how-to-deploy-mlflow-models.md#deploy-to-azure-kubernetes-service-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>Modellek üzembe helyezése az ADB-végpontokon a Batch-pontozáshoz 
 
@@ -231,8 +231,8 @@ Ha nem tervezi a naplózott metrikák és összetevők használatát a munkater�
 
 A [Azure Machine learning notebookokkal rendelkező MLflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) bemutatják és kibővítik a jelen cikkben ismertetett fogalmakat.
 
-## <a name="next-steps"></a>További lépések
-
+## <a name="next-steps"></a>Következő lépések
+* [MLflow-modellek üzembe helyezése Azure-webszolgáltatásként](how-to-deploy-mlflow-models.md). 
 * [A modellek kezelése](concept-model-management-and-deployment.md).
-* [A kísérlet futtatásának nyomon követése és végpontok létrehozása a MLflow és a Azure Machine learning](how-to-use-mlflow.md). 
+* [A kísérlet nyomon követése a MLflow és a Azure Machine learning](how-to-use-mlflow.md). 
 * További információ a [Azure Databricks és a MLflow](/azure/databricks/applications/mlflow/).

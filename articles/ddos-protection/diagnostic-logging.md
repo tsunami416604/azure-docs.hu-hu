@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: dd350cc5fa0c3b30b4f0d57938348a8328af311a
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 22c49502883cb444027bd59a24bfb5bb3c32da4c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827393"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915164"
 ---
-# <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS diagnosztikai naplózás megtekintése és konfigurálása
+# <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS-diagnosztikai naplózás megtekintése és konfigurálása
 
 Azure DDoS Protection a standard részletes támadási elemzéseket és vizualizációkat biztosít a DDoS Attack Analytics használatával. A DDoS-támadásokkal szemben a virtuális hálózatokat védő ügyfelek részletesen megtekinthetik a támadási forgalmat, valamint a támadás enyhítésére tett lépéseket a támadásokkal kapcsolatos kockázatcsökkentő jelentésekben & a kockázatcsökkentő folyamat naplófájljait. A gazdag telemetria Azure Monitoron keresztül érhető el, beleértve a DDoS-támadások időtartama alatt részletes mérőszámokat is. A riasztás konfigurálható a DDoS Protection által elérhetővé tett Azure Monitor metrikák bármelyikéhez. A naplózás az [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), a splunk (Azure Event Hubs), a OMS log Analytics és az Azure Storage szolgáltatással is integrálható a Azure monitor diagnosztikai felületen keresztül haladó elemzésekhez.
 
@@ -40,7 +40,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 - Az oktatóanyag lépéseinek elvégzése előtt először létre kell hoznia egy [Azure DDoS standard Protection-csomagot](manage-ddos-protection.md) , és a DDoS Protection szabványnak engedélyezve kell lennie egy virtuális hálózaton.
-- A DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz rendelt nyilvános IP-címeket. Ha nem rendelkezik nyilvános IP-címmel rendelkező erőforrásokkal a virtuális hálózaton, először létre kell hoznia egy nyilvános IP-címmel rendelkező erőforrást. Az [Azure-szolgáltatások virtuális hálózata](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (beleértve az Azure Load balancert, ahol a háttérbeli virtuális gépek a virtuális hálózaton vannak), a Resource Managerrel telepített összes erőforrás nyilvános IP-címét nyomon követheti, kivéve Azure app Service környezetekben és az Azure VPN Gateway. Az oktatóanyag folytatásához gyorsan létrehozhat egy Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.    
+- A DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz rendelt nyilvános IP-címeket. Ha nem rendelkezik nyilvános IP-címmel rendelkező erőforrásokkal a virtuális hálózaton, először létre kell hoznia egy nyilvános IP-címmel rendelkező erőforrást. Az [Azure-szolgáltatások virtuális hálózata](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (beleértve az Azure Load balancert, ahol a háttérbeli virtuális gépek a virtuális hálózaton vannak), a Resource Managerrel telepített összes erőforrás nyilvános IP-címét nyomon követheti, kivéve Azure app Service környezetekben. Az oktatóanyag folytatásához gyorsan létrehozhat egy Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.    
 
 ## <a name="configure-ddos-diagnostic-logs"></a>DDoS diagnosztikai naplók konfigurálása
 
@@ -77,7 +77,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **Erőforrás** | A nyilvános IP-cím neve. |
 | **ResourceType** | Ez mindig a következő lesz: `PUBLICIPADDRESS` . |
 | **OperationName** | Az értesítések esetében ez a következő lesz: `DDoSProtectionNotifications` .  |
-| **Üzenet** | A támadás részletei. |
+| **Üzenetet** | A támadás részletei. |
 | **Típus** | Az értesítés típusa. A lehetséges értékek a következők: `MitigationStarted` . `MitigationStopped`. |
 | **PublicIpAddress** | A nyilvános IP-címe. |
 
@@ -93,7 +93,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 | **Erőforrás** | A nyilvános IP-cím neve. |
 | **ResourceType** | Ez mindig a következő lesz: `PUBLICIPADDRESS` . |
 | **OperationName** | A flow-naplók esetében ez a következő lesz: `DDoSMitigationFlowLogs` . |
-| **Üzenet** | A támadás részletei. |
+| **Üzenetet** | A támadás részletei. |
 | **SourcePublicIpAddress** | Az ügyfél nyilvános IP-címe, amely a nyilvános IP-címére irányuló forgalmat generál. |
 | **SourcePort** | A portszám 0-tól 65535-ig terjed. |
 | **DestPublicIpAddress** | A nyilvános IP-címe. |

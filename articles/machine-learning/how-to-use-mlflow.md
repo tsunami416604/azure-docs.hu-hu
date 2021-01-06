@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 085ba4d9d4e78acec4505ddb0e9e89d4e0b5c4a3
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ed9d41a84e455241ed3cfc41b905a671f2a2d499
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881480"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912954"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>ML-modellek betanítása és nyomon követése MLflow és Azure Machine Learning (előzetes verzió)
 
@@ -211,7 +211,7 @@ run.get_metrics()
 
 Regisztrálja és kövesse a modelleket a [Azure Machine learning modell beállításjegyzékével](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere) , amely támogatja a MLflow-modell beállításjegyzékét. Azure Machine Learning modellek a MLflow modell sémájának megfelelően vannak igazítva, így ezek a modellek egyszerűen exportálhatók és importálhatók különböző munkafolyamatokban. A MLflow kapcsolódó metaadatok, például a, a Run ID a nyomkövetéshez regisztrált modellel is címkével rendelkeznek. A felhasználók elküldhetik a MLflow-futtatásokból készített betanítási, regisztrálási és üzembe helyezési modelleket. 
 
-Ha egy lépésben szeretné üzembe helyezni és regisztrálni az üzemi használatra kész modellt, tekintse meg a [MLflow-modellek üzembe helyezése és regisztrálása](how-to-deploy-models-with-mlflow.md)című témakört.
+Ha egy lépésben szeretné üzembe helyezni és regisztrálni az üzemi használatra kész modellt, tekintse meg a [MLflow-modellek üzembe helyezése és regisztrálása](how-to-deploy-mlflow-models.md)című témakört.
 
 Egy modell egy futtatásból való regisztrálásához és megtekintéséhez kövesse az alábbi lépéseket:
 
@@ -258,9 +258,9 @@ Az [Azure ml jegyzetfüzetekkel rendelkező MLflow](https://github.com/Azure/Mac
 > [!NOTE]
 > A mlflow-t használó példák Közösség által vezérelt tárháza a következő címen érhető el: https://github.com/Azure/azureml-examples .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Modellek üzembe helyezése a MLflow](how-to-deploy-models-with-mlflow.md).
+* [Modellek üzembe helyezése a MLflow](how-to-deploy-mlflow-models.md).
 * Figyelje az [adateltolódáshoz](./how-to-enable-data-collection.md)használt üzemi modelleket.
 * [Nyomon követheti Azure Databricks futtatását a MLflow](how-to-use-mlflow-azure-databricks.md).
 * [A modellek kezelése](concept-model-management-and-deployment.md).

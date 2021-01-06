@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87077553"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913726"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rövid útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure Portalon
 
@@ -32,7 +32,7 @@ Az Azure [Load Balancer](../load-balancer/load-balancer-overview.md) az egészs�
 
 Először hozzon létre egy nyilvános standard Load Balancer a portál használatával. A létrehozott név és nyilvános IP-cím automatikusan be van állítva a terheléselosztó előtér-címére.
 
-1. A keresőmezőbe írja be a **Load Balancer**kifejezést. A találatok között a **piactér** területen válassza a **Load balancert**.
+1. A keresőmezőbe írja be a **Load Balancer** kifejezést. A találatok között a **piactér** területen válassza a **Load balancert**.
 1. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat:
 
     | Beállítás                 | Érték   |
@@ -42,47 +42,46 @@ Először hozzon létre egy nyilvános standard Load Balancer a portál használ
     | Név           | *myLoadBalancer*         |
     | Region         | Válassza az **USA keleti régiója** lehetőséget.       |
     | Típus          | Válassza a **Nyilvános** lehetőséget.       |
-    | Termékváltozat           | Válassza a **standard**lehetőséget.       |
+    | Termékváltozat           | Válassza a **standard** lehetőséget.       |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím  | *myPip*   |
     | Hozzárendelés| Statikus |
-    | A rendelkezésre állási zóna | Válassza a **zóna – redundáns**lehetőséget. |
+    | A rendelkezésre állási zóna | Válassza a **zóna – redundáns** lehetőséget. |
 
 1. Ha elkészült, válassza a **felülvizsgálat + létrehozás** elemet. 
-1. Az érvényesítést követően válassza a **Létrehozás**lehetőséget. 
+1. Az érvényesítést követően válassza a **Létrehozás** lehetőséget. 
 
 ![Terheléselosztó létrehozása](./media/virtual-machine-scale-sets-create-portal/load-balancer.png)
 
 ## <a name="create-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 Méretezési csoportokat Windows Server-rendszerképpel vagy Linux-rendszerképpel (például RHEL, CentOS, Ubuntu vagy SLES) helyezhet üzembe.
 
-1. Írja be a **méretezési csoport** kifejezést a keresőmezőbe. Az eredmények alatt, a **piactér**területen válassza a **virtuálisgép-méretezési**csoportok lehetőséget. Válassza a **Létrehozás** lehetőséget a **virtuálisgép-méretezési** csoportok lapon, amely megnyitja a **virtuálisgép-méretezési csoport létrehozása** lapot. 
+1. Írja be a **méretezési csoport** kifejezést a keresőmezőbe. Az eredmények alatt, a **piactér** területen válassza a **virtuálisgép-méretezési** csoportok lehetőséget. Válassza a **Létrehozás** lehetőséget a **virtuálisgép-méretezési** csoportok lapon, amely megnyitja a **virtuálisgép-méretezési csoport létrehozása** lapot. 
 1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. Írja be a *myVMSSResourceGroup* nevet, majd kattintson az **OK gombra** . 
 1. A méretezési csoport neveként írja be a *myScaleSet* nevet.
-1. A **régió**területen válasszon ki egy régiót, amely a területhez közeledik.
-1. A **méretezési csoport virtuális gépek** alapértelmezett értékének meghagyása az előkészítési **módba**.
+1. A **régió** területen válasszon ki egy régiót, amely a területhez közeledik.
 1. Válassza ki a **piactér rendszerképét.** Ebben a példában az *Ubuntu Server 18,04 LTS*-et választottuk.
 1. Adja meg a kívánt felhasználónevet, és válasszon ki egy tetszőleges hitelesítési típust.
    - A **jelszónak** legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információkért lásd: [felhasználónév- és jelszókövetelmények](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
    - Ha a Linux operációsrendszer-lemezt választja, választhatja az **SSH nyilvános kulcs** lehetőséget is. Csak a nyilvános kulcsot adja meg, például: *~/.ssh/id_rsa.pub*. [SSH-kulcsok létrehozásához és használatához](../virtual-machines/linux/mac-create-ssh-keys.md) használhatja a portál Azure Cloud Shell szolgáltatását is.
    
-    ![Virtuálisgép-méretezési csoport létrehozása](./media/virtual-machine-scale-sets-create-portal/quick-create-scaleset.png)
+    :::image type="content" source="./media/virtual-machine-scale-sets-create-portal/quick-create-scale-set.png" alt-text="A képen a méretezési csoportok létrehozási beállításai láthatók a Azure Portalban.":::
 
 1. Kattintson a **tovább** gombra a többi oldal áthelyezéséhez. 
 1. Hagyja meg az alapértelmezett értékeket a **példány** és a **lemezek** oldalain.
-1. A **hálózatkezelés** lap terheléselosztás területén válassza az **Igen** lehetőséget a méretezési csoport példányainak **a terheléselosztó mögé**állításához. 
-1. A **terheléselosztási beállítások**területen válassza az **Azure Load Balancer**elemet.
-1. A **terheléselosztó kiválasztása**lapon válassza ki a korábban létrehozott *myLoadBalancer* .
-1. A **háttérbeli készlet kiválasztásához**válassza az **új létrehozása**elemet, írja be a *myBackendPool*, majd a **Létrehozás**lehetőséget.
-1. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet. 
+1. A **hálózatkezelés** lap terheléselosztás területén válassza az **Igen** lehetőséget a méretezési csoport példányainak **a terheléselosztó mögé** állításához. 
+1. A **terheléselosztási beállítások** területen válassza az **Azure Load Balancer** elemet.
+1. A **terheléselosztó kiválasztása** lapon válassza ki a korábban létrehozott *myLoadBalancer* .
+1. A **háttérbeli készlet kiválasztásához** válassza az **új létrehozása** elemet, írja be a *myBackendPool*, majd a **Létrehozás** lehetőséget.
+1. Ha elkészült, válassza a **felülvizsgálat + létrehozás** elemet. 
 1. Az ellenőrzés elvégzése után válassza a **Létrehozás** lehetőséget a méretezési csoport telepítéséhez.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje az erőforráscsoportot, a méretezési csoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a méretezési csoporthoz tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget.
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a méretezési csoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a méretezési csoporthoz tartozó erőforráscsoportot, majd válassza a **Törlés** lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egy alapszintű méretezési csoportot hozott létre az Azure Portalon. Ha bővebb információra van szüksége, lépjen tovább az Azure-beli virtuálisgép-méretezési csoportok létrehozásáról és kezeléséről szóló oktatóanyagra.
 
 > [!div class="nextstepaction"]

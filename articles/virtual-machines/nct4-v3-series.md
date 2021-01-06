@@ -6,21 +6,18 @@ ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 01/05/2021
 ms.author: vikancha
-ms.openlocfilehash: 2de6cceb1e3b85060a146b18a689b57573bc932e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6463e54fb7f0a2cc03ffa043c00048c1131899ce
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585428"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913430"
 ---
-# <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3 sorozat (előzetes verzió) 
+# <a name="ncast4_v3-series"></a>NCasT4_v3 sorozat 
 
 Az NCasT4_v3 sorozatú virtuális gépeket [NVIDIA Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU-k és AMD EPYC 7V12 (Róma) processzorok működtetik. A virtuális gépek legfeljebb 4 NVIDIA T4 GPU-t, 16 GB memóriát, valamint akár 64 nem többszálú AMD EPYC 7V12 (Róma) processzort és 440 GiB rendszermemóriát is igénybe vehetik. Ezek a virtuális gépek ideálisak a mesterséges intelligencia-szolgáltatások üzembe helyezéséhez – például a felhasználók által generált kérelmek valós idejű meghívásához, vagy interaktív grafikus és vizualizációs számítási feladatokhoz az NVIDIA GRID Driver és Virtual GPU Technology használatával. A CUDA-, TensorRT-, Cafe-, ONNX-és egyéb keretrendszerek, vagy GPU-gyorsított grafikus alkalmazások (az OpenGL és a DirectX) alapján a szabványos GPU számítási feladatok gazdaságosan üzembe helyezhetők a NCasT4_v3 sorozaton belül a felhasználók közelében.
-
-> [!NOTe]
-> Küldjön [be egy kérést](https://aka.ms/NCT4v3Preview) az előzetes program részévé.
 
 <br>
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 1/04/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509563"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916252"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -66,7 +66,7 @@ Az alábbi listában a használni kívánt alkalmazások alapértelmezett válas
 | `ztdid`                    | Nulla érintéses telepítési azonosító | JWT | | A [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) szolgáltatáshoz használt eszköz identitása |
 | `email`                    | A felhasználó címezhető e-mail-címe, ha a felhasználó rendelkezik ilyennel.  | JWT, SAML | MSA, Azure AD | Alapértelmezés szerint ez az érték szerepel, ha a felhasználó vendég a bérlőben.  A felügyelt felhasználók (a bérlőn belüli felhasználók) esetében ezt a választható jogcímen keresztül kell kérni, vagy csak a 2.0-s verzióban az OpenID hatókörrel.  A felügyelt felhasználók esetében az e-mail-címet be kell állítani az [Office felügyeleti portálon](https://portal.office.com/adminportal/home#/users).|
 | `acct`                | Felhasználói fiók állapota a bérlőben | JWT, SAML | | Ha a felhasználó tagja a bérlőnek, az érték a `0` . Ha vendég, az érték a `1` . |
-| `groups`| Csoportos jogcímek opcionális formázása |JWT, SAML| |Az GroupMembershipClaims beállítással együtt használatos az [alkalmazás jegyzékfájljában](reference-app-manifest.md), amelyet is be kell állítani. Részletekért lásd az alábbi [csoportos jogcímeket](#configuring-groups-optional-claims) . A csoportok jogcímeivel kapcsolatos további információkért lásd: [csoportos jogcímek konfigurálása](../hybrid/how-to-connect-fed-group-claims.md)
+| `groups`| Csoportos jogcímek opcionális formázása |JWT, SAML| |Az GroupMembershipClaims beállítással használható az [alkalmazás jegyzékfájljában](reference-app-manifest.md), amelyet is be kell állítani. Részletekért lásd az alábbi [csoportos jogcímeket](#configuring-groups-optional-claims) . A csoportok jogcímeivel kapcsolatos további információkért lásd: [csoportos jogcímek konfigurálása](../hybrid/how-to-connect-fed-group-claims.md)
 | `upn`                      | UserPrincipalName | JWT, SAML  |           | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a felhasználói adatok egyedi azonosítására (például adatbázis-kulcsként). Ehelyett használja a felhasználói objektum AZONOSÍTÓját ( `oid` ) az adatbázis kulcsaként. Az [alternatív bejelentkezési azonosítóval](../authentication/howto-authentication-use-email-signin.md) bejelentkezett felhasználók nem láthatják az egyszerű felhasználónevet (UPN). Ehelyett használja a következő azonosító jogkivonat-jogcímeket a bejelentkezési állapot felhasználónak való megjelenítéséhez: `preferred_username` vagy `unique_name` v1-tokenekhez és `preferred_username` v2-tokenekhez. Bár ez a jogcím automatikusan szerepel, megadhatja opcionális jogcímként is, ha további tulajdonságokat szeretne csatolni a vendég felhasználói eset működésének módosításához.  |
 | `idtyp`                    | Jogkivonat típusa   | JWT hozzáférési jogkivonatok | Speciális: csak az alkalmazáshoz tartozó hozzáférési jogkivonatokban |  Az érték az, `app` Ha a jogkivonat csak alkalmazási token. Ez a legpontosabb módszer egy API számára annak megállapítására, hogy a token alkalmazás-jogkivonat vagy alkalmazás + felhasználói jogkivonat-e.|
 
@@ -85,7 +85,17 @@ Ezeket a jogcímeket mindig tartalmazza a v 1.0 Azure AD-jogkivonatok, de a nem 
 | `in_corp`     | Vállalati hálózaton belül        | Azt jelzi, hogy az ügyfél bejelentkezik-e a vállalati hálózatról. Ha nem, a rendszer nem tartalmazza a jogcímet.   |  Az MFA [megbízható IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) -címeinek beállításai alapján.    |
 | `family_name` | Vezetéknév                       | A felhasználó vezetéknevét, vezetéknevét vagy családjának nevét adja meg a felhasználói objektumban definiált módon. <br>"family_name": "Miller" | Támogatott a MSA és az Azure AD-ben. A `profile` hatókört igényli.   |
 | `given_name`  | Utónév                      | A felhasználó első vagy "megadott" nevét adja meg a felhasználói objektumra vonatkozóan.<br>"given_name": "Frank"                   | Támogatott a MSA és az Azure AD-ben.  A `profile` hatókört igényli. |
-| `upn`         | Felhasználó egyszerű neve | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a felhasználói adatok egyedi azonosítására (például adatbázis-kulcsként). Ehelyett használja a felhasználói objektum AZONOSÍTÓját ( `oid` ) az adatbázis kulcsaként. Az [alternatív bejelentkezési azonosítóval](../authentication/howto-authentication-use-email-signin.md) bejelentkezett felhasználók nem láthatják az egyszerű felhasználónevet (UPN). Ehelyett használja a következő azonosító jogkivonat-jogcímeket a bejelentkezési állapot felhasználónak való megjelenítéséhez: `preferred_username` vagy `unique_name` v1-tokenekhez és `preferred_username` v2-tokenekhez. | A jogcím konfigurálásához tekintse meg az alábbi [további tulajdonságokat](#additional-properties-of-optional-claims) . A `profile` hatókört igényli.|
+| `upn`         | Felhasználó egyszerű neve | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a felhasználói adatok egyedi azonosítására (például adatbázis-kulcsként). Ehelyett használja a felhasználói objektum AZONOSÍTÓját ( `oid` ) az adatbázis kulcsaként. Az [alternatív bejelentkezési azonosítóval](../authentication/howto-authentication-use-email-signin.md) bejelentkezett felhasználók nem láthatják az egyszerű felhasználónevet (UPN). Ehelyett használja a következő `preferred_username` jogcímet a bejelentkezési állapot felhasználónak való megjelenítéséhez. | A jogcím konfigurálásához tekintse meg az alábbi [további tulajdonságokat](#additional-properties-of-optional-claims) . A `profile` hatókört igényli.|
+
+
+**4. táblázat: v 1.0 – csak opcionális jogcímek**
+
+A v2-token formátumának néhány továbbfejlesztése a v1 token formátumot használó alkalmazások számára érhető el, mivel ezek javítják a biztonságot és a megbízhatóságot. Ezek nem lépnek érvénybe a v2-végponttól kért azonosító tokenek esetében, valamint a v2 jogkivonat-formátumot használó API-k hozzáférési jogkivonatai. 
+
+| JWT jogcím     | Név                            | Leírás | Jegyzetek |
+|---------------|---------------------------------|-------------|-------|
+|`aud`          | Célközönség | Mindig a JWTs-ben jelennek meg, de a v1 hozzáférési jogkivonatokban többféle módon is kiállíthatók, ami a jogkivonat-érvényesítés végrehajtásakor nehéz lehet.  A [jogcím további tulajdonságaival](#additional-properties-of-optional-claims) biztosíthatja, hogy mindig a v1 hozzáférési jogkivonatokban lévő GUID azonosítóra legyen beállítva. | v1 csak JWT hozzáférési jogkivonatok|
+|`preferred_username` | Előnyben részesített Felhasználónév        | Az előnyben részesített felhasználónévi jogcímet adja meg v1-tokeneken belül. Ez megkönnyíti az alkalmazások számára a felhasználónevek és az olvasható megjelenítendő nevek megjelenítését, a jogkivonat típusától függetlenül.  Javasoljuk, hogy használja ezt a választható jogcímet a következő használata helyett: például: `upn` vagy `unique_name` . | v1 azonosító tokenek és hozzáférési jogkivonatok |
 
 ### <a name="additional-properties-of-optional-claims"></a>A választható jogcímek további tulajdonságai
 
@@ -97,7 +107,9 @@ Egyes választható jogcímek úgy konfigurálhatók, hogy megváltoztassák a j
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Az SAML-és JWT-válaszokhoz, valamint a 1.0-s és a v 2.0-tokenekhez is használható. |
 |                | `include_externally_authenticated_upn`  | Az erőforrás-bérlőben tárolt vendég UPN-t tartalmazza. Például: `foo_hometenant.com#EXT#@resourcetenant.com` |
-|                | `include_externally_authenticated_upn_without_hash` | Ugyanaz, mint a fenti, azzal a különbséggel, hogy a kivonatoló jeleket () a `#` rendszer aláhúzással () váltja le `_` , például: `foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | Ugyanaz, mint a fenti, azzal a különbséggel, hogy a kivonatoló jeleket () a `#` rendszer aláhúzással () váltja le `_` , például: `foo_hometenant.com_EXT_@resourcetenant.com`|
+| `aud`          |                          | A v1 hozzáférési jogkivonatokban ez a jogcím formátumának módosítására szolgál `aud` .  Ez nem befolyásolja a v2-tokeneket vagy az azonosító jogkivonatokat, ahol a `aud` jogcím mindig az ügyfél-azonosító. Ezzel biztosíthatja, hogy az API könnyebben tudja elvégezni a célközönség-ellenőrzést. A hozzáférési jogkivonatot befolyásoló összes választható jogcímhez hasonlóan a kérelemben szereplő erőforrásnak be kell állítania ezt a választható jogcímet, mivel az erőforrások tulajdonosa a hozzáférési jogkivonat.|
+|                | `use_guid`               | Az erőforrás (API) ügyfél-AZONOSÍTÓját (GUID formátumban) a `aud` APPID URI vagy GUID helyett jogcímként bocsátja ki. Tehát ha egy erőforrás ügyfél `bb0a297b-6a42-4a55-ac40-09a501456577` -azonosítója, akkor az adott erőforráshoz hozzáférési jogkivonatot kérő alkalmazások hozzáférési jogkivonatot kapnak a következővel `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` .|
 
 #### <a name="additional-properties-example"></a>További tulajdonságok – példa
 
@@ -436,7 +448,7 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 
 1. Amikor befejezte a jegyzékfájl frissítését **, a Mentés gombra kattintva** mentheti a jegyzékfájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure AD által biztosított standard jogcímekről.
 

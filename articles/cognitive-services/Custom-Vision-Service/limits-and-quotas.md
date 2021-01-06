@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: pafarley
-ms.openlocfilehash: b79bf5e8ead16bbdf9c69e8d7faae43fa778ab3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a8ea8d5f13f72b0da1e11a27b69da2570eda543
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316579"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913481"
 ---
 # <a name="limits-and-quotas"></a>Korlátok és kvóták
 
@@ -29,7 +29,7 @@ A betanítási lemezképek száma projektenként és címkék szerint projektenk
 |Képek betanítása projektenként |5000|100.000|
 |Előrejelzések/hónap|10,000 |Korlátlan|
 |Címkék/projekt|50|500|
-|Ismétlések |10|10|
+|Iterációk |10|10|
 |Képek címkével ellátott minimális száma címkék szerint, besorolás (50 + ajánlott) |5|5|
 |Képek címkével ellátott minimális száma címkék szerint, objektumok észlelése (50 + ajánlott)|15|15|
 |Mennyi ideig tárolják az előrejelzési képeket|30 nap|30 nap|
@@ -45,6 +45,3 @@ A betanítási lemezképek száma projektenként és címkék szerint projektenk
 |Objektumok maximális száma objektum-észlelési betanítási képen|300|300|
 |Címkék maximális száma besorolási képenként|100|100|
 
-> [!NOTE]
-> Az 256 képpontnál kisebb méretű képek is el lesznek fogadva, a méretük pedig nagyobb.
-> A kép oldalarányának aránya nem lehet nagyobb, mint 25

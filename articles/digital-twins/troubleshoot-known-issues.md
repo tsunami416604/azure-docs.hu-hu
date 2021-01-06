@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: d0c26255e6d9d35d51390ed2b432b9c5dc9ab2be
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: db29fbda404900c29f85fa876e9427994ee9a093
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862464"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915912"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -47,13 +47,13 @@ Ez a cikk az Azure Digital Twins szolgáltatással kapcsolatos ismert problémá
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Hiba az Azure-beli hitelesítő adatok alapértelmezett hitelesítésével. Identity 1.3.0
 
-**Probléma leírása:** Ha a hitelesítési kódot az Azure **[. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) Library** **1.3.0** használatával írja be az Azure Digital Twins-alkalmazásaiba, akkor előfordulhat, hogy a dokumentációban számos mintában használt [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) metódussal kapcsolatban problémák merülhetnek fel. Ez az "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential hitelesítés sikertelen" hibaüzenetet jeleníti meg, amikor a kód megpróbál hitelesíteni.
+**Probléma leírása:** Ha hitelesítési kódot ír az **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) Library** **1.3.0** használatával, néhány felhasználó problémát észlelt az Azure digitális Twins dokumentációjában számos mintában használt [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) metódussal. Ez az "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential hitelesítés sikertelen" hibaüzenetet jeleníti meg, amikor a kód megpróbál hitelesíteni.
 
 | Ez hatással van rám? | Ok | Feloldás |
 | --- | --- | --- |
-| A DefaultAzureCredential a legtöbb dokumentációs példa, amely tartalmazza a hitelesítést. Ha hitelesítési kódot ír a DefaultAzureCredential használatával, és a könyvtár Version 1.3.0 használja `Azure.Identity` , ez valószínűleg hatással lesz rá. | Ez a probléma akkor jelent meg, ha a DefaultAzureCredential-t használja a könyvtár **1.3.0** `Azure.Identity` . | A megoldáshoz váltson át az alkalmazás 1.2.2-es [verziójának](https://www.nuget.org/packages/Azure.Identity/1.2.2) használatára `Azure.Identity` . A könyvtár verziójának módosítása után a hitelesítés a vártnál sikeresnek kell lennie. |
+| `DefaultAzureCredential` a a szolgáltatáshoz tartozó dokumentációs példák többségében használatos, beleértve a hitelesítést is. Ha hitelesítési kódot ír `DefaultAzureCredential` a 1.3.0 verziójának használatával, `Azure.Identity` és ezt a hibaüzenetet látja, akkor ez hatással lesz rá. | Ez valószínűleg valamilyen konfigurációs probléma miatt következik be `Azure.Identity` . | A megoldás egyik stratégiája, hogy kizárják `SharedTokenCacheCredential` a hitelesítő adatait, ahogy azt a jelen [DefaultAzureCredential-probléma](https://github.com/Azure/azure-sdk/issues/1970) jelenleg meg van nyitva `Azure.Identity` .<br>Egy másik lehetőség az alkalmazás korábbi verziójának, például az 1.2.3-es verzió használatára való módosítása `Azure.Identity` . [](https://www.nuget.org/packages/Azure.Identity/1.2.3) Ez nem befolyásolja az Azure Digital Twins működési hatásait, így az is elfogadott megoldás. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure Digital Twins biztonságáról és engedélyeiről:
 * [*Fogalmak: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md)

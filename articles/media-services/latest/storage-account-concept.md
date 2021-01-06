@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: f37b453a294a0d0a7b9a99bfebe8f3eff09e8956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291194"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916320"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-fiókok
 
@@ -54,6 +54,9 @@ Az adategységek védelméhez az eszközöket a tárolási oldal titkosításáv
 |[Storage ügyféloldali titkosítás](../../storage/common/storage-client-side-encryption.md)|Az Azure Storage által kínált ügyféloldali titkosítás, amelyet az ügyfél felügyel Key Vaultban.|Nem támogatott.|
 
 <sup>1</sup> a Media Services v3-as verziójában a Storage encryption (AES-256 encryption) csak a visszamenőleges kompatibilitás érdekében támogatott, ha az eszközök Media Services v2-mel lettek létrehozva, ami azt jelenti, hogy a v3 a meglévő tárolók titkosított eszközeivel működik együtt, de nem teszi lehetővé újak létrehozását.
+
+## <a name="double-encryption"></a>Dupla titkosítás
+Media Services támogatja a kettős titkosítást.  További információ a kettős titkosításról: [Azure Double encryption](https://docs.microsoft.com/azure/security/fundamentals/double-encryption).
 
 ## <a name="storage-account-errors"></a>Storage-fiókok hibái
 

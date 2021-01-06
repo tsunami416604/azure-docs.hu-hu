@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 1537a87999f9a8eecf83a2431b2f53d3ceaedacb
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854699"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913498"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -138,6 +138,16 @@ Igen, írhat. A fájl elérési útját azonban egy másik előfizetésben vagy 
 
 Létrehozhat például egy nevű kötetet `vol1` . Ezután létrehoz egy másik kötetet is `vol1` , amelyet más kapacitású készletben, de ugyanabban az előfizetésben és régióban is hívnak. Ebben az esetben az azonos nevű kötet használata `vol1` hibát okoz. A fájl elérési útjának használatához a névnek egy másik régióban vagy előfizetésben kell lennie.
 
+### <a name="when-i-try-to-access-nfs-volumes-through-a-windows-client-why-does-the-client-take-a-long-time-to-search-folders-and-subfolders"></a>Ha egy Windows-ügyfélen keresztül próbálom elérni az NFS-köteteket, akkor miért hosszú ideig tart a mappák és almappák keresése?
+
+Győződjön meg arról, hogy `CaseSensitiveLookup` engedélyezve van-e a Windows-ügyfélen a mappák és almappák keresésének felgyorsításához:
+
+1. A CaseSensitiveLookup engedélyezéséhez használja a következő PowerShell-parancsot:   
+    `Set-NfsClientConfiguration -CaseSensitiveLookup 1`    
+2. Csatlakoztassa a kötetet a Windows Serveren.   
+    Példa:   
+    `Mount -o rsize=1024 -o wsize=1024 -o mtype=hard \\10.x.x.x\testvol X:*`
+
 ## <a name="smb-faqs"></a>SMB – gyakori kérdések
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Mely SMB-verziókat támogatja a Azure NetApp Files?
@@ -194,7 +204,7 @@ A `stat` parancs használatával megtekintheti, hogy egy címtár eléri-e a max
 
 320 MB-os könyvtár esetén a blokkok száma 655360, és minden blokk mérete 512 bájt.  (Ez a 320x1024x1024/512.)  
 
-Példák:
+Angol nyelvű Példák:
 
 ```console
 [makam@cycrh6rtp07 ~]$ stat bin

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 25d8c36cc42c3f1d1cc2a8477a7361ba45bec706
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 17b99a9d3fa6b2934705d913170f2f617c856998
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977918"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915759"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD feltöltése az Azure-ba vagy egy felügyelt lemez másolása egy másik régióba – Azure PowerShell
 
@@ -44,7 +44,7 @@ Az ilyen felügyelt lemez két egyedi állapottal rendelkezik:
 
 Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, szüksége lesz a feltölteni kívánt VHD-fájl méretére (bájtban). A példában szereplő kód a következőt fogja használni: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` . Ez az érték a **-UploadSizeInBytes** paraméter megadásakor használatos.
 
-Most a helyi rendszerhéjon hozzon létre egy üres szabványos HDD-t a feltöltéshez, és adja meg a **feltöltési** beállítást a **-CreateOption** paraméterben, valamint a **-UploadSizeInBytes** paramétert a [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) parancsmagban. Ezután hívja a [New-AzDisk-](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) t a lemez létrehozásához.
+Most a helyi rendszerhéjon hozzon létre egy üres szabványos HDD-t a feltöltéshez, és adja meg a **feltöltési** beállítást a **-CreateOption** paraméterben, valamint a **-UploadSizeInBytes** paramétert a [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0&preserve-view=true) parancsmagban. Ezután hívja a [New-AzDisk-](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0&preserve-view=true) t a lemez létrehozásához.
 
 Cserélje le `<yourdiskname>` , `<yourresourcegroupname>` , majd `<yourregion>` futtassa a következő parancsokat:
 

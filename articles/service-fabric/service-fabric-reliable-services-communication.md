@@ -4,12 +4,12 @@ description: A Reliable Services kommunikációs modell áttekintése, beleértv
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574326"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912614"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>A Reliable Services kommunikációs API-k használata
 Az Azure Service Fabric platformként teljes mértékben független a szolgáltatások közötti kommunikációtól. Minden protokoll és verem elfogadható, UDP-ről HTTP-re. A szolgáltatás fejlesztője dönti el, hogyan kommunikálnak a szolgáltatások. A Reliable Services alkalmazás-keretrendszer beépített kommunikációs veremeket és API-kat biztosít, amelyeket az egyéni kommunikációs összetevők kiépítéséhez használhat.
@@ -288,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-Az ügyfél-előállító elsődleges feladata a kommunikációs ügyfelek létrehozása. Azon ügyfelek esetében, amelyek nem tartanak fenn állandó kapcsolatokat, például HTTP-ügyfelet, csak a-ügyfelet kell létrehoznia és visszaadnia. Az állandó kapcsolatokat (például egyes bináris protokollokat) fenntartó protokollokat a gyárnak is ellenőriznie kell, hogy meg kell-e állapítani, hogy a kapcsolódást újra létre kell-e hozni.  
+Az ügyfél-előállító elsődleges feladata a kommunikációs ügyfelek létrehozása. Azon ügyfelek esetében, amelyek nem tartanak fenn állandó kapcsolatokat, például HTTP-ügyfelet, csak a-ügyfelet kell létrehoznia és visszaadnia. Az állandó kapcsolatokat (például egyes bináris protokollokat) fenntartó protokollokat a gyári ellenőrzésnek is meg kell határoznia `ValidateClient(string endpoint, MyCommunicationClient client)` annak megállapításához, hogy a kapcsolódást újra kell-e létrehozni.  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>
@@ -420,7 +420,7 @@ CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(clie
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [ASP.NET Core a Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md)
 * [Távoli eljáráshívás Reliable Services táveléréssel](service-fabric-reliable-services-communication-remoting.md)
 * [WCF-kommunikáció Reliable Services használatával](service-fabric-reliable-services-communication-wcf.md)

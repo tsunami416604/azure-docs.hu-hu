@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 12/14/2020
+ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bde5cecc4052724f795cac03f6efceb3451ea2ee
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509546"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914348"
 ---
 # <a name="known-issues-application-provisioning"></a>Ismert problémák: az alkalmazás kiépítés
 Ismert problémák az alkalmazások kiépítés közbeni használatáról. A UserVoice-on futó alkalmazás-kiépítési szolgáltatással kapcsolatban az [Azure ad Application UserVoice](https://aka.ms/appprovisioningfeaturerequest)című témakörben talál visszajelzést. Szorosan Figyeljük a UserVoice, így javíthatjuk a szolgáltatást. 
@@ -83,6 +83,10 @@ A kiépítési ciklusok közötti [idő](./application-provisioning-when-will-pr
 
 Az alkalmazás-kiépítési szolgáltatás nem ismeri a külső alkalmazásokban végrehajtott módosításokat. Így nem kerül sor a visszaállításra. Az alkalmazás-kiépítési szolgáltatás az Azure AD-ben végrehajtott módosításokra támaszkodik. 
 
+**Váltás az összes szinkronizálásról a kijelölt nem működő szinkronizálásra**
+
+Miután módosította a hatókört a "Sync all" értékről a "Sync Assigned" elemre, győződjön meg arról is, hogy a módosítás érvénybe léptetéséhez újraindítás szükséges. Az újraindítást a felhasználói felületen végezheti el.
+
 **A kiépítési ciklus a befejezésig folytatódik**
 
 A kiépítés `enabled = off` vagy a Leállítás megszakadása esetén az aktuális kiépítési ciklus a befejezésig folytatódni fog. A szolgáltatás addig nem hajtja végre a jövőbeli ciklusok végrehajtását, amíg újra be nem kapcsolja az üzembe helyezést.
@@ -95,5 +99,5 @@ Ha egy csoport hatókörben van, és egy tag kívül esik a hatókörön, a rend
 
 Ha a felhasználó és a felettesük is a kiépítés hatókörében van, akkor a szolgáltatás kiépíti a felhasználót, majd frissíti a kezelőt. Ha azonban a felhasználó a hatókörén belül van, és a felettes nem a hatókörön kívül esik, a felhasználót a felettesi hivatkozás nélkül fogjuk kiépíteni. Ha a felettes hatókörbe kerül, a kezelői hivatkozás addig nem frissül, amíg újra nem indítja az üzembe helyezést, és a szolgáltatás újra kiértékeli az összes felhasználót. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az üzembe helyezés menete](how-provisioning-works.md)

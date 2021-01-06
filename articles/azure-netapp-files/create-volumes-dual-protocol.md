@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/04/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881089"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914991"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
 
@@ -133,7 +133,10 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy k
     * Egy másik számítógép a főtanúsítványt tartalmazó tartományban  
 
 3. Exportálja a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt.  
-    A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok exportálhatók személyes vagy megbízható legfelső szintű hitelesítésszolgáltatókból.   
+    A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok a személyes vagy a megbízható legfelső szintű hitelesítésszolgáltatók könyvtárából exportálhatók, ahogy az alábbi példákban is látható:   
+    ![személyes tanúsítványokat megjelenítő képernyőkép](../media/azure-netapp-files/personal-certificates.png)   
+    ![a megbízható legfelső szintű hitelesítésszolgáltatókat megjelenítő képernyőkép](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
+
     Győződjön meg arról, hogy a tanúsítvány az alap-64 kódolású X. 509 fájlba van exportálva (. CER) formátum: 
 
     ![Tanúsítvány exportálása varázsló](../media/azure-netapp-files/certificate-export-wizard.png)
@@ -162,7 +165,7 @@ A következő attribútumokat kell beállítania az LDAP-felhasználók és az L
 
 Az NFS-ügyfél konfigurálásához kövesse az [NFS-ügyfél konfigurálása Azure NetApp Fileshoz](configure-nfs-clients.md) című témakör útmutatását.  
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [NFS-ügyfél konfigurálása az Azure NetApp Fileshoz](configure-nfs-clients.md)
 * [Kettős protokollú kötetek hibaelhárítása](troubleshoot-dual-protocol-volumes.md)

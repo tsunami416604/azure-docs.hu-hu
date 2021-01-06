@@ -1,23 +1,23 @@
 ---
-title: Azure Stack Edge Pro felhasználók kezelése | Microsoft Docs
+title: Azure Stack Edge Pro-FPGA felhasználók kezelése | Microsoft Docs
 description: Ismerteti, hogyan kezelheti a felhasználókat a Azure Stack Edge Pro-ban a Azure Portal használatával.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/11/2019
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 3fb82e95d9d7dcfdf59bd05f91beff8e1184955e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27ca190f3bad7f75175e5206d48e13dae1f5687e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904386"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913316"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge-pro"></a>A Azure Portal használata az Azure Azure Stack Edge Pro-beli felhasználók felügyeletéhez
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro-fpga"></a>A Azure Portal segítségével kezelheti a felhasználókat a Azure Stack Edge Pro-FPGA
 
-Ez a cikk bemutatja, hogyan kezelheti a felhasználókat a Azure Stack Edge Pro-ban. A Azure Stack Edge Pro-t a Azure Portal vagy a helyi webes felületen keresztül kezelheti. Az Azure Portalon felhasználókat vehet fel, módosíthat vagy törölhet.
+Ez a cikk ismerteti, hogyan kezelheti a felhasználókat a Azure Stack Edge Pro FPGA-eszközön. A Azure Stack Edge Pro-t a Azure Portal vagy a helyi webes felületen keresztül kezelheti. Az Azure Portalon felhasználókat vehet fel, módosíthat vagy törölhet.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -39,11 +39,11 @@ A felhasználói engedélyek első alkalommal a megosztás létrehozása során,
 
 Felhasználó hozzáadásához hajtsa végre az alábbi lépéseket az Azure Portalon.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **áttekintés > felhasználók**lehetőséget. Válassza a **+ felhasználó hozzáadása** elemet a parancssorban.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza a **felhasználók** lehetőséget. Válassza a **+ felhasználó hozzáadása** elemet a parancssorban.
 
     ![Válassza a felhasználó hozzáadása elemet.](media/azure-stack-edge-manage-users/add-user-1.png)
 
-2. Adja meg a hozzáadni kívánt felhasználó felhasználónevét és jelszavát. Erősítse meg a jelszót, és válassza a **Hozzáadás**lehetőséget.
+2. Adja meg a hozzáadni kívánt felhasználó felhasználónevét és jelszavát. Erősítse meg a jelszót, és válassza a **Hozzáadás** lehetőséget.
 
     ![Felhasználónév és jelszó megadása](media/azure-stack-edge-manage-users/add-user-2.png)
 
@@ -65,11 +65,11 @@ A felhasználó létrehozását követően lehetőség van a hozzá tartozó jel
 Felhasználó törléséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **áttekintés > felhasználók**lehetőséget.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza a **felhasználók** lehetőséget.
 
     ![Válassza ki a törölni kívánt felhasználót](media/azure-stack-edge-manage-users/delete-user-1.png)
 
-2. Válasszon ki egy felhasználót a felhasználók listájából, majd válassza a **Törlés**lehetőséget.  
+2. Válasszon ki egy felhasználót a felhasználók listájából, majd válassza a **Törlés** lehetőséget.  
 
    ![Törlés kiválasztása](media/azure-stack-edge-manage-users/delete-user-2.png)
 

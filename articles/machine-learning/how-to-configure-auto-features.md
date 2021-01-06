@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694011"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915861"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Az automatizált gépi tanulásban tárolt featurization
 
@@ -68,9 +68,6 @@ Az alábbi táblázat összefoglalja az adataira automatikusan alkalmazott techn
 |_*További funkciók előállítása**_ |A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br><br> _For előrejelzési feladatok, * ezek a további DateTime-funkciók a következők: ISO év, félév, naptári hónap karakterláncként, hét, hét napja karakterláncként, a negyedév napja, az év napja, AM/PM (0, ha az óra délig van (12 PM), 1 egyéb), AM/PM as sztring, óra nap (12 – HR)<br/><br/>A szöveges funkciókhoz: unigrams, bigrams és Trigrams alapuló kifejezés gyakorisága. További információ arról, [hogy ez hogyan történik a bertban.](#bert-integration)|
 |**Átalakítás és kódolás** _|A több egyedi értékkel rendelkező numerikus funkciók átalakítása kategorikus funkciókba.<br/><br/>A kis-és nagymértékű kategorikus funkciók esetében egy gyors kódolást használunk. A rendszer egy-egy gyors kivonatoló kódolást használ a magas fokú, kategorikus funkciókhoz.|
 |_ *Word-beágyazások**|A szöveges Képtulajdonság egy előre betanított modell használatával alakítja át a szöveges tokenek vektorait a mondatokra. Az egyes Word-dokumentumok beágyazási vektora a többivel együtt a dokumentum-szolgáltatás vektorának előállítására szolgál.|
-|**Cél kódolások**|A kategorikus funkciók esetében ez a lépés leképezi az egyes kategóriákat a regressziós problémák átlagos céljával, valamint az osztályok valószínűségét az egyes osztályok számára a besorolási problémák esetében. A rendszer a gyakoriságon alapuló súlyozást és a k-fold kereszt-ellenőrzést alkalmazza, hogy csökkentse a ritka adatkategóriák által okozott leképezés és zaj túlillesztését.|
-|**Szöveges cél kódolása**|Szöveges bevitel esetén a rendszer egy halmozott lineáris modellt használ, amelyben a rendszer az egyes osztályok valószínűségét állítja elő.|
-|**Bizonyítékok súlyozása (jaj)**|Kiszámítja a jaj-et a kategorikus oszlopok korrelációja alapján a cél oszlophoz. A jaj kiszámításának eredménye az osztályban és az osztályon kívüli valószínűségek arányának naplója. Ez a lépés egységenként egy numerikus funkció oszlopot hoz létre, és eltávolítja a hiányzó értékek és a kiugró adatok explicit módon történő bevonásának szükségességét.|
 |**Fürt távolsága**|A k – a csoportosítási modellt jelenti az összes numerikus oszlopban. *K* új szolgáltatásokat (egy új numerikus funkciót) hoz létre, amely az egyes minták távolságát tartalmazza az egyes fürtök középpontját.|
 
 ## <a name="data-guardrails"></a>Az adatguardrails
@@ -119,11 +116,11 @@ A featurizations testreszabásához adja meg `"featurization": FeaturizationConf
 
 A támogatott testreszabások a következők:
 
-|Testreszabás|Meghatározás|
+|Testreszabás|Definíció|
 |--|--|
 |**Oszlop céljának frissítése**|Felülbírálja a megadott oszlop automatikus észlelési funkciójának típusát.|
 |**A transzformátor paraméterének frissítése** |Frissítse a megadott átalakító paramétereit. Jelenleg támogatja az *imputált* (mean, leggyakoribb és közepes) és a *HashOneHotEncoder*.|
-|**Oszlopok eldobása** |Meghatározza az eldobni kívánt oszlopokat a featurized.|
+|**Oszlopok eltávolítása** |Meghatározza az eldobni kívánt oszlopokat a featurized.|
 |**Transzformátorok letiltása**| Megadja a featurization-folyamathoz használandó blokk-átalakítókat.|
 
 Hozza létre az `FeaturizationConfig` OBJEKTUMOT API-hívások használatával:
@@ -206,7 +203,7 @@ Kimenet
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   |Kimenet|Meghatározás|
+   |Kimenet|Definíció|
    |----|--------|
    |RawFeatureName|A megadott adatkészlet bemeneti funkciójának vagy oszlopának neve.|
    |TypeDetected|A bemeneti funkció észlelt adattípusa.|
@@ -352,7 +349,7 @@ automl_settings = {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan állíthatja be az automatikus ML-kísérleteket:
 

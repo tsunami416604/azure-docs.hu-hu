@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: c1c2c5f27143be7fc10269c948bee9d5465d565a
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530442"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912699"
 ---
 # <a name="what-is-routing-preference-preview"></a>Mi az útválasztási preferencia (előzetes verzió)?
 
@@ -72,11 +72,6 @@ A tároláshoz az elsődleges végpontok mindig a **Microsoft globális hálóza
 ## <a name="pricing"></a>Díjszabás
 A két lehetőség közötti árkülönbség az internetes kimenő adatforgalom díjszabása szerint jelenik meg. Az Útválasztás a **Microsoft globális hálózati** adatátviteli díjszabása szerint megegyezik az aktuális internetes forgalom díjszabásával. A legfrissebb díjszabási információkért tekintse meg az [Azure sávszélesség-díjszabási oldalát](https://azure.microsoft.com/pricing/details/bandwidth/) . 
 
-## <a name="availability"></a>Rendelkezésre állás
-
-Az útválasztási beállítások támogatása a következő régiókban érhető el olyan szolgáltatások esetében, mint például a virtuális gép és az internetre irányuló terheléselosztó, amely nyilvános IP-címet használ az internetes forgalomhoz – Észak-Európa, Nyugat-Európa, Dél-Franciaország, Egyesült Királyság déli régiója, Nyugat-Svájc Középnyugat-Németország USA keleti régiója
-
-A Storage-fiók útválasztási preferencia-támogatása a következő Azure-régiókban érhető el: az USA északi középső régiója, az USA nyugati középső régiója, az USA déli középső régiója, az USA keleti régiója, az USA nyugati régiója, Észak-Európa, Dél-Franciaország, Középnyugat-Németország, Nyugat-Svájc, déli Kelet-Ázsia, Kelet-Japán
 ## <a name="limitations"></a>Korlátozások
 
 * Az útválasztási beállítás csak a nyilvános IP-cím szabványos SKU-jának megfelelően kompatibilis. A nyilvános IP-cím alapszintű SKU-jának használata nem támogatott.
@@ -84,7 +79,7 @@ A Storage-fiók útválasztási preferencia-támogatása a következő Azure-ré
 * A több hálózati adapterrel rendelkező virtuális gépek esetében csak egy típusú útválasztási beállítás lehet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Útválasztási beállítások konfigurálása virtuális géphez a Azure PowerShell használatával](configure-routing-preference-virtual-machine-powershell.md)
 * [Útválasztási beállítások konfigurálása virtuális géphez az Azure CLI használatával](configure-routing-preference-virtual-machine-cli.md)

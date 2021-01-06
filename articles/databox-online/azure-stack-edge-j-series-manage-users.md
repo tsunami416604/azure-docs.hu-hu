@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bef344414a9ba27d5808fcd17ed664b7f51bddc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743590"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915974"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>A Azure Portal használatával kezelheti a felhasználókat a Azure Stack Edge Pro-ban
 
@@ -30,23 +30,23 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="about-users"></a>Információk a felhasználókról
 
-A felhasználók csak olvasási vagy teljes körű jogosultsággal rendelkezhetnek. Ahogy a név is mutatja, a csak olvasási jogosultsággal rendelkező felhasználók kizárólag megtekinteni tudják a megosztott adatokat. A teljes körű jogosultsággal rendelkező felhasználók olvasni és írni is tudják a megosztott adatokat, valamint módosíthatják és törölhetik is azokat.
+A felhasználók csak olvasási vagy teljes körű jogosultsággal rendelkezhetnek. Csak olvasási jogosultsággal rendelkező felhasználók tekinthetik meg a megosztási adatvédelmet. A teljes jogosultsággal rendelkező felhasználók megoszthatják az adatmegosztási és a megosztási írásokat, és módosíthatják vagy törölhetik a megosztási adatait.
 
  - **Teljes körű jogosultsággal rendelkező felhasználó** – Teljes körű hozzáféréssel rendelkező helyi felhasználó.
  - **Csak olvasási jogosultsággal rendelkező felhasználó** – Csak olvasási hozzáféréssel rendelkező helyi felhasználó. Ezek a felhasználók csak olvasási műveleteket megengedő megosztásokhoz vannak társítva.
 
-A felhasználói engedélyek első alkalommal a megosztás létrehozása során, a felhasználó létrehozásakor lesznek meghatározva. A felhasználóhoz társított engedélyek ezt követően a Fájlkezelőben módosíthatók.
+A felhasználói engedélyek első alkalommal a megosztás létrehozása során, a felhasználó létrehozásakor lesznek meghatározva. A fájlkezelő használatával módosíthatók.
 
 
 ## <a name="add-a-user"></a>Felhasználó hozzáadása
 
 Felhasználó hozzáadásához hajtsa végre az alábbi lépéseket az Azure Portalon.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **áttekintés > felhasználók**lehetőséget. Válassza a **+ felhasználó hozzáadása** elemet a parancssorban.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza a **felhasználók** lehetőséget. Válassza a **+ felhasználó hozzáadása** elemet a parancssorban.
 
     ![Válassza a felhasználó hozzáadása elemet.](media/azure-stack-edge-j-series-manage-users/add-user-1.png)
 
-2. Adja meg a hozzáadni kívánt felhasználó felhasználónevét és jelszavát. Erősítse meg a jelszót, és válassza a **Hozzáadás**lehetőséget.
+2. Adja meg a hozzáadni kívánt felhasználó felhasználónevét és jelszavát. Erősítse meg a jelszót, és válassza a **Hozzáadás** lehetőséget.
 
     ![Felhasználónév és jelszó megadása](media/azure-stack-edge-j-series-manage-users/add-user-2.png)
 
@@ -59,7 +59,7 @@ Felhasználó hozzáadásához hajtsa végre az alábbi lépéseket az Azure Por
 ## <a name="modify-user"></a>Felhasználó módosítása
 
 A felhasználó létrehozását követően lehetőség van a hozzá tartozó jelszó módosítására. Válasszon a felhasználók listájából. Adja meg és erősítse meg az új jelszót. Mentse a módosításokat.
- 
+
 ![Felhasználó módosítása](media/azure-stack-edge-j-series-manage-users/modify-user-1.png)
 
 
@@ -68,11 +68,11 @@ A felhasználó létrehozását követően lehetőség van a hozzá tartozó jel
 Felhasználó törléséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **áttekintés > felhasználók**lehetőséget.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza a **felhasználók** lehetőséget.
 
     ![Válassza ki a törölni kívánt felhasználót](media/azure-stack-edge-j-series-manage-users/delete-user-1.png)
 
-2. Válasszon ki egy felhasználót a felhasználók listájából, majd válassza a **Törlés**lehetőséget. A rendszer kérésére erősítse meg a törlést.
+2. Válasszon ki egy felhasználót a felhasználók listájából, majd válassza a **Törlés** lehetőséget. A rendszer kérésére erősítse meg a törlést.
 
     ![Válassza ki a törölni kívánt felhasználót 2](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
 

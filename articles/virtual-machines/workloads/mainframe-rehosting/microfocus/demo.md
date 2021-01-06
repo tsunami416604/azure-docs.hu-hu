@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95976193"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915776"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>A Micro Focus CICS BankDemo beállítása a Micro Focus Enterprise Developer 4,0 Azure-beli fejlesztéséhez
 
@@ -28,7 +28,7 @@ A CICs az ügyfél-ellenőrzési rendszerre, az online nagyvállalati alkalmazá
 
 - [SQL Server 2017 Express kiadás](https://www.microsoft.com/sql-server/sql-server-editions-express). Töltse le és telepítse a vállalati fejlesztői virtuális gépre. A vállalati kiszolgálónak a CICS-régiók felügyeletéhez adatbázisra van szüksége, és a BankDemo alkalmazás egy BANKDEMO nevű SQL Server adatbázist is használ. Ez a bemutató feltételezi, hogy mindkét adatbázishoz SQL Server Express használ. A telepítésekor válassza ki az alapszintű telepítést.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). A SSMS az adatbázisok felügyeletére és a T-SQL-szkriptek futtatására szolgál. Töltse le és telepítse a vállalati fejlesztői virtuális gépre.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS). A SSMS az adatbázisok felügyeletére és a T-SQL-szkriptek futtatására szolgál. Töltse le és telepítse a vállalati fejlesztői virtuális gépre.
 
 - [Visual studio 2019](https://azure.microsoft.com/downloads/) a legújabb szervizcsomaggal vagy a [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)szolgáltatással, amely ingyenesen letölthető.
 
@@ -244,7 +244,7 @@ Hozzon létre egy figyelőt a BankDemo alkalmazást elérő TN3270-munkamenetek 
 
 8. A fájl mentéséhez kattintson a Save ( **Mentés** ) ikonra, vagy válassza a **fájl** \> **Mentés** lehetőséget.
 
-9. A figyelő elindításához kattintson a **figyelő indítása** ikonra, vagy válassza a **Options** \> **figyelő** indítása lehetőséget.
+9. A figyelő elindításához kattintson a **figyelő indítása** ikonra, vagy válassza a  \> **figyelő** indítása lehetőséget.
 
      ![Figyelő – konfigurációs szerkesztő Windows](media/13-demo-listener.png)
 
@@ -270,7 +270,7 @@ A végső teendő a 3270-munkamenet konfigurálása a rumba, a 3270 Emulator has
 
 Gratulálunk! Mostantól egy CICS alkalmazást futtat az Azure-ban a Micro Focus Enterprise Server használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Vállalati kiszolgáló futtatása Docker-tárolókban az Azure-ban](run-enterprise-server-container.md)
 - [Nagyszámítógép-áttelepítés – portál](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)

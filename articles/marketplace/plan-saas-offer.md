@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5b39ccc365575853a4a74a471023989f34ebc577
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821485"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913931"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
@@ -114,7 +114,7 @@ Ha az SaaS-ajánlat *az IT* -megoldás (Azure Marketplace) és egy üzleti megol
 | Mért számlázás | Nyilvános csomag | Saját csomag | Elérhető itt: |
 |---|---|---|---|
 | Igen             | Igen         | Nem           | Azure Marketplace és Azure Portal |
-| Igen             | Igen         | Igen          | Azure Marketplace és Azure Portal * |
+| Igen             | Igen         | Yes          | Azure Marketplace és Azure Portal * |
 | Igen             | Nem          | Igen          | Csak Azure Portal |
 | Nem              | Nem          | Igen          | Csak Azure Portal |
 |||||
@@ -149,14 +149,14 @@ Amikor [új SaaS-ajánlatot hoz létre](create-new-saas-offer.md) a partner Cent
 5. Használati feltételek
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
-8. Összegzés
+8. Összefoglalás
 9. Leírás
 10. Képernyőképek/videók
 11. Dokumentumok
 
 Az alábbi példa egy ajánlatot mutat be a Azure Portalban.
 
-![A Azure Portal ajánlatát ábrázolja.](./media/example-managed-services.png)
+![A Azure Portal ajánlatát ábrázolja.](./media/example-managed-service-azure-portal.png)
 
 **Leírások meghívása**
 
@@ -260,7 +260,7 @@ Dönthet úgy, hogy a Microsoft által támogatott marketing-és értékesítés
 
 - **Közös értékesítés a Microsofttal**: Ez a beállítás lehetővé teszi, hogy a Microsoft értékesítési csapatai az ügyfelek igényeinek kiértékelése során fontolják meg az Ön IP-címének közös értékesítését. A közös értékesítésre vonatkozó jogosultsággal kapcsolatos részletekért lásd: [a közös értékesítésre vonatkozó követelmények](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Az ajánlat értékelésre való előkészítésével kapcsolatos részletes információkért lásd: [közös értékesítés lehetőség a partner Centerben](commercial-marketplace-co-sell.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SaaS-ajánlat létrehozása a kereskedelmi piactéren](create-new-saas-offer.md)
 - [Ajánlatlistákra vonatkozó ajánlott eljárások](gtm-offer-listing-best-practices.md)

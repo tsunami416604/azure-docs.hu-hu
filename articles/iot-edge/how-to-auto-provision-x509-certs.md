@@ -9,12 +9,13 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 761b031916dd9ead71f5be6a6887208a1f200f58
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 385a67e117bf0cf9508b81d014e3accac4725744
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966134"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914909"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával
 
@@ -87,11 +88,11 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a IoT hub Device Provisioning Service-példányához.
 
-1. A **Beállítások**területen válassza a **regisztrációk kezelése**lehetőséget.
+1. A **Beállítások** területen válassza a **regisztrációk kezelése** lehetőséget.
 
 1. Válassza az **Egyéni regisztráció hozzáadása** lehetőséget, majd végezze el a következő lépéseket a beléptetés konfigurálásához:  
 
-   * **Mechanizmus**: válassza az **X. 509**elemet.
+   * **Mechanizmus**: válassza az **X. 509** elemet.
 
    * **Elsődleges tanúsítvány. PEM vagy. cer fájl**: töltse fel a nyilvános fájlt az eszköz identitása tanúsítványból. Ha a parancsfájlokat a tesztelési tanúsítvány létrehozásához használta, válassza a következő fájlt:
 
@@ -116,7 +117,7 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
       }
       ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. A IoT Edge eszköz beállításához folytassa a [IoT Edge futtatókörnyezet telepítése](#install-the-iot-edge-runtime) című szakaszát.
 
@@ -142,7 +143,7 @@ Beléptetési csoport létrehozásakor lehetősége van ellenőrzött tanúsítv
 
    Ha a bemutató tanúsítványait használja, töltse fel a `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` tanúsítványt.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A tanúsítványnak mostantól szerepelnie kell a **tanúsítványok** lapon. Válassza ki a tanúsítvány adatainak megnyitásához.
 
@@ -172,15 +173,15 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a IoT hub Device Provisioning Service-példányához.
 
-1. A **Beállítások**területen válassza a **regisztrációk kezelése**lehetőséget.
+1. A **Beállítások** területen válassza a **regisztrációk kezelése** lehetőséget.
 
 1. Válassza a **regisztrációs csoport hozzáadása** lehetőséget, majd végezze el a következő lépéseket a beléptetés konfigurálásához:
 
    * **Csoport neve**: adjon meg egy emlékezetes nevet a csoport beléptetéséhez.
 
-   * **Igazolás típusa**: válassza a **tanúsítvány**elemet.
+   * **Igazolás típusa**: válassza a **tanúsítvány** elemet.
 
-   * **IoT Edge eszköz**: válassza az **igaz**lehetőséget. Csoportos regisztráció esetén minden eszköznek IoT Edge eszköznek kell lennie, vagy egyikük sem lehet.
+   * **IoT Edge eszköz**: válassza az **igaz** lehetőséget. Csoportos regisztráció esetén minden eszköznek IoT Edge eszköznek kell lennie, vagy egyikük sem lehet.
 
    * **Tanúsítvány típusa**: válassza ki a **hitelesítésszolgáltatói tanúsítvány** elemet, ha olyan hitelesített hitelesítésszolgáltatói tanúsítvánnyal rendelkezik, amely DPS vagy **köztes tanúsítvánnyal** rendelkezik, ha új fájlt szeretne feltölteni ehhez a regisztrációhoz.
 
@@ -201,11 +202,11 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
       }
       ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. Folytassa a következő szakasszal a IoT Edge eszköz beállításához.
 
-## <a name="install-the-iot-edge-runtime"></a>A IoT Edge futtatókörnyezet telepítése
+## <a name="install-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet telepítése
 
 Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Az összetevői tárolókban futnak, és lehetővé teszik további tárolók üzembe helyezését az eszközön, így a kód a peremhálózat szélén is futtatható.
 

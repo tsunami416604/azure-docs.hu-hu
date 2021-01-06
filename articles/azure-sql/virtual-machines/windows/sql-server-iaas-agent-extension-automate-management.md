@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359251"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914246"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>A felügyelet automatizálása a SQL Server IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,20 +42,21 @@ A SQL Server IaaS-ügynök bővítmény számos előnyt biztosít az Azure-beli 
 
 - **Ingyenes**: a bővítmény mindhárom kezelhetőségi módban teljesen ingyenes. A bővítményhez nem tartozik további díj, illetve nem módosítható felügyeleti mód. 
 
-- **Egyszerűsített licencek kezelése**: a bővítmény leegyszerűsíti SQL Server a licencek kezelését, és lehetővé teszi SQL Server virtuális Azure Hybrid Benefit gépek gyors azonosítását az [Azure Portal](manage-sql-vm-portal.md), az Azure CLI vagy a PowerShell használatával. 
-
-   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-   ```azurecli-interactive
-   $vms = az sql vm list | ConvertFrom-Json
-   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
-   ```
+- **Egyszerűsített licencek kezelése**: a bővítmény leegyszerűsíti SQL Server a licencek kezelését, és lehetővé teszi SQL Server virtuális Azure Hybrid Benefit gépek gyors azonosítását a [Azure Portal](manage-sql-vm-portal.md), a POWERSHELL vagy az Azure CLI használatával: 
 
    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
    ```
+
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+   ```azurecli-interactive
+   $ az sql vm list --query "[?sqlServerLicenseType=='AHUB']"
+   ```
+
+
 
    ---
 
@@ -71,7 +72,7 @@ A SQL Server IaaS-ügynök bővítmény feloldja számos funkció előnyeit a SQ
 A következő táblázat részletezi ezeket az előnyöket: 
 
 
-| Funkció | Leírás |
+| Szolgáltatás | Leírás |
 | --- | --- |
 | **A portál kezelése** | Feloldja [a felügyeletet a portálon](manage-sql-vm-portal.md), így egyetlen helyen tekintheti meg az összes SQL Server virtuális gépet, és így közvetlenül a portálról engedélyezheti és letilthatja az SQL-specifikus szolgáltatásokat. 
 | **Automatikus biztonsági mentés** |Automatizálja a biztonsági mentések ütemezését az összes adatbázishoz az alapértelmezett példányhoz, vagy a virtuális gépen a SQL Server [megfelelően telepített](frequently-asked-questions-faq.md#administration) példányát. További információ: [SQL Server automatikus biztonsági mentése az Azure Virtual Machines szolgáltatásban (Resource Manager)](automated-backup-sql-2014.md). |

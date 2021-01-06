@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5782765504eb1e0cb57558d3d4772d08de6b4d25
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002680"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913107"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>A Windows rendszerű virtuális gépekkel létesített távoli asztali kapcsolatok problémáinak részletes hibaelhárítási útmutatója
 Ez a cikk részletes hibaelhárítási lépéseket tartalmaz a Windows-alapú Azure-beli virtuális gépek összetett Távoli asztal hibáinak diagnosztizálásához és javításához.
@@ -135,7 +135,7 @@ A klasszikus üzemi modellel létrehozott virtuális gépek esetében távoli Az
 
 Ezután telepítse Azure PowerShell, ha még nem tette meg. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/) (Az Azure PowerShell telepítése és konfigurálása).
 
-Ezután nyisson meg egy Azure PowerShell parancssort, és módosítsa az aktuális mappát a **InstallWinRMCertAzureVM.ps1** parancsfájl helyére. Azure PowerShell szkript futtatásához be kell állítania a megfelelő végrehajtási házirendet. Futtassa a **Get-ExecutionPolicy** parancsot az aktuális házirend szintjének meghatározásához. A megfelelő szint beállításával kapcsolatos információkért lásd: [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1).
+Ezután nyisson meg egy Azure PowerShell parancssort, és módosítsa az aktuális mappát a **InstallWinRMCertAzureVM.ps1** parancsfájl helyére. Azure PowerShell szkript futtatásához be kell állítania a megfelelő végrehajtási házirendet. Futtassa a **Get-ExecutionPolicy** parancsot az aktuális házirend szintjének meghatározásához. A megfelelő szint beállításával kapcsolatos információkért lásd: [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1&preserve-view=true).
 
 Ezután töltse ki az Azure-előfizetés nevét, a Cloud Service-nevet és a virtuális gép nevét (a < és > karaktereket), majd futtassa ezeket a parancsokat.
 

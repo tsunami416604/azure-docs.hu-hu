@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fac26c616c977eedc466f004a9455297ec995fb8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352541"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915623"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight-fürtök biztonságossá tétele és elkülönítése privát kapcsolattal (előzetes verzió)
 
@@ -29,7 +29,7 @@ Alapértelmezés szerint a HDInsight RP a nyilvános IP-címek használatával *
 
 Az alapértelmezett virtuális hálózati architektúrában használt alapszintű terheléselosztó automatikusan nyilvános NAT-t (hálózati címfordítást) biztosít a szükséges kimenő függőségek, például a HDInsight RP eléréséhez. Ha korlátozni szeretné a nyilvános internetre irányuló kimenő kapcsolatot, beállíthatja [a tűzfalat](./hdinsight-restrict-outbound-traffic.md), de ez nem követelmény.
 
-A `resourceProviderConnection` kimenő értékre való konfigurálás lehetővé teszi a fürtre jellemző erőforrások, például a Azure Data Lake Storage Gen2 vagy a külső metaadattárak elérését privát végpontok használatával. Ha saját végpontokat használ ezekre az erőforrásokra vonatkozóan, nem mandetory, de ha saját végpontokat kíván használni ezekhez az erőforrásokhoz, konfigurálnia kell a HDInsight-fürtöt létrehozó privát végpontokat és DNS-bejegyzéseket `before` . Javasoljuk, hogy hozza létre és adja meg az összes szükséges külső SQL-adatbázist, például az Apache Rangert, a Ambari, a Oozie és a kaptár metaadattárak a fürt létrehozási ideje alatt. A követelmény, hogy az összes erőforrásnak elérhetőnek kell lennie a fürt alhálózatán belülről, vagy a saját privát végpontján keresztül vagy más módon.
+A `resourceProviderConnection` kimenő értékre való konfigurálás lehetővé teszi a fürtre jellemző erőforrások, például a Azure Data Lake Storage Gen2 vagy a külső metaadattárak elérését privát végpontok használatával. Ha saját végpontokat használ ezekre az erőforrásokra vonatkozóan, nem kötelező, de ha saját végpontokat kíván használni ezekhez az erőforrásokhoz, konfigurálnia kell a HDInsight-fürtöt létrehozó privát végpontokat és DNS-bejegyzéseket `before` . Javasoljuk, hogy hozza létre és adja meg az összes szükséges külső SQL-adatbázist, például az Apache Rangert, a Ambari, a Oozie és a kaptár metaadattárak a fürt létrehozási ideje alatt. A követelmény, hogy az összes erőforrásnak elérhetőnek kell lennie a fürt alhálózatán belülről, vagy a saját privát végpontján keresztül vagy más módon.
 
 A Azure Key Vault magánhálózati végpontok használata nem támogatott. Ha Azure Key Vaultt használ a CMK-titkosításhoz, akkor a Azure Key Vault végpontnak elérhetőnek kell lennie a HDInsight alhálózaton belül a privát végpont nélkül.
 
@@ -107,7 +107,7 @@ A PowerShell használatához tekintse meg [a példát.](/powershell/module/az.hd
 ### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
 Az Azure CLI használatához tekintse meg a [következő példát:](/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Enterprise Security Package az Azure HDInsight](enterprise-security-package.md)
 * [A vállalati biztonsági általános információk és irányelvek az Azure HDInsight](./domain-joined/general-guidelines.md)

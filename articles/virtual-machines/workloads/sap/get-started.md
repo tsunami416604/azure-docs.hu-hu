@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/04/2021
+ms.date: 01/05/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d56ed0cdae9046cb7d76f7d74545309ee6292ecd
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: f74e6435af9084b0c8f222c33dc922fe678bc4c7
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883095"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914519"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -83,6 +83,7 @@ Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az 
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 01/05/2021: az Azure-beli [virtuális gépek készenléti csomópontján SAP HANA ANF a SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) -on keresztül, és az [Azure-beli virtuális gépek készenléti csomópontjának használatával kibővítheti az ANF-t a RHEL-on, SAP HANA és áttekintheti](./sap-hana-scale-out-standby-netapp-files-rhel.md)az ajánlott konfigurációt, hogy az SAP-gazdagép ügynöke felügyelje a helyi porttartomány  
 - 01/04/2021: adja hozzá a HLI által támogatott új Azure-régiókat a [SAP HANA Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 - 12/29/2020: architektúrával kapcsolatos javaslatok hozzáadása adott Azure-régiókhoz az [SAP munkaterhelés-konfigurációkban Azure Availability Zones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
 - 12/21/2020: új minősítések hozzáadása az [elérhető SKU-HLI](./hana-available-skus.md) található HANA nagyméretű példányok SKU-hoz

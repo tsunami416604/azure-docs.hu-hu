@@ -7,12 +7,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b9772f89f78f21cfb0f2f9baa7c6b9915fbacf37
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24a38fde3d1b6bbe1efef9241458da846c186112
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91275693"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916337"
 ---
 # <a name="playback-technology-tech"></a>Lejátszási technológia ("Tech") #
 
@@ -44,8 +44,8 @@ Az ajánlott technikai sorrend az Azure Media Services-ból származó tartalom 
 
 | Böngésző        | Operációs rendszer                                                       | Várt technikai (tiszta)  | Várt technológia (AES)  | Várt technológia (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
-| 11. szegély      | Windows 10, Windows 8,1, Windows Phone-telefon 101               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
-| IE 11IE 9-101  | Windows 7, Windows Vista<sup>1</sup>                     | vakuk                | vakuk              | Silverlight (PlayReady)    |
+| 11. szegély      | Windows 10, Windows 8,1, Windows Phone-telefon 10<sup>1</sup>               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
+| IE 11          | Windows 7, Windows Vista<sup>1</sup>                     | vakuk                | vakuk              | Silverlight (PlayReady)    |
 | IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | nem támogatott                |
 | Edge           | Xbox One<sup>1</sup> (november 2015 frissítés)                   | azureHtml5JS           | azureHtml5JS         | nem támogatott                |
 | Chrome 37 +     | Windows 10, Windows 8,1, macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
@@ -58,7 +58,7 @@ Az ajánlott technikai sorrend az Azure Media Services-ból származó tartalom 
 | Chrome 37 +     | Android 4.4.4 +<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
 | Chrome 37 +     | Android 4,02                                             | HTML5                  | HTML5 (nincs token)<sup>3</sup>    | nem támogatott                |
 | Firefox 42 +    | Android 5.0 +<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | nem támogatott                |
-| IE 8           | Windows                                                  | nem támogatott          | nem támogatott        | nem támogatott                |
+| IE 8, IE 9, IE 10  | Windows                                                  | nem támogatott          | nem támogatott        | nem támogatott                |
 
 <sup>1</sup> a konfiguráció nem támogatott vagy nem tesztelt; a kiegészítésre hivatkozásként szerepel.
 
@@ -69,6 +69,6 @@ Az ajánlott technikai sorrend az Azure Media Services-ból származó tartalom 
 > [!NOTE]
 > Ha a várt technikai beállításhoz egy beépülő modult kell telepíteni, például a Flash-t, amely nincs telepítve a felhasználó számítógépén, az AMP továbbra is a következő Tech képességeit fogja ellenőriznie a forrás típusaival és a védelmi információkkal együtt a tech listáról. Ha például egy nem védett, igény szerinti adatfolyamot próbál meg megtekinteni a Safari 8-as verziójában az OS X Yosemite-on, és a Flash és a Silverlight is nincs telepítve, az AMP a natív Html5 Tech for lejátszást fogja kiválasztani.<br/><br/>Az új böngésző-technológiák naponta jelentkeznek, és ez hatással lehet erre a mátrixra.
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)
