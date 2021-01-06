@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 07/03/2017
-ms.openlocfilehash: 3584f83c5e1a5e83d069373395227b70c084eae9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21deea13aac3d40c452a183c340d3108a1a01f4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81428952"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936328"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault biztonsági világok és földrajzi határok
 
@@ -43,6 +43,3 @@ A Products By Region cikkben például az **amerikai** Egyesült Államok lap az
 >Kivételt jelent, hogy az USA DOD keleti régiója és az USA-beli DOD CENTRAL a saját biztonsági világával rendelkezik. 
 
 Hasonlóképpen, az **Európa** lapon az Észak-és Nyugat-európai régió egyaránt az Európa régiójához tartozik. Ugyanez igaz a **Ázsia és a csendes-óceáni térség** lapon is.
-
-
-

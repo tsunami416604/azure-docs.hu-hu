@@ -3,12 +3,12 @@ title: Felhasználó által definiált függvények a sablonokban
 description: Ismerteti, hogyan lehet felhasználó által definiált függvényeket definiálni és használni egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436963"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934679"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Felhasználó által definiált függvények az ARM-sablonban
 
@@ -44,7 +44,7 @@ A függvények névtér-értéket igényelnek, így elkerülhető a sablon függ
 
 ## <a name="use-the-function"></a>A függvény használata
 
-A következő példa egy olyan sablont mutat be, amely egy felhasználó által definiált függvényt tartalmaz. Ezt a függvényt használja a Storage-fiók egyedi nevének beszerzéséhez. A sablon egy **storageNamePrefix** nevű paraméterrel rendelkezik, amelyet paraméterként a függvénynek továbbít.
+A következő példa egy olyan sablont mutat be, amely egy felhasználó által definiált függvényt tartalmaz. Ezt a függvényt használja a Storage-fiók egyedi nevének beszerzéséhez. A sablon egy nevű paraméterrel rendelkezik `storageNamePrefix` , amely paraméterként a függvénynek adja át.
 
 ```json
 {

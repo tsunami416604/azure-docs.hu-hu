@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: acb4290a90532b38f44a957e33c69f7d2b3f11f8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 167e7c447fe43851255677a44043c508cbdc4239
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104818"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934832"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rövid útmutató: az első függvény létrehozása a Kotlin és a Maven használatával
 
-Ez a cikk végigvezeti a Maven parancssori eszköz használatával, amely a Kotlin-függvény projektjeinek összeállítására és közzétételére Azure Functions. Ha elkészült, a függvény kódja az Azure-beli [használatalapú csomagban](functions-scale.md#consumption-plan) fut, és HTTP-kérelemmel aktiválható.
+Ez a cikk végigvezeti a Maven parancssori eszköz használatával, amely a Kotlin-függvény projektjeinek összeállítására és közzétételére Azure Functions. Ha elkészült, a függvény kódja az Azure-beli [használatalapú csomagban](consumption-plan.md) fut, és HTTP-kérelemmel aktiválható.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

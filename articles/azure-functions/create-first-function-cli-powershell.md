@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-powershell
 - devx-track-azurecli
-ms.openlocfilehash: 45745419932a40a34abe65f54c61c87ab245f487
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: abbe3b9ed4d9a8c9bf30c6be3e6980228d319090
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425052"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937229"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-from-the-command-line"></a>Gyors útmutató: PowerShell-függvény létrehozása az Azure-ban a parancssorból
 
@@ -97,7 +97,7 @@ Ha szeretné, kihagyhatja [a függvény helyi futtatását](#run-the-function-lo
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-A HTTP-triggerek esetében a függvény fogadja a `$Request` *function.js* által megadott paraméternek átadott kérelmeket. A rendszer a (z)function.jsban definiált visszaadott objektumot adja `Response` át *function.json* `Push-OutputBinding` válaszként a parancsmagnak. 
+A HTTP-triggerek esetében a függvény fogadja a `$Request` *function.js* által megadott paraméternek átadott kérelmeket. A rendszer a (z)function.jsban definiált visszaadott objektumot adja `Response` át  `Push-OutputBinding` válaszként a parancsmagnak. 
 
 #### <a name="functionjson"></a>function.json
 
@@ -133,7 +133,7 @@ Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A
     
     Az előző példában a helyére írja be az `<STORAGE_NAME>` előző lépésben használt fiók nevét, és cserélje le az értékét a `<APP_NAME>` megfelelő globálisan egyedi névre. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, 
     
-    Ez a parancs létrehoz egy, a megadott nyelvi futtatókörnyezetben futó Function alkalmazást a [Azure functions használati terv](functions-scale.md#consumption-plan)alatt, amely ingyenesen használható az itt felmerülő felhasználási mennyiséghez. A parancs egy kapcsolódó Azure Application Insights-példányt is kiépít ugyanabban az erőforráscsoporthoz, amellyel nyomon követheti a Function alkalmazást, és megtekintheti a naplókat. További információ: [Azure functions figyelése](functions-monitoring.md). A példány nem jár költséggel, amíg be nem aktiválja.
+    Ez a parancs létrehoz egy, a megadott nyelvi futtatókörnyezetben futó Function alkalmazást a [Azure functions használati terv](consumption-plan.md)alatt, amely ingyenesen használható az itt felmerülő felhasználási mennyiséghez. A parancs egy kapcsolódó Azure Application Insights-példányt is kiépít ugyanabban az erőforráscsoporthoz, amellyel nyomon követheti a Function alkalmazást, és megtekintheti a naplókat. További információ: [Azure functions figyelése](functions-monitoring.md). A példány nem jár költséggel, amíg be nem aktiválja.
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 

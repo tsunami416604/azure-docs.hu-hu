@@ -3,12 +3,12 @@ title: A fogyasztási terv költségeinek becslése Azure Functions
 description: Megtudhatja, hogyan becsülheti meg jobban a Function alkalmazás Azure-beli használati tervben való futtatásakor felmerülő költségeket.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168111"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934883"
 ---
 # <a name="estimating-consumption-plan-costs"></a>A fogyasztási terv költségeinek becslése
 
@@ -16,9 +16,9 @@ A Azure Functionsban futó alkalmazások esetében jelenleg háromféle üzemelt
 
 | Felkészülés | Leírás |
 | ---- | ----------- |
-| [**Használatalapú**](functions-scale.md#consumption-plan) | Csak a Function app által futtatott idő után kell fizetnie. Ez a csomag egy [ingyenes engedélyezési][díjszabási oldalt] tartalmaz előfizetés alapján.|
-| [**Prémium**](functions-scale.md#premium-plan) | Ugyanazokat a szolgáltatásokat és skálázási mechanizmust biztosítja, mint a használati terv, de a teljesítmény-és VNET-hozzáférés is elérhető. A díjak a választott díjszabási szinten alapulnak. További információ: [Azure functions Premium csomag](functions-premium-plan.md). |
-| [**Dedikált (App Service)**](functions-scale.md#app-service-plan) <br/>(alapszintű vagy magasabb) | Ha dedikált virtuális gépeken vagy elszigetelten kell futnia, használjon egyéni rendszerképeket, vagy szeretné használni a felesleges App Service csomag kapacitását. A [normál app Service csomag számlázását](https://azure.microsoft.com/pricing/details/app-service/)használja. A díjak a választott díjszabási szinten alapulnak.|
+| [**Felhasználás**](consumption-plan.md) | Csak a Function app által futtatott idő után kell fizetnie. Ez a csomag egy [ingyenes engedélyezési][díjszabási oldalt] tartalmaz előfizetés alapján.|
+| [**Prémium**](functions-premium-plan.md) | Ugyanazokat a szolgáltatásokat és skálázási mechanizmust biztosítja, mint a használati terv, de a teljesítmény-és VNET-hozzáférés is elérhető. A díjak a választott díjszabási szinten alapulnak. További információ: [Azure functions Premium csomag](functions-premium-plan.md). |
+| [**Dedikált (App Service)**](dedicated-plan.md) <br/>(alapszintű vagy magasabb) | Ha dedikált virtuális gépeken vagy elszigetelten kell futnia, használjon egyéni rendszerképeket, vagy szeretné használni a felesleges App Service csomag kapacitását. A [normál app Service csomag számlázását](https://azure.microsoft.com/pricing/details/app-service/)használja. A díjak a választott díjszabási szinten alapulnak.|
 
 Úgy döntött, hogy a legjobban támogatja a függvény teljesítményére és a költséghatékonyságra vonatkozó követelményeket. További információ: [Azure functions skálázás és üzemeltetés](functions-scale.md).
 
@@ -28,7 +28,7 @@ A Durable Functions egy felhasználási csomagban is futtatható. Ha többet sze
 
 ## <a name="consumption-plan-costs"></a>Használatalapú csomag költségei
 
-Egy függvény végrehajtásának végrehajtási *költségeit* *GB-másodpercben*mérjük. A végrehajtási költségeket a memóriahasználat és a végrehajtási idő kombinálásával kell kiszámítani. Egy függvény, amely több költséget futtat, akárcsak egy függvény, amely több memóriát használ fel. 
+Egy függvény végrehajtásának végrehajtási *költségeit* *GB-másodpercben* mérjük. A végrehajtási költségeket a memóriahasználat és a végrehajtási idő kombinálásával kell kiszámítani. Egy függvény, amely több költséget futtat, akárcsak egy függvény, amely több memóriát használ fel. 
 
 Vegyünk egy esetet, amikor a függvény által használt memória mennyisége állandó marad. Ebben az esetben a költségeket egyszerű szorzással számítjuk ki. Tegyük fel például, hogy a függvény 3 másodpercig 0,5 GB-ot használt. Ezután a végrehajtás költsége `0.5GB * 3s = 1.5 GB-seconds` . 
 
@@ -63,7 +63,7 @@ A függvények következő viselkedései befolyásolhatják a végrehajtási id�
 
 ## <a name="viewing-cost-related-data"></a>A Cost-hez kapcsolódó adat megtekintése
 
-A [számlán](../cost-management-billing/understand/download-azure-invoice.md)megtekintheti az **összes végrehajtás – functions** és **végrehajtási idő – functions**költséggel kapcsolatos adatait, valamint a ténylegesen számlázott költségeket is. Azonban ez a számlázási érték egy korábbi számlázási időszak havi összesítése. 
+A [számlán](../cost-management-billing/understand/download-azure-invoice.md)megtekintheti az **összes végrehajtás – functions** és **végrehajtási idő – functions** költséggel kapcsolatos adatait, valamint a ténylegesen számlázott költségeket is. Azonban ez a számlázási érték egy korábbi számlázási időszak havi összesítése. 
 
 ### <a name="function-app-level-metrics"></a>Alkalmazás-szintű metrikák függvénye
 
@@ -73,7 +73,7 @@ A függvények költséghatékonyságának jobb megismeréséhez Azure Monitor h
 
 A [Azure monitor mérőszámok Explorerrel](../azure-monitor/platform/metrics-getting-started.md) grafikus formában tekintheti meg a használati tervben szereplő, költséghatékony adatokat. 
 
-1. A **keresési szolgáltatások, erőforrások és dokumentumok** keresése [Azure Portal] tetején, `monitor` majd a **szolgáltatások**területen válassza a **figyelés** elemet.
+1. A **keresési szolgáltatások, erőforrások és dokumentumok** keresése [Azure Portal] tetején, `monitor` majd a **szolgáltatások** területen válassza a **figyelés** elemet.
 
 1. A bal oldalon válassza ki a **mérőszámok**  >  **elemet**, majd a rendszerkép alatti beállítások használatával válassza ki a Function alkalmazást.
 
@@ -89,7 +89,7 @@ A [Azure monitor mérőszámok Explorerrel](../azure-monitor/platform/metrics-ge
 
 1. Válassza az **alkalmaz** lehetőséget, hogy kiválassza a Function alkalmazást a figyelni kívánt erőforrásként.
 
-1. A **metrika**területen válassza a **függvény végrehajtásának száma** és az **összesítési** **összeg** elemet. Ezzel hozzáadja a végrehajtások összegét a kiválasztott időszakban a diagramhoz.
+1. A **metrika** területen válassza a **függvény végrehajtásának száma** és az **összesítési** **összeg** elemet. Ezzel hozzáadja a végrehajtások összegét a kiválasztott időszakban a diagramhoz.
 
     ![A diagramhoz hozzáadandó functions-alkalmazás mérőszámának megadása](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 

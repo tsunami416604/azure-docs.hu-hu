@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: b3e9c1e8ad23ea0ebf540eddbd6d4a03b8a72fe2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835074"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935818"
 ---
 # <a name="develop-custom-commands-applications"></a>Egyéni parancsok alkalmazásának fejlesztése
 
@@ -96,7 +96,7 @@ További információ a szabályokról és a befejezési szabályokról: [egyén
     | Beállítás    | Ajánlott érték                          | Leírás                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Név**       | `ConfirmationResponse`                  | A szabály célját leíró név          |
-    | **Feltételek** | None                                     | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
+    | **Feltételek** | Nincs                                     | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
     | **Műveletek**    | **Beszédfelismerési válasz küldése**  >  **Egyszerű szerkesztő**  >  **Első változat** > `Ok, turning the tv on` | A szabály feltételének teljesülésekor végrehajtandó művelet |
 
    > [!div class="mx-imgBorder"]
@@ -119,7 +119,7 @@ Ezután szerkessze a **meglévő befejezett** befejezési szabályokat a követk
 | Beállítás    | Ajánlott érték                          |
 | ---------- | ---------------------------------------- |
 | **Név**  | `ConfirmationResponse`                  |
-| **Feltételek** | None                                     |
+| **Feltételek** | Nincs                                     |
 | **Műveletek**    | **Beszédfelismerési válasz küldése**  >  **Egyszerű szerkesztő**  >  **Első változat** > `Ok, setting temperature to 40 degrees` |
 
 A **Mentés** gombra kattintva mentse a parancs összes módosítását.
@@ -131,7 +131,7 @@ Hozzon létre egy új `SetAlarm` parancsot. Használja a példa mondatot `Set an
 | Beállítás    | Ajánlott érték                          |
 | ---------- | ---------------------------------------- |
 | **Név**  | `ConfirmationResponse`                  |
-| **Feltételek** | None                                     |
+| **Feltételek** | Nincs                                     |
 | **Műveletek**    | **Beszédfelismerési válasz küldése**  >  **Egyszerű szerkesztő**  >  **Első változat** > `Ok, setting an alarm for 9 am tomorrow` |
 
 A **Mentés** gombra kattintva mentse a parancs összes módosítását.
@@ -178,7 +178,7 @@ Először szerkessze a meglévő `TurnOn` parancsot a több eszköz bekapcsolás
    1. Válassza a **Frissítés** lehetőséget.
 
        > [!div class="mx-imgBorder"]
-       > ![Képernyőfelvétel: a szükséges paraméterek válaszának létrehozásának helye.](media/custom-commands/add-required-on-off-parameter-response.png)
+       > ![Képernyőkép: a "Simple Editor" (egyszerű szerkesztő) lapon megjelenő "válasz hozzáadása egy szükséges paraméterhez" szakasz.](media/custom-commands/add-required-on-off-parameter-response.png)
    
    1. Konfigurálja a paraméter tulajdonságait az alábbi táblázat segítségével. További információ a parancsok összes konfigurációs tulajdonságáról: [egyéni parancsok – fogalmak és definíciók](./custom-commands-references.md).
       
@@ -365,7 +365,7 @@ A tartalom áthelyezéséhez kezdje egy új webes végpont hozzáadásával. A b
 |----|----|
 | **Név** | `getDevices` |
 | **URL-cím** | `https://aka.ms/speech/cc-sampledevices` |
-| **Módszer** | **GET** |
+| **Metódus** | **GET** |
 
 
 Ha az URL-cím javasolt értéke nem működik, konfiguráljon és működtessen egy olyan webes végpontot, amely az ellenőrzött eszközök listájából álló JSON-fájlt ad vissza. A webes végpontnak a következő módon formázott JSON-fájlt kell visszaadnia:
@@ -396,7 +396,7 @@ Ezután nyissa meg a **SubjectDevice** paraméter-beállítások lapot. Állíts
 | ----| ---- |
 | **Konfigurálás** | **Előre megadott bemenetek elfogadása a külső katalógusból** |                               
 | **Katalógus végpontja** | `getDevices` |
-| **Módszer** | **GET** |
+| **Metódus** | **GET** |
 
 Kattintson a **Mentés** gombra.
 

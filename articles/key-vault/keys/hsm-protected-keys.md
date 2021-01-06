@@ -10,16 +10,16 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 99339914b66dc40f686cc46cacbcea15438c9004
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7fa8590b4fb148b2a8969c4f474f6627cea263df
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413343"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935325"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM által védett kulcsok importálása a Key Vaultba
 
-Ha további garanciára van szüksége, amikor Azure Key Vault használ, a hardveres biztonsági modulokban (HSM) olyan kulcsokat importálhat vagy generálhat, amelyek soha nem hagyják el a HSM-határt. Ennek a megoldásnak a neve *saját kulcs használata* , angol betűszóval BYOK. A Azure Key Vault a HSM (FIPS 140-2 2. szint) nCipher nShield-családját használja a kulcsok elleni védelemhez.
+Ha további garanciára van szüksége, amikor Azure Key Vault használ, a hardveres biztonsági modulokban (HSM) olyan kulcsokat importálhat vagy generálhat, amelyek soha nem hagyják el a HSM-határt. Ennek a megoldásnak a neve *saját kulcs használata*, angol betűszóval BYOK. A Azure Key Vault a HSM (FIPS 140-2 2. szint) nCipher nShield-családját használja a kulcsok elleni védelemhez.
 
 Ez a funkció az Azure China 21Vianet esetében nem érhető el.
 
@@ -44,5 +44,5 @@ A HSM-védelemmel ellátott kulcsok Key Vaultre való átvitele a használt HSM 
 
 ## <a name="next-steps"></a>További lépések
 
-* Kövesse [Key Vault ajánlott eljárásokat](../general/best-practices.md) a kulcsok biztonságának, tartósságának és figyelésének biztosításához.
+* A kulcsok biztonságának, tartósságának és figyelésének biztosításához tekintse át a [Key Vault biztonsági áttekintését](../general/security-overview.md) .
 * Az új BYOK metódus teljes leírását a [BYOK-specifikációban](./byok-specification.md) találja.

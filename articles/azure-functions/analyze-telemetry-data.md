@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan tekintheti meg és kérdezheti le Azure Functio
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1d8d9cc9a7a4111e98b1d9141957769d6f157d45
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027730"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937297"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Azure Functions telemetria elemzése Application Insights 
 
@@ -108,13 +108,13 @@ A futtatókörnyezet biztosítja a `customDimensions.LogLevel` és a `customDime
 
 ## <a name="consumption-plan-specific-metrics"></a>Használati terv – specifikus mérőszámok
 
-Ha egy használati [tervben](functions-scale.md#consumption-plan)fut, az egyfunkciós végrehajtás végrehajtási *költségeit* *GB-másodpercben* mérjük. A végrehajtási költségeket a memóriahasználat és a végrehajtási idő kombinálásával kell kiszámítani. További információ: a [felhasználási terv költségeinek becslése](functions-consumption-costs.md).
+Ha egy használati [tervben](consumption-plan.md)fut, az egyfunkciós végrehajtás végrehajtási *költségeit* *GB-másodpercben* mérjük. A végrehajtási költségeket a memóriahasználat és a végrehajtási idő kombinálásával kell kiszámítani. További információ: a [felhasználási terv költségeinek becslése](functions-consumption-costs.md).
 
 A következő telemetria-lekérdezések olyan mérőszámokra vonatkoznak, amelyek befolyásolják a használati tervben szereplő függvények futtatásának költségeit.
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Functions figyeléséről:
 

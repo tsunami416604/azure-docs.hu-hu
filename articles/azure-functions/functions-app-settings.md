@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898725"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937110"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -256,7 +256,7 @@ Csak a prémium csomagok fogyasztása &. A függvény alkalmazás kódjának és
 Azon példányok maximális száma, amelyeket a Function alkalmazás fel tud skálázásra. Az alapértelmezett érték nem korlát.
 
 > [!IMPORTANT]
-> Ez a beállítás előzetes verzióban érhető el.  A [maximális felskálázás funkcióhoz tartozó app Property](./functions-scale.md#limit-scale-out) hozzáadása megtörtént, és az ajánlott módszer a felskálázás korlátozására.
+> Ez a beállítás előzetes verzióban érhető el.  A [maximális felskálázás funkcióhoz tartozó app Property](./event-driven-scaling.md#limit-scale-out) hozzáadása megtörtént, és az ajánlott módszer a felskálázás korlátozására.
 
 |Kulcs|Mintaérték|
 |---|------------|
@@ -292,7 +292,7 @@ Lehetővé teszi a Function alkalmazás időzónájának beállítását.
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Ismerje meg, hogyan frissítheti az alkalmazás beállításait](functions-how-to-use-azure-function-app-settings.md#settings)
 

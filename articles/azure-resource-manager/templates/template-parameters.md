@@ -3,12 +3,12 @@ title: Sablonokban található paraméterek
 description: Ismerteti, hogyan lehet paramétereket definiálni egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 929d871bc0087d4fda585773b349dee4e0945c7c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353510"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934713"
 ---
 # <a name="parameters-in-arm-templates"></a>Paraméterek az ARM-sablonokban
 
@@ -20,7 +20,7 @@ Minden paramétert az egyik [adattípusra](template-syntax.md#data-types)kell be
 
 ## <a name="define-parameter"></a>Paraméter definiálása
 
-Az alábbi példa egy egyszerű paraméter-definíciót mutat be. Definiál egy **storageSKU** nevű paramétert. A paraméter egy karakterlánc-érték, és csak a rendeltetésszerű használatra érvényes értékeket fogad el. A paraméter alapértelmezett értéket használ, ha nincs megadva érték az üzembe helyezés során.
+Az alábbi példa egy egyszerű paraméter-definíciót mutat be. Definiál egy nevű paramétert `storageSKU` . A paraméter egy karakterlánc-érték, és csak a rendeltetésszerű használatra érvényes értékeket fogad el. A paraméter alapértelmezett értéket használ, ha nincs megadva érték az üzembe helyezés során.
 
 ```json
 "parameters": {

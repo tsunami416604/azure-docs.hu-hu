@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 8526556c00327df7e933130e7a54d23eade19f8a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c16c02a870edb1a777b63da6fea57fc02136d643
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519707"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936600"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler három beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -44,7 +44,7 @@ A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a
 
 ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**elemet:
+Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** elemet:
 
 ![Vállalati alkalmazások](common/enterprise-applications.png)
 
@@ -52,7 +52,7 @@ Alkalmazás hozzáadásához válassza az ablak tetején található **új alkal
 
 ![Új alkalmazás kiválasztása](common/add-new-app.png)
 
-A keresőmezőbe írja be a **Zscaler Three**kifejezést. Válassza ki a **Zscaler három** elemet az eredmények között, majd válassza a **Hozzáadás**lehetőséget.
+A keresőmezőbe írja be a **Zscaler Three** kifejezést. Válassza ki a **Zscaler három** elemet az eredmények között, majd válassza a **Hozzáadás** lehetőséget.
 
 ![Találatok listája](common/search-new-app.png)
 
@@ -75,11 +75,14 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 > [!TIP]
 > Előfordulhat, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezni szeretné a Zscaler számára. Ha ezt teszi, kövesse a [Zscaler három egyszeri bejelentkezési oktatóanyagának](zscaler-three-tutorial.md)utasításait. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, de a két szolgáltatás kiegészíti egymást.
 
+> [!NOTE]
+> Ha a felhasználók és csoportok kiosztása vagy kiosztása megtörtént, javasoljuk, hogy rendszeres időközönként indítsa újra az üzembe helyezést, hogy a csoporttagság megfelelően frissüljenek. Az újraindítás után a szolgáltatás kikényszeríti a szolgáltatást az összes csoport újraértékelésére és a tagságok frissítésére. 
+
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler három**:
 
     ![Vállalati alkalmazások](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Zscaler három**lehetőséget:
+2. Az alkalmazások listában válassza a **Zscaler három** lehetőséget:
 
     ![Alkalmazások listája](common/all-applications.png)
 
@@ -93,7 +96,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Zscaler három fiókjának **bérlői URL-címét** és **titkos jogkivonatát** a következő lépésben leírtak szerint.
 
-6. A **bérlői URL-cím** és a **titkos jogkivonat**beszerzéséhez nyissa meg a **felügyeleti**  >  **hitelesítési beállításokat** a Zscaler három portálon, és válassza az **SAML** lehetőséget a **Hitelesítés típusa**területen:
+6. A **bérlői URL-cím** és a **titkos jogkivonat** beszerzéséhez nyissa meg a **felügyeleti**  >  **hitelesítési beállításokat** a Zscaler három portálon, és válassza az **SAML** lehetőséget a **Hitelesítés típusa** területen:
 
     ![Zscaler három hitelesítési beállítás](./media/zscaler-three-provisioning-tutorial/secret-token-1.png)
 
@@ -107,7 +110,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![A kapcsolat tesztelése](./media/zscaler-three-provisioning-tutorial/test-connection.png)
 
-8. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibajelentési értesítéseket. **Ha hiba történik, válassza az e-mail-értesítés küldése**lehetőséget:
+8. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibajelentési értesítéseket. **Ha hiba történik, válassza az e-mail-értesítés küldése** lehetőséget:
 
     ![Értesítő e-mail beállítása](./media/zscaler-three-provisioning-tutorial/notification.png)
 
@@ -121,7 +124,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőfelvétel: az attribútum-hozzárendelések szakasz, amelyen hét leképezés látható.](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
 
-12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása ZscalerThree**lehetőséget:
+12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása ZscalerThree** lehetőséget:
 
     ![Azure AD-csoportok szinkronizálása](./media/zscaler-three-provisioning-tutorial/group-mappings.png)
 
@@ -139,7 +142,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Hatókör értékei](./media/zscaler-three-provisioning-tutorial/scoping.png)
 
-17. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget:
+17. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget:
 
     ![Mentés kiválasztása](./media/zscaler-three-provisioning-tutorial/save-provisioning.png)
 

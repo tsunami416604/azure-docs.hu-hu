@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f4407ee7721332a4143952d1720151bb70d8c9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61f655d459592022a2e34b87adc50e3d49b03dc9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837538"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935767"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Feltételes hozzáférés: A biztonsági információk regisztrálásának védelme
 
@@ -41,7 +41,7 @@ A következő házirend az összes kijelölt felhasználóra vonatkozik, akik a 
    1. **Az összes megbízható helyszín** kizárása.
    1. Válassza a **kész** lehetőséget a helyszínek panelen.
    1. Válassza a **kész** lehetőséget a feltételek panelen.
-1. A **feltételek**  >  **ügyfélalkalmazások (előzetes verzió)** területen állítsa **Configure** az **Igen** értékre, majd válassza a **kész** lehetőséget.
+1. A **feltételek**  >  **ügyfélalkalmazások (előzetes verzió)** területen állítsa  az **Igen** értékre, majd válassza a **kész** lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása** területen.
    1. Válassza a **hozzáférés letiltása** lehetőséget.
    1. Ezután kattintson a **Kiválasztás** elemre.
@@ -61,9 +61,9 @@ Néhány esetben előfordulhat, hogy a fenti 6. lépésben a hely helyett az esz
 
 > [!WARNING]
 > Ha az eszköz állapotát feltételként használja a házirendben, ez hatással lehet a vendég felhasználókra a címtárban. A [csak jelentési mód](concept-conditional-access-report-only.md) segíthet meghatározni a szabályzatok döntéseinek hatását.
-> Vegye figyelembe, hogy a csak jelentési mód nem alkalmazható a "felhasználói műveletek" hatókörű HITELESÍTÉSSZOLGÁLTATÓI házirendek esetében.
+> Vegye figyelembe, hogy a csak jelentési mód nem alkalmazható a "felhasználói műveletek" hatókörrel rendelkező feltételes hozzáférési szabályzatokra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9cc19548f0b969421974afe3e274fc5334590cb0
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: b487dcad83ccbc31adf2d7ec2dd77c490db2c68e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805653"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935196"
 ---
 Azure Functions lehetővé teszi olyan konfigurációs replikációs feladatok létrehozását, amelyek egy előre elkészített belépési pontra támaszkodnak. A [Azure functions konfiguráció-alapú replikációs mintái](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) bemutatják, hogyan használhatja fel az [előre elkészített segítőket](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) a saját kódjában, vagy elkerülheti a kód teljes kezelését, és csak a konfigurációt használja.
 
@@ -166,7 +166,7 @@ Ha az eseményeket egy Service Bus-várólistára kívánja továbbítani, adja 
             "direction": "out",
             "type": "serviceBus",
             "connection": "functionname-target-connection",
-            "eventHubName": "queue-b",
+            "queueName": "queue-b",
             "name": "output" 
         }
     ...
@@ -190,7 +190,7 @@ Ha az eseményeket egy Service Bus témakörbe szeretné továbbítani, adja hoz
             "direction": "out",
             "type": "serviceBus",
             "connection": "functionname-target-connection",
-            "eventHubName": "queue-b",
+            "topicName": "topic-b",
             "name": "output" 
         }
     ...

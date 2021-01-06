@@ -1,26 +1,26 @@
 ---
 title: Fejlesztői környezet konfigurálása telepítési parancsfájlok számára a sablonokban | Microsoft Docs
-description: a Azure Resource Manager-sablonokban lévő telepítési parancsfájlok fejlesztői környezetének konfigurálása.
+description: A Azure Resource Manager-sablonokban (ARM-sablonok) lévő telepítési parancsfájlok fejlesztői környezetének konfigurálása.
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 13dc072e31f0d27768de8d9a62ea942d55460713
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734181"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936396"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Fejlesztői környezet konfigurálása telepítési parancsfájlok telepítéséhez a sablonokban
+# <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>Fejlesztési környezet konfigurálása az ARM-sablonok üzembe helyezési parancsfájljaihoz
 
 Ismerje meg, hogyan hozhat létre fejlesztési környezetet az üzembe helyezési parancsfájlok kiépítéséhez és teszteléséhez egy telepítési parancsfájl használatával. Létrehozhat [Azure Container-példányt](../../container-instances/container-instances-overview.md) vagy használhatja a [Docker](https://docs.docker.com/get-docker/)-t is. Mindkettőt ebben a cikkben tárgyaljuk.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik üzembehelyezési parancsfájllal, létrehozhat egy **hello.ps1** fájlt a következő tartalommal:
+Ha nem rendelkezik üzembehelyezési parancsfájllal, létrehozhat egy _hello.ps1_ fájlt a következő tartalommal:
 
 ```powershell
 param([string] $name)
@@ -39,11 +39,11 @@ A parancsfájlok a számítógépen való létrehozásához létre kell hoznia e
 
 ### <a name="create-an-azure-container-instance"></a>Azure Container-példány létrehozása
 
-A következő ARM-sablon létrehoz egy tároló-példányt és egy fájlmegosztást, majd csatlakoztatja a fájlmegosztást a tároló lemezképéhez.
+A következő Azure Resource Manager sablon (ARM-sablon) létrehoz egy tároló példányt és egy fájlmegosztást, majd csatlakoztatja a fájlmegosztást a tároló lemezképéhez.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
@@ -153,9 +153,10 @@ A következő ARM-sablon létrehoz egy tároló-példányt és egy fájlmegoszt�
   ]
 }
 ```
-A csatlakoztatási útvonal alapértelmezett értéke **deploymentScript**.  Ez a tároló példányának elérési útja, amely a fájlmegosztás számára van csatlakoztatva.
 
-A sablonban megadott alapértelmezett tároló-rendszerkép **MCR.microsoft.com/azuredeploymentscripts-PowerShell:az4.3 "**.   Tekintse meg a [támogatott Azure PowerShell verziók](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listáját. Tekintse meg a [támogatott Azure CLI-verziók](https://mcr.microsoft.com/v2/azure-cli/tags/list)listáját.
+A csatlakoztatási útvonal alapértelmezett értéke a következő: `deploymentScript` . Ez a tároló példányának elérési útja, amely a fájlmegosztás számára van csatlakoztatva.
+
+A sablonban megadott alapértelmezett tároló-rendszerkép `mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3` . Tekintse meg a [támogatott Azure PowerShell verziók](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listáját. Tekintse meg a [támogatott Azure CLI-verziók](https://mcr.microsoft.com/v2/azure-cli/tags/list)listáját.
 
   >[!IMPORTANT]
   > A telepítési parancsfájl a Microsoft Container Registry (MCR) által elérhető CLI-rendszerképeket használja. Egy hónapot vesz igénybe, hogy az üzembe helyezési parancsfájlhoz tartozó CLI-rendszerképet hitelesítse. Ne használja a 30 napon belül kiadott CLI-verziókat. A képek kiadási dátumait az [Azure CLI kibocsátási megjegyzései](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)című témakörben találja. Ha nem támogatott verziót használ, a hibaüzenet felsorolja a támogatott verziókat.
@@ -196,7 +197,7 @@ A fájlt a Azure Portal és az Azure CLI használatával is feltöltheti.
 
 1. A Azure Portal nyissa meg azt az erőforráscsoportot, amelyben üzembe helyezte a tároló-példányt és a Storage-fiókot.
 1. Nyissa meg a tároló csoportot. Az alapértelmezett tároló csoport neve a projekt neve a **CG** -vel hozzáfűzve. Látni fogja, hogy a tároló példánya **fut** állapotban van.
-1. A bal oldali menüben válassza a **tárolók** lehetőséget. Ekkor meg kell tekintenie egy tároló-példányt.  A tároló példányának neve a projekt neve a hozzáfűzött **tárolóval** .
+1. A bal oldali menüben válassza a **tárolók** lehetőséget. Ekkor meg kell tekintenie egy tároló-példányt. A tároló példányának neve a projekt neve a hozzáfűzött **tárolóval** .
 
     ![üzembe helyezési parancsfájl összekapcsolási tárolójának példánya](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
@@ -248,7 +249,7 @@ A fájlmegosztást úgy is be kell állítania, hogy csatlakoztassa a könyvtár
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    Cserélje le a **&lt; gazdagép illesztőprogramjának betűjelét>** és az **&lt; állomásnév nevét>** egy meglévő mappát a megosztott meghajtón.  Leképezi a mappát a tároló **/Data** mappájába. Példák a D:\docker leképezésére:
+    Cserélje le a **&lt; gazdagép illesztőprogramjának betűjelét>** és az **&lt; állomásnév nevét>** egy meglévő mappát a megosztott meghajtón. Leképezi a mappát a tároló _/Data_ mappájába. Például a _D:\docker_ leképezéséhez:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
@@ -262,7 +263,7 @@ A fájlmegosztást úgy is be kell állítania, hogy csatlakoztassa a könyvtár
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. Az alábbi képernyőfelvételen egy PowerShell-szkript futtatását láthatja, mivel a megosztott meghajtón helloworld.ps1-fájl található.
+1. Az alábbi képernyőfelvételen egy PowerShell-szkript futtatását láthatja, mivel a megosztott meghajtón _helloworld.ps1_ -fájl található.
 
     ![Resource Manager-sablon üzembe helyezési parancsfájl Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
@@ -273,4 +274,4 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 Ebben a cikkben megtanulta, hogyan használhatja a telepítési parancsfájlokat. Útmutató az üzembe helyezési parancsfájlhoz:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: telepítési parancsfájlok használata Azure Resource Manager-sablonokban](./template-tutorial-deployment-script.md)
+> [Oktatóanyag: üzembe helyezési parancsfájlok használata ARM-sablonokban](./template-tutorial-deployment-script.md)

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d9fdfc89c8c02749fdf677ad119f1eed5a4b1fa2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6ae20c55a16b12f7543af3f08d96400a8e5f20c9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185181"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934917"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Gyors útmutató: Azure Key Vault Certificate Library for Python
 
@@ -86,7 +86,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS vagy Linux
@@ -210,10 +210,10 @@ Ellenkező esetben, ha elkészült az ebben a cikkben létrehozott erőforrások
 az group delete --resource-group KeyVault-PythonQS-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Key Vault áttekintése](../general/overview.md)
 - [Biztonságos hozzáférés a kulcstartóhoz](../general/secure-your-key-vault.md)
 - [Azure Key Vault fejlesztői útmutató](../general/developers-guide.md)
-- [Azure Key Vault ajánlott eljárások](../general/best-practices.md)
+- [Key Vault biztonsági áttekintés](../general/security-overview.md)
 - [Hitelesítés Key Vault](../general/authentication.md)

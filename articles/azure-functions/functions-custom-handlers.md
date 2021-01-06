@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746029"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936991"
 ---
 # <a name="azure-functions-custom-handlers"></a>Egyéni kezelők Azure Functions
 
@@ -407,7 +407,7 @@ Ha úgy állítja `message` be a kimenetet, hogy megegyezzen a kérelemből beé
 A további kötések és kimenetek nélküli HTTP-triggerű függvények esetében előfordulhat, hogy a kezelőnek közvetlenül a HTTP-kérelemmel és a választal kell működnie az egyéni kezelői [kérelem](#request-payload) és a [Válasz](#response-payload) hasznos adatai helyett. Ez a viselkedés *host.js* konfigurálható a `enableForwardingHttpRequest` beállítás használatával.
 
 > [!IMPORTANT]
-> Az egyéni kezelők funkció elsődleges célja az, hogy olyan nyelveket és futtatókörnyezeteket engedélyezzen, amelyek jelenleg nem rendelkeznek az első osztályú támogatással a Azure Functions. Habár lehetséges, hogy a webalkalmazások egyéni kezelők használatával is futtathatók, Azure Functions nem szabványos fordított proxy. Néhány funkció, például a Response streaming, a HTTP/2 és a WebSockets nem érhető el. A HTTP-kérelem egyes összetevői, például bizonyos fejlécek és útvonalak korlátozottak lehetnek. Előfordulhat, hogy az [alkalmazás túlzott mértékben](functions-scale.md#cold-start)is felmerül.
+> Az egyéni kezelők funkció elsődleges célja az, hogy olyan nyelveket és futtatókörnyezeteket engedélyezzen, amelyek jelenleg nem rendelkeznek az első osztályú támogatással a Azure Functions. Habár lehetséges, hogy a webalkalmazások egyéni kezelők használatával is futtathatók, Azure Functions nem szabványos fordított proxy. Néhány funkció, például a Response streaming, a HTTP/2 és a WebSockets nem érhető el. A HTTP-kérelem egyes összetevői, például bizonyos fejlécek és útvonalak korlátozottak lehetnek. Előfordulhat, hogy az [alkalmazás túlzott mértékben](event-driven-scaling.md#cold-start)is felmerül.
 >
 > Ezeknek a körülményeknek a megoldásához érdemes lehet a webalkalmazásait [Azure app Service](../app-service/overview.md)-on futtatni.
 

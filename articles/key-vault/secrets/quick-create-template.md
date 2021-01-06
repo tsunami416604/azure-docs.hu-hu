@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 68c10ba5581ffe404e8e3c1ac8ce92832cfcd6c4
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1cbe5f986ca36ecc3b45cf4bb7ecffa7067a27bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896429"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936617"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>Gyors útmutató: Azure Key Vault titkos kód beállítása és beolvasása ARM-sablon használatával
 
@@ -32,7 +32,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 A cikk elvégzéséhez:
 
-* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 * A sablonnak szüksége van az ÖN Azure AD-felhasználói objektumazonosítójára az engedélyek konfigurálásához. Az alábbi eljárás az objektumazonosító (GUID) beolvasása.
 
@@ -82,15 +82,15 @@ További Azure Key Vault-sablonok találhatók az [Azure Gyorsindítás sablonja
 
     Ha meg van adva, az alapértelmezett érték használatával hozza létre a kulcstartót és a titkos kulcsot.
 
-    * **Előfizetés** : válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport** : válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
-    * **Hely** : válasszon ki egy helyet. Például: **USA középső régiója** .
-    * **Key Vault neve** : adja meg a Key Vault nevét, amelynek globálisan egyedinek kell lennie a. Vault.Azure.net névtérben. A telepítés ellenőrzésekor a következő szakaszban kell megadnia a nevet.
-    * **Bérlő azonosítója** : a sablon függvény automatikusan lekéri a bérlő azonosítóját. Ne módosítsa az alapértelmezett értéket.
-    * **Ad felhasználói azonosító** : adja meg az [előfeltételekből](#prerequisites)beolvasott Azure ad felhasználói objektum azonosítóját.
-    * **Titkos kód neve** : adja meg a Key vaultban tárolt titok nevét. Például: **AdminPassword** .
-    * **Titkos érték** : adja meg a titkos értéket. Ha jelszót tárol, azt javasoljuk, hogy használja az előfeltételekben létrehozott generált jelszót.
-    * **Elfogadom a fenti használati feltételeket** : Válassza ezt.
+    * **Előfizetés**: válasszon ki egy Azure-előfizetést.
+    * **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
+    * **Hely**: válasszon ki egy helyet. Például: **USA középső régiója**.
+    * **Key Vault neve**: adja meg a Key Vault nevét, amelynek globálisan egyedinek kell lennie a. Vault.Azure.net névtérben. A telepítés ellenőrzésekor a következő szakaszban kell megadnia a nevet.
+    * **Bérlő azonosítója**: a sablon függvény automatikusan lekéri a bérlő azonosítóját. Ne módosítsa az alapértelmezett értéket.
+    * **Ad felhasználói azonosító**: adja meg az [előfeltételekből](#prerequisites)beolvasott Azure ad felhasználói objektum azonosítóját.
+    * **Titkos kód neve**: adja meg a Key vaultban tárolt titok nevét. Például: **AdminPassword**.
+    * **Titkos érték**: adja meg a titkos értéket. Ha jelszót tárol, azt javasoljuk, hogy használja az előfeltételekben létrehozott generált jelszót.
+    * **Elfogadom a fenti használati feltételeket**: Válassza ezt.
 3. Válassza a **Beszerzés** lehetőséget. A Key Vault sikeres üzembe helyezését követően értesítést kap:
 
     ![ARM-sablon, Key Vault integráció, portál-értesítés üzembe helyezése](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
@@ -132,7 +132,7 @@ A kimenet a következőhöz hasonlóan néz ki:
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Erre a rövid útmutatóra egyéb Key Vault-útmutatók és oktatóanyagok is épülnek. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, ne törölje ezeket az erőforrásokat.
 Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kulcstartót és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése az Azure CLI vagy a Azure PowerShell használatával:
@@ -162,4 +162,4 @@ Ebben a rövid útmutatóban létrehozott egy kulcstartót és egy titkos kulcso
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
 - További információ az [Azure Resource Managerről](../../azure-resource-manager/management/overview.md)
-- [Azure Key Vault ajánlott eljárások](../general/best-practices.md) áttekintése
+- Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)

@@ -3,12 +3,12 @@ title: Csomópontok és készletek a Azure Batchban
 description: Ismerje meg a számítási csomópontokat és készleteket, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243069"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934645"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Csomópontok és készletek a Azure Batchban
 
@@ -64,6 +64,9 @@ Batch-készlet létrehozásakor meg kell adnia az Azure-beli virtuális gép kon
 
 A Batch-ben két típusú készlet-konfiguráció érhető el.
 
+> [!IMPORTANT]
+> A készleteket a "virtuális gép konfigurációja" és nem "Cloud Services konfiguráció" használatával kell konfigurálni. Az összes batch-funkciót a "virtuálisgép-konfiguráció" készletei támogatják, és az új funkciók hozzáadása folyamatban van. A "Cloud Services Configuration" készletek nem támogatják az összes funkciót, és nem terveznek új képességeket.
+
 ### <a name="virtual-machine-configuration"></a>Virtuális gép konfigurációja
 
 A **virtuális gép konfigurációja** megadja, hogy a készlet Azure-beli virtuális gépekből áll. Ezek a virtuális gépek Linux- vagy Windows-rendszerképből is létrehozhatók.
@@ -101,7 +104,7 @@ Készlet létrehozásakor megadhatja, hogy milyen típusú csomópontokat kívá
 - **Dedikált csomópontok.** A dedikált számítási csomópontok az adott feladatra vannak fenntartva. Költségesebbek az alacsony prioritású csomópontoknál, de biztosan nem szorulnak háttérbe.
 - **Alacsony prioritású csomópontok.** Az alacsony prioritású csomópontok az Azure többletkapacitását használják ki a Batch-feladatok futtatásához. Az alacsony prioritású csomópontok olcsóbbak a dedikált csomópontok esetében, és lehetővé teszik a jelentős számítási teljesítményt igénylő munkaterhelések használatát. További információ: [Alacsony prioritású virtuális gépek használata a Batch szolgáltatással](batch-low-pri-vms.md).
 
-Az alacsony prioritású csomópontok akkor is előzik, ha az Azure-ban nincs elég felesleges kapacitás. Amennyiben egy csomópont feladatok futása közben szorul háttérbe, akkor a feladatok visszakerülnek a várakozási sorba, és újra futnak, amikor a számítási csomópont ismét elérhetővé válik. Az alacsony prioritású csomópontokat akkor érdemes választani, ha a feladat végrehajtási ideje rugalmas, és a munka sok csomóponton oszlik meg. Mielőtt eldönti, hogy alacsony prioritású csomópontokat használ a forgatókönyvhöz, győződjön meg arról, hogy az elővásárlás miatt elvesztett összes munka minimális és könnyen újra létrehozható.
+Az alacsony prioritású csomópontok akkor is előzik, ha az Azure-ban nincs elég felesleges kapacitás. Amennyiben egy csomópont feladatok futása közben szorul háttérbe, akkor a feladatok visszakerülnek a várakozási sorba, és újra futnak, amikor a számítási csomópont ismét elérhetővé válik. Az alacsony prioritású csomópontokat akkor érdemes választani, ha a feladat végrehajtási ideje rugalmas, és a munka sok csomóponton oszlik meg. Mielőtt az alacsony prioritású csomópontok használata mellett döntene, győződjön meg arról, hogy az előzetes lefoglalás miatt elveszett munka minimális és könnyen újra létrehozható lesz-e.
 
 Ugyanabban a készletben alacsony prioritású és dedikált csomópontok is lehetnek. A csomópontok minden típusa saját célértéket tartalmaz, amelynél megadhatja a csomópontok kívánt számát.
 
@@ -199,6 +202,6 @@ Amikor egy tanúsítvány egy készlethez van társítva, a Batch szolgáltatás
 
 Ha meglévő készlethez ad hozzá tanúsítványt, újra kell indítania a számítási csomópontokat ahhoz, hogy a tanúsítványt alkalmazni lehessen a csomópontokra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [feladatok és a feladatok](jobs-and-tasks.md)megismerése.

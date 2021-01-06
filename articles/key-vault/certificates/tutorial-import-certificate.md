@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 8689b6851ae219ee6f41ebf58736692e557b2344
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 626d7f161d23e6105eea0ca160cd2c9be0ed0ea0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289734"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935937"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Oktatóanyag: tanúsítvány importálása Azure Key Vault
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](../general/basic-concepts.md). 
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -46,8 +46,8 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 3. Az eredmények listájában válassza a **Key Vault** lehetőséget.
 4. A Key Vault szakaszban kattintson a **Létrehozás** gombra.
 5. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:
-    - **Név** : Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban **például a-vaultot** használjuk. 
-    - **Előfizetés** : Válassza ki az előfizetést.
+    - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban **például a-vaultot** használjuk. 
+    - **Előfizetés**: Válassza ki az előfizetést.
     - Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
     - A **Hely** legördülő menüből válassza ki a helyet.
     - A többi beállítást hagyja az alapértelmezett értéken.
@@ -55,8 +55,8 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Jegyezze fel az alábbi két tulajdonságot:
 
-* Tár **neve** : a példában ez **például a-Vault**. Ezt a nevet fogja majd más lépésekben is használni.
-* **Tár URI-ja** : A példában ez a https://example-vault.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
+* Tár **neve**: a példában ez **például a-Vault**. Ezt a nevet fogja majd más lépésekben is használni.
+* **Tár URI-ja**: A példában ez a https://example-vault.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen az új kulcstartón.
 
@@ -74,9 +74,9 @@ Ha tanúsítványt szeretne importálni a tárolóba, rendelkeznie kell egy, a l
 1. A Key Vault tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
 2. Kattintson a **Létrehozás/Importálás** gombra.
 3. A **tanúsítvány létrehozása** képernyőn válassza ki a következő értékeket:
-    - **Tanúsítvány létrehozásának módszere** : importálás.
-    - **Tanúsítvány neve** : ExampleCertificate.
-    - **Tanúsítványfájl feltöltése** : válassza ki a fájlt a lemezről.
+    - **Tanúsítvány létrehozásának módszere**: importálás.
+    - **Tanúsítvány neve**: ExampleCertificate.
+    - **Tanúsítványfájl feltöltése**: válassza ki a fájlt a lemezről.
     - **Password** (jelszó): jelszóval védett tanúsítványfájl feltöltésekor itt adja meg a jelszót. Ellenkező esetben hagyja üresen. A tanúsítványfájl sikeres importálása után a Key Vault eltávolítja ezt a jelszót.
 4. Kattintson a **Létrehozás** gombra.
 
@@ -148,10 +148,10 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 3. Az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy Key Vault, és importált egy tanúsítványt. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
 - További információ a [tanúsítvány-létrehozás kezeléséről Azure Key Vault](./create-certificate-scenarios.md)
 - Példák a [tanúsítványok importálására REST API](/rest/api/keyvault/importcertificate/importcertificate) -k használatával
-- [Azure Key Vault ajánlott eljárások](../general/best-practices.md) áttekintése
+- Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093089"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936447"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>A Azure Active Directory eszköz üzembe helyezésének megtervezése
 
@@ -44,7 +44,7 @@ Az eszközök Azure AD-identitásként való megadásának legfőbb előnyei:
 
 * Növelje termelékenységét – az Azure AD-vel a felhasználók [zökkenőmentes bejelentkezést (SSO)](./azuread-join-sso.md) végezhetnek a helyszíni és a Felhőbeli erőforrásokhoz, ami lehetővé teszi számukra, hogy bárhol is legyenek.
 
-* A biztonság fokozása – az Azure AD-eszközök lehetővé teszik, hogy [feltételes hozzáférési (CA) házirendeket](../conditional-access/require-managed-devices.md) alkalmazzon az eszközök vagy felhasználók identitása alapján. A HITELESÍTÉSSZOLGÁLTATÓI házirendek további védelmet biztosíthatnak [Azure ad Identity Protection](../identity-protection/overview-identity-protection.md)használatával. Az eszköz az Azure AD-hez való csatlakoztatásának előfeltétele, hogy a biztonságot egy [jelszóval](../authentication/concept-authentication-passwordless.md) nem rendelkező hitelesítési stratégiával növelje.
+* A biztonság fokozása – az Azure AD-eszközök lehetővé teszik, hogy [feltételes hozzáférési szabályzatokat](../conditional-access/require-managed-devices.md) alkalmazzon az eszközök vagy felhasználók identitása alapján. A feltételes hozzáférési szabályzatok további védelmet biztosíthatnak [Azure ad Identity Protection](../identity-protection/overview-identity-protection.md)használatával. Az eszköz az Azure AD-hez való csatlakoztatásának előfeltétele, hogy a biztonságot egy [jelszóval](../authentication/concept-authentication-passwordless.md) nem rendelkező hitelesítési stratégiával növelje.
 
 * A felhasználói élmény javítása – az eszközök identitásával az Azure AD-ben a felhasználók könnyedén hozzáférhetnek a szervezet felhőalapú erőforrásaihoz mind a személyes, mind a vállalati eszközökről. A rendszergazdák az összes Windows-eszközön lehetővé teszik a [Enterprise State roaming](enterprise-state-roaming-overview.md) egységes felhasználói élményét.
 
@@ -129,7 +129,7 @@ Feltételes hozzáférés <br>(Hibrid Azure AD-hez csatlakoztatott eszközök me
 
 A regisztrált eszközöket gyakran [Microsoft Intune](/mem/intune/enrollment/device-enrollment)kezelik. Az eszközöket az operációs rendszertől függően számos módon regisztrálják az Intune-ban. 
 
-Az Azure AD-ban regisztrált eszközök támogatást nyújtanak a saját eszközök (BYOD) és a vállalati tulajdonú eszközök számára az egyszeri bejelentkezéshez a Felhőbeli erőforrásokhoz. Az erőforrásokhoz való hozzáférés az eszközre és a felhasználóra alkalmazott Azure AD [hitelesítésszolgáltatói házirendek](../conditional-access/require-managed-devices.md) alapján történik.
+Az Azure AD-ban regisztrált eszközök támogatást nyújtanak a saját eszközök (BYOD) és a vállalati tulajdonú eszközök számára az egyszeri bejelentkezéshez a Felhőbeli erőforrásokhoz. Az erőforrásokhoz való hozzáférés az eszközre és a felhasználóra alkalmazott Azure AD [feltételes hozzáférési szabályzatokon](../conditional-access/require-managed-devices.md) alapul.
 
 ### <a name="registering-devices"></a>Eszközök regisztrálása
 
@@ -261,7 +261,7 @@ Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakoz�
 
 * [Hibrid Azure AD-csatlakozás a Windows Down szintű eszközökhöz – problémamegoldás](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure AD JOIN megvalósításának megtervezése](azureadjoin-plan.md)
 * [A hibrid Azure AD JOIN megvalósításának megtervezése](hybrid-azuread-join-plan.md)

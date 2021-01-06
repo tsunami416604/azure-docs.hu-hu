@@ -1,14 +1,14 @@
 ---
 title: Tűzfal-hozzáférési szabályok
-description: Az Azure Container Registry tűzfal mögötti elérésére vonatkozó szabályok konfigurálása a ("engedélyezési") REST API és az adatvégponti tartománynevek vagy a szolgáltatás-specifikus IP-címtartományok elérésének engedélyezésével.
+description: Szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez a REST API és az adatvégpont-tartománynevek vagy a szolgáltatás-specifikus IP-címtartományok elérésének lehetővé tételével.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148508"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935988"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez
 
@@ -131,9 +131,9 @@ A dedikált adatvégpontokat a Azure Portal vagy az Azure CLI használatával en
 Adatvégpontok engedélyezése a portál használatával:
 
 1. Navigáljon a tároló-beállításjegyzékhez.
-1. Válassza a **hálózatkezelés**  >  **nyilvános hozzáférés**lehetőséget.
+1. Válassza a **hálózatkezelés**  >  **nyilvános hozzáférés** lehetőséget.
 1. Jelölje be a **dedikált adatvégpont engedélyezése** jelölőnégyzetet.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Az adatvégpont vagy végpontok megjelennek a portálon.
 
@@ -179,7 +179,7 @@ Miután beállította a dedikált adatvégpontokat a beállításjegyzékhez, en
 
 Ha tűzfal mögött szeretné elérni a Microsoft Container Registryt (MCR), tekintse meg a [MCR-ügyfél tűzfalszabályok](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)konfigurálására vonatkozó útmutatót. A MCR az összes Microsoft által közzétett Docker-rendszerkép elsődleges beállításjegyzéke, például Windows Server-lemezképek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [hálózati biztonsággal kapcsolatos Azure ajánlott eljárások](../security/fundamentals/network-best-practices.md) ismertetése
 

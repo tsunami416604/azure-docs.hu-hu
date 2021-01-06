@@ -4,12 +4,12 @@ description: Megtudhatja, milyen módokon telepíthet programkódot a Azure Func
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 04d96a09d41ace64bed5667bb9f0fa6e4beed244
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168100"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936957"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
@@ -25,7 +25,7 @@ A következő táblázat a Function projekthez elérhető üzembe helyezési mó
 | -- | -- | -- |
 | Eszközök-alapú | &bull;&nbsp;[Visual &nbsp; Studio &nbsp; Code &nbsp; publish](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio – közzététel](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Alapvető eszközök közzététele](functions-run-local.md#publish) | Üzembe helyezés a fejlesztés és az egyéb ad-Hock-telepítések során. A központi telepítéseket az eszközök helyileg kezelik. | 
 | App Service által felügyelt| &bull;&nbsp;[Központi telepítési &nbsp; központ &nbsp; (CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[Tárolók &nbsp; üzembe helyezése](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  Folyamatos üzembe helyezés (CI/CD) a forrás vezérlőelemből vagy egy tároló-beállításjegyzékből. A központi telepítéseket a App Service platform (kudu) kezeli.|
-| Külső folyamatok|&bull;&nbsp;[DevOps-folyamatok](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub-műveletek](functions-how-to-github-actions.md) | A további ellenőrzési, tesztelési és egyéb műveleteket tartalmazó üzemi és DevOps folyamatokat az automatikus telepítés részeként kell futtatni. A központi telepítéseket a folyamat kezeli. |
+| Külső folyamatok|&bull;&nbsp;[Azure-folyamatok](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub-műveletek](functions-how-to-github-actions.md) | A további ellenőrzési, tesztelési és egyéb műveleteket tartalmazó üzemi és DevOps folyamatokat az automatikus telepítés részeként kell futtatni. A központi telepítéseket a folyamat kezeli. |
 
 Míg az adott függvények központi telepítései a környezetük alapján a legjobb technológiát használják, a legtöbb üzembe helyezési módszer a [zip-telepítésen](#zip-deploy)alapul.
 
@@ -33,9 +33,9 @@ Míg az adott függvények központi telepítései a környezetük alapján a le
 
 Azure Functions támogatja a többplatformos helyi fejlesztést és üzemeltetést Windows és Linux rendszeren. Jelenleg három üzemeltetési csomag érhető el:
 
-+ [Fogyasztás](functions-scale.md#consumption-plan)
-+ [Prémium szintű](functions-scale.md#premium-plan)
-+ [Dedikált (App Service)](functions-scale.md#app-service-plan)
++ [Felhasználás](consumption-plan.md)
++ [Prémium](functions-premium-plan.md)
++ [Dedikált (App Service)](dedicated-plan.md)
 
 Minden csomag eltérő viselkedéssel rendelkezik. Nem minden központi telepítési technológia érhető el Azure Functions minden egyes ízét. A következő diagramon látható, hogy mely telepítési technológiák támogatottak az operációs rendszer és a üzemeltetési csomag minden kombinációja esetén:
 
@@ -96,7 +96,7 @@ A használati tervben futó Linux-függvények alkalmazásai nem rendelkeznek SC
 
 ##### <a name="dedicated-and-premium-plans"></a>Dedikált és prémium csomagok
 
-A [dedikált (App Service)](functions-scale.md#app-service-plan) csomagban Linux rendszeren futó alkalmazások funkcióinak, valamint a [prémium csomagnak](functions-scale.md#premium-plan) korlátozott SCM/kudu-hely is van.
+A [dedikált (App Service)](dedicated-plan.md) csomagban Linux rendszeren futó alkalmazások funkcióinak, valamint a [prémium csomagnak](functions-premium-plan.md) korlátozott SCM/kudu-hely is van.
 
 ## <a name="deployment-technology-details"></a>Üzembe helyezési technológia részletei
 
@@ -214,7 +214,7 @@ Ha ennél az átmenetnél több vezérlésre van szüksége, használja az üzem
 
 Amikor üzembe helyezi a Function alkalmazást az Azure-ban, az üzembe helyezést külön üzembe helyezheti közvetlenül az éles környezet helyett. Az üzembe helyezési pontokkal kapcsolatos további információkért tekintse meg a részleteket a [Azure functions üzembe helyezési](functions-deployment-slots.md) pontok dokumentációjában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el ezeket a cikkeket a Function apps üzembe helyezésével kapcsolatos további információkért:
 

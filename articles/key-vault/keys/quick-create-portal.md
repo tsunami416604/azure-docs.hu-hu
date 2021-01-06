@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 41f3d60d91b7418d6e9733b8351d4830b31dbace
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 419fe72d400177ce9fa3d9811d7dfa06e74c0810
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81424194"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935053"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>Gyors útmutató: kulcs beállítása és lekérése Azure Key Vault használatával a Azure Portal
 
@@ -30,14 +30,14 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása** lehetőséget.
 2. A keresőmezőbe írja be a **Key Vault** kifejezést.
 3. Az eredmények listájában válassza a **Key Vault** lehetőséget.
 4. A Key Vault szakaszban kattintson a **Létrehozás** gombra.
 5. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:
-    - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban **például a-vaultot**használjuk. 
+    - **Név**: Egy egyedi nevet kell megadnia. Ebben a rövid útmutatóban **például a-vaultot** használjuk. 
     - **Előfizetés**: Válassza ki az előfizetést.
-    - Az **erőforráscsoport**területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
+    - Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
     - A **Hely** legördülő menüből válassza ki a helyet.
     - A többi beállítást hagyja az alapértelmezett értéken.
 6. A fenti adatok megadása után válassza a **Létrehozás** elemet.
@@ -55,12 +55,12 @@ Jelenleg csak az Azure-fiókja jogosult arra, hogy műveleteket végezzen ezen a
 
 A kulcs a tárolóhoz való hozzáadásához mindössze néhány további lépést kell elvégeznie. Ebben az esetben olyan kulcsot adunk hozzá, amelyet egy alkalmazás használhat. A kulcs neve **ExampleKey**.
 
-1. A Key Vault tulajdonságok lapon válassza a **kulcsok**lehetőséget.
+1. A Key Vault tulajdonságok lapon válassza a **kulcsok** lehetőséget.
 2. Kattintson a **Létrehozás/Importálás** gombra.
 3. A **kulcs létrehozása** képernyőn válassza a következő értékeket:
     - **Beállítások**: generált.
     - **Név**: ExampleKey.
-    - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Létrehozás** elemre.
+    - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Létrehozás** gombra.
 
 Miután megkapta az üzenetet, hogy a kulcs sikeresen létrejött, kattintson rá a listában. Ezután megjelenik néhány tulajdonság. Ha a jelenlegi verzióra kattint, láthatja az előző lépésben megadott értéket.
 
@@ -83,4 +83,4 @@ Ebben a rövid útmutatóban létrehozott egy Key Vault, és egy kulcsot tárolt
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
 - Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](../general/developers-guide.md)
-- [Azure Key Vault ajánlott eljárások](../general/best-practices.md) áttekintése
+- Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)

@@ -3,12 +3,12 @@ title: Feltételes üzembe helyezés sablonokkal
 description: Útmutató az erőforrásoknak egy Azure Resource Manager sablonban (ARM-sablon) való feltételes üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: 1492e9f9f45f23628f9933628fd2740e08ad9eb0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 5650f7fb9f1483f2dc7059607732ecc68cbb7b9d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672848"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934781"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>Feltételes üzembe helyezés ARM-sablonokban
 
@@ -19,7 +19,7 @@ Néha szükség van egy erőforrás üzembe helyezésére egy Azure Resource Man
 
 ## <a name="new-or-existing-resource"></a>Új vagy meglévő erőforrás
 
-A feltételes telepítés használatával létrehozhat egy új erőforrást, vagy használhat egy meglévőt is. Az alábbi példa bemutatja, hogyan használható a feltétel egy új Storage-fiók üzembe helyezésére vagy egy meglévő Storage-fiók használatára.
+A feltételes telepítés használatával létrehozhat egy új erőforrást, vagy használhat egy meglévőt is. Az alábbi példa bemutatja, hogyan lehet `condition` új Storage-fiókot telepíteni vagy meglévő Storage-fiókot használni.
 
 ```json
 {
@@ -36,7 +36,7 @@ A feltételes telepítés használatával létrehozhat egy új erőforrást, vag
 }
 ```
 
-Ha a **newOrExisting** paraméter értéke **új**, a feltétel igaz értéket ad vissza. A Storage-fiók telepítve van. Ha azonban a **newOrExisting** a **meglévő** értékre van állítva, a feltétel hamis értéket ad vissza, és a Storage-fiók nincs telepítve.
+Ha a paraméter `newOrExisting` **új** értékre van állítva, a feltétel igaz értéket ad vissza. A Storage-fiók telepítve van. Ha azonban a értéke `newOrExisting` **meglévő**, akkor a feltétel hamis értékre van állítva, és a Storage-fiók nincs telepítve.
 
 A elemet használó teljes példaként `condition` tekintse meg a [virtuális gép új vagy meglévő Virtual Network, tárterületet és nyilvános IP-címet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 
@@ -80,15 +80,15 @@ A teljes sablonhoz lásd: [Azure SQL logikai kiszolgáló](https://github.com/Az
 
 Ha a [hivatkozás](template-functions-resource.md#reference) vagy a [lista](template-functions-resource.md#list) függvényt egy feltételesen telepített erőforrással használja, akkor a függvény akkor is ki lesz értékelve, ha az erőforrás nincs telepítve. Hibaüzenet jelenik meg, ha a függvény olyan erőforrásra hivatkozik, amely nem létezik.
 
-Az [IF](template-functions-logical.md#if) függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor feltételként van kiértékelve. Tekintse meg az IF [függvényt](template-functions-logical.md#if) egy olyan sablon esetében, amely a IF és a hivatkozást egy feltételesen telepített erőforrással használja.
+Az [IF](template-functions-logical.md#if) függvény használatával győződjön meg arról, hogy a függvény csak az erőforrás telepítésekor feltételként van kiértékelve. Tekintse meg az [IF függvényt](template-functions-logical.md#if) egy olyan sablon esetében, amely a `if` és `reference` egy feltételesen telepített erőforrást használ.
 
 Egy erőforrást egy feltételes erőforrástól [függőként](define-resource-dependency.md) kell beállítania, pontosan úgy, ahogy bármely más erőforrás. Ha egy feltételes erőforrás nincs telepítve, Azure Resource Manager automatikusan eltávolítja a szükséges függőségekről.
 
 ## <a name="complete-mode"></a>Teljes mód
 
-Ha [teljes móddal](deployment-modes.md) rendelkező sablont telepít, és az erőforrás nincs telepítve, mert a feltétel hamis értéket ad vissza, akkor az eredmény attól függ, hogy REST API milyen verziót használ a sablon telepítéséhez. Ha 2019-05-10-nál korábbi verziót használ, az erőforrás **nem törlődik**. A 2019-05-10-es vagy újabb verziókban az erőforrás **törölve lesz**. A Azure PowerShell és az Azure CLI legújabb verziói törlik az erőforrást, ha a feltétel hamis.
+Ha [teljes móddal](deployment-modes.md) rendelkező sablont telepít, és az erőforrás nincs telepítve, mert a `condition` kiértékelése hamis értéket ad vissza, akkor az eredmény attól függ, hogy REST API milyen verziót használ a sablon üzembe helyezéséhez. Ha 2019-05-10-nál korábbi verziót használ, az erőforrás **nem törlődik**. A 2019-05-10-es vagy újabb verziókban az erőforrás **törölve lesz**. A Azure PowerShell és az Azure CLI legújabb verziói törlik az erőforrást, ha a feltétel hamis.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A feltételes üzembe helyezést lefedi Microsoft Learn modul esetében lásd: [összetett Felhőbeli központi telepítések kezelése speciális ARM-sablonok használatával](/learn/modules/manage-deployments-advanced-arm-template-features/).
 * A sablonok létrehozásával kapcsolatos javaslatokért lásd: [ARM-sablon – ajánlott eljárások](template-best-practices.md).

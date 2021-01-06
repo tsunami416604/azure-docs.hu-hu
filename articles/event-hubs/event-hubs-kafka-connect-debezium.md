@@ -1,20 +1,29 @@
 ---
-title: Az Azure Event Hubs (előzetes verzió) Apache Kafka-csatlakozási funkciójának integrálása az adatváltozások rögzítésének Debezium
+title: Az Azure Event Hubs integrációja Apache Kafka az adatváltozások rögzítése Debezium
 description: Ez a cikk tájékoztatást nyújt arról, hogyan használható a Debezium az Azure Event Hubs for Kafka szolgáltatással.
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
-ms.date: 08/11/2020
-ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 01/06/2021
+ms.openlocfilehash: 0ad1df23e71e652f7d380ffbabb542b81954e038
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505409"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935172"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Az Azure Event Hubs (előzetes verzió) Apache Kafka csatlakozási támogatásának integrálása az adatváltozások rögzítésének Debezium
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>Az Azure Event Hubs Apache Kafka-csatlakozási támogatásának integrálása az adatváltozások rögzítésére szolgáló Debezium
 
 Az **adatváltozások rögzítése (CDC)** a létrehozási, frissítési és törlési műveletekre reagáló, az adatbázistáblák sorainak változásainak nyomon követésére szolgáló módszer. A [Debezium](https://debezium.io/) egy elosztott platform, amely a különböző adatbázisokban elérhető adatváltozás-rögzítési funkciókra épül (például a [PostgreSQL logikai dekódolása](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)). Olyan [Kafka csatlakozási összekötőket](https://debezium.io/documentation/reference/1.2/connectors/index.html) biztosít, amelyek az adatbázistábla (ok) sorban álló változásaira koppintanak, és a [Apache Kafkaba](https://kafka.apache.org/)küldendő esemény-adatfolyamokra konvertálják őket.
+
+> [!WARNING]
+> A Apache Kafka csatlakozási keretrendszer, valamint a Debezium platform és az összekötők használata **nem jogosult a terméktámogatásra Microsoft Azureon keresztül**.
+>
+> Apache Kafka a kapcsolódás feltételezi, hogy a dinamikus konfigurációja a tömörített témakörökben található, máskülönben korlátlan adatmegőrzéssel. Az Azure Event Hubs [nem implementálja a tömörítést közvetítő szolgáltatásként](event-hubs-federation-overview.md#log-projections) , és mindig időalapú adatmegőrzési korlátot alkalmaz a megőrzött eseményekre, és az alapelvet, hogy az Azure Event Hubs valós idejű esemény-adatfolyam-kezelő motor, nem pedig hosszú távú adat-vagy konfigurációs tároló.
+>
+> Habár a Apache Kafka projekt kényelmes lehet a szerepkörök keverésével, az Azure azt hiszi, hogy az ilyen információk a legmegfelelőbb adatbázisban vagy konfigurációs tárolóban kezelhetők.
+>
+> Számos Apache Kafka kapcsolódási forgatókönyv működőképes lesz, de a Apache Kafka és az Azure Event Hubs adatmegőrzési modelljei közötti koncepcionális különbségek miatt előfordulhat, hogy bizonyos konfigurációk nem a várt módon működnek. 
 
 Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli adatváltozás-rögzítési rendszert az Azure [Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (a Kafka esetében), [Az Azure db for PostgreSQL és a](../postgresql/overview.md) Debezium használatával. A [Debezium PostgreSQL-összekötővel](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) továbbítja a PostgreSQL-ből származó adatbázis-módosításokat az Azure-beli Kafka-témakörökbe Event Hubs
 
@@ -282,7 +291,7 @@ tail -f /Users/foo/todos-cdc.txt
 ## <a name="cleanup"></a>Felesleges tartalmak törlése
 A Kafka Connect olyan eseményközpont-témaköröket hoz létre a konfigurációk, eltolások és állapotok tárolására, amelyek a Connect-fürt leállítása után is megmaradnak. Ha nem kívánja megőrizni ezeket, javasoljuk, hogy törölje a témaköröket. Érdemes törölni az Event hub-t is `my-server.public.todos` , amelyet a folyamat során hozott létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Kafka-Event Hubsről, tekintse meg a következő cikkeket:  
 

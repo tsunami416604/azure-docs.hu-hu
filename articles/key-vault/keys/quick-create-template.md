@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 73c52963df65dc4037f087a93108ccfacb3fb5d4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 566ddae3893a5499ddefe0ccd1ade8caff4567c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461547"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934985"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Rövid útmutató: Azure Key Vault és kulcs létrehozása ARM-sablonnal (előzetes verzió)
 
@@ -25,7 +25,7 @@ A [Azure Key Vault](../general/overview.md) egy felhőalapú szolgáltatás, ame
 
 A cikk elvégzéséhez:
 
-- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 - A felhasználónak hozzá kell rendelnie a RBAC Bult szerepkört (például). közreműködői. [További információ](../../role-based-access-control/role-assignments-portal.md)
 - A sablonnak szüksége van az ÖN Azure AD-felhasználói objektumazonosítójára az engedélyek konfigurálásához. Az alábbi eljárás az objektumazonosító (GUID) beolvasása.
 
@@ -217,4 +217,4 @@ Ebben a rövid útmutatóban létrehozott egy kulcstartót és egy kulcsot egy A
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
 - További információ az [Azure Resource Managerről](../../azure-resource-manager/management/overview.md)
-- [Azure Key Vault ajánlott eljárások](../general/best-practices.md) áttekintése
+- Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)

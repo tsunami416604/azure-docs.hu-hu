@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d3d5fd34ee6c1d73429af63693094acdaed6c9d2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7d1e4018382d26e4df289838ffbb03f1c87505e6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784609"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935019"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Gyors útmutató: Azure Key Vault kulcsok ügyféloldali kódtára a Pythonhoz
 
@@ -86,7 +86,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS vagy Linux
@@ -196,7 +196,7 @@ Ellenőrizze, hogy a kulcs törölve lett-e az Azure CLI-parancs az [kulcstartó
 
 A törlés után a kulcsok törölve maradnak, de a helyreállítható állapot egy ideig. Ha újra futtatja a kódot, adjon meg egy másik kulcsot.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a [tanúsítványokkal](../certificates/quick-create-python.md) és a [titkokkal](../secrets/quick-create-python.md)is kísérletezni szeretne, a cikkben létrehozott Key Vault is felhasználhatja.
 
@@ -206,10 +206,10 @@ Ellenkező esetben, ha elkészült az ebben a cikkben létrehozott erőforrások
 az group delete --resource-group KeyVault-PythonQS-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Key Vault áttekintése](../general/overview.md)
 - [Biztonságos hozzáférés a kulcstartóhoz](../general/secure-your-key-vault.md)
 - [Azure Key Vault fejlesztői útmutató](../general/developers-guide.md)
-- [Azure Key Vault ajánlott eljárások](../general/best-practices.md)
+- [Key Vault biztonsági áttekintés](../general/security-overview.md)
 - [Hitelesítés Key Vault](../general/authentication.md)

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb28b4b678b37f69331b2ecff6272fd7aa64d191
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287625"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934533"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Key Vault hozzáférési szabályzat kiosztása a Azure PowerShell használatával
 
@@ -51,7 +51,7 @@ Határozza meg annak az alkalmazásnak, csoportnak vagy felhasználónak az AZON
     Get-AzADServicePrincipal -SearchString <search-string>
     ```
 
-- Csoportok: használja a [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) parancsmagot a `-SearchString` paraméterrel az eredmények szűréséhez a kívánt csoport nevére:
+- Csoportok: használja a [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) parancsmagot a `-SearchString` paraméterrel az eredmények szűréséhez a kívánt csoport nevére:
 
     ```azurepowershell-interactive
     Get-AzADGroup -SearchString <search-string>
@@ -77,9 +77,8 @@ Set-AzKeyVaultAccessPolicy -VaultName <key-vault-name> -ObjectId <Id> -Permissio
 
 `-PermissionsToSecrets` `-PermissionsToKeys` Az adott típusokhoz csak a, a és az `-PermissionsToCertificates` engedélyek kiosztása szükséges. A () és a () számára engedélyezett értékek a `<secret-permissions>` `<key-permissions>` `<certificate-permissions>` [set-AzKeyVaultAccessPolicy-Parameters](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy#parameters) dokumentációban vannak megadva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](overview-security.md#identity-and-access-management)
+- [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](security-overview.md#identity-management)
 - [A kulcstartó védelme](secure-your-key-vault.md).
 - [Azure Key Vault fejlesztői útmutató](developers-guide.md)
-- [Azure Key Vault ajánlott eljárások](best-practices.md)

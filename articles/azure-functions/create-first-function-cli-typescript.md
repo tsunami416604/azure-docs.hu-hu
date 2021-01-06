@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre egy írógéppel függvényt a pa
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 981c96bb8775a3fdd3f951d079cd7ad285d09680
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 488ef9fa3fd5b6c09ed435483dbf8f6fa3eb5bef
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637030"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937195"
 ---
 # <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>Gyors útmutató: az Azure-ban hozzon létre egy írógéppel-függvényt a parancssorból
 
@@ -95,7 +95,7 @@ az *index. TS* olyan függvényt exportál, amely a *function.js* konfiguráció
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-HTTP-trigger esetén a függvény a HttpRequest típusú változóban fogadja a kérelmeket a `req` *function.json* értékben meghatározottak szerint. **HttpRequest** A (z `$return` ) *function.jsban* definiált visszatérési objektum a válasz. 
+HTTP-trigger esetén a függvény a HttpRequest típusú változóban fogadja a kérelmeket a `req` *function.json* értékben meghatározottak szerint.  A (z `$return` ) *function.jsban* definiált visszatérési objektum a válasz. 
 
 #### <a name="functionjson"></a>function.json
 
@@ -138,7 +138,7 @@ Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A
     
     A terminál, amelyben elindította a projektet, a naplók kimenetét is megjeleníti a kérések elkészítésekor.
 
-1. Ha elkészült, használja a **CTRL C billentyűt** , + **C** és válassza `y` a functions gazdagép leállítását.
+1. Ha elkészült, használja a **CTRL C billentyűt**, +  és válassza `y` a functions gazdagép leállítását.
 
 [!INCLUDE [functions-create-azure-resources-cli](../../includes/functions-create-azure-resources-cli.md)]
 
@@ -164,7 +164,7 @@ Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A
         
     Az előző példában a helyére írja be az `<STORAGE_NAME>` előző lépésben használt fiók nevét, és cserélje le az értékét a `<APP_NAME>` megfelelő globálisan egyedi névre. Az `<APP_NAME>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, 
     
-    Ez a parancs létrehoz egy, a megadott nyelvi futtatókörnyezetben futó Function alkalmazást a [Azure functions használati terv](functions-scale.md#consumption-plan)alatt, amely ingyenesen használható az itt felmerülő felhasználási mennyiséghez. A parancs egy kapcsolódó Azure Application Insights-példányt is kiépít ugyanabban az erőforráscsoporthoz, amellyel nyomon követheti a Function alkalmazást, és megtekintheti a naplókat. További információ: [Azure functions figyelése](functions-monitoring.md). A példány nem jár költséggel, amíg be nem aktiválja.
+    Ez a parancs létrehoz egy, a megadott nyelvi futtatókörnyezetben futó Function alkalmazást a [Azure functions használati terv](consumption-plan.md)alatt, amely ingyenesen használható az itt felmerülő felhasználási mennyiséghez. A parancs egy kapcsolódó Azure Application Insights-példányt is kiépít ugyanabban az erőforráscsoporthoz, amellyel nyomon követheti a Function alkalmazást, és megtekintheti a naplókat. További információ: [Azure functions figyelése](functions-monitoring.md). A példány nem jár költséggel, amíg be nem aktiválja.
 
 ## <a name="deploy-the-function-project-to-azure"></a>A Function projekt üzembe helyezése az Azure-ban
 

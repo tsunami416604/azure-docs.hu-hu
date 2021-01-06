@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: eae7d0a34d6bd76dae5998f05f9d64e0d40f7d9b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c18d235977f1256a10e813fa8e02aa3590366fe1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321603"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936413"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Feltételes hozzáférés a Azure SQL Database és az Azure szinapszis Analytics használatával
 
@@ -25,7 +25,7 @@ ms.locfileid: "93321603"
 
 [Azure SQL Database](sql-database-paas-overview.md), az [Azure SQL felügyelt példánya](../managed-instance/sql-managed-instance-paas-overview.md)és az [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) támogatja a Microsoft feltételes hozzáférését.
 
-A következő lépések bemutatják, hogyan konfigurálhatja az Azure SQL Database, az SQL felügyelt példányát vagy az Azure Szinapszisot a feltételes hozzáférési (CA) szabályzat érvényesítéséhez.  
+A következő lépések bemutatják, hogyan konfigurálhatja az Azure SQL Database, az SQL felügyelt példányát vagy az Azure Szinapszisot egy feltételes hozzáférési szabályzat érvénybe léptetéséhez.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ A következő lépések bemutatják, hogyan konfigurálhatja az Azure SQL Databa
    ![Feltételes hozzáférés panel](./media/conditional-access-configure/conditional-access-blade.png)
 
 2. A **feltételes hozzáférés – szabályzatok** panelen kattintson az **új házirend** elemre, adjon meg egy nevet, majd kattintson a **szabályok konfigurálása** elemre.  
-3. A **hozzárendelések** területen válassza a **felhasználók és csoportok** , majd a **felhasználók és csoportok kiválasztása** lehetőséget, majd a feltételes hozzáféréshez válassza ki a felhasználót vagy a csoportot. Kattintson a **kiválasztás elemre, majd** kattintson a **kész** gombra a kijelölés elfogadásához.  
+3. A **hozzárendelések** területen válassza a **felhasználók és csoportok**, majd a **felhasználók és csoportok kiválasztása** lehetőséget, majd a feltételes hozzáféréshez válassza ki a felhasználót vagy a csoportot. Kattintson a **kiválasztás elemre, majd** kattintson a **kész** gombra a kijelölés elfogadásához.  
    ![felhasználók és csoportok kiválasztása](./media/conditional-access-configure/select-users-and-groups.png)  
 
 4. Válassza a **Cloud apps** lehetőséget, majd kattintson az **alkalmazások kiválasztása** lehetőségre. A feltételes hozzáféréshez elérhető összes alkalmazás megjelenik. Válassza a **Azure SQL Database** lehetőséget, alul kattintson a **kiválasztás** elemre, majd kattintson a **kész** gombra.  
@@ -60,6 +60,6 @@ A kiválasztott alkalmazás (Azure SQL Database) prémium szintű Azure AD haszn
 
 A többtényezős hitelesítéssel kapcsolatos Azure SQL Database és az Azure szinapszis kérdéseivel kapcsolatban forduljon a következőhöz: <MFAforSQLDB@microsoft.com> .  
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 Oktatóanyagért lásd: [az adatbázis biztonságossá tétele SQL Databaseban](secure-database-tutorial.md).

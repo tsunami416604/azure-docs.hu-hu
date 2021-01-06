@@ -3,12 +3,12 @@ title: Kimenetek a sablonokban
 description: Ismerteti, hogyan lehet kimeneti értékeket definiálni egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353527"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934730"
 ---
 # <a name="outputs-in-arm-templates"></a>Kimenetek ARM-sablonokban
 
@@ -47,7 +47,7 @@ A feltételes kimenet egyszerű példáját lásd: [feltételes kimeneti sablon]
 
 ## <a name="dynamic-number-of-outputs"></a>Kimenetek dinamikus száma
 
-Bizonyos helyzetekben nem tudja, hogy hány példányban kell visszaadni a sablon létrehozásakor. A **copy** elem használatával változó számú értéket adhat vissza.
+Bizonyos helyzetekben nem tudja, hogy hány példányban kell visszaadni a sablon létrehozásakor. Az elem használatával változó számú értéket adhat vissza `copy` .
 
 ```json
 "outputs": {
@@ -61,7 +61,7 @@ Bizonyos helyzetekben nem tudja, hogy hány példányban kell visszaadni a sablo
 }
 ```
 
-További információ: [outputs iteráció Azure Resource Manager-sablonokban](copy-outputs.md).
+További információ: [a kimenet iterációja az ARM-sablonokban](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Hivatkozott sablonok
 

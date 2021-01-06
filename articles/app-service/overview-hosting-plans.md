@@ -6,16 +6,16 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8033235cde5b7ebe298bb1fa8d4222e208df998b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a29d81be9b750d89230a180b8a7c786466d99bb8
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183005"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936430"
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomagok áttekintése
 
-App Service (Web Apps, API Apps vagy Mobile Apps) esetében az alkalmazás mindig egy _app Service_-csomagban fut. Emellett a [Azure functions](../azure-functions/functions-scale.md#app-service-plan) egy _app Service_-csomagban is futtathatja a parancsot. Az App Service-csomagok határozzák meg a futtatni kívánt webalkalmazások számítási erőforrásait. Ezek a számítási erőforrások hasonlóak a [_kiszolgálófarm_](https://wikipedia.org/wiki/Server_farm) számára a hagyományos webes üzemeltetésben. Egy vagy több alkalmazás úgy konfigurálható, hogy ugyanazon a számítási erőforrásokon (vagy ugyanabban a App Service tervben) fusson.
+App Service (Web Apps, API Apps vagy Mobile Apps) esetében az alkalmazás mindig egy _app Service_-csomagban fut. Emellett a [Azure functions](../azure-functions/dedicated-plan.md) egy _app Service_-csomagban is futtathatja a parancsot. Az App Service-csomagok határozzák meg a futtatni kívánt webalkalmazások számítási erőforrásait. Ezek a számítási erőforrások hasonlóak a [_kiszolgálófarm_](https://wikipedia.org/wiki/Server_farm) számára a hagyományos webes üzemeltetésben. Egy vagy több alkalmazás úgy konfigurálható, hogy ugyanazon a számítási erőforrásokon (vagy ugyanabban a App Service tervben) fusson.
 
 Ha egy App Service tervet hoz létre egy bizonyos régióban (például Nyugat-Európa), akkor az adott régióhoz tartozó számítási erőforrások készlete lesz létrehozva. Minden olyan alkalmazás, amelyet ebbe a App Service csomagba helyezett, a App Service-csomag által meghatározott számítási erőforrásokon futtathatja. Az App Service-csomagok a következőket határozzák meg:
 

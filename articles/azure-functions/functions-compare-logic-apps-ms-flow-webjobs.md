@@ -4,12 +4,12 @@ description: 'Összehasonlíthatja az integrációs feladatokhoz optimalizált M
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91403075"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934866"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>A megfelelő integrációs és automatizálási szolgáltatások kiválasztása az Azure-ban
 
@@ -45,7 +45,7 @@ Az alábbi táblázat segít megállapítani, hogy az energiagazdálkodás vagy 
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Az Azure Functions és az Azure Logic Apps összehasonlítása
 
-A Functions és a Logic Apps egy Azure-szolgáltatás, melyek kiszolgáló nélküli feladatokhoz nyújtanak támogatást. Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, míg a Azure Logic Apps kiszolgáló nélküli munkafolyamatokat biztosít. Mindkettő összetett előkészítéseket *orchestrations*is létrehozhat. A vezénylés a függvények vagy lépések – a Logic Appsben ezeket *műveleteknek* nevezzük – egy olyan készlete, amelynek a végrehajtásával összetett feladatokat tud elvégezni. Ha például egy köteget szeretne feldolgozni, egy függvény több példánya is végrehajtható párhuzamosan, várjon, amíg az összes példány befejeződik, majd hajtson végre egy olyan függvényt, amely kiszámítja az Összesítés eredményét.
+A Functions és a Logic Apps egy Azure-szolgáltatás, melyek kiszolgáló nélküli feladatokhoz nyújtanak támogatást. Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, míg a Azure Logic Apps kiszolgáló nélküli munkafolyamatokat biztosít. Mindkettő összetett előkészítéseket is létrehozhat. A vezénylés a függvények vagy lépések – a Logic Appsben ezeket *műveleteknek* nevezzük – egy olyan készlete, amelynek a végrehajtásával összetett feladatokat tud elvégezni. Ha például egy köteget szeretne feldolgozni, egy függvény több példánya is végrehajtható párhuzamosan, várjon, amíg az összes példány befejeződik, majd hajtson végre egy olyan függvényt, amely kiszámítja az Összesítés eredményét.
 
 Az Azure Functions esetében a vezénylések fejlesztéséhez kódot kell írnia a [Durable Functions bővítmény](durable/durable-functions-overview.md) segítségével. A Logic Appsben a vezényléseket grafikus felhasználói felülettel vagy konfigurációs fájlok szerkesztésével tudja létrehozni.
 
@@ -54,11 +54,11 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 |  | Tartós függvények | Logic Apps |
 | --- | --- | --- |
 | **Fejlesztés** | Kódközpontú (imperatív) | Tervezőközpontú (deklaratív) |
-| **Kapcsolatok** | [Körülbelül egy tucat beépített kötési típus](functions-triggers-bindings.md#supported-bindings), kód írása az egyéni kötésekhez | [Az összekötők nagy gyűjteménye](../connectors/apis-list.md), [Enterprise Integration Pack B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [Egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
+| **Kapcsolódás** | [Körülbelül egy tucat beépített kötési típus](functions-triggers-bindings.md#supported-bindings), kód írása az egyéni kötésekhez | [Az összekötők nagy gyűjteménye](../connectors/apis-list.md), [Enterprise Integration Pack B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [Egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
 | **Műveletek** | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Használatra kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **Nyomon követés** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/monitor-logic-apps.md)|
+| **Figyelés** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/monitor-logic-apps.md)|
 | **Felügyelet** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2019) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
-| **Végrehajtás környezete** | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak felhőben futtatható|
+| **Végrehajtási környezet** | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak felhőben futtatható|
 
 <a name="function"></a>
 
@@ -78,9 +78,9 @@ Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatáso
 
 |  | Függvények | WebJobs WebJobs SDK-val |
 | --- | --- | --- |
-|**[Kiszolgáló nélküli alkalmazás](https://azure.microsoft.com/solutions/serverless/) -modell [automatikus skálázással](functions-scale.md#how-the-consumption-and-premium-plans-work)**|✔||
+|**[Kiszolgáló nélküli alkalmazás](https://azure.microsoft.com/solutions/serverless/) -modell [automatikus skálázással](event-driven-scaling.md)**|✔||
 |**[Fejlesztés és tesztelés böngészőben](functions-create-first-azure-function.md)** |✔||
-|**[Használatalapú fizetés](functions-scale.md#consumption-plan)**|✔||
+|**[Használatalapú fizetés](consumption-plan.md)**|✔||
 |**[Integráció a Logic Apps szolgáltatással](functions-twitter-email.md)**|✔||
 | **Kiváltó események** |[Időzítő](functions-bindings-timer.md)<br>[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Azure Service Bus – üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Időzítő](functions-bindings-timer.md)<br>[Azure Storage üzenetsorok és blobok](functions-bindings-storage-blob.md)<br>[Azure Service Bus – üzenetsorok és témakörök](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Fájlrendszer](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
 | **Támogatott nyelvek**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
@@ -90,7 +90,7 @@ Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatáso
 
 <sup>2</sup> a webjobs (a webjobs SDK nélkül) támogatja a NPM és a NuGet.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Azure Functions nagyobb fejlesztői hatékonyságot biztosít, mint Azure App Service webjobs. Emellett több lehetőséget is kínál a programozási nyelvek, a fejlesztői környezetek, az Azure-szolgáltatások integrálására és a díjszabásra. A legtöbb forgatókönyvhöz ez a legjobb választás.
 

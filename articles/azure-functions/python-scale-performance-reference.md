@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan fejleszthet Azure Functions alkalmazásokat a n
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3383ec322903d15c6090630890d14ce6d90bc96f
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97899397"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935869"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>A Python-alkalmazások átviteli teljesítményének növelése Azure Functions
 
 A Python használatával történő Azure Functions fejlesztésekor ismernie kell a függvények működésének módját és azt, hogy a teljesítmény milyen hatással van a Function alkalmazás skálázására. Nagyon fontos a nagy teljesítményű alkalmazások tervezése. A functions-alkalmazások tervezése, írása és konfigurálása során megfontolandó szempontok a horizontális skálázás és az átviteli teljesítmény-konfigurációk.
 
 ## <a name="horizontal-scaling"></a>Horizontális skálázás
-Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség esetén további gazdagép-példányokat hoz létre a Pythonhoz. Azure Functions a különböző trigger-típusok beépített küszöbértékeit használja annak eldöntésére, hogy mikor kell hozzáadni a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. Ezek a küszöbértékek nem állíthatók be a felhasználó számára. További információ: [How the fogyasztás and Premium Plans Work](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség esetén további gazdagép-példányokat hoz létre a Pythonhoz. Azure Functions a különböző trigger-típusok beépített küszöbértékeit használja annak eldöntésére, hogy mikor kell hozzáadni a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. Ezek a küszöbértékek nem állíthatók be a felhasználó számára. További információ: [eseményvezérelt skálázás Azure Functionsban](event-driven-scaling.md).
 
 ## <a name="improving-throughput-performance"></a>Az átviteli teljesítmény javítása
 
@@ -171,7 +171,7 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
 #### <a name="vertical-scaling"></a>Vertikális skálázás
 Ha több feldolgozási egységre van szüksége, különösen a CPU-kötésű műveletekben, akkor lehetséges, hogy a prémium csomagra való frissítéssel magasabb specifikációkat kell megszereznie. A magasabb feldolgozási egységek esetében a munkavégző folyamatok számának beállítása a rendelkezésre álló magok számának és a magasabb fokú párhuzamosságnak megfelelően állítható be. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Azure Functions Python-fejlesztéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

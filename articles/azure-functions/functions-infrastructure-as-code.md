@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f9c11c0671db882edd9a72bca8d11c7326edee43
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589797"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936889"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
 
@@ -175,7 +175,7 @@ Ezek a tulajdonságok a (z) `appSettings` tulajdonság gyűjteményében vannak 
 
 ## <a name="deploy-on-consumption-plan"></a>Üzembe helyezés a használati tervben
 
-A használati terv automatikusan lefoglalja a számítási teljesítményt, amikor a kód fut, szükség szerint méretezi a terhelést, majd méretezi a értéket, ha a kód nem fut. A tétlen virtuális gépekért nem kell fizetnie, és nem kell előre lefoglalnia a kapacitást. További információ: [Azure functions skálázás és üzemeltetés](functions-scale.md#consumption-plan).
+A használati terv automatikusan lefoglalja a számítási teljesítményt, amikor a kód fut, szükség szerint méretezi a terhelést, majd méretezi a értéket, ha a kód nem fut. A tétlen virtuális gépekért nem kell fizetnie, és nem kell előre lefoglalnia a kapacitást. További információ: [Azure functions skálázás és üzemeltetés](consumption-plan.md).
 
 Minta Azure Resource Manager sablon esetében lásd: [Function app on felhasználási terv].
 
@@ -686,7 +686,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 A központi telepítés teszteléséhez használhat egy olyan [sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) , amely a Windowsban egy használati alkalmazást hoz létre egy felhasználási tervben. Cserélje le a `<function-app-name>` függvényt egy egyedi névre a Function alkalmazáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Functions fejlesztéséről és konfigurálásáról.
 

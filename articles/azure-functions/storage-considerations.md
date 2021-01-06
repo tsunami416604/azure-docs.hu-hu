@@ -3,12 +3,12 @@ title: A Azure Functions tárolási szempontjai
 description: Ismerje meg a Azure Functions tárolási követelményeit és a tárolt adat titkosítását.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 66bfded384be47224e86ee8e0a2999fe3d4ed5d9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107243"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936158"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>A Azure Functions tárolási szempontjai
 
@@ -18,7 +18,7 @@ A Azure Functions egy Azure Storage-fiókot igényel a Function App-példány l�
 |Tárolási szolgáltatás  | Függvények használata  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Kötések állapotának és funkcióbillentyűk megtartása.  <br/>[A Durable Functionsban a feladatok hubok](durable/durable-functions-task-hubs.md)is használják. |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | A Function app-kód tárolásához és futtatásához használt fájlmegosztás a használati [tervben](functions-scale.md#consumption-plan) és a [prémium csomagban](functions-scale.md#premium-plan). |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | A Function app-kód tárolásához és futtatásához használt fájlmegosztás a használati [tervben](consumption-plan.md) és a [prémium csomagban](functions-premium-plan.md). |
 | [Azure üzenetsor-tároló](../storage/queues/storage-queues-introduction.md)     | [A feladatok hubok használják Durable Functionsban](durable/durable-functions-task-hubs.md).   |
 | [Azure Table storage](../storage/tables/table-storage-overview.md)  |  [A feladatok hubok használják Durable Functionsban](durable/durable-functions-task-hubs.md).       |
 
@@ -32,6 +32,8 @@ A Function app létrehozásakor létre kell hoznia vagy hivatkoznia kell egy ál
 További információ a tárfiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#core-storage-services). 
 
 Habár meglévő Storage-fiókot is használhat a Function alkalmazással, meg kell győződnie arról, hogy megfelel a követelményeknek. Azok a Storage-fiókok, amelyek az alkalmazás-létrehozási folyamat részeként jöttek létre a Azure Portalban, garantáltan megfelelnek a Storage-fiókra vonatkozó követelményeknek. A portálon a rendszer kiszűri a nem támogatott fiókokat, amikor egy meglévő Storage-fiókot választ ki egy Function-alkalmazás létrehozásakor. Ebben a folyamatban csak olyan meglévő Storage-fiókokat választhat, amelyek ugyanabban a régióban találhatók, mint a létrehozandó Function alkalmazás. További információ: Storage- [fiók helye](#storage-account-location).
+
+<!-- JH: Does using a Premium Storage account improve perf? -->
 
 ## <a name="storage-account-guidance"></a>A Storage-fiók útmutatója
 
@@ -59,7 +61,15 @@ Több Function-alkalmazás is lehetséges, hogy problémák nélkül megoszthatj
 
 [!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
-## <a name="mount-file-shares-linux"></a>Csatlakoztatási fájlmegosztás (Linux)
+### <a name="in-region-data-residency"></a>Régión belüli adattárolás
+
+Ha az összes ügyfél-adatnak egyetlen régióban kell maradnia, a Function alkalmazáshoz társított Storage-fióknak a [régión belüli redundanciával](../storage/common/storage-redundancy.md)kell rendelkeznie. A régión belüli redundáns Storage-fiókot az [Azure Durable functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection)is használni kell.
+
+A platform által felügyelt ügyféladatokat csak a régión belül tárolják, ha belsőleg elosztott terhelésű App Service Environment (bevezetéses) környezetben üzemeltetik azokat. További információ: a [beépítési zóna redundancia](../app-service/environment/zone-redundancy.md#in-region-data-residency).
+
+## <a name="mount-file-shares"></a>Csatlakoztatási fájlmegosztás
+
+_Ez a funkció jelenleg csak Linux rendszeren érhető el._ 
 
 Meglévő Azure Files-megosztásokat csatlakoztathat a Linux Function-alkalmazásaihoz. Ha egy megosztást csatlakoztat a linuxos Function-alkalmazáshoz, használhatja a meglévő gépi tanulási modelleket és a függvények más adatait. A [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) parancs használatával meglévő megosztásokat csatlakoztathat a Linux-függvény alkalmazásához. 
 
@@ -78,7 +88,7 @@ import os
 files_in_share = os.listdir("/path/to/mount")
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Functions üzemeltetési lehetőségeiről.
 

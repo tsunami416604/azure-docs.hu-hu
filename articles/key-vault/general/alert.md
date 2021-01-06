@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724697"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934594"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Figyelés és riasztás a Azure Key Vault
 
@@ -25,8 +25,8 @@ ms.locfileid: "97724697"
 Miután elindította a Key vaultot a termelési titkok tárolására, fontos a kulcstartó állapotának figyelése annak biztosításához, hogy a szolgáltatás a kívánt módon működjön. A szolgáltatás skálázásának megkezdése után a Key vaultba küldött kérések száma növekedni fog. Ez potenciálisan növelheti a kérések késését, és szélsőséges esetekben a kérések szabályozása is lehetséges, ami hatással lehet a szolgáltatás teljesítményére. Akkor is riasztást kell kapnia, ha a kulcstartó szokatlan számú hibakódot küld, így gyorsan értesítheti a hozzáférési házirendet vagy a tűzfal konfigurációs hibáit. Ez a dokumentum a következő témákat tárgyalja:
 
 + A figyelni kívánt alapszintű Key Vault mérőszámok
-+ Metrikák konfigurálása és irányítópult létrehozása 
-+ Riasztások létrehozása a megadott küszöbértékeken 
++ Metrikák konfigurálása és irányítópult létrehozása
++ Riasztások létrehozása a megadott küszöbértékeken
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>A figyelni kívánt alapszintű Key Vault mérőszámok
 

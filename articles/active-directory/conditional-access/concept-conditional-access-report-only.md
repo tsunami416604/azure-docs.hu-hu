@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049383"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935886"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Mi a csak feltételes hozzáférés jelentési módja?
 
@@ -30,7 +30,7 @@ A csak jelentési mód egy új feltételes hozzáférési szabályzat, amely leh
 - A Azure Monitor-előfizetéssel rendelkező ügyfelek a feltételes hozzáférési szabályzatok segítségével figyelheti a feltételes hozzáférési házirendek hatását.
 
 > [!WARNING]
-> A csak jelentési módban lévő szabályzatok, amelyek megfelelő eszközöket igényelnek, kérhetnek Mac, iOS és Android rendszerű felhasználókat, hogy kiválasszák az eszköz tanúsítványát a szabályzat kiértékelése során, annak ellenére, hogy az eszköz megfelelősége nem kényszerített. Ezek a kérések megismételhetők, amíg az eszköz nem megfelelő. Annak megakadályozása érdekében, hogy a végfelhasználók a bejelentkezéskor fogadják a kéréseket, kizárják az eszköz megfelelőségi ellenőrzéseit végző, csak jelentési szabályzatokat tartalmazó Mac, iOS és Android platformot. Vegye figyelembe, hogy a csak jelentési mód nem alkalmazható a "felhasználói műveletek" hatókörű HITELESÍTÉSSZOLGÁLTATÓI házirendek esetében.
+> A csak jelentési módban lévő szabályzatok, amelyek megfelelő eszközöket igényelnek, kérhetnek Mac, iOS és Android rendszerű felhasználókat, hogy kiválasszák az eszköz tanúsítványát a szabályzat kiértékelése során, annak ellenére, hogy az eszköz megfelelősége nem kényszerített. Ezek a kérések megismételhetők, amíg az eszköz nem megfelelő. Annak megakadályozása érdekében, hogy a végfelhasználók a bejelentkezéskor fogadják a kéréseket, kizárják az eszköz megfelelőségi ellenőrzéseit végző, csak jelentési szabályzatokat tartalmazó Mac, iOS és Android platformot. Vegye figyelembe, hogy a csak jelentési mód nem alkalmazható a "felhasználói műveletek" hatókörrel rendelkező feltételes hozzáférési szabályzatokra.
 
 ![Csak jelentés lap az Azure AD bejelentkezési naplójában](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 
@@ -49,6 +49,6 @@ Ha egy adott bejelentkezésnél egy házirend csak jelentési módban van kiért
 
 A rendszergazdák több szabályzatot hozhatnak létre csak jelentési módban, ezért az egyes házirendek egyéni hatásának megértéséhez, valamint a több, együttesen értékelt házirendek együttes hatásához is szükség van. Az új feltételes hozzáférési bejelentési munkafüzet lehetővé teszi a rendszergazdák számára a feltételes hozzáférési lekérdezések megjelenítését és a házirendek hatásának figyelését egy adott időtartományra, az alkalmazások és a felhasználók körére. 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Csak jelentési mód konfigurálása feltételes hozzáférési házirendben](howto-conditional-access-insights-reporting.md)

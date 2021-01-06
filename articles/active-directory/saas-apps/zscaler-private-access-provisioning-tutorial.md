@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: da3ad4f70e0cc41fe95327eb74093c1471c877bd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 14708ddcc5c0e06ee58f5e9db5945c4e9f1a1d08
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351571"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937144"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler privát hozzáférésének (ZPA) konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -115,6 +115,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 > [!TIP]
 > Azt is megteheti, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a Zscaler privát eléréséhez (ZPA) a [Zscaler Private Access (ZPA) egyszeri bejelentkezési oktatóanyagában](./zscalerprivateaccess-tutorial.md)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, bár ez a két funkció kiegészíti egymást.
+
+> [!NOTE]
+> Ha a felhasználók és csoportok kiosztása vagy kiosztása megtörtént, javasoljuk, hogy rendszeres időközönként indítsa újra az üzembe helyezést, hogy a csoporttagság megfelelően frissüljenek. Az újraindítás után a szolgáltatás kikényszeríti a szolgáltatást az összes csoport újraértékelésére és a tagságok frissítésére.  
 
 > [!NOTE]
 > Ha többet szeretne megtudni a Zscaler SCIM-végpontról, olvassa el [ezt a témakört](https://www.zscaler.com/partners/microsoft).

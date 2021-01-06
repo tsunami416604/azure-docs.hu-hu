@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422535"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936787"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -53,7 +53,7 @@ A projekt gyökerében található egy megosztott [`host.json`](functions-host-j
 
 Bizonyos kötések egy fájl jelenlétét igénylik `extensions.csproj` . A függvények futtatókörnyezetének [2. x vagy újabb](functions-versions.md) verziójában szükséges kötési kiterjesztések a fájlban vannak definiálva, a `extensions.csproj` mappában lévő tényleges függvénytár-fájlokkal `bin` . Helyi fejlesztés esetén [regisztrálnia kell a kötési bővítményeket](functions-bindings-register.md#extension-bundles). A Azure Portal funkcióinak fejlesztésekor ez a regisztráció történik.
 
-A PowerShell-függvény alkalmazásaiban megadhatja, hogy a `profile.ps1` rendszer mikor fusson, amikor egy Function-alkalmazás elindul (más néven a *[hidegindító kezdete](#cold-start)* ). További információ: PowerShell- [profil](#powershell-profile).
+A PowerShell-függvény alkalmazásaiban megadhatja, hogy a `profile.ps1` rendszer mikor fusson, amikor egy Function-alkalmazás elindul (más néven a *[hidegindító kezdete](#cold-start)*). További információ: PowerShell- [profil](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>PowerShell-parancsfájl definiálása függvényként
 
@@ -525,7 +525,7 @@ A PowerShell nyelvi feldolgozója általában számos modult használ. Ezek a mo
 A modulok aktuális listája a következő:
 
 * [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): az archívumok, például `.zip` , és mások használatához használt modul `.nupkg` .
-* **ThreadJob** : a PowerShell-feladatok API-k szálon alapuló implementációja.
+* **ThreadJob**: a PowerShell-feladatok API-k szálon alapuló implementációja.
 
 Alapértelmezés szerint a függvények a modulok legújabb verzióját használják. Egy adott modul verziójának használatához helyezze az adott verziót a `Modules` Function alkalmazás mappájába.
 
@@ -649,11 +649,11 @@ A PowerShell-függvények használatakor vegye figyelembe az alábbi részekben 
 
 ### <a name="cold-start"></a>Hidegindító
 
-Azure Functions a [kiszolgáló nélküli üzemeltetési modellben](functions-scale.md#consumption-plan)való fejlesztésekor a hideg indítás a valóság. A *hűtőházi kezdés* azt az időtartamot jelenti, ameddig a Function alkalmazásnak futnia kell a kérelem feldolgozásához. A hidegindító folyamat gyakrabban fordul elő a fogyasztási tervben, mert a Function alkalmazás leáll az inaktivitási időszakok során.
+Azure Functions a [kiszolgáló nélküli üzemeltetési modellben](consumption-plan.md)való fejlesztésekor a hideg indítás a valóság. A *hűtőházi kezdés* azt az időtartamot jelenti, ameddig a Function alkalmazásnak futnia kell a kérelem feldolgozásához. A hidegindító folyamat gyakrabban fordul elő a fogyasztási tervben, mert a Function alkalmazás leáll az inaktivitási időszakok során.
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Köteg modulok használata helyett `Install-Module`
 
-A szkript minden meghívásnál fut. Kerülje a használatát `Install-Module` a parancsfájlban. Ehelyett használja a `Save-Module` közzététel előtt, hogy a függvénynek ne kelljen időt pazarolnia a modul letöltésével. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet a Function alkalmazást egy olyan [app Service-csomagra](functions-scale.md#app-service-plan) telepíteni *, amely* a [prémium szintű csomagra](functions-scale.md#premium-plan)van beállítva.
+A szkript minden meghívásnál fut. Kerülje a használatát `Install-Module` a parancsfájlban. Ehelyett használja a `Save-Module` közzététel előtt, hogy a függvénynek ne kelljen időt pazarolnia a modul letöltésével. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet a Function alkalmazást egy olyan [app Service-csomagra](dedicated-plan.md) telepíteni *, amely* a [prémium szintű csomagra](functions-premium-plan.md)van beállítva.
 
 ## <a name="next-steps"></a>További lépések
 

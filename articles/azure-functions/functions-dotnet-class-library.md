@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti Azure Functions a C# használatáv
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 9e11d013b6e7473f290ba1ccb54857034491d116
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672665"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936923"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
 
@@ -138,7 +138,7 @@ public static class BindingExpressionsExample
 
 A létrehozási folyamat létrehoz egy *function.js* fájlt a Build mappában található Function mappában. Amint azt korábban említettük, a fájlt nem közvetlenül kell szerkeszteni. Nem módosíthatja a kötési konfigurációt, vagy letilthatja a függvényt a fájl szerkesztésével. 
 
-Ennek a fájlnak a célja, hogy információt szolgáltasson a méretezési vezérlő számára [a használati tervre vonatkozó döntések skálázásához](functions-scale.md#how-the-consumption-and-premium-plans-work). Emiatt a fájl csak trigger-információkkal, nem bemeneti vagy kimeneti kötésekkel rendelkezik.
+Ennek a fájlnak a célja, hogy információt szolgáltasson a méretezési vezérlő számára [a használati tervre vonatkozó döntések skálázásához](event-driven-scaling.md). Emiatt a fájl csak trigger-információkkal, nem bemeneti vagy kimeneti kötésekkel rendelkezik.
 
 A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Bemutatunk egy példát:
 
@@ -208,7 +208,7 @@ Ha a NPM használatával telepíti az alapvető eszközöket, amelyek nem érint
 
 ## <a name="readytorun"></a>ReadyToRun
 
-A Function alkalmazást [ReadyToRun bináris](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)fájlként is lefordíthatja. A ReadyToRun az előre megadott fordítási forma, amely javíthatja az indítási teljesítményt, így csökkentheti a [fogyasztási tervben](functions-scale.md#consumption-plan)való futáskor felhasználható [rendszerindítási](functions-scale.md#cold-start) hatásokat.
+A Function alkalmazást [ReadyToRun bináris](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)fájlként is lefordíthatja. A ReadyToRun az előre megadott fordítási forma, amely javíthatja az indítási teljesítményt, így csökkentheti a [fogyasztási tervben](consumption-plan.md)való futáskor felhasználható [rendszerindítási](event-driven-scaling.md#cold-start) hatásokat.
 
 A ReadyToRun a .NET 3,0-es verzióban érhető el, és [a Azure functions futtatókörnyezet 3,0](functions-versions.md)-es verzióját igényli.
 
@@ -647,7 +647,7 @@ public static class IBinderExampleMultipleAttributes
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

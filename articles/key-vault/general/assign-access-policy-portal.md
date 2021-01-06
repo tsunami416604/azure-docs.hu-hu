@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 910b8dae10036cc2e396be13495fd28363dc971d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287711"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934560"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Key Vault hozzáférési szabályzat társítása a Azure Portal használatával
 
@@ -29,11 +29,11 @@ További információ a Azure Active Directory csoportok létrehozásáról a Az
 
 1.  A [Azure Portal](https://portal.azure.com)navigáljon a Key Vault erőforráshoz. 
 
-1.  A **Beállítások** területen válassza a **hozzáférési szabályzatok** , majd a **hozzáférési házirend hozzáadása** elemet:
+1.  A **Beállítások** területen válassza a **hozzáférési szabályzatok**, majd a **hozzáférési házirend hozzáadása** elemet:
 
     ![Válassza a hozzáférési szabályzatok lehetőséget, majd a szerepkör-hozzárendelés hozzáadása elemet.](../media/authentication/assign-policy-portal-01.png)
 
-1.  Válassza ki a kívánt engedélyeket a **tanúsítvány engedélyei** , a **kulcs engedélyei** és a **titkos engedélyek** területen. Kiválaszthat egy olyan sablont is, amely közös engedélyezési kombinációkat tartalmaz:
+1.  Válassza ki a kívánt engedélyeket a **tanúsítvány engedélyei**, a **kulcs engedélyei** és a **titkos engedélyek** területen. Kiválaszthat egy olyan sablont is, amely közös engedélyezési kombinációkat tartalmaz:
 
     ![Hozzáférési házirend engedélyeinek megadása](../media/authentication/assign-policy-portal-02.png)
 
@@ -52,9 +52,8 @@ További információ a Azure Active Directory csoportok létrehozásáról a Az
     ![A hozzáférési szabályzat módosításainak mentése](../media/authentication/assign-policy-portal-05.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](overview-security.md#identity-and-access-management)
+- [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](security-overview.md#identity-management)
 - [A kulcstartó védelme](secure-your-key-vault.md).
 - [Azure Key Vault fejlesztői útmutató](developers-guide.md)
-- [Azure Key Vault ajánlott eljárások](best-practices.md)

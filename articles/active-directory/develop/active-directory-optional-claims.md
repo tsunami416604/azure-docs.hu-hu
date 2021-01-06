@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/04/2021
+ms.date: 1/05/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4674fe41a0e3d63ef0cadc6ad55eca02fc69618e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916252"
+ms.locfileid: "97935903"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -94,7 +94,7 @@ A v2-token formátumának néhány továbbfejlesztése a v1 token formátumot ha
 
 | JWT jogcím     | Név                            | Leírás | Jegyzetek |
 |---------------|---------------------------------|-------------|-------|
-|`aud`          | Célközönség | Mindig a JWTs-ben jelennek meg, de a v1 hozzáférési jogkivonatokban többféle módon is kiállíthatók, ami a jogkivonat-érvényesítés végrehajtásakor nehéz lehet.  A [jogcím további tulajdonságaival](#additional-properties-of-optional-claims) biztosíthatja, hogy mindig a v1 hozzáférési jogkivonatokban lévő GUID azonosítóra legyen beállítva. | v1 csak JWT hozzáférési jogkivonatok|
+|`aud`          | Célközönség | Mindig szerepel a JWTs-ben, de a v1 hozzáférési jogkivonatokban többféle módon is elvégezhető – bármely appID URI-ja, záró perjelgel vagy anélkül, valamint az erőforrás ügyfél-azonosítója. Ez a véletlenszerűség nem hajtható végre a jogkivonat-érvényesítés végrehajtásakor.  A [jogcím további tulajdonságaival](#additional-properties-of-optional-claims) biztosíthatja, hogy mindig az erőforrás ügyfél-azonosítójához legyen beállítva v1 hozzáférési jogkivonatokban. | v1 csak JWT hozzáférési jogkivonatok|
 |`preferred_username` | Előnyben részesített Felhasználónév        | Az előnyben részesített felhasználónévi jogcímet adja meg v1-tokeneken belül. Ez megkönnyíti az alkalmazások számára a felhasználónevek és az olvasható megjelenítendő nevek megjelenítését, a jogkivonat típusától függetlenül.  Javasoljuk, hogy használja ezt a választható jogcímet a következő használata helyett: például: `upn` vagy `unique_name` . | v1 azonosító tokenek és hozzáférési jogkivonatok |
 
 ### <a name="additional-properties-of-optional-claims"></a>A választható jogcímek további tulajdonságai
@@ -108,8 +108,8 @@ Egyes választható jogcímek úgy konfigurálhatók, hogy megváltoztassák a j
 | `upn`          |                          | Az SAML-és JWT-válaszokhoz, valamint a 1.0-s és a v 2.0-tokenekhez is használható. |
 |                | `include_externally_authenticated_upn`  | Az erőforrás-bérlőben tárolt vendég UPN-t tartalmazza. Például: `foo_hometenant.com#EXT#@resourcetenant.com` |
 |                | `include_externally_authenticated_upn_without_hash` | Ugyanaz, mint a fenti, azzal a különbséggel, hogy a kivonatoló jeleket () a `#` rendszer aláhúzással () váltja le `_` , például: `foo_hometenant.com_EXT_@resourcetenant.com`|
-| `aud`          |                          | A v1 hozzáférési jogkivonatokban ez a jogcím formátumának módosítására szolgál `aud` .  Ez nem befolyásolja a v2-tokeneket vagy az azonosító jogkivonatokat, ahol a `aud` jogcím mindig az ügyfél-azonosító. Ezzel biztosíthatja, hogy az API könnyebben tudja elvégezni a célközönség-ellenőrzést. A hozzáférési jogkivonatot befolyásoló összes választható jogcímhez hasonlóan a kérelemben szereplő erőforrásnak be kell állítania ezt a választható jogcímet, mivel az erőforrások tulajdonosa a hozzáférési jogkivonat.|
-|                | `use_guid`               | Az erőforrás (API) ügyfél-AZONOSÍTÓját (GUID formátumban) a `aud` APPID URI vagy GUID helyett jogcímként bocsátja ki. Tehát ha egy erőforrás ügyfél `bb0a297b-6a42-4a55-ac40-09a501456577` -azonosítója, akkor az adott erőforráshoz hozzáférési jogkivonatot kérő alkalmazások hozzáférési jogkivonatot kapnak a következővel `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` .|
+| `aud`          |                          | A v1 hozzáférési jogkivonatokban ez a jogcím formátumának módosítására szolgál `aud` .  Ennek nincs hatása a v2-tokenekre vagy a verzió azonosító jogkivonatára, ahol a `aud` jogcím mindig az ügyfél-azonosító. Ezzel a konfigurációval biztosíthatja, hogy az API könnyebben tudja elvégezni a célközönség-ellenőrzést. A hozzáférési jogkivonatot befolyásoló összes választható jogcímhez hasonlóan a kérelemben szereplő erőforrásnak be kell állítania ezt a választható jogcímet, mivel az erőforrások tulajdonosa a hozzáférési jogkivonat.|
+|                | `use_guid`               | GUID formátumban bocsátja ki az erőforrás (API) ügyfél-AZONOSÍTÓját, mivel a `aud` jogcím mindig a futtatókörnyezettől függ. Ha például egy erőforrás beállítja ezt a jelzőt, és az ügyfél-azonosítója, akkor az `bb0a297b-6a42-4a55-ac40-09a501456577` adott erőforráshoz hozzáférési jogkivonatot kérő alkalmazások hozzáférési jogkivonatot kapnak a következővel `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` . </br></br> A jogcím nélkül az API-k megkapják a jogkivonatokat, `aud` `api://MyApi.com` `api://MyApi.com/` `api://myapi.com/AdditionalRegisteredField` vagy bármely más, az adott API-hoz tartozó alkalmazás-azonosító URI-t, valamint az erőforrás ügyfél-azonosítóját. |
 
 #### <a name="additional-properties-example"></a>További tulajdonságok – példa
 
@@ -149,7 +149,7 @@ Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület va
 1. Válassza a **választható jogcím hozzáadása** lehetőséget.
 1. Válassza ki a konfigurálni kívánt jogkivonat-típust.
 1. Válassza ki a hozzáadandó választható jogcímeket.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 > [!NOTE]
 > A felhasználói felületi beállítás **jogkivonat-konfigurációja** panel jelenleg nem érhető el Azure ad B2C bérlőben regisztrált alkalmazásokhoz. A B2C-bérlőben regisztrált alkalmazások esetében a választható jogcímeket az alkalmazás jegyzékfájljának módosításával lehet konfigurálni. További információ: [jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni szabályzatok használatával Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md) 
@@ -448,7 +448,7 @@ Az alábbi példában a **jogkivonat-konfigurációs** felhasználói felület �
 
 1. Amikor befejezte a jegyzékfájl frissítését **, a Mentés gombra kattintva** mentheti a jegyzékfájlt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure AD által biztosított standard jogcímekről.
 

@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3407b9539047b5c683f304549977eace7b57341
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 73d247464f167040c6f7129bdf7014b877317fc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779005"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936260"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>Gyors útmutató: kulcstartó létrehozása a PowerShell használatával
 
 A Azure Key Vault egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a kulcsok, [titkos](../secrets/index.yml) [kódok](../keys/index.yml)és [tanúsítványok](../certificates/index.yml)számára. További információ a Key Vaultről: [About Azure Key Vault](overview.md); a Key vaultban tárolt adatokkal kapcsolatos további információkért lásd: [a kulcsok, a titkok és a tanúsítványok ismertetése](about-keys-secrets-certificates.md).
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -78,4 +78,5 @@ Ebben a rövid útmutatóban létrehozott egy Key Vaultt a Azure PowerShell hasz
 
 - [A Azure Key Vault áttekintése](overview.md)
 - Tekintse meg a [Azure PowerShell Key Vault-parancsmagok](/powershell/module/az.keyvault/) referenciáját
-- [Azure Key Vault ajánlott eljárások](best-practices.md) áttekintése
+- Tekintse át a [Azure Key Vault biztonsági áttekintést](security-overview.md)
+

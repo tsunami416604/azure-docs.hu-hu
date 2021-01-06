@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370967"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935750"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory irányítási műveletek útmutatója
 
@@ -31,7 +31,7 @@ Az [Azure ad üzemeltetési útmutatójának](active-directory-ops-guide-intro.m
 
 A Azure Active Directory kezelése a legfontosabb működési feladatok és folyamatok folyamatos végrehajtásához szükséges, ami esetleg nem része a bevezetési projektnek. Továbbra is fontos, hogy ezeket a feladatokat a környezet optimalizálása érdekében állítsa be. A legfontosabb feladatok és az ajánlott tulajdonosok a következők:
 
-| Feladat | Tulajdonos |
+| Tevékenység | Tulajdonos |
 | :- | :- |
 | Azure AD-naplók archiválása SIEM-rendszeren | InfoSec-műveleti csapat |
 | A megfelelőséggel felügyelt alkalmazások felderítése | IAM Operations csapat |
@@ -56,10 +56,10 @@ A lista áttekintése során előfordulhat, hogy tulajdonost kell rendelnie olya
 
 Vannak olyan változtatások, amelyek különleges szempontokat igényelnek a tesztelés során, olyan egyszerű technikáktól, mint például a felhasználók célzott részhalmazának bevezetése egy párhuzamos tesztelési bérlő módosításának üzembe helyezéséhez. Ha még nem alkalmazott tesztelési stratégiát, az alábbi táblázatban szereplő irányelvek alapján meg kell határoznia a tesztelési módszert:
 
-| Használati eset| Ajánlás |
+| Eset| Ajánlás |
 |-|-|
 |A hitelesítési típus módosítása összevontról PHS/PTA-re vagy fordítva| A [szakaszos](../hybrid/how-to-connect-staged-rollout.md) bevezetéssel tesztelheti a hitelesítési típus módosításának hatását.|
-|Új feltételes hozzáférési (CA-) házirend vagy Identity Protection-házirend bevezetése|Hozzon létre egy új HITELESÍTÉSSZOLGÁLTATÓI szabályzatot, és rendelje hozzá a felhasználók teszteléséhez.|
+|Új feltételes hozzáférési (CA-) házirend vagy Identity Protection-házirend bevezetése|Hozzon létre egy új feltételes hozzáférési szabályzatot, és rendelje hozzá a felhasználók teszteléséhez.|
 |Egy alkalmazás tesztelési környezetének bevezetése|Vegye fel az alkalmazást éles környezetbe, rejtse el a MyApps panelen, és rendelje hozzá a felhasználók teszteléséhez a minőségbiztosítási (QA) fázisban.|
 |Szinkronizálási szabályok módosítása|Hajtsa végre a tesztekben Azure AD Connect módosításokat ugyanazzal a konfigurációval, amely jelenleg éles környezetben van, más néven átmeneti mód, és elemezze a CSExport eredményeit. Ha teljesülnek, az éles környezetbe kerül, ha készen áll.|
 |A branding módosítása|Tesztelés külön tesztelési bérlőn.|
@@ -141,6 +141,6 @@ A biztonságos identitás irányításának nyolc aspektusa van. Ez a lista seg�
 - Zárja be az Azure EA portál elérését.
 - A jogosultságok felügyeletének megvalósítása a szabályozott hozzáférés biztosításához egy erőforrás-gyűjteményhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg az [Azure ad operatív ellenőrzésekkel és műveletekkel](active-directory-ops-guide-ops.md).

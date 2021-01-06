@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: f270f74f97a9b9306d7b23dacec12c38f418dbd1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fb85920b04e3cd457dc36d1ba1fd0f18dcd7abb6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921825"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937059"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszerben egyéni tárolóval
 
@@ -20,7 +20,7 @@ Ebben az oktatóanyagban létrehozhatja és üzembe helyezheti a kódot úgy, ho
 A Azure Functions [Egyéni kezelők](functions-custom-handlers.md)használatával támogatja az összes nyelvet vagy futtatókörnyezetet. Bizonyos nyelvekhez, például az oktatóanyagban használt R programozási nyelvhez telepítenie kell a futtatókörnyezetet vagy a további kódtárakat olyan függőségként, amely az egyéni tároló használatát igényli.
 ::: zone-end
 
-A függvény kódjának egyéni Linux-tárolóban való üzembe helyezéséhez [Prémium csomag](functions-premium-plan.md#features) vagy [dedikált (App Service) csomag](functions-scale.md#app-service-plan) szükséges. Ennek az oktatóanyagnak az elvégzésével az Azure-fiókban néhány USA-dollárért járó költséget számolunk fel, amelyet a befejezéskor a [takarítási erőforrások](#clean-up-resources) minimalizálásával csökkentheti.
+A függvény kódjának egyéni Linux-tárolóban való üzembe helyezéséhez [Prémium csomag](functions-premium-plan.md) vagy [dedikált (App Service) csomag](dedicated-plan.md) szükséges. Ennek az oktatóanyagnak az elvégzésével az Azure-fiókban néhány USA-dollárért járó költséget számolunk fel, amelyet a befejezéskor a [takarítási erőforrások](#clean-up-resources) minimalizálásával csökkentheti.
 
 Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](./create-first-function-cli-csharp.md?pivots=programming-language-python)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
 
@@ -280,7 +280,7 @@ func start
 
 Ha a `HttpExample` végpont megjelenik a kimenetben, keresse meg a következőt: `http://localhost:7071/api/HttpExample?name=Functions` . A böngészőnek egy "Hello" üzenetet kell megjelenítenie, amely visszaismétli a `Functions` `name` lekérdezési paraméternek megadott értéket.
 
-**Ctrl** - A gazdagép leállításához használja a CTRL **C** billentyűt.
+ - A gazdagép leállításához használja a CTRL **C** billentyűt.
 
 ## <a name="build-the-container-image-and-test-locally"></a>A tároló rendszerképének létrehozása és helyi tesztelése
 
@@ -330,7 +330,7 @@ Miután a rendszerkép egy helyi tárolóban fut, nyisson meg egy böngészőt `
 Ha a rendszerkép egy helyi tárolóban fut, keresse meg a (z `http://localhost:8080/api/HttpExample?name=Functions` ) parancsot, amely a korábban megjelenő "Hello" üzenetet jeleníti meg. Mivel a Maven archetípusa olyan HTTP által aktivált függvényt hoz létre, amely névtelen hitelesítést használ, továbbra is meghívhatja a függvényt annak ellenére, hogy a tárolóban fut. 
 ::: zone-end  
 
-Miután ellenőrizte a Function alkalmazást a tárolóban, állítsa le a Docker-t a **CTRL C billentyűkombinációval** + **C**.
+Miután ellenőrizte a Function alkalmazást a tárolóban, állítsa le a Docker-t a **CTRL C billentyűkombinációval** + .
 
 ## <a name="push-the-image-to-docker-hub"></a>A rendszerkép leküldése a Docker hub-ra
 
@@ -677,7 +677,7 @@ A folyamatos költségek elkerülése érdekében törölje az `AzureFunctionsCo
 az group delete --name AzureFunctionsContainer-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Figyelési függvények](functions-monitoring.md)
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)

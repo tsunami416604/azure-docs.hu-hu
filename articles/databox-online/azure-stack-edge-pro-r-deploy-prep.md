@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: dd0b6833c4c51c218497cea4fec04390200edff4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630768"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935356"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Oktatóanyag: Felkészülés a Azure Stack Edge Pro R üzembe helyezésére
 
-Ez az első oktatóanyag az üzembe helyezési oktatóanyagok sorozatában, amelyek a Azure Stack Edge Pro R teljes telepítéséhez szükségesek. Ez az oktatóanyag leírja, hogyan készítheti elő a Azure Portal egy Azure Stack Edge-erőforrás üzembe helyezéséhez. Az oktatóanyag egy 1 csomópontos Azure Stack Edge Pro R-eszközt használ egy szünetmentes áramforrással (UPS).
+Ez az oktatóanyag a telepítési oktatóanyagok sorozatának első része, amely a Azure Stack Edge Pro R teljes telepítéséhez szükséges. Ez az oktatóanyag leírja, hogyan készítheti elő a Azure Portal egy Azure Stack Edge-erőforrás üzembe helyezéséhez. Az oktatóanyag egy 1 csomópontos Azure Stack Edge Pro R-eszközt használ egy szünetmentes áramforrással (UPS).
 
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. A portál előkészítése kevesebb mint 10 percet vesz igénybe.
 
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Új erőforrás létrehozása
 > * Az aktiválási kulcs lekérése
 
-### <a name="get-started"></a>Első lépések
+### <a name="get-started"></a>Bevezetés
 
 Azure Stack Edge Pro R üzembe helyezéséhez tekintse meg az alábbi oktatóanyagokat az előírt sorozatban.
 
@@ -37,7 +37,7 @@ Azure Stack Edge Pro R üzembe helyezéséhez tekintse meg az alábbi oktatóany
 | --- | --- |
 | **Előkészítése** |Ezeket a lépéseket a közelgő üzembe helyezés előkészítésekor kell elvégezni. |
 | **[Üzembe helyezési konfigurációs ellenőrzőlista](#deployment-configuration-checklist)** |Ezzel az ellenőrzőlistával információkat gyűjthet és rögzíthet az üzembe helyezés előtt és közben. |
-| **[Központi telepítés előfeltételei](#prerequisites)** |Ezek alapján lehet ellenőrizni, hogy a környezet készen áll-e az üzembe helyezésre. |
+| **[Központi telepítés előfeltételei](#prerequisites)** |Ezek az előfeltételek ellenőrzik, hogy a környezet készen áll-e a telepítésre. |
 |  | |
 |**Üzembe helyezési oktatóanyagok** |Ezek az oktatóanyagok a Azure Stack Edge Pro R-eszköz éles környezetben történő üzembe helyezéséhez szükségesek. |
 |**[1. a Azure Portal előkészítése az eszközre](azure-stack-edge-pro-r-deploy-prep.md)** |Hozza létre és konfigurálja a Azure Stack Edge-erőforrást, mielőtt telepítené a Azure Stack Box Edge fizikai eszközét. |
@@ -47,7 +47,7 @@ Azure Stack Edge Pro R üzembe helyezéséhez tekintse meg az alábbi oktatóany
 |**[5. eszközbeállítások megadása](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |Rendeljen hozzá egy eszköznév és egy DNS-tartományt, konfigurálja a frissítési kiszolgálót és az eszköz idejét. |
 |**[6. biztonsági beállítások konfigurálása](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)** |Konfigurálja a tanúsítványokat, a VPN-t és a titkosítást az eszközhöz. Használja az eszköz által generált tanúsítványokat, vagy hozza létre saját tanúsítványait.   |
 |**[7. aktiválja az eszközt](azure-stack-edge-pro-r-deploy-activate.md)** |Az eszköz aktiválásához használja az aktiválási kulcsot a szolgáltatásból. Az eszköz készen áll az SMB-vagy NFS-megosztások beállítására, vagy a REST-en keresztüli kapcsolódásra. |
-|**[8. a számítás konfigurálása](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurálja a számítási szerepkört az eszközön. Ez egy Kubernetes-fürtöt is létrehoz. |
+|**[8. a számítás konfigurálása](azure-stack-edge-gpu-deploy-configure-compute.md)** |Konfigurálja a számítási szerepkört az eszközön. A rendszer létrehoz egy Kubernetes-fürtöt is. |
 
 Most megkezdheti az Azure Portal beállítását.
 
@@ -91,7 +91,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
 1. A Microsoft Azure hitelesítő adataival jelentkezzen be a Azure Portalba ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com) .
 
-2. A bal oldali panelen válassza az **+ erőforrás létrehozása** lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Válassza a **Létrehozás** lehetőséget. 
+2. A bal oldali panelen válassza az **+ erőforrás létrehozása** lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Kattintson a **Létrehozás** gombra. 
 
 3. Válassza ki az Azure Stack Edge Pro-eszközhöz használni kívánt előfizetést. Válassza ki azt az országot, ahová a fizikai eszközt el szeretné szállítani. Válassza az **eszközök megjelenítése** lehetőséget.
 
@@ -109,7 +109,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     
     |Beállítás  |Érték  |
     |---------|---------|
-    |Előfizetés    |Ezt a rendszer automatikusan kitölti a korábbi kiválasztás alapján. A számlázási fiókhoz társított előfizetés. |
+    |Előfizetés    |Az előfizetés automatikusan kitöltődik a korábbi kiválasztás alapján. A számlázási fiókhoz társított előfizetés. |
     |Erőforráscsoport  |Válasszon ki egy meglévő csoportot, vagy hozzon létre egy újat.<br>Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/management/overview.md) kapcsolatban.     |
 
 7. Adja meg vagy válassza ki a következő **példány részleteit**.
@@ -117,7 +117,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     |Beállítás  |Érték  |
     |---------|---------|
     |Név   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
-    |Régió     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
+    |Region     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
 
     ![4. erőforrás létrehozása](media/azure-stack-edge-pro-r-deploy-prep/create-resource-4.png)
 
@@ -140,7 +140,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
     Arról is értesítést kap, hogy az erőforrás létrehozásakor egy Managed Service Identity (MSI) engedélyezve van, amely lehetővé teszi a felhőalapú szolgáltatásokban történő hitelesítést. Ez az identitás mindaddig létezik, amíg az erőforrás létezik.
 
-11. Válassza a **Létrehozás** lehetőséget.
+11. Kattintson a **Létrehozás** gombra.
 
 Az erőforrás létrehozása néhány percet vesz igénybe. A rendszer létrehoz egy MSI-t is, amely lehetővé teszi, hogy az Azure Stack Edge-eszköz kommunikáljon az Azure-beli erőforrás-szolgáltatóval.
 
@@ -150,7 +150,7 @@ Az erőforrás sikeres létrehozása és üzembe helyezése után értesítést 
 
 A megrendelés elhelyezése után a Microsoft áttekinti a rendelést, és elküldi Önt (e-mailben) a szállítási adatokkal.
 
-<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
 
 Ha a rendelési folyamat során problémákba ütközik, tekintse meg a [rendelési problémák elhárítása](azure-stack-edge-troubleshoot-ordering.md)című témakört.
 
@@ -158,26 +158,23 @@ Ha a rendelési folyamat során problémákba ütközik, tekintse meg a [rendel�
 
 Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérnie az aktiválási kulcsot. Ezzel a kulccsal aktiválhatja és összekapcsolhatja Azure Stack Edge Pro-eszközét az erőforrással. Ezt a kulcsot lekérheti most, amíg az Azure Portalon van.
 
-1. Válassza ki a létrehozott erőforrást. Válassza az **Áttekintés** lehetőséget, majd válassza az **eszköz beállítása** lehetőséget.
+1. Válassza ki a létrehozott erőforrást, és válassza az **Áttekintés** lehetőséget.
 
-    ![Eszköz beállításának kiválasztása](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-2.png)
+2. A jobb oldali ablaktáblán adja meg a Azure Key Vault nevét, vagy fogadja el az alapértelmezett nevet. A kulcstároló neve 3 – 24 karakter hosszúságú lehet.
 
-2. Az **aktiválás** csempén adja meg a Azure Key Vault nevét, vagy fogadja el az alapértelmezett nevet. A kulcstároló neve 3 – 24 karakter hosszúságú lehet. 
+   Minden Azure Stack peremhálózati erőforráshoz létrejön egy kulcstartó, amely aktiválva van az eszközével. A Key Vault lehetővé teszi a titkos kulcsok tárolását és elérését, például a szolgáltatáshoz tartozó csatorna integritási kulcsát (a-t) a kulcstartóban tárolja.
 
-    Minden Azure Stack peremhálózati erőforráshoz létrejön egy kulcstartó, amely aktiválva van az eszközével. A Key Vault lehetővé teszi a titkos kulcsok tárolását és elérését, például a szolgáltatáshoz tartozó csatorna integritási kulcsát (a-t) a kulcstartóban tárolja. 
+   A kulcstároló nevének megadása után válassza az **aktiválási kulcs előállítása** lehetőséget az aktiválási kulcs létrehozásához.
 
-    A kulcstároló nevének megadása után válassza a **kulcs létrehozása** lehetőséget az aktiválási kulcs létrehozásához. 
+   ![Aktiválási kulcs lekérése](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![Aktiválási kulcs lekérése](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
-
-    Várjon néhány percet, amíg a Key Vault és az aktiválási kulcs létrejött. Kattintson a másolás ikonra a kulcs másolásához és a későbbi használatra mentéséhez.
-
+   Várjon néhány percet, amíg létrejön a Key Vault és az aktiválási kulcs. Kattintson a másolás ikonra a kulcs másolásához és a későbbi használatra mentéséhez.<!--Verify that the new screen has a copy icon.-->
 
 > [!IMPORTANT]
 > - Az aktiválási kulcs három nappal a létrehozása után lejár.
 > - Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a Azure Stack Edge-témaköröket, például a következőket:
 

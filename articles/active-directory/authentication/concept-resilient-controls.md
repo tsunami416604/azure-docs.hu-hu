@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861289"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937093"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory
 
@@ -38,8 +38,8 @@ Ez a dokumentum útmutatást nyújt azon stratégiákról, amelyeket a szervezet
 A dokumentumban négy fő elvihető fájl található:
 
 * A rendszergazdai zárolás elkerülése vészhelyzeti hozzáférési fiókok használatával.
-* MFA alkalmazása feltételes hozzáféréssel (CA) a felhasználónkénti MFA helyett.
-* A felhasználók zárolásának enyhítése több feltételes hozzáférési (CA) vezérlőelem használatával.
+* Az MFA-t felhasználónkénti MFA helyett feltételes hozzáféréssel implementálhatja.
+* A felhasználók zárolásának enyhítése több feltételes hozzáférés-vezérléssel.
 * A felhasználók zárolásának enyhítése több hitelesítési módszer vagy ezzel egyenértékű érték kiépítve minden felhasználó számára.
 
 ## <a name="before-a-disruption"></a>Megszakítás előtt
@@ -138,9 +138,9 @@ A készenléti szabályzatok elnevezési szabványa a következőképpen fog meg
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-A következő példa: **egy feltételes hitelesítésszolgáltatói szabályzat, amely a kritikus fontosságú együttműködési alkalmazásokhoz való hozzáférést állítja vissza**, egy tipikus vállalati készenléti állapot. Ebben a forgatókönyvben a szervezet általában MFA-t igényel az összes Exchange Online-és SharePoint Online-hozzáféréshez, és ebben az esetben a megszakadás az ügyfél MFA-szolgáltatója (akár az Azure AD MFA, a helyszíni MFA-szolgáltató, akár a harmadik féltől származó MFA) esetében is leáll. Ez a házirend csökkenti ezt a kimaradást azáltal, hogy a célzott felhasználók csak akkor férnek hozzá ezekhez az alkalmazásokhoz a megbízható Windows-eszközökről, ha a megbízható vállalati hálózatról érik el az alkalmazást. Emellett kizárja a vészhelyzeti fiókokat és az alapvető rendszergazdákat ezektől a korlátozásoktól. A megcélozott felhasználók ezután hozzáférhetnek az Exchange Online-hoz és a SharePoint Online-hoz, míg más felhasználók továbbra sem férhetnek hozzá az alkalmazásokhoz a leállás miatt. Ehhez a példához meg kell nevezni a hálózati hely **CorpNetwork** és egy biztonsági csoportot a **ContingencyAccess** , egy **CoreAdmins** nevű csoportot az alapvető rendszergazdákkal, valamint egy **EmergencyAccess** nevű csoportot a sürgősségi hozzáférési fiókokkal. A készenléti feltételnek négy házirendre van szüksége a kívánt hozzáférés biztosításához. 
+A következő példa: az **a-készenléti feltételes hozzáférési szabályzat a kritikus fontosságú együttműködési alkalmazásokhoz való hozzáférés visszaállítására** egy tipikus vállalati készenléti állapot. Ebben a forgatókönyvben a szervezet általában MFA-t igényel az összes Exchange Online-és SharePoint Online-hozzáféréshez, és ebben az esetben a megszakadás az ügyfél MFA-szolgáltatója (akár az Azure AD MFA, a helyszíni MFA-szolgáltató, akár a harmadik féltől származó MFA) esetében is leáll. Ez a házirend csökkenti ezt a kimaradást azáltal, hogy a célzott felhasználók csak akkor férnek hozzá ezekhez az alkalmazásokhoz a megbízható Windows-eszközökről, ha a megbízható vállalati hálózatról érik el az alkalmazást. Emellett kizárja a vészhelyzeti fiókokat és az alapvető rendszergazdákat ezektől a korlátozásoktól. A megcélozott felhasználók ezután hozzáférhetnek az Exchange Online-hoz és a SharePoint Online-hoz, míg más felhasználók továbbra sem férhetnek hozzá az alkalmazásokhoz a leállás miatt. Ehhez a példához meg kell nevezni a hálózati hely **CorpNetwork** és egy biztonsági csoportot a **ContingencyAccess** , egy **CoreAdmins** nevű csoportot az alapvető rendszergazdákkal, valamint egy **EmergencyAccess** nevű csoportot a sürgősségi hozzáférési fiókokkal. A készenléti feltételnek négy házirendre van szüksége a kívánt hozzáférés biztosításához. 
 
-**Példa A-készenléti HITELESÍTÉSSZOLGÁLTATÓI szabályzatokra a kritikus fontosságú együttműködési alkalmazások elérésének visszaállításához:**
+**Feltételes hozzáférési szabályzatok – példa a kritikus fontosságú együttműködési alkalmazások elérésének visszaállítására:**
 
 * 1. szabályzat: tartományhoz csatlakoztatott eszközök megkövetelése az Exchange-hez és a SharePointhoz
   * Name: EM001 – engedélyezés VÉSZHELYZETben: MFA-megszakítás [1/4] – Exchange SharePoint – hibrid Azure AD-csatlakozás szükséges
@@ -180,9 +180,9 @@ Aktiválási sorrend:
 5. 4. szabályzat engedélyezése: Ellenőrizze, hogy az összes felhasználó nem tud-e az Exchange Online-t a mobileszközök natív levelezési alkalmazásaiból beolvasni.
 6. Tiltsa le a SharePoint Online és az Exchange Online meglévő MFA-szabályzatát.
 
-Ebben a következő példában például a **B-készenléti hitelesítésszolgáltatói házirendek lehetővé teszik a Salesforce való mobil hozzáférést**, az üzleti alkalmazások hozzáférését visszaállítja a rendszer. Ebben az esetben az ügyfél általában ahhoz szükséges, hogy az értékesítési alkalmazottak hozzáférhessenek a mobileszközök Salesforce (az Azure AD-vel való egyszeri bejelentkezésre konfigurálva), és csak a megfelelő eszközökről legyenek engedélyezve. Ebben az esetben a megszakadási probléma az eszköz megfelelőségének kiértékelése, és a leállás olyan kényes időpontban történik, ahol az értékesítési csapatnak hozzá kell férnie a Salesforce a lezárt ajánlatokhoz. Ezek a készenléti szabályzatok kritikus fontosságú felhasználók számára biztosítanak hozzáférést a mobileszköz Salesforce, így továbbra is lezárhatók az ajánlatok, és nem zavarhatják a vállalatot. Ebben a példában a **SalesforceContingency** tartalmazza az összes olyan értékesítési alkalmazottat, akiknek meg kell őrizniük a hozzáférést, és a **SalesAdmins** a szükséges Salesforce-rendszergazdákat tartalmazza.
+Ebben a következő példában például a **B-készenléti feltételes hozzáférési szabályzatok lehetővé teszik a Salesforce való mobil hozzáférést**, az üzleti alkalmazások hozzáférését visszaállítja a rendszer. Ebben az esetben az ügyfél általában ahhoz szükséges, hogy az értékesítési alkalmazottak hozzáférhessenek a mobileszközök Salesforce (az Azure AD-vel való egyszeri bejelentkezésre konfigurálva), és csak a megfelelő eszközökről legyenek engedélyezve. Ebben az esetben a megszakadási probléma az eszköz megfelelőségének kiértékelése, és a leállás olyan kényes időpontban történik, ahol az értékesítési csapatnak hozzá kell férnie a Salesforce a lezárt ajánlatokhoz. Ezek a készenléti szabályzatok kritikus fontosságú felhasználók számára biztosítanak hozzáférést a mobileszköz Salesforce, így továbbra is lezárhatók az ajánlatok, és nem zavarhatják a vállalatot. Ebben a példában a **SalesforceContingency** tartalmazza az összes olyan értékesítési alkalmazottat, akiknek meg kell őrizniük a hozzáférést, és a **SalesAdmins** a szükséges Salesforce-rendszergazdákat tartalmazza.
 
-**B példa – készenléti HITELESÍTÉSSZOLGÁLTATÓI házirendek:**
+**B példa – készenléti feltételes hozzáférési szabályzatok:**
 
 * 1. szabályzat: a SalesContingency-csapatban nem szereplő mindenki letiltása
   * Név: EM001 – engedélyezés vészhelyzet esetén: eszköz megfelelőségének megszakadása [1/2] – Salesforce – az összes felhasználó tiltása, kivéve a SalesforceContingency
@@ -282,7 +282,7 @@ Ha a szervezet felhasználónkénti MFA örökölt házirendeket használ, akkor
 >[!NOTE]
  > Az Azure AD MFA [megbízható IP](./howto-mfa-mfasettings.md) -címeinek konfigurálása csak [prémium szintű Azure ad licenccel](./concept-mfa-licensing.md)lehetséges.
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Tudjon meg többet
 
 * [Az Azure AD-hitelesítés dokumentációja](./howto-mfaserver-iis.md)
 * [Vészhelyzeti hozzáférésű rendszergazdai fiókok kezelése az Azure AD-ben](../roles/security-emergency-access.md)

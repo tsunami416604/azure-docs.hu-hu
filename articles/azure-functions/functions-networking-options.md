@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020992"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936863"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -21,9 +21,9 @@ Az üzemeltetési modellek különböző szintű hálózati elkülönítéssel r
 A Function apps több módon is üzemeltethető:
 
 * Több-bérlős infrastruktúrán futó tervezési lehetőségek közül választhat, a virtuális hálózati kapcsolat és a méretezési lehetőségek különböző szintjeivel:
-    * A [fogyasztási terv](functions-scale.md#consumption-plan) dinamikusan méretezi a terhelést, és minimális hálózati elkülönítési lehetőségeket kínál.
-    * A [Prémium csomag](functions-scale.md#premium-plan) emellett dinamikusan méretezi a hálózatot, és átfogóbb hálózati elkülönítést biztosít.
-    * Az Azure [app Service-csomag](functions-scale.md#app-service-plan) rögzített skálán működik, és a prémium csomaghoz hasonló hálózati elkülönítést biztosít.
+    * A [fogyasztási terv](consumption-plan.md) dinamikusan méretezi a terhelést, és minimális hálózati elkülönítési lehetőségeket kínál.
+    * A [Prémium csomag](functions-premium-plan.md) emellett dinamikusan méretezi a hálózatot, és átfogóbb hálózati elkülönítést biztosít.
+    * Az Azure [app Service-csomag](dedicated-plan.md) rögzített skálán működik, és a prémium csomaghoz hasonló hálózati elkülönítést biztosít.
 * A függvényeket futtathatja egy [app Service Environmentban](../app-service/environment/intro.md). Ez a metódus üzembe helyezi a függvényt a virtuális hálózatban, és teljes hálózati vezérlést és elkülönítést biztosít.
 
 ## <a name="matrix-of-networking-features"></a>Hálózati szolgáltatások mátrixa
@@ -34,7 +34,7 @@ A Function apps több módon is üzemeltethető:
 
 A hozzáférési korlátozások használatával megadhatja az alkalmazáshoz engedélyezett vagy megtagadott IP-címek prioritással rendezett listáját. A lista tartalmazhat IPv4-és IPv6-címeket, illetve adott virtuális hálózati alhálózatokat a [szolgáltatási végpontok](#use-service-endpoints)használatával. Ha egy vagy több bejegyzés van, akkor a lista végén egy implicit "elutasítás all" érték szerepel. Az IP-korlátozások az összes funkció-üzemeltetési lehetőséggel működnek.
 
-A hozzáférési korlátozások a [prémium](functions-premium-plan.md), a [felhasználás](functions-scale.md#consumption-plan)és a [app Service](functions-scale.md#app-service-plan)esetében érhetők el.
+A hozzáférési korlátozások a [prémium](functions-premium-plan.md), a [felhasználás](consumption-plan.md)és a [app Service](dedicated-plan.md)esetében érhetők el.
 
 > [!NOTE]
 > A hálózati korlátozásokkal csak a virtuális hálózatról telepítheti a szolgáltatást, vagy ha az Ön által használt gép IP-címét a biztonságos címzettek listáján lévő Azure Portal eléréséhez helyezi el. Azonban továbbra is kezelheti a függvényt a portál használatával.
@@ -143,7 +143,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 A virtuális hálózati eseményindítók a functions futtatókörnyezet 2. x vagy újabb verziójában támogatottak. A következő nem HTTP típusú triggerek támogatottak:
 
-| Kiterjesztés | Minimális verzió |
+| Mellék | Minimális verzió |
 |-----------|---------| 
 |[Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 vagy újabb |
 |[Microsoft. Azure. webjobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 vagy újabb|

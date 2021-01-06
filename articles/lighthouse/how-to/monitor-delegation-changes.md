@@ -3,12 +3,12 @@ title: Delegálási változások figyelése a kezelési bérlőben
 description: Megtudhatja, hogyan figyelheti a delegálási tevékenységeket az ügyfelek bérlői számára a felügyeleti bérlőbe.
 ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 8d254c90881d23255dda5c38a868eb61e51b4f08
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: f65ffda642e67ec6e2c7694a823c2ba6845a7af4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356412"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936107"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Delegálási változások figyelése a kezelési bérlőben
 
@@ -46,7 +46,7 @@ Mivel ez egy széles körű hozzáférés, javasoljuk, hogy ezt a szerepkört eg
 
 - [Hozzon létre egy új egyszerű szolgáltatásnevet](../../active-directory/develop/howto-create-service-principal-portal.md) , amelyet csak ehhez a függvényhez kell használni, ahelyett, hogy ezt a szerepkört egy másik automatizáláshoz használt meglévő egyszerű szolgáltatáshoz rendeli.
 - Győződjön meg arról, hogy ez az egyszerű szolgáltatás nem rendelkezik hozzáféréssel a delegált ügyfelek erőforrásaihoz.
-- [Tanúsítvány használata](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) az Azure Key Vault biztonságos hitelesítéséhez és [tárolásához](../../key-vault/general/best-practices.md).
+- [Tanúsítvány használata](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) az Azure Key Vault biztonságos hitelesítéséhez és [tárolásához](../../key-vault/general/security-overview.md).
 - Korlátozza azokat a felhasználókat, akik hozzáféréssel rendelkeznek az egyszerű szolgáltatásnév nevében.
 
 > [!NOTE]
@@ -177,7 +177,7 @@ Azok a felhasználók, akik a felügyeleti olvasó Azure beépített szerepkör�
 
 Ekkor megjelenik a delegálási változások listája. Az **Oszlopok szerkesztése** lehetőség kiválasztásával megjelenítheti vagy elrejtheti az **állapotot**, az **események kategóriáját**, az **időt**, az **időbélyeget**, az **előfizetést**, az **esemény által kezdeményezett, az** **erőforráscsoport**, az **erőforrástípus** és az **erőforrás** értékét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan hozhatja be az ügyfeleket az [Azure lighthouseba](../concepts/azure-delegated-resource-management.md).
 - Ismerje meg a [Azure monitor](../../azure-monitor/index.yml) és az [Azure-tevékenység naplóját](../../azure-monitor/platform/platform-logs-overview.md).

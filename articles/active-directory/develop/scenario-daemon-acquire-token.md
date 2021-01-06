@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 9416005c708cafe5adbad2b09ce70c41fae66fd7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443313"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936022"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó Daemon-alkalmazás – jogkivonat beszerzése
 
@@ -57,7 +57,7 @@ Az ügyfél hitelesítő adataihoz használt hatókörnek mindig az erőforrás-
 
 > [!IMPORTANT]
 > Ha a MSAL hozzáférési jogkivonatot kér egy olyan erőforráshoz, amely 1,0 hozzáférési tokent fogad el, akkor az Azure AD a kért hatókörből elemezi a kívánt célközönséget, ha az utolsó perjel előtt mindent megtesz, és erőforrás-azonosítóként használja azt.
-> Tehát ha például Azure SQL Database ( **https: \/ /Database.Windows.net** ), az erőforrás egy olyan célközönséget vár, amely perjeltel végződik (Azure SQL Database esetén `https://database.windows.net/` ), akkor a hatókörét kell kérnie `https://database.windows.net//.default` . (Jegyezze fel a dupla perjelet.) Lásd még: MSAL.NET probléma [#747: az erőforrás URL-címének záró perjele ki van hagyva, ami SQL-hitelesítési hibát okozott](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Tehát ha például Azure SQL Database (**https: \/ /Database.Windows.net**), az erőforrás egy olyan célközönséget vár, amely perjeltel végződik (Azure SQL Database esetén `https://database.windows.net/` ), akkor a hatókörét kell kérnie `https://database.windows.net//.default` . (Jegyezze fel a dupla perjelet.) Lásd még: MSAL.NET probléma [#747: az erőforrás URL-címének záró perjele ki van hagyva, ami SQL-hitelesítési hibát okozott](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -91,6 +91,10 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
     // Mitigation: Change the scope to be as expected.
 }
 ```
+
+### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>A AcquireTokenForClient az alkalmazás-jogkivonat gyorsítótárát használja
+
+A MSAL.NET-ben `AcquireTokenForClient` az alkalmazás-jogkivonat gyorsítótárát használja. (Az összes többi AcquireToken *XX* -módszer a felhasználói jogkivonat gyorsítótárát használja.) `AcquireTokenSilent` A hívás előtt ne telefonáljon `AcquireTokenForClient` , mert `AcquireTokenSilent` a a *felhasználói* jogkivonat gyorsítótárát használja. `AcquireTokenForClient` ellenőrzi az *alkalmazás* -jogkivonat gyorsítótárát, és frissíti azt.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -200,10 +204,6 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 További információkért tekintse meg a protokoll dokumentációját: [Microsoft Identity platform és a OAuth 2,0 Client hitelesítő adatok folyamata](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="application-token-cache"></a>Alkalmazás-jogkivonat gyorsítótára
-
-A MSAL.NET-ben `AcquireTokenForClient` az alkalmazás-jogkivonat gyorsítótárát használja. (Az összes többi AcquireToken *XX* -módszer a felhasználói jogkivonat gyorsítótárát használja.) `AcquireTokenSilent` A hívás előtt ne telefonáljon `AcquireTokenForClient` , mert `AcquireTokenSilent` a a *felhasználói* jogkivonat gyorsítótárát használja. `AcquireTokenForClient` ellenőrzi az *alkalmazás* -jogkivonat gyorsítótárát, és frissíti azt.
-
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Használta az erőforrás/. alapértelmezett hatókört?
@@ -228,6 +228,12 @@ Content: {
   }
 }
 ```
+
+### <a name="are-you-calling-your-own-api"></a>Saját API-t hív meg?
+
+Ha saját webes API-t hív meg, és nem tudott alkalmazás-engedélyt adni az alkalmazás regisztrálásához a Daemon-alkalmazáshoz, a webes API-ban közzétett egy alkalmazás-szerepkört?
+
+Részletekért lásd: [alkalmazás engedélyeinek kimutatása (alkalmazás-szerepkörök)](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) , és különösen [annak biztosítása, hogy az Azure ad a webes API-hoz tartozó jogkivonatokat csak az ügyfelek számára engedélyezzék](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients).
 
 ## <a name="next-steps"></a>További lépések
 

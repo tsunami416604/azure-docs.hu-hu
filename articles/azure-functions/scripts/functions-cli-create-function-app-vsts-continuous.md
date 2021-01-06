@@ -4,16 +4,16 @@ description: Függvényalkalmazás létrehozása és függvénykód üzembe hely
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 25e0f43a851bbf7658847aa52cc9ee778941f718
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f89da9fc146d753442f2a8c8aa38861e66c9a3d9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565211"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934373"
 ---
 # <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>Azure-DevOps üzembe helyezett függvény létrehozása az Azure-ban
 
-Ez a témakör bemutatja, hogyan hozhat létre egy [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli Function alkalmazást a használati [terv](../functions-scale.md#consumption-plan)használatával a Azure functions használatával. A functions alkalmazás, amely a függvények tárolója, folyamatosan üzembe helyezhető egy Azure DevOps adattárból. 
+Ez a témakör bemutatja, hogyan hozhat létre egy [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli Function alkalmazást a használati [terv](../consumption-plan.md)használatával a Azure functions használatával. A functions alkalmazás, amely a függvények tárolója, folyamatosan üzembe helyezhető egy Azure DevOps adattárból. 
 
 A témakör teljesítéséhez a következőkre lesz szüksége:
 
@@ -42,10 +42,10 @@ A szkript a következő parancsokat használja egy erőforráscsoport, tárfiók
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehozza a tárfiókot, amely a függvényalkalmazáshoz szükséges. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../functions-scale.md#consumption-plan). |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../consumption-plan.md). |
 | [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Társít egy függvényalkalmazást egy Git- vagy Mercurial-adattárhoz. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

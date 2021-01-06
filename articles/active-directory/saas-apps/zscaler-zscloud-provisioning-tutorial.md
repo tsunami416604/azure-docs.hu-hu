@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4579fa3c6dd1e34072a31747fda5113a5ac1be2a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fa90cbf1e467416010ae0ba83e9344a84ce52e21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517429"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936498"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler-ZSCloud konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -45,7 +45,7 @@ A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a
 
 ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**elemet:
+Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** elemet:
 
 ![Vállalati alkalmazások](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Alkalmazás hozzáadásához válassza az ablak tetején található **új alkal
 
 ![Új alkalmazás kiválasztása](common/add-new-app.png)
 
-A keresőmezőbe írja be a **Zscaler ZSCloud**kifejezést. Válassza ki a **Zscaler ZSCloud** az eredmények között, majd válassza a **Hozzáadás**lehetőséget.
+A keresőmezőbe írja be a **Zscaler ZSCloud** kifejezést. Válassza ki a **Zscaler ZSCloud** az eredmények között, majd válassza a **Hozzáadás** lehetőséget.
 
 ![Találatok listája](common/search-new-app.png)
 
@@ -76,6 +76,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 > [!TIP]
 > Érdemes lehet az SAML-alapú egyszeri bejelentkezést is engedélyezni a Zscaler ZSCloud. Ha ezt teszi, kövesse az [Zscaler ZSCloud egyszeri bejelentkezési oktatóanyagának](zscaler-zsCloud-tutorial.md)utasításait. Az egyszeri bejelentkezés az automatikus felhasználó-kiépítés függetlenül is konfigurálható, de a két szolgáltatás kiegészíti egymást.
 
+> [!NOTE]
+> Ha a felhasználók és csoportok kiosztása vagy kiosztása megtörtént, javasoljuk, hogy rendszeres időközönként indítsa újra az üzembe helyezést, hogy a csoporttagság megfelelően frissüljenek. Az újraindítás után a szolgáltatás kikényszeríti a szolgáltatást az összes csoport újraértékelésére és a tagságok frissítésére. 
+
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler ZSCloud**:
 
     ![Vállalati alkalmazások](common/enterprise-applications.png)
@@ -94,7 +97,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Zscaler ZSCloud-fiókjának **bérlői URL-címét** és **titkos jogkivonatát** a következő lépésben leírtak szerint.
 
-6. A **bérlői URL-cím** és a **titkos jogkivonat**beszerzéséhez nyissa meg a **felügyeleti**  >  **hitelesítési beállításokat** a Zscaler ZSCloud-portálon, és válassza az **SAML** lehetőséget a **Hitelesítés típusa**területen:
+6. A **bérlői URL-cím** és a **titkos jogkivonat** beszerzéséhez nyissa meg a **felügyeleti**  >  **hitelesítési beállításokat** a Zscaler ZSCloud-portálon, és válassza az **SAML** lehetőséget a **Hitelesítés típusa** területen:
 
     ![Zscaler ZSCloud hitelesítési beállításai](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
@@ -108,7 +111,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![A kapcsolat tesztelése](./media/zscaler-zscloud-provisioning-tutorial/testconnection.png)
 
-8. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibajelentési értesítéseket. **Ha hiba történik, válassza az e-mail-értesítés küldése**lehetőséget:
+8. Az **értesítési e-mail** mezőbe írja be annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia a kiépítési hibajelentési értesítéseket. **Ha hiba történik, válassza az e-mail-értesítés küldése** lehetőséget:
 
     ![Értesítő e-mail beállítása](./media/zscaler-zscloud-provisioning-tutorial/Notification.png)
 
@@ -122,7 +125,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőfelvétel: az attribútum-hozzárendelések szakasz, amelyen hét leképezés látható.](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
-12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása ZscalerZSCloud**lehetőséget:
+12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása ZscalerZSCloud** lehetőséget:
 
     ![Azure AD-csoportok szinkronizálása](./media/zscaler-zscloud-provisioning-tutorial/groupmappings.png)
 
@@ -140,7 +143,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Hatókör értékei](./media/zscaler-zscloud-provisioning-tutorial/scoping.png)
 
-17. Ha készen áll a létesítésre, válassza a **Mentés**lehetőséget:
+17. Ha készen áll a létesítésre, válassza a **Mentés** lehetőséget:
 
     ![Mentés kiválasztása](./media/zscaler-zscloud-provisioning-tutorial/saveprovisioning.png)
 

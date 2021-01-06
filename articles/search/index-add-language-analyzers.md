@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656036"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934169"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
 
@@ -68,9 +68,9 @@ További információ az index tulajdonságairól: [index létrehozása &#40;Azu
 ## <a name="language-analyzer-list"></a>Nyelvi analizátorok listája 
  Alább látható a támogatott nyelvek listája, valamint a Lucene és a Microsoft Analyzer neve.  
 
-| Nyelv | Microsoft Analyzer neve | Lucene Analyzer neve |  |
-|--|--|--|--|
-| Arab | ar. Microsoft | ar. Lucene |  |
+| Nyelv | Microsoft Analyzer neve | Lucene Analyzer neve |
+|--|--|--|
+| Arab | ar. Microsoft | ar. Lucene |
 | örmény |  | Lucene |  |
 | Bangla | bn. Microsoft |  |  |
 | Baszk |  | EU. Lucene |  |

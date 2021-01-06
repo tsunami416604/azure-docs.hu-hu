@@ -1,20 +1,20 @@
 ---
 title: Gyermekek erőforrásai a sablonokban
-description: Ismerteti, hogyan lehet a Azure Resource Manager sablonban megadhatja a gyermek-erőforrások nevét és típusát.
+description: Leírja, hogyan kell beállítani a gyermek-erőforrások nevét és típusát egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: c594096fd95f663db2120b29c575b341924dcc36
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 408914fd309676da36904a364f905a8ee809d648
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97721943"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934305"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Adja meg a gyermek erőforrások nevét és típusát
 
 A gyermek erőforrások olyan erőforrások, amelyek csak egy másik erőforrás kontextusában vannak. A virtuálisgép- [bővítmények](/azure/templates/microsoft.compute/virtualmachines/extensions) például nem létezhetnek [virtuális gép](/azure/templates/microsoft.compute/virtualmachines)nélkül. A bővítmény erőforrás a virtuális gép gyermeke.
 
-Minden szülő erőforrás csak bizonyos típusú erőforrásokat fogad el alárendelt erőforrásként. A gyermek erőforrás típusa tartalmazza a szülő erőforrás típusát. Például a Microsoft. Web **/Sites/config** és a **Microsoft. Web/Sites/Extensions** a **Microsoft. Web/Sites** alárendelt erőforrásai. Az elfogadott erőforrástípusok a szülő erőforrás [sablon sémájában](https://github.com/Azure/azure-resource-manager-schemas) vannak megadva.
+Minden szülő erőforrás csak bizonyos típusú erőforrásokat fogad el alárendelt erőforrásként. A gyermek erőforrás típusa tartalmazza a szülő erőforrás típusát. Például `Microsoft.Web/sites/config` `Microsoft.Web/sites/extensions` a és a alárendelt erőforrásai `Microsoft.Web/sites` . Az elfogadott erőforrástípusok a szülő erőforrás [sablon sémájában](https://github.com/Azure/azure-resource-manager-schemas) vannak megadva.
 
 Egy Azure Resource Manager sablonban (ARM-sablon) a gyermek erőforrást a szülő erőforráson belül vagy a szülő erőforráson kívül is megadhatja. Az alábbi példa a szülő erőforrás erőforrások tulajdonságában található gyermek erőforrást mutatja be.
 
@@ -89,7 +89,7 @@ Az alábbi példa egy virtuális hálózatot és egy alhálózatot mutat be. Fig
 ]
 ```
 
-A teljes erőforrástípus továbbra is **Microsoft. Network/virtualNetworks/Subnets**. Nem biztosítja a **Microsoft. Network/virtualNetworks/** , mert a szülő erőforrástípus feltételezi.
+A teljes erőforrás-típus még mindig `Microsoft.Network/virtualNetworks/subnets` . Nem adja meg, `Microsoft.Network/virtualNetworks/` mert a szülő erőforrástípus feltételezi.
 
 A gyermek erőforrás neve **Subnet1** értékre van állítva, de a teljes név tartalmazza a szülő nevét. Nem biztosít **VNet1** , mert a szülő erőforrásból feltételezhető.
 
@@ -102,7 +102,7 @@ Ha a szülő erőforráson kívül van definiálva, a típust és a perjelet for
 "name": "{parent-resource-name}/{child-resource-name}",
 ```
 
-Az alábbi példa egy virtuális hálózatot és alhálózatot mutat be, amely a legfelső szinten van meghatározva. Figyelje meg, hogy az alhálózat nem része a virtuális hálózathoz tartozó erőforrások tömbnek. A név a **VNet1/Subnet1** értékre van beállítva, és a típus a **Microsoft. Network/virtualNetworks/Subnets** értékre van beállítva. A gyermek erőforrás a szülő erőforrástól függőként van megjelölve, mert a szülő erőforrásnak léteznie kell a gyermek erőforrás üzembe helyezése előtt.
+Az alábbi példa egy virtuális hálózatot és alhálózatot mutat be, amely a legfelső szinten van meghatározva. Figyelje meg, hogy az alhálózat nem része a virtuális hálózathoz tartozó erőforrások tömbnek. A név értéke **VNet1/Subnet1** , és a típus értéke: `Microsoft.Network/virtualNetworks/subnets` . A gyermek erőforrás a szülő erőforrástól függőként van megjelölve, mert a szülő erőforrásnak léteznie kell a gyermek erőforrás üzembe helyezése előtt.
 
 ```json
 "resources": [
@@ -136,6 +136,6 @@ Az alábbi példa egy virtuális hálózatot és alhálózatot mutat be, amely a
 
 ## <a name="next-steps"></a>További lépések
 
-* Az ARM-sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [sablonok készítése](template-syntax.md).
+* Az ARM-sablonok létrehozásával kapcsolatos további tudnivalókért lásd [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
 
 * Ha többet szeretne megtudni az erőforrás nevének formátumáról az erőforrásra való hivatkozáskor, tekintse meg a [Reference függvényt](template-functions-resource.md#reference).

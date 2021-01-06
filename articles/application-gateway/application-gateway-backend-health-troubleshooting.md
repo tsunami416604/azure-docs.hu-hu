@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397898"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934900"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>A Application Gateway háttérbeli állapotával kapcsolatos problémák elhárítása
 ==================================================
@@ -21,6 +21,9 @@ ms.locfileid: "93397898"
 --------
 
 Alapértelmezés szerint az Azure Application Gateway mintavételek háttér-kiszolgálókon ellenőrzi az állapotukat, és ellenőrzi, hogy készen állnak-e a kérelmek kiszolgálására. A felhasználók létrehozhatnak egyéni mintavételeket is, amelyek megemlítik az állomásnév nevét, a mintavételhez szükséges elérési utat, valamint az állapot kódokat, amelyeket Kifogástalanként kell elfogadni. Minden esetben, ha a háttérrendszer-kiszolgáló nem válaszol sikeresen, Application Gateway megjelöli a kiszolgálót nem megfelelő állapotba, és leállítja a kérelmek továbbítását a kiszolgálónak. A kiszolgáló sikeres megválaszolása után Application Gateway folytatja a kérések továbbítását.
+
+> [!NOTE]
+> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 ### <a name="how-to-check-backend-health"></a>A háttér állapotának ellenõrzése
 
@@ -157,7 +160,7 @@ Győződjön meg arról is, hogy a NSG/UDR/tűzfal blokkolja-e a háttér IP-cí
 
     a.  Nyisson meg egy parancssort (Win + R- \> cmd), írja be a parancsot `netstat` , majd válassza az ENTER billentyűt.
 
-    b.  Győződjön meg arról, hogy a kiszolgáló figyeli-e a konfigurált portot. Ilyenek többek között:
+    b.  Győződjön meg arról, hogy a kiszolgáló figyeli-e a konfigurált portot. Például:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -257,7 +260,7 @@ További információ a megbízható főtanúsítványok kibontásáról és fel
 > [!NOTE]
 > Ez a hiba akkor is megjelenhet, ha a háttér-kiszolgáló nem cseréli ki a tanúsítvány teljes láncát, beleértve a > köztes (ha alkalmazható), a TLS-kézfogás során > levélben szereplő gyökeret. Annak ellenőrzéséhez, hogy az OpenSSL-parancsokat bármely ügyfélről felhasználhatja, és a Application Gateway mintavétel konfigurált beállításaival csatlakozhat a háttér-kiszolgálóhoz.
 
-Ilyenek többek között:
+Például:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -292,7 +295,7 @@ Ha a HTTP-beállításokhoz egyéni mintavétel van társítva, a SNI az egyéni
 
 Ha a **kiválasztott állomásnév a háttérbeli címről** beállítás van megadva a http-beállításokban, a háttérbeli címkészlet érvényes teljes tartománynevet kell tartalmaznia.
 
-Ha ezt a hibaüzenetet kapja, a háttér-tanúsítvány CN-je nem egyezik meg az egyéni mintavételben vagy a HTTP-beállításokban konfigurált állomásnévvel (ha a kiválasztó **állomásnév a háttérbeli http-beállítások közül** ki van jelölve). Ha alapértelmezett mintavételt használ, az állomásnév **127.0.0.1** -ként lesz beállítva. Ha ez nem a kívánt érték, hozzon létre egy egyéni mintavételt, és társítsa a HTTP-beállításokhoz.
+Ha ezt a hibaüzenetet kapja, a háttér-tanúsítvány CN-je nem egyezik meg az egyéni mintavételben vagy a HTTP-beállításokban konfigurált állomásnévvel (ha a kiválasztó **állomásnév a háttérbeli http-beállítások közül** ki van jelölve). Ha alapértelmezett mintavételt használ, az állomásnév **127.0.0.1**-ként lesz beállítva. Ha ez nem a kívánt érték, hozzon létre egy egyéni mintavételt, és társítsa a HTTP-beállításokhoz.
 
 **Megoldás:**
 
@@ -373,15 +376,15 @@ Ez a viselkedés a következő okok közül egyet vagy többet okozhat:
 
     f.  Válassza a **Mentés** lehetőséget, és ellenőrizze, hogy a háttér állapota Kifogástalan-e. Azt is megteheti, hogy a [PowerShell vagy a parancssori](../virtual-network/manage-network-security-group.md)felület használatával végezhető el.
 
-1.  Győződjön meg arról, hogy a UDR rendelkezik-e alapértelmezett útvonallal (0.0.0.0/0), és a következő ugrás nincs beállítva **internetként** :
+1.  Győződjön meg arról, hogy a UDR rendelkezik-e alapértelmezett útvonallal (0.0.0.0/0), és a következő ugrás nincs beállítva **internetként**:
     
     a.  Az alhálózat meghatározásához kövesse az 1a és az 1b lépést.
 
     b.  Győződjön meg arról, hogy van-e konfigurált UDR. Ha van, keresse meg az erőforrást a keresősáv vagy az **összes erőforrás** területen.
 
-    c.  Győződjön meg arról, hogy vannak-e alapértelmezett útvonalak (0.0.0.0/0) a következő ugrással, amely nincs beállítva **internetként**. Ha a beállítás **virtuális készülék** vagy **Virtual Network átjáró** , meg kell győződnie arról, hogy a virtuális berendezés vagy a helyszíni eszköz a csomag módosítása nélkül képes az internetre irányítani a csomagot.
+    c.  Győződjön meg arról, hogy vannak-e alapértelmezett útvonalak (0.0.0.0/0) a következő ugrással, amely nincs beállítva **internetként**. Ha a beállítás **virtuális készülék** vagy **Virtual Network átjáró**, meg kell győződnie arról, hogy a virtuális berendezés vagy a helyszíni eszköz a csomag módosítása nélkül képes az internetre irányítani a csomagot.
 
-    d.  Ellenkező esetben módosítsa a következő ugrást az **internetre** , válassza a **Mentés** lehetőséget, és ellenőrizze a háttér állapotát.
+    d.  Ellenkező esetben módosítsa a következő ugrást az **internetre**, válassza a **Mentés** lehetőséget, és ellenőrizze a háttér állapotát.
 
 1.  A virtuális hálózat ExpressRoute/VPN-kapcsolata által meghirdetett alapértelmezett útvonal BGP-en keresztül:
 
@@ -393,7 +396,7 @@ Ez a viselkedés a következő okok közül egyet vagy többet okozhat:
 
 1.  Ha a virtuális hálózaton konfigurálva van egy egyéni DNS-kiszolgáló, ellenőrizze, hogy a kiszolgáló (vagy kiszolgálók) képes-e a nyilvános tartományok feloldására. Előfordulhat, hogy a nyilvános tartománynevek feloldásához olyan helyzetekben van szükség, amikor a Application Gatewaynak olyan külső tartományokhoz kell csatlakozniuk, mint például az OCSP-kiszolgálók, vagy ellenőriznie kell a tanúsítvány visszavonási állapotát.
 
-1.  Annak ellenőrzéséhez, hogy a Application Gateway állapota Kifogástalan-e, nyissa meg a portál **Resource Health** lehetőségét, és ellenőrizze, hogy az állapot **kifogástalan** -e. Ha **sérült** vagy **csökkentett teljesítményű** állapotot lát, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/).
+1.  Annak ellenőrzéséhez, hogy a Application Gateway állapota Kifogástalan-e, nyissa meg a portál **Resource Health** lehetőségét, és ellenőrizze, hogy az állapot **kifogástalan**-e. Ha **sérült** vagy **csökkentett teljesítményű** állapotot lát, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/options/).
 
 <a name="next-steps"></a>További lépések
 ----------

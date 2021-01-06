@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e011417b936ed83b4658e6dad25bf8e8ee88aed
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96318031"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935240"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP Access Policy Manager és Azure Active Directory integráció a biztonságos hibrid hozzáféréshez
 
@@ -37,7 +37,7 @@ A BIG-IP közzétett szolgáltatásokhoz való hozzáférés előzetes hitelesí
 
 - [Kiszivárgott hitelesítő adatok észlelése](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)
 
-- [Új jelszó önkiszolgáló kérése (self-service password reset, SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
+- [Önkiszolgáló jelszó-visszaállítás (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
 
 - [Partneri együttműködés](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users) – jogosultságok kezelése szabályozott vendég hozzáféréshez
 
@@ -71,7 +71,7 @@ Az ábrán az 1-4-es lépések bemutatják a felhasználó, a BIG IP és az Azur
 |:------|:-----------|
 | 1. | A felhasználó kiválasztja az alkalmazás ikonját a portálon, feloldja az SAML SP URL-címét (BIG-IP) |
 | 2. | A BIG-IP átirányítja a felhasználót az SAML-IDENTITÁSSZOLGÁLTATÓ (Azure AD) az előzetes hitelesítéshez|
-| 3. | Az Azure AD feldolgozza a HITELESÍTÉSSZOLGÁLTATÓI házirendeket és a [munkamenet-vezérlést](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)|
+| 3. | Az Azure AD a feltételes hozzáférési házirendeket és a [munkamenet-vezérlőket](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) dolgozza fel az engedélyezéshez|
 | 4. | A felhasználó visszairányítja az Azure AD által kiadott SAML-jogcímeket bemutató BIG-IP-re |
 | 5. | A BIG-IP minden további munkamenet-információt kér, amely tartalmazza az [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) -t és a [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) a közzétett szolgáltatáshoz |
 | 6. | A BIG-IP továbbítja az ügyfél kérését a háttér-szolgáltatásnak

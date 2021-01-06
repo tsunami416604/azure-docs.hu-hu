@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107430"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935087"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések Azure Active Directory jelentésekről
 
@@ -143,8 +143,8 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 **A:** A feltételes hozzáférés állapota a következő értékekkel rendelkezhet:
 
-* **Nincs alkalmazva**: Ez azt jelenti, hogy a hatókörben nem található a felhasználóval és az alkalmazással kapcsolatos hitelesítésszolgáltatói házirend. 
-* **Sikeres**: Ez azt jelenti, hogy a hatókörben és a CA-szabályzatokban a felhasználóval és az alkalmazással kapcsolatos hitelesítésszolgáltatói házirend sikeresen teljesült. 
+* **Nincs alkalmazva**: Ez azt jelenti, hogy a hatókörben nem volt feltételes hozzáférési szabályzat a felhasználóval és az alkalmazással. 
+* **Sikeres**: Ez azt jelenti, hogy egy feltételes hozzáférési szabályzattal rendelkezik a hatókörben lévő felhasználóval és alkalmazással, és a feltételes hozzáférési házirendek sikeresen teljesültek. 
 * **Hiba**: a bejelentkezés megfelelt legalább egy feltételes hozzáférési házirend felhasználói és alkalmazási feltételének, és a vezérlők nem teljesülnek, vagy a hozzáférés letiltására van beállítva.
     
 **K: mi a feltételes hozzáférési szabályzat eredményének lehetséges értékei?**
@@ -158,7 +158,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
     
 **K: a minden bejelentkezési jelentésben szereplő szabályzat neve nem egyezik meg a CA-beli szabályzat nevével. Miért?**
 
-**A:** A házirend neve az összes bejelentkezési jelentésben a bejelentkezés időpontjában a HITELESÍTÉSSZOLGÁLTATÓ házirend neve alapján történik. Ez inkonzisztens lehet a HITELESÍTÉSSZOLGÁLTATÓ házirendjének nevével, ha később frissítette a szabályzat nevét, azaz a bejelentkezést követően.
+**A:** A házirend neve az összes bejelentkezési jelentésben a bejelentkezéskor a feltételes hozzáférési szabályzat nevén alapul. Ez inkonzisztens lehet a HITELESÍTÉSSZOLGÁLTATÓ házirendjének nevével, ha később frissítette a szabályzat nevét, azaz a bejelentkezést követően.
 
 **K: a bejelentkezés egy feltételes hozzáférési szabályzat miatt blokkolva lett, de a bejelentkezési tevékenység jelentés azt mutatja, hogy a bejelentkezés sikeres volt. miért?**
 

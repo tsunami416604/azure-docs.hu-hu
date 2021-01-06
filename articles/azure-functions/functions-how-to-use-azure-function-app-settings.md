@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 746a97ecd9b0bdd676e70cca38edc75905e3e4bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019505"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936940"
 ---
 # <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
 
@@ -35,7 +35,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja és kezelheti a függvények alkalm
 
 A függvény alkalmazásának áttekintés oldaláról, különösen az **[Alkalmazásbeállítások](#settings)** és a **[platform funkcióinak](#platform-features)** kezeléséhez minden szükséges információt megtalálhat.
 
-## <a name="application-settings"></a><a name="settings"></a>Alkalmazásbeállítások
+## <a name="work-with-application-settings"></a><a name="settings"></a>Alkalmazás-beállítások használata
 
 Az **Alkalmazásbeállítások** lapon megtarthatja a Function alkalmazás által használt beállításokat. Ezeket a beállításokat a rendszer titkosított formában tárolja, és a portál értékeinek megjelenítéséhez ki kell választania az **értékek megjelenítése** elemet. Az Alkalmazásbeállítások az Azure CLI használatával is elérhetők.
 
@@ -68,6 +68,56 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 Amikor helyileg fejleszt egy Function-alkalmazást, a Project fájl local.settings.jsjában meg kell őriznie ezeknek az értékeknek a helyi másolatát. További információ: [helyi beállítások fájl](functions-run-local.md#local-settings-file).
+
+## <a name="hosting-plan-type"></a>Üzemeltetési csomag típusa
+
+Egy Function-alkalmazás létrehozásakor létre kell hoznia egy App Service üzemeltetési csomagot is, amelyben az alkalmazás fut. Egy csomaghoz egy vagy több Function-alkalmazás is tartozhat. A függvények funkcionalitása, skálázása és díjszabása a csomag típusától függ. További információkért tekintse meg a [Azure functions díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/functions/).
+
+Meghatározhatja, hogy milyen típusú tervet használ a Function alkalmazás a Azure Portal vagy az Azure CLI vagy a Azure PowerShell API-k használatával. 
+
+A következő értékek a csomag típusát jelzik:
+
+| Csomag típusa | Portál | Azure CLI/PowerShell |
+| --- | --- | --- |
+| [Felhasználás](consumption-plan.md) | **Felhasználás** | `Dynamic` |
+| [Prémium](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
+| [Dedikált (App Service)](dedicated-plan.md) | Különböző | Különböző |
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+A Function app által használt csomag típusának meghatározásához tekintse meg a [Azure Portalban](https://portal.azure.com)található Function alkalmazás **Áttekintés** lapján **app Service terv** című részt. Az árképzési csomag megjelenítéséhez válassza ki a **app Service terv** nevét, majd a bal oldali ablaktáblán válassza a **Tulajdonságok** lehetőséget.
+
+![Méretezési terv megtekintése a portálon](./media/functions-scale/function-app-overview-portal.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+Futtassa az alábbi Azure CLI-parancsot a üzemeltetési csomag típusának lekéréséhez:
+
+```azurecli-interactive
+functionApp=<FUNCTION_APP_NAME>
+resourceGroup=FunctionMonitoringExamples
+appServicePlanId=$(az functionapp show --name $functionApp --resource-group $resourceGroup --query appServicePlanId --output tsv)
+az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
+
+```  
+
+Az előző példában cserélje le `<RESOURCE_GROUP>` a és az `<FUNCTION_APP_NAME>` erőforráscsoportot az erőforráscsoport és a Function app Names (megfelelő) elemre. 
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Futtassa a következő Azure PowerShell parancsot a üzemeltetési csomag típusának beszerzéséhez:
+
+```azurepowershell-interactive
+$FunctionApp = '<FUNCTION_APP_NAME>'
+$ResourceGroup = '<RESOURCE_GROUP>'
+
+$PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionApp).AppServicePlan
+(Get-AzFunctionAppPlan -Name $PlanID -ResourceGroupName $ResourceGroup).SkuTier
+```
+Az előző példában cserélje le `<RESOURCE_GROUP>` a és az `<FUNCTION_APP_NAME>` erőforráscsoportot az erőforráscsoport és a Function app Names (megfelelő) elemre. 
+
+---
+
 
 ## <a name="platform-features"></a>Platform-funkciók
 

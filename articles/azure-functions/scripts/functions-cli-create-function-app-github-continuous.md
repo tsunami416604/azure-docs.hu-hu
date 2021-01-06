@@ -4,16 +4,16 @@ description: Egy függvényalkalmazás létrehozása és függvénykód üzembe 
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 752d8a729c56fc2e0e110fcedc263eab4ba7a96b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 219e993ad7132c90de6db680facc9b8f815947cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565313"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934389"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHubról üzembe helyezett függvényalkalmazás létrehozása az Azure-ban
 
-Ez a Azure Functions minta szkript létrehoz egy Function alkalmazást a használati [terv](../functions-scale.md#consumption-plan)használatával, valamint a kapcsolódó erőforrásait. Ezután egy GitHub-adattárból konfigurálja a függvénykódot folyamatos üzembe helyezéshez. 
+Ez a Azure Functions minta szkript létrehoz egy Function alkalmazást a használati [terv](../consumption-plan.md)használatával, valamint a kapcsolódó erőforrásait. Ezután egy GitHub-adattárból konfigurálja a függvénykódot folyamatos üzembe helyezéshez. 
 
 A példához a következők szükségesek:
 
@@ -42,9 +42,9 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehozza a tárfiókot, amely a függvényalkalmazáshoz szükséges. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../functions-scale.md#consumption-plan) , és társítja azt egy git vagy Mercurial adattárral. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../consumption-plan.md) , és társítja azt egy git vagy Mercurial adattárral. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

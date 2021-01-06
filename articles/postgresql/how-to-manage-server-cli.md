@@ -3,15 +3,15 @@ title: Kiszolgáló kezelése – Azure CLI – Azure Database for PostgreSQL
 description: Megtudhatja, hogyan kezelheti Azure Database for PostgreSQL-kiszolgálókat az Azure CLI-vel.
 author: ajlam
 ms.author: andrela
-ms.service: mysql
+ms.service: postgresql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: d99634388b9c4db99c996cfccb9bb5f12682f217
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2ea07e2bc12e6fc0d62abd462b8537c6a93689f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490118"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935801"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>Azure Database for PostgreSQL egyetlen kiszolgáló kezelése az Azure CLI használatával
 
@@ -33,13 +33,13 @@ Válassza ki az adott előfizetést a fiókja alatt az [az Account set](/cli/azu
 az account set --subscription <subscription id>
 ```
 
-Ha még nem hozott létre egy kiszolgálót [, a rövid](quickstart-create-server-database-azure-cli.md) útmutatóban hozhat létre egyet.
+Ha még nem hozott létre kiszolgálót, tekintse [meg ezt a](quickstart-create-server-database-azure-cli.md) rövid útmutatót, és hozzon létre egyet.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="scale-compute-and-storage"></a>Számítási és tárolási méretezés
 
-Az árképzési szintet, a számítási és a tárolási kapacitást egyszerűen méretezheti a következő parancs használatával. Megtekintheti az összes olyan kiszolgálói műveletet, amelyet végrehajthat az [postgres Server áttekintése](/cli/azure/mysql/server) lehetőséggel
+A következő parancs használatával egyszerűen méretezheti a díjszabási szintet, a számítási és a tárolási kapacitást. Megtekintheti az összes olyan kiszolgálói műveletet, amelyet végrehajthat az [postgres Server áttekintése](/cli/azure/mysql/server) lehetőséggel
 
 ```azurecli-interactive
 az postgres server update --resource-group myresourcegroup --name mydemoserver --sku-name GP_Gen5_4 --storage-size 6144
@@ -86,7 +86,7 @@ Ha csak a PostgreSQL-kiszolgálót szeretné törölni, futtathatja az [az postg
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Kiszolgáló újraindítása](howto-restart-server-cli.md)
 - [A kiszolgáló visszaállítása rossz állapotban](howto-restore-server-cli.md)
 - [A kiszolgáló monitorozása és hangolása](concepts-monitoring.md)

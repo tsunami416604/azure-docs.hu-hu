@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033034"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936838"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -113,7 +113,7 @@ Mivel a függvények a Azure Monitor is integrálva vannak, a diagnosztikai beá
 
 _Ez a funkció előzetes verzióban érhető el._ 
 
-A [Azure functions skálázási vezérlő](./functions-scale.md#runtime-scaling) figyeli a Azure functions gazdagép azon példányait, amelyeken az alkalmazás fut. Ez a vezérlő döntéseket hoz a példányok hozzáadásához vagy eltávolításához az aktuális teljesítmény alapján. A méretezési vezérlő kibocsátja a naplókat a Application Insightsba, hogy jobban megértse a méretezési vezérlő által a Function alkalmazásra vonatkozó döntéseket. A blob Storage-ban létrehozott naplókat egy másik szolgáltatás általi elemzés céljából is tárolhatja. 
+A [Azure functions skálázási vezérlő](./event-driven-scaling.md#runtime-scaling) figyeli a Azure functions gazdagép azon példányait, amelyeken az alkalmazás fut. Ez a vezérlő döntéseket hoz a példányok hozzáadásához vagy eltávolításához az aktuális teljesítmény alapján. A méretezési vezérlő kibocsátja a naplókat a Application Insightsba, hogy jobban megértse a méretezési vezérlő által a Function alkalmazásra vonatkozó döntéseket. A blob Storage-ban létrehozott naplókat egy másik szolgáltatás általi elemzés céljából is tárolhatja. 
 
 A szolgáltatás engedélyezéséhez vegyen fel egy nevű Alkalmazásbeállítás `SCALE_CONTROLLER_LOGGING_ENABLED` -beállítást a Function app-beállításokhoz. További információ: a [méretezési vezérlő naplófájljainak konfigurálása](configure-monitoring.md#configure-scale-controller-logs).
 
@@ -121,7 +121,7 @@ A szolgáltatás engedélyezéséhez vegyen fel egy nevű Alkalmazásbeállítá
 
 Ha Application Insights-integrációval kapcsolatos problémát szeretne jelenteni a functions szolgáltatásban, vagy javaslatot vagy kérést szeretne készíteni, [hozzon létre egy problémát a githubban](https://github.com/Azure/Azure-Functions/issues/new).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

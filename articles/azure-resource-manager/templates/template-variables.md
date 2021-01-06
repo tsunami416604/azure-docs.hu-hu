@@ -3,12 +3,12 @@ title: Változók a sablonokban
 description: Leírja, hogyan lehet változókat definiálni egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353459"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934662"
 ---
 # <a name="variables-in-arm-template"></a>Az ARM-sablonban szereplő változók
 
@@ -28,7 +28,7 @@ Az alábbi példa egy változó definícióját mutatja be. Létrehoz egy karakt
 },
 ```
 
-A változók szakaszban nem használható a [Reference](template-functions-resource.md#reference) függvény vagy a [List](template-functions-resource.md#list) függvények egyike sem. Ezek a függvények egy erőforrás futásidejű állapotát kapják meg, és a változók feloldása előtt nem hajthatók végre.
+A () szakaszban nem használható a [hivatkozási](template-functions-resource.md#reference) függvény vagy a [List](template-functions-resource.md#list) függvények egyike sem `variables` . Ezek a függvények egy erőforrás futásidejű állapotát kapják meg, és a változók feloldása előtt nem hajthatók végre.
 
 ## <a name="use-variable"></a>Változó használata
 
@@ -63,7 +63,7 @@ Meghatározhatja a környezet konfigurálásához kapcsolódó értékeket táro
 },
 ```
 
-A paraméterek területen létrehoz egy értéket, amely jelzi, hogy mely konfigurációs értékeket kell használni.
+A-ben `parameters` létrehoz egy értéket, amely jelzi, hogy mely konfigurációs értékeket kívánja használni.
 
 ```json
 "parameters": {

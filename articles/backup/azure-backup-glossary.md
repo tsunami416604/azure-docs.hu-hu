@@ -3,12 +3,12 @@ title: Szószedet Azure Backup
 description: Ez a cikk a Azure Backup használatának hasznos feltételeit határozza meg.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 8baa47667e86b99ebbbf273610809814e768c077
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733383"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935070"
 ---
 # <a name="azure-backup-glossary"></a>Szószedet Azure Backup
 
@@ -172,7 +172,7 @@ A növekményes biztonsági mentések csak azokat a blokkokat tárolják, amelye
 
 ## <a name="instant-restore"></a>Azonnali visszaállítás
 
-Az azonnali visszaállítás magában foglalja a gépek közvetlenül a biztonsági mentési pillanatképből való visszaállítását a tár pillanatképének másolata helyett. Az azonnali visszaállítások gyorsabbak, mint a tárolók visszaállítása. Az elérhető azonnali visszaállítási pontok száma a pillanatképekhez konfigurált megőrzési időtartamtól függ.
+(Munkaterhelés-specifikus kifejezés) Az azonnali visszaállítás magában foglalja a gépek közvetlenül a biztonsági mentési pillanatképből való visszaállítását a tár pillanatképének másolata helyett. Az azonnali visszaállítások gyorsabbak, mint a tárolók visszaállítása. Az elérhető azonnali visszaállítási pontok száma a pillanatképekhez konfigurált megőrzési időtartamtól függ. Jelenleg csak az Azure virtuális gépek biztonsági mentéséhez használható.
 
 ## <a name="iops"></a>IOPS
 
@@ -226,23 +226,19 @@ A visszaállítási pontról a biztonsági mentések helyétől a forrás helyé
 
 A hitelesítő adatok titkosítására és visszafejtésére szolgálnak a helyszíni vagy helyi gép a MARS-ügynökkel vagy az Azure-ból történő biztonsági mentése vagy visszaállítása során.
 
-## <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
-
-Egy elem visszaállítása az állapotba egy adott időpontban (PIT).
-
 ## <a name="private-endpoint"></a>Privát végpont
 
 Tekintse meg a [Private Endpoint dokumentációját](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
 
 ## <a name="protected-instance"></a>Védett példány
 
-A védett példány arra a számítógépre, fizikai vagy virtuális kiszolgálóra vonatkozik, amelyet az Azure-ba történő biztonsági mentés konfigurálására használ.  **Számlázási szempontból** a gép védett példányainak száma a frontend méretének függvénye. [További információ](https://azure.microsoft.com/pricing/details/backup/).
+A védett példány arra a számítógépre, fizikai vagy virtuális kiszolgálóra vonatkozik, amelyet az Azure-ba történő biztonsági mentés konfigurálására használ.  **Számlázási szempontból** a gép védett példányainak száma a frontend méretének függvénye. Így az egyetlen biztonsági mentési példány (például egy, az Azure-ba mentett virtuális gép) több védett példánynak is megadható, a felület méretétől függően. [További információ](https://azure.microsoft.com/pricing/details/backup/).
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (szerepköralapú hozzáférés-vezérlés)
 
 Tekintse meg a [RBAC dokumentációját](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
-## <a name="recovery-point-restore-point-retention-point"></a>Helyreállítási pont/visszaállítási pont/megőrzési pont
+## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>Helyreállítási pont/visszaállítási pont/adatmegőrzési pont/pont-idő (PIT)
 
 Az eredeti, biztonsági mentés alatt álló adatmennyiség másolata. Egy adatmegőrzési pont egy időbélyeghez van társítva, így egy adott időpontra állíthatja vissza az elemeket.
 
@@ -264,11 +260,11 @@ Egy felhasználó által definiált szabály, amely meghatározza, hogy a bizton
 
 ## <a name="rpo-recovery-point-objective"></a>RPO (helyreállítási pont célkitűzése)
 
-A RPO az adatvesztési helyzetekben elfogadható maximális adatvesztést jelzi. Ezt a biztonsági mentés gyakorisága határozza meg.
+A RPO az adatvesztési helyzetekben lehetséges maximális adatvesztést jelzi. Ezt a biztonsági mentés gyakorisága határozza meg.
 
 ## <a name="rto-recovery-time-objective"></a>RTO (helyreállítási idő célkitűzése)
 
-A RTO azt az időtartamot jelzi, ameddig a rendszer az adatvesztési forgatókönyv után az utolsó rendelkezésre álló időpontban visszaállíthatja az értékeket.
+A RTO azt a maximális időtartamot jelzi, ameddig az adatvesztési forgatókönyv után az utolsó rendelkezésre álló időpontra vissza lehet állítani az adatgyűjtési időt.
 
 ## <a name="scheduled-backup"></a>Ütemezett biztonsági mentés
 
@@ -284,7 +280,7 @@ A Soft delete egy olyan szolgáltatás, amely segít megvédeni a biztonsági me
 
 ## <a name="snapshot"></a>Pillanatkép
 
-A pillanatkép egy virtuális merevlemez (VHD) teljes, csak olvasható másolata. [További információ](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+A pillanatkép egy virtuális merevlemez (VHD) vagy egy Azure-fájlmegosztás teljes, írásvédett másolata. További információ a [lemezes pillanatképekről](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) és a [fájl-pillanatképekről](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
 
 ## <a name="storage-account"></a>Tárfiók
 
@@ -314,7 +310,7 @@ Egy Azure-beli tárolási entitás, amely a biztonsági mentési adatgyűjtést.
 
 ## <a name="vault-credentials"></a>Tároló hitelesítő adatai
 
-A tároló hitelesítőadat-fájlja a portál által az egyes tárakhoz létrehozott tanúsítvány. Ez a kiszolgáló a tárolóhoz való regisztrálásakor használatos. [További információ](backup-azure-dpm-introduction.md).
+A tároló hitelesítőadat-fájlja a portál által az egyes tárakhoz létrehozott tanúsítvány. Ezt használja a rendszer, amikor a helyszíni kiszolgálót regisztrálja a tárolóban. [További információ](backup-azure-dpm-introduction.md).
 
 ## <a name="vnet-virtual-network"></a>VNET (Virtual Network)
 

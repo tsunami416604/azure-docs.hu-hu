@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3d7e6357fd8f1091509cbf27875c028d3af310cb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 904c00c26171854a32234d7b6ba5cac81ac43e5c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445918"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936668"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure Portal használatával
 
@@ -86,4 +86,4 @@ Ebben a rövid útmutatóban létrehozott egy Key Vault, és egy titkos kulcsot 
 - Lásd: [Key Vault használata app Service Web App használatával](../general/tutorial-net-create-vault-azure-web-app.md)
 - Lásd: [Key Vault használata a virtuális géphez üzembe helyezett alkalmazással](../general/tutorial-net-virtual-machine.md)
 - Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](../general/developers-guide.md)
-- [Azure Key Vault ajánlott eljárások](../general/best-practices.md) áttekintése
+- Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)

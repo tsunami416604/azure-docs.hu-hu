@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319017"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937382"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai
 
@@ -53,7 +53,7 @@ A Microsoft és a Akamai EAA együttműködése lehetővé teszi az üzleti igé
 
 #### <a name="integration-scenario-1"></a>1. integrációs forgatókönyv
 
-Az Akamai EAA egyetlen alkalmazásként van konfigurálva az Azure AD-ben. A rendszergazda konfigurálhatja a HITELESÍTÉSSZOLGÁLTATÓI házirendet az alkalmazáson, és ha a feltételek teljesülnek, a felhasználók hozzáférhetnek a Akamai EAA-portálhoz.
+Az Akamai EAA egyetlen alkalmazásként van konfigurálva az Azure AD-ben. A rendszergazda beállíthatja az alkalmazásra vonatkozó feltételes hozzáférési szabályzatot, és ha a feltételek teljesülnek, a felhasználók hozzáférhetnek a Akamai EAA-portálhoz.
 
 **Profik**:
 
@@ -63,13 +63,13 @@ Az Akamai EAA egyetlen alkalmazásként van konfigurálva az Azure AD-ben. A ren
 
 * A felhasználók két alkalmazás-portálon jelennek meg
 
-* Egyetlen közös HITELESÍTÉSSZOLGÁLTATÓI házirend-lefedettség minden alkalmazáshoz.
+* Egyetlen gyakori feltételes hozzáférési szabályzat az összes alkalmazásra vonatkozóan.
 
 ![1. integrációs forgatókönyv](./media/header-akamai-tutorial/scenario1.png)
 
 #### <a name="integration-scenario-2"></a>2. integrációs forgatókönyv
 
-A Akamai EAA-alkalmazás beállítása külön történik az Azure AD-portálon. A rendszergazda beállíthatja, hogy az egyes HITELESÍTÉSSZOLGÁLTATÓI házirendeket az alkalmazás (ok) ra konfigurálja, és ha a feltételek teljesülnek, akkor a felhasználók közvetlenül átirányíthatók az adott alkalmazásba.
+A Akamai EAA-alkalmazás beállítása külön történik az Azure AD-portálon. A rendszergazda konfigurálhatja az egyes feltételes hozzáférési szabályzatokat az alkalmazás (ok) ra, és ha a feltételek teljesülnek, a felhasználók közvetlenül átirányíthatók az adott alkalmazásba.
 
 **Profik**:
 
@@ -109,14 +109,14 @@ A Akamai Azure AD-be való integrálásának konfigurálásához hozzá kell adn
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Akamai** kifejezést a keresőmezőbe.
 1. Válassza ki a **Akamai** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Akamai
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Akamai a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Akamai-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Akamai a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Akamai-ben.
 
 Az Azure AD SSO és a Akamai konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -136,8 +136,8 @@ Az Azure AD SSO és a Akamai konfigurálásához és teszteléséhez hajtsa vég
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **Akamai** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Akamai** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -163,25 +163,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Akamai.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Akamai**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Akamai** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -196,7 +196,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 **AKAMAI EAA IDENTITÁSSZOLGÁLTATÓ konfigurációja**
 
 1. Jelentkezzen be a **Akamai Enterprise Application Access** -konzolra.
-1. Az **Akamai EAA konzolon**válassza az **identitás**  >  -**szolgáltatók** lehetőséget, majd kattintson az **identitás-szolgáltató hozzáadása**elemre.
+1. Az **Akamai EAA konzolon** válassza az **identitás**  >  -**szolgáltatók** lehetőséget, majd kattintson az **identitás-szolgáltató hozzáadása** elemre.
 
     ![Képernyőkép a Akamai EAA konzol identitás-szolgáltatók ablakáról. Az identitás menüben válassza az Identitáskezelés lehetőséget, majd válassza az identitás-szolgáltató hozzáadása elemet.](./media/header-akamai-tutorial/configure01.png)
 
@@ -206,7 +206,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     a. Adja meg az **egyedi nevet**.
 
-    b. Válasszon **harmadik féltől származó SAML** -t, és kattintson az **Identity Provider létrehozása és konfigurálása**elemre.
+    b. Válasszon **harmadik féltől származó SAML** -t, és kattintson az **Identity Provider létrehozása és konfigurálása** elemre.
 
 ### <a name="general-settings"></a>Általános beállítások
 
@@ -295,7 +295,7 @@ Kattintson a Mentés gombra, és válassza a hitelesítés lehetőséget.
 
 #### <a name="advanced-settings"></a>Speciális beállítások
 
-1. Az **ügyfél http-fejlécei**területen a **CustomerHeader** és az **SAML attribútumot**kell megadni.
+1. Az **ügyfél http-fejlécei** területen a **CustomerHeader** és az **SAML attribútumot** kell megadni.
 
     ![Képernyőkép a Akamai EAA konzoljának speciális beállítások lapjáról, amely az egyszeri bejelentkezésre vonatkozó naplózott URL-címet jeleníti meg a hitelesítés alatt.](./media/header-akamai-tutorial/configure12.png)
 
@@ -343,7 +343,7 @@ Kattintson a Mentés gombra, és válassza a hitelesítés lehetőséget.
 
 #### <a name="authentication"></a>Hitelesítés
 
-Kattintson **a Mentés gombra, és válassza a szolgáltatások**lehetőséget.
+Kattintson **a Mentés gombra, és válassza a szolgáltatások** lehetőséget.
 
 ![Képernyőfelvétel: a Akamai EAA konzol hitelesítés lapja, amelyen a SECRETRDPAPP a Save and go to Services (Mentés és ugrás szolgáltatások) gomb látható a jobb alsó sarokban.](./media/header-akamai-tutorial/configure20.png)
 
@@ -355,7 +355,7 @@ Kattintson **a Save (Mentés) gombra, és válassza a speciális beállítások 
 
 #### <a name="advanced-settings"></a>Speciális beállítások
 
-1. Kattintson **a Mentés gombra, és válassza a telepítés**lehetőséget.
+1. Kattintson **a Mentés gombra, és válassza a telepítés** lehetőséget.
 
     ![Képernyőkép a Akamai EAA konzoljának speciális beállítások lapján a távoli asztal konfigurációjának beállításait megjelenítő SECRETRDPAPP.](./media/header-akamai-tutorial/configure22.png)
 
@@ -381,7 +381,7 @@ Kattintson **a Save (Mentés) gombra, és válassza a speciális beállítások 
 
 #### <a name="ssh"></a>SSH
 
-1. Lépjen az alkalmazások hozzáadása elemre, és válassza az **SSH**lehetőséget.
+1. Lépjen az alkalmazások hozzáadása elemre, és válassza az **SSH** lehetőséget.
 
     ![Képernyőkép a Akamai EAA konzol alkalmazások hozzáadása varázslójával, amely a hozzáférési alkalmazások szakasz alkalmazások között felsorolt SSH-t jeleníti meg.](./media/header-akamai-tutorial/configure25.png)
 
@@ -425,7 +425,7 @@ Kattintson a Mentés gombra, és lépjen a központi telepítésre
 
 #### <a name="deployment"></a>Üzembe helyezés
 
-1. Kattintson az **alkalmazás központi telepítése**elemre.
+1. Kattintson az **alkalmazás központi telepítése** elemre.
 
     ![Képernyőkép a Akamai EAA konzol üzembe helyezési lapjáról az SSH-SECURE szolgáltatáshoz, amely az alkalmazás központi telepítése gombra mutat.](./media/header-akamai-tutorial/configure32.png)
 
@@ -496,7 +496,7 @@ Az identitás-szolgáltató kiosztása
 
     ![Képernyőkép a Akamai EAA-konzol CSOPORTJAIról a SUPERDEMOLIVE könyvtár ablakban. A EAAGroup 1 felhasználóval szerepelnek a csoportok területen.](./media/header-akamai-tutorial/eaagroup.png)
 
-1. Adja hozzá a könyvtárat a személyazonosság-szolgáltatóhoz az **identitás**  >  -**szolgáltatók** elemre kattintva, majd kattintson a **címtárak** fülre, és kattintson a **hozzárendelés könyvtár**elemre.
+1. Adja hozzá a könyvtárat a személyazonosság-szolgáltatóhoz az **identitás**  >  -**szolgáltatók** elemre kattintva, majd kattintson a **címtárak** fülre, és kattintson a **hozzárendelés könyvtár** elemre.
 
     ![Képernyőkép az Azure AD SSO-hez készült Akamai EAA konzol könyvtárainak lapról, amely a főbemutatót jeleníti meg. az aktuálisan hozzárendelt könyvtárak listájának megjelenítése.](./media/header-akamai-tutorial/assigndirectory.png)
 
@@ -504,12 +504,12 @@ Az identitás-szolgáltató kiosztása
 
 #### <a name="step-1-create-an-account"></a>1. lépés: fiók létrehozása 
 
-1. A példában a **EAADelegation**nevű fiókot fogjuk használni. Ezt a **Active Directory felhasználók és számítógépek** snappin hajthatja végre.
+1. A példában a **EAADelegation** nevű fiókot fogjuk használni. Ezt a **Active Directory felhasználók és számítógépek** snappin hajthatja végre.
 
     ![Képernyőkép az Azure AD SSO-hoz készült Akamai EAA konzol könyvtárainak lapról. A könyvtár-főbemutató. Live a jelenleg hozzárendelt könyvtárak területen található.](./media/header-akamai-tutorial/assigndirectory.png)
 
     > [!NOTE]
-    > A felhasználónévnek megadott formátumúnak kell lennie az **identitást elfogó név**alapján. Az 1. ábrán láthatjuk, hogy **corpapps.login.go.Akamai-Access.com**
+    > A felhasználónévnek megadott formátumúnak kell lennie az **identitást elfogó név** alapján. Az 1. ábrán láthatjuk, hogy **corpapps.login.go.Akamai-Access.com**
 
 1. A felhasználói bejelentkezési név a következőket teszi:`HTTP/corpapps.login.go.akamai-access.com`
 
@@ -555,11 +555,11 @@ Az identitás-szolgáltató kiosztása
 
 #### <a name="step-5-import-keytab-in-the-akamai-eaa-console"></a>5. lépés: a keytab kiterjesztésű importálása a AKAMAI EAA konzolon
 
-1. Kattintson **a**  >  **Rendszerlapok**elemre.
+1. Kattintson **a**  >  **Rendszerlapok** elemre.
 
     ![Képernyőkép az Akamai EAA-konzolról, amely a rendszer menüjéből kiválasztott főlapokat jeleníti meg.](./media/header-akamai-tutorial/keytabs.png)
 
-1. A keytab kiterjesztésű típusnál válassza a **Kerberos-delegálás**lehetőséget.
+1. A keytab kiterjesztésű típusnál válassza a **Kerberos-delegálás** lehetőséget.
 
     ![Képernyőkép a Akamai EAA konzol EAAKEYTAB képernyőjéről, amely a keytab kiterjesztésű beállításait mutatja. A keytab kiterjesztésű típusa Kerberos-delegálásra van beállítva.](./media/header-akamai-tutorial/keytabdelegation.png)
 

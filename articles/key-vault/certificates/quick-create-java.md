@@ -1,6 +1,6 @@
 ---
-title: Gyors útmutató – a Azure Key Vault-tanúsítvány ügyféloldali kódtára a Javához
-description: A Java-hoz készült Azure Key Vault-tanúsítvány ügyféloldali függvénytárának rövid útmutatója.
+title: Rövid útmutató Azure Key Vault Certificate Client Library – Java
+description: Ismerje meg a Java-hoz készült Azure Key Vault-tanúsítvány ügyféloldali függvénytárát a jelen rövid útmutató lépéseivel.
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
@@ -8,14 +8,14 @@ ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 99b8c63060cebeffea0f3473e03b5f49a415230b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733513"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936039"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>Gyors útmutató: Azure Key Vault-tanúsítvány ügyféloldali könyvtára Javához
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>Gyors útmutató: Azure Key Vault Certificate Client Library for Java (tanúsítványok)
 Ismerkedjen meg a Javához készült Azure Key Vault-tanúsítvány ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítse a csomagot, és próbálja ki az alapszintű feladatokhoz tartozó kódot.
 
 További források:
@@ -126,7 +126,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS vagy Linux

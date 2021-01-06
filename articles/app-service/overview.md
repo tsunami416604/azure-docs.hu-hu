@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007093"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936209"
 ---
 # <a name="app-service-overview"></a>Az App Service áttekintése
 
@@ -46,6 +46,12 @@ A App Service a webalkalmazásokat natív módon is üzemeltetheti Linux rendsze
 
 A Linuxon App Service számos különböző beépített rendszerképet támogat. Csak telepítse a kódot. A támogatott nyelvek a következők: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core és Ruby. [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes)A Futtatás gombra kattintva megtekintheti a legújabb nyelveket és a támogatott verziókat. Ha az alkalmazás által igényelt futtatókörnyezet nem támogatott a beépített lemezképekben, akkor telepítheti azt egy egyéni tárolóval.
 
+Az elavult futtatókörnyezeteket a rendszer rendszeres időközönként eltávolítja a portálon a Web Apps létrehozás és konfiguráció panelről. Ezek a futtatókörnyezetek rejtve maradnak a portálon, ha a karbantartó szervezet elavult vagy jelentős biztonsági réseket talált. Ezek a beállítások rejtettek, hogy az ügyfeleket a legújabb futtatókörnyezetekhez irányítsák, ahol a legsikeresebb lesz. 
+
+Ha egy elavult futtatókörnyezet el van rejtve a portálról, akkor az adott verziót használó meglévő helyek továbbra is futnak. Ha egy futtatókörnyezet teljesen el lett távolítva a App Service platformról, az Azure-előfizetéshez tartozó tulajdonos (ok) e-mailben értesítést fog kapni az Eltávolítás előtt.
+
+Ha egy olyan elavult futtatókörnyezet-verzióval rendelkező webalkalmazást kell létrehoznia, amely már nem jelenik meg a portálon, tekintse meg a nyelvi konfigurációs útmutatókat, amelyekkel megtudhatja, hogyan kérheti le a hely futtatókörnyezetének verzióját. Az Azure CLI használatával egy másik helyet is létrehozhat ugyanazzal a futtatókörnyezettel. Azt is megteheti, hogy a portál webalkalmazás paneljének **Exportálás sablonja** gombjára kattintva exportálja a hely ARM-sablonját. A sablon újbóli használatával telepítheti az új helyet ugyanazzal a futtatókörnyezettel és konfigurációval.
+
 ### <a name="limitations"></a>Korlátozások
 
 - A Linuxon App Service nem támogatott a [megosztott](https://azure.microsoft.com/pricing/details/app-service/plans/) díjszabási szinten. 
@@ -54,7 +60,7 @@ A Linuxon App Service számos különböző beépített rendszerképet támogat.
 - A Azure Portal csak a Linux-alkalmazásokhoz jelenleg használható funkciókat jeleníti meg. Ha a funkciók engedélyezve vannak, azok aktiválva lesznek a portálon.
 - Beépített rendszerképekre való üzembe helyezéskor a kód és a tartalom a webes tartalomhoz tartozó tárolási kötetet foglal le, amelyet az Azure Storage támogat. A kötet lemezének késése nagyobb és változó, mint a tároló fájlrendszerének késése. Azok az alkalmazások, amelyeknek a tartalomhoz való nagy olvasási hozzáférésre van szükségük, az egyéni tároló lehetőséggel is rendelkezhetnek, amely a tartalom kötetén található fájlokat a tároló fájlrendszerében helyezi el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozza létre első webalkalmazását.
 

@@ -1,17 +1,17 @@
 ---
-title: A Azure Logic Apps előzetes verziójának áttekintése
+title: Az Azure Logic Apps előzetes verziójának áttekintése
 description: A Azure Logic Apps Preview egy felhőalapú megoldás az olyan automatizált állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozásához, amelyek alkalmazások, adatok, szolgáltatások és rendszerek integrálását teszik elérhetővé minimális kóddal a nagyvállalati szintű forgatókönyvek esetében.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 0c4d0416c107c9ceb4cd0dbdf80761ab9b52d56c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924286"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936124"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Áttekintés: Azure Logic Apps előzetes verzió
 
@@ -148,7 +148,7 @@ A Azure Logic Apps Preview számos aktuális és további funkciót tartalmaz, p
 
 Amikor létrehozza az új logikai alkalmazás típusát a Azure Portal vagy a Visual Studio Code-ból való üzembe helyezést, ki kell választania egy [app Service vagy prémium](../azure-functions/functions-scale.md)szintű üzemeltetési csomagot, amelyet a logikai alkalmazásnak használnia kell. Ez a csomag határozza meg a logikai alkalmazás futtatására érvényes díjszabási modellt. Ha kijelöli a App Service csomagot, ki kell választania egy [árképzési szintet](../app-service/overview-hosting-plans.md)is.
 
-Az *állapot-nyilvántartó* munkafolyamatok [külső tárterületet](../azure-functions/functions-scale.md#storage-account-requirements)használnak, ezért az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/) a Azure Logic apps előnézeti futtatókörnyezet által végrehajtott tárolási tranzakciókra vonatkozik. A várólisták például az ütemezéshez használatosak, míg a rendszer a táblákat és a blobokat használja a Munkafolyamat-állapotok tárolásához.
+Az *állapot-nyilvántartó* munkafolyamatok [külső tárterületet](../azure-functions/storage-considerations.md#storage-account-requirements)használnak, ezért az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/) a Azure Logic apps előnézeti futtatókörnyezet által végrehajtott tárolási tranzakciókra vonatkozik. A várólisták például az ütemezéshez használatosak, míg a rendszer a táblákat és a blobokat használja a Munkafolyamat-állapotok tárolásához.
 
 > [!NOTE]
 > A nyilvános előzetes verzióban a logikai alkalmazások App Serviceon való futtatása nem jár *további* költségekkel a kiválasztott csomag felett.
@@ -259,7 +259,7 @@ Egyetlen logikai alkalmazás definíciója esetében a beágyazott kód művelet
 
 További információ: [Logic app definition Limits](logic-apps-limits-and-config.md#definition-limits).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Azure Portalban](create-stateful-stateless-workflows-azure-portal.md)
 * [Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban](create-stateful-stateless-workflows-visual-studio-code.md)

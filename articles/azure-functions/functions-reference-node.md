@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 21ab58095fa919e6302251c16e474b02f1445993
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: bf6ebd01a18a0ebf0ab5dd7d7ac3aa34256b4696
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301998"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936804"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -113,7 +113,7 @@ A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger beme
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Az objektum tagjaként [`context.bindings`](#contextbindings-property) .** Minden egyes tagot afunction.jsáltal `name` meghatározott tulajdonság nevez *function.json* el.
+ - **Az objektum tagjaként [`context.bindings`](#contextbindings-property) .** Minden egyes tagot afunction.jsáltal `name` meghatározott tulajdonság nevez el.
  
    ```javascript
    module.exports = async function(context) { 
@@ -493,7 +493,7 @@ HTTP-eseményindítók használata esetén a HTTP-kérelem és a válasz-objektu
 
 ## <a name="scaling-and-concurrency"></a>Skálázás és Egyidejűség
 
-Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség esetén további gazdagép-példányokat hoz létre a Node.jshoz. A functions beépített (nem a felhasználó által konfigurálható) küszöbértékeket használ a különböző típusú triggerekhez, hogy eldöntse, mikor kell hozzáadnia a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. További információ: [How the fogyasztás and Premium Plans Work](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Alapértelmezés szerint a Azure Functions automatikusan figyeli az alkalmazás terhelését, és szükség esetén további gazdagép-példányokat hoz létre a Node.jshoz. A functions beépített (nem a felhasználó által konfigurálható) küszöbértékeket használ a különböző típusú triggerekhez, hogy eldöntse, mikor kell hozzáadnia a példányokat, például az üzenetek korát és a várólista méretét a QueueTrigger. További információ: [How the fogyasztás and Premium Plans Work](event-driven-scaling.md).
 
 Ez a skálázási viselkedés elegendő sok Node.js alkalmazáshoz. A CPU-kötésű alkalmazásokhoz több nyelvi feldolgozói folyamat használatával növelheti a teljesítményt.
 

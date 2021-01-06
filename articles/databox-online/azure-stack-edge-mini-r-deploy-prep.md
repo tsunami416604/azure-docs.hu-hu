@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 03b4ed41b3110825d4e4797f2c5f733152504919
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913787"
+ms.locfileid: "97935407"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Oktatóanyag: Felkészülés a Azure Stack Edge mini R üzembe helyezésére
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag a telepítési oktatóanyagok sorozatának első része, amel
 
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. A portál előkészítése kevesebb mint 10 percet vesz igénybe.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Új erőforrás létrehozása
@@ -89,7 +89,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 1. A Microsoft Azure hitelesítő adataival jelentkezzen be a Azure Portalba ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com) .
 
 
-2. A bal oldali panelen válassza az **+ erőforrás létrehozása** lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Kattintson a **Létrehozás** gombra. 
+2. A bal oldali panelen válassza az **+ Erőforrás létrehozása** elemet. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Kattintson a **Létrehozás** gombra. 
 
 3. Válassza ki az Azure Stack Edge Pro-eszközhöz használni kívánt előfizetést. Válassza ki azt az országot, ahová a fizikai eszközt el szeretné szállítani. Válassza az **eszközök megjelenítése** lehetőséget.
 
@@ -101,7 +101,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     [![2. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png)](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png#lightbox)
 
 
-6. Az **alapvető beállítások** lapon adja meg vagy válassza ki a következő **projekt részleteit**.
+5. Az **alapvető beállítások** lapon adja meg vagy válassza ki a következő **projekt részleteit**.
     
     |Beállítás  |Érték  |
     |---------|---------|
@@ -109,7 +109,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     |Erőforráscsoport  |Válasszon ki egy meglévő csoportot, vagy hozzon létre egy újat.<br>Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/management/overview.md) kapcsolatban.     |
 
 
-7. Adja meg vagy válassza ki a következő **példány részleteit**.
+6. Adja meg vagy válassza ki a következő **példány részleteit**.
 
     |Beállítás  |Érték  |
     |---------|---------|
@@ -119,25 +119,25 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     ![4. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
-8. Válassza a **Next (tovább): szállítási címet**.
+7. Válassza a **Next (tovább): szállítási címet**.
 
     - Ha már rendelkezik egy eszközzel, válassza a kombinált listát, amelyhez **már van eszköz**.
 
-        ![5. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
+     ![5. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
     - Ha ez az új eszköz, amelyet Ön megrendelt, adja meg a kapcsolattartó nevét, a vállalatot, az eszköznek a szolgáltatásba való szállítását és a kapcsolattartási adatokat.
 
-        ![6. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
+     ![6. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
-9. Kattintson a **Tovább gombra: címkék**. Opcionálisan megadhat címkéket az erőforrások kategorizálása és a számlázás konszolidálása érdekében. Válassza a **Tovább: Ellenőrzés és létrehozás** lehetőségre.
+8. Kattintson a **Tovább gombra: címkék**. Opcionálisan megadhat címkéket az erőforrások kategorizálása és a számlázás konszolidálása érdekében. Válassza a **Tovább: Ellenőrzés és létrehozás** lehetőségre.
 
-10. A **felülvizsgálat + létrehozás** lapon tekintse át a **díjszabás részleteit**, **használati feltételek** és az erőforrás részleteit. Válassza ki az **adatvédelmi feltételeket áttekintő** kombinált listát.
+9. A **felülvizsgálat + létrehozás** lapon tekintse át a **díjszabás részleteit**, **használati feltételek** és az erőforrás részleteit. Válassza ki az **adatvédelmi feltételeket áttekintő** kombinált listát.
 
     ![7. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
 
     Arról is értesítést kap, hogy az erőforrás létrehozásakor egy Managed Service Identity (MSI) van engedélyezve, amely lehetővé teszi a felhőalapú szolgáltatásokban történő hitelesítést. Ez az identitás mindaddig létezik, amíg az erőforrás létezik.
 
-8. Kattintson a **Létrehozás** gombra.
+10. Kattintson a **Létrehozás** gombra.
 
     Az erőforrás létrehozása néhány percet vesz igénybe. A rendszer létrehoz egy MSI-t is, amely lehetővé teszi, hogy az Azure Stack Edge-eszköz kommunikáljon az Azure-beli erőforrás-szolgáltatóval.
     
@@ -153,25 +153,25 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
 
 Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérnie az aktiválási kulcsot. Ezzel a kulccsal aktiválhatja és összekapcsolhatja Azure Stack Edge mini R-eszközét az erőforrással. Ezt a kulcsot lekérheti most, amíg az Azure Portalon van.
 
-1. Válassza ki a létrehozott erőforrást. Válassza az **Áttekintés** lehetőséget, majd válassza az **eszköz beállítása** lehetőséget.
+1. Válassza ki a létrehozott erőforrást, és válassza az **Áttekintés** lehetőséget.
 
-    ![Eszköz beállításának kiválasztása](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
+   ![Eszköz beállításának kiválasztása](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
 
 2. Az **aktiválás** csempén adja meg a Azure Key Vault nevét, vagy fogadja el az alapértelmezett nevet. A kulcstároló neve 3 – 24 karakter hosszúságú lehet. 
 
     Minden Azure Stack peremhálózati erőforráshoz létrejön egy kulcstartó, amely aktiválva van az eszközével. A Key Vault lehetővé teszi a titkok tárolását és elérését. Például a szolgáltatáshoz tartozó csatorna integritási kulcsát (a () a Key Vault tárolja).
 
-    A kulcstároló nevének megadása után válassza a **kulcs létrehozása** lehetőséget az aktiválási kulcs létrehozásához. 
+    A kulcstároló nevének megadása után válassza az **aktiválási kulcs előállítása** lehetőséget az aktiválási kulcs létrehozásához.
 
     [![Aktiválási kulcs lekérése](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png)](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png#lightbox)
 
-    Várjon néhány percet, amíg a Key Vault és az aktiválási kulcs létrejött. Kattintson a másolás ikonra a kulcs másolásához és a későbbi használatra mentéséhez.
+    Várjon néhány percet, amíg létrejön a Key Vault és az aktiválási kulcs. Kattintson a másolás ikonra a kulcs másolásához és a későbbi használatra mentéséhez.
 
 > [!IMPORTANT]
 > - Az aktiválási kulcs három nappal a létrehozása után lejár.
 > - Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a Azure Stack Edge-témaköröket, például a következőket:
 
