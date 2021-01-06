@@ -1113,6 +1113,16 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: A Cognitive Services konfigurálása az Azure Synapse-hez
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: Adatkatalógus és adatgazdálkodás
+  items:
+    - name: Rövid útmutatók
+      items:
+        - name: Azure Purview-fiók csatlakoztatása
+          href: ./catalog-and-governance/quickstart-connect-azure-purview.md
+    - name: Útmutatók
+      items:
+        - name: 'Adatok felfedezése, csatlakoztatása és feltárása Synapse-ban az Azure Purview segítségével'
+          href: ./catalog-and-governance/how-to-discover-connect-analyze-azure-purview.md
 - name: Használati útmutató
   items:
     - name: Költségtervezés és a költségek kezelése

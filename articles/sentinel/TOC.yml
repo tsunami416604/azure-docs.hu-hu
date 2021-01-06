@@ -211,6 +211,8 @@
       href: /rest/api/securityinsights/
     - name: Hálózati normalizációs séma
       href: normalization-schema.md
+    - name: UEBA-bővítések
+      href: ueba-enrichments.md
 - name: További források
   items:
     - name: Hasznos források

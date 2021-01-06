@@ -28,7 +28,7 @@
       href: delete-application-portal.md
 - name: Oktatóanyagok
   items:
-    - name: Az előre konfigurált alkalmazások listája
+    - name: Alkalmazásintegrációval kapcsolatos oktatóanyagok listája
       href: /azure/active-directory/saas-apps/
     - name: Alkalmazásproxyval rendelkező helyszíni alkalmazás hozzáadása
       href: application-proxy-add-on-premises-application.md

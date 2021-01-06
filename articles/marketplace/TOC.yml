@@ -205,8 +205,16 @@
           href: partner-center-portal/create-iot-edge-module-asset.md
     - name: Felügyelt szolgáltatásra vonatkozó ajánlatok
       items:
+        - name: Felügyelt szolgáltatási ajánlat megtervezése
+          href: plan-managed-service-offer.md
         - name: Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
-          href: partner-center-portal/create-new-managed-service-offer.md
+          href: create-managed-service-offer.md
+        - name: Felügyelt szolgáltatások listájának konfigurálása
+          href: create-managed-service-offer-listing.md
+        - name: Előzetes verzió célközönségének hozzáadása
+          href: create-managed-service-offer-preview.md
+        - name: Csomagok létrehozása
+          href: create-managed-service-offer-plans.md
     - name: Power BI-alkalmazásajánlatok
       items:
         - name: Power BI-alkalmazásajánlat megtervezése

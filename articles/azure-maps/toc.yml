@@ -306,6 +306,8 @@
       items:
         - name: Adatszolgáltatás
           href: /rest/api/maps/data
+        - name: Elevation szolgáltatás
+          href: /rest/api/maps/elevation
         - name: Földrajzi hely szolgáltatás
           href: /rest/api/maps/geolocation
         - name: Mobilitási szolgáltatások

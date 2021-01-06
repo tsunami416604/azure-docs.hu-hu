@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Az IoT-hez készült Azure Defender dokumentációja
-summary: Az Azure Defender for IoT egy Azure-alapú felhőbiztonsági szolgáltatás, amely teljes körű fenyegetésvédelmet biztosít az IoT-eszközök számára.
+summary: Az IoT-hez készült Azure Defender átfogó fenyegetésészlelést kínál IoT-/OT-környezetekhez többféle üzembehelyezési lehetőséggel, például teljes mértékben helyszíni, felhőhöz csatlakozó vagy hibrid üzembe helyezéssel.
 metadata:
   title: Az IoT-hez készült Azure Defender dokumentációja
   description: Megismerheti, hogy az Azure Defender for IoT nevű Azure-alapú felhőbiztonsági szolgáltatás hogyan biztosít teljes körű fenyegetésvédelmet az IoT-eszközök számára.
@@ -11,12 +11,12 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/07/2020
-  ms.openlocfilehash: 00cef8a146a84c4261dde46785f2ea9bb1c03173
-  ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+  ms.openlocfilehash: 65bdc8c54e8cee2ee1b63d21a172ba870162d070
+  ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/31/2020
-  ms.locfileid: "97832335"
+  ms.lasthandoff: 01/04/2021
+  ms.locfileid: "97860831"
 landingContent:
 - title: Bevezetés az Azure Defender for IoT használatába
   linkLists:

@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Az Azure Functions dokumentációja
-summary: Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat események által aktivált kódokat. Az igény szerinti számítási képességei lehetővé teszik a könnyű integrációt és az egyszeri támogatási funkciókat. Ezenfelül webes API-k biztosítására, adatbázis-változásokra adott válaszokra, IoT-adatfolyamok feldolgozására és üzenetsorok kezelésére is használható.
+summary: Az Azure Functions olyan igény szerinti, felhőalapú szolgáltatás, amely az alkalmazások futtatásához szükséges összes, folyamatosan frissülő infrastruktúrát és erőforrást biztosítja. Így Ön a legfontosabb kódolási feladatokra koncentrálhat, a többit pedig az Azure Functionsre bízhatja. Az Azure Functions többek között webes API-k készítésére, adatbázis-változásokra adott válaszokra, IoT-streamek feldolgozására és üzenetsorok kezelésére is használható.
 metadata:
   title: Az Azure Functions dokumentációja
-  description: Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat események által aktivált kódokat. Az igény szerinti számítási képességei lehetővé teszik a könnyű integrációt és az egyszeri támogatási funkciókat. Ezenfelül webes API-k biztosítására, adatbázis-változásokra adott válaszokra, IoT-adatfolyamok feldolgozására és üzenetsorok kezelésére is használható.
+  description: Az Azure Functions olyan igény szerinti, felhőalapú szolgáltatás, amely az alkalmazások futtatásához szükséges összes, folyamatosan frissülő infrastruktúrát és erőforrást biztosítja. Így Ön a legfontosabb kódolási feladatokra koncentrálhat, a többit pedig az Azure Functionsre bízhatja. Az Azure Functions többek között webes API-k készítésére, adatbázis-változásokra adott válaszokra, IoT-streamek feldolgozására és üzenetsorok kezelésére is használható.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: e6c3cb1a9d536ed898c48c45f57434dc4bf66970
-  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+  ms.openlocfilehash: 74acabf21252acfd79520d7f24ff79503734a235
+  ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/15/2020
-  ms.locfileid: "97505290"
+  ms.lasthandoff: 01/05/2021
+  ms.locfileid: "97901521"
 landingContent:
 - title: Az Azure Functions ismertetése
   linkLists:

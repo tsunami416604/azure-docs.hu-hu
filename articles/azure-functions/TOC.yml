@@ -417,6 +417,8 @@
           href: functions-recover-storage-account.md
         - name: Python-függvények hibaelhárítása
           href: recover-python-functions.md
+        - name: Python-függvények skálázása és teljesítménye
+          href: python-scale-performance-reference.md
 - name: Referencia
   items:
     - name: API-referenciák

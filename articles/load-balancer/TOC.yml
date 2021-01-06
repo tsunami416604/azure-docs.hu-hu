@@ -93,6 +93,8 @@
       href: manage.md
     - name: Virtuálisgép-méretezési csoportok
       items:
+        - name: 'Virtuálisgép-méretezési csoport által használt, meglévő Azure Load Balancer frissítése vagy törlése'
+          href: update-load-balancer-with-vm-scale-set.md
         - name: Használat meglévő Azure Load Balancerrel – portál
           href: configure-vm-scale-set-portal.md
         - name: Használat meglévő Azure Load Balancerrel – PowerShell
