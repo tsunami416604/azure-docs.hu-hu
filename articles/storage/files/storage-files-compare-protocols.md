@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 288d1740c1c4c67dd8756de5fc0652966ae89488
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e914bcece9a30270d12d5c2cc09d3fd1014783c6
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620974"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916507"
 ---
 # <a name="azure-file-share-protocols"></a>Azure fájlmegosztás protokollok
 
@@ -21,10 +21,10 @@ Azure Files két protokollt biztosít az Azure-fájlmegosztás csatlakoztatásá
 
 ## <a name="differences-at-a-glance"></a>Különbségek egy pillantással
 
-|Jellemző  |NFS (előzetes verzió)  |SMB  |
+|Szolgáltatás  |NFS (előzetes verzió)  |SMB  |
 |---------|---------|---------|
 |Hozzáférési protokollok     |NFS 4,1         |SMB 2,1, SMB 3,0         |
-|Támogatott operációs rendszer     |Linux kernel 4.3-as és újabb verziója         |Windows 2008 R2 +, Linux kernel 4.11 +         |
+|Ajánlott operációs rendszer     |Linux kernel 4.3-as és újabb verziója         |Windows 2008 R2 +, Linux kernel 4.11 +         |
 |[Elérhető szintek](storage-files-planning.md#storage-tiers)     |Prémium szintű Storage         |Premium Storage, tranzakciós optimalizált, gyors elérésű, ritka elérésű         |
 |[Redundancia](storage-files-planning.md#redundancy)     |LRS, ZRS         |LRS, ZRS, GRS         |
 |Hitelesítés     |Csak gazdagép-alapú hitelesítés        |Identitás-alapú hitelesítés, felhasználó alapú hitelesítés         |
@@ -74,7 +74,7 @@ Az elérhető hálózati beállításokkal kapcsolatos további információkér
 
 Az SMB-vel csatlakoztatott Azure-fájlmegosztás további Azure Files funkciókat kínál, és nem rendelkezik Azure Files szolgáltatás korlátozásával, mivel általánosan elérhető.
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features"></a>Funkciók
 
 - Azure-fájlok szinkronizálása
 - Identitás-alapú hitelesítés
@@ -90,7 +90,7 @@ Az SMB Azure Files a következőkhöz ideális:
 - Éles környezetek
 - A [funkciókban](#features) felsorolt funkciók bármelyikét igénylő ügyfelek
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [NFS-fájlmegosztás létrehozása](storage-files-how-to-create-nfs-shares.md)
 - [SMB-fájlmegosztás létrehozása](storage-how-to-create-file-share.md)

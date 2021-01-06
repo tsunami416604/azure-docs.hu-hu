@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 6f9d8603467ac62d443a181fa45615501023a78b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f44751feca67fdd4473dd3f427fcf2b9d1bbe717
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093570"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916490"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Az Azure Cosmos DB-hez készült Azure Synapse Link konfigurálása és használata
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -227,7 +227,7 @@ A [Azure Resource Manager sablon](./manage-with-templates.md#azure-cosmos-accoun
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Bevezetés az Azure Synpase link-Samples használatába
 
-A [githubon](https://aka.ms/cosmosdb-synapselink-samples)megtalálhatja az Azure szinapszis hivatkozásának megkezdéséhez szükséges mintákat. Ezek a teljes körű megoldások a IoT és a kiskereskedelmi helyzetekben. A MongoDB Azure Cosmos DB API-nak megfelelő mintákat is megtalálhatja ugyanabban a tárházban, a [MongoDB](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) mappában. 
+A [githubon](https://aka.ms/cosmosdb-synapselink-samples)megtalálhatja az Azure szinapszis hivatkozásának megkezdéséhez szükséges mintákat. Ezek a teljes körű megoldások a IoT és a kiskereskedelmi helyzetekben. A MongoDB Azure Cosmos DB API-nak megfelelő mintákat is megtalálhatja ugyanabban a tárházban, a [MongoDB](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) mappában. 
 
 ## <a name="next-steps"></a>Következő lépések
 

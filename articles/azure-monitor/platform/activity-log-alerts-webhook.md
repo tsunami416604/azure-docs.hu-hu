@@ -4,12 +4,12 @@ description: Ismerje meg a webhook URL-címére küldött JSON sémáját, ha a 
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: b48f094b460a2871b502c72b39b849ed68b9c085
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901436"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916633"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure-beli tevékenység naplójának értesítéseihez
 A műveleti csoport definíciójának részeként konfigurálhat webhook-végpontokat a műveletnapló riasztási értesítéseinek fogadására. A webhookok segítségével ezeket az értesítéseket más rendszerekre irányíthatja a feldolgozás utáni vagy egyéni műveletekhez. Ez a cikk bemutatja, hogyan néz ki a HTTP-POST webhookhoz tartozó hasznos adat.
@@ -40,6 +40,7 @@ A POST műveletben található JSON-adattartalom eltér a hasznos adatok. Contex
 > Ha a feltétele (a műveleti szabályok, a webhookok, a logikai alkalmazás vagy más konfigurációk) jelenleg a **"Leírás"** tulajdonságon alapul a tevékenység-naplózási riasztások esetében, akkor előfordulhat, hogy módosítania kell azt a **"műveletnapló esemény leírása"** tulajdonság alapján.
 >
 > Az új **"Leírás"** tulajdonság kitöltéséhez hozzáadhat egy leírást a riasztási szabály definíciójában.
+> ![Kilőtt tevékenységek naplójának riasztásai](media/activity-log-alerts-webhook/activity-log-alert-fired.png)
 
 ### <a name="common"></a>Közös
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fd85021da36d0e5ef32ce3f42c72b83016d38749
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 15060a367bba2d50d7054730321f7f20d4c25e46
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901351"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916677"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával
 
@@ -54,6 +54,8 @@ Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az_
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
 
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="A gyors üzembe helyezéshez létrehozott Standard Load Balancer-erőforrások." border="false":::
+
 ## <a name="configure-virtual-network---standard"></a>Virtuális hálózat konfigurálása – standard
 
 A virtuális gépek üzembe helyezése és a terheléselosztó üzembe helyezése előtt hozza létre a támogató virtuális hálózati erőforrásokat.
@@ -84,7 +86,7 @@ Hozzon létre egy virtuális hálózatot [az az Network vnet Create](/cli/azure/
 Az [az Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) paranccsal hozzon létre egy nyilvános IP-címet a megerősített gazdagép számára:
 
 * Hozzon létre egy szabványos, redundáns nyilvános IP-címet a **myBastionIP** néven.
-* * * CCreateIntLBQS-RG * *.
+* **CreateIntLBQS – RG**.
 
 ```azurecli-interactive
 az network public-ip create \
@@ -99,7 +101,7 @@ Az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vne
 * Elnevezett **AzureBastionSubnet**.
 * A **10.1.1.0/24** címek előtagja.
 * A virtuális hálózat **myVNet**.
-* Az erőforráscsoport * * CreateIntLBQS-RG * * csoportban.
+* Az erőforráscsoport **CreateIntLBQS – RG**.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -114,7 +116,7 @@ az network vnet subnet create \
 Az [az Network Bastion Create](/cli/azure/network/bastion#az-network-bastion-create) paranccsal hozzon létre egy megerősített gazdagépet:
 
 * Elnevezett **myBastionHost**.
-* * * CreateIntLBQS-RG * *.
+* **CreateIntLBQS – RG**.
 * Nyilvános IP- **myBastionIP** társítva.
 * Virtuális hálózati **myVNet** társítva.
 * A **eastus** helyen.
@@ -348,6 +350,8 @@ Adja hozzá a virtuális gépeket a háttér-készlethez az [az Network NIC IP-c
 
 >[!NOTE]
 >A standard SKU Load Balancer használata éles számítási feladatokhoz ajánlott. További információ az SKU-ról: **[Azure Load Balancer SKU](skus.md)**-ban.
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="A rövid útmutatóban létrehozott alapszintű Load Balancer-erőforrások." border="false":::
 
 ## <a name="configure-virtual-network---basic"></a>Virtuális hálózat konfigurálása – alapszintű
 

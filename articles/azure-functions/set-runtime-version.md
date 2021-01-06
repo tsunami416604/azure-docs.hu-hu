@@ -3,20 +3,24 @@ title: A Azure Functions futtatókörnyezet verzióinak megcélzása
 description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogyan határozhatja meg az Azure-ban üzemeltetett Function app futásidejű verzióját.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: a7d86ef26d50d60389ae09bf3245ed97fea2c3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46bf7849888033b2bbb7e9b9669ee3eae4de10e9
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88926575"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916524"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>A Azure Functions futtatókörnyezet verzióinak megcélzása
 
 A Function alkalmazás a Azure Functions futtatókörnyezet egy adott verziójára fut. Három fő verzió létezik: [1. x, 2. x és 3. x](functions-versions.md). Alapértelmezés szerint a Function apps a futtatókörnyezet 3. x verziójában jön létre. Ez a cikk azt ismerteti, hogyan konfigurálható egy Function alkalmazás az Azure-ban a kiválasztott verzió futtatásához. A helyi fejlesztési környezet adott verzióra való konfigurálásával kapcsolatos információkért lásd: [kód-és tesztelési Azure functions helyileg](functions-run-local.md).
 
+Egy adott verzió manuális célzásának módja attól függ, hogy Windows vagy Linux rendszert futtat-e.
+
 ## <a name="automatic-and-manual-version-updates"></a>Az automatikus és a manuális verzió frissítései
 
-Azure Functions lehetővé teszi a futtatókörnyezet egy adott verziójának megcélzását a `FUNCTIONS_EXTENSION_VERSION` functions alkalmazásban lévő Alkalmazásbeállítások használatával. A Function alkalmazás a megadott főverzión marad, amíg explicit módon nem választ egy új verzióra. Ha csak a főverziót adta meg, akkor a rendszer automatikusan frissíti a Function alkalmazást a futtatókörnyezet új, az elérhetővé válására szolgáló másodlagos verzióira. Az új alverziók nem mutatják be a törési változásokat. 
+_Ez a szakasz nem vonatkozik a Function alkalmazás [Linux](#manual-version-updates-on-linux)rendszeren való futtatásakor._
+
+Azure Functions lehetővé teszi a futtatókörnyezet egy adott verziójának megcélzását Windows rendszeren a `FUNCTIONS_EXTENSION_VERSION` Function App alkalmazásban. A Function alkalmazás a megadott főverzión marad, amíg explicit módon nem választ egy új verzióra. Ha csak a főverziót adta meg, akkor a rendszer automatikusan frissíti a Function alkalmazást a futtatókörnyezet új, az elérhetővé válására szolgáló másodlagos verzióira. Az új alverziók nem mutatják be a törési változásokat. 
 
 Ha alverziót (például "2.0.12345") ad meg, a Function alkalmazás az adott verzióra van rögzítve, amíg explicit módon nem módosítja. A régebbi alverziókat a rendszer rendszeresen eltávolítja az éles környezetből. Ha ez bekövetkezik, a Function alkalmazás a legújabb verzióján fut a-ben beállított verzió helyett `FUNCTIONS_EXTENSION_VERSION` . Emiatt gyorsan fel kell oldania a Function alkalmazás olyan hibáit, amelyek egy adott alverziót igényelnek, így helyette a főverziót is megcélozhatja. A másodlagos verziók eltávolítása [app Service hirdetményekben](https://github.com/Azure/app-service-announcements/issues)jelent meg.
 
@@ -36,6 +40,8 @@ Az alábbi táblázat az `FUNCTIONS_EXTENSION_VERSION` egyes főverziók érték
 A futtatókörnyezet verziójának módosítása a Function alkalmazás újraindítását eredményezi.
 
 ## <a name="view-and-update-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának megtekintése és frissítése
+
+_Ez a szakasz nem vonatkozik a Function alkalmazás [Linux](#manual-version-updates-on-linux)rendszeren való futtatásakor._
 
 Módosíthatja a Function alkalmazás által használt futtatókörnyezet verzióját. A módosítások megszakítása miatt a funkció alkalmazásban való létrehozása előtt csak a futásidejű verziót lehet módosítani. 
 
@@ -120,6 +126,65 @@ Ahogy korábban is, a helyére írja a `<FUNCTION_APP>` Function alkalmazás nev
 ---
 
 A Function alkalmazás újraindul, miután megtörtént a módosítás az alkalmazás beállításainál.
+
+## <a name="manual-version-updates-on-linux"></a>A Linux rendszeren futó manuális frissítések
+
+Ha egy Linux-függvény alkalmazását egy adott gazdagép-verzióra kívánja rögzíteni, a hely konfigurációjának "LinuxFxVersion" mezőjében meg kell adnia a rendszerkép URL-címét. Például: Ha egy Node 10 rendszerbeli Function-alkalmazást szeretne rögzíteni a gazdagép verziójának 3.0.13142
+
+**Linux app Service/rugalmas prémium szintű alkalmazások** esetén: `LinuxFxVersion` `DOCKER|mcr.microsoft.com/azure-functions/node:3.0.13142-node10-appservice` .
+
+**Linuxos felhasználású alkalmazások** esetében – állítsa a következőre: `LinuxFxVersion` `DOCKER|mcr.microsoft.com/azure-functions/mesh:3.0.13142-node10` .
+
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-linux)
+
+Megtekintheti és beállíthatja az `LinuxFxVersion` Azure CLI-t.  
+
+Az Azure CLI használatával tekintse meg az aktuális futtatókörnyezet verzióját az az [functionapp config show](/cli/azure/functionapp/config) paranccsal.
+
+```azurecli-interactive
+az functionapp config show --name <function_app> \
+--resource-group <my_resource_group>
+```
+
+Ebben a kódban cserélje le a helyére a `<function_app>` Function alkalmazás nevét. Cserélje le a `<my_resource_group>` függvényt a Function alkalmazás erőforráscsoport nevére is. 
+
+A `linuxFxVersion` következő kimenet jelenik meg, amelyet az egyértelműség érdekében csonkolt:
+
+```output
+{
+  ...
+
+  "kind": null,
+  "limits": null,
+  "linuxFxVersion": <LINUX_FX_VERSION>,
+  "loadBalancing": "LeastRequests",
+  "localMySqlEnabled": false,
+  "location": "West US",
+  "logsDirectorySizeLimit": 35,
+   ...
+}
+```
+
+A `linuxFxVersion` Function alkalmazásban található beállításokat az az [functionapp config set](/cli/azure/functionapp/config) paranccsal frissítheti.
+
+```azurecli-interactive
+az functionapp config set --name <FUNCTION_APP> \
+--resource-group <RESOURCE_GROUP> \
+--linux-fx-version <LINUX_FX_VERSION>
+```
+
+Cserélje le a helyére `<FUNCTION_APP>` a Function alkalmazás nevét. Cserélje le a `<RESOURCE_GROUP>` függvényt a Function alkalmazás erőforráscsoport nevére is. Továbbá cserélje le `<LINUX_FX_VERSION>` a értéket a fent ismertetett értékekre.
+
+Ezt a parancsot a [Azure Cloud Shell](../cloud-shell/overview.md) futtathatja, ha az előző kódrészletben a **kipróbálás** lehetőséget választja. Az [Azure CLI helyi](/cli/azure/install-azure-cli) használatával is végrehajthatja ezt a parancsot az [az login (bejelentkezés](/cli/azure/reference-index#az-login) ) parancs végrehajtása után.
+
+
+Hasonlóképpen, a Function alkalmazás újraindul a hely konfigurációjának módosítása után.
+
+> [!NOTE]
+> Vegye figyelembe, hogy `LinuxFxVersion` közvetlenül a használati alkalmazások számára a képurl-cím beállítását a rendszer a helyőrzők és más, a hideg indítási optimalizálások alapján választja ki.
+
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

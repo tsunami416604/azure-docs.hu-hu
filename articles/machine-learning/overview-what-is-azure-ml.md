@@ -1,5 +1,5 @@
 ---
-title: Mi az az Azure Machine Learning?
+title: Mi az Azure Machine Learning?
 description: Az Azure Machine Learning egy integrált adatelemzési megoldás adatszakértőknek és MLops, amely a felhőalapú alkalmazások modellezésére és üzembe helyezésére használható.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 53e6d6e67a90cd1f39aed7f9cd7c2368282b2d1f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620477"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916592"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -118,14 +118,14 @@ A Azure Machine Learning együttműködik az Azure platform egyéb szolgáltatá
 + __Azure-beli virtuális hálózatok__. További információ: [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md).
 + __Azure-folyamatok__. További információ: a [gépi tanulási modellek betanítása és üzembe helyezése](/azure/devops/pipelines/targets/azure-machine-learning).
 + A __git-tárház naplói__. További információ: git- [integráció](concept-train-model-git-integration.md).
-+ __MLFlow__. További információ: [MLflow a mérőszámok nyomon követéséhez és modellek üzembe helyezéséhez](how-to-use-mlflow.md) 
++ __MLFlow__. További információ: [MLflow a metrikák nyomon követéséhez](how-to-use-mlflow.md)  és a [MLflow-modellek webszolgáltatásként való üzembe helyezéséhez](how-to-deploy-mlflow-models.md) 
 + __Kubeflow__. További információ: [végpontok közötti munkafolyamat-folyamatok létrehozása](https://www.kubeflow.org/docs/azure/).
 
 ### <a name="secure-communications"></a>Biztonságos kommunikáció
 
 Az Azure Storage-fiók, a számítási célok és az egyéb erőforrások biztonságosan használhatók a virtuális hálózaton belül a modellek betanításához és következtetések teljesítéséhez. További információ: [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hozza létre első kísérletét a kívánt módszerrel:
 - + [Ismerkedés a saját fejlesztési környezetével](tutorial-1st-experiment-sdk-setup-local.md)

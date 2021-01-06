@@ -8,16 +8,32 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708897"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916456"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Az Azure NFS-fájlmegosztás hibáinak megoldása
 
 Ez a cikk az Azure NFS-fájlmegosztás-megosztásokkal kapcsolatos gyakori problémákat sorolja fel. A probléma előfordulásakor lehetséges okokat és megkerülő megoldásokat biztosít.
+
+## <a name="chgrp-filename-failed-invalid-argument-22"></a>a "filename" chgrp sikertelen volt: Érvénytelen argumentum (22)
+
+### <a name="cause-1-idmapping-is-not-disabled"></a>1. ok: a idmapping nincs letiltva
+Azure Files nem engedélyezi az alfanumerikus UID/GID használatát. Így a idmapping le kell tiltani. 
+
+### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>2. ok: a idmapping le lett tiltva, de a hibás fájl/dir neve után ismét engedélyezve lett
+Még ha a idmapping megfelelően le van tiltva, a idmapping letiltására vonatkozó beállítások bizonyos esetekben felülbírálva vannak. Ha például a Azure Files hibás fájlnevet észlel, hibaüzenetet küld vissza. Ha ezt a hibakódot látja, az NFS v 4,1 Linux-ügyfél úgy dönt, hogy újra engedélyezi a idmapping, és a jövőbeli kérelmeket az alfanumerikus UID/GID használatával újra elküldi. A Azure Filesban nem támogatott karakterek listáját ebben a [cikkben](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length)találja. A kettőspont az egyik nem támogatott karakter. 
+
+### <a name="workaround"></a>Áthidaló megoldás
+Győződjön meg arról, hogy a idmapping le van tiltva, és semmi sincs újból engedélyezve, majd hajtsa végre a következőket:
+
+- Megosztás leválasztása
+- Azonosító-leképezés letiltása az # ECHO Y >/sys/Module/NFS/Parameters/nfs4_disable_idmapping
+- A megosztás újbóli csatlakoztatása
+- Ha az rsync-et futtatja, futtassa az rsync-et a "– numerikus azonosítók" argumentummal olyan könyvtárból, amely nem rendelkezik hibás dir/fájlnév névvel.
 
 ## <a name="unable-to-create-an-nfs-share"></a>Nem hozható létre NFS-megosztás
 
@@ -52,7 +68,7 @@ Az NFS csak a következő konfigurációval rendelkező Storage-fiókokban érhe
 - Prémium szint
 - Fiók típusa – FileStorage
 - Redundancia – LRS
-- Régiók – USA keleti régiója, USA 2. keleti régiója, Egyesült Királyság déli régiója, Délkelet-Ázsia
+- Régiók – [támogatott régiók listája](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Megoldás
 
@@ -90,7 +106,7 @@ Az alábbi ábra a nyilvános végpontok használatával történő kapcsolódá
     - A privát végponton üzemeltetett virtuális hálózatokkal rendelkező virtuális hálózatok egymáshoz való hozzáférést biztosítanak az NFS-megosztáshoz a társ virtuális hálózatokban lévő ügyfelek számára.
     - A magánhálózati végpontok ExpressRoute, pont – hely és helyek közötti VPN-eket is használhatnak.
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="A nyilvános végpont kapcsolatának ábrája." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="A privát végpontok kapcsolatának ábrája." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>2. ok: a biztonságos átvitelre van szükség
 
@@ -100,7 +116,7 @@ A kettős titkosítás még nem támogatott az NFS-megosztások esetében. Az Az
 
 A Storage-fiók konfiguráció paneljén tiltsa le a biztonságos átvitelt.
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="A nyilvános végpont kapcsolatának ábrája.":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Képernyőfelvétel a Storage-fiók konfigurációja panelről, a biztonságos átvitel letiltása szükséges.":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>3. ok: az NFS-Common csomag nincs telepítve
 A csatlakoztatási parancs futtatása előtt telepítse a csomagot az alábbi disztribúció-specifikus parancs futtatásával.
