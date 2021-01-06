@@ -9,10 +9,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
 ms.openlocfilehash: 5638b60b60f3952ab40fa000e457082f4748ac35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 01/05/2021
 ms.locfileid: "96484345"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
@@ -210,7 +210,7 @@ A következő javaslatok ezeket az I/O-tulajdonságokat feltételezik a szabván
 
 A standard szintű tároláshoz a lehetséges gyorsítótár-típusok a következők:
 
-* Nincsenek
+* Nincs
 * Olvasás
 * Olvasás/írás
 
@@ -218,7 +218,7 @@ A konzisztens és determinisztikus teljesítmény érdekében állítsa be a sza
 
 Az Azure Premium Storage esetében a következő gyorsítótárazási lehetőségek léteznek:
 
-* Nincsenek
+* Nincs
 * Olvasás
 * Olvasás/írás
 * Nincs + írásgyorsító, amely csak az Azure M sorozatú virtuális gépekhez használható
@@ -363,7 +363,7 @@ Az SAP-alkalmazások Azure-beli virtuális gépeken történő éles használat�
 További információ a SAPOSCOL és az SAP-állomás ügynökeit tároló összetevők üzembe helyezéséről, valamint ezeknek az összetevőknek a életciklus-kezeléséről: [telepítési útmutató][deployment-guide].
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Egy adott adatbázis-kezelő rendszerről további információt a következő témakörben talál:
 
 - [SQL Server rendszerű Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz](dbms_guide_sqlserver.md)

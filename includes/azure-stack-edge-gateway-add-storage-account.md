@@ -2,16 +2,16 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 08/30/2020
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 0b6a6cbf51ef2ff1f1ef53b53a2b84c7a4f9510d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5f39f727deaf3a53db5e2928e5af23779c298318
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185543"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97911531"
 ---
-1. A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stack Edge-erőforrást, majd lépjen az **Áttekintés** elemre. Az eszköznek online állapotban kell lennie.
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stack Edge-erőforrást, majd lépjen az **Áttekintés** elemre. Az eszköznek online állapotban kell lennie. Nyissa meg a **Cloud Storage-átjáró > Storage-fiókok** lapot.
 
 2. Válassza ki a **+ Storage-fiók hozzáadása** lehetőséget az eszköz parancssáv-sávján. 
 
