@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746303"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932435"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory hozzáférési felülvizsgálatok központi telepítésének tervezése
 
@@ -333,9 +333,9 @@ A helyszíni Active Directoryról szinkronizált csoportok nem rendelkezhetnek t
 > [!NOTE]
 > Javasoljuk, hogy definiáljon olyan üzleti házirendeket, amelyek meghatározzák a csoportok létrehozását, így biztosítva a csoport tulajdonjogának és elszámoltathatóságának egyértelművé tételét a tagság rendszeres áttekintéséhez. 
 
-### <a name="review-membership-of-exclusion-groups-in-ca-policies"></a>Kizárási csoportok tagságának áttekintése a HITELESÍTÉSSZOLGÁLTATÓI házirendekben 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>Kizárási csoportok tagságának áttekintése a feltételes hozzáférési házirendekben 
 
-Vannak olyan időpontok, amikor a hálózat biztonságának megőrzésére tervezett feltételes hozzáférési (CA) szabályzatok nem vonatkoznak az összes felhasználóra. Például egy olyan HITELESÍTÉSSZOLGÁLTATÓI házirend, amely csak a vállalati hálózaton belüli bejelentkezést engedélyezi a felhasználók számára, nem érvényesek az értékesítési csapatra, amely nagy mértékben utazik. Ebben az esetben az értékesítési csapat tagjai egy csoportba kerülnek, és a csoport ki lesz zárva a HITELESÍTÉSSZOLGÁLTATÓI házirendből. 
+Időnként előfordulhat, hogy a hálózat biztonságának megőrzésére tervezett feltételes hozzáférési szabályzatok nem vonatkoznak az összes felhasználóra. Például egy feltételes hozzáférési szabályzat, amely csak a vállalati hálózaton belüli bejelentkezést engedélyezi a felhasználók számára, előfordulhat, hogy nem vonatkozik az értékesítési csapatra, amely nagy mértékben utazik. Ebben az esetben az értékesítési csapat tagjai egy csoportba kerülnek, és ezt a csoportot kizárják a feltételes hozzáférési szabályzatból. 
 
 Rendszeresen tekintse át az ilyen csoporttagság-tagságot, mivel a kizárás potenciális kockázatot jelent, ha a nem megfelelő tagokat kizárják a követelményből.
 

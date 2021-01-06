@@ -3,12 +3,12 @@ title: Üzembe helyezés és frissítés Azure Resource Manager
 description: Megtudhatja, hogyan helyezhet üzembe alkalmazásokat és szolgáltatásokat egy Service Fabric-fürtön egy Azure Resource Manager sablon használatával.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ed6bc7d96cb3ea0934929e6543c5e637a9f42c1f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681669"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930837"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Alkalmazások és szolgáltatások kezelése Azure Resource Manager erőforrásként
 
@@ -50,13 +50,12 @@ A következő kódrészlet a sablonon keresztül felügyelhető erőforrások k�
 }
 ```
 
-
 ## <a name="add-a-new-application-to-your-resource-manager-template"></a>Új alkalmazás hozzáadása a Resource Manager-sablonhoz
 
 1. Készítse elő a fürt Resource Manager-sablonját a telepítéshez. További információ: [Service Fabric-fürt létrehozása Azure Resource Manager használatával](service-fabric-cluster-creation-via-arm.md) .
 2. Gondoljon néhány olyan alkalmazásra, amelyet a fürtön való üzembe helyezésre tervez. Vannak olyanok, amelyek mindig futni fognak, hogy más alkalmazások függőségeket is igénybe vehetnek? Tervezi a fürtök irányítását vagy az alkalmazások telepítését? Az ilyen típusú alkalmazásokat a legjobban egy Resource Manager-sablonnal felügyelik, a fentiekben leírtak szerint. 
-3. Miután kitalálta, hogy milyen alkalmazásokat szeretne üzembe helyezni, az alkalmazásokat be kell csomagolni, kicsomagolni és megosztani egy fájlmegosztást. A megosztásnak elérhetőnek kell lennie egy REST-végponton keresztül, hogy az üzembe helyezés során Azure Resource Manager használni.
-4. A Resource Manager-sablonban a fürt deklarációja alatt írja le az egyes alkalmazások tulajdonságait. Ezek a tulajdonságok közé tartoznak a replika vagy a példányszám, valamint az erőforrások (más alkalmazások vagy szolgáltatások) közötti függőségi láncok. Az átfogó tulajdonságok listájáért tekintse meg a [REST API hencegő specifikációt](https://aka.ms/sfrpswaggerspec). Vegye figyelembe, hogy ez nem váltja fel az alkalmazás vagy a szolgáltatás jegyzékfájlját, hanem a fürt Resource Manager-sablonjának részeként ismertet néhányat. Itt látható egy sablon, amely egy állapot nélküli szolgáltatás *service1* és egy állapot-nyilvántartó szolgáltatás *service2* üzembe helyezését foglalja magában a *Application1* részeként:
+3. Ha kitalálta, hogy milyen alkalmazásokat szeretne üzembe helyezni, az alkalmazásokat be kell csomagolni, kicsomagolni és egy tárolási megosztásra kell helyezni. A megosztásnak elérhetőnek kell lennie egy REST-végponton keresztül, hogy az üzembe helyezés során Azure Resource Manager használni. További részleteket a [Storage-fiók létrehozása](service-fabric-concept-resource-model.md#create-a-storage-account) című témakörben talál.
+4. A Resource Manager-sablonban a fürt deklarációja alatt írja le az egyes alkalmazások tulajdonságait. Ezek a tulajdonságok közé tartoznak a replika vagy a példányszám, valamint az erőforrások (más alkalmazások vagy szolgáltatások) közötti függőségi láncok. Vegye figyelembe, hogy ez nem váltja fel az alkalmazás vagy a szolgáltatás jegyzékfájlját, hanem a fürt Resource Manager-sablonjának részeként ismertet néhányat. Itt látható egy sablon, amely egy állapot nélküli szolgáltatás *service1* és egy állapot-nyilvántartó szolgáltatás *service2* üzembe helyezését foglalja magában a *Application1* részeként:
 
    ```json
    {
@@ -244,7 +243,7 @@ A következő kódrészlet a sablonon keresztül felügyelhető erőforrások k�
    ```
 
    > [!NOTE] 
-   > A *apiVersion* a következőre kell beállítani: `"2019-03-01"` . Ez a sablon a fürttől függetlenül is telepíthető, feltéve, hogy a fürt már telepítve van.
+   > Tekintse meg a Service Fabric [Azure Resource Manager referenciát](/azure/templates/microsoft.servicefabric/clusters/applicationtypes) , amely az egyes sablonok tulajdonságainak használatát és részleteit keresi.
 
 5. Telepíteni! 
 
@@ -266,7 +265,7 @@ Ha a fürt már fel van véve, és néhány olyan alkalmazást, amelyet Resource
 > [!NOTE]
 > Ha engedélyezni szeretné, hogy a fürt a nem megfelelő állapotú alkalmazásokat hagyja figyelmen kívül, az ügyfél az "upgradeDescription/healthPolicy" szakaszban megadhatja a "maxPercentUnhealthyApplications: 100" kifejezést. az összes beállítás részletes leírása a [Service fabric REST API a fürt frissítési házirendjének dokumentációjában](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)található.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [Service FABRIC parancssori](service-fabric-cli.md) felület vagy a [PowerShell](service-fabric-deploy-remove-applications.md) használatával telepíthet más alkalmazásokat a fürtön. 
 * [A Service Fabric-fürt frissítése](service-fabric-cluster-upgrade.md)

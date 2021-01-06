@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704214"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933982"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault helyreállítási felügyelet a Soft delete és a Purge Protection szolgáltatással
 
@@ -394,4 +394,4 @@ A helyreállítható törléssel kapcsolatos további információkért lásd: [
 - [Key Vault naplózás engedélyezése](howto-logging.md)
 - [Biztonságos hozzáférés a kulcstartóhoz](secure-your-key-vault.md)
 - [Azure Key Vault fejlesztői útmutató](developers-guide.md)
-- [Ajánlott eljárások a Key Vault használatához](best-practices.md)
+- [Ajánlott eljárások a Key Vault használatához](security-overview.md)

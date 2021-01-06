@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c34135a59521eca361c59a1c82854469626616
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 8dd570a31813ef12ee8a007c84facb8aa5e7aca4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743965"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933132"
 ---
 # <a name="manage-external-access-with-conditional-access-policies"></a>Külső hozzáférés kezelése feltételes hozzáférési szabályzatokkal 
 
-A [feltételes hozzáférés](../conditional-access/overview.md) az az eszköz, amelyet az Azure ad használ a jelek összekapcsolására, a házirendek betartatására, valamint annak meghatározására, hogy a felhasználó számára engedélyezett-e az erőforrásokhoz való hozzáférés. A feltételes hozzáférési szabályzatok létrehozásával és használatával kapcsolatos részletes információkért lásd: [feltételes hozzáférésű központi telepítés megtervezése](../conditional-access/plan-conditional-access.md). 
+A [feltételes hozzáférés](../conditional-access/overview.md) az az eszköz, amelyet az Azure ad használ a jelek összekapcsolására, a házirendek betartatására, valamint annak meghatározására, hogy a felhasználó számára engedélyezett-e az erőforrásokhoz való hozzáférés. A feltételes hozzáférési szabályzatok létrehozásáról és használatáról (feltételes hozzáférési szabályzatok) a [feltételes hozzáférés központi telepítésének megtervezése](../conditional-access/plan-conditional-access.md)című témakörben olvashat részletesen. 
 
 ![Feltételes hozzáférési jelek és döntések diagramja](media/secure-external-access//7-conditional-access-signals.png)
 
 
 
-Ez a cikk a HITELESÍTÉSSZOLGÁLTATÓI házirendek külső felhasználókra való alkalmazását ismerteti, és feltételezi, hogy nem rendelkezik hozzáféréssel a [jogosultságok kezeléséhez](../governance/entitlement-management-overview.md) . A HITELESÍTÉSSZOLGÁLTATÓI házirendek a jogosultságok kezelése mellett is használhatók.
+Ez a cikk a feltételes hozzáférési szabályzatok külső felhasználókra való alkalmazását ismerteti, és feltételezi, hogy nem rendelkezik hozzáféréssel a [jogosultságok kezeléséhez](../governance/entitlement-management-overview.md) szükséges funkciókhoz. A feltételes hozzáférési szabályzatok a jogosultságok kezelése mellett is használhatók.
 
 A dokumentumkészlet korábbi részében [létrehozott egy biztonsági tervet](3-secure-access-plan.md) , amely a következőket ismerteti:
 
@@ -36,27 +36,27 @@ A dokumentumkészlet korábbi részében [létrehozott egy biztonsági tervet](3
 
 * A külső felhasználókra vonatkozó bejelentkezési követelmények.
 
-Ezt a csomagot fogja használni a külső hozzáféréshez szükséges HITELESÍTÉSSZOLGÁLTATÓI szabályzatok létrehozásához. 
+Ezt a csomagot fogja használni a külső hozzáféréshez szükséges feltételes hozzáférési szabályzatok létrehozásához. 
 
 > [!IMPORTANT]
 > Hozzon létre néhány külső felhasználói teszt fiókot, hogy tesztelni tudja a létrehozott házirendeket, mielőtt alkalmazná azokat az összes külső felhasználóra.
 
 ## <a name="conditional-access-policies-for-external-access"></a>Feltételes hozzáférési szabályzatok külső hozzáféréshez
 
-Az alábbiakban a külső hozzáférés HITELESÍTÉSSZOLGÁLTATÓI házirendekkel való szabályozásával kapcsolatos ajánlott eljárásokat ismertetjük.
+Az alábbiakban a külső hozzáférés feltételes hozzáférési házirendekkel való szabályozásával kapcsolatos ajánlott eljárásokat ismertetjük.
 
-* Ha nem használhat csatlakoztatott szervezeteket a jogosultságok kezelése szolgáltatásban, hozzon létre egy Azure AD biztonsági csoportot vagy Microsoft 365 csoportot minden olyan partnerszervezet számára, amellyel együttműködik. Rendelje hozzá az adott partner összes felhasználóját a csoporthoz. Ezeket a csoportokat a HITELESÍTÉSSZOLGÁLTATÓI házirendekben használhatja.
+* Ha nem használhat csatlakoztatott szervezeteket a jogosultságok kezelése szolgáltatásban, hozzon létre egy Azure AD biztonsági csoportot vagy Microsoft 365 csoportot minden olyan partnerszervezet számára, amellyel együttműködik. Rendelje hozzá az adott partner összes felhasználóját a csoporthoz. Ezeket a csoportokat a feltételes hozzáférési házirendekben használhatja.
 
-* A lehető legkevesebb HITELESÍTÉSSZOLGÁLTATÓI házirendet hozzon létre. Az azonos hozzáférési igényekkel rendelkező alkalmazások esetében vegye fel őket ugyanahhoz a szabályzathoz.  
+* A lehető legkevesebb feltételes hozzáférési házirendet hozzon létre. Az azonos hozzáférési igényekkel rendelkező alkalmazások esetében vegye fel őket ugyanahhoz a szabályzathoz.  
 ‎ 
    > [!NOTE]
-   > A HITELESÍTÉSSZOLGÁLTATÓI házirendek legfeljebb 250 alkalmazást igényelhetnek. Ha több mint 250 alkalmazásnak ugyanaz a hozzáférési igénye, duplikált szabályzatokat hozzon létre. Az A szabályzat a 1-250-es alkalmazásokra vonatkozik, a B házirend a 251-500-es és egyéb alkalmazásokra is érvényes lesz.
+   > A feltételes hozzáférési szabályzatok legfeljebb 250 alkalmazást igényelhetnek. Ha több mint 250 alkalmazásnak ugyanaz a hozzáférési igénye, duplikált szabályzatokat hozzon létre. Az A szabályzat a 1-250-es alkalmazásokra vonatkozik, a B házirend a 251-500-es és egyéb alkalmazásokra is érvényes lesz.
 
 * Egyértelmű elnevezési konvencióval rendelkező külső hozzáférésre vonatkozó szabályzatok. Az egyik elnevezési konvenció *ExternalAccess_actiontaken_AppGroup*. Például ExternalAccess_Block_FinanceApps.
 
 ## <a name="block-all-external-users-from-resources"></a>Az összes külső felhasználó letiltása az erőforrásokból
 
-Letilthatja a külső felhasználók számára, hogy a CA-szabályzatokkal hozzáférjenek az erőforrások meghatározott csoportjaihoz. Miután meghatározta, hogy milyen erőforrásokhoz kívánja letiltani a hozzáférést, hozzon létre egy szabályzatot.
+Letilthatja a külső felhasználók számára, hogy a feltételes hozzáférési szabályzatokkal hozzáférjenek az erőforrások meghatározott csoportjaihoz. Miután meghatározta, hogy milyen erőforrásokhoz kívánja letiltani a hozzáférést, hozzon létre egy szabályzatot.
 
 Olyan házirend létrehozása, amely letiltja a külső felhasználók hozzáférését egy adott alkalmazáshoz:
 

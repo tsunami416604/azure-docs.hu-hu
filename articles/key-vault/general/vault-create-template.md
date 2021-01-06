@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704520"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933931"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Azure Key Vault és a tároló hozzáférési házirendjének létrehozása Resource Manager-sablonnal
 
@@ -213,7 +213,7 @@ Write-Host "Press [ENTER] to continue..."
 
 - Olvassa el [a Azure Key Vault áttekintése című témakört](../general/overview.md).
 - További információ a [Azure Resource Managerról](../../azure-resource-manager/management/overview.md).
-- Tekintse át [Azure Key Vault ajánlott eljárásokat](../general/best-practices.md).
+- Tekintse át a [Azure Key Vault biztonsági áttekintést](security-overview.md)
 
 ## <a name="next-steps"></a>További lépések
 

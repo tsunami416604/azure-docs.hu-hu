@@ -688,6 +688,10 @@
       items:
         - name: Az Apache HBase használata a HDInsightban
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - name: Alapelvek
+      items:
+        - name: Optimalizálás Advisor-javaslatokhoz
+          href: ./hbase/apache-hbase-advisor.md
     - name: Útmutatók
       items:
         - name: Fejlesztés

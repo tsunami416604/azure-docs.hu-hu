@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa6726bb5c60dceab0a58632da99c04361183246
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355393"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932690"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API-összekötő hozzáadása felhasználói folyamathoz
 
@@ -319,7 +319,7 @@ Győződjön meg a következőket:
 * Az API **-összekötő végponti URL-** címe a megfelelő API-végpontra mutat.
 * Az API explicit módon ellenőrzi a fogadott jogcímek null értékeit.
 * Az API a lehető leggyorsabban reagál a folyadékok felhasználói élményének biztosítására.
-    * Ha kiszolgáló nélküli függvényt vagy méretezhető webszolgáltatást használ, használjon olyan üzemeltetési tervet, amely az "ébren" vagy "Warm" API-t tartja. Azure Functions esetén a [Prémium csomag](../../azure-functions/functions-scale.md#premium-plan)használatát ajánlott használni. 
+    * Ha kiszolgáló nélküli függvényt vagy méretezhető webszolgáltatást használ, használjon olyan üzemeltetési tervet, amely az "ébren" vagy "Warm" API-t tartja. Azure Functions esetén a [Prémium csomag](../../azure-functions/functions-premium-plan.md)használatát ajánlott használni. 
 
 
 ### <a name="use-logging"></a>Naplózás használata
@@ -329,7 +329,7 @@ Győződjön meg a következőket:
 * Ha szükséges, használjon agresszívebb naplózási szintet (például "trace" vagy "debug") a fejlesztésben.
 * Az API figyelése hosszú válaszidő esetén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 <!-- - Learn [where you can enable an API connector](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow) -->
 - Ismerje meg, hogyan [adhat hozzá egyéni jóváhagyási munkafolyamatot önkiszolgáló regisztrációhoz](self-service-sign-up-add-approvals.md)
 - Ismerkedjen meg az [Azure Function](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)gyors üzembe helyezési mintákkal.

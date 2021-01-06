@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2157a1cb96475209762e829c549d628f2c35fd91
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425845"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930786"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>Fájlmegosztás beállítása a MSIX-alkalmazás csatolásához (előzetes verzió)
 
@@ -65,6 +65,12 @@ A MSIX alkalmazás telepítési folyamata nagy mértékben megegyezik a [FSLogix
 
 Ha a MSIX-alkalmazásait Azure Filesban tárolja, akkor a munkamenet-gazdagépek esetében az összes munkamenet-gazda virtuális gépnek hozzá kell rendelnie a Storage-fiók szerepköralapú hozzáférés-vezérlése (RBAC) és a fájlmegosztás új technológiai fájlrendszer (NTFS) engedélyeit a megosztáshoz.
 
+| Azure-objektum                      | Szükséges szerepkör                                     | Szerepkör-függvény                                  |
+|-----------------------------------|--------------------------------------------------|-----------------------------------------------|
+| Munkamenet-gazdagép (VM számítógép-objektumok)| Storage-fájladatok SMB-megosztásának közreműködője          | Olvasás és végrehajtás, olvasás, mappa tartalmának listázása  |
+| A fájlmegosztás rendszergazdái              | Storage-fájladatok SMB-megosztásának emelt szintű közreműködője | Teljes hozzáférés                                  |
+| A fájlmegosztás felhasználói               | Storage-fájladatok SMB-megosztásának közreműködője          | Olvasás és végrehajtás, olvasás, mappa tartalmának listázása  |
+
 A munkamenet-gazda virtuális gépek engedélyeinek a Storage-fiókhoz és a fájlmegosztáshoz való hozzárendeléséhez:
 
 1. Hozzon létre egy Active Directory tartományi szolgáltatások (AD DS) biztonsági csoportot.
@@ -91,7 +97,7 @@ Miután hozzárendelte az identitást a tárhelyhez, kövesse a [következő lé
 
 Arról is gondoskodnia kell, hogy a munkamenet-gazda virtuális gépei új technológiai fájlrendszerbeli (NTFS) engedélyekkel rendelkezzenek. Az engedélyek használatához rendelkeznie kell egy olyan operatív egység-tárolóval, amely Active Directory tartományi szolgáltatásokból (AD DS) származik, és a felhasználóknak az adott operatív egység tagjainak kell lenniük.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fájlmegosztás beállítása után a következő műveleteket kell végrehajtania:
 

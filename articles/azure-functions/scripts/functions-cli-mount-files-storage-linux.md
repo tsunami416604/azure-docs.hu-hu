@@ -4,12 +4,12 @@ description: Hozzon létre egy kiszolgáló nélküli Python-függvény alkalmaz
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bdcaeaca7c063f0532167077bba63f7e52a3d491
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 89cf1422c70a49497a1bc43e42248612e0c8dd83
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565058"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930905"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Fájlmegosztás csatlakoztatása egy Python-függvény alkalmazásához az Azure CLI használatával
 
@@ -26,7 +26,7 @@ Ez a Azure Functions minta parancsfájl létrehoz egy függvény alkalmazást, �
 
 ## <a name="sample-script"></a>Példaszkript
 
-Ez a szkript létrehoz egy Azure Function-alkalmazást a használati [terv](../functions-scale.md#consumption-plan)használatával.
+Ez a szkript létrehoz egy Azure Function-alkalmazást a használati [terv](../consumption-plan.md)használatával.
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/functions-cli-mount-files-storage-linux/functions-cli-mount-files-storage-linux.sh "Create an Azure Function on a Consumption plan")]
 
@@ -46,7 +46,7 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | [az WebApp config Storage-Account Add](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) | A megosztás csatlakoztatása a Function alkalmazáshoz. |
 | [az WebApp config Storage-Account List](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-list) | Megjeleníti a Function alkalmazáshoz csatlakoztatott fájlmegosztást. | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

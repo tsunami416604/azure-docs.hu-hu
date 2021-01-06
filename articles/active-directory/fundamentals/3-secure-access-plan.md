@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08a4f4a31893fc93789d019ea87dff390552f6a
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744022"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932520"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. biztonsági terv létrehozása külső hozzáféréshez 
 
@@ -175,7 +175,7 @@ Az Azure AD P2 és a Microsoft 365 E5 teljes körű biztonsági és irányítás
 | Jogosultságok kezelése| **Felhasználó hozzáadása hozzárendelés vagy önkiszolgáló hozzáférés használatával**| **Hozzáférési csomagok**| **Hozzáférési csomagok**|  |
 | Office 365-csoport| | Hozzáférés a csoporthoz tartozó hely (ek) hez (és kapcsolódó tartalomhoz)| Hozzáférés a csoportokhoz tartozó csapatokhoz (és kapcsolódó tartalmakhoz)|  |
 | Bizalmassági címkék| | **A hozzáférés manuális és automatikus besorolása és korlátozása**| **A hozzáférés manuális és automatikus besorolása és korlátozása**| **A hozzáférés manuális és automatikus besorolása és korlátozása** |
-| Azure AD biztonsági csoportok| **A hozzáférési csomagokban nem szereplő hozzáférésre vonatkozó HITELESÍTÉSSZOLGÁLTATÓI házirendek**| | |  |
+| Azure AD biztonsági csoportok| **A hozzáférési csomagokhoz nem tartozó feltételes hozzáférési szabályzatok**| | |  |
 
 
 ### <a name="entitlement-management"></a>Jogosultságok kezelése 
@@ -195,7 +195,7 @@ Az Azure AD P1-sel és a Microsoft 365 E3-mel is robusztus irányítás érhető
 | Azure AD B2B-együttműködés| **Meghívás e-mailben, OTP, önkiszolgáló**| Közvetlen B2B-összevonás| **Rendszeres felülvizsgálat partnerként**| Fiók eltávolítása<br>Bejelentkezés korlátozása |
 | Microsoft-vagy Office 365-csoportok| | | | A csoport lejárata vagy törlése.<br>Eltávolítás a csoportból. |
 | Biztonsági csoportok| | **Külső felhasználók hozzáadása biztonsági csoportokhoz (szervezeti egység, csapat, projekt stb.)**| |  |
-| Feltételes hozzáférési szabályzatok| | **Bejelentkezési HITELESÍTÉSSZOLGÁLTATÓI házirendek külső felhasználók számára**| |  |
+| Feltételes hozzáférési szabályzatok| | **Bejelentkezési feltételes hozzáférési szabályzatok külső felhasználók számára**| |  |
 
 
  ### <a name="access-to-resources"></a>Hozzáférés az erőforrásokhoz.
@@ -204,7 +204,7 @@ Az Azure AD P1-sel és a Microsoft 365 E3-mel is robusztus irányítás érhető
 | - |-|-|-|-|
 | Microsoft-vagy Office 365-csoportok| | **Hozzáférés a (z) csoporthoz (és a kapcsolódó tartalomhoz) tartozó helyekhez**|**Hozzáférés a Microsoft 365 csoporthoz (és a kapcsolódó tartalomhoz) tartozó csapatokhoz**|  |
 | Bizalmassági címkék| | A hozzáférés manuális osztályozása és korlátozása| A hozzáférés manuális besorolása és korlátozása.| Manuális besorolás a korlátozáshoz és a titkosításhoz |
-| Feltételes hozzáférési szabályzatok| HITELESÍTÉSSZOLGÁLTATÓI házirendek hozzáférés-vezérléshez| | |  |
+| Feltételes hozzáférési szabályzatok| A hozzáférés-vezérlésre vonatkozó feltételes hozzáférési szabályzatok| | |  |
 | További módszerek| | A SharePoint-webhely hozzáférését a biztonsági csoportokkal való részletességgel korlátozhatja.<br>Közvetlen megosztás letiltása.| **Külső meghívók korlátozása a csapatokból**|  |
 
 

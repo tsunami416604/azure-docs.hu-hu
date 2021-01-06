@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f43cb80a148f5dadb409f506f237cb1210a2000a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91575979"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933999"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Gyorsútmutató: Bérlő beállítása
 
@@ -55,7 +55,7 @@ Sok fejlesztő az Azure AD-bérlőkhöz kapcsolódó szolgáltatások vagy előf
 > [!TIP]
 > Ha meg kell keresnie a bérlőazonosítót, az alábbiakat teheti:
 > * Helyezze a kurzort a fiók neve fölé a címtár-/bérlőazonosító lekéréséhez, vagy
-> * válassza az Azure Portalon az **Azure Active Directory > Tulajdonságok > Címtár-azonosító** elemet.
+> * Keresse meg és válassza ki **Azure Active Directory > tulajdonságok > a bérlő azonosítója** elemet a Azure Portal
 
 Ha nincs társítva meglévő bérlő a fiókkal, egy GUID-t lát a fiók neve alatt, és nem hajthat végre műveleteket, például nem regisztrálhat alkalmazásokat, amíg végre nem hajtja a következő részben található lépéseket.
 

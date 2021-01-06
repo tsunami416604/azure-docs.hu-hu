@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: bd85936c86656a8ae59a04ccdf53a62bd852368f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b346a23ccde6abd0f76982a4d19e00e28e8511a7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655272"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930871"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Az Azure Sentinel ügyfél által felügyelt kulcsának beállítása
 
@@ -63,7 +63,7 @@ A CMK kiépítéséhez kövesse az alábbi lépéseket:
     > [!NOTE]
     >  A kulcs és a hozzáférés biztosításához a Azure Key Vault helyreállítható kell konfigurálni.
 
-1.  [Helyreállítási beállítások bekapcsolása:](../key-vault/general/best-practices.md#turn-on-recovery-options)
+1.  [Helyreállítási beállítások bekapcsolása:](../key-vault/general/key-vault-recovery.md)
 
     -   Győződjön meg arról, hogy a [Soft delete](../key-vault/general/soft-delete-overview.md) be van kapcsolva.
 
@@ -129,7 +129,7 @@ A kulcs előző verzióját 24 óra elteltével letilthatja, vagy azt követően
 
 Ha ugyanazt a kulcsot használja az Azure Sentinel-ben és a Log Analytics-ben, akkor szükség van a kulcs elforgatására, explicit módon frissítenie kell a fürterőforrás Log Analytics az új Azure Key Vault kulcs verzióját. További információ: [Azure monitor CMK forgatása](../azure-monitor/platform/customer-managed-keys.md#key-rotation).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a dokumentumból megtudhatta, hogyan állíthat be egy ügyfél által felügyelt kulcsot az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).

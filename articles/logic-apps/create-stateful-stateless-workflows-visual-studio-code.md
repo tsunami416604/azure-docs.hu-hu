@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: be8d00d795c19399d494db21578e9a7ba8dd9711
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632060"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934016"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban a Azure Logic Apps (előzetes verzió) bővítménnyel
 
@@ -421,7 +421,7 @@ Az ebben a példában szereplő munkafolyamat ezt az triggert és a következő 
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Hogy** | Yes | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
+   | **Művelet** | Yes | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
    | **Tárgy** | Yes | `An email from your example workflow` | Az e-mail tárgya |
    | **Törzs** | Yes | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
    ||||
@@ -598,7 +598,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
    ![Képernyőkép a munkafolyamat áttekintő oldaláról a futtatási állapottal és előzményekkel](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Futtatás állapota | Description |
+   | Futtatás állapota | Leírás |
    |------------|-------------|
    | **Megszakítva** | A Futtatás leállt vagy nem fejeződik be külső problémák miatt, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | A Futtatás elindítva és elindítva, de lemondási kérelem érkezett. |
@@ -622,7 +622,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
    A munkafolyamat egyes lépései a következő lehetséges állapotokat tartalmazhatják:
 
-   | Művelet állapota | Ikon | Description |
+   | Művelet állapota | Ikon | Leírás |
    |---------------|------|-------------|
    | Megszakítva | ![A "megszakított" művelet állapotának ikonja][aborted-icon] | A művelet a külső problémák miatt leállt vagy nem zárult, például rendszerleállás vagy elévült Azure-előfizetés. |
    | Lemondva | ![A "megszakított" művelet állapotának ikonja][cancelled-icon] | A művelet futása megszakadt, de lemondási kérelmet kapott. |
@@ -742,7 +742,7 @@ A logikai alkalmazást új erőforrásként teheti közzé, amely automatikusan 
 
       ![Az "Azure: Logic Apps (előzetes verzió)" panelt megjelenítő képernyőkép, amely a létrehozandó új logikai alkalmazás nevének megadását kéri.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
-   1. Válassza ki az új logikai alkalmazás üzemeltetési tervét [**app Service csomag**](../azure-functions/functions-scale.md#app-service-plan) vagy [**prémium**](../azure-functions/functions-scale.md#premium-plan). Ez a példa **app Service tervet** választ.
+   1. Válassza ki az új logikai alkalmazás üzemeltetési tervét [**app Service csomag**](../azure-functions/dedicated-plan.md) vagy [**prémium**](../azure-functions/functions-premium-plan.md). Ez a példa **app Service tervet** választ.
 
       ![Képernyőkép az "Azure: Logic Apps (előzetes verzió)" ablaktábláról, valamint egy "App Service-csomag" vagy "Prémium" kiválasztására vonatkozó kérdés.](./media/create-stateful-stateless-workflows-visual-studio-code/select-hosting-plan.png)
 
@@ -1285,7 +1285,7 @@ A probléma megoldásához és a hosszú URI-ra való igazításhoz módosítsa 
 
 1. Ha elkészült, indítsa újra a számítógépet, hogy a módosítások érvénybe lépnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Szeretnénk hallani a Azure Logic Apps (előzetes verzió) bővítménnyel kapcsolatos tapasztalatairól.
 

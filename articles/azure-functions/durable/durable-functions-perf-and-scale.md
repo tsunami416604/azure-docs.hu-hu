@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b9fc465b5e5f132264fd36e004fa3ee7623b87a5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c94218248f1122cdb60ab8124bc9d9365fe8947b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854988"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931738"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezés a Durable Functionsben (Azure Functions)
 
@@ -51,7 +51,7 @@ A tartós feladathoz tartozó bővítmény egy véletlenszerű exponenciális vi
 A maximális lekérdezési késleltetés a `maxQueuePollingInterval` [ fájlhost.js](../functions-host-json.md#durabletask)tulajdonságán keresztül konfigurálható. Ha ezt a tulajdonságot magasabb értékre állítja, akkor az üzenet feldolgozási késése magasabb lehet. A nagyobb késések csak a tétlenségi időszakok után várhatók. Ha ez a tulajdonság alacsonyabb értékre van állítva, a megnövekedett tárolási tranzakciók miatt magasabb tárolási költségek léphetnek fel.
 
 > [!NOTE]
-> A Azure Functions-felhasználás és a prémium csomagok futtatásakor a [Azure functions skálázási vezérlő](../functions-scale.md#how-the-consumption-and-premium-plans-work) 10 másodpercenként egyszer lekérdezi az egyes vezérlőket és a munkaelemek várólistáit. Ez a további lekérdezés a Function app-példányok aktiválásához és a méretezési döntések elvégzéséhez szükséges. Az írás időpontjában ez a 10 másodperces intervallum állandó, és nem konfigurálható.
+> A Azure Functions-felhasználás és a prémium csomagok futtatásakor a [Azure functions skálázási vezérlő](../event-driven-scaling.md) 10 másodpercenként egyszer lekérdezi az egyes vezérlőket és a munkaelemek várólistáit. Ez a további lekérdezés a Function app-példányok aktiválásához és a méretezési döntések elvégzéséhez szükséges. Az írás időpontjában ez a 10 másodperces intervallum állandó, és nem konfigurálható.
 
 ### <a name="orchestration-start-delays"></a>Előkészítési kezdési késések
 Az előkészítési példányok elkezdődnek, ha egy üzenetet helyeznek el `ExecutionStarted` a tevékenység központja egyik vezérlő-várólistáján. Bizonyos körülmények között megfigyelheti a több másodperces késleltetést, ha a rendszer futtatásakor ütemezi a futtatást, és amikor ténylegesen elindul. Ebben az időintervallumban a koordináló példány az állapotban marad `Pending` . Ennek a késleltetésnek két lehetséges oka van:
@@ -138,7 +138,7 @@ Az előkészítési példányok és entitások az összes vezérlő üzenetsor-p
 
 ## <a name="auto-scale"></a>Automatikus méretezés
 
-Csakúgy, mint a használat és a rugalmas prémium csomagokban futó összes Azure Functions esetében, Durable Functions az [Azure functions skálázási vezérlőn](../functions-scale.md#runtime-scaling)keresztül támogatja az automatikus méretezést. A skálázási vezérlő figyeli az összes várólista késését a _betekintés_ parancsainak rendszeres kiállításával. A beérkező üzenetek késése alapján a méretezési vezérlő eldönti, hogy virtuális gépeket kíván-e hozzáadni vagy eltávolítani.
+Csakúgy, mint a használat és a rugalmas prémium csomagokban futó összes Azure Functions esetében, Durable Functions az [Azure functions skálázási vezérlőn](../event-driven-scaling.md#runtime-scaling)keresztül támogatja az automatikus méretezést. A skálázási vezérlő figyeli az összes várólista késését a _betekintés_ parancsainak rendszeres kiállításával. A beérkező üzenetek késése alapján a méretezési vezérlő eldönti, hogy virtuális gépeket kíván-e hozzáadni vagy eltávolítani.
 
 Ha a méretezési vezérlő meghatározza, hogy a vezérlő üzenetsor-üzeneteinek késése túl magas, akkor a virtuálisgép-példányok hozzáadására csak akkor kerül sor, ha az üzenet késése elfogadható szintre csökken, vagy eléri a vezérlési várólista partícióinak darabszámát. Hasonlóképpen, a skálázási vezérlő folyamatosan hozzá fogja adni a virtuálisgép-példányokat, ha a munkaelem-várólista késése magas, a partíciók számától függetlenül.
 
@@ -264,7 +264,7 @@ Ha éles alkalmazások Durable Functions használatát tervezi használni, fonto
 
 A következő táblázat a korábban ismertetett forgatókönyvek várható *maximális* átviteli számát mutatja. A "példány" egy Orchestrator függvény egyetlen példányára hivatkozik, amely egy kisméretű ([a1](../../virtual-machines/sizes-previous-gen.md)) virtuális gépen fut Azure app Serviceban. A rendszer minden esetben feltételezi, hogy a [kiterjesztett munkamenetek](#orchestrator-function-replay) engedélyezve vannak. A tényleges eredmények a kód által végzett CPU-vagy I/O-műveletektől függően változhatnak.
 
-| Használati példa | Maximális átviteli sebesség |
+| Eset | Maximális átviteli sebesség |
 |-|-|
 | Szekvenciális tevékenységek végrehajtása | 5 tevékenység másodpercenként, a példányok száma szerint |
 | Párhuzamos tevékenységek végrehajtása (ventilátor – kimenő) | 100 tevékenység/másodperc/példány |
@@ -277,7 +277,7 @@ A következő táblázat a korábban ismertetett forgatókönyvek várható *max
 
 Ha nem látja a várt átviteli sebességet, és a CPU és a memóriahasználat állapota Kifogástalan, ellenőrizze, hogy az ok a [Storage-fiók állapotára](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)vonatkozik-e. Az Durable Functions bővítmény jelentős terhelést helyezhet el egy Azure Storage-fiókban, és a megfelelő terhelés miatt a Storage-fiókok szabályozása is lehetséges.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tudnivalók a vész-helyreállításról és a földrajzi eloszlásról](durable-functions-disaster-recovery-geo-distribution.md)

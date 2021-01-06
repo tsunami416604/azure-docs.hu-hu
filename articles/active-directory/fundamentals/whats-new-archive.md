@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 6e561a0e05cf1a0870d85369867caba6c4d6bf12
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862439"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932418"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -3733,7 +3733,7 @@ Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további
 
 **Írja be a következőt:** Új szolgáltatás **szolgáltatásának kategóriája:** egyéb **termék funkció:** könyvtár
 
-Új, lépésenkénti útmutató a Azure Active Directory (Azure AD) üzembe helyezéséhez, beleértve az önkiszolgáló jelszó-visszaállítás (SSPR), az egyszeri bejelentkezés (SSO), a feltételes hozzáférés (CA), az App proxy, a felhasználók kiépítése, a Active Directory összevonási szolgáltatások (AD FS) (ADFS) és a jelszó-kivonat szinkronizálása (PHS) használatát.
+Új, lépésenkénti útmutató a Azure Active Directory (Azure AD) üzembe helyezéséhez, beleértve az önkiszolgáló jelszó-visszaállítást (SSPR), az egyszeri bejelentkezést (SSO), a feltételes hozzáférést, az App proxyt, a felhasználók kiépítése, a Active Directory összevonási szolgáltatások (AD FS) (ADFS) és a hitelesítő adatokat, valamint az ADFS-t a jelszó-kivonatolási szinkronizálásra (PHS).
 
 Az üzembe helyezési útmutatók megtekintéséhez nyissa meg az [Identity Deployment Guides](./active-directory-deployment-plans.md) -tárházat a githubon. Ha visszajelzést szeretne küldeni a telepítési útmutatókról, használja a [központi telepítési terv visszajelzési űrlapját](https://aka.ms/deploymentplanfeedback). Ha bármilyen kérdése van az üzembe helyezési útmutatókkal kapcsolatban, lépjen kapcsolatba velünk a következő címen: [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
 
@@ -4750,7 +4750,7 @@ A Azure AD Privileged Identity Management segítségével a szervezeten belül f
 
 - Előfizetések
 - Erőforráscsoportok
-- Virtuális gépek
+- Virtual machines (Virtuális gépek)
 
 Az Azure RBAC funkciót használó Azure Portal összes erőforrása kihasználhatja a Azure AD Privileged Identity Management által kínált biztonsági és életciklus-kezelési képességek előnyeit.
 
