@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 495b4427fb7e456c60a489b9ce3d19c2a44bd918
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335213"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680891"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Oktatóanyag: Adatok másolása az Azure Data Boxból SMB-n keresztül (Előzetes verzió)
+# <a name="tutorial-copy-data-from-azure-data-box-via-smb"></a>Oktatóanyag: Adatok másolása az Azure Data Boxból SMB-n keresztül
 
 Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a Data Boxhoz, illetve hogyan másolhat onnan adatokat egy helyszíni kiszolgálóra a helyi webes felhasználói felület használatával. A Data Box eszköz az Azure Storage-fiókjából exportált adatokat tartalmazza.
 
@@ -27,8 +27,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Előfeltételek
 > * Csatlakozás a Data Boxhoz
 > * Adatok másolása a Data Boxról
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +54,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     
     ![Megosztás hitelesítő adatainak beszerzése, a hozzáférés megosztása és az adatok másolása](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
-3. A tárfiókjához (a következő példában *exportbvtdataset2* ) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
+3. A tárfiókjához (a következő példában *exportbvtdataset2*) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -100,7 +98,7 @@ A Data Box-megosztásokhoz történő csatlakozás után a következő lépés a
 
 A Robocopy-paranccsal kapcsolatos további információért lásd [a Robocopyt és néhány példát](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) bemutató témakört.
 
-A másolás befejezése után nyissa meg az **Irányítópultot** , majd ellenőrizze, hogy az eszközén lévő felhasznált és szabad tárhely mennyiségét.
+A másolás befejezése után nyissa meg az **Irányítópultot**, majd ellenőrizze, hogy az eszközén lévő felhasznált és szabad tárhely mennyiségét.
 
 Ezután elküldheti az Azure Data Boxot a Microsoftnak.
 

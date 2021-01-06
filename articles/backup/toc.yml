@@ -75,7 +75,7 @@
         - name: GYIK – Recovery Services-tárak
           href: backup-azure-backup-faq.md
         - name: GYIK – Biztonsági mentési központ
-          href: backup-center-faq.md
+          href: backup-center-faq.yml
         - name: GYIK – Azure-beli virtuális gépek biztonsági mentése
           href: backup-azure-vm-backup-faq.md
         - name: GYIK – A MARS-ügynök

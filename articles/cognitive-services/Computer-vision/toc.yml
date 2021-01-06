@@ -139,7 +139,7 @@
         - name: Képfeldolgozó alkalmazás felfedezése
           href: Tutorials/CSharpTutorial.md
         - name: Egyéb Computer Vision-minták
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=computer-vision'
     - name: GYIK
       href: FAQ.md
     - name: Kategóriaelnevezési rendszer

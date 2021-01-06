@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/17/2020
 ms.author: banders
-ms.openlocfilehash: f0ace05d6a4df65282bd56cca8e7895b0dc24edf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 511c0ecdef45a882bcc3a427d5ec602b3ebabc66
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686547"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673831"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>A Microsoft-ügyfélszerződéshez tartozó felügyeleti szerepkörök ismertetése az Azure-ban
 
@@ -32,7 +32,7 @@ Az alábbi táblázat a számlázási fiók, a számlázás profilok és a szám
 |Számlázásiprofil-tulajdonos|A teljes számlázási profilt kezeli.|
 |Számlázási profil közreműködője|A teljes számlázási profilt kezeli, kivéve az engedélyeket.|
 |Számlázásiprofil-olvasó|A számlázási profil egészének írásvédett megtekintése.|
-|Számlakezelő|Megtekinti és kifizeti a számlázási profilhoz tartozó számlákat.|
+|Számlakezelő|A számlázási profilhoz tartozó számlák megtekintése|
 |Számlázási szakasz tulajdonosa|A számlázási szakasz tartalmát kezeli.|
 |Számlázási szakasz közreműködője|A számlázási szakasz tartalmát kezeli az engedélyeket kivéve.|
 |Számlázási szakasz olvasója|A számlaszakasz tartalmának írásvédett nézete|
