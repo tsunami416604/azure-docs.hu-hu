@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: eddee6bc0fdcd636b7b9ffb81b121052499251b2
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 97b8f889bf625ac36917debe2cc2848cb1a97e37
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745717"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956470"
 ---
 [Dokumentáció](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Példák](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -74,7 +74,7 @@ Ezután adja hozzá a következő `quickstart` függvényt a program fő munkáj
 
 Adja hozzá a következő kódot a függvény végéhez a `quickstart` rendelkezésre álló erőforrások listázásához, egy minta erőforrás létrehozásához, a saját tulajdonban lévő erőforrások listázásához, majd a minta erőforrás törléséhez. Ezeket a függvényeket a következő lépésekben fogja meghatározni.
 
-## <a name="create-a-cognitive-services-resource"></a>Cognitive Services-erőforrás létrehozása
+## <a name="create-a-cognitive-services-resource-nodejs"></a>Cognitive Services erőforrás létrehozása (Node.js)
 
 Új Cognitive Services erőforrás létrehozásához és előfizetéséhez használja a **create** függvényt. Ez a függvény új számlázható erőforrást hoz létre az Ön által beadott erőforráscsoporthoz. Az új erőforrás létrehozásakor ismernie kell a használni kívánt szolgáltatás típusát, valamint az árképzési szintet (vagy SKU-t) és egy Azure-helyet. A következő függvény végrehajtja az összes ilyen argumentumot, és létrehoz egy erőforrást.
 
@@ -114,7 +114,7 @@ Ezután a konzol ablakban futtassa az alkalmazást a `node` paranccsal.
 node index.js
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Az Azure Management SDK dokumentációja](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)
 * [Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)
