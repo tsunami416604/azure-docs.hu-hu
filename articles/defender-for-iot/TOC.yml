@@ -3,6 +3,8 @@
 - name: Áttekintés
   href: overview.md
   items:
+    - name: Újdonságok
+      href: release-notes.md
     - name: Megoldásarchitektúra
       href: architecture.md
 - name: Rövid útmutatók

@@ -51,6 +51,11 @@
               href: azure-network-latency.md
             - name: Internetes útválasztási beállítás az Azure-ban
               href: ../virtual-network/routing-preference-overview.md
+        - name: Biztonság
+          items:
+            - name: Az Azure Policy biztonsági vezérlői
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
         - name: Virtuális hálózatok
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Hálózati terheléselosztás
@@ -135,6 +140,9 @@
       href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
     - name: REST
       href: 'https://msdn.microsoft.com/library/mt163658.aspx'
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Szerzői sablonok

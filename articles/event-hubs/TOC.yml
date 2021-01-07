@@ -275,26 +275,14 @@
           href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
     - name: Python
       items:
-        - name: Migrálás az azure-eventhub 1-es verzióból az 5-ös verzióba
-          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
         - name: Ügyfélkódtár
-          items:
-            - name: azure-eventhub 5-ös verzió
-              href: /python/api/azure-eventhub/?view=azure-python
-            - name: azure-eventhub 1-es verzió
-              href: /python/api/azure-eventhub/?view=azure-python-previous
+          href: /python/api/overview/azure/eventhub-readme?view=azure-python
         - name: Felügyeleti könyvtár
           href: /python/api/overview/azure/event-hub?view=azure-python
     - name: JavaScript
       items:
-        - name: Migrálás azure/eventhubs 2-es verzióból 5-ös verzióba
-          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
         - name: Ügyfélkódtár
-          items:
-            - name: azure/eventhubs 5-ös verzió
-              href: /javascript/api/@azure/event-hubs/?view=azure-node-latest
-            - name: azure/eventhubs 2-es verzió
-              href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
+          href: /javascript/api/overview/azure/event-hubs-readme?view=azure-node-latest
         - name: Felügyeleti könyvtár
           href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
     - name: Indítás
