@@ -9,19 +9,19 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 183d8b415ccb35d22dcc23ccf11d0707ad0778dd
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533480"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963655"
 ---
 # <a name="monitor-azure-machine-learning"></a>Az Azure Machine Learning monitorozása
 
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk a Azure Machine Learning által generált figyelési információkat ismerteti, valamint azt, hogy miként elemezheti és figyelmeztetheti ezeket az információkat a Azure Monitor.
 
 > [!TIP]
-> A jelen dokumentumban található információk elsősorban __rendszergazdák__ számára készültek, mivel a Azure Machine learning szolgáltatás és az ahhoz kapcsolódó Azure-szolgáltatások figyelését ismerteti. Ha Ön egy __adattudós__ vagy __fejlesztő__ , és szeretné figyelni a *modell-oktatóprogramokra* vonatkozó információkat, tekintse meg a következő dokumentumokat:
+> A jelen dokumentumban található információk elsősorban __rendszergazdák__ számára készültek, mivel a Azure Machine learning szolgáltatás és az ahhoz kapcsolódó Azure-szolgáltatások figyelését ismerteti. Ha Ön egy __adattudós__ vagy __fejlesztő__, és szeretné figyelni a *modell-oktatóprogramokra* vonatkozó információkat, tekintse meg a következő dokumentumokat:
 >
 > * [Betanítási futtatások indítása, figyelése és megszakítása](how-to-manage-runs.md)
 > * [A betanítási futtatások mérőszámainak naplózása](how-to-track-experiments.md)
@@ -91,6 +91,8 @@ Azure Machine Learning összes mérőszáma a névtér **Machine learning szolg�
 
 A hivatkozásokat a [Azure monitor által támogatott összes erőforrás-metrika](../azure-monitor/platform/metrics-supported.md)listáját láthatja.
 
+> [!TIP]
+> Azure Monitor metrikák adatai 90 napig érhetők el. A diagramok létrehozásakor azonban csak 30 napig lehet vizualizációt készíteni. Ha például egy 90 napos időszakot szeretne megjeleníteni, azt három, a 90 napos időszakon belül 30 napos diagramra kell bontania.
 ### <a name="filtering-and-splitting"></a>Szűrés és felosztás
 
 A dimenziókat támogató metrikák esetében a dimenzió érték használatával szűrőket alkalmazhat. Például az **aktív magok** szűrése a **fürt nevénél** `cpu-cluster` . 
@@ -162,13 +164,13 @@ Azure Machine Learning riasztásait a **Azure monitor** menüből származó **r
 
 A következő táblázat a Azure Machine Learning vonatkozó gyakori és javasolt metrikai szabályokat sorolja fel:
 
-| Riasztástípus | Condition (Állapot) | Leírás |
+| Riasztástípus | Feltétel | Leírás |
 |:---|:---|:---|
 | Modell-üzembehelyezés sikertelen | Összesítés típusa: Total, operátor: nagyobb, mint, küszöbérték: 0 | Ha egy vagy több modell telepítése meghiúsult |
 | Kvóta kihasználtsága (%) | Összesítés típusa: átlag, operátor: nagyobb, mint, küszöbérték: 90| Ha a kvóta kihasználtsági aránya nagyobb, mint 90% |
 | Használhatatlan csomópontok | Összesítés típusa: Total, operátor: nagyobb, mint, küszöbérték: 0 | Ha egy vagy több használhatatlan csomópont van |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A naplók és a metrikák ismertetését lásd: [Azure Machine learning adathivatkozás figyelése](monitor-resource-reference.md).
 - További információ a Azure Machine Learninghoz kapcsolódó kvóták használatáról: az [Azure-erőforrások kezelése és kvóták igénylése](how-to-manage-quotas.md).

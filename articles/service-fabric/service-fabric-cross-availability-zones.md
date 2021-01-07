@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 1217ecba7a5fcb3c0fc95f505e7ca07fc76129b2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930820"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962431"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -344,7 +344,7 @@ A korábban említett megoldás egy nodeType használ az AZ alapján. A követke
 A zónák virtuálisgép-méretezési csoportokon való engedélyezéséhez a következő három értéket kell tartalmaznia a virtuálisgép-méretezési csoport erőforrásaiban.
 
 * Az első érték a **Zones** tulajdonság, amely meghatározza a virtuálisgép-méretezési csoport Availability Zones.
-* A második érték a "singlePlacementGroup" tulajdonság, amelyet igaz értékre kell beállítani.
+* A második érték a "singlePlacementGroup" tulajdonság, amelyet igaz értékre kell beállítani. **A 3 AZ-ra kiterjedő méretezési csoport legfeljebb 300 virtuális gépet képes méretezni, akár "singlePlacementGroup = true" értékkel.**
 * A harmadik érték "zoneBalance", és nem kötelező, ami biztosítja a zónák szigorú kiegyensúlyozását, ha az igaz értékre van állítva. További információ a [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
 * A FaultDomain és a UpgradeDomain felülbírálásokat nem szükséges konfigurálni.
 

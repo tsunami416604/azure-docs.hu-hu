@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 66e363b43bf9028e3075efa0f5a1f54e6bda190d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0e16cb3d24f9dd33b156bca72ce1c99e7aae957a
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92512688"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963604"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Oktatóanyag: Azure Active Directory-integráció a Palo Alto Networks-szel kötött portálon
 
@@ -47,14 +47,14 @@ A Palo Alto Networks-portál az Azure AD-be való integrálásának konfigurál�
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: a keresőmezőbe írja be a **Palo Alto Networks Portal** kifejezést.
 1. Válassza ki a **Palo Alto Networks céges portált** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Palo Alto Networks-portálon konfigurálhatja és tesztelheti egy **B. Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Palo Alto Networks-portálon konfigurálhatja és tesztelheti egy **B. Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a hozzá tartozó, a Palo Alto Networks Portalon található kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a Palo Alto Networks céges portálon hajtsa végre a következő lépéseket:
@@ -70,22 +70,22 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a Pa
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A Azure Portal a **Palo Alto Networks Portal** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A Azure Portal a **Palo Alto Networks Portal** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** ablaktáblán hajtsa végre a következő lépéseket:
 
-   1. Az **azonosító**mezőben adja meg a mintát tartalmazó URL-címet `https://<customer_firewall_host_name>/SAML20/SP` .
+   1. Az **azonosító** mezőben adja meg a mintát tartalmazó URL-címet `https://<customer_firewall_host_name>/SAML20/SP` .
 
-   2. A **Válasz URL-cím**mezőben adjon meg egy URL-címet, amely a mintát tartalmazta `https://<customer_firewall_host_name>/SAML20/SP/ACS` .
+   2. A **Válasz URL-cím** mezőben adjon meg egy URL-címet, amely a mintát tartalmazta `https://<customer_firewall_host_name>/SAML20/SP/ACS` .
 
       > [!NOTE]
       > Az ebben a lépésben szereplő helyőrző értékek frissítése a tényleges azonosító és a válasz URL-címekkel. A tényleges értékek beszerzéséhez vegye fel a kapcsolatot a [Palo Alto Networks céges portál ügyfél-támogatási csapatával](https://support.paloaltonetworks.com/support).
 
-5. Az **SAML aláíró tanúsítvány** szakaszban, az **összevonási metaadatok XML**elem mellett válassza a **Letöltés**lehetőséget. Mentse a letöltött fájlt a számítógépre.
+5. Az **SAML aláíró tanúsítvány** szakaszban, az **összevonási metaadatok XML** elem mellett válassza a **Letöltés** lehetőséget. Mentse a letöltött fájlt a számítógépre.
 
     ![Az összevonási metaadatok XML-letöltési hivatkozása](common/metadataxml.png)
 
@@ -93,22 +93,22 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Palo Alto Networks-portálhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza ki a **Palo Alto Networks céges portál**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza ki a **Palo Alto Networks céges portál** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
@@ -123,7 +123,7 @@ Következő lépésként állítsa be az egyszeri bejelentkezést a Palo Alto-h�
 
     ![A Palo Alto Networks webhely eszköz lapja](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-3. A menüben válassza ki az **SAML-identitás szolgáltatója**elemet, majd válassza az **Importálás**lehetőséget.
+3. A menüben válassza ki az **SAML-identitás szolgáltatója** elemet, majd válassza az **Importálás** lehetőséget.
 
     ![Az Importálás gomb](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin2.png)
 
@@ -131,11 +131,11 @@ Következő lépésként állítsa be az egyszeri bejelentkezést a Palo Alto-h�
 
     ![A Palo Alto Networks egyszeri bejelentkezés konfigurálása](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    1. A **profil neve**mezőben adjon meg egy nevet, például **AzureAD-CaptivePortal**.
+    1. A **profil neve** mezőben adjon meg egy nevet, például **AzureAD-CaptivePortal**.
     
-    2. Az **Identitáskezelő metaadatainak**mellett válassza a **Tallózás**lehetőséget. Válassza ki a Azure Portalban letöltött metadata.xml fájlt.
+    2. Az **Identitáskezelő metaadatainak** mellett válassza a **Tallózás** lehetőséget. Válassza ki a Azure Portalban letöltött metadata.xml fájlt.
     
-    3. Válassza az **OK** lehetőséget.
+    3. Kattintson az **OK** gombra.
 
 ### <a name="create-a-palo-alto-networks-captive-portal-test-user"></a>Palo Alto Networks – kötött portál tesztelési felhasználó létrehozása
 
@@ -148,10 +148,11 @@ Ezután hozzon létre egy *Britta Simon* nevű felhasználót a Palo Alto Networ
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie a Palo Alto Networks-portálra, amelyhez be kell állítania az egyszeri bejelentkezést
+* Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie a Palo Alto Networks-portálra, amelyhez be kell állítania az egyszeri bejelentkezést
 
-Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a Palo Alto Networks céges portál csempére kattint, automatikusan be kell jelentkeznie a Palo Alto Networks-portálra, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások területén található Palo Alto Networks Portal csempére kattint, automatikusan be kell jelentkeznie a Palo Alto Networks-portálra, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="next-steps"></a>További lépések
 
 Miután konfigurálta a Palo Alto Networks-beli céges portált, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

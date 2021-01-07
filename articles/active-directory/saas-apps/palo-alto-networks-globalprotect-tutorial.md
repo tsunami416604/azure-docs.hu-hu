@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: a0b76c21ee76731f78ecd7f482472908fe93a9ee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 72072feebfcf8dba249d2045a399e09714177698
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513330"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Palo Alto Networks-GlobalProtect
 
@@ -46,14 +46,14 @@ A Palo Alto Networks-GlobalProtect az Azure AD-be való integrálásának konfig
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **Palo Alto Networks-GlobalProtect** a keresőmezőbe.
 1. Válassza a **Palo Alto Networks-GlobalProtect** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso-for-palo-alto-networks---globalprotect"></a>Azure AD SSO konfigurálása és tesztelése a Palo Alto Networks-GlobalProtect
 
-Azure AD SSO konfigurálása és tesztelése a Palo Alto Networks használatával – GlobalProtect egy **B. Simon**nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Palo Alto Networks-GlobalProtect.
+Azure AD SSO konfigurálása és tesztelése a Palo Alto Networks használatával – GlobalProtect egy **B. Simon** nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Palo Alto Networks-GlobalProtect.
 
 Az Azure AD SSO konfigurálásához és teszteléséhez a Palo Alto Networks-GlobalProtect használatával hajtsa végre a következő lépéseket:
 
@@ -68,9 +68,9 @@ Az Azure AD SSO konfigurálásához és teszteléséhez a Palo Alto Networks-Glo
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A Azure Portal a **Palo Alto Networks-GlobalProtect** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A Azure Portal a **Palo Alto Networks-GlobalProtect** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -95,22 +95,22 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a Palo Alto Networks-GlobalProtect elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Palo Alto Networks-GlobalProtect**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Palo Alto Networks-GlobalProtect** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
@@ -119,7 +119,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Nyissa meg a Palo Alto Networks-GlobalProtect rendszergazdaként egy másik böngészőablakban.
 
-2. Kattintson az **eszköz**elemre.
+2. Kattintson az **eszköz** elemre.
 
     ![A Palo Alto egyszeri bejelentkezés konfigurálása 1](./media/paloaltoglobalprotect-tutorial/tutorial_paloaltoadmin_admin1.png)
 
@@ -133,7 +133,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     a. A **profil neve** szövegmezőben adjon meg egy nevet, például: Azure ad GlobalProtect.
 
-    b. Az **Identitáskezelő metaadatainak**területén kattintson a **Tallózás** gombra, és válassza ki azt a metadata.xml fájlt, amelyet letöltött Azure Portal
+    b. Az **Identitáskezelő metaadatainak** területén kattintson a **Tallózás** gombra, és válassza ki azt a metadata.xml fájlt, amelyet letöltött Azure Portal
 
     c. Kattintson **az OK** gombra
 
@@ -145,12 +145,12 @@ Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Palo Alto Netw
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-1. Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a Palo Alto Networks-GlobalProtect bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot. 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a Palo Alto Networks-GlobalProtect bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot. 
 
-2. Nyissa meg a Palo Alto Networks-GlobalProtect bejelentkezési URL-címét, és indítsa el onnan a bejelentkezési folyamatot.
+* Nyissa meg a Palo Alto Networks-GlobalProtect bejelentkezési URL-címét, és indítsa el onnan a bejelentkezési folyamatot.
 
-3. Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a Palo Alto Networks-GlobalProtect csempére kattint, automatikusan be kell jelentkeznie a Palo Alto Networks-GlobalProtect, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Palo Alto Networks-GlobalProtect csempére kattint, automatikusan be kell jelentkeznie a Palo Alto Networks-GlobalProtect, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Palo Alto Networks-GlobalProtect konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

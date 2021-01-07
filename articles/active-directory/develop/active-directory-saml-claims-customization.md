@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9c316362e2cd3fca9290e5f8070879567d9b7ea5
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936794"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963502"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -135,7 +135,7 @@ A jogcímek átalakításához a következő függvények használhatók.
 | **StartWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel kezdődik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó alkalmazotti azonosítója, ha az ország/régió az "USA"-val kezdődik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: felhasználó. ország<br/>*Érték*: "US"<br/>2. paraméter (kimenet): user. Alkalmazottkód<br/>3. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
 | **Kinyerés () – a megfeleltetés után** | Azt az alsztringet adja vissza, amely a megadott értéknek felel meg.<br/>Ha például a bemeneti érték "Finance_BSimon", a megfelelő érték "Finance_", akkor a jogcím kimenete "BSimon". |
 | **Kinyerés () – a megfeleltetés előtt** | Az alsztringet adja vissza, amíg meg nem felel a megadott értéknek.<br/>Ha például a bemeneti érték "BSimon_US", a megfelelő érték "_US", akkor a jogcím kimenete "BSimon". |
-| **Kinyerés () – megfeleltetések között** | Az alsztringet adja vissza, amíg meg nem felel a megadott értéknek.<br/>Ha például a bemeneti érték "Finance_BSimon_US", az első egyező érték "Finance_", a második egyező érték "_US", akkor a jogcím kimenete "BSimon". |
+| **Kinyerés () – megfeleltetések között** | Az alsztringet adja vissza, amíg meg nem felel a megadott értéknek.<br/>Ha például a bemeneti érték "Finance_BSimon_US", az első egyező érték a "Finance \_ ", a második egyező érték pedig " \_ us", akkor a jogcím kimenete "BSimon". |
 | **ExtractAlpha () – előtag** | A karakterlánc ábécé részét adja vissza.<br/>Ha például a bemeneti érték "BSimon_123", akkor a "BSimon" értéket adja vissza. |
 | **ExtractAlpha () – utótag** | A karakterlánc ábécé részét képező utótagot adja vissza.<br/>Ha például a bemeneti érték "123_Simon", akkor a "Simon" értéket adja vissza. |
 | **ExtractNumeric () – előtag** | A sztring numerikus részét adja vissza.<br/>Ha például a bemeneti érték "123_BSimon", akkor a "123" értéket adja vissza. |
@@ -174,7 +174,7 @@ Először is a Microsoft Identity platform ellenőrzi, hogy a Britta felhasznál
 
 ![Feltételes konfiguráció igénylése](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazások kezelése az Azure AD-ben](../manage-apps/what-is-application-management.md)
 * [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek az Azure AD-alkalmazás-katalógusban](../manage-apps/configure-saml-single-sign-on.md)

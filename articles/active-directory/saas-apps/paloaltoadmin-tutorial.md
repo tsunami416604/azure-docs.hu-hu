@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 612576698d9eb40807b90e9d70f401aa6e9b864e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 57b1d47fa40c0af4bced1e4169fe60cd759ee2f3
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92512905"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Oktatóanyag: Azure Active Directory a Palo Alto Networks-integrációval – rendszergazdai felhasználói felület
 
@@ -47,14 +47,14 @@ A Palo Alto Networks-admin felhasználói felület az Azure AD-be való integrá
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **Palo Alto Networks-admin UI** a keresőmezőbe.
 1. Válassza a **Palo Alto Networks – rendszergazdai felhasználói felület** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Palo Alto Networks-admin felhasználói felületen konfigurálja és teszteli a **B. Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Palo Alto Networks-admin felhasználói felületen konfigurálja és teszteli a **B. Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a hozzá tartozó, a Palo Alto hálózatokban található felhasználó közötti kapcsolati kapcsolat szükséges.
 
 Az Azure AD egyszeri bejelentkezés a Palo Alto Networks-rendszergazdai KEZELŐFELÜLETtel való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
@@ -70,9 +70,9 @@ Az Azure AD egyszeri bejelentkezés a Palo Alto Networks-rendszergazdai KEZELŐF
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A Azure Portal a **Palo Alto Networks-admin UI** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A Azure Portal a **Palo Alto Networks-admin UI** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -96,7 +96,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     ![image](common/default-attributes.png)
 
    > [!NOTE]
-   > Mivel az attribútumok értékei csak példaként szolgálnak, a *Felhasználónév* és a *adminrole*megfelelő értékeit képezi le. Van egy másik opcionális attribútum is, a *accessdomain*, amely a tűzfal adott virtuális rendszereihez való rendszergazdai hozzáférés korlátozására szolgál.
+   > Mivel az attribútumok értékei csak példaként szolgálnak, a *Felhasználónév* és a *adminrole* megfelelő értékeit képezi le. Van egy másik opcionális attribútum is, a *accessdomain*, amely a tűzfal adott virtuális rendszereihez való rendszergazdai hozzáférés korlátozására szolgál.
 
 1. A fentiek mellett a Palo Alto Networks-admin UI alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
@@ -127,22 +127,22 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Palo Alto Networks-admin felhasználói felületéhez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Palo Alto Networks-admin felhasználói felület**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Palo Alto Networks-admin felhasználói felület** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
@@ -155,7 +155,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Az eszköz lap](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-3. A bal oldali ablaktáblán válassza ki az **SAML-identitás szolgáltatója**elemet, majd az **Importálás** elemre kattintva importálja a metaadat-fájlt.
+3. A bal oldali ablaktáblán válassza ki az **SAML-identitás szolgáltatója** elemet, majd az **Importálás** elemre kattintva importálja a metaadat-fájlt.
 
     ![A Metaadatok importálása gomb](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin2.png)
 
@@ -165,15 +165,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     a. A **profil neve** mezőben adjon meg egy nevet (például **AzureAD felügyeleti felhasználói felület**).
 
-    b. Az **Identity Provider metaadatai**területen válassza a **Tallózás**lehetőséget, majd válassza ki a Azure Portal korábban letöltött metadata.xml fájlt.
+    b. Az **Identity Provider metaadatai** területen válassza a **Tallózás** lehetőséget, majd válassza ki a Azure Portal korábban letöltött metadata.xml fájlt.
 
     c. Törölje az **identitás-szolgáltatói tanúsítvány** ellenőrzése jelölőnégyzet jelölését.
 
-    d. Válassza az **OK** lehetőséget.
+    d. Kattintson az **OK** gombra.
 
-    e. Ha a tűzfalon szeretné véglegesíteni a konfigurációkat **, válassza a**végrehajtás lehetőséget.
+    e. Ha a tűzfalon szeretné véglegesíteni a konfigurációkat **, válassza a** végrehajtás lehetőséget.
 
-5. A bal oldali ablaktáblán válassza ki az **SAML-identitás szolgáltatója**elemet, majd válassza ki az SAML identitás-szolgáltatói profilt (például **AzureAD felügyeleti felhasználói felület**), amelyet az előző lépésben hozott létre.
+5. A bal oldali ablaktáblán válassza ki az **SAML-identitás szolgáltatója** elemet, majd válassza ki az SAML identitás-szolgáltatói profilt (például **AzureAD felügyeleti felhasználói felület**), amelyet az előző lépésben hozott létre.
 
     ![Az SAML-identitás szolgáltatójának profilja](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
 
@@ -183,9 +183,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
   
     a. Az **Identity Provider slo URL-címe** mezőben cserélje le a korábban importált slo URL-címet a következő URL-címre: `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
   
-    b. Válassza az **OK** lehetőséget.
+    b. Kattintson az **OK** gombra.
 
-7. A Palo Alto Networks tűzfal rendszergazdai felhasználói felületén válassza az **eszköz**lehetőséget, majd válassza a **rendszergazdai szerepkörök**lehetőséget.
+7. A Palo Alto Networks tűzfal rendszergazdai felhasználói felületén válassza az **eszköz** lehetőséget, majd válassza a **rendszergazdai szerepkörök** lehetőséget.
 
 8. Kattintson a **Hozzáadás** gombra.
 
@@ -193,7 +193,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![A Palo Alto Networks-rendszergazda szerepkör konfigurálása](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
   
-10. A tűzfal rendszergazdai felhasználói felületén válassza az **eszköz**lehetőséget, majd válassza a **hitelesítési profil**lehetőséget.
+10. A tűzfal rendszergazdai felhasználói felületén válassza az **eszköz** lehetőséget, majd válassza a **hitelesítési profil** lehetőséget.
 
 11. Kattintson a **Hozzáadás** gombra.
 
@@ -203,7 +203,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     a. A **név** mezőben adjon meg egy nevet (például **AzureSAML_Admin_AuthProfile**).
 
-    b. A **típus** legördülő listában válassza az **SAML**elemet. 
+    b. A **típus** legördülő listában válassza az **SAML** elemet. 
 
     c. A **identitásszolgáltató-kiszolgáló profilja** legördülő listában válassza ki a megfelelő SAML Identity Provider-kiszolgáló profilt (például **AzureAD felügyeleti felhasználói felület**).
 
@@ -211,16 +211,16 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     d. Az **adminisztrátori szerepkör attribútuma** mezőben adja meg az attribútum nevét (például **adminrole**).
 
-    e. Válassza a **speciális** fület, majd az **engedélyezési lista**területen válassza a **Hozzáadás**lehetőséget.
+    e. Válassza a **speciális** fület, majd az **engedélyezési lista** területen válassza a **Hozzáadás** lehetőséget.
 
     ![A Hozzáadás gomb a Speciális lapon](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_allowlist.png)
 
     f. Jelölje be az **összes** jelölőnégyzetet, vagy válassza ki azokat a felhasználókat és csoportokat, akikkel hitelesíteni lehet a profilt.  
     Amikor egy felhasználó hitelesíti magát, a tűzfal megfelel a társított felhasználónévnek vagy csoportnak a listában szereplő bejegyzéseknek. Ha nem ad hozzá bejegyzéseket, akkor egyetlen felhasználó sem tud hitelesíteni.
 
-    : Válassza az **OK** lehetőséget.
+    : Kattintson az **OK** gombra.
 
-13. Ha engedélyezni szeretné, hogy a rendszergazdák az SAML SSO-t használják az Azure-ban, válassza az **eszköz**  >  **beállítása**lehetőséget. A **telepítés** ablaktáblán válassza a **felügyelet** fület, majd a **hitelesítési beállítások**területen válassza a **Beállítások** ("fogaskerék") gombot.
+13. Ha engedélyezni szeretné, hogy a rendszergazdák az SAML SSO-t használják az Azure-ban, válassza az **eszköz**  >  **beállítása** lehetőséget. A **telepítés** ablaktáblán válassza a **felügyelet** fület, majd a **hitelesítési beállítások** területen válassza a **Beállítások** ("fogaskerék") gombot.
 
     ![A beállítások gomb](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 
@@ -228,7 +228,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![A hitelesítési profil mező](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
 
-15. Válassza az **OK** lehetőséget.
+15. Kattintson az **OK** gombra.
 
 16. A konfiguráció elvégzéséhez válassza a **commit (véglegesítés**) lehetőséget.
 
@@ -240,13 +240,13 @@ Palo Alto hálózatok – a rendszergazda KEZELŐFELÜLETe támogatja az igény 
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-1. Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez a művelet átirányítja a Palo Alto Networks-admin felhasználói felület bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez a művelet átirányítja a Palo Alto Networks-admin felhasználói felület bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-2. Nyissa meg a Palo Alto Networks-rendszergazdai felhasználói felület bejelentkezési URL-címét, és indítsa el onnan a bejelentkezési folyamatot.
+* Nyissa meg a Palo Alto Networks-rendszergazdai felhasználói felület bejelentkezési URL-címét, és indítsa el onnan a bejelentkezési folyamatot.
 
-3. Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a Palo Alto Networks-admin felhasználói felület csempére kattint, automatikusan be kell jelentkeznie a Palo Alto Networks-admin felhasználói felületére, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Palo Alto Networks-admin felhasználói felület csempére kattint, automatikusan be kell jelentkeznie a Palo Alto Networks-admin felhasználói felületére, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután konfigurálta a Palo Alto Networks-admin felhasználói felületet, kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

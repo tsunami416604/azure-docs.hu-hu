@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 072abffcc74b8b060d98c07d1f310413c7b323ef
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: fc0f148da518c718dafaab082f9598ccd4372a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954940"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963810"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -140,15 +140,15 @@ Műveleti csoportok létrehozásához kövesse az alábbi eljárást:
             Például:
             1) 1. riasztás 3 konfigurációs elemmel: A, B, C – 3 munkaelemet fog létrehozni.
             2) 2. riasztás 1 konfigurációs elemmel: A-létrehoz 1 munkaelemet.
-
-        * Ha törli az "egyéni munkaelemek **létrehozása az egyes konfigurációs elemekhez"** jelölőnégyzetet, akkor az ITSM-összekötő egyetlen munkaelemet hoz létre minden egyes riasztási szabályhoz, és hozzáfűzi az összes érintett konfigurációs elemhez. Új munkaelem jön létre, ha az előző lezárult.
-        >[!NOTE]
+       >[!NOTE]
         > Ebben az esetben a kilőtt riasztások némelyike nem hoz majd új munkaelemeket a ITSM eszközben.
 
-            For example:
-            1) Alert 1 with 3 Configuration Items: A, B, C - will create 1 work item.
-            2) Alert 2 for the same alert rule as phase 1 with 1 Configuration Item: D - will be merged to the work item in phase 1.
-            3) Alert 3 for a different alert rule with 1 Configuration Item: E - will create 1 work item.
+        * Ha törli az "egyéni munkaelemek **létrehozása az egyes konfigurációs elemekhez"** jelölőnégyzetet, akkor az ITSM-összekötő egyetlen munkaelemet hoz létre minden egyes riasztási szabályhoz, és hozzáfűzi az összes érintett konfigurációs elemhez. Új munkaelem jön létre, ha az előző lezárult.
+
+            Például:
+             1) 1. riasztás 3 konfigurációs elemmel: A, B, C – 1 munkaelemet fog létrehozni.
+             2) 2. riasztás ugyanahhoz a riasztási szabályhoz az 1. fázisban 1 konfigurációs elemmel: a D – egyesítve lesz az 1. fázisban lévő munkaelembe.
+             3) 3. riasztás egy másik riasztási szabályhoz 1 konfigurációs elemmel: az E-1 munkaelemet hoz létre.
 
        ![A ITSM incidens ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration.png)
 

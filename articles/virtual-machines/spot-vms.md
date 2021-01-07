@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1666b7e74ceefd7e7e4fe6e499667b09efa0ac7
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963363"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963793"
 ---
 # <a name="use-spot-vms-in-azure"></a>Helyszíni virtuális gépek használata az Azure-ban
 
@@ -58,7 +58,7 @@ A helyszíni virtuális gépek bármely régióba üzembe helyezhetők, kivéve 
 Jelenleg a következő [típusú ajánlatok](https://azure.microsoft.com/support/legal/offer-details/) támogatottak:
 
 -   Nagyvállalati Szerződés
--   Használatalapú fizetés
+-   Utólagos elszámolás
 -   Szponzorált
 - A felhőalapú szolgáltató (CSP) esetében forduljon a partnerhez
 
@@ -81,7 +81,7 @@ A portálon megtekintheti a korábbi díjszabást és a kizárási arányt egy a
 
 **Tábla**:
 
-:::image type="content" source="./media/spot-table.png" alt-text="Képernyőkép a régió lehetőségeiről a díjszabási és a kizárási arány diagramként való különbségével.":::
+:::image type="content" source="./media/spot-table.png" alt-text="Képernyőfelvétel a régió lehetőségeiről a díjszabási és kizárási arányok táblázatként való különbségével.":::
 
 
 
@@ -111,7 +111,12 @@ A portálon megtekintheti a korábbi díjszabást és a kizárási arányt egy a
 
 **A:** A kérdését a következő címen teheti közzé és címkézheti `azure-spot` : [Q&a](/answers/topics/azure-spot.html). 
 
-## <a name="next-steps"></a>Következő lépések
+
+**K:** Hogyan változtathatom meg a helyszíni virtuális gépek maximális árát?
+
+**A:** A maximális ár módosítása előtt fel kell szabadítania a virtuális gépet. Ezt követően módosíthatja a maximális árat a portálon, a virtuális gép **konfigurációs** szakaszából. 
+
+## <a name="next-steps"></a>További lépések
 Helyszíni virtuális gépek üzembe helyezéséhez használja a [CLI](./linux/spot-cli.md)-t, a [portált](spot-portal.md), az [ARM-sablont](./linux/spot-template.md)vagy a [PowerShellt](./windows/spot-powershell.md) .
 
 Helyszíni virtuálisgép-példányokkal is üzembe helyezhetők a [méretezési csoport](../virtual-machine-scale-sets/use-spot.md).

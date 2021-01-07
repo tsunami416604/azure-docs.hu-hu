@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854944"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963587"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása egy Azure-beli virtuális hálózattal
 
@@ -130,6 +130,12 @@ A App Service terv VNet-integrációs felhasználói felülete megjeleníti az A
 
 * **Szinkronizáló hálózat**: a szinkronizálási hálózati művelet csak az átjárótól függő VNet-integrációs szolgáltatás esetében használatos. A szinkronizálási hálózati művelet végrehajtása biztosítja, hogy a tanúsítványok és a hálózati adatok szinkronban legyenek. Ha hozzáadja vagy megváltoztatja a VNet DNS-t, hajtson végre egy szinkronizálási hálózati műveletet. Ez a művelet újraindítja az összes olyan alkalmazást, amely ezt a VNet használja. Ez a művelet nem működik, ha egy alkalmazást és egy, a különböző előfizetésekhez tartozó vnet használ.
 * **Útvonalak hozzáadása**: útvonalak hozzáadása a kimenő forgalmat a VNet.
+
+A példányhoz rendelt magánhálózati IP-cím a ( **WEBSITE_PRIVATE_IP**) környezeti változón keresztül érhető el. A kudu-konzol felhasználói felületén a webalkalmazás számára elérhető környezeti változók listája is látható. Ezt az IP-címet az integrált alhálózat címtartományból rendeli hozzá a rendszer. A regionális VNet-integráció esetében a WEBSITE_PRIVATE_IP értéke a delegált alhálózat címtartományból származó IP-cím, az átjárók számára szükséges VNet-integráció esetében pedig az érték a Virtual Network átjárón konfigurált pont – hely címkészlet IP-címe. Ezt az IP-címet fogja használni a webalkalmazás, hogy az Virtual Networkon keresztül kapcsolódjon az erőforrásokhoz. 
+
+> [!NOTE]
+> A WEBSITE_PRIVATE_IP értéke a Change értékre van kötve. Azonban az integrációs alhálózat vagy a pont – hely címtartomány tartományán belüli IP-cím lesz, így engedélyezni kell a hozzáférést a teljes címtartományból.
+>
 
 ### <a name="gateway-required-vnet-integration-routing"></a>Átjáró – kötelező VNet integrációs Útválasztás
 A VNet meghatározott útvonalak az alkalmazásból a VNet irányuló forgalom irányítására szolgálnak. Ha további kimenő forgalmat szeretne elküldeni a VNet, adja hozzá ezeket a címeket. Ez a funkció csak az átjárók számára szükséges VNet-integrációval működik. Az útválasztási táblázatok nem érintik az alkalmazás adatforgalmát, ha átjáróval megkövetelt VNet-integrációt használ, ahogyan azt a regionális VNet-integrációval végzik.

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0033b6985313de351ffdaf7028d2c1e9bd76ba72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881242"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963519"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Újrahitelesítéssel kapcsolatos kérések optimalizálása és az Azure AD-munkamenet élettartamának megértése Multi-Factor Authentication
 
@@ -121,7 +121,7 @@ A bejelentkezési gyakoriság és az állandó böngésző-munkamenet feltétele
 1. Válassza a **Biztonság**, majd a **feltételes hozzáférés** lehetőséget.
 1. A szabályzatot a jelen cikkben ismertetett ajánlott munkamenet-kezelési beállításokkal konfigurálhatja.
 
-A jogkivonatok élettartamának áttekintéséhez az [Azure ad PowerShell használatával kérdezheti le az Azure ad-szabályzatokat](../develop/configure-token-lifetimes.md#prerequisites). Tiltsa le a meglévő szabályzatokat.
+A jogkivonatok élettartamának áttekintéséhez az [Azure ad PowerShell használatával kérdezheti le az Azure ad-szabályzatokat](../develop/configure-token-lifetimes.md#get-started). Tiltsa le a meglévő szabályzatokat.
 
 Ha több beállítás van engedélyezve a bérlőben, javasoljuk, hogy az Ön számára elérhető Licencelés alapján frissítse a beállításait. Ha például az Azure AD Premium-licencekkel rendelkezik, csak a *bejelentkezési gyakoriság* és az *állandó böngésző-munkamenet* feltételes hozzáférési szabályzatát kell használnia. Ha Microsoft 365 alkalmazásait vagy az Azure AD ingyenes licenceit, használja a *továbbra is bejelentkezett?* konfigurációt.
 

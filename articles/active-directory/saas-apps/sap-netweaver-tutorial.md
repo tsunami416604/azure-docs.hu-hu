@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: a282e1be019c697ad15d86df56ad191043ab4ae9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6b8dab3472473082562f1e4c0216886191e4a59
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935842"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962805"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP NetWeaver-vel
 
@@ -138,7 +138,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A Azure Portal **SAP NetWeaver** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** ceruza ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -206,7 +206,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-sap-netweaver-using-saml"></a>Az SAP NetWeaver konfigurálása az SAML használatával
@@ -339,7 +339,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
     ![OAuth konfigurálása](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
-    > Üzenet `soft state status is not supported` – figyelmen kívül hagyható, mert nincs probléma. További részletekért [tekintse](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true) meg a következőt:
+    > Üzenet `soft state status is not supported` – figyelmen kívül hagyható, mert nincs probléma. További részletekért [tekintse](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true)meg a következő témakört:.
 
 ### <a name="create-a-service-user-for-the-oauth-20-client"></a>Szolgáltatás felhasználójának létrehozása a OAuth 2,0-ügyfél számára
 
@@ -348,7 +348,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 2. OAuth-ügyfél regisztrálásakor a `SAML Bearer Grant type` .
 
     >[!NOTE]
-    >További részletekért tekintse meg a OAuth 2,0 ügyfél regisztrációját az SAML-tulajdonos [engedélyezési típusához](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type) .
+    >További részletekért tekintse meg a OAuth 2,0 ügyfél regisztrációját az SAML-tulajdonos [engedélyezési típusához](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type).
 
 3. tcod: SU01/hozza létre az ÜGYFÉL1 felhasználót, `System type` és rendelje hozzá a jelszót, mentse a hitelesítő adatokat az API-programozó számára, akinek a felhasználónevével kell írnia a felhasználónevet. Nincs hozzárendelve profil vagy szerepkör.
 

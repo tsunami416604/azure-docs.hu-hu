@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 555c41a9d53b27119299e5e9dca7c9e392fc5e25
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 4be8c8a6163fe0400b37a3f2e1884ff389c00518
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955484"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963706"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -160,7 +160,7 @@ A kompatibilitási szint a Analysis Services motor kiadás-specifikus viselkedé
 
 ## <a name="your-data-is-secure"></a>Az adatok biztonságban vannak
 
-Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai számára. Azure-szolgáltatásként a Analysis Services az Azure-platform részeként automatikusan engedélyezi az elosztott szolgáltatásmegtagadási (DDoS) támadások **alapvető** szintjét. További információ: [Azure DDoS Protection standard Overview](../ddos-protection/ddos-protection-overview.md). 
+Az Azure Analysis Services többszintű biztonságot nyújt bizalmas adatai számára. Azure-szolgáltatásként a Analysis Services biztosítja az elosztott szolgáltatásmegtagadási (DDoS) támadások **alapszintű** védelmét, amely az Azure platform részeként automatikusan engedélyezve van. További információ: [Azure DDoS Protection standard Overview](../ddos-protection/ddos-protection-overview.md). 
 
 A kiszolgáló szintjén a Analysis Services tűzfalat, Azure-hitelesítést, kiszolgálói rendszergazdai szerepköröket és Server-Side titkosítást biztosít. Az adatmodell szintjén a felhasználói szerepkörök, a sorcsoport és az objektumorientált biztonság gondoskodik az adatai biztonságáról, és azokat csak azok a felhasználók látják, akik számára a célja.
 

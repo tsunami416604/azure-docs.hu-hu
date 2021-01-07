@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 01/06/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1ebfa137357e60a1f462ef90c6430cbf0cb5b968
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: references_regions
+ms.openlocfilehash: 85d880966c4c3864206c7e92256eb8e705812f20
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746600"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962176"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Tárolók törlése (előzetes verzió)
 
@@ -53,11 +53,9 @@ Az Azure Storage REST API 2019-12-12-es és újabb verziója támogatja a tárol
 
 A tárolók Soft Delete a következő típusú tárolási fiókok esetében érhető el:
 
-- Általános célú v2 Storage-fiókok
+- Általános célú v2 és v1 Storage-fiókok
 - BLOB Storage-fiókok letiltása
 - Blob Storage-fiókok
-
-Ha a Storage-fiók egy általános célú v1-fiók, a Azure Portal használatával frissítsen egy általános célú v2-fiókra. A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md).
 
 A Azure Data Lake Storage Gen2-vel való használatra engedélyezett hierarchikus névtérrel rendelkező Storage-fiókok is támogatottak.
 
@@ -115,7 +113,7 @@ az feature show --namespace Microsoft.Storage --name ContainerSoftDelete
 
 A tárolók törlésének engedélyezése nem díjköteles. A helyreállított törölt tárolókban lévő adatforgalom az aktív adatforgalommal megegyező sebességgel történik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tároló helyreállítható törlésének konfigurálása](soft-delete-container-enable.md)
 - [Blobok helyreállítható törlése](soft-delete-blob-overview.md)

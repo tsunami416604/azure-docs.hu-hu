@@ -15,16 +15,16 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: e603aa8ba85fdd214c04de515f405bcf9028791e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: add4b54adb02db09536f4e56a7f039c46245c182
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207113"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963560"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy Azure Functions alkalmazásban
 
-Az App Configuration .NET Standard konfigurációs szolgáltatója támogatja a gyorsítótárazást és a konfiguráció frissítését dinamikusan vezérelt alkalmazási tevékenységgel. Ez az oktatóanyag bemutatja, hogyan valósítható meg a dinamikus konfigurációs frissítések a kódban. Ez a rövid útmutatókban bemutatott Azure Functions alkalmazásra épül. Mielőtt továbblépne, először [hozzon létre egy Azure functions-alkalmazást az Azure app Configuration szolgáltatással](./quickstart-azure-functions-csharp.md) .
+Az alkalmazás konfigurációja .NET-konfigurációs szolgáltató támogatja a gyorsítótárazást és a konfiguráció frissítését dinamikusan vezérelt alkalmazási tevékenységgel. Ez az oktatóanyag bemutatja, hogyan valósítható meg a dinamikus konfigurációs frissítések a kódban. Ez a rövid útmutatókban bemutatott Azure Functions alkalmazásra épül. Mielőtt továbblépne, először [hozzon létre egy Azure functions-alkalmazást az Azure app Configuration szolgáltatással](./quickstart-azure-functions-csharp.md) .
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -41,44 +41,71 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="reload-data-from-app-configuration"></a>Adatok újratöltése az alkalmazás konfigurációjától
 
-1. Nyissa meg a *Function1.cs*. A `static` tulajdonság mellett `Configuration` vegyen fel egy új `static` tulajdonságot, `ConfigurationRefresher` amely megtartja, hogy a rendszer a `IConfigurationRefresher` függvények hívásakor a konfigurációs frissítéseket a későbbiekben fogja használni.
+1. Nyissa meg a *Startup.cs*, és frissítse a `ConfigureAppConfiguration` metódust. 
+
+   A `ConfigureRefresh` metódus regisztrálja azokat a beállításokat, amelyeket a rendszer az alkalmazáson belüli frissítés indításakor végez, amelyet a későbbi lépésben fog elvégezni a hozzáadáskor `_configurationRefresher.TryRefreshAsync()` . A `refreshAll` paraméter arra utasítja az alkalmazás-konfigurációs szolgáltatót, hogy töltse be a teljes konfigurációt, amikor a rendszer változást észlel a regisztrált beállításban.
+
+    A frissítéshez regisztrált összes beállításhoz alapértelmezett gyorsítótár-elévülési idő 30 másodperc. A metódus meghívásával frissíthető `AzureAppConfigurationRefreshOptions.SetCacheExpiration` .
 
     ```csharp
-    private static IConfiguration Configuration { set; get; }
-    private static IConfigurationRefresher ConfigurationRefresher { set; get; }
-    ```
-
-2. Frissítse a konstruktort, és használja a `ConfigureRefresh` metódust az alkalmazás konfigurációs tárolójából frissíteni kívánt beállítás megadásához. A rendszer egy példányt kér `IConfigurationRefresher` le a `GetRefresher` metódus használatával. Szükség esetén a konfigurációs gyorsítótár lejárati idejének időablakát is módosítjuk az alapértelmezett 30 másodperctől számított 1 percre.
-
-    ```csharp
-    static Function1()
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(options =>
+        builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
         {
             options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                   // Load all keys that start with `TestApp:`
+                   .Select("TestApp:*")
+                   // Configure to reload configuration if the registered 'Sentinel' key is modified
                    .ConfigureRefresh(refreshOptions =>
-                        refreshOptions.Register("TestApp:Settings:Message")
-                                      .SetCacheExpiration(TimeSpan.FromSeconds(60))
-            );
-            ConfigurationRefresher = options.GetRefresher();
+                      refreshOptions.Register("TestApp:Settings:Sentinel", refreshAll: true));
         });
-        Configuration = builder.Build();
     }
     ```
 
-3. Frissítse a `Run` metódust és a jelet a konfiguráció frissítéséhez a `TryRefreshAsync` függvények hívásának elején található metódus használatával. Ez nem lesz-op, ha a gyorsítótár lejárati ideje nem érhető el. Távolítsa el az `await` operátort, ha azt szeretné, hogy a konfiguráció a blokkolás nélkül frissüljön.
+   > [!TIP]
+   > Ha több kulcs-érték is frissül az alkalmazás konfigurációjában, akkor általában nem szeretné, hogy az alkalmazás az összes módosítás előtt újratöltse a konfigurációt. A **Sentinel** -kulcsot regisztrálhatja, és csak akkor frissítheti, ha az összes többi konfigurációs módosítás befejeződik. Ezzel biztosítható az alkalmazás konfigurációjának konzisztenciája.
+
+2. Frissítse a `Configure` metódust, hogy az Azure app Configuration Services elérhető legyen a függőségi befecskendezéssel.
 
     ```csharp
-    public static async Task<IActionResult> Run(
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddAzureAppConfiguration();
+    }
+    ```
+
+3. Nyissa meg a *Function1.cs*, és adja hozzá a következő névtereket.
+
+    ```csharp
+    using System.Linq;
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
+
+   Frissítse a konstruktort, hogy beszerezze a `IConfigurationRefresherProvider` függőségi injekción keresztüli példányt, amelyről beszerezheti a példányát `IConfigurationRefresher` .
+
+    ```csharp
+    private readonly IConfiguration _configuration;
+    private readonly IConfigurationRefresher _configurationRefresher;
+
+    public Function1(IConfiguration configuration, IConfigurationRefresherProvider refresherProvider)
+    {
+        _configuration = configuration;
+        _configurationRefresher = refresherProvider.Refreshers.First();
+    }
+    ```
+
+4. Frissítse a `Run` metódust és a jelet a konfiguráció frissítéséhez a `TryRefreshAsync` függvények hívásának elején található metódus használatával. Ha nem éri el a gyorsítótár lejárati idejét, a nem-op lesz. Távolítsa el az `await` operátort, ha a konfigurációt úgy szeretné frissíteni, hogy blokkolja az aktuális függvények hívását. Ebben az esetben a későbbi functions-hívások frissített értéket kapnak.
+
+    ```csharp
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.TryRefreshAsync(); 
+        await _configurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
-        string message = Configuration[keyName];
+        string message = _configuration[keyName];
             
         return message != null
             ? (ActionResult)new OkObjectResult(message)
@@ -88,7 +115,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
-1. Állítson be egy **ConnectionString**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
+1. Állítson be egy **ConnectionString** nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
 
     ```console
     setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -116,19 +143,27 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     ![A Gyorsindítás funkció helyi elindítása](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
+5. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás** lehetőséget, majd válassza ki a gyors útmutatóban létrehozott alkalmazás-konfigurációs tárolót.
 
-6. Válassza a **Configuration Explorer**lehetőséget, és frissítse a következő kulcs értékeit:
+6. Válassza a **Configuration Explorer** lehetőséget, és frissítse a következő kulcs értékét:
 
     | Kulcs | Érték |
     |---|---|
     | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjában – frissítve |
 
-7. Frissítse a böngészőt néhányszor. Ha a gyorsítótárazott beállítás egy perc elteltével lejár, az oldal megjeleníti a függvények a frissített értékkel való hívásának válaszát.
+   Ezután hozza létre a Sentinel-kulcsot, vagy módosítsa az értékét, ha az már létezik, például:
+
+    | Kulcs | Érték |
+    |---|---|
+    | TestApp: beállítások: Sentinel | v1 |
+
+
+7. Frissítse a böngészőt néhányszor. Ha a gyorsítótárazott beállítás 30 másodperc elteltével lejár, az oldal megjeleníti a függvények a frissített értékkel való hívásának válaszát.
 
     ![A gyors üzembe helyezési funkció helyi frissítése](./media/quickstarts/dotnet-core-function-refresh-local.png)
 
-Az oktatóanyagban használt példa kód letölthető az [alkalmazás-konfiguráció GitHub](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction) -tárházból
+> [!NOTE]
+> Az oktatóanyagban használt példa kód letölthető az [app Configuration GitHub](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction)-tárházból.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
