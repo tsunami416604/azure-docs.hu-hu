@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: bcad165f5d0ba2cf652cff35091e05b4414193c8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951791"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968187"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Oktatóanyag: az adatátalakítás a Azure Stack Edge Pro-val speciális üzembe helyezési folyamat esetén
 
@@ -24,14 +24,14 @@ A számítás konfigurálható az eszköz egyszerű vagy speciális üzembe hely
 
 | Feltételek | Egyszerű üzembe helyezés                                | Speciális üzembe helyezés                   |
 |------------------|--------------------------------------------------|---------------------------------------|
-| A következőre szánt     | Rendszergazdák                                | Fejlesztők                            |
+| A következőre szánt     | IT-rendszergazdák                                | Fejlesztők                            |
 | Típus             | Azure Stack Edge szolgáltatás használata modulok üzembe helyezéséhez      | A IoT Hub szolgáltatás használata modulok üzembe helyezéséhez |
-| Üzembe helyezett modulok | Egyirányú                                           | Láncolt vagy több modul           |
+| Üzembe helyezett modulok | Egyszeres                                           | Láncolt vagy több modul           |
 
 
 Ez az eljárás körülbelül 20 – 30 percet vesz igénybe.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Számítás konfigurálása
@@ -52,32 +52,34 @@ Mielőtt beállít egy számítási szerepkört a Azure Stack Edge Pro-eszközö
 
 A Azure Stack Edge Pro-ban való számítás konfigurálásához létre kell hoznia egy IoT Hub-erőforrást.
 
-1. Az Azure Stack Edge-erőforrás Azure Portal válassza az **Áttekintés**lehetőséget. A jobb oldali ablaktáblán, a **számítási** csempén válassza az első **lépések**lehetőséget.
+1. Az Azure Stack Edge-erőforrás Azure Portal válassza az **Áttekintés** lehetőséget. A jobb oldali ablaktáblában válassza ki a **IoT Edge** csempét.
 
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-1.png)
 
-2. Az **Edge-számítás konfigurálása** csempén válassza a **számítás konfigurálása**lehetőséget.
+2. A **IoT Edge szolgáltatás engedélyezése** csempén válassza a **Hozzáadás** lehetőséget. Ez a művelet lehetővé teszi IoT Edge szolgáltatást, amely lehetővé teszi IoT Edge modulok helyi telepítését az eszközön.
 
     ![Ismerkedés a 2. számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
-3. Az **Edge-számítás konfigurálása panelen adja** meg a következőket:
+3. A **IoT Edge létrehozása szolgáltatásban** adja meg a következőket:
 
    
     |Mező  |Érték  |
     |---------|---------|
-    |IoT Hub     | Válasszon az **új** vagy a **meglévő**listából. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
-    |Név     |Adja meg a IoT Hub erőforrás nevét.         |
+    |Előfizetés     |Válasszon egy előfizetést a IoT Hub erőforráshoz. Kiválaszthatja ugyanazt az előfizetést, mint amelyet az Azure Stack Edge-erőforrás használ.        |
+    |Erőforráscsoport     |Adja meg a IoT Hub erőforráshoz tartozó erőforráscsoport nevét. Kiválaszthatja ugyanazt az erőforráscsoportot, mint amelyet az Azure Stack Edge-erőforrás használ.         |
+    |IoT Hub     | Válasszon az **új** vagy a **meglévő** listából. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást.      |
+    |Név     |Fogadja el az alapértelmezett értéket, vagy adja meg a IoT Hub erőforrás nevét.         |
 
     ![Ismerkedés a 3. számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. Kattintson a **Létrehozás** gombra. A IoT Hub erőforrás létrehozása néhány percet vesz igénybe. A IoT Hub erőforrás létrejötte után az **Edge számítási** csempék konfigurálása a számítási konfiguráció megjelenítéséhez. Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza a **konfiguráció megtekintése** lehetőséget a **számítás konfigurálása** csempén.
-    
+4. Válassza a **felülvizsgálat + létrehozás** lehetőséget. A IoT Hub erőforrás létrehozása néhány percet vesz igénybe. A IoT Hub erőforrás létrehozása után az **áttekintő** frissítések jelzik, hogy a IoT Edge szolgáltatás fut. 
+
+    Ha a IoT Edge szolgáltatás a peremhálózati eszközön van konfigurálva, két eszközt hoz létre: egy IoT-eszközt és egy IoT Edge-eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. Ezen a IoT Edge eszközön a IoT Edge futtatókörnyezet is fut. Ezen a ponton csak a Linux platform érhető el a IoT Edge eszközhöz.
+
+    Annak ellenőrzéséhez, hogy a peremhálózati számítási szerepkör konfigurálva van-e, válassza **IoT Edge szolgáltatás > tulajdonságok** lehetőséget, és tekintse meg a IoT eszközt és a IoT Edge eszközt. 
+
     ![Ismerkedés a 4. számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
-
-    Amikor a peremhálózati eszközön beállította a peremhálózat számítási szerepkört, két eszközt hoz létre: egy IoT eszközt és egy IoT Edge eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. Ezen a IoT Edge eszközön a IoT Edge futtatókörnyezet is fut.
-
-    Ezen a ponton csak a Linux platform érhető el a IoT Edge eszközhöz.
-
+    
 
 ## <a name="add-shares"></a>Megosztások hozzáadása
 
@@ -85,23 +87,17 @@ Az oktatóanyag speciális üzembe helyezéséhez két megosztásra lesz szüks�
 
 1. Vegyen fel egy peremhálózati megosztást az eszközön a következő lépések végrehajtásával:
 
-    1. Az Azure Stack Edge-erőforrásban lépjen az **Edge számítás > első lépések**elemre.
-    2. A **megosztás (ok) hozzáadása** csempén válassza a **Hozzáadás**lehetőséget.
+    1. Az Azure Stack Edge-erőforrásban válassza a **IoT Edge > megosztások** lehetőséget.
+    2. A **megosztások** lapon a parancssáv területen válassza a **+ megosztás hozzáadása** elemet.
     3. A **megosztás hozzáadása** panelen adja meg a megosztás nevét, és válassza ki a megosztás típusát.
-    4. Az Edge-megosztás csatlakoztatásához jelölje be a **megosztás Edge-számítással való használatának**jelölőnégyzetét.
-    5. Válassza ki a **Storage-fiókot**, a **Storage szolgáltatást**, egy meglévő felhasználót, majd válassza a **Létrehozás**lehetőséget.
+    4. Az Edge-megosztás csatlakoztatásához jelölje be a **megosztás Edge-számítással való használatának** jelölőnégyzetét.
+    5. Válassza ki a **Storage-fiókot**, a **Storage szolgáltatást**, egy meglévő felhasználót, majd válassza a **Létrehozás** lehetőséget.
 
         ![Peremhálózati megosztás hozzáadása](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-1.png)
 
-    <!--If you created a local NFS share, use the following remote sync (rsync) command option to copy files onto the share:
-
-    `rsync <source file path> < destination file path>`
-
-    For more information about the rsync command, go to [Rsync documentation](https://www.computerhope.com/unix/rsync.htm).-->
-
     Az Edge-megosztás létrehozása után a rendszer sikeres létrehozási értesítést fog kapni. A rendszer frissíti a megosztási listát, hogy tükrözze az új megosztást.
 
-2. Vegyen fel egy peremhálózati helyi megosztást a peremhálózati eszközön úgy, hogy megismétli az előző lépés összes lépését, és bejelöli a **beállítás helyi megosztásként**jelölőnégyzetet. A helyi megosztásban lévő adatmennyiség az eszközön marad.
+2. Vegyen fel egy peremhálózati helyi megosztást a peremhálózati eszközön úgy, hogy megismétli az előző lépés összes lépését, és bejelöli a **beállítás helyi megosztásként** jelölőnégyzetet. A helyi megosztásban lévő adatmennyiség az eszközön marad.
 
     ![Peremhálózat helyi megosztásának hozzáadása](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-2.png)
 
@@ -124,7 +120,7 @@ Az oktatóanyag speciális üzembe helyezéséhez két megosztásra lesz szüks�
 
 ## <a name="add-a-trigger"></a>Eseményindító hozzáadása
 
-1. Nyissa meg az **Edge számítási > eseményindítókat**. Válassza az **+ trigger hozzáadása**lehetőséget.
+1. Nyissa meg az Azure Stack Edge-erőforrást, és lépjen **IoT Edge > eseményindítók** oldalra. Válassza az **+ trigger hozzáadása** lehetőséget.
 
     ![Trigger hozzáadása](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-1.png)
 
@@ -154,7 +150,7 @@ Ezen a peremhálózati eszközön nincsenek egyéni modulok. Hozzáadhat egy egy
 
 Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet a [C# modul fejlesztése a Azure stack Edge Pro](azure-stack-edge-create-iot-edge-module.md)-hoz című témakörben hozott létre. Ez az egyéni modul a peremhálózati eszköz peremhálózati helyi megosztásának fájljait veszi át, és áthelyezi őket egy peremhálózati (Felhőbeli) megosztásra az eszközön. A felhőalapú megosztás ezután leküldi a fájlokat a Felhőbeli megosztáshoz társított Azure Storage-fiókba.
 
-1. Ugrás az **Edge-számításra > első lépések**. A **modulok hozzáadása** csempén válassza ki a forgatókönyv típusát **speciálisként**. Válassza **a IoT hub ugrás**lehetőséget.
+1. Nyissa meg az Azure Stack Edge-erőforrást, és válassza a **IoT Edge > áttekintés** lehetőséget. A **modulok** csempén válassza az **ugrás az Azure IoT hub** lehetőséget.
 
     ![Speciális központi telepítés kiválasztása](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-1.png)
 
@@ -168,11 +164,11 @@ Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet 
 
     ![Ugrás a IoT Edge eszközre IoT Hub](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-2.png)
 
-3. Az **eszköz részletei**lapon válassza a **modulok beállítása**lehetőséget.
+3. Az **eszköz részletei** lapon válassza a **modulok beállítása** lehetőséget.
 
     ![A modulok beállítása hivatkozás](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-3.png)
 
-4. A **modulok hozzáadása**területen tegye a következőket:
+4. A **modulok hozzáadása** területen tegye a következőket:
 
     1. Adja meg az egyéni modulhoz tartozó tároló beállításjegyzék-beállításainak nevét, nevét, felhasználónevét és jelszavát.
     A név, a cím és a felsorolt hitelesítő adatok a modulok megfelelő URL-címmel való lekérésére használatosak. A modul üzembe helyezéséhez az **Üzemelő példány moduljai** területen válassza ki az **IoT Edge-modult**. Ez a IoT Edge-modul egy Docker-tároló, amelyet az Azure Stack Edge Pro-eszközhöz társított IoT Edge eszközön telepíthet.
@@ -211,11 +207,11 @@ Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet 
 
         ![A tároló létrehozása beállítások mező](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-5.png) 
  
-    4. Ha szükséges, konfigurálja a speciális peremhálózati futtatókörnyezet beállításait, majd kattintson a **tovább**gombra.
+    4. Ha szükséges, konfigurálja a speciális peremhálózati futtatókörnyezet beállításait, majd kattintson a **tovább** gombra.
 
         ![2. egyéni modul hozzáadása](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
-5. Az **útvonalak megadása**területen állítsa be a modulok közötti útvonalakat.  
+5. Az **útvonalak megadása** területen állítsa be a modulok közötti útvonalakat.  
    
    ![Az útvonalak meghatározása](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
 
@@ -227,7 +223,7 @@ Ebben a szakaszban egy egyéni modult ad hozzá a IoT Edge eszközhöz, amelyet 
 
     ![Az útvonalak meghatározása szakasz](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-8.png)
 
-6. Az **üzembe helyezés áttekintése**területen tekintse át az összes beállítást, majd kattintson a **Submit (elküldés** ) gombra a modul központi telepítéshez való küldéséhez.
+6. Az **üzembe helyezés áttekintése** területen tekintse át az összes beállítást, majd kattintson a **Submit (elküldés** ) gombra a modul központi telepítéshez való küldéséhez.
 
    ![A modulok beállítása 2. oldal](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
@@ -253,7 +249,7 @@ A következő lépésekkel ellenőrizheti az adatok átalakítását és az Azur
 
     ![Az adatátalakító 3 ellenőrzése](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
 
-    Az adatok ezután a Felhőbeli megosztásról a Storage-fiókba kerülnek. Az adatmegjelenítéshez nyissa meg a Storage-fiókját, majd válassza a **Storage Explorer**lehetőséget. A feltöltött adatait megtekintheti a Storage-fiókjában.
+    Az adatok ezután a Felhőbeli megosztásról a Storage-fiókba kerülnek. Az adatmegjelenítéshez nyissa meg a Storage-fiókját, majd válassza a **Storage Explorer** lehetőséget. A feltöltött adatait megtekintheti a Storage-fiókjában.
 
     ![Az adatátalakítás 4 ellenőrzése](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
  

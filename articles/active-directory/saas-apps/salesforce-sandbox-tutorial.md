@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 12a282b1f53dde570f5f6647a45df82808b20350
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 23f1fad851e2c2aeff29e596dd7550b4c7d7bd6a
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080821"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967733"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce-sandbox"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Salesforce-Sandboxtal
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Salesforce-munka
 * Az Azure AD-ben a Salesforce-Homokozóhoz hozzáférő vezérlő.
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Salesforce a homokozóba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,13 +40,12 @@ Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Az
 * A Salesforce sandbox támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
 * A Salesforce Sandbox a felhasználók üzembe helyezésének **időpontját is** támogatja
 * A Salesforce sandbox támogatja a [felhasználók **automatikus** kiépítési felállítását](salesforce-sandbox-provisioning-tutorial.md)
-* Miután konfigurálta a Salesforce-munkaterületet, megszabhatja a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-salesforce-sandbox-from-the-gallery"></a>Salesforce-homokozó hozzáadása a katalógusból
 
 A Salesforce-homokozó Azure AD-be való integrálásának konfigurálásához hozzá kell adnia egy Salesforce-munkaterületet a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
@@ -56,26 +53,26 @@ A Salesforce-homokozó Azure AD-be való integrálásának konfigurálásához h
 1. Válassza ki a **Salesforce sandbox** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-salesforce-sandbox"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Salesforce-homokozóban
+## <a name="configure-and-test-azure-ad-sso-for-salesforce-sandbox"></a>Azure AD SSO konfigurálása és tesztelése a Salesforce-homokozóban
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Salesforce homokozóban egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Salesforce-homokozóban.
 
-Az Azure AD SSO Salesforce-beli homokozóval való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO Salesforce-homokozóval való konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. A **[Salesforce SANDBOX SSO konfigurálása](#configure-salesforce-sandbox-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Salesforce-alapú sandbox-teszt felhasználó létrehozása](#create-salesforce-sandbox-test-user)** – a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-beli Salesforce
+    1. **[Salesforce-alapú sandbox-teszt felhasználó létrehozása](#create-salesforce-sandbox-test-user)** – a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-beli Salesforce
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Salesforce sandbox** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal a **Salesforce sandbox** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -107,17 +104,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
-
-    b. Azure AD-azonosító
-
-    c. Kijelentkezési URL-cím
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -132,15 +123,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **Salesforce-homokozó** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-salesforce-sandbox-sso"></a>A Salesforce sandbox SSO konfigurálása
@@ -163,7 +148,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Képernyőkép: az "egyszeres Sign-On beállítások" oldal, amelyen az "S A M L enabled engedélyezve" jelölőnégyzet be van jelölve, és a "Mentés" gomb van kiválasztva.](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-6. Az SAML egyszeri bejelentkezés beállításainak konfigurálásához kattintson **az új elemre a metaadat-fájlból** .
+6. Az SAML egyszeri bejelentkezés beállításainak konfigurálásához kattintson **az új elemre a metaadat-fájlból**.
 
     ![Képernyőfelvétel: az "új a metaadat-fájlból" gomb kiválasztásával megjelenített "egyszeres Sign-On beállítások" oldal.](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
@@ -216,7 +201,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Képernyőkép: az "egyszeres Sign-On beállítások" oldal, amelyen be van jelölve az "S A M L enabled" jelölőnégyzet, és a "Mentés" gomb van kiválasztva.](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-17. Az SAML egyszeri bejelentkezés beállításainak konfigurálásához kattintson **az új elemre a metaadat-fájlból** .
+17. Az SAML egyszeri bejelentkezés beállításainak konfigurálásához kattintson **az új elemre a metaadat-fájlból**.
 
     ![Képernyőfelvétel: az "egyszeres Sign-On beállítások" oldal és az "új a metaadat-fájlból" gomb kiválasztva.](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
@@ -224,7 +209,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Képernyőfelvétel: az "egyszeres Sign-On beállítások" oldal a "fájl választása" és a "létrehozás" gomb kiválasztásával.](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-19. Az **SAML egyszeri Sign-On beállításai** lapon a mezők automatikusan töltődnek be, írja be a konfiguráció nevét (például: *SPSSOWAAD_Test* ), a **név** szövegmezőbe, majd kattintson a Mentés gombra.
+19. Az **SAML egyszeri Sign-On beállításai** lapon a mezők automatikusan töltődnek be, írja be a konfiguráció nevét (például: *SPSSOWAAD_Test*), a **név** szövegmezőbe, majd kattintson a Mentés gombra.
 
     ![Képernyőkép, amely az "egyszeres Sign-On beállítások" oldalt jeleníti meg mezők kitöltésével, egy példa nevét a "név" szövegmezőben, és a "Mentés" gomb van kiválasztva.](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
@@ -241,7 +226,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![A "hitelesítési konfiguráció" szakaszt megjelenítő képernyőkép, amely a "szerkesztés" gombot választja.](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
-23. A **hitelesítési konfiguráció** szakasz **hitelesítési szolgáltatás** részében válassza ki a Salesforce-homokozóban az SSO-konfiguráció során beállított SAML-Sign-On beállítás nevét, majd kattintson a **Save (Mentés** ) gombra.
+23. A **hitelesítési konfiguráció** szakasz **hitelesítési szolgáltatás** részében válassza ki a Salesforce-homokozóban az SSO-konfiguráció során beállított SAML-Sign-On beállítás nevét, majd kattintson a **Save (Mentés**) gombra.
 
     ![Egyetlen Sign-On konfigurálása](./media/salesforce-sandbox-tutorial/configure2.png)
 
@@ -251,22 +236,21 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Salesforce
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a Salesforce-homokozó csempére kattint, automatikusan be kell jelentkeznie a Salesforce-Sandboxba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-## <a name="additional-resources"></a>További források
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Salesforce-beli homokozó bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+* Lépjen közvetlenül a Salesforce homokozó bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a Salesforce-munkaterületre, amelyhez be szeretné állítani az egyszeri bejelentkezést 
 
-- [Próbálja ki a Salesforce Sandboxot az Azure AD-vel](https://aad.portal.azure.com/)
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások Salesforce homokozó csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a Salesforce-homokozóba, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/protect-salesforce)
 
-- [A felhasználók üzembe helyezésének konfigurálása](salesforce-sandbox-provisioning-tutorial.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [A Salesforce-homokozó védelem speciális láthatósággal és vezérlőkkel](/cloud-app-security/proxy-intro-aad)
+Miután konfigurálta a Salesforce-munkaterületet, kikényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáféréstől. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2020
 ms.author: terrylan
-ms.openlocfilehash: af61b6ee1e69d175f47170df30f75832033d61d5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 84229ce3562f9cdcc4b55704eaa4f3b891a43d75
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489717"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968942"
 ---
 # <a name="penetration-testing"></a>Behatolás tesztelése
 
@@ -28,11 +28,11 @@ Az Azure az alkalmazások teszteléséhez és üzembe helyezéséhez való haszn
 
 A környezetek gyors létrehozása nagyszerű – de még mindig meg kell győződnie arról, hogy a szokásos biztonsági átvilágítás szükséges. Az egyik legvalószínűbb, hogy a penetráció teszteli az Azure-ban üzembe helyezett alkalmazásokat.
 
-Lehet, hogy már tudja, hogy a Microsoft [Az Azure-környezetének penetrációs tesztelését](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)végzi. Ez a teszt segít az Azure-beli fejlesztése terén.
+Lehet, hogy már tudja, hogy a Microsoft [Az Azure-környezetének penetrációs tesztelését](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)végzi. A tesztelés hozzájárul az Azure továbbfejlesztéséhez.
 
 Nem végzünk bevezetési tesztelést az alkalmazásában, de tisztában vagyunk vele, hogy a saját alkalmazásaiban szeretné elvégezni a tesztelést. Ez jó dolog, mert az alkalmazások biztonságának növelése révén biztonságosabbá teheti a teljes Azure-ökoszisztémát.
 
-2017. június 15-től a Microsoft már nem igényel előzetes jóváhagyást az Azure-erőforrásokra vonatkozó behatolási teszt elvégzéséhez. Ez a folyamat csak Microsoft Azurehoz kapcsolódik, és nem alkalmazható más Microsoft Cloud szolgáltatásra.
+2017. június 15-től a Microsoft nem köti előzetes jóváhagyáshoz az Azure-erőforrások behatolástesztelésének elvégzését. Ez a folyamat csak Microsoft Azurehoz kapcsolódik, és nem alkalmazható más Microsoft Cloud szolgáltatásra.
 
 >[!IMPORTANT]
 >A Microsoft a toll-tesztelési tevékenységek bejelentése után már nem szükséges, hogy az ügyfeleknek továbbra is meg kell felelniük az összevonáshoz [Microsoft Cloud egységes penetráció tesztelési szabályainak](https://technet.microsoft.com/mt784683).
@@ -40,14 +40,14 @@ Nem végzünk bevezetési tesztelést az alkalmazásában, de tisztában vagyunk
 A végrehajtható szabványos tesztek a következők:
 
 * Tesztek a végpontokon az [Open Web Application Security Project (OWASP) Top 10 biztonsági rések](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) felfedéséhez
-* A végpontok [fuzz Testing tesztelése](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
-* A végpontok [portjának vizsgálata](https://en.wikipedia.org/wiki/Port_scanner)
+* [Fuzz tesztelés](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) a végpontokon
+* [Portkeresés](https://en.wikipedia.org/wiki/Port_scanner) a végpontokon
 
 Az egyfajta tollas teszt nem hajtható végre, mert a [szolgáltatásmegtagadási (DOS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) támadások egyike. Ez a teszt magában foglalja a DoS-támadás kezdeményezését, vagy olyan kapcsolódó tesztek elvégzését, amelyek bármilyen típusú DoS-támadást meghatározhatnak, bemutatnak vagy szimulálnak.
 
 >[!Note]
->A Microsoft a BreakingPoint-felhővel együttműködve olyan felületet hoz létre, amely a szimulációk számára DDoS Protection-kompatibilis nyilvános IP-címekkel való adatforgalmat is létrehoz. További információ a töréspontok felhő-szimulációról: a [DDoS-észlelés ellenőrzése](../../ddos-protection/manage-ddos-protection.md#validate-and-test).
+>A Microsoft a BreakingPoint-felhővel együttműködve olyan felületet hoz létre, amely a szimulációk számára DDoS Protection-kompatibilis nyilvános IP-címekkel való adatforgalmat is létrehoz. A BreakingPoint Cloud szimulációs szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [szimulációk tesztelését](../../ddos-protection/test-through-simulations.md)ismertető témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [engagement-tesztelési szabályokról](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2).

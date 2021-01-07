@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: a6a5d78385cc61838a606a3f3d2a7277f6b66a4d
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9670178a9c9d772d8966413371f998aa1f0cf5f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858535"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968297"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közti vészhelyreállításának támogatási mátrixa
 
@@ -198,6 +198,7 @@ Site Recovery használatával áttelepített virtuális gépek | Támogatott | H
 Azure RBAC-szabályzatok | Nem támogatott | Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) virtuális gépekre vonatkozó házirendjei nem replikálódnak a célként megadott régióban található feladatátvételi virtuális gépre.
 Bővítmények | Nem támogatott | A bővítmények nem replikálódnak a célként megadott régióban található feladatátvételi virtuális gépre. A feladatátvételt követően kézzel kell telepíteni.
 Proximity elhelyezési csoportok | Támogatott | A közelségi elhelyezési csoportban található virtuális gépeket Site Recovery használatával lehet védeni.
+Címkék  | Támogatott | A forrásként szolgáló virtuális gépeken alkalmazott, felhasználó által létrehozott címkéket a rendszer a feladatátvétel vagy feladatátvételi teszt utáni cél virtuális gépekre végzi.
 
 
 ## <a name="replicated-machines---disk-actions"></a>Replikált gépek – lemezes műveletek
@@ -256,6 +257,7 @@ NVMe-lemezek | Nem támogatott
 Azure megosztott lemezek | Nem támogatott
 Biztonságos átvitel lehetőség | Támogatott
 Gyorssegéd-kompatibilis lemezek írása | Nem támogatott
+Címkék  | A felhasználó által generált címkéket 24 óránként replikálja a rendszer.
 
 >[!IMPORTANT]
 > A teljesítményproblémák elkerülése érdekében győződjön meg arról, hogy a virtuálisgép-lemezek méretezhetőségére és teljesítményére vonatkozó célokat követ a [Linux](../virtual-machines/linux/disk-scalability-targets.md) vagy a [Windows rendszerű](../virtual-machines/windows/disk-scalability-targets.md) virtuális gépek esetében. Ha az alapértelmezett beállításokat használja, Site Recovery létrehozza a szükséges lemezeket és a Storage-fiókokat a forrás konfigurációja alapján. Ha testreszabja és kiválasztja a saját beállításait, kövesse a forrásként szolgáló virtuális gépek lemezének méretezhetőségét és teljesítményére vonatkozó célokat.
@@ -302,10 +304,11 @@ Gyorsított hálózatkezelés | Támogatott | A gyorsított hálózatkezelést e
 Palo Alto hálózati berendezés | Nem támogatott | A harmadik féltől származó készülékekkel gyakran a virtuális gépen belüli szolgáltató korlátozza a korlátozásokat. Azure Site Recovery szüksége van az ügynökre, a bővítményekre és a kimenő kapcsolatokra. A készülék azonban nem teszi lehetővé, hogy a kimenő tevékenységek a virtuális gépen belül legyenek konfigurálva.
 IPv6  | Nem támogatott | Az IPv4 és az IPv6 protokollt is tartalmazó vegyes konfigurációk nem támogatottak. A Site Recovery művelet előtt szabadítson fel az IPv6-tartomány alhálózatát.
 Site Recovery szolgáltatáshoz való privát hivatkozás | Támogatott | [További információ](azure-to-azure-how-to-enable-replication-private-endpoints.md)
+Címkék  | Támogatott | A hálózati adapterek felhasználó által generált címkéit 24 óránként replikálja a rendszer.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](./azure-to-azure-about-networking.md)  .
 - A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](./azure-to-azure-quickstart.md).

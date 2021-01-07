@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 12/30/2020
+ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827478"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967038"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps REST API-val
 
@@ -121,7 +121,7 @@ Itt látható a kérelem törzsének szintaxisa, amely leírja az ISE létrehoz�
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
+      // Include `certificates` object to enable self-signed certificate and the certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -185,6 +185,7 @@ A példaként szolgáló kérelem törzse a következő minta értékeket jelen�
    }
 }
 ```
+
 ## <a name="add-custom-root-certificates"></a>Egyéni főtanúsítványok hozzáadása
 
 Gyakran egy ISE használatával kapcsolódhat az egyéni szolgáltatásokhoz a virtuális hálózaton vagy a helyszínen. Ezeket az egyéni szolgáltatásokat gyakran egy egyéni legfelső szintű hitelesítésszolgáltató által kiadott tanúsítvány védi, például egy vállalati hitelesítésszolgáltató vagy egy önaláírt tanúsítvány. További információ az önaláírt tanúsítványok használatáról: [biztonságos hozzáférés és adathozzáférés a kimenő hívások számára más szolgáltatásokhoz és rendszerekhez](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Ahhoz, hogy az ISE sikeresen csatlakozhasson ezekhez a szolgáltatásokhoz Transport Layer Security (TLS) protokollon keresztül, az ISE-nek hozzá kell férnie ezekhez a főtanúsítványokhoz. Az ISE egyéni megbízható főtanúsítvánnyal való frissítéséhez tegye a következő HTTPS- `PATCH` kérést:
@@ -224,7 +225,7 @@ Itt látható a kérelem törzsének szintaxisa, amely leírja a főtanúsítvá
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Erőforrás hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [Integrációs szolgáltatási környezetek kezelése](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)

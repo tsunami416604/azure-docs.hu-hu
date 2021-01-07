@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 12/25/2020
 ms.author: jeedes
-ms.openlocfilehash: adee491625cec3b4a22cc7b3d1f3ba17595d9e87
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 939db97a03b69335c9d648c894f453cbb2010edb
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673251"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967057"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Microsoft által a torkolatánál SAML SSO-val
 
@@ -26,7 +26,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Microsoft Azure 
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Microsoft Azure AD-fiókjával való összefolyásánál az SAML egyszeri bejelentkezésre.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="description"></a>Leírás:
 
@@ -78,18 +77,18 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 Ahhoz, hogy a Microsoft az Azure AD-be integrálni tudja az összefolyásánál SAML SSO-t, hozzá kell adnia a Microsoft által a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt a keresőmezőbe: **TORKOLATi SAML SSO a Microsoft által** .
 1. Válassza az **összefolyásánál SAML SSO lehetőséget a Microsoft által** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-confluence-saml-sso-by-microsoft"></a>Azure AD-alapú egyszeri bejelentkezés konfigurálása és tesztelése a Microsoft által használt összefolyásánál SAML egyszeri bejelentkezéshez
+## <a name="configure-and-test-azure-ad-sso-for-confluence-saml-sso-by-microsoft"></a>Az Azure AD SSO konfigurálása és tesztelése a Microsoft által végzett összefolyásánál SAML egyszeri bejelentkezéshez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a Microsoft által a " **B. Simon**" nevű tesztelési SAML SSO használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között, amely a Microsoft által elérhető SAML SSO.
 
-Az Azure AD SSO konfigurálásához és teszteléséhez a Microsoft által végzett összefolyásánál SAML SSO használatával végezze el a következő építőelemeket:
+Az Azure AD SSO konfigurálásához és teszteléséhez a Microsoft által végzett összefolyásánál SAML SSO használatával hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -102,9 +101,9 @@ Az Azure AD SSO konfigurálásához és teszteléséhez a Microsoft által végz
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/), a Microsoft Application INTEGRATION **SAML SSO-nal való összefolyásánál** , keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal, a Microsoft Application Integration **SAML SSO-nal való összefolyásánál** , keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -142,15 +141,9 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **összefolyásánál SAML SSO a Microsoft által** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-confluence-saml-sso-by-microsoft-sso"></a>A összefolyásánál SAML SSO konfigurálása a Microsoft SSO-val
@@ -251,18 +244,17 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a he
 
     f. Kattintson a **Hozzáadás** gombra.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a Microsoft csempén lévő összefolyásánál SAML egyszeri bejelentkezésre kattint, a Microsoft automatikusan bejelentkezik a összefolyásánál SAML SSO-ba, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a Microsoft bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen a Microsoft bejelentkezési URL-címére közvetlenül a összefolyásánál SAML SSO szolgáltatáshoz, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha a My apps szolgáltatásban a Microsoft csempén található összefolyásánál SAML egyszeri bejelentkezésre kattint, a rendszer átirányítja a Microsoft bejelentkezési URL-címén keresztül, hogy átirányítsa a köztes SAML SSO A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Próbálja ki a Microsoft Azure AD-vel való összefolyásánál SAML SSO-t](https://aad.portal.azure.com/)
+Miután konfigurálta a összefolyásánál SAML egyszeri bejelentkezést a Microsofttal, kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3943caba5249432b3a0a4b7c2e63b2b818e2b7a1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575703"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968497"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Oktatóanyag: Felkészülés a Azure Stack Edge Pro üzembe helyezésére  
 
@@ -29,7 +29,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Új erőforrás létrehozása
 > * Az aktiválási kulcs lekérése
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -57,7 +57,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 * Az Azure Stack Edge/Data Box Gateway, a IoT Hub és az Azure Storage-erőforrások esetében tulajdonosi vagy közreműködői hozzáférése van az erőforráscsoport szintjén.
 
-  * A közreműködői hozzáférés biztosításához az előfizetés szintjén kell lennie a **tulajdonosnak** . Ahhoz, hogy a közreműködői hozzáférhessen valaki másnak, a Azure Portal lépjen a **minden szolgáltatás**  >  **előfizetések**  >  **hozzáférés-vezérlés (iam)**  >  **+**  >  **Add role assignment** adja hozzá a szerepkör-hozzárendelés hozzáadása lehetőséget. További információ: [oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával](../role-based-access-control/quickstart-assign-role-user-portal.md).
+  * A közreműködői hozzáférés biztosításához az előfizetés szintjén kell lennie a **tulajdonosnak** . Ahhoz, hogy a közreműködői hozzáférhessen valaki másnak, a Azure Portal lépjen a **minden szolgáltatás**  >  **előfizetések**  >  **hozzáférés-vezérlés (iam)**  >  **+**  >  adja hozzá a szerepkör-hozzárendelés hozzáadása lehetőséget. További információ: [oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
   * Ha Azure Stack Edge/Data Box Gateway erőforrást szeretne létrehozni, akkor az erőforrás-csoport szintjén a közreműködő (vagy magasabb szintű) jogosultsággal kell rendelkeznie. Győződjön meg arról is, hogy az `Microsoft.DataBoxEdge` erőforrás-szolgáltató regisztrálva van. Az erőforrás-szolgáltatók regisztrálásával kapcsolatos információkért lásd: az [erőforrás-szolgáltató regisztrálása](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
   * Ha IoT Hub erőforrást szeretne létrehozni, győződjön meg arról, hogy a Microsoft. Devices szolgáltató regisztrálva van. A regisztrálás módjával kapcsolatos információkat az [erőforrás-szolgáltatók regisztrálásával](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers) foglalkozó témakörben tekintheti meg.
@@ -119,7 +119,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     |Beállítás  |Érték  |
     |---------|---------|
     |Név   | Az erőforrást azonosító valódi név.<br>A névnek 2–50 karakter hosszúságúnak kell lennie, és csak betűket, számokat, illetve kötőjelet tartalmazhat.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
-    |Region     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
+    |Régió     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
 
     ![Projekt és példány részletei](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
 
@@ -150,11 +150,11 @@ A megrendelés elhelyezése után a Microsoft áttekinti a rendelést, és elkü
 
 Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérnie az aktiválási kulcsot. Ezzel a kulccsal aktiválhatja és összekapcsolhatja Azure Stack Edge Pro-eszközét az erőforrással. Ezt a kulcsot lekérheti most, amíg az Azure Portalon van.
 
-1. Válassza ki a létrehozott erőforrást. Válassza az **Áttekintés** lehetőséget, majd válassza az **eszköz beállítása** lehetőséget.
+1. Lépjen a létrehozott erőforráshoz, és válassza az **Áttekintés** lehetőséget. Ekkor megjelenik egy értesítés, amely a megrendelés feldolgozásának hatására vonatkozik.
 
-    ![Eszköz beállításának kiválasztása](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![Az Áttekintés kiválasztása](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. A csempe **aktiválása** lapon válassza a **kulcs létrehozása** lehetőséget az aktiválási kulcs létrehozásához. Kattintson a másolás ikonra a kulcs másolásához és a későbbi használatra mentéséhez.
+2. A rendelés feldolgozását és az eszközt a saját módjára, az **Áttekintés** frissítéseire. Fogadja el az alapértelmezett **Azure Key Vault nevet** , vagy adjon meg egy újat. Válassza az **aktiválási kulcs előállítása** lehetőséget. Kattintson a másolás ikonra a kulcs másolásához és a későbbi használatra mentéséhez.
 
     ![Aktiválási kulcs lekérése](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 
@@ -163,7 +163,7 @@ Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérni
 > * Az aktiválási kulcs három nappal a létrehozása után lejár.
 > * Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte Azure Stack Edge Pro-témaköröket, például a következőket:
 

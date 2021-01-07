@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 0d93edbefb61cb8ded09f6402ca1e1661429efe1
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ebf967fe02ab6424b9952bb0315b70fadb547fe3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952148"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967830"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Számítások kezelése a Azure Stack Edge Pro-ban
 
@@ -38,7 +38,7 @@ Eseménynek nevezzük a felhőalapú környezetben vagy az eszközén bekövetke
 
 Trigger létrehozásához hajtsa végre az alábbi lépéseket a Azure Portal.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **Edge számítási > trigger**lehetőséget. Válassza az **+ trigger hozzáadása** parancsot a parancssorban.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen **IoT Edge > eseményindítók** elemre. Válassza az **+ trigger hozzáadása** parancsot a parancssorban.
 
     ![Válassza az trigger hozzáadása lehetőséget](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -68,15 +68,15 @@ Az trigger törléséhez hajtsa végre az alábbi lépéseket a Azure Portal.
 
 1. Az eseményindítók listájából válassza ki a törölni kívánt eseményindítót.
 
-    ![Trigger kiválasztása](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Trigger kiválasztása](media/azure-stack-edge-manage-compute/delete-trigger-1.png)
 
-2. Kattintson a jobb gombbal, majd válassza a **Törlés**lehetőséget.
+2. Kattintson a jobb gombbal, majd válassza a **Törlés** lehetőséget.
 
-    ![Törlés kiválasztása](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Törlés kiválasztása](media/azure-stack-edge-manage-compute/delete-trigger-2.png)
 
 3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra.
 
-    ![Törlés megerősítése](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Törlés megerősítése](media/azure-stack-edge-manage-compute/delete-trigger-3.png)
 
 Az eseményindítók listájának frissítése, hogy tükrözze a törlést.
 
@@ -88,11 +88,11 @@ A Azure Portal használatával megtekintheti a számítási konfigurációt, elt
 
 Az eszköz számítási konfigurációjának megtekintéséhez hajtsa végre a következő lépéseket a Azure Portalban.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **Edge számítási > modulok**lehetőséget. Válassza ki a **számítás megjelenítése** elemet a parancssáv sávon.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **IoT Edge > áttekintés** elemre. 
 
     ![Számítási nézet kiválasztása](media/azure-stack-edge-manage-compute/view-compute-1.png)
 
-2. Jegyezze fel az eszköz számítási konfigurációját. A számítás konfigurálásakor létrehozott egy IoT Hub erőforrást. A IoT Hub erőforrás alatt egy IoT-eszköz és egy IoT Edge-eszköz konfigurálva van. A IoT Edge eszközön csak a Linux-modulok futtathatók.
+2. Válassza a **Tulajdonságok** lapot. Jegyezze fel az eszköz számítási konfigurációját. A számítás konfigurálásakor létrehozott egy IoT Hub erőforrást. A IoT Hub erőforrás alatt egy IoT-eszköz és egy IoT Edge-eszköz konfigurálva van. A IoT Edge eszközön csak a Linux-modulok futtathatók.
 
     ![Konfiguráció megtekintése](media/azure-stack-edge-manage-compute/view-compute-2.png)
 
@@ -101,11 +101,11 @@ Az eszköz számítási konfigurációjának megtekintéséhez hajtsa végre a k
 
 A Azure Portal az alábbi lépéseket végrehajtva távolítsa el az eszköz meglévő, peremhálózati számítási konfigurációját.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **Edge számítás > első lépések**lehetőséget. Válassza a parancssorból a **számítás eltávolítása** lehetőséget.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **IoT Edge > áttekintés** elemre. Válassza a parancssáv **Eltávolítás** elemét.
 
     ![Válassza a számítás eltávolítása lehetőséget.](media/azure-stack-edge-manage-compute/remove-compute-1.png)
 
-2. Ha eltávolítja a számítási konfigurációt, újra kell konfigurálnia az eszközt abban az esetben, ha újra kell használnia a számítást. Ha a rendszer megerősítést kér, válassza az **Igen**lehetőséget.
+2. Ha eltávolítja a számítási konfigurációt, újra kell konfigurálnia az eszközt abban az esetben, ha újra kell használnia a számítást. Ha a rendszer megerősítést kér, válassza az **Igen** lehetőséget.
 
     ![Válassza a 2. számítás törlése elemet.](media/azure-stack-edge-manage-compute/remove-compute-2.png)
 
@@ -119,7 +119,7 @@ Ha elforgatták a IoT eszközt és IoT Edge eszköz kulcsait, akkor a legújabb 
 
 Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa végre az alábbi lépéseket a Azure Portal.
 
-1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **Edge számítás > első lépések**lehetőséget. Válassza ki a parancssáv **konfigurációjának frissítése** elemet.
+1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **IoT Edge > áttekintés** elemre. Válassza ki a parancssáv **konfigurációjának frissítése** elemet.
 
     ![Konfiguráció frissítése lehetőség kiválasztása](media/azure-stack-edge-manage-compute/refresh-configuration-1.png)
 
@@ -129,6 +129,6 @@ Az eszközhöz tartozó hozzáférési kulcsok szinkronizálásához hajtsa vég
 
 3. A szinkronizálást követően zárja be a párbeszédpanelt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [kezelheti az Edge számítási hálózatot Azure Portal használatával](azure-stack-edge-extend-compute-access-modules.md).

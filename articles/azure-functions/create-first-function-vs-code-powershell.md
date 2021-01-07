@@ -3,12 +3,12 @@ title: PowerShell-függvény létrehozása a Visual Studio Code-Azure Functions 
 description: Ismerje meg, hogyan hozhat létre PowerShell-függvényeket, és hogyan teheti közzé a helyi projektet a Azure Functions kiszolgáló nélküli üzemeltetésére a Visual Studio Code Azure Functions bővítménnyel.
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 5d85c0362daa9dc3b42ed0cc1329329ffa598bee
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: ad129d8faec5725a6e76f14577e6a0e9deae8d86
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637047"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968007"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: PowerShell-függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
@@ -26,8 +26,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő kö
 
 + Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Node.js](https://nodejs.org/), amelyet a Windows a NPM igényel. Csak [az aktív LTS-és karbantartási LTS-verziók](https://nodejs.org/about/releases/). A `node --version` parancs használatával vizsgálja meg a verziót.
-    A macOS és Linux rendszereken a helyi fejlesztéshez nem szükséges.
++ A [Azure functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 3. x verzió.
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
@@ -54,15 +53,15 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
 1. Adja meg a következő információkat a kérdésekben:
 
-    + **Válasszon nyelvet a függvény projekthez** : válassza a lehetőséget `PowerShell` .
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `PowerShell` .
 
-    + **Válasszon sablont a projekt első függvényéhez** : válassza a lehetőséget `HTTP trigger` .
+    + **Válasszon sablont a projekt első függvényéhez**: válassza a lehetőséget `HTTP trigger` .
 
-    + **Adja meg a függvény nevét** : Type `HttpExample` .
+    + **Adja meg a függvény nevét**: Type `HttpExample` .
 
-    + **Engedélyezési szint** : válassza `Anonymous` a lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját. Az engedélyezési szint megismeréséhez tekintse meg az [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys)című témakört.
+    + **Engedélyezési szint**: válassza `Anonymous` a lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját. Az engedélyezési szint megismeréséhez tekintse meg az [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys)című témakört.
 
-    + **Válassza ki, hogyan szeretné megnyitni a projektet** : válassza a lehetőséget `Add to workspace` .
+    + **Válassza ki, hogyan szeretné megnyitni a projektet**: válassza a lehetőséget `Add to workspace` .
 
 1. Ezen információk használatával a Visual Studio Code egy Azure Functions projektet hoz létre egy HTTP-triggerrel. A helyi projektfájlok a Explorerben tekinthetők meg. További információ a létrehozott fájlokról: [generált projektfájlok](functions-develop-vs-code.md#generated-project-files). 
 
@@ -78,7 +77,7 @@ Miután meggyőződött róla, hogy a függvény megfelelően fut a helyi szám�
 
 [!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code segítéségével létrehozott egy egyszerű, HTTP-eseményindítóval aktivált függvényt tartalmazó függvényalkalmazást. A következő cikkben kibonthatja ezt a függvényt egy kimeneti kötés hozzáadásával. Ez a kötés a HTTP-kérelemből írja be a karakterláncot egy Azure Queue Storage-várólistában lévő üzenetbe. 
 

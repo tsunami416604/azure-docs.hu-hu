@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre Python-függvényeket, és hogyan
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 4d37acfddeb5f5b6220e7082e729a7d6e6dfe66b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9e4ddc479b0adcb88e846b92e6603dfdf3c99baa
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542422"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967990"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>Gyors útmutató: függvény létrehozása az Azure-ban a Python használatával a Visual Studio Code-ban
 
@@ -27,8 +27,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő kö
 
 + Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Node.js](https://nodejs.org/), amelyet a Windows a NPM igényel. Csak [az aktív LTS-és karbantartási LTS-verziók](https://nodejs.org/about/releases/). A `node --version` parancs használatával vizsgálja meg a verziót.
-    A macOS és Linux rendszereken a helyi fejlesztéshez nem szükséges.
++ A [Azure functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 3. x verzió.
 
 + [Python 3,8](https://www.python.org/downloads/release/python-381/), [Python 3,7](https://www.python.org/downloads/release/python-375/), [Python 3,6](https://www.python.org/downloads/release/python-368/) Azure functions (x64) támogatja.
 
@@ -53,17 +52,17 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
 1. Adja meg a következő információkat a kérdésekben:
 
-    + **Válasszon nyelvet a függvény projekthez** : válassza a lehetőséget `Python` .
+    + **Válasszon nyelvet a függvény projekthez**: válassza a lehetőséget `Python` .
 
-    + **Válasszon ki egy Python-aliast a virtuális környezet létrehozásához** : válassza ki a Python-tolmács helyét. Ha a hely nem jelenik meg, írja be a Python bináris fájl teljes elérési útját.  
+    + **Válasszon ki egy Python-aliast a virtuális környezet létrehozásához**: válassza ki a Python-tolmács helyét. Ha a hely nem jelenik meg, írja be a Python bináris fájl teljes elérési útját.  
 
-    + **Válasszon sablont a projekt első függvényéhez** : válassza a lehetőséget `HTTP trigger` .
+    + **Válasszon sablont a projekt első függvényéhez**: válassza a lehetőséget `HTTP trigger` .
 
-    + **Adja meg a függvény nevét** : Type `HttpExample` .
+    + **Adja meg a függvény nevét**: Type `HttpExample` .
 
-    + **Engedélyezési szint** : válassza `Anonymous` a lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját. Az engedélyezési szint megismeréséhez tekintse meg az [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys)című témakört.
+    + **Engedélyezési szint**: válassza `Anonymous` a lehetőséget, amely lehetővé teszi, hogy bárki meghívja a függvény végpontját. Az engedélyezési szint megismeréséhez tekintse meg az [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys)című témakört.
 
-    + **Válassza ki, hogyan szeretné megnyitni a projektet** : válassza a lehetőséget `Add to workspace` .
+    + **Válassza ki, hogyan szeretné megnyitni a projektet**: válassza a lehetőséget `Add to workspace` .
 
 1. Ezen információk használatával a Visual Studio Code egy Azure Functions projektet hoz létre egy HTTP-triggerrel. A helyi projektfájlok a Explorerben tekinthetők meg. További információ a létrehozott fájlokról: [generált projektfájlok](functions-develop-vs-code.md#generated-project-files).
 
@@ -86,17 +85,17 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
 1. Adja meg a következő információkat a kérdésekben:
 
-    + **Mappa kiválasztása** : válasszon egy mappát a munkaterületről, vagy tallózással keresse meg a Function alkalmazást tartalmazó mappát. Ez nem jelenik meg, ha már nyitva van egy érvényes Function alkalmazás.
+    + **Mappa kiválasztása**: válasszon egy mappát a munkaterületről, vagy tallózással keresse meg a Function alkalmazást tartalmazó mappát. Ez nem jelenik meg, ha már nyitva van egy érvényes Function alkalmazás.
 
-    + **Előfizetés kiválasztása** : válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
+    + **Előfizetés kiválasztása**: válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
 
-    + **Függvényalkalmazás kiválasztása az Azure-ban** : válassza a lehetőséget `+ Create new Function App` . (Ne válassza a `Advanced` lehetőséget, amely nem szerepel ebben a cikkben.)
+    + **Függvényalkalmazás kiválasztása az Azure-ban**: válassza a lehetőséget `+ Create new Function App` . (Ne válassza a `Advanced` lehetőséget, amely nem szerepel ebben a cikkben.)
 
-    + **Adja meg a Function alkalmazás globálisan egyedi nevét** : írjon be egy URL-útvonalon érvényes nevet. A rendszer érvényesíti a beírt nevet, hogy a Azure Functions egyedi legyen. 
+    + **Adja meg a Function alkalmazás globálisan egyedi nevét**: írjon be egy URL-útvonalon érvényes nevet. A rendszer érvényesíti a beírt nevet, hogy a Azure Functions egyedi legyen. 
 
-    + **Válasszon egy futtatókörnyezetet** : válassza ki, hogy a Python melyik verzióját helyileg futtatja. A `python --version` parancs segítségével megtekintheti a verziót.
+    + **Válasszon egy futtatókörnyezetet**: válassza ki, hogy a Python melyik verzióját helyileg futtatja. A `python --version` parancs segítségével megtekintheti a verziót.
 
-    + **Válasszon egy helyet az új erőforrásokhoz** : a jobb teljesítmény érdekében válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) .
+    + **Válasszon egy helyet az új erőforrásokhoz**: a jobb teljesítmény érdekében válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) .
 
 1. Ha elkészült, a következő Azure-erőforrások jönnek létre az előfizetésben, és neveket kell használni a Function app neve alapján:
 

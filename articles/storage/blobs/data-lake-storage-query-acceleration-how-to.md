@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b02f5a7c390c5594a7c5692798a0691c8d9a42d0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cc63a9787a3611f28e6466564735d029bf65b757
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912773"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968398"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítás használatával
 
@@ -152,7 +152,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 ---
 
-## <a name="set-up-your-environment"></a>Saját környezet beállítása
+## <a name="set-up-your-environment"></a>A környezet kialakítása
 
 ### <a name="step-1-install-packages"></a>1. lépés: csomagok telepítése 
 
@@ -437,7 +437,7 @@ def dump_query_csv(blob: BlobClient, query: str, headers: bool):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Ez a példa elküldi a lekérdezést a lekérdezési gyorsítási API-nak, majd visszaküldi az eredményeket vissza.
+Ez a példa elküldi a lekérdezést a lekérdezési gyorsítási API-nak, majd visszaküldi az eredményeket vissza. A `blob` `queryHemingway` Helper függvénynek átadott objektum [BlockBlobClient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient)típusú. Ha többet szeretne megtudni a [BlockBlobClient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient) -objektumok beszerzéséről, olvassa el a következőt: gyors útmutató [: Blobok kezelése a JavaScript V12 SDK-val Node.js](storage-quickstart-blobs-nodejs.md).
 
 ```javascript
 async function queryHemingway(blob)
@@ -612,7 +612,7 @@ async function queryDvds(blob)
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Data Lake Storage lekérdezés gyorsulása](data-lake-storage-query-acceleration.md)
 - [A lekérdezés gyorsításának SQL nyelvi referenciája](query-acceleration-sql-reference.md)

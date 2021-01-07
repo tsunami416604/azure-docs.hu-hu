@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: b55e66eaf4bda06369711e389629b6a20765271d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 18d75d5c49eecb0fe198ce2afc432870fb3783e6
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522206"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969044"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Oktatóanyag: a Qlik Sense Enterprise integrálása a Azure Active Directory
 
@@ -26,7 +26,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Qlik Sense Enter
 * Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Qlik Sense Enterprise-ba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,39 +40,37 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * A Qlik Sense Enterprise az **SP** által kezdeményezett egyszeri bejelentkezést támogatja.
 * A Qlik Sense Enterprise **az** igény szerinti üzembe helyezést is támogatja
 
-* Miután konfigurálta a Qlik Sense Enterprise-t, kikényszerítheti a munkamenet-vezérlést, amely valós időben biztosítja a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
-
 ## <a name="adding-qlik-sense-enterprise-from-the-gallery"></a>Qlik Sense Enterprise hozzáadása a katalógusból
 
 A Qlik Sense Enterprise az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Qlik Sense Enterprise-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Qlik Sense Enterprise** kifejezést a keresőmezőbe.
 1. Válassza ki a **Qlik Sense Enterprise** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-sso-for-qlik-sense-enterprise"></a>Azure AD SSO konfigurálása és tesztelése a Qlik Sense Enterprise-hoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Qlik Sense Enterprise használatával egy **Britta Simon**nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Qlik Sense Enterprise-ban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Qlik Sense Enterprise használatával egy **Britta Simon** nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Qlik Sense Enterprise-ban.
 
-Az Azure AD SSO és a Qlik Sense Enterprise konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a Qlik Sense Enterprise konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-    * **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+    1. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 1. **[Konfigurálja a Qlik Sense Enterprise SSO](#configure-qlik-sense-enterprise-sso)** -t – az egyes Sign-On beállítások konfigurálásához az alkalmazás oldalán.
-    * **[Hozzon létre Qlik Sense Enterprise test User](#create-qlik-sense-enterprise-test-user)** – hogy a Britta Simon partnere legyen a Qlik Sense Enterprise-ban, amely a felhasználó Azure ad-képviseletéhez van társítva.
+    1. **[Hozzon létre Qlik Sense Enterprise test User](#create-qlik-sense-enterprise-test-user)** – hogy a Britta Simon partnere legyen a Qlik Sense Enterprise-ban, amely a felhasználó Azure ad-képviseletéhez van társítva.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Qlik Sense Enterprise** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A Azure Portal a **Qlik Sense Enterprise** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** ceruza ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -83,10 +80,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta egyikének használatával:
 
-    ```http
-    https://<Fully Qualified Domain Name>.qlikpoc.com
-    https://<Fully Qualified Domain Name>.qliksense.com
-    ```
+    | Azonosító |
+    |-------------|
+    | `https://<Fully Qualified Domain Name>.qlikpoc.com` |
+    | `https://<Fully Qualified Domain Name>.qliksense.com` |
+    |
+   
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
@@ -103,30 +102,24 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Qlik Sense Enterprise-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Qlik Sense Enterprise**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Qlik Sense Enterprise** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-qlik-sense-enterprise-sso"></a>A Qlik Sense Enterprise SSO konfigurálása
@@ -140,7 +133,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     a. Nyissa meg a FederationMetaData.xml fájlt, amelyet Azure Portal egy szövegszerkesztőben töltött le.
 
-    b. Keresse meg a **securitytokenservicetype**értéket.  Négy bejegyzés létezik (két pár nyitó és záró elem címkéje).
+    b. Keresse meg a **securitytokenservicetype** értéket.  Négy bejegyzés létezik (két pár nyitó és záró elem címkéje).
 
     c. Törölje a Securitytokenservicetype címkéit és az összes adatot a fájlból.
 
@@ -180,9 +173,9 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     b. A **hitelesítési módszer** legördülő lista meghatározza azt a hitelesítési sémát, amelyet a virtuális proxy használni fog.  Válassza ki az SAML elemet a legördülő listából.  Ennek eredményeképpen további lehetőségek jelennek meg.
 
-    c. Az **SAML-gazdagép URI-ja mezőben**adja meg, hogy az állomásnév felhasználói a Qlik értelmet az adott SAML virtuális proxyn keresztül férhessenek hozzá.  A hostname a Qlik Sense-kiszolgáló URI-ja.
+    c. Az **SAML-gazdagép URI-ja mezőben** adja meg, hogy az állomásnév felhasználói a Qlik értelmet az adott SAML virtuális proxyn keresztül férhessenek hozzá.  A hostname a Qlik Sense-kiszolgáló URI-ja.
 
-    d. Az **SAML-entitás azonosítója**mezőben adja meg a SAML-gazdagép URI-mezőjében megadott értéket.
+    d. Az **SAML-entitás azonosítója** mezőben adja meg a SAML-gazdagép URI-mezőjében megadott értéket.
 
     e. Az **SAML-identitásszolgáltató metaadatai** az **összevonási metaadatok szerkesztése az Azure ad-konfiguráció** szakaszban korábban szerkesztett fájl.  **A identitásszolgáltató-metaadatok feltöltése előtt módosítani kell a fájlt** , hogy el lehessen távolítani az adatokat az Azure ad és a Qlik Sense Server közötti megfelelő működés biztosítása érdekében.  **Ha a fájlt még szerkeszteni szeretné, tekintse meg a fenti utasításokat.**  Ha a fájlt szerkesztették, kattintson a Tallózás gombra, és válassza ki a szerkesztett metaadat-fájlt, hogy feltöltse a virtuális proxy konfigurációba.
 
@@ -190,7 +183,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     : Adja meg a **felhasználói könyvtár** értékét, amely a felhasználókhoz lesz csatolva, amikor az Azure ad-n keresztül hitelesítik magukat a Qlik Sense Serveren.  A hardcoded értékeket **szögletes zárójelek ([]**) szerint kell megadni.  Az Azure AD SAML-kijelentésben eljuttatott attribútumok használatához a szövegmezőben szögletes zárójelek **nélkül** adja meg az attribútum nevét.
 
-    h. Az **SAML-aláírási algoritmus** beállítja a szolgáltató (ebben az esetben a Qlik Sense Server) tanúsítványának aláírását a virtuális proxy konfigurációjában.  Ha a Qlik Sense Server a Microsoft Enhanced RSA és AES titkosítási szolgáltató használatával generált megbízható tanúsítványt használ, módosítsa az SAML-aláírási algoritmust az **SHA-256**értékre.
+    h. Az **SAML-aláírási algoritmus** beállítja a szolgáltató (ebben az esetben a Qlik Sense Server) tanúsítványának aláírását a virtuális proxy konfigurációjában.  Ha a Qlik Sense Server a Microsoft Enhanced RSA és AES titkosítási szolgáltató használatával generált megbízható tanúsítványt használ, módosítsa az SAML-aláírási algoritmust az **SHA-256** értékre.
 
     i. A SAML-attribútumok leképezése szakasz további attribútumokat is lehetővé tesz, például a csoportok számára a biztonsági szabályokban való használatra Qlik.
 
@@ -248,21 +241,22 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Qlik Sense Enterprise test User létrehozása
 
-A Qlik Sense Enterprise az igény szerinti **üzembe**helyezést is támogatja, a felhasználók automatikusan hozzáadódnak a Qlik Sense Enterprise felhasználói adattárához, mivel az egyszeri bejelentkezés funkciót használják. Emellett az ügyfelek használhatják az QMC-t, és létrehozhatnak egy UDC-t (User Directory-összekötőt) az Qlik Sense Enterprise-ban lévő felhasználók előzetes kitöltéséhez, például a Active Directory és mások számára.
+A Qlik Sense Enterprise az igény szerinti **üzembe** helyezést is támogatja, a felhasználók automatikusan hozzáadódnak a Qlik Sense Enterprise felhasználói adattárához, mivel az egyszeri bejelentkezés funkciót használják. Emellett az ügyfelek használhatják az QMC-t, és létrehozhatnak egy UDC-t (User Directory-összekötőt) az Qlik Sense Enterprise-ban lévő felhasználók előzetes kitöltéséhez, például a Active Directory és mások számára.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Amikor kiválasztja a Qlik Sense Enterprise csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Qlik Sense Enterprise-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-## <a name="additional-resources"></a>További források
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a Qlik Sense Enterprise bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot. 
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Lépjen a Qlik Sense Enterprise bejelentkezési URL-címére közvetlenül, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Qlik Sense Enterprise csempére kattint, a rendszer átirányítja a Qlik Sense Enterprise bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
 
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Következő lépések
+
+Miután konfigurálta a Qlik Sense Enterprise-t, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 <!--Image references-->
 

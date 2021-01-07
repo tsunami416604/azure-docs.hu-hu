@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 12/27/2020
 ms.author: jeedes
-ms.openlocfilehash: c53b7fed17ba4ef2000b905b202286338cd461ed
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b60ab21bb1e8f5270512d3f1e77aeab2baedc31
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442938"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968636"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Oktatóanyag: Azure Active Directory integráció a HubSpot
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a HubSpot a Azure Active Directory (Azure AD) szolgáltatással.
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a HubSpot a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az HubSpot-t az Azure AD-vel, a következőket teheti:
 
-A HubSpot és az Azure AD integrálásával az alábbi előnyökkel jár:
-
-* Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá a HubSpot.
-* A felhasználók automatikusan bejelentkezhetnek a HubSpot az Azure AD-fiókjával (egyszeri bejelentkezéssel).
-* A fiókokat egy központi helyen, a Azure Portal is kezelheti.
-
-További információ az Azure AD-vel való szolgáltatott szoftveres (SaaS) alkalmazások integrálásáról: [egyszeri bejelentkezés a Azure Active Directory lévő alkalmazásokba](../manage-apps/what-is-single-sign-on.md).
+* A HubSpot-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a HubSpot az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,31 +42,20 @@ A HubSpot a következő funkciókat támogatja:
 * **Az SP által kezdeményezett egyszeri bejelentkezés**
 * **IDENTITÁSSZOLGÁLTATÓ – kezdeményezett egyszeri bejelentkezés**
 
-## <a name="add-hubspot-in-the-azure-portal"></a>HubSpot hozzáadása a Azure Portal
+## <a name="adding-hubspot-from-the-gallery"></a>HubSpot hozzáadása a gyűjteményből
 
-A HubSpot és az Azure AD integrálásához hozzá kell adnia a HubSpot a felügyelt SaaS-alkalmazások listájához.
+A HubSpot Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a HubSpot a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **HubSpot** kifejezést a keresőmezőbe.
+1. Válassza ki a **HubSpot** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. A bal oldali menüben válassza a **Azure Active Directory**lehetőséget.
+## <a name="configure-and-test-azure-ad-sso-for-hubspot"></a>Azure AD SSO konfigurálása és tesztelése a HubSpot-hez
 
-    ![Az Azure Active Directory lehetőség](common/select-azuread.png)
-
-1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
-
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
-
-1. Alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-
-    ![Az új alkalmazás lehetőség](common/add-new-app.png)
-
-1. A keresőmezőbe írja be a **HubSpot**kifejezést. A keresési eredmények között válassza a **HubSpot**lehetőséget, majd kattintson a **Hozzáadás**gombra.
-
-    ![HubSpot az eredmények listájában](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az HubSpot-mel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a HubSpot-ben.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az HubSpot-mel konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a HubSpot-ben.
 
 Az Azure AD egyszeri bejelentkezés HubSpot való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
@@ -85,21 +70,13 @@ Az Azure AD egyszeri bejelentkezés HubSpot való konfigurálásához és teszte
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Portal HubSpot.
+1. A Azure Portal **HubSpot** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** ceruza ikonjára a beállítások szerkesztéséhez.
 
-1. Az [Azure Portal](https://portal.azure.com/) **HubSpot** alkalmazás-integráció paneljén válassza az **egyszeri bejelentkezés**lehetőséget.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    ![Egyszeri bejelentkezési lehetőség konfigurálása](common/select-sso.png)
-
-1. **Az egyszeri bejelentkezés** engedélyezéséhez válassza az **SAML** vagy az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezéshez.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-1. Az **alapszintű SAML-konfiguráció** panelen, a *identitásszolgáltató-kezdeményezésű mód*konfigurálásához hajtsa végre a következő lépéseket:
+1. Az **alapszintű SAML-konfiguráció** panelen, a *identitásszolgáltató-kezdeményezésű mód* konfigurálásához hajtsa végre a következő lépéseket:
 
     1. Az **azonosító** mezőbe írjon be egy URL-címet, amely a következő mintával rendelkezik: https: \/ /API.HubSpot.com/login-API/v1/SAML/login?portalId = \<CUSTOMER ID\> .
 
@@ -112,9 +89,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
 1. Az alkalmazás konfigurálása *SP-kezdeményezésű* módban:
 
-    1. Válassza a **további URL-címek beállítása**lehetőséget.
+    1. Válassza a **további URL-címek beállítása** lehetőséget.
 
-    1. A **bejelentkezési URL-cím** mezőbe írja be a **https: \/ /app.HubSpot.com/login**értéket.
+    1. A **bejelentkezési URL-cím** mezőbe írja be a **https: \/ /app.HubSpot.com/login** értéket.
 
     ![A további URL-címek beállítása lehetőség](common/metadata-upload-additional-signon.png)
 
@@ -138,11 +115,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
     ![A beállítások ikon a HubSpot](./media/hubspot-tutorial/config1.png)
 
-1. Válassza a **fiók Alapértelmezések**lehetőséget.
+1. Válassza a **fiók Alapértelmezések** lehetőséget.
 
     ![A fiók alapértékei beállítás a HubSpot](./media/hubspot-tutorial/config2.png)
 
-1. Görgessen le a **Biztonság** szakaszhoz, majd válassza a **beállítás**lehetőséget.
+1. Görgessen le a **Biztonság** szakaszhoz, majd válassza a **beállítás** lehetőséget.
 
     ![A beállítás beállítása a HubSpot](./media/hubspot-tutorial/config3.png)
 
@@ -164,53 +141,27 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
-
-    ![A felhasználók és az összes felhasználó lehetőség](common/users.png)
-
-1. Válassza az **új felhasználó**lehetőséget.
-
-    ![Az új felhasználói beállítás](common/new-user.png)
-
-1. A **felhasználó** ablaktáblán hajtsa végre a következő lépéseket:
-
-    1. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
-    1. A **Felhasználónév** mezőbe írja be a **brittasimon \@ \<your-company-domain> . \<extension\> **. Például **brittasimon \@ contoso.com**.
-
-    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Jegyezze fel a **jelszó** mezőben megjelenő értéket.
-
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
+    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
     1. Kattintson a **Létrehozás** gombra.
-
-    ![A felhasználó panel](common/user-properties.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban Simon Britta-hozzáférést biztosít a HubSpot, így az Azure egyszeri bejelentkezést is használhatja.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a HubSpot.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **HubSpot**lehetőséget.
-
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
-
-1. Az alkalmazások listában válassza a **HubSpot**lehetőséget.
-
-    ![HubSpot az alkalmazások listájában](common/all-applications.png)
-
-1. A menüben válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![A felhasználók és csoportok beállítás](common/users-groups-blade.png)
-
-1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-1. A **felhasználók és csoportok** panelen válassza a **Britta Simon** elemet a felhasználók listájában. Válassza a **Kiválasztás** lehetőséget
-
-1. Ha az SAML-állításban a szerepkör értékét várja, a **szerepkör kiválasztása** panelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Válassza a **Kiválasztás** lehetőséget
-
-1. A **hozzárendelés hozzáadása** panelen válassza a **hozzárendelés**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **HubSpot** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ### <a name="create-a-hubspot-test-user"></a>HubSpot-teszt felhasználó létrehozása
 
@@ -224,23 +175,23 @@ Felhasználói fiók kiépítése a HubSpot-ben:
 
     ![A beállítások ikon a HubSpot](./media/hubspot-tutorial/config1.png)
 
-1. Válassza a **felhasználók & csapatok**lehetőséget.
+1. Válassza a **felhasználók & csapatok** lehetőséget.
 
     ![A felhasználók & csapatok lehetőség a HubSpot](./media/hubspot-tutorial/user1.png)
 
-1. Válassza a **felhasználó létrehozása**lehetőséget.
+1. Válassza a **felhasználó létrehozása** lehetőséget.
 
     ![A felhasználó létrehozása lehetőség a HubSpot](./media/hubspot-tutorial/user2.png)
 
-1. Az **e-mail addess (ek) hozzáadása** mezőben adja meg a felhasználó e-mail-címét a következő formátumban: brittasimon \@ contoso.com, majd kattintson a **tovább**gombra.
+1. Az **e-mail addess (ek) hozzáadása** mezőben adja meg a felhasználó e-mail-címét a következő formátumban: brittasimon \@ contoso.com, majd kattintson a **tovább** gombra.
 
     ![Az e-mail cím (ek) hozzáadása a HubSpot felhasználók létrehozása szakaszában](./media/hubspot-tutorial/user3.png)
 
-1. A **felhasználók létrehozása** szakaszban válassza ki az egyes lapokat. Az egyes lapokon állítsa be a megfelelő beállításokat és engedélyeket a felhasználó számára. Ezután válassza a **tovább**lehetőséget.
+1. A **felhasználók létrehozása** szakaszban válassza ki az egyes lapokat. Az egyes lapokon állítsa be a megfelelő beállításokat és engedélyeket a felhasználó számára. Ezután válassza a **tovább** lehetőséget.
 
     ![A HubSpot felhasználók létrehozása szakaszának lapjai](./media/hubspot-tutorial/user4.png)
 
-1. A meghívás a felhasználónak való elküldéséhez válassza a **Küldés**lehetőséget.
+1. A meghívás a felhasználónak való elküldéséhez válassza a **Küldés** lehetőséget.
 
     ![A Küldés lehetőség a HubSpot](./media/hubspot-tutorial/user5.png)
 
@@ -249,14 +200,21 @@ Felhasználói fiók kiépítése a HubSpot-ben:
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a saját alkalmazások portál használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Miután beállította az egyszeri bejelentkezést, a **HubSpot** kiválasztása után a saját alkalmazások portálon automatikusan bejelentkezik a HubSpot. További információ a saját alkalmazások portálján: [alkalmazások elérése és használata a saját alkalmazások portálon](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>Az SP inicializálva:
 
-## <a name="next-steps"></a>További lépések
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a HubSpot bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
 
-További információért tekintse át a következő cikkeket:
+* Lépjen közvetlenül a HubSpot bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Az SaaS-alkalmazások Azure Active Directory-vel való integrálására szolgáló oktatóanyagok listája](./tutorial-list.md)
-- [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](../manage-apps/what-is-single-sign-on.md)
-- [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
+
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a HubSpot, amelyhez be szeretné állítani az egyszeri bejelentkezést 
+
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások HubSpot csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat kezdeményezéséhez, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a HubSpot, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+
+
+## <a name="next-steps"></a>Következő lépések
+
+A HubSpot konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-aad).

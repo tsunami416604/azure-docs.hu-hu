@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: d22d040b0001ee30e29c551e686a7cb6bc47c2af
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/07/2021
+ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921917"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968891"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
 
@@ -63,7 +63,7 @@ A másolási tevékenység figyelése nézet alján a végrehajtás részletei �
 
 Kövesse a [teljesítmény-hangolás lépéseit](copy-activity-performance.md#performance-tuning-steps) a teljesítmény-ellenőrzés megtervezéséhez és a forgatókönyvhöz való végrehajtásához. 
 
-Ha a másolási tevékenység teljesítménye nem felel meg az elvárásoknak, a Azure Integration Runtime futó egypéldányos másolási tevékenységek hibáinak megoldása érdekében alkalmazza a javaslatot a másolás figyelése nézetben, és próbálkozzon újra. [performance tuning tips](#performance-tuning-tips) Ellenkező esetben olvassa el a [másolási tevékenység végrehajtásának részleteit](#understand-copy-activity-execution-details), tekintse meg a **leghosszabb** időtartamú szakaszt, és alkalmazza az alábbi útmutatást a másolási teljesítmény növeléséhez:
+Ha a másolási tevékenység teljesítménye nem felel meg az elvárásoknak, a Azure Integration Runtime futó egypéldányos másolási tevékenységek hibáinak megoldása érdekében alkalmazza a javaslatot a másolás figyelése nézetben, és próbálkozzon újra. [](#performance-tuning-tips) Ellenkező esetben olvassa el a [másolási tevékenység végrehajtásának részleteit](#understand-copy-activity-execution-details), tekintse meg a **leghosszabb** időtartamú szakaszt, és alkalmazza az alábbi útmutatást a másolási teljesítmény növeléséhez:
 
 - **"A másolás előtti parancsfájl" hosszú** ideig tart: az azt jelenti, hogy a fogadó adatbázison futó másolás előtti parancsfájl hosszú ideig tart. A teljesítmény növelése érdekében állítsa be a megadott előmásolási parancsfájl-logikát. Ha további segítségre van szüksége a parancsfájl fejlesztéséhez, forduljon az adatbázis-csapathoz.
 
@@ -114,7 +114,7 @@ Ha a másolási tevékenység teljesítménye nem felel meg az elvárásoknak, a
 
 Kövesse a [teljesítmény-hangolás lépéseit](copy-activity-performance.md#performance-tuning-steps) a teljesítmény-ellenőrzés megtervezéséhez és a forgatókönyvhöz való végrehajtásához. 
 
-Ha a másolási teljesítmény nem felel meg az elvárásoknak, a Azure Integration Runtimeon futó egypéldányos másolási tevékenységek [performance tuning tips](#performance-tuning-tips) hibáinak megoldása érdekében alkalmazza a javaslatot a másolás figyelése nézetben, és próbálkozzon újra. Ellenkező esetben olvassa el a [másolási tevékenység végrehajtásának részleteit](#understand-copy-activity-execution-details), tekintse meg a **leghosszabb** időtartamú szakaszt, és alkalmazza az alábbi útmutatást a másolási teljesítmény növeléséhez:
+Ha a másolási teljesítmény nem felel meg az elvárásoknak, a Azure Integration Runtimeon futó egypéldányos másolási tevékenységek [](#performance-tuning-tips) hibáinak megoldása érdekében alkalmazza a javaslatot a másolás figyelése nézetben, és próbálkozzon újra. Ellenkező esetben olvassa el a [másolási tevékenység végrehajtásának részleteit](#understand-copy-activity-execution-details), tekintse meg a **leghosszabb** időtartamú szakaszt, és alkalmazza az alábbi útmutatást a másolási teljesítmény növeléséhez:
 
 - A **"várólista" hosszú időtartamot észlelt:** az azt jelenti, hogy a másolási tevékenység hosszú ideig várakozik a várólistán, amíg a saját üzemeltetésű integrációs modulnak erőforrást nem kell végrehajtania. Tekintse át az IR-kapacitást és-használatot, és a számítási feladatok alapján [fel-vagy kibővítheti](create-self-hosted-integration-runtime.md#high-availability-and-scalability) .
 
@@ -172,6 +172,60 @@ Ha a másolási teljesítmény nem felel meg az elvárásoknak, a Azure Integrat
 
   - Gondolja át, hogy fokozatosan hangolja a [párhuzamos másolatokat](copy-activity-performance-features.md), és ne feledje, hogy túl sok párhuzamos másolat is sérült a teljesítmény.
 
+
+## <a name="connector-and-ir-performance"></a>Összekötő és IR teljesítmény
+
+Ez a szakasz az adott összekötő-típushoz vagy az integrációs modulhoz tartozó teljesítmény-hibaelhárítási útmutatók megismerését ismerteti.
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>A tevékenység végrehajtási ideje a Azure IR vs Azure VNet IR használatával változik
+
+A tevékenység végrehajtási ideje akkor változik, ha az adatkészlet különböző Integration Runtime alapul.
+
+- **Tünetek**: egyszerűen az adatkészlet társított szolgáltatásának legördülő menüjében ugyanazokat a folyamatokat hajtja végre, de a futási idő drasztikusan eltér. Ha az adatkészlet a felügyelt Virtual Network Integration Runtimeon alapul, az átlagosnál több mint 2 percet vesz igénybe, de az alapértelmezett Integration Runtime alapján körülbelül 20 másodpercig tart.
+
+- **OK**: a folyamat futtatási részleteinek ellenőrzésekor láthatja, hogy a lassú folyamat fut a felügyelt VNet (Virtual Network) IR-ben, miközben a normál Azure IR fut. A felügyelt VNet IR-t úgy tervezték, hogy a több időt vesz igénybe, mint a Azure IR, mivel nem áll rendelkezésre egy számítási csomópont egy adat-előállítóban, így az egyes másolási tevékenységek elindításához 2 percet is felhasználunk, és az elsődlegesen az VNet-kapcsolaton keresztül történik Azure IR helyett.
+
+    
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Alacsony teljesítmény az adatAzure SQL Databaseba való betöltéskor
+
+- **Tünetek**: az adatok a Azure SQL Databaseba való másolása lassúnak bizonyul.
+
+- **OK**: a probléma kiváltó okát többnyire a Azure SQL Database oldal szűk keresztmetszete váltja ki. A következő okok lehetséges okai:
+
+    - Azure SQL Database szintje nem elég nagy.
+
+    - Azure SQL Database DTU használata a 100%-os közelségbe kerül. Nyomon követheti [a teljesítményt](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) , és megtekintheti a Azure SQL Databasei csomag frissítését.
+
+    - Az indexek nincsenek megfelelően beállítva. Távolítsa el az összes indexet az adatterhelés előtt, majd hozza létre újra őket a betöltés befejeződése után.
+
+    - A WriteBatchSize nem elég nagy ahhoz, hogy illeszkedjen a séma sorainak méretéhez. Próbálja meg bővíteni a probléma tulajdonságát.
+
+    - A tömeges beszúrta helyett a tárolt eljárás használatban van, ami várhatóan rosszabb teljesítményű. 
+
+- **Megoldás**: a [másolási tevékenység teljesítményének hibaelhárítása](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)című témakörben talál.
+
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Időtúllépés vagy lassú teljesítmény a nagyméretű Excel-fájlok elemzésekor
+
+- **Tünetek**:
+
+    - Amikor létrehoz egy Excel-adatkészletet, és importálja a sémát a kapcsolatból/tárból, előnézeti adatokat, listát vagy frissítési munkalapokat, akkor időtúllépési hiba léphet fel, ha az Excel-fájl mérete nagyméretű.
+
+    - Ha a másolási tevékenység használatával nagyméretű Excel-fájlból (>= 100 MB) másol adatokba egy másik adattárba, előfordulhat, hogy lassú teljesítményt vagy a bácsi problémát tapasztal.
+
+- **OK**: 
+
+    - Az olyan műveletek esetében, mint a séma importálása, az adatok megtekintése és az Excel-adatkészletek listázása, az időkorlát 100 s és statikus. Nagyméretű Excel-fájl esetén előfordulhat, hogy ezek a műveletek nem fejeződik be az időtúllépési értéken belül.
+
+    - Az ADF másolási tevékenység beolvassa a teljes Excel-fájlt a memóriába, majd megkeresi a megadott munkalapot és cellákat az adatolvasáshoz. Ezt a viselkedést a mögöttes SDK ADF használja.
+
+- **Megoldás**: 
+
+    - A séma importálásához létrehozhat egy kisebb mintát, amely az eredeti fájl egy részhalmaza, és a "séma importálása a fájlból" lehetőséget választja a "séma importálása a hálózatról/áruházból" lehetőség helyett.
+
+    - A felsorolási munkalap legördülő listájában kattintson a "szerkesztés" lehetőségre, és adja meg a lap nevét/indexét.
+
+    - A nagyméretű Excel-fájlok (>100 MB) más tárolóba való másolásához használhatja az adatforgalom Excel-forrását, melyben a sport stream olvasása és végrehajtása jobb.
+    
 ## <a name="other-references"></a>Egyéb referenciák
 
 Az alábbiakban a támogatott adattárak némelyikének teljesítmény-figyelési és hangolási referenciái találhatók:

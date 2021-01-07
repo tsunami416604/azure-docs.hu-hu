@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746609"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968534"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
 
@@ -269,7 +269,7 @@ Az eszköz a **Spark SQL** -lekérdezést is támogatja:
 
 > [!NOTE]
 >
-> ["Az MS-python >= 2020.5.78807 verziója nem támogatott ezen a kiterjesztésen"](#issues-changed) . Most már a legújabb MS-Python verziót is használhatja.
+> A (z) " [MS-python >= 2020.5.78807 verziója nem támogatott ezen a bővítményen"](#issues-changed) megoldva. Frissítse az **MS-Pythont** a **legújabb verzióra** .
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark-kötegelt feladatok elküldése
 
@@ -376,7 +376,7 @@ Küldje el a fájlt, és figyelje meg, hogy a `.vscode` rendszer automatikusan h
 
   | name | leírás | típus |
   | --- | ---| --- |
-  | ID (Azonosító) | Munkamenet-azonosító | Int |
+  | ID | Munkamenet-azonosító | Int |
   | appId | A munkamenet alkalmazás-azonosítója | Sztring |
   | alkalmazásadatokat | Részletes alkalmazásadatok | Kulcs leképezése = val |
   | napló | Naplózási sorok | Karakterláncok listája |
@@ -491,9 +491,9 @@ A menüsávban válassza a parancs-   >  **paletta** megtekintése elemet, majd 
 
 ## <a name="issues-changed"></a>Megváltoztatott problémák
 
-Ebben az esetben a "MS-Python >= 2020.5.78807 verzió nem támogatott ezen a kiterjedésen", a **legújabb MS-Python verziót** használhatja most.
+A "MS-Python >= 2020.5.78807 verzió nem támogatja ezt a bővítményt" című cikkben található probléma megoldásához frissítse az **MS-Pythont** a **legújabb verzióra** .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Spark & kaptár Visual Studio Code-hoz való használatát bemutató videó: [spark &-struktúra a Visual Studio Code](https://go.microsoft.com/fwlink/?linkid=858706)-hoz.

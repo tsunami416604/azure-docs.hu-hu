@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan használhat Azure PowerShell 
 ms.topic: sample
 ms.date: 03/05/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 6e3af44284acdc96f6f0197c4153c6f7538570d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73dc119e8db34aed04ce8926bfa85f557027c8e2
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069484"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967327"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Titkosított Azure-beli virtuális gép biztonsági mentése a PowerShell-lel
 
-Ez a szkript létrehoz egy Recovery Services-tárolót egy geo-redundáns tárolással (GRS) egy titkosított Azure-beli virtuális géphez. Az alapértelmezett védelmi házirend a tárolóra lesz alkalmazva. A házirend napi biztonsági mentést készít a virtuális géphez, és 30 napig őrzi meg az egyes biztonsági másolatokat. A parancsfájl a virtuális gép kezdeti helyreállítási pontját is elindítja, és 365 napig megőrzi a helyreállítási pontot.
+Ez a szkript létrehoz egy Recovery Services-tárolót egy geo-redundáns tárolással (GRS) egy titkosított Azure-beli virtuális géphez. Az alapértelmezett védelmi házirend a tárolóra lesz alkalmazva. A házirend napi biztonsági mentést készít a virtuális géphez, és 365 napig megőrzi az egyes biztonsági másolatokat. A parancsfájl a kezdeti helyreállítási pontot is elindítja a virtuális géphez, és 30 napig megőrzi a helyreállítási pontot.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -50,6 +50,6 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [Várakozás – AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) | Egy Azure Backup-feladatokra vár. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/new-azureps-module-az).

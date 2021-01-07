@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 35bb05eb019a1284a8a418df0197960130e8d013
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897296"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968432"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Fiorital
 
@@ -26,7 +26,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az SAP Fioriot Azu
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az SAP Fioriba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,18 +47,18 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 Az SAP Fiori Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az SAP Fiori szolgáltatást a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be az **SAP Fiori** kifejezést a keresőmezőbe.
 1. Válassza az **SAP Fiori** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-fiori"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az SAP Fiori szolgáltatáshoz
+## <a name="configure-and-test-azure-ad-sso-for-sap-fiori"></a>Azure AD SSO konfigurálása és tesztelése az SAP Fiorihoz
 
 Konfigurálja és tesztelje az Azure AD SSO-t az SAP Fiori segítségével egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az SAP Fioriban.
 
-Az Azure AD SSO SAP Fiori használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO SAP Fiori használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -74,11 +73,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Nyisson meg egy új böngészőablakot, és jelentkezzen be az SAP Fiori vállalati webhelyre rendszergazdaként.
 
-1. Győződjön meg arról, hogy a **http** -és a **https** -szolgáltatások aktívak, és hogy a kapcsolódó portok hozzá vannak rendelve a tranzakciós kód **SMICM** .
+1. Győződjön meg arról, hogy a **http** -és a **https** -szolgáltatások aktívak, és hogy a kapcsolódó portok hozzá vannak rendelve a tranzakciós kód **SMICM**.
 
-1. Jelentkezzen be az SAP Business Client for SAP System **T01** , ahol egyszeri bejelentkezés szükséges. Ezután aktiválja a HTTP biztonsági munkamenetek felügyeletét.
+1. Jelentkezzen be az SAP Business Client for SAP System **T01**, ahol egyszeri bejelentkezés szükséges. Ezután aktiválja a HTTP biztonsági munkamenetek felügyeletét.
 
-    1. Nyissa meg a tranzakciós kódot **SICF_SESSIONS** . Az aktuális értékekkel rendelkező összes releváns profil-paraméter megjelenik. A következő példához hasonlóan néznek ki:
+    1. Nyissa meg a tranzakciós kódot **SICF_SESSIONS**. Az aktuális értékekkel rendelkező összes releváns profil-paraméter megjelenik. A következő példához hasonlóan néznek ki:
 
         ```
         login/create_sso2_ticket = 2
@@ -110,7 +109,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
         /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
         ```
 
-1. Lépjen az SAP System [ **T01/122** ] üzleti ügyfél **egy saml2** . Megnyílik a konfigurációs felhasználói felület egy új böngészőablakban. Ebben a példában a 122-es SAP-rendszerhez az üzleti ügyfélprogramot használjuk.
+1. Lépjen az SAP System [**T01/122**] üzleti ügyfél **egy saml2** . Megnyílik a konfigurációs felhasználói felület egy új böngészőablakban. Ebben a példában a 122-es SAP-rendszerhez az üzleti ügyfélprogramot használjuk.
 
     ![Az SAP Fiori üzleti ügyfél bejelentkezési lapja](./media/sapfiori-tutorial/tutorial-sapnetweaver-sapbusinessclient.png)
 
@@ -118,7 +117,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A ABAP System T01/122 oldal SAML 2,0-konfigurációja az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
 
-1. A **szolgáltató neve** mezőben cserélje le a **T01122** **http: \/ /T01122** , majd válassza a **Mentés** lehetőséget.
+1. A **szolgáltató neve** mezőben cserélje le a **T01122** **http: \/ /T01122**, majd válassza a **Mentés** lehetőséget.
 
     > [!NOTE]
     > Alapértelmezés szerint a szolgáltató neve a (z) formátumban van \<sid> \<client> . Az Azure AD a nevet a \<protocol> ://. formátumban várja \<name> . Javasoljuk, hogy a szolgáltató nevét HTTPS-ként őrizze meg, hogy \: // \<sid> \<client> több SAP Fiori ABAP-motor is konfigurálható legyen az Azure ad-ben.
@@ -131,9 +130,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A metaadatok letöltése hivatkozásra az SAP SAML 2,0 metaadatainak párbeszédpanelen](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
 
-1. A [Azure Portal](https://portal.azure.com/)az **SAP Fiori** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal az **SAP Fiori** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -188,7 +187,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -203,20 +202,14 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza az **SAP Fiori** elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-sap-fiori-sso"></a>SAP Fiori SSO konfigurálása
 
-1. Jelentkezzen be az SAP-szolgáltatásba, és lépjen a tranzakciós kód **egy saml2** . Megnyílik egy új böngészőablak az SAML-konfiguráció oldalával.
+1. Jelentkezzen be az SAP-szolgáltatásba, és lépjen a tranzakciós kód **egy saml2**. Megnyílik egy új böngészőablak az SAML-konfiguráció oldalával.
 
 1. Egy megbízható identitás-szolgáltató (Azure AD) végpontjának konfigurálásához válassza a **megbízható szolgáltatók** fület.
 
@@ -230,7 +223,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Válassza ki az SAP-ban feltölteni kívánt metaadat-fájlt](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
 
-1. A következő lap **alias** mezőjébe írja be az alias nevét. Például: **aadsts** . Kattintson a **Tovább** gombra.
+1. A következő lap **alias** mezőjébe írja be az alias nevét. Például: **aadsts**. Kattintson a **Tovább** gombra.
 
     ![Az SAP alias mezője](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
 
@@ -262,13 +255,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![A Hozzáadás lehetőség az identitás-összevonás lapon](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
 
-1. A **támogatott NameID-formátumok** párbeszédpanelen válassza a **meghatározatlan** lehetőséget. Kattintson az **OK** gombra.
+1. A **támogatott NameID-formátumok** párbeszédpanelen válassza a **meghatározatlan** lehetőséget. Válassza az **OK** lehetőséget.
 
     ![A támogatott NameID-formátumok párbeszédpanel és az SAP beállításai](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameid.png)
 
     A **felhasználói azonosító forrása** és a **felhasználói azonosító megfeleltetési mód** értékei határozzák meg az SAP-felhasználó és az Azure ad-jogcím közötti kapcsolatot.  
 
-    **1. forgatókönyv** : az SAP-felhasználó és az Azure ad felhasználói leképezése
+    **1. forgatókönyv**: az SAP-felhasználó és az Azure ad felhasználói leképezése
 
     1. Az SAP-ben a **"meghatározatlan" NameID-formátum részletei** alatt jegyezze fel a részleteket:
 
@@ -278,7 +271,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
         ![A "felhasználói attribútumok & jogcímek" párbeszédpanelt megjelenítő képernyőkép.](./media/sapfiori-tutorial/claimsaad1.png)
 
-    **2. forgatókönyv** : válassza ki az SAP felhasználói azonosítóját a SU01-ben konfigurált e-mail-cím alapján. Ebben az esetben az e-mail-azonosítót a SU01-ben kell konfigurálni minden olyan felhasználó számára, aki egyszeri bejelentkezést igényel.
+    **2. forgatókönyv**: válassza ki az SAP felhasználói azonosítóját a SU01-ben konfigurált e-mail-cím alapján. Ebben az esetben az e-mail-azonosítót a SU01-ben kell konfigurálni minden olyan felhasználó számára, aki egyszeri bejelentkezést igényel.
 
     1.  Az SAP-ben a **"meghatározatlan" NameID-formátum részletei** alatt jegyezze fel a részleteket:
 
@@ -316,12 +309,6 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az SAP Fiori
 
 1. Ha a rendszer a Felhasználónév és a jelszó megadását kéri, engedélyezze a nyomkövetést a probléma diagnosztizálásához. Használja a következő URL-címet a nyomkövetéshez: https: \/ / \<sapurl\> /SAP/BC/WebDynpro/SAP/sec_diag_tool? SAP-Client = 122&SAP-Language = en #.
 
-## <a name="additional-resources"></a>További források
+## <a name="next-steps"></a>Következő lépések
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
-
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [Az SAP Fiori kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+Az SAP Fiori konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

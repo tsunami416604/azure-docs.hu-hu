@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 07/14/2017
-ms.openlocfilehash: ef32372cbaa70f7bca609c2ed1db118f33237e2b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 194fe3494915be9f6784e1596e647885634817ad
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "92216198"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969010"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>A U-SQL és a hibakeresés helyi futtatása a Visual Studio Code-ban
 Ez a cikk azt ismerteti, hogyan futtathatók a U-SQL-feladatok egy helyi fejlesztési gépen a korai kódolási fázisok felgyorsításához vagy a kód helyi hibakereséséhez a Visual Studio Code-ban. A Visual Studio Code Azure Data Lake eszközével kapcsolatos utasításokért lásd: a [Azure Data Lake Tools használata a Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)-hoz.
@@ -68,7 +68,7 @@ A felhasználó első alkalommal:
   ![emlékeztető a DotNet telepítéséhez](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
 3. Telepítse a C#-t a Visual Studio Code-hoz, ahogy azt a nem telepítette az üzenetablakban. A folytatáshoz kattintson a **telepítés** gombra, majd indítsa újra a VSCode.
 
-    ![Emlékeztető a C telepítéséhez #](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
+![Emlékeztető a C telepítéséhez #](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 
 A helyi hibakeresés végrehajtásához kövesse az alábbi lépéseket:
   

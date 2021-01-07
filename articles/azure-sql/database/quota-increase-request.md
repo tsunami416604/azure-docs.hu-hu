@@ -9,12 +9,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448852"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967701"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>A kérelmek kvótájának növekedése Azure SQL Database és az SQL felügyelt példányainál
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,23 +25,23 @@ Ez a cikk a Azure SQL Database és az Azure SQL felügyelt példányaira vonatko
 
 A következő lépésekkel hozzon létre egy új támogatási kérést a SQL Database Azure Portal.
 
-1. A [Azure Portal](https://portal.azure.com) menüben válassza a **Súgó + támogatás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com) menüben válassza a **Súgó + támogatás** lehetőséget.
 
    ![A Súgó + támogatás hivatkozása](./media/quota-increase-request/help-plus-support.png)
 
-1. A **Súgó és támogatás**területen válassza az **új támogatási kérelem**lehetőséget.
+1. A **Súgó és támogatás** területen válassza az **új támogatási kérelem** lehetőséget.
 
     ![Új támogatási kérelem létrehozása](./media/quota-increase-request/new-support-request.png)
 
-1. A **probléma típusa**beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
+1. A **probléma típusa** beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
 
    ![Probléma típusának kiválasztása](./media/quota-increase-request/select-quota-issue-type.png)
 
-1. Az **előfizetés**mezőben válassza ki azt az előfizetést, amelynek a kvótáját emelni szeretné.
+1. Az **előfizetés** mezőben válassza ki azt az előfizetést, amelynek a kvótáját emelni szeretné.
 
    ![Válassza ki az előfizetést egy nagyobb kvótához](./media/quota-increase-request/select-subscription-support-request.png)
 
-1. A **kvóta típusa**beállításnál válasszon a következő típusú kvóták közül:
+1. A **kvóta típusa** beállításnál válasszon a következő típusú kvóták közül:
 
    - **SQL Database** az önálló adatbázisok és a rugalmas készlet kvótái számára.
    - Felügyelt példányok **SQL Database felügyelt példánya** .
@@ -109,16 +109,18 @@ Ha az előfizetéshez egy adott régióban hozzáférésre van szüksége, vála
 
    ![Kérelem régióhoz való hozzáférése](./media/quota-increase-request/quota-request.png)
 
-### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> Az M-sorozat hozzáférésének engedélyezése egy régióhoz
+<!--
+### <a id="mseries"></a> Enable M-series access to a region
 
-Az M-sorozat hardverének az előfizetéshez és a régióhoz való engedélyezéséhez meg kell nyitni egy támogatási kérést.
+To enable M-series hardware for a subscription and region, a support request must be opened.
 
-1. Válassza ki az **M-sorozat régiójának hozzáférési** kvóta típusát.
+1. Select the **M-series region access** quota type.
 
-1. A **válasszon helyet** listából válassza ki a használni kívánt Azure-régiót. Az egyes régiókban a kvóta/előfizetés.
+1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
 
 
-   ![M sorozatú régió hozzáférésének kérése](./media/quota-increase-request/quota-m-series.png)
+   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
+-->
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL felügyelt példány kvótájának típusa
 
@@ -126,7 +128,7 @@ A **felügyelt SQL-példányok** kvótájának típusához kövesse az alábbi l
 
 1. A **régió** listáról válassza ki a célként használni kívánt Azure-régiót.
 
-1. Adja meg az **alhálózat** és a **virtuális mag**számára kért új korlátozásokat.
+1. Adja meg az **alhálózat** és a **virtuális mag** számára kért új korlátozásokat.
 
    ![SQL felügyelt példány kvótájának részletei](./media/quota-increase-request/quota-details-managed-instance.png)
 

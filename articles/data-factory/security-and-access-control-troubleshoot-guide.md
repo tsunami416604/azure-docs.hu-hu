@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: fac4f3029d783e9257d00466ddb9fc9741b0f5a2
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895648"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968585"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Biztonsági és hozzáférés-vezérlési problémák elhárítása Azure Data Factory
 
@@ -151,16 +151,6 @@ A probléma megoldásához nyissa meg a [Azure Data Factory Azure-beli privát h
 Próbálja meg engedélyezni a nyilvános hálózati hozzáférést a felhasználói felületen a következő képernyőképen látható módon:
 
 ![Képernyőfelvétel: "engedélyezve" vezérlő a "nyilvános hálózati hozzáférés engedélyezése" beállításnál a hálózatkezelés ablaktáblán.](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
-
-### <a name="pipeline-runtime-varies-when-basing-on-different-ir"></a>A folyamat futási ideje eltérő IR-re alapozva változik
-
-#### <a name="symptoms"></a>Hibajelenségek
-
-Az adatkészletben lévő társított szolgáltatás legördülő menüjének bekapcsolásával megegyező folyamat-tevékenységek végezhető el, de a futási idő drasztikusan eltér. Ha az adatkészlet a felügyelt Virtual Network Integration Runtimeon alapul, az átlagosnál több mint 2 percet vesz igénybe, de az alapértelmezett Integration Runtime alapján körülbelül 20 másodpercig tart.
-
-#### <a name="cause"></a>Ok
-
-A folyamat futtatási részleteinek ellenőrzésekor láthatja, hogy a lassú folyamat a felügyelt VNet (Virtual Network) IR-ben fut, miközben a normál Azure IR fut. A felügyelt VNet IR-t úgy tervezték, hogy a több időt vesz igénybe, mint a Azure IR, mivel nem áll rendelkezésre egy számítási csomópont egy adat-előállítóban, így az egyes másolási tevékenységek elindításához 2 percet is felhasználunk, és az elsődlegesen az VNet-kapcsolaton keresztül történik Azure IR helyett.
 
 ## <a name="next-steps"></a>Következő lépések
 

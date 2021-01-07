@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 4973a5f1311de23cf54e401a52fb083f497687a3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 221d5094915b6de51b7f64d2922fe16f8fa87cf3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894491"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969078"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a zendesk
 
@@ -26,7 +26,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a zendesk a Azure 
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a zendesk az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,13 +40,13 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A zendesk támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 * A zendesk támogatja az [ **automatikus** felhasználó-kiépítés használatát](zendesk-provisioning-tutorial.md)
-* A zendesk konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
+
 
 ## <a name="adding-zendesk-from-the-gallery"></a>Zendesk hozzáadása a gyűjteményből
 
 A zendesk Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a zendesk a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
@@ -58,7 +57,7 @@ A zendesk Azure AD-be való integrálásának konfigurálásához hozzá kell ad
 
 Konfigurálja és tesztelje az Azure AD SSO-t a zendesk a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a zendesk-ben.
 
-Az Azure AD SSO és a zendesk konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a zendesk konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -71,9 +70,9 @@ Az Azure AD SSO és a zendesk konfigurálásához és teszteléséhez hajtsa vé
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **zendesk** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal **zendesk** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -111,7 +110,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -126,15 +125,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **zendesk** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-zendesk-sso"></a>Zendesk SSO konfigurálása
@@ -153,7 +146,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![A képernyőképen a zendesk felügyeleti központ látható a kiválasztott biztonsági beállításokkal.](./media/zendesk-tutorial/settings.png "Biztonság")
 
-1. Nyissa meg az **egyszeri bejelentkezési** oldalt, és kattintson a **Szerkesztés** elemre az **SAML** -ban.
+1. Nyissa meg az **egyszeri bejelentkezési** oldalt, és kattintson a **Szerkesztés** elemre az **SAML**-ban.
 
     ![A képernyőképen látható az egyszeri bejelentkezési oldal, ahol a Szerkesztés van kiválasztva.](./media/zendesk-tutorial/saml-sso.png "Biztonság")
 
@@ -175,22 +168,14 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a zendesk csempére kattint, automatikusan be kell jelentkeznie arra a zendesk, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a zendesk bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen közvetlenül a zendesk bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások zendesk csempére kattint, a rendszer átirányítja a zendesk bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [A zendesk kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
-
-- [A zendesk és a speciális láthatóság és vezérlők elleni védelem](/cloud-app-security/proxy-intro-aad)
-
-- [A felhasználók üzembe helyezésének konfigurálása](zendesk-provisioning-tutorial.md)
+A zendesk konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

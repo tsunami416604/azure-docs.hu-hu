@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e58cef5ae1fc727235539a91e80e424e6ed3be34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f9b79e193c06b6492cfffcbf25811edb5c40d3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496372"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967021"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Méretezési csoport létrehozása speciális rendszerkép-verzióval az Azure CLI használatával
 
@@ -49,11 +49,11 @@ az vmss create \
    --resource-group myResourceGroup \
    --name myScaleSet \
    --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
-   --Specialized
+   --specialized
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure rendszerkép-szerkesztő (előzetes verzió)](../virtual-machines/linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](../virtual-machines/linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 

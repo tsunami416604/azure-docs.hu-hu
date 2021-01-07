@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: b5b6a697e6a5cae064a6a48419246dc12e8d048c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 72caeb60fc058b88158979d211a0bc38985975c7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695828"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968857"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. 
@@ -318,7 +318,11 @@ A támogatott országok/régiók díjszabását a [Azure monitor díjszabási ol
 ### <a name="webhook"></a>Webhook
 
 > [!NOTE]
-> A webhook művelet végrehajtásához a cél webhook-végpontnak nem kell megadnia a riasztás részleteit a sikeres működéshez, vagy képesnek kell lennie a POST művelet részeként megadott riasztási környezeti információk elemzésére. Ha a webhook-végpont nem tudja önállóan kezelni a riasztási környezet információit, használhat egy olyan megoldást is, mint a [Logic app-művelet](./action-groups-logic-app.md) a riasztási környezet adatainak egyéni manipulációja érdekében, hogy megfeleljen a webhook várt adatformátumának.
+> A webhook művelet végrehajtásához a cél webhook-végpontnak nem kell megadnia a riasztás részleteit a sikeres működéshez, vagy képesnek kell lennie a POST művelet részeként megadott riasztási környezeti információk elemzésére. 
+
+> A felhasználónak a webhook szolgáltatásnév **tulajdonosának** kell lennie annak érdekében, hogy a biztonság ne legyen megsértve. Mivel bármely Azure-ügyfél hozzáférhet a portálon keresztül az összes objektum-azonosítóhoz, a tulajdonos ellenőrzése nélkül bárki felveheti a biztonságos webhookot a saját műveleti csoportjához az Azure Monitor riasztási értesítéseire, amely megsérti a biztonságot.
+
+> Ha a webhook-végpont nem tudja önállóan kezelni a riasztási környezet információit, használhat egy olyan megoldást is, mint a [Logic app-művelet](./action-groups-logic-app.md) a riasztási környezet adatainak egyéni manipulációja érdekében, hogy megfeleljen a webhook várt adatformátumának.
 
 A webhookok feldolgozása a következő szabályok alapján történik
 - A webhook hívása legfeljebb 3 alkalommal próbálkozik.
@@ -461,7 +465,7 @@ A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csopo
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Példa a szolgáltatási címke hozzáadására."border="true":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az [SMS-riasztás viselkedéséről](./alerts-sms-behavior.md).  
 * Ismerkedjen meg [a tevékenység naplójának riasztása webhook sémával](./activity-log-alerts-webhook.md).  
 * További információ a [ITSM-csatolóról](./itsmc-overview.md).

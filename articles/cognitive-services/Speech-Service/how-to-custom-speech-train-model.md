@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955195"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968466"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>A Custom Speech-modellek betanítása és üzembe helyezése
 
@@ -35,12 +35,12 @@ Ha az alapmodellel észlelt felismerési problémákat tapasztal, használhat em
 
 A modellek betanításának első lépése a betanítási adatok feltöltése. Az emberi címkével ellátott átírások és a kapcsolódó szövegek (hosszúságú kimondott szöveg és kiejtések) előkészítéséhez lásd: [az adat előkészítése és tesztelése](./how-to-custom-speech-test-and-train.md) részletes utasításokkal. A betanítási adatok feltöltése után kövesse az alábbi utasításokat a modell képzésének megkezdéséhez:
 
-1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech).
+1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech). Ha olyan modellt tervez betanítani, amely hang-és emberi-címkével ellátott átírási adatkészleteket mutat be, válasszon ki egy, a [dedikált hardverrel rendelkező régióban](custom-speech-overview.md#set-up-your-azure-account) egy beszédfelismerési előfizetést.
 2. Ugrás a **beszéd – szöveg**  >  **Custom Speech**  >  **[projekt neve]**  >  **képzésre**.
 3. Válassza ki a **betanítási modellt**.
 4. Adja meg a betanítás **nevét** és **leírását**.
 5. A **forgatókönyv és** az alapkonfiguráció-modell listából válassza ki azt a forgatókönyvet, amely a legjobban megfelel a tartománynak. Ha nem biztos abban, hogy melyik forgatókönyvet szeretné kiválasztani, válassza az **általános** lehetőséget. Az alapmodell a betanítás kiindulási pontja. A legújabb modell általában a legjobb választás.
-6. A **betanítási adatok kiválasztása** lapon válasszon ki egy vagy több olyan hang + emberi címkével ellátott átírási adatkészletet, amelyet képzésre szeretne használni.
+6. A **betanítási adatok kiválasztása** lapon válasszon ki egy vagy több kapcsolódó szöveges adatkészletet, vagy a betanításhoz használni kívánt hang-és emberi-címkével ellátott átírási adatkészleteket. Új modell betanításakor Kezdje a kapcsolódó szöveggel; a hang + ember által címkézett átiratok betanítása sokkal hosszabb időt vehet igénybe (akár [több napig](how-to-custom-speech-evaluate-data.md#improve-model-recognition)is).
 7. A betanítás befejezése után az újonnan betanított modell pontossági tesztelését végezheti el. Ez a lépés nem kötelező.
 8. Válassza a **Létrehozás** lehetőséget az egyéni modell kiépítéséhez.
 
@@ -76,7 +76,7 @@ A naplózási adat az exportáláshoz érhető el, ha a végpont oldalára kerü
 > [!NOTE]
 >A naplózási adatai 30 napig érhetők el a Microsoft tulajdonában lévő tárolóban. Ezt követően el lesz távolítva. Ha a felhasználó tulajdonában lévő Storage-fiók a Cognitive Services-előfizetéshez van csatolva, a naplózási adatai nem törlődnek automatikusan.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg, hogyan használhatja az egyéni modellt](how-to-specify-source-language.md)
 

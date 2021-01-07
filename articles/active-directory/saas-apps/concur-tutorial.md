@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/24/2020
+ms.date: 12/26/2020
 ms.author: jeedes
-ms.openlocfilehash: f5db7efffa685291584bd402e9898d365f615773
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 582bf495223d04ee08cd376bc4403f225b23e986
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672610"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968041"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az egybeesik
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az integrációt A
 * Annak az Azure AD-nek a vezérlése, akinek hozzáférése van a egyetért.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,13 +39,12 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A egybeesik az **SP** által kezdeményezett egyszeri bejelentkezést támogatja
 * **A belefoglalt idő a** felhasználó üzembe helyezését támogatja
-* A konfigurálást követően kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-concur-from-the-gallery"></a>A beérkezett adatok hozzáadása a katalógusból
 
 A egyetért az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a gyűjteményt a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
@@ -58,7 +55,7 @@ A egyetért az Azure AD-be való integrálásának konfigurálásához hozzá ke
 
 Konfigurálja és tesztelje az Azure AD SSO-t a " **B. Simon**" nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között.
 
-Ha az Azure AD SSO-t a egybeesik használatával szeretné konfigurálni és tesztelni, hajtsa végre a következő építőelemeket:
+Az alábbi lépéseket követve konfigurálhatja és tesztelheti az Azure AD SSO-t a egybeesik használatával:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -71,9 +68,9 @@ Ha az Azure AD SSO-t a egybeesik használatával szeretné konfigurálni és tes
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portalon](https://portal.azure.com/), **az alkalmazás-** integrációja oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portalon, **az alkalmazás-** integrációja oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** ceruza ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -122,15 +119,9 @@ Ebben a szakaszban a B. Simon használatával engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **egyetértek** elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-concur-sso"></a>A egyetértő SSO konfigurálása
@@ -146,18 +137,15 @@ Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a következőben
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a megegyezni kívánt csempére kattint, automatikusan be kell jelentkeznie arra a egyetért, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ekkor a rendszer átirányítja a bejelentkezett bejelentkezési URL-címre, ahol kezdeményezheti a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen a közvetlen bejelentkezési URL-címre, és indítsa el innen a bejelentkezési folyamatot.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások egyetértek csempére kattint, a rendszer átirányítja a bejelentkező bejelentkezési URL-címre. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure AD-val való együttműködés kipróbálása](https://aad.portal.azure.com)
-
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
+A konfigurálást követően kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

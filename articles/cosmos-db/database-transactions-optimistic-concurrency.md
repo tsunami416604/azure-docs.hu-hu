@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: bdfbe5106f220a9fe4a3568709187b9071bc7917
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 96652b2a1eb35668bd8a810b309ab31cec5afdb7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334276"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967259"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Tranzakciók és optimista egyidejűség vezérlése
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,13 +53,15 @@ A JavaScript közvetlen végrehajtása az adatbázismotor keretében az adatbáz
 
 Az optimista Egyidejűség-vezérlés lehetővé teszi az elveszett frissítések és törlések elkerülését. Az egyidejű, ütköző műveleteket a rendszer az adott összetevőt birtokló logikai partíció által üzemeltetett adatbázismotor rendszeres pesszimista zárolásának aláveti. Ha két egyidejű művelet kísérli meg egy elem legújabb verziójának frissítését egy logikai partíción belül, az egyiket a rendszer megnyeri, a másik pedig sikertelen lesz. Ha azonban egy vagy két művelet párhuzamosan frissíti ugyanazt az elemeket, korábban már beolvasta az elem egy régebbi értékét, akkor az adatbázis nem tudja, hogy a korábban olvasott érték vagy akár mindkét ütköző művelet valóban az elem legújabb értéke volt-e. Szerencsére ezt a helyzetet az **optimista Egyidejűség-vezérléssel (OCC)** lehet észlelni, mielőtt a két művelet a tranzakció határát adja meg az adatbázismotor belsejében. A OCC megvédi adatait a mások által végrehajtott, véletlenül felülírt módosításokkal szemben. Azt is megakadályozza, hogy mások véletlenül felülírják a saját módosításait.
 
-Az elemek egyidejű frissítését Azure Cosmos DB kommunikációs protokoll rétege OCC alá. Az Azure Cosmos Database biztosítja, hogy a frissíteni kívánt elem (vagy törlés) ügyféloldali verziója ugyanaz, mint az Azure Cosmos-tárolóban lévő elem verziója. Ezzel biztosítható, hogy az írások a mások írásai által véletlenül felülírva legyenek, és fordítva. Többfelhasználós környezetben az optimista Egyidejűség-vezérlés megvédi az elemek hibás verziójának véletlen törlését vagy frissítését. Ennek megfelelően az elemek védve vannak a hírhedt "elveszett frissítés" vagy "elveszett Törlés" problémával szemben.
+Az elemek egyidejű frissítését Azure Cosmos DB kommunikációs protokoll rétege OCC alá. Az **egyrégiós írásokhoz** konfigurált Azure Cosmos-fiókok esetében Azure Cosmos db biztosítja, hogy a frissíteni kívánt elem (vagy törlés) ügyféloldali verziója azonos legyen az Azure Cosmos-tárolóban található elem verziójával. Ezzel biztosítható, hogy az írások a mások írásai által véletlenül felülírva legyenek, és fordítva. Többfelhasználós környezetben az optimista Egyidejűség-vezérlés megvédi az elemek hibás verziójának véletlen törlését vagy frissítését. Ennek megfelelően az elemek védve vannak a hírhedt "elveszett frissítés" vagy "elveszett Törlés" problémával szemben.
+
+A **többrégiós írásokkal** konfigurált Azure Cosmos-fiókokban az adatküldés a másodlagos régióktól függetlenül is elvégezhető, ha az `_etag` megegyezik a helyi régióban lévő összes adattal. Ha az új adatfeldolgozást helyileg egy másodlagos régióban véglegesítik, akkor az a központban vagy az elsődleges régióban lesz egyesítve. Ha az ütközés-feloldási házirend egyesíti az új adatközpont-régiót, ezeket az adatfájlokat a rendszer globálisan replikálja az új szolgáltatással `_etag` . Ha az ütközés-feloldási házirend elutasítja az új adatvesztést, a másodlagos régió vissza lesz állítva az eredeti és a értékre `_etag` .
 
 Egy Azure Cosmos-tárolóban tárolt minden egyes tétel rendelkezik egy rendszer által definiált `_etag` tulajdonsággal. A `_etag` rendszer automatikusan generálja és frissíti a kiszolgálót a kiszolgáló minden frissítésekor. `_etag` az ügyfél által megadott `if-match` kérelem fejlécével használható, így a kiszolgáló eldöntheti, hogy lehet-e feltételesen frissíteni egy adott tételt. A `if-match` fejléc értéke megegyezik a kiszolgáló értékével `_etag` , az elem pedig frissül. Ha a `if-match` kérelem fejlécének értéke már nem aktuális, a kiszolgáló elutasítja a műveletet "HTTP 412 előfeltételi hiba" üzenettel. Az ügyfél ezután újra beolvashatja az elemeket, hogy megszerezze az elem aktuális verzióját a kiszolgálón, vagy felülbírálja a kiszolgálón lévő elem verzióját az `_etag` elemhez tartozó saját értékkel. Emellett `_etag` a fejléc használatával is `if-none-match` meghatározhatja, hogy szükség van-e egy erőforrás ismételt lekérésére.
 
 Az elemek `_etag` értéke minden alkalommal megváltozik, amikor az adott tételt frissíti. Az elemek cseréje műveletekhez `if-match` explicit módon meg kell adni a kérés beállításainak részét. Példaként tekintse meg a mintakód a [githubban](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L676-L772)című témakört. `_etag` az értékek implicit módon vannak bejelölve a tárolt eljárás által érintett összes írásos elemnél. Ha ütközés észlelhető, a tárolt eljárás visszaállítja a tranzakciót, és kivételt vet fel. Ezzel a módszerrel a tárolt eljáráson belül az összes vagy a nem írt írást is alkalmazza a rendszer. Ez egy jel az alkalmazásnak a frissítések újraalkalmazására, majd próbálja megismételni az eredeti ügyfél-kérelmet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az adatbázis-tranzakciókkal és az optimista Egyidejűség-vezérléssel kapcsolatban a következő cikkekben található:
 

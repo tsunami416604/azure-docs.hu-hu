@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: c549cae0b7bdc5e237ec3cf704a1ead53db91449
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754028"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968568"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>A fizikai kiszolgáló áttelepítésének támogatási mátrixa
 
@@ -48,7 +48,7 @@ A tábla az áttelepíteni kívánt fizikai kiszolgálók támogatását összeg
 **UEFI-rendszerindítás** | Támogatott. Az UEFI-alapú gépek migrálása az Azure 2. generációs virtuális gépekre történik.  <br/><br/> Az operációsrendszer-lemez legfeljebb négy partíciót tartalmazhat, és a köteteket NTFS fájlrendszerrel kell formázni.
 **UEFI – biztonságos rendszerindítás**         | Migrálás esetén nem támogatott.
 **Céllemez** | A gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, standard SSD, prémium SSD) az Azure-ban.
-**Lemez mérete** | 2 TB-OS operációsrendszer-lemez (BIOS-rendszerindítás); 4 TB-OS operációsrendszer-lemez (UEFI-rendszerindítás); 8 TB adatlemezek esetében.
+**Lemez mérete** | 2 TB operációsrendszer-lemez; 32 TB adatlemezek esetében.
 **Lemezterület-korlátok** |  Legfeljebb 63 lemez/gép.
 **Titkosított lemezek/kötetek** |  A titkosított lemezekkel/kötetekkel rendelkező gépek migrálása nem támogatott.
 **Megosztott lemezes fürt** | Nem támogatott.
@@ -92,6 +92,6 @@ Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszer
 Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van. Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez. |  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Fizikai kiszolgálók [áttelepíthetők](tutorial-migrate-physical-virtual-machines.md) .

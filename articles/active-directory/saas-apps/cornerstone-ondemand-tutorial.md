@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: f770ca49fb76019b6b17b1dac910bc9d2da6f4c2
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ceddda54b79f51729d302ba6f435e1ac3cbc8d5c
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674070"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968925"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Sarokköves OnDemand
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a sarkalatos OnDem
 * Az Azure AD azon vezérlője, aki hozzáfér a sarokkövei OnDemand.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a sarokköve OnDemand az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,24 +42,24 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A OnDemand sarokköve támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 * A OnDemand sarokköve támogatja a [felhasználók automatikus kiépítési](cornerstone-ondemand-provisioning-tutorial.md) felállítását
-* A sarokkövei OnDemand konfigurálása után kényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak kiszűrése és beszivárgását valós időben teszi elérhetővé. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+
 
 ## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Sarokköves OnDemand hozzáadása a gyűjteményből
 
 A legfontosabb OnDemand az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia egy alapköve-OnDemand a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **sarokköve OnDemand** a keresőmezőbe.
 1. Válassza ki a **sarokköve OnDemand** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-cornerstone-ondemand"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a sarokköve OnDemand
+## <a name="configure-and-test-azure-ad-sso-for-cornerstone-ondemand"></a>Azure AD SSO konfigurálása és tesztelése a sarokköve OnDemand
 
 Konfigurálja és tesztelje az Azure AD SSO-t a sarokköve OnDemand egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a következő OnDemand:.
 
-Az Azure AD SSO és a sarokköve OnDemand konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Ha az Azure AD SSO-t az alapkonfiguráció OnDemand szeretné konfigurálni és tesztelni, hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -74,9 +72,9 @@ Az Azure AD SSO és a sarokköve OnDemand konfigurálásához és teszteléséhe
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **sarokköve OnDemand** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal a **sarokköve OnDemand** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** ceruza ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -116,15 +114,9 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza ki a **sarokköve OnDemand** elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
 ## <a name="configure-cornerstone-ondemand-sso"></a>A sarokköve OnDemand SSO konfigurálása
@@ -144,18 +136,14 @@ A felhasználók kiépítésének konfigurálásához küldje el az adatokat (p�
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a sarokköve OnDemand csempére kattint, automatikusan be kell jelentkeznie arra a sarokköve-OnDemand, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a sarokköve OnDemand bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen közvetlenül a sarokköve OnDemand bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások OnDemand elemére kattint, a rendszer átirányítja a OnDemand bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-
-- [A Sarokköves OnDemand kipróbálása az Azure AD-vel](https://aad.portal.azure.com)
-
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
+A sarokkövei OnDemand konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

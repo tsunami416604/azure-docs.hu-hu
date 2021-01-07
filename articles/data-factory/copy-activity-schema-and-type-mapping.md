@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507523"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968874"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Séma-és adattípus-leképezés a másolási tevékenységben
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ A következő tulajdonságokat támogatja a (z) `translator` mellett `mappings` 
 
 Például az adatok Salesforce-ből Azure SQL Databaseba másolásához és a három oszlop explicit módon történő hozzárendeléséhez:
 
-1. A másolási tevékenység – > leképezés lapon kattintson a **séma importálása** gombra a forrás-és fogadó sémák importálásához.
+1. A másolási tevékenység – > leképezés lapon kattintson a **sémák importálása** gombra a forrás-és fogadó sémák importálásához.
 
 2. Képezze le a szükséges mezőket, és zárja ki/törölje a REST-et.
 
@@ -180,7 +180,7 @@ Ha például a forrás MongoDB-dokumentum a következő tartalommal rendelkezik:
 
 Megadhatja a leképezést Data Factory szerzői felhasználói felületen:
 
-1. A másolási tevékenység – > leképezés lapon kattintson a **séma importálása** gombra a forrás-és fogadó sémák importálásához. Ahogy Data Factory a séma importálásakor a legfontosabb néhány objektumot, ha bármelyik mező nem jelenik meg, felveheti a hierarchiában a megfelelő rétegbe – vigye a kurzort egy meglévő mezőnév fölé, és válassza a csomópont, objektum vagy tömb hozzáadását.
+1. A másolási tevékenység – > leképezés lapon kattintson a **sémák importálása** gombra a forrás-és fogadó sémák importálásához. Ahogy Data Factory a séma importálásakor a legfontosabb néhány objektumot, ha bármelyik mező nem jelenik meg, felveheti a hierarchiában a megfelelő rétegbe – vigye a kurzort egy meglévő mezőnév fölé, és válassza a csomópont, objektum vagy tömb hozzáadását.
 
 2. Válassza ki azt a tömböt, amelyről meg szeretné ismételni az adatok kinyerését. A rendszer automatikusan kitölti a **gyűjteményi referenciát**. Vegye figyelembe, hogy ilyen művelet esetén csak egyetlen tömb támogatott.
 
@@ -523,7 +523,7 @@ Konfigurálja a séma-leképezési szabályt a következő másolási tevékenys
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
 - [Másolási tevékenység – áttekintés](copy-activity-overview.md)

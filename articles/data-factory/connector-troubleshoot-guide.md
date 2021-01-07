@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/30/2020
+ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: e6591762ed6a7e2b462a209730276f3198d86ae8
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821468"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967123"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
 
@@ -22,7 +22,7 @@ ms.locfileid: "97821468"
 
 Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszereit vizsgálja.
   
-## <a name="azure-blob-storage"></a>Azure Blob Storage
+## <a name="azure-blob-storage"></a>Azure Blob-tároló
 
 ### <a name="error-code-azurebloboperationfailed"></a>Hibakód: AzureBlobOperationFailed
 
@@ -124,7 +124,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 - **Javaslat**: vizsgálja meg a hibát a részletek között. Tekintse meg a [CosmosDb Súgó dokumentumát](https://docs.microsoft.com/azure/cosmos-db/troubleshoot-dot-net-sdk). Ha segítségre van szüksége, forduljon a CosmosDb csapatához.
 
 
-## <a name="azure-data-lake-storage-gen1"></a>1. generációs Azure Data Lake Storage
+## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
 ### <a name="error-message-the-underlying-connection-was-closed-could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Hibaüzenet: az alapul szolgáló kapcsolat bezárult: nem sikerült létrehozni a megbízhatósági kapcsolatot az SSL/TLS biztonságos csatorna számára.
 
@@ -458,34 +458,15 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 - **OK**: az Azure szinapszis Analytics a külső tábla Azure Storage szolgáltatásban való lekérdezését találta.
 
 - **Megoldás**: futtassa ugyanazt a LEKÉRDEZÉST a SSMS, és ellenőrizze, hogy ugyanazt az eredményt látja-e. Ha igen, nyisson meg egy támogatási jegyet az Azure szinapszis Analytics szolgáltatáshoz, és adja meg az Azure szinapszis Analytics-kiszolgáló és az adatbázis nevét a további hibák megoldásához.
-            
-
-### <a name="low-performance-when-load-data-into-azure-sql"></a>Alacsony teljesítmény az Azure SQL-ba való betöltéskor
-
-- **Tünetek**: az adatok az Azure SQL-be való másolása lassúnak bizonyul.
-
-- **OK**: a probléma kiváltó okát többnyire az Azure SQL-oldal szűk keresztmetszete váltja ki. A következő okok lehetséges okai:
-
-    - Az Azure-adatbázis szintje nem elég nagy.
-
-    - Az Azure DB-DTU használata a 100%-ban közelíthető meg. Nyomon követheti [a teljesítményt](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) , és megtekintheti az adatbázis-csomag frissítését.
-
-    - Az indexek nincsenek megfelelően beállítva. Távolítsa el az összes indexet az adatterhelés előtt, majd hozza létre újra őket a betöltés befejeződése után.
-
-    - A WriteBatchSize nem elég nagy ahhoz, hogy illeszkedjen a séma sorainak méretéhez. Próbálja meg bővíteni a probléma tulajdonságát.
-
-    - A tömeges beszúrta helyett a tárolt eljárás használatban van, ami várhatóan rosszabb teljesítményű. 
-
-- **Megoldás**: a [másolási tevékenység teljesítményének](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) a HKT-re való hivatkozása
 
 
 ### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>A teljesítményszint alacsony, és sikertelen másolást eredményez
 
-- **Tünetek**: az adatok Azure SQL-be történő másolása során az alábbi hibaüzenet jelenik meg: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
+- **Tünetek**: az alábbi hibaüzenet jelenik meg, amikor az adatok másolása Azure SQL Databaseba történt: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
 
-- **OK**: az Azure SQL S1 használatban van, amely ebben az esetben az i/o-korlátokat érinti.
+- **OK**: Azure SQL Database S1 használatos, amely ilyen esetben az IO-korlátokat érinti.
 
-- **Megoldás**: a probléma megoldásához frissítse az Azure SQL Performance (teljesítmény) szintet. 
+- **Megoldás**: frissítse a Azure SQL Database teljesítményszint a probléma megoldásához. 
 
 
 ### <a name="sql-table-cannot-be-found"></a>Az SQL-tábla nem található 
@@ -619,31 +600,6 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 - **OK**: a Dynamics-kiszolgáló nem stabil vagy nem érhető el, vagy a hálózat problémákba ütközik.
 
 - **Javaslat**: a hálózati kapcsolat ellenőrzése vagy a Dynamics Server naplójának ellenőrzése további részletekért. További segítségért forduljon a Dynamics támogatási szolgálatához.
-
-
-## <a name="excel-format"></a>Excel-formátum
-
-### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Időtúllépés vagy lassú teljesítmény a nagyméretű Excel-fájlok elemzésekor
-
-- **Tünetek**:
-
-    - Amikor létrehoz egy Excel-adatkészletet, és importálja a sémát a kapcsolatból/tárból, előnézeti adatokat, listát vagy frissítési munkalapokat, akkor időtúllépési hiba léphet fel, ha az Excel-fájl mérete nagyméretű.
-
-    - Ha a másolási tevékenység használatával nagyméretű Excel-fájlból (>= 100 MB) másol adatokba egy másik adattárba, előfordulhat, hogy lassú teljesítményt vagy a bácsi problémát tapasztal.
-
-- **OK**: 
-
-    - Az olyan műveletek esetében, mint a séma importálása, az adatok megtekintése és az Excel-adatkészletek listázása, az időkorlát 100 s és statikus. Nagyméretű Excel-fájl esetén előfordulhat, hogy ezek a műveletek nem fejeződik be az időtúllépési értéken belül.
-
-    - Az ADF másolási tevékenység beolvassa a teljes Excel-fájlt a memóriába, majd megkeresi a megadott munkalapot és cellákat az adatolvasáshoz. Ezt a viselkedést a mögöttes SDK ADF használja.
-
-- **Megoldás**: 
-
-    - A séma importálásához létrehozhat egy kisebb mintát, amely az eredeti fájl egy részhalmaza, és a "séma importálása a fájlból" lehetőséget választja a "séma importálása a hálózatról/áruházból" lehetőség helyett.
-
-    - A felsorolási munkalap legördülő listájában kattintson a "szerkesztés" lehetőségre, és adja meg a lap nevét/indexét.
-
-    - A nagyméretű Excel-fájlok (>100 MB) más tárolóba való másolásához használhatja az adatforgalom Excel-forrását, melyben a sport stream olvasása és végrehajtása jobb.
     
 
 ## <a name="ftp"></a>FTP
@@ -1099,7 +1055,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
     3. Indítsa újra a saját üzemeltetésű Integration Runtime számítógépet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 

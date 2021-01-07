@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: f565fcef60b2cb4726b180eb67e6ac1fcaefc24b
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f501fb6b5bca5b19e15eb03d9639d08b848ad02f
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347846"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968602"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Ruby-és postgres-alkalmazás létrehozása Linuxon Azure App Service
 
@@ -38,6 +38,7 @@ Az oktatóanyag elvégzéséhez:
 - [A Ruby 2,6 telepítése](https://www.ruby-lang.org/en/documentation/installation/)
 - [Telepítse a Ruby on Rails 5.1-es verzióját](https://guides.rubyonrails.org/v5.1/getting_started.html)
 - [A PostgreSQL telepítése és futtatása](https://www.postgresql.org/download/)
+
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="prepare-local-postgres"></a>A helyi Postgres előkészítése
@@ -291,7 +292,7 @@ git remote add azure <paste-copied-url-here>
 A távoli Azure-mappához történő küldéssel helyezze üzembe a Ruby on Rails-alkalmazást. Az üzembe helyező felhasználó létrehozásának részeként a rendszer felkéri a korábban megadott jelszó megadására.
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Az üzembe helyezés során az Azure App Service közli előrehaladási állapotát a Gittel.
@@ -302,7 +303,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -421,7 +422,7 @@ Véglegesítse az összes módosítást a Gitben, majd továbbítsa a kód módo
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és tesztelje az új funkciókat.

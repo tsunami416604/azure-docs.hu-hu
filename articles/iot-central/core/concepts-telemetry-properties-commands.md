@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795343"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969061"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonságok és parancsok hasznos adatai
 
@@ -719,9 +719,9 @@ IoT Central az eszköztől az írható tulajdonságok frissítéseire választ v
 
 | Érték | Címke | Leírás |
 | ----- | ----- | ----------- |
-| `'ac': 200` | Befejezve | A tulajdonság-módosítási művelet sikeresen befejeződött. |
+| `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202`  vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben van vagy folyamatban van |
-| `'ac': 4xx` | Hiba | A kért tulajdonság módosítása érvénytelen volt, vagy hiba történt. |
+| `'ac': 4xx` | Hiba | A kért tulajdonság módosítása nem volt érvényes, vagy hiba történt. |
 | `'ac': 5xx` | Hiba | Az eszköz váratlan hibát észlelt a kért módosítás feldolgozása során. |
 
 `av` az eszközre eljuttatott verziószám.
@@ -828,9 +828,6 @@ Az eszköznek a következő JSON-adattartalomot kell elküldenie IoT Central a f
 ```
 
 ## <a name="commands"></a>Parancsok
-
-> [!NOTE]
-> A IoT Central webes felhasználói felületén kiválaszthatja a **várólistát, ha** a parancshoz offline lehetőség van. Ez a beállítás nem áll rendelkezésre, ha az eszköz sablonból exportál egy modellt vagy felületet.
 
 Az eszköz modelljének következő kódrészlete egy olyan parancs definícióját jeleníti meg, amely nem rendelkezik paraméterekkel, és nem várta, hogy az eszköz semmit nem ad vissza:
 
@@ -1000,6 +997,91 @@ Amikor az eszköz befejezte a kérelem feldolgozását, a következő példához
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+### <a name="offline-commands"></a>Offline parancsok
+
+A IoT Central webes felhasználói felületén kiválaszthatja a **várólistát, ha** a parancshoz offline lehetőség van. Az offline parancsok egyirányú értesítések az eszközre a megoldásból, amelyet az eszköz csatlakoztatása után azonnal továbbítanak. Az offline parancsok lekérdezési paramétereket tartalmazhatnak, de nem adnak vissza választ.
+
+Az **üzenetsor, ha offline** beállítás nem szerepel, ha az eszköz sablonjában exportál egy modellt vagy felületet. Nem tudja megállapítani, hogy az exportált modellt vagy az interfész JSON-t nézi, hogy a parancs offline parancs.
+
+Az offline parancsok [IoT hub a felhőből az eszközre](../../iot-hub/iot-hub-devguide-messages-c2d.md) irányuló üzenetek használatával küldik el a parancsot és a hasznos adatokat az eszközre.
+
+Az eszköz modelljének következő kódrészlete egy parancs definícióját jeleníti meg. A parancs egy dátum és idő típusú objektum-paraméterrel és enumerálással rendelkezik:
+
+```json
+{
+  "@type": "Command",
+  "displayName": {
+    "en": "Generate Diagnostics"
+  },
+  "name": "GenerateDiagnostics",
+  "request": {
+    "@type": "CommandPayload",
+    "displayName": {
+      "en": "Payload"
+    },
+    "name": "Payload",
+    "schema": {
+      "@type": "Object",
+      "displayName": {
+        "en": "Object"
+      },
+      "fields": [
+        {
+          "displayName": {
+            "en": "StartTime"
+          },
+          "name": "StartTime",
+          "schema": "dateTime"
+        },
+        {
+          "displayName": {
+            "en": "Bank"
+          },
+          "name": "Bank",
+          "schema": {
+            "@type": "Enum",
+            "displayName": {
+              "en": "Enum"
+            },
+            "enumValues": [
+              {
+                "displayName": {
+                  "en": "Bank 1"
+                },
+                "enumValue": 1,
+                "name": "Bank1"
+              },
+              {
+                "displayName": {
+                  "en": "Bank2"
+                },
+                "enumValue": 2,
+                "name": "Bank2"
+              },
+              {
+                "displayName": {
+                  "en": "Bank3"
+                },
+                "enumValue": 2,
+                "name": "Bank3"
+              }
+            ],
+            "valueSchema": "integer"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+Ha az előző kódrészletben lévő parancshoz az eszköz sablon felhasználói felületén a **kapcsolat nélküli** beállítás engedélyezve van, akkor az eszköz által fogadott üzenet a következő tulajdonságokat tartalmazza:
+
+| Tulajdonság neve | Példaérték |
+| ---------- | ----- |
+| `custom_properties` | `{'method-name': 'GenerateDiagnostics'}` |
+| `data` | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
+
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az eszközök sablonjait, a következő lépésekből megtudhatja, hogyan regisztrálhat [Az Azure IoT Centralhoz](./concepts-get-connected.md) , és hogyan regisztrálja az eszközöket a IoT Central, és hogy miként IoT Central biztonságossá teszi az eszköz kapcsolatait.
