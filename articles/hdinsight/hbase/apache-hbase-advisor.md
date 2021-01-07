@@ -8,22 +8,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/03/2021
-ms.openlocfilehash: 36d40215f759190cc9e6c6e3f4918dcbc384f94f
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 73af7e2a1920e6cfdad9245d965908255ef95a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893275"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964592"
 ---
 # <a name="apache-hbase-advisories-in-azure-hdinsight"></a>Apache HBase-tanácsadók az Azure HDInsight
 
-Ez a cikk számos olyan tanácsadót ismertet, amelyek segítenek az Apache HBase teljesítményének optimalizálásában az Azure HDInsight. 
+Ez a cikk több, az Apache HBase teljesítményének az Azure HDInsight-ben való optimalizálását segítő tanácsadót ismertet. 
 
 ## <a name="optimize-hbase-to-read-most-recently-written-data"></a>A HBase optimalizálása a legutóbb írt információk olvasásához
 
-Ha az Apache HBase-t használja az Azure HDInsight-ban, optimalizálhatja a HBase konfigurációját arra az esetre, amikor az alkalmazás beolvassa a legutóbb írt adatokat. A nagy teljesítmény érdekében optimális, hogy a HBase-olvasások a távoli tárterület helyett a memstore legyenek kézbesítve.
+Ha a usecase a HBase által legutóbb írt adatok olvasását is magában foglalja, ez a tanácsadó segítséget nyújt Önnek. A nagy teljesítmény érdekében optimális, hogy a HBase-olvasások a távoli tárterület helyett a memstore legyenek kézbesítve.
 
-A lekérdezési tanácsadó azt jelzi, hogy egy tábla egy adott oszlopának családja > 75% olvasást tartalmaz, amelyek a memstore-ből lesznek kiszolgálva. Ez a kijelző arra utal, hogy még akkor is, ha a memstore kiürítés történik a legutóbbi fájl eléréséhez, és a gyorsítótárban kell lennie. A rendszer először az memstore írja, hogy a rendszer hozzáfér a legutóbbi adatszolgáltatásokhoz. Lehetséges, hogy a belső HBase-kiürítési szálak azt észlelik, hogy egy adott régió elérte a 128M (alapértelmezett) méretet, és elindíthat egy kiürítést. Ez a forgatókönyv akkor is előfordul, ha a memstore körülbelül 128M volt. Ezért előfordulhat, hogy a legutóbbi rekordok egy későbbi beolvasása nem a memstore, hanem egy fájl olvasását igényli. Ezért érdemes optimalizálni, hogy még a közelmúltban kiürített legutóbbi adat is a gyorsítótárban legyen.
+A lekérdezési tanácsadó azt jelzi, hogy egy tábla egy adott oszlopának családja > 75% olvasás, amely a memstore-ből lesz kiszolgálva. Ez a kijelző arra utal, hogy még akkor is, ha a memstore kiürítés történik a legutóbbi fájl eléréséhez, és a gyorsítótárban kell lennie. A rendszer először az memstore írja, hogy a rendszer hozzáfér a legutóbbi adatszolgáltatásokhoz. Lehetséges, hogy a belső HBase-kiürítési szálak azt észlelik, hogy egy adott régió elérte a 128M (alapértelmezett) méretet, és elindíthat egy kiürítést. Ez a forgatókönyv akkor is előfordul, ha a memstore körülbelül 128M volt. Ezért előfordulhat, hogy a legutóbbi rekordok egy későbbi beolvasása nem a memstore, hanem egy fájl olvasását igényli. Ezért érdemes optimalizálni, hogy még a közelmúltban kiürített legutóbbi adat is a gyorsítótárban legyen.
 
 A legutóbbi gyorsítótárbeli adatfrissítések optimalizálásához vegye figyelembe a következő konfigurációs beállításokat:
 
@@ -33,9 +33,9 @@ A legutóbbi gyorsítótárbeli adatfrissítések optimalizálásához vegye fig
 
 3. Ha követi a 2. lépést, és beállítja a compactionThreshold-t, váltson `hbase.hstore.compaction.max` magasabb értékre (például `100` ), és növelje a konfiguráció értékét `hbase.hstore.blockingStoreFiles` magasabb értékre (például `300` ).
 
-4. Ha biztos benne, hogy csak a legutóbbi adatpontokban kell elolvasnia, állítsa be `hbase.rs.cachecompactedblocksonwrite` **a** konfigurációt be értékre. Ez a konfiguráció azt jelzi, hogy a rendszer akkor is a gyorsítótárban marad, ha a tömörítés történik. A konfigurációk a család szintjén is megadhatók. 
+4. Ha biztos benne, hogy csak a legutóbbi adatgyűjtést kell elolvasnia, állítsa be `hbase.rs.cachecompactedblocksonwrite` a konfigurációt **a** következőre:. Ez a konfiguráció azt jelzi, hogy a rendszer akkor is a gyorsítótárban marad, ha a tömörítés történik. A konfigurációk a család szintjén is megadhatók. 
 
-   A HBase-rendszerhéjban futtassa a következő parancsot:
+   A HBase-rendszerhéjban futtassa a következő parancsot a konfiguráció beállításához `hbase.rs.cachecompactedblocksonwrite` :
    
    ```
    alter '<TableName>', {NAME => '<FamilyName>', CONFIGURATION => {'hbase.hstore.blockingStoreFiles' => '300'}}
@@ -43,15 +43,15 @@ A legutóbbi gyorsítótárbeli adatfrissítések optimalizálásához vegye fig
 
 5. A blokk-gyorsítótár kikapcsolható egy tábla egy adott családja számára. Ellenőrizze, hogy **be van-e kapcsolva a** legutóbbi adatokat olvasó családokhoz. Alapértelmezés szerint a blokk gyorsítótára be van kapcsolva a tábla összes családja számára. Ha letiltotta a blokk-gyorsítótárat a család számára, és be kell kapcsolni azt, használja az Alter parancsot a hbase-rendszerhéjból.
 
-   Ezek a konfigurációk segítenek biztosítani, hogy az adatgyorsítótárban legyenek, és hogy a legutóbbi adatvesztés ne legyen tömörítve. Ha a forgatókönyvben ÉLETTARTAMa lehetséges, akkor érdemes lehet a dátum-és időrétegbeli tömörítést használni. További információkért lásd: az [Apache HBase útmutatója: a lépcsőzetes tömörítés dátuma](https://hbase.apache.org/book.html#ops.date.tiered)  
+   Ezek a konfigurációk biztosítják, hogy az adattárolók elérhetők legyenek a gyorsítótárban, és hogy a legutóbbi adatműveletek ne legyenek tömörítve. Ha a forgatókönyvben ÉLETTARTAMa lehetséges, akkor érdemes lehet a dátum-és időrétegbeli tömörítést használni. További információkért lásd: az [Apache HBase útmutatója: a lépcsőzetes tömörítés dátuma](https://hbase.apache.org/book.html#ops.date.tiered)  
 
 ## <a name="optimize-the-flush-queue"></a>A kiürítési várólista optimalizálása
 
-A kiürítési várólista-tanácsadó optimalizálása azt jelzi, hogy a HBase kiürítése szükség lehet a finomhangolásra. Előfordulhat, hogy a kiürítési kezelők nem elég magasak a konfiguráltak szerint.
+Ez a tanácsadó azt jelzi, hogy a HBase kiürítéséhez szükség lehet a finomhangolásra. Előfordulhat, hogy a kiürítési kezelők jelenlegi konfigurációja nem elég nagy ahhoz, hogy az írási forgalommal kezelje, ami lelassíthatja a kiürítést.
 
 A régió-kiszolgáló felhasználói felületén figyelje meg, hogy a kiürítési várólista 100-nál is nő-e. Ez a küszöbérték azt jelzi, hogy a kiürítések lassúak, és előfordulhat, hogy be kell hangolni a   `hbase.hstore.flusher.count` konfigurációt. Alapértelmezés szerint az érték 2. Győződjön meg arról, hogy a maximális ürítési szálak nem növekednek 6 felett.
 
-Emellett ellenőrizze, hogy van-e javaslata a régiók darabszámának finomhangolásához. Ha először próbálja meg a régió hangolását, hogy megtekintse, hogy ez segít-e a gyorsabb kiürítésben. A kiürítési szálak finomhangolása több módon is segíthet, például 
+Emellett ellenőrizze, hogy van-e javaslata a régiók darabszámának finomhangolásához. Ha igen, javasoljuk, hogy próbálja meg a régió finomhangolását, és ellenőrizze, hogy ez segít-e a gyorsabb kiürítésben. Ellenkező esetben a kiürítési szálak finomhangolása segíthet.
 
 ## <a name="region-count-tuning"></a>Régió darabszámának finomhangolása
 
@@ -65,7 +65,7 @@ Példa:
 
 - Ezekkel a beállításokkal a régiók száma 100. A 4 GB-os globális memstore mostantól 100 régión belül oszlik meg. Így gyakorlatilag minden egyes régió 40 MB-ot kap a memstore. Ha az írások egységesek, a rendszer gyakori kiürítést végez, és a rendelés kisebb méretét < 40 MB-ot. A sok öblítő szál növelheti a kiürítési sebességet `hbase.hstore.flusher.count` .
 
-A tanácsadó azt jelenti, hogy érdemes lehet átgondolni a régiók száma kiszolgálónként, a halom mérete és a globális memstore-méret konfiguráció mellett a szálak finomhangolását úgy, hogy az ilyen jellegű frissítések elkerülhetők legyenek.
+A tanácsadó azt jelenti, hogy érdemes átgondolni, hogy a kiszolgálók száma kiszolgálónként, a halom mérete és a globális memstore-méret konfigurációval együtt, valamint a ürítési szálak finomhangolásával elkerülhető legyen a frissítések blokkolása.
 
 ## <a name="compaction-queue-tuning"></a>Tömörítési várólista finombeállítása
 

@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 565b84603a14452dd2ec49f8cf61da128503bc03
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648276"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964252"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadásának lépései
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Ez a cikk a szerepkör-hozzárendelések [Azure Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), az [Azure CLI](role-assignments-cli.md)vagy a [REST API](role-assignments-rest.md)használatával történő hozzáadásának magas szintű lépéseit ismerteti.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Ez a cikk a szerepkör-hozzárendelések [Azure Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), az [Azure CLI](role-assignments-cli.md)vagy a [REST API](role-assignments-rest.md)használatával történő hozzáadásának magas szintű lépéseit ismerteti.
 
 ## <a name="step-1-determine-who-needs-access"></a>1. lépés: annak meghatározása, hogy kinek van hozzáférése
 
@@ -90,6 +90,6 @@ A szerepkör-hozzárendelések hozzáadásának részletes lépéseit az alábbi
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md)
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával](quickstart-assign-role-user-portal.md)

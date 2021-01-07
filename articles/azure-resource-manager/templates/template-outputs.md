@@ -3,16 +3,16 @@ title: Kimenetek a sablonokban
 description: Ismerteti, hogyan lehet kimeneti értékeket definiálni egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f8f13b6caf063cea79dc71775fb936f406a3ee6c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934730"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964014"
 ---
 # <a name="outputs-in-arm-templates"></a>Kimenetek ARM-sablonokban
 
-Ez a cikk bemutatja, hogyan határozhatja meg a kimeneti értékeket a Azure Resource Manager-sablonban (ARM-sablon). A kimenetek akkor használhatók, ha értékeket kell visszaadnia az üzembe helyezett erőforrásokból.
+Ez a cikk bemutatja, hogyan határozhatja meg a kimeneti értékeket a Azure Resource Manager-sablonban (ARM-sablon). Akkor használja, `outputs` Ha értékeket kell visszaadnia az üzembe helyezett erőforrásokból.
 
 Az egyes kimeneti értékek formátumának meg kell egyeznie az egyik [adattípussal](template-syntax.md#data-types).
 
@@ -31,7 +31,7 @@ Az alábbi példa azt szemlélteti, hogyan lehet visszaadni egy nyilvános IP-c�
 
 ## <a name="conditional-output"></a>Feltételes kimenet
 
-A kimenetek szakaszban feltételesen adhat vissza értéket. A kimenetekben jellemzően feltételt kell használni, amikor [feltételesen telepített](conditional-resource-deployment.md) egy erőforrást. Az alábbi példa azt mutatja be, hogyan lehet feltételesen visszaadni egy nyilvános IP-cím erőforrás-AZONOSÍTÓját attól függően, hogy egy újat telepített-e:
+A `outputs` szakaszban feltételesen adhat vissza értéket. A-t általában `condition` a-ben kell használni, `outputs` Amikor [feltételesen telepített](conditional-resource-deployment.md) egy erőforrást. Az alábbi példa azt mutatja be, hogyan lehet feltételesen visszaadni egy nyilvános IP-cím erőforrás-AZONOSÍTÓját attól függően, hogy egy újat telepített-e:
 
 ```json
 "outputs": {

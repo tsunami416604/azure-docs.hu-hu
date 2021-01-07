@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 06a9a955e8a963f94b1885abf5a920cb96c01940
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: adb3691625d6cdde03c803480ae948bb1911cc7d
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007444"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964371"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] Ez a cikk a szerepkör-hozzárendelések Azure Portal használatával történő listázását ismerteti.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] Ez a cikk a szerepkör-hozzárendelések Azure Portal használatával történő listázását ismerteti.
 
 > [!NOTE]
 > Ha a szervezete egy Azure-beli [delegált erőforrás-kezelést](../lighthouse/concepts/azure-delegated-resource-management.md)használó szolgáltatónál kiszervezett felügyeleti funkciókat használ, az adott szolgáltató által meghatalmazott szerepkör-hozzárendelések nem jelennek meg.
@@ -183,7 +183,7 @@ A szerepkör-hozzárendelések hatókörön való letöltéséhez kövesse az al
 
     ![Képernyőkép a letöltött szerepkör-hozzárendelésekről JSON formátumban.](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)
 - [Az Azure RBAC hibáinak megoldása](troubleshooting.md)

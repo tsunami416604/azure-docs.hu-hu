@@ -3,12 +3,12 @@ title: Gyermekek erőforrásai a sablonokban
 description: Leírja, hogyan kell beállítani a gyermek-erőforrások nevét és típusát egy Azure Resource Manager sablonban (ARM-sablon).
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 408914fd309676da36904a364f905a8ee809d648
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a950d72751b829c0a2aa3ba5ca27316a0544d9cc
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934305"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963912"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Adja meg a gyermek erőforrások nevét és típusát
 
@@ -137,5 +137,4 @@ Az alábbi példa egy virtuális hálózatot és alhálózatot mutat be, amely a
 ## <a name="next-steps"></a>További lépések
 
 * Az ARM-sablonok létrehozásával kapcsolatos további tudnivalókért lásd [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
-
 * Ha többet szeretne megtudni az erőforrás nevének formátumáról az erőforrásra való hivatkozáskor, tekintse meg a [Reference függvényt](template-functions-resource.md#reference).

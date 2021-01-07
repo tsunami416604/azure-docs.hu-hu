@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: 4197891949062123042736e578cfbcc5def4e1f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: b5c659a673ece8fd7fbb9566d8bb84201a668a7f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930789"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964082"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. **Configuration Explorer**  >  **+ Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer +**kulcs létrehozása-érték** elemet:
+7.   >    >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer +**kulcs létrehozása-érték** elemet:
 
     | Kulcs | Érték |
     |---|---|
@@ -44,45 +44,75 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
+Ez a projekt a [függőségi befecskendezést fogja használni a .net Azure Functionsban](/azure/azure-functions/functions-dotnet-dependency-injection) , és további konfigurációs forrásként adja hozzá az Azure-alkalmazások konfigurációját.
 
-1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet csomagot a projekthez. Ha nem találja, jelölje be az **előzetes verzió belefoglalása** jelölőnégyzetet.
+1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet-csomagokat a projekthez.
+   - [Microsoft.Extensions.Configszülő. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) -4.1.0 vagy újabb verzió
+   - [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) vagy újabb verzió 
 
-2. Nyissa meg a *Function1.cs*, és adja hozzá a .net Core konfiguráció és az alkalmazás konfigurációs szolgáltatójának névtereit.
+2. Adjon hozzá egy új fájlt, a *Startup.cs* a következő kóddal. Definiál egy nevű osztályt `Startup` , amely megvalósítja az `FunctionsStartup` absztrakt osztályt. A Azure Functions indításakor használt típus nevének megadásához egy szerelvény-attribútumot kell használni.
+
+    A `ConfigureAppConfiguration` metódus felülbírálható, és az Azure-alkalmazás konfigurációs szolgáltatója további konfigurációs forrásként van hozzáadva a hívásával `AddAzureAppConfiguration()` . A `Configure` metódus üres marad, mert nem kell ezen a ponton semmilyen szolgáltatást regisztrálnia.
+    
+    ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Configuration;
+
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
+
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
+        {
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+                string cs = Environment.GetEnvironmentVariable("ConnectionString");
+                builder.ConfigurationBuilder.AddAzureAppConfiguration(cs);
+            }
+
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
+        }
+    }
+    ```
+
+3. Nyissa meg a *Function1.cs*, és adja hozzá a következő névteret.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. Adjon hozzá egy `static` nevű tulajdonságot a (z `Configuration` ) egyedi példányának létrehozásához `IConfiguration` . Ezután adjon hozzá egy `static` konstruktort az alkalmazás konfigurációjához való kapcsolódáshoz a hívásával `AddAzureAppConfiguration()` . Ez az alkalmazás indításakor automatikusan betöltődik a konfigurációba. Ugyanezt a konfigurációs példányt fogjuk használni az összes functions híváshoz később.
+   Vegyen fel egy konstruktort, amely a `IConfiguration` függőségi injekción keresztüli példány beszerzésére szolgál.
 
     ```csharp
-    private static IConfiguration Configuration { set; get; }
+    private readonly IConfiguration _configuration;
 
-    static Function1()
+    public Function1(IConfiguration configuration)
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(Environment.GetEnvironmentVariable("ConnectionString"));
-        Configuration = builder.Build();
+        _configuration = configuration;
     }
     ```
 
 4. Frissítse a `Run` metódust a konfiguráció értékeinek olvasásához.
 
     ```csharp
-    public static async Task<IActionResult> Run(
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
         string keyName = "TestApp:Settings:Message";
-        string message = Configuration[keyName];
+        string message = _configuration[keyName];
 
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
     }
     ```
+
+   Az `Function1` osztály és a `Run` metódus nem lehet statikus. Távolítsa el a `static` módosítót, ha az automatikusan lett létrehozva.
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
@@ -118,9 +148,9 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a Azure Functions alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
+Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)keresztül. Ha szeretné megtudni, hogyan frissítheti Azure Functions alkalmazást a konfiguráció dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Dinamikus konfiguráció engedélyezése](./enable-dynamic-configuration-azure-functions-csharp.md)
+> [Dinamikus konfiguráció engedélyezése az Azure Functionsben](./enable-dynamic-configuration-azure-functions-csharp.md)

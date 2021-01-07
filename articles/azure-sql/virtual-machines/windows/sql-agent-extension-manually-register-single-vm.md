@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: e7a8f54abbadb63c870c4d92843699c67f59752c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505630"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964524"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM regisztrálása az SQL IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -189,6 +189,9 @@ $sqlvm.SqlManagementType
 
 SQL Server *egyszerűsített* módban regisztrált virtuális gépek a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával _teljes mértékben_ frissíthetők. SQL Server a nem _ügynök_ módban lévő virtuális gépek az operációs rendszer Windows 2008 R2 vagy újabb verzióra való frissítése után _teljes egészében_ frissíthetnek. Nem lehetséges a visszalépés – ehhez meg kell [szüntetnie a SQL Server VM regisztrációját](#unregister-from-extension) az SQL IaaS-ügynök bővítménnyel. Ezzel a művelettel eltávolítja az SQL-alapú **virtuális gép** _erőforrását_, de nem törli a tényleges virtuális gépet. 
 
+> [!NOTE]
+> Ha az SQL IaaS-bővítmény felügyeleti üzemmódját teljesre frissíti, a rendszer újraindítja a SQL Server szolgáltatást. Bizonyos esetekben az újraindítás miatt előfordulhat, hogy az SQL Server szolgáltatáshoz társított egyszerű szolgáltatásnév (SPN) nem megfelelő felhasználói fiókra vált. Ha a felügyeleti mód teljes verzióra történő frissítése után csatlakozási problémák léptek fel, akkor [szüntesse meg a regisztrációt, és regisztrálja újra az SPN](/sql/database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections)-ket.
+
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -279,7 +282,7 @@ A felügyeleti mód teljes állapotának visszavonásához le kell törölni az 
 
 Ha törölni szeretné a SQL Server VM regisztrációját a bővítményből a Azure Portal használatával, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Navigáljon az SQL VM-erőforráshoz. 
   
    ![SQL-alapú virtuális gépek erőforrása](./media/sql-agent-extension-manually-register-single-vm/sql-vm-manage.png)
@@ -322,7 +325,7 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
 ---
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információért tekintse át a következő cikkeket: 
 

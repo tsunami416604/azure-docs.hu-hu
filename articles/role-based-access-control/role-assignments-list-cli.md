@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e44437bb926e8d2d1ffcd3134bbc63538a112ff0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b6125252c22163306a79f5682a3a5fc4f0b55d4c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648310"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964388"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>Azure-beli szerepkör-hozzárendelések listázása az Azure CLI használatával
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] Ez a cikk bemutatja, hogyan listázhatja ki a szerepkör-hozzárendeléseket az Azure CLI használatával.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] Ez a cikk bemutatja, hogyan listázhatja ki a szerepkör-hozzárendeléseket az Azure CLI használatával.
 
 > [!NOTE]
 > Ha a szervezete egy Azure-beli [delegált erőforrás-kezelést](../lighthouse/concepts/azure-delegated-resource-management.md)használó szolgáltatónál kiszervezett felügyeleti funkciókat használ, az adott szolgáltató által meghatalmazott szerepkör-hozzárendelések nem jelennek meg.
@@ -185,6 +185,6 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
     az role assignment list --assignee {objectId}
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md)

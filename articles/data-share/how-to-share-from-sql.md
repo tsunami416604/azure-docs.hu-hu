@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 87d6ca8ee69ca49cf52b61e6beddb56721658afa
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bdbbf3e808e1dda0970aaf87d154ee79bea4dcb1
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593739"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964167"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Adatok megosztása és fogadása az Azure SQL Database-ből és az Azure Synapse Analyticsből
 
@@ -309,7 +309,7 @@ Az SQL-forrásokból származó adatok megosztásakor a rendszer a következő l
 | ntext |Karakterlánc, char [] |
 | numerikus |Tizedesjegy |
 | nvarchar |Karakterlánc, char [] |
-| valós szám |Egyirányú |
+| valós szám |Egyszeres |
 | ROWVERSION |Bájt [] |
 | idő adattípusúra |DateTime |
 | smallint |Int16 |
@@ -341,7 +341,7 @@ Az SQL-Pillanatképek teljesítményét számos tényező befolyásolja. A sajá
 * A forrás és a cél adattárolók helye. 
 
 ## <a name="troubleshoot-sql-snapshot-failure"></a>SQL-pillanatkép hibáinak hibaelhárítása
-A pillanatképek meghibásodásának leggyakoribb oka az, hogy az adatmegosztás nem rendelkezik engedéllyel a forrás-vagy a célként megadott adattárhoz. Ahhoz, hogy adatmegosztási engedélyt adjon a forrás vagy a cél Azure SQL Database vagy az Azure szinapszis Analytics (korábban Azure SQL DW) számára, futtatnia kell a megadott SQL-parancsfájlt az SQL-adatbázishoz való csatlakozáskor Azure Active Directory hitelesítés használatával. További SQL-Pillanatképek hibáinak hibaelhárításához tekintse meg a [Pillanatkép-hiba hibaelhárítása](data-share-troubleshoot.md#snapshot-failed)című témakört.
+A pillanatképek meghibásodásának leggyakoribb oka az, hogy az adatmegosztás nem rendelkezik engedéllyel a forrás-vagy a célként megadott adattárhoz. Ahhoz, hogy adatmegosztási engedélyt adjon a forrás vagy a cél Azure SQL Database vagy az Azure szinapszis Analytics (korábban Azure SQL DW) számára, futtatnia kell a megadott SQL-parancsfájlt az SQL-adatbázishoz való csatlakozáskor Azure Active Directory hitelesítés használatával. További SQL-Pillanatképek hibáinak hibaelhárításához tekintse meg a [Pillanatkép-hiba hibaelhárítása](data-share-troubleshoot.md#snapshots)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtanulta, hogyan oszthat meg és fogadhat adatait SQL-forrásokból az Azure adatmegosztási szolgáltatás használatával. Ha többet szeretne megtudni a más adatforrásokból történő megosztásról, folytassa a [támogatott adattárakkal](supported-data-stores.md).

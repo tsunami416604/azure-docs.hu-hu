@@ -3,77 +3,168 @@ title: Szuverén felhők – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
 description: A szuverén felhők használatának megismerése
 services: cognitive-services
-author: cbasoglu
-manager: xdh
+author: alexeyo26
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 1/14/2020
-ms.author: cbasoglu
-ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.date: 12/26/2020
+ms.author: alexeyo
+ms.openlocfilehash: a1c3fcf868af76865eec9fa2be4f0fdb58074867
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78228085"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964456"
 ---
-# <a name="speech-services-with-sovereign-clouds"></a>A Speech Services szuverén Felhőkkel
+# <a name="speech-services-in-sovereign-clouds"></a>A Speech Services szuverén felhőkben
 
 ## <a name="azure-government-united-states"></a>Azure Government (Egyesült Államok)
 
-Csak az Egyesült Államok szövetségi, állami, helyi és törzsi kormányai és partnerei férhetnek hozzá ehhez a dedikált példányhoz az Egyesült államokbeli állampolgárok által vezérelt műveletekkel.
-- Régiók: US Gov Virginia
-- SR a SpeechSDK-ben:*config. FromHost ("WSS://Virginia.STT.Speech.Azure.us", " \<your-key\> ");*
-- TTS a SpeechSDK-ben: *config. FromHost ("https []() ://Virginia.TTS.Speech.Azure.us", " \<your-key\> ");*
-- Hitelesítési jogkivonatok: https []() ://Virginia.API.Cognitive.microsoft.us/STS/v1.0/issueToken
-- Azure Portal: https://portal.azure.us  
-- Custom Speech portál: https://virginia.cris.azure.us/Home/CustomSpeech
-- Rendelkezésre álló SKU-i: S0
-- Támogatott funkciók:
-  - Speech-to-Text
-  - Custom Speech (akusztikus/nyelvi adaptáció)
-  - Text-to-Speech
+Csak az USA kormányzati szervei és azok partnerei számára érhető el. További információt a Azure Government [itt](../../azure-government/documentation-government-welcome.md) és [itt talál.](../../azure-government/compare-azure-government-global-azure.md)
+
+- **Azure Portal:**
+  - [https://portal.azure.us/](https://portal.azure.us/)
+- **Régiók**
+  - USA-beli államigazgatás – Arizona
+  - USA-beli államigazgatás – Virginia
+- **Elérhető díjszabási szintek:**
+  - Ingyenes (F0) és standard (S0). További részletek [itt](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) találhatók
+- **Támogatott funkciók:**
+  - Diktálás
+    - Egyéni beszéd (akusztikus modell (AM) és Language Model (LM) adaptáció)
+      - [Speech Studio](https://speech.azure.us/)
+  - Szövegfelolvasás
   - Speech Translator
-- Nem támogatott funkciók
+- **Nem támogatott funkciók:**
+  - Neurális hang
   - Egyéni hang
-  - Neurális hangok a szöveg és a beszéd között
-- Támogatott területi beállítások: a következő nyelvekhez tartozó területi beállítások támogatottak.
+- **Támogatott nyelvek:**
   - Arab (AR-*)
   - Kínai (zh-*)
   - Angol (en-*)
   - Francia (FR-*)
   - Német (de-*)
-  - Hindi
-  - Koreai
-  - Orosz
+  - Hindi (Hi-IN)
+  - Koreai (ko-KR)
+  - Orosz (ru-RU)
   - Spanyol (es-*)
 
-## <a name="microsoft-azure-china"></a>Microsoft Azure Kínában
+### <a name="endpoint-information"></a>Végpont adatai
 
-Kínában, egy Azure-adatközpontban található, amely közvetlen hozzáférést biztosít a China Mobile, a China Telecom, a China Unicom és más nagy fuvarozói gerincű hálózathoz, a kínai felhasználók számára nagy sebességű és stabil helyi hálózati hozzáférési élményt biztosít.
-- Régiók: Kelet-Kína 2 (Shanghai)
-- SR a SpeechSDK-ben: *config. FromHost ("WSS://chinaeast2.STT.Speech.Azure.cn", " \<your-key\> ");*
-- TTS a SpeechSDK-ben:  *config. FromHost ("https []() ://chinaeast2.TTS.Speech.Azure.cn", " \<your-key\> ");*
-- Hitelesítési jogkivonatok: https []() ://chinaeast2.API.Cognitive.Azure.cn/STS/v1.0/issueToken
-- Azure Portal: https://portal.azure.cn
-- Custom Speech portál: https://speech.azure.cn/CustomSpeech
-- Rendelkezésre álló SKU-i: S0
-- Támogatott funkciók:
-  - Speech-to-Text
-  - Custom Speech (akusztikus/nyelvi adaptáció)
-  - Text-to-Speech
+Ez a szakasz a Speech [SDK](speech-sdk.md), a [beszéd és a szöveg közötti REST API](rest-speech-to-text.md)és a [szöveg-beszéd REST API](rest-text-to-speech.md)használatával kapcsolatos beszédfelismerési szolgáltatások végponti információit tartalmazza.
+
+#### <a name="speech-services-rest-api"></a>Speech Services REST API
+
+A Speech Services REST API-végpontok Azure Government formátuma a következő:
+
+|  REST API típus/művelet | Végpont formátuma |
+|--|--|
+| Hozzáférési jogkivonat | `https://<REGION_IDENTIFIER>.api.cognitive.microsoft.us/sts/v1.0/issueToken`
+| [Beszéd – szöveg REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) | `https://<REGION_IDENTIFIER>.api.cognitive.microsoft.us/<URL_PATH>` |
+| [Beszéd – szöveg REST API rövid hanghoz](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) | `https://<REGION_IDENTIFIER>.stt.speech.azure.us/<URL_PATH>` |
+| [Szövegfelolvasás REST API](rest-text-to-speech.md) | `https://<REGION_IDENTIFIER>.tts.speech.azure.us/<URL_PATH>` |
+
+Cserélje le az `<REGION_IDENTIFIER>` elemet az előfizetés régiójának megfelelő azonosítóra ebből a táblából:
+
+|                     | Régió azonosítója |
+|--|--|
+| **USA-beli államigazgatás – Arizona**  | `usgovarizona` |
+| **USA-beli államigazgatás – Virginia** | `usgovvirginia` |
+
+#### <a name="speech-sdk"></a>Beszéd SDK
+
+A szuverén felhőkben található Speech SDK esetén a "from host" parancsot kell használnia a `SpeechConfig` `--host` [Speech CLI](spx-overview.md)osztályának vagy lehetőségének létrehozásához. (Használhatja a "végpont" példányát is, és `--endpoint` Speech CLI-beállítás).
+
+`SpeechConfig` az osztályt a következőhöz hasonló módon kell létrehozni:
+```csharp
+var config = SpeechConfig.FromHost(usGovHost, subscriptionKey);
+```
+A Speech CLI-t ehhez hasonló módon kell használni (a beállítás megjegyzése `--host` ):
+```dos
+spx recognize --host "usGovHost" --file myaudio.wav
+```
+Cserélje le a szöveget `subscriptionKey` a beszédfelismerési erőforrás-kulcsára. Cserélje le a `usGovHost` kifejezést a szükséges szolgáltatási ajánlatnak megfelelő kifejezésre, és az előfizetés régióját ebből a táblából:
+
+|  Régió/szolgáltatás ajánlat | Gazdagép kifejezése |
+|--|--|
+| **USA-beli államigazgatás – Arizona** | |
+| Diktálás | `wss://usgovarizona.stt.speech.azure.us` |
+| Text-to-Speech | `https://usgovarizona.tts.speech.azure.us` |
+| **USA-beli államigazgatás – Virginia** | |
+| Diktálás | `wss://usgovvirginia.stt.speech.azure.us` |
+| Text-to-Speech | `https://usgovvirginia.tts.speech.azure.us` |
+
+
+## <a name="azure-china"></a>Azure China
+
+Elérhető a Kínában üzleti jelenléttel rendelkező szervezetek számára. További információt az Azure China-ról [itt talál.](/azure/china/overview-operations) 
+
+
+- **Azure Portal:**
+  - [https://portal.azure.cn/](https://portal.azure.cn/)
+- **Régiók**
+  - Kelet-Kína 2
+- **Elérhető díjszabási szintek:**
+  - Ingyenes (F0) és standard (S0). További részletek [itt](https://www.azure.cn/pricing/details/cognitive-services/index.html) találhatók
+- **Támogatott funkciók:**
+  - Diktálás
+    - Egyéni beszéd (akusztikus modell (AM) és Language Model (LM) adaptáció)
+      - [Speech Studio](https://speech.azure.cn/)
+  - Szövegfelolvasás
   - Speech Translator
-- Nem támogatott funkciók
+- **Nem támogatott funkciók:**
+  - Neurális hang
   - Egyéni hang
-  - Neurális hangok a szöveg és a beszéd között
-- Támogatott területi beállítások: a következő nyelvekhez tartozó területi beállítások támogatottak.
+- **Támogatott nyelvek:**
   - Arab (AR-*)
   - Kínai (zh-*)
   - Angol (en-*)
   - Francia (FR-*)
   - Német (de-*)
-  - Hindi
-  - Koreai
-  - Orosz
+  - Hindi (Hi-IN)
+  - Koreai (ko-KR)
+  - Orosz (ru-RU)
   - Spanyol (es-*)
 
+### <a name="endpoint-information"></a>Végpont adatai
+
+Ez a szakasz a Speech [SDK](speech-sdk.md), a [beszéd és a szöveg közötti REST API](rest-speech-to-text.md)és a [szöveg-beszéd REST API](rest-text-to-speech.md)használatával kapcsolatos beszédfelismerési szolgáltatások végponti információit tartalmazza.
+
+#### <a name="speech-services-rest-api"></a>Speech Services REST API
+
+Az Azure China-ban a Speech Services REST API-végpontok formátuma a következő:
+
+|  REST API típus/művelet | Végpont formátuma |
+|--|--|
+| Hozzáférési jogkivonat | `https://<REGION_IDENTIFIER>.api.cognitive.azure.cn/sts/v1.0/issueToken`
+| [Beszéd – szöveg REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) | `https://<REGION_IDENTIFIER>.api.cognitive.azure.cn/<URL_PATH>` |
+| [Beszéd – szöveg REST API rövid hanghoz](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) | `https://<REGION_IDENTIFIER>.stt.speech.azure.cn/<URL_PATH>` |
+| [Szövegfelolvasás REST API](rest-text-to-speech.md) | `https://<REGION_IDENTIFIER>.tts.speech.azure.cn/<URL_PATH>` |
+
+Cserélje le az `<REGION_IDENTIFIER>` elemet az előfizetés régiójának megfelelő azonosítóra ebből a táblából:
+
+|                     | Régió azonosítója |
+|--|--|
+| **Kelet-Kína 2**  | `chinaeast2` |
+
+#### <a name="speech-sdk"></a>Beszéd SDK
+
+A szuverén felhőkben található Speech SDK esetén a "from host" parancsot kell használnia a `SpeechConfig` `--host` [Speech CLI](spx-overview.md)osztályának vagy lehetőségének létrehozásához. (Használhatja a "végpont" példányát is, és `--endpoint` Speech CLI-beállítás).
+
+`SpeechConfig` az osztályt a következőhöz hasonló módon kell létrehozni:
+```csharp
+var config = SpeechConfig.FromHost(azCnHost, subscriptionKey);
+```
+A Speech CLI-t ehhez hasonló módon kell használni (a beállítás megjegyzése `--host` ):
+```dos
+spx recognize --host "azCnHost" --file myaudio.wav
+```
+Cserélje le a szöveget `subscriptionKey` a beszédfelismerési erőforrás-kulcsára. Cserélje le a `azCnHost` kifejezést a szükséges szolgáltatási ajánlatnak megfelelő kifejezésre, és az előfizetés régióját ebből a táblából:
+
+|  Régió/szolgáltatás ajánlat | Gazdagép kifejezése |
+|--|--|
+| **Kelet-Kína 2** | |
+| Diktálás | `wss://chinaeast2.stt.speech.azure.cn` |
+| Text-to-Speech | `https://chinaeast2.tts.speech.azure.cn` |

@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 53f31bca59bf316b6664a6c9daec886c84c1b072
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 980e9f1ffd453a070dde72f8c7ca34c7ef08f948
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648344"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964354"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Azure-beli szerepkör-hozzárendelések listázása Azure PowerShell használatával
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] Ez a cikk a szerepkör-hozzárendelések Azure PowerShell használatával történő listázását ismerteti.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] Ez a cikk a szerepkör-hozzárendelések Azure PowerShell használatával történő listázását ismerteti.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -186,6 +186,6 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
     Get-AzRoleAssignment -ObjectId <objectid>
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](role-assignments-powershell.md)

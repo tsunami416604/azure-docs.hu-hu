@@ -3,12 +3,12 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 182df937ae5c0194aecfbe20b5962b44b363c708
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934466"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964191"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései
 
@@ -176,6 +176,10 @@ Azure Machine Learning számítási kvóták legújabb értékei a [Azure Machin
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
+## <a name="azure-role-based-access-control-limits"></a>Azure szerepköralapú hozzáférés-vezérlési korlátok
+
+[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)]
+
 ## <a name="azure-signalr-service-limits"></a>Az Azure Signaler szolgáltatás korlátai
 
 [!INCLUDE [signalr-service-limits](../../../includes/signalr-service-limits.md)]
@@ -339,10 +343,6 @@ Az Azure-beli hatáskörébe tartozó kvóták legújabb értékei az [Azure hat
 ## <a name="notification-hubs-limits"></a>Notification Hubs korlátok
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
-
-## <a name="azure-role-based-access-control-limits"></a>Azure szerepköralapú hozzáférés-vezérlési korlátok
-
-[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 
 ## <a name="service-bus-limits"></a>Service Bus korlátok
 

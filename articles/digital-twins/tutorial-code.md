@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 96533c1742e8ad5fde9796ea2073f6e402ac8dcf
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 22600f6519a44e71ae5c4b59b0165401b54e55fd
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862385"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964541"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -60,9 +60,6 @@ Tartsa megnyitva a parancssorablakot, ahogy az oktatóanyag során is használni
 Ezután **vegyen fel két függőséget a projekthez** , amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az alábbi hivatkozásokat követve megkeresheti a NuGet lévő csomagokat, ahol megtalálhatja a konzol parancsait (beleértve a .NET CLI-t is), hogy mindegyiket hozzáadja a projekthez.
 * [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Ez a csomag a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-hoz. Adja hozzá a legújabb verziót.
 * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Ez a kódtár eszközöket biztosít az Azure-beli hitelesítéshez. Adja hozzá az 1.2.2-es verziót.
-
->[!NOTE]
-> Jelenleg [ismert probléma](troubleshoot-known-issues.md#issue-with-default-azure-credential-authentication-on-azureidentity-130) van az Azure. Identity verzió 1.3.0 ezzel az Oktatóanyaggal való használatának lehetőségével. Ha a probléma továbbra is fennáll, használja az 1.2.2-es verziót.
 
 ## <a name="get-started-with-project-code"></a>Első lépések a Project Code-ban
 

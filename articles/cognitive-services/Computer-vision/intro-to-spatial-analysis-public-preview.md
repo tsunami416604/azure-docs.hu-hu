@@ -10,29 +10,30 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: e017fac551e3122cc6586b32423ff166462ccad8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 158a5e5f859749ec2ca20bfa4783fe32cc17ee0e
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97513333"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964609"
 ---
 # <a name="introduction-to-computer-vision-spatial-analysis"></a>Computer Vision térbeli elemzés bemutatása
 
-Computer Vision térbeli elemzés az Azure Computer Vision Cognitive Services új funkciója, amely segít a szervezeteknek a fizikai helyük értékének maximalizálásában azáltal, hogy egy adott területen belül megismerik a személyek mozgásait és jelenlétét. Lehetővé teszi a CCTV vagy a térfigyelő kamerákból származó videók betöltését, AI-képességek futtatásával kinyerheti az elemzési eredményeket a videó streamekről, és más rendszerek által használt eseményeket is létrehozhat. A kamera streamből való bevitelsel egy mesterséges intelligencia-képesség olyan dolgokhoz is elvégezhető, mint például a felhasználók számának megszámlálása, illetve a közösségi elhatárolja vonatkozó irányelvek betartásának mértéke.
+Computer Vision térbeli elemzés az Azure Computer Vision Cognitive Services új funkciója, amely segít a szervezeteknek a fizikai helyük értékének maximalizálásában azáltal, hogy egy adott területen belül megismerik a személyek mozgásait és jelenlétét. Lehetővé teszi a CCTV vagy a térfigyelő kamerákból származó videók betöltését, AI-műveletek futtatásával kinyerheti az adatforrásokat a videó streamekről, és más rendszerek által használt eseményeket is létrehozhat. A kamerás adatfolyamok bemenetével egy AI-művelet elvégezheti az olyan műveleteket, mint például a tárhely beírása vagy a szembenéző maszkkal való megfelelőség mérése, illetve a közösségi elhatárolja vonatkozó irányelvek.
 
 ## <a name="the-basics-of-spatial-analysis"></a>A térbeli elemzés alapjai
 
-Napjainkban a térbeli elemzés alapvető képességei mind egy olyan folyamatra épülnek, amely videó betöltését, észleli a videóban lévő személyeket, nyomon követi az embereket, ahogy az idő múlásával mozognak, és eseményeket generálnak, mivel az emberek a fontos régiókkal működnek együtt.
+Napjainkban a térbeli elemzések alapvető műveletei mind a videó betöltését, a videóban szereplő személyeket észlelik, nyomon követi a személyeket, ahogy az idő múlásával mozognak, és eseményeket generálnak, mivel az emberek a fontos régiókkal működnek együtt.
 
 ## <a name="spatial-analysis-terms"></a>Térbeli elemzési feltételek
 
 | Időszak | Definíció |
 |------|------------|
 | Emberek észlelése | Ez az összetevő a "hol vannak a képen emberek?" kérdésre ad választ? Megkeresi az embereket egy képen, és átadja a határoló dobozt, amely feltünteti az egyes személyek helyét a People Tracking összetevőnek. |
-| Személyek követése | Ez az összetevő összekapcsolja a személyek észleléseit az idő múlásával, ahogy a felhasználók egy kamera előtt mozognak. Időbeli logikát használ arról, hogy az emberek általában hogyan helyezik át a felhasználók általános megjelenésével kapcsolatos alapvető információkat. Nem követheti nyomon a több kamerán dolgozó személyeket, és nem azonosíthatja azokat a személyeket, akik körülbelül egy percen belül eltűntek. Az emberek követése nem használ olyan biometrikus jelölőket, mint az Arcfelismerés vagy a testtartás követése. |
-| Érdekes régió | Ez egy, a bemeneti videóban definiált zóna vagy vonal a konfiguráció részeként. Ha egy személy a videó régióját használja, a rendszer létrehoz egy eseményt. A PersonCrossingLine skill esetében például egy sor van definiálva a videóban. Ha egy személy keresztezi az eseményt, az esemény létrejön. |
-| Esemény | Az esemény a térbeli elemzés elsődleges kimenete. Az egyes képességek időnként egy adott eseményt bocsátanak ki (pl.: percenként egyszer) vagy egy adott trigger bekövetkeztekor. Az esemény információt tartalmaz arról, hogy mi történt a bemeneti videóban, de nem tartalmaz képeket vagy videókat. A PeopleCount-képesség például kibocsáthat egy eseményt, amely a frissített számot tartalmazza minden alkalommal, amikor megváltoznak a személyek száma (trigger) vagy percenként (rendszeres időközönként). |
+| Személyek követése | Ez az összetevő összekapcsolja a személyek észleléseit az idő múlásával, ahogy a felhasználók egy kamera előtt mozognak. Időbeli logikát használ arról, hogy az emberek általában hogyan helyezik át a felhasználók általános megjelenésével kapcsolatos alapvető információkat. Nem követi nyomon a több kamera közötti személyeket. Ha egy személy már körülbelül egy percnél hosszabb ideig van a kamera nézete, majd újra belép a kamera nézetbe, a rendszer ezt új személynek fogja észlelni. Az emberek nyomon követése nem egyedi módon azonosítja a kamerák közötti személyeket. Nem használ arc-felismerést vagy járási követést. |
+| Álarcok észlelése | Ez az összetevő észleli egy személy arcát a kamera mezőjében, és azonosítja az álarc jelenlétét. Ehhez az AI-művelet képeket keres a videóból; az arc észlelése esetén a szolgáltatás egy határoló mezőt biztosít az arc körül. Az objektum-észlelési képességek használatával azonosíthatja az arc maszkok jelenlétét a határolókereton belül. Az álarcok észlelése nem jelenti azt, hogy az egyik arcot megkülönbözteti a másiktól, az arc-attribútumok előrejelzését vagy osztályozását, illetve az Arcfelismerés végrehajtását. |
+| Érdekes régió | Ez egy, a bemeneti videóban definiált zóna vagy vonal a konfiguráció részeként. Ha egy személy a videó régióját használja, a rendszer létrehoz egy eseményt. A PersonCrossingLine művelet esetében például egy sor van definiálva a videóban. Ha egy személy keresztezi az eseményt, az esemény létrejön. |
+| Esemény | Az esemény a térbeli elemzés elsődleges kimenete. Az egyes műveletek egy adott eseményt küldenek rendszeresen (pl.: percenként egyszer) vagy egy adott trigger bekövetkeztekor. Az esemény információt tartalmaz arról, hogy mi történt a bemeneti videóban, de nem tartalmaz képeket vagy videókat. A PeopleCount művelet például kibocsáthat egy eseményt, amely a frissített számot tartalmazza minden alkalommal, amikor a személyek száma megváltozik (trigger), vagy percenként (rendszeres időközönként). |
 
 ## <a name="example-use-cases-for-spatial-analysis"></a>Példa a térbeli elemzések használati eseteire
 
@@ -43,6 +44,8 @@ A következő példák olyan használati eseteket mutatnak be, amelyeket a térb
 A **Shopper elemzése** – a szupermarketek a terméken rámutató kamerákat használnak az adattárolási forgalom változásainak megmérésére. A System lehetővé teszi, hogy a Store Manager azonosítsa, hogy mely új termékek hajtják meg a legtöbb változást a részvételre.
 
 **Üzenetsor-kezelés** – a pénztári várólistákra rámutató kamerák olyan riasztásokat biztosítanak a kezelők számára, amikor a várakozási idő túl sokáig tart, így több sort nyithat meg. A várólista-lemondás előzményeinek betekintést nyújt a fogyasztói viselkedésbe.
+
+**Álarcok megfelelősége** – a kiskereskedelmi tárolók az áruházban látható kamerákat használhatják annak ellenőrzéséhez, hogy az áruházba beérkező ügyfelek rendelkeznek-e álarcokkal a biztonsági megfelelőség fenntartásához és az összesített statisztikák elemzéséhez a maszk használatának trendjeiről. 
 
 A **foglaltság & elemzések kiépítése** – az irodaház a lépés hangja mérésére és a munkahelyen a felhasználók használatára összpontosító kamerákat használ. Az eredmények lehetővé teszik az épületfelügyeleti számára a szolgáltatás és az elrendezés módosítását az utasok jobb kiszolgálásához.
 

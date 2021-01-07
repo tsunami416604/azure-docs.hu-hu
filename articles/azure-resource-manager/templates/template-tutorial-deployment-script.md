@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683494"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963963"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Oktatóanyag: az üzembe helyezési parancsfájlok használata önaláírt tanúsítvány létrehozásához
 
@@ -329,13 +329,13 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
 
     ![Resource Manager-sablon üzembe helyezési parancsfájl erőforrásai](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    Mindkét fájl **azscripts** utótaggal rendelkezik. Az egyik a Storage-fiók, a másik pedig egy tároló példány.
+    Mindkét fájl _azscripts_ utótaggal rendelkezik. Az egyik a Storage-fiók, a másik pedig egy tároló példány.
 
     Válassza a **rejtett típusok megjelenítése** lehetőséget az `deploymentScripts` erőforrás listázásához.
 
-1. Válassza ki a **azscripts** utótaggal rendelkező Storage-fiókot.
-1. Válassza ki a **fájlmegosztás** csempét. Megjelenik egy **azscripts** mappa. A mappa tartalmazza a telepítési parancsfájl végrehajtási fájljait.
-1. Válassza a **azscripts** lehetőséget. Két mappát fog látni a **azscriptinput** és a **azscriptoutput**. A bemeneti mappa egy PowerShell-parancsfájlt és a felhasználói telepítési parancsfájlokat tartalmaz. A kimeneti mappa tartalmaz egy _executionresult.jst_ és a parancsfájl kimeneti fájlját. A hibaüzenetet _executionresult.jsa_ következő helyen tekintheti meg:. A kimeneti fájl nem létezik, mert a végrehajtás nem sikerült.
+1. Válassza ki a _azscripts_ utótaggal rendelkező Storage-fiókot.
+1. Válassza ki a **fájlmegosztás** csempét. Megjelenik egy _azscripts_ mappa, amely tartalmazza a telepítési parancsfájl végrehajtási fájljait.
+1. Válassza a _azscripts_ lehetőséget. Két mappát fog látni a _azscriptinput_ és a _azscriptoutput_. A bemeneti mappa egy PowerShell-parancsfájlt és a felhasználói telepítési parancsfájlokat tartalmaz. A kimeneti mappa tartalmaz egy _executionresult.jst_ és a parancsfájl kimeneti fájlját. A hibaüzenetet _executionresult.jsa_ következő helyen tekintheti meg:. A kimeneti fájl nem létezik, mert a végrehajtás nem sikerült.
 
 Távolítsa el a `Write-Output1` sort, és telepítse újra a sablont.
 

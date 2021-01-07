@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d6b3d60a44725869d68dd9f1158d2279f3cf3e86
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929752"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963980"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Felügyelt identitások használata az App Configuration eléréséhez
 
@@ -72,7 +72,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. Az **előfizetés** területen válassza ki az Azure-előfizetését. Válassza ki az alkalmazás App Service erőforrását.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     ![Felügyelt identitás hozzáadása](./media/add-managed-identity.png)
 
@@ -102,7 +102,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
     using Azure.Identity;
     ```
 
-1. Ha csak az alkalmazás konfigurációjában közvetlenül tárolt értékeket kívánja elérni, frissítse a `CreateWebHostBuilder` metódust a metódus lecserélésével `config.AddAzureAppConfiguration()` .
+1. Ha csak az alkalmazás konfigurációjában tárolt értékeket kívánja elérni, frissítse a `CreateWebHostBuilder` metódust úgy, hogy lecseréli a `config.AddAzureAppConfiguration()` metódust (ez a `Microsoft.Azure.AppConfiguration.AspNetCore` csomagban található).
 
     > [!IMPORTANT]
     > `CreateHostBuilder``CreateWebHostBuilder`a .net Core 3,0-es verzióra vált.  Válassza ki a megfelelő szintaxist a környezet alapján.
@@ -279,7 +279,7 @@ Frissítheti például a gyors útmutatóban létrehozott .NET-keretrendszer kon
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban egy Azure által felügyelt identitást adott hozzá, amellyel egyszerűbbé válik az alkalmazások konfigurációjának elérése, és javítható a hitelesítő adatok kezelése az alkalmazásban. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 
 > [!div class="nextstepaction"]

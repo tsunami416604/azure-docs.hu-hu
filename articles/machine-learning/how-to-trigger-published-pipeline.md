@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 12/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 15d8a198df4769b94bced49b82f7be827c771994
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9038d6bc9cd061200ef4553242889776f30d2dc1
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630911"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964558"
 ---
 # <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Gépi tanulási folyamatok indítása a Pythonhoz készült Azure Machine Learning SDK-val
 
@@ -190,16 +190,19 @@ A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfig
 1. Állítsa be úgy az ütemtervet, hogy beállítsa bármely [DataPath PipelineParameters](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) értékét:
 
     ```json
-    "DataPathAssignments": { 
-         "input_datapath": { 
-                            "DataStoreName": "<datastore-name>", 
-                            "RelativePath": "@triggerBody()?['Name']" 
-    } 
-    }, 
-    "ExperimentName": "MyRestPipeline", 
-    "ParameterAssignments": { 
-    "input_string": "sample_string3" 
-    },
+    {
+      "DataPathAssignments": {
+        "input_datapath": {
+          "DataStoreName": "<datastore-name>",
+          "RelativePath": "@{triggerBody()?['Name']}" 
+        }
+      },
+      "ExperimentName": "MyRestPipeline",
+      "ParameterAssignments": {
+        "input_string": "sample_string3"
+      },
+      "RunSource": "SDK"
+    }
     ```
 
     `DataStoreName` [Előfeltételként](#prerequisites)adja hozzá a munkaterülethez hozzáadott feltételt.
@@ -212,7 +215,7 @@ A logikai alkalmazás üzembe helyezése után a következő lépésekkel konfig
 > [!IMPORTANT]
 > Ha Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ a folyamathoz való hozzáférés kezelésére, [állítsa be a folyamathoz tartozó forgatókönyv (képzés vagy pontozás) engedélyeit](how-to-assign-roles.md#common-scenarios).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a Pythonhoz készült Azure Machine Learning SDK-val két különböző módon ütemezhet egy folyamatot. Az egyik ütemezett ismétlődés az eltelt idő alapján. A másik ütemterv akkor fut, ha egy fájlt módosítanak egy adott `Datastore` vagy a tároló egyik könyvtárán belül. Látta, hogyan használhatja a portált a folyamat és az egyes futtatások vizsgálatára. Megtanulta, hogyan tilthatja le az ütemtervet, hogy a folyamat lefusson. Végül létrehozott egy Azure Logic app-alkalmazást egy folyamat elindításához. 
 

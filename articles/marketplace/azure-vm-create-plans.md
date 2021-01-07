@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 023dc877158c7074f46945893d40291e94ab2f09
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629556"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964429"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Csomagok létrehozása virtuálisgép-ajánlathoz
 
@@ -42,7 +42,7 @@ Az **új terv** párbeszédpanelen adjon meg egy egyedi díjcsomag- **azonosít�
 > [!NOTE]
 > A terv azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-Adja meg a **csomag nevét**. Az ügyfelek akkor látják ezt a nevet, amikor döntik el, hogy melyik tervet kívánják kiválasztani az ajánlaton belül. Hozzon létre egy egyedi nevet, amely egyértelműen rámutat a csomagok közötti különbségekre. Például megadhatja a **Windows Servert** utólagos *Pay-as-you-go* elszámolású, *BYOL* , *speciális* és *vállalati* csomagokkal.
+Adja meg a **csomag nevét**. Az ügyfelek akkor látják ezt a nevet, amikor döntik el, hogy melyik tervet kívánják kiválasztani az ajánlaton belül. Hozzon létre egy egyedi nevet, amely egyértelműen rámutat a csomagok közötti különbségekre. Például megadhatja a **Windows Servert** utólagos elszámolású, *BYOL*, *speciális* és *vállalati* csomagokkal.
 
 Kattintson a **Létrehozás** gombra. Ekkor megnyílik a **terv beállítása** lap.
 
@@ -126,7 +126,7 @@ A használati alapú havi számlás csomag esetében használja a következő h�
 - **/Alapméret** – az USD-ben elérhető alapméretek díjszabása. A Microsoft kiszámítja a díjszabást, és helyi pénznemre konvertálja az aktuális árfolyam használatával.
 - **Piaci és alapméret** szerint – az összes piac alapméretének díjszabását adja meg. Az árakat importálhatja egy táblázatból.
 
-Adjon meg egy **alapszintű árat** , majd válassza a díj/ **alapméret** lehetőséget, hogy megjelenjen az ár/óra számítások táblázata.
+Adjon meg egy **alapszintű árat**, majd válassza a díj/ **alapméret** lehetőséget, hogy megjelenjen az ár/óra számítások táblázata.
 
 > [!NOTE]
 > Mentse a díjszabási változásokat, hogy engedélyezze a díjszabási adatexportálást. Miután közzétette a csomag egy piacának árát, később nem módosítható. Annak érdekében, hogy a közzététel előtt a díjak megfelelőek legyenek, exportálja a díjszabási táblázatot, és tekintse át az árakat az egyes piacokon.
@@ -139,9 +139,9 @@ Az ügyfeleknek egy-, három-vagy hat hónapos **ingyenes próbaverziót** is bi
 
 Megtervezheti, hogy az egyes tervek mindenki számára láthatók legyenek, vagy csak egy kijelölt közönség számára. Az Azure-előfizetési azonosítók használatával társíthat tagságokat ebben a korlátozott célközönségben.
 
-**Nyilvános** : a terv mindenki számára megtekinthető.
+**Nyilvános**: a terv mindenki számára megtekinthető.
 
-**Privát** : a terv csak az előkiválasztott közönség számára látható. Miután közzétette saját csomagként, frissítheti a célközönséget, vagy megváltoztathatja nyilvánosra. Miután megnyitotta a csomagot, nyilvánosnak kell maradnia. Nem módosítható egy privát csomagra.
+**Privát**: a terv csak az előkiválasztott közönség számára látható. Miután közzétette saját csomagként, frissítheti a célközönséget, vagy megváltoztathatja nyilvánosra. Miután megnyitotta a csomagot, nyilvánosnak kell maradnia. Nem módosítható egy privát csomagra.
 
 Rendelje hozzá azt a célközönséget, amely hozzáfér ehhez a privát csomaghoz az **Azure-előfizetés-azonosító** s használatával. Igény szerint az egyes hozzárendelt Azure-előfizetési AZONOSÍTÓk **leírását** is megadhatja. Akár 10 előfizetés-azonosítót is hozzáadhat manuálisan, akár 20 000-re, ha CSV-táblázatot importál. Az Azure-előfizetési azonosítók GUID azonosítóként jelennek meg, és minden betűnek kisbetűsnek kell lennie.
 
@@ -191,7 +191,7 @@ A virtuális gép létrehozása határozza meg az általa használt virtuális h
 
 1. Új ajánlat létrehozásakor válasszon egy **generációs típust** , és adja meg a kért adatokat:
 
-    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="A generáció legördülő listájának nézete":::
+    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="A partner Center létrehozási részletei szakaszának nézete.":::
 
 2. Ha másik generációt szeretne hozzáadni egy csomaghoz, válassza a **Létrehozás hozzáadása**... lehetőséget.
 
@@ -203,9 +203,7 @@ A virtuális gép létrehozása határozza meg az általa használt virtuális h
 
 <!--    The **Generation ID** you choose will be visible to customers in places such as product URLs and ARM templates (if applicable). Use only lowercase, alphanumeric characters, dashes, or underscores; it cannot be modified once published.
 -->
-3. Ha olyan meglévő virtuális gépet szeretne frissíteni, amelynek 1. generációja már közzé van téve, szerkessze a **technikai konfiguráció** oldalának részleteit:
-
-    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="A terv technikai konfiguráció oldalának nézete.":::
+3. Ha olyan meglévő virtuális gépet szeretne frissíteni, amelynek 1. generációja már közzé van téve, szerkessze a részleteket a **technikai konfiguráció** lapon.
 
 Ha többet szeretne megtudni az 1. és 2. generációs képességek közötti különbségekről, tekintse meg a [2. generációs virtuális gépek támogatása az Azure](../virtual-machines/generation-2.md)-ban című témakört.
 
@@ -215,8 +213,8 @@ Adja meg a lemez verziószámát és a virtuálisgép-lemezképek megosztott el�
 
 Ez a két kötelező mező a fenti előző képen látható:
 
-- **Lemez verziója** : a megadott lemezkép verziója.
-- **Operációs rendszer VHD-hivatkozása** : az Azure Storage-fiókjának helye az operációs rendszer VHD-je számára. A SAS URI beszerzésével kapcsolatos további információkért lásd: [a megosztott hozzáférési aláírás URI-ja](azure-vm-get-sas-uri.md)a virtuálisgép-rendszerképhez.
+- **Lemez verziója**: a megadott lemezkép verziója.
+- **Operációs rendszer VHD-hivatkozása**: az Azure Storage-fiókjának helye az operációs rendszer VHD-je számára. A SAS URI beszerzésével kapcsolatos további információkért lásd: [a megosztott hozzáférési aláírás URI-ja](azure-vm-get-sas-uri.md)a virtuálisgép-rendszerképhez.
 
 Az adatlemezek (válassza az **adatlemez hozzáadása (legfeljebb 16)** lehetőséget) az Azure Storage-fiókokban tárolt VHD közös hozzáférésű URI-azonosítók is. Egy csomagban való beküldéshez csak egy képet adjon hozzá.
 
@@ -226,4 +224,4 @@ Válassza a **Piszkozat mentése** lehetőséget, majd kattintson a bal felső s
 
 ## <a name="next-steps"></a>További lépések
 
-- [Viszonteladás a CSP-n keresztül](azure-vm-create-resell-csp.md)
+- [Viszonteladás CSP-ken keresztül](azure-vm-create-resell-csp.md)
