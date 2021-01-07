@@ -640,6 +640,8 @@
           href: howto-hyperscale-create-users.md
         - name: Elosztott adatok
           items:
+            - name: Tábla méretének meghatározása
+              href: howto-hyperscale-table-size.md
             - name: Táblák elosztása és módosítása
               href: howto-hyperscale-modify-distributed-tables.md
         - name: Magas rendelkezésre állás
@@ -657,6 +659,8 @@
             - name: Csatlakozási hibák elhárítása
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
               displayName: 'connection errors, hyperscale'
+            - name: Hasznos diagnosztikai lekérdezések
+              href: howto-hyperscale-useful-diagnostic-queries.md
 - name: Referencia
   items:
     - name: Azure CLI

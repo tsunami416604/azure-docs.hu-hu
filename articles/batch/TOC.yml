@@ -137,6 +137,8 @@
           href: batch-automatic-scaling.md
         - name: Számítási csomópontok virtuálisgép-méretének kiválasztása
           href: batch-pool-vm-sizes.md
+        - name: Migrálás felhőszolgáltatásból virtuálisgép-készletekre
+          href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: Számítási csomópontokhoz való hozzáférés konfigurálása
           href: pool-endpoint-configuration.md
         - name: Készlet létrehozása megosztott rendszerkép-katalógusból

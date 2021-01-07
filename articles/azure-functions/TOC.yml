@@ -141,8 +141,16 @@
     - name: Futtatókörnyezet-verziók összehasonlítása
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
-    - name: Prémium szintű csomag
-      href: functions-premium-plan.md
+    - name: Üzemeltetés és skálázás
+      items:
+        - name: Használatalapú csomag
+          href: consumption-plan.md
+        - name: Prémium szintű csomag
+          href: functions-premium-plan.md
+        - name: Dedikált terv
+          href: dedicated-plan.md
+        - name: Eseményvezérelt skálázás
+          href: event-driven-scaling.md
     - name: Központi telepítés
       href: functions-deployment-technologies.md
     - name: Események és üzenetkezelés
@@ -261,6 +269,8 @@
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux használatalapú csomag
                   href: create-first-function-cli-python.md
+                - name: Prémium szintű csomag
+                  href: create-premium-plan-function-app-portal.md
                 - name: Azure for Students Starter
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB-eseményindító

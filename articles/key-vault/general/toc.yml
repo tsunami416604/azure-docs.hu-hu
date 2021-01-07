@@ -45,22 +45,18 @@
       href: basic-concepts.md
     - name: Biztonság
       items:
+        - name: Biztonsági áttekintés
+          href: security-overview.md
+        - name: Biztonságos hozzáférés egy kulcstartóhoz
+          href: secure-your-key-vault.md
         - name: Key Vault – hitelesítési alapok
           href: authentication-fundamentals.md
-        - name: Az Azure Key Vault biztonsága
-          href: overview-security.md
-        - name: Az Azure Key Vault használatának ajánlott eljárásai – Azure Key Vault
-          href: best-practices.md
-        - name: Az Azure Key Vault biztonsági világai
+        - name: Biztonsági világok és földrajzi korlátok
           href: overview-security-worlds.md
         - name: Hálózati biztonság
           href: network-security.md
-        - name: Biztonságos hozzáférés egy kulcstartóhoz – Azure Key Vault
-          href: secure-your-key-vault.md
         - name: A Key Vault Azure-os biztonsági alapkonfigurációja
           href: security-baseline.md
-        - name: Biztonsági javaslatok az Azure Key Vaulthoz
-          href: security-recommendations.md
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
@@ -82,7 +78,7 @@
       href: overview-throttling.md
     - name: Az Azure Key Vault rendelkezésre állása és redundanciája
       href: disaster-recovery-guidance.md
-    - name: Virtuális hálózati szolgáltatásvégpontok az Azure Key Vaulthoz – Azure Key Vault
+    - name: Virtuális hálózati szolgáltatásvégpontok az Azure Key Vaulthoz
       href: overview-vnet-service-endpoints.md
 - name: Útmutatók
   items:
@@ -154,9 +150,9 @@
       href: whats-new.md
     - name: Ügyfélkódtárak
       href: client-libraries.md
-    - name: REST API-hibakódok – Azure Key Vault
+    - name: REST API-hibakódok
       href: rest-error-codes.md
-    - name: Gyakori hibakódok – Azure Key Vault
+    - name: Gyakori hibakódok
       href: common-error-codes.md
     - name: Gyakori paraméterek és fejlécek
       href: common-parameters-and-headers.md

@@ -123,6 +123,8 @@
           href: troubleshoot-cross-region-replication.md
         - name: Kettős protokollú kötetek hibaelhárítása
           href: troubleshoot-dual-protocol-volumes.md
+        - name: NFSv 4.1 Kerberos-kötetek hibaelhárítása
+          href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: Pillanatkép-szabályzatokkal kapcsolatos problémák elhárítása
           href: troubleshoot-snapshot-policies.md
         - name: Erőforrás-szolgáltatókkal kapcsolatos hibák elhárítása
