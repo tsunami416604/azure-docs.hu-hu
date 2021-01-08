@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558929"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028896"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Gyakori kérdések az identitások védelméről Azure Active Directory
 
@@ -35,7 +35,7 @@ Létezik egy aktuálisan ismert probléma, ami késést okoz a felhasználói ko
 
 Ha Ön Azure AD Identity Protection ügyfél, lépjen a [kockázatos felhasználók](howto-identity-protection-investigate-risk.md#risky-users) nézetre, és kattintson a veszélyeztetett felhasználóra. A lap alján található "kockázati előzmények" lapon megjelenik az összes olyan esemény, amely a felhasználó kockázati változásához vezetett. Ha szeretné megtekinteni az összes kockázatos bejelentkezést a felhasználó számára, kattintson a "felhasználó kockázatos bejelentkezések" elemre. Ha meg szeretné tekinteni a felhasználó összes kockázati észlelését, kattintson a "felhasználó kockázati észlelése" elemre.
 
-## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Miért tiltották le a bejelentkezést, de az Identity Protection nem generált kockázati észlelést?
+### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Miért tiltották le a bejelentkezést, de az Identity Protection nem generált kockázati észlelést?
 A bejelentkezések több okból is letiltható. Fontos megjegyezni, hogy az Identity Protection csak akkor generál kockázati észleléseket, ha a hitelesítési kérelemben a megfelelő hitelesítő adatok vannak használatban. Ha a felhasználó helytelen hitelesítő adatokat használ, a rendszer nem jelöli meg az identitások védelme miatt, mert nem áll fenn a hitelesítő adatok sérülése, kivéve, ha egy hibás szereplő a megfelelő hitelesítő adatokat használja. Bizonyos okok miatt előfordulhat, hogy a felhasználók nem tudnak az Identity Protection-észlelést előidéző aláírásból a következőket:
 * Az **IP-cím letiltható** az IP-címről érkező kártékony tevékenységek miatt. Az IP-cím letiltott üzenete nem különbözteti meg a hitelesítő adatok helyességét. Ha az IP-cím le van tiltva, és a rendszer nem használja a helyes hitelesítő adatokat, akkor nem hoz létre Identity Protection-észlelést
 * Az **[intelligens zárolás](../authentication/howto-password-smart-lockout.md)** blokkolhatja a fiókot több sikertelen kísérlet után.
@@ -96,3 +96,7 @@ Tekintettel arra, hogy a felhasználói kockázat kumulatív jellegű, és nem j
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Miért van a bejelentkezés "a bejelentkezési kockázat (aggregált)" pontszáma, amikor a hozzá társított észlelések alacsony vagy közepes kockázattal rendelkeznek?
 
 A magas összesített kockázati pontszám a bejelentkezés más szolgáltatásain alapulhat, vagy az a tény, hogy a bejelentkezéshez egynél több észlelés történt. A bejelentkezés pedig akkor is előfordulhat, ha a bejelentkezési kockázat (aggregált) közepes, még akkor is, ha a bejelentkezéshez kapcsolódó észlelések nagy kockázatot jelentenek.
+
+### <a name="what-is-the-difference-between-the-activity-from-anonymous-ip-address-and-anonymous-ip-address-detections"></a>Mi a különbség a "névtelen IP-cím" és a "névtelen IP-cím" észlelési műveletek között?
+
+A "névtelen IP-cím" észlelés forrása Azure AD Identity Protection, míg a "névtelen IP-címekről származó tevékenység" észlelése integrálva van a MCAS (Microsoft Cloud App Security). Habár nagyon hasonlítanak a nevekre, és előfordulhat, hogy a jelek átfedésben vannak, különböző háttérbeli észlelésekkel rendelkeznek.

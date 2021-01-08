@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése REST API és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Resource Manager REST API használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d1c8a365153007d3337d922bc163ba3767eeddc9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 77192aff9ed4fe33269b5e11891c30e15bc312dd
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675417"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028964"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure Resource Manager REST API
 
@@ -20,13 +20,13 @@ Megadhatja a sablont a kérelem törzsében, vagy csatolhat egy fájlhoz. Fájl 
 
 Az üzembe helyezést egy erőforráscsoport, egy Azure-előfizetés, egy felügyeleti csoport vagy egy bérlő számára is megcélozhatja. A központi telepítés hatókörének függvényében különböző parancsokat kell használnia.
 
-* Egy **erőforráscsoporthoz** való üzembe helyezéshez használja a [központi telepítések – létrehozás](/rest/api/resources/deployments/createorupdate)lehetőséget. A kérelmet a következő címre küldi a rendszer:
+- Egy **erőforráscsoporthoz** való üzembe helyezéshez használja a [központi telepítések – létrehozás](/rest/api/resources/deployments/createorupdate)lehetőséget. A kérelmet a következő címre küldi a rendszer:
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
-* Az **előfizetéshez** való üzembe helyezéshez használja a [központi telepítések – létrehozás az előfizetések hatókörében](/rest/api/resources/deployments/createorupdateatsubscriptionscope)lehetőséget. A kérelmet a következő címre küldi a rendszer:
+- Az **előfizetéshez** való üzembe helyezéshez használja a [központi telepítések – létrehozás az előfizetések hatókörében](/rest/api/resources/deployments/createorupdateatsubscriptionscope)lehetőséget. A kérelmet a következő címre küldi a rendszer:
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -34,7 +34,7 @@ Az üzembe helyezést egy erőforráscsoport, egy Azure-előfizetés, egy felüg
 
   Az előfizetési szintű központi telepítésekkel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
 
-* Egy **felügyeleti csoportba** történő központi telepítéshez használja a [központi telepítések – létrehozás felügyeleti csoport hatókörét](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). A kérelmet a következő címre küldi a rendszer:
+- Egy **felügyeleti csoportba** történő központi telepítéshez használja a [központi telepítések – létrehozás felügyeleti csoport hatókörét](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). A kérelmet a következő címre küldi a rendszer:
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -42,7 +42,7 @@ Az üzembe helyezést egy erőforráscsoport, egy Azure-előfizetés, egy felüg
 
   További információ a felügyeleti csoport szintű központi telepítésekről: [erőforrások létrehozása a felügyeleti csoport szintjén](deploy-to-management-group.md).
 
-* Az üzembe helyezéshez **a** bérlői [hatókörben használjon központi telepítéseket – létrehozás vagy frissítés](/rest/api/resources/deployments/createorupdateattenantscope). A kérelmet a következő címre küldi a rendszer:
+- Az üzembe helyezéshez **a** bérlői [hatókörben használjon központi telepítéseket – létrehozás vagy frissítés](/rest/api/resources/deployments/createorupdateattenantscope). A kérelmet a következő címre küldi a rendszer:
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -83,7 +83,7 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
 
    A kérelem törzsében adjon meg egy hivatkozást a sablonra és a paraméter fájlra. A paraméterfájlról a [Resource Manager-paraméterfájl létrehozása](parameter-files.md) című cikk nyújt további információkat.
 
-   Figyelje meg **mode** , hogy a mód **növekményes** értékre van állítva. Teljes telepítés futtatásához állítsa be a **módot** a **befejezéshez** . Ügyeljen arra, hogy a teljes módot használja, mert a sablonban nem szereplő erőforrásokat véletlenül nem lehet törölni.
+   Figyelje `mode` meg, hogy a értéke **növekményes**. Teljes telepítés futtatásához állítsa be a következőt: `mode` **Befejezés**. Ügyeljen arra, hogy a teljes módot használja, mert a sablonban nem szereplő erőforrásokat véletlenül nem lehet törölni.
 
    ```json
    {
@@ -122,9 +122,9 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
    }
    ```
 
-    Beállíthatja, hogy a Storage-fiók közös hozzáférésű aláírás (SAS) jogkivonatot használjon. További információ: [hozzáférés delegálása közös hozzáférési aláírással](/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
+    Beállíthatja, hogy a Storage-fiók közös hozzáférésű aláírás (SAS) jogkivonatot használjon. További információ: [hozzáférés delegálása közös hozzáférési aláírással](/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
-    Ha egy paraméterhez (például jelszóhoz) bizalmas értéket kell megadnia, adja hozzá ezt az értéket egy kulcstartóhoz. Kérje le a Key vaultot az üzembe helyezés során, ahogy az az előző példában is látható. További információ: [biztonságos értékek továbbítása az üzembe helyezés során](key-vault-parameter.md).
+    Ha egy paraméterhez (például jelszóhoz) bizalmas értéket kell megadnia, adja hozzá ezt az értéket egy kulcstartóhoz. Kérje le a Key vaultot az üzembe helyezés során, ahogy az az előző példában is látható. További információ: [a Azure Key Vault használata a biztonságos paraméterek értékének](key-vault-parameter.md)átadására az üzembe helyezés során.
 
 1. A sablonhoz és paraméterekhez kapcsolódó fájlokhoz való csatolás helyett a kérés törzsében is felveheti őket. A következő példa a kérelem törzsét mutatja be a sablonnal és paraméterrel:
 
@@ -211,10 +211,9 @@ Amikor egyedi nevet ad meg az egyes központi telepítésekhez, ütközés nélk
 
 Az egyidejű központi telepítésekkel való ütközések elkerülése érdekében, valamint a telepítési előzmények egyedi bejegyzéseinek biztosításához adjon egyedi nevet a központi telepítésnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha hibát tapasztal a sikeres üzembe helyezéshez, olvassa el a [hiba visszaállítása a sikeres központi telepítéshez](rollback-on-error.md)című témakört.
 - Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).
 - További információ az aszinkron REST-műveletek kezeléséről: az [aszinkron Azure-műveletek nyomon követése](../management/async-operations.md).
 - A sablonokkal kapcsolatos további tudnivalókért tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
-

@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20f1e152d67e653b10b8378b7d667106c48dc116
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 5942d208fa3859d0a4a80de5f072f2e798fe040f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016932"
+ms.locfileid: "98028930"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Duplikált attribútumok szinkronizálási hibáinak diagnosztizálása és javítása
 
@@ -137,6 +137,9 @@ Az Azure AD-ben ütköző attribútummal rendelkező felhasználót meg kell tis
 
 **A forrás-és a bérlőn lévő felhőalapú felhasználóra történő frissítés nem támogatott.**  
 Az Azure AD-beli felhőalapú felhasználónak nem lehet forrás-horgonya. Ebben az esetben a forrás-horgony frissítése nem támogatott. A helyszínen manuális javítást kell végezni. 
+
+**A javítási folyamat nem tudta frissíteni az értékeket.**
+A [Azure ad Connectban](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-preview#user-writeback) megadott beállítások (például a UserWriteback) nem támogatottak. Tiltsa le a beállításokat a beállításokban. 
 
 ## <a name="faq"></a>GYIK
 **Q.** Mi történik, ha az **Apply javítás** végrehajtása sikertelen?  
