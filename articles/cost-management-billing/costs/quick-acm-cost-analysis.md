@@ -3,18 +3,18 @@ title: Rövid útmutató – Az Azure-költségek feltérképezése költségele
 description: Ez a rövid útmutató bemutatja, hogyan vizsgálhatja meg és elemezheti vállalata Azure-költségeit a Költségelemzés szolgáltatás használatával.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 01/04/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1926a5a2ee81b6be4abee5e4064a4a23354da1a1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033578"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882449"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -72,6 +72,8 @@ A költség-előrejelzés a becsült költségek kivetítése a kiválasztott id
 
 A modell legfeljebb hat hónapos betanítási adatmennyiséget használ a költségek egy éves előrevetítéséhez. Legalább hét napnyi betanítási adatra van szüksége az előrejelzés megváltoztatásához. Az előrejelzés a költség- és felhasználási mintákban végbemenő jelentős változásokon, pl. kiugróan magas és alacsony értékeken alapul. Az előrejelzés nem hoz létre előrevetítést a **Csoportosítási szempont** tulajdonság alatt található minden egyes elemhez. Csak az összesített költségekről ad előrejelzést. Ha több pénznemet használ, a modell csak amerikai dollárban biztosítja a költségek előrejelzését.
 
+Mivel a modell az adatokban jelentkező mélypontokra és csúcsokra támaszkodik, a fenntartott példányokhoz hasonló nagyméretű vásárlások miatt az előrejelzés mérete mesterségesen meg fog növekedni. Az előrejelzési időszak és a vásárlások mérete befolyásolja az előrejelzés érintettségének időtartamát. Az előrejelzés visszaáll a normál állapotra, ha a kiadások stabilizálódnak.
+
 ## <a name="customize-cost-views"></a>Költségnézetek testreszabása
 
 A költségelemzés négy beépített nézettel rendelkezik, amelyek a leggyakoribb célokra vannak optimalizálva:
@@ -88,7 +90,7 @@ Számla részletei | Milyen díjak szerepeltek az utolsó számlán?
 
 Azonban sok esetben ennél mélyebb elemzésre is szükség lehet. A testreszabást az oldal tetején a dátum kiválasztásánál kezdhetjük.
 
-Alapértelmezetten a költségelemzés az aktuális hónap adatait jeleníti meg. A dátumválasztóval gyorsan válthat néhány általános dátumtartomány között. Ilyen például az elmúlt hét nap, a múlt hónap, az aktuális év vagy egy egyéni dátumtartomány. A használatalapú előfizetéseknél a számlázási időszakon alapuló, a naptári hónaptól független dátumtartományok is elérhetők, például az aktuális számlázási időszak vagy az utolsó számla. A menü tetején az **<ELŐZŐ** és a **KÖVETKEZŐ>** hivatkozásokkal léphet az előző vagy a következő időszakra. Például az **<ELŐZŐ** hivatkozásra kattintva az **előző 7 nap** helyett a **8–14 nappal ezelőtti**, majd a **15–21 nappal ezelőtti** tartomány jelenik meg. Ne feledje, hogy egyéni dátumtartomány kiválasztásakor akár egy egész évet is kiválaszthat (pl. január 1-től december 31-ig).
+Alapértelmezetten a költségelemzés az aktuális hónap adatait jeleníti meg. A dátumválasztóval gyorsan válthat néhány általános dátumtartomány között. Ilyen például az elmúlt hét nap, a múlt hónap, az aktuális év vagy egy egyéni dátumtartomány. A használatalapú előfizetéseknél a számlázási időszakon alapuló, a naptári hónaptól független dátumtartományok is elérhetők, például az aktuális számlázási időszak vagy az utolsó számla. A menü tetején az **<ELŐZŐ** és a **KÖVETKEZŐ>** hivatkozásokkal léphet az előző vagy a következő időszakra. Például az **<ELŐZŐ** hivatkozásra kattintva az **előző 7 nap** helyett a **8–14 nappal ezelőtti**, majd a **15–21 nappal ezelőtti** tartomány jelenik meg. Ne feledje, hogy egyéni dátumtartomány kiválasztásakor akár egy egész évet is kiválaszthat (például január 1-től december 31-ig).
 
 ![Dátumválasztó az erre a hónapra vonatkozó kiválasztást bemutató példával](./media/quick-acm-cost-analysis/date-selector.png)
 
@@ -123,7 +125,7 @@ Alapértelmezés szerint a költségelemzés az összes keletkező és számlán
 
 ![Váltson a tényleges és az amortizált költség között, hogy megtekinthesse a teljes időszakra leosztott, illetve a foglalást használó erőforrásokhoz rendelt foglalásvásárlásokat](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Az amortizált költség nézete a foglalásvásárlási díjakat napi adagokra osztja, és ezeket egyenletesen elosztja a foglalási időszak teljes tartamára. Például ahelyett, hogy január 1-én kiugrana egy 365 dollár értékű vásárlás, január 1-től december 31-ig minden nap egy 1,00 dollár értékű vásárlás jelenik meg. Az alapvető amortizáción felül ezek a költségek a foglalást használó konkrét erőforrásokhoz vannak rendelve, és közöttük vannak szétosztva. Ha például az 1,00 dolláros napi díj két virtuális gép között oszlik meg, két 0,50 dolláros napi díj jelenik meg. Ha a foglalás egyik része az adott napon nincs felhasználva, a megfelelő virtuális gépnél egy 0,50 dolláros díj látható, egy másik 0,50 dolláros díj pedig `UnusedReservation` díjtípussal jelenik meg. Vegye figyelembe, hogy a fel nem használt foglalási költségek csak akkor láthatók, ha az amortizált költségeket jeleníti meg.
+Az amortizált költség nézete a foglalásvásárlási díjakat napi adagokra osztja, és ezeket egyenletesen elosztja a foglalási időszak teljes tartamára. Például ahelyett, hogy január 1-én kiugrana egy 365 dollár értékű vásárlás, január 1-től december 31-ig minden nap egy 1,00 dollár értékű vásárlás jelenik meg. Az alapvető amortizáción felül ezek a költségek a foglalást használó konkrét erőforrásokhoz vannak rendelve, és közöttük vannak szétosztva. Ha például az 1,00 dolláros napi díj két virtuális gép között oszlik meg, két 0,50 dolláros napi díj jelenik meg. Ha a foglalás egyik része az adott napon nincs felhasználva, a megfelelő virtuális gépnél egy 0,50 dolláros díj látható, egy másik 0,50 dolláros díj pedig `UnusedReservation` díjtípussal jelenik meg. A fel nem használt foglalási költségek csak akkor láthatók, ha az amortizált költségeket jeleníti meg.
 
 Fontos megjegyezni, hogy a költségek megjelenítésének eltérései miatt a tényleges és az amortizált költség nézete eltérő végösszeget mutat. Általánosságban elmondható, hogy az amortizált költségek megtekintése esetén a foglalásvásárlást tartalmazó hónapok teljes költsége csökken, a foglalásvásárlásokat követő hónapok költségei pedig növekednek. Az amortizáció csak foglalásvásárlások esetén érhető el, és jelenleg az Azure Marketplace-beli vásárlásokra nem vonatkozik.
 
@@ -151,17 +153,17 @@ Ha többet szeretne megtudni arról, miként oszthatja meg a cégen vagy szervez
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-A költségelemzés rögzítéséhez kattintson a rögzítési ikonra a jobb felső sarokban, vagy közvetlenül a(z) „<Subscription Name> | Költségelemzés” elem után. A költségelemzés rögzítése csak a fő diagramot vagy a táblanézetet fogja menteni. Az irányítópult megosztásával biztosítása másoknak is hozzáférést a csempéhez. Vegye figyelembe, hogy ez csak az irányítópult konfigurációját osztja meg, és nem biztosít hozzáférést a mögöttes adatokhoz. Ha nincs hozzáférése a költségekhez, de hozzáfér egy megosztott irányítópulthoz, a „hozzáférés megtagadva” üzenetet fog látni.
+A költségelemzés rögzítéséhez kattintson a rögzítési ikonra a jobb felső sarokban, vagy közvetlenül a(z) „<Subscription Name> | Költségelemzés” elem után. A költségelemzés rögzítése csak a fő diagramot vagy a táblanézetet fogja menteni. Az irányítópult megosztásával biztosítása másoknak is hozzáférést a csempéhez. A megosztás csak az irányítópult konfigurációját osztja meg, és nem biztosít hozzáférést a mögöttes adatokhoz. Ha nincs hozzáférése a költségekhez, de hozzáfér egy megosztott irányítópulthoz, a „hozzáférés megtagadva” üzenetet fog látni.
 
-A költségelemzésre mutató hivatkozás megosztásához válassza a panel tetején lévő **Megosztás** lehetőséget. Egy egyéni URL-cím fog megjelenni, amely megnyitja az adott hatókörre vonatkozó nézetet. Ha nincs hozzáférése a költséghez, az URL-cím használatakor a "hozzáférés megtagadva" üzenet jelenik meg.
+A költségelemzésre mutató hivatkozás megosztásához válassza az ablak felső részén lévő **Megosztás** lehetőséget. Egy egyéni URL-cím fog megjelenni, amely megnyitja az adott hatókörre vonatkozó nézetet. Ha nincs hozzáférése a költséghez, az URL-cím használatakor a "hozzáférés megtagadva" üzenet jelenik meg.
 
 ## <a name="download-usage-data"></a>Használati adatok letöltése
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Előfordulhat, hogy további elemzés céljából le kell töltenie az adatait, egyesíteni kell őket a saját adataival, vagy integrálnia kell őket a saját rendszereibe. A Cost Management több különböző lehetőséget kínál. Ha egy olyan alkalmi jellegű, részletes összegzésre van szüksége, mint amilyen a költségelemzésben is elérhető, hozza létre a szükséges nézetet. Ezt követően töltse le az **Exportálás**, majd az **Adatok letöltése CSV-fájlba** vagy az  **Adatok letöltése Excel-fájlba** lehetőség kiválasztásával. Az Excel-fájlba történő letöltés további információt nyújt a letöltés létrehozására használt nézetről, például a hatókörről, a lekérdezéskonfigurációról, a teljes összegről és a létrehozás dátumáról.
+Előfordulhat, hogy további elemzés céljából le kell töltenie az adatait, egyesíteni kell őket a saját adataival, vagy integrálnia kell őket a saját rendszereibe. A Cost Management több különböző lehetőséget kínál. Ha egy olyan gyors, részletes összegzésre van szüksége, mint amilyen a költségelemzésben is elérhető, hozza létre a szükséges nézetet. Ezt követően töltse le az **Exportálás**, majd az **Adatok letöltése CSV-fájlba** vagy az  **Adatok letöltése Excel-fájlba** lehetőség kiválasztásával. Az Excel-fájlba történő letöltés további információt nyújt a letöltés létrehozására használt nézetről, például a hatókörről, a lekérdezéskonfigurációról, a teljes összegről és a létrehozás dátumáról.
 
-Ha a teljes, nem összesített adatkészletre van szüksége, töltse le a számlázási fiókból. Ezután a portál bal oldali navigációs paneljén található szolgáltatáslistából válassza ki a **Költségkezelés + Számlázás** lehetőséget. Válassza ki a számlázási fiókját, ha van. Lépjen a **Felhasználás + díjak** oldalra, majd kattintson a kívánt számlázási időszak **Letöltés** ikonjára.
+Ha a teljes, nem összesített adatkészletre van szüksége, töltse le a számlázási fiókból. Ezután a portál bal oldali navigációs paneljén található szolgáltatáslistából válassza ki a **Költségkezelés + Számlázás** lehetőséget. Válassza ki a számlázási fiókját, ha van. Lépjen a **Felhasználás + díjak** oldalra, majd kattintson egy számlázási időszak **Letöltés** ikonjára.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

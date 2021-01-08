@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/04/2021
 ms.author: banders
-ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149368"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882500"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Az Azure használati adatait és díjait tartalmazó fájl kifejezéseinek ismertetése
 
@@ -126,10 +126,24 @@ UsageDate | Dátum
 UsageEnd | Dátum
 UsageStart | Dátum
 
-
 ## <a name="ensure-charges-are-correct"></a>Ellenőrizze, hogy a díjak helyesek-e
 
 A részletes használati adatokkal és díjakkal kapcsolatos további tudnivalókért olvassa el a [használatalapú fizetéses](review-individual-bill.md) vagy a [Microsoft-ügyfélszerződéses](review-customer-agreement-bill.md) számlák ismertetését.
+
+## <a name="unexpected-usage-or-charges"></a>Váratlan használatot vagy díjak
+
+Ha olyan használatot vagy díjakat lát, amelyeket nem ismer fel, többféleképpen megpróbálhatja azonosítani az okát:
+
+- Tekintse át a számlát, amely az erőforrás díjait tartalmazza
+- Tekintse át a számlázott díjtételeket a Költségelemzésben
+- Keresse meg az erőforrásért felelős személyeket, és vegye fel velük a kapcsolatot
+- Elemezze az auditnaplókat
+- A felhasználói engedélyek elemzése az erőforrás fölérendelt hatókörében
+- Hozzon létre egy [Azure-támogatáskérést](https://go.microsoft.com/fwlink/?linkid=2083458) a díjak azonosításához
+
+További információ: [Váratlan díjak elemzése](analyze-unexpected-charges.md).
+
+Vegye figyelembe, hogy az Azure a legtöbb felhasználói műveletet nem naplózza. Ehelyett a Microsoft naplózza az erőforrás-használatot a számlázáshoz. Ha egy korábbi használati csúcsot észlel, és nem volt engedélyezve a naplózás, a Microsoft nem tudja megállapítani az okot. Engedélyezze annak a szolgáltatásnak a naplózását, amelynek a megnövekedett használatát meg kívánja tekinteni, így a megfelelő műszaki csapat segíthet a hiba elhárításában.
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 

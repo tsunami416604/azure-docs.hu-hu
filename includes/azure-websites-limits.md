@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 6265a7cde8e276570409238cadfd5ebc777b4527
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532126"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024335"
 ---
 | Erőforrás | Ingyenes | Megosztott | Alapszintű | Standard | Prémium (v1-v3) | Izolált </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -31,6 +31,7 @@ ms.locfileid: "97532126"
 | Egyéni tartomány [SSL-támogatása](../articles/app-service/configure-ssl-certificate.md) |Nem támogatott, a. azurewebsites.net helyettesítő tanúsítványa \* alapértelmezés szerint elérhető.|Nem támogatott, a. azurewebsites.net helyettesítő tanúsítványa \* alapértelmezés szerint elérhető.|Korlátlan SNI SSL kapcsolatok |Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található |Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található | Korlátlan számú SNI SSL és 1 IP SSL kapcsolat található|
 | Hibrid kapcsolatok | | | 5/csomag | 25/csomag | 200/alkalmazás | 200/alkalmazás |
 | [Virtuális hálózat integrációja](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [Privát végpontok](../articles/app-service/networking/private-endpoint.md) | | |   |   |  100/alkalmazás  |    |
 | Integrált Load Balancer | |X |X |X |X |X<sup>10</sup> |
 | [Hozzáférési korlátozások](../articles/app-service/networking-features.md#access-restrictions) | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás | 512 szabályok/alkalmazás |
 | [Always on](../articles/app-service/configure-common.md) | | |X |X |X |X |

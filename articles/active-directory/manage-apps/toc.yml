@@ -37,16 +37,12 @@
     - name: Azure PowerShell-minták alkalmazásproxyhoz
       href: application-proxy-powershell-samples.md
 - name: Alapelvek
-  expanded: false
+  expanded: true
   items:
     - name: Ajánlott alkalmazáskezelési eljárások
       href: application-management-fundamentals.md
     - name: Alkalmazáskezelések gyakori forgatókönyvei
       href: common-scenarios.md
-    - name: Alkalmazások megtekintése a bérlőben
-      href: application-types.md
-    - name: Felhasználók hozzárendelése az alkalmazásokhoz
-      href: ways-users-get-assigned-to-applications.md
     - name: Felhőalkalmazás-integráció megtervezése
       items:
         - name: Az alkalmazásintegráció első lépései
@@ -286,6 +282,10 @@
       href: application-proxy-faq.md
     - name: Alkalmazásproxy verzióelőzményei
       href: application-proxy-release-version-history.md
+    - name: 'Okok, amelyek miatt az alkalmazások megjelennek a vállalati alkalmazások között'
+      href: application-types.md
+    - name: A felhasználók alkalmazásokhoz való hozzárendelésének okai
+      href: ways-users-get-assigned-to-applications.md
 - name: További források
   items:
     - name: Támogatási és súgó lehetőségek fejlesztőknek

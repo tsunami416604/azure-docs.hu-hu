@@ -14,6 +14,8 @@
   items:
     - name: Azure Dedicated HSM létrehozása az Azure PowerShell használatával
       href: quickstart-create-hsm-powershell.md
+    - name: Azure Dedicated HSM létrehozása az Azure CLI használatával
+      href: quickstart-hsm-azure-cli.md
 - name: Alapelvek
   items:
     - name: Magas rendelkezésre állás

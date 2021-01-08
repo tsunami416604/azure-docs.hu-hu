@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: daf2d675bbbee324769b6e1e8d8d34587d37c72f
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 9755cebf66a8c468b29737262bc3c32ae9f5422f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886623"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024384"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -112,14 +112,8 @@ module.exports = async function (context, req) {
 
     const userToken = await tokenClient.issueToken(user, ["voip"]);
 
-    const response = {
-        "User" : userToken.user,
-        "Token": userToken.token,
-        "ExpiresOn": userToken.expiresOn
-    }
-
     context.res = {
-        body: response
+        body: userToken
     };
 }
 ```
@@ -130,7 +124,7 @@ A meglévő kommunikációs szolgáltatások esetében `CommunicationUser` kihag
 
 Futtassa az Azure-függvényt helyileg a használatával `F5` . Ez a művelet helyileg inicializálja az Azure-függvényt, és az alábbi módon teszi elérhetővé: `http://localhost:7071/api/FUNCTION_NAME` . További dokumentáció a [helyi futtatásról](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#run-the-function-locally)
 
-Nyissa meg az URL-címet a böngészőjében, és meg kell jelennie a válasz törzsének a kommunikációs felhasználói azonosítóval, a tokenrel és a token lejáratával.
+Nyissa meg az URL-címet a böngészőjében, és meg kell jelennie a válasz törzsének a kommunikációs felhasználói AZONOSÍTÓval, a tokenrel és a token lejáratával.
 
 :::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Képernyőfelvétel: a létrehozott Azure-függvényre mutató válasz.":::
 
