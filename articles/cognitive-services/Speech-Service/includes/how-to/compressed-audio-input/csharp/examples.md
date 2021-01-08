@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 313d2717e6e40280ed37322d695a2129d833dd59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 754b9c5215299a6f7488633c0871bceb61cbedba
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934097"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978858"
 ---
-Tömörített hangformátum továbbítása a beszédfelismerési szolgáltatásba, létrehozás `PullAudioInputStream` vagy `PushAudioInputStream` . Ezután hozzon létre egy `AudioConfig` példányt a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
+A Speech SDK konfigurálása a tömörített hangbemenetek fogadására, létrehozás `PullAudioInputStream` vagy `PushAudioInputStream` . Ezután hozzon létre egy `AudioConfig` példányt a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
 
 Tegyük fel, hogy rendelkezik egy nevű bemeneti stream-osztállyal `pushStream` , és az Opus/OGG-t használja. A kód így néz ki:
 

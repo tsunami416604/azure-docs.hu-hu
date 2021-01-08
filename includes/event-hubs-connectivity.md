@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/19/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dac82692c76d9d36b1f25d7b93b5c3a2e2400672
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002791"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978870"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
 Az Azure Event Hubs a következő protokollokat használhatja az események küldéséhez és fogadásához:
@@ -72,7 +72,7 @@ Ha a **zóna redundanciát** használja a névtérhez, néhány további lépés
     > [!NOTE]
     > A parancs által visszaadott IP-cím `nslookup` nem statikus IP-cím. Azonban állandó marad, amíg a mögöttes központi telepítést nem törlik, vagy áthelyezik egy másik fürtre.
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Hol találhatom meg az ügyfél IP-küldését vagy az üzenetek fogadását a névtérhez?
+### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>Milyen ügyfél-IP-címeket küldenek vagy fogadnak eseményeket a névtérből?
 Először engedélyezze az [IP-szűrést](../articles/event-hubs/event-hubs-ip-filtering.md) a névtérben. 
 
 Ezután engedélyezze a diagnosztikai naplókat [Event Hubs virtuális hálózati kapcsolatok eseményeihez](../articles/event-hubs/event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) a [diagnosztikai naplók engedélyezése](../articles/event-hubs/event-hubs-diagnostic-logs.md#enable-diagnostic-logs)című témakör utasításait követve. Ekkor megtekintheti az IP-címet, amelyhez a rendszer megtagadja a kapcsolódást.
@@ -92,3 +92,6 @@ Ezután engedélyezze a diagnosztikai naplókat [Event Hubs virtuális hálózat
 
 > [!IMPORTANT]
 > A virtuális hálózati naplók csak akkor jönnek létre, ha a névtér engedélyezi **bizonyos IP-címek** (IP-szűrési szabályok) elérését. Ha nem szeretné korlátozni a névtér elérését ezekkel a szolgáltatásokkal, és továbbra is szeretné lekérni a virtuális hálózati naplókat a Event Hubs névtérhez csatlakozó ügyfelek IP-címeinek nyomon követéséhez, a következő áthidaló megoldást használhatja: engedélyezze az IP-szűrést, és adja hozzá a teljes címezhető IPv4-tartományt (1.0.0.0/1-255.0.0.0/1). A Event Hubs nem támogatja az IPv6-címtartományok használatát. 
+
+> [!NOTE]
+> Jelenleg nem lehet megállapítani egy adott üzenet vagy esemény forrás IP-címét. 

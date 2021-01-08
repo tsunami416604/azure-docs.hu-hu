@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 3000709f19b53eb6e79b4dae0559040ca025c9e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58d547995d39505da18a6bca1a6c3925b95252a6
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282736"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978843"
 ---
-Tömörített hangformátum továbbítása a beszédfelismerési szolgáltatásba, létrehozás `PullAudioInputStream` vagy `PushAudioInputStream` . Ezután hozzon létre egy `AudioConfig` példányt a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
+A Speech SDK konfigurálása a tömörített hangbemenetek fogadására, létrehozás `PullAudioInputStream` vagy `PushAudioInputStream` . Ezután hozzon létre egy `AudioConfig` példányt a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
 
 Tegyük fel, hogy a használati eset `PullStream` egy `MP3` fájlhoz való használata. A kód így néz ki:
 

@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: caada98d3a2bcc4acb566cb02065c6451c233066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9b980dcbe42694137c7b29ee3bddaa7802db3da
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86545093"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978816"
 ---
-Ha tömörített hangformátumot szeretne továbbítani a beszédfelismerési szolgáltatásba, hozzon létre egy `PullAudioInputStream` vagy `PushAudioInputStream` . Ezután hozzon létre egy `AudioConfig` példányt a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
+A Speech SDK a tömörített hangbemenetek fogadására való konfigurálásához hozzon létre egy `PullAudioInputStream` vagy `PushAudioInputStream` . Ezután hozzon létre egy `AudioConfig` példányt a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
 
 Tegyük fel, hogy rendelkezik egy nevű bemeneti stream-osztállyal `pullStream` , és az Opus/OGG-t használja. A kód így néz ki:
 
