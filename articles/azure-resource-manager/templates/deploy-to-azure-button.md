@@ -3,23 +3,23 @@ title: Üzembe helyezés az Azure-ban gomb
 description: Azure Resource Manager-sablonok GitHub-tárházból való üzembe helyezéséhez használja a gombot.
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 65891cace1cb17614abbfe091e1592d6f13feff4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185725"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028743"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Sablonok üzembe helyezése a GitHub-tárházból a központi telepítés gomb használatával
 
-Ez a cikk bemutatja, hogyan helyezhetők üzembe sablonok egy GitHub-tárházból a **telepítés az Azure** -ban gomb használatával. A gombot közvetlenül a GitHub-tárházban található README.md-fájlhoz is hozzáadhatja. Azt is megteheti, hogy a gombot egy olyan weblapra adja, amely hivatkozik a tárházra.
+Ez a cikk bemutatja, hogyan helyezhetők üzembe sablonok egy GitHub-tárházból a **telepítés az Azure** -ban gomb használatával. A gombot közvetlenül a GitHub-tárházban található _readme.MD_ -fájlhoz is hozzáadhatja. Azt is megteheti, hogy a gombot egy olyan weblapra adja, amely hivatkozik a tárházra.
 
 A központi telepítési hatókör meghatározása a sablon sémája alapján történik. További információ:
 
-* [erőforráscsoportok](deploy-to-resource-group.md)
-* [előfizetések](deploy-to-subscription.md)
-* [felügyeleti csoportok](deploy-to-management-group.md)
-* [bérlők](deploy-to-tenant.md)
+- [erőforráscsoportok](deploy-to-resource-group.md)
+- [előfizetések](deploy-to-subscription.md)
+- [felügyeleti csoportok](deploy-to-management-group.md)
+- [bérlők](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>Közös rendszerkép használata
 
@@ -78,7 +78,7 @@ A hivatkozás teljes URL-címe.
 
 A sablont általában nyilvános tárházban kell üzemeltetni. Ha privát tárházat használ, meg kell adnia egy jogkivonatot a sablon nyers tartalmának eléréséhez. A GitHub által generált jogkivonat csak rövid ideig érvényes. Gyakran frissítenie kell a hivatkozást.
 
-Ha a git-t egy GitHub-tárház helyett az [Azure Repos](/azure/devops/repos/git/) használatával használja, továbbra is használhatja az üzembe helyezés az Azure-ban gombot. Győződjön meg arról, hogy a tárház nyilvános. A sablon beszerzéséhez használja az [Items műveletet](/rest/api/azure/devops/git/items/get) . A kérelemnek a következő formátumúnak kell lennie:
+Ha a git-t egy GitHub-tárház helyett az [Azure Repos](/azure/devops/repos/git/) használatával használja, továbbra is használhatja az **üzembe helyezés az Azure** -ban gombot. Győződjön meg arról, hogy a tárház nyilvános. A sablon beszerzéséhez használja az [Items műveletet](/rest/api/azure/devops/git/items/get) . A kérelemnek a következő formátumúnak kell lennie:
 
 ```http
 https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
@@ -90,7 +90,7 @@ A kérelem URL-címének kódolása.
 
 Végül helyezze össze a hivatkozást és a képet.
 
-Ha a Markdown-t a GitHub-tárházban vagy egy weblapon szeretné hozzáadni a README.md-fájlhoz, használja a következőt:
+Ha a Markdown-t a GitHub-tárházban vagy egy weblapon szeretné hozzáadni a _readme.MD_ -fájlhoz, használja a következőt:
 
 ```markdown
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
@@ -120,6 +120,6 @@ A portálon egy ablaktábla jelenik meg, amely lehetővé teszi a paraméterek �
 
 ![A portál használata az üzembe helyezéshez](./media/deploy-to-azure-button/portal.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a sablonokról: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).
+- A sablonokkal kapcsolatos további tudnivalókért tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.

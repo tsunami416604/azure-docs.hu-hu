@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: a8dbadd3af9dc21ced54af151e4de705f854e011
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 950482a96604165a8f1ff20cab9e3eafe1224c90
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696068"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028998"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
@@ -33,7 +33,7 @@ A naplózási riasztási szabályokat Azure Resource Manager sablonok használat
 
 Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
 
-1. Keresse meg azt az erőforrást, amelyre a riasztást szeretné.
+1. Keresse meg azt az erőforrást, amelyre a riasztást szeretné. Ha lehetséges, érdemes lehet több erőforráson beállítania a riasztási szabályokat az előfizetés vagy az erőforráscsoport hatókörének kiválasztásával. Több erőforrás riasztása csökkenti a költségeket, és több riasztási szabályt kell kezelnie.
 1. A **figyelés** területen válassza a **naplók** lehetőséget.
 1. Kérdezze le a naplóadatokat, amelyek a hibát jelezhetik. A [riasztási lekérdezés példái című témakörből](../log-query/example-queries.md) megtudhatja, hogy milyen módon derítheti fel vagy kezdheti [meg a saját lekérdezésének megírását](../log-query/log-analytics-tutorial.md). Ezenkívül [megtudhatja, hogyan hozhat létre optimalizált riasztási lekérdezéseket](alerts-log-query.md).
 1. Nyomja meg az "+ új riasztási szabály" gombot a riasztás létrehozási folyamatának elindításához.
@@ -55,7 +55,7 @@ Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
 
 1. A naplózási riasztások két típusú [**mértéken**](alerts-unified-log.md#measure)alapulnak:
     1. **Eredmények száma** – a lekérdezés által visszaadott rekordok száma.
-    1. **Metrika mérése**  -  *Összesítési érték* kiszámítva a kiválasztott kifejezések és a [bin ()](/azure/kusto/query/binfunction) kiválasztásával csoportosított összesítéssel. Például:
+    1. **Metrika mérése**  -  *Összesítési érték* kiszámítva a kiválasztott kifejezések és a [bin ()](/azure/kusto/query/binfunction) kiválasztásával csoportosított összesítéssel. Példa:
 
     ```Kusto
     // Reported errors

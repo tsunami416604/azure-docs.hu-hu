@@ -1,18 +1,18 @@
 ---
 title: Sablonok üzembe helyezése Cloud Shell
-description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Cloud Shell használatával. Az erőforrások Azure Resource Manager sablonban vannak definiálva.
+description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Azure Cloud Shell használatával. Az erőforrások Azure Resource Manager sablonban (ARM-sablon) vannak definiálva.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d0b519955cb877f5fb9640cc0cf95a898e1743ef
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681508"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028607"
 ---
-# <a name="deploy-arm-templates-from-cloud-shell"></a>ARM-sablonok üzembe helyezése Cloud Shell
+# <a name="deploy-arm-templates-from-azure-cloud-shell"></a>ARM-sablonok üzembe helyezése Azure Cloud Shell
 
-Azure Resource Manager-sablon (ARM-sablon) üzembe helyezéséhez [Cloud shellt](../../cloud-shell/overview.md) használhat. Telepítheti a távolról tárolt ARM-sablonokat, illetve a helyi Storage-fiókban tárolt ARM-sablonokat Cloud Shell számára.
+Azure Resource Manager-sablon (ARM-sablon) üzembe helyezéséhez [Azure Cloud shellt](../../cloud-shell/overview.md) használhat. Telepítheti a távolról tárolt ARM-sablonokat, illetve a helyi Storage-fiókban tárolt ARM-sablonokat Cloud Shell számára.
 
 Bármely hatókörbe üzembe helyezhető. Ez a cikk egy erőforráscsoport üzembe helyezését mutatja be.
 
@@ -54,7 +54,7 @@ Külső sablon üzembe helyezéséhez pontosan úgy adja meg a sablon URI-JÁT, 
 
 Helyi sablon üzembe helyezéséhez először fel kell töltenie a sablont a Cloud Shell-munkamenethez kapcsolódó Storage-fiókba.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza ki a Cloud Shell-erőforráscsoportot. A névminta a következő: `cloud-shell-storage-<region>`.
 
@@ -62,27 +62,27 @@ Helyi sablon üzembe helyezéséhez először fel kell töltenie a sablont a Clo
 
 1. Válassza ki a Cloud Shell tárfiókját.
 
-   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="Cloud Shell megnyitása":::
+   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="Storage-fiók kiválasztása":::
 
 1. Válassza a **fájlmegosztás** lehetőséget.
 
-   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="Cloud Shell megnyitása":::
+   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="Fájlmegosztás kiválasztása":::
 
 1. Válassza ki Cloud Shell alapértelmezett fájlmegosztást. A fájlmegosztás nevének formátuma a (z `cs-<user>-<domain>-com-<uniqueGuid>` ).
 
-   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="Cloud Shell megnyitása":::
+   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="Alapértelmezett fájlmegosztás":::
 
 1. Vegyen fel egy új könyvtárat a sablonok tárolására. Válassza ki a könyvtárat.
 
-   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="Cloud Shell megnyitása":::
+   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="Könyvtár hozzáadása":::
 
 1. Válassza a **Feltöltés** lehetőséget.
 
-   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="Cloud Shell megnyitása":::
+   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="Sablon feltöltése":::
 
 1. Keresse meg és töltse fel a sablont.
 
-   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="Cloud Shell megnyitása":::
+   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="Sablon kiválasztása":::
 
 1. Nyissa meg a Cloud Shell promptot.
 

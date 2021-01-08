@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: bb9768c2a4d3be9ac0e06844c5ac0835707cf455
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.date: 01/08/2021
+ms.openlocfilehash: 71096334f46531bba26f0ead66169340107627cf
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945855"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028692"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása a MongoDB a Azure Data Factory használatával
 
@@ -28,21 +28,25 @@ Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure
 >[!IMPORTANT]
 >Az ADF a MongoDB Connector új verzióját adja ki, amely jobb natív MongoDB-támogatást biztosít. Ha a korábbi MongoDB-összekötőt használja a megoldásban, amely támogatja a visszamenőleges kompatibilitást, tekintse meg a [MongoDB-összekötő (örökölt)](connector-mongodb-legacy.md) című cikket.
 
+
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
 A MongoDB-adatbázisból bármilyen támogatott fogadó adattárba másolhat adatok. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-Pontosabban, ez a MongoDB **-összekötő a 3,4-ig támogatja a verziókat**.
+Pontosabban, ez a MongoDB **-összekötő a 4,2-ig támogatja a verziókat**.
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 
 ## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszokban részletesen ismertetjük az MongoDB-összekötőhöz tartozó Data Factory-entitások definiálásához használt tulajdonságokat.
+
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
@@ -102,6 +106,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 }
 ```
 
+
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
 A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a MongoDB forrás által támogatott tulajdonságok listáját tartalmazza.
@@ -118,10 +123,10 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 | cursorMethods. sort | Meghatározza, hogy a lekérdezés milyen sorrendben adja vissza a megfelelő dokumentumokat. Tekintse meg a [kurzor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nem |
 | cursorMethods. limit | A kiszolgáló által visszaadott dokumentumok maximális számát adja meg. Lásd: [kurzor. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nem |
 | cursorMethods. skip | Meghatározza a kihagyni kívánt dokumentumok számát, valamint a MongoDB az eredmények visszaadásának helyét. Lásd: [kurzor. skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nem |
-| batchSize | Meghatározza a MongoDB-példány válaszának egyes kötegében visszaadni kívánt dokumentumok számát. A legtöbb esetben a Batch méretének módosítása nem érinti a felhasználót vagy az alkalmazást. Cosmos DB korlátozza, hogy az egyes kötegek ne lépjék túl a 40MB méretét, ami a dokumentumok méretének batchSize összege, ezért csökkentse ezt az értéket, ha a dokumentum mérete nagy. | Nem<br/>(az alapértelmezett érték **100**) |
+| batchSize | Meghatározza a MongoDB-példány válaszának egyes kötegében visszaadni kívánt dokumentumok számát. A legtöbb esetben a Batch méretének módosítása nem érinti a felhasználót vagy az alkalmazást. Cosmos DB korlátok az egyes kötegek mérete nem haladhatja meg a 40 MB-ot, ami a dokumentumok méretének batchSize összege, ezért csökkentse ezt az értéket, ha a dokumentum mérete túl nagy. | Nem<br/>(az alapértelmezett érték **100**) |
 
 >[!TIP]
->Az ADF támogatja a BSON-dokumentumok **szigorú módban**történő felhasználását. Győződjön meg arról, hogy a szűrő lekérdezése a rendszerhéj mód helyett szigorú módban van. További Leírás a következő helyen található: [MongoDB Manual](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
+>Az ADF támogatja a BSON-dokumentumok **szigorú módban** történő felhasználását. Győződjön meg arról, hogy a szűrő lekérdezése a rendszerhéj mód helyett szigorú módban van. További Leírás a következő helyen található: [MongoDB Manual](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
 **Példa**
 
@@ -161,13 +166,16 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 ]
 ```
 
+
 ## <a name="export-json-documents-as-is"></a>JSON-dokumentumok exportálása a következőképpen:
 
 Ezt a MongoDB-összekötőt használhatja a JSON-dokumentumok exportálására egy MongoDB-gyűjteményből különböző file-alapú áruházakba vagy a Azure Cosmos DBba. Az ilyen sémák és sémák közötti másoláshoz ugorjon a másolási tevékenységben a "Structure" (más néven *séma*) szakaszra.
 
+
 ## <a name="schema-mapping"></a>Séma-hozzárendelés
 
 Ha adatokat szeretne másolni a MongoDB-ből a táblázatos fogadóba, tekintse meg a [séma-hozzárendelést](copy-activity-schema-and-type-mapping.md#schema-mapping).
+
 
 ## <a name="next-steps"></a>További lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cdba4ce36322f9c3fb0f898cb7eb1d1185ed1dc6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636945"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028224"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
@@ -29,8 +29,10 @@ Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Index
 ## <a name="subscribe-to-the-api"></a>Feliratkozás az API-ra
 
 1. Jelentkezzen be a [Video Indexer fejlesztői portálra](https://api-portal.videoindexer.ai/).
+
+    Tekintse át a [bejelentkezési adatokat](release-notes.md#october-2020)érintő kibocsátási megjegyzéseit.
     
-    ![Bejelentkezés Video Indexer fejlesztői portálra](./media/video-indexer-use-apis/video-indexer-api01.png)
+     ![Bejelentkezés Video Indexer fejlesztői portálra](./media/video-indexer-use-apis/sign-in.png)
 
    > [!Important]
    > * Használja ugyanazt a szolgáltatót, amelyet a Video Indexerre való regisztráláskor használt.
@@ -40,14 +42,14 @@ Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Index
 
     Válassza a [termékek](https://api-portal.videoindexer.ai/products) lapot. Ezután válassza az engedélyezés és előfizetés lehetőséget.
     
-    ![Termékek lap Video Indexer fejlesztői portálon](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![Termékek lap Video Indexer fejlesztői portálon](./media/video-indexer-use-apis/authorization.png)
 
     > [!NOTE]
     > Az új felhasználók automatikusan feliratkoznak az Engedélyezési API-ra.
     
     Az előfizetés után megtalálhatja az előfizetését a **termékek**  ->  **engedélyezése** lehetőség alatt. Az előfizetés lapon megtalálhatja az elsődleges és a másodlagos kulcsot. A kulcsok védelmet igényelnek. Csak a kiszolgálókód használhatja a kulcsokat. Nem lesznek elérhetők az ügyféloldali oldalon (. js,. html stb.).
 
-    ![Előfizetés és kulcsok a Video Indexer fejlesztői portálon](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![Előfizetés és kulcsok a Video Indexer fejlesztői portálon](./media/video-indexer-use-apis/subscriptions.png)
 
 > [!TIP]
 > Egy Video Indexer-felhasználó egyetlen előfizetői kulccsal több Video Indexer-fiókhoz is csatlakozhat. Ezek a Video Indexer-fiókok pedig különböző Media Services-fiókokhoz társíthatók.
@@ -64,7 +66,7 @@ A Műveleti API-ba irányuló összes hívást társítani kell egy hozzáféré
 
 Megadhatja, hogy ezek a tokenek csak olvashatók-e, vagy hogy a **allowEdit = TRUE/FALSE érték** megadásával engedélyezzék-e a szerkesztést.
 
-A kiszolgálók közötti legtöbb forgatókönyv esetén valószínűleg ugyanazt a **fiókot** fogja használni, mivel a **fiók** -és a **videó** -műveleteket is magában foglalja. Ha azonban úgy tervezi, hogy az ügyféloldali hívásokat Video Indexer (például a JavaScriptből) szeretné használni, akkor a **videó** -hozzáférési token használatával megakadályozhatja, hogy az ügyfelek hozzáférjenek a teljes fiókhoz. Ez azt is indokolja, hogy amikor Video Indexer-ügyfél-kódot ágyaz be az ügyfélbe (például a **beolvasások beolvasása widget** vagy a **Player widget beszerzése** ), meg kell adnia egy **videó** -hozzáférési jogkivonatot.
+A kiszolgálók közötti legtöbb forgatókönyv esetén valószínűleg ugyanazt a **fiókot** fogja használni, mivel a **fiók** -és a **videó** -műveleteket is magában foglalja. Ha azonban úgy tervezi, hogy az ügyféloldali hívásokat Video Indexer (például a JavaScriptből) szeretné használni, akkor a **videó** -hozzáférési token használatával megakadályozhatja, hogy az ügyfelek hozzáférjenek a teljes fiókhoz. Ez azt is indokolja, hogy amikor Video Indexer-ügyfél-kódot ágyaz be az ügyfélbe (például a **beolvasások beolvasása widget** vagy a **Player widget beszerzése**), meg kell adnia egy **videó** -hozzáférési jogkivonatot.
 
 A művelet leegyszerűsítése érdekében használhatja az **Engedélyezési** API **GetAccounts** parancsát, ha a fiókjait a felhasználói jogkivonat beszerzése előtt szeretné lekérni. Lekérheti az érvényes jogkivonattal rendelkező fiókokat is, így nem kell még egy hívással fiókjogkivonatot lekérnie.
 
@@ -76,7 +78,7 @@ Készen áll az API-val való integráció megkezdésére. Itt megtalálhatja [a
 
 A Fiókazonosító paraméterre minden műveleti API-híváshoz szükség van. A fiókazonosító egy GUID, és az alábbi módokon szerezhető be:
 
-* A fiókazonosító lekérése a **Video Indexer webhelyen** :
+* A fiókazonosító lekérése a **Video Indexer webhelyen**:
 
     1. Nyissa meg a [Video Indexer](https://www.videoindexer.ai/) webhelyét, és jelentkezzen be.
     2. Lépjen a **Settings** (Beállítások) lapra.
@@ -211,7 +213,7 @@ Debug.WriteLine(playerWidgetLink);
 
 Ha elkészült az Oktatóanyaggal, törölje azokat az erőforrásokat, amelyeket nem szeretne használni.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [A Video Indexer áttekintése](video-indexer-overview.md)
 - [Régiók](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

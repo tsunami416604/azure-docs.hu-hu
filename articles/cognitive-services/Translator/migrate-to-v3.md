@@ -10,19 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364275"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028233"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2 – v3 Migrálás
 
 > [!NOTE]
-> A v2 2018. április 30-ig elavult. Telepítse át az alkalmazásait a v3-ra, hogy kihasználhassa a kizárólag a v3 verzióban elérhető új funkciókat.
-> 
-> A Microsoft Translator hub 2019. május 17-én megszűnik. [Tekintse meg a fontos áttelepítési információkat és dátumokat](https://www.microsoft.com/translator/business/hub/).  
+> A v2 2018. április 30-ig elavult. Telepítse át az alkalmazásait a v3-ra, hogy kihasználhassa a kizárólag a v3 verzióban elérhető új funkciókat. A v2 2021. május 24-én megszűnik. 
 
 A Microsoft Translator csapata a Translator 3 (v3) verzióját adta ki. Ez a kiadás új szolgáltatásokat, elavult metódusokat és új formátumot tartalmaz a Microsoft Translator Service-ből történő küldéshez és adatok fogadásához. Ebből a dokumentumból megtudhatja, hogyan módosíthatja az alkalmazások a v3-es verzió használatát. 
 

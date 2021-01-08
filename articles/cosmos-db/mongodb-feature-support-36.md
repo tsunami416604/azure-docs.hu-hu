@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bb9efa3fde0ed840589b66db7b28392de67ee8dd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0ca1f1222881a2b4ca640fa31192bd1c151ebd9f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635592"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028845"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.6-os verzió): támogatott funkciók és szintaxis
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -23,11 +23,14 @@ A Azure Cosmos DB API-MongoDB való használatával élvezheti a használt Mongo
 
 ## <a name="protocol-support"></a>Protokollok támogatása
 
-A MongoDB-hez készült Azure Cosmos DB API új fiókok esetén alapértelmezés szerint kompatibilis a MongoDB-kiszolgáló **3.6** -os verziójával. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz. Vegye figyelembe, hogy ha a MongoDB fiókokhoz készült Azure Cosmos DB API-t használja, a 3.6-os verziójú fiókok végpontja `*.mongo.cosmos.azure.com` formátumban van, míg a 3.2-es verziójú fiókok végpontja `*.documents.azure.com` formátumban van.
+A MongoDB-hez készült Azure Cosmos DB API új fiókok esetén alapértelmezés szerint kompatibilis a MongoDB-kiszolgáló **3.6**-os verziójával. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz. Vegye figyelembe, hogy ha Azure Cosmos DB API-ját használja a MongoDB-fiókokhoz, a fiók 3,6-es verziójának a végpontja a következő formátumú, `*.mongo.cosmos.azure.com` míg a fiók 3,2-es verziója a végpontot formázza `*.documents.azure.com` .
 
 ## <a name="query-language-support"></a>Nyelvi támogatás lekérdezése
 
-A Azure Cosmos DB API-MongoDB átfogó támogatást nyújt a MongoDB lekérdezési nyelvi szerkezetekhez. Az alábbiakban megtalálhatja a jelenleg támogatott műveletek, operátorok, szakaszok, parancsok és beállítások részletes listáját.
+A Azure Cosmos DB API-MongoDB átfogó támogatást nyújt a MongoDB lekérdezési nyelvi szerkezetekhez. A következő szakaszok a Azure Cosmos DB által jelenleg támogatott kiszolgálói műveletek, operátorok, szakaszok, parancsok és beállítások részletes listáját mutatják be.
+
+> [!NOTE]
+> Ez a cikk csak a támogatott kiszolgálói parancsokat sorolja fel, és kizárja az ügyféloldali burkoló funkciókat. Az ügyféloldali burkoló függvények, például a és `deleteMany()` `updateMany()` a kiszolgáló-parancsok belső kihasználtsága `delete()` `update()` . A támogatott kiszolgálói parancsokat használó függvények kompatibilisek Azure Cosmos DB API-MongoDB.
 
 ## <a name="database-commands"></a>Adatbázisparancsok
 
@@ -37,7 +40,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|delete | Igen |
+|törlés | Igen |
 |find | Igen     |
 |findAndModify | Igen  |
 |getLastError|   Igen |
@@ -338,10 +341,10 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 |Bináris adatértékek    |Igen|    
 |ObjectId    |Igen    |
 |Logikai    |Igen    |
-|Date    |Igen    |
+|Dátum    |Igen    |
 |Null    |Igen    |
 |32 bites egész szám (int)    |Igen    |
-|Timestamp    |Igen    |
+|Időbélyeg    |Igen    |
 |64 bites egész szám (hosszú)    |Igen    |
 |MinKey    |Igen    |
 |MaxKey    |Igen    |

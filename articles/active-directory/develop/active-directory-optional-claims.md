@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/05/2021
+ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: fd3e4a4442f7da89ffee1557e7d908db805931ed
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014872"
+ms.locfileid: "98028471"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -87,10 +87,12 @@ Ezeket a jogcímeket mindig tartalmazza a v 1.0 Azure AD-jogkivonatok, de a nem 
 | `given_name`  | Utónév                      | A felhasználó első vagy "megadott" nevét adja meg a felhasználói objektumra vonatkozóan.<br>"given_name": "Frank"                   | Támogatott a MSA és az Azure AD-ben.  A `profile` hatókört igényli. |
 | `upn`         | Felhasználó egyszerű neve | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a felhasználói adatok egyedi azonosítására (például adatbázis-kulcsként). Ehelyett használja a felhasználói objektum AZONOSÍTÓját ( `oid` ) az adatbázis kulcsaként. Az [alternatív bejelentkezési azonosítóval](../authentication/howto-authentication-use-email-signin.md) bejelentkezett felhasználók nem láthatják az egyszerű felhasználónevet (UPN). Ehelyett használja a következő `preferred_username` jogcímet a bejelentkezési állapot felhasználónak való megjelenítéséhez. | A jogcím konfigurálásához tekintse meg az alábbi [további tulajdonságokat](#additional-properties-of-optional-claims) . A `profile` hatókört igényli.|
 
+## <a name="v10-specific-optional-claims-set"></a>1.0-s verzióra vonatkozó opcionális jogcímek készlete
+
+A v2-token formátumának néhány továbbfejlesztése a v1 token formátumot használó alkalmazások számára érhető el, mivel ezek javítják a biztonságot és a megbízhatóságot. Ezek nem lépnek érvénybe a v2-végponttól kért azonosító tokenek esetében, valamint a v2 jogkivonat-formátumot használó API-k hozzáférési jogkivonatai. Ezek csak a JWTs vonatkoznak, nem SAML-jogkivonatokra. 
 
 **4. táblázat: v 1.0 – csak opcionális jogcímek**
 
-A v2-token formátumának néhány továbbfejlesztése a v1 token formátumot használó alkalmazások számára érhető el, mivel ezek javítják a biztonságot és a megbízhatóságot. Ezek nem lépnek érvénybe a v2-végponttól kért azonosító tokenek esetében, valamint a v2 jogkivonat-formátumot használó API-k hozzáférési jogkivonatai. 
 
 | JWT jogcím     | Név                            | Leírás | Jegyzetek |
 |---------------|---------------------------------|-------------|-------|
@@ -254,7 +256,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
 1. Válassza a **Csoport hozzáadása jogcímet**.
 1. Válassza ki a visszaadni kívánt csoportok típusát (**biztonsági csoportok**, **címtárbeli szerepkörök**, **az alkalmazáshoz rendelt** **összes csoport** és/vagy csoport). Az **alkalmazás-beállításhoz rendelt csoportok** csak az alkalmazáshoz rendelt csoportokat tartalmazzák. A **minden csoport** beállítás magában foglalja az **SecurityGroup**, a **DirectoryRole** és a **DistributionList**, de **az alkalmazáshoz nem rendelt csoportokat**. 
 1. Nem kötelező: válassza ki az adott jogkivonat-típus tulajdonságait, hogy módosítsa a csoportok jogcím értékét, amely a helyszíni csoport attribútumait tartalmazza, vagy ha módosítani szeretné a jogcím típusát a szerepkörre.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 **Csoportok konfigurálása választható jogcímek az alkalmazás jegyzékfájlján keresztül:**
 
@@ -272,7 +274,7 @@ Ez a szakasz azokat a konfigurációs beállításokat ismerteti, amelyek a vál
    - "DirectoryRole"
    - "Alkalmazáscsoport" (ez a beállítás csak az alkalmazáshoz rendelt csoportokat tartalmazza)
 
-   Például:
+   Példa:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"

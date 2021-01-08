@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan valósítható meg a ventilátorok által kipr�
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91128033696af6a56488db7991987f1e384b719e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77562190"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027646"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-out/ventilátor – forgatókönyv Durable Functions – Felhőbeli biztonsági mentési példa
 
@@ -51,7 +51,7 @@ Itt látható a Orchestrator függvényt megvalósító kód:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=16-42)]
 
-Figyelje meg a `await Task.WhenAll(tasks);` sort. A függvény minden egyes hívása `E2_CopyFileToBlob` *nem* várt, ami lehetővé teszi, hogy párhuzamosan fussanak. Ha a feladatok tömbjét átadja a `Task.WhenAll` -nek, egy olyan feladatot kapunk vissza, amely nem fejeződött be, *amíg az összes másolási művelet*be nem fejeződik. Ha már ismeri a .NET-ben a feladatok párhuzamos függvénytárát (TPL), akkor ez nem új Önnek. A különbség az, hogy ezek a feladatok egyszerre több virtuális gépen is futhatnak, és a Durable Functions bővítmény biztosítja, hogy a végpontok közötti végrehajtás rugalmasan dolgozza fel az újrahasznosítás folyamatát.
+Figyelje meg a `await Task.WhenAll(tasks);` sort. A függvény minden egyes hívása `E2_CopyFileToBlob` *nem* várt, ami lehetővé teszi, hogy párhuzamosan fussanak. Ha a feladatok tömbjét átadja a `Task.WhenAll` -nek, egy olyan feladatot kapunk vissza, amely nem fejeződött be, *amíg az összes másolási művelet* be nem fejeződik. Ha már ismeri a .NET-ben a feladatok párhuzamos függvénytárát (TPL), akkor ez nem új Önnek. A különbség az, hogy ezek a feladatok egyszerre több virtuális gépen is futhatnak, és a Durable Functions bővítmény biztosítja, hogy a végpontok közötti végrehajtás rugalmasan dolgozza fel az újrahasznosítás folyamatát.
 
 A szolgáltatástól való várakozás után tudjuk, `Task.WhenAll` hogy az összes függvény hívása befejeződött, és visszaadott értékeket értünk vissza. Minden hívás, amely `E2_CopyFileToBlob` a feltöltött bájtok számát adja vissza, így a teljes bájtok számának kiszámítása az összes visszaadott érték együttes hozzáadására szolgál.
 
@@ -65,12 +65,29 @@ Itt látható a Orchestrator függvényt megvalósító kód:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-Figyelje meg a `yield context.df.Task.all(tasks);` sort. A függvény összes egyedi hívása `E2_CopyFileToBlob` *nem* lett elindítva, ami lehetővé teszi, hogy párhuzamosan fussanak. Ha a feladatok tömbjét átadja a `context.df.Task.all` -nek, egy olyan feladatot kapunk vissza, amely nem fejeződött be, *amíg az összes másolási művelet*be nem fejeződik. Ha már ismeri a [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) JavaScriptet, akkor ez nem új Önnek. A különbség az, hogy ezek a feladatok egyszerre több virtuális gépen is futhatnak, és a Durable Functions bővítmény biztosítja, hogy a végpontok közötti végrehajtás rugalmasan dolgozza fel az újrahasznosítás folyamatát.
+Figyelje meg a `yield context.df.Task.all(tasks);` sort. A függvény összes egyedi hívása `E2_CopyFileToBlob` *nem* lett elindítva, ami lehetővé teszi, hogy párhuzamosan fussanak. Ha a feladatok tömbjét átadja a `context.df.Task.all` -nek, egy olyan feladatot kapunk vissza, amely nem fejeződött be, *amíg az összes másolási művelet* be nem fejeződik. Ha már ismeri a [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) JavaScriptet, akkor ez nem új Önnek. A különbség az, hogy ezek a feladatok egyszerre több virtuális gépen is futhatnak, és a Durable Functions bővítmény biztosítja, hogy a végpontok közötti végrehajtás rugalmasan dolgozza fel az újrahasznosítás folyamatát.
 
 > [!NOTE]
 > Habár a feladatok fogalmi hasonlóságot mutatnak a JavaScript-ígéretekhez, a Orchestrator függvényeknek a és a helyett a feladatok párhuzamos kell használniuk `context.df.Task.all` `context.df.Task.any` `Promise.all` `Promise.race` .
 
 A rendszerből való kilépést követően tudjuk, `context.df.Task.all` hogy az összes függvény hívása befejeződött, és visszaadott értékeket értünk vissza. Minden hívás, amely `E2_CopyFileToBlob` a feltöltött bájtok számát adja vissza, így a teljes bájtok számának kiszámítása az összes visszaadott érték együttes hozzáadására szolgál.
+
+# <a name="python"></a>[Python](#tab/python)
+
+A függvény a Orchestrator functions standard *function.js* alkalmazza.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/function.json)]
+
+Itt látható a Orchestrator függvényt megvalósító kód:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/\_\_init\_\_.py)]
+
+Figyelje meg a `yield context.task_all(tasks);` sort. A függvény összes egyedi hívása `E2_CopyFileToBlob` *nem* lett elindítva, ami lehetővé teszi, hogy párhuzamosan fussanak. Ha a feladatok tömbjét átadja a `context.task_all` -nek, egy olyan feladatot kapunk vissza, amely nem fejeződött be, *amíg az összes másolási művelet* be nem fejeződik. Ha már ismeri a [`asyncio.gather`](https://docs.python.org/3/library/asyncio-task.html#asyncio.gather) Pythont, akkor ez nem új Önnek. A különbség az, hogy ezek a feladatok egyszerre több virtuális gépen is futhatnak, és a Durable Functions bővítmény biztosítja, hogy a végpontok közötti végrehajtás rugalmasan dolgozza fel az újrahasznosítás folyamatát.
+
+> [!NOTE]
+> Habár a feladatok elméletileg hasonlók a Python-awaitables, a Orchestrator függvények, valamint `yield` a és az API-k is használhatók a `context.task_all` `context.task_any` feladat-párhuzamos kezeléséhez.
+
+A rendszerből való kilépést követően tudjuk, `context.task_all` hogy az összes függvény hívása befejeződött, és visszaadott értékeket értünk vissza. Minden hívás a `E2_CopyFileToBlob` feltöltött bájtok számának visszaadására szolgál, így kiszámíthatja a teljes bájtok számát az összes visszatérési érték együttes hozzáadásával.
 
 ---
 
@@ -95,6 +112,16 @@ A fájl *function.js* a `E2_GetFileList` következőhöz hasonlóan néz ki:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
 A függvény a `readdirp` modult (2. x verzió) használja a címtár struktúrájának rekurzív olvasásához.
+
+# <a name="python"></a>[Python](#tab/python)
+
+A fájl *function.js* a `E2_GetFileList` következőhöz hasonlóan néz ki:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/function.json)]
+
+És itt a megvalósítás:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/\_\_init\_\_.py)]
 
 ---
 
@@ -122,6 +149,16 @@ A JavaScript-implementáció az [Azure Storage SDK](https://github.com/Azure/azu
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+
+A fájl *function.js* a következőhöz `E2_CopyFileToBlob` hasonlóan egyszerű:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/function.json)]
+
+A Python-implementáció a [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python) -val tölti fel a fájlokat az Azure Blob Storageba.
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/\_\_init\_\_.py)]
+
 ---
 
 A megvalósítás betölti a fájlt a lemezről, és aszinkron módon továbbítja a tartalmat egy azonos nevű blobba a "Backups" tárolóban. A visszaadott érték a tárterületre másolt bájtok száma, amelyet a Orchestrator függvény használ az összesített összeg kiszámításához.
@@ -131,7 +168,7 @@ A megvalósítás betölti a fájlt a lemezről, és aszinkron módon továbbít
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-A következő HTTP POST-kérelem elküldésével indíthatja el a koordinálást.
+A Windowson a következő HTTP POST-kérelem elküldésével indíthatja el a-előkészítést.
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -139,6 +176,16 @@ Content-Type: application/json
 Content-Length: 20
 
 "D:\\home\\LogFiles"
+```
+
+Azt is megteheti, hogy Linux-függvényalkalmazás (a Python jelenleg csak Linux rendszeren fut a App Service) a következőhöz hasonló módon indítható el:
+
+```
+POST http://{host}/orchestrators/E2_BackupSiteContent
+Content-Type: application/json
+Content-Length: 20
+
+"/home/site/wwwroot"
 ```
 
 > [!NOTE]

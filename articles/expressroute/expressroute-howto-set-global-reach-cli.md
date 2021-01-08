@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/12/2018
+ms.date: 01/07/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27f16ac7d7d799c5467b11fd93352dc5fdef666c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322495"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028063"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>ExpressRoute-Global Reach konfigurálása az Azure CLI használatával
 
@@ -48,7 +48,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>A ExpressRoute-áramkörök azonosítása a konfigurációhoz
 
-A ExpressRoute Global Reach bármely két ExpressRoute között engedélyezheti, ha azok a támogatott országokban/régiókban találhatók, és különböző, egymástól eltérő helyeken hozták létre. Ha az előfizetés mindkét áramkört birtokolja, akkor a jelen cikk későbbi részében leírtak szerint válassza ki az áramkört a konfiguráció futtatásához. Ha a két áramkör különböző Azure-előfizetésekben található, rendelkeznie kell egy Azure-előfizetéssel, és meg kell adnia az engedélyezési kulcsát, amikor a másik Azure-előfizetésben futtatja a konfigurációs parancsot.
+A ExpressRoute Global Reach bármely két ExpressRoute-áramkör között engedélyezhető. Az áramköröket a támogatott országokban/régiókban kell megadni, és különböző, egymástól eltérő helyeken hozták létre. Ha az előfizetés mindkét áramkört birtokolja, akkor a konfiguráció futtatásához bármelyik áramkört kiválaszthatja. Ha azonban a két áramkör különböző Azure-előfizetésekben található, létre kell hoznia egy engedélyezési kulcsot az egyik áramkörből. Az első áramkörből generált engedélyezési kulcs használatával engedélyezheti Global Reach a második áramkörön.
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>A helyszíni hálózatok közötti kapcsolat engedélyezése
 
@@ -58,7 +58,7 @@ Ha a parancsot a kapcsolat engedélyezéséhez futtatja, jegyezze fel a követke
 
   > /Subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-* a címnek "/29" IPv4 *-* alhálózatnak kell lennie (például "10.0.0.0/29"). Ebben az alhálózatban az IP-címeket használjuk a két ExpressRoute-áramkör közötti kapcsolat létesítéséhez. Az ebben az alhálózatban található címeket nem szabad az Azure-beli virtuális hálózatokban vagy a helyszíni hálózatokban használni.
+* a címnek "/29" IPv4 *-* alhálózatnak kell lennie (például "10.0.0.0/29"). Ebben az alhálózatban az IP-címeket használjuk a két ExpressRoute-áramkör közötti kapcsolat létesítéséhez. Ebben az alhálózatban nem használhat címeket az Azure-beli virtuális hálózatokban vagy a helyszíni hálózatokban.
 
 A két ExpressRoute-áramkör összekapcsolásához futtassa a következő CLI-parancsot:
 
@@ -94,7 +94,7 @@ Ha ez a művelet befejeződik, a két ExpressRoute-áramkörön keresztül mindk
 
 ## <a name="enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions"></a>A ExpressRoute-áramkörök közötti kapcsolat engedélyezése különböző Azure-előfizetésekben
 
-Ha a két áramkör nem ugyanabban az Azure-előfizetésben található, akkor engedélyre van szüksége. A következő konfigurációban a 2. áramköri előfizetésében létrehozhatja az engedélyt, és átadhatja az 1-es áramkör engedélyezési kulcsát.
+Ha a két áramkör nem ugyanabban az Azure-előfizetésben található, akkor engedélyre van szüksége. A következő konfigurációban a 2. áramkör előfizetésében létrehozhatja az engedélyt. Ezután adja át az engedélyezési kulcsot az 1. áramkörnek.
 
 1. Engedélyezési kulcs létrehozása:
 
@@ -149,7 +149,7 @@ Az ```show``` állapot ellenőrzéséhez használja az parancsot.
 
 Ha ez a művelet befejeződik, már nem lesz kapcsolata a helyszíni hálózatok között a ExpressRoute-áramköröken keresztül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ a ExpressRoute Global Reach](expressroute-global-reach.md)
 * [ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)

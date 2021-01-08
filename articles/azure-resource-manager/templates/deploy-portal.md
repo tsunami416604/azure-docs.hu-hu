@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése Azure Portal
 description: A Azure Portal és az Azure Erőforrás-kezelés használatával az erőforrásokat üzembe helyezheti az előfizetésében található erőforráscsoporthoz.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: b87ac48bbaec7f94d5e75939cf5ec17df0ff2d2f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d8467bb4e51fc4e6ba89a84f1260a8d2743758d2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668768"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028675"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal
 
@@ -35,13 +35,13 @@ Ez a cikk mindkét módszert mutatja be.
 
 1. Válassza ki vagy adja meg a következő tulajdonságértékek értékét:
 
-    - **Előfizetés** : válasszon ki egy Azure-előfizetést.
-    - **Erőforráscsoport** : adja meg az erőforráscsoport nevét.
-    - **Régió** : válasszon egy Azure-helyet. Ez a hely, ahol az erőforráscsoport az erőforrásokkal kapcsolatos metaadatokat tárolja. Megfelelőségi okokból érdemes megadnia a metaadatok tárolási helyét. Általánosságban elmondható, hogy olyan helyet kell megadnia, ahol az erőforrások többsége lesz. Ha ugyanazt a helyet használja, egyszerűbbé teheti a sablon használatát.
+    - **Előfizetés**: válasszon ki egy Azure-előfizetést.
+    - **Erőforráscsoport**: adja meg az erőforráscsoport nevét.
+    - **Régió**: válasszon egy Azure-helyet. Ez a hely, ahol az erőforráscsoport az erőforrásokkal kapcsolatos metaadatokat tárolja. Megfelelőségi okokból érdemes megadnia a metaadatok tárolási helyét. Általánosságban elmondható, hogy olyan helyet kell megadnia, ahol az erőforrások többsége lesz. Ha ugyanazt a helyet használja, egyszerűbbé teheti a sablon használatát.
 
    ![Csoportok értékeinek beállítása](./media/deploy-portal/set-group-properties.png)
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 1. Tekintse át az értékeket, majd válassza a **Létrehozás** lehetőséget.
 1. Válassza a **frissítés** lehetőséget, mielőtt megtekinti az új erőforráscsoportot a listában.
 
@@ -80,16 +80,16 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
 > [!NOTE]
 > A portál felülete nem támogatja a [titkos kulcsra hivatkozó Key Vault](key-vault-parameter.md). Ehelyett a [PowerShell](deploy-powershell.md) vagy az [Azure CLI](deploy-cli.md) használatával helyezheti üzembe a SABLONT helyileg vagy külső URI-ból.
 
-1. Testreszabott sablon a portálon keresztüli üzembe helyezéséhez válassza az **erőforrás létrehozása** , majd a **sablon** keresése lehetőséget. majd válassza a **template Deployment** lehetőséget.
+1. Testreszabott sablon a portálon keresztüli üzembe helyezéséhez válassza az **erőforrás létrehozása**, majd a **sablon** keresése lehetőséget. majd válassza a **template Deployment** lehetőséget.
 
    ![Sablon központi telepítésének keresése](./media/deploy-portal/search-template.png)
 
 1. Kattintson a **Létrehozás** gombra.
 1. A sablonok létrehozásához több lehetőség is megjelenik:
 
-    - **Saját sablon készítése a szerkesztőben** : saját sablon létrehozása a portál sablon szerkesztőjében.
-    - **Gyakori sablonok** : válasszon a gyakori megoldások közül.
-    - **GitHub-gyorsindítási sablon betöltése** : válasszon a [Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/)közül.
+    - **Saját sablon készítése a szerkesztőben**: saját sablon létrehozása a portál sablon szerkesztőjében.
+    - **Gyakori sablonok**: válasszon a gyakori megoldások közül.
+    - **GitHub-gyorsindítási sablon betöltése**: válasszon a [Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/)közül.
 
    ![Beállítások megtekintése](./media/deploy-portal/see-options.png)
 
@@ -99,32 +99,32 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
 
     Erre két lehetősége van:
 
-    - **Sablon kiválasztása** : a sablon üzembe helyezése.
-    - **Sablon szerkesztése** : az üzembe helyezés előtt szerkessze a rövid útmutató sablont.
+    - **Sablon kiválasztása**: a sablon üzembe helyezése.
+    - **Sablon szerkesztése**: az üzembe helyezés előtt szerkessze a rövid útmutató sablont.
 
-1. Válassza a **Sablon szerkesztése** lehetőséget a portál sablon szerkesztőjének megismeréséhez. A sablon betöltődik a szerkesztőbe. Figyelje meg, hogy van két paraméter: **tárfióktípus** és **Location** .
+1. Válassza a **Sablon szerkesztése** lehetőséget a portál sablon szerkesztőjének megismeréséhez. A sablon betöltődik a szerkesztőbe. Figyelje meg, hogy két paraméter van: `storageAccountType` és `location` .
 
    ![Sablon létrehozása](./media/deploy-portal/show-json.png)
 
-1. Végezze el a sablon kisebb módosítását. Frissítse például a **storageAccountName** változót a következőre:
+1. Végezze el a sablon kisebb módosítását. Frissítse például a változót a következőre `storageAccountName` :
 
     ```json
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
     ```
 
-1. Válassza a **Mentés** lehetőséget. Ekkor megjelenik a portál sablonjának telepítési felülete. Figyelje meg a sablonban megadott két paramétert.
+1. Kattintson a **Mentés** gombra. Ekkor megjelenik a portál sablonjának telepítési felülete. Figyelje meg a sablonban megadott két paramétert.
 1. Adja meg vagy válassza ki a tulajdonságértékek értékét:
 
-    - **Előfizetés** : válasszon ki egy Azure-előfizetést.
-    - **Erőforráscsoport** : válassza az **új létrehozása** lehetőséget, és adjon meg egy nevet.
-    - **Hely** : válasszon ki egy Azure-helyet.
-    - **Storage-fiók típusa** : használja az alapértelmezett értéket.
-    - **Hely** : használja az alapértelmezett értéket.
-    - **Elfogadom a fenti feltételeket és kikötéseket** : (kiválasztás)
+    - **Előfizetés**: válasszon ki egy Azure-előfizetést.
+    - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, és adjon meg egy nevet.
+    - **Hely**: válasszon ki egy Azure-helyet.
+    - **Storage-fiók típusa**: használja az alapértelmezett értéket.
+    - **Hely**: használja az alapértelmezett értéket.
+    - **Elfogadom a fenti feltételeket és kikötéseket**: (kiválasztás)
 
 1. Válassza a **Vásárlás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A naplók megtekintéséhez lásd: [műveletek naplózása a Resource Managerrel](../management/view-activity-logs.md).
 - Az üzembe helyezési hibák elhárításáról lásd: [telepítési műveletek megtekintése](deployment-history.md).

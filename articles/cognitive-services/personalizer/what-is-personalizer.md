@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: személyre szabott, Azure személyre szabott, gépi tanulás
-ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33c1770c5c8722a55d8f1df4aff9b1637d903977
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094148"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028777"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
-Az Azure személyre szabott felhőalapú szolgáltatás lehetővé teszi, hogy az alkalmazások a legjobb tartalmi elemet válasszák a felhasználók megjelenítéséhez. A személyre szabott szolgáltatással meghatározhatja, hogy milyen terméket javasol a vásárlóknak, vagy hogy kiderítse a hirdetmény optimális pozícióját. Miután a tartalom megjelenik a felhasználó számára, a rendszer figyeli a valós idejű felhasználói viselkedést, és visszaküldi a jutalom pontszámát a személyre szabott szolgáltatásnak. Ezzel biztosíthatja a gépi tanulási modell folyamatos fejlesztését, és személyre szabhatja a legjobb tartalmi elemet a kapott környezetfüggő információk alapján.
+Az Azure személyre szabott felhőalapú szolgáltatás lehetővé teszi, hogy az alkalmazások a legjobb tartalmi elemet válasszák a felhasználók megjelenítéséhez. A személyre szabott szolgáltatással meghatározhatja, hogy milyen terméket javasol a vásárlóknak, vagy hogy kiderítse a hirdetmény optimális pozícióját. Miután a tartalom megjelenik a felhasználó számára, az alkalmazás figyeli a felhasználó válaszát, és visszaküldi a jutalom pontszámát a személyre szabott szolgáltatásnak. Ezzel biztosíthatja a gépi tanulási modell folyamatos fejlesztését, és személyre szabhatja a legjobb tartalmi elemet a kapott környezetfüggő információk alapján.
 
 > [!TIP]
 > A tartalom bármilyen típusú információ, például szöveg, kép, URL-cím, e-mailek, vagy bármi más, amelyet a felhasználók számára szeretne kijelölni és megjeleníteni.
@@ -65,7 +65,7 @@ A személyre szabott **jutalmazási** [API](https://westus2.dev.cognitive.micros
 
 A személyre szabott tartalom használata:
 
-* Korlátozott számú elemet tartalmaz (legfeljebb ~ 50), amelyből kiválaszthatja a következőt:. Ha nagyobb listával rendelkezik, az [ajánlási motor használatával](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) csökkentse a listát 50 elemre.
+* Korlátozott számú művelet vagy elem (legfeljebb ~ 50) közül választhat az egyes személyre szabási események közül. Ha nagyobb listával rendelkezik, az [ajánlási motor használatával](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) csökkentse a lista 50 elemét minden egyes alkalommal, amikor a személyre szabási szolgáltatásban meghívja a rangsort.
 * A rangsorolni kívánt tartalmat leíró információkkal rendelkezik: a _funkciók és a_ _környezet funkcióival_ kapcsolatos műveletek.
 * Legalább ~ 1k/nap tartalommal kapcsolatos eseményt biztosít a személyre szabáshoz. Ha a személyre szabott nem kapja meg a minimálisan szükséges forgalmat, a szolgáltatás továbbra is megtarthatja az egyetlen legmegfelelőbb tartalmi elemet.
 
@@ -90,7 +90,7 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
     1. Jelenítse meg a legjobb, egyetlen _tartalmi_ tételt, amely a visszaadott _jutalom műveleti azonosítója_ a felhasználónak.
     1. Az _üzleti logikát_ alkalmazva gyűjtheti össze a felhasználó működésével kapcsolatos információkat a **jutalom** pontszámának meghatározásához, például:
 
-    |Viselkedés|Számított jutalom pontszáma|
+    |Működés|Számított jutalom pontszáma|
     |--|--|
     |A felhasználó a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója) választotta|**1**|
     |A felhasználó által kiválasztott egyéb tartalom|**0**|
@@ -121,7 +121,7 @@ A személyre szabott szolgáltatás használatának megkezdése után próbálja
 * [Személyre szabott Python SDK](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API-k](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > A [megszemélyesítő működése](how-personalizer-works.md) 

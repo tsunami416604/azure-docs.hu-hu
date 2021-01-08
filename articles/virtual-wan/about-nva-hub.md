@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313773"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028080"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Tudnivalók a hálózati virtuális berendezésről egy Azure-beli virtuális WAN-központban (előzetes verzió)
 
 Az Azure Virtual WAN a hálózati partnerekkel együttműködve automatizálja az automatizálást, amely megkönnyíti az ügyfelekhez kapcsolódó berendezések (CPE) összekapcsolását a virtuális központ Azure VPN Gateway-átjárójában. Az Azure a hálózati partnerek kiválasztása révén lehetővé teszi, hogy az ügyfelek közvetlenül a virtuális hubhoz helyezzen üzembe egy külső hálózati virtuális berendezést (NVA). Ez lehetővé teszi, hogy azok az ügyfelek, akik a fiókirodát a virtuális központ ugyanazon NVA szeretnék csatlakoztatni, így képesek kihasználni a teljes körű SD-WAN-képességeket.
 
-A Barracuda Networks az első partner egy olyan NVA-ajánlat biztosítására, amely közvetlenül a virtuális WAN-hubhoz telepíthető a [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) -termékkel. Az Azure több partnerrel dolgozik, ezért várhatóan további ajánlatokat is láthat.
+A Barracuda Networks és a Cisco Systems az első partnerek, akik közvetlenül a virtuális WAN-központba telepíthetik a NVA.  Tekintse meg a [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) és [a Cisco Cloud OnRamp for multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) című témakört a megfelelő termékdokumentációhoz. Az Azure több partnerrel dolgozik, ezért várhatóan további ajánlatokat is láthat.
 
 > [!NOTE]
 > Csak a virtuális WAN-hubhoz üzembe helyezhető NVA-ajánlatok telepíthetők a virtuális WAN-központba. Nem helyezhetők üzembe egy tetszőleges virtuális hálózatban az Azure-ban.
@@ -50,7 +50,7 @@ A NVA-partnerek különböző erőforrásokat hozhatnak létre a berendezésük 
 * **Felhasználói erőforráscsoport** – a felügyelt alkalmazáshoz tartozó alkalmazás helyőrzőjét fogja tartalmazni. A partnerek ezt felhasználhatják az itt választott ügyfél-tulajdonságok elérhetővé tételéhez.
 * **Felügyelt erőforráscsoport** – a felhasználók nem konfigurálhatják és nem változtathatják meg közvetlenül az erőforráscsoport erőforrásait, mivel ezt a felügyelt alkalmazás közzétevője vezérli. Ez az erőforráscsoport a **NetworkVirtualAppliances** erőforrást fogja tartalmazni.
 
-:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="Folyamat áttekintése":::
+:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="Felügyelt alkalmazási erőforráscsoportok":::
 
 ### <a name="nva-infrastructure-units"></a><a name="units"></a>NVA infrastruktúra-egységek
 
@@ -60,7 +60,7 @@ Amikor létrehoz egy NVA a virtuális WAN-központban, ki kell választania, hog
 * Az Azure a 1-80 NVA infrastruktúra-egységeket támogatja egy adott NVA virtuális központ üzembe helyezéséhez.
 * Az egyes partnerek különböző NVA infrastruktúra-egységeket használhatnak, amelyek az összes támogatott NVA-infrastruktúra egységének egy részhalmazát alkotják.
 
-A VPN-méretezési egységekhez hasonlóan, ha *1 NVA infrastrukturális egység = 500 Mbps*értéket ad meg, az azt jelenti, hogy a redundancia két példánya jön létre, amelyek mindegyike 500 Mbps maximális átviteli sebességgel rendelkezik. Ha például öt ág van, amelyek mindegyike 10 Mbps-t használ a fiókirodában, akkor a fő végponton 50 Mbps összesített értékre van szükség. A NVA összesített kapacitásának megtervezését a hub-ágak számának támogatásához szükséges kapacitás kiértékelése után kell elvégezni.
+A VPN-méretezési egységekhez hasonlóan, ha *1 NVA infrastrukturális egység = 500 Mbps* értéket ad meg, az azt jelenti, hogy a redundancia két példánya jön létre, amelyek mindegyike 500 Mbps maximális átviteli sebességgel rendelkezik. Ha például öt ág van, amelyek mindegyike 10 Mbps-t használ a fiókirodában, akkor a fő végponton 50 Mbps összesített értékre van szükség. A NVA összesített kapacitásának megtervezését a hub-ágak számának támogatásához szükséges kapacitás kiértékelése után kell elvégezni.
 
 ## <a name="network-virtual-appliance-configuration-process"></a><a name="configuration"></a>Hálózati virtuális berendezés konfigurációs folyamata
 
@@ -93,11 +93,11 @@ Sajnos jelenleg nem áll rendelkezésre az új partnereinkkel kapcsolatos kapaci
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Telepíthetek bármilyen NVA az Azure Marketplace-ről a virtuális WAN-hubhoz?
 
-Nem. Jelenleg csak a [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) telepíthető a virtuális WAN-hubhoz.
+Jelenleg csak a [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) és a [Cisco Cloud vWAN alkalmazás](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) érhető el a virtuális WAN-központban való üzembe helyezéshez.
 
 ### <a name="what-is-the-cost-of-the-nva"></a>Mi a NVA díja?
 
-A Barracuda CloudGen WAN-NVA licencet kell vásárolnia. A licenceléssel kapcsolatos további információkért lásd: [Barracuda 's CLOUDGEN WAN oldal](https://www.barracuda.com/products/cloudgenwan). Emellett a Microsofttól a felhasznált NVA infrastruktúra-egységekre, valamint az Ön által használt egyéb erőforrásokra is díjat számítunk fel. További információkért tekintse meg a [díjszabási fogalmakat](pricing-concepts.md).
+A NVA-licencet a NVA gyártótól kell megvásárolnia.  A Barracuda-licenccel rendelkező Barracuda CloudGen WAN-NVA lásd: [Barracuda 's CLOUDGEN WAN oldal](https://www.barracuda.com/products/cloudgenwan). A Cisco jelenleg csak az BYOL (saját licenc használata) licencelési modellt kínálja, amelyet közvetlenül a Cisco-től kell beszereznie. Emellett a Microsofttól a felhasznált NVA infrastruktúra-egységekre, valamint az Ön által használt egyéb erőforrásokra is díjat számítunk fel. További információkért tekintse meg a [díjszabási fogalmakat](pricing-concepts.md).
 
 ### <a name="can-i-deploy-an-nva-to-a-basic-hub"></a>Telepíthetek NVA egy alapszintű hubhoz?
 
@@ -109,12 +109,12 @@ Igen. A Barracuda CloudGen WAN üzembe helyezhető Azure Firewallokkal rendelkez
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>Csatlakoztatok bármilyen CPE-eszközt a fiókirodában a Barracuda CloudGen WAN-NVA a központban?
 
-Nem. A Barracuda CloudGen WAN csak a Barracuda CPE-eszközökkel kompatibilis. További információ a CloudGen WAN-követelményekről: [Barracuda 's CLOUDGEN WAN oldal](https://www.barracuda.com/products/cloudgenwan).
+Nem. A Barracuda CloudGen WAN csak a Barracuda CPE-eszközökkel kompatibilis. További információ a CloudGen WAN-követelményekről: [Barracuda 's CLOUDGEN WAN oldal](https://www.barracuda.com/products/cloudgenwan). A Cisco esetében több SD-WAN CPE-eszköz található, amely kompatibilis. A kompatibilis CPEs a [Cisco Cloud OnRamp for multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) documenation találhat.
 
 ### <a name="what-routing-scenarios-are-supported-with-nva-in-the-hub"></a>Milyen útválasztási forgatókönyvek támogatottak a hub NVA?
 
 A virtuális WAN által támogatott összes útválasztási forgatókönyv támogatott a hub NVA.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a virtuális WAN-ról, tekintse meg a [virtuális WAN áttekintését](virtual-wan-about.md) ismertető cikket.

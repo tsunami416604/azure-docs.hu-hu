@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti az emberi interakciókat és időtúl
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba3cd0fd5d8727c4ffa4d1b42d7cd9250f21032
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80335747"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028303"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Emberi interakció Durable Functions – telefonos ellenőrzési minta
 
@@ -21,7 +21,7 @@ Ez a példa egy SMS-alapú telefonos ellenőrzési rendszert valósít meg. Az i
 
 ## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
-A telefonos ellenőrzés segítségével ellenőrizheti, hogy az alkalmazás végfelhasználói nem levélszemétek-e, és hogy kik azok, akik azt mondják. A többtényezős hitelesítés gyakori használati eset a felhasználói fiókok támadók általi védelméhez. A saját telefonos ellenőrzés megvalósításának kihívása az, hogy a rendszer **állapot-nyilvántartó interakciót** igényel egy emberi lényrel. A végfelhasználók általában bizonyos kódokat (például egy 4 számjegyű számot) adnak meg, és **ésszerű**időn belül válaszolni kell rájuk.
+A telefonos ellenőrzés segítségével ellenőrizheti, hogy az alkalmazás végfelhasználói nem levélszemétek-e, és hogy kik azok, akik azt mondják. A többtényezős hitelesítés gyakori használati eset a felhasználói fiókok támadók általi védelméhez. A saját telefonos ellenőrzés megvalósításának kihívása az, hogy a rendszer **állapot-nyilvántartó interakciót** igényel egy emberi lényrel. A végfelhasználók általában bizonyos kódokat (például egy 4 számjegyű számot) adnak meg, és **ésszerű** időn belül válaszolni kell rájuk.
 
 A szokásos Azure Functions állapot nélküliek (mint a más platformokon futó más Felhőbeli végpontok), ezért az ilyen típusú interakciók az adatbázisban vagy valamilyen más állandó tárolóban kifejezetten az állapot felügyeletét vonják maguk után. Emellett az interakciót több, egymással koordinálható függvénybe kell bontani. Például szükség van legalább egy függvényre a kód kiválasztásához, a megtartáshoz és a felhasználó telefonjára való elküldéséhez. Emellett szükség van legalább egy másik függvényre, hogy választ kapjon a felhasználótól, és valahogy vissza kell képeznie az eredeti függvény hívására, hogy el lehessen végezni a kód érvényesítését. Az időkorlát szintén fontos szempont a biztonság biztosításához. Meglehetősen összetett, gyorsan elvégezhető.
 
@@ -45,7 +45,7 @@ Ez a cikk végigvezeti a minta alkalmazás következő funkcióiról:
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator függvény teljesen determinisztikus. Ez azért determinisztikus, mert a `CurrentUtcDateTime` tulajdonság az időzítő lejárati idejének kiszámítására szolgál, és ugyanezt az értéket adja vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez a viselkedés fontos annak biztosítása érdekében, hogy ugyanaz az `winner` eredmény legyen minden ismétlődő hívástól `Task.WhenAny` .
+> Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator nem sérti a determinisztikus-előkészítési [megkötést](durable-functions-code-constraints.md). Ez azért determinisztikus, mert a `CurrentUtcDateTime` tulajdonság az időzítő lejárati idejének kiszámítására szolgál, és ugyanezt az értéket adja vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez a viselkedés fontos annak biztosítása érdekében, hogy ugyanaz az `winner` eredmény legyen minden ismétlődő hívástól `Task.WhenAny` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -58,7 +58,20 @@ Itt látható a függvényt megvalósító kód:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator függvény teljesen determinisztikus. Ez azért determinisztikus, mert a `currentUtcDateTime` tulajdonság az időzítő lejárati idejének kiszámítására szolgál, és ugyanezt az értéket adja vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez a viselkedés fontos annak biztosítása érdekében, hogy ugyanaz az `winner` eredmény legyen minden ismétlődő hívástól `context.df.Task.any` .
+> Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator nem sérti a determinisztikus-előkészítési [megkötést](durable-functions-code-constraints.md). Ez azért determinisztikus, mert a `currentUtcDateTime` tulajdonság az időzítő lejárati idejének kiszámítására szolgál, és ugyanezt az értéket adja vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez a viselkedés fontos annak biztosítása érdekében, hogy ugyanaz az `winner` eredmény legyen minden ismétlődő hívástól `context.df.Task.any` .
+
+# <a name="python"></a>[Python](#tab/python)
+
+A **E4_SmsPhoneVerification** függvény a standard *function.jst* használja a Orchestrator függvényekhez.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/function.json)]
+
+Itt látható a függvényt megvalósító kód:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/\_\_init\_\_.py)]
+
+> [!NOTE]
+> Előfordulhat, hogy először nem nyilvánvaló, de ez a Orchestrator nem sérti a determinisztikus-előkészítési [megkötést](durable-functions-code-constraints.md). Ez azért determinisztikus, mert a `currentUtcDateTime` tulajdonság az időzítő lejárati idejének kiszámítására szolgál, és ugyanezt az értéket adja vissza a Orchestrator-kód ezen pontján lévő összes visszajátszás esetében. Ez a viselkedés fontos annak biztosítása érdekében, hogy ugyanaz az `winner` eredmény legyen minden ismétlődő hívástól `context.df.Task.any` .
 
 ---
 
@@ -94,6 +107,16 @@ A *function.jsa* következő módon van definiálva:
 Itt a kód generálja a négyjegyű hibakódot, és elküldi az SMS-üzenetet:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+A *function.jsa* következő módon van definiálva:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/function.json)]
+
+Itt a kód generálja a négyjegyű hibakódot, és elküldi az SMS-üzenetet:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/\_\_init\_\_.py)]
 
 ---
 

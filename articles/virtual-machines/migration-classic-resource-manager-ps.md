@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07b511182950095c356887d72ffde75ac098674d
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 82eaa597796bf3772faa90a9dbc4151da935c46a
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904754"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027723"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-erőforrások migrálása a Klasszikusból a Azure Resource Managerba a PowerShell használatával
 
@@ -265,7 +265,7 @@ Ha az előkészített konfiguráció jól néz ki, a következő parancs haszná
 Miután befejezte a virtuális gépek áttelepítését, hajtsa végre az alábbi előfeltételek ellenőrzését a Storage-fiókok áttelepítése előtt.
 
 > [!NOTE]
-> Ha a Storage-fiók nem rendelkezik társított lemezekkel vagy virtuálisgép-adatmennyiséggel, akkor közvetlenül a "Storage-fiókok ellenőrzése és az áttelepítés megkezdése" szakaszban hagyhatja ki.
+> Ha a Storage-fiók nem rendelkezik társított lemezekkel vagy virtuálisgép-adatmennyiséggel, akkor közvetlenül a "Storage-fiókok ellenőrzése és az áttelepítés megkezdése" szakaszban hagyhatja ki. Azt is vegye figyelembe, hogy a klasszikus lemezek, a virtuálisgép-lemezképek vagy az operációsrendszer-lemezképek törlése nem távolítja el a forrás VHD-fájlokat a Storage-fiókban. Azonban megszakítja az adott VHD-fájlok bérletét, hogy az áttelepítést követően újra felhasználhatók legyenek az ARM-lemezek vagy-lemezképek létrehozásához.
 
 * Előfeltételek ellenőrzése ha a virtuális gépeket áttelepítette, vagy a Storage-fiók lemezes erőforrásokkal rendelkezik:
     * Telepítse át azokat a virtuális gépeket, amelyek lemezeit a Storage-fiók tárolja.
@@ -337,7 +337,7 @@ Miután befejezte a virtuális gépek áttelepítését, hajtsa végre az alább
         Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A IaaS-erőforrások platform által támogatott áttelepítésének áttekintése klasszikusról Azure Resource Manager](migration-classic-resource-manager-overview.md)
 * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](migration-classic-resource-manager-deep-dive.md)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md)

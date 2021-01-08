@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 11c20f3f79a4fceafaca9b1a948f1b4a425dad87
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572711"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028760"
 ---
 # <a name="voice-and-video-concepts"></a>A hang- és videóhívással kapcsolatos alapfogalmak
 
@@ -49,8 +49,8 @@ Támogatjuk a H. 264 (MPEG-4)
 A natív (iOS, Android) SDK-k teljes HD 1080p verziójának támogatása. A web (JS) SDK esetében a standard HD 720p szabványt támogatjuk. A minőség a rendelkezésre álló sávszélességtől függ.  
 
 ### <a name="rooms-concept"></a>A szobák fogalma
-A szobák API-k és SDK-k összessége, amelyek segítségével könnyedén hozzáadhat hang-, videó-, képernyőfelvétel-, PSTN-és SMS-interakciókat webhelyéhez vagy natív alkalmazásához.
-Az előzetes verzió ideje alatt a csoport azonosítója segítségével csatlakozhat ugyanahhoz a beszélgetéshez. Tetszőleges számú csoportazonosító hozható létre, és a "szobák" között elkülönítheti a felhasználókat. A továbblépés további vezérlőket mutat be a "szobák" körül 
+A szobák olyan API-k és SDK-k összessége, amelyek segítségével könnyedén hozzáadhat hang-, videó-, képernyőfelvétel-, PSTN-és SMS-interakciókat webhelyéhez vagy natív alkalmazásához.
+Az előzetes verzió ideje alatt a csoport azonosítója segítségével csatlakozhat ugyanahhoz a beszélgetéshez. Tetszőleges számú csoport-azonosítót hozhat létre, és elkülönítheti a felhasználókat a "szobák" használatával. A továbblépés további vezérlőket mutat be a "szobák" körül 
 
 ## <a name="next-steps"></a>További lépések
 

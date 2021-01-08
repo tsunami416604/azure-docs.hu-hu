@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése az Azure CLI-vel és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Manager és az Azure CLI használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7b1639f31b696f300177d05107a98effc3f3ae23
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2caea70a51a737bfa433a089c03b43f252b5d6e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676186"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028148"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel
 
@@ -18,7 +18,7 @@ Az üzembe helyezési parancsok az Azure CLI 2.2.0-as verziójában változtak. 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-Ha nincs telepítve az Azure CLI, használhatja a Cloud Shell. További információ: [ARM-sablonok üzembe helyezése Cloud Shellról](deploy-cloud-shell.md).
+Ha nincs telepítve az Azure CLI, használhatja a Azure Cloud Shell. További információ: [ARM-sablonok üzembe helyezése Azure Cloud Shellról](deploy-cloud-shell.md).
 
 ## <a name="deployment-scope"></a>Központi telepítés hatóköre
 
@@ -169,7 +169,7 @@ A paraméterek értékének átadásához használhat beágyazott paramétereket
 
 ### <a name="inline-parameters"></a>Beágyazott paraméterek
 
-A beágyazott paraméterek átadásához adja meg az értékeket a következőben: `parameters` . Ha például egy karakterláncot és tömböt szeretne átadni egy sablonnak egy bash-rendszerhéjra, használja a következőt:
+A beágyazott paraméterek átadásához adja meg az értékeket a következőben: `parameters` . Ha például egy karakterláncot és tömböt szeretne átadni egy bash-rendszerhéjban található sablonra, használja a következőt:
 
 ```azurecli-interactive
 az deployment group create \
@@ -191,7 +191,7 @@ az deployment group create \
 
 Egy paraméter értékének beolvasása a fájlból hasznos lehet, ha konfigurációs értékeket kell megadnia. Megadhat például [egy Linux rendszerű virtuális gép számára a Cloud-init értékeket](../../virtual-machines/linux/using-cloud-init.md).
 
-A arrayContent.jsformátuma:
+A _arrayContent.js_ formátuma:
 
 ```json
 [
@@ -228,7 +228,7 @@ Ahelyett, hogy a paramétereket beágyazott értékekként adná át a szkriptbe
 
 A paraméterfájlról a [Resource Manager-paraméterfájl létrehozása](parameter-files.md) című cikk nyújt további információkat.
 
-Helyi paraméterérték `@` átadásához a paranccsal adjon meg egy storage.parameters.jsnevű helyi fájlt.
+Helyi paraméterérték `@` átadásához a paranccsal adjon meg egy _storage.parameters.js_ nevű helyi fájlt.
 
 ```azurecli-interactive
 az deployment group create \
@@ -240,7 +240,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Kiterjesztett JSON-formátum kezelése
 
-Ha többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablont szeretne üzembe helyezni az Azure CLI-vel, a 2.3.0 vagy régebbi verziójával, akkor a kapcsolót kell használnia `--handle-extended-json-format` .  Például:
+Ha többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablont szeretne üzembe helyezni az Azure CLI-vel, a 2.3.0 vagy régebbi verziójával, akkor a kapcsolót kell használnia `--handle-extended-json-format` .  Példa:
 
 ```json
 {
@@ -260,7 +260,7 @@ Ha többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablont szere
   ],
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha hibát tapasztal a sikeres üzembe helyezéshez, olvassa el a [hiba visszaállítása a sikeres központi telepítéshez](rollback-on-error.md)című témakört.
 - Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).

@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 3348654a83b6d0930d10e1f58e07455623b5861d
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 4c6d8fabbd236a2653fff8168ad73c0b45f09d64
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981085"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027842"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Az Application Insights JavaScript SDK beépülő moduljának reagálása
 
@@ -69,12 +69,15 @@ class MyComponent extends React.Component {
     ...
 }
 
-export default withAITracking(reactPlugin, appInsights, MyComponent);
+// withAITracking takes 4 parameters ( reactPlugin, Component, ComponentName, className) 
+// the first two are required and the other two are optional.
+
+export default withAITracking(reactPlugin, MyComponent);
 ```
 
 ## <a name="configuration"></a>Konfiguráció
 
-| Name    | Alapértelmezett | Leírás                                                                                                    |
+| Név    | Alapértelmezett | Leírás                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | előzmények | null    | Az útválasztó előzményeinek megválaszolása. További információ: [reakciós útválasztó csomag dokumentációja](https://reactrouter.com/web/api/history). Ha meg szeretné tudni, hogyan érheti el az előzmények objektumot az összetevőkön kívül, tekintse meg a [reakciós útválasztó – gyakori kérdések](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 
@@ -220,7 +223,7 @@ A `AppInsightsErrorBoundary` két kelléket kell átadnia, az `ReactPlugin` alka
 
 Tekintse meg a [Application Insights reagáló bemutatót](https://github.com/Azure-Samples/application-insights-react-demo).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A JavaScript SDK-val kapcsolatos további tudnivalókért tekintse meg a [Application Insights JavaScript SDK dokumentációját](javascript.md).
 - A Kusto lekérdezési nyelvének megismeréséhez és a Log Analytics adatainak lekérdezéséhez tekintse meg a [naplózási lekérdezés áttekintését](../../azure-monitor/log-query/log-query-overview.md).

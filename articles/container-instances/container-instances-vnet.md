@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan helyezhet üzembe egy tároló csoportot egy ú
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746902"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028879"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tárolópéldányok üzembe helyezése egy Azure virtuális hálózaton
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan helyezhet üzembe tároló csoportokat az az [Contai
 Hálózati forgatókönyvek és korlátozások esetén lásd: [virtuális hálózati forgatókönyvek és erőforrások Azure Container Instanceshoz](container-instances-virtual-network-concepts.md).
 
 > [!IMPORTANT]
-> A tároló csoportok üzembe helyezése virtuális hálózatra általánosan elérhető Linux-tárolók esetén, ahol a Azure Container Instances elérhető. Részletekért lásd: [régiók és erőforrás rendelkezésre állása](container-instances-virtual-network-concepts.md#where-to-deploy). 
+> A tároló csoportok üzembe helyezése virtuális hálózatra általánosan elérhető Linux-tárolók esetén, ahol a Azure Container Instances elérhető. Részletekért lásd: [régiók és erőforrás rendelkezésre állása][container-regions]. 
 
 A cikkben szereplő példák a bash-rendszerhéjra vannak formázva. Ha egy másik rendszerhéjt, például a PowerShellt vagy a parancssort részesíti előnyben, módosítsa a sor folytatási karaktereit ennek megfelelően.
 
@@ -69,7 +69,7 @@ Tároló csoport üzembe helyezése meglévő virtuális hálózaton:
 
 A következő példa egy második tároló-csoportot telepít ugyanarra az alhálózatra, amelyet korábban hozott létre, és ellenőrzi a két tároló példány közötti kommunikációt.
 
-Először szerezze be az elsőként telepített Container-csoport IP-címét, a *appcontainer* :
+Először szerezze be az elsőként telepített Container-csoport IP-címét, a *appcontainer*:
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -77,7 +77,7 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-A kimenet a saját alhálózat tároló csoportjának IP-címét jeleníti meg. Például:
+A kimenet a saját alhálózat tároló csoportjának IP-címét jeleníti meg. Példa:
 
 ```console
 10.0.0.4
@@ -185,7 +185,7 @@ Name              ResourceGroup    Status    Image                              
 appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ### <a name="delete-container-instances"></a>Tároló példányainak törlése
 
@@ -204,7 +204,7 @@ Ennek a funkciónak jelenleg több további parancsra van szüksége a korábban
 A parancsfájl végrehajtása előtt állítsa a `RES_GROUP` változót a törölni kívánt virtuális hálózatot és alhálózatot tartalmazó erőforráscsoport nevére. Frissítse a virtuális hálózat nevét, ha nem a `aci-vnet` korábban javasolt nevet használta. A parancsfájl a bash-rendszerhéjhoz van formázva. Ha inkább egy másik rendszerhéjt, például a PowerShellt vagy a parancssort részesíti előnyben, akkor ennek megfelelően módosítania kell a változó hozzárendelés és a hozzáférési jogosultságokat.
 
 > [!WARNING]
-> Ez a szkript törli az erőforrásokat! Törli a virtuális hálózatot és a benne található összes alhálózatot. Győződjön meg arról, hogy a parancsfájl futtatása előtt már nincs szüksége a virtuális hálózatban lévő *összes* erőforrásra, beleértve a benne található alhálózatokat is. A törlés után **ezek az erőforrások nem állíthatók helyre** .
+> Ez a szkript törli az erőforrásokat! Törli a virtuális hálózatot és a benne található összes alhálózatot. Győződjön meg arról, hogy a parancsfájl futtatása előtt már nincs szüksége a virtuális hálózatban lévő *összes* erőforrásra, beleértve a benne található alhálózatokat is. A törlés után **ezek az erőforrások nem állíthatók helyre**.
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
@@ -222,7 +222,7 @@ az network profile delete --id $NETWORK_PROFILE_ID -y
 az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot szeretne üzembe helyezni Resource Manager-sablonnal, tekintse meg [Az Azure Container Group létrehozása a VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 )használatával című témakört.
@@ -238,3 +238,4 @@ Ha új virtuális hálózatot, alhálózatot, hálózati profilt és tároló cs
 [az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[container-regions]: container-instances-region-availability.md

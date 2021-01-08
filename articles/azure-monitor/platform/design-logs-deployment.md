@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 034f2b3884d732487a9f7aff4d14740691983885
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 269ecdf8998707ac375339edb4e11bb24380e27d
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536778"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027706"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Az Azure Monitor-naplók üzembe helyezésének megtervezése
 
@@ -99,7 +99,7 @@ A Azure Monitor automatikusan meghatározza a megfelelő módot attól függően
 
 A következő táblázat összefoglalja a hozzáférési módokat:
 
-| Probléma | Munkaterület – környezet | Erőforrás-környezet |
+| Probléma | Munkaterület-környezet | Erőforrás-környezet |
 |:---|:---|:---|
 | Kik az egyes modellek? | Központi felügyelet. Azok a rendszergazdák, akiknek olyan adatgyűjtést és felhasználókat kell konfigurálniuk, akiknek számos erőforráshoz kell hozzáféréssel rendelkezniük. Jelenleg olyan felhasználók számára is szükséges, akiknek az Azure-on kívüli erőforrásokhoz is hozzá kell férniük. | Alkalmazás-csapatok. A figyelt Azure-erőforrások rendszergazdái. |
 | Mire van szükség a felhasználók számára a naplók megtekintéséhez? | Engedélyeket a munkaterületre. Lásd: **munkaterület-engedélyek** a [hozzáférés kezelése munkaterület-engedélyek használatával](manage-access.md#manage-access-using-workspace-permissions). | Olvasási hozzáférés az erőforráshoz. Lásd: **erőforrás-engedélyek** a [hozzáférés kezelése Azure-engedélyekkel](manage-access.md#manage-access-using-azure-permissions). Az engedélyek örökölhető (például a tartalmazó erőforráscsoporthoz) vagy közvetlenül az erőforráshoz rendelve. A rendszer automatikusan hozzárendeli az erőforrás naplóihoz tartozó engedélyeket. |
@@ -161,6 +161,6 @@ A modellre való Migrálás megtervezése során vegye figyelembe a következők
 * Távolítsa el az alkalmazás-Teams engedélyt a munkaterület olvasásához és lekérdezéséhez.
 * Engedélyezheti és konfigurálhatja azokat a figyelési megoldásokat, például a tárolók és/vagy Azure Monitor for VMs Azure Monitorét, az Automation-fiók (ok) t, valamint az eredeti munkaterületen üzembe helyezett felügyeleti megoldásokat, például a Update Management, a virtuális gépek indítását és leállítását stb..
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az útmutatóban ajánlott biztonsági engedélyek és vezérlőelemek megvalósításához tekintse át a [naplók hozzáférésének kezelése](manage-access.md)című témakört.

@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: db48183e918fcb1096734f912f02c091ddac1d74
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8ccf2665f19b66959ce259088d0b322aec7b59f4
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511875"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028709"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -43,7 +43,7 @@ Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 
 Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lévő szükséges erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
 
-1. Lépjen [Azure Cloud Shell](https://shell.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com) , és válassza a Cloud Shell ikont.
 1. Ha első alkalommal használja a Cloud Shell, a rendszer kérni fogja, hogy válasszon egy előfizetést egy Storage-fiók és egy Microsoft Azure-fájlmegosztás létrehozásához. Válassza a **tároló létrehozása** lehetőséget a Cloud Shell munkamenet-információhoz tartozó Storage-fiók létrehozásához. Ez a Storage-fiók elkülönül a parancsfájl által a Azure Media Services-fiókkal való használatra létrehozott fióktól.
 1. A Cloud Shell ablak bal oldalán lévő legördülő menüben válassza a **bash** lehetőséget a környezetében.
 

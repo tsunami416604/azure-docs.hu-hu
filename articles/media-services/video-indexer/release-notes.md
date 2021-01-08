@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/30/2020
+ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 3552d55d995608dd0d471c84cd5e9f9988ebe2c0
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916660"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028641"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -44,12 +44,15 @@ Video Indexer támogatja az animált tartalomban lévő karakterek észlelését
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>Tervezett Video Indexer webhely authenticatication változásai
 
-2021. január 1-től már nem fog tudni regisztrálni és bejelentkezni a [video Indexer](https://www.videoindexer.ai/) webhelyre (próbaverziós ajánlat) a Facebook vagy a LinkedIn használatával.
+A 2021. március 1-től kezdődően már nem fog tudni regisztrálni és bejelentkezni a [video Indexer](https://www.videoindexer.ai/) webhelyre a Facebook vagy a LinkedIn használatával.
 
 A következő szolgáltatók egyikének használatával regisztrálhat és bejelentkezhet: Azure AD, Microsoft és Google.
 
 > [!NOTE]
-> Azt javasoljuk, hogy 2021. január 1. előtt exportálja a tartalmat, mert a LinkedIn-hez és a Facebookhoz csatlakozó fiókok törlődnek, és a tartalom többé nem lesz elérhető.
+> A LinkedIn-hez és a Facebookhoz csatlakozó Video Indexer fiókok március 1-től 2021-ig nem lesznek elérhetők. 
+> 
+> Meg kell [hívnia](invite-users.md) egy olyan Azure ad-, Microsoft-vagy Google-e-mailt, amely a video Indexer fiókhoz tartozik, így továbbra is elérhető lesz.<br/>
+> Azt is megteheti, hogy létrehoz egy fizetős fiókot, és áttelepíti az adatátvitelt.
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -320,6 +323,6 @@ Az [Update video ÁTIRAT API](https://api-portal.videoindexer.ai/docs/services/O
 
 A már támogatott lezárt feliratozási formátum (SRT, VTT és TTML) mellett a Video Indexer mostantól támogatja az átirat TXT-és CSV-formátumokban való letöltését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Áttekintés](video-indexer-overview.md)

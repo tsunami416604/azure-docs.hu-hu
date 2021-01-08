@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 721af069a76497576b92c4203a93656d19c283aa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217728"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028794"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer gyakori kérdések
 
@@ -183,7 +183,7 @@ Jelenleg vannak átfedések a Video Indexer API és az Azure Media Service V3 AP
 
 A Video Indexer API egy engedélyezési API-t és egy operatív API-t tartalmaz. Az engedélyezési API olyan hívásokat tartalmaz, amelyek hozzáférési tokent biztosítanak. A Műveleti API-ba irányuló összes hívást társítani kell egy hozzáférési jogkivonathoz, amely megfelel a hívás engedélyezési hatókörének.
 
-Hozzáférési jogkivonatok szükségesek a Video Indexer API-k biztonsági célokra való használatához. Ezzel biztosíthatja, hogy minden hívás érkezik Önhöz, vagy azokhoz, akik hozzáférési jogosultságokkal rendelkeznek a fiókjához. 
+Hozzáférési jogkivonatok szükségesek a Video Indexer API-k biztonsági célokra való használatához. Ezzel biztosíthatja, hogy minden hívás érkezik Önhöz, vagy azokhoz, akik hozzáférési jogosultságokkal rendelkeznek a fiókjához. 
 
 ### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Mi a különbség a fiók hozzáférési jogkivonata, a felhasználói hozzáférési jogkivonat és a videó-hozzáférési jogkivonat között?
 
@@ -197,7 +197,7 @@ A hozzáférési tokenek óránként lejárnak, ezért minden órában új hozz�
 
 ### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Milyen bejelentkezési beállításokkal Video Indexer a fejlesztői portál?
 
-Az Azure AD, a Microsoft-fiók, a Google-fiók vagy a Facebook-fiók használatával jelentkezhet be. 
+A [bejelentkezési adatokról](release-notes.md#october-2020)a kibocsátási megjegyzésekben talál további információt.
 
 Miután regisztrálta az e-mail-fiókját egy identitás-szolgáltató használatával, nem használhatja ezt az e-mail-fiókot más identitás-szolgáltatóval.
 
@@ -215,7 +215,7 @@ Ha indexelni kíván egy videót, a felhasználó megadhatja az indexelést a vi
 
 Igen, Video Indexer ingyenes próbaverziót kínál, amely teljes körű szolgáltatást és API-funkciókat biztosít. Az API-felhasználók számára a 600 perces számú, a webalapú felhasználói felülethez és a 2 400 percben található videó. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Áttekintés](video-indexer-overview.md)
 * [Stack Overflow](https://stackoverflow.com/search?q=video-indexer)

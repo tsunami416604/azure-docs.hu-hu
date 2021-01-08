@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan implementálhat egy állapotfigyelőt a Azure F
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77562122"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028420"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Figyelő forgatókönyv Durable Functions-Weather Watcher minta
 
@@ -72,6 +72,9 @@ Itt látható a függvényt megvalósító kód:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+A Python figyelési mintájának egy másik oktatóanyaga van, amelyet [itt](durable-functions-monitor-python.md)talál.
+
 ---
 
 Ez a Orchestrator-függvény a következő műveleteket hajtja végre:
@@ -83,8 +86,7 @@ Ez a Orchestrator-függvény a következő műveleteket hajtja végre:
 5. Tartós időzítőt hoz létre, amely a következő lekérdezési időszakban folytatja a koordinálást. A minta egy nehezen kódolt értéket használ a rövidség kedvéért.
 6. A továbbra is fut, amíg az aktuális UTC-idő át nem adja a figyelő lejárati idejét, vagy SMS-riasztást küld.
 
-Egyszerre több Orchestrator példány is futtatható a Orchestrator függvény többszöri meghívásával. Megadható a figyelni kívánt hely és a telefonszám, amely SMS-riasztást küld.
-
+Egyszerre több Orchestrator példány is futtatható a Orchestrator függvény többszöri meghívásával. Megadható a figyelni kívánt hely és a telefonszám, amely SMS-riasztást küld. Végezetül vegye figyelembe, hogy a Orchestrator függvény *nem* fut az időzítőre való várakozás közben, ezért nem kell fizetnie.
 ### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear Activity függvény
 
 Más mintákhoz hasonlóan a segítő tevékenység funkciói az trigger-kötést használó reguláris függvények `activityTrigger` . A **E3_GetIsClear** függvény az időjárási földalatti API használatával beolvassa az aktuális időjárási feltételeket, és meghatározza, hogy az ég tiszta-e.
@@ -102,6 +104,9 @@ A *function.jsa* következő módon van definiálva:
 Itt pedig a megvalósítás.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+A Python figyelési mintájának egy másik oktatóanyaga van, amelyet [itt](durable-functions-monitor-python.md)talál.
 
 ---
 
@@ -125,6 +130,9 @@ A *function.js* egyszerű:
 Itt látható az SMS-üzenetet küldő kód:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+A Python figyelési mintájának egy másik oktatóanyaga van, amelyet [itt](durable-functions-monitor-python.md)talál.
 
 ---
 
@@ -169,7 +177,7 @@ A munkafolyamatok tevékenysége a Azure Functions portálon megjelenő függvé
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-A rendszer az időtúllépés elérésekor vagy az égbolt észlelésének törlésével [leáll](durable-functions-instance-management.md) . Használhatja a `TerminateAsync` (.net) vagy a `terminate` (JavaScript) függvényt egy másik függvényen belül, vagy meghívhatja a fenti 202-válaszban hivatkozott **terminatePostUri** http post webhookot, `{text}` a lemondási ok helyett:
+Az előkészítés az időtúllépés elérésekor vagy az égbolt észlelésének törlésével fejeződik be. Az `terminate` API-t egy másik függvényen belül is használhatja, vagy meghívja a **TERMINATEPOSTURI** http post webhookot, amelyre a fenti 202-válasz hivatkozik. A webhook használatához cserélje le a helyére a `{text}` korai megszakítás okát. A HTTP POST URL-címe nagyjából a következőképpen fog megjelenni:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
