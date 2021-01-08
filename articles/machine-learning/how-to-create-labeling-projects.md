@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: cd35cea28e23e88ba97bb7a27dc252d6bebd65e4
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 087a7ead1ef5f9f46f5b81f8d42fcc0ea0209e61
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739654"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013277"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
@@ -45,7 +45,7 @@ Ebből a cikkből megtudhatja, hogyan:
 * A címkével ellátni kívánt, helyi vagy Azure Blob Storage-beli adatfájlok.
 * Az alkalmazni kívánt címkék halmaza.
 * A címkézésre vonatkozó utasítások.
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-a-labeling-project"></a>Címkézési projekt létrehozása
@@ -54,7 +54,7 @@ A címkézési projektek Azure Machine Learningból vannak felügyelve. A projek
 
 Ha az adatai már az Azure Blob Storage-ban vannak, akkor a címkézési projekt létrehozása előtt elérhetővé kell tenni az adattárként. Az adattár használatával kapcsolatos példát az [oktatóanyag: az első képosztályozási címkézési projekt létrehozása](tutorial-labeling.md)című témakörben talál.
 
-Projekt létrehozásához válassza a **projekt hozzáadása** lehetőséget. Adjon megfelelő nevet a projektnek, és válassza ki a **feladattípus címkézése** elemet.
+Projekt létrehozásához válassza a **projekt hozzáadása** lehetőséget. Adjon megfelelő nevet a projektnek, és válassza ki a **feladattípus címkézése** elemet. A projekt neve nem használható újra, még akkor is, ha a projekt a jövőben is törlődik.
 
 :::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Projekt-létrehozási varázsló címkézése":::
 

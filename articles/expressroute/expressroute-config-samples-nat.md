@@ -5,25 +5,25 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 01/07/2021
 ms.author: duau
-ms.openlocfilehash: 4b57dec32a3a008cadf68c19ea52353a23fb2cd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0a39d65bf0f1bc5221cd5e46493c489f7630f8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397494"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012665"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Útválasztó-konfigurációs minták a NAT beállításához és kezeléséhez
 
-Ez az oldal NAT-konfigurációs mintákat biztosít a Cisco ASA és a Juniper SRX sorozatú útválasztók számára a ExpressRoute használatakor. Ezek a minták csak útmutatásként szolgálnak, és nem használhatók a következőként:. A gyártóval együttműködve megtekintheti a hálózat megfelelő konfigurációit.
+Ez a cikk NAT-konfigurációs mintákat biztosít a Cisco ASA és a Juniper SRX sorozatú útválasztók számára a ExpressRoute használatakor. Ezek az útválasztó konfigurációk csak útmutatásként szolgálnak, és nem használhatók a következőként:. A hálózatának megfelelő konfigurációkkal való együttműködéshez a gyártóval kell dolgoznia.
 
 > [!IMPORTANT]
 > Az ezen a lapon szereplő minták célja, hogy kizárólag útmutatásként szolgálnak. A gyártó értékesítési/technikai csapatával és a hálózati csapatával együtt kell működnie a megfelelő konfigurációkkal az igények kielégítése érdekében. A Microsoft nem támogatja az ezen a lapon felsorolt konfigurációkhoz kapcsolódó problémákat. Támogatási problémákért forduljon az eszköz gyártójához.
 > 
 > 
 
-* Az alábbi útválasztó-konfigurációs minták érvényesek az Azure nyilvános és a Microsoft-partnerekre. Nem kell konfigurálnia a NAT-t az Azure-beli privát adatkezeléshez. További részletekért tekintse át a [ExpressRoute](expressroute-circuit-peerings.md) -összevonások és a [ExpressRoute NAT-követelmények](expressroute-nat.md) című leírást.
+* Az alábbi útválasztó-konfigurációs minták érvényesek az Azure nyilvános és a Microsoft-partnerekre. Nem konfigurálja a NAT-t az Azure Private-társításához. További részletekért tekintse át a [ExpressRoute](expressroute-circuit-peerings.md) -összevonások és a [ExpressRoute NAT-követelmények](expressroute-nat.md) című leírást.
 
 * Az internettel és a ExpressRoute való kapcsolódáshoz külön NAT IP-készleteket kell használnia. Ha ugyanazt a NAT IP-címkészletet használja az interneten és a ExpressRoute, az aszimmetrikus útválasztást és a kapcsolat elvesztését eredményezi.
 
@@ -360,6 +360,6 @@ Tekintse át a mintákat az [útválasztási konfigurációs minták](expressrou
     }
 ```
 
-## <a name="next-steps"></a>Következő lépések
-További részletek: [ExpressRoute FAQ](expressroute-faqs.md) (ExpressRoute – gyakori kérdések).
+## <a name="next-steps"></a>További lépések
+További információért lásd az [ExpressRoute gyakori kérdéseit](expressroute-faqs.md).
 

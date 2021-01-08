@@ -5,19 +5,28 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286488"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011305"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute közvetlen konfigurálása az Azure CLI használatával
 
 A közvetlen ExpressRoute lehetővé teszi a Microsoft globális hálózatának közvetlen kapcsolódását a világ különböző pontjain található, stratégiai módon terjesztett helyekről. További információ: [About ExpressRoute Direct-kapcsolat](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a>Előkészületek
+
+A ExpressRoute Direct használata előtt először regisztrálnia kell az előfizetését. A regisztráláshoz küldjön egy e-mailt az <ExpressRouteDirect@microsoft.com> előfizetés-azonosítójával, beleértve az alábbi adatokat:
+
+* A **ExpressRoute Directtel** elérni kívánt forgatókönyvek
+* Hely beállításai – az összes hely teljes listájáért tekintse meg a [partnerek és](expressroute-locations-providers.md) a társítási helyek elemet.
+* Megvalósítási ütemterv
+* Bármilyen egyéb kérdés
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Az erőforrás létrehozása
 
@@ -333,6 +342,6 @@ Hozzon létre egy áramkört a ExpressRoute Direct erőforráson:
   }  
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

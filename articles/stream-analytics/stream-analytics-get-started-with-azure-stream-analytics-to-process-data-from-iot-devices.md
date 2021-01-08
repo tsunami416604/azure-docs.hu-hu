@@ -1,18 +1,17 @@
 ---
 title: Valós idejű IoT-adatfolyamok feldolgozása Azure Stream Analytics
 description: IoT-érzékelőcímkék és -adatfolyamok streamelemzéssel és valós idejű adatfeldolgozással
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 311aca139220622a0436d490e73a536c3fc898c9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a438401ff93c20d8759e6128936c3626bd3de484
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129014"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012682"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Valós idejű IoT-adatfolyamok feldolgozása Azure Stream Analytics
 
@@ -23,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre adatfolyam-feldolgozási log
 * Hozzon létre egy ingyenes [Azure-előfizetést](https://azure.microsoft.com/pricing/free-trial/).
 * Mintául szolgáló lekérdezési és adatfájlok letöltése a [githubról](https://aka.ms/azure-stream-analytics-get-started-iot).
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Forgatókönyv
 
 A Contoso egy vállalat az ipari automatizálás területén, amely teljesen automatizálta a gyártási folyamatait. A gyár gépeinek érzékelői valós idejű adatstreamek létrehozására képesek. Ebben a forgatókönyvben a termelési szint egyik igazgatója valós idejű elemzéseket szeretne kapni az érzékelők adataiból, hogy mintákat keressen bennük, és ezek alapján tegyen további lépéseket. Az érzékelő adatainak használatával Stream Analytics lekérdezési nyelvet (SAQL) is használhat, így érdekes mintákat találhat a bejövő adatfolyamból.
 
@@ -44,7 +43,7 @@ A használat megkönnyítése érdekében ez a Kezdeti lépések útmutató val�
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-1. A [Azure Portal](https://portal.azure.com)válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali navigációs menüből. Ezután válassza ki **stream Analytics feladatot** az **elemzésből** .
+1. A [Azure Portal](https://portal.azure.com)válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali navigációs menüből. Ezután válassza ki **stream Analytics feladatot** az **elemzésből**.
    
     ![Új Stream Analytics-feladat létrehozása](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
@@ -60,7 +59,7 @@ A következő lépés a feladatok létrehozása után egy lekérdezés írása. 
 Töltse le a [HelloWorldASA-InputStream.jst](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
 ) a githubról. Ezután navigáljon a Azure Stream Analytics feladatokhoz a Azure Portal.
 
-A bal oldali menüben válassza a **lekérdezés** lehetőséget a **feladatok topológiája** alatt. Ezután válassza a **minta bemenet feltöltése** lehetőséget. Töltse fel a `HelloWorldASA-InputStream.json` fájlt, majd kattintson **az OK gombra** .
+A bal oldali menüben válassza a **lekérdezés** lehetőséget a **feladatok topológiája** alatt. Ezután válassza a **minta bemenet feltöltése** lehetőséget. Töltse fel a `HelloWorldASA-InputStream.json` fájlt, majd kattintson **az OK gombra**.
 
 ![Stream Analytics irányítópult-lekérdezés csempe](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 01/08/2021
 ms.locfileid: "92109187"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Adatmásolás Data Lake Storage Gen1 és Azure SQL Database között az Sqoop használatával
@@ -99,7 +99,7 @@ An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha ú
 
    Az **SQL-Database-Server-Name** helyőrző annak a kiszolgálónak a nevét jelöli, amelyen az adatbázis fut. az **SQL-Database-Name** helyőrző az adatbázis tényleges nevét jelöli.
 
-   Például:
+   Példa:
 
     ```console
     sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
@@ -121,7 +121,7 @@ An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha ú
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   Minden **rész-m-*** fájl a forrástábla egyik sorához tartozik, a **tábla1**. Megtekintheti az a rész-m-* fájlok tartalmát az ellenőrzéshez.
+   Minden **rész-az m-** _ fájl a forrástábla egyik sorához tartozik, _ *tábla1 * *. Az ellenőrzéshez megtekintheti a rész-m-files tartalmát* .
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Adatok exportálása Data Lake Storage Gen1ból a Azure SQL Databaseba
 
@@ -131,7 +131,7 @@ An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha ú
     sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
     ```
 
-   Például:
+   Példa:
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","

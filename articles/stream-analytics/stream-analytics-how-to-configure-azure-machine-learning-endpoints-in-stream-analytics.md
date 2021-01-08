@@ -3,27 +3,26 @@ title: Azure Machine Learning Studio (klasszikus) végpontok használata a Azure
 description: Ez a cikk azt ismerteti, hogyan használhatók a gépi nyelvű felhasználó által definiált függvények a Azure Stream Analyticsban.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 236191710dac19a08db0e8ce94dc695d393009a7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a36162d24e18371fdf6b19835e4748e3043d1f24
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127127"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012525"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio (klasszikus) integráció Stream Analytics (előzetes verzió)
 Stream Analytics támogatja a felhasználó által definiált függvényeket, amelyek Azure Machine Learning Studio (klasszikus) végpontokat hívnak meg. A szolgáltatás REST API támogatását a [Stream Analytics REST API könyvtárban](/rest/api/streamanalytics/)részletesen ismertetjük. Ez a cikk a funkció sikeres megvalósításához szükséges kiegészítő információkat nyújt Stream Analyticsban. Egy oktatóanyag is közzé lett téve, és [itt](stream-analytics-machine-learning-integration-tutorial.md)érhető el.
 
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Áttekintés: Azure Machine Learning Studio (klasszikus) terminológia
-A Microsoft Azure Machine Learning Studio (klasszikus) együttműködésen alapuló, fogd és vidd típusú eszközt biztosít az adatain alapuló prediktív elemzési megoldások létrehozásához, teszteléséhez és üzembe helyezéséhez. Az eszköz neve *Azure Machine learning Studio (klasszikus)* . A Studio (klasszikus) használatos a gépi tanulási erőforrásokkal való kommunikációhoz, valamint a tervezéshez való egyszerű létrehozáshoz, teszteléshez és iterációhoz. Ezek az erőforrások és a definícióik alább találhatók.
+A Microsoft Azure Machine Learning Studio (klasszikus) együttműködésen alapuló, fogd és vidd típusú eszközt biztosít az adatain alapuló prediktív elemzési megoldások létrehozásához, teszteléséhez és üzembe helyezéséhez. Az eszköz neve *Azure Machine learning Studio (klasszikus)*. A Studio (klasszikus) használatos a gépi tanulási erőforrásokkal való kommunikációhoz, valamint a tervezéshez való egyszerű létrehozáshoz, teszteléshez és iterációhoz. Ezek az erőforrások és a definícióik alább találhatók.
 
-* **Munkaterület** : a *munkaterület* egy olyan tároló, amely az összes többi gépi tanulási erőforrást egy tárolóban tárolja a felügyelethez és a felügyelethez.
-* **Kísérlet** : az adatszakértők által létrehozott *kísérletek* az adathalmazok felhasználására és a gépi tanulási modellek betanítására szolgálnak.
-* **Végpont** : a *végpontok* a funkciók bemenetként való elvégzéséhez használt Studio (klasszikus) objektum, amely egy adott gépi tanulási modellt alkalmaz, és a mutató kimenetet adja vissza.
-* **Pontozási webszolgáltatás** : a *pontozási webszolgáltatás* a fent említett végpontok gyűjteménye.
+* **Munkaterület**: a *munkaterület* egy olyan tároló, amely az összes többi gépi tanulási erőforrást egy tárolóban tárolja a felügyelethez és a felügyelethez.
+* **Kísérlet**: az adatszakértők által létrehozott *kísérletek* az adathalmazok felhasználására és a gépi tanulási modellek betanítására szolgálnak.
+* **Végpont**: a *végpontok* a funkciók bemenetként való elvégzéséhez használt Studio (klasszikus) objektum, amely egy adott gépi tanulási modellt alkalmaz, és a mutató kimenetet adja vissza.
+* **Pontozási webszolgáltatás**: a *pontozási webszolgáltatás* a fent említett végpontok gyűjteménye.
 
 Mindegyik végpont API-kat tartalmaz a kötegelt végrehajtáshoz és a szinkron végrehajtáshoz. Stream Analytics szinkron végrehajtást használ. Az adott szolgáltatás neve a [kérelem/válasz szolgáltatás](../machine-learning/classic/consume-web-services.md) Azure Machine learning Studio (klasszikus).
 
@@ -190,7 +189,7 @@ Most kérdezze le az UDF-t (itt scoreTweet) minden bemeneti eseménynél, és í
 ## <a name="get-help"></a>Segítség kérése
 További segítségért próbálja ki a [Microsoft Q&egy kérdés oldalt Azure stream Analytics](/answers/topics/azure-stream-analytics.html)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)

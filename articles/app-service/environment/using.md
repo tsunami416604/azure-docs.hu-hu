@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3679bf9d55ddccefddb4bf3b2a96ec1b427315af
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663527"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013532"
 ---
 # <a name="using-an-app-service-environment"></a>App Service Environment használata
 
@@ -78,13 +78,20 @@ Az SCM URL-cím a kudu-konzol eléréséhez, illetve az alkalmazás Web Deploy h
 
 ### <a name="dns-configuration"></a>DNS-konfiguráció 
 
-A kiegészítő szolgáltatás saját végpontokat használ a bejövő forgalomhoz, és automatikusan Azure DNS privát zónákkal van konfigurálva. Ha a saját DNS-kiszolgálóját szeretné használni, hozzá kell adnia a következő rekordokat:
+A kiegészítő szolgáltatás saját végpontokat használ a bejövő forgalomhoz. Nincs automatikusan konfigurálva Azure DNS privát zónával. Ha a saját DNS-kiszolgálóját szeretné használni, hozzá kell adnia a következő rekordokat:
 
 1. hozzon létre egy zónát a benyújtó &lt; neve számára &gt; . appserviceenvironment.net
 1. hozzon létre egy olyan rekordot az adott zónában, amely a "
 1. hozzon létre egy olyan rekordot az adott zónában, amely a "@ to the beérkező" IP-címet a saját kiegészítő szolgáltató privát végpontja használja
 1. hozzon létre egy zónát a központhoz tartozó &lt; név &gt; . appserviceenvironment.net neve: SCM
 1. hozzon létre egy olyan rekordot az SCM-zónában, amely az *-ra mutat a saját belső beadási végpont által használt IP-címet
+
+A DNS konfigurálása Azure DNS privát zónában:
+
+1. hozzon létre egy appserviceenvironment.net nevű Azure DNS privát zónát <ASE name>
+1. hozzon létre egy olyan rekordot az adott zónában, amely * a ILB IP-címére mutat.
+1. hozzon létre egy olyan rekordot az adott zónában, amely a @-t a ILB IP-címére mutat.
+1. hozzon létre egy olyan rekordot az adott zónában, amely a *. SCM-t a ILB IP-címére mutat.
 
 A beadási csomag alapértelmezett tartományának DNS-beállításai nem korlátozzák, hogy az alkalmazások csak az adott nevek számára legyenek elérhetők. Egyéni tartománynevet úgy is beállíthat, hogy az alkalmazásait nem érvényesíti a központilag. Ha ezután létre szeretne hozni egy *contoso.net* nevű zónát, ezt megteheti, és rámutathat a bejövő IP-címére. Az Egyéni tartománynév az alkalmazásra vonatkozó kérelmek esetében működik, de nem az SCM-helyhez. Az SCM-hely csak a *&lt; AppName &gt; . SCM &lt; -ben érhető el. asename &gt; . appserviceenvironment.net*. 
 
@@ -101,7 +108,7 @@ A beadási végpontok csak a privát végpont által használt bejövő címen �
 
 További változtatások nélkül az internetalapú CI-rendszerek (például a GitHub és az Azure DevOps) nem működnek a ILB-vel, mert a közzétételi végpont nem érhető el az interneten. Engedélyezheti a közzétételt az Azure DevOps származó ILB-előállítók számára, ha telepít egy saját üzemeltetésű kiadási ügynököt a virtuális hálózatban, amely tartalmazza a ILB-javítót. 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 A kiegészítő csomag 1 TB tárterülettel rendelkezik a központhoz tartozó összes alkalmazáshoz. Az elkülönített díjszabási SKU-ban App Service csomag 250 GB-os korláttal rendelkezik. Egy előállítók esetében 250 GB tárterület kerül App Service csomagba az 1 TB-os korlátig. Több App Service terv is lehet, mint négy, de az 1 TB-os korláton túl nincs több tárterület.
 
@@ -175,7 +182,7 @@ A bemutató rendszer törlése:
 
     ![Bemutatás törlése][3]
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 <!--Image references-->
 [1]: ./media/using/using-appcreate.png

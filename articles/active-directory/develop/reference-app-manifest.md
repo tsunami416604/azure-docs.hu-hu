@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 1f4e1def81fc79ec159ce6be825793a9bd8d0ce7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286956"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011543"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-alkalmazás jegyzékfájlja
 
@@ -33,7 +33,7 @@ Az alkalmazások attribútumai a Azure Portalon vagy programozott módon konfigu
 
 Az alkalmazás jegyzékfájljának konfigurálása:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg és válassza ki a **Azure Active Directory** szolgáltatást.
+1. Lépjen a <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Keresse meg és válassza ki a **Azure Active Directory** szolgáltatást.
 1. Válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki a konfigurálni kívánt alkalmazást.
 1. Az alkalmazás **Áttekintés** lapján válassza az **Alkalmazásjegyzék** szakaszt. Megnyílik egy webalapú jegyzékfájl-szerkesztő, amely lehetővé teszi a jegyzékfájl szerkesztését a portálon belül. Ha szeretné, a **Letöltés** lehetőségre kattintva helyileg szerkesztheti a jegyzékfájlt, majd a **feltöltés** funkcióval újra alkalmazhatja azt az alkalmazásra.
@@ -675,7 +675,7 @@ Ha az alábbi hibák valamelyikét látja, a következő műveleteket javasoljuk
 1. Szerkessze az attribútumokat egyenként a jegyzékfájl-szerkesztőben egy korábban letöltött jegyzékfájl feltöltése helyett. A [jegyzékfájlok hivatkozási](#manifest-reference) táblázatával megismerheti a régi és az új attribútumok szintaxisát és szemantikaát, így sikeresen szerkesztheti a kívánt attribútumokat.
 1. Ha a munkafolyamata megköveteli, hogy később is használhassa a jegyzékfájlokat a forrás-adattárban, javasoljuk, hogy az adattárban lévő mentett jegyzékfájlokat a **Alkalmazásregisztrációk** felhasználói felületén látható értékre alapozza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az alkalmazások alkalmazás-és szolgáltatásnév-objektumai közötti kapcsolattal kapcsolatos további információkért lásd: [alkalmazás-és szolgáltatásnév-objektumok az Azure ad-ben](app-objects-and-service-principals.md).
 * Tekintse meg a Microsoft [Identity platform fejlesztői szószedetét](developer-glossary.md) a Microsoft Identity platform néhány alapvető fejlesztői koncepciójának meghatározásához.

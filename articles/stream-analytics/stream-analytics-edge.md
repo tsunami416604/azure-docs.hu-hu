@@ -2,18 +2,17 @@
 title: IoT Edge-eszközökön futó Azure Stream Analytics
 description: Hozzon létre Edge-feladatokat a Azure Stream Analyticsban, és telepítse őket Azure IoT Edge rendszert futtató eszközökre.
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: an-emma
+ms.author: raan
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 65f1ad93bf711f7f7efe95c38619390dde527dd0
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: c2a062b75caa84a0e3c342ca1ce45ccce12f2bb7
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827240"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012614"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge-eszközökön futó Azure Stream Analytics
  
@@ -123,7 +122,7 @@ A verzióra vonatkozó információk utolsó frissítése 2020-09-21:
       - operációs rendszer: Linux
       
       
-## <a name="get-help"></a>Segítségkérés
+## <a name="get-help"></a>Segítség kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>További lépések

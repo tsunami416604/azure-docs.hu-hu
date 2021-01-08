@@ -3,16 +3,16 @@ title: Kapcsolódás SQL Serverhoz, Azure SQL Databasehoz vagy az Azure SQL fel�
 description: A helyszínen vagy a felhőben található SQL-adatbázisok feladatainak automatizálása Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 01/07/2021
 tags: connectors
-ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 75c657236b6e06a7e0f6c717d746bcc8c034d423
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130935"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013447"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Az SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
@@ -80,11 +80,11 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
    | [**SQL Server-hitelesítés**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -A nem ISE és ISE SQL Server összekötőt is támogatja. <p><p>– Az adatbázisban létrehozott és tárolt érvényes felhasználónevet és erős jelszót kell megadnia. <p>További információt az alábbi témakörökben talál: <p>- [Az Azure SQL biztonsági áttekintése – hitelesítés](../azure-sql/database/security-overview.md#authentication) <br>- [Adatbázis-hozzáférés engedélyezése az Azure SQL-hitelesítéshez és engedélyezéshez](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
-   Ez a példa az **Azure ad** -vel való integrációt folytatja:
+   Ez a példa az **Azure ad**-vel való integrációt folytatja:
 
    ![Képernyőfelvétel: a "SQL Server" kapcsolatok ablak, amelyen a megnyitott "hitelesítési típus" lista és az "Azure AD Integrated" beállítás látható.](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
-1. Miután kiválasztotta az **Azure ad-integrációt** , válassza **a bejelentkezés** lehetőséget. Attól függően, hogy Azure SQL Database vagy Azure SQL felügyelt példányt használ-e, válassza ki a hitelesítéshez használandó felhasználói hitelesítő adatokat.
+1. Miután kiválasztotta az **Azure ad-integrációt**, válassza **a bejelentkezés** lehetőséget. Attól függően, hogy Azure SQL Database vagy Azure SQL felügyelt példányt használ-e, válassza ki a hitelesítéshez használandó felhasználói hitelesítő adatokat.
 
 1. Válassza ki ezeket az értékeket az adatbázishoz:
 
@@ -92,7 +92,7 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
    |----------|----------|-------------|
    | **Kiszolgáló neve** | Igen | Az SQL-kiszolgáló címe, például: `Fabrikam-Azure-SQL.database.windows.net` |
    | **Adatbázis neve** | Igen | Az SQL-adatbázis neve, például: `Fabrikam-Azure-SQL-DB` |
-   | **Tábla neve** | Igen | A használni kívánt tábla, például: `SalesLT.Customer` |
+   | **Table name (Táblázat neve)** | Igen | A használni kívánt tábla, például: `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -142,7 +142,7 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
    | **Felhasználónév** | Igen | Az SQL Server és az adatbázis felhasználóneve |
    | **Jelszó** | Igen | Az SQL Server és az adatbázis jelszava |
    | **Előfizetés** |  Igen, Windows-hitelesítéshez | A korábban az Azure-ban létrehozott adatátjáró-erőforráshoz tartozó Azure-előfizetés |
-   | **Összekötő átjáró** | Igen, Windows-hitelesítéshez | Az Azure-ban korábban létrehozott adatátjáró-erőforrás neve <p><p>**Tipp** : Ha az átjáró nem jelenik meg a listában, ellenőrizze, hogy megfelelően [állította-e be az átjárót](../logic-apps/logic-apps-gateway-connection.md). |
+   | **Összekötő átjáró** | Igen, Windows-hitelesítéshez | Az Azure-ban korábban létrehozott adatátjáró-erőforrás neve <p><p>**Tipp**: Ha az átjáró nem jelenik meg a listában, ellenőrizze, hogy megfelelően [állította-e be az átjárót](../logic-apps/logic-apps-gateway-connection.md). |
    |||
 
    > [!TIP]
@@ -178,12 +178,18 @@ Amikor először ad hozzá egy [SQL-triggert](#add-sql-trigger) vagy egy [SQL-m�
 1. Ha további elérhető tulajdonságokat szeretne hozzáadni ehhez az triggerhez, nyissa meg az **új paraméterek hozzáadása** listát.
 
    Ez az trigger csak egy sort ad vissza a kijelölt táblából, és semmi más nem. Más feladatok végrehajtásához folytassa a műveletet egy SQL- [összekötő](#add-sql-action) vagy egy [másik művelet](../connectors/apis-list.md) hozzáadásával, amely a logikai alkalmazás munkafolyamatában kívánt következő feladatot hajtja végre.
-   
+
    Ha például meg szeretné tekinteni az ebben a sorban lévő adatok megjelenítését, hozzáadhat más műveleteket is, amelyek a visszaadott sorból származó mezőket tartalmazzák, majd e-mail-riasztásokat küldenek. Ha többet szeretne megtudni az összekötőhöz elérhető egyéb műveletekről, tekintse [meg az összekötő hivatkozási oldalát](/connectors/sql/).
 
 1. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
    Bár ez a lépés automatikusan engedélyezi és közzéteszi a logikai alkalmazást az Azure-ban, az egyetlen művelet, amelyet a logikai alkalmazás jelenleg használ, a megadott intervallum és gyakoriság alapján vizsgálja meg az adatbázist.
+
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>Eseményindító ismétlődésének eltolása és eltolódása
+
+A kapcsolódáson alapuló eseményindítók, amelyekben először létre kell hozni egy kapcsolatokat, például az SQL-eseményindítót, eltérnek a Azure Logic Apps natív módon futó beépített eseményindítóinak, például az [ismétlődési eseményindítótól](../connectors/connectors-native-recurrence.md). Ismétlődő kapcsolaton alapuló eseményindítók esetében az ismétlődés ütemezése nem az egyetlen illesztőprogram, amely a végrehajtást vezérli, és az időzóna csak a kezdeti kezdési időpontot határozza meg. A későbbi futtatások az ismétlődési ütemtervtől, a legutóbbi indítás végrehajtástól *és* más olyan tényezőktől függenek, amelyek futási időket okozhatnak, vagy váratlan viselkedést okoznak, például nem tartanak fenn a megadott ütemtervet, amikor a nyári időmegtakarítás (DST) elindul és véget ér. Annak ellenőrzéséhez, hogy az ismétlődési idő ne legyen átváltva a DST életbe léptetéséhez, manuálisan módosítsa az ismétlődést, hogy a logikai alkalmazás továbbra is a várt időpontban fusson. Ellenkező esetben a kezdési idő egy óra elteltével, a DST indításakor és egy órával a DST végén halad át. További információ: [Ismétlődés a kapcsolatok alapú eseményindítók esetében](../connectors/apis-list.md#recurrence-connection-based).
 
 <a name="add-sql-action"></a>
 
@@ -205,7 +211,7 @@ Ebben a példában a logikai alkalmazás az [ismétlődési eseményindítóval]
 
 1. Ha első alkalommal csatlakozik az SQL-adatbázishoz, a rendszer felszólítja az [SQL Database-kapcsolat létrehozására](#create-connection). A kapcsolatok létrehozása után folytathatja a következő lépéssel.
 
-1. Válassza ki a **táblázat nevét** , amely `SalesLT.Customer` ebben a példában szerepel. Adja meg a kívánt rekordhoz tartozó **sor azonosítóját** .
+1. Válassza ki a **táblázat nevét**, amely `SalesLT.Customer` ebben a példában szerepel. Adja meg a kívánt rekordhoz tartozó **sor azonosítóját** .
 
    ![Válassza ki a táblanév nevet, és adja meg a sor AZONOSÍTÓját](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
 
@@ -221,7 +227,7 @@ Ebben a példában a logikai alkalmazás az [ismétlődési eseményindítóval]
 
 Időnként úgy kell dolgoznia az eredményhalmazt, hogy az összekötő ne adja vissza az összes eredményt egyszerre, vagy az eredményhalmaz méretének és szerkezetének jobb szabályozását szeretné. A következő módszerekkel kezelheti az ilyen nagy eredményeket:
 
-* Az eredmények kisebb készletekként való kezeléséhez kapcsolja be a *tördelést* . További információ: [tömeges adatok, rekordok és elemek beolvasása a tördelés használatával](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). További információ: [az SQL-Lapozás a tömeges adatátvitelhez a Logic apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
+* Az eredmények kisebb készletekként való kezeléséhez kapcsolja be a *tördelést*. További információ: [tömeges adatok, rekordok és elemek beolvasása a tördelés használatával](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). További információ: [az SQL-Lapozás a tömeges adatátvitelhez a Logic apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
 
 * Hozzon létre egy [*tárolt eljárást*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) , amely a kívánt módon rendezi az eredményeket. Az SQL-összekötő számos háttérbeli funkciót biztosít, amelyeket Azure Logic Apps használatával érhet el, így könnyebben automatizálhatja az SQL Database-táblákkal működő üzleti feladatokat.
 
@@ -259,18 +265,22 @@ Ha tárolt eljárást hív meg az SQL Server-összekötő használatával, a vis
 
 ## <a name="troubleshoot-problems"></a>Problémák elhárítása
 
-* A kapcsolódási problémák általában megtörténhetnek, így a hibák elhárításához és megoldásához tekintse át [a kapcsolódási hibák megoldását SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Néhány példa:
+<a name="connection-problems"></a>
 
-  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+### <a name="connection-problems"></a>Csatlakozási problémák
 
-  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+A kapcsolódási problémák általában megtörténhetnek, így a hibák elhárításához és megoldásához tekintse át [a kapcsolódási hibák megoldását SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Íme néhány példa:
 
-  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+
+* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 
 Az összekötő eseményindítókkal, műveletekkel és korlátozásokkal kapcsolatos technikai információkért tekintse [meg az összekötő hivatkozási oldalát](/connectors/sql/), amely a hencegés leírásában jön létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók [a Azure Logic apps-összekötők](../connectors/apis-list.md) használatáról

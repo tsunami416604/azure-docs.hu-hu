@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d3a00491bc0628244a5a7907f0dee03a5f8d3c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744193"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012835"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Hitelesítési módszerek Azure Active Directory-telefon beállításaiban
 
@@ -58,6 +58,8 @@ Ha problémák merülnek fel az Azure AD-beli telefonos hitelesítéssel kapcsol
 
 * "Az ellenőrző hívások korlátja" vagy "a szöveges ellenőrző kódok korlátozása" hibaüzenet jelenik meg a bejelentkezéskor
    * A Microsoft egy rövid időn belül korlátozza az ugyanazon felhasználó által végrehajtott ismétlődő hitelesítési kísérleteket. Ez a korlátozás nem vonatkozik a Microsoft Authenticatorra vagy az ellenőrző kódra. Ha elérte ezeket a korlátokat, használhatja a hitelesítő alkalmazást, az ellenőrző kódot, vagy próbáljon meg néhány perc múlva újra bejelentkezni.
+* "Nem sikerült ellenőrizni a fiókját" hibaüzenet jelenik meg a bejelentkezéskor
+   * A Microsoft a sikertelen hang-vagy SMS-hitelesítési kísérletek miatt korlátozhatja vagy letilthatja a hang-vagy SMS-hitelesítési kísérleteket, amelyeket ugyanaz a felhasználó, a telefonszám vagy a szervezet hajt végre. Ha ezt a hibát tapasztalja, kipróbálhat egy másik módszert, például a hitelesítő alkalmazást vagy az ellenőrző kódot, vagy elérheti a rendszergazda segítségét.
 * Blokkolt hívóazonosító egyetlen eszközön.
    * Tekintse át az eszközön konfigurált blokkolt számokat.
 * Helytelen a telefonszám vagy az ország/régió kódja, vagy a személyes telefonszám és a munkahelyi telefonszám közötti zűrzavar.

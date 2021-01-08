@@ -1,25 +1,25 @@
 ---
 title: SQL JOIN-lekérdezések Azure Cosmos DB
 description: Ismerje meg, hogyan CSATLAKOZHAT több táblázathoz a Azure Cosmos DBban az adatlekérdezéshez
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.author: mjbrown
-ms.openlocfilehash: c3fad0c7eed2b42a9ac340a091f17b90e22b000a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 01/07/2021
+ms.author: tisande
+ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333834"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011391"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Illesztések Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Egy rokon adatbázisban a táblázatok közötti illesztések a normalizált sémák megtervezéséhez használható logikaik. Ezzel szemben az SQL API a séma nélküli elemek denormalizált adatmodelljét használja, amely egy *Önillesztés* logikai megfelelője.
 
-A belső illesztések az illesztésben részt vevő készletek teljes termékét eredményezik. Az N-Way illesztés eredménye egy N-Element rekordok, ahol a rekordban lévő minden érték társítva van az összekapcsolásban részt vevő alias-készlettel, és a többi záradékban található aliasra hivatkozva elérhető.
+Az illesztések az illesztésben részt vevő készletek teljes termékét eredményezik. Az N-Way illesztés eredménye egy N-Element rekordok, ahol a rekordban lévő minden érték társítva van az összekapcsolásban részt vevő alias-készlettel, és a többi záradékban található aliasra hivatkozva elérhető.
 
 ## <a name="syntax"></a>Syntax
 
@@ -253,6 +253,8 @@ Az eredmény a következő:
       }
     ]
 ```
+
+Ha a lekérdezés ILLESZTÉSt és szűrőket tartalmaz, a teljesítmény javítása érdekében a lekérdezés egy részét újraírhatja [allekérdezésként](sql-query-subquery.md#optimize-join-expressions) .
 
 ## <a name="next-steps"></a>További lépések
 

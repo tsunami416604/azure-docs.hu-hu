@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1e8c7805cf9804e8380f8638781f9634d2d3d081
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509461"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011509"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Univerzális Windows-platform-(UWP-) alkalmazásból
 
@@ -346,7 +346,7 @@ private async Task DisplayMessageAsync(string message)
 
 Most regisztrálnia kell az alkalmazást:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
@@ -357,7 +357,7 @@ Most regisztrálnia kell az alkalmazást:
 
 Az alkalmazás hitelesítésének konfigurálása:
 
-1. A [Azure Portal](https://portal.azure.com)a **kezelés** területen válassza a **hitelesítés**  >  **a platform hozzáadása** lehetőséget, majd válassza a **mobil-és asztali alkalmazások** lehetőséget.
+1. A <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>a **kezelés** területen válassza a **hitelesítés**  >  **a platform hozzáadása** lehetőséget, majd válassza a **mobil-és asztali alkalmazások** lehetőséget.
 1. Az **átirányítási URI** -k szakaszban keresse meg a t **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. Válassza a **Konfigurálás** lehetőséget.
 

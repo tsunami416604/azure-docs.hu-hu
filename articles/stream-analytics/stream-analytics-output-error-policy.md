@@ -1,19 +1,18 @@
 ---
 title: Kimeneti hibák házirendjei a Azure Stream Analyticsban
 description: További információ a Azure Stream Analyticsban elérhető kimeneti hibákkal kapcsolatos szabályzatokról.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 923e8d1ffc3e606c16226b4b2ccbdcfaf4d3e9f1
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 19d762a55127af34e84185b11518aa6584acb5bd
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123421"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012410"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure Stream Analytics kimeneti hiba házirendje
 Ez a cikk a Azure Stream Analytics konfigurálható kimeneti adathibákat ismerteti.
@@ -33,5 +32,5 @@ Az Azure Stream Analytics elvet minden kimeneti eseményt, amely adatkonvertál�
 A rendszer az összes átmeneti hibát (például hálózati hibákat) újrapróbálkozik, függetlenül attól, hogy milyen kimeneti hiba történik a házirend-konfigurációban.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A Azure Stream Analytics hibaelhárítási útmutatója](./stream-analytics-troubleshoot-query.md)

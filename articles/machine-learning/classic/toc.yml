@@ -161,6 +161,6 @@
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-studio/'
     - name: Egyéni neurális hálózatok (Net#)
       href: azure-ml-netsharp-reference-guide.md

@@ -1,17 +1,17 @@
 ---
 title: Rövid útmutató – Azure Stream Analytics-feladatok létrehozása a Visual Studióval
 description: Ez az útmutató a Stream Analytics-feladatok létrehozásának első lépéseit mutatja be, és segítségével megtanulhatja beállítani a bemeneteket és kimeneteket, és létrehozni egy lekérdezést a Visual Studio használatával.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 034f1497cb6262ca86cd440b914f3ae67356eef9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124611"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012359"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio használatával
 
@@ -44,14 +44,14 @@ A Stream Analytics-feladatnak a meghatározása előtt elő kell készítenie az
    |---------|---------|---------|
    |Előfizetés  | \<Your subscription\> |  Válassza ki a használni kívánt Azure-előfizetést. |
    |Erőforráscsoport   |   asaquickstart-resourcegroup  |   Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét. |
-   |Region  |  \<Select the region that is closest to your users\> | Válassza ki azt a földrajzi helyet, ahol a IoT Hub üzemeltetheti. Használja a felhasználókhoz legközelebb eső helyet. |
+   |Régió  |  \<Select the region that is closest to your users\> | Válassza ki azt a földrajzi helyet, ahol a IoT Hub üzemeltetheti. Használja a felhasználókhoz legközelebb eső helyet. |
    |IoT Hub neve  | MyASAIoTHub  |   Válassza ki a IoT Hub nevét.   |
 
    ![IoT Hub létrehozása](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
-4. Válassza **a Next (tovább) lehetőséget: a méret és a skála beállítása** .
+4. Válassza **a Next (tovább) lehetőséget: a méret és a skála beállítása**.
 
-5. Válasszon **tarifacsomag és méretet** . Ebben a rövid útmutatóban válassza az **F1 – ingyenes** szintet, ha az előfizetése továbbra is elérhető. Ha az ingyenes szint nem érhető el, válassza ki az elérhető legalacsonyabb szintet. További információ: [IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub/).
+5. Válasszon **tarifacsomag és méretet**. Ebben a rövid útmutatóban válassza az **F1 – ingyenes** szintet, ha az előfizetése továbbra is elérhető. Ha az ingyenes szint nem érhető el, válassza ki az elérhető legalacsonyabb szintet. További információ: [IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub/).
 
    ![A IoT Hub mérete és méretezése](./media/stream-analytics-quick-create-vs/iot-hub-size-and-scale.png)
 
@@ -67,7 +67,7 @@ A Stream Analytics-feladatnak a meghatározása előtt elő kell készítenie az
 
 ## <a name="create-blob-storage"></a>BLOB Storage létrehozása
 
-1. A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Storage** -  >  **fiók** lehetőséget.
+1. A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Storage**-  >  **fiók** lehetőséget.
 
 2. A **Storage-fiók létrehozása** panelen adja meg a Storage-fiók nevét, helyét és az erőforráscsoportot. Válassza ki ugyanazt a helyet és erőforráscsoportot, mint a létrehozott IoT Hub. Ezután kattintson a **felülvizsgálat + létrehozás** gombra a fiók létrehozásához.
 
@@ -77,7 +77,7 @@ A Stream Analytics-feladatnak a meghatározása előtt elő kell készítenie az
 
    ![Tárfiókok áttekintése](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
-4. A **blob szolgáltatás** lapon válassza a **tároló** lehetőséget, és adja meg a tároló nevét (például *container1* ). Hagyja meg a **nyilvános hozzáférési szintet** **magánjellegűként (névtelen hozzáférés nélkül)** , majd kattintson **az OK gombra** .
+4. A **blob szolgáltatás** lapon válassza a **tároló** lehetőséget, és adja meg a tároló nevét (például *container1*). Hagyja meg a **nyilvános hozzáférési szintet** **magánjellegűként (névtelen hozzáférés nélkül)** , majd kattintson **az OK gombra**.
 
    ![Blobtároló létrehozása](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
@@ -87,9 +87,9 @@ A Stream Analytics-feladatnak a meghatározása előtt elő kell készítenie az
 
 2. Válassza a **File > New Project** (Fájl > Új projekt) lehetőséget.  
 
-3. A bal oldali sablonlistában válassza ki a **Stream Analytics** , majd az **Azure Stream Analytics Application** (Azure Stream Analytics-alkalmazás) elemet.  
+3. A bal oldali sablonlistában válassza ki a **Stream Analytics**, majd az **Azure Stream Analytics Application** (Azure Stream Analytics-alkalmazás) elemet.  
 
-4. Adja meg az alkalmazás **nevét** , **helyét** és a **megoldás nevét** , majd kattintson az **OK** gombra.
+4. Adja meg az alkalmazás **nevét**, **helyét** és a **megoldás nevét**, majd kattintson az **OK** gombra.
 
    ![Stream Analytics-projekt létrehozása](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
 
@@ -160,7 +160,7 @@ Figyelje meg az Azure Stream Analytics-projektben szereplő elemeket.
 
 1. A **Query Editor** (Lekérdezésszerkesztő) szkriptszerkesztőjében válassza a **Submit To Azure** (Küldés az Azure-ba) lehetőséget.
 
-2. Válassza a **Create a New Azure Stream Analytics job** (Új Azure Stream Analytics-feladat létrehozása) lehetőséget, majd adja meg a **feladat nevét** . Válassza ki a rövid útmutató elején használt **Előfizetés** , **Erőforráscsoport** és **Hely** elemeket.
+2. Válassza a **Create a New Azure Stream Analytics job** (Új Azure Stream Analytics-feladat létrehozása) lehetőséget, majd adja meg a **feladat nevét**. Válassza ki a rövid útmutató elején használt **Előfizetés**, **Erőforráscsoport** és **Hely** elemeket.
 
    ![Feladat elküldése az Azure-ba](./media/stream-analytics-quick-create-vs/stream-analytics-job-to-azure.png)
 
@@ -192,7 +192,7 @@ Figyelje meg az Azure Stream Analytics-projektben szereplő elemeket.
 
    ![Eredmények megtekintése](./media/stream-analytics-quick-create-vs/stream-analytics-vs-results.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha a feladatot a jövőben is szeretné használni, leállíthatja, és később újraindíthatja amikor ismét szükség van rá. Ha már nem használja a feladatot, akkor a következő lépésekkel az útmutatóban létrehozott összes erőforrást törölheti:
 
@@ -200,7 +200,7 @@ Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos �
 
 2. Az erőforráscsoport lapján válassza a **Törlés** elemet, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy egyszerű Stream Analytics-feladatot helyezett üzembe a Visual Studióval. A Stream Analytics-feladatokat az [Azure Portal](stream-analytics-quick-create-portal.md) és a [PowerShell](stream-analytics-quick-create-powershell.md) használatával is üzembe helyezheti. 
 

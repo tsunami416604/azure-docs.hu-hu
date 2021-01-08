@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 6874794dcf33d77d0b03f2a5713bdf42a40d6891
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 2967476d06b8f6f88b740f811a94c5fdb4284b4d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560910"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011866"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Rövid útmutató: a Microsoft Identity platform által védett ASP.NET webes API meghívása
 
@@ -48,32 +48,30 @@ Ebben a szakaszban regisztrálnia kell a webes API-t a Azure Portal **Alkalmazá
 
 Az alkalmazások manuális regisztrálásához válassza ki azt a Azure Active Directory (Azure AD) bérlőt, amelyben létre szeretné hozni az alkalmazásokat.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók.
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók.
 1. Ha a fiókja egynél több Azure AD-bérlőn található, válassza ki a profilt a jobb felső sarokban, majd válassza a **címtár váltása** lehetőséget.
 1. Módosítsa a portál munkamenetét a használni kívánt Azure AD-bérlőre.
 
 ### <a name="register-the-todolistservice-app"></a>A TodoListService alkalmazás regisztrálása
 
-1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) portált.
-1. Válassza az **új regisztráció** lehetőséget.
-1. Amikor megnyílik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
-
-    1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára. Írja be például a következőt: **AppModelv2-NativeClient-DotNet-TodoListService**.
-    1. A **támogatott fióktípus** esetében válassza a **fiókok lehetőséget bármely szervezeti címtárban**.
-    1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
-
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás **nevét** , például: `AppModelv2-NativeClient-DotNet-TodoListService` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+1. A **támogatott fióktípus** esetében válassza a **fiókok lehetőséget bármely szervezeti címtárban**.
+1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Az alkalmazás **– Áttekintés** oldalon keresse meg az **alkalmazás (ügyfél) azonosító** értékét, majd jegyezze fel későbbi használatra. Ehhez a projekthez a Visual Studio konfigurációs fájlját (azaz `ClientId` a *TodoListService\Web.config* fájlban) kell konfigurálnia.
+1. A **kezelés** területen válassza **az API**  >  **hozzáadása hatókör** lehetőséget. Fogadja el a javasolt alkalmazás-azonosító URI-t ( `api://{clientId}` ) a **Mentés és folytatás** lehetőség kiválasztásával, majd adja meg a következő adatokat:
 
-1. Az **API közzététele** szakaszban válassza a **hatókör hozzáadása** lehetőséget, fogadja el a javasolt alkalmazás-azonosító URI-t ( `api://{clientId}` ) a **Mentés és folytatás** lehetőség kiválasztásával, majd adja meg a következő adatokat:
-
-    1. A **hatókör neve** mezőbe írja be a következőt: **access_as_user**.
+    1. A **hatókör neve** mezőbe írja be a következőt: `access_as_user` .
     1. Válassza ki a **rendszergazdák és a felhasználók** lehetőséget, hogy **ki is** jogosult legyen.
-    1. A **rendszergazdai engedély megjelenítendő neve** mezőbe írja be a **hozzáférés TodoListService felhasználóként**.
-    1. A **rendszergazdai engedély leírása** mezőbe írja be **a következőt: hozzáférés a TodoListService webes API-hoz felhasználóként**.
-    1. A **felhasználó beleegyezik megjelenítendő neve** mezőbe írja be a **hozzáférés TodoListService felhasználóként** értéket.
-    1. A **felhasználói beleegyező Leírás** mezőbe írja be **a TodoListService web API felhasználóként való elérését**.
+    1. A **rendszergazdai engedély megjelenítendő neve** mezőbe írja be a (z `Access TodoListService as a user` ) értéket.
+    1. A **rendszergazdai engedély leírása** mezőbe írja be a értéket `Accesses the TodoListService web API as a user` .
+    1. A **felhasználó beleegyezik megjelenítendő neve** mezőbe írja be a (z `Access TodoListService as a user` ) értéket.
+    1. A **felhasználó beleegyezik leírása** mezőbe írja be a értéket `Accesses the TodoListService web API as a user` .
     1. **Állapot** esetén tartsa be a következőt: **engedélyezve**.
-    1. Válassza a **hatókör hozzáadása** elemet.
+1. Válassza a **hatókör hozzáadása** elemet.
 
 ### <a name="configure-the-service-project"></a>A szolgáltatási projekt konfigurálása
 
@@ -106,7 +104,7 @@ A TodoListClient alkalmazás regisztrálásához tegye a következőket:
 1. Válassza az **új regisztráció** lehetőséget.
 1. Amikor megnyílik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
 
-    1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára (például **NativeClient-DotNet-TodoListClient** ).
+    1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára (például **NativeClient-DotNet-TodoListClient**).
     1. A **támogatott fióktípus** esetében válassza a **fiókok lehetőséget bármely szervezeti címtárban**.
     1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 
@@ -120,7 +118,7 @@ A TodoListClient alkalmazás regisztrálásához tegye a következőket:
 
     1. A **platform-konfigurációk** területen válassza a **platform hozzáadása** gombot.
     1. **Mobil-és asztali alkalmazások** esetében válassza a **mobil-és asztali alkalmazások** lehetőséget.
-    1. Az **átirányítási URI** -k esetében jelölje be a **https://login.microsoftonline.com/common/oauth2/nativeclient** jelölőnégyzetet.
+    1. Az **átirányítási URI**-k esetében jelölje be a **https://login.microsoftonline.com/common/oauth2/nativeclient** jelölőnégyzetet.
     1. Válassza a **Konfigurálás** lehetőséget.
 
 1. Válassza az **API-engedélyek** lehetőséget, majd tegye a következőket:
@@ -185,7 +183,7 @@ Egyéni módszert is alkalmazhat a kiállítók érvényesítésére a paraméte
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a Microsoft Identity platform által támogatott védett webes API-forgatókönyvről:
 > [!div class="nextstepaction"]
 > [Védett webes API-forgatókönyv](scenario-protected-web-api-overview.md)

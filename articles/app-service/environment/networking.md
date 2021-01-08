@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 61059c3e0f9737df6ace338f4252a338ea1f200c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663848"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013488"
 ---
 # <a name="app-service-environment-networking"></a>App Service Environment hálózatkezelés
 
@@ -34,7 +34,11 @@ A központilag a következő címeket kell létrehozni:
 | Windows kimenő címe | Az ebben a központban található Windows-alkalmazások ezt a címeket használják alapértelmezés szerint, amikor kimenő hívásokat küldenek az internetre. |
 | Linux kimenő címe | Az ebben a központban található Linux-alkalmazásokban ez a címe alapértelmezés szerint az internetre irányuló kimenő hívásokat fogja használni. |
 
-Ha törli a szolgáltató által használt privát végpontot, akkor nem érheti el az alkalmazásait a szolgáltatónál. Ne törölje a beadáshoz társított Azure DNS privát zónát.  
+A ASEv3 a központhoz tartozó, a központhoz tartozó portál **IP-címek** részében szereplő címekről tartalmaz részleteket.
+
+![A betekintő címek felhasználói felülete](./media/networking/networking-ip-addresses.png)
+
+Ha törli a szolgáltató által használt privát végpontot, akkor nem érheti el az alkalmazásait a szolgáltatónál.  
 
 A szolgáltató a kimenő alhálózaton található címeket használja a szolgáltató által használt infrastruktúra támogatásához. A beApp Servicei csomagok méretezése során több címet is használhat. A központon belüli alkalmazások nem rendelkeznek dedikált címmel a kimenő alhálózaton. Az alkalmazás által a kimenő alhálózaton használt címek az idő múlásával változnak.
 
@@ -48,7 +52,7 @@ A ASEv2 eltérően a ASEv3 segítségével megadhatja a hálózati biztonsági c
 
 ## <a name="dns"></a>DNS
 
-A szolgáltatón belüli alkalmazások azt a DNS-t fogják használni, amelyhez a VNet konfigurálva van. Ha azt szeretné, hogy egyes alkalmazások más DNS-kiszolgálót használjanak, az Alkalmazásbeállítások WEBSITE_DNS_SERVER és WEBSITE_DNS_ALT_SERVER használatával manuálisan is beállíthatja az alkalmazáson alapuló beállításokat. Az Alkalmazásbeállítás WEBSITE_DNS_ALT_SERVER konfigurálja a másodlagos DNS-kiszolgálót. A másodlagos DNS-kiszolgálót csak akkor használja a rendszer, ha az elsődleges DNS-kiszolgálótól nem érkezik válasz. 
+A szolgáltatón belüli alkalmazások azt a DNS-t fogják használni, amelyhez a VNet konfigurálva van. Kövesse a következő témakör utasításait: [app Service Environment használatával](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration) konfigurálja a DNS-kiszolgálót úgy, hogy az a szolgáltatásra mutasson. Ha azt szeretné, hogy egyes alkalmazások egy másik DNS-kiszolgálót használjanak, mint amit a VNet konfigurál, akkor az Alkalmazásbeállítások WEBSITE_DNS_SERVER és WEBSITE_DNS_ALT_SERVER használatával manuálisan is beállíthatja az alkalmazáson alapuló beállítást. Az Alkalmazásbeállítás WEBSITE_DNS_ALT_SERVER konfigurálja a másodlagos DNS-kiszolgálót. A másodlagos DNS-kiszolgálót csak akkor használja a rendszer, ha az elsődleges DNS-kiszolgálótól nem érkezik válasz. 
 
 ## <a name="preview-limitation"></a>Előzetes verzió korlátozása
 

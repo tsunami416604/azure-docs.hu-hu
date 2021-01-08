@@ -1,142 +1,149 @@
 ---
 title: ServiceNow összekötése IT-szolgáltatásmenedzsmenti csatoló
-description: Ez a cikk azt ismerteti, hogyan ServiceNow a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) Azure Monitor a ITSM-munkaelemek központilag figyeléséhez és kezeléséhez.
+description: Ismerje meg, hogyan csatlakoztathatók a ServiceNow a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) Azure Monitor a ITSM-munkaelemek központilag figyeléséhez és kezeléséhez.
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 662c36e4f0082c376a6e250e9a0885f0cd225964
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 7d1b4b3542f6914d413a5e29e57baa15e7a53346
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729658"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012784"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>ServiceNow összekötése IT-szolgáltatásmenedzsmenti csatoló
 
-Ez a cikk azt ismerteti, hogyan konfigurálható a ServiceNow-példány és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban.
-
-A következő szakaszokban részletesen ismertetjük, hogyan csatlakoztathatók a ServiceNow-termékek az Azure-beli ITSMC.
+Ez a cikk bemutatja, hogyan konfigurálható a ServiceNow-példányok és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a Log Analyticsban, így központilag kezelheti az informatikai szolgáltatások felügyeleti (ITSM) munkaelemeit.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
-- A ITSMC telepítve van. További információ: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-definition.md#add-it-service-management-connector).
-- ServiceNow támogatott verziók: Orlando, New York, Madrid, London, Kingston, Jakarta, Isztambul, Helsinki, Genf.
-- A Azure Monitor által elküldett riasztások ma a következő elemek egyikének ServiceNow hozhatók létre: események, incidensek vagy riasztások.
-> [!NOTE]
-> A ITSMC csak a szolgáltatás hivatalos SaaS-ajánlatát támogatja. A szolgáltatás privát telepítései jelenleg nem támogatottak. 
+Győződjön meg arról, hogy megfelel a következő előfeltételeknek a kapcsolatban:
 
-A **ServiceNow-rendszergazdáknak a következőket kell tenniük a ServiceNow-példányban**:
-- Ügyfél-azonosító és ügyfél-titkos kód előállítása a ServiceNow termékhez. Az ügyfél-azonosító és a titkos kulcs létrehozásával kapcsolatos információkért tekintse meg a szükséges információkat a következő információk alapján:
+### <a name="itsmc-installation"></a>ITSMC-telepítés
 
-    - [OAuth beállítása az Orlando-hoz](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-    - [A New York-i OAuth beállítása](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-    - [OAuth beállítása Madridhoz](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-    - [A OAuth beállítása Londonban](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-    - [A OAuth beállítása a Kingston számára](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-    - [OAuth beállítása a Jakarta számára](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-    - [Az OAuth beállítása Isztambulhoz](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-    - [A OAuth beállítása Helsinkihez](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-    - [A OAuth beállítása Genfben](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-> [!NOTE]
-> A "OAuth beállítása" definíciójának részeként az alábbiakat javasoljuk:
->
-> 1) Frissítse **a frissítési token élettartamát 90 napra (7 776 000 másodperc):** A [OAuth beállításának](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) részeként a 2. fázisban: [hozzon létre egy végpontot ahhoz, hogy az ügyfelek hozzáférhessenek a példányhoz](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) a végpont definíciója után, a ServiceNow panelen keresse meg a rendszer OAuth, mint az alkalmazás beállításjegyzékének kiválasztása lehetőséget. Válassza ki a definiált OAuth nevét, és frissítse a frissítési jogkivonat élettartamának mezőjét 7 776 000-re (90 nap másodpercben).
-> A végén kattintson a frissítés gombra.
-> 2) **Javasoljuk, hogy hozzon létre egy belső eljárást annak biztosítására, hogy a kapcsolat életben maradjon:** A jogkivonat frissítésének élettartama alapján. Győződjön meg arról, hogy a következő műveletek végrehajtása a korábbi frissítési jogkivonat várható lejárati ideje (néhány nappal azelőtt, hogy a frissítési jogkivonat élettartama lejár):
->
->     1. [ITSM-összekötő konfigurálásának manuális szinkronizálási folyamatának befejezése](./itsmc-resync-servicenow.md)
->     2. Vonja vissza a régi frissítési tokent, mivel a régi kulcsok biztonsági okokból való megőrzése nem ajánlott. A ServiceNow panelen keresse meg a rendszer OAuth, mint a tokenek kezelése lehetőséget. A OAuth neve és a lejárati dátum szerint válassza ki a régi tokent a listából.
-> ![A SNOW System OAuth definíciója](media/itsmc-connections/snow-system-oauth.png)
->     3. Kattintson a hozzáférés visszavonása, majd a visszavonás lehetőségre.
-
-- Telepítse a Microsoft Log Analytics Integration (ServiceNow app) felhasználói alkalmazását. [További információ](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
-> [!NOTE]
-> A ITSMC csak a ServiceNow áruházból letöltött Microsoft Log Analytics integrációs szolgáltatáshoz használható hivatalos felhasználói alkalmazást támogatja. A ITSMC nem támogatja a kód betöltését a ServiceNow oldalon vagy a hivatalos ServiceNow-megoldás részét nem képező alkalmazásban. 
-- Integrációs felhasználói szerepkör létrehozása a telepített felhasználói alkalmazáshoz. Az integrációs felhasználói szerepkör létrehozásával kapcsolatos információkat [itt](#create-integration-user-role-in-servicenow-app)találja.
-
-## <a name="connection-procedure"></a>**Csatlakoztatási eljárás**
-ServiceNow-kapcsolatok létrehozásához kövesse az alábbi eljárást:
-
-
-1. A Azure Portalban lépjen a **minden erőforrás** elemre, és keresse meg a **ügyfélszolgálati (YourWorkspaceName)**
-
-2.  A **munkaterület-ADATforrások** területen kattintson az **ITSM-kapcsolatok** elemre.
-    ![Új kapcsolat](media/itsmc-connections/add-new-itsm-connection.png)
-
-3. A jobb oldali ablaktábla tetején kattintson a **Hozzáadás** gombra.
-
-4. Adja meg az adatokat az alábbi táblázatban leírtak szerint, majd kattintson az **OK** gombra a kapcsolódás létrehozásához.
-
+További információ a ITSMC telepítéséről: [a it-szolgáltatásmenedzsmenti csatoló megoldás hozzáadása](./itsmc-definition.md#add-it-service-management-connector).
 
 > [!NOTE]
-> Ezeket a paramétereket kötelező megadni.
+> A ITSMC csak a ServiceNow-től származó, szolgáltatásként nyújtott hivatalos szoftveres (SaaS) szolgáltatást támogatja. A ServiceNow privát telepítései nem támogatottak.
 
-| **Mező** | **Leírás** |
-| --- | --- |
-| **Kapcsolat neve**   | Írja be annak a ServiceNow-példánynak a nevét, amelyhez csatlakozni kíván a ITSMC.  Ezt a nevet később Log Analytics, ha munkaelemeket konfigurál ebben a ITSM/részletes log Analytics nézetben. |
-| **Partner típusa**   | Válassza a **ServiceNow** lehetőséget. |
-| **Felhasználónév**   | Írja be a ServiceNow alkalmazásban létrehozott integrációs felhasználónevet, hogy támogassa a ITSMC való kapcsolódást. További információ: [ServiceNow-alkalmazás felhasználói szerepkör létrehozása](#create-integration-user-role-in-servicenow-app).|
-| **Jelszó**   | Írja be a felhasználónévhez tartozó jelszót. **Megjegyzés**: a felhasználónevet és a jelszót csak a hitelesítési jogkivonatok létrehozásához használja a rendszer, és a ITSMC szolgáltatásban bárhol tárolja őket.  |
-| **Kiszolgáló URL-címe**   | Írja be annak az ServiceNow-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. Az URL-címnek a ". servicenow.com" utótaggal rendelkező, támogatott SaaS-verzióra kell mutatnia.|
-| **Ügyfél-azonosító**   | Írja be a korábban létrehozott OAuth2-hitelesítéshez használni kívánt ügyfél-azonosítót.  További információ az ügyfél-azonosító és a titkos kulcs létrehozásáról:   [OAuth Setup](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
-| **Ügyfél titka**   | Adja meg az AZONOSÍTÓhoz generált ügyfél-titkot.   |
-| **Adatszinkronizálási hatókör**   | Válassza ki azokat a ServiceNow munkaelemeket, amelyeket szinkronizálni szeretne az Azure Log Analytics a ITSMC keresztül.  A kiválasztott értékeket a rendszer a log analyticsbe importálja.   **Beállítások:**  Incidensek és módosítási kérelmek.|
-| **Adatszinkronizálás** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. **Maximális korlát**: 120 nap. |
-| **Új konfigurációs elemek létrehozása a ITSM-megoldásban** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha be van jelölve, a ITSMC létrehozza az érintett CIs-t konfigurációs elemekként (nem létező CIs esetén) a támogatott ITSM-rendszeren. **Alapértelmezett**: letiltva. |
+### <a name="oauth-setup"></a>OAuth-telepítő
 
-![ServiceNow-kapcsolatok](media/itsmc-connections/itsm-connection-servicenow-connection-latest.png)
+A ServiceNow támogatott verziói a következők: Orlando, New York, Madrid, London, Kingston, Jakarta, Isztambul, Helsinki és Genf.
 
-**Sikeres csatlakozás és szinkronizálás**:
+A ServiceNow-rendszergazdáknak a ServiceNow-példányhoz meg kell adniuk az ügyfél-azonosítót és az ügyfél titkos kulcsát. Szükség szerint tekintse meg a következő információkat:
 
-- A ServiceNow-példány kiválasztott munkaelemeit az Azure **log Analyticsba** importálja a rendszer. A munkaelemek összegzését a IT-szolgáltatásmenedzsmenti csatoló csempén tekintheti meg.
+- [OAuth beállítása az Orlando-hoz](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+- [A New York-i OAuth beállítása](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+- [OAuth beállítása Madridhoz](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+- [A OAuth beállítása Londonban](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+- [A OAuth beállítása a Kingston számára](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+- [OAuth beállítása a Jakarta számára](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+- [Az OAuth beállítása Isztambulhoz](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+- [A OAuth beállítása Helsinkihez](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+- [A OAuth beállítása Genfben](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
 
-- Incidenseket hozhat létre Log Analytics riasztásokból, illetve a naplóbejegyzésekből vagy az Azure-riasztásokból ebben az ServiceNow-példányban.
+A OAuth beállításának részeként a következőket javasoljuk:
+
+1. [Hozzon létre egy végpontot az ügyfelek számára a példány eléréséhez](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_CreateEndpointforExternalClients.html).
+
+1. Frissítse a frissítési jogkivonat élettartamát:
+
+   1. A **ServiceNow** ablaktáblán keressen a **System OAuth** kifejezésre, majd válassza az **alkalmazás beállításjegyzéke** elemet. 
+   1. Válassza ki a definiált OAuth nevét, és módosítsa a **frissítési token élettartamát** **7 776 000 másodpercre** (90 nap). 
+   1. Válassza a **Frissítés** lehetőséget. 
+
+1. Hozzon létre egy belső eljárást, amely biztosítja, hogy a kapcsolat életben maradjon. Néhány nappal a frissítési jogkivonat élettartamának várható lejárata előtt végezze el a következő műveleteket:
+
+   1. [Fejezze be a manuális szinkronizálási folyamatot a ITSM-összekötő konfigurálásához](./itsmc-resync-servicenow.md).
+
+   1. Visszavonás a régi frissítési jogkivonatra. Biztonsági okokból nem ajánlott a régi kulcsok megőrzése. 
+   
+      1. A **ServiceNow** ablaktáblán keressen a **System OAuth** kifejezésre, majd válassza a **tokenek kezelése** lehetőséget. 
+      
+      1. A OAuth neve és a lejárat dátuma szerint válassza ki a régi tokent a listából.
+
+         ![Képernyőkép, amely a OAuth jogkivonatok listáját jeleníti meg.](media/itsmc-connections/snow-system-oauth.png)
+      1. Válassza a **hozzáférés** visszavonása Visszavonás lehetőséget  >  .
+
+## <a name="install-the-user-app-and-create-the-user-role"></a>A felhasználói alkalmazás telepítése és a felhasználói szerepkör létrehozása
+
+Az alábbi eljárással telepítheti a szolgáltatás most felhasználói alkalmazást, és létrehozhatja az integrációs felhasználói szerepkört. Ezeket a hitelesítő adatokat fogja használni az Azure-beli ServiceNow-kapcsolatok létrehozásához.
 
 > [!NOTE]
-> A ServiceNow-ben a kérelmek óránkénti száma. A korlát konfigurálásához használja a "bejövő REST API arány korlátozása" kifejezést a ServiceNow-példányban.
+> A ITSMC csak a ServiceNow-tárolóból letöltött Microsoft Log Analytics-integrációhoz használható hivatalos felhasználói alkalmazást támogatja. A ITSMC nem támogatja a kód betöltését a ServiceNow oldalon vagy bármely olyan alkalmazásban, amely nem része a hivatalos ServiceNow megoldásnak. 
 
-## <a name="create-integration-user-role-in-servicenow-app"></a>Integrációs felhasználói szerepkör létrehozása a ServiceNow alkalmazásban
-
-A felhasználó az alábbi eljárást:
-
-1. Látogasson el a [ServiceNow áruházba](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1) , és telepítse a **ServiceNow és a Microsoft OMS-integrációs felhasználói alkalmazást** a ServiceNow-példányba.
+1. Látogasson el a [ServiceNow áruházba](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1) , és telepítse a **ServiceNow és a Microsoft OMS integrációjának felhasználói alkalmazását** a ServiceNow-példányban.
    
    >[!NOTE]
-   >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-et már Log Analyticsnak nevezzük.     
-2. A telepítést követően nyissa meg a ServiceNow-példány bal oldali navigációs sávját, keresse meg és válassza a Microsoft OMS-integrátor elemet.  
-3. Kattintson a **telepítési ellenőrzőlista** elemre.
+   >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a rendszer mostantól a következőt Log Analytics hívja: OMS.     
+2. A telepítést követően nyissa meg a ServiceNow-példány bal oldali navigációs sávját, majd keresse meg és válassza ki a **Microsoft OMS-integrátor** elemet.  
+3. Válassza a **telepítési ellenőrzőlista** lehetőséget.
 
-   Ha a felhasználói szerepkör még létre van hozva, az állapot  **nem fejeződött be** .
+   Az állapot  **nem befejezettként** jelenik meg, mert a felhasználói szerepkör még nincs létrehozva.
 
-4. Az **integrációs felhasználó létrehozása** elem melletti szövegmezőbe írja be annak a felhasználónak a felhasználónevét, aki CSATLAKOZHAT a ITSMC az Azure-ban.
-5. Adja meg a felhasználó jelszavát, majd kattintson **az OK** gombra.  
+4. Az **integrációs felhasználó létrehozása** elem melletti szövegmezőbe írja be annak a felhasználónak a nevét, aki CSATLAKOZHAT a ITSMC az Azure-ban.
+5. Adja meg a felhasználó jelszavát, majd kattintson **az OK gombra**.  
 
-> [!NOTE]
-> Ezeket a hitelesítő adatokat használja a ServiceNow-kapcsolatok az Azure-ban való létrehozásához.
+Az újonnan létrehozott felhasználó megjelenik a hozzárendelt alapértelmezett szerepkörökkel:
 
-Az újonnan létrehozott felhasználó megjelenik a hozzárendelt alapértelmezett szerepkörökkel.
-
-**Alapértelmezett szerepkörök**:
 - personalize_choices
 - import_transformer
--   x_mioms_microsoft. user
--   ITIL
--   template_editor
--   view_changer
+- x_mioms_microsoft. user
+- ITIL
+- template_editor
+- view_changer
 
-A felhasználó sikeres létrehozása után a **telepítési ellenőrzőlista** állapotának állapota befejeződött, amely felsorolja az alkalmazáshoz létrehozott felhasználói szerepkör részleteit.
+Miután sikeresen létrehozta a felhasználót, a **telepítési ellenőrzőlista** állapotának állapota **Befejezve** értékre vált, és felsorolja az alkalmazáshoz létrehozott felhasználói szerepkör részleteit.
 
 > [!NOTE]
-> A ITSM-csatoló a ServiceNow-példányra telepített más modulok nélkül is küldhet incidenseket a ServiceNow. Ha a ServiceNow-példányban EventManagement-modult használ, és az összekötő használatával szeretne eseményeket vagy riasztásokat létrehozni a ServiceNow-ben, adja hozzá a következő szerepköröket az integrációs felhasználóhoz:
+> A ITSMC az ServiceNow-példányra telepített más modulok nélkül is küldhet incidenseket a ServiceNow. Ha a EventManagement modult használja a ServiceNow-példányban, és az összekötő használatával szeretne eseményeket vagy riasztásokat létrehozni a ServiceNow-ben, adja hozzá a következő szerepköröket az integrációs felhasználóhoz:
 > 
->    - evt_mgmt_integration
->    - evt_mgmt_operator  
+> - evt_mgmt_integration
+> - evt_mgmt_operator  
 
+## <a name="create-a-connection"></a>Kapcsolat létrehozása
+ServiceNow-kapcsolatok létrehozásához kövesse az alábbi eljárást.
+
+> [!NOTE]
+> A Azure Monitor által elküldett riasztások a következő elemek egyikét hozhatják létre a ServiceNow-ben: események, incidensek vagy riasztások. 
+
+1. A Azure Portalban lépjen a **minden erőforrás** elemre, és keresse meg a **ügyfélszolgálati (YourWorkspaceName)**.
+
+2. A **munkaterület-adatforrások** területen válassza az **ITSM kapcsolatok** elemet.
+
+   ![Az adatforrás kijelölését bemutató képernyőkép.](media/itsmc-connections/add-new-itsm-connection.png)
+
+3. A jobb oldali ablaktábla tetején válassza a **Hozzáadás** lehetőséget.
+
+4. Adja meg az adatokat az alábbi táblázatban leírtak szerint, majd válassza az **OK** gombot.
+
+   | **Mező** | **Leírás** |
+   | --- | --- |
+   | **Kapcsolat neve**   | Adja meg annak a ServiceNow-példánynak a nevét, amelyhez csatlakozni kíván a ITSMC. Ezt a nevet később Log Analytics a ITSM-munkaelemek konfigurálásakor és részletes elemzések megtekintésekor is használhatja. |
+   | **Partner típusa**   | Válassza a **ServiceNow** lehetőséget. |
+   | **Kiszolgáló URL-címe**   | Adja meg annak az ServiceNow-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. Az URL-címnek egy támogatott SaaS-verzióra kell mutatnia, az utótag *. servicenow.com*.|
+   | **Felhasználónév**   | Adja meg a ServiceNow alkalmazásban létrehozott integrációs felhasználónevet, hogy támogassa a ITSMC való kapcsolódást.|
+   | **Jelszó**   | Adja meg a felhasználónévhez tartozó jelszót. **Megjegyzés**: a Felhasználónév és a jelszó csak hitelesítési tokenek létrehozásához használatos. Ezeket a rendszer nem tárolja bárhol a ITSMC szolgáltatáson belül.  |
+   | **Ügyfél-azonosító**   | Adja meg a korábban létrehozott OAuth2-hitelesítéshez használni kívánt ügyfél-azonosítót. Az ügyfél-azonosító és a titkos kód létrehozásával kapcsolatos további információkért tekintse meg a [OAuth beállítása](https://wiki.servicenow.com/index.php?title=OAuth_Setup)című témakört. |
+   | **Ügyfél titka**   | Adja meg az AZONOSÍTÓhoz generált ügyfél-titkos kulcsot.   |
+   | **Adatszinkronizálás hatóköre (nap)** | Adja meg az elmúlt napok számát, amelyből az adatok származnak. A korlát 120 nap. |
+   | **Szinkronizálandó munkaelemek**   | Válassza ki azokat a ServiceNow munkaelemeket, amelyeket szinkronizálni szeretne az Azure Log Analytics a ITSMC keresztül. A kijelölt értékeket a rendszer a Log Analyticsba importálja. A lehetőségek az incidensek és a módosítási kérelmek.|
+   | **Új konfigurációs elemek létrehozása a ITSM-termékben** | Akkor válassza ezt a lehetőséget, ha a ITSM termékben szeretné létrehozni a konfigurációs elemeket. Ha be van jelölve, a ITSMC konfigurációs elemeket hoz létre (ha nincs ilyen) a támogatott ITSM-rendszeren. Alapértelmezés szerint le van tiltva. |
+
+![Képernyőkép a ServiceNow-kapcsolatok hozzáadására szolgáló mezőkről és lehetőségekről.](media/itsmc-connections/itsm-connection-servicenow-connection-latest.png)
+
+Sikeres csatlakozás és szinkronizálás esetén:
+
+- A ServiceNow-példány kiválasztott munkaelemeit a rendszer a Log Analyticsba importálja. A munkaelemek összegzését a **it-szolgáltatásmenedzsmenti csatoló** csempén tekintheti meg.
+
+- Az incidenseket Log Analytics riasztásokból vagy naplókból, illetve az Azure-riasztásokból is létrehozhatja ebben az ServiceNow-példányban.
+
+> [!NOTE]
+> A ServiceNow óránkénti kérelmekre érvényesek. A korlát konfigurálásához adja meg a **bejövő REST API ráta korlátozását** a ServiceNow-példányon.
 
 ## <a name="next-steps"></a>További lépések
 
 * [ITSM-csatoló áttekintése](itsmc-overview.md)
 * [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)
-* [Hibaelhárítás az ITSM-összekötőben](./itsmc-resync-servicenow.md)
+* [Hibaelhárítási problémák a ITSM-csatoló](./itsmc-resync-servicenow.md)

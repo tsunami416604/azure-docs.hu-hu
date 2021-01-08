@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: justinha
-ms.openlocfilehash: 1fcd46870a4f85d1b88d22d77de5c201404c3a09
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619368"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013039"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure Active Directory Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe
 
@@ -153,11 +153,11 @@ A Resource Manager-alapú üzemi modellre és a virtuális hálózatra történ�
 
 | Lépés    | Végrehajtás  | Becsült idő  | Állásidő  | Vissza/vissza? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. lépés – az új virtuális hálózat frissítése és megkeresése](#update-and-verify-virtual-network-settings) | Azure Portal | 15 perc | Nincs szükség állásidőre | N.A. |
+| [1. lépés – az új virtuális hálózat frissítése és megkeresése](#update-and-verify-virtual-network-settings) | Azure Portal | 15 perc | Nincs szükség állásidőre | N/A |
 | [2. lépés – a felügyelt tartomány előkészítése áttelepítésre](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 perc átlagosan | Az Azure AD DS leállása a parancs befejezése után kezdődik. | Visszaállítás és helyreállítás elérhető. |
-| [3. lépés – a felügyelt tartomány áthelyezése meglévő virtuális hálózatra](#migrate-the-managed-domain) | PowerShell | átlagosan 1 – 3 óra | A parancs befejezése után egy tartományvezérlő érhető el, a leállás véget ér. | Hiba esetén mind a visszaállítás (önkiszolgáló), mind a visszaállítás elérhető. |
-| [4. lépés – tesztelés és várakozás a replika tartományvezérlőre](#test-and-verify-connectivity-after-the-migration)| PowerShell és Azure Portal | 1 óra vagy több, a tesztek számától függően | Mindkét tartományvezérlő elérhető, és általában működnie kell. | N/A. Az első virtuális gép sikeres áttelepítése után nincs lehetőség visszaállításra vagy visszaállításra. |
-| [5. lépés – választható konfigurációs lépések](#optional-post-migration-configuration-steps) | Azure Portal és virtuális gépek | N.A. | Nincs szükség állásidőre | N.A. |
+| [3. lépés – a felügyelt tartomány áthelyezése meglévő virtuális hálózatra](#migrate-the-managed-domain) | PowerShell | átlagosan 1 – 3 óra | A parancs végrehajtása után egy tartományvezérlő érhető el. | Hiba esetén mind a visszaállítás (önkiszolgáló), mind a visszaállítás elérhető. |
+| [4. lépés – tesztelés és várakozás a replika tartományvezérlőre](#test-and-verify-connectivity-after-the-migration)| PowerShell és Azure Portal | 1 óra vagy több, a tesztek számától függően | Mindkét tartományvezérlő elérhető, és a szokásos módon működik, a leállás véget ér. | N/A. Az első virtuális gép sikeres áttelepítése után nincs lehetőség visszaállításra vagy visszaállításra. |
+| [5. lépés – választható konfigurációs lépések](#optional-post-migration-configuration-steps) | Azure Portal és virtuális gépek | N/A | Nincs szükség állásidőre | N/A |
 
 > [!IMPORTANT]
 > Az áttelepítési folyamat megkezdése előtt olvassa el az összes áttelepítési cikket és útmutatást a további állásidő elkerüléséhez. Az áttelepítési folyamat egy adott időszakra hatással van az Azure AD DS tartományvezérlők rendelkezésre állására. A felhasználók, szolgáltatások és alkalmazások nem tudnak hitelesíteni a felügyelt tartományon az áttelepítési folyamat során.
@@ -262,16 +262,14 @@ Ebben a szakaszban igény szerint áthelyezheti a többi meglévő erőforrást 
 
 ## <a name="test-and-verify-connectivity-after-the-migration"></a>A kapcsolat tesztelése és ellenőrzése az áttelepítés után
 
-Eltarthat egy ideig, amíg a második tartományvezérlő sikeresen üzembe helyezi, és elérhetővé válik a felügyelt tartományban való használatra.
+Eltarthat egy ideig, amíg a második tartományvezérlő sikeresen üzembe helyezi, és elérhetővé válik a felügyelt tartományban való használatra. Az áttelepítési parancsmag befejezését követően a második tartományvezérlő 1-2 órán belül elérhetőnek kell lennie. A Resource Manager-alapú üzemi modellel a felügyelt tartomány hálózati erőforrásai láthatók a Azure Portal vagy Azure PowerShell. A második tartományvezérlő elérhetővé tételének vizsgálatához tekintse meg a felügyelt tartomány **tulajdonságlapját** a Azure Portal. Ha két IP-cím látható, a második tartományvezérlő készen áll.
 
-A Resource Manager-alapú üzemi modellel a felügyelt tartomány hálózati erőforrásai láthatók a Azure Portal vagy Azure PowerShell. Ha többet szeretne megtudni ezekről a hálózati erőforrásokról, tekintse meg az [Azure AD DS által használt hálózati erőforrásokat][network-resources].
-
-Ha legalább egy tartományvezérlő elérhető, hajtsa végre a következő konfigurációs lépéseket a virtuális gépekkel való hálózati kapcsolathoz:
+A második tartományvezérlő elérhetővé tétele után végezze el a következő konfigurációs lépéseket a virtuális gépekkel való hálózati kapcsolathoz:
 
 * **DNS-kiszolgáló beállításainak frissítése** Ha szeretné, hogy a Resource Manager virtuális hálózat más erőforrásai megoldják és használják a felügyelt tartományt, frissítse a DNS-beállításokat az új tartományvezérlők IP-címeivel. A Azure Portal automatikusan konfigurálhatja ezeket a beállításokat.
 
     A Resource Manager virtuális hálózat konfigurálásával kapcsolatos további tudnivalókért tekintse meg [Az Azure virtuális hálózat DNS-beállításainak frissítése][update-dns]című témakört.
-* **Tartományhoz csatlakoztatott virtuális gépek újraindítása** – az Azure AD DS tartományvezérlők által használt DNS-kiszolgáló IP-címeinek megváltozása esetén indítsa újra a tartományhoz csatlakoztatott virtuális gépeket, hogy azok az új DNS-kiszolgáló beállításait használják. Ha az alkalmazások vagy virtuális gépek manuálisan konfigurálták a DNS-beállításokat, manuálisan frissítse azokat a tartományvezérlők új DNS-kiszolgáló IP-címeivel, amelyek megjelennek a Azure Portal.
+* **Tartományhoz csatlakoztatott virtuális gépek újraindítása (nem kötelező)** Az Azure AD DS tartományvezérlők DNS-kiszolgálói IP-címeinek megváltozása esetén újraindíthatja a tartományhoz csatlakoztatott virtuális gépeket, hogy azok az új DNS-kiszolgáló beállításait használják. Ha az alkalmazások vagy virtuális gépek manuálisan konfigurálták a DNS-beállításokat, manuálisan frissítse azokat a tartományvezérlők új DNS-kiszolgáló IP-címeivel, amelyek megjelennek a Azure Portal. A tartományhoz csatlakoztatott virtuális gépek újraindítása megakadályozza a nem frissülő IP-címek által okozott csatlakozási problémákat.
 
 Most tesztelje a virtuális hálózati kapcsolatokat és a névfeloldást. A Resource Manager-alapú virtuális hálózathoz csatlakoztatott virtuális GÉPEN vagy a hozzá tartozó kapcsolaton próbálja ki a következő hálózati kommunikációs teszteket:
 
@@ -280,7 +278,7 @@ Most tesztelje a virtuális hálózati kapcsolatokat és a névfeloldást. A Res
 1. Ellenőrizze a felügyelt tartomány névfeloldását, például `nslookup aaddscontoso.com`
     * Adja meg a saját felügyelt tartomány DNS-nevét annak ellenőrzéséhez, hogy a DNS-beállítások helyesek-e, majd oldja fel.
 
-Az áttelepítési parancsmag befejezését követően a második tartományvezérlő 1-2 órán belül elérhetőnek kell lennie. A második tartományvezérlő elérhetővé tételének vizsgálatához tekintse meg a felügyelt tartomány **tulajdonságlapját** a Azure Portal. Ha két IP-cím látható, a második tartományvezérlő készen áll.
+További információ a többi hálózati erőforrásról: az [Azure AD DS által használt hálózati erőforrások][network-resources].
 
 ## <a name="optional-post-migration-configuration-steps"></a>Választható áttelepítés utáni konfigurációs lépések
 

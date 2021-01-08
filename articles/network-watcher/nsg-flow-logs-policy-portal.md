@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2020
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 54b87da73d4427234e65e406d183525d55c6c00d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8da1130809c1802f4db963f4b4b000a848e9abaa
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948544"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011101"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>Gyors útmutató: NSG-folyamatok naplófájljainak üzembe helyezése és kezelése Azure Policy használatával 
 
@@ -25,7 +25,7 @@ ms.locfileid: "94948544"
 Az Azure Policy segít a szervezeti szabványok betartatásában és a megfelelőségi követelmények nagy léptékű kiértékelésében. A Azure Policy gyakori használati esetei közé tartozik az erőforrás-konzisztencia megvalósítása, a szabályozások megfelelősége, a biztonság, a költséghatékonyság és a felügyelet. Ebben a cikkben két beépített szabályzatot fogunk használni a NSG, amelyekkel kezelheti a flow-naplókat. Az első szabályzat minden olyan NSG jelölőt jelző, amely nem engedélyezett a flow-naplók nélkül. A második házirend automatikusan üzembe helyezi a NSG a flow-naplók nélkül, engedélyezve. 
 
 Ha első alkalommal hoz létre Azure-szabályzatot, a következő módon olvashatja el: 
-- [Azure Policy áttekintése](../governance/policy/overview.md) 
+- [Az Azure Policy áttekintése](../governance/policy/overview.md) 
 - [Oktatóanyag a szabályzat létrehozásához](../governance/policy/assign-policy-portal.md#create-a-policy-assignment).
 
 
@@ -132,7 +132,7 @@ A szabályzatnak a következő képernyőképen kell megjelennie. Ha a házirend
 ![A házirend eredményeinek megtekintése](./media/network-watcher-builtin-policy/7_2_dine-policy-results.png)  
 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 -   Ebben az [oktatóanyagban](./quickstart-configure-network-security-group-flow-logs-from-arm-template.md) mélyebben használhatja az ARM-sablonokat a flow-naplók és a Traffic Analytics üzembe helyezéséhez.
 -   További információ a [Network Watcher](./index.yml)

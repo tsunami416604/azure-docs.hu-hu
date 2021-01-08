@@ -2,17 +2,17 @@
 title: JSON-és AVRO elemzése Azure Stream Analytics
 description: Ez a cikk azt ismerteti, hogyan működik az összetett adattípusok, például a tömbök, a JSON és a CSV formátumú adat.
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6c2eb4225cb014b3251d12470e4e9827150a5cf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f6cb131fb3ff3cab4122aac5e1c6960dee4f8421
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123353"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012240"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>JSON-és Avro-adatelemzés Azure Stream Analytics
 
@@ -121,7 +121,7 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-A **GetRecordPropertyValue** kiválasztja a tulajdonságot a *SensorReadings* -ben, amelynek a neve megegyezik a hivatkozási adatokból származó tulajdonság nevével. Ezután a rendszer kinyeri a *SensorReadings* társított értéket.
+A **GetRecordPropertyValue** kiválasztja a tulajdonságot a *SensorReadings*-ben, amelynek a neve megegyezik a hivatkozási adatokból származó tulajdonság nevével. Ezután a rendszer kinyeri a *SensorReadings* társított értéket.
 
 Az eredmény a következőket eredményezi:
 
