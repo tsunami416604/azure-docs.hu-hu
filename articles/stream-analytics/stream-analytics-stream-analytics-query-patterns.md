@@ -4,17 +4,16 @@ description: Ez a cikk számos gyakori lekérdezési mintát és kialakítást i
 services: stream-analytics
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: f0c5363cfec42ba78ee6c41a1970211518b74a71
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8fcda77858b3feb78a04971a7ad1f20c0ea51fa1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127535"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019992"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Gyakori lekérdezési minták a Azure Stream Analytics
 
@@ -34,7 +33,7 @@ A JSON és a Avro olyan összetett típusokat is tartalmazhat, mint például a 
 
 Több **Select** utasítás is használható az adatkimenet különböző kimeneti mosdóba való exportálásához. Egy **Select (kiválasztható** ) érték például egy küszöbérték-alapú riasztás kimenete lehet, míg egy másik az eseményeket blob Storage-tárolóba exportálhatja.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | Idő |
 | --- | --- |
@@ -44,7 +43,7 @@ Több **Select** utasítás is használható az adatkimenet különböző kimene
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Kimeneti ArchiveOutput** :
+**Kimeneti ArchiveOutput**:
 
 | Gyártó | Idő |
 | --- | --- |
@@ -54,13 +53,13 @@ Több **Select** utasítás is használható az adatkimenet különböző kimene
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Kimeneti AlertOutput** :
+**Kimeneti AlertOutput**:
 
 | Gyártó | Idő | Darabszám |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -89,7 +88,7 @@ A **into** záradékban megtudhatja, hogy a kimenetek közül melyeknek kell ír
 
 Vegye figyelembe, hogy a **with** záradék használatával több allekérdezési blokk is definiálható. Ezzel a beállítással kevesebb olvasót nyithat meg a bemeneti forráshoz.
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 WITH ReaderQuery AS (
@@ -119,21 +118,21 @@ További információért lásd a [ **with** záradékot](/stream-analytics-quer
 
 Egy egyszerű átmenő lekérdezéssel másolhatók a bemeneti adatfolyam-adatok a kimenetbe. Ha például egy valós idejű jármű adatait tartalmazó adatfolyamot kell menteni egy SQL-adatbázisban a levél elemzése céljából, egy egyszerű, áteresztő lekérdezés fogja elvégezni a feladatot.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | Idő | Tömeg |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
-**Kimenet** :
+**Kimenet**:
 
 | Gyártó | Idő | Tömeg |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -144,7 +143,7 @@ FROM Input
 
 A Select * lekérdezés a bejövő események összes mezőjét **kijelöli** , és elküldi őket a kimenetnek. Ugyanezt a módszert **választva** a csak a bemenetből kitöltendő mezőket is használhatja. Ebben a példában, ha a *járműnek* és az *időpontnak* csak a szükséges mezőket kell megadnia, ezek a mezők a **Select** utasításban adhatók meg.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | Idő | Tömeg |
 | --- | --- | --- |
@@ -152,7 +151,7 @@ A Select * lekérdezés a bejövő események összes mezőjét **kijelöli** , 
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
 
-**Kimenet** :
+**Kimenet**:
 
 | Gyártó | Idő |
 | --- | --- |
@@ -160,7 +159,7 @@ A Select * lekérdezés a bejövő események összes mezőjét **kijelöli** , 
 | Make1 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:04.0000000 Z |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -173,7 +172,7 @@ FROM Input
 
 **Hasonlóan** és **nem** , mint az, hogy egy adott mező megfelel-e egy adott mintának. Létrehozhat például egy szűrőt úgy, hogy csak az "A" betűvel kezdődő és a 9. számú licencet tartalmazó lemezeket küldje vissza.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | License_plate | Idő |
 | --- | --- | --- |
@@ -181,14 +180,14 @@ FROM Input
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
 
-**Kimenet** :
+**Kimenet**:
 
 | Gyártó | License_plate | Idő |
 | --- | --- | --- |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -205,20 +204,20 @@ A **Like** utasítás használatával ellenőrizhető a **License_plate** mező 
 
 A **lag** függvény használatával megtekintheti a múltbeli eseményeket egy adott időszakon belül, és összehasonlíthatja őket az aktuális eseménnyel. Például az aktuális autó kimenete kiosztható, ha az nem egyezik meg az utolsó autótól, amely az autópályadíjon keresztül járt.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | Idő |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
-**Kimenet** :
+**Kimenet**:
 
 | Gyártó | Idő |
 | --- | --- |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -238,7 +237,7 @@ További információkért tekintse meg a [**késést**](/stream-analytics-query
 
 Mivel a rendszer valós időben használja az eseményeket, nincs olyan függvény, amely meghatározza, hogy az adott időpontra az utolsó egy esemény lesz-e megérkezni. Ennek eléréséhez a bemeneti adatfolyamot egy másikhoz kell csatlakoztatni, ahol az esemény ideje az adott ablakban lévő összes esemény maximális ideje.
 
-**Bemenet** :
+**Bemenet**:
 
 | License_plate | Gyártó | Idő |
 | --- | --- | --- |
@@ -250,14 +249,14 @@ Mivel a rendszer valós időben használja az eseményeket, nincs olyan függvé
 | QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Kimenet** :
+**Kimenet**:
 
 | License_plate | Gyártó | Idő |
 | --- | --- | --- |
 | VFE 1616 |Make2 |2015-07-27T00:09:31.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 WITH LastInWindow AS
@@ -291,7 +290,7 @@ A streamek összekapcsolásával kapcsolatos további információkért lásd: [
 
 Az adatok egy adott időtartományon keresztüli kiszámításához összesítheti az adatokat. Ebben a példában a rendszer minden egyes autó esetében az elmúlt 10 másodpercben számítja ki a darabszámot.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | Idő | Tömeg |
 | --- | --- | --- |
@@ -299,14 +298,14 @@ Az adatok egy adott időtartományon keresztüli kiszámításához összesíthe
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
 
-**Kimenet** :
+**Kimenet**:
 
 | Gyártó | Darabszám |
 | --- | --- |
 | Make1 | 2 |
 | Make2 | 1 |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -329,7 +328,7 @@ Az összesítéssel kapcsolatos további információkért tekintse meg az [öss
 
 Szabálytalan vagy hiányzó események esetén rendszeres időközi kimenet hozható létre a ritka adatbevitelből. Például állítson elő 5 másodpercenként egy eseményt, amely a legutóbb látott adatpontot jelenti.
 
-**Bemenet** :
+**Bemenet**:
 
 | Idő | Érték |
 | --- | --- |
@@ -340,7 +339,7 @@ Szabálytalan vagy hiányzó események esetén rendszeres időközi kimenet hoz
 | "2014-01-01T06:01:30" |5 |
 | "2014-01-01T06:01:35" |6 |
 
-**Kimenet (első 10 sor)** :
+**Kimenet (első 10 sor)**:
 
 | Window_end | Last_event. Idő | Last_event. Érték |
 | --- | --- | --- |
@@ -355,7 +354,7 @@ Szabálytalan vagy hiányzó események esetén rendszeres időközi kimenet hoz
 | 2014-01-01T14:01:40.000 Z |2014-01-01T14:01:35.000 Z |6 |
 | 2014-01-01T14:01:45.000 Z |2014-01-01T14:01:35.000 Z |6 |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -375,7 +374,7 @@ További információkért tekintse meg a [hopping ablakát](/stream-analytics-q
 
 Az egyazon adatfolyamban található események korrelációját a **lag** függvény használatával végezheti el a múltbeli események megtekintésével. Például létrehozhat egy kimenetet minden alkalommal, amikor két egymást követő *autót ugyanabból* a továbbításból az utolsó 90 másodpercig.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | License_plate | Idő |
 | --- | --- | --- |
@@ -384,13 +383,13 @@ Az egyazon adatfolyamban található események korrelációját a **lag** függ
 | Make2 |DEF-987 |2015-01-01T00:00:03.0000000 Z |
 | Make1 |GHI-345 |2015-01-01T00:00:04.0000000 Z |
 
-**Kimenet** :
+**Kimenet**:
 
 | Gyártó | Idő | Current_car_license_plate | First_car_license_plate | First_car_time |
 | --- | --- | --- | --- | --- |
 | Make1 |2015-01-01T00:00:02.0000000 Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -413,20 +412,20 @@ További információkért tekintse meg a [késést](/stream-analytics-query/lag
 
 Az események időtartamát úgy számíthatja ki, hogy megtekinti az utolsó indítási eseményt a befejezési esemény kézhezvétele után. Ez a lekérdezés hasznos lehet annak megállapításához, hogy a felhasználó mennyi időt tölt egy adott oldalon vagy szolgáltatásban.
 
-**Bemenet** :  
+**Bemenet**:  
 
 | Felhasználó | Funkció | Esemény | Idő |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Indítás |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |Befejezés |2015-01-01T00:00:08.0000000 Z |
 
-**Kimenet** :  
+**Kimenet**:  
 
 | Felhasználó | Funkció | Időtartam |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -447,7 +446,7 @@ Az **utolsó** függvény használatával lehet lekérni az utolsó eseményt eg
 
 A **darabszám** és a **DISTINCT** érték az adatfolyamban megjelenő egyedi mezőértékek számának megszámlálására használható az adott időszakon belül. A rendszer létrehoz egy lekérdezést, amely kiszámítja *, hogy* a két másodperces ablakban hány egyedi módon halad át az autópályadíj-kezelő.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | Idő |
 | --- | --- |
@@ -482,7 +481,7 @@ További információt a [ **Count** összesítő függvényben](/stream-analyti
 
 A **IsFirst** az első esemény egy időablakban való lekérésére használható. Tegyük fel például, hogy az első autó adatait 10 percenként kell kiterjeszteni.
 
-**Bemenet** :
+**Bemenet**:
 
 | License_plate | Gyártó | Idő |
 | --- | --- | --- |
@@ -494,14 +493,14 @@ A **IsFirst** az első esemény egy időablakban való lekérésére használhat
 | QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Kimenet** :
+**Kimenet**:
 
 | License_plate | Gyártó | Idő |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT 
@@ -516,7 +515,7 @@ WHERE
 
 A **IsFirst** az adatparticionálást is elvégezheti, és az első eseményt kiszámíthatja minden *egyes autóra* 10 percenként.
 
-**Kimenet** :
+**Kimenet**:
 
 | License_plate | Gyártó | Idő |
 | --- | --- | --- |
@@ -526,7 +525,7 @@ A **IsFirst** az adatparticionálást is elvégezheti, és az első eseményt ki
 | QYF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT 
@@ -545,7 +544,7 @@ További információkért tekintse meg a következőt: [**IsFirst**](/stream-an
 
 Ha olyan műveletet hajt végre, mint például az átlagok kiszámítása egy adott időintervallumban, az ismétlődő eseményeket szűrni kell. A következő példában a második esemény az első másolat.
 
-**Bemenet** :  
+**Bemenet**:  
 
 | DeviceId | Idő | Attribútum | Érték |
 | --- | --- | --- | --- |
@@ -556,14 +555,14 @@ Ha olyan műveletet hajt végre, mint például az átlagok kiszámítása egy a
 | 2 |2018-07-27T00:00:05.0000000 Z |Hőmérséklet |50 |
 | 1 |2018-07-27T00:00:10.0000000 Z |Hőmérséklet |100 |
 
-**Kimenet** :  
+**Kimenet**:  
 
 | AverageValue | DeviceId |
 | --- | --- |
 | 70 | 1 |
 |45 | 2 |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 With Temp AS (
@@ -594,7 +593,7 @@ További információkért lásd: [darabszám (eltérő idő)](/stream-analytics
 
 A **Case** utasítások különböző számításokat biztosíthatnak különböző mezőkhöz az adott feltétel alapján. Például rendelje hozzá az "A" sávot a *Make1* és a "B" Lane-hez bármely más gyártmányhoz.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | Idő |
 | --- | --- |
@@ -602,14 +601,14 @@ A **Case** utasítások különböző számításokat biztosíthatnak különbö
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Kimenet** :
+**Kimenet**:
 
 | Gyártó |Dispatch_to_lane | Idő |
 | --- | --- | --- |
 | Make1 |Egy |2015-01-01T00:00:01.0000000 Z |
 | Make2 |B |2015-01-01T00:00:02.0000000 Z |
 
-**Megoldás** :
+**Megoldás**:
 
 ```SQL
 SELECT
@@ -631,20 +630,20 @@ További információkért tekintse meg a [Case kifejezést](/stream-analytics-q
 
 Az adatátviteli **módszer használatával** valós időben lehet átadni az adatfeldolgozást. Például a **nvarchar (max)** típusról a **bigint** típusra konvertálható, és numerikus számításokban használható.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | Idő | Tömeg |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
-**Kimenet** :
+**Kimenet**:
 
 | Gyártó | Tömeg |
 | --- | --- |
 | Make1 |3000 |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -665,7 +664,7 @@ További információ az [Adatátalakítási függvényekről](/stream-analytics
 
 A több eseményre kiterjedő feltételek esetén a **lag** függvény használatával azonosítható a feltétel időtartama. Tegyük fel például, hogy egy hiba az összes olyan autót eredményezett, amely nem megfelelő súlyozású (20 000 kilós), a hiba időtartamát pedig számításba kell venni.
 
-**Bemenet** :
+**Bemenet**:
 
 | Gyártó | Idő | Tömeg |
 | --- | --- | --- |
@@ -678,13 +677,13 @@ A több eseményre kiterjedő feltételek esetén a **lag** függvény használa
 | Make1 |2015-01-01T00:00:07.0000000 Z |26000 |
 | Make2 |2015-01-01T00:00:08.0000000 Z |2000 |
 
-**Kimenet** :
+**Kimenet**:
 
 | Start_fault | End_fault |
 | --- | --- |
 | 2015-01-01T00:00:02.000 Z |2015-01-01T00:00:07.000 Z |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 WITH SelectPreviousEvent AS
@@ -713,7 +712,7 @@ A End_fault a jelenlegi nem hibás esemény, amelyben az előző esemény hibás
 Az események az esemény-előállítók közötti óra döntése, illetve a partíciók közötti időeltérések vagy a hálózati késések közötti időeltérések miatt megérkeznek.
 Például a 2. *TollID* eszköz órája öt másodperccel az 1. *TollID* mögött, a *TollID* 3 eszköz órája pedig tíz másodperccel az 1. *TollID* mögött. A számítások egymástól függetlenül is megtörténhetnek, mivel csak a saját óra-és időbélyeg-adatvesztést kell figyelembe venni.
 
-**Bemenet** :
+**Bemenet**:
 
 | LicensePlate | Gyártó | Idő | TollID |
 | --- | --- | --- | --- |
@@ -726,7 +725,7 @@ Például a 2. *TollID* eszköz órája öt másodperccel az 1. *TollID* mögöt
 | MDR 6128 |Make3 |2015-07-27T00:00:11.0000000 Z | 2 |
 | YZK 5704 |Make4 |2015-07-27T00:00:07.0000000 Z | 3 |
 
-**Kimenet** :
+**Kimenet**:
 
 | TollID | Darabszám |
 | --- | --- |
@@ -737,7 +736,7 @@ Például a 2. *TollID* eszköz órája öt másodperccel az 1. *TollID* mögöt
 | 2 | 1 |
 | 3 | 1 |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ```SQL
 SELECT
@@ -758,7 +757,7 @@ A munkamenet-ablak egy ablak, amely az események kibővítését és a számít
 Ez az ablak különösen akkor hasznos, ha a felhasználói interakciós adatfeldolgozást. Egy ablak akkor indul el, amikor egy felhasználó megkezdi a rendszerrel való interakciót, és bezárja, ha nem figyelhetők meg több esemény, ami azt jelenti, hogy a felhasználó megszakította a műveleteket.
 Ha például egy felhasználó egy olyan weblappal működik együtt, amelyben a kattintások száma naplózva van, egy munkamenet-ablak segítségével megtudhatja, hogy a felhasználó mennyi ideig használja a webhelyet.
 
-**Bemenet** :
+**Bemenet**:
 
 | User_id | Idő | URL-cím |
 | --- | --- | --- |
@@ -768,14 +767,14 @@ Ha például egy felhasználó egy olyan weblappal működik együtt, amelyben a
 | 0 | 2017-01-26T00:01:10.0000000 Z | "www.example.com/d.html" |
 | 1 | 2017-01-26T00:01:15.0000000 Z | "www.example.com/e.html" |
 
-**Kimenet** :
+**Kimenet**:
 
 | User_id | StartTime | EndTime | Duration_in_seconds |
 | --- | --- | --- | --- |
 | 0 | 2017-01-26T00:00:00.0000000 Z | 2017-01-26T00:01:10.0000000 Z | 70 |
 | 1 | 2017-01-26T00:00:55.0000000 Z | 2017-01-26T00:01:15.0000000 Z | 20 |
 
-**Lekérdezés** :
+**Lekérdezés**:
 
 ``` SQL
 SELECT
@@ -797,7 +796,7 @@ A **SessionWindow** kapcsolatos további információkért tekintse meg a [munka
 
 Azure Stream Analytics a lekérdezés nyelve a JavaScript vagy C# nyelven írt egyéni függvények használatával bővíthető. A felhasználó által definiált függvények (UDF) olyan egyéni/összetett számítások, amelyek nem használhatók egyszerűen az **SQL** nyelv használatával. Ezek a UDF egyszer határozhatók meg, és többször is használhatók egy lekérdezésen belül. Az UDF például egy hexadecimális *nvarchar (max)* érték *bigint* értékre való átalakítására használható.
 
-**Bemenet** :
+**Bemenet**:
 
 | Device_id | HexValue |
 | --- | --- |
@@ -805,7 +804,7 @@ Azure Stream Analytics a lekérdezés nyelve a JavaScript vagy C# nyelven írt e
 | 2 | 11b |
 | 3 | "121" |
 
-**Kimenet** :
+**Kimenet**:
 
 | Device_id | Tizedesjegy |
 | --- | --- |
@@ -844,7 +843,7 @@ További információkért tekintse meg a [JavaScriptet](./stream-analytics-java
 A **MATCH_RECOGNIZE** egy olyan speciális minta-megfeleltetési mechanizmus, amely az események sorozatát egy jól definiált reguláris kifejezési mintának megfelelően felhasználhatja.
 Az ATM-et például valós időben figyelik a hibák, az ATM működése során, ha két egymást követő figyelmeztető üzenet jelenik meg, a rendszergazdának értesítést kell kapnia.
 
-**Bemenet** :
+**Bemenet**:
 
 | ATM_id | Operation_id | Return_Code | Idő |
 | --- | --- | --- | --- |
@@ -855,7 +854,7 @@ Az ATM-et például valós időben figyelik a hibák, az ATM működése során,
 | 1 | "A pénz megnyitása tárolóhely" | Figyelmeztetés | 2017-01-26T00:10:14.0000000 Z |
 | 1 | "Banki egyenleg nyomtatása" | Figyelmeztetés | 2017-01-26T00:10:19.0000000 Z |
 
-**Kimenet** :
+**Kimenet**:
 
 | ATM_id | First_Warning_Operation_id | Warning_Time |
 | --- | --- | --- |
@@ -881,7 +880,7 @@ MATCH_RECOGNIZE (
 
 Ez a lekérdezés legalább két egymást követő sikertelen eseményt egyeztet, és riasztást állít elő, ha teljesülnek a feltételek.
 A **minta** határozza meg a megfeleltetéshez használandó reguláris kifejezést, ebben az esetben a sikeres műveletek számát, majd legalább két egymást követő hibát.
-A sikeres és sikertelen művelet Return_Code értékkel van definiálva, és a feltétel teljesülése után a **mértékek** a *ATM_id* , az első figyelmeztetési művelettel és az első figyelmeztetési idővel vannak kiértékelve.
+A sikeres és sikertelen művelet Return_Code értékkel van definiálva, és a feltétel teljesülése után a **mértékek** a *ATM_id*, az első figyelmeztetési művelettel és az első figyelmeztetési idővel vannak kiértékelve.
 
 További információkért tekintse meg a [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics).
 
@@ -892,7 +891,7 @@ A térinformatikai adatmennyiség GeoJSON vagy WKT formátumban is betölthető 
 Például egy vállalat, amely a gépeket a Passportok nyomtatására, a gépeket a kormányoknak és a konzulátusoknak való bérletére specializálódott. A gépek helyét szigorúan úgy ellenőrzik, hogy elkerülje a Passportok hamisításának és lehetséges felhasználásának elkerülését. Az egyes gépek GPS-nyomkövetővel vannak ellátva, az információk továbbítása Azure Stream Analytics feladathoz történik.
 A gyártás szeretné nyomon követni ezeknek a gépeknek a helyét, és riasztást küld, ha valamelyikük jogosult területtel rendelkezik, így távolról letilthatják a riasztási hatóságokat, és lekérhetik a berendezést.
 
-**Bemenet** :
+**Bemenet**:
 
 | Equipment_id | Equipment_current_location | Idő |
 | --- | --- | --- |
@@ -901,13 +900,13 @@ A gyártás szeretné nyomon követni ezeknek a gépeknek a helyét, és riaszt�
 | 1 | "PONT (-122.13308862313283 47.6406508603241)" | 2017-01-26T00:12:00.0000000 Z |
 | 1 | "PONT (-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000 Z |
 
-**Hivatkozási adatok bevitele** :
+**Hivatkozási adatok bevitele**:
 
 | Equipment_id | Equipment_lease_location |
 | --- | --- |
 | 1 | "SOKSZÖG ((-122.13326028450979 47.6409833866794,-122.13261655434621 47.6409833866794,-122.13261655434621 47.64061471602751,-122.13326028450979 47.64061471602751,-122.13326028450979 47.6409833866794))" |
 
-**Kimenet** :
+**Kimenet**:
 
 | Equipment_id | Equipment_alert_location | Idő |
 | --- | --- | --- |
@@ -934,7 +933,7 @@ További információkért tekintse meg a [geokerítések és térinformatikai �
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)

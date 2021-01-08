@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 52a43874060748479beebc994bf0a9b663cde9dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95238394"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020179"
 ---
 # <a name="create-an-app-service-environment"></a>App Service Environment létrehozása
 
@@ -20,10 +20,9 @@ ms.locfileid: "95238394"
 > Ez a cikk a App Service Environment v3 (előzetes verzió)
 > 
 
-A [app Service Environment (][Intro] bevezetési) a app Service egy olyan bérlői példánya, amely befecskendez az Azure Virtual Networkba (VNet).  A ASEv3 csak a saját vnet lévő privát címeken teszi lehetővé az alkalmazások megjelenítését. Ha az előzetes verzióban létrejön egy ASEv3, a rendszer három erőforrást ad hozzá az előfizetéshez.
+A [app Service Environment (][Intro] bevezetési) a app Service egy olyan bérlői példánya, amely befecskendez az Azure Virtual Networkba (VNet).  A ASEv3 csak a saját vnet lévő privát címeken teszi lehetővé az alkalmazások megjelenítését. Ha az előzetes verzióban létrejön egy ASEv3, a rendszer hozzáadja ezeket az erőforrásokat az előfizetéséhez.
 
 - App Service-környezet
-- Privát zóna Azure DNS
 - Privát végpont
 
 Egy szolgáltató üzembe helyezéséhez két alhálózatot kell használni.  Egy alhálózat fogja tárolni a privát végpontot.  Ezt az alhálózatot más dolgokhoz, például virtuális gépekhez is használhatja.  A másik alhálózat a kifelé irányuló kimenő hívások esetében használatos.  Ezt az alhálózatot nem lehet más, mint a központhoz nem. 

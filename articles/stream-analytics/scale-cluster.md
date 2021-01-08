@@ -3,17 +3,16 @@ title: Azure Stream Analytics-fürt átméretezése
 description: Megtudhatja, hogyan méretezheti fel és állíthatja le egy Azure Stream Analytics-fürt méretét.
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 0763e56de6c72a36d39b17d153db6fc4d7dd821a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e469e9bfd13bf8d89084b66e954cb51b27c2ebc2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947720"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020026"
 ---
 # <a name="resize-an-azure-stream-analytics-cluster"></a>Azure Stream Analytics-fürt átméretezése
 
@@ -25,7 +24,7 @@ A fürt kapacitása felfelé és lefelé is méretezhető, hogy megfeleljen a fo
 
 1. A Azure Portal keresse meg és válassza ki a Stream Analytics-fürtöt.
 
-1. Az **Áttekintés** szakaszban válassza a **skála**lehetőséget. Láthatja, hogy hány SUs van hozzárendelve a fürthöz. A kiválasztó segítségével szükség szerint növelheti vagy csökkentheti az SUs-t.
+1. Az **Áttekintés** szakaszban válassza a **skála** lehetőséget. Láthatja, hogy hány SUs van hozzárendelve a fürthöz. A kiválasztó segítségével szükség szerint növelheti vagy csökkentheti az SUs-t.
 
    ![fürt méretezése](./media/scale-cluster/scale-cluster.png)
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1a7bd36a6e3f3cc5b785745fc51f0aede3b47b74
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 2029ec2d0b0f27d7078f381880cf7ca177d24ca0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803306"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020203"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Arcok kivonása a Azure Media Analytics
 
@@ -37,11 +37,14 @@ Az arc-kivonás úgy működik, hogy a videó minden képkockájában felderíti
 
 A teljesen automatikus mód mellett van egy kétlépéses munkafolyamat is, amely lehetővé teszi, hogy a talált arcok kiválasztása/kiválasztása az azonosítók listáján keresztül történjen. Azt is megteheti, hogy a frame-beállítások alapján tetszőlegesen beállítható, hogy a felügyeleti csomag JSON formátumú metaadat-fájlt használ. A munkafolyamat **elemzése** és **kivonási** módokra van bontva. A két mód egyetlen menetben is egyesíthető, amely egy feladatban mindkét feladatot futtatja; ezt a módot **Összevontnak** nevezzük.
 
+   > [!NOTE]
+   > Az arc-érzékelő adathordozó-processzora 2020 júniusa óta elavult, [Azure Media Services örökölt összetevőket](./legacy-components.md)tartalmaz. Érdemes lehet Azure Media Services V3 API-t használni.
+
 ### <a name="combined-mode"></a>Kombinált mód
 
 Ez automatikusan létrehoz egy kivont MP4-t manuális bevitel nélkül.
 
-| Fázis | Fájlnév | Jegyzetek |
+| Fázis | Fájlnév | Megjegyzések |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV, MOV vagy MP4 formátumban |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "combined"}} |
@@ -51,7 +54,7 @@ Ez automatikusan létrehoz egy kivont MP4-t manuális bevitel nélkül.
 
 A kétlépéses munkafolyamat **elemzése** átveszi a videó bemenetét, és az összes észlelt arc egy JSON-fájlját, valamint a jpg-képeket hozza létre.
 
-| Fázis | Fájlnév | Jegyzetek |
+| Fázis | Fájlnév | Megjegyzések |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV, MPV vagy MP4 formátumban |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "elemzés"}} |
@@ -117,7 +120,7 @@ Ide tartozik az életlenítés, az eredeti videó és a jegyzetek JSON-azonosít
 
 Az elemzés menetének kimenete nem tartalmazza az eredeti videót. A videót fel kell tölteni a bemeneti eszközbe a kivonási mód feladathoz, és az elsődleges fájlként kell kiválasztani.
 
-| Fázis | Fájlnév | Jegyzetek |
+| Fázis | Fájlnév | Megjegyzések |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV-, MPV-vagy MP4-formátumban. Ugyanaz a videó, mint az 1. lépésben. |
 | Bemeneti eszköz |foo_annotations.jsbekapcsolva |Megjegyzések metaadatainak fájlja az első fázisból, választható módosításokkal. |

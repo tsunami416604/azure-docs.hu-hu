@@ -1,18 +1,17 @@
 ---
 title: A Azure Stream Analytics időközbeni kezelési értelmezése
 description: Megtudhatja, hogyan választhatja ki a legjobb kezdési időt, kezelheti a késői és korai eseményeket, valamint a Azure Stream Analytics időközbeni kezelési mérőszámait.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: c8f40808834c64ad74673f1c5f0c19892607fdcc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f9dbdb3907b376df8de988730c6c48ed01bfccd0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127473"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019941"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>A Azure Stream Analytics időközbeni kezelési értelmezése
 
@@ -22,11 +21,11 @@ Ebből a cikkből megtudhatja, hogyan alakíthat ki tervezési döntéseket a Az
 
 A vitafórum jobb megjelenítéséhez hozzon létre néhány háttér-fogalmat:
 
-- **Esemény időpontja** : az az időpont, amikor az eredeti esemény történt. Például amikor egy mozgó autó az autópályán egy díjköteles standot közelít.
+- **Esemény időpontja**: az az időpont, amikor az eredeti esemény történt. Például amikor egy mozgó autó az autópályán egy díjköteles standot közelít.
 
-- **Feldolgozási idő** : az az idő, amikor az esemény eléri a feldolgozó rendszerét, és megfigyelhető. Ha például egy díjköteles stand-érzékelő látja az autót, és a számítógéprendszer eltarthat néhány másodpercig, hogy feldolgozza az adatfeldolgozást.
+- **Feldolgozási idő**: az az idő, amikor az esemény eléri a feldolgozó rendszerét, és megfigyelhető. Ha például egy díjköteles stand-érzékelő látja az autót, és a számítógéprendszer eltarthat néhány másodpercig, hogy feldolgozza az adatfeldolgozást.
 
-- **Vízjel** : egy esemény időjelölője, amely azt jelzi, hogy a rendszer milyen eseményeket ingressed a streaming processzornak. A vízjelek lehetővé teszik, hogy a rendszer egyértelmű előrehaladást jelezzen az események betöltéséhez. A streamek jellegéből adódóan a bejövő esemény adatai soha nem állnak le, így a vízjelek jelzik, hogy az adatfolyam egy bizonyos pontjára mutat.
+- **Vízjel**: egy esemény időjelölője, amely azt jelzi, hogy a rendszer milyen eseményeket ingressed a streaming processzornak. A vízjelek lehetővé teszik, hogy a rendszer egyértelmű előrehaladást jelezzen az események betöltéséhez. A streamek jellegéből adódóan a bejövő esemény adatai soha nem állnak le, így a vízjelek jelzik, hogy az adatfolyam egy bizonyos pontjára mutat.
 
    A vízjel fogalma fontos. A vízjelek lehetővé teszik a Stream Analytics annak meghatározását, hogy a rendszer mikor hozhat létre teljes, helyes és ismételhető eredményeket, amelyeket nem kell visszavonni. A feldolgozás kiszámítható és ismételhető módon végezhető el. Ha például egy bizonyos hibakezelés feltételéhez újra kell számolni, a vízjelek biztonságos kezdési és befejezési pontok.
 
@@ -76,7 +75,7 @@ Ha úgy dönt, hogy az esemény időpontjának megfelelően használja az **érk
 
 ## <a name="late-arriving-events"></a>Későn érkező események
 
-A késői érkezési tolerancia ablakának definíciója szerint minden bejövő eseménynél Azure Stream Analytics összehasonlítja az **esemény időpontját** az **érkezési idővel** . Ha az esemény időpontja kívül esik a tolerancia ablakon, beállíthatja, hogy a rendszer eldobja az eseményt, vagy állítsa be az esemény időpontját a tűréshatáron belülre.
+A késői érkezési tolerancia ablakának definíciója szerint minden bejövő eseménynél Azure Stream Analytics összehasonlítja az **esemény időpontját** az **érkezési idővel**. Ha az esemény időpontja kívül esik a tolerancia ablakon, beállíthatja, hogy a rendszer eldobja az eseményt, vagy állítsa be az esemény időpontját a tűréshatáron belülre.
 
 A küszöbértékek generálása után a szolgáltatás olyan eseményeket fogadhat, amelyekben a vízjelnél kisebb esemény van. Beállíthatja, hogy a szolgáltatás **eldobja** ezeket az eseményeket, vagy **állítsa be** az esemény időpontját a vízjel értékre.
 
@@ -220,7 +219,7 @@ Ebben az ábrán a következő tűréshatárok használatosak:
 
    ![Azure Stream Analytics alstreamek vízjelének illusztrációja](media/stream-analytics-time-handling/watermark-graph-3.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Stream Analytics az események sorrendjét érintő megfontolások]()
 - [Stream Analytics feladatok metrikái](stream-analytics-monitoring.md)

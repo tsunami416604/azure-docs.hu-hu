@@ -1,19 +1,18 @@
 ---
 title: Élő adatellenőrzés Azure Stream Analytics a Visual Studióval
 description: Megtudhatja, hogyan tesztelheti az Azure Stream Analytics-feladatot helyileg élő adatfolyam-adatok használatával.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0788d8b4f659364fcedc690185c9159a24434125
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 99e9ce85bb1e59b5016e836ff16d03cb3326ec8c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123914"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020366"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Élő adatellenőrzés helyi tesztelése a Visual Studio Azure Stream Analytics eszközeivel (előzetes verzió)
 
@@ -31,7 +30,7 @@ A következő helyi tesztelési lehetőségek támogatottak:
 
 ## <a name="local-testing-with-live-data"></a>Helyi tesztelés élő adatértékekkel
 
-1. Miután létrehozott egy [Azure stream Analytics felhőalapú projektet a Visual Studióban](stream-analytics-quick-create-vs.md), nyissa meg a **script. asaql** . A helyi tesztelés alapértelmezés szerint helyi bemenetet és helyi kimenetet használ.
+1. Miután létrehozott egy [Azure stream Analytics felhőalapú projektet a Visual Studióban](stream-analytics-quick-create-vs.md), nyissa meg a **script. asaql**. A helyi tesztelés alapértelmezés szerint helyi bemenetet és helyi kimenetet használ.
 
    ![A Visual Studio helyi bemenetének és helyi kimenetének Azure Stream Analytics](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
@@ -61,7 +60,7 @@ A következő helyi tesztelési lehetőségek támogatottak:
 
 * Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](./stream-analytics-time-handling.md) , míg a helyi beviteli beállítások nem.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Stream Analytics-feladatok létrehozása a Visual studióhoz készült Azure Stream Analytics Tools használatával](stream-analytics-quick-create-vs.md)
 * [A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit](stream-analytics-vs-tools-local-run.md)

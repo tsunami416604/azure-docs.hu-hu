@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
 ms.author: anwigley
-ms.openlocfilehash: b733e90b69be4e2bd458be5486564747ed4cca78
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 448b3d93ed58e4cfc73da576f0c5871600400ac6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018871"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019839"
 ---
 # <a name="apply-devops-to-luis-app-development-using-github-actions"></a>A DevOps alkalmazása a LUIS-alkalmazások fejlesztésére GitHub-műveletek használatával
 
@@ -29,7 +29,7 @@ A [Luis DevOps-sablon](https://github.com/Azure-Samples/LUIS-DevOps-Template) t�
 * **A sablon klónozása** – másolja a sablont a saját GitHub-adattárba.
 * **Luis-erőforrások konfigurálása** – létrehozhatja az Azure-beli [Luis Authoring and előrejelzési erőforrásokat](./luis-how-to-azure-subscription.md) , amelyeket a folyamatos integrációs munkafolyamatok használni fognak.
 * **A CI/CD-munkafolyamatok konfigurálása** – paraméterek konfigurálása a CI/CD-munkafolyamatokhoz és a [GitHub-titkok](https://help.github.com/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)tárolása.
-* Bemutatja **a ["dev Inner loop"](https://mitchdenny.com/the-inner-loop/)** -t – a fejlesztő frissíti a minta Luis-alkalmazást egy fejlesztési ág használata közben, teszteli a frissítéseket, majd lekéri a módosításokat, és megkeresi a felülvizsgálati jóváhagyást.
+* Bemutatja **a ["dev Inner loop"](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)** -t – a fejlesztő frissíti a minta Luis-alkalmazást egy fejlesztési ág használata közben, teszteli a frissítéseket, majd lekéri a módosításokat, és megkeresi a felülvizsgálati jóváhagyást.
 * **CI/CD-munkafolyamatok végrehajtása** – [folyamatos integrációs munkafolyamatok végrehajtása egy Luis-alkalmazás létrehozásához és teszteléséhez](luis-concept-devops-automation.md) GitHub-műveletek használatával.
 * **Automatikus tesztelés elvégzése** – [automatizált batch-tesztelés végrehajtása egy Luis-alkalmazás](luis-concept-devops-testing.md) számára az alkalmazás minőségének kiértékeléséhez.
 * **A Luis-alkalmazás üzembe helyezése** – [folyamatos kézbesítési (CD) feladatok](luis-concept-devops-automation.md#continuous-delivery-cd) végrehajtása a Luis-alkalmazás közzétételéhez.

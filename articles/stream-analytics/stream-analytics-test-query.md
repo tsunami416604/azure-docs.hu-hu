@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics-feladatok tesztelése mintaadatok
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Portal a Azure Stream Analytics feladatok teszteléséhez, a minta bemenetekhez és a mintaadatok feltöltéséhez.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: eff9103f476e6074ab46198ff8cc78588675569f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490967"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020043"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Azure Stream Analytics-feladatok tesztelése a portálon
 
@@ -23,7 +22,7 @@ A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is
 
 Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átviteli bemenetekről. Futtathat lekérdezéseket az alapértelmezett mintán, vagy beállíthatja a minta egy adott időkeretét.
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
 2. Keresse meg és válassza ki a meglévő Stream Analytics feladatot.
 
@@ -71,7 +70,7 @@ Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átv
 
 Az élő adatok helyett helyi fájlokból származó mintaadatok használatával tesztelheti a Azure Stream Analytics lekérdezést.
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
    
 2. Keresse meg a meglévő Stream Analytics feladatot, és válassza ki.
 
@@ -81,7 +80,7 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
    ![Képernyőfelvétel: a minta feltöltésének beírása lehetőség.](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. Töltse fel a helyi fájlt a lekérdezés teszteléséhez. Csak a JSON-, CSV-vagy AVRO-formátumokkal tölthet fel fájlokat. Kattintson az **OK** gombra.
+5. Töltse fel a helyi fájlt a lekérdezés teszteléséhez. Csak a JSON-, CSV-vagy AVRO-formátumokkal tölthet fel fájlokat. Válassza az **OK** lehetőséget.
 
    ![Képernyőfelvétel: a mintaadatok feltöltése párbeszédpanel, ahol kiválaszthat egy fájlt.](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 

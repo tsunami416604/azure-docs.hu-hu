@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics JobConfig.jsa mezőkön
 description: Ez a cikk a Visual Studio Code-ban a feladatok létrehozásához használt fájl Azure Stream Analytics JobConfig.jstámogatott mezőit sorolja fel.
-author: mamccrea
-ms.author: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: bb1a1a0b9f3a5996af56ff2c4e2de91d78a6c260
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0eebd0b62e973572a40b7b141ae908046700ba3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129337"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020485"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>Azure Stream Analytics JobConfig.jsa mezőkön
 
@@ -53,7 +53,7 @@ A következő mezők támogatottak a [Azure stream Analytics-feladatok Visual St
 |ScriptType|sztring|Igen|Fenntartott tulajdonság a forrásfájl típusának jelzéséhez. A (z) JobConfig.jsesetén elfogadható érték a következő: "JobConfig".|
 |Címkék|JSON-kulcs-érték párok|Nem|A címkék olyan név/érték párok, amelyek lehetővé teszik az erőforrások kategorizálását és az összevont számlázás megtekintését, ha ugyanazt a címkét több erőforrásra és erőforráscsoporthoz alkalmazza. A címkék nevei megkülönböztetik a kis-és nagybetűket, és a címke értéke kis-és nagybetűk megkülönböztetése.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md)
 * [A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával](visual-studio-code-local-run.md)

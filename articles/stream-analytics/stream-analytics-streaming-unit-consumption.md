@@ -3,16 +3,15 @@ title: Folyamatos átviteli egységek Azure Stream Analytics
 description: Ez a cikk a folyamatos átviteli egységek beállítását és a Azure Stream Analytics teljesítményét befolyásoló egyéb tényezőket ismerteti.
 author: JSeb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 38f649fbff9ea2c1182adb613b9302768708a4c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a5a0e6feba966d2d10c5cd36432c3d5db172a795
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019871"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020009"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>A streamelési egységek ismertetése és módosítása
 

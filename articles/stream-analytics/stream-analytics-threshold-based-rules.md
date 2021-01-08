@@ -1,17 +1,17 @@
 ---
 title: A Azure Stream Analytics konfigurálható küszöbérték-alapú szabályai
 description: Ez a cikk azt ismerteti, hogyan használhatók a hivatkozási eredmények olyan riasztási megoldás eléréséhez, amely Azure Stream Analyticsban konfigurálható küszöbérték-alapú szabályokat tartalmaz.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/30/2018
-ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f9d132084f0254486be533daea6b54239f4e450
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039041"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019975"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Konfigurálható küszöbérték-alapú szabályok feldolgozása Azure Stream Analytics
 Ez a cikk azt ismerteti, hogyan használhatók a hivatkozási eredmények olyan riasztási megoldás eléréséhez, amely a Azure Stream Analytics konfigurálható küszöbértékeken alapuló szabályokat használ.
@@ -34,10 +34,10 @@ A példában a riasztások akkor jönnek létre, amikor egy percen belül az esz
 
 A lekérdezésben minden egyes deviceId esetében, valamint a deviceId alatt található minden egyes metricName esetében 0 és 5 dimenzió közötti értékre állíthatja a CSOPORTOSÍTÁSt. Csak a megfelelő szűrő értékekkel rendelkező események vannak csoportosítva. A csoportosítást követően a min., a max., az átlag, az ablakos összesítések kiszámítása a 60 másodperces időszakra történik. A rendszer ezt követően kiszámítja az összesített értékek szűrőit a hivatkozáson beállított küszöbérték alapján a riasztás kimeneti eseményének létrehozásához.
 
-Tegyük fel például, hogy van egy olyan Stream Analytics-feladata, amely egy **szabályok**nevű, adatbevitelre szolgáló adatbevitelt tartalmaz, és elnevezte a **metrikákat**. 
+Tegyük fel például, hogy van egy olyan Stream Analytics-feladata, amely egy **szabályok** nevű, adatbevitelre szolgáló adatbevitelt tartalmaz, és elnevezte a **metrikákat**. 
 
 ## <a name="reference-data"></a>Hivatkozási érték
-Ez a példás példa azt mutatja be, hogyan lehet egy küszöbérték-alapú szabályt megjeleníteni. Egy JSON-fájl tárolja a hivatkozási adatokat, és az Azure Blob Storage-ba menti, és a blob Storage-tárolót a **szabályok**nevű hivatkozásként használja. Felülírhatja ezt a JSON-fájlt, és lecserélheti a szabály konfigurációját az idő bekapcsolásával a folyamatos átviteli feladatok leállítása vagy elindítása nélkül.
+Ez a példás példa azt mutatja be, hogyan lehet egy küszöbérték-alapú szabályt megjeleníteni. Egy JSON-fájl tárolja a hivatkozási adatokat, és az Azure Blob Storage-ba menti, és a blob Storage-tárolót a **szabályok** nevű hivatkozásként használja. Felülírhatja ezt a JSON-fájlt, és lecserélheti a szabály konfigurációját az idő bekapcsolásával a folyamatos átviteli feladatok leállítása vagy elindítása nélkül.
 
 - A példában szereplő szabály egy állítható riasztást jelöl, ha a processzor mérete meghaladja az értéket (az átlag nagyobb vagy egyenlő) a százalékos értéknél `90` . A `value` mező igény szerint konfigurálható.
 - Figyelje meg, hogy a szabály egy **operátor** mezővel rendelkezik, amelyet később a lekérdezési szintaxisban kell értelmezni `AVGGREATEROREQUAL` . 
@@ -71,7 +71,7 @@ Ez a példás példa azt mutatja be, hogyan lehet egy küszöbérték-alapú sza
 ```
 
 ## <a name="example-streaming-query"></a>Példa adatfolyam-lekérdezésre
-Ez a példa Stream Analytics lekérdezés összekapcsolja a fenti példában szereplő **szabályokra** hivatkozó adatokat egy **mérőszámok**nevű bemeneti adatfolyamba.
+Ez a példa Stream Analytics lekérdezés összekapcsolja a fenti példában szereplő **szabályokra** hivatkozó adatokat egy **mérőszámok** nevű bemeneti adatfolyamba.
 
 ```sql
 WITH transformedInput AS

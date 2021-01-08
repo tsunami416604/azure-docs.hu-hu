@@ -2,18 +2,18 @@
 title: A Twitter hangulatának valós idejű elemzése Azure Stream Analytics
 description: Ez a cikk azt ismerteti, hogyan használható a Stream Analytics a valós idejű Twitter-hangulat elemzéséhez. Lépésenkénti útmutató az események generálásához az élő irányítópulton lévő adatokhoz.
 services: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 0941e3d5141b5b8841f5d37e3db0d0b1b1474547
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3b321e318621c5687a2e3e5f0649985210a2d16c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019820"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019873"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-hangulatelemzés az Azure Stream Analytics szolgáltatásban
 
@@ -212,7 +212,7 @@ Ebben a útmutatóban az összesített Tweet-eseményeket a feladatsorból az Az
    * **Storage-fiók**. Válassza ki a tárfiókot.
    * **Tároló**. Válassza az **új létrehozása** elemet, és adja meg az értéket `socialtwitter` .
    
-4. Kattintson a **Mentés** gombra.   
+4. Válassza a **Mentés** lehetőséget.   
 
 ## <a name="start-the-job"></a>A feladat indítása
 

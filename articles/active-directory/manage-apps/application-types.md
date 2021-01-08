@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 07/11/2017
+ms.topic: reference
+ms.date: 01/07/2021
 ms.author: kenwith
-ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 18e29ce8bf744cabb31c5634c9b0ca547bca5acc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858229"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020672"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Alkalmazások megtekintése az Azure AD-Bérlővel az Identitáskezelés kezeléséhez
 Az [alkalmazások felügyeletének](view-applications-portal.md) gyors üzembe helyezési sorozata az alapismereteket mutatja be. Ez azt mutatja be, hogyan tekintheti meg az összes alkalmazást az Azure AD-Bérlővel az Identitáskezelés kezeléséhez. Ez a cikk egy kicsit mélyebben ismerteti a megtalált alkalmazások típusait.
@@ -38,5 +38,5 @@ Ha az **összes alkalmazásra** szűri, a **minden alkalmazás** **lista** megje
 
 További információ arról, hogy miként és miért történik az alkalmazások hozzáadása a címtárhoz: [Hogyan lesznek hozzáadva az alkalmazások az Azure ad](../develop/active-directory-how-applications-are-added.md)-hez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Alkalmazások kezelése Azure Active Directory](what-is-application-management.md)

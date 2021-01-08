@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d37fca06a3d2eafa0af9e31c3a30ac66be5404f0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591616"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020604"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD a Custom Speechhez
 
@@ -83,12 +83,12 @@ A Custom Speechhez már megvalósított DevOps-megoldáshoz nyissa meg a [Speech
 A [beszédfelismerési DevOps-sablon](https://github.com/Azure-Samples/Speech-Service-DevOps-Template) a következőkhöz nyújt infrastruktúrát és részletes útmutatást:
 
 - Másolja a sablon tárházát a GitHub-fiókjába, majd hozzon létre Azure-erőforrásokat és egy [egyszerű szolgáltatásnevet](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) a GitHub-műveletek CI/CD-munkafolyamataihoz.
-- Végigvezeti a "[dev Inner loop](https://mitchdenny.com/the-inner-loop/)"-t. Frissítheti a betanítási és tesztelési adatait egy adott szolgáltatási ágra, tesztelheti a módosításokat egy ideiglenes fejlesztési modellel, és lekéréses kérelmet hozhat létre, és áttekintheti a módosításokat.
+- Végigvezeti a "[dev Inner loop](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)"-t. Frissítheti a betanítási és tesztelési adatait egy adott szolgáltatási ágra, tesztelheti a módosításokat egy ideiglenes fejlesztési modellel, és lekéréses kérelmet hozhat létre, és áttekintheti a módosításokat.
 - Ha a betanítási kérelmeket egy lekéréses kérelemben frissítik a *Main*-ba, a modelleket a GitHub ACTIONs CI-munkafolyamattal.
 - Automatizált pontossági tesztelést végezhet a modell [Word-hibák arányának](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) létrehozásához. A teszt eredményeinek tárolása az Azure blobban.
 - Futtassa a CD-munkafolyamatot, és hozzon létre egy végpontot, amikor a WER fejleszti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a DevOps és a Speech:
 

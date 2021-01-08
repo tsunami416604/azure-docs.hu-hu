@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 362157f023f7ed4d2da81962acd32e2da968193e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6569a99ec851da478151665921e7689e1c3488f1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738787"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020206"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Virtuálisgép-hálózat útválasztási problémáinak diagnosztizálása – Azure PowerShell
 
 Ebben a cikkben üzembe helyez egy virtuális gépet (VM), majd megtekintheti a kommunikációt egy IP-címmel és egy URL-címmel. Meghatározza a kommunikációs hiba okát és feloldásának módját.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -131,7 +131,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-Ahogy az előző kimenetben is látható, a **0.0.0.0/0** **AddressPrefix** útvonalon az összes forgalom nem a másik útvonalon található címekre irányuló, az **Internet**következő ugrásával ellátott összes forgalmat átirányítja. Ahogy a kimenetben is látható, bár a 172.16.0.0/12 előtag alapértelmezett útvonala, amely magában foglalja a 172.31.0.100-címeket, a **nextHopType** **nincs.** Az Azure létrehoz egy alapértelmezett útvonalat a 172.16.0.0/12 címhez, de amíg nincs oka rá, nem határozza meg a következő ugrás típusát. Ha például hozzáadta a 172.16.0.0/12 címtartományt a virtuális hálózat címterület számára, az Azure a **NextHopType** **virtuális hálózatra** módosítja az útvonalon. Az ellenőrzések után a **virtuális hálózat** **nextHopType**jelenik meg.
+Ahogy az előző kimenetben is látható, a **0.0.0.0/0** **AddressPrefix** útvonalon az összes forgalom nem a másik útvonalon található címekre irányuló, az **Internet** következő ugrásával ellátott összes forgalmat átirányítja. Ahogy a kimenetben is látható, bár a 172.16.0.0/12 előtag alapértelmezett útvonala, amely magában foglalja a 172.31.0.100-címeket, a **nextHopType** **nincs.** Az Azure létrehoz egy alapértelmezett útvonalat a 172.16.0.0/12 címhez, de amíg nincs oka rá, nem határozza meg a következő ugrás típusát. Ha például hozzáadta a 172.16.0.0/12 címtartományt a virtuális hálózat címterület számára, az Azure a **NextHopType** **virtuális hálózatra** módosítja az útvonalon. Az ellenőrzések után a **virtuális hálózat** **nextHopType** jelenik meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

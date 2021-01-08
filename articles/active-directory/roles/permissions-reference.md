@@ -14,14 +14,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d04f2d1717e1d95f8bcafb8f72f2b0a2f83a248
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 6da053bb04e5ee3f2b2b307c382f2695663669e5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976826"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020655"
 ---
-# <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
+# <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkörök engedélyezése az Azure Active Directoryban
 
 A Azure Active Directory (Azure AD) használatával korlátozott rendszergazdákat jelölhet ki a kevésbé Kiemelt szerepkörökben lévő Identity Tasks-feladatok kezelésére. A rendszergazdák olyan célokra rendelhetők hozzá, mint a felhasználók hozzáadása vagy módosítása, a rendszergazdai szerepkörök hozzárendelése, a felhasználói jelszavak alaphelyzetbe állítása, a felhasználói licencek kezelése és a tartománynevek kezelése. Az [alapértelmezett felhasználói engedélyeket](../fundamentals/users-default-permissions.md) csak az Azure ad felhasználói beállításaiban lehet módosítani.
 
@@ -87,6 +87,14 @@ Az emelt [szintű hitelesítés rendszergazdai](#privileged-authentication-admin
 >* Biztonsági csoport és Microsoft 365 csoport tulajdonosai, akik kezelhetik a csoporttagság kezelését. Ezek a csoportok hozzáférést biztosíthatnak a bizalmas vagy magánjellegű információkhoz, illetve a kritikus konfigurációhoz az Azure AD-ben és máshol.
 >* Az Azure AD-n kívül más szolgáltatásokban, például az Exchange Online-ban, az Office biztonsági és megfelelőségi központban és a humán erőforrás-rendszerekben található rendszergazdák.
 >* Nem rendszergazdák, például vezetők, jogi tanácsadás és emberi erőforrások alkalmazottai, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz.
+
+### <a name="attack-payload-author"></a>[Támadási hasznos adatok szerzője](#attack-payload-author-permissions)
+
+Az ebben a szerepkörben lévő felhasználók támadási hasznos adatokat hozhatnak létre, de valójában nem indítják el vagy nem ütemezhetik azokat. A támadási adatok ezután a bérlő minden olyan rendszergazdája számára elérhetők lesznek, akik a szimuláció létrehozásához használhatják őket.
+
+### <a name="attack-simulation-administrator"></a>[Támadás szimulációjának rendszergazdája](#attack-simulation-administrator-permissions)
+
+Az ebben a szerepkörben lévő felhasználók létrehozhatják és kezelhetik a támadási szimulációk létrehozásával, a szimuláció indításával/ütemezésével, valamint a Szimulációs eredmények áttekintésével kapcsolatos szempontokat. Ennek a szerepkörnek a tagjai hozzáférnek a bérlő összes szimulációja számára.
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps-rendszergazda](#azure-devops-administrator-permissions)
 
@@ -489,6 +497,10 @@ Az ezzel a szerepkörrel rendelkező felhasználók kezelhetik a csapatok [álta
 
 A szerepkör felhasználói a Microsoft Teams munkaterhelésének minden aspektusát felügyelhetik a Microsoft csapatainak & a Skype vállalati felügyeleti központ és a megfelelő PowerShell-modulok használatával. Ez többek között a telefonos, üzenetküldési, értekezlet-és a csapatokhoz kapcsolódó felügyeleti eszközökre is kiterjed. Ez a szerepkör emellett lehetőséget biztosít az összes Microsoft 365 csoport létrehozására és felügyeletére, a támogatási jegyek kezelésére és a szolgáltatás állapotának figyelésére.
 
+### <a name="usage-summary-reports-reader"></a>[Használati összesítő jelentések olvasója](#usage-summary-reports-reader-permissions)
+
+Az ezzel a szerepkörrel rendelkező felhasználók hozzáférhetnek a bérlői szintű összesített adatokhoz és a Microsoft 365 felügyeleti központban a használati és termelékenységi pontszámhoz kapcsolódó információkhoz, de nem férhetnek hozzá a felhasználói szint részleteihez vagy elemzésekhez. Microsoft 365 felügyeleti központban a két jelentés esetében különbséget teszünk a bérlői szint összesített adatai és a felhasználói szintek részletei között. Ez a szerepkör egy külön védelmi réteget biztosít az egyes felhasználó által azonosítható adatokhoz, amelyeket mind az ügyfelek, mind a jogi csapatok igényeltek. 
+
 ### <a name="user-administrator"></a>[Felhasználói rendszergazda](#user-administrator-permissions)
 
 Az ezzel a szerepkörrel rendelkező felhasználók létrehozhatnak felhasználókat, és kezelhetik a felhasználók minden aspektusát bizonyos korlátozásokkal (lásd a táblázatot), és frissíthetik a jelszó-elévülési házirendeket. Emellett az ezzel a szerepkörrel rendelkező felhasználók az összes csoportot is létrehozhatják és kezelhetik. Ez a szerepkör magában foglalja a felhasználói nézetek létrehozását és kezelését, a támogatási jegyek kezelését és a szolgáltatás állapotának figyelését is. A felhasználói rendszergazdáknak nincs engedélye arra, hogy a legtöbb rendszergazdai szerepkörbe tartozó felhasználókhoz felhasználói tulajdonságokat kezeljenek. Az ehhez a szerepkörhöz tartozó felhasználó nem rendelkezik az MFA felügyeletéhez szükséges engedélyekkel. A korlátozás alól kivételt képező szerepkörök az alábbi táblázatban láthatók.
@@ -591,6 +603,25 @@ A nem rendszergazda felhasználók számára engedélyezett a hitelesítési mó
 | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Microsoft 365 Service Health olvasása és konfigurálása. |
 | Microsoft. Office 365. supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 | Microsoft. Directory/felhasználók/jelszó/frissítés | Frissítse a Microsoft 365 szervezet összes felhasználójának jelszavát. További részletekért tekintse meg az online dokumentációt. |
+
+### <a name="attack-payload-author-permissions"></a>Támadási tartalom szerzői engedélyei
+
+Létrehozhat olyan támadási tartalmakat, amelyeket később központilag telepíthet a rendszergazda.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| Microsoft. Office 365. protectionCenter/attackSimulator/hasznos adat/allProperties/allTasks | Támadási hasznos adatok létrehozása és kezelése a támadási szimulátorban. |
+| Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/READ | Olvassa el a támadási szimuláció, a válaszok és a kapcsolódó képzések jelentéseit. |
+
+### <a name="attack-simulation-administrator-permissions"></a>Támadási szimulációs rendszergazdai engedélyek
+
+A a támadási szimulációs kampányok minden aspektusát képes létrehozni és kezelni.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| Microsoft. Office 365. protectionCenter/attackSimulator/hasznos adat/allProperties/allTasks | Támadási hasznos adatok létrehozása és kezelése a támadási szimulátorban. |
+| Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/READ | Olvassa el a támadási szimuláció, a válaszok és a kapcsolódó képzések jelentéseit. |
+| Microsoft. Office 365. protectionCenter/attackSimulator/szimulációs/allProperties/allTasks | Támadási szimulációs sablonok létrehozása és kezelése a támadási szimulátorban. |
 
 ### <a name="azure-devops-administrator-permissions"></a>Azure DevOps-rendszergazdai engedélyek
 
@@ -1876,6 +1907,14 @@ Felügyelheti a Microsoft Teams szolgáltatást.
 | Microsoft. Office 365. Webportal/allEntities/alap/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása. |
 | Microsoft. Teams/allEntities/allProperties/allTasks | A csapatok összes erőforrásának kezelése. |
 
+### <a name="usage-summary-reports-reader-permissions"></a>Használati összesítő jelentések olvasójának engedélyei
+Csak a bérlői szintű összesítéseket láthatja a M365-használati elemzésekben és a termelékenységi pontszámban.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| Microsoft. Office 365. usageReports/allEntities/standard/READ | Olvassa el a bérlői szintű összesített Office 365 használati jelentéseket. |
+| Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft. Office 365. webporting összes erőforrásának alapszintű tulajdonságainak olvasása.|
+
 ### <a name="user-administrator-permissions"></a>Felhasználói rendszergazdai engedélyek
 Kezelheti a felhasználók és a csoportok minden aspektusát, beleértve a korlátozott rendszergazdák jelszavainak alaphelyzetbe állítását is.
 
@@ -1922,6 +1961,8 @@ Gráf displayName | Azure Portal megjelenítendő név | directoryRoleTemplateId
 alkalmazás-rendszergazda | Alkalmazás-rendszergazda | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Alkalmazásfejlesztő | Alkalmazás-fejlesztő | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Hitelesítés rendszergazdája | Hitelesítés rendszergazdája | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Támadási hasznos adatok szerzője | Támadási hasznos adatok szerzője | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
+Támadás szimulációjának rendszergazdája | Támadás szimulációjának rendszergazdája | c430b396-e693-46cc-96f3-db01bf8bb62a
 Azure DevOps-rendszergazda | Azure DevOps-rendszergazda | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection rendszergazda | Azure Information Protection rendszergazda | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C IEF kulcskészlet rendszergazdája | B2C IEF kulcskészlet rendszergazdája | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1985,6 +2026,7 @@ Csapat kommunikációs támogató mérnök | Csapat kommunikációs támogató m
 A Teams Communications támogatási szakértője | A Teams Communications támogatási szakértője | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Csapatok eszközeinek rendszergazdája | Csapatok eszközeinek rendszergazdája | 3d762c5a-1b6c-493f-843e-55a3b42923d4
 Teams szolgáltatás rendszergazdája | Teams szolgáltatás rendszergazdája | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Használati összesítő jelentések olvasója | Használati összesítő jelentések olvasója | 75934031-6c7e-415a-99d7-48dbd49e875e
 Felhasználó | Nem látható, mert nem használható | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Felhasználói fiók rendszergazdája | Felhasználói rendszergazda | fe930be7-5e62-47db-91af-98c3a49a38b1
 Munkahelyi eszközök csatlakoztatása | Elavult | c34f683f-4d5a-4403-affd-6615e00e3a7f
@@ -2005,7 +2047,7 @@ A következő szerepkörök nem használhatók. Elavultak, és a későbbiekben 
 
 Nem minden, a PowerShell vagy az MS Graph API által visszaadott szerepkör jelenik meg Azure Portalban. A következő táblázat ezeket a különbségeket rendezi.
 
-API neve | Azure Portal neve | Jegyzetek
+API neve | Azure Portal neve | Megjegyzések
 -------- | ------------------- | -------------
 Vállalati rendszergazda | Globális rendszergazda | [A jobb érthetőség érdekében a név módosult](permissions-reference.md#role-template-ids)
 CRM szolgáltatás rendszergazdája | Dynamics 365-rendszergazda | [A termék aktuális arculatát tükrözi](permissions-reference.md#role-template-ids)
@@ -2022,7 +2064,7 @@ Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
 Felhasználó | Nem látható, mert nem használható | NA
 Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](permissions-reference.md#deprecated-roles)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájához, olvassa el az [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) című témakört.
 * Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.

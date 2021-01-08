@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics térinformatikai függvények bemutatása
 description: Ez a cikk a Azure Stream Analytics feladatokban használt térinformatikai függvényeket ismerteti.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: krishna0815
+ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 44e445f6d1dce8193109d6b5ad1742210458e74c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8d01f43dd6e404bb8f8ae0898625ae1ea9d09fd6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130408"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020434"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics térinformatikai függvények bemutatása
 
@@ -26,7 +25,7 @@ Példa a térinformatikai függvények előnyeit kihasználó forgatókönyvekre
 * Földrajzi kerítés
 * Telefonos nyomon követés a cella helyei között
 
-Stream Analytics lekérdezési nyelv hét beépített térinformatikai funkcióval rendelkezik: **CreateLineString** , **CreatePoint** , **CreatePolygon** , **ST_DISTANCE** , **ST_OVERLAPS** , **ST_INTERSECTS** és **ST_WITHIN** .
+Stream Analytics lekérdezési nyelv hét beépített térinformatikai funkcióval rendelkezik: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_INTERSECTS** és **ST_WITHIN**.
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -196,7 +195,7 @@ FROM input
 
 További tudnivalókért tekintse meg a [ST_WITHIN](/stream-analytics-query/st-within) -referenciát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
