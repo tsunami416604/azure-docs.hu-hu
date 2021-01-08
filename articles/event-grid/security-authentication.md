@@ -2,13 +2,13 @@
 title: Események kézbesítésének hitelesítése az eseménykezelők számára (Azure Event Grid)
 description: Ez a cikk bemutatja, hogyan hitelesíthető a kézbesítés az eseménykezelők számára a Azure Event Gridban.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 8360aa49e3d83879499af79448ff9f85082f47ac
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87460643"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015538"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Események kézbesítésének hitelesítése az eseménykezelők számára (Azure Event Grid)
 Ez a cikk tájékoztatást nyújt az események az eseménykezelők számára történő hitelesítéséről. Azt is bemutatja, hogyan védheti meg az Event Grid események fogadására használt webhook-végpontokat Azure Active Directory (Azure AD) vagy közös titok használatával.
@@ -41,6 +41,9 @@ További információ az események webhookok általi kézbesítéséről: [webh
 
 > [!IMPORTANT]
 A Azure Event Grid csak a **https** webhook-végpontokat támogatja. 
+
+## <a name="endpoint-validation-with-cloudevents-v10"></a>Végpont ellenőrzése a CloudEvents 1.0-s verziójában
+Ha már ismeri a Event Gridt, előfordulhat, hogy a visszaélések megelőzése érdekében a végpont-ellenőrzési kézfogást ismeri. A CloudEvents 1.0-s verziójában a **http-beállítások** módszer használatával valósítja meg a saját [visszaélés elleni védelem szemantikai](webhook-event-delivery.md) beállításait. További információ: [HTTP 1,1 Webhookok az Event Delivery – 1,0-es verzióhoz](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Ha a kimenethez a CloudEvents sémát használja, akkor a Event Grid a Event Grid érvényesítési esemény mechanizmusa helyett az CloudEvents 1.0-s verziójának védelme funkciót használja. További információ: [a CloudEvents 1.0-s verziójának használata Event Grid használatával](cloudevents-schema.md). 
 
 
 ## <a name="next-steps"></a>További lépések

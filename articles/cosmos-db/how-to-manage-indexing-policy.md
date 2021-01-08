@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341314"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015691"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexelési szabályzatok kezelése az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ Azure Cosmos DB a rendszer az egyes tárolók számára definiált [indexelési 
 
 Az alábbiakban néhány példát láthat a [JSON-formátumában](index-policy.md#include-exclude-paths)látható indexelési házirendekre, így azok elérhetővé válnak a Azure Portal. Ugyanezen paraméterek állíthatók be az Azure CLI-n vagy bármely SDK-n keresztül.
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Letiltási szabályzat a tulajdonságok egyes elérési útjai szelektív kizárásához
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a><a id="range-index"></a>Letiltási szabályzat a tulajdonságok egyes elérési útjai szelektív kizárásához
 
 ```json
     {
@@ -146,7 +146,7 @@ Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind```
 > [!NOTE]
 > Általában ajánlott egy **kijelentkezési** indexelési házirend használata, amellyel Azure Cosmos db proaktív módon indexelheti az adatmodellbe felvehető új tulajdonságokat.
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Térbeli index használata csak adott tulajdonság elérési útján
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a><a id="spatial-index"></a>Térbeli index használata csak adott tulajdonság elérési útján
 
 ```json
 {
@@ -176,7 +176,7 @@ Ez az indexelési házirend egyenértékű a manuálisan beállított ```kind```
 }
 ```
 
-## <a name="composite-indexing-policy-examples"></a>Összetett indexelési házirend – példák
+## <a name="composite-indexing-policy-examples"></a><a id="composite-index"></a>Összetett indexelési házirend – példák
 
 Az egyéni tulajdonságok elérési útjának belefoglalása vagy kizárása mellett összetett index is megadható. Ha olyan lekérdezést szeretne végrehajtani `ORDER BY` , amely több tulajdonságra vonatkozó záradékot tartalmaz, az ezen tulajdonságok [összetett indexét](index-policy.md#composite-indexes) kell megadni. Az összetett indexek emellett a több szűrővel, vagy egy szűrővel és ORDER BY záradékkal rendelkező lekérdezések esetében is teljesítménybeli előnyökkel járnak.
 
@@ -411,7 +411,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 # <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
-A `ContainerProperties` [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) objektuma (lásd a [this Quickstart](create-sql-api-dotnet.md) használatról szóló rövid útmutatót) egy olyan tulajdonságot tesz elérhetővé `IndexingPolicy` , amely lehetővé teszi a módosítását, illetve a `IndexingMode` hozzáadását és eltávolítását `IncludedPaths` `ExcludedPaths` .
+A `ContainerProperties` [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) objektuma (lásd a [](create-sql-api-dotnet.md) használatról szóló rövid útmutatót) egy olyan tulajdonságot tesz elérhetővé `IndexingPolicy` , amely lehetővé teszi a módosítását, illetve a `IndexingMode` hozzáadását és eltávolítását `IncludedPaths` `ExcludedPaths` .
 
 ```csharp
 // Retrieve the container's details
@@ -469,7 +469,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>A Java SDK használata
 
-A `DocumentCollection` [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) -ból származó objektum ( [this Quickstart](create-sql-api-java.md) lásd a használatról szóló rövid útmutatót) teszi elérhetővé `getIndexingPolicy()` és `setIndexingPolicy()` metódusokat. Az `IndexingPolicy` általuk manipulált objektum lehetővé teszi az indexelési mód módosítását, valamint a felvett és kizárt elérési utak hozzáadását és eltávolítását.
+A `DocumentCollection` [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) -ból származó objektum ( [](create-sql-api-java.md) lásd a használatról szóló rövid útmutatót) teszi elérhetővé `getIndexingPolicy()` és `setIndexingPolicy()` metódusokat. Az `IndexingPolicy` általuk manipulált objektum lehetővé teszi az indexelési mód módosítását, valamint a felvett és kizárt elérési utak hozzáadását és eltávolítását.
 
 ```java
 // Retrieve the container's details

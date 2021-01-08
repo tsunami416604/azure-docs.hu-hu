@@ -1,17 +1,17 @@
 ---
 title: Geo-redundancia elérése Azure Stream Analytics feladatokhoz
 description: Ez a cikk azt ismerteti, hogyan lehet a földrajzi feladatátvétel helyett a Azure Stream Analytics feladatok geo-redundanciát elérni.
-author: mamccrea
-ms.author: mamccrea
+author: an-emma
+ms.author: raan
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/26/2020
-ms.openlocfilehash: 44b0394773485f8054eddc94c7d7e9b91baebc6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86a90cbcbb3381e853dcea766364642a89dafd7b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88951092"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015521"
 ---
 # <a name="achieve-geo-redundancy-for-azure-stream-analytics-jobs"></a>Geo-redundancia elérése Azure Stream Analytics feladatokhoz
 

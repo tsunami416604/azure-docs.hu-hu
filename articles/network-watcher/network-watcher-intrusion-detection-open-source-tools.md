@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 6834f9cc8202f49f53c20f3941945bba4a4b2efd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b4b38112e32a55739ea14d5ff06e327819171557
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026746"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014552"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hálózati behatolás-észlelés végrehajtása Network Watcher és nyílt forráskódú eszközökkel
 
@@ -26,7 +26,7 @@ A csomagok rögzítése kulcsfontosságú összetevő a hálózati behatolás-é
 
 Az egyik ilyen nyílt forráskódú eszköz a Suricata, egy szabályrendszerek használó azonosító motor, amely figyeli a hálózati forgalmat, és riasztást küld, amikor gyanús események történnek. A Suricata többszálas motort kínál, ami azt jelenti, hogy a hálózati forgalom elemzése nagyobb sebességgel és hatékonysággal végezhető. A Suricata és képességeivel kapcsolatos további információkért látogasson el a webhelyére a webhelyén https://suricata-ids.org/ .
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Forgatókönyv
 
 Ez a cikk azt ismerteti, hogyan állíthatja be a környezetet hálózati behatolás-észlelés végrehajtásához Network Watcher, Suricata és a rugalmas verem használatával. Network Watcher biztosítja a hálózati behatolás-észlelés végrehajtásához használt csomagok rögzítését. A Suricata feldolgozza a csomagot, és elindítja a riasztásokat az adott fenyegetéseknek megfelelő csomagok alapján. Ezeket a riasztásokat a helyi számítógépen található naplófájlban tárolja a rendszer. A rugalmas verem használatával a Suricata által generált naplók indexelve lehetnek, és felhasználhatók egy Kibana-irányítópult létrehozására, amely lehetővé teszi a naplók vizuális megjelenítését, valamint az esetleges hálózati biztonsági rések gyors elemzését.  
 
@@ -280,7 +280,7 @@ Az egyéni vizualizációk és irányítópultok létrehozásával kapcsolatos t
 
 A Network Watcher és a nyílt forráskódú azonosító eszközök, például a Suricata által biztosított csomagok rögzítésének kombinálásával a fenyegetések széles köre miatt hálózati behatolás-észlelést is végezhet. Ezek az irányítópultok lehetővé teszik a hálózaton belüli trendek és anomáliák gyors észlelését, valamint az adatgyűjtést a riasztások, például rosszindulatú felhasználói ügynökök vagy sebezhető portok kiváltó okainak felderítésére. Ezzel a kinyert adatokkal tájékozott döntéseket hozhat arról, hogyan reagálhat a hálózatra, és hogyan védhető meg a kártékony behatolási kísérletek, és hogyan hozhat létre szabályokat a hálózatra irányuló jövőbeli behatolások megelőzése érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan válthat ki a riasztások alapján a csomagok rögzítése a következővel: [proaktív hálózati figyelés a Azure functions](network-watcher-alert-triggered-packet-capture.md)
 

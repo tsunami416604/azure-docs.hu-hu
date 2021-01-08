@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics kompatibilitási szintek
 description: Megtudhatja, hogyan állíthatja be a kompatibilitási szintet egy Azure Stream Analytics feladatokhoz és a legújabb kompatibilitási szinten történt jelentős változásokhoz
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348933"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015980"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok kompatibilitási szintje
 
@@ -53,7 +53,7 @@ A kompatibilitási szint 1,2-as verziójában a következő jelentős változás
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP üzenetküldési protokoll
 
-**1,2 szint** : Azure stream Analytics a [speciális üzenetsor-kezelési protokoll (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) üzenetkezelő protokollt használja a Service Bus várólistákba és témakörökbe való íráshoz. A AMQP lehetővé teszi többplatformos hibrid alkalmazások készítését egy nyílt szabványú protokoll használatával.
+**1,2 szint**: Azure stream Analytics a [speciális üzenetsor-kezelési protokoll (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) üzenetkezelő protokollt használja a Service Bus várólistákba és témakörökbe való íráshoz. A AMQP lehetővé teszi többplatformos hibrid alkalmazások készítését egy nyílt szabványú protokoll használatával.
 
 ### <a name="geospatial-functions"></a>Térinformatikai funkciók
 
@@ -148,7 +148,7 @@ A kompatibilitási szint 1,1-as verziójában a következő jelentős változás
 
 **1,1 szint:** A dátum/idő/zóna információi és a DATETIME típus között nincs automatikus konverzió. Ennek eredményeképpen az időzóna-információk és az eredeti formázás is megmarad. Ha azonban a NVARCHAR (MAX) mezőt egy DATETIME kifejezés részeként használja a lekérdezésben (például), a rendszer a DATETIME típusúra konvertálja a számítást, és elveszíti az eredeti formáját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Stream Analytics bemenetek hibáinak megoldása](stream-analytics-troubleshoot-input.md)
 * [Erőforrás-állapot Stream Analytics](./stream-analytics-troubleshoot-query.md)

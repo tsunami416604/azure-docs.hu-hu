@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: b327facc2ac9ad64cf5237ecddc3e4024f75daa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052137"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014535"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Mi az az Azure Media Services Video Indexer?
 
@@ -51,7 +51,7 @@ Video Indexer az adatok számos forgatókönyvre alkalmazhatók, többek közöt
 * *Tartalom moderálása*: a szöveges és a vizuális tartalom moderálási modelljeinek használatával a felhasználók biztonságban maradhatnak a nem megfelelő tartalomtól, és ellenőrizhetik, hogy a közzétett tartalom megfelel-e a szervezet értékeinek. Automatikusan blokkolhat bizonyos videókat, vagy riasztást kaphat a felhasználóknak a tartalomról.
 * *Javaslatok*: a videó-bepillantást a felhasználók bevonásával növelheti. Ha az egyes videókat további metaadatokkal címkézi, ajánlhatja a felhasználók számára a legfontosabb videókat, és kiemelheti a videó azon részeit, amelyek megfelelnek az igényeinek.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A következő lista azokat az elemzéseket mutatja be, amelyekkel lekérheti a videókat Video Indexer videó-és hangmodellek használatával:
 
@@ -76,7 +76,7 @@ A következő lista azokat az elemzéseket mutatja be, amelyekkel lekérheti a v
 
 * **Hang átirata**: átalakítja a beszédet 12 nyelven, és lehetővé teszi a bővítmények használatát. A támogatott nyelvek: angol, spanyol, francia, német, olasz, mandarin kínai, japán, arab, orosz, portugál, hindi és koreai.
 * **Automatikus nyelvmeghatározás**: Automatikusan meghatározza a domináns beszélt nyelvet. A támogatott nyelvek: angol, spanyol, francia, német, olasz, mandarin kínai, japán, orosz és portugál. Ha a nyelv nem azonosítható egyértelműen, a Video Indexer azt feltételezi, hogy a beszélt nyelv az angol. További információért tekintse meg a [nyelvazonosítási modellel](language-identification-model.md) foglalkozó cikket.
-* **Többnyelvű beszéd azonosítása és átírása** (előzetes verzió): automatikusan azonosítja a beszélt nyelvet a különböző szegmensekben a hangból. A szolgáltatás elküldi a médiafájl egyes szegmenseit átírásra, majd egyesíti az átiratokat egyetlen összevont átírássá. További információért tekintse meg a [többnyelvű tartalom automatikus azonosításával és átírásával](multi-language-identification-transcription.md) foglalkozó cikket.
+* **Többnyelvű beszéd azonosítása és átírása**: automatikusan azonosítja a beszélt nyelvet a különböző szegmensekben a hangból. A szolgáltatás elküldi a médiafájl egyes szegmenseit átírásra, majd egyesíti az átiratokat egyetlen összevont átírássá. További információért tekintse meg a [többnyelvű tartalom automatikus azonosításával és átírásával](multi-language-identification-transcription.md) foglalkozó cikket.
 * **Hangfeliratok**: Hangfeliratokat hoz létre három formátumban: VTT, TTML, SRT.
 * **Kétcsatornás feldolgozás**: automatikusan észleli a különálló átiratokat, és egyesíti az adott idővonalat.
 * **Zajcsökkentés**: a telefonos hang-vagy zajos (skype-szűrők alapján) felvételek törlése.
@@ -116,9 +116,9 @@ A Video Indexer képességei háromféleképpen érhetők el:
 
 Ha a webhelyet használja, az adatok metaadatokként lesznek hozzáadva, és megjelennek a portálon. Ha API-kat használ, az eredmények JSON-fájlként érhetők el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Készen áll a Video Indexer használatának megkezdésére. További információkért tekintse át a következő cikkeket:
+Készen áll a Video Indexer használatának megkezdésére. További információért tekintse át a következő cikkeket:
 
 - Ismerkedjen meg [a video Indexer webhellyel](video-indexer-get-started.md).
 - [Tartalom feldolgozása Video Indexer Rest APIsal](video-indexer-use-apis.md).

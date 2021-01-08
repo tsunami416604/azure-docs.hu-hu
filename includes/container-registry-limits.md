@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 3fe1b966b56142fd312850ac5d77839b7d9db434
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e451171859efc49753131b145642aec4864db45d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97706224"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015665"
 ---
 | Erőforrás | Alapszintű | Standard | Prémium |
 |---|---|---|---|
@@ -22,8 +22,8 @@ ms.locfileid: "97706224"
 | Képréteg maximális mérete (GiB) | 200 | 200 | 200 |
 | ReadOps percenként<sup>2, 3</sup> | 1,000 | 3,000 | 10,000 |
 | WriteOps percenként<sup>2, 4</sup> | 100 | 500 | 2000 |
-| Sávszélesség letöltése Mbps<sup>2</sup> | 30 | 60 | 100 |
-| Feltöltési sávszélesség (Mbps)<sup>2</sup> | 10 | 20 | 50 |
+| A<sup>2</sup> . sávszélesség letöltése (Mbps) | 30 | 60 | 100 |
+| <sup>2</sup> . sávszélesség (Mbps) feltöltése | 10 | 20 | 50 |
 | Webhookok | 2 | 10 | 500 |
 | Georeplikáció | N.A. | N.A. | [Támogatott][geo-replication] |
 | Rendelkezésreállási zónák | N.A. | N.A. | [Előnézet][zones] |
@@ -38,7 +38,7 @@ ms.locfileid: "97706224"
 | &bull; Adattárak/hatókör-leképezés | N.A. | N.A. | 500 |
 
 
-<sup>1</sup> tárterület az egyes szintek napi díja. A további tárterületért a napi rendszerességgel, a maximális tárolási korlátig érvényes díjat számítunk fel. A díjszabással kapcsolatos információkért lásd: [Azure Container Registry díjszabása][pricing].
+<sup>1</sup> tárterület az egyes szintek napi díja. További tárhelyet is felhasználhat, akár a beállításjegyzék tárolási korlátja alapján, akár napi rendszerességgel. A díjszabással kapcsolatos információkért lásd: [Azure Container Registry díjszabása][pricing].
 
 <sup>2</sup>a *ReadOps*, a *WriteOps* és a *sávszélesség* minimális becslés. Azure Container Registry a használathoz szükséges teljesítmény növelésére törekszik.
 

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c4c98ad377100c35b0c364607bfd3803d07a95a7
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169494"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015929"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése Androidon a MSAL használatával
 
@@ -119,8 +119,8 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 Miután létrehozta az aláírási kivonatot a (z) *eszközzel*, a Azure Portal használatával hozza létre az ÁTirányítási URI-t:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza ki az Android-alkalmazást a **Alkalmazásregisztrációkban**.
-1. Válassza **Authentication**  >  **a hitelesítés platform hozzáadása**  >  **Android** lehetőséget.
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span></a> , és válassza ki az Android-alkalmazást a **Alkalmazásregisztrációkban**.
+1. Válassza   >  **a hitelesítés platform hozzáadása**  >  **Android** lehetőséget.
 1. A megnyíló **Android-alkalmazás konfigurálása** panelen adja meg a korábban létrehozott **aláírási kivonatot** és a **csomag nevét**.
 1. Válassza a **Konfigurálás** gombot.
 
@@ -233,6 +233,6 @@ A következő böngészők tesztelték, hogy megfelelően átirányítva vannak-
 <sup>2</sup> A Huawei beépített böngészője a Huawei böngésző.<br/>
 <sup>3</sup> Az alapértelmezett böngésző nem módosítható a ellenfél-eszköz beállításán belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az [androidos eszközökhöz készült megosztott eszköz mód](msal-android-shared-devices.md) lehetővé teszi, hogy egy Android-eszközt úgy konfiguráljon, hogy az egyszerűen több alkalmazott számára is megosztható legyen.

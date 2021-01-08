@@ -1,25 +1,24 @@
 ---
 title: Ellenőrzőpontok és újrajátszás helyreállítási fogalmak a Azure Stream Analytics
 description: Ez a cikk az ellenőrzőpontok és a Replay feladatok helyreállítási fogalmait ismerteti Azure Stream Analyticsban.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df31f8538bb9eabeca37fe4c52c4443fd447e415
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84020608"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015318"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Ellenőrzőpont-és visszajátszás-fogalmak a Azure Stream Analytics-feladatokban
 Ez a cikk ismerteti a Azure Stream Analytics belső ellenőrzőpont-és újralejátszási fogalmait, valamint a feladatokra gyakorolt hatást. Minden alkalommal, amikor egy Stream Analytics feladatot futtat, az állapotadatok belsőleg maradnak. Az állapotadatok rendszeres időközönként kerülnek mentésre. Bizonyos esetekben az ellenőrzőpont-információk a feladatok helyreállítására szolgálnak, ha a feladattal kapcsolatos hiba vagy frissítés történik. Más esetekben az ellenőrzőpont nem használható a helyreállításhoz, és szükség van egy újrajátszásra.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Állapot-nyilvántartó lekérdezési logika az időbeli elemekben
-Azure Stream Analytics feladatok egyik egyedi funkciója az állapot-nyilvántartó feldolgozás végrehajtása, például ablakos összesítések, időbeli illesztések és időbeli analitikai függvények. Ezek az operátorok a feladatok futtatásakor megőrzik az állapotadatok állapotát.A lekérdezési elemek maximális ablakméret hét nap. 
+## <a name="stateful-query-logic-in-temporal-elements"></a>Állapot-nyilvántartó lekérdezési logika az időbeli elemekben
+Azure Stream Analytics feladatok egyik egyedi funkciója az állapot-nyilvántartó feldolgozás végrehajtása, például ablakos összesítések, időbeli illesztések és időbeli analitikai függvények. Ezek az operátorok a feladatok futtatásakor megőrzik az állapotadatok állapotát. A lekérdezési elemek maximális ablakméret hét nap. 
 
 Az időszakos ablak fogalma számos Stream Analytics lekérdezési elemben jelenik meg:
 1. Ablakos összesítések (felhúzási, átugró és csúszó ablakok CSOPORTOSÍTÁSa)

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: e88a721d500ea1c17c768e9f28835248711bd361
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 10b61dd4b6cc3a99b8eecf86cb5ba7e718d64743
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584442"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015113"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott szerepkör-jogcím konfigurálása nagyvállalati alkalmazásokhoz
 
@@ -34,7 +34,7 @@ Ha az alkalmazás egy SAML-válaszban egyéni szerepköröket vár, ezt a funkci
 
 ## <a name="create-roles-for-an-application"></a>Szerepkörök létrehozása egy alkalmazáshoz
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali ablaktábláján válassza a **Azure Active Directory** ikont.
+1. A <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>bal oldali ablaktábláján válassza a **Azure Active Directory** ikont.
 
     ![Azure Active Directory ikon][1]
 
@@ -255,7 +255,7 @@ Meglévő szerepkör törléséhez hajtsa végre a következő lépéseket:
 
     A szerepkört le kell tiltani ahhoz, hogy el lehessen távolítani.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További lépésekért tekintse meg az [alkalmazás dokumentációját](../saas-apps/tutorial-list.md).
 

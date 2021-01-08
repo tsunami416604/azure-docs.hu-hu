@@ -3,16 +3,15 @@ title: Egyéni .NET-deszerializálók létrehozása a Visual Studio Code haszná
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egyéni .net-deszerializáló egy Azure stream Analytics felhőalapú feladatokhoz a Visual Studio Code használatával.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/22/2020
-ms.openlocfilehash: 0f041910d1b02cc6d1fd48bfd773711c3361c0f5
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 1813fb222bca74f355fec52252ce3d77fef06e5d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822476"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013923"
 ---
 # <a name="create-custom-net-deserializers-for-azure-stream-analytics-in-visual-studio-code"></a>Egyéni .NET-deszerializálók létrehozása a Visual Studio Code Azure Stream Analyticshoz
 
@@ -70,7 +69,7 @@ A Visual Studio Code használatával egy Azure stream Analytics Felhőbeli felad
 
    |Beállítás|Ajánlott érték|
    |-------|---------------|
-   |Név|Bevitel|
+   |Name (Név)|Input (Bemenet)|
    |Előfizetés|< az előfizetést >|
    |Tárfiók|< a Storage-fiókját >|
    |Tároló|< a Storage-tárolót >|

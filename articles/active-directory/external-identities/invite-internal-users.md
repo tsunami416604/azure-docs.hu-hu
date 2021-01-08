@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 8acc547552cecaebb60888bb7b9777f6279b9b7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093468"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015759"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Belső felhasználók meghívása B2B együttműködésre
 
@@ -44,8 +44,7 @@ Helyszíni **szinkronizált felhasználók**: a helyszíni és a felhő között
 
 A PowerShell vagy a meghívó API használatával VÁLLALATKÖZI meghívást küldhet a belső felhasználónak. Győződjön meg arról, hogy a meghívóhoz használni kívánt e-mail-cím a belső felhasználói objektum külső e-mail-címe.
 
-- Csak felhőalapú felhasználó esetén használja a meghívóhoz tartozó user. OtherMails tulajdonságban található e-mail-címet.
-- Helyszíni szinkronizált felhasználó esetén a meghívóhoz tartozó user. mail tulajdonság értékét kell használnia.
+- A meghívóhoz tartozó user. mail tulajdonságban az e-mail-címet kell használnia.
 - A felhasználó mail tulajdonságában szereplő tartománynak meg kell egyeznie a bejelentkezéshez használt fiókkal. Ellenkező esetben előfordulhat, hogy egyes szolgáltatások, például a csapatok nem fogják tudni hitelesíteni a felhasználót.
 
 Alapértelmezés szerint a meghívás elküldi a felhasználónak egy e-mailt, amely arról tájékoztatja őket, hogy meghívást kaptak, de ezt az e-mailt elhagyhatja, és elküldheti saját helyette.
@@ -97,6 +96,6 @@ ContentType: application/json
 
 Az API-ra adott válasz ugyanazt a választ kapja, amikor új vendég felhasználót hív meg a címtárban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [VÁLLALATKÖZI együttműködés meghívásának beváltása](redemption-experience.md)

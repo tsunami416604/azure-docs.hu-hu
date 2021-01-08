@@ -3,16 +3,15 @@ title: Stream Analytics feladatok autoskálázása
 description: Ez a cikk azt ismerteti, hogyan lehet a Stream Analytics feladatokat az előre meghatározott ütemterv vagy a feladatok metrikái értékei alapján átméretezni.
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
-ms.openlocfilehash: 8e5bcdaeaf1ec99387a708199f4353736b6bc60f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a8e089e302e9d40c69cf7ff2a3480c17894e1463
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129847"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016286"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Stream Analytics feladatok autoskálázása Azure Automation használatával
 
@@ -62,7 +61,7 @@ Azure Automation lehetővé teszi az ütemterv konfigurálását a runbookok eli
 
 ![Runbookok ütemezése Azure Automation](./media/autoscale/schedulerunbook.png)
 
-1. Ismételje meg az előző lépést a **ScaleDownRunbook** .
+1. Ismételje meg az előző lépést a **ScaleDownRunbook**.
 
 ## <a name="autoscale-based-on-load"></a>Automatikus skálázás terhelés alapján
 Előfordulhatnak olyan esetek, amikor nem lehet előre jelezni a bemeneti terhelést. Ilyen esetekben a minimális és a maximális korláton belül optimálisan méretezhető fel-és leskálázás. A Stream Analytics-feladatokban beállíthatja a riasztási szabályokat úgy, hogy kiváltsa a runbookok, ha a feladat metrikái a küszöbérték felett vagy alatt haladnak.
@@ -73,12 +72,12 @@ Előfordulhatnak olyan esetek, amikor nem lehet előre jelezni a bemeneti terhel
 5. Töltse ki a kötelező mezőket. Válassza az **Automation Runbook** lehetőséget a **művelet típusának** kiválasztásakor. Válassza ki azt a runbook, amelyet a riasztás tüzek esetén aktiválni szeretne. Ezután hozza létre a műveleti csoportot.
 
    ![Műveletcsoport létrehozása](./media/autoscale/create-actiongroup.png)
-6. Hozzon létre egy [**új riasztási szabályt**](./stream-analytics-set-up-alerts.md#set-up-alerts-in-the-azure-portal) a feladatokban. Válasszon egy feltételt a választott mérőszám alapján. A [ *bemeneti események* , a *su%-kihasználtság* vagy a *várakozó bemeneti eseményei*](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics) az automatikus skálázási logika definiálásához javasolt mérőszámok. Azt is javasoljuk, hogy a vertikális Felskálázási műveletek elindításához 1 perces *összesítési részletességet* és *értékelési gyakoriságot* használjon. Így biztosíthatja, hogy a feladatnak elegendő erőforrása legyen a bemeneti kötet nagy tüskékkel való megbirkózásához.
+6. Hozzon létre egy [**új riasztási szabályt**](./stream-analytics-set-up-alerts.md#set-up-alerts-in-the-azure-portal) a feladatokban. Válasszon egy feltételt a választott mérőszám alapján. A [ *bemeneti események*, a *su%-kihasználtság* vagy a *várakozó bemeneti eseményei*](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics) az automatikus skálázási logika definiálásához javasolt mérőszámok. Azt is javasoljuk, hogy a vertikális Felskálázási műveletek elindításához 1 perces *összesítési részletességet* és *értékelési gyakoriságot* használjon. Így biztosíthatja, hogy a feladatnak elegendő erőforrása legyen a bemeneti kötet nagy tüskékkel való megbirkózásához.
 7. Válassza ki az utolsó lépésben létrehozott műveleti csoportot, és hozza létre a riasztást.
 8. Ismételje meg a 2 – 4. lépést minden további, a feladatra vonatkozó mérőszámok feltétele alapján elindítható méretezési műveletnél.
 
 Az ajánlott eljárás a méretezési tesztek futtatása a feladatok éles környezetben való futtatása előtt. Ha a feladatát különböző bemeneti terhelések ellen teszteli, azzal a feladattal, hogy hány SUs-erőforrásra van szüksége a különböző bemeneti átviteli sebességhez. Ez tájékoztathatja a riasztási szabályokban definiált feltételeket a vertikális Felskálázási és leskálázási műveletek elindításához. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Párhuzamosítható-lekérdezések létrehozása a Azure Stream Analyticsban](stream-analytics-parallelization.md)
 * [Azure Stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében](stream-analytics-scale-jobs.md)

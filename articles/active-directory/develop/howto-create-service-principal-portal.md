@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 46781edad6ad9290932216b9e9f23a359d25497a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366156"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014943"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon
 
@@ -37,15 +37,15 @@ Megfelelő engedélyekkel kell rendelkeznie az alkalmazások Azure AD-Bérlővel
 
 ### <a name="check-azure-ad-permissions"></a>Azure AD-engedélyek keresése
 
-1. Válassza a **Azure Active Directory**lehetőséget.
+1. Válassza a **Azure Active Directory** lehetőséget.
 1. Jegyezze fel a szerepkört. Ha rendelkezik a **felhasználói** szerepkörrel, meg kell győződnie arról, hogy a nem rendszergazdák regisztrálhatják az alkalmazásokat.
 
    ![Keresse meg a szerepkört. Ha Ön felhasználó, győződjön meg arról, hogy a nem rendszergazdák regisztrálhatnak alkalmazásokat](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. A bal oldali ablaktáblán válassza a **felhasználói beállítások**lehetőséget.
-1. Keresse meg a **Alkalmazásregisztrációk** beállítást. Ezt az értéket csak rendszergazda állíthatja be. Ha az **Igen**értékre van állítva, akkor az Azure ad-bérlő bármelyik felhasználója regisztrálhat egy alkalmazást.
+1. A bal oldali ablaktáblán válassza a **felhasználói beállítások** lehetőséget.
+1. Keresse meg a **Alkalmazásregisztrációk** beállítást. Ezt az értéket csak rendszergazda állíthatja be. Ha az **Igen** értékre van állítva, akkor az Azure ad-bérlő bármelyik felhasználója regisztrálhat egy alkalmazást.
 
-Ha az alkalmazás regisztrációja **nem**értékre van állítva, akkor csak a rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatják az ilyen típusú alkalmazásokat. A rendelkezésre álló rendszergazdai szerepkörökről és az egyes szerepkörökhöz megadott Azure AD-engedélyekről az [elérhető szerepkörök](../roles/permissions-reference.md#available-roles) és [szerepkör-engedélyek](../roles/permissions-reference.md#role-permissions) című szakaszban talál további információt. Ha a fiókja hozzá van rendelve a felhasználói szerepkörhöz, de az alkalmazás regisztrációs beállítása a rendszergazda felhasználókra korlátozódik, kérje meg a rendszergazdát, hogy rendeljen hozzá egy olyan rendszergazdai szerepkört, amely az alkalmazások regisztrálásának minden aspektusát létrehozhatja és kezelheti, illetve lehetővé teheti a felhasználók számára, hogy regisztrálják az alkalmazásokat.
+Ha az alkalmazás regisztrációja **nem** értékre van állítva, akkor csak a rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatják az ilyen típusú alkalmazásokat. A rendelkezésre álló rendszergazdai szerepkörökről és az egyes szerepkörökhöz megadott Azure AD-engedélyekről az [elérhető szerepkörök](../roles/permissions-reference.md#available-roles) és [szerepkör-engedélyek](../roles/permissions-reference.md#role-permissions) című szakaszban talál további információt. Ha a fiókja hozzá van rendelve a felhasználói szerepkörhöz, de az alkalmazás regisztrációs beállítása a rendszergazda felhasználókra korlátozódik, kérje meg a rendszergazdát, hogy rendeljen hozzá egy olyan rendszergazdai szerepkört, amely az alkalmazások regisztrálásának minden aspektusát létrehozhatja és kezelheti, illetve lehetővé teheti a felhasználók számára, hogy regisztrálják az alkalmazásokat.
 
 ### <a name="check-azure-subscription-permissions"></a>Azure-előfizetési engedélyek keresése
 
@@ -63,7 +63,7 @@ Az előfizetési engedélyek ellenőrzését:
 
    Ha nem látja a keresett előfizetést, válassza a **globális előfizetések szűrőt**. Győződjön meg arról, hogy a portálon a kívánt előfizetés van kiválasztva.
 
-1. Válassza **a saját engedélyek**lehetőséget. Ezután **kattintson ide az előfizetés teljes hozzáférés részleteinek megtekintéséhez**.
+1. Válassza **a saját engedélyek** lehetőséget. Ezután **kattintson ide az előfizetés teljes hozzáférés részleteinek megtekintéséhez**.
 
    ![Válassza ki azt az előfizetést, amelyben létre kívánja hozni a szolgáltatásnevet a következőben:](./media/howto-create-service-principal-portal/view-details.png)
 
@@ -75,11 +75,11 @@ Az előfizetési engedélyek ellenőrzését:
 
 Ugorjon egyenesen az identitás létrehozásához. Ha probléma lép fel, ellenőrizze a [szükséges engedélyeket](#permissions-required-for-registering-an-app) annak biztosításához, hogy a fiókja létre tudja hozni az identitást.
 
-1. Jelentkezzen be az Azure-fiókjába a [Azure Portalon](https://portal.azure.com)keresztül.
-1. Válassza a **Azure Active Directory**lehetőséget.
+1. Jelentkezzen be az Azure-fiókjába <a href="https://portal.azure.com/" target="_blank">a <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portalon</a>keresztül.
+1. Válassza a **Azure Active Directory** lehetőséget.
 1. Válassza az **Alkalmazásregisztrációk** lehetőséget.
-1. Válassza az **új regisztráció**lehetőséget.
-1. Adja meg az alkalmazás nevét. Válasszon egy támogatott számlatípust, amely meghatározza, hogy kik használhatják az alkalmazást. Az **átirányítási URI**területen válassza a **web** lehetőséget a létrehozni kívánt alkalmazás típusához. Adja meg azt az URI-t, ahová a hozzáférési tokent elküldi. [Natív alkalmazás](../manage-apps/application-proxy-configure-native-client-application.md)hitelesítő adatai nem hozhatók létre. Az adott típus nem használható automatikus alkalmazáshoz. Az értékek beállítása után válassza a **regisztráció**lehetőséget.
+1. Válassza az **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás nevét. Válasszon egy támogatott számlatípust, amely meghatározza, hogy kik használhatják az alkalmazást. Az **átirányítási URI** területen válassza a **web** lehetőséget a létrehozni kívánt alkalmazás típusához. Adja meg azt az URI-t, ahová a hozzáférési tokent elküldi. [Natív alkalmazás](../manage-apps/application-proxy-configure-native-client-application.md)hitelesítő adatai nem hozhatók létre. Az adott típus nem használható automatikus alkalmazáshoz. Az értékek beállítása után válassza a **regisztráció** lehetőséget.
 
    ![Adja meg az alkalmazás nevét](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -91,7 +91,7 @@ Az előfizetéshez tartozó erőforrások eléréséhez hozzá kell rendelnie eg
 
 Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Az engedélyek a hatókör alacsonyabb szintjein vannak örökölve. Ha például hozzáad egy alkalmazást az erőforráscsoport *olvasó* szerepköréhez, az azt jelenti, hogy elolvashatja az erőforráscsoportot és a benne található összes erőforrást.
 
-1. A Azure Portal válassza ki azt a hatóköri szintet, amelyhez az alkalmazást hozzá szeretné rendelni. Ha például egy szerepkört szeretne hozzárendelni az előfizetés hatóköréhez, keresse meg és válassza ki az **előfizetések**elemet, vagy válassza az **előfizetések** lehetőséget a **kezdőlapon** .
+1. A Azure Portal válassza ki azt a hatóköri szintet, amelyhez az alkalmazást hozzá szeretné rendelni. Ha például egy szerepkört szeretne hozzárendelni az előfizetés hatóköréhez, keresse meg és válassza ki az **előfizetések** elemet, vagy válassza az **előfizetések** lehetőséget a **kezdőlapon** .
 
    ![Például rendeljen hozzá egy szerepkört az előfizetés hatókörében](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -117,7 +117,7 @@ A következő szakasz bemutatja, hogyan kérheti le a programozott módon tört�
 
 Ha programozott módon jelentkezik be, át kell adnia a bérlő AZONOSÍTÓját a hitelesítési kérelemmel és az alkalmazás-AZONOSÍTÓval.  Szüksége lesz egy tanúsítványra vagy egy hitelesítési kulcsra is (a következő szakaszban leírtak szerint). Az értékek beszerzéséhez kövesse az alábbi lépéseket:
 
-1. Válassza a **Azure Active Directory**lehetőséget.
+1. Válassza a **Azure Active Directory** lehetőséget.
 1. Az Azure AD-ban **Alkalmazásregisztrációk** válassza ki az alkalmazást.
 1. Másolja a címtár-(bérlői) azonosítót, és tárolja azt az alkalmazás kódjában.
 
@@ -135,7 +135,7 @@ Az egyszerű szolgáltatásokhoz kétféle hitelesítés érhető el: jelszó al
 
 ### <a name="option-1-upload-a-certificate"></a>1. lehetőség: tanúsítvány feltöltése
 
-Ha van ilyen, használhat meglévő tanúsítványt is.  Lehetőség van arra is, hogy önaláírt tanúsítványt *csak tesztelési célra*hozzon létre. Önaláírt tanúsítvány létrehozásához nyissa meg a PowerShellt, és futtassa a [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) parancsot a következő paraméterekkel a tanúsítvány létrehozásához a számítógép felhasználói tanúsítványtárolójában:
+Ha van ilyen, használhat meglévő tanúsítványt is.  Lehetőség van arra is, hogy önaláírt tanúsítványt *csak tesztelési célra* hozzon létre. Önaláírt tanúsítvány létrehozásához nyissa meg a PowerShellt, és futtassa a [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) parancsot a következő paraméterekkel a tanúsítvány létrehozásához a számítógép felhasználói tanúsítványtárolójában:
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -148,14 +148,14 @@ Exportálja a tanúsítványt egy fájlba a Windows Vezérlőpultján elérhető
    Megjelenik az aktuális felhasználóhoz tartozó tanúsítványkezelő eszköz.
 
 1. A tanúsítványok megtekintéséhez a bal oldali ablaktábla **tanúsítványok-aktuális felhasználó** területén bontsa ki a **személyes** könyvtárat.
-1. Kattintson a jobb gombbal a létrehozott tanúsítványra, válassza a **minden feladat – >exportálás**lehetőséget.
+1. Kattintson a jobb gombbal a létrehozott tanúsítványra, válassza a **minden feladat – >exportálás** lehetőséget.
 1. Kövesse a tanúsítvány exportálása varázslót.  Ne exportálja a titkos kulcsot, és exportálja a-ba. CER-fájl.
 
 A tanúsítvány feltöltése:
 
-1. Válassza a **Azure Active Directory**lehetőséget.
+1. Válassza a **Azure Active Directory** lehetőséget.
 1. Az Azure AD-ban **Alkalmazásregisztrációk** válassza ki az alkalmazást.
-1. Válassza ki a **tanúsítványok & Secrets**elemet.
+1. Válassza ki a **tanúsítványok & Secrets** elemet.
 1. Válassza a **tanúsítvány feltöltése** lehetőséget, és válassza ki a tanúsítványt (egy meglévő tanúsítványt vagy az exportált önaláírt tanúsítványt).
 
     ![Válassza a tanúsítvány feltöltése lehetőséget, és válassza ki a hozzáadni kívánt elemet](./media/howto-create-service-principal-portal/upload-cert.png)
@@ -168,11 +168,11 @@ Miután regisztrálta a tanúsítványt az alkalmazással az alkalmazás regiszt
 
 Ha úgy dönt, hogy nem használ tanúsítványt, létrehozhat egy új alkalmazás-titkot.
 
-1. Válassza a **Azure Active Directory**lehetőséget.
+1. Válassza a **Azure Active Directory** lehetőséget.
 1. Az Azure AD-ban **Alkalmazásregisztrációk** válassza ki az alkalmazást.
-1. Válassza ki a **tanúsítványok & Secrets**elemet.
+1. Válassza ki a **tanúsítványok & Secrets** elemet.
 1. Válassza ki az **ügyfél titkai-> új ügyfél titkát**.
-1. Adja meg a titok leírását és időtartamát. Ha elkészült, válassza a **Hozzáadás**lehetőséget.
+1. Adja meg a titok leírását és időtartamát. Ha elkészült, válassza a **Hozzáadás** lehetőséget.
 
    Az ügyfél titkos kulcsának mentése után megjelenik az ügyfél titkos kulcsának értéke. Másolja ezt az értéket, mert később nem fogja tudni lekérni a kulcsot. Adja meg a kulcs értékét az alkalmazás-AZONOSÍTÓval, és jelentkezzen be alkalmazásként. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
 
@@ -181,13 +181,13 @@ Ha úgy dönt, hogy nem használ tanúsítványt, létrehozhat egy új alkalmaz�
 ## <a name="configure-access-policies-on-resources"></a>Hozzáférési szabályzatok konfigurálása az erőforrásokon
 Ne feledje, hogy további engedélyeket kell konfigurálnia az alkalmazás számára szükséges erőforrásokhoz. A [Key Vault hozzáférési házirendjeit is frissítenie](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) kell, hogy az alkalmazás hozzáférjen a kulcsokhoz, titkokhoz vagy tanúsítványokhoz.
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a kulcstartóhoz, és válassza a **hozzáférési szabályzatok**lehetőséget.
-1. Válassza a **hozzáférési házirend hozzáadása**lehetőséget, majd válassza ki az alkalmazáshoz használni kívánt kulcs-, titkos és tanúsítvány-engedélyeket.  Válassza ki a korábban létrehozott szolgáltatásnevet.
+1. A <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>navigáljon a kulcstartóhoz, és válassza a **hozzáférési szabályzatok** lehetőséget.
+1. Válassza a **hozzáférési házirend hozzáadása** lehetőséget, majd válassza ki az alkalmazáshoz használni kívánt kulcs-, titkos és tanúsítvány-engedélyeket.  Válassza ki a korábban létrehozott szolgáltatásnevet.
 1. A hozzáférési szabályzat hozzáadásához válassza a **Hozzáadás** lehetőséget, majd a **Mentés** gombra kattintva véglegesítse a módosításokat.
     ![Hozzáférési szabályzat hozzáadása](./media/howto-create-service-principal-portal/add-access-policy.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [hozhat létre egyszerű szolgáltatásnevet a Azure PowerShell használatával](howto-authenticate-service-principal-powershell.md).
 * A biztonsági szabályzatok megadásával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * A felhasználók számára megadható vagy megtagadható elérhető műveletek listáját itt tekintheti meg: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md).
-* További információ az alkalmazás-regisztrációk **Microsoft Graph**használatával történő használatáról: [alkalmazások](/graph/api/resources/application) API-referenciája.
+* További információ az alkalmazás-regisztrációk **Microsoft Graph** használatával történő használatáról: [alkalmazások](/graph/api/resources/application) API-referenciája.

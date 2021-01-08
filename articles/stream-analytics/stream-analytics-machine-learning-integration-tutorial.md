@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics integráció Azure Machine Learning Studio (klasszikus)
 description: Ez a cikk azt ismerteti, hogyan lehet gyorsan beállítani egy egyszerű Azure Stream Analytics feladatot, amely egy felhasználó által definiált függvény használatával integrálja Azure Machine Learning Studio (klasszikus).
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: krishna0815
+ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d7d74887b4b4e205645a45fa7e07768a1af73940
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011387"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015300"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics és Azure Machine Learning Studio (klasszikus) a hangulat elemzése
 
@@ -127,13 +126,13 @@ A feladatot a rendszer a blob Storage-ba korábban feltöltött CSV-fájlból ol
    |Tároló|Válassza ki az előző lépésben létrehozott tárolót.|
    |Eseményszerializációs formátum|CSV|
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
 ### <a name="configure-the-job-output"></a>A feladatok kimenetének konfigurálása
 
 A művelet az eredményeket ugyanarra a blob-tárolóra küldi, ahol a bemenet bekerül.
 
-1. Keresse meg a Stream Analytics-feladatot. A **feladatok topológiája** területen válassza a **kimenetek** lehetőséget. Válassza **Add** a  >  **blob Storage** hozzáadása elemet.
+1. Keresse meg a Stream Analytics-feladatot. A **feladatok topológiája** területen válassza a **kimenetek** lehetőséget. Válassza a  >  **blob Storage** hozzáadása elemet.
 
 2. Töltse ki a **blob Storage** űrlapot a következő értékekkel:
 
@@ -145,7 +144,7 @@ A művelet az eredményeket ugyanarra a blob-tárolóra küldi, ahol a bemenet b
    |Tároló|Válassza ki az előző lépésben létrehozott tárolót.|
    |Eseményszerializációs formátum|CSV|
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-the-studio-classic-function"></a>A Studio (klasszikus) függvény hozzáadása
 

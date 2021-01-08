@@ -1,18 +1,17 @@
 ---
 title: Service Bus a várólisták kimenetét Azure Stream Analytics
 description: Ez a cikk Service Bus a várólistákat Azure Stream Analytics kimenetként ismerteti.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 3527bdbbf1ba337d24dc390f97ed090c8dfbe039
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9f71a0f9c6d3fdca4b81be3a69479c78236fcc31
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348389"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014212"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Service Bus a várólisták kimenetét Azure Stream Analytics
 
@@ -92,7 +91,7 @@ Ez a tulajdonság használatát mutatja be –
 
 Ezzel beállítja a `MessageId` Service Bus üzenetsor üzeneteinek `column1` értékeit és a PartitionKey `column2` értékeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)

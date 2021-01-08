@@ -1,18 +1,17 @@
 ---
 title: Az események rendezésére vonatkozó szabályzatok konfigurálása Azure Stream Analyticshoz
 description: Ez a cikk azt ismerteti, hogyan lehet még megrendelési beállításokat konfigurálni Stream Analytics
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f7ec6f32b48a93a29210311c7ba6747eb2e2d066
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130663"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014295"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Az események rendezésére vonatkozó szabályzatok konfigurálása Azure Stream Analyticshoz
 
@@ -79,8 +78,8 @@ Ez az üzenet tájékoztat arról, hogy a bemenetben legalább egy partíció ü
 ## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Miért látok 5 másodperces késleltetést akkor is, ha a késői érkezési szabályzat értéke 0?
 Ez akkor történik meg, ha van olyan bemeneti partíció, amely soha nem kapott semmilyen bemenetet. A bemeneti metrikákat a partíció alapján ellenőrizheti a viselkedés ellenőrzéséhez. 
 
-Ha egy partícióhoz nem tartozik több, mint a beállított késői érkezési küszöbérték, a stream Analytics az alkalmazás időbélyegét az esemény rendezési szempontjai című szakaszban ismertetett módon részletezi. Ehhez a becsült érkezési időt kell megbecsülni. Ha a partíció soha nem tartalmazott semmilyen adatforrást, a stream Analytics *helyi idő szerint (5 másodperc* ) megbecsüli az érkezési időt. Az olyan partíciók miatt, amelyek soha nem voltak adatai, 5 másodperces vízjel-késleltetést mutatnak.  
+Ha egy partícióhoz nem tartozik több, mint a beállított késői érkezési küszöbérték, a stream Analytics az alkalmazás időbélyegét az esemény rendezési szempontjai című szakaszban ismertetett módon részletezi. Ehhez a becsült érkezési időt kell megbecsülni. Ha a partíció soha nem tartalmazott semmilyen adatforrást, a stream Analytics *helyi idő szerint (5 másodperc*) megbecsüli az érkezési időt. Az olyan partíciók miatt, amelyek soha nem voltak adatai, 5 másodperces vízjel-késleltetést mutatnak.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Időkezelési megfontolások](stream-analytics-time-handling.md)
 * [Stream Analytics elérhető metrikák](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics)

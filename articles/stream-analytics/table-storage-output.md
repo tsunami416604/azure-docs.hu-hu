@@ -1,18 +1,17 @@
 ---
 title: Tábla tárolási kimenete Azure Stream Analytics
 description: Ez a cikk az Azure Table Storage-t ismerteti Azure Stream Analytics kimenetként.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: ea775ef472687485dbd2f30c4f60adc33c0eaa73
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 558ddf065d33a552034c5b129ea70bc144c494ca
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127348"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013889"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>Tábla tárolási kimenete Azure Stream Analytics
 
@@ -25,7 +24,7 @@ A következő táblázat felsorolja a tulajdonságok nevét és a táblázat kim
 | Kimeneti alias |Egy rövid név, amelyet a lekérdezések a lekérdezés kimenetének a táblázatos tárolóba való irányításához használnak. |
 | Tárfiók |Annak a Storage-fióknak a neve, ahová a kimenetet küldi. |
 | Storage-fiók kulcsa |A Storage-fiókhoz társított hozzáférési kulcs. |
-| Tábla neve |A tábla neve. A tábla akkor jön létre, ha nem létezik. |
+| Table name (Táblázat neve) |A tábla neve. A tábla akkor jön létre, ha nem létezik. |
 | Partíciókulcs |A partíciós kulcsot tartalmazó kimeneti oszlop neve. A partíciós kulcs a partíció egyedi azonosítója egy olyan táblán belül, amely az entitás elsődleges kulcsának első részét képezi. Ez egy olyan karakterlánc-érték, amely legfeljebb 1 KB méretű lehet. |
 | Sor kulcsa |A sor kulcsot tartalmazó kimeneti oszlop neve. A sor kulcsa a partíción belüli entitás egyedi azonosítója. Az entitás elsődleges kulcsának második részét képezi. A sor kulcsa egy olyan karakterlánc-érték, amely legfeljebb 1 KB méretű lehet. |
 | Köteg mérete |A Batch-művelet rekordjainak száma. Az alapértelmezett érték (100) elegendő a legtöbb feladathoz. A beállítás módosításával kapcsolatos további információkért tekintse meg a [tábla batch műveletének specifikációját](/java/api/com.microsoft.azure.storage.table.tablebatchoperation) . |
@@ -38,7 +37,7 @@ A partíciós kulcs bármely kimeneti oszlop. A kimeneti írók száma követi a
 
 Az üzenetek maximális méretével kapcsolatban lásd: az [Azure Storage korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). Az alapértelmezett érték a 100 entitások száma egyetlen tranzakcióban, de igény szerint kisebb értékre is konfigurálható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)

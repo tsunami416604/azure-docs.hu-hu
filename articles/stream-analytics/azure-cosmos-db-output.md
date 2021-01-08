@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics Azure Cosmos DB kimenete
 description: Ez a cikk azt ismerteti, hogyan lehet adatokat kiadni a Azure Stream Analyticsból a Azure Cosmos DBba.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: a086d9fe150766c6b31210f29bf802a75e0ee4ec
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9382ac8dc71d1ccb3a85dc0a7a027c8e99296cc6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491732"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016577"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Cosmos DB kimenete
 
@@ -26,7 +25,7 @@ Stream Analytics Azure Cosmos DB kimenete jelenleg nem érhető el az Azure Chin
 
 Az alábbi táblázat a Azure Cosmos DB kimenet létrehozásának tulajdonságait ismerteti.
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias | Az Stream Analytics-lekérdezésben ezt a kimenetet meghívó alias. |
 | Sink (Fogadó) | Azure Cosmos DB. |
@@ -34,7 +33,7 @@ Az alábbi táblázat a Azure Cosmos DB kimenet létrehozásának tulajdonságai
 | Fiókazonosító | A Azure Cosmos DB fiók neve vagy végpontjának URI azonosítója. |
 | Fiókkulcs | A Azure Cosmos DB-fiókhoz tartozó megosztott elérési kulcs. |
 | Adatbázis | A Azure Cosmos DB adatbázis neve. |
-| Tárolónév | A használandó tároló neve, amely a Cosmos DBban léteznie kell. Példa:  <br /><ul><li> _MyContainer_ : A "MyContainer" nevű tárolónak léteznie kell.</li>|
+| Tárolónév | A használandó tároló neve, amely a Cosmos DBban léteznie kell. Példa:  <br /><ul><li> _MyContainer_: A "MyContainer" nevű tárolónak léteznie kell.</li>|
 | Dokumentum azonosítója |Választható. Annak az elsődleges kulcsnak a megadásához használt mező neve, amelybe az INSERT vagy a Update művelet alapul.
 
 ## <a name="partitioning"></a>Particionálás

@@ -1,19 +1,18 @@
 ---
 title: IoT-megoldás létrehozása Azure Stream Analytics használatával
 description: Első lépések oktatóanyag a Tollbooth-forgatókönyv Stream Analytics IoT megoldásához
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 87ec59d19fb442293fb7f14d110cf513015ec9f7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130799"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016150"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás létrehozása Stream Analytics használatával
 
@@ -189,7 +188,7 @@ A folyamatos átviteli feladat elindításához kövesse az alábbi lépéseket:
 
 3. Válassza ki a **adatkezelő** fejlécet a adatkezelő lap megnyitásához.
 
-4. Bontsa ki a **tollAppDatabase**  >  **tollAppCollection**  >  **dokumentumait** .
+4. Bontsa ki a **tollAppDatabase**  >  **tollAppCollection**  >  **dokumentumait**.
 
 5. Az azonosítók listájában számos dokumentum jelenik meg, amint a kimenet elérhetővé válik.
 

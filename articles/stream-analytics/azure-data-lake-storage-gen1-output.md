@@ -1,18 +1,17 @@
 ---
 title: 1. generációs kimenet Azure Data Lake Storage Azure Stream Analytics
 description: Ez a cikk az 1. generációs Azure Data Lake Storage Azure Stream Analytics kimeneti beállítását ismerteti.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 0445126046a6f4140dd68b2969221b196b8bef8b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 629a154c89ad301a3e200b1d6cd04c62057d9959
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740453"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016541"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>1. generációs kimenet Azure Data Lake Storage Azure Stream Analytics
 

@@ -3,17 +3,16 @@ title: Azure Stream Analytics-feladatok programozott figyelése és kezelése
 description: Ez a cikk a REST API-k, az Azure SDK vagy a PowerShell használatával létrehozott Stream Analytics feladatok programozott figyelését ismerteti.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c746e409964b4625a4c9921d9f02ca0c9730a35
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: dda1b6b652870440e7228e6640bb555f4c2e4a63
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123446"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015076"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics-feladatokhoz tartozó figyelő programozott létrehozása
 
@@ -172,7 +171,7 @@ A következő kód lehetővé teszi egy **meglévő** stream Analytics feladatok
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

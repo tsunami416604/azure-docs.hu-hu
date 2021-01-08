@@ -4,16 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan lehet folyamatos integrációs és 
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: d9b6dfc977aab7d8907b5d3c3851a22f96227d78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757758"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014246"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Az Azure DevOps használata CI/CD-folyamat létrehozásához Stream Analytics feladatokhoz
 
@@ -31,23 +30,23 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre Build-folyamatot. A minta
 
 1. Nyisson meg egy webböngészőt, és navigáljon a projekthez az Azure DevOps.  
 
-1. A bal oldali navigációs menü **folyamatok** területén válassza a **buildek**lehetőséget. Ezután válassza az **új folyamat**lehetőséget.
+1. A bal oldali navigációs menü **folyamatok** területén válassza a **buildek** lehetőséget. Ezután válassza az **új folyamat** lehetőséget.
 
    :::image type="content" source="media/set-up-cicd-pipeline/new-pipeline.png" alt-text="Új Azure-folyamat létrehozása":::
 
 1. Válassza **a klasszikus szerkesztő használata** lehetőséget a YAML nélküli folyamat létrehozásához.
 
-1. Válassza ki a forrás típusát, a csapat projektjét és a tárházat. Ezután válassza a **Folytatás**lehetőséget.
+1. Válassza ki a forrás típusát, a csapat projektjét és a tárházat. Ezután válassza a **Folytatás** lehetőséget.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Azure Stream Analytics projekt kiválasztása":::
 
 1. A **sablon választása** lapon válassza az **üres feladatot**.
 
 ## <a name="install-npm-package"></a>NPM-csomag telepítése
 
-1. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat**mellett. Adja meg a *NPM* a feladat keresése területen, majd válassza a **NPM**lehetőséget.
+1. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat** mellett. Adja meg a *NPM* a feladat keresése területen, majd válassza a **NPM** lehetőséget.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/search-npm.png" alt-text="NPM feladat kiválasztása":::
 
 2. Adja meg a feladat **megjelenítendő nevét**. Módosítsa a **parancsot** *egyénire* , és adja meg a következő parancsot a **parancsban és argumentumokban**. Hagyja meg a többi alapértelmezett beállítást.
 
@@ -55,11 +54,11 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre Build-folyamatot. A minta
    install -g azure-streamanalytics-cicd
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Adja meg a NPM feladat konfigurációit":::
 
 ## <a name="add-a-build-task"></a>Felépítési feladat hozzáadása
 
-1. A **változók** lapon válassza a **+ Hozzáadás** a **folyamat változói**lehetőséget. Adja hozzá a következő változókat. Állítsa be a következő értékeket a beállításnak megfelelően:
+1. A **változók** lapon válassza a **+ Hozzáadás** a **folyamat változói** lehetőséget. Adja hozzá a következő változókat. Állítsa be a következő értékeket a beállításnak megfelelően:
 
    |Változó neve|Érték|
    |-|-|
@@ -67,7 +66,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre Build-folyamatot. A minta
    |outputPath|Kimenet|
    |deployPath|Üzembe helyezés|
 
-2. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat**mellett. Keresse meg a **parancssort**.
+2. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat** mellett. Keresse meg a **parancssort**.
 
 3. Adja meg a feladat **megjelenítendő nevét** , és adja meg a következő parancsfájlt. Módosítsa a szkriptet az adattár nevével és a projekt nevével.
 
@@ -77,19 +76,19 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre Build-folyamatot. A minta
 
    Az alábbi kép egy Stream Analytics Visual Studio Code-projektet használ példaként.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-build.png" alt-text="A parancssori feladathoz tartozó Visual Studio Code-hoz tartozó konfigurációk megadása":::
 
 ## <a name="add-a-test-task"></a>Teszt feladat hozzáadása
 
-1. A **változók** lapon válassza a **+ Hozzáadás** a **folyamat változói**lehetőséget. Adja hozzá a következő változókat. Módosítsa az értékeket a kimeneti elérési úttal és a tárház nevével.
+1. A **változók** lapon válassza a **+ Hozzáadás** a **folyamat változói** lehetőséget. Adja hozzá a következő változókat. Módosítsa az értékeket a kimeneti elérési úttal és a tárház nevével.
 
    |Változó neve|Érték|
    |-|-|
    |testPath|Tesztelés|
 
-   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/pipeline-variables-test.png" alt-text="Folyamat változóinak hozzáadása":::
 
-2. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat**mellett. Keresse meg a **parancssort**.
+2. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat** mellett. Keresse meg a **parancssort**.
 
 3. Adja meg a feladat **megjelenítendő nevét** , és adja meg a következő parancsfájlt. Módosítsa a parancsfájlt a projekt fájljának nevével és a teszt konfigurációs fájljának elérési útjával. 
 
@@ -99,13 +98,13 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre Build-folyamatot. A minta
    azure-streamanalytics-cicd test -project $(projectRootPath)/asaproj.json -outputpath $(projectRootPath)/$(outputPath)/$(testPath) -testConfigPath $(projectRootPath)/test/testConfig.json 
    ```
 
-   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/command-line-config-test.png" alt-text="A parancssori feladathoz tartozó konfigurációk megadása":::
 
 ## <a name="add-a-copy-files-task"></a>Fájl másolása feladat hozzáadása
 
 A fájl másolása feladatot fel kell vennie, hogy átmásolja a teszt összefoglaló fájlját, és Azure Resource Manager sablonfájlokat az összetevő mappájába. 
 
-1. A **feladatok** lapon válassza a **+** következőt az **ügynök feladatához: 1**. **Fájlok másolásának**keresése. Ezután adja meg a következő konfigurációkat. A `**` **tartalom**hozzárendelésével a rendszer a teszteredmények összes fájlját átmásolja.
+1. A **feladatok** lapon válassza a **+** következőt az **ügynök feladatához: 1**. **Fájlok másolásának** keresése. Ezután adja meg a következő konfigurációkat. A `**` **tartalom** hozzárendelésével a rendszer a teszteredmények összes fájlját átmásolja.
 
    |Paraméter|Input (Bemenet)|
    |-|-|
@@ -114,29 +113,29 @@ A fájl másolása feladatot fel kell vennie, hogy átmásolja a teszt összefog
    |Tartalom| `**` |
    |Célmappa| `$(build.artifactstagingdirectory)`|
 
-2. A **vezérlési beállítások**kibontása. **Akkor is válassza ki, ha egy korábbi feladat meghiúsult, kivéve, ha a buildet megszakították** a **feladat futtatásakor**.
+2. A **vezérlési beállítások** kibontása. **Akkor is válassza ki, ha egy korábbi feladat meghiúsult, kivéve, ha a buildet megszakították** a **feladat futtatásakor**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/copy-config.png" alt-text="A másolási feladathoz tartozó konfigurációk megadása":::
 
 ## <a name="add-a-publish-build-artifacts-task"></a>Közzétételi összetevők közzététele feladat hozzáadása
 
-1. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat**mellett. Keressen rá a **közzétett Build** -összetevők keresése elemre, és válassza a fekete nyíl ikont.
+1. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat** mellett. Keressen rá a **közzétett Build** -összetevők keresése elemre, és válassza a fekete nyíl ikont.
 
-2. A **vezérlési beállítások**kibontása. **Akkor is válassza ki, ha egy korábbi feladat meghiúsult, kivéve, ha a buildet megszakították** a **feladat futtatásakor**.
+2. A **vezérlési beállítások** kibontása. **Akkor is válassza ki, ha egy korábbi feladat meghiúsult, kivéve, ha a buildet megszakították** a **feladat futtatásakor**.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/publish-config.png" alt-text="Adja meg a közzétételi feladat konfigurációit":::
 
 ## <a name="save-and-run"></a>Mentés és Futtatás
 
-Ha végzett a NPM-csomag, a parancssor, a fájlok másolása és a Build-összetevők közzététele feladatok hozzáadásával, válassza a **mentés & üzenetsor**lehetőséget. Amikor a rendszer kéri, adjon meg egy mentési megjegyzést, és válassza a **Mentés és Futtatás**lehetőséget. A tesztelési eredményeket a folyamat **Összefoglalás** oldaláról töltheti le.
+Ha végzett a NPM-csomag, a parancssor, a fájlok másolása és a Build-összetevők közzététele feladatok hozzáadásával, válassza a **mentés & üzenetsor** lehetőséget. Amikor a rendszer kéri, adjon meg egy mentési megjegyzést, és válassza a **Mentés és Futtatás** lehetőséget. A tesztelési eredményeket a folyamat **Összefoglalás** oldaláról töltheti le.
 
 ## <a name="check-the-build-and-test-results"></a>A létrehozási és tesztelési eredmények ellenőrzése
 
 A tesztelési összesítő fájl és a Azure Resource Manager sablonfájlok a **közzétett** mappában találhatók.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-build-test-result.png" alt-text="Build és teszt eredményének ellenőrzése":::
 
-   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/check-drop-folder.png" alt-text="Összetevők keresése":::
 
 ## <a name="release-with-azure-pipelines"></a>Kiadás Azure-folyamatokkal
 
@@ -144,13 +143,13 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre kiadási folyamatokat. Hi
 
 Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual Studio Code projekthez.
 
-1. A bal oldali navigációs menü **folyamatok** területén válassza a **kiadások**elemet. Ezután válassza az **új folyamat**lehetőséget.
+1. A bal oldali navigációs menü **folyamatok** területén válassza a **kiadások** elemet. Ezután válassza az **új folyamat** lehetőséget.
 
-2. Válassza **az indítás üres feladatokkal**lehetőséget.
+2. Válassza **az indítás üres feladatokkal** lehetőséget.
 
-3. Az összetevők **mezőben válassza az** **+ összetevő hozzáadása**elemet. A **forrás**területen válassza ki a létrehozott Build folyamatot, és válassza a **Hozzáadás**lehetőséget.
+3. Az összetevők **mezőben válassza az** **+ összetevő hozzáadása** elemet. A **forrás** területen válassza ki a létrehozott Build folyamatot, és válassza a **Hozzáadás** lehetőséget.
 
-   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="Új Azure-folyamat létrehozása":::
+   :::image type="content" source="media/set-up-cicd-pipeline/build-artifact.png" alt-text="Adja meg a folyamat létrehozása összetevőt":::
 
 4. Módosítsa az 1. **fázis** nevét a **feladatok tesztelési környezetbe való telepítéséhez**.
 
@@ -158,32 +157,32 @@ Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual
 
 ### <a name="add-deploy-tasks"></a>Üzembe helyezési feladatok hozzáadása
 
-1. A feladatok legördülő menüben válassza a **feladat üzembe helyezése a tesztkörnyezet teszteléséhez**lehetőséget.
+1. A feladatok legördülő menüben válassza a **feladat üzembe helyezése a tesztkörnyezet teszteléséhez** lehetőséget.
 
 2. Válassza ki a következőt az ügynök feladatainál **+** , és keressen az **ARM-sablon üzembe helyezése** **lehetőségre** . Adja meg a következő paramétereket:
 
    |Paraméter|Érték|
    |-|-|
    |Megjelenített név| *MyASAProject üzembe helyezése*|
-   |Azure-előfizetés| Válassza ki az előfizetését.|
-   |Művelet| *Erőforráscsoport létrehozása vagy frissítése*|
+   |az Azure-előfizetést| Válassza ki az előfizetését.|
+   |Műveletek| *Erőforráscsoport létrehozása vagy frissítése*|
    |Erőforráscsoport| Válassza ki a Stream Analytics feladatot tartalmazó tesztelési erőforráscsoport nevét.|
    |Hely|Válassza ki a tesztelési erőforráscsoport helyét.|
    |Sablon helye| Társított összetevő|
    |Sablon| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-vel-demo-CI-üzembe helyezés/eldobás/myASAProject.JobTemplate.jsbekapcsolva |
    |Sablon paraméterei|$ (System. DefaultWorkingDirectory)/_azure-streamanalytics-vel-demo-CI-üzembe helyezés/eldobás/myASAProject.JobTemplate.parameters.jsbekapcsolva |
-   |Sablon paramétereinek felülbírálása|-<arm_template_parameter> "az érték". A paramétereket **változók**használatával is meghatározhatja.|
+   |Sablon paramétereinek felülbírálása|-<arm_template_parameter> "az érték". A paramétereket **változók** használatával is meghatározhatja.|
    |Üzembe helyezési mód|Növekvő|
 
-3. A feladatok legördülő menüben válassza a **feladat üzembe helyezése éles környezetben**lehetőséget.
+3. A feladatok legördülő menüben válassza a **feladat üzembe helyezése éles környezetben** lehetőséget.
 
 4. Válassza ki a következőt az ügynök feladatainál **+** , és keressen az *ARM-sablon üzembe helyezése* **lehetőségre** . Adja meg a következő paramétereket:
 
    |Paraméter|Érték|
    |-|-|
    |Megjelenített név| *MyASAProject üzembe helyezése*|
-   |Azure-előfizetés| Válassza ki az előfizetését.|
-   |Művelet| *Erőforráscsoport létrehozása vagy frissítése*|
+   |az Azure-előfizetést| Válassza ki az előfizetését.|
+   |Műveletek| *Erőforráscsoport létrehozása vagy frissítése*|
    |Erőforráscsoport| Válassza ki az üzemi erőforráscsoport nevét, amely a Stream Analytics feladatot fogja tartalmazni.|
    |Hely|Válassza ki az üzemi erőforráscsoport helyét.|
    |Sablon helye| *Társított összetevő*|
@@ -196,9 +195,9 @@ Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual
 
 A kiadás létrehozásához válassza a jobb felső sarokban található **kiadás létrehozása** elemet.
 
-:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Új Azure-folyamat létrehozása":::
+:::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Kiadás létrehozása az Azure-folyamatokkal":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Folyamatos integráció és folyamatos üzembe helyezés a Azure Stream Analytics számára](cicd-overview.md)
 * [Azure Stream Analytics feladatok felépítésének, tesztelésének és üzembe helyezésének automatizálása CI/CD-eszközök használatával](cicd-tools.md)

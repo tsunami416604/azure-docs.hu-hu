@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b2ac90334ade52d68c775d9db5a84545774f3844
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614931"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013702"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -49,7 +49,7 @@ A hozzáadott szerepkörök száma az Azure Active Directory által kényszerít
 
 Alkalmazás-szerepkör létrehozása a Azure Portal felhasználói felületének használatával:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a Azure Active Directory bérlőt, amely az alkalmazás regisztrációját tartalmazza, amelyhez hozzá kívánja adni az alkalmazás-szerepkört.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki azt az alkalmazást, amelyben meg szeretné adni az alkalmazás-szerepköröket.
@@ -74,7 +74,7 @@ Alkalmazás-szerepkör létrehozása a Azure Portal felhasználói felületének
 
 Szerepkörök hozzáadása a jegyzékfájl közvetlen szerkesztésével:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a Azure Active Directory bérlőt, amely az alkalmazás regisztrációját tartalmazza, amelyhez hozzá kívánja adni az alkalmazás-szerepkört.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki azt az alkalmazást, amelyben meg szeretné adni az alkalmazás-szerepköröket.
@@ -136,7 +136,7 @@ Miután hozzáadta az alkalmazás-szerepköröket az alkalmazáshoz, hozzárende
 
 Felhasználók és csoportok társítása a szerepkörökhöz a Azure Portal használatával:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. **Azure Active Directory** a bal oldali navigációs menüben válassza a **vállalati alkalmazások** lehetőséget.
 1. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját. Ha az alkalmazás nem jelenik meg a listában, használja a **minden alkalmazás** lista tetején található szűrőket a lista korlátozásához, vagy görgessen le a listából az alkalmazás megkereséséhez.
 1. Válassza ki azt az alkalmazást, amelyben hozzá kívánja rendelni a felhasználókat vagy a biztonsági csoportokat a szerepkörökhöz.
@@ -158,7 +158,7 @@ Amikor alkalmazás-szerepköröket rendel hozzá egy alkalmazáshoz, *alkalmazá
 
 Alkalmazás-szerepkörök hozzárendeléséhez a Azure Portal használatával:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. **Azure Active Directory** a bal oldali navigációs menüben válassza a **Alkalmazásregisztrációk** lehetőséget.
 1. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját. Ha az alkalmazás nem jelenik meg a listában, használja a **minden alkalmazás** lista tetején található szűrőket a lista korlátozásához, vagy görgessen le a listából az alkalmazás megkereséséhez.
 1. Válassza ki azt az alkalmazást, amelyhez hozzá szeretné rendelni az alkalmazás-szerepkört.

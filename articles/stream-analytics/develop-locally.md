@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics feladatok helyi fejlesztése és hibakeresése
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Stream Analytics feladatait a helyi számítógépen, mielőtt azokat a Azure Portalban futtatná.
-ms.author: mamccrea
-author: mamccrea
+ms.author: sujie
+author: su-jie
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 797577ce976f71f41ece0d103bd0145775d48b56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18df480dab90d9ab127bb96971fc19cdc5a361ce
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885582"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016473"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Azure Stream Analytics feladatok helyi fejlesztése és hibakeresése
 
@@ -29,7 +29,7 @@ A következő táblázat környezetei támogatják a helyi fejlesztést:
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |A Stream Analytics-eszközök az Azure fejlesztési és adattárolási és-feldolgozási számítási feladatainak részét képezik a Visual Studióban. A Visual Studióval egyéni C# felhasználó által definiált függvények és deszerializálók írhatók. További információ: Azure Stream Analytics- [feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md).|
 |[Parancssor vagy terminál](stream-analytics-tools-for-visual-studio-cicd.md)|A Azure Stream Analytics CI/CD NuGet-csomag eszközöket biztosít a Visual Studio Project buildhez, a helyi teszteléshez egy tetszőleges gépen. A Azure Stream Analytics CI/CD NPM-csomag eszközöket biztosít a Visual Studio Code Project buildek számára (amely létrehoz egy Azure Resource Manager sablont) egy tetszőleges gépen.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával](visual-studio-code-local-run.md)
 * [A Visual Studio Code használatával helyileg tesztelheti Stream Analytics lekérdezéseket élő stream-bevitelsel](visual-studio-code-local-run-live-input.md)
