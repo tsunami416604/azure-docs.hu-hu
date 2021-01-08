@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955112"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977013"
 ---
 # <a name="about-defender-for-iot-console-users"></a>A IoT-konzol felhasználói
 
@@ -223,8 +223,6 @@ CyberX vagy támogató felhasználó jelszavának alaphelyzetbe állítása:
     > Ne változtassa meg a jelszó-helyreállítási fájlt. Ez egy aláírt fájl, és nem fog működni, ha Ön nem módosítja.
 
 1. A **Jelszó-helyreállítási** képernyőn válassza a **feltöltés** lehetőséget. Ekkor megnyílik **a jelszó feltöltése helyreállítási fájl** ablak.
-
-   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="Töltse fel a helyreállítási fájlt új jelszó beszerzéséhez.":::
 
 1. Válassza a **Tallózás** lehetőséget a fájl megkereséséhez `password_recovery.zip` , vagy húzza a fájlt az `password_recovery.zip` ablakra.
 

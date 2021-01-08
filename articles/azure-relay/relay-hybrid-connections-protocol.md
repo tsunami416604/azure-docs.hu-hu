@@ -3,18 +3,18 @@ title: Azure Relay Hibrid kapcsolatok Protocol-útmutató | Microsoft Docs
 description: Ez a cikk azokat az ügyféloldali interakciókat ismerteti, amelyekkel az Hibrid kapcsolatok Relay csatlakozik az ügyfelekhez a figyelő és a küldő szerepköreiben.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8a812aa401077b81934d89ada99cf1dc312d8dbc
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 36321f88de173a37c9aa6615c4c0f2b29aec9f20
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862326"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976962"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hibrid kapcsolatok protokoll
 
 Azure Relay az Azure Service Bus platform egyik kulcsfontosságú képességi pillére. A Relay új _hibrid kapcsolatok_ funkciója a http és a WebSockets szolgáltatáson alapuló biztonságos, nyílt protokollú evolúció. Ez felülírja a korábbi, egyformán megnevezett _BizTalk Services_ funkciót, amely a saját protokoll Foundation-re épül. A Hibrid kapcsolatok az App Services Azure-ba való integrálása továbbra is a következőképpen fog működni.
 
-Hibrid kapcsolatok lehetővé teszi a kétirányú, bináris adatfolyam-kommunikációt és egyszerű datagram-forgalmat két hálózati alkalmazás között. Vagy mindkét fél NAT vagy tűzfalak mögött található.
+Hibrid kapcsolatok lehetővé teszi a kétirányú, a kérés-válasz és a bináris adatfolyam-kommunikációt, valamint a két hálózati alkalmazás közötti egyszerű datagram áramlását. Mindkét fél lehet NAT vagy tűzfal mögött.
 
 Ez a cikk azokat az ügyféloldali interakciókat ismerteti, amelyekkel az Hibrid kapcsolatok Relay csatlakozik az ügyfelekhez a figyelő és a küldő szerepköreiben. Azt is leírja, hogy a figyelők hogyan fogadják el az új kapcsolatokat és kéréseket.
 
@@ -24,7 +24,7 @@ A Hibrid kapcsolatok Relay két felet csatlakoztat egy olyan, az Azure-felhőben
 
 A szolgáltatás lehetővé teszi a webes szoftvercsatorna-kapcsolatok és a HTTP (S) kérelmek és válaszok továbbítását.
 
-A interakciós modell a számos más hálózati API-k által létesített nómenklatúrára támaszkodik. Egy figyelő jelzi, hogy a rendszer felkészültséget jelez a bejövő kapcsolatok kezeléséhez, és később fogadja őket. A másik oldalon az ügyfél a figyelőhöz csatlakozik, és arra vár, hogy a kapcsolat elfogadható legyen a kétirányú kommunikációs útvonal létrehozásához. A "Csatlakozás", a "Listen" és az "Accept" ugyanaz a kifejezés, amelyet a legtöbb szoftvercsatorna API-ban talál.
+A interakciós modell a számos más hálózati API-k által létesített nómenklatúrára támaszkodik. Van egy figyelő, amely először a bejövő kapcsolatok kezelésének készültségét jelzi, és később fogadja őket. A másik oldalon az ügyfél a figyelőhöz csatlakozik, és arra vár, hogy a kapcsolat elfogadható legyen a kétirányú kommunikációs útvonal létrehozásához. A "Csatlakozás", a "Listen" és az "Accept" ugyanaz a kifejezés, amelyet a legtöbb szoftvercsatorna API-ban talál.
 
 A továbbított kommunikációs modellek bármelyike egy szolgáltatás-végpont felé irányuló kimenő kapcsolatokat tesz elérhetővé. Így a "figyelő" is "ügyfél" lehet a köznyelven belüli használatban, és más terminológiát is okozhat. A Hibrid kapcsolatokhoz használt pontos terminológia a következő:
 
@@ -49,7 +49,7 @@ Hibrid kapcsolatok esetén, ha két vagy több aktív figyelő van, akkor a bej�
 Amikor egy küldő új kapcsolódást nyit meg a szolgáltatásban, a szolgáltatás kiválasztja és értesíti az egyik aktív figyelőt a hibrid kapcsolatban. Ezt az értesítést a rendszer a nyitott vezérlési csatornán JSON-üzenetként küldi el a figyelőnek. Az üzenet tartalmazza annak a WebSocket-végpontnak az URL-címét, amelyhez a figyelőnek csatlakoznia kell a kapcsolat fogadásához.
 
 Az URL-címet a figyelő közvetlenül a további munka nélkül használhatja.
-A kódolt információ csak rövid ideig érvényes, lényegében addig, amíg a küldő hajlandó megvárni a kapcsolódás végpontok közötti megkötését. A maximálisan feltételezett érték 30 másodperc. Az URL-cím csak egy sikeres kapcsolódási kísérlethez használható. Amint létrejön a Rendezvous URL-címmel létesített WebSocket-kapcsolat, a websocketen lévő összes további tevékenység továbbítása a feladótól és a küldőtől történik. Ez a szolgáltatás beavatkozása vagy értelmezése nélkül történik.
+A kódolt információ csak rövid ideig érvényes, lényegében addig, amíg a küldő hajlandó megvárni a kapcsolódás végpontok közötti megkötését. A maximálisan feltételezett érték 30 másodperc. Az URL-cím csak egy sikeres kapcsolódási kísérlethez használható. Amint létrejön a Rendezvous URL-címmel létesített WebSocket-kapcsolat, a websocketen lévő összes további tevékenység továbbítása a feladótól és a küldőtől történik. Ez a viselkedés a szolgáltatás beavatkozása vagy értelmezése nélkül történik.
 
 ### <a name="request-message"></a>Kérelem üzenete
 
@@ -57,7 +57,7 @@ A WebSocket-kapcsolatokon kívül a figyelő HTTP-kérési kereteket is fogadhat
 
 A HTTP-támogatással Hibrid kapcsolatokhoz csatolt figyelőknek kezelniük kell a `request` kézmozdulatot. Egy figyelő, amely nem kezeli a `request` szolgáltatást, ezért a csatlakozás során ismételt időtúllépési hibákat okoz, és a szolgáltatás a jövőben is blokkolhatja.
 
-A HTTP-keret fejlécének metaadatait a rendszer a JSON formátumba fordítja le, így egyszerűbben kezelhető a figyelő keretrendszer, mivel a HTTP-fejléc elemző kódtárak ritkábbak a JSON-elemzők esetében. A nem továbbítja a HTTP-metaadatokat, amelyek csak a küldő és a továbbító HTTP-átjáró közötti kapcsolatra vonatkoznak, beleértve az engedélyezési adatokat is. A HTTP-kérések szervei transzparens módon átvihetők bináris WebSocket-keretekként.
+A HTTP-keret fejlécének metaadatait a rendszer a JSON formátumba fordítja le, így egyszerűbben kezelhető a figyelő keretrendszer, mivel a HTTP-fejléc elemző kódtárak ritkábbak a JSON-elemzők esetében. A HTTP-metaadatok, amelyek csak a küldő és a továbbító HTTP-átjáró közötti kapcsolatra vonatkoznak, és az engedélyezési adatokat is beleértve, nincs továbbítva. A HTTP-kérések szervei transzparens módon átvihetők bináris WebSocket-keretekként.
 
 A figyelő egyenértékű válasz-kézmozdulattal válaszolhat a HTTP-kérelmekre.
 
@@ -65,7 +65,7 @@ A kérelem/válasz folyamat alapértelmezés szerint a vezérlő csatornát hasz
 
 A vezérlési csatornán a kérelem és a válasz törzse legfeljebb 64 kB méretű lehet. A HTTP-fejléc metaadatai összesen 32 kB-ra korlátozódnak. Ha a kérelem vagy a válasz túllépi ezt a küszöbértéket, a figyelőnek az [elfogadás](#accept-message)kezelésére szolgáló kézmozdulattal kell frissítenie egy Rendezvous WebSocket-re.
 
-A kérelmek esetében a szolgáltatás eldönti, hogy a vezérlési csatornán keresztül irányítja-e a kérelmeket. Ez magában foglalja a következőket, de nem korlátozható olyan esetekre, amikor egy kérelem meghaladja a 64 kB-ot (fejlécek és törzs), vagy ha a kérést ["darabolásos" átvitel-kódolással](https://tools.ietf.org/html/rfc7230#section-4.1) küldi el, és a szolgáltatásnak oka van arra, hogy a kérelem túllépje a 64 kb, vagy a kérés elolvasása nem azonnali. Ha a szolgáltatás úgy dönt, hogy a kérést a Rendezvous használatával kézbesíti, csak a Rendezvous-címeket továbbítja a figyelőnek.
+A kérelmek esetében a szolgáltatás eldönti, hogy a vezérlési csatornán keresztül irányítja-e a kérelmeket. Ez magában foglalja a következőket, de nem korlátozható olyan esetekre, amikor egy kérelem meghaladja a 64 kB-ot (fejlécek és törzs), vagy ha a kérést ["darabolásos" átvitel-kódolással](https://tools.ietf.org/html/rfc7230#section-4.1) küldi el, és a szolgáltatásnak oka van arra, hogy a kérelem túllépje a 64 kB-ot, vagy a kérelem olvasása nem azonnali. Ha a szolgáltatás úgy dönt, hogy a kérést a Rendezvous használatával kézbesíti, csak a Rendezvous-címeket továbbítja a figyelőnek.
 Ekkor a figyelőnek létre kell hoznia a Rendezvous WebSocketet, és a szolgáltatás azonnal kézbesíti a teljes kérelmet, beleértve a Rendezvous WebSocket-en keresztül fellépő szervezeteket is. A válasznak a Rendezvous websockett is használnia kell.
 
 A vezérlési csatornán megjelenő kérelmek esetén a figyelő eldönti, hogy válaszol-e a vezérlési csatornán vagy a rendezvouson keresztül. A szolgáltatásnak tartalmaznia kell egy Rendezvous-címeket a vezérlési csatornán keresztül átirányított minden kéréssel. Ez a címe csak az aktuális kérelemből való frissítésre érvényes.
@@ -137,12 +137,12 @@ A lekérdezési karakterlánc paraméterének beállításai a következők.
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | Igen      | A figyelő szerepkörhöz a paraméternek **SB-HC-Action = figyeljnek** kell lennie.
 | `{path}`         | Igen      | Az előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja a figyelő regisztrálásához. A kifejezés a rögzített elérésiút-részhez lesz hozzáfűzve `$hc/` .
-| `sb-hc-token`    | Igen\*    | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy hibrid kapcsolathoz, amely a **figyelési** jogosultságot biztosítja.
+| `sb-hc-token`    | igen\*    | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy hibrid kapcsolathoz, amely a **figyelési** jogosultságot biztosítja.
 | `sb-hc-id`       | Nem       | Ez az ügyfél által megadott opcionális azonosító lehetővé teszi a végpontok közötti diagnosztikai nyomkövetést.
 
 Ha a WebSocket-kapcsolat sikertelen, mert a hibrid kapcsolati útvonal regisztrálása nem történik meg, vagy egy érvénytelen vagy hiányzó jogkivonat vagy valamilyen más hiba történt, a rendszer a hibaüzenetet a normál HTTP 1,1 állapot-visszajelzési modell használatával adja meg. Az állapot leírása olyan nyomkövetési azonosítót tartalmaz, amely az Azure-támogatási munkatársakkal is közölhető:
 
-| Code | Hiba          | Leírás
+| Kód | Hiba          | Leírás
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nem található      | A hibrid kapcsolatok elérési útja érvénytelen, vagy az alap URL-cím helytelen formátumú.
 | 401  | Nem engedélyezett   | A biztonsági jogkivonat hiányzik vagy helytelen formátumú vagy érvénytelen.
@@ -202,13 +202,13 @@ Az URL-címet a-ként kell használni az Accept szoftvercsatorna létrehozásáh
 `{path}` az előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja, amelyen regisztrálni kell a figyelőt. A kifejezés a rögzített elérésiút-részhez lesz hozzáfűzve `$hc/` .
 
 A `path` kifejezés kiterjeszthető egy utótaggal és egy lekérdezési karakterlánc kifejezéssel, amely a regisztrált nevet követi egy elválasztó perjel után.
-Ez lehetővé teszi, hogy a küldő ügyfél átadja a küldési argumentumokat az elfogadó figyelőnek, ha nem lehetséges a HTTP-fejlécek belefoglalása. A várt érték azt jelzi, hogy a figyelő keretrendszer elemzi a rögzített elérési út részét és a regisztrált nevet az elérési útról, és a maradékot, valószínűleg anélkül, hogy az általa megadott lekérdezési karakterlánc-argumentumok nélkül `sb-` , elérhetővé teszi az alkalmazás számára, hogy eldöntse, hogy fogadja-e a kapcsolódást.
+Ez a paraméter lehetővé teszi, hogy a küldő ügyfél átadja a küldési argumentumokat az elfogadó figyelőnek, ha nem lehetséges a HTTP-fejlécek belefoglalása. A várt érték azt jelzi, hogy a figyelő keretrendszer elemzi a rögzített elérési út részét és a regisztrált nevet az elérési útról, és a maradékot, valószínűleg anélkül, hogy az általa megadott lekérdezési karakterlánc-argumentumok nélkül `sb-` , elérhetővé teszi az alkalmazás számára, hogy eldöntse, hogy fogadja-e a kapcsolódást.
 
 További információ: a következő "küldő protokoll" szakasz.
 
 Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat:
 
-| Code | Hiba          | Leírás
+| Kód | Hiba          | Leírás
 | ---- | -------------- | -----------------------------------
 | 403  | Forbidden      | Az URL-cím érvénytelen.
 | 500  | Belső hiba | Hiba történt a szolgáltatásban
@@ -239,7 +239,7 @@ A rendszer a létrejövő URI-t használja a WebSocket-kapcsolat létrehozásáh
 
 A megfelelő végrehajtáskor ez a kézfogás szándékosan meghiúsul a 410-es HTTP-hibakód miatt, mert nem lett létrehozva WebSocket. Ha valami probléma merül fel, a következő kódok írják le a hibát:
 
-| Code | Hiba          | Leírás                          |
+| Kód | Hiba          | Leírás                          |
 | ---- | -------------- | ------------------------------------ |
 | 403  | Forbidden      | Az URL-cím érvénytelen.                |
 | 500  | Belső hiba | Hiba történt a szolgáltatásban. |
@@ -249,7 +249,7 @@ A megfelelő végrehajtáskor ez a kézfogás szándékosan meghiúsul a 410-es 
 A `request` szolgáltatás elküldi az üzenetet a figyelőnek a vezérlési csatornán keresztül. A rendszer ugyanezt az üzenetet is elküldi a Rendezvous websocketen a létrehozás után.
 
 A `request` két részből áll: egy fejlécből és egy bináris törzsből álló keretből.
-Ha nincs törzs, a rendszer kihagyja a törzs kereteit. A kérelem üzenetében a logikai tulajdonság jelzi, hogy a törzs megtalálható `body` -e.
+Ha nincs törzs, a rendszer kihagyja a törzs kereteit. A logikai `body` tulajdonság azt jelzi, hogy egy törzs szerepel-e a kérelem üzenetében.
 
 A kérelem törzsével kapcsolatos kérések esetén a struktúra a következőképpen nézhet ki:
 
@@ -303,7 +303,7 @@ A JSON-tartalma a `request` következő:
   * `Upgrade` (RFC7230, 6,7. szakasz)
   * `Close`  (RFC7230, 8,1. szakasz)
 
-* **requestTarget** – karakterlánc. Ez a tulajdonság tartalmazza a kérelem  ["kérés célját" (RFC7230, 5,3. szakasz)](https://tools.ietf.org/html/rfc7230#section-5.3) . Ez magában foglalja a lekérdezési karakterlánc részét, amely az összes `sb-hc-` előtaggal ellátott paramétertől megfosztott.
+* **requestTarget** – karakterlánc. Ez a tulajdonság tartalmazza a kérelem  ["kérés célját" (RFC7230, 5,3. szakasz)](https://tools.ietf.org/html/rfc7230#section-5.3) . Magában foglalja a lekérdezési karakterlánc részét, amely az összes `sb-hc-` előtaggal ellátott paramétertől megfosztott.
 * **metódus** – karakterlánc. A kérelem módszere [RFC7231, 4. szakasz](https://tools.ietf.org/html/rfc7231#section-4). A `CONNECT` METÓDUS nem használható.
 * **Body** – Boolean. Azt jelzi, hogy egy vagy több bináris szövegtörzs követi-e a következőt:.
 
@@ -371,7 +371,7 @@ A `address` (z) rendszerbeli URL-címet a `request` Rendezvous szoftvercsatorna 
 
 Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat:
 
-| Code | Hiba           | Leírás
+| Kód | Hiba           | Leírás
 | ---- | --------------- | -----------------------------------
 | 400  | Érvénytelen kérelem | Ismeretlen művelet vagy URL-cím érvénytelen.
 | 403  | Forbidden       | Az URL-cím lejárt.
@@ -427,7 +427,7 @@ A lekérdezési karakterlánc paraméterének beállításai a következők:
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | Igen       | A küldő szerepkör esetében a paraméternek a következőnek kell lennie: `sb-hc-action=connect` .
 | `{path}`       | Igen       | (lásd a következő bekezdést)
-| `sb-hc-token`  | Igen\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
+| `sb-hc-token`  | igen\*     | A figyelőnek érvényes, URL-kódolású Service Bus közös hozzáférési jogkivonatot kell megadnia a névtérhez vagy a hibrid kapcsolathoz, amely a **küldési** jogosultságot ruházza fel.
 | `sb-hc-id`     | Nem        | Egy opcionális azonosító, amely lehetővé teszi a végpontok közötti diagnosztikai nyomkövetést, és elérhetővé válik a figyelő számára az elfogadási kézfogás során.
 
  A az `{path}` előre konfigurált hibrid kapcsolatok URL-kódolt névtérbeli elérési útja, amelyen regisztrálni kell a figyelőt. A `path` kifejezés kiterjeszthető egy utótaggal és egy lekérdezési karakterlánc kifejezéssel a további kommunikációhoz. Ha a hibrid kapcsolatok az elérési úton vannak regisztrálva `hyco` , a `path` kifejezést `hyco/suffix?param=value&...` követheti az itt definiált lekérdezési karakterlánc paraméterei is. A teljes kifejezés a következő lehet:
@@ -440,7 +440,7 @@ A `path` kifejezés átkerül a figyelőbe az "elfogadás" vezérlő üzenetben 
 
 Ha a WebSocket-kapcsolat sikertelen, mert a hibrid kapcsolat elérési útja nem regisztrálva van, érvénytelen vagy hiányzó jogkivonat vagy valamilyen más hiba történt, a rendszer a hibaüzenetet a normál HTTP 1,1 állapot-visszajelzési modell használatával adja meg. Az állapot leírása olyan nyomkövetési azonosítót tartalmaz, amely az Azure-támogatási munkatársakkal is közölhető:
 
-| Code | Hiba          | Leírás
+| Kód | Hiba          | Leírás
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nem található      | A hibrid kapcsolatok elérési útja érvénytelen, vagy az alap URL-cím helytelen formátumú.
 | 401  | Nem engedélyezett   | A biztonsági jogkivonat hiányzik vagy helytelen formátumú vagy érvénytelen.
@@ -467,7 +467,7 @@ https://{namespace-address}/{path}?sb-hc-token=...
 
 A _névtér-címnek_ a Azure Relay névtér teljes tartományneve, amely a hibrid kapcsolatokat tárolja, jellemzően az űrlapon `{myname}.servicebus.windows.net` .
 
-A kérés tetszőleges további HTTP-fejléceket tartalmazhat, beleértve az alkalmazás által definiált is. Az összes megadott fejléc, kivéve a RFC7230 közvetlenül definiált (lásd a [kérelem üzenetét](#request-message)) a figyelőre, és a `requestHeader` **kérelem** üzenetének objektumán található.
+A kérés tetszőleges további HTTP-fejléceket tartalmazhat, beleértve az alkalmazás által definiált is. Az összes megadott fejléc, a RFC7230 közvetlenül meghatározottak kivételével (lásd a [kérési üzenetet](#request-message)) a figyelőnek, és a `requestHeader` **kérelem** üzenetének objektumán található.
 
 A lekérdezési karakterlánc paraméterének beállításai a következők:
 
@@ -480,21 +480,21 @@ A jogkivonat a `ServiceBusAuthorization` vagy a HTTP-fejlécben is elvégezhető
 Mivel a szolgáltatás hatékonyan működik proxyként, még akkor is, ha nem valódi HTTP-proxyként, egy `Via` fejlécet vagy jegyzeteket tesz a meglévő `Via` fejlécnek, amely megfelel a [RFC7230, a 5.7.1 szakasznak](https://tools.ietf.org/html/rfc7230#section-5.7.1).
 A szolgáltatás hozzáadja a továbbítási névtér állomásnevét a következőhöz: `Via` .
 
-| Code | Üzenet  | Leírás                    |
+| Kód | Üzenet  | Leírás                    |
 | ---- | -------- | ------------------------------ |
 | 200  | OK       | A kérést legalább egy figyelő kezeli.  |
 | 202  | Elfogadva | A kérést legalább egy figyelő fogadta el. |
 
-Ha hiba merül fel, a szolgáltatás a következőképpen válaszolhat. Azt jelzi, hogy a válasz a szolgáltatásból származik-e, vagy a figyelő a fejléc jelenlétében azonosítható-e `Via` . Ha a fejléc jelen van, a válasz a figyelőtől származik.
+Ha hiba lép fel, a szolgáltatás a következőképpen válaszolhat. Azt jelzi, hogy a válasz a szolgáltatásból származik-e, vagy a figyelő a fejléc jelenlétében azonosítható-e `Via` . Ha a fejléc jelen van, a válasz a figyelőtől származik.
 
-| Code | Hiba           | Leírás
+| Kód | Hiba           | Leírás
 | ---- | --------------- |--------- |
 | 404  | Nem található       | A hibrid kapcsolatok elérési útja érvénytelen, vagy az alap URL-cím helytelen formátumú.
 | 401  | Nem engedélyezett    | A biztonsági jogkivonat hiányzik vagy helytelen formátumú vagy érvénytelen.
 | 403  | Forbidden       | A biztonsági jogkivonat nem érvényes ehhez az elérési úthoz és ehhez a művelethez.
 | 500  | Belső hiba  | Hiba történt a szolgáltatásban.
-| 503  | Hibás átjáró     | A kérést nem lehet átirányítani a figyelőhöz.
-| 504  | Átjáró időtúllépése | A rendszer átirányítja a kérést egy figyelőhöz, de a figyelő nem ismerte fel a beérkezést a szükséges időn belül.
+| 503  | Hibás átjáró     | A kérést nem lehetett átirányítani a figyelőhöz.
+| 504  | Átjáró időtúllépése | A rendszer átirányítja a kérést egy figyelőhöz, de a figyelő nem nyugtázza a beérkezést a szükséges időn belül.
 
 ## <a name="next-steps"></a>Következő lépések
 

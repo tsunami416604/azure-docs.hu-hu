@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d634978333e2b833324228fb0908cfba61a786d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d04f2d1717e1d95f8bcafb8f72f2b0a2f83a248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919751"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976826"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -1434,6 +1434,14 @@ Nem használható – általános használatra nem ajánlott.
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
+| Microsoft. Directory/alkalmazások/appRoles/Update | Az alkalmazás szerepköreinek kezelése és delegált engedélyek kérése alkalmazások számára. |
+| Microsoft. Directory/alkalmazások/célközönség/frissítés | A célközönség frissítése minden típusú alkalmazásnál. |
+| Microsoft. Directory/alkalmazások/hitelesítés/frissítés | Frissítse a hitelesítést minden típusú alkalmazásnál. |
+| Microsoft. Directory/alkalmazások/alapszintű/frissítés | Az alapszintű tulajdonságok frissítése az összes típusú alkalmazás esetében. |
+| Microsoft. Directory/alkalmazások/hitelesítő adatok/frissítés | Hitelesítő adatok frissítése minden típusú alkalmazáshoz. |
+| Microsoft. Directory/alkalmazások/tulajdonosok/frissítés | Az összes típusú alkalmazás tulajdonosának frissítése. |
+| Microsoft. Directory/alkalmazások/engedélyek/frissítés | A kitett engedélyek és a szükséges engedélyek frissítése minden típusú alkalmazáshoz. |
+| Microsoft. Directory/alkalmazások/házirendek/frissítés | Az Applications. policies tulajdonság frissítése Azure Active Directory. |
 | Microsoft. Directory/Contacts/Basic/Update | A névjegyek alapszintű tulajdonságainak frissítése Azure Active Directoryban. |
 | Microsoft. Directory/névjegyek/létrehozás | Névjegyek létrehozása Azure Active Directoryban. |
 | Microsoft. Directory/Contacts/delete | Névjegyek törlése Azure Active Directory. |
@@ -1467,6 +1475,14 @@ Nem használható – általános használatra nem ajánlott.
 
 | **Műveletek** | **Leírás** |
 | --- | --- |
+| Microsoft. Directory/alkalmazások/appRoles/Update | Az alkalmazás szerepköreinek kezelése és delegált engedélyek kérése alkalmazások számára. |
+| Microsoft. Directory/alkalmazások/célközönség/frissítés | A célközönség frissítése minden típusú alkalmazásnál. |
+| Microsoft. Directory/alkalmazások/hitelesítés/frissítés | Frissítse a hitelesítést minden típusú alkalmazásnál. |
+| Microsoft. Directory/alkalmazások/alapszintű/frissítés | Az alapszintű tulajdonságok frissítése az összes típusú alkalmazás esetében. |
+| Microsoft. Directory/alkalmazások/hitelesítő adatok/frissítés | Hitelesítő adatok frissítése minden típusú alkalmazáshoz. |
+| Microsoft. Directory/alkalmazások/tulajdonosok/frissítés | Az összes típusú alkalmazás tulajdonosának frissítése. |
+| Microsoft. Directory/alkalmazások/engedélyek/frissítés | A kitett engedélyek és a szükséges engedélyek frissítése minden típusú alkalmazáshoz. |
+| Microsoft. Directory/alkalmazások/házirendek/frissítés | Az Applications. policies tulajdonság frissítése Azure Active Directory. |
 | Microsoft. Directory/Contacts/Basic/Update | A névjegyek alapszintű tulajdonságainak frissítése Azure Active Directoryban. |
 | Microsoft. Directory/névjegyek/létrehozás | Névjegyek létrehozása Azure Active Directoryban. |
 | Microsoft. Directory/Contacts/delete | Névjegyek törlése Azure Active Directory. |

@@ -1,5 +1,5 @@
 ---
-title: A figyelt forgalom szabályozása
+title: A monitorozandó forgalom szabályozása
 description: Az érzékelők automatikusan elvégzik a nagy csomagok észlelését, valamint a forgalom és a hálózati eszközök, például az eszközök attribútumai és a hálózati működés információinak elhárítását. Számos eszköz áll rendelkezésre az egyes érzékelők által észlelt forgalom típusának szabályozására.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 08afba8ade30775a49492f337bb5337320b9e282
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841036"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977072"
 ---
-# <a name="control-what-traffic-is-monitored"></a>A figyelt forgalom szabályozása
+# <a name="control-what-traffic-is-monitored"></a>A monitorozandó forgalom szabályozása
 
 Az érzékelők automatikusan elvégzik a nagy csomagok észlelését, valamint a forgalom és a hálózati eszközök, például az eszközök attribútumai és viselkedése adatainak megoldását. Számos eszköz áll rendelkezésre az egyes érzékelők által észlelt forgalom típusának szabályozására.
 
@@ -228,7 +228,7 @@ Tesztelési eszköz használatával ellenőrizze, hogy a megadott beállítások
 
 3. Adjon meg egy, a **kiszolgálóhoz tartozó DNS-névlekérdezési teszthez** tartozó címeket a **keresési címben** .
 
-    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-looup-test-screen.png" alt-text="A keresési címtartományt megjelenítő képernyőkép.":::
+    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-lookup-test-screen.png" alt-text="A keresési címtartományt megjelenítő képernyőkép.":::
 
 4. Válassza a **Tesztelés** lehetőséget.
 
@@ -295,7 +295,7 @@ A vizsgálati eredmények megtekintése:
 
 1. Ha a vizsgálat befejeződött, a **műveletek** ablaktáblán válassza a **vizsgálat eredményeinek megtekintése** lehetőséget. A rendszer letölti a vizsgálat eredményeit tartalmazó CSV-fájlt a számítógépre.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Érzékelő észlelésének vizsgálata egy eszköz leltározásakor](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  [Az érzékelő észlelésének vizsgálata az eszköz térképén](how-to-work-with-the-sensor-device-map.md)

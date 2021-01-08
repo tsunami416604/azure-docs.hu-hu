@@ -1,18 +1,18 @@
 ---
-title: Az érzékelő-eszköz Térkép használata
+title: Az érzékelőeszköz-térkép használata
 description: Az eszköz Térkép az észlelt hálózati eszközök grafikus megjelenítését teszi lehetővé. A Térkép használatával elemezheti és kezelheti az eszköz adatait, a hálózati szeleteket és jelentéseket készíthet.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/07/2020
+ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: dd0f28411dccab1a1dd36fbd01d2d1acbcc689e0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841353"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976758"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Az érzékelő észlelésének vizsgálata az eszköz térképén
 
@@ -59,7 +59,7 @@ Az egyes alhálózatok egyetlen entitásként jelennek meg az eszköz térképé
 
 Az alábbi ábra egy összecsukott IT-alhálózatot mutat be 27 informatikai hálózati elemmel.
 
-:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet.png" alt-text="a 27 IT-hálózati elemmel összecsukva IT-alhálózat":::
+:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="a 27 IT-hálózati elemmel összecsukva IT-alhálózat":::
 
 Az informatikai hálózatok összeomlási képességének engedélyezése:
 
@@ -120,7 +120,7 @@ A következő előre meghatározott csoportok érhetők el:
 
 | Csoport neve | Leírás |
 |--|--|
-| **Ismert alkalmazások vagy nem standrad portok (alapértelmezett)** | Fenntartott portokat (például TCP) használó eszközök. Nem szabványos portokat vagy portokat használó eszközök, amelyek nem rendelkeznek aliassal. |
+| **Ismert alkalmazások vagy nem szabványos portok (alapértelmezett)** | Fenntartott portokat (például TCP) használó eszközök. Nem szabványos portokat vagy portokat használó eszközök, amelyek nem rendelkeznek aliassal. |
 | **OT protokollok (alapértelmezett)** | Az OT-forgalmat kezelő eszközök. |
 | **Engedélyezés (alapértelmezett)** | A hálózatban a tanulási folyamat során felderített és a hálózatra hivatalosan felvett eszközök |
 | **Eszközök leltározási szűrői** | Az eszközök az eszköz leltározási táblázatában mentett szűrők szerint vannak csoportosítva. |
@@ -226,7 +226,7 @@ Az eszköz típusa ikon csatlakoztatott eszközökkel jelenik meg.
 
 A részletes nézet az alábbi információk segítségével jeleníti meg az eszközöket és az eszközök címkéit és kijelzőit:
 
-:::image type="content" source="media/how-to-work-with-maps/device-map.png" alt-text="Részletes nézet":::
+:::image type="content" source="media/how-to-work-with-maps/device-map-v2.png" alt-text="Részletes nézet":::
 
 ### <a name="control-the-zoom-view"></a>A nagyítás nézet szabályozása
 
@@ -236,7 +236,7 @@ A Térkép nézet a Térkép nagyítási szintjétől függ. A térképi nézete
 
 ### <a name="enable-simplified-zoom-views"></a>Egyszerűsített nagyítási nézetek engedélyezése
 
-Azok a rendszergazdák, akik a biztonsági elemzőknek és a RO-felhasználóknak szeretnék hozzáférni a Brid és az eszközhöz, és begépelik a kapcsolati nézeteket, engedélyezni kell az egyszerűsített nézet lehetőséget.
+Azok a rendszergazdák, akik a biztonsági elemzőknek és a RO-felhasználóknak szeretnének hozzáférni a madártávlatból és az eszközhöz, és begépelik a kapcsolódási nézeteket, engedélyezni kell az egyszerűsített nézet lehetőséget.
 
 Az egyszerűsített leképezési nézetek engedélyezése:
 
@@ -326,7 +326,7 @@ A következő információk manuálisan is frissíthetők. A manuálisan megadot
 | Attribútumok | Az eszközön a tanulási időszakban felderített további információk, amelyek nem tartoznak más kategóriákhoz, az attribútumok szakaszban jelennek meg. <br /> Az információ a RO. |
 | Beállítások | Az eszközbeállítások manuális módosításával megakadályozhatja a hamis pozitív értéket: <br /> - **Jogosult eszköz**: a tanulási időszak alatt a hálózatban felderített összes eszköz meghatalmazott eszközként van azonosítva. Ha az eszközt a tanulási időszak után észlelik, a rendszer alapértelmezés szerint jogosulatlan eszközként jelenik meg. Ezt a definíciót manuálisan is módosíthatja. <br /> - **Más néven képolvasó**: engedélyezze ezt a beállítást, ha tudja, hogy az eszköz képolvasóként ismert, és nincs szükség riasztásra. <br /> - **Programozási eszköz**: engedélyezze ezt a beállítást, ha tudja, hogy az eszköz programozási eszközként ismert, és nincs szükség riasztásra. |
 | Egyéni csoportok | Az eszköz azon egyéni csoportjai, amelyekben ez az eszköz részt vesz. |
-| Állapot | Az eszköz biztonsága és engedélyezési állapota: <br /> – Az állapot akkor jelenik meg, `Secured` Ha nincsenek riasztások <br /> – Ha riasztás van az eszközről, a riasztások száma megjelenik. <br /> – Az állapot `Unauthorized` megjelenik azon eszközök esetében, amelyek a tanulási időszak után a hálózathoz lettek adva. Az eszközt manuálisan is megadhatja `Authorized Device` a beállításokban <br /> – Ha az eszköz címe dinamikus címként van definiálva, az `DHCP` állapothoz kerül. |
+| Állam | Az eszköz biztonsága és engedélyezési állapota: <br /> – Az állapot akkor jelenik meg, `Secured` Ha nincsenek riasztások <br /> – Ha riasztás van az eszközről, a riasztások száma megjelenik. <br /> – Az állapot `Unauthorized` megjelenik azon eszközök esetében, amelyek a tanulási időszak után a hálózathoz lettek adva. Az eszközt manuálisan is megadhatja `Authorized Device` a beállításokban <br /> – Ha az eszköz címe dinamikus címként van definiálva, az `DHCP` állapothoz kerül. |
 
 
 | Network (Hálózat) | Leírás |
@@ -706,6 +706,6 @@ Exportálás:
 
 1. Válassza ki az exportálási lehetőséget.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Érzékelő észlelésének vizsgálata egy eszköz leltározásakor](how-to-investigate-sensor-detections-in-a-device-inventory.md)

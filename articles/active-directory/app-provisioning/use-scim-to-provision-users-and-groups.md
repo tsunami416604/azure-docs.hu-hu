@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 90debef39b3e657bf96221dfaf5fa762d332a364
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584493"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976520"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Oktatóanyag – SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
@@ -330,7 +330,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 */Users beolvasása? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-b016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Válasz
+##### <a name="response"></a><a name="response-2"></a>Reagálás
 
 *HTTP/1.1 200 OK*
 ```json
@@ -371,7 +371,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 */Users beolvasása? Filter = userName EQ "nem létező felhasználó"*
 
-##### <a name="response"></a><a name="response-3"></a>Válasz
+##### <a name="response"></a><a name="response-3"></a>Reagálás
 
 *HTTP/1.1 200 OK*
 ```json
@@ -408,7 +408,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Válasz
+##### <a name="response"></a><a name="response-4"></a>Reagálás
 
 *HTTP/1.1 200 OK*
 ```json
@@ -452,7 +452,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Válasz
+##### <a name="response"></a><a name="response-5"></a>Reagálás
 
 *HTTP/1.1 200 OK*
 ```json
@@ -501,7 +501,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Válasz
+##### <a name="response"></a><a name="response-14"></a>Reagálás
 
 ```json
 {
@@ -541,7 +541,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 */Users/5171a35d82074e068ce2 törlése HTTP/1.1*
 
-##### <a name="response"></a><a name="response-6"></a>Válasz
+##### <a name="response"></a><a name="response-6"></a>Reagálás
 
 *HTTP/1.1 204 nincs tartalom*
 
@@ -568,7 +568,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Válasz
+##### <a name="response"></a><a name="response-7"></a>Reagálás
 
 *HTTP/1.1 201 létrehozva*
 ```json
@@ -593,7 +593,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 */Groups/40734ae655284ad3abcc beolvasása? excludedAttributes = tagok HTTP/1.1*
 
-##### <a name="response"></a><a name="response-8"></a>Válasz
+##### <a name="response"></a><a name="response-8"></a>Reagálás
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -614,7 +614,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 ##### <a name="request"></a><a name="request-9"></a>Kérés
 */Groups beolvasása? excludedAttributes = tagok&Filter = displayName EQ "displayName" HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Válasz
+##### <a name="response"></a><a name="response-9"></a>Reagálás
 
 *HTTP/1.1 200 OK*
 ```json
@@ -654,7 +654,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Válasz
+##### <a name="response"></a><a name="response-10"></a>Reagálás
 
 *HTTP/1.1 204 nincs tartalom*
 
@@ -677,7 +677,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Válasz
+##### <a name="response"></a><a name="response-11"></a>Reagálás
 
 *HTTP/1.1 204 nincs tartalom*
 
@@ -700,7 +700,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Válasz
+##### <a name="response"></a><a name="response-12"></a>Reagálás
 
 *HTTP/1.1 204 nincs tartalom*
 
@@ -710,7 +710,7 @@ Ez a szakasz példákat tartalmaz az Azure AD SCIM-ügyfél által kibocsátott 
 
 */Groups/cdb1ce18f65944079d37 törlése HTTP/1.1*
 
-##### <a name="response"></a><a name="response-13"></a>Válasz
+##### <a name="response"></a><a name="response-13"></a>Reagálás
 
 *HTTP/1.1 204 nincs tartalom*
 
@@ -1217,7 +1217,7 @@ A OAuth-kód engedélyezési folyamatának lépései:
 > [!NOTE]
 > Habár jelenleg nem lehet beállítani a OAuth a katalóguson kívüli alkalmazásban, manuálisan is létrehozhat egy hozzáférési jogkivonatot az engedélyezési kiszolgálóról, és beírhatja azt a nem katalógus alkalmazás titkos token mezőjébe. Ez lehetővé teszi a SCIM-kiszolgáló és az Azure AD SCIM-ügyfél kompatibilitásának ellenőrzését az alkalmazás-katalógusba való beléptetés előtt, amely támogatja a OAuth-kód engedélyezését.  
 
-**Hosszú élettartamú OAuth tulajdonosi jogkivonatok:** Ha az alkalmazás nem támogatja a OAuth-engedélyezési kód engedélyezésének folyamatát, hosszú élettartamú OAuth tulajdonosi jogkivonatot is létrehozhat, mint amennyit a rendszergazda a kiépítési integráció beállításához használhat. A tokennek véglegesnek kell lennie, különben a kiépítési feladatot a jogkivonat lejárta után [karanténba](application-provisioning-quarantine-status.md) helyezi a rendszer. Ennek a tokennek a méretnél kisebbnek kell lennie a 1KB.  
+**Hosszú élettartamú OAuth tulajdonosi jogkivonatok:** Ha az alkalmazás nem támogatja a OAuth-engedélyezési kód engedélyezésének folyamatát, hosszú élettartamú OAuth tulajdonosi jogkivonatot is létrehozhat, mint amennyit a rendszergazda a kiépítési integráció beállításához használhat. A tokennek véglegesnek kell lennie, különben a kiépítési feladatot a jogkivonat lejárta után [karanténba](application-provisioning-quarantine-status.md) helyezi a rendszer.
 
 További hitelesítési és engedélyezési módszerek esetén tudassa velünk a [UserVoice](https://aka.ms/appprovisioningfeaturerequest).
 

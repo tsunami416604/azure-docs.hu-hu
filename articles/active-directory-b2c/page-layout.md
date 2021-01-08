@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108501"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976503"
 ---
 # <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
@@ -51,7 +51,7 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 - A fókusz most a jelszó mezőre kerül az e-mail ellenőrzése után.
 - Eltávolítva `autofocus` a jelölőnégyzet vezérlőelemből. 
 - A telefonszám-ellenőrzés megjelenítési vezérlőelemének támogatása.
-- Most hozzáadhatja a `data-preload="true"` következő attribútumot: [a HTML-címkékben] (Customize-UI-with-HTML. MD # irányelvek-for
+- Mostantól hozzáadhatja az `data-preload="true"` attribútumot a [HTML-címkékhez](customize-ui-with-html.md#guidelines-for-using-custom-page-content)
   - A csatolt CSS-fájlokat a HTML-sablonnal megegyező időben töltse be, így nem "villódzásmentes" a fájlok betöltése között.
   - Szabályozza a `script` címkék beolvasásának és végrehajtásának sorrendjét az oldal betöltése előtt.
 - Az e-mail-mező most `type=email` és a mobil billentyűzetek biztosítják a megfelelő javaslatokat.

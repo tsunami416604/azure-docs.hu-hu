@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: 74cab14cd162ba608a9c5d0168485e9055661f55
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/06/2021
+ms.openlocfilehash: 9164c1e2542024a02bf4868658d0f29728f32c7b
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590790"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976860"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Virtuális gép létrehozása jóváhagyott alap használatával
 
@@ -40,15 +40,11 @@ Az Azure számos jóváhagyott Linux-disztribúciót kínál. Az aktuális list�
 2. Válassza a **Virtuális gépek** lehetőséget.
 3. Válassza a **+ Hozzáadás** lehetőséget a **virtuális gép létrehozása** képernyő megnyitásához.
 4. Válassza ki a lemezképet a legördülő listából, vagy válassza az **összes nyilvános és privát rendszerkép tallózása** lehetőséget a rendelkezésre álló virtuálisgép-lemezképek kereséséhez vagy tallózásához.
-5. Ha **1. generációs** virtuális gépet szeretne létrehozni, nyissa meg a **lemezek** lapot, és állítsa a **felügyelt lemez használata** beállítást a **nem** értékre, hogy a virtuális gép virtuális merevlemezét a megadott Storage-fiókban tudja beolvasni
-
-   :::image type="content" source="media/create-vm/create-virtual-machine-sizes-2.png" alt-text="Válassza a nem felügyelt lemez lehetőséget.":::
-   
-6. A 2. **generációs** virtuális gépek létrehozásához nyissa meg a **speciális** lapot, és válassza a **2. generációs** lehetőséget.
+5. A 2. **generációs** virtuális gépek létrehozásához nyissa meg a **speciális** lapot, és válassza a **2. generációs** lehetőséget.
 
     :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Válassza az 1. gen vagy a 2. lehetőséget.":::
 
-7. Válassza ki a telepítendő virtuális gép méretét.
+6. Válassza ki a telepítendő virtuális gép méretét.
 
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Válasszon egy ajánlott virtuálisgép-méretet a kiválasztott képhez.":::
 
@@ -56,7 +52,6 @@ Az Azure számos jóváhagyott Linux-disztribúciót kínál. Az aktuális list�
 8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez. Amikor megjelenik az **érvényesítési** üzenet, válassza a  **Létrehozás** lehetőséget.
 
 Az Azure megkezdi a megadott virtuális gép üzembe helyezését. Az előrehaladás nyomon követéséhez válassza a bal oldali menü **Virtual Machines** lapját. A létrehozást követően a virtuális gép állapota **fut** értékre változik.
-
 
 ## <a name="configure-the-vm"></a>A virtuális gép konfigurálása
 

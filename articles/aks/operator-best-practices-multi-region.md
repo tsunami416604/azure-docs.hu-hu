@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b53c0002af3680567aabf0955f6bb4e0d99c2ab1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3ff8406a3634fa946ab8ce7aca694bbc57d556a5
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093434"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976401"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzletmenet folytonosságához és a vész-helyreállításhoz az Azure Kubernetes szolgáltatásban (ak)
 
@@ -119,10 +119,7 @@ A tipikus stratégia egy olyan közös tárolási pont biztosítása, amelyben a
 
 ![Infrastruktúra-alapú aszinkron replikáció](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
 
-Ha az Azure Managed Disks-t használja, kiválaszthatja a replikációs és DR-megoldásokat, például a következőket:
-
-* [Velero az Azure-ban](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure Backup](../backup/backup-overview.md)
+Ha az Azure Managed Disks-t használja, a replikáció és a vész-helyreállítás kezeléséhez több lehetőség is használható. [A Velero az Azure-on][velero] és a [Kasten][kasten] -ben a Kubernetes-ra natív, de nem támogatott megoldások.
 
 ### <a name="application-based-asynchronous-replication"></a>Alkalmazás-alapú aszinkron replikáció
 
@@ -140,3 +137,6 @@ Ez a cikk az üzleti folytonossággal és a vész-helyreállítási megfontolás
 <!-- INTERNAL LINKS -->
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
+
+[velero]: https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md
+[kasten]: https://www.kasten.io/

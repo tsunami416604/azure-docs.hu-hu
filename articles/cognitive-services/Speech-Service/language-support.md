@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 68a384197409115343a81aea23b0f7d42166d716
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762962"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976809"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -53,9 +53,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arab (Egyesült Arab Emírségek)      | `ar-AE` | Nyelvi modell                                   |
 | Bolgár (Bulgária)               | `bg-BG` | Nyelvi modell                                   |
 | Katalán (Spanyolország)                    | `ca-ES` | Nyelvi modell                                   |
-| Kínai (kantoni, hagyományos)   | `zh-HK` | Nyelvi modell                                   |
+| Kínai (kantoni, hagyományos)   | `zh-HK` | Akusztikai modell<br>Nyelvi modell                 |
 | Kínai (mandarin, egyszerűsített)     | `zh-CN` | Akusztikai modell<br>Nyelvi modell                 |
-| Kínai (tajvani mandarin)       | `zh-TW` | Nyelvi modell                                   |
+| Kínai (tajvani mandarin)       | `zh-TW` | Akusztikai modell<br>Nyelvi modell                 |
 | Horvát (Horvátország)                 | `hr-HR` | Nyelvi modell                                   |
 | Cseh (Cseh Köztársaság)             | `cs-CZ` | Nyelvi modell                                   |
 | Dán (Dánia)                   | `da-DK` | Nyelvi modell                                   |
@@ -83,8 +83,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Magyar (Magyarország)                | `hu-HU` | Nyelvi modell                                   |
 | Ír (Írország)                     | `ga-IE` | Nyelvi modell                                   |
 | Olasz (Olaszország)                    | `it-IT` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
-| Japán (Japán)                   | `ja-JP` | Nyelvi modell                                   |
-| Koreai (Dél-Korea)                     | `ko-KR` | Nyelvi modell                                   |
+| Japán (Japán)                   | `ja-JP` | Akusztikai modell<br>Nyelvi modell                 |
+| Koreai (Dél-Korea)                     | `ko-KR` | Akusztikai modell<br>Nyelvi modell                 |
 | Lett (Lettország)                   | `lv-LV` | Nyelvi modell                                   |
 | Litván (Litvánia)             | `lt-LT` | Nyelvi modell                                   |
 | Máltai (Málta)                     | `mt-MT` | Nyelvi modell                                   |
@@ -477,25 +477,25 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Beszélőfelismerés
+## <a name="speaker-recognition"></a>Speaker Recognition
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 
 | Nyelv | Területi beállítás (BCP-47) | Szövegtől függő ellenőrzés | Szövegtől független ellenőrzés | Szöveg – független azonosítás |
 |----|----|----|----|----|
 |Angol (US)  |  en-US  |  igen  |  igen  |  igen |
-|Kínai (mandarin, egyszerűsített) | zh-CN     |     n/a |     igen |     igen|
-|Angol (Ausztrália)     | EN-AU     | n/a     | igen     | igen|
-|Angol (Kanada)     | en-CA     | n/a |     igen |     igen|
-|Angol (Egyesült Királyság)     | en-GB     | n/a     | igen     | igen|
-|Francia (Kanada)     | fr – CA     | n/a     | igen |     igen|
-|Francia (Franciaország)     | fr-FR     | n/a     | igen     | igen|
-|Német (Németország)     | de-DE     | n/a     | igen     | igen|
-|Olasz | it-IT     |     n/a     | igen |     igen|
-|Japán     | ja-JP | n/a     | igen     | igen|
-|Portugál (Brazília) | pt-BR |     n/a |     igen |     igen|
-|Spanyol (Mexikó)     | es-MX     | n/a |     igen |     igen|
-|Spanyol (Spanyolország)     | es-ES | n/a     | igen |     igen|
+|Kínai (mandarin, egyszerűsített) | zh-CN     |     n.a. |     igen |     igen|
+|Angol (Ausztrália)     | EN-AU     | n.a.     | igen     | igen|
+|Angol (Kanada)     | en-CA     | n.a. |     igen |     igen|
+|Angol (Egyesült Királyság)     | en-GB     | n.a.     | igen     | igen|
+|Francia (Kanada)     | fr – CA     | n.a.     | igen |     igen|
+|Francia (Franciaország)     | fr-FR     | n.a.     | igen     | igen|
+|Német (Németország)     | de-DE     | n.a.     | igen     | igen|
+|Olasz | it-IT     |     n.a.     | igen |     igen|
+|Japán     | ja-JP | n.a.     | igen     | igen|
+|Portugál (Brazília) | pt-BR |     n.a. |     igen |     igen|
+|Spanyol (Mexikó)     | es-MX     | n.a. |     igen |     igen|
+|Spanyol (Spanyolország)     | es-ES | n.a.     | igen |     igen|
 
 ## <a name="next-steps"></a>Következő lépések
 

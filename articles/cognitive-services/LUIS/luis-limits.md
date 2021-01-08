@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: c855be6d31a1ee46434ecadbeae7a36dd6a3ff95
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018803"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976792"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok korlátai
 LUIS több korlátozási területtel rendelkezik. Az első a [modell korlátja](#model-limits), amely a Luis szándékait, entitásait és szolgáltatásait vezérli. A második régió a kulcs típusa alapján [korlátozza a kvótákat](#key-limits) . A határértékek harmadik területe a LUIS webhely vezérlésére szolgáló [billentyűkombináció](#keyboard-controls) . A negyedik terület az a [régió](luis-reference-regions.md) , amely a Luis authoring webhelye és a Luis [Endpoint](luis-glossary.md#endpoint) API-k között van.
@@ -30,7 +30,7 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait, érdemes lehet [Luis kü
 | Külső entitások | Nincs korlát |
 | [Leképezések][intents]|500/alkalmazás: 499 egyéni szándék, és a szükséges _none_ szándék.<br>A [küldő-alapú](https://aka.ms/dispatch-tool) alkalmazás megfelelő 500 elküldési forrással rendelkezik.|
 | [Entitások listázása](./luis-concept-entity-types.md) | Szülő: 50, gyermek: 20 000 elem. A Canonical neve * alapértelmezett karakter max. A szinonimák értékeinek hossza nem korlátozza a korlátot. |
-| [gépi tanulási entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a korlát szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.<br>Az alentitások akár 5 szintre is ágyazhatók.|
+| [gépi tanulási entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a korlát szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.<br>Az alentitások legfeljebb 5 szinten ágyazhatók egymásba, és szintenként legfeljebb 10 gyermek lehet.|
 |Modell szolgáltatásként| Egy adott modell funkcióként használható modelljeinek maximális száma 10 modell. Egy adott modellhez funkcióként használt kifejezések listájának maximális száma 10 kifejezéses felsorolás.|
 | [Előnézet – dinamikus lista entitásai](./luis-migration-api-v3.md)|2 a ~ 1k/Query előrejelzési végpontra vonatkozó kérelem listája|
 | [Minták](luis-concept-patterns.md)|500 minta alkalmazásként.<br>A minta maximális hossza 400 karakter.<br>3 minta. minden entitás/minta<br>Legfeljebb 2 beágyazott opcionális szöveg a mintában|
@@ -108,7 +108,7 @@ A [beszédfelismerési funkció](../speech-service/how-to-recognize-intents-from
 
 ## <a name="keyboard-controls"></a>Billentyűzet vezérlőelem
 
-|Billentyűzet bemenete | Description |
+|Billentyűzet bemenete | Leírás |
 |--|--|
 |Vezérlő + E|a jogkivonatok és entitások közötti váltás a hosszúságú kimondott szöveg listán|
 

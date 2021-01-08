@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172367"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976877"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: címtárszolgáltatás-bővítmények
 A (z) Azure Active Directory (Azure AD) sémájának kiterjesztése a helyi Active Directory saját attribútumaival is elvégezhető. Ez a funkció lehetővé teszi LOB-alkalmazások készítését olyan attribútumok fogyasztásával, amelyeket továbbra is a helyszínen kezelhet. Ezek az attribútumok a [bővítményeken](/graph/extensibility-overview
@@ -46,7 +46,7 @@ A telepítés a következő attribútumokat jeleníti meg, amelyek érvényes je
 
 
 >[!NOTE]
-> Bár a Azure AD Connect támogatja a többértékű Active Directory attribútumok többértékű címtár-bővítményként történő szinkronizálását, jelenleg nincs mód a többértékű címtár-bővítmény attribútumaiban feltöltött adatlekérdezések lekérésére/felhasználására.
+> Miután Azure AD Connect szinkronizált többértékű Active Directory attribútumot az Azure AD-hez többértékű attribútum-kiterjesztésként, lehetséges, hogy az SAML-jogcím attribútumát is tartalmazza. Ezt az adatgyűjtést azonban nem lehet API-hívással használni.
 
 Az attribútumok listáját a rendszer a Azure AD Connect telepítésekor létrehozott séma-gyorsítótárból olvassa be. Ha további attribútumokkal bővítette a Active Directory sémát, [frissítenie kell a sémát](how-to-connect-installation-wizard.md#refresh-directory-schema) , mielőtt láthatóvá válnak az új attribútumok.
 

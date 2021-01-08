@@ -4,15 +4,15 @@ description: Ez az útmutató a gyakran használt horizont módszereit ismerteti
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 11/19/2020
+ms.date: 1/7/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3266517b9ddc8fc7ac7b06a137286c05ea9a28fa
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6d2e3fccd6a61fe129050faa29cb7bb77674ccfe
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839700"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976902"
 ---
 # <a name="horizon-api"></a>Horizon API 
 
@@ -24,7 +24,7 @@ A horizont és a CyberX platform használatáról további információt a köve
 
 - A Horizon Open Development Environment (ODE) SDK-hoz forduljon a CyberX képviselőjéhez.
 - A támogatási és hibaelhárítási információkért forduljon a következőhöz: <support@cyberx-labs.com> .
-- A Cyberx felhasználói útmutatójának a CyberX-konzolról való eléréséhez válassza a :::image type="icon" source="media/references-horizon-api//image3.png"::: **felhasználói útmutató letöltése** lehetőséget.
+- A Cyberx felhasználói útmutatójának a CyberX-konzolról való eléréséhez válassza a :::image type="icon" source="media/references-horizon-api/profile-icon.png"::: **felhasználói útmutató letöltése** lehetőséget.
 
 ## `horizon::protocol::BaseParser`
 

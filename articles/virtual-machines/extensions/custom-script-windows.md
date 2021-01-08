@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b0502fb05043a54d81d768a7809d19b108cc6248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861789"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976843"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
@@ -50,6 +50,8 @@ Beállíthatja, hogy a bővítmény az Azure Blob Storage hitelesítő adatait h
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
 Ha külsőleg le kell töltenie egy parancsfájlt, például a GitHubról vagy az Azure Storage-ból, akkor további tűzfal-és hálózati biztonsági csoportok portjait kell megnyitnia. Ha például a szkript az Azure Storage-ban található, az Azure NSG Service-címkék használatával engedélyezheti a hozzáférést a [tároláshoz](../../virtual-network/network-security-groups-overview.md#service-tags).
+
+Vegye figyelembe, hogy a CustomScript-bővítmény nem tudja megkerülni a tanúsítványok érvényesítését. Tehát ha egy biztonságos helyről tölt le, például:. önaláírt tanúsítvány esetén előfordulhat, hogy a következőhöz hasonló hibák léptek fel: *"a távoli tanúsítvány érvénytelen az érvényesítési eljárás szerint"*. Győződjön meg arról, hogy a tanúsítvány megfelelően van telepítve a virtuális gép *"megbízható legfelső szintű hitelesítésszolgáltatók"* tárolójába.
 
 Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szükség lehet további tűzfal-és hálózati biztonsági csoport portjainak megnyitására.
 
