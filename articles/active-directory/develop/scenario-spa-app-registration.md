@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: e42b6b7ffa39110ce356094de690bb353a3fb10f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 0050eb61aac53b69c74306b9aaab797d8adfa915
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107787"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017000"
 ---
 # <a name="single-page-application-app-registration"></a>Egyoldalas alkalmazás: alkalmazás regisztrálása
 
@@ -27,7 +27,7 @@ Ha egy egyoldalas alkalmazást (SPA) szeretne regisztrálni a Microsoft Identity
 
 A MSAL.js 1,0-és 2,0-alapú alkalmazásokhoz a kezdeti alkalmazás regisztrációjának létrehozásához végezze el a következő lépéseket.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
@@ -79,6 +79,6 @@ Ahogy korábban említettük, a MSAL.js 1,3-et használó egylapos alkalmazások
 
 Ha az alkalmazás regisztrációja által képviselt összes éles üzemi egyoldalas alkalmazás a MSAL.js 2,0 és az engedélyezési kód folyamatát használja, törölje a jelet az alkalmazás regisztrációjának hitelesítése ablaktáblán a Azure Portal az implicit engedélyezési beállítások **jelölőnégyzetből** . Az MSAL.js 1. x és az implicit folyamat használatával folytatott alkalmazások továbbra is működhetnek, azonban ha az implicit folyamat engedélyezve van (be van jelölve).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alkalmazás kódjának konfigurálásával használhatja az előző lépések során létrehozott regisztrációs alkalmazást: az [alkalmazás kódjának konfigurálása](scenario-spa-app-configuration.md).

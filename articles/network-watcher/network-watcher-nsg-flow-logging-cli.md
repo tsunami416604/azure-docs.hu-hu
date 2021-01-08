@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: c62fbe1621e396ab938327d5159ed8ca8fb84fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46d12db413fdf01995bc84ae018065e877afb15e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88756860"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017816"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Hálózati biztonsági csoport Folyamatábráinak konfigurálása az Azure CLI-vel
 
@@ -51,7 +51,7 @@ az network watcher flow-log create --resource-group resourceGroupName --enabled 
 
 A megadott Storage-fiók nem rendelkezhet olyan hálózati szabályokkal, amelyek csak a Microsoft-szolgáltatásokhoz vagy adott virtuális hálózatokhoz való hálózati hozzáférést korlátozzák. A Storage-fiók azonos vagy egy másik Azure-előfizetéssel is rendelkezhet, mint a NSG. Ha különböző előfizetéseket használ, mindkettőhöz ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia. Az egyes előfizetésekhez használt fióknak rendelkeznie kell a [szükséges engedélyekkel](required-rbac-permissions.md). 
 
-Ha a Storage-fiók egy másik erőforráscsoporthoz vagy előfizetéshez kapcsolódik, mint a hálózati biztonsági csoport, a neve helyett adja meg a Storage-fiók teljes AZONOSÍTÓját. Ha például a Storage-fiók egy *RG-Storage*nevű erőforráscsoporthoz van megadva, ahelyett, hogy *storageAccountName* az előző parancsban, akkor a */Subscriptions/{SubscriptionID}/resourceGroups/RG-Storage/Providers/Microsoft.Storage/storageAccounts/storageAccountName*-t kell megadnia.
+Ha a Storage-fiók egy másik erőforráscsoporthoz vagy előfizetéshez kapcsolódik, mint a hálózati biztonsági csoport, a neve helyett adja meg a Storage-fiók teljes AZONOSÍTÓját. Ha például a Storage-fiók egy *RG-Storage* nevű erőforráscsoporthoz van megadva, ahelyett, hogy *storageAccountName* az előző parancsban, akkor a */Subscriptions/{SubscriptionID}/resourceGroups/RG-Storage/Providers/Microsoft.Storage/storageAccounts/storageAccountName*-t kell megadnia.
 
 ## <a name="disable-network-security-group-flow-logs"></a>Hálózati biztonsági csoport Folyamatábráinak letiltása
 

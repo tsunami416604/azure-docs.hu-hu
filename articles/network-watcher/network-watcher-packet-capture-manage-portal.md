@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 099ead37b8d6b46b767ef59ff24a7e7ff9dc9e3c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d4112bd1d632ec21e2d8cb565027277eeb85452d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966445"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018259"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>A csomagok rögzítésének kezelése az Azure Network Watcher a portál használatával
 
@@ -100,7 +100,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 Ha a rögzítés létrehozásakor a **fájl** lehetőséget választotta, megtekintheti vagy letöltheti a fájlt a virtuális gépen konfigurált elérési útról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha szeretné megtudni, hogyan automatizálható a csomagok rögzítése a virtuális gépek riasztásai között, tekintse meg a [riasztások által aktivált csomagok rögzítésének létrehozása](network-watcher-alert-triggered-packet-capture.md)című témakört.
 - Annak megállapításához, hogy egy adott forgalom engedélyezett-e a virtuális gépeken, illetve ki-vagy befelé, tekintse meg [a virtuális gép hálózati forgalmának szűrésével kapcsolatos problémát](diagnose-vm-network-traffic-filtering-problem.md).

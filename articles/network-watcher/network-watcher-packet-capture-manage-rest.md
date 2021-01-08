@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 97b20eae4c6b7d4ee81066638e46f1e9a760d3ec
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bcdb91d7516acb8f987a3f302c04fbd2d8594fc7
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966479"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019771"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>A csomagok rögzítésének kezelése az Azure Network Watcher Az Azure-ban REST API
 
@@ -299,7 +299,7 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 > [!NOTE]
 > A csomagok rögzítésének törlése nem törli a fájlt a Storage-fiókban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
 

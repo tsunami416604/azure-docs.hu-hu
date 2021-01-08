@@ -4,16 +4,15 @@ description: Ez a cikk áttekintést nyújt a Azure Stream Analytics folyamatos 
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: b5057eb8c84e839f504060228986ea759c8bdc3d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 940813f12d542715db47781731144a75e854a98e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123167"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019567"
 ---
 # <a name="continuous-integration-and-deployment-cicd-for-azure-stream-analytics"></a>Folyamatos integráció és üzembe helyezés (CI/CD) a Azure Stream Analyticshoz
 
@@ -41,7 +40,7 @@ Kövesse a jelen útmutató lépéseit egy CI/CD-folyamat létrehozásához a St
 
 A parancssorból és [Azure stream Analytics CI/CD-eszközökről](cicd-tools.md) is használhatja az automatikus kiépítést, tesztelést és üzembe helyezést. A CI/CD-folyamat is beállítható az [Azure-folyamatokban](set-up-cicd-pipeline.md). Az Azure-folyamatok a fejlettebb képességek, például a folyamatok kezelése, a vizualizációk és a triggerek engedélyezésére szolgálnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egy Azure Stream Analytics-feladatokhoz tartozó buildek, tesztek és központi telepítések automatizálása CI/CD-eszközök használatával](cicd-tools.md)
 * [CI/CD-folyamat beállítása Stream Analytics feladatokhoz az Azure-folyamatok használatával](set-up-cicd-pipeline.md)

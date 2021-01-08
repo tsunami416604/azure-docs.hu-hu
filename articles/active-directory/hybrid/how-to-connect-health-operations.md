@@ -3,7 +3,7 @@ title: Azure Active Directory Connect Health műveletek
 description: Ez a cikk azokat a további műveleteket ismerteti, amelyek a Azure AD Connect Health üzembe helyezése után végezhetők el.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91b7bd6d05ee0b992ee166b9acb13aff2e605a2c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 99ad0963677b9ef536deacc2122130186afe0726
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961005"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016966"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health műveletek
 Ez a témakör az Azure Active Directory (Azure AD) kapcsolati állapotának használatával végrehajtható különböző műveleteket ismerteti.
@@ -151,7 +151,7 @@ Most a felsorolt felhasználók és csoportok hozzáférnek a hozzájuk rendelt 
 >
 
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>3. lépés: a panel helyének megosztása felhasználókkal vagy csoportokkal
-1. Az engedélyek kiosztása után a felhasználó a következő lépésekkel [here](https://aka.ms/aadconnecthealth)férhet hozzá Azure ad Connect Healthhoz.
+1. Az engedélyek kiosztása után a felhasználó a következő lépésekkel [](https://aka.ms/aadconnecthealth)férhet hozzá Azure ad Connect Healthhoz.
 2. A panelen a felhasználó rögzítheti a panelt vagy annak különböző részeit az irányítópulton. Egyszerűen kattintson a **rögzítés az irányítópulton** ikonra.<br>
    ![Képernyőkép a Azure AD Connect Health és az Azure RBAC PIN-kódjáról, a PIN ikon kiemelésével](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
@@ -166,7 +166,7 @@ Eltávolíthatja a Azure AD Connect Health és az Azure RBAC felvett felhasznál
 
 [//]: # (RBAC szakasz vége)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health ügynök telepítése](how-to-connect-health-agent-install.md)
 * [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md)

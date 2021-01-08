@@ -1,18 +1,17 @@
 ---
 title: BLOB Storage és Azure Data Lake Gen2 kimenete Azure Stream Analytics
 description: Ez a cikk a blob Storage és a 2. generációs Azure Data Lake a Azure Stream Analytics kimenetének ismertetése.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 708e6351350a1925d58cd4da6b71427a98633362
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 8f8fa524a69d0431fe98cdcd4d1f12addc576e86
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954957"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019584"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>BLOB Storage és Azure Data Lake Gen2 kimenete Azure Stream Analytics
 

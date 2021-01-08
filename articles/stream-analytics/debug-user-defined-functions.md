@@ -3,17 +3,16 @@ title: Felhasználó által definiált függvények hibakeresése Azure Stream A
 description: Ez a cikk ismerteti, hogyan lehet hibakeresést végezni a felhasználó által definiált függvények Azure Stream Analyticsban.
 author: jenssuessmeyer
 ms.author: jenss
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 567def7abaff3cd8d70eb56f0aa117d1eeb52a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f5a24e4d351d7c133251900a80c70094b84cc4e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300428"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019431"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált függvények hibakeresése Azure Stream Analytics 
 
@@ -61,7 +60,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy az Azure Stream Analytics-proj
 
 ### <a name="prepare-files"></a>Fájlok előkészítése
 
-A következő képen a *. asaql* lekérdezési fájl csak az UDF, a *fxcharCount*hívását tartalmazza. Ez a változás biztosítja, hogy a módosítások után is le tudja fordítani a projektet.
+A következő képen a *. asaql* lekérdezési fájl csak az UDF, a *fxcharCount* hívását tartalmazza. Ez a változás biztosítja, hogy a módosítások után is le tudja fordítani a projektet.
 
 > [!div class="mx-imgBorder"]
 > ![Stream Analytics teszt-lekérdezési fájl](./media/debug-user-defined-functions/asaql-file.png)
@@ -88,7 +87,7 @@ exports.data = methods;
 
 A hibakereséshez le kell [töltenie](https://nodejs.org/en/download/) és telepítenie kell **node.js**. Telepítse a megfelelő verziót a használt platformnak megfelelően. A node.js futtatókörnyezet telepítése után indítsa újra a Visual Studio Code-ot a módosítások végrehajtásához. 
 
-A hibakeresés indításához válassza a **Futtatás és hibakeresés** lehetőséget, vagy nyomja le a **CTRL + SHIFT + D** billentyűkombinációt. Megjelenik egy kombinált lista, ahol kiválaszthatja a **node.jst ** futtatókörnyezetként. Ha csak node.js van telepítve, alapértelmezés szerint a rendszer ezt használja. Ha az F11-ben szükség van rá, át kell lépnie a kóddal és a műhold-fájlba. 
+A hibakeresés indításához válassza a **Futtatás és hibakeresés** lehetőséget, vagy nyomja le a **CTRL + SHIFT + D** billentyűkombinációt. Megjelenik egy kombinált lista, ahol kiválaszthatja a **node.jst** futtatókörnyezetként. Ha csak node.js van telepítve, alapértelmezés szerint a rendszer ezt használja. Ha az F11-ben szükség van rá, át kell lépnie a kóddal és a műhold-fájlba. 
 
 > [!div class="mx-imgBorder"]
 > ![Az UDF futtatása és hibakeresése Stream Analytics](./media/debug-user-defined-functions/run-debug-udf.png)
@@ -121,13 +120,13 @@ exports.data = methods;
 > [!div class="mx-imgBorder"]
 > ![Kód hozzáadva a UDA-hez](./media/debug-user-defined-functions/uda-expose-methods.png)
 
-A hibakeresés indításához válassza a **Futtatás és hibakeresés** lehetőséget, vagy nyomja le a **CTRL + SHIFT + D** billentyűkombinációt. Megjelenik egy kombinált lista, ahol kiválaszthatja a **node.jst ** futtatókörnyezetként. Ha csak node.js van telepítve, alapértelmezés szerint a rendszer ezt használja. Ha az F11-ben szükség van rá, át kell lépnie a kóddal és a műhold-fájlba.
+A hibakeresés indításához válassza a **Futtatás és hibakeresés** lehetőséget, vagy nyomja le a **CTRL + SHIFT + D** billentyűkombinációt. Megjelenik egy kombinált lista, ahol kiválaszthatja a **node.jst** futtatókörnyezetként. Ha csak node.js van telepítve, alapértelmezés szerint a rendszer ezt használja. Ha az F11-ben szükség van rá, át kell lépnie a kóddal és a műhold-fájlba.
 
 > [!div class="mx-imgBorder"]
 > ![Uda Stream Analytics futtatása és hibakeresése](./media/debug-user-defined-functions/run-debug-uda.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Stream Analytics feladatok helyi fejlesztése és hibakeresése](develop-locally.md)
 * [Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studióban a feladatok diagramjának használatával](debug-locally-using-job-diagram.md)

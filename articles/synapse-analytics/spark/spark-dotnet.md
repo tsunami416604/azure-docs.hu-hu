@@ -1,22 +1,22 @@
 ---
 title: A .NET használata Apache Spark
 description: Ismerje meg, hogyan használhatja a .NET és a Apache Spark a kötegelt feldolgozásra, a valós idejű folyamatos átvitelre, a gépi tanulásra és az Azure szinapszis Analytics jegyzetfüzetekben az alkalmi lekérdezések írására.
-author: mamccrea
+author: luisquintanilla
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 05/01/2020
-ms.author: mamccrea
+ms.author: luquinta
 ms.reviewer: jrasnick
-ms.openlocfilehash: 753c7ff48960711cbedbf6b5d8644a26502dd413
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 895d766cc1e70e6a001904770d6f3ef12b6945cd
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023742"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018661"
 ---
-# <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>A .NET használata Apache Sparkhoz az Azure szinapszis Analytics használatával
+# <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Az Apache Sparkhoz készült .NET használata az Azure Stream Analyticsszel
 
 [A .net for Apache Spark](https://dot.net/spark) ingyenes, [nyílt forráskódú](https://github.com/dotnet/spark)és platformfüggetlen .net-támogatást biztosít a Spark számára. 
 

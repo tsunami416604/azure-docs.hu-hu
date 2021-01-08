@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 95a0dbd61e44e9c5b1f2854f8b3215aa4ef9403c
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 349caa9a4fa34d87e0a4d99089a1063be66307f4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97439639"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017561"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Gyors útmutató: ASP.NET Core webalkalmazás, amely a felhasználók nevében jelentkezik be, és Microsoft Graph
 
@@ -47,7 +47,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 >
-> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+> 1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 > 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 > 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 > 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
@@ -168,7 +168,7 @@ A `AddAuthentication()` metódus úgy konfigurálja a szolgáltatást, hogy cook
 
 Az `.AddMicrosoftIdentityWebApp` alkalmazáshoz a Microsoft Identity platform hitelesítésének hozzáadását tartalmazó sor. Ezt a [Microsoft. Identity. Web](microsoft-identity-web.md)biztosíthatja. Ezt követően a rendszer úgy konfigurálja, hogy a Microsoft Identity platform végpontjának használatával jelentkezzen be a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
-| *appsettings.jsa* kulcson | Description                                                                                                                                                          |
+| *appsettings.jsa* kulcson | Leírás                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | A Azure Portalban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** .                                                                                       |
 | `Instance`             | A hitelesítéshez használt biztonságijogkivonat-szolgáltatás (STS) végpontja. Ez az érték általában `https://login.microsoftonline.com/` Az Azure nyilvános felhőre utal. |
@@ -211,7 +211,7 @@ public async Task<IActionResult> Index()
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a rövid útmutatóban hivatkozott ASP.NET Core kódot tartalmazó GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek a következőket mutatják be:
 

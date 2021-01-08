@@ -3,15 +3,15 @@ title: Ismétlődő feladatok és munkafolyamatok ütemezése a Azure Logic Apps
 description: Áttekintés az ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezéséről Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 27763536b859b7bc3e9aa0a7c490cb510c0fda41
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/07/2021
+ms.openlocfilehash: fd0a779ec5ac5537dd3e3ed6a82cf818b42cff15
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588454"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018792"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezése és futtatása az Azure Logic Apps használatával
 
@@ -48,13 +48,28 @@ Ez a cikk a beépített eseményindítók és műveletek ütemezett funkcióit i
 
 ## <a name="schedule-triggers"></a>Eseményindítók ütemezett indítása
 
-A logikai alkalmazás munkafolyamatát az ismétlődési eseményindító vagy a csúszó ablak eseményindító használatával indíthatja el, amely nincs egyetlen adott szolgáltatáshoz vagy rendszerhez társítva. Ezek az eseményindítók elindítják és futtatják a munkafolyamatot a megadott ismétlődés alapján, ahol kiválaszthatja az intervallumot és a gyakoriságot, például a másodpercek, a percek, az órák, a napok, a hetek és a hónapok számát Megadhatja a kezdési dátumot és az időt, valamint az időzónát is. Minden alkalommal, amikor egy eseményindító tüzek, Logic Apps létrehoz és futtat egy új munkafolyamat-példányt a logikai alkalmazáshoz.
+A logikai alkalmazás munkafolyamatát az ismétlődési eseményindító vagy a csúszó ablak eseményindító használatával indíthatja el, amely nincs egyetlen adott szolgáltatáshoz vagy rendszerhez társítva. Ezek az eseményindítók elindítják és futtatják a munkafolyamatot a megadott ismétlődés alapján, ahol kiválaszthatja az intervallumot és a gyakoriságot, például a másodpercek, a percek, az órák, a napok, a hetek és a hónapok számát A kezdési dátumot és időpontot is beállíthatja az időzónával együtt. Minden alkalommal, amikor egy eseményindító tüzek, Logic Apps létrehoz és futtat egy új munkafolyamat-példányt a logikai alkalmazáshoz.
 
 Ezek az eseményindítók közötti különbségek:
 
-* **Ismétlődés**: a munkafolyamatot a megadott ütemterv alapján rendszeres időközönként futtatja. Ha az ismétlődések kimaradnak, például a fennakadások vagy a letiltott munkafolyamatok miatt, az ismétlődési eseményindító nem dolgozza fel a kihagyott ismétlődéseket, de a következő ütemezett intervallummal újraindítja az ismétlődéseket. Megadhatja a kezdési dátumot és az időt, valamint az időzónát is. Ha a "nap" lehetőséget választja, megadhatja az óra napját és percét, például minden nap 2:30-kor. Ha a "hét" lehetőséget választja, akkor a hét napjait is kiválaszthatja, például a szerda és a szombat lehetőséget. További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, ütemezése és futtatása az ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md).
+* **Ismétlődés**: a munkafolyamatot a megadott ütemterv alapján rendszeres időközönként futtatja. Ha az eseményindító elmulasztja az ismétlődéseket, például a fennakadások vagy a letiltott munkafolyamatok miatt, az ismétlődési eseményindító nem dolgozza fel a kihagyott ismétlődéseket, de a következő ütemezett intervallummal újraindítja az ismétlődéseket.
 
-* **Csúszó ablak**: rendszeres időközönként futtatja a munkafolyamatot, amely folytonos adattömbökben kezeli az adategységeket. Ha az ismétlődések kimaradnak, például fennakadások vagy letiltott munkafolyamatok miatt, a csúszó ablak eseményindítója visszatér, és feldolgozza a kihagyott ismétlődéseket. Megadhatja a kezdési dátumot és időt, az időzónát és egy időtartamot, amellyel késleltetheti az egyes ismétlődéseket a munkafolyamatban. Ez az trigger nem támogatja a speciális ütemterveket, például a nap adott óráját, az óra percét és a hét napjait. További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, beosztása és futtatása a csúszó ablakos triggerrel](../connectors/connectors-native-sliding-window.md).
+  Ha a **nap** lehetőséget választja a gyakoriság beállításnál, megadhatja a nap óráját, valamint az óra percét, például minden nap 2:30-kor. Ha a **hét** lehetőséget választja a gyakoriság beállításnál, akkor a hét napjait is kiválaszthatja, például a szerda és a szombat lehetőséget. Megadhat egy kezdési dátumot és időpontot is az ismétlődési ütemtervhez tartozó időzónával együtt.
+
+  > [!TIP]
+  > Ha az ismétlődés nem ad meg konkrét [kezdési dátumot és időpontot](#start-time), az első ismétlődés azonnal fut a logikai alkalmazás mentésekor vagy telepítésekor, az eseményindító ismétlődésének beállítása ellenére. A viselkedés elkerülése érdekében adjon meg egy kezdési dátumot és időpontot, amikor az első ismétlődést futtatni szeretné.
+  >
+  > Ha az ismétlődés nem ad meg olyan speciális ütemezési beállításokat, mint például a jövőbeli ismétlődések futtatásához megadott időpontok, ezek az ismétlődések az utolsó futási időn alapulnak. Ennek eredményeképpen az ismétlődések indítási időpontja a tárolási hívások során felmerülő tényezők, például a késések miatt eltérhet. Ha meg szeretné győződni arról, hogy a logikai alkalmazás nem hagyja ki az ismétlődést, különösen akkor, ha a gyakoriság napokban vagy már nem érhető el, próbálkozzon a következő beállításokkal:
+  >
+  > * Adja meg az ismétlődés kezdő dátumát és időpontját, valamint azokat a megadott időpontokat, amikor a későbbi ismétlődéseket az **ezen órákban** elnevezett tulajdonságok használatával és **ezen a percekben** szeretné futtatni, amelyek csak a **napi** és **heti** gyakorisággal érhetők el.
+  >
+  > * Az ismétlődési eseményindító helyett használja a [csúszó ablak eseményindítóját](../connectors/connectors-native-sliding-window.md).
+
+  További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, ütemezése és futtatása az ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md).
+
+* **Csúszó ablak**: rendszeres időközönként futtatja a munkafolyamatot, amely folytonos adattömbökben kezeli az adategységeket. Ha az eseményindító elmulasztja az ismétlődéseket, például fennakadások vagy letiltott munkafolyamatok miatt, a csúszó ablak eseményindítója visszatér, és feldolgozza a kihagyott ismétlődéseket.
+
+  Megadhatja a kezdési dátumot és időt, az időzónát és egy időtartamot, amellyel késleltetheti az egyes ismétlődéseket a munkafolyamatban. Ez az trigger nem támogatja a speciális ütemterveket, például a nap adott óráját, az óra percét és a hét napjait. További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, beosztása és futtatása a csúszó ablakos triggerrel](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 
@@ -66,28 +81,18 @@ A Logic app-munkafolyamatban bármilyen művelet után a késleltetés és a ké
 
 * **Késleltetés eddig**: várja meg a következő művelet futtatását a megadott dátumig és időpontig. További információ: [a következő művelet késleltetése a munkafolyamatokban](../connectors/connectors-native-delay.md).
 
-## <a name="patterns-for-start-date-and-time"></a>A kezdő dátum és idő mintái
-
 <a name="start-time"></a>
+
+## <a name="patterns-for-start-date-and-time"></a>A kezdő dátum és idő mintái
 
 Íme néhány példa, amely bemutatja, hogyan szabályozhatja az ismétlődést a kezdő dátummal és időponttal, valamint azt, hogy az Logic Apps szolgáltatás hogyan futtatja ezeket az ismétlődéseket:
 
 | Kezdési idő | Ismétlődés ütemezés nélkül | Ismétlődés az ütemtervtel (csak ismétlődési eseményindító) |
 |------------|-----------------------------|----------------------------------------------------|
 | nEz egy | Azonnal futtatja az első munkafolyamatot. <p>A jövőbeli munkaterheléseket az utolsó futtatási idő alapján futtatja. | Azonnal futtatja az első munkafolyamatot. <p>A jövőbeli munkaterheléseket a megadott ütemterv alapján futtatja. |
-| Kezdési idő a múltban | **Ismétlődési** eseményindító: a megadott kezdési idő alapján kiszámítja a futtatási időpontokat, és elveti a korábbi futtatási időpontokat. Futtatja az első számítási feladatot a következő későbbi futtatási időpontban. <p>A jövőbeli munkaterheléseket az utolsó futtatási idő számításai alapján futtatja. <p><p>**Csúszó ablak** trigger: a megadott kezdési időpont alapján kiszámítja a futtatási időpontokat, és kiértékeli a korábbi futtatási időpontokat. <p>A jövőbeli számítási feladatokat a megadott kezdési időpontból számított számítások alapján futtatja. <p><p>További magyarázatért tekintse meg a táblázat következő példáját. | A kezdési időpontból kiszámított ütemterv alapján az első számítási feladatot a kezdési időpontnál *hamarabb* futtatja. <p>A jövőbeli munkaterheléseket a megadott ütemterv alapján futtatja. <p>**Megjegyzés:** Ha egy ütemezett ismétlődést ad meg, de nem ad meg órákat vagy percet az ütemtervhez, akkor a jövőbeli futási idők az első futási idő órában vagy percben lesznek kiszámítva. |
-| Kezdési idő jelenleg vagy a jövőben | Futtatja az első számítási feladatot a megadott kezdési időpontban. <p>A jövőbeli munkaterheléseket az utolsó futtatási idő számításai alapján futtatja. | A kezdési időpontból kiszámított ütemterv alapján az első számítási feladatot a kezdési időpontnál *hamarabb* futtatja. <p>A jövőbeli munkaterheléseket a megadott ütemterv alapján futtatja. <p>**Megjegyzés:** Ha egy ütemezett ismétlődést ad meg, de nem ad meg órákat vagy percet az ütemtervhez, akkor a jövőbeli futási idők az első futási idő órában vagy percben lesznek kiszámítva. |
+| Kezdési idő a múltban | **Ismétlődési** eseményindító: a megadott kezdési idő alapján kiszámítja a futtatási időpontokat, és elveti a korábbi futtatási időpontokat. Futtatja az első számítási feladatot a következő későbbi futtatási időpontban. <p>A jövőbeli munkaterheléseket az utolsó futtatási idő számításai alapján futtatja. <p><p>**Csúszó ablak** trigger: a megadott kezdési időpont alapján kiszámítja a futtatási időpontokat, és kiértékeli a korábbi futtatási időpontokat. <p>A jövőbeli számítási feladatokat a megadott kezdési időpontból számított számítások alapján futtatja. <p><p>További magyarázatért tekintse meg a táblázat következő példáját. | A kezdési időpontból kiszámított ütemterv alapján az első számítási feladatot a kezdési időpontnál *hamarabb* futtatja. <p>A jövőbeli munkaterheléseket a megadott ütemterv alapján futtatja. <p>**Megjegyzés:** Ha ütemezéssel adja meg az ismétlődést, de nem ad meg órákat vagy percet az ütemezéshez, Logic Apps a későbbi futási időket az első futási idő órában vagy percben használva számítja ki. |
+| Kezdési idő most vagy a jövőben | Futtatja az első számítási feladatot a megadott kezdési időpontban. <p>A jövőbeli munkaterheléseket az utolsó futtatási idő számításai alapján futtatja. | A kezdési időpontból kiszámított ütemterv alapján az első számítási feladatot a kezdési időpontnál *hamarabb* futtatja. <p>A jövőbeli munkaterheléseket a megadott ütemterv alapján futtatja. <p>**Megjegyzés:** Ha ütemezéssel adja meg az ismétlődést, de nem ad meg órákat vagy percet az ütemezéshez, Logic Apps a későbbi futási időket az első futási idő órában vagy percben használva számítja ki. |
 ||||
-
-> [!IMPORTANT]
-> Ha az ismétlődések nem határoznak meg speciális ütemezési beállításokat, a jövőbeli ismétlődések az utolsó futási időn alapulnak.
-> Ezeknek az ismétlődéseknek az indítási időpontja a tárolási hívások során felmerülő tényezők, például a késés miatt eltérhet. A következő lehetőségek egyikének használatával győződjön meg arról, hogy a logikai alkalmazás nem hagyja ki az ismétlődést, különösen akkor, ha a gyakoriság napokban vagy már nem érhető el.
-> 
-> * Adja meg az ismétlődés kezdési idejét.
-> 
-> * Adja meg az órákat és a perceket, hogy mikor futtassa az ismétlődést a **ezen órákon** és a **percekben** megadott tulajdonságok alapján.
-> 
-> * Az ismétlődési eseményindító helyett használja a [csúszó ablak eseményindítóját](../connectors/connectors-native-sliding-window.md).
 
 *Példa korábbi kezdési időre és ismétlődésre, de nincs ütemezése*
 
@@ -120,6 +125,81 @@ A csúszó ablakos trigger esetén a Logic Apps motor a kezdési idő alapján k
 
 Tehát attól függetlenül, hogy a múltban milyen messzire van szükség a kezdési időponthoz, például: 2017-09-**05** , 2:00 pm vagy 2017-09-2:00 **01** , az első futtatáskor mindig a megadott kezdési időpontot használja.
 
+<a name="daylight-saving-standard-time"></a>
+
+## <a name="recurrence-for-daylight-saving-time-and-standard-time"></a>Ismétlődés a nyári időszámításhoz és a téli időponthoz
+
+Az ismétlődő beépített eseményindítók tiszteletben tartják a beállított ütemtervet, beleértve a megadott időzónát is. Ha nem választja ki az időzónát, a nyári időszámításra (DST) hatással lehet az eseményindítók futtatásakor, például ha a kezdési időt egy órára továbbítja a DST indításakor és egy órával a DST-időszak végéig. A feladatok ütemezésekor Logic Apps a várólistára helyezi az üzenetet, és megadja, hogy az üzenet mikor válik elérhetővé az utolsó feladat futtatásakor és a következő feladat futásának UTC-ideje szerint.
+
+Ha el szeretné kerülni ezt a váltást, hogy a logikai alkalmazás a megadott kezdési időpontban fusson, győződjön meg róla, hogy kijelöl egy időzónát. Így a logikai alkalmazás UTC-ideje a szezonális időváltozások ellen is tolódik.
+
+<a name="dst-window"></a>
+
+> [!NOTE]
+> Előfordulhat, hogy a 2:00 – 3:00 közötti kezdő eseményindítók problémákba ütközhet, mert a DST-változások a 2:00 ÓRAKOR történnek, ami azt okozhatja, hogy a kezdési idő érvénytelenné vagy kétértelművé válik. Ha több logikai alkalmazás is van ugyanazon a kétértelmű intervallumon belül, átfedésben lehetnek. Emiatt előfordulhat, hogy el szeretné kerülni a 2:00 és a 3:00 közötti kezdési időpontokat.
+
+Tegyük fel például, hogy van két logikai alkalmazás, amely naponta fut. Az egyik logikai alkalmazás a 1:30-as helyi idő szerint fut, míg a másik óra múlva a következő időpontban fut: 2:30 AM helyi idő. Mi történik az alkalmazások kezdő időpontjaival, amikor a DST elindul és végződik?
+
+* Az eseményindítók csak akkor futnak, ha az idő egy órával tovább fut?
+
+* Az eseményindítók kétszer futnak, amikor az idő egy órával visszafelé halad?
+
+Ha ezek a logikai alkalmazások az UTC-6:00 Central Time (USA & Canada) zónát használják, akkor ez a szimuláció azt mutatja, hogy az UTC-idő a 2019-ben a DST-változások ellensúlyozására szolgál, és szükség szerint egy óra hátra vagy továbbítása szükséges, hogy az alkalmazások a várt helyi időpontokban továbbra is a kihagyott vagy duplikált Futtatás nélkül fussanak
+
+* **03/10/2019: a DST kezdete: 2:00 ÓRAKOR, eltolási idő egy órával előre**
+
+  A DST-kezdést követően az UTC-idő egy órával visszafelé halad, hogy a logikai alkalmazás továbbra is ugyanazon a helyi időpontban fusson:
+
+  * Logikai alkalmazás #1
+
+    | Dátum | Idő (helyi) | Idő (UTC) | Megjegyzések |
+    |------|--------------|------------|-------|
+    | 03/09/2019 | 1:30:00 | 7:30:00 | A DST érvénybe léptetésének napját megelőző UTC. |
+    | 03/10/2019 | 1:30:00 | 7:30:00 | Az UTC ugyanaz, mert a DST nem lépett érvénybe. |
+    | 03/11/2019 | 1:30:00 | 6:30:00 | Az UTC a DST életbe léptetése után egy órával korábbira váltott. |
+    |||||
+
+  * Logikai alkalmazás #2
+
+    | Dátum | Idő (helyi) | Idő (UTC) | Megjegyzések |
+    |------|--------------|------------|-------|
+    | 03/09/2019 | 2:30:00 | 8:30:00 | A DST érvénybe léptetésének napját megelőző UTC. |
+    | 03/10/2019 | 3:30:00 * | 8:30:00 | A DST már érvényben van, ezért a helyi idő egy órával tovább mozgott, mert az UTC-6:00 időzóna az UTC-5:00 értékre módosult. További információkért lásd: a [2:00-3:00 am közötti kezdő eseményindítók](#dst-window). |
+    | 03/11/2019 | 2:30:00 | 7:30:00 | Az UTC a DST életbe léptetése után egy órával korábbira váltott. |
+    |||||
+
+* **11/03/2019: a DST a 2:00 ÓRAKOR ér véget, és a váltás ideje egy óra hátra**
+
+  A kompenzációhoz az UTC-idő egy órára továbbítható, így a logikai alkalmazás továbbra is ugyanazon a helyi időpontban fut:
+
+  * Logikai alkalmazás #1
+
+    | Dátum | Idő (helyi) | Idő (UTC) | Megjegyzések |
+    |------|--------------|------------|-------|
+    | 11/02/2019 | 1:30:00 | 6:30:00 ||
+    | 11/03/2019 | 1:30:00 | 6:30:00 ||
+    | 11/04/2019 | 1:30:00 | 7:30:00 ||
+    |||||
+
+  * Logikai alkalmazás #2
+
+    | Dátum | Idő (helyi) | Idő (UTC) | Megjegyzések |
+    |------|--------------|------------|-------|
+    | 11/02/2019 | 2:30:00 | 7:30:00 ||
+    | 11/03/2019 | 2:30:00 | 8:30:00 ||
+    | 11/04/2019 | 2:30:00 | 8:30:00 ||
+    |||||
+
+<a name="run-once"></a>
+
+## <a name="run-one-time-only"></a>Futtatás csak egyszer
+
+Ha a későbbiekben csak egyszer szeretné futtatni a logikai alkalmazást, használhatja a **Scheduler: Run Once Jobs** sablont. Miután létrehozta az új logikai alkalmazást, de a Logic Apps Designer megnyitása előtt, a **sablonok** szakaszban, a **Kategória** listáról válassza az **ütemterv** lehetőséget, majd válassza ki ezt a sablont:
+
+![Válassza a "Scheduler: Futtatás a feladatok után" sablont](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
+
+Vagy ha a logikai alkalmazást a **http-kérelem fogadása** után is elindíthatja, és a kezdési időpontot az trigger paraméterének adja át. Az első művelethez használja a **késleltetés az ütemezésig** műveletet, és adja meg a következő művelet futásának időpontját.
+
 <a name="example-recurrences"></a>
 
 ## <a name="example-recurrences"></a>Ismétlődések – példa
@@ -130,10 +210,10 @@ Az alábbi példa a beállításokat támogató eseményindítók különböző 
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Megismétlődésének <br>Csúszóablak | Futtatás 15 percenként (nincs kezdő dátum és idő) | 15 | Minute | nEz egy | érhető | nEz egy | nEz egy | Ez az ütemezés azonnal elindul, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. |
 | Megismétlődésének <br>Csúszóablak | Futtatás 15 percenként (kezdő dátummal és idővel) | 15 | Minute | *StartDate* T *kezdő időpont*– Z | érhető | nEz egy | nEz egy | Ez az ütemezés nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. |
-| Megismétlődésének <br>Csúszóablak | Minden órában fut, az óra (kezdő dátummal és idővel) | 1 | Óra | *StartDate* THH: 00:00Z | érhető | nEz egy | nEz egy | Ez az ütemterv nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál. A jövőbeli ismétlődések óránként futnak a "00" percben, amely a kezdési időpontból lesz kiszámítva. <p>Ha a gyakoriság értéke "Week" vagy "Month", akkor ez az ütemterv hetente vagy havonta egy nappal fut le. |
+| Megismétlődésének <br>Csúszóablak | Minden órában fut, az óra (kezdő dátummal és idővel) | 1 | Óra | *StartDate* THH: 00:00Z | érhető | nEz egy | nEz egy | Ez az ütemterv nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál. A jövőbeli ismétlődések óránként futnak a "00" percben, amely Logic Apps a kezdési időpontból számítja ki a számítást. <p>Ha a gyakoriság értéke "Week" vagy "Month", akkor ez az ütemterv hetente vagy havonta egy nappal fut le. |
 | Megismétlődésének <br>Csúszóablak | Futtatás óránként, naponta (nincs kezdő dátum és idő) | 1 | Óra | nEz egy | érhető | nEz egy | nEz egy | Ez az ütemezés azonnal elindul, és az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. <p>Ha a gyakoriság értéke "Week" vagy "Month", akkor ez az ütemterv hetente vagy havonta egy nappal fut le. |
 | Megismétlődésének <br>Csúszóablak | Futtatás óránként, minden nap (kezdő dátummal és idővel) | 1 | Óra | *StartDate* T *kezdő időpont*– Z | érhető | nEz egy | nEz egy | Ez az ütemezés nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. <p>Ha a gyakoriság értéke "Week" vagy "Month", akkor ez az ütemterv hetente vagy havonta egy nappal fut le. |
-| Megismétlődésének <br>Csúszóablak | Minden órában 15 percenként fut, óránként (kezdő dátummal és idővel) | 1 | Óra | *StartDate* T00:15:00Z | érhető | nEz egy | nEz egy | Ez az ütemterv nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál. A jövőbeli ismétlődések a kezdési időpontból kiszámított "15" perces jellel futnak, így: 00:15, 1:15, 2:15 AM és így tovább. |
+| Megismétlődésének <br>Csúszóablak | Minden órában 15 percenként fut, óránként (kezdő dátummal és idővel) | 1 | Óra | *StartDate* T00:15:00Z | érhető | nEz egy | nEz egy | Ez az ütemterv nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál. A jövőbeli ismétlődések a "15" perces jellel futnak, amely Logic Apps a kezdési időpontból számítja ki, így: 00:15, 1:15, 2:15 AM és így tovább. |
 | Ismétlődés | Minden órában 15 percenként fut, óránként (nincs kezdő dátum és idő) | 1 | Nap | nEz egy | érhető | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Ez az ütemterv a következő időpontban fut: 00:15, 1:15, 2:15, és így tovább. Emellett ez az ütemterv az "Hour" gyakoriságának és a "15" perces kezdési időpontnak felel meg. |
 | Ismétlődés | Futtassa 15 percenként a megadott percenkénti jelzéseket (nincs kezdő dátum és idő). | 1 | Nap | nEz egy | érhető | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Ez az ütemezés addig nem indul el, amíg a következő megadott 15 perces megjelölés be nem fejeződik. |
 | Ismétlődés | A logikai alkalmazás mentésekor naponta, a percek alatt, *illetve* a percben is futtatható. | 1 | Nap | nEz egy | érhető | 8 | nEz egy | Kezdési dátum és idő nélkül ez az ütemterv a logikai alkalmazás mentésekor (PUT művelet) történő mentés időpontja alapján fut le. |
@@ -151,17 +231,7 @@ Az alábbi példa a beállításokat támogató eseményindítók különböző 
 | Ismétlődés | Minden órában futtatható havonta egy napra | 1 | Month (hónap) | {Lásd: Megjegyzés} | érhető | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {Lásd: Megjegyzés} | Ha nem ad meg kezdési dátumot és időpontot, az ütemterv a létrehozás dátumát és időpontját használja. Az ismétlődési ütemterv percének vezérléséhez határozza meg az óra percét, a kezdési időpontot, vagy használja a létrehozási időt. Ha például a kezdési vagy a létrehozási idő 8:25, akkor ez az ütemterv 8:25 ÓRAKOR, 9:25 AM, 10:25 és hasonló módon fut. |
 |||||||||
 
-<a name="run-once"></a>
-
-## <a name="run-one-time-only"></a>Futtatás csak egyszer
-
-Ha a későbbiekben csak egyszer szeretné futtatni a logikai alkalmazást, használhatja a **Scheduler: Run Once Jobs** sablont. Miután létrehozta az új logikai alkalmazást, de a Logic Apps Designer megnyitása előtt, a **sablonok** szakaszban, a **Kategória** listáról válassza az **ütemterv** lehetőséget, majd válassza ki ezt a sablont:
-
-![Válassza a "Scheduler: Futtatás a feladatok után" sablont](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
-
-Vagy ha a logikai alkalmazást a **http-kérelem fogadása** után is elindíthatja, és a kezdési időpontot az trigger paraméterének adja át. Az első művelethez használja a **késleltetés az ütemezésig** műveletet, és adja meg a következő művelet futásának időpontját.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismétlődő feladatok és munkafolyamatok létrehozása, ütemezése és futtatása az ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md)
 * [Ismétlődő feladatok és munkafolyamatok létrehozása, beosztása és futtatása a csúszó ablakos triggerrel](../connectors/connectors-native-sliding-window.md)

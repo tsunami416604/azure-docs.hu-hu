@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: bf6e61ef3dfb1c50166cf17168b4deeb21e958d7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 200753c6458698d515b02252933e4fdf6d88df55
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962909"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019091"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Gyakori kérdések a Azure Database Migration Service használatáról
 
@@ -50,6 +50,9 @@ A Azure Database Migration Service az adatbázis áttelepítésének előnyben r
 
 **Q. Hogyan hasonlítja össze Azure Database Migration Service a Azure Migrate ajánlattal?**
 Azure Migrate segíti a helyszíni virtuális gépek Azure IaaS való áttelepítését. A szolgáltatás felméri az áttelepítési alkalmasságot és a teljesítmény-alapú méretezést, és a helyszíni virtuális gépek Azure-ban való futtatásának becsült költségeit is tartalmazza. Azure Migrate hasznos a helyszíni virtuálisgép-alapú számítási feladatok Azure IaaS virtuális gépekre történő áttelepítésének és átváltásának elvégzéséhez. A Azure Database Migration Servicetól eltérően azonban Azure Migrate nem egy speciális adatbázis-áttelepítési szolgáltatás, amely az Azure-beli, vagy az Azure SQL felügyelt példányaihoz, például a Azure SQL Databasehoz és az Azure SQL-hez készült
+
+**Q. A Database Migration Service tárolja az ügyféladatokat?**
+Nem. Database Migration Service nem tárolja az ügyféladatokat.
 
 ## <a name="setup"></a>Telepítés
 
@@ -117,6 +120,6 @@ A szolgáltatás használatával felgyorsíthatja az adatbázis áttelepítésé
 * Használja a többprocesszoros általános célú díjszabását a szolgáltatási példány létrehozásakor, hogy a szolgáltatás kihasználja a párhuzamos és gyorsabb adatátvitelt biztosító több vCPU előnyeit.
 * Az adatáttelepítési művelet során átmenetileg felskálázás a Azure SQL Database Target-példányról a prémium szintű SKU-ra, hogy csökkentse Azure SQL Database szabályozást, amely hatással lehet az adatátviteli tevékenységekre, amikor alacsonyabb szintű SKU-ket használ.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Database Migration Service és a regionális elérhetőség áttekintését lásd: [Mi a Azure Database Migration Service](dms-overview.md).

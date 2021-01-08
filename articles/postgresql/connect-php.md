@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 4e82c8402584f694cb32bb37ae3e6eae9366eaf7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 200fdd126e2ed95804f81c1dd36804ecc6c61d85
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341433"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019686"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a PHP használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
@@ -46,8 +46,8 @@ Telepítse a PHP-t a kiszolgálójára, vagy hozzon létre egy PHP-t tartalmazó
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver** ).
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/).
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 3. Kattintson a kiszolgálónévre.
 4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
  :::image type="content" source="./media/connect-php/1-connection-string.png" alt-text="Azure Database for PostgreSQL-kiszolgáló neve":::
@@ -87,7 +87,7 @@ Cserélje le a `$host`, `$database`, `$user` és `$password` paramétereket a sa
     // Insert some data into table.
     $name = '\'banana\'';
     $quantity = 150;
-    $query = "INSERT INTO inventory (name, quantity) VALUES ($1, $2);";
+    $query = "INSERT INTO inventory (name, quantity) VALUES ($name, $quantity);";
     pg_query($connection, $query) 
         or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
 

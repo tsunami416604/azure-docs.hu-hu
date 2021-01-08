@@ -3,17 +3,16 @@ title: Azure Stream Analytics-fürtök áttekintése (előzetes verzió)
 description: Ismerkedjen meg a Stream Analytics-fürt egyetlen bérlői dedikált ajánlatával.
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: f67df45b6b663584e848983251031146cdf8df60
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 75a95fa4ad36b69ca920f527060644dcc5264ce8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95247693"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019533"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure Stream Analytics-fürt áttekintése (előzetes verzió)
 
@@ -71,7 +70,7 @@ A Stream Analytics-fürtök díját a kiválasztott SU-kapacitás alapján szám
 
 Stream Analytics támogatja a különböző bemeneti és kimeneti típusokat. Létrehozhat olyan [magánhálózati végpontokat](private-endpoints.md) a fürtben, amelyek lehetővé teszik a feladatok számára a bemeneti és kimeneti erőforrások elérését. Jelenleg Azure SQL Database, az Azure Storage, a Azure Data Lake Storage Gen2, az Azure Event hub és a Azure Service Bus támogatott szolgáltatások és egyéb típusok hamarosan elérhetők lesznek. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már áttekintheti Azure Stream Analytics-fürtöt. Ezután létrehozhatja a fürtöt, és futtathatja a Stream Analytics feladatot: 
 

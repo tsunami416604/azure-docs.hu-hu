@@ -3,15 +3,15 @@ title: Az Azure Logic Apps összekötői
 description: Azure Logic Apps-összekötők, például beépített, felügyelt, helyszíni, integrációs fiók, ISE és vállalati összekötők összekapcsolása munkafolyamatok automatizálásával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 06/11/2020
-ms.openlocfilehash: 8bf91a3b7843d3212b62ced5b6a7c6fa54892ec9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.date: 01/07/2021
+ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359748"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019635"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -28,7 +28,7 @@ Az összekötők beépített eseményindítóként és műveletként, illetve fe
 
 <a name="built-in"></a>
 
-* [**Beépített**](#built-ins): beépített triggerek és műveletek "natív" Azure Logic apps és segít a következő feladatok elvégzésében a logikai alkalmazásokhoz:
+* [**Beépített**](#built-ins): beépített eseményindítók és műveletek natív módon futnak Azure Logic Appsban, így nem kell létrehoznia a kapcsolatokat a használatuk előtt, és a következő műveleteket kell elvégeznie a logikai alkalmazásokhoz:
 
   * Futtatás egyéni és speciális ütemterveken.
 
@@ -107,10 +107,10 @@ A Logic Apps beépített műveleteket biztosít a logikai alkalmazás munkafolya
 | Név | Leírás |
 |------|-------------|
 | [![Feltétel beépített műveleti ][condition-icon]<br> **feltétele**][condition-doc] | Értékelje ki a feltételt, és futtasson különböző műveleteket attól függően, hogy a feltétel igaz vagy hamis. |
-| [![][for-each-icon]<br>**For each** Minden beépített művelethez][for-each-doc] | Hajtsa végre ugyanezeket a műveleteket egy tömb minden elemén. |
+| [![][for-each-icon]<br> Minden beépített művelethez][for-each-doc] | Hajtsa végre ugyanezeket a műveleteket egy tömb minden elemén. |
 | [![Hatókör beépített műveleti ][scope-icon]<br> **hatóköre**][scope-doc] | A *műveletek hatókörbe* való csoportosítása, amelyek a hatókör befejezésének befejezése után kapják meg a saját állapotukat. |
-| [![Beépített műveleti kapcsoló váltása ][switch-icon]<br> **Switch**][switch-doc] | Olyan *esetekre* csoportosíthat műveleteket, amelyek az alapértelmezett eset kivételével egyedi értékeket kapnak. Csak akkor futtassa ezt az esetet, ha a hozzárendelt érték megegyezik egy kifejezés, objektum vagy token eredményével. Ha nem létezik egyezés, futtassa az alapértelmezett esetet. |
-| [![Beépített ][terminate-icon]<br> **Terminate** művelet leállítása][terminate-doc] | Egy aktívan futó logikai alkalmazás munkafolyamatának leállítása. |
+| [![Beépített műveleti kapcsoló váltása ][switch-icon]<br> ][switch-doc] | Olyan *esetekre* csoportosíthat műveleteket, amelyek az alapértelmezett eset kivételével egyedi értékeket kapnak. Csak akkor futtassa ezt az esetet, ha a hozzárendelt érték megegyezik egy kifejezés, objektum vagy token eredményével. Ha nem létezik egyezés, futtassa az alapértelmezett esetet. |
+| [![Beépített ][terminate-icon]<br>  művelet leállítása][terminate-doc] | Egy aktívan futó logikai alkalmazás munkafolyamatának leállítása. |
 | [![A beépített műveletig egészen ][until-icon]<br> **addig** , amíg][until-doc] | Ismételje meg a műveleteket, amíg a megadott feltétel igaz vagy valamilyen állapot megváltozott. |
 |||
 
@@ -120,9 +120,9 @@ A Logic Apps beépített műveleteket biztosít az adatkimenetek és azok formá
 
 | Név | Leírás |
 |------|-------------|
-| [![Az adatműveletek beépített műveleti ][data-operations-icon]<br> **adatműveletei**][data-operations-doc] | Műveletek végrehajtása adatokkal: <p>- **Összeállítás** : egyetlen kimenet létrehozása több bemenetből különböző típusokkal. <br>- **CSV-táblázat létrehozása** : hozzon létre egy vesszővel tagolt (CSV-) táblázatot egy olyan tömbből, amely JSON-objektumokkal rendelkezik. <br>- **HTML-táblázat létrehozása** : HTML-táblázat létrehozása egy JSON-objektumokkal rendelkező tömbből. <br>- **Tömb szűrése** : hozzon létre egy tömböt egy másik tömb elemeiből, amelyek megfelelnek a feltételeknek. <br>- **Csatlakozás** : hozzon létre egy karakterláncot egy tömb összes eleméről, és válassza szét ezeket az elemeket a megadott elválasztóval. <br>- **JSON** elemzése: hozzon létre felhasználóbarát tokeneket a tulajdonságok és azok értékei alapján a JSON-tartalomban, hogy használhassa ezeket a tulajdonságokat a munkafolyamatban. <br>- **Válassza ki** : hozzon létre egy tömböt JSON-objektumokkal egy másik tömb elemeinek vagy értékeinek átalakításával, és rendelje hozzá ezeket az elemeket a megadott tulajdonságokhoz. |
-| ![Beépített művelet dátuma][date-time-icon]<br>**Dátum és idő** | Műveletek elvégzése időbélyegekkel: <p>- **Hozzáadás az időponthoz** : adja hozzá a megadott számú egységet egy időbélyeghez. <br>- **Időzóna konvertálása** : a forrás időzóna időbélyegének konvertálása a cél időzónára. <br>- **Aktuális idő** : az aktuális időbélyeg visszaadása karakterláncként. <br>- **Jövőbeli idő beolvasása** : az aktuális időbélyeg és a megadott időegységek visszaadása. <br>- **Beolvasás időpontja** : az aktuális időbélyeg visszaküldése a megadott időegységek szerint. <br>- **Kivonás az időpontból** : több időegység kivonása egy időbélyegből. |
-| [![Beépített műveleti változók változói ][variables-icon]<br> **Variables**][variables-doc] | Műveletek végrehajtása változókkal: <p>- **Hozzáfűzés a tömb változóhoz** : szúrjon be egy értéket egy változó által tárolt tömb utolsó elemeként. <br>- **Hozzáfűzés a karakterlánc-változóhoz** : az értéket egy változó által tárolt sztring utolsó karakterének szúrja be. <br>- **Változó csökkentése** : a változókat állandó értékkel csökkentheti. <br>- **Növekmény változó** : állandó értékkel növelheti a változókat. <br>- **Változó inicializálása** : hozzon létre egy változót, és állapítsa meg az adattípus és a kezdeti érték megadását. <br>- **Változó beállítása** : adjon meg egy másik értéket egy meglévő változóhoz. |
+| [![Az adatműveletek beépített műveleti ][data-operations-icon]<br> **adatműveletei**][data-operations-doc] | Műveletek végrehajtása adatokkal: <p>- **Összeállítás**: egyetlen kimenet létrehozása több bemenetből különböző típusokkal. <br>- **CSV-táblázat létrehozása**: hozzon létre egy vesszővel tagolt (CSV-) táblázatot egy olyan tömbből, amely JSON-objektumokkal rendelkezik. <br>- **HTML-táblázat létrehozása**: HTML-táblázat létrehozása egy JSON-objektumokkal rendelkező tömbből. <br>- **Tömb szűrése**: hozzon létre egy tömböt egy másik tömb elemeiből, amelyek megfelelnek a feltételeknek. <br>- **Csatlakozás**: hozzon létre egy karakterláncot egy tömb összes eleméről, és válassza szét ezeket az elemeket a megadott elválasztóval. <br>- **JSON** elemzése: hozzon létre felhasználóbarát tokeneket a tulajdonságok és azok értékei alapján a JSON-tartalomban, hogy használhassa ezeket a tulajdonságokat a munkafolyamatban. <br>- **Válassza ki**: hozzon létre egy tömböt JSON-objektumokkal egy másik tömb elemeinek vagy értékeinek átalakításával, és rendelje hozzá ezeket az elemeket a megadott tulajdonságokhoz. |
+| ![Beépített művelet dátuma][date-time-icon]<br>**Dátum és idő** | Műveletek elvégzése időbélyegekkel: <p>- **Hozzáadás az időponthoz**: adja hozzá a megadott számú egységet egy időbélyeghez. <br>- **Időzóna konvertálása**: a forrás időzóna időbélyegének konvertálása a cél időzónára. <br>- **Aktuális idő**: az aktuális időbélyeg visszaadása karakterláncként. <br>- **Jövőbeli idő beolvasása**: az aktuális időbélyeg és a megadott időegységek visszaadása. <br>- **Beolvasás időpontja**: az aktuális időbélyeg visszaküldése a megadott időegységek szerint. <br>- **Kivonás az időpontból**: több időegység kivonása egy időbélyegből. |
+| [![Beépített műveleti változók változói ][variables-icon]<br> ][variables-doc] | Műveletek végrehajtása változókkal: <p>- **Hozzáfűzés a tömb változóhoz**: szúrjon be egy értéket egy változó által tárolt tömb utolsó elemeként. <br>- **Hozzáfűzés a karakterlánc-változóhoz**: az értéket egy változó által tárolt sztring utolsó karakterének szúrja be. <br>- **Változó csökkentése**: a változókat állandó értékkel csökkentheti. <br>- **Növekmény változó**: állandó értékkel növelheti a változókat. <br>- **Változó inicializálása**: hozzon létre egy változót, és állapítsa meg az adattípus és a kezdeti érték megadását. <br>- **Változó beállítása**: adjon meg egy másik értéket egy meglévő változóhoz. |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -135,7 +135,7 @@ A Logic Apps ezeket a népszerű szabványos összekötőket biztosítja a felad
 |------|-------------|
 | [![Azure Service Bus felügyelt összekötő ][azure-service-bus-icon]<br> **Azure Service Bus**][azure-service-bus-doc] | A Logic Apps leggyakrabban használt összekötőjével aszinkron üzeneteket, munkameneteket és témakör-előfizetéseket kezelhet. |
 | [![SQL Server felügyelt összekötő ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Kapcsolódjon SQL Server a felhőben, vagy egy Azure SQL Database a felhőben, így kezelheti a rekordokat, futtathatja a tárolt eljárásokat vagy lekérdezéseket végezhet. |
-| [![Azure Blob Storage felügyelt összekötő ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | Kapcsolódjon a Storage-fiókhoz a blob-tartalmak létrehozásához és kezeléséhez. |
+| [![Azure Blob Storage felügyelt összekötő ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | Csatlakozzon a tárfiókjához a blobtartalmak létrehozásához és kezeléséhez. |
 | [![Office 365 Outlook által felügyelt összekötő ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | A munkahelyi vagy iskolai e-mail-fiókjához csatlakozhat, így e-maileket, feladatokat, naptári eseményeket és értekezleteket, névjegyeket, kéréseket és egyebeket hozhat létre és kezelhet. |
 | [![SFTP – SSH által felügyelt összekötő ][sftp-ssh-icon]<br> **SFTP – SSH**][sftp-ssh-doc] | Az SSH használatával csatlakozhat az interneten elérhető SFTP-kiszolgálókhoz, és elérheti az azokon lévő mappákat és fájlokat. |
 | [![SharePoint Online felügyelt összekötő – ][sharepoint-online-icon]<br> **SharePoint <br> online**][sharepoint-online-doc] | Csatlakozhat a SharePoint Online-hoz a fájlok, mellékletek, mappák stb. kezeléséhez. |
@@ -369,17 +369,17 @@ További információt az alábbi témakörökben talál:
 
 ## <a name="triggers-and-action-types"></a>Eseményindítók és műveleti típusok
 
-Az összekötők *eseményindítókat* , *műveleteket* vagy mindkettőt adhatnak meg. Az *eseményindító* a logikai alkalmazások első lépése, amely általában megadja az eseményindítót kiváltó eseményt, és elindítja a logikai alkalmazás futtatását. Például az FTP-összekötő olyan triggerrel rendelkezik, amely elindítja a logikai alkalmazást "fájl hozzáadásakor vagy módosításakor". Egyes eseményindítók rendszeresen megkeresik a megadott eseményt vagy az adattípust, majd a megadott esemény vagy az adatgyűjtés észlelése után tüzet fognak. Más eseményindítók várnak, de azonnal megtörténnek egy adott esemény bekövetkezésekor, vagy amikor új adatkapcsolat áll rendelkezésre. Az eseményindítók a logikai alkalmazáshoz is továbbítanak minden szükséges adattal. A logikai alkalmazás az összes munkafolyamatban képes olvasni és felhasználni ezeket az adatait. Az Office 365 Outlook Connector például egy triggerrel rendelkezik, "új e-mail érkezésekor", amely átadhatja az e-mailből származó tartalmat a logikai alkalmazás munkafolyamataiba.
+Az összekötők *eseményindítókat*, *műveleteket* vagy mindkettőt adhatnak meg. Az *eseményindító* a logikai alkalmazások első lépése, amely általában megadja az eseményindítót kiváltó eseményt, és elindítja a logikai alkalmazás futtatását. Például az FTP-összekötő olyan triggerrel rendelkezik, amely elindítja a logikai alkalmazást "fájl hozzáadásakor vagy módosításakor". Egyes eseményindítók rendszeresen megkeresik a megadott eseményt vagy az adattípust, majd a megadott esemény vagy az adatgyűjtés észlelése után tüzet fognak. Más eseményindítók várnak, de azonnal megtörténnek egy adott esemény bekövetkezésekor, vagy amikor új adatkapcsolat áll rendelkezésre. Az eseményindítók a logikai alkalmazáshoz is továbbítanak minden szükséges adattal. A logikai alkalmazás az összes munkafolyamatban képes olvasni és felhasználni ezeket az adatait. Az Office 365 Outlook Connector például egy triggerrel rendelkezik, "új e-mail érkezésekor", amely átadhatja az e-mailből származó tartalmat a logikai alkalmazás munkafolyamataiba.
 
 Egy eseményindító elindítása után Azure Logic Apps létrehozza a logikai alkalmazás egy példányát, és elindítja a logikai alkalmazás munkafolyamatában lévő *műveleteket* . A műveletek a logikai alkalmazás munkafolyamataiban a triggert követő és a feladatokat elvégző lépések. Létrehozhat például egy olyan logikai alkalmazást, amely egy SQL-adatbázisból szerzi be a vásárlói adatait, és feldolgozza azokat a későbbi műveletekben.
 
 A Azure Logic Apps az alábbi általános típusú eseményindítókat biztosítja:
 
-* *Ismétlődési eseményindító* : ez az eseményindító megadott ütemezésen fut, és nincs szorosan társítva egy adott szolgáltatáshoz vagy rendszerhez.
+* *Ismétlődési eseményindító*: ez az eseményindító megadott ütemezésen fut, és nincs szorosan társítva egy adott szolgáltatáshoz vagy rendszerhez.
 
-* *Lekérdezési eseményindító* : ez az eseményindító rendszeresen lekérdezi egy adott szolgáltatást vagy rendszert a megadott ütemterv alapján, új adatellenőrzést végez, vagy adott esemény történt. Ha új adatok állnak rendelkezésre, vagy az adott esemény történt, az eseményindító létrehozza és futtatja a logikai alkalmazás egy új példányát, amely mostantól a bemenetként továbbított adatokat is használhatja.
+* *Lekérdezési eseményindító*: ez az eseményindító rendszeresen lekérdezi egy adott szolgáltatást vagy rendszert a megadott ütemterv alapján, új adatellenőrzést végez, vagy adott esemény történt. Ha új adatok állnak rendelkezésre, vagy az adott esemény történt, az eseményindító létrehozza és futtatja a logikai alkalmazás egy új példányát, amely mostantól a bemenetként továbbított adatokat is használhatja.
 
-* *Leküldéses eseményindító* : ez az eseményindító megvárja az új vagy az esemény megkötését. Ha új adatok állnak rendelkezésre, vagy ha az esemény történik, az eseményindító létrehozza és futtatja a logikai alkalmazás új példányát, amely mostantól a bemenetként továbbított adatokat is használhatja.
+* *Leküldéses eseményindító*: ez az eseményindító megvárja az új vagy az esemény megkötését. Ha új adatok állnak rendelkezésre, vagy ha az esemény történik, az eseményindító létrehozza és futtatja a logikai alkalmazás új példányát, amely mostantól a bemenetként továbbított adatokat is használhatja.
 
 <a name="connections"></a>
 
@@ -390,6 +390,54 @@ Minden összekötő eseményindítói és műveletei saját tulajdonságokat biz
 Azure Active Directory (Azure AD) OAuth használó összekötők esetén a kapcsolat létrehozása a szolgáltatásba való bejelentkezést jelenti, például az Office 365, a Salesforce vagy a GitHub szolgáltatást, ahol a hozzáférési token [titkosított](../security/fundamentals/encryption-overview.md) , és biztonságosan tárolható egy Azure titkos tárolóban. Más összekötők, például az FTP és az SQL esetében olyan kapcsolatra van szükség, amely konfigurációs adatokat tartalmaz, például a kiszolgáló címe, a Felhasználónév és a jelszó. Ezeket a kapcsolati konfigurációs adatokat is titkosítja és biztonságosan tárolja. További információ az [Azure-beli titkosításról](../security/fundamentals/encryption-overview.md).
 
 A kapcsolatok a szolgáltatás vagy a rendszer engedélyezése esetén is hozzáférhetnek a cél szolgáltatáshoz vagy rendszerhez. Az Azure AD OAuth-kapcsolatokat használó szolgáltatások, például az Office 365 és a Dynamics esetében Azure Logic Apps határozatlan időre frissítik a hozzáférési jogkivonatokat. Előfordulhat, hogy az egyéb szolgáltatások korlátozva vannak, hogy Azure Logic Apps a tokent frissítés nélkül is használhatja. Bizonyos műveletek általában érvénytelenítik az összes hozzáférési jogkivonatot, például a jelszó módosítását.
+
+<a name="recurrence-behavior"></a>
+
+## <a name="recurrence-behavior"></a>Ismétlődési viselkedés
+
+Az ismétlődő beépített eseményindítók viselkedése, amelyek natív módon futnak Azure Logic Appsban, például az [ismétlődési Eseményindítóban](../connectors/connectors-native-recurrence.md), eltérnek az ismétlődő, kapcsolódási eseményindítók működésével, amikor először létre kell hoznia egy kapcsolódást, például az SQL-összekötő eseményindítóját.
+
+Mindkét eseményindító esetében azonban, ha az ismétlődés nem ad meg konkrét kezdési dátumot és időpontot, az első ismétlődés azonnal fut a logikai alkalmazás mentésekor vagy telepítésekor, az eseményindító ismétlődésének beállítása ellenére. A viselkedés elkerülése érdekében adjon meg egy kezdési dátumot és időpontot, amikor az első ismétlődést futtatni szeretné.
+
+<a name="recurrence-built-in"></a>
+
+### <a name="recurrence-for-built-in-triggers"></a>Beépített eseményindítók ismétlődése
+
+Az ismétlődő beépített eseményindítók tiszteletben tartják a beállított ütemtervet, beleértve a megadott időzónát is. Ha azonban egy ismétlődés nem ad meg olyan speciális ütemezési beállításokat, mint például a jövőbeli ismétlődések futtatásához megadott időpontok, ezek az ismétlődések az utolsó eseményindító végrehajtásán alapulnak. Ennek eredményeképpen az ismétlődések indítási időpontja a tárolási hívások során felmerülő tényezők, például a késések miatt eltérhet. Ha nem választja ki az időzónát, a nyári időszámítás (DST) hatással lehet az eseményindítók futtatására, például ha a kezdési időt egy órára továbbítja a DST indításakor és egy órával a DST-időszak végéig.
+
+Győződjön meg arról, hogy a logikai alkalmazás a megadott kezdési időpontban fut, és nem hagyja ki az ismétlődést, különösen akkor, ha a gyakoriság napokban vagy már nem érhető el, próbálkozzon a következő megoldásokkal:
+
+* Győződjön meg arról, hogy egy időzónát választ ki, hogy a logikai alkalmazás a megadott kezdési időpontban fusson. Ellenkező esetben előfordulhat, hogy a DST az eseményindítók futtatásakor is hatással lehet, például ha a kezdési időt egy órára továbbítják, amikor a DST elindul, és egy óra hátra, amikor a DST véget ér.
+
+  A feladatok ütemezésekor Logic Apps a várólistára helyezi az üzenetet, és megadja, hogy az üzenet mikor válik elérhetővé az utolsó feladat futtatásakor és a következő feladat futásának UTC-ideje szerint. Egy időzóna megadásával a logikai alkalmazás UTC-ideje a szezonális idő változásának ellensúlyozására is változik. Azonban előfordulhat, hogy egy kis idő elteltével a Windows problémákat okozhat az idő váltásakor. További információért és Példákért lásd: [az ismétlődés a nyári](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)időszámításhoz és a téli időponthoz.
+
+* Használja az ismétlődési eseményindítót, és adja meg az ismétlődés kezdő dátumát és időpontját, valamint a megadott időpontokat, amikor a későbbi ismétlődéseket az **ezen órákban** elnevezett tulajdonságokkal és **ezen a percekben** szeretné futtatni, amelyek csak a **napi** és **heti** gyakorisággal érhetők el.
+
+* Az ismétlődési eseményindító helyett használja a [csúszó ablak eseményindítóját](../connectors/connectors-native-sliding-window.md).
+
+<a name="recurrence-connection-based"></a>
+
+### <a name="recurrence-for-connection-based-triggers"></a>Megismétlődés a kapcsolatok alapú eseményindítók esetében
+
+Az ismétlődő, kapcsolaton alapuló eseményindítók, például az SQL vagy az SFTP-SSH esetében az ütemterv nem az egyetlen illesztőprogram, amely a végrehajtást vezérli, és az időzóna csak a kezdeti kezdési időt határozza meg. A későbbi futtatások az ismétlődési ütemtervtől, a legutóbbi eseményindító végrehajtástól *és* más olyan tényezőktől függenek, amelyek futási időt okozhatnak a drift vagy a váratlan viselkedés előállítása, például:
+
+* Azt határozza meg, hogy az trigger hozzáfér-e több adattal rendelkező kiszolgálóhoz, amelyet a trigger azonnal megpróbál beolvasni.
+
+* Minden hiba vagy újrapróbálkozás, amelyet az trigger bejelentkezett.
+
+* Késés a tárolási hívások során.
+
+* A megadott ütemterv nem tartható fenn, amikor a nyári időmegtakarítás (DST) elindul és végződik.
+
+* Más tényezők, amelyek befolyásolhatják a következő futási időt.
+
+A problémák megoldásához vagy megoldásához próbálkozzon a következő megoldásokkal:
+
+* Annak ellenőrzéséhez, hogy az ismétlődési idő ne legyen átváltva a DST életbe léptetéséhez, manuálisan módosítsa az ismétlődést, hogy a logikai alkalmazás továbbra is a várt időpontban fusson. Ellenkező esetben a kezdési idő egy óra elteltével, a DST indításakor és egy órával a DST végén halad át.
+
+* Az ismétlődési eseményindító használatával megadhatja az időzónát, a kezdési dátumot és időpontot, *valamint* a további ismétlődések futtatásának időpontját az **ezen az órában** és a **percekben** megadott tulajdonságok használatával, amelyek csak a **napi** és **heti** gyakorisággal érhetők el. Azonban előfordulhat, hogy egy kis idő elteltével a Windows továbbra is problémákat okozhat az idő váltásakor. További információért és Példákért lásd: [az ismétlődés a nyári](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time)időszámításhoz és a téli időponthoz.
+
+* A kihagyott ismétlődések elkerülése érdekében használja a [csúszó ablak eseményindítóját](../connectors/connectors-native-sliding-window.md)az ismétlődési eseményindító helyett.
 
 <a name="custom"></a>
 
@@ -414,7 +462,7 @@ Ha a szervezete nem engedélyezi a kapcsolódást bizonyos erőforrásokhoz a Az
 
 Bár a logikai alkalmazásokból hoz létre kapcsolatokat, a kapcsolatok külön Azure-erőforrások, saját erőforrás-definíciókkal rendelkeznek. A kapcsolódási erőforrás-definíciók áttekintéséhez [töltse le a logikai alkalmazást az Azure-ból a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md), amely a legegyszerűbben az üzembe helyezésre kész, érvényes paraméteres Logic app-sablon létrehozása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [teljes összekötő listájának](/connectors) megtekintése
 * [Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)

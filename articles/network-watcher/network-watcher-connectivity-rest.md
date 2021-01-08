@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 01/07/2021
 ms.author: kumud
-ms.openlocfilehash: be74871b5669ee249fc06232d804b28c4446757b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5b10194d47a90abf9d2070f00b71b78d8796dde4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494052"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019754"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Az Azure Network Watcher-vel való kapcsolatok hibáinak megoldása az Azure-REST API használatával
 
@@ -132,7 +132,7 @@ null
 
 ### <a name="response"></a>Reagálás
 
-A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat nem sikerült a virtuális berendezésen, mert egy UserRule_Port80 nevű felhasználó konfigurálta, amely a `NetworkSecurityRule` 80-es porton való bejövő forgalom blokkolására van konfigurálva. **UserRule_Port80** Ezek az adatok a kapcsolódási problémák kutatására használhatók.
+A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat nem sikerült a virtuális berendezésen, mert egy UserRule_Port80 nevű felhasználó konfigurálta, amely a `NetworkSecurityRule` 80-es porton való bejövő forgalom blokkolására van konfigurálva.  Ezek az adatok a kapcsolódási problémák kutatására használhatók.
 
 ```json
 {

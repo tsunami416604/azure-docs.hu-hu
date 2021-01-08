@@ -1,18 +1,17 @@
 ---
 title: Oktatóanyag – Azure Stream Analytics felhőalapú feladatok egyéni .NET-deszerializálók
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egyéni .net-deszerializáló egy Azure stream Analytics felhőalapú feladatokhoz a Visual Studio használatával.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/17/2020
-ms.openlocfilehash: 2353d15707fe215bfcab7912f2a9c598c4af7e49
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 6db65d85b5d5d72e7b4764949abcffed004cae85
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822012"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018207"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Oktatóanyag: egyéni .NET-deszerializálók a Azure Stream Analytics
 
@@ -20,7 +19,7 @@ A Azure Stream Analytics [három adatformátumhoz rendelkezik beépített támog
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre egyéni .net-deszerializáló egy Azure stream Analytics felhőalapú feladatokhoz a Visual Studio használatával. Ha meg szeretné tudni, hogyan hozhatók létre .NET-deszerializálók a Visual Studio Code-ban, tekintse meg [a .net-deszerializálók létrehozása a Visual Studio Code-ban Azure stream Analytics feladatokhoz](visual-studio-code-custom-deserializer.md)
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy egyéni deszerializáló protokollt a protokoll pufferéhez.
@@ -86,7 +85,7 @@ Az Ön által létrehozott tároló a Stream Analytics feladathoz kapcsolódó e
    |Erőforrás|Betöltés az ASA-projekt referenciájának vagy CodeBehind|
    |CSharp szerelvény neve|ProtobufDeserializer.dll|
    |Osztály neve|MessageBodyProto.MessageBodyDeserializer|
-   |Esemény tömörítési típusa|None|
+   |Esemény tömörítési típusa|Nincs|
 
 3. Adja hozzá a következő lekérdezést a **script. asaql** fájlhoz.
 
@@ -98,7 +97,7 @@ Az Ön által létrehozott tároló a Stream Analytics feladathoz kapcsolódó e
 
    |Beállítás|Ajánlott érték|
    |-------|---------------|
-   |Input Alias (Bemeneti alias)|Bevitel|
+   |Input Alias (Bemeneti alias)|Input (Bemenet)|
    |Source Type (Forrás típusa)|Data Stream (Adatstream)|
    |Esemény szerializálási formátuma|Egyéb (Protopuf, XML, tulajdonosi...)|
    |CSharp szerelvény neve|ProtobufDeserializer.dll|

@@ -1,19 +1,18 @@
 ---
 title: Stream Analytics feladatok összekötése az erőforrásokkal egy Azure-Virtual Network (VNET)
 description: Ez a cikk azt ismerteti, hogyan lehet egy Azure Stream Analytics feladatot összekötni egy VNET található erőforrásokkal.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: f140384ee2c78b38982c99dab5912bc451584a42
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 99563760bf37c4046e7dd81e779fedbe415380bc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898147"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019482"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>Stream Analytics feladatok összekötése az erőforrásokkal egy Azure-Virtual Network (VNet)
 
@@ -43,7 +42,7 @@ A feladatok az alábbi Azure-szolgáltatásokhoz kapcsolódhatnak a következő 
 
 Ha a feladatainak más bemeneti vagy kimeneti típusokhoz kell csatlakozniuk, a Stream Analyticstól írhat, hogy először Event Hubs a kimenetet, majd a tetszőleges célra, a Azure Functions használatával. Ha a VNet vagy tűzfalban védett más kimeneti típusokhoz közvetlenül szeretne írni Stream Analytics, akkor az egyetlen lehetőség, hogy Stream Analytics-fürtökben használja a privát végpontokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Privát végpontok létrehozása és eltávolítása Stream Analytics-fürtökben](https://docs.microsoft.com/azure/stream-analytics/private-endpoints)
 * [Kapcsolódás Event Hubshoz a VNet felügyelt Identitásos hitelesítés használatával](https://docs.microsoft.com/azure/stream-analytics/event-hubs-managed-identity)

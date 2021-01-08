@@ -1,18 +1,18 @@
 ---
 title: Indexelés az Azure Cosmos DB-ben
-description: Ismerje meg, hogy az indexelés hogyan működik a Azure Cosmos DBban, különböző típusú indexek, például a tartomány, a térbeli és az összetett indexek támogatottak.
+description: Ismerje meg, hogy az indexelés hogyan működik Azure Cosmos DBban, különböző típusú indexek, például a tartomány, a térbeli és az összetett indexek támogatottak.
 author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 4211f13324b9fda0b0823b2d035eb03863cb686d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b7349a08b93810dcc3befd6058302d6c4573ab8d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339754"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019210"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés az Azure Cosmos DB-ben – Áttekintés
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -64,13 +64,13 @@ Itt láthatók a fent ismertetett példában szereplő egyes tulajdonságok elé
 
 Egy elem írásakor Azure Cosmos DB hatékonyan indexeli az egyes tulajdonságok elérési útját és a hozzá tartozó értéket.
 
-## <a name="index-kinds"></a>Index típusa
+## <a name="types-of-indexes"></a><a id="index-types"></a>Indexek típusai
 
-Azure Cosmos DB jelenleg három típusú indexet támogat.
+A Azure Cosmos DB jelenleg három típusú indexet támogat. A tárgymutató-típusokat az indexelési szabályzat definiálásakor konfigurálhatja.
 
 ### <a name="range-index"></a>Tartomány indexe
 
-A **Range** index egy megrendelt fastruktúrán alapul. A tartomány indexének típusa a következő:
+A **Range** index egy megrendelt fastruktúrán alapul. A tartomány indexének típusát a következőhöz használhatja:
 
 - Esélyegyenlőségi lekérdezések:
 
@@ -122,7 +122,7 @@ A **Range** index egy megrendelt fastruktúrán alapul. A tartomány indexének 
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-A tartomány-indexek a skaláris értékeken (String vagy Number) is használhatók.
+A tartomány-indexek a skaláris értékeken (String vagy Number) is használhatók. Az újonnan létrehozott tárolók alapértelmezett indexelési szabályzata minden sztring vagy szám esetében tartományindexeket kényszerít. A tartomány-indexek konfigurálásával kapcsolatos további információkért lásd: [tartomány-indexelési házirend – példák](how-to-manage-indexing-policy.md#range-index)
 
 ### <a name="spatial-index"></a>Térbeli index
 
@@ -146,11 +146,11 @@ A **térbeli** indexek hatékony lekérdezéseket tesznek lehetővé térinforma
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-A térbeli indexek megfelelően formázott [GeoJSON](./sql-query-geospatial-intro.md) -objektumokon is használhatók. A pontok, Linestring, sokszögek és többsokszögek jelenleg támogatottak.
+A térbeli indexek megfelelően formázott [GeoJSON](./sql-query-geospatial-intro.md) -objektumokon is használhatók. A pontok, Linestring, sokszögek és többsokszögek jelenleg támogatottak. Ha ezt az indexet szeretné használni, állítsa be a `"kind": "Range"` tulajdonságot az indexelési házirend konfigurálásakor. A térbeli indexek konfigurálásával kapcsolatos további információkért lásd: [térbeli indexelési házirend – példák](how-to-manage-indexing-policy.md#spatial-index)
 
 ### <a name="composite-indexes"></a>Összetett indexek
 
-Az **összetett** indexek nagyobb hatékonyságot biztosítanak, ha több mezőn végez műveleteket. Az összetett index típusa a következő:
+Az **összetett** indexek nagyobb hatékonyságot biztosítanak, ha több mezőn végez műveleteket. Az összetett index típusát a következőhöz használhatja:
 
 - `ORDER BY` több tulajdonság lekérdezései:
 
@@ -170,11 +170,13 @@ Az **összetett** indexek nagyobb hatékonyságot biztosítanak, ha több mezőn
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Mindaddig, amíg az egyik szűrési predikátum az egyik indexet használja, a lekérdezési motor kiértékeli, hogy először a REST ellenőrzése előtt. Ha például SQL-lekérdezéssel rendelkezik, például: `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Mindaddig, amíg az egyik szűrési predikátum az egyik indexelési típust használja, a lekérdezési motor kiértékeli, hogy először a REST ellenőrzése előtt. Ha például SQL-lekérdezéssel rendelkezik, például: `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * A fenti lekérdezés először szűrni fogja azokat a bejegyzéseket, ahol a firstName = "Andrew" kifejezést használja az index használatával. Ezután továbbítja az összes firstName = "Andrew" bejegyzést egy későbbi folyamaton keresztül, hogy kiértékelje a tartalmazza a szűrő predikátumát.
 
 * Felgyorsíthatja a lekérdezéseket, és elkerülheti a tárolók teljes vizsgálatát, ha olyan függvényeket használ, amelyek nem használják az indexet (például tartalmazza) az indexet használó további szűrési predikátumok hozzáadásával. A Filter záradékok sorrendje nem fontos. A lekérdezési motor kideríti, hogy mely predikátumok szelektívek, és ennek megfelelően futtatják a lekérdezést.
+
+Az összetett indexek konfigurálásának megismeréséhez tekintse meg az [összetett indexelési házirend példáit](how-to-manage-indexing-policy.md#composite-index) .
 
 ## <a name="querying-with-indexes"></a>Lekérdezés indexekkel
 

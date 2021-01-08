@@ -3,7 +3,7 @@ title: Azure AD Connect Health – duplikált attribútum-szinkronizálási hib�
 description: Ez a dokumentum ismerteti a duplikált attribútum-szinkronizálási hibák diagnosztizálási folyamatát, valamint az árva objektumok lehetséges javítását közvetlenül a Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: maheshu
 editor: billmath
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20f1e152d67e653b10b8378b7d667106c48dc116
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278683"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016932"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Duplikált attribútumok szinkronizálási hibáinak diagnosztizálása és javítása
 
@@ -41,7 +41,7 @@ Ha a **QuarantinedAttributeValueMustBeUnique** és a **AttributeValueMustBeUniqu
 ### <a name="orphaned-object-scenario"></a>Árva objektum forgatókönyve
 Időnként előfordulhat, hogy egy meglévő felhasználó elveszíti a forrás- **horgonyt**. A forrásoldali objektum törlése a helyszíni Active Directoryban történt. A törlési jel változása azonban soha nem lett szinkronizálva az Azure AD-vel. Ez a veszteség olyan esetekben fordul elő, mint a szinkronizálási motorral kapcsolatos problémák vagy a tartomány áttelepítése. Ha ugyanazt az objektumot visszaállítja vagy újra létrehozza, logikailag egy meglévő felhasználónak kell lennie, hogy szinkronizáljon a forrás- **horgonyból**. 
 
-Ha egy meglévő felhasználó csak felhőalapú objektum, az ütköző felhasználót az Azure AD-vel szinkronizálva is megtekintheti. A felhasználó nem egyeztethető össze a meglévő objektum szinkronizálásával. Nincs közvetlen módszer a **forrás-horgony**újrakérésére. További információ a [meglévő Tudásbázisról](https://support.microsoft.com/help/2647098). 
+Ha egy meglévő felhasználó csak felhőalapú objektum, az ütköző felhasználót az Azure AD-vel szinkronizálva is megtekintheti. A felhasználó nem egyeztethető össze a meglévő objektum szinkronizálásával. Nincs közvetlen módszer a **forrás-horgony** újrakérésére. További információ a [meglévő Tudásbázisról](https://support.microsoft.com/help/2647098). 
 
 Az Azure AD-beli meglévő objektum például megőrzi a Joe-licencet. Egy olyan újonnan szinkronizált objektum, amely más **forrás-horgonysal** rendelkezik, duplikált attribútum-állapotba kerül az Azure ad-ben. A helyszíni Active Directory Joe-beli módosításait nem alkalmazza a rendszer az Azure AD-ben a Joe-beli eredeti felhasználóra (meglévő objektumra).  
 
@@ -68,7 +68,7 @@ Kövesse a Azure Portal lépéseit, és Szűkítse le a szinkronizálási hiba r
 A Azure Portal hajtson végre néhány lépést az egyes javítható helyzetek azonosításához:  
 1.  Keresse meg a **Diagnosztizálás állapota** oszlopot. Az állapot azt mutatja, hogy lehetséges-e a szinkronizálási hiba kijavítása közvetlenül a Azure Active Directoryról. Ez azt jelenti, hogy létezik egy hibaelhárítási folyamat, amely leszűkítheti a hiba esetét, és esetleg javíthatja azt.
 
-| status | Mit jelent? |
+| Állapot | Mit jelent? |
 | ------------------ | -----------------|
 | Nincs elindítva | Nem látogatta meg ezt a diagnosztikai folyamatot. A diagnosztikai eredményektől függően lehetőség van arra, hogy a szinkronizálási hibát közvetlenül a portálról javítsa ki. |
 | Manuális javítás szükséges | A hiba nem felel meg a portálon elérhető javítások feltételeinek. Az ütköző objektumtípusok nem a felhasználók, vagy már elvégezte a diagnosztikai lépéseket, és a portálon nem érhető el javítás. Az utóbbi esetben a helyszíni oldalról származó javítás még mindig az egyik megoldás. [További információ a helyszíni javításokról](https://support.microsoft.com/help/2647098). | 
@@ -80,9 +80,9 @@ A Azure Portal hajtson végre néhány lépést az egyes javítható helyzetek a
 
 1. Kattintson a **diagnosztika** gombra a hiba részletei alatt. Válaszoljon néhány kérdésre, és azonosítsa a szinkronizálási hiba részleteit. A kérdésekre adott válaszok segítenek azonosítani az árva objektum esetét.
 
-1. Ha a diagnosztika végén megjelenik egy **Bezárás** gomb, a válaszok alapján nem érhető el gyors javítás a portálon. Tekintse át az utolsó lépésben megjelenő megoldást. A helyszíni javítások még a megoldások. Kattintson a **Bezárás** gombra. Az aktuális szinkronizálási hiba állapota **kézi javításra**vált. Az állapot az aktuális szinkronizálási ciklusban marad.
+1. Ha a diagnosztika végén megjelenik egy **Bezárás** gomb, a válaszok alapján nem érhető el gyors javítás a portálon. Tekintse át az utolsó lépésben megjelenő megoldást. A helyszíni javítások még a megoldások. Kattintson a **Bezárás** gombra. Az aktuális szinkronizálási hiba állapota **kézi javításra** vált. Az állapot az aktuális szinkronizálási ciklusban marad.
 
-1. Az árva objektumokra vonatkozó esetek azonosítása után a duplikált attribútumok szinkronizálási hibáit közvetlenül a portálról javíthatja. A folyamat elindításához kattintson a **javítás alkalmazása** gombra. Az aktuális szinkronizálási hiba állapota **függőben lévő szinkronizálásra**frissül.
+1. Az árva objektumokra vonatkozó esetek azonosítása után a duplikált attribútumok szinkronizálási hibáit közvetlenül a portálról javíthatja. A folyamat elindításához kattintson a **javítás alkalmazása** gombra. Az aktuális szinkronizálási hiba állapota **függőben lévő szinkronizálásra** frissül.
 
 1. A következő szinkronizálási ciklus után el kell távolítani a hibát a listából.
 
@@ -90,18 +90,18 @@ A Azure Portal hajtson végre néhány lépést az egyes javítható helyzetek a
 ### <a name="does-the-user-exist-in-your-on-premises-active-directory"></a>Létezik a felhasználó a helyszíni Active Directory?
 
 Ez a kérdés megpróbálja azonosítani a meglévő felhasználó forrás objektumát a helyszíni Active Directory.  
-1. Ellenőrizze, hogy Azure Active Directory rendelkezik-e a megadott **userPrincipalName**rendelkező objektummal. Ha nem, válaszoljon a **nem**elemre.
+1. Ellenőrizze, hogy Azure Active Directory rendelkezik-e a megadott **userPrincipalName** rendelkező objektummal. Ha nem, válaszoljon a **nem** elemre.
 2. Ha igen, ellenőrizze, hogy az objektum továbbra is a szinkronizálási hatókörben van-e.  
    - Keressen rá az Azure AD-összekötő területére a DN használatával.
-   - Ha az objektum a **függőben lévő hozzáadási** állapotban található, válaszoljon a **nem**értékre. Azure AD Connect nem tud csatlakozni az objektumhoz a megfelelő Azure AD-objektumhoz.
+   - Ha az objektum a **függőben lévő hozzáadási** állapotban található, válaszoljon a **nem** értékre. Azure AD Connect nem tud csatlakozni az objektumhoz a megfelelő Azure AD-objektumhoz.
    - Ha az objektum nem található, válasz **Igen**.
 
 Ezekben a példákban a kérdés megpróbálja megállapítani, hogy a **Joe Jackson** továbbra is létezik-e a helyszíni Active Directoryban.
-A **gyakori forgatókönyv**esetén a **Joe Johnson** és a **Joe Jackson** egyaránt megtalálható a helyszíni Active Directoryban. A karanténba helyezett objektumok két különböző felhasználó.
+A **gyakori forgatókönyv** esetén a **Joe Johnson** és a **Joe Jackson** egyaránt megtalálható a helyszíni Active Directoryban. A karanténba helyezett objektumok két különböző felhasználó.
 
 ![Szinkronizálási hiba diagnosztizálása – gyakori forgatókönyv](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
-Az **árva objektum**esetében csak az egyetlen felhasználó, **Joe Johnson** van jelen a helyszíni Active Directoryban:
+Az **árva objektum** esetében csak az egyetlen felhasználó, **Joe Johnson** van jelen a helyszíni Active Directoryban:
 
 ![Szinkronizálási hiba diagnosztizálása árva objektum * a felhasználó létezése * forgatókönyv](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
@@ -111,7 +111,7 @@ Ez a kérdés egy bejövő ütköző felhasználót és az Azure AD meglévő fe
    - Megjelenítendő név
    - Felhasználó egyszerű neve
    - Objektumazonosító
-2. Ha az Azure AD nem tudja összehasonlítani őket, ellenőrizze, hogy Active Directory rendelkezik-e a megadott **UserPrincipalNames**rendelkező objektumokkal. Válasz **nem** , ha mindkettőt keresi.
+2. Ha az Azure AD nem tudja összehasonlítani őket, ellenőrizze, hogy Active Directory rendelkezik-e a megadott **UserPrincipalNames** rendelkező objektumokkal. Válasz **nem** , ha mindkettőt keresi.
 
 A következő példában a két objektum ugyanahhoz a felhasználóhoz tartozik, **Joe Johnson**.
 
@@ -119,7 +119,7 @@ A következő példában a két objektum ugyanahhoz a felhasználóhoz tartozik,
 
 
 ## <a name="what-happens-after-the-fix-is-applied-in-the-orphaned-object-scenario"></a>Mi történik a javítás alkalmazása után az árva objektum esetén
-Az előző kérdésekre adott válaszok alapján a **javítás alkalmazása** gombra kattintva megtekintheti az Azure ad-ből elérhető javításokat. Ebben az esetben a helyszíni objektum egy váratlan Azure AD-objektummal van szinkronizálva. A két objektum a **forrás-horgony**használatával van leképezve. A **hibajavítás alkalmazása** a következő vagy hasonló lépéseket hajtja végre:
+Az előző kérdésekre adott válaszok alapján a **javítás alkalmazása** gombra kattintva megtekintheti az Azure ad-ből elérhető javításokat. Ebben az esetben a helyszíni objektum egy váratlan Azure AD-objektummal van szinkronizálva. A két objektum a **forrás-horgony** használatával van leképezve. A **hibajavítás alkalmazása** a következő vagy hasonló lépéseket hajtja végre:
 1. Frissíti a **forrás-horgonyt** a megfelelő objektumra az Azure ad-ben.
 2. Törli az ütköző objektumot az Azure AD-ben, ha a jelen van.
 
@@ -129,7 +129,7 @@ Az előző kérdésekre adott válaszok alapján a **javítás alkalmazása** go
 > A **javítási módosítások alkalmazása** csak az árva objektumokra vonatkozik.
 >
 
-Az előző lépések után a felhasználó elérheti az eredeti erőforrást, amely egy meglévő objektumra mutató hivatkozás. A listában lévő **állapot diagnosztizálása** **függőben lévő szinkronizálásra**frissül. A szinkronizálási hiba a következő szinkronizálás után lesz feloldva. A kapcsolat állapota többé nem jelenik meg a megoldott szinkronizálási hiba a listanézetban.
+Az előző lépések után a felhasználó elérheti az eredeti erőforrást, amely egy meglévő objektumra mutató hivatkozás. A listában lévő **állapot diagnosztizálása** **függőben lévő szinkronizálásra** frissül. A szinkronizálási hiba a következő szinkronizálás után lesz feloldva. A kapcsolat állapota többé nem jelenik meg a megoldott szinkronizálási hiba a listanézetban.
 
 ## <a name="failures-and-error-messages"></a>Hibák és hibaüzenetek
 **Az ütköző attribútummal rendelkező felhasználó nem törölhető a Azure Active Directory. Győződjön meg arról, hogy a felhasználó nehezen törölve van az újrapróbálkozás előtt.**  
@@ -140,20 +140,20 @@ Az Azure AD-beli felhőalapú felhasználónak nem lehet forrás-horgonya. Ebben
 
 ## <a name="faq"></a>GYIK
 **Q.** Mi történik, ha az **Apply javítás** végrehajtása sikertelen?  
-**A.** Ha a végrehajtás meghiúsul, lehetséges, hogy Azure AD Connect exportálási hibát futtat. Frissítse a portál oldalt, és próbálkozzon újra a következő szinkronizálás után. Az alapértelmezett szinkronizálási ciklus 30 perc. 
+**Egy.** Ha a végrehajtás meghiúsul, lehetséges, hogy Azure AD Connect exportálási hibát futtat. Frissítse a portál oldalt, és próbálkozzon újra a következő szinkronizálás után. Az alapértelmezett szinkronizálási ciklus 30 perc. 
 
 
 **Q.** Mi a teendő, ha a **meglévő objektum** a törlendő objektum?  
-**A.** Ha a **meglévő objektumot** törölni kell, a folyamat nem vonja maga után a **forrás-horgony**változását. Általában a helyszíni Active Directory javíthatja. 
+**Egy.** Ha a **meglévő objektumot** törölni kell, a folyamat nem vonja maga után a **forrás-horgony** változását. Általában a helyszíni Active Directory javíthatja. 
 
 
 **Q.** Milyen engedélyre van szükség a felhasználónak a javítás alkalmazásához?  
-**A.** Az Azure RBAC **globális rendszergazdája**vagy **közreműködője** jogosult a diagnosztikai és hibaelhárítási folyamat elérésére.
+**Egy.** Az Azure RBAC **globális rendszergazdája** vagy **közreműködője** jogosult a diagnosztikai és hibaelhárítási folyamat elérésére.
 
 
 **Q.** Be kell állítania Azure AD Connect vagy frissítenie kell a Azure AD Connect Health ügynököt ehhez a szolgáltatáshoz?  
-**A.** Nem, a diagnosztikai folyamat egy teljes felhőalapú szolgáltatás.
+**Egy.** Nem, a diagnosztikai folyamat egy teljes felhőalapú szolgáltatás.
 
 
 **Q.** Ha a meglévő objektum nem törölhető, akkor a diagnosztika folyamata ismét aktív lesz?  
-**A.** Nem, a javítás nem frissíti az objektum attribútumait a **forrás-horgonytól**eltérő értékkel.
+**Egy.** Nem, a javítás nem frissíti az objektum attribútumait a **forrás-horgonytól** eltérő értékkel.

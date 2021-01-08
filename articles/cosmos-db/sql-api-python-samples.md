@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 8515ff7102095a278b2656608f00932fe8b19126
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4a1cd5b1773a58cf385fc6cc5c22be8df7b21e20
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098637"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018955"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python-példák
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -91,7 +91,7 @@ A [item_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/s
 
 ## <a name="indexing-examples"></a>Indexelési példák
 
-A [index_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) a Python-minta bemutatja, hogyan végezheti el a következő feladatokat. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez lásd: a [házirendek indexelése](index-policy.md), az [indexelési típusok](index-overview.md#index-kinds)és az [indexelési útvonalak](index-policy.md#include-exclude-paths) fogalmi cikkei.
+A [index_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) a Python-minta bemutatja, hogyan végezheti el a következő feladatokat. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez lásd: a [házirendek indexelése](index-policy.md), az [indexelési típusok](index-overview.md#index-types)és az [indexelési útvonalak](index-policy.md#include-exclude-paths) fogalmi cikkei.
 
 | Feladat | API-referencia |
 | --- | --- |

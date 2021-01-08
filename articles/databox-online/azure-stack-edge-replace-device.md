@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: ec16a2b42b818e96399b8fdbad4a0951f84ef825
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 501136c6f5015dc8c68a1aba004432900675b11c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893900"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017969"
 ---
 # <a name="replace-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro-eszköz cseréje
 
@@ -43,6 +43,9 @@ Ha a meglévő eszköz hardveres hibával rendelkezik, nyisson meg egy támogat�
 
 ## <a name="create-a-resource-for-replacement-device"></a>Erőforrás létrehozása a helyettesítő eszközhöz
 
+> [!NOTE]
+> Hozzon létre egy új erőforrást a helyettesítő eszköz aktiválásához. A helyettesítő eszköz meglévő erőforrással való aktiválása nem támogatott.
+
 Egy erőforrás létrehozásához kövesse az alábbi lépéseket.
 
 1. Kövesse az [új erőforrás létrehozása](azure-stack-edge-deploy-prep.md#create-a-new-resource) című témakör lépéseit, és hozzon létre egy erőforrást a helyettesítő eszközhöz. 
@@ -69,6 +72,6 @@ Az eredeti eszköz visszaküldéséhez kövesse az összes lépést:
 4. [Törölje a](azure-stack-edge-return-device.md#delete-the-resource) visszaadott eszközhöz hozzárendelt erőforrást.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan adhat [vissza Azure stack Edge Pro-eszközt](azure-stack-edge-return-device.md).

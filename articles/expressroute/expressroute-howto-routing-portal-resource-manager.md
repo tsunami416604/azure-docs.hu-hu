@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/26/2020
+ms.date: 01/07/2021
 ms.author: duau
-ms.openlocfilehash: eb55e4633ef64bee0577b1c1defba27dad24a3b7
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 3e106bc313d6189b2fae8cf6a4dd7ce862294b8f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515872"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019238"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Oktatóanyag: társítások létrehozása és módosítása ExpressRoute-áramkörhöz a Azure Portal használatával
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre és kezelhet útválasztási 
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Nyilvános társak](about-public-peering.md)
+> * [Nyilvános társviszony-létesítés](about-public-peering.md)
 > * [Videó – privát peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [Videó – Microsoft peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
@@ -42,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     * [Útválasztási követelmények](expressroute-routing.md)
     * [Munkafolyamatok](expressroute-workflows.md)
 * Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Az utasításokat követve [hozzon létre egy ExpressRoute áramkört](expressroute-howto-circuit-portal-resource-manager.md) , és a folytatás előtt engedélyezze az áramkört a kapcsolat szolgáltatója számára. A társítás (ok) konfigurálásához a ExpressRoute áramkörnek kiépített és engedélyezett állapotban kell lennie. 
-* Ha megosztott kulcsot vagy MD5-kivonatot szeretne használni, ügyeljen arra, hogy az alagút mindkét oldalán használja a kulcsot. A korlát legfeljebb 25 alfanumerikus karakterből állhat. A speciális karakterek nem támogatottak. 
+* Ha megosztott kulcsot vagy MD5-kivonatot szeretne használni, ügyeljen arra, hogy az alagút mindkét oldalán használja a kulcsot. A korlát legfeljebb 25 alfanumerikus karakterből állhat. A különleges karakterek nem támogatottak. 
 
 Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgáltatóknál létrehozott kapcsolatcsoportokra vonatkoznak. Ha olyan szolgáltatót használ, amely felügyelt 3. rétegbeli szolgáltatásokat kínál (jellemzően IPVPN, például MPLS), a kapcsolati szolgáltató konfigurálja és felügyeli az útválasztást. 
 
@@ -50,7 +50,7 @@ Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgá
 > A szolgáltatásfelügyeleti portálon jelenleg nem hirdetünk szolgáltatók által konfigurált társviszony-létesítéseket. Dolgozunk azon, hogy hamarosan bevezethessük ezt a képességet. A BGP-társítások konfigurálása előtt érdeklődjön a szolgáltatónál.
 > 
 
-## <a name="microsoft-peering"></a><a name="msft"></a>Microsoftos társhálózat-létesítés
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft-partnerek
 
 Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi konfigurációjának létrehozásához, lekéréséhez, frissítéséhez és törléséhez.
 
@@ -165,7 +165,7 @@ A társviszony-létesítés sorának kijelölésével módosíthatja a társvisz
 
 :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/update-private-peering.png" alt-text="Privát társak frissítése":::
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft társviszony-létesítés törlése
 
@@ -183,7 +183,7 @@ A privát társ-összevonási konfigurációt úgy távolíthatja el, ha a jobb 
 
 :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/delete-private-peering.png" alt-text="Privát társak törlése":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután konfigurálta az Azure Private-társítást, létrehozhat egy ExpressRoute-átjárót, amely összekapcsolja a virtuális hálózatot az áramkörrel. 
 

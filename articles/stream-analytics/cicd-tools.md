@@ -4,16 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analyt
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: aa75a553ffc131f4827aa045849f1317d894ddc5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e79e0a2c030e2ebfcd5ddfd49e7c05afdb0dc3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123150"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019550"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>Egy Azure Stream Analytics-feladatokhoz tartozó buildek, tesztek és központi telepítések automatizálása CI/CD-eszközök használatával
 
@@ -66,7 +65,7 @@ Stream Analytics-projekt sikeres létrehozásakor a a következő két fájlt ho
 
 A fájl parameters.jsjában lévő alapértelmezett paraméterek a Visual Studio Code vagy a Visual Studio-projekt beállításaiból származnak. Ha egy másik környezetbe szeretne telepíteni, cserélje le a paramétereket ennek megfelelően.
 
-Az összes hitelesítő adat alapértelmezett értékei **Null értékűek** . Az Azure-ba való üzembe helyezés előtt be kell állítania az értékeket.
+Az összes hitelesítő adat alapértelmezett értékei **Null értékűek**. Az Azure-ba való üzembe helyezés előtt be kell állítania az értékeket.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -122,7 +121,7 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 | Paraméter | Leírás |
 |---|---|
 | `-project` | A Visual Studio Code-projekt vagy **[a projekt neve]. asaproj** for Visual Studio projekthez tartozó fájl **asaproj.jsának** elérési útja. |
-| `-testConfigPath` | A teszt konfigurációs fájljának elérési útja. Ha nincs megadva, a rendszer a **\test** a fájl **asaproj.js** aktuális könyvtára alatt keresi a fájlt, és az alapértelmezett fájlnév **testConfig.jsbe** . Ha nem létezik, új fájl jön létre. |
+| `-testConfigPath` | A teszt konfigurációs fájljának elérési útja. Ha nincs megadva, a rendszer a **\test** a fájl **asaproj.js** aktuális könyvtára alatt keresi a fájlt, és az alapértelmezett fájlnév **testConfig.jsbe**. Ha nem létezik, új fájl jön létre. |
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -179,11 +178,11 @@ azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <tes
 | Paraméter | Leírás |
 |---|---|
 | `-project` | A Visual Studio Code-projekt vagy **[a projekt neve]. asaproj** for Visual Studio projekthez tartozó fájl **asaproj.jsának** elérési útja. |
-| `-testConfigPath` | A teszt konfigurációs fájljának elérési útja. Ha nincs megadva, a rendszer a **\test** a fájl **asaproj.js** aktuális könyvtára alatt keresi a fájlt, és az alapértelmezett fájlnév **testConfig.jsbe** .
+| `-testConfigPath` | A teszt konfigurációs fájljának elérési útja. Ha nincs megadva, a rendszer a **\test** a fájl **asaproj.js** aktuális könyvtára alatt keresi a fájlt, és az alapértelmezett fájlnév **testConfig.jsbe**.
 | `-outputPath` | A teszt eredményének kimeneti mappájának elérési útja Ha nincs megadva, a rendszer a kimeneti eredmények fájljait az aktuális könyvtárba helyezi. |
 | `-customCodeZipFilePath` | Az egyéni kódhoz tartozó zip-fájl, például az UDF vagy a deszerializáló elérési útja, ha azok használatban vannak. |
 
-Ha az összes teszt elkészült, a rendszer a kimeneti mappában hozza létre a teszteredmények JSON formátumban való összefoglalását. Az összegző fájl neve **testResultSummary.json** .
+Ha az összes teszt elkészült, a rendszer a kimeneti mappában hozza létre a teszteredmények JSON formátumban való összefoglalását. Az összegző fájl neve **testResultSummary.json**.
 
 ```json
 {
@@ -241,7 +240,7 @@ Ha az összes teszt elkészült, a rendszer a kimeneti mappában hozza létre a 
 
 A Build-ből generált Azure Resource Manager sablon és paraméter-fájlok használatával [üzembe helyezheti a feladatot az Azure](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md?tabs=azure-powershell#deploy-template)-ban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Folyamatos integráció és folyamatos üzembe helyezés a Azure Stream Analytics számára](cicd-overview.md)
 * [CI/CD-folyamat beállítása Stream Analytics feladatokhoz az Azure-folyamatok használatával](set-up-cicd-pipeline.md)

@@ -5,12 +5,12 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: e37a14b2634395d7f31565d6d5a6f6ec96a4a2f1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 5c9612547fcfed8e583f5b2fbcfe0bddd5dc412c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954523"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019108"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 
@@ -61,13 +61,13 @@ Ezután hozzon létre egy függvényt az új függvény alkalmazásban.
 
     ![A függvény URL-címének másolása az Azure portálról](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Illessze be a függvény URL-címét a böngésző címsorába. Adja hozzá a lekérdezési karakterlánc értékét `&name=<your_name>` az URL végéhez, majd nyomja le az ENTER billentyűt a kérelem futtatásához. 
+1. Illessze be a függvény URL-címét a böngésző címsorába. Adja hozzá a lekérdezési karakterlánc értékét `?name=<your_name>` az URL végéhez, majd nyomja le az ENTER billentyűt a kérelem futtatásához. 
 
     Az alábbi példa a böngészőben visszaadott választ mutatja:
 
     ![A függvény által visszaadott válasz a böngészőben.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
-    A kérelem URL-címe alapértelmezés szerint tartalmazza a függvény HTTP protokollon keresztüli eléréséhez szükséges kulcsot.
+    Ha a kérelem URL-címe tartalmaz egy [hozzáférési kulcsot](functions-bindings-http-webhook-trigger.md#authorization-keys) (), az azt jelenti, hogy a függvény `?code=...` létrehozásakor a **Névtelen** hozzáférési szint helyett a **függvényt** választja. Ebben az esetben inkább fűzze hozzá a következőt: `&name=<your_name>` .
 
 1. A függvény futásakor a rendszer nyomkövetési adatok ír a naplókba. A nyomkövetés kimenetének megtekintéséhez térjen vissza a **kód + teszt** lapra a portálon, és bontsa ki a lap alján található **naplók** nyilat.
 

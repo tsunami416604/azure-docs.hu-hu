@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 37ecca6829f348137bbbc8b76fb1934c024550fd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e605c10a765379c8f7d33dbd4d1f884d0e08734e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097260"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018649"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>Azure Cosmos DB.NET v3 SDK (Microsoft. Azure. Cosmos) példák az SQL API-ra
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -83,7 +83,7 @@ A minta *ItemManagement* -projekt [RunItemsDemo](https://github.com/Azure/azure-
 
 | Feladat | API-referencia |
 | --- | --- |
-| [Elemek létrehozása](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L161-L200) |[Container. CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true) |
+| [Elem létrehozása](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L161-L200) |[Container. CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true) |
 | [Elem beolvasása azonosító alapján](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L203-L241) |[tároló. ReadItemAsync](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet&preserve-view=true) |
 | [Elemek lekérdezése](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L244-L320) |[tároló. GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.getitemqueryiterator?view=azure-dotnet&preserve-view=true) |
 | [Elem cseréje](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L415-L456) |[tároló. ReplaceItemAsync](/dotnet/api/microsoft.azure.cosmos.container.replaceitemasync?view=azure-dotnet&preserve-view=true) |
@@ -93,7 +93,7 @@ A minta *ItemManagement* -projekt [RunItemsDemo](https://github.com/Azure/azure-
 
 ## <a name="indexing-examples"></a>Indexelési példák
 
-A minta *IndexManagement* -projekt [RunIndexDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) metódusa a következő feladatok elvégzését mutatja be. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez tekintse meg az [index házirendek](index-policy.md), az [indexelési típusok](index-overview.md#index-kinds)és az [index elérési útjai](index-policy.md#include-exclude-paths)című témakört. 
+A minta *IndexManagement* -projekt [RunIndexDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) metódusa a következő feladatok elvégzését mutatja be. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez tekintse meg az [index házirendek](index-policy.md), az [indexelési típusok](index-overview.md#index-types)és az [index elérési útjai](index-policy.md#include-exclude-paths)című témakört. 
 
 | Feladat | API-referencia |
 | --- | --- |
@@ -103,7 +103,7 @@ A minta *IndexManagement* -projekt [RunIndexDemo](https://github.com/Azure/azure
 
 ## <a name="query-examples"></a>Lekérdezéspéldák
 
-A [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L76-L96) metódusa azt mutatja *Queries* be, hogyan végezheti el a következő feladatokat az SQL-lekérdezési nyelvtan, a LINQ-szolgáltató lekérdezéssel és a lambda használatával. Ha többet szeretne megtudni a Azure Cosmos DB SQL-lekérdezési referenciáról az alábbi minták futtatása előtt, tekintse meg a [Azure Cosmos db SQL-lekérdezési példákat](./sql-query-getting-started.md).
+A [RunDemoAsync](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L76-L96) metódusa azt mutatja  be, hogyan végezheti el a következő feladatokat az SQL-lekérdezési nyelvtan, a LINQ-szolgáltató lekérdezéssel és a lambda használatával. Ha többet szeretne megtudni a Azure Cosmos DB SQL-lekérdezési referenciáról az alábbi minták futtatása előtt, tekintse meg a [Azure Cosmos db SQL-lekérdezési példákat](./sql-query-getting-started.md).
 
 | Feladat | API-referencia |
 | --- | --- |

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 015b8e400e9d386fff8f35756a77139e61bbaff1
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 765a2728c5de49787a64fff723625e53e100e450
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809292"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017782"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Sémák és adatösszesítések Traffic Analytics
 
@@ -161,7 +161,7 @@ Alább láthatók a séma mezői és azok
 | SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Oszlopok által elválasztott bejegyzések |
 | DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Oszlopok által elválasztott bejegyzések |
 
-### <a name="notes"></a>Jegyzetek
+### <a name="notes"></a>Megjegyzések
 
 1. AzurePublic-és ExternalPublic-folyamatok esetén az Azure-beli virtuális gép IP-címe VMIP_s mezőben van feltöltve, míg a nyilvános IP-címek a PublicIPs_s mezőben vannak feltöltve. A két folyamat esetében az SrcIP_s és a DestIP_s mezők helyett VMIP_s és PublicIPs_st kell használnia. A AzurePublic-és ExternalPublicIP-címek esetében a rendszer tovább összesíti az adatokat, így az ügyfél log Analytics-munkaterületre betöltött rekordok száma minimális. (Ez a mező hamarosan elavult lesz, és a SrcIP_t kell használnia, és DestIP_s attól függően, hogy az Azure-beli virtuális gép a forrás vagy a cél volt a folyamatban)
 1. A flow típusaival kapcsolatos részletek: a folyamatba bevont IP-címek alapján kategorizáljuk a folyamatokat a következő típusú folyamatokhoz:
@@ -176,5 +176,5 @@ Alább láthatók a séma mezői és azok
 1. Ismeretlen – a folyamatokban lévő IP-címek egyikét nem lehet leképezni az Azure-beli ügyfél-topológiával, valamint a helyszínen (hely).
 1. Egyes mezők neve a következővel van hozzáfűzve: \_ s vagy \_ d. Ezek nem jelentik a forrás és a cél jelölését, hanem az adattípusokat, illetve a decimális karakterláncot.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 A gyakori kérdésekre adott válaszokért lásd: [Traffic Analytics – gyakori](traffic-analytics-faq.md) kérdések a funkciók részleteiről: [Traffic Analytics – dokumentáció](traffic-analytics.md)

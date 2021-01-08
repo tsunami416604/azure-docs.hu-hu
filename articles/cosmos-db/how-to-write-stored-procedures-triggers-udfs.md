@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 18cedad34a6ca7d9a0ba18cd01c082f2878380a8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7938920459654bd59620ad0992f3a13db85ff4fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339818"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019009"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-A Azure Cosmos DB lehetővé teszi a JavaScript nyelvre integrált, tranzakciós végrehajtását, amely lehetővé teszi **tárolt eljárások** , **Eseményindítók** és **felhasználó által definiált függvények (UDF-EK)** írását. Ha az SQL API-t Azure Cosmos DBban használja, megadhatja a tárolt eljárásokat, eseményindítókat és UDF JavaScript nyelven. Megírhatja a logikát a JavaScriptben, és végrehajthatja azt az adatbázismotor használatával. Eseményindítókat, tárolt eljárásokat és UDF hozhat létre és futtathat [Azure Portal](https://portal.azure.com/)használatával, a [JavaScript nyelv integrált lekérdezési API-ját Azure Cosmos DB](javascript-query-api.md) és az [Cosmos db SQL API ügyféloldali SDK](sql-api-dotnet-samples.md)-kat. 
+A Azure Cosmos DB lehetővé teszi a JavaScript nyelvre integrált, tranzakciós végrehajtását, amely lehetővé teszi **tárolt eljárások**, **Eseményindítók** és **felhasználó által definiált függvények (UDF-EK)** írását. Ha az SQL API-t Azure Cosmos DBban használja, megadhatja a tárolt eljárásokat, eseményindítókat és UDF JavaScript nyelven. Megírhatja a logikát a JavaScriptben, és végrehajthatja azt az adatbázismotor használatával. Eseményindítókat, tárolt eljárásokat és UDF hozhat létre és futtathat [Azure Portal](https://portal.azure.com/)használatával, a [JavaScript nyelv integrált lekérdezési API-ját Azure Cosmos DB](javascript-query-api.md) és az [Cosmos db SQL API ügyféloldali SDK](sql-api-dotnet-samples.md)-kat. 
 
 A tárolt eljárások, triggerek és felhasználó által definiált függvények meghívásához regisztrálnia kell. További információ: a [tárolt eljárások, eseményindítók, felhasználó által definiált függvények használata a Azure Cosmos DBban](how-to-use-stored-procedures-triggers-udfs.md).
 
@@ -284,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>Eseményindítók írása
 
-Azure Cosmos DB támogatja az előtriggereket és az eseményindítókat. Az adatbázis-elemek módosítása és az eseményindítók végrehajtása előtt az eseményindítók végrehajtása az adatbázis-elemek módosítása után történik.
+Azure Cosmos DB támogatja az előtriggereket és az eseményindítókat. Az adatbázis-elemek módosítása és az eseményindítók végrehajtása előtt az eseményindítók végrehajtása az adatbázis-elemek módosítása után történik. Az eseményindítók nem automatikusak. Ezeket minden olyan adatbázis-művelethez meg kell adni, amelyben végre szeretné őket állítani.
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>Trigger előtti
 

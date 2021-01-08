@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437150"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018071"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ A fentiekben ismertetett kihívások megoldhatók egy olyan egyéni eszköz hasz
 
 Az egyéni eszköz a tömeges végrehajtó függvénytárat használja, és támogatja a több ügyfél közötti skálázást és a hibák követését a betöltési folyamat során. Az eszköz használatához a forrásadatokat Azure Data Lake Storage (ADLS) különálló fájlokba kell particionálni, hogy a különböző áttelepítési munkatársak minden fájlt felvegyenek, és betöltsék azokat a Azure Cosmos DBba. Az egyéni eszköz egy különálló gyűjteményt használ, amely metaadatokat tárol a ADLS lévő egyes forrásfájlok áttelepítési folyamatával kapcsolatban, és nyomon követi a velük kapcsolatos hibákat.  
 
-Az alábbi ábra az áttelepítési folyamatot írja le az egyéni eszközzel. Az eszköz virtuális gépeken fut, és minden egyes virtuális gép lekérdezi a nyomkövetési gyűjteményt Azure Cosmos DBban, hogy beszerezzen egy bérletet az egyik forrásoldali adatpartíción. Ha ez megtörtént, a rendszer beolvassa a forrásoldali adatpartíciót, és betölti a Azure Cosmos DBba a tömeges végrehajtó függvénytár használatával. Ezután a rendszer frissíti a nyomkövetési gyűjteményt, hogy rögzítse az adatfeldolgozási folyamat állapotát és az észlelt hibákat. Az adatpartíció feldolgozása után az eszköz megkísérli lekérdezni a következő rendelkezésre álló forrásoldali partíciót. Továbbra is feldolgozza a következő forrás partíciót, amíg az összes adatáttelepítés be nem fejeződik. Az eszköz forráskódja [itt](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)érhető el.  
+Az alábbi ábra az áttelepítési folyamatot írja le az egyéni eszközzel. Az eszköz virtuális gépeken fut, és minden egyes virtuális gép lekérdezi a nyomkövetési gyűjteményt Azure Cosmos DBban, hogy beszerezzen egy bérletet az egyik forrásoldali adatpartíción. Ha ez megtörtént, a rendszer beolvassa a forrásoldali adatpartíciót, és betölti a Azure Cosmos DBba a tömeges végrehajtó függvénytár használatával. Ezután a rendszer frissíti a nyomkövetési gyűjteményt, hogy rögzítse az adatfeldolgozási folyamat állapotát és az észlelt hibákat. Az adatpartíció feldolgozása után az eszköz megkísérli lekérdezni a következő rendelkezésre álló forrásoldali partíciót. Továbbra is feldolgozza a következő forrás partíciót, amíg az összes adatáttelepítés be nem fejeződik. Az eszköz forráskódja a [Azure Cosmos db tömeges](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion) betöltési tárházban érhető el.  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="Áttelepítési eszköz beállítása" border="false":::

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 72d9aefcdda5d224b256c6e969b7a75259a97005
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c34ea5e2c622b7b203c56c6de2b611d6eca1d35c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95750773"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017510"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy szögletes egyoldalas alkalmazásban
 
@@ -35,7 +35,7 @@ Ebben a rövid útmutatóban egy mintakód-mintát tölt le és futtat, amely be
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>1. lehetőség (expressz): regisztrálja és automatikusan konfigurálja az alkalmazást, majd töltse le a kód mintáját.
 >
-> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+> 1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 > 1. Ha a fiókja több bérlőhöz fér hozzá, válassza ki a fiókot a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure Active Directory (Azure AD) bérlőre.
 > 1. Nyissa meg a Azure Portal új [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) paneljét.
 > 1. Adja meg az alkalmazás nevét, majd válassza a **regisztráció** lehetőséget.
@@ -45,7 +45,7 @@ Ebben a rövid útmutatóban egy mintakód-mintát tölt le és futtat, amely be
 >
 > #### <a name="step-1-register-the-application"></a>1. lépés: az alkalmazás regisztrálása
 >
-> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+> 1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 > 1. Ha a fiókja több bérlőhöz fér hozzá, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
 > 1. Kövesse az utasításokat [egy egyoldalas alkalmazás regisztrálásához](./scenario-spa-app-registration.md) a Azure Portal.
 > 1. Vegyen fel egy új platformot az alkalmazás regisztrációjának **hitelesítés** ablaktábláján, és regisztrálja az átirányítási URI-t: `http://localhost:4200/` .
@@ -137,7 +137,7 @@ Ha a böngésző betölti az alkalmazást, válassza a **Bejelentkezés** lehet�
 ![Diagram, amely bemutatja, hogyan működik a jelen rövid útmutatóban szereplő minta alkalmazás](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Következő lépésként megtudhatja, hogyan jelentkezhet be a felhasználóba, és hogyan szerezheti be a tokeneket a szögletes oktatóanyagban:
 

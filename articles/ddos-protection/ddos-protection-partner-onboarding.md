@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 962f6bcf7747a82749e7ccab95de34f7834a8372
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: f6cba0118a98ea50e8020b91b9c2064299ca4ccf
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814210"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019159"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnerkapcsolat a Azure DDoS Protection standard csomaggal
 Ez a cikk a Azure DDoS Protection szabvány által engedélyezett partneri lehetőségeket ismerteti. Ez a cikk úgy lett kialakítva, hogy segítse a termék-kezelőket és az üzleti fejlesztési szerepköröket a befektetési útvonalak megismerésében, és betekintést nyújt a partneri értékek kiosztására.
@@ -80,7 +80,7 @@ A következő lépések szükségesek ahhoz, hogy a partnerek a Azure DDoS Prote
 - [Azure DDoS Protection API-hivatkozás](/rest/api/virtualnetwork/ddosprotectionplans)
 - [Azure Virtual Network API-dokumentáció](/rest/api/virtualnetwork/virtualnetworks)
 
-### <a name="get-help"></a>Segítségkérés
+### <a name="get-help"></a>Segítség kérése
 
 - Ha kérdése van az alkalmazással, a szolgáltatással vagy a termék-integrációval kapcsolatban Azure DDoS Protection standard rendszerrel, akkor az [Azure biztonsági közössége](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)is elérhető.
 - [Stack overflow](https://stackoverflow.com/tags/azure-ddos/)-beszélgetések követése.
@@ -94,4 +94,3 @@ A következő lépések szükségesek ahhoz, hogy a partnerek a Azure DDoS Prote
 Meglévő partner-integrációk megtekintése:
 
 - [Barracuda WAF-szolgáltatás](https://www.barracuda.com/waf-as-a-service)
-- [Azure Cloud WAF a Radware-ből](https://www.radware.com/resources/microsoft-azure/)

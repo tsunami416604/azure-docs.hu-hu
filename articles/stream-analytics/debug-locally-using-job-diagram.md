@@ -3,16 +3,15 @@ title: Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Stu
 description: Ez a cikk azt ismerteti, hogyan lehet a lekérdezéseket helyileg hibakeresést végezni a Azure Stream Analytics Tools for Visual Studio alkalmazásban.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d0e94fda1fb21be1a01516f4cecf657426ae867e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130986"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019448"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studióban a feladatok diagramjának használatával
 
@@ -72,7 +71,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 |-|-|
 |**TaxiRide**| A bemenet neve.|
 |**Sorok száma**| A lépésből generált sorok száma.|
-|**Adatméret**| Az ebből a lépésből generált adatok mérete.|
+|**Adatok mérete**| Az ebből a lépésből generált adatok mérete.|
 |**Helyi bemenet**| Helyi adatok használata bemenetként.|
 
 #### <a name="query-steps"></a>A lekérdezés lépései
@@ -83,7 +82,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 |-|-|
 |**TripData**|Az ideiglenes eredményhalmaz neve.|
 |**Sorok száma**| A lépésből generált sorok száma.|
-|**Adatméret**| Az ebből a lépésből generált adatok mérete.|
+|**Adatok mérete**| Az ebből a lépésből generált adatok mérete.|
   
 #### <a name="output-sinks-live-output"></a>Kimeneti mosogatók (élő kimenet)
 
@@ -103,7 +102,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 |**regionaggEH**|A kimenet neve.|
 |**Helyi kimenet**| Eredmény kimenete egy helyi fájlba.|
 |**Sorok száma**| A sorok kimenetének száma a helyi fájlba.|
-|**Adatméret**| Az adatkimenet mérete a helyi fájlba.|
+|**Adatok mérete**| Az adatkimenet mérete a helyi fájlba.|
 
 ### <a name="close-job-diagram"></a>Feladatok diagramjának lezárása
 
@@ -121,7 +120,7 @@ A felugró konzolon megjelennek a feladatok szintjének egyéb mérőszámai. Ha
 
 * Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](./stream-analytics-time-handling.md) , míg a helyi beviteli beállítások nem.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
 * [A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez](stream-analytics-vs-tools.md)

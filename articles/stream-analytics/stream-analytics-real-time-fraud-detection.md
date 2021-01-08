@@ -1,24 +1,24 @@
 ---
 title: Oktatóanyag – a csalárd hívási adatmennyiség elemzése Azure Stream Analytics és az eredmények megjelenítése Power BI irányítópulton
 description: Ez az oktatóanyag átfogóan bemutatja, hogyan használható az Azure Stream Analytics a csaló hívások elemzésére a telefonhívási streamekben.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
-ms.openlocfilehash: b8744d86300287403ca390d93c70b25215bcac4f
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 1e26159c07ca551a78ee2f83a0ca64779c60f7b4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822131"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018870"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Oktatóanyag: a hamis hívási adatmennyiség elemzése Stream Analytics és az eredmények megjelenítése Power BI irányítópulton
 
 Ez az oktatóanyag bemutatja, hogyan elemezheti a telefonhívási adataikat Azure Stream Analytics használatával. Az ügyfélalkalmazás által létrehozott telefonhívási adatok olyan csalárd hívásokat tartalmaznak, amelyeket a Stream Analytics feladatokkal szűrnek. Az oktatóanyag módszereit más típusú csalások észlelésére is használhatja, például a hitelkártya-csalások vagy a személyazonosság-lopás.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Minta telefonhívás-adathívások készítése és elküldése az Azure Event Hubsba.
@@ -54,7 +54,7 @@ Eseményközpont létrehozásához, majd az adatok az eseményközpontba küldé
 
    |**Beállítás**  |**Ajánlott érték** |**Leírás**  |
    |---------|---------|---------|
-   |Név     | asaTutorialEventHub        |  Az eseményközpont névterének azonosítására szolgáló egyedi név.       |
+   |Name (Név)     | asaTutorialEventHub        |  Az eseményközpont névterének azonosítására szolgáló egyedi név.       |
    |Előfizetés     |   \<Your subscription\>      |   Válasszon ki egy Azure-előfizetést, ahol létre kívánja hozni az eseményközpontot.      |
    |Erőforráscsoport     |   MyASADemoRG      |  Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét.       |
    |Hely     |   USA 2. nyugati régiója      |    Az a hely, ahol az eseményközpont-névtér üzembe helyezhető.     |

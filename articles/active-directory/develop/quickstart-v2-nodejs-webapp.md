@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9aa73767fcb9d57ada11f5830fec00b10eee812
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169409"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017340"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával Node.js webalkalmazáshoz
 
@@ -29,38 +29,29 @@ Ebben a rövid útmutatóban egy Code-mintát tölt le és futtat, amely bemutat
 - [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>Az alkalmazás regisztrálása
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. Ha a fiókja több Azure AD-bérlőn is megtalálható:
-    - Válassza ki a profilt a lap jobb felső sarkában található menüből, majd **váltson át a könyvtárra**.
-    - Módosítsa a munkamenetet arra az Azure AD-bérlőre, ahol létre szeretné hozni az alkalmazást.
 
-1. Az alkalmazás regisztrálásához navigáljon [Azure Active Directory > Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) .
-
-1. Válassza az **új regisztráció lehetőséget.**
-
-1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
-    - A **név** szakaszban adjon meg egy értelmes nevet, amely megjelenik az alkalmazás felhasználói számára. Például: MyWebApp
-    - A **támogatott fióktípus** szakaszban válassza a fiókok lehetőséget a **szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com)**.
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
+1. Adja meg az alkalmazás **nevét** , például: `MyWebApp` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+1. A **támogatott fióktípus** szakaszban válassza a fiókok lehetőséget a **szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com)**.
 
     Ha egynél több átirányítási URI van, ezeket az alkalmazás sikeres létrehozása után később hozzá kell adnia a **hitelesítés** lapon.
 
 1. Az alkalmazás létrehozásához válassza a **regisztráció** lehetőséget.
-
 1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Erre az értékre szüksége lesz ahhoz, hogy az alkalmazást később konfigurálja a projektben.
+1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+1. Válassza **a platform**  >  **web** hozzáadása lehetőséget. 
+1. Az **átirányítási URI** -k szakaszban adja meg a értéket `http://localhost:3000/auth/openid/return` .
+1. Adja meg a **kijelentkezési URL-címet** `https://localhost:3000` .
+1. Az implicit támogatás szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](./v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
+1. Válassza a **Konfigurálás** lehetőséget.
+1. A **kezelés** területen válassza a **tanúsítványok & titkos kulcsok**  >  **új ügyfél titka** lehetőséget.
+1. Adja meg a kulcs leírását (például az alkalmazás titkos kulcsaként).
+1. Válassza ki a kulcs időtartamát **1 év vagy 2 év között,** vagy **Soha ne járjon le**.
+1. Válassza a **Hozzáadás** elemet. Ekkor megjelenik a kulcs értéke. Másolja a kulcs értékét, és mentse biztonságos helyre későbbi használatra.
 
-1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
-    - Az **átirányítási URI** -k szakaszban válassza a **web** elemet a kombinált listában, és adja meg a következő átirányítási URI-t: `http://localhost:3000/auth/openid/return`
-    - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: `https://localhost:3000` .
-    - A **Speciális beállítások > implicit engedélyezési** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](./v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
-
-1. Kattintson a **Mentés** gombra.
-
-1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka** elemet.
-    - Adja meg a kulcs leírását (például az alkalmazás titkos kulcsaként).
-    - Válassza ki a kulcs időtartamát **1 év vagy 2 év között,** vagy **Soha ne járjon le**.
-    - A **Hozzáadás** gombra kattintva megjelenik a kulcs értéke. Másolja a kulcs értékét, és mentse biztonságos helyre.
-
-    Az alkalmazás konfigurálásához később szüksége lesz erre a kulcsra. Ez a kulcs nem jelenik meg újra, és semmilyen más módon nem kérhető le, ezért jegyezze fel, amint a Azure Portal látható.
 
 ## <a name="download-the-sample-application-and-modules"></a>A minta alkalmazás és modulok letöltése
 
@@ -122,7 +113,7 @@ A kiszolgáló sikeresen fut `http://localhost:3000` .
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a Microsoft Identity platform által támogatott Web App-forgatókönyvről:
 > [!div class="nextstepaction"]
 > [Felhasználói forgatókönyvet használó webalkalmazás](scenario-web-app-sign-user-overview.md)

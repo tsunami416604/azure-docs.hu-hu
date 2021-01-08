@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 10fb55cc133d5d6b39ca2809474ff20dfe500708
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173430"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017799"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator vagy Intune Céges portál használata Xamarin-alkalmazásokban
 
@@ -171,7 +171,7 @@ A közvetítő használatakor az átirányítási URI-nak külön követelménye
 $"msauth.{BundleId}://auth"
 ```
 
-Bemutatunk egy példát:
+Íme egy példa:
 
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
@@ -183,9 +183,9 @@ Adja hozzá az átirányítási URI-t az alkalmazás regisztrálásához a [Azur
 
 **Az átirányítási URI előállítása:**
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk** a regisztrált alkalmazás >
-1. **Hitelesítés** kiválasztása  >  **Add a platform**  >  **iOS/MacOS** platform hozzáadása
+1. **Hitelesítés** kiválasztása  >    >  **iOS/MacOS** platform hozzáadása
 1. Adja meg a köteg AZONOSÍTÓját, majd válassza a **Konfigurálás** lehetőséget.
 
     Másolja az **átirányítási URI** -szövegmezőben megjelenő generált ÁTirányítási URI-t a kódban való felvételhez:
@@ -361,6 +361,6 @@ Másik lehetőségként beállíthatja, hogy a MSAL a beágyazott böngészőre 
 
     A naplók segítségével megkeresheti a hitelesítési kísérleteket a korrelációs AZONOSÍTÓn keresztül. A korrelációs azonosító minden hitelesítési kérelemhez csatolva van. A Microsoft Identity platform hitelesítési végpontja által visszaadott hibák kereséséhez keresse meg a következőt: `AADSTS` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók a [univerzális Windows-platform és a MSAL.net használatának szempontjairól](msal-net-uwp-considerations.md).

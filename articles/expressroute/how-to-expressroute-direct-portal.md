@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: 56638f14565f76b0a2fc252b81dba3dae9e53dd8
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: acbd5c3aa88c2c8c14407ebda0c42d228aa6c9e3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289446"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018938"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Közvetlen ExpressRoute létrehozása a Azure Portal használatával
 
@@ -21,7 +21,14 @@ A ExpressRoute Direct szolgáltatással közvetlenül kapcsolódhat a Microsoft 
 
 ## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
 
-Ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrálva van-e az előfizetésében. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre.
+A ExpressRoute Direct használata előtt először regisztrálnia kell az előfizetését. A regisztráláshoz küldjön egy e-mailt az <ExpressRouteDirect@microsoft.com> előfizetés-azonosítójával, beleértve az alábbi adatokat:
+
+* A **ExpressRoute Directtel** elérni kívánt forgatókönyvek
+* Hely beállításai – az összes hely teljes listájáért tekintse meg a [partnerek és](expressroute-locations-providers.md) a társítási helyek elemet.
+* Megvalósítási ütemterv
+* Bármilyen egyéb kérdés
+
+A regisztráció után ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrálva van-e az előfizetésében. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre.
 
 1. Nyissa meg az előfizetési beállításokat az [Azure Resource Providers és types](../azure-resource-manager/management/resource-providers-and-types.md)című témakörben leírtak szerint.
 1. Az előfizetésben az **erőforrás-szolgáltatóknál** ellenőrizze, hogy a **Microsoft. Network** szolgáltató **regisztrált** állapotot jelenít meg. Ha a Microsoft. Network erőforrás-szolgáltató nem szerepel a regisztrált szolgáltatók listáján, adja hozzá.
@@ -30,7 +37,7 @@ Ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrá
 
 1. A [Azure Portal](https://portal.azure.com) menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása** lehetőséget.
 
-1. Az **új** lap **_Keresés a piactér_*_ mezőjébe írja be az _* ExpressRoute Direct kifejezést** , majd válassza az **ENTER** billentyűt a keresési eredmények eléréséhez.
+1. Az **új** lap **_Keresés a piactér_*_ mezőjébe írja be az _* ExpressRoute Direct kifejezést**, majd válassza az **ENTER** billentyűt a keresési eredmények eléréséhez.
 
 1. Az eredmények közül válassza a **közvetlen ExpressRoute** lehetőséget.
 
@@ -40,18 +47,18 @@ Ellenőrizze, hogy a **Microsoft. Network** erőforrás-szolgáltató regisztrá
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/basics.png" alt-text="Alapismeretek lap":::
 
-    * **Előfizetés** : az új ExpressRoute közvetlen létrehozásához használni kívánt Azure-előfizetés. A ExpressRoute Direct erőforrás-és ExpressRoute-áramköröknek ugyanahhoz az előfizetéshez kell tartoznia.
-    * **Erőforráscsoport** : az az Azure-erőforráscsoport, amelyben a rendszer létrehozza az új ExpressRoute Direct-erőforrást a alkalmazásban. Ha nem rendelkezik meglévő erőforráscsoporthoz, létrehozhat egy újat.
-    * **Régió** : az Azure nyilvános régiója, amelyhez az erőforrást létre kívánja hozni.
-    * **Name (név** ): az új ExpressRoute közvetlen erőforrás neve.
+    * **Előfizetés**: az új ExpressRoute közvetlen létrehozásához használni kívánt Azure-előfizetés. A ExpressRoute Direct erőforrás-és ExpressRoute-áramköröknek ugyanahhoz az előfizetéshez kell tartoznia.
+    * **Erőforráscsoport**: az az Azure-erőforráscsoport, amelyben a rendszer létrehozza az új ExpressRoute Direct-erőforrást a alkalmazásban. Ha nem rendelkezik meglévő erőforráscsoporthoz, létrehozhat egy újat.
+    * **Régió**: az Azure nyilvános régiója, amelyhez az erőforrást létre kívánja hozni.
+    * **Name (név**): az új ExpressRoute közvetlen erőforrás neve.
 
 1. Ezután fejezze be a mezőket a **konfiguráció** lapon.
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Képernyőfelvétel: a &quot;ExpressRoute Direct&quot; lap kijelölése a &quot;konfiguráció&quot; lapon.":::
 
-    * **Egyenrangú hely** : az a társítási hely, ahol csatlakozni fog a ExpressRoute Direct-erőforráshoz. További információ a [ExpressRoute helyeiről](expressroute-locations-providers.md).
-   * **Sávszélesség** : a lefoglalni kívánt port pár sávszélessége. A ExpressRoute Direct a 10 GB-os és 100 GB-os sávszélesség-beállításokat egyaránt támogatja. Ha a kívánt sávszélesség nem érhető el a megadott egyenrangú helyen, [Nyisson meg egy támogatási kérést a Azure Portal](https://aka.ms/azsupt).
-   * **Beágyazás** : a ExpressRoute Direct a QinQ és a Dot1Q beágyazást is támogatja.
+    * **Egyenrangú hely**: az a társítási hely, ahol csatlakozni fog a ExpressRoute Direct-erőforráshoz. További információ a [ExpressRoute helyeiről](expressroute-locations-providers.md).
+   * **Sávszélesség**: a lefoglalni kívánt port pár sávszélessége. A ExpressRoute Direct a 10 GB-os és 100 GB-os sávszélesség-beállításokat egyaránt támogatja. Ha a kívánt sávszélesség nem érhető el a megadott egyenrangú helyen, [Nyisson meg egy támogatási kérést a Azure Portal](https://aka.ms/azsupt).
+   * **Beágyazás**: a ExpressRoute Direct a QinQ és a Dot1Q beágyazást is támogatja.
      * Ha a QinQ van kiválasztva, az egyes ExpressRoute-körök dinamikusan hozzá lesznek rendelve egy S-címkéhez, és egyediek lesznek a ExpressRoute közvetlen erőforrásaiban.
      *  Az áramkörön minden C-címkének egyedinek kell lennie az áramkörön, a közvetlen ExpressRoute azonban nem.
      * Ha a Dot1Q beágyazás van kiválasztva, akkor a C-tag (VLAN) egyediségét kell kezelnie a teljes ExpressRoute közvetlen erőforrásban.
@@ -99,7 +106,7 @@ Alapértelmezés szerint 10 áramkört hozhat létre az előfizetésben, ahol a 
 
 Az alábbi lépések segítségével ExpressRoute-áramkört hozhat létre a ExpressRoute Direct munkafolyamatból. Ha inkább egy áramkört is létrehozhat a normál áramköri munkafolyamattal, de nem használja ki az ebben a konfigurációban a normál áramköri munkafolyamat lépéseit. Lásd: [ExpressRoute-kör létrehozása és módosítása](expressroute-howto-circuit-portal-resource-manager.md).
 
-1. A ExpressRoute közvetlen **beállításai** szakaszban válassza az **áramkörök** , majd a **+ Hozzáadás** lehetőséget. 
+1. A ExpressRoute közvetlen **beállításai** szakaszban válassza az **áramkörök**, majd a **+ Hozzáadás** lehetőséget. 
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="Képernyőfelvétel: a ExpressRoute beállításai a kiválasztott áramkörökkel és a kijelöltek hozzáadása." lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
@@ -113,6 +120,6 @@ Az alábbi lépések segítségével ExpressRoute-áramkört hozhat létre a Exp
 
 1. Kattintson a **Létrehozás** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A közvetlen ExpressRoute kapcsolatos további információkért tekintse meg az [áttekintést](expressroute-erdirect-about.md).

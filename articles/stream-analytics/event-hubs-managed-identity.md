@@ -1,17 +1,17 @@
 ---
 title: Felügyelt identitások használata az Event hub Azure Stream Analytics feladatokból való eléréséhez (előzetes verzió)
 description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identitások a Azure Stream Analytics-feladatok Azure Event Hubs bemenetre és kimenetre való hitelesítéséhez.
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/04/2021
-ms.openlocfilehash: ca27df7188c5edd1da94fc41707f6c25eb4034bf
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4dc718f21f2ef3beabc31821bd60b571ac07be05
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895138"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018751"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Felügyelt identitások használata az Event hub Azure Stream Analytics feladatokból való eléréséhez (előzetes verzió)
 
@@ -56,7 +56,7 @@ Ahhoz, hogy a Stream Analytics-feladatok felügyelt identitás használatával f
    |---------|-----|
    |Szerepkör|Az Azure Event Hubs adattulajdonos|
    |Hozzáférés hozzárendelése ehhez|Felhasználó, csoport vagy egyszerű szolgáltatásnév|
-   |Kiválasztás|Adja meg a Stream Analytics-feladatoknak a nevét|
+   |Válassza ezt:|Adja meg a Stream Analytics-feladatoknak a nevét|
 
    :::image type="content" source="media/event-hubs-managed-identity/add-role-assignment.png" alt-text="Szerepkör-hozzárendelés hozzáadása":::
 
@@ -84,7 +84,7 @@ Most, hogy beállította a felügyelt identitását, készen áll arra, hogy hoz
 
 1. Töltse ki a többi tulajdonságot, és válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Stream Analytics Event Hubs kimenete](event-hubs-output.md)
 * [Adatok streamelése az Event Hubsból](stream-analytics-define-inputs.md#stream-data-from-event-hubs)

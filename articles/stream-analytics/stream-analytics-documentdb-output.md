@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics kimenet Azure Cosmos DB
 description: Ez a cikk azt ismerteti, hogyan lehet a Azure Stream Analytics használatával menteni a kimenetet a JSON-kimenetek Azure Cosmos DBához, az adatarchiváláshoz és a nem strukturált JSON-adatokat érintő kis késleltetésű lekérdezésekhez.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35231eda43e766b5febd8ba90c4d92a44537e0ef
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 2d00d489ff248ecf5599d78e0a351c93248cf8ee
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703755"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018089"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics kimenet Azure Cosmos DB  
 A Azure Stream Analytics a JSON-kimenethez [Azure Cosmos db](https://azure.microsoft.com/services/documentdb/) , így lehetővé teszi az adatarchiválást és az alacsony késésű lekérdezéseket a strukturálatlan JSON-adatokat illetően. Ez a dokumentum a konfiguráció megvalósításának ajánlott eljárásait ismerteti. Javasoljuk, hogy a 1,2-as kompatibilitási szintre állítsa be a feladatot, ha kimenetként Azure Cosmos DB használ.

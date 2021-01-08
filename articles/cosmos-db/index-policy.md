@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: tisande
-ms.openlocfilehash: 2d99e0e2b65f7131e564e6ab64e454d2947c58a6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903020"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019176"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -103,7 +103,7 @@ Tekintse meg [ezt a szakaszt](how-to-manage-indexing-policy.md#indexing-policy-e
 
 Ha a belefoglalt elérési utak és a kizárt elérési utak ütköznek, a pontosabb elérési út elsőbbséget élvez.
 
-Bemutatunk egy példát:
+Íme egy példa:
 
 **Belefoglalt elérési út**: `/food/ingredients/nutrition/*`
 
@@ -135,7 +135,7 @@ Alapértelmezés szerint a Azure Cosmos DB nem hoz létre térbeli indexeket. Ha
 
 ## <a name="composite-indexes"></a>Összetett indexek
 
-`ORDER BY`A két vagy több tulajdonsággal rendelkező záradékkal rendelkező lekérdezések összetett indexet igényelnek. Megadhat egy összetett indexet is, amellyel javítható számos Esélyegyenlőségi és tartományon belüli lekérdezés teljesítménye. Alapértelmezés szerint a rendszer nem definiál összetett indexeket, ezért szükség szerint [összetett indexeket kell hozzáadnia](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
+`ORDER BY`A két vagy több tulajdonsággal rendelkező záradékkal rendelkező lekérdezések összetett indexet igényelnek. Megadhat egy összetett indexet is, amellyel javítható számos Esélyegyenlőségi és tartományon belüli lekérdezés teljesítménye. Alapértelmezés szerint a rendszer nem definiál összetett indexeket, ezért szükség szerint [összetett indexeket kell hozzáadnia](how-to-manage-indexing-policy.md#composite-index) .
 
 A tartalmazott vagy kizárt elérési utakkal ellentétben a helyettesítő karakterrel nem hozható létre görbe `/*` . Minden összetett útvonal implicit módon szerepel az `/?` elérési út végén, amelyet nem kell megadnia. Az összetett elérési utak skaláris értéket eredményeznek, és ez az egyetlen érték, amely az összetett indexben szerepel.
 
@@ -294,7 +294,7 @@ Az élettartam [(TTL) szolgáltatás](time-to-live.md) használatához indexelé
 
 Olyan esetekben, ahol nem szükséges a tulajdonság elérési útjának indexelése, de az élettartam megadása kötelező, az indexelési módot használhat egy indexelési móddal `consistent` , amely nem tartalmaz belefoglalt elérési utat és `/*` az egyetlen kizárt elérési utat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 

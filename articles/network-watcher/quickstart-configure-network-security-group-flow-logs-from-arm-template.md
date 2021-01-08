@@ -6,15 +6,15 @@ author: damendo
 Customer intent: I need to enable the network security group flow logs by using an Azure Resource Manager template.
 ms.service: network-watcher
 ms.topic: quickstart
-ms.date: 07/22/2020
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: 563f111a656376899fcd0201b42f87bfea445865
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ded7b24461fdcdbc3d020a487cafc20620633097
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488050"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019720"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Gyors útmutató: hálózati biztonsági csoport folyamatábráinak konfigurálása ARM-sablonnal
 
@@ -117,8 +117,8 @@ A következő sablon lehetővé teszi a NSG számára a flow-naplókat, majd egy
 
 > [!NOTE]
 > - Az erőforrás neve a _ParentResource_ChildResource_ formátumot használja. A példánkban a szülő erőforrás a regionális Azure Network Watcher példány:
->    - **Formátum** : NetworkWatcher_RegionName
->    - **Példa** : NetworkWatcher_centraluseuap
+>    - **Formátum**: NetworkWatcher_RegionName
+>    - **Példa**: NetworkWatcher_centraluseuap
 > - `targetResourceId` a cél NSG erőforrás-azonosítója.
 > - `storageId` a cél Storage-fiók erőforrás-azonosítója.
 
@@ -149,7 +149,7 @@ Két lehetősége van annak megtekintésére, hogy sikeres volt-e az üzembe hel
 
 Ha probléma merült fel a központi telepítéssel kapcsolatban, tekintse meg a [gyakori Azure-telepítési hibák elhárítása a Azure Resource Managerkal](../azure-resource-manager/templates/common-deployment-errors.md)című témakört.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az Azure-erőforrásokat a teljes telepítési mód használatával törölheti. A flow-naplók erőforrásának törléséhez adja meg a telepítést teljes módban anélkül, hogy a törölni kívánt erőforrást is tartalmazza. További információ a [teljes telepítési módból](../azure-resource-manager/templates/deployment-modes.md#complete-mode).
 
@@ -160,7 +160,7 @@ A Azure Portal NSG is letilthatja:
 1. A **naplók** területen válassza a **NSG flow-naplók** lehetőséget.
 1. A NSG listából válassza ki azt a NSG, amely számára le szeretné tiltani a folyamat naplóit.
 1. A **flow-naplók beállításai** területen válassza a **ki** lehetőséget.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

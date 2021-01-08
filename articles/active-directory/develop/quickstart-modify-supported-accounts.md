@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 94a7f4d9ce1471aa1dd6aef3165562a2abc02816
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1d30d1e6c9cc60af96336cfdc7bea7126b4df7a8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453258"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017629"
 ---
 # <a name="how-to-modify-the-accounts-supported-by-an-application"></a>Az alkalmazás által támogatott fiókok módosítása
 
@@ -34,13 +34,13 @@ A következő részekben megtudhatja, hogyan módosíthatja az alkalmazás regis
 
 Egy meglévő alkalmazás-regisztráció által támogatott fióktípus eltérő beállításának megadásához:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be a <a href="https://portal.azure.com/" target="_blank">Azure Portalba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki az alkalmazást.
 1. Most határozza meg, hogy ki használhatja az alkalmazást, más néven a *bejelentkezési célközönségnek*.
 
-    | Támogatott fióktípusok | Description |
+    | Támogatott fióktípusok | Leírás |
     |-------------------------|-------------|
     | **Csak az ebben a szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha olyan alkalmazást hoz létre, amelyet csak felhasználók (vagy vendégek) használhatnak *a* bérlőben.<br><br>Gyakran *üzletági (LOB* ) alkalmazásnak nevezik, ez egy **egybérlős** alkalmazás a Microsoft Identity platformon. |
     | **Tetszőleges szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha *bármely* Azure ad-bérlő felhasználói számára szeretné használni az alkalmazást. Ez a beállítás akkor lehet hasznos, ha például olyan szoftveres (SaaS) alkalmazást készít, amelyet több szervezet számára szeretne biztosítani.<br><br>Ezt nevezzük **több-bérlős** alkalmazásnak a Microsoft Identity platformon. |

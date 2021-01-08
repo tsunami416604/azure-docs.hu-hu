@@ -3,16 +3,15 @@ title: Azure Stream Analytics feladatok megtekintése a Visual Studióban
 description: Megtudhatja, hogyan tekintheti meg, indíthatja el és állíthatja le, tesztelheti a kapcsolatokat, ellenőrizheti az eredményeket, és exportálhatja a Azure Stream Analytics feladatokat a Visual Studióval.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 43b145f5a37ea4209947e54cb276e16ff55c1da1
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 4b568fa8d9e2fb8bd00acb27b0dc3f7c45c09c57
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682819"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019125"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2019
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 84f34c9441805352422215fcbac300bd900024d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b73b8fa14271619d07fca63b01e4197f4f7c8cb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737954"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017850"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Hálózati biztonsági csoport folyamatábrájának tárolási blobjának törlése Network Watcher
 
@@ -130,7 +130,7 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    - **Hely** [kötelező]: annak a NSG a régiójának a _helye_ , amelyhez törölni szeretné a NSG flow log blobokat. Ezeket az információkat a Azure Portal vagy a [githubon](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)tekintheti meg.
    - **Erősítse meg** a [nem kötelező]: adja meg a megerősítés jelölőjét, ha manuálisan szeretné megerősíteni az egyes tárolási Blobok törlését.
 
-1. Futtassa a mentett parancsfájlt az alábbi példában látható módon, ahol a parancsfájlt **Delete-NsgFlowLogsBlobs.ps1ként **mentette:
+1. Futtassa a mentett parancsfájlt az alábbi példában látható módon, ahol a parancsfájlt **Delete-NsgFlowLogsBlobs.ps1ként** mentette:
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```

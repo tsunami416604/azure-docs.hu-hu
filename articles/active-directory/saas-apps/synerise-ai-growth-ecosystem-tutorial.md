@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Synerise AI növekedési ökoszisztémával | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Synerise AI növekedési ökoszisztémája között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Synerise AI növekedési operációs rendszerrel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Synerise AI növekedési operációs rendszere között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/15/2020
+ms.date: 01/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 988ec89f1ca9f3f88e92ed226c0bf6d81fae8397
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e6b9ad19eae64fa4b2e37e0e7c033d5926fcae9c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97676034"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018819"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-synerise-ai-growth-ecosystem"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Synerise AI növekedési ökoszisztémával
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-synerise-ai-growth-operating-system"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Synerise AI növekedési operációs rendszerrel
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Synerise AI növekedési ökoszisztémáját Azure Active Directory (Azure AD) használatával. Ha a Synerise AI növekedési ökoszisztémáját az Azure AD-vel integrálja, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Synerise a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Synerise-t az Azure AD-vel, a következőket teheti:
 
-* Vezérlés az Azure AD-ben, aki hozzáfér a Synerise AI növekedési ökoszisztémához.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek, hogy Synerise az AI növekedési ökoszisztémáját az Azure AD-fiókjával.
+* A Synerise-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Synerise az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -31,70 +31,70 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Synerise AI növ
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Az Synerise mesterséges intelligencia-alapú egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Synerise egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Synerise AI növekedési ökoszisztémája támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
-* A Synerise AI növekedési ökoszisztémája a felhasználók üzembe helyezésének **időpontját is** támogatja
+* A Synerise támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
+* A Synerise **csak időben támogatja a** felhasználók kiépítési folyamatát
 
 > [!NOTE]
 > Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
 
-## <a name="adding-synerise-ai-growth-ecosystem-from-the-gallery"></a>A Synerise AI növekedési ökoszisztémájának hozzáadása a katalógusból
+## <a name="adding-synerise-ai-growth-operating-system-from-the-gallery"></a>A Synerise AI növekedési operációs rendszer hozzáadása a katalógusból
 
-A Synerise AI növekedési ökoszisztémájának az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Synerise AI növekedési ökoszisztémáját a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Synerise Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Synerise a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Synerise AI növekedési ökoszisztémát** a keresőmezőbe.
-1. Válassza ki a **SYNERISE AI növekedési ökoszisztémát** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Synerise AI növekedési operációs rendszer** elemet a keresőmezőbe.
+1. Válassza ki a **SYNERISE AI növekedési operációs rendszer** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-sso-for-synerise-ai-growth-ecosystem"></a>Azure AD SSO konfigurálása és tesztelése a Synerise AI növekedési ökoszisztémához
+## <a name="configure-and-test-azure-ad-sso-for-synerise-ai-growth-operating-system"></a>Azure AD SSO konfigurálása és tesztelése a Synerise AI növekedési operációs rendszeréhez
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Synerise AI növekedési ökoszisztémával egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Synerise AI növekedési ökoszisztémában.
+Konfigurálja és tesztelje az Azure AD SSO-t a Synerise a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Synerise-ben.
 
-Az Azure AD SSO és a Synerise AI növekedési ökoszisztémájának konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
+Az Azure AD SSO és a Synerise konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. Az **[SYNERISE AI növekedési ökoszisztémájának egyszeri bejelentkezéses](#configure-synerise-ai-growth-ecosystem-sso)** beállítása – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre SYNERISE AI növekedési ökoszisztéma-teszt felhasználó](#create-synerise-ai-growth-ecosystem-test-user)** -, hogy a B. Simon a Synerise AI növekedési ökoszisztémájában, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
+1. Az **[SYNERISE AI NÖV operációs rendszer egyszeri bejelentkezésének konfigurálása](#configure-synerise-ai-growth-operating-system-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. A **[SYNERISE AI növekedési operációsrendszer-teszt felhasználójának létrehozása](#create-synerise-ai-growth-operating-system-test-user)** – ha a Synerise-hez tartozó B. Simon-ügyféllel rendelkezik, amely a felhasználó Azure ad-képviseletéhez van társítva.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A Azure Portal a **SYNERISE AI növekedési ökoszisztéma** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal a **SYNERISE AI növekedési operációsrendszer** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.synerise.com/api-portal/uauth/saml/auth/<CUSTOMER_PROFILE_HASH>`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.synerise.com/api-portal/uauth/saml/auth/<PROFILE_HASH>`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.synerise.com/api-portal/uauth/saml/auth/<CUSTOMER_PROFILE_HASH>`
+    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.synerise.com/api-portal/uauth/saml/auth/<PROFILE_HASH>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Az értékek beszerzéséhez forduljon a [SYNERISE AI növekedési ökoszisztémájának ügyfél-támogatási csapatához](mailto:support@synerise.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon a [Synerise támogatási csapatához](mailto:support@synerise.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **SYNERISE AI növekedési ökoszisztéma beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
+1. A **Synerise beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
@@ -111,23 +111,51 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Synerise AI növekedési ökoszisztémához.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Synerise.
 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
-1. Az alkalmazások listában válassza ki a **SYNERISE AI növekedési ökoszisztéma** elemet.
+1. Az alkalmazások listában válassza a **SYNERISE AI-növekedési operációs rendszer** elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-synerise-ai-growth-ecosystem-sso"></a>A Synerise AI növekedési ökoszisztémájának egyszeri bejelentkezésének konfigurálása
+## <a name="configure-synerise-ai-growth-operating-system-sso"></a>A Synerise AI növekedési operációs rendszer egyszeri bejelentkezésének konfigurálása
 
-Az **SYNERISE AI növekedési ökoszisztémájának** egyszeri bejelentkezésének konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [Synerise AI növekedési ökoszisztémájának támogató csapatához](mailto:support@synerise.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+1. Jelentkezzen be a Synerise rendszergazdaként.
 
-### <a name="create-synerise-ai-growth-ecosystem-test-user"></a>A Synerise AI növekedési ökoszisztémájának tesztelése felhasználó létrehozása
+1. Lépjen a **beállítások > Access Control**.
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Synerise AI növekedési ökoszisztémájában. A Synerise AI növekedési ökoszisztémája támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Synerise AI növekedési ökoszisztémájában, a hitelesítés után létrejön egy újat.
+    ![Synerise-beállítások](./media/synerise-ai-growth-ecosystem-tutorial/settings.png)
+
+1. A **Access Control** lapon kattintson az **egyszeri bejelentkezés** lap **Megjelenítés** gombjára.
+
+    ![Synerise Access Control](./media/synerise-ai-growth-ecosystem-tutorial/single-sign-on.png)
+
+1. Hajtsa végre az alábbi lépéseket az alábbi lapon.
+
+    ![Synerise-konfiguráció](./media/synerise-ai-growth-ecosystem-tutorial/configuration.png)
+
+    a. Az **azonosító szolgáltató entitás-azonosító** szövegmezőbe illessze be azt az **Azure ad-azonosító** értéket, amelyet a Azure Portal másolt.
+
+    b. Az **SSO-végpont (https)** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
+
+    c. Az **Identity Provider alkalmazás-azonosító** szövegmezőbe illessze be az **alkalmazás-azonosító** értékét.
+
+    d. Másolja a **szolgáltató átirányítási URI** -értékét, illessze be ezt az értéket a Azure Portal alapszintű SAML-konfiguráció szakaszának **Válasz URL-címe** szövegmezőbe.
+
+    e. Válassza a **http-átirányítás** lehetőséget a **kérelem kötésében**.
+
+    f. Váltson át a **kérelem aláírására**.
+
+    : Töltse fel a letöltött **tanúsítvány (Base64)** fájlt az **Identity Provider aláírási tanúsítványba**.
+
+    i. Kattintson az **alkalmaz** gombra.
+
+### <a name="create-synerise-ai-growth-operating-system-test-user"></a>A Synerise AI NÖV operációs rendszer tesztelési felhasználójának létrehozása
+
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Synerise-ben. A Synerise támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Synerise-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
@@ -135,19 +163,19 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 #### <a name="sp-initiated"></a>Az SP inicializálva:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Synerise AI növekedési ökoszisztémájának bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Synerise bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
 
-* Lépjen a Synerise AI növekedési ökoszisztémájának bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+* Lépjen közvetlenül a Synerise bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
 #### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie a Synerise AI növekedési ökoszisztémába, amelyhez be szeretné állítani az egyszeri bejelentkezést 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a Synerise, amelyhez be szeretné állítani az egyszeri bejelentkezést 
 
-A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások Synerise AI növekedési ökoszisztéma csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a Synerise AI növekedési ökoszisztémába, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások Synerise csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat kezdeményezéséhez, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a Synerise, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A Synerise AI növekedési ökoszisztémájának konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+A Synerise konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 

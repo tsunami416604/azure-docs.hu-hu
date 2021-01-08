@@ -3,17 +3,16 @@ title: Privát végpontok létrehozása és törlése egy Azure Stream Analytics
 description: Ismerje meg, hogyan felügyelheti a privát végpontokat egy Azure Stream Analytics-fürtben.
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 36d26195e78c74ed7b976cfdd48e1e965bca872b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: cff02bb4b7d0f7e969589a9977a89f89e2674ffc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95249784"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019414"
 ---
 # <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Privát végpontok létrehozása és törlése egy Azure Stream Analytics-fürtben
 
@@ -33,7 +32,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre privát végpontot egy St
 
    |Beállítás|Érték|
    |---|---|
-   |Név|Adja meg a privát végpont nevét. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
+   |Name (Név)|Adja meg a privát végpont nevét. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
    |Kapcsolati módszer|Válassza a **Kapcsolódás egy Azure-erőforráshoz a címtárban** lehetőséget.<br><br>Kiválaszthatja az egyik erőforrását, hogy biztonságosan kapcsolódjon a privát végponthoz, vagy más erőforrásokhoz is csatlakozhat, ha az Ön által megosztott erőforrás-azonosítót vagy aliast használ.|
    |Előfizetés|Válassza ki előfizetését.|
    |Erőforrás típusa|Válassza ki az erőforráshoz [hozzárendelni kívánt erőforrás típusát](../private-link/private-endpoint-overview.md#private-link-resource).|
@@ -58,7 +57,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre privát végpontot egy St
 
    ![privát végpont törlése](./media/private-endpoints/delete-private-endpoint.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már áttekintheti, hogyan kezelhetők a Azure Stream Analytics fürtben található privát végpontok. Ezután megtudhatja, hogyan méretezheti a fürtöket, és hogyan futtathat feladatokat a fürtben:
 
