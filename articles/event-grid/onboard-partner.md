@@ -3,12 +3,12 @@ title: Bevezető Azure Event Grid partnerként Azure Portal használatával
 description: Azure Event Grid-partner bevezetéséhez használja a Azure Portal.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349386"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050952"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Bevezetést Azure Event Grid partnerként a Azure Portal használatával
 Ez a cikk Event Grid azt ismerteti, hogy a harmadik féltől származó SaaS-szolgáltatók, más néven esemény-közzétevők vagy partnerek hogyan tudják közzétenni az eseményeket a szolgáltatásokból, és hogyan használják ezeket az eseményeket a végfelhasználók számára.
@@ -112,7 +112,6 @@ A további lépések végrehajtásához ellenőrizze, hogy rendelkezik-e a köve
     1. A **Channel Details (csatorna részletei** ) szakaszban hajtsa végre a következő lépéseket:
         1. Az **esemény-csatorna neve** mezőben adja meg az esemény csatornájának nevét. 
         1. Adja meg a **forrást**. Tekintse meg a [Felhőbeli események 1,0 specifikációit](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source-1) a forrás megfelelő értékének megismeréséhez. Tekintse meg [a felhőalapú események sémájának példáját](cloud-event-schema.md#sample-event-using-cloudevents-schema)is.
-        1. Adja meg a forrást (mi ez?).
     1. A **cél részletei** szakaszban adja meg a cél partnerhez tartozó témakör részleteit, amelyek az adott esemény csatornához lesznek létrehozva. 
         1. Adja meg annak az **előfizetésnek az azonosítóját** , amelyben a partneri témakört létre kívánja hozni. 
         1. Adja meg annak **az erőforráscsoportnak a nevét** , amelyben a partneri témakör erőforrását létre kívánja hozni. 

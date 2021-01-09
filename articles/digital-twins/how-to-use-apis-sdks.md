@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9119af718131808bce0440934d482a53e39b8ef7
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 29c05544b4291eb57215bb733eb3791ad3196b6c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964575"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049796"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -93,62 +93,25 @@ Az API-k gyakorlatban való használatának részletes ismertetését az [*oktat
 
 Hitelesítés a szolgáltatással:
 
-```csharp
-// Authenticate against the service and create a client
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credential = new DefaultAzureCredential();
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_basic":::
 
 [!INCLUDE [Azure Digital Twins: local credentials note](../../includes/digital-twins-local-credentials-note.md)] 
 
-Modell és lista modelljeinek feltöltése:
+Modell feltöltése:
 
-```csharp
-// Upload a model
-var typeList = new List<string>();
-string dtdl = File.ReadAllText("SampleModel.json");
-typeList.Add(dtdl);
-try {
-    await client.CreateModelsAsync(typeList);
-} catch (RequestFailedException rex) {
-    Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
-}
-// Read a list of models back from the service
-AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
-await foreach (DigitalTwinsModelData md in modelDataList)
-{
-    Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
-Ikrek létrehozása és lekérdezése:
+Modellek listázása:
 
-```csharp
-// Initialize twin metadata
-BasicDigitalTwin twinData = new BasicDigitalTwin();
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
 
-twinData.Id = $"firstTwin";
-twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-twinData.Contents.Add("data", "Hello World!");
-try {
-    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("firstTwin", twinData);
-} catch(RequestFailedException rex) {
-    Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
-}
- 
-// Run a query    
-AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
-await foreach (string twin in result)
-{
-    // Use JSON deserialization to pretty-print
-    object jsonObj = JsonSerializer.Deserialize<object>(twin);
-    string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
-    Console.WriteLine(prettyTwin);
-    // Or use BasicDigitalTwin for convenient property access
-    BasicDigitalTwin btwin = JsonSerializer.Deserialize<BasicDigitalTwin>(twin);
-}
-```
+Ikrek létrehozása:
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
+
+Az ikrek és a hurok lekérdezése az eredmények között:
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
 
 Tekintse meg a következő [*oktatóanyagot: az ügyfélalkalmazás kódjának*](tutorial-code.md) bejárására szolgáló alkalmazás. 
 
@@ -168,103 +131,41 @@ Az elérhető segítő osztályok a következők:
 
 A Twin-adatait bármikor deszerializálhatja a választott JSON-kódtár használatával, például `System.Test.Json` vagy `Newtonsoft.Json` . A Twin-hez való alapszintű hozzáféréshez a segítő osztályok egy kicsit kényelmesebben teszik ezt meg.
 
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-```
-
 A `BasicDigitalTwin` Helper osztály emellett hozzáférést biztosít a Twin-en, a-on keresztül meghatározott tulajdonságokhoz `Dictionary<string, object>` . A Twin tulajdonságok listázásához a következőket használhatja:
 
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
 
 ##### <a name="create-a-digital-twin"></a>Digitális Twin létrehozása
 
 A `BasicDigitalTwin` osztály használatával előkészítheti az adatkészletet egy kettős példány létrehozásához:
 
-```csharp
-BasicDigitalTwin twin = new BasicDigitalTwin();
-twin.Metadata = new DigitalTwinMetadata();
-twin.Metadata.ModelId = "dtmi:example:Room;1";
-// Initialize properties
-Dictionary<string, object> props = new Dictionary<string, object>();
-props.Add("Temperature", 25.0);
-twin.Contents = props;
-
-client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myNewRoomID", twin);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 A fenti kód a következő "kézi" változattal egyenértékű:
 
-```csharp
-Dictionary<string, object> meta = new Dictionary<string, object>()
-{
-    { "$model", "dtmi:example:Room;1"}
-};
-Dictionary<string, object> twin = new Dictionary<string, object>()
-{
-    { "$metadata", meta },
-    { "Temperature", 25.0 }
-};
-client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myNewRoomID", twin);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 ##### <a name="deserialize-a-relationship"></a>Kapcsolat deszerializálása
 
 A kapcsolati adatait bármikor deszerializálhatja tetszőleges típusra. A kapcsolat alapszintű eléréséhez használja a típust `BasicRelationship` .
 
-```csharp
-BasicRelationship res = client.GetRelationship<BasicRelationship>(twin_id, rel_id);
-Console.WriteLine($"Relationship Name: {rel.Name}");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="GetRelationshipsCall":::
 
 A `BasicRelationship` segítő osztály a kapcsolaton keresztül megadott tulajdonságok elérését is lehetővé teszi `IDictionary<string, object>` . A tulajdonságok listázásához a következőket használhatja:
 
-```csharp
-BasicRelationship res = client.GetRelationship<BasicRelationship>(twin_id, rel_id);
-Console.WriteLine($"Relationship Name: {rel.Name}");
-foreach (string prop in rel.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="ListRelationshipProperties":::
 
 ##### <a name="create-a-relationship"></a>Kapcsolat létrehozása
 
 A (z) osztály használatával létrehozhatók `BasicRelationship` olyan kapcsolatok, amelyekkel kapcsolat hozható létre egy kettős példányon:
 
-```csharp
-BasicRelationship rel = new BasicRelationship();
-rel.TargetId = "myTargetTwin";
-rel.Name = "contains"; // a relationship with this name must be defined in the model
-// Initialize properties
-Dictionary<string, object> props = new Dictionary<string, object>();
-props.Add("active", true);
-rel.Properties = props;
-client.CreateOrReplaceRelationshipAsync("mySourceTwin", "rel001", rel);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
 ##### <a name="create-a-patch-for-twin-update"></a>Javítás készítése a Twin Update szolgáltatáshoz
 
 Az ikrek és a kapcsolatok frissítési hívásainak használata [JSON-javítási](http://jsonpatch.com/) struktúrát használ. A JSON-javítási műveletek listáját a `JsonPatchDocument` lent látható módon is létrehozhatja.
 
-```csharp
-var updateTwinData = new JsonPatchDocument();
-updateTwinData.AppendAddOp("/Temperature", 25.0);
-updateTwinData.AppendAddOp("/myComponent/Property", "Hello");
-// Un-set a property
-updateTwinData.AppendRemoveOp("/Humidity");
-
-client.UpdateDigitalTwin("myTwin", updateTwinData);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
 ## <a name="general-apisdk-usage-notes"></a>Általános API-/SDK-használati megjegyzések
 
@@ -280,9 +181,9 @@ Az alábbi lista további részleteket és általános irányelveket tartalmaz a
 * Az összes szolgáltatási funkció szinkron és aszinkron verziókban található.
 * Az összes szolgáltatási funkció kivételt jelez a 400-es vagy újabb visszaküldési állapot esetén. Ügyeljen arra, hogy a hívásokat egy `try` szakaszba csomagolja, és legalább a fogást `RequestFailedExceptions` . Az ilyen típusú kivételekről [itt](/dotnet/api/azure.requestfailedexception?preserve-view=true&view=azure-dotnet)talál további információt.
 * A legtöbb szolgáltatási módszer visszaadja `Response<T>` vagy (az `Task<Response<T>>` aszinkron hívások esetében), ahol a a `T` szolgáltatás hívásához tartozó visszatérési objektum osztálya. A [`Response`](/dotnet/api/azure.response-1?preserve-view=true&view=azure-dotnet) osztály beágyazza a szolgáltatás visszaadását, és megadja a visszatérési értékeket a `Value` mezőben.  
-* A lapozható eredményekkel `Pageable<T>` vagy eredményekkel rendelkező szolgáltatási metódusok `AsyncPageable<T>` . További információ az `Pageable<T>` osztályról: itt [](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet-preview)talál további információt `AsyncPageable<T>` . [](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet-preview)
+* A lapozható eredményekkel `Pageable<T>` vagy eredményekkel rendelkező szolgáltatási metódusok `AsyncPageable<T>` . További információ az `Pageable<T>` osztályról: itt [](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet)talál további információt `AsyncPageable<T>` . [](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet)
 * A lapozható eredmények egy hurok használatával is megadhatók `await foreach` . További információ erről a folyamatról: [.](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)
-* A mögöttes SDK a `Azure.Core` . Az SDK-infrastruktúrával és-típusokkal kapcsolatos tudnivalókat az [Azure névtér dokumentációjában](/dotnet/api/azure?preserve-view=true&view=azure-dotnet-preview) találja.
+* A mögöttes SDK a `Azure.Core` . Az SDK-infrastruktúrával és-típusokkal kapcsolatos tudnivalókat az [Azure névtér dokumentációjában](/dotnet/api/azure?preserve-view=true&view=azure-dotnet) találja.
 
 A szolgáltatási metódusok nagy mértékben gépelt objektumokat adnak vissza, ahol lehetséges. Mivel azonban az Azure Digital Twins a felhasználó által a futásidőben konfigurált modelleken alapul (a szolgáltatásba feltöltött DTDL-modelleken keresztül), számos szolgáltatás-API-t fogad el és ad vissza a két, JSON formátumú formában.
 

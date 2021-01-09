@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 09b537d82ce4e9e44c36df628d120623e69abfaf
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2a614e48b7f250bfea92c1c98c204eeae07f3eab
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425380"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052805"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -71,6 +71,12 @@ Szúrja be a kódot a alá `IntentRecognizer` . Győződjön meg arról, hogy a 
 
 Ez a példa a `addIntent()` függvényt használja egyéni leképezések hozzáadására. Ha egy modellből kívánja felvenni az összes leképezést, használja `addAllIntents(model)` és adja át a modellt.
 
+> [!NOTE]
+> Létrehozhat egy LanguageUnderstandingModel a végpont URL-címének a FromEndpoint metódusba való átadásával.
+> A Speech SDK csak a LUIS 2.0-s végpontokat támogatja, és a LUIS v 2.0-végpontok mindig az alábbi két minta egyikét követik:
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+
 ## <a name="recognize-an-intent"></a>Szándék felismerése
 
 Az `IntentRecognizer` objektumból meg fogja hívni a `recognizeOnceAsync()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észleléshez, és ha a kifejezést azonosította a beszédfelismerés felismerésének leállításához.
@@ -104,9 +110,9 @@ Ezen a ponton a kódnak így kell kinéznie:
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
-Nyomja le az <kbd>F11</kbd>billentyűt, vagy válassza a **Run**  >  **hibakeresés** futtatása lehetőséget.
+Nyomja le az <kbd>F11</kbd>billentyűt, vagy válassza a   >  **hibakeresés** futtatása lehetőséget.
 A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felismeri, és a konzolablakban naplózza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

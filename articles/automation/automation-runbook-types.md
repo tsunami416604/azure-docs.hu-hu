@@ -3,14 +3,14 @@ title: Azure Automation runbook-típusok
 description: Ez a cikk ismerteti azokat a runbookok, amelyeket a Azure Automation használhat, és figyelembe kell venni a használandó típus meghatározásának szempontjait.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/22/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1a0c12297f19d30bf13ffbe594e0433c83914a8e
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c1398d25b6d2540abea0012acd69555e5e53e25c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733960"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050969"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation runbook-típusok
 
@@ -117,7 +117,6 @@ A Python runbookok a Python 2 és a Python 3 alatt fordítható le. A Python 3 r
 * A külső gyártótól származó kódtárak használatához [importálnia kell a csomagokat](python-packages.md) az Automation-fiókba.
 * A **Start-AutomationRunbook**   parancsmag használata a PowerShell/PowerShell-munkafolyamatban a Python 3 runbook (előzetes verzió) elindításához nem működik. A **AzAutomationRunbook** parancsmagot az az. Automation modulból vagy a **Start-AzureRmAutomationRunbook** parancsmagból is használhatja a AzureRm. Automation modulból, hogy megkerülje ezt a korlátozást.  
 * A Python 3 runbookok (előzetes verzió) és a csomagok nem működnek a PowerShell-lel.
-* Egy webhook használata a Python-runbook elindításához nem támogatott.
 * A Azure Automation nem támogatja a **sys. stderr**.
 
 ### <a name="known-issues"></a>Ismert problémák

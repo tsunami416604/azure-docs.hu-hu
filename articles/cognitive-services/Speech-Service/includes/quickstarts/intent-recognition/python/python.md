@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 44c4427540e1b94ebcaf00e6875723e0a654e9ef
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8eada631b7e1f632148993e586c70b6811cf9ac9
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425420"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052918"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -71,6 +71,12 @@ Szúrja be a kódot a alá `IntentRecognizer` . Győződjön meg arról, hogy a 
 
 Ez a példa a `add_intents()` függvényt használja a explicit módon definiált leképezések listájának hozzáadására. Ha egy modellből kívánja felvenni az összes leképezést, használja `add_all_intents(model)` és adja át a modellt.
 
+> [!NOTE]
+> Létrehozhat egy LanguageUnderstandingModel a végpont URL-címének a FromEndpoint metódusba való átadásával.
+> A Speech SDK csak a LUIS 2.0-s végpontokat támogatja, és a LUIS v 2.0-végpontok mindig az alábbi két minta egyikét követik:
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+
 ## <a name="recognize-an-intent"></a>Szándék felismerése
 
 Az `IntentRecognizer` objektumból meg fogja hívni a `recognize_once()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észleléshez, és ha a kifejezést azonosította a beszédfelismerés felismerésének leállításához.
@@ -106,6 +112,6 @@ python quickstart.py
 
 A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felismeri, és a konzolablakban naplózza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]
