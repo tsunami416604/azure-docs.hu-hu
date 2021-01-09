@@ -1,14 +1,14 @@
 ---
 title: Médiatervminta áttekintése
 description: A Médiatervminta áttekintése. Ennek a tervmintának a segítségével az ügyfelek adott médiavezérlőket mérhetnek fel.
-ms.date: 08/13/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: db7e67cb7f96a19a04efc001bc7752f7c9a02e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2b9e29d8f5095947587107cc372beb34b18abb7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208250"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034985"
 ---
 # <a name="overview-of-the-media-blueprint-sample"></a>Médiatervminta áttekintése
 

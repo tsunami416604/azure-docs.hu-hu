@@ -110,7 +110,7 @@
 - name: További források
   items:
     - name: GYIK
-      href: firewall-faq.md
+      href: firewall-faq.yml
     - name: Szerzői sablonok
       href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure-ütemterv
