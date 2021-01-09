@@ -1,31 +1,31 @@
 ---
-title: Azure-függvény Azure Event Grid események eseménykezelőként
-description: Leírja, hogyan használhatja az Azure functions-t Event Grid eseményekhez tartozó eseménykezelőként.
+title: Függvény használata az Azure-ban Azure Event Grid események eseménykezelője
+description: Azt ismerteti, hogyan használhatók a Azure Functions által létrehozott és a Event Grid események eseménykezelői által üzemeltetett függvények.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 9e04fd3e04dab7a50940c2a4a799a56d447fbb6e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5a1ec575b58829a422e4d263ae0324e0343d5ad3
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145752"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034968"
 ---
-# <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure-függvény Event Grid események eseménykezelőként
+# <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Függvény használata Event Grid eseményekhez eseménykezelőként
 
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő végrehajt egy műveletet az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan van konfigurálva az események kezelésére, és **Azure functions** az egyikük. 
 
 
-Ha Azure-függvényt szeretne használni az események kezelőjéként, kövesse az alábbi módszerek egyikét: 
+Ha az Azure-ban függvényt szeretne használni az események kezelőjéként, kövesse az alábbi módszerek egyikét: 
 
--   [Event Grid trigger](../azure-functions/functions-bindings-event-grid-trigger.md)használata.  Adja meg az **Azure-függvényt** **végpont típusaként**. Ezután adja meg az Azure Function alkalmazást és az eseményeket kezelő függvényt. 
--   [Http-trigger](../azure-functions/functions-bindings-http-webhook.md)használata.  Adja meg a **Webhookot** **végpont típusaként**. Ezután adja meg annak az Azure-függvénynek az URL-címét, amely az eseményeket fogja kezelni. 
+-   [Event Grid trigger](../azure-functions/functions-bindings-event-grid-trigger.md)használata.  Adja meg az **Azure-függvényt** **végpont típusaként**. Ezután adja meg a Function alkalmazást és a függvényt, amely az eseményeket fogja kezelni. 
+-   [Http-trigger](../azure-functions/functions-bindings-http-webhook.md)használata.  Adja meg a **Webhookot** **végpont típusaként**. Ezután adja meg az eseményeket kezelő függvény URL-címét. 
 
 Javasoljuk, hogy az első módszert (Event Grid triggert) használja, mivel a második módszernél a következő előnyökkel jár:
 -   Event Grid automatikusan érvényesíti Event Grid eseményindítókat. Általános HTTP-eseményindítók esetén saját magának kell végrehajtania az [érvényesítési választ](webhook-event-delivery.md) .
 -   Event Grid automatikusan módosítja azt a sebességet, amellyel az eseményeket egy Event Grid esemény által aktivált függvénynek küldi a függvény az események feldolgozásakor észlelt gyakoriság alapján. Ez a díjszabás megfelel a szolgáltatás által az események feldolgozására való képtelenségből eredő kézbesítési hibáknak, mivel a függvény esemény-feldolgozási sebessége változhat az idő múlásával. A nagy adatátviteli teljesítmény növelése érdekében engedélyezze a kötegelt feldolgozást az esemény-előfizetésben. További információ: [Batch engedélyezése](#enable-batching).
 
     > [!NOTE]
-    > Jelenleg nem használhat Event Grid eseményindítót egy Azure Functions alkalmazáshoz, ha az esemény a **CloudEvents** -sémában kerül kézbesítésre. Ehelyett használjon HTTP-triggert.
+    > Jelenleg nem használhat Event Grid eseményindítót egy Function alkalmazáshoz, ha az esemény a **CloudEvents** -sémában kerül kézbesítésre. Ehelyett használjon HTTP-triggert.
 
 ## <a name="tutorials"></a>Oktatóanyagok
 
@@ -69,7 +69,7 @@ Amikor létrehoz egy előfizetést a felhasználói felületen, az **esemény-el
 
 A meglévő előfizetések ezen értékeit a **Event Grid témakör** lap **szolgáltatások** lapján frissítheti. 
 
-:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Az előfizetés létrehozásának időpontjában engedélyezze a kötegelt feldolgozást":::
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Kötegelt feldolgozás engedélyezése a létrehozás után":::
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 **MaxEventsPerBatch** és **preferredBatchSizeInKilobytes** is beállíthat egy Azure Resource Manager sablonban. További információ: [Microsoft. EventGrid eventSubscriptions-sablon referenciája](/azure/templates/microsoft.eventgrid/eventsubscriptions).
@@ -80,5 +80,5 @@ A Batch szolgáltatáshoz kapcsolódó beállításokat az az [eventgrid Event-e
 ### <a name="azure-powershell"></a>Azure PowerShell
 A [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) vagy az [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) parancsmaggal konfigurálhatja a Batch szolgáltatáshoz kapcsolódó beállításokat a következő paraméterekkel: `-MaxEventsPerBatch` vagy `-PreferredBatchSizeInKiloBytes` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg.

@@ -1,16 +1,16 @@
 ---
-title: Function app-beállítások konfigurálása az Azure-ban
-description: Ismerje meg, hogyan konfigurálhatja az Azure Function app beállításait.
+title: Function app-beállítások konfigurálása a Azure Functionsban
+description: Megtudhatja, hogyan konfigurálhatja a Function App-beállításokat a Azure Functionsban.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 746a97ecd9b0bdd676e70cca38edc75905e3e4bd
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936940"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035206"
 ---
 # <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
 
@@ -79,7 +79,7 @@ A következő értékek a csomag típusát jelzik:
 
 | Csomag típusa | Portál | Azure CLI/PowerShell |
 | --- | --- | --- |
-| [Felhasználás](consumption-plan.md) | **Felhasználás** | `Dynamic` |
+| [Használatalapú](consumption-plan.md) | **Használatalapú** | `Dynamic` |
 | [Prémium](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
 | [Dedikált (App Service)](dedicated-plan.md) | Különböző | Különböző |
 

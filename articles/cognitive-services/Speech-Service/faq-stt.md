@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 25848d313fc01fc41ef8874707bd10b2fa9912d3
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857324"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033512"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
@@ -134,11 +134,11 @@ Lásd: [a Speech Services kvótái és korlátai](speech-services-quotas-and-lim
 
 **A**: igen. Saját maga is lemásolhatja, vagy használhat Professional transzkripciós szolgáltatást. Egyes felhasználók előnyben részesítettek a professzionális átiratokkal, mások pedig a közösségi használják, vagy magukra az átírásokra.
 
-**K: mennyi ideig tart egy egyéni modell hangadatainak betanítása?**
+**K: mennyi ideig tart a hangadatokkal rendelkező egyéni modell betanítása?**
 
 **A**: hangadatokkal rendelkező modell képzése hosszadalmas folyamat. Az adatmennyiségtől függően több napot is igénybe vehet, hogy egyéni modellt hozzon létre. Ha egy héten belül nem végezhető el, a szolgáltatás megszakíthatja a betanítási műveletet, és sikertelenként jelentheti a modellt. A gyorsabb eredmény érdekében használja az egyik olyan [régiót](custom-speech-overview.md#set-up-your-azure-account) , ahol a dedikált hardver elérhető a betanításhoz. A teljes körűen betanított modellt egy másik régióba másolhatja a [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)használatával. A csak szöveggel rendelkező képzés sokkal gyorsabb, és általában percek alatt fejeződik be.
 
-Egyes alapmodellek nem szabhatók testre a hangadatokkal. Számukra a szolgáltatás csak az átirat szövegét fogja használni a betanításhoz, és elveti a hangadatokat. A képzések ezután sokkal gyorsabbak lesznek, és az eredmények ugyanúgy fognak megjelenni, mint a csak szöveggel végzett képzés.
+Egyes alapmodellek nem szabhatók testre a hangadatokkal. Számukra a szolgáltatás csak az átirat szövegét fogja használni a betanításhoz, és figyelmen kívül hagyja a hangadatokat. A képzések ezután sokkal gyorsabbak lesznek, és az eredmények ugyanúgy fognak megjelenni, mint a csak szöveggel végzett képzés.
 
 ## <a name="accuracy-testing"></a>Pontosság tesztelése
 

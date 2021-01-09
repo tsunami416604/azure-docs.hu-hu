@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: c2b440413599ce07112231af17daa0bc14817b76
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9ac283721526488f587fcabc68348dafac1835db
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832777"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033353"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
 
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy biztonsági modult a
 
 ## <a name="deploy-security-module"></a>Biztonsági modul telepítése
 
-A következő lépésekkel telepítheti a Defender for IoT biztonsági modulját IoT Edge.
+A következő lépésekkel telepítheti a Defendert a IoT biztonsági moduljának IoT Edge.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -51,13 +51,13 @@ A következő lépésekkel telepítheti a Defender for IoT biztonsági modulját
 
 1. A Azure Portal nyissa meg a **Marketplace**-t.
 
-1. Válassza a **eszközök internetes hálózata** lehetőséget, majd keresse meg a **Defender for IoT** elemet, és jelölje ki.
+1. Válassza a **eszközök internetes hálózata** lehetőséget, majd keresse meg a **IoT Azure Security Center** , és válassza ki.
 
    :::image type="content" source="media/howto/edge-onboarding-8.png" alt-text="IoT-védő kiválasztása":::
 
-1. A telepítés konfigurálásához kattintson a **Létrehozás** gombra.
+1. A telepítés konfigurálásához válassza a **Létrehozás** lehetőséget.
 
-1. Válassza ki a IoT Hub Azure- **előfizetését** , majd válassza ki a **IoT hub**.<br>Válassza a **telepítés egy eszközre** lehetőséget egyetlen eszköz kiválasztásához, vagy válassza a nagy **méretű üzembe helyezés** lehetőséget a több eszköz megcélzásához, majd kattintson a **Létrehozás** gombra. További információ a nagy léptékű üzembe helyezésről: a [központi](../iot-edge/how-to-deploy-at-scale.md)telepítés.
+1. Válassza ki a IoT Hub Azure- **előfizetését** , majd válassza ki a **IoT hub**.<br>Válassza a **telepítés egy eszközre** lehetőséget egyetlen eszköz kiválasztásához, vagy válassza a nagy **méretű üzembe helyezés** lehetőséget a több eszköz megcélzásához, majd válassza a **Létrehozás** lehetőséget. További információ a nagy léptékű üzembe helyezésről: a [központi](../iot-edge/how-to-deploy-at-scale.md)telepítés.
 
     >[!Note]
     >Ha a **központi telepítés méretezése** lehetőséget választotta, adja hozzá az eszköz nevét és részleteit, mielőtt továbblép a **modulok hozzáadása** lapra az alábbi utasításokban.
@@ -68,7 +68,7 @@ Hajtsa végre az egyes lépéseket, hogy elvégezze a IoT IoT Edge-telepítésé
 
 1. Válassza ki a **AzureSecurityCenterforIoT** modult.
 1. A **modul beállításai** lapon módosítsa a **nevet** a **azureiotsecurity** értékre.
-1. A **környezeti változók** lapon adjon hozzá egy változót, ha szükséges (például hibakeresési szint).
+1. A **környezeti változók** lapon szükség esetén vegyen fel egy változót (például a *hibakeresési szintet* , majd állítsa be a következő értékek egyikére: "végzetes", "hiba", "figyelmeztetés" vagy "információ").
 1. A **tároló létrehozása beállítások** lapon adja hozzá a következő konfigurációt:
 
     ``` json
@@ -112,8 +112,12 @@ Hajtsa végre az egyes lépéseket, hogy elvégezze a IoT IoT Edge-telepítésé
 #### <a name="step-2-runtime-settings"></a>2. lépés: futtatókörnyezet beállításai
 
 1. Válassza a **futtatókörnyezet beállításait**.
-1. Az **Edge hub** alatt módosítsa a **képet** **MCR.microsoft.com/azureiotedge-hub:1.0.8.3**.
-1. A **létrehozási beállítások** ellenőrzése a következő konfigurációra van beállítva:
+2. Az **Edge hub** alatt módosítsa a **képet** **MCR.microsoft.com/azureiotedge-hub:1.0.8.3**.
+
+    >[!Note]
+    > Jelenleg a 1.0.8.3 vagy régebbi verziója támogatott.
+
+3. A **létrehozási beállítások** ellenőrzése a következő konfigurációra van beállítva:
 
     ``` json
     {
@@ -139,9 +143,9 @@ Hajtsa végre az egyes lépéseket, hogy elvégezze a IoT IoT Edge-telepítésé
     }
     ```
 
-1. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
-1. Kattintson a **Tovább** gombra.
+5. Kattintson a **Tovább** gombra.
 
 #### <a name="step-3-specify-routes"></a>3. lépés: útvonalak meghatározása
 

@@ -1,21 +1,21 @@
 ---
 title: DoD Impact Level 5 terv minta-vezérlők
 description: A DoD Impact Level 5 tervezet-minta leképezésének vezérlése. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 09/17/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: fc187480f5342f076a7f07f058e8e570a0e7f146
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 01f786684e5f8d73f57eb9f4741593c01fe1c8d4
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929489"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034781"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>A DoD Impact Level 5 tervezet-minta leképezésének vezérlése
 
 A következő cikk részletesen ismerteti, hogyan befolyásolják az Azure-tervezetek az 5. szint (DoD IL5) tervezet mintáját a DoD Impact Level 5 vezérlőre. További információ a vezérlőkről: a [DoD Cloud Computing biztonsági követelményeinek útmutatója (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf).
 A védelmi információs rendszerek Ügynöksége (DISA) az Egyesült Államok védelmi Minisztériuma (DoD) ügynöksége, amely a DoD Cloud Computing biztonsági követelményeinek (SRG) fejlesztésére és karbantartására felelős. A SRG határozza meg a DoD-információkat,-rendszereket és-alkalmazásokat üzemeltető felhőalapú szolgáltatók (CSP-k) alapszintű biztonsági követelményeit, valamint a DoD Cloud Services általi használatát.  
 
-A következő leképezések a **DoD Impact Level 5** vezérlőre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki az ** \[ előnézetet \] : DoD Impact Level 5** beépített házirend kezdeményezés.
+A következő leképezések a **DoD Impact Level 5** vezérlőre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki az **\[ előnézetet \] : DoD Impact Level 5** beépített házirend kezdeményezés.
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem egy-az-egyhez vagy egy teljes egyezés egy vezérlőelem és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-5/control-mapping.md).
@@ -362,7 +362,7 @@ Ez a terv olyan szabályzat-definíciókat tartalmaz, amelyek segítségével bi
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a DoD Impact Level 5 tervezetének vezérlési leképezését, a következő cikkekben megismerheti a terv ismertetését és a minta üzembe helyezésének módját:
 

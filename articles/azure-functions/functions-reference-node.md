@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bf6ebd01a18a0ebf0ab5dd7d7ac3aa34256b4696
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936804"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034917"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -18,9 +18,9 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Express.js, Node.js vagy JavaScript-fejlesztőként, ha még nem ismeri a Azure Functionst, először olvassa el a következő cikkek egyikét:
 
-| Első lépések | Alapelvek| Interaktív tanulás |
+| Első lépések | Fogalmak| Interaktív tanulás |
 | -- | -- | -- | 
-| <ul><li>[Node.js függvény a Visual Studio Code használatával](./create-first-function-vs-code-node.md)</li><li>[Node.js függvény a Terminal/Command parancssorral](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Node.js függvény a Visual Studio Code használatával](./create-first-function-vs-code-node.md)</li><li>[Node.js függvény a Terminal/Command parancssorral](./create-first-function-cli-node.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Írógéppel függvények](#typescript)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[Refrakció Node.js és expressz API-k kiszolgáló nélküli API-khoz](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript-függvény alapjai
 
@@ -507,7 +507,7 @@ A következő táblázat az operációs rendszer által támogatott Node.js-verz
 
 | Függvények verziója | Csomópont verziója (Windows) | Csomópont verziója (Linux) |
 |---|---| --- |
-| 1. x | 6.11.2 (a futtatókörnyezet zárolta) | n/a |
+| 1. x | 6.11.2 (a futtatókörnyezet zárolta) | n.a. |
 | 2. x  | `~8`<br/>`~10` ajánlott<br/>`~12` | `node|8`<br/>`node|10` ajánlott  |
 | 3. x | `~10`<br/>`~12` ajánlott<br/>`~14` előnézet  | `node|10`<br/>`node|12` ajánlott<br/>`node|14` előnézet |
 

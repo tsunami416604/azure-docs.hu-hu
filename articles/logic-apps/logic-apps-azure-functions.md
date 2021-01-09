@@ -1,28 +1,28 @@
 ---
-title: Azure Functions hozzáadása és hívása Azure Logic Apps
-description: Egyéni kód meghívása és futtatása a Azure Functions az automatizált feladatokból és munkafolyamatokból Azure Logic Apps
+title: Függvények hozzáadása és hívása Azure Logic Apps
+description: Egyéni kód meghívása és futtatása az Azure-ban az automatizált feladatokból és munkafolyamatokból Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 75693c57a8d120aad53a15d03ae4054bac8262af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd04e5a7f084de7a95f20b54b99a9e4590f10cd7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023057"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034764"
 ---
-# <a name="call-azure-functions-from-azure-logic-apps"></a>Azure-függvények meghívása az Azure Logic Appsből
+# <a name="call-functions-from-azure-logic-apps"></a>Függvények hívása Azure Logic Apps
 
-Ha olyan kódot szeretne futtatni, amely egy adott feladatot hajt végre a logikai alkalmazásokban, [Azure functions](../azure-functions/functions-overview.md)használatával létrehozhatja saját függvényét. Ez a szolgáltatás segít a Node.js-, C#- és F#-függvények létrehozásában, így nem kell teljes alkalmazást vagy infrastruktúrát létrehoznia a kód futtatásához. [A Logic apps-t az Azure functions használatával is meghívhatja](#call-logic-app). A Azure Functions kiszolgáló nélküli számítástechnikai szolgáltatásokat biztosít a felhőben, és hasznos lehet olyan feladatok elvégzéséhez, mint például az alábbi példák:
+Ha olyan kódot szeretne futtatni, amely egy adott feladatot hajt végre a logikai alkalmazásokban, [Azure functions](../azure-functions/functions-overview.md)használatával létrehozhatja saját függvényét. Ez a szolgáltatás segít a Node.js-, C#- és F#-függvények létrehozásában, így nem kell teljes alkalmazást vagy infrastruktúrát létrehoznia a kód futtatásához. [A Logic apps-t a functions használatával is meghívhatja](#call-logic-app). A Azure Functions kiszolgáló nélküli számítástechnikai szolgáltatásokat biztosít a felhőben, és hasznos lehet olyan feladatok elvégzéséhez, mint például az alábbi példák:
 
 * A logikai alkalmazás viselkedését kiterjesztheti Node.js vagy C# függvényekkel.
 * Számítások végrehajtása a logikai alkalmazás munkafolyamatában.
 * Alkalmazzon speciális formázási vagy számítási mezőket a logikai alkalmazásokban.
 
-Ha az Azure functions létrehozása nélkül szeretne kódrészleteket futtatni, ismerkedjen meg a [beágyazott kód hozzáadásával és futtatásával](../logic-apps/logic-apps-add-run-inline-code.md).
+A kódrészletek Azure Functions használata nélküli futtatásához tekintse meg a [beágyazott kód hozzáadását és futtatását](../logic-apps/logic-apps-add-run-inline-code.md)ismertető témakört.
 
 > [!NOTE]
 > A Logic Apps és Azure Functions közötti integráció jelenleg nem működik az engedélyezett tárolóhelyekkel.
@@ -31,7 +31,7 @@ Ha az Azure functions létrehozása nélkül szeretne kódrészleteket futtatni,
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Egy Azure Function-alkalmazás, amely egy Azure functions-tároló, valamint az Azure-függvény. Ha nem rendelkezik Function alkalmazással, [először hozza létre a Function alkalmazást](../azure-functions/functions-create-first-azure-function.md). Ezután a logikai alkalmazáson kívül is létrehozhatja a függvényt a Azure Portal, vagy a Logic app Designerben a logikai alkalmazáson [belülről](#create-function-designer) .
+* Function-alkalmazás, amely egy Azure Functionsban létrehozott függvény, valamint a létrehozott függvény tárolója. Ha nem rendelkezik Function alkalmazással, [először hozza létre a Function alkalmazást](../azure-functions/functions-create-first-azure-function.md). Ezután a logikai alkalmazáson kívül is létrehozhatja a függvényt a Azure Portal, vagy a Logic app Designerben a logikai alkalmazáson [belülről](#create-function-designer) .
 
 * A Logic apps használata esetén ugyanazok a követelmények vonatkoznak a Function apps és a functions szolgáltatásra, függetlenül attól, hogy azok már meglévőek vagy újak:
 
@@ -41,7 +41,7 @@ Ha az Azure functions létrehozása nélkül szeretne kódrészleteket futtatni,
 
   * A függvény a **http-trigger** sablont használja.
 
-    A HTTP-trigger sablonja elfogadhat olyan tartalmakat, amelyek `application/json` típusa a logikai alkalmazásból származik. Ha hozzáad egy Azure-függvényt a logikai alkalmazáshoz, a Logic app Designer megjeleníti a sablonból az Azure-előfizetésében létrehozott egyéni függvényeket.
+    A HTTP-trigger sablonja elfogadhat olyan tartalmakat, amelyek `application/json` típusa a logikai alkalmazásból származik. Ha hozzáad egy függvényt a logikai alkalmazáshoz, a Logic app Designer megjeleníti a sablonból az Azure-előfizetésében létrehozott egyéni függvényeket.
 
   * A függvény nem használ egyéni útvonalakat, hacsak nem adott meg [OpenAPI-definíciót](../azure-functions/functions-openapi-definition.md) (korábbi nevén egy [hencegő fájlt](https://swagger.io/)).
 
@@ -96,15 +96,15 @@ A következő lépések történnek a függvényen belül:
    body: data.date.ToDateString();
    ```
 
-Most, hogy létrehozta az Azure-függvényt, kövesse a [függvények logikai alkalmazásokhoz való hozzáadásának](#add-function-logic-app)lépéseit.
+Most, hogy létrehozta a függvényt az Azure-ban, kövesse a [függvények hozzáadása a Logic apps](#add-function-logic-app)szolgáltatáshoz című témakör lépéseit.
 
 <a name="create-function-designer"></a>
 
 ## <a name="create-functions-inside-logic-apps"></a>Függvények létrehozása logikai alkalmazásokon belül
 
-Az Azure functions közvetlenül a logikai alkalmazás munkafolyamataiból is létrehozható a Logic app Designer beépített Azure Functions műveletével, de ezt a metódust csak a JavaScriptben írt Azure-függvények esetében használhatja. Más nyelveken az Azure functions a Azure Portal Azure Functions felületén keresztül is létrehozható. További információ: az [első függvény létrehozása a Azure Portalban](../azure-functions/functions-create-first-azure-function.md).
+A Logic app Designer beépített Azure Functions műveletének használatával közvetlenül a logikai alkalmazás munkafolyamataiból hozhat létre függvényeket, de ezt a módszert csak a JavaScriptben írt függvények esetében használhatja. Más nyelvek esetében a Azure Portal Azure Functions felületén keresztül hozhat létre függvényeket. További információ: az [első függvény létrehozása a Azure Portalban](../azure-functions/functions-create-first-azure-function.md).
 
-Ahhoz azonban, hogy bármely Azure-függvényt létre lehessen hozni, már rendelkeznie kell egy Azure Function-alkalmazással, amely a függvények tárolója. Ha nem rendelkezik Function alkalmazással, előbb hozza létre a Function alkalmazást. Lásd: az [első függvény létrehozása a Azure Portalban](../azure-functions/functions-create-first-azure-function.md).
+Azonban ahhoz, hogy létre tudja hozni a függvényt az Azure-ban, már rendelkeznie kell egy Function alkalmazással, amely a függvények tárolója. Ha nem rendelkezik Function alkalmazással, előbb hozza létre a Function alkalmazást. Lásd: az [első függvény létrehozása a Azure Portalban](../azure-functions/functions-create-first-azure-function.md).
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
@@ -116,9 +116,9 @@ Ahhoz azonban, hogy bármely Azure-függvényt létre lehessen hozni, már rende
 
 1. A keresőmezőbe írja be szűrőként az "Azure functions" kifejezést. A műveletek listából válassza az Azure- **függvény kiválasztása** műveletet, például:
 
-   !["Azure functions" keresése](./media/logic-apps-azure-functions/find-azure-functions-action.png)
+   ![Függvények keresése a Azure Portalban.](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. A Function apps listából válassza ki a Function alkalmazást. A műveletek lista megnyitása után válassza a következő műveletet: **új függvény létrehozása**
+1. A Function apps listából válassza ki a Function alkalmazást. A műveletek lista megnyitása után válassza a következő műveletet: **új függvény létrehozása**.
 
    ![Válassza ki a Function alkalmazást](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -128,7 +128,7 @@ Ahhoz azonban, hogy bármely Azure-függvényt létre lehessen hozni, már rende
 
    1. A **Code (kód** ) mezőben adja hozzá a kódot a függvény sablonhoz, beleértve a logikai alkalmazásnak a működés befejezése után visszaadott válaszokat és hasznos adatokat. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
-   Például:
+   Példa:
 
    ![A függvény megadása](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
@@ -155,13 +155,13 @@ Ahhoz azonban, hogy bármely Azure-függvényt létre lehessen hozni, már rende
 
    ![Objektum karakterláncként való vetítése](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. További részletek, például a használandó módszer, a fejlécek vagy a lekérdezési paraméterek vagy a hitelesítés megadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt beállításokat. A hitelesítéshez a beállítások a kiválasztott függvénytől függően eltérőek lehetnek. Lásd: [Az Azure functions hitelesítésének engedélyezése](#enable-authentication-functions).
+1. További részletek, például a használandó módszer, a fejlécek vagy a lekérdezési paraméterek vagy a hitelesítés megadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt beállításokat. A hitelesítéshez a beállítások a kiválasztott függvénytől függően eltérőek lehetnek. Lásd [a függvények hitelesítésének engedélyezése](#enable-authentication-functions)című témakört.
 
 <a name="add-function-logic-app"></a>
 
 ## <a name="add-existing-functions-to-logic-apps"></a>Meglévő függvények hozzáadása a Logic apps szolgáltatáshoz
 
-A logikai alkalmazásokból származó meglévő Azure-függvények meghívásához hozzáadhat Azure-függvényeket, mint bármely más műveletet a Logic app Designerben.
+A logikai alkalmazásokból származó meglévő függvények meghívásához olyan függvényeket adhat hozzá, mint bármely más művelet a Logic app Designerben.
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
@@ -169,15 +169,15 @@ A logikai alkalmazásokból származó meglévő Azure-függvények meghívásá
 
 1. A **válasszon műveletet** területen a keresőmezőbe írja be szűrőként az "Azure functions" kifejezést. A műveletek listából válassza az Azure- **függvény kiválasztása** műveletet.
 
-   !["Azure functions" keresése](./media/logic-apps-azure-functions/find-azure-functions-action.png)
+   ![Keressen egy függvényt az Azure-ban.](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
 1. A Function apps listából válassza ki a Function alkalmazást. A függvények lista megjelenése után válassza ki a függvényt.
 
-   ![Válassza ki a Function alkalmazást és az Azure-függvényt](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
+   ![Válassza ki a Function alkalmazást és a függvényt](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
    Az API-definíciókkal (hencegés leírásával) rendelkező függvények esetén a [logikai alkalmazás megkeresheti és elérheti ezeket a funkciókat](#function-swagger), de kiválaszthatja a feltört **műveleteket**.
 
-   ![Válassza ki a Function alkalmazást, a "hencegő műveleteket" és az Azure-függvényt](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
+   ![Válassza ki a Function alkalmazást, a "hencegő műveletek" és a függvényt](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
 1. A **kérelem törzse** mezőben adja meg a függvény bemenetét, amelyet JavaScript Object Notation (JSON) objektumként kell formázni.
 
@@ -189,27 +189,27 @@ A logikai alkalmazásokból származó meglévő Azure-függvények meghívásá
 
    ![Objektum karakterláncként való vetítése](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. További részletek, például a használandó módszer, a fejlécek, a lekérdezési paraméterek vagy a hitelesítés megadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt beállításokat. A hitelesítéshez a beállítások a kiválasztott függvénytől függően eltérőek lehetnek. Lásd: [hitelesítés engedélyezése az Azure functions](#enable-authentication-functions)szolgáltatásban.
+1. További részletek, például a használandó módszer, a fejlécek, a lekérdezési paraméterek vagy a hitelesítés megadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a kívánt beállításokat. A hitelesítéshez a beállítások a kiválasztott függvénytől függően eltérőek lehetnek. Lásd: [hitelesítés engedélyezése a functions](#enable-authentication-functions)szolgáltatásban.
 
 <a name="call-logic-app"></a>
 
-## <a name="call-logic-apps-from-azure-functions"></a>Logikai alkalmazások meghívása az Azure functions szolgáltatásból
+## <a name="call-logic-apps-from-functions"></a>Logikai alkalmazások hívása függvényekből
 
-Ha egy logikai alkalmazást egy Azure-függvényen belül szeretne elindítani, a logikai alkalmazásnak egy olyan triggerrel kell kezdődnie, amely meghívásos végpontot biztosít. Elindíthatja például a logikai alkalmazást a **http**, a **kérelem**, az **Azure Queues** vagy a **Event Grid** trigger használatával. A függvényen belül küldjön egy HTTP POST-kérelmet az trigger URL-címére, és adja meg a logikai alkalmazás feldolgozására használni kívánt adattartalmat. További információ: a [logikai alkalmazások hívása, triggere vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md).
+Ha a logikai alkalmazást egy függvényen belül szeretné elindítani, a logikai alkalmazásnak egy olyan triggerrel kell kezdődnie, amely meghívásos végpontot biztosít. Elindíthatja például a logikai alkalmazást a **http**, a **kérelem**, az **Azure Queues** vagy a **Event Grid** trigger használatával. A függvényen belül küldjön egy HTTP POST-kérelmet az trigger URL-címére, és adja meg a logikai alkalmazás feldolgozására használni kívánt adattartalmat. További információ: a [logikai alkalmazások hívása, triggere vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md).
 
 <a name="enable-authentication-functions"></a>
 
-## <a name="enable-authentication-for-azure-functions"></a>Az Azure functions hitelesítésének engedélyezése
+## <a name="enable-authentication-for-functions"></a>A függvények hitelesítésének engedélyezése
 
 Ha egyszerűen hitelesíteni szeretné a Azure Active Directory (Azure AD) által védett más erőforrásokhoz való hozzáférést anélkül, hogy be kellene jelentkeznie, és meg kell adnia a hitelesítő adatokat vagy a titkos kulcsokat, a logikai alkalmazás [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhat. Az Azure kezeli Ön helyett ezt az identitást, és segít biztonságban tartani az Ön hitelesítő adatait, mivel így nincs szükség titkos kulcsok megadására és rendszeres módosítására. További információ az Azure [AD-hitelesítés felügyelt identitásait támogató Azure-szolgáltatásokról](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Ha úgy állítja be a logikai alkalmazást, hogy a rendszer által hozzárendelt identitást vagy manuálisan létrehozott, felhasználó által hozzárendelt identitást használja, akkor a logikai alkalmazásban található Azure-függvények ugyanezt az identitást is használhatják a hitelesítéshez. További információ a Logic apps Azure functions szolgáltatásának hitelesítés-támogatásáról: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+Ha úgy állítja be a logikai alkalmazást, hogy a rendszer által hozzárendelt identitást vagy manuálisan létrehozott, felhasználó által hozzárendelt identitást használja, akkor a logikai alkalmazás függvénye ugyanezt az identitást is használhatja a hitelesítéshez. A Logic apps függvények hitelesítési támogatásával kapcsolatos további információkért lásd: [hitelesítés hozzáadása a kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 Az alábbi lépéseket követve állíthatja be és használhatja a felügyelt identitást a függvénnyel:
 
 1. Engedélyezze a felügyelt identitást a logikai alkalmazáson, és állítsa be az identitás hozzáférését a célként megadott erőforráshoz. Lásd: [Az Azure-erőforrásokhoz való hozzáférés hitelesítése a Azure Logic apps felügyelt identitások használatával](../logic-apps/create-managed-service-identity.md).
 
-1. Engedélyezze a hitelesítést az Azure-függvényben és a Function alkalmazásban az alábbi lépéseket követve:
+1. Engedélyezze a hitelesítést a függvényben és a függvény alkalmazásban az alábbi lépéseket követve:
 
    * [Névtelen hitelesítés beállítása a függvényben](#set-authentication-function-app)
    * [Azure AD-hitelesítés beállítása a Function alkalmazásban](#set-azure-ad-authentication)
@@ -218,7 +218,7 @@ Az alábbi lépéseket követve állíthatja be és használhatja a felügyelt i
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>Névtelen hitelesítés beállítása a függvényben
 
-Ha a logikai alkalmazás felügyelt identitását szeretné használni az Azure-függvényben, a függvény hitelesítési szintje névtelen értékre van állítva. Ellenkező esetben a logikai alkalmazás "BadRequest" hibát jelez.
+Ha a logikai alkalmazás felügyelt identitását szeretné használni a függvényben, a függvény hitelesítési szintjét névtelen értékre kell állítania. Ellenkező esetben a logikai alkalmazás "BadRequest" hibát jelez.
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a Function alkalmazást. Ezek a lépések az "FabrikamFunctionApp" kifejezést használják példaként szolgáló Function alkalmazásként.
 

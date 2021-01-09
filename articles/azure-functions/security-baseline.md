@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 707c69efddeda364f0c62e9719ae1a6073dfe9ad
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 993cd614f150866817e8d71dbd9dca9be606465f
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935733"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035155"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions Azure biztonsági alapterve
 
@@ -56,16 +56,16 @@ Ha hálózati biztonsági csoportokat (NSG) használ a Azure Functions megvalós
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: a kritikus webalkalmazások megóvása
 
-**Útmutató**: az Azure-függvények éles környezetben való teljes biztonságossá tételéhez érdemes megfontolni a következő Function szintű biztonsági beállítások egyikének megvalósítását:
+**Útmutató**: az Azure functions-végpontok éles környezetben való teljes biztonságossá tételéhez érdemes megfontolni a következő Function szintű biztonsági beállítások egyikének megvalósítását:
 - App Service hitelesítés/engedélyezés bekapcsolása a Function alkalmazáshoz
 - Az Azure API Management (APIM) használatával hitelesítheti a kérelmeket, vagy
 - A Function alkalmazás üzembe helyezése egy Azure App Service Environment.
 
-Továbbá győződjön meg arról, hogy a távoli hibakeresés le van tiltva az éles Azure Functions. Emellett a több eredetű erőforrás-megosztás (CORS) nem teszi lehetővé az összes tartomány számára az Azure Function alkalmazás elérését. Csak a szükséges tartományokat engedélyezze az Azure Function alkalmazással való kommunikációhoz.
+Továbbá győződjön meg arról, hogy a távoli hibakeresés le van tiltva az éles Azure Functions. Emellett a több eredetű erőforrás-megosztás (CORS) nem teszi lehetővé az összes tartomány számára az Azure-beli Function app elérését. Csak a szükséges tartományokat engedélyezze a Function alkalmazással való kommunikációhoz.
 
 A bejövő forgalom további ellenőrzéséhez vegye fontolóra az Azure webalkalmazási tűzfal (WAF) üzembe helyezését a hálózati konfiguráció részeként. Diagnosztikai beállítás engedélyezése a WAF és a naplók betöltéséhez egy Storage-fiókba, az Event hub-ba vagy a Log Analytics-munkaterületre. 
 
-- [Azure-függvények végpontjának védelme éles környezetben](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Azure Functions végpontok biztonságossá tétele az éles környezetben](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Az Azure WAF üzembe helyezése](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -76,7 +76,7 @@ A bejövő forgalom további ellenőrzéséhez vegye fontolóra az Azure webalka
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: az ismert kártékony IP-címekkel folytatott kommunikáció megtagadása
 
 **Útmutató**: DDoS Protection standard engedélyezése a functions-alkalmazásokhoz társított virtuális hálózatokon a DDOS-támadások elleni védelem érdekében. A Azure Security Center integrált fenyegetési intelligencia használatával megtagadhatja a kommunikációt az ismert kártékony vagy nem használt nyilvános IP-címekkel.
-Emellett konfigurálhat egy előtér-átjárót, például az Azure webalkalmazási tűzfalat az összes bejövő kérelem hitelesítéséhez és a kártékony forgalom kiszűréséhez. Az Azure webalkalmazási tűzfal az SQL-injektálások, a helyek közötti parancsfájlok, a kártevő-feltöltések és a DDoS-támadások letiltásával segíti az Azure Function-alkalmazások védelmét. A WAF bevezetéséhez App Service Environment vagy privát végpontok (előzetes verzió) használata szükséges. Az éles munkaterhelések használata előtt győződjön meg arról, hogy a magánhálózati végpontok már nem (előzetes verzió).
+Emellett konfigurálhat egy előtér-átjárót, például az Azure webalkalmazási tűzfalat az összes bejövő kérelem hitelesítéséhez és a kártékony forgalom kiszűréséhez. Az Azure webalkalmazási tűzfal a beérkező webes forgalomnak az SQL-injektálások, a helyek közötti parancsfájlok, a kártevő-feltöltések és a DDoS-támadások letiltására való megadásával segíti a Function app védelmét. A WAF bevezetéséhez App Service Environment vagy privát végpontok (előzetes verzió) használata szükséges. Az éles munkaterhelések használata előtt győződjön meg arról, hogy a magánhálózati végpontok már nem (előzetes verzió).
 
 - [Az Azure Functions hálózatkezelési lehetőségei](./functions-networking-options.md)
 
@@ -176,8 +176,8 @@ Azt is megteheti, hogy több Piactéri lehetőség áll rendelkezésre, példáu
 
 **Útmutató**: szabványos biztonsági konfigurációk definiálása és implementálása a Azure Functionshöz kapcsolódó hálózati beállításokhoz. Használjon Azure Policy aliasokat a "Microsoft. Web" és a "Microsoft. Network" névterekben, hogy egyéni házirendeket hozzon létre a Azure Functions hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Használhatja a Azure Functions beépített szabályzat-definícióját is, például:
 - A CORS nem engedheti meg, hogy minden erőforrás hozzáférjen a függvény alkalmazásaihoz
-- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
-- A legújabb TLS-verziót kell használni a függvényalkalmazás
+- A Function alkalmazás csak HTTPS protokollon keresztül érhető el
+- A legújabb TLS-verziót kell használni a Function alkalmazásban
 
 Az Azure-tervrajzok segítségével leegyszerűsítheti a nagy léptékű Azure-környezeteket a főbb környezeti összetevők, például a Azure Resource Manager sablonok, az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és a házirendek egyetlen terv szerinti definícióban való kicsomagolásával. A tervet egyszerűen alkalmazhatja új előfizetésekre, környezetekre, valamint a verziószámozáson keresztül történő finomhangolásra és felügyeletre.
 
@@ -233,7 +233,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 A Azure Functions az Azure Application Insights beépített integrációját is biztosítja a függvények figyeléséhez. Application Insights gyűjti a napló-, a teljesítmény-és a hiba adatait. A szolgáltatás automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítenek a problémák diagnosztizálásában és a függvények használatának megismerésében.
 
-Ha beépített egyéni biztonsági/naplózási naplózást végez az Azure Function alkalmazásban, engedélyezze a "FunctionAppLogs" diagnosztikai beállítást, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. 
+Ha beépített egyéni biztonsági/naplózási naplózást végez a Function alkalmazásban, engedélyezze a "FunctionAppLogs" diagnosztikai beállítást, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. 
 
 Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et. 
 
@@ -253,7 +253,7 @@ Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmad
 
 **Útmutató**: a vezérlési sík naplózásához engedélyezze az Azure-tevékenység naplójának diagnosztikai beállításait, és küldje el a naplókat egy log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. Az Azure-tevékenység naplójának adatai alapján meghatározhatja az Azure-erőforrások vezérlési síkja szintjén végrehajtott írási műveletek (PUT, közzététel, törlés) esetében a "mi, ki és mikor" lehetőséget.
 
-Ha beépített egyéni biztonsági/naplózási naplózást végez az Azure Function alkalmazásban, engedélyezze a "FunctionAppLogs" diagnosztikai beállítást, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. 
+Ha beépített egyéni biztonsági/naplózási naplózást végez a Function alkalmazásban, engedélyezze a "FunctionAppLogs" diagnosztikai beállítást, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. 
 
 - [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
 
@@ -273,7 +273,7 @@ Ha beépített egyéni biztonsági/naplózási naplózást végez az Azure Funct
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
-**Útmutató**: a Azure monitor a szervezet megfelelőségi előírásai alapján a Azure functions alkalmazásokhoz társított log Analytics-munkaterületek naplózásának megőrzési időtartamát állíthatja be.
+**Útmutató**: Azure monitorban a szervezet megfelelőségi előírásai szerint állítsa be a függvények alkalmazásaihoz társított log Analytics-munkaterületek naplózásának megőrzési időtartamát.
 
 - [Napló-megőrzési paraméterek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -283,11 +283,11 @@ Ha beépített egyéni biztonsági/naplózási naplózást végez az Azure Funct
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
-**Útmutató**: engedélyezze az Azure-Tevékenységnaplók diagnosztikai beállításait, valamint a Azure functions alkalmazás diagnosztikai beállításait, és küldje el a naplókat egy log Analytics munkaterületre. Lekérdezéseket hajthat végre Log Analytics a kifejezések kereséséhez, a trendek azonosításához, a mintázatok elemzéséhez és számos más elemzéshez az összegyűjtött adatok alapján.
+**Útmutató**: az Azure-Tevékenységnaplók diagnosztikai beállításainak, valamint a Function alkalmazás diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics munkaterületre. Lekérdezéseket hajthat végre Log Analytics a kifejezések kereséséhez, a trendek azonosításához, a mintázatok elemzéséhez és számos más elemzéshez az összegyűjtött adatok alapján.
 
-A naplók, a teljesítmény és a hibák adatainak gyűjtéséhez engedélyezze Application Insights a Azure Functions alkalmazásai számára. A Azure Portalon belül Application Insights gyűjtött telemetria-adatokat tekintheti meg.
+Engedélyezze Application Insights a Function apps számára a naplók, a teljesítmény és a hiba adatainak gyűjtéséhez. A Azure Portalon belül Application Insights gyűjtött telemetria-adatokat tekintheti meg.
 
-Ha beépített egyéni biztonsági/naplózási naplózást végez az Azure Function alkalmazásban, engedélyezze a "FunctionAppLogs" diagnosztikai beállítást, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. 
+Ha beépített egyéni biztonsági/naplózási naplózást végez a Function alkalmazásban, engedélyezze a "FunctionAppLogs" diagnosztikai beállítást, és küldje el a naplókat egy Log Analytics munkaterületre, az Azure Event hub vagy az Azure Storage-fiókba az archívumhoz. 
 
 Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et. 
 
@@ -305,9 +305,9 @@ Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmad
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: riasztások engedélyezése rendellenes tevékenységhez
 
-**Útmutató**: engedélyezze az Azure-Tevékenységnaplók diagnosztikai beállításait, valamint a Azure functions alkalmazás diagnosztikai beállításait, és küldje el a naplókat egy log Analytics munkaterületre. Lekérdezéseket hajthat végre Log Analytics a kifejezések kereséséhez, a trendek azonosításához, a mintázatok elemzéséhez és számos más elemzéshez az összegyűjtött adatok alapján. A Log Analytics munkaterület-lekérdezések alapján létrehozhat riasztásokat.
+**Útmutató**: az Azure-Tevékenységnaplók diagnosztikai beállításainak, valamint a Function alkalmazás diagnosztikai beállításainak engedélyezése és a naplók elküldése egy log Analytics munkaterületre. Lekérdezéseket hajthat végre Log Analytics a kifejezések kereséséhez, a trendek azonosításához, a mintázatok elemzéséhez és számos más elemzéshez az összegyűjtött adatok alapján. A Log Analytics munkaterület-lekérdezések alapján létrehozhat riasztásokat.
 
-A naplók, a teljesítmény és a hibák adatainak gyűjtéséhez engedélyezze Application Insights a Azure Functions alkalmazásai számára. Megtekintheti Application Insights által gyűjtött telemetria-adatokat, és riasztásokat hozhat létre a Azure Portalon belül.
+Engedélyezze Application Insights a Function apps számára a naplók, a teljesítmény és a hiba adatainak gyűjtéséhez. Megtekintheti Application Insights által gyűjtött telemetria-adatokat, és riasztásokat hozhat létre a Azure Portalon belül.
 
 Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et. 
 
@@ -327,7 +327,7 @@ Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmad
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: kártevő szoftverek közötti naplózás központosítása
 
-**Útmutató**: nem alkalmazható; Azure Functions alkalmazások nem dolgozzák fel és nem hoznak létre kártevő szoftverrel kapcsolatos naplókat.
+**Útmutató**: nem alkalmazható; a Function apps nem dolgoz fel és nem hoz létre kártevő-ellenes kapcsolódó naplókat.
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -335,7 +335,7 @@ Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmad
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: DNS-lekérdezések naplózásának engedélyezése
 
-**Útmutató**: nem alkalmazható; Azure Functions alkalmazások nem dolgozzák fel vagy nem hoznak létre felhasználó által elérhető DNS-naplókat.
+**Útmutató**: nem alkalmazható; a Function apps nem dolgozza fel vagy nem hozza létre a felhasználók számára elérhető DNS-naplókat.
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -399,7 +399,7 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) használata Azure Active Directory
 
-**Útmutató**: ha lehetséges, használja a Azure Active Directory SSO-t ahelyett, hogy egyéni önálló hitelesítő adatokat konfiguráljon a Function alkalmazáshoz való hozzáféréshez. Azure Security Center identitás-és hozzáférés-kezelési javaslatok használata. Az Azure Functions-alkalmazások egyszeri bejelentkezésének implementálása a App Service hitelesítés/engedélyezés funkció használatával.
+**Útmutató**: ha lehetséges, használja a Azure Active Directory SSO-t ahelyett, hogy egyéni önálló hitelesítő adatokat konfiguráljon a Function alkalmazáshoz való hozzáféréshez. Azure Security Center identitás-és hozzáférés-kezelési javaslatok használata. Az App Service hitelesítés/engedélyezés funkcióval egyszeri bejelentkezést valósíthat meg a Function apps-alkalmazásokhoz.
 
 - [A hitelesítés és az engedélyezés ismertetése Azure Functions](../app-service/overview-authentication-authorization.md#identity-providers)
 
@@ -459,9 +459,9 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 ### <a name="39-use-azure-active-directory"></a>3,9: a Azure Active Directory használata
 
-**Útmutató**: Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerként a Azure functions alkalmazásokhoz. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
+**Útmutató**: Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerként a Function apps-alkalmazásokhoz. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
 
-- [A Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára](../app-service/configure-authentication-provider-aad.md)
+- [A Function app konfigurálása az Azure AD-bejelentkezés használatára](../app-service/configure-authentication-provider-aad.md)
 
 - [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
@@ -483,13 +483,13 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: az inaktivált fiókok elérésére irányuló kísérletek figyelése
 
-**Útmutató**: a Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerként az Azure Function apps-alkalmazásokhoz. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
+**Útmutató**: Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerként a Function apps-alkalmazásokhoz. Az Azure AD az adatok védelme érdekében erős titkosítást használ a nyugalmi és a továbbítási adatokhoz. Az Azure AD emellett a felhasználó hitelesítő adatainak a sók, a kivonatok és a biztonságos tárolását is tartalmazza.
 
 Hozzáférése van az Azure AD bejelentkezési tevékenységeihez, a naplózási és a kockázati Eseménynapló-forrásokhoz, amelyek lehetővé teszik az Azure Sentinel vagy egy harmadik féltől származó SIEM integrálását.
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics belül is konfigurálhatja a kívánt naplózási riasztásokat.
 
-- [A Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára](../app-service/configure-authentication-provider-aad.md)
+- [A Function app konfigurálása az Azure AD-bejelentkezés használatára](../app-service/configure-authentication-provider-aad.md)
 
 - [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -501,7 +501,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: riasztás a fiók bejelentkezési viselkedésének eltérése esetén
 
-**Útmutató**: Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerként a Azure functions alkalmazásokhoz. A vezérlési síkon (a Azure Portal) való bejelentkezéshez használja a Azure Active Directory (AD) Identity Protection és a kockázati észlelési funkciókat a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszok konfigurálásához. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
+**Útmutató**: Azure Active Directory (ad) használata központi hitelesítési és engedélyezési rendszerként a Function apps-alkalmazásokhoz. A vezérlési síkon (a Azure Portal) való bejelentkezéshez használja a Azure Active Directory (AD) Identity Protection és a kockázati észlelési funkciókat a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszok konfigurálásához. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
 
 - [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -539,9 +539,9 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: bizalmas adatok tárolására vagy feldolgozására szolgáló rendszerek elkülönítése
 
-**Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. Az Azure Function apps-alkalmazásokat a Virtual Network (VNet)/subnet és a megfelelő címkével kell elválasztani.
+**Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. a Function apps-alkalmazásokat a virtuális hálózat (VNet)/subnet kell elválasztani, és megfelelően címkézve.
 
-A hálózati elkülönítés végrehajtásához privát végpontokat is használhat. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatásokhoz (például: Azure Functions alkalmazás HTTPs-végpontja). A privát végpont a virtuális hálózat egyik magánhálózati IP-címét használja, így lényegében bekapcsolja a szolgáltatást a virtuális hálózatba. A privát végpontok (előzetes verzió) a prémium csomagon futó Function apps szolgáltatásokhoz tartoznak. Az éles munkaterhelések használata előtt győződjön meg arról, hogy a magánhálózati végpontok már nem (előzetes verzió).
+A hálózati elkülönítés végrehajtásához privát végpontokat is használhat. Az Azure Private-végpontok olyan hálózati adapterek, amelyek az Azure privát kapcsolaton keresztül csatlakoznak egy szolgáltatáshoz (például: Function app HTTPs-végpont). A privát végpont a virtuális hálózat egyik magánhálózati IP-címét használja, így lényegében bekapcsolja a szolgáltatást a virtuális hálózatba. A privát végpontok (előzetes verzió) a prémium csomagon futó Function apps szolgáltatásokhoz tartoznak. Az éles munkaterhelések használata előtt győződjön meg arról, hogy a magánhálózati végpontok már nem (előzetes verzió).
 
 - [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
@@ -575,7 +575,7 @@ A Microsoft kezeli a Azure Functions alapjául szolgáló infrastruktúrát, és
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: minden bizalmas adat titkosítása az átvitel során
 
-**Útmutató**: az Azure Function-alkalmazások Azure Portal a "platform szolgáltatások: HÁLÓZATKEZELÉS: SSL" területen engedélyezze a "csak https" beállítást, és állítsa be a minimális TLS-verziót 1,2-re.
+**Útmutató**: a function apps Azure Portal a "platform szolgáltatások: HÁLÓZATKEZELÉS: SSL" területen engedélyezze a "csak https" beállítást, és állítsa be a minimális TLS-verziót 1,2-re.
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -595,7 +595,7 @@ A Microsoft által felügyelt mögöttes platform esetében a Microsoft az össz
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használata az Azure Function Control-síkon való hozzáférés vezérlésére (a Azure Portal). 
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával szabályozhatja a Function app Control Plane (a Azure Portal) elérését. 
 
 - [Az Azure RBAC konfigurálása](../role-based-access-control/role-assignments-portal.md)
 
@@ -629,7 +629,7 @@ A Microsoft kezeli a Azure Functions alapjául szolgáló infrastruktúrát, és
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: a kritikus Azure-erőforrások változásainak naplózása és riasztása
 
-**Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel az Azure functions-alkalmazások, valamint más kritikus vagy kapcsolódó erőforrások változásai zajlanak.
+**Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a termelési funkció alkalmazásaiban, valamint egyéb kritikus vagy kapcsolódó erőforrásokban is érvényben vannak.
 
 - [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -643,9 +643,9 @@ A Microsoft kezeli a Azure Functions alapjául szolgáló infrastruktúrát, és
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
-**Útmutató**: DevSecOps gyakorlat alkalmazása annak biztosítására, hogy Azure functions alkalmazásai biztonságosak legyenek, és a lehető legbiztonságosabbak maradjanak életciklusuk időtartama alatt. A DevSecOps beépíti a szervezete biztonsági csapatát és képességeiket a DevOps-gyakorlatba, így a csapaton belül mindenki felelős a biztonságért.
+**Útmutató**: hozzon létre egy DevSecOps, amely biztosítja, hogy a függvény alkalmazásai biztonságosak legyenek, és a lehető legbiztonságosabbak maradjanak életciklusuk időtartama alatt. A DevSecOps beépíti a szervezete biztonsági csapatát és képességeiket a DevOps-gyakorlatba, így a csapaton belül mindenki felelős a biztonságért.
 
-Az Azure Function apps biztonságossá tételéhez a Azure Security Center ajánlásai is megtalálhatók.
+Emellett a Azure Security Center javaslatainak követésével biztonságosabbá teheti a Function-alkalmazásokat.
 
 - [Folyamatos biztonsági ellenőrzés hozzáadása a CI/CD-folyamathoz](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
@@ -821,9 +821,9 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
 
-**Útmutató**: a bizalmas vagy magas kockázatú Azure Function-alkalmazások esetében külön előfizetéseket és/vagy felügyeleti csoportokat kell megvalósítani az elkülönítés biztosításához.
+**Útmutató**: a bizalmas vagy magas kockázatú függvények alkalmazásai esetében külön előfizetéseket és/vagy felügyeleti csoportokat kell megvalósítani az elkülönítés biztosításához.
 
-Magas kockázatú Azure Function-alkalmazásokat helyezhet üzembe a saját Virtual Network (VNet). A Azure Functions virtuális hálózatok keresztül érhető el a peremhálózat biztonsága. A prémium csomagon vagy App Service Environmenton (virtuális hálózatok) futó függvények integrálható a szolgáltatásba. Válassza ki a legjobb architektúrát a használati esethez.
+Magas kockázatú Function-alkalmazásokat telepíthet a saját Virtual Networkba (VNet). A virtuális hálózatok keresztül érhető el a Function apps peremhálózati biztonsági funkciója. A prémium csomagon vagy App Service Environmenton (virtuális hálózatok) futó függvények integrálható a szolgáltatásba. Válassza ki a legjobb architektúrát a használati esethez.
 
 - [Az Azure Functions hálózatkezelési lehetőségei](./functions-networking-options.md)
 
@@ -849,10 +849,10 @@ Belső beszerzési útmutató létrehozása:
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
-**Útmutató**: az Azure Function-alkalmazás szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. A "Microsoft. Web" névtérben Azure Policy Aliasok használatával egyéni házirendeket hozhat létre a Azure Functions-alkalmazások konfigurációjának naplózásához vagy érvényesítéséhez. Olyan beépített szabályzat-definíciókat is használhat, mint például a következők:
-- Felügyelt identitást kell használni a függvényalkalmazás
+**Útmutató**: a Function alkalmazás szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. Web" névtérben, hogy egyéni szabályzatokat hozzon létre a Function apps konfigurációjának naplózásához vagy érvényesítéséhez. Olyan beépített szabályzat-definíciókat is használhat, mint például a következők:
+- A felügyelt identitást a Function alkalmazásban kell használni
 - A távoli hibakeresést ki kell kapcsolni a Function apps szolgáltatásban
-- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
+- A Function alkalmazás csak HTTPS protokollon keresztül érhető el
 
 - [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -972,7 +972,7 @@ Belső beszerzési útmutató létrehozása:
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
-**Útmutató**: felügyelt identitások használatával biztosíthatja az Azure Function-alkalmazás automatikus felügyelt identitását az Azure ad-ben. A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
+**Útmutató**: felügyelt identitások használatával biztosíthatja a Function app számára az automatikusan felügyelt identitást az Azure ad-ben. A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
 - [Felügyelt identitások használata App Service és Azure Functions](../app-service/overview-managed-identity.md)
 

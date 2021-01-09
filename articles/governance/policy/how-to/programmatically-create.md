@@ -3,12 +3,12 @@ title: Szabályzatok létrehozása programozott módon
 description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet szabályzatokat az Azure CLI-vel, a Azure PowerShelltal és a REST APIokkal Azure Policy.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920015"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033863"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
@@ -95,7 +95,7 @@ Az erőforrások jobb láthatóságának első lépése, hogy szabályzatokat ho
    - Előfizetés `/subscriptions/{subId}`
    - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Az erőforrás-házirendek Resource Manager PowerShell-modul használatával történő kezelésével kapcsolatos további információkért tekintse meg az [az. Resources](/powershell/module/az.resources/#policies)című témakört.
+Az erőforrás-házirendek Resource Manager PowerShell-modul használatával történő kezelésével kapcsolatos további információkért tekintse meg az [az. Resources](/powershell/module/az.resources/#policy)című témakört.
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Szabályzat-definíció létrehozása és társítása a ARMClient használatával
 
@@ -237,12 +237,12 @@ Az Ön által létrehozott szabályzat-definíció AZONOSÍTÓjának a következ
 
 Az erőforrás-házirendek Azure CLI-vel való kezelésével kapcsolatos további információkért lásd: [Azure CLI erőforrás-házirendek](/cli/azure/policy).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A cikkben szereplő parancsokkal és lekérdezésekkel kapcsolatos további információkért tekintse át a következő cikkeket.
 
 - [Azure REST API-erőforrások](/rest/api/resources/)
-- [Azure PowerShell modulok](/powershell/module/az.resources/#policies)
+- [Azure PowerShell modulok](/powershell/module/az.resources/#policy)
 - [Azure CLI-házirend parancsai](/cli/azure/policy)
 - [Azure Policy az erőforrás-szolgáltató REST API referenciája](/rest/api/policy-insights)
 - [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../../management-groups/overview.md).

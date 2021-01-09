@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 20dc6cde9cce6a9d57047940a38adb5cf004ae6a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 4fc2426189384856d2d2e95887cdabd2f9e9ebea
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347676"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033778"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Table Storage – bemeneti kötések Azure Functions
 
@@ -296,97 +296,6 @@ public class Person : TableEntity
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Az alábbi példa egy tábla beviteli kötést mutat be egy *function.jsa* fájlban és a [JavaScript-kódban](functions-reference-node.md) , amely a kötést használja. A függvény üzenetsor-triggert használ egy egytáblázatos sor olvasására. 
-
-A fájl *function.js* az a és a paramétert adja meg `partitionKey` `rowKey` . A `rowKey` (z) {queueTrigger} érték azt jelzi, hogy a sor kulcsa az üzenetsor-üzenet sztringből származik.
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "personEntity",
-      "type": "table",
-      "tableName": "Person",
-      "partitionKey": "Test",
-      "rowKey": "{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
-
-Itt látható a JavaScript-kód:
-
-```javascript
-module.exports = function (context, myQueueItem) {
-    context.log('Node.js queue trigger function processed work item', myQueueItem);
-    context.log('Person entity name: ' + context.bindings.personEntity.Name);
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Egytáblás sor 
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "messageJSON",
-      "type": "table",
-      "tableName": "messages",
-      "partitionKey": "message",
-      "rowKey": "{id}",
-      "connection": "AzureWebJobsStorage",
-      "direction": "in"
-    },
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route": "messages/{id}"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ],
-  "disabled": false
-}
-```
-
-```python
-import json
-
-import azure.functions as func
-
-def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
-
-    message = json.loads(messageJSON)
-    return func.HttpResponse(f"Table row: {messageJSON}")
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Az alábbi példa egy HTTP által aktivált függvényt mutat be, amely egy, a Table Storage-ban megadott partícióban található, személyre szabott objektumok listáját adja vissza. A példában a partíciós kulcsot a rendszer kinyeri a http-útvonalból, és a táblanév és a kapcsolatok a függvény beállításaiból származnak. 
@@ -440,7 +349,7 @@ public HttpResponseMessage get(
 }
 ```
 
-Az alábbi példák a szűrőt használják egy adott névvel rendelkező személyek lekérdezésére egy Azure-táblában, és korlátozzák a lehetséges egyezések számát 10 találatra.
+Az alábbi példa a szűrő használatával kérdez le egy Azure-táblázatban megadott névvel rendelkező személyeket, és korlátozza a lehetséges egyezések számát 10 találatra.
 
 ```java
 @FunctionName("getPersonsByName")
@@ -454,6 +363,143 @@ public Person[] get(
 
     return persons;
 }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Az alábbi példa egy tábla beviteli kötést mutat be egy *function.jsa* fájlban és a [JavaScript-kódban](functions-reference-node.md) , amely a kötést használja. A függvény üzenetsor-triggert használ egy egytáblázatos sor olvasására. 
+
+A fájl *function.js* az a és a paramétert adja meg `partitionKey` `rowKey` . A `rowKey` (z) {queueTrigger} érték azt jelzi, hogy a sor kulcsa az üzenetsor-üzenet sztringből származik.
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "personEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+A [konfigurációs](#configuration) szakasz ezeket a tulajdonságokat ismerteti.
+
+Itt látható a JavaScript-kód:
+
+```javascript
+module.exports = function (context, myQueueItem) {
+    context.log('Node.js queue trigger function processed work item', myQueueItem);
+    context.log('Person entity name: ' + context.bindings.personEntity.Name);
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A következő függvény egy üzenetsor-triggert használ egy függvény bemenetének beolvasásához.
+
+Ebben a példában a kötési konfiguráció egy explicit értéket ad meg a tábla számára, `partitionKey` és egy kifejezést használ a értékre való továbbításhoz `rowKey` . A `rowKey` kifejezés `{queueTrigger}` azt jelzi, hogy a sor kulcsa az üzenetsor-üzenet sztringből származik.
+
+function.jskötésének konfigurálása _a_ következőn:
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "MyQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "PersonEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+PowerShell-kód a _run.ps1ban_:
+
+```powershell
+param($MyQueueItem, $PersonEntity, $TriggerMetadata)
+Write-Host "PowerShell queue trigger function processed work item: $MyQueueItem"
+Write-Host "Person entity name: $($PersonEntity.Name)"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+A következő függvény egy üzenetsor-triggert használ egy függvény bemenetének beolvasásához.
+
+Ebben a példában a kötési konfiguráció egy explicit értéket ad meg a tábla számára, `partitionKey` és egy kifejezést használ a értékre való továbbításhoz `rowKey` . A `rowKey` kifejezés `{id}` azt jelzi, hogy a sor kulcsa az üzenetsor-üzenet sztringből származik.
+
+Kötési konfiguráció a fájl _function.jsjában_ :
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "messageJSON",
+      "type": "table",
+      "tableName": "messages",
+      "partitionKey": "message",
+      "rowKey": "{id}",
+      "connection": "AzureWebJobsStorage",
+      "direction": "in"
+    },
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route": "messages/{id}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Python-kód az *\_ \_ init \_ \_ .* rajzfájl fájlban:
+
+```python
+import json
+
+import azure.functions as func
+
+def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
+
+    message = json.loads(messageJSON)
+    return func.HttpResponse(f"Table row: {messageJSON}")
 ```
 
 ---
@@ -522,17 +568,21 @@ A használandó Storage-fiók a következő sorrendben van meghatározva:
 
 A C# parancsfájl nem támogatja az attribútumokat.
 
+# <a name="java"></a>[Java](#tab/java)
+
+A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@TableInput` jegyzeteket azon paramétereknél, amelyek értéke a Table Storage-ból származik.  Ez a jegyzet natív Java-típusokkal, Szerializálói vagy NULL értékű értékekkel használható a használatával `Optional<T>` .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A PowerShell nem támogatja az attribútumokat.
+
 # <a name="python"></a>[Python](#tab/python)
 
 A Python nem támogatja az attribútumokat.
-
-# <a name="java"></a>[Java](#tab/java)
-
-A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@TableInput` jegyzeteket azon paramétereknél, amelyek értéke a Table Storage-ból származik.  Ez a jegyzet natív Java-típusokkal, Szerializálói vagy NULL értékű értékekkel használható a használatával `Optional<T>` .
 
 ---
 
@@ -542,13 +592,13 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | Értékre kell állítani `table` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban.|
-|**irányba** | n/a | Értékre kell állítani `in` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban. |
-|**név** | n/a | Annak a változónak a neve, amely a függvény kódjában szereplő táblát vagy entitást jelképezi. | 
+|**típusa** | n.a. | Értékre kell állítani `table` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban.|
+|**irányba** | n.a. | Értékre kell állítani `in` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban. |
+|**név** | n.a. | Annak a változónak a neve, amely a függvény kódjában szereplő táblát vagy entitást jelképezi. | 
 |**tableName** | **Táblanév** | A tábla neve.| 
 |**partitionKey** | **PartitionKey** |Választható. Az olvasni kívánt tábla entitás partíciós kulcsa. Tekintse meg a [használat](#usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
 |**rowKey** |**RowKey** | Választható. Az olvasni kívánt tábla entitáshoz tartozó sor kulcsa. Tekintse meg a [használat](#usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
-|**take** |**Eltarthat** | Választható. A JavaScriptben olvasható entitások maximális száma. Tekintse meg a [használat](#usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
+|**eltarthat** |**Eltarthat** | Választható. A JavaScriptben olvasható entitások maximális száma. Tekintse meg a [használat](#usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
 |**szűrő** |**Szűrő** | Választható. OData-szűrési kifejezés a JavaScriptben a tábla beviteléhez. Tekintse meg a [használat](#usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
 |**kapcsolat** |**Kapcsolat** | Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. A beállítás lehet egy "AzureWebJobs" előre rögzített alkalmazás vagy a kapcsolatok karakterláncának neve. Ha például a beállítás neve "AzureWebJobsMyStorage", itt adhatja meg a "MyStorage" értéket. A functions futtatókörnyezet automatikusan megkeresi a "AzureWebJobsMyStorage" nevű alkalmazás-beállítást. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .|
 
@@ -582,20 +632,24 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
   > [!NOTE]
   > `IQueryable` nem támogatott a [functions v2 futtatókörnyezetben](functions-versions.md). Egy másik lehetőség egy [CloudTable paramName metódus paraméter használata](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) a tábla olvasásához az Azure Storage SDK használatával. Ha egy hibaüzenetet próbál meg kötni `CloudTable` , és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
+# <a name="java"></a>[Java](#tab/java)
+
+A [TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput) attribútum hozzáférést biztosít a függvényt kiváltó tábla sorához.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Adja meg a `filter` és a `take` tulajdonságokat. Nincs beállítva `partitionKey` vagy `rowKey` . A bemeneti tábla entitás (vagy entitások) elérése a használatával `context.bindings.<BINDING_NAME>` . A deszerializált objektumok rendelkeznek `RowKey` és `PartitionKey` tulajdonságokkal rendelkeznek.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Az adatokat a rendszer a `name` fájl *function.js* kulcsában megadott bemeneti paraméternek adja át. A és a `partitionKey` `rowKey` lehetővé teszi a szűrést adott rekordokra. További részletekért tekintse meg a [PowerShell-példát](#example) .
 
 # <a name="python"></a>[Python](#tab/python)
 
 A tábla adatát a rendszer JSON-karakterláncként adja át a függvénynek. Az üzenet deszerializálása a `json.loads` bemeneti [példában](#example)látható módon.
 
-# <a name="java"></a>[Java](#tab/java)
-
-A [TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput) attribútum hozzáférést biztosít a függvényt kiváltó tábla sorához.
-
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Táblázatos tárolási adatok írása függvényből](./functions-bindings-storage-table-output.md)

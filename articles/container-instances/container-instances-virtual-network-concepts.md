@@ -3,12 +3,12 @@ title: Virtuális hálózat használatára vonatkozó forgatókönyvek
 description: Forgatókönyvek, erőforrások és korlátozások a tároló-csoportok Azure-beli virtuális hálózatra való üzembe helyezéséhez.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882432"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033829"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Virtuális hálózati forgatókönyvek és erőforrások
 
@@ -33,6 +33,7 @@ Az Azure-beli virtuális hálózatba üzembe helyezett tároló-csoportok a köv
 * **Azure Load Balancer** – a hálózati tárolóban található tároló példányai előtt egy Azure Load Balancer elhelyezése nem támogatott
 * **Globális virtuális hálózati** társítás – globális társítás (virtuális hálózatok összekapcsolása az Azure-régiók között) nem támogatott
 * A virtuális hálózatra telepített **nyilvános IP-cím vagy DNS** -tároló csoportok jelenleg nem támogatják a tárolók közvetlen közzétételét nyilvános IP-címmel vagy teljes tartománynévvel.
+* **Virtual Network NAT** – a virtuális hálózatra telepített tároló-csoportok jelenleg nem TÁMOGATJÁK a NAT-átjáró erőforrásait a kimenő internetkapcsolathoz.
 
 ## <a name="other-limitations"></a>Egyéb korlátozások
 

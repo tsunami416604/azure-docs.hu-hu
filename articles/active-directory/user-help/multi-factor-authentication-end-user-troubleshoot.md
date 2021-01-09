@@ -13,12 +13,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: caa2c66d66cce09f5b5b0fe0948ab924389d756e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0cb5e3463eda5d77bbbdefe223954105fd125c71
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033782"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033982"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>A kétfaktoros hitelesítéssel és a munkahelyi vagy iskolai fiókkal kapcsolatos gyakori problémák
 
@@ -74,7 +74,7 @@ Az ellenőrző kód nem érkezik gyakori probléma. A probléma általában a mo
 
 Próbálja ki! | Útmutató információk
 --------- | ------------
-A Microsoft hitelesítő alkalmazás vagy az ellenőrző kódok használata | A bejelentkezéskor a "elérte a határértéket az ellenőrző hívások esetében" vagy "a szöveges ellenőrző kódok korlátozása" hibaüzenetet kapta. <br/><br/>A Microsoft egy rövid időn belül korlátozza az ugyanazon felhasználó által végrehajtott ismétlődő hitelesítési kísérleteket. Ez a korlátozás nem vonatkozik a Microsoft Authenticatorra vagy az ellenőrző kódra. Ha elérte ezeket a korlátokat, használhatja a hitelesítő alkalmazást, az ellenőrző kódot, vagy próbáljon meg néhány perc múlva újra bejelentkezni.
+A Microsoft hitelesítő alkalmazás vagy az ellenőrző kódok használata | A bejelentkezéskor a "elérte a határértéket az ellenőrző hívások esetében" vagy "a szöveges ellenőrző kódok korlátozása" hibaüzenetet kapta. <br/><br/>A Microsoft egy rövid időn belül korlátozza az ugyanazon felhasználó által végrehajtott ismétlődő hitelesítési kísérleteket. Ez a korlátozás nem vonatkozik a Microsoft Authenticatorra vagy az ellenőrző kódra. Ha elérte ezeket a korlátokat, használhatja a hitelesítő alkalmazást, az ellenőrző kódot, vagy próbáljon meg néhány perc múlva újra bejelentkezni. <br/><br/> "Sajnáljuk, nem sikerül ellenőrizni a fiókját" hibaüzenet jelenik meg a bejelentkezés során. <br/><br/> A Microsoft a sikertelen hang-vagy SMS-hitelesítési kísérletek miatt korlátozhatja vagy letilthatja a hang-vagy SMS-hitelesítési kísérleteket, amelyeket ugyanaz a felhasználó, a telefonszám vagy a szervezet hajt végre. Ha ezt a hibát tapasztalja, kipróbálhat egy másik módszert, például a hitelesítő alkalmazást vagy az ellenőrző kódot, vagy elérheti a rendszergazda segítségét.
 Mobil eszköz újraindítása | Előfordulhat, hogy az eszköz csak a frissítésre van szüksége. Az eszköz újraindításakor az összes háttérbeli folyamat és szolgáltatás véget ér. Az újraindítás az eszköz alapvető összetevőit is leállítja. Az eszköz újraindításakor bármely szolgáltatás vagy összetevő frissül.
 Ellenőrizze, hogy helyesek-e a biztonsági adatok | Győződjön meg arról, hogy a biztonsági ellenőrzési módszer adatai pontosak, különösen a telefonszámok. Ha helytelen telefonszámot helyez üzembe, az összes riasztás nem megfelelő számú. Szerencsére a felhasználó nem fog tudni bármit megtenni a riasztásokkal, de nem segít bejelentkezni a fiókjába. Az adatok helyességének biztosításához tekintse meg a [kétfaktoros ellenőrzési módszer beállításainak kezelése](multi-factor-authentication-end-user-manage-settings.md) című cikket.
 Ellenőrizze, hogy be vannak-e kapcsolva az értesítések | Győződjön meg arról, hogy a mobileszköz értesítések bekapcsolva. Győződjön meg arról, hogy a következő értesítési módok engedélyezettek: <br/><br/> &bull; Telefonhívások <br/> &bull; A hitelesítési alkalmazás <br/> &bull; Szöveges üzenetküldési alkalmazás <br/><br/> Győződjön meg arról, hogy ezek a módok olyan riasztást hoznak létre, amely _látható_ az eszközön.

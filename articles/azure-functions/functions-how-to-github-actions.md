@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608510"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035223"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
-A [GitHub-műveletek](https://github.com/features/actions) használatával definiálhat egy munkafolyamatot, amely automatikusan létrehozza és telepíti a kódot az Azure Function alkalmazásban. 
+A [GitHub-műveletek](https://github.com/features/actions) használatával definiálhat egy munkafolyamatot, amely automatikusan felépíti és telepíti a Function alkalmazás kódját a Azure Functionsban. 
 
-A GitHub-műveletekben a [munkafolyamat](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) egy automatizált folyamat, amelyet a GitHub-tárházban határozhat meg. Ezzel a folyamattal megtudhatja, hogyan hozhat létre és helyezhet üzembe functions-projekteket a GitHubon. 
+A GitHub-műveletekben a [munkafolyamat](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) egy automatizált folyamat, amelyet a GitHub-tárházban határozhat meg. Ez a folyamat azt mutatja be, hogy a GitHub hogyan hozhat létre és helyezhet üzembe Function app-projektet a GitHubon. 
 
 A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza. 
 
@@ -187,6 +187,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely létrehozza a F
 ---
 
 ## <a name="deploy-the-function-app"></a>A függvényalkalmazás üzembe helyezése
+
 Használja a `Azure/functions-action` műveletet a kód egy Function alkalmazásban való üzembe helyezéséhez. Ehhez a művelethez három paraméter tartozik:
 
 |Paraméter |Magyarázat  |
@@ -202,7 +203,7 @@ Az alábbi példa a és a rendszer 1. verzióját használja a `functions-action
 Hozzon létre egy olyan .NET Linux-munkafolyamatot, amely egy közzétételi profilt használ.
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
+name: Deploy DotNet project to function app with a Linux environment
 
 on:
   [push]
@@ -241,7 +242,7 @@ jobs:
 Hozzon létre egy olyan .NET Windows-munkafolyamatot, amely egy közzétételi profilt használ.
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
+name: Deploy DotNet project to function app with a Windows environment
 
 on:
   [push]
@@ -283,7 +284,7 @@ jobs:
 Hozzon létre egy Java Linux-munkafolyamatot, amely egy közzétételi profilt használ.
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -325,7 +326,7 @@ jobs:
 Hozzon létre egy Java Windows-munkafolyamatot, amely egy közzétételi profilt használ.
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -369,7 +370,7 @@ jobs:
 Hozzon létre egy Node.JS Linux-munkafolyamatot, amely egy közzétételi profilt használ.
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -411,7 +412,7 @@ jobs:
 Hozzon létre egy Node.JS Windows-munkafolyamatot, amely egy közzétételi profilt használ.
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -455,7 +456,7 @@ jobs:
 Hozzon létre egy olyan Python Linux-munkafolyamatot, amely egy közzétételi profilt használ.
 
 ```yaml
-name: Deploy Python project to Azure Function App
+name: Deploy Python project to function app
 
 on:
   [push]

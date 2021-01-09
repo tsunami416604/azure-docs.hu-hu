@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 907836b0e45ccc9e9481e605b1ebf4180f7650d6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 621773a84db99dbacfaa163f77189974ba102163
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182580"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034815"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB által aktivált függvény létrehozása
 
@@ -22,12 +22,13 @@ Megismerheti, hogyan hozhat létre egy olyan függvényt, amelyet az aktivál, h
 
 Az oktatóanyag elvégzéséhez:
 
-+ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
++ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
@@ -36,7 +37,7 @@ A trigger létrehozásához rendelkeznie kell egy SQL API-t használó Azure Cos
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="create-an-azure-function-app"></a>Azure-függvényalkalmazás létrehozása
+## <a name="create-a-function-app-in-azure"></a>Függvényalkalmazás létrehozása az Azure-ban
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -57,7 +58,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
     | Beállítás      | Ajánlott érték  | Leírás                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Új függvény** | Az alapértelmezett név elfogadása | A függvény neve. |
+    | **Új függvény** | Fogadja el az alapértelmezett nevet | A függvény neve. |
     | **Cosmos DB-fiókkapcsolat** | Az alapértelmezett új név elfogadása | Válassza az **új**, a korábban létrehozott **adatbázis-fiók** elemet, majd **az OK gombot**. Ez a művelet létrehoz egy Alkalmazásbeállítás a fiók kapcsolatához. Ezt a beállítást használja a kötés, hogy kapcsolódjon az adatbázishoz. |
     | **Adatbázis neve** | Feladatok | A figyelni kívánt gyűjteményt tartalmazó adatbázis neve. |
     | **Gyűjtemény neve** | Elemek | A figyelni kívánt gyűjtemény neve. |
@@ -133,7 +134,7 @@ Ha a függvény kötésében megadott tároló létezik, akkor tesztelheti a fü
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Létrehozott egy függvényt, amely akkor fut, amikor dokumentum hozzáadása vagy módosítása történik az Azure Cosmos DB-ben. További információ az Azure Cosmos DB-eseményindítókról: [Azure Cosmos DB – Azure Functions kötések](functions-bindings-cosmosdb.md).
 

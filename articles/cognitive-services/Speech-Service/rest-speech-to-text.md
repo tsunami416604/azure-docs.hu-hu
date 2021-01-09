@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c746666d58e21c2705a2ef1d6a17d0d1196f7590
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504474"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033642"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -61,7 +61,7 @@ Mielőtt a rövid hanghoz tartozó beszéd-szöveg REST API használja, vegye fi
 Ha a hosszú hang küldése az alkalmazásra vonatkozó követelmény, érdemes lehet használni a [SPEECH SDK](speech-sdk.md) [-t vagy a beszéd – szöveg REST API v 3.0](#speech-to-text-rest-api-v30)-s verzióját.
 
 > [!TIP]
-> Lásd: az Azure Government [dokumentációja](../../azure-government/compare-azure-government-global-azure.md) a Government Cloud (FairFax) végpontokhoz.
+> Tekintse meg [ezt a cikket](sovereign-clouds.md) Azure Government és az Azure China-végpontokról.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -95,7 +95,7 @@ Ezek a paraméterek szerepelhetnek a REST-kérelem lekérdezési karakterláncá
 
 Ez a táblázat a beszédfelismerési kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
-|Fejléc| Description | Kötelező/nem kötelező |
+|Fejléc| Leírás | Kötelező/nem kötelező |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | A beszédfelismerési szolgáltatás előfizetési kulcsa. | Ez a fejléc vagy `Authorization` kötelező. |
 | `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Ez a fejléc vagy `Ocp-Apim-Subscription-Key` kötelező. |
@@ -335,7 +335,7 @@ Egy tipikus válasz az elismeréshez a kiejtés értékelésével:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 - [Akusztikai modellek testreszabása](./how-to-custom-speech-train-model.md)

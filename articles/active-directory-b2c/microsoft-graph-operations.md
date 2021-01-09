@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.custom: fasttrack-edit
+ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509818"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033608"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>A Azure AD B2C számára elérhető Microsoft Graph műveletek
 
@@ -57,10 +58,10 @@ Kezelheti az Azure AD B2C bérlője felhasználói folyamatai számára elérhet
 
 A regisztrációhoz, a bejelentkezéshez, a kombinált regisztrációhoz, a bejelentkezéshez, a jelszó-visszaállításhoz és a profil frissítéséhez szükséges előre elkészített szabályzatok konfigurálása.
 
-- [Felhasználói folyamatok listázása](/graph/api/identityuserflow-list)
-- [Felhasználói folyamat létrehozása](/graph/api/identityuserflow-post-userflows)
-- [Felhasználói folyamat beszerzése](/graph/api/identityuserflow-get)
-- [Felhasználói folyamat törlése](/graph/api/identityuserflow-delete)
+- [Felhasználói folyamatok listázása](/graph/api/identitycontainer-list-b2cuserflows)
+- [Felhasználói folyamat létrehozása](/graph/api/identitycontainer-post-b2cuserflows)
+- [Felhasználói folyamat beszerzése](/graph/api/b2cidentityuserflow-get)
+- [Felhasználói folyamat törlése](/graph/api/b2cidentityuserflow-delete)
 
 ## <a name="custom-policies"></a>Egyéni szabályzatok
 

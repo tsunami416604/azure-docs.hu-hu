@@ -3,16 +3,16 @@ title: Oktatóanyag – szabályok létrehozása és kezelése az Azure IoT Cent
 description: Ez az oktatóanyag azt mutatja be, hogy az Azure IoT Central-szabályok hogyan teszik lehetővé az eszközök közel valós idejű figyelését és a műveletek automatikus meghívását, például e-mailek küldését a szabály indításakor.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/16/2020
+ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6d49e3585460c95ca931f497a63cbc281aed1db1
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a1991860e1599020c5a91c09dfb30a96ed442ff7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991013"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033846"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Oktatóanyag: Szabály létrehozása és értesítések beállítása az Azure IoT Central-alkalmazásban
 
@@ -38,6 +38,9 @@ Mielőtt elkezdené, hajtsa végre az [Azure IoT Central-alkalmazás létrehozá
 ## <a name="create-a-rule"></a>Szabály létrehozása
 
 Telemetria szabály létrehozásához az eszköz sablonjának tartalmaznia kell legalább egy telemetria értéket. Ez az oktatóanyag egy szimulált **érzékelő vezérlő** eszközt használ, amely hőmérséklet-és páratartalom-telemetria küld. Hozzáadta ezt az eszközt, és létrehozott egy szimulált eszközt a [szimulált eszköz hozzáadása a IoT Central alkalmazáshoz](./quick-create-simulated-device.md) című rövid útmutatóban. A szabály figyeli az eszköz által jelentett hőmérsékletet, és e-mailt küld, ha 70 fok fölé kerül.
+
+> [!NOTE]
+> Felhasználónként legfeljebb 50 szabályt lehet megszabni.
 
 1. A bal oldali ablaktáblán válassza a **szabályok** lehetőséget.
 

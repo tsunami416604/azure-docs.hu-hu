@@ -3,12 +3,12 @@ title: A Container Group statikus IP-címe
 description: Hozzon létre egy tároló csoportot egy virtuális hálózatban, és egy Azure Application Gateway használatával tegye elérhetővé egy statikus előtérbeli IP-címet egy tárolós webalkalmazáshoz
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260776"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035053"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Statikus IP-cím közzététele egy tároló csoport számára
 
@@ -29,7 +29,7 @@ Mindaddig, amíg az Application Gateway fut, és a tároló csoport egy stabil m
 
 Egy tipikus esetben előfordulhat, hogy már rendelkezik Azure-beli virtuális hálózattal. Ha még nem rendelkezik ilyennel, hozzon létre egyet a következő példában látható parancsokkal. A virtuális hálózatnak külön alhálózatokra van szüksége az Application Gateway és a Container csoport számára.
 
-Ha szüksége van erre, hozzon létre egy Azure-erőforráscsoportot. Például:
+Ha szüksége van erre, hozzon létre egy Azure-erőforráscsoportot. Példa:
 
 ```azureci
 az group create --name myResourceGroup --location eastus
@@ -100,6 +100,9 @@ ACI_IP=$(az container show \
   --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv)
 ```
+
+> [!IMPORTANT]
+> Ha a tároló csoport leáll, elindult vagy újraindult, a tároló csoport privát IP-címének módosítása változhat. Ha ez történik, frissítenie kell az Application Gateway konfigurációját.
 
 ## <a name="create-application-gateway"></a>Alkalmazásátjáró létrehozása
 

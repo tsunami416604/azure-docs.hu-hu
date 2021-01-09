@@ -4,12 +4,12 @@ description: Hozzon létre egy kiszolgáló nélküli Python-függvény alkalmaz
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 89cf1422c70a49497a1bc43e42248612e0c8dd83
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 00bf0ecc9db3cf369fd75b427dcfba686aed0ed5
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930905"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035121"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Fájlmegosztás csatlakoztatása egy Python-függvény alkalmazásához az Azure CLI használatával
 
@@ -26,9 +26,9 @@ Ez a Azure Functions minta parancsfájl létrehoz egy függvény alkalmazást, �
 
 ## <a name="sample-script"></a>Példaszkript
 
-Ez a szkript létrehoz egy Azure Function-alkalmazást a használati [terv](../consumption-plan.md)használatával.
+Ez a szkript létrehoz egy Function alkalmazást Azure Functions a használati [terv](../consumption-plan.md)használatával.
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/functions-cli-mount-files-storage-linux/functions-cli-mount-files-storage-linux.sh "Create an Azure Function on a Consumption plan")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/functions-cli-mount-files-storage-linux/functions-cli-mount-files-storage-linux.sh "Create a function app on a Consumption plan")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -36,7 +36,7 @@ Ez a szkript létrehoz egy Azure Function-alkalmazást a használati [terv](../c
 
 A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik. Ez a szkript a következő parancsokat használja:
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy Azure Storage-fiókot. |

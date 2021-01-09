@@ -3,14 +3,14 @@ title: Azure Kubernetes szolgáltatás (ak) a rendelkezésre állási SLA-val
 description: Ismerje meg az Azure Kubernetes Service (ak) API-kiszolgáló opcionális, rendelkezésre állási SLA-ajánlatát.
 services: container-service
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 95728ca14b96adf7396ca13888107477d953b2a9
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607339"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033336"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes szolgáltatás (ak) üzemidő SLA
 
@@ -26,7 +26,7 @@ Az ügyfelek továbbra is létrehozhatnak korlátlan számú ingyenes fürtöt 9
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
 * A rendelkezésre állási SLA nyilvános régiókban és Azure Government-régiókban érhető el, ahol az [AK támogatott](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
-* A rendelkezésre állási SLA minden olyan régióban [elérhető, ahol][private-clusters] az AK támogatott.
+* [A rendelkezésre][private-clusters] állási SLA minden olyan nyilvános régióban elérhető, ahol az AK támogatott.
 
 ## <a name="sla-terms-and-conditions"></a>SLA-feltételek és kikötések
 

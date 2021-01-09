@@ -1,14 +1,14 @@
 ---
 title: DoD Impact Level 5 tervezet minta
 description: Üzembe helyezheti a DoD Impact Level 5 tervezetének lépéseit, beleértve a Blueprint-összetevők paraméterének részleteit.
-ms.date: 09/17/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: deb6ffa0f886cc6a4a9bea10a38d7cd82e7df8f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6136136eef5d405ae0849e5ce8c8faede138fb00
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90978227"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034900"
 ---
 # <a name="deploy-the-dod-impact-level-5-blueprint-sample"></a>A DoD Impact Level 5 Blueprint minta üzembe helyezése
 
@@ -29,7 +29,7 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 1. A bal oldalon válassza az **Első lépések** oldalt, és válassza a _Terv létrehozása_ területen a **Létrehozás** lehetőséget.
 
-1. Keresse meg a **DoD Impact Level 5** tervezet mintát _más minták_ alatt, és válassza a **minta használata**lehetőséget.
+1. Keresse meg a **DoD Impact Level 5** tervezet mintát _más minták_ alatt, és válassza a **minta használata** lehetőséget.
 
 1. Adja meg a tervminta _alapvető beállításait_:
 
@@ -52,7 +52,7 @@ A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött
 
 ## <a name="assign-the-sample-copy"></a>Ugyanazon másolat hozzárendelése
 
-Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
+Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 

@@ -1,14 +1,14 @@
 ---
 title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
-ms.date: 12/21/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 86d524665b70725108324b1d88521a4c3cb8ff05
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723269"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033965"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -68,6 +68,8 @@ A Windows és a Linux operációs rendszer következő verziói hivatalosan tám
 ### <a name="azure-subscription-and-service-limits"></a>Az Azure-előfizetések és -szolgáltatások korlátozásai
 
 Mielőtt a gépeket az Azure arc-kompatibilis kiszolgálókhoz konfigurálja, tekintse át a Azure Resource Manager [előfizetési korlátait](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) és az [erőforráscsoport korlátait](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) , hogy megtervezze a csatlakoztatni kívánt gépek számát.
+
+Az Azure arc-kompatibilis kiszolgálók legfeljebb 5 000 gépi példányt támogatnak egy erőforráscsoporthoz.
 
 ### <a name="transport-layer-security-12-protocol"></a>Transport Layer Security 1,2 protokoll
 
@@ -153,7 +155,7 @@ A hibrid környezetben az Azure-ban közvetlenül csatlakoztatható gépek a kö
 > [!IMPORTANT]
 > A csatlakoztatott számítógép ügynöke nem telepíthető Azure Windows rendszerű virtuális gépre. Ha megkísérli a-t, a telepítés észleli ezt, és Visszagörgeti azt.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 |--------|-------------|
 | Interaktív módon | Manuálisan telepítse az ügynököt egy vagy több gépen a [gépek Azure Portal-ból való összekapcsolása](onboard-portal.md)című témakör lépéseit követve.<br> A Azure Portal létrehozhat egy parancsfájlt, és végrehajthatja azt a gépen, hogy automatizálja az ügynök telepítésének és konfigurálásának lépéseit.|
 | Skálán | Telepítse és konfigurálja az ügynököt több gépen a [számítógépek összekapcsolását követően egy egyszerű szolgáltatásnév használatával](onboard-service-principal.md).<br> Ez a metódus létrehoz egy egyszerű szolgáltatást, amely nem interaktív módon csatlakozik a gépekhez.|

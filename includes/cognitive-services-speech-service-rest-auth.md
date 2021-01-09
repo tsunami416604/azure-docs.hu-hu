@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/29/2019
+ms.date: 01/08/2021
 ms.author: erhopf
-ms.openlocfilehash: 410b73d3f9011f9384fafa18394d9318e3eafa67
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 22127f81d871fe333750020196540db17e7544f7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504491"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033447"
 ---
 ## <a name="authentication"></a>Hitelesítés
 
@@ -17,10 +17,10 @@ Minden kérelemhez engedélyezési fejléc szükséges. Ez a táblázat azt szem
 
 | Támogatott engedélyezési fejlécek | Diktálás | Szövegfelolvasás |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | Igen | Nem |
-| Engedélyezés: tulajdonos | Igen | Yes |
+| Ocp-Apim-Subscription-Key | Igen | Igen |
+| Engedélyezés: tulajdonos | Igen | Igen |
 
-A fejléc használatakor `Ocp-Apim-Subscription-Key` csak az előfizetési kulcsot kell megadnia. Például:
+A fejléc használatakor `Ocp-Apim-Subscription-Key` csak az előfizetési kulcsot kell megadnia. Példa:
 
 ```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
