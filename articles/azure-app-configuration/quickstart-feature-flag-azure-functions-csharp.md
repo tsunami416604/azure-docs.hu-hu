@@ -8,16 +8,16 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: d1dc843ff676429f202c0b9077057d067294f738
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076164"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046073"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Azure Functions-alkalmazáshoz
 
-Ebben a rövid útmutatóban egy Azure Functions alkalmazásban hozza létre a szolgáltatások felügyeletének megvalósítását az Azure app Configuration használatával. Az alkalmazás konfigurációs szolgáltatásával központilag tárolhatja az összes funkció jelzőjét, és szabályozhatja az állapotukat. 
+Ebben a rövid útmutatóban létrehoz egy Azure Functions alkalmazást, és használja a funkció jelzőit. Az Azure-alkalmazás konfigurációjában található szolgáltatások kezelése funkcióval központilag tárolhatja az összes funkció jelzőjét, és szabályozhatja az állapotukat.
 
 A .NET-szolgáltatások felügyeleti könyvtárai kiterjesztik a keretrendszert a Feature Flag támogatásával. Ezek a kódtárak a .NET konfigurációs rendszerére épülnek. Integrálva vannak az alkalmazások konfigurációjával a .NET-konfigurációs szolgáltatón keresztül.
 
@@ -46,66 +46,113 @@ A .NET-szolgáltatások felügyeleti könyvtárai kiterjesztik a keretrendszert 
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet-csomagokat a projekthez. Ellenőrizze, `Microsoft.Extensions.DependencyInjection` hogy a legutóbbi stabil builden van-e. 
+Ez a projekt a [függőségi befecskendezést fogja használni a .net Azure Functionsban](/azure/azure-functions/functions-dotnet-dependency-injection). Az Azure-alkalmazások konfigurációját kiegészítő konfigurációs forrásként adja hozzá, ahol a szolgáltatások jelzői vannak tárolva.
 
-    ```
-    Microsoft.Extensions.DependencyInjection
-    Microsoft.Extensions.Configuration
-    Microsoft.FeatureManagement
-    ```
+1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet-csomagokat a projekthez.
+   - [Microsoft.Extensions.Configszülő. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) -4.1.0 vagy újabb verzió
+   - [Microsoft. FeatureManagement](https://www.nuget.org/packages/Microsoft.FeatureManagement/) 2.2.0 vagy újabb verzió
+   - [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) vagy újabb verzió 
 
-
-1. Nyissa meg a *Function1.cs*, és adja hozzá a csomagok névtereit.
+2. Adjon hozzá egy új fájlt, a *Startup.cs* a következő kóddal. Definiál egy nevű osztályt `Startup` , amely megvalósítja az `FunctionsStartup` absztrakt osztályt. A Azure Functions indításakor használt típus nevének megadásához egy szerelvény-attribútumot kell használni.
 
     ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
     using Microsoft.Extensions.Configuration;
     using Microsoft.FeatureManagement;
-    using Microsoft.Extensions.DependencyInjection;
-    ```
 
-1. Adja hozzá az `Function1` alábbi statikus konstruktort az Azure-alkalmazás konfigurációs szolgáltatójának rendszerindításához. Ezután vegyen fel két `static` tagot, egy nevű mezőt, amely létrehoz egy egyedi `ServiceProvider` példányt `ServiceProvider` , valamint egy nevű tulajdonságot, amely `Function1` `FeatureManager` létrehoz egy különálló példányt `IFeatureManager` . Ezután kapcsolódjon az alkalmazás konfigurálásához a `Function1` hívásával `AddAzureAppConfiguration()` . Ez a folyamat betölti a konfigurációt az alkalmazás indításakor. Ugyanezt a konfigurációs példányt fogjuk használni az összes functions híváshoz később. 
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
 
-    ```csharp
-        // Implements IDisposable, cached for life time of function
-        private static ServiceProvider ServiceProvider; 
-
-        static Function1()
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddAzureAppConfiguration(options =>
-                {
-                    options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
-                           .UseFeatureFlags();
-                }).Build();
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+            }
 
-            var services = new ServiceCollection();                                                                             
-            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement();
-
-            ServiceProvider = services.BuildServiceProvider(); 
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
         }
-
-        private static IFeatureManager FeatureManager => ServiceProvider.GetRequiredService<IFeatureManager>();
+    }
     ```
 
-1. Frissítse a `Run` metódust a megjelenített üzenet értékének módosításához a szolgáltatás jelzője állapotától függően.
+
+3. Frissítse a `ConfigureAppConfiguration` metódust, és adja hozzá az Azure-alkalmazás konfigurációs szolgáltatóját további konfigurációs forrásként a hívásával `AddAzureAppConfiguration()` . 
+
+   A `UseFeatureFlags()` metódus azt jelzi, hogy a szolgáltató betölti a szolgáltatás jelzőit. A módosítások ismételt ellenőrzését megelőzően az összes funkció-jelző alapértelmezett gyorsítótár-lejárata 30 másodperc. A lejárati időköz a `FeatureFlagsOptions.CacheExpirationInterval` metódusnak átadott tulajdonság beállításával frissíthető `UseFeatureFlags` . 
 
     ```csharp
-        [FunctionName("Function1")]
-        public static async Task<IActionResult> Run(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-                ILogger log)
-            {
-                string message = await FeatureManager.IsEnabledAsync("Beta")
-                     ? "The Feature Flag 'Beta' is turned ON"
-                     : "The Feature Flag 'Beta' is turned OFF";
-                
-                return (ActionResult)new OkObjectResult(message); 
-            }
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+    {
+        builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
+        {
+            options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                   .Select("_")
+                   .UseFeatureFlags();
+        });
+    }
+    ```
+   > [!TIP]
+   > Ha nem szeretné, hogy a szolgáltatáshoz tartozó jelzők ne legyenek betöltve az alkalmazásba, akkor meghívhatja, `Select("_")` hogy csak a nem létező "_" dummy-kulcsot töltsön be. Alapértelmezés szerint a rendszer az alkalmazás konfigurációs tárolójában lévő összes konfigurációs kulcsot betölti, ha nincs `Select` metódus meghívva.
+
+4. Frissítse a `Configure` metódust, hogy az Azure app Configuration Services és a Feature Manager elérhető legyen a függőségi injektáláson keresztül.
+
+    ```csharp
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddAzureAppConfiguration();
+        builder.Services.AddFeatureManagement();
+    }
+    ```
+
+5. Nyissa meg a *Function1.cs*, és adja hozzá a következő névtereket.
+
+    ```csharp
+    using System.Linq;
+    using Microsoft.FeatureManagement;
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
+
+   Vegyen fel egy konstruktort, amely a `_featureManagerSnapshot` és a függőségi befecskendezések példányainak beszerzésére szolgál `IConfigurationRefresherProvider` . A alkalmazásban `IConfigurationRefresherProvider` beszerezheti a példányát `IConfigurationRefresher` .
+
+    ```csharp
+    private readonly IFeatureManagerSnapshot _featureManagerSnapshot;
+    private readonly IConfigurationRefresher _configurationRefresher;
+
+    public Function1(IFeatureManagerSnapshot featureManagerSnapshot, IConfigurationRefresherProvider refresherProvider)
+    {
+        _featureManagerSnapshot = featureManagerSnapshot;
+        _configurationRefresher = refresherProvider.Refreshers.First();
+    }
+    ```
+
+6. Frissítse a `Run` metódust a megjelenített üzenet értékének módosításához a szolgáltatás jelzője állapotától függően.
+
+   A `TryRefreshAsync` metódust a functions hívásának elején hívja meg a szolgáltatás-jelzők frissítéséhez. Ha nem éri el a gyorsítótár lejárati idejét, a nem-op lesz. Távolítsa el a `await` kezelőt, ha inkább a funkció jelzőit szeretné frissíteni az aktuális függvények hívásának letiltása nélkül. Ebben az esetben a későbbi functions-hívások frissített értéket kapnak.
+
+    ```csharp
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+
+        await _configurationRefresher.TryRefreshAsync();
+
+        string message = await _featureManagerSnapshot.IsEnabledAsync("Beta")
+                ? "The Feature Flag 'Beta' is turned ON"
+                : "The Feature Flag 'Beta' is turned OFF";
+
+        return (ActionResult)new OkObjectResult(message);
+    }
     ```
 
 ## <a name="test-the-function-locally"></a>A függvény helyi tesztelése
 
-1. Állítson be egy **ConnectionString**nevű környezeti változót, ahol az érték az alkalmazás konfigurációs tárolójában korábban lekért elérési kulcs a **hozzáférési kulcsok**területen. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
+1. Állítson be egy **ConnectionString** nevű környezeti változót, ahol az érték az alkalmazás konfigurációs tárolójában korábban lekért kapcsolati sztring a **hozzáférési kulcsok** alatt. Ha a Windows-parancssort használja, futtassa a következő parancsot, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
 
     ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -133,24 +180,27 @@ A .NET-szolgáltatások felügyeleti könyvtárai kiterjesztik a keretrendszert 
 
     ![A gyors üzembe helyezés funkció jelzője letiltva](./media/quickstarts/functions-launch-ff-disabled.png)
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a létrehozott app Configuration Store-példányt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás** lehetőséget, majd válassza ki a létrehozott alkalmazás-konfigurációs tárolót.
 
-1. Válassza a **szolgáltatásvezérlő**lehetőséget, majd módosítsa a **bétaverzió** állapotát **a be**értékre.
+1. Válassza a **szolgáltatásvezérlő** lehetőséget, majd módosítsa a **bétaverzió** állapotát **a be** értékre.
 
-1. Térjen vissza a parancssorba, és szakítsa meg a futó folyamatot a következő lenyomásával: `Ctrl-C` .  Indítsa újra az alkalmazást az F5 billentyű lenyomásával. 
-
-1. Másolja a függvény URL-címét a Azure Functions Runtime kimenetéről ugyanazzal a folyamattal, mint a 3. lépéssel. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába. A böngésző válaszának úgy kell megjelennie, hogy a funkció jelzője `Beta` be legyen kapcsolva, ahogy az alábbi képen is látható.
+1. Frissítse a böngészőt néhányszor. Ha a gyorsítótárazott funkció jelzője 30 másodperc elteltével lejár, az oldalnak meg kell változtatnia, hogy a funkció jelzője `Beta` be legyen kapcsolva, ahogy az alábbi képen is látható.
  
     ![A rövid útmutató funkció funkciójának jelzője engedélyezve](./media/quickstarts/functions-launch-ff-enabled.png)
+
+> [!NOTE]
+> Az oktatóanyagban használt példa kód az [Azure app Configuration GitHub](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction)-tárházból tölthető le.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozta a szolgáltatás jelölőjét, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)keresztül.
+Ebben a rövid útmutatóban létrehozta a szolgáltatás jelölőjét, és egy Azure Functions alkalmazással használta a [Microsoft. FeatureManagement](/dotnet/api/microsoft.featuremanagement) könyvtáron keresztül.
 
-- További információ a [szolgáltatások kezeléséről](./concept-feature-management.md).
-- [Szolgáltatás-jelzők kezelése](./manage-feature-flags.md).
+- További információ a [szolgáltatások kezeléséről](./concept-feature-management.md)
+- [Funkciójelölők kezelése](./manage-feature-flags.md)
+- [Feltételes funkciók jelzőjének használata](./howto-feature-filters-aspnet-core.md)
+- [A funkciók lépcsőzetes bevezetésének engedélyezése a megcélzott célközönségek számára](./howto-targetingfilter-aspnet-core.md)
 - [Dinamikus konfiguráció használata egy Azure Functions alkalmazásban](./enable-dynamic-configuration-azure-functions-csharp.md)

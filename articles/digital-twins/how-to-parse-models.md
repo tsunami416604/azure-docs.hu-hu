@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2e13762698efd8d5df42ab6315c990d4096168cf
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: ab2534e40bd6b324e94a91c6ac9c5f34fa6e6f31
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145531"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044203"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Modellek elemzése és ellenőrzése a DTDL Parser Library-vel
 
@@ -36,7 +36,7 @@ Miután létrehozott egy önálló csomagot, és hozzáadta a végrehajtható f�
 DTDLValidator
 ```
 
-Az alapértelmezett beállításokkal a minta az `*.json` aktuális könyvtárban és az összes alkönyvtárban található fájlokat fogja keresni. Azt is megteheti, hogy a következő lehetőséget is hozzáadja a minta kereséséhez a jelzett könyvtárban és a kiterjesztésű fájlok összes alkönyvtárában *. dtdl* :
+Az alapértelmezett beállításokkal a minta az `*.json` aktuális könyvtárban és az összes alkönyvtárban található fájlokat fogja keresni. Azt is megteheti, hogy a következő lehetőséget is hozzáadja a minta kereséséhez a jelzett könyvtárban és a kiterjesztésű fájlok összes alkönyvtárában *. dtdl*:
 
 ```cmd/sh
 DTDLValidator -d C:\Work\DTDL -e dtdl 
@@ -77,120 +77,13 @@ Az elemzési függvénytárat közvetlenül is használhatja olyan dolgokhoz, mi
 
 Az alábbi elemzési kód támogatásához vegye fontolóra az Azure Digital Twins-példányban definiált több modellt:
 
-```json
-[
-  {
-    "@context": "dtmi:dtdl:context;2",
-    "@id": "dtmi:com:contoso:coffeeMaker;1",
-    "@type": "Interface",
-    "contents": [
-      {
-        "@type": "Component",
-        "name": "coffeeMaker",
-        "schema": "dtmi:com:contoso:coffeeMakerInterface;1"
-      }
-    ]
-  },
-  {
-    "@context": "dtmi:dtdl:context;2",
-    "@id": "dtmi:com:contoso:coffeeMakerInterface;1",
-    "@type": "Interface",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "waterTemp",
-        "schema": "double"
-      }
-    ]
-  },
-  {
-    "@context": "dtmi:dtdl:context;2",
-    "@id": "dtmi:com:contoso:coffeeBar;1",
-    "@type": "Interface",
-    "contents": [
-      {
-        "@type": "Relationship",
-        "name": "foo",
-        "target": "dtmi:com:contoso:coffeeMaker;1"
-      },
-      {
-        "@type": "Property",
-        "name": "capacity",
-        "schema": "integer"
-      }
-    ]
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/coffeeMaker-coffeeMakerInterface-coffeeBar.json":::
 
 Az alábbi kód bemutatja, hogyan használható az elemző függvénytár a következő definíciók megjelenítéséhez a C#-ban:
 
-```csharp
-async void ParseDemo(DigitalTwinsClient client)
-{
-    try
-    {
-        AsyncPageable<DigitalTwinsModelData> mdata = client.GetModelsAsync(new GetModelsOptions { IncludeModelDefinition = true });
-        List<string> models = new List<string>();
-        await foreach (DigitalTwinsModelData md in mdata)
-            models.Add(md.DtdlModel);
-        ModelParser parser = new ModelParser();
-        IReadOnlyDictionary<Dtmi, DTEntityInfo> dtdlOM = await parser.ParseAsync(models);
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/parseModels.cs":::
 
-        List<DTInterfaceInfo> interfaces = new List<DTInterfaceInfo>();
-        IEnumerable<DTInterfaceInfo> ifenum = 
-            from entity in dtdlOM.Values
-            where entity.EntityKind == DTEntityKind.Interface
-            select entity as DTInterfaceInfo;
-        interfaces.AddRange(ifenum);
-        foreach (DTInterfaceInfo dtif in interfaces)
-        {
-            PrintInterfaceContent(dtif, dtdlOM);
-        }
-
-    } catch (RequestFailedException rex)
-    {
-
-    }
-}
-
-void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEntityInfo> dtdlOM, int indent=0)
-{
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < indent; i++) sb.Append("  ");
-    Console.WriteLine($"{sb}Interface: {dtif.Id} | {dtif.DisplayName}");
-    SortedDictionary<string, DTContentInfo> contents = dtif.Contents;
-    foreach (DTContentInfo item in contents.Values)
-    {
-        switch (item.EntityKind)
-        {
-            case DTEntityKind.Property:
-                DTPropertyInfo pi = item as DTPropertyInfo;
-                Console.WriteLine($"{sb}--Property: {pi.Name} with schema {pi.Schema}");
-                break;
-            case DTEntityKind.Relationship:
-                DTRelationshipInfo ri = item as DTRelationshipInfo;
-                Console.WriteLine($"{sb}--Relationship: {ri.Name} with target {ri.Target}");
-                break;
-            case DTEntityKind.Telemetry:
-                DTTelemetryInfo ti = item as DTTelemetryInfo;
-                Console.WriteLine($"{sb}--Telemetry: {ti.Name} with schema {ti.Schema}");
-                break;
-            case DTEntityKind.Component:
-                DTComponentInfo ci = item as DTComponentInfo;
-                Console.WriteLine($"{sb}--Component: {ci.Id} | {ci.Name}");
-                dtdlOM.TryGetValue(ci.Id, out DTEntityInfo value);
-                DTInterfaceInfo component = value as DTInterfaceInfo;
-                PrintInterfaceContent(component, dtdlOM, indent + 1);
-                break;
-            default:
-                break;
-        }
-    }
-}
-```
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha befejezte a modellek írását, tekintse meg az DigitalTwinsModels API-k használatával történő feltöltését ismertető témakört (és végezze el a többi felügyeleti műveletet):
 * [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)

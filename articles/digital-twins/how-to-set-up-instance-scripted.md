@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5806ea094abd3431cd7e22064c6acd8ad150726a
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495015"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044305"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure digitális Twins-példány és-hitelesítés beállítása (parancsfájlba foglalt)
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-Ez a cikk az **új Azure Digital Twins-példány beállításának**lépéseit ismerteti, beleértve a példány létrehozását és a hitelesítés beállítását. A cikk elvégzése után egy Azure Digital Twins-példánnyal kell elkezdenie a programozást.
+Ez a cikk az **új Azure Digital Twins-példány beállításának** lépéseit ismerteti, beleértve a példány létrehozását és a hitelesítés beállítását. A cikk elvégzése után egy Azure Digital Twins-példánnyal kell elkezdenie a programozást.
 
-A jelen cikk ezen verziója a lépéseket egy [ **automatizált üzembehelyezési parancsfájl** ](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) futtatásával hajtja végre, amely egyszerűsíti a folyamatot. 
+A jelen cikk ezen verziója a lépéseket egy [ **automatizált üzembehelyezési parancsfájl**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) futtatásával hajtja végre, amely egyszerűsíti a folyamatot. 
 * A parancsfájlnak a háttérben való futtatásához szükséges manuális parancssori lépések megtekintéséhez tekintse meg a jelen cikk CLI-verzióját: [*útmutató: példány és hitelesítés (CLI) beállítása*](how-to-set-up-instance-cli.md).
 * A Azure Portal szerinti manuális lépések megtekintéséhez tekintse meg a jelen cikk portáljának verzióját: [*útmutató: példány és hitelesítés beállítása (portál)*](how-to-set-up-instance-portal.md).
 
@@ -33,7 +33,7 @@ A minta parancsfájl a PowerShellben van megírva. Része az [**Azure digitális
 
 Ezzel letölti a minta projektet a gépre _**Azure_Digital_Twins_end_to_end_samples.zip**_. Navigáljon a számítógép mappájához, és csomagolja ki a fájlokat a fájlok kibontásához.
 
-A kibontott mappában a telepítési parancsfájl a _Azure_Digital_Twins_end_to_end_samples > parancsfájlok > **deploy.ps1** _található.
+A kibontott mappában a telepítési parancsfájl a _Azure_Digital_Twins_end_to_end_samples > parancsfájlok > **deploy.ps1**_ található.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,13 +50,13 @@ Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépése
  
 2. Győződjön meg arról, hogy a Cloud Shell a PowerShell-verzió futtatására van beállítva a Cloud Shell ikon sávján.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak&quot;:::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak":::
 
-1. Válassza a &quot;fájlok feltöltése/letöltése&quot; ikont, és válassza a &quot;feltöltés" lehetőséget.
+1. Válassza a "fájlok feltöltése/letöltése" ikont, és válassza a "feltöltés" lehetőséget.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak&quot;:::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell a feltöltés ikon kijelölését bemutató ablak":::
 
-1. Válassza a &quot;fájlok feltöltése/letöltése&quot; ikont, és válassza a &quot;feltöltés" lehetőséget. Ezzel feltölti a fájlt a Cloud Shellba, hogy az Cloud Shell ablakban is futtatható legyen.
+    Navigáljon a számítógépen lévő _**deploy.ps1**_ fájlra ( _Azure_Digital_Twins_end_to_end_samples > szkriptek > **deploy.ps1**_), és nyomja meg a "Megnyitás" lehetőséget. Ezzel feltölti a fájlt a Cloud Shellba, hogy az Cloud Shell ablakban is futtatható legyen.
 
 4. Futtassa a szkriptet a Cloud Shell ablakban a parancs elküldésével `./deploy.ps1` . Az alábbi parancsot másolhatja (emlékeztetheti rá, hogy beilleszti Cloud Shellba, a **CTRL + SHIFT + v billentyűkombinációt** használhatja Windows és Linux rendszeren, vagy a **cmd + SHIFT + v** MacOS rendszeren. Használhatja a helyi menüt is).
 
@@ -70,13 +70,11 @@ Az üzembe helyezési parancsfájl Cloud Shell-ben való futtatásának lépése
     * A példány: a használni kívánt Azure-előfizetés *előfizetés-azonosítója*
     * A példány esetében: egy *hely* , ahová a példányt telepíteni szeretné. Ha szeretné megtekinteni, hogy mely régiók támogatják az Azure Digital Twins-t, látogasson el az [*Azure-termékek területre*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
     * A példány esetében: az *erőforráscsoport* neve. Használhat egy meglévő erőforráscsoportot, vagy megadhat egy új nevet a létrehozáshoz.
-    * A példány esetében: az Azure Digital Twins-példány *neve* . Az új példány nevének a régión belül egyedinek kell lennie az előfizetéshez (ami azt jelenti, hogy ha az előfizetés egy másik Azure Digital Twins-példánnyal rendelkezik abban a régióban, amely már használja a választott nevet), a rendszer kérni fogja, hogy válasszon másik nevet.
+    * A példány esetében: az Azure Digital Twins-példány *neve* . Ha az előfizetése egy másik Azure Digital Twins-példánnyal rendelkezik abban a régióban, amely már a megadott nevet használja, a rendszer arra kéri, hogy válasszon másik nevet.
 
 Íme egy részlet a kimenet naplóból a szkriptből:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak&quot;:::
-
-1. Válassza a &quot;fájlok feltöltése/letöltése&quot; ikont, és válassza a &quot;feltöltés" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell ablak, amely az üzembe helyezési parancsfájl futtatásával mutatja be a bemeneti és a kimeneti naplót" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Ha a parancsfájl sikeresen befejeződik, a rendszer a végső kinyomatot fogja mondani `Deployment completed successfully` . Ellenkező esetben oldja meg a hibaüzenetet, és futtassa újra a parancsfájlt. A művelet megkerüli a már elvégzett lépéseket, és ismét megkezdi a bevitelt arra a pontra, ahol abbahagyta a műveletet.
 
@@ -84,7 +82,7 @@ Ha a parancsfájl sikeresen befejeződik, a rendszer a végső kinyomatot fogja 
 > A parancsfájl jelenleg a szükséges felügyeleti szerepkört rendeli hozzá az Azure Digital Twins-ben (*Azure digitális Twins-adattulajdonos*) ugyanahhoz a felhasználóhoz, amely a szkriptet futtatja Cloud Shellról. Ha ezt a szerepkört a példányt kezelő másnak szeretné hozzárendelni, ezt most a Azure Portal ([utasítások](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) vagy a CLI ([utasítások](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) segítségével teheti meg.
 
 >[!NOTE]
->Jelenleg létezik egy **ismert probléma** a parancsfájlokkal ellátott telepítővel, amelyben egyes felhasználók (különösen a személyes [Microsoft-fiókokkal (MSAs)](https://account.microsoft.com/account)rendelkező felhasználók) **nem hozták létre a szerepkör-hozzárendelést az _Azure Digital Twins-beli adattulajdonoshoz_ **.
+>Jelenleg létezik egy **ismert probléma** a parancsfájlokkal ellátott telepítővel, amelyben egyes felhasználók (különösen a személyes [Microsoft-fiókokkal (MSAs)](https://account.microsoft.com/account)rendelkező felhasználók) **nem hozták létre a szerepkör-hozzárendelést az _Azure Digital Twins-beli adattulajdonoshoz_**.
 >
 >A szerepkör-hozzárendelést a jelen cikk későbbi, [*felhasználói szerepkör-hozzárendelés ellenőrzése*](#verify-user-role-assignment) szakaszában ellenőrizheti, és – szükség esetén – a szerepkör-hozzárendelés manuális beállítása a [Azure Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) vagy a [parancssori](how-to-set-up-instance-cli.md#set-up-user-access-permissions)felület használatával.
 >
@@ -106,11 +104,9 @@ Ha az ellenőrzés sikertelen volt, megpróbálkozhat egy példány létrehozás
 
 ### <a name="collect-instance-values"></a>Példányok értékének gyűjtése
 
-A példány *áttekintő* oldalának megnyitásához válassza ki a példány nevét az [Azure digitális Twins oldaláról](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) . Jegyezze fel a *nevét*, az *erőforráscsoportot*és az *állomásnév nevét*. Erre később szükség lehet a példány azonosításához és a hozzá való kapcsolódáshoz.
+A példány *áttekintő* oldalának megnyitásához válassza ki a példány nevét az [Azure digitális Twins oldaláról](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) . Jegyezze fel a *nevét*, az *erőforráscsoportot* és az *állomásnév nevét*. Erre később szükség lehet a példány azonosításához és a hozzá való kapcsolódáshoz.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Cloud Shell a PowerShell-verzió kijelölését bemutató ablak&quot;:::
-
-1. Válassza a &quot;fájlok feltöltése/letöltése&quot; ikont, és válassza a &quot;feltöltés":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="A példány Áttekintés oldalának fontos értékeinek kiemelése":::
 
 ### <a name="verify-user-role-assignment"></a>Felhasználói szerepkör-hozzárendelés ellenőrzése
 
@@ -121,7 +117,7 @@ A példány *áttekintő* oldalának megnyitásához válassza ki a példány ne
 
 Ha az ellenőrzés nem sikerült, a saját szerepkör-hozzárendelését is megismételheti a [portál](how-to-set-up-instance-portal.md#set-up-user-access-permissions) vagy a [parancssori](how-to-set-up-instance-cli.md#set-up-user-access-permissions)felület használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tesztelje az egyes REST API hívásokat a példányon az Azure Digital Twins CLI parancsaival: 
 * [az DT Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

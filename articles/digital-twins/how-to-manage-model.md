@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534755"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045240"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -36,35 +36,7 @@ Vegyünk például egy olyan példát, amelyben a kórház a saját szobáit sze
 
 A megoldás első lépéseként létre kell hoznia a kórházi aspektusait képviselő modelleket. Ebben a forgatókönyvben az alábbihoz hasonló kórházi helyiségeket lehet leírta:
 
-```json
-{
-  "@id": "dtmi:com:contoso:PatientRoom;1",
-  "@type": "Interface",
-  "@context": "dtmi:dtdl:context;2",
-  "displayName": "Patient Room",
-  "contents": [
-    {
-      "@type": "Property",
-      "name": "visitorCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashPercentage",
-      "schema": "double"
-    },
-    {
-      "@type": "Relationship",
-      "name": "hasDevices"
-    }
-  ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/PatientRoom.json":::
 
 > [!NOTE]
 > Ez egy minta törzs egy. JSON-fájlhoz, amelyben a modell definiálva és mentve lett, az ügyfél-projekt részeként való feltöltéshez. A REST API hívást a másik oldalon a modell definícióinak egy tömbjét veszi igénybe (amely a `IEnumerable<string>` .net SDK-ban van leképezve). Ha ezt a modellt közvetlenül a REST API szeretné használni, szögletes zárójelekkel.
@@ -86,48 +58,16 @@ A modellek létrehozása után feltöltheti őket az Azure Digital Twins-példá
 
 Ha készen áll a modell feltöltésére, használja a következő kódrészletet:
 
-```csharp
-// 'client' is an instance of DigitalTwinsClient
-// Read model file into string (not part of SDK)
-StreamReader r = new StreamReader("MyModelFile.json");
-string dtdl = r.ReadToEnd(); r.Close();
-string[] dtdls = new string[] { dtdl };
-client.CreateModels(dtdls);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
 Figyelje meg, hogy a `CreateModels` metódus több fájlt is elfogad egyetlen tranzakcióban. Az alábbi példa szemlélteti a következőket:
 
-```csharp
-var dtdlFiles = Directory.EnumerateFiles(sourceDirectory, "*.json");
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-List<string> dtdlStrings = new List<string>();
-foreach (string fileName in dtdlFiles)
-{
-    // Read model file into string (not part of SDK)
-    StreamReader r = new StreamReader(fileName);
-    string dtdl = r.ReadToEnd(); r.Close();
-    dtdlStrings.Add(dtdl);
-}
-client.CreateModels(dtdlStrings);
-```
+A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleket JSON-tömbbe kell helyezni. Példa:
 
-A modell fájljai több modellt is tartalmazhatnak. Ebben az esetben a modelleket JSON-tömbbe kell helyezni. Ilyenek többek között:
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet",
-    "@type": "Interface",
-    //...
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon",
-    "@type": "Interface",
-    //...
-  }
-]
-```
- 
 A feltöltéskor a modell fájljait a szolgáltatás ellenőrzi.
 
 ## <a name="retrieve-models"></a>Modellek beolvasása
@@ -141,18 +81,7 @@ A következő lehetőségek közül választhat:
 
 Íme néhány példa a hívásokra:
 
-```csharp
-// 'client' is a valid DigitalTwinsClient object
-
-// Get a single model, metadata and data
-DigitalTwinsModelData md1 = client.GetModel(id);
-
-// Get a list of the metadata of all available models
-Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
-
-// Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
 
 Az API-hívások lekérik a modelleket az összes visszaadott `DigitalTwinsModelData` objektumra vonatkozóan. `DigitalTwinsModelData` Az Azure Digital Twins-példányban tárolt modellel kapcsolatos metaadatokat tartalmaz, például a név, a DTMI és a modell létrehozási dátuma. Az `DigitalTwinsModelData` objektum opcionálisan magába foglalja a modellt is. A paraméterektől függően a hívások lekérése paranccsal lekérheti a csak metaadatokat (ez olyan esetekben hasznos, amikor az elérhető eszközök felhasználói felületi listáját szeretné megjeleníteni, például) vagy a teljes modellt.
 
@@ -208,12 +137,7 @@ Ezek különálló funkciók, és nem érintik egymást, bár ezek együtt haszn
 
 Itt látható a modell leszerelésének kódja:
 
-```csharp
-// 'client' is a valid DigitalTwinsClient  
-client.DecommissionModel(dtmiOfPlanetInterface);
-// Write some code that deletes or transitions digital twins
-//...
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DecommissionModel":::
 
 A modell leszerelési állapota a `ModelData` modell lekérési API-k által visszaadott rekordokban szerepel.
 
@@ -244,10 +168,8 @@ Még ha a modell megfelel a azonnal törölni kívánt követelményeknek, érde
 6. A modell törlése 
 
 A modell törléséhez használja a következő hívást:
-```csharp
-// 'client' is a valid DigitalTwinsClient
-await client.DeleteModelAsync(IDToDelete);
-```
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DeleteModel":::
 
 #### <a name="after-deletion-twins-without-models"></a>Törlés után: ikrek modellek nélkül
 
@@ -276,7 +198,7 @@ A modell törlését követően később dönthet úgy, hogy új modellt tölt f
 
 Az Azure digitális Twins nem akadályozza ezt az állapotot, ezért ügyeljen arra, hogy az ikrek megfelelő javításával győződjön meg arról, hogy azok érvényesek maradnak a modell definíciós kapcsolóján keresztül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet digitális ikreket a modelljei alapján:
 * [*Útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)

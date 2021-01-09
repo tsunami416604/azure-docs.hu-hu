@@ -1,14 +1,14 @@
 ---
 title: Az IRS 1075 Blueprint minta üzembe helyezése
 description: Üzembe helyezheti az IRS 1075 (Rev. 11-2016) terv lépéseit, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 08/19/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 5f2c58b69519f27f759ddfc79d3333e55ed4eb54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4be1b642961b9642ea9d638521653dbc33f0334
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653732"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045206"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>Az IRS 1075 Blueprint minta üzembe helyezése
 
@@ -29,7 +29,7 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 1. A bal oldalon válassza az **Első lépések** oldalt, és válassza a _Terv létrehozása_ területen a **Létrehozás** lehetőséget.
 
-1. Keresse meg az **IRS 1075 (Rev. 11-2016)** tervezetét _más minták_ alatt, és válassza **a minta használata**lehetőséget.
+1. Keresse meg az **IRS 1075 (Rev. 11-2016)** tervezetét _más minták_ alatt, és válassza **a minta használata** lehetőséget.
 
 1. Adja meg a tervminta _alapvető beállításait_:
 
@@ -52,7 +52,7 @@ A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött
 
 ## <a name="assign-the-sample-copy"></a>Ugyanazon másolat hozzárendelése
 
-Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
+Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 

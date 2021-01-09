@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 6ad58283ad9078088f241a67426657eb7a538e10
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781130"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043778"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>A OCP GTM közös értékesítési megoldásainak áttelepítése a kereskedelmi piactérre
 
@@ -136,7 +136,7 @@ Az ajánlat közzétételéhez szükséges információkkal kapcsolatos részlet
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="Az ajánlat áttekintése telepítési lapok a partner Centerben.":::
 
-3. A Microsoft Seller szolgáltatással kapcsolatos néhány részlet a OCP GTM-megoldásból lett másolva. Fejezze be a többi szükséges információt a **közös értékesítés a Microsoft** lapon, hogy az ajánlat közös értékesítésre készen álljon. Ha elkészült, válassza **a felülvizsgálat és közzététel** lehetőséget.
+3. A Microsoft Seller szolgáltatással kapcsolatos néhány részlet a OCP GTM-megoldásból lett másolva. Fejezze be a többi szükséges információt a **közös értékesítés a Microsoft** lapon, hogy az ajánlat közös értékesítésre készen álljon. Ha elkészült, válassza **a felülvizsgálat és közzététel** lehetőséget. További információ: a [közös értékesítéssel kapcsolatos anyagok beküldése a partner Centerben](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center).
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="Az ajánlat közös értékesítésének lapja a partner Centerben.":::
 
@@ -154,4 +154,6 @@ Az ajánlat közzétételéhez szükséges információkkal kapcsolatos részlet
 ## <a name="next-steps"></a>További lépések
 
 - [Viszonteladás CSP-partnereken keresztül](cloud-solution-providers.md)
+- [Közös értékesítésű anyagok beküldése a partner Centerben](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 - A [Gyakori kérdések](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) megtekintése (PDF)
+

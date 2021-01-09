@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: d39bc35d1edcbcfef4c7774259112ec5144efa15
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760359"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044339"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Kiszolgáló nélküli Azure Cosmos DB (előzetes verzió)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,16 +31,13 @@ Azure Cosmos DB használatakor minden adatbázis-művelethez a [kérelmek egysé
 
 ## <a name="use-cases"></a>Használati esetek
 
-Azure Cosmos DB a kiszolgáló nélküli legmegfelelőbb forgatókönyvek, ahol a várt:
-
-- **Alacsony, időszakos és kiszámíthatatlan forgalom**: mivel az ilyen helyzetekben a kiépítési kapacitás nem szükséges, és lehet, hogy költséghatékony
-- **Mérsékelt teljesítmény**: mivel a kiszolgáló nélküli tárolók [meghatározott teljesítménnyel](#performance) rendelkeznek
-
-Ezen okok miatt a kiszolgáló nélküli Azure Cosmos DB a következő helyzetekben kell figyelembe venni:
+A kiszolgáló nélküli legjobb Azure Cosmos DB olyan forgatókönyveket, amelyekben az **időszakos és kiszámíthatatlan forgalom** hosszú üresjárati időpontokat vár. Mivel az ilyen helyzetekben a kiépítési kapacitás nem szükséges, és előfordulhat, hogy a kiszolgáló nélküli Azure Cosmos DB kiszolgáló nélküli, a következő használati esetekben kell figyelembe venni:
 
 - A Azure Cosmos DB első lépései
-- Új alkalmazások fejlesztése, tesztelése és prototípusa
-- Kis-és közepes méretű alkalmazások futtatása nehezen megbecsülhető időszakos forgalommal
+- Alkalmazások futtatása a
+    - feltört, időszakos forgalom, amely nehezen becsülhető, vagy
+    - alacsony (<10%) átlag – csúcs forgalom aránya
+- Fejlesztés, tesztelés, prototípus készítése és futtatása éles környezetben új alkalmazásokban, ahol a forgalmi minta ismeretlen
 - Integráció a kiszolgáló nélküli számítási szolgáltatásokkal, például a [Azure functions](../azure-functions/functions-overview.md)
 
 Tekintse meg a [kiépített átviteli sebesség és a kiszolgáló nélküli cikk közötti választást](throughput-serverless.md) , ahol további útmutatást talál a használati esetnek leginkább megfelelő ajánlat kiválasztásához.
@@ -74,14 +71,7 @@ Az [itt](monitor-request-unit-usage.md)leírtak szerint ugyanazt a diagramot has
 
 ## <a name="performance"></a><a id="performance"></a>Teljesítmény
 
-A kiszolgáló nélküli erőforrások bizonyos teljesítménybeli jellemzőket adnak meg, amelyek különböznek a kiosztott átviteli sebességtől:
-
-- **Rendelkezésre állás**: miután a kiszolgáló nélküli ajánlatot általánosan elérhetővé válik, a kiszolgáló nélküli tárolók rendelkezésre állása a 99,9%-os szolgáltatói szerződés (SLA) lesz, ha Availability Zones (zóna redundancia) nem használatos. Az SLA értéke 99,99%, ha Availability Zones van használatban.
-- **Késés**: miután a kiszolgáló nélküli ajánlatot általánosan elérhetővé válik, a kiszolgáló nélküli tárolók késését az írásokhoz 10 ezredmásodperc vagy annál kisebb szolgáltatási szintű célkitűzés (SLO) fogja fedezni. A pont – olvasási művelet egy adott elem beolvasását jelenti az azonosító és a partíciós kulcs értéke alapján.
-- **Feltörtség**: miután a kiszolgáló nélküli ajánlat általánosan elérhetővé válik, a kiszolgáló nélküli tárolók feltörését a 95%-os szolgáltatási szint célkitűzése (SLO) fogja fedezni. Ez azt jelenti, hogy a maximális kiváltási idő legalább 95%-át elérheti.
-
-> [!NOTE]
-> Az Azure előzetes verziójának részeként Azure Cosmos DB kiszolgáló nélküli kizárva a szolgáltatói szerződések (SLA). A fent említett teljesítmény-jellemzők előzetes verzióként jelennek meg, ha általánosan elérhető az ajánlat.
+A kiszolgáló nélküli erőforrások bizonyos teljesítménybeli jellemzőket adnak meg, amelyek különböznek a kiosztott átviteli sebességtől. A kiszolgáló nélküli ajánlat általánosan elérhetővé válása után a kiszolgáló nélküli tárolók késését 10 ezredmásodperc vagy kevesebb szolgáltatási szintű célkitűzés (SLO) fedi le, az írások esetében pedig 30 ezredmásodperc vagy kevesebb. A pont – olvasási művelet egy adott elem beolvasását jelenti az azonosító és a partíciós kulcs értéke alapján.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,17 +3,17 @@ title: A csomagra vonatkozó követelmények a Microsoft Azure Maps Creatorben (
 description: Ismerje meg, hogy a rendszer hogyan konvertálja a konstrukciós fájlokat az adat-előkészítési csomag követelményeire
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 1/08/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903462"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044781"
 ---
 # <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
 
@@ -41,7 +41,7 @@ Az egyszerű hivatkozáshoz itt talál néhány olyan kifejezést és definíci�
 | Réteg | Egy AutoCAD DWG-réteg.|
 | Level | Egy épület területe egy beállított jogosultságszint-emeléssel. Például egy épület padlója. |
 | Xref  |Egy AutoCAD DWG fájlformátumban (. DWG) található fájl, amely külső hivatkozásként van csatolva az elsődleges rajzhoz.  |
-| Jellemző | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
+| Funkció | Egy olyan objektum, amely több metaadat-információval kombinálja a geometriát. |
 | Szolgáltatási osztályok | A funkciók közös tervrajza. Egy *egység* például egy szolgáltatás osztály, az *Office* pedig egy szolgáltatás. |
 
 ## <a name="drawing-package-structure"></a>Rajzolási csomag szerkezete
@@ -49,9 +49,9 @@ Az egyszerű hivatkozáshoz itt talál néhány olyan kifejezést és definíci�
 A rajzfájl egy. zip-archívum, amely a következő fájlokat tartalmazza:
 
 * DWG-fájlok az AutoCAD DWG-fájlformátumban.
-* Egyetlen létesítmény _manifest.jsa_ fájlon.
+* A rajzfájl DWG-fájljait leíró fájl _manifest.js_ .
 
-A DWG-fájlokat bármilyen módon rendszerezheti a mappában, de a jegyzékfájlnak a mappa gyökérkönyvtárában kell lennie. A mappát egyetlen archív fájlban kell zip-kiterjesztéssel ellátva. A következő részekben részletesen ismertetjük a DWG-fájlokra, a jegyzékfájlra és a fájlok tartalmára vonatkozó követelményeket.  
+A rajzfájl csak egyetlen archív fájlba tömöríthető, a. zip kiterjesztéssel. A DWG-fájlok bármilyen módon rendezhetők a csomagban belül, de a jegyzékfájlnak a tömörített csomag gyökérkönyvtárában kell futnia. A következő részekben részletesen ismertetjük a DWG-fájlokra, a jegyzékfájlokra és a fájlok tartalmára vonatkozó követelményeket.
 
 ## <a name="dwg-files-requirements"></a>DWG-fájlok követelményei
 
@@ -60,6 +60,7 @@ A létesítmény egyes szintjeihez egyetlen DWG-fájl szükséges. A szintnek cs
 * Meg kell határoznia a _külső_ és az _egység_ rétegeit. A következő választható rétegeket is megadhatja: _Wall_, _Door_, _UnitLabel_, _Zone_ és _ZoneLabel_.
 * A nem tartalmazhat több szintből származó szolgáltatásokat.
 * A nem tartalmazhat több létesítményből származó szolgáltatásokat.
+* Ugyanarra a mérőrendszer-egységre és mértékegységre kell hivatkoznia, mint a rajzfájl többi DWG-fájlja.
 
 A [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) a következő szolgáltatási osztályokat tudja kibontani egy DWG-fájlból:
 
@@ -78,19 +79,19 @@ A DWG-rétegeknek a következő feltételeket is követniük kell:
 
 * Az összes DWG-fájlhoz tartozó rajzok eredetét ugyanahhoz a szélességhez és hosszúsághoz kell igazítani.
 * Minden szintnek ugyanabban a tájolásban kell lennie, mint a többi szintnek.
-* Az önmetsző sokszögek automatikusan kijavításra kerülnek, és a [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) figyelmeztetést vált ki. A kijavított eredményeket manuálisan kell megvizsgálni, mert előfordulhat, hogy nem egyeznek a várt eredményekkel.
+* Az önmetsző sokszögek automatikusan kijavításra kerülnek, és a [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) figyelmeztetést vált ki. Célszerű manuálisan megvizsgálni a kijavított eredményeket, mert előfordulhat, hogy nem egyeznek a várt eredményekkel.
 
-Minden rétegbeli entitásnak a következő típusok egyikének kell lennie: vonal, vonallánc, sokszög, körkörös ív, kör vagy szöveg (egyetlen vonal). A rendszer figyelmen kívül hagyja a többi entitás típusát.
+Minden rétegbeli entitásnak a következő típusok egyikének kell lennie: vonal, vonallánc, sokszög, körkörös ív, kör, ellipszis (lezárt) vagy szöveg (egyetlen vonal). A rendszer figyelmen kívül hagyja a többi entitás típusát.
 
-Az alábbi táblázat az egyes rétegekhez tartozó támogatott entitások típusait és támogatott funkcióit ismerteti. Ha egy réteg nem támogatott entitás-típusokat tartalmaz, akkor a [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) figyelmen kívül hagyja ezeket az entitásokat.  
+Az alábbi táblázat az egyes rétegekhez tartozó támogatott entitások típusait és átalakított leképezési funkcióit ismerteti. Ha egy réteg nem támogatott entitás-típusokat tartalmaz, akkor a [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) figyelmen kívül hagyja ezeket az entitásokat.  
 
-| Réteg | Entitástípusok | Funkciók |
+| Réteg | Entitástípusok | Konvertált funkciók |
 | :----- | :-------------------| :-------
-| [Külső](#exterior-layer) | Sokszög, vonallánc (lezárt), kör | Szintek
-| [Egység](#unit-layer) |  Sokszög, vonallánc (lezárt), kör | Vertikális behatolások, egységek
-| [Fal](#wall-layer)  | Sokszög, vonallánc (lezárt), kör | Nem alkalmazható. További információért lásd a [fal réteget](#wall-layer).
+| [Külső](#exterior-layer) | Sokszög, vonallánc (lezárt), kör, ellipszis (lezárva) | Szintek
+| [Unit (Egység)](#unit-layer) |  Sokszög, vonallánc (lezárt), kör, ellipszis (lezárva) | Vertikális behatolások, egység
+| [Fal](#wall-layer)  | Sokszög, vonallánc (lezárt), kör, ellipszis (lezárva) | Nem alkalmazható. További információért lásd a [fal réteget](#wall-layer).
 | [Ajtó](#door-layer) | Sokszög, vonallánc, vonal, CircularArc, kör | Nyílások
-| [Zóna](#zone-layer) | Sokszög, vonallánc (lezárt), kör | Zóna
+| [Zóna](#zone-layer) | Sokszög, vonallánc (lezárt), kör, ellipszis (lezárva) | Zóna
 | [UnitLabel](#unitlabel-layer) | Szöveg (egyetlen sor) | Nem alkalmazható. Ez a réteg csak tulajdonságokat adhat hozzá az egység-funkciókhoz az egység rétegből. További információ: [UnitLabel réteg](#unitlabel-layer).
 | [ZoneLabel](#zonelabel-layer) | Szöveg (egyetlen sor) | Nem alkalmazható. Ez a réteg csak a ZonesLayer származó tulajdonságokat adhat hozzá a zónák funkcióihoz. További információ: [ZoneLabel réteg](#zonelabel-layer).
 
@@ -102,8 +103,10 @@ Az egyes szintekhez tartozó DWG-fájlnak tartalmaznia kell egy réteget, amely 
 
 Függetlenül attól, hogy hány entitásos rajz van a külső rétegben, az [eredményül kapott létesítmény adatkészlete](tutorial-creator-indoor-maps.md#create-a-feature-stateset) csak egyetlen szintű szolgáltatást fog tartalmazni az egyes DWG-fájlokhoz. Továbbá:
 
-* A külsőket sokszögként, vonalláncként (zárt) vagy körként kell megrajzolni.
-* A külsők átfedésben lehetnek, de egy geometriában vannak feloldva.
+* A külsőket sokszögként, vonalláncként (zárt), körként vagy Ellipszisként kell kirajzolni (lezárva).
+* A külső adatok átfedésben lehetnek, de egy geometriában vannak feloldva.
+* Az eredményül kapott szint szolgáltatásnak legalább 4 négyzetméterből kell állnia.
+* Az eredményül kapott szint funkció nem lehet nagyobb 400 négyzetméternél.
 
 Ha a réteg több átfedésben lévő vonalláncot tartalmaz, a vonalláncok egyetlen szintű szolgáltatásba vannak feloldva. Ha a réteg több nem átfedésben lévő vonalláncot tartalmaz, akkor az eredményül kapott szint funkció több sokszöges ábrázolással rendelkezik.
 
@@ -111,9 +114,11 @@ Megtekintheti a külső réteg példáját, mint a vázlat réteget a [minta raj
 
 ### <a name="unit-layer"></a>Egység réteg
 
-Az egyes szintek DWG-fájlja az egységeket tartalmazó réteget határozza meg. Az egységek az épületben navigálható szóközök, például irodák, folyosók, lépcsők és felvonók. Az egység rétegnek az alábbi követelményeknek kell megfelelnie:
+Az egyes szintek DWG-fájlja az egységeket tartalmazó réteget határozza meg. Az egységek az épületben navigálható szóközök, például irodák, folyosók, lépcsők és felvonók. Ha a `VerticalPenetrationCategory` tulajdonság definiálva van, a több szintet, például a felvonókat és a lépcsőket átölelő navigáló egységeket a rendszer vertikális behatolási funkciókra konvertálja. Az egymással átfedésben lévő vertikális bevezetési funkciókhoz hozzá van rendelve egy `setid` .
 
-* Az egységeket sokszögként, vonalláncként (zárt) vagy körként kell megrajzolni.
+Az egység rétegnek az alábbi követelményeknek kell megfelelnie:
+
+* Az egységeket sokszögként, vonalláncként (zárt), körként vagy Ellipszisként kell kirajzolni (lezárva).
 * Az egységeknek a létesítmény külső kerületének határain belül kell esniük.
 * Az egységek nem lehetnek részben átfedésben.
 * Az egységek nem tartalmazhatnak önmetsző geometriát.
@@ -126,7 +131,7 @@ Láthatja az egység réteg példáját a [minta rajzolási csomagban](https://g
 
 Az egyes szintekhez tartozó DWG-fájl tartalmazhat olyan réteget, amely meghatározza a falak, oszlopok és egyéb építési struktúra fizikai egységeit.
 
-* A falakat sokszögként, vonalláncként (zárt) vagy körként kell megrajzolni.
+* A falakat sokszögként, vonalláncként (zárt), körként vagy Ellipszisként kell kirajzolni (lezárva).
 * A fal rétegének vagy rétegeinek csak olyan geometriát kell tartalmazniuk, amelyet építési struktúraként kell értelmezni.
 
 A [minta rajzolási csomagban](https://github.com/Azure-Samples/am-creator-indoor-data-examples)láthatók a falak rétegre mutató példa.
@@ -141,9 +146,9 @@ A Azure Maps adatkészletben lévő ajtók megnyitása egysoros szegmens, amely 
 
 ### <a name="zone-layer"></a>Zóna réteg
 
-Az egyes szintek DWG-fájlja tartalmazhat olyan zóna réteget, amely meghatározza a zónák fizikai egységeit. Egy zóna lehet egy beltéri üres terület vagy egy hátsó udvar.
+Az egyes szintek DWG-fájlja tartalmazhat olyan zóna réteget, amely meghatározza a zónák fizikai egységeit. A zóna egy nem navigálható terület, amely elnevezhető és megjeleníthető. A zónák több szintre is terjedhetnek, és a zoneSetId tulajdonsággal együtt vannak csoportosítva.
 
-* A zónákat sokszögként, vonalláncként (zárt) vagy körként kell megrajzolni.
+* A zónákat sokszögként, vonalláncként (zárt) vagy Ellipszisként (lezárva) kell kirajzolni.
 * A zónák átfedésben lehetnek.
 * A zónák a létesítmény külső peremén belül vagy kívül esnek.
 
@@ -186,7 +191,7 @@ Bár a jegyzékfájl-objektumok használatakor követelmények vannak, nem minde
 | `buildingLevels` | true | Meghatározza az épületek szintjét és a szintek kialakítását tartalmazó fájlokat. |
 | `georeference` | true | Numerikus földrajzi adatokat tartalmaz a létesítmény rajzolásához. |
 | `dwgLayers` | true | Felsorolja a rétegek nevét, és mindegyik réteg felsorolja a saját szolgáltatásainak nevét. |
-| `unitProperties` | hamis | További metaadatok beszúrására használható az egység szolgáltatásaihoz. |
+| `unitProperties` | hamis | Az egység funkcióinak további metaadatainak beszúrására használható. |
 | `zoneProperties` | hamis | További metaadatok beszúrására használható a zóna szolgáltatásaihoz. |
 
 A következő részek részletezik az egyes objektumok követelményeit.
@@ -260,7 +265,7 @@ Az `unitProperties` objektum az egység tulajdonságainak JSON-tömbjét tartalm
 |`verticalPenetrationDirection`|    sztring|    hamis    |Ha `verticalPenetrationCategory` meg van adva, nem kötelezően megadhatja az utazás érvényes irányát. A megengedett értékek a következők: `lowToHigh` ,, `highToLow` `both` és `closed` . Az alapértelmezett érték `both`.|
 | `nonPublic` | logikai | hamis | Azt jelzi, hogy az egység nyitva van-e a nyilvános számára. |
 | `isRoutable` | logikai | hamis | Ha ez a tulajdonság a értékre van beállítva `false` , nem mehet az egységre vagy az-ra. Az alapértelmezett érték `true`. |
-| `isOpenArea` | logikai | hamis | Lehetővé teszi, hogy a navigáló ügynök belépjen az egységbe anélkül, hogy szükség lenne az egységhez csatolt megnyitásra. Alapértelmezés szerint ez az érték olyan egységekhez van beállítva, `true` amelyek nincsenek nyitottak, és `false` a nyitó egységeket. A manuális `isOpenArea` beállítás `false` olyan egységre, amely nem rendelkezik megnyitásokkal, a rendszer figyelmeztetést jelenít meg. Ennek az az oka, hogy az eredményül kapott egység nem érhető el egy navigáló ügynöknél.|
+| `isOpenArea` | logikai | hamis | Lehetővé teszi, hogy a navigáló ügynök belépjen az egységbe anélkül, hogy szükség lenne az egységhez csatolt megnyitásra. Alapértelmezés szerint ez az érték olyan egységekhez van beállítva, `true` amelyek nincsenek nyitottak, és `false` a nyitó egységeket. Ha manuálisan állítja be a beállítást `isOpenArea` `false` egy olyan egységre, amely nem rendelkezik megnyitásokkal, a rendszer figyelmeztetést jelenít meg, mert az eredményül kapott egység nem érhető el egy navigáló ügynöknél.|
 
 ### `zoneProperties`
 
@@ -276,7 +281,7 @@ Az `zoneProperties` objektum a zóna tulajdonságainak JSON-tömbjét tartalmazz
 
 ### <a name="sample-drawing-package-manifest"></a>Minta rajzolási csomag jegyzékfájlja
 
-Az alábbi példa a minta rajzolási csomag mintáját tartalmazó jegyzékfájlt. A teljes csomag letöltéséhez lásd: [minta rajzolási csomag](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
+Alább látható a minta rajzolási csomag jegyzékfájlja. A teljes csomag letöltéséhez lásd: [minta rajzolási csomag](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
 #### <a name="manifest-file"></a>Jegyzékfájl
 
@@ -407,7 +412,7 @@ Az alábbi példa a minta rajzolási csomag mintáját tartalmazó jegyzékfájl
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a rajzfájl megfelel a követelményeknek, a [Azure Maps átalakítási szolgáltatással](/rest/api/maps/conversion) átalakíthatja a csomagot térképi adatkészletbe. Ezt követően használhatja az adatkészletet egy beltéri Térkép létrehozásához a beltéri térképek modul használatával.
 

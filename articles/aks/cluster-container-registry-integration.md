@@ -4,19 +4,22 @@ description: Ismerje meg, hogyan integrálható az Azure Kubernetes szolgáltat�
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 02/25/2020
-ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/08/2021
+ms.openlocfilehash: 4157195260e5c685faaddeaca87db81d199ffb23
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87406503"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043846"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Container Registryvel történő hitelesítés az Azure Kubernetes Service-ből (AKS)
 
 Ha Azure Container Registryt (ACR) használ az Azure Kubernetes szolgáltatással (ak), akkor hitelesítési mechanizmust kell létrehoznia. Ez a művelet a CLI és a portál felhasználói felületének részeként valósul meg, az ACR számára szükséges engedélyek megadásával. Ez a cikk példákat tartalmaz a két Azure-szolgáltatás közötti hitelesítés konfigurálására. 
 
 Beállíthatja az AK-t az ACR-integrációra néhány egyszerű parancsban az Azure CLI-vel. Ez az integráció a AcrPull szerepkört az AK-fürthöz társított egyszerű szolgáltatáshoz rendeli.
+
+> [!NOTE]
+> Ez a cikk az AK és az ACR közötti automatikus hitelesítést ismerteti. Ha privát külső beállításjegyzékből kell lekérnie a képet, használjon [képet lekéréses titkos kulcsot][Image Pull Secret].
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -100,7 +103,7 @@ Győződjön meg arról, hogy megfelelő AK-beli hitelesítő adatokkal rendelke
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-Hozzon létre egy **ACR-Nginx. YAML** nevű fájlt, amely a következőt tartalmazza. Helyettesítse be a beállításjegyzék erőforrásának nevét az **ACR-Name**kifejezésre. Példa: *myContainerRegistry*.
+Hozzon létre egy **ACR-Nginx. YAML** nevű fájlt, amely a következőt tartalmazza. Helyettesítse be a beállításjegyzék erőforrásának nevét az **ACR-Name** kifejezésre. Példa: *myContainerRegistry*.
 
 ```yaml
 apiVersion: apps/v1
@@ -152,3 +155,4 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 
 <!-- LINKS - external -->
 [AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[Image Pull secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

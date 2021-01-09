@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 389842901a4c508015d527c0fd8fd87af57dcd9b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967924"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046821"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuális gépi bővítmény Windowshoz
 
@@ -37,6 +37,7 @@ Az alábbi táblázat a Windows Log Analytics virtuálisgép-bővítmény verzi�
 
 | Log Analytics Windows-ügynök csomagjának verziója | Log Analytics Windowsos virtuálisgép-bővítmény verziója | Kiadás dátuma | Kibocsátási megjegyzések |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18053| 1.0.18053.0 | 2020. október   | <ul><li>Új ügynök-hibakereső</li><li>Frissítések arról, hogy az ügynök hogyan kezeli a tanúsítványok változásait az Azure-szolgáltatásokban</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | 2020. augusztus   | <ul><li>Elhárít egy problémát az Azure arc-ban</li></ul> |
 | 10.20.18038 | 1.0.18038 | 2020. április   | <ul><li>Privát kapcsolaton keresztüli kapcsolat engedélyezése Azure Monitor privát hivatkozás hatókörök használatával</li><li>Betöltési szabályozást tesz elérhetővé, hogy elkerülje a munkaterületek hirtelen, véletlen beáramlását</li><li>További Azure Government felhők és régiók támogatása</li><li>Feloldja a hibát, ha HealthService.exe összeomlott</li></ul> |
 | 10.20.18029 | 1.0.18029 | 2020. március   | <ul><li>Az SHA-2 kód aláírásának támogatása</li><li>Javítja a virtuálisgép-bővítmények telepítését és felügyeletét</li><li>Elhárít egy hibát az Azure arc-kiszolgálók integrációjában</li><li>Beépített hibaelhárítási eszközt biztosít az ügyfélszolgálathoz</li><li>További Azure Government régiók támogatása</li> |
@@ -44,9 +45,9 @@ Az alábbi táblázat a Windows Log Analytics virtuálisgép-bővítmény verzi�
 | 10.20.18011 | 1.0.18011 | 2019. július | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li><li> Megnövekedett MaxExpressionDepth – 10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019. június | <ul><li> Kisebb hibajavítások és stabilizáció-javítások </li><li> Lehetővé tette az alapértelmezett hitelesítő adatok letiltását proxy-kapcsolatok létrehozásakor (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH támogatása) </li></ul>|
 | 10.19.13515 | 1.0.13515 | 2019. március | <ul><li>Kisebb stabilizációs javítások </li></ul> |
-| 10.19.10006 | n/a | Dec 2018 | <ul><li> Kisebb stabilizációs javítások </li></ul> | 
-| 8.0.11136 | n/a | Szeptember 2018 |  <ul><li> Az erőforrás-azonosító változásának észlelése a virtuális gépek áthelyezésének támogatásával </li><li> Jelentéskészítési erőforrás-azonosító támogatása a nem bővítmények telepítésének használatakor </li></ul>| 
-| 8.0.11103 | n/a |  2018. április | |
+| 10.19.10006 | n.a. | Dec 2018 | <ul><li> Kisebb stabilizációs javítások </li></ul> | 
+| 8.0.11136 | n.a. | Szeptember 2018 |  <ul><li> Az erőforrás-azonosító változásának észlelése a virtuális gépek áthelyezésének támogatásával </li><li> Jelentéskészítési erőforrás-azonosító támogatása a nem bővítmények telepítésének használatakor </li></ul>| 
+| 8.0.11103 | n.a. |  2018. április | |
 | 8.0.11081 | 1.0.11081 | November 2017 | | 
 | 8.0.11072 | 1.0.11072 | Szeptember 2017 | |
 | 8.0.11049 | 1.0.11049 | Feb 2017 | |
@@ -88,7 +89,7 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 ```
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa |
+| Név | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | közzétevő | Microsoft. EnterpriseCloud. monitoring |

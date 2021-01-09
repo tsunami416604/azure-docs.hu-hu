@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0a18e6cef568afa8a0092fc06d8f6bb526739b2a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e783e5dd3b0f1952928d1c36c682c5be1cba2599
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145803"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044390"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Eszközök automatikus felügyelete az Azure Digital Twins-ben a Device kiépítési szolgáltatás (DPS) használatával
 
@@ -29,8 +29,8 @@ A kiépítés beállítása előtt rendelkeznie kell egy, a modelleket és az ik
 Ha még nem rendelkezik ezzel a beállítással, létrehozhatja azt az Azure Digital Twins [*oktatóanyagának használatával: Kapcsolódás végpontok közötti megoldáshoz*](tutorial-end-to-end.md). Az oktatóanyag végigvezeti egy Azure digitális Twins-példány beállításán, amely modellekkel és ikrekkel, csatlakoztatott Azure- [IoT Hubokkal](../iot-hub/about-iot-hub.md)és számos [Azure-funkcióval](../azure-functions/functions-overview.md) rendelkezik az adatfolyamok propagálásához.
 
 A példány beállításakor az alábbi értékekre lesz szüksége a cikk későbbi részében. Ha újra össze kell gyűjtenie ezeket az értékeket, az alábbi hivatkozásokat követve adhat meg útmutatást.
-* Azure digitális Twins-példány **_állomásneve_** ( [Keresés a portálon](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Az Azure Event Hubs a kapcsolatok karakterláncának **_összekapcsolási karakterlánca_** ( [Keresés a portálon](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
+* Azure digitális Twins-példány **_állomásneve_** ([Keresés a portálon](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
+* Az Azure Event Hubs a kapcsolatok karakterláncának **_összekapcsolási karakterlánca_** ([Keresés a portálon](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
 
 Ez a minta egy **eszköz-szimulátort** is használ, amely az eszközök kiépítési szolgáltatásával történő telepítést is magában foglalja. Az eszköz-szimulátor itt található: [Azure digitális Twins és IoT hub integrációs minta](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Szerezze be a minta projektet a gépen a minta hivatkozásra kattintva, majd a cím alatt található *zip letöltése* gombra kattintva. Bontsa ki a letöltött mappát.
 
@@ -77,7 +77,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 ### <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Ezután létre fog hozni egy HTTP-kérelem által aktivált függvényt egy Function alkalmazáson belül. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ( [*oktatóanyag: végpontok közötti megoldás összekapcsolását*](tutorial-end-to-end.md)) vagy a sajátját.
+Ezután létre fog hozni egy HTTP-kérelem által aktivált függvényt egy Function alkalmazáson belül. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ([*oktatóanyag: végpontok közötti megoldás összekapcsolását*](tutorial-end-to-end.md)) vagy a sajátját.
 
 Ezt a függvényt az eszköz kiépítési szolgáltatása fogja használni egy [Egyéni kiosztási szabályzatban](../iot-dps/how-to-use-custom-allocation-policies.md) egy új eszköz kiépítéséhez. További információ a HTTP-kérelmek Azure functions használatával történő használatáról: [*Azure HTTP-kérelem trigger Azure functions*](../azure-functions/functions-bindings-http-webhook-trigger.md).
 
@@ -85,156 +85,13 @@ A Function app-projekten belül adjon hozzá egy új függvényt. Továbbá adjo
 
 Az újonnan létrehozott függvény kódlapja fájlban illessze be a következő kódot.
 
-```C#
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Azure.Devices.Shared;
-using Microsoft.Azure.Devices.Provisioning.Service;
-using System.Net.Http;
-using Azure.Identity;
-using Azure.DigitalTwins.Core;
-using Azure.Core.Pipeline;
-using Azure;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace Samples.AdtIothub
-{
-    public static class DpsAdtAllocationFunc
-    {
-        const string adtAppId = "https://digitaltwins.azure.net";
-        private static string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static readonly HttpClient httpClient = new HttpClient();
-
-        [FunctionName("DpsAdtAllocationFunc")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
-        {
-            // Get request body
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            log.LogDebug($"Request.Body: {requestBody}");
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-
-            // Get registration ID of the device
-            string regId = data?.deviceRuntimeContext?.registrationId;
-
-            bool fail = false;
-            string message = "Uncaught error";
-            ResponseObj obj = new ResponseObj();
-
-            // Must have unique registration ID on DPS request 
-            if (regId == null)
-            {
-                message = "Registration ID not provided for the device.";
-                log.LogInformation("Registration ID: NULL");
-                fail = true;
-            }
-            else
-            {
-                string[] hubs = data?.linkedHubs.ToObject<string[]>();
-
-                // Must have hubs selected on the enrollment
-                if (hubs == null)
-                {
-                    message = "No hub group defined for the enrollment.";
-                    log.LogInformation("linkedHubs: NULL");
-                    fail = true;
-                }
-                else
-                {
-                    // Find or create twin based on the provided registration ID and model ID
-                    dynamic payloadContext = data?.deviceRuntimeContext?.payload;
-                    string dtmi = payloadContext.modelId;
-                    log.LogDebug($"payload.modelId: {dtmi}");
-                    string dtId = await FindOrCreateTwin(dtmi, regId, log);
-
-                    // Get first linked hub (TODO: select one of the linked hubs based on policy)
-                    obj.iotHubHostName = hubs[0];
-
-                    // Specify the initial tags for the device.
-                    TwinCollection tags = new TwinCollection();
-                    tags["dtmi"] = dtmi;
-                    tags["dtId"] = dtId;
-
-                    // Specify the initial desired properties for the device.
-                    TwinCollection properties = new TwinCollection();
-
-                    // Add the initial twin state to the response.
-                    TwinState twinState = new TwinState(tags, properties);
-                    obj.initialTwin = twinState;
-                }
-            }
-
-            log.LogDebug("Response: " + ((obj.iotHubHostName != null) ? JsonConvert.SerializeObject(obj) : message));
-
-            return (fail)
-                ? new BadRequestObjectResult(message)
-                : (ActionResult)new OkObjectResult(obj);
-        }
-
-        public static async Task<string> FindOrCreateTwin(string dtmi, string regId, ILogger log)
-        {
-            // Create Digital Twins client
-            var cred = new ManagedIdentityCredential(adtAppId);
-            var client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-
-            // Find existing twin with registration ID
-            string dtId;
-            string query = $"SELECT * FROM DigitalTwins T WHERE $dtId = '{regId}' AND IS_OF_MODEL('{dtmi}')";
-            AsyncPageable<string> twins = client.QueryAsync(query);
-
-            await foreach (string twinJson in twins)
-            {
-                // Get DT ID from the Twin
-                JObject twin = (JObject)JsonConvert.DeserializeObject(twinJson);
-                dtId = (string)twin["$dtId"];
-                log.LogInformation($"Twin '{dtId}' with Registration ID '{regId}' found in DT");
-                return dtId;
-            }
-
-            // Not found, so create new twin
-            log.LogInformation($"Twin ID not found, setting DT ID to regID");
-            dtId = regId; // use the Registration ID as the DT ID
-
-            // Define the model type for the twin to be created
-            Dictionary<string, object> meta = new Dictionary<string, object>()
-            {
-                { "$model", dtmi }
-            };
-            // Initialize the twin properties
-            Dictionary<string, object> twinProps = new Dictionary<string, object>()
-            {
-                { "$metadata", meta }
-            };
-            twinProps.Add("Temperature", 0.0);
-
-            await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(dtId, twinProps);
-            log.LogInformation($"Twin '{dtId}' created in DT");
-
-            return dtId;
-        }
-    }
-
-    public class ResponseObj
-    {
-        public string iotHubHostName { get; set; }
-        public TwinState initialTwin { get; set; }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_allocate.cs":::
 
 Mentse a fájlt, majd tegye közzé újra a Function alkalmazást. A Function alkalmazás közzétételével kapcsolatos utasításokért tekintse meg a teljes körű oktatóanyag [*alkalmazás közzététele*](tutorial-end-to-end.md#publish-the-app) című szakaszát.
 
 ### <a name="configure-your-function"></a>A függvény konfigurálása
 
-A következő lépésben környezeti változókat kell beállítania a Function alkalmazásban, amely tartalmazza a létrehozott Azure digitális Twins-példányra mutató hivatkozást. Ha a teljes körű oktatóanyagot használta ( [*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)), a beállítás már konfigurálva lesz.
+A következő lépésben környezeti változókat kell beállítania a Function alkalmazásban, amely tartalmazza a létrehozott Azure digitális Twins-példányra mutató hivatkozást. Ha a teljes körű oktatóanyagot használta ([*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)), a beállítás már konfigurálva lesz.
 
 Adja hozzá a beállítást az alábbi Azure CLI-paranccsal:
 
@@ -312,134 +169,26 @@ Az alábbi szakasz végigvezeti az automatikus kivonási folyamat beállításá
 Most létre kell hoznia egy Azure [Event hub](../event-hubs/event-hubs-about.md)-t, amely a IoT hub életciklus eseményeinek fogadására szolgál majd. 
 
 Az alábbi információk segítségével hajtsa végre az [*Event hub létrehozása*](../event-hubs/event-hubs-create.md) rövid útmutatójában ismertetett lépéseket:
-* Ha a teljes körű oktatóanyagot használja ( [*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)), akkor újra felhasználhatja a végpontok közötti oktatóanyaghoz létrehozott erőforráscsoportot.
-* Nevezze el az Event hub- *lifecycleevents* , vagy válasszon ki egy másikat, és jegyezze fel a létrehozott névteret. Ezeket akkor fogja használni, amikor beállítja az életciklus függvényt, és IoT Hub útvonalat a következő szakaszokban.
+* Ha a teljes körű oktatóanyagot használja ([*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)), akkor újra felhasználhatja a végpontok közötti oktatóanyaghoz létrehozott erőforráscsoportot.
+* Nevezze el az Event hub- *lifecycleevents*, vagy válasszon ki egy másikat, és jegyezze fel a létrehozott névteret. Ezeket akkor fogja használni, amikor beállítja az életciklus függvényt, és IoT Hub útvonalat a következő szakaszokban.
 
 ### <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Ezután létre fog hozni egy Event Hubs által aktivált függvényt egy Function alkalmazásban. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ( [*oktatóanyag: végpontok közötti megoldás összekapcsolását*](tutorial-end-to-end.md)) vagy a sajátját. 
+Ezután létre fog hozni egy Event Hubs által aktivált függvényt egy Function alkalmazásban. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ([*oktatóanyag: végpontok közötti megoldás összekapcsolását*](tutorial-end-to-end.md)) vagy a sajátját. 
 
-Nevezze el az Event hub-eseményindítót *lifecycleevents* , és kapcsolódjon az Event hub-eseményindítóhoz az előző lépésben létrehozott Event hubhoz. Ha más Event hub-nevet használt, módosítsa úgy, hogy az az alábbi eseményindító nevével egyezzen.
+Nevezze el az Event hub-eseményindítót *lifecycleevents*, és kapcsolódjon az Event hub-eseményindítóhoz az előző lépésben létrehozott Event hubhoz. Ha más Event hub-nevet használt, módosítsa úgy, hogy az az alábbi eseményindító nevével egyezzen.
 
 Ez a függvény a IoT Hub eszköz életciklusa eseményt fogja használni egy meglévő eszköz kivonásához. Az életciklus eseményeivel kapcsolatos további információkért lásd: [*IoT hub nem telemetria események*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events). További információ a Event Hubs Azure functions használatával történő használatáról: [*azure Event Hubs trigger Azure Functionshoz*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
 A közzétett Function alkalmazásban vegyen fel egy *Event hub eseményindító* típusú új függvényt, és illessze be az alábbi kódot.
 
-```C#
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Azure;
-using Azure.Core.Pipeline;
-using Azure.DigitalTwins.Core;
-using Azure.DigitalTwins.Core.Serialization;
-using Azure.Identity;
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace Samples.AdtIothub
-{
-    public static class DeleteDeviceInTwinFunc
-    {
-        private static string adtAppId = "https://digitaltwins.azure.net";
-        private static readonly string adtInstanceUrl = System.Environment.GetEnvironmentVariable("ADT_SERVICE_URL", EnvironmentVariableTarget.Process);
-        private static readonly HttpClient httpClient = new HttpClient();
-
-        [FunctionName("DeleteDeviceInTwinFunc")]
-        public static async Task Run(
-            [EventHubTrigger("lifecycleevents", Connection = "EVENTHUB_CONNECTIONSTRING")] EventData[] events, ILogger log)
-        {
-            var exceptions = new List<Exception>();
-
-            foreach (EventData eventData in events)
-            {
-                try
-                {
-                    //log.LogDebug($"EventData: {System.Text.Json.JsonSerializer.Serialize(eventData)}");
-
-                    string opType = eventData.Properties["opType"] as string;
-                    if (opType == "deleteDeviceIdentity")
-                    {
-                        string deviceId = eventData.Properties["deviceId"] as string;
-                        
-                        // Create Digital Twin client
-                        var cred = new ManagedIdentityCredential(adtAppId);
-                        var client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-
-                        // Find twin based on the original Registration ID
-                        string regID = deviceId; // simple mapping
-                        string dtId = await GetTwinId(client, regID, log);
-                        if (dtId != null)
-                        {
-                            await DeleteRelationships(client, dtId, log);
-
-                            // Delete twin
-                            await client.DeleteDigitalTwinAsync(dtId);
-                            log.LogInformation($"Twin '{dtId}' deleted in DT");
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    // We need to keep processing the rest of the batch - capture this exception and continue.
-                    exceptions.Add(e);
-                }
-            }
-
-            if (exceptions.Count > 1)
-                throw new AggregateException(exceptions);
-
-            if (exceptions.Count == 1)
-                throw exceptions.Single();
-        }
-
-
-        public static async Task<string> GetTwinId(DigitalTwinsClient client, string regId, ILogger log)
-        {
-            string query = $"SELECT * FROM DigitalTwins T WHERE T.$dtId = '{regId}'";
-            AsyncPageable<string> twins = client.QueryAsync(query);
-            await foreach (string twinJson in twins)
-            {
-                JObject twin = (JObject)JsonConvert.DeserializeObject(twinJson);
-                string dtId = (string)twin["$dtId"];
-                log.LogInformation($"Twin '{dtId}' found in DT");
-                return dtId;
-            }
-
-            return null;
-        }
-
-        public static async Task DeleteRelationships(DigitalTwinsClient client, string dtId, ILogger log)
-        {
-            var relationshipIds = new List<string>();
-
-            AsyncPageable<string> relationships = client.GetRelationshipsAsync(dtId);
-            await foreach (var relationshipJson in relationships)
-            {
-                BasicRelationship relationship = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relationshipJson);
-                relationshipIds.Add(relationship.Id);
-            }
-
-            foreach (var relationshipId in relationshipIds)
-            {
-                client.DeleteRelationship(dtId, relationshipId);
-                log.LogInformation($"Twin '{dtId}' relationship '{relationshipId}' deleted in DT");
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_delete.cs":::
 
 Mentse a projektet, majd tegye közzé újra a Function alkalmazást. A Function alkalmazás közzétételével kapcsolatos utasításokért tekintse meg a teljes körű oktatóanyag [*alkalmazás közzététele*](tutorial-end-to-end.md#publish-the-app) című szakaszát.
 
 ### <a name="configure-your-function"></a>A függvény konfigurálása
 
-A következő lépésben környezeti változókat kell beállítania a Function alkalmazásban, amely tartalmazza a létrehozott Azure digitális Twins-példányra és az Event hub-ra mutató hivatkozást. Ha a teljes körű oktatóanyagot használta ( [*oktatóanyag: végpontok közötti megoldás összekötése*](./tutorial-end-to-end.md)), az első beállítás már konfigurálva lesz.
+A következő lépésben környezeti változókat kell beállítania a Function alkalmazásban, amely tartalmazza a létrehozott Azure digitális Twins-példányra és az Event hub-ra mutató hivatkozást. Ha a teljes körű oktatóanyagot használta ([*oktatóanyag: végpontok közötti megoldás összekötése*](./tutorial-end-to-end.md)), az első beállítás már konfigurálva lesz.
 
 Adja hozzá a beállítást az Azure CLI-paranccsal. A parancs [Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
@@ -487,7 +236,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 Látnia kell, hogy az eszköz két része nem található az Azure Digital Twins-példányban.
 :::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="Parancsablak a Twin nem található":::
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az ebben a cikkben létrehozott erőforrásokra, a következő lépésekkel törölheti őket.
 
@@ -502,7 +251,7 @@ az group delete --name <your-resource-group>
 
 Ezután törölje a helyi gépről letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az eszközökhöz létrehozott digitális Twins-ket az Azure Digital Twins szolgáltatásban tárolja a rendszer, de a modell adataival és a szervezet többszintű hierarchiájának használatával gazdagíthatja őket. Ha többet szeretne megtudni erről a fogalomról, olvassa el a következőt:
 

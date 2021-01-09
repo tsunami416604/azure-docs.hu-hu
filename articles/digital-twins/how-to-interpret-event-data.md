@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a0f2b971eae5d37e8fb0771e213075289af6c519
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461022"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045257"
 ---
 # <a name="understand-event-data"></a>Az események értelmezése
 
-Az Azure Digital Twins különböző eseményeinek **értesítéseket**hoznak létre, amelyek lehetővé teszik a megoldási háttér használatát, ha különböző műveletek történnek. Ezeket a rendszer az Azure digitális Ikreken belüli és azon kívüli különböző helyszínekre [irányítja](concepts-route-events.md) át, amelyek felhasználhatják ezeket az információkat a művelet elvégzésére.
+Az Azure Digital Twins különböző eseményeinek **értesítéseket** hoznak létre, amelyek lehetővé teszik a megoldási háttér használatát, ha különböző műveletek történnek. Ezeket a rendszer az Azure digitális Ikreken belüli és azon kívüli különböző helyszínekre [irányítja](concepts-route-events.md) át, amelyek felhasználhatják ezeket az információkat a művelet elvégzésére.
 
 Számos típusú értesítés hozható létre, és az értesítési üzenetek eltérőek lehetnek attól függően, hogy milyen típusú eseményt generáltak. Ez a cikk részletesen ismerteti a különböző típusú üzeneteket, és azok megjelenését.
 
@@ -103,7 +103,7 @@ Az életciklussal kapcsolatos értesítések a következők esetén aktiválódn
 
 Az életciklus-értesítés törzsének mezői.
 
-| Name | Érték |
+| Név | Érték |
 | --- | --- |
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` minden különböző esemény esetében egyedi. |
 | `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -189,7 +189,7 @@ A **kapcsolat változásával kapcsolatos értesítések** akkor aktiválódnak,
 
 Itt láthatók az Edge Change-értesítések törzsének mezői.
 
-| Name    | Érték |
+| Név    | Érték |
 | --- | --- |
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` egyedi a különböző eseményekhez |
 | `source` | Az Azure Digital Twins-példány neve, például *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -245,7 +245,7 @@ A digitális **kettős változásokról szóló értesítéseket** a rendszer ak
 
 Itt láthatók a digitális kettős változásokról szóló értesítés törzsének mezői.
 
-| Name    | Érték |
+| Név    | Érték |
 | --- | --- |
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id` egyedi a különböző eseményekhez |
 | `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net*
@@ -262,20 +262,7 @@ Az értesítés törzse `Twin.Update` egy JSON-javítási dokumentum, amely a di
 
 Tegyük fel például, hogy a digitális iker frissítése a következő javítás használatával történt.
 
-```json
-[
-    {
-        "op": "replace",
-        "value": 40,
-        "path": "/Temperature"
-    },
-    {
-        "op": "add",
-        "value": 30,
-        "path": "/comp1/prop1"
-    }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
 
 A megfelelő értesítés (ha a szolgáltatás szinkron módon hajtja végre, mint például az Azure digitális ikrek frissítése egy digitális Twin-et), a következőhöz hasonló szervnek kell lennie:
 

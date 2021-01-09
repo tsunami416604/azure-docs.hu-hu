@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizált adatfeldolgozás, dokumentumok feldolgozása, automatizált adatbevitel, űrlapok feldolgozása
-ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845530"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044764"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -35,18 +35,18 @@ Az űrlap-felismerő a következő szolgáltatásokból áll:
     * [Névjegykártyák](./concept-business-cards.md)
 
 
-## <a name="try-it-out"></a>Próbálja ki
+## <a name="try-it-out"></a>Próba
 
 Az űrlap-felismerő szolgáltatás kipróbálásához nyissa meg az online minta felhasználói felület eszközét:
 
 
 # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [Előre elkészített modellek kipróbálása](https://fott.azurewebsites.net/)
+> [Az űrlap-felismerő kipróbálása](https://fott.azurewebsites.net/)
 
 # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
 > [!div class="nextstepaction"]
-> [Előre elkészített modellek kipróbálása](https://fott-preview.azurewebsites.net/)
+> [Az űrlap-felismerő kipróbálása](https://fott-preview.azurewebsites.net/)
 
 ---
 
@@ -104,7 +104,7 @@ A Business Cards modell lehetővé teszi olyan információk kinyerését, mint 
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="névjegykártya minta" lightbox="./media/overview-business-card.jpg":::
 
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Használja a [minta űrlap-felismerő eszközt](https://fott.azurewebsites.net/) , vagy kövessen egy rövid útmutatót az adatok űrlapokból való kinyerésének megkezdéséhez. Javasoljuk, hogy az ingyenes szolgáltatást használja a technológia megismerése során. Ne feledje, hogy a szabad lapok száma legfeljebb 500 havonta.
 
@@ -152,7 +152,18 @@ További információért olvassa el a [REST API dokumentációját](https://wes
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolók használatával
 
-A helyszíni API-funkciók üzembe helyezéséhez [használjon űrlap-felismerő tárolókat (előzetes verzió)](form-recognizer-container-howto.md) . Ez a Docker-tároló lehetővé teszi, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz.
+A helyszíni API-funkciók üzembe helyezéséhez [használjon űrlap-felismerő tárolókat (előzetes verzió)](form-recognizer-container-howto.md) . Ez a Docker-tároló lehetővé teszi, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz. 
+
+## <a name="service-availability-and-redundancy"></a>Szolgáltatás rendelkezésre állása és redundancia
+
+### <a name="is-form-recognizer-service-zone-resilient"></a>Az űrlap-felismerő szolgáltatás zónája – rugalmas?
+
+Igen. Az űrlap-felismerő szolgáltatás alapértelmezés szerint zóna-rugalmas.
+
+### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>Hogyan konfigurálja az űrlap-felismerő szolgáltatást zónákra rugalmasan?
+
+A zóna rugalmasságának engedélyezéséhez nincs szükség ügyfél-konfigurációra. Zóna – az űrlap-felismerő erőforrások rugalmassága alapértelmezés szerint elérhető, és maga a szolgáltatás kezeli.
+
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
 

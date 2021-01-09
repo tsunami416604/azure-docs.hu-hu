@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1fc5be93e2b9729838aa9fb3a777936003c5f45
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356390"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045954"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
 
@@ -47,7 +47,7 @@ Az alábbi kódrészlet a [DigitalTwins API](/rest/api/digital-twins/dataplane/t
 
 A Twin tulajdonságot inicializálhatja a létrehozáskor, vagy később is beállíthatja. Ha a kettős és a inicializált tulajdonságokat szeretné létrehozni, hozzon létre egy JSON-dokumentumot, amely megadja a szükséges inicializálási értékeket.
 
-[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 Használhat egy nevű segítő osztályt is `BasicDigitalTwin` , amely egy "Twin" objektumban található tulajdonság-mezőket közvetlenül a szótár használata alternatívájaként tárolja. További információ a segítő osztályról és a használatáról: a [*digitális*](how-to-manage-twin.md#create-a-digital-twin) ikerek kezelése című rész, amely *bemutatja a digitális ikrek kezelését*.
 
@@ -58,25 +58,7 @@ Használhat egy nevű segítő osztályt is `BasicDigitalTwin` , amely egy "Twin
 
 Íme néhány példa arra, hogy a [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) *-kat* használó ügyfél létrehozza a kapcsolatot *egy, a* *földszintes* és egy *Cafe* típusú digitális Twin.
 
-```csharp
-// Create Twins, using functions similar to the previous sample
-await CreateRoom("Cafe", 70, 66);
-await CreateFloor("GroundFloor", averageTemperature=70);
-// Create relationships
-var relationship = new BasicRelationship
-{
-    TargetId = "Cafe",
-    Name = "contains"
-};
-try
-{
-    string relId = $"GroundFloor-contains-Cafe";
-    await client.CreateOrReplaceRelationshipAsync<BasicRelationship>("GroundFloor", relId, relationship);
-} catch(ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
 
 ## <a name="json-representations-of-graph-elements"></a>Graph-elemek JSON-ábrázolásai
 
@@ -90,7 +72,7 @@ Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jelení
 | --- | --- |
 | `$dtId` | A digitális Twin AZONOSÍTÓját jelölő, felhasználó által megadott karakterlánc |
 | `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |
-| `$conformance` | A digitális iker megfelelőségi állapotát tartalmazó felsorolás ( *nem**megfelelő,* *ismeretlen* ) |
+| `$conformance` | A digitális iker megfelelőségi állapotát tartalmazó felsorolás ( *nem**megfelelő,* *ismeretlen*) |
 | `{propertyName}` | Egy tulajdonság értéke a JSON-ban ( `string` , szám típusa vagy objektum) |
 | `$relationships` | A kapcsolatok gyűjtemény elérési útjának URL-címe Ez a mező hiányzik, ha a digitális Twin nem rendelkezik kimenő kapcsolati élekkel. |
 | `$metadata.$model` | Választható A digitális IKeret jellemző modell felület azonosítója |
@@ -175,7 +157,7 @@ Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő me
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: gráf-elemek kezelése az Azure Digital Twin API-kkal:
 * [*Útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)

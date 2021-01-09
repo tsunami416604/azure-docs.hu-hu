@@ -1,15 +1,15 @@
 ---
 title: Az Azure Kubernetes Service beépített szabályzat-definíciói
 description: Az Azure Kubernetes szolgáltatás beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 29f5d2a3a6824730a5a1c96f3a6247867bdb43ee
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c754e394b8f59be750d5cadf7dd358ad455b2ce5
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989693"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045441"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service beépített definíciói Azure Policy
 
@@ -21,7 +21,7 @@ Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-defi
 
 [!INCLUDE [azure-policy-reference-rp-aks-containerservice](../../includes/policy/reference/byrp/microsoft.containerservice.md)]
 
-## <a name="aks-engine"></a>AK-motor
+## <a name="aks-engine"></a>AKS-motor
 
 [!INCLUDE [azure-policy-reference-rp-aks-aksengine](../../includes/policy/reference/byrp/aks-engine.md)]
 

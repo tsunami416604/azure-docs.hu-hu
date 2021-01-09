@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bf7b829d70af27850affe619d47ed4a4f5ec1bea
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 2502fdd14acae206b8440fe602639aa49be55f4e
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279909"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045920"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
@@ -53,10 +53,7 @@ Először is vegye fel az SDK `Azure.DigitalTwins.Core` -csomagot és a `Azure.I
 
 A következő using utasításokat is hozzá kell adnia a projekt kódjához:
 
-```csharp
-using Azure.Identity;
-using Azure.DigitalTwins.Core;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="Azure_Digital_Twins_dependencies":::
 
 Ezután adjon hozzá programkódot a hitelesítő adatok beszerzéséhez a egyik metódusának használatával `Azure.Identity` .
 
@@ -68,23 +65,7 @@ Az alapértelmezett Azure-beli hitelesítő adatok használatához szüksége le
 
 Az alábbi mintakód a projekthez való hozzáadását írja elő `DefaultAzureCredential` :
 
-```csharp
-// The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
-
-//...
-
-DigitalTwinsClient client;
-try
-{
-    var credential = new DefaultAzureCredential();
-    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-} catch(Exception e)
-{
-    Console.WriteLine($"Authentication or client creation error: {e.Message}");
-    Environment.Exit(0);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_full":::
 
 #### <a name="set-up-local-azure-credentials"></a>Helyi Azure-beli hitelesítő adatok beállítása
 
@@ -100,12 +81,7 @@ Az alapértelmezett Azure-beli hitelesítő adatok használatához szüksége le
 
 Az Azure-függvényekben a felügyelt identitás hitelesítő adatait használhatja a következőhöz hasonló módon:
 
-```csharp
-ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-DigitalTwinsClientOptions opts = 
-    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="ManagedIdentityCredential":::
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential metódus
 
@@ -118,27 +94,7 @@ Az interaktív böngésző hitelesítő adatainak használatához szüksége les
 
 Íme egy példa arra a kódra, amellyel hitelesített SDK-ügyfelet hozhat létre a használatával `InteractiveBrowserCredential` .
 
-```csharp
-// Your client / app registration ID
-private static string clientId = "<your-client-ID>"; 
-// Your tenant / directory ID
-private static string tenantId = "<your-tenant-ID>";
-// The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
-
-//...
-
-DigitalTwinsClient client;
-try
-{
-    var credential = new InteractiveBrowserCredential(tenantId, clientId);
-    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-} catch(Exception e)
-{
-    Console.WriteLine($"Authentication or client creation error: {e.Message}");
-    Environment.Exit(0);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="InteractiveBrowserCredential":::
 
 >[!NOTE]
 > Habár az ügyfél-azonosító, a bérlői azonosító és a példány URL-címét közvetlenül a programkódba helyezheti a fentiekben látható módon, érdemes lehet a programkódot egy konfigurációs fájlból vagy környezeti változóból is beolvasni.
@@ -156,7 +112,7 @@ Továbbá a függvények hitelesítésének használatához ne felejtse el a kö
 
 Ha a fenti, Kiemelt hitelesítési forgatókönyvek nem fedik le az alkalmazás igényeit, megismerheti a [**Microsoft Identity platformon**](../active-directory/develop/v2-overview.md#getting-started)kínált egyéb hitelesítési módokat is. A platform dokumentációja a további hitelesítési forgatókönyvekre vonatkozik, az alkalmazás típusa szerint rendezve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogyan működik a biztonság az Azure digitális Twinsban:
 * [*Fogalmak: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md)

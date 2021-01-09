@@ -3,14 +3,14 @@ title: Adatbiztonság Azure Automation
 description: Ebből a cikkből megtudhatja, hogyan védi a Azure Automation az adatvédelmet, és gondoskodik az adatok védelméről.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 07/20/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40405607e7f7198f190f621121022537ac3b3171
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87004647"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046039"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation-adatok kezelése
 
@@ -26,11 +26,9 @@ A Azure Automation felé irányuló adatforgalom biztosításához határozottan
 
 * DSC-csomópontok
 
-A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, és miközben jelenleg is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**. A 2020. szeptembertől kezdődően megkezdjük a TLS 1,2 és a titkosítási protokoll újabb verzióinak betartatását.
+A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, és miközben jelenleg is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**. Nem ajánlott explicit módon beállítani az ügynököt úgy, hogy csak a TLS 1,2-et használja, kivéve, ha ez nem feltétlenül szükséges, mivel ez a platform szintű biztonsági funkciókat is lehetővé teszi, amelyekkel automatikusan észlelhetők és kihasználhatják az elérhetővé váló újabb biztonságosabb protokollokat, például a TLS 1,3.
 
-Nem ajánlott explicit módon beállítani az ügynököt úgy, hogy csak a TLS 1,2-et használja, kivéve, ha ez nem feltétlenül szükséges, mivel ez a platform szintű biztonsági funkciókat is lehetővé teszi, amelyekkel automatikusan észlelhetők és kihasználhatják az elérhetővé váló újabb biztonságosabb protokollokat, például a TLS 1,3.
-
-További információ a Windows és Linux rendszerhez készült Log Analytics ügynökkel való TLS 1,2-támogatásról, amely a hibrid Runbook-feldolgozói szerepkörtől függ: [log Analytics ügynök áttekintése – TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol). 
+További információ a Windows és Linux rendszerhez készült Log Analytics ügynökkel való TLS 1,2-támogatásról, amely a hibrid Runbook-feldolgozói szerepkörtől függ: [log Analytics ügynök áttekintése – TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol).
 
 ### <a name="platform-specific-guidance"></a>Platform-specifikus útmutató
 
@@ -51,7 +49,7 @@ A következő táblázat összefoglalja a különböző erőforrások adatmegőr
 |:--- |:--- |
 | Fiókok |Egy fiók a felhasználó törlése után 30 nappal véglegesen el lesz távolítva. |
 | Objektumok |Egy eszköz a felhasználó törlése után 30 nappal véglegesen el lesz távolítva, vagy 30 nappal azután, hogy egy felhasználó töröl egy olyan fiókot, amely tartalmazza az adategységet. Az eszközök közé tartoznak a változók, az ütemtervek, a hitelesítő adatok, a tanúsítványok, a Python 2 csomagok és a kapcsolatok. |
-| DSC-csomópontok |A DSC-csomópontok véglegesen el lettek távolítva egy Automation-fiókból a Windows PowerShellben Azure Portal vagy a [Regisztráció törlése-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) parancsmag használatával. Egy csomópontot is véglegesen eltávolít 30 nappal azután, hogy a felhasználó törli a csomópontot tároló fiókot. |
+| DSC-csomópontok |A DSC-csomópontok véglegesen el lettek távolítva egy Automation-fiókból a Windows PowerShellben Azure Portal vagy a [Regisztráció törlése-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode) parancsmag használatával. Egy csomópontot is véglegesen eltávolít 30 nappal azután, hogy a felhasználó törli a csomópontot tároló fiókot. |
 | Feladatok |A rendszer töröl egy feladatot, és véglegesen eltávolítja azt a módosítás után 30 nappal, például a feladatok befejeződése után, leáll vagy felfüggesztve. |
 | Modulok |Egy modul a felhasználó törlése után 30 nappal véglegesen el lesz távolítva, vagy 30 nappal azután, hogy a felhasználó törli a modult tartalmazó fiókot. |
 | Csomópont-konfigurációk/MOF-fájlok |Egy régi csomópont-konfiguráció véglegesen el lesz távolítva egy új csomópont-konfiguráció generálása után 30 nappal. |
@@ -80,7 +78,7 @@ A titkosított változók vagy a hitelesítő adatok jelszava mezők a parancsma
 
 ### <a name="dsc-configurations"></a>DSC-konfigurációk
 
-A DSC-konfigurációkat a Windows PowerShell Azure Portal vagy [export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) parancsmagjának használatával is exportálhatja a parancsfájlok fájljaiba. Ezeket a konfigurációkat egy másik Automation-fiókban is importálhatja és használhatja.
+A DSC-konfigurációkat a Windows PowerShell Azure Portal vagy [export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration) parancsmagjának használatával is exportálhatja a parancsfájlok fájljaiba. Ezeket a konfigurációkat egy másik Automation-fiókban is importálhatja és használhatja.
 
 ## <a name="geo-replication-in-azure-automation"></a>Geo-replikálás Azure Automation
 

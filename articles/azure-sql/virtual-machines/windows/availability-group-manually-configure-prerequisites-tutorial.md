@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a9a2f9d999a51f2b4600e8379d4a8913675b338
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360016"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044288"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Oktatóanyag: rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
 
@@ -45,7 +45,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a SQL Server always on rendelk
 
 Rendelkeznie kell Azure-fiókkal. [Megnyithat egy ingyenes Azure-fiókot](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic) , vagy [aktiválhatja a Visual Studio előfizetői előnyeit](/visualstudio/subscriptions/subscriber-benefits).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Ezzel a beállítással **+** új objektumot hozhat létre a portálon.
@@ -235,7 +235,7 @@ A következő lépésekben konfigurálja az **ad-Primary-DC** gépet a Corp.cont
     ![Szerepkörök hozzáadása párbeszédpanel](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. Kattintson a **Tovább gombra** , amíg el nem éri a **megerősítő** szakaszt. Jelölje be a **célkiszolgáló automatikus újraindítása, ha szükséges** jelölőnégyzetet.
-8. Válassza a **Telepítés** lehetőséget.
+8. Válassza a **Telepítés** gombot.
 9. A szolgáltatások telepítésének befejezését követően térjen vissza a **Kiszolgálókezelő** irányítópultra.
 10. Válassza az új **AD DS** lehetőséget a bal oldali ablaktáblán.
 11. A sárga figyelmeztető sávban válassza a **továbbiak** hivatkozást.
@@ -251,7 +251,7 @@ A következő lépésekben konfigurálja az **ad-Primary-DC** gépet a Corp.cont
     | **Tartományvezérlő beállításai** |**Címtárszolgáltatások helyreállító módjának jelszava** = contoso! 0000<br/>**Jelszó megerősítése** = contoso! 0000 |
 
 14. A **tovább** gombra kattintva megtekintheti a varázsló többi lapját. Az **Előfeltételek ellenőrzése** lapon győződjön meg arról, hogy a következő üzenet jelenik meg: az **összes előfeltétel-ellenőrzés sikeresen átadva**. Áttekintheti a vonatkozó figyelmeztető üzeneteket, de lehetséges, hogy folytathatja a telepítést.
-15. Válassza a **Telepítés** lehetőséget. Az **ad-Primary-DC** virtuális gép automatikusan újraindul.
+15. Válassza a **Telepítés** gombot. Az **ad-Primary-DC** virtuális gép automatikusan újraindul.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Jegyezze fel az elsődleges tartományvezérlő IP-címét.
 
@@ -279,7 +279,7 @@ Miután létrehozta az első tartományvezérlőt, és engedélyezte a DNS-t az 
 
 3. Válassza az **Egyéni** lehetőséget, majd írja be az elsődleges tartományvezérlő magánhálózati IP-címét.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-the-second-domain-controller"></a>A második tartományvezérlő konfigurálása
 
@@ -314,7 +314,7 @@ Az elsődleges tartományvezérlő újraindítása után beállíthatja a másod
 
     ![Központi telepítés konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/28-deploymentconfig.png)
 
-18. Válassza a **Kiválasztás** lehetőséget.
+18. Kattintson a **Kiválasztás** elemre.
 19. Kapcsolódjon a rendszergazdai fiók használatával (**Corp. CONTOSO. COM\domainadmin**) és jelszó (**contoso! 0000**).
 20. A **tartomány kiválasztása az erdőből** területen válassza ki a tartományt, majd kattintson **az OK gombra**.
 21. A **tartományvezérlő beállításainál** használja az alapértelmezett értékeket, és állítsa be a Címtárszolgáltatások helyreállító módjának jelszavát.
@@ -539,7 +539,7 @@ Ismételje meg a lépéseket a többi SQL Server VMon.
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Feladatátvevő fürt hálózati küszöbértékének finomhangolása
 
-Ha SQL Server AlwaysOn rendelkező Azure-beli virtuális gépeken futtatja a Windows feladatátvevő fürt csomópontjait, ajánlott a fürt beállításának módosítása egy nyugodtabb figyelési állapotra.  Ez sokkal stabilabb és megbízhatóbb lesz a fürt számára.  További részletekért lásd: [IaaS és SQL AlwaysOn – a feladatátvevő fürt hálózati küszöbértékének finomhangolása](/windows-server/troubleshoot/iaas-sql-failover-cluster).
+Ha SQL Server rendelkezésre állási csoportokkal rendelkező Azure-beli virtuális gépeken futtatja a Windows feladatátvevő fürt csomópontjait, módosítsa a fürt beállítását egy nyugodtabb figyelési állapotra.  Ez sokkal stabilabb és megbízhatóbb lesz a fürt számára.  További részletekért lásd: [IaaS a feladatátvételi fürt hálózati küszöbértékek SQL Server-hangolásával](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> A tűzfal konfigurálása minden SQL Server VM
@@ -571,6 +571,6 @@ A portok megnyitásának módszere a használt tűzfal megoldástól függ. A k�
 Ismételje meg ezeket a lépéseket a második SQL Server VM.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [SQL Server always on rendelkezésre állási csoport létrehozása az Azure-ban Virtual Machines](availability-group-manually-configure-tutorial.md)

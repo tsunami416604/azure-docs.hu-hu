@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c2620b52c426871b0ec85e3db237be2d373d42f1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a1a55bdf21b74116450ca32f66d891f1aa206d3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458697"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045410"
 ---
 # <a name="add-tags-to-digital-twins"></a>Címkék hozzáadása a digitális ikrekhez 
 
@@ -32,23 +32,7 @@ A jelölő címkék [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/m
 
 Íme egy részlet egy olyan kettős modellből, amely a jelölő címkét tulajdonságként implementálja:
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "boolean"
-    }
-  }
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="2-16":::
 
 ### <a name="add-marker-tags-to-digital-twins"></a>Jelölő címkék hozzáadása a digitális ikrekhez
 
@@ -56,11 +40,7 @@ Ha a `tags` tulajdonság egy digitális Twin modell részét képezi, beállíth
 
 Íme egy példa, amely `tags` három ikrek számára tölti fel a jelölőt:
 
-```csharp
-entity-01: "tags": { "red": true, "round": true } 
-entity-02: "tags": { "blue": true, "round": true } 
-entity-03: "tags": { "red": true, "large": true } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesMarker":::
 
 ### <a name="query-with-marker-tags"></a>Lekérdezés jelölő címkékkel
 
@@ -68,15 +48,11 @@ Miután hozzáadta a címkéket a digitális ikrekhez, a címkék használatáva
 
 Itt látható egy lekérdezés, amely a "Red" címkével jelölt összes ikreket lekérdezi: 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Az összetettebb lekérdezésekhez címkék is kombinálhatók. Itt látható egy lekérdezés, amely az összes olyan ikreket lekérdezi, amely nem piros: 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.round) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags2":::
 
 ## <a name="value-tags"></a>Érték Címkék 
 
@@ -88,23 +64,7 @@ Az érték címkék [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/m
 
 Itt látható egy olyan kettős modellből származó részlet, amely egy érték címkét valósít meg tulajdonságként:
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "string"
-    }
-  }
-} 
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="17-31":::
 
 ### <a name="add-value-tags-to-digital-twins"></a>Érték Címkék hozzáadása a digitális ikrekhez
 
@@ -112,11 +72,7 @@ Ahogy a jelölő címkék esetében is, a Value (érték) címkét egy digitáli
 
 Íme egy példa, amely három ikrek értékét tölti `tags` fel:
 
-```csharp
-entity-01: "tags": { "red": "", "size": "large" } 
-entity-02: "tags": { "purple": "", "size": "small" } 
-entity-03: "tags": { "red": "", "size": "small" } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesValue":::
 
 Vegye figyelembe, hogy a `red` `purple` példában jelölő címkékként használjuk.
 
@@ -124,17 +80,13 @@ Vegye figyelembe, hogy a `red` `purple` példában jelölő címkékként haszn�
 
 Mint a jelölő címkék esetében, az érték címkék használatával szűrheti az ikreket a lekérdezésekben. Az érték címkék és a jelölő címkék együtt is használhatók.
 
-A fenti példában `red` jelölő címkeként használjuk. Itt látható egy lekérdezés, amely a "Red" címkével jelölt összes ikreket lekérdezi: 
+A fenti példában `red` jelölő címkeként használjuk. Ne feledje, hogy ez egy lekérdezés a "Red" címkével jelölt összes ikrek beszerzéséhez: 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Itt látható egy lekérdezés, amely az összes olyan entitást beolvassa, amely kis (érték címkével), nem piros: 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND tags.size = 'small' 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
 
 ## <a name="next-steps"></a>További lépések
 

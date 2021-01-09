@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a75e1fb5b250be1004195d3a77301c73eac94b02
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454605"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043557"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>A dedikált SQL Pool (korábban SQL DW) Azure szinapszis analitikus
 
@@ -37,13 +37,13 @@ A művelettípusok előzetes ismerete segít optimalizálni a táblák kialakít
 
 ## <a name="data-migration"></a>Adatok migrálása
 
-Először töltse be az adatait [Azure Data Lake Storageba](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vagy az Azure Blob Storageba. Ezután a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (előzetes verzió) használatával töltse be az adatait az átmeneti táblákba. Használja a következő konfigurációt:
+Először töltse be az adatait [Azure Data Lake Storageba](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vagy az Azure Blob Storageba. Ezután a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) használatával töltse be az adatait az átmeneti táblákba. Használja a következő konfigurációt:
 
 | Tervezés | Ajánlás |
 |:--- |:--- |
 | Disztribúció | Ciklikus időszeletelés |
 | Indexelés | Halommemória |
-| Particionálás | Nincsenek |
+| Particionálás | Nincs |
 | Erőforrásosztály | largerc vagy xlargerc |
 
 Itt további információkat tudhat meg az [adatok migrálásáról](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), az [adatok betöltéséről](design-elt-data-loading.md) és a [kinyerési, betöltési és átalakítási (ELT) folyamatról](design-elt-data-loading.md).

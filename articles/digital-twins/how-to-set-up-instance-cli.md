@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 26302fa67394e6c3122b159866c3814fb5677ba6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 8e82f8974b53224b3e471d1628a1ca5819ce2955
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494969"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044475"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure digitális Twins-példány és-hitelesítés beállítása (CLI)
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-Ez a cikk az **új Azure Digital Twins-példány beállításának**lépéseit ismerteti, beleértve a példány létrehozását és a hitelesítés beállítását. A cikk elvégzése után egy Azure Digital Twins-példánnyal kell elkezdenie a programozást.
+Ez a cikk az **új Azure Digital Twins-példány beállításának** lépéseit ismerteti, beleértve a példány létrehozását és a hitelesítés beállítását. A cikk elvégzése után egy Azure Digital Twins-példánnyal kell elkezdenie a programozást.
 
 A cikk jelen verziója ezeket a lépéseket manuálisan, egyenként, a parancssori felület használatával hajtja végre.
 * Ha ezeket a lépéseket manuálisan szeretné elvégezni a Azure Portal használatával, tekintse meg a jelen cikk portáljának verzióját: [*útmutató: példány és hitelesítés beállítása (portál)*](how-to-set-up-instance-portal.md).
@@ -35,12 +35,12 @@ A cikk jelen verziója ezeket a lépéseket manuálisan, egyenként, a parancsso
 ## <a name="create-the-azure-digital-twins-instance"></a>Az Azure Digital Twins-példány létrehozása
 
 Ebben a szakaszban az **Azure Digital Twins új példányát fogja létrehozni** a Cloud Shell parancs használatával. A következőket kell megadnia:
-* Egy erőforráscsoport, amelybe a üzembe helyezése megtörténjen. Ha még nem rendelkezik már meglévő erőforráscsoporthoz, létrehozhat egyet ezzel a paranccsal:
+* Egy erőforráscsoport, amelyben a példány üzembe lesz helyezve. Ha még nem rendelkezik már meglévő erőforráscsoporthoz, létrehozhat egyet ezzel a paranccsal:
     ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * Egy régió az üzemelő példányhoz. Ha szeretné megtekinteni, hogy mely régiók támogatják az Azure Digital Twins-t, látogasson el az [*Azure-termékek területre*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
-* A példány neve. Az új példány nevének a régión belül egyedinek kell lennie az előfizetéshez (ami azt jelenti, hogy ha az előfizetés egy másik Azure Digital Twins-példánnyal rendelkezik abban a régióban, amely már használja a választott nevet), a rendszer kérni fogja, hogy válasszon másik nevet.
+* A példány neve. Ha az előfizetése egy másik Azure Digital Twins-példánnyal rendelkezik abban a régióban, amely már a megadott nevet használja, a rendszer arra kéri, hogy válasszon másik nevet.
 
 A példány létrehozásához használja ezeket az értékeket a következő parancsban:
 
@@ -54,7 +54,7 @@ Ha a példány létrehozása sikeresen megtörtént, a Cloud Shell eredmény a k
 
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="Parancsablak az erőforráscsoport és az Azure Digital Twins-példány sikeres létrehozásával":::
 
-Jegyezze fel az Azure Digital Twins-példány *állomásneve*, *neve*és *resourceGroup* a kimenetből. Ezek mind olyan fontos értékek, amelyekre szüksége lehet az Azure Digital Twins-példánnyal való munka folytatásához, a hitelesítés és a kapcsolódó Azure-erőforrások beállításához. Ha más felhasználók is programozást végeznek a példányon, ezeket az értékeket meg kell osztani velük.
+Jegyezze fel az Azure Digital Twins-példány **állomásneve**, **neve** és **resourceGroup** a kimenetből. Ezek mind olyan fontos értékek, amelyekre szüksége lehet az Azure Digital Twins-példánnyal való munka folytatásához, a hitelesítés és a kapcsolódó Azure-erőforrások beállításához. Ha más felhasználók is programozást végeznek a példányon, ezeket az értékeket meg kell osztani velük.
 
 > [!TIP]
 > Ezeket a tulajdonságokat, valamint a példány összes tulajdonságát a futtatásával bármikor megtekintheti `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -78,9 +78,9 @@ Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel ka
 >
 > Rendelje hozzá a szerepkört a felhasználó *objektumazonosító-azonosítójával* . Ez akkor fordulhat elő, ha a felhasználók személyes [Microsoft-fiókokkal (MSAs)](https://account.microsoft.com/account)rendelkeznek. 
 >
-> [Azure Active Directory felhasználók Azure Portal oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) válassza ki a felhasználói fiókot, és nyissa meg a részleteit. A felhasználó *ObjectId*másolása:
+> [Azure Active Directory felhasználók Azure Portal oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) válassza ki a felhasználói fiókot, és nyissa meg a részleteit. A felhasználó *ObjectId* másolása:
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="Parancsablak az erőforráscsoport és az Azure Digital Twins-példány sikeres létrehozásával" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="A felhasználó oldalának nézete Azure Portal kiemelve a GUID azonosítót az &quot;objektumazonosító&quot; mezőben" lightbox="media/includes/user-id.png":::
 >
 > Ezután ismételje meg a szerepkör-hozzárendelési lista parancsát a felhasználó *objektumazonosító* használatával a `assignee` fenti paraméterhez.
 
@@ -90,7 +90,7 @@ Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel ka
 
 Most már rendelkezik egy Azure Digital Twins-példánnyal, amely készen áll a használatra, és hozzárendelt engedélyekkel rendelkezik a kezeléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tesztelje az egyes REST API hívásokat a példányon az Azure Digital Twins CLI parancsaival: 
 * [az DT Reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

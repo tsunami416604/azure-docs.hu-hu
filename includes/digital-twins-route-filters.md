@@ -3,14 +3,14 @@ author: baanders
 description: fájl belefoglalása az Azure Digital Twins útvonal-szűrési beállításaihoz
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/18/2020
+ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: 261c5fa47cddcc527e7c0a18fbd18aad9320ed4b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e06e660a43aaa0ff5eb79bc00bd8a5d2c61c6580
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018961"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045315"
 ---
 | Szűrő neve | Leírás | Szöveges séma szűrése | Támogatott értékek | 
 | --- | --- | --- | --- |
@@ -18,28 +18,20 @@ ms.locfileid: "96018961"
 | Típus | A digitális kettős példányon keresztül áramló [esemény típusa](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) | `type = '<eventType>'` | Itt láthatók a lehetséges eseménytípus értékei: <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Forrás | Az Azure Digital Twins-példány neve | `source = '<hostname>'`| Itt láthatja a lehetséges állomásnév-értékeket: <br> **Értesítésekhez**: `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net` <br> **Telemetria esetén**: `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net/<twinId>`|
 | Tárgy | Az esemény leírása a fenti eseményforrás kontextusában | `subject = '<subject>'` | Itt láthatók a lehetséges tárgyi értékek: <br>**Értesítésekhez**: a tulajdonos `<twinid>` <br> vagy a témák URI-formátuma, amelyeket a több rész vagy azonosító egyedileg azonosít:<br>`<twinid>/relationships/<relationshipid>`<br> **Telemetria esetén**: a tulajdonos az összetevő elérési útja (ha a telemetria egy Twin összetevőből származik), például: `comp1.comp2` . Ha a telemetria nem egy összetevőből származik, akkor a tárgy mezőjének üresnek kell lennie. |
-| Adatséma | DTDL modell azonosítója | `dataschema = '<model-dtmi-ID>'` | **Telemetria esetében**: az Adatséma a Twin vagy a telemetria kibocsátó összetevő modell-azonosítója. Például: `dtmi:example:com:floor4;2` <br>**Értesítésekhez**: az Adatséma a következő helyen érhető el: `$body.$metadata.$model`|
+| Adatséma | DTDL modell azonosítója | `dataschema = '<model-dtmi-ID>'` | **Telemetria esetében**: az Adatséma a Twin vagy a telemetria kibocsátó összetevő modell-azonosítója. Például: `dtmi:example:com:floor4;2` <br>**Értesítésekhez (létrehozás/törlés)**: az Adatséma az értesítési törzsben érhető el `$body.$metadata.$model` . <br>**Értesítések (frissítés)**: az Adatséma az értesítési törzsben érhető el `$body.modelId`|
 | Tartalomtípus | Adatérték tartalomtípusa | `datacontenttype = '<contentType>'` | A tartalom típusa `application/json` |
 | Spec verziója | Az Ön által használt esemény-séma verziója | `specversion = '<version>'` | A verziónak a-nek kell lennie `1.0` . Ez a CloudEvents séma 1,0-es verzióját jelzi. |
 | Értesítés törzse | Egy értesítés mezőjében szereplő bármely tulajdonságra hivatkozhat `data` | `$body.<property>` | Tekintse meg a következő témakört: tudnivalók az eseményekről az értesítések példáinak [*megismeréséhez*](../articles/digital-twins/how-to-interpret-event-data.md) . A mező bármely tulajdonsága `data` hivatkozhat a `$body`
 
 Vegye figyelembe, hogy több szűrőt is hozzáadhat a következőhöz hasonló kérésekhez: 
 
-```json  
-{
-    "endpointName": "dt-endpoint", 
-    "filter": "true", 
-    "filter": "source = 'ADT-resource.api.wus2.digitaltwins.azure.net/myFloorID'", 
-    "filter": "type = 'Microsoft.DigitalTwins.Twin.Delete'", 
-    "filter": "specversion = '1.0'"
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter-multiple.json":::
 
 A következő adattípusok támogatottak a fenti adatokra mutató hivatkozásokkal visszaadott értékekként:
 
 | Adattípus | Példa |
 |-|-|-|
-|**Sztring**| `STARTS_WITH($body.$metadate.$model, 'dtmi:example:com:floor')` <br> `CONTAINS(subject, '<twinID>')`|
+|**Sztring**| `STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')` <br> `CONTAINS(subject, '<twinID>')`|
 |**Egész szám**|`$body.errorCode > 200`|
 |**Duplán**|`$body.temperature <= 5.5`|
 |**Bool**|`$body.poweredOn = true`|

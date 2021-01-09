@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705064"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045512"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Firewallt a Azure
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
-Azure Firewall használatakor a __cél hálózati címfordítás (DNAT)__ használatával hozzon létre NAT-szabályokat a bejövő forgalom számára. A kimenő forgalom esetében hozzon létre __hálózati__ és/vagy __alkalmazási__ szabályokat. Ezek a szabálygyűjtemény-gyűjtemények részletesebben ismertetik a [Azure Firewall fogalmakat](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)ismertető témakört.
+Azure Firewall használatakor a __cél hálózati címfordítás (DNAT)__ használatával hozzon létre NAT-szabályokat a bejövő forgalom számára. A kimenő forgalom esetében hozzon létre __hálózati__ és/vagy __alkalmazási__ szabályokat. Ezek a szabálygyűjtemény-gyűjtemények részletesebben ismertetik a [Azure Firewall fogalmakat](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)ismertető témakört.
 
 ### <a name="inbound-configuration"></a>Bejövő konfiguráció
 

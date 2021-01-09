@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532822"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043744"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Frissítés az Azure Cognitive Search .NET SDK 11-es verziójára
 
@@ -30,8 +30,7 @@ Az új verzióban megjelenő legfontosabb különbségek a következők:
 + Három ügyfél a kettő helyett: `SearchClient` , `SearchIndexClient` , `SearchIndexerClient`
 + Különböző API-k és kisebb szerkezeti különbségek elnevezése az egyes feladatok egyszerűsítése érdekében
 
-> [!NOTE]
-> Tekintse át a .NET SDK 11-es verziójának változásainak részletezett listáját a [**módosítási naplóban**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) .
+Ezen a cikken kívül áttekintheti a [módosítási naplót](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) a .net SDK 11-es verziójának változásainak részletezett listájához.
 
 ## <a name="package-and-library-consolidation"></a>Csomag-és könyvtár-konszolidáció
 
@@ -109,6 +108,41 @@ A mező-definíciók racionalizálva vannak: a [SearchableField](/dotnet/api/azu
 | [DocumentSearchResult](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) | [SearchResult](/dotnet/api/azure.search.documents.models.searchresult-1) vagy [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1), attól függően, hogy az eredmény egyetlen dokumentum vagy több. |
 | [DocumentSuggestResult](/dotnet/api/microsoft.azure.search.models.documentsuggestresult-1) | [SuggestResults](/dotnet/api/azure.search.documents.models.suggestresults-1) |
 | [SearchParameters](/dotnet/api/microsoft.azure.search.models.searchparameters) |  [SearchOptions](/dotnet/api/azure.search.documents.searchoptions)  |
+
+### <a name="json-serialization"></a>JSON-szerializálás
+
+Alapértelmezés szerint az Azure SDKSystem.Text.Jshasznál [ a](/dotnet/api/system.text.json) JSON-szerializáláshoz, és ezen API-k képességeire támaszkodva kezeli a korábban a natív [SerializePropertyNamesAsCamelCaseAttribute](/dotnet/api/microsoft.azure.search.models.serializepropertynamesascamelcaseattribute) osztályon keresztül megvalósított szöveges átalakításokat, amelyeknek nincs megfelelő jogosultsága az új könyvtárban.
+
+A tulajdonságok neveinek camelCase való szerializálásához használhatja a [JsonPropertyNameAttribute](/dotnet/api/system.text.json.serialization.jsonpropertynameattribute) (ehhez hasonló [példához](https://github.com/Azure/azure-sdk-for-net/tree/d263f23aa3a28ff4fc4366b8dee144d4c0c3ab10/sdk/search/Azure.Search.Documents#use-c-types-for-search-results)hasonlóan).
+
+Másik lehetőségként beállíthatja a [JsonSerializerOptions](/dotnet/api/system.text.json.jsonserializeroptions)-ben megadott [JsonNamingPolicy](/dotnet/api/system.text.json.jsonnamingpolicy) . A [Microsoft. Azure. Core. térbeli információi](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial/README.md#deserializing-documents) alapján a következő, a code-on alapuló System.Text.Jsa camelCase használatát mutatja be anélkül, hogy az összes tulajdonságot attribútummal kellene elvégeznie:
+
+```csharp
+// Get the Azure Cognitive Search endpoint and read-only API key.
+Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
+AzureKeyCredential credential = new AzureKeyCredential(Environment.GetEnvironmentVariable("SEARCH_API_KEY"));
+
+// Create serializer options with our converter to deserialize geographic points.
+JsonSerializerOptions serializerOptions = new JsonSerializerOptions
+{
+    Converters =
+    {
+        new MicrosoftSpatialGeoJsonConverter()
+    },
+    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+};
+
+SearchClientOptions clientOptions = new SearchClientOptions
+{
+    Serializer = new JsonObjectSerializer(serializerOptions)
+};
+
+SearchClient client = new SearchClient(endpoint, "mountains", credential, clientOptions);
+Response<SearchResults<Mountain>> results = client.Search<Mountain>("Rainier");
+```
+
+Ha a JSON-szerializáláshoz Newtonsoft.Jst használ, a globális elnevezési házirendeket a hasonló attribútumok használatával vagy a [JsonSerializerSettings](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonSerializerSettings.htm)tulajdonságok használatával adhatja át. A fentieknek megfelelő példát a további tudnivalókat lásd: [deszerializáló dokumentumok példa](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) a Newtonsoft.Js.
+
 
 <a name="WhatsNew"></a>
 
@@ -202,7 +236,7 @@ A következő lépések végrehajtásával kezdheti meg a kód áttelepítését
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-11"></a>A 11. verzióban feltört változások
+## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
 A könyvtárak és API-k elsöprő változásai miatt a 11-ös verzióra való frissítés nem triviális, és olyan változást jelent, amely abban az értelemben, hogy a kód már nem lesz kompatibilis a 10-es és a korábbi verziókkal. A különbségek alapos áttekintéséhez tekintse meg a [változási naplót](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) `Azure.Search.Documents` .
 
