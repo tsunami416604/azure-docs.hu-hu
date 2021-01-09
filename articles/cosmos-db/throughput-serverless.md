@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: 3f5c3400f319a3f9d5f1544457b009f90d479634
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760275"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049830"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>A kiépített átviteli sebesség és a kiszolgáló nélküli választás
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,11 +25,11 @@ Azure Cosmos DB két különböző kapacitású üzemmódban érhető el: [kiép
 | Feltételek | Kiosztott átviteli sebesség | Kiszolgáló nélküli |
 | --- | --- | --- |
 | Állapot | Általánosan elérhető | Előzetes verzióban |
-| Legmegfelelőbb a következőhöz: | Kiszámítható teljesítményt igénylő, kritikus fontosságú számítási feladatok | Kis-és közepes méretű munkaterhelések, amelyek nehezen megbecsülhető, könnyű és időszakos forgalommal rendelkeznek |
+| Legmegfelelőbb a következőhöz: | Kiszámítható teljesítményt igénylő, tartós forgalommal rendelkező munkaterhelések | Időszakos vagy kiszámíthatatlan forgalommal rendelkező munkaterhelések, valamint az alacsony átlag – csúcs forgalmi arány |
 | Működés | Az egyes tárolók esetében bizonyos mennyiségű átviteli sebességet kell kiépíteni a [kérelmek](request-units.md) száma másodpercenként. Másodpercenként ez a kérelmek mennyisége elérhető az adatbázis műveleteihez. A kiépített átviteli sebesség manuálisan frissíthető, és automatikus [méretezéssel](provision-throughput-autoscale.md)automatikusan módosítható. | Az adatbázis-műveleteket a tárolók nélkül futtathatja anélkül, hogy kapacitást kellene kiépíteni. |
 | Földrajzi eloszlás | Elérhető (korlátlan számú Azure-régió) | Nem érhető el (a kiszolgáló nélküli fiókok csak 1 Azure-régióban futhatnak) |
 | Tárolók maximális száma | Korlátlan | 50 GB |
-| Teljesítmény | 99,99% – 99,999% rendelkezésre állás SLA-val<br>< 10 MS késés az SLA által jelzett pont-olvasási és írási műveletekhez<br>99,99%-os garantált átviteli sebesség (SLA) | 99,9% – 99,99% rendelkezésre állás SLA-val<br>< 10 MS késés a Point-olvasások és a < 30 MS esetében az SLO által jelzett írásokhoz<br>95%-os kitörés az SLO-ban |
+| Teljesítmény | < 10 MS késés az SLA által jelzett pont-olvasási és írási műveletekhez | < 10 MS késés a Point-olvasások és a < 30 MS esetében az SLO által jelzett írásokhoz |
 | Számlázási modell | A számlázás óránként, a felhasznált RU/s alapján történik, függetlenül attól, hogy hány RUs lett felhasználva. | A számlázás óránként történik az adatbázis műveletei által felhasznált RUs mennyisége alapján. |
 
 > [!IMPORTANT]

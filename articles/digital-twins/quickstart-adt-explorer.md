@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187297"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050527"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
@@ -185,7 +185,7 @@ A gráf importálásához kövesse az alábbi lépéseket.
     :::column-end:::
    :::row-end:::
 
-4. A ADT Explorer most a feltöltött fájllal hozza létre a kért ikreket és kapcsolatokat. Ekkor megjelenik egy párbeszédpanel, ha elkészült. Válassza a **Bezárás** lehetőséget.
+4. A ADT Explorer most a feltöltött fájllal hozza létre a kért ikreket és kapcsolatokat. Ekkor megjelenik egy párbeszédpanel, ha elkészült. Válassza a **Bezárás** gombot.
 
    :::row:::
     :::column:::
@@ -251,9 +251,7 @@ Ebben a szakaszban egy lekérdezést fog futtatni, amely arra a kérdésre ad v�
 
 A válasz megtekintéséhez futtassa a következő lekérdezést a **query Explorerben** .
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 A korábbi tulajdonságok megtekintésének visszahívása, hogy a Room0 a 70-as hőmérséklettel rendelkezik, és a Room1 hőmérséklete 80. Emiatt csak a Room1 jelennek meg az eredmények között.
     
@@ -278,15 +276,13 @@ A lista tulajdonságai szerkeszthető. Az új érték beírásának engedélyez�
     :::column-end:::
 :::row-end:::
 
-Most megjelenik egy **javítási információ** ablak, ahol a javítási kód megjelenik, amely a háttérben az Azure Digital Twins [API](how-to-use-apis-sdks.md) -kkal lett használva, hogy elvégezze a frissítést. Válassza a **Bezárás** lehetőséget.
+Most megjelenik egy **javítási információ** ablak, ahol a javítási kód megjelenik, amely a háttérben az Azure Digital Twins [API](how-to-use-apis-sdks.md) -kkal lett használva, hogy elvégezze a frissítést. Válassza a **Bezárás** gombot.
 
 ### <a name="query-to-see-the-result"></a>Az eredmény megjelenítésének lekérdezése
 
 Annak ellenőrzéséhez, hogy a gráf sikeresen regisztrálta-e a frissítést a Room0 hőmérsékletére, futtassa újra a lekérdezést a korábbi verzióról, hogy az összes, az 75-as hőmérsékletű, az összes ikrek a környezetben legyen.
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 Most, hogy a Room0 hőmérséklete 70 – 76 értékre változott, mindkét ikreknek meg kell jelennie az eredményben.
 
@@ -316,7 +312,7 @@ Ha azt tervezi, hogy továbbra is az Azure digitális Twins-oktatóanyagokat has
 
 Végezetül törölje a Project Sample mappát, **Azure_Digital_Twins__ADT__explorer**, amelyet a helyi gépre töltött le. Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziót is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

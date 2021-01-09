@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff7c50d08962fec55584e8c4b3259fb8fda1fd97
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 9ecc14aa9591d6e62dccd9899a80de44411928a1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035291"
+ms.locfileid: "98051088"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
@@ -47,20 +47,7 @@ Ha a termosztátos eszköz egy hőmérséklet-telemetria eseményt küld, a füg
 Hozzáadhat/feltölthet egy modellt az alábbi CLI-paranccsal, majd létrehozhat egy IKeret a modell használatával, amely a IoT Hubból származó információkkal lesz frissítve.
 
 A modell így néz ki:
-```JSON
-{
-  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",
-  "@type": "Interface",
-  "@context": "dtmi:dtdl:context;2",
-  "contents": [
-    {
-      "@type": "Property",
-      "name": "Temperature",
-      "schema": "double"
-    }
-  ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
 
 A **modell az ikrek-példányba való feltöltéséhez** nyissa meg az Azure CLI-t, és futtassa a következő parancsot:
 
@@ -107,21 +94,11 @@ A különböző eszközök eltérő módon strukturálják az üzeneteiket, így
 
 A következő kód példát mutat be egy egyszerű eszközre, amely a telemetria JSON-ként küldi el. Ez a minta teljes körűen fel van derítve az [*oktatóanyagban: végpontok közötti megoldás összekötése*](./tutorial-end-to-end.md). A következő kód megkeresi az üzenetet elküldő eszköz AZONOSÍTÓját, valamint a hőmérséklet értékét.
 
-```csharp
-JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
-var temperature = deviceMessage["body"]["Temperature"];
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs" id="Find_device_ID_and_temperature":::
 
 A következő mintakód az azonosító és a hőmérséklet értékét veszi fel, és a "javítás" (a frissítések elvégzése) elemre használja a Twin.
 
-```csharp
-//Update twin using device temperature
-var updateTwinData = new JsonPatchDocument();
-updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
-await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
-...
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs" id="Update_twin_with_device_temperature":::
 
 ### <a name="update-your-function-code"></a>A függvény kódjának frissítése
 
@@ -129,66 +106,8 @@ Most, hogy megértette a korábbi minták kódját, nyissa meg a függvényt a V
 
 Cserélje le a függvény kódját ezzel a mintakód.
 
-```csharp
-using System;
-using System.Net.Http;
-using Azure.Core.Pipeline;
-using Azure.DigitalTwins.Core;
-using Azure.DigitalTwins.Core.Serialization;
-using Azure.Identity;
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 
-namespace IotHubtoTwins
-{
-    public class IoTHubtoTwins
-    {
-        private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static readonly HttpClient httpClient = new HttpClient();
-
-        [FunctionName("IoTHubtoTwins")]
-        public async void Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log)
-        {
-            if (adtInstanceUrl == null) log.LogError("Application setting \"ADT_SERVICE_URL\" not set");
-
-            try
-            {
-                //Authenticate with Digital Twins
-                ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
-                DigitalTwinsClient client = new DigitalTwinsClient(
-                    new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions 
-                    { Transport = new HttpClientTransport(httpClient) });
-                log.LogInformation($"ADT service client connection created.");
-            
-                if (eventGridEvent != null && eventGridEvent.Data != null)
-                {
-                    log.LogInformation(eventGridEvent.Data.ToString());
-
-                    // Reading deviceId and temperature for IoT Hub JSON
-                    JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-                    string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
-                    var temperature = deviceMessage["body"]["Temperature"];
-                    
-                    log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
-
-                    //Update twin using device temperature
-                    var updateTwinData = new JsonPatchDocument();
-                    updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
-                    await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
-                }
-            }
-            catch (Exception e)
-            {
-                log.LogError($"Error in ingest function: {e.Message}");
-            }
-        }
-    }
-}
-```
 Mentse a függvény kódját, és tegye közzé a Function alkalmazást az Azure-ban. Ebből a cikkből megtudhatja, hogyan hozhat létre egy függvényt az Azure [*-ban az*](./how-to-create-azure-function.md#publish-the-function-app-to-azure) [*adatfeldolgozáshoz*](how-to-create-azure-function.md).
 
 Sikeres közzététel után az alábbi ábrán látható kimenet jelenik meg a Visual Studio-parancsablakban:

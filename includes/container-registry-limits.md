@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: e451171859efc49753131b145642aec4864db45d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 089b1b6f1af2f19c16866858324bde2e151e8bdb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015665"
+ms.locfileid: "98052827"
 ---
 | Erőforrás | Alapszintű | Standard | Prémium |
 |---|---|---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "98015665"
 | &bull; Adattárak/hatókör-leképezés | N.A. | N.A. | 500 |
 
 
-<sup>1</sup> tárterület az egyes szintek napi díja. További tárhelyet is felhasználhat, akár a beállításjegyzék tárolási korlátja alapján, akár napi rendszerességgel. A díjszabással kapcsolatos információkért lásd: [Azure Container Registry díjszabása][pricing].
+<sup>1</sup> tárterület az egyes szintek napi díja. További tárhelyet is felhasználhat, akár a beállításjegyzék tárolási korlátja alapján, akár napi rendszerességgel. A díjszabással kapcsolatos információkért lásd: [Azure Container Registry díjszabása][pricing]. Ha a beállításjegyzék tárolási korlátján kívüli tárterületre van szüksége, vegye fel a kapcsolatot az Azure ügyfélszolgálatával.
 
 <sup>2</sup>a *ReadOps*, a *WriteOps* és a *sávszélesség* minimális becslés. Azure Container Registry a használathoz szükséges teljesítmény növelésére törekszik.
 

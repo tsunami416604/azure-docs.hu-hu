@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e73f11ec178c067941ee33e02f37c96605460ee0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 40e4a3d3a819280255ee931e5e12206f99ef28fe
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658587"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051513"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -56,7 +56,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Először is hozzon létre egy erőforráscsoportot, amely a tűzfal üzembe helyezéséhez szükséges erőforrásokat tartalmazza. Ezután hozzon létre egy VNet, alhálózatot és egy teszt kiszolgálót.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport tartalmazza az oktatóanyag összes erőforrását.
 
@@ -72,9 +72,9 @@ Az erőforráscsoport tartalmazza az oktatóanyag összes erőforrását.
 A VNet három alhálózatot fog tartalmazni.
 
 > [!NOTE]
-> A AzureFirewallSubnet-alhálózat mérete/26. További információ az alhálózat méretétől: [Azure Firewall GYIK](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+> A AzureFirewallSubnet-alhálózat mérete/26. További információ az alhálózat méretétől: [Azure Firewall GYIK](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 1. Válassza a **hálózatkezelés**  >  **virtuális hálózat** lehetőséget.
 2. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 3. Az **erőforráscsoport** területen válassza a **test-FW-RG** elemet.
@@ -85,7 +85,7 @@ A VNet három alhálózatot fog tartalmazni.
 8. Az **alhálózat** területen válassza az **alapértelmezett** lehetőséget.
 9. Az **alhálózat neveként** írja be a következőt: **AzureFirewallSubnet**. Ezen az alhálózaton lesz a tűzfal. Az alhálózat neve **kizárólag** AzureFirewallSubnet lehet.
 10. A **címtartomány** mezőbe írja be a következőt: **10.0.1.0/26**.
-11. Válassza a **Mentés** lehetőséget.
+11. Kattintson a **Mentés** gombra.
 
    Ezután hozzon létre egy alhálózatot a munkaterhelés-kiszolgálóhoz.
 
@@ -100,7 +100,7 @@ A VNet három alhálózatot fog tartalmazni.
 
 Most hozza létre a munkaterhelés virtuális gépet, és helyezze a **munkaterhelés-SN** alhálózatba.
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 2. Válassza a **számítás** , majd a **virtuális gép** lehetőséget.
 3. **Windows Server 2016 Datacenter** a Kiemelt listán.
 4. Adja meg a következő értékeket a virtuális gép számára:
@@ -110,7 +110,7 @@ Most hozza létre a munkaterhelés virtuális gépet, és helyezze a **munkaterh
    |Erőforráscsoport     |**Teszt – FW-RG**|
    |Virtuális gép neve     |**SRV-Work**|
    |Régió     |Ugyanaz, mint az előző|
-   |Rendszerkép|Windows Server 2019 Datacenter|
+   |Kép|Windows Server 2019 Datacenter|
    |Rendszergazda felhasználóneve     |Adja meg a felhasználónevet|
    |Jelszó     |Írjon be egy jelszót|
 
@@ -127,7 +127,7 @@ Most hozza létre a munkaterhelés virtuális gépet, és helyezze a **munkaterh
 
 Helyezze üzembe a tűzfalat a virtuális hálózaton.
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 2. Írja be a **tűzfal** kifejezést a keresőmezőbe, majd nyomja le az **ENTER** billentyűt.
 3. Válassza a **tűzfal** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
 4. A **Tűzfal létrehozása** oldalon konfigurálja a tűzfalat a következő táblázatban található értékekkel:
@@ -165,7 +165,7 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 11. Válassza a **Virtual Network**  >  **test-FW-vn** elemet.
 12. **Alhálózat** esetében válassza a **munkaterhelés-SN** lehetőséget. Győződjön meg arról, hogy csak a **munkaterhelés-SN** alhálózatot választotta ehhez az útvonalhoz, ellenkező esetben a tűzfal nem fog megfelelően működni.
 
-13. Kattintson az **OK** gombra.
+13. Válassza az **OK** lehetőséget.
 14. Válassza az **útvonalak** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 15. Az **útvonal neve** mezőbe írja be a következőt: **FW-DG**.
 16. A **Címelőtag** mezőbe írja be a következőt: **0.0.0.0/0**.
@@ -173,7 +173,7 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 
     Az Azure Firewall valójában egy felügyelt szolgáltatás, de ebben a helyzetben a virtuális berendezés beállítás is használható.
 18. A **Következő ugrás címe** mezőbe írja be a tűzfal magánhálózati IP-címét, amelyet korábban feljegyzett.
-19. Kattintson az **OK** gombra.
+19. Válassza az **OK** lehetőséget.
 
 ## <a name="configure-an-application-rule"></a>Alkalmazásszabály konfigurálása
 
@@ -243,7 +243,7 @@ Az oktatóanyag tesztelési célokra konfigurálja a kiszolgáló elsődleges é
 3. A **Beállítások** területen válassza a **DNS-kiszolgálók** elemet.
 4. A **DNS-kiszolgálók** területen válassza az **Egyéni** lehetőséget.
 5. Írja be a **209.244.0.3** a címet a **DNS-kiszolgáló hozzáadása** szövegmezőbe, és **209.244.0.4** címet a következő szövegmezőbe.
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 7. Indítsa újra az **Srv-Work** virtuális gépet.
 
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
@@ -252,7 +252,7 @@ Most tesztelje a tűzfalat, és ellenőrizze, hogy az a várt módon működik-e
 
 1. Csatlakoztasson egy távoli asztalt a tűzfal nyilvános IP-címéhez, és jelentkezzen be az **SRV-Work** virtuális gépre. 
 3. Nyissa meg az Internet Explorert, és navigáljon a következő címre: `https://www.google.com`.
-4. **OK**  >  Az Internet Explorer biztonsági riasztások ablakában kattintson az OK **Bezárás** gombra.
+4.   >  Az Internet Explorer biztonsági riasztások ablakában kattintson az OK **Bezárás** gombra.
 
    Ekkor meg kell jelennie a Google kezdőlapjának.
 
@@ -269,7 +269,7 @@ Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rá szükség, törölje a **Test-FW-RG** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./firewall-diagnostics.md)

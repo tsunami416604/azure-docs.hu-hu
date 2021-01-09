@@ -3,21 +3,21 @@ title: A PowerShell-galéria Azure Automation runbookok és moduljainak használ
 description: Ez a cikk azt ismerteti, hogyan használhatók a Microsoft és a Közösség runbookok és moduljai a PowerShell-galéria.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/17/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 26dfedf1961cf39645c3bcf3ce5fa2db6c14119e
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 590220782a7f43e785cc7885e68eefa99afb7d1d
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682763"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049116"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Runbookok és modulok használata a PowerShell-galériában
 
 Ahelyett, hogy az Azure Automation saját runbookok és moduljait hozza létre, a Microsoft és a Közösség által már létrehozott forgatókönyvekhez is hozzáférhet. PowerShell-runbookok és- [modulokat](#modules-in-powershell-gallery) a PowerShell-Galéria és a [Python Runbookok](#use-python-runbooks) a Azure Automation GitHub-szervezetből szerezhet be. A közösséghez a [fejlesztés alatt álló forgatókönyvek](#add-a-powershell-runbook-to-the-gallery)megosztásával is hozzájárulhat.
 
 > [!NOTE]
-> A TechNet Script Center kivonásra kerül. A Runbook-katalógusban található runbookok származó összes művelet át lett helyezve az [Automation GitHub-szervezetbe](https://github.com/azureautomation).
+> A TechNet Script Center kivonásra kerül. A Runbook-katalógusban található runbookok származó összes adat át lett helyezve az [Automation GitHub-szervezetbe](https://github.com/azureautomation) további információért lásd [itt](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337).
 
 ## <a name="runbooks-in-powershell-gallery"></a>Runbookok PowerShell-galéria
 

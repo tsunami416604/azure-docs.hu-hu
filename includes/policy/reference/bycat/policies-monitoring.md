@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cf638e1de116532136b9e78df1933048c8305b7b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 907bf06c009738eb098532ac5ff53e13dbd16826
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005460"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98047711"
 ---
 |Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
@@ -65,3 +65,4 @@ ms.locfileid: "96005460"
 |[A BYOK rendelkező tárolót tartalmazó Storage-fióknak titkosítottnak kell lennie.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |Ez a házirend azt naplózza, hogy a BYOK tartalmazó tárolót tartalmazó Storage-fiók titkosítva van-e. A házirend csak abban az esetben működik, ha a Storage-fiók a tevékenység naplóinak tervezése alapján ugyanazon az előfizetésen található. Az Azure Storage-titkosításról további információt itt találhat [https://aka.ms/azurestoragebyok](https://aka.ms/azurestoragebyok) .  |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json) |
 |[A Log Analytics ügynöknek telepítve kell lennie a Virtual Machine Scale Sets](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fefbde977-ba53-4479-b8e9-10b957924fbf) |Ez a házirend minden Windows-vagy Linux-Virtual Machine Scale Sets naplóz, ha az Log Analytics ügynök nincs telepítve. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VMSS_LogAnalyticsAgent_AuditIfNotExists.json) |
 |[A Log Analytics ügynöknek telepítve kell lennie a virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa70ca396-0a34-413a-88e1-b956c1e683be) |Ez a házirend a Windows/Linux rendszerű virtuális gépeket naplózza, ha a Log Analytics-ügynök nincs telepítve. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VirtualMachines_LogAnalyticsAgent_AuditIfNotExists.json) |
+|[A munkafüzeteket az Ön által vezérelt Storage-fiókokba kell menteni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6fc8115b-2008-441f-8c61-9b722c1e537f) |Ha saját tárolót (BYOS) használ, a munkafüzetek feltöltése egy Ön által vezérelt Storage-fiókba történik. Ez azt jelenti, hogy a titkosítást a REST-alapú házirend, az élettartam-kezelési házirend és a hálózati hozzáférés vezérli. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie. További információért látogasson el ide: [https://aka.ms/workbooksByos](https://aka.ms/workbooksByos) |megtagadás, naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Workbooks_BYOSEnabled_Audit.json) |

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: ba1542d1bb10933edb34b697f1c81cc5e3e7f1c9
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705370"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049779"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-titkosítás az Azure HDInsight
 
@@ -24,7 +24,7 @@ Az Azure HDInsight különféle biztonsági funkciókat kínál a vállalati ada
 
 A inaktív adatok titkosítását az Azure Storage-fiókok kiszolgálóoldali titkosítása, valamint a HDInsight-fürt részét képező Azure-beli virtuális gépek lemezes titkosítása szabályozza.
 
-A HDInsight átvitt adatok titkosítása [Transport Layer Security (TLS)](../transport-layer-security.md) értékkel érhető el a fürtcsomópontok és a [Internet Protocol biztonság (IPSec)](https://wikipedia.org/wiki/IPsec) csomópontok közötti eléréséhez. Az IPSec opcionálisan engedélyezhető a főcsomópontok, a feldolgozó csomópontok, a peremhálózati csomópontok és a Zookeeper csomópontok között. Nincs engedélyezve az átjáró vagy az [azonosító-átvitelszervező](./identity-broker.md) csomópontok közötti forgalom, amely a Windows-alapú virtuális gépek és a fürt más Linux-alapú csomópontjai között van.
+A HDInsight átvitt adatok titkosítása [Transport Layer Security (TLS)](../transport-layer-security.md) értékkel érhető el a fürtcsomópontok és a [Internet Protocol biztonság (IPSec)](https://wikipedia.org/wiki/IPsec) csomópontok közötti eléréséhez. Az IPSec opcionálisan engedélyezhető a főcsomópontok, a feldolgozó csomópontok, a peremhálózat-csomópontok, a Zookeeper-csomópontok, valamint az átjáró és az [azonosító-átvitelszervező](./identity-broker.md) csomópontok között.
 
 ## <a name="enable-encryption-in-transit"></a>Titkosítás engedélyezése az átvitelben
 

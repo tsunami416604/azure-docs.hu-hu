@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927317"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050561"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>A Windowshoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
 
@@ -21,6 +21,40 @@ Ha a fenti lépések egyike sem működik, a következő támogatási csatornák
 * A Premier szintű támogatási csomaggal rendelkező ügyfelek a [Premier](https://premier.microsoft.com/)szintű támogatási kérést is megnyithatják.
 * Az Azure-támogatási szerződéssel rendelkező ügyfelek támogatási kérelmet is megnyithatnak [a Azure Portal](https://manage.windowsazure.com/?getsupport=true).
 * Látogasson el a Log Analytics visszajelzési oldalra, és tekintse át az elküldött ötleteket és hibákat, [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) vagy egy újat. 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics hibaelhárítási eszköz
+
+A Log Analytics ügynök Windows hibaelhárítási eszköze olyan PowerShell-parancsfájlok gyűjteménye, amelyek segítségével megkeresheti és diagnosztizálhatja a Log Analytics ügynökkel kapcsolatos problémákat. A telepítéskor a rendszer automatikusan tartalmazza az ügynököt. Az eszköz futtatása a probléma diagnosztizálásának első lépése.
+
+### <a name="how-to-use"></a>Használat
+1. Nyissa meg a PowerShell-parancssort rendszergazdaként azon a gépen, amelyen a Log Analytics-ügynök telepítve van.
+1. Navigáljon ahhoz a könyvtárhoz, ahol az eszköz található.
+   * `cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"`
+1. Hajtsa végre a fő szkriptet a következő parancs használatával:
+   * `.\GetAgentInfo.ps1`
+1. Válasszon egy hibaelhárítási forgatókönyvet.
+1. Kövesse a konzolon megjelenő utasításokat. (Megjegyzés: a nyomkövetési naplók lépéseinek kézi beavatkozást kell megadniuk a naplók gyűjtésének leállításához. A probléma reprodukálhatósága alapján várjon az időtartamra, és nyomja le az "a naplók leállításához" és a következő lépéshez lépjen tovább.
+
+   Az eredmények fájljának helyét a rendszer a befejezés után naplózza, és megnyílik egy új ablak, amely kiemeli a fájlt.
+
+### <a name="installation"></a>Telepítés
+A hibaelhárítási eszköz automatikusan belekerül a Log Analytics ügynök Build 10.20.18053.0 és újabb verzióinak telepítésekor.
+
+### <a name="scenarios-covered"></a>Érintett forgatókönyvek
+Alább látható a hibaelhárítási eszköz által ellenőrzött forgatókönyvek listája:
+
+- Az ügynök nem küldi le az adatvagy szívverési adatvesztést
+- Ügynök-bővítmény üzembe helyezése sikertelen
+- Ügynök összeomlik
+- Magas PROCESSZORt vagy memóriát használó ügynök
+- Telepítési/eltávolítási hibák
+- Egyéni naplók probléma
+- OMS-átjáróval kapcsolatos probléma
+- Teljesítményszámlálók – probléma
+- Az összes napló összegyűjtése
+
+>[!NOTE]
+>Ha probléma merül fel, futtassa a hibaelhárító eszközt. Egy jegy megnyitásakor a naplók kezdetben nagy mértékben segítik a támogatási csapatot a probléma gyorsabb megoldásában.
 
 ## <a name="important-troubleshooting-sources"></a>Fontos hibaelhárítási források
 
@@ -55,11 +89,11 @@ Több módon is ellenőrizheti, hogy az ügynök sikeresen kommunikál-e Azure M
 
     Ha a számítógép sikeresen kommunikál a szolgáltatással, a lekérdezésnek eredményt kell visszaadnia. Ha a lekérdezés nem adott vissza eredményt, először ellenőrizze, hogy az ügynök úgy van-e konfigurálva, hogy a megfelelő munkaterületre jelentsen. Ha megfelelően van konfigurálva, folytassa a 3. lépéssel, és keresse meg a Windows eseménynaplóját annak azonosításához, hogy az ügynök naplózza-e, hogy milyen problémát okozhat a Azure Monitorával folytatott kommunikáció.
 
-- A kapcsolódási problémák azonosítására szolgáló másik módszer a **TestCloudConnectivity** eszköz futtatása. Az eszköz alapértelmezés szerint telepítve van a *%systemroot%\Program Files\Microsoft monitoring Agent\Agent*mappában található ügynökkel. Egy rendszergazda jogú parancssorból navigáljon a mappához, és futtassa az eszközt. Az eszköz visszaadja az eredményeket, és kiemeli, hogy a teszt sikertelen volt-e (például ha egy adott porthoz/URL-címhez kapcsolódott). 
+- A kapcsolódási problémák azonosítására szolgáló másik módszer a **TestCloudConnectivity** eszköz futtatása. Az eszköz alapértelmezés szerint telepítve van a *%systemroot%\Program Files\Microsoft monitoring Agent\Agent* mappában található ügynökkel. Egy rendszergazda jogú parancssorból navigáljon a mappához, és futtassa az eszközt. Az eszköz visszaadja az eredményeket, és kiemeli, hogy a teszt sikertelen volt-e (például ha egy adott porthoz/URL-címhez kapcsolódott). 
 
     ![TestCloudConnection-eszköz végrehajtási eredményei](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- Szűrje a *Operations Manager* eseménynaplót az **eseményforrás**  -  *állapotfigyelő szolgáltatás modulok*, a *HealthService*és a *szolgáltatás-összekötő* alapján, és a szűrés **eseményvezérelt** *figyelmeztetéssel* és *hibával* erősítse meg, hogy az alábbi táblázatban szereplő írásos események szerepelnek-e. Ha vannak, tekintse át az egyes lehetséges eseményekhez tartozó megoldási lépéseket.
+- Szűrje a *Operations Manager* eseménynaplót az **eseményforrás**  -  *állapotfigyelő szolgáltatás modulok*, a *HealthService* és a *szolgáltatás-összekötő* alapján, és a szűrés **eseményvezérelt** *figyelmeztetéssel* és *hibával* erősítse meg, hogy az alábbi táblázatban szereplő írásos események szerepelnek-e. Ha vannak, tekintse át az egyes lehetséges eseményekhez tartozó megoldási lépéseket.
 
     |Eseményazonosító |Forrás |Leírás |Feloldás |
     |---------|-------|------------|-----------|

@@ -2,14 +2,14 @@
 title: Azure Monitor beállítása az élő adattárolók számára (előzetes verzió) | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan állíthatja be a tároló-naplók valós idejű nézetét (StdOut/stderr) és az eseményeket anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830785"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050782"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) beállításának beállítása
 
@@ -29,8 +29,6 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a hitelesítést az élő adatok (e
 - Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) engedélyezett AK-alapú fürt
 - Azure Active Directory integrált AK-fürt.
 
->[!NOTE]
->Ez a funkció nem támogatja a [privát fürtökként](https://azure.microsoft.com/updates/aks-private-cluster/) engedélyezett AK-fürtöket. Ez a funkció arra támaszkodik, hogy közvetlenül a böngészőből egy proxykiszolgálón keresztül éri el a Kubernetes API-t. A hálózati biztonság engedélyezésével letilthatja a Kubernetes API-t ebből a proxyból, és letiltja a forgalmat.
 
 ## <a name="authentication-model"></a>Hitelesítési modell
 

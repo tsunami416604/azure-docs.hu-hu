@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 3e5eb49a91e2c8bbd73f5dd37ed90f10b406fa3d
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 7b2039f8b1aebef65112067e4fd9184777192015
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496032"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051581"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Maps beltéri Térkép frissítése az Azure digitális Twins használatával
 
@@ -78,60 +78,7 @@ Tekintse meg a következő dokumentumot a hivatkozási információkhoz: [*Azure
 
 Cserélje le a függvény kódját a következő kódra. Csak a Space ikrek frissítéseit szűri, a frissített hőmérsékletet olvassa be, majd elküldi ezeket az adatokat a Azure Mapsnak.
 
-```C#
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Threading.Tasks;
-using System.Net.Http;
-
-namespace SampleFunctionsApp
-{
-    public static class ProcessDTUpdatetoMaps
-    {   //Read maps credentials from application settings on function startup
-        private static string statesetID = Environment.GetEnvironmentVariable("statesetID");
-        private static string subscriptionKey = Environment.GetEnvironmentVariable("subscription-key");
-        private static HttpClient httpClient = new HttpClient();
-
-        [FunctionName("ProcessDTUpdatetoMaps")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-        {
-            JObject message = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-            log.LogInformation("Reading event from twinID:" + eventGridEvent.Subject.ToString() + ": " +
-                eventGridEvent.EventType.ToString() + ": " + message["data"]);
-
-            //Parse updates to "space" twins
-            if (message["data"]["modelId"].ToString() == "dtmi:contosocom:DigitalTwins:Space;1")
-            {   //Set the ID of the room to be updated in your map. 
-                //Replace this line with your logic for retrieving featureID. 
-                string featureID = "UNIT103";
-
-                //Iterate through the properties that have changed
-                foreach (var operation in message["data"]["patch"])
-                {
-                    if (operation["op"].ToString() == "replace" && operation["path"].ToString() == "/Temperature")
-                    {   //Update the maps feature stateset
-                        var postcontent = new JObject(new JProperty("States", new JArray(
-                            new JObject(new JProperty("keyName", "temperature"),
-                                 new JProperty("value", operation["value"].ToString()),
-                                 new JProperty("eventTimestamp", DateTime.Now.ToString("s"))))));
-
-                        var response = await httpClient.PostAsync(
-                            $"https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetID}&featureID={featureID}&subscription-key={subscriptionKey}",
-                            new StringContent(postcontent.ToString()));
-
-                        log.LogInformation(await response.Content.ReadAsStringAsync());
-                    }
-                }
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateMaps.cs":::
 
 A Function alkalmazásban két környezeti változót kell beállítania. Az egyik a [Azure Maps elsődleges előfizetési kulcs](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account), és az egyik a [Azure Maps stateset azonosítója](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset).
 
@@ -152,7 +99,7 @@ Az élő frissítés hőmérsékletének megtekintéséhez kövesse az alábbi l
 
 Mindkét minta egy kompatibilis tartományba küldi a hőmérsékletet, ezért 30 másodpercenként a térképen a 121-es frissítés színét kell látnia.
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Az Azure-szolgáltatások egy teljes körű forgatókönyvből álló nézete, amely kiemeli a beltéri térképek integrációs részletét":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Egy Office-Térkép, amely színes narancssárga termet 121":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>A Maps-információk tárolása az Azure Digital Twinsban
 
@@ -162,7 +109,7 @@ Az adott példához tartozó megoldás a legfelső szintű helyek frissítését
 
 A topológia konfigurációjától függően a három attribútumot a Térkép részletességéhez képest különböző szinteken fogja tudni tárolni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozásokat követve további információkat olvashat az ikrek gráf információinak kezelésével, frissítésével és lekérésével kapcsolatban:
 

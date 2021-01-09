@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3a11cd9f3208c97748ab16c636aedd9a443c5b9f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093163"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051105"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Az Azure Digital Twins integrálása az Azure Signaler szolgáltatással
 
@@ -68,66 +68,8 @@ Ezután indítsa el a Visual studiót (vagy egy tetszőleges szerkesztőprogramo
 1. Hozzon létre egy új, **SignalRFunctions.cs** nevű C# Sharp osztályt a *SampleFunctionsApp* projektben.
 
 1. Cserélje le a Class (osztály) fájl tartalmát a következő kódra:
-
-    ```C#
-    using System;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.Azure.EventGrid.Models;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Extensions.Http;
-    using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-    using Microsoft.Azure.WebJobs.Extensions.SignalRService;
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    using System.Collections.Generic;
     
-    namespace SampleFunctionsApp
-    {
-        public static class SignalRFunctions
-        {
-            public static double temperature;
-    
-            [FunctionName("negotiate")]
-            public static SignalRConnectionInfo GetSignalRInfo(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
-                [SignalRConnectionInfo(HubName = "dttelemetry")] SignalRConnectionInfo connectionInfo)
-            {
-                return connectionInfo;
-            }
-    
-            [FunctionName("broadcast")]
-            public static Task SendMessage(
-                [EventGridTrigger] EventGridEvent eventGridEvent,
-                [SignalR(HubName = "dttelemetry")] IAsyncCollector<SignalRMessage> signalRMessages,
-                ILogger log)
-            {
-                JObject eventGridData = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-    
-                log.LogInformation($"Event grid message: {eventGridData}");
-    
-                var patch = (JObject)eventGridData["data"]["patch"][0];
-                if (patch["path"].ToString().Contains("/Temperature"))
-                {
-                    temperature = Math.Round(patch["value"].ToObject<double>(), 2);
-                }
-    
-                var message = new Dictionary<object, object>
-                {
-                    { "temperatureInFahrenheit", temperature},
-                };
-        
-                return signalRMessages.AddAsync(
-                    new SignalRMessage
-                    {
-                        Target = "newMessage",
-                        Arguments = new[] { message }
-                    });
-            }
-        }
-    }
-    ```
+    :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
 1. A Visual Studio *csomagkezelő konzoljának* ablakában vagy a számítógépen lévő bármelyik parancssori ablakban a *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* mappában futtassa a következő parancsot a `SignalRService` NuGet-csomag projekthez való telepítéséhez:
     ```cmd
@@ -141,7 +83,7 @@ Ezután tegye közzé a függvényt az Azure-ban, az [ *alkalmazás közzététe
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure Portal a Function alkalmazás nézetét, és a &quot;functions&quot; elem ki van emelve a menüben. A függvények listája megjelenik az oldalon, és az &quot;egyeztetés&quot; függvény is ki van emelve.":::
 
-    A *függvény URL-címének lekérése* és az érték másolása a **_/API_ használatával (ne szerepeljen az utolsó _/Negotiate?_ )**. Ezt később fogja használni.
+    A *függvény URL-címének lekérése* és az érték másolása a **_/API_ használatával (ne szerepeljen az utolsó _/Negotiate?_)**. Ezt később fogja használni.
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Az &quot;egyeztetés&quot; függvény Azure Portal nézete. A &quot;függvény URL-címének beolvasása&quot; gomb ki van emelve, az URL-cím része pedig az elejétől a &quot;/API&quot;":::
 
@@ -166,15 +108,15 @@ A [Azure Portalban](https://portal.azure.com/)keresse meg az Event Grid-témakö
 :::image type="content" source="media/how-to-integrate-azure-signalr/event-subscription-1b.png" alt-text="Azure Portal: Event Grid esemény-előfizetés":::
 
 Az *esemény-előfizetés létrehozása* lapon töltse ki a mezőket a következő módon (alapértelmezés szerint kitöltött mezők nincsenek megemlítve):
-* *esemény-előfizetés részletei*  >  **Név** : adjon nevet az esemény-előfizetésnek.
-* *VÉGPONT részletei*  >  **Végpont típusa** : válassza az *Azure Function* lehetőséget a menüpontok közül.
-* *VÉGPONT részletei*  >  **Végpont** : nyomja meg a *végpont kiválasztása* hivatkozást. Ekkor megnyílik az *Azure-függvény kiválasztása* ablak:
-    - Töltse ki az **előfizetést** , az **erőforráscsoportot** , a **Function app** és a Function ( *szórás* ) **függvényt** . Ezek némelyike az előfizetés kiválasztása után automatikusan feltölthető.
+* *esemény-előfizetés részletei*  >  **Név**: adjon nevet az esemény-előfizetésnek.
+* *VÉGPONT részletei*  >  **Végpont típusa**: válassza az *Azure Function* lehetőséget a menüpontok közül.
+* *VÉGPONT részletei*  >  **Végpont**: nyomja meg a *végpont kiválasztása* hivatkozást. Ekkor megnyílik az *Azure-függvény kiválasztása* ablak:
+    - Töltse ki az **előfizetést**, az **erőforráscsoportot**, a **Function app** és a Function (*szórás*) **függvényt** . Ezek némelyike az előfizetés kiválasztása után automatikusan feltölthető.
     - Nyomja **meg a megerősítés jóváhagyása elemet**.
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure Portal esemény-előfizetés létrehozásának nézete. A fenti mezők ki vannak töltve, a &quot;kijelölés megerősítése&quot; és a &quot;létrehozás&quot; gomb ki van emelve.":::
 
-Az esemény- *előfizetés létrehozása* lapon kattintson a **create (létrehozás** ) elemre.
+Az esemény- *előfizetés létrehozása* lapon kattintson a **create (létrehozás**) elemre.
 
 ## <a name="configure-and-run-the-web-app"></a>A webalkalmazás konfigurálása és futtatása
 
@@ -228,7 +170,7 @@ Ekkor megnyílik a minta alkalmazást futtató böngészőablak, amely egy vizu�
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="A mintául szolgáló ügyfél-webalkalmazás kivonata, amely egy vizuális hőmérsékleti mérőműszert mutat. A mért hőmérséklet 67,52":::
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az ebben a cikkben létrehozott erőforrásokra, a következő lépésekkel törölheti őket. 
 
@@ -246,9 +188,9 @@ Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőf
 az group delete --name <your-resource-group>
 ```
 
-Végezetül törölje a helyi gépre letöltött Project Sample-mappákat ( *Azure_Digital_Twins_end_to_end_samples.zip* és *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip* ).
+Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (*Azure_Digital_Twins_end_to_end_samples.zip* és *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a Signaler Azure functions szolgáltatással állíthatja be az Azure Digital Twins telemetria-eseményeit egy minta ügyfélalkalmazás számára.
 

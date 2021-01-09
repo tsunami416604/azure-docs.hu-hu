@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 71eda40abd38b4885b8e88085e338667b608902f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 281d0587ca4c041c7149e49aad6227f6dc0b7fbf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655136"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050867"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Oktatóanyag: a bejövő internetes forgalom szűrése Azure Firewall DNAT a Azure Portal használatával
 
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 
 
@@ -66,7 +66,7 @@ Először hozza létre a virtuális hálózatokat, és társítsa őket.
 
      Ezen az alhálózaton lesz a tűzfal. Az alhálózat neve **kizárólag** AzureFirewallSubnet lehet.
      > [!NOTE]
-     > A AzureFirewallSubnet-alhálózat mérete/26. További információ az alhálózat méretétől: [Azure Firewall GYIK](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+     > A AzureFirewallSubnet-alhálózat mérete/26. További információ az alhálózat méretétől: [Azure Firewall GYIK](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 10. A **címtartomány** mezőbe írja be a következőt: **10.0.1.0/26**.
 11. Használja a többi alapértelmezett beállítást, majd kattintson a **Létrehozás** gombra.
@@ -98,7 +98,7 @@ Most társítsa a két virtuális hálózatot.
 5. A virtuális hálózatnál válassza a **VN-Spoke** lehetőséget.
 6. Írja be a **társ-SpokeHub** **nevet a VN-Spoke és a vn-hub között**.
 7. A **VN-Spokeról a vn-hub-ra való továbbított forgalom engedélyezéséhez** válassza az **engedélyezve** lehetőséget.
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -130,7 +130,7 @@ Hozzon létre egy virtuális gépet a számítási feladat futtatásához, és h
 **Felügyelet**
 
 1. **Rendszerindítási diagnosztika** esetén válassza a **ki** lehetőséget.
-1. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 
 **Felülvizsgálat + létrehozás**
 
@@ -177,7 +177,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 10. Válassza ki az **alhálózatok** elemet, majd válassza a **hozzárendelés** lehetőséget.
 11. Válassza a **virtuális hálózat** lehetőséget, majd válassza a **vn-küllő** elemet.
 12. Az **Alhálózat** mezőnél válassza az **SN-Workload** lehetőséget.
-13. Kattintson az **OK** gombra.
+13. Válassza az **OK** lehetőséget.
 14. Válassza az **útvonalak** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 15. Az **Útvonal neve** mezőbe írja be következőt: **FW-DG**.
 16. A **Címelőtag** mezőbe írja be a következőt: **0.0.0.0/0**.
@@ -185,7 +185,7 @@ Az **SN-Workload** alhálózatot konfigurálja úgy, hogy a kimenő alapértelme
 
     Az Azure Firewall valójában egy felügyelt szolgáltatás, de ebben a helyzetben a virtuális berendezés beállítás is használható.
 18. A **Következő ugrás címe** mezőbe írja be a tűzfal magánhálózati IP-címét, amelyet korábban feljegyzett.
-19. Kattintson az **OK** gombra.
+19. Válassza az **OK** lehetőséget.
 
 ## <a name="configure-a-nat-rule"></a>NAT-szabály konfigurálása
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458106"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050238"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Oktatóanyag: az Azure Digital ikrek megismerése egy minta ügyfélalkalmazás alkalmazásával
 
@@ -51,27 +51,15 @@ Válassza a *Room.json* lehetőséget a szerkesztési ablakban való megnyitás�
 1. **Tulajdonság szerkesztése**. Módosítsa a `Humidity` tulajdonság nevét *HumidityLevel* értékre (vagy valami más, ha szeretné. Ha más, mint a *HumidityLevel*-t használja, jegyezze fel, hogy mit használt, és folytatja a használatát a *HumidityLevel* helyett az oktatóanyag során.
 1. **Adjon hozzá egy tulajdonságot**. A `HumidityLevel` 15. sorban végződő tulajdonság alatt illessze be a következő kódot, és adjon hozzá egy `RoomName` tulajdonságot a helyiséghez:
 
-    ```json
-    ,
-    {
-      "@type": "Property",
-      "name": "RoomName",
-      "schema": "string"
-    }
-    ```
-1. **Kapcsolat hozzáadása**. Az `RoomName` imént hozzáadott tulajdonság alatt illessze be a következő kódot, hogy az ilyen típusú Twin formátumhoz való képességet a más *contains* ikrekkel való kapcsolatokkal együtt adja hozzá:
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="16-20":::
 
-    ```json
-    ,
-    {
-      "@type": "Relationship",
-      "name": "contains"
-    }
-    ```
+1. **Kapcsolat hozzáadása**. Az `RoomName` imént hozzáadott tulajdonság alatt illessze be a következő kódot, hogy az ilyen típusú Twin formátumhoz való képességet a más  ikrekkel való kapcsolatokkal együtt adja hozzá:
 
-Ha elkészült, a frissített modellnek a következőhöz hasonlóan kell kinéznie:
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="21-24":::
 
-:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Szerkesztett Room.jsa frissített verziószámmal, a HumidityLevel és a RoomName tulajdonságokkal, és kapcsolatot tartalmaz" border="false":::
+Ha elkészült, a frissített modellnek meg kell egyeznie a következővel:
+
+:::code language="json" source="~/digital-twins-docs-samples/models/Room.json":::
 
 Mielőtt továbblép, ügyeljen arra, hogy mentse a fájlt.
 

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: active-directory
 author: msaburnley
 ms.service: active-directory
@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db13884e3deed8e990d21d82e215a1e837371275
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76694339"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052923"
 ---
 ## <a name="lifecycle"></a>Életciklus
 
 Az **életciklus** lapon megadhatja, hogy mikor járjon le egy felhasználó a hozzáférési csomaghoz. Megadhatja azt is, hogy a felhasználók ki tudják-e terjeszteni a hozzárendeléseiket.
 
-1. A **lejárat** szakaszban adja meg a **hozzáférési csomag hozzárendeléseinek érvényességét** **dátum**, **nap**vagy **soha**értékre.
+1. A **lejárat** szakaszban adja meg a **hozzáférési csomag hozzárendeléseinek érvényességét** **dátum**, **nap** vagy **soha** értékre.
 
     A **on Date (dátum**) beállításnál válassza ki a lejárati dátumot a jövőben.
 
-    A **napok számának**megadásához 0 és 3660 nap közötti számot kell megadni.
+    A **napok számának** megadásához 0 és 3660 nap közötti számot kell megadni.
 
     A kiválasztás alapján a felhasználó a hozzáférési csomaghoz való hozzárendelése egy adott napon lejár, bizonyos számú nappal a jóváhagyás után, vagy soha nem.
 
@@ -31,14 +31,14 @@ Az **életciklus** lapon megadhatja, hogy mikor járjon le egy felhasználó a h
 
     ![Hozzáférési csomag – életciklus-lejárati beállítások](./media/active-directory-entitlement-management-lifecycle-policy/expiration.png)
 
-1. Annak engedélyezéséhez, hogy a felhasználó kiterjessze a hozzárendeléseket, állítsa a **felhasználók számára az** **Igen**értékre való kiterjesztést.
+1. Annak engedélyezéséhez, hogy a felhasználó kiterjessze a hozzárendeléseket, állítsa a **felhasználók számára az** **Igen** értékre való kiterjesztést.
 
-    Ha a kiterjesztések engedélyezve vannak a szabályzatban, a felhasználó 14 napig, a hozzáférési csomag hozzárendelésének megkezdése előtt pedig 1 nappal e-mailt kap, hogy lejárja a hozzárendelés kiterjesztését. Ha a felhasználó a hozzáférés kiterjesztésére vonatkozó kérést küld, a bővítmény dátumának vagy annál korábbinak kell lennie, mint a hozzáférési csomaghoz a felhasználói hozzáférés biztosításához használt Szabályzatban meghatározottak szerint. Ha például a házirend azt jelzi, hogy a hozzárendelések június 30-án lejárnak, a felhasználó által igényelhető maximális kiterjesztés június 30-ig tart.
+    Ha a kiterjesztések engedélyezve vannak a szabályzatban, a felhasználó 14 napig, a hozzáférési csomag hozzárendelésének lejárta előtt pedig egy nappal kéri le a hozzárendelés kiterjesztését. A felhasználónak továbbra is a szabályzat hatókörében kell lennie, amikor a bővítményt kérik. Továbbá, ha a házirend a hozzárendelések explicit befejezési dátumával rendelkezik, és a felhasználó a hozzáférés kiterjesztésére vonatkozó kérést küld, a kérelemben szereplő kiterjesztési dátumnak a hozzárendelések lejárta előtt vagy előtt kell lennie, a hozzáférési csomaghoz való hozzáférés biztosításához használt Szabályzatban meghatározottak szerint. Ha például a házirend azt jelzi, hogy a hozzárendelések június 30-án lejárnak, a felhasználó által igényelhető maximális kiterjesztés június 30-ig tart.
 
     Ha a felhasználó hozzáférése ki van bővítve, a megadott kiterjesztési dátum (a szabályzatot létrehozó felhasználó időzónájában beállított dátum) után nem fogja tudni kérni a hozzáférési csomagot.
 
-1. Ha jóváhagyásra van szüksége a bővítmény megadásához, állítsa a **jóváhagyás megkövetelése lehetőséget az** **Igen**értékre való kiterjesztés megadásához.
+1. Ha jóváhagyásra van szüksége a bővítmény megadásához, állítsa a **jóváhagyás megkövetelése lehetőséget az** **Igen** értékre való kiterjesztés megadásához.
 
     A rendszer a **kérelmek** lapon megadott jóváhagyási beállításokat fogja használni.
 
-1. Kattintson a **tovább** vagy a **frissítés**gombra.
+1. Kattintson a **tovább** vagy a **frissítés** gombra.

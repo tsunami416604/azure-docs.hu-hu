@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: b0937bbd72460b1d46ce0394af1933e858424966
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360322"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051530"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Az erőforrásokhoz való biztonságos hozzáférés kezelése küllős virtuális hálózatok a felhasználói VPN-ügyfelek számára
 
@@ -129,7 +129,7 @@ Ebben a szakaszban biztosítania kell, hogy a forgalom a Azure Firewall kereszt�
 1. A **Beállítások** területen válassza a **biztonsági konfiguráció** elemet.
 1. A **privát forgalom** területen válassza a **Küldés Azure Firewall használatával** lehetőséget.
 1. Győződjön meg arról, hogy a VNet-kapcsolatok és a fiókirodák magánhálózati forgalmának védelmét Azure Firewall védi.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="validate"></a><a name="validate"></a>Érvényesítés
 
@@ -144,7 +144,7 @@ Ellenőrizze a biztonságos központ telepítését.
 * Győződjön meg arról, hogy a biztonságos virtuális hubhoz **érvényes útvonalak tábla** a következő ugrást tartalmazza a tűzfalon keresztüli privát forgalomhoz. A hatályos útvonalak táblázat eléréséhez navigáljon a **virtuális hub** -erőforráshoz. A **kapcsolat** területen válassza az **Útválasztás** lehetőséget, majd válassza a **hatályos útvonalak** lehetőséget. Innen válassza ki az **alapértelmezett** útválasztási táblázatot.
 * Ellenőrizze, hogy létrehozott-e szabályokat a [szabályok létrehozása](#create-rules) szakaszban. Ha ezek a lépések nem teljesülnek, az Ön által létrehozott szabályok nem lesznek ténylegesen társítva a központhoz, és az útválasztási táblázat és a csomag folyamata nem fogja használni a Azure Firewall.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális WAN-ról további információt a [virtuális WAN gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
-* További információ a Azure Firewallről: [Azure Firewall gyakori kérdések](../firewall/firewall-faq.md).
+* További információ a Azure Firewallről: [Azure Firewall gyakori kérdések](../firewall/firewall-faq.yml).
