@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 14195ad4638c724cf0c8dd46945a0da79ec0e4ec
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 08b08e3e799ff7b579889a62ecec70677a3cbce9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509700"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059058"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Önérvényesített technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -208,7 +208,7 @@ Az üzleti logikával meghívhat egy REST API technikai profilt, felülírhatja 
 | Setting. showCancelButton | Nem | Megjeleníti a Mégse gombot. Lehetséges értékek: `true` (alapértelmezett), vagy `false` |
 | Setting. showContinueButton | Nem | Megjeleníti a folytatás gombot. Lehetséges értékek: `true` (alapértelmezett), vagy `false` |
 | Setting. showSignupLink <sup>2</sup>| Nem | Megjeleníti a regisztrációs gombot. Lehetséges értékek: `true` (alapértelmezett), vagy `false` |
-| Setting. forgotPasswordLinkLocation <sup>2</sup>| Nem| Az elfelejtett jelszó hivatkozását jeleníti meg. Lehetséges értékek: `AfterInput` (alapértelmezett) a hivatkozás megjelenik az oldal alján, vagy `None` eltávolítja az elfelejtett jelszó hivatkozást.|
+| Setting. forgotPasswordLinkLocation <sup>2</sup>| Nem| Az elfelejtett jelszó hivatkozását jeleníti meg. Lehetséges értékek: `AfterLabel` (alapértelmezett) a hivatkozást közvetlenül a címke után vagy a jelszó beviteli mezője után jeleníti meg, ha nincs címke, a jelszó bevitele mező után megjeleníti a hivatkozást az  `AfterInput` `AfterButtons` űrlap alján a gombok után, vagy `None` eltávolítja az elfelejtett jelszó hivatkozást.|
 | Setting. enableRememberMe <sup>2</sup>| Nem| Megjeleníti a [bejelentkezett marad](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) jelölőnégyzetet. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). |
 | Setting. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Nem| Javítja a felhasználói élményt, ha megvárja, amíg a felhasználó leállítja a beírást, majd érvényesíti az értéket. Az alapértelmezett érték 2000 ezredmásodperc. |
 | IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |

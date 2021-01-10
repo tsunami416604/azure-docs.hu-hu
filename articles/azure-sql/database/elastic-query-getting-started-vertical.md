@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: dd8a30c60c81ef2761d5dc051d2dfeb300e1bac4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 90f89e72193c26b71859076b99c448a6e2d4c4c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792123"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060084"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Ismerkedés az adatbázisok közötti lekérdezésekkel (vertikális particionálás) (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,6 +77,7 @@ INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]
     SECRET = '<password>';  
     ```
 
+    A "master_key_password" a kapcsolódási hitelesítő adatok titkosításához használt erős jelszó. 
     A "username" és a "password" értéknek kell lennie az ügyfelek adatbázisba való bejelentkezéshez használt felhasználónévnek és jelszónak.
     A rugalmas lekérdezésekkel Azure Active Directory használatával történő hitelesítés jelenleg nem támogatott.
 
@@ -123,7 +124,7 @@ A rugalmas adatbázis lekérdezési funkciója jelenleg a Azure SQL Database kö
 
 A díjszabással kapcsolatos információkért tekintse meg a [SQL Database díjszabását](https://azure.microsoft.com/pricing/details/sql-database).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](elastic-query-overview.md).
 * A függőlegesen particionált információk szintaxisát és mintáit lásd: [függőlegesen particionált adatlekérdezés](elastic-query-vertical-partitioning.md)

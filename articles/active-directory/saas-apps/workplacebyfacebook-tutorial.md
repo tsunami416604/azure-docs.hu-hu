@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 28a1e5e7361f1f5333d9679262abfa1fd31bd32f
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 3ac81e89aaea5bc37297d2f83dce9e2158ae28d8
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967498"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060656"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a munkahelyen Facebook használatával
 
@@ -83,11 +83,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<instancename>.facebook.com`
+    a. A **bejelentkezési URL** -cím (a munkahelyen a címzett URL-címe) szövegmezőbe írja be az URL-címet a következő minta használatával: `https://.workplace.com/work/saml.php`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.facebook.com/company/<instanceID>`
+    b. Az **azonosító (entitás azonosítója)** (a munkahelyen a célközönség URL-címe) szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.workplace.com/company/`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.facebook.com/company/<instanceID>`
+    c. A **Válasz URL-címe** (a munkahelyen az állítási fogyasztói szolgáltatás) szövegmezőbe írja be az URL-címet a következő minta használatával: `https://.workplace.com/work/saml.php`
 
     > [!NOTE]
     > Ezek az értékek nem valódiak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Tekintse meg a munkahelyi Közösség megfelelő értékeit a munkahelyi vállalati irányítópult hitelesítés lapján, amelyet az oktatóanyag későbbi részében ismertet.
@@ -229,6 +229,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
     ![A Kezdőlap](./media/workplacebyfacebook-tutorial/test01.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a munkahelyet a Facebook használatával konfigurálta, akkor kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

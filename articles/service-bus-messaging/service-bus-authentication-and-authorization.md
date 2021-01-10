@@ -3,12 +3,12 @@ title: Hitelesítés és engedélyezés Azure Service Bus | Microsoft Docs
 description: Az alkalmazások hitelesítése megosztott hozzáférés-aláírási (SAS-) hitelesítéssel Service Bus.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7b287b209fbcd5bc2782505095aeae4390107803
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517280"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060214"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus-hitelesítés és -engedélyezés
 A Azure Service Bus-erőforrások hitelesítésének és engedélyezésének két módja van: az Azure Activity Directory (Azure AD) és a közös hozzáférésű aláírások (SAS). Ez a cikk részletesen ismerteti a két típusú biztonsági mechanizmus használatát. 
@@ -37,7 +37,7 @@ Ha SAS-t szeretne használni, konfigurálhat egy [SharedAccessAuthorizationRule]
 * *Kulcsnév*: a szabályt azonosítja.
 * *PrimaryKey*: a sas-jogkivonatok aláírására/érvényesítésére használt titkosítási kulcs.
 * *Értesítésiközpont*: a sas-jogkivonatok aláírására/érvényesítésére használt titkosítási kulcs.
-* *Rights*: a megadható **figyelési**, **küldési**vagy **kezelési** jogosultságok gyűjteményét jelöli.
+* *Rights*: a megadható **figyelési**, **küldési** vagy **kezelési** jogosultságok gyűjteményét jelöli.
 
 A névtér szintjén konfigurált engedélyezési szabályok hozzáférést biztosíthatnak a névtérben lévő összes entitáshoz a megfelelő kulccsal aláírt tokenekkel rendelkező ügyfelek számára. Egy Service Bus névtérben, várólistán vagy témakörön legfeljebb 12 ilyen engedélyezési szabályt állíthat be. Alapértelmezés szerint minden egyes jogosultsággal rendelkező [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) konfigurálva van minden névtérhez, amikor először kiépítik őket.
 
@@ -48,7 +48,7 @@ A Service Bus SAS-hitelesítésének támogatása az Azure .NET SDK 2,0-as és �
 > [!IMPORTANT]
 > Ha Azure Active Directory Access Controlt (más néven Access Control Service vagy ACS) használ a Service Bushoz, vegye figyelembe, hogy a metódus támogatása már korlátozott, és az alkalmazást az [sas használatára kell telepítenie](service-bus-migrate-acs-sas.md) , vagy a OAuth 2,0 hitelesítést kell használnia az Azure ad-vel (ajánlott). További információ az ACS elavult használatáról: [ebben a blogbejegyzésben](/archive/blogs/servicebus/upcoming-changes-to-acs-enabled-namespaces).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure AD-vel történő hitelesítéssel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Hitelesítés felügyelt identitásokkal](service-bus-managed-service-identity.md)

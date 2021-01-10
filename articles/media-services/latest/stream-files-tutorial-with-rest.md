@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: 023c4d685804b2c6c201f44ab672139d56338cdb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c1798ca74493ba22d29cd9ce819d469c29cd5ec3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979104"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059568"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: Távoli fájl kódolása URL-cím alapján és videó streamelése – REST
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Postman konfigurálása
 > * Kérések küldése a Postman használatával
 > * A streamelési URL-cím tesztelése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -170,10 +170,17 @@ A kimeneti [objektum](/rest/api/media/assets) tárolja a kódolási feladat ered
         {
         "properties": {
             "description": "My Asset",
-            "alternateId" : "some GUID"
+            "alternateId" : "some GUID",
+            "storageAccountName": "<replace from environment file>",
+            "container": "<supply any valid container name of your choosing>"
          }
         }
         ```
+
+> [!NOTE]
+> A Storage-fiók és a tárolók nevét cserélje le a környezeti fájlból származó értékekre, vagy adja meg a sajátját.
+>
+> A cikk további részében ismertetett lépések végrehajtása során győződjön meg arról, hogy érvényes paramétereket ad meg a kérelem törzsei között.
 
 ### <a name="create-a-transform"></a>Átalakítás létrehozása
 
@@ -355,8 +362,9 @@ Ebben a szakaszban egy HLS-streamelési URL-címet hozunk létre. Az URL-címek 
     Az állomásnév beszerzéséhez használhatja a következő GET műveletet:
     
     ```
-    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/default?api-version={{api-version}}
     ```
+    Győződjön meg arról, hogy a és a paramétereket úgy állítja be, `resourceGroupName` `accountName` hogy az megfeleljen a környezeti fájlnak. 
     
 3. Elérési út, amelyet az előző (Elérési utak listázása) szakaszban feljegyzett.  
 
@@ -382,11 +390,11 @@ Az Azure Media Player használható tesztelésre, az éles környezetben való h
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>A Media Service-fiók erőforrásainak eltávolítása
 
-Általában törölni kell mindent, kivéve azokat az objektumokat, amelyeket Ön használni szeretne (általában újra kell használni az **átalakításokat**, és meg kell őriznie a **streaming-lokátorokat**stb.). Ha ki szeretné üríteni fiókját a kísérletezés után, töröljön minden erőforrást, amelyet nem szeretne ismét használni.  
+Általában törölni kell mindent, kivéve azokat az objektumokat, amelyeket Ön használni szeretne (általában újra kell használni az **átalakításokat**, és meg kell őriznie a **streaming-lokátorokat** stb.). Ha ki szeretné üríteni fiókját a kísérletezés után, töröljön minden erőforrást, amelyet nem szeretne ismét használni.  
 
 Egy erőforrás törléséhez válassza a „Delete ...” (Törlés) műveletet a törölni kívánt erőforrás alatt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.  
 
@@ -400,7 +408,7 @@ az group delete --name amsResourceGroup
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már tudja, hogyan tölthet fel, kódolhat és streamelhet videókat, tekintse meg a következő cikket: 
 

@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: dd24c4f20fa3a56d25ef142947268b2d2b75474a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029600"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060010"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -43,7 +43,7 @@ Ebben a szakaszban megtudhatja, hogyan történik a közös hálózati forgatók
 
 Az alábbi táblázat összehasonlítja, hogyan fér hozzá a szolgáltatások a Azure Machine Learning hálózat különböző részeihez egy VNet és VNet nélkül.
 
-| Forgatókönyv | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
+| Használati példa | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
 |-|-|-|-|-|-|
 |**Nincs virtuális hálózat**| Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím |
 |**Virtuális hálózatok erőforrásainak védelme**| Magánhálózati IP-cím (privát végpont) | Nyilvános IP-cím (szolgáltatási végpont) <br> **vagy** <br> Magánhálózati IP-cím (privát végpont) | Magánhálózati IP-cím | Magánhálózati IP-cím  | 
@@ -152,7 +152,8 @@ Ha a tároló egy VNet van, először további konfigurációs lépéseket kell 
 Ha egy VNet belül szeretné engedélyezni a teljes Studio-funkciókat, tekintse meg a [Azure Machine learning Studio használata virtuális hálózatban](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio)című témakört. A Studio a szolgáltatási végpontok vagy a magánhálózati végpontok használatával támogatja a Storage-fiókokat.
 
 ### <a name="limitations"></a>Korlátozások
-- A [ml által támogatott adatfeliratok](how-to-create-labeling-projects.md#use-ml-assisted-labeling) nem támogatják a virtuális hálózat mögött biztonságossá tett alapértelmezett Storage-fiókokat. A ML által támogatott adatfeliratokhoz nem alapértelmezett Storage-fiókot kell használnia. Vegye figyelembe, hogy a nem alapértelmezett Storage-fiók biztonságossá tétele a virtuális hálózat mögött végezhető el. 
+
+A [ml által támogatott adatfeliratok](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling) nem támogatják a virtuális hálózat mögötti biztonságos alapértelmezett Storage-fiókokat. A ML által támogatott adatfeliratokhoz nem alapértelmezett Storage-fiókot kell használnia. Vegye figyelembe, hogy a nem alapértelmezett Storage-fiók biztonságossá tétele a virtuális hálózat mögött végezhető el. 
 
 ## <a name="configure-firewall-settings"></a>Tűzfalbeállítások konfigurálása
 
@@ -166,7 +167,7 @@ Ha egyéni DNS-megoldást kell használnia a virtuális hálózatához, hozzá k
 
 További információ a szükséges tartománynévekről és IP-címekről: [munkaterület használata egyéni DNS-kiszolgálóval](how-to-custom-dns.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat első része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

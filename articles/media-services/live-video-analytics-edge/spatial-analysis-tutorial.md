@@ -3,12 +3,12 @@ title: Élő videók elemzése Computer Vision térbeli elemzéshez – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Live Video Analytics szolgáltatást az Azure Cognitive Services Computer Vision térbeli Analysis AI funkciójának használatával egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400512"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060180"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Élő videó elemzése a Computer Vision for térbeli Analysis (előzetes verzió)
 
@@ -166,7 +166,7 @@ Az üzembe helyezési jegyzék meghatározza, hogy a rendszer mely modulokat tel
 Kövesse az alábbi lépéseket a jegyzékfájlnak a sablonból való létrehozásához, majd a peremhálózati eszközre történő telepítéséhez.
 
 1. Nyissa meg a Visual Studio Code-ot.
-1. Az AZURE IOT HUB panel mellett válassza a további műveletek ikont a IoT Hub kapcsolódási karakterlánc beállításához. A karakterláncot a src/Cloud-to-Device-Console-app/appsettings.jsfájlból másolhatja.
+1. Az AZURE IOT HUB panel mellett válassza a további műveletek ikont a IoT Hub kapcsolódási karakterlánc beállításához. A karakterláncot a `src/cloud-to-device-console-app/appsettings.json` fájlból másolhatja.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Térbeli elemzés: a kapcsolatok karakterlánca":::
@@ -222,13 +222,13 @@ Létezik egy program.cs, amely a közvetlen metódusokat hívja meg a src/Cloud-
 
 operations.json:
 
-* Állítsa be az ehhez hasonló topológiát (topologyFile helyi topológiához, topologyUrl az online topológiához):
+* A következőhöz hasonló topológiát állítsa be:
 
 ```json
 {
     "opName": "GraphTopologySet",
     "opParams": {
-        "topologyFile": "../edge/spatialAnalysisTopology.json"
+        "topologyUrl": "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/2.0/topology.json"
     }
 },
 ```
@@ -261,17 +261,6 @@ operations.json:
     }
 },
 ```
-* Módosítsa a Graph-topológiára mutató hivatkozást:
-
-`topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
-
-A **GraphInstanceSet** alatt szerkessze a gráf topológiájának nevét, hogy az megfeleljen az előző hivatkozásban szereplő értéknek:
-
-`topologyName` : InferencingWithCVExtension
-
-A **GraphTopologyDelete** alatt szerkessze a nevet:
-
-`name`: InferencingWithCVExtension
 
 >[!Note]
 Tekintse meg a MediaGraphRealTimeComputerVisionExtension használatát a térbeli elemzési modullal való kapcsolódáshoz. Állítsa be a $ {grpcUrl} értéket **TCP://spatialAnalysis: <PORT_NUMBER>**, például TCP://spatialAnalysis:50051
@@ -281,40 +270,51 @@ Tekintse meg a MediaGraphRealTimeComputerVisionExtension használatát a térbel
     "@type": "#Microsoft.Media.MediaGraphCognitiveServicesVisionExtension",
     "name": "computerVisionExtension",
     "endpoint": {
-    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-    "url": "${grpcUrl}",
-    "credentials": {
-        "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-        "username": "${spatialanalysisusername}",
-        "password": "${spatialanalysispassword}"
-    }
+        "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+        "url": "${grpcUrl}",
+        "credentials": {
+            "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+            "username": "${spatialanalysisusername}",
+            "password": "${spatialanalysispassword}"
+        }
     },
     "image": {
-    "scale": {
-        "mode": "pad",
-        "width": "1408",
-        "height": "786"
+        "scale": {
+            "mode": "pad",
+            "width": "1408",
+            "height": "786"
+        },
+        "format": {
+            "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
+            "pixelFormat": "bgr24"
+        }
     },
-    "format": {
-        "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
-        "pixelFormat": "bgr24"
-    }
+    "samplingOptions": {
+        "skipSamplesWithoutAnnotation": "false",
+        "maximumSamplesPerSecond": "20"
     },
     "inputs": [
-    {
-        "nodeName": "frameRateFilter"
-    }
+        {
+            "nodeName": "rtspSource",
+            "outputSelectors": [
+                {
+                    "property": "mediaType",
+                    "operator": "is",
+                    "value": "video"
+                }
+            ]
+        }
     ]
 }
 ```
 
-Futtasson hibakeresési munkamenetet, és kövesse a terminál utasításait, majd állítsa be a topológiát, állítsa be a Graph-példányt, aktiválja a Graph-példányt, és végül törölje az erőforrásokat.
+Futtasson hibakeresési munkamenetet, és kövesse a **terminál** utasításait, majd állítsa be a topológiát, állítsa be a Graph-példányt, aktiválja a Graph-példányt, és végül törölje az erőforrásokat.
 
 ## <a name="interpret-results"></a>Eredmények értelmezése
 
 Ha egy adathordozó-gráfot hoz létre, a "MediaSessionEstablished" eseményt kell megjelennie, itt egy [példa MediaSessionEstablished eseményt](detect-motion-emit-events-quickstart.md#mediasessionestablished-event).
 
-A térbeli elemzési modul a mesterséges intelligenciát bemutató eseményeket is küldi az élő videó-elemzésbe, majd a IoTHub a KIMENETben is megjelenik. Az entitás az észlelési objektumok, az esemény pedig spaceanalytics eseményeket. Ezt a kimenetet a rendszer átadja a Live Video Analyticsnek.
+A térbeli elemzési modul a mesterséges intelligenciát bemutató eseményeket is küldi az élő videó-elemzésbe, majd a IoTHub a **kimenetben** is megjelenik. Az entitás az észlelési objektumok, az esemény pedig spaceanalytics eseményeket. Ezt a kimenetet a rendszer átadja a Live Video Analyticsnek.
 
 Minta kimenete a personZoneEvent (a cognitiveservices. vízió. spatialanalysis-personcrossingpolygon. livevideoanalytics műveletből):
 
@@ -375,7 +375,7 @@ Minta kimenete a personZoneEvent (a cognitiveservices. vízió. spatialanalysis-
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálkozzon a modul által kínált különböző műveletekkel, `spatialAnalysis` például a **personCount** és a **personDistance** . ehhez a telepítési jegyzékfájl Graph csomópontjában az "enabled" jelzőt kell bekapcsolni.
 >[!Tip]

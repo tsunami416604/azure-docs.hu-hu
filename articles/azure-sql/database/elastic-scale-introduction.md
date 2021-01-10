@@ -9,12 +9,12 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 2eb7984097b4edf34ed2f0214e1453246e12916f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f00b2c1a8a8264267aa8ae68d80890adeb642ea
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786751"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059144"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -23,7 +23,7 @@ A **Elastic Database** eszközök használatával könnyedén felskálázást k�
 
 * [Elastic Database ügyféloldali kódtár](elastic-database-client-library.md): az ügyféloldali kódtár olyan szolgáltatás, amely lehetővé teszi a szilánkokra osztott adatbázisok létrehozását és karbantartását.  Lásd: [Elastic Database-eszközök első lépései](elastic-scale-get-started.md).
 * [Elastic Database felosztási-egyesítési eszköz](elastic-scale-overview-split-and-merge.md): áthelyezi az adatátvitelt a felosztott adatbázisok között. Ez az eszköz akkor hasznos, ha egy több-bérlős adatbázisból egy egybérlős adatbázisba helyezi át az adatáthelyezést (vagy fordítva). Lásd: [rugalmas adatbázis Split-Merge eszközének oktatóanyaga](elastic-scale-configure-deploy-split-and-merge.md).
-* [Rugalmas adatbázis-feladatok](elastic-jobs-overview.md): a feladatok segítségével nagy számú adatbázist kezelhet Azure SQL Databaseokban. Egyszerűen végezhet olyan adminisztratív műveleteket, mint a séma módosítása, a hitelesítő adatok kezelése, a hivatkozási adatok frissítései, a teljesítményadatok gyűjtése vagy a bérlő (ügyfél) telemetria-gyűjtemény a feladatok használatával.
+* [Rugalmas adatbázis-feladatok](elastic-jobs-overview.md) (előzetes verzió): a feladatok használatával nagy számú adatbázist kezelhet Azure SQL Databaseokban. Egyszerűen végezhet olyan adminisztratív műveleteket, mint a séma módosítása, a hitelesítő adatok kezelése, a hivatkozási adatok frissítései, a teljesítményadatok gyűjtése vagy a bérlő (ügyfél) telemetria-gyűjtemény a feladatok használatával.
 * [Elastic Database Query](elastic-query-overview.md) (előzetes verzió): lehetővé teszi, hogy olyan Transact-SQL-lekérdezést futtasson, amely több adatbázisra is kiterjed. Ez lehetővé teszi, hogy a rendszer olyan jelentéskészítő eszközöket létesítsen, mint például az Excel, a Power BI, a tabló stb.).
 * [Rugalmas tranzakciók](elastic-transactions-overview.md): Ez a funkció lehetővé teszi, hogy több adatbázisra kiterjedő tranzakciókat futtasson. A rugalmas adatbázis-tranzakciók az ADO .NET-et használó .NET-alkalmazások számára érhetők el, és az ismerős programozási felülettel integrálhatók a [System. Transaction osztályok](/dotnet/api/system.transactions)használatával.
 
@@ -89,7 +89,7 @@ Más forgatókönyvek esetén több bérlőt is becsomagolhat adatbázisokba, é
 ### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Adatok áthelyezése többről egybérlős adatbázisokba
 SaaS-alkalmazások létrehozásakor jellemző, hogy a leendő ügyfelek számára a szoftver próbaverzióját kínálja. Ebben az esetben költséghatékony, ha több-bérlős adatbázist használ az adatkezeléshez. Ha azonban az ügyfél válik elérhetővé, akkor egy egybérlős adatbázis jobb, mivel jobb teljesítményt nyújt. Ha az ügyfél a próbaidőszak alatt hozta létre az adatait, a [Split-Merge eszközzel](elastic-scale-overview-split-and-merge.md) helyezheti át a több-bérlő adatait az új egybérlős adatbázisba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az ügyféloldali függvénytárat bemutató minta alkalmazáshoz lásd: Ismerkedés [a Elastic Database eszközökkel](elastic-scale-get-started.md).
 
 Ha a meglévő adatbázisokat az eszközök használatára szeretné átalakítani, tekintse meg a [meglévő adatbázisok áttelepítésének felskálázását](elastic-convert-to-use-elastic-tools.md)ismertető témakört.

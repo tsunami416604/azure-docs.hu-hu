@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 41c0bd23bbd2d69506a979c5a36ac40f73258f2c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ab03e0bdf7761e45a134ec90685955403fbc433b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605513"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060384"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 
@@ -100,7 +100,7 @@ Feltételezve, hogy rendelkezik a MySQL- **alkalmazottak** mintaadatbázis haszn
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
 
-Például:
+Példa:
 
 ```
 mysqldump -h 10.10.123.123 -u root -p --databases employees --no-data > d:\employees.sql
@@ -112,7 +112,7 @@ Ha sémát szeretne importálni az Azure Database for MySQL célba, futtassa a k
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
  ```
 
-Például:
+Példa:
 
 ```
 mysql.exe -h shausample.mysql.database.azure.com -u dms@shausample -p employees < d:\employees.sql
@@ -237,7 +237,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
     ![Leképezés céladatbázisokra](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > Bár ebben a lépésben több adatbázist is kiválaszthat, a Azure Database Migration Service minden példánya legfeljebb négy adatbázist támogat egyidejű áttelepítéshez. Az előfizetésben régiónként legfeljebb két Azure Database Migration Service példány adható meg. Ha például az áttelepíteni kívánt 40-es adatbázissal rendelkezik, akkor egyszerre csak nyolcat lehet áttelepíteni, és csak akkor, ha a Azure Database Migration Service két példányát hozta létre.
+   > Bár ebben a lépésben több adatbázist is kiválaszthat, a Azure Database Migration Service minden példánya legfeljebb 4 adatbázist támogat egyidejű áttelepítéshez. Az előfizetések régiónként legfeljebb 10 példányt Azure Database Migration Service. Ha például az áttelepíteni kívánt 80-es adatbázissal rendelkezik, a 40-et áttelepítheti ugyanahhoz a régióhoz, de csak akkor, ha a Azure Database Migration Service 10 példányát hozta létre.
 
 3. Válassza a **Mentés** lehetőséget. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét, majd tekintse át az összegzést, és ellenőrizze, hogy a forrás és a cél adatai megegyeznek-e a korábban megadottakkal.
 

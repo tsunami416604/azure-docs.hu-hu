@@ -3,12 +3,12 @@ title: Mozgás észlelése, videó rögzítése Azure Media Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket, hogy felderítse az élő videó streamben való mozgást, és videoklipeket rögzítsen a Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511892"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060418"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Gyors útmutató: mozgás észlelése, videó rögzítése Media Services
 
@@ -24,12 +24,14 @@ Ez a cikk a [első lépések](get-started-detect-motion-emit-events-quickstart.m
     * [Az Azure-erőforrások beállítása](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Modulok üzembe helyezése](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
     * [A Visual Studio Code konfigurálása](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
-
+    > [!TIP]
+    > Ha a létrehozott Azure-erőforrásokkal kapcsolatos problémákba ütközik, tekintse meg a **[hibaelhárítási útmutatót](troubleshoot-how-to.md#common-error-resolutions)** a gyakran előforduló problémák megoldásához.
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
 
 Az Azure-erőforrások létrehozásához szükséges lépések részeként a rendszer egy (rövid) videót másol az Azure-beli linuxos virtuális gépre, amelyet a IoT Edge eszközként használ. Ez a videofájl az oktatóanyag élő folyamának szimulálására szolgál.
 
 Használhat egy alkalmazást, például a [VLC Playert](https://www.videolan.org/vlc/), elindíthatja, megnyomhatja `Ctrl+N` és beillesztheti [a parkoló videó minta](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) hivatkozását a lejátszás megkezdéséhez. Az 5 másodperces jel körülbelül egy fehér autó halad át a parkolón.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 Az alábbi lépések elvégzése után élő videó-elemzéseket használt IoT Edgeon az autó mozgásának észleléséhez és az 5 másodperces megjelölés körüli videoklip rögzítéséhez. Az alábbi ábra a teljes folyamat vizuális ábrázolását mutatja be.
 
@@ -194,7 +196,7 @@ A GraphTopologyList meghívásakor megjelenő lépések használatával meghívh
 
 A fenti JSON-adattartalom egy olyan gráf-topológia létrehozását eredményezi, amely öt paramétert határoz meg (amelyek közül négy alapértelmezett értékkel rendelkezik). A topológia egyetlen forrás csomóponttal ([RTSP-forrással](media-graph-concept.md#rtsp-source)), két processzor-csomóponttal (a[mozgásérzékelő processzorral](media-graph-concept.md#motion-detection-processor) és a [Signal Gate processzorral](media-graph-concept.md#signal-gate-processor), valamint két fogadó csomóponttal (IoT hub fogadóval és adatfogadóval [) rendelkezik](media-graph-concept.md#asset-sink). A topológia vizuális ábrázolása a fent látható.
 
-Néhány másodpercen belül a kimenet ablakban a következő válasz jelenik meg.
+Néhány másodpercen belül a **kimenet** ablakban a következő válasz jelenik meg.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...

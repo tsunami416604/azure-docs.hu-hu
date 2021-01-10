@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: f9748d0d278375029fc9875f5b36674d19ad871a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614251"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058973"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>A Azure Active Directory B2Cban található jelszavak bonyolultsági követelményeinek konfigurálása
 
@@ -76,7 +76,7 @@ Lehetővé teszi, hogy csak számjegyeket (PIN-ket) vagy a teljes karakterkészl
 Lehetővé teszi a jelszó hosszára vonatkozó követelmények szabályozását.
 
 - A **minimális hossznak** legalább 4-nek kell lennie.
-- A **maximális hossznak** nagyobbnak vagy egyenlőnek kell lennie a minimális hosszsal, és legfeljebb 64 karakter hosszú lehet.
+- A **maximális hossznak** nagyobbnak vagy egyenlőnek kell lennie a minimális hosszsal, és legfeljebb 256 karakter hosszú lehet.
 
 ### <a name="character-classes"></a>Karakter osztályok
 

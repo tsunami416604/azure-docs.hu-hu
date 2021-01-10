@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: e3c9c101779c5404be7eb8ebfa54f98bd3112117
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: c3443abaa1157122f7bcd43277a0ae00a2cd4407
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900552"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059092"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-illesztőprogramok telepítése a Linuxon futó N sorozatú virtuális gépeken
 
@@ -104,6 +104,10 @@ sudo reboot
 2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
 
 Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
+
+Please note that LIS is applicable to Red Hat Enterprise Linux, CentOS, and the Oracle Linux Red Hat Compatible Kernel 5.2-5.11, 6.0-6.10, and 7.0-7.7. Please refer to the [Linux Integration Services documentation] (https://www.microsoft.com/en-us/download/details.aspx?id=55106) for more details. 
+
+Skip this step if you are not using the Kernel versions listed above.
 
    ```bash
    wget https://aka.ms/lis
@@ -382,6 +386,6 @@ Ezután hozzon létre egy bejegyzést a frissítési parancsfájlhoz, `/etc/rc.d
 * Ha a legújabb verzióra frissítette az NVIDIA CUDA-illesztőprogramokat, és megkeresi az RDMA-kapcsolatot, akkor [a kapcsolat újbóli létrehozásához telepítse újra a RDMA-illesztőprogramokat](#rdma-network-connectivity) . 
 * Ha egy bizonyos CentOS/RHEL operációsrendszer-verzió (vagy kernel) nem támogatott a LIS esetében, a rendszer a "nem támogatott kernel-verzió" hibát dobta. Jelentse ezt a hibát az operációs rendszer és a kernel verzióival együtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Linux rendszerű virtuálisgép-lemezképnek a telepített NVIDIA-illesztőprogramokkal való rögzítéséről lásd: [Linux rendszerű virtuális gép általánosítása és rögzítése](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

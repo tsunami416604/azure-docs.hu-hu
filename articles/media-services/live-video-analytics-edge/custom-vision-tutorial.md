@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használható az Azure Custom Vision egy olyan 
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 614c4e401579eda68d8030dc2d2a42b2c4736031
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401695"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060529"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Oktatóanyag: élő videó elemzése élő videó-elemzéssel IoT Edge és az Azure-on Custom Vision
 
@@ -61,8 +61,11 @@ A Kezdés előtt olvassa el a következő cikkeket:
 ::: zone-end
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
 
+Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a **CTRL + N billentyűkombinációt**, majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintésekor vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. 
 
-Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a **CTRL + N billentyűkombinációt**, majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintésekor vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. Ebben az oktatóanyagban élő videó-elemzéseket fog használni a IoT Edgeon az ilyen játékszer teherautók észleléséhez és a társított következtetési események közzétételéhez a IoT Edge hubhoz.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LPwK]
+
+Ebben az oktatóanyagban élő videó-elemzéseket fog használni a IoT Edgeon az ilyen játékszer teherautók észleléséhez és a társított következtetési események közzétételéhez a IoT Edge hubhoz.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -127,7 +130,6 @@ A művelet befejezése után exportálhatja a modellt egy Docker-tárolóba a **
 
 ## <a name="examine-the-sample-files"></a>A mintaadatok vizsgálata
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/csharp/examine-sample-files.md)]
 ::: zone-end
@@ -140,7 +142,7 @@ A művelet befejezése után exportálhatja a modellt egy Docker-tárolóba a **
 
 1. A Visual Studio Code-ban lépjen a src/Cloud-to-Device-Console-app/operations.jselemre.
 
-1. `GraphTopologySet`A területen győződjön meg arról, hogy a következők teljesülnek:<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+1. `GraphTopologySet`A területen győződjön meg arról, hogy a következők teljesülnek:<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 1. A területen `GraphInstanceSet` Győződjön meg arról, hogy:
     1. `"topologyName" : "InferencingWithHttpExtension"`
     1. Adja hozzá a következőt a paraméterek tömb elejéhez: `{"name": "inferencingUrl","value": "http://cv:80/image"},`
@@ -261,7 +263,7 @@ A következő üzenetekben az élő videó elemzési modulja az alkalmazás tula
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished esemény
 
-Az adathordozó-diagramok példányainak létrehozásakor az RTSP-forrás csomópontja megpróbál csatlakozni az rtspsim-LIVE555 tárolón futó RTSP-kiszolgálóhoz. Ha a kapcsolat sikeres, a következő esemény lesz kinyomtatva. Az esemény típusa: `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
+Az adathordozó-diagramok példányainak létrehozásakor az RTSP-forrás csomópontja megpróbál csatlakozni az rtspsim-LIVE555 tárolón futó RTSP-kiszolgálóhoz. Ha a kapcsolat sikeres, a következő esemény lesz kinyomtatva. Az esemény típusa **Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished**.
 
 ```
 {
@@ -386,7 +388,7 @@ Jegyezze fel a következő információkat az előző üzenetekben:
 
 Ha más oktatóanyagokat vagy gyors útmutatókat szeretne kipróbálni, tartsa be a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

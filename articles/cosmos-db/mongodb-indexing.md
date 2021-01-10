@@ -1,22 +1,22 @@
 ---
-title: Az indexelés kezelése Azure Cosmos DB API-MongoDB
+title: Indexelés kezelése a MongoDB-hez készült Azure Cosmos DB API-ban
 description: Ez a cikk áttekintést nyújt a Azure Cosmos DB indexelési képességeiről a Azure Cosmos DB API-MongoDB való használatával
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/08/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 34caca47746814046a894494ec43d9b5c977389a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369290"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060088"
 ---
-# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Az indexelés kezelése Azure Cosmos DB API-MongoDB
+# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Indexelés kezelése a MongoDB-hez készült Azure Cosmos DB API-ban
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 A MongoDB Azure Cosmos DB API-ját kihasználhatja Azure Cosmos DB alapvető index-felügyeleti képességeinek kihasználásához. Ez a cikk azt ismerteti, hogyan adhat hozzá indexeket a Azure Cosmos DB API-MongoDB való használatával. Áttekintheti a [Azure Cosmos db indexelésének áttekintését](index-overview.md) is, amely az összes API-ra vonatkozik.
@@ -29,6 +29,16 @@ További mezők indexeléséhez a MongoDB indexkezelési parancsait használja. 
 
 A rendezés lekérdezésre való alkalmazásához létre kell hoznia egy indexet a rendezési műveletben használt mezőkön.
 
+### <a name="editing-indexing-policy"></a>Indexelési házirend szerkesztése
+
+Azt javasoljuk, hogy az indexelési szabályzatot a Azure Portalon belüli Adatkezelő szerkessze.
+. Az indexelési házirend szerkesztőjéből egyetlen mezőt és helyettesítő karaktert adhat hozzá a Adatkezelő:
+
+:::image type="content" source="./media/mongodb-indexing/indexing-policy-editor.png" alt-text="Indexelő házirend-szerkesztő":::
+
+> [!NOTE]
+> Összetett indexek nem hozhatók létre a Adatkezelő indexelési házirend szerkesztőjével.
+
 ## <a name="index-types"></a>Indextípusok
 
 ### <a name="single-field"></a>Egyetlen mező
@@ -36,6 +46,10 @@ A rendezés lekérdezésre való alkalmazásához létre kell hoznia egy indexet
 Létrehozhat indexeket bármely egyetlen mezőben. Az egymezős index rendezési sorrendje nem számít. A következő parancs létrehoz egy indexet a mezőhöz `name` :
 
 `db.coll.createIndex({name:1})`
+
+A Azure Portalban ugyanaz az egymezős index is létrehozható `name` :
+
+:::image type="content" source="./media/mongodb-indexing/add-index.png" alt-text="Név index hozzáadása az indexelési házirend szerkesztőjében":::
 
 Az egyik lekérdezés több egymezős indexet használ, ahol elérhető. Egy tárolón legfeljebb 500 egymezős index hozható létre.
 
@@ -135,6 +149,10 @@ A következő módon hozhat létre helyettesítő karaktert az összes mezőhöz
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
+Helyettesítő karakteres indexeket is létrehozhat a Azure Portal Adatkezelő használatával:
+
+:::image type="content" source="./media/mongodb-indexing/add-wildcard-index.png" alt-text="Helyettesítő karakteres index hozzáadása az indexelési házirend szerkesztőjében":::
+
 > [!NOTE]
 > Ha most kezdi a fejlesztést, **javasoljuk,** hogy az összes mezőhöz egy helyettesítő karakteres indexszel kezdjen. Ez egyszerűbbé teheti a fejlesztést, és egyszerűbbé teszi a lekérdezések optimalizálását.
 
@@ -150,7 +168,7 @@ A helyettesítő karakteres indexek nem támogatják a következő típusú inde
 
 A **MongoDB-től eltérően** Azure Cosmos db API-ját a MongoDB esetében **nem** használhat helyettesítő indexeket a következőhöz:
 
-- Több megadott mezőt tartalmazó helyettesítő karakteres index létrehozása
+- Több megadott mezőt tartalmazó helyettesítő index létrehozása
 
 `db.coll.createIndex(
     { "$**" : 1 },
@@ -162,7 +180,7 @@ A **MongoDB-től eltérően** Azure Cosmos db API-ját a MongoDB esetében **nem
     }
 )`
 
-- Egy helyettesítő karakterből álló index létrehozása, amely kizárja több konkrét mezőt
+- Több megadott mezőt nem tartalmazó helyettesítő index létrehozása
 
 `db.coll.createIndex(
     { "$**" : 1 },
@@ -174,7 +192,7 @@ A **MongoDB-től eltérően** Azure Cosmos db API-ját a MongoDB esetében **nem
     }
 )`
 
-Alternatív megoldásként több helyettesítő karaktert is létrehozhat.
+Másik lehetőségként létrehozhat több helyettesítő indexet.
 
 ## <a name="index-properties"></a>Index tulajdonságai
 

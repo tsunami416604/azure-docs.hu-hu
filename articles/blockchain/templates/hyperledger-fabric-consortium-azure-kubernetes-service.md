@@ -1,15 +1,15 @@
 ---
 title: A Hyperledger Fabric Consortium üzembe helyezése az Azure Kubernetes Service-ben
 description: Hyperledger Fabric Consortium-hálózat üzembe helyezése és konfigurálása az Azure Kubernetes Service-ben
-ms.date: 08/06/2020
+ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651556"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060316"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>A Hyperledger Fabric Consortium üzembe helyezése az Azure Kubernetes Service-ben
 
@@ -66,7 +66,7 @@ A kezdéshez olyan Azure-előfizetésre van szükség, amely támogatja több vi
 
 A Hyperledger háló hálózati összetevőinek üzembe helyezésének megkezdéséhez nyissa meg a [Azure Portal](https://portal.azure.com).
 
-1. Válassza az **erőforrás létrehozása**  >  **Blockchain**elemet, majd keresse **meg a Hyperledger-hálót az Azure Kubernetes Service-ben (előzetes verzió)**.
+1. Válassza az **erőforrás létrehozása**  >  **Blockchain** elemet, majd keresse **meg a Hyperledger-hálót az Azure Kubernetes Service-ben (előzetes verzió)**.
 
 2. Adja meg a projekt részleteit az **alapok** lapon.
 
@@ -106,14 +106,14 @@ A Hyperledger háló hálózati összetevőinek üzembe helyezésének megkezdé
     - **DNS-előtag**: adjon meg egy tartománynévrendszer-(DNS-) nevet az AK-fürthöz. A DNS használatával csatlakozhat a Kubernetes API-hoz a tárolók kezelésekor a fürt létrehozása után.
     - **Csomópont mérete**: a Kubernetes csomópont méretéhez az Azure-ban elérhető virtuálisgép-készletezési egységek (SKU-EK) listájából választhat. Az optimális teljesítmény érdekében javasoljuk a standard DS3 v2 használatát.
     - **Csomópontok száma**: adja meg a fürtben telepítendő Kubernetes-csomópontok számát. Javasoljuk, hogy a csomópontok számát a **háló beállításai** lapon megadott Hyperledger-háló-csomópontok számával vagy annál nagyobb értékkel őrizze meg.
-    - **Egyszerű szolgáltatásnév ügyfél-azonosítója**: adja meg egy meglévő szolgáltatásnév ügyfél-azonosítóját, vagy hozzon létre egy újat. Az AK-hitelesítéshez egyszerű szolgáltatásnév szükséges. Tekintse [meg az egyszerű szolgáltatásnév létrehozásának lépéseit](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal).
+    - **Egyszerű szolgáltatásnév ügyfél-azonosítója**: adja meg egy meglévő szolgáltatásnév ügyfél-azonosítóját, vagy hozzon létre egy újat. Az AK-hitelesítéshez egyszerű szolgáltatásnév szükséges. Tekintse [meg az egyszerű szolgáltatásnév létrehozásának lépéseit](/powershell/azure/create-azure-service-principal-azureps#create-a-service-principal).
     - **Egyszerű szolgáltatásnév ügyfél titka**: adja meg az egyszerű szolgáltatásnév ügyfél-azonosítójában megadott szolgáltatásnév titkos kulcsát.
     - **Ügyfél titkos kulcsának megerősítése**: erősítse meg az egyszerű szolgáltatásnév ügyfél-titkos kulcsát.
     - **Tárolók figyelésének engedélyezése**: válassza az AK-figyelés engedélyezése lehetőséget, amely lehetővé teszi az AK-naplók számára a megadott log Analytics munkaterületre való leküldést.
     - **Log Analytics munkaterület**: a log Analytics munkaterület a figyelés engedélyezésekor létrehozott alapértelmezett munkaterülettel lesz feltöltve.
 
 8. Válassza a **felülvizsgálat és létrehozás** lapot. Ez a lépés elindítja a megadott értékek érvényesítését.
-9. Az érvényesítési fázisok után válassza a **Létrehozás**lehetőséget.
+9. Az érvényesítési fázisok után válassza a **Létrehozás** lehetőséget.
 
     Az üzembe helyezés általában 10 – 12 percet vesz igénybe. Az idő a megadott AK-csomópontok méretétől és számától függően változhat.
 10. A sikeres üzembe helyezést követően értesítést kap az Azure-értesítéseken a jobb felső sarokban.
@@ -393,23 +393,35 @@ Adja át a lekérdezési függvény nevét és az argumentumok szóközzel tagol
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Futtassa a következő parancsokat a sablon központi telepítésének megkereséséhez.
+### <a name="find-deployed-version"></a>Telepített verzió keresése
 
-Állítsa be a környezeti változókat azon erőforráscsoport szerint, amelyben a sablon telepítve lett.
-
-```bash
-
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
-AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
-AKS_CLUSTER_NAME=<AKSClusterName>
-```
-Futtassa a következő parancsot a sablon verziójának kinyomtatásához.
+Futtassa a következő parancsokat a sablon központi telepítésének megkereséséhez. Állítsa be a környezeti változókat azon erőforráscsoport szerint, amelyben a sablon telepítve lett.
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
+```
 
+### <a name="patch-previous-version"></a>Korábbi verzió javítása
+
+Ha olyan problémák merülnek fel, amelyek a chaincode futtatásával kapcsolatos problémákat tapasztalnak a v 3.0.0 alatt lévő sablonok valamelyik központi telepítésében, kövesse az alábbi lépéseket a társ-csomópontok javításával történő javításához.
+
+Töltse le a társ-telepítési parancsfájlt.
+
+```bash
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/scripts/patchPeerDeployment.sh -o patchPeerDeployment.sh; chmod 777 patchPeerDeployment.sh
+```
+
+Futtassa a szkriptet a következő paranccsal, és cserélje le a társának paramétereit.
+
+```bash
+source patchPeerDeployment.sh <peerOrgSubscription> <peerOrgResourceGroup> <peerOrgAKSClusterName>
+```
+
+Várja meg, amíg az összes társ-csomópontot javítani szeretné. A következő parancs használatával mindig ellenőrizhető a társ-csomópontok állapota a rendszerhéj különböző példányaiban.
+
+```bash
+kubectl get pods -n hlf
 ```
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés

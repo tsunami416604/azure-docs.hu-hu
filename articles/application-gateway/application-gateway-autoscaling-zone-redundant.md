@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826624"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059721"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
@@ -68,7 +68,7 @@ Egy új példány létrehozása azonban hosszabb időt is igénybe vehet (körü
 
 A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgáltatásokat.
 
-| Szolgáltatás                                           | v1 SKU   | v2 SKU   |
+| Funkció                                           | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Automatikus skálázás                                       |          | &#x2713; |
 | Zónaredundancia                                   |          | &#x2713; |
@@ -101,7 +101,7 @@ Ez a szakasz a v1 SKU-ból eltérő v2 SKU szolgáltatásait és korlátozásait
 |Hitelesítési tanúsítvány|Nem támogatott.<br>További információ: [a végpontok és a végpontok közötti TLS áttekintése Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Standard_v2 és standard Application Gateway összekeverése ugyanazon az alhálózaton|Nem támogatott|
 |User-Defined útvonal (UDR) Application Gateway alhálózaton|Támogatott (konkrét forgatókönyvek). Előzetes verzióban.<br> További információ a támogatott forgatókönyvekről: [Application Gateway konfiguráció áttekintése](configuration-infrastructure.md#supported-user-defined-routes).|
-|NSG a bejövő porttartomány| -65200 – 65535 Standard_v2 SKU-hoz<br>-65503 – 65534 a standard SKU-hoz.<br>További információt a [Gyakori kérdések](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)című témakörben talál.|
+|NSG a bejövő porttartomány| -65200 – 65535 Standard_v2 SKU-hoz<br>-65503 – 65534 a standard SKU-hoz.<br>További információt a [Gyakori kérdések](application-gateway-faq.yml#are-network-security-groups-supported-on-the-application-gateway-subnet)című témakörben talál.|
 |Teljesítménynaplók az Azure diagnosticsban|Nem támogatott.<br>Az Azure-metrikákat kell használni.|
 |Számlázás|Számlázás ütemezve, hogy 2019. július 1-jén induljon el.|
 |FIPS mód|Ezek jelenleg nem támogatottak.|
@@ -113,7 +113,7 @@ Ez a szakasz a v1 SKU-ból eltérő v2 SKU szolgáltatásait és korlátozásait
 
 Azure PowerShell parancsfájl a PowerShell-galériában érhető el, hogy segítséget nyújtson a v1 Application Gateway/WAF a v2 automatikus skálázási SKU-ba való átálláshoz. Ez a szkript segítséget nyújt a konfigurációnak a v1-átjáróról történő másolásához. A forgalom áttelepítése továbbra is az Ön felelőssége. További információ: [Azure Application Gateway migrálása v1-ről v2-re](migrate-v1-v2.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató: Webes forgalom irányítása az Azure Application Gatewayjel – Azure Portal](quick-create-portal.md)
 - [Hozzon létre egy automatikus skálázást, a Zone redundáns Application Gateway-t egy fenntartott virtuális IP-címmel a Azure PowerShell használatával](tutorial-autoscale-ps.md)

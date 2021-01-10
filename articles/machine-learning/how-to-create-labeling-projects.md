@@ -1,7 +1,7 @@
 ---
 title: Adatcímkéző projekt létrehozása
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre és futtathat címkéző projekteket a gépi tanulásra vonatkozó adatcímkézéshez.  A feladattal való segítségnyújtáshoz használjon ML-vel támogatott címkézést vagy humán-t a hurok címkézése során.
+description: Megtudhatja, hogyan hozhat létre és futtathat címkéző projekteket a gépi tanulásra vonatkozó adatcímkézéshez. A feladattal való segítségnyújtáshoz használjon ML-vel támogatott címkézést vagy humán-t a hurok címkézése során.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
@@ -9,36 +9,28 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 2fe217d08203aec2d25a5d1219a2556bd0dcbcd7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 854504347409efb4f0eafff0d776db23ca9fda07
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046107"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059840"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
+Megtudhatja, hogyan hozhat létre és futtathat adatcímkéző projekteket Azure Machine Learningban található adatcímkézéshez.  A feladattal való segítségnyújtáshoz használja a gépi tanulással támogatott adatfeliratot, vagy az emberi-in-the-loop feliratot.
 
 
-A gépi tanulási projektek terjedelmes adatcímkézése gyakran fejfájás. A számítógép-látási összetevővel rendelkező projektek, például a képosztályozás vagy az objektumok észlelése általában több ezer rendszerkép használatát igénylik.
- 
-Az adatfeliratok [Azure Machine learning](https://ml.azure.com/) központi helyet biztosítanak a címkézési projektek létrehozásához, kezeléséhez és figyeléséhez. Felhasználhatja az adatok, címkék és csoporttagok koordinálását a címkézési feladatok hatékony kezelésére. Machine Learning támogatja a képbesorolást, a többcímkés vagy a többosztályos és az objektum-azonosítást a kötött mezőkkel.
-
-Az Adatfeliratok nyomon követik az előrehaladást, és megtartják a hiányos címkéző feladatok várólistáját.
-
-Elindíthatja és leállíthatja a projektet, és szabályozhatja a címkézés folyamatát. Megtekintheti a címkével ellátott adatokat, és az exportálást kókusz formátumban vagy Azure Machine Learning adatkészletként is elvégezheti.
+## <a name="data-labeling-capabilities"></a>Adatcímkéző képességek
 
 > [!Important]
 > Jelenleg csak a képbesorolás és az objektum-azonosító címkézési projektek támogatottak. Emellett az adatlemezképeknek elérhetőnek kell lenniük egy Azure Blob-adattárban. (Ha nem rendelkezik meglévő adattárral, képeket tölthet fel a projekt létrehozása során.)
 
-Ebből a cikkből megtudhatja, hogyan:
-
-> [!div class="checklist"]
-> * Projekt létrehozása
-> * A projekt adatának és szerkezetének meghatározása
-> * A projekt futtatása és figyelése
-> * A címkék exportálása
-
+A Azure Machine Learning adatfelirat központi hely a címkézési projektek létrehozásához, kezeléséhez és figyeléséhez:
+ - Az adatok, címkék és csoporttagok összehangolása a címkézési feladatok hatékony kezelésére. 
+ - Nyomon követi a folyamat előrehaladását, és fenntartja a hiányos címkéző feladatok várólistáját.
+ - Indítsa el és állítsa le a projektet, és szabályozza a címkézési folyamat állapotát.
+ - Tekintse át a címkével ellátott adatokat, és az exportálást kókusz formátumban vagy Azure Machine Learning adatkészletként.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +40,7 @@ Ebből a cikkből megtudhatja, hogyan:
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree), mielőtt hozzákezd.
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-## <a name="create-a-labeling-project"></a>Címkézési projekt létrehozása
+## <a name="create-a-data-labeling-project"></a>Adatcímkéző projekt létrehozása
 
 A címkézési projektek Azure Machine Learningból vannak felügyelve. A projektek **címkézése** lap segítségével kezelheti a projekteket.
 
@@ -119,11 +111,11 @@ A legutóbbi frissítés időbélyegzője a projekt **részletek** lapjának **N
 
 ## <a name="specify-label-classes"></a>Címke osztályok meghatározása
 
-A **címkézési osztályok** lapon adja meg az adatkategorizálni kívánt osztályok készletét. Ezt körültekintően hajtsa végre, mert a címke pontosságát és sebességét az osztályok közül választhatják ki. Például a növények vagy állatok teljes nemzetségének és fajainak helyesírása helyett használjon mezőkód vagy rövidítse a nemet.
+A **címkézési osztályok** lapon adja meg az adatkategorizálni kívánt osztályok készletét. A címkéző pontosságát és sebességét az osztályok közötti választás befolyásolhatja. Például a növények vagy állatok teljes nemzetségének és fajainak helyesírása helyett használjon mezőkód vagy rövidítse a nemet.
 
 Soronként egy címkét adjon meg. **+** Új sor hozzáadásához használja a gombot. Ha több mint 3 vagy 4 címke van, de kevesebb, mint 10, érdemes lehet előtagot ("1:", "2:") használni, hogy a jelölők a számgombok használatával gyorsítsák fel a munkájukat.
 
-## <a name="describe-the-labeling-task"></a>A címkézési feladat leírása
+## <a name="describe-the-data-labeling-task"></a>Az adatfelirat-feladat leírása
 
 Fontos, hogy egyértelműen ismertesse a címkézési feladatot. A **címkézési utasítások** lapon hozzáadhat egy külső webhelyre mutató hivatkozást az utasítások címkézéséhez, vagy megadhatja az oldalon található Szerkesztés mezőben megjelenő utasításokat is. Tartsa meg az utasítások feladatait és a célközönségnek megfelelőt. Vegye figyelembe a következő kérdéseket:
 
@@ -145,9 +137,9 @@ A határoló mezőkhöz a következő fontos kérdések tartoznak:
 >[!NOTE]
 > Ügyeljen arra, hogy a címkéző az 1-9-as számú kulcsok használatával kiválaszthatják az első 9 címkét.
 
-## <a name="use-ml-assisted-labeling"></a>ML-támogatással rendelkező címkézés használata
+## <a name="use-ml-assisted-data-labeling"></a>ML által támogatott adatfeliratok használata
 
-A **ml által támogatott címkézési** oldal lehetővé teszi az automatikus gépi tanulási modellek aktiválását a címkézési feladat felgyorsításához. A címkézési projekt elején a rendszer véletlenszerű sorrendben rendezi a képeket a lehetséges torzulások csökkentése érdekében. A betanított modellben azonban megjelennek az adatkészletben található összes torzítás is. Ha például a lemezképek 80%-a egyetlen osztályból áll, akkor a modell betanításához használt adatmennyiség körülbelül 80%-a az adott osztály lesz. Ez a képzés nem tartalmazza az aktív tanulást.
+A **ml-támogatott címkézési** oldal lehetővé teszi az automatikus gépi tanulási modellek aktiválását a címkézési feladat felgyorsításához. A címkézési projekt elején a rendszer véletlenszerű sorrendben rendezi a képeket a lehetséges torzulások csökkentése érdekében. A betanított modellben azonban megjelennek az adatkészletben található összes torzítás is. Ha például a lemezképek 80%-a egyetlen osztályból áll, akkor a modell betanításához használt adatmennyiség körülbelül 80%-a az adott osztály lesz. Ez a képzés nem tartalmazza az aktív tanulást.
 
 Válassza a *ml támogatott címkézés engedélyezése* lehetőséget, és adjon meg egy GPU-t a támogatott címkézés engedélyezéséhez, amely két fázisból áll:
 * Fürtözés
@@ -164,7 +156,7 @@ Mivel a végső címkék továbbra is a Labeler származó adatokra támaszkodna
 
 Bizonyos számú címke elküldése után a lemezkép besorolására szolgáló gépi tanulási modell elkezdi a hasonló rendszerképek csoportosítását.  Ezeket a hasonló képeket a jelölők ugyanazon a képernyőn jelennek meg a manuális címkézés felgyorsításához. A fürtözés különösen akkor hasznos, ha a Labeler 4, 6 vagy 9 rendszerképből álló rácsot tekint meg. 
 
-Miután a gépi tanulási modellt betanítják a manuálisan címkézett adataira, a modell az utolsó teljesen csatlakoztatott rétegre lesz csonkítva. A címke nélküli képeket a rendszer átadja a csonkolt modellnek egy, a "beágyazás" vagy "featurization" néven ismert folyamaton. Ez beágyazza az egyes képeket egy, a modell rétegében definiált, nagy dimenziós területre. A rendszer a terület legközelebbi szomszédaival rendelkező képeket használja a fürtözési feladatokhoz. 
+Miután a gépi tanulási modellt betanítják a manuálisan címkézett adataira, a modell az utolsó teljesen csatlakoztatott rétegre lesz csonkítva. A címke nélküli képeket a rendszer átadja a csonkolt modellnek egy, a "beágyazás" vagy "featurization" néven ismert folyamaton. Ez beágyazza az egyes képeket egy, a modell rétegében definiált, nagy dimenziós területre. A rendszer a területhez legközelebbi szomszédokkal rendelkező képeket használja a fürtözési feladatokhoz. 
 
 A fürtözési fázis nem jelenik meg az objektumok észlelési modelljeinél.
 
@@ -174,7 +166,7 @@ A megfelelő képfeliratok elküldése után a rendszer egy besorolási modellt 
 
 Miután a gépi tanulási modellt betanítják a manuálisan címkézett adatokra, a modell kiértékelése manuálisan címkézett képekből történik, hogy meghatározza a pontosságot a különböző megbízhatósági küszöbértékeken. Ez a kiértékelési folyamat egy olyan megbízhatósági küszöbérték meghatározására szolgál, amely felett a modell elég pontos ahhoz, hogy megjelenjenek az előzetes feliratok. Ezt követően a modell kiértékelése a címke nélküli adatértékekkel történik. Az előcímkézéshez használt, a küszöbértéknél jobban megjelenő képek.
 
-## <a name="initialize-the-labeling-project"></a>A címkézési projekt inicializálása
+## <a name="initialize-the-data-labeling-project"></a>Az adatcímkéző projekt inicializálása
 
 A címkézési projekt inicializálását követően a projekt egyes szempontjai nem változtathatók meg. A feladattípus vagy az adatkészlet nem módosítható. A címkék és a feladat leírásának URL-címe *is* módosítható. A projekt létrehozása előtt gondosan tekintse át a beállításokat. A projekt elküldése után visszaadja az **Adatcímkéző** kezdőlapjának, amely a projekt **inicializálását** fogja megjeleníteni.
 
@@ -210,7 +202,7 @@ Továbbá, ha a ML által támogatott címkézés engedélyezve van, egy kis fol
 * Következtetés – előrejelzési Futtatás új elemekhez
 * Featurization – fürtök elemei (csak képbesorolási projektekhez)
 
-A jobb oldalon a Befejezett feladatok címkéjének eloszlása.  Ne feledje, hogy egyes projekttípus esetében egy elem több címkével is rendelkezhet, ebben az esetben a címkék teljes száma nagyobb lehet, mint az összes elem.
+A jobb oldalon a Befejezett feladatok címkéjének eloszlása látható.  Ne feledje, hogy egyes projekttípus esetében egy elem több címkével is rendelkezhet, ebben az esetben a címkék teljes száma nagyobb lehet, mint az összes elem.
 
 ### <a name="data-tab"></a>Az adatlap
 
@@ -229,11 +221,11 @@ A projekt részleteinek megtekintése.  Ezen a lapon a következőket teheti:
 
 ### <a name="access-for-labelers"></a>Címkékhez való hozzáférés
 
-A munkaterülethez hozzáférő bárki megcímkézheti az adatait a projektben.  Testreszabhatja a címkéző engedélyeit is, hogy az hozzáférhessen a címkézéshez, de a munkaterület vagy a címkézési projekt más részeihez sem.  További részletekért lásd: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md), és az [Egyéni Labeler-szerepkör](how-to-assign-roles.md#labeler)létrehozásának ismertetése.
+A munkaterülethez hozzáférő bárki megcímkézheti az adatait a projektben.  Emellett testre is szabhatja a címkéző engedélyeit, hogy hozzáférhessenek a címkézéshez, de a munkaterület vagy a címkézési projekt más részei ne legyenek elérhetők.  További részletekért lásd: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md), és az [Egyéni Labeler-szerepkör](how-to-assign-roles.md#labeler)létrehozásának ismertetése.
 
 ## <a name="add-new-label-class-to-a-project"></a>Új címke osztály hozzáadása projekthez
 
-A címkézési folyamat során azt tapasztalhatja, hogy további címkékre van szükség a lemezképek besorolásához.  Előfordulhat például, hogy egy "ismeretlen" vagy "más" címkét szeretne felvenni a zavaró képek jelzésére.
+Az adatcímkéző folyamat során előfordulhat, hogy a képek besorolásához további címkék szükségesek.  Előfordulhat például, hogy egy "ismeretlen" vagy "más" címkét szeretne felvenni a zavaró képek jelzésére.
 
 A következő lépések segítségével adhat hozzá egy vagy több címkét egy projekthez:
 

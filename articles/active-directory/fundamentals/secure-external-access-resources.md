@@ -1,5 +1,5 @@
 ---
-title: A Azure Active Directory erőforrásaihoz való külső hozzáférés biztonságossá tétele
+title: A külső együttműködés biztonságossá tétele Azure Active Directory
 description: Útmutató az építészek és a rendszergazdák számára a belső erőforrásokhoz való külső hozzáférés biztonságossá tételéhez
 services: active-directory
 author: BarbaraSelden
@@ -13,14 +13,14 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39300c887245a99dce2913661f6492c85a1e6722
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7f09d2050617cbda539eee9fcda1ecfb204a015a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743962"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059279"
 ---
-# <a name="securing-external-access-to-resources"></a>Az erőforrásokhoz való külső hozzáférés biztonságossá tétele
+# <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>A külső együttműködés biztonságossá tétele Azure Active Directory és Microsoft 365
 
 A külső partnerekkel való biztonságos együttműködés biztosítja, hogy a megfelelő külső partnerek megfelelő hozzáférést biztosítanak a belső erőforrásokhoz a megfelelő időtartamra. A holisztikus irányítási megközelítés segítségével csökkentheti a biztonsági kockázatokat, teljesítheti a megfelelőségi célokat, és meggyőződhet arról, hogy ki férhet hozzá.
 
@@ -43,7 +43,7 @@ A dokumentumkészlet úgy lett kialakítva, hogy lehetővé tegye, hogy az ad ho
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 
 
-1. [A kívánt biztonsági helyzet meghatározása a külső hozzáféréshez](1-secure-access-posture.md)
+1. [A külső hozzáférés biztonsági helyzetének meghatározása](1-secure-access-posture.md)
 
 2. [Aktuális állapot felderítése](2-secure-access-current-state.md)
 

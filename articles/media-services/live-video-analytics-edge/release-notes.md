@@ -3,12 +3,12 @@ title: Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben – Azure
 description: Ez a témakör az élő videó-elemzések IoT Edge kiadásokra, javításokra, hibajavításokra és ismert problémákra vonatkozó kibocsátási megjegyzéseit tartalmazza.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400845"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059976"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben
 
@@ -33,7 +33,7 @@ Ez a kiadás a IoT Edge Live Video Analytics nyilvános előzetes verziójának 
 * Több mint egy HTTP-bővítmény processzorának és a gRPC-bővítmény processzorának a támogatása gráf-topológián.
 * A lemezterület-kezelés támogatása a fogadó csomópontok számára.
 * `MediaGraphGrpcExtension` a csomópont mostantól támogatja a [extensionConfiguration](grpc-extension-protocol.md) tulajdonságot több AI-modell használatára egyetlen gRPC-kiszolgálón belül.
-* Élő videó analitikai modul metrikáinak támogatása a [Prometheus formátumban](https://prometheus.io/docs/practices/naming/) 
+* Az élő videó Analytics modul metrikáinak begyűjtésének támogatása a [Prometheus formátumban](https://prometheus.io/docs/practices/naming/). További információ a [metrikák gyűjtéséről és a Azure monitor való megtekintéséről.](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
 * A frame rate szűrő processzora **elavult**.  
     * A frame rate Management mostantól elérhető a Graph bővítmény processzor-csomópontjain belül.
 
@@ -130,6 +130,6 @@ Ez a kiadás a IoT Edge Live Video Analytics első nyilvános előzetes kiadása
     *   GraphInstanceDelete
     *   GraphInstanceList
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Áttekintés](overview.md)

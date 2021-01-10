@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: ecd7c3b034a65fa239248bf0e286181475376da2
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0b3c2f74edff661326e97da7b06860914468c43b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963475"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059347"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
@@ -121,9 +121,9 @@ A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat
 | --- | --- | --- | --- | --- | --- |
 | Frissítési jogkivonat maximális inaktív ideje |MaxInactiveTime |Tokenek frissítése |90 nap |10 perc |90 nap |
 | Single-Factor frissítési token Max Age |MaxAgeSingleFactor |Tokenek frissítése (bármely felhasználó esetében) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
-| Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) | 180 nap |10 perc |180 nap<sup>1</sup> |
+| Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) | Visszavonásig |10 perc |180 nap<sup>1</sup> |
 | Single-Factor munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
-| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) | 180 nap |10 perc | 180 nap<sup>1</sup> |
+| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) | Visszavonásig |10 perc | 180 nap<sup>1</sup> |
 
 * <sup>1</sup>365 nappal az attribútumok maximális explicit hosszúsága adható meg.
 

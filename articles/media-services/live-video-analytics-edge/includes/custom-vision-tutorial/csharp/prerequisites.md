@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/05/2020
 ms.author: russellcooks
-ms.openlocfilehash: f4107e2dfa0c4c91f101f6a9031482fb6f84bf68
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: af029118fed725000941b5ff0a51aeb2bad59e7c
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358253"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060500"
 ---
 Az oktatóanyag előfeltételei a következők:
 
@@ -22,3 +22,6 @@ Az oktatóanyag előfeltételei a következők:
     
     * [Azure-erőforrások beállítása](../../../detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [A fejlesztési környezet beállítása](../../../detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
+
+> [!TIP]
+> Ha a létrehozott Azure-erőforrásokkal kapcsolatos problémákba ütközik, tekintse meg a **[hibaelhárítási útmutatót](../../../troubleshoot-how-to.md#common-error-resolutions)** a gyakran előforduló problémák megoldásához.

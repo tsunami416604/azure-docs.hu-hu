@@ -9,16 +9,16 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: f14e120fb7373cc80b9d6e23f155dd964b37a551
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: eb8c69a6bf009543e104a472469c243638726f60
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347965"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060367"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
-Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](./how-to-create-labeling-projects.md#create-a-labeling-project) a Azure Machine Learningban, a címkézés eszközzel gyorsan elő lehet készíteni egy Machine learning projekt adatait. Ez a cikk a következőket ismerteti:
+Miután a projekt rendszergazdája [létrehoz egy adatcímkéző projektet](./how-to-create-labeling-projects.md#create-a-data-labeling-project) a Azure Machine Learningban, a címkéző eszközzel gyorsan elő lehet készíteni egy Machine learning projekt adatait. Ez a cikk a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A címkézési projektek elérése
@@ -156,7 +156,7 @@ Ha címkézett adatok oldalát küldi el, az Azure új címkézetlen adatok hozz
 
 Ha végzett a címkézéssel, válassza ki a nevét a címkézési portál jobb felső sarkában, majd válassza a **kijelentkezés lehetőséget.** Ha nem jelentkezik ki, az Azure-ban az idő kimarad, és az adatait egy másik Labeler rendeli hozzá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](./tutorial-train-models-with-aml.md)
 

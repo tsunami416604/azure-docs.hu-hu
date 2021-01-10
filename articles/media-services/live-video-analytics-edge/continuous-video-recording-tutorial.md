@@ -3,12 +3,12 @@ title: Folyamatos videofelvétel a felhőbe és a lejátszás a Felhőbeli oktat
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást Azure IoT Edgeon, hogy folyamatosan rögzítsen videókat a felhőbe, és a videó bármely részét továbbítsa a Azure Media Services használatával.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c38ab1f32d1ef4e54cd8568ff17d325fabdefc31
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8fa2b65416499e58235fa312ffdcd2d71c3cfb39
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498370"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060146"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: folyamatos videofelvétel a felhőbe és a felhőből való lejátszás
 
@@ -51,7 +51,10 @@ Ezen lépések végén az Azure-előfizetésében üzembe helyezett Azure-erőfo
 * Azure Media Services fiók
 * Linux rendszerű virtuális gép az Azure-ban, telepített [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge.md)
 
-## <a name="concepts"></a>Alapelvek
+> [!TIP]
+> Ha a létrehozott Azure-erőforrásokkal kapcsolatos problémákba ütközik, tekintse meg a **[hibaelhárítási útmutatót](troubleshoot-how-to.md#common-error-resolutions)** a gyakran előforduló problémák megoldásához.
+
+## <a name="concepts"></a>Fogalmak
 
 Ahogy az a [Media Graph koncepciójában](media-graph-concept.md) is látható, a Media Graph segítségével meghatározhatja a következőket:
 
@@ -64,7 +67,9 @@ Ahogy az a [Media Graph koncepciójában](media-graph-concept.md) is látható, 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="Médiagrafikon":::
 
-Ebben az oktatóanyagban egy, a [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) használatával létrehozott Edge-modult fog használni az RTSP-kamera szimulálásához. A Media Graph-ban egy [RTSP-forrás](media-graph-concept.md#rtsp-source) csomóponttal érheti el az élő hírcsatornát, és elküldheti a videót az [eszköz fogadó csomópontjára](media-graph-concept.md#asset-sink), amely rögzíti a videót az adott eszközre.
+Ebben az oktatóanyagban egy, a [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) használatával létrehozott Edge-modult fog használni az RTSP-kamera szimulálásához. A Media Graph-ban egy [RTSP-forrás](media-graph-concept.md#rtsp-source) csomóponttal érheti el az élő hírcsatornát, és elküldheti a videót az [eszköz fogadó csomópontjára](media-graph-concept.md#asset-sink), amely rögzíti a videót az adott eszközre. Az oktatóanyagban használt videó [egy autópálya-metszeti minta videó](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv).
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
 
@@ -169,14 +174,14 @@ Ha a Live Video Analytics szolgáltatást használja IoT Edge modulban az élő 
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Részletes üzenet megjelenítése":::
-1. <!--In Visual Studio Code, go-->Lépjen a src/Cloud-to-Device-Console-app/operations.jselemre.
+1. Lépjen a src/Cloud-to-Device-Console-app/operations.jselemre.
 1. A **GraphTopologySet** csomópont alatt szerkessze a következőket:
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
 1. Ezután a **GraphInstanceSet** és az **GraphTopologyDelete** csomópont alatt ellenőrizze, hogy a **topologyName** értéke megegyezik-e az előző Graph-topológia **Name (név** ) tulajdonságának értékével:
 
     `"topologyName" : "CVRToAMSAsset"`  
-1. Nyissa meg a [topológiát](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) egy böngészőben, és tekintse meg a következőt: assetNamePattern. Annak érdekében, hogy rendelkezzen egy egyedi névvel rendelkező eszközzel, érdemes lehet módosítani a Graph-példány nevét a fájl operations.jsjában (a minta-Graph-1 alapértelmezett értékről).
+1. Nyissa meg a [topológiát](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json) egy böngészőben, és tekintse meg a következőt: assetNamePattern. Annak érdekében, hogy rendelkezzen egy egyedi névvel rendelkező eszközzel, érdemes lehet módosítani a Graph-példány nevét a fájl operations.jsjában (a minta-Graph-1 alapértelmezett értékről).
 
     `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
 1. Indítsa el a hibakeresési munkamenetet az F5 billentyű kiválasztásával. Néhány üzenet jelenik meg a **terminál** ablakban.
@@ -187,7 +192,7 @@ Ha a Live Video Analytics szolgáltatást használja IoT Edge modulban az élő 
     Executing operation GraphTopologyList
     -----------------------  Request: GraphTopologyList  --------------------------------------------------
     {
-      "@apiVersion": "1.0"
+      "@apiVersion": "2.0"
     }
     ---------------  Response: GraphTopologyList - Status: 200  ---------------
     {
@@ -204,7 +209,7 @@ Ha a Live Video Analytics szolgáltatást használja IoT Edge modulban az élő 
      
      ```
      {
-       "@apiVersion": "1.0",
+       "@apiVersion": "2.0",
        "name": "Sample-Graph-1",
        "properties": {
          "topologyName": "CVRToAMSAsset",
@@ -277,7 +282,7 @@ Ha a Graph-példány aktiválva van, az RTSP-forrás csomópont megpróbál csat
 
 ### <a name="recordingstarted-event"></a>RecordingStarted esemény
 
-Amikor az eszköz elfogadó csomópontja elkezdi a videó rögzítését, a Microsoft. Media. Graph. Operational. RecordingStarted típusú eseményt bocsát ki:
+Amikor az eszköz elfogadó csomópontja elkezdi a videó rögzítését, a **Microsoft. Media. Graph. Operational. RecordingStarted** típusú eseményt bocsát ki:
 
 ```
 [IoTHubMonitor] [9:42:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -302,7 +307,7 @@ A Body (törzs) szakasz a kimeneti helyről tartalmaz információkat. Ebben az 
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable esemény
 
-Ahogy a neve is sugallja, a rendszer a RecordingStarted eseményt küldi el a rögzítés megkezdése után, de előfordulhat, hogy a videó nem lett feltöltve az eszközre. Amikor az eszköz fogadó csomópontja feltöltötte a videós adatmennyiséget az eszközre, a Microsoft. Media. Graph. Operational. RecordingAvailable típusú eseményt bocsát ki:
+Ahogy a neve is sugallja, a rendszer a RecordingStarted eseményt küldi el a rögzítés megkezdése után, de előfordulhat, hogy a videó nem lett feltöltve az eszközre. Amikor az eszköz fogadó csomópontja feltöltötte a videós adatmennyiséget az eszközre, a **Microsoft. Media. Graph. Operational. RecordingAvailable** típusú eseményt bocsát ki:
 
 ```
 [IoTHubMonitor] [[9:43:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -329,7 +334,7 @@ A Body (törzs) szakasz a kimeneti helyről tartalmaz információkat. Ebben az 
 
 ### <a name="recordingstopped-event"></a>RecordingStopped esemény
 
-Ha inaktiválja a Graph-példányt, az eszköz fogadó csomópontja leállítja a videó rögzítését az eszközre. Ezt a Microsoft. Media. Graph. Operational. RecordingStopped típusú eseményt bocsátja ki:
+Ha inaktiválja a Graph-példányt, az eszköz fogadó csomópontja leállítja a videó rögzítését az eszközre. Ezt a **Microsoft. Media. Graph. Operational. RecordingStopped** típusú eseményt bocsátja ki:
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [lva-sample-device/lvaEdge]:

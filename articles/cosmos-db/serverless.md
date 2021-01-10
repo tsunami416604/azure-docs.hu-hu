@@ -6,18 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/08/2021
-ms.openlocfilehash: d39bc35d1edcbcfef4c7774259112ec5144efa15
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0c75f9938b3bc4fa8a2e650f77a3708e91180fea
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044339"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059220"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Kiszolgáló nélküli Azure Cosmos DB (előzetes verzió)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
-
-> [!IMPORTANT]
-> Azure Cosmos DB kiszolgáló nélküli szolgáltatás jelenleg előzetes verzióban érhető el. Ez az előzetes verzió szolgáltatói szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Cosmos DB kiszolgáló nélküli használata lehetővé teszi az Azure Cosmos-fiók felhasználáson alapuló használatát, ahol csak az adatbázis-műveletek által felhasznált kérelmekért és az adatok által felhasznált tárterületért kell fizetnie. A kiszolgáló nélküli tárolók másodpercenként több ezer kérést tudnak kiszolgálni, és nincs szükség a kapacitás megtervezésére.
 

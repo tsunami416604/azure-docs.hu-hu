@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8ccf2665f19b66959ce259088d0b322aec7b59f4
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028709"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060401"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -21,7 +21,7 @@ A telepítés lépéseinek elvégzése után egy szimulált élő videó streame
 
 Az alábbi videót részletesen megtekintheti a IoT Edge élő videó-elemzéssel való ismerkedéshez:
 
-<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,9 +55,13 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Ha a parancsfájl sikeresen befejeződik, az előfizetésben szereplő összes szükséges erőforrást látnia kell. A szkript kimenetében az erőforrások táblázata felsorolja az IoT hub nevét. Keresse meg az erőforrás típusát `Microsoft.Devices/IotHubs` , és jegyezze fel a nevet. Ezt a nevet a következő lépésben kell megadnia. 
+A szkript sikeres befejeződése után az előfizetésben szereplő összes szükséges erőforrást látnia kell. A szkript kimenetében az erőforrások táblázata felsorolja az IoT hub nevét. Keresse meg az erőforrás típusát **`Microsoft.Devices/IotHubs`** , és jegyezze fel a nevet. Ezt a nevet a következő lépésben kell megadnia.  
 
-A szkript a *~/clouddrive/LVA-Sample/* könyvtárban is létrehoz néhány konfigurációs fájlt. Ezekre a fájlokra később szükség lesz a rövid útmutatóban.
+> [!NOTE]
+> A szkript a **_~/clouddrive/LVA-Sample/_* _ könyvtárban is létrehoz néhány konfigurációs fájlt. Ezekre a fájlokra később szükség lesz a rövid útmutatóban.
+
+> [!TIP]
+> Ha a létrehozott Azure-erőforrásokkal kapcsolatos problémákba ütközik, tekintse meg az _ *[hibaelhárítási útmutatót](troubleshoot-how-to.md#common-error-resolutions)** a gyakran előforduló problémák megoldásához.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Modulok üzembe helyezése a peremhálózati eszközön
 
@@ -417,8 +421,8 @@ Hívja meg a Direct metódust a `GraphInstanceSet` következő hasznos adatok ha
 Figyelje meg, hogy ez a hasznos adat:
 
 * Meghatározza a topológia nevét ( `MotionDetection` ), amelyhez a példányt létre kell hozni.
-* A (z) paraméter értékét tartalmazza `rtspUrl` , amely nem rendelkezett alapértelmezett értékkel a gráf-topológia hasznos adataiban.
-
+* A (z) paraméter értékét tartalmazza `rtspUrl` , amely nem rendelkezett alapértelmezett értékkel a gráf-topológia hasznos adataiban. Ez az érték az alábbi minta videóra mutató hivatkozás:
+    > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 Néhány másodpercen belül a következő válasz jelenik meg a **kimeneti** ablakban:
 
 ```

@@ -1,6 +1,6 @@
 ---
 title: CSR létrehozása és egyesítése Azure Key Vault
-description: CSR létrehozása és egyesítése Azure Key Vault
+description: Ismerje meg, hogyan hozhat létre és egyesítheti a CSR-t a Azure Key Vaultban.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,131 +10,143 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 42f649f9dd206b34f0fac8513ba742febed2dbcb
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: bbc232ed0bc9e9715f481fef8b7b3a1f8eeebe78
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724629"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059653"
 ---
-# <a name="creating-and-merging-csr-in-key-vault"></a>CSR létrehozása és egyesítése Key Vault
+# <a name="create-and-merge-a-csr-in-key-vault"></a>CSR létrehozása és egyesítése Key Vault
 
-Azure Key Vault támogatja a kulcstartóban tetszőleges hitelesítésszolgáltató által kiadott digitális tanúsítvány tárolását. Támogatja a tanúsítvány-aláírási kérelem nyilvános kulcspár használatával történő létrehozását, amelyet bármelyik kiválasztott hitelesítésszolgáltató aláírhat. Ez lehet belső vállalati HITELESÍTÉSSZOLGÁLTATÓ vagy külső nyilvános HITELESÍTÉSSZOLGÁLTATÓ. A tanúsítvány-aláírási kérelem (a CSR vagy a minősítési kérelem) egy olyan üzenet, amelyet a felhasználó a hitelesítésszolgáltató (CA) számára küld a digitális tanúsítvány kiállításának kérelmezése érdekében.
+Azure Key Vault támogatja a bármely hitelesítésszolgáltató (CA) által kiadott digitális tanúsítványok tárolását. Támogatja a tanúsítvány-aláírási kérelem (CSR) létrehozását privát/nyilvános kulcspár esetén. A CSR-t bármely HITELESÍTÉSSZOLGÁLTATÓ (belső vállalati HITELESÍTÉSSZOLGÁLTATÓ vagy külső nyilvános HITELESÍTÉSSZOLGÁLTATÓ) aláírhatja. A CSR egy olyan üzenet, amelyet a HITELESÍTÉSSZOLGÁLTATÓnak küld a digitális tanúsítvány igénylése érdekében.
 
 A tanúsítványokkal kapcsolatos további általános információkért lásd: [Azure Key Vault tanúsítványok](./about-certificates.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>Tanúsítvány hozzáadása a partneri HITELESÍTÉSSZOLGÁLTATÓ által kiadott Key Vault
-Key Vault partnerek a következő két hitelesítésszolgáltatóval egyszerűsítik a tanúsítványok létrehozását. 
+## <a name="add-certificates-in-key-vault-issued-by-partnered-cas"></a>Tanúsítványok hozzáadása a partneri hitelesítésszolgáltatók által kiadott Key Vault
+
+A tanúsítványok létrehozásának egyszerűbbé tétele érdekében Key Vault partnereket a következő hitelesítésszolgáltatók használatával.
 
 |Szolgáltató|Tanúsítvány típusa|Konfiguráció beállítása  
 |--------------|----------------------|------------------|  
 |DigiCert|A Key Vault OV vagy EV SSL-tanúsítványokat kínál a DigiCert| [Integrációs útmutató](./how-to-integrate-certificate-authority.md)
 |GlobalSign|A Key Vault OV vagy EV SSL-tanúsítványokat kínál a GlobalSign| [Integrációs útmutató](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
-## <a name="adding-certificate-in-key-vault-issued-by-non-partnered-ca"></a>Tanúsítvány hozzáadása a nem társ HITELESÍTÉSSZOLGÁLTATÓ által kiadott Key Vaultban
+## <a name="add-certificates-in-key-vault-issued-by-non-partnered-cas"></a>A nem partneri hitelesítésszolgáltatók által kiadott Key Vault tanúsítványok hozzáadása
 
-A következő lépések segítséget nyújtanak olyan hitelesítésszolgáltatók létrehozásában, amelyek nem kapcsolódnak Key Vaulthoz (például a GoDaddy nem megbízható Key Vault-HITELESÍTÉSSZOLGÁLTATÓ). 
-
-
+A következő lépésekkel adhat hozzá olyan tanúsítványokat a hitelesítésszolgáltatókról, amelyek nem a Key Vaulthoz vannak társítva. (Például a GoDaddy nem megbízható Key Vault CA.)
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1.  Ha az Ön által választott HITELESÍTÉSSZOLGÁLTATÓhoz szeretne CSR-t előállítani, navigáljon ahhoz a kulcstartóhoz, amelyhez hozzá szeretné adni a tanúsítványt.
-2.  A Key Vault tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
-3.  Válassza a **létrehozó/importálás** fület.
-4.  A **tanúsítvány létrehozása** képernyőn válassza ki a következő értékeket:
-    - **Tanúsítvány létrehozásának módszere:** Létrehoz.
-    - **Tanúsítvány neve:** ContosoManualCSRCertificate.
-    - **A hitelesítésszolgáltató típusa (CA):** Nem integrált HITELESÍTÉSSZOLGÁLTATÓ által kiállított tanúsítvány
-    - **Tárgy:**`"CN=www.contosoHRApp.com"`
-    - Válassza ki a többi értéket a kívánt módon. Kattintson a **Létrehozás** lehetőségre.
+1. Nyissa meg azt a kulcstartót, amelyhez hozzá szeretné adni a tanúsítványt.
+1. A Tulajdonságok lapon válassza a **tanúsítványok** lehetőséget.
+1. Válassza a **létrehozó/importálás** lapot.
+1. A **tanúsítvány létrehozása** képernyőn válassza ki a következő értékeket:
+    - **Tanúsítvány létrehozásának metódusa**: létrehozás.
+    - **Tanúsítvány neve**: ContosoManualCSRCertificate.
+    - **Hitelesítésszolgáltató (CA)**: nem integrált hitelesítésszolgáltató által kiállított tanúsítvány.
+    - **Tárgy**: `"CN=www.contosoHRApp.com"` .
+     > [!NOTE]
+     > Ha relatív megkülönböztető nevet (RDN) használ, és az értékben vessző (,) szerepel, a speciális karaktert idézőjelek közé rendezheti. 
+     >
+     > Példa a **tárgyra**: `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com`
+     >
+     > Ebben a példában a RDN `OU` olyan értéket tartalmaz, amelynek a neve a vessző. Az eredményül kapott kimenet a `OU` **docs, contoso**.
+1. Válassza ki a többi értéket a kívánt módon, majd válassza a **Létrehozás** lehetőséget a tanúsítvány hozzáadásához a **tanúsítványok** listához.
 
-    ![Tanúsítvány tulajdonságai](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+    ![Képernyőfelvétel a tanúsítvány tulajdonságairól](../media/certificates/create-csr-merge-csr/create-certificate.png)  
 
-
-6.  Látni fogja, hogy a tanúsítvány már hozzá lett adva a tanúsítványok listájában. Válassza ki az imént létrehozott új tanúsítványt. A tanúsítvány aktuális állapota "Letiltva" lesz, mivel még nem állította ki a HITELESÍTÉSSZOLGÁLTATÓ.
-7. Kattintson a **tanúsítvány művelete** fülre, és válassza a **CSR letöltése** lehetőséget.
+1. A **tanúsítványok** listán válassza ki az új tanúsítványt. A tanúsítvány jelenlegi állapota **le van tiltva** , mert még nem állította ki a hitelesítésszolgáltató.
+1. A **tanúsítvány művelete** lapon válassza a **CSR letöltése** lehetőséget.
 
    ![Képernyőfelvétel: a CSR letöltése gomb.](../media/certificates/create-csr-merge-csr/download-csr.png)
- 
-8.  Írja be a. CSR fájlt a HITELESÍTÉSSZOLGÁLTATÓhoz az aláírásra vonatkozó kéréshez.
-9.  Miután a HITELESÍTÉSSZOLGÁLTATÓ aláírja a kérést, hozza vissza a tanúsítványfájl-t az **aláírt kérelem egyesítéséhez** ugyanabban a tanúsítvány-művelet képernyőn.
+
+1. A HITELESÍTÉSSZOLGÁLTATÓ aláírja a CSR-t (. CSR).
+1. A kérelem aláírása után válassza a **tanúsítvány művelet** lapján az **aláírt tanúsítvány egyesítése** lehetőséget, hogy hozzáadja az aláírt tanúsítványt Key Vaulthoz.
 
 A tanúsítványkérelem sikeresen egyesítve lett.
 
-
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+1. Hozzon létre egy tanúsítvány-házirendet. Mivel az ebben a forgatókönyvben kiválasztott HITELESÍTÉSSZOLGÁLTATÓ nem partner, a **IssuerName** **ismeretlenre** van állítva, és a Key Vault nem regisztrálja vagy újítja meg a tanúsítványt.
 
-
-1. Először **hozza létre a tanúsítvány-házirendet**. Key Vault nem fogja regisztrálni vagy megújítani a tanúsítványt a kiállítótól a felhasználó nevében, mivel az ebben a forgatókönyvben kiválasztott HITELESÍTÉSSZOLGÁLTATÓ nem támogatott, és így a IssuerName ismeretlenre van állítva.
-
-   ```azurepowershell
+   ```azure-powershell
    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
    ```
-    
-   > [!NOTE]
-   > Ha olyan relatív megkülönböztető nevet (RDN) használ, amelynek az értéke vessző (,), használjon aposztrófokat, és a speciális karaktert idézőjelek közé rendezi. Példa: `$policy = New-AzKeyVaultCertificatePolicy -SubjectName 'OU="Docs,Contoso",DC=Contoso,CN=www.contosoHRApp.com' -ValidityInMonths 1  -IssuerName Unknown`. Ebben a példában az érték a következőként van `OU` beolvasva: **docs, contoso**. Ez a formátum minden olyan érték esetében működik, amely egy vesszőt tartalmaz.
+     > [!NOTE]
+     > Ha olyan relatív megkülönböztető nevet (RDN) használ, amely az értékben vessző (,) szerepel, a teljes értékhez vagy a beállított értékhez használjon aposztrófot, és a speciális karaktert tartalmazó értéket adja meg idézőjelek között. 
+     >
+     >Példa a **SubjectName** bejegyzésre: `$policy = New-AzKeyVaultCertificatePolicy -SubjectName 'OU="Docs,Contoso",DC=Contoso,CN=www.contosoHRApp.com' -ValidityInMonths 1  -IssuerName Unknown` . Ebben a példában az érték a következőként van `OU` beolvasva: **docs, contoso**. Ez a formátum minden olyan érték esetében működik, amely egy vesszőt tartalmaz.
+     > 
+     > Ebben a példában a RDN `OU` olyan értéket tartalmaz, amelynek a neve a vessző. Az eredményül kapott kimenet a `OU` **docs, contoso**.
 
-2. Tanúsítvány- **aláírási kérelem** létrehozása
+1. Hozza létre a CSR-t.
 
-   ```azurepowershell
+   ```azure-powershell
    $csr = Add-AzKeyVaultCertificate -VaultName ContosoKV -Name ContosoManualCSRCertificate -CertificatePolicy $policy
    $csr.CertificateSigningRequest
    ```
 
-3. A **hitelesítésszolgáltató által aláírt** CSR-kérelem beszerzése: a `$csr.CertificateSigningRequest` base4-kódolt tanúsítvány-aláírási kérelem a tanúsítványhoz. Ezt a blobot és a kiírást a kiállító tanúsítványkérelem webhelyére is elvégezheti. Ez a lépés a CA-tól a CA-ig változik, a legjobb módszer a HITELESÍTÉSSZOLGÁLTATÓ útmutatásának megkeresése a lépés végrehajtásához. Olyan eszközöket is használhat, mint például a certreq vagy az OpenSSL, hogy beolvassa a tanúsítványkérelem aláírását, és befejezi a tanúsítvány generálásának folyamatát.
+1. A HITELESÍTÉSSZOLGÁLTATÓ aláírja a CSR-t. A a `$csr.CertificateSigningRequest` tanúsítvány alap kódolású CSR-je. Ezt a blobot a kiállító tanúsítványkérelem webhelyére lehet kibocsátani. Ez a lépés a CA-tól a CA-ig változik. Keresse meg a HITELESÍTÉSSZOLGÁLTATÓ útmutatását a lépés végrehajtásához. Olyan eszközöket is használhat, mint például a certreq vagy az OpenSSL, hogy bejelentkezzen a CSR-be, és fejezze be a tanúsítvány generálásának folyamatát.
 
+1. Egyesítse az aláírt kérelmet Key Vaultban. A tanúsítványkérelem aláírása után egyesítheti azt a Azure Key Vault-ben létrehozott kezdeti titkos/nyilvános kulcspár használatával.
 
-4. **Az aláírt kérelem egyesítése** Key Vault a kiállító által a tanúsítványkérelem aláírása után, visszaállíthatja az aláírt tanúsítványt, és egyesítheti azt a Azure Key Vault-ben létrehozott kezdeti magánhálózati kulcspár használatával.
-
-    ```azurepowershell-interactive
+    ```azure-powershell-interactive
     Import-AzKeyVaultCertificate -VaultName ContosoKV -Name ContosoManualCSRCertificate -FilePath C:\test\OutputCertificateFile.cer
     ```
 
-    A tanúsítványkérelem sikeresen egyesítve lett.
+A tanúsítványkérelem sikeresen egyesítve lett.
+
 ---
 
-> [!NOTE]
-> Ha a RDN-értékek vesszővel vannak elválasztva, akkor a **Tárgy** mezőben a 4. lépésben látható idézőjelek értékének megadásával is hozzáadhatja őket.
-> Példa a "tárgy" kifejezésre: ebben `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` a példában a RDN `OU` olyan értéket tartalmaz, amely a névben vessző szerepel. Az eredményül kapott kimenet a `OU` **docs, contoso**.
+## <a name="add-more-information-to-the-csr"></a>További információk hozzáadása a CSR-hez
 
-## <a name="adding-more-information-to-csr"></a>További információk hozzáadása a CSR-hez
-
-Ha további információt szeretne felvenni a CSR létrehozásakor, például: 
-    - Ország:
-    - Város/helység:
-    - Állam/megye:
-    - Szervezet
-    - Szervezeti egység: Ha a subjectName-ben meghatározza, hogy a CSR létrehozásakor az összes információt hozzá kell adni.
+Ha további információt szeretne hozzáadni a CSR létrehozásához, adja meg azt a **SubjectName**-ben. Előfordulhat, hogy például a következő adatokat szeretné felvenni:
+- Ország
+- Város/helység
+- Állam/megye
+- Szervezet
+- Szervezeti egység
 
 Példa
-    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
-    ```
+
+   ```azure-powershell
+   SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+   ```
 
 > [!NOTE]
-> Ha DV-tanúsítványt kér a CSR összes adatával, a HITELESÍTÉSSZOLGÁLTATÓ elutasítja a kérelmet, mert előfordulhat, hogy nem tudja érvényesíteni a kérelemben szereplő összes információt. Ha egy OV-tanúsítványt kér, megfelelőbb lenne a CSR-ben lévő összes információ hozzáadása.
+> Ha további információkat tartalmazó tartomány-ellenőrzési (DV) tanúsítványt kér, akkor a HITELESÍTÉSSZOLGÁLTATÓ elutasítja a kérést, ha nem tudja érvényesíteni a kérelemben szereplő összes információt. A további információk megfelelőbbek lehetnek, ha a szervezet ellenőrzési (OV) tanúsítványát kéri.
 
+## <a name="faqs"></a>Gyakori kérdések
 
-## <a name="troubleshoot"></a>Hibaelhárítás
+- Hogyan a CSR figyelése vagy kezelése?
 
-- A tanúsítványkérelem-válasz figyeléséhez vagy kezeléséhez [itt talál](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios) további információt
+     Lásd: [a tanúsítványok létrehozásának figyelése és kezelése](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios).
 
-- **Hiba típusa: "a megadott X. 509 tanúsítvány tartalmában található végfelhasználói tanúsítvány nyilvános kulcsa nem egyezik a megadott titkos kulcs nyilvános részével. Ellenőrizze, hogy érvényes** -e a tanúsítvány. Ez a hiba akkor fordulhat elő, ha nem egyesíti a CSR-t ugyanazzal a CSR-kéréssel. CSR létrehozásakor mindig létrejön egy titkos kulcs, amelynek az aláírt kérelem egyesítésekor egyeznie kell.
-    
-- Ha a CSR egyesítve lett, a teljes láncot egyesíteni fogja?
-    Igen, a teljes lánc egyesítése történik, ha a felhasználó visszaállította a p7b-fájlt az egyesítéshez.
+- Mi a teendő, ha az **adott X. 509 tanúsítványban található végfelhasználói tanúsítvány nyilvános kulcsa nem egyezik a megadott titkos kulcs nyilvános részével. Ellenőrizze, hogy érvényes-e a tanúsítvány**?
 
-- Ha a kiállított tanúsítvány "letiltott" állapotban van a Azure Portalban, folytassa a **tanúsítvány művelet** megtekintésével, hogy áttekintse a tanúsítványhoz tartozó hibaüzenetet.
+     Ez a hiba akkor fordul elő, ha nem egyesíti az aláírt CSR-t ugyanazzal a CSR-kéréssel, amelyet kezdeményezett. Minden újonnan létrehozott új CSR rendelkezik egy titkos kulccsal, amelynek egyeznie kell az aláírt kérelem egyesítésével.
 
-További információkért tekintse meg a [tanúsítványok műveleteit a Key Vault REST API-referenciában](/rest/api/keyvault). Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy).
+- Ha a CSR egyesítve van, a rendszer egyesíti a teljes láncot?
 
-- **Hiba típusa: a megadott tulajdonos neve nem érvényes X500-név** Ez a hiba akkor fordulhat elő, ha a SubjectName értékeiben a "speciális karakterek" szerepel. Lásd: megjegyzések Azure Portal és PowerShell-utasításokban. 
+     Igen, a rendszer egyesíti a teljes láncot, ha a felhasználó egy. p7b fájlt állított vissza az egyesítéshez.
+
+- Mi a helyzet, ha a kiállított tanúsítvány letiltott állapotban van a Azure Portalban?
+
+     A tanúsítvány **művelete** lapon tekintse át a tanúsítványhoz tartozó hibaüzenetet.
+
+- Mit tegyek **, ha a hiba típusa "a megadott tulajdonos neve nem érvényes X500 név"**?
+
+     Ez a hiba akkor fordulhat elő, ha a **SubjectName** speciális karaktereket tartalmaz. Lásd: Megjegyzések a Azure Portal és a PowerShell utasításokban.
 
 ---
+
 ## <a name="next-steps"></a>További lépések
 
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)
+- [Azure Key Vault REST API-hivatkozás](/rest/api/keyvault)
+- [Tárolók – létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate)
+- [Tárolók – hozzáférési szabályzat frissítése](/rest/api/keyvault/vaults/updateaccesspolicy)

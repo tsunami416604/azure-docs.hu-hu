@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 9763835142e66bbbce51cd5c863dff87f261c270
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763944"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060160"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató a Azure App Service Windows rendszerű csomópont-alkalmazásokhoz
 
@@ -245,9 +245,8 @@ Az alkalmazás nem észlelt kivételeket dob – a `d:\\home\\LogFiles\\Applicat
 A hosszú alkalmazások indítási idejének gyakori oka a csomópont-modulok nagy száma \_ . Az alkalmazás az indításkor megpróbálja betölteni a fájlok nagy részét. Alapértelmezés szerint mivel a fájlok a Azure App Service hálózati megosztásán vannak tárolva, sok fájl betöltésével időt vehet igénybe.
 Néhány megoldás a folyamat gyorsabb elvégzésére:
 
-1. Győződjön meg arról, hogy rendelkezik egy egyszerű függőségi struktúrával, és nem duplikált függőségekkel, ha a npm3 használatával telepíti a modulokat.
-2. Próbálja meg a Node-modulok betöltését \_ , és ne töltse be az összes modult az alkalmazás indításakor. A lusta betöltési modulok esetében a kötelező ("modul") hívását kell végrehajtani, amikor ténylegesen szükség van a modulon belül a modul kódjának első végrehajtása előtt.
-3. Azure App Service a helyi gyorsítótár nevű szolgáltatást kínálja. A szolgáltatás a hálózati megosztásról másolja a tartalmat a virtuális gép helyi lemezére. Mivel a fájlok helyiek, a csomópont-modulok betöltési ideje \_ sokkal gyorsabb.
+1. Próbálja meg a Node-modulok betöltését \_ , és ne töltse be az összes modult az alkalmazás indításakor. A lusta betöltési modulok esetében a kötelező ("modul") hívását kell végrehajtani, amikor ténylegesen szükség van a modulon belül a modul kódjának első végrehajtása előtt.
+2. Azure App Service a helyi gyorsítótár nevű szolgáltatást kínálja. A szolgáltatás a hálózati megosztásról másolja a tartalmat a virtuális gép helyi lemezére. Mivel a fájlok helyiek, a csomópont-modulok betöltési ideje \_ sokkal gyorsabb.
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE http-állapota és alállapota
 

@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban az Intel által biztosított AI-modell-kis
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 82906111e64bd278d4371d1c3497fefc4510bbbd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9fb2f533d433c89d13ee0c29058f87aab3521a78
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401209"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060197"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Oktatóanyag: élő videó elemzése a OpenVINO™ Model Server – AI bővítménnyel az Intel használatával 
 
@@ -37,6 +37,8 @@ Ez az oktatóanyag egy Azure-beli virtuális gépet használ IoT Edge eszközké
 Az Azure-erőforrások beállításakor a rendszer az Azure-beli linuxos virtuális gépre másol egy rövid videót, amelyet IoT Edge eszközként használ. Ez a rövid útmutató egy élő stream szimulálására használja a videofájl használatával.
 
 Nyisson meg egy alkalmazást, például a [VLC Media Playert](https://www.videolan.org/vlc/). Válassza a CTRL + N billentyűkombinációt, majd illessze be a [videóra](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) mutató hivatkozást a lejátszás elindításához. Megtekintheti a járművek felvételeit egy parkolóban, a legtöbbjük parkolt, és egy mozgó.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 Ebben a rövid útmutatóban élő videó-elemzéseket fog használni a IoT Edge, valamint a OpenVINO™ Model Server – AI bővítmény az Inteltől az objektumok, például a gépjárművek észlelése vagy a besorolása érdekében. Az eredményül kapott események közzétételét IoT Edge hubhoz teszi közzé.
 
@@ -97,7 +99,7 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
 1. Szerkessze a *operations.js* fájlt:
     * Módosítsa a Graph-topológiára mutató hivatkozást:
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/2.0/topology.json"`
 
     * A (z) alatt `GraphInstanceSet` szerkessze a gráf topológiájának nevét, hogy az megfeleljen az előző hivatkozásban szereplő értéknek:
 
@@ -160,7 +162,7 @@ Ha megnyitja a [Graph-topológiát](https://raw.githubusercontent.com/Azure/live
 
          ```
          {
-           "@apiVersion": "1.0",
+           "@apiVersion": "2.0",
            "name": "Sample-Graph-1",
            "properties": {
              "topologyName": "InferencingWithOpenVINO",
@@ -203,7 +205,7 @@ A következő üzenetekben az élő videó elemzési modulja az alkalmazás tula
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished esemény
 
-Az adathordozó-diagramok példányainak létrehozásakor az RTSP-forrás csomópontja megpróbál csatlakozni az rtspsim-LIVE555 tárolón futó RTSP-kiszolgálóhoz. Ha a kapcsolat sikeres, a következő esemény lesz kinyomtatva. Az esemény típusa: `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
+Az adathordozó-diagramok példányainak létrehozásakor az RTSP-forrás csomópontja megpróbál csatlakozni az rtspsim-LIVE555 tárolón futó RTSP-kiszolgálóhoz. Ha a kapcsolat sikeres, a következő esemény lesz kinyomtatva. Az esemény típusa **Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished**.
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:
@@ -387,7 +389,7 @@ Most megismételheti a fenti lépéseket a minta program újbóli futtatásához
 
 Ha más rövid útmutatókat vagy oktatóanyagokat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

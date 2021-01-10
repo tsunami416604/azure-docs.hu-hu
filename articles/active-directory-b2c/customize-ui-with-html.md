@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585190"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058667"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
 
@@ -74,7 +74,7 @@ Ha saját HTML-és CSS-fájlokat használ a felhasználói felület testreszabá
 ## <a name="guidelines-for-using-custom-page-content"></a>Irányelvek egyéni lapok tartalmának használatához
 
 - Használjon abszolút URL-címet, ha olyan külső erőforrásokat is tartalmaz, mint például a média, a CSS és a JavaScript-fájlok a HTML-fájlban.
-- Ha a 1.2.0 vagy újabb [verzióját](page-layout.md) használja, a `data-preload="true"` HTML-címkékben lévő attribútumot hozzáadhatja a CSS és a JavaScript betöltési sorrendjének szabályozásához. A `data-preload=true` -ben az oldal a felhasználó előtt jön létre. Ez az attribútum segít megakadályozni, hogy az oldal "vibrál" legyen a CSS-fájl előzetes betöltésével anélkül, hogy a felhasználóhoz nem tartozó HTML-fájlt kellene megjeleníteni. A következő HTML-kódrészlet a címke használatát mutatja be `data-preload` .
+- Ha a 1.2.0 vagy újabb [verzióját](page-layout.md) használja, a `data-preload="true"` HTML-címkékben lévő attribútumot hozzáadhatja a CSS és a JavaScript betöltési sorrendjének szabályozásához. A `data-preload="true"` -ben az oldal a felhasználó előtt jön létre. Ez az attribútum segít megakadályozni, hogy az oldal "vibrál" legyen a CSS-fájl előzetes betöltésével anélkül, hogy a felhasználóhoz nem tartozó HTML-fájlt kellene megjeleníteni. A következő HTML-kódrészlet a címke használatát mutatja be `data-preload` .
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
@@ -220,7 +220,7 @@ Az alábbi lépések végrehajtásával konfigurálja a blob Storage-t az idegen
 1. Az **engedélyezett fejlécek** mezőbe írjon be egy csillagot (*).
 1. A közzétett **fejlécek** esetében írjon be egy csillagot (*).
 1. A **Max Age** értéknél adja meg a 200 értéket.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 #### <a name="31-test-cors"></a>3,1 teszt CORS
 
@@ -374,7 +374,7 @@ A minta használata:
 
 1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát `/ocean_blue` vagy `/slate_gray` .
 1. Töltse fel a sablon mappájában és a mappában található összes fájlt a `/assets` blob Storage-ba az előző szakaszokban leírtak szerint.
-1. Ezután nyissa meg a `\*.html` vagy a gyökérkönyvtárában található `/ocean_blue` `/slate_gray` összes fájlt, cserélje le a relatív URL-címek összes példányát a 2. lépésben feltöltött CSS-, kép-és betűkészlet-fájlok URL-címeire. Például:
+1. Ezután nyissa meg a `\*.html` vagy a gyökérkönyvtárában található `/ocean_blue` `/slate_gray` összes fájlt, cserélje le a relatív URL-címek összes példányát a 2. lépésben feltöltött CSS-, kép-és betűkészlet-fájlok URL-címeire. Példa:
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
@@ -387,7 +387,7 @@ A minta használata:
 1. Most módosítsa a szabályzatot, amely a korábban említett HTML-fájlra mutat.
 1. Ha a hiányzó betűkészleteket, képeket vagy CSS-ket látja, tekintse át a hivatkozásokat a kiterjesztések és a \* . HTML fájlok között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan engedélyezheti az [ügyféloldali JavaScript-kódokat](javascript-and-page-layout.md).
 

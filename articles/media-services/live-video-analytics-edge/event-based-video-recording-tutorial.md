@@ -3,12 +3,12 @@ title: Eseményvezérelt videó rögzítése a felhőben és lejátszás a Felh�
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást a Azure IoT Edgeon, hogy rögzítse a felhőbe, és hogyan játssza vissza a felhőből.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: cfb4648d991565470133d603194c07b797f89311
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401669"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060435"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: esemény-alapú videofelvétel a felhőbe és a felhőből való lejátszás
 
@@ -54,7 +54,10 @@ Ezen lépések végén az Azure-előfizetésében üzembe helyezett Azure-erőfo
 * Azure Media Services fiók
 * Linux rendszerű virtuális gép az Azure-ban, telepített [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge.md)
 
-## <a name="concepts"></a>Alapelvek
+> [!TIP]
+> Ha a létrehozott Azure-erőforrásokkal kapcsolatos problémákba ütközik, tekintse meg a **[hibaelhárítási útmutatót](troubleshoot-how-to.md#common-error-resolutions)** a gyakran előforduló problémák megoldásához.
+
+## <a name="concepts"></a>Fogalmak
 
 Az Event-alapú videofelvétel arra utal, hogy az esemény által aktivált videók rögzítése folyamatban van. Ez az esemény a következőből hozható létre:
 - Maga a videojel feldolgozása, például amikor egy mozgó objektumot észlel a videóban.
@@ -230,7 +233,7 @@ A objectCounter modul eseményeinek és az élő videó Analytics IoT Edge modul
      
         ```
         {
-          "@apiVersion": "1.0",
+          "@apiVersion": "2.0",
           "name": "Sample-Graph-1",
           "properties": {
             "topologyName": "EVRtoAssetsOnObjDetect",
@@ -277,7 +280,7 @@ A következő üzenetekben az alkalmazás tulajdonságait és a törzs tartalmá
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished esemény 
 
-Az adathordozó-diagramok példányainak létrehozásakor az RTSP-forrás csomópontja megpróbál csatlakozni az RTSP szimulátor-tárolón futó RTSP-kiszolgálóhoz. Ha a művelet sikeres, kinyomtatja ezt az eseményt. Az esemény típusa Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished.
+Az adathordozó-diagramok példányainak létrehozásakor az RTSP-forrás csomópontja megpróbál csatlakozni az RTSP szimulátor-tárolón futó RTSP-kiszolgálóhoz. Ha a művelet sikeres, kinyomtatja ezt az eseményt. Az esemény típusa **Microsoft. Media. MediaGraph. Diagnostics. MediaSessionEstablished**.
 
 ```
 [IoTHubMonitor] [5:53:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -325,7 +328,7 @@ Előfordulhat, hogy a videóban több ilyen esemény jelenik meg, ahogy más teh
 
 ### <a name="recordingstarted-event"></a>RecordingStarted esemény
 
-Szinte azonnal, miután az objektum számlálója elküldi az eseményt, a Microsoft. Media. Graph. Operational. RecordingStarted típusú eseményt fogja látni:
+Szinte azonnal, miután az objektum számlálója elküldi az eseményt, a **Microsoft. Media. Graph. Operational. RecordingStarted** típusú eseményt fogja látni:
 
 ```
 [IoTHubMonitor] [5:53:46 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -348,7 +351,7 @@ A applicationProperties tárgy szakasza a gráfban található, az üzenetet gen
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable esemény
 
-Amikor az eszköz befogadó csomópontja videót töltött fel az objektumra, a Microsoft. Media. Graph. Operational. RecordingAvailable típusú eseményt bocsát ki:
+Amikor az eszköz befogadó csomópontja videót töltött fel az objektumra, a **Microsoft. Media. Graph. Operational. RecordingAvailable** típusú eseményt bocsát ki:
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -371,7 +374,7 @@ Ez az esemény azt jelzi, hogy a játékosok vagy ügyfelek számára elegendő 
 
 ### <a name="recordingstopped-event"></a>RecordingStopped esemény
 
-Ha megvizsgálja az aktiválási beállításokat (maximumActivationTime) a [topológia](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)Signal Gate processzor-csomópontja számára, látni fogja, hogy a kapu úgy van beállítva, hogy a videó elküldése után 30 másodperc elteltével lezáruljon. Nagyjából 30 másodperccel a RecordingStarted esemény után a Microsoft. Media. Graph. Operational. RecordingStopped típusú eseményt kell látnia. Ez az esemény azt jelzi, hogy az eszköz fogadó csomópontja leállította a videó rögzítését az eszközre.
+Ha megvizsgálja az aktiválási beállításokat (maximumActivationTime) a [topológia](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)Signal Gate processzor-csomópontja számára, látni fogja, hogy a kapu úgy van beállítva, hogy a videó elküldése után 30 másodperc elteltével lezáruljon. Nagyjából 30 másodperccel a RecordingStarted esemény után a **Microsoft. Media. Graph. Operational. RecordingStopped** típusú eseményt kell látnia. Ez az esemény azt jelzi, hogy az eszköz fogadó csomópontja leállította a videó rögzítését az eszközre.
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -421,7 +424,7 @@ Megvizsgálhatja a gráf által létrehozott Media Services adategységet, ha be
 
 Ha szeretné kipróbálni a többi oktatóanyagot, tartsa be a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portal, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az erőforráscsoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az ONVIF-kompatibilis [termékek lapon](https://www.onvif.org/conformant-products/) megkeresheti az RTSP-támogatással rendelkező IP-kamerákat a G, S vagy T profiloknak megfelelő eszközök keresésével.
 * AMD64 vagy x64 Linux rendszerű eszköz használata (Azure Linux rendszerű virtuális gép használata). Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](../../iot-edge/how-to-install-iot-edge.md). Ezután kövesse az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre című](../../iot-edge/quickstart-linux.md) rövid útmutatót az eszköz Azure IoT hub való regisztrálásához.

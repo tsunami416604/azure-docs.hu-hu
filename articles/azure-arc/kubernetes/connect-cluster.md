@@ -1,5 +1,5 @@
 ---
-title: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
+title: Azure Arc-kompatibilis Kubernetes-fürt csatlakoztatása (előzetes verzió)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -9,14 +9,14 @@ ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure arc szolgáltatással
 keywords: Kubernetes, arc, Azure, K8s, tárolók
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7f402d86ac1287753bc2deab53b24bb796644992
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97583932"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060248"
 ---
-# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
+# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc-kompatibilis Kubernetes-fürt csatlakoztatása (előzetes verzió)
 
 Ez a dokumentum a Cloud Native Computing Foundation (CNCF) tanúsítvánnyal rendelkező Kubernetes-fürtök csatlakoztatásának folyamatát ismerteti, például: AK-motor az Azure-ban, AK-motor az Azure Stack hub, a GKE, a EKS és a VMware vSphere-fürt számára az Azure arc.
 
@@ -30,7 +30,7 @@ Győződjön meg arról, hogy az alábbi követelmények állnak készen:
 * Szüksége lesz egy kubeconfig-fájlra a fürt és a fürt rendszergazdai szerepkörének eléréséhez a fürtön az arc-kompatibilis Kubernetes-ügynökök telepítéséhez.
 * A (z) és a (z) paranccsal használt felhasználónak vagy szolgáltatásnak " `az login` `az connectedk8s connect` READ" és "Write" engedélyekkel kell rendelkeznie a "Microsoft. Kubernetes/connectedclusters" erőforrástípus számára. A "Kubernetes-fürt – Azure arc bevezetése" szerepkör rendelkezik ezekkel az engedélyekkel, és a felhasználó vagy az egyszerű szolgáltatás szerepkör-hozzárendeléseihez is használható.
 * A connectedk8s-bővítmény használatával a fürt bevezetéséhez a Helm 3 szükséges. [Telepítse a Helm 3 legújabb kiadását](https://helm.sh/docs/intro/install) , hogy megfeleljen ennek a követelménynek.
-* Az Azure CLI-hez készült Kubernetes CLI-bővítmények telepítéséhez az Azure CLI 2.3-s verziója szükséges. [Telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -t vagy frissítsen a legújabb verzióra, és győződjön meg arról, hogy az Azure CLI 2.3-as vagy újabb verziója van.
+* Az Azure CLI-hez készült Kubernetes CLI-bővítmények telepítéséhez szükség van az Azure CLI 2.15 + verzióra. [Telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -t vagy frissítsen a legújabb verzióra, és győződjön meg arról, hogy az Azure CLI 2.15 + verziója van telepítve.
 * Az arc-kompatibilis Kubernetes CLI-bővítményeinek telepítése:
   
   Telepítse a `connectedk8s` bővítményt, amely segít a Kubernetes-fürtök az Azure-hoz való összekapcsolásában:
@@ -90,7 +90,7 @@ az provider show -n Microsoft.Kubernetes -o table
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Egy erőforráscsoport használatával tárolhatja a fürt metaadatait.
 
@@ -269,7 +269,7 @@ Az Azure arc-kompatibilis Kubernetes néhány ügynököt (operátort) tartalmaz
   az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [GitOps használata csatlakoztatott fürtben](./use-gitops-connected-cluster.md)
 * [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: 31cf89cb66dfbc404d65f8fc09b96c03e1be2f8f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401325"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060231"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Élő videó-elemzések hibáinak megoldása IoT Edge
 
@@ -65,6 +65,8 @@ A Azure Portal használatával a Media Graph diagnosztizálását közvetlen mó
     * 406 – a IoT Edge eszköz offline állapotban van, vagy nem küld állapotjelentéseket.
     * 500 – hiba történt a IoT Edge futtatókörnyezetben.
 
+    > [!TIP]
+    > Ha Azure IoT Edge-modulok futtatásával kapcsolatos problémákat tapasztal a környezetben, a hibaelhárításhoz és a diagnosztikahez használja a **[szabványos diagnosztikai lépéseket Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** útmutatóként.
 ### <a name="post-deployment-direct-method-error-code"></a>Üzembe helyezés utáni hiba: közvetlen metódus hibakódja
 1. Ha állapotot kap `501 code` , győződjön meg arról, hogy a közvetlen metódus neve pontos. Ha a metódus neve és a kérelmek hasznos adatai pontosak, akkor az eredményeket a siker Code = 200 értékkel együtt kell megkapnia. 
 1. Ha a kérelem hasznos adatai pontatlanok, akkor egy olyan állapotot `400 code` és egy válasz-adattartalmat fog kapni, amely a közvetlen metódus hívásával segít a probléma diagnosztizálásában.
@@ -93,6 +95,8 @@ Az élő videó elemzése IoT Edge modulként van telepítve a IoT Edge eszköz�
 * [Az élő videó-elemzés vagy bármely más egyéni IoT Edge modul nem tud üzenetet küldeni a peremhálózati hubhoz 404 hibával](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error).
 * [A IoT Edge modul üzembe helyezése sikeresen megtörtént, majd eltűnik az eszközről](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
+    > [!TIP]
+    > Ha Azure IoT Edge-modulok futtatásával kapcsolatos problémákat tapasztal a környezetben, a hibaelhárításhoz és a diagnosztikahez használja a **[szabványos diagnosztikai lépéseket Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** útmutatóként.
 ### <a name="live-video-analytics-working-with-external-modules"></a>Külső modulok használata élő videó-elemzéssel
 
 A Media Graph bővítmény processzorait használó élő videó-elemzések kiterjeszthetik a Media Graphot, hogy más IoT Edge-moduloktól származó adatok küldésére és fogadására HTTP vagy gRPC protokollok használatával. Egy [adott példaként](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)ez a Media Graph képkockákat küldhet képként egy külső következtetési modulba, mint például a Yolo v3, és HTTP protokoll használatával fogadja a JSON-alapú elemzési eredményeket. Ilyen topológiában az események rendeltetése többnyire az IoT hub. Olyan helyzetekben, amikor nem látja a következtetési eseményeket a központban, ellenőrizze a következőket:
@@ -208,7 +212,7 @@ Ha a hibakeresési naplók létrehozásához IoT Edge modul Live Video Analytics
     > Ez a parancs a peremhálózati eszköz és a tároló közötti naplók mappáját köti össze. Ha a naplókat egy másik helyen szeretné összegyűjteni, használja a következő parancsot, és cserélje le **$LOG _LOCATION_ON_EDGE_DEVICE** a használni kívánt helyre: `/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
 
 1. Válassza a **Frissítés** lehetőséget.
-1. Válassza a **felülvizsgálat + létrehozás** lehetőséget. Egy sikeres érvényesítési üzenet a zöld szalagcím alatt lesz közzétéve.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. Egy sikeres érvényesítési üzenet a zöld szalagcím alatt lesz közzétéve.
 1. Kattintson a **Létrehozás** gombra.
 1. Frissítse a **modul Identity Twin** értékét, hogy az DebugLogsDirectory paraméterre mutasson, amely arra a könyvtárra mutat, amelyben a naplók gyűjtése történik:
 
@@ -223,7 +227,7 @@ Ha a hibakeresési naplók létrehozásához IoT Edge modul Live Video Analytics
     > 2. Használja az alábbi parancsot, és cserélje le **$DEBUG _LOG_LOCATION** az előző lépésben használt helyre:  
     > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`  
     
-    d. Válassza a **Mentés** lehetőséget.
+    d. Kattintson a **Mentés** gombra.
 
 
 1. Leállíthatja a naplózási gyűjteményt úgy, hogy az értéket a **modul Identity Twin** értékével *NULL értékűre* állítja. Térjen vissza a **modul Identity Twin** oldalára, és frissítse a következő paramétert:
@@ -310,6 +314,6 @@ A gRPC-kiszolgáló élő videó-elemzéssel való használatához a közös mem
 1. Ezután futtathatja a feldolgozási logikát, ha a kívánt számú képkockával rendelkezik.
 1. Ha elkészült, visszaállíthatja az eredményül kapott eredményeket az élő videó elemzéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Oktatóanyag: eseményvezérelt videofelvétel a felhőben és a felhőből való lejátszás](event-based-video-recording-tutorial.md)

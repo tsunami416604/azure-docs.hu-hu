@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347489"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059381"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
 
@@ -136,8 +136,6 @@ Ha már nincs kapcsolata egy külső Azure AD-címtárral vagy-tartománnyal, ak
 
 1. A csatlakoztatott szervezet áttekintő ablaktábláján válassza a **Törlés** lehetőséget a törléshez.
 
-    Jelenleg csak akkor törölhet egy csatlakoztatott szervezetet, ha nincsenek csatlakoztatott felhasználók.
-
     ![A csatlakoztatott szervezet törlése gomb](./media/entitlement-management-organization/organization-delete.png)
 
 ## <a name="managing-a-connected-organization-programmatically"></a>Csatlakoztatott szervezet programozott kezelése
@@ -161,7 +159,7 @@ Csak a konfigurált csatlakoztatott szervezetek felhasználói igényelhetnek ho
 > [!NOTE]
 > Az új funkció bevezetésének részeként az 09/09/20 előtt létrehozott összes csatlakoztatott szervezet **konfigurálva** lett. Ha olyan hozzáférési csomaggal rendelkezett, amely bármely szervezet felhasználói számára engedélyezte a regisztrációt, tekintse át az ezen időpont előtt létrehozott csatlakoztatott szervezetek listáját, hogy a none **ne legyenek megfelelően** kategorizálva.  A rendszergazda szükség szerint frissítheti az **állapot** tulajdonságot. Útmutatásért lásd [a csatlakoztatott szervezet frissítése](#update-a-connected-organization)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Külső felhasználók hozzáférésének szabályozása](./entitlement-management-external-users.md)
 - [A címtárban nem szereplő felhasználók hozzáférésének szabályozása](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
