@@ -109,7 +109,7 @@
     - name: A díjszabás ismertetése
       href: understanding-pricing.md
     - name: GYIK
-      href: application-gateway-faq.md
+      href: application-gateway-faq.yml
 - name: Útmutatók
   items:
     - name: Egy webhely üzemeltetése
