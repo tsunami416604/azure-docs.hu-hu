@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 1a51cd242eb26709464aa502938cd04807aea721
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805637"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98061041"
 ---
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 A következő forgatókönyvek nagy mértékben kihasználhatják a betörést:
@@ -28,7 +28,7 @@ A feltört kreditrendszer a virtuális gép szintjén és a lemez szintjén is a
 
 ![Feltört gyűjtő diagramja](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Akár egészen addig, ahogy szeretné, hogy a 30 perces kitörést kívánja használni. Akár 30 percet is igénybe vehet a nap folyamán, vagy szórványosan. A termék üzembe helyezése után a rendszer készen áll a teljes értékű kreditekre, és ha a kreditek elvégzése egy napnál kevesebb időt vesz igénybe, a kreditek teljes összegét újra fel kell venni. Saját belátása szerint felhalmozhatja és elköltheti a feltört krediteket, és a 30 perces gyűjtőnek nem kell megismételni a feltört időt. Az egyik dolog, ami azt jelzi, hogy a burst felhalmozódása különbözik az egyes erőforrásoktól, mert a használaton kívüli IOPS, valamint a teljesítményük alatti MB/s értéken alapul. Ez azt jelenti, hogy a magasabb alapszintű teljesítményű termékek az alacsonyabb alapkonfigurációt használó termékeknél gyorsabban felmerülhetnek a feltört mennyiségű terméknél. Egy tevékenység nélküli P1 lemez üresjárati ideje például 120 IOPS, míg a P20-lemezek másodpercenként 2 300 IOPS-t kapnak, és tevékenység nélkül üresjáratban vannak.
+Ez a teljes körűen azt mutatja be, hogyan szeretné használni a 30 percet a kitöréstől. Akár 30 percet is igénybe vehet a nap folyamán, vagy szórványosan. A termék üzembe helyezése után a rendszer készen áll a teljes értékű kreditekre, és ha a kreditek elvégzése egy napnál kevesebb időt vesz igénybe, a kreditek teljes összegét újra fel kell venni. Saját belátása szerint felhalmozhatja és elköltheti a feltört krediteket, és a 30 perces gyűjtőnek nem kell megismételni a feltört időt. Az egyik dolog, ami azt jelzi, hogy a burst felhalmozódása különbözik az egyes erőforrásoktól, mert a használaton kívüli IOPS, valamint a teljesítményük alatti MB/s értéken alapul. Ez azt jelenti, hogy a magasabb alapszintű teljesítményű termékek az alacsonyabb alapkonfigurációt használó termékeknél gyorsabban felmerülhetnek a feltört mennyiségű terméknél. Egy tevékenység nélküli P1 lemez üresjárati ideje például 120 IOPS, míg a P20-lemezek másodpercenként 2 300 IOPS-t kapnak, és tevékenység nélkül üresjáratban vannak.
 
 ## <a name="bursting-states"></a>Feltört állapotok
 Három állapottal rendelkezhet, ha az erőforrás a kitört állapotban van:
