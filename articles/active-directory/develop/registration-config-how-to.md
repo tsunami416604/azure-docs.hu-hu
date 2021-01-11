@@ -12,12 +12,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: ryanwi
-ms.openlocfilehash: 2c348bd7a1738742744976c46396f62a3317dc17
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3afaf654228511a357461a9e762be0b04acc65c6
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017081"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064164"
 ---
 # <a name="how-to-discover-endpoints"></a>Végpontok felderítése
 
@@ -33,6 +34,6 @@ Az alkalmazáshoz tartozó hitelesítési végpontokat a [Azure Portalban](https
 
 Az **országos felhők** (például az Azure ad China, a Germany és az Egyesült Államok kormánya) saját alkalmazás-regisztrációs portált és Azure ad-hitelesítési végpontokat tartalmazhatnak. További információk a [nemzeti felhők áttekintésében](authentication-national-cloud.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A különböző Azure-környezetekben található végpontokkal kapcsolatos további információkért tekintse meg az [országos felhők áttekintését](authentication-national-cloud.md).

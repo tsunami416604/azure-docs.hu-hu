@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173464"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064968"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Az egyszeri bejelentkezés és az alkalmazás-védelmi szabályzatok támogatása a fejleszthető mobil alkalmazásokban
 
@@ -36,7 +36,7 @@ Az [alkalmazás-védelmi szabályzatok (alkalmazás)](/mem/intune/apps/app-prote
 
 Javasoljuk, hogy az alkalmazás az egyszeri bejelentkezés előnyeit kihasználva engedélyezze az alábbiakat.
 
-### <a name="use-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) használata
+### <a name="use-the-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) használata
 
 Az egyszeri bejelentkezés az alkalmazásban való megvalósításának legjobb lehetősége a [Microsoft Authentication Library (MSAL)](msal-overview.md)használata. A MSAL használatával az alkalmazáshoz minimális kóddal és API-hívásokkal adhat hozzá hitelesítést, lekérheti a [Microsoft Identity platform](./index.yml)teljes funkcióit, és lehetővé teszi a Microsoft számára a biztonságos hitelesítési megoldás karbantartását. A MSAL alapértelmezés szerint egyszeri bejelentkezéses támogatást biztosít az alkalmazáshoz. Emellett a MSAL használata is követelmény, ha az alkalmazás-védelmi szabályzatok megvalósítását is tervezi.
 

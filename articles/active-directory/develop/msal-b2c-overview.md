@@ -1,7 +1,7 @@
 ---
 title: MSAL.js használata a Azure AD B2C
 titleSuffix: Microsoft identity platform
-description: A JavaScripthez készült Microsoft Authentication Library (MSAL.js) lehetővé teszi, hogy az alkalmazások működjenek a Azure AD B2C, és jogkivonatokat szerezzenek a biztonságos webes API-k meghívásához. Ezek a webes API-k lehetnek Microsoft Graph, más Microsoft API-k, a másoktól származó webes API-k vagy a saját webes API-k.
+description: A JavaScripthez készült Microsoft Authentication Library (MSAL.js) lehetővé teszi, hogy az alkalmazások működjenek a Azure AD B2C és a jogkivonatokat szerezzenek be a biztonságos webes API-k meghívásához. Ezek a webes API-k lehetnek Microsoft Graph, más Microsoft API-k, a másoktól származó webes API-k vagy a saját webes API-k.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107872"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063722"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>A JavaScript használata a Microsoft Authentication Library használatával Azure AD B2C
+# <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Használja a Microsoft hitelesítési függvénytárát a JavaScripthez, hogy működjön együtt Azure AD B2C
 
-[A Microsoft Authentication Library for JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) lehetővé teszi a JavaScript-fejlesztők számára, hogy [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure ad B2C) használatával hitelesítsék a felhasználókat a közösségi és helyi identitásokkal.
+A [javascripthez készült Microsoft Authentication Library (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) lehetővé teszi a JavaScript-fejlesztők számára, hogy [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure ad B2C) használatával hitelesítsék a felhasználókat a közösségi és helyi identitásokkal.
 
 A Azure AD B2C identitás-kezelési szolgáltatásként való használatával testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat az alkalmazások használatakor. A Azure AD B2C lehetővé teszi az alkalmazás által a hitelesítési folyamat során megjelenített felhasználói felület kiírását és testreszabását is.
 

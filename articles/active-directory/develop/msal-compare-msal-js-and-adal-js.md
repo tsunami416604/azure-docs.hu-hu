@@ -13,16 +13,16 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6894d84f489d3719f1106ba4de79cb85fa45c5ed
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120898"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064950"
 ---
-# <a name="differences-between-msal-js-and-adal-js"></a>A MSAL JS és a ADAL JS közötti különbségek
+# <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js és ADAL.js közötti különbségek
 
-Az Azure AD-entitások hitelesítéséhez és az Azure AD-beli jogkivonatok igényléséhez a javascripthez (MSAL.js) és az Azure AD Authentication Library for JavaScript (ADAL.js) rendszerhez egyaránt használható a Microsoft Authentication Library. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers (v 1.0) használatával az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez a ADAL-t használó jogkivonatok igénylésével. Mostantól MSAL.js használatával a Microsoft Identity platform (v 2.0) segítségével a Microsoft identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét is hitelesítheti.
+Az Azure AD-entitások hitelesítéséhez és a jogkivonatok Azure AD-ból való igényléséhez mind a JavaScript (MSAL.js), mind a JavaScripthez készült Azure AD Authentication Library (ADAL.js) esetében egyaránt a Microsoft Authentication Library használható. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers (v 1.0) használatával az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez a ADAL-t használó jogkivonatok igénylésével. Mostantól MSAL.js használatával a Microsoft Identity platform (v 2.0) segítségével a Microsoft identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét is hitelesítheti.
 
 Ez a cikk a javascripthez készült Microsoft Authentication Library (MSAL.js) és az Azure AD Authentication Library for JavaScript (ADAL.js) közötti választást ismerteti, és összehasonlítja a két kódtárat.
 
@@ -73,7 +73,7 @@ A 2.0-s verziójában a `https://login.microsoftonline.com/common` szolgáltató
 
 * Dinamikus hatókörök a növekményes belehozatalhoz.
 
-    Ha a 1.0-s verzióval hoz létre alkalmazásokat, regisztrálnia kell az alkalmazás által a bejelentkezéskor a felhasználó számára szükséges engedélyek (statikus hatókörök) teljes készletét. A 2.0-s verzióban a hatókör paraméterrel kérheti le az engedélyeket a kívánt időpontban. Ezeket dinamikus hatóköröknek nevezzük. Ez lehetővé teszi, hogy a felhasználó növekményes beleegyezett a hatókörökbe. Tehát ha az elején csak azt szeretné, hogy a felhasználó bejelentkezzen az alkalmazásba, és nincs szüksége semmilyen hozzáférésre, ezt megteheti. Ha később szükség van a felhasználó naptárának olvasására, a acquireToken metódusokban kérheti le a naptár hatókörét, és beolvashatja a felhasználó belefoglalását. Példa:
+    Ha a 1.0-s verzióval hoz létre alkalmazásokat, regisztrálnia kell az alkalmazás által a bejelentkezéskor a felhasználó számára szükséges engedélyek (statikus hatókörök) teljes készletét. A 2.0-s verzióban a hatókör paraméterrel kérheti le az engedélyeket a kívánt időpontban. Ezeket dinamikus hatóköröknek nevezzük. Ez lehetővé teszi, hogy a felhasználó növekményes beleegyezett a hatókörökbe. Tehát ha az elején csak azt szeretné, hogy a felhasználó bejelentkezzen az alkalmazásba, és nincs szüksége semmilyen hozzáférésre, ezt megteheti. Ha később szükség van a felhasználó naptárának olvasására, a acquireToken metódusokban kérheti le a naptár hatókörét, és beolvashatja a felhasználó belefoglalását. Például:
 
     ```javascript
     var request = {
@@ -85,7 +85,7 @@ A 2.0-s verziójában a `https://login.microsoftonline.com/common` szolgáltató
 
 * Hatókörök a V 1.0 API-khoz
 
-    Ha MSAL.js használatával állítanak be tokeneket a V 1.0 API-khoz, az API-hoz regisztrált összes statikus hatókört az `.default` API hatókörként való hozzáfűzésével kérheti le. Példa:
+    Ha MSAL.js használatával állítanak be tokeneket a V 1.0 API-khoz, az API-hoz regisztrált összes statikus hatókört az `.default` API hatókörként való hozzáfűzésével kérheti le. Például:
 
     ```javascript
     var request = {

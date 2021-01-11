@@ -1,7 +1,7 @@
 ---
 title: Xamarin iOS-megfontolások (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg a Xamarin iOS és a Microsoft Authentication Library for .NET (MSAL.NET) használatának szempontjait.
+description: Ismerje meg a Xamarin iOS és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatának szempontjait.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62eb4ab9eb6e4b0e7be0f7aadae1173950d21615
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258059"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064487"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>A Xamarin iOS és a MSAL.NET használatának szempontjai
 
@@ -151,7 +151,7 @@ Ha kérdése van, vagy szeretne jelenteni egy problémát a MSAL.NET-ben, nyisso
 
 További információ a Xamarin iOS-es tulajdonságairól: a következő minta README.md-fájljának [iOS-specifikus szempontjait](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) ismertető bekezdése:
 
-Sample | Platform | Leírás
+Sample | Platform | Description
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, Univerzális Windows-platform (UWP) | Egy egyszerű Xamarin űrlapos alkalmazás, amely bemutatja, hogyan hitelesítheti a Microsoft személyes fiókjait és az Azure AD-t az Azure AD 2,0-végponton keresztül a MSAL használatával. Az alkalmazás azt is bemutatja, hogyan használható az eredményül kapott jogkivonat a Microsoft Graph eléréséhez.
 

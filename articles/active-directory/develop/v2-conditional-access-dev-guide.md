@@ -1,5 +1,5 @@
 ---
-title: Fejlesztői útmutató az Azure Active Directory feltételes hozzáféréséhez
+title: Fejlesztői útmutató Azure Active Directory feltételes hozzáféréshez
 titleSuffix: Microsoft identity platform
 description: Fejlesztői útmutató és forgatókönyvek az Azure AD feltételes hozzáféréshez és a Microsoft Identity platformhoz.
 services: active-directory
@@ -14,14 +14,14 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8935cb3208aadc2822af1f57067877f9cedcb931
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120626"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064368"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató az Azure Active Directory feltételes hozzáféréséhez
+# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató Azure Active Directory feltételes hozzáféréshez
 
 Azure Active Directory (Azure AD) feltételes hozzáférési funkciója számos módszert kínál az alkalmazás biztonságossá tételéhez és a szolgáltatások védelméhez. A feltételes hozzáférés lehetővé teszi a fejlesztők és a nagyvállalatok számára, hogy számos módon védik a szolgáltatásokat, többek között:
 
@@ -43,7 +43,7 @@ A rendszer feltételezi az [önálló](quickstart-register-app.md) és a [több-
 
 ### <a name="app-types-impacted"></a>Érintett alkalmazások típusai
 
-A leggyakoribb esetek többségében a feltételes hozzáférés nem változtatja meg az alkalmazás viselkedését, vagy a fejlesztőtől semmilyen változást nem igényel.Csak bizonyos esetekben, amikor egy alkalmazás közvetve vagy csendes módon kér le egy jogkivonatot a szolgáltatáshoz, az alkalmazásnak a feltételes hozzáférés "kihívásai" kezeléséhez programkód-módosításokat kell megadnia.Lehet, hogy olyan egyszerű, mint egy interaktív bejelentkezési kérés végrehajtása.
+A leggyakoribb esetek többségében a feltételes hozzáférés nem változtatja meg az alkalmazás viselkedését, vagy a fejlesztőtől semmilyen változást nem igényel. Csak bizonyos esetekben, amikor egy alkalmazás közvetve vagy csendes módon kér le egy jogkivonatot a szolgáltatáshoz, az alkalmazásnak a feltételes hozzáférés "kihívásai" kezeléséhez programkód-módosításokat kell megadnia. Lehet, hogy olyan egyszerű, mint egy interaktív bejelentkezési kérés végrehajtása.
 
 Az alábbi forgatókönyvek a feltételes hozzáférés "kihívásai" kezelésére vonatkozó kódot igényelnek:
 

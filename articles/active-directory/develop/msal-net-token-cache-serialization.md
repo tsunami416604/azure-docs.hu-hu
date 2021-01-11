@@ -13,15 +13,15 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4a0d5af8faafac8b733bd2daa9655e663da6fe71
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 7e80123f21efded92ab6d59d550965ca72427b1c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873523"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064657"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Jogkivonat-gyorsítótár szerializálása a MSAL.NET-ben
-A [jogkivonat beszerzése](msal-acquire-cache-tokens.md)után a Microsoft Authentication Library (MSAL) gyorsítótárazza azt.  Az alkalmazás kódjának meg kell próbálnia kapni a tokent a gyorsítótárból, mielőtt másik módszerrel beszerezze a jogkivonatot.  Ez a cikk a jogkivonat-gyorsítótár alapértelmezett és egyéni szerializálását ismerteti a MSAL.NET-ben.
+A [jogkivonat beszerzése](msal-acquire-cache-tokens.md)után a rendszer a Microsoft Authentication Library (MSAL) gyorsítótárba helyezi.  Az alkalmazás kódjának meg kell próbálnia kapni a tokent a gyorsítótárból, mielőtt másik módszerrel beszerezze a jogkivonatot.  Ez a cikk a jogkivonat-gyorsítótár alapértelmezett és egyéni szerializálását ismerteti a MSAL.NET-ben.
 
 Ez a cikk a 3. x MSAL.NET. Ha érdekli a 2. x MSAL.NET, tekintse meg [a jogkivonat-gyorsítótár szerializálását a MSAL.NET 2. x verzióban](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Token-cache-serialization-2x).
 
@@ -281,7 +281,7 @@ A MSAL.NET egyéni jogkivonat-gyorsítótárazási szerializálást biztosít a 
 
 A [Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web) Library egy előzetes verziójú NuGet-csomagot biztosít a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) , amely a jogkivonat-gyorsítótár szerializálását tartalmazza:
 
-| Kiterjesztési módszer | Microsoft. Identity. Web sub névtér | Leírás  |
+| Kiterjesztési módszer | Microsoft. Identity. Web sub névtér | Description  |
 | ---------------- | --------- | ------------ |
 | `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | A memória-jogkivonat gyorsítótárának szerializálásakor. Ez a megvalósítás nagyszerű a mintákban. Az éles környezetben is jó, ha nem bánod, ha a jogkivonat gyorsítótára elvész a webalkalmazás újraindításakor. `AddInMemoryTokenCaches` egy opcionális paramétert használ, `MsalMemoryTokenCacheOptions` amely lehetővé teszi, hogy megadja azt az időtartamot, ameddig a gyorsítótár-bejegyzés lejár, kivéve, ha használatban van.
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | A jogkivonat-gyorsítótár a felhasználói munkamenethez van kötve. Ez a lehetőség nem ideális, ha az azonosító jogkivonat sok jogcímet tartalmaz, mivel a cookie túl nagy lesz.
@@ -331,7 +331,7 @@ Használatuk a [ASP.net Core webalkalmazás-oktatóanyagban](/aspnet/core/tutori
 
 A következő minták a jogkivonat-gyorsítótár szerializálását szemléltetik.
 
-| Sample | Platform | Leírás|
+| Sample | Platform | Description|
 | ------ | -------- | ----------- |
 |[Active-Directory-DotNet-Desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Asztali (WPF) | A Microsoft Graph API-t hívó Windowsos asztali .NET (WPF) alkalmazás. ![A diagram egy olyan topológiát mutat be, amelyben az asztali alkalmazás W P F TodoListClient az Azure A D-be, a jogkivonat interaktív beszerzésével és a Microsoft Graphával.](media/msal-net-token-cache-serialization/topology.png)|
 |[Active-Directory-DotNet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Asztal (konzol) | A Visual Studio-megoldások készlete az Azure AD 1.0-alkalmazások (ADAL.NET használatával) áttelepítését szemlélteti a Microsoft Identity platform alkalmazásaihoz (a MSAL.NET használatával). Különösen lásd: [jogkivonat-gyorsítótár áttelepítése](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

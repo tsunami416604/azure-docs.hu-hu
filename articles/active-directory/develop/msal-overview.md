@@ -13,14 +13,14 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8fbcacf4e3c26f117be4ab5b64b35f670435e6b6
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2b6266f308fce75f136aa4a2482c5b1be6eedb8e
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092749"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063365"
 ---
-# <a name="overview-of-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) áttekintése
+# <a name="overview-of-the-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) áttekintése
 A Microsoft Authentication Library (MSAL) lehetővé teszi a fejlesztők számára a [tokenek](developer-glossary.md#security-token) beszerzését a Microsoft Identity platform-végpontból a felhasználók hitelesítéséhez és a biztonságos webes API-k eléréséhez. A szolgáltatással biztonságos hozzáférést biztosíthat a Microsoft Graphhoz, más Microsoft API-khoz, harmadik féltől származó webes API-khoz vagy a saját webes API-hoz. A MSAL számos különböző alkalmazás-architektúrát és platformot támogat, többek között a .NET, JavaScript, Java, Python, Android és iOS rendszereken.
 
 A MSAL számos lehetőséget kínál a jogkivonatok lekérésére, egy egységes API-val számos platformon. A MSAL használata a következő előnyöket biztosítja:

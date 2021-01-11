@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 2d7c732771749c0c0372c5433b76c3e30469e2b0
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: eacdf0cf80414c44aaccf6925e466b914c66da03
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968415"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065303"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -64,7 +64,7 @@ Miután elő a ITSM-eszközöket, hajtsa végre a következő lépéseket a kapc
 
 1. Az **összes erőforrás** területen keresse meg a **ügyfélszolgálati (*a munkaterület neve*)**:
 
-   ![A Azure Portal legutóbbi erőforrásait bemutató képernyőkép.](media/itsmc-overview/itsm-connections.png)
+   ![A Azure Portal legutóbbi erőforrásait bemutató képernyőkép.](media/itsmc-definition/create-new-connection-from-resource.png)
 
 1. A bal oldali ablaktábla **munkaterület-adatforrások** területén válassza a **ITSM-kapcsolatok** elemet:
 

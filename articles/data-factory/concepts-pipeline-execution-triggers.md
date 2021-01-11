@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: c72538de8aba60ce7ed880561b55773c22737f97
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e46b08e31725765d700bf41649d997d7b20e5f95
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498625"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065490"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
 
@@ -241,7 +241,7 @@ Az alábbi táblázat nagy vonalakban áttekintést nyújt az eseményindítóva
 | **endTime** | Az eseményindító záró dátuma és időpontja. Az eseményindító nem lesz végrehajtva a megadott záró dátum és idő után. A tulajdonság értéke nem lehet múltbéli időpont. <!-- This property is optional. --> |
 | **timeZone** | Az időzóna. A támogatott időzónák listáját a [folyamat ütemezett futtatását futtató trigger létrehozása](how-to-create-schedule-trigger.md#time-zone-option)című témakörben tekintheti meg. |
 | **megismétlődésének** | Az eseményindítóhoz tartozó ismétlődési szabályokat megadó recurrence objektum. A recurrence objektum a **frequency**, **interval**, **endTime**, **count** és **schedule** elemeket támogatja. Recurrence objektum meghatározásakor a **frequency** elem megadása kötelező. A recurrence objektum többi elemének megadása nem kötelező. |
-| **frequency** | Az eseményindító ismétlődésének gyakorisági egysége. A támogatott értékek például: minute, hour, day, week és month (percenként, óránként, naponta, hetente és havonta). |
+| **frekvencia** | Az eseményindító ismétlődésének gyakorisági egysége. A támogatott értékek például: minute, hour, day, week és month (percenként, óránként, naponta, hetente és havonta). |
 | **időköz** | Pozitív egész szám, amely a **frequency** érték időközét jelöli. A **frequency** érték határozza meg a trigger futtatási gyakoriságát. Ha például az **interval** értéke 3, a **frequency** értéke pedig week, az eseményindító három hetente ismétlődik. |
 | **menetrend** | Az eseményindító ismétlődési ütemezése. Egy megadott **frequency** értékkel rendelkező eseményindító az ismétlődést az ismétlődési ütemezés alapján módosítja. A **schedule** tulajdonságban az ismétlődéshez tartozó módosítások szerepelnek, amelyek alapjául a percek, órák, a hét napja, a hónap napjai és a hét száma szolgál. |
 
@@ -283,11 +283,11 @@ Az alábbi táblázat nagy vonalakban áttekintést nyújt az eseményindítóva
 
 | JSON-tulajdonság | Típus | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
 | --- | --- | --- | --- | --- | --- |
-| **startTime** | sztring | Igen | Nincsenek | ISO 8601 dátum-idő értékek | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **megismétlődésének** | object | Igen | Nincsenek | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **időköz** | szám | Nem | 1 | 1–1000 | `"interval":10` |
-| **endTime** | sztring | Igen | Nincsenek | Egy jövőbeli időpontot jelölő dátum-idő érték | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **menetrend** | object | Nem | Nincsenek | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | sztring | Yes | Nincs | ISO 8601 dátum-idő értékek | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **megismétlődésének** | object | Yes | Nincs | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **időköz** | szám | No | 1 | 1–1000 | `"interval":10` |
+| **endTime** | sztring | Yes | Nincs | Egy jövőbeli időpontot jelölő dátum-idő érték | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **menetrend** | object | No | Nincs | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime tulajdonság
 Az alábbi táblázatban látható, hogy a **startTime** tulajdonság hogyan irányítja a folyamatfuttatást:
@@ -375,16 +375,16 @@ Az átfedésmentes ablakos eseményindító és az ütemezési eseményindító 
 
 Az alábbi táblázatban az átfedésmentes ablakos eseményindító és az ütemezési eseményindító összehasonlítása látható:
 
-| Item | Átfedésmentes ablakos eseményindító | Ütemezési eseményindító |
+| Elem | Átfedésmentes ablakos eseményindító | Ütemezési eseményindító |
 | --- | --- | --- |
 | **Visszatöltési forgatókönyvek** | Támogatott. A folyamatfuttatások ütemezhetők múltbéli időszakokra. | Nem támogatott. A folyamatfuttatások csak az aktuális időszaktól vagy egy jövőbeli időszaktól hajthatók végre. |
 | **Megbízhatóság** | 100%-os megbízhatóság. A folyamatfuttatások egy adott kezdési időponttól minden időszakhoz ütemezhetők, hézagok nélkül. | Kevésbé megbízható. |
 | **Újrapróbálkozási képesség** | Támogatott. A sikertelen folyamatfuttatások alapértelmezett újrapróbálkozási szabályzata 0, vagy a felhasználó által az eseményindító definíciójában megadott szabályzat. Automatikusan újrapróbálkozik, ha a folyamat egyidejűségi/kiszolgálói/szabályozási korlátok miatt meghiúsul (azaz 400: felhasználói hiba, 429: túl sok kérés, 500: belső kiszolgálóhiba). | Nem támogatott. |
 | **Egyidejűség** | Támogatott. A felhasználók explicit módon adhatják meg az eseményindító egyidejűségi korlátját. 1 és 50 közötti egyidejű aktivált folyamatfuttatást engedélyez. | Nem támogatott. |
-| **Rendszerváltozók** | A @trigger (). scheduledTime és (). kezdő időponttal együtt a @trigger **WindowStart** és a **WindowEnd** rendszerváltozók használatát is támogatja. A felhasználók hozzáférhetnek a `triggerOutputs().windowStartTime` és `triggerOutputs().windowEndTime` értékhez az eseményindító rendszerváltozójaként az eseményindító meghatározásában. Az értékeket az időszak kezdési és záró időpontjaként használja a rendszer. Például a minden órában lefutó átfedésmentes ablakos eseményindító esetében az 01:00 és 02:00 közötti időszakban a meghatározás `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` és `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | @triggerA csak az alapértelmezett (). scheduledTime és @trigger (). kezdő időpontokra vonatkozó változókat támogatja. |
+| **Rendszerváltozók** | A @trigger (). scheduledTime és (). kezdő időponttal együtt a @trigger **WindowStart** és a **WindowEnd** rendszerváltozók használatát is támogatja. A felhasználók hozzáférhetnek a `trigger().outputs.windowStartTime` és `trigger().outputs.windowEndTime` értékhez az eseményindító rendszerváltozójaként az eseményindító meghatározásában. Az értékeket az időszak kezdési és záró időpontjaként használja a rendszer. Például a minden órában lefutó átfedésmentes ablakos eseményindító esetében az 01:00 és 02:00 közötti időszakban a meghatározás `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` és `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z`. | @triggerA csak az alapértelmezett (). scheduledTime és @trigger (). kezdő időpontokra vonatkozó változókat támogatja. |
 | **Folyamat–trigger kapcsolat** | Támogatja az egy-az-egyhez kapcsolatot. Csak egy folyamat indítható el. | Támogatja a több-a-többhöz kapcsolatokat. Egyetlen folyamatot több eseményindító is indíthat. Egyetlen eseményindító elindíthat több folyamatot is. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi oktatóanyagokat:
 
 - [Gyors útmutató: adat-előállító létrehozása a .NET SDK-val](quickstart-create-data-factory-dot-net.md)

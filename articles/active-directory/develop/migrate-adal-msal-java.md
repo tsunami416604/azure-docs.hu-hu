@@ -14,18 +14,18 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 1cc94519525d5f87a14769b0109e425171265c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0183471db274bb7fca59ed8f24aa87b2bf997fb6
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258319"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063739"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>ADAL a MSAL áttelepítési útmutató Javához
 
 Ez a cikk azokat a módosításokat mutatja be, amelyeket a Azure Active Directory hitelesítési függvénytárat (ADAL) használó alkalmazások áttelepíteni kell a Microsoft Authentication Library (MSAL) használatára.
 
-A Microsoft Authentication Library for Java (MSAL4J) és a Javához készült Azure AD Authentication Library (ADAL4J) is az Azure AD-entitások hitelesítésére és az Azure AD-jogkivonatok igénylésére szolgál. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers platformmal (v 1.0) az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez az Azure AD Authentication Library (ADAL) használatával.
+A Javához készült Microsoft Authentication Library (MSAL4J) és az Azure AD Authentication Library for Java (ADAL4J) egyaránt az Azure AD-entitások hitelesítésére és az Azure AD-jogkivonatok igénylésére szolgál. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers platformmal (v 1.0) az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez az Azure AD Authentication Library (ADAL) használatával.
 
 A MSAL a következő előnyöket kínálja:
 

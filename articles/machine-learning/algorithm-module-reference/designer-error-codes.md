@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753909"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065473"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>A tervezőhöz tartozó kivételek és hibakódok
 
@@ -1088,7 +1088,7 @@ A struktúra hibaüzenetét általában visszaküldi a rendszer a hibanaplóba, 
 + Ellenőrizze, hogy a lekérdezés megfelelően működik-e Azure Machine Learning a Hadoop-fürt kaptár-konzolján való bejelentkezéssel és a lekérdezés futtatásával.  
 + Próbálja meg egy külön sorban elhelyezni a megjegyzéseket a kaptár-parancsfájlban, szemben a végrehajtható utasítások és megjegyzések egyetlen sorba való keverésével.  
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Források
 
 A Machine learninghez készült kaptár-lekérdezésekkel kapcsolatos segítségért tekintse meg a következő cikkeket:
 
@@ -1532,3 +1532,8 @@ Ha további segítségre van szüksége, javasoljuk, hogy tegye közzé a hibáh
 |Függvénytár-kivétel.|
 |Függvénytár-kivétel: {Exception}.|
 |Ismeretlen függvénytár-kivétel: {Exception}. {customer_support_guidance}.|
+
+
+## <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
+
+Keressen **azureml_main** a **Python parancsfájl-modul végrehajtása** **70_driver_logsban** , és megtalálhatja, hogy melyik sor hiba miatt történt. Például a "fájl"/tmp/tmp01_ID/user_script. másolt ", a 17. sor azureml_main" "azt jelzi, hogy a hiba a Python-szkript 17 sorában történt.

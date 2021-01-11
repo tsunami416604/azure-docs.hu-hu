@@ -1,7 +1,7 @@
 ---
 title: Xamarin Android-kódok konfigurálása és hibaelhárítása (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Tudnivalók a Xamarin Android és a Microsoft Authentication Library for .NET (MSAL.NET) használatának szempontjairól.
+description: Ismerje meg a Xamarin Android használatának szempontjait a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 08/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34f2b146dda6e739f977c4894b5ec333c79d74d4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995182"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063433"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Konfigurációs követelmények és hibaelhárítási tippek a Xamarin Androidhoz a MSAL.NET
 
@@ -156,11 +156,11 @@ Ez a példa a fájl helyes elérési útját tartalmazza:
 </Reference>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: a [Microsoft Identity platformot használó Xamarin Mobile-alkalmazás](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)mintája. A következő táblázat összefoglalja a fontos információkat a README fájlban.
 
-| Sample | Platform | Leírás |
+| Sample | Platform | Description |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin. iOS, Android, UWP | Egy egyszerű Xamarin. Forms-alkalmazás, amely bemutatja, hogyan hitelesítheti a Microsoft személyes fiókjait és az Azure AD-t az Azure AD 2,0-végponton keresztül a MSAL használatával. Az alkalmazás azt is bemutatja, hogyan lehet elérni Microsoft Graph és megjeleníti az eredményül kapott jogkivonatot. <br>![Hitelesítési folyamat ábrája](media/msal-net-xamarin-android-considerations/topology.png) |
 

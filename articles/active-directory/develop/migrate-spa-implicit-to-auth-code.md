@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 391febcf8852147aedf5ef61d2442b2f50b4c9ae
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 2c03e6940d392e3e2c03bf6508de41a7a19aef3b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014739"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063773"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>JavaScript-alapú egyoldalas alkalmazás migrálása implicit engedélyről az Auth Code flow-ba
 
-A Microsoft hitelesítési könyvtára a JavaScripthez (MSAL.js) a 2.0-s verzióban támogatja az engedélyezési kód áramlását a PKCE és a CORS használatával egyoldalas alkalmazásokhoz a Microsoft Identity platformon. Az alábbi szakaszokban ismertetett lépéseket követve áttelepítheti a MSAL.js 1. x alkalmazást a MSAL.js 2.0 + (a továbbiakban *2. x*) és az Auth kód folyamatával.
+A JavaScripthez készült Microsoft Authentication Library (MSAL.js) v 2.0 a Microsoft Identity platform egyoldalas alkalmazásaihoz nyújt támogatást az PKCE-és CORS-alapú engedélyezési kódokhoz. Az alábbi szakaszokban ismertetett lépéseket követve áttelepítheti a MSAL.js 1. x alkalmazást a MSAL.js 2.0 + (a továbbiakban *2. x*) és az Auth kód folyamatával.
 
 MSAL.js 2. x a MSAL.js 1. x verzióban javítja az engedélyezési kód folyamatát a böngészőben az implicit engedélyezési folyamat helyett. MSAL.js 2. x nem **támogatja az** implicit folyamatot.
 
@@ -88,7 +88,7 @@ Ha törli az implicit engedélyezési beállításokat az alkalmazás regisztrá
 
 Az összes alkalmazás MSAL.js 2. x és a [PublicClientApplication][msal-js-publicclientapplication]való frissítése előtt **ne tiltsa le** az implicit engedélyezési folyamatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az engedélyezési kód folyamatáról, beleértve az implicit és az Auth kód közötti különbségeket, tekintse meg a [Microsoft Identity platform és a OAuth 2,0 engedélyezési kód](v2-oauth2-auth-code-flow.md)folyamatát.
 

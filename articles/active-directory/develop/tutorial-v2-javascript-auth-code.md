@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 79fe821e2da494ab8c9e4cb407e2c2b025f75568
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b7d14ee321a1160420d106151276ae6aef513c5b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169103"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064402"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript-alapú egyoldalas alkalmazásból (SPA) az Auth Code flow használatával
 
@@ -45,7 +45,7 @@ Az oktatóanyagban létrehozott alkalmazás lehetővé teszi a JavaScript SPA sz
 
 Ez az oktatóanyag a következő könyvtárat használja:
 
-[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) Microsoft Authentication Library for JavaScript v 2.0 böngésző csomag
+A Microsoft hitelesítési függvénytárának [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) a JavaScript v 2.0 böngésző csomaghoz
 
 ## <a name="get-the-completed-code-sample"></a>Az elkészült mintakód beolvasása
 
@@ -360,7 +360,7 @@ graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
 graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages"
 ```
 
-## <a name="use-microsoft-authentication-library-msal-to-sign-in-user"></a>Felhasználói bejelentkezés a Microsoft Authentication Library (MSAL) használatával
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-user"></a>Felhasználói bejelentkezés a Microsoft Authentication Library (MSAL) használatával
 
 ### <a name="pop-up"></a>Felugró ablak
 

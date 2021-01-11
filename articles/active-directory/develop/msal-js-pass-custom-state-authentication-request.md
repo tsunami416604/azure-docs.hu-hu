@@ -13,16 +13,16 @@ ms.date: 01/16/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 840c371e63aacf8ef410cbf84cc9f68137dd77df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c1fad96ea6e3b75b3afdfd4a4d3baac43308541
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85477583"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063671"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Egyéni állapot továbbítása hitelesítési kérelmekben MSAL.js használatával
 
-A OAuth 2,0 által definiált *State* paraméter a hitelesítési kérelem része, és a jogkivonat válaszában is visszaadja, hogy megakadályozza a helyek közötti kérelmek hamisításának elleni támadásokat. Alapértelmezés szerint a Microsoft Authentication Library for JavaScript (MSAL.js) egy véletlenszerűen generált egyedi *állapot* paramétert ad meg a hitelesítési kérelmekben.
+A OAuth 2,0 által definiált *State* paraméter a hitelesítési kérelem része, és a jogkivonat válaszában is visszaadja, hogy megakadályozza a helyek közötti kérelmek hamisításának elleni támadásokat. Alapértelmezés szerint a JavaScripthez készült Microsoft Authentication Library (MSAL.js) egy véletlenszerűen generált egyedi *állapot* paramétert ad meg a hitelesítési kérelmekben.
 
 Az állapot paraméter az alkalmazás állapotának az átirányítás előtt történő kódolására is használható. Átadhatja a felhasználó állapotát az alkalmazásban, például a lapon vagy a nézetben, a paraméter bemenetének megfelelően. A MSAL.js könyvtár lehetővé teszi, hogy a következő objektumban adja át az egyéni állapot paramétert `Request` :
 

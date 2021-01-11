@@ -1,7 +1,7 @@
 ---
 title: Brókerek használata a Xamarin iOS & Android rendszerhez | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan állíthatja be a Xamarin iOS-alkalmazásokat, amelyek a .NET-hez készült Microsoft Authenticator és a Microsoft Authentication Library (MSAL.NET) használatát is használhatják. Azt is megtudhatja, hogyan telepítheti át a .NET-hez készült Azure AD Authentication Library (ADAL.NET) rendszerről a Microsoft Authentication Library for .NET (MSAL.NET) szolgáltatásra.
+description: Ismerje meg, hogyan állíthatja be a Xamarin iOS-alkalmazásokat, amelyek használhatják a Microsoft Authenticator és a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatát. Azt is megtudhatja, hogyan telepítheti át a .NET-hez készült Azure AD Authentication Library-ről (ADAL.NET) a .NET-hez készült Microsoft Authentication Library (MSAL.NET) rendszerre.
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 10fb55cc133d5d6b39ca2809474ff20dfe500708
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017799"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063484"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator vagy Intune Céges portál használata Xamarin-alkalmazásokban
 
@@ -171,7 +171,7 @@ A közvetítő használatakor az átirányítási URI-nak külön követelménye
 $"msauth.{BundleId}://auth"
 ```
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
@@ -361,6 +361,6 @@ Másik lehetőségként beállíthatja, hogy a MSAL a beágyazott böngészőre 
 
     A naplók segítségével megkeresheti a hitelesítési kísérleteket a korrelációs AZONOSÍTÓn keresztül. A korrelációs azonosító minden hitelesítési kérelemhez csatolva van. A Microsoft Identity platform hitelesítési végpontja által visszaadott hibák kereséséhez keresse meg a következőt: `AADSTS` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók a [univerzális Windows-platform és a MSAL.net használatának szempontjairól](msal-net-uwp-considerations.md).

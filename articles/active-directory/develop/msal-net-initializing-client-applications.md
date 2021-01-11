@@ -13,15 +13,15 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5ec419be5c7549553788d009f09fa3e0fb8655e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd836afd6b8574be71ad22d26d67f49971834a88
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258285"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064725"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Ügyfélalkalmazások inicializálása a MSAL.NET használatával
-Ez a cikk a nyilvános ügyfelek és a bizalmas ügyfélalkalmazások a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával történő inicializálását ismerteti.  Az ügyfélalkalmazások típusairól és az alkalmazás konfigurációs lehetőségeiről az [Áttekintés](msal-client-applications.md)című témakörben olvashat bővebben.
+Ez a cikk a nyilvános ügyfél és a bizalmas ügyfélalkalmazások inicializálását ismerteti a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.  Az ügyfélalkalmazások típusairól és az alkalmazás konfigurációs lehetőségeiről az [Áttekintés](msal-client-applications.md)című témakörben olvashat bővebben.
 
 A 3. x MSAL.NET az alkalmazások létrehozásának ajánlott módja az alkalmazás-építők használata: `PublicClientApplicationBuilder` és `ConfidentialClientApplicationBuilder` . Hatékony mechanizmust biztosítanak az alkalmazás konfigurálásához a kódban, vagy egy konfigurációs fájlból, vagy akár mindkét módszer keverésével is.
 
@@ -96,7 +96,7 @@ Az alkalmazás-építőket használó kódrészletekben számos `.With` metódus
 
 A nyilvános ügyfélen vagy a bizalmas ügyfélalkalmazás-szerkesztőben beállítható módosítók a következők:
 
-|Módosító | Leírás|
+|Módosító | Description|
 |--------- | --------- |
 |`.WithAuthority()` 7 felülbírálás | Az alkalmazás alapértelmezett szolgáltatóját egy Azure AD-szolgáltatóra állítja be, és kiválaszthatja az Azure-felhőt, a célközönséget, a bérlőt (bérlői azonosítót vagy tartománynevet), vagy közvetlenül a szolgáltatói URI-t.|
 |`.WithAdfsAuthority(string)` | Az alkalmazás alapértelmezett szolgáltatójának beállítása ADFS-szolgáltatóként.|
@@ -115,7 +115,7 @@ A nyilvános ügyfélen vagy a bizalmas ügyfélalkalmazás-szerkesztőben beál
 
 A Xamarin. iOS nyilvános ügyfélalkalmazás-építője számára beállítható módosítók a következők:
 
-|Módosító | Leírás|
+|Módosító | Description|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Csak Xamarin. iOS esetén**: beállítja az iOS-kulcstartó biztonsági csoportját (a gyorsítótár megőrzéséhez).|
 
@@ -123,7 +123,7 @@ A Xamarin. iOS nyilvános ügyfélalkalmazás-építője számára beállíthat�
 
 A bizalmas ügyfélalkalmazás-szerkesztőben beállítható módosítók a következők:
 
-|Módosító | Leírás|
+|Módosító | Description|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Beállítja az alkalmazást az Azure AD-vel azonosító tanúsítványt.|
 |`.WithClientSecret(string clientSecret)` | Az alkalmazás az Azure AD-vel való azonosítására szolgáló ügyfél titkos kulcsának (alkalmazás jelszavának) beállítása.|

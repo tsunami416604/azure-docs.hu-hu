@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74a6c816979732e21813a0f2024167c68ca1c5dc
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: d8e1af1848405441088796d2e3b42e7b52eedba8
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874100"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065116"
 ---
 # <a name="what-is-azure-ad-connect"></a>Mi az Azure AD Connect?
 
@@ -26,7 +26,7 @@ A Microsoft Azure AD Connect eszköze segítségével teljesítheti a hibrid ide
 - [Átmenő hitelesítés](how-to-connect-pta.md) – a bejelentkezési módszer, amely lehetővé teszi, hogy a felhasználók ugyanazt a jelszót használják a helyszínen és a felhőben, de nincs szükség összevont környezet további infrastruktúrájának használatára.
 - [Összevonás-integráció](how-to-connect-fed-whatis.md) – az összevonás a Azure ad Connect választható része, és a hibrid környezetek helyszíni AD FS-infrastruktúrával való konfigurálására használható. Emellett AD FS felügyeleti képességeket is biztosít, mint például a tanúsítvány megújítása és a AD FS-kiszolgáló további telepítései.
 - [Szinkronizálás](how-to-connect-sync-whatis.md) – a felhasználók, csoportok és egyéb objektumok létrehozásához felelős.  Továbbá a helyszíni felhasználók és csoportok személyazonossági információinak biztosítása a felhővel egyező.  Ez a szinkronizálás jelszó-kivonatokat is tartalmaz.
-- [Állapot-figyelés]() – a Azure ad Connect Health robusztus figyelést biztosíthat, és a Azure Portal központi helyet biztosíthat a tevékenység megtekintéséhez. 
+- [Állapot-figyelés](whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) – a Azure ad Connect Health robusztus figyelést biztosíthat, és a Azure Portal központi helyet biztosíthat a tevékenység megtekintéséhez. 
 
 
 ![Mi az az Azure AD Connect?](./media/whatis-hybrid-identity/arch.png)

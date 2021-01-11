@@ -13,12 +13,12 @@ ms.date: 04/23/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6099bfe339ae398e4683f17a4397656a4507b6ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6139fd1b081c69f037ec9cd3313e4a6499c39543
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166008"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064623"
 ---
 # <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>Saját HttpClient és proxy biztosítása a MSAL.NET használatával
 [Egy nyilvános ügyfélalkalmazás inicializálásakor](msal-net-initializing-client-applications.md)a használatával `.WithHttpClientFactory method` biztosíthatja saját HttpClient.  A saját HttpClient lehetővé teszi a speciális forgatókönyvek, például a HTTP-proxyk részletes felügyeletét, a felhasználói ügynökök fejlécének testreszabását, vagy a MSAL adott HttpClient használatára való kényszerítését (például ASP.NET Core Web Apps/API-k).

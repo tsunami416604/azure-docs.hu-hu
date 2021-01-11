@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 169a8dba979571a5f4b8c8056737fce72db1d058
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3baeb87bf3fe1cdcd5e9f27aed2587eed060c5a8
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629867"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064521"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
@@ -140,7 +140,7 @@ Az alábbi példák azt mutatják be, hogyan lehet védelemmel ellátni egy Azur
 | ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | ASP.NET Core web API (szolgáltatás) Azure-függvény a [DotNet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
 | ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) web API (szolgáltatás) |
 | ![Ez a képen a Node.js embléma látható](media/sample-v2-code/logo_nodejs.png)</p>Node.js | ANode.js és a Passport webes API-je (szolgáltatás) [ – Azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
-| ![Ez a képen a Node.js embléma látható](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | [NodeJS és Passport-](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) alapú webes API (szolgáltatás) a következő nevében: |
+| ![Ez a képen a Node.js embléma látható](media/sample-v2-code/logo_nodejs.png)</p>Node.js | A [Node.js és a Passport-Azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) webes API-je (szolgáltatás) a következő nevében: |
 
 ## <a name="other-microsoft-graph-samples"></a>Egyéb Microsoft Graph minták
 

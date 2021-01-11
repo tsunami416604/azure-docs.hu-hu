@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a1991860e1599020c5a91c09dfb30a96ed442ff7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 6be49ec3777b4bcaa033a60546e95711090662a4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033846"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065286"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Oktatóanyag: Szabály létrehozása és értesítések beállítása az Azure IoT Central-alkalmazásban
 
@@ -24,7 +24,7 @@ Az eszközök a telemetria használatával numerikus adatok küldését az eszk�
 
 Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, ha egy szimulált érzékelő eszköz hőmérséklete meghaladja a 70 F-ot &deg; .
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -118,4 +118,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Most, hogy meghatározta a küszöbérték-alapú szabályt, a javasolt következő lépés az alábbiak megismerése:
 
 > [!div class="nextstepaction"]
-> [Folyamatos adatexportálás konfigurálása](./howto-export-data.md).
+> [Webhookok létrehozása a szabályokban](./howto-create-webhooks.md).

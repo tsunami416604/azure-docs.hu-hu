@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 1e8c7805cf9804e8380f8638781f9634d2d3d081
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011509"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064419"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Univerzális Windows-platform-(UWP-) alkalmazásból
 
@@ -42,15 +42,15 @@ Ebben az oktatóanyagban:
 
 ![Bemutatja, hogyan működik az oktatóanyag által generált minta alkalmazás](./media/tutorial-v2-windows-uwp/uwp-intro.svg)
 
-Ez az útmutató egy minta UWP-alkalmazást hoz létre, amely lekérdezi a Microsoft Graph API-t. Ebben az esetben a rendszer egy jogkivonatot ad hozzá a HTTP-kérelmekhez az engedélyezési fejléc használatával. A Microsoft hitelesítési könyvtára a tokenek beszerzését és megújításait kezeli.
+Ez az útmutató egy minta UWP-alkalmazást hoz létre, amely lekérdezi a Microsoft Graph API-t. Ebben az esetben a rendszer egy jogkivonatot ad hozzá a HTTP-kérelmekhez az engedélyezési fejléc használatával. A Microsoft hitelesítési függvénytár kezeli a tokenek beszerzését és megújítását.
 
 ## <a name="nuget-packages"></a>NuGet-csomagok
 
 Ez az útmutató a következő NuGet-csomagot használja:
 
-|Kódtár|Leírás|
+|Kódtár|Description|
 |---|---|
-|[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
+|[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft Authentication Library|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph ügyféloldali kódtár|
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
@@ -71,7 +71,7 @@ Ez az útmutató egy olyan alkalmazást hoz létre, amely lekérdezi az Microsof
 
    ![Minimális és a célként megadott verziók](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>Microsoft hitelesítési függvénytár hozzáadása a projekthez
+### <a name="add-the-microsoft-authentication-library-to-your-project"></a>A Microsoft hitelesítési könyvtár hozzáadása a projekthez
 
 1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt**.
 1. Másolja és illessze be a következő parancsokat a **Package Manager konzol** ablakában:
@@ -82,7 +82,7 @@ Ez az útmutató egy olyan alkalmazást hoz létre, amely lekérdezi az Microsof
     ```
 
    > [!NOTE]
-   > Az első parancs telepíti a [Microsoft Authentication Libraryt (MSAL.net)](https://aka.ms/msal-net). A MSAL.NET a Microsoft Identity platform által védett API-khoz hozzáférő felhasználói jogkivonatok beszerzését, gyorsítótárazását és frissítését végzi. A második parancs telepíti [Microsoft Graph .net Ügyféloldali kódtárat](https://github.com/microsoftgraph/msgraph-sdk-dotnet) , hogy hitelesítse a kérelmeket Microsoft Graph és hívásokat kezdeményez a szolgáltatásnak.
+   > Az első parancs telepíti a [Microsoft Authentication Library-t (MSAL.net)](https://aka.ms/msal-net). A MSAL.NET a Microsoft Identity platform által védett API-khoz hozzáférő felhasználói jogkivonatok beszerzését, gyorsítótárazását és frissítését végzi. A második parancs telepíti [Microsoft Graph .net Ügyféloldali kódtárat](https://github.com/microsoftgraph/msgraph-sdk-dotnet) , hogy hitelesítse a kérelmeket Microsoft Graph és hívásokat kezdeményez a szolgáltatásnak.
 
 ### <a name="create-your-applications-ui"></a>Az alkalmazás felhasználói felületének létrehozása
 
@@ -103,9 +103,9 @@ A Visual Studio a projekt sablonjának részeként létrehozza a *Főoldal. XAML
 </Grid>
 ```
 
-### <a name="use-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>A Microsoft Authentication Library használata a Microsoft Graph API jogkivonatának beszerzéséhez
+### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Az Microsoft Graph API-hoz tartozó jogkivonat beszerzése a Microsoft hitelesítési kódtár használatával
 
-Ez a szakasz bemutatja, hogyan kérhető le jogkivonat a Microsoft Graph API-hoz a Microsoft Authentication Library használatával. Módosítsa a *MainPage.XAML.cs* -fájlt.
+Ez a szakasz bemutatja, hogyan kérhető le jogkivonat a Microsoft Graph API-hoz a Microsoft hitelesítési kódtár használatával. Módosítsa a *MainPage.XAML.cs* -fájlt.
 
 1. A *MainPage.XAML.cs*-ben adja hozzá az alábbi hivatkozásokat:
 
@@ -227,7 +227,7 @@ A `AcquireTokenInteractive` metódus egy olyan ablakot eredményez, amely arra k
 
 A `AcquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. Ha `AcquireTokenInteractive` első alkalommal futtatja a programot, és felszólítja a felhasználót a hitelesítő adatokra, használja a `AcquireTokenSilent` metódust a későbbi hívások jogkivonatának igényléséhez. Ez a metódus csendes módon szerzi be a jogkivonatokat. A Microsoft hitelesítési függvénytár kezeli a jogkivonat-gyorsítótárat és a megújítást.
 
-A metódus végül `AcquireTokenSilent` sikertelen lesz. A hiba okai közé tartozik az a felhasználó, aki kijelentkezett vagy módosította a jelszavát egy másik eszközön. Ha a Microsoft Authentication Library észleli, hogy a probléma interaktív műveletet igényel, `MsalUiRequiredException` kivételt jelez. Az alkalmazás két módon tudja kezelni ezt a kivételt:
+A metódus végül `AcquireTokenSilent` sikertelen lesz. A hiba okai közé tartozik az a felhasználó, aki kijelentkezett vagy módosította a jelszavát egy másik eszközön. Ha a Microsoft Authentication Library azt észleli, hogy a probléma interaktív műveletet igényel, `MsalUiRequiredException` kivételt jelez. Az alkalmazás két módon tudja kezelni ezt a kivételt:
 
 * Azonnal meghívja az alkalmazást `AcquireTokenInteractive` . Ez a hívás azt eredményezi, hogy a rendszer felszólítja a felhasználót, hogy jelentkezzen be. Ezt a módszert általában olyan online alkalmazásokhoz használja, amelyeken nincs elérhető offline tartalom a felhasználó számára. Az irányított telepítő által generált minta követi a mintát. A minta első futtatásakor ez a művelet jelenik meg.
 
@@ -297,7 +297,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 
 #### <a name="more-information-about-signing-out"></a>További információ a kijelentkezésről<a name="more-information-on-sign-out"></a>
 
-A `SignOutButton_Click` metódus eltávolítja a felhasználót a Microsoft Authentication Library felhasználói gyorsítótárából. Ez a módszer gyakorlatilag azt jelzi, hogy a Microsoft hitelesítési könyvtára elfelejti az aktuális felhasználót. A jogkivonat beszerzésére vonatkozó jövőbeli kérések csak akkor lesznek sikeresek, ha az interaktív.
+A `SignOutButton_Click` metódus eltávolítja a felhasználót a Microsoft Authentication Library felhasználói gyorsítótárából. Ez a módszer gyakorlatilag azt jelzi, hogy a Microsoft hitelesítési függvénytár elfelejti az aktuális felhasználót. A jogkivonat beszerzésére vonatkozó jövőbeli kérések csak akkor lesznek sikeresek, ha az interaktív.
 
 Az ebben a példában szereplő alkalmazás egyetlen felhasználót támogat. A Microsoft hitelesítési függvénytár olyan forgatókönyveket támogat, amelyekben a felhasználó több fiókon is bejelentkezhet. Ilyen például egy e-mail-alkalmazás, amelyben a felhasználók több fiókkal rendelkeznek.
 
@@ -322,7 +322,7 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 #### <a name="more-information"></a>További információ<a name="more-information-1"></a>
 
-Az **OpenID Connect** használatával beszerzett azonosító tokenek a felhasználóhoz tartozó információk kis részhalmazát is tartalmazzák. `DisplayBasicTokenInfo` a jogkivonatban található alapvető információkat jeleníti meg. Ez az információ tartalmazza a felhasználó megjelenítendő nevét és AZONOSÍTÓját. Tartalmazza továbbá a jogkivonat lejárati dátumát és a hozzáférési jogkivonatot jelölő karakterláncot is. Ha többször is bejelöli a **hívás Microsoft Graph API** -t, látni fogja, hogy ugyanazt a tokent használták újra a későbbi kérésekhez. A lejárati dátumot is megtekintheti, ha a Microsoft Authentication Library úgy dönt, hogy ideje megújítani a jogkivonatot.
+Az **OpenID Connect** használatával beszerzett azonosító tokenek a felhasználóhoz tartozó információk kis részhalmazát is tartalmazzák. `DisplayBasicTokenInfo` a jogkivonatban található alapvető információkat jeleníti meg. Ez az információ tartalmazza a felhasználó megjelenítendő nevét és AZONOSÍTÓját. Tartalmazza továbbá a jogkivonat lejárati dátumát és a hozzáférési jogkivonatot jelölő karakterláncot is. Ha többször is bejelöli a **hívás Microsoft Graph API** -t, látni fogja, hogy ugyanazt a tokent használták újra a későbbi kérésekhez. Azt is megtekintheti, hogy mikor kell megújítani a tokent, ha a Microsoft hitelesítési függvénytár eldönti, hogy a lejárati dátum kiterjeszthető
 
 ### <a name="display-message"></a>Üzenet megjelenítése
 
@@ -469,7 +469,7 @@ A jogkivonat `AcquireTokenInteractive` `AcquireTokenSilent` - **információ** m
 |Tulajdonság  |Formátum  |Leírás |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |A felhasználót azonosító Felhasználónév.|
-|`Token Expires` |`DateTime` |A jogkivonat lejárati ideje. A Microsoft hitelesítési függvénytár a jogkivonatot szükség szerint megújítva kiterjeszti a lejárati dátumot.|
+|`Token Expires` |`DateTime` |A jogkivonat lejárati ideje. A Microsoft hitelesítési függvénytár a token szükség szerinti megújításával kiterjeszti a lejárati dátumot.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörökről és a delegált engedélyekről
 
@@ -504,7 +504,7 @@ Az [integrált hitelesítést az összevont tartományokon](#enable-integrated-a
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Microsoft Authentication Library (MSAL) használatáról a .NET-alkalmazásokban történő engedélyezéshez és hitelesítéshez:
 

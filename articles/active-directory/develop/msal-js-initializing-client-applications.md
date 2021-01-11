@@ -13,12 +13,12 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 6b5093c5a1a45aed3493fabd7a362b0579998171
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e12beafc81cbc41ea070fbdda1d68990f6f3fcda
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343586"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063688"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Ügyfélalkalmazások inicializálása MSAL.js használatával
 
@@ -144,7 +144,7 @@ A MSAL.js 1. x és 2. x egyaránt úgy lett kialakítva, hogy egyetlen példánn
 
 A vagy a több példánya `UserAgentApplication` `PublicClientApplication` nem ajánlott, mert ütköző gyorsítótár-bejegyzéseket és viselkedést okoznak a böngészőben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a MSAL.js 2. x code minta a GitHubon azt mutatja be, hogyan hozható létre egy [PublicClientApplication][msal-js-publicclientapplication] egy [konfigurációs][msal-js-configuration] objektummal:
 

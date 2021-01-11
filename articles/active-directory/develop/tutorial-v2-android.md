@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 746d4ac2d346d67b5ca796c19c799f654715acc4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1282c27378e6a088a600a3ab3105f3f548984d03
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013583"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063144"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása Android-alkalmazásból
 
@@ -71,7 +71,7 @@ Ha még nem rendelkezik Android-alkalmazással, kövesse az alábbi lépéseket 
 6. Állítsa a **minimális API** -szintet **API 19** vagy újabb értékre, majd kattintson a **Befejezés** gombra.
 7. A Project nézetben a legördülő menüben válassza a **projekt** lehetőséget a forrás-és a nem forrásként szolgáló projektfájlok megjelenítéséhez, majd nyissa meg az **app/Build. gradle** fájlt, és állítsa a következőre: `targetSdkVersion` `28` .
 
-## <a name="integrate-with-microsoft-authentication-library"></a>Integrálás a Microsoft hitelesítési függvénytárával
+## <a name="integrate-with-the-microsoft-authentication-library"></a>Integrálás a Microsoft hitelesítési függvénytárával
 
 ### <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
@@ -588,7 +588,7 @@ Ha már nincs rá szükség, törölje az [alkalmazás regisztrálása](#registe
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a védett webes API-kat meghívó mobil alkalmazások létrehozásáról a többrészes forgatókönyvek sorozatában.
 

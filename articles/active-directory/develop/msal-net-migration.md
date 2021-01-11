@@ -13,16 +13,16 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 21f29135cc3b94e5b8c2dfc99b0f7be26b37d123
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995199"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063603"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
 
-A .NET-hez készült Microsoft Authentication Library (MSAL.NET) és az Azure AD Authentication Library for .NET (ADAL.NET) is az Azure AD-entitások hitelesítésére és az Azure AD-jogkivonatok igénylésére szolgál. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers platformmal (v 1.0) az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez az Azure AD Authentication Library (ADAL) használatával. A MSAL használata:
+A .net-hez készült Microsoft Authentication Library (MSAL.NET) és az Azure AD Authentication Library for .NET (ADAL.NET) egyaránt az Azure AD-entitások hitelesítésére és az Azure AD-jogkivonatok igénylésére szolgál. Eddig a legtöbb fejlesztő dolgozott együtt az Azure ad for Developers platformmal (v 1.0) az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez az Azure AD Authentication Library (ADAL) használatával. A MSAL használata:
 
 - a Microsoft Identity platform végpontjának használatával a Microsoft-identitások (Azure AD-identitások és Microsoft-fiókok, valamint közösségi és helyi Azure AD B2C fiókok) szélesebb körét hitelesítheti.
 - a felhasználók a legjobb egyszeri bejelentkezési élményt kapják meg.
@@ -264,6 +264,6 @@ Ekkor megjelenik egy hozzáférési jogkivonat és egy azonosító jogkivonat, a
 
 Ezt a módszert olyan különböző integrációs forgatókönyvek esetében is használhatja, amelyeken elérhető frissítési jogkivonat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hatókörökkel [, engedélyekkel és a Microsoft Identity platform végpontjában](v2-permissions-and-consent.md) található hatókörökkel kapcsolatos további információk

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 5841af4225f88b36fe727b60a597af208ac830f5
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 92d0dad86b3f048eb96dd7b17ed09f6e20d7cde2
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827172"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063297"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>Microsoft Identity platform token Exchange-forgatókönyvek SAML-vel és OIDC/OAuth
 
@@ -32,5 +32,5 @@ Az általános stratégia az OIDC-/OAuth-verem hozzáadása az alkalmazáshoz. A
 > [!NOTE]
 > A OIDC/OAuth viselkedés hozzáadására javasolt függvénytár a Microsoft Authentication Library (MSAL). További információ a MSAL: [a Microsoft Authentication Library (MSAL) áttekintése](msal-overview.md). Az előző függvénytár neve Active Directory-hitelesítési tár (ADAL) volt, azonban nem ajánlott, mert a MSAL lecseréli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Hitelesítési folyamatok és alkalmazási helyzetek](authentication-flows-app-scenarios.md)

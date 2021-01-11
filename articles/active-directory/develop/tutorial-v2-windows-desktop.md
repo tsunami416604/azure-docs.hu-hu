@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0caac72125b28a9c6b17eb68413a7242df5cd06c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 8909c684187aee2abc0915bad74853e4de9706a4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011645"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063263"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból
 
@@ -57,7 +57,7 @@ A MSAL kezeli a gyorsítótárazást és a hozzáférési jogkivonatok frissít�
 
 Ez az útmutató a következő NuGet-csomagokat használja:
 
-|Kódtár|Leírás|
+|Kódtár|Description|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 
@@ -377,7 +377,7 @@ A Microsoft Graph API meghívásához használt hozzáférési tokenen kívül a
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a védett webes API-kat meghívó asztali alkalmazások létrehozásáról a több részből álló forgatókönyvek sorozatában:
 

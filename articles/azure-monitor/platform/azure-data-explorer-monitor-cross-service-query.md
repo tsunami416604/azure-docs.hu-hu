@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor és az Azure Adatkezelő (előzetes verzió) közötti több szolgáltatás lekérdezése
 description: Az Azure Adatkezelő az Azure-Log Analytics eszközein keresztül kérdezheti le az Azure-t, hogy az összes adatait egy helyen egyesítse és elemezze.
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 0af9111223bb16f1c5843223e7fe1661ce99c623
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 5aadd9d96f538f92e1b9e0100b2c1055ee0b0633
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749243"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065269"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>Több szolgáltatás lekérdezése – Azure Monitor és az Azure Adatkezelő (előzetes verzió)
 Az [Azure adatkezelő](https://docs.microsoft.com/azure/data-explorer/), a [Application Insights](/azure/azure-monitor/app/app-insights-overview)és a [log Analytics](/azure/azure-monitor/platform/data-platform-logs)közötti szolgáltatások közötti lekérdezések létrehozása.
@@ -43,7 +43,7 @@ Az Azure Adatkezelő segítségével lekérdezheti az Log Analytics-munkaterüle
 >[!tip] 
 > * Az Log Analytics munkaterületről származó összes adatok Azure Storage-fiókba vagy Event hub-ba való exportálásához használja Azure Monitor naplók Log Analytics munkaterület adatexportálási szolgáltatását. [Lásd: log Analytics munkaterület-adatexportálás Azure monitor (előzetes verzió)](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk:
 * [hozzon létre több szolgáltatást az Azure adatkezelő és Azure monitor között](https://docs.microsoft.com/azure/data-explorer/query-monitor-data). Azure Monitor adatok lekérdezése az Azure-ból Adatkezelő
 * [hozzon létre több szolgáltatást Azure monitor és az Azure adatkezelő között](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy). Azure-Adatkezelő adatainak lekérdezése Azure Monitor

@@ -1,7 +1,7 @@
 ---
 title: AD FS támogatás a MSAL.NET-ben | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg a .NET-hez készült Microsoft Authentication Library (MSAL.NET) Active Directory összevonási szolgáltatások (AD FS) (AD FS) támogatását.
+description: Ismerkedjen meg Active Directory összevonási szolgáltatások (AD FS) (AD FS) támogatással a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4107b0785ef4635e0e5e745a35b605d2634a220d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a146b310e6056954ac2655ff2fd99e1e3d7c694f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166229"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063637"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL.NET-ben
 A Windows Server Active Directory összevonási szolgáltatások (AD FS) (AD FS) lehetővé teszi az OpenID Connect és a OAuth 2,0-alapú hitelesítés és engedélyezés hozzáadását a fejleszthető alkalmazásokhoz. Ezek az alkalmazások közvetlenül a AD FSon keresztül hitelesítik a felhasználókat. További információkért olvassa el [AD FS fejlesztői forgatókönyvek](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)című témakört.

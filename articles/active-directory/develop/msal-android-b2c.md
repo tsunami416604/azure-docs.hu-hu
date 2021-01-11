@@ -13,16 +13,16 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 1c4f47fd771cfb92b3896963c96b39d9eb7d97b8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ad43d380bde1bae0e389fa58e3d916c2c3250be7
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344878"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064932"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Az Android rendszerhez készült MSAL használata B2C-vel
 
-A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások fejlesztői számára, hogy [Azure Active Directory B2C (Azure ad B2C)](../../active-directory-b2c/index.yml)használatával hitelesítsék a felhasználókat a közösségi és a helyi identitásokkal. Azure AD B2C egy Identitáskezelés szolgáltatás. Ezzel testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat, amikor az alkalmazásaikat használják.
+A Microsoft Authentication Library (MSAL) lehetővé teszi az alkalmazások fejlesztői számára, hogy [Azure Active Directory B2C (Azure ad B2C)](../../active-directory-b2c/index.yml)használatával hitelesítsék a felhasználókat a közösségi és helyi identitásokkal. Azure AD B2C egy Identitáskezelés szolgáltatás. Ezzel testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat, amikor az alkalmazásaikat használják.
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>Ismert hatóságok és átirányítási URI konfigurálása
 
@@ -237,6 +237,6 @@ Mindegyik szabályzat `IAccount` minden felhasználóhoz hozzáadja a gyorsító
 
 Amikor megújítja a Szabályzathoz tartozó jogkivonatokat `acquireTokenSilent` , megadhatja, `IAccount` hogy a szabályzat korábbi hívásai milyen értéket adtak vissza  `AcquireTokenSilentParameters` . Egy másik házirend által visszaadott fiók megadása hibát eredményez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Active Directory B2Cról (Azure AD B2C) a [mi Azure Active Directory B2C?](../../active-directory-b2c/overview.md)

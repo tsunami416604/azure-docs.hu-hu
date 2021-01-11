@@ -13,12 +13,12 @@ ms.date: 04/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ef29f6fe3403809d01fcea382474c514319b7c0
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81534312"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063756"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Nyilvános ügyfél és bizalmas ügyfélalkalmazások
 A Microsoft Authentication Library (MSAL) két típusú ügyfelet határoz meg: a nyilvános ügyfeleket és a bizalmas ügyfeleket. A két ügyfél típusát úgy különböztetik meg, hogy az engedélyezési kiszolgálóval biztonságosan hitelesítik magukat, és megőrzik az ügyfél hitelesítő adataik titkosságát. Ezzel szemben az Azure AD Authentication Library (ADAL) az úgynevezett *hitelesítési környezetet* használja (amely az Azure ad-vel való kapcsolódás).
@@ -45,7 +45,7 @@ A Microsoft Authentication Library (MSAL) két típusú ügyfelet határoz meg: 
 
 Ha már használta a ADAL-t, észreveheti, hogy a ADAL hitelesítési környezetével ellentétben a MSAL (más néven az alkalmazás- *azonosító* vagy az alkalmazás- *azonosító*) az alkalmazás felépítésekor a rendszer egyszer átadja az ügyfél-azonosítót. Nem kell újra átadni, ha az alkalmazás jogkivonatot vásárol. Ez mind a nyilvános, mind a bizalmas ügyfélalkalmazások esetében igaz. A bizalmas ügyfélalkalmazások konstruktorai az ügyfél hitelesítő adatait is megkapják: az identitás-szolgáltatóval megosztott titkos kulcsot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerkedjen meg a következőkkel:
 - [Ügyfélalkalmazás konfigurációs beállításai](msal-client-application-configuration.md)
 - [Ügyfélalkalmazások példányainak MSAL.NET használatával](msal-net-initializing-client-applications.md)

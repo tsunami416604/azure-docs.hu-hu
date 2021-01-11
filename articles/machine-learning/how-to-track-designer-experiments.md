@@ -8,15 +8,15 @@ ms.author: keli19
 ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/25/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: designer
-ms.openlocfilehash: 29d83f4acddfce6294457f87519d62e35f52bf15
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709418"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065252"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Azure Machine Learning Designer-folyamatok naplózásának engedélyezése
 
@@ -27,7 +27,7 @@ További információ a metrikák az SDK-létrehozási funkcióval való naplóz
 
 ## <a name="enable-logging-with-execute-python-script"></a>A naplózás engedélyezése a Python-szkript végrehajtásával
 
-A __Python-szkript végrehajtása__ modul használatával engedélyezheti a naplózást a Designer-folyamatokban. Bár bármilyen értéket naplózhat ezzel a munkafolyamattal, különösen hasznos a mérőszámok naplózása a __modell kiértékelése__ modulból a modell teljesítményének nyomon követéséhez a futtatások között.
+A [Python-szkript végrehajtása](./algorithm-module-reference/execute-python-script.md) modul használatával engedélyezheti a naplózást a Designer-folyamatokban. Bár bármilyen értéket naplózhat ezzel a munkafolyamattal, különösen hasznos a mérőszámok naplózása a __modell kiértékelése__ modulból a modell teljesítményének nyomon követéséhez a futtatások között.
 
 Az alábbi példa bemutatja, hogyan naplózhatja a két betanított modell közepes négyzetes hibáját a modell kiértékelése és a Python parancsfájl-modulok végrehajtása segítségével.
 
@@ -53,7 +53,7 @@ Az alábbi példa bemutatja, hogyan naplózhatja a két betanított modell köze
         
         # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
         parent_run.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
-        # Log right output port result of Evaluate Model.
+        # Log right output port result of Evaluate Model. The following line should be deleted if you only connect one Score Module to the` left port of Evaluate Model module.
         parent_run.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
 
         return dataframe1,
@@ -74,10 +74,11 @@ A folyamat futásának befejeződése után megtekintheti a *Mean_Absolute_Error
 
     ![A Studio futtatási metrikáinak megtekintése](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a naplókat a tervezőben. A következő lépésekért tekintse meg az alábbi kapcsolódó cikkeket:
 
 
 * Ismerje meg, hogyan lehet a tervezői folyamatokat elhárítani: [hibakeresés & ml-folyamatok hibaelhárítása](how-to-debug-pipelines.md#azure-machine-learning-designer).
 * Megtudhatja, hogyan használhatja a Python SDK-t a mérőszámok naplózására az SDK-létrehozási élményben: a [naplózás engedélyezése az Azure ml betanítási futtatásával](how-to-track-experiments.md).
+* Megtudhatja, hogyan használhatja a [Python-szkriptek futtatását](./algorithm-module-reference/execute-python-script.md) a tervezőben.

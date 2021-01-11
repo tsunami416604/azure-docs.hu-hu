@@ -1,7 +1,7 @@
 ---
 title: Xamarin Android rendszerbeli böngészővel kapcsolatos megfontolások (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg a Xamarin-alapú rendszerböngészők használatának szempontjait a .NET-hez készült Microsoft Authentication Library (MSAL.NET) szolgáltatással.
+description: Ismerje meg, hogyan használhatók a rendszerböngészők a Xamarin Android rendszeren a .NET-hez készült Microsoft Authentication Library (MSAL.NET) használatával.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8f755b42249a88a2d37117003d561f79aea6b170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4230a194fb18587a209c100a39b0924e6170502d
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165991"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063467"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>A Xamarin Android rendszerbeli böngészővel kapcsolatos szempontok a MSAL.NET használatához
 
@@ -44,16 +44,16 @@ A következő táblázat felsorolja a hitelesítési kompatibilitáshoz tesztelt
 
 | Eszköz | Böngésző     |  Eredmény  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/egy + | Chrome\* | Pass|
-| Huawei/egy + | Edge\* | Pass|
-| Huawei/egy + | Firefox\* | Pass|
-| Huawei/egy + | Bátor\* | Pass|
-| Egy + | Ecosia\* | Pass|
-| Egy + | Kiwi\* | Pass|
-| Huawei/egy + | Operát | Pass|
-| Huawei | OperaMini | Pass|
-| Huawei/egy + | Inböngésző | Pass|
-| Egy + | Maxthon | Pass|
+| Huawei/egy + | Chrome\* | Sikeres|
+| Huawei/egy + | Edge\* | Sikeres|
+| Huawei/egy + | Firefox\* | Sikeres|
+| Huawei/egy + | Bátor\* | Sikeres|
+| Egy + | Ecosia\* | Sikeres|
+| Egy + | Kiwi\* | Sikeres|
+| Huawei/egy + | Operát | Sikeres|
+| Huawei | OperaMini | Sikeres|
+| Huawei/egy + | Inböngésző | Sikeres|
+| Egy + | Maxthon | Sikeres|
 | Huawei/egy + | DuckDuckGo | Felhasználó által megszakított hitelesítés|
 | Huawei/egy + | UC böngésző | Felhasználó által megszakított hitelesítés|
 | Egy + | Delfin | Felhasználó által megszakított hitelesítés|

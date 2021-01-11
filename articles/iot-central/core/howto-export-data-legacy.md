@@ -7,19 +7,19 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d4c099d29a843b4c354ffb218887dc7ffab51771
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987354"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065439"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával (örökölt)
 
 > [!Note]
 > Ez a cikk a IoT Central korábbi adatexportálási funkcióit ismerteti.
 >
-> - Az új előzetes verziójú adatexportálási funkciókkal kapcsolatos további információkért lásd: [IoT-adatok exportálása a Felhőbeli célhelyekre az adatok exportálása használatával](./howto-export-data.md).
+> - További információ a legújabb adatexportálási funkciókról: [IoT-adatok exportálása a Felhőbeli célhelyekre adatexportálás használatával](./howto-export-data.md).
 > - Az előzetes verziójú adatexportálás és az örökölt adatexportálási funkciók közötti különbségekről az [összehasonlítási táblázatban](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export)talál további információt.
 
 Ez a cikk az Azure IoT Central adatexportálási funkciójának használatát ismerteti. Ezzel a szolgáltatással folyamatosan exportálhatja az adatait az **azure Event Hubsba**, **Azure Service Busba** vagy **Azure Blob Storage** -példányba. Az adatexportálás JSON-formátumot használ, és tartalmazhatja a telemetria, az eszköz adatait és az eszköz sablonjának adatait. Az exportált adatértékek használata:
@@ -113,7 +113,7 @@ Most, hogy van egy célhelye az adatexportáláshoz, az alábbi lépéseket köv
 
 7. Az **exportálni** kívánt adat területen válassza ki az exportálandó adattípusokat **, ha a** típust be értékre állítja.
 
-8. Az adatexportálás bekapcsolásához ellenőrizze, **hogy be van**-e kapcsolva az **engedélyezve** váltógomb. Kattintson a **Mentés** gombra.
+8. Az adatexportálás bekapcsolásához ellenőrizze, **hogy be van**-e kapcsolva az **engedélyezve** váltógomb. Válassza a **Mentés** lehetőséget.
 
 9. Néhány perc elteltével az adatai megjelennek a kiválasztott célhelyen.
 

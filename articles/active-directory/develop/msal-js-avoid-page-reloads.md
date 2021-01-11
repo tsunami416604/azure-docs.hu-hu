@@ -13,15 +13,15 @@ ms.date: 05/29/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5eb30f7dcf4b459b0af0bd8de965971fbbe44863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c96d161e55261af1bbe04eae6ead1d245158d02
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85477651"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064827"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Kerülje a lapok újratöltését, ha a tokenek beszerzése és megújítása csendesen a MSAL.js
-A JavaScripthez készült Microsoft Authentication Library (MSAL.js) rejtett elemeket használ a `iframe` tokenek a háttérben való csendes beszerzéséhez és megújításához. Az Azure AD visszaadja a tokent a jogkivonat-kérelemben megadott regisztrált redirect_urinak (alapértelmezés szerint ez az alkalmazás legfelső szintű lapja). Mivel a válasz 302, az a következőhöz tartozó HTML-kódot eredményezi: `redirect_uri` `iframe` . Általában az alkalmazás `redirect_uri` a legfelső szintű lap, és ez az eszköz újratöltését okozza.
+A JavaScripthez készült Microsoft Authentication Library (MSAL.js) rejtett `iframe` elemeket használ a tokenek a háttérben való csendes beszerzéséhez és megújításához. Az Azure AD visszaadja a tokent a jogkivonat-kérelemben megadott regisztrált redirect_urinak (alapértelmezés szerint ez az alkalmazás legfelső szintű lapja). Mivel a válasz 302, az a következőhöz tartozó HTML-kódot eredményezi: `redirect_uri` `iframe` . Általában az alkalmazás `redirect_uri` a legfelső szintű lap, és ez az eszköz újratöltését okozza.
 
 Más esetekben, ha az alkalmazás főoldalára való navigálás hitelesítés szükséges, a beágyazott `iframe` elemek vagy hibák vezethetnek `X-Frame-Options: deny` .
 
@@ -145,5 +145,5 @@ export class MsalComponent {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az [egyoldalas alkalmazások (Spa)](scenario-spa-overview.md) a MSAL.js használatával történő létrehozásáról.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803799"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065185"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Hibaelhárítás az ITSM-összekötőben
 
@@ -23,13 +23,38 @@ A ITSM lehetővé teszi a riasztások küldését a külső jegyrendszer, péld�
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Az incidens megjelenítése és elemzése és a kérelmekre vonatkozó adatváltozás
 
-A kapcsolatok beállításakor a ITSMC legfeljebb 120 napos incidenst tud szinkronizálni, és módosíthatja a kérelmek adatait. Az adatok naplózási rekordjainak sémája a jelen cikk [További információk szakaszában](./itsmc-overview.md) található.
+A kapcsolatok beállításakor a ITSMC legfeljebb 120 napos incidenst tud szinkronizálni, és módosíthatja a kérelmek adatait. Az adatok naplózási rekordjainak sémája a jelen cikk [További információk szakaszában](./itsmc-synced-data.md) található.
 
 A ITSMC irányítópult használatával megjelenítheti az incidenst és módosíthatja a kérelmeket:
 
 ![A ITSMC irányítópultot megjelenítő képernyőkép.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Az irányítópult az összekötő állapotáról is tartalmaz információkat, amelyeket kiindulási pontként használhat a kapcsolatokkal kapcsolatos problémák elemzéséhez.
+
+### <a name="error-investigation-using-the-dashboard"></a>Hibák vizsgálata az irányítópult használatával
+
+Az irányítópulton található hibák megtekintéséhez kövesse a következő lépéseket:
+
+1. Az **összes erőforrás** területen keresse meg a **ügyfélszolgálati (*a munkaterület neve*)**:
+
+   ![A Azure Portal legutóbbi erőforrásait bemutató képernyőkép.](media/itsmc-definition/create-new-connection-from-resource.png)
+
+2. A bal oldali ablaktábla **munkaterület-adatforrások** területén válassza a **ITSM-kapcsolatok** elemet:
+
+   ![Képernyőkép, amely megjeleníti a ITSM-kapcsolatok menüpontot.](media/itsmc-overview/add-new-itsm-connection.png)
+
+3. A bal oldali mező **Összegzés** területén **it-szolgáltatásmenedzsmenti csatoló** válassza az **Összefoglalás megtekintése** lehetőséget:
+
+    ![A megtekintés összegzését bemutató képernyőkép.](media/itsmc-resync-servicenow/dashboard-view-summary.png)
+
+4. A bal oldali mező **Összegzés** területén **it-szolgáltatásmenedzsmenti csatoló** kattintson a gráfra:
+
+    ![A diagramot bemutató képernyőkép.](media/itsmc-resync-servicenow/dashboard-graph-click.png)
+
+5. Az irányítópult használatával áttekintheti az összekötő állapotát és hibáit.
+    ![Az összekötő állapotát megjelenítő képernyőkép.](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="service-map"></a>Szolgáltatás térképe
 
 A Service Map érintett számítógépeken szinkronizált incidenseket is megjelenítheti.
 

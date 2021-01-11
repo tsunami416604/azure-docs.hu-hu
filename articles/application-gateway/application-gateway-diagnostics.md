@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 9d2fba48762e11a92f6f3925c969b01aebbe3630
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347591"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065320"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway háttérbeli állapot-és diagnosztikai naplói
 
@@ -222,7 +222,7 @@ A hozzáférési napló csak akkor jön létre, ha minden Application Gateway p�
 |serverRouted| Az a háttér-kiszolgáló, amelyhez az Application Gateway átirányítja a kérést.|
 |serverStatus| A háttér-kiszolgáló HTTP-állapotkódot.|
 |serverResponseLatency| A háttér-kiszolgáló válaszának késése.|
-|gazda| A kérelemben szereplő állomásfejléc. Ha az újraírásra kerül, ebben a mezőben a frissített állomásnév szerepel|
+|gazda| A kérelemben szereplő állomásfejléc. Ha a fejléc-újraírást használja, ez a mező tartalmazza a frissített gazdagép nevét.|
 |originalRequestUriWithArgs| Ez a mező az eredeti kérelem URL-címét tartalmazza |
 |requestUri| Ez a mező a Application Gateway Újraírási műveletét követő URL-címet tartalmazza. |
 |originalHost| Ebben a mezőben az eredeti kérelem állomásneve szerepel

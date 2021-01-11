@@ -13,16 +13,16 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 349ec8c99bc9e6768e5ec2ded346893da95c1636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e2ffebf0b414d4b59178fe04fb109530365786b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166144"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064708"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Nyilvános ügyfélalkalmazás létrehozása konfigurációs beállításokkal a MSAL.NET használatával
 
-Ez a cikk azt ismerteti, hogyan hozható létre [nyilvános ügyfélalkalmazás](msal-client-applications.md) a .net-hez készült Microsoft Authentication Library (MSAL.net) használatával.  Az alkalmazás egy beállítási fájlban megadott konfigurációs beállításokkal lett létrehozva.
+Ez a cikk azt ismerteti, hogyan hozható létre egy [nyilvános ügyfélalkalmazás](msal-client-applications.md) a .net-hez készült Microsoft Authentication Library (MSAL.net) használatával.  Az alkalmazás egy beállítási fájlban megadott konfigurációs beállításokkal lett létrehozva.
 
 Az alkalmazás inicializálásához először [regisztrálnia](quickstart-register-app.md) kell, hogy az alkalmazás integrálható legyen a Microsoft Identity platformmal. A regisztráció után a következő információkra lehet szüksége (amelyek a Azure Portalban találhatók):
 
