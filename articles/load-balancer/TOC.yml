@@ -146,9 +146,13 @@
       items:
         - name: Az Azure Load Balancer hibaelhárítása
           href: load-balancer-troubleshoot.md
-        - name: Gyakori üzembehelyezési hibák elhárítása
+        - name: Állapotadat-mintavétel állapota
+          href: load-balancer-troubleshoot-health-probe-status.md
+        - name: Háttérbeli készlet (VM) forgalma
+          href: load-balancer-troubleshoot-backend-traffic.md
+        - name: Gyakori telepítési hibák
           href: load-balancer-common-deployment-errors.md
-        - name: Kimenő kapcsolatok gyakori problémáinak a hibaelhárítása
+        - name: Kimenő kapcsolatok gyakori problémáinak elhárítása
           href: troubleshoot-outbound-connection.md
         - name: Az erőforrások állapotával és a bejövő rendelkezésre állással kapcsolatos hibák elhárítása
           href: troubleshoot-rhc.md

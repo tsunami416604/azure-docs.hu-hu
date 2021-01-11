@@ -54,7 +54,7 @@
           href: enable-dynamic-configuration-java-spring-app.md
     - name: Funkciójelzők használata
       items:
-        - name: .NET Core
+        - name: ASP.NET-mag
           href: use-feature-flags-dotnet-core.md
         - name: Spring Boot
           href: use-feature-flags-spring-boot.md
@@ -110,7 +110,7 @@
           href: concept-disaster-recovery.md
 - name: Útmutatók
   items:
-    - name: Szolgáltatás engedélyezése a felhasználók egy bizonyos százaléka számára
+    - name: Feltételes funkciójelölők használata
       href: howto-feature-filters-aspnet-core.md
     - name: Szolgáltatás engedélyezése megadott felhasználók/csoportok számára
       href: howto-targetingfilter-aspnet-core.md

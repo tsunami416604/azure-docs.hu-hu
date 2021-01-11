@@ -966,6 +966,10 @@
               href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Migrálás – Az Apache Cassandrából a Cassandra API-ba a Databricks használatával
               href: cassandra-migrate-cosmos-db-databricks.md
+            - name: Migrálás – Az Apache Cassandrából a Cassandra API-ba a Databricks használatával
+              href: cassandra-migrate-cosmos-db-databricks.md
+            - name: Migrálás – A PostgreSQL-ből a Cassandra API-ba az Apache Kafka használatával
+              href: postgres-migrate-cosmos-db-kafka.md
         - name: Csatorna módosítása
           href: cassandra-change-feed.md
         - name: Tároló létrehozása – Cassandra API
