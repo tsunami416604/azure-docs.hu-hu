@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 01/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 539ea6f80604eabdbbe56a3280cf5ddb367c0439
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: f30b1f0f14bba54b8b4fcd7c5190f3c533f199a6
+ms.sourcegitcommit: 63caac7871df9d999ca5a5f1b8c036ae7014231c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97966783"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98061752"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>A Speech Services szuverén felhőkben
 
@@ -36,9 +36,10 @@ Csak az USA kormányzati szervei és azok partnerei számára érhető el. Tová
     - Egyéni beszéd (akusztikus modell (AM) és Language Model (LM) adaptáció)
       - [Speech Studio](https://speech.azure.us/)
   - Szövegfelolvasás
+    - Normál hang
+    - Neurális hang
   - Speech Translator
 - **Nem támogatott funkciók:**
-  - Neurális hang
   - Egyéni hang
 - **Támogatott nyelvek:**
   - A támogatott nyelvek listáját [itt](language-support.md) tekintheti meg
@@ -105,20 +106,13 @@ Elérhető a Kínában üzleti jelenléttel rendelkező szervezetek számára. T
     - Egyéni beszéd (akusztikus modell (AM) és Language Model (LM) adaptáció)
       - [Speech Studio](https://speech.azure.cn/)
   - Szövegfelolvasás
+    - Normál hang
+    - Neurális hang
   - Speech Translator
 - **Nem támogatott funkciók:**
-  - Neurális hang
   - Egyéni hang
 - **Támogatott nyelvek:**
-  - Arab (AR-*)
-  - Kínai (zh-*)
-  - Angol (en-*)
-  - Francia (FR-*)
-  - Német (de-*)
-  - Hindi (Hi-IN)
-  - Koreai (ko-KR)
-  - Orosz (ru-RU)
-  - Spanyol (es-*)
+  - A támogatott nyelvek listáját [itt](language-support.md) tekintheti meg
 
 ### <a name="endpoint-information"></a>Végpont adatai
 
