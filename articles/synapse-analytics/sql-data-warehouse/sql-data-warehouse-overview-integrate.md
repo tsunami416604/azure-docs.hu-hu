@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2afc274bf7c040eca6a83abbab24c41767f16482
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3e55ef054d5c305937f88d6ec5b2b4453cac6792
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453673"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117758"
 ---
 # <a name="integrate-other-services-with-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Más szolgáltatások integrálása dedikált SQL-készlettel (korábban SQL DW) az Azure szinapszis Analytics szolgáltatásban.
 
@@ -36,7 +36,7 @@ Az Power BI integráció lehetővé teszi az adatraktár számítási teljesítm
 * **Közvetlen** kapcsolat: a dedikált SQL-készlet (korábbi NEVÉN SQL DW) használatával létrehozott adattárházak logikai pushdown való fejlettebb kapcsolata. A leküldés gyorsabb elemzést biztosít, nagyobb léptékben.
 * **Megnyitás a Power BIban**: a "Megnyitás Power bi" gomb a példányok információit átadja a Power BInak a kapcsolódás egyszerűsített módjaként.
 
-További információ: Integration [with Power bi](sql-data-warehouse-get-started-visualize-with-power-bi.md), vagy a [Power bi dokumentációja](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
+További információ: Integration [with Power bi](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect), vagy a [Power bi dokumentációja](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 

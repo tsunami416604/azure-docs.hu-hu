@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 01/11/2021
 ms.author: radeltch
-ms.openlocfilehash: b944ed37fe8df5fd4964342d8c0f52a040612ee4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 746cd6cbbb79cd1f35c9d703fe182abbd988d36f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486402"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117962"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken Red Hat Enterprise Linux for SAP Applications multi-SID Guide
 
@@ -129,7 +129,7 @@ A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja 
   * A NW3 IP-címe: 10.3.1.54
 
 * Mintavételi portok
-  * 620 **00****10** **20** -es port, ezért a NW1, a NW2 és a NW3 mintavételi portok esetében 620 00, 620 10 és 620 20 <strong> &lt; &gt;</strong>
+  * 620  -es port, ezért a NW1, a NW2 és a NW3 mintavételi portok esetében 620 00, 620 10 és 620 20<strong> &lt; &gt; </strong>
 * Terheléselosztási szabályok – hozzon létre egyet minden példányhoz, azaz a következőhöz: NW1/ASCS, NW2/ASCS és NW3/ASCS.
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
   * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
@@ -566,6 +566,8 @@ A dokumentáció a következőket feltételezi:
     # NW2 - ERS
     sudo firewall-cmd --zone=public --add-port=62112/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=62112/tcp
+    sudo firewall-cmd --zone=public --add-port=3212/tcp --permanent
+    sudo firewall-cmd --zone=public --add-port=3212/tcp
     sudo firewall-cmd --zone=public --add-port=3312/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=3312/tcp
     sudo firewall-cmd --zone=public --add-port=51213/tcp --permanent
@@ -594,6 +596,8 @@ A dokumentáció a következőket feltételezi:
     # NW3 - ERS
     sudo firewall-cmd --zone=public --add-port=62122/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=62122/tcp
+    sudo firewall-cmd --zone=public --add-port=3222/tcp --permanent
+    sudo firewall-cmd --zone=public --add-port=3222/tcp
     sudo firewall-cmd --zone=public --add-port=3322/tcp --permanent
     sudo firewall-cmd --zone=public --add-port=3322/tcp
     sudo firewall-cmd --zone=public --add-port=52213/tcp --permanent
@@ -808,7 +812,7 @@ A bemutatott tesztek egy két csomóponton, több SID-fürtön, három SAP-rends
    pcs resource cleanup rsc_sap_NW1_ERS02
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

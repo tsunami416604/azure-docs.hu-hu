@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: a3c44d667b6baaf16e109dfb88c22c16a1ea2ce1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1fc6c7086917f2bcd6e4991d2dac37ea24cbfa83
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697203"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116381"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-Blobok indexelése blob indexelő használatával az Azure-ban Cognitive Search
 
@@ -108,7 +108,7 @@ A REST API használatával indexelheti a JSON-blobokat, az Cognitive Search Azur
 
 A szakasz végén található [Rest-mintakód](#rest-example) áttekintésével megtudhatja, hogyan hozhat létre mindhárom objektumot. Ez a szakasz a JSON- [elemzési üzemmódok](#parsing-modes), az [egyes Blobok](#parsing-single-blobs), a [JSON-tömbök](#parsing-arrays)és a [beágyazott tömbök](#nested-json-arrays)részleteit is tartalmazza.
 
-A kód alapú JSON-indexeléshez a [Poster vagy a Visual Studio Code](search-get-started-rest.md) és a REST API használatával hozhatja létre ezeket az objektumokat:
+A kód alapú JSON-indexeléshez a [Poster](search-get-started-rest.md) vagy a [Visual Studio code](search-get-started-vs-code.md) és a REST API használatával hozhatja létre ezeket az objektumokat:
 
 + [index](/rest/api/searchservice/create-index)
 + [adatforrás](/rest/api/searchservice/create-data-source)

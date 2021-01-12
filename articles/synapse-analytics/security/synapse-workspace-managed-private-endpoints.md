@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5258b1eab48f71d8d17f52849b5e57b467e7a2da
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7eff63b36eb09036b188ac756ec55a5b1bf63718
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460379"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116517"
 ---
 # <a name="synapse-managed-private-endpoints"></a>Szinapszis felügyelt privát végpontok
 
@@ -29,7 +29,7 @@ Privát hivatkozás használata esetén a Virtual Network és a munkaterület k�
 
 A privát végpont a Virtual Network egy magánhálózati IP-címet használ, hogy hatékonyan hozza a szolgáltatást a Virtual Networkba. A magánhálózati végpontok egy adott erőforrásra vannak leképezve az Azure-ban, és nem a teljes szolgáltatás. Az ügyfelek korlátozhatják a szervezete által jóváhagyott adott erőforráshoz való kapcsolódást. 
 
-További információ a [privát kapcsolatokról és a privát végpontokról](https://docs.microsoft.com/azure/private-link/).
+További információ a [privát kapcsolatokról és a privát végpontokról](../../private-link/index.yml).
 
 >[!IMPORTANT]
 >A felügyelt magánhálózati végpontok csak felügyelt munkaterülettel rendelkező Azure szinapszis-munkaterületeken támogatottak Virtual Network.
@@ -57,6 +57,6 @@ A felügyelt magánhálózati végpont, amely az SQL-készletet célozza, *szina
 
 Ez a két felügyelt magánhálózati végpont automatikusan létrejön az Azure szinapszis-munkaterület létrehozásakor. Ez a két felügyelt magánhálózati végpont esetében nem számítunk fel díjat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt a [felügyelt privát végpontok létrehozása az adatforrásokhoz](./how-to-create-managed-private-endpoints.md) című cikkben talál.

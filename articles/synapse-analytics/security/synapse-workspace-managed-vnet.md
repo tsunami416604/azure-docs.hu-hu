@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501073"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116364"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure szinapszis Analytics által felügyelt Virtual Network
 
@@ -41,7 +41,7 @@ A dedikált SQL-készlet és a kiszolgáló nélküli SQL-készlet több-bérlő
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-virtual-network"></a>Azure szinapszis-munkaterület létrehozása felügyelt munkaterülettel Virtual Network
 
-Ha még nem tette meg, regisztrálja a hálózati erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A [regisztráláskor](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)válassza a *Microsoft. Network* elemet az erőforrás-szolgáltatók listájából.
+Ha még nem tette meg, regisztrálja a hálózati erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A [regisztráláskor](../../azure-resource-manager/management/resource-providers-and-types.md)válassza a *Microsoft. Network* elemet az erőforrás-szolgáltatók listájából.
 
 Olyan Azure-beli szinapszis-munkaterület létrehozásához, amelyhez felügyelt munkaterület Virtual Network társítva van, válassza a **hálózatkezelés** fület a Azure Portal, és jelölje be a **felügyelt virtuális hálózat engedélyezése** jelölőnégyzetet.
 
@@ -57,7 +57,7 @@ Megtekintheti, hogy az Azure szinapszis-munkaterülete felügyelt munkaterületh
 
 ![A munkaterület áttekintése Azure Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozása
 

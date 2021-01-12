@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c452d51018ef3f204cd7281971c07fb6337d39bf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3b61df954e913671eafff4b739e0f53a4d420c28
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449710"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117299"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Útmutató elosztott táblák tervezéséhez dedikált SQL-készlet használatával az Azure szinapszis Analyticsben
 
@@ -68,7 +68,7 @@ A következő helyzetekben érdemes lehet a táblázat ciklikus multiplexelés h
 - Ha az illesztés kevésbé jelentős, mint a lekérdezés többi illesztése
 - Ha a tábla ideiglenes előkészítési tábla
 
-A [New York-i taxik-adatgyűjtési útmutató betöltési](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) példát mutat be arra, hogyan tölthetők be az adathalmazok egy ciklikus időszeleteléses előkészítés
+A [New York-i taxik-adatgyűjtési útmutató betöltési](./load-data-from-azure-blob-storage-using-copy.md#load-the-data-into-your-data-warehouse) példát mutat be arra, hogyan tölthetők be az adathalmazok egy ciklikus időszeleteléses előkészítés
 
 ## <a name="choosing-a-distribution-column"></a>Terjesztési oszlop kiválasztása
 
@@ -221,7 +221,7 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_ProductKey];
 RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Elosztott tábla létrehozásához használja az alábbi utasítások egyikét:
 

@@ -3,12 +3,12 @@ title: Biztonsági áttekintés
 description: Az Azure arc használatára képes kiszolgálók biztonsági információi.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329040"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117027"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Az Azure arc for Servers biztonsági áttekintése
 
@@ -16,7 +16,7 @@ Ez a cikk ismerteti azokat a biztonsági konfigurációkat és szempontokat, ame
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-Minden egyes Azure-beli arc-kiszolgáló felügyelt identitással rendelkezik egy Azure-előfizetésben található erőforráscsoport részeként, ez az identitás a helyszíni vagy más felhőalapú környezetet futtató kiszolgálót jelenti. Az erőforráshoz való hozzáférést szabványos [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)szabályozza. A Azure Portal [**Access Control (iam)**](../../role-based-access-control/role-assignments-portal.md#access-control-iam) lapján ellenőrizheti, hogy ki férhet hozzá az Azure arc-kompatibilis kiszolgálóhoz.
+Minden egyes Azure-beli arc-kiszolgáló felügyelt identitással rendelkezik egy Azure-előfizetésben található erőforráscsoport részeként, ez az identitás a helyszíni vagy más felhőalapú környezetet futtató kiszolgálót jelenti. Az erőforráshoz való hozzáférést szabványos [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)szabályozza. A Azure Portal [**Access Control (iam)**](../../role-based-access-control/role-assignments-portal.md) lapján ellenőrizheti, hogy ki férhet hozzá az Azure arc-kompatibilis kiszolgálóhoz.
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Azure arc-kompatibilis kiszolgáló hozzáférés-vezérlése" border="false" lightbox="./media/security-overview/access-control-page.png":::
 

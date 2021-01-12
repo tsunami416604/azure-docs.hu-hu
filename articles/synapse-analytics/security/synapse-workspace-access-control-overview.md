@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 71a83a8d119e5fd8c18b7b21abe4a0a07ba9c67a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109606"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116551"
 ---
 # <a name="synapse-access-control"></a>A szinapszis hozzáférés-vezérlése 
 
@@ -48,7 +48,7 @@ Ezen erőforrások *létrehozásához* Azure-beli tulajdonosnak vagy közreműk�
 A szinapszis két fejlesztési modellt támogat.
 
 - **Szinapszis élő fejlesztés**.  A rendszer fejleszti és hibakeresési kódot készít a szinapszis Studióban, majd **közzéteszi** a Mentés és a végrehajtás során.  A szinapszis szolgáltatás az igazság forrása a kód szerkesztéséhez és végrehajtásához.  A nem közzétett munkák elvesznek a szinapszis Studio bezárásával.  
-- **Git-kompatibilis fejlesztés**. A rendszer fejleszti és hibakeresési kódot készít a szinapszis Studióban, és végrehajtja a git-tárházban lévő munkaág **módosításait** . Egy vagy több ág munkája integrálva van egy együttműködési ágban, ahonnan a szolgáltatásba **közzéteszi** .  A git-tárház az igazság forrása a kód szerkesztéséhez, míg a szolgáltatás az igazság forrása a végrehajtáshoz. A módosításokat véglegesíteni kell a git-tárházban, vagy közzé kell tenni a szolgáltatásban a szinapszis Studio bezárása előtt. [További](https://go.microsoft.com/fwlink/?linkid=2150100) információ a szinapszis Analytics és a git használatával történő használatáról.
+- **Git-kompatibilis fejlesztés**. A rendszer fejleszti és hibakeresési kódot készít a szinapszis Studióban, és végrehajtja a git-tárházban lévő munkaág **módosításait** . Egy vagy több ág munkája integrálva van egy együttműködési ágban, ahonnan a szolgáltatásba **közzéteszi** .  A git-tárház az igazság forrása a kód szerkesztéséhez, míg a szolgáltatás az igazság forrása a végrehajtáshoz. A módosításokat véglegesíteni kell a git-tárházban, vagy közzé kell tenni a szolgáltatásban a szinapszis Studio bezárása előtt. [További](../cicd/continuous-integration-deployment.md) információ a szinapszis Analytics és a git használatával történő használatáról.
 
 Mindkét fejlesztési modellben a szinapszis studióhoz hozzáféréssel rendelkező felhasználók programkódot hozhatnak létre.  Azonban további engedélyekre van szüksége az összetevők a szolgáltatásban való közzétételéhez, a közzétett összetevők olvasásához, a git-módosítások elvégzéséhez, a kód végrehajtásához és a hitelesítő adatok által védett csatolt adatok eléréséhez.
 

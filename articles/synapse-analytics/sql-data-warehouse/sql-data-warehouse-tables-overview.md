@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ec62724b7aedbad4111a4882dd89f86d116b2a96
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2a8cfbe75925ddc49f6fa3205fafdd1c2203b472
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448055"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115633"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Táblák tervezése dedikált SQL-készlettel az Azure szinapszis Analytics szolgáltatásban
 
@@ -71,7 +71,7 @@ Az ideiglenes táblák a helyi tárterületet használják a gyors teljesítmén
 
 A külső tábla az Azure Storage-blobban vagy Azure Data Lake Storeban található adatterületre mutat. Ha a CREATE TABLE AS SELECT utasítással együtt használja, a külső táblából való kijelöléskor a rendszer a dedikált SQL-készletbe importálja az adatokból.
 
-Így a külső táblázatok hasznosak az betöltéshez. A betöltési oktatóanyagért lásd: az [adatok Azure Blob Storage-ból való betöltésének használata](load-data-from-azure-blob-storage-using-polybase.md).
+Így a külső táblázatok hasznosak az betöltéshez. A betöltési oktatóanyagért lásd: az [adatok Azure Blob Storage-ból való betöltésének használata](./load-data-from-azure-blob-storage-using-copy.md).
 
 ## <a name="data-types"></a>Adattípusok
 
@@ -144,7 +144,7 @@ Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZ
 
 Táblát új üres táblaként is létrehozhat. Létrehozhat és fel is tölthet egy táblát a SELECT utasítás eredményeivel. A következő a T-SQL-parancsok egy tábla létrehozásához.
 
-| T-SQL-utasítás | Description |
+| T-SQL-utasítás | Leírás |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Létrehoz egy külső táblát. A tábla definícióját a dedikált SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolódik. |
@@ -373,6 +373,6 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta a táblákat a dedikált SQL-készlethez, a következő lépés az adat betöltése a táblába.  A betöltési oktatóanyagért lásd: [az adattöltés DEDIKÁLT SQL-készletbe](load-data-wideworldimportersdw.md).

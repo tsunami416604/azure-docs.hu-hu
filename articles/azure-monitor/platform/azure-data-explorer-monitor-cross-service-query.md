@@ -7,19 +7,17 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 5aadd9d96f538f92e1b9e0100b2c1055ee0b0633
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e60f77495cdb822a0c50be936c2b0d3ac31348f3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065269"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116709"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>Több szolgáltatás lekérdezése – Azure Monitor és az Azure Adatkezelő (előzetes verzió)
 Az [Azure adatkezelő](https://docs.microsoft.com/azure/data-explorer/), a [Application Insights](/azure/azure-monitor/app/app-insights-overview)és a [log Analytics](/azure/azure-monitor/platform/data-platform-logs)közötti szolgáltatások közötti lekérdezések létrehozása.
 ## <a name="azure-monitor-and-azure-data-explorer-cross-service-querying"></a>Azure Monitor és az Azure Adatkezelő szolgáltatások közötti lekérdezés
 Ez a funkció lehetővé teszi, hogy az [azure adatkezelő és Azure monitor között több szolgáltatásból származó lekérdezéseket](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) hozzon létre, és [Azure monitor és az Azure adatkezelő között több szolgáltatásbeli lekérdezést hozzon létre](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy).
-
-:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Az Azure adatkezelő proxy folyamata.":::
 
 Például: (Azure Adatkezelő lekérdezése a Log Analyticsból):
 ```kusto

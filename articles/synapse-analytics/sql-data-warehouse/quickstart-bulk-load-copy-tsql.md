@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 83b5804888379316b855c36f803f646cec102d9e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024585"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116075"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Gyors útmutató: adatok tömeges betöltése a COPY utasítás használatával
 
-Ebben a rövid útmutatóban az adatok tömeges betöltését a dedikált SQL-készletbe az egyszerű és rugalmas [másolási utasítással](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) végezheti el a nagy átviteli sebességű adatfeldolgozáshoz. A MÁSOLÁSi utasítás az ajánlott betöltési segédprogram, amely lehetővé teszi az adatok zökkenőmentes és rugalmas betöltését a következő funkciókkal:
+Ebben a rövid útmutatóban az adatok tömeges betöltését a dedikált SQL-készletbe az egyszerű és rugalmas [másolási utasítással](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) végezheti el a nagy átviteli sebességű adatfeldolgozáshoz. A MÁSOLÁSi utasítás az ajánlott betöltési segédprogram, amely lehetővé teszi az adatok zökkenőmentes és rugalmas betöltését a következő funkciókkal:
 
 - Az alacsonyabb jogosultságú felhasználók betöltésének engedélyezése anélkül, hogy szigorú VEZÉRLÉSi engedélyekre lenne szükség az adatraktárban
 - Csak egyetlen T-SQL-utasítást használhat fel anélkül, hogy további adatbázis-objektumokat kellene létrehoznia
@@ -136,7 +136,7 @@ GROUP BY r.[request_id]
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Az betöltéssel kapcsolatos ajánlott eljárásokért lásd: [ajánlott eljárások az betöltéshez](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data).
-- Az adatterhelések erőforrásainak kezelésével kapcsolatos információkért lásd: [munkaterhelés elkülönítése](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql). 
+- Az betöltéssel kapcsolatos ajánlott eljárásokért lásd: [ajánlott eljárások az betöltéshez](./guidance-for-loading-data.md).
+- Az adatterhelések erőforrásainak kezelésével kapcsolatos információkért lásd: [munkaterhelés elkülönítése](./quickstart-configure-workload-isolation-tsql.md).

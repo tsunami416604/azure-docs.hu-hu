@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f9ab6dacde0259905368d8a0cb788dde77bbfb2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453626"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115820"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Mi a dedikált SQL-készlet (korábban SQL DW) az Azure szinapszis Analyticsben?
 
@@ -47,11 +47,11 @@ A dedikált SQL-készlet (korábbi nevén SQL DW) oszlopos tárolással rendelke
 
 Az elemzések eredményei globális jelentéskészítési adatbázisokba vagy alkalmazásokba küldhetőek. Az üzleti elemzők így az ezekből nyerhető betekintések révén tájékozott üzleti döntéseket hozhatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [Azure szinapszis architektúrájának](massively-parallel-processing-mpp-architecture.md) megismerése
 - [DEDIKÁLT SQL-készlet gyors létrehozása](create-data-warehouse-portal.md)
-- [Mintaadatok betöltése](load-data-from-azure-blob-storage-using-polybase.md).
+- [Mintaadatok betöltése](./load-data-from-azure-blob-storage-using-copy.md).
 - [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse) megismerése
 
 Vagy tekintse meg a többi Azure szinapszis-erőforrást.
@@ -59,5 +59,5 @@ Vagy tekintse meg a többi Azure szinapszis-erőforrást.
 - Keresési [Blogok](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [Szolgáltatási kérelmek](https://feedback.azure.com/forums/307516-sql-data-warehouse) elküldése
 - [Támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md)
-- Keresés [A Microsoft Q&A kérdéses oldalon](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- Keresés [A Microsoft Q&A kérdéses oldalon](/answers/topics/azure-synapse-analytics.html)
 - [Stack overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw) keresése

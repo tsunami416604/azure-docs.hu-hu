@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 242ff1d7c16ca952b19f44fb139f8fae7562524a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 56b9a98eb72b375aacfeb7cb147997028d3d9ba7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048317"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116806"
 ---
 # <a name="train-machine-learning-models"></a>Gépi tanulási modellek betanítása
 Az Azure szinapszis Analytics szolgáltatásban Apache Spark lehetővé teszi a gépi tanulást a big data, így értékes információkhoz juthat a nagy mennyiségű strukturált, strukturálatlan és gyorsan változó adatról. Több lehetőség is rendelkezésre áll, ha a gépi tanulási modellek Azure-beli Spark használatával történő betanítása az Azure szinapszis Analyticsben: Apache Spark MLlib, Azure Machine Learning és számos más nyílt forráskódú kódtár. 
@@ -53,9 +53,9 @@ Ha az Azure szinapszis Analyticsben az automatikus ML-t használja, kihasználha
 > A Azure Machine Learning automatizált ML-kísérletek létrehozásával kapcsolatos további információkért tekintse meg ezt az [oktatóanyagot](./spark/../apache-spark-azure-machine-learning-tutorial.md).
 
 ## <a name="azure-cognitive-services"></a>Azure Cognitive Services
-Az [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services) gépi tanulási funkciókat biztosít az olyan általános problémák megoldásához, mint például a szöveg elemzése az érzelmi hangulathoz, illetve a képek elemzése az objektumok vagy arcok felismeréséhez. Ezen szolgáltatások használatához nincs szükség különleges gépi tanulási vagy adatelemzési ismeretekre. A kognitív szolgáltatás egy gépi tanulási megoldás részét képező alkatrészt vagy az összes összetevőt biztosítja: az adatmennyiséget, az algoritmust és a betanított modellt. Ezeknek a szolgáltatásoknak a célja, hogy általános ismereteket kérjenek az adatairól anélkül, hogy a gépi tanulással vagy az adatelemzéssel kellene foglalkoznia. Ezeket az előre betanított Cognitive Services automatikusan kihasználhatja az Azure szinapszis Analytics szolgáltatáson belül.
+Az [Azure Cognitive Services](../../cognitive-services/what-are-cognitive-services.md) gépi tanulási funkciókat biztosít az olyan általános problémák megoldásához, mint például a szöveg elemzése az érzelmi hangulathoz, illetve a képek elemzése az objektumok vagy arcok felismeréséhez. Ezen szolgáltatások használatához nincs szükség különleges gépi tanulási vagy adatelemzési ismeretekre. A kognitív szolgáltatás egy gépi tanulási megoldás részét képező alkatrészt vagy az összes összetevőt biztosítja: az adatmennyiséget, az algoritmust és a betanított modellt. Ezeknek a szolgáltatásoknak a célja, hogy általános ismereteket kérjenek az adatairól anélkül, hogy a gépi tanulással vagy az adatelemzéssel kellene foglalkoznia. Ezeket az előre betanított Cognitive Services automatikusan kihasználhatja az Azure szinapszis Analytics szolgáltatáson belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk áttekintést nyújt a gépi tanulási modellek Apache Spark-készletekben az Azure szinapszis Analyticsben való tanításának különböző lehetőségeiről. A modellek betanításával kapcsolatos további információkért tekintse meg az alábbi oktatóanyagot:
 
 - Automatizált ML-kísérletek futtatása a Azure Machine Learning és az Azure szinapszis Analytics használatával: [AUTOMATIZÁLT ml-oktatóanyag](../spark/apache-spark-azure-machine-learning-tutorial.md) 

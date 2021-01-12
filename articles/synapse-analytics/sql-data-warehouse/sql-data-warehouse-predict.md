@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 9e7d45a588e60cd082f1eef43d1d1b6681b9e912
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093655"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117741"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Az ELŐREJELZÉSsel rendelkező gépi tanulási modellek pontszáma
 
-A dedikált SQL-készlet lehetővé teszi, hogy a jól ismert T-SQL nyelv használatával a gépi tanulási modelleket is megszerezze. A T-SQL [előrejelzéssel](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)megadhatja a már meglévő gépi tanulási modelleket, és az adattárház biztonságos határain belül is megszerezheti azokat. A PREDIKTÍV függvény [ONNX (Open neurális hálózati Exchange)](https://onnx.ai/) modellt és adatokat használ bemenetként. Ez a szolgáltatás kiküszöböli az értékes adattárházon kívüli adatáthelyezés lépéseit. Az informatikai szakemberek számára lehetővé teszi, hogy az ismerős T-SQL-felülettel könnyedén üzembe helyezhetik a gépi tanulási modelleket, valamint hogy zökkenőmentesen működjenek együtt a feladataik megfelelő keretrendszerével dolgozó adatszakértőkkel.
+A dedikált SQL-készlet lehetővé teszi, hogy a jól ismert T-SQL nyelv használatával a gépi tanulási modelleket is megszerezze. A T-SQL [előrejelzéssel](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)megadhatja a már meglévő gépi tanulási modelleket, és az adattárház biztonságos határain belül is megszerezheti azokat. A PREDIKTÍV függvény [ONNX (Open neurális hálózati Exchange)](https://onnx.ai/) modellt és adatokat használ bemenetként. Ez a szolgáltatás kiküszöböli az értékes adattárházon kívüli adatáthelyezés lépéseit. Az informatikai szakemberek számára lehetővé teszi, hogy az ismerős T-SQL-felülettel könnyedén üzembe helyezhetik a gépi tanulási modelleket, valamint hogy zökkenőmentesen működjenek együtt a feladataik megfelelő keretrendszerével dolgozó adatszakértőkkel.
 
 > [!NOTE]
 > Ez a funkció jelenleg nem támogatott a kiszolgáló nélküli SQL-készletekben.
@@ -35,7 +35,7 @@ A dedikált SQL-készlet előre betanított modellt vár. Tartsa szem előtt a k
 
 - A dedikált SQL-készlet csak a ONNX formátumot támogatja. A ONNX egy nyílt forráskódú modell formátuma, amely lehetővé teszi a különböző keretrendszerek közötti modellek cseréjét az együttműködés lehetővé tételéhez. A meglévő modelleket ONNX formátumra konvertálhatja olyan keretrendszerek használatával, amelyek natív módon támogatják vagy a csomagok átalakítását is lehetővé teszik. A [sklearn-Onnx](https://github.com/onnx/sklearn-onnx) csomag például a scikit-Learn modellek konvertálása Onnx. A [ONNX GitHub-adattár](https://github.com/onnx/tutorials#converting-to-onnx-format) a támogatott keretrendszerek és példák listáját tartalmazza.
 
-   Ha az [automatikus ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) -t használja a betanításhoz, ügyeljen arra, hogy a *enable_onnx_compatible_models* paraméter értéke TRUE (igaz) legyen, hogy Onnx formátumú modellt hozzon létre. Az [automatizált Machine learning notebookon](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) látható egy példa arra, hogyan használható az automatikus ml a ONNX formátumú gépi tanulási modell létrehozásához.
+   Ha az [automatikus ml](../../machine-learning/concept-automated-ml.md) -t használja a betanításhoz, ügyeljen arra, hogy a *enable_onnx_compatible_models* paraméter értéke TRUE (igaz) legyen, hogy Onnx formátumú modellt hozzon létre. Az [automatizált Machine learning notebookon](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) látható egy példa arra, hogyan használható az automatikus ml a ONNX formátumú gépi tanulási modell létrehozásához.
 
 - A bemeneti adatok a következő adattípusokat támogatják:
     - int, bigint, valós, float
@@ -66,7 +66,7 @@ GO
 
 ```
 
-Ha a modellt egy hexadecimális karakterlánccá alakítja át, és a tábla definíciója meg van adva, a [másolási paranccsal](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) vagy a kiindulással töltheti be a modellt a dedikált SQL-készlet táblába. A következő mintakód a Másolás parancs használatával tölti be a modellt.
+Ha a modellt egy hexadecimális karakterlánccá alakítja át, és a tábla definíciója meg van adva, a [másolási paranccsal](/sql/t-sql/statements/copy-into-transact-sql?preserve-view=true&view=azure-sqldw-latest) vagy a kiindulással töltheti be a modellt a dedikált SQL-készlet táblába. A következő mintakód a Másolás parancs használatával tölti be a modellt.
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -80,9 +80,9 @@ WITH (
 
 ## <a name="scoring-the-model"></a>A modell pontozása
 
-Ha a modell és az adat betöltődik az adattárházba, a **T-SQL előrejelzési** függvénnyel szerzi be a modellt. Győződjön meg arról, hogy az új bemeneti adatok formátuma megegyezik a modell létrehozásához használt képzési adatokkal. A T-SQL előrejelzés két bemenetet vesz igénybe: modell és új pontozási bemeneti adat, és új oszlopokat hoz létre a kimenethez. A modell változóként, literálal vagy skaláris sub_query is megadható. A [WITH common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true) használatával megadhatja az adatparaméter elnevezett eredményhalmaz értékét.
+Ha a modell és az adat betöltődik az adattárházba, a **T-SQL előrejelzési** függvénnyel szerzi be a modellt. Győződjön meg arról, hogy az új bemeneti adatok formátuma megegyezik a modell létrehozásához használt képzési adatokkal. A T-SQL előrejelzés két bemenetet vesz igénybe: modell és új pontozási bemeneti adat, és új oszlopokat hoz létre a kimenethez. A modell változóként, literálal vagy skaláris sub_query is megadható. A [WITH common_table_expression](/sql/t-sql/queries/with-common-table-expression-transact-sql?preserve-view=true&view=azure-sqldw-latest) használatával megadhatja az adatparaméter elnevezett eredményhalmaz értékét.
 
-Az alábbi példa egy példaként szolgáló lekérdezést mutat be az előrejelzési függvény használatával. Egy további, a *pontszám* és az adattípusú *lebegőpontos* oszlop jön létre, amely tartalmazza az előrejelzés eredményeit. Az összes bemeneti adatoszlop, valamint a kimeneti előrejelzési oszlopok is elérhetők a SELECT utasítással való megjelenítéshez. További részletek: [előrejelzés (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+Az alábbi példa egy példaként szolgáló lekérdezést mutat be az előrejelzési függvény használatával. Egy további, a *pontszám* és az adattípusú *lebegőpontos* oszlop jön létre, amely tartalmazza az előrejelzés eredményeit. Az összes bemeneti adatoszlop, valamint a kimeneti előrejelzési oszlopok is elérhetők a SELECT utasítással való megjelenítéshez. További részletek: [előrejelzés (Transact-SQL)](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest).
 
 ```sql
 -- Query for ML predictions
@@ -93,4 +93,4 @@ DATA = dbo.mytable AS d, RUNTIME = ONNX) WITH (Score float) AS p;
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a PREDIKTÍV függvényről: [előrejelzés (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+További információ a PREDIKTÍV függvényről: [előrejelzés (Transact-SQL)](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest).

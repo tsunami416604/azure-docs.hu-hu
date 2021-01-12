@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935002"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116007"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -224,14 +224,6 @@ Ha helytelenül konfigurált egy házirendet, akkor az a Azure Portalon kívülr
 
 * Hozzon létre egy házirend-felügyeleti célra dedikált felhasználói fiókot, és zárja ki az összes szabályzatot.
 
-* A hibrid környezetek esetén:
-
-  * Hozzon létre egy helyszíni biztonsági csoportot, és szinkronizálja az Azure AD-vel. A biztonsági csoportnak tartalmaznia kell a dedikált házirend-felügyeleti fiókot. 
-
-   * A biztonsági csoport KIVÉTELe minden feltételes hozzáférési szabályzat esetében.
-
-   * A szolgáltatás meghibásodása esetén szükség szerint adja hozzá a többi rendszergazdát a helyszíni csoporthoz, és kényszerítse a szinkronizálást. Ez serkenti a feltételes hozzáférési szabályzatok alóli kivételt.
-
 ### <a name="set-up-report-only-mode"></a>Csak jelentési mód beállítása
 
 Nehéz lehet megbecsülni a gyakori telepítési kezdeményezések által érintett felhasználók számát és nevét, például:
@@ -376,7 +368,7 @@ Egyes szervezetek erre a célra rendelkeznek tesztelési Bérlővel. Azonban neh
 
 A tesztelési terv fontos, hogy összehasonlítsa a várt eredmények és a tényleges eredmények összehasonlítását. A tesztelés előtt mindig legyen várakozás. A következő táblázat példákat mutat be a tesztelési esetekre. A feltételes hozzáférési szabályzatok konfigurálása alapján állítsa be a forgatókönyveket és a várt eredményeket.
 
-| Szabályzat| Eset| Várt eredmény |
+| Szabályzat| Használati eset| Várt eredmény |
 | - | - | - |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| A meghatalmazott felhasználó bejelentkezik az alkalmazásba egy megbízható helyen/munkahelyen| A felhasználónak nem kell megadnia az MFA-t |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| Az engedélyezve lévő felhasználó bejelentkezik az alkalmazásba, és nem megbízható helyen/munkahelyen| A rendszer felszólítja a felhasználót az MFA használatára, és sikeresen bejelentkezhet |
@@ -493,4 +485,4 @@ Miután összegyűjtötte az adatokat, tekintse meg a következő forrásokat:
 
 [További információ az Identity Protectionről](../identity-protection/overview-identity-protection.md)
 
-[Feltételes hozzáférési szabályzatok kezelése Microsoft Graph API-val](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Feltételes hozzáférési szabályzatok kezelése Microsoft Graph API-val](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 37033e3c5f388d1a55a122899114914e661565f6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f3eaa6383b174e06ff6ce9b1b08c4eba9108d770
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460233"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115514"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>Gyors útmutató: számítások méretezése dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben a T-SQL használatával
 
@@ -148,9 +148,9 @@ AND
     major_resource_id = 'mySampleDataWarehouse'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most megtanulta, hogyan méretezheti a számítási feladatait a dedikált SQL-készlethez (korábban SQL DW). Ha többet szeretne megtudni az Azure szinapszis Analytics szolgáltatásról, folytassa az információk betöltésére szolgáló oktatóanyaggal.
 
 > [!div class="nextstepaction"]
->[Adat betöltése egy dedikált SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md)
+>[Adat betöltése egy dedikált SQL-készletbe](./load-data-from-azure-blob-storage-using-copy.md)

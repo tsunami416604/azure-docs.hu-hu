@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3d5663177bb087e936a49dd7289659b684d85860
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701133"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116194"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Alapszintű keresési index létrehozása az Azure-ban Cognitive Search
 
@@ -70,7 +70,7 @@ Az utolsó index kialakításának megérkezése egy iterációs folyamat. Gyako
 A fejlesztés során tervezze meg a gyakori újraépítést. Mivel a fizikai struktúrák a szolgáltatásban jönnek létre, az [indexek eldobása és](search-howto-reindex.md) újbóli létrehozása szükséges ahhoz, hogy a legtöbb módosítást egy meglévő mező határozza meg. Érdemes lehet az adatai egy részhalmazával dolgozni az Újraépítés gyorsabb elvégzése érdekében. 
 
 > [!Tip]
-> A portál megközelítése helyett a kód használata ajánlott az indexek tervezéséhez és az adatimportáláshoz. Alternatív megoldásként az eszközök, például a [Poster és a Visual Studio Code](search-get-started-rest.md) hasznosak a megvalósíthatósági teszteléshez, amikor a fejlesztési projektek még mindig korai fázisban vannak. A kérés törzsében növekményes módosításokat végezhet egy index definíciójában, majd a kérést elküldheti a szolgáltatásnak, hogy egy frissített séma használatával újra létrehozza az indexet.
+> A portál megközelítése helyett a kód használata ajánlott az indexek tervezéséhez és az adatimportáláshoz. Alternatív megoldásként az olyan eszközök, mint a [Poster](search-get-started-rest.md) vagy a [Visual Studio Code](search-get-started-vs-code.md) , hasznosak lehetnek a megvalósíthatósági teszteléshez, amikor a fejlesztési projektek még mindig korai fázisban vannak. A kérés törzsében növekményes módosításokat végezhet egy index definíciójában, majd a kérést elküldheti a szolgáltatásnak, hogy egy frissített séma használatával újra létrehozza az indexet.
 
 ## <a name="index-schema"></a>Index séma
 

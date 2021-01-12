@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: emtehran
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bdb27c5c9f5ec8a7be433ab6e421ecabf5c8c254
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 88b63ce30000340a70811e9f623e4273ccbb272a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505579"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117282"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Elsődleges kulcs, külső kulcs és egyedi kulcs dedikált SQL-készlet használatával az Azure szinapszis Analyticsben
 
@@ -28,7 +28,7 @@ A dedikált SQL-készlet a következő táblázatos korlátozásokat támogatja:
 - Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZERÍTett érték is használatban van.    
 - Az egyedi korlátozás csak a nem KÉNYSZERÍTett használata esetén támogatott.
 
-A szintaxishoz kattintson az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) és a [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)elemre. 
+A szintaxishoz kattintson az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) és a [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)elemre. 
 
 A külső kulcs megkötése dedikált SQL-készletben nem támogatott.  
 

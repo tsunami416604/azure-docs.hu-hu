@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 9a8dba99435e1616b1c49d5209b30c3c523876db
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 34d8881eb072c4c723bf68b7c6ccfd24ab19cd3c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071340"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116279"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -131,7 +131,7 @@ Az **Azure Defender for Servers** szolgáltatáshoz nem tartozik további díj a
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Ha már van licencem a Microsoft Defender for Endpoint szolgáltatáshoz, kedvezményt kaphatok az Azure Defender számára?
 Ha már rendelkezik Microsoft Defender-licenccel a végponthoz, nem kell fizetnie az Azure Defender-licenc adott részének.
 
-A kedvezmény megerősítéséhez lépjen kapcsolatba Security Center támogatási csapatával, és adja meg a megfelelő munkaterület-azonosítót, régiót és licenc-információkat.
+Ha szeretné megerősíteni a kedvezményt, lépjen kapcsolatba Security Center támogatási csapatával, és adja meg a megfelelő munkaterület-azonosítót, régiót és licencelési információt az egyes kapcsolódó licencekhez.
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Hogyan váltani egy külső gyártótól származó EDR eszközről?
 A nem a Microsofttól származó végponti megoldásról történő váltásra vonatkozó részletes utasítások a Microsoft Defender for Endpoint dokumentációjában találhatók: [áttelepítési áttekintés](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).

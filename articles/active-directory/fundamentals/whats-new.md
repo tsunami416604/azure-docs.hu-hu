@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c0fa7a6e676e1b888bc13e0fa4cb42e93b2e71
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 412a987e0a93f7b69250450b8367a37bd3682925
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802847"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115701"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
@@ -107,8 +107,6 @@ Mostantól automatizálhatja az újonnan integrált alkalmazások felhasználói
 Ha többet szeretne megtudni arról, hogyan javíthatja a szervezetét a felhasználói fiókok automatikus kiépítésével, tekintse meg a felhasználók kiépítésének [automatizálása SaaS-alkalmazásokhoz az Azure ad](../app-provisioning/user-provisioning.md)használatával című témakört.
  
 ---
- 
-[1233182](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1233182&triage=true&fullScreen=false&_a=edit)
 
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---december-2020"></a>Új összevont alkalmazások érhetők el az Azure AD Application Galleryben – december 2020
 
@@ -123,6 +121,29 @@ Ha többet szeretne megtudni arról, hogyan javíthatja a szervezetét a felhasz
 Itt megtalálhatja az összes alkalmazás dokumentációját is https://aka.ms/AppsTutorial
 
 Az alkalmazás Azure AD-katalógusban való listázásához tekintse meg a részleteket itt: https://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="navigate-to-teams-directly-from-my-access-portal"></a>Közvetlenül a saját hozzáférési portálról navigáljon a csapatokhoz
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Felhasználói hozzáférés-kezelő **termék funkció:** jogosultságok kezelése
+
+Mostantól közvetlenül a saját hozzáférési portálról indíthat csapatokat. Ehhez jelentkezzen be a [saját hozzáférésbe](https://myaccess.microsoft.com/), navigáljon a **hozzáférési csomagok** elemre, majd lépjen az **aktív** lapra, és tekintse meg az összes olyan hozzáférési csomagot, amelyhez már van hozzáférése. Ha kibontja a hozzáférési csomagot, és egy csapatra viszi, a **Megnyitás** gombra kattintva indíthatja el. 
+
+Ha többet szeretne megtudni a saját hozzáférési portál használatával kapcsolatban, lépjen az [Azure ad-jogosultságok kezelése hozzáférési csomaghoz való hozzáférés kérése](../governance/entitlement-management-request-access.md#sign-in-to-the-my-access-portal)című témakörre.
+
+---
+
+### <a name="public-preview---second-level-manager-can-be-set-as-alternate-approver"></a>Nyilvános előzetes verzió – a második szintű kezelő másodlagos jóváhagyóként is beállítható
+
+**Írja be a következőt:** Módosított funkció  
+**Szolgáltatás kategóriája:** Felhasználói hozzáférés kezelése  
+A **termék képességei:** Jogosultságok kezelése
+
+A jogosultságok kezelésének jóváhagyási folyamatában további lehetőség is rendelkezésre áll. Ha az első jóváhagyóhoz kiválasztja a felettest, akkor a másodlagos jóváhagyó mezőben választhat egy további lehetőséget, a második szintű felettest is. Ha ezt a beállítást választja, egy tartalék jóváhagyót kell hozzáadnia a kérelem továbbításához, ha a rendszer nem találja a második szintű kezelőt.
+
+További információ: [hozzáférési csomag jóváhagyási beállításainak módosítása az Azure ad-jogosultságok kezelésében](../governance/entitlement-management-access-package-approval-policy.md#alternate-approvers).
 
 --- 
 
@@ -502,7 +523,7 @@ A kockázatalapú feltételes hozzáférés és a kockázatkezelési funkciók m
  
 2020 októberében a következő 27 új alkalmazást bővítettük az alkalmazás-galériában az összevonási támogatással:
 
-[Sentry](../saas-apps/sentry-tutorial.md), [darázs-termelékenység superapp](https://app.yellowmessenger.com/user/login), [ABBYY FlexiCapture Cloud](../saas-apps/abbyy-flexicapture-cloud-tutorial.md), [EAComposer](../saas-apps/eacomposer-tutorial.md), [Genesys Cloud integration for Azure](https://apps.mypurecloud.com/msteams-integration/), [Zone Technologies portál](https://portail.zonetechnologie.com/signin), [Beautiful.ai](../saas-apps/beautiful.ai-tutorial.md), [Datawiza Access Broker](https://console.datawiza.com/), [ZOKRI](https://app.zokri.com/), [CheckProof](../saas-apps/checkproof-tutorial.md), [Ecochallenge.org](https://events.ecochallenge.org/users/login), [atSpoke](http://atspoke.com/login), [kinevezési emlékeztető](https://app.appointmentreminder.co.nz/account/login), [felhő. piac](https://cloud.market/), [TravelPerk](../saas-apps/travelperk-tutorial.md), [üdvözlés](https://app.greetly.com/), [OrgVitality SSO} (.. /SaaS-apps/orgvitality-SSO-tutorial.MD), [web Cargo Air](../saas-apps/web-cargo-air-tutorial.md), [Loop flow CRM](../saas-apps/loop-flow-crm-tutorial.md), [Starmind](../saas-apps/starmind-tutorial.md), [Workstem](https://hrm.workstem.com/login), [kiskereskedelmi zipline](../saas-apps/retail-zipline-tutorial.md), [Hoxhunt](../saas-apps/hoxhunt-tutorial.md), [MEVISIO](../saas-apps/mevisio-tutorial.md), [Samsara](../saas-apps/samsara-tutorial.md), [Nimbus](../saas-apps/nimbus-tutorial.md), [Pulse Secure Virtual Traffic Manager](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
+[Sentry](../saas-apps/sentry-tutorial.md), [darázs – termelékenység superapp](https://app.yellowmessenger.com/user/login), [ABBYY FlexiCapture Cloud](../saas-apps/abbyy-flexicapture-cloud-tutorial.md), [EAComposer](../saas-apps/eacomposer-tutorial.md), [Genesys felhőalapú integráció az Azure](https://apps.mypurecloud.com/msteams-integration/)-hoz, a [Zone Technologies portál](https://portail.zonetechnologie.com/signin), a [Beautiful.ai](../saas-apps/beautiful.ai-tutorial.md), a [Datawiza Access Broker](https://console.datawiza.com/), a [](../saas-apps/samsara-tutorial.md) [ZOKRI](https://app.zokri.com/), [](../saas-apps/hoxhunt-tutorial.md)a CheckProof, a Ecochallenge.org, a atSpoke [](../saas-apps/mevisio-tutorial.md) [](../saas-apps/retail-zipline-tutorial.md) [, a](http://atspoke.com/login) [találkozó emlékeztetője](https://app.appointmentreminder.co.nz/account/login), a [felhő. piac](https://cloud.market/), [TravelPerk](../saas-apps/travelperk-tutorial.md) [,](https://hrm.workstem.com/login) [üdvözlés](https://app.greetly.com/), [](../saas-apps/starmind-tutorial.md) [OrgVitality egyszeri bejelentkezés](../saas-apps/orgvitality-sso-tutorial.md), [webes rakomány](../saas-apps/web-cargo-air-tutorial.md) [, Starmind](../saas-apps/loop-flow-crm-tutorial.md) [,](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md) Workstem [Traffic Manager](../saas-apps/nimbus-tutorial.md) [](../saas-apps/checkproof-tutorial.md) [](https://events.ecochallenge.org/users/login)
 
 Itt megtalálhatja az összes alkalmazás dokumentációját is https://aka.ms/AppsTutorial
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 580dfe779ff0f550524781076d3e27805ffd6689
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ff7b07cb1a4f480907bb51e741a05deeaae8e66b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451653"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116483"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Kapcsolódás a szinapszis SQLhoz a Azure Data Studio használatával
 
@@ -23,7 +23,7 @@ ms.locfileid: "96451653"
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [sqlcmd](get-started-connect-sqlcmd.md)
+> * [Sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
 A [Azure Data Studio)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) használatával kapcsolódhat a szinapszis SQL-hez az Azure szinapszis Analytics szolgáltatásban, és lekérdezheti azt. 
@@ -87,12 +87,12 @@ OPENROWSET(
     FORMAT='PARQUET'
 )
 ```
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ismerkedjen meg a szinapszis SQL-hez való kapcsolódás egyéb módjaival: 
 
 - [SSMS](get-started-ssms.md)
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [sqlcmd](get-started-connect-sqlcmd.md)
+- [Sqlcmd](get-started-connect-sqlcmd.md)
 
-További információért látogasson el a [Azure Data Studio használatára az adatok összekapcsolásához és lekérdezéséhez egy DEDIKÁLT SQL-készlet használatával az Azure szinapszis Analyticsben](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-dw). 
+További információért látogasson el a [Azure Data Studio használatára az adatok összekapcsolásához és lekérdezéséhez egy DEDIKÁLT SQL-készlet használatával az Azure szinapszis Analyticsben](/sql/azure-data-studio/quickstart-sql-dw).

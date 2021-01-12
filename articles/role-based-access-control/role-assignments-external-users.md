@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a18fc3e4851c2daf03c662cf40cef58cc7d9e77a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648378"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117707"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a külső vendég felhasználók számára a Azure Portal használatával
 
@@ -29,9 +29,7 @@ Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) n
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szerepkör-hozzárendelések hozzáadásához vagy eltávolításához a következőket kell tennie:
-
-- `Microsoft.Authorization/roleAssignments/write` és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="when-would-you-invite-guest-users"></a>Mikor hívja meg a vendég felhasználókat?
 

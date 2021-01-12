@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c4fe512ff6db24498148ffa724c3144a2f61823f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ceb242dcd05105b533e365e91afd9601cc550392
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451718"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116728"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tranzakciók használata dedikált SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -29,7 +29,7 @@ Ahogy azt várnánk, a dedikált SQL-készlet az adatraktár számítási felada
 
 A dedikált SQL-készlet savas tranzakciókat valósít meg. A tranzakciós támogatás elkülönítési szintje alapértelmezés szerint nem VÉGLEGESÍThető.  Ha a Master adatbázishoz csatlakozik, a felhasználói adatbázis READ_COMMITTED_SNAPSHOT adatbázis lehetőségének bekapcsolásával módosíthatja az előjegyzett PILLANATKÉPek ELKÜLÖNÍTÉSét.  
 
-Ha engedélyezve van, a rendszer az ebben az adatbázisban lévő összes tranzakciót az OLVASÁSI véglegesített PILLANATKÉPek ELKÜLÖNÍTÉSe területen hajtja végre, és a munkamenet szintjén az olvasás VÉGLEGESÍTÉSe beállítást nem fogja figyelembe venni. A részletekért lásd az [Alter Database set Options (Transact-SQL) beállítást](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true) .
+Ha engedélyezve van, a rendszer az ebben az adatbázisban lévő összes tranzakciót az OLVASÁSI véglegesített PILLANATKÉPek ELKÜLÖNÍTÉSe területen hajtja végre, és a munkamenet szintjén az olvasás VÉGLEGESÍTÉSe beállítást nem fogja figyelembe venni. A részletekért lásd az [Alter Database set Options (Transact-SQL) beállítást](/sql/t-sql/statements/alter-database-transact-sql-set-options?preserve-view=true&view=azure-sqldw-latest) .
 
 ## <a name="transaction-size"></a>Tranzakció mérete
 Egyetlen adatmódosítási tranzakció mérete korlátozott. A korlátot a rendszer eloszlás alapján alkalmazza. Ennek megfelelően a teljes foglalás kiszámítható úgy, hogy a korlátot a terjesztési szám alapján szorozza meg. 
@@ -202,6 +202,6 @@ A dedikált SQL-készletnek van néhány más, a tranzakcióhoz kapcsolódó kor
 * Nincsenek megjelölt tranzakciók
 * Nem támogatott a DDL, például a CREATE TABLE egy felhasználó által definiált tranzakción belül
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört. További ajánlott eljárásokat ismertető útmutatók a [DEDIKÁLT SQL-készlet](best-practices-sql-pool.md) és a [kiszolgáló nélküli SQL-készlet](best-practices-sql-on-demand.md)számára is elérhetők.

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 565b84603a14452dd2ec49f8cf61da128503bc03
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964252"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117248"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadásának lépései
 
@@ -31,7 +31,7 @@ Először meg kell határoznia, hogy kinek van szüksége hozzáférésre. Szere
 - Szolgáltatásnév – Alkalmazások vagy szolgáltatások által adott Azure-erőforrások elérésére használt biztonsági identitás. Úgy képzelhető el, mint egy alkalmazás *felhasználói identitása* (felhasználóneve és jelszava vagy tanúsítványa).
 - Felügyelt identitás – az Azure által automatikusan kezelt Azure Active Directory identitás. A Felhőbeli alkalmazások fejlesztése során jellemzően [felügyelt identitásokat](../active-directory/managed-identities-azure-resources/overview.md) használ az Azure-szolgáltatásokhoz való hitelesítéshez szükséges hitelesítő adatok kezeléséhez.
 
-## <a name="step-2-find-the-appropriate-role"></a>2. lépés: a megfelelő szerepkör megkeresése
+## <a name="step-2-select-the-appropriate-role"></a>2. lépés: válassza ki a megfelelő szerepkört
 
 Az engedélyek egy *szerepkör-definícióba* vannak csoportosítva. Általában csak *szerepkörnek* nevezik. A számos beépített szerepkör listájából választhat. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját egyéni szerepköröket is létrehozhat.
 
@@ -90,6 +90,6 @@ A szerepkör-hozzárendelések hozzáadásának részletes lépéseit az alábbi
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával](role-assignments-cli.md)
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával](quickstart-assign-role-user-portal.md)

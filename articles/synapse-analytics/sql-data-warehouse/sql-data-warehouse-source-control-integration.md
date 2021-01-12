@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 862fa839c56746042c072ae3100832fb2b78451a
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 56b417c65eae0df9b073cf72fe87ce0002fc2ba0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296906"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115837"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Verziókövetés integrálása dedikált SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -51,7 +51,7 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Data Tools 
 
    ![Klónozási tárház](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klónozási tárház")
 
-A projektek Visual Studióval való összekapcsolásával kapcsolatos további információkért tekintse meg a Kapcsolódás a következőhöz: [Team Explorer](https://docs.microsoft.com/visualstudio/ide/connect-team-project?view=vs-2019). A tárház Visual Studióval történő klónozásával kapcsolatos útmutatásért tekintse át a klónozott a git-tárház [kilépését](https://docs.microsoft.com/azure/devops/repos/git/clone?view=azure-devops&tabs=visual-studio) ismertető cikket. 
+A projektek Visual Studióval való összekapcsolásával kapcsolatos további információkért tekintse meg a Kapcsolódás a következőhöz: [Team Explorer](/visualstudio/ide/connect-team-project?view=vs-2019). A tárház Visual Studióval történő klónozásával kapcsolatos útmutatásért tekintse át a klónozott a git-tárház [kilépését](/azure/devops/repos/git/clone?tabs=visual-studio&view=azure-devops) ismertető cikket. 
 
 ## <a name="create-and-connect-your-project"></a>Projekt létrehozása és összekapcsolása
 

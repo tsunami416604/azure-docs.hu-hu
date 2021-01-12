@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 7cf4020ad38224b25ea8bb7dc7f0fdea7dd6f3b1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5e4f3314ba580dddbd995855bc0f0512b7597107
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034003"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115732"
 ---
 # <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>Gyors útmutató: felhasználók hozzáférésének megkeresése az Azure-erőforrásokhoz
 
@@ -37,7 +37,7 @@ Az alábbi lépéseket követve megnyithatja azon Azure-erőforrások készleté
 
     A következő példa egy erőforráscsoportot mutat be.
 
-    ![Erőforráscsoport – áttekintés](./media/check-access/rg-overview.png)
+    ![Erőforráscsoport – áttekintés](./media/shared/rg-overview.png)
 
 ## <a name="step-2-check-access-for-a-user"></a>2. lépés: a felhasználó hozzáférésének engedélyezése
 
@@ -47,7 +47,7 @@ Az alábbi lépésekkel ellenőrizheti, hogy egy adott felhasználó, csoport, s
 
     Az alábbi példa az erőforráscsoport hozzáférés-vezérlés (IAM) lapját mutatja be.
 
-    ![Erőforráscsoport hozzáférés-vezérlése – hozzáférés ellenőrzése lap](./media/check-access/rg-access-control.png)
+    ![Erőforráscsoport hozzáférés-vezérlése – hozzáférés ellenőrzése lap](./media/shared/rg-access-control.png)
 
 1. A **hozzáférés engedélyezése** lapon a **Keresés** listában válassza ki azt a felhasználót, csoportot, szolgáltatásnevet vagy felügyelt identitást, amelynek a hozzáférését ellenőriznie szeretné.
 
