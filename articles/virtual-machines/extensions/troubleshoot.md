@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: bca826cda8dfe47c341886faaf4a0d66f09d37d2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966343"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127141"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure-beli Windows VM-bővítményekkel kapcsolatos hibák elhárítása
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,19 +85,23 @@ Ezt a tanúsítványt a rendszer automatikusan újra létrehozza a Windows vend�
 - Kattintson a jobb gombbal, és válassza a "feladat befejezése" lehetőséget. A rendszer automatikusan újraindítja a folyamatot
 
 
-Új GoalState is aktiválhat a virtuális gépen egy "üres frissítés" végrehajtásával:
+Új GoalState is aktiválhat a virtuális gépen a "virtuális gép újratelepítése" végrehajtásával. A virtuális gép [újratelepítése](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) a 2020-es verzióban bevezetett API a virtuális gép állapotának újraalkalmazásához. Azt javasoljuk, hogy ezt akkor hajtsa végre, amikor egy rövid virtuális gép leállását szeretné elviselni. Habár az újbóli alkalmazás nem okozza a virtuális gépek újraindítását, és az újraalkalmazás időpontjának túlnyomó többsége nem indítja újra a virtuális gépet, nagyon kicsi a kockázata, hogy a virtuálisgép-modellre való újraindításkor a rendszer végrehajtja a virtuális gép modelljének más függőben lévő frissítését, és a többi módosítás újraindítást igényelhet. 
 
-Azure PowerShell:
+Azure Portal:
+
+A portálon válassza ki a virtuális gépet, és a bal oldali ablaktáblán, a **támogatás + hibaelhárítás** területen válassza az **újratelepítés + újraalkalmazás** lehetőséget, majd az **újbóli alkalmazás** lehetőséget.
+
+
+Azure PowerShell *(a RG nevét és a virtuális gép nevét cserélje le az értékekre)*:
 
 ```azurepowershell
-$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
-Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+Set-AzVM -ResourceGroupName <RG Name> -Name <VM Name> -Reapply
 ```
 
-Azure CLI:
+Azure CLI *(a RG nevét és a virtuális gép nevét cserélje le az értékekre)*:
 
 ```azurecli
-az vm update -g <rgname> -n <vmname>
+az vm reapply -g <RG Name> -n <VM Name>
 ```
 
-Ha egy "üres frissítés" nem működött, hozzáadhat egy új üres adatlemezt a virtuális géphez az Azure felügyeleti portálból, majd később eltávolíthatja azt a tanúsítvány újbóli hozzáadása után.
+Ha a "virtuális gép újratelepítése" nem működött, hozzáadhat egy új üres adatlemezt a virtuális géphez az Azure felügyeleti portálból, majd később eltávolíthatja azt a tanúsítvány újbóli hozzáadása után.

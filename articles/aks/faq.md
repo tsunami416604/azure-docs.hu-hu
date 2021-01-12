@@ -3,12 +3,12 @@ title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780348"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127634"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -146,7 +146,7 @@ Az AK-fürt bérlők közötti áthelyezése jelenleg nem támogatott.
 
 A fürtök előfizetések közötti áthelyezése jelenleg nem támogatott.
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Áthelyezhetem az AK-fürtöket az aktuális Azure-előfizetésből egy másikba? 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Áthelyezhetem az AK-fürtöket az aktuális Azure-előfizetésből egy másikba?
 
 Az AK-fürt és az Azure-előfizetések közötti kapcsolódó erőforrások áthelyezése nem támogatott.
 
@@ -154,7 +154,7 @@ Az AK-fürt és az Azure-előfizetések közötti kapcsolódó erőforrások át
 
 Az AK-fürt és a hozzá tartozó erőforrások áthelyezése vagy átnevezése nem támogatott.
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>Miért törli a fürtem a munkaidőt? 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>Miért törli a fürtem a munkaidőt?
 
 A rendszer a legtöbb fürtöt törli a felhasználói kérelem után; bizonyos esetekben – különösen abban az esetben, ha az ügyfelek a saját erőforráscsoportot használják, vagy ha a több-RG feladatok törlésével – további időt vagy hibát okozhatnak. Ha probléma merül fel a törléssel kapcsolatban, ellenőrizze, hogy nincsenek-e zárolások a RG-on, hogy a RG-on kívüli összes erőforrás társítva van-e a RG-ból, és így tovább.
 
@@ -166,7 +166,7 @@ De az AK nem javasolja ezt. A frissítéseket akkor kell elvégezni, ha a fürt 
 
 Nem, a frissítés előtt törölje vagy távolítsa el a meghibásodott állapotú csomópontokat, vagy más módon távolítsa el azokat a fürtből.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Futtattam egy fürtöt, de a következő hibaüzenet jelenik meg: `[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Futtattam egy fürtöt, de a következő hibaüzenet jelenik meg: `[Errno 11001] getaddrinfo failed`
 
 Ezt általában az okozza, hogy a felhasználók egy vagy több hálózati biztonsági csoporttal (NSG) rendelkeznek még használatban, és a fürthöz vannak társítva.  Távolítsa el őket, és próbálkozzon újra a törléssel.
 
@@ -174,7 +174,7 @@ Ezt általában az okozza, hogy a felhasználók egy vagy több hálózati bizto
 
 Erősítse meg, hogy a szolgáltatásnév nem járt le.  Lásd: az AK-beli [szolgáltatásnév](./kubernetes-service-principal.md) és az AK-s [frissítési hitelesítő adatai](./update-credentials.md).
 
-## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>A fürtem működik, de hirtelen nem lehet kiépíteni a LoadBalancers, a csatlakoztatási és a PVC-ket? 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>A fürtem működik, de hirtelen nem lehet kiépíteni a LoadBalancers, a csatlakoztatási és a PVC-ket?
 
 Erősítse meg, hogy a szolgáltatásnév nem járt le.  Lásd: az AK-beli [szolgáltatásnév](./kubernetes-service-principal.md)  és az AK-s [frissítési hitelesítő adatai](./update-credentials.md).
 
@@ -254,6 +254,25 @@ Az alábbi példa egy transzparens üzemmódú IP-útvonal beállítását mutat
 - A Bridge Mode egyik sarki esete az, hogy az Azure-CNI nem tudja megőrizni a felhasználók által a VNET vagy a NIC-be való hozzáadáshoz hozzáadott egyéni DNS-kiszolgáló frissítését. Ez azt eredményezi, hogy a CNI csak a DNS-kiszolgálók listájának első példányát vette fel. Transzparens módban megoldott, mivel a CNI nem változtatja meg a ETH0-tulajdonságokat. [Itt](https://github.com/Azure/azure-container-networking/issues/713)talál további információt.
 - Az UDP-forgalom hatékonyabb kezelését és az UDP-beli adatváltozások enyhítését teszi lehetővé az ARP időtúllépése esetén. A Bridge módban, ha a híd nem ismeri a cél pod MAC-címeit a virtuális gépen belüli Pod-Pod kommunikációban, a terv szerint ez a csomag minden portra kiterjed. Transzparens módban megoldott, mert az elérési útban nem találhatók L2-eszközök. [Itt](https://github.com/Azure/azure-container-networking/issues/704)talál további információt.
 - Az átlátszó mód jobb teljesítményt nyújt a virtuális gépen belüli Pod-to-Pod kommunikációban az átviteli sebesség és a késés tekintetében a híd üzemmódhoz képest.
+
+## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>Hogyan lehet elkerülni a jogosultságok tulajdonlását, ha a kötet sok fájllal rendelkezik?
+
+Hagyományosan, ha a pod nem legfelső szintű felhasználóként fut (amit érdemes), meg kell adnia a `fsGroup` Pod biztonsági környezet belsejében, hogy a kötet olvasható és írható legyen a pod használatával. Ezt a követelményt az [itt](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)részletesebben tárgyaljuk.
+
+A beállítás egyik mellékhatása azonban az `fsGroup` , hogy minden alkalommal, amikor egy kötet csatlakoztatva van, a Kubernetes rekurzív módon kell lennie, `chown()` és a `chmod()` köteten belüli összes fájlt és könyvtárat – az alábbiakban néhány kivétellel. Ez akkor is megtörténik, ha a kötet tulajdonjoga már megfelel a kértnek `fsGroup` , és nagyon drága a nagy mennyiségű kis fájlokkal, ami hosszú időt okoz a pod indításakor. Ez a forgatókönyv egy ismert probléma volt a v 1.20 előtt, és a megkerülő megoldás a pod futtató gyökérként való futtatását állítja be:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+A problémát a Kubernetes v 1.20 oldotta meg, tekintse meg a [Kubernetes 1,20: a mennyiségi engedélyek részletesebb szabályozása](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/) című témakört.
 
 
 <!-- LINKS - internal -->

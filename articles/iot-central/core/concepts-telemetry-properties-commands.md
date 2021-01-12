@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 5a9f6fa79da59425e4972dddd21ffdea15af73e7
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969061"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127906"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonságok és parancsok hasznos adatai
 
@@ -187,6 +187,9 @@ Az eszköz modelljének következő kódrészlete a telemetria definícióját m
   "schema": "geopoint"
 }
 ```
+
+> [!NOTE]
+> A **geopoint** séma típusa nem része a [digitális Twins-definíció nyelvi specifikációjának](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). A IoT Central jelenleg a **geopoint** séma típusát és a **hely** szemantikai típusát támogatja a visszamenőleges kompatibilitás érdekében.
 
 Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elküldenie a telemetria. IoT Central megjeleníti az értéket a térképen lévő PIN-kóddal:
 
@@ -575,6 +578,9 @@ Az eszköz modelljének következő kódrészlete egy tulajdonság definíciój�
   "writable": false
 }
 ```
+
+> [!NOTE]
+> A **geopoint** séma típusa nem része a [digitális Twins-definíció nyelvi specifikációjának](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). A IoT Central jelenleg a **geopoint** séma típusát és a **hely** szemantikai típusát támogatja a visszamenőleges kompatibilitás érdekében.
 
 Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következő példához hasonlóan jelenik meg, mint az eszköz Twin-beli jelentett tulajdonsága:
 

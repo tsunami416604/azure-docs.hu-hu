@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: e839b8a22da50ce172043f57a4467219a1771175
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 27f14834e45dd32bdf3a26d22d38ab250aa1bcbe
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584201"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127736"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -25,6 +25,7 @@ Alapértelmezés szerint a Azure Data Factory felhasználói felületi élmény 
 
 - A Data Factory szolgáltatás nem tartalmaz olyan tárházat, amely a változtatások JSON-entitásait tárolja. A módosítások mentésének egyetlen módja az **összes közzététele** gomb, és az összes módosítás közvetlenül a Refactory szolgáltatásban lesz közzétéve.
 - A Data Factory szolgáltatás nem az együttműködéshez és a verziókövetés-vezérléshez van optimalizálva.
+- A Data Factory üzembe helyezéséhez szükséges Azure Resource Manager sablon nincs belefoglalva.
 
 A jobb authoring Experience Azure Data Factory lehetővé teszi egy git-tárház konfigurálását az Azure Repos vagy a GitHub használatával. A git egy verziókövető rendszer, amely megkönnyíti a változások nyomon követését és együttműködését. Ebből a cikkből megtudhatja, hogyan konfigurálhat és dolgozhat a git-tárházban, valamint kiemelheti az ajánlott eljárásokat és a hibaelhárítási útmutatót.
 
@@ -150,7 +151,7 @@ A konfigurációs ablaktábla a GitHub-tárház következő beállításait jele
 |:--- |:--- |:--- |
 | **Tárház típusa** | Az Azure Repos Code adattár típusa. | GitHub |
 | **A GitHub Enterprise használata** | Jelölőnégyzet a GitHub Enterprise kiválasztásához | nincs kiválasztva (alapértelmezett) |
-| **GitHub Enterprise URL-cím** | A GitHub vállalati gyökér URL-címe (a helyi GitHub Enterprise Server esetében HTTPS-nek kell lennie). Például: `https://github.mydomain.com`. Csak akkor szükséges, ha a **GitHub Enterprise használata** van kiválasztva | `<your GitHub enterprise url>` |                                                           
+| **GitHub Enterprise URL-cím** | A GitHub vállalati gyökér URL-címe (a helyi GitHub Enterprise Server esetében HTTPS-nek kell lennie). Példa: `https://github.mydomain.com`. Csak akkor szükséges, ha a **GitHub Enterprise használata** van kiválasztva | `<your GitHub enterprise url>` |                                                           
 | **GitHub-fiók** | A GitHub-fiók neve. Ez a név a https: \/ /GitHub.com/{Account Name}/{repository neve} helyről érhető el. Ezen az oldalon navigálva megadhatja a GitHub-OAuth hitelesítő adatait a GitHub-fiókjában. | `<your GitHub account name>` |
 | **Adattár neve**  | A GitHub-kód tárházának neve. A GitHub-fiókok git-tárházat tartalmaznak a forráskód kezeléséhez. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a fiókjában. | `<your repository name>` |
 | **Együttműködési ág** | A GitHub-együttműködési ág, amely a közzétételhez használatos. Alapértelmezés szerint ez a fő. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch>` |

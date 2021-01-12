@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 01/11/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296679135063e2c7e1b7f0e3ffd193c8f18c3acf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576264"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127838"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Felhasználói felügyeleti fejlesztések (előzetes verzió) Azure Active Directory
 
@@ -60,6 +60,9 @@ A **minden felhasználó** lapon látható felhasználói tulajdonságok a köve
 - Name (név): a felhasználó megjelenített neve.
 - Egyszerű Felhasználónév: a felhasználó egyszerű felhasználóneve (UPN).
 - Felhasználó típusa: tag, vendég, nincs.
+- Létrehozás időpontja: a felhasználó létrehozásának dátuma és időpontja.
+- Beosztás: a felhasználó beosztása.
+- Részleg: az a részleg, amelyben a felhasználó működik.
 - Könyvtár szinkronizálva: azt jelzi, hogy a felhasználó szinkronizálva van-e egy helyszíni címtárból.
 - Identity kiállító: a felhasználói fiókba való bejelentkezéshez használt identitás kibocsátói.
 - Objektum azonosítója: a felhasználó objektumazonosító.
@@ -76,7 +79,8 @@ A **minden felhasználó** lapon látható felhasználói tulajdonságok a köve
 A **törölt felhasználók** lap tartalmazza az összes **felhasználó** lapon elérhető összes oszlopot, valamint néhány további oszlopot, nevezetesen:
 
 - Törlés dátuma: az a dátum, amikor a felhasználót először törölték a szervezetből (a felhasználó helyreállítható).
-- Végleges törlés dátuma: az a dátum, amely után a rendszer automatikusan törli a felhasználót a szervezettől. 
+- Végleges törlés dátuma: az a dátum, amely után a rendszer automatikusan törli a felhasználót a szervezettől.
+- Eredeti egyszerű Felhasználónév: a felhasználó eredeti UPN-azonosítója, mielőtt a rendszer hozzáadja az objektum azonosítóját a törölt UPN-hez.
 
 > [!NOTE]
 > A törlési dátumok az egyezményes világidő (UTC) szerint jelennek meg.
@@ -105,6 +109,10 @@ A **minden felhasználó** lapon található szűrhető tulajdonságok a követk
 - Felhasználó típusa: tag, vendég, nincs
 - Címtárral szinkronizált állapot: igen, nem
 - Létrehozás típusa: meghívás, e-mailben ellenőrzött, helyi fiók
+- Létrehozás időpontja: utolsó 7, 14, 30, 90, 360 vagy >360 nappal ezelőtt
+- Beosztás: adja meg a beosztás nevét
+- Részleg: adja meg a részleg nevét
+- Csoport: csoport keresése
 - Meghívás állapota – elfogadás függőben, elfogadva
 - Tartománynév: adjon meg egy tartománynevet
 - Cég neve: adja meg a vállalat nevét
@@ -117,6 +125,9 @@ A **törölt felhasználók** lapon további szűrők nem szerepelnek a **minden
 - Felhasználó típusa: tag, vendég, nincs
 - Címtárral szinkronizált állapot: igen, nem
 - Létrehozás típusa: meghívás, e-mailben ellenőrzött, helyi fiók
+- Létrehozás időpontja: utolsó 7, 14, 30, 90, 360 vagy > 360 nappal ezelőtt
+- Beosztás: adja meg a beosztás nevét
+- Részleg: adja meg a részleg nevét
 - Meghívás állapota: elfogadás függőben, elfogadva
 - Törlés dátuma: utolsó 7, 14 vagy 30 nap
 - Tartománynév: adjon meg egy tartománynevet
@@ -142,7 +153,7 @@ Mi történik a felhasználók és a vendégek tömeges képességeivel? | A tö
 Mi történt a forrás oszloppal? | A **forrás** oszlopot lecserélték más oszlopokra, amelyek hasonló információt biztosítanak, miközben lehetővé teszi az értékek egymástól független szűrését. Ilyenek például a **Létrehozás típusa**, a **címtárral szinkronizált** és az **identitás kiállítója**.
 Mi történt a Felhasználónév oszloppal? | A **Felhasználónév** oszlop még mindig létezik, de az **egyszerű felhasználónévre** lett átnevezve. Ez jobban megfelel az adott oszlopban található információknak. Azt is láthatja, hogy a teljes egyszerű felhasználónév mostantól megjelenik a B2B vendégek számára. Ez megegyezik azzal, amit az MS Graph-ban fog kapni.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Felhasználói műveletek
 

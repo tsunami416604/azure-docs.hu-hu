@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 34d8881eb072c4c723bf68b7c6ccfd24ab19cd3c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116279"
+ms.locfileid: "98126852"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -71,7 +71,7 @@ A Defender Security Center-nal való integrálásával a következő kiegészít
 
 Ha a Azure Security Center használatával figyeli a kiszolgálókat, a rendszer automatikusan létrehoz egy Microsoft Defender for Endpoint bérlőt. A Defender által a végponthoz gyűjtött adatokat a rendszer a bérlő földrajzi helyén tárolja a kiépítés során azonosított módon. Ügyféladatok – az álneves formában – a Egyesült Államok központi tároló-és feldolgozási rendszereiben is tárolhatók. 
 
-A hely konfigurálása után nem módosítható. Ha át kell helyeznie az adatait egy másik helyre, lépjen kapcsolatba Microsoft ügyfélszolgálata a bérlő alaphelyzetbe állításához.
+A hely konfigurálása után nem módosítható. Ha rendelkezik saját licenccel a Microsoft Defender for Endpoint szolgáltatáshoz, és át kell helyeznie az adatait egy másik helyre, lépjen kapcsolatba Microsoft ügyfélszolgálata a bérlő alaphelyzetbe állításához.
 
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>A Microsoft Defender engedélyezése az Endpoint Integration számára

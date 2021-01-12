@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a5764a9f230540d58edf71e8c00781e86589aa9a
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070167"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127651"
 ---
 # <a name="configure-and-submit-training-runs"></a>Betanítási futtatások konfigurálása és elküldése
 
@@ -175,6 +175,19 @@ Tekintse meg ezeket a jegyzetfüzeteket a futtatások konfigurálására példá
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
+* **A Futtatás sikertelen `jwt.exceptions.DecodeError` a** következővel: pontos hibaüzenet: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
+    
+    Érdemes lehet a azureml-Core legújabb verziójára frissíteni: `pip install -U azureml-core` .
+    
+    Ha a problémát helyi futtatások esetén is futtatja, ellenőrizze a környezetében telepített PyJWT verzióját, ahol a futtatást elindítja. A PyJWT támogatott verziói < 2.0.0. Távolítsa el a PyJWT a környezetből, ha a verzió >= 2.0.0. A PyJWT verzióját a következőképpen tekintheti meg, távolíthatja el és telepítheti a megfelelő verziót:
+    1. Indítsa el a parancssort, aktiválja a Conda környezetet, ahol a azureml-Core telepítve van.
+    2. Adja meg `pip freeze` és keresse meg `PyJWT` , ha található, a felsorolt verziónak < 2.0.0 kell lennie
+    3. Ha a felsorolt verzió nem támogatott verziójú, a `pip uninstall PyJWT` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.
+    4. Végezze el a telepítést a `pip install 'PyJWT<2.0.0'` paranccsal
+    
+    Ha a futtatásával felhasználó által létrehozott környezetet küld, érdemes lehet a azureml-Core legújabb verzióját használni ebben a környezetben. Verziók >= a azureml-Core 1.18.0 már PyJWT < 2.0.0. Ha a azureml-Core < 1.18.0 verzióját kell használnia a beküldött környezetben, ügyeljen arra, hogy a PyJWT < 2.0.0 a pip-függőségekben.
+
+
  * **ModuleErrors (nincs nevű modul)**: Ha a ModuleErrors-ben fut a kísérletek Azure ml-ben való elküldése közben, a betanítási szkript egy telepítendő csomagot vár, de nem adja hozzá. A csomag nevének megadása után az Azure ML telepíti a csomagot a betanítási futtatáshoz használt környezetben.
 
     Ha a becslések-t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` `conda_packages` a kalkulátoron keresztül vagy paraméterrel, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. Egy YML-fájlt is megadhat az összes függőségének használatával, `conda_dependencies_file` vagy listázhatja az összes pip-követelményét egy txt-fájlban a `pip_requirements_file` paraméter használatával. Ha rendelkezik saját Azure ML-környezetbeli objektummal, amellyel felül szeretné bírálni a kalkulátor által használt alapértelmezett rendszerképet, megadhatja ezt a környezetet a `environment` kalkulátor konstruktorának paraméterén keresztül.
@@ -204,18 +217,6 @@ Tekintse meg ezeket a jegyzetfüzeteket a futtatások konfigurálására példá
     ```
 
     Az Azure ML belsőleg egy összefüggő listává fűzi össze az ugyanazzal a metrikanévvel rendelkező tömböket.
-
-* **A Futtatás sikertelen `jwt.exceptions.DecodeError` a** következővel: pontos hibaüzenet: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
-    
-    Érdemes lehet a azureml-Core legújabb verziójára frissíteni: `pip install -U azureml-core` .
-    
-    Ha a problémát helyi futtatások esetén is futtatja, ellenőrizze a környezetében telepített PyJWT verzióját, ahol a futtatást elindítja. A PyJWT támogatott verziói < 2.0.0. Távolítsa el a PyJWT a környezetből, ha a verzió >= 2.0.0. A PyJWT verzióját a következőképpen tekintheti meg, távolíthatja el és telepítheti a megfelelő verziót:
-    1. Indítsa el a parancssort, aktiválja a Conda környezetet, ahol a azureml-Core telepítve van.
-    2. Adja meg `pip freeze` és keresse meg `PyJWT` , ha található, a felsorolt verziónak < 2.0.0 kell lennie
-    3. Ha a felsorolt verzió nem támogatott verziójú, a `pip uninstall PyJWT` parancs-rendszerhéjban írja be az y értéket a megerősítéshez.
-    4. Végezze el a telepítést a `pip install 'PyJWT<2.0.0'` paranccsal
-    
-    Ha a futtatásával felhasználó által létrehozott környezetet küld, érdemes lehet a azureml-Core legújabb verzióját használni ebben a környezetben. Verziók >= a azureml-Core 1.18.0 már PyJWT < 2.0.0. Ha a azureml-Core < 1.18.0 verzióját kell használnia a beküldött környezetben, ügyeljen arra, hogy a PyJWT < 2.0.0 a pip-függőségekben.
 
 * A **számítási cél elkezdése hosszú időt vesz igénybe**: a számítási célokhoz tartozó Docker-rendszerképek betöltődik Azure Container Registryból (ACR). Alapértelmezés szerint a Azure Machine Learning létrehoz egy ACR-t, *amely az alapszintű* szolgáltatási szintet használja. A munkaterületre vonatkozó ACR a standard vagy a prémium szintre való módosítása csökkentheti a lemezképek létrehozásához és betöltéséhez szükséges időt. További információ: [Azure Container Registry szolgáltatási szintek](../container-registry/container-registry-skus.md).
 

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 065b4348675fcd48088fd26db0e0293eb2d7a387
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 751d447c164c602b9b1524d4945d61556bf71932
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896464"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127294"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése az Azure-beli használatra
 Ebből a cikkből megtudhatja, hogyan készítheti elő Red Hat Enterprise Linux (RHEL) virtuális gépet az Azure-ban való használatra. A cikkben tárgyalt RHEL-verziók 6,7 + és 7.1 +. A cikkben tárgyalt, a Hyper-V, a kernel-alapú virtuális gép (KVM) és a VMware. A Red Hat felhőalapú hozzáférési programjában való részvételre vonatkozó jogosultsági követelményekkel kapcsolatos további információkért tekintse [meg a Red Hat Cloud Access webhelyét](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) , és [futtassa a RHEL az Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)-ban című témakört. A RHEL-lemezképek készítésének automatizálásához tekintse meg az [Azure Image Builder](./image-builder-overview.md)című témakört.
@@ -200,11 +200,14 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
 
 1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket is tartalmazzon az Azure-hoz. A módosítás elvégzéséhez nyisson meg `/etc/default/grub` egy szövegszerkesztőben, és szerkessze a (z `GRUB_CMDLINE_LINUX` ) paramétert. Például:
 
+    
     ```config-grub
-    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1
     ```
    
-   Ez azt is biztosítja, hogy az összes konzolos üzenet el legyen küldve az első soros portra, amely segítséget nyújt az Azure támogatásához hibakeresési problémák esetén. Ez a konfiguráció a hálózati adapterek új RHEL 7 elnevezési konvencióit is kikapcsolja. Emellett azt javasoljuk, hogy távolítsa el a következő paramétereket:
+    Ez azt is biztosítja, hogy az összes konzolos üzenet el legyen küldve az első soros portra, és engedélyezze az interakciót a soros konzollal, amely segítséget nyújt az Azure támogatásához hibakeresési problémákkal. Ez a konfiguráció a hálózati adapterek új RHEL 7 elnevezési konvencióit is kikapcsolja.
 
     ```config
     rhgb quiet crashkernel=auto
@@ -217,6 +220,8 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     ```console
     # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
+    > [!NOTE]
+    > UEFI-kompatibilis virtuális gép feltöltése esetén a grub frissítésére szolgáló parancs `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg` .
 
 1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik, ami általában az alapértelmezett. Módosítsa `/etc/ssh/sshd_config` a következő sor befoglalásával:
 
@@ -230,31 +235,40 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. Telepítse az Azure Linux-ügynököt a következő parancs futtatásával:
+1. A következő parancs futtatásával telepítse az Azure Linux-ügynököt, a Cloud-init és az egyéb szükséges segédprogramokat:
 
     ```console
-    # sudo yum install WALinuxAgent
+    # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
     # sudo systemctl enable waagent.service
+    # sudo systemctl enable cloud-init.service
     ```
 
-1. A Cloud-init telepítése a kiépítés kezelésére
+1. A Cloud-init konfigurálása a kiépítés kezelésére:
+
+    1. A waagent konfigurálása a Cloud-init számára:
 
     ```console
-    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
-
-    # Configure waagent for cloud-init
-    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
-    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+    > [!NOTE]
+    > Ha egy adott virtuális gépet telepít át, és nem kíván általánosított rendszerképet létrehozni, állítsa be a `Provisioning.Agent=disabled` `/etc/waagent.conf` konfigurációt.
+    
+    1. Csatlakoztatások konfigurálása:
 
+    ```console
     echo "Adding mounts and disk_setup to init stage"
     sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
     sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
     sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
     sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+    ```
+    
+    1. Az Azure-adatforrás konfigurálása:
 
+    ```console
     echo "Allow only Azure datasource, disable fetching network setting via IMDS"
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
@@ -262,13 +276,206 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     Azure:
         apply_network_config: False
     EOF
+    ```
 
+    1. Ha be van állítva, távolítsa el a meglévő swapfile:
+
+    ```console
     if [[ -f /mnt/resource/swapfile ]]; then
-    echo Removing swapfile - RHEL uses a swapfile by default
+    echo "Removing swapfile" #RHEL uses a swapfile by defaul
     swapoff /mnt/resource/swapfile
     rm /mnt/resource/swapfile -f
     fi
+    ```
+    1. Cloud-init naplózás konfigurálása:
+    ```console
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
+    ```
+
+1. A swap konfiguráció nem hoz létre lapozófájlt az operációs rendszer lemezén.
+
+    Korábban az Azure Linux-ügynököt a virtuális géphez a virtuális gép üzembe helyezése után az Azure-ban való kiépítés után a rendszer automatikusan konfigurálja a swap-helyet. Ezt azonban a Cloud-init kezeli, **nem szabad** a Linux-ügynököt az erőforrás lemezének formázására használni, megfelelően módosítani a következő paramétereket `/etc/waagent.conf` :
+
+    ```console
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+    ```
+
+    Ha a csatlakoztatást, a formázást és a cserét szeretné létrehozni, az alábbiakat teheti:
+    * Minden egyes virtuális gép létrehozásakor adja át ezt a felhő-init konfigurációként
+    * Használjon egy Felhőbeli init direktívát, amely a virtuális gép létrehozásakor minden alkalommal megteszi ezt a képet:
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
+1. Ha törölni szeretné az előfizetés regisztrációját, futtassa a következő parancsot:
+
+    ```console
+    # sudo subscription-manager unregister
+    ```
+
+1. Megszüntetése
+
+    Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
+
+    > [!CAUTION]
+    > Ha egy adott virtuális gépet telepít át, és nem kíván általánosított rendszerképet létrehozni, ugorja át a megszüntetési lépést. A parancs futtatásakor `waagent -force -deprovision` a forrásszámítógép használhatatlanná válik, ez a lépés csak általánosított rendszerkép létrehozására szolgál.
+    ```console
+    # sudo waagent -force -deprovision
+
+    # export HISTSIZE=0
+
+    # logout
+    ```
+    
+
+1. Kattintson a **művelet**  >  **leállítása** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
+
+### <a name="rhel-8-using-hyper-v-manager"></a>RHEL 8 a Hyper-V kezelőjével
+
+1. A Hyper-V kezelőjében válassza ki a virtuális gépet.
+
+1. Kattintson a **Kapcsolódás** elemre a virtuális gép konzoljának megnyitásához.
+
+1. A következő parancs futtatásával győződjön meg arról, hogy a hálózati kezelő szolgáltatás indításkor elindul:
+
+    ```console
+    # sudo systemctl enable NetworkManager.service
+    ```
+
+1. Konfigurálja úgy a hálózati adaptert, hogy automatikusan induljon a rendszerindításkor, és DHCP-t használjon:
+
+    ```console
+    # nmcli con mod eth0 connection.autoconnect yes ipv4.method auto
+    ```
+
+
+1. Regisztrálja a Red Hat-előfizetését, hogy lehetővé tegye a csomagok telepítését a RHEL adattárból a következő parancs futtatásával:
+
+    ```console
+    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
+
+1. Módosítsa a rendszermag rendszerindítási sorát a grub-konfigurációban, hogy további kernel-paramétereket tartalmazzon az Azure-hoz, és engedélyezze a soros konzolt. 
+
+    1. Az aktuális GRUB-paraméterek eltávolítása:
+    ```console
+    # grub2-editenv - unset kernelopts
+    ```
+
+    1. Szerkesszen `/etc/default/grub` egy szövegszerkesztőben, és adja hozzá a következő paraméterek adatfolyamának:
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
+    ```
+   
+   Ez azt is biztosítja, hogy az összes konzolos üzenet el legyen küldve az első soros portra, és engedélyezze az interakciót a soros konzollal, amely segítséget nyújt az Azure támogatásához hibakeresési problémákkal. Ez a konfiguráció a hálózati adapterek új RHEL 7 elnevezési konvencióit is kikapcsolja.
+   
+   1. Javasoljuk továbbá, hogy távolítsa el a következő paramétereket:
+
+    ```config
+    rhgb quiet crashkernel=auto
+    ```
+   
+    A grafikus és a csendes rendszerindítás nem hasznos olyan felhőalapú környezetben, ahol az összes naplót el szeretné juttatni a soros portra. Ha szükséges, hagyja a `crashkernel` beállítást. Vegye figyelembe, hogy ez a paraméter a virtuális gép rendelkezésre álló memóriájának mennyiségét 128 MB vagy több értékkel csökkenti, ami problémát okozhat a kisebb virtuálisgép-méreteknél.
+
+1. Miután végzett a szerkesztéssel `/etc/default/grub` , futtassa a következő parancsot a grub-konfiguráció újraépítéséhez:
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+    És UEFI-kompatibilis virtuális gépek esetén futtassa a következő parancsot:
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+    ```
+
+1. Győződjön meg arról, hogy az SSH-kiszolgáló telepítése és konfigurálása a rendszerindítás indításakor történik, ami általában az alapértelmezett. Módosítsa `/etc/ssh/sshd_config` a következő sor befoglalásával:
+
+    ```config
+    ClientAliveInterval 180
+    ```
+
+1. A következő parancs futtatásával telepítse az Azure Linux-ügynököt, a Cloud-init és az egyéb szükséges segédprogramokat:
+
+    ```console
+    # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # sudo systemctl enable waagent.service
+    # sudo systemctl enable cloud-init.service
+    ```
+
+1. A Cloud-init konfigurálása a kiépítés kezelésére:
+
+    1. A waagent konfigurálása a Cloud-init számára:
+
+    ```console
+    sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+    > [!NOTE]
+    > Ha egy adott virtuális gépet telepít át, és nem kíván általánosított rendszerképet létrehozni, állítsa be a `Provisioning.Agent=disabled` `/etc/waagent.conf` konfigurációt.
+    
+    1. Csatlakoztatások konfigurálása:
+
+    ```console
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+    ```
+    
+    1. Az Azure-adatforrás konfigurálása:
+
+    ```console
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+    ```
+
+    1. Ha be van állítva, távolítsa el a meglévő swapfile:
+
+    ```console
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo "Removing swapfile" #RHEL uses a swapfile by defaul
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+    ```
+    1. Cloud-init naplózás konfigurálása:
+    ```console
     echo "Add console log file"
     cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 
@@ -323,14 +530,15 @@ Ez a szakasz azt feltételezi, hogy már beszerzett egy ISO-fájlt a Red Hat web
     Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
 
     ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
     # sudo waagent -force -deprovision
 
     # export HISTSIZE=0
 
     # logout
     ```
+    > [!CAUTION]
+    > Ha egy adott virtuális gépet telepít át, és nem kíván általánosított rendszerképet létrehozni, ugorja át a megszüntetési lépést. A parancs futtatásakor `waagent -force -deprovision` a forrásszámítógép használhatatlanná válik, ez a lépés csak általánosított rendszerkép létrehozására szolgál.
+
 
 1. Kattintson a **művelet**  >  **leállítása** a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 

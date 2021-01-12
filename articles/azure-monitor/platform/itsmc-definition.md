@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: a7e39bb8ed742007a13a222771b430372d50e889
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 717a1bc4361ba4a7366f4864c1fe44f93b6f4b5e
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071697"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127855"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -153,7 +153,7 @@ Műveleti csoportok létrehozásához kövesse az alábbi eljárást:
 
     * Abban az esetben, ha a "munkaelem" legördülő menüből kijelöli a "esemény": ![ képernyőképet, amely megjeleníti az ITSM eseményt.](media/itsmc-overview/itsm-action-configuration-event.png)
 
-        * Ha **a "különálló munkaelemek létrehozása az egyes naplókhoz" lehetőséget választja (a konfigurációs elem mezője nincs kitöltve. Nagy számú munkaelemet eredményezhet.) "** a választógombok kiválasztásakor a rendszer minden egyes sorban létrehoz egy munkaelemet a naplóbeli keresés riasztási lekérdezés keresési eredményei között. A munkaelem hasznos adatai között a Description (Leírás) tulajdonság a keresési eredmények sorát fogja tartalmazni.
+        * Ha **a "különálló munkaelemek létrehozása az egyes naplókhoz" lehetőséget választja (a konfigurációs elem mezője nincs kitöltve. Nagy számú munkaelemet eredményezhet.) "** a választógombok kiválasztásakor a rendszer minden egyes sorban létrehoz egy munkaelemet a naplóbeli keresés riasztási lekérdezés keresési eredményei között. A munkaelem tartalmában található Description tulajdonság a keresési eredmények sorát fogja tartalmazni.
         * Ha az "egyéni munkaelemek **létrehozása az egyes konfigurációs elemekhez"** lehetőséget választja, a választógombok kiválasztásakor minden egyes riasztás konfigurációs eleme új munkaelemet fog létrehozni. A ITSM-rendszeren több munkaelem is szerepelhet egy konfigurációs elemnél. Ez ugyanaz lesz, mint az incidens/riasztás szakaszban lévő jelölőnégyzet ellenőrzése.
 
 10. Válassza az **OK** lehetőséget.

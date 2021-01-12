@@ -4,12 +4,12 @@ description: Ebben a cikkben megismerheti a szelektív lemezek biztonsági ment�
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 95104f231e7b4d4d2135ac3c5dde27512d465775
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1f4d27563cf292632c6b14c82e36542b86c5d356
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746977"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127719"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Szelektív lemezes biztonsági mentés és visszaállítás Azure-beli virtuális gépekhez
 
@@ -189,14 +189,25 @@ A parancsok végrehajtásakor látni fogja a következőt: `"diskExclusionProper
 
 Győződjön meg arról, hogy Azure PowerShell 3.7.0 vagy újabb verziót használ.
 
+A védelem konfigurálása művelet során meg kell adnia a lemez lista beállítást egy befoglalási/kizárási paraméterrel, amely megadja a biztonsági mentésbe bevonni vagy kizárni kívánt lemezek LUN-számát.
+
 ### <a name="enable-backup-with-powershell"></a>Biztonsági mentés engedélyezése a PowerShell-lel
 
+Például:
+
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList[Strings] -VaultId $targetVault.ID
+$disks = ("0","1")
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "rg-p-recovery_vaults" -Name "rsv-p-servers"
+Get-AzRecoveryServicesBackupProtectionPolicy
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "P-Servers"
 ```
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList[Strings] -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList $disks -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList $disks -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>Csak az operációsrendszer-lemez biztonsági mentése a Backup konfigurálása a PowerShell-lel

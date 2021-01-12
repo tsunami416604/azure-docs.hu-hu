@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 237ed71f058ae099f19924481eb4dbeb2e2aba05
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3db6fd2e6df96590d7d405157cbb33900c7d8531
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589440"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127804"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Amazon Web Servicestal (AWS)
 
@@ -113,7 +113,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül az AWS-alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Név  | Forrás attribútum  | Névtér |
+    | Name  | Forrás attribútum  | Névtér |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Szerepkör | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
@@ -149,7 +149,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -388,7 +388,11 @@ A Microsoft Access panel használatával bármilyen módban tesztelheti az alkal
 * A szerepköröknek a következő követelményeknek kell megfelelniük, hogy az AWS-ből az Azure AD-be való importálásra jogosult legyen:
 
   * A szerepköröknek pontosan egy SAML-szolgáltatót kell meghatároznia az AWS-ben
-  * A szerepkörhöz tartozó ARN (Amazon-erőforrás neve) és a társított SAML-szolgáltatóhoz tartozó ARN együttes hossza nem haladja meg a 120 karaktert
+  * A szerepkörhöz tartozó ARN (Amazon-erőforrás neve) és a társított SAML-szolgáltatóhoz tartozó ARN együttes hossza nem haladja meg a 240 karaktert.
+
+## <a name="change-log"></a>Változási napló
+
+* 01/12/2020 – nagyobb a szerepkör hossza 119 karakter és 239 karakter között. 
 
 ## <a name="next-steps"></a>Következő lépések
 

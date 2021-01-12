@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107905"
+ms.locfileid: "98127617"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -27,8 +27,6 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
 + **Hibajavítások és javítások**
   + **Azure-CLI-ml**
     + framework_version hozzáadva a OptimizationConfig-ben. A rendszer akkor fogja használni, ha a modell regisztrálva van a Framework MULTI használatával.
-  + **azureml-automl-runtime**
-    + Ebben a frissítésben a AutoML SDK előrejelzési eszközkészletét a Holt tél exponenciális simításával bővítettük. Adott idősorozatok esetében a legjobb modellt a [AICc (korrigált Akaike információs feltétel)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) választja ki, és visszaadja.
   + **azureml – optimalizálás**
     + framework_version hozzáadva a OptimizationConfig-ben. A rendszer akkor fogja használni, ha a modell regisztrálva van a Framework MULTI használatával.
   + **azureml-pipeline-steps**
@@ -897,7 +895,7 @@ Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belü
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
     
-| Webalapú eszköz  |     Description  |
+| Webalapú eszköz  |     Leírás  |
 |---|---|
 | Azure ML Studio notebookok   |     A notebook-fájlok első, osztályon belüli létrehozása és az Azure ML Python SDK-ban elérhető összes művelet támogatása. | 
 
@@ -1409,7 +1407,7 @@ A studióból betaníthatja, tesztelheti, üzembe helyezheti és kezelheti Azure
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
 
-| Webalapú eszköz | Description | 
+| Webalapú eszköz | Leírás | 
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | 
 | [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62c8240a4d2e50aa3b584f322baf7d2ee217c6d3
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816174"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127872"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>A mobilitási szolgáltatás leküldéses telepítésének hibáinak megoldása
 
@@ -106,7 +106,22 @@ A konfigurációs kiszolgáló/kibővített folyamat kiszolgálója megpróbál 
 
 A hiba elhárítása:
 
+* Ellenőrizze, hogy a felhasználói fiók rendelkezik-e rendszergazdai hozzáféréssel a forrásoldali számítógépen, helyi fiókkal vagy tartományi fiókkal. Ha nem használ tartományi fiókot, le kell tiltania a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen.
+  * Távoli felhasználói hozzáférés-vezérlést letiltó beállításkulcs manuális hozzáadása:
+    * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+    * Új hozzáadása `DWORD` : `LocalAccountTokenFilterPolicy`
+    * Érték beállítása a következőre `1`
+  * A beállításkulcs hozzáadásához a parancssorból futtassa a következő parancsot:
+
+    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
 * Győződjön meg arról, hogy a forrásszámítógép pingelése a konfigurációs kiszolgálóról végezhető el. Ha a replikálás engedélyezése során kiválasztotta a kibővíthető folyamat kiszolgálóját, győződjön meg arról, hogy a forráskiszolgáló pingelése megtörtént a folyamat-kiszolgálóról.
+
+* Győződjön meg arról, hogy a fájl-és nyomtatómegosztási szolgáltatás engedélyezve van a virtuális gépen. Tekintse át a lépéseket [itt](vmware-azure-troubleshoot-push-install.md#file-and-printer-sharing-services-check-errorid-95105--95106).
+
+* Győződjön meg arról, hogy a WMI-szolgáltatás engedélyezve van a virtuális gépen. Tekintse át a lépéseket [itt](vmware-azure-troubleshoot-push-install.md#windows-management-instrumentation-wmi-configuration-check-error-code-95103).
+
+* Győződjön meg arról, hogy a virtuális gépen lévő megosztott hálózati mappák elérhetők a folyamat-kiszolgálóról. Tekintse át a lépéseket [itt](vmware-azure-troubleshoot-push-install.md#check-access-for-network-shared-folders-on-source-machine-errorid-9510595523).
 
 * A forrás-kiszolgáló számítógép parancssorában a használatával `Telnet` pingelheti a konfigurációs kiszolgálót vagy a kibővíthető folyamat-kiszolgálót a 135-es HTTPS-porton az alábbi parancsban látható módon. Ez a parancs ellenőrzi, hogy van-e hálózati kapcsolattal kapcsolatos probléma, vagy a tűzfal portja blokkolja a hibákat.
 
@@ -156,19 +171,19 @@ Ha a csatlakozás sikertelen, ellenőrizze, hogy teljesülnek-e az előfeltétel
 
 A kapcsolat ellenőrzése után ellenőrizze, hogy a fájl-és nyomtatómegosztási szolgáltatás engedélyezve van-e a virtuális gépen. Ezek a beállítások szükségesek a mobilitási ügynök a forrásoldali gépre való másolásához.
 
-**Windows 2008 R2 és korábbi verziók**esetén:
+**Windows 2008 R2 és korábbi verziók** esetén:
 
 * A fájl-és nyomtatómegosztás Windows tűzfalon való engedélyezéséhez
-  1. Nyissa meg a **Vezérlőpult**  >  **rendszer és biztonság**  >  **Windows tűzfal**felületét. A bal oldali panelen válassza a **Speciális beállítások**  >  **Bejövő szabályok** elemet a konzolfán.
+  1. Nyissa meg a **Vezérlőpult**  >  **rendszer és biztonság**  >  **Windows tűzfal** felületét. A bal oldali panelen válassza a **Speciális beállítások**  >  **Bejövő szabályok** elemet a konzolfán.
   1. Keresse meg a szabályok fájl-és nyomtatómegosztás (NetBIOS-munkamenet) és a fájl-és nyomtatómegosztás (SMB, bejövő) szakaszt.
-  1. Mindegyik szabályhoz kattintson a jobb gombbal a szabályra, majd kattintson a **szabály engedélyezése**parancsra.
+  1. Mindegyik szabályhoz kattintson a jobb gombbal a szabályra, majd kattintson a **szabály engedélyezése** parancsra.
 
 * Fájlmegosztás engedélyezése Csoportházirend használatával:
-  1. Kattintson a **Start**gombra, írja be a parancsot, `gpmc.msc` és keresse meg.
+  1. Kattintson a **Start** gombra, írja be a parancsot, `gpmc.msc` és keresse meg.
   1. A navigációs ablaktáblán nyissa meg a következő mappákat: **helyi számítógép-házirend**  >  **felhasználói konfiguráció**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **hálózati megosztása**.
-  1. A részleteket tartalmazó ablaktáblán kattintson duplán a **felhasználók a profilban lévő fájlok megosztásának megakadályozása**lehetőségre.
+  1. A részleteket tartalmazó ablaktáblán kattintson duplán a **felhasználók a profilban lévő fájlok megosztásának megakadályozása** lehetőségre.
 
-     Ha le szeretné tiltani a Csoportházirend beállítást, és engedélyezni szeretné a felhasználók számára a fájlok megosztását, válassza a **Letiltva**lehetőséget.
+     Ha le szeretné tiltani a Csoportházirend beállítást, és engedélyezni szeretné a felhasználók számára a fájlok megosztását, válassza a **Letiltva** lehetőséget.
 
   1. A módosítások mentéséhez kattintson az **OK** gombra.
 
@@ -182,7 +197,7 @@ A fájl-és nyomtató-szolgáltatások ellenőrzését követően engedélyezze 
 
 A WMI engedélyezése:
 
-1. Lépjen a **Vezérlőpult**  >  **Biztonság** elemre, és válassza a **Windows tűzfal**lehetőséget.
+1. Lépjen a **Vezérlőpult**  >  **Biztonság** elemre, és válassza a **Windows tűzfal** lehetőséget.
 1. Válassza a **beállítások módosítása** lehetőséget, majd válassza a **kivételek** lapot.
 1. A **kivételek** ablakban jelölje be Windows Management Instrumentation (WMI) jelölőnégyzetét a WMI-forgalom tűzfalon keresztüli engedélyezéséhez.
 
@@ -224,7 +239,7 @@ Az 9,20-es verzió előtt a több lemezen lévő gyökérszintű partíció vagy
 
 ### <a name="possible-cause"></a>Lehetséges ok
 
-A Grand Unified bootloader (GRUB) konfigurációs fájljai (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/GRUB2/grub.cfg_vagy _/etc/default/grub_) tartalmazhatják a paraméterek **gyökerének** értékét **, és a** tényleges eszköznév helyett az univerzálisan egyedi azonosító (UUID) helyett a tényleges eszközök nevét is felhasználhatják. Site Recovery megbízza az UUID megközelítést, mivel az eszközök nevei megváltozhatnak a virtuális gép újraindításakor. Előfordulhat például, hogy a virtuális gép nem fog ugyanazzal a névvel online állapotba jutni a feladatátvétel során, és problémákba ütközik.
+A Grand Unified bootloader (GRUB) konfigurációs fájljai (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/GRUB2/grub.cfg_ vagy _/etc/default/grub_) tartalmazhatják a paraméterek **gyökerének** értékét **, és a** tényleges eszköznév helyett az univerzálisan egyedi azonosító (UUID) helyett a tényleges eszközök nevét is felhasználhatják. Site Recovery megbízza az UUID megközelítést, mivel az eszközök nevei megváltozhatnak a virtuális gép újraindításakor. Előfordulhat például, hogy a virtuális gép nem fog ugyanazzal a névvel online állapotba jutni a feladatátvétel során, és problémákba ütközik.
 
 Például:
 
@@ -254,7 +269,7 @@ Az eszközök nevét a megfelelő UUID-azonosítókra kell cserélni.
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Most cserélje le az eszköz nevét az UUID formátumára, például: `root=UUID=\<UUID>` . Ha például az _/boot/GRUB2/grub.cfg_, a _/boot/GRUB2/grub.cfg_vagy a _/etc/default/grub_ fájlban szereplő, a root és a resume paraméterhez tartozó, az UUID értékkel rendelkező eszközök nevét cseréli le, akkor a fájlok sorai a következő sorba hasonlítanak:
+1. Most cserélje le az eszköz nevét az UUID formátumára, például: `root=UUID=\<UUID>` . Ha például az _/boot/GRUB2/grub.cfg_, a _/boot/GRUB2/grub.cfg_ vagy a _/etc/default/grub_ fájlban szereplő, a root és a resume paraméterhez tartozó, az UUID értékkel rendelkező eszközök nevét cseréli le, akkor a fájlok sorai a következő sorba hasonlítanak:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -333,7 +348,7 @@ A hiba okának megállapításához kövesse az alábbi eljárást.
 
 ### <a name="examine-the-installation-logs"></a>A telepítési naplók vizsgálata
 
-1. Nyissa meg a _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_címen található telepítési naplót.
+1. Nyissa meg a _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_ címen található telepítési naplót.
 2. A probléma a következő hiba jelenlétét jelzi:
 
     ```Output
@@ -374,7 +389,7 @@ A Azure Site Recovery VSS-szolgáltató telepítésének mellőzése és a Azure
       ```
 
 1. Manuálisan kell telepíteni a mobilitási ügynököt.
-1. Ha a telepítés sikeres, és a következő lépésre lép, **konfigurálja**a hozzáadott sorokat.
+1. Ha a telepítés sikeres, és a következő lépésre lép, **konfigurálja** a hozzáadott sorokat.
 1. A VSS-szolgáltató telepítéséhez nyisson meg egy parancssort rendszergazdaként, és futtassa a következő parancsot:
 
    `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
@@ -418,6 +433,6 @@ A hiba megoldása érdekében:
 
 1. Telepítse újra a hiányzó illesztőprogramokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](vmware-azure-tutorial.md) információ a VMWare virtuális gépek vész-helyreállításának beállításáról.

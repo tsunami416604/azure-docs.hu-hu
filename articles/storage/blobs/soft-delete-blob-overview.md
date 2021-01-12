@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022377"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127481"
 ---
 # <a name="soft-delete-for-blobs"></a>Blobok helyreállítható törlése
 
@@ -79,7 +79,7 @@ Ha a **törlési blobot** egy alapblobra hívja (bármely olyan blob, amely nem 
 > [!NOTE]  
 > Ha a rendszer felülírja a törölt blobokat, a rendszer automatikusan létrehoz egy, a blob állapotára vonatkozó, az írási művelet előtt törölt pillanatképet. Az új blob örökli a felülírt blob szintjét.
 
-A helyreállítható törlés nem menti az adatokat tároló vagy fiók törlése esetén, sem a blob metaadatainak és a blob tulajdonságainak felülírásával. Ha a Storage-fiókot helytelen törléssel kívánja biztosítani, a Azure Resource Manager használatával is beállíthat zárolást. További információkért tekintse [meg az erőforrások zárolása a váratlan változások elkerülése érdekében](../../azure-resource-manager/management/lock-resources.md)Azure Resource Manager cikket.
+A helyreállítható törlés nem menti az adatokat tároló vagy fiók törlése esetén, sem a blob metaadatainak és a blob tulajdonságainak felülírásával. Ha a Storage-fiók törlését szeretné biztosítani, a Azure Resource Manager használatával is beállíthat zárolást. További információkért tekintse [meg az erőforrások zárolása a váratlan változások elkerülése érdekében](../../azure-resource-manager/management/lock-resources.md)Azure Resource Manager cikket.
 
 A következő táblázat részletesen ismerteti a Soft delete bekapcsolásakor elvárt viselkedést:
 
@@ -171,7 +171,7 @@ Nem, a nem kötelező törölt Pillanatképek nem számítanak bele a korlátba.
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Ha olyan teljes fiókot vagy tárolót törölek, amelynél a Soft delete be van kapcsolva, a rendszer minden társított blobot ment?
 
-Nem, ha töröl egy teljes fiókot vagy tárolót, az összes társított blob véglegesen törölve lesz. További információ a Storage-fiókok véletlen törlések elleni védelméről: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
+Nem, ha töröl egy teljes fiókot vagy tárolót, az összes társított blob véglegesen törölve lesz. A Storage-fiókok véletlen törlésével kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Megtekinthetem a törölt adatokhoz tartozó kapacitási metrikákat?
 
@@ -191,7 +191,7 @@ Az Azure-beli virtuális gépek nem felügyelt lemezre való írást végeznek a
 
 A Soft delete előnyeit kihasználhatja a használt API-verziótól függetlenül. Azonban a Soft Deleted blobok és a blob-Pillanatképek listázásához és helyreállításához az [Azure Storage REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) vagy újabb 2017-07-29 verzióját kell használnia. A Microsoft azt javasolja, hogy mindig az Azure Storage API legújabb verzióját használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Blobok helyreállítható törlésének engedélyezése](./soft-delete-blob-enable.md)
 - [BLOB verziószámozása](versioning-overview.md)

@@ -10,18 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4516bbddd3fda593021288a440e1b354d4d7f1e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340237"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126886"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével ellátott átiratok létrehozása
 
 Ha szeretné javítani az elismerés pontosságát, különösen azokat a problémákat, amelyek a szavak törlésekor vagy helytelen helyettesítése miatt következnek, az emberi címkével ellátott átírásokat érdemes használni a hangadatokkal együtt. Mik az emberi feliratú átiratok? Ez egyszerűen, egy hangfájl szó szerinti Word-átirata.
 
-Az elismerés javításához nagy minta szükséges az átírási adatgyűjtéshez, javasoljuk, hogy 10 és 1 000 órányi átírást adjon meg. Ezen az oldalon áttekintjük a kiváló minőségű átírások létrehozásához kialakított irányelveket. Ez az útmutató területi beállítással van elválasztva, és az angol, a mandarin kínai és a német nyelvű szakaszt is tartalmazza.
+Az elismerés javításához nagy minta szükséges az átírási adatgyűjtéshez, javasoljuk, hogy 10 és 20 órányi átírást adjon meg. Ezen az oldalon áttekintjük a kiváló minőségű átírások létrehozásához kialakított irányelveket. Ez az útmutató területi beállítással van elválasztva, és az angol, a mandarin kínai és a német nyelvű szakaszt is tartalmazza.
+
+> [!NOTE]
+> Nem minden alapmodell támogatja a hangfájlok testreszabását. Ha egy alapmodell nem támogatja azt, akkor a képzés a kapcsolódó szöveggel megegyező módon fogja használni a beírások szövegét.
 
 ## <a name="us-english-en-us"></a>USA angol (en-US)
 

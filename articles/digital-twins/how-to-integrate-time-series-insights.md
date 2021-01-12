@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22ee57592af838a236d75fa7f56a0c8e1ed89403
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f776482c684004c8d661f69d8158ba9597c923b2
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046530"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127036"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Az Azure Digital Twins integrálása Azure Time Series Insights
 
@@ -84,13 +84,13 @@ Az Azure Digital Twins [*oktatóanyaga: egy végpontok közötti megoldás össz
 
 A továbblépés előtt jegyezze fel a *Event Hubs névteret* és az *erőforráscsoportot*, ahogy azt újra használni fogja a cikk későbbi részében újabb Event hub létrehozásához.
 
-## <a name="create-an-azure-function"></a>Azure-függvény létrehozása 
+## <a name="create-a-function-in-azure"></a>Függvény létrehozása az Azure-ban
 
-Ezután létre fog hozni egy Event Hubs által aktivált függvényt egy Function alkalmazásban. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ([*oktatóanyag: végpontok közötti megoldás összekapcsolását*](./tutorial-end-to-end.md)) vagy a sajátját. 
+Ezután a Azure Functions használatával hozzon létre egy Event Hubs által aktivált függvényt egy Function alkalmazásban. Használhatja a teljes körű oktatóanyagban létrehozott Function alkalmazást ([*oktatóanyag: végpontok közötti megoldás összekapcsolását*](./tutorial-end-to-end.md)) vagy a sajátját. 
 
 Ez a függvény átalakítja ezeket a kettős frissítési eseményeket az eredeti űrlapról JSON-javításként szolgáló dokumentumként a JSON-objektumokba, amelyek csak a frissített és hozzáadott értékeket tartalmazzák az ikrektől.
 
-További információ a Event Hubs Azure functions használatával történő használatáról: [*azure Event Hubs trigger Azure Functionshoz*](../azure-functions/functions-bindings-event-hubs-trigger.md).
+A Event Hubs és a Azure Functions használatával kapcsolatos további információkért lásd: [*Azure Event Hubs trigger Azure Functionshoz*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
 A közzétett Function alkalmazásban cserélje le a függvény kódját a következő kódra.
 
@@ -193,7 +193,7 @@ Az adatforgalom az Time Series Insights-példányba kerül, és készen áll az 
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Az egyes Twin-sorok hőmérsékleti értékeit három, különböző színű párhuzamos vonal ábrázolja.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A digitális ikreket alapértelmezés szerint a rendszer a Time Series Insightsban lévő, lapos hierarchiában tárolja, de a modell adataival és a szervezet többszintű hierarchiájának használatával gazdagíthatja őket. A folyamattal kapcsolatos további információkért olvassa el a következőt: 
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 01/07/2021
-ms.openlocfilehash: 4ff91949c42b9a0e33999b7d0dc21fd24da7cdd9
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0ceb9095f15009c150690b67271f4a654cd6110f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120342"
+ms.locfileid: "98127753"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Azure fejlesztői eszközök regisztrálása vagy megújítása az előfizetéshez
 
@@ -34,7 +34,7 @@ Ez a cikk az Azure fejlesztői eszközök beléptetésének folyamatát ismertet
 1. Ha első alkalommal regisztrálja az **intézmény adatait**, végezze el a beléptetést. Ha megújítja, az információ automatikusan kitöltődik.
 
     :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Adja meg az intézmény adatait." border="false":::
-        
+
 1. Válassza ki az **előfizetési tervet** , és erősítse meg az előfizetés- **adminisztrátort** az előfizetéshez. Az előfizetés-adminisztrátor e-mail-tartománya lehetővé teszi, hogy az azonos tartományba tartozó diákok egyszerűen hozzáférjenek a szoftveres előnyök letöltéséhez.
 
     :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Válassza az előfizetési terv lehetőséget." border="false":::

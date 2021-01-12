@@ -8,18 +8,24 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 62979a2cbe2a5912476ca65327a06eef9c36c1cb
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566367"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127889"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure-beli virtuális WAN-naplók és-metrikák
 
-Azure Monitor használatával figyelheti az Azure Virtual WAN-t. A Virtual WAN egy hálózati szolgáltatás, amely számos hálózati, biztonsági és útválasztási funkciót egyesít, hogy egyetlen operatív felületet biztosítson. A virtuális WAN VPN-átjárók, a ExpressRoute-átjárók és a Azure Firewall Azure Monitoron keresztül elérhetők naplózással és metrikákkal. Azure Firewall információ: [Azure Firewall naplók és metrikák](../firewall/logs-and-metrics.md).
+Azure Monitor használatával figyelheti az Azure Virtual WAN-t. A Virtual WAN egy hálózati szolgáltatás, amely számos hálózati, biztonsági és útválasztási funkciót egyesít, hogy egyetlen operatív felületet biztosítson. A virtuális WAN VPN-átjárók, a ExpressRoute-átjárók és a Azure Firewall Azure Monitoron keresztül elérhetők naplózással és metrikákkal.
 
 Ez a cikk a portálon keresztül elérhető mérőszámokat és diagnosztikai adatokat ismerteti. A metrikák egyszerűek, és a közel valós idejű forgatókönyveket támogatják, így a riasztások és a gyors problémák észlelése is hasznos lehet.
+
+## <a name="monitoring-secured-hub-azure-firewall"></a>Biztonságos központ figyelése (Azure Firewall) 
+
+A biztonságos hubot Azure Firewall naplók használatával figyelheti. Az Azure Firewall-erőforrásokon végzett műveletek tevékenységnaplókkal is naplózhatók.
+
+Ha úgy döntött, hogy Azure Firewall használatával védi a virtuális hubot, a kapcsolódó naplók és metrikák itt érhetők el: [Azure Firewall naplók és metrikák](../firewall/logs-and-metrics.md).
 
 ## <a name="metrics"></a>Mérőszámok
 
@@ -119,7 +125,7 @@ Szükség esetén cserélje le az alábbi értékeket a **= =** érték után.
 
 ## <a name="activity-logs"></a><a name="activity-logs"></a>Tevékenységnaplók
 
-A rendszer alapértelmezés szerint gyűjti a **tevékenység naplójának** bejegyzéseit, és megtekintheti őket a Azure Portalban. Az Azure-tevékenység naplóinak (korábbi nevén *operatív naplók* és *naplók* ) használatával megtekintheti az Azure-előfizetéséhez benyújtott összes műveletet.
+A rendszer alapértelmezés szerint gyűjti a **tevékenység naplójának** bejegyzéseit, és megtekintheti őket a Azure Portalban. Az Azure-tevékenység naplóinak (korábbi nevén *operatív naplók* és *naplók*) használatával megtekintheti az Azure-előfizetéséhez benyújtott összes műveletet.
 
 ## <a name="next-steps"></a>Következő lépések
 

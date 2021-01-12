@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 07562167131d1839bc0827c74fae09c683302c08
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118608"
+ms.locfileid: "98127209"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -126,10 +126,10 @@ Ezek a beállítások a CLI-n és a PowerShellen keresztül Key Vault frissíthe
 ## <a name="create-cluster"></a>Fürt létrehozása
 
 > [!NOTE]
-> A fürtök támogatják a két [felügyelt identitás típusát](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types), a rendszer által hozzárendelt és a felhasználó által hozzárendelt, amelyek a forgatókönyv alapján használhatók. A rendszer által hozzárendelt felügyelt identitás egyszerűbb, és automatikusan létrejön a fürt létrehozásakor, ha az identitást a `type` `SystemAssigned` --Ez az identitás később is használhatja a Key Vaulthoz való hozzáférés biztosításához. Ha létre kell hoznia egy, az ügyfél által felügyelt kulcs-konfigurációval rendelkező fürtöt a létrehozáskor, meg kell adnia egy kulcshoz definiált és felhasználó által hozzárendelt identitást, amelyet előzőleg a Key Vault adhat meg, majd létre kell hoznia az identitással rendelkező fürtöt `type` `UserAssigned` , az `UserAssignedIdentities` identitás és a kulcs adatainak erőforrás-azonosítójával `keyVaultProperties` .
+> A fürtök két [felügyelt identitás típust](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)támogatnak: a rendszer által hozzárendelt és felhasználó által hozzárendelt, és mindegyik a forgatókönyvtől függően változhat. A rendszer által hozzárendelt felügyelt identitás egyszerűbb, és automatikusan létrejön a fürt létrehozásával, ha az identitás `type` "*SystemAssigned*" értékre van beállítva – ez az identitás később is használható a fürt Key Vaulthoz való hozzáférésének biztosításához. Ha olyan fürtöt szeretne létrehozni, amíg az ügyfél által felügyelt kulcs a fürt létrehozási idején van definiálva, akkor a Key Vaultban megadott kulcs definiált és felhasználó által hozzárendelt identitással kell rendelkeznie, majd létre kell hoznia a fürtöt a következő beállításokkal: Identity `type` as "*UserAssigned*", `UserAssignedIdentities` az identitás erőforrás-azonosítójával és a `keyVaultProperties` kulcs részleteivel.
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcs jelenleg nem adható meg felhasználó által kezelt felügyelt identitással, ha a Key Vault Private-Linkban (vNet) található. Ez a korlátozás nem vonatkozik a rendszer által hozzárendelt felügyelt identitásra.
+> Az ügyfél által felügyelt kulcs jelenleg nem definiálható felhasználó által hozzárendelt felügyelt identitással, ha a Key Vault Private-Link (vNet) helyen található, és ebben az esetben a rendszerhez rendelt felügyelt identitást is használhatja.
 
 Kövesse a [dedikált fürtök című cikkben](../log-query/logs-dedicated-clusters.md#creating-a-cluster)bemutatott eljárást. 
 
@@ -416,7 +416,7 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
 
   - Ha a fürt felhasználó által hozzárendelt felügyelt identitással van beállítva, akkor a beállítás `UserAssignedIdentities` `None` felfüggeszti a fürtöt, és meggátolja az adatokhoz való hozzáférést, de nem tudja visszaállítani a visszavonást, és nem aktiválja a fürtöt a támogatási kérelem megnyitása nélkül. Ez a korlátozás nem vonatkozik a rendszerhez rendelt felügyelt identitásra.
 
-  - Az ügyfél által felügyelt kulcs jelenleg nem adható meg felhasználó által kezelt felügyelt identitással, ha a Key Vault Private-Linkban (vNet) található. Ez a korlátozás nem vonatkozik a rendszer által hozzárendelt felügyelt identitásra.
+  - Az ügyfél által felügyelt kulcs jelenleg nem definiálható felhasználó által hozzárendelt felügyelt identitással, ha a Key Vault Private-Link (vNet) helyen található, és ebben az esetben a rendszerhez rendelt felügyelt identitást is használhatja.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

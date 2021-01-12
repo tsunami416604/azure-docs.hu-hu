@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
-ms.openlocfilehash: faf50899e5897a8f06cf0e24166abd303d24b491
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 06a06d275ba6f5ded475ffd693ee61e7a72b9516
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011390"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127702"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Az Azure Cosmos DB API-MongoDB kapcsolatos gyakori problémák elhárítása
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,13 +24,13 @@ A következő cikk a MongoDB-hez készült Azure Cosmos DB API-val történő ü
 
 ## <a name="common-errors-and-solutions"></a>Gyakori hibák és megoldások
 
-| Kód       | Hiba                | Leírás  | Megoldás  |
+| Code       | Hiba                | Leírás  | Megoldás  |
 |------------|----------------------|--------------|-----------|
 | 2 | A megadott Order-by elemnek megfelelő index elérési útja ki van zárva, vagy a lekérdezési sorrend nem rendelkezik a megfelelő összetett indexszel, amelyből kiszolgálható. | A lekérdezés nem indexelt mezőre kér rendezést. | Hozzon létre egy egyező indexet (vagy kompozit indexet) a megkísérelt rendezési lekérdezéshez. |
 | 13 | Nem engedélyezett | A kérelem nem rendelkezik a befejezéshez szükséges engedélyekkel. | Ügyeljen arra, hogy megfelelő engedélyeket állítson be az adatbázishoz és a gyűjteményhez.  |
 | 16 | InvalidLength | A megadott kérelem hossza érvénytelen. | Ha a magyarázat () függvényt használja, ügyeljen arra, hogy csak egy műveletet adjon meg. |
 | 26 | NamespaceNotFound | A lekérdezésben hivatkozott adatbázis vagy gyűjtemény nem található. | Győződjön meg arról, hogy az adatbázis/gyűjtemény neve pontosan megegyezik a lekérdezésben szereplő névvel.|
-| 50 | ExceededTimeLimit | A kérés túllépte a 60 másodperces végrehajtási időkorlátot. |  Ennek a hibának számos oka lehet. Az egyik oka az, hogy ha a jelenleg lefoglalt kérési egység kapacitása nem elegendő a kérelem teljesítéséhez. Erre az adott gyűjtemény vagy adatbázis kérelemegységeinek növelése nyújthat megoldást. Más esetekben ez a hiba a nagyméretű kérések kisebbekre bontásával is feldolgozható.|
+| 50 | ExceededTimeLimit | A kérés túllépte a 60 másodperces végrehajtási időkorlátot. |  Ennek a hibának számos oka lehet. Az egyik oka az, hogy ha a jelenleg lefoglalt kérési egység kapacitása nem elegendő a kérelem teljesítéséhez. Erre az adott gyűjtemény vagy adatbázis kérelemegységeinek növelése nyújthat megoldást. Más esetekben ez a hiba a nagyméretű kérések kisebbekre bontásával is feldolgozható. A hibát megkapott írási művelet újrapróbálása ismétlődő írást eredményezhet.|
 | 61 | ShardKeyNotFound | A kérelemben szereplő dokumentum nem tartalmazta a gyűjteményhez tartozó szilánk-kulcsot (Azure Cosmos DB partíciós kulcsot). | Győződjön meg arról, hogy a kérelemben a gyűjteményhez tartozó szilánk-kulcs használatban van.|
 | 66 | ImmutableField | A kérelem nem módosítható mezőt próbál módosítani | az "id" mezők nem változtathatók meg. Győződjön meg arról, hogy a kérés nem kísérli meg a mező frissítését. |
 | 67 | CannotCreateIndex | Az index létrehozásának kérelme nem hajtható végre. | Akár 500 egymezős index hozható létre egy tárolóban. Egy összetett indexben legfeljebb nyolc mező szerepelhet (az összetett indexek a 3.6 + verzióban támogatottak). |
@@ -40,8 +40,9 @@ A következő cikk a MongoDB-hez készült Azure Cosmos DB API-val történő ü
 | 16501 | ExceededMemoryLimit | Több-bérlős szolgáltatásként a művelet túllépte az ügyfél memóriájának kiosztását. | Csökkentse a művelet hatókörét szigorúbb lekérdezési feltételekkel, vagy forduljon a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)támogatási szolgálatához. Például: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | 40324 | Ismeretlen a folyamat fázisának neve. | Nem ismerhető fel a szakasz neve az összesítési folyamat kérelmében. | Győződjön meg arról, hogy az összes aggregációs folyamat neve érvényes a kérelemben. |
 | - | A MongoDB vonalprotokoll-verziójával kapcsolatos problémák | A MongoDB-illesztőprogramok régebbi verziói nem tudják felderíteni az Azure Cosmos-fiók nevét a kapcsolódási karakterláncokban. | Fűzze hozzá a *appName = @**accountName** @* a Cosmos db API-ját a MongoDB-kapcsolatok karakterláncához, ahol a ***accountName*** a Cosmos db fiók neve. |
+| - | MongoDB-ügyfél hálózati problémái (például szoftvercsatorna-vagy endOfStream-kivételek)| A hálózati kérelem sikertelen volt. Ezt gyakran a MongoDB-ügyfél által megkísérelt inaktív TCP-kapcsolatok okozzák. A MongoDB-illesztőprogramok gyakran használják a kapcsolatok készletezését, ami véletlenszerű kapcsolatokat eredményez a kérelemhez használt készletből. Az inaktív kapcsolatok jellemzően időtúllépést okoznak a Azure Cosmos DB négy perc után. | Próbálja megismételni a sikertelen kérelmeket az alkalmazás kódjában, módosítsa a MongoDB-ügyfél (illesztőprogram) beállításait úgy, hogy az inaktív TCP-kapcsolatokat Teardown a négy perces időtúllépési időszak előtt, vagy konfigurálja az operációs rendszer életben tartási beállításait a TCP-kapcsolatok aktív állapotban való fenntartásához. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.

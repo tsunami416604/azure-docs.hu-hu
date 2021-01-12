@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: c231ac95841043e5576f064e683dd86d9695b108
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: d6e52da7fce39a259107fe60a21fb5ead7b18709
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353187"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127821"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Biztonságos SharePoint-adatforrás hozzáadása a tudásbázishoz
 
@@ -127,12 +127,16 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 
 
+
+## <a name="add-sharepoint-data-source-with-apis"></a>SharePoint-adatforrás hozzáadása API-kkal
+
+Az Azure Blob Storage használatával az alábbi lépéseket követve adhat hozzá legújabb SharePoint-tartalmakat az API-n keresztül: 
+1.  Töltse le helyileg a SharePoint-fájlokat. Az API-t hívó felhasználónak hozzáféréssel kell rendelkeznie a SharePointhoz. 
+1.  Töltse fel őket az Azure Blob stoarge. Ez egy biztonságos közös hozzáférést hoz létre az [sas-token használatával.](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works) 
+1. Adja át a SAS-jogkivonattal generált blob URL-címet a QnA Maker APInak. Ahhoz, hogy a kérdés megválaszolja a fájlokat, az URL végén fel kell vennie az utótag fájltípusát "&ext = PDF" vagy "&ext = doc" néven, mielőtt átadná azt a QnA Maker API>  
+
+
 <!--
-
-## Add SharePoint data source with APIs
-
-You need to get the SharePoint file's URI before adding it to QnA Maker.
-
 ## Get SharePoint File URI
 
 Use the following steps to transform the SharePoint URL into a sharing token.
@@ -185,7 +189,7 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 
 -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Együttműködés a Tudásbázisban](../index.yml)

@@ -7,21 +7,21 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 01/12/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5be3652d7fca62a0740888ad458f8564f555169e
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 1593c47b7a6cf3b861f3e1af148b7a5fbfae9a19
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518906"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127379"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Biztonsági javaslatok a blob Storage-hoz
 
-Ez a cikk a blob Storage szolgáltatással kapcsolatos biztonsági javaslatokat tartalmaz. A javaslatok megvalósítása a közös felelősségi modellben leírtaknak megfelelően segíti a biztonsági kötelezettségek teljesítését. Ha többet szeretne megtudni arról, hogy a Microsoft hogyan teljesíti a szolgáltatói feladatokat, olvassa el a [megosztott felelősségek a felhőalapú számítástechnika](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)terén című témakört.
+Ez a cikk a blob Storage szolgáltatással kapcsolatos biztonsági javaslatokat tartalmaz. A javaslatok megvalósítása a közös felelősségi modellben leírtaknak megfelelően segíti a biztonsági kötelezettségek teljesítését. Ha többet szeretne megtudni arról, hogyan teljesíti a Microsoft a szolgáltatói feladatokat, olvassa el a [megosztott felelősségek a felhőalapú számítástechnika](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)terén című témakört.
 
-A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikusan nyomon követheti. A Azure Security Center az Azure-beli erőforrások védelmének első védelmi vonala. Azure Security Centerről a [Mi az Azure Security Center?](../../security-center/security-center-introduction.md)című témakörben olvashat bővebben.
+A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikusan nyomon követheti. A Azure Security Center az Azure-beli erőforrások védelmének első védelmi vonala. További információ a Azure Security Centerről: [Mi az Azure Security Center?](../../security-center/security-center-introduction.md)
 
 Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát az esetleges biztonsági rések azonosítása érdekében. Ezután javaslatokat tesz a megoldására. Azure Security Center javaslatokkal kapcsolatos további információkért lásd: [biztonsági javaslatok a Azure Security Centerban](../../security-center/security-center-recommendations.md).
 
@@ -31,9 +31,11 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 |-|----|--|
 | A Azure Resource Manager telepítési modell használata | Hozzon létre új Storage-fiókokat a Azure Resource Manager üzembe helyezési modellel a fontos biztonsági fejlesztésekhez, beleértve a kiváló Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a naplózást, a Resource Manager-alapú üzembe helyezést és irányítást, a felügyelt identitásokhoz való hozzáférést, a Secrets Azure Key Vault elérését, valamint az Azure AD-alapú hitelesítést, valamint az Azure Storage-adatok és- Ha lehetséges, telepítse át a klasszikus üzemi modellt használó meglévő Storage-fiókokat a Azure Resource Manager használatára. További információ a Azure Resource Managerről: [Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md). | - |
 | Az Azure Defender engedélyezése az összes Storage-fiókhoz | Az Azure Defender for Azure Storage egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások Azure Security Center, ha a tevékenységben észlelt rendellenességek bekövetkeznek, és e-mailben is elküldik az előfizetési rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálására és elhárítására vonatkozó javaslatokkal kapcsolatban. További információ: az [Azure Defender konfigurálása az Azure Storage](../common/azure-defender-storage-configure.md)-hoz. | [Igen](../../security-center/security-center-sql-service-recommendations.md) |
-| A nem kötelező törlés bekapcsolása a blob-adatelemekhez | A Soft delete lehetővé teszi a Blobok adatainak helyreállítását a törlés után. A Soft delete szolgáltatással kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](./soft-delete-blob-overview.md)ismertető témakört. | - |
-| A véletlen törlés megelőzése érdekében zárolja a Storage-fiókot | Az előfizetés, az erőforráscsoport vagy az erőforrás zárolásával megakadályozhatja, hogy a szervezet többi felhasználója véletlenül törölje vagy módosítsa azt. További információ: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
+| A Soft delete bekapcsolása blobokhoz | A Soft delete lehetővé teszi a Blobok adatainak helyreállítását a törlés után. A Soft delete szolgáltatással kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](./soft-delete-blob-overview.md)ismertető témakört. | - |
+| A tárolók helyreállítható törlésének bekapcsolása | ???. | - |
+| Storage-fiók zárolása a fiókok véletlen törlésének megakadályozása érdekében | Zárolhat egy Azure Resource Manager erőforrást, például egy előfizetést, egy erőforráscsoportot vagy egy Storage-fiókot, hogy megakadályozza a szervezet más felhasználói számára a véletlen törlést vagy módosítást. A Storage-fiók zárolása nem akadályozza meg, hogy a fiókban lévő adatok ne legyenek törölve. Ez csak a fiók törlését akadályozza meg. További információ: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
 | Üzleti szempontból kritikus fontosságú adathalmazok tárolása a nem változtatható blobokban | A jogcímek és az időalapú adatmegőrzési szabályzatok konfigurálása a blob-adatok féreg általi tárolására (egyszer írható, olvasható) állapot. A immutably tárolt Blobok olvashatók, de a megőrzési időtartam időtartama alatt nem módosíthatók és nem törölhetők. További információ: [az üzleti szempontból kritikus fontosságú Blobok adatainak tárolása a](storage-blob-immutable-storage.md)nem módosítható tárolóval. | - |
+| Biztonságos átvitel (HTTPS) szükséges a Storage-fiókhoz | ??? | - |
 | Közös hozzáférésű aláírási (SAS-) tokenek korlátozása csak HTTPS-kapcsolatokra | HTTPS megkövetelése, ha az ügyfél SAS-jogkivonattal fér hozzá a blob-adatforgalomhoz, segít csökkenteni a lehallgatás kockázatát. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
@@ -71,7 +73,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | A kérések engedélyezésének nyomon követése | Az Azure Storage naplózásának engedélyezése az Azure Storage-ba irányuló kérelmek engedélyezésének nyomon követésére. A naplók azt jelzik, hogy egy kérelem névtelenül történt-e egy OAuth 2,0-token használatával, megosztott kulcs használatával vagy közös hozzáférésű aláírás (SAS) használatával. További információkért lásd: az [Azure Blob Storage figyelése Azure monitor](monitor-blob-storage.md) vagy az [Azure Storage Analytics naplózása klasszikus figyeléssel](../common/storage-analytics-logging.md). | - |
 | Riasztások beállítása Azure Monitorban | Konfigurálja a naplózási riasztásokat, hogy a megadott gyakorisággal kiértékelje az erőforrások naplóit, és az eredmények alapján figyelmeztessen egy riasztást. További információ: [riasztások naplózása Azure monitorban](../../azure-monitor/platform/alerts-unified-log.md). | - |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure biztonsági dokumentációja](../../security/index.yml)
 - [Biztonságos fejlesztői dokumentáció](../../security/develop/index.yml).

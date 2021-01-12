@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: 816cdddc1f3d0a9bc9ebc3f277bc223a688cba31
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b3d1ad2d327da60874d2d07ba697b8f5ab815189
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98067363"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127090"
 ---
 # <a name="azure-monitor-troubleshooting-logs-preview"></a>Azure Monitor hibaelhárítási naplók (előzetes verzió)
 A Azure Monitor használatával gyorsan és/vagy rendszeres időközönként vizsgálhatja a problémákat, elháríthatja a kód-vagy konfigurációs problémákat vagy a támogatási eseteket, amelyek gyakran a nagy mennyiségű adat keresésére támaszkodnak bizonyos elemzések esetén.
@@ -48,7 +48,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": "{tableName}"
-      }
+}
 ```
 ## <a name="check-if-the-troubleshooting-logs-feature-is-enabled-for-a-given-table"></a>Ellenőrizze, hogy a hibaelhárítási naplók funkció engedélyezve van-e egy adott táblánál
 A következő API-hívással ellenőrizhető, hogy engedélyezve van-e a hibaelhárítási napló egy adott táblához.
@@ -65,6 +65,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.operationalinsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": " {tableName}"
+                }
 
 ```
 ## <a name="check-if-the-troubleshooting-logs-feature-is-enabled-for-all-of-the-tables-in-a-workspace"></a>Ellenőrizze, hogy a hibaelhárítási naplók funkció engedélyezve van-e a munkaterület összes táblájához
@@ -83,7 +84,7 @@ Response:
           },
           "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.operationalinsights/workspaces/{workspaceName}/tables/table1",
           "name": "table1"
-        },
+ },
         {
           "properties": {
             "retentionInDays": 7,
@@ -119,7 +120,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": "{tableName}"
-      }
+}
 ```
 >[!TIP]
 >* A parancsok futtatásához bármilyen REST API eszközt használhat. [További információk](https://docs.microsoft.com/rest/api/azure/)
