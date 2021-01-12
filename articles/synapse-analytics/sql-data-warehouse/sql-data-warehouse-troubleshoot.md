@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c69df88828a179cf1dce7bd35ac19c518b07903d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 8db1825e7abfaaeca4650cbd03dd05eec4777c21
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530714"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121277"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Dedikált SQL-készlet (korábban SQL DW) hibaelhárítása Az Azure szinapszis Analyticsben
 
@@ -77,7 +77,7 @@ Ez a cikk az Azure szinapszis Analytics dedikált SQL-készletének (korábban S
 | Tárolt eljárások korlátai          | A tárolt eljárások korlátainak megismeréséhez tekintse meg a [tárolt eljárásokra vonatkozó korlátozásokat](sql-data-warehouse-develop-stored-procedures.md#limitations) . |
 | A UDF nem támogatja a SELECT utasítások használatát | Ez a UDF jelenlegi korlátozása.  Az általunk támogatott szintaxishoz lásd: [create Function](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége a probléma megoldásához, néhány további erőforrást is kipróbálhat.
 
@@ -85,6 +85,6 @@ Ha további segítségre van szüksége a probléma megoldásához, néhány tov
 * [Funkciókérések](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 * [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md)
-* [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+* [Microsoft Q&egy kérdés oldal](/answers/topics/azure-synapse-analytics.html)
 * [Stack Overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)

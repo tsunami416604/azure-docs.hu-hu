@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: de446209104c113b10346645f79b461239c3efab
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901274"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120988"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
 
-Ez a cikk a [copy utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)biztonságos hitelesítési mechanizmusaival kapcsolatos példákat mutatja be és ismerteti. A MÁSOLÁSi utasítás az adatok tömeges betöltésének legrugalmasabb és biztonságos módja a szinapszis SQL-ben.
+Ez a cikk a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)biztonságos hitelesítési mechanizmusaival kapcsolatos példákat mutatja be és ismerteti. A MÁSOLÁSi utasítás az adatok tömeges betöltésének legrugalmasabb és biztonságos módja a szinapszis SQL-ben.
 ## <a name="supported-authentication-mechanisms"></a>Támogatott hitelesítési mechanizmusok
 
 A következő mátrix ismerteti az egyes fájltípusok és a Storage-fiókok támogatott hitelesítési módszereit. Ez a forrás tárolási helyére és a hiba fájljának helyére vonatkozik.
@@ -136,7 +136,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 
     ![Azure RBAC-engedély betöltésének engedélyezése](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. Konfigurálja az Azure AD-hitelesítést az alábbi [dokumentáción](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)keresztül. 
+2. Konfigurálja az Azure AD-hitelesítést az alábbi [dokumentáción](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)keresztül. 
 
 3. Kapcsolódjon az SQL-készlethez Active Directory használatával, ahol a MÁSOLÁSi utasítást a hitelesítő adatok megadása nélkül is futtathatja:
 
@@ -152,11 +152,11 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 ## <a name="e-service-principal-authentication"></a>E. Szolgáltatásnév-hitelesítés
 #### <a name="steps"></a>Lépések
 
-1. [Azure Active Directory-alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-2. [Alkalmazás AZONOSÍTÓjának beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
-3. [A hitelesítési kulcs beszerzése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
-4. [A v1 OAuth 2,0 token végpontjának beolvasása](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. [Olvasási, írási és végrehajtási engedélyek kiosztása az Azure ad-alkalmazáshoz](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) a Storage-fiókban
+1. [Azure Active Directory-alkalmazás létrehozása](../..//active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
+2. [Alkalmazás AZONOSÍTÓjának beolvasása](../..//active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
+3. [A hitelesítési kulcs beszerzése](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
+4. [A v1 OAuth 2,0 token végpontjának beolvasása](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
+5. [Olvasási, írási és végrehajtási engedélyek kiosztása az Azure ad-alkalmazáshoz](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) a Storage-fiókban
 6. Ezután futtathatja a COPY utasítást:
 
     ```sql
@@ -176,5 +176,5 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A részletes szintaxissal kapcsolatban olvassa el a [copy utasítással](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) kapcsolatos cikket.
-- Az ajánlott eljárások betöltéséhez tekintse meg az [adatgyűjtés áttekintése című](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) cikket
+- A részletes szintaxissal kapcsolatban olvassa el a [copy utasítással](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) kapcsolatos cikket.
+- Az ajánlott eljárások betöltéséhez tekintse meg az [adatgyűjtés áttekintése című](./design-elt-data-loading.md#what-is-elt) cikket

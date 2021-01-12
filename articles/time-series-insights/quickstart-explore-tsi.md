@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/02/2020
-ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 01/11/2021
+ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016224"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119347"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Gyors útmutató: Ismerkedés a Azure Time Series Insights Gen2 bemutató környezettel
 
@@ -38,12 +38,27 @@ A Azure Time Series Insights Gen2 Explorer az előzmények és a kiváltó okok 
 
 ## <a name="work-with-historical-data"></a>Korábbi adatmennyiségek használata
 
-1. A **contoso-üzem 1**. részében tekintse meg a Wind gázturbinás **W7** című részt.  
+1. Válassza a **contoso WindFarm-hierarchia** lehetőséget.
+
+   [![Contoso WindFarm-hierarchia](media/quickstart-explore/quick-start-contoso-1.png)](media/quickstart-explore/quick-start-contoso-1.png#lightbox)
+
+1. A **contoso-üzem 1**. részében tekintse meg a Wind gázturbinás **W7** című részt.
+
+   [![W7 a contoso üzem 1](media/quickstart-explore/quick-start-contoso-2.png)](media/quickstart-explore/quick-start-contoso-2.png#lightbox)
 
    1. Módosítsa a nézet tartományát **1/1/17 20:00:00.00 – 3/10/17 20:00:00.00 (UTC) értékre**.
+
+      [![Tartomány nézet](media/quickstart-explore/range-setting-1.png)](media/quickstart-explore/range-setting-1.png#lightbox)
+
+      [![Tartomány nézet beállítása](media/quickstart-explore/range-setting-2.png)](media/quickstart-explore/range-setting-2.png#lightbox)
+
+   1. Állítsa be a tartomány nézetet a nagyítás **(+)** és a kimenő **(-)** és a görgetősáv mozgatása segítségével.
+
+      [![Tartomány nézetének módosítása](media/quickstart-explore/view-range-setting.png)](media/quickstart-explore/view-range-setting.png#lightbox)
+
    1. Ha ki szeretne választani egy érzékelőt, válassza ki a **contoso Plant 1**  >  .**W7**-  >  **generátor rendszer**  >  **GeneratorSpeed**. Ezután tekintse át a megjelenített értékeket.
 
-      [![W7 a contoso üzem 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
+      [![Generátor sebessége](media/quickstart-explore/quick-start-generator-speed-1.png)](media/quickstart-explore/quick-start-generator-speed-1.png#lightbox)
 
 1. Az utóbbi időben a contoso tüzet észlelt a Wind Turbine **W7**-ben. A vélemények eltérőek lehetnek a tüzet kiváltó okok miatt. Azure Time Series Insights Gen2 a Fire riasztási érzékelő, amely a tűz alatt aktiválódik, megjelenik.
 
@@ -122,7 +137,7 @@ Most, hogy elvégezte a gyors üzembe helyezést, törölje a létrehozott erőf
 1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás** lehetőséget, és keresse meg a Azure Time Series Insights Gen2 erőforráscsoportot.
 1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások **törlését** vagy eltávolítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Készen áll saját Azure Time Series Insights Gen2-környezet létrehozására. Kezdés:
 

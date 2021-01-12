@@ -12,12 +12,12 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 512775369bd7787c6228c6d452be0e236ddf5cc2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0ce07ff3ca5fbcc9776792129d3bfb4ef54efe7d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456329"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120121"
 ---
 # <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>A dedikált SQL-készlet (korábban SQL DW) frissítése a Gen2
 
@@ -124,7 +124,7 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 
 - V: Nem. A régió frissítése után az új Gen1-példányok létrehozása le lesz tiltva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Frissítési lépések](upgrade-to-latest-generation.md)
 - [Karbantartási időszakok](maintenance-scheduling.md)
@@ -133,4 +133,4 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 - [Helyben történő frissítés frissítése visszaállítási pontról](upgrade-to-latest-generation.md)
 - [Felhasználó által definiált visszaállítási pont létrehozása](sql-data-warehouse-restore-points.md)
 - [Útmutató a Gen2 való visszaállításhoz](sql-data-warehouse-restore-active-paused-dw.md)
-- [Nyisson meg egy Azure szinapszis Analytics támogatási kérelmet](https://go.microsoft.com/fwlink/?linkid=857950)
+- [Nyisson meg egy Azure szinapszis Analytics támogatási kérelmet](./sql-data-warehouse-get-started-create-support-ticket.md)

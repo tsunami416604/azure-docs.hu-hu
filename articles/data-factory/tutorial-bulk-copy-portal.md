@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.date: 01/12/2021
+ms.openlocfilehash: 2fcb8f6d22e93f3a95be26b7bc61f3b5226ba090
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508883"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117112"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Több táblázat másolása ömlesztve Azure Data Factory használatával a Azure Portal
 
@@ -51,20 +51,8 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure Storage-fiók**. Az Azure Storage-fiók a tömeges másolási műveletben átmeneti blobtárolóként működik. 
-* **Azure SQL Database**. Ez az adatbázis tartalmazza a forrásadatokat. 
-* Az **Azure szinapszis Analytics**. Ez az adattárház tárolja az SQL Database-ből átmásolt adatokat. 
-
-### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>Az SQL Database és az Azure szinapszis Analytics előkészítése 
-
-**A forrás Azure SQL Database előkészítése**:
-
-Hozzon létre egy adatbázist SQL Database az Adventure Works LT mintaadatok alapján, és [hozzon létre egy adatbázist a Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) cikkben. Ez az oktatóanyag a mintaadatbázis összes tábláját egy Azure szinapszis Analyticsre másolja.
-
-**A fogadó Azure szinapszis Analytics előkészítése**:
-
-1. Ha nem rendelkezik Azure szinapszis Analytics-munkaterülettel, tekintse meg az első [lépések az Azure szinapszis Analytics](..\synapse-analytics\get-started.md) használatával című cikket a létrehozás lépéseihez.
-
-1. Hozza létre a megfelelő Table-sémákat az Azure szinapszis Analyticsben. A későbbiekben az Azure Data Factory segítségével fogja áttelepíteni/másolni az adatokat.
+* **Azure SQL Database**. Ez az adatbázis tartalmazza a forrásadatokat. Hozzon létre egy adatbázist SQL Database az Adventure Works LT mintaadatok alapján, és [hozzon létre egy adatbázist a Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) cikkben. Ez az oktatóanyag a mintaadatbázis összes tábláját egy Azure szinapszis Analyticsre másolja.
+* Az **Azure szinapszis Analytics**. Ez az adattárház tárolja az SQL Database-ből átmásolt adatokat. Ha nem rendelkezik Azure szinapszis Analytics-munkaterülettel, tekintse meg az első [lépések az Azure szinapszis Analytics](..\synapse-analytics\get-started.md) használatával című cikket a létrehozás lépéseihez.
 
 ## <a name="azure-services-to-access-sql-server"></a>Az SQL Server elérésének engedélyezése az Azure-szolgáltatások számára
 
@@ -95,7 +83,7 @@ A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg a kiszolgáló
      Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. Válassza ki a Data Factory **helyét**. Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. A létrehozás befejezése után válassza az **erőforrás keresése** lehetőséget, és lépjen a **Data Factory** lapra. 
    
 1. A Data Factory felhasználóifelület-alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
@@ -150,7 +138,7 @@ Ebben a lépésben létrehoz egy társított szolgáltatást, amely összekapcso
      
     f. Ha tesztelni szeretné az adatbázishoz való kapcsolódást a megadott információval, kattintson a **Kapcsolódás tesztelése** gombra.
      
-    : Kattintson a **Létrehozás** gombra.
+    : Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Az átmeneti Azure Storage-beli társított szolgáltatás létrehozása
 Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure Blob Storage-ot átmeneti területként használja a PolyBase engedélyezéséhez.
@@ -162,7 +150,7 @@ Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure B
     a. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.                                                 
     b. A **Storage-fiók neve** elemnél válassza ki saját **Azure Storage-fiókját**.
     
-    c. Kattintson a **Létrehozás** gombra.
+    c. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 Ebben az oktatóanyagban létrehozza a forrás- és fogadó-adatkészletet, amelyek meghatározzák az adatok tárolásának helyét. 
@@ -241,6 +229,7 @@ A  **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paramét
     ![Foreach paramétereinek szerkesztője](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
     d. Váltson a **tevékenységek** lapra, kattintson a **ceruza ikonra** egy alárendelt tevékenység a **foreach** tevékenységhez való hozzáadásához.
+    
     ![Foreach Activity-szerkesztő](./media/tutorial-bulk-copy-portal/for-each-activity-builder.png)
 
 1. A **tevékenységek** eszközkészletben bontsa ki az **Áthelyezés & az átvitel** elemet, majd húzza az **adatok másolása** tevékenységet a folyamat tervező felületére. Figyelje meg felül a navigációs menüt. A **IterateAndCopySQLTable** a folyamat neve, a **IterateSQLTables** pedig a foreach-tevékenység neve. A tervező a tevékenység hatókörében van. Ha vissza szeretne váltani a ForEach-szerkesztőben lévő folyamat-szerkesztőre, kattintson a navigációs menüben található hivatkozásra. 
@@ -257,7 +246,6 @@ A  **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paramét
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
-
 1. Váltson a **Fogadó** lapra, és végezze el az alábbi lépéseket: 
 
     1. **Fogadó-adatkészletnek** válassza a következőt: **AzureSqlDWDataset**.
@@ -265,6 +253,7 @@ A  **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paramét
     1. Kattintson a beviteli mezőre a DWSchema paraméter ÉRTÉKEként – > válassza a **dinamikus tartalom hozzáadása** lehetőséget, írja be a `@item().TABLE_SCHEMA` kifejezést parancsfájlként, > válassza a **Befejezés** gombot.
     1. A másolási módszer beállításnál válassza a **alapszintű** lehetőséget. 
     1. Törölje az **alapértelmezett típus használata** beállítást. 
+    1. A Table (tábla) beállításnál az alapértelmezett beállítás a "None". Ha nem rendelkezik előre létrehozott táblákkal a fogadó Azure szinapszis-elemzésben, engedélyezze a **tábla automatikus létrehozása** lehetőséget, a másolási tevékenység automatikusan létrehozza a táblákat a forrásadatok alapján. További részletekért tekintse meg a fogadó [tábla automatikus létrehozása](copy-activity-overview.md#auto-create-sink-tables)című témakört. 
     1. Kattintson a **Másolás előtti szkript** beviteli mezőre, válassza alul a **Dinamikus tartalom hozzáadása** lehetőséget, adja meg szkriptként a következő kifejezést, majd kattintson a **Befejezés** gombra. 
 
         ```sql
@@ -272,6 +261,8 @@ A  **IterateAndCopySQLTables** folyamat a táblák listáját veszi fel paramét
         ```
 
         ![Fogadóbeállítások másolása](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
+
+
 1. Váltson a **Beállítások** lapra, és végezze el az alábbi lépéseket: 
 
     1. Jelölje be az **előkészítés engedélyezése** jelölőnégyzetet.
@@ -397,7 +388,7 @@ A folyamat létrehozásának lépései a következők:
 
 1. Győződjön meg róla, hogy az adatgyűjtés az oktatóanyagban használt Azure szinapszis-elemzésre lett másolva. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

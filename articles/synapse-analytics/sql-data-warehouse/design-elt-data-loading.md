@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 64ba24eb0eab581310122908fc05d1d671ac1d40
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 1a988dba52b36b1d27407316200bfa6897de7cf5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531573"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120155"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Betöltési stratégiák a dedikált SQL-készlethez az Azure szinapszis Analytics szolgáltatásban
 
@@ -42,7 +42,7 @@ A ELT megvalósításának alapvető lépései a következők:
 5. Alakítsa át az adathalmazt.
 6. Adatok beszúrása az éles üzemi táblákba.
 
-Betöltési oktatóanyag: [adatok betöltése az Azure Blob Storage-ból](load-data-from-azure-blob-storage-using-polybase.md).
+Betöltési oktatóanyag: [adatok betöltése az Azure Blob Storage-ból](./load-data-from-azure-blob-storage-using-copy.md).
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1. a forrásadatok kibontása szövegfájlba
 
@@ -123,7 +123,7 @@ A következő SQL adattípus-leképezés használata a parketta-fájlok betölt�
 >- Előfordulhat, hogy a következő hiba fordul elő, ha a típusok nem egyeznek a parketta és az SQL között, vagy ha nem támogatott a parketta adattípusai: **"HdfsBridge:: recordReaderFillBuffer – váratlan hiba történt a rekord olvasó pufferének kitöltése során: ClassCastException:..."**
 >- A 0-127-tartományon kívüli értéknek a parketta és az ork fájlformátum tinyint oszlopba való betöltése nem támogatott.
 
-Külső objektumok létrehozásával kapcsolatos példát a [külső táblák létrehozása](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)című témakörben talál.
+Külső objektumok létrehozásával kapcsolatos példát a [külső táblák létrehozása](../sql/develop-tables-external-tables.md?tabs=sql-pool)című témakörben talál.
 
 ### <a name="format-text-files"></a>Szövegfájlok formázása
 
@@ -142,11 +142,11 @@ Az ajánlott eljárás az, ha az adatgyűjtést egy előkészítési táblába t
 
 Az betöltéshez a következő betöltési lehetőségek bármelyikét használhatja:
 
-- A [másolási utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) az ajánlott betöltési segédprogram, amely lehetővé teszi az adatok zökkenőmentes és rugalmas betöltését. Az utasítás számos további betöltési lehetőséggel rendelkezik, amelyeket a Base nem biztosít. 
-- A [T-SQL-T tartalmazó Albasehoz](load-data-from-azure-blob-storage-using-polybase.md) külső adatobjektumokat kell meghatároznia.
+- A [másolási utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) az ajánlott betöltési segédprogram, amely lehetővé teszi az adatok zökkenőmentes és rugalmas betöltését. Az utasítás számos további betöltési lehetőséggel rendelkezik, amelyeket a Base nem biztosít. 
+- A [T-SQL-T tartalmazó Albasehoz](./load-data-from-azure-blob-storage-using-copy.md) külső adatobjektumokat kell meghatároznia.
 - [A Base és a copy utasítás Azure Data Factory (ADF) egy másik összehangoló](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) eszköz.  Meghatározza a folyamatokat és az ütemezett feladatokat.
 - A SSIS jól működik [,](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ha a forrásadatok SQL Serverban működnek. A SSIS meghatározza a forrást a céltábla leképezéséhez, és összehangolja a terhelést is. Ha már rendelkezik SSIS-csomagokkal, a csomagokat módosíthatja úgy, hogy az új adattárház-célhelyen működjenek.
-- A [Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a tábla adatait egy Databricks-dataframe továbbítja, és/vagy egy Databricks-dataframe származó adatot ír be egy tábla használatával.
+- A [Azure Databricks](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json) a tábla adatait egy Databricks-dataframe továbbítja, és/vagy egy Databricks-dataframe származó adatot ír be egy tábla használatával.
 
 ### <a name="other-loading-options"></a>Egyéb betöltési beállítások
 
@@ -169,6 +169,6 @@ Az ETL-folyamat tervezésekor próbálja meg futtatni a folyamatot egy kis teszt
 
 Számos partnerünk betöltési megoldásokkal rendelkezik. További információért tekintse meg a [megoldás partnereink](sql-data-warehouse-partner-business-intelligence.md)listáját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Útmutatás a betöltéshez: [Útmutató az adatok betöltéséhez](guidance-for-loading-data.md).

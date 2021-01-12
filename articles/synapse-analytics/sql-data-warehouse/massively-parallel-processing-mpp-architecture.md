@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 45c7f89f773095a102429c07f7441223de3c2dec
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c537d3109f770c1ce77be6495bdacd24270dad5f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448269"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119594"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Dedikált SQL-készlet (korábban SQL DW) architektúra az Azure szinapszis Analyticsben
 
@@ -47,7 +47,7 @@ A leválasztott tárolással és számítással a dedikált SQL-készlet (koráb
 
 ### <a name="azure-storage"></a>Azure Storage
 
-A dedikált SQL Pool SQL (korábbi nevén SQL DW) az Azure Storage-t használja a felhasználói adat biztonságának megőrzése érdekében.  Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. Az adat felosztása a rendszer teljesítményének **optimalizálása érdekében történik** . Kiválaszthatja, hogy melyik horizontális Felskálázási mintát kell használnia az adatterjesztéshez a tábla meghatározásakor. Ezek a horizontális skálázási minták támogatottak:
+A dedikált SQL Pool SQL (korábbi nevén SQL DW) az Azure Storage-t használja a felhasználói adat biztonságának megőrzése érdekében.  Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. Az adat felosztása a rendszer teljesítményének **optimalizálása érdekében történik** . Hogy melyik horizontális skálázási mintát szeretné használni az adatok elosztásához, azt a tábla definiálásakor döntheti el. Ezek a horizontális skálázási minták támogatottak:
 
 - Kivonat
 - Ciklikus időszeletelés
@@ -105,15 +105,15 @@ Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszl�
 
 ![Replikált tábla](./media/massively-parallel-processing-mpp-architecture/replicated-table.png "Replikált tábla")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy már ismeri az Azure Szinapszisot, megtudhatja, hogyan [hozhat létre gyorsan egy DEDIKÁLT SQL-készletet (korábban SQL DW)](create-data-warehouse-portal.md) , és hogyan [tölthet be mintavételi információkat](load-data-from-azure-blob-storage-using-polybase.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), amikor az új fogalmakkal ismerkedik. Vagy tekintse meg a többi Azure szinapszis-erőforrást.  
+Most, hogy már ismeri az Azure Szinapszisot, megtudhatja, hogyan [hozhat létre gyorsan egy DEDIKÁLT SQL-készletet (korábban SQL DW)](create-data-warehouse-portal.md) , és hogyan [tölthet be mintavételi információkat](./load-data-from-azure-blob-storage-using-copy.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), amikor az új fogalmakkal ismerkedik. Vagy tekintse meg a többi Azure szinapszis-erőforrást.  
 
 - [Ügyfelek sikertörténetei](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Blogok](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [Funkciókérések](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md)
-- [Microsoft Q&egy kérdés oldal](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- [Microsoft Q&egy kérdés oldal](/answers/topics/azure-synapse-analytics.html)
 - [Stack Overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

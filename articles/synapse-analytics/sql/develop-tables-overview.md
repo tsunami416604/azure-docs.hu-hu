@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33eb5977ecb373a0dba87c26cacea247f541be8f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3778b6046c750bb131be1e51bf1afdc7b0df7184
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452731"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116789"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Táblázatok kialakítása a szinapszis SQL használatával az Azure szinapszis Analyticsben
 
@@ -28,21 +28,21 @@ A következő táblázat felsorolja a dedikált SQL-készlethez és a kiszolgál
 | Témakör                                                        | dedikált SQL-készlet | kiszolgáló nélküli SQL-készlet |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
 | [Táblázat kategóriájának meghatározása](#determine-table-category)        | Igen                | Nem                      |
-| [Sémák nevei](#schema-names)                                | Igen                | Igen                     |
+| [Sémák nevei](#schema-names)                                | Igen                | Yes                     |
 | [Táblák nevei](#table-names)                                  | Igen                | Nem                      |
 | [Tábla megőrzése](#table-persistence)                      | Igen                | Nem                      |
 | [Normál tábla](#regular-table)                              | Igen                | Nem                      |
-| [Ideiglenes tábla](#temporary-table)                          | Igen                | Igen                     |
-| [Külső tábla](#external-table)                            | Igen                | Igen                     |
-| [Adattípusok](#data-types)                                    | Igen                | Igen                     |
+| [Ideiglenes tábla](#temporary-table)                          | Igen                | Yes                     |
+| [Külső tábla](#external-table)                            | Igen                | Yes                     |
+| [Adattípusok](#data-types)                                    | Igen                | Yes                     |
 | [Elosztott táblák](#distributed-tables)                    | Igen                | Nem                      |
 | [Kivonat alapján elosztott táblák](#hash-distributed-tables)          | Igen                | Nem                      |
 | [Replikált táblák](#replicated-tables)                      | Igen                | Nem                      |
 | [Ciklikus időszeletelésű táblák](#round-robin-tables)                    | Igen                | Nem                      |
 | [Gyakori terjesztési módszerek a táblákhoz](#common-distribution-methods-for-tables) | Igen                | Nem                      |
-| [Partíciók](#partitions)                                    | Igen                | Igen                     |
+| [Partíciók](#partitions)                                    | Igen                | Yes                     |
 | [Oszlopcentrikus indexek](#columnstore-indexes)                  | Igen                | Nem                      |
-| [Statisztika](#statistics)                                    | Igen                | Igen                     |
+| [Statisztika](#statistics)                                    | Igen                | Yes                     |
 | [Elsődleges kulcs és egyedi kulcs](#primary-key-and-unique-key)    | Igen                | Nem                      |
 | [Táblázatok létrehozásához szükséges parancsok](#commands-for-creating-tables) | Igen                | Nem                      |
 | [Forrásadatok igazítása az adatraktárhoz](#align-source-data-with-the-data-warehouse) | Igen                | Nem                      |
@@ -102,7 +102,7 @@ További információ:  [ideiglenes táblák](develop-tables-temporary.md).
 
 A [külső táblák](develop-tables-external-tables.md) az Azure Storage-blobban vagy Azure Data Lake Storageban található adatterületekre mutatnak.
 
-Adatok importálása külső táblákból dedikált SQL-készletekbe a [CREATE TABLE as Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utasítás használatával. A betöltési oktatóanyagért lásd: az [adatok Azure Blob Storage-ból való betöltésének használata](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Adatok importálása külső táblákból dedikált SQL-készletekbe a [CREATE TABLE as Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utasítás használatával. A betöltési oktatóanyagért lásd: az [adatok Azure Blob Storage-ból való betöltésének használata](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
 Kiszolgáló nélküli SQL-készlet esetén a [CETAS](develop-tables-cetas.md) használatával mentheti a lekérdezés eredményét egy külső táblába az Azure Storage-ban.
 
@@ -206,7 +206,7 @@ A dedikált SQL-készlet esetében az elsődleges kulcs csak akkor támogatott, 
 
 A dedikált SQL-készlet esetében új üres táblaként hozhat létre táblát. Létrehozhat és fel is tölthet egy táblát a SELECT utasítás eredményeivel. A következő a T-SQL-parancsok egy tábla létrehozásához.
 
-| T-SQL-utasítás | Description |
+| T-SQL-utasítás | Leírás |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Létrehoz egy külső táblát. A tábla definícióját a dedikált SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storageban tárolódik. |
@@ -438,6 +438,6 @@ ORDER BY    distribution_id
 ;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta az adattárházhoz tartozó táblákat, a következő lépés az adatai betöltése a táblába.  Betöltési oktatóanyag: az [adat betöltése DEDIKÁLT SQL-készletbe](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool).

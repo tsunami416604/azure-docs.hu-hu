@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8826dff6d347f78625272a5620a1f168b8804db
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457906"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120036"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Fejlesztési ajánlott eljárások a szinapszis SQL-készlethez
 
@@ -55,7 +55,7 @@ Ha például van egy rendelésazonosító alapján elosztott rendelési tábláj
 
 Elosztott tábla betöltésekor győződjön meg arról, hogy a bejövő adatok nem az elosztási kulcs alapján vannak rendezve, mivel ez lelassítja a betöltéseket.  A következő cikkek további részleteket adnak a teljesítmény javításához egy terjesztési oszlop kiválasztásával, valamint egy elosztott tábla definiálásával a CREATE TABLEs utasítás WITH záradékában.
 
-Lásd még: [táblák áttekintése](sql-data-warehouse-tables-overview.md), [tábla eloszlása](sql-data-warehouse-tables-distribute.md), a [táblázat terjesztése](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [CREATE TABLE](sql-data-warehouse-tables-overview.md)és [CREATE TABLE](sql-data-warehouse-develop-ctas.md) kiválasztása
+Lásd még: [táblák áttekintése](sql-data-warehouse-tables-overview.md), [tábla eloszlása](sql-data-warehouse-tables-distribute.md), a [táblázat terjesztése](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [CREATE TABLE](sql-data-warehouse-tables-overview.md)és [CREATE TABLE](sql-data-warehouse-develop-ctas.md) kiválasztása
 
 ## <a name="do-not-over-partition"></a>Túl sok partíció használatának kerülése
 
@@ -120,7 +120,7 @@ Lásd még: [Table indexek](sql-data-warehouse-tables-index.md), [oszlopcentriku
 
 Ha nem találja, amit ebben a cikkben keres, próbálkozzon az oldal bal oldalán található "dokumentumok keresése" kifejezéssel az összes Azure szinapszis-dokumentum kereséséhez.  
 
-A [Microsoft Q&az Azure szinapszis-hoz kapcsolódó kérdés oldalának](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) célja, hogy kérdéseket tegyenek fel más felhasználók és az Azure szinapszis-termékcsoportra.  Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
+A [Microsoft Q&az Azure szinapszis-hoz kapcsolódó kérdés oldalának](/answers/topics/azure-synapse-analytics.html) célja, hogy kérdéseket tegyenek fel más felhasználók és az Azure szinapszis-termékcsoportra.  Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
 
 Ha szeretne kérdéseket feltenni a Stack Overflowra, egy Azure-beli [szinapszis Analytics-stack overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)is rendelkezésre áll.
 

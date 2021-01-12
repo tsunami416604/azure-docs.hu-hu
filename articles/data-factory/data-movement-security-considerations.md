@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 5a666d265550de6e24d791db6daa954d50ddde38
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: cefbdce88d49598998e8f985821088778eee3ae8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094182"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117656"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>A Azure Data Factory adatáthelyezésének biztonsági szempontjai
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -32,9 +32,9 @@ A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](concepts-pipelines
 
 Annak ellenére, hogy Data Factory csak néhány régióban érhető el, az adatátviteli szolgáltatás [globálisan elérhető](concepts-integration-runtime.md#integration-runtime-location) az adatmegfelelőség, a hatékonyság és a csökkentett hálózati kimenő költségek biztosításához. 
 
-A Azure Data Factory beleértve a Integration Runtime nem tárol adatokat, kivéve a társított szolgáltatás hitelesítő adatait a felhőalapú adattárakhoz, amelyek tanúsítványokkal vannak titkosítva. A Data Factory segítségével adatvezérelt munkafolyamatokat hozhat létre, amelyek a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)közötti adatáthelyezést és az adatok feldolgozását végzik a más régiókban vagy helyszíni környezetben lévő [számítási szolgáltatások](compute-linked-services.md) használatával. Az SDK-k és a Azure Monitor használatával is nyomon követheti és kezelheti a munkafolyamatokat.
+A Azure Data Factory beleértve a Azure Integration Runtime és a saját üzemeltetésű Integration Runtime nem tárol semmilyen ideiglenes adatot, nem gyorsítótáraz adatokat vagy naplókat, kivéve a társított szolgáltatás hitelesítő adatait a Felhőbeli adattárakhoz, amelyek tanúsítványokkal vannak titkosítva. A Data Factory segítségével adatvezérelt munkafolyamatokat hozhat létre, amelyek a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)közötti adatáthelyezést és az adatok feldolgozását végzik a más régiókban vagy helyszíni környezetben lévő [számítási szolgáltatások](compute-linked-services.md) használatával. Az SDK-k és a Azure Monitor használatával is nyomon követheti és kezelheti a munkafolyamatokat.
 
-A Data Factory minősítése a következő:
+A Data Factory minősítése a következő: 
 
 | **[CSA-csillag minősítése](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |

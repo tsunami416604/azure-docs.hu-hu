@@ -8,30 +8,29 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2cc96db88d9a2aec02de5e2fc4ed18b445972e7b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932387"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121138"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning modell betanítása és üzembe helyezése
 
 Ebben a cikkben a következő feladatokat hajtjuk végre:
 
-* A Machine learning-modellek betanításához használjon Azure Notebooks.
+* A Machine learning-modellek betanításához használjon Azure Machine Learning Studio.
 * Csomagolja ki a betanított modellt tároló képként.
 * Telepítse a tároló lemezképét Azure IoT Edge modulként.
 
-A Azure Notebooks kihasználja az Azure Machine Learning munkaterület előnyeit, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használt alapvető blokk.
+A Azure Machine Learning Studio a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használt alapvető blokk.
 
 A cikkben ismertetett lépéseket általában az adatszakértők végzik.
 
 Az oktatóanyag ezen szakaszában a következőket sajátíthatja el:
 
 > [!div class="checklist"]
->
-> * Hozzon létre egy Azure Notebooks projektet a Machine learning-modellek betanításához.
+> * Hozzon létre Jupyter-jegyzetfüzeteket Azure Machine Learning-munkaterület a Machine learning-modellek betanításához.
 > * Tárolóba helyezése a betanított gépi tanulási modellt.
 > * Hozzon létre egy Azure IoT Edge modult a tároló Machine learning modellből.
 
@@ -39,49 +38,49 @@ Az oktatóanyag ezen szakaszában a következőket sajátíthatja el:
 
 Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. A sorozat minden cikke az előző cikkben található munkára épül. Ha ezt a cikket közvetlenül megérkezett, tekintse meg az [első cikket](tutorial-machine-learning-edge-01-intro.md) a sorozatban.
 
-## <a name="set-up-azure-notebooks"></a>Azure Notebooks beállítása
+## <a name="set-up-azure-machine-learning"></a>Azure Machine Learning beállítása 
 
-A két Jupyter jegyzetfüzet és a támogató fájlok üzemeltetéséhez Azure Notebooks használjuk. Itt egy Azure Notebooks projektet hozunk létre és konfigurálunk. Ha nem használt Jupyter és/vagy Azure Notebooks, néhány bevezető dokumentum:
+A két Jupyter jegyzetfüzet és a támogató fájlok üzemeltetéséhez Azure Machine Learning Studio használjuk. Itt egy Azure Machine Learning projektet hozunk létre és konfigurálunk. Ha nem használt Jupyter és/vagy Azure Machine Learning Studio, néhány bevezető dokumentum:
 
-* Rövid útmutató **:** [Jegyzetfüzet létrehozása és megosztása](../notebooks/quickstart-create-share-jupyter-notebook.md)
-* **Oktatóanyag:** [Jupyter-jegyzetfüzet létrehozása és futtatása Python-val](../notebooks/tutorial-create-run-jupyter-notebook.md)
+* **Jupyter notebookok:** [Jupyter notebookok használata a Visual Studio Code-ban](https://code.visualstudio.com/docs/python/jupyter-support)
+* **Azure Machine learning:** [a Jupyter-jegyzetfüzetek Azure Machine Learningának első lépései](../machine-learning/tutorial-1st-experiment-sdk-setup.md)
 
-A Azure Notebooks használata konzisztens környezetet biztosít a gyakorlathoz.
 
 > [!NOTE]
-> A beállítás után a Azure Notebooks szolgáltatás bármely gépről elérhető. A telepítés során a fejlesztési virtuális gépet kell használnia, amely rendelkezik az összes szükséges fájllal.
+> A beállítás után a Azure Machine Learning szolgáltatás bármely gépről elérhető. A telepítés során a fejlesztési virtuális gépet kell használnia, amely rendelkezik az összes szükséges fájllal.
 
-### <a name="create-an-azure-notebooks-account"></a>Azure Notebooks fiók létrehozása
+### <a name="install-azure-machine-learning-visual-studio-code-extension"></a>A Visual Studio Code-bővítmény telepítése Azure Machine Learning
+A fejlesztési virtuális gépen a VS Code-nak telepítve kell lennie a bővítménynek. Ha egy másik példányon fut, telepítse újra a bővítményt az itt leírtak szerint [.](../machine-learning/tutorial-setup-vscode-extension.md)
 
-A Azure Notebooks használatához létre kell hoznia egy fiókot. Az Azure notebook-fiókok függetlenek az Azure-előfizetéstől.
+### <a name="create-an-azure-machine-learning-account"></a>Azure Machine Learning fiók létrehozása  
+Az erőforrások kiépítéséhez és az Azure-beli számítási feladatok futtatásához be kell jelentkeznie az Azure-fiók hitelesítő adataival.
 
-1. Navigáljon [Azure Notebooks](https://notebooks.azure.com).
+1. A Visual Studio Code-ban nyissa meg a parancssort a menüsávban található parancssáv **megtekintése** lehetőség kiválasztásával  >   . 
 
-1. Kattintson a **Bejelentkezés** gombra a lap jobb felső sarkában.
+1. A `Azure: Sign In` bejelentkezési folyamat elindításához írja be a parancsot a parancssorba. A bejelentkezés befejezéséhez kövesse az utasításokat. 
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjával (Azure Active Directory) vagy a személyes fiókjával (Microsoft-fiókkal).
+1. Hozzon létre egy Azure ML Compute-példányt a számítási feladatok futtatásához. A Command raklap használatával adja meg a parancsot `Azure ML: Create Compute` . 
+1. Válassza ki az Azure-előfizetését
+1. Válassza az **+ új Azure ml-munkaterület létrehozása** lehetőséget, és írja be a nevet `turbofandemo` .
+1. Válassza ki azt az erőforráscsoportot, amelyet ehhez a bemutatóhoz használt.
+1. Meg kell tudnia tekinteni a munkaterület létrehozásának előrehaladását a VS Code ablak jobb alsó sarkában: **Munkaterület létrehozása: turobofandemo** (ez eltarthat egy-két percet is). 
+1. Várjon, amíg a munkaterület létrehozása sikeresen megtörtént. Azt mondják, hogy az **Azure ml-munkaterület turbofandemo létre lett hozva**.
 
-1. Ha korábban még nem használta Azure Notebooks, a rendszer felszólítja, hogy adjon hozzáférést a Azure Notebooks alkalmazáshoz.
 
-1. Hozzon létre egy felhasználói azonosítót a Azure Notebookshoz.
+### <a name="upload-jupyter-notebook-files"></a>Jupyter Notebook fájlok feltöltése
 
-### <a name="upload-jupyter-notebook-files"></a>Jupyter notebook-fájlok feltöltése
+A mintaként szolgáló jegyzetfüzet-fájlokat egy új Azure ML-munkaterületre fogjuk feltölteni.
 
-A mintaként szolgáló jegyzetfüzet-fájlokat egy új Azure Notebooks projektbe fogjuk feltölteni.
+1. Navigáljon a ml.azure.com elemre, és jelentkezzen be.
+1. Válassza ki a Microsoft címtárát, az Azure-előfizetést és az újonnan létrehozott Azure ML-munkaterületet.
 
-1. Az új fiókjának felhasználói lapján válassza a **saját projektek** lehetőséget a felső menüsorban.
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-studio-workspace.png" alt-text="Válassza ki az Azure ML-munkaterületét." :::
 
-1. Új projekt hozzáadásához kattintson a **+** gombra.
+1. Miután bejelentkezett az Azure ML-munkaterületre, navigáljon a **jegyzetfüzetek** szakaszra a bal oldali menüben.
+1. Válassza a **saját fájlok** fület.
 
-1. Az **új projekt létrehozása** párbeszédpanelen adja meg a **projekt nevét**. 
+1. **Feltöltés** kiválasztása (a felfelé mutató nyíl ikon) 
 
-1. Hagyja üresen a **nyilvános** és a **readme** jelölését, mert nincs szükség arra, hogy a projekt nyilvános legyen, vagy hogy legyen egy readme.
-
-1. Válassza a **Létrehozás** lehetőséget.
-
-1. Válassza a **feltöltés** lehetőséget (a felfelé mutató nyíl ikont), és válassza **a számítógép** lehetőséget.
-
-1. Válassza a **fájlok kiválasztása** lehetőséget.
 
 1. Navigáljon a **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Jelölje ki a listában az összes fájlt, majd kattintson a **Megnyitás** gombra.
 
@@ -89,9 +88,9 @@ A mintaként szolgáló jegyzetfüzet-fájlokat egy új Azure Notebooks projektb
 
 1. Válassza a **feltöltés** lehetőséget a feltöltés megkezdéséhez, majd válassza a **kész** lehetőséget a folyamat befejezése után.
 
-### <a name="azure-notebook-files"></a>Azure notebook-fájlok
+### <a name="jupyter-notebook-files"></a>Jupyter Notebook fájlok
 
-Tekintsük át a Azure Notebooks-projektbe feltöltött fájlokat. Az oktatóanyag ezen részében szereplő tevékenységek két jegyzetfüzet-fájlra terjednek ki, amelyek néhány kiegészítő fájlt használnak.
+Tekintsük át az Azure ML-munkaterületre feltöltött fájlokat. Az oktatóanyag ezen részében szereplő tevékenységek két jegyzetfüzet-fájlra terjednek ki, amelyek néhány kiegészítő fájlt használnak.
 
 * **01 – turbofan \_ regresszió. ipynb:** ez a jegyzetfüzet a Machine learning szolgáltatás munkaterületet használja a Machine learning-kísérletek létrehozásához és futtatásához. A jegyzetfüzet széles körben a következő lépéseket hajtja végre:
 
@@ -115,13 +114,13 @@ Tekintsük át a Azure Notebooks-projektbe feltöltött fájlokat. Az oktatóany
 
 * **Readme.MD:** A jegyzetfüzetek használatát leíró readme.  
 
-## <a name="run-azure-notebooks"></a>Azure Notebooks futtatása
+## <a name="run-jupyter-notebooks"></a>Jupyter-notebookok futtatása
 
-Most, hogy létrejött a projekt, futtathatja a jegyzetfüzeteket. 
+Most, hogy létrehozta a munkaterületet, futtathatja a jegyzetfüzeteket. 
 
-1. A projekt lapon válassza a **01-turbofan \_ regresszió. ipynb** lehetőséget.
+1. A **saját fájlok** lapon válassza a **01-turbofan \_ regresszió. ipynb** elemet.
 
-    ![Válassza ki az első futtatandó jegyzetfüzetet](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-turbofan-notebook.png" alt-text="Válassza ki az első futtatandó jegyzetfüzetet. ":::
 
 1. Ha a jegyzetfüzet **nem megbízhatóként** jelenik meg, kattintson a jegyzetfüzet jobb felső sarkában található **nem megbízható** elemre. Amikor megjelenik a párbeszédpanel, válassza a **megbízhatóság** lehetőséget.
 
@@ -162,7 +161,7 @@ Most, hogy létrejött a projekt, futtathatja a jegyzetfüzeteket.
 
 Annak ellenőrzéséhez, hogy a jegyzetfüzetek sikeresen befejeződtek-e, ellenőrizze, hogy néhány elem létrejött-e.
 
-1. A Azure Notebooks projekt lapon válassza a **rejtett elemek megjelenítése** lehetőséget, hogy megjelenjenek a ponttal kezdődő elemek.
+1. Az Azure ML jegyzetfüzetek **saját fájlok** lapján válassza a **frissítés** lehetőséget.
 
 1. Ellenőrizze, hogy a következő fájlok lettek-e létrehozva:
 
@@ -174,13 +173,13 @@ Annak ellenőrzéséhez, hogy a jegyzetfüzetek sikeresen befejeződtek-e, ellen
 
 1. Ellenőrizze, hogy létrejöttek-e az alábbi Azure-erőforrások. Néhány erőforrás neve véletlenszerű karakterekkel van hozzáfűzve.
 
-    | Azure-erőforrás | Name (Név) |
+    | Azure-erőforrás | Name |
     | --- | --- |
     | Machine Learning munkaterület | turborfanDemo |
     | Container Registry | turbofandemoxxxxxxxx |
     | Applications-ismeretek | turbofaninsightxxxxxxxx |
     | Key Vault | turbofankeyvaultbxxxxxxxx |
-    | Storage | turbofanstoragexxxxxxxxx |
+    | Tárolás | turbofanstoragexxxxxxxxx |
 
 ### <a name="debugging"></a>Hibakeresés
 
@@ -194,7 +193,7 @@ Ez az oktatóanyag egy olyan készlet része, amelyben az egyes cikkek az előz�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben két, Azure Notebooks futó Jupyter-jegyzetfüzetet használtunk a turbofan-eszközökről a hátralévő hasznos élettartam (RUL) osztályozó, az osztályozó modellként való mentéséhez, a tároló lemezképének létrehozásához, valamint a lemezkép webszolgáltatásként való üzembe helyezéséhez és teszteléséhez.
+Ebben a cikkben két, az Azure ML Studio-ban futó Jupyter-jegyzetfüzetet használtunk a turbofan-eszközökből származó adatok használatára a hátralévő hasznos élettartamot (RUL) osztályozó, az osztályozó modellként való mentéséhez, a tároló lemezképének létrehozásához, valamint a lemezkép webszolgáltatásként való üzembe helyezéséhez és teszteléséhez.
 
 IoT Edge-eszköz létrehozásához folytassa a következő cikkel.
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462553"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118761"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Beágyazott típusok lekérdezése a parketta és a JSON-fájlokban kiszolgáló nélküli SQL-készlet használatával az Azure szinapszis Analyticsben
 
@@ -24,7 +24,7 @@ A beágyazott típusok olyan összetett struktúrák, amelyek objektumokat vagy 
 - Hierarchikus [JSON-fájlok](query-json-files.md), ahol egy összetett JSON-dokumentumot egyetlen oszlopként lehet beolvasni.
 - Azure Cosmos DB gyűjtemények (jelenleg a nyilvános előzetes verzió alatt), ahol minden dokumentum összetett beágyazott tulajdonságokat tartalmazhat.
 
-A kiszolgáló nélküli SQL-készlet összes beágyazott típusát JSON-objektumként és tömbökként formázza. Így [összetett objektumokat is kinyerhet vagy MÓDOSÍTHAT JSON-függvények használatával](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) vagy [a JSON-adatok elemzésével a openjson utasítással függvény használatával](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+A kiszolgáló nélküli SQL-készlet összes beágyazott típusát JSON-objektumként és tömbökként formázza. Így [összetett objektumokat is kinyerhet vagy MÓDOSÍTHAT JSON-függvények használatával](/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) vagy [a JSON-adatok elemzésével a openjson utasítással függvény használatával](/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
 Az alábbi példa egy olyan lekérdezést mutat be, amely a [COVID-19 nyílt kutatási adatkészlet JSON-](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) fájljából Kinyeri a skaláris és az objektum értékeit, amelyek beágyazott objektumokat tartalmaznak: 
 
@@ -121,7 +121,7 @@ Az eredmény az alábbi táblázatban látható:
 | --- | --- | --- | --- |
 | Kiegészítő információk öko-epidemiolo... | Julien   | – S1: törzsfejlődés... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-A JSON-fájlokkal ellentétben, amelyek a legtöbb esetben egy összetett JSON-objektumot tartalmazó egyetlen oszlopot adnak vissza, a Parquet-fájlok több összetett oszloppal is rendelkezhetnek. A beágyazott oszlopok tulajdonságait az `JSON_VALUE` egyes oszlopokban található függvény használatával olvashatja. `OPENROWSET` lehetővé teszi egy záradékban lévő beágyazott tulajdonságok elérési útjának közvetlen megadását `WITH` . Megadhatja az elérési utakat egy oszlop neveként, vagy hozzáadhat egy [JSON Path kifejezést](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) az oszlop típusa után.
+A JSON-fájlokkal ellentétben, amelyek a legtöbb esetben egy összetett JSON-objektumot tartalmazó egyetlen oszlopot adnak vissza, a Parquet-fájlok több összetett oszloppal is rendelkezhetnek. A beágyazott oszlopok tulajdonságait az `JSON_VALUE` egyes oszlopokban található függvény használatával olvashatja. `OPENROWSET` lehetővé teszi egy záradékban lévő beágyazott tulajdonságok elérési útjának közvetlen megadását `WITH` . Megadhatja az elérési utakat egy oszlop neveként, vagy hozzáadhat egy [JSON Path kifejezést](/sql/relational-databases/json/json-path-expressions-sql-server) az oszlop típusa után.
 
 A következő lekérdezés beolvassa a structExample. Parque fájlt, és bemutatja, hogyan lehet egy beágyazott oszlop felületi elemeit beolvasni. Két módon hivatkozhat egy beágyazott értékre:
 - A beágyazott érték elérési útjának kifejezésének megadásával a típus meghatározása után.
@@ -219,6 +219,6 @@ FROM
     CROSS APPLY OPENJSON (SimpleArray) WITH (Element int '$') as array_values
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikk bemutatja, hogyan lehet [lekérdezni a JSON-fájlokat](query-json-files.md).

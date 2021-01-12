@@ -7,16 +7,16 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a517f7a796b6543c8d60f0d1ebdba16afa0bc4b7
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751427"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119084"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Tulajdonságok használata Azure IoT Central-megoldásokban
 
-Ebből a cikkből megtudhatja, hogyan használhatja az Azure IoT Central-alkalmazásban található eszköz-sablonban definiált eszköz tulajdonságait.
+Ez a útmutató azt mutatja be, hogyan használható az eszköz fejlesztője az Azure IoT Central-alkalmazásban található eszköz-sablonban definiált eszközök tulajdonságainak használatára.
 
 A tulajdonságok a pont – idő értékeket jelölik. Egy eszköz használhat például egy tulajdonságot a elérni kívánt cél hőmérséklet jelentésére. Alapértelmezés szerint az eszköz tulajdonságai írásvédettek a IoT Centralban. Az írható tulajdonságok lehetővé teszik az állapot szinkronizálását az eszköz és az Azure IoT Central alkalmazása között.
 
@@ -35,14 +35,14 @@ A következő táblázat a tulajdonságok funkciójának konfigurációs beáll�
 | Mező           | Leírás                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Megjelenített név    | Az irányítópultokon és űrlapokon használt tulajdonságérték megjelenítendő neve.                                                                                                                                                              |
-| Név            | A tulajdonság neve. Az Azure IoT Central a megjelenítendő név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie.                                                 |
+| Name            | A tulajdonság neve. Az Azure IoT Central a megjelenítendő név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie.  Az eszköz kódja ezt a **nevet** használja.           |
 | Képesség típusa | Tulajdonság.                                                                                                                                                                                                                          |
 | Szemantikai típus   | A tulajdonság szemantikai típusa, például hőmérséklet, állapot vagy esemény. A szemantikai típus megválasztása határozza meg, hogy a következő mezők közül melyek érhetők el.                                                                       |
 | Séma          | A tulajdonság adattípusa, például Double, string vagy Vector. Az elérhető beállításokat a szemantikai típus határozza meg. A séma nem érhető el az esemény és az állapot szemantikai típusaihoz.                                               |
 | Írható       | Ha a tulajdonság nem írható, az eszköz jelentést tud készíteni az Azure IoT Central. Ha a tulajdonság írható, az eszköz képes jelenteni a tulajdonságértékek az Azure IoT Central számára. Ezután az Azure IoT Central el tudja küldeni a tulajdonságok frissítéseit az eszközre. |
 | Súlyosság        | Csak az esemény szemantikai típusához érhető el. A megszakítások a következők: **hiba**, **információ** vagy **Figyelmeztetés**.                                                                                                                         |
 | Állapot értékei    | Csak az állapot szemantikai típusához érhető el. Definiálja a lehetséges állapotinformációkat, amelyek mindegyike megjelenített névvel, névvel, számbavételi típussal és értékkel rendelkezik.                                                                                   |
-| Egység            | A tulajdonság értékének egysége, például: **mph**, **%** , vagy **&deg; C**.                                                                                                                                                              |
+| Unit (Egység)            | A tulajdonság értékének egysége, például: **mph**, **%** , vagy **&deg; C**.                                                                                                                                                              |
 | Megjelenítési egység    | Irányítópultokon és űrlapokon használható megjelenítési egység.                                                                                                                                                                                    |
 | Megjegyzés         | A tulajdonság képességével kapcsolatos megjegyzések.                                                                                                                                                                                        |
 | Leírás     | A tulajdonság funkciójának leírása.                                                                                                                                                                                          |
@@ -160,7 +160,7 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-Ez a cikk az egyszerűség kedvéért Node.js használ. Az eszközök alkalmazására vonatkozó példákról a következő témakörben talál további információt: [ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazáshoz](tutorial-connect-device.md) oktatóanyag.
+Ez a cikk az egyszerűség kedvéért Node.js használ. Más nyelvi példákat a következő témakörben talál: [ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással](tutorial-connect-device.md) – oktatóanyag.
 
 Az Azure IoT Central alkalmazás következő nézetében láthatók a látható tulajdonságok. A nézet **automatikusan a** _csak olvasható eszköz tulajdonságot_ teszi elérhetővé.
 
@@ -212,7 +212,7 @@ A válaszüzenetnek tartalmaznia kell a `ac` és a `av` mezőket. A `ad` mező k
 
 | Érték | Címke | Leírás |
 | ----- | ----- | ----------- |
-| `'ac': 200` | Befejezve | A tulajdonság-módosítási művelet sikeresen befejeződött. |
+| `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202` vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben vagy folyamatban van. |
 | `'ac': 4xx` | Hiba | A kért tulajdonság módosítása nem volt érvényes, vagy hiba történt. |
 | `'ac': 5xx` | Hiba | Az eszköz váratlan hibát észlelt a kért módosítás feldolgozása során. |
@@ -227,7 +227,7 @@ A következő nézetben az írható tulajdonságok láthatók. Ha megadja az ér
 
 ![Az elfogadott tulajdonságot megjelenítő képernyőkép.](./media/howto-use-properties/accepted.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan használhatja a tulajdonságokat az Azure IoT Central alkalmazásban, lásd:
 

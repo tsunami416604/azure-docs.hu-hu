@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095100"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121345"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Az Azure szinapszis link Preview-ban található kiszolgáló nélküli SQL-készlettel rendelkező lekérdezés Azure Cosmos DB
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-Ne használjon `OPENROWSET` explicit módon definiált sémát, mert ez hatással lehet a teljesítményre. Ügyeljen arra, hogy az oszlopok legkisebb lehetséges méretét használja (például VARCHAR (100) az alapértelmezett VARCHAR (8000) helyett). Az UTF [-8 átalakítási probléma](/azure/synapse-analytics/troubleshoot/reading-utf8-text)elkerülése érdekében használjon néhány UTF-8 rendezést alapértelmezett adatbázis-rendezésként, vagy állítsa explicit oszlop rendezésként. A rendezés `Latin1_General_100_BIN2_UTF8` a legjobb teljesítményt nyújtja, ha a Yu bizonyos karakterlánc-oszlopokkal szűri az adataikat.
+Ne használjon `OPENROWSET` explicit módon definiált sémát, mert ez hatással lehet a teljesítményre. Ügyeljen arra, hogy az oszlopok legkisebb lehetséges méretét használja (például VARCHAR (100) az alapértelmezett VARCHAR (8000) helyett). Az UTF [-8 átalakítási probléma](../troubleshoot/reading-utf8-text.md)elkerülése érdekében használjon néhány UTF-8 rendezést alapértelmezett adatbázis-rendezésként, vagy állítsa explicit oszlop rendezésként. A rendezés `Latin1_General_100_BIN2_UTF8` a legjobb teljesítményt nyújtja, ha a Yu bizonyos karakterlánc-oszlopokkal szűri az adataikat.
 
 ## <a name="query-nested-objects-and-arrays"></a>Beágyazott objektumok és tömbök lekérdezése
 
@@ -268,8 +268,8 @@ A lekérdezés eredménye a következő táblázathoz hasonló lehet:
 További információ az [összetett adattípusok elemzéséről az Azure szinapszis-hivatkozásokban](../how-to-analyze-complex-schema.md) és a [beágyazott struktúrákban egy kiszolgáló nélküli SQL-készletben](query-parquet-nested-types.md).
 
 > [!IMPORTANT]
-> Ha a szövegben nem várt karakterek jelennek meg, például a `MÃƒÂ©lade` helyett `Mélade` , akkor az adatbázis-rendezés nem [UTF-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) rendezésre van beállítva.
-> [Módosítsa az adatbázis rendezését](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) UTF-8 rendezésre egy olyan SQL-utasítás használatával, mint például: `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
+> Ha a szövegben nem várt karakterek jelennek meg, például a `MÃƒÂ©lade` helyett `Mélade` , akkor az adatbázis-rendezés nem [UTF-8](/sql/relational-databases/collations/collation-and-unicode-support#utf8) rendezésre van beállítva.
+> [Módosítsa az adatbázis rendezését](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) UTF-8 rendezésre egy olyan SQL-utasítás használatával, mint például: `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
 
 ## <a name="flatten-nested-arrays"></a>Beágyazott tömbök összeolvasztása
 
@@ -325,7 +325,7 @@ Kiegészítő információk öko-epidemi... | `[{"first":"Nicolas","last":"4#","
 | Kiegészítő információk öko-epidemi... |   `[{"first":"Olivier","last":"Flores","suffix":"","affiliation":{"laboratory":"UMR C53 CIRAD, …` | Olivier | Flores |`{"laboratory":"UMR C53 CIRAD, …` |     
 
 > [!IMPORTANT]
-> Ha a szövegben nem várt karakterek jelennek meg, például a `MÃƒÂ©lade` helyett `Mélade` , akkor az adatbázis-rendezés nem [UTF-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) rendezésre van beállítva. [Módosítsa az adatbázis rendezését](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) UTF-8 rendezésre egy olyan SQL-utasítás használatával, mint például: `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
+> Ha a szövegben nem várt karakterek jelennek meg, például a `MÃƒÂ©lade` helyett `Mélade` , akkor az adatbázis-rendezés nem [UTF-8](/sql/relational-databases/collations/collation-and-unicode-support#utf8) rendezésre van beállítva. [Módosítsa az adatbázis rendezését](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) UTF-8 rendezésre egy olyan SQL-utasítás használatával, mint például: `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB az SQL-típusok megfeleltetéséhez
 
@@ -335,7 +335,7 @@ Azure Cosmos DB SQL (Core) API-fiókok esetében a JSON-tulajdonságok száma, k
 
 | Azure Cosmos DB tulajdonság típusa | SQL-oszlop típusa |
 | --- | --- |
-| Logikai | bit |
+| Logikai érték | bit |
 | Egész szám | bigint |
 | Tizedesjegy | float |
 | Sztring | varchar (UTF-8 adatbázis-rendezés) |

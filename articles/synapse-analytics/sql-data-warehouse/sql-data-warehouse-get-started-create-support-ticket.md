@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6042b5be48144ce6730a9bf4f342d7735a262643
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212275"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118064"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>A kérelmek kvótájának növekedése és az Azure szinapszis Analytics támogatásának beszerzése
 
@@ -25,12 +25,12 @@ Ez a cikk azt ismerteti, hogyan lehet támogatási jegyet beküldeni az Azure sz
 
 Az alábbi lépéseket követve hozzon létre egy új támogatási kérést az Azure szinapszis Analytics Azure Portalból.
 
-1. A [Azure Portal](https://portal.azure.com) menüben válassza a **Súgó + támogatás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com) menüben válassza a **Súgó + támogatás** lehetőséget.
 
    ![A Súgó + támogatás hivatkozása](./media/sql-data-warehouse-get-started-create-support-ticket/help-plus-support.png)
 
 
-1. A **Súgó és támogatás**területen válassza az **új támogatási kérelem**lehetőséget.
+1. A **Súgó és támogatás** területen válassza az **új támogatási kérelem** lehetőséget.
 
     ![Új támogatási kérelem létrehozása](./media/sql-data-warehouse-get-started-create-support-ticket/new-support-request.png)
 
@@ -42,12 +42,12 @@ Az alábbi lépéseket követve hozzon létre egy új támogatási kérést az A
 
    Premier szintű támogatási csomaggal a [Microsoft Premier online portálon](https://premier.microsoft.com/)is jelentheti az Azure szinapszis Analytics szolgáltatással kapcsolatos problémákat. Tekintse meg az [Azure-támogatási terveket](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) a különböző támogatási csomagokról, beleértve a hatókört, a válaszidőt, a díjszabást stb.  Az Azure-támogatással kapcsolatos gyakori kérdésekért tekintse meg az [Azure-támogatással](https://azure.microsoft.com/support/faq/)kapcsolatos gyakori kérdéseket.
 
-1. A **probléma típusa**mezőben válassza ki a megfelelő típusú problémát. A hibajavítási problémák esetén válassza a **technikai**lehetőséget. A kvóta-növelési kérelmek esetében válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
+1. A **probléma típusa** mezőben válassza ki a megfelelő típusú problémát. A hibajavítási problémák esetén válassza a **technikai** lehetőséget. A kvóta-növelési kérelmek esetében válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
 
    ![Probléma típusának kiválasztása](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-issue-type.png)  
 
    > [!NOTE]
-   > Ez a cikk a kvóta növelésére vonatkozó főként. A probléma megoldásához szükséges támogatási kérelmek esetében azonban a **technikai** lehetőséget is kiválaszthatja. Ha a **technikai**lehetőséget választja, a rendszer megkéri, hogy adjon meg egy összefoglalást, majd azonosítsa a probléma típusát a **probléma típusának**kiválasztása lehetőség kiválasztásával. Előfordulhat, hogy a probléma megoldásához megoldásokat talál. Ha a bemutatott megoldások nem oldják meg a problémát, válassza a **Next (tovább** ) gombot, és fejezze be az űrlapot a támogatási jegy elküldéséhez.
+   > Ez a cikk a kvóta növelésére vonatkozó főként. A probléma megoldásához szükséges támogatási kérelmek esetében azonban a **technikai** lehetőséget is kiválaszthatja. Ha a **technikai** lehetőséget választja, a rendszer megkéri, hogy adjon meg egy összefoglalást, majd azonosítsa a probléma típusát a **probléma típusának** kiválasztása lehetőség kiválasztásával. Előfordulhat, hogy a probléma megoldásához megoldásokat talál. Ha a bemutatott megoldások nem oldják meg a problémát, válassza a **Next (tovább** ) gombot, és fejezze be az űrlapot a támogatási jegy elküldéséhez.
 
 1. A kvóta-növelési kérelmek esetében válassza az **Azure szinapszis Analytics** lehetőséget a **kvóta típusához**. Ezután válassza a **Tovább: megoldások >>** elemet.
 
@@ -121,7 +121,7 @@ A kvóta típusa legördülő **menüben válassza ki** az egyéb kvóták kér�
 
 ## <a name="submit-your-request"></a>A kérés elküldése
 
-Az utolsó lépés a SQL Database támogatási kérelem hátralévő részleteinek kitöltése. Ezután válassza a **Tovább: Áttekintés +>>létrehozása **elemet.
+Az utolsó lépés a SQL Database támogatási kérelem hátralévő részleteinek kitöltése. Ezután válassza a **Tovább: Áttekintés +>>létrehozása** elemet.
 
 ![A létrehozás részleteinek áttekintése](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
 
@@ -137,5 +137,4 @@ A támogatási kérelem elküldését követően az Azure-támogatási csapat ka
 
 ## <a name="other-resources"></a>Egyéb erőforrások
 
-Az Azure szinapszis Analytics-Közösséggel is csatlakozhat [stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) vagy a [Microsoft Q&az Azure szinapszis Analytics kérdéseit tartalmazó oldalon](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
-
+Az Azure szinapszis Analytics-Közösséggel is csatlakozhat [stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) vagy a [Microsoft Q&az Azure szinapszis Analytics kérdéseit tartalmazó oldalon](/answers/topics/azure-synapse-analytics.html).

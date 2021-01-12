@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 567d5ae8b9d480003486362a7aa0ef69f9740d52
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109697"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120291"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>Rövid útmutató: a számítási feladat szüneteltetése és folytatása a dedikált SQL-készletben a Azure Portal használatával
 
@@ -98,5 +98,4 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ezzel szüneteltette és folytatta a számítást a dedikált SQL-készlethez. A következő cikkből megtudhatja, hogyan tölthetők be az információk [egy DEDIKÁLT SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md). A számítási képességek kezelésével kapcsolatos további információkért tekintse meg a [számítás áttekintését](sql-data-warehouse-manage-compute-overview.md) ismertető cikket. 
-
+Ezzel szüneteltette és folytatta a számítást a dedikált SQL-készlethez. A következő cikkből megtudhatja, hogyan tölthetők be az információk [egy DEDIKÁLT SQL-készletbe](./load-data-from-azure-blob-storage-using-copy.md). A számítási képességek kezelésével kapcsolatos további információkért tekintse meg a [számítás áttekintését](sql-data-warehouse-manage-compute-overview.md) ismertető cikket.

@@ -6,24 +6,24 @@ ms.author: rymend
 ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
-ms.date: 06/30/2020
-ms.openlocfilehash: edb0de9f235565d09c81ce4466de59698a321f56
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 01/07/2021
+ms.openlocfilehash: 4ff91949c42b9a0e33999b7d0dc21fd24da7cdd9
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87102049"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120342"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Azure fejlesztői eszközök regisztrálása vagy megújítása az előfizetéshez
 
 Ez a cikk az Azure fejlesztői eszközök beléptetésének folyamatát ismerteti a tanításhoz és az előfizetés létrehozásához.
 
-## <a name="purchase-a-new-subscription"></a>Új előfizetés vásárlása
+## <a name="enroll-a-new-subscription"></a>Új előfizetés regisztrálása
 
 1. Navigáljon az [oktatóanyaghoz készült Azure dev Tools weboldalára](https://azure.microsoft.com/education/institutions/).
 1. Kattintson a **Sign up (regisztráció** ) gombra. 
 1. Válassza a beléptetés **vagy a megújítás** lehetőséget az Azure dev Tools for Teaching (oktatási szalagcím) lapon.
-1. Válassza ki a megvásárolni kívánt előfizetés típusát:
+1. Válassza ki a regisztrálni kívánt előfizetés típusát:
     - Új előfizetés alkalmazása
     - Az elindított alkalmazások folytatása
  
@@ -33,19 +33,15 @@ Ez a cikk az Azure fejlesztői eszközök beléptetésének folyamatát ismertet
 
 1. Ha első alkalommal regisztrálja az **intézmény adatait**, végezze el a beléptetést. Ha megújítja, az információ automatikusan kitöltődik.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
-    
-1. Töltse ki a **számlázási adatokat**. Ha az intézmény mennyiségi licencszerződés részét képezi, megadhatja a mennyiségi licencelési szerződés számát. Ha regisztrál egy új előfizetésre, és a hitelkártyán kívül más fizet, előfordulhat, hogy a fizetési folyamat során a rendszer késlelteti az előfizetés elérését. E-maileket fog kapni a fizetési folyamat frissítéséhez.
-
-    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
-    
+    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Adja meg az intézmény adatait." border="false":::
+        
 1. Válassza ki az **előfizetési tervet** , és erősítse meg az előfizetés- **adminisztrátort** az előfizetéshez. Az előfizetés-adminisztrátor e-mail-tartománya lehetővé teszi, hogy az azonos tartományba tartozó diákok egyszerűen hozzáférjenek a szoftveres előnyök letöltéséhez.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Válassza az előfizetési terv lehetőséget." border="false":::
     
-1. Erősítse meg az összes vásárlási információt, és kattintson a **megrendelés**elemre. A rendszer megerősítő e-maileket küld a Beérkezett üzenetek mappájába, a fizetési állapotra vonatkozó frissítéseket és az esetleges további lépéseket.
+1. Erősítse meg az összes regisztrációs információt, és kattintson a **megrendelés** elemre. A rendszer megerősítő e-maileket küld a Beérkezett üzenetek mappájába, a regisztrálási állapotra vonatkozó frissítéseket és az esetleges további lépéseket.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Erősítse meg a rendelését." border="false":::
 
 ## <a name="renew-an-existing-subscription"></a>Meglévő Előfizetés megújítása
 
@@ -65,10 +61,10 @@ A megújítási folyamat a lejárati dátum előtt 90 nappal elvégezhető:
 
 1. Válassza ki az **előfizetési tervet** , és erősítse meg az előfizetés- **adminisztrátort** az előfizetéshez.
 
-1. Erősítse meg az összes vásárlási információt, és kattintson a **megrendelés**elemre. A rendszer megerősítő e-maileket küld a Beérkezett üzenetek mappájába a fizetési állapottal és a lehetséges következő lépésekkel kapcsolatban.
+1. Erősítse meg az összes regisztrációs információt, és kattintson a **megrendelés** elemre. A rendszer megerősítő e-maileket küld a beérkezett fájlok mappájába a regisztrációs állapottal és a lehetséges következő lépésekkel kapcsolatos frissítésekről.
 
 
-## <a name="next-steps"></a>További lépések   
+## <a name="next-steps"></a>Következő lépések   
 
 - [Az Azure fejlesztői eszközök hozzáférésének beállítása](set-up-access.md)
 

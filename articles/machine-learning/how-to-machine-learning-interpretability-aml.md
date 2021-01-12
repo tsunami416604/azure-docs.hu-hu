@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 14d15f54befba162b071b40e06e589f980708fd3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 74ddaaf7a2d279439c0cd27ba0840f02f297877b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740487"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119560"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Az adatelemzési csomag használata a Python (előzetes verzió) &i előrejelzésekben
 
@@ -491,7 +491,7 @@ A magyarázatot az eredeti modellel is üzembe helyezheti, és a következtetés
 
          # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
 
-         azureml_pip_packages = ['azureml-defaults', 'azureml-contrib-interpret', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
+         azureml_pip_packages = ['azureml-defaults', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
  
 
          # specify CondaDependencies obj
@@ -572,7 +572,7 @@ A magyarázatot az eredeti modellel is üzembe helyezheti, és a következtetés
 * A Studio: What-If és az egyéni feltételes várakozási (jég) mintaterületek **nem támogatottak** a Azure Machine learning Studióban a magyarázatok lapon, mivel a feltöltött magyarázatnak aktív számításra van szüksége az előrejelzések és a zaklatott funkciók valószínűségének újraszámításához. Jelenleg a Jupyter notebookok esetében támogatott, ha az SDK-val widgetet használ.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a modell értelmezéséről](how-to-machine-learning-interpretability.md)
 

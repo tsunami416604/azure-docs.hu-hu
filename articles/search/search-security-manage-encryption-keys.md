@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8295e619cfda0d4b83a7356d5fd21d4b80f83849
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 6b1079797f1a753fa8362d6e920f3394087d7e9f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530884"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119288"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Ügyfél által felügyelt kulcsok konfigurálása az adattitkosításhoz az Azure-ban Cognitive Search
 
@@ -52,7 +52,7 @@ Ebben a forgatókönyvben a következő eszközöket és szolgáltatásokat hasz
 Olyan keresési alkalmazással kell rendelkeznie, amely létrehozhatja a titkosított objektumot. Ebben a kódban egy Key Vault-kulcsra és Active Directory regisztrációs információra fog hivatkozni. Ez a kód lehet egy működő alkalmazás vagy prototípus-kód, például a [C# kód minta DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK).
 
 > [!TIP]
-> A [Poster vagy a Visual Studio Code](search-get-started-rest.md)vagy a [Azure PowerShell](./search-get-started-powershell.md)használatával meghívhatja a REST API-kat, amelyek indexeket és szinonimákat hoznak létre, amelyek tartalmazzák a titkosítási kulcs paraméterét. Jelenleg nem támogatott a kulcsok indexekhez vagy szinonimához való hozzáadásához szükséges portál támogatása.
+> A [Poster](search-get-started-rest.md), a [Visual Studio Code](search-get-started-vs-code.md)vagy a [Azure PowerShell](./search-get-started-powershell.md)használatával meghívhatja a REST API-kat, amelyek indexeket és szinonimákat hoznak létre, amelyek tartalmazzák a titkosítási kulcs paraméterét. Jelenleg nem támogatott a kulcsok indexekhez vagy szinonimához való hozzáadásához szükséges portál támogatása.
 
 ## <a name="1---enable-key-recovery"></a>1 – kulcshelyreállítás engedélyezése
 
@@ -388,7 +388,7 @@ A kulcs rotációja várhatóan az idő múlásával történik. A kulcsok elfor
 
 A keresési szolgáltatás teljesítménybeli okokból akár több óráig is gyorsítótárazza a kulcsot. Ha letiltja vagy törli a kulcsot anélkül, hogy újat kellene benyújtania, a lekérdezések ideiglenesen is működni fognak, amíg a gyorsítótár le nem jár. Ha azonban a keresési szolgáltatás nem tudja visszafejteni a tartalmat, a következő üzenet jelenik meg: "Hozzáférés megtiltva. Lehetséges, hogy a használt lekérdezési kulcsot visszavonták – próbálkozzon újra. " 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem ismeri az Azure biztonsági architektúráját, tekintse át az [Azure biztonsági dokumentációját](../security/index.yml), és különösen a következő cikket:
 

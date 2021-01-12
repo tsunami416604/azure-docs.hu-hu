@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53fb256d3a0fba1cc10cafb239ff7f7bb21ac4eb
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450888"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121073"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>Oktatóanyag: Power BI-jelentés létrehozása Apache Spark és az Azure szinapszis Analytics használatával
 
@@ -22,7 +22,7 @@ A szervezeteknek gyakran nagy mennyiségű adattal kell feldolgozniuk, mielőtt 
 
 ## <a name="before-you-begin"></a>Előkészületek
 - Az [Azure szinapszis Analytics-munkaterület](../quickstart-create-workspace.md) egy ADLS Gen2 Storage-fiókkal, amely alapértelmezett tárolóként van konfigurálva. 
-- Power BI munkaterület és Power BI Desktop az adatmegjelenítéshez. Részletekért lásd: [Power bi munkaterület létrehozása](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces) és [Power bi-asztal telepítése](https://powerbi.microsoft.com/downloads/)
+- Power BI munkaterület és Power BI Desktop az adatmegjelenítéshez. Részletekért lásd: [Power bi munkaterület létrehozása](/power-bi/service-create-the-new-workspaces) és [Power bi-asztal telepítése](https://powerbi.microsoft.com/downloads/)
 - Társított szolgáltatás az Azure szinapszis Analytics és Power BI munkaterületek összekapcsolásához. Részletekért lásd: [Power bi munkaterületre mutató hivatkozás](../quickstart-power-bi.md)
 - Kiszolgáló nélküli Apache Spark készlet a szinapszis Analytics-munkaterületen. Részletekért lásd: [kiszolgáló nélküli Apache Spark készlet létrehozása](../quickstart-create-apache-spark-pool-studio.md)
   
@@ -89,7 +89,7 @@ Apache Spark tábla lekérdezése a kiszolgáló nélküli SQL-készlettel:
 Ezután a kiszolgáló nélküli SQL-készletet a Power BI munkaterülethez fogjuk kapcsolni. Miután csatlakozott a munkaterülethez, Power BI jelentéseket hozhat létre közvetlenül az Azure szinapszis Analyticsből, valamint a Power BI Desktopból.
 
 >[!Note]
-> Mielőtt elkezdené, be kell állítania egy társított szolgáltatást a [Power bi munkaterületre](../quickstart-power-bi.md) , és le kell töltenie a [Power bi Desktopot](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces).  
+> Mielőtt elkezdené, be kell állítania egy társított szolgáltatást a [Power bi munkaterületre](../quickstart-power-bi.md) , és le kell töltenie a [Power bi Desktopot](/power-bi/service-create-the-new-workspaces).  
 
 Kiszolgáló nélküli SQL-készlet kapcsolódása Power BI munkaterülethez:
 
@@ -116,7 +116,7 @@ Kiszolgáló nélküli SQL-készlet kapcsolódása Power BI munkaterülethez:
 
 Ha további információt szeretne arról, hogyan hozhat létre egy adatkészletet kiszolgáló nélküli SQL-kapcsolaton keresztül, és hogyan csatlakozhat a Power BIhoz, látogasson el az oktatóanyagba [Power bi asztalhoz való csatlakozáshoz](../../synapse-analytics/sql/tutorial-connect-power-bi-desktop.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure szinapszis Analytics adatvizualizációs funkcióival kapcsolatos további információkért tekintse meg az alábbi dokumentumokat és oktatóanyagokat:
    - [Az adatmegjelenítés kiszolgáló nélküli Apache Spark készletekkel](../spark/apache-spark-data-visualization-tutorial.md)
    - [Apache Spark-készletekkel rendelkező adatvizualizációk áttekintése](../spark/apache-spark-data-visualization.md)

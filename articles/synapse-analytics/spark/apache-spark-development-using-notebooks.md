@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: bfb822481e00e84fa17bd4b1fcb58c1d4b89a124
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450863"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120954"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Szinapszis Studio-jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan használhatók a jegyzetfüzetek az Azure szinapszis
 ## <a name="preview-of-the-new-notebook-experience"></a>Az új jegyzetfüzet-felület előzetes verziója
 A szinapszis csapata az új jegyzetfüzetek összetevőt a szinapszis studióba hozta, hogy egységes notebook-élményt nyújtson a Microsoft ügyfeleinek, és maximalizálja a felderíthetőség, a termelékenység, a megosztás és az együttműködés terén. Az új jegyzetfüzet-élmény készen áll az előzetes verzióra. Ha be szeretné kapcsolni, tekintse meg az **előzetes verziójú funkciók** gombot a notebook eszközsoron. Az alábbi táblázat a meglévő jegyzetfüzetek (úgynevezett "klasszikus jegyzetfüzet") funkcióinak összehasonlítását rögzíti az új előzetes verzióval.  
 
-|Jellemző|Klasszikus jegyzetfüzet|Előnézeti jegyzetfüzet|
+|Szolgáltatás|Klasszikus jegyzetfüzet|Előnézeti jegyzetfüzet|
 |--|--|--|
 |% Run| Nem támogatott | &#9745;|
 |% előzmények| Nem támogatott |&#9745;
@@ -104,7 +104,7 @@ Az új hozzáadott cellák elsődleges nyelvét a felső parancssáv legördül�
 
 Több nyelvet is használhat egy jegyzetfüzetben a cella elején található megfelelő nyelvi mágikus parancs megadásával. A következő táblázat a cella nyelveinek váltására szolgáló mágikus parancsokat sorolja fel.
 
-|Magic parancs |Nyelv | Description |  
+|Magic parancs |Nyelv | Leírás |  
 |---|------|-----|
 |%% pyspark| Python | **Python** -lekérdezés végrehajtása a Spark-környezettel.  |
 |%% Spark| Scala | **Scala** -lekérdezés végrehajtása a Spark-környezettel.  |  
@@ -149,10 +149,10 @@ Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szi
 
 |Nyelvek| Szintaxis kiemelése | Szintaktikai hiba jelölője  | Szintaxis kód befejezése | Változó kód befejezése| Rendszerfunkció kódja – Befejezés| Felhasználói függvény kódjának befejezése| Intelligens behúzás | Kód összecsukható|
 |--|--|--|--|--|--|--|--|--|
-|PySpark (Python)|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Spark (Scala)|Igen|Igen|Igen|Igen|-|-|-|Igen|
-|SparkSQL|Igen|Igen|-|-|-|-|-|-|
-|.NET for Spark (C#)|Igen|-|-|-|-|-|-|-|
+|PySpark (Python)|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Yes|
+|Spark (Scala)|Igen|Igen|Igen|Igen|-|-|-|Yes|
+|SparkSQL|Igen|Yes|-|-|-|-|-|-|
+|.NET for Spark (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Szöveg cellájának formázása eszköztár gombjaival
 
@@ -547,10 +547,10 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Tekintse meg a szinapszis-minta jegyzetfüzeteket](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [Rövid útmutató: Apache Spark-készlet létrehozása az Azure szinapszis Analyticsben webes eszközök használatával](../quickstart-apache-spark-notebook.md)
 - [Az Azure szinapszis Analytics Apache Spark](apache-spark-overview.md)
 - [Az Apache Sparkhoz készült .NET használata az Azure Stream Analyticsszel](spark-dotnet.md)
 - [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)

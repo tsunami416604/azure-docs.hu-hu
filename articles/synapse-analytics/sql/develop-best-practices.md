@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1fd7649cac6b636873ca529fe9780429d86697c6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321489"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120903"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Fejlesztési ajánlott eljárások a szinapszis SQL-hez
 
@@ -53,7 +53,7 @@ Ez azt jelenti, hogy megkerüljük az adatáthelyezési műveleteket.  Ha kevese
 
 A terjesztési oszlopok kiválasztásával kapcsolatos további részletekért tekintse meg a következő hivatkozásokat, valamint azt, hogyan határozhat meg egy elosztott táblát a CREATE TABLEs utasítás WITH záradékában.
 
-Lásd még: [táblák áttekintése](develop-tables-overview.md), [táblázat terjesztése](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), a [táblázat terjesztése](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)és [CREATE TABLE kiválasztása](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Lásd még: [táblák áttekintése](develop-tables-overview.md), [táblázat terjesztése](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), a [táblázat terjesztése](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)és [CREATE TABLE kiválasztása](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="do-not-over-partition"></a>Túl sok partíció használatának kerülése
 Míg az adatparticionálás hatékonyan kezelheti az adatait a partíciók váltásával vagy a vizsgálatok optimalizálásával a partíciók eltávolításával, a túl sok partíció lelassíthatja a lekérdezéseket.  Gyakran olyan nagy részletességű particionálási stratégia, amely jól használható SQL Server előfordulhat, hogy nem működik megfelelően a dedikált SQL-készleten.  
@@ -147,7 +147,7 @@ Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 - Azt javasolt, hogy egyenlő méretű fájlokat lehessen használni egyetlen OPENROWSET elérési úthoz vagy egy külső tábla HELYéhez.
 - Particionálja az adatait úgy, hogy a partíciókat különböző mappákba vagy fájlnevekre tárolja, [majd a fájlnév és a filepath függvények használatával adja meg az adott partíciókat](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
-### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Fileinfo és filepath függvények használata adott partíciók célzásához
+### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>A fileinfo és filepath függvények használata adott partíciók célzásához
 
 Az adathalmazok gyakran partíciókban vannak rendszerezve. A kiszolgáló nélküli SQL-készletet utasíthatja arra, hogy adott mappákat és fájlokat Kérdezzen le. Ez csökkenti a fájlok számát és az adatmennyiséget, amelyet a lekérdezésnek el kell olvasnia és fel kell dolgoznia. 
 
@@ -167,7 +167,6 @@ Ahogy a CETAS a parketta-fájlokat hozza létre, a statisztikák automatikusan l
 
 ### <a name="next-steps"></a>Következő lépések
 
-Ha a jelen cikkben nem szereplő információkra van szüksége, használja az oldal bal oldalán található **Keresés a doc** függvényt az SQL-készlet összes dokumentumának kereséséhez.  A [Microsoft Q&az Azure szinapszis Analytics-re vonatkozó kérdés oldalának](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) célja, hogy kérdéseket tegyen fel más felhasználók és az Azure szinapszis Analytics-termékcsoport számára. Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
+Ha a jelen cikkben nem szereplő információkra van szüksége, használja az oldal bal oldalán található **Keresés a doc** függvényt az SQL-készlet összes dokumentumának kereséséhez.  A [Microsoft Q&az Azure szinapszis Analytics-re vonatkozó kérdés oldalának](/answers/topics/azure-synapse-analytics.html) célja, hogy kérdéseket tegyen fel más felhasználók és az Azure szinapszis Analytics-termékcsoport számára. Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
 
 Ha szeretne kérdéseket feltenni a Stack Overflowra, egy Azure-beli [szinapszis Analytics-stack overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)is rendelkezésre áll.
- 

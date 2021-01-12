@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b45bad7c439fb98737f0caee08b2996323fbd3b
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8dd3edd25d21bfcd0fde1bc8b5f103877d968c8a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602699"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119985"
 ---
 # <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: kiszolgáló nélküli SQL-készlet használata a Power BI Desktop & jelentés létrehozása
 
@@ -32,7 +32,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 - [Power bi Desktop](https://powerbi.microsoft.com/downloads/) – az adatmegjelenítéshez és a jelentés létrehozásához szükséges.
-- [Azure szinapszis-munkaterület](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio) – adatbázis, külső adatforrás és nézet létrehozásához szükséges.
+- [Azure szinapszis-munkaterület](../get-started-create-workspace.md) – adatbázis, külső adatforrás és nézet létrehozásához szükséges.
 
 Nem kötelező:
 
@@ -173,6 +173,6 @@ Ha elkészült a jelentéssel, törölje az erőforrásokat a következő lépé
    DROP DATABASE Demo;
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a [lekérdezési tároló fájljaival](develop-storage-files-overview.md) , hogy megtudja, hogyan kérdezheti le a tárolási fájlokat a szinapszis SQL használatával.

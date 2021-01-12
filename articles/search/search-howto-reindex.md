@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: ae8fd7f405beb20d516835ccb80b86e769fd0393
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 47e9b80bb25b7ff14695cc67682265fe338ff76f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697084"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119101"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Index újraépítése az Azure Cognitive Searchban
 
@@ -37,7 +37,7 @@ Ha nem módosítja az index szerkezetét, az indexet az első betöltéséhez ha
 
 Ha a következő feltételek bármelyike teljesül, dobja el és hozza létre újból az indexet. 
 
-| Condition (Állapot) | Leírás |
+| Feltétel | Leírás |
 |-----------|-------------|
 | Mező definíciójának módosítása | Egy mezőnév, adattípus vagy adott [index-attribútum](/rest/api/searchservice/create-index) (kereshető, szűrhető, rendezhető) módosítása teljes újraépítést igényel. |
 | Analizátor kiosztása egy mezőhöz | Az [elemzők](search-analyzers.md) definiálva vannak egy indexben, majd a mezőkhöz vannak rendelve. Bármikor hozzáadhat egy új Analyzer-definíciót egy indexhez, de a mező létrehozásakor csak az analizátort lehet *hozzárendelni* . Ez az **elemző** és a **indexAnalyzer** tulajdonság esetében is igaz. A **searchAnalyzer** tulajdonság kivétel (ezt a tulajdonságot egy meglévő mezőhöz rendelheti hozzá). |
@@ -91,7 +91,7 @@ Amikor betölti az indexet, az egyes mezők fordított indexe az egyes dokumentu
 
 Az első dokumentum betöltését követően azonnal megkezdheti az index lekérdezését. Ha ismeri a dokumentum AZONOSÍTÓját, a [keresési dokumentum REST API](/rest/api/searchservice/lookup-document) az adott dokumentumot adja vissza. A szélesebb körű teszteléshez várnia kell, amíg az index teljesen be nem töltődik, majd a lekérdezések segítségével ellenőrizze a várt környezetet.
 
-A [Search Explorer](search-explorer.md) vagy egy webes tesztelési eszköz, például a [Poster vagy a Visual Studio Code](search-get-started-rest.md) segítségével keresheti a frissített tartalmat.
+A [Search Explorer](search-explorer.md) vagy egy webes tesztelési eszköz, például a [Poster](search-get-started-rest.md) vagy a [Visual Studio Code](search-get-started-vs-code.md) segítségével keresheti a frissített tartalmat.
 
 Ha hozzáadta vagy átnevezte a mezőt, a [$Select](search-query-odata-select.md) használatával adja vissza a mezőt: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 

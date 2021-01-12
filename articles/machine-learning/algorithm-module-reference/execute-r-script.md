@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
-ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679103"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119013"
 ---
 # <a name="execute-r-script-module"></a>R-parancsfájl végrehajtása modul
 
@@ -49,10 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 További R-csomagok telepítéséhez használja a `install.packages()` metódust. A csomagok minden végrehajtási R script modulhoz telepítve vannak. Nem osztják meg egymás között az R-szkriptek többi modulját.
 
 > [!NOTE]
+> Az R-csomagot **nem** ajánlott a parancsfájl-csomagból telepíteni. Javasoljuk, hogy telepítse a csomagokat közvetlenül a parancsfájl-szerkesztőbe.
 > A csomagok telepítésekor a CRAN-tárházat kell megadni, például: `install.packages("zoo",repos = "http://cran.us.r-project.org")` .
 
 > [!WARNING]
 > A Excute R script modul nem támogatja olyan csomagok telepítését, amelyek natív fordítást igényelnek, például a csomaghoz, amelyhez a `qdap` Java és a csomag szükséges, `drc` amelyekhez C++ szükséges. Ennek az az oka, hogy ez a modul egy olyan előre telepített környezetben fut, amely nem rendszergazdai jogosultsággal rendelkezik.
+> Ne telepítsen olyan csomagokat, amelyek előre összeállítottak Windows rendszeren, mivel a Designer modulok Ubuntu rendszeren futnak. Annak megállapításához, hogy egy csomag előre épül-e a Windows rendszerre, megkeresheti a [Cran](https://cran.r-project.org/) -t, és kereshet a csomagban, letöltheti az operációs rendszerének megfelelő bináris fájlt, és megtekintheti a **beépített:** részt a **Leírás** fájlban. Az alábbi példa az :::image type="content" source="media/module/r-package-description.png" alt-text="R-csomag leírását" lightbox="media/module/r-package-page.png"::: szemlélteti.
 
 Ez a példa bemutatja az állatkert telepítését:
 ```R

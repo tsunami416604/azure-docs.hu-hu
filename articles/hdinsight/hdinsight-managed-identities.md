@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 4d9a5900990ea41788ced5f25690619fbde68d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87bc2338ecc48f1115a406c276ef221cb185a4c5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854987"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118625"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Felügyelt identitások az Azure HDInsight
 
@@ -55,6 +55,7 @@ Ha már létrehozott egy hosszú ideig futó fürtöt, amelynek több különbö
  * Az ESP-fürtökben a HRE-DS LDAPs tanúsítványának módosításakor az LDAPs-tanúsítvány nem frissül automatikusan, így az LDAP-szinkronizálás és a méretezési lépések sikertelenek lesznek.
  * MSI-hozzáférés ADLS Gen2 indítás sikertelen.
  * A titkosítási kulcsokat nem lehet elforgatni a CMK-forgatókönyvben.
+
 ezt követően a fürtben használt összes felügyelt identitáshoz hozzá kell rendelnie a fenti forgatókönyvekhez szükséges szerepköröket és engedélyeket. Ha például különböző felügyelt identitásokat használt ADLS Gen2 és ESP-fürtökhöz, akkor mindkettőnek rendelkeznie kell a "Storage blob-adat tulajdonosával" és a "HDInsight tartományi szolgáltatások közreműködői" szerepkörökkel, hogy elkerülje az ilyen problémákhoz való futást.
 
 ## <a name="faq"></a>GYIK

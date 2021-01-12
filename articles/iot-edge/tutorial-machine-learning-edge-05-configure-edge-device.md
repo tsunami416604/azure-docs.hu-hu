@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 74d77d8c81455116cec861bf6704c6cb96526561
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932353"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121090"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Oktatóanyag: IoT Edge-eszköz konfigurálása
 
@@ -81,7 +81,7 @@ Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-ren
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Tanúsítványok feltöltése a Azure Key Vaultba
 
-Ha biztonságosan szeretné tárolni a tanúsítványokat, és több eszközről is elérhetővé kívánja tenni őket, feltöltjük a tanúsítványokat a Azure Key Vaultba. Ahogy az a fenti listából is látható, két típusú tanúsítványfájl létezik: PFX és PEM. A PFX-t Key Vault, Key Vaultre feltöltött tanúsítványként kezeljük. A PEM-fájlok egyszerű szövegként jelennek meg, és Key Vault titokként kezeljük őket. A [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks)futtatásával létrehozott Azure Machine learning munkaterülethez társított Key Vault fogjuk használni.
+Ha biztonságosan szeretné tárolni a tanúsítványokat, és több eszközről is elérhetővé kívánja tenni őket, feltöltjük a tanúsítványokat a Azure Key Vaultba. Ahogy az a fenti listából is látható, két típusú tanúsítványfájl létezik: PFX és PEM. A PFX-t Key Vault, Key Vaultre feltöltött tanúsítványként kezeljük. A PEM-fájlok egyszerű szövegként jelennek meg, és Key Vault titokként kezeljük őket. A [Jupyter-jegyzetfüzetek](tutorial-machine-learning-edge-04-train-model.md#run-jupyter-notebooks)futtatásával létrehozott Azure Machine learning munkaterülethez társított Key Vault fogjuk használni.
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a Azure Machine learning munkaterülethez.
 

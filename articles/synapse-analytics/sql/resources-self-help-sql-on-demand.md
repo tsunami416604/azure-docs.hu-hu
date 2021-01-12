@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4c3b5095da4e55dc8f881a610f80f1150422e739
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457183"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119917"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Önkiszolgáló nélküli SQL-készlet – Súgó
 
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan lehet elhárítani a leggyakoribb problémákat 
 Ha a szinapszis Studio nem tud kapcsolatot létesíteni a kiszolgáló nélküli SQL-készlettel, megfigyelheti, hogy a kiszolgáló nélküli SQL-készlet szürkén jelenik meg, vagy "offline" állapotot jelenít meg. Ez a probléma általában akkor fordul elő, ha a következő esetek valamelyike történik:
 
 1) A hálózat megakadályozza az Azure szinapszis-háttérrel való kommunikációt. A legtöbb esetben a 1443-as port le van tiltva. A kiszolgáló nélküli SQL-készlet működésének megkezdéséhez tiltsa le a portot. Más problémák miatt előfordulhat, hogy a kiszolgáló nélküli SQL-készlet is működik, [További információért látogasson el a teljes hibaelhárítási útmutatóba](../troubleshoot/troubleshoot-synapse-studio.md).
-2) Nincs engedélye a kiszolgáló nélküli SQL-készletbe való bejelentkezésre. A hozzáféréshez az Azure Synapse-munkaterület egyik rendszergazdájának hozzá kell adnia Önt a munkaterület-rendszergazda vagy az SQL-rendszergazda szerepkörhöz. [További információért tekintse meg a hozzáférés-vezérlés teljes körű útmutatóját](access-control.md).
+2) Nincs engedélye a kiszolgáló nélküli SQL-készletbe való bejelentkezésre. A hozzáféréshez az Azure Synapse-munkaterület egyik rendszergazdájának hozzá kell adnia Önt a munkaterület-rendszergazda vagy az SQL-rendszergazda szerepkörhöz. [További információért tekintse meg a hozzáférés-vezérlés teljes körű útmutatóját](../security/synapse-workspace-access-control-overview.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>A lekérdezés sikertelen, mert a fájl nem nyitható meg
 
@@ -71,7 +71,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
 WITH ( FORMAT_TYPE = PARQUET)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a következő cikkeket, amelyekből többet tudhat meg a kiszolgáló nélküli SQL-készlet használatáról:
 

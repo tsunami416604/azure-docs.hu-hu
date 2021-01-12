@@ -9,18 +9,18 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e547d047e8d736acbd1cdda5ffe3a78dbe8259f7
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2594e25bff3ca949b329f8b66f4427eb1f6950b0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901033"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118710"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Oktatóanyag: modell betanítása Python-ban automatizált gépi tanulással
 
 A Azure Machine Learning egy felhőalapú környezet, amely lehetővé teszi a gépi tanulási modellek betanítását, üzembe helyezését, automatizálását, kezelését és nyomon követését. 
 
-Ebben az oktatóanyagban a Azure Machine Learning [automatizált gépi tanulást](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) használ egy regressziós modell létrehozásához a taxi díjszabási árának előrejelzéséhez. Ez a folyamat a legjobb modellt fogadja el az oktatási és konfigurációs beállítások elfogadásával, valamint a különböző metódusok, modellek és hiperparaméter-beállítások kombinációinak automatikus megismétlésével.
+Ebben az oktatóanyagban a Azure Machine Learning [automatizált gépi tanulást](../../machine-learning/concept-automated-ml.md) használ egy regressziós modell létrehozásához a taxi díjszabási árának előrejelzéséhez. Ez a folyamat a legjobb modellt fogadja el az oktatási és konfigurációs beállítások elfogadásával, valamint a különböző metódusok, modellek és hiperparaméter-beállítások kombinációinak automatikus megismétlésével.
 
 Az oktatóanyag a következőket ismerteti:
 - Az adatokat a Apache Spark és az Azure Open adatkészletek használatával töltheti le.
@@ -31,7 +31,7 @@ Az oktatóanyag a következőket ismerteti:
 ## <a name="before-you-begin"></a>Előkészületek
 
 - Hozzon létre egy kiszolgáló nélküli Apache Spark készletet a [kiszolgáló nélküli Apache Spark készlet](../quickstart-create-apache-spark-pool-studio.md)gyors üzembe helyezési útmutatójának követésével.
-- Ha nem rendelkezik meglévő Azure Machine Learning-munkaterülettel, fejezze be a [Azure Machine learning munkaterület telepítési oktatóanyagát](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup) . 
+- Ha nem rendelkezik meglévő Azure Machine Learning-munkaterülettel, fejezze be a [Azure Machine learning munkaterület telepítési oktatóanyagát](../../machine-learning/tutorial-1st-experiment-sdk-setup.md) . 
 
 ## <a name="understand-regression-models"></a>A regressziós modellek ismertetése
 
@@ -48,7 +48,7 @@ Ebben a példában a Spark használatával végez némi elemzést a New York Cit
 
 Ezt a következőképpen teheti meg:
 
-1. Hozzon létre egy jegyzetfüzetet a PySpark kernel használatával. Útmutatásért lásd: [Jegyzetfüzet létrehozása](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook).
+1. Hozzon létre egy jegyzetfüzetet a PySpark kernel használatával. Útmutatásért lásd: [Jegyzetfüzet létrehozása](../quickstart-apache-spark-notebook.md#create-a-notebook).
    
     > [!Note]
     > A PySpark kernel miatt nem kell explicit módon létrehoznia a környezeteket. A Spark-környezet automatikusan létrejön az első kód cellájának futtatásakor.
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Dataframe átalakítása Azure Machine Learning adatkészletbe
-Távoli kísérlet elküldéséhez alakítsa át az adatkészletet egy Azure Machine Learningba ```TabularDatset``` . A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) táblázatos formátumban jeleníti meg az adatokat a megadott fájlok elemzésével.
+Távoli kísérlet elküldéséhez alakítsa át az adatkészletet egy Azure Machine Learningba ```TabularDatset``` . A [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájlok elemzésével.
 
 A következő kód lekéri a meglévő munkaterületet és az alapértelmezett Azure Machine Learning alapértelmezett adattárat. Ezután átadja az adattár és a fájl helyét a Path paraméternek egy új létrehozásához ```TabularDataset``` . 
 
@@ -170,7 +170,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 A következő szakasz végigvezeti egy automatizált gépi tanulási kísérlet elküldésének folyamatán.
 
 ### <a name="define-training-settings"></a>Képzési beállítások megadása
-1. Kísérlet elküldéséhez meg kell határoznia a kísérlet paramétert és a modell beállításait a betanításhoz. A beállítások teljes listájáért lásd: [automatizált gépi tanulási kísérletek konfigurálása a Pythonban](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train).
+1. Kísérlet elküldéséhez meg kell határoznia a kísérlet paramétert és a modell beállításait a betanításhoz. A beállítások teljes listájáért lásd: [automatizált gépi tanulási kísérletek konfigurálása a Pythonban](../../machine-learning/how-to-configure-auto-train.md).
 
    ```python
    import logging
@@ -338,5 +338,5 @@ Végül az iterációk eredményeinek eléréséhez nyissa meg a Azure Machine L
 ![Képernyőkép a Azure Machine Learning munkaterületről.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Következő lépések
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Oktatóanyag: gépi tanulási alkalmazás létrehozása Apache Spark MLlib és az Azure szinapszis Analytics használatával](./apache-spark-machine-learning-mllib-notebook.md)

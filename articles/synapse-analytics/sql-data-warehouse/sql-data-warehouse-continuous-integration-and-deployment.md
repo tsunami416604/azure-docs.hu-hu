@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9f2bbc39b9c9c4770775bf49a7775ab8980a1f3b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cb80f2d21246a75d41fc5753e72995d409d5c6b4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589899"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119186"
 ---
 # <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A dedikált SQL-készlet folyamatos integrációja és üzembe helyezése az Azure szinapszis Analytics szolgáltatásban
 
@@ -62,5 +62,5 @@ Ezen a ponton olyan egyszerű környezettel rendelkezik, ahol a forrás-felügye
 
 - A [DEDIKÁLT SQL-készlet (korábban SQL DW) architektúrájának](massively-parallel-processing-mpp-architecture.md) megismerése
 - [DEDIKÁLT SQL-készlet gyors létrehozása (korábban SQL DW)](create-data-warehouse-portal.md)
-- [Mintaadatok betöltése](load-data-from-azure-blob-storage-using-polybase.md)
+- [Mintaadatok betöltése](./load-data-from-azure-blob-storage-using-copy.md)
 - [Videók](sql-data-warehouse-videos.md) megismerése

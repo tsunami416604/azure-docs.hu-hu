@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 18fba46e4e8de14d9b3ec43455ba2abcc4218dc1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456587"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120189"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Gyors útmutató: dedikált SQL-készlet létrehozása (korábban SQL DW) Azure PowerShell
 
@@ -72,7 +72,7 @@ $endip = "0.0.0.0"
 $databasename = "mySampleDataWarehouse"
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy [Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancs használatával. Az erőforráscsoport egy tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
 
@@ -149,6 +149,6 @@ A gyűjtemény részét képező többi rövid útmutató erre a rövid útmutat
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Létrehozott egy dedikált SQL-készletet (korábban SQL DW), létrehozott egy tűzfalszabályet, és csatlakoztatta a dedikált SQL-készlethez. További információért folytassa a [betöltési információkat egy DEDIKÁLT SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md) .
+Létrehozott egy dedikált SQL-készletet (korábban SQL DW), létrehozott egy tűzfalszabályet, és csatlakoztatta a dedikált SQL-készlethez. További információért folytassa a [betöltési információkat egy DEDIKÁLT SQL-készletbe](./load-data-from-azure-blob-storage-using-copy.md) .

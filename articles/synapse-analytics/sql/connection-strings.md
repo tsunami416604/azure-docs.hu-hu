@@ -10,16 +10,16 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6859d0582997ee861713090ccb4c22ed58ec4ca7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5ce411f3a2f3be162f9af16422d20b3e8b536fee
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462343"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120920"
 ---
 # <a name="connection-strings-for-synapse-sql"></a>A szinapszis SQL-hez kapcsolódó kapcsolatok karakterláncai
 
-A szinapszis SQL-hez több különböző alkalmazás-protokoll, például a, a [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), az [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), a [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)és a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)is csatlakozhat. Az alábbiakban néhány példát láthat a kapcsolatok sztringre az egyes protokollokhoz. 
+A szinapszis SQL-hez több különböző alkalmazás-protokoll, például a, a [ADO.net](/dotnet/framework/data/adonet/), az [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows), a [php](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396)és a [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)is csatlakozhat. Az alábbiakban néhány példát láthat a kapcsolatok sztringre az egyes protokollokhoz. 
 
 A Azure Portal használatával is létrehozhatja a kapcsolódási karakterláncot.  Ha a kapcsolati karakterláncot a Azure Portal használatával szeretné felépíteni, navigáljon az adatbázis panelre az *Essentials* elemnél az *adatbázis-kapcsolati karakterláncok megjelenítése* területen.
 
@@ -54,6 +54,6 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 
 A kiszolgáló nélküli **SQL Pool** -lekérdezések végrehajtásához a javasolt eszközök a [Azure Data Studio](get-started-azure-data-studio.md) és az Azure szinapszis Studio.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az elemzés a Visual Studióval és más alkalmazásokkal való lekérdezésének megkezdéséhez lásd: [lekérdezés a Visual Studióval](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

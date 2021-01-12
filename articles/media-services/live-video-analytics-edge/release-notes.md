@@ -3,12 +3,12 @@ title: Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben – Azure
 description: Ez a témakör az élő videó-elemzések IoT Edge kiadásokra, javításokra, hibajavításokra és ismert problémákra vonatkozó kibocsátási megjegyzéseit tartalmazza.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059976"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121243"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Élő videó-elemzések IoT Edge kibocsátási megjegyzésekben
 
@@ -20,6 +20,23 @@ Ez a cikk a következő információkat tartalmazza:
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+<hr width=100%>
+
+## <a name="january-12-2021"></a>2021. január 12.
+
+Ez a kiadási címke a modul januári 2021 frissítésére szolgál:
+
+```
+mcr.microsoft.com/media/live-video-analytics:2.0.1
+```
+
+> [!NOTE]
+> A rövid útmutatók és oktatóanyagokban az üzembe helyezési jegyzékek a 2 (Live-Video-Analytics: 2) címkét használják. Ezért az ilyen jegyzékfájlok újbóli üzembe helyezéséhez frissítenie kell a modult a peremhálózati > eszközökön.
+### <a name="bug-fixes"></a>Hibajavítások 
+
+* A mezők `ActivationSignalOffset` `MinimumActivationTime` és `MaximumActivationTime` a Signal Gate-processzorok helytelenül lettek beállítva a szükséges tulajdonságokként. Ezek a tulajdonságok mostantól **opcionálisak** .
+* Rögzített egy használati hiba, amely hatására az élő videó Analytics IoT Edge modul összeomlása esetén bizonyos régiókban való üzembe helyezéskor összeomlik.
 
 <hr width=100%>
 
@@ -130,6 +147,6 @@ Ez a kiadás a IoT Edge Live Video Analytics első nyilvános előzetes kiadása
     *   GraphInstanceDelete
     *   GraphInstanceList
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Áttekintés](overview.md)

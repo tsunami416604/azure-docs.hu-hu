@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 78a0982081b8e34461fb2910cc7ce21be622cb6a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 4da99200079557ab9d1674635c0df26c9e62d488
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922855"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120274"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Rövid útmutató: dedikált SQL-készlet (korábban SQL DW) létrehozása és lekérdezése az Azure szinapszis Analyticsben az Azure Portal használatával
 
@@ -153,7 +153,7 @@ Ez a szakasz [SQL Server Management Studio](/sql/ssms/download-sql-server-manage
 
 ## <a name="run-some-queries"></a>Néhány lekérdezés futtatása
 
-Nem ajánlott nagyméretű lekérdezéseket futtatni a kiszolgálói rendszergazdaként való naplózás során, mivel ez egy [korlátozott erőforrás-osztályt](resource-classes-for-workload-management.md)használ. Ehelyett konfigurálja a [munkaterhelés elkülönítését](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql) [az oktatóanyagokban bemutatott](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)módon.
+Nem ajánlott nagyméretű lekérdezéseket futtatni a kiszolgálói rendszergazdaként való naplózás során, mivel ez egy [korlátozott erőforrás-osztályt](resource-classes-for-workload-management.md)használ. Ehelyett konfigurálja a [munkaterhelés elkülönítését](./quickstart-configure-workload-isolation-tsql.md) [az oktatóanyagokban bemutatott](./load-data-wideworldimportersdw.md#create-a-user-for-loading-data)módon.
 
 Az Azure szinapszis Analytics a T-SQL-t használja a lekérdezési nyelvként. A lekérdezésablakok megnyitásához és a T-SQL-lekérdezések futtatásához végezze el az alábbi lépéseket:
 

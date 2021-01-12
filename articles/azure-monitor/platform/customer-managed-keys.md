@@ -1,17 +1,17 @@
 ---
 title: Azure Monitor – ügyfél által kezelt kulcs
-description: Az Log Analytics-munkaterületek Azure Key Vault kulcs használatával történő titkosításához szükséges információk és lépések Customer-Managed kulcs konfigurálásához.
+description: Információk és lépések az ügyfél által felügyelt kulcs konfigurálásához a Log Analytics munkaterületen lévő adatok Azure Key Vault kulcs használatával történő titkosításához.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 66a3276863b05cb2fe0dd80a2195f7fd2af1443c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 07562167131d1839bc0827c74fae09c683302c08
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071935"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118608"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -25,25 +25,25 @@ A inaktív adatok [titkosítása](../../security/fundamentals/encryption-atrest.
 
 Azure Monitor biztosítja, hogy az összes adatok és mentett lekérdezések a Microsoft által felügyelt kulcsok (MMK-EK) használatával titkosítva legyenek. A Azure Monitor a saját [Azure Key Vault](../../key-vault/general/overview.md)tárolt saját kulcs használatával is lehetővé teszi a titkosítást, amely lehetővé teszi a vezérlő számára, hogy bármikor visszavonja az adataihoz való hozzáférést. Azure Monitor a titkosítás használata azonos az [Azure Storage-titkosítás](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) működésének módjával.
 
-Customer-Managed kulcsot olyan [dedikált fürtökön](../log-query/logs-dedicated-clusters.md) továbbítjuk, amelyek magasabb szintű védelmi szintet és irányítást biztosítanak. A dedikált fürtökbe betöltött adat kétszer, a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal, illetve az infrastruktúra szintjén egyszer, két különböző titkosítási algoritmus és két különböző kulcs használatával titkosítva van. A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) védelmet biztosít olyan esetekben, amikor a titkosítási algoritmusok vagy kulcsok egyike sérül. Ebben az esetben a további titkosítási réteg továbbra is védi az adatait. A dedikált fürt lehetővé teszi, hogy az adatai a [Kulcstároló](#customer-lockbox-preview) -vezérlővel is védve legyenek.
+Az ügyfél által felügyelt kulcs olyan [dedikált fürtökön](../log-query/logs-dedicated-clusters.md) érhető el, amelyek magasabb szintű védelmi szintet és irányítást biztosítanak. A dedikált fürtökbe betöltött adat kétszer, a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsokkal, illetve az infrastruktúra szintjén egyszer, két különböző titkosítási algoritmus és két különböző kulcs használatával titkosítva van. A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) védelmet biztosít olyan esetekben, amikor a titkosítási algoritmusok vagy kulcsok egyike sérül. Ebben az esetben a további titkosítási réteg továbbra is védi az adatait. A dedikált fürt lehetővé teszi, hogy az adatai a [Kulcstároló](#customer-lockbox-preview) -vezérlővel is védve legyenek.
 
-Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az [adat a Microsoft](#key-revocation)kulcsaival is titkosítva van, függetlenül az ügyfél által felügyelt kulcs konfigurációjától Dolgozunk arra, hogy a 2021-es első felében Customer-Managed kulccsal titkosított SSD-adatmennyiséget lehessen titkosítani.
+Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az [adat a Microsoft](#key-revocation)kulcsaival is titkosítva van, függetlenül az ügyfél által felügyelt kulcs konfigurációjától Dolgozunk arra, hogy az SSD-adatmennyiséget a 2021 első felében az ügyfél által felügyelt kulccsal titkosítjuk.
 
 Log Analytics dedikált fürtök kapacitás foglalási [díjszabási modellt](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) használnak, amely 1000 GB/nap.
 
 > [!IMPORTANT]
 > Az ideiglenes kapacitás megkötése miatt a fürt létrehozása előtt előzetes regisztrációra van szükség. A névjegyek a Microsofthoz, vagy a támogatási kérelem megnyitása a feliratkozási azonosítók regisztrálásához.
 
-## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Customer-Managed kulcs működése Azure Monitor
+## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Az ügyfél által felügyelt kulcs működése Azure Monitor
 
-Azure Monitor felügyelt identitást használ a Azure Key Vaulthoz való hozzáférés biztosításához. A fürt szintjén a Log Analytics-fürt identitása támogatott. Ha több munkaterületen szeretné engedélyezni Customer-Managed a kulcs védelmét, egy új Log Analytics *fürterőforrás* közbenső identitás-kapcsolatként működik a Key Vault és a log Analytics munkaterületek között. A fürt tárterülete a fürt erőforrásához társított felügyelt identitást használja a \' Azure Key Vault Azure Active Directory használatával történő hitelesítéséhez.  
+Azure Monitor felügyelt identitást használ a Azure Key Vaulthoz való hozzáférés biztosításához. A fürt szintjén a Log Analytics-fürt identitása támogatott. Az ügyfél által felügyelt kulcsok több munkaterületen való engedélyezéséhez az új Log Analytics *fürterőforrás* közbenső identitás-kapcsolatként működik a Key Vault és a log Analytics munkaterületek között. A fürt tárterülete a fürt erőforrásához társított felügyelt identitást használja a \' Azure Key Vault Azure Active Directory használatával történő hitelesítéséhez.  
 
 Az ügyfél által felügyelt kulcs konfigurálását követően a dedikált fürthöz kapcsolódó új betöltött adatmennyiségeket a kulcsával titkosítja a szolgáltatás. A munkaterületeket bármikor leválaszthatja a fürtből. A rendszer betölti az új adatait, és a Microsoft-kulccsal titkosítja Log Analytics a tárterületet, míg az új és a régi adatait zökkenőmentesen kérdezheti le.
 
 > [!IMPORTANT]
-> Customer-Managed kulcsfontosságú képesség a regionális. A Azure Key Vault, a fürtnek és a csatolt Log Analytics-munkaterületnek ugyanabban a régióban kell lennie, de különböző előfizetésekben lehet.
+> Az ügyfél által felügyelt kulcsfontosságú képesség a regionális. A Azure Key Vault, a fürtnek és a csatolt Log Analytics-munkaterületnek ugyanabban a régióban kell lennie, de különböző előfizetésekben lehet.
 
-![Customer-Managed kulcs áttekintése](media/customer-managed-keys/cmk-overview.png)
+![Ügyfél által felügyelt kulcs áttekintése](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. Log Analytics a Key Vault számára engedélyekkel rendelkező, felügyelt identitással rendelkező *fürterőforrás* – az identitást a dedikált log Analytics fürt tárterületére propagálja a rendszer.
@@ -54,7 +54,7 @@ Az ügyfél által felügyelt kulcs konfigurálását követően a dedikált fü
 
 A Storage adattitkosítása 3 típusú kulcsot vesz fel:
 
-- **KEK** – kulcs titkosítási kulcsa (Customer-Managed kulcs)
+- **KEK** – kulcs titkosítási kulcsa (az ügyfél által felügyelt kulcs)
 - **AEK** – fiók titkosítási kulcsa
 - **Adattitkosítási kulcsot** – adattitkosítási kulcs
 
@@ -75,7 +75,7 @@ A következő szabályok érvényesek:
 1. A fürt frissítése a kulcs-azonosító részleteivel
 1. Log Analytics-munkaterületek összekapcsolása
 
-Customer-Managed a kulcs konfigurálása nem támogatott Azure Portal jelenleg és a kiépítés a [PowerShell](/powershell/module/az.operationalinsights/), a [CLI](/cli/azure/monitor/log-analytics) vagy a [Rest](/rest/api/loganalytics/) -kérelmek használatával végezhető el.
+Az ügyfél által felügyelt kulcs konfigurációja nem támogatott Azure Portal jelenleg és a kiépítés a [PowerShell](/powershell/module/az.operationalinsights/), a [CLI](/cli/azure/monitor/log-analytics) vagy a [Rest](/rest/api/loganalytics/) -kérelmek használatával végezhető el.
 
 ### <a name="asynchronous-operations-and-status-check"></a>Aszinkron műveletek és állapot-ellenőrzések
 
@@ -125,7 +125,8 @@ Ezek a beállítások a CLI-n és a PowerShellen keresztül Key Vault frissíthe
 
 ## <a name="create-cluster"></a>Fürt létrehozása
 
-> [! INFORMATION] a fürtök két [felügyelt identitási típust](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)támogatnak. A rendszer által hozzárendelt felügyelt identitás a fürtön jön létre, amikor megadja az `SystemAssigned` identitás típusát, és ezt később is használhatja a Key Vaulthoz való hozzáférés biztosításához. Ha olyan fürtöt szeretne létrehozni, amely az ügyfél által felügyelt kulcs létrehozásához van konfigurálva, hozzon létre egy, a Key Vault által megadott, felhasználó által hozzárendelt felügyelt identitású fürtöt – frissítse a fürtöt az `UserAssigned` identitás típusával, az identitás erőforrás-azonosítóját a ben, `UserAssignedIdentities` és adja meg a legfontosabb adatait a következő helyen: `keyVaultProperties` .
+> [!NOTE]
+> A fürtök támogatják a két [felügyelt identitás típusát](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types), a rendszer által hozzárendelt és a felhasználó által hozzárendelt, amelyek a forgatókönyv alapján használhatók. A rendszer által hozzárendelt felügyelt identitás egyszerűbb, és automatikusan létrejön a fürt létrehozásakor, ha az identitást a `type` `SystemAssigned` --Ez az identitás később is használhatja a Key Vaulthoz való hozzáférés biztosításához. Ha létre kell hoznia egy, az ügyfél által felügyelt kulcs-konfigurációval rendelkező fürtöt a létrehozáskor, meg kell adnia egy kulcshoz definiált és felhasználó által hozzárendelt identitást, amelyet előzőleg a Key Vault adhat meg, majd létre kell hoznia az identitással rendelkező fürtöt `type` `UserAssigned` , az `UserAssignedIdentities` identitás és a kulcs adatainak erőforrás-azonosítójával `keyVaultProperties` .
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcs jelenleg nem adható meg felhasználó által kezelt felügyelt identitással, ha a Key Vault Private-Linkban (vNet) található. Ez a korlátozás nem vonatkozik a rendszer által hozzárendelt felügyelt identitásra.
@@ -254,20 +255,20 @@ A fürt tárolója rendszeres időközönként lekérdezi a Key Vault a titkosí
 
 ## <a name="key-rotation"></a>Kulcsrotálás
 
-Customer-Managed a kulcs elforgatásához explicit frissítést kell megadnia a fürthöz a Azure Key Vault új kulcsának verziójával. [A fürt frissítése a kulcs azonosítójának részleteivel](#update-cluster-with-key-identifier-details). Ha nem frissíti az új kulcs verzióját a fürtben, a Log Analytics fürt tárterülete továbbra is az előző kulcsot használja a titkosításhoz. Ha letiltja vagy törli a régi kulcsot, mielőtt frissíti az új kulcsot a fürtben, a [visszavonási](#key-revocation) állapotba kerül.
+Az ügyfél által felügyelt kulcs elforgatásához explicit frissítés szükséges a fürthöz a Azure Key Vault új kulcsának verziójával. [A fürt frissítése a kulcs azonosítójának részleteivel](#update-cluster-with-key-identifier-details). Ha nem frissíti az új kulcs verzióját a fürtben, a Log Analytics fürt tárterülete továbbra is az előző kulcsot használja a titkosításhoz. Ha letiltja vagy törli a régi kulcsot, mielőtt frissíti az új kulcsot a fürtben, a [visszavonási](#key-revocation) állapotba kerül.
 
 Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, mivel az adatai mindig titkosítva vannak a fiók titkosítási kulcsával (AEK), míg a AEK mostantól titkosítva van az új kulcs titkosítási kulcs (KEK) verziójával Key Vaultban.
 
-## <a name="customer-managed-key-for-queries"></a>Lekérdezések Customer-Managed kulcsa
+## <a name="customer-managed-key-for-queries"></a>Ügyfél által felügyelt kulcs lekérdezésekhez
 
-A Log Analyticsben használt lekérdezési nyelv kifejező, és bizalmas információkat tartalmazhat a lekérdezésekben vagy a lekérdezési szintaxisban hozzáadott megjegyzésekben. Egyes szervezetek megkövetelik, hogy az ilyen információk védelme Customer-Managed kulcsfontosságú házirend keretében történjen, és a kulcsával titkosított lekérdezéseket kell mentenie. A Azure Monitor lehetővé teszi, hogy a munkaterülethez való csatlakozáskor a saját kulcsával titkosított *mentett kereséseket* és *napló-riasztásokat* tartalmazó lekérdezéseket tárolja. 
+A Log Analyticsben használt lekérdezési nyelv kifejező, és bizalmas információkat tartalmazhat a lekérdezésekben vagy a lekérdezési szintaxisban hozzáadott megjegyzésekben. Egyes szervezetek megkövetelik, hogy az ilyen információk védelme az ügyfél által felügyelt kulcs házirendje alapján történjen, és a kulcsával titkosított lekérdezéseket kell mentenie. A Azure Monitor lehetővé teszi, hogy a munkaterülethez való csatlakozáskor a saját kulcsával titkosított *mentett kereséseket* és *napló-riasztásokat* tartalmazó lekérdezéseket tárolja. 
 
 > [!NOTE]
-> Log Analytics lekérdezések a használt forgatókönyvtől függően különböző áruházakban menthetők. A lekérdezések a következő helyzetekben titkosítva maradnak a Microsoft Key (MMK) szolgáltatással, függetlenül a Customer-Managed legfontosabb konfigurációtól: munkafüzetek Azure Monitor, Azure-irányítópultok, Azure Logic app, Azure Notebooks és Automation Runbookok.
+> Log Analytics lekérdezések a használt forgatókönyvtől függően különböző áruházakban menthetők. A lekérdezések a Microsoft Key (MMK) szolgáltatással is titkosítva maradnak a következő esetekben, függetlenül az ügyfél által felügyelt kulcs konfigurációjától: Azure Monitor, Azure-irányítópultok, Azure Logic app, Azure Notebooks és Automation Runbookok-munkafüzetek.
 
 Ha saját tárolót (BYOS) használ, és összekapcsolja azt a munkaterülettel, a szolgáltatás feltölti a *mentett-kereséseket* és a *log-riasztási* lekérdezéseket a Storage-fiókjába. Ez azt jelenti, hogy a Storage-fiókot és a [titkosítás-nyugalmi szabályzatot](../../storage/common/customer-managed-keys-overview.md) a log Analytics fürtben lévő adatok titkosításához használt kulcs vagy egy másik kulcs használatával szabályozhatja. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie. 
 
-**A lekérdezések Customer-Managed kulcsának beállítása előtt megfontolandó szempontok**
+**Az ügyfél által felügyelt kulcs lekérdezésekhez való beállítása előtt megfontolandó szempontok**
 * A munkaterület és a Storage-fiók "Write" engedélyekkel kell rendelkeznie
 * Győződjön meg arról, hogy a Storage-fiókot ugyanabban a régióban hozza létre, mint ahol a Log Analytics munkaterület található.
 * A tárolóban végzett *keresések* szolgáltatásbeli összetevőknek számítanak, és a formátumuk változhat
@@ -385,7 +386,7 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
 
 ## <a name="limitations-and-constraints"></a>Korlátozások és megkötések
 
-- A Customer-Managed kulcs támogatott a dedikált Log Analytics-fürtön, és alkalmas az olyan ügyfelek számára, akik naponta 1 TB-ot küldenek.
+- Az ügyfél által felügyelt kulcs támogatott a dedikált Log Analytics-fürtön, és alkalmas az olyan ügyfelek számára, akik napi 1 TB-ot küldenek.
 
 - A fürt maximális száma régiónként és az előfizetés 2
 
@@ -395,7 +396,7 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
 
 - A fürtre mutató hivatkozás csak akkor hajtható végre, ha meggyőződött arról, hogy a Log Analytics-fürt üzembe helyezése befejeződött. A rendszer eldobta a munkaterületre a befejezés előtt elküldett adatait, és nem lesz helyreállítható.
 
-- Customer-Managed a kulcs titkosítása a konfigurációs idő után az újonnan betöltött adatmennyiségre vonatkozik. A konfiguráció előtt betöltött adatmennyiség továbbra is titkosítva marad a Microsoft-kulccsal. A Customer-Managed kulcs konfigurálása zökkenőmentesen és után is lekérdezhető az adatfeldolgozás során.
+- Az ügyfél által felügyelt kulcs titkosítása a konfigurációs idő után az újonnan betöltött adatmennyiségre vonatkozik. A konfiguráció előtt betöltött adatmennyiség továbbra is titkosítva marad a Microsoft-kulccsal. Az ügyfél által felügyelt kulcsok zökkenőmentes konfigurálása előtt és után lekérdezheti az adatmennyiséget.
 
 - A Azure Key Vault helyreállítható kell konfigurálni. Ezek a tulajdonságok alapértelmezés szerint nincsenek engedélyezve, és a CLI vagy a PowerShell használatával kell konfigurálni:<br>
   - [Helyreállítható törlés](../../key-vault/general/soft-delete-overview.md)
@@ -424,7 +425,7 @@ A Customer-Managed kulcs dedikált fürtön van megadva, és ezek a műveletek [
     
   - Átmeneti kapcsolódási hibák – a tároló átmeneti hibákat (időtúllépések, kapcsolódási hibák, DNS-problémák) biztosít, mivel a kulcsok rövid ideig nem maradhatnak a gyorsítótárban, és ez a rendelkezésre állásban lévő kisméretű rendszerállapot-visszaírásokat eredményezi. A lekérdezési és a betöltési képességek megszakítás nélkül folytatódnak.
     
-  - Élő webhely – a körülbelül 30 perces leállása miatt a Storage-fiók elérhetetlenné válik. A lekérdezési képesség nem érhető el, és a rendszer az adatvesztés elkerülése érdekében a Microsoft Key használatával több órán keresztül gyorsítótárazza az adatmennyiséget. Ha a rendszer visszaállítja a Key Vault, a lekérdezés elérhetővé válik, és az ideiglenes gyorsítótárazott adatot a rendszer betölti az adattárba, és titkosítja Customer-Managed kulccsal.
+  - Élő webhely – a körülbelül 30 perces leállása miatt a Storage-fiók elérhetetlenné válik. A lekérdezési képesség nem érhető el, és a rendszer az adatvesztés elkerülése érdekében a Microsoft Key használatával több órán keresztül gyorsítótárazza az adatmennyiséget. Ha a rendszer visszaállítja a Key Vault, a lekérdezés elérhetővé válik, és az ideiglenes gyorsítótárazott adatot az adattárba tölti be, és az ügyfél által felügyelt kulccsal titkosítja.
 
   - Key Vault hozzáférési arány – a Azure Monitor Storage Key Vault a becsomagolási és a kicsomagolási műveletekhez való hozzáférésének gyakorisága 6 – 60 másodperc.
 

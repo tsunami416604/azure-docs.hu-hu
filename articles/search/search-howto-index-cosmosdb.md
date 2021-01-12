@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: be7c6ec9dbc577143e6c7219580f42c876f536bc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 563edae0292062e1ed7f216c69aeeb84ef0fa7a8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499968"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119475"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB-adatok indexelése indexelővel az Azure Cognitive Searchben 
 
@@ -137,7 +137,7 @@ A cikk korábbi részeiben már említettük, hogy [Azure Cosmos db indexelés](
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – bemenetek összegyűjtése a kérelemhez
 
-Minden kérelem esetében meg kell adnia a szolgáltatás nevét és a rendszergazdai kulcsot az Azure Cognitive Search (a POST fejlécben), valamint a blob Storage-hoz tartozó Storage-fiók nevét és kulcsát. A [Poster vagy a Visual Studio Code](search-get-started-rest.md) használatával http-kéréseket küldhet az Azure Cognitive Searchnak.
+Minden kérelem esetében meg kell adnia a szolgáltatás nevét és a rendszergazdai kulcsot az Azure Cognitive Search (a POST fejlécben), valamint a blob Storage-hoz tartozó Storage-fiók nevét és kulcsát. A [Poster](search-get-started-rest.md) vagy a [Visual Studio Code](search-get-started-vs-code.md) használatával http-kéréseket küldhet az Azure Cognitive Searchnak.
 
 Másolja a következő négy értéket a Jegyzettömbbe, hogy beillessze őket egy kérelembe:
 
@@ -389,7 +389,7 @@ Az alábbi példa egy olyan adatforrást hoz létre, amely egy törlési szabál
     }
 ```
 
-## <a name="next-steps"></a><a name="NextSteps"></a>További lépések
+## <a name="next-steps"></a><a name="NextSteps"></a>Következő lépések
 
 Gratulálunk! Megtanulta, hogyan integrálhatja Azure Cosmos DB az Azure Cognitive Search indexelő használatával.
 

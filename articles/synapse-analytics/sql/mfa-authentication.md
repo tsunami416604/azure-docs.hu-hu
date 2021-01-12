@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: fb8aad52eeaef2366afe28aa71059b7f8f780501
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 511d5841652b1f7b6487a42341ec392cb86d2b3a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843298"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120376"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-Factor HRE-hitelesítés használata a szinapszis SQL-sel (SSMS-támogatás az MFA-hoz)
 
@@ -44,7 +44,7 @@ Az interaktív módszer az, hogy az Azure AD Multi-Factor Authentication (MFA) i
 
 - `Active Directory - Universal with MFA`
 
-Az Azure AD MFA segít megőrizni az adathozzáférést és az alkalmazásokat, miközben egy egyszerű bejelentkezési folyamatra vonatkozó felhasználói igényeket is kielégít. Erős hitelesítést biztosít számos egyszerű ellenőrzési lehetőséggel (telefonhívás, szöveges üzenet, PIN-kóddal ellátott intelligens kártyák vagy mobil alkalmazások értesítése), így a felhasználók kiválaszthatják a kívánt módszert. Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti.
+Az Azure AD MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáférésekkel szemben, miközben a felhasználói igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát teszi lehetővé. Erős hitelesítést biztosít számos egyszerű ellenőrzési lehetőséggel (telefonhívás, szöveges üzenet, PIN-kóddal ellátott intelligens kártyák vagy mobil alkalmazások értesítése), így a felhasználók kiválaszthatják a kívánt módszert. Az interaktív MFA az Azure AD-vel az ellenőrzés előugró párbeszédpanelét eredményezheti.
 
 Multi-Factor Authentication leírását itt tekintheti meg: [multi-Factor Authentication](../../active-directory/authentication//concept-mfa-howitworks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
@@ -71,7 +71,7 @@ Ha a SSMS 18. x vagy újabb verzióját futtatja, akkor az AD-tartománynév vag
    ![MFA-bérlő – SSMS](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD Business – üzleti támogatás   
-Az Azure ad B2B-forgatókönyvek vendég felhasználói számára támogatott Azure AD-felhasználók (lásd: [Mi az az Azure B2B-együttműködés](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a szinapszis SQL-hez való kapcsolódáshoz csak az aktuális Azure ad-ben létrehozott csoport tagjainak részeként, és az adott adatbázisban lévő Transact-SQL-utasítás használatával van leképezve manuálisan `CREATE USER` . 
+Az Azure ad B2B-forgatókönyvek vendég felhasználói számára támogatott Azure AD-felhasználók (lásd: [Mi az az Azure B2B-együttműködés](../../active-directory/external-identities/what-is-b2b.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) a szinapszis SQL-hez való kapcsolódáshoz csak az aktuális Azure ad-ben létrehozott csoport tagjainak részeként, és az adott adatbázisban lévő Transact-SQL-utasítás használatával van leképezve manuálisan `CREATE USER` . 
 
 Ha például `steve@gmail.com` meghívja az Azure ad-t `contosotest` (az Azure ad-tartománnyal `contosotest.onmicrosoft.com` ), egy Azure ad-csoportot, például a `usergroup` tagot tartalmazó Azure ad-ben kell létrehoznia `steve@gmail.com` . Ezután ezt a csoportot egy Transact-SQL-utasítás végrehajtásával létre kell hozni egy adott adatbázishoz (azaz MyDatabase) az Azure AD SQL-rendszergazda vagy az Azure AD DBO `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` . 
 
@@ -92,5 +92,4 @@ Vendég felhasználóként `steve@gmail.com` jelölje be a jelölőnégyzetet, �
 - Az univerzális hitelesítés Active Directory-hitelesítési tár (ADAL) verziója frissítve lett a legújabb ADAL.dll 3.13.9 elérhető verzióra. Lásd: [Active Directory-hitelesítési tár 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
 ## <a name="next-steps"></a>Következő lépések
-További információ: [Kapcsolódás a SZINAPSZIS sqlhoz SQL Server Management Studio](get-started-ssms.md) cikkel. 
-
+További információ: [Kapcsolódás a SZINAPSZIS sqlhoz SQL Server Management Studio](get-started-ssms.md) cikkel.

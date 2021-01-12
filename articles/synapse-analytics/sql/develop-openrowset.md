@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7e7dce7ec4b8d4d55e734487595bb330e97ab18b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446676"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120444"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -171,7 +171,7 @@ WITH (
 )
 ```
 
-json_path = [JSON-elérésiút kifejezése](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) oszlopra vagy beágyazott tulajdonságra. Az alapértelmezett [elérésiút-mód](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) a LAX.
+json_path = [JSON-elérésiút kifejezése](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) oszlopra vagy beágyazott tulajdonságra. Az alapértelmezett [elérésiút-mód](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) a LAX.
 
 > [!NOTE]
 > A szigorú módú lekérdezés sikertelen lesz, ha a megadott elérési út nem létezik. A LAX mód lekérdezése sikeres lesz, és a JSON Path kifejezés kiértékelése NULL értékre történik.
@@ -371,7 +371,7 @@ WITH (
 
 ### <a name="specify-columns-using-json-paths"></a>Oszlopok megadása JSON-elérési utak használatával
 
-Az alábbi példa bemutatja, hogyan használhatja a [JSON elérésiút-kifejezéseket](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) a with záradékban, és különbséget mutat a szigorú és a LAX elérésiút-módok között: 
+Az alábbi példa bemutatja, hogyan használhatja a [JSON elérésiút-kifejezéseket](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) a with záradékban, és különbséget mutat a szigorú és a LAX elérésiút-módok között: 
 
 ```sql
 SELECT 
@@ -395,6 +395,6 @@ WITH (
 AS [r]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. [Ajánlott eljárások](best-practices-sql-on-demand.md) az optimális teljesítmény eléréséhez. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

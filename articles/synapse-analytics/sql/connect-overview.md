@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ff2d9708642c347a829de290d45849d8629807f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f0c762d0f12f11cb4eef23b55fccb5b7c2a274d3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462357"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118217"
 ---
 # <a name="connect-to-synapse-sql"></a>Kapcsolódás a szinapszis SQL-hez
 Kapcsolódjon a szinapszis SQL-képességhez az Azure szinapszis Analytics szolgáltatásban.
@@ -51,7 +51,7 @@ A teljes kiszolgálónév lekérdezése:
 ![Teljes kiszolgálónév kiszolgáló nélküli SQL-készlete](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Támogatott illesztők és kapcsolati sztringek
-A szinapszis SQL támogatja a [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), az [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), a [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)és a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)használatát. A legújabb verzió és dokumentáció megkereséséhez válasszon egyet az előző illesztőprogramok közül. Ha az illesztőprogramhoz tartozó kapcsolati karakterláncot szeretné automatikusan létrehozni a Azure Portalból, válassza az előző példában az **adatbázis-kapcsolati karakterláncok megjelenítése** lehetőséget. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
+A szinapszis SQL támogatja a [ADO.net](/dotnet/framework/data/adonet/), az [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows), a [php](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396)és a [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)használatát. A legújabb verzió és dokumentáció megkereséséhez válasszon egyet az előző illesztőprogramok közül. Ha az illesztőprogramhoz tartozó kapcsolati karakterláncot szeretné automatikusan létrehozni a Azure Portalból, válassza az előző példában az **adatbázis-kapcsolati karakterláncok megjelenítése** lehetőséget. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
 
 > [!NOTE]
 > Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.
@@ -94,5 +94,5 @@ A szinapszis SQL bizonyos beállításokat a kapcsolatok és az objektumok létr
 
 A kiszolgáló nélküli **SQL Pool** -lekérdezések végrehajtásához a javasolt eszközök a [Azure Data Studio](get-started-azure-data-studio.md) és az Azure szinapszis Studio.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [hitelesítés a SZINAPSZIS SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-hez.

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f398f80e4e283f971e0d947d0dda131e12fe88a7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446576"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120393"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Külső tárterület elérése kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 A táblázat olvasására jogosult felhasználók külső fájlokat is elérhet az Azure Storage-mappák és-fájlok készletén létrehozott külső tábla használatával.
 
-A [külső tábla létrehozásához szükséges engedélyekkel](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true) rendelkező felhasználó (például CREATE TABLE és a hitelesítő adatok vagy az adatbázis HATÓKÖRű HITELESÍTŐ adatainak módosítása) a következő parancsfájllal hozhat létre táblázatot az Azure Storage-adatforráson:
+A [külső tábla létrehozásához szükséges engedélyekkel](/sql/t-sql/statements/create-external-table-transact-sql?preserve-view=true&view=sql-server-ver15#permissions) rendelkező felhasználó (például CREATE TABLE és a hitelesítő adatok vagy az adatbázis HATÓKÖRű HITELESÍTŐ adatainak módosítása) a következő parancsfájllal hozhat létre táblázatot az Azure Storage-adatforráson:
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
@@ -188,7 +188,7 @@ A következő táblázat a fent felsorolt műveletekhez szükséges engedélyeke
 | KIVÁLASZTÁS KÜLSŐ TÁBLÁBÓL | `SELECT TABLE` és `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CETAS | Tábla létrehozása:, `CREATE TABLE` , `ALTER ANY SCHEMA` `ALTER ANY DATA SOURCE` , és `ALTER ANY EXTERNAL FILE FORMAT` . Az adat olvasása: `ADMINISTER BULK OPERATIONS` vagy a `REFERENCES CREDENTIAL` `SELECT TABLE` lekérdezés + R/W engedélyének minden táblája/nézete/funkciója a Storage-ban |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 

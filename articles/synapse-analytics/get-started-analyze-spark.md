@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 2c526d25fed169f702a3786a17717de3cf4dc6af
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 3b5f5d64498922e9fc35942ff4570d801aa6c516
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059024"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118880"
 ---
 # <a name="analyze-with-apache-spark"></a>Elemzés a Apache Spark
 
@@ -61,6 +61,7 @@ Az adattábla a **SQLPOOL1** egyik táblájában érhető el. Töltse be egy **n
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 
+1. Válassza a **Futtatás** lehetőséget a cellában.
 1. Az **adatközpontban** kattintson a jobb gombbal az **adatbázisok** elemre, majd válassza a **frissítés** lehetőséget. Ezeket az adatbázisokat kell látnia:
 
     - **SQLPOOL1 (SQL)**
@@ -109,7 +110,7 @@ val df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
 df.write.sqlanalytics("SQLPOOL1.dbo.PassengerCountStats", Constants.INTERNAL )
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az adatelemzés kiszolgáló nélküli SQL-készlettel](get-started-analyze-sql-on-demand.md)

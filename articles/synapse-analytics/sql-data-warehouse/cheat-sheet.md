@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a75e1fb5b250be1004195d3a77301c73eac94b02
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043557"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120223"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>A dedikált SQL Pool (korábban SQL DW) Azure szinapszis analitikus
 
@@ -46,7 +46,7 @@ Először töltse be az adatait [Azure Data Lake Storageba](../../data-factory/c
 | Particionálás | Nincs |
 | Erőforrásosztály | largerc vagy xlargerc |
 
-Itt további információkat tudhat meg az [adatok migrálásáról](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), az [adatok betöltéséről](design-elt-data-loading.md) és a [kinyerési, betöltési és átalakítási (ELT) folyamatról](design-elt-data-loading.md).
+Itt további információkat tudhat meg az [adatok migrálásáról](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice), az [adatok betöltéséről](design-elt-data-loading.md) és a [kinyerési, betöltési és átalakítási (ELT) folyamatról](design-elt-data-loading.md).
 
 ## <a name="distributed-or-replicated-tables"></a>Elosztott vagy replikált táblák
 
@@ -137,7 +137,7 @@ Az Azure Functions használatával mostantól bármikor használhatja az automat
 
 Küllős architektúra esetén az SQL Database és az Azure Analysis Services használatát javasoljuk. Ez a megoldás a munkaterhelések elkülönítését biztosítja a különböző felhasználói csoportok között, és az SQL Database és az Azure Analysis Services speciális biztonsági funkcióinak használatát teszi lehetővé. Emellett ezzel a módszerrel korlátlan párhuzamos működést biztosíthat a felhasználók számára.
 
-Ismerkedjen meg a [tipikus architektúrákkal, amelyek kihasználják a DEDIKÁLT SQL-készlet (korábban SQL DW) előnyeit az Azure szinapszis Analytics szolgáltatásban](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Ismerkedjen meg a [tipikus architektúrákkal, amelyek kihasználják a DEDIKÁLT SQL-készlet (korábban SQL DW) előnyeit az Azure szinapszis Analytics szolgáltatásban](/archive/blogs/sqlcat/common-isv-application-patterns-using-azure-sql-data-warehouse).
 
 Egyetlen kattintással üzembe helyezheti az SQL-adatbázisokat a dedikált SQL-készletből (korábban SQL DW):
 

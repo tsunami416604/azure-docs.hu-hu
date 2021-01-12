@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1217cf74ab36a8fe865e47009616b1ccb240df67
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462405"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119883"
 ---
 # <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -111,7 +111,7 @@ Adatbázis létrehozásához a felhasználónak egy Azure Active Directory felha
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Adja hozzá az új felhasználót a **DBManager** adatbázis-szerepkörhöz a `master` [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) eljárás használatával (vegye figyelembe, hogy az [Alter role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás nem támogatott az SQL kiépített verziójában). Mintautasítások:
+4. Adja hozzá az új felhasználót a **DBManager** adatbázis-szerepkörhöz a `master` [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) eljárás használatával (vegye figyelembe, hogy az [Alter role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás nem támogatott az SQL kiépített verziójában). Mintautasítások:
 
    ```sql
    EXEC sp_addrolemember 'dbmanager', 'Mary'; 
@@ -133,7 +133,7 @@ A másik rendszergazdai szerepkör a bejelentkezéskezelői szerepkör. Ezen sze
 
 ## <a name="non-administrator-users"></a>Nem rendszergazdai felhasználók
 
-Általában a nem rendszergazdai fiókoknak nincs szükségük a Master adatbázis elérésére. Hozzon létre tartalmazottadatbázis-felhasználókat az adatbázis szintjén a [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) utasítással. 
+Általában a nem rendszergazdai fiókoknak nincs szükségük a Master adatbázis elérésére. Hozzon létre tartalmazottadatbázis-felhasználókat az adatbázis szintjén a [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) utasítással. 
 
 A felhasználó Azure Active Directory-hitelesítésű tartalmazottadatbázis-felhasználó lehet (ha az Azure AD-hitelesítéshez konfigurálta a környezetét), vagy egy SQL Server-hitelesítésű tartalmazottadatbázis-felhasználó, illetve egy SQL Server-hitelesítésű felhasználó, az SQL Server-hitelesítési bejelentkezéstől függően (amelyet az előző lépésben hozott létre).  
 
@@ -191,7 +191,7 @@ Az adatbázis-szerepkörök lehetnek beépített szerepkörök, mint például a
 
 A **db_datareader** rögzített adatbázis-szerepkör csak olvasási hozzáférést biztosít az adatbázis minden táblájához, ami általában több a feltétlenül szükségesnél. 
 
-Sokkal jobb, ha a [create role](https://msdn.microsoft.com/library/ms187936.aspx) utasítással saját felhasználó által definiált adatbázis-szerepköröket hoz létre, és minden szerepkört körültekintően biztosít az üzleti igényeknek leginkább megfelelő engedélyekhez. Ha a felhasználó egyszerre több szerepkörnek is tagja, akkor a rendszer összesíti az engedélyeket.
+Sokkal jobb, ha a [create role](/sql/t-sql/statements/create-role-transact-sql) utasítással saját felhasználó által definiált adatbázis-szerepköröket hoz létre, és minden szerepkört körültekintően biztosít az üzleti igényeknek leginkább megfelelő engedélyekhez. Ha a felhasználó egyszerre több szerepkörnek is tagja, akkor a rendszer összesíti az engedélyeket.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -199,7 +199,7 @@ Az SQL Database-ben több mint 100 engedély adható vagy tagadható meg külön
 
 Az engedélyek beágyazott jellege és száma miatt lehetséges, hogy alapos tervezés szükséges az adatbázis megfelelő védelmét biztosító engedélyrendszer kialakításához. 
 
-Kezdje az [Engedélyek (Adatbázismotor)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) szakaszban felsorolt engedélyek listájával, majd tekintse át az engedélyek [poszterméretű ábráját](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png).
+Kezdje az [Engedélyek (Adatbázismotor)](/sql/relational-databases/security/permissions-database-engine) szakaszban felsorolt engedélyek listájával, majd tekintse át az engedélyek [poszterméretű ábráját](/sql/relational-databases/security/media/database-engine-permissions.png).
 
 ### <a name="considerations-and-restrictions"></a>Megfontolandó szempontok és korlátozások
 
@@ -234,7 +234,6 @@ A SQL Database-beli bejelentkezések és felhasználók kezelésekor vegye figye
 - A `CREATE/ALTER/DROP` utasítás használatához a felhasználónak `ALTER ANY USER` engedéllyel kell rendelkeznie az adatbázisban.
 - Ha az adatbázis-szerepkör tulajdonosa szeretne hozzáadni vagy eltávolítani egy felhasználót az adott szerepkörből, akkor a következő hiba léphet fel: **A „Név” felhasználó vagy szerepkör nem található ebben az adatbázisban.** Ez a hiba azért fordul elő, mert a felhasználó nem látható a tulajdonos számára. A probléma megoldása érdekében ruházza fel a szerepkör tulajdonosát a `VIEW DEFINITION` engedéllyel. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](https://msdn.microsoft.com/library/ff929188.aspx) cikkben talál.
- 
+További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](/sql/relational-databases/security/contained-database-users-making-your-database-portable) cikkben talál.

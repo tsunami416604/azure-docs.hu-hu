@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9802e6553d553aae4f13194dc9951d1a17af6f66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b17e47463ef3fe9a2cc959364825451468266f0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462886"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120019"
 ---
 # <a name="best-practices-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Ajánlott eljárások a dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben
 
@@ -74,7 +74,7 @@ A Azure Data Factory támogatja a alapszintű terheléseket is, és a CTAS hason
 > [!NOTE]
 > A gzip szövegfájlok használatakor az átviteli sebesség maximalizálása érdekében bontsa a fájlokat 60 vagy több fájlba, hogy maximalizálja a terhelés párhuzamosságát.  A gyorsabb teljes átviteli teljesítmény érdekében érdemes lehet egy időben betölteni az adatokat.
 
-Lásd még: [adatok betöltése](design-elt-data-loading.md), [útmutató a (z) alapszintű](guidance-for-loading-data.md), [dedikált SQL Pool-betöltési minták és stratégiák](https://blogs.msdn.microsoft.com/sqlcat/20../../)használatához, [adatok betöltése Azure Data FACTORYSAL]( ../../data-factory/load-azure-sql-data-warehouse.md), [adatok áthelyezése Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), [külső fájlformátum létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), és [CREATE TABLE as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
+Lásd még: [adatok betöltése](design-elt-data-loading.md), [útmutató a (z) alapszintű](guidance-for-loading-data.md), [dedikált SQL Pool-betöltési minták és stratégiák](/archive/blogs/sqlcat/)használatához, [adatok betöltése Azure Data FACTORYSAL]( ../../data-factory/load-azure-sql-data-warehouse.md), [adatok áthelyezése Azure Data Factory](../../data-factory/transform-data-using-machine-learning.md), [külső fájlformátum létrehozása](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), és [CREATE TABLE as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="load-then-query-external-tables"></a>Betöltés, majd külső táblák lekérdezése
 
@@ -97,7 +97,7 @@ Ha például van egy rendelésazonosító alapján elosztott rendelési tábláj
 
 A terjesztési oszlopok kiválasztásával kapcsolatos további részletekért tekintse meg a következő hivatkozásokat, valamint azt, hogyan határozhat meg elosztott táblát a CREATE TABLE utasítás WITH záradékában.
 
-Lásd még: [táblák áttekintése](sql-data-warehouse-tables-overview.md), [tábla eloszlása](sql-data-warehouse-tables-distribute.md), a [táblázatok terjesztésének kiválasztása](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [CREATE TABLE a kiválasztás lehetőséggel](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Lásd még: [táblák áttekintése](sql-data-warehouse-tables-overview.md), [tábla eloszlása](sql-data-warehouse-tables-distribute.md), a [táblázatok terjesztésének kiválasztása](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [CREATE TABLE a kiválasztás lehetőséggel](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="do-not-over-partition"></a>Túl sok partíció használatának kerülése
 
@@ -180,7 +180,7 @@ Lásd még: [erőforrás-osztályok a számítási feladatok kezeléséhez](reso
 
 Lásd még az általános problémákat és megoldásokat tartalmazó, [hibaelhárítással](sql-data-warehouse-troubleshoot.md) foglalkozó témakört.
 
-Ha nem találta meg, amit ebben a cikkben keres, próbálkozzon az oldal bal oldalán található "dokumentumok keresése" kifejezéssel az összes Azure szinapszis-dokumentum kereséséhez.  A [Microsoft Q&az Azure szinapszis-hoz kapcsolódó kérdés oldalának](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) célja, hogy kérdéseket tegyenek fel más felhasználók és az Azure szinapszis-termékcsoportra. Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
+Ha nem találta meg, amit ebben a cikkben keres, próbálkozzon az oldal bal oldalán található "dokumentumok keresése" kifejezéssel az összes Azure szinapszis-dokumentum kereséséhez.  A [Microsoft Q&az Azure szinapszis-hoz kapcsolódó kérdés oldalának](/answers/topics/azure-synapse-analytics.html) célja, hogy kérdéseket tegyenek fel más felhasználók és az Azure szinapszis-termékcsoportra. Aktívan figyeljük ezt a fórumot, és gondoskodunk róla, hogy tőlünk vagy egy másik felhasználótól választ kapjon a kérdéseire.  
 
 Ha szeretne kérdéseket feltenni a Stack Overflowre, akkor egy [Azure szinapszis stack overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)is rendelkezésre áll.
 

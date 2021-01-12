@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
-ms.translationtype: HT
+ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746728"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120410"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -24,7 +24,7 @@ A kiszolgáló nélküli SQL-készlet lekérdezése közvetlenül az Azure Stora
 
 Ez a cikk ismerteti a használható hitelesítő adatok típusait, valamint azt, hogy az SQL és az Azure AD-felhasználók hogyan használják a hitelesítő adatokat.
 
-## <a name="supported-storage-authorization-types"></a>Támogatott tárolási engedélyezési típusok
+## <a name="supported-storage-authorization-types"></a>Támogatott tárterület-engedélyezési típusok
 
 A kiszolgáló nélküli SQL-készletbe bejelentkezett felhasználók számára engedélyezni kell az Azure Storage-ban tárolt fájlok elérését és lekérdezését, ha a fájlok nyilvánosan nem érhetők el. Három engedélyezési típust használhat a nem nyilvános tár – [felhasználói identitás](?tabs=user-identity), [közös hozzáférésű aláírás](?tabs=shared-access-signature)és [felügyelt identitás](?tabs=managed-identity)eléréséhez.
 
@@ -63,7 +63,7 @@ Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket k
 
 ### <a name="anonymous-access"></a>[Névtelen hozzáférés](#tab/public-access)
 
-A [névtelen hozzáférést engedélyező](/azure/storage/blobs/storage-manage-access-to-resources)Azure Storage-fiókokban elhelyezett, nyilvánosan elérhető fájlokat is elérheti.
+A [névtelen hozzáférést engedélyező](../../storage/blobs/anonymous-read-access-configure.md)Azure Storage-fiókokban elhelyezett, nyilvánosan elérhető fájlokat is elérheti.
 
 ---
 
@@ -90,7 +90,7 @@ Az engedélyezési és az Azure Storage-típusok következő kombinációit hasz
 \* Az SAS-token és az Azure AD-identitás használható a tűzfallal védett tárolók eléréséhez.
 
 
-### <a name="querying-firewall-protected-storage"></a>Tűzfal által védett tároló lekérdezése
+### <a name="querying-firewall-protected-storage"></a>Tűzfal által védett tárterület lekérdezése
 
 A tűzfallal védett tárolók eléréséhez használhatja a **felhasználói identitást** vagy a **felügyelt identitást**.
 
@@ -101,7 +101,7 @@ A tűzfallal védett tárhely felhasználói identitáson keresztüli elérésé
 
 Az alábbi lépéseket követve konfigurálja a Storage-fiók tűzfalát, és vegyen fel egy kivételt a szinapszis-munkaterületre.
 
-1. A PowerShell megnyitása vagy a [PowerShell telepítése](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+1. A PowerShell megnyitása vagy a [PowerShell telepítése](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
 2. Telepítse a frissített az. Storage-modul: 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
@@ -187,7 +187,7 @@ A kiszolgáló szintű HITELESÍTő adatok nevének meg kell egyeznie a Storage-
 | Külső adatforrás       | Előtag | Storage-fiók elérési útja                                |
 | -------------------------- | ------ | --------------------------------------------------- |
 | Azure Blob Storage         | https  | <storage_account>. blob.core.windows.net             |
-| 1. generációs Azure Data Lake Storage | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Storage Gen1 | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
 | 2\. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
 
 A kiszolgáló-hatókörű hitelesítő adatok lehetővé teszik az Azure Storage elérését a következő hitelesítési típusok használatával:
@@ -376,7 +376,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE 
 GO
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alább felsorolt cikkek segítenek megismerni a különböző típusú mappák, fájltípusok és a nézetek létrehozásának és használatának a lekérdezését:
 

@@ -11,18 +11,31 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 8734247a913bdf6a44a9156f6f87705b618f7228
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3f0cf3de4c2cffca6540fcd727872372103ac98f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632889"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118251"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Megosztott, saját üzemeltetésű integrációs modul létrehozása Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez az útmutató bemutatja, hogyan hozhat létre megosztott, saját üzemeltetésű integrációs modult Azure Data Factoryban. Ezt követően használhatja a megosztott saját üzemeltetésű integrációs modult egy másik adatgyárban.
+
+## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Megosztott, saját üzemeltetésű integrációs modul létrehozása Azure Data Factory
+
+Újra felhasználhatja a meglévő, saját üzemeltetésű integrációs modul infrastruktúráját, amelyet már beállított egy adatelőállítóban. Ez az újbóli használat lehetővé teszi, hogy egy másik adatelőállítóban hozzon létre egy társított, saját üzemeltetésű integrációs modult egy meglévő megosztott, saját üzemeltetésű IR-re hivatkozva.
+
+A funkció bevezetésének és bemutatásának megtekintéséhez tekintse meg a következő 12 perces videót:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
+
+### <a name="terminology"></a>Terminológia
+
+- **Megosztott IR**: egy eredeti, saját üzemeltetésű IR, amely fizikai infrastruktúrán fut.  
+- **Csatolt IR**: olyan IR, amely egy másik megosztott IR-re hivatkozik. A társított IR logikai IR, és egy másik megosztott, saját üzemeltetésű IR infrastruktúrát használ.
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Megosztott saját üzemeltetésű integrációs modul létrehozása Azure Data Factory felhasználói felület használatával
 
@@ -55,9 +68,9 @@ Ha Azure PowerShell használatával szeretné létrehozni a megosztott saját ü
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-előfizetés** . Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt. 
+- **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt. 
 
-- **Azure PowerShell** . Kövesse a következő témakör utasításait: [Install Azure PowerShell for Windows with PowerShellGet](/powershell/azure/install-az-ps). A PowerShell használatával parancsfájlt futtathat egy olyan saját üzemeltetésű integrációs modul létrehozásához, amely más adatgyárakkal is megosztható. 
+- **Azure PowerShell**. Kövesse a következő témakör utasításait: [Install Azure PowerShell for Windows with PowerShellGet](/powershell/azure/install-az-ps). A PowerShell használatával parancsfájlt futtathat egy olyan saját üzemeltetésű integrációs modul létrehozásához, amely más adatgyárakkal is megosztható. 
 
 > [!NOTE]  
 > Azon Azure-régiók listáját, amelyekben a Data Factory jelenleg elérhető, válassza ki azokat a régiókat, amelyek érdeklik a  [régiókban elérhető termékeken](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
@@ -66,7 +79,7 @@ Ha Azure PowerShell használatával szeretné létrehozni a megosztott saját ü
 
 1. Indítsa el a Windows PowerShell integrált parancsfájlkezelési környezetet (ISE).
 
-1. Hozzon létre változókat. Másolja és illessze be az alábbi szkriptet. Cserélje le a változókat (például **SubscriptionName** és **ResourceGroupName** ) a tényleges értékekkel: 
+1. Hozzon létre változókat. Másolja és illessze be az alábbi szkriptet. Cserélje le a változókat (például **SubscriptionName** és **ResourceGroupName**) a tényleges értékekkel: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -213,6 +226,37 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -Links `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
+
+### <a name="monitoring"></a>Figyelés
+
+#### <a name="shared-ir"></a>Megosztott IR
+
+![Megosztott integrációs modul megtalálására szolgáló kijelölések](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+
+![Megosztott integrációs modul figyelése](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+
+#### <a name="linked-ir"></a>Csatolt IR
+
+![A társított integrációs modul megtalálására szolgáló kijelölések](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+
+![Csatolt integrációs modul figyelése](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+
+
+### <a name="known-limitations-of-self-hosted-ir-sharing"></a>A saját üzemeltetésű IR-megosztás ismert korlátai
+
+* A kapcsolódó IR-t létrehozó adatelőállítónak [felügyelt identitással](../active-directory/managed-identities-azure-resources/overview.md)kell rendelkeznie. Alapértelmezés szerint a Azure Portal-vagy PowerShell-parancsmagokban létrehozott adatfeldolgozók implicit módon létrehozott felügyelt identitással rendelkeznek. Ha azonban egy Azure Resource Manager sablon vagy SDK használatával hoz létre egy adatelőállítót, explicit módon be kell állítania az **Identity** tulajdonságot. Ezzel a beállítással biztosíthatja, hogy a Resource Manager létrehoz egy felügyelt identitást tartalmazó adatelőállítót.
+
+* A szolgáltatást támogató Data Factory .NET SDK-nak a 1.1.0 vagy újabb verziónak kell lennie.
+
+* Az engedély megadásához szüksége lesz a tulajdonos szerepkörre vagy az örökölt tulajdonosi szerepkörre abban az adat-előállítóban, ahol a megosztott IR létezik.
+
+* A megosztási funkció csak az azonos Azure AD-bérlőn belüli adatelőállítók esetében működik.
+
+* Az Azure AD [vendég felhasználói](../active-directory/governance/manage-guest-access-with-access-reviews.md)számára a felhasználói felületen található keresési funkció, amely egy keresési kulcsszó használatával listázza az összes adat-előállítót, nem működik. Ha azonban a vendég felhasználó az adat-előállító tulajdonosa, a keresési funkció nélkül is megoszthatja az IR-t. Annak az adatelőállítónak a felügyelt identitásához, amelynek meg kell osztania az IR-t, írja be a felügyelt identitást az **engedélyek kiosztása** mezőbe, és válassza a **hozzáadás** lehetőséget a Data Factory felhasználói felületen.
+
+  > [!NOTE]
+  > Ez a funkció csak Data Factory v2-ben érhető el.
+
 
 ### <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 254e07d5a3266927c9677107772b4ac2dbfd2ce0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b033fd9c0a7f752cf08d6e679facc9fa27b44037
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454395"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120206"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Biztonsági mentés és visszaállítás az Azure szinapszis dedikált SQL-készletében
 
@@ -45,7 +45,7 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
 
-Ez a funkció lehetővé teszi a pillanatképek manuális indítását az adattárház visszaállítási pontjainak létrehozásához a nagy módosítások előtt és után. Ez a funkció biztosítja, hogy a visszaállítási pontok logikailag konzisztensek legyenek, ami további adatvédelmet biztosít a munkaterhelés-megszakítások vagy a gyors helyreállítási időpontra vonatkozó felhasználói hibák esetén. A felhasználó által definiált visszaállítási pontok hét napig érhetők el, és automatikusan törlődnek az Ön nevében. A felhasználó által definiált visszaállítási pontok megőrzési ideje nem módosítható. **42 a felhasználó által definiált visszaállítási pontok** bármely időpontban garantáltak, így azokat [törölni](https://go.microsoft.com/fwlink/?linkid=875299) kell egy másik visszaállítási pont létrehozása előtt. A pillanatképek elindításával felhasználó által definiált visszaállítási pontokat hozhat létre a [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) vagy a Azure Portal használatával.
+Ez a funkció lehetővé teszi a pillanatképek manuális indítását az adattárház visszaállítási pontjainak létrehozásához a nagy módosítások előtt és után. Ez a funkció biztosítja, hogy a visszaállítási pontok logikailag konzisztensek legyenek, ami további adatvédelmet biztosít a munkaterhelés-megszakítások vagy a gyors helyreállítási időpontra vonatkozó felhasználói hibák esetén. A felhasználó által definiált visszaállítási pontok hét napig érhetők el, és automatikusan törlődnek az Ön nevében. A felhasználó által definiált visszaállítási pontok megőrzési ideje nem módosítható. **42 a felhasználó által definiált visszaállítási pontok** bármely időpontban garantáltak, így azokat [törölni](/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint?viewFallbackFrom=azurermps-6.2.0) kell egy másik visszaállítási pont létrehozása előtt. A pillanatképek elindításával felhasználó által definiált visszaállítási pontokat hozhat létre a [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) vagy a Azure Portal használatával.
 
 > [!NOTE]
 > Ha 7 napnál hosszabb visszaállítási pontra van szüksége, szavazzon erre a [lehetőségre](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). A felhasználó által definiált visszaállítási pontot és a visszaállítást az újonnan létrehozott visszaállítási pontról egy új adattárházra is létrehozhatja. A visszaállítást követően a dedikált SQL-készlet online állapotba kerül, és határozatlan ideig szüneteltetheti a számítási költségek megtakarítását. A szüneteltetett adatbázis az Azure-Premium Storage díjszabása szerint terheli az adattárolási díjat. Ha a visszaállított adattárház aktív példányára van szüksége, akkor folytathatja, hogy a rendszer csak néhány percet vesz igénybe.
@@ -105,6 +105,6 @@ A [DEDIKÁLT SQL-készletet](sql-data-warehouse-restore-from-geo-backup.md#resto
 > [!NOTE]
 > A Geo-redundáns visszaállítás végrehajtásához nem kell kijelölnie ezt a funkciót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A visszaállítási pontokkal kapcsolatos további információkért lásd: [felhasználó által definiált visszaállítási pontok](sql-data-warehouse-restore-points.md)

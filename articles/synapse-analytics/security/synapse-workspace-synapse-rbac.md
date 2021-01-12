@@ -8,16 +8,16 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7972f34bf0d2b93828899903e013c2e35bc997c0
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 2d9f3bfe6a273bfb0f3d314d1a4664806bd45ae2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523527"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118812"
 ---
 # <a name="what-is-synapse-role-based-access-control-rbac"></a>Mi az a szinapszis szerepköralapú hozzáférés-vezérlés (RBAC)?
 
-A szinapszis RBAC kiterjeszti az [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) képességeit a szinapszis-munkaterületekhez és azok tartalmához. 
+A szinapszis RBAC kiterjeszti az [Azure RBAC](../../role-based-access-control/overview.md) képességeit a szinapszis-munkaterületekhez és azok tartalmához. 
 
 Az Azure RBAC segítségével felügyelheti, hogy kik hozhatnak létre, frissíthetnek és törölhetnek a szinapszis munkaterületet, valamint az SQL-készleteket, Apache Spark készleteket és az integrációs modulokat.
 
@@ -87,7 +87,7 @@ Csak egy szinapszis-rendszergazda rendelhet hozzá szinapszis RBAC-szerepkörök
 
 A szinapszis RBAC kezelése a Microsoft-felügyeleti központ hozzáférés-vezérlési eszközeivel történik a szinapszis studión belül. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a beépített [SZINAPSZIS RBAC-szerepköröket](./synapse-workspace-synapse-rbac-roles.md).
 

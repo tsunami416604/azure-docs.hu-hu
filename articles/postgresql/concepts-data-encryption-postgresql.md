@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 23961a03d1da1137d92ecd3b8003241120b11d80
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c2a6a88e9f730e17c929cf7949352448903435f6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493783"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118455"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
-Az adatok titkosítása az ügyfél által felügyelt kulcsokkal Azure Database for PostgreSQL egyetlen kiszolgálón lehetővé teszi a saját kulcs (BYOK) használatát a REST-alapú adatvédelem érdekében. Emellett lehetővé teszi a szervezetek számára a kulcsok és adatok kezelésével járó feladatok elkülönítését. Az ügyfél által felügyelt titkosítással Ön felel a kulcs életciklusáért, a kulcs használati engedélyeiért, és a kulcsokkal végzett műveletek naplózásáért.
+Az Azure PostgreSQL a Microsoft által felügyelt kulcsok használatával alapértelmezés szerint titkosítja az [Azure Storage-titkosítást](../storage/common/storage-service-encryption.md) a REST-adatok titkosításához. Az Azure PostgreSQL-felhasználók esetében nagyon hasonlít a transzparens adatEncruption (TDE) más adatbázisokban, például a SQL Server. Számos szervezet az ügyfél által felügyelt kulccsal teljes hozzáférést igényel az adathoz való hozzáféréshez. Az adatok titkosítása az ügyfél által felügyelt kulcsokkal Azure Database for PostgreSQL egyetlen kiszolgálón lehetővé teszi a saját kulcs (BYOK) használatát a REST-alapú adatvédelem érdekében. Emellett lehetővé teszi a szervezetek számára a kulcsok és adatok kezelésével járó feladatok elkülönítését. Az ügyfél által felügyelt titkosítással Ön felel a kulcs életciklusáért, a kulcs használati engedélyeiért, és a kulcsokkal végzett műveletek naplózásáért.
 
 Az ügyfél által felügyelt kulcsokkal rendelkező adattitkosítást Azure Database for PostgreSQL egyetlen kiszolgáló esetén a kiszolgáló szintjén kell beállítani. Egy adott kiszolgáló esetében a szolgáltatás által használt adattitkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) titkosítására a Key encryption Key (KEK) nevű ügyfél által felügyelt kulcs szolgál. A KEK egy, az ügyfél és az ügyfél által felügyelt [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) -példányban tárolt aszimmetrikus kulcs. A kulcs titkosítási kulcsát (KEK) és az adattitkosítási kulcsot (ADATTITKOSÍTÁSI kulcsot) a cikk későbbi részében részletesebben ismertetjük.
 
@@ -60,7 +60,9 @@ Ha a kiszolgáló a Key vaultban tárolt ügyfél által felügyelt kulcs haszn�
 A Key Vault konfigurálásának követelményei a következők:
 
 * Key Vault és Azure Database for PostgreSQL egyetlen kiszolgálónak ugyanahhoz a Azure Active Directory (Azure AD) bérlőhöz kell tartoznia. A több-bérlős Key Vault és a kiszolgálói interakciók nem támogatottak. A Key Vault erőforrás áthelyezéséhez ezt követően újra kell konfigurálnia az adattitkosítást.
-* Az adatvesztés elleni védelem érdekében engedélyezze a Soft delete funkciót a Key vaultban, ha véletlen kulcs (vagy Key Vault) törlése történik. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, hacsak a felhasználó addig nem helyreállítja vagy törli őket. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal).
+* A Key vaultot a törölt tárolók megőrzéséhez 90 nappal kell beállítani. Ha a meglévő kulcstartó kisebb számmal lett konfigurálva, létre kell hoznia egy új kulcstartót, mivel a létrehozás után nem módosítható.
+* Az adatvesztés elleni védelem érdekében engedélyezze a Soft delete funkciót a Key vaultban, ha véletlen kulcs (vagy Key Vault) törlése történik. A Soft-Deleted erőforrásokat 90 napig őrzi meg a rendszer, hacsak a felhasználó addig nem helyreállítja vagy törli őket. A helyreállítás és törlés műveletekhez saját engedélyek tartoznak egy Key Vault hozzáférési házirendben. A Soft-delete funkció alapértelmezés szerint ki van kapcsolva, de a PowerShell vagy az Azure CLI használatával is engedélyezhető (vegye figyelembe, hogy nem engedélyezheti a Azure Portal). 
+* A törlési védelem engedélyezése a törölt tárolók és tároló objektumok kötelező megőrzési időtartamának betartatásához
 * Az egyedi felügyelt identitás használatával adja meg az Azure Database for PostgreSQL egyetlen kiszolgáló hozzáférését a Key vaulthoz a Get, a wrapKey és a unwrapKey engedélyekkel. A Azure Portal az egyedi "szolgáltatás" identitás automatikusan létrejön, ha az adattitkosítás engedélyezve van a PostgreSQL-kiszolgálón. A Azure Portal használatakor részletes útmutatásért lásd: [Azure Database for PostgreSQL az egyetlen Azure Portal kiszolgáló adattitkosítása](howto-data-encryption-portal.md) .
 
 Az ügyfél által felügyelt kulcs konfigurálásának követelményei a következők:
@@ -140,6 +142,6 @@ Azure Database for PostgreSQL esetén az ügyfelek által felügyelt kulcs (CMK)
 
 * A titkosítás csak az RSA 2048 titkosítási kulccsal támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [állíthatja be az adattitkosítást egy ügyfél által felügyelt kulccsal a PostgreSQL-hez készült Azure-adatbázishoz a Azure Portal használatával](howto-data-encryption-portal.md).

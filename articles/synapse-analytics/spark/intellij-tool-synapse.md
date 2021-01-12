@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 75cc23df41741a95e87ad64d168aea4fa4f45733
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 39f39b6f53944510b5f3692bb8b3fdd472004454
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451048"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121226"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Oktatóanyag: Apache Spark-alkalmazás létrehozása a IntelliJ a szinapszis-munkaterület használatával
 
@@ -24,7 +24,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Toolkit for
 - Hozzáférhet a Spark-készletek erőforrásaihoz.
 - A Scala Spark alkalmazást helyileg fejlesztheti és futtathatja.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 >
 > - A Azure Toolkit for IntelliJ beépülő modul használata
@@ -36,7 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 - A [INTELLIJ ötlet közösségi verziója](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC).
 - Azure Toolkit beépülő 3.27.0 – 2019.2 – telepítés a [IntelliJ beépülő modulból](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [JDK (1,8-es verzió)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-- Scala beépülő modul – telepítés a [IntelliJ beépülő modulból](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea).
+- Scala beépülő modul – telepítés a [IntelliJ beépülő modulból](../../hdinsight/spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea).
 - A következő előfeltétel csak a Windows-felhasználók számára érhető el:
 
   Ha a helyi Spark Scala alkalmazást Windows rendszerű számítógépen futtatja, előfordulhat, hogy a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)című részben leírtak szerint kivételt tapasztal. A kivétel oka, hogy WinUtils.exe hiányzik a Windows rendszerből.
@@ -270,7 +270,7 @@ Előfordulhat, hogy a szkript eredményét úgy szeretné látni, hogy elküld e
 
    ![Kijelölés küldése a Spark-konzolra](./media/intellij-tool-synapse/send-selection-to-console.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Synapse Analytics](../overview-what-is.md)
 - [Új Apache Spark-készlet létrehozása az Azure szinapszis Analytics-munkaterülethez](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

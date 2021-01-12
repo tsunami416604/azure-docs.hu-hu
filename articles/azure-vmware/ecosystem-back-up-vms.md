@@ -2,19 +2,19 @@
 title: Azure VMware-megoldás virtuális gépekre vonatkozó biztonsági mentési megoldások
 description: Ismerje meg az Azure VMware-megoldás virtuális gépei vezető biztonsági mentési és visszaállítási megoldásait.
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: d72e7d2491441c05bf59a32dfb19b0af0cf94c95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/11/2021
+ms.openlocfilehash: 650272a28a7b7639941c30d8d81c6de5a13bcdb3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343760"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119067"
 ---
 # <a name="backup-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Biztonsági mentési megoldások az Azure VMware Solution virtuális gépekhez (VM)
 
 Az Azure VMware-megoldás kulcsfontosságú alapelve, hogy lehetővé teszi, hogy továbbra is használhassa a befektetéseit és az Azure-on futó kedvenc VMware-megoldásait. A független szoftvergyártók (ISV) technológiájának támogatása, amely az Azure VMware megoldással lett érvényesítve, fontos része ennek a stratégiának. 
 
-A CommVault, a Veritas és a Veeam a VMware-alapú környezetekben vezető biztonsági mentési és helyreállítási megoldásokat kínál. Az ügyfelek széles körben elfogadták ezeket a megoldásokat a helyszíni üzembe helyezésekhez. Most, hogy ezek a partnerek kibővítették megoldásaikat az Azure VMware-megoldásra, az Azure használatával biztosítanak egy biztonsági mentési tárházat és egy tárolási célt a hosszú távú megőrzés és az archiválás érdekében.
+A biztonsági mentési partnereink piacvezető biztonsági mentési és helyreállítási megoldásokkal rendelkeznek a VMware-alapú környezetekben. Az ügyfelek széles körben elfogadták ezeket a megoldásokat a helyszíni üzembe helyezésekhez. Most, hogy ezek a partnerek kibővítették megoldásaikat az Azure VMware-megoldásra, az Azure használatával biztosítanak biztonsági mentési tárházat és tárolási célt a hosszú távú adatmegőrzéshez és archiváláshoz.
 
 Az Azure VMware megoldás virtuális gépei és az Azure-beli biztonsági mentési tárház közötti hálózati forgalom biztonsági mentése nagy sávszélességű, kis késleltetésű kapcsolaton keresztül történik. A régiók közötti replikációs forgalom a belső Azure hátlap-hálózaton halad át, ami csökkenti a felhasználók sávszélességének költségeit.
 

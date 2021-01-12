@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60a995f78b9b696197d9bd45e04becb19e4129f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653061"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120104"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Ajánlott eljárások az betöltéshez dedikált SQL-készletek használatával az Azure szinapszis Analyticsben
 
@@ -47,7 +47,7 @@ Ez a példa egy adott munkaterhelés-csoportba sorolt betöltési felhasználót
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Kapcsolódjon a dedikált SQL-készlethez, és hozzon létre egy felhasználót. A következő kód azt feltételezi, hogy csatlakozik a mySampleDataWarehouse nevű adatbázishoz. Bemutatja, hogyan hozhat létre egy betöltő felhasználót, és a [másolási utasítás](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)használatával lehetővé teszi a felhasználók számára táblák és betöltés létrehozását. Ezután osztályozza a felhasználót a DataLoads munkaterhelés csoportba a maximális erőforrásokkal. 
+Kapcsolódjon a dedikált SQL-készlethez, és hozzon létre egy felhasználót. A következő kód azt feltételezi, hogy csatlakozik a mySampleDataWarehouse nevű adatbázishoz. Bemutatja, hogyan hozhat létre egy betöltő felhasználót, és a [másolási utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)használatával lehetővé teszi a felhasználók számára táblák és betöltés létrehozását. Ezután osztályozza a felhasználót a DataLoads munkaterhelés csoportba a maximális erőforrásokkal. 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -179,5 +179,5 @@ A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 ## <a name="next-steps"></a>Következő lépések
 
 - A kinyerési, betöltési és átalakítási (ELT) folyamat megtervezése során a MÁSOLÁSi utasítással vagy a kiindulással kapcsolatos további információkért lásd: [elt az Azure szinapszis analyticshez](design-elt-data-loading.md).
-- A betöltési oktatóanyaghoz [használja a copy utasítást az adatok Azure Blob Storage-ból a SZINAPSZIS SQL-be való betöltéséhez](load-data-from-azure-blob-storage-using-polybase.md).
+- A betöltési oktatóanyaghoz [használja a copy utasítást az adatok Azure Blob Storage-ból a SZINAPSZIS SQL-be való betöltéséhez](./load-data-from-azure-blob-storage-using-copy.md).
 - Az adatbetöltések monitorozása: [A számítási feladat monitorozása DMV-kkel](sql-data-warehouse-manage-monitor.md).

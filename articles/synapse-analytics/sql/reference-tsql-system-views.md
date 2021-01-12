@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4e4e6a1607fa42f4be07451f9aa0d8ff923d85d6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fc90ad8104cff7ead501470a883b56b67a86cf7c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317329"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121260"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>A szinapszis SQL-ben támogatott rendszernézetek
 
@@ -252,6 +252,5 @@ A következő DMV a dedikált SQL-készletre érvényesek, de a **Master** adatb
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: [t-SQL-utasítások a SZINAPSZIS SQL-ben](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)és a [t-SQL nyelvi elemei a szinapszis SQL-ben](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements).
+További információ: [t-SQL-utasítások a SZINAPSZIS SQL-ben](../sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements.md)és a [t-SQL nyelvi elemei a szinapszis SQL-ben](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md).
 
- 

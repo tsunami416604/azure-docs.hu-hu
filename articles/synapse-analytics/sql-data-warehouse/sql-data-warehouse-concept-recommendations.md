@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462857"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121192"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Javaslatok Azure Advisor dedikált SQL-készletre az Azure szinapszis Analyticsben
 
@@ -65,12 +65,12 @@ Az Advisor jelenleg legfeljebb négy replikált tábla jelöltjét jeleníti meg
 
 
 ## <a name="adaptive-gen2-cache-utilization"></a>Adaptív (Gen2) gyorsítótár kihasználtsága
-Ha nagy munkakészlettel rendelkezik, az alacsony gyorsítótárbeli találatok százalékos arányát és a nagy gyorsítótár kihasználtságát tapasztalhatja. Ennél a forgatókönyvnél a gyorsítótár kapacitásának növeléséhez és a számítási feladatok újrafuttatásához növelje a méretezést. További információért látogasson el a következő [dokumentációra](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache). 
+Ha nagy munkakészlettel rendelkezik, az alacsony gyorsítótárbeli találatok százalékos arányát és a nagy gyorsítótár kihasználtságát tapasztalhatja. Ennél a forgatókönyvnél a gyorsítótár kapacitásának növeléséhez és a számítási feladatok újrafuttatásához növelje a méretezést. További információért látogasson el a következő [dokumentációra](./sql-data-warehouse-how-to-monitor-cache.md). 
 
 ## <a name="tempdb-contention"></a>Tempdb-tartalom
 
-A lekérdezés teljesítménye csökkenhet, ha magas a tempdb-tartalom.  A tempdb-tartalom felhasználó által definiált ideiglenes táblákon vagy nagy mennyiségű adatmozgatáson keresztül fordulhat elő. Ebben a forgatókönyvben több tempdb-kiosztást és az [erőforrás-osztályok és a számítási feladatok kezelését is beállíthatja](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) , hogy a lekérdezések több memóriát szolgáltassanak. 
+A lekérdezés teljesítménye csökkenhet, ha magas a tempdb-tartalom.  A tempdb-tartalom felhasználó által definiált ideiglenes táblákon vagy nagy mennyiségű adatmozgatáson keresztül fordulhat elő. Ebben a forgatókönyvben több tempdb-kiosztást és az [erőforrás-osztályok és a számítási feladatok kezelését is beállíthatja](./sql-data-warehouse-workload-management.md) , hogy a lekérdezések több memóriát szolgáltassanak. 
 
 ## <a name="data-loading-misconfiguration"></a>Az adatbetöltések helytelen konfigurációja
 
-A késés csökkentése érdekében mindig töltsön be egy olyan Storage-fiók adatait, amely ugyanabban a régióban található, mint a dedikált SQL-készlet. Az átviteli sebesség maximalizálása érdekében használja a [másolási utasítást a nagy átviteli sebességű adatok](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) betöltéséhez és a tárolási fiókban található előkészített fájlok felosztásához. Ha nem tudja használni a COPY utasítást, a SqlBulkCopy API-t vagy a BCP-t is használhatja a jobb átviteli sebesség érdekében. További információ a következő [dokumentációban](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)található: további adattöltési útmutató. 
+A késés csökkentése érdekében mindig töltsön be egy olyan Storage-fiók adatait, amely ugyanabban a régióban található, mint a dedikált SQL-készlet. Az átviteli sebesség maximalizálása érdekében használja a [másolási utasítást a nagy átviteli sebességű adatok](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) betöltéséhez és a tárolási fiókban található előkészített fájlok felosztásához. Ha nem tudja használni a COPY utasítást, a SqlBulkCopy API-t vagy a BCP-t is használhatja a jobb átviteli sebesség érdekében. További információ a következő [dokumentációban](./guidance-for-loading-data.md)található: további adattöltési útmutató.

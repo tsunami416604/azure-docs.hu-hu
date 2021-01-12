@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901555"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119458"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Élő videó-elemzések frissítése IoT Edge 1,0 – 2,0
 
@@ -21,7 +21,7 @@ Ez a cikk ismerteti a különbségeket és azokat a különböző szempontokat, 
 > [!div class="mx-tdCol4BreakAll"]
 > |Cím|Élő videó Analytics 1,0|Élő videó Analytics 2,0|Leírás|
 > |-------------|----------|---------|---------|
-> |Tároló képe|mcr.microsoft.com/media/live-video-analytics:1.0.0|mcr.microsoft.com/media/live-video-analytics:2.0.0|Microsoft közzétett Docker-rendszerképek az élő videók elemzéséhez Azure IoT Edge|
+> |Tároló képe|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Microsoft közzétett Docker-rendszerképek az élő videók elemzéséhez Azure IoT Edge|
 > |**MediaGraph-csomópontok** |    |   |   |
 > |Források|:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP-forrás </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT Hub üzenet forrása |:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP-forrás </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT Hub üzenet forrása | MediaGraph-csomópontok, amelyek a média betöltésének és üzeneteinek forrásaként működnek.|
 > |Processzorok|:::image type="icon" source="./././media/upgrading-lva/check.png"::: Mozgásészlelési processzor </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Frame rate Filter processzor </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Http-bővítmény processzora </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Grpc-bővítmény processzora </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Signal Gate processzor |:::image type="icon" source="./././media/upgrading-lva/check.png"::: Mozgásészlelési processzor </br>:::image type="icon" source="./././media/upgrading-lva/remove.png":::**Frame rate Filter processzor**</br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Http-bővítmény processzora </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Grpc-bővítmény processzora </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Signal Gate processzor | MediaGraph-csomópontok, amelyek lehetővé teszik az adathordozó formázását az AI-következtetési kiszolgálókra való küldés előtt.|

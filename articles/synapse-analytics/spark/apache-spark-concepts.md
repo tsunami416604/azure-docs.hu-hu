@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 8df7a2ecd2a6732a011267eb0efe00e8eaf2bef4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 51b2e8cd968c4c14777d196d90686b13158aef42
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458751"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120308"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark az Azure szinapszis Analytics alapvető fogalmakkal
 
@@ -80,7 +80,7 @@ A következő cikk azt ismerteti, hogyan lehet a munkaterület virtuális mag-kv
 - A szolgáltatás típusaként válassza az "Azure szinapszis Analytics" lehetőséget.
 - A kvóta részletei ablakban válassza ki a Apache Spark (virtuális mag) munkaterületen
 
-[Kapacitás növelésének kérése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests#request-a-standard-quota-increase-from-help--support)
+[Kapacitás növelésének kérése a Azure Portal használatával](../../azure-portal/supportability/per-vm-quota-requests.md#request-a-standard-quota-increase-from-help--support)
 
 ### <a name="spark-pool-level"></a>Spark-készlet szintje
 
@@ -93,7 +93,7 @@ However, the pool is consuming yy vcores out of available zz vcores.Try ending t
 
 Ennek a problémának a megoldásához csökkentenie kell a készlet erőforrásainak használatát, mielőtt egy jegyzetfüzetet vagy feladatot futtasson egy új erőforrás-kérelem elküldése előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Apache Spark dokumentáció](https://spark.apache.org/docs/2.4.5/)
