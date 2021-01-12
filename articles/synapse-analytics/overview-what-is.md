@@ -9,18 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c315dae7e5f02f112dfdfbec02e1ebaaa5e48a9f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5b12632a60ad5580325fbcda294e1a600bb2b6b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445782"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121702"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Mi az az Azure Synapse Analytics?
 
 A nagyvállalati elemzési szolgáltatásnak bármilyen típusú, nyers, finomított vagy nagy teljesítményű adatmennyiségen kell működnie. Ehhez általában a vállalatoknak össze kell fűzve a big data és az adattárház-technológiákat olyan összetett adatfolyamatokban, amelyek a kapcsolati tárolókban és az adattavakban tárolt adatmennyiségek között működnek. Ezeket a megoldásokat nehéz felépíteni, karbantartani és biztonságossá tenni. Az Insight-vállalatok számára szükséges összetettségi késések.
 
-Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data rendszerek betekintésének idejét. Az Azure szinapszis a nagyvállalati adattárházban, a big data használt **Spark** -technológiákban, valamint az adatintegrációs és az ETL/elt- **adatcsatornákhoz** használt **SQL** -technológiákat egyesíti. A **szinapszis Studio** egységes felhasználói élményt nyújt a felügyelethez, a monitorozáshoz, a kódoláshoz és a biztonsághoz. A szinapszis szoros integrációt tartalmaz más Azure-szolgáltatásokkal, mint például a **Power bi**, a **CosmosDB** és a **AzureML**.
+Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyorsítja az adattárházak és a Big Data rendszerek betekintésének idejét. Az Azure szinapszis összefoglalja a nagyvállalati adattárházak, a big data **használt Spark** **-technológiák,** az adatintegrációs és az ETL/elt, valamint az egyéb Azure-szolgáltatásokkal **(például** a **Power bi**, a **CosmosDB** és a **AzureML**) való mélyebb integrációt.
 
 ## <a name="key-features--benefits"></a>A főbb funkciók & előnyök
 
@@ -28,7 +28,7 @@ Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely felgyors�
 
 * A **SZINAPSZIS SQL** egy elosztott lekérdezési rendszer, amely lehetővé teszi a vállalatok számára az adattárházak és az adatvirtualizációs forgatókönyvek megvalósítását standard és ismerős T-SQL-élmények használatával. Emellett kibővíti az SQL képességeit a streaming és a gépi tanulási forgatókönyvek kezeléséhez.
 
-* A szinapszis SQL **kiszolgáló** nélküli és **dedikált** erőforrás-modelleket is kínál, amelyek az igényeinek megfelelő felhasználási és számlázási lehetőségeket kínálnak. A kiszámítható teljesítmény és a költséghatékonyság érdekében hozzon létre dedikált SQL-készleteket az SQL-táblákban tárolt adatfeldolgozási teljesítmény fenntartásához. Nem tervezett vagy feltört számítási feladatokhoz használja a mindig elérhető, kiszolgáló nélküli SQL-végpontot.
+* A szinapszis SQL **kiszolgáló** nélküli és **dedikált** erőforrás-modelleket is kínál, amelyek az igényeinek megfelelő felhasználási és számlázási lehetőségeket kínálnak. A kiszámítható teljesítmény és a költséghatékonyság érdekében hozzon létre dedikált SQL-készleteket az SQL-táblákban tárolt adatok hatékony feldolgozásához. Nem tervezett vagy feltört számítási feladatokhoz használja a mindig elérhető, kiszolgáló nélküli SQL-végpontot.
 * A Felhőbeli adatforrásokból származó adatoknak az SQL-táblákba való beépítésére szolgáló beépített **streaming** -funkciók használata
 * A AI és az SQL integrálása **gépi tanulási** modellekkel az adatpontszámhoz a [T-SQL prediktív függvény](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) használatával
 
@@ -78,8 +78,8 @@ A **szinapszis Studio** az a webes felület, amely az adatmérnökökkel együtt
 - [Stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse): forduljon a fejlesztési kérdésekhez.
 - [A Microsoft Q&egy kérdést tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): technikai kérdéseket tehet fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
+* [Az Azure Synapse Analytics első lépései](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)
 * [Kiszolgáló nélküli SQL-készlet használata](quickstart-sql-on-demand.md)

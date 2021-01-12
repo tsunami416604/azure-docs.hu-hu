@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8768b8f8c7bf70b184971abc6ce27e2193823dea
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458771"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121549"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Az adatelemzés Apache Spark
 
@@ -25,7 +25,7 @@ Különösen elemezzük a [New York City (New York-i) taxi](https://azure.micros
 - Hozzon létre egy Apache Spark készletet az [Apache Spark készlet létrehozása oktatóanyag](../articles/../quickstart-create-apache-spark-pool-studio.md) alapján 
 
 ## <a name="download-and-prepare-the-data"></a>Az adatgyűjtés letöltése és előkészítése
-1. Hozzon létre egy jegyzetfüzetet a PySpark kernel használatával. Útmutatásért lásd: [Jegyzetfüzet létrehozása](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook). 
+1. Hozzon létre egy jegyzetfüzetet a PySpark kernel használatával. Útmutatásért lásd: [Jegyzetfüzet létrehozása](../quickstart-apache-spark-notebook.md#create-a-notebook). 
    
 > [!Note]
 > 
@@ -173,12 +173,12 @@ plt.show()
 
 Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. ehhez zárja be a fület, vagy válassza a **munkamenet befejezése** elemet a jegyzetfüzet alján található állapot panelen.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Áttekintés: Apache Spark az Azure szinapszis Analytics szolgáltatásban](apache-spark-overview.md)
 - [Gépi tanulási modell létrehozása Apache SparkML](../spark/apache-spark-machine-learning-mllib-notebook.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Apache Spark hivatalos dokumentáció](https://spark.apache.org/docs/latest/)

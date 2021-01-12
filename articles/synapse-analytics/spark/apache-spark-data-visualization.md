@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 73b18d15ad054f1c485d6f61cdefe54993148bc4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450534"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121525"
 ---
 # <a name="visualize-data"></a>Adatok vizualizációja
 Az Azure szinapszis egy integrált elemzési szolgáltatás, amely felgyorsítja az adattárházak és a big data elemzési rendszerek közötti időt az elemzésre. Az adatvizualizáció egy kulcsfontosságú összetevő, amellyel betekintést nyerhet az adataiba. Megkönnyíti az emberek számára a nagy és kis mennyiségű adat megértését. Megkönnyíti az adatcsoportokban lévő minták, trendek és kiugró értékek észlelését is. 
@@ -34,7 +34,7 @@ A diagram beállításainak elérése:
    ![beépített diagramok](./media/apache-spark-development-using-notebooks/synapse-built-in-charts.png#lightbox)
 
 3. Mostantól testreszabhatja a vizualizációt a következő értékek megadásával:
-   | Konfiguráció | Description |
+   | Konfiguráció | Leírás |
    |--|--| 
    | Diagram típusa | A ```display``` függvény számos diagramtípust támogat, többek között a sávdiagramok, a pontdiagram, a vonalas diagramok és egyéb funkciók használatát. |
    | Kulcs | Az x tengely értékei tartományának megadása|
@@ -227,9 +227,9 @@ Az Azure szinapszis Analytics futtatókörnyezet [dokumentációjában](./spark/
 ## <a name="connect-to-power-bi-using-apache-spark--sql-on-demand"></a>Kapcsolódás Power BI Apache Spark & SQL igény szerinti használatával
 Az Azure szinapszis Analytics mélyen integrálva van Power BI, amely lehetővé teszi, hogy az adatmérnökök elemzési megoldásokat hozzanak létre.
 
-Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok adatbázisokat és táblákat osszanak meg a Spark-készletek és a kiszolgáló nélküli SQL-készlet között. A [megosztott metaadat-modell](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)használatával lekérdezheti az Apache Spark táblákat az SQL igény szerinti használatával. Ha elkészült, összekapcsolhatja az SQL igény szerinti végpontját, hogy Power BI a szinkronizált Spark-táblázatok egyszerű lekérdezéséhez.
+Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok adatbázisokat és táblákat osszanak meg a Spark-készletek és a kiszolgáló nélküli SQL-készlet között. A [megosztott metaadat-modell](../metadata/overview.md)használatával lekérdezheti az Apache Spark táblákat az SQL igény szerinti használatával. Ha elkészült, összekapcsolhatja az SQL igény szerinti végpontját, hogy Power BI a szinkronizált Spark-táblázatok egyszerű lekérdezéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a Spark SQL DW-összekötő beállításáról: [SZINAPSZIS SQL Connector](./spark/../synapse-spark-sql-pool-import-export.md)
 - Az alapértelmezett könyvtárak megtekintése: az [Azure szinapszis Analytics futtatókörnyezete](../spark/apache-spark-version-support.md)
