@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 01/07/2021
+ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: 3e106bc313d6189b2fae8cf6a4dd7ce862294b8f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f780c8c2f932b612ee42e13906f72983b324eefd
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019238"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108534"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Oktatóanyag: társítások létrehozása és módosítása ExpressRoute-áramkörhöz a Azure Portal használatával
 
@@ -30,7 +30,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre és kezelhet útválasztási 
 
 A ExpressRoute-áramkörhöz privát és Microsoft-társítást is beállíthat (az Azure nyilvános társítása elavult az új áramkörök esetében). A társításokat tetszőleges sorrendben lehet konfigurálni. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. További információ az útválasztási tartományokról és a társításokról: [ExpressRoute-útválasztási tartományok](expressroute-circuit-peerings.md). A nyilvános hálózattal kapcsolatos további információkért lásd: [nyilvános ExpressRoute](about-public-peering.md).
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > - Microsoft-társítások konfigurálása, frissítése és törlése egy áramkörhöz
 > - Azure-beli privát kapcsolatok konfigurálása, frissítése és törlése egy áramkörhöz
@@ -136,7 +136,7 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát t
 
 2. Konfigurálja az Azure privát társviszony-létesítést a kapcsolatcsoport számára. A következő lépések elvégzése előtt győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
 
-   * Az Ön által birtokolt és RIR/IRR regisztrált pár/30 alhálózatot. A rendszer egy alhálózatot használ az elsődleges hivatkozáshoz, míg a másikat a másodlagos hivatkozáshoz fogja használni. Az egyes alhálózatokból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz. Ezt az alhálózatot három lehetőséggel látja el:
+   * Ön által birtokolt pár/30 alhálózat. A rendszer egy alhálózatot használ az elsődleges hivatkozáshoz, míg a másikat a másodlagos hivatkozáshoz fogja használni. Az egyes alhálózatokból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz.
    * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos kapcsolatok esetében ugyanazt a VLAN-azonosítót kell használnia.
    * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat. Ehhez a társhoz az 65515 és 65520 közötti számot is használhatja, amely magában foglalja a többit.
    * Az útvonalakat a helyszíni peremhálózati útválasztóról az Azure-ba kell hirdetni a BGP-n keresztül, amikor konfigurálja a privát társat.
@@ -183,7 +183,7 @@ A privát társ-összevonási konfigurációt úgy távolíthatja el, ha a jobb 
 
 :::image type="content" source="./media/expressroute-howto-routing-portal-resource-manager/delete-private-peering.png" alt-text="Privát társak törlése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután konfigurálta az Azure Private-társítást, létrehozhat egy ExpressRoute-átjárót, amely összekapcsolja a virtuális hálózatot az áramkörrel. 
 

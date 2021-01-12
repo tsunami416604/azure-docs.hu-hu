@@ -9,16 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 1cc6c8cd49a2388ad66a276f4a1667b4c3ee3826
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070320"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107905"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referenciát tartalmazó oldalt.
+
+
+ ## <a name="2021-01-11"></a>2021-01-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1200"></a>Azure Machine Learning SDK a Python v 1.20.0
++ **Hibajavítások és javítások**
+  + **Azure-CLI-ml**
+    + framework_version hozzáadva a OptimizationConfig-ben. A rendszer akkor fogja használni, ha a modell regisztrálva van a Framework MULTI használatával.
+  + **azureml-automl-runtime**
+    + Ebben a frissítésben a AutoML SDK előrejelzési eszközkészletét a Holt tél exponenciális simításával bővítettük. Adott idősorozatok esetében a legjobb modellt a [AICc (korrigált Akaike információs feltétel)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) választja ki, és visszaadja.
+  + **azureml – optimalizálás**
+    + framework_version hozzáadva a OptimizationConfig-ben. A rendszer akkor fogja használni, ha a modell regisztrálva van a Framework MULTI használatával.
+  + **azureml-pipeline-steps**
+    + Bemutatjuk a CommandStep, amely feldolgozza a parancsot. A parancs tartalmazhat végrehajtható fájlokat, rendszerhéj-parancsokat, parancsfájlokat stb.
+  + **azureml-core**
+    + A munkaterület létrehozása mostantól támogatja a felhasználó által hozzárendelt identitást. A UAI-támogatás hozzáadása az SDK/parancssori felületről
+    + Kijavítva a Service. reload () szolgáltatásban a score.py változásainak a helyi telepítésben való kiválasztásához.
+    + `run.get_details()` a "Beküldő" nevű további mező jelenik meg, amely a szerző nevét jeleníti meg ehhez a futtatáshoz.
+    + Szerkesztett modell. regisztrálja a metódus dokumentációját, amely azt mutatja be, hogyan lehet regisztrálni a modellt közvetlenül a futtatásból
+   
 
 ## <a name="2020-12-31"></a>2020-12-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio notebookok felülete (decemberi frissítés)
@@ -31,6 +51,7 @@ Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hi
   + Továbbfejlesztett oldal betöltési ideje
   + Jobb teljesítmény 
   + Továbbfejlesztett sebesség és kernel megbízhatóság
+
   
 ## <a name="2020-12-07"></a>2020-12-07
 

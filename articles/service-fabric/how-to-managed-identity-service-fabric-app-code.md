@@ -3,22 +3,75 @@ title: Felügyelt identitás használata alkalmazással
 description: Felügyelt identitások használata az Azure Service Fabric alkalmazás kódjában az Azure-szolgáltatások eléréséhez.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c89f7bd064e643b978253f2e083c449d904d2cad
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253643"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108517"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric alkalmazás felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez
 
 Service Fabric alkalmazások a felügyelt identitásokat használhatják a Azure Active Directory-alapú hitelesítést támogató egyéb Azure-erőforrások eléréséhez. Egy alkalmazás olyan [hozzáférési jogkivonatot](../active-directory/develop/developer-glossary.md#access-token) szerezhet be, amely az identitását jelképezi, amely lehet rendszer által hozzárendelt vagy felhasználó által hozzárendelt, és "tulajdonos" tokenként használva hitelesíti magát egy másik szolgáltatásnak – más néven [védett erőforrás-kiszolgálónak](../active-directory/develop/developer-glossary.md#resource-server)–. A jogkivonat a Service Fabric alkalmazáshoz rendelt identitást jelöli, és csak az adott identitást használó Azure-erőforrások (például SF-alkalmazások) számára lesz kibocsátva. Tekintse át a felügyelt [identitások áttekintő](../active-directory/managed-identities-azure-resources/overview.md) dokumentációját a felügyelt identitások részletes leírását, valamint a rendszer által hozzárendelt és a felhasználó által hozzárendelt identitások megkülönböztetését. Ebben [a cikkben](../active-directory/develop/developer-glossary.md#client-application) a felügyelt identitás-kompatibilis Service Fabric alkalmazásra fogunk hivatkozni.
+
+Tekintse meg a társ-minta alkalmazást, amely a rendszerhez rendelt és felhasználó által hozzárendelt [Service Fabric alkalmazás felügyelt identitások](https://github.com/Azure-Samples/service-fabric-managed-identity) használatát mutatja be Reliable Services és tárolók használatával.
 
 > [!IMPORTANT]
 > A felügyelt identitás az erőforrást tartalmazó előfizetéshez társított Azure AD-bérlőben az Azure-erőforrás és egy egyszerű szolgáltatásnév közötti társítást jelöli. A Service Fabric kontextusában a felügyelt identitások csak az Azure-erőforrásként üzembe helyezett alkalmazások esetében támogatottak. 
 
 > [!IMPORTANT]
 > A Service Fabric alkalmazás felügyelt identitásának használata előtt az ügyfélalkalmazás számára hozzáférést kell biztosítani a védett erőforráshoz. Tekintse meg az Azure [ad-hitelesítést támogató Azure-szolgáltatások](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) listáját a támogatás megkereséséhez, majd a megfelelő szolgáltatás dokumentációjában, amely alapján az identitás hozzáférést biztosít a fontos erőforrásokhoz. 
+ 
+
+## <a name="leverage-a-managed-identity-using-azureidentity"></a>Felügyelt identitás kihasználása az Azure. Identity használatával
+
+Az Azure Identity SDK mostantól támogatja a Service Fabric. Az Azure. Identity használatával a kód írásával Service Fabric alkalmazás által felügyelt identitások könnyebben használhatók, mert kezeli a jogkivonatok beolvasását, a gyorsítótárazási tokeneket és a kiszolgáló hitelesítését. A legtöbb Azure-erőforráshoz való hozzáférés során a jogkivonat fogalma rejtve marad.
+
+A Service Fabric támogatás a következő verziókban érhető el ezekhez a nyelvekhez: 
+- [C# a verzió 1.3.0](https://www.nuget.org/packages/Azure.Identity). Lásd: [C#-minta](https://github.com/Azure-Samples/service-fabric-managed-identity).
+- [Python a 1.5.0-es verzióban](https://pypi.org/project/azure-identity/). Tekintse meg a [Python-mintát](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md).
+- [Java a 1.2.0 verzióban](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable).
+
+C# minta a hitelesítő adatok inicializálásához és a hitelesítő adatok használatával Azure Key Vault titkos kód beolvasásához:
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+namespace MyMIService
+{
+    internal sealed class MyMIService : StatelessService
+    {
+        protected override async Task RunAsync(CancellationToken cancellationToken)
+        {
+            try
+            {
+                // Load the service fabric application managed identity assigned to the service
+                ManagedIdentityCredential creds = new ManagedIdentityCredential();
+
+                // Create a client to keyvault using that identity
+                SecretClient client = new SecretClient(new Uri("https://mykv.vault.azure.net/"), creds);
+
+                // Fetch a secret
+                KeyVaultSecret secret = (await client.GetSecretAsync("mysecret", cancellationToken: cancellationToken)).Value;
+            }
+            catch (CredentialUnavailableException e)
+            {
+                // Handle errors with loading the Managed Identity
+            }
+            catch (RequestFailedException)
+            {
+                // Handle errors with fetching the secret
+            }
+            catch (Exception e)
+            {
+                // Handle generic errors
+            }
+        }
+    }
+}
+
+```
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>Hozzáférési jogkivonat beszerzése REST API használatával
 A felügyelt identitáshoz engedélyezett fürtökön a Service Fabric futtatókörnyezet elérhetővé teszi a localhost végpontot, melyet az alkalmazások használhatnak a hozzáférési tokenek beszerzéséhez. A végpont a fürt minden csomópontján elérhető, és elérhető az adott csomóponton lévő összes entitás számára. A jogosult hívók a végpont meghívásával és egy hitelesítési kód bemutatásával kaphatnak hozzáférési jogkivonatokat. a kódot a Service Fabric futtatókörnyezet hozza létre az egyes különböző szervizcsomag-csomagok aktiválásakor, és a szolgáltatási kód csomagjait futtató folyamat élettartamára van kötve.
@@ -373,7 +426,8 @@ Azt javasoljuk, hogy a sávszélesség-szabályozás miatti kérelmeket az aláb
 ## <a name="resource-ids-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-azonosítói
 Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) az Azure ad-t támogató erőforrások listáját, valamint a hozzájuk tartozó erőforrás-azonosítókat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazások hozzáférésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)
+* [Minta alkalmazás megismerése Service Fabric felügyelt identitás használatával](https://github.com/Azure-Samples/service-fabric-managed-identity)

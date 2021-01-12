@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6232b315abf8840d6fd77d02e3e928c0004746a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ab3cb403a8757f424a141206f99f9c29bf3e0b49
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029328"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108148"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
 
@@ -105,7 +105,7 @@ A parancsok megkereséséhez tekintse meg a cikkek bármelyikét.
 
 | Szolgáltatás | Cikk |
 |--------|-----------|
-|Azure Blob Storage |[Fájlok feltöltése az Azure Blob Storage-ba](storage-use-azcopy-blobs-upload.md)<br><br>[Blobok letöltése az Azure Blob Storage-ból](storage-use-azcopy-blobs-download.md)<br><br>[Blobok másolása az Azure Storage-fiókok között](storage-use-azcopy-blobs-download.md)<br><br>[Szinkronizálás az Azure Blob Storage szolgáltatással](storage-use-azcopy-blobs-download.md)|
+|Azure Blob Storage |[Fájlok feltöltése az Azure Blob Storage-ba](storage-use-azcopy-blobs-upload.md)<br><br>[Blobok letöltése az Azure Blob Storage-ból](storage-use-azcopy-blobs-download.md)<br><br>[Blobok másolása az Azure Storage-fiókok között](storage-use-azcopy-blobs-copy.md)<br><br>[Szinkronizálás az Azure Blob Storage szolgáltatással](storage-use-azcopy-blobs-synchronize.md)|
 |Azure Files |[Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)|
 |Amazon S3|[Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)|
 |Azure Stack Storage|[Adatok átvitele a AzCopy és a Azure Stack Storage szolgáltatással](/azure-stack/user/azure-stack-storage-transfer#azcopy)|

@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 28e70a5d5a6ac4cd51f5ed3fc85afd47a5af68d8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033272"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108704"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-adathalmazok létrehozása
 
@@ -169,13 +169,46 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|Index|Utasazonosító|Túlélte|Pclass|Name (Név)|szex|Életkor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
+|Index|Utasazonosító|Túlélte|Pclass|Name|szex|Életkor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Hamis|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7,2500||S
-1|2|Igaz|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C#
+1|2|Igaz|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C
 2|3|Igaz|3|Heikkinen, Miss. Laina 's|female|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Az adatkészletek a munkaterületen végzett kísérletek közötti újrafelhasználásához és megosztásához [regisztrálja az adatkészletet](#register-datasets).
+
+
+## <a name="explore-data"></a>Adatok feltárása
+
+Az adatkészlet létrehozása és [regisztrálása](#register-datasets) után a modell betanítása előtt betöltheti a notebookba az adatfeltáráshoz. Ha nem kell adatfeltárást végeznie, olvassa el a következő témakört: adatkészletek használata a betanítási parancsfájlokban ML kísérletek beküldéséhez az [adatkészletekben](how-to-train-with-datasets.md).
+
+A FileDatasets **csatlakoztathatja** vagy **letöltheti** az adatkészletet, és alkalmazhatja azokat a Python-kódtárakat, amelyeket általában az adatfeltáráshoz használ. [További információ a Mount vs letöltésről](how-to-train-with-datasets.md#mount-vs-download).
+
+```python
+# download the dataset 
+dataset.download(target_path='.', overwrite=False) 
+
+# mount dataset to the temp directory at `mounted_path`
+
+import tempfile
+mounted_path = tempfile.mkdtemp()
+mount_context = dataset.mount(mounted_path)
+
+mount_context.start()
+```
+
+A TabularDatasets a metódus használatával [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) tekintheti meg az adatait egy dataframe. 
+
+```python
+# preview the first 3 rows of titanic_ds
+titanic_ds.take(3).to_pandas_dataframe()
+```
+
+|Index|Utasazonosító|Túlélte|Pclass|Name|szex|Életkor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
+-|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
+0|1|Hamis|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7,2500||S
+1|2|Igaz|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C
+2|3|Igaz|3|Heikkinen, Miss. Laina 's|female|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 ## <a name="create-a-dataset-from-pandas-dataframe"></a>Adatkészlet létrehozása a pandák dataframe
 

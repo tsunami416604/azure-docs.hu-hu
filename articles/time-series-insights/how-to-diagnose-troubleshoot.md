@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d9dd07e3a35d83ff6bd9c7c493768d1197667c39
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740538"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108789"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2-környezet diagnosztizálása és megoldása
 
@@ -71,7 +71,7 @@ Előfordulhat, hogy az idősorozat-azonosító nélkül küld adatokat.
 - Ez a probléma akkor fordulhat elő, ha a környezetét szabályozzák.
 
     > [!NOTE]
-    > A Time Series Insights jelenleg legfeljebb 6 Mbps mennyiségű betöltési sebességet támogat.
+    > A Time Series Insights jelenleg legfeljebb 1 Mbps mennyiségű betöltési sebességet támogat.
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>Probléma: az adatmegjelenítés már megtörtént, de most már leállt a betöltés
 
@@ -125,7 +125,7 @@ Ez a probléma akkor fordulhat elő, ha a környezet nem rendelkezik meghatároz
 
   [![A nem szülő példányok figyelmeztetést jelenítenek meg.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el, hogyan [dolgozhat a Time Series-modellekkel](./time-series-insights-overview.md).
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: cd4b0b53cdc818cc942382021c1dff97b22f1243
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 60ae6eb3142f8898f760027d37881ded8261f571
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051615"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108092"
 ---
 # <a name="azure-storage-redundancy"></a>Redundancia az Azure Storage szolgáltatásban
 
@@ -155,6 +155,7 @@ Az alábbi táblázat az egyes redundancia-beállítások főbb paramétereit is
 | Objektumok tartóssága az adott évben | legalább 99,999999999% (11 9) | legalább 99,9999999999% (12 9) | legalább 99.99999999999999% (16 9) | legalább 99.99999999999999% (16 9) |
 | Olvasási kérelmek rendelkezésre állása | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) a GRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GRS | Legalább 99,9% (99% a lassú elérési szinthez) a GZRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GZRS |
 | Írási kérelmek rendelkezésre állása | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) |
+| A külön csomópontokon fenntartott adatmásolatok száma.                             | 3   | 3   | 6   | 6      |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>Tartósság és rendelkezésre állás leállás esetén
 
@@ -162,8 +163,8 @@ Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e 
 
 | Kimaradási forgatókönyv | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
-| Az adatközpontban lévő csomópont elérhetetlenné válik | Igen | Igen | Igen | Igen |
-| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | Nem | Igen | Igen<sup>1</sup> | Igen |
+| Az adatközpontban lévő csomópont elérhetetlenné válik | Igen | Igen | Igen | Yes |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | Nem | Igen | Igen<sup>1</sup> | Yes |
 | Az elsődleges régióban az egész régióra kiterjedő leállás következik be | Nem | Nem | Igen<sup>1</sup> | Igen<sup>1</sup> |
 | A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem | Nem | Igen (az RA-GRS-vel) | Igen (az RA-GZRS-vel) |
 

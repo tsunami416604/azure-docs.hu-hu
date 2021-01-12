@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2a614e48b7f250bfea92c1c98c204eeae07f3eab
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 9c0a0cb2cf6e291c42d72d6f46ff28b4d3fbf405
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052805"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109380"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -72,8 +72,9 @@ Szúrja be a kódot a alá `IntentRecognizer` . Győződjön meg arról, hogy a 
 Ez a példa a `addIntent()` függvényt használja egyéni leképezések hozzáadására. Ha egy modellből kívánja felvenni az összes leképezést, használja `addAllIntents(model)` és adja át a modellt.
 
 > [!NOTE]
-> Létrehozhat egy LanguageUnderstandingModel a végpont URL-címének a FromEndpoint metódusba való átadásával.
-> A Speech SDK csak a LUIS 2.0-s végpontokat támogatja, és a LUIS v 2.0-végpontok mindig az alábbi két minta egyikét követik:
+> A Speech SDK csak a LUIS v 2.0-végpontokat támogatja.
+> A példa lekérdezési mezőben található v 3.0 végpont URL-címet manuálisan kell módosítani, hogy a v 2.0 URL-mintát használja.
+> A LUIS v 2.0-végpontok mindig az alábbi két minta egyikét követik:
 > * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 > * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
@@ -113,6 +114,6 @@ Ezen a ponton a kódnak így kell kinéznie:
 Nyomja le az <kbd>F11</kbd>billentyűt, vagy válassza a   >  **hibakeresés** futtatása lehetőséget.
 A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felismeri, és a konzolablakban naplózza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

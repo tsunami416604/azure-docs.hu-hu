@@ -3,21 +3,21 @@ title: 'Rövid útmutató: hitelesítés hozzáadása egy Node-webalkalmazáshoz
 titleSuffix: Microsoft identity platform
 description: Ebből a rövid útmutatóból megtudhatja, hogyan valósítható meg a hitelesítés egy Node.js webalkalmazással és a Microsoft Authentication Library (MSAL) szolgáltatással a Node.jshoz.
 services: active-directory
-author: amikuma
-manager: saeeda
+author: mmacy
+manager: celested
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/22/2020
-ms.author: amikuma
+ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 09ffe9948d14d0529756abd44c989dd83602b270
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7fc76259f30f96d95c63b7e9369ec5e9647d923e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011764"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107446"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy Node-webalkalmazásban az Auth Code flow használatával
 
@@ -139,7 +139,7 @@ A MSAL-csomópont könyvtára aláírja a felhasználókat, és a Microsoft Iden
 npm install @azure/msal-node
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hitelesítés hozzáadása meglévő webalkalmazáshoz – GitHub-mintakód >](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/auth-code)

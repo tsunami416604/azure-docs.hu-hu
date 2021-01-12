@@ -3,12 +3,12 @@ title: Támogatott nyelvek a Azure Functions
 description: Megtudhatja, hogy mely nyelvek támogatottak (GA), és melyek előzetes verzióban érhetők el, és hogyan bővíthetők a függvények fejlesztése más nyelvekre.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da3100521faae61e9803aaa82dbf91045a7ecbc9
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83994901"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108551"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Támogatott nyelvek a Azure Functions
 
@@ -27,15 +27,15 @@ Két támogatási szint létezik:
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-## <a name="custom-handlers-preview"></a>Egyéni kezelők (előzetes verzió) 
+## <a name="custom-handlers"></a>Egyéni kezelők
 
-Az egyéni kezelők olyan egyszerű webkiszolgálók, amelyek a Azure Functions gazdagépről kapnak eseményeket. Minden olyan nyelv, amely támogatja a HTTP primitíveket, egyéni kezelőt valósíthat meg. Ez azt jelenti, hogy az egyéni kezelők a nem hivatalosan támogatott nyelveken is létrehozhatnak függvényeket. További információ: [Azure functions egyéni kezelők (előzetes verzió)](functions-custom-handlers.md).
+Az egyéni kezelők olyan egyszerű webkiszolgálók, amelyek a Azure Functions gazdagépről kapnak eseményeket. Minden olyan nyelv, amely támogatja a HTTP primitíveket, egyéni kezelőt valósíthat meg. Ez azt jelenti, hogy az egyéni kezelők a nem hivatalosan támogatott nyelveken is létrehozhatnak függvényeket. További információ: [Azure functions egyéni kezelők](functions-custom-handlers.md).
 
 ## <a name="language-extensibility"></a>Nyelvi bővíthetőség
 
 A 2. x verziótól kezdődően a futtatókörnyezet [nyelvi bővíthetőséget](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)kínál. A 2. x futtatókörnyezetben található JavaScript-és Java-nyelvek ezzel a bővíthetőséggel vannak felépítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a függvények a támogatott nyelveken való fejlesztéséről, tekintse meg a következő forrásokat:
 

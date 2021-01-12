@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: ea71cd4e235923c48c7c5b5269eb8f58d4c349d1
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: fc4830e89d71c387afc1c7bc7fbc81608dfeb592
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560797"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109408"
 ---
 <a name="HOLTop"></a>
 
@@ -41,6 +41,12 @@ Az ügyféloldali kódtár a használatával telepíthető:
 
 ```console
 pip install --upgrade azure-cognitiveservices-vision-computervision
+```
+
+Telepítse a párna könyvtárat is.
+
+```console
+pip install pillow
 ```
 
 ### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
@@ -212,7 +218,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 > [!div class="nextstepaction"]
 > [](?success=clean-up-resources#next-steps) [Egy hibába ütközött az](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) erőforrások
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythonhoz készült Computer Vision kódtárat a feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 

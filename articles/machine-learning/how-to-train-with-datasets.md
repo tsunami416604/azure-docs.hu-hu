@@ -12,19 +12,21 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740674"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108590"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 
 
-Ebből a cikkből megtudhatja, hogyan dolgozhat [Azure Machine learning adatkészletekkel](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) a betanítási kísérletekben.  Az adatkészleteket a helyi vagy távoli számítási célhelyen is használhatja, és nem kell aggódnia a kapcsolatok karakterláncai vagy az adatelérési utak miatt.
+Ebből a cikkből megtudhatja, hogyan dolgozhat [Azure Machine learning adatkészletekkel](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) a gépi tanulási modellek betanításához.  Az adatkészleteket a helyi vagy távoli számítási célhelyen is használhatja, és nem kell aggódnia a kapcsolatok karakterláncai vagy az adatelérési utak miatt. 
 
 Azure Machine Learning adatkészletek zökkenőmentes integrációt biztosítanak Azure Machine Learning képzési funkciókkal, például a [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), a [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) és a [Azure Machine learning folyamatokkal](how-to-create-your-first-pipeline.md).
+
+Ha nem áll készen arra, hogy az adatokat a modell betanításához is elérhetővé tegye, de az adatokat a jegyzetfüzetbe szeretné betölteni az adatfeltáráshoz, olvassa el [az adatkészletben található információk megismerése című részt](how-to-create-register-datasets.md#explore-data). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +36,7 @@ Az adatkészletek létrehozásához és betanításához a következők szüksé
 
 * Egy [Azure Machine learning munkaterület](how-to-manage-workspace.md).
 
-* A [Azure Machine learning SDK for Python telepítve](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0), amely tartalmazza a azureml-adatkészletek csomagot.
+* A [Azure Machine learning SDK for Python telepítve](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0), amely tartalmazza a `azureml-datasets` csomagot.
 
 > [!Note]
 > Egyes adatkészlet-osztályok függőségei vannak a [azureml-adatelőkészítés](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) csomagon. A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
@@ -65,7 +67,7 @@ A következő kód egy parancsfájl-argumentumot konfigurál `--input-data` , am
 > [!Note]
 > Ha az eredeti adatforrás NaN, üres karakterláncokat vagy üres értékeket tartalmaz, a használatakor `to_pandas_dataframe()` ezek az értékek *Null* értékként lesznek lecserélve.
 
-Ha be kell töltenie az előkészített adatokat egy memóriából származó pandák dataframe egy új adatkészletbe, írja az adatokat egy helyi fájlba, például egy parkettára, és hozzon létre egy új adatkészletet a fájlból. Létrehozhat adatkészleteket helyi fájlokból vagy adattárolók elérési útjaiból is. További információ az [adatkészletek létrehozásáról](how-to-create-register-datasets.md).
+Ha be kell töltenie az előkészített adatokat egy memóriából származó pandák dataframe egy új adatkészletbe, írja az adatokat egy helyi fájlba, például egy parkettára, és hozzon létre egy új adatkészletet a fájlból. További információ az [adatkészletek létrehozásáról](how-to-create-register-datasets.md).
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -285,7 +287,7 @@ Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmego
     Ha nem tartalmazza a Lead Forward perjelet, a "/" előtagot kell létrehoznia a munkakönyvtárhoz, például a `/mnt/batch/.../tmp/dataset` számítási célra, hogy jelezze, hová szeretné csatlakoztatni az adatkészletet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gépi tanulási modellek automatikus tanítása](how-to-auto-train-remote.md) a TabularDatasets.
 

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 86e84c60aec99246f58b5dc9d67584b23a3969f3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: dddaad3e171c757b353deb81ffcb77cfbe706340
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394925"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108262"
 ---
 # <a name="track-data-changes-in-azure-sql-edge"></a>Az adatváltozások nyomon követése az Azure SQL Edge-ben
 
@@ -36,6 +36,9 @@ A szolgáltatás felügyeletéhez és figyeléséhez lásd: [az adatváltozások
 
 A módosított adatmennyiségek lekérdezéséről és használatáról további információt az [adatváltozások kezelésével foglalkozó](/sql/relational-databases/track-changes/work-with-change-data-sql-server)témakörben talál.
 
+> [!NOTE]
+> Az Azure SQL Edge nem támogatja az olyan adatrögzítési függvények módosítását, amelyek CLR-tól függenek.
+
 ## <a name="change-tracking"></a>Változások követése
 
 A funkció működésének részletes ismertetését lásd: [a Change Tracking](/sql/relational-databases/track-changes/about-change-tracking-sql-server)ismertetése.
@@ -48,7 +51,7 @@ A módosított adatmennyiségek lekérdezéséről és használatáról további
 
 ## <a name="temporal-tables"></a>Historikus táblák
 
-Az Azure SQL Edge a SQL Server időbeli táblázatok funkcióját is támogatja. Ez a funkció (más néven *rendszerverzióval ellátott időszakos táblázatok* ) beépített támogatást nyújt a táblázatban tárolt adatokkal kapcsolatos információk biztosításához. A funkció nem csupán az aktuális időpontnál helyes adatokról nyújt információt.
+Az Azure SQL Edge a SQL Server időbeli táblázatok funkcióját is támogatja. Ez a funkció (más néven *rendszerverzióval ellátott időszakos táblázatok*) beépített támogatást nyújt a táblázatban tárolt adatokkal kapcsolatos információk biztosításához. A funkció nem csupán az aktuális időpontnál helyes adatokról nyújt információt.
 
 A rendszerverzióval ellátott időbeli táblázat egy olyan felhasználói tábla, amely az adatváltozások teljes előzményeinek megtartására szolgál, és lehetővé teszi az egyszerű időponton belüli elemzést. Az ilyen típusú ideiglenes táblát rendszerverzióval ellátott időbeli táblázatnak nevezzük, mert az egyes sorok érvényességi idejét a rendszer (azaz az adatbázismotor) kezeli.
 
@@ -58,7 +61,7 @@ Ezen időszak oszlopain kívül egy időbeli táblázat egy másik, tükrözött
 
 További információ: [időbeli táblák](/sql/relational-databases/tables/temporal-tables).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Adatfolyamok az Azure SQL Edge-ben ](stream-data.md)
 - [Gépi tanulás és AI a ONNX az Azure SQL Edge-ben ](onnx-overview.md)

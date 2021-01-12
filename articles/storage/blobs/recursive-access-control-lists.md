@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 01/11/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: fcee4fd12b63a0f558927269d926bac9af864488
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 4abf8e3411860abbff91b0b7cf2774d2692b0f80
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059755"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108432"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) rekurzív beállítása Azure Data Lake Storage Gen2
 
@@ -258,22 +258,7 @@ Ez a legegyszerűbb módszer a fiókhoz való kapcsolódásra.
 
 Ez a példa egy **DataLakeServiceClient** -példányt hoz létre a fiók kulcsa alapján.
 
-```java
-
-static public DataLakeServiceClient GetDataLakeServiceClient
-(String accountName, String accountKey){
-
-    StorageSharedKeyCredential sharedKeyCredential =
-        new StorageSharedKeyCredential(accountName, accountKey);
-
-    DataLakeServiceClientBuilder builder = new DataLakeServiceClientBuilder();
-
-    builder.credential(sharedKeyCredential);
-    builder.endpoint("https://" + accountName + ".dfs.core.windows.net");
-
-    return builder.buildClient();
-}      
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/Authorize_DataLake.java" id="Snippet_AuthorizeWithKey":::
 
 #### <a name="connect-by-using-azure-active-directory-azure-ad"></a>Kapcsolat Azure Active Directory (Azure AD) használatával
 
@@ -281,22 +266,7 @@ A [Javához készült Azure Identity ügyféloldali kódtár](https://github.com
 
 Ez a példa egy **DataLakeServiceClient** -példányt hoz létre egy ügyfél-azonosítóval, egy ügyfél-titkos kulccsal és egy BÉRLŐi azonosítóval.  Az értékek [lekéréséhez lásd: token beszerzése az Azure ad-ből az ügyfélalkalmazások kéréseinek engedélyezéséhez](../common/storage-auth-aad-app.md).
 
-```java
-static public DataLakeServiceClient GetDataLakeServiceClient
-    (String accountName, String clientId, String ClientSecret, String tenantID){
-
-    String endpoint = "https://" + accountName + ".dfs.core.windows.net";
-        
-    ClientSecretCredential clientSecretCredential = new ClientSecretCredentialBuilder()
-    .clientId(clientId)
-    .clientSecret(ClientSecret)
-    .tenantId(tenantID)
-    .build();
-           
-    DataLakeServiceClientBuilder builder = new DataLakeServiceClientBuilder();
-    return builder.credential(clientSecretCredential).endpoint(endpoint).buildClient();
- } 
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/Authorize_DataLake.java" id="Snippet_AuthorizeWithAzureAD":::
 
 > [!NOTE]
 > További példákért tekintse meg a Java-dokumentációhoz készült [Azure Identity ügyféloldali kódtárat](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity) .
@@ -386,7 +356,7 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 ```
 
 > [!NOTE]
-> Ha **alapértelmezett** ACL-bejegyzést kíván beállítani, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Például: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
+> Ha **alapértelmezett** ACL-bejegyzést kíván beállítani, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Példa: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
 
 Ha egy köteg méretének megadásával szeretné megtekinteni egy olyan példát, amely az ACL-eket rekurzív módon állítja be a kötegekben, tekintse meg a [set-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/set-azdatalakegen2aclrecursive) című cikket.
 
@@ -423,68 +393,7 @@ Ha **alapértelmezett** ACL-bejegyzést kíván beállítani, akkor meghívhatja
 
 Ez a példa egy nevű könyvtár ACL-listáját állítja be `my-parent-directory` . Ez a metódus egy nevű logikai paramétert fogad `isDefaultScope` el, amely megadja, hogy az alapértelmezett ACL-t kell-e beállítani. Ez a paraméter a [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) **setDefaultScope** metódusának minden hívásában használatos. Az ACL bejegyzései az olvasási, írási és végrehajtási engedélyeket biztosítanak a tulajdonosnak a tulajdonos csoport számára, és csak olvasási és végrehajtási engedélyeket biztosítanak, és minden más felhasználónak nincs hozzáférése. Ebben a példában az utolsó ACL-bejegyzés egy adott felhasználót ad meg az "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" AZONOSÍTÓJÚ objektumhoz olvasási és végrehajtási engedélyekkel.
 
-```java
-static public void SetACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
-    
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-parent-directory");
-
-    List<PathAccessControlEntry> pathAccessControlEntries = 
-        new ArrayList<PathAccessControlEntry>();
-
-    // Create owner entry.
-    PathAccessControlEntry ownerEntry = new PathAccessControlEntry();
-
-    RolePermissions ownerPermission = new RolePermissions();
-    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
-
-    ownerEntry.setDefaultScope(isDefaultScope);
-    ownerEntry.setAccessControlType(AccessControlType.USER);
-    ownerEntry.setPermissions(ownerPermission);
-
-    pathAccessControlEntries.add(ownerEntry);
-
-    // Create group entry.
-    PathAccessControlEntry groupEntry = new PathAccessControlEntry();
-
-    RolePermissions groupPermission = new RolePermissions();
-    groupPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(false);
-
-    groupEntry.setDefaultScope(isDefaultScope);
-    groupEntry.setAccessControlType(AccessControlType.GROUP);
-    groupEntry.setPermissions(groupPermission);
-
-    pathAccessControlEntries.add(groupEntry);
-
-    // Create other entry.
-    PathAccessControlEntry otherEntry = new PathAccessControlEntry();
-
-    RolePermissions otherPermission = new RolePermissions();
-    otherPermission.setExecutePermission(false).setReadPermission(false).setWritePermission(false);
-
-    otherEntry.setDefaultScope(isDefaultScope);
-    otherEntry.setAccessControlType(AccessControlType.OTHER);
-    otherEntry.setPermissions(otherPermission);
-
-    pathAccessControlEntries.add(otherEntry);
-
-    // Create named user entry.
-    PathAccessControlEntry userEntry = new PathAccessControlEntry();
-
-    RolePermissions userPermission = new RolePermissions();
-    userPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(false);
-
-    userEntry.setDefaultScope(isDefaultScope);
-    userEntry.setAccessControlType(AccessControlType.USER);
-    userEntry.setEntityId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx");
-    userEntry.setPermissions(userPermission);    
-    
-    pathAccessControlEntries.add(userEntry);
-    
-    directoryClient.setAccessControlRecursive(pathAccessControlEntries);        
-
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_SetACLRecursively":::
 
 ### <a name="python"></a>[Python](#tab/python)
 
@@ -547,7 +456,7 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 ```
 
 > [!NOTE]
-> Ha frissíteni szeretné az **alapértelmezett** ACL-bejegyzést, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Például: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`.
+> Ha frissíteni szeretné az **alapértelmezett** ACL-bejegyzést, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Példa: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`.
 
 Ha egy olyan példát szeretne látni, amely egy köteg méretének megadásával rekurzívan frissíti a ACL-eket, tekintse meg az [Update-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/update-azdatalakegen2aclrecursive) Reference című cikket.
 
@@ -584,31 +493,7 @@ Ha frissíteni szeretné az **alapértelmezett** ACL-bejegyzést, akkor a [PathA
 
 Ez a példa egy írási engedéllyel rendelkező ACL-bejegyzést frissít. Ez a metódus egy nevű logikai paramétert fogad `isDefaultScope` el, amely megadja, hogy frissíteni kell-e az alapértelmezett ACL-t. Ez a paraméter a [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) **setDefaultScope** metódusának hívásakor használatos. 
 
-```java
-static public void UpdateACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
-
-    DataLakeDirectoryClient directoryClient =
-    fileSystemClient.getDirectoryClient("my-parent-directory");
-
-    List<PathAccessControlEntry> pathAccessControlEntries = 
-        new ArrayList<PathAccessControlEntry>();
-
-    // Create named user entry.
-    PathAccessControlEntry userEntry = new PathAccessControlEntry();
-
-    RolePermissions userPermission = new RolePermissions();
-    userPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
-
-    userEntry.setDefaultScope(isDefaultScope);
-    userEntry.setAccessControlType(AccessControlType.USER);
-    userEntry.setEntityId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx");
-    userEntry.setPermissions(userPermission);    
-    
-    pathAccessControlEntries.add(userEntry);
-    
-    directoryClient.updateAccessControlRecursive(pathAccessControlEntries);          
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_UpdateACLRecursively":::
 
 ### <a name="python"></a>[Python](#tab/python)
 
@@ -667,7 +552,7 @@ Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Ac
 ```
 
 > [!NOTE]
-> Ha el szeretné távolítani az **alapértelmezett** ACL-bejegyzést, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Például: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`.
+> Ha el szeretné távolítani az **alapértelmezett** ACL-bejegyzést, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Példa: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`.
 
 Ha egy batch-méret megadásával szeretné megtekinteni a ACL-ek rekurzív eltávolítását a batchs szolgáltatásban, tekintse meg a [Remove-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/remove-azdatalakegen2aclrecursive) Reference című cikket.
 
@@ -704,32 +589,7 @@ Ha el kívánja távolítani egy **alapértelmezett** ACL-bejegyzést, akkor a P
 
 Ez a példa egy ACL-bejegyzést távolít el a nevű könyvtár ACL-listájából `my-parent-directory` . Ez a metódus egy nevű logikai paramétert fogad `isDefaultScope` el, amely megadja, hogy el kell-e távolítani a bejegyzést az alapértelmezett ACL-ből. Ez a paraméter a [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) **setDefaultScope** metódusának hívásakor használatos.
 
-
-```java
-static public void RemoveACLRecursively(DataLakeFileSystemClient fileSystemClient, Boolean isDefaultScope){
-
-    DataLakeDirectoryClient directoryClient =
-    fileSystemClient.getDirectoryClient("my-parent-directory");
-
-    List<PathRemoveAccessControlEntry> pathRemoveAccessControlEntries = 
-        new ArrayList<PathRemoveAccessControlEntry>();
-
-    // Create named user entry.
-    PathRemoveAccessControlEntry userEntry = new PathRemoveAccessControlEntry();
-
-    RolePermissions userPermission = new RolePermissions();
-    userPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
-
-    userEntry.setDefaultScope(isDefaultScope);
-    userEntry.setAccessControlType(AccessControlType.USER);
-    userEntry.setEntityId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"); 
-    
-    pathRemoveAccessControlEntries.add(userEntry);
-    
-    directoryClient.removeAccessControlRecursive(pathRemoveAccessControlEntries);      
-
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_RemoveACLRecursively":::
 
 ### <a name="python"></a>[Python](#tab/python)
 
@@ -804,36 +664,7 @@ Ha egy köteg méretének megadásával szeretné megtekinteni egy olyan példá
 
 Ez a példa egy folytatási tokent ad vissza egy hiba esetén. Az alkalmazás a hiba megoldását követően újra meghívhatja ezt a metódust, és a folytatási tokent adja át. Ha ezt a példát a rendszer első alkalommal hívja meg, akkor az alkalmazás a `null` folytatási jogkivonat paraméter értékét átadja. 
 
-```java
-static public String ResumeSetACLRecursively(DataLakeFileSystemClient fileSystemClient,
-DataLakeDirectoryClient directoryClient,
-List<PathAccessControlEntry> accessControlList, 
-String continuationToken){
-
-    try{
-        PathSetAccessControlRecursiveOptions options = new PathSetAccessControlRecursiveOptions(accessControlList);
-        
-        options.setContinuationToken(continuationToken);
-    
-        Response<AccessControlChangeResult> accessControlChangeResult =  
-            directoryClient.setAccessControlRecursiveWithResponse(options, null, null);
-
-        if (accessControlChangeResult.getValue().getCounters().getFailedChangesCount() > 0)
-        {
-            continuationToken =
-                accessControlChangeResult.getValue().getContinuationToken();
-        }
-    
-        return continuationToken;
-
-    }
-    catch(Exception ex){
-    
-        System.out.println(ex.toString());
-        return continuationToken;
-    }
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_ResumeSetACLRecursively":::
 
 ### <a name="python"></a>[Python](#tab/python)
 
@@ -906,31 +737,7 @@ Annak érdekében, hogy a folyamat zavartalanul befejeződjön, hívja meg a [Pa
 
 Ez a példa az ACL-bejegyzéseket rekurzív módon állítja be. Ha ez a kód egy engedélyezési hibát észlel, akkor a hibát rögzíti, és folytatja a végrehajtást. Ez a példa a hibák számát jeleníti meg a konzolon. 
 
-```java
-static public void ContinueOnFailure(DataLakeFileSystemClient fileSystemClient,
-DataLakeDirectoryClient directoryClient,
-List<PathAccessControlEntry> accessControlList){
-    
-    PathSetAccessControlRecursiveOptions options = 
-        new PathSetAccessControlRecursiveOptions(accessControlList);
-        
-    options.setContinueOnFailure(true);
-    
-    Response<AccessControlChangeResult> accessControlChangeResult =  
-        directoryClient.setAccessControlRecursiveWithResponse(options, null, null);
-
-    AccessControlChangeCounters counters = accessControlChangeResult.getValue().getCounters();
-
-    System.out.println("Number of directories changes: " + 
-        counters.getChangedDirectoriesCount());
-
-    System.out.println("Number of files changed: " + 
-        counters.getChangedDirectoriesCount());
-
-    System.out.println("Number of failures: " + 
-        counters.getChangedDirectoriesCount());
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_ContinueOnFailure":::
 
 ### <a name="python"></a>[Python](#tab/python)
 
@@ -962,7 +769,7 @@ Ha egy köteg méretének megadásával szeretné megtekinteni, hogy a rendszer 
 
 ---
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 Ez a szakasz a kódtárak és a kód mintáinak hivatkozásait tartalmazza.
 

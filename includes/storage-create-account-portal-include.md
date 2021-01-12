@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 01/11/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: f8959904482bda8dc26e4df626377027e1ab4bd1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3da4fd26b3f985e034ca60039c09412e8237e965
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005544"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109345"
 ---
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
@@ -26,10 +26,9 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 1. Válasszon teljesítményszint-szintet. Az alapértelmezett szint a *standard*.
 1. Állítsa a **Fiók típusa** mezőt a *Storage v2 (általános célú v2)* értékre.
 1. Annak meghatározása, hogy a rendszer hogyan replikálja a Storage-fiókot. Az alapértelmezett replikációs beállítás a következő: *olvasási hozzáférés geo-redundáns tárolás (ra-GRS)*. Az elérhető replikációs lehetőségekkel kapcsolatos további információkért lásd: [Azure Storage redundancia](../articles/storage/common/storage-redundancy.md).
-1. Határozza meg a Blobok hozzáférési szintjét a Storage-fiókban. Az alapértelmezett szint a *gyors*. A blob-hozzáférési rétegekkel kapcsolatos további információkért lásd: gyakori [, ritka elérésű és archív hozzáférési szintek a blobokhoz](../articles/storage/blobs/storage-blob-storage-tiers.md).
-1. A Azure Data Lake Storage használatához válassza a **speciális** fület, majd állítsa be a **hierarchikus névteret** **engedélyezve** értékre. További információ: [Azure Data Lake Storage Gen2 bevezetés](../articles/storage/blobs/data-lake-storage-introduction.md)
+1. A **hálózatkezelés**, az **Adatvédelem**, a **speciális** és a **címkék** lapon további beállítások érhetők el. A Azure Data Lake Storage használatához válassza a **speciális** fület, majd állítsa be a **hierarchikus névteret** **engedélyezve** értékre. További információ: [Azure Data Lake Storage Gen2 bevezetés](../articles/storage/blobs/data-lake-storage-introduction.md)
 1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Az alábbi képen az új Storage-fiók **alapjai** lapon található beállítások láthatók:
 

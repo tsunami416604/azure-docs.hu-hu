@@ -1,28 +1,28 @@
 ---
 title: Azure Policy-bővítmény a Visual Studio Code-hoz
 description: Megtudhatja, hogyan kereshet Azure Resource Manager aliasokat a Visual Studio Code-hoz készült Azure Policy bővítmény használatával.
-ms.date: 10/20/2020
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8c7357d70323fa74ec77cf43bd11f149a2f99154
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906301"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107939"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-bővítmény használata a Visual Studio Code-hoz
 
-> A Azure Policy bővítmény **0.1.0** és újabb verziójára vonatkozik
+> A Azure Policy bővítmény **0.1.1** és újabb verziójára vonatkozik
 
 Megtudhatja, hogyan használhatja a Visual Studio Code Azure Policy bővítményét az [aliasok](../concepts/definition-structure.md#aliases)keresésére, az erőforrások és a házirendek áttekintésére, az objektumok exportálására és a szabályzat-definíciók kiértékelésére. Először is leírjuk, hogyan kell telepíteni a Azure Policy bővítményt a Visual Studio Code-ban. Ezután megismerheti az aliasok keresésének módját.
 
-A Visual Studio Code-hoz készült Azure Policy-bővítmény a Visual Studio Code által támogatott összes platformon telepíthető. Ez a támogatás magában foglalja a Windows, a Linux és a macOS rendszer használatát.
+A Visual Studio Code Azure Policy-bővítmény telepíthető Windows rendszerre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikk lépéseinek végrehajtásához a következő elemek szükségesek:
 
-- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 - [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-and-configure-the-azure-policy-extension"></a>Az Azure Policy-bővítmény telepítése és konfigurálása
@@ -30,7 +30,7 @@ A cikk lépéseinek végrehajtásához a következő elemek szükségesek:
 Az előfeltételek teljesítése után a következő lépésekkel telepítheti Azure Policy-bővítményt a Visual Studio Code-hoz:
 
 1. Nyissa meg a Visual Studio Code-ot.
-1. A menüsávban lépjen a **View**  >  **bővítmények** megtekintése elemre.
+1. A menüsávban lépjen a   >  **bővítmények** megtekintése elemre.
 1. A keresőmezőbe írja be a **Azure Policy** kifejezést.
 1. Válassza a **Azure Policy** elemet a keresési eredmények közül, majd válassza a **telepítés** lehetőséget.
 1. Szükség esetén válassza az **Újratöltés** lehetőséget.
@@ -62,7 +62,7 @@ Az erőforrások és a keresési aliasok kiértékeléséhez csatlakoznia kell a
 
    - Parancs paletta
 
-     A menüsávban lépjen a parancs- **View**  >  **paletta** megtekintése elemre, és írja be az **Azure: bejelentkezés** lehetőséget.
+     A menüsávban lépjen a parancs-   >  **paletta** megtekintése elemre, és írja be az **Azure: bejelentkezés** lehetőséget.
 
      :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Képernyőkép a Visual Studio Code-hoz készült Azure Cloud bejelentkezési lehetőségeiről a parancs palettáján." border="false":::
 
@@ -76,7 +76,7 @@ Amikor először jelentkezik be, csak az alapértelmezett előfizetési erőforr
 
    - Parancs paletta:
 
-     A menüsávban lépjen a parancs- **View** > **paletta** megtekintése elemre, és írja be az **Azure: Select Subscriptions (előfizetések) lehetőséget**.
+     A menüsávban lépjen a parancs-  > **paletta** megtekintése elemre, és írja be az **Azure: Select Subscriptions (előfizetések) lehetőséget**.
 
    - Ablak lábléce
 
@@ -105,7 +105,7 @@ Az egyes előfizetésekben több száz vagy több ezer erőforrást használó �
 
    - Parancs paletta:
 
-     A menüsávban lépjen a parancs- **View** > **paletta** megtekintése elemre, és adja meg az **erőforrások: erőforrások keresése** lehetőséget.
+     A menüsávban lépjen a parancs-  > **paletta** megtekintése elemre, és adja meg az **erőforrások: erőforrások keresése** lehetőséget.
 
 1. Ha egynél több előfizetés van kiválasztva a megjelenítéshez, használja a szűrőt a keresendő előfizetés kiválasztásához.
 
@@ -136,7 +136,7 @@ A Azure Policy bővítmény a házirendek ablaktáblán megjelenítendő előfiz
 
    - Parancs paletta:
 
-     A menüsávban lépjen a parancs- **View** > **paletta** megtekintése elemre, és adja meg a **szabályzatok: keresési házirendek** elemet.
+     A menüsávban lépjen a parancs-  > **paletta** megtekintése elemre, és adja meg a **szabályzatok: keresési házirendek** elemet.
 
 1. Ha egynél több előfizetés van kiválasztva a megjelenítéshez, használja a szűrőt a keresendő előfizetés kiválasztásához.
 
@@ -198,7 +198,7 @@ A kiértékelési eredmények a **policyEvaluations. evaluationResult** tulajdon
 
 ### <a name="sign-out"></a>Kijelentkezés
 
-A menüsávban válassza a parancs- **View**  >  **paletta** megtekintése elemet, majd írja be az **Azure: kijelentkezés** lehetőséget.
+A menüsávban válassza a parancs-   >  **paletta** megtekintése elemet, majd írja be az **Azure: kijelentkezés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5af4eb931015e386e35470f2b36341e15f76150f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065405"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108192"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -135,7 +135,7 @@ A App Service Environment (a bemutató) QnA Maker app Service üzemeltetésére 
     * Tekintse át az App Service konfigurációját, és adja hozzá az "PrimaryEndpointKey" beállítást. A "PrimaryEndpointKey" értéket a "-PrimaryEndpointKey" értékre kell beállítani \<app-name\> . Az alkalmazás neve az App Service URL-címében van meghatározva. Ha például az App Service URL-címe "mywebsite.myase.p.azurewebsite.net", akkor az alkalmazás neve "mywebsite". Ebben az esetben a "PrimaryEndpointKey" értéket a "mywebsite-PrimaryEndpointKey" értékre kell beállítani.
     * Hozzon létre egy Azure Search szolgáltatást.
     * Győződjön meg arról, hogy a Azure Search és az Alkalmazásbeállítások megfelelően vannak konfigurálva. 
-      Kérjük, kövesse ezt az [oktatóanyagot](https://docs.microsoft.com/azure/cognitiveservices/qnamaker/reference-app-service#app-service).
+      Kérjük, kövesse ezt az [oktatóanyagot](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service).
 3.  A App Service Environment társított hálózati biztonsági csoport frissítése
     * Frissítse az előre létrehozott bejövő biztonsági szabályokat az igényeinek megfelelően.
     * Vegyen fel egy új bejövő biztonsági szabályt a forrásként a "Service tag" és a forrásoldali szolgáltatás címkével "CognitiveServicesManagement" néven.

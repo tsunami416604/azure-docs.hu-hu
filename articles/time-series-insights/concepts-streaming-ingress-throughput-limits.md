@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8be18049e6ae74a198f5885a46b70df581e0cd7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7496a7a40df49fa1b9f8410526cb9ec00c10478b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187459"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108772"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Adatfolyam-betöltési átviteli sebesség korlátai
 
@@ -34,7 +34,7 @@ Alapértelmezés szerint a Azure Time Series Insights Gen2 **legfeljebb 1 megab�
 
 > [!TIP]
 >
-> * A legfeljebb 8 MBps sebességű átviteli környezet támogatása kéréssel biztosítható.
+> * A legfeljebb 2 MBps sebességű feltöltési környezet támogatása kéréssel biztosítható.
 > * Vegye fel velünk a kapcsolatot, ha magasabb átviteli sebességre van szüksége egy támogatási jegynek a Azure Portalon keresztüli elküldésével.
 
 * **1. példa:**
@@ -47,10 +47,10 @@ Alapértelmezés szerint a Azure Time Series Insights Gen2 **legfeljebb 1 megab�
 
 * **2. példa:**
 
-    A contoso Fleet Analytics 40 000 olyan eszközt tartalmaz, amely másodpercenként egy eseményt bocsát ki. Egy Event hub-t használnak, amelynek a partícióinak száma 2, Azure Time Series Insights Gen2 eseményforrás. Az események mérete 200 bájt.
+    A contoso Fleet Analytics 10 000 olyan eszközt tartalmaz, amely másodpercenként egy eseményt bocsát ki. Egy Event hub-t használnak, amelynek a partícióinak száma 2, Azure Time Series Insights Gen2 eseményforrás. Az események mérete 200 bájt.
 
-  * A környezet betöltési sebessége a következő: **40 000 eszköz * 200 bájt/esemény * 1 esemény/mp = 8 Mbps**.
-    * A kiegyensúlyozott partíciót feltételezve a partíciók aránya 4 MBps.
+  * A környezet betöltési sebessége a következő: **10 000 eszköz * 200 bájt/esemény * 1 esemény/MP = 2 Mbps**.
+    * A kiegyensúlyozott partíciót feltételezve, hogy a partíciók aránya 1 MB/s.
     * A contoso Fleet Analytics betöltési aránya a környezet és a partíciók korlátain alapul. Kérést küldhetnek Azure Time Series Insights Gen2 a Azure Portalon keresztül, hogy növeljék a környezet betöltési arányát, és hozzon létre egy olyan Event hub-t, amely a határértékeken belül több partícióval rendelkezik.
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>Hub-partíciók és partíciós korlátok

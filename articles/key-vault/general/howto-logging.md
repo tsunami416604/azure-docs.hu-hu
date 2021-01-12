@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285642"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108738"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault naplózás engedélyezése
 
@@ -25,20 +25,10 @@ Egy vagy több kulcstartó létrehozása után valószínűleg figyelnie kell a 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy meglévő kulcstároló.  
-* Az Azure CLI vagy Azure PowerShell.
+* [Azure Cloud Shell](https://shell.azure.com) – bash-környezet
 * A Key Vault naplóihoz elegendő tárhely az Azure-ban.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor az Azure CLI 2.0.4 vagy újabb verziójára lesz szüksége. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha a parancssori felülettel szeretne bejelentkezni az Azure-ba, írja be a következőt:
-
-```azurecli-interactive
-az login
-```
-
-Ha a PowerShell helyi telepítése és használata mellett dönt, akkor a Azure PowerShell modul 1.0.0-as vagy újabb verziójára lesz szüksége. `$PSVersionTable.PSVersion`A verzió megkereséséhez írja be a következőt:. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-
-```powershell-interactive
-Connect-AzAccount
-```
+Az útmutató parancsai a bash-környezetek [Cloud Shellhoz](https://shell.azure.com) vannak formázva.
 
 ## <a name="connect-to-your-key-vault-subscription"></a>Kapcsolódás a Key Vault-előfizetéshez
 
@@ -162,7 +152,7 @@ az storage blob list --account-name "<your-unique-storage-account-name>" --conta
 A Azure PowerShell használatával a tárolóban található összes blobot használja a [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) listához, írja be a következőt:
 
 ```powershell
-Get-AzStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
 ```
 
 Ahogy az Azure CLI-parancs vagy az Azure PowerShell-parancsmag kimenetében látható, a Blobok neve a következő: formátumban jelenik meg `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json` . A dátum- és időértékek az UTC hivatkozási időzónát használják.
@@ -178,7 +168,7 @@ az storage blob download --container-name "insights-logs-auditevent" --file <pat
 A Azure PowerShell használatával a [gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) parancsmaggal lekérheti a Blobok listáját, majd a [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent?view=azps-4.7.0) parancsmaghoz tartozó csatornán keresztül letöltheti a naplókat a kiválasztott elérési útra.
 
 ```powershell-interactive
-$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
+$blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
 ```
 
 Ha ezt a második parancsmagot a PowerShellben futtatja, a **/** Blobok neveiben lévő határolójel teljes mappastruktúrát hoz létre a célmappában. Ezt a struktúrát fogja használni a Blobok fájlként való letöltéséhez és tárolásához.
@@ -188,19 +178,19 @@ A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Péld�
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * Ha több erőforráscsoporttal rendelkezik, de csak egyhez szeretne naplókat letölteni, használja a `-Blob '*/RESOURCEGROUPS/<resource group name>/*'` parancsot:
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * Ha a 2019 januári hónapban szeretné letölteni az összes naplót, használja a következőt `-Blob '*/year=2019/m=01/*'` :
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
 Most már készen áll a naplók tartalmának megtekintésére. Mielőtt azonban beköltözünk erre, két további parancsot kell tudnia:

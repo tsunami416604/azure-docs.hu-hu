@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 11/18/2020
-ms.openlocfilehash: c6754e6f0e3f0d6208bd34c96c8bc473429c943c
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: e4917d03e3c0fb8109f9ad9bdcea9e7c1cdcd5df
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917902"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108058"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -122,7 +122,7 @@ A biztonsági mentési tárterület-felhasználás legfeljebb az adatbázis maxi
 
 ## <a name="backup-retention"></a>Biztonsági mentés megőrzése
 
-Az új, visszaállított és másolt adatbázisok esetében a Azure SQL Database és az Azure SQL felügyelt példánya megfelelő biztonsági másolatokat tart fenn, hogy alapértelmezés szerint az elmúlt 7 napban engedélyezze a PITR. A nagy kapacitású-adatbázisok kivételével a 1-35 napos tartományban minden aktív adatbázis [biztonsági mentési megőrzési időszakát módosíthatja](#change-the-pitr-backup-retention-period) . A [biztonsági másolatok tárolásának felhasználásáról](#backup-storage-consumption)a PITR engedélyezéséhez tárolt biztonsági másolatok a megőrzési időtartamnál régebbiek lehetnek. Csak az Azure SQL felügyelt példányai esetében lehet beállítani a PITR biztonsági mentés megőrzési arányát, miután az 0-35 nap tartományba törölte az adatbázist. 
+Az új, visszaállított és másolt adatbázisok esetében a Azure SQL Database és az Azure SQL felügyelt példánya megfelelő biztonsági másolatokat tart fenn, hogy alapértelmezés szerint az elmúlt 7 napban engedélyezze a PITR. A nagy kapacitású és az alapszintű adatbázisok kivételével a 1-35 napos tartományban minden aktív adatbázis [biztonsági mentési megőrzési időszakát módosíthatja](#change-the-pitr-backup-retention-period) . A [biztonsági másolatok tárolásának felhasználásáról](#backup-storage-consumption)a PITR engedélyezéséhez tárolt biztonsági másolatok a megőrzési időtartamnál régebbiek lehetnek. Csak az Azure SQL felügyelt példányai esetében lehet beállítani a PITR biztonsági mentés megőrzési arányát, miután az 0-35 nap tartományba törölte az adatbázist. 
 
 Ha töröl egy adatbázist, a rendszer ugyanúgy tartja a biztonsági mentéseket, mint egy online adatbázis számára a megadott megőrzési időtartammal. Törölt adatbázis biztonsági másolatának megőrzési időszaka nem módosítható.
 

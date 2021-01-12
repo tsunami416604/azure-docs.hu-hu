@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 77fab9c4a52a1d54f548dfbcb35e351195d13bd9
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: bbd7091eb2139801956d77ec8b3ca821c935ac64
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98053009"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109428"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
@@ -189,8 +189,9 @@ Szúrja be a kódot a alá `IntentRecognizer` . Győződjön meg arról, hogy a 
 ```
 
 > [!NOTE]
-> Létrehozhat egy LanguageUnderstandingModel a végpont URL-címének a FromEndpoint metódusba való átadásával.
-> A Speech SDK csak a LUIS 2.0-s végpontokat támogatja, és a LUIS v 2.0-végpontok mindig az alábbi két minta egyikét követik:
+> A Speech SDK csak a LUIS v 2.0-végpontokat támogatja.
+> A példa lekérdezési mezőben található v 3.0 végpont URL-címet manuálisan kell módosítani, hogy a v 2.0 URL-mintát használja.
+> A LUIS v 2.0-végpontok mindig az alábbi két minta egyikét követik:
 > * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 > * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
@@ -289,6 +290,6 @@ Az alkalmazás elindításához kattintson duplán az index.html fájlra, vagy n
 
 Az alkalmazás elindításához nyissa meg a kedvenc webböngészőjét, és mutasson arra a nyilvános URL-címre, amelyen a mappát üzemelteti, adja meg a [Luis-régiót](../../../../regions.md) és a Luis-alkalmazás azonosítóját, és indítson el egy felismerést a mikrofon használatával. Ha be van állítva, a jogkivonat-forrástól kapja meg a tokent, és megkezdi a kimondott parancsok felismerését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](footer.md)]

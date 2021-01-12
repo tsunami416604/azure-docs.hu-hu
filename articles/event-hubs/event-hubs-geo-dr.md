@@ -3,12 +3,12 @@ title: Földrajzi katasztrófa-helyreállítás – Azure Event Hubs | Microsoft
 description: A földrajzi régiók használata a feladatátvételhez és a vész-helyreállítási műveletek végrehajtásához az Azure-ban Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e10ac5847a38190c8feaae5e51f9b55bee4c4fbc
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 8824334e762237c3f18cb763d5b39fa55d6415a3
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861468"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108488"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geo-vész-helyreállítás 
 
@@ -54,10 +54,10 @@ Az elsődleges és a másodlagos névterek következő kombinációi támogatott
 
 | Elsődleges névtér | Másodlagos névtér | Támogatott | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Igen | 
-| Standard | Dedikált | Igen | 
-| Dedikált | Dedikált | Igen | 
-| Dedikált | Standard | Nem | 
+| Standard | Standard | Yes | 
+| Standard | Dedikált | Yes | 
+| Dedikált | Dedikált | Yes | 
+| Dedikált | Standard | No | 
 
 > [!NOTE]
 > Ugyanahhoz a dedikált fürthöz tartozó névtereket nem lehet párosítani. A különálló fürtökben található névtereket is párosíthatja. 
@@ -70,7 +70,29 @@ A következő szakasz áttekintést nyújt a feladatátvételi folyamatról, és
 
 ### <a name="setup"></a>Telepítés
 
-Először hozzon létre vagy használjon egy meglévő elsődleges névteret, és egy új másodlagos névteret, és párosítsa a kettőt. Ez a párosítás egy aliast ad meg, amely a kapcsolódáshoz használható. Mivel aliast használ, nem kell módosítania a kapcsolódási karakterláncokat. Csak új névterek adhatók hozzá a feladatátvételi párosításhoz. Végezetül vegyen fel némi figyelést, hogy ellenőrizze, szükség van-e feladatátvételre. A legtöbb esetben a szolgáltatás egy nagyméretű ökoszisztéma egyik része, így az automatikus feladatátvétel ritkán lehetséges, mivel a feladatátvételt a többi alrendszerrel vagy infrastruktúrával szinkronizálva kell végrehajtani.
+Először hozzon létre vagy használjon egy meglévő elsődleges névteret, és egy új másodlagos névteret, és párosítsa a kettőt. Ez a párosítás egy aliast ad meg, amely a kapcsolódáshoz használható. Mivel aliast használ, nem kell módosítania a kapcsolódási karakterláncokat. Csak új névterek adhatók hozzá a feladatátvételi párosításhoz. 
+
+1. Hozza létre az elsődleges névteret.
+1. Hozza létre a másodlagos névteret. Ez a lépés nem kötelező. A másodlagos névteret a következő lépésben a párosítás létrehozásakor hozhatja létre. 
+1. A Azure Portal navigáljon az elsődleges névtérhez.
+1. A bal oldali menüben válassza a **geo-helyreállítás** lehetőséget, majd válassza a **párosítás kezdeményezése** lehetőséget az eszköztáron. 
+
+    :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Párosítás kezdeményezése az elsődleges névtérből":::    
+1. A **párosítás kezdeményezése** lapon válasszon ki egy meglévő másodlagos névteret, vagy hozzon létre egyet, majd válassza a **Létrehozás** lehetőséget. A következő példában egy meglévő másodlagos névtér van kiválasztva. 
+
+    :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="Másodlagos névtér kiválasztása":::        
+1. Most, amikor kiválasztja a **geo-helyreállítás** lehetőséget az elsődleges névtérhez, a **geo-Dr alias** oldalon kell megjelennie, amely a következő képhez hasonlít:
+
+    :::image type="content" source="./media/event-hubs-geo-dr/geo-dr-alias-page.png" alt-text="Geo-DR alias oldal":::    
+1. Ezen **Áttekintés** lapon a következő műveleteket végezheti el: 
+    1. Szüntesse meg az elsődleges és a másodlagos névterek közötti párosítást. Válassza a **párosítás megszakítása** lehetőséget az eszköztáron. 
+    1. Manuálisan végezze el a feladatátvételt a másodlagos névtérbe. Válassza a **feladatátvétel** lehetőséget az eszköztáron. 
+    
+        > [!WARNING]
+        > Ha feladatátvételt hajt végre, aktiválja a másodlagos névteret, és távolítsa el az elsődleges névteret a Geo-Disaster helyreállítási párosításból. Hozzon létre egy másik névteret, hogy új földrajzi katasztrófa utáni helyreállítási pár legyen. 
+1. A **geo-Dr alias** lapon válassza a **megosztott hozzáférési házirendek** lehetőséget az alias elsődleges kapcsolati karakterláncának eléréséhez. Használja ezt a kapcsolódási karakterláncot ahelyett, hogy közvetlenül a kapcsolódási karakterláncot használja az elsődleges/másodlagos névtérhez. 
+
+Végezetül vegyen fel némi figyelést, hogy ellenőrizze, szükség van-e feladatátvételre. A legtöbb esetben a szolgáltatás egy nagyméretű ökoszisztéma egyik része, így az automatikus feladatátvétel ritkán lehetséges, mivel a feladatátvételt a többi alrendszerrel vagy infrastruktúrával szinkronizálva kell végrehajtani.
 
 ### <a name="example"></a>Példa
 
@@ -133,7 +155,7 @@ A Availability Zones csak az új névtereken engedélyezheti, a Azure Portal has
 ![3][]
 
 ## <a name="private-endpoints"></a>Privát végpontok
-Ez a szakasz további szempontokat tartalmaz, ha a Geo-vész-helyreállítást privát végpontokat használó névterekkel használja. Ha többet szeretne megtudni a privát végpontok Event Hubs használatával történő használatáról, tekintse meg a [privát végpontok konfigurálása](private-link-service.md)című témakört.
+Ez a szakasz további szempontokat tartalmaz, amikor a Geo-vész-helyreállítást a privát végpontokat használó névterekkel használja. Ha többet szeretne megtudni a privát végpontok Event Hubs használatával történő használatáról, tekintse meg a [privát végpontok konfigurálása](private-link-service.md)című témakört.
 
 ### <a name="new-pairings"></a>Új párosítások
 Ha egy privát végponttal rendelkező elsődleges névtér és egy privát végpont nélküli másodlagos névtér között próbál létrehozni egy párosítást, akkor a párosítás sikertelen lesz. A párosítás csak akkor lesz sikeres, ha az elsődleges és a másodlagos névterek magánhálózati végpontokkal is rendelkeznek. Azt javasoljuk, hogy ugyanazokat a konfigurációkat használja az elsődleges és másodlagos névtereken, valamint azokon a virtuális hálózatokon, amelyeken a magánhálózati végpontok létre lettek hozva.  
@@ -168,7 +190,7 @@ Ennek a megközelítésnek az az előnye, hogy a feladatátvétel a Event Hubs n
 > [!NOTE]
 > A virtuális hálózatok földrajzi katasztrófa utáni helyreállításával kapcsolatos útmutatásért lásd: [Virtual Network – üzletmenet folytonossága](../virtual-network/virtual-network-disaster-recovery-guidance.md).
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [githubon található minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) egy egyszerű munkafolyamaton keresztül megy át, amely egy geo-párosítást hoz létre, és feladatátvételt kezdeményez a vész-helyreállítási forgatókönyvek esetében.
 * A [REST API hivatkozás](/rest/api/eventhub/) a Geo-vész-helyreállítási konfigurációt végző API-kat ismerteti.

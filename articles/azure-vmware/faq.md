@@ -3,12 +3,12 @@ title: Gyakori kérdések
 description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 1/4/2020
-ms.openlocfilehash: d0228739a6ee4eac20d2fa04e47cf86b6fddb84e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1420fba40492e1a5f45f4ad5e58da2caa29ae7e7
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881225"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107956"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
@@ -29,6 +29,10 @@ A szolgáltatás folyamatosan bővül az új régiókban, ezért további részl
 #### <a name="can-workloads-running-in-an-azure-vmware-solution-instance-consume-or-integrate-with-azure-services"></a>Az Azure VMware-megoldás példányain futó munkaterhelések az Azure-szolgáltatásokkal is felhasználhatók vagy integrálva vannak?
 
 Minden Azure-szolgáltatás elérhető lesz az Azure VMware megoldás ügyfelei számára. Az egyes szolgáltatások teljesítmény-és rendelkezésre állási korlátozásait eseti alapon kell kezelni.
+
+#### <a name="what-guest-operating-systems-are-compatible-with-azure-vmware-solution"></a>Milyen vendég operációs rendszerek kompatibilisek az Azure VMware-megoldással?
+
+A vSphere szolgáltatással való kompatibilitásról a [VMware kompatibilitási útmutatóban](https://www.vmware.com/resources/compatibility/search.php?deviceCategory=software&details=1&releases=485&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc&testConfig=16)talál információt.  Az Azure VMware-megoldásban futó vSphere-verzió azonosításához tekintse meg a [VMware-szoftverek](concepts-private-clouds-clusters.md#vmware-software-versions)verziószámát.
 
 #### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>Használhatom ugyanazt az eszközt, amelyet most használok a saját Felhőbeli erőforrások kezeléséhez?
 

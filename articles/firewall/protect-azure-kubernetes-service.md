@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51af9ff4972f5edef02426a6e81e8582123c9a7a
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437853"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107854"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Az Azure Firewall használata az Azure Kubernetes Service (AKS) üzemelő példányainak védelmére
 
@@ -37,7 +37,7 @@ Azure Firewall a konfiguráció leegyszerűsítése érdekében egy AK FQDN-cím
 
 - Ha Azure Firewall használatával korlátozza a kimenő forgalmat, és egy felhasználó által megadott útvonalat (UDR) hoz létre az összes kimenő forgalom irányításához, akkor győződjön meg arról, hogy megfelelő DNAT-szabályt hoz létre a tűzfalon a bejövő forgalom megfelelő engedélyezéséhez. 
 
-   A Azure Firewall használata UDR megszakítja a bejövő beállítást az aszimmetrikus útválasztás miatt. A probléma akkor fordul elő, ha az AK-alhálózat alapértelmezett útvonala a tűzfal magánhálózati IP-címére mutat, de nyilvános Load balancert használ. Például *terheléselosztó*típusú bejövő vagy Kubernetes szolgáltatás.
+   A Azure Firewall használata UDR megszakítja a bejövő beállítást az aszimmetrikus útválasztás miatt. A probléma akkor fordul elő, ha az AK-alhálózat alapértelmezett útvonala a tűzfal magánhálózati IP-címére mutat, de nyilvános Load balancert használ. Például *terheléselosztó* típusú bejövő vagy Kubernetes szolgáltatás.
 
    Ebben az esetben a bejövő terheléselosztó forgalma a nyilvános IP-címén keresztül érkezik, a visszatérési útvonal azonban a tűzfal magánhálózati IP-címén halad át. Mivel a tűzfal állapot-nyilvántartó, eldobja a visszaadott csomagot, mert a tűzfal nem ismeri a létesített munkamenetet. Ha szeretné megtudni, hogyan integrálhatja a Azure Firewallt a bemenő vagy a Service Load balancerrel, tekintse meg a [Azure Firewall integrálása az Azure standard Load Balancer](integrate-lb.md)-nal című
 - Hozzon létre egy alkalmazás-szabálygyűjtemény-gyűjteményt, és adjon hozzá egy szabályt az *AzureKubernetesService* FQDN címke engedélyezéséhez. A forrás IP-címtartomány a gazdagépek virtuális hálózata, a protokoll pedig HTTPS, a cél pedig AzureKubernetesService.
@@ -47,7 +47,7 @@ Azure Firewall a konfiguráció leegyszerűsítése érdekében egy AK FQDN-cím
    - TCP [*IPAddrOfYourAPIServer*]: 443 szükséges, ha van olyan alkalmazás, amelynek meg kell beszélnie az API-kiszolgálóval. Ezt a módosítást a fürt létrehozása után lehet beállítani.
    - A 9000-es TCP-port és a 1194-es UDP-port az alagút elülső Pod-portjához az API-kiszolgáló alagút végével való kommunikációhoz.
 
-      A részletekért lásd: **. HCP. <location> . azmk8s.io* és címek a következő táblázatban:
+      Részletesebben lásd a következő táblázatban található címeket:
 
    | Cél végpont                                                             | Protokoll | Port    | Használat  |
    |----------------------------------------------------------------------------------|----------|---------|------|

@@ -5,21 +5,18 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 456c42dc0b25e168744ce283cddbd63b877813ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ebff49db895468549a7abd420e7b74292b742eab
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747160"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108636"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Oktatóanyag – Cloud-init használata az Azure-ban először induló linuxos virtuális gépek testreszabásához
 
@@ -39,17 +36,7 @@ A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt m
 
 A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
-A partnereinkkel dolgozunk rajta, hogy egyre több általuk biztosított Azure-rendszerkép tartalmazza a cloud-init eszközt. Az alábbi táblázat a cloud-init jelenlegi elérhetőségét ismerteti az Azure-platformrendszerképeken:
-
-| Publisher | Ajánlat | Termékváltozat | Verzió | Cloud-init Ready |
-|:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18,04 – LTS |legújabb |igen | 
-|Canonical |UbuntuServer |16.04-LTS |legújabb |igen | 
-|Canonical |UbuntuServer |14.04.5-LTS |legújabb |igen |
-|CoreOS |CoreOS |Stable |legújabb |igen |
-|OpenLogic 7,6 |CentOS |7-CI |legújabb |preview |
-|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen |
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
+A partnereinkkel dolgozunk rajta, hogy egyre több általuk biztosított Azure-rendszerkép tartalmazza a cloud-init eszközt. Részletes információ a Cloud-init támogatásáról az egyes disztribúciók esetében: [Cloud-init támogatás az Azure-beli virtuális gépekhez](using-cloud-init.md).
 
 
 ## <a name="create-cloud-init-config-file"></a>Cloud-init konfigurációs fájl létrehozása
@@ -147,7 +134,7 @@ A következő lépések bemutatják, hogyan végezheti el a következőket:
 - Virtuális gép létrehozása, és a tanúsítvány beszúrása
 
 ### <a name="create-an-azure-key-vault"></a>Azure Key Vault létrehozása;
-Először hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault#az-keyvault-create) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje le a *mykeyvault* nevet a következő példában a saját egyedi Key Vault-névre:
+Először hozzon létre egy Key Vaultot az [az keyvault create](/cli/azure/keyvault#az-keyvault-create) paranccsal, és engedélyezze a használatát a virtuális gépek üzembe helyezésekor. Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje le a `mykeyvault` nevet a következő példában a saját egyedi Key Vault-névre:
 
 ```azurecli-interactive
 keyvault_name=mykeyvault

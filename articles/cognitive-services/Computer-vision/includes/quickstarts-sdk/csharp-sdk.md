@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 645ae636adb1fcc3f3a79e6cbca618f4e341418f
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1826edb31c442fb10b8053433ec01ee5abad0eb2
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052858"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109324"
 ---
 <a name="HOLTop"></a>
 
@@ -51,7 +51,7 @@ Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat 
 A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `computer-vision-quickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
 ```console
-dotnet new console -n (product-name)-quickstart
+dotnet new console -n computer-vision-quickstart
 ```
 
 Módosítsa a könyvtárat az újonnan létrehozott alkalmazás mappájába. Az alkalmazást az alábbiakkal hozhatja létre:
@@ -302,7 +302,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 > [!div class="nextstepaction"]
 > [](?success=clean-up-resources#next-steps) [Egy hibába ütközött az](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) erőforrások 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Computer Vision API-hivatkozás (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: e7b5dfe9380612d56e591c3f619dfcb8582f8dee
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 016ad0e11f3378dba887e0a235f235fa91e3aa03
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554257"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109464"
 ---
 ### <a name="property-limits"></a>Tulajdonságok korlátai
 
@@ -32,7 +32,7 @@ Azure Time Series Insights a tulajdonságok korlátai a meleg tárolás érdeké
 
 * Az Event sources szolgáltatással kapcsolatos ajánlott eljárások és általános útmutatás [itt](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) található
 
-* Alapértelmezés szerint a Azure Time Series Insights Gen2 **legfeljebb 1 megabájt/másodperc (Mbps)** sebességgel képes befogadni a bejövő adatot Azure Time Series Insights Gen2-környezetben. A [hub-partíciók esetében](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)további korlátozások vannak érvényben. A támogatási jegynek a Azure Portalon keresztüli elküldésével legfeljebb 8 MBps sebesség adható meg. További információért olvassa el a streaming betöltési [átviteli sebességének korlátozásait](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md).
+* Alapértelmezés szerint a Azure Time Series Insights Gen2 **legfeljebb 1 megabájt/másodperc (Mbps)** sebességgel képes befogadni a bejövő adatot Azure Time Series Insights Gen2-környezetben. A [hub-partíciók esetében](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)további korlátozások vannak érvényben. A támogatási jegynek a Azure Portalon keresztüli elküldésével legfeljebb 2 MBps sebesség adható meg. További információért olvassa el a streaming betöltési [átviteli sebességének korlátozásait](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md).
 
 ### <a name="api-limits"></a>API-korlátok
 

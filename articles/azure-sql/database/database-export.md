@@ -9,14 +9,14 @@ author: stevestein
 ms.custom: sqldbrb=2
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/16/2019
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 7dc6cd580687544226b61a29ca9ccf2d1b8dff42
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f874803e0ae361255754477ca68184255f35b91f
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671535"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107378"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Exportálás BACPAC-fájlba – Azure SQL Database és az Azure SQL felügyelt példánya
 
@@ -30,6 +30,7 @@ Ha archiválni vagy egy másik platformra szeretne áthelyezni egy adatbázist, 
 - Ha blob Storage-ba exportál, a BACPAC-fájlok maximális mérete 200 GB. Egy nagyobb BACPAC-fájl archiválásához exportálja a helyi tárolóba.
 - BACPAC-fájlnak az Azure Premium Storage-ba való exportálása a cikkben ismertetett módszerek használatával nem támogatott.
 - A tűzfal mögötti tárterület jelenleg nem támogatott.
+- A tárolási fájlnévnek vagy a StorageURI bemeneti értékének 128 karakternél rövidebbnek kell lennie, és nem végződhet "." karakterrel, és nem tartalmazhat speciális karaktereket, például szóközt vagy "<, >, *,%, &,:, \, /,?". 
 - Ha az exportálási művelet meghaladja a 20 órát, előfordulhat, hogy megszakítja a műveletet. Az exportálás során a teljesítmény növeléséhez a következőket teheti:
 
   - Ideiglenesen növelje a számítási méretet.
@@ -89,7 +90,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-Az exportálási kérelem állapotának megtekintéséhez használja a [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) parancsmagot. Ezt azonnal futtatva, miután a kérelem általában visszaadja az **állapotot: Inprogress** . Amikor megjelenik az **Állapot: sikeres** az Exportálás befejeződött.
+Az exportálási kérelem állapotának megtekintéséhez használja a [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) parancsmagot. Ezt azonnal futtatva, miután a kérelem általában visszaadja az **állapotot: Inprogress**. Amikor megjelenik az **Állapot: sikeres** az Exportálás befejeződött.
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

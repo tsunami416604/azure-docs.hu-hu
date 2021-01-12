@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.openlocfilehash: b2a6b902f1c6b7e06b1a72b183007fbb9fe05c3c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5577b0cb480b372b64a9cb25f52617edfca3f2e0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515950"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108160"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Skytap való egyszeri bejelentkezéssel
 
@@ -48,14 +48,14 @@ A Skytap egyszeri bejelentkezésének az Azure AD-be való integrálásának kon
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **egyszeri bejelentkezést a Skytap** .
 1. Válassza az **egyszeri bejelentkezés** lehetőséget a Skytap az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-single-sign-on-for-skytap"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Skytap való egyszeri bejelentkezéshez
 
-Konfigurálja és tesztelje az Azure AD SSO-t egyszeri bejelentkezéssel a Skytap egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez hozzon létre egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az egyszeri bejelentkezésben a Skytap.
+Konfigurálja és tesztelje az Azure AD SSO-t egyszeri bejelentkezéssel a Skytap egy **B. Simon** nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez hozzon létre egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az egyszeri bejelentkezésben a Skytap.
 
 Az alábbi általános lépésekkel konfigurálhatja és tesztelheti az Azure AD SSO-t egyszeri bejelentkezéssel a Skytap-hez:
 
@@ -73,8 +73,8 @@ Az alábbi általános lépésekkel konfigurálhatja és tesztelheti az Azure AD
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a Skytap-alkalmazás integrációjának **egyszeri bejelentkezés** lapján keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a Skytap-alkalmazás integrációjának **egyszeri bejelentkezés** lapján keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
    ![Képernyőfelvétel: egyszeri bejelentkezés beállítása SAML-oldallal – kiemelve a ceruza ikonnal](common/edit-urls.png)
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. A **Válasz URL-cím** szövegmezőbe írja be a következő mintát használó URL-címet: `https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
 
-1. Válassza a **további URL-címek beállítása**lehetőséget, majd hajtsa végre a következő lépéseket, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+1. Kiválaszthatja a **további URL-címek beállítása** lehetőséget is, és a következő lépésekkel konfigurálhatja az alkalmazást **SP** -kezdeményezésű módban:
 
     a. A **bejelentkezési URL** szövegmezőbe írja be a következő mintát használó URL-címet: `https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 
@@ -107,35 +107,35 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezést használja a Skytap való egyszeri bejelentkezéshez való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Skytap egyszeri bejelentkezés**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Skytap egyszeri bejelentkezés** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![Képernyőfelvétel a kezelés szakaszról, Kiemelt felhasználók és csoportok](common/users-groups-blade.png)
 
-1. Válassza a **Felhasználó hozzáadása** elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![Képernyőkép a felhasználók és csoportok oldalról, a felhasználó hozzáadása elem kiemelésével](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza ki az **B. Simon** elemet a felhasználók listából. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ## <a name="configure-single-sign-on-for-skytap-sso"></a>Egyszeri bejelentkezés konfigurálása a Skytap SSO-hoz
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni az Skytap oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt**és a megfelelő másolt URL-címeket a Azure Portalról a [Skytap-ügyfél támogatási csapatának egyszeri bejelentkezéséhez](mailto:support@skytap.com). Ezt a beállítást úgy konfigurálja, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné konfigurálni az Skytap oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt URL-címeket a Azure Portalról a [Skytap-ügyfél támogatási csapatának egyszeri bejelentkezéséhez](mailto:support@skytap.com). Ezt a beállítást úgy konfigurálja, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
 
 
 ### <a name="create-single-sign-on-for-skytap-test-user"></a>Egyszeri bejelentkezés létrehozása a Skytap-tesztkörnyezet felhasználói számára

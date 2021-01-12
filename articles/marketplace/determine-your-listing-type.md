@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 11/16/2020
-ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/18/2020
+ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302856"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107395"
 ---
 # <a name="introduction-to-listing-options"></a>A listázási lehetőségek bemutatása
 
@@ -26,21 +26,23 @@ Ajánlat típusának létrehozásakor válasszon ki egy vagy több listaelem-be�
 
 Ebben a táblázatban látható, hogy az egyes ajánlatok milyen listaelemeket biztosítanak.
 
-| Csomag típusa | Ingyenes próba | Tesztverzió | Kapcsolatfelvétel | Azonnali letöltés (visszagörgethető) |
+| Csomag típusa | Ingyenes próba | Tesztverzió | Kapcsolatfelvétel | Letöltés most `*` |
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 | Azure-alkalmazás (felügyelt alkalmazás) |   | &#10004; |   | &#10004; |
-| Azure-alkalmazás (megoldás-sablon) |  |  |  |  |
+| Azure-alkalmazás (megoldás-sablon) |  |  |  | &#10004; |
 | Tanácsadási szolgáltatás |  |  | &#10004; |  |
-| Azure-tároló |  |  |  |  |
-| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 Customer engagement & PowerApps | &#10004; | &#10004; | &#10004; |  |
-| A Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; |  |
-| IoT Edge modul |  |  |  |  |
-| Felügyelt szolgáltatás |  |  |  |  |
-| Power BI alkalmazás |  |  |  |  |
+| Azure-tároló |  |  |  | &#10004; |
+| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 Customer engagement & PowerApps | &#10004; | &#10004; | &#10004; | &#10004; |
+| A Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; | &#10004; |
+| IoT Edge modul |  |  |  | &#10004; |
+| Felügyelt szolgáltatás |  |  |  | &#10004; |
+| Power BI alkalmazás |  |  |  | &#10004; |
 | Azure-beli virtuális gép | &#10004; | &#10004; |  | &#10004; |
 | Szolgáltatott szoftver | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
+
+`*` Az azonnali letöltés lehetőség magában foglalja a Get it (ingyenes), a saját licenc (BYOL), az előfizetés és a használati alapú díjszabás használatát. Részletekért [lásd: Letöltés.](#get-it-now)
 
 ### <a name="free-trial"></a>Ingyenes próba
 
@@ -94,7 +96,7 @@ Ebből a táblázatból megtekintheti, hogy mely típusú ajánlatok támogatjá
 
 <sup>1</sup> a **terv áttekintő** lapjának **díjszabási modell** oszlopában _ingyenes_ vagy _BYOL_ látható, de nem választható.
 
-<sup>2</sup> óradíjas és havi díj.
+<sup></sup> óradíjas és havi díj.
 
 #### <a name="get-it-now-free"></a>Letöltés (ingyenes)
 
@@ -151,6 +153,6 @@ A &#42;&#42; Microsoft 365 bővítmények ingyenesen telepíthetők, és egy Saa
 
 A Piactéri jutalmak a választott listaelem alapján különböztethetők meg. További információkért tekintse [meg a kereskedelmi Marketplace előnyeit](gtm-your-marketplace-benefits.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A létrehozandó ajánlat típusának kiválasztásához lásd: [közzétételi útmutató ajánlat típusa szerint](./publisher-guide-by-offer-type.md).

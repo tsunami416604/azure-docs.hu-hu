@@ -1,18 +1,18 @@
 ---
 title: Az Azure Key Vault integrálása a Kubernetesszel
 description: Ebben az oktatóanyagban a titkokat az Azure Key vaultban érheti el, és beolvashatja az Kubernetes hüvelybe való csatlakoztatáshoz a Secrets Store Container Storage Interface (CSI) illesztőprogram használatával.
-author: ShaneBala-keyvault
-ms.author: sudbalas
+author: msmbaldwin
+ms.author: mbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 2645842130b83fe7b4cfb33b9389b19a1306506d
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 6952d239c9dc5c52c0057a6ee1a3b10b30ed9b00
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756024"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108755"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
@@ -24,12 +24,11 @@ Ebben az oktatóanyagban a titkokat az Azure Key vaultban érheti el és kéri l
 Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
-> * Hozzon létre egy egyszerű szolgáltatásnevet, vagy használjon felügyelt identitásokat.
+> * Felügyelt identitások használata.
 > * Helyezzen üzembe egy Azure Kubernetes-szolgáltatási (ak-) fürtöt az Azure CLI használatával.
 > * Telepítse a Helm és a Secrets Store CSI-illesztőprogramot.
 > * Hozzon létre egy Azure Key vaultot, és állítsa be a titkokat.
 > * Hozzon létre egy saját SecretProviderClass objektumot.
-> * Rendeljen hozzá egy egyszerű szolgáltatásnevet, vagy használjon felügyelt identitásokat.
 > * Üzembe helyezheti a pod-t a kulcstartóból csatlakoztatott titkos kulcsokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -38,22 +37,7 @@ Az oktatóanyag a következőket ismerteti:
 
 * Az oktatóanyag elindítása előtt telepítse az [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)-t.
 
-## <a name="create-a-service-principal-or-use-managed-identities"></a>Egyszerű szolgáltatásnév létrehozása vagy felügyelt identitások használata
-
-Ha felügyelt identitások használatát tervezi, a következő szakaszra léphet.
-
-Hozzon létre egy egyszerű szolgáltatásnevet annak szabályozására, hogy mely erőforrások érhetők el az Azure Key vaultból. Az egyszerű szolgáltatásnév hozzáférését a hozzá rendelt szerepkörök korlátozzák. Ezzel a szolgáltatással szabályozhatja, hogy az egyszerű szolgáltatásnév hogyan kezelheti a titkos kulcsokat. A következő példában az egyszerű szolgáltatásnév neve *contosoServicePrincipal*.
-
-```azurecli
-az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
-```
-A művelet a kulcs/érték párok sorozatát adja vissza:
-
-![A contosoServicePrincipal appId és jelszavát ábrázoló képernyőkép](../media/kubernetes-key-vault-1.png)
-
-Másolja a **AppID** és a **jelszó** hitelesítő adatait a későbbi használatra.
-
-## <a name="flow-for-using-managed-identity"></a>A felügyelt identitás használatának folyamata
+## <a name="use-managed-identities"></a>Felügyelt identitások használata
 
 Ez az ábra az AK – Key Vault integrációs folyamatot mutatja be a felügyelt identitás esetében:
 
@@ -66,7 +50,7 @@ Nincs szükség a Azure Cloud Shell használatára. Az Azure CLI-vel telepített
 Fejezze be az [Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI használatával](../../aks/kubernetes-walkthrough.md)című szakaszt az "erőforráscsoport létrehozása", "" AK-fürt létrehozása "és" kapcsolódás a fürthöz "című részekben. 
 
 > [!NOTE] 
-> Ha egy egyszerű szolgáltatásnév helyett Pod-azonosítót kíván használni, a Kubernetes-fürt létrehozásakor ügyeljen arra, hogy a következő parancsban látható módon engedélyezze azt:
+> Ha Pod-identitást szeretne használni, ügyeljen arra, hogy a Kubernetes-fürt létrehozásakor engedélyezze a következő parancsban látható módon:
 >
 > ```azurecli
 > az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
@@ -121,7 +105,7 @@ Ha a Secrets Store CSI-illesztőprogramhoz tartozó, szolgáltatói specifikus p
 
 A minta SecretProviderClass YAML fájljában adja meg a hiányzó paramétereket. A következő paraméterek szükségesek:
 
-* **userAssignedIdentityID**: # [kötelező] Ha egyszerű szolgáltatásnevet használ, az ügyfél-azonosító segítségével megadhatja, hogy melyik felhasználóhoz rendelt felügyelt identitást kívánja használni. Ha felhasználó által hozzárendelt identitást használ a virtuális gép felügyelt identitása, akkor az identitás ügyfél-azonosítóját kell megadnia. Ha az érték üres, alapértelmezés szerint a rendszer által hozzárendelt identitást használja a virtuális gépen. 
+* **userAssignedIdentityID**: # [kötelező], ha az érték üres, alapértelmezés szerint a rendszer által hozzárendelt identitást használja a virtuális gépen. 
 * **keyvaultName**: a kulcstartó neve
 * **objektumok**: a csatlakoztatni kívánt titkos tartalom tárolója
     * **objectName**: a titkos tartalom neve
@@ -147,9 +131,8 @@ spec:
   parameters:
     usePodIdentity: "false"                   # [REQUIRED] Set to "true" if using managed identities
     useVMManagedIdentity: "false"             # [OPTIONAL] if not provided, will default to "false"
-    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED] If you're using a service principal, use the client id to specify which user-assigned managed identity to use. If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
-                                                             #     az ad sp show --id http://contosoServicePrincipal --query appId -o tsv
-                                                             #     the preceding command will return the client ID of your service principal
+    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED]  If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
+                                                         
     keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the key vault
                                               #     az keyvault show --name contosoKeyVault5
                                               #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
@@ -174,58 +157,18 @@ Az alábbi képen az az kulcstartó **show--Name contosoKeyVault5** konzol kimen
 
 ![Az "az kulcstartó show--Name contosoKeyVault5" konzol kimenetét ábrázoló képernyőkép](../media/kubernetes-key-vault-4.png)
 
-## <a name="assign-your-service-principal-or-use-managed-identities"></a>Szolgáltatásnév kiosztása vagy felügyelt identitások használata
+## <a name="assign-managed-identity"></a>Felügyelt identitás kiosztása
 
-### <a name="assign-a-service-principal"></a>Egyszerű szolgáltatás hozzárendelése
-
-Ha egyszerű szolgáltatást használ, adjon meg engedélyeket a kulcstartó eléréséhez és a titkok beolvasásához. Rendelje hozzá az *olvasó* szerepkört, és adja meg az egyszerű szolgáltatásnév számára a kulcsok a kulcstartóból való *beszerzéséhez* szükséges engedélyeket a következő paranccsal:
-
-1. Rendelje hozzá a szolgáltatásnevet a meglévő kulcstartóhoz. A **$AZURE _CLIENT_ID** paraméter az a **AppID** , amelyet az egyszerű szolgáltatásnév létrehozása után másolt.
-    ```azurecli
-    az role assignment create --role Reader --assignee $AZURE_CLIENT_ID --scope /subscriptions/$SUBID/resourcegroups/$KEYVAULT_RESOURCE_GROUP/providers/Microsoft.KeyVault/vaults/$KEYVAULT_NAME
-    ```
-
-    A parancs kimenete az alábbi képen látható: 
-
-    ![A principalId értéket ábrázoló képernyőkép](../media/kubernetes-key-vault-5.png)
-
-1. Adja meg az egyszerű szolgáltatás engedélyeit a titkok beszerzéséhez:
-    ```azurecli
-    az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
-    az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
-    ```
-
-1. Ezzel konfigurálta az egyszerű szolgáltatásnevet a Key vaultban található titkos kódok olvasásához szükséges engedélyekkel. A **$AZURE _CLIENT_SECRET** az egyszerű szolgáltatásnév jelszava. Adja hozzá a szolgáltatás egyszerű hitelesítő adatait olyan titkos Kubernetes, amelyet a Secrets Store CSI-illesztőprogramja elérhet:
-    ```azurecli
-    kubectl create secret generic secrets-store-creds --from-literal clientid=$AZURE_CLIENT_ID --from-literal clientsecret=$AZURE_CLIENT_SECRET
-    ```
-
-> [!NOTE] 
-> Ha telepíti a Kubernetes Pod-ot, és hibaüzenetet kap egy érvénytelen ügyfél-titkos AZONOSÍTÓról, akkor előfordulhat, hogy egy korábbi, lejárt vagy alaphelyzetbe állított ügyfél-titkos AZONOSÍTÓval rendelkezik. A probléma megoldásához törölje a *Secrets-Store-creds Secret-* et, és hozzon létre egy újat az aktuális ügyfél-titkos azonosítóval. A *Secrets-Store-creds* törléséhez futtassa a következő parancsot:
->
-> ```azurecli
-> kubectl delete secrets secrets-store-creds
-> ```
-
-Ha elfelejtette a szolgáltatásnév ügyfél-titkos AZONOSÍTÓját, a következő paranccsal állíthatja alaphelyzetbe:
-
-```azurecli
-az ad sp credential reset --name contosoServicePrincipal --credential-description "APClientSecret" --query password -o tsv
-```
-
-### <a name="use-managed-identities"></a>Felügyelt identitások használata
-
-Ha felügyelt identitásokat használ, rendeljen meghatározott szerepköröket a létrehozott AK-fürthöz. 
+Rendeljen meghatározott szerepköröket a létrehozott AK-fürthöz. 
 
 1. Felhasználó által hozzárendelt felügyelt identitás létrehozásához, listázásához vagy olvasásához az AK-fürtnek hozzá kell rendelnie a [felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkört. Győződjön meg arról, hogy a **$clientId** a Kubernetes-fürt clientId. A hatókör esetében az Azure-előfizetési szolgáltatás alatt lesz, különösen az AK-fürt létrehozásakor létrejött csomópont-erőforráscsoport. Ez a hatókör gondoskodik arról, hogy csak az adott csoportba tartozó erőforrásokat érinti az alábbi szerepkörök. 
 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
-    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
     
-    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
     
-    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
     ```
 
 1. Telepítse a Azure Active Directory (Azure AD) identitását az AK-ba.
@@ -242,7 +185,7 @@ Ha felügyelt identitásokat használ, rendeljen meghatározott szerepköröket 
 
 1. Rendelje hozzá az *olvasó* szerepkört a Key Vault előző lépésében létrehozott Azure ad-identitáshoz, majd adja meg a személyazonossági engedélyeket a kulcstartóból származó titkos kulcsok beszerzéséhez. Használja az Azure AD-identitás **clientId** és **principalId** .
     ```azurecli
-    az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
+    az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/<SUBID>/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
     az keyvault set-policy -n contosoKeyVault5 --key-permissions get --spn $clientId
@@ -253,16 +196,6 @@ Ha felügyelt identitásokat használ, rendeljen meghatározott szerepköröket 
 A SecretProviderClass objektum konfigurálásához futtassa a következő parancsot:
 ```azurecli
 kubectl apply -f secretProviderClass.yaml
-```
-
-### <a name="use-a-service-principal"></a>Egyszerű szolgáltatásnév használata
-
-Ha egyszerű szolgáltatást használ, használja a következő parancsot a Kubernetes-hüvelyek üzembe helyezéséhez a SecretProviderClass és a korábban konfigurált Secrets-Store-creds használatával. A központi telepítési sablonok:
-* [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-inline-volume-service-principal.yaml) rendszerhez
-* [Windows](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/windows-pod-secrets-store-inline-volume-secret-providerclass.yaml) rendszerhez
-
-```azurecli
-kubectl apply -f updateDeployment.yaml
 ```
 
 ### <a name="use-managed-identities"></a>Felügyelt identitások használata
@@ -318,8 +251,6 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-        nodePublishSecretRef:           # Only required when using service principal mode
-          name: secrets-store-creds     # Only required when using service principal mode
 ```
 
 Futtassa a következő parancsot a pod üzembe helyezéséhez:
@@ -358,7 +289,7 @@ kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 Ellenőrizze, hogy a titkos kód tartalma megjelenik-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Key Vault helyreállításának biztosításához lásd:
 > [!div class="nextstepaction"]

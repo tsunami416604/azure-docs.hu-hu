@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 1f6757a9f78e3c400d92fd65a0795ceae7570c99
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f043f7ed63353dcb9cf9fd26690da97b902f32a6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347574"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108619"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az Azure SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
@@ -229,6 +229,9 @@ Az `EXIT` parancs begépelésével térjen vissza a Cloud Shell-parancssorba.
 > [!NOTE]
 > A felügyelt identitások háttér-szolgáltatásai szintén [fenntartanak egy jogkivonat-gyorsítótárat](overview-managed-identity.md#obtain-tokens-for-azure-resources) , amely csak akkor frissíti a jogkivonatot a cél erőforráshoz, ha lejár. Ha hibásan konfigurálja a SQL Database engedélyeket, és megpróbálja módosítani az engedélyeket az alkalmazással kapott token beszerzése *után* , akkor valójában nem kap új jogkivonatot a frissített engedélyekkel, amíg a gyorsítótárazott jogkivonat le nem jár.
 
+> [!NOTE]
+> A HRE nem támogatott helyszíni SQL Server esetén, és ez magában foglalja a rendszercsomagok. 
+
 ### <a name="modify-connection-string"></a>Kapcsolati sztring módosítása
 
 Ne feledje, hogy ugyanazokat a módosításokat hajtotta végre *Web.config* vagy *appsettings.jsa* felügyelt identitással, így az egyetlen teendő, hogy eltávolítsa a meglévő kapcsolódási karakterláncot a app Serviceban, amelyet a Visual Studio az alkalmazás első üzembe helyezésével hozott létre. Használja az alábbi parancsot, de a helyére írja *\<app-name>* be az alkalmazás nevét.
@@ -251,7 +254,7 @@ A közzétételi oldalon kattintson a **Publish** (Közzététel) elemre.
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 Amikor az új weblapon megjelenik a feladatlista, az alkalmazása kapcsolódik az adatbázishoz a felügyelt identitás segítségével.

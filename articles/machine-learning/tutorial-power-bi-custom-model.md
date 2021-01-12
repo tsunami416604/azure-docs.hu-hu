@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: a prediktív modell létrehozása jegyzetfüzet használatával (2. rész)'
+title: 'Oktatóanyag: a prediktív modell létrehozása jegyzetfüzettel (2. rész)'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt egy Jupyter Notebook programkódjának használatával. A modell segítségével előre megjósolhatja a Microsoft Power BIban elérhető eredményeket.
+description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt egy Jupyter Notebook programkódjának használatával. Hozzon létre egy pontozási parancsfájlt is, amely meghatározza a bemenetet és a kimenetet a Microsoft Power BIba való egyszerű integrációhoz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 29b340448f3ce3e18a649065bdcd0b335bab8b73
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814771"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108245"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>Oktatóanyag: Power BI integráció – a prediktív modell létrehozása Jupyter Notebook használatával (2. rész)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Oktatóanyag: Power BI integráció – a prediktív modell létrehozása Jupyter Notebookvel (2. rész)
 
-Az oktatóanyag 1. részében egy prediktív gépi tanulási modellt kell betanítania és üzembe helyezni egy Jupyter Notebook programkód használatával. A 2. részben a modellt fogja használni a Microsoft Power BIban várható eredmények előrejelzéséhez.
+Az oktatóanyag 1. részében egy prediktív gépi tanulási modellt kell betanítania és üzembe helyezni egy Jupyter Notebook programkód használatával. Létrehoz egy pontozási parancsfájlt is, amely meghatározza a modell bemeneti és kimeneti sémáját a Power BIba való integrációhoz.  A 2. részben a modellt fogja használni a Microsoft Power BIban várható eredmények előrejelzéséhez.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -27,6 +27,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Jupyter Notebook létrehozása.
 > * Hozzon létre egy Azure Machine Learning számítási példányt.
 > * Egy regressziós modell betanítása a scikit-Learn használatával.
+> * Olyan pontozási parancsfájlt írhat, amely meghatározza a bemenetet és a kimenetet a Microsoft Power BIba való egyszerű integrációhoz.
 > * A modell üzembe helyezése valós idejű pontozási végponton.
 
 A Power BI-ben használni kívánt modell létrehozása és üzembe helyezése három módon történik.  Ez a cikk az "A" lehetőséget ismerteti, amely a modellek jegyzetfüzetek használatával történő betanítását és üzembe helyezését mutatja be.  Ez a lehetőség a kód első létrehozási felülete. A Azure Machine Learning Studio üzemeltetett Jupyter jegyzetfüzeteket használja. 
@@ -53,7 +54,7 @@ Az **új fájl létrehozása** lapon:
 
 1. Nevezze el a jegyzetfüzetet (például *my_model_notebook*).
 1. Módosítsa a **fájltípust** **jegyzetfüzetre**.
-1. Kattintson a **Létrehozás** gombra. 
+1. Válassza a **Létrehozás** lehetőséget. 
  
 Ezután futtassa a kód celláit, hozzon létre egy számítási példányt, és csatolja a jegyzetfüzethez. Első lépésként válassza a plusz ikont a jegyzetfüzet tetején:
 
@@ -64,7 +65,7 @@ A **számítási példány létrehozása** lapon:
 1. Válassza ki a CPU virtuális gép méretét. Ebben az oktatóanyagban választhat egy **Standard_D11_v2**, 2 maggal és 14 GB RAM memóriával.
 1. Kattintson a **Tovább** gombra. 
 1. A **beállítások konfigurálása** lapon adjon meg egy érvényes **számítási nevet**. Az érvényes karakterek: nagybetűk, kisbetűk, számjegyek és kötőjelek (-).
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 A jegyzetfüzetben észreveheti, hogy a **kiszámított** ciánkék (számítás) elem melletti kör is látható. Ez a színváltozás azt jelzi, hogy a számítási példány létrehozása folyamatban van:
 
@@ -157,7 +158,7 @@ A modellt Azure Machine Learning Studio is megtekintheti. A bal oldali menüben 
 
 :::image type="content" source="media/tutorial-power-bi/model.png" alt-text="A modellek megtekintését bemutató képernyőkép.":::
 
-### <a name="define-the-scoring-script"></a>Pontozási parancsfájl definiálása
+## <a name="define-the-scoring-script"></a>Pontozási parancsfájl definiálása
 
 Ha olyan modellt telepít, amely integrálva lesz Power BIba, meg kell határoznia egy Python- *pontozási parancsfájlt* és egy egyéni környezetet. A pontozási parancsfájl két függvényt tartalmaz:
 
@@ -165,7 +166,7 @@ Ha olyan modellt telepít, amely integrálva lesz Power BIba, meg kell határozn
 - A `run(data)` függvény akkor fut le, ha a szolgáltatás hívása olyan bemeneti adatokat tartalmaz, amelyeket fel kell venni. 
 
 >[!NOTE]
-> Ez a cikk a Python dekoratőr használatával határozza meg a bemeneti és kimeneti adatok sémáját. Ez a beállítás fontos a Power BI integrációhoz.
+> Az alábbi kódban szereplő Python-dekorációk határozzák meg a bemeneti és kimeneti adatok sémáját, ami fontos a Power BIba való integráláshoz.
 
 Másolja be a következő kódot, és illessze be egy új *kódrészletbe* a jegyzetfüzetben. A következő kódrészlet tartalmaz egy cella magict, amely a kódot egy *score.py* nevű fájlba írja.
 
@@ -298,7 +299,7 @@ print(output)
 
 A kimenetnek a következő JSON-struktúrához hasonlóan kell kinéznie: `{'predict': [[205.59], [68.84]]}` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre és helyezhet üzembe egy modellt, hogy Power BI lehessen használni. A következő részben megtudhatja, hogyan használhatja ezt a modellt egy Power BI-jelentésben.
 

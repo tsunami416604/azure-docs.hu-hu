@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd7b5ac981fcb87d0fc929d944205dec9432b74
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575822"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107361"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön
 
@@ -32,8 +32,7 @@ Ha Azure ad-csatlakozással csatlakoztat egy Windows-eszközt az Azure AD-hez, a
 - Az Azure AD-eszköz rendszergazdai szerepköre 
 - Az Azure AD Joint végző felhasználó   
 
-Az Azure AD-szerepkörök a helyi Rendszergazdák csoporthoz való hozzáadásával frissítheti azokat a felhasználókat, akik az Azure AD-ben bármikor kezelhetik az eszközöket anélkül, hogy bármit módosítani kellene az eszközön. Jelenleg nem rendelhet hozzá csoportokat rendszergazdai szerepkörhöz.
-Az Azure AD az Azure AD-eszköz rendszergazdai szerepkörét is hozzáadja a helyi rendszergazdák csoportjához a legalacsonyabb jogosultsági szint (PoLP) elvének támogatásához. A globális rendszergazdák mellett engedélyezheti azon felhasználók számára is, akik *csak* az eszköz rendszergazdai szerepkörét rendelték hozzá az eszközök kezeléséhez. 
+Az Azure AD-szerepkörök a helyi Rendszergazdák csoporthoz való hozzáadásával frissítheti azokat a felhasználókat, akik az Azure AD-ben bármikor kezelhetik az eszközöket anélkül, hogy bármit módosítani kellene az eszközön. Az Azure AD az Azure AD-eszköz rendszergazdai szerepkörét is hozzáadja a helyi rendszergazdák csoportjához a legalacsonyabb jogosultsági szint (PoLP) elvének támogatásához. A globális rendszergazdák mellett engedélyezheti azon felhasználók számára is, akik *csak* az eszköz rendszergazdai szerepkörét rendelték hozzá az eszközök kezeléséhez. 
 
 ## <a name="manage-the-global-administrators-role"></a>A globális rendszergazdák szerepkör kezelése
 
@@ -113,7 +112,7 @@ Az eszközök rendszergazdái az összes Azure AD-hez csatlakoztatott eszközhö
 
 Ha eltávolítja a felhasználókat az eszköz rendszergazdai szerepkörből, akkor továbbra is a helyi rendszergazdai jogosultsággal rendelkezik az eszközön, amíg be van jelentkezve. A rendszer visszavonja a jogosultságot a következő bejelentkezéskor, amikor új elsődleges frissítési jogkivonatot állít ki. Ez a visszavonás a jogosultság megemeléséhez hasonlóan akár 4 órát is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).
 - Ha többet szeretne megtudni az eszközökön alapuló feltételes hozzáférésről, tekintse meg [Azure Active Directory eszközön alapuló feltételes hozzáférési szabályzatok konfigurálása](../conditional-access/require-managed-devices.md)című témakört.

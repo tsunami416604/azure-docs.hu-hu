@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094573"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107871"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakori kérdések
 
@@ -85,6 +85,7 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
 
    > [!NOTE]
    >Az alábbi lépésekhez a tartományi rendszergazda és a globális rendszergazdai hitelesítő adatok is szükségesek.
+   >Ha Ön nem tartományi rendszergazda, és a tartományi rendszergazda hozzárendelte az engedélyeket, akkor hívja meg a `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
 
    **1. lépés. Azon AD-erdők listájának beolvasása, amelyeken engedélyezve van a zökkenőmentes egyszeri bejelentkezés**
 
@@ -105,9 +106,6 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
    >A használt tartományi rendszergazdai fiók nem lehet a Protected Users csoport tagja. Ha igen, a művelet sikertelen lesz.
 
    2. Hívás `Update-AzureADSSOForest -OnPremCredentials $creds` . Ez a parancs frissíti az `AZUREADSSO` adott ad-erdőben lévő számítógépfiók Kerberos-visszafejtési kulcsát, és frissíti azt az Azure ad-ben.
-   
-   >[!NOTE]
-   >Ha Ön nem tartományi rendszergazda, és a tartományi rendszergazda hozzárendelte az engedélyeket, akkor hívja meg a `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. Ismételje meg a fenti lépéseket minden olyan AD-erdőnél, amelyre beállította a szolgáltatást.
    

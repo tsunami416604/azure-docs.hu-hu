@@ -7,12 +7,12 @@ ms.topic: include
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 885751bf4f11312453245a02209f77b62b8344a4
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c14dfadfb7e8724c196b125e9b93c439fac249c3
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052719"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109283"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -75,8 +75,9 @@ Hozzá kell rendelnie egy- `LanguageUnderstandingModel` t a szándék-felismerő
 Ez a példa a `AddIntent()` függvényt használja egyéni leképezések hozzáadására. Ha egy modellből kívánja felvenni az összes leképezést, használja `AddAllIntents(model)` és adja át a modellt. 
 
 > [!NOTE]
-> Létrehozhat egy LanguageUnderstandingModel a végpont URL-címének a FromEndpoint metódusba való átadásával.
-> A Speech SDK csak a LUIS 2.0-s végpontokat támogatja, és a LUIS v 2.0-végpontok mindig az alábbi két minta egyikét követik:
+> A Speech SDK csak a LUIS v 2.0-végpontokat támogatja.
+> A példa lekérdezési mezőben található v 3.0 végpont URL-címet manuálisan kell módosítani, hogy a v 2.0 URL-mintát használja.
+> A LUIS v 2.0-végpontok mindig az alábbi két minta egyikét követik:
 > * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 > * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
@@ -113,6 +114,6 @@ Most már készen áll az alkalmazás felépítésére és a beszédfelismerési
 2. **Indítsa** el az alkalmazást – a menüsávban **válassza a hibakeresés**  >  **indítása** vagy az <kbd>F5</kbd>billentyűt.
 3. **Felismerés elindítása** – felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]
