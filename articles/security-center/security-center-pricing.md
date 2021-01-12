@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 0b6a9d081d2b81124b0cae15e81e4b233f7824bb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 99f47df86d89e9daf2bc8878b868b04b7038ffd5
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629340"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071204"
 ---
 # <a name="pricing-of-azure-security-center"></a>A Azure Security Center díjszabása
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést jelentő számítógépes kockázatok megtartását.
@@ -72,6 +72,7 @@ Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Me
 - [Mik a Security Center által kínált csomagok?](#what-are-the-plans-offered-by-security-center)
 - [Hogyan engedélyezhetem az Azure Defendert az előfizetéshez?](#how-do-i-enable-azure-defender-for-my-subscription)
 - [Engedélyezhetem az Azure Defendert kiszolgálók részhalmazában lévő kiszolgálókhoz az előfizetésben?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [Ha már van licencem a Microsoft Defender for Endpoint szolgáltatáshoz, kedvezményt kaphatok az Azure Defender számára?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
 - [Engedélyezve van-e az Azure Defender for Servers előfizetése, ha nem futó kiszolgálókat fizetnem?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
 - [A Log Analytics ügynök nélküli gépek után kell díjat fizetni?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
 - [Ha egy Log Analytics ügynök több munkaterületre jelent jelentést, akkor kétszer kell fizetnem?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
@@ -111,6 +112,10 @@ Nem. Ha engedélyezi az [Azure Defender számára](defender-for-servers-introduc
 
 Egy másik lehetőség az Azure Defender engedélyezése a kiszolgálók számára a Log Analytics munkaterület szintjén. Ha ezt teszi, csak az adott munkaterületre jelentett kiszolgálók lesznek védve és számlázva. Számos funkció azonban elérhetetlenné válik. Ezek közé tartozik az igény szerinti virtuális gépekhez való hozzáférés, a hálózati észlelések, a szabályozások megfelelősége, az adaptív hálózat megerősítése, az adaptív alkalmazások vezérlése és egyebek. 
 
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Ha már van licencem a Microsoft Defender for Endpoint szolgáltatáshoz, kedvezményt kaphatok az Azure Defender számára?
+Ha már rendelkezik Microsoft Defender-licenccel a végponthoz, nem kell fizetnie az Azure Defender-licenc adott részének.
+
+A kedvezmény megerősítéséhez lépjen kapcsolatba Security Center támogatási csapatával, és adja meg a megfelelő munkaterület-azonosítót, régiót és licenc-információkat.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Engedélyezve van-e az Azure Defender for Servers előfizetése, ha nem futó kiszolgálókat fizetnem? 
 Nem. Ha engedélyezi [Az Azure Defender számára az előfizetéshez tartozó kiszolgálókat](defender-for-servers-introduction.md) , óradíjat kell fizetnie a kiszolgálók futtatásához. A kikapcsolt kiszolgálók után nem számítunk fel díjat. 
@@ -130,7 +135,7 @@ Igen. Ha úgy konfigurálta a Log Analytics-ügynököt, hogy két vagy több k�
 ### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>A teljes munkaterülethez vagy a gépenként kizárólag a 500 MB-os ingyenes adatfeldolgozást számítjuk ki?
 Napi 500 MB-nyi ingyenes adatfeldolgozást biztosít minden, a munkaterülethez csatlakozó gépen. Kifejezetten a Azure Security Center által közvetlenül gyűjtött biztonsági adattípusokhoz.
 
-Ezek az adatforgalom az összes csomópont átlagos napi díja. Így még akkor is, ha egyes gépek 100-MB-ot küldenek, mások pedig 800-MB-ot küldenek, ha az összeg nem lépi túl a **[gépek számát] x 500-MB** szabad korlátot, nem számítunk fel külön díjat.
+Ez az adatmennyiség az összes csomópont napi átlaga. Így még akkor is, ha egyes gépek 100-MB-ot küldenek, mások pedig 800-MB-ot küldenek, ha az összeg nem lépi túl a **[gépek számát] x 500-MB** szabad korlátot, nem számítunk fel külön díjat.
 
 ## <a name="next-steps"></a>Következő lépések
 Ez a cikk a Security Center díjszabási lehetőségeit ismerteti. Kapcsolódó anyagok esetében lásd:

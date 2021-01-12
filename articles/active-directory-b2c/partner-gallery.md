@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356123"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070864"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -54,10 +54,10 @@ Microsoft-partnerek a következő ISV-val az MFA-és jelszó-alapú hitelesíté
 | ![A Nevis emblémájának képernyőképe](./media/partner-gallery/nevis-logo.png) | A [Nevis](./partner-nevis.md) lehetővé teszi a jelszó-alapú hitelesítést, és mobil-első, teljesen márkás végfelhasználói élményt nyújt a Nevis hozzáférési alkalmazással az erős ügyfél-hitelesítéshez és a PSD2 tranzakciós követelményeinek teljesítéséhez. |
 | ![Képernyőkép egy trusona-emblémáról](./media/partner-gallery/trusona-logo.png) | A [Trusona](./partner-trusona.md) -integráció segítségével biztonságosan bejelentkezhet, és engedélyezheti a jelszó nélküli hitelesítést, az MFA-t és a digitális licencek vizsgálatát. |
 | ![Képernyőkép egy twilio-emblémáról.](./media/partner-gallery/twilio-logo.png) | A [Twilio ellenőrzi](./partner-twilio.md) , hogy az alkalmazás több megoldással teszi lehetővé az MFA SMS egyszeri jelszavas (OTP), az időalapú egyszeri jelszó (TOTP) és a leküldéses értesítések használatát, valamint a PSD2 vonatkozó SCA-követelmények betartását. |
-| ![Képernyőkép egy typingDNA-emblémáról](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-twilio.md) lehetővé teszi, hogy a felhasználó gépelési mintáját elemezze erős ügyfél-hitelesítésre. Lehetővé teszi a vállalatok számára a csendes MFA használatát, és megfelel a PSD2-re vonatkozó SCA-követelményeknek. |
+| ![Képernyőkép egy typingDNA-emblémáról](./media/partner-gallery/typingdna-logo.png) | A [TypingDNA](./partner-typingdna.md) lehetővé teszi, hogy a felhasználó gépelési mintáját elemezze erős ügyfél-hitelesítésre. Lehetővé teszi a vállalatok számára a csendes MFA használatát, és megfelel a PSD2-re vonatkozó SCA-követelményeknek. |
 | ![Képernyőkép egy whoiam-emblémáról](./media/partner-gallery/whoiam-logo.png) | A [WhoIAM](./partner-whoiam.md) egy márkás identitáskezelésrendszer-(BRIMS-) alkalmazás, amely lehetővé teszi, hogy a szervezetek hang-, SMS-és e-mail-cím alapján ellenőrizzék a felhasználói bázist. |
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés 
+## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés 
  
 Microsoft-partnerek a következő ISV-val a szerepköralapú hozzáférés-vezérléshez.
 

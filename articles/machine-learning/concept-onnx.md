@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: e7b818de12a968869d655a80917572ddf5f2c210
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5a1ed6c43e4d3a96e0e19d7be50e1e16bcab780e
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323006"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071238"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX és Azure Machine Learning: ML modellek létrehozása és felgyorsítása
 
@@ -28,7 +27,7 @@ A Microsoft és a partnerek egyik közössége nyílt szabványként hozta létr
 
 A [ONNX Runtime](https://onnxruntime.ai) egy nagy teljesítményű, a ONNX-modellek éles környezetben történő üzembe helyezéséhez használható. A felhő és a peremhálózat számára egyaránt optimalizált, és Linux, Windows és Mac rendszereken is működik. A C++ nyelven írt C, Python, C#, Java és JavaScript (Node.js) API-kat is tartalmaz különböző környezetekben való használathoz. Az ONNX Runtime támogatja mind a DNN, mind a hagyományos ML-modelleket, és integrálható a különböző hardveres gyorssegédekkel, például a TensorRT NVidia GPU-k, az Intel processzorok OpenVINO, a Windows DirectML és sok más szolgáltatással. A ONNX Runtime használatával kihasználhatja a nagy teljesítményű optimalizálási, tesztelési és folyamatos fejlesztéseket.
 
-A ONNX futtatókörnyezet nagy léptékű Microsoft-szolgáltatásokban, például a Bing, az Office és az Azure Cognitive Servicesban használatos. A teljesítménnyel kapcsolatos nyereségek számos tényezőtől függenek, de ezek a Microsoft-szolgáltatások __átlagosan 2x teljesítménybeli nyereséget észleltek a CPU__ -ban. A szolgáltatások Azure Machine Learningán kívül a ONNX Runtime más, Machine Learning munkaterheléseket támogató termékekben is fut, beleértve a következőket:
+A ONNX futtatókörnyezet nagy léptékű Microsoft-szolgáltatásokban, például a Bing, az Office és az Azure Cognitive Servicesban használatos. A teljesítménnyel kapcsolatos nyereségek számos tényezőtől függenek, de ezek a Microsoft-szolgáltatások __átlagosan 2x teljesítménybeli nyereséget észleltek a CPU__-ban. A szolgáltatások Azure Machine Learningán kívül a ONNX Runtime más, Machine Learning munkaterheléseket támogató termékekben is fut, beleértve a következőket:
 + Windows: a futtatókörnyezet a Windows [Machine learning](/windows/ai/windows-ml/) részeként van beépítve, és több száz millió eszközön fut. 
 + Azure SQL termékcsalád: natív pontozás futtatása az [Azure SQL Edge](../azure-sql-edge/onnx-overview.md) -ben és az [Azure SQL felügyelt példányain](../azure-sql/managed-instance/machine-learning-services-overview.md).
 + ML.NET: [ONNX modellek futtatása a ml.net-ben](/dotnet/machine-learning/tutorials/object-detection-onnx).

@@ -7,18 +7,17 @@ author: vladvino
 manager: erikre
 editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e36f7c6085908630d5e7aa2593fe4d57202d6ee7
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: d0d5434de747b48464df1c07f8c7b6a7e785c858
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107651"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070940"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -147,6 +146,9 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
   > A DNS-zónák felett lévő fürtök változása. a **nsatc.net** a **. microsoftmetrics.com** -re általában egy DNS-változás. A fürt IP-címe nem változik.
 
 + **Regionális szolgáltatás címkék**: a NSG-szabályok, amelyek engedélyezik a Storage, az SQL és a Event Hubs Service-címkék kimenő kapcsolatát, a API Management példányt tartalmazó régióhoz tartozó (például Storage. WestUS), az USA nyugati régiójában található API Management-példányhoz tartozó, az adott címkék regionális verzióit használhatják. A többrégiós környezetekben az egyes régiókban lévő NSG engedélyezni kell az adott régió és az elsődleges régió szolgáltatásbeli címkéi forgalmát.
+
+    > [!IMPORTANT]
+    > Ha engedélyezni szeretné a [fejlesztői portál](api-management-howto-developer-portal.md) közzétételét egy virtuális hálózat API Management példánya számára, győződjön meg arról, hogy az USA nyugati régiójában is engedélyezi a kimenő kapcsolatot a blob Storage-ban. Használja például a **Storage. WestUS** szolgáltatás címkéjét egy NSG-szabályban. Az USA nyugati régiójában lévő blob Storage-hoz való kapcsolódásra jelenleg minden API Management példányon közzé kell tenni a fejlesztői portált.
 
 + **SMTP-továbbító**: kimenő hálózati kapcsolat az SMTP-továbbítóhoz, amely a gazdagép, a `smtpi-co1.msn.com` , `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` és a `ies.global.microsoft.com`
 

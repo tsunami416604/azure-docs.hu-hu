@@ -3,13 +3,13 @@ title: Leküldéses & lekéréses Docker-rendszerkép
 description: Docker-rendszerképek leküldése és lekérése egy Azure-beli privát tároló beállításjegyzékébe és -jegyzékéből a Docker parancssori felületével
 ms.topic: article
 ms.date: 01/23/2019
-ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 067b5749332c2c41b86d22e7de60083d5f61a442
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: seodec18, H1Hack27Feb2017
+ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020058"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071629"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
@@ -37,6 +37,8 @@ docker login myregistry.azurecr.io
 ```
 
 Mindkét parancs a `Login Succeeded` Befejezés után visszatér.
+> [!NOTE]
+>* Előfordulhat, hogy a Visual Studio Code-ot a Docker-kiterjesztéssel szeretné használni a gyorsabb és kényelmesebb bejelentkezéshez.
 
 > [!TIP]
 > Mindig a teljes beállításjegyzékbeli nevet adja meg (az összes kisbetűs) a használatakor `docker login` , és ha képeket címkéz fel a beállításjegyzékbe való leküldéshez. A cikkben szereplő példákban a teljes név *myregistry.azurecr.IO*.
@@ -117,7 +119,7 @@ Az Azure Container registryből származó rendszerképek eltávolításához ha
 az acr repository delete --name myregistry --image samples/nginx:latest
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az alapokat, készen áll a beállításjegyzék használatának megkezdésére! Például telepítsen lemezképeket a beállításjegyzékből a következőre:
 

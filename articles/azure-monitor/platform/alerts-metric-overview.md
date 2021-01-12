@@ -1,15 +1,15 @@
 ---
 title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
 description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
-ms.date: 09/30/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 066ffff5979e658a7c06fe10bd668a9fac839a14
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 424cc9db01f1eb6300c2915795f3e2c37b34449f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460849"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071051"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -135,9 +135,9 @@ Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy
 
 Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén támogatott a következő szolgáltatásokhoz a következő Azure-felhőkben:
 
-| Szolgáltatás | Nyilvános Azure | Government | Kína |
+| Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
 |:--------|:--------|:--------|:--------|
-| Virtuális gépek<sup>1</sup>  | **Igen** | Nem | Nem |
+| Virtuális gépek<sup>1</sup>  | **Igen** | **Igen** | No |
 | SQL Server-adatbázisok | **Igen** | **Igen** | **Igen** |
 | SQL Server rugalmas készletek | **Igen** | **Igen** | **Igen** |
 | NetApp-fájlok kapacitásának készletei | **Igen** | **Igen** | **Igen** |
@@ -173,7 +173,7 @@ A metrikákhoz kapcsolódó riasztások esetében általában 5 percen belül é
 A támogatott erőforrástípusok teljes listáját ebben a [cikkben](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)találja.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megtudhatja, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztásokat az Azure-ban](alerts-metric.md)
 - [Ismerje meg, hogyan hozhat létre riasztásokat az Azure Monti Metrikaböngésző](./metrics-charts.md#create-alert-rules)

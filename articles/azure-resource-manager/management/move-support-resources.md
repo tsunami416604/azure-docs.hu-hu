@@ -2,13 +2,13 @@
 title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 72cc2bd1b391acd2065cc4b775c50af94510a840
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.date: 01/11/2021
+ms.openlocfilehash: fe8f6705fdce1a692dd8a969cfc4b3b21d2d2a11
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795901"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072105"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
 
@@ -214,8 +214,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | diagnosticsettings | Nem | Nem |
 > | diagnosticsettingscategories | Nem | Nem |
-> | privatelinkforazuread | Igen | Igen |
-> | bérlők | Igen | Igen |
+> | privatelinkforazuread | Igen | Yes |
+> | bérlők | Igen | Yes |
 
 ## <a name="microsoftaddons"></a>Microsoft. addons
 
@@ -255,13 +255,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | actionrules | Igen | Igen |
+> | actionrules | Igen | Yes |
 > | riasztások | Nem | Nem |
 > | alertslist | Nem | Nem |
 > | alertsmetadata | Nem | Nem |
 > | alertssummary | Nem | Nem |
 > | alertssummarylist | Nem | Nem |
-> | smartdetectoralertrules | Igen | Igen |
+> | smartdetectoralertrules | Igen | Yes |
 > | smartgroups | Nem | Nem |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
@@ -269,7 +269,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | kiszolgálók | Igen | Igen |
+> | kiszolgálók | Igen | Yes |
 
 ## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
 
@@ -280,14 +280,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | reportfeedback | Nem | Nem |
-> | szolgáltatás | Igen | Igen |
+> | szolgáltatás | Igen | Yes |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | configurationstores | Igen | Igen |
+> | configurationstores | Igen | Yes |
 > | configurationstores / eventgridfilters | Nem | Nem |
 
 ## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
@@ -295,7 +295,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Spring | Igen | Igen |
+> | Spring | Igen | Yes |
 
 ## <a name="microsoftappservice"></a>Microsoft. AppService
 
@@ -314,7 +314,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | attestationproviders | Igen | Igen |
+> | attestationproviders | Igen | Yes |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
@@ -347,23 +347,23 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | automationaccounts | Igen | Igen |
-> | automationaccounts/konfigurációk | Igen | Igen |
-> | automationaccounts/runbookok | Igen | Igen |
+> | automationaccounts | Igen | Yes |
+> | automationaccounts/konfigurációk | Igen | Yes |
+> | automationaccounts/runbookok | Igen | Yes |
 
 ## <a name="microsoftavs"></a>Microsoft. AVS
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | privateclouds | Igen | Igen |
+> | privateclouds | Igen | Yes |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft. AzureActiveDirectory
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | b2cdirectories | Igen | Igen |
+> | b2cdirectories | Igen | Yes |
 > | b2ctenants | Nem | Nem |
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
@@ -377,7 +377,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | sqlinstances | Nem | Nem |
 > | sqlmanagedinstances | Nem | Nem |
 > | sqlserverinstances | Nem | Nem |
-> | sqlserverregistrations | Igen | Igen |
+> | sqlserverregistrations | Igen | Yes |
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
@@ -385,7 +385,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | cloudmanifestfiles | Nem | Nem |
-> | regisztrációk | Igen | Igen |
+> | regisztrációk | Igen | Yes |
 
 ## <a name="microsoftazurestackhci"></a>Microsoft. AzureStackHCI
 
@@ -399,7 +399,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | batchaccounts | Igen | Igen |
+> | batchaccounts | Igen | Yes |
 
 ## <a name="microsoftbilling"></a>Microsoft. számlázás
 
@@ -460,7 +460,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | botservices | Igen | Igen |
+> | botservices | Igen | Yes |
 
 ## <a name="microsoftcache"></a>Microsoft. cache
 
@@ -470,7 +470,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Redis | Igen | Igen |
+> | Redis | Igen | Yes |
 > | redisenterprise | Nem | Nem |
 
 ## <a name="microsoftcapacity"></a>Microsoft. Capacity
@@ -496,10 +496,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallmanagedrulesets | Nem | Nem |
-> | cdnwebapplicationfirewallpolicies | Igen | Igen |
+> | cdnwebapplicationfirewallpolicies | Igen | Yes |
 > | edgenodes | Nem | Nem |
-> | profilok | Igen | Igen |
-> | profilok/végpontok | Igen | Igen |
+> | profilok | Igen | Yes |
+> | profilok/végpontok | Igen | Yes |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
@@ -509,7 +509,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tanúsítványrendelések | Igen | Igen |
+> | tanúsítványrendelések | Igen | Yes |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -524,7 +524,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kvóták | Nem | Nem |
 > | resourcetypes | Nem | Nem |
 > | validatesubscriptionmoveavailability | Nem | Nem |
-> | virtualmachines | Igen | Igen |
+> | virtualmachines | Igen | Yes |
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft. ClassicInfrastructureMigrate
 
@@ -585,7 +585,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fiókok | Igen | Igen |
+> | fiókok | Igen | Yes |
 
 ## <a name="microsoftcommerce"></a>Microsoft. Commerce
 
@@ -603,27 +603,27 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | availabilitysets | Igen | Igen |
+> | availabilitysets | Igen | Yes |
 > | diskaccesses | Nem | Nem |
 > | diskencryptionsets | Nem | Nem |
-> | lemezek | Igen | Igen |
+> | lemezek | Igen | Yes |
 > | katalógusok | Nem | Nem |
 > | galériák/lemezképek | Nem | Nem |
 > | galériák/lemezképek/verziók | Nem | Nem |
 > | hostgroups | Nem | Nem |
 > | hostgroups/gazdagépek | Nem | Nem |
-> | images | Igen | Igen |
-> | proximityplacementgroups | Igen | Igen |
+> | images | Igen | Yes |
+> | proximityplacementgroups | Igen | Yes |
 > | restorepointcollections | Nem | Nem |
 > | restorepointcollections / restorepoints | Nem | Nem |
 > | sharedvmextensions | Nem | Nem |
 > | sharedvmimages | Nem | Nem |
 > | sharedvmimages/verziók | Nem | Nem |
-> | pillanatképek | Igen | Igen |
+> | pillanatképek | Igen | Yes |
 > | sshpublickeys | Nem | Nem |
-> | virtualmachines | Igen | Igen |
-> | virtualmachines/bővítmények | Igen | Igen |
-> | virtualmachinescalesets | Igen | Igen |
+> | virtualmachines | Igen | Yes |
+> | virtualmachines/bővítmények | Igen | Yes |
+> | virtualmachinescalesets | Igen | Yes |
 
 ## <a name="microsoftconsumption"></a>Microsoft. felhasználás
 
@@ -665,12 +665,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | kibocsátásiegység | Igen | Igen |
-> | kibocsátásiegység-forgalmi jegyzékek/agentpools | Igen | Igen |
-> | kibocsátásiegység-forgalmi jegyzékek/buildtasks | Igen | Igen |
-> | kibocsátásiegység-forgalmi jegyzékek/replikálások | Igen | Igen |
-> | kibocsátásiegység-forgalmi jegyzékek/feladatok | Igen | Igen |
-> | kibocsátásiegység-forgalmi jegyzékek/webhookok | Igen | Igen |
+> | kibocsátásiegység | Igen | Yes |
+> | kibocsátásiegység-forgalmi jegyzékek/agentpools | Igen | Yes |
+> | kibocsátásiegység-forgalmi jegyzékek/buildtasks | Igen | Yes |
+> | kibocsátásiegység-forgalmi jegyzékek/replikálások | Igen | Yes |
+> | kibocsátásiegység-forgalmi jegyzékek/feladatok | Igen | Yes |
+> | kibocsátásiegység-forgalmi jegyzékek/webhookok | Igen | Yes |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft. Tárolószolgáltatás
 
@@ -704,7 +704,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | billingaccounts | Nem | Nem |
 > | költségvetése | Nem | Nem |
 > | cloudconnectors | Nem | Nem |
-> | összekötők | Igen | Igen |
+> | összekötők | Igen | Yes |
 > | részlegek | Nem | Nem |
 > | Méretek | Nem | Nem |
 > | enrollmentaccounts | Nem | Nem |
@@ -739,7 +739,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | szövetségek | Nem | Nem |
-> | resourceproviders | Igen | Igen |
+> | resourceproviders | Igen | Yes |
 
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
@@ -754,7 +754,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | availableskus | Nem | Nem |
-> | databoxedgedevices | Igen | Igen |
+> | databoxedgedevices | Nem | Nem |
 
 ## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
@@ -768,7 +768,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | katalógusok | Igen | Igen |
+> | katalógusok | Igen | Yes |
 > | datacatalogs | Nem | Nem |
 
 ## <a name="microsoftdataconnect"></a>Microsoft. DataConnect
@@ -791,8 +791,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | datafactories | Igen | Igen |
-> | előállítók | Igen | Igen |
+> | datafactories | Igen | Yes |
+> | előállítók | Igen | Yes |
 
 ## <a name="microsoftdatalake"></a>Microsoft. DataLake
 
@@ -806,14 +806,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fiókok | Igen | Igen |
+> | fiókok | Igen | Yes |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft. Data Lake Store
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fiókok | Igen | Igen |
+> | fiókok | Igen | Yes |
 
 ## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
@@ -836,54 +836,54 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fiókok | Igen | Igen |
+> | fiókok | Igen | Yes |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | kiszolgálók | Igen | Igen |
+> | kiszolgálók | Igen | Yes |
 
 ## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | flexibleServers | Igen | Igen |
-> | kiszolgálók | Igen | Igen |
+> | flexibleServers | Igen | Yes |
+> | kiszolgálók | Igen | Yes |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | flexibleServers | Igen | Igen |
+> | flexibleServers | Igen | Yes |
 > | servergroups | Nem | Nem |
-> | kiszolgálók | Igen | Igen |
-> | serversv2 | Igen | Igen |
-> | singleservers | Igen | Igen |
+> | kiszolgálók | Igen | Yes |
+> | serversv2 | Igen | Yes |
+> | singleservers | Igen | Yes |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | artifactsources | Igen | Igen |
-> | kibocsátások | Igen | Igen |
-> | servicetopologies | Igen | Igen |
-> | servicetopologies/szolgáltatások | Igen | Igen |
-> | servicetopologies/szolgáltatások/serviceunits | Igen | Igen |
-> | lépések | Igen | Igen |
+> | artifactsources | Igen | Yes |
+> | kibocsátások | Igen | Yes |
+> | servicetopologies | Igen | Yes |
+> | servicetopologies/szolgáltatások | Igen | Yes |
+> | servicetopologies/szolgáltatások/serviceunits | Igen | Yes |
+> | lépések | Igen | Yes |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | applicationgroups | Igen | Igen |
-> | hostpools | Igen | Igen |
-> | munkaterületek | Igen | Igen |
+> | applicationgroups | Igen | Yes |
+> | hostpools | Igen | Yes |
+> | munkaterületek | Igen | Yes |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -892,22 +892,22 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | elasticpools | Nem | Nem |
 > | elasticpools / iothubtenants | Nem | Nem |
-> | iothubs | Igen | Igen |
-> | provisioningservices | Igen | Igen |
+> | iothubs | Igen | Yes |
+> | provisioningservices | Igen | Yes |
 
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | csővezetékek | Igen | Igen |
+> | csővezetékek | Igen | Yes |
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tartományvezérlők | Igen | Igen |
+> | tartományvezérlők | Igen | Yes |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
 
@@ -916,10 +916,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | labcenters | Nem | Nem |
 > | Labs | Igen | Nem |
-> | Labs/környezetek | Igen | Igen |
-> | Labor/servicerunners | Igen | Igen |
+> | Labs/környezetek | Igen | Yes |
+> | Labor/servicerunners | Igen | Yes |
 > | Labor/virtualmachines | Igen | Nem |
-> | menetrend | Igen | Igen |
+> | menetrend | Igen | Yes |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
@@ -934,14 +934,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | databaseaccountnames | Nem | Nem |
-> | databaseaccounts | Igen | Igen |
+> | databaseaccounts | Igen | Yes |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tartományok | Igen | Igen |
+> | tartományok | Igen | Yes |
 > | generatessorequest | Nem | Nem |
 > | topleveldomains | Nem | Nem |
 > | validatedomainregistrationinformation | Nem | Nem |
@@ -951,21 +951,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | services | Igen | Igen |
+> | services | Igen | Yes |
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tartományok | Igen | Igen |
+> | tartományok | Igen | Yes |
 > | eventsubscriptions | Nem – nem helyezhető el egymástól függetlenül, de automatikusan áthelyezi az előfizetett erőforrással. | Nem – nem helyezhető el egymástól függetlenül, de automatikusan áthelyezi az előfizetett erőforrással. |
 > | extensiontopics | Nem | Nem |
-> | partnernamespaces | Igen | Igen |
+> | partnernamespaces | Igen | Yes |
 > | partnerregistrations | Nem | Nem |
-> | partnertopics | Igen | Igen |
-> | systemtopics | Igen | Igen |
-> | témakörök | Igen | Igen |
+> | partnertopics | Igen | Yes |
+> | systemtopics | Igen | Yes |
+> | témakörök | Igen | Yes |
 > | topictypes | Nem | Nem |
 
 ## <a name="microsofteventhub"></a>Microsoft. EventHub
@@ -973,8 +973,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fürtök | Igen | Igen |
-> | névterek | Igen | Igen |
+> | fürtök | Igen | Yes |
+> | névterek | Igen | Yes |
 > | SKU | Nem | Nem |
 
 ## <a name="microsoftexperimentation"></a>Microsoft. kísérletezés
@@ -989,7 +989,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | névterek | Igen | Igen |
+> | névterek | Igen | Yes |
 
 ## <a name="microsoftfeatures"></a>Microsoft. features
 
@@ -1045,29 +1045,29 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fürtök | Igen | Igen |
+> | fürtök | Igen | Yes |
 
 ## <a name="microsofthealthcareapis"></a>Microsoft. HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | services | Igen | Igen |
+> | services | Igen | Yes |
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | gépek | Igen | Igen |
-> | gépek/bővítmények | Igen | Igen |
+> | gépek | Igen | Yes |
+> | gépek/bővítmények | Igen | Yes |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | datamanagers | Igen | Igen |
+> | datamanagers | Igen | Yes |
 
 ## <a name="microsofthybridnetwork"></a>Microsoft. HybridNetwork
 
@@ -1090,7 +1090,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | feladatok | Igen | Igen |
+> | feladatok | Igen | Yes |
 
 ## <a name="microsoftinsights"></a>Microsoft. bepillantások
 
@@ -1100,12 +1100,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | actiongroups | Igen | Igen |
+> | actiongroups | Igen | Yes |
 > | activitylogalerts | Nem | Nem |
-> | alertrules | Igen | Igen |
-> | autoscalesettings | Igen | Igen |
+> | alertrules | Igen | Yes |
+> | autoscalesettings | Igen | Yes |
 > | alapkonfiguráció | Nem | Nem |
-> | összetevők | Igen | Igen |
+> | összetevők | Igen | Yes |
 > | datacollectionrules | Nem | Nem |
 > | diagnosticsettings | Nem | Nem |
 > | diagnosticsettingscategories | Nem | Nem |
@@ -1129,14 +1129,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | notificationgroups | Nem | Nem |
 > | privatelinkscopes | Nem | Nem |
 > | rollbacktolegacypricingmodel | Nem | Nem |
-> | scheduledqueryrules | Igen | Igen |
+> | scheduledqueryrules | Igen | Yes |
 > | topology | Nem | Nem |
 > | transactions | Nem | Nem |
 > | vminsightsonboardingstatuses | Nem | Nem |
-> | webteszteket | Igen | Igen |
+> | webteszteket | Igen | Yes |
 > | webtesztek/gettestresultfile | Nem | Nem |
-> | munkafüzetek | Igen | Igen |
-> | workbooktemplates | Igen | Igen |
+> | munkafüzetek | Igen | Yes |
+> | workbooktemplates | Igen | Yes |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
 
@@ -1144,14 +1144,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | apptemplates | Nem | Nem |
-> | iotapps | Igen | Igen |
+> | iotapps | Igen | Yes |
 
 ## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Graph | Igen | Igen |
+> | Graph | Igen | Yes |
 
 ## <a name="microsoftkeyvault"></a>Microsoft. kulcstartó
 
@@ -1164,14 +1164,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | deletedvaults | Nem | Nem |
 > | hsmpools | Nem | Nem |
 > | managedhsms | Nem | Nem |
-> | boltívek | Igen | Igen |
+> | boltívek | Igen | Yes |
 
 ## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | connectedclusters | Igen | Igen |
+> | connectedclusters | Igen | Yes |
 > | registeredsubscriptions | Nem | Nem |
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft. KubernetesConfiguration
@@ -1186,7 +1186,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fürtök | Igen | Igen |
+> | fürtök | Igen | Yes |
 
 ## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
@@ -1216,11 +1216,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Nem | Nem |
-> | integrationaccounts | Igen | Igen |
+> | integrationaccounts | Igen | Yes |
 > | integrationserviceenvironments | Igen | Nem |
 > | integrationserviceenvironments/król | Igen | Nem |
 > | isolatedenvironments | Nem | Nem |
-> | munkafolyamatok | Igen | Igen |
+> | munkafolyamatok | Igen | Yes |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
 
@@ -1229,7 +1229,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | commitmentplans | Nem | Nem |
 > | WebServices | Igen | Nem |
-> | munkaterületek | Igen | Igen |
+> | munkaterületek | Igen | Yes |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
 
@@ -1266,7 +1266,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | configurationassignments | Nem | Nem |
-> | maintenanceconfigurations | Igen | Igen |
+> | maintenanceconfigurations | Igen | Yes |
 > | frissítések | Nem | Nem |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
@@ -1313,8 +1313,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fiókok | Igen | Igen |
-> | fiókok/privateatlases | Igen | Igen |
+> | fiókok | Igen | Yes |
+> | fiókok/privateatlases | Igen | Yes |
 
 ## <a name="microsoftmarketplace"></a>Microsoft. Marketplace
 
@@ -1350,9 +1350,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | Mediaservices | Igen | Igen |
-> | Mediaservices/liveevents | Igen | Igen |
-> | Mediaservices/streamingendpoints | Igen | Igen |
+> | Mediaservices | Igen | Yes |
+> | Mediaservices/liveevents | Igen | Yes |
+> | Mediaservices/streamingendpoints | Igen | Yes |
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
 
@@ -1378,8 +1378,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | holographicsbroadcastaccounts | Nem | Nem |
 > | objectunderstandingaccounts | Nem | Nem |
-> | remoterenderingaccounts | Igen | Igen |
-> | spatialanchorsaccounts | Igen | Igen |
+> | remoterenderingaccounts | Igen | Yes |
+> | spatialanchorsaccounts | Igen | Yes |
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
@@ -1400,55 +1400,55 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | applicationgateways | Nem | Nem |
 > | applicationgatewaywebapplicationfirewallpolicies | Nem | Nem |
-> | applicationsecuritygroups | Igen | Igen |
+> | applicationsecuritygroups | Igen | Yes |
 > | azurefirewalls | Nem | Nem |
 > | bastionhosts | Nem | Nem |
 > | bgpservicecommunities | Nem | Nem |
-> | kapcsolatok | Igen | Igen |
-> | ddoscustompolicies | Igen | Igen |
+> | kapcsolatok | Igen | Yes |
+> | ddoscustompolicies | Igen | Yes |
 > | ddosprotectionplans | Nem | Nem |
-> | dnszones | Igen | Igen |
+> | dnszones | Igen | Yes |
 > | expressroutecircuits | Nem | Nem |
 > | expressroutegateways | Nem | Nem |
 > | expressrouteserviceproviders | Nem | Nem |
-> | firewallpolicies | Igen | Igen |
+> | firewallpolicies | Igen | Yes |
 > | frontdoors | Nem | Nem |
-> | ipallocations | Igen | Igen |
-> | ipgroups | Igen | Igen |
+> | ipallocations | Igen | Yes |
+> | ipgroups | Igen | Yes |
 > | loadbalancers | Igen – alapszintű SKU<br> Igen – szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
-> | localnetworkgateways | Igen | Igen |
+> | localnetworkgateways | Igen | Yes |
 > | natgateways | Nem | Nem |
 > | networkexperimentprofiles | Nem | Nem |
-> | networkintentpolicies | Igen | Igen |
-> | networkinterfaces | Igen | Igen |
+> | networkintentpolicies | Igen | Yes |
+> | networkinterfaces | Igen | Yes |
 > | networkprofiles | Nem | Nem |
-> | networksecuritygroups | Igen | Igen |
+> | networksecuritygroups | Igen | Yes |
 > | networkwatchers | Nem | Nem |
 > | networkwatchers / connectionmonitors | Igen | Nem |
 > | networkwatchers / flowlogs | Igen | Nem |
 > | networkwatchers / pingmeshes | Igen | Nem |
 > | p2svpngateways | Nem | Nem |
-> | privatednszones | Igen | Igen |
-> | privatednszones / virtualnetworklinks | Igen | Igen |
+> | privatednszones | Igen | Yes |
+> | privatednszones / virtualnetworklinks | Igen | Yes |
 > | privatednszonesinternal | Nem | Nem |
 > | privateendpointredirectmaps | Nem | Nem |
 > | privateendpoints | Nem | Nem |
 > | privatelinkservices | Nem | Nem |
 > | nyilvános IP | Igen – alapszintű SKU<br>Igen – szabványos SKU | Igen – alapszintű SKU<br>Nem szabványos SKU |
-> | publicipprefixes | Igen | Igen |
+> | publicipprefixes | Igen | Yes |
 > | routefilters | Nem | Nem |
-> | routetables | Igen | Igen |
-> | securitypartnerproviders | Igen | Igen |
-> | serviceendpointpolicies | Igen | Igen |
+> | routetables | Igen | Yes |
+> | securitypartnerproviders | Igen | Yes |
+> | serviceendpointpolicies | Igen | Yes |
 > | trafficmanagergeographichierarchies | Nem | Nem |
-> | trafficmanagerprofiles | Igen | Igen |
+> | trafficmanagerprofiles | Igen | Yes |
 > | trafficmanagerprofiles/intenzitástérképei | Nem | Nem |
 > | trafficmanagerusermetricskeys | Nem | Nem |
 > | virtualhubs | Nem | Nem |
-> | virtualnetworkgateways | Igen | Igen |
-> | virtualnetworks | Igen | Igen |
+> | virtualnetworkgateways | Igen | Yes |
+> | virtualnetworks | Igen | Yes |
 > | virtualnetworktaps | Nem | Nem |
-> | virtualrouters | Igen | Igen |
+> | virtualrouters | Igen | Yes |
 > | virtualwans | Nem | Nem |
 > | vpngateways (virtuális WAN) | Nem | Nem |
 > | vpnserverconfigurations | Nem | Nem |
@@ -1459,15 +1459,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | névterek | Igen | Igen |
-> | névterek/notificationhubs | Igen | Igen |
+> | névterek | Igen | Yes |
+> | névterek/notificationhubs | Igen | Yes |
 
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | osnamespaces | Igen | Igen |
+> | osnamespaces | Igen | Yes |
 
 ## <a name="microsoftoffazure"></a>Microsoft. OffAzure
 
@@ -1493,7 +1493,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | deletedworkspaces | Nem | Nem |
 > | linktargets | Nem | Nem |
 > | storageinsightconfigs | Nem | Nem |
-> | munkaterületek | Igen | Igen |
+> | munkaterületek | Igen | Yes |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
@@ -1501,9 +1501,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | managementassociations | Nem | Nem |
-> | managementconfigurations | Igen | Igen |
-> | megoldások | Igen | Igen |
-> | kilátással | Igen | Igen |
+> | managementconfigurations | Igen | Yes |
+> | megoldások | Igen | Yes |
+> | kilátással | Igen | Yes |
 
 ## <a name="microsoftpeering"></a>Microsoft. peering
 
@@ -1535,7 +1535,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > |  -konzolok | Nem | Nem |
-> | irányítópultok | Igen | Igen |
+> | irányítópultok | Igen | Yes |
 > | usersettings | Nem | Nem |
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
@@ -1543,14 +1543,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | workspacecollections | Igen | Igen |
+> | workspacecollections | Igen | Yes |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | kapacitások | Igen | Igen |
+> | kapacitások | Igen | Yes |
 
 ## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
 
@@ -1584,7 +1584,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | replicationeligibilityresults | Nem | Nem |
-> | boltívek | Igen | Igen |
+> | boltívek | Igen | Yes |
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft. RedHatOpenShift
 
@@ -1598,14 +1598,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | névterek | Igen | Igen |
+> | névterek | Igen | Yes |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | lekérdezések | Igen | Igen |
+> | lekérdezések | Igen | Yes |
 > | resourcechangedetails | Nem | Nem |
 > | resourcechanges | Nem | Nem |
 > | resources | Nem | Nem |
@@ -1658,7 +1658,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | resourcehealthmetadata | Nem | Nem |
-> | searchservices | Igen | Igen |
+> | searchservices | Igen | Yes |
 
 ## <a name="microsoftsecurity"></a>Microsoft. Security
 
@@ -1673,7 +1673,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | assessmentmetadata | Nem | Nem |
 > | értékelések | Nem | Nem |
 > | autodismissalertsrules | Nem | Nem |
-> | automatizálások szabványának létrehozásában | Igen | Igen |
+> | automatizálások szabványának létrehozásában | Igen | Yes |
 > | autoprovisioningsettings | Nem | Nem |
 > | complianceresults | Nem | Nem |
 > | felelésről | Nem | Nem |
@@ -1682,7 +1682,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | discoveredsecuritysolutions | Nem | Nem |
 > | externalsecuritysolutions | Nem | Nem |
 > | informationprotectionpolicies | Nem | Nem |
-> | iotsecuritysolutions | Igen | Igen |
+> | iotsecuritysolutions | Igen | Yes |
 > | iotsecuritysolutions / analyticsmodels | Nem | Nem |
 > | iotsecuritysolutions / analyticsmodels / aggregatedalerts | Nem | Nem |
 > | iotsecuritysolutions / analyticsmodels / aggregatedrecommendations | Nem | Nem |
@@ -1743,7 +1743,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | névterek | Igen | Igen |
+> | névterek | Igen | Yes |
 > | premiummessagingregions | Nem | Nem |
 > | SKU | Nem | Nem |
 
@@ -1753,7 +1753,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | alkalmazások | Nem | Nem |
-> | fürtök | Igen | Igen |
+> | fürtök | Igen | Yes |
 > | containergroups | Nem | Nem |
 > | containergroupsets | Nem | Nem |
 > | edgeclusters | Nem | Nem |
@@ -1767,12 +1767,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | alkalmazások | Igen | Igen |
+> | alkalmazások | Igen | Yes |
 > | containergroups | Nem | Nem |
-> | átjárók | Igen | Igen |
-> | hálózatok | Igen | Igen |
-> | titkok | Igen | Igen |
-> | volumes | Igen | Igen |
+> | átjárók | Igen | Yes |
+> | hálózatok | Igen | Yes |
+> | titkok | Igen | Yes |
+> | volumes | Igen | Yes |
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
@@ -1786,7 +1786,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | signalr | Igen | Igen |
+> | signalr | Igen | Yes |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
@@ -1813,30 +1813,30 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | instancepools | Nem | Nem |
-> | helyek | Igen | Igen |
+> | helyek | Igen | Yes |
 > | managedinstances | Nem | Nem |
-> | kiszolgálók | Igen | Igen |
-> | kiszolgálók/adatbázisok | Igen | Igen |
-> | kiszolgálók/adatbázisok/backuplongtermretentionpolicies | Igen | Igen |
-> | kiszolgálók/elasticpools | Igen | Igen |
-> | kiszolgálók/jobaccounts | Igen | Igen |
-> | kiszolgálók/jobagents | Igen | Igen |
-> | virtualclusters | Igen | Igen |
+> | kiszolgálók | Igen | Yes |
+> | kiszolgálók/adatbázisok | Igen | Yes |
+> | kiszolgálók/adatbázisok/backuplongtermretentionpolicies | Igen | Yes |
+> | kiszolgálók/elasticpools | Igen | Yes |
+> | kiszolgálók/jobaccounts | Igen | Yes |
+> | kiszolgálók/jobagents | Igen | Yes |
+> | virtualclusters | Igen | Yes |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | sqlvirtualmachinegroups | Igen | Igen |
-> | sqlvirtualmachines | Igen | Igen |
+> | sqlvirtualmachinegroups | Igen | Yes |
+> | sqlvirtualmachines | Igen | Yes |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | storageaccounts | Igen | Igen |
+> | storageaccounts | Igen | Yes |
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
@@ -1850,7 +1850,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | storagesyncservices | Igen | Igen |
+> | storagesyncservices | Igen | Yes |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft. StorageSyncDev
 
@@ -1882,7 +1882,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | fürtök | Nem | Nem |
-> | streamingjobs | Igen | Igen |
+> | streamingjobs | Igen | Yes |
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft. StreamAnalyticsExplorer
 
@@ -1921,16 +1921,16 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | környezetben | Igen | Igen |
-> | környezetek/eventsources | Igen | Igen |
-> | környezetek/referencedatasets | Igen | Igen |
+> | környezetben | Igen | Yes |
+> | környezetek/eventsources | Igen | Yes |
+> | környezetek/referencedatasets | Igen | Yes |
 
 ## <a name="microsofttoken"></a>Microsoft. token
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tárolja | Igen | Igen |
+> | tárolja | Igen | Yes |
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft. VirtualMachineImages
 
@@ -2000,23 +2000,23 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | availablestacks | Nem | Nem |
 > | billingmeters | Nem | Nem |
 > | tanúsítványok | Nem | Igen |
-> | connectiongateways | Igen | Igen |
-> | kapcsolatok | Igen | Igen |
-> | customapis | Igen | Igen |
+> | connectiongateways | Igen | Yes |
+> | kapcsolatok | Igen | Yes |
+> | customapis | Igen | Yes |
 > | deletedsites | Nem | Nem |
 > | deploymentlocations | Nem | Nem |
 > | georegions | Nem | Nem |
 > | hostingenvironments | Nem | Nem |
-> | kubeenvironments | Igen | Igen |
+> | kubeenvironments | Igen | Yes |
 > | publishingusers | Nem | Nem |
 > | javaslatok | Nem | Nem |
 > | resourcehealthmetadata | Nem | Nem |
 > | Runtimes | Nem | Nem |
-> | kiszolgálófarmok | Igen | Igen |
+> | kiszolgálófarmok | Igen | Yes |
 > | kiszolgálófarmok/eventgridfilters | Nem | Nem |
-> | helyek | Igen | Igen |
-> | helyek/premieraddons | Igen | Igen |
-> | helyek/bővítőhelyek | Igen | Igen |
+> | helyek | Igen | Yes |
+> | helyek/premieraddons | Igen | Yes |
+> | helyek/bővítőhelyek | Igen | Yes |
 > | sourcecontrols | Nem | Nem |
 > | staticsites | Nem | Nem |
 
@@ -2056,7 +2056,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 

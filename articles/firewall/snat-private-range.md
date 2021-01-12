@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348033"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072241"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>SNAT magánhálózati IP-címtartományok Azure Firewall
 
@@ -25,6 +25,9 @@ Ha a szervezete nyilvános IP-címtartományt használ a magánhálózatok szám
 - Ha úgy szeretné konfigurálni a Azure Firewallt, hogy **Soha ne** SNAT meg a cél IP-címről, használja a **0.0.0.0/0 értéket** a magánhálózati IP-címtartomány alapján. Ezzel a konfigurációval a Azure Firewall soha nem irányíthatja át a forgalmat közvetlenül az internetre. 
 
 - Ha úgy szeretné beállítani a tűzfalat, hogy **mindig** SNAT a célhelytől függetlenül, használja a **255.255.255.255/32** protokollt magánhálózati IP-címtartományként.
+
+> [!IMPORTANT]
+> A megadott privát címtartomány csak a hálózati szabályokra vonatkozik. Az alkalmazás szabályai jelenleg mindig SNAT.
 
 > [!IMPORTANT]
 > Ha saját magánhálózati IP-címtartományt szeretne megadni, és meg szeretné tartani az alapértelmezett IANA RFC 1918-címtartományt, győződjön meg arról, hogy az egyéni lista továbbra is tartalmazza az IANA RFC 1918 tartományát. 

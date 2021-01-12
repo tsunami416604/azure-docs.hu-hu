@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: e19c5064dd69538dfc025b0d244baf4fa74706b2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753535"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071374"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Az ügynök nélküli VMware VM-áttelepítés replikálási hibáinak elhárítása
 
@@ -297,6 +297,24 @@ Ez egy ismert VMware-probléma, amelyben a pillanatkép által jelzett lemez mé
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Hibaüzenet: belső hiba történt. [A memória kiosztása nem sikerült. Nincs elég memória.]
 
 Ez akkor fordul elő, ha az NFC-gazdagép puffere nem elegendő a memóriához. A probléma megoldásához át kell helyeznie a virtuális gépet (számítási vMotion) egy másik gazdagépre, amely ingyenes erőforrásokkal rendelkezik.
+
+## <a name="replication-cycle-failed"></a>Sikertelen replikálási ciklus
+
+**Hiba azonosítója:** 181008
+
+**Hibaüzenet:** Virtuális gép: "VMName". Hiba: a pillanatkép-replikációhoz nem található disksnapshots a következő pillanatkép-azonosítóval: "SnapshotID".
+
+**Lehetséges okok:**
+
+A lehetséges okok a következők:
+1. Egy vagy több befoglalt lemez elérési útja a tárolási VMotion miatt módosult.
+2. Egy vagy több mellékelt lemez már nincs csatlakoztatva a virtuális géphez.
+      
+**Ajánlás**
+
+A következő javaslatok vannak megadva
+1. Állítsa vissza a befoglalt lemezeket az eredeti elérési útra a Storage vMotion használatával, majd tiltsa le a tárolási vMotion.
+2. Tiltsa le a tároló VMotion, ha engedélyezve van, állítsa le a replikációt a virtuális gépen, majd replikálja újra a virtuális gépet. Ha a probléma továbbra is fennáll, forduljon a támogatási szolgálathoz.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,12 @@ ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 32d7dc913ae19353574e91837b4ea009d9f797c6
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802473"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071782"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service
 
@@ -218,7 +218,7 @@ Tulajdonság | Kötelező | Leírás | Verzió
 `<subscriptionId>` | hamis | Határozza meg az előfizetés azonosítóját. | 0.1.0 +
 `<resourceGroup>` | true | Azure-erőforráscsoport a webalkalmazáshoz. | 0.1.0 +
 `<appName>` | true | A webalkalmazás neve. | 0.1.0 +
-`<region>` | true | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) szakaszban található összes érvényes régió. | 0.1.0 +
+`<region>` | true | Meghatározza azt a régiót, ahol a webalkalmazás üzemeltetve lesz; az alapértelmezett érték a **westeurope**. A [támogatott régiók](https://azure.microsoft.com/global-infrastructure/services/?products=app-service) szakaszban található összes érvényes régió. | 0.1.0 +
 `<pricingTier>` | hamis | A webalkalmazás díjszabási szintje. Az alapértelmezett érték az éles számítási feladatokhoz **P1V2** , a **B2** pedig a javasolt minimum a Java dev/testhez. [További információ](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 +
 `<runtime>` | true | A futásidejű környezet konfigurációja a részleteket [itt](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)tekintheti meg. | 0.1.0 +
 `<deployment>` | true | A központi telepítés konfigurálásával [itt](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)láthatja a részleteket. | 0.1.0 +
@@ -261,7 +261,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 A parancs futtatása egy percig is eltarthat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás a PostgreSQL-hez készült Azure-ADATBÁZIShoz Java használatával](../postgresql/connect-java.md)

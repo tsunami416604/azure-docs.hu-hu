@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 408ba76c44d1161a4b91ccc037721796c7b94661
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500750"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071731"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure rendszerindítási diagnosztika
 
@@ -21,10 +21,14 @@ A rendszerindítási diagnosztika az Azure Virtual Machines (VM) hibakeresési f
 ## <a name="boot-diagnostics-storage-account"></a>Rendszerindítási diagnosztika Storage-fiókja
 Amikor Azure Portalban hoz létre virtuális gépet, a rendszerindítási diagnosztika alapértelmezés szerint engedélyezve van. Az ajánlott rendszerindítási diagnosztika a felügyelt Storage-fiók használata, mivel az Azure-beli virtuális gép létrehozásához szükséges idő jelentős teljesítménybeli javítást eredményez. Ennek az az oka, hogy egy Azure által felügyelt Storage-fiókot kell használni, és el kell távolítani a rendszerindítási diagnosztikai adatait tároló új felhasználói Storage-fiók létrehozásához szükséges időt.
 
-Egy alternatív rendszerindítási diagnosztikai megoldás a felhasználó által felügyelt Storage-fiók használata. Egy felhasználó létrehozhat egy új Storage-fiókot, vagy használhat egy meglévőt is. 
-
 > [!IMPORTANT]
 > A rendszerindítási diagnosztika adatblobok (amelyek a naplókból és a pillanatkép-lemezképből állnak) egy felügyelt Storage-fiókban tárolódnak. Az ügyfeleknek csak a Blobok által használt GiBs kell fizetniük, nem pedig a lemez kiosztott méretétől. A rendszer a felügyelt Storage-fiók számlázására szolgáló pillanatkép-mérőszámokat használja. Mivel a felügyelt fiókok szabványos LRS vagy standard szintű ZRS jönnek létre, a rendszer havi 0,05/GB-onként díjat számít fel a diagnosztikai adatblobok méretére. A díjszabással kapcsolatos további információkért lásd: [felügyelt lemezek díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/). Az ügyfelek ezt a díjat a virtuális gép erőforrás-URI-ja alapján fogják látni. 
+
+Egy alternatív rendszerindítási diagnosztikai megoldás egy felhasználó által felügyelt Storage-fiók használata. Egy felhasználó létrehozhat egy új Storage-fiókot, vagy használhat egy meglévőt is.
+> [!NOTE]
+> A rendszerindítási diagnosztika szolgáltatáshoz társított, felhasználó által felügyelt Storage-fiókok esetében a Storage-fióknak és a társított virtuális gépnek ugyanabban az előfizetésben kell lennie. 
+
+
 
 ## <a name="boot-diagnostics-view"></a>Rendszerindítási diagnosztika nézet
 A virtuális gép paneljén a rendszerindítási diagnosztika lehetőség a Azure Portal *támogatási és hibaelhárítási* szakaszában található. A rendszerindítási diagnosztika lehetőségre kattintva megjelenik a képernyőkép és a soros napló adatai. A soros napló kernel-üzenetkezelést tartalmaz, és a képernyőkép a virtuális gépek aktuális állapotának pillanatképe. Attól függően, hogy a virtuális gép Windows vagy Linux rendszert futtat-e, meghatározza, hogy a várt képernyőkép hogyan fog kinézni. A Windowsban a felhasználók asztali hátteret és Linux rendszerű felhasználókat látnak, és a felhasználók egy bejelentkezési kérést fognak látni.
@@ -105,6 +109,6 @@ Minden, a 2020-06-01-es API-verzió támogatja a felügyelt rendszerindítási d
 - Az Azure soros konzol jelenleg nem kompatibilis a rendszerindítási diagnosztika felügyelt tárolási fiókjával. További információ az [Azure soros konzolról](./troubleshooting/serial-console-overview.md).
 - A portál csak az Egypéldányos virtuális gépekhez tartozó felügyelt Storage-fiókkal támogatja a rendszerindítási diagnosztika használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure soros konzolról](./troubleshooting/serial-console-overview.md) , valamint a [virtuális gépek Azure-ban való hibakeresésének](./troubleshooting/boot-diagnostics.md)rendszerindítási diagnosztika használatával történő használatáról.

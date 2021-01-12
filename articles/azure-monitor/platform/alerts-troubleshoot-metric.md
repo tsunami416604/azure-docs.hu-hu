@@ -4,14 +4,14 @@ description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokka
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/03/2021
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857341"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070729"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Az Azure Monitor metrikaalapú riasztásaival kapcsolatos hibák elhárítása 
 
@@ -91,9 +91,9 @@ Ha egy adott metrikához szeretne riasztást létrehozni, de nem látja a metrik
 Ha [egy metrika adott dimenzió értékeire](./alerts-metric-overview.md#using-dimensions)szeretne riasztást kapni, de nem találja ezeket az értékeket, vegye figyelembe a következőket:
 
 1. Eltarthat egy pár percig, amíg a dimenzióértékek megjelennek a **Dimenzióértékek** listában
-1. A megjelenített dimenzióértékek az elmúlt három napban gyűjtött metrikaadatokon alapulnak
-1. Ha a dimenzió értéke még nincs kibocsátva, kattintson a "+" jelre egyéni érték hozzáadásához.
-1. Ha szeretne riasztást kapni egy dimenzió összes lehetséges értékéről (beleértve a jövőbeli értékeket is), jelölje be a "Select *" jelölőnégyzetet.
+1. A megjelenített dimenzió értékei az elmúlt nap során összegyűjtött metrikus adatokon alapulnak.
+1. Ha a dimenzió értéke még nincs kibocsátva vagy nem jelenik meg, az "egyéni érték hozzáadása" beállítással adhat hozzá egyéni dimenzió értéket
+1. Ha szeretne riasztást kapni egy dimenzió összes lehetséges értékéről (beleértve a jövőbeli értékeket is), válassza az összes jelenlegi és jövőbeli érték kiválasztása lehetőséget.
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>A metrika riasztási szabályai még definiálva vannak egy törölt erőforráson 
 
@@ -283,6 +283,6 @@ Ha egy metrika nagy ingadozást mutat be, a dinamikus küszöbértékek egy szé
 
 Ha az alsó határ negatív értékkel rendelkezik, ez azt jelenti, hogy a metrika a metrika szabálytalan viselkedése miatt nem éri el a nulla értéket. Érdemes lehet nagyobb érzékenységet vagy nagyobb *összesítési részletességet (időszakot)* választani, hogy a modell kevésbé érzékeny legyen, vagy az *adatok figyelmen kívül hagyása* lehetőséggel kizárjon egy legutóbbi irregulaity a modell összeállításához használt korábbi adatokból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).

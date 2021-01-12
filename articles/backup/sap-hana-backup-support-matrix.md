@@ -4,12 +4,12 @@ description: Ebben a cikkben megismerheti a támogatott forgatókönyveket és k
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: cb7f31986b9ebd91c631d2b896600039c93084de
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 7f287206c40e4556db2ee4b38bb46ef8e5352102
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607092"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072190"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure-beli virtuális gépeken tárolt SAP HANA-adatbázisok biztonsági mentésére vonatkozó támogatási mátrix
 
@@ -27,7 +27,7 @@ A Azure Backup támogatja SAP HANA adatbázisok biztonsági mentését az Azure-
 | **OPERÁCIÓSRENDSZER-verziók**            | SLES 12 SP2, SP3, SP4 és SP5; SLES 15, SP0, SP1, SP2 <br><br>  Az 2020-as augusztus 1-től a RHEL (7,4, 7,6, 7,7 & 8,1) SAP HANA biztonsági mentés általánosan elérhető.                |                                             |
 | **HANA-verziók**          | SDC on HANA 1. x, MDC on HANA 2. x <= SPS04 Rev 48, SPS05 (még ellenőrizni kell a titkosítást engedélyező forgatókönyvek esetében)      |                                                            |
 | **HANA-telepítések**       | SAP HANA egyetlen Azure-beli virtuális gépen – csak vertikális felskálázással. <br><br> A magas rendelkezésre állású központi telepítések esetében a két különböző gép csomópontjait különálló, külön adatláncú csomópontként kezeli a rendszer.               | Bővítés <br><br> Magas rendelkezésre állású telepítések esetén a biztonsági mentés automatikusan nem végzi el a feladatátvételt a másodlagos csomópontra. A biztonsági mentés konfigurálását külön kell elvégezni az egyes csomópontokon.                                           |
-| **HANA-példányok**         | Egyetlen SAP HANA példány egyetlen Azure-beli virtuális gépen – csak vertikális felskálázás | Több SAP HANA példány egyetlen virtuális gépen                  |
+| **HANA-példányok**         | Egyetlen SAP HANA példány egyetlen Azure-beli virtuális gépen – csak vertikális felskálázás | Több SAP HANA példány egyetlen virtuális gépen. Egyszerre csak egy ilyen példányt lehet védelemmel ellátni.                  |
 | **HANA-adatbázisok típusai**    | Önálló adatbázis tároló (SDC) 1. x, több adatbázisból álló tárolón (MDC) a 2. x számítógépen | MDC a HANA 1. x-ben                                              |
 | **HANA-adatbázis mérete**     | HANA-adatbázisok mérete <= 2 TB (ez nem a HANA-rendszerek memóriájának mérete)               |                                                              |
 | **Biztonsági másolatok típusai**           | Teljes, különbözeti, növekményes (előzetes) és naplózott biztonsági másolatok                          |  Pillanatképek                                       |
@@ -45,7 +45,7 @@ A Azure Backup támogatja SAP HANA adatbázisok biztonsági mentését az Azure-
 > [!NOTE]
 > Mostantól nyomon követheti a Azure Portal a HANA natív ügyfelektől (SAP HANA Studio/cockpit/DBA pilótafülke) indított [biztonsági mentési és visszaállítási](./sap-hana-db-manage.md#monitor-manual-backup-jobs-in-the-portal) feladatokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [készíthet biztonsági mentést SAP HANA Azure-beli virtuális gépeken futó adatbázisokról](./backup-azure-sap-hana-database.md)
 * Ismerje meg, hogyan [állíthatja vissza az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokat](./sap-hana-db-restore.md)

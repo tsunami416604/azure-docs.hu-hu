@@ -5,18 +5,17 @@ description: Ismerje meg, hogyan gyűjthet adatokat a webszolgáltatási végpon
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 13b99fe129191b89b5bb2d7f5473e910fa619ce7
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 2740a86c5ff68e851d592533b48dc8ee60d817ee
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739841"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070810"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Adatok ML-webszolgáltatási végpontokról való monitorozása és gyűjtése
 
@@ -220,7 +219,7 @@ Az adatok egy blob Storage-fiókba való exportálásához Application Insights 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Folyamatos exportálás":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan engedélyezheti a naplózást és megtekintheti a webszolgáltatási végpontok naplóit. Próbálja ki ezeket a cikkeket a következő lépésekhez:
 

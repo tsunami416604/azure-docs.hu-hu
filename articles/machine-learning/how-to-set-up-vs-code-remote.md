@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.author: jmartens
-author: j-martens
+ms.author: luquinta
+author: luisquintanilla
 ms.date: 11/16/2020
-ms.openlocfilehash: 0afbf32f80a3d19f6db457f398a213a634cfa3d4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3f3794ed4748eda44e863ff4627dedc0a34691af
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447048"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070099"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Kapcsolódás Azure Machine Learning számítási példányhoz a Visual Studio Code-ban (előzetes verzió)
 
@@ -132,10 +132,10 @@ További részletek a mezőkről:
 
 |Mező|Leírás|
 |----|---------|
-|Gazda|Bármilyen gyorsírást használhat a számítási példányhoz |
+|Gazdagép|Bármilyen gyorsírást használhat a számítási példányhoz |
 |HostName|Ez a számítási példány IP-címe. |
 |Port|Ez a port a fenti SSH-párbeszédablakban látható. |
-|Felhasználó|Ennek a következőnek kell lennie `azureuser` |
+|User|Ennek a következőnek kell lennie `azureuser` |
 |IdentityFile|Arra a fájlra mutasson, ahová a titkos kulcsot mentette |
 
 Most a fentiekben használt gyorsírással SSH-t kell tudnia használni a számítási példányhoz `ssh azmlci1` .
@@ -150,7 +150,7 @@ Most a fentiekben használt gyorsírással SSH-t kell tudnia használni a szám�
 
 Innentől kezdve teljes mértékben dolgozik a számítási példányon, és mostantól szerkesztheti, hibakeresést végezhet, használhatja a git-t, a bővítmények használatát stb. – akárcsak a helyi Visual Studio Code-ban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította a Visual Studio Code Remote-t, a Visual Studio Code-ból távoli számításként használhat számítási példányt a [kód interaktív hibakereséséhez](how-to-debug-visual-studio-code.md).
 

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: de89f9d87b010dc3710e7d82f4d846de12303905
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739433"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072156"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Oktatóanyag: saját adatai használata (4. rész)
 
@@ -40,9 +40,6 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A sorozat [3. részének](tutorial-1st-experiment-sdk-train.md) befejezése.
-* A Python nyelv és a gépi tanulási munkafolyamatok bevezető ismerete.
-* Helyi fejlesztési környezet, mint például a Visual Studio Code, a Jupyter vagy a Notebookshoz.
-* Python (3,5-3,7-es verzió).
 
 ## <a name="adjust-the-training-script"></a>A betanítási parancsfájl módosítása
 
@@ -130,7 +127,7 @@ Az `target_path` érték határozza meg az adattároló azon elérési útját, 
 >[!TIP] 
 > Az adatok feltöltéséhez Azure Machine Learning használatakor a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával ad hoc fájlokat tölthet fel. Ha ETL-eszközre van szüksége, a [Azure Data Factory](../data-factory/introduction.md) használatával betöltheti adatait az Azure-ba.
 
-Az adatok feltöltéséhez futtassa a Python-fájlt. (A feltöltésnek gyorsnak, 60 másodpercnél rövidebbnek kell lennie.)
+Az aktivált *tutorial1* Conda környezettel rendelkező ablakban futtassa a Python-fájlt az adatok feltöltéséhez. (A feltöltésnek gyorsnak, 60 másodpercnél rövidebbnek kell lennie.)
 
 ```bash
 python 05-upload-data.py
@@ -280,7 +277,7 @@ Megjegyzčs
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban láttuk, hogyan tölthetők fel adatok az Azure-ba a használatával `Datastore` . Az adattár Felhőbeli tárolóként szolgál a munkaterülethez, így megőrizheti az adatok megőrzésének állandó és rugalmas helyét.
 

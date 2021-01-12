@@ -9,18 +9,18 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 13d1ad0b1b5e32ea2ca86e7556dd910c542bcbe2
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938409"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070558"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
 Az Azure Storage rétegekre osztott biztonsági modellt biztosít. Ez a modell lehetővé teszi az alkalmazások és a vállalati környezetek számára szükséges tárfiókok hozzáférési szintjének védelmét és szabályozását a használt hálózatok típusa és részhalmaza alapján. A hálózati szabályok konfigurálásakor csak a megadott hálózatokon adatokat kérő alkalmazások férhetnek hozzá egy Storage-fiókhoz. A Storage-fiókhoz való hozzáférést korlátozhatja a megadott IP-címekről, IP-tartományokról vagy egy Azure-Virtual Network (VNet) lévő alhálózatok listájáról.
 
-A Storage-fiókokhoz nyilvános végpont tartozik, amely az interneten keresztül érhető el. Létrehozhat [privát végpontokat is a Storage-fiókjához](storage-private-endpoints.md), amely egy magánhálózati IP-címet rendel a VNet a Storage-fiókhoz, és a VNet és a Storage-fiók közötti összes forgalmat privát kapcsolaton keresztül biztosítja. Az Azure Storage tűzfal hozzáférés-vezérlési hozzáférést biztosít a Storage-fiók nyilvános végpontjának. A tűzfalat használhatja a nyilvános végponton keresztüli összes hozzáférés blokkolására is, ha privát végpontokat használ. A tárolási tűzfal konfigurációja azt is lehetővé teszi, hogy a megbízható Azure platform szolgáltatásai biztonságosan férhessenek hozzá a Storage-fiókhoz.
+A Storage-fiókokhoz nyilvános végpont tartozik, amely az interneten keresztül érhető el. Létrehozhat [privát végpontokat is a Storage-fiókjához](storage-private-endpoints.md), amely egy magánhálózati IP-címet rendel a VNet a Storage-fiókhoz, és a VNet és a Storage-fiók közötti összes forgalmat privát kapcsolaton keresztül biztosítja. Az Azure Storage-tűzfal hozzáférés-vezérlést biztosít a Storage-fiók nyilvános végpontjának. A tűzfalat használhatja a nyilvános végponton keresztüli összes hozzáférés blokkolására is, ha privát végpontokat használ. A tárolási tűzfal konfigurációja azt is lehetővé teszi, hogy a megbízható Azure platform szolgáltatásai biztonságosan férhessenek hozzá a Storage-fiókhoz.
 
 Egy olyan alkalmazás, amely hozzáfér egy Storage-fiókhoz, ha a hálózati szabályok érvényben maradnak, a kérelemhez megfelelő engedély szükséges. Az engedélyezést Azure Active Directory (Azure AD) hitelesítő adatok támogatják a blobok és várólisták esetében, érvényes fiók-hozzáférési kulccsal vagy SAS-jogkivonattal.
 
@@ -33,13 +33,13 @@ Egy olyan alkalmazás, amely hozzáfér egy Storage-fiókhoz, ha a hálózati sz
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-A Storage-fiók biztonságossá tételéhez először konfigurálnia kell egy olyan szabályt, amely megtagadja a hozzáférést az összes hálózatról (beleértve az internetes forgalmat) a nyilvános végponton, alapértelmezés szerint. Ezután olyan szabályokat kell konfigurálnia, amelyek hozzáférést biztosítanak az adott virtuális hálózatok érkező forgalomhoz. Olyan szabályokat is beállíthat, amelyek hozzáférést biztosítanak a forgalomhoz a nyilvános internetes IP-címtartományok kiválasztásával, valamint az adott internetes vagy helyszíni ügyfelek kapcsolatainak engedélyezésével. Ez a konfiguráció lehetővé teszi az alkalmazások biztonságos hálózati határának kiépítését.
+A Storage-fiók biztonságossá tételéhez először konfigurálnia kell egy olyan szabályt, amely megtagadja a hozzáférést az összes hálózatról (beleértve az internetes forgalmat) a nyilvános végponton, alapértelmezés szerint. Ezután olyan szabályokat kell konfigurálnia, amelyek hozzáférést biztosítanak az adott virtuális hálózatok érkező forgalomhoz. Olyan szabályokat is beállíthat, amelyek hozzáférést biztosítanak a kiválasztott nyilvános internetes IP-címtartományok forgalmához, és lehetővé teszik a kapcsolódást adott internetről vagy helyszíni ügyfelekről. Ez a konfiguráció lehetővé teszi az alkalmazások biztonságos hálózati határának kiépítését.
 
 Az adott virtuális hálózatokról és a nyilvános IP-címtartományok elérését engedélyező tűzfalszabályok ugyanazon a Storage-fiókon kombinálhatók. A tárolási tűzfalszabályok alkalmazhatók a meglévő Storage-fiókokra, illetve új Storage-fiókok létrehozásakor is.
 
 A tárolási tűzfalszabályok a Storage-fiók nyilvános végpontján érvényesek. Nincs szükség tűzfal-hozzáférési szabályokra a Storage-fiókok privát végpontjai forgalmának engedélyezéséhez. A privát végpontok létrehozásának jóváhagyásának folyamata implicit hozzáférést biztosít a privát végpontot üzemeltető alhálózatról érkező forgalomhoz.
 
-A hálózati szabályok az összes hálózati protokollon érvényesek az Azure Storage-ba, beleértve a REST és az SMB protokollt is. Ha olyan eszközökkel szeretné elérni az adatelérést, mint a Azure Portal, a Storage Explorer és a AZCopy, akkor explicit hálózati szabályokat kell konfigurálni.
+A hálózati szabályok érvénybe léptetése az Azure Storage összes hálózati protokollján érvényes, beleértve a REST és az SMB protokollt is. Ha olyan eszközökkel szeretné elérni az adatelérést, mint a Azure Portal, a Storage Explorer és a AZCopy, akkor explicit hálózati szabályokat kell konfigurálni.
 
 A hálózati szabályok alkalmazása után minden kérelem esetében érvénybe lépnek. A megadott IP-címhez hozzáférést biztosító SAS-jogkivonatok korlátozzák a jogkivonat-tulajdonos hozzáférését, de nem biztosítanak új hozzáférést a konfigurált hálózati szabályokon túl.
 

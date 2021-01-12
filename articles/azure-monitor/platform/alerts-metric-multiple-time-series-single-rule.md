@@ -4,14 +4,14 @@ description: Nagy mennyiségű riasztás a több idősorozatra vonatkozó egyetl
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 66987a28acc8a2c9ae71d89ff5760fa508e32963
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 47a2fb9240f6826ed862f7a857264c09b79de9bc
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566503"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071085"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>Több idősorozat figyelése egyetlen metrikai riasztási szabályban
 
@@ -43,7 +43,7 @@ Példa egy ilyen riasztási szabályra (csak a vonatkozó tulajdonságok láthat
 
 
 Ebben a riasztási szabályban egyetlen metrikai idősorozat figyelhető meg:
--   Százalékos CPU, ahol *Resource* = ' myVM1 ' > 70%
+-   Százalékos CPU, ahol *Resource*= ' myVM1 ' > 70%
 
 ![Egyetlen idősorozatra vonatkozó riasztási szabály](media/alerts-metric-multiple-time-series-single-rule/simple-alert-rule.png)
 
@@ -65,8 +65,8 @@ Ilyen riasztási szabály például:
 -   Küszöbérték: *70*
 
 Ebben a riasztási szabályban két metrikai idősorozat figyelése külön történik:
--   Százalékos CPU, ahol *Resource* = ' myVM1 ' > 70%
--   Százalékos CPU, ahol *Resource* = ' myVM2 ' > 70%
+-   Százalékos CPU, ahol *Resource*= ' myVM1 ' > 70%
+-   Százalékos CPU, ahol *Resource*= ' myVM2 ' > 70%
 
 ![Több erőforrásból álló riasztási szabály](media/alerts-metric-multiple-time-series-single-rule/multi-resource-alert-rule.png)
  
@@ -76,7 +76,7 @@ Tegyük fel például, hogy a fenti riasztási szabályt a 70% feletti CPU figye
 -   A *MyVM1* *százalékos CPU* -értéke nagyobb, mint 70% 
 -   A *MyVM2* *százalékos CPU* -értéke 50%
 
-A riasztási szabály aktiválja a *myVM1* , de nem *myVM2*. Ezek az aktivált riasztások függetlenek. Különböző időpontokban is feloldhatók, az egyes virtuális gépek egyedi viselkedése függvényében.
+A riasztási szabály aktiválja a *myVM1*, de nem *myVM2*. Ezek az aktivált riasztások függetlenek. Különböző időpontokban is feloldhatók, az egyes virtuális gépek egyedi viselkedése függvényében.
 
 További információ a többerőforrásos riasztási szabályokról és az ehhez a képességhez támogatott erőforrás-típusokról: a [Azure monitor metrikus riasztások használatával történő monitorozás](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor).
 
@@ -101,8 +101,8 @@ Például:
 
 Ebben a riasztási szabályban két metrikai idősorozat figyelhető meg:
 
-- Százalékos CPU, ahol *Resource* = ' myVM1 ' > 70%
-- A hálózat, ahol az *erőforrás* = "myVM1" > 20 MB
+- Százalékos CPU, ahol *Resource*= ' myVM1 ' > 70%
+- A hálózat, ahol az *erőforrás*= "myVM1" > 20 MB
 
 ![Több feltétel riasztási szabálya](media/alerts-metric-multiple-time-series-single-rule/multi-condition-alert-rule.png)
  
@@ -129,9 +129,9 @@ Egy riasztási szabály például több dimenzió figyelése:
 
 Ebben a riasztási szabályban három metrikai idősorozat figyelhető meg:
 
-- Tranzakciók, ahol *Resource* = "myStorage1" és *API Name* = "GetBlob" > 70
-- Tranzakciók, ahol *Resource* = "myStorage1" és *API Name* = "DeleteBlob" > 70
-- Tranzakciók, ahol *Resource* = "myStorage1" és *API Name* = "PutPage" > 70
+- Tranzakciók, ahol *Resource*= "myStorage1" és *API Name*= "GetBlob" > 70
+- Tranzakciók, ahol *Resource*= "myStorage1" és *API Name*= "DeleteBlob" > 70
+- Tranzakciók, ahol *Resource*= "myStorage1" és *API Name*= "PutPage" > 70
 
 ![Többdimenziós riasztási szabály egy dimenzió értékeivel](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-1.png)
 
@@ -149,12 +149,12 @@ Ilyen típusú riasztási szabály például:
 
 Ebben a riasztási szabályban a hat metrikus idősorozat figyelése külön történik:
 
-- Tranzakciók, ahol *Resource* = ' myStorage1 ' és *API Name* = ' GetBlob ' és *Authentication* = ' sas ' > 70
-- Tranzakciók, ahol *Resource* = "myStorage1" és *API Name* = "GetBlob" és *Authentication* = "AccountKey" > 70
-- Tranzakciók, ahol *Resource* = ' myStorage1 ' és *API Name* = ' DeleteBlob ' és *Authentication* = ' sas ' > 70
-- Tranzakciók, ahol *Resource* = "myStorage1" és *API Name* = "DeleteBlob" és *Authentication* = "AccountKey" > 70
-- Tranzakciók, ahol *Resource* = ' myStorage1 ' és *API Name* = ' PutPage ' és *Authentication* = ' sas ' > 70
-- Tranzakciók, ahol *Resource* = "myStorage1" és *API Name* = "PutPage" és *Authentication* = "AccountKey" > 70
+- Tranzakciók, ahol *Resource*= ' myStorage1 ' és *API Name*= ' GetBlob ' és *Authentication*= ' sas ' > 70
+- Tranzakciók, ahol *Resource*= "myStorage1" és *API Name*= "GetBlob" és *Authentication*= "AccountKey" > 70
+- Tranzakciók, ahol *Resource*= ' myStorage1 ' és *API Name*= ' DeleteBlob ' és *Authentication*= ' sas ' > 70
+- Tranzakciók, ahol *Resource*= "myStorage1" és *API Name*= "DeleteBlob" és *Authentication*= "AccountKey" > 70
+- Tranzakciók, ahol *Resource*= ' myStorage1 ' és *API Name*= ' PutPage ' és *Authentication*= ' sas ' > 70
+- Tranzakciók, ahol *Resource*= "myStorage1" és *API Name*= "PutPage" és *Authentication*= "AccountKey" > 70
 
 ![Többdimenziós riasztási szabály több dimenzióból származó értékekkel](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-2.png)
  
@@ -162,7 +162,7 @@ Ebben a riasztási szabályban a hat metrikus idősorozat figyelése külön tö
 
 1.  Az **összes jelenlegi és jövőbeli dimenzió kijelölése** – megadhatja, hogy a dimenzió összes lehetséges értékét figyelje, beleértve a jövőbeli értékeket is. Az ilyen riasztási szabályok automatikusan méretezhetők a dimenzió összes értékének figyeléséhez anélkül, hogy a rendszer minden alkalommal módosítania kellene a dimenzió értékét, amikor hozzáadják vagy eltávolítottak.
 2.  Dimenziók **kizárása** – a dimenzió értékének "≠" (kizárás) operátorának kiválasztásával egyenértékű a dimenzió összes többi értékének kiválasztásával, beleértve a jövőbeli értékeket is.
-3.  **Új és egyéni dimenziók** – a Azure Portalban megjelenő dimenzió értékek az elmúlt három napban összegyűjtött metrikus adatokon alapulnak. Ha a keresett dimenzióérték még nincs kibocsátva, hozzáadhat egy egyéni dimenzió értékét.
+3.  **Új és egyéni dimenziók** – a Azure Portalban megjelenő dimenzió értékek az elmúlt nap során összegyűjtött metrikus adatokon alapulnak. Ha a keresett dimenzióérték még nincs kibocsátva, hozzáadhat egy egyéni dimenzió értékét.
 4. **Méretek egyeztetése előtaggal** – a "Start with" operátor kiválasztásával és az Egyéni előtag megadásával megfigyelheti az összes olyan dimenzió értékét, amely egy adott mintával kezdődik.
 
 ![Speciális többdimenziós funkciók](media/alerts-metric-multiple-time-series-single-rule/advanced-features.png)

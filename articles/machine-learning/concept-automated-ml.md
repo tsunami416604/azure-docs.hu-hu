@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 2d759a8ed58d5b323f9894a5127c222ce1f75c52
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: ee9267637c5e3250bfcd543ca46c39d513725819
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97345976"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072224"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -117,7 +116,7 @@ Automatikus gépi tanulási kísérletek esetén a rendszer automatikusan alkalm
 
 Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek. A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre. Ismerje meg, hogyan segít a AutoML a modellekben a [túlzottan illeszkedő és kiegyensúlyozatlan adatértékek megelőzésében](concept-manage-ml-pitfalls.md) .
 
-|Méretezés &nbsp; & &nbsp; normalizálása| Leírás |
+|Méretezés &nbsp; & &nbsp; normalizálása| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
@@ -173,7 +172,7 @@ Vegye figyelembe ezeket az előnyeit és hátrányait a helyi és a távoli hasz
 
  További funkciók érhetők el a távoli számítás használatakor, az alábbi táblázatban látható módon. 
 
-| Funkció                                                    | Távoli | Helyi | 
+| Szolgáltatás                                                    | Távoli | Helyi | 
 |------------------------------------------------------------|--------|-------|
 | Adatfolyam (nagy adatátviteli támogatás, akár 100 GB-ig)          | ✓      |       | 
 | DNN – BERT-alapú szöveges featurization és-képzés             | ✓      |       |
@@ -224,7 +223,7 @@ A következő beállítások lehetővé teszik az automatikus ML-kísérlet konf
 |**Az előrejelzési horizont konfigurálása, a cél késleltetése & gördülő ablak**|✓|✓
 |**Kilépési feltételek beállítása** |✓|✓ 
 |**Egyidejű ismétlések beállítása**| ✓|✓
-|**Oszlopok eldobása**| ✓|✓
+|**Oszlopok eltávolítása**| ✓|✓
 |**Algoritmusok letiltása**|✓|✓
 |**Több érvényesítés** |✓|✓
 |**A Azure Databricks-fürtökön betanítást támogatja**| ✓|

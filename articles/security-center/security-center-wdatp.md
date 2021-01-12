@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 9a8dba99435e1616b1c49d5209b30c3c523876db
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854842"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071340"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -45,7 +45,7 @@ A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti bizton
 | Támogatott platformok:            | Windows rendszerű Azure-gépek<br>Windows rendszerű Azure arc-gépek|
 | A Windows támogatott verziói:  |  • A Security Center támogatja az észlelést a Windows Server 2016, 2012 R2 és 2008 R2 SP1 rendszerben<br> • A kiszolgálói végpont monitorozása ezzel az integrációval le lett tiltva az Office 365 GCC-ügyfelek számára<br> • Nincs támogatás a Windows Server 2019, a Windows 10 1703 (és újabb) vagy a Linux rendszerhez|
 | Szükséges szerepkörök és engedélyek: | Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa** vagy **előfizetéshez tartozó közreműködő**|
-| Felhők                         | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov<br>![Nem](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben                                                        |
+| Felhők                         | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov<br>![No](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -121,18 +121,24 @@ Jóindulatú Microsoft Defender létrehozása a végponti tesztelési riasztásh
 
 ## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Gyakori kérdések a Security Center integrált Microsoft Defender for Endpoint
 
-### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Milyen licencelési követelmények vonatkoznak a Microsoft Defender for Endpoint szolgáltatásra?
+- [Milyen licencelési követelmények vonatkoznak a Microsoft Defender for Endpoint szolgáltatásra?](#what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint)
+- [Ha már van licencem a Microsoft Defender for Endpoint szolgáltatáshoz, kedvezményt kaphatok az Azure Defender számára?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+- [Hogyan váltani egy külső gyártótól származó EDR eszközről?](#how-do-i-switch-from-a-third-party-edr-tool)
 
+### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Milyen licencelési követelmények vonatkoznak a Microsoft Defender for Endpoint szolgáltatásra?
 Az **Azure Defender for Servers** szolgáltatáshoz nem tartozik további díj a Defender for Endpoint szolgáltatáshoz. Azt is megteheti, hogy külön megvásárolható a 50-es vagy újabb gépeken.
 
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Ha már van licencem a Microsoft Defender for Endpoint szolgáltatáshoz, kedvezményt kaphatok az Azure Defender számára?
+Ha már rendelkezik Microsoft Defender-licenccel a végponthoz, nem kell fizetnie az Azure Defender-licenc adott részének.
+
+A kedvezmény megerősítéséhez lépjen kapcsolatba Security Center támogatási csapatával, és adja meg a megfelelő munkaterület-azonosítót, régiót és licenc-információkat.
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Hogyan váltani egy külső gyártótól származó EDR eszközről?
-
 A nem a Microsofttól származó végponti megoldásról történő váltásra vonatkozó részletes utasítások a Microsoft Defender for Endpoint dokumentációjában találhatók: [áttelepítési áttekintés](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).
   
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Center által támogatott platformok és szolgáltatások](security-center-os-coverage.md)
 - [Azure Security Center biztonsági javaslatainak kezelése](security-center-recommendations.md): Ismerje meg, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.

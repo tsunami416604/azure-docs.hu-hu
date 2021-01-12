@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5df8b478c550522d4602398afd208c1e001c96a2
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: fae9a4b1b82a1fe23e8882b45880a6ba0081f580
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883299"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071126"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Oktatóanyag: a Azure Machine Learning első lépései a fejlesztési környezetben (4. rész)
 
@@ -32,30 +32,47 @@ Az oktatóanyag-sorozat 1. részében a következőket fogja elsajátítani:
 > * Hozzon létre egy számítási fürtöt.
 
 > [!NOTE]
-> Ez az oktatóanyag-sorozat a Python- *alapú* , nagy számítási igényű és/vagy reprodukálhatóságot igénylő gépi tanulási feladatokhoz igazított Azure Machine learning fogalmakat ismerteti. Ha jobban érdeklik a felderítő munkafolyamatok, használhatja [a Jupyter vagy a RStudio-t egy Azure Machine learning számítási példányon](tutorial-1st-experiment-sdk-setup.md).
+> Ez az oktatóanyag-sorozat a **Batch-feladatok** elküldéséhez szükséges Azure Machine learning fogalmakat ismerteti – ez az a kód, amellyel a rendszer a háttérben futtatja a kódot, felhasználói beavatkozás nélkül. Ez akkor hasznos, ha a befejezett parancsfájlokat vagy kódokat többször szeretné futtatni, vagy a számítási igényű gépi tanulási feladatokhoz. Ha jobban érdeklik a felderítő munkafolyamatok, használhatja [a Jupyter vagy a RStudio-t egy Azure Machine learning számítási példányon](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálkozzon [Azure Machine learning](https://aka.ms/AMLFree).
-- A Python és a [Machine learning fogalmak](concept-azure-machine-learning-architecture.md)ismerete. Ilyenek például a környezetek, a képzések és a pontozások.
-- Helyi fejlesztési környezet, mint például a Visual Studio Code, a Jupyter vagy a Notebookshoz.
-- Python (3,5-3,7-es verzió).
-
+- [Anaconda](https://www.anaconda.com/download/) vagy [Miniconda](https://www.anaconda.com/download/) a Python virtuális környezetek kezeléséhez és csomagok telepítéséhez.
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Az Azure Machine Learning SDK telepítése
 
-Az oktatóanyag során a Pythonhoz készült Azure Machine Learning SDK-t használjuk.
+Az oktatóanyag során a Pythonhoz készült Azure Machine Learning SDK-t fogja használni. A Python függőségi problémák elkerüléséhez hozzon létre egy elkülönített környezetet. Ez az oktatóanyag-sorozat a Conda használatával hozza létre ezt a környezetet. Ha más megoldásokat szeretne használni (például `venv` ,, `virtualenv` vagy Docker), győződjön meg arról, hogy a Python-verziót használja >= 3,5 és < 3,9.
 
-A leggyakrabban használt eszközöket (például Conda és pip) a jelen oktatóanyagban használt Python-környezet beállítására használhatja. Telepítse a Python-környezetet a Pythonhoz készült Azure Machine Learning SDK-val a pip használatával:
+Ellenőrizze, hogy a Conda telepítve van-e a rendszeren:
+    
+```bash
+conda --version
+```
+    
+Ha a parancs hibát ad vissza `conda not found` , [töltse le és telepítse a Miniconda](https://docs.conda.io/en/latest/miniconda.html). 
+
+Miután telepítette a Conda-t, egy terminál-vagy anaconda-parancssor használatával hozzon létre egy új környezetet:
 
 ```bash
+conda create -n tutorial python=3.7
+```
+
+Ezután telepítse a Azure Machine Learning SDK-t a létrehozott Conda-környezetbe:
+
+```bash
+conda activate tutorial
 pip install azureml-sdk
 ```
+    
+> [!NOTE]
+> A Azure Machine Learning SDK telepítésének befejezéséhez körülbelül 5 percet vesz igénybe.
+
 
 > [!div class="nextstepaction"]
 > [Telepítettem az SDK](?success=install-sdk#dir) - [t egy hibába ütközött](https://www.research.net/r/7C8Z3DN?issue=install-sdk)
 
 ## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>Könyvtár-struktúra létrehozása kód számára
+
 Javasoljuk, hogy az oktatóanyaghoz az alábbi egyszerű címtár-struktúrát állítsa be:
 
 ```markdown
@@ -68,8 +85,9 @@ tutorial
 
 > [!TIP]
 > A rejtett. azureml alkönyvtárat a Terminálablak segítségével hozhatja létre.  Vagy használja a következőt:
+>
 > * A Mac-Finder ablakban a **Command + Shift + billentyűkombinációt használhatja.** a ponttal kezdődő könyvtárak megjelenítésének és létrehozásának lehetőségének bekapcsolása.  
-> * A Windows 10 rendszerben tekintse meg a [rejtett fájlok és mappák megtekintését](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)ismertető témakört. 
+> * A Windows 10 fájlkezelőben tekintse meg a [rejtett fájlok és mappák megtekintését](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)ismertető témakört. 
 > * A Linux grafikus felületén használja a **CTRL + h billentyűkombinációt** vagy a **nézet** menüt, és jelölje be a jelölőnégyzetet a **rejtett fájlok megjelenítéséhez**.
 
 > [!div class="nextstepaction"]
@@ -104,7 +122,7 @@ ws = Workspace.create(name='<my_workspace_name>', # provide a name for your work
 ws.write_config(path='.azureml')
 ```
 
-Futtassa ezt a kódot a `tutorial` címtárból:
+Az aktivált *tutorial1* Conda környezettel rendelkező ablakban futtassa ezt a kódot a `tutorial` címtárból.
 
 ```bash
 cd <path/to/tutorial>
@@ -163,7 +181,7 @@ except ComputeTargetException:
 cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-Futtassa a Python-fájlt:
+Az aktivált *tutorial1* Conda környezettel rendelkező ablakban futtassa a Python-fájlt:
 
 ```bash
 python ./02-create-compute.py
@@ -186,7 +204,20 @@ tutorial
 > [!div class="nextstepaction"]
 > [Létrehoztam egy számítási fürtöt](?success=create-compute-cluster#next-steps) [, amely egy hibába ütközött](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
 
-## <a name="next-steps"></a>További lépések
+## <a name="view-in-the-studio"></a>Megtekintés a Studióban
+
+Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com) , és tekintse meg a létrehozott munkaterületet és számítási példányt.
+
+1. Válassza ki a munkaterület létrehozásához használt **előfizetést** .
+1. Válassza ki a létrehozott **Machine learning munkaterületet** , *oktatóanyag: ws*.
+1. Miután a munkaterület betöltődik, a bal oldalon válassza a **számítás** lehetőséget.
+1. A felső részen válassza a **számítási fürtök** lapot.
+
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/compute-instance-in-studio.png" alt-text="Képernyőfelvétel: a számítási példány megtekintése a munkaterületen.":::
+
+Ez a nézet megjeleníti a kiépített számítási fürtöt, valamint az üresjárati csomópontok, a foglalt csomópontok és a nem kiépített csomópontok számát.  Mivel még nem használta a fürtöt, az összes csomópontot jelenleg nem lehet kiépíteni.
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a beállítási oktatóanyagban a következőket teheti:
 

@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan hozhatja létre, tekintheti meg és kezelheti a
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 8b1015573e4c01f01d82c7c152b66db80bef0aee
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0518d3a2e1b67b33b9cb6bceb9754df302710f70
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342161"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071034"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral
 
@@ -23,41 +23,41 @@ További információ a metrikus riasztások működéséről a [metrikus riaszt
 
 Az alábbi eljárás azt ismerteti, hogyan hozhat létre metrikus riasztási szabályt a Azure Portalban:
 
-1. [Azure Portal](https://portal.azure.com)kattintson a **figyelés**elemre. A figyelő panel egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
+1. [Azure Portal](https://portal.azure.com)kattintson a **figyelés** elemre. A figyelő panel egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
 
-2. Kattintson a **riasztások** , majd az **+ új riasztási szabály**elemre.
+2. Kattintson a **riasztások** , majd az **+ új riasztási szabály** elemre.
 
     > [!TIP]
-    > A legtöbb erőforrás-panel a **figyelés**alatt is tartalmaz **riasztásokat** az erőforrás menüjében, és onnan is létrehozhat riasztásokat.
+    > A legtöbb erőforrás-panel a **figyelés** alatt is tartalmaz **riasztásokat** az erőforrás menüjében, és onnan is létrehozhat riasztásokat.
 
-3. Kattintson a **cél kiválasztása**lehetőségre, a betöltött környezet ablaktáblán válassza ki azt a cél erőforrást, amelyre a riasztást szeretné használni. A figyelni kívánt erőforrás megtalálásához használja az **előfizetés** és az **Erőforrás típusa** legördülő listát. Az erőforrást a keresősáv használatával is megkeresheti.
+3. Kattintson a **cél kiválasztása** lehetőségre, a betöltött környezet ablaktáblán válassza ki azt a cél erőforrást, amelyre a riasztást szeretné használni. A figyelni kívánt erőforrás megtalálásához használja az **előfizetés** és az **Erőforrás típusa** legördülő listát. Az erőforrást a keresősáv használatával is megkeresheti.
 
 4. Ha a kiválasztott erőforrás metrikákkal rendelkezik, akkor a jobb alsó sarokban található **elérhető jelek** tartalmazzák a metrikákat is. Ebben a [cikkben](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)a metrikus riasztásokhoz támogatott erőforrástípusok teljes listáját tekintheti meg.
 
-5. A cél erőforrás kiválasztása után kattintson a **feltétel hozzáadása**elemre.
+5. A cél erőforrás kiválasztása után kattintson a **feltétel hozzáadása** elemre.
 
 6. Megjelenik az erőforrás által támogatott jelek listája, majd válassza ki azt a metrikát, amelyhez riasztást kíván létrehozni.
 
 7. Ekkor megjelenik egy diagram a metrikához az elmúlt hat órában. A **diagram időszakának** legördülő menüjéből kiválaszthatja, hogy a mérőszám hosszabb előzményeit jelenítse meg.
 
 8. Ha a metrika dimenziókat tartalmaz, megjelenik egy megjelenített dimenziós tábla. Jelöljön ki egy vagy több értéket egy dimenzióban.
-    - A megjelenített dimenzió értékei az elmúlt három nap mérőszám-adatain alapulnak.
-    - Ha a keresett dimenzióérték nem jelenik meg, kattintson a "+" elemre egyéni érték hozzáadásához.
-    - Bármelyik dimenzió esetében*kiválaszthatja \* *az _ lehetőséget is. _*Válassza \* ki*_ dinamikusan méretezi a kijelölést egy dimenzió összes aktuális és jövőbeli értékére.
+    - A megjelenített dimenzió értékek az elmúlt nap mérőszám-adatain alapulnak.
+    - Ha a keresett dimenzióérték nem jelenik meg, kattintson az "egyéni érték hozzáadása" elemre egyéni dimenzió érték hozzáadásához.
+    - A dimenziók **összes aktuális és jövőbeli értékét is kiválaszthatja** . Ez dinamikusan méretezi a kijelölést egy dimenzió összes aktuális és jövőbeli értékére.
 
     A metrika riasztási szabálya kiértékeli a kiválasztott értékek összes kombinációjának feltételeit. [További információ a többdimenziós metrikák működésével kapcsolatos riasztásokról](alerts-metric-overview.md).
 
-9. Válassza ki a _*küszöbérték** típust, **operátort**és **összesítési típust**. Ez határozza meg azt a logikát, amelyet a metrika riasztási szabálya értékelni fog.
-    - Ha **statikus** küszöbértéket használ, folytassa a **küszöbérték**meghatározásával. A metrikai diagram segítségével meghatározhatja, hogy mi lehet az ésszerű küszöbérték.
-    - Ha **dinamikus** küszöbértéket használ, folytassa a **küszöbérték érzékenységének**meghatározásával. A metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket. [További információ a dinamikus küszöbértékek feltételének típusáról és az érzékenységi lehetőségekről](alerts-dynamic-thresholds.md).
+9. Válassza ki a **küszöbérték** típusát, az **operátort** és az **összesítési típust**. Ez határozza meg azt a logikát, amelyet a metrika riasztási szabálya értékelni fog.
+    - Ha **statikus** küszöbértéket használ, folytassa a **küszöbérték** meghatározásával. A metrikai diagram segítségével meghatározhatja, hogy mi lehet az ésszerű küszöbérték.
+    - Ha **dinamikus** küszöbértéket használ, folytassa a **küszöbérték érzékenységének** meghatározásával. A metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket. [További információ a dinamikus küszöbértékek feltételének típusáról és az érzékenységi lehetőségekről](alerts-dynamic-thresholds.md).
 
-10. Szükség esetén pontosíthatja a feltételt az **Összesítés részletességének** és **a kiértékelés gyakoriságának**beállításával. 
+10. Szükség esetén pontosíthatja a feltételt az **Összesítés részletességének** és **a kiértékelés gyakoriságának** beállításával. 
 
 11. Kattintson a **Kész** gombra.
 
 12. Ha szeretne egy összetett riasztási szabályt figyelni, vegyen fel további feltételeket. A felhasználók jelenleg egyetlen feltételként rendelkezhetnek dinamikus küszöbértékekkel rendelkező riasztási szabályokkal.
 
-13. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását**és **súlyosságát**.
+13. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 
 14. Adjon hozzá egy műveleti csoportot a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 
@@ -74,7 +74,7 @@ A metrika riasztási szabályai a riasztások alatt a szabályok kezelése panel
 
 2. Kattintson a **riasztások** elemre, és a **szabályok kezelése** lehetőségre
 
-3. A **szabályok kezelése** panelen megtekintheti az összes riasztási szabályt az előfizetések között. A szabályokat az  **erőforráscsoport**, az **Erőforrás típusa**és az **erőforrás**alapján is szűrheti. Ha csak metrikai riasztásokat szeretne látni, válassza a **jel típusa** mérőszámként lehetőséget.
+3. A **szabályok kezelése** panelen megtekintheti az összes riasztási szabályt az előfizetések között. A szabályokat az  **erőforráscsoport**, az **Erőforrás típusa** és az **erőforrás** alapján is szűrheti. Ha csak metrikai riasztásokat szeretne látni, válassza a **jel típusa** mérőszámként lehetőséget.
 
     > [!TIP]
     > A **szabályok kezelése** panelen több riasztási szabályt is kijelölhet, és engedélyezheti vagy tilthatja le őket. Ez akkor lehet hasznos, ha bizonyos cél erőforrásokat a karbantartás alá kell helyezni
@@ -93,7 +93,7 @@ A metrika riasztási szabályai a riasztások alatt a szabályok kezelése panel
 
 Az előző szakasz ismerteti, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztási szabályokat a Azure Portal használatával. Ez a szakasz azt írja le, hogyan végezheti el ugyanezt a platformfüggetlen [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)használatával. Az Azure CLI használatának leggyorsabb módja a [Azure Cloud Shellon](../../cloud-shell/overview.md?view=azure-cli-latest)keresztül. Ebben a cikkben a Cloud Shell fogjuk használni.
 
-1. Lépjen a Azure Portalra, majd a **Cloud Shell**elemre.
+1. Lépjen a Azure Portalra, majd a **Cloud Shell** elemre.
 
 2. A parancssorban a ``--help`` parancsokkal további információkat kaphat a paranccsal és annak használatáról. A következő parancs például megjeleníti a metrikai riasztások létrehozásához, megtekintéséhez és kezeléséhez elérhető parancsok listáját.
 

@@ -2,17 +2,17 @@
 title: A Azure Machine Learning beépített szabályzat-definíciói
 description: A Azure Machine Learning Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
 ms.date: 01/08/2021
-author: j-martens
-ms.author: jmartens
+ms.author: larryfr
+author: BlackMist
 ms.topic: reference
 ms.service: machine-learning
 ms.custom: subject-policy-reference
-ms.openlocfilehash: adab1a84b552e8ccdb70205c4437ee6fe00402c3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f7f380492d7e261038aab0fba9e775f1eaa28aa9
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051054"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072292"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Azure Policy beépített szabályzat-definíciók a Azure Machine Learning
 

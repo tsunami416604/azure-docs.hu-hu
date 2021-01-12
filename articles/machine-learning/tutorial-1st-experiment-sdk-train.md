@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df511e79b73256833ec54c5906bb6acbc852bc46
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d2c0003058c2271e46a352567a14e1b01dfabdbf
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739620"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071102"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Oktatóanyag: az első gépi tanulási modell betanítása (4. rész)
 
@@ -41,9 +41,6 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A sorozat [2. részének](tutorial-1st-experiment-hello-world.md) befejezése.
-* A Python nyelv és a gépi tanulási munkafolyamatok bevezető ismerete.
-* Helyi fejlesztési környezet, mint például a Visual Studio Code, a Jupyter vagy a Notebookshoz.
-* Python (3,5-3,7-es verzió).
 
 ## <a name="create-training-scripts"></a>Képzési parancsfájlok létrehozása
 
@@ -77,9 +74,7 @@ tutorial
 > [!div class="nextstepaction"]
 > [Létrehoztam a betanítási szkripteket](?success=create-scripts#environment) [, amelyekkel egy probléma lépett](https://www.research.net/r/7CTJQQN?issue=create-scripts) fel
 
-## <a name="create-a-python-environment"></a><a name="environment"></a> Python-környezet létrehozása
-
-Demonstrációs célokra a Conda-környezetet fogjuk használni. (A pip virtuális környezet lépései csaknem azonosak.)
+## <a name="create-a-new-python-environment"></a><a name="environment"></a> Új Python-környezet létrehozása
 
 Hozzon létre egy nevű fájlt `pytorch-env.yml` a `.azureml` rejtett könyvtárban:
 
@@ -92,18 +87,19 @@ Ez a környezet minden, a modellhez és a képzési parancsfájlhoz szükséges 
 
 ## <a name="test-locally"></a><a name="test-local"></a> Helyi tesztelés
 
-A következő kód használatával tesztelheti a parancsfájlokat helyileg ebben a környezetben:
+Használja az alábbi kódot a szkript helyi teszteléséhez az új környezetben.  
 
 ```bash
-conda env create -f .azureml/pytorch-env.yml    # create conda environment
-conda activate pytorch-env                      # activate conda environment
+conda deactivate                                # If you are still using the tutorial environment, exit it
+conda env create -f .azureml/pytorch-env.yml    # create the new Conda environment
+conda activate pytorch-env                      # activate new Conda environment
 python src/train.py                             # train model
 ```
 
 A parancsfájl futtatása után a rendszer egy nevű könyvtárba letölti az adatletöltést `tutorial/data` .
 
 > [!div class="nextstepaction"]
-> [Létrehoztam a környezeti fájlt](?success=test-local#create-local) [, amelyet egy hibába ütközött](https://www.research.net/r/7CTJQQN?issue=test-local)
+> [A kód helyi futtatása a](?success=test-local#create-local) [probléma megoldásával történt](https://www.research.net/r/7CTJQQN?issue=test-local)
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> A vezérlő parancsfájl létrehozása
 
@@ -163,11 +159,11 @@ if __name__ == "__main__":
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> A Futtatás beküldése Azure Machine Learningre
 
-Ha helyi környezeteket váltott be, mindenképpen váltson vissza egy olyan környezetre, amelyen telepítve van a Azure Machine Learning SDK for Python.
-
-Majd futtassa ezt:
+Váltson vissza arra az *oktatóanyag* -környezetre, amelyen telepítve van a Azure Machine learning SDK for Python. Mivel a betanítási kód nem fut a számítógépen, nincs szükség a PyTorch telepítésére.  Erre azonban szüksége van `azureml-sdk` , amely az *oktatóanyag* környezetében található.
 
 ```bash
+conda deactivate
+conda activate tutorial
 python 04-run-pytorch.py
 ```
 
@@ -271,7 +267,7 @@ Ez alkalommal, amikor felkeresi a stúdiót, ugorjon a **metrikák** lapra, ahol
 > [!div class="nextstepaction"]
 > [Újraküldöttem a futtatást](?success=resubmit-with-logging#next-steps) [egy hibába](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a munkamenetben egy alapszintű "Helló világból" frissítünk. parancsfájlt egy reálisabb betanítási parancsfájlhoz, amely egy adott Python-környezet futtatásához szükséges. Megismerte, hogyan végezheti el a helyi Conda-környezetet a felhőben Azure Machine Learning környezettel. Végül azt is láttuk, hogy a kódok néhány sorában hogyan naplózhatja a mérőszámokat Azure Machine Learningba.
 

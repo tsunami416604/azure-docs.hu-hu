@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548188"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071187"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>A szinapszis munkaterület funkcióinak engedélyezése dedikált SQL-készlethez (korábban SQL DW)
 
@@ -57,6 +57,9 @@ A következő lépések végrehajtásával biztosíthatja, hogy a meglévő dedi
 4. Válassza ki a logikai kiszolgálón üzemeltetett dedikált SQL-készlet (korábban SQL DW) példányok egyikét. Az Áttekintés lapon válassza a **szinapszis Studio elindítása** vagy a [Bejelentkezés a szinapszis studióba](https://web.azuresynapse.net) lehetőséget, és jelentkezzen be a munkaterületre.
 
 5. Nyissa meg az **adatközpontot** , és bontsa ki a dedikált SQL-készletet az Object Explorerben, és győződjön meg arról, hogy a hozzáférése és a lekérdezése az adattárházat
+
+    > [!NOTE] 
+    > A csatlakoztatott munkaterületek bármikor törölhetők. A munkaterület törlése nem törli a csatlakoztatott dedikált SQL-készletet (korábban az SQL DW-t). A munkaterület funkció újból engedélyezhető a dedikált SQL-készletben (korábban SQL DW), ha a törlési művelet befejeződött.
 
 ## <a name="next-steps"></a>Következő lépések
 Bevezetés a [szinapszis munkaterülettel és a Studióval](../get-started.md).

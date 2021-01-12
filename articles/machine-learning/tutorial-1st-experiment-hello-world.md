@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 43a483f49a9e9004a4f487e82195198f2600a919
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570960"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071153"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Oktatóanyag: a "Helló világ!" futtatása Python-szkript (2. rész/4)
 
@@ -36,9 +36,6 @@ Az oktatóanyagban a következőket végezheti el:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Az [1. rész](tutorial-1st-experiment-sdk-setup-local.md) befejezése, ha még nem rendelkezik Azure Machine learning munkaterülettel.
-- A Python nyelv és a gépi tanulási munkafolyamatok bevezető ismerete.
-- Helyi fejlesztési környezet, mint például a Visual Studio Code, a Jupyter vagy a Notebookshoz.
-- Python (3,5-3,7-es verzió).
 
 ## <a name="create-and-run-a-python-script-locally"></a>Python-szkriptek helyi létrehozása és futtatása
 
@@ -64,7 +61,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a><a name="test"></a>Parancsfájl helyi tesztelése
 
-A kódot helyileg is futtathatja kedvenc IDE vagy egy terminál használatával. A kód helyi futtatásának előnye a kód interaktív hibakeresése.
+A kódot helyileg is futtathatja kedvenc IDE vagy egy terminál használatával. A kód helyi futtatásának előnye a kód interaktív hibakeresése.  Az aktivált *tutorial1* Conda környezettel rendelkező ablakban futtassa a Python-fájlt:
 
 ```bash
 cd <path/to/tutorial>
@@ -93,8 +90,6 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
-
-
 
 ### <a name="understand-the-code"></a>A kód értelmezése
 
@@ -148,13 +143,6 @@ Itt látható a vezérlő parancsfájl működésének leírása:
 
 Futtassa a vezérlési parancsfájlt, amely viszont a `hello.py` [telepítési oktatóanyagban](tutorial-1st-experiment-sdk-setup-local.md)létrehozott számítási fürtön fut.
 
-A legelső Futtatás 5-10 percet vesz igénybe. Ennek az az oka, hogy a következők történnek:
-
-* A Docker-rendszerkép a felhőben van felépítve
-* A számítási fürt 0 és 1 csomópont között van átméretezve
-* A rendszer letölti a Docker-rendszerképet a számításba. 
-
-A későbbi futtatások sokkal gyorsabbak (~ 15 másodperc), mivel a Docker-rendszerkép gyorsítótárazva van a számításban – ezt úgy tesztelheti, hogy az első futtatás befejezése után újraküldi az alábbi kódot.
 
 ```bash
 python 03-run-hello.py
@@ -168,9 +156,17 @@ python 03-run-hello.py
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>A kód figyelése a felhőben a Studio használatával
 
-A kimenet tartalmazni fog egy hivatkozást a studióhoz, amely a következőhöz hasonlóan néz ki: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
+A szkript kimenete tartalmazni fog egy hivatkozást a studióhoz, amely a következőhöz hasonlóan néz ki: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
 
-Kövesse a hivatkozást, és lépjen a **kimenetek és naplók** lapra. Itt látható egy `70_driver_log.txt` fájl, amely így néz ki:
+Kövesse a hivatkozást.  Először a **felkészülés** állapotát fogja látni.  A legelső Futtatás 5-10 percet vesz igénybe. Ennek az az oka, hogy a következők történnek:
+
+* A Docker-rendszerkép a felhőben van felépítve
+* A számítási fürt 0 és 1 csomópont között van átméretezve
+* A rendszer letölti a Docker-rendszerképet a számításba. 
+
+A későbbi futtatások sokkal gyorsabbak (~ 15 másodperc), mivel a Docker-rendszerkép gyorsítótárazva van a számítási feladatokban. Ezt úgy tesztelheti, ha az első futtatás befejezése után újraküldi az alábbi kódot.
+
+A feladatok befejezése után lépjen a **kimenetek és naplók** lapra. Itt látható egy `70_driver_log.txt` fájl, amely így néz ki:
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.
@@ -201,7 +197,7 @@ A `70_driver_log.txt` fájl egy futtatásból származó standard kimenetet tart
 > [!div class="nextstepaction"]
 > [Megláttam a naplót a Studióban](?success=monitor-in-studio#next-steps) , [amely egy hibába ütközött](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy egyszerű "Helló világ!" szkriptet, és futtatta azt az Azure-ban. Megismerte, hogyan csatlakozhat a Azure Machine Learning-munkaterülethez, létrehozhat egy kísérletet, és elküldheti a `hello.py` kódot a felhőbe.
 

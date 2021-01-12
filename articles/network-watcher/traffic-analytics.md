@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 8b1eedc47d2a89b9552c22b3ae770f655f926945
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 6cd1965ab51e7a7bbcc65836383000f0773b9b82
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898776"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070939"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -269,7 +269,7 @@ A Traffic Analytics teljes konfigurálása után érdemes megtekinteni az alább
 - A letiltott forgalom statisztikája.
     - Miért blokkolja a gazdagép a jóindulatú forgalom jelentős mennyiségét? Ennek a viselkedésnek további vizsgálatra és valószínűleg a konfiguráció optimalizálására van szüksége
 - A kártékony engedélyezett/letiltott forgalom statisztikája
-  - Miért van olyan gazdagép, amely rosszindulatú forgalmat fogad, és miért van engedélyezve a rosszindulatú forrásból származó forgalom? Ennek a viselkedésnek további vizsgálatra és valószínűleg a konfiguráció optimalizálására van szüksége.
+  - Miért van olyan gazdagép, amely kártékony forgalmat fogad, és miért van engedélyezve a rosszindulatú források forgalma? Ennek a viselkedésnek további vizsgálatra és valószínűleg a konfiguráció optimalizálására van szüksége.
 
     Válassza az **összes** megjelenítése lehetőséget a **gazdagép** területen az alábbi ábrán látható módon:
 
