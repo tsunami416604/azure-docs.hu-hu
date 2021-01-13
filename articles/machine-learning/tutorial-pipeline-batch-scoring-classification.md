@@ -11,16 +11,14 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: b0b415cce37e464abcba9fab5ad4c1196b1b2e1b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 916064742e69b7d355a0c7e541d4f2270e8854f4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033476"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134449"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Oktatóanyag: Azure Machine Learning folyamat létrehozása a Batch-pontozáshoz
-
-
 
 Ebben a fejlett oktatóanyagban megtudhatja, hogyan hozhat létre egy [Azure Machine learning](concept-ml-pipelines.md) folyamatot egy batch-pontozási feladatok futtatásához. A gépi tanulási folyamatok gyorsabbá, hordozhatósággal és újrafelhasználással optimalizálja a munkafolyamatot, így az infrastruktúra és az automatizálás helyett a gépi tanulásra is koncentrálhat. A folyamat létrehozása és közzététele után beállíthat egy REST-végpontot, amely segítségével bármely platformon bármely HTTP-könyvtárból aktiválhatja a folyamatot. 
 
@@ -38,7 +36,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 > * Folyamat létrehozása, futtatása és közzététele
 > * REST-végpont engedélyezése a folyamat számára
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -79,26 +77,24 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-dataset-objects"></a>Adatkészlet-objektumok létrehozása
 
-A folyamatok létrehozásakor `Dataset` az objektumok a munkaterület-adattárolók adatainak beolvasására szolgálnak, és `PipelineData` az objektumok a közbenső adatok átvitelére szolgálnak a folyamat lépései között.
+A folyamatok létrehozásakor `Dataset` az objektumok a munkaterület-adattárolók adatainak beolvasására szolgálnak, és `OutputFileDatasetConfig` az objektumok a közbenső adatok átvitelére szolgálnak a folyamat lépései között.
 
 > [!Important]
 > Az oktatóanyagban szereplő batch-pontozási példa csak egy folyamat lépését használja. A több lépésből álló használati esetekben a szokásos folyamat a következő lépéseket fogja tartalmazni:
 >
-> 1. Az `Dataset` objektumokat *bemenetként* használhatja a nyers adatok beolvasásához, az átalakítás elvégzéséhez, majd az objektum *kimenetéhez* `PipelineData` .
+> 1. Az `Dataset` objektumokat *bemenetként* használhatja a nyers adatok beolvasásához, elvégezheti az átalakítást, majd *kimenetet* egy `OutputFileDatasetConfig` objektummal.
 >
-> 2. Használja a `PipelineData` *kimeneti objektumot* az előző lépésben *bemeneti objektumként*. Ismételje meg a műveletet a következő lépésekhez.
+> 2. Használja a `OutputFileDatasetConfig` *kimeneti objektumot* az előző lépésben *bemeneti objektumként*. Ismételje meg a műveletet a következő lépésekhez.
 
-Ebben a forgatókönyvben olyan objektumokat hoz létre, `Dataset` amelyek megfelelnek a bemeneti lemezképek és a besorolási címkék (y-test értékek) adattár-könyvtárainak. Hozzon létre egy `PipelineData` objektumot a Batch pontozási kimeneti adatokat is.
+Ebben a forgatókönyvben olyan objektumokat hoz létre, `Dataset` amelyek megfelelnek a bemeneti lemezképek és a besorolási címkék (y-test értékek) adattár-könyvtárainak. Létrehoz egy objektumot is `OutputFileDatasetConfig` a Batch pontozási kimeneti adatokat.
 
 ```python
 from azureml.core.dataset import Dataset
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 
 input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
 label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/"))
-output_dir = PipelineData(name="scores", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="batchscoring/results")
+output_dir = OutputFileDatasetConfig(name="scores")
 ```
 
 Regisztrálja az adatkészleteket a munkaterületen, ha később újra szeretné használni. Ez a lépés nem kötelező.
@@ -441,7 +437,7 @@ Ha nem tervezi a létrehozott erőforrások használatát, törölje őket, így
 1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget.
 1. Az erőforráscsoportok listájában válassza ki a létrehozott erőforráscsoportot.
 1. Válassza az **Erőforráscsoport törlése** elemet.
-1. Adja meg az erőforráscsoport nevét. Ezután válassza a **Törlés** lehetőséget.
+1. Írja be az erőforráscsoport nevét. Ezután válassza a **Törlés** lehetőséget.
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, majd válassza a **Törlés** lehetőséget.
 

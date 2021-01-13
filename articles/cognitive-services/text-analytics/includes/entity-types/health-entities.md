@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 308b2a9cb00f44f0e330d4fef5592d8855ee3394
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 00c1c8ddab9214bf7698c21b05c24afa36ec20d9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553161"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147621"
 ---
 ## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Text Analytics állapot-kategóriák, entitások és attribútumok esetében
 
@@ -23,15 +23,15 @@ Az [egészségügyi Text Analytics](../../how-tos/text-analytics-for-health.md) 
 
 | Kategória  | Leírás  |
 |---------|---------|
-| ANATÓMIA | a törzs-és anatómiai rendszerekkel, webhelyekkel, helyekkel vagy régiókkal kapcsolatos információkat rögzítő fogalmak. |
- | Demográfia | a nemekkel és a korral kapcsolatos információkat rögzítő fogalmak. |
- | AUDITÁLÁSBAN | a diagnosztikai eljárásokkal és tesztekkel kapcsolatos információkat rögzítő fogalmak. |
- | GENOMICS | a génekkel és a változatokkal kapcsolatos információkat rögzítő fogalmak. |
- | EGÉSZSÉGÜGYI | a felügyeleti eseményekkel, a gondozási környezetekkel és az egészségügyi szakmákkal kapcsolatos információkat rögzítő fogalmak. |
- | ORVOSI FELTÉTEL | a diagnosztizálással, tünetekkel vagy jelekkel kapcsolatos információkat rögzítő fogalmak. |
- | GYÓGYSZERT | a gyógyszerekre vonatkozó információkat rögzítő fogalmak, beleértve a gyógyszerek nevét, osztályait, adagolását és az adminisztrációs útvonalakat. |
- | SZOCIÁLIS | fogalmak, amelyek rögzítik az orvosilag releváns közösségi szempontokkal kapcsolatos információkat, például a családi kapcsolatot. |
- | KEZELÉS | a terápiás eljárásokkal kapcsolatos információkat rögzítő fogalmak. |
+| [ANATÓMIA](#anatomy) | a törzs-és anatómiai rendszerekkel, webhelyekkel, helyekkel vagy régiókkal kapcsolatos információkat rögzítő fogalmak. |
+ | [Demográfia](#demographics) | a nemekkel és a korral kapcsolatos információkat rögzítő fogalmak. |
+ | [AUDITÁLÁSBAN](#examinations) | a diagnosztikai eljárásokkal és tesztekkel kapcsolatos információkat rögzítő fogalmak. |
+ | [GENOMICS](#genomics) | a génekkel és a változatokkal kapcsolatos információkat rögzítő fogalmak. |
+ | [EGÉSZSÉGÜGYI](#healthcare) | a felügyeleti eseményekkel, a gondozási környezetekkel és az egészségügyi szakmákkal kapcsolatos információkat rögzítő fogalmak. |
+ | [ORVOSI FELTÉTEL](#medical-condition) | a diagnosztizálással, tünetekkel vagy jelekkel kapcsolatos információkat rögzítő fogalmak. |
+ | [GYÓGYSZERT](#medication) | a gyógyszerekre vonatkozó információkat rögzítő fogalmak, beleértve a gyógyszerek nevét, osztályait, adagolását és az adminisztrációs útvonalakat. |
+ | [SZOCIÁLIS](#social) | fogalmak, amelyek rögzítik az orvosilag releváns közösségi szempontokkal kapcsolatos információkat, például a családi kapcsolatot. |
+ | [KEZELÉS](#treatment) | a terápiás eljárásokkal kapcsolatos információkat rögzítő fogalmak. |
   
 Az egyes kategóriák két fogalmi csoportot tartalmazhatnak:
 
@@ -236,7 +236,7 @@ Az orvosi feltételek kezdetének és/vagy hosszának (időtartamának **) időb
 
 ### <a name="attributes"></a>Attribútumok
 
-**Adagolás** – a megrendelt gyógyszer mennyisége. Tegyük fel például, hogy *1000 ml* -es nátrium-klorid-megoldás.
+**Adagolás** – a megrendelt gyógyszer mennyisége. Tegyük fel például, hogy *1000 ml*-es nátrium-klorid-megoldás.
 
 :::image type="content" source="../../media/ta-for-health/medication-dosage.png" alt-text="Egy példa a gyógyszert dózis-attribútumra.":::
 
@@ -267,7 +267,15 @@ Az orvosi feltételek kezdetének és/vagy hosszának (időtartamának **) időb
 +   **FREQUENCY_OF_MEDICATION**
 +   **ROUTE_OF_MEDICATION**
 +   **TIME_OF_MEDICATION**
-  
+
+## <a name="social"></a>Közösségi
+
+### <a name="entities"></a>Entitások
+
+**FAMILY_RELATION** – a tárgy rokonainak említése. Például: Atya, lánya, testvér, szülők.
+
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="A képernyőfelvétel egy másik példát mutat be a kezelési idő attribútumra.":::
+
 ## <a name="treatment"></a>Kezelés
 
 ### <a name="entities"></a>Entitások
@@ -294,17 +302,8 @@ A kezelés kezdetére és/vagy hosszára (időtartamára) **vonatkozó időbeli 
 
 :::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="A képernyőfelvétel a kezelési idő attribútumára mutat példát.":::
 
-
 ### <a name="supported-relations"></a>Támogatott kapcsolatok
 
 + **DIRECTION_OF_TREATMENT**
 +   **TIME_OF_TREATMENT**
 +   **FREQUENCY_OF_TREATMENT**
-
-## <a name="social"></a>Közösségi
-
-### <a name="entities"></a>Entitások
-
-**FAMILY_RELATION** – a tárgy rokonainak említése. Például: Atya, lánya, testvér, szülők.
-
-:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="A képernyőfelvétel egy másik példát mutat be a kezelési idő attribútumra.":::

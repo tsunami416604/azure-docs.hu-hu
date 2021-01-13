@@ -6,12 +6,12 @@ ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: 9f9805c25955384e7ca5b3f1d560581a7ca4a638
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: ed2bd3f3bab81f6be56508a203600ec479cc20b6
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614659"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134483"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -105,13 +105,13 @@ A minta olyan keretrendszer-specifikus kódot tartalmaz, amelyet az alkalmazás 
 Telepítse a kódot a helyi mappájába (*Python-docs-Hello-World*) a következő `az webapp up` parancs használatával:
 
 ```azurecli
-az webapp up --sku F1 --name <app-name>
+az webapp up --sku B1 --name <app-name>
 ```
 
 - Ha a `az` parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van a [kezdeti környezet beállítása](#set-up-your-initial-environment)című témakörben leírtak szerint.
 - Ha a `webapp` parancs nem ismerhető fel, mert az Azure CLI verziója 2.0.80 vagy magasabb. Ha nem, [telepítse a legújabb verziót](/cli/azure/install-azure-cli).
 - Cserélje le a `<app_name>` karaktert az összes Azure-beli egyedi névre (*érvényes karakterek: `a-z` , `0-9` és `-`*). Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
-- Az `--sku F1` argumentum a webalkalmazást az ingyenes díjszabási szinten hozza létre. Hagyja ki ezt az argumentumot a gyorsabb prémium szint használatához, amely óradíjat eredményez.
+- Az `--sku B1` argumentum létrehozza a webalkalmazást az alapszintű díjszabási szinten, amely kis óradíjat eredményez. Hagyja ki ezt az argumentumot a gyorsabb prémium szint használatához.
 - Igény szerint megadhatja az argumentumot `--location <location-name>` , ahol az `<location_name>` egy elérhető Azure-régió. Az Azure-fiók számára engedélyezett régiók listáját a parancs futtatásával kérheti le [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 - Ha a következő hibaüzenet jelenik meg: "nem sikerült automatikusan észlelni az alkalmazás futásidejű veremét", győződjön meg arról, hogy a parancsot a *Python-docs-Hello-World* mappában (lombik) vagy a *Python-docs-Hello-Django* mappában (Django) futtatja, amely tartalmazza a *requirements.txt* fájlt. (Lásd: [az WebApp up (GitHub) szolgáltatással kapcsolatos automatikus észlelési hibák elhárítása](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)
 
@@ -281,7 +281,7 @@ A App Service menü különböző lapokat biztosít az alkalmazás konfigurálá
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Az erőforráscsoport neve például "appsvc_rg_Linux_CentralUS", a tartózkodási helytől függően. Ha az ingyenes F1-es csomagtól eltérő App Service SKU-t használ, ezek az erőforrások folyamatos költségekkel járnak (lásd a [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/linux/)).
+Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Az erőforráscsoport neve például "appsvc_rg_Linux_CentralUS", a tartózkodási helytől függően. Ha megtartja a webalkalmazást, további költségek merülnek fel (lásd: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/linux/)).
 
 Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje az erőforráscsoportot a következő parancs futtatásával:
 
@@ -295,7 +295,7 @@ Az `--no-wait` argumentum lehetővé teszi, hogy a parancs visszaadja a művelet
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python (Django) webalkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

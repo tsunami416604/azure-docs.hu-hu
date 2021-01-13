@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 054d18337e50a367cf1f6f004f4e1d1652c7751e
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954404"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134364"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
@@ -157,7 +157,6 @@ Néhány példa:
     time_series_settings = {
         'time_column_name': time_column_name,
         'time_series_id_column_names': time_series_id_column_names,
-        'drop_column_names': ['logQuantity'],
         'forecast_horizon': n_test_periods
     }
     
@@ -184,7 +183,7 @@ A következő táblázat összefoglalja a feladattípus által támogatott model
 > [!NOTE]
 > Ha úgy tervezi, hogy az automatikus ML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, csak a * * értékkel jelzett algoritmusok alakíthatók át a ONNX formátumba. További információ a [modellek ONNX való átalakításáról](concept-automated-ml.md#use-with-onnx). <br> <br> Azt is vegye figyelembe, hogy a ONNX jelenleg csak a besorolási és a regressziós feladatokat támogatja. 
 
-Besorolás | Regresszió | Idősoros előrejelzés
+Osztályozás | Regresszió | Idősoros előrejelzés
 |-- |-- |--
 [Logisztikai regresszió](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -206,7 +205,7 @@ A `primary metric` paraméter határozza meg, hogy milyen mérőszámot kell has
 
 Ismerje meg a mérőszámok konkrét definícióit az [automatizált gépi tanulás eredményeinek megismeréséhez](how-to-understand-automated-ml.md).
 
-|Besorolás | Regresszió | Idősoros előrejelzés
+|Osztályozás | Regresszió | Idősoros előrejelzés
 |--|--|--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
@@ -480,7 +479,7 @@ Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md)
         - `pip uninstall PyJWT` a parancs-rendszerhéjban, és adja meg `y` a megerősítést.
         - Telepítés a használatával `pip install 'PyJWT<2.0.0'` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

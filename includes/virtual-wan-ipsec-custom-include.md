@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e2a950037aed2a8ded4d4e55920721285cbfc05c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83f0ce27172879a37de9488499e46de30b8e112c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82204458"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147466"
 ---
 Ha egyéni IPsec-házirendekkel dolgozik, vegye figyelembe a következő követelményeket:
 
@@ -34,3 +34,4 @@ Ha egyéni IPsec-házirendekkel dolgozik, vegye figyelembe a következő követe
 | IPsec-titkosítás | GCMAES256, GCMAES128, AES256, AES128, none |
 | IPsec-integritás | GCMAES256, GCMAES128, SHA256 |
 | PFS-csoport | ECP384, ECP256, PFS24, PFS14, none |
+| SA élettartama |egész min. 300/alapértelmezett 27000 másodperc |

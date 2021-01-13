@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
 ms.openlocfilehash: 32c79360606a67cc7e85a43a226bb34c105d5b7a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 01/13/2021
 ms.locfileid: "93333392"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Azure Cosmos DB Core (SQL) API-erőforrások kezelése Azure Resource Manager-sablonokkal
@@ -80,7 +80,7 @@ Ez a sablon létrehoz egy ingyenes rétegbeli Azure Cosmos-fiókot és egy megos
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-free/azuredeploy.json":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Néhány további információforrás:
 

@@ -3,18 +3,18 @@ title: Azure Relay hálózati biztonsága
 description: Ez a cikk azt ismerteti, hogyan használhatók az IP-tűzfalszabályok és a magánhálózati végpontok a Azure Relay használatával.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3aa3ffd119f65ec5181b0c382472cc4ef3c8bac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263725"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134466"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure Relay hálózati biztonsága 
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Relay használatával: 
 
 - IP-tűzfalszabályok (előzetes verzió)
-- Privát végpontok (előzetes verzió)
+- Privát végpontok 
 
 > [!NOTE]
 > A Azure Relay nem támogatja a hálózati szolgáltatás végpontját. 
@@ -29,14 +29,14 @@ Az IP-tűzfalszabályok a továbbítási névtér szintjén lesznek alkalmazva. 
 
 További információ: az [IP-tűzfal konfigurálása továbbító névtérhez](ip-firewall-virtual-networks.md)
 
+> [!NOTE]
+> Ez a funkció jelenleg **előzetes** verzióban érhető el. 
+
 ## <a name="private-endpoints"></a>Privát végpontok
 
-Az Azure **Private link Service** lehetővé teszi az Azure-szolgáltatások (például a Azure Relay, a Azure Service Bus, az Azure Event Hubs, az Azure Storage és a Azure Cosmos db) és az Azure által üzemeltetett ügyfél-partner szolgáltatások elérését a virtuális hálózat privát végpontján keresztül. További információ: [Mi az az Azure Private link (előzetes verzió)?](../private-link/private-link-overview.md)
+Az Azure **Private link Service** lehetővé teszi az Azure-szolgáltatások (például a Azure Relay, a Azure Service Bus, az Azure Event Hubs, az Azure Storage és a Azure Cosmos db) és az Azure által üzemeltetett ügyfél-partner szolgáltatások elérését a virtuális hálózat privát végpontján keresztül. További információ: [Mi az az Azure Private link?](../private-link/private-link-overview.md)
 
 A **privát végpont** egy olyan hálózati adapter, amely lehetővé teszi, hogy a virtuális hálózaton futó munkaterhelések privát és biztonságos módon kapcsolódjanak egy olyan szolgáltatáshoz, amelynek van **privát kapcsolati erőforrása** (például egy továbbító névtér). A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute, VPN-kapcsolatra vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom áthalad a Microsoft gerinc hálózatán, és így megszűnik a nyilvános internetről való kitettség. Megadhatja a hozzáférés-vezérlés részletességi szintjét azáltal, hogy engedélyezi a kapcsolódást az adott Azure Relay névterekhez.
-
-> [!NOTE]
-> Ez a funkció jelenleg **előzetes**verzióban érhető el. 
 
 További információ: [privát végpontok konfigurálása](private-link-service.md)
 
