@@ -4,13 +4,13 @@ description: Ez a cikk rendszeresen frissül az Azure Cognitive Services Languag
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/05/2021
-ms.openlocfilehash: 4591bc26c848032d1c0f8b96720c4ec66b9b064d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/12/2021
+ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916354"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179129"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
@@ -18,10 +18,14 @@ Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátás
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="january-2021"></a>2021. január
+
+* A v3 előrejelzési API mostantól támogatja a [Bing helyesírási API](luis-how-to-publish-app.md#spelling-correction)-t.
+
 ### <a name="december-2020"></a>2020. december
 
 * Minden LUIS felhasználónak [telepítenie kell a Luis authoring-erőforrást](luis-migration-authoring.md)
-* Új [értékelési végpontok](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) , amelyek lehetővé teszik a Batch-tesztek beküldését a REST API usting, és a szándékok és entitások pontossági eredményeinek beolvasása. A szolgáltatás a v 3.0-Preview LUIS-végponttól kezdődően érhető el.
+* Új [értékelési végpontok](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) , amelyek lehetővé teszik batch-tesztek küldését a REST API használatával, és pontossági eredményeket kaphat a szándékok és entitások számára. A szolgáltatás a v 3.0-Preview LUIS-végponttól kezdődően érhető el.
 
 ### <a name="june-2020"></a>2020. június
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5ce5f5cea5d689720455dd8d60f6fff4692a9d3d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938800"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179299"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -392,6 +392,9 @@ Ha a virtuális hálózati szolgáltatás végpontjai engedélyezve vannak, a vi
 
 ### <a name="does-the-service-endpoint-route-always-take-precedence"></a>A szolgáltatási végpont útvonala mindig elsőbbséget élvez?
 A szolgáltatási végpontok olyan rendszerútvonalat vesznek fel, amely elsőbbséget élvez a BGP-útvonalakkal szemben, és optimális útválasztást biztosít a szolgáltatás végponti forgalmához A szolgáltatási végpontok mindig közvetlenül a virtuális hálózatról végzik a szolgáltatás forgalmát a Microsoft Azure gerinc hálózatán. További információ arról, hogy az Azure hogyan válasszon útvonalat: [Azure virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md).
+
+### <a name="do-service-endpoints-work-with-icmp"></a>Működnek a szolgáltatás-végpontok az ICMP protokollal?
+Nem, az olyan alhálózatból származó ICMP-forgalom, amelyeken engedélyezve vannak a szolgáltatási végpontok, nem veszi át a szolgáltatás bújtatási útvonalát a kívánt végpontra. A szolgáltatási végpontok csak a TCP-forgalmat kezelik. Ez azt jelenti, hogy ha szolgáltatási végpontokon keresztül szeretné tesztelni a késést vagy a végponthoz való kapcsolódást, az olyan eszközök, mint a ping és a tracert nem jelenítik meg az alhálózaton belüli erőforrások valódi elérési útját.
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Hogyan működik az alhálózat NSG a szolgáltatási végpontokkal?
 Az Azure-szolgáltatás eléréséhez NSG kell a kimenő kapcsolat használatát. Ha a NSG az összes internetes kimenő forgalomra megnyitják, akkor a szolgáltatási végpont forgalmának működnie kell. A kimenő forgalmat a szolgáltatási IP-címekre is korlátozhatja, csak a szolgáltatás címkéit használva.  

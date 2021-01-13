@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 448f2b3e42e98d78652a005f5d1c11f55acdebb3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f0d912d5b14932c43d109f8f955d5f16381cf773
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021184"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180098"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Gyors útmutató: keresési index létrehozása a Azure.Search.Documents ügyféloldali kódtár használatával
 
@@ -396,9 +396,9 @@ A [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1) osz
 
         response = srchclient.Search<Hotel>("*", options);
         WriteDocuments(response);
-        ```
+    ```
 
-1. In the second query, search on a term, add a filter that selects documents where Rating is greater than 4, and then sort by Rating in descending order. Filter is a boolean expression that is evaluated over [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) fields in an index. Filter queries either include or exclude values. As such, there is no relevance score associated with a filter query. 
+1. A második lekérdezésben keressen egy kifejezésre, adjon hozzá egy szűrőt, amely kiválasztja azokat a dokumentumokat, amelyekben a minősítés meghaladja a 4-et, majd az értékelés szerint csökkenő sorrendbe rendezi őket. A Filter egy logikai kifejezés, amely egy index [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) mezőin keresztül lesz kiértékelve. A lekérdezéseket belefoglalhatja vagy kizárhatja az értékek közül. Ennek megfelelően a szűrő lekérdezéséhez nincs releváns pontszám társítva. 
 
     ```csharp
     Console.WriteLine("Query #2: Search on 'hotels', filter on 'Rating gt 4', sort by Rating in descending order...\n");
@@ -497,7 +497,7 @@ Nyomja le az F5 billentyűt az alkalmazás újraépítéséhez és a program tel
 
 A kimenet magában foglalja a [Console. WriteLine](/dotnet/api/system.console.writeline)és a lekérdezési adatok és eredmények hozzáadásával kapcsolatos üzeneteket.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 

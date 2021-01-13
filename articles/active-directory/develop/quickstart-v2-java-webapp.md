@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: efd9730123f7427e97d5494d9790bff2a26c4c4e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 91aa6c96c714bff26ea7e0df5b2b6971c68edec0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011849"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178568"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -38,7 +38,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > ### <a name="option-1-register-and-automatically-configure-your-app-and-then-download-the-code-sample"></a>1. lehetőség: az alkalmazás regisztrálása és automatikus konfigurálása, majd a kód letöltése
 >
-> 1. Nyissa meg a [Azure Portal > az **alkalmazás**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs) -gyors üzembe helyezési élményt.
+> 1. Lépjen a <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Alkalmazásregisztrációk <span class="docon docon-navigate-external x-hidden-focus"></span> </a> gyors üzembe helyezési élményhez.
 > 1. Adja meg az alkalmazás nevét, majd válassza a **regisztráció** lehetőséget.
 > 1. Az automatikusan konfigurált alkalmazás kódjának letöltéséhez kövesse a portál gyors üzembe helyezési felületének utasításait.
 >
@@ -87,7 +87,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > Ha a HTTPS-t a localhost használatával szeretné használni, adja meg a `server.ssl.key` tulajdonságokat. Önaláírt tanúsítvány létrehozásához használja a (JRE részét képező) eszköz segédprogramját.
 >
-> Íme egy példa:
+> Bemutatunk egy példát:
 >  ```
 >   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 >
@@ -126,7 +126,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >    - `Enter_the_Tenant_Info_Here` a regisztrált alkalmazás **címtár-(bérlői) azonosítójának** értéke.
 > 1. Ha a HTTPS-t a localhost használatával szeretné használni, adja meg a `server.ssl.key` tulajdonságokat. Önaláírt tanúsítvány létrehozásához használja a (JRE részét képező) eszköz segédprogramját.
 >
->    Íme egy példa:
+>    Bemutatunk egy példát:
 >
 >     ```
 >      keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
@@ -254,7 +254,7 @@ import com.microsoft.aad.msal4j.*;
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft Identity platform felhasználóit bejelentkező webalkalmazások létrehozásával kapcsolatos alaposabb eszmecsere: többrészes forgatókönyvek sorozata:
 

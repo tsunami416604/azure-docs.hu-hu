@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 0656000a1d6449306e8afe538f846c55c79a31a2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 071f1974e09d2754fe20f3ac2cc90929c4a2eb98
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915286"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180216"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -31,8 +31,23 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 
 ## <a name="planned-changes"></a>Tervezett változások
 
+- [Az SQL-adatbesorolásra vonatkozó javaslat továbbfejlesztése](#enhancements-to-sql-data-classification-recommendation)
 - ["Nem alkalmazható" erőforrások, amelyeket "megfelelőként" kell jelenteni Azure Policy értékelésekben](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [35 az Azure biztonsági teljesítményteszt lefedettségének növeléséhez hozzáadott előzetes javaslatok](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
+
+
+
+### <a name="enhancements-to-sql-data-classification-recommendation"></a>Az SQL-adatbesorolásra vonatkozó javaslat továbbfejlesztése
+
+**Változás becsült dátuma:** Q2 2021
+
+Az **SQL-adatbázisokban lévő bizalmas adatokra** vonatkozó ajánlás aktuális verzióját az **adatok besorolása** biztonsági ellenőrzés alá kell sorolni, és egy új, a Microsoft adatbesorolási stratégiájának jobban illeszkedő verziójára kell lecserélni. Ennek eredményeképpen:
+
+- A javaslat a továbbiakban nem lesz hatással a biztonságos pontszámra
+- A biztonsági vezérlő ("adatbesorolás alkalmazása") már nem lesz hatással a biztonságos pontszámra
+- Az ajánlás azonosítója is módosul (jelenleg b0df6f56-862d-4730-8597-38c0fd4ebd59)
+
+
 
 ### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Nem alkalmazható" erőforrások, amelyeket "megfelelőként" kell jelenteni Azure Policy értékelésekben
 

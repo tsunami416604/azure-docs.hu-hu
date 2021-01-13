@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: c1dba383f259e35b143688b2db68f05f1a67def6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a9591a394d80e7b4c60f28fda6c0a425ba3d0a4f
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938199"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180064"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Oktatóanyag: IoT Edge-eszközök hierarchiájának létrehozása (előzetes verzió)
 
@@ -27,7 +27,7 @@ Az eszközök hierarchiáját strukturálhatja úgy, hogy csak a legfelső réte
 
 Ennek az oktatóanyagnak a célja, hogy IoT Edge-eszközök hierarchiáját hozza létre, amely egy éles környezetet szimulál. A rendszer a [szimulált hőmérséklet-érzékelő modult](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.simulated-temperature-sensor) az Internet-hozzáférés nélküli alsóbb rétegbeli eszközre helyezi át a tároló lemezképének a hierarchián keresztüli letöltésével.
 
-A cél megvalósítása érdekében ez az oktatóanyag végigvezeti IoT Edge eszközök hierarchiájának létrehozásán, IoT Edge futtatókörnyezeti tárolók üzembe helyezésén az eszközökön, valamint az eszközök helyi konfigurálásán. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+A cél megvalósítása érdekében ez az oktatóanyag végigvezeti IoT Edge eszközök hierarchiájának létrehozásán, IoT Edge futtatókörnyezeti tárolók üzembe helyezésén az eszközökön, valamint az eszközök helyi konfigurálásán. Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -64,6 +64,13 @@ IoT Edge eszközök hierarchiájának létrehozásához a következőkre lesz sz
     --admin-password <REPLACE_WITH_PASSWORD>
    ```
 
+* Győződjön meg arról, hogy a következő portok nyitva vannak: 8000, 443, 5671, 8883:
+  * 8000: a Docker-tárolók rendszerképeinek az API-proxyn keresztüli lekérésére használatos.
+  * 443: a szülő és a gyermek peremhálózati hubok között használatos REST API hívásokhoz.
+  * 5671, 8883: AMQP és MQTT használatos.
+
+  További információért olvassa el [a portok a virtuális gépek számára az Azure Portallal való megnyitását](../virtual-machines/windows/nsg-quickstart-portal.md) ismertető cikket.
+
 Ezt a forgatókönyvet úgy is kipróbálhatja, hogy a megírt [Azure IoT Edge az ipari IoT minta](https://aka.ms/iotedge-nested-sample)alapján, amely az Azure-beli virtuális gépeket előre konfigurált eszközökként helyezi üzembe a gyári környezet szimulálása érdekében.
 
 ## <a name="configure-your-iot-edge-device-hierarchy"></a>Az IoT Edge-eszköz hierarchiájának konfigurálása
@@ -78,11 +85,11 @@ Az IoT Edge-eszközök létrehozásának első lépése a Azure Portal vagy az A
 
 1. A bal oldali ablaktábla menüjének **automatikus eszközkezelés** területén válassza a **IoT Edge** lehetőséget.
 
-1. Válassza **a + IoT Edge eszköz hozzáadása** elemet. Ez az eszköz lesz a legfelső rétegbeli eszköz, ezért adjon meg egy megfelelő egyedi azonosítót. Kattintson a **Mentés** gombra.
+1. Válassza **a + IoT Edge eszköz hozzáadása** elemet. Ez az eszköz lesz a legfelső rétegbeli eszköz, ezért adjon meg egy megfelelő egyedi azonosítót. Válassza a **Mentés** lehetőséget.
 
 1. Válassza **az + IoT Edge eszköz hozzáadása** elemet. Ez az eszköz lesz a peremhálózati alsóbb rétegbeli eszköz, ezért adjon meg egy megfelelő egyedi azonosítót.
 
-1. Válassza a **fölérendelt eszköz beállítása** lehetőséget, válassza ki a legfelső rétegbeli eszközt az eszközök listájából, majd kattintson **az OK gombra**. Kattintson a **Mentés** gombra.
+1. Válassza a **fölérendelt eszköz beállítása** lehetőséget, válassza ki a legfelső rétegbeli eszközt az eszközök listájából, majd kattintson **az OK gombra**. Válassza a **Mentés** lehetőséget.
 
    ![A szülő beállítása az alsó rétegbeli eszközhöz](./media/tutorial-nested-iot-edge/set-parent-device.png)
 
@@ -182,6 +189,39 @@ Minden eszköznek szüksége van a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI
 
 A IoT Edge telepítéséhez mindkét eszközön végezze el a következő lépéseket.
 
+1. Telepítse az eszköz operációs rendszerének megfelelő adattár-konfigurációt.
+
+   * **Ubuntu Server 16,04**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Ubuntu Server 18,04**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Málna PI operációs rendszer stretch**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+1. Másolja a generált listát a sources. list. d könyvtárba.
+
+   ```bash
+   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```
+
+1. Telepítse a Microsoft GPG nyilvános kulcsot.
+
+   ```bash
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```
+   
 1. Frissítési csomagok listája az eszközön.
 
    ```bash
@@ -197,7 +237,7 @@ A IoT Edge telepítéséhez mindkét eszközön végezze el a következő lépé
 1. Telepítse a hsmlib és a IoT Edge démont. A más Linux-disztribúciók eszközeinek megtekintéséhez [látogasson el a GitHub-kiadásra](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1). <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0_rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
    curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
@@ -320,20 +360,20 @@ A [Azure Portalban](https://ms.portal.azure.com/):
 
 1. Adja hozzá az alábbi környezeti változókat az Edge hub-modulhoz:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
    ![Az Edge hub környezeti változóinak szerkesztése](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2` . Kattintson a **Mentés** gombra.
+1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2` . Válassza a **Mentés** lehetőséget.
 
 1. Adja hozzá a Docker beállításjegyzék-modulját a felső rétegbeli eszközhöz. Válassza a **+ Hozzáadás** lehetőséget, majd válassza ki **IoT Edge modult** a legördülő menüből. Adja meg a `registry` Docker beállításjegyzék-moduljának nevét, és adja meg a `registry:latest` rendszerkép URI azonosítóját. Ezután adja hozzá a környezeti változókat, és hozzon létre beállításokat a helyi beállításjegyzék-modul a Microsoft Container registryben való letöltéséhez, hogy letöltse a lemezképeket a alkalmazásból, és a következő beállításjegyzékben szolgálja ki a képeket: 5000
 
 1. A környezeti változók lapon adja meg a következő környezeti változó név-érték párokat:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -491,12 +531,12 @@ A [Azure Portalban](https://ms.portal.azure.com/):
 
 1. Adja hozzá az alábbi környezeti változókat az Edge hub-modulhoz:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `$upstream:8000/azureiotedge-agent:1.2.0-rc2` . Kattintson a **Mentés** gombra.
+1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `$upstream:8000/azureiotedge-agent:1.2.0-rc2` . Válassza a **Mentés** lehetőséget.
 
 1. Adja hozzá a hőmérséklet-érzékelő modult. Válassza a **+ Hozzáadás** lehetőséget, majd válassza ki a **piactér modult** a legördülő menüből. Keresse meg `Simulated Temperature Sensor` és válassza ki a modult.
 
@@ -594,13 +634,35 @@ Notice that the image URI that we used for the simulated temperature sensor modu
 
 On the device details page for your lower layer IoT Edge device, you should now see the temperature sensor module listed along the system modules as **Specified in deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by device**.
 
-## View generated data
+## IotEdge check
 
-The **Simulated Temperature Sensor** module that you pushed generates sample environment data. It sends messages that include ambient temperature and humidity, machine temperature and pressure, and a timestamp.
+Run the `iotedge check` command to verify the configuration and to troubleshoot errors.
 
-You can watch the messages arrive at your IoT hub by using the [Azure IoT Hub extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+You can run `iotedge check` in a nested hierarchy, even if the child machines don't have direct internet access.
 
-You can also view these messages through the [Azure Cloud Shell](https://shell.azure.com/):
+When you run `iotedge check` from the lower layer, the program tries to pull the image from the parent through port 443.
+
+In this tutorial, we use port 8000, so we need to specify it:
+
+```bash
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2.0-rc2
+```
+   
+Az `azureiotedge-diagnostics` értéket a rendszer a beállításjegyzék-modullal összekapcsolt tároló beállításjegyzékből kéri le. Ez az oktatóanyag alapértelmezés szerint a következőre van beállítva: https://mcr.microsoft.com:
+
+| Név | Érték |
+| - | - |
+| `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
+
+Ha privát tároló-beállításjegyzéket használ, győződjön meg arról, hogy az összes rendszerkép (például a IoTEdgeAPIProxy, a edgeAgent, a edgeHub és a Diagnostics) megtalálható a tároló beállításjegyzékében.    
+    
+## <a name="view-generated-data"></a>A létrejött adatok megtekintése
+
+A **szimulált hőmérséklet-érzékelő** modul a minta környezeti adattípust hozza létre. A környezeti hőmérsékletet, a páratartalomot, a gépi hőmérsékletet és a nyomást, valamint egy időbélyeget tartalmazó üzeneteket küld.
+
+A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával megtekintheti az IoT hub-ra érkező üzeneteket.
+
+Ezeket az üzeneteket a [Azure Cloud Shell](https://shell.azure.com/)is megtekintheti:
 
    ```azurecli-interactive
    az iot hub monitor-events -n <iothub_name> -d <lower-layer-device-name>

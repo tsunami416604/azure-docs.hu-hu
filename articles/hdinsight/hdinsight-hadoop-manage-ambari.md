@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/16/2020
-ms.openlocfilehash: f21b72cd519c1615d8273bf316a8d0ccad039672
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 01/12/2021
+ms.openlocfilehash: 8195cffed077a77c0ad66fda1126e2f3ea53d5f0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546160"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179146"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-fürtök kezelése az Apache Ambari webes felületével
 
@@ -27,7 +27,7 @@ Ebből a dokumentumból megtudhatja, hogyan használhatja a Ambari webes felhasz
 
 Az [Apache Ambari](https://ambari.apache.org) egy könnyen használható webes felhasználói felületet biztosít a Hadoop-kezeléshez. A Ambari használatával felügyelheti és figyelheti a Hadoop-fürtöket. A fejlesztők a [AMBARI REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)-k használatával integrálhatja ezeket a képességeket alkalmazásaiba.
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 A Ambari webes felhasználói felülete a HDInsight-fürtön érhető el `https://CLUSTERNAME.azurehdinsight.net` , ahol a a `CLUSTERNAME` fürt neve.
 
@@ -92,7 +92,7 @@ Az ingyenes [SendGrid-fiókkal](../sendgrid-dotnet-how-to-send-email.md)rendelke
 
 ### <a name="cluster"></a>Fürt
 
-Az irányítópult **metrikák** lapja több widgetet tartalmaz, amelyek megkönnyítik a fürt állapotának figyelését egy pillantással. Több widget (például **CPU-használat** ) esetén további információk is megadhatók a kattintáskor.
+Az irányítópult **metrikák** lapja több widgetet tartalmaz, amelyek megkönnyítik a fürt állapotának figyelését egy pillantással. Több widget (például **CPU-használat**) esetén további információk is megadhatók a kattintáskor.
 
 ![Apache Ambari-irányítópult metrikákkal](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
@@ -139,7 +139,7 @@ A hivatkozások bármelyikének kiválasztásával megnyílik egy új lap a bön
 A felhasználók, csoportok és engedélyek használata támogatott. A helyi felügyelethez lásd: [felhasználók engedélyezése Apache Ambari-nézetekhez](./hdinsight-authorize-users-to-ambari.md). Tartományhoz csatlakoztatott fürtök esetében lásd: [tartományhoz csatlakoztatott HDInsight-fürtök kezelése](./domain-joined/hdinsight-security-overview.md).
 
 > [!WARNING]  
-> Ne változtassa meg a Ambari watchdog (hdinsightwatchdog) jelszavát a Linux-alapú HDInsight-fürtön. A jelszó módosítása megszakítja a parancsfájl-műveletek használatát, vagy skálázási műveleteket hajt végre a fürtön.
+> A Linux-alapú HDInsight-fürtön ne törölje vagy módosítsa a Ambari watchdog (hdinsightwatchdog) jelszavát. A jelszó módosítása megszakítja a parancsfájl-műveletek használatát, vagy skálázási műveleteket hajt végre a fürtön.
 
 ### <a name="hosts"></a>Hosts
 
@@ -214,7 +214,7 @@ A Ambari nézetek lehetővé teszik a fejlesztők számára a felhasználói fel
 
 A következő Ambari műveletek nem támogatottak a HDInsight:
 
-* __A metrikák gyűjtő szolgáltatásának áthelyezése__ . A metrika-gyűjtő szolgáltatás információinak megtekintésekor a szolgáltatási műveletek menüben elérhető műveletek egyike a __metrika-gyűjtő mozgatása__ . Ez a művelet nem támogatott a HDInsight.
+* __A metrikák gyűjtő szolgáltatásának áthelyezése__. A metrika-gyűjtő szolgáltatás információinak megtekintésekor a szolgáltatási műveletek menüben elérhető műveletek egyike a __metrika-gyűjtő mozgatása__. Ez a művelet nem támogatott a HDInsight.
 
 ## <a name="next-steps"></a>Következő lépések
 

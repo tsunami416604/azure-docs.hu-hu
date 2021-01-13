@@ -7,34 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 01/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 305682812896bb74474b5065cfd56a071a73ed15
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0405db2b68abefbfdc424def9e35e363e45043cd
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358779"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180132"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexelők az Azure Cognitive Searchben
 
-Az Azure Cognitive Search *Indexelő* egy olyan webbejáró, amely a kereshető adatokat és metaadatokat kinyeri egy külső Azure-adatforrásból, és az index és az adatforrás közötti mező – mező leképezések alapján tölti fel az indexet. Ezt a módszert más néven "lekéréses modellnek" is nevezzük, mert a szolgáltatás olyan kódot kér le, amely nem rendelkezik olyan kóddal, amely az adott indexbe felveszi az adattípust.
+Az Azure Cognitive Search *Indexelő* egy olyan webbejáró, amely egy külső Azure-adatforrásból Kinyeri a kereshető adatokat és metaadatokat, és a keresési indexet a forrásadatok és az index közötti mező-mező leképezések használatával tölti fel. Ezt a módszert más néven "lekéréses modellnek" is nevezzük, mert a szolgáltatás olyan kódot kér le, amely nem rendelkezik olyan kóddal, amely az adott indexbe felveszi az adattípust.
 
-Az indexelő az adatforrások típusain vagy platformokon alapulnak, és az Azure-ban, a Cosmos db, az Azure Table Storage és a blob Storage SQL Server indexelő egyedi indexekkel rendelkeznek. A blob Storage-indexelő a blob tartalomtípusokhoz tartozó további tulajdonságokkal rendelkeznek.
-
-Az indexelőt használhatja kizárólag adatfeldolgozásra, illetve olyan kombinált műveletekben is, amelyek részeként az indexelő használatával csak az index bizonyos mezőinek betöltése történik meg.
+Az indexelő csak az Azure-ban, az Azure SQL, az Azure Cosmos db, az Azure Table Storage és a blob Storage egyéni indexelő szolgáltatásával. Az indexelő konfigurálásakor meg kell adnia egy adatforrást (forrás), valamint egy indexet (célhelyet). Számos adatforrás, például a blob Storage-indexelő további tulajdonságokkal rendelkezik az adott tartalomtípushoz.
 
 Az Indexelő szolgáltatást igény szerint vagy ismétlődő adatfrissítési ütemezés szerint futtathatja, amely akár öt percenként is futtatható. A gyakoribb frissítések esetében olyan leküldéses modellre van szükség, amely egyszerre frissíti az Azure Cognitive Search és a külső adatforrás adatait is.
+
+## <a name="usage-scenarios"></a>Használati forgatókönyvek
+
+Az indexelő egyetlen eszközként használhatja az adatfeldolgozáshoz, vagy használhat olyan technikák kombinációját, amelyek csak néhány mezőt töltenek be az indexből, igény szerint átalakíthatja vagy gazdagíthatja a tartalmat az út mentén. A következő táblázat összefoglalja a főbb forgatókönyveket.
+
+| Használati példa |Stratégia |
+|----------|---------|
+| Önálló forrás | Ez a minta a legegyszerűbb: az egyik adatforrás a keresési index egyetlen szolgáltatója. A forrásból egy olyan mezőt fog azonosítani, amely egyedi értékeket tartalmaz, amelyek a keresési indexben a dokumentum kulcsaként szolgálnak. A rendszer az egyedi értéket fogja használni azonosítóként. Minden más forrás mező implicit módon vagy explicit módon van leképezve az index megfelelő mezőihez. </br></br>Fontos elvihetőség, hogy a dokumentum kulcsa a forrásadatokből származik. A keresési szolgáltatás nem hoz alapértékeket. A későbbi futtatások során új kulcsokkal rendelkező bejövő dokumentumok lesznek hozzáadva, míg a meglévő kulcsokkal rendelkező bejövő dokumentumok egyesítése vagy felülírása attól függően, hogy az index mezői null értékűek vagy fel vannak-e töltve. |
+| Több forrás| Az indexek több forrásból is fogadhatnak tartalmakat, ahol minden egyes Futtatás új tartalmat hoz egy másik forrásból. </br></br>Az egyik eredmény lehet egy olyan index, amely minden indexelő futtatása után a dokumentumokat fogja megnyerni, és az összes forrásból származó teljes dokumentum teljes egészében létrejött. Ennek a forgatókönyvnek a feladata az összes bejövő adathoz használható index séma kialakítása, valamint a keresési indexben egységes dokumentum kulcsa. Ha például egy dokumentum egyedi azonosítására szolgáló értékek egy blob-tárolóban és egy SQL-tábla elsődleges kulcsában metadata_storage_path, akkor elképzelhető, hogy az egyik vagy mindkét forrást módosítani kell, hogy a kulcsfontosságú értékeket közös formátumban adja meg, függetlenül a tartalom eredetétől. Ebben az esetben várhatóan bizonyos szintű előfeldolgozást kell végeznie az adatok homogenizálása érdekében, hogy azt egyetlen indexbe lehessen húzni.</br></br>Lehetséges, hogy az első futtatáskor részlegesen kitöltött dokumentumok kereshetők, majd a későbbi futtatások további kitöltésével más forrásokból származó értékeket hoznak. Ennek a mintának az a kihívása, hogy minden indexelési Futtatás ugyanazt a dokumentumot célozza meg. A mezők meglévő dokumentumba való egyesítéséhez meg kell egyeznie a dokumentum kulcsával. A forgatókönyv bemutatását lásd [: oktatóanyag: index több adatforrásból](tutorial-multiple-data-sources.md). |
+| Tartalom átalakítása | A Cognitive Search támogatja a választható [AI-gazdagító](cognitive-search-concept-intro.md) viselkedéseket, amelyek képelemzést és természetes nyelvi feldolgozást hoznak létre új kereshető tartalom és struktúra létrehozásához. Az AI-gazdagítás egy [készségkészlet](cognitive-search-working-with-skillsets.md)van definiálva, amely egy indexelő van csatolva. Ha AI-bővítést szeretne végezni, az indexelő továbbra is indexre és adatforrásra van szüksége, de ebben az esetben a készségkészlet-feldolgozást hozzáadja az indexelő végrehajtásához. |
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Indexelők létrehozásának és kezelésének módszerei
 
 Az indexelők létrehozása és kezelése a következő módszerekkel történhet:
 
-* [Portál > adatimportálás varázsló](search-import-data-portal.md)
-* [Szolgáltatás REST API-ja](/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
++ [Portál > adatimportálás varázsló](search-import-data-portal.md)
++ [Szolgáltatás REST API-ja](/rest/api/searchservice/Indexer-operations)
++ [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
-Az új indexelőket először előzetes verziójú funkcióként vezetjük be. Az előzetes verziójú funkciók API-kban (REST és .NET) kerülnek bemutatásra, majd később, azok általánosan elérhetővé tétele után integráljuk őket a portál rendszerével. Új indexelő kiértékelése esetén érdemes számolni azzal, hogy kódírásra is sor fog kerülni.
+Ha SDK-t használ, hozzon létre egy [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient) az indexelő, az adatforrások és a szakértelmével használatához. A fenti hivatkozás a .NET SDK-hoz készült, de az SDK-k SearchIndexerClient és hasonló API-kat biztosítanak.
+
+Kezdetben az új adatforrások előzetes verzióként vannak bejelentve, és csak REST-alapúak. Az általános rendelkezésre állás elvégzése után a teljes támogatás a Portálon és a különböző SDK-k részét képezi, amelyek mindegyike saját kiadási ütemezésen alapul.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -46,15 +56,15 @@ Az indexelő rendszerhez kapcsolódó összes művelet, beleértve az állapot v
 
 Az indexelő adattárakat térképez fel az Azure-ban.
 
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (előzetes verzió)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
-* [SQL Server az Azure Virtual Machines szolgáltatásban](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
++ [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
++ [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (előzetes verzió)
++ [Azure Table Storage](search-howto-indexing-azure-tables.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
++ [Azure-beli virtuális gépen futó SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
-## <a name="indexer-stages"></a>Indexelő szakaszai
+## <a name="stages-of-indexing"></a>Az indexelés szakaszai
 
 Ha a kezdeti futtatáskor az index üres, akkor az indexelő a táblázatban vagy a tárolóban megadott összes adattal beolvasható. A későbbi futtatások során az indexelő általában csak a módosított adatértékeket észlelheti és kérheti le. A Blobok esetében az észlelés módosítása automatikus. Más adatforrások esetében, mint például az Azure SQL vagy a Cosmos DB, engedélyezni kell az észlelés módosítását.
 
@@ -66,11 +76,11 @@ Az indexelő minden egyes betöltött dokumentum esetében több lépést valós
 
 A dokumentumok repedése a fájlok megnyitásának és a tartalom kinyerésének folyamata. Az adatforrás típusától függően az indexelő megpróbál különböző műveleteket végrehajtani a potenciálisan indexelhető tartalom kinyeréséhez.  
 
-Példák:  
+Angol nyelvű Példák:  
 
-* Ha a dokumentum egy [Azure SQL-adatforrás](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)egyik rekordja, az indexelő Kinyeri a rekord összes mezőjét.
-* Ha a dokumentum egy [Azure Blob Storage adatforrásban](search-howto-indexing-azure-blob-storage.md)található PDF-fájl, az indexelő kicsomagolja a fájl szövegét, képeit és metaadatait.
-* Ha a dokumentum egy [Cosmos db adatforrásban](search-howto-index-cosmosdb.md)lévő rekord, az indexelő kibontja a mezőket és almezőket a Cosmos db dokumentumból.
++ Ha a dokumentum egy [Azure SQL-adatforrás](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)egyik rekordja, az indexelő Kinyeri a rekord összes mezőjét.
++ Ha a dokumentum egy [Azure Blob Storage adatforrásban](search-howto-indexing-azure-blob-storage.md)található PDF-fájl, az indexelő Kinyeri a szöveget, a képeket és a metaadatokat.
++ Ha a dokumentum egy [Cosmos db adatforrásban](search-howto-index-cosmosdb.md)lévő rekord, az indexelő kibontja a mezőket és almezőket a Cosmos db dokumentumból.
 
 ### <a name="stage-2-field-mappings"></a>2. fázis: mező-hozzárendelések 
 
@@ -95,18 +105,21 @@ A következő képen egy példa indexelő [hibakeresési munkamenetének](cognit
 Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.
 
 ### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
+
 Az indexelő beolvassa az adatforrás-kapcsolatokat *egy adatforrás-objektumból* . Az adatforrás-definíció egy kapcsolati karakterláncot és esetleg hitelesítő adatokat biztosít. Az erőforrás létrehozásához hívja meg a [create Datasource](/rest/api/searchservice/create-data-source) REST API vagy a [SearchIndexerDataSourceConnection osztályt](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) .
 
 Az adatforrások konfigurálása és kezelése az azokat használó indexelőktől függetlenül történik, ami azt jelenti, hogy egy adatforrást több indexelő is használhat egyidejűleg, egynél több index betöltésére.
 
 ### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
+
 Az indexelők automatizálni tudják az adatfeldolgozáshoz kapcsolódó bizonyos feladatokat, de az indexek létrehozása nem tartozik ezek közé. Előfeltételként olyan előre meghatározott indexre van szükség, amelynek mezői egyeznek a külső adatforrás mezőivel. A mezőknek meg kell egyezniük a név és az adattípus alapján. Az indexek strukturálásával kapcsolatos további információkért lásd: [index létrehozása (Azure Cognitive Search REST API)](/rest/api/searchservice/Create-Index) vagy [SearchIndex osztály](/dotnet/api/azure.search.documents.indexes.models.searchindex). A mezők társításával kapcsolatos segítségért lásd: [mező-hozzárendelések az Azure Cognitive Search indexelő](search-indexer-field-mappings.md)szolgáltatásban.
 
 > [!Tip]
 > Az indexelők nem tudnak indexet létrehozni Önnek, de a portál **Adatok importálása** varázslója a segítségére lehet ebben. A legtöbb esetben a varázsló következtetni tud az indexsémára a forrás meglévő metaadataiból, és előállít egy olyan előzetes indexsémát, amely beágyazott módon szerkeszthető mindaddig, amíg a varázsló aktív. Miután létrejött az index a szolgáltatásban, a további szerkesztés a portálon a legtöbb esetben új mezők hozzáadására van korlátozva. A varázsló használatát érdemes megfontolnia az indexek létrehozásakor, de az áttekintésükkor nem. A gyakorlati tanuláshoz végezze el a [portál útmutatójában](search-get-started-portal.md) foglalt lépéseket.
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>3. lépés: Az indexelő létrehozása és ütemezése
-Az indexelő definíciója egy olyan szerkezet, amely az adatfeldolgozással kapcsolatos összes elemet egyesíti. A szükséges elemek közé tartozik az adatforrás és az index. A választható elemek közé tartozik az ütemterv és a mező leképezése. A mező-hozzárendelés csak akkor választható, ha a forrás mezők és az index mezők világosan megfelelnek. Az indexelő strukturálásával kapcsolatos további információkért lásd: az [Indexelő létrehozása (Azure Cognitive Search REST API)](/rest/api/searchservice/Create-Indexer).
+
+Az indexelő definíciója egy olyan szerkezet, amely az adatfeldolgozással kapcsolatos összes elemet egyesíti. A szükséges elemek közé tartozik az adatforrás és az index. A választható elemek közé tartozik az ütemterv és a mező leképezése. A mező-hozzárendelések csak akkor választhatók, ha a forrás mezők és az index mezők világosan megfelelnek. Az indexelő strukturálásával kapcsolatos további információkért lásd: az [Indexelő létrehozása (Azure Cognitive Search REST API)](/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>
 
@@ -120,9 +133,9 @@ api-key: [Search service admin key]
 ```
 
 > [!NOTE]
-> Ha az API futtatása sikeresen befejeződik, az indexelő meghívása ütemezve lett, de a tényleges feldolgozás aszinkron módon történik. 
+> Ha a Run API sikeres kódot ad vissza, az indexelő meghívása ütemezve lett, de a tényleges feldolgozás aszinkron módon történik. 
 
-Az indexelő állapotát a portálon vagy az indexelő status API-n keresztül követheti nyomon. 
+Az indexelő állapotát a portálon vagy az [Indexelő status API](/rest/api/searchservice/get-indexer-status)-n keresztül követheti nyomon. 
 
 <a name="GetIndexerStatus"></a>
 
@@ -167,12 +180,13 @@ A válasz általános indexelő állapotot, az utolsó (vagy folyamatban lévő)
 
 A végrehajtási előzmények legfeljebb a 50 legutóbbi befejezett végrehajtást tartalmazzák, amelyek fordított időrendi sorrendben vannak rendezve (így a legutóbbi végrehajtás a válaszban elsőként jelenik meg).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.
 
-* [Azure SQL Database, SQL felügyelt példány vagy SQL Server Azure-beli virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [CSV-Blobok indexelése az Azure Cognitive Search blob indexelő használatával](search-howto-index-csv-blobs.md)
-* [JSON-Blobok indexelése az Azure Cognitive Search blob indexelő](search-howto-index-json-blobs.md)
++ [Azure SQL Database, SQL felügyelt példány vagy SQL Server Azure-beli virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
++ [Azure Table Storage](search-howto-indexing-azure-tables.md)
++ [CSV-Blobok indexelése az Azure Cognitive Search blob indexelő használatával](search-howto-index-csv-blobs.md)
++ [JSON-Blobok indexelése az Azure Cognitive Search blob indexelő](search-howto-index-json-blobs.md)

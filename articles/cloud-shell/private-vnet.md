@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a820fb4ec5d6c2053b1104b68dbda0ae70f624c0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89468538"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179197"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Cloud Shell üzembe helyezése Azure-beli virtuális hálózaton
-> [!NOTE]
-> Ez a funkció nyilvános előzetes verzióban érhető el.
 
 A rendszeres Cloud Shell munkamenetek egy Microsoft-hálózat egy tárolójában futnak az erőforrásaitól. Ez azt jelenti, hogy a tárolón belül futó parancsok nem férnek hozzá olyan erőforrásokhoz, amelyek csak egy adott virtuális hálózatról érhetők el. Az SSH nem használható például olyan virtuális géphez való Cloud Shell kapcsolódáshoz, amely csak privát IP-címmel rendelkezik, vagy a kubectl használatával csatlakozik egy Kubernetes-fürthöz, amely zárolta a hozzáférést. 
 
@@ -64,7 +62,7 @@ A standard Cloud Shellhoz hasonlóan a Cloud Shell virtuális hálózatban való
 ## <a name="virtual-network-deployment-limitations"></a>A virtuális hálózat központi telepítésére vonatkozó korlátozások
 * Az érintett további hálózati erőforrások miatt a virtuális hálózatban Cloud Shell elindítása általában lassabb, mint a normál Cloud Shell-munkamenet.
 
-* Az előzetes verzióban a virtuális hálózatok Cloud Shell kevesebb régiót támogatnak. Ez jelenleg csak a következőre korlátozódik: WestUS és WestCentralUS.
+* Jelenleg a közép-indiai régión kívüli Cloud Shell régiók is támogatottak. 
 
 * A [Azure Relay](../azure-relay/relay-what-is-it.md) nem ingyenes szolgáltatás, tekintse meg a [díjszabást](https://azure.microsoft.com/pricing/details/service-bus/). A Cloud Shell-forgatókönyvben minden rendszergazda számára egy hibrid kapcsolatot használ a Cloud Shell használatakor. A Cloud Shell munkamenet befejezése után a rendszer automatikusan leállítja a kapcsolatot.
 

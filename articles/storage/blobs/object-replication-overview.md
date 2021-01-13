@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549089"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178976"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektum-replikálás blokk-blobokhoz
 
@@ -89,6 +89,16 @@ A replikációs szabályok létrehozásakor alapértelmezés szerint csak a forr
 Egy vagy több szűrőt is megadhat egy replikációs szabály részeként a blokk Blobok előtag alapján történő szűréséhez. Egy előtag megadásakor a rendszer csak a forrás tárolóban lévő előtaggal egyező blobokat másolja a célhelyre.
 
 A forrás-és a cél tárolóknak is léteznie kell, mielőtt megadhatja őket egy szabályban. A replikációs szabályzat létrehozása után a céltároló csak olvashatóvá válik. A céltárolóba történő írásra tett kísérlet sikertelen lesz a következő hibakóddal: 409 (ütközés). Meghívhatja azonban a [blob szint beállítása](/rest/api/storageservices/set-blob-tier) műveletet a cél tárolóban lévő blobon az archív szintre való áthelyezéshez. Az archiválási szinttel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md#archive-access-tier).
+
+## <a name="replication-status"></a>A replikálás állapota
+
+A forrás fiókban megtekintheti a Blobok replikálási állapotát. További információ: [blob replikálási állapotának megkeresése](object-replication-configure.md#check-the-replication-status-of-a-blob).
+
+Ha a forrás fiókban található blob replikációs állapota hibát jelez, akkor vizsgálja meg a következő lehetséges okokat:
+
+- Győződjön meg arról, hogy az objektum-replikációs házirend konfigurálva van a célhelyen.
+- Ellenőrizze, hogy a cél tároló még létezik-e.
+- Ha a forrás blob egy ügyfél által megadott kulccsal lett titkosítva egy írási művelet részeként, akkor az objektum replikálása sikertelen lesz. Az ügyfél által biztosított kulcsokkal kapcsolatos további információkért lásd: [titkosítási kulcs megadása a blob Storage-hoz való kérelemben](encryption-customer-provided-keys.md).
 
 ## <a name="billing"></a>Számlázás
 

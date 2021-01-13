@@ -3,18 +3,20 @@ title: Alkalmazás közzététele – LUIS
 titleSuffix: Azure Cognitive Services
 description: Ha befejezte az aktív LUIS-alkalmazás létrehozását és tesztelését, tegye elérhetővé az ügyfélalkalmazás számára a végpontra való közzétételsel.
 services: cognitive-services
+author: aahill
 manager: nitinme
+ms.author: aahi
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.openlocfilehash: b72f1fd64cca0fa77ebc486670a512c5228e1146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/12/2021
+ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541475"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180030"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Aktív, betanított alkalmazás közzététele átmeneti vagy éles végponton
 
@@ -27,7 +29,7 @@ Ha befejezte az aktív LUIS-alkalmazás létrehozását, betanítását és tesz
 
     ![Közzététel gomb a fent, jobb oldali navigációs sávon](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-1. Válassza ki a közzétett előrejelzési végpont beállításait, majd válassza a **Közzététel**lehetőséget.
+1. Válassza ki a közzétett előrejelzési végpont beállításait, majd válassza a **Közzététel** lehetőséget.
 
     ![Válassza a közzétételi beállítások lehetőséget, majd válassza a közzététel gombot](./media/luis-how-to-publish-app/publish-pop-up.png)
 
@@ -42,7 +44,7 @@ Ha mindkét közzétételi tárolóhelyet használja, ez lehetővé teszi, hogy 
 
 ### <a name="publishing-regions"></a>Közzétételi régiók
 
-Az alkalmazás az **Manage**  ->  **[Azure-erőforrások](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** kezelése lapon a Luis-portálon hozzáadott, a Luis-előrejelzési végpont erőforrásaihoz társított összes régióra közzé lesz téve.
+Az alkalmazás az   ->  **[Azure-erőforrások](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** kezelése lapon a Luis-portálon hozzáadott, a Luis-előrejelzési végpont erőforrásaihoz társított összes régióra közzé lesz téve.
 
 Ha például egy, a [www.Luis.ai](https://www.luis.ai)-on létrehozott alkalmazáshoz létrehoz egy Luis-erőforrást két régióban, a **westus** és a **eastus**, és hozzáadja ezeket az alkalmazáshoz erőforrásként, az alkalmazás mindkét régióban közzé lesz téve. A LUIS régiókkal kapcsolatos további információkért lásd: [régiók](luis-reference-regions.md).
 
@@ -55,7 +57,7 @@ Ha például egy, a [www.Luis.ai](https://www.luis.ai)-on létrehozott alkalmaz�
 Miután kiválasztotta a tárolóhelyet, konfigurálja a közzétételi beállításokat a következőhöz:
 
 * Hangulatelemzés
-* [Helyesírás-javítás](luis-tutorial-bing-spellcheck.md) – v2 előrejelzési végpont
+* [Helyesírás-javítás](luis-tutorial-bing-spellcheck.md)
 * Beszéd alapozó
 
 A közzététel után ezek a beállítások a **kezelés** szakasz **közzétételi beállítások** lapján érhetők el. A beállításokat minden közzététel lehetőséggel módosíthatja. Ha megszakít egy közzétételt, a közzététel során végrehajtott módosítások is megszakadnak.
@@ -80,7 +82,32 @@ A JSON-végponti válaszról a [hangulat elemzése című témakörben](luis-ref
 
 ## <a name="spelling-correction"></a>Helyesírás-javítás
 
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+A v3 előrejelzési API mostantól támogatja a Bing helyesírási API-t. Az alkalmazáshoz helyesírás-ellenőrzést adhat, ha a kérések fejlécében a Bing keresési erőforrás kulcsát is tartalmazza. Meglévő Bing-erőforrást is használhat, ha már rendelkezik ilyennel, vagy [létrehozhat egy újat](https://portal.azure.com/#create/Microsoft.BingSearch) a funkció használatához. 
+
+|Fejléc kulcsa|Fejléc értéke|
+|--|--|
+|`mkt-bing-spell-check-key`|Az erőforrás **kulcsok és végpont** paneljén található kulcsok|
+
+Egy hibásan írt lekérdezésre vonatkozó előrejelzési kimeneti példa:
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
 
 A helyesírási javítások a LUIS-felhasználó teljes előrejelzése előtt történnek. A válaszban megtekintheti az eredeti szöveg összes módosítását, beleértve a helyesírást is.
 

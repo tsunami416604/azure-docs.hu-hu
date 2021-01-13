@@ -2,21 +2,24 @@
 title: Hatókör a bővítmény erőforrástípusok esetében
 description: Ismerteti, hogyan használható a hatókör tulajdonság a bővítmény típusú erőforrástípusok telepítésekor.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: bd468d31454c38bd314269243702d7df4f279a5e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 01/13/2021
+ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681581"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179979"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>Hatókör beállítása a bővítmény erőforrásaihoz az ARM-sablonokban
 
-A kiterjesztési erőforrások olyan erőforrások, amelyek egy másik erőforrást módosítanak. Például hozzárendelhet egy szerepkört egy erőforráshoz a hozzáférés korlátozásához. A szerepkör-hozzárendelés egy bővítmény típusú erőforrástípus.
+A kiterjesztési erőforrások olyan erőforrások, amelyek egy másik erőforrást módosítanak. Hozzárendelhet például egy szerepkört egy erőforráshoz. A szerepkör-hozzárendelés egy bővítmény típusú erőforrástípus.
 
 A bővítmények erőforrásainak teljes listáját lásd: [más erőforrások képességeit kiterjesztő erőforrástípusok](../management/extension-resource-types.md).
 
 Ez a cikk bemutatja, hogyan állíthatja be egy bővítmény erőforrástípus hatókörét Azure Resource Manager sablon (ARM-sablon) telepítésekor. Ismerteti a hatókör tulajdonságot, amely a bővítmény erőforrásaihoz érhető el az erőforrásokra való alkalmazáskor.
+
+> [!NOTE]
+> A hatókör tulajdonság csak a kiterjesztési erőforrástípusok esetében érhető el. Ha eltérő hatókört szeretne megadni egy olyan erőforrástípus számára, amely nem a bővítmény típusa, használjon beágyazott vagy csatolt központi telepítést. További információ: [erőforráscsoportok központi telepítése](deploy-to-resource-group.md), [előfizetés telepítése](deploy-to-subscription.md), [felügyeleti csoport telepítése](deploy-to-management-group.md)és [bérlői telepítések](deploy-to-tenant.md).
 
 ## <a name="apply-at-deployment-scope"></a>Alkalmazás a központi telepítés hatókörében
 

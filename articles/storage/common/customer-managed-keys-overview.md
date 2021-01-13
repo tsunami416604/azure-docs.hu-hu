@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9afce964652d2bedbe105a8a750a93d2f37eef85
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483283"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179031"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Ügyfél által felügyelt kulcsok az Azure Storage-titkosításhoz
 
@@ -78,7 +78,7 @@ Ha ügyfél által felügyelt kulcsokkal konfigurálja a titkosítást, két leh
 
     Ha a kulcs verziója explicit módon meg van adva, akkor manuálisan kell frissítenie a Storage-fiókot, hogy az új verzió létrehozásakor az új kulcs-verzió URI-JÁT használja. A következő témakörből megtudhatja, hogyan frissítheti a Storage-fiókot a kulcs új verziójának használatára: a [titkosítás konfigurálása az Azure Key Vault tárolt, ügyfél által felügyelt kulcsokkal](customer-managed-keys-configure-key-vault.md) , illetve a [titkosítás konfigurálása Azure Key Vault Managed HSM-ben (előzetes verzió) tárolt ügyfél által felügyelt kulcsokkal](customer-managed-keys-configure-key-vault-hsm.md).
 
-Az ügyfél által felügyelt kulcs verziószámának frissítése nem aktiválja a Storage-fiókban tárolt adattitkosítást. Nincs szükség további műveletre a felhasználótól.
+A kulcs verziójának frissítésekor a rendszer megváltoztatja a gyökérszintű titkosítási kulcs védelmét, de az Azure Storage-fiókban lévő adatai nem kerülnek újra titkosításra. Nincs szükség további műveletre a felhasználótól.
 
 > [!NOTE]
 > A kulcs elforgatásához hozzon létre egy új verziót a Key vaultban vagy a felügyelt HSM-ben a megfelelőségi szabályzatoknak megfelelően. Manuálisan is elforgathatja a kulcsot, vagy létrehozhat egy függvényt, amellyel elforgathatja azt egy ütemezett időpontban.
@@ -115,7 +115,7 @@ Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához h
 
 Az ügyfél által felügyelt kulcsok az Azure Managed Disks titkosításának kezelésére is használhatók. Az ügyfél által felügyelt kulcsok eltérően működnek a felügyelt lemezeken, mint az Azure Storage-erőforrások esetében. További információkért lásd: az Azure Managed [Disks szolgáltatás kiszolgálóoldali titkosítása](../../virtual-machines/disk-encryption.md) a Windows rendszerhez vagy az [Azure Managed Disks](../../virtual-machines/disk-encryption.md) for Linux szolgáltatás kiszolgálóoldali titkosítása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](storage-service-encryption.md)
 - [Titkosítás konfigurálása az Azure Key Vaultban tárolt, ügyfél által kezelt kulcsokkal](customer-managed-keys-configure-key-vault.md)

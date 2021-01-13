@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a5a44b9d27901fcd00f8813096de6bbae5f2310d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88796799"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179945"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Gyorsútmutató: Unity-minta üzembe helyezése a HoloLensben
 
@@ -48,7 +48,7 @@ Győződjön meg arról, hogy a hitelesítő adatai megfelelően vannak mentve a
 1. A „Quickstart” (Gyorsútmutató) projektnél lépjen a *Properties > Debugging* (Tulajdonságok > Hibakeresés) területre
     1. Győződjön meg arról, hogy a *Release* (Kiadás) konfiguráció aktív
     1. Állítsa a *Debugger to Launch* (Elindítandó hibakereső) értékét a **Remote Machine** (Távoli gép) értékre
-    1. Módosítsa a *Machine Name* (Gépnév) értékét **a HoloLens IP-címére**
+    1. A *számítógép nevének* módosítása a **HoloLens IP-** címére
 
 ## <a name="launch-the-sample-project"></a>A mintaprojekt elindítása
 

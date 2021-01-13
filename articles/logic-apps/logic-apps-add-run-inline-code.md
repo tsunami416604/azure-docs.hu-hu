@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 1736a1d22ccfb0f00061534d1c733ab72da4c7b0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922510"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179605"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Kódrészletek hozzáadása és futtatása beágyazott kód használatával Azure Logic Apps
 
@@ -31,7 +31,7 @@ Ha egy kódrészletet szeretne futtatni a logikai alkalmazásban, akkor a logika
   > [!NOTE]
   > `require()`Ezt a függvényt nem támogatja a beágyazott kód művelet a JavaScript futtatásához.
 
-Ez a művelet futtatja a kódrészletet, és visszaadja a kódrészletből származó kimenetet egy nevű tokenként `Result` . Ezt a tokent a logikai alkalmazás munkafolyamatában lévő további műveletekkel is használhatja. Más forgatókönyvek esetében, amelyekben létre szeretne hozni egy függvényt a kódhoz, hozzon létre [és hívjon fel egy Azure-függvényt](../logic-apps/logic-apps-azure-functions.md) a logikai alkalmazás helyett.
+Ez a művelet futtatja a kódrészletet, és visszaadja a kódrészletből származó kimenetet egy nevű tokenként `Result` . Ezt a tokent a logikai alkalmazás munkafolyamatában lévő további műveletekkel is használhatja. Más forgatókönyvek esetében, amikor egy függvényt szeretne létrehozni a kódhoz, próbálja meg létrehozni és meghívni [egy függvényt a Azure functions helyett](../logic-apps/logic-apps-azure-functions.md) a logikai alkalmazásban.
 
 Ebben a cikkben a logikai alkalmazás akkor aktiválódik, amikor új e-mail érkezik egy munkahelyi vagy iskolai fiókba. A kódrészlet kibontja és visszaadja az e-mail törzsében megjelenő e-mail-címeket.
 

@@ -13,21 +13,21 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07303a0b0b3007ade9adb90af7397855a5014cc0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056081"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179422"
 ---
-# <a name="manage-app-passwords-for-two-step-verification"></a>Alkalmazások jelszavainak kezelése kétlépéses ellenőrzéshez
+# <a name="manage-app-passwords-for-two-step-verification"></a>Alkalmazásjelszavak kezelése kétlépéses ellenőrzéshez
 
->[!Important]
+> [!Important]
 >Előfordulhat, hogy a rendszergazda nem teszi lehetővé az alkalmazás jelszavának használatát. Ha nem látja az **alkalmazás jelszavait** lehetőségként, azok nem érhetők el a szervezetben.
 
 Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
-- Automatikusan létrejönnek az alkalmazások jelszavai, és egy alkalmazásban egyszer kell létrehozni és beírni.
+- Az alkalmazás jelszavai automatikusan létrejönnek, és egy alkalmazásban egyszer kell létrehozni és beírni.
 
 - Felhasználónként legfeljebb 40 jelszó adható meg. Ha a korlát után megpróbál létrehozni egyet, a rendszer arra kéri, hogy töröljön egy meglévő jelszót, mielőtt az újat hozna létre.
 
@@ -52,21 +52,21 @@ Az alkalmazáshoz tartozó jelszavakat a kétfaktoros ellenőrzés használata a
 
 Az alkalmazáshoz tartozó jelszavakat a munkahelyi vagy iskolai fiókjának **további biztonsági ellenőrzés** oldaláról is létrehozhatja és törölheti.
 
-1. Jelentkezzen be a [további biztonsági ellenőrzés lapra](https://account.activedirectory.windowsazure.com/Proofup.aspx), majd válassza az **alkalmazás jelszavai**lehetőséget.
+1. Jelentkezzen be a [további biztonsági ellenőrzés lapra](https://account.activedirectory.windowsazure.com/Proofup.aspx), majd válassza az **alkalmazás jelszavai** lehetőséget.
 
     ![Az alkalmazás jelszavai lap kiemelve](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
 
-2. Válassza a **Létrehozás**lehetőséget, írja be annak az alkalmazásnak a nevét, amelyhez az alkalmazás jelszava szükséges, majd kattintson a **tovább**gombra.
+2. Válassza a **Létrehozás** lehetőséget, írja be annak az alkalmazásnak a nevét, amelyhez az alkalmazás jelszava szükséges, majd kattintson a **tovább** gombra.
 
     ![Alkalmazás-jelszavak létrehozása lap, amelynek a neve az alkalmazás, amelyhez jelszó szükséges](media/multi-factor-authentication-end-user-app-passwords/mfa-create-app-password-page.png)
 
-3. Másolja a jelszót az **alkalmazás jelszava** lapról, majd válassza a **Bezárás**lehetőséget.
+3. Másolja a jelszót az **alkalmazás jelszava** lapról, majd válassza a **Bezárás** lehetőséget.
 
     ![Az alkalmazás jelszava oldal a megadott alkalmazás jelszavával](media/multi-factor-authentication-end-user-app-passwords/mfa-your-app-password-page.png)
 
 4. Az **alkalmazás jelszavai** lapon győződjön meg arról, hogy az alkalmazás fel van sorolva.
 
-     ![Alkalmazás jelszavai oldal, új alkalmazás a listában](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+    ![Alkalmazás jelszavai oldal, új alkalmazás a listában](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
 
 5. Nyissa meg azt az alkalmazást, amelyet az alkalmazás jelszavának (például az Outlook 2010) számára hozott létre, majd illessze be az alkalmazás jelszavát, amikor a rendszer erre kéri. Ezt csak egyszer kell megtennie egy alkalmazásban.
 
@@ -74,9 +74,9 @@ Az alkalmazáshoz tartozó jelszavakat a munkahelyi vagy iskolai fiókjának **t
 
 1. Az **alkalmazás jelszavai** **lapon válassza a Törlés lehetőséget** a törölni kívánt alkalmazás jelszava mellett.
 
-   ![Alkalmazás jelszavának törlése](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+   ![Az alkalmazás jelszavainak törlését bemutató képernyőkép az alkalmazás jelszavai oldalon](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
 
-2. Az **Igen** gombra kattintva erősítse meg, hogy törölni kívánja a jelszót, majd kattintson a **Bezárás**gombra.
+2. Az **Igen** gombra kattintva erősítse meg, hogy törölni kívánja a jelszót, majd kattintson a **Bezárás** gombra.
 
     Az alkalmazás jelszava sikeresen törölve.
 
@@ -86,35 +86,35 @@ Ha kétlépéses ellenőrzést használ munkahelyi vagy iskolai fiókjával és 
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>Alkalmazás jelszavának létrehozása az Office 365-portál használatával
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, lépjen a [saját fiók lapra](https://portal.office.com), válassza a **biztonsági & adatvédelem**lehetőséget, majd bontsa ki a **további biztonsági ellenőrzés**elemet.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, lépjen a [saját fiók lapra](https://myaccount.microsoft.com), és válassza a **biztonsági adatok** elemet.
 
-    ![Kibővített további biztonsági ellenőrzési területeket bemutató Office-portál](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
+    ![A biztonsági adatok lapot bemutató Office-portál](media/multi-factor-authentication-end-user-app-passwords/mfa-security-info.png)
 
-2. Válassza ki azt a szöveget, amely az alkalmazás jelszavainak megadásához, az **alkalmazások jelszavainak** **létrehozásához és kezeléséhez** használható.
+2. Válassza a **metódus hozzáadása** lehetőséget, válassza ki az **alkalmazás jelszava** elemet a legördülő listából, majd kattintson a **Hozzáadás** gombra.
 
-    ![Az alkalmazás jelszavai lap kiemelve](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
+    ![Biztonsági adatok lap a metódus hozzáadása drowpdown-listával](media/multi-factor-authentication-end-user-app-passwords/mfa-add-method.png)
 
-3. Válassza a **Létrehozás**lehetőséget, írja be annak az alkalmazásnak a nevét, amelyhez az alkalmazás jelszava szükséges, majd kattintson a **tovább**gombra.
+3. Adja meg az alkalmazás jelszavának nevét, majd kattintson a **tovább** gombra.
 
-    ![Alkalmazás-jelszavak létrehozása lap, amelynek a neve az alkalmazás, amelyhez jelszó szükséges](media/multi-factor-authentication-end-user-app-passwords/mfa-create-app-password-page.png)
+    ![Alkalmazás-jelszavak létrehozása lap, az alkalmazás jelszavának nevével](media/multi-factor-authentication-end-user-app-passwords/mfa-enter-app-password-name.png)
 
-4. Másolja a jelszót az **alkalmazás jelszava** lapról, majd válassza a **Bezárás**lehetőséget.
+4. Másolja a jelszót az **alkalmazás jelszava** lapon, majd válassza a **kész** lehetőséget.
 
-    ![Az alkalmazás jelszava oldal a megadott alkalmazás jelszavával](media/multi-factor-authentication-end-user-app-passwords/mfa-your-app-password-page.png)
+    ![Alkalmazás jelszava lap a létrehozott új alkalmazás jelszavával](media/multi-factor-authentication-end-user-app-passwords/mfa-copy-app-password.png)
 
-5. Az **alkalmazás jelszavai** lapon győződjön meg arról, hogy az alkalmazás fel van sorolva.
+5. A **biztonsági adatok** lapon győződjön meg arról, hogy az alkalmazás jelszava szerepel a felsorolásban.
 
-     ![Alkalmazás jelszavai oldal, új alkalmazás a listában](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+    ![Biztonsági információk lap a listában szereplő új alkalmazás jelszavával](media/multi-factor-authentication-end-user-app-passwords/mfa-verify-app-password.png)  
 
-6. Nyissa meg azt az alkalmazást, amelyet az alkalmazás jelszavának (például az Outlook 2010) számára hozott létre, majd illessze be az alkalmazás jelszavát, amikor a rendszer erre kéri. Ezt csak egyszer kell megtennie egy alkalmazásban.
+6. Nyissa meg azt az alkalmazást, amelyet az alkalmazás jelszavának (például az Outlook 2016) számára hozott létre, majd illessze be az alkalmazás jelszavát, amikor a rendszer erre kéri. Ezt csak egyszer kell megtennie egy alkalmazásban.
 
-### <a name="to-delete-app-passwords-using-the-app-passwords-page"></a>Alkalmazások jelszavainak törlése az alkalmazás jelszavai oldalon
+### <a name="to-delete-app-passwords-using-the-security-info-page"></a>Alkalmazások jelszavainak törlése a biztonsági adatok lapról
 
-1. Az **alkalmazás jelszavai** **lapon válassza a Törlés lehetőséget** a törölni kívánt alkalmazás jelszava mellett.
+1. A **biztonsági adatok** **lapon válassza a Törlés lehetőséget** a törölni kívánt alkalmazás jelszava mellett.
 
-   ![Alkalmazás jelszavának törlése](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+   ![A biztonsági adatok lapon található alkalmazás jelszavának törlését bemutató képernyőkép](media/multi-factor-authentication-end-user-app-passwords/mfa-delete-app-password.png)
 
-2. Válassza az **Igen** lehetőséget a megerősítés mezőben, majd kattintson a **Bezárás**gombra.
+2. A megerősítés mezőben kattintson az **OK gombra** .
 
     Az alkalmazás jelszava sikeresen törölve.
 

@@ -1,19 +1,19 @@
 ---
 title: Integrálás az Azure Mapsszel
 titleSuffix: Azure Digital Twins
-description: Megtudhatja, hogyan hozhat létre olyan Azure-függvényt, amely a Twin gráf és az Azure Digital Twins-értesítések használatával frissítheti Azure Maps beltéri térképeit.
+description: Tekintse meg, hogyan használható a Azure Functions egy olyan függvény létrehozásához, amely a Twin Graph és az Azure digitális Twins értesítéseivel frissítheti Azure Maps beltéri térképeit.
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 7b2039f8b1aebef65112067e4fd9184777192015
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e582415d9a83dc506b77d506f3e0803002129a07
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051581"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180047"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Maps beltéri Térkép frissítése az Azure digitális Twins használatával
 
@@ -22,7 +22,7 @@ Ez a cikk végigvezeti az Azure Digital Twins-adatok használatához szükséges
 Ez a útmutató a következő módon fog kiterjedni:
 
 1. Az Azure Digital Twins-példány konfigurálása két frissítési esemény küldésére a [Azure functions](../azure-functions/functions-overview.md)függvényében.
-2. Azure-függvény létrehozása Azure Maps Indoor Maps szolgáltatás stateset frissítéséhez.
+2. Függvény létrehozása Azure Maps beltéri térképek szolgáltatás stateset frissítéséhez.
 3. A Maps ID és a Feature stateset AZONOSÍTÓjának tárolása az Azure Digital Twins gráfban.
 
 ### <a name="prerequisites"></a>Előfeltételek
@@ -41,7 +41,7 @@ Az alábbi képen látható, hogy az oktatóanyag Indoor Maps integrációs elem
 
 ## <a name="create-a-function-to-update-a-map-when-twins-update"></a>Függvény létrehozása Térkép frissítéséhez az ikrek frissítésekor
 
-Először létre kell hoznia egy útvonalat az Azure Digital Ikrekben, hogy az összes, az Event Grid-témakörbe tartozó eseményt továbbítsa. Ezután egy Azure-függvény használatával olvassa be ezeket a frissítési üzeneteket, és frissítse a szolgáltatás stateset a Azure Mapsban. 
+Először létre kell hoznia egy útvonalat az Azure Digital Ikrekben, hogy az összes, az Event Grid-témakörbe tartozó eseményt továbbítsa. Ezután egy függvény használatával olvassa be ezeket a frissítési üzeneteket, és frissítse a szolgáltatások stateset a Azure Mapsban. 
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Útvonal és szűrő létrehozása a kettős frissítési értesítésekhez
 
@@ -70,7 +70,7 @@ Ez a minta közvetlenül a IoT-eszköz helyett a Twin szobaból olvassa be, amel
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
-## <a name="create-an-azure-function-to-update-maps"></a>Azure-függvény létrehozása a Maps frissítéséhez
+## <a name="create-a-function-to-update-maps"></a>Leképezést frissítő függvény létrehozása
 
 Létre fog hozni egy Event Grid által aktivált függvényt a Function alkalmazásban a teljes körű oktatóanyagban ([*oktatóanyag: végpontok közötti megoldás összekapcsolása*](./tutorial-end-to-end.md)). Ez a függvény kicsomagolja ezeket az értesítéseket, és frissítéseket küld egy Azure Maps szolgáltatás stateset egy szoba hőmérsékletének frissítéséhez. 
 
@@ -109,7 +109,7 @@ Az adott példához tartozó megoldás a legfelső szintű helyek frissítését
 
 A topológia konfigurációjától függően a három attribútumot a Térkép részletességéhez képest különböző szinteken fogja tudni tárolni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokat követve további információkat olvashat az ikrek gráf információinak kezelésével, frissítésével és lekérésével kapcsolatban:
 

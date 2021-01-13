@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132477"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179163"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Biztonsági javaslatok a blob Storage-hoz
 
@@ -31,11 +31,11 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 |-|----|--|
 | A Azure Resource Manager telepítési modell használata | Hozzon létre új Storage-fiókokat a Azure Resource Manager üzembe helyezési modellel a fontos biztonsági fejlesztésekhez, beleértve a kiváló Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) és a naplózást, a Resource Manager-alapú üzembe helyezést és irányítást, a felügyelt identitásokhoz való hozzáférést, a Secrets Azure Key Vault elérését, valamint az Azure AD-alapú hitelesítést, valamint az Azure Storage-adatok és- Ha lehetséges, telepítse át a klasszikus üzemi modellt használó meglévő Storage-fiókokat a Azure Resource Manager használatára. További információ a Azure Resource Managerről: [Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md). | - |
 | Az Azure Defender engedélyezése az összes Storage-fiókhoz | Az Azure Defender for Azure Storage egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások Azure Security Center, ha a tevékenységben észlelt rendellenességek bekövetkeznek, és e-mailben is elküldik az előfizetési rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálására és elhárítására vonatkozó javaslatokkal kapcsolatban. További információ: az [Azure Defender konfigurálása az Azure Storage](../common/azure-defender-storage-configure.md)-hoz. | [Igen](../../security-center/security-center-sql-service-recommendations.md) |
-| A Soft delete bekapcsolása blobokhoz | A Blobok helyreállítható törlésével a blob-adatok helyreállíthatók a törlés után. A Blobok Soft delete szolgáltatásával kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](./soft-delete-blob-overview.md)ismertető témakört. | - |
+| Áltörlés bekapcsolása a blobokhoz | A Blobok helyreállítható törlésével a blob-adatok helyreállíthatók a törlés után. A Blobok Soft delete szolgáltatásával kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](./soft-delete-blob-overview.md)ismertető témakört. | - |
 | A tárolók helyreállítható törlésének bekapcsolása | A tárolók helyreállítható törlése lehetővé teszi a tárolók helyreállítását a törlése után. A tárolók Soft delete szolgáltatásával kapcsolatos további információkért lásd: [tárolók helyreállítható törlése (előzetes verzió)](./soft-delete-container-overview.md). | - |
 | Storage-fiók zárolása a fiókok véletlen törlésének megakadályozása érdekében | Zárolhat egy Azure Resource Manager erőforrást, például egy előfizetést, egy erőforráscsoportot vagy egy Storage-fiókot, hogy megakadályozza a szervezet más felhasználói számára a véletlen törlést vagy módosítást. A Storage-fiók zárolása nem akadályozza meg, hogy a fiókban lévő adatok ne legyenek törölve. Ez csak a fiók törlését akadályozza meg. További információ: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
 | Üzleti szempontból kritikus fontosságú adathalmazok tárolása a nem változtatható blobokban | A jogcímek és az időalapú adatmegőrzési szabályzatok konfigurálása a blob-adatok féreg általi tárolására (egyszer írható, olvasható) állapot. A immutably tárolt Blobok olvashatók, de a megőrzési időtartam időtartama alatt nem módosíthatók és nem törölhetők. További információ: [az üzleti szempontból kritikus fontosságú Blobok adatainak tárolása a](storage-blob-immutable-storage.md)nem módosítható tárolóval. | - |
-| Biztonságos átvitel (HTTPS) szükséges a Storage-fiókhoz | ??? | - |
+| Biztonságos átvitel (HTTPS) szükséges a Storage-fiókhoz | Ha biztonságos átvitelre van szükség egy Storage-fiókhoz, a Storage-fiókra irányuló összes kérelmet HTTPS-kapcsolaton keresztül kell elvégezni. A HTTP-n keresztül küldött kérelmeket a rendszer elutasítja. A Microsoft azt javasolja, hogy minden Storage-fiókhoz mindig biztonságos átvitelt igényeljen. További információ: [biztonságos átvitel megkövetelése a biztonságos kapcsolatok biztosításához](../common/storage-require-secure-transfer.md). | - |
 | Közös hozzáférésű aláírási (SAS-) tokenek korlátozása csak HTTPS-kapcsolatokra | HTTPS megkövetelése, ha az ügyfél SAS-jogkivonattal fér hozzá a blob-adatforgalomhoz, segít csökkenteni a lehallgatás kockázatát. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
@@ -53,7 +53,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Ha egy szolgáltatás SAS-je nem egy tárolt hozzáférési szabályzathoz van társítva, akkor a lejárati időt állítsa egy órára vagy kevesebbre. | Nem lehet visszavonni egy olyan szolgáltatáshoz tartozó SAS-t, amely nincs hozzárendelve egy tárolt hozzáférési szabályzathoz. Emiatt a lejárati időt úgy kell korlátozni, hogy az SAS egy órán vagy kevesebb ideig érvényes legyen. | - |
 | Névtelen nyilvános olvasási hozzáférés letiltása a tárolók és a Blobok számára | A névtelen nyilvános olvasási hozzáférés egy tárolóhoz és a Blobok csak olvasási hozzáférést biztosítanak ezekhez az erőforrásokhoz bármely ügyfél számára. Kerülje a nyilvános olvasási hozzáférés engedélyezését, ha a forgatókönyv megköveteli. Ha meg szeretné tudni, hogyan tilthatja le a névtelen nyilvános hozzáférést egy Storage-fiókhoz, olvassa el a [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára című témakört.  | - |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|

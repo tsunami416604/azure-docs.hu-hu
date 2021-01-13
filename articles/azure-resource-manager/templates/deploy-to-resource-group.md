@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése erőforráscsoportok számára
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni egy Azure Resource Manager sablonban. Bemutatja, hogyan célozhat meg egynél több erőforráscsoportot.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 9d0bec51fa55ee377eb647a11fb554ec3b81e9eb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: 8fe503cc95d71772c07427438b17e2ff0d4620a7
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807720"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178891"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>Erőforráscsoportok üzembe helyezése ARM-sablonokkal
 
@@ -85,7 +85,8 @@ Egy erőforráscsoport telepítésekor az erőforrásokat az alábbiakra lehet t
 * más erőforráscsoportok ugyanabban az előfizetésben vagy más előfizetésben
 * bármely előfizetés a bérlőn
 * az erőforráscsoport bérlője
-* a [bővítmény erőforrásai](scope-extension-resources.md) alkalmazhatók az erőforrásokra
+
+A [kiterjesztési erőforrás](scope-extension-resources.md) hatóköre olyan cél lehet, amely eltér a telepítési céltól.
 
 A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
 
@@ -312,6 +313,6 @@ Egy erőforráscsoport-telepítésből átválthat egy előfizetés szintjére, 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Security Center munkaterület-beállításainak központi telepítésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings.js](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).

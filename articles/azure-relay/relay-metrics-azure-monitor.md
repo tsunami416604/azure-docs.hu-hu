@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Az
 services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5fcc0f820983da388d808cadf8ce64a555e8ef0a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f39019dc092740c166798a7f85d5bdba686adbf4
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000181"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179962"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitor Azure Relay metrikák 
 Azure Relay mérőszámok az Azure-előfizetésében lévő erőforrások állapotát adják meg. A metrikai adatok gazdag készletével felmérhető a továbbítási erőforrások általános állapota, nem csak a névtér szintjén, hanem az entitás szintjén is. Ezek a statisztikák fontosak lehetnek, mivel segítenek a Azure Relay állapotának figyelésében. A metrikák az Azure-támogatáshoz való kapcsolódás nélkül is segíthetnek a hibák elhárításában.
@@ -31,7 +31,7 @@ A metrikák a [Azure Portalban](https://portal.azure.com)is megfigyelhetők. Az 
 
 ![A "figyelő-metrikák (előzetes verzió)" címet viselő oldal megjeleníti az elmúlt 30 napban használt memóriahasználat grafikonját.][1]
 
-A metrikákat közvetlenül a névtér használatával is elérheti. Ehhez válassza ki a névteret, majd kattintson a * * mérőszámok * * elemre. 
+A metrikákat közvetlenül a névtér használatával is elérheti. Ehhez válassza ki a névteret, majd kattintson a **metrikák** elemre. 
 
 A dimenziókat támogató metrikák esetében a kívánt dimenzió értékkel kell szűrnie.
 
@@ -77,7 +77,7 @@ A Azure Relay a Azure Monitor metrikáinak következő dimenzióit támogatja. N
 | ------------------- | ----------------- |
 |EntityName| Azure Relay támogatja az üzenetküldési entitásokat a névtérben.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd az [Azure monitoring áttekintése](../azure-monitor/overview.md)című témakört.
 

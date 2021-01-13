@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953576"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178942"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>A telefonos regisztráció és a bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2C
 
@@ -39,7 +39,7 @@ A telefonos regisztrációt és bejelentkezést követően a felhasználó az el
 >
 > *&lt;INSERT: az adatvédelmi nyilatkozatra mutató hivatkozás&gt;*<br/>*&lt;INSERT: a szolgáltatási feltételekre mutató hivatkozás&gt;*
 
-A saját belefoglalási információinak hozzáadásához szabja testre a következő mintát, és foglalja bele azt a LocalizedResources, amelyet az önérvényesített oldal a megjelenítési vezérlőelemmel (Phone-Email-Base.xml a telefonos regisztráció & bejelentkezési indító csomagjában) használt.
+A saját belefoglalási információinak hozzáadásához szabja testre a következő mintát, és foglalja bele azt a LocalizedResources, amelyet az önérvényesített oldal a megjelenítési vezérlőelemmel (a [telefonos regisztráció és a bejelentkezési indító csomag][starter-pack-phone] *Phone_Email_Base.xml* fájljával) használ.
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        

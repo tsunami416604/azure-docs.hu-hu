@@ -1,15 +1,15 @@
 ---
 title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
 description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
-ms.date: 01/11/2021
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 424cc9db01f1eb6300c2915795f3e2c37b34449f
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: d8e0621f88455a68ad0ee1b236f6b423c9d54b52
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071051"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179894"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -64,6 +64,10 @@ Tegyük fel, hogy a "myVM" használata a későbbi ellenőrzések során tovább
 Egy kis idő elteltével a "myVM" használata visszakerül a normál értékre (a küszöbérték alá esik). A riasztási szabály két alkalommal figyeli a feltételt, hogy elküldjék a megoldott értesítéseket. A riasztási szabály elküld egy megoldott/inaktivált üzenetet, ha a riasztási feltétel nem teljesül három egymást követő időszakon belül a zaj csökkentése érdekében.
 
 Mivel a megoldott értesítést webhookok vagy e-mailek útján küldi el a rendszer, a riasztási példány állapota (figyelő állapota) a Azure Portalban is megoldottra van állítva.
+
+> [!NOTE]
+>
+> Ha egy riasztási szabály több feltételt figyel, akkor a rendszer egy kilőtt riasztást fog feloldani, ha a feltételek legalább egyike már nem teljesül három egymást követő időszakban.
 
 ### <a name="using-dimensions"></a>Méretek használata
 
@@ -135,7 +139,7 @@ Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy
 
 Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén támogatott a következő szolgáltatásokhoz a következő Azure-felhőkben:
 
-| Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
+| Szolgáltatás | Nyilvános Azure | Government | Kína |
 |:--------|:--------|:--------|:--------|
 | Virtuális gépek<sup>1</sup>  | **Igen** | **Igen** | No |
 | SQL Server-adatbázisok | **Igen** | **Igen** | **Igen** |
