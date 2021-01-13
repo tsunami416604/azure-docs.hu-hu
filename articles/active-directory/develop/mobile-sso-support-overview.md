@@ -11,16 +11,18 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 4f0588667df6acb11a43e8c3469c67f65ed3cdd9
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064968"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165178"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Az egyszeri bejelentkezés és az alkalmazás-védelmi szabályzatok támogatása a fejleszthető mobil alkalmazásokban
 
 Az egyszeri bejelentkezés (SSO) a Microsoft Identity platform és a Azure Active Directory egyik legfontosabb ajánlata, amely egyszerű és biztonságos bejelentkezéseket biztosít az alkalmazás felhasználói számára. Emellett az alkalmazás-védelmi szabályzatok (alkalmazás) lehetővé teszik a kulcsfontosságú biztonsági házirendek támogatását, amelyek megőrzik a felhasználó adatait. Ezek a funkciók együtt lehetővé teszik a biztonságos felhasználói bejelentkezéseket és az alkalmazás adatai felügyeletét.
+
+> [!VIDEO https://www.youtube.com/embed/JpeMeTjQJ04]
 
 Ez a cikk leírja, hogy az SSO és az alkalmazás miért fontos, és magas szintű útmutatást nyújt az ezeket a szolgáltatásokat támogató mobileszközök létrehozásához. Ez a telefon-és Tablet-alkalmazásokra is vonatkozik. Ha Ön rendszergazda, aki a szervezet Azure Active Directory bérlője számára szeretne SSO-t telepíteni, tekintse meg az [egyszeri bejelentkezéses telepítés megtervezésére vonatkozó útmutatást](../manage-apps/plan-sso-deployment.md) .
 

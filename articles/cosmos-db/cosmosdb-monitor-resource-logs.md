@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: 82f29fa89373c64e424d5f42035d7edb1bbca18c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: bfc17af99a435c7c17f308f913346045aa22b18d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044645"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165552"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB adatai figyelése az Azure diagnosztikai beállításainak használatával
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -21,7 +21,7 @@ Az Azure diagnosztikai beállításai az erőforrás-naplók összegyűjtésére
 
 A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a rendszer, míg az erőforrás-naplók összegyűjtéséhez és a Azure Monitoron kívüli továbbításához létre kell hoznia egy diagnosztikai beállítást. Az Azure Cosmos-fiókok diagnosztikai beállításainak bekapcsolásához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
 
 1. Navigáljon az Azure Cosmos-fiókjához. Nyissa meg a **diagnosztikai beállítások** ablaktáblát, majd kattintson a **diagnosztikai beállítás hozzáadása** lehetőségre.
 
@@ -35,26 +35,54 @@ A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a ren
 
  * **DataPlaneRequests**: válassza ezt a lehetőséget, ha a háttérbeli kérelmeket naplózni szeretné az összes API-ra, beleértve az SQL-, Graph-, MongoDB-, Cassandra-és Table API-fiókokat Azure Cosmos db. A fontos tulajdonságok a következők:,,,, `Requestcharge` `statusCode` `clientIPaddress` `partitionID` `resourceTokenPermissionId` és `resourceTokenPermissionMode` .
 
-    ```json
+   ```json
     { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372", "resourceTokenPermissionId": "perm-prescriber-app","resourceTokenPermissionMode": "all", "resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
-    ```
+   ```
+   
+   A következő lekérdezéssel kérheti le az adatsík-kérelmeknek megfelelő naplókat:
+  
+   ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+   ```
 
 * **MongoRequests**: ezzel a beállítással a felhasználó által kezdeményezett kérelmeket naplózhatja az előtérből a MongoDB API-ra irányuló Azure Cosmos db kérések kiszolgálásához. Ez a napló típusa más API-fiókok esetében nem érhető el. A fontos tulajdonságok a következők: `Requestcharge` , `opCode` . Ha engedélyezi a MongoRequests a diagnosztikai naplókban, ügyeljen arra, hogy kikapcsolja a DataPlaneRequests. Az API-ra vonatkozó minden kérelem esetében megjelenik egy napló.
 
     ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
+  
+  A következő lekérdezéssel kérheti le a MongoDB-kérelmeknek megfelelő naplókat:
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="MongoRequests"
+  ```
 
 * **CassandraRequests**: ezzel a beállítással a felhasználó által kezdeményezett kérelmeket naplózhatja az előtérből, hogy a kérelmeket a CASSANDRA Azure Cosmos db API-jával kézbesítse. Ez a napló típusa más API-fiókok esetében nem érhető el. A legfontosabb tulajdonságok a következők: `operationName` , `requestCharge` `piiCommandText` . Ha engedélyezi a CassandraRequests a diagnosztikai naplókban, ügyeljen arra, hogy kikapcsolja a DataPlaneRequests. Az API-ra vonatkozó minden kérelem esetében megjelenik egy napló.
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
    ```
+   
+  Használja a következő lekérdezést a Cassandra-kérelmeknek megfelelő naplók beszerzéséhez:
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="CassandraRequests"
+  ```
 
 * **GremlinRequests**: ezzel a beállítással a felhasználó által kezdeményezett kérelmeket naplózhatja az előtérből a Gremlin API-ra irányuló Azure Cosmos db kérések kiszolgálásához. Ez a napló típusa más API-fiókok esetében nem érhető el. A fontos tulajdonságok a következők: `operationName` és `requestCharge` . Ha engedélyezi a GremlinRequests a diagnosztikai naplókban, ügyeljen arra, hogy kikapcsolja a DataPlaneRequests. Az API-ra vonatkozó minden kérelem esetében megjelenik egy napló.
 
   ```json
   { "time": "2021-01-06T19:36:58.2554534Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "GremlinRequests", "operationName": "eval", "properties": {"activityId": "b16bd876-0e5c-4448-90d1-7f3134c6b5ff", "errorCode": "200", "duration": "9.6036", "requestCharge": "9.059999999999999", "databaseName": "GraphDemoDatabase", "collectionName": "GraphDemoContainer", "authorizationTokenType": "PrimaryMasterKey", "address": "98.225.2.189", "estimatedDelayFromRateLimitingInMilliseconds": "0", "retriedDueToRateLimiting": "False", "region": "Australia East", "requestLength": "266", "responseLength": "364", "userAgent": "<empty>"}}
+  ```
+  
+  A következő lekérdezéssel kérheti le a Gremlin-kérelmeknek megfelelő naplókat:
+  
+  ```kusto
+   AzureDiagnostics 
+   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="GremlinRequests"
   ```
 
 * **QueryRuntimeStatistics**: válassza ezt a lehetőséget a végrehajtott lekérdezési szöveg naplózásához. Ez a naplózási típus csak az SQL API-fiókok esetében érhető el.
@@ -245,7 +273,7 @@ A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használa
    | summarize by OperationName 
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Cosmos DB Azure Monitor](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
 * [A Azure Cosmos DB metrikáinak monitorozása és hibakeresése](use-metrics.md)

@@ -7,12 +7,12 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: 577bcc70633fd2a9f47dd0c95d98b729a1326647
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: de7bdc22b4bfdf9ef5865b1b601b32672eb868d1
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98146506"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165127"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>Gyors útmutató: az Azure cache használata a go-Redis
 
@@ -62,7 +62,9 @@ if err != nil {
 
 Ha a kapcsolódás sikeres, a [http-kezelők](https://golang.org/pkg/net/http/#HandleFunc) a kezelésre `POST` és `GET` a működésre vannak KONFIGURÁLVA, és a HTTP-kiszolgáló elindult. 
 
+> [!NOTE] 
 > a [gorilla mux könyvtára](https://github.com/gorilla/mux) az útválasztáshoz használatos (bár ez nem feltétlenül szükséges, és a szabványos függvénytár használatával a minta alkalmazáshoz).
+>
 
 ```go
 uh := userHandler{client: client}

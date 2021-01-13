@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 915b56e9a9340920e99f4d3d4de6da4c39233eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 713ec3a4020434fa73aad2e04676129cf43853be
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014803"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165841"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>A Microsoft Azure Active Directory Sync és az Azure Active Directory Sync frissítése
-Azure AD Connect a legjobb módszer a helyszíni címtár és az Azure AD és a Microsoft 365 összekapcsolására. Ez nagyszerű alkalom arra, hogy Azure AD Connectre frissítsen a Windows Azure Active Directory Sync (az rSync) vagy a Azure AD-szinkronizáló, mivel ezek az eszközök már elavultak, és már nem támogatottak a 2017. április 13-án.
+Azure AD Connect a legjobb módszer a helyszíni címtár és az Azure AD és a Microsoft 365 összekapcsolására. Ez nagyszerű alkalom arra, hogy a Windows Azure Active Directory Sync (AADSync) vagy a Azure AD-szinkronizáló () eszközről Azure AD Connect frissítsen, mivel ezek az eszközök már elavultak, és a továbbiakban nem támogatottak a 2017. április 13-án.
 
 A két, elavult identitás-szinkronizáló eszköz az egyerdős ügyfelek (például az rSync), valamint a többerdős és más haladó ügyfelek (Azure AD-szinkronizáló) számára lett felkínálva. Ezeket a régebbi eszközöket egyetlen, az összes forgatókönyvhöz elérhető megoldás váltotta fel: Azure AD Connect. Új funkciókat, funkció-fejlesztéseket és új forgatókönyvek támogatását kínálja. Ha továbbra is szinkronizálni szeretné a helyszíni identitás adatait az Azure AD-val és a Microsoft 365ával, javasoljuk, hogy frissítsen a Azure AD Connectra. A Microsoft nem garantálja, hogy ezek a régebbi verziók 2017. december 31-ig működnek.
 
@@ -44,7 +44,7 @@ A Azure AD Connect a következő: az rSync és a Azure AD-szinkronizáló utódj
 ## <a name="how-to-transition-to-azure-ad-connect"></a>Áttérés Azure AD Connectre
 Ha a (z)-et futtatja, kétféleképpen frissítheti a szolgáltatást: helyben történő frissítés és párhuzamos üzembe helyezés. A legtöbb ügyfél számára ajánlott helyben történő frissítés, és ha a legutóbbi operációs rendszer, és kevesebb mint 50 000 objektum van. Más esetekben javasolt egy párhuzamos üzembe helyezést végezni, ahol a rendszer áthelyezi az rSync konfigurációját egy Azure AD Connect rendszert futtató új kiszolgálóra.
 
-| Megoldás | Forgatókönyv |
+| Megoldás | Használati eset |
 | --- | --- |
 | [Frissítés a DirSync szolgáltatásról](how-to-dirsync-upgrade-get-started.md) |<li>Ha már fut egy már meglévő, az rSync-kiszolgálóval.</li> |
 | [Frissítés Azure AD-szinkronizálóról](how-to-upgrade-previous-version.md) |<li>Ha Azure AD-szinkronizáló.</li> |

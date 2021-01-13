@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a2d4cec57eb6ac23c191e504c305c2c6d11268ac
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591055"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165002"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD Application Proxy-összekötők ismertetése
 
@@ -25,7 +25,7 @@ Az összekötők teszik elérhetővé az Azure AD Application Proxy. Egyszerűen
 
 ## <a name="what-is-an-application-proxy-connector"></a>Mi az alkalmazásproxy-összekötő?
 
-Az összekötők olyan könnyű ügynökök, amelyek a helyszínen üzemelnek, és elősegítik a kimenő kapcsolódást az alkalmazásproxy szolgáltatáshoz. Az összekötőket olyan Windows-kiszolgálóra kell telepíteni, amely hozzáfér a háttérbeli alkalmazáshoz. Összekötő csoportokba rendezheti az összekötőket, és az egyes csoportokkal az egyes alkalmazások forgalmát is kezelheti.
+Az összekötők olyan könnyű ügynökök, amelyek a helyszínen üzemelnek, és elősegítik a kimenő kapcsolódást az alkalmazásproxy szolgáltatáshoz. Az összekötőket olyan Windows-kiszolgálóra kell telepíteni, amely hozzáfér a háttérbeli alkalmazáshoz. Összekötő csoportokba rendezheti az összekötőket, és az egyes csoportokkal az egyes alkalmazások forgalmát is kezelheti. További információk az alkalmazásproxy és az alkalmazásproxy-architektúra teherbírást jelölő táblával megjelenítéséről: [Azure ad Application proxy használata helyszíni alkalmazások közzétételéhez távoli felhasználók](what-is-application-proxy.md#application-proxy-connectors) számára
 
 ## <a name="requirements-and-deployment"></a>Követelmények és központi telepítés
 

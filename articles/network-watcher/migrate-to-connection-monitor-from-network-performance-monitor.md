@@ -12,21 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 3eb456dad2836bed55c45e7be9e898fdf72ac4d2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 59e266274d6b65182ad63513ecf9bf3b5ab95490
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017935"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164838"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrálás a Network Performance Monitorről a kapcsolódási figyelőbe
 
 Network Performance Monitor (NPM) teszteit áttelepítheti az új, továbbfejlesztett kapcsolódási figyelőre egyetlen kattintással és nulla állásidővel. További információ az előnyökről: a [kapcsolódási figyelő](./connection-monitor-overview.md).
 
-
->[!NOTE]
-> A kapcsolódási figyelő csak a szolgáltatás-kapcsolati figyelőből származó teszteket lehet áttelepíteni.
->
 
 ## <a name="key-points-to-note"></a>Jegyezze fel a legfontosabb pontokat
 
@@ -52,7 +48,7 @@ A tesztek Network Performance Monitorról a következőre történő áttelepít
 
     :::image type="content" source="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png" alt-text="Tesztek migrálása Network Performance Monitorról a kapcsolódási figyelőbe" lightbox="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png":::
     
-1. A legördülő listában válassza ki az előfizetést és a munkaterületet, majd válassza ki az áttelepíteni kívánt NPM szolgáltatást. Jelenleg csak a Service connectivity figyelőből lehet áttelepíteni a teszteket.  
+1. A legördülő listában válassza ki az előfizetést és a munkaterületet, majd válassza ki az áttelepíteni kívánt NPM szolgáltatást. 
 1. Az **Importálás** gombra kattintva áttelepítheti a teszteket.
 
 Az áttelepítés megkezdése után a következő módosítások lépnek érvénybe: 
@@ -71,8 +67,8 @@ Az áttelepítés után ügyeljen a következőre:
 * Telepítse át a külső integrációkat a ConnectionMonitor_CL táblába. A külső integrációk példái a Power BI-és Grafana található irányítópultok, valamint a biztonsági információkkal és az Event Management-(SIEM-) rendszerekkel való integrációk.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódási Figyelőről további információt a következő témakörben talál:
-* [Áttelepítés a kapcsolódási Figyelőről a kapcsolódási figyelőre](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
+* [Migrálás a kapcsolódási figyelőből (klasszikus) a kapcsolódási figyelőbe](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [Csatlakozáskezelő létrehozása a Azure Portal használatával](./connection-monitor-create-using-portal.md)

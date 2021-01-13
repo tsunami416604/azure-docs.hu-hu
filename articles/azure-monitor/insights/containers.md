@@ -3,15 +3,15 @@ title: Tároló-figyelési megoldás a Azure Monitorban | Microsoft Docs
 description: A Azure Monitor tároló-figyelési megoldás segítségével egyetlen helyen tekintheti meg és kezelheti a Docker-és a Windows-tároló gazdagépeit.
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/06/2020
-ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 483113fc508800eb126ee39f146c1fa34e5dba5e
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145684"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165705"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Tároló-figyelési megoldás a Azure Monitor
 
@@ -513,11 +513,11 @@ A Windows és a Hyper-V tárolók figyelésének engedélyezéséhez telepítse 
 
 A Service Fabricon futó Windows-tárolók figyelésére van lehetőség. A Service Fabric azonban jelenleg csak [Az Azure-ban futó virtuális gépek](../learn/quick-collect-azurevm.md) és a helyszíni [környezetben Windows rendszert futtató számítógépek](../platform/agent-windows.md) támogatottak.
 
-Ellenőrizheti, hogy a tároló-figyelési megoldás megfelelően van-e beállítva a Windows rendszerhez. Keresse meg a *ContainerManagement.xxx* , és ellenőrizze, hogy a felügyeleti csomag megfelelően lett-e letöltve. A fájloknak a C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs mappában kell lenniük.
+Ellenőrizheti, hogy a tároló-figyelési megoldás megfelelően van-e beállítva a Windows rendszerhez. Keresse meg a *ContainerManagement.xxx*, és ellenőrizze, hogy a felügyeleti csomag megfelelően lett-e letöltve. A fájloknak a C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs mappában kell lenniük.
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 
-A Azure Portal navigáljon a *Solutions Galleryhoz* , és adja hozzá a **tároló-figyelési megoldást** . Ha Windows-ügynököket használ, a következő felügyeleti csomagot kell telepítenie minden olyan számítógépre, amelyre ügynök van telepítve a megoldás hozzáadásakor. A felügyeleti csomaghoz nincs szükség konfigurációra vagy karbantartásra.
+A Azure Portal navigáljon a *Solutions Galleryhoz* , és adja hozzá a **tároló-figyelési megoldást**. Ha Windows-ügynököket használ, a következő felügyeleti csomagot kell telepítenie minden olyan számítógépre, amelyre ügynök van telepítve a megoldás hozzáadásakor. A felügyeleti csomaghoz nincs szükség konfigurációra vagy karbantartásra.
 
 - *ContainerManagement.xxx* telepítve a C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs
 

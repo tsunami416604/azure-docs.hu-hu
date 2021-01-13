@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93ac8cd3e462c244840a5ed569d685a9d67fa6c2
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457907"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165875"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Ajánlott eljárások kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -25,9 +25,9 @@ Ebben a cikkben az ajánlott eljárások gyűjteményét találja a kiszolgáló
 
 A kiszolgáló nélküli SQL-készlet lehetővé teszi a fájlok lekérdezését az Azure Storage-fiókokban. Nem rendelkezik helyi tárolási vagy betöltési képességekkel. Tehát az összes olyan fájl, amelyet a lekérdezés a kiszolgáló nélküli SQL-készleten kívülre mutat. A fájlok tárterületről való olvasásával kapcsolatos minden művelet hatással lehet a lekérdezés teljesítményére.
 
-## <a name="colocate-your-azure-storage-account-and-serverless-sql-pool"></a>Az Azure Storage-fiók és a kiszolgáló nélküli SQL-készlet közös elhelyezése
+## <a name="colocate-your-storage-and-serverless-sql-pool"></a>Tároló és kiszolgáló nélküli SQL-készlet közös elhelyezése
 
-A késés csökkentése érdekében helyezze el az Azure Storage-fiókot és a kiszolgáló nélküli SQL-készlet végpontját. A munkaterület létrehozása során kiépített Storage-fiókok és-végpontok ugyanabban a régióban találhatók.
+A késés csökkentése érdekében keresse meg az Azure Storage-fiókját, vagy a CosmosDB analitikai tárterületet és a kiszolgáló nélküli SQL-készlet végpontját. A munkaterület létrehozása során kiépített Storage-fiókok és-végpontok ugyanabban a régióban találhatók.
 
 Az optimális teljesítmény érdekében, ha a kiszolgáló nélküli SQL-készlettel rendelkező más Storage-fiókokhoz fér hozzá, győződjön meg róla, hogy ugyanabban a régióban vannak. Ha nem ugyanabban a régióban találhatók, az adatok hálózati átvitele nagyobb késéssel jár a távoli régió és a végpont régiója között.
 
@@ -44,9 +44,9 @@ A szabályozás észlelése esetén a kiszolgáló nélküli SQL-készlet beép�
 
 Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
-- A CSV és a JSON konvertálása a parketta formátumba. A parketta oszlopos formátumú. Mivel tömörítve van, a fájlméretük kisebb, mint a CSV-vagy JSON-fájlok, amelyek ugyanazokat az adatmennyiségeket tartalmazzák. A kiszolgáló nélküli SQL-készletnek kevesebb időt és kevesebb tárolási kérést kell elolvasnia.
+- A nagyméretű CSV és a JSON konvertálása a parkettára. A parketta oszlopos formátumú. Mivel tömörítve van, a fájlméretük kisebb, mint a CSV-vagy JSON-fájlok, amelyek ugyanazokat az adatmennyiségeket tartalmazzák. A kiszolgáló nélküli SQL-készlet képes kihagyni a lekérdezésben nem szükséges oszlopokat és sorokat, ha a parketta-fájlokat olvas. A kiszolgáló nélküli SQL-készletnek kevesebb időt és kevesebb tárolási kérést kell elolvasnia.
 - Ha egy lekérdezés egyetlen nagyméretű fájlt céloz meg, akkor a több kisebb fájlra is kihasználhatja.
-- Próbálja meg a CSV-fájl méretét 10 GB alatt tartani.
+- Próbálja megtartani a CSV-fájl méretét 100 MB és 10 GB között.
 - Jobb, ha azonos méretű fájlokat szeretne egy OPENROWSET elérési úthoz vagy egy külső tábla HELYéhez.
 - Particionálja az adatait úgy, hogy a partíciókat különböző mappákba vagy fájlnevekre tárolja. Lásd: [fájlnév és filepath függvények használata adott partíciók célzásához](#use-filename-and-filepath-functions-to-target-specific-partitions).
 
@@ -145,6 +145,6 @@ A kiszolgáló nélküli SQL-készlet lehetővé teszi a tárolóban lévő fáj
 
 Ha jobb teljesítményre van szüksége, próbálja meg SAS hitelesítő adatok használatával hozzáférni a tárolóhoz, amíg az Azure AD átmenő teljesítmény nem javul.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a gyakori problémák megoldására vonatkozó [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha kiszolgáló nélküli SQL-készlet helyett dedikált SQL-készlettel dolgozik, tekintse meg az ajánlott [eljárásokat a DEDIKÁLT SQL](best-practices-sql-pool.md) -készletekhez az adott útmutatáshoz.

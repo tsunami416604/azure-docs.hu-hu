@@ -4,17 +4,17 @@ description: Távolítsa el a blobokat az archív tárolóból, hogy hozzáférh
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/08/2020
+ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f74d4ffdd724039354a311234317dac889cd7cfe
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545932"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165671"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-adatok rehidratálása az archív szintről
 
@@ -29,9 +29,13 @@ Míg a blob az archív hozzáférési szinten található, offline állapotba ke
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+## <a name="monitor-rehydration-progress"></a>A rehidratálás folyamatának figyelése
+
+A rehidratálás során a blob beolvasása művelettel ellenőrizze az **Archive status** attribútumot, és erősítse meg, hogy a szint módosítása befejeződött-e. Az állapot a célszinttől függően „rehydrate-pending-to-hot” (rehidratálás-folyamatban-a-gyakoriba) vagy „rehydrate-pending-to-cool” (rehidratálás-folyamatban-a-ritkába) lehet. Befejezésekor a rendszer eltávolítja az archiválási állapot tulajdonságot, és a hozzáférési réteg blob tulajdonsága az új gyakori vagy ritka **elérésű** szintet tükrözi.
+
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Archivált blob másolása online szintre
 
-Ha nem szeretné kiszáradni az archív blobot, dönthet úgy, hogy [másolási blob](/rest/api/storageservices/copy-blob) műveletet hajt végre. Az eredeti blob változatlan marad az archívumban, miközben új blob jön létre az online gyakori vagy ritka elérésű szinten, hogy működjön. A blob másolása műveletben az opcionális *x-MS-rehidratált-priority* tulajdonságot standard vagy magas értékre is állíthatja, hogy megadja, melyik prioritást kívánja létrehozni a blob-másolat létrehozásához.
+Ha nem szeretné kiszáradni az archív blobot, dönthet úgy, hogy [másolási blob](/rest/api/storageservices/copy-blob) műveletet hajt végre. Az eredeti blob változatlan marad az archívumban, miközben új blob jön létre az online gyakori vagy ritka elérésű szinten, hogy működjön. A **blob másolása** műveletben az opcionális *x-MS-rehidratált-priority* tulajdonságot standard vagy magas értékre is állíthatja, hogy megadja, melyik prioritást kívánja létrehozni a blob-másolat létrehozásához.
 
 A Blobok archívumból való másolása a kiválasztott rehidratálás prioritástól függően órákig elvégezhető. A háttérben a **blob másolása** művelet beolvassa az archív forrás blobját, hogy létrehozzon egy új online blobot a kiválasztott célhelyen. Előfordulhat, hogy az új blob látható a Blobok listázásakor, de az adatok nem érhetők el, amíg a forrás archív blobból való olvasás be nem fejeződik, és az adatok bekerülnek az új online cél blobba. Az új blob független másolat, és minden módosítás vagy törlés nem befolyásolja a forrás archív blobot.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: c09f8c5ae4a742e6caa489ee29043f500617bb24
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 4196515463611f51dddb79438b1d4e827f1b32c2
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746488"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165399"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection standard gyakori kérdések
 
@@ -27,6 +27,11 @@ Az elosztott szolgáltatásmegtagadás vagy a DDoS olyan típusú támadás, ame
 
 ## <a name="what-is-azure-ddos-protection-standard-service"></a>Mi az Azure DDoS Protection standard szolgáltatás?
 A standard szintű, az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva a DDoS-támadások elleni védelem érdekében fejlett DDoS-elhárítási funkciókat biztosít. Azure DDoS Protection A rendszer automatikusan hangolja az adott Azure-erőforrások védelmére egy virtuális hálózaton. A védelem egyszerűen engedélyezhető bármely új vagy meglévő virtuális hálózaton, és nem igényel alkalmazás-vagy erőforrás-módosítást. Az alapszintű szolgáltatás számos előnnyel jár, beleértve a naplózást, a riasztásokat és a telemetria is. További részletekért tekintse meg [Azure DDoS Protection standard áttekintést](ddos-protection-overview.md) . 
+
+## <a name="how-does-pricing-work"></a>Hogyan működik a díjszabás?
+A DDoS Protection-csomagok havi $2 944-os fix havi díja, amely akár 100 nyilvános IP-címet is magában foglalhat. A további erőforrások védelme havonta további $30 lesz. 
+
+A bérlők egy DDoS Protection-tervet is használhatnak több előfizetésben, így nincs szükség több DDoS Protection-csomag létrehozására.
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Mi a védelem a szolgáltatási rétegben (7. réteg)?
 Az ügyfelek a webalkalmazási tűzfallal (WAF) együtt használhatják a Azure DDoS Protection szolgáltatást a hálózati rétegben (3. és 4. réteg, Azure DDoS Protection standard által kínált) és az alkalmazási rétegben (7. réteg, WAF által felkínált). A WAF-ajánlatok közé tartoznak az Azure [Application Gateway WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , valamint az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)elérhető, harmadik féltől származó webalkalmazási tűzfalak is.

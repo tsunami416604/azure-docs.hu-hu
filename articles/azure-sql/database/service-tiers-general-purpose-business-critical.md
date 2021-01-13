@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 12/14/2020
-ms.openlocfilehash: 9ee7440b10bc348d3ba87a4779208791a7b0e9ac
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5a30846a6e2aaf85ded2e55641aa5fba9507a29
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512028"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165773"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database és az Azure SQL felügyelt példányok szolgáltatási szintjei
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,6 +78,7 @@ Az alábbi tényezők befolyásolják az adatokhoz és naplófájlokhoz használ
   - A prémium vagy üzleti szempontból kritikus szolgáltatási rétegekben a méret növeléséhez vagy csökkentéséhez növelje vagy csökkentse a 250 GB-os növekményeket.
 - Az általános célú szolgáltatási szinten `tempdb` egy csatolt SSD-t használ, és ez a tárolási költség a virtuális mag ár részét képezi.
 - Az üzleti szempontból kritikus szolgáltatási szinten `tempdb` megosztja a csatlakoztatott SSD-t az MDF-és az ldf-fájlokkal, és a `tempdb` tárolási költséget a virtuális mag ára tartalmazza.
+- A prémium szintű DTU a `tempdb` mellékelt SSD-t az MDF-és az ldf-fájlokkal osztja meg.
 - A felügyelt SQL-példányok tárolási méretét a 32 GB-os többszörösében kell megadni.
 
 
@@ -96,7 +97,7 @@ Az adatbázis biztonsági másolatainak tárolása a SQL Database és az SQL fel
 - **PITR**: az egyes adatbázisok biztonsági másolatait a rendszer automatikusan átmásolja az [olvasási hozzáférésű geo-redundáns (ra-GRS) tárolóba](../../storage/common/geo-redundant-design.md) . A tárterület mérete dinamikusan növekszik, ahogy új biztonsági másolatok jönnek létre. A tárterületet hetente teljes biztonsági mentések, napi különbözeti biztonsági másolatok és tranzakciónapló-biztonsági másolatok használják, amelyek 5 percenként másolódnak át. A tárterület-felhasználás az adatbázis változásának és a biztonsági mentések megőrzési idejének a függvénye. Minden adatbázishoz külön megőrzési időtartamot állíthat be 7 és 35 nap között. Az adatbázis méretének 100 százalékkal (1x) megegyező minimális tárterülete külön díj nélkül elérhető. A legtöbb adatbázis esetében ez az érték elegendő a biztonsági másolatok 7 napos tárolására.
 - **Ltr**: lehetősége van a teljes biztonsági másolatok hosszú távú megőrzésének konfigurálására akár 10 évig is (ez a funkció korlátozott nyilvános előzetes verzióban érhető el a [felügyelt SQL-példányok esetében](long-term-retention-overview.md#sql-managed-instance-support). Ha LTR szabályzatot állít be, akkor ezeket a biztonsági másolatokat az RA-GRS tárolóban automatikusan tárolja a rendszer, de szabályozhatja, hogy a biztonsági másolatok milyen gyakran legyenek átmásolva. A különböző megfelelőségi követelmények kielégítése érdekében a heti, havi és/vagy éves biztonsági mentések esetében eltérő megőrzési időt választhat. A kiválasztott konfiguráció határozza meg, hogy mekkora tárterületet használ a rendszer a LTR biztonsági mentések esetén. A LTR-tároló költségének megbecsléséhez használhatja a LTR árképzési számológépet. További információ: [SQL Database hosszú távú adatmegőrzés](long-term-retention-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az általános célú és az üzleti szempontból kritikus szolgáltatási szinten elérhető konkrét számítási és tárolási méretek részletes ismertetését lásd: 
 

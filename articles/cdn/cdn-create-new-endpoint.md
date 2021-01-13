@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: af90166b688dee104e7bda18a88a2fe7c98f657b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7a3c4bc2a0445a2821e212986b495993695652a6
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82996260"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165926"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Gyors útmutató: Azure CDN-profil és -végpont létrehozása
 
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóban egy új CDN-profil létrehozásával engedélyezi a
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Egy *cdnstorageacct123*nevű Azure Storage-fiók, amelyet a forrás állomásneve használ. A követelmény teljesítéséhez tekintse meg az [Azure Storage-fiók integrálása Azure CDNkal](cdn-create-a-storage-account-with-cdn.md)című témakört.
+- Egy *cdnstorageacct123* nevű Azure Storage-fiók, amelyet a forrás állomásneve használ. A követelmény teljesítéséhez tekintse meg az [Azure Storage-fiók integrálása Azure CDNkal](cdn-create-a-storage-account-with-cdn.md)című témakört.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -43,7 +43,7 @@ Miután létrehozott egy CDN-profilt, a használatával végpontot hozhat létre
 
 1. Az Azure Portalon válassza ki a létrehozott CDN-profilt az irányítópulton. Ha nem találja, megnyithatja azt az erőforráscsoportot, amelyben létrehozta, vagy használhatja a portál felső részén található keresősávt, adja meg a profil nevét, és válassza ki a profilt az eredmények közül.
    
-1. A CDN-profil lapon válassza a **+ végpont**lehetőséget.
+1. A CDN-profil lapon válassza a **+ végpont** lehetőséget.
    
     ![CDN-profil](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
@@ -53,8 +53,8 @@ Miután létrehozott egy CDN-profilt, a használatával végpontot hozhat létre
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | **Név** | Adja meg a *CDN-Endpoint-123* értéket a végponti állomásnévhez. Ennek a névnek globálisan egyedinek kell lennie az Azure-ban. Ha már használatban van, adjon meg másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a tartomány _ &lt; végpontjának neve &gt; _. azureedge.net.|
-    | **Forrás típusa** | Válassza a **tárterület**lehetőséget. | 
+    | **Név** | Adja meg a *CDN-Endpoint-123* értéket a végponti állomásnévhez. Ennek a névnek globálisan egyedinek kell lennie az Azure-ban. Ha már használatban van, adjon meg másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a tartomány _&lt; végpontjának neve &gt;_. azureedge.net.|
+    | **Forrás típusa** | Válassza a **tárterület** lehetőséget. | 
     | **Forrás gazdaneve** | Válassza ki a legördülő listából a használni kívánt Azure Storage-fiók állomásnevét, például *cdnstorageacct123.blob.Core.Windows.net*. |
     | **Forrás elérési útvonala** | Hagyja üresen. |
     | **Forrás állomásfejléce** | Hagyja meg az alapértelmezett értéket (amely a Storage-fiók állomásneve). |  
@@ -68,17 +68,17 @@ Miután létrehozott egy CDN-profilt, a használatával végpontot hozhat létre
     
    ![CDN-végpont](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
-   A végpont propagálásához szükséges idő a profil létrehozásakor kiválasztott árképzési szinttől függ. A **standard szintű Akamai** általában egy percen belül befejeződik, a **standard Microsoft** 10 perc, a **standard Verizon** és a **prémium Verizon** pedig akár 90 perc is.
+   A végpont propagálásához szükséges idő a profil létrehozásakor kiválasztott árképzési szinttől függ. A **standard szintű Akamai** általában egy percen belül befejeződik, a **standard Microsoft** 10 perc, a **standard Verizon** és a **prémium Verizon** pedig akár 30 percig is eltarthat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erőforráscsoportban. Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) szeretne lépni, és meg szeretné tudni, hogyan adhat egyéni tartományt a végpontjához. Ugyanakkor ha a jövőben nem várható ezen erőforrások használata, törölheti őket az erőforráscsoport törlésével, így elkerülheti a további díjakat:
 
-1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **CDNQuickstart-RG**elemet.
+1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **CDNQuickstart-RG** elemet.
 
-2. Az **erőforráscsoport** lapon válassza az **erőforráscsoport törlése**elemet, írja be a *CDNQuickstart-RG* karakterláncot a szövegmezőbe, majd válassza a **Törlés**lehetőséget. Ez a művelet törli az ebben a rövid útmutatóban létrehozott erőforráscsoportot, profilt és végpontot.
+2. Az **erőforráscsoport** lapon válassza az **erőforráscsoport törlése** elemet, írja be a *CDNQuickstart-RG* karakterláncot a szövegmezőbe, majd válassza a **Törlés** lehetőséget. Ez a művelet törli az ebben a rövid útmutatóban létrehozott erőforráscsoportot, profilt és végpontot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: a CDN használata a webalkalmazások statikus tartalmának lekérdezéséhez](cdn-add-to-web-app.md)

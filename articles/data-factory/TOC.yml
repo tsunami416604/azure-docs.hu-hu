@@ -629,15 +629,19 @@
         - name: Azure-beli integrációs modul
           href: create-azure-integration-runtime.md
         - name: Saját üzemeltetésű integrációs modul
-          href: create-self-hosted-integration-runtime.md
+          items:
+            - name: Helyi integrációs modul létrehozása és konfigurálása
+              href: create-self-hosted-integration-runtime.md
+            - name: Helyi integrációs modul automatikus frissítésre és lejáratra vonatkozó értesítése
+              href: self-hosted-integration-runtime-auto-update.md
+            - name: Megosztott saját üzemeltetésű integrációs modul
+              href: create-shared-self-hosted-integration-runtime-powershell.md
+            - name: Saját üzemeltetésű integrációs modul automatizálási szkriptjei
+              href: self-hosted-integration-runtime-automation-scripts.md
+            - name: Saját üzemeltetésű integrációs modul futtatása a Windows-tárolóban
+              href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
         - name: Azure SSIS integrációs modul
           href: create-azure-ssis-integration-runtime.md
-        - name: Megosztott saját üzemeltetésű integrációs modul
-          href: create-shared-self-hosted-integration-runtime-powershell.md
-        - name: Saját üzemeltetésű integrációs modul automatizálási szkriptjei
-          href: self-hosted-integration-runtime-automation-scripts.md
-        - name: Saját üzemeltetésű integrációs modul futtatása a Windows-tárolóban
-          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: SSIS-csomagok futtatása az Azure-ban
       items:
         - name: SSIS-csomagok futtatása az Azure-ban az SSDT-ből

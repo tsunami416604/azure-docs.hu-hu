@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: dd989d5925da864728e944e84962086c0cfb08ea
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12841c747116cc9e14f348dfcf81acaa5da5e8c9
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462313"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165365"
 ---
 # <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Lekérdezési eredmények tárolása a Storage-ban kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -74,6 +74,9 @@ FROM
 
 ```
 
+> [!NOTE]
+> Módosítania kell ezt a parancsfájlt, és módosítania kell a célhelyet, hogy újra végre lehessen hajtani. Külső táblák nem hozhatók létre azon a helyen, ahol már vannak adatforrások.
+
 ## <a name="use-the-external-table"></a>A külső tábla használata
 
 Használhatja a CETAS által létrehozott külső táblázatot, például egy normál külső táblázatot.
@@ -94,6 +97,14 @@ ORDER BY
     [population] DESC;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="remarks"></a>Megjegyzések
+
+Az eredmények tárolása után a külső tábla adatai nem módosíthatók. Ezt a parancsfájlt nem lehet megismételni, mert a CETAS nem írja felül az előző végrehajtás során létrehozott mögöttes adatokat. Szavazzon az alábbi visszajelzési elemekre, ha ezek némelyike szükséges a forgatókönyvekben, vagy az új Azure feedback-webhelyre kell javaslatot tennie:
+- [Új adatbevitel engedélyezése külső táblába](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/32981347-polybase-allow-insert-new-data-to-existing-exteran)
+- [Adatok törlésének engedélyezése külső táblából](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/15158034-polybase-delete-from-external-tables)
+- [Partíciók meghatározása a CETAS-ben](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
+- [Fájlméretek és darabszámok meghatározása](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
+
+## <a name="next-steps"></a>Következő lépések
 
 A különböző fájltípusok lekérdezésével kapcsolatos további információkért tekintse meg az [egyszerű CSV-fájl lekérdezése](query-single-csv-file.md), a [Parquet-fájlok lekérdezése](query-parquet-files.md)és a [JSON-fájlok lekérdezése](query-json-files.md) című cikket.

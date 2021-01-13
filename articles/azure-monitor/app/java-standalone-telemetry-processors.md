@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: ba4e6b8b5e9db494ab4c0c372c2086087a2d58cb
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133174"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165790"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetria processzorok (előzetes verzió) – Azure Monitor Application Insights Javához
 
@@ -23,58 +23,48 @@ A Application Insights Java 3,0-ügynöke most már rendelkezik a telemetria-ala
 A telemetria processzorok néhány felhasználási esete a következő:
  * Bizalmas adatok maszkolása
  * Egyéni dimenziók feltételes hozzáadása
- * Az összesítéshez és a megjelenítéshez használt telemetria-név frissítése
- * A betöltési díjak szabályozására szolgáló kihúzási vagy szűrési tartomány attribútumai
+ * Frissítse az összesítéshez és megjelenítéshez használt nevet a Azure Portal
+ * Drop span attribútumok a betöltési díjak szabályozásához
 
 ## <a name="terminology"></a>Terminológia
 
-Mielőtt beugorjunk a telemetria-processzorokra, fontos megérteni, hogy mi az a nyomkövetés és a felölelés.
+Mielőtt beugorjunk a telemetria processzorokra, fontos tisztában lennie azzal, hogy mire vonatkozik a kifejezés.
 
-### <a name="traces"></a>Hívásláncok
+A span a következő három dolog egyik általános kifejezése:
 
-A nyomok nyomon követik egy, a-nek nevezett kérelem előrehaladását, `trace` mivel azt egy alkalmazást alkotó szolgáltatások kezelik. A kérést egy felhasználó vagy egy alkalmazás kezdeményezheti. Az a alkalmazásban az egyes munkaegységeket `trace` nevezzük `span` `trace` . a az a csomópont. A `trace` az egyetlen legfelső szintű tartományból és az összes gyermekből álló számból áll.
+* Bejövő kérelem
+* Kimenő függőség (például távoli hívás egy másik szolgáltatásnak)
+* Folyamaton belüli függőség (például a szolgáltatás alösszetevői végzik a munkát)
 
-### <a name="span"></a>Span
+A telemetria processzorok esetében a span fontos összetevői a következők:
 
-A felöleli azokat az objektumokat, amelyek a kérelemben érintett egyes szolgáltatásoknak vagy összetevőknek a rendszeren keresztüli átfolyása során végzett munkát jelölik. A a `span` tartalmaz egy olyan `span context` globálisan egyedi azonosítót, amely az egyes spanok részét képező egyedi kérést jelképezi. 
+* Név
+* Attribútumok
 
-Átnyúló beágyazás:
+A span neve a kérelmekhez és a függőségekhez használt elsődleges megjelenítés a Azure Portalban.
 
-* A span neve
-* Egy nem módosítható `SpanContext` , amely egyedileg azonosítja a span-t
-* Szülő-span `Span` ,-vagy Null-formátumú `SpanContext`
-* Egy `SpanKind` műveletet
-* Kezdő időbélyeg
-* Záró időbélyeg
-* [`Attributes`](#attributes)
-* Az időbélyeggel ellátott események listája
-* A `Status` .
+A span attribútumok az adott kérelem vagy függőség standard és egyéni tulajdonságait jelölik.
 
-Általánosságban a span életciklusa a következőhöz hasonló:
+## <a name="telemetry-processor-types"></a>Telemetria processzor típusai
 
-* Egy szolgáltatás kérést kap. Ha létezik, a rendszer kinyeri a span-környezetet a kérések fejlécében.
-* Egy új span jön létre a kinyert tartomány környezetének gyermeke; Ha nincs ilyen, létrejön egy új gyökérszintű tartomány.
-* A szolgáltatás kezeli a kérelmet. A rendszer további attribútumokat és eseményeket ad hozzá a tartományhoz, amelyek hasznosak lehetnek a kérelem kontextusának megismeréséhez, például a kérést kezelő gép állomásneve, vagy az ügyfél-azonosítók.
-* A szolgáltatás alösszetevői által végzett munka megjelenítéséhez új felölelő hozható létre.
-* Ha a szolgáltatás távoli hívást kezdeményez egy másik szolgáltatásba, az aktuális tartomány-környezet szerializálva lesz, és a következő szolgáltatásnak továbbítja a span-környezetnek a fejlécek vagy az üzenet borítékba való beírásával.
-* A szolgáltatás által végzett munka sikeresen befejeződött, vagy nem. A span állapot megfelelően van beállítva, és a span jelölése kész.
+Jelenleg két típusú telemetria processzor létezik.
 
-### <a name="attributes"></a>Attribútumok
+#### <a name="attribute-processor"></a>Attribútum processzora
 
-`Attributes` az a-ben beágyazott nulla vagy több kulcs-érték párok listája `span` . Az attribútumnak a következő tulajdonságokkal kell rendelkeznie:
+Az attribútum-feldolgozó képes az attribútumok beszúrására, frissítésére, törlésére vagy kivonatolására.
+Egy vagy több új attribútum egy meglévő attribútumból való kinyerése (reguláris kifejezéssel) is elvégezhető.
 
-Az attribútum kulcsa, amelynek nem null és nem üres karakterláncnak kell lennie.
-Az attribútum értéke, amely a következők egyike:
-* Egyszerű típus: karakterlánc, logikai, dupla pontosságú lebegőpontos (IEEE 754-1985) vagy aláírt 64 bites egész szám.
-* Egyszerű típusú értékek tömbje. A tömbnek homogénnek kell lennie, azaz nem tartalmazhat különböző típusú értékeket. Olyan protokollok esetében, amelyek nem támogatják natív módon a tömbök értékét, ezeket az értékeket JSON-karakterláncként kell megjeleníteni.
+#### <a name="span-processor"></a>Span processzor
 
-## <a name="supported-processors"></a>Támogatott processzorok:
- * Attribútum processzora
- * Span processzor
+A span processzor képes frissíteni a telemetria nevét.
+Kinyerheti (reguláris kifejezéssel) egy vagy több új attribútumot is a span nevéből.
 
-## <a name="to-get-started"></a>Első lépések
+> [!NOTE]
+> Vegye figyelembe, hogy a telemetria-processzorok jelenleg csak karakterlánc típusú attribútumokat dolgozzák fel, és nem a logikai vagy a szám típusú attribútumokat dolgozzák fel.
 
-Hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-***.jar` , a következő sablonnal.
+## <a name="getting-started"></a>Első lépések
+
+Hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és helyezze ugyanabba a könyvtárba `applicationinsights-agent-*.jar` , a következő sablonnal.
 
 ```json
 {
@@ -98,9 +88,14 @@ Hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és 
 }
 ```
 
-## <a name="includeexclude-spans"></a>Belefoglalási/kizárási felölelés
+## <a name="includeexclude-criteria"></a>Feltételek belefoglalása/kizárása
 
-Az attribútum-feldolgozó és a span processzor elérhetővé teszi a beállítást, amely meghatározza, hogy a rendszer milyen tulajdonságokat adjon meg a megfelelő tartományhoz, hogy megállapítsa, van-e belefoglalva vagy kizárva a telemetria processzorból. A beállítás konfigurálásához a `include` és/vagy a (z) és/vagy legalább egy, illetve az `exclude` `matchType` egyik `spanNames` `attributes` szükséges. A belefoglalási/kizárási konfiguráció több megadott feltételt is támogat. Az összes megadott feltételnek igaz értékűnek kell lennie, ha egyezés történik. 
+Mindkét attribútum-feldolgozó és a span processzor támogatja `include` a választható és a `exclude` feltételt.
+A processzor csak azokra a feltétekre lesz alkalmazva, amelyek megfelelnek a `include` feltételnek (ha meg van határozva) _, és_ nem felelnek meg a `exclude` feltételeinek (ha van ilyen).
+
+A beállítás konfigurálásához a `include` és/vagy a (z) és/vagy legalább egy, illetve az `exclude` `matchType` egyik `spanNames` `attributes` szükséges.
+A belefoglalási/kizárási konfiguráció több megadott feltételt is támogat.
+Az összes megadott feltételnek igaz értékűnek kell lennie, ha egyezés történik. 
 
 **Kötelező mező**: 
 * `matchType` meghatározza, hogy a `spanNames` rendszer hogyan értelmezze az elemeket és a `attributes` tömböket. A lehetséges értékek: `regexp` és `strict`. 
@@ -150,7 +145,7 @@ Nem **kötelező mezők**:
 ```
 További tudnivalókat a [telemetria Processor példák](./java-standalone-telemetry-processors-examples.md) dokumentációjában talál.
 
-## <a name="attribute-processor"></a>Attribútum processzora 
+## <a name="attribute-processor"></a>Attribútum processzora
 
 Az attribútumok feldolgozó a span attribútumait módosítja. Lehetőség van arra is, hogy belefoglalja vagy kizárja a felölelő képességeket. A konfigurációs fájlban megadott sorrendben végrehajtott műveletek listáját veszi figyelembe. A támogatott műveletek a következők:
 
@@ -167,7 +162,7 @@ Egy olyan új attribútum beszúrása, amelyben a kulcs még nem létezik.
         "key": "attribute1",
         "value": "value1",
         "action": "insert"
-      },
+      }
     ]
   }
 ]
@@ -190,7 +185,7 @@ Egy olyan attribútum frissítése, amelyben a kulcs létezik
         "key": "attribute1",
         "value": "newValue",
         "action": "update"
-      },
+      }
     ]
   }
 ]
@@ -213,7 +208,7 @@ Attribútum törlése egy tartományból
       {
         "key": "attribute1",
         "action": "delete"
-      },
+      }
     ]
   }
 ]
@@ -234,7 +229,7 @@ Kivonatok (SHA1) meglévő attribútumérték
       {
         "key": "attribute1",
         "action": "hash"
-      },
+      }
     ]
   }
 ]
@@ -259,7 +254,7 @@ Kinyeri az értékeket a szabályban megadott, a bemeneti kulcstól a reguláris
         "key": "attribute1",
         "pattern": "<regular pattern with named matchers>",
         "action": "extract"
-      },
+      }
     ]
   }
 ]
@@ -271,7 +266,7 @@ A `extract` művelethez a következők szükségesek
 
 További tudnivalókat a [telemetria Processor példák](./java-standalone-telemetry-processors-examples.md) dokumentációjában talál.
 
-## <a name="span-processors"></a>Span processzorok
+## <a name="span-processor"></a>Span processzor
 
 A span processzor a span neve alapján módosítja a span tartomány nevét vagy attribútumait. Lehetőség van arra is, hogy belefoglalja vagy kizárja a felölelő képességeket.
 

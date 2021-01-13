@@ -29,6 +29,8 @@
           href: cache-nodejs-get-started.md
         - name: Python-alkalmazás
           href: cache-python-get-started.md
+        - name: Go-alkalmazás
+          href: cache-go-get-started.md
 - name: Oktatóanyagok
   items:
     - name: ASP.NET

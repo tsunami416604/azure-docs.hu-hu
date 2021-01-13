@@ -3,12 +3,12 @@ title: Ismerkedés a Azure Lab Services
 description: Ez a cikk bemutatja, hogyan kezdheti meg a Azure Lab Services használatát.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d260ace7d7819c3ca2db96d6c4984bf834e170da
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602665"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165042"
 ---
 # <a name="get-started-with-lab-services"></a>Ismerkedés a labor Services szolgáltatással 
 
@@ -109,56 +109,7 @@ A tanárok képesek csatlakozni a tanulói virtuális géphez, amíg be van kapc
 
 ## <a name="manage-users-in-a-lab"></a>Tesztkörnyezetben lévő felhasználók kezelése
 
-A tanárok hozzáadhatnak tanuló felhasználókat a laborhoz, és megfigyelheti az óránkénti kvótákat. 
-
-### <a name="add-users-by-email-address"></a>Felhasználók hozzáadása e-mail-cím alapján
-
-1. Az [Azure Lab Services webhelyén](https://labs.azure.com/) kattintson a **felhasználók** elemre az ablak bal oldali részén.
-1. Az ablak tetején kattintson a **felhasználók hozzáadása** elemre, majd válassza a **Hozzáadás e-mail-cím alapján** lehetőséget. 
-1. A jobb oldalon megjelenő **felhasználók hozzáadása** panelen adja meg a tanulók e-mail-címeit külön vonalakon vagy egyetlen sorban, pontosvesszővel elválasztva.
-1. Kattintson a **Mentés** gombra.
-1. A felhasználók listája mostantól az e-mailekkel, az állapottal, a meghívóval és a kvóta órájával frissül.
-
-    Ha a tanulók egy laborhoz vannak regisztrálva, a nevüket a rendszer az első és az utolsó névvel frissíti Azure Active Directory.
-
-    > [!NOTE]
-    > A hozzáférés korlátozása beállítás bekapcsolva értékre vált a felhasználók számára. Ez azt jelenti, hogy csak a listán szereplő felhasználók regisztrálhatnak a laborba az Ön által küldött regisztrációs hivatkozás használatával.
-
-### <a name="add-users-using-a-spreadsheet"></a>Felhasználók hozzáadása táblázat használatával 
-
-Hozzáadhat felhasználókat úgy is, hogy feltölt egy CSV-fájlt, amely tartalmazza az e-mail-címüket.
-
-1. A Microsoft Excelben hozzon létre egy CSV-fájlt, amely egy oszlopban a tanulók e-mail-címeit listázza.
-1. A [Azure Lab Services webhelyén](https://labs.azure.com/), a **felhasználók** lap tetején kattintson a **felhasználók hozzáadása** gombra.
-1. Válassza a CSV-fájl **feltöltése** lehetőséget.
-1. Válassza ki a diákok e-mail-címeit tartalmazó CSV-fájlt, és kattintson a **Megnyitás** gombra.
-
-    :::image type="content" source="./media/get-started-manage-labs/add-users-spreadsheet.png" alt-text="Felhasználók hozzáadása táblázat használatával":::
-1. Az e-mailek ekkor megjelennek a jobb oldalon található ablakban. Kattintson a **Mentés** gombra.
-
-    :::image type="content" source="./media/get-started-manage-labs/register-users.png" alt-text="Felhasználók regisztrálása":::
-
-### <a name="register-users"></a>Felhasználók regisztrálása
-
-Miután hozzáadta a felhasználókat a laborhoz, regisztrálnia kell a virtuális gépek eléréséhez. Ezt úgy teheti meg, hogy meghívja a felhasználókat a portálról, amely a laborhoz tartozó regisztrációs hivatkozást tartalmazó e-mailt fog küldeni. Vagy másolhatja és beillesztheti a regisztrációs hivatkozást egy e-mailbe, vagy a tanulókkal folytatott kommunikáció egyéb formáját.
-
-1. A **felhasználók** lapon válasszon ki egy tanulót vagy több tanulót a listában.
-
-    A kiválasztott diák sorában jelölje ki a boríték ikont a listában, vagy kattintson a **meghívás** gombra a képernyő tetején.
-
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation.png" alt-text="Meghívó küldése":::
-    
-    A **Meghívás küldése** e-mailben ablakban adjon meg egy opcionális üzenetet (például Felhasználónév és jelszó) a tanulók számára, majd kattintson a **Küldés** gombra. 
-    
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation-mail.png" alt-text="Meghívás küldése e-mailben":::
-
-    Másik lehetőségként ugyanezen **felhasználók** lapról a képernyő felső részén található **regisztrációs hivatkozás** gombra kattinthat. 
-
-    :::image type="content" source="./media/get-started-manage-labs/registration-link.png" alt-text="Felhasználói regisztráció hivatkozása":::
-    
-    Másolja a regisztrációs hivatkozást a szövegmezőbe, és illessze be az e-mailbe vagy az előnyben részesített biztonságos üzenetküldési eszközbe.  
-    
-    :::image type="content" source="./media/get-started-manage-labs/user-registration.png" alt-text="Felhasználói regisztráció küldése":::
+A tanárok hozzáadhatnak tanuló felhasználókat a laborhoz, és megfigyelheti az óránkénti kvótákat. A felhasználók e-mail-cím vagy számolótábla-lista használatával történő hozzáadásával és a felhasználók regisztrálásával kapcsolatos további információkért lásd: [labor-felhasználók hozzáadása és kezelése](how-to-configure-student-usage.md).
 
 Miután megkérte a felhasználókat, vagy megosztotta a hivatkozást, megfigyelheti, hogy mely felhasználók regisztrálása sikeresen megtörtént a **felhasználók** lapon az **állapot** oszlopban. 
 
@@ -166,6 +117,6 @@ Miután megkérte a felhasználókat, vagy megosztotta a hivatkozást, megfigyel
 
 Ha nem folytatja az ebben a rövid útmutatóban létrehozott erőforrások használatát, törölje az erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tesztkörnyezetfiók beállítása](tutorial-setup-lab-account.md)

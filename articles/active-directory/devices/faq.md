@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860949"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165144"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
@@ -142,6 +142,12 @@ A műveletek kijavításának menetét alább találja.
 >* Ha egy eszköz el lett távolítva egy szinkronizálási hatókörből Azure AD Connect és újra hozzá lett adva.
 >
 >Mindkét esetben manuálisan kell regisztrálnia az eszközt az egyes eszközökön. Annak ellenőrzéséhez, hogy az eszköz korábban regisztrálva van-e, [a dsregcmd parancs használatával elháríthatja az eszközöket](troubleshoot-device-dsregcmd.md).
+
+---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>K: nem lehet több mint 3 Azure AD-felhasználói fiókot felvenni egy Windows 10-es eszköz ugyanazon felhasználói munkamenete alatt, miért?
+
+**A**: az Azure ad több Azure ad-fiókot is támogat a Windows 10 1803 kiadásban. A Windows 10 azonban az eszközön lévő Azure AD-fiókok számát 3-ra korlátozza a jogkivonat-kérelmek méretének és a megbízható egyszeri bejelentkezés (SSO) engedélyezésének korlátozására. 3 fiók hozzáadása után a felhasználók hibaüzenetet fognak látni a további fiókok esetében. A hiba képernyőn megjelenő további információ a következő üzenetet jeleníti meg: "a fiók hozzáadása művelet le van tiltva, mert a rendszer elérte a Fiókbeállítások korlátját". 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Azure AD-csatlakozás – gyakori kérdések

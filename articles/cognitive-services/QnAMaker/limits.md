@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708940"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164872"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker Tudásbázis korlátai és határai
 
@@ -99,6 +99,7 @@ Ezek az egyes Create Tudásbázis-műveletek korlátai. Ehhez kattintson a *Tud�
 * Az alternatív kérdések javasolt maximális száma egy adott válaszban: 300
 * URL-címek maximális száma: 10
 * Fájlok maximális száma: 10
+* A QnAs engedélyezett maximális száma (hívás: 1000)
 
 ## <a name="update-knowledge-base-call-limits"></a>A Tudásbázis hívási korlátainak frissítése
 Ezek a frissítési műveletek korlátainak felelnek meg; a UpdateKnowledgeBase API *mentése és betanítása* vagy meghívása elemre kattintva.
@@ -106,7 +107,8 @@ Ezek a frissítési műveletek korlátainak felelnek meg; a UpdateKnowledgeBase 
 * A hozzáadott vagy törölt alternatív kérdések ajánlott maximális száma: 300
 * A hozzáadott vagy törölt metaadat-mezők maximális száma: 10
 * A frissíthető URL-címek maximális száma: 5
+* A QnAs engedélyezett maximális száma (hívás: 1000)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, mikor és hogyan módosíthatja a [szolgáltatás díjszabási szintjeit](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku).

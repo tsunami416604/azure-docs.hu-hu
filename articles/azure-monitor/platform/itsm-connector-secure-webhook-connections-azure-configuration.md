@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 5eb58c48acc7974a4379cf1993a73228c99f5e6d
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 03a16bfbcb3a8d46a6cb4faa03aa6b6e96cf3db3
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857571"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165960"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>Az Azure konfigurálása a ITSM-eszközök biztonságos exportálással történő összekapcsolásához
 
@@ -39,9 +39,9 @@ Az alábbi lépéseket követve regisztrálja az alkalmazást az Azure AD-ben:
 
 ## <a name="define-service-principal"></a>Egyszerű szolgáltatásnév megadása
 
-A műveleti csoport szolgáltatásnak jogosultsággal kell rendelkeznie hitelesítési jogkivonatok beszerzéséhez a HRE alkalmazásból a szolgáltatással való hitelesítéshez. Az engedélyek megadásához létre kell hoznia egy egyszerű szolgáltatásnevet a bérlőhöz tartozó műveleti csoport szolgáltatáshoz.
-Ezt a PowerShell- [parancsot](./action-groups.md#secure-webhook-powershell-script) használhatja erre a célra. (Bérlői rendszergazdai jogosultságok szükségesek).
-Választható lépésként megadhatja az alkalmazási szerepkört a létrehozott alkalmazás jegyzékfájljában, amely lehetővé teszi a további korlátozást, így csak bizonyos, adott szerepkörrel rendelkező alkalmazások küldhetnek üzeneteket. Ezt a szerepkört ezután hozzá kell rendelni a műveleti csoport egyszerű szolgáltatásához. \
+A műveleti csoport szolgáltatás egy első féltől származó alkalmazás, ezért jogosult a hitelesítési jogkivonatok beszerzésére a HRE alkalmazásból a szolgáltatással való hitelesítéshez.
+Választható lépésként megadhatja az alkalmazási szerepkört a létrehozott alkalmazás jegyzékfájljában, amely lehetővé teszi a további korlátozást, így csak bizonyos, adott szerepkörrel rendelkező alkalmazások küldhetnek üzeneteket. Ezt a szerepkört ezután hozzá kell rendelni a műveleti csoport egyszerű szolgáltatásához (bérlői rendszergazdai jogosultságok szükségesek).
+
 Ez a lépés ugyanazokkal a PowerShell- [parancsokkal](./action-groups.md#secure-webhook-powershell-script)végezhető el.
 
 ## <a name="create-a-secure-webhook-action-group"></a>Biztonságos webhook-műveleti csoport létrehozása
@@ -74,7 +74,7 @@ A konfiguráció két lépést tartalmaz:
 1. Szerezze be a biztonságos exportálás definíciójának URI azonosítóját.
 2. Definíciók a ITSM eszköz folyamata alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [ServiceNow biztonságos exportálási konfiguráció](./itsmc-secure-webhook-connections-servicenow.md)
 * [A BMC biztonságos exportálásának konfigurációja](./itsmc-secure-webhook-connections-bmc.md)

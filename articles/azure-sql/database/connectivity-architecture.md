@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL Database kapcsolati architektúrája
+title: Azure SQL Database kapcsolati architektúra
 description: Ez a dokumentum ismerteti az Azure-ban vagy az Azure-on kívüli adatbázis-kapcsolatok Azure SQL Database kapcsolati architektúráját.
 services: sql-database
 ms.service: sql-database
@@ -12,20 +12,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: d0242ceec62db6548d91e5e58c21981a4f0246a0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 74dd3a6b19d241fdf05e6438226227147ba4afbd
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672509"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165943"
 ---
-# <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database és az Azure szinapszis Analytics kapcsolati architektúrája
+# <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Az Azure SQL Database és az Azure Synapse Analytics kapcsolati architektúrája
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Ez a cikk ismerteti a különböző összetevők architektúráját, amelyek közvetlen hálózati forgalmat Azure SQL Database vagy Azure szinapszis Analytics-kiszolgálóra irányítanak. Ismerteti továbbá a különböző kapcsolati szabályzatokat, valamint azt, hogy a hogyan befolyásolja az Azure-ból és az Azure-on kívülről csatlakozó ügyfelektől érkező ügyfeleket.
 
 > [!IMPORTANT]
-> Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira** . Tekintse át a [felügyelt példány kapcsolati architektúráját](../managed-instance/connectivity-architecture-overview.md).
+> Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira**. Tekintse át a [felügyelt példány kapcsolati architektúráját](../managed-instance/connectivity-architecture-overview.md).
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 
@@ -76,31 +76,32 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 
 | Régió neve          | Átjáró IP-címei |
 | --- | --- |
-| Ausztrália középső régiója    | 20.36.105.0 |
-| Ausztráliai Central2   | 20.36.113.0 |
+| Ausztrália középső régiója    | 20.36.105.0, 20.36.104.6, 20.36.104.7 |
+| Ausztrália 2. középső régiója   | 20.36.113.0, 20.36.112.6 |
 | Kelet-Ausztrália       | 13.75.149.87, 40.79.161.1, 13.70.112.9 |
 | Délkelet-Ausztrália | 191.239.192.109, 13.73.109.251, 13.77.48.10 |
-| Dél-Brazília         | 104.41.11.5, 191.233.200.14 |
+| Dél-Brazília         | 104.41.11.5, 191.233.200.14, 191.234.144.16, 191.234.152.3 |
 | Közép-Kanada       | 40.85.224.249, 52.246.152.0, 20.38.144.1 |
-| Kelet-Kanada          | 40.86.226.166, 52.242.30.154 |
+| Kelet-Kanada          | 40.86.226.166, 52.242.30.154, 40.69.105.9 , 40.69.105.10 |
 | USA középső régiója           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 |
 | Kelet-Kína           | 139.219.130.35     |
 | Kelet-Kína 2         | 40.73.82.1         |
 | Észak-Kína          | 139.219.15.17      |
 | Észak-Kína 2        | 40.73.50.0         |
-| Kelet-Ázsia            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
+| Kelet-Ázsia            | 191.234.2.139, 52.175.33.150, 13.75.32.4, 13.75.32.14 |
 | USA keleti régiója              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA 2. keleti régiója            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
-| Közép-Franciaország       | 40.79.137.0, 40.79.129.1 |
+| Közép-Franciaország       | 40.79.137.0, 40.79.129.1, 40.79.137.8, 40.79.145.12 |
+| Dél-Franciaország         | 40.79.177.10 ,40.79.177.12 |
 | Közép-Németország      | 51.4.144.100       |
 | Kelet-Észak-Németország   | 51.5.144.179       |
 | Középnyugat-Németország | 51.116.240.0, 51.116.248.0, 51.116.152.0 |
-| Közép-India        | 104.211.96.159     |
+| Közép-India        | 104.211.96.159, 104.211.86.30 , 104.211.86.31 |
 | Dél-India          | 104.211.224.146    |
-| Nyugat-India           | 104.211.160.80     |
+| Nyugat-India           | 104.211.160.80, 104.211.144.4 |
 | Kelet-Japán           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
 | Nyugat-Japán           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 |
-| Dél-Korea középső régiója        | 52.231.32.42       |
+| Dél-Korea középső régiója        | 52.231.32.42, 52.231.17.22 ,52.231.17.23 |
 | Dél-Korea déli régiója          | 52.231.200.86      |
 | USA északi középső régiója     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Észak-Európa         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |

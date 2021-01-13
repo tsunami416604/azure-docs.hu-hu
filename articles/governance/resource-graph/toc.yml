@@ -38,6 +38,9 @@
     - name: Megosztott lekérdezés létrehozása – Azure CLI
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md
+    - name: Megosztott lekérdezés létrehozása – Azure PowerShell
+      displayName: 'powershell, queries, Az.ResourceGraph'
+      href: ./shared-query-azure-powershell.md
     - name: Megosztott lekérdezés üzembe helyezése – ARM-sablon
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md

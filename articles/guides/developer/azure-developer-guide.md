@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005384"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165059"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -105,6 +105,21 @@ Service Fabric támogatja a WebAPI-t a .NET (OWIN) és a ASP.NET Core nyílt web
 > **Mikor kell használni:** A Service Fabric jó választás, ha egy alkalmazást hoz létre, vagy egy meglévő alkalmazást telepít át egy Service-architektúra használatára. A Service Fabric akkor érdemes használni, ha a mögöttes infrastruktúrát nagyobb mértékben kell megadnia, vagy közvetlenül hozzá kell férnie.
 >
 > Első **lépések:** [hozza létre első Azure Service Fabric alkalmazását](../../service-fabric/service-fabric-tutorial-create-dotnet-app.md).
+
+#### <a name="azure-spring-cloud"></a>Azure Spring Cloud
+
+Az Azure Spring Cloud egy kiszolgáló nélküli, a felhőben futó alkalmazások létrehozására, üzembe helyezésére, méretezésére és figyelésére szolgáló platform. A Spring Cloud segítségével modern, a tavaszi rendszerindítást lehetővé téve a korszerű Service-mintákat, így a szabványos programkódok segítségével gyorsan készíthet robusztus Java-alkalmazásokat.
+
+- Kihasználhatja a Spring Cloud Service Discovery és a config Server felügyelt verzióit, miközben biztosítjuk, hogy ezek a kritikus összetevők optimális feltételek mellett fussanak.
+- Koncentráljon az üzleti logikára, és a biztonsági javítások, a megfelelőségi szabványok és a magas rendelkezésre állás érdekében gondoskodunk a szolgáltatás futtatókörnyezetéről.
+- Az alkalmazások életciklusának kezelése (például: üzembe helyezés, indítás, Leállítás, méretezés) az Azure Kubernetes szolgáltatáson felül.
+- Könnyedén összekapcsolhatja az alkalmazások és az Azure-szolgáltatások, például a Azure Database for MySQL és az Azure cache közötti kapcsolatokat a Redis.
+- A nagyvállalati szintű, egységesített figyelési eszközöket használó, nagy teljesítményű és az alkalmazás-függőségekre és az operatív telemetria vonatkozó részletes bepillantást nyújtó, nagyvállalati szintű, egységes monitorozást biztosító
+
+> **Mikor kell használni:** Az Azure Spring Cloud teljes körűen felügyelt szolgáltatásának használata jó választás, ha az Azure-on futó Spring boot/Spring Cloud-alapú Service-szolgáltatások minimálisra csökkentik a működési költségeket. 
+>
+> Első **lépések:** [az első Azure Spring Cloud-alkalmazás üzembe helyezése](../../spring-cloud/spring-cloud-quickstart.md).
+
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Alkalmazások fejlesztése az Azure-szolgáltatásokkal
 

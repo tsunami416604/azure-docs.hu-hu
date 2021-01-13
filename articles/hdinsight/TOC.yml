@@ -38,7 +38,7 @@
           href: ./hdinsight-sdk-python-samples.md
         - name: Azure-minták böngészője
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
-    - name: Alapelvek
+    - name: Fogalmak
       items:
         - name: Apache-összetevők a HDInsighton
           href: ./hdinsight-component-versioning.md
@@ -355,6 +355,8 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: Migrálás a Spark 2.3-as vagy 2.4-es verziójába
           href: ./spark/migrate-versions.md
+        - name: Az Apache Sparkhoz készült .NET frissítése az 1.0-s verzióra
+          href: ./spark/spark-dotnet-version-update.md
     - name: Útmutatók
       items:
         - name: Eszközök használata
