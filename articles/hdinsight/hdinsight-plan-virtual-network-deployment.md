@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 05/04/2020
-ms.openlocfilehash: 2d6d18cc73c02d3139074555fdd22a40c797ce40
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/12/2021
+ms.openlocfilehash: 429f0b2ffe486279a1c429fc7a153e6528642f54
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825151"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131661"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat megtervezése az Azure HDInsight
 
@@ -51,7 +51,8 @@ A HDInsight virtuális hálózatban való telepítésének tervezésekor a köve
 Az ebben a szakaszban ismertetett lépések segítségével megtudhatja, hogyan adhat hozzá új HDInsight egy meglévő Azure-Virtual Networkhoz.
 
 > [!NOTE]  
-> Meglévő HDInsight-fürtöt nem adhat hozzá virtuális hálózathoz.
+> - Meglévő HDInsight-fürtöt nem adhat hozzá virtuális hálózathoz.
+> - A VNET és a létrehozandó fürtnek ugyanahhoz az előfizetéshez kell tartoznia.
 
 1. Klasszikus vagy Resource Manager-alapú üzemi modellt használ a virtuális hálózathoz?
 
@@ -205,7 +206,7 @@ Az Apache Ambari és más weboldalakhoz a virtuális hálózaton keresztül tör
 
 HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terheléselosztó típusa az alapszintű [SKU szintjén](../load-balancer/skus.md)van, amely bizonyos korlátozásokkal rendelkezik. Ezen megkötések egyike az, hogy ha két virtuális hálózattal rendelkezik különböző régiókban, akkor nem lehet alapszintű terheléselosztóhoz csatlakozni. További információért lásd [a Virtual Networks gyakori kérdések: a globális vnet-társítás korlátozásai](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-beli virtuális hálózatok létrehozásával kapcsolatos Példákért lásd: [virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md).
 * A helyszíni hálózathoz való kapcsolódás HDInsight konfigurálásának teljes körű példáját lásd: [a HDInsight összekapcsolása egy helyszíni hálózattal](./connect-on-premises-network.md).

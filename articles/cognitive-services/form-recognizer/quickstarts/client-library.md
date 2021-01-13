@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtár'
+title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtár vagy REST API'
 titleSuffix: Azure Cognitive Services
-description: Az űrlap-felismerő ügyféloldali kódtár használatával létrehozhat egy űrlapot feldolgozó alkalmazást, amely Kinyeri a kulcs/érték párokat és a tábla adatait az egyéni dokumentumokból.
+description: Az űrlap-felismerő ügyféloldali kódtár vagy REST API használatával létrehozhat egy űrlap-feldolgozó alkalmazást, amely Kinyeri a kulcs/érték párokat és a tábla adatait az egyéni dokumentumokból.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -13,23 +13,23 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: űrlapok feldolgozása, automatizált adatfeldolgozás
-ms.openlocfilehash: d099feff76d74f358a7d7958fb10406a5b8dc188
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c915e7753487eba284d89dbb480f9848e90c1ef1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029032"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132283"
 ---
-# <a name="quickstart-use-the-form-recognizer-client-library"></a>Gyors útmutató: az űrlap-felismerő ügyféloldali kódtár használata
+# <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>Gyors útmutató: az űrlap-felismerő ügyféloldali kódtár vagy REST API használata
 
-Az űrlap-felismerő használatának első lépései a választott nyelven. Az Azure Form-felismerő egy olyan kognitív szolgáltatás, amely lehetővé teszi a gépi tanulási technológia használatával automatizált adatfeldolgozási szoftverek készítését. Azonosíthatja és kinyerheti a szöveges, kulcs/érték párokat és táblázatos adatokat az űrlap dokumentumaiból &mdash; a szolgáltatás olyan strukturált adatokat jelenít meg, amelyek tartalmazzák az eredeti fájl kapcsolatait. Az alábbi lépéseket követve telepítheti az SDK-csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. Az űrlap-felismerő ügyféloldali kódtár jelenleg az űrlap-felismerő szolgáltatás v 2.0-s verzióját célozza meg.
+Az űrlap-felismerő használatának első lépései a választott nyelven. Az Azure Form-felismerő egy olyan kognitív szolgáltatás, amely lehetővé teszi a gépi tanulási technológia használatával automatizált adatfeldolgozási szoftverek készítését. Azonosíthatja és kinyerheti a szöveget, kulcs/érték párokat, a kiválasztási jeleket, a táblák adatait, valamint az űrlap dokumentumaiból származó adatokat, &mdash; a szolgáltatás az eredeti fájlban lévő kapcsolatokat tartalmazó strukturált adatokat jeleníti meg. Az űrlap-felismerőt a REST API vagy az SDK segítségével használhatja. Az alábbi lépéseket követve telepítheti az SDK-csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. 
 
-Használja az űrlap-felismerő ügyféloldali függvénytárát a következőre:
+Űrlap-felismerő használata a következőhöz:
 
-* [Űrlap tartalmának felismerése](#recognize-form-content)
-* [Visszaigazolások felismerése](#recognize-receipts)
-* [Névjegykártyák felismerése](#recognize-business-cards)
-* [Számlák felismerése](#recognize-invoices)
+* [Elrendezés elemzése](#analyze-layout)
+* [Visszaigazolások elemzése](#analyze-receipts)
+* [Üzleti kártyák elemzése](#analyze-business-cards)
+* [Számlák elemzése](#analyze-invoices)
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7f0ca83c194aae6f4a8d04d70c2d4f3746ad2ca5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 828f37030ae567cacbaad25849b7ba24c561c20c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446718"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132766"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Az Azure szinapszis Analytics terminológiája
 
@@ -38,7 +38,7 @@ A szinapszis Studióban az SQL-készleteket **SQL-parancsfájlok** létrehozás�
 
 ## <a name="apache-spark-for-synapse"></a>A szinapszis Apache Spark
 
-A Spark Analytics használatához hozzon létre és használjon **kiszolgáló nélküli Apache Spark készleteket** a szinapszis munkaterületen. A Spark-készlet használatának megkezdése során a munkaterületek egy **Spark-munkamenetet** hoznak létre, amely az adott munkamenethez tartozó erőforrásokat kezeli a assosociated. 
+A Spark Analytics használatához hozzon létre és használjon **kiszolgáló nélküli Apache Spark készleteket** a szinapszis munkaterületen. A Spark-készlet használatának megkezdése során a munkaterületek egy **Spark-munkamenetet** hoznak létre az adott munkamenethez társított erőforrások kezeléséhez. 
 
 A (z)-ben kétféleképpen használhatja a Sparkot:
 * Az adatelemzést és-fejlesztést végző **Spark notebookok** a Scala, a PySpark, a C# és a SparkSQL használatával
@@ -54,9 +54,9 @@ A folyamatok az Azure szinapszis adatintegrációját biztosítják – lehetőv
 * **Trigger** – folyamat végrehajtása. Futtatható manuálisan vagy automatikusan (Schedule, bukdácsoló ablak vagy eseményvezérelt)
 * **Integrációs adatkészlet** – olyan adatok elnevezett nézete, amelyek egyszerűen rámutatnak vagy hivatkoznak egy tevékenységben bemenetként és kimenetként használandó adatokra. Egy társított szolgáltatáshoz tartozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
+* [Az Azure Synapse Analytics első lépései](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)
 * [Kiszolgáló nélküli SQL-készlet használata](quickstart-sql-on-demand.md)
 

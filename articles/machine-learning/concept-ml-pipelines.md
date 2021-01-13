@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 08/17/2020
+ms.date: 01/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: c29ee87ab177357f4289134bb39353c764a0d75b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ee3d7d1cf285573db894d64549cf79babb517d95
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535299"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131287"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
 
@@ -37,11 +37,11 @@ Ezek az előnyök jelentősek lesznek, amint a gépi tanulási projekt a tiszta 
 
 Az Azure-felhő számos más folyamatot is biztosít, amelyek mindegyike más célra szolgál. A következő táblázat felsorolja a különböző folyamatokat, és azt, hogy mire szolgálnak:
 
-| Használati példa | Elsődleges persona | Azure-ajánlat | OSS-ajánlat | Kanonikus cső | Erősségeit | 
+| Használati eset | Elsődleges persona | Azure-ajánlat | OSS-ajánlat | Kanonikus cső | Erősségeit | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
-| Modell-előkészítés (gépi tanulás) | Adattudós | Azure Machine Learning folyamatok | Kubeflow-folyamatok | Adat> modell | Eloszlás, gyorsítótárazás, kód – első, újrafelhasználás | 
-| Adat-előkészítés (adat-előkészítés) | Adatmérnök | [Azure Data Factory-folyamatok](../data-factory/concepts-pipelines-activities.md) | Apache légáram | Adat>i adatszolgáltatások | Szigorúan beírt mozgás, adatközpontú tevékenységek |
-| Kód & alkalmazás-előkészítés (CI/CD) | Alkalmazás fejlesztője/Ops | [Azure DevOps-folyamatok](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + Model – > alkalmazás/szolgáltatás | A legtöbb nyitott és rugalmas tevékenység támogatása, jóváhagyási várólisták, fázisok és kapuzás | 
+| Modell-előkészítés (gépi tanulás) | Adatelemző | Azure Machine Learning folyamatok | Kubeflow-folyamatok | Adat> modell | Eloszlás, gyorsítótárazás, kód – első, újrafelhasználás | 
+| Adat-előkészítés (adat-előkészítés) | Adatszakértő | [Azure Data Factory-folyamatok](../data-factory/concepts-pipelines-activities.md) | Apache légáram | Adat>i adatszolgáltatások | Szigorúan beírt mozgás, adatközpontú tevékenységek |
+| Kód & alkalmazás-előkészítés (CI/CD) | Alkalmazás fejlesztője/Ops | [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + Model – > alkalmazás/szolgáltatás | A legtöbb nyitott és rugalmas tevékenység támogatása, jóváhagyási várólisták, fázisok és kapuzás | 
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Mit tehet az Azure ML-folyamatok?
 
@@ -107,15 +107,18 @@ experiment = Experiment(ws, 'MyExperiment')
 input_data = Dataset.File.from_files(
     DataPath(datastore, '20newsgroups/20news.pkl'))
 
-output_data = PipelineData("output_data", datastore=blob_store)
-
+dataprep_step = PythonScriptStep(
+    name="prep_data",
+    script_name="dataprep.py",
+    compute_target=cluster,
+    arguments=[input_dataset.as_named_input('raw_data').as_mount(), dataprep_output]
+    )
+output_data = OutputFileDatasetConfig()
 input_named = input_data.as_named_input('input')
 
 steps = [ PythonScriptStep(
     script_name="train.py",
     arguments=["--input", input_named.as_download(), "--output", output_data],
-    inputs=[input_data],
-    outputs=[output_data],
     compute_target=compute_target,
     source_directory="myfolder"
 ) ]
@@ -126,7 +129,9 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-A kódrészlet a Common Azure Machine Learning Objects, a, a `Workspace` `Datastore` , a [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)és a () karakterrel kezdődik `Experiment` . Ezután a kód létrehozza a tárolni kívánt objektumokat `input_data` `output_data` . A tömb `steps` egyetlen elemet `PythonScriptStep` tartalmaz, amely az adatobjektumokat fogja használni, és futtatja a parancsot `compute_target` . Ezután a kód maga hozza létre az `Pipeline` objektumot, és átadja a munkaterületet és a Steps tömböt. Az `experiment.submit(pipeline)` Azure ml-folyamat futtatásának megkezdésére irányuló hívás. A `wait_for_completion()` folyamat befejeződéséig a blokkoló hívás. 
+A kódrészlet a Common Azure Machine Learning Objects, a, a `Workspace` `Datastore` , a [ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py)és a () karakterrel kezdődik `Experiment` . Ezután a kód létrehozza a tárolni kívánt objektumokat `input_data` `output_data` . A a `input_data` [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py&preserve-view=true) egy példánya, a `output_data` pedig a  [OutputFileDatasetConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true)példánya. Az `OutputFileDatasetConfig` alapértelmezett viselkedés a kimenet másolása az `workspaceblobstore` adattárba az elérési út alatt `/dataset/{run-id}/{output-name}` , ahol a a `run-id` Futtatás azonosítója, és `output-name` egy automatikusan generált érték, ha a fejlesztő nem adja meg.
+
+A tömb `steps` egyetlen elemet `PythonScriptStep` tartalmaz, amely az adatobjektumokat fogja használni, és futtatja a parancsot `compute_target` . Ezután a kód maga hozza létre az `Pipeline` objektumot, és átadja a munkaterületet és a Steps tömböt. Az `experiment.submit(pipeline)` Azure ml-folyamat futtatásának megkezdésére irányuló hívás. A `wait_for_completion()` folyamat befejeződéséig a blokkoló hívás. 
 
 Ha többet szeretne megtudni a folyamat adataihoz való csatlakoztatásáról, tekintse meg az [adathozzáférés a Azure Machine Learningban](concept-data.md) és az adatáthelyezés a következőbe: [ml-folyamat lépései (Python)](how-to-move-data-in-out-of-pipelines.md)című cikk adatait. 
 

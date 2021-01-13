@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 08/26/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: 4cbe43f224ddf349db6b182feb3a717bb2bfd32e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1b9d515c197b56f7e0520539b23be60504059675
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358830"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131253"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
 
@@ -25,7 +25,7 @@ A Azure Machine Learning automatizált ML-funkciói lehetővé teszik a nagy tel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  
 
@@ -37,11 +37,7 @@ A folyamatokban az automatikus ML-t egy `AutoMLStep` objektum jelképezi. Az `Au
 
 A több alosztálya is létezik `PipelineStep` . A on kívül `AutoMLStep` Ez a cikk az `PythonScriptStep` adatok előkészítését és egy másikat is megjeleníti a modell regisztrálásához.
 
-Az első lépés az, _Ha az adatátvitelt egy ml_ -folyamatba kívánja használni, az `Dataset` objektumokkal. A lépések _közötti_ adatáthelyezéshez az előnyben részesített módszer az `PipelineData` objektumok használata. A szolgáltatással való használathoz `AutoMLStep` az `PipelineData` objektumot át kell alakítani egy `PipelineOutputTabularDataset` objektumba. További információ: [bemeneti és kimeneti adatok a ml-folyamatokból](how-to-move-data-in-out-of-pipelines.md).
-
-
-> [!TIP]
-> Az ideiglenes adatátviteli folyamat lépéseinek átadását továbbfejlesztettük a nyilvános előzetes osztályokban,  [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) és [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) .  Ezek az osztályok [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) előzetes funkciók, és bármikor változhatnak.
+Az első lépés az, _Ha az adatátvitelt egy ml_ -folyamatba kívánja használni, az `Dataset` objektumokkal. Ha át szeretné helyezni az adatokat a lépések _között_ , és lehetséges az adatok kimenetének mentése a futtatásokból, az előnyben részesített mód [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) és az [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) objektumok. A szolgáltatással való használathoz `AutoMLStep` az `PipelineData` objektumot át kell alakítani egy `PipelineOutputTabularDataset` objektumba. További információ: [bemeneti és kimeneti adatok a ml-folyamatokból](how-to-move-data-in-out-of-pipelines.md).
 
 A `AutoMLStep` konfigurálása egy `AutoMLConfig` objektumon keresztül történik. `AutoMLConfig` a egy rugalmas osztály, amelyet az [automatikus ml-kísérletek konfigurálása a Pythonban](./how-to-configure-auto-train.md#configure-your-experiment-settings)című cikkben talál. 
 
@@ -49,7 +45,7 @@ Egy `Pipeline` fut az a-ben `Experiment` . A folyamat `Run` minden egyes lépés
 
 A dolgok konkrét elvégzéséhez ez a cikk egy egyszerű folyamatot hoz létre egy besorolási feladathoz. A feladat a Titanic túlélésének előrejelzése, de az adatok vagy a feladat nem kerül megvitatásra, kivéve az átadást.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 ### <a name="retrieve-initial-dataset"></a>Kezdeti adatkészlet beolvasása
 
@@ -149,8 +145,7 @@ A Titanic alapkészlete vegyes numerikus és szöveges adatokat tartalmaz, és n
 - Kategorikus érték átalakítása egész számmá
 - A használni nem kívánt oszlopok eldobása
 - Az adat felosztása képzési és tesztelési csoportokra
-- Az átalakított adatértékek megírása vagy
-    - `PipelineData` kimeneti elérési utak
+- Az átalakított adatokat a `OutputFileDatasetConfig` kimeneti elérési utakra írja
 
 ```python
 %%writefile dataprep.py
@@ -220,7 +215,7 @@ A fenti kódrészlet egy teljes, de minimális példa a Titanic-adatfeldolgozás
 
 A `prepare_` fenti kódrészletben szereplő különféle függvények módosítják a bemeneti adatkészlet megfelelő oszlopát. Ezek a függvények az adatokon működnek, ha egy Panda `DataFrame` objektumba módosították. Minden esetben a hiányzó adat a reprezentatív véletlenszerű adatmennyiséggel vagy az "ismeretlen" jelzéssel ellátott kategorikus adattal van kitöltve. A szöveg-alapú kategorikus adathalmazok egész számokra vannak leképezve. A már nem szükséges oszlopok felülírása vagy eldobása nem történik meg. 
 
-Miután a kód definiálta az adat-előkészítési függvényeket, a kód elemzi a bemeneti argumentumot, amely az az elérési út, ahová az adatokat írni szeretnénk. (Ezek `PipelineData` az értékek a következő lépésben tárgyalt objektumok alapján lesznek meghatározva.) A kód lekéri a regisztrált `'titanic_cs'` `Dataset` , átalakítja egy pandare `DataFrame` , és meghívja a különböző adat-előkészítési funkciókat. 
+Miután a kód definiálta az adat-előkészítési függvényeket, a kód elemzi a bemeneti argumentumot, amely az az elérési út, ahová az adatokat írni szeretnénk.  (Ezek `OutputFileDatasetConfig` az értékek a következő lépésben tárgyalt objektumok alapján lesznek meghatározva.) A kód lekéri a regisztrált `'titanic_cs'` `Dataset` , átalakítja egy pandare `DataFrame` , és meghívja a különböző adat-előkészítési funkciókat. 
 
 Mivel a `output_path` teljes mértékben minősített, a függvény a `os.makedirs()` címtár struktúrájának előkészítésére szolgál. Ezen a ponton használhatja `DataFrame.to_csv()` a kimeneti adatokat, de a parketta-fájlok hatékonyabbak. Ez a hatékonyság valószínűleg lényegtelen lenne egy ilyen kis adatkészletnél, de a **PyArrow** -csomag `from_pandas()` és a `write_table()` függvények használata csak néhány billentyűleütést jelent, mint a `to_csv()` .
 
@@ -228,30 +223,27 @@ A Parquet-fájlok natív módon támogatottak az alábbiakban tárgyalt automati
 
 ### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>Az adatelőkészítési folyamat lépésének () megírása `PythonScriptStep`
 
-A fent ismertetett adatelőkészítési kódnak társítania kell egy, a `PythonScripStep` folyamathoz használandó objektumot. Egy objektum hozza létre az elérési utat, amelybe a parketta adatelőkészítési kimenetét írja `PipelineData` . A korábban előkészített erőforrások, például a, `ComputeTarget` a `RunConfig` és a, a `'titanic_ds' Dataset` specifikáció végrehajtásához használatosak.
+A fent ismertetett adatelőkészítési kódnak társítania kell egy, a `PythonScripStep` folyamathoz használandó objektumot. Egy objektum hozza létre az elérési utat, amelybe a parketta adatelőkészítési kimenetét írja `OutputFileDatasetConfig` . A korábban előkészített erőforrások, például a, `ComputeTarget` a `RunConfig` és a, a `'titanic_ds' Dataset` specifikáció végrehajtásához használatosak.
 
 PipelineData-felhasználók
 ```python
-from azureml.pipeline.core import PipelineData
-
+from azureml.data import OutputFileDatasetConfig
 from azureml.pipeline.steps import PythonScriptStep
-prepped_data_path = PipelineData("titanic_train", datastore).as_dataset()
+
+prepped_data_path = OutputFileDatasetConfig(name="titanic_train", (destination=(datastore, 'outputdataset')))
 
 dataprep_step = PythonScriptStep(
     name="dataprep", 
     script_name="dataprep.py", 
     compute_target=compute_target, 
     runconfig=aml_run_config,
-    arguments=["--output_path", prepped_data_path],
+    arguments=[titanic_ds.as_named_input('titanic_ds').as_mount(), prepped_data_path],
     inputs=[titanic_ds.as_named_input("titanic_ds")],
     outputs=[prepped_data_path],
     allow_reuse=True
 )
 ```
-Az `prepped_data_path` objektum típusa `PipelineOutputFileDataset` . Figyelje meg, hogy a és az argumentumokban is meg van adva `arguments` `outputs` . Ha áttekinti az előző lépést, látni fogja, hogy az adatelőkészítési kódban az argumentum értéke annak `'--output_path'` a fájlnak az elérési útja, amelybe a Parquet fájl íródott. 
-
-> [!TIP]
-> A köztes adatátviteli folyamat lépéseinek átadásával kapcsolatos továbbfejlesztett élmény a nyilvános előzetes verzióban érhető el [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Az osztályt használó kódrészletek esetében `OutputFileDatasetConfig` tekintse meg a [két lépésből álló ml-folyamat](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)létrehozása című témakört.
+Az `prepped_data_path` objektum olyan típusú, `OutputFileDatasetConfig` amely egy könyvtárra mutat.  Figyelje meg, hogy a paraméterben meg van adva `arguments` . Ha áttekinti az előző lépést, látni fogja, hogy az adatelőkészítési kódban az argumentum értéke annak `'--output_path'` a fájlnak az elérési útja, amelybe a Parquet fájl íródott. 
 
 ## <a name="train-with-automlstep"></a>Tanítás AutoMLStep
 
@@ -259,18 +251,13 @@ Az automatikus ML-folyamat konfigurálása lépés az `AutoMLConfig` osztálysal
 
 ### <a name="send-data-to-automlstep"></a>Az adatküldés `AutoMLStep`
 
-ML-folyamatokban a bemeneti adatoknak `Dataset` objektumnak kell lenniük. A legnagyobb teljesítményű mód az, hogy a bemeneti adatokat objektumok formájában adja meg `PipelineOutputTabularDataset` . Ilyen típusú objektumot a `parse_parquet_files()` vagy a (z) vagy `parse_delimited_files()` a (z `PipelineOutputFileDataset` ), például az `prepped_data_path` objektummal hozhat létre.
+ML-folyamatokban a bemeneti adatoknak `Dataset` objektumnak kell lenniük. A legnagyobb teljesítményű mód az, hogy a bemeneti adatokat objektumok formájában adja meg `OutputTabularDatasetConfig` . Ehhez a típushoz a (z), például a (z) és a (z), például a (z) objektumot kell létrehoznia  `read_delimited_files()` `OutputFileDatasetConfig` `prepped_data_path` `prepped_data_path` .
 
 ```python
-# type(prepped_data_path) == PipelineOutputFileDataset
-# type(prepped_data) == PipelineOutputTabularDataset
-prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
+# type(prepped_data_path) == OutputFileDatasetConfig
+# type(prepped_data) == OutputTabularDatasetConfig
+prepped_data = prepped_data_path.read_delimited_files()
 ```
-
-A fenti kódrészlet magas teljesítményt eredményez az `PipelineOutputTabularDataset` `PipelineOutputFileDataset` adatelőkészítési lépés kimenetében.
-
-> [!TIP]
-> A nyilvános előzetes verzió osztálya [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) tartalmazza azt a [read_delimited_files ()](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) metódust, amely átalakítja a `OutputFileDatasetConfig` into a-t az [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) AutoML-ben való felhasználásra.
 
 Egy másik lehetőség a `Dataset` munkaterületen regisztrált objektumok használata:
 
@@ -282,10 +269,10 @@ A két módszer összehasonlítása:
 
 | Módszer | Előnyök és hátrányok | 
 |-|-|
-|`PipelineOutputTabularDataset`| Nagyobb teljesítmény | 
+|`OutputTabularDatasetConfig`| Nagyobb teljesítmény | 
 || Természetes útvonal innen: `PipelineData` | 
 || A folyamat futtatása után nem őrzi meg az adattárolást |
-|| [A `PipelineOutputTabularDataset` technikát bemutató jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
+|| [A `OutputTabularDatasetConfig` technikát bemutató jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
 | Regisztrált `Dataset` | Alacsonyabb teljesítmény |
 | | Számos módon hozható létre | 
 | | Az adatmegőrzés és a munkaterület teljes egészében látható |
@@ -294,7 +281,7 @@ A két módszer összehasonlítása:
 
 ### <a name="specify-automated-ml-outputs"></a>Automatikus ML kimenetek meghatározása
 
-A kimenetei a `AutoMLStep` magasabb teljesítményű modell és a modell végső mérőszámának eredményei. Ha ezeket a kimeneteket a további folyamat lépéseiben szeretné használni, készítse elő az `PipelineData` objektumokat a fogadásához.
+A kimenetei a `AutoMLStep` magasabb teljesítményű modell és a modell végső mérőszámának eredményei. Ha ezeket a kimeneteket a további folyamat lépéseiben szeretné használni, készítse elő az `OutputFileDatasetConfig` objektumokat a fogadásához.
 
 ```python
 

@@ -6,12 +6,12 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6bdad71f0b36995abdeb3b1edb87cbef32df8b67
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 115e1ec347cdcd80904b47a0c8798206360d0dad
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919419"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131780"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Gyorsútmutató: Az Application Insights használatba vétele egy webes Java-projektben
 
@@ -56,7 +56,7 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
         <artifactId>applicationinsights-web-auto</artifactId>
         <!-- or applicationinsights-web for manual web filter registration -->
         <!-- or applicationinsights-core for bare API -->
-        <version>2.5.0</version>
+        <version>2.6.2</version>
       </dependency>
     </dependencies>
 ```
@@ -69,15 +69,11 @@ Ezután frissítse a projektfüggőségeket, hogy letöltse a bináris fájlokat
 
 ```gradle
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.5.0'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.6.2'
       // or applicationinsights-web for manual web filter registration
       // or applicationinsights-core for bare API
     }
 ```
-
-# <a name="other-types"></a>[Egyéb típusok](#tab/other)
-
-Töltse le a [legújabb verziót](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest), és a korábbi verziókat felülírva másolja a szükséges fájlokat a projektbe.
 
 ---
 
@@ -88,10 +84,7 @@ Töltse le a [legújabb verziót](https://github.com/Microsoft/ApplicationInsigh
   * `applicationinsights-core` csak az operációs rendszer nélküli API-t biztosítja, például ha az alkalmazás nem servlet-alapú.
   
 * *Hogyan frissíthetek az SDK legújabb verziójára?*
-  * Ha Gradle vagy Mavent használ...
-    * Frissítse a Build-fájlt, és adja meg a legújabb verziót.
-  * Ha manuálisan kezeli a függőségeket...
-    * Töltse le a legújabb [Javához készült Application Insights SDK-t](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest), és cserélje le a régieket. A változások leírását az [SDK kiadási megjegyzéseiben](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) találja.
+  * A Java-alkalmazások figyelésére november 2020-én a Azure Monitor Application Insights Java 3,0-ügynököt használó automatikus rendszerállapotot javasoljuk. További információ az első lépésekről: [Application Insights Java 3,0-ügynök](./java-in-process-agent.md).
 
 ## <a name="add-an-applicationinsightsxml-file"></a>*ApplicationInsights.xml* fájl hozzáadása
 Adja hozzá *ApplicationInsights.xml* a projekt erőforrások mappájához, vagy győződjön meg arról, hogy a projekt üzembe helyezési osztályának elérési útjához van adva. Másolja bele a következő XML-t.
@@ -168,10 +161,6 @@ A HTTP-kérelemadatok az áttekintési panelen jelennek meg. (Ha nincsenek ott, 
 Részletesebb összesített mérőszámokért kattintson bármelyik diagramra.
 
 ![Application Insights hibák panel diagramokkal](./media/java-get-started/006-barcharts.png)
-
-<!--
-[TODO update image with 2.5.0 operation naming provided by agent]
--->
 
 ### <a name="instance-data"></a>Példányadatok
 Kattintson az adott kérelemtípusokra az egyes példányok megtekintéséhez.

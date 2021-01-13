@@ -3,21 +3,21 @@ title: Diagnosztikai naplók beállítása – Azure Event hub | Microsoft Docs
 description: Ismerje meg, hogyan állíthatja be a tevékenységek naplóit és a diagnosztikai naplókat az Azure-beli Event hubokhoz.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912599"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131984"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnosztikai naplók beállítása az Azure-eseményközpontokhoz
 
 Az Azure Event Hubs-hoz két típusú naplót tekinthet meg:
 
-* **[Tevékenységnaplók](../azure-monitor/platform/platform-logs-overview.md)** : ezek a naplók egy adott feladaton végzett műveletekkel kapcsolatos információkat tartalmaznak. A naplók mindig engedélyezve vannak. A tevékenység naplójának bejegyzései a Azure Portalban az Event hub-névtér bal oldali ablaktábláján a **műveletnapló** lehetőség kiválasztásával láthatók. Például: "névtér létrehozása vagy frissítése", "az Event hub létrehozása vagy frissítése".
+* **[Tevékenységnaplók](../azure-monitor/platform/platform-logs-overview.md)**: ezek a naplók egy adott feladaton végzett műveletekkel kapcsolatos információkat tartalmaznak. A naplók mindig engedélyezve vannak. A tevékenység naplójának bejegyzései a Azure Portalban az Event hub-névtér bal oldali ablaktábláján a **műveletnapló** lehetőség kiválasztásával láthatók. Például: "névtér létrehozása vagy frissítése", "az Event hub létrehozása vagy frissítése".
 
     ![Event Hubs névtérhez tartozó műveletnapló](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md)** : a diagnosztikai naplók részletes információkat biztosítanak a névtérhez az API használatával vagy a Language SDK felügyeleti ügyfelein keresztül végrehajtott műveletekről és műveletekről. 
+* **[Diagnosztikai naplók](../azure-monitor/platform/platform-logs-overview.md)**: a diagnosztikai naplók részletes információkat biztosítanak a névtérhez az API használatával vagy a Language SDK felügyeleti ügyfelein keresztül végrehajtott műveletekről és műveletekről. 
     
     A következő szakasz bemutatja, hogyan engedélyezheti a diagnosztikai naplókat egy Event Hubs névtérhez.
 
@@ -70,7 +70,7 @@ Név | Leírás
 `archiveStep` | lehetséges értékek: ArchiveFlushWriter, DestinationInit
 `startTime` | Sikertelen kezdési idő
 `failures` | A hiba előfordulási idejének száma
-`durationInSeconds` | Hiba időtartama
+`durationInSeconds` | A hiba időtartama
 `message` | Hibaüzenet
 `category` | ArchiveLogs
 
@@ -100,12 +100,12 @@ Az operatív napló JSON-karakterláncai az alábbi táblázatban felsorolt elem
 Név | Leírás
 ------- | -------
 `ActivityId` | Belső azonosító, követési célokra használatos |
-`EventName` | Művelet neve |
+`EventName` | A művelet neve. Az elem értékeinek listáját az [események nevei](#event-names) részben tekintheti meg. |
 `resourceId` | Erőforrás-azonosító Azure Resource Manager |
 `SubscriptionId` | Előfizetés azonosítója |
 `EventTimeString` | Működési idő |
-`EventProperties` | Művelet tulajdonságai |
-`Status` | Művelet állapota |
+`EventProperties` |A művelet tulajdonságai. Ez az elem további információkat nyújt az eseményről az alábbi példában látható módon. |
+`Status` | Művelet állapota. Az érték lehet **sikeres** vagy **sikertelen**.  |
 `Caller` | A művelet hívója (Azure Portal vagy felügyeleti ügyfél) |
 `Category` | OperationalLogs |
 
@@ -125,6 +125,13 @@ Example:
    "category": "OperationalLogs"
 }
 ```
+
+### <a name="event-names"></a>Események nevei
+Az esemény neve a művelet típusa + erőforrástípus a következő enumerálások alapján. Például:, `Create Queue` , `Retrieve Event Hu` vagy `Delete Rule` . 
+
+| Művelettípus | Erőforrás típusa | 
+| -------------- | ------------- | 
+| <ul><li>Létrehozás</li><li>Frissítés</li><li>Törlés</li><li>Beolvasni</li><li>Ismeretlen</li></ul> | <ul><li>Névtér</li><li>Üzenetsor</li><li>Témakör</li><li>Előfizetés</li><li>EventHub</li><li>EventHubSubscription</li><li>NotificationHub</li><li>NotificationHubTier</li><li>SharedAccessPolicy</li><li>UsageCredit</li><li>NamespacePnsCredentials</li>Szabály</li>ConsumerGroup</li> |
 
 ## <a name="autoscale-logs-schema"></a>Naplók autoskálázása séma
 Az autoscale log JSON az alábbi táblázatban felsorolt elemeket tartalmazza:
@@ -195,12 +202,12 @@ Event Hubs Virtual Network (VNet) kapcsolati esemény JSON az alábbi táblázat
 | `SubscriptionId` | Azure-előfizetés azonosítója |
 | `NamespaceName` | Névtér neve |
 | `IPAddress` | Az Event Hubs szolgáltatáshoz csatlakozó ügyfél IP-címe |
-| `Action` | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek **elfogadják a kapcsolatokat** , és **megtagadják a kapcsolatokat** . |
+| `Action` | A Event Hubs szolgáltatás által a kapcsolódási kérelmek kiértékelése során végzett művelet. A támogatott műveletek **elfogadják a kapcsolatokat** , és **megtagadják a kapcsolatokat**. |
 | `Reason` | A művelet elvárt okát adja meg |
 | `Count` | Az adott művelet előfordulásainak száma |
 | `ResourceId` | Azure Resource Manager erőforrás-azonosító. |
 
-A virtuális hálózati naplók csak akkor jönnek létre, ha a névtér engedélyezi a hozzáférést a **kiválasztott hálózatokról** vagy **adott IP-címekről** (IP-szűrési szabályok). Ha nem szeretné korlátozni a névtér elérését ezekkel a szolgáltatásokkal, és továbbra is szeretné lekérni a virtuális hálózati naplókat a Event Hubs névtérhez csatlakozó ügyfelek IP-címeinek nyomon követéséhez, az alábbi megkerülő megoldást használhatja. Engedélyezze az IP-szűrést, és adja hozzá a teljes címezhető IPv4-tartományt (1.0.0.0/1-255.0.0.0/1). A Event Hubs nem támogatja az IPv6-tartományokat. 
+A virtuális hálózati naplók csak akkor jönnek létre, ha a névtér engedélyezi a hozzáférést a **kiválasztott hálózatokról** vagy **adott IP-címekről** (IP-szűrési szabályok). Ha nem szeretné korlátozni a névtérhez való hozzáférést ezekkel a funkciókkal, és továbbra is szeretné lekérni a virtuális hálózati naplókat a Event Hubs névtérhez csatlakozó ügyfelek IP-címeinek nyomon követéséhez, a következő megkerülő megoldást használhatja. Engedélyezze az IP-szűrést, és adja hozzá a teljes címezhető IPv4-tartományt (1.0.0.0/1-255.0.0.0/1). A Event Hubs nem támogatja az IPv6-tartományokat. 
 
 ### <a name="example"></a>Példa
 

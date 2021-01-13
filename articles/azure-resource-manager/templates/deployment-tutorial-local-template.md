@@ -1,16 +1,16 @@
 ---
 title: Oktatóanyag – helyi Azure Resource Manager sablon üzembe helyezése
 description: Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager-sablont (ARM-sablont) a helyi számítógépről
-ms.date: 05/20/2020
+ms.date: 01/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 640d314711e34119dac5e1c5bf9fa245685b6f38
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 3b2368f5adcfa4b7140c4ec00243ca2cba5c566a
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368136"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134126"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>Oktatóanyag: helyi ARM-sablon üzembe helyezése
 
@@ -26,7 +26,7 @@ Kezdjük azzal, hogy megbizonyosodjon arról, hogy rendelkezik a sablonok üzemb
 
 A sablon üzembe helyezéséhez Azure PowerShell vagy Azure CLI szükséges. A telepítési utasításokért lásd:
 
-- [Azure PowerShell telepítése](/powershell/azure/install-az-ps)
+- [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
 - [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)
 - [Az Azure CLI telepítése Linux rendszeren](/cli/azure/install-azure-cli-linux)
 - [Az Azure CLI telepítése macOS rendszeren](/cli/azure/install-azure-cli-macos)

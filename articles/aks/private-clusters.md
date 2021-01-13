@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 696ba785abb317a29de38160440dc06487ff5bca
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673885"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133395"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -32,7 +32,7 @@ A privát fürt nyilvános régiókban, Azure Government és Azure China 21Viane
 
 ## <a name="create-a-private-aks-cluster"></a>Privát AK-fürt létrehozása
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot, vagy használjon egy meglévő erőforráscsoportot az AK-fürthöz.
 
@@ -68,17 +68,21 @@ Ahol a egy `--enable-private-cluster` privát fürt kötelező jelzője.
 
 ### <a name="configure-private-dns-zone"></a>saját DNS zóna konfigurálása
 
-Az alapértelmezett érték a "rendszer", ha a--Private-DNS-Zone argumentum nincs megadva. Az AK létrehoz egy saját DNS zónát a csomópont-erőforráscsoporthoz. A "None" paraméter átadása azt jelenti, hogy az AK nem hoz létre saját DNS zónát.  Ez a beállítás a saját DNS-kiszolgáló és a saját FQDN DNS-feloldási konfigurációjának megalapozása alapján működik.  Ha nem konfigurálja a DNS-feloldást, a DNS csak az ügynök-csomópontokon belül oldható fel, és a telepítés után problémát okoz a fürtben.
+A következő paraméterek használhatók a saját DNS zónák konfigurálásához.
+
+1. A "System" az alapértelmezett érték. Ha a--Private-DNS-Zone argumentum ki van hagyva, az AK létrehoz egy saját DNS zónát a csomópont-erőforráscsoporthoz.
+2. A "None" érték azt jelenti, hogy az AK nem hoz létre saját DNS zónát.  Ehhez a saját DNS-kiszolgálót kell használnia, és konfigurálnia kell a DNS-feloldást a privát FQDN számára.  Ha nem konfigurálja a DNS-feloldást, a DNS csak az ügynök-csomópontokon belül oldható fel, és a telepítés után problémát okoz a fürtben.
+3. Az "egyéni DNS-zóna neve" formátumnak ebben a formátumban kell lennie az Azure globális felhőhöz: `privatelink.<region>.azmk8s.io` . A felhasználóhoz rendelt identitást vagy egyszerű szolgáltatásnevet legalább `private dns zone contributor` az egyéni magánhálózati DNS-zónához kell adni.
 
 ## <a name="no-private-dns-zone-prerequisites"></a>Nincs saját DNS zóna előfeltételei
-Nincs PrivateDNSZone
-* Az Azure CLI verziója 0.4.67 vagy újabb verzió
+
+* Az Azure CLI verziója 0.4.71 vagy újabb verzió
 * Az API 2020-11-01-es vagy újabb verziója
 
 ## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Privát AK-fürt létrehozása saját DNS zónával
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>A privát fürthöz való csatlakozás lehetőségei
 
@@ -90,7 +94,7 @@ Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Az API-kiszolgál�
 
 A legegyszerűbb lehetőség a virtuális gép létrehozása ugyanabban a VNET, mint az AK-fürt.  Az expressz útvonal és a VPN-EK növelik a költségeket és további hálózati bonyolultságot igényelnek.  A virtuális hálózat társításához meg kell terveznie a hálózati CIDR-tartományokat, hogy ne legyenek átfedésben lévő tartományok.
 
-## <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
+## <a name="virtual-network-peering"></a>Virtuális hálózati társviszony
 
 Ahogy azt említettük, a virtuális hálózatok egymáshoz való hozzáférésének egyik módja a privát fürt elérésének. A virtuális hálózati kapcsolatok használatához létre kell hoznia egy kapcsolatot a virtuális hálózat és a magánhálózati DNS-zóna között.
     

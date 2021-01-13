@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 12/16/2020
+ms.date: 01/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: b789f241fba4b77223272f81d1a69c8fcb050008
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: a550655b8076a1e3946ff015239715ddf0712236
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127158"
+ms.locfileid: "98131763"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -97,7 +97,7 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 
 - A delegált előfizetésekre vonatkozó riasztások megtekintése, valamint a riasztások megtekintésének és frissítésének lehetősége az összes előfizetésben
 - A delegált előfizetések tevékenységi naplójának részleteinek megtekintése
-- Log Analytics: adatok lekérdezése távoli munkaterületekről több bérlőn
+- Log Analytics: a távoli munkaterületekről származó adatok lekérdezése több bérlőn (vegye figyelembe, hogy az ügyfél bérlői munkaterületeiről származó adatokhoz való hozzáféréshez használt Automation-fiókokat ugyanabban a bérlőben kell létrehozni)
 - Hozzon létre riasztásokat az olyan ügyfél-bérlők számára, amelyek automatizálják az automatizálást, például Azure Automation runbookok vagy Azure Functionst a bérlő kezelése webhookokon keresztül
 - [Diagnosztikai beállítások](../..//azure-monitor/platform/diagnostic-settings.md) létrehozása az ügyfelek bérlői számára az erőforrás-naplók elküldéséhez a munkaterületek kezeléséhez a bérlőben
 - SAP-alapú számítási [feladatokhoz az SAP-megoldások metrikáinak figyelése összesített nézettel az ügyfél-bérlők között](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)

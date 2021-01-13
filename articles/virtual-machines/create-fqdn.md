@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 11/03/2020
+ms.date: 1/12/2020
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08d5e20bf0755a71e70a0e446cf96d33bb42ad59
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: aadf4000da4ab88a3c3b4dee37d2179eb49d39d7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351909"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132064"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Teljes tartománynév létrehozása a Azure Portal Linux rendszerű virtuális gép számára
 
@@ -24,16 +24,14 @@ Amikor létrehoz egy virtuális gépet (VM) a [Azure Portal](https://portal.azur
 Ez a cikk azt feltételezi, hogy már létrehozott egy virtuális gépet. Ha szükséges, [Linux](./linux/quick-create-portal.md) vagy [Windows rendszerű](./windows/quick-create-portal.md) virtuális gépet is létrehozhat a portálon. A virtuális gép működése után kövesse az alábbi lépéseket:
 
 
-1. Válassza ki a virtuális gépet a portálon. A **DNS-név** területen válassza a **Konfigurálás** lehetőséget.
-2. Adja meg a DNS-nevet, majd kattintson a **Save (Mentés** ) gombra az oldal tetején.
-3. Ha vissza szeretne térni a virtuális gép áttekintés paneljére, a jobb felső sarokban található **X** gombra kattintva zárjuk be a **konfiguráció** panelt. 
-4. Győződjön meg arról, hogy a *DNS-név* helyesen jelenik meg.
-   
-
-
+1. Válassza ki a virtuális gépet a portálon. 
+1. A bal oldali menüben válassza a **Konfigurálás** lehetőséget.
+1. A **DNS-név felirat** alatt adja meg a használni kívánt előtagot.
+1. Válassza a **Mentés** lehetőséget az oldal tetején.
+1. A bal oldali menüben az **Áttekintés** lehetőség kiválasztásával térjen vissza a virtuális gép áttekintés paneljére. 
+1. Ellenőrizze, hogy a *DNS-név* megfelelően jelenik-e meg. 
 
 ## <a name="next-steps"></a>Következő lépések
-Most, hogy a virtuális gép rendelkezik egy nyilvános IP-címmel és egy DNS-névvel, olyan általános alkalmazás-keretrendszereket vagy szolgáltatásokat telepíthet, mint például az Nginx, a MongoDB és a Docker.
 
-További információt a [Resource Manager használatával](../azure-resource-manager/management/overview.md) kapcsolatban az Azure-beli üzembe helyezések létrehozásával kapcsolatos tippekhez is találhat.
+A DNS-t [Azure DNS zónák](../dns/dns-getstarted-portal.md)használatával is kezelheti.
 

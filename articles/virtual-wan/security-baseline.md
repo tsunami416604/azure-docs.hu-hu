@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 994cb250aff2079e32eeef6a0d22466a284481f5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 0f124c0b4af69338ad10f7247a4260b4a348beb5
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602427"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131202"
 ---
 # <a name="azure-security-baseline-for-virtual-wan"></a>Virtuális WAN Azure biztonsági alapterve
 
@@ -66,7 +66,7 @@ Az Azure által biztosított DDoS Protection az Azure-beli virtuális hálózato
 
 - [Azure DDoS Protection standard kezelése a Azure Portal használatával](/azure/virtual-network/manage-ddos-protection) 
 
-- [Az Azure Security Centerre vonatkozó ajánlások](../security-center/recommendations-reference.md#recs-network)
+- [Az Azure Security Centerre vonatkozó ajánlások](../security-center/recommendations-reference.md#recs-networking)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -713,7 +713,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 **Felelősség**: Ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
 - További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)

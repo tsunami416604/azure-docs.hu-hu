@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 45654d55ac07bc9056a41cacba6f8f5890c56580
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 6520c1e326dc95584030d3187fdaaaa7e06c498a
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808640"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132302"
 ---
 > [!IMPORTANT]
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
@@ -102,8 +102,8 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat az űrlap-felismerő ügyféloldali kódtár használatával a JavaScripthez:
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Űrlap tartalmának felismerése](#recognize-form-content)
-* [Visszaigazolások felismerése](#recognize-receipts)
+* [Elrendezés elemzése](#analyze-layout)
+* [Visszaigazolások elemzése](#analyze-receipts)
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
@@ -126,7 +126,7 @@ Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a
 * Használja az alábbi mintákban található mintát és beérkezési képeket (a [githubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets)is elérhetők), vagy a fenti lépésekkel lekérheti egy egyedi dokumentum sas URL-címét a blob Storage-ban. 
 
 
-## <a name="recognize-form-content"></a>Űrlap tartalmának felismerése
+## <a name="analyze-layout"></a>Elrendezés elemzése
 
 Az űrlap-felismerő használatával felismerheti a dokumentumokban szereplő táblákat, vonalakat és szavakat, anélkül, hogy egy modellt kellene betanítania. Egy adott URI-fájl tartalmának felismeréséhez használja a `beginRecognizeContentFromUrl` metódust.
 
@@ -152,7 +152,7 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
-## <a name="recognize-receipts"></a>Visszaigazolások felismerése
+## <a name="analyze-receipts"></a>Visszaigazolások elemzése
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az Egyesült államokbeli nyugták közös mezőit egy előre képzett beérkezési modell használatával.
 
@@ -435,7 +435,7 @@ export DEBUG=azure*
 
 A naplók engedélyezésével kapcsolatos részletes információkért lásd a [ @azure/logger csomag dokumentációját](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/core/logger).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő JavaScript ügyféloldali függvénytárát használta a modellek tanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

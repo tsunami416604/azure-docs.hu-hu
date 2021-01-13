@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/23/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c093dcff46676dc5f8a25974c3c38c74ae7666b7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a4c7612188043be070ead92c88838b567b22787d
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546687"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131270"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Hozzáférés az Azure Storage-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással 
 
@@ -33,9 +33,6 @@ Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure Storage-hoz egy Lin
 > * Blobtároló létrehozása egy tárfiókban
 > * Hozzáférés engedélyezése a Linux rendszerű virtuális gép felügyelt identitása számára egy Azure Storage-tárolóhoz
 > * Hozzáférési jogkivonat lekérése, majd azzal az Azure Storage meghívása
-
-> [!NOTE]
-> Az Azure Storage Azure Active Directory-hitelesítése nyilvános előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,11 +48,11 @@ A jelen oktatóanyagban a parancssori példaszkriptek futtatása kétféleképpe
 Ebben a szakaszban egy új tárfiókot fog létrehozni. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** gombra.
-2. Kattintson a **Storage** , majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőségre.
+2. Kattintson a **Storage**, majd a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőségre.
 3. A **Név** mezőben adja meg a tárfiók nevét.  
-4. A **Telepítési modell** mezőben a **Resource Manager** , a **Fiók típusa** mezőben a **Storage (általános célú v1)** beállítást kell megadni. 
+4. A **Telepítési modell** mezőben a **Resource Manager**, a **Fiók típusa** mezőben a **Storage (általános célú v1)** beállítást kell megadni. 
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.
-6. Kattintson a **Létrehozás** gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

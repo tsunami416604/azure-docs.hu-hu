@@ -12,18 +12,18 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: képek felismerése, képfelismerési alkalmazás, egyéni jövőkép
-ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596872"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131695"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Gyors útmutató: osztályozó létrehozása a Custom Vision webhellyel
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy rendszerkép-besorolási modellt a Custom Vision webhellyel. A modell létrehozása után tesztelheti az új rendszerképekkel, és végül integrálhatja azt a saját rendszerkép-felismerő alkalmazásba.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,12 +35,12 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) , és válassza a __Bejelentkezés__lehetőséget. Jelentkezzen be ugyanazzal a fiókkal, amelyet a Azure Portalba való bejelentkezéshez használt.
+A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) , és válassza a __Bejelentkezés__ lehetőséget. Jelentkezzen be ugyanazzal a fiókkal, amelyet a Azure Portalba való bejelentkezéshez használt.
 
 ![A bejelentkezési oldal képe](./media/browser-home.png)
 
 
-1. Az első projekt létrehozásához válassza az **új projekt**lehetőséget. Ekkor megjelenik az **új projekt létrehozása** párbeszédpanel.
+1. Az első projekt létrehozásához válassza az **új projekt** lehetőséget. Ekkor megjelenik az **új projekt létrehozása** párbeszédpanel.
 
     ![Az új projekt párbeszédpanelen a név, a leírás és a tartományok mezői láthatók.](./media/getting-started-build-a-classifier/new-project.png)
 
@@ -49,11 +49,11 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
    > [!NOTE]
    > Ha nincs elérhető erőforráscsoport, győződjön meg róla, hogy a [customvision.ai](https://customvision.ai) -ba jelentkezett be ugyanazzal a fiókkal, mint amikor a [Azure Portalba](https://portal.azure.com/)való bejelentkezéshez használt. Továbbá erősítse meg, hogy ugyanazt a "könyvtárat" választotta a Custom Vision webhelyén abban a Azure Portal könyvtárban, ahol a Custom Vision erőforrásai találhatók. Mindkét helyen kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő menü fiók menüjéből. 
 
-1. Válasszon __besorolást__ a __Project Types__elemnél. Ezután a __besorolási típusok__területen válassza a **többcímkés** vagy a **többosztályos**lehetőséget a használati esettől függően. A többcímkés besorolás tetszőleges számú címkét alkalmaz egy képre (nulla vagy több), míg a többosztályos besorolás a képeket egyetlen kategóriába rendezi (minden elküldött kép a legvalószínűbb címkére lesz rendezve). Ha szeretné, később módosíthatja a besorolási típust.
+1. Válasszon __besorolást__ a __Project Types__ elemnél. Ezután a __besorolási típusok__ területen válassza a **többcímkés** vagy a **többosztályos** lehetőséget a használati esettől függően. A többcímkés besorolás tetszőleges számú címkét alkalmaz egy képre (nulla vagy több), míg a többosztályos besorolás a képeket egyetlen kategóriába rendezi (minden elküldött kép a legvalószínűbb címkére lesz rendezve). Ha szeretné, később módosíthatja a besorolási típust.
 
 1. Ezután válassza ki a rendelkezésre álló tartományok egyikét. Az egyes tartományok a következő táblázatban leírtak szerint optimalizálja az adott típusú képek besorolását. Ha szeretné, később is megváltoztathatja a tartományt.
 
-    |Tartomány|Rendeltetés|
+    |Tartomány|Cél|
     |---|---|
     |__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt. |
     |__Élelmiszer__|Az ételek fényképeihez optimalizált, ahogy azt egy étterem menüjében láthatja. Ha egyéni gyümölcsökből vagy zöldségekből származó fényképeket szeretne osztályozni, használja az élelmiszer-tartományt.|
@@ -61,7 +61,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
     |__Retail__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha a ruhák, nadrágok és ingek között nagy pontosságú osztályozást szeretne, használja ezt a tartományt.|
     |__Kompakt tartományok__| A mobileszközök valós idejű besorolásának korlátaira optimalizált. A kompakt tartományok által generált modellek helyileg is futtathatók.|
 
-1. Végül válassza a __projekt létrehozása__lehetőséget.
+1. Végül válassza a __projekt létrehozása__ lehetőséget.
 
 ## <a name="choose-training-images"></a>Képzési lemezképek kiválasztása
 
@@ -71,7 +71,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 
 Ebben a szakaszban fel kell töltenie és manuálisan címkézheti a képeket az osztályozó betanításához. 
 
-1. Képek hozzáadásához kattintson a __képek hozzáadása__ gombra, majd válassza a __helyi fájlok tallózása__lehetőséget. Válassza a __Megnyitás__ lehetőséget a címkézésre való áttéréshez. A címke kiválasztása a feltöltésre kijelölt rendszerképek teljes csoportjára lesz alkalmazva, így a képeket külön csoportokban is feltöltheti a kívánt címkék szerint. Az egyes képek címkéit a feltöltésük után is módosíthatja.
+1. Képek hozzáadásához kattintson a __képek hozzáadása__ gombra, majd válassza a __helyi fájlok tallózása__ lehetőséget. Válassza a __Megnyitás__ lehetőséget a címkézésre való áttéréshez. A címke kiválasztása a feltöltésre kijelölt rendszerképek teljes csoportjára lesz alkalmazva, így a képeket külön csoportokban is feltöltheti a kívánt címkék szerint. Az egyes képek címkéit a feltöltésük után is módosíthatja.
 
     ![A képek hozzáadása vezérlő megjelenik a bal felső sarokban, és az alsó középen lévő gomb.](./media/getting-started-build-a-classifier/add-images01.png)
 
@@ -115,7 +115,7 @@ Az osztályozó betanításakor minden alkalommal létre kell hoznia egy új _it
 
 A betanított modellek programozott módon való elérésének megismeréséhez tekintse meg [a modell használata az előrejelzési API-val](./use-prediction-api.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre és taníthat képbesorolási modellt a Custom Vision webhelyén. A következő lépés a modell fejlesztésének iterációs folyamatával kapcsolatos további információk.
 

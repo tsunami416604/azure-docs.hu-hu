@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan lehet elhárítani a Java-ügynököt a Azure M
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507642"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133191"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Hibaelhárítási útmutató: Azure Monitor Application Insights Javához
 
@@ -20,6 +20,10 @@ Ebben a cikkben néhány olyan gyakori problémát ismertetünk, amelyek a Java-
 Alapértelmezés szerint a Application Insights Java 3,0-ügynöke létrehoz egy nevű naplófájlt, `applicationinsights.log` amely ugyanabban a könyvtárban található, amely a `applicationinsights-agent-3.0.0.jar` fájlt tartalmazza.
 
 Ez a naplófájl az első hely, amely az esetlegesen felmerülő problémákra utal.
+
+## <a name="jvm-fails-to-start"></a>A JVM nem indul el
+
+Ha a JVM nem tudja elindítani a "hiba a zip-fájl vagy a JAR-jegyzékfájl hiányában" hibaüzenetet, próbálja meg újra letölteni az ügynök jar-fájlt, mert előfordulhat, hogy a fájlátvitel során megsérült.
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>Frissítés a Application Insights Java 2. x SDK-ból
 

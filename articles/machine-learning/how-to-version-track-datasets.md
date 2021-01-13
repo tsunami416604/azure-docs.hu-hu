@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8c9beaca0fb3ee7881559ffcc955f171bc2ddd7b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886447"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133446"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Adatkészletek verziója és nyomon követése kísérletekben
 
@@ -166,9 +166,7 @@ Az alábbi forgatókönyvek az adatok **bemeneti adatkészletként** való nyomo
 Az alábbi forgatókönyvek az adatok **kimeneti adatkészletként** való nyomon követésére szolgálnak.  
 
 * Adjon át egy `OutputFileDatasetConfig` objektumot a `outputs` vagy a `arguments` paraméterrel a kísérlet futtatásának elküldésekor. `OutputFileDatasetConfig` az objektumok a folyamat lépései közötti adatmegőrzéshez is használhatók. Lásd: [az adatmozgatás a ml-folyamat lépései között.](how-to-move-data-in-out-of-pipelines.md)
-    > [!TIP]
-    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) a egy nyilvános előzetes verzió, amely a [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) előzetes verzió funkcióit tartalmazza, amelyek bármikor megváltozhatnak.
-
+  
 * Regisztráljon egy adatkészletet a parancsfájlban. Ebben a forgatókönyvben az adatkészlethez hozzárendelt név jelenik meg, amikor a munkaterülethez regisztrálta a nevet. A következő példában `training_ds` a név jelenik meg.
 
     ```Python

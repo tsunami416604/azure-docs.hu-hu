@@ -1,7 +1,7 @@
 ---
-title: A modell hiperparaméterek beállítása hangolása
+title: Modell hiperparaméter finomhangolása
 titleSuffix: Azure Machine Learning
-description: A Azure Machine Learning használatával hatékonyan hangolhatja a Deep learning és a gépi tanulási modellek hiperparaméterek beállítása.
+description: A Azure Machine Learning segítségével automatizálhatja a hiperparaméter finomhangolását a Deep learning és a gépi tanulási modellekhez.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a1a0b89dee5a6d57e6f317c5f6c8b61ffeda3c33
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029073"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133858"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>A modell hiperparaméterek beállítása hangolása Azure Machine Learning
+# <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Hiperparaméter a modell finomhangolása Azure Machine Learning
 
 
 A hatékony hiperparaméter-hangolás automatizálása Azure Machine Learning [HyperDrive-csomag](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)használatával. Ismerje meg, hogyan végezheti el a hiperparaméterek beállítása hangolásához szükséges lépéseket a [Azure Machine learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)-val:
@@ -31,11 +31,11 @@ A hatékony hiperparaméter-hangolás automatizálása Azure Machine Learning [H
 1. A betanítási futtatások megjelenítése
 1. Válassza ki a modellhez legmegfelelőbb konfigurációt
 
-## <a name="what-are-hyperparameters"></a>Mi a hiperparaméterek beállítása?
+## <a name="what-is-hyperparameter-tuning"></a>Mi a hiperparaméter hangolás?
 
 A **hiperparaméterek beállítása** olyan állítható paraméterek, amelyek lehetővé teszik a modell betanítási folyamatának szabályozását. A neurális hálózatokkal például eldöntheti, hogy a rejtett rétegek száma és az egyes rétegek csomópontjainak száma. A modell teljesítménye nagymértékben függ a hiperparaméterek beállítása.
 
- A **hiperparaméter finomhangolása** a legjobb teljesítményt eredményező hiperparaméterek beállítása konfigurációjának megkeresése. A folyamat általában számítási költséges és manuális.
+ A **hiperparaméter finomhangolása**, más néven **hiperparaméter-optimalizálás**, az a folyamat, amely a legjobb teljesítményt eredményező hiperparaméterek beállítása konfigurációjának megkeresésére szolgál. A folyamat általában számítási költséges és manuális.
 
 Azure Machine Learning lehetővé teszi, hogy automatizálja a hiperparaméter hangolását, és párhuzamosan futtasson kísérleteket a hiperparaméterek beállítása hatékony optimalizálása érdekében.
 
@@ -46,7 +46,7 @@ A hiperparaméterek beállítása hangolása az egyes hiperparaméter meghatáro
 
 A hiperparaméterek beállítása diszkrét vagy folytonos lehet, és egy [paraméter kifejezése](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?preserve-view=true&view=azure-ml-py)által leírt értékek eloszlása.
 
-### <a name="discrete-hyperparameters"></a>Különálló hiperparaméterek beállítása 
+### <a name="discrete-hyperparameters"></a>Különálló hiperparaméterek beállítása
 
 A diszkrét hiperparaméterek beállítása a `choice` különálló értékek között vannak megadva. `choice` a következőket teheti:
 
@@ -296,7 +296,7 @@ max_concurrent_runs=4
 
 Ez a kód úgy konfigurálja a hiperparaméter hangolási kísérletet, hogy legfeljebb 20 teljes futtatást használjon, egyszerre négy konfigurációt futtatva.
 
-## <a name="configure-experiment"></a>Kísérlet konfigurálása
+## <a name="configure-hyperparameter-tuning-experiment"></a>Hiperparaméter-hangolási kísérlet konfigurálása
 
 A [hiperparaméter hangolási kísérlet konfigurálásához adja meg](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py) a következőket:
 * A megadott hiperparaméter keresési terület
@@ -323,7 +323,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="submit-experiment"></a>Kísérlet elküldése
+## <a name="submit-hyperparameter-tuning-experiment"></a>Hiperparaméter-hangolási kísérlet elküldése
 
 A hiperparaméter hangolási konfigurációjának meghatározása után [küldje el a kísérletet](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-):
 
@@ -333,7 +333,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hd_config)
 ```
 
-## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>A hiperparaméter-hangolási kísérlet meleg megkezdése (opcionális)
+## <a name="warm-start-hyperparameter-tuning-optional"></a>Meleg indítás hiperparaméter finomhangolása (nem kötelező)
 
 A modell legjobb hiperparaméter-értékeinek megkeresése ismétlődő folyamat lehet. A hiperparaméter hangolásának felgyorsításához újra felhasználhatja az előző öt futtatási ismereteket.
 
@@ -380,7 +380,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="visualize-experiment"></a>Kísérlet megjelenítése
+## <a name="visualize-hyperparameter-tuning-runs"></a>Hiperparaméter-hangolási futtatások megjelenítése
 
 A betanítási folyamat előrehaladásának megjelenítéséhez használja a [notebook widgetet](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) . A következő kódrészlet megjeleníti az összes hiperparaméter finomhangolását egy helyen egy Jupyter-jegyzetfüzetben:
 
@@ -391,15 +391,15 @@ RunDetails(hyperdrive_run).show()
 
 Ez a kód egy táblázatot jelenít meg, amely részletesen ismerteti az egyes hiperparaméter-konfigurációk betanítási futtatásait.
 
-![hiperparaméter hangolási táblázat](./media/how-to-tune-hyperparameters/HyperparameterTuningTable.png)
+![hiperparaméter hangolási táblázat](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
 
 Az egyes futtatások teljesítményét a betanítási folyamatokban is megjelenítheti. 
 
-![hiperparaméter-hangolási ábra](./media/how-to-tune-hyperparameters/HyperparameterTuningPlot.png)
+![hiperparaméter-hangolási ábra](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
 
 Vizuálisan azonosíthatja az egyes hiperparaméterek beállítása teljesítményének és értékének korrelációját egy párhuzamos koordináta-ábra használatával. 
 
-[![hiperparaméter hangolása párhuzamos koordinátákkal](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
+[![hiperparaméter hangolása párhuzamos koordinátákkal](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 Az Azure web Portalon is megjelenítheti az összes hiperparaméter hangolási futtatást. A kísérleteknek a portálon történő megtekintésével kapcsolatos további információkért lásd: [a kísérletek nyomon követése](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
 
@@ -420,6 +420,7 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>Minta notebook
+
 Tekintse meg a következő mappában található hiperparaméter-* jegyzetfüzeteket:
 * [használati útmutató – azureml/ml – keretrendszerek](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
 

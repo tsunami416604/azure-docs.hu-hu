@@ -3,15 +3,15 @@ title: Telemetria processzorok (előzetes verzió) – Azure Monitor Application
 description: Telemetria-processzorok konfigurálása a Azure Monitor Application Insights Javához
 ms.topic: conceptual
 ms.date: 10/29/2020
-author: MS-jgol
+author: kryalama
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: 7fd53c77b64e028ffad25c8fa7a9eefd95439513
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.author: kryalama
+ms.openlocfilehash: ba4e6b8b5e9db494ab4c0c372c2086087a2d58cb
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387156"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133174"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetria processzorok (előzetes verzió) – Azure Monitor Application Insights Javához
 
@@ -20,12 +20,55 @@ ms.locfileid: "97387156"
 
 A Application Insights Java 3,0-ügynöke most már rendelkezik a telemetria-alapú adatfeldolgozáshoz szükséges képességekkel az exportálás előtt.
 
-### <a name="some-use-cases"></a>Néhány felhasználási eset:
+A telemetria processzorok néhány felhasználási esete a következő:
  * Bizalmas adatok maszkolása
  * Egyéni dimenziók feltételes hozzáadása
  * Az összesítéshez és a megjelenítéshez használt telemetria-név frissítése
+ * A betöltési díjak szabályozására szolgáló kihúzási vagy szűrési tartomány attribútumai
 
-### <a name="supported-processors"></a>Támogatott processzorok:
+## <a name="terminology"></a>Terminológia
+
+Mielőtt beugorjunk a telemetria-processzorokra, fontos megérteni, hogy mi az a nyomkövetés és a felölelés.
+
+### <a name="traces"></a>Hívásláncok
+
+A nyomok nyomon követik egy, a-nek nevezett kérelem előrehaladását, `trace` mivel azt egy alkalmazást alkotó szolgáltatások kezelik. A kérést egy felhasználó vagy egy alkalmazás kezdeményezheti. Az a alkalmazásban az egyes munkaegységeket `trace` nevezzük `span` `trace` . a az a csomópont. A `trace` az egyetlen legfelső szintű tartományból és az összes gyermekből álló számból áll.
+
+### <a name="span"></a>Span
+
+A felöleli azokat az objektumokat, amelyek a kérelemben érintett egyes szolgáltatásoknak vagy összetevőknek a rendszeren keresztüli átfolyása során végzett munkát jelölik. A a `span` tartalmaz egy olyan `span context` globálisan egyedi azonosítót, amely az egyes spanok részét képező egyedi kérést jelképezi. 
+
+Átnyúló beágyazás:
+
+* A span neve
+* Egy nem módosítható `SpanContext` , amely egyedileg azonosítja a span-t
+* Szülő-span `Span` ,-vagy Null-formátumú `SpanContext`
+* Egy `SpanKind` műveletet
+* Kezdő időbélyeg
+* Záró időbélyeg
+* [`Attributes`](#attributes)
+* Az időbélyeggel ellátott események listája
+* A `Status` .
+
+Általánosságban a span életciklusa a következőhöz hasonló:
+
+* Egy szolgáltatás kérést kap. Ha létezik, a rendszer kinyeri a span-környezetet a kérések fejlécében.
+* Egy új span jön létre a kinyert tartomány környezetének gyermeke; Ha nincs ilyen, létrejön egy új gyökérszintű tartomány.
+* A szolgáltatás kezeli a kérelmet. A rendszer további attribútumokat és eseményeket ad hozzá a tartományhoz, amelyek hasznosak lehetnek a kérelem kontextusának megismeréséhez, például a kérést kezelő gép állomásneve, vagy az ügyfél-azonosítók.
+* A szolgáltatás alösszetevői által végzett munka megjelenítéséhez új felölelő hozható létre.
+* Ha a szolgáltatás távoli hívást kezdeményez egy másik szolgáltatásba, az aktuális tartomány-környezet szerializálva lesz, és a következő szolgáltatásnak továbbítja a span-környezetnek a fejlécek vagy az üzenet borítékba való beírásával.
+* A szolgáltatás által végzett munka sikeresen befejeződött, vagy nem. A span állapot megfelelően van beállítva, és a span jelölése kész.
+
+### <a name="attributes"></a>Attribútumok
+
+`Attributes` az a-ben beágyazott nulla vagy több kulcs-érték párok listája `span` . Az attribútumnak a következő tulajdonságokkal kell rendelkeznie:
+
+Az attribútum kulcsa, amelynek nem null és nem üres karakterláncnak kell lennie.
+Az attribútum értéke, amely a következők egyike:
+* Egyszerű típus: karakterlánc, logikai, dupla pontosságú lebegőpontos (IEEE 754-1985) vagy aláírt 64 bites egész szám.
+* Egyszerű típusú értékek tömbje. A tömbnek homogénnek kell lennie, azaz nem tartalmazhat különböző típusú értékeket. Olyan protokollok esetében, amelyek nem támogatják natív módon a tömbök értékét, ezeket az értékeket JSON-karakterláncként kell megjeleníteni.
+
+## <a name="supported-processors"></a>Támogatott processzorok:
  * Attribútum processzora
  * Span processzor
 
@@ -57,7 +100,7 @@ Hozzon létre egy nevű konfigurációs fájlt `applicationinsights.json` , és 
 
 ## <a name="includeexclude-spans"></a>Belefoglalási/kizárási felölelés
 
-Az attribútum processzora és a tartományon kívüli processzor lehetővé teszi, hogy a megfelelő tartományhoz tartozó tulajdonságok készletét adja meg, hogy meghatározza, hogy a rendszer belefoglalja-e a span-t, vagy kizárják a processzorból. A beállítás konfigurálásához a `include` és/vagy a (z) és/vagy legalább egy, illetve az `exclude` `matchType` egyik `spanNames` `attributes` szükséges. A belefoglalási/kizárási konfiguráció több megadott feltételt is támogat. Az összes megadott feltételnek igaz értékűnek kell lennie, ha egyezés történik. 
+Az attribútum-feldolgozó és a span processzor elérhetővé teszi a beállítást, amely meghatározza, hogy a rendszer milyen tulajdonságokat adjon meg a megfelelő tartományhoz, hogy megállapítsa, van-e belefoglalva vagy kizárva a telemetria processzorból. A beállítás konfigurálásához a `include` és/vagy a (z) és/vagy legalább egy, illetve az `exclude` `matchType` egyik `spanNames` `attributes` szükséges. A belefoglalási/kizárási konfiguráció több megadott feltételt is támogat. Az összes megadott feltételnek igaz értékűnek kell lennie, ha egyezés történik. 
 
 **Kötelező mező**: 
 * `matchType` meghatározza, hogy a `spanNames` rendszer hogyan értelmezze az elemeket és a `attributes` tömböket. A lehetséges értékek: `regexp` és `strict`. 
@@ -69,183 +112,164 @@ Nem **kötelező mezők**:
 > [!NOTE]
 > Ha mindkettő `include` és `exclude` a meg van adva, a tulajdonságok a `include` Tulajdonságok előtt lesznek bejelölve `exclude` .
 
-#### <a name="sample-usage"></a>Minta használata
-
-Az alábbi cikk azt mutatja be, hogy a rendszer hogyan alkalmazza a processzorra kiterjedő span tulajdonságokat. A `include` Tulajdonságok azt mondják, hogy melyeket kell belefoglalni, és a `exclude` Tulajdonságok további kiszűrési felskálázásokat tartalmaznak, amelyek nem lesznek feldolgozva.
+#### <a name="sample-usage"></a>Példa a használatra
 
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
+
+"processors": [
+  {
+    "type": "attribute",
+    "include": {
+      "matchType": "strict",
+      "spanNames": [
+        "spanA",
+        "spanB"
+      ]
+    },
+    "exclude": {
+      "matchType": "strict",
+      "attributes": [
+        {
+          "key": "redact_trace",
+          "value": "false"
+        }
+      ]
+    },
+    "actions": [
       {
-        "type": "attribute",
-        "include": {
-          "matchType": "strict",
-          "spanNames": [
-            "svcA",
-            "svcB"
-          ]
-        },
-        "exclude": {
-          "matchType": "strict",
-          "attributes": [
-            {
-              "key": "redact_trace",
-              "value": "false"
-            }
-          ]
-        },
-        "actions": [
-          {
-            "key": "credit_card",
-            "action": "delete"
-          },
-          {
-            "key": "duplicate_key",
-            "action": "delete"
-          }
-        ]
+        "key": "credit_card",
+        "action": "delete"
+      },
+      {
+        "key": "duplicate_key",
+        "action": "delete"
       }
     ]
   }
-}
+]
 ```
-
-A fenti konfigurációval a következő találatok érvényesek a tulajdonságok és a processzor műveleteire:
-
-* Span1 neve: "svcB" attribútumok: {env: Production, test_request: 123, credit_card: 1234, redact_trace: "false"}
-
-* Span2 neve: "svcA" attribútumok: {env: előkészítés, test_request: false, redact_trace: true}
-
-A következő találatok nem egyeznek meg a tulajdonságok belefoglalása és a processzor műveleteivel:
-
-* Span3 neve: "svcB" attribútumok: {env: Production, test_request: true, credit_card: 1234, redact_trace: false}
-
-* Span4 neve: "svcC" attribútumok: {env: dev, test_request: false}
+További tudnivalókat a [telemetria Processor példák](./java-standalone-telemetry-processors-examples.md) dokumentációjában talál.
 
 ## <a name="attribute-processor"></a>Attribútum processzora 
 
-Az attribútumok feldolgozó a span attribútumait módosítja. Lehetőség van arra is, hogy belefoglalja vagy kizárja a felölelő képességeket.
-A konfigurációs fájlban megadott sorrendben végrehajtott műveletek listáját veszi figyelembe. A támogatott műveletek a következők:
+Az attribútumok feldolgozó a span attribútumait módosítja. Lehetőség van arra is, hogy belefoglalja vagy kizárja a felölelő képességeket. A konfigurációs fájlban megadott sorrendben végrehajtott műveletek listáját veszi figyelembe. A támogatott műveletek a következők:
 
-* `insert` : Beszúr egy új attribútumot azokon a felöleli, ahol a kulcs még nem létezik
-* `update` : Frissíti egy attribútumot a felölelő helyen, ahol a kulcs létezik
-* `delete` : Attribútum törlése egy tartományból
-* `hash`   : Kivonatok (SHA1) meglévő attribútumérték
+### `insert`
 
-A műveletek `insert` és `update`
-* `key` kötelező
-* `value`vagy az egyik `fromAttribute` szükséges
-* A `action` használata kötelező.
-
-A `delete` művelethez
-* `key` kötelező
-* `action`: `delete` kötelező.
-
-A `hash` művelethez
-* `key` kötelező
-* `action` : `hash` kötelező.
-
-A műveletek listája összeállítható olyan gazdag forgatókönyvek létrehozásához, mint például a visszatöltési attribútum, az értékek új kulcsra másolása, a bizalmas információk kivonása.
-
-#### <a name="sample-usage"></a>Minta használata
-
-Az alábbi példa bemutatja a kulcsok/értékek átadását a következőre:
+Egy olyan új attribútum beszúrása, amelyben a kulcs még nem létezik.   
 
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
+"processors": [
+  {
+    "type": "attribute",
+    "actions": [
       {
-        "type": "attribute",
-        "actions": [
-          {
-            "key": "attribute1",
-            "value": "value1",
-            "action": "insert"
-          },
-          {
-            "key": "key1",
-            "fromAttribute": "anotherkey",
-            "action": "insert"
-          }
-        ]
-      }
+        "key": "attribute1",
+        "value": "value1",
+        "action": "insert"
+      },
     ]
   }
-}
+]
 ```
+A `insert` művelethez a következők szükségesek
+  * `key`
+  * az egyik `value` vagy `fromAttribute`
+  * `action`:`insert`
 
-Az alábbi példa azt mutatja be, hogy a processzor úgy van konfigurálva, hogy csak a létező kulcsokat frissítse egy attribútumban:
+### `update`
+
+Egy olyan attribútum frissítése, amelyben a kulcs létezik
 
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
+"processors": [
+  {
+    "type": "attribute",
+    "actions": [
       {
-        "type": "attribute",
-        "actions": [
-          {
-            "key": "piiattribute",
-            "value": "redacted",
-            "action": "update"
-          },
-          {
-            "key": "credit_card",
-            "action": "delete"
-          },
-          {
-            "key": "user.email",
-            "action": "hash"
-          }
-        ]
-      }
+        "key": "attribute1",
+        "value": "newValue",
+        "action": "update"
+      },
     ]
   }
-}
+]
 ```
+A `update` művelethez a következők szükségesek
+  * `key`
+  * az egyik `value` vagy `fromAttribute`
+  * `action`:`update`
 
-Az alábbi példa bemutatja, hogyan lehet feldolgozni a regexp-mintázatnak megfelelő span névvel rendelkező átnyúló folyamatokat.
-Ez a processzor eltávolítja a "token" attribútumot, és a "password" attribútumot eltorzítja az elterjedések között, ahol a span neve megegyezik az "Auth" értékkel \* és ha a span neve nem egyezik a "login" értékkel \* .
+
+### `delete` 
+
+Attribútum törlése egy tartományból
 
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
+"processors": [
+  {
+    "type": "attribute",
+    "actions": [
       {
-        "type": "attribute",
-        "include": {
-          "matchType": "regexp",
-          "spanNames": [
-            "auth.*"
-          ]
-        },
-        "exclude": {
-          "matchType": "regexp",
-          "spanNames": [
-            "login.*"
-          ]
-        },
-        "actions": [
-          {
-            "key": "password",
-            "value": "obfuscated",
-            "action": "update"
-          },
-          {
-            "key": "token",
-            "action": "delete"
-          }
-        ]
-      }
+        "key": "attribute1",
+        "action": "delete"
+      },
     ]
   }
-}
+]
 ```
+A `delete` művelethez a következők szükségesek
+  * `key`
+  * `action`: `delete`
+
+### `hash`
+
+Kivonatok (SHA1) meglévő attribútumérték
+
+```json
+"processors": [
+  {
+    "type": "attribute",
+    "actions": [
+      {
+        "key": "attribute1",
+        "action": "hash"
+      },
+    ]
+  }
+]
+```
+A `hash` művelethez a következők szükségesek
+* `key`
+* `action` : `hash`
+
+### `extract`
+
+> [!NOTE]
+> Ez a funkció csak az 3.0.1-es és újabb verzióiban érhető el
+
+Kinyeri az értékeket a szabályban megadott, a bemeneti kulcstól a reguláris kifejezési szabály használatával. Ha a célként megadott kulcs már létezik, a rendszer felülbírálja. Ehhez hasonlóan viselkedik a [](#extract-attributes-from-span-name) `toAttributes` meglévő attribútummal rendelkező span Processor beállításhoz a forrásként.
+
+```json
+"processors": [
+  {
+    "type": "attribute",
+    "actions": [
+      {
+        "key": "attribute1",
+        "pattern": "<regular pattern with named matchers>",
+        "action": "extract"
+      },
+    ]
+  }
+]
+```
+A `extract` művelethez a következők szükségesek
+* `key`
+* `pattern`
+* `action` : `extract`
+
+További tudnivalókat a [telemetria Processor példák](./java-standalone-telemetry-processors-examples.md) dokumentációjában talál.
 
 ## <a name="span-processors"></a>Span processzorok
 
@@ -263,28 +287,19 @@ A következő beállítás opcionálisan konfigurálható:
 > [!NOTE]
 > Ha az Átnevezés attól függ, hogy az attribútumok processzora milyen attribútumokat módosít, győződjön meg arról, hogy a csővezeték-specifikációban az attribútumok processzora után a span processzor van megadva.
 
-#### <a name="sample-usage"></a>Minta használata
-
-A következő példa a "db. SVC", a "művelet" és az "id" attribútum értékeit adja meg a span új nevét (ebben a sorrendben), a "::" értékkel elválasztva.
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "name": {
-          "fromAttributes": [
-            "db.svc",
-            "operation",
-            "id"
-          ],
-          "separator": "::"
-        }
-      }
-    ]
+"processors": [
+  {
+    "type": "span",
+    "name": {
+      "fromAttributes": [
+        "attributeKey1",
+        "attributeKey2",
+      ],
+      "separator": "::"
+    }
   }
-}
+] 
 ```
 
 ### <a name="extract-attributes-from-span-name"></a>Attribútumok kinyerése a tartomány nevéből
@@ -295,60 +310,45 @@ A következő beállítások szükségesek:
 
 `rules` : Azoknak a szabályoknak a listája, amelyekkel kinyerheti az attribútumok értékeit a tartomány neve alapján. A span Name értékeit a kinyert attribútumok neve váltja fel. A lista minden szabálya regex minta sztring. A span nevet a rendszer a regexben ellenőrzi. Ha a regex egyezik, a regex összes megnevezett alkifejezése attribútumként lesz kibontva, és hozzá lesz adva a tartományhoz. Az egyes alkifejezések neve az attribútumérték és az alkifejezések egyezési részévé válik. Az span Name egyező részét a kinyert attribútum neve váltja fel. Ha az attribútumok már léteznek a span-ban, a rendszer felülírja őket. A folyamat a megadott sorrendben minden szabálynál megismétlődik. Minden további szabály az előző szabály feldolgozását követően kimenetként működik.
 
-#### <a name="sample-usage"></a>Minta használata
-
-Tegyük fel, hogy a bemeneti span neve/API/v1/Document/12345678/Update. A következő eredmények a kimeneti span névben való alkalmazása a/api/v1/document/{documentId}/update új "documentId" = "12345678" attribútumot ad hozzá a tartományhoz.
 ```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "name": {
-          "toAttributes": {
-            "rules": [
-              "^/api/v1/document/(?<documentId>.*)/update$"
-            ]
-          }
-        }
+
+"processors": [
+  {
+    "type": "span",
+    "name": {
+      "toAttributes": {
+        "rules": [
+          "rule1",
+          "rule2",
+          "rule3"
+        ]
       }
-    ]
+    }
   }
-}
+]
+
 ```
 
-A következő mutatja be, hogy átnevezi a span nevet a (z) {operation_website} értékre, és hozzáadja a (z) {Key: operation_website, Value: oldSpanName} attribútumot, ha a span a következő tulajdonságokkal rendelkezik:
-- A span neve "/" karakterláncot tartalmaz a sztringben.
-- A span neve nem "adományozó/változás".
-```json
-{
-  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-  "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "include": {
-          "matchType": "regexp",
-          "spanNames": [
-            "^(.*?)/(.*?)$"
-          ]
-        },
-        "exclude": {
-          "matchType": "strict",
-          "spanNames": [
-            "donot/change"
-          ]
-        },
-        "name": {
-          "toAttributes": {
-            "rules": [
-              "(?<operation_website>.*?)$"
-            ]
-          }
-        }
-      }
-    ]
-  }
-}
-```
+## <a name="list-of-attributes"></a>Attribútumok listája
+
+Az alábbiakban felsorolunk néhány gyakori, a telemetria processzorokban használható span-attribútumot.
+
+### <a name="http-spans"></a>HTTP-Átívelés
+
+| Attribútum  | Típus | Description | 
+|---|---|---|
+| `http.method` | sztring | HTTP-kérelem módszere.|
+| `http.url` | sztring | Teljes HTTP-kérelem URL-címe az űrlapon `scheme://host[:port]/path?query[#fragment]` . Általában a töredék nem kerül át HTTP-n keresztül, de ha ismert, mégis szerepelnie kell bennük.|
+| `http.status_code` | szám | [Http-válasz állapotának kódja](https://tools.ietf.org/html/rfc7231#section-6)|
+| `http.flavor` | sztring | A használt HTTP-protokoll típusa |
+| `http.user_agent` | sztring | Az ügyfél által eljuttatott [http User-Agent](https://tools.ietf.org/html/rfc7231#section-5.5.3) fejléc értéke. |
+
+### <a name="jdbc-spans"></a>JDBC-átívelő
+
+| Attribútum  | Típus | Description  |
+|---|---|---|
+| `db.system` | sztring | Az adatbázis-kezelő rendszer (adatbázisok kezelése) által használt termék azonosítója. |
+| `db.connection_string` | sztring | Az adatbázishoz való kapcsolódáshoz használt kapcsolati karakterlánc. Javasoljuk, hogy távolítsa el a beágyazott hitelesítő adatokat.|
+| `db.user` | sztring | Az adatbázis eléréséhez használt Felhasználónév. |
+| `db.name` | sztring | Ez az attribútum az elérni kívánt adatbázis nevének jelentésére szolgál. Az adatbázist átváltó parancsok esetén ezt a célként megadott adatbázisra kell beállítani (még akkor is, ha a parancs sikertelen).|
+| `db.statement` | sztring | Az adatbázis-utasítás végrehajtása folyamatban van.|

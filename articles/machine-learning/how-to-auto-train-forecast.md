@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 47cc67b408ff7fa50a244fffa8d41e640df0ecf3
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796431"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132082"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -217,13 +217,16 @@ Lehetősége van arra is, hogy testreszabja a featurization beállításait, íg
 
 A feladatok támogatott testreszabásai a `forecasting` következők:
 
-|Testreszabás|Meghatározás|
+|Testreszabás|Definíció|
 |--|--|
 |**Oszlop céljának frissítése**|Felülbírálja a megadott oszlop automatikusan észlelt funkciójának típusát.|
 |**A transzformátor paraméterének frissítése** |Frissítse a megadott átalakító paramétereit. Jelenleg támogatja az *imputált* (fill_value és medián).|
-|**Oszlopok eldobása** |Meghatározza az eldobni kívánt oszlopokat a featurized.|
+|**Oszlopok eltávolítása** |Meghatározza az eldobni kívánt oszlopokat a featurized.|
 
 Az SDK-val való featurizations testreszabásához adja meg az `"featurization": FeaturizationConfig` `AutoMLConfig` objektumot az objektumban. További információ az [Egyéni featurizations](how-to-configure-auto-features.md#customize-featurization).
+
+>[!NOTE]
+> A **drop Columns** funkció az SDK 1,19-es verziójától kezdve elavult. Az adatkészletből származó oszlopok eldobása az adatok tisztításának részeként, az automatikus ML-kísérletben való felhasználás előtt. 
 
 ```python
 featurization_config = FeaturizationConfig()
@@ -377,7 +380,7 @@ Tekintse meg az [előrejelzési minta jegyzetfüzeteket](https://github.com/Azur
 * [a gördülő ablak összesített funkciói](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
 * [DNN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 * Ismerje meg az [értelmezést: modell-magyarázatok az automatikus gépi tanulásban (előzetes verzió)](how-to-machine-learning-interpretability-automl.md). 

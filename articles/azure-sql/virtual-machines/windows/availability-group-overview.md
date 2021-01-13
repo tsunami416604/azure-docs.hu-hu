@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f39380e253d3fa9e86bfea3a8c436862738ff8e3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359931"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131899"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On rendelkezésre állási csoport SQL Server Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,7 +62,7 @@ Első lépésként tekintse meg [a Load Balancer konfigurálása](availability-g
 
 ### <a name="dnn-listener"></a>DNN-figyelő
 
-SQL Server 2019 CU8 az elosztott hálózati név (DNN) figyelő támogatását mutatja be. A DNN-figyelő felváltja a hagyományos rendelkezésre állási csoport figyelőjét, amely nem feltétlenül szükséges ahhoz, hogy egy Azure-beli hangos Balancer átirányítsa a forgalmat az Azure-hálózaton. 
+SQL Server 2019 CU8 az elosztott hálózati név (DNN) figyelő támogatását mutatja be. A DNN-figyelő felváltja a hagyományos rendelkezésre állási csoport figyelőjét, amely nem igényel Azure Load Balancert az Azure-hálózaton lévő forgalom irányításához. 
 
 A DNN-figyelő a javasolt HADR-kapcsolati megoldás az Azure-ban, mivel leegyszerűsíti az üzembe helyezést, csökkenti a karbantartást és a költségeket, és meghibásodás esetén csökkenti a feladatátvételi időt. 
 

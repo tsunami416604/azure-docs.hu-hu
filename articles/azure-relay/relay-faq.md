@@ -3,12 +3,12 @@ title: Azure Relay GYIK | Microsoft Docs
 description: Ez a cikk a Azure Relay szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat tartalmaz.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299286"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131848"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay GYIK
 
@@ -50,7 +50,6 @@ A Relay díjszabásával kapcsolatos információkért tekintse meg a [hibrid ka
     *   A hónap során 6 GB-nyi adat küldhető a B hálózaton keresztül.
     *   A teljes díj $10,50. Ez $5 a (z) B + $0,50 csatlakoztatásához a + $5-hez (a B-vel létesített hatodik gigabájthoz).
 
-Vegye figyelembe, hogy a példákban használt árak csak a Hibrid kapcsolatok előzetes verziójának időtartama alatt alkalmazhatók. Az árak a Hibrid kapcsolatok általánosan elérhetővé tételével változhatnak.
 
 ### <a name="how-are-hours-calculated-for-relay"></a>Hogyan számítják ki a továbbítási órákat?
 

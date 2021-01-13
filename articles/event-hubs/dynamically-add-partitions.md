@@ -3,12 +3,12 @@ title: Partíciók dinamikus hozzáadása az Azure-beli Event hub-Event Hubs
 description: Ebből a cikkből megtudhatja, hogyan adhat hozzá dinamikusan partíciókat az Azure Event Hubs egy Event hub-hoz.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ebe4491338c24a331812041f4d3e6d37b934117
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002539"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132171"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Partíciók dinamikus hozzáadása egy Event hub-hoz (Apache Kafka témakörhöz) az Azure-ban Event Hubs
 Az Event Hubs üzenetstreamelést biztosít egy particionált felhasználói mintán keresztül, amelyben mindegyik felhasználó az üzenetstream csak egy adott részét, vagyis partícióját olvassa. Ez a minta biztosítja a horizontális skálázhatóságot az eseményfeldolgozáshoz, és egyéb, streamközpontú szolgáltatásokat is nyújt, amelyek az üzenetsorokban vagy témakörökben nem érhetők el. A partíció események egy rendezett sorozata az eseményközpontban. Ahogy újabb események érkeznek, a rendszer hozzáadja a sorozatot a végéhez. A partíciókkal kapcsolatos további információkért lásd: [partíciók](event-hubs-scalability.md#partitions)
@@ -19,7 +19,7 @@ Az Event hub létrehozásakor megadhatja a partíciók számát. Bizonyos esetek
 > A partíciók dinamikus hozzáadása csak **dedikált** Event Hubs fürtökön érhető el.
 
 > [!NOTE]
-> Apache Kafka ügyfelek esetében az **Event hub** egy **Kafka-témakörre**mutat. Az Azure Event Hubs és Apache Kafka közötti további leképezéseket lásd: [Kafka-és Event Hubs fogalmi leképezés](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping)
+> Apache Kafka ügyfelek esetében az **Event hub** egy **Kafka-témakörre** mutat. Az Azure Event Hubs és Apache Kafka közötti további leképezéseket lásd: [Kafka-és Event Hubs fogalmi leképezés](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping)
 
 
 ## <a name="update-the-partition-count"></a>A partíciók számának frissítése
@@ -71,7 +71,7 @@ A Event Hubs három feladói lehetőséget biztosít:
 
 - **Partíció küldője** – ebben az esetben az ügyfelek közvetlenül egy partícióba küldik az eseményeket. Bár a partíciók azonosíthatók, és az események közvetlenül is elküldhetők számukra, nem ajánlott ezt a mintát. A partíciók hozzáadása nem befolyásolja ezt a forgatókönyvet. Javasoljuk, hogy indítsa újra az alkalmazásokat, hogy azok képesek legyenek az újonnan hozzáadott partíciók észlelésére. 
 - **Partíciós kulcs küldője** – ebben a forgatókönyvben az ügyfelek az eseményeket egy kulccsal küldi el, hogy az adott kulcshoz tartozó összes esemény ugyanabban a partícióban legyen. Ebben az esetben a szolgáltatás a kulcsot és az útvonalakat a megfelelő partícióra írja. A partíciók számának frissítése a kivonatoló változás miatt nem okozhatja a megrendelési problémákat. Tehát, ha érdekel a rendezés, győződjön meg arról, hogy az alkalmazás a partíciók számának megnövekedése előtt felhasználja a meglévő partíciók összes eseményét.
-- **Ciklikus multiplexelés-küldő (alapértelmezett)** – ebben a forgatókönyvben a Event Hubs szolgáltatás az eseményeket a partíciók között kerekíti. Event Hubs szolgáltatás tisztában van a partíciók számának változásaival, és a partíciók számának megváltoztatását másodpercek alatt elküldi az új partícióknak.
+- **Ciklikus multiplexelés (alapértelmezett)** – ebben a forgatókönyvben a Event Hubsi szolgáltatás kerekíti az eseményeket a partíciók között, és terheléselosztási algoritmust is használ. Event Hubs szolgáltatás tisztában van a partíciók számának változásaival, és a partíciók számának megváltoztatását másodpercek alatt elküldi az új partícióknak.
 
 ### <a name="receiverconsumer-clients"></a>Fogadó/fogyasztói ügyfelek
 A Event Hubs közvetlen fogadókat és egyszerű fogyasztói kódtárat biztosít az [Event Processor Host (régi SDK)](event-hubs-event-processor-host.md)  vagy az [Event Processor (új SDK)](event-processor-balance-partition-load.md)néven.
@@ -99,10 +99,10 @@ Amikor egy fogyasztói csoport tagja elvégez egy metaadat-frissítést, és fel
     > [!IMPORTANT]
     > Míg a meglévő adatok megőrzik a sorrendet, a partíciók kivonatolása megszakad, ha a partíciók hozzáadását követően a partíciók száma megváltozik.
 - A következő esetekben javasolt a partíció hozzáadása meglévő témakörhöz vagy Event hub-példányhoz:
-    - Ha az események küldésének ciklikus multiplexelés (alapértelmezett) módszerét használja
+    - Ha az alapértelmezett módszert használja az események küldéséhez
      - Kafka alapértelmezett particionálási stratégiák, példa – Sticky Assigner stratégia
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a partíciókon: [partíciók](event-hubs-scalability.md#partitions).
 

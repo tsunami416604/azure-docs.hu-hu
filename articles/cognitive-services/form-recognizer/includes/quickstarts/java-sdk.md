@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 93552d203508fb893bd2e85d27a3a991fc539472
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808589"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132327"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
@@ -156,8 +156,8 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 `FormRecognizerClient` a következő műveleteit biztosítja:
 
 - Az űrlap mezőinek és tartalmának felismerése az egyéni űrlapok felismerése céljából betanított egyéni modellek használatával.  Ezeket az értékeket az objektumok egy gyűjteménye adja vissza `RecognizedForm` . Tekintse meg a példa [Egyéni űrlapok elemzése](#analyze-forms-with-a-custom-model)című témakört.
-- Űrlap tartalmának felismerése, beleértve a táblákat, a sorokat és a szavakat, anélkül, hogy be kellene tanítani a modellt.  Az űrlap tartalma objektumok gyűjteményében lesz visszaadva `FormPage` . Lásd: példa az [űrlap tartalmának felismerésére](#recognize-form-content).
-- Az Egyesült államokbeli nyugták általános mezőinek felismerése egy előre képzett beérkezési modell használatával az űrlap-felismerő szolgáltatásban.  Ezeket a mezőket és a metaadatokat az objektumok egy gyűjteménye adja vissza `RecognizedForm` . Lásd: példa [felismerési visszaigazolások](#recognize-receipts).
+- Űrlap tartalmának felismerése, beleértve a táblákat, a sorokat és a szavakat, anélkül, hogy be kellene tanítani a modellt.  Az űrlap tartalma objektumok gyűjteményében lesz visszaadva `FormPage` . Lásd: példa [elemzése elrendezés](#analyze-layout).
+- Az Egyesült államokbeli nyugták általános mezőinek felismerése egy előre képzett beérkezési modell használatával az űrlap-felismerő szolgáltatásban.  Ezeket a mezőket és a metaadatokat az objektumok egy gyűjteménye adja vissza `RecognizedForm` . Lásd: példák [elemzése nyugták](#analyze-receipts).
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -177,17 +177,17 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 
 #### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Űrlap tartalmának felismerése](#recognize-form-content)
-* [Visszaigazolások felismerése](#recognize-receipts)
+* [Elrendezés elemzése](#analyze-layout)
+* [Visszaigazolások elemzése](#analyze-receipts)
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
 #### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Űrlap tartalmának felismerése](#recognize-form-content)
-* [Visszaigazolások felismerése](#recognize-receipts)
-* [Névjegykártyák felismerése](#recognize-business-cards)
-* [Számlák felismerése](#recognize-invoices)
+* [Elrendezés elemzése](#analyze-layout)
+* [Visszaigazolások elemzése](#analyze-receipts)
+* [Üzleti kártyák elemzése](#analyze-business-cards)
+* [Számlák elemzése](#analyze-invoices)
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
@@ -200,7 +200,7 @@ A **Main** metódus tetején adja hozzá a következő kódot. Itt két ügyfél
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_auth)]
 
-## <a name="recognize-form-content"></a>Űrlap tartalmának felismerése
+## <a name="analyze-layout"></a>Elrendezés elemzése
 
 Az űrlap-felismerő használatával felismerheti a dokumentumokban szereplő táblákat, vonalakat és szavakat, anélkül, hogy egy modellt kellene betanítania.
 
@@ -233,7 +233,7 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-## <a name="recognize-receipts"></a>Visszaigazolások felismerése
+## <a name="analyze-receipts"></a>Visszaigazolások elemzése
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az Egyesült államokbeli nyugták közös mezőit egy előre képzett beérkezési modell használatával.
 
@@ -269,7 +269,7 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-## <a name="recognize-business-cards"></a>Névjegykártyák felismerése
+## <a name="analyze-business-cards"></a>Üzleti kártyák elemzése
 
 #### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
@@ -293,7 +293,7 @@ A visszaadott érték a **RecognizedForm** objektumok gyűjteménye: egyet a dok
 
 ---
 
-## <a name="recognize-invoices"></a>Számlák felismerése
+## <a name="analyze-invoices"></a>Számlák elemzése
 
 #### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
@@ -521,7 +521,7 @@ try {
 
 A Javához készült Azure SDK-k egységes naplózási történetet biztosítanak az alkalmazások hibáinak elhárításához és a megoldásuk felgyorsításához. A létrehozott naplók rögzítik az alkalmazások folyamatát, mielőtt elérnék a terminál állapotát, hogy megtalálják a probléma gyökerét. Tekintse meg a naplózási [wikit](https://github.com/Azure/azure-sdk-for-java/wiki/Logging-with-Azure-SDK) , amely útmutatást nyújt a naplózás engedélyezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap felismerő Java ügyféloldali függvénytárát használta a modellek tanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

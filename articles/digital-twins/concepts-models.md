@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: dfea6d531dfb87a5344c5d8e53570b6e1ae8e598
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049320"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131389"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
 
@@ -140,7 +140,7 @@ A modellek a környezetében lévő entitások megjelenítésére való megterve
 
 Az iparági szabványokon alapuló modellek használata vagy a standard ontológia-képviselet (például RDF vagy bagoly) használata gazdag kiindulási pontot biztosít az Azure digitális Twins-modelljeinek tervezésekor. Az iparági modellek használata a szabványosítás és az információmegosztás terén is segít.
 
-Az Azure Digital Twins szolgáltatással való használathoz a modellnek a JSON-LD-alapú [**digitális Twins Definition Language (DTDL) nyelven**](concepts-models.md)kell szerepelnie. Ebből kifolyólag ez a cikk bemutatja, hogyan jelentheti az iparági szabványnak megfelelő modelleket a DTDL-ben, és integrálhatja a meglévő iparági fogalmakat DTDL szemantikaokkal, hogy az Azure digitális Twins használhassa őket. A DTDL modell ezután az igazság forrásaként szolgál a modellhez az Azure Digital Twins-n belül.
+Az Azure Digital Twins szolgáltatással való használathoz a modellnek a JSON-LD-alapú [**digitális Twins Definition Language (DTDL) nyelven**](concepts-models.md)kell szerepelnie. Ezért az iparági szabványnak megfelelő modell használatához először át kell alakítania a DTDL, hogy az Azure digitális Twins használhassa azt. A DTDL modell ezután az igazság forrásaként szolgál a modellhez az Azure Digital Twins-n belül.
 
 Az iparági szabványnak megfelelő modellek a DTDL való integrálásának két fő útja van:
 * Ha még nem hozza létre a modelleket, megtervezheti azokat a **meglévő Starter DTDL-ontológiákat** , amelyek az iparágra jellemző nyelvet tartalmaznak.
@@ -148,7 +148,7 @@ Az iparági szabványnak megfelelő modellek a DTDL való integrálásának két
 
 A két folyamattal kapcsolatos további információkért lásd [*: útmutató: az iparági szabványnak megfelelő modellek integrálása*](how-to-integrate-models.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinModels API-kkal:
 * [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)

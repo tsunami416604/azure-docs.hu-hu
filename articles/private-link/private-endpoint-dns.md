@@ -5,14 +5,14 @@ services: private-link
 author: mblanco77
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 01/12/2021
 ms.author: allensu
-ms.openlocfilehash: 1c296b157fbac1e4c8d3fefb2b8cc09ff2ccc7a8
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 859768345c2b88e38e09d897391ac8a3501fd901
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620596"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134075"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Az Azure privát végpont DNS-konfigurációja
 
@@ -68,7 +68,7 @@ Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az al
 | Azure Backup (Microsoft. Recoveryservices szolgáltatónál/Vaults)/tároló | privatelink. {Region}. backup. windowsazure. com | {Region}. backup. windowsazure. com |
 | Azure Event Hubs (Microsoft. EventHub/névterek)/névtér | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Service Bus (Microsoft. ServiceBus/névterek)/névtér | privatelink.servicebus.windows.net | servicebus.windows.net |
-| Azure IoT Hub (Microsoft. Devices/IotHubs)/iotHub | privatelink.azure-devices.net | azure-devices.net |
+| Azure IoT Hub (Microsoft. Devices/IotHubs)/iotHub | privatelink.azure-devices.net<br/><sup>1</sup> . privatelink.servicebus.Windows.net | azure-devices.net<br/>servicebus.windows.net |
 | Azure Relay (Microsoft. Relay/névterek)/névtér | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Event Grid (Microsoft. EventGrid/témák)/témakör | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Event Grid (Microsoft. EventGrid/Domains)/tartomány | privatelink.eventgrid.azure.net | eventgrid.azure.net |
@@ -83,6 +83,7 @@ Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az al
 | Azure Data Factory (Microsoft. DataFactory/gyárak)/portál |  privatelink.azure.com  |  azure.com  |
 | Azure cache for Redis (Microsoft. cache/Redis)/redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
+<sup>1</sup> A IoT Hub beépített Event hub-kompatibilis végpontjának használata. További információ: [IoT hub beépített végpontjának Private link support](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)
  
 ## <a name="dns-configuration-scenarios"></a>DNS-konfigurációs forgatókönyvek
 
@@ -144,7 +145,7 @@ A megfelelő konfigurálásához a következő erőforrásokra van szükség:
 - Helyszíni hálózat
 - A helyszíni környezethez [csatlakoztatott](/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
 - DNS-továbbító üzembe helyezése az Azure-ban 
-- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [type A record](../dns/dns-zones-records.md#record-types)
+- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [](../dns/dns-zones-records.md#record-types)
 - Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
 
 Az alábbi ábrán egy olyan helyszíni hálózat DNS-feloldási sorozata látható, amely az Azure-ban üzembe helyezett DNS-továbbítót használja, ahol a felbontást egy [virtuális hálózathoz kapcsolódó](../dns/private-dns-virtual-network-links.md)privát DNS-zóna végzi el:
@@ -161,7 +162,7 @@ A megfelelő konfigurálásához a következő erőforrásokra van szükség:
 - Helyi hálózat egyéni DNS-megoldással 
 - A helyszíni környezethez [csatlakoztatott](/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
 - DNS-továbbító üzembe helyezése az Azure-ban
-- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [type A record](../dns/dns-zones-records.md#record-types)
+- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [](../dns/dns-zones-records.md#record-types)
 - Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
 
 A következő ábra a DNS-feloldási sorozatot mutatja be egy helyszíni hálózatról, amely feltételesen továbbítja a DNS-forgalmat az Azure-ba, ahol a megoldás egy [virtuális hálózathoz kapcsolódó](../dns/private-dns-virtual-network-links.md)magánhálózati DNS-zónából áll.
@@ -191,12 +192,12 @@ A megfelelő konfigurálásához a következő erőforrásokra van szükség:
 - A helyszíni környezethez [csatlakoztatott](/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
 - [Egyenrangú virtuális hálózat](../virtual-network/virtual-network-peering-overview.md) 
 - DNS-továbbító üzembe helyezése az Azure-ban
-- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [type A record](../dns/dns-zones-records.md#record-types)
+- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [](../dns/dns-zones-records.md#record-types)
 - Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
 
 A következő ábra a DNS-feloldási sorozatot mutatja be egy olyan helyszíni és virtuális hálózatról, amely az Azure-ban üzembe helyezett DNS-továbbítót használja, ahol a felbontást egy [virtuális hálózathoz kapcsolódó](../dns/private-dns-virtual-network-links.md)privát DNS-zóna végzi el:
 
 :::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="Hibrid forgatókönyv":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [További tudnivalók a privát végpontokról](private-endpoint-overview.md)

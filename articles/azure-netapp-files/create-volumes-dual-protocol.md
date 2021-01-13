@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: b-juche
-ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914991"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133157"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Hozzon létre egy Dual-Protocol (NFSv3 és SMB) kötetet Azure NetApp Files
 
@@ -39,7 +39,6 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy k
 * Hozzon létre egy névkeresési zónát a DNS-kiszolgálón, majd adjon hozzá egy mutató (PTR) rekordot a névkeresési zónában található AD-gazdagéphez. Ellenkező esetben a kettős protokollú kötet létrehozása sikertelen lesz.
 * Ellenőrizze, hogy az NFS-ügyfél naprakész állapotban van-e, illetve hogy az operációs rendszer legfrissebb verziója fut-e rajta.
 * Győződjön meg arról, hogy a Active Directory (AD) LDAP-kiszolgáló működik és fut az AD-ben. Ezt úgy teheti meg, ha telepíti és konfigurálja a [Active Directory Lightweight Directory-szolgáltatások (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) szerepkört az ad-gépen.
-* Az önaláírt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozásához és exportálásához a [Active Directory tanúsítványszolgáltatások (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) szerepkör használatával győződjön meg arról, hogy a hitelesítésszolgáltató (CA) LÉTREJÖN az ad számára.   
 * A kettős protokollú kötetek jelenleg nem támogatják a Azure Active Directory Domain Servicest (AADDS).  
 * A kettős protokollú kötet által használt NFS-verzió NFSv3. Ennek megfelelően a következő szempontokat kell figyelembe venni:
     * A kettős protokoll nem támogatja a Windows ACL-ek bővített attribútumait az `set/get` NFS-ügyfelekről.
@@ -105,9 +104,6 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy k
 3. Kattintson a **protokoll** elemre, majd hajtsa végre a következő műveleteket:  
     * Válassza a **kettős protokoll (NFSv3 és SMB)** lehetőséget a kötethez.   
 
-    * A legördülő listából válassza ki a **Active Directory** -kapcsolatokat.  
-    A használt Active Directorynak rendelkeznie kell egy kiszolgáló legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványával. 
-
     * A kötet **kötetének elérési útját** határozza meg.   
     Ez a kötet elérési útja a megosztott kötet neve. A névnek betűvel kell kezdődnie, és az egyes előfizetésekben és régiókban egyedinek kell lennie.  
 
@@ -122,32 +118,6 @@ Azure NetApp Files támogatja a kötetek NFS-t (NFSv3 és NFSv 4.1), SMB3 vagy k
     A létrehozott kötet megjelenik a kötetek lapon. 
  
     A kötetek a kapacitáskészletről öröklik az előfizetésre, az erőforráscsoportra és a helyre vonatkozó attribútumokat. A kötet üzembe helyezésének állapotát az Értesítések lapon követheti nyomon.
-
-## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Active Directory hitelesítésszolgáltatói nyilvános főtanúsítvány feltöltése  
-
-1.  A hitelesítésszolgáltató hozzáadásához és konfigurálásához kövesse [a hitelesítésszolgáltató telepítése](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) és konfigurálása című témakört. 
-
-2.  Kövesse a [tanúsítványok megtekintése az MMC beépülő modullal](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) lehetőséget az MMC beépülő modul és a Tanúsítványkezelő eszköz használatához.  
-    A Tanúsítványkezelő beépülő modullal keresse meg a helyi eszköz gyökerét vagy kiállító tanúsítványát. A Tanúsítványkezelő beépülő modul parancsait az alábbi beállítások egyikével kell futtatnia:  
-    * Egy Windows-alapú ügyfél, amely csatlakozott a tartományhoz, és telepítve van a főtanúsítvány 
-    * Egy másik számítógép a főtanúsítványt tartalmazó tartományban  
-
-3. Exportálja a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt.  
-    A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok a személyes vagy a megbízható legfelső szintű hitelesítésszolgáltatók könyvtárából exportálhatók, ahogy az alábbi példákban is látható:   
-    ![személyes tanúsítványokat megjelenítő képernyőkép](../media/azure-netapp-files/personal-certificates.png)   
-    ![a megbízható legfelső szintű hitelesítésszolgáltatókat megjelenítő képernyőkép](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
-
-    Győződjön meg arról, hogy a tanúsítvány az alap-64 kódolású X. 509 fájlba van exportálva (. CER) formátum: 
-
-    ![Tanúsítvány exportálása varázsló](../media/azure-netapp-files/certificate-export-wizard.png)
-
-4. Nyissa meg a kettős protokollú kötet NetApp-fiókját, kattintson a **Active Directory kapcsolatok** elemre, és töltse fel a legfelső szintű hitelesítésszolgáltatói tanúsítványt a **Csatlakozás Active Directory** ablak használatával:  
-
-    ![Kiszolgáló legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa](../media/azure-netapp-files/server-root-ca-certificate.png)
-
-    Győződjön meg arról, hogy a hitelesítésszolgáltató nevét fel lehet oldani a DNS-sel. Ez a név a tanúsítvány "kiállítója" vagy "kiállítója" mezője:  
-
-    ![Tanúsítvány adatai](../media/azure-netapp-files/certificate-information.png)
 
 ## <a name="manage-ldap-posix-attributes"></a>LDAP POSIX-attribútumok kezelése
 

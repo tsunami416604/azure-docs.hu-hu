@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723978"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134347"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
@@ -215,7 +215,7 @@ A Storage-fiókok létrehozása után nyissa meg a Storage-fiók **fájlmegoszt�
 
 ### <a name="storsimple-data-manager"></a>StorSimple Data Manager
 
-Az áttelepítési feladatokat tároló Azure-Erőforrás neve **StorSimple Data Manager**. Válassza ki az **új erőforrást**, és keressen rá. Ezután válassza a **Létrehozás** elemet.
+Az áttelepítési feladatokat tároló Azure-Erőforrás neve **StorSimple Data Manager**. Válassza ki az **új erőforrást**, és keressen rá. Ezután kattintson a **Létrehozás** elemre.
 
 Ez az ideiglenes erőforrás a koordináláshoz használatos. Az áttelepítés befejezése után kiépíti azt. A StorSimple-fióknak ugyanabban az előfizetésben, erőforráscsoporthoz és régióban kell lennie.
 
@@ -441,6 +441,9 @@ Ezen a ponton a helyszíni Windows Server-példány és a StorSimple 8100-es vag
 1. Előfordulhat, hogy egyes fájlokat az Adatátalakítási feladatoknak az érvénytelen karakterek miatt megmaradtak. Ha igen, másolja őket a Azure File Sync-kompatibilis Windows Server-példányra. Később beállíthatja, hogy szinkronizálja őket. Ha nem használ Azure File Sync egy adott megosztáshoz, akkor jobb, ha a fájlok átnevezése érvénytelen karaktereket tartalmaz a StorSimple köteten. Ezután futtassa közvetlenül a RoboCopy parancsot az Azure-fájlmegosztás ellen.
 
 > [!WARNING]
+> A Robocopy a Windows Server 2019-ben jelenleg olyan problémát tapasztal, amelynek hatására a rendszer a célkiszolgálón Azure File Sync a fájlok újramásolását a forrásból, és a Robocopy/MIR funkciójának használatakor újra feltölti az Azure-ba. Fontos, hogy a Robocopy szolgáltatást a 2019-től eltérő Windows Serveren használja. Az előnyben részesített választás a Windows Server 2016. A rendszer frissíti a problémát Windows Update használatával.
+
+> [!WARNING]
 > A RoboCopyt *nem kell* elindítania ahhoz, hogy a kiszolgáló egy teljesen letöltött Azure-fájlmegosztás névterét használja. További információ: [annak meghatározása, hogy a névtér teljes mértékben le legyen-e töltve a kiszolgálóra](#determine-when-your-namespace-has-fully-synced-to-your-server).
 
  Csak azokat a fájlokat szeretné átmásolni, amelyeket az áttelepítési feladat utolsó futtatása után módosítottak, és azokat a fájlokat, amelyek korábban nem lettek áthelyezve. A Migrálás befejezése után a probléma megoldásához, hogy miért nem mozdultak el később a kiszolgálón. További információ: [Azure file Sync hibaelhárítás](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
@@ -448,7 +451,7 @@ Ezen a ponton a helyszíni Windows Server-példány és a StorSimple 8100-es vag
 A RoboCopy több paraméterrel rendelkezik. Az alábbi példa egy befejezett parancsot és a paraméterek kiválasztásának okait mutatja be.
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Háttér
@@ -499,6 +502,14 @@ Háttér
    :::column-end:::
    :::column span="1":::
       Lehetővé teszi, hogy a RoboCopy csak a forrás (StorSimple-készülék) és a cél (Windows Server Directory) közötti különbözeteket vegye figyelembe.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /IT
+   :::column-end:::
+   :::column span="1":::
+      Gondoskodik arról, hogy a hűség megőrzése bizonyos tükrözési helyzetekben megmaradjon.</br>Példa: két Robocopy között a fájl egy ACL-változást és egy attribútum-frissítést is futtat, például *rejtettként*. Az/IT nélkül a Robocopy nem tudja kihagyni az ACL-t, így nem kerül át a célhelyre.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -567,7 +578,7 @@ A Migrálás befejeződött.
 > Továbbra is kérdése van vagy probléma merült fel?</br>
 > Itt segítünk AzureFilesMigration@microsoft.com .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg [Azure file Syncával: aka.MS/AFS](./storage-sync-files-planning.md).
 * Ismerje meg a [felhőre vonatkozó szintű](storage-sync-cloud-tiering.md) házirendek rugalmasságát.

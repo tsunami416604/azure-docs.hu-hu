@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 366a9a63e4577a9b8470faec68f8d4a25114dd48
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342450"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133701"
 ---
 # <a name="protect-your-network-resources"></a>A hálózati erőforrások megóvása
 Azure Security Center folyamatosan elemzi az Azure-erőforrások biztonsági állapotát a hálózati biztonsággal kapcsolatos ajánlott eljárásokhoz. Ha Security Center észleli a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
 
-A hálózatkezeléssel kapcsolatos javaslatok teljes listáját lásd: [hálózatkezelési javaslatok](recommendations-reference.md#recs-network).
+A hálózatkezeléssel kapcsolatos javaslatok teljes listáját lásd: [hálózatkezelési javaslatok](recommendations-reference.md#recs-networking).
 
 Ez a cikk az Azure-erőforrásokra vonatkozó ajánlásokat tárgyalja a hálózati biztonsági szempontból. Hálózatkezelési javaslatok központ a következő generációs tűzfalak, hálózati biztonsági csoportok, JIT VM-hozzáférés, túlzottan megengedhető bejövő forgalmi szabályok és egyéb funkciók köré. A hálózati javaslatok és a javítási műveletek listáját lásd: [biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md).
 
@@ -46,11 +46,11 @@ Az interaktív hálózati Térkép grafikus nézetet biztosít a biztonsági át
 
 A hálózati Térkép megnyitása:
 
-1. A Security Center menüjében nyissa meg az Azure Defender irányítópultját, és válassza a **hálózati Térkép**lehetőséget.
+1. A Security Center menüjében nyissa meg az Azure Defender irányítópultját, és válassza a **hálózati Térkép** lehetőséget.
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Tárgyieszköz-leltár hálózati erőforrás-típusai" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Hálózati Térkép megnyitása az Azure Defender irányítópultján" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
-1. Válassza a **rétegek** menüt, majd a **topológia**lehetőséget.
+1. Válassza a **rétegek** menüt, majd a **topológia** lehetőséget.
  
 A topológiai Térkép alapértelmezett nézete a következőket jeleníti meg:
 

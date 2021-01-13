@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030849"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131338"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>A Kubernetes számítási feladatok védelme
 
@@ -27,7 +27,7 @@ Security Center több tároló biztonsági funkciót kínál, ha engedélyezi az
 - Valós idejű veszélyforrások észlelésére vonatkozó riasztások a K8s-fürtök [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)
 
 > [!TIP]
-> A Kubernetes-fürtökhöz és-csomópontokhoz esetlegesen megjelenő *biztonsági javaslatok listáját az* ajánlásokat ismertető táblázat [tároló szakasza](recommendations-reference.md#recs-containers) tartalmazza.
+> A Kubernetes-fürtökhöz és-csomópontokhoz esetlegesen megjelenő *biztonsági javaslatok listáját az* ajánlásokat ismertető táblázat [számítási szakasza](recommendations-reference.md#recs-compute) tartalmazza.
 
 
 
@@ -102,7 +102,7 @@ A javaslatok konfigurálásához telepítse a  **Kubernetes Azure Policy bővít
     1. Válassza az "ASC alapértelmezett" lehetőséget.
     1. Nyissa meg a **Parameters (paraméterek** ) fület, és szükség szerint módosítsa az értékeket.
     1. Válassza a **felülvizsgálat + mentés** lehetőséget.
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 
 
 1. A javaslatok bármelyikének érvénybe léptetéséhez 
@@ -245,12 +245,12 @@ spec:
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja a Kubernetes munkaterhelés-védelmet. 
 
 Más kapcsolódó anyagok esetében tekintse meg a következő lapokat: 
 
-- [Security Centeri javaslatok a tárolók számára](recommendations-reference.md#recs-containers)
+- [Security Center javaslatok a számítási feladatokhoz](recommendations-reference.md#recs-compute)
 - [AK-fürt szintű riasztások](alerts-reference.md#alerts-akscluster)
 - [A Container Host szintű riasztások](alerts-reference.md#alerts-containerhost)

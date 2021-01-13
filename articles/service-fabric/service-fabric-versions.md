@@ -3,12 +3,12 @@ title: Támogatott fürtözött verziók az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 5770aa072666f89a574da9d1f2584ab33b612330
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: abf9900e9749a1b21d927e0315076b38848bea10
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862171"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132647"
 ---
 # <a name="supported-service-fabric-versions"></a>Támogatott Service Fabric verziók
 
@@ -25,25 +25,57 @@ A következő dokumentumokban tájékozódhat arról, hogyan tarthatja meg a fü
 ## <a name="unsupported-versions"></a>Nem támogatott verziók
 
 ### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>Frissítési riasztás a 5,7-es és az alatti verziók 6.3.63. *
+A biztonság és a rendelkezésre állás javítása érdekében az Azure-infrastruktúra olyan változást tesz szükségessé, amely hatással lehet Service Fabric ügyfeleire. **A 5,7 és 6,3 között nem támogatott verziókon futó összes Service Fabric-fürt érintett**. A módosítás kezeléséhez frissíteni kell az Service Fabric futtatókörnyezetet, amely az összes támogatott Service Fabric-verzióhoz már elérhető az összes régióban.
 
-***Az 5,7-től a 6.3.63-ig nem támogatott verziókon futó összes Service Fabric-fürt.* a rendszer az Azure-ban, a 2021 * * *-ban bekövetkezett biztonsági feltörési változást fogja érinteni.
- 
- A szolgáltatás súlyos megszakadásának elkerülése érdekében (beleértve a nem elérhető fürtöket is) a lehető leghamarabb frissítenie kell a fürtöket az Service Fabric futtatókörnyezet egyik támogatott verziójára, amely tartalmazza a biztonsági probléma javítását. Az érintett ügyfeleket útmutatással értünk el. Ha támogatási csomaggal rendelkezik, és technikai segítségre van szüksége, kérjük, lépjen kapcsolatba velünk az [Azure-támogatási csatornákon](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) keresztül egy támogatási kérelem megnyitásával és a támogatási jegyben szereplő környezettel. 
- 
-  #### <a name="supported-service-fabric-runtime-versions-including-the-fix-for-the-security-breaking-change"></a>Támogatott Service Fabric futtatókörnyezet-verziók, beleértve a biztonsági feltörési változás javítását 
-   Frissítse a régebbi, nem támogatott verziókon futó Service Fabric-fürtöket a biztonsági feltörési változásoknak az alábbi támogatott verzió egyikére.
+**Január 19-** én a legújabb támogatott verzióra való frissítésre vonatkozó kérést és javaslatot teszünk, a 2021 elkerülése érdekében, ha támogatási csomaggal rendelkezik, és technikai segítségre van szüksége, kérjük, lépjen kapcsolatba velünk az Azure-támogatási csatornákon az Azure Service Fabric támogatási kérelmének megnyitásával, és a támogatási jegyben adja meg ezt a kontextust.
 
+#### <a name="impact-if-not-upgraded-to-supported-versions"></a>Hatás, ha a rendszer nem frissített a támogatott verzióra
+
+Az **Azure Service Fabric-fürtök, amelyek 5,7-től 6.3.63-ig nem támogatott verziókon futnak. \* a nem fog tudni** megjelenni, és nem lesz elérhető, ha a 2021 január 19-én nem frissítettük a támogatott verziók egyikére.
+
+#### <a name="required-action"></a>Szükséges művelet
+Frissítsen az alább felsorolt Service Fabric támogatott verziókra, hogy elkerülje az állásidőt vagy a változáshoz kapcsolódó funkciók elvesztését. Győződjön meg arról, hogy a fürtök legalább ezeket a verziókat futtatják a környezettel kapcsolatos problémák megelőzése érdekében.
+
+  ###### <a name="supported-service-fabric-runtime-versions"></a>Támogatott Service Fabric futtatókörnyezet-verziók
+   Ha nem a felsorolt Service Fabric támogatott verzióit használja, frissítsen az egyik verzióra, amely már tartalmazza a szükséges módosításokat, hogy megakadályozza az állásidőt a fürtön.  
+  
   | Operációs rendszer | Jelenlegi Service Fabric futtatókörnyezet a fürtben | CU/patch kiadás  | 
   | --- | --- |--- | 
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |
   | Windows | 7,2. * | 7.2.445.9590 |
   | Ubuntu 16 | 7,0. * | 7.0.472.1  |
-  | Ubuntu 16 | 7,1. * | 7.1.455.1  |
-  | Ubuntu 1804 | 7,1. * | 7.1.455.1804 |
-  | Ubuntu 16 | 7,2. * | 7.2.447.1 |
-  | Ubuntu 1804 | 7,2. * | 7.2.447.1804 |
+  | Linux Ubuntu 16,04 | 7,1. * | 7.1.455.1  |
+  | Linux Ubuntu 18,04 | 7,1. * | 7.1.455.1804 |
+  | Linux Ubuntu 16,04 | 7,2. * | 7.2.447.1 |
+  | Linux Ubuntu 18,04 | 7,2. * | 7.2.447.1804 |
  
+### <a name="upgrade-alert-for-versions-greater-than-63"></a>Frissítési riasztás a 6,3-nál nagyobb verzióknál 
+A biztonság és a rendelkezésre állás javítása érdekében az Azure-infrastruktúra olyan változást tesz szükségessé, amely hatással lehet Service Fabric ügyfeleire. Az **összes olyan Service Fabric-fürt, amely [a tárolók számára nyitott hálózatkezelési funkciót](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)használ, a 6,3-nál nagyobb és a 7,0-es verziónál régebbi, nem 7,0 kompatibilis verziókra van hatással**. A módosítás kezeléséhez frissíteni kell az Service Fabric futtatókörnyezetet, amely az összes támogatott Service Fabric-verzióhoz már elérhető az összes régióban.
+
+ #### <a name="impact-if-not-upgraded-to-supported-versions"></a>Hatás, ha a rendszer nem frissített a támogatott verzióra
+  Az Azure Service Fabric-fürtök, amelyek a tárolók **számára [nyitott hálózatkezelési funkciót](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) használnak a tárolók számára, és a 6,3-nál nagyobb verziókon futnak** , amelyek nem tartalmazzák a módosításokat, a funkcionalitás vagy a szolgáltatás zavarainak elvesztését tapasztalják, ha a **2021 január 19-** én nem frissítjük a támogatott verziók egyikére.
+ 
+  - A **6,3-nál nagyobb Service Fabric-t futtató fürtök esetében a nyitott hálózatkezelési funkció használata** esetén a fürt továbbra is fennáll, azonban a tárolók fürtjének nyitott hálózati funkciója megszűnik a működésük, ami miatt a munkaterhelések szolgáltatás megszakadhat.
+
+ - A **6,3-nál nagyobb Service Fabric-t futtató fürtök esetében, és a [tárolók nyitott hálózatkezelési funkciójának](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) használata** esetén a fürt továbbra is fennáll, de a működésük megszűnik, ami a munkaterhelések szolgáltatás általi megszakítását okozhatja.
+  
+#### <a name="required-action"></a>Szükséges művelet
+Frissítsen az alább felsorolt Service Fabric támogatott verziókra, hogy elkerülje az állásidőt vagy a változáshoz kapcsolódó funkciók elvesztését. Győződjön meg arról, hogy a fürtök legalább ezeket a verziókat futtatják a környezettel kapcsolatos problémák megelőzése érdekében. 
+ 
+ ###### <a name="supported-service-fabric-runtime-versions"></a>Támogatott Service Fabric futtatókörnyezet-verziók
+ Ha nem szerepel a Service Fabric támogatott verziói között, frissítsen az egyik verzióra, amely már tartalmazza a szükséges módosításokat, hogy megakadályozza a funkciók elvesztését.  
+ 
+  | Operációs rendszer | Jelenlegi Service Fabric futtatókörnyezet a fürtben | CU/patch kiadás  | 
+  | --- | --- |--- | 
+  | Windows | 7,0. * | 7.0.478.9590 |
+  | Windows | 7,1. * | 7.1.503.9590 |
+  | Windows | 7,2. * | 7.2.445.9590 |
+  | Linux Ubuntu 16,04 | 7,0. * | 7.0.472.1  |
+  | Linux Ubuntu 16,04 | 7,1. * | 7.1.455.1  |
+  | Linux Ubuntu 18,04 | 7,1. * | 7.1.455.1804 |
+  | Linux Ubuntu 16,04 | 7,2. * | 7.2.447.1 |
+  | Linux Ubuntu 18,04 | 7,2. * | 7.2.447.1804 |
 
 ## <a name="supported-versions"></a>Támogatott verziók
 A következő táblázat felsorolja a Service Fabric verzióit és azok támogatásának befejezési dátumát.

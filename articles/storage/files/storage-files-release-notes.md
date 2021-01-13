@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 739e59ea8e5737abbc6f0f0799129be5f59fb9b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 3bf3ecefb17f4c9fda6405da7fb2bdc2650f5324
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674497"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131474"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -236,14 +236,14 @@ A következő kibocsátási megjegyzések az Azure File Sync-ügynök verziójá
 ### <a name="improvements-and-issues-that-are-fixed"></a>Javított javítás és problémák
 
 - Önkiszolgáló visszaállítás támogatása
-    - A felhasználók mostantól visszaállíthatják a fájljaikat az előző verzió funkció használatával. A V9-es kiadás előtt a korábbi verzió funkció nem támogatott olyan köteteken, amelyeken engedélyezve van a felhőalapú rétegek használata. Ezt a funkciót külön kell engedélyezni az egyes köteteken, amelyeken engedélyezve van egy, a felhőalapú rétegek használatát engedélyező végpont. További információk:  
+    - A felhasználók mostantól a köteten lévő önkiszolgáló visszaállítási funkció engedélyezése után is visszaállíthatják a többrétegű fájlokat (a lemezen lévő fájlokkal együtt) az előző verzió funkció használatával. A V9-es kiadás előtt a korábbi verzió funkció nem támogatott a többplatformos fájlokban. Ezt a funkciót külön kell engedélyezni az egyes köteteken, amelyeken engedélyezve van egy, a felhőalapú rétegek használatát engedélyező végpont. További információk:  
 Önkiszolgáló [Visszaállítás az előző verziók és a VSS (Kötet árnyékmásolata szolgáltatás) használatával](./storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Nagyobb fájlmegosztás-méretek támogatása 
     - Azure File Sync mostantól legfeljebb 64TiB és 100 000 000 fájlt támogat egyetlen, szinkronizált névtérben.  
  
 - Az deduplikálás támogatása a 2019-es kiszolgálón 
-    - Az deduplikálás mostantól támogatott a Windows Server 2019-on futó felhőalapú rétegek esetén. Ahhoz, hogy támogassa az deduplikált köteteken a felhőalapú rétegek, telepíteni kell a Windows Update [KB4520062](https://support.microsoft.com/help/4520062) . 
+    - Az deduplikálás mostantól támogatott (függetlenül attól, hogy a felhő-rétegek engedélyezve vannak-e vagy le vannak tiltva a köteten egy vagy több kiszolgálói végponton) a Windows Server 2016 és a Windows Server 2019 rendszeren. Ha az 2019-es kiszolgálón a felhő-előírásokkal rendelkező köteteken lévő Adatmásolást szeretné támogatni, telepítenie kell a Windows Update [KB4520062](https://support.microsoft.com/help/4520062) . 
  
 - Magasabb fájlméret a fájl számára a szinthez 
     - A fájlnak a réteghez való minimális mérete mostantól a fájlrendszer fürtjének méretétől függ (a fájlrendszer fürt méretének kétszerese). Alapértelmezés szerint például az NTFS fájlrendszerű fürt mérete 4KB, a fájlhoz tartozó minimális fájlméret pedig 8 kb. 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030866"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132716"
 ---
 # <a name="container-security-in-security-center"></a>Tárolóbiztonság a Security Centerben
 
@@ -48,7 +48,7 @@ Az alábbi képernyőfelvételen az eszközök leltára oldal és a Security Cen
 
 A Azure Resource Manager-alapú Azure Container-nyilvántartásokban lévő lemezképek figyeléséhez engedélyezze [Az Azure Defender számára a Container-nyilvántartásokat](defender-for-container-registries-introduction.md). Security Center megvizsgálja az elmúlt 30 napban lekért képeket, leküldve a beállításjegyzékbe vagy importálta azokat. Az integrált képolvasót az iparág vezető sebezhetőségi vizsgálatának gyártója, a Qualys.
 
-Ha a rendszer problémákba ütközik – Qualys vagy Security Center – értesítést kap az [Azure Defender irányítópultján](azure-defender-dashboard.md). Security Center a biztonsági rések esetében gyakorlati ajánlásokat és súlyossági besorolást biztosít, valamint útmutatást nyújt a probléma megoldásához. A Security Center a tárolókkal kapcsolatos javaslatairól a [javaslatok hivatkozási listájában](recommendations-reference.md#recs-containers)talál további információt.
+Ha a rendszer problémákba ütközik – Qualys vagy Security Center – értesítést kap az [Azure Defender irányítópultján](azure-defender-dashboard.md). Security Center a biztonsági rések esetében gyakorlati ajánlásokat és súlyossági besorolást biztosít, valamint útmutatást nyújt a probléma megoldásához. A Security Center a tárolókkal kapcsolatos javaslatairól a [javaslatok hivatkozási listájában](recommendations-reference.md#recs-compute)talál további információt.
 
 Security Center szűrők és a vizsgálati eredmények osztályozása. Ha egy rendszerkép kifogástalan állapotú, Security Center megjelöli. A Security Center csak olyan rendszerképekhez hoz létre biztonsági javaslatokat, amelyeknek feloldhatók a problémák. Ha csak akkor értesíti, ha problémák merülnek fel, Security Center csökkenti a nemkívánatos tájékoztatási riasztások lehetséges lehetőségét.
 
@@ -60,7 +60,7 @@ Azure Security Center azonosítja a IaaS Linux rendszerű virtuális gépeken ü
 
 Security Center tartalmazza a CIS Docker-teljesítményteszt teljes szabályait, és riasztást küld, ha a tárolók nem elégítik ki a vezérlőelemek egyikét sem. Ha helytelen konfigurációkat talál, Security Center biztonsági javaslatokat hoz létre. A javaslatok megtekintéséhez és a problémák megoldásához használja a Security Center **ajánlásai lapot** . A CIS-alapú teljesítménytesztek ellenőrzése nem fut AK által felügyelt példányokon vagy Databricks által felügyelt virtuális gépeken.
 
-A szolgáltatással kapcsolatos releváns Security Center javaslatok részleteiért tekintse meg az ajánlásokat ismertető táblázat [tároló szakaszát](recommendations-reference.md#recs-containers) .
+A szolgáltatással kapcsolatos releváns Security Center javaslatok részleteiért tekintse meg az ajánlásokat ismertető táblázat [számítási szakaszát](recommendations-reference.md#recs-compute) .
 
 Ha egy virtuális gép biztonsági problémáit vizsgálja, Security Center további információkat nyújt a gépen lévő tárolókkal kapcsolatban. Ezek az adatok tartalmazzák a Docker-verziót és a gazdagépen futó rendszerképek számát. 
 
@@ -74,7 +74,7 @@ Az AK biztonsági ellenőrzéseket és láthatóságot biztosít a fürtök bizt
 * Az AK-fürtök konfigurációjának folyamatos figyelése
 * Iparági szabványokhoz igazított biztonsági javaslatok előállítása
 
-A szolgáltatással kapcsolatos releváns Security Center javaslatok részleteiért tekintse meg az ajánlásokat ismertető táblázat [tároló szakaszát](recommendations-reference.md#recs-containers) .
+A szolgáltatással kapcsolatos releváns Security Center javaslatok részleteiért tekintse meg az ajánlásokat ismertető táblázat [számítási szakaszát](recommendations-reference.md#recs-compute) .
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Munkaterhelések elleni védelem – ajánlott eljárások a Kubernetes belépésvezérlés használatával
 
@@ -95,7 +95,7 @@ További információ a [Kubernetes számítási feladatainak biztonságáról](
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az áttekintésben megtanulta a tárolók biztonságának alapvető elemeit Azure Security Centerban. Kapcsolódó anyagok esetében lásd:
 

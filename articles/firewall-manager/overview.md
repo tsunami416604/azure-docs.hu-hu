@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/12/2021
 ms.author: victorh
-ms.openlocfilehash: 84ecea7764ddf48d68c983eaa5bccbac5f332d9b
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95489694"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132443"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Mi az az Azure Firewall Manager?
 
@@ -86,7 +86,6 @@ Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 |Ág és ág közötti forgalom a privát forgalom szűrésével engedélyezve|A fiókirodák közötti forgalom nem támogatott, ha a privát forgalom szűrése engedélyezve van. |Vizsgáló.<br><br>Nem biztonságos a privát forgalom, ha a fiókirodák közötti kapcsolat létfontosságú.|
 |Az azonos virtuális WAN-t megosztó biztonságos virtuális huboknak ugyanabban az erőforráscsoporthoz kell tartoznia.|Ez a viselkedés a virtuális WAN-Hubokkal van összhangban ma.|Hozzon létre több virtuális WAN-t, amely lehetővé teszi, hogy a biztonságos virtuális hubok különböző erőforráscsoportok jöjjenek létre.|
 |A tömeges IP-cím hozzáadása nem sikerül|Ha több nyilvános IP-címet ad hozzá, a biztonságos központ tűzfala sikertelen állapotba kerül.|Kisebb nyilvános IP-cím növekmények hozzáadása. Például adjon hozzá 10-et egyszerre.|
-|Az alkalmazási szabályok nem működnek olyan biztonságos központban, amelyben az egyéni DNS (előzetes verzió) konfigurálva van.|Az egyéni DNS (előzetes verzió) nem működik olyan biztonságos központi telepítések és központi virtuális hálózati telepítések esetén, ahol a kényszerített bújtatás engedélyezve van.|Javítás a vizsgálat alatt.|
 |A DDoS Protection standard nem támogatott a biztonságos virtuális hubok esetében|A DDoS Protection standard nincs integrálva a vWANs.|Kivizsgálás|
 |A tevékenységek naplói nem teljes mértékben támogatottak|A tűzfalszabályok jelenleg nem támogatják a tevékenységek naplóit.|Kivizsgálás|
 |SNAT magánhálózati IP-címtartományok konfigurálása|A [magánhálózati IP-címtartomány beállításai](../firewall/snat-private-range.md) figyelmen kívül lesznek hagyva, ha Azure Firewall házirend konfigurálva van. A rendszer az alapértelmezett Azure Firewall viselkedést használja, ahol nem SNAT hálózati szabályokat, ha a célként megadott IP-cím egy [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)-beli magánhálózati IP-címtartomány része.|Kivizsgálás|

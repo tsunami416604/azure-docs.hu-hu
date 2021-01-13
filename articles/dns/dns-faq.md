@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 6/15/2019
+ms.date: 01/11/2021
 ms.author: rohink
-ms.openlocfilehash: 2f7e4eadc25028db4668db8d245803c7ddba8688
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c468b1216670ce7e6b5d252a7f7fee807199d20c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968247"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131491"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS GYIK
 
@@ -194,6 +194,10 @@ Igen. Azure DNS a névkiszolgálók kettős verem. A kettős verem azt jelenti, 
 A nemzetközi tartománynevek (IDNs) az egyes DNS-neveket az [punycode](https://en.wikipedia.org/wiki/Punycode)használatával kódolják. A DNS-lekérdezések ezekkel a punycode-kódolt nevekkel jönnek létre.
 
 A IDNs Azure DNS-ben való konfigurálásához alakítsa át a zóna nevét vagy a punycode nevet. Azure DNS jelenleg nem támogatja a punycode-re vagy-re történő beépített átalakítást.
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>A privát zónák Azure DNS a vásárlói tartalmat?
+
+Nem, Azure DNS privát zónák nem tárolnak felhasználói tartalmakat.
 
 ## <a name="next-steps"></a>Következő lépések
 

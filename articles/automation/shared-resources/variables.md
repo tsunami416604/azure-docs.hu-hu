@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 6db0c82c034aab97deee1be4aa8bdc54368521bc
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734776"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131525"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Változók kezelése a Azure Automationban
 
@@ -26,7 +26,7 @@ Az Automation-változók a következő helyzetekben lehetnek hasznosak:
 
 Azure Automation megőrzi a változókat, és akkor is elérhetővé teszi őket, ha egy runbook vagy DSC-konfiguráció meghibásodik. Ez a viselkedés lehetővé teszi, hogy egy runbook vagy DSC-konfiguráció olyan értéket állítson be, amelyet egy másik runbook használ, vagy ha a következő futtatásakor ugyanaz a runbook vagy DSC-konfiguráció szerepel.
 
-Azure Automation az egyes titkosított változókat biztonságosan tárolja. Változó létrehozásakor megadhatja a titkosítását és tárolását Azure Automation biztonságos eszközként. A változó létrehozása után nem változtathatja meg a titkosítási állapotát a változó újbóli létrehozása nélkül. Ha rendelkezik olyan Automation-fiókkal, amely még nem titkosított bizalmas adatokat tárol, akkor törölnie kell őket, és újra létre kell hoznia őket titkosított változókként. Azure Security Center javasoljuk, hogy titkosítsa az összes Azure Automation változót az [Automation-fiók változói](../../security-center/recommendations-reference.md#recs-computeapp)között leírt módon. Ha olyan titkosítatlan változókkal rendelkezik, amelyeket ki szeretne zárni ebből a biztonsági javaslatból, tekintse meg a mentesítési szabály létrehozásával kapcsolatos tudnivalókat [és a biztonságos pontszámokat](../../security-center/exempt-resource.md) .
+Azure Automation az egyes titkosított változókat biztonságosan tárolja. Változó létrehozásakor megadhatja a titkosítását és tárolását Azure Automation biztonságos eszközként. A változó létrehozása után nem változtathatja meg a titkosítási állapotát a változó újbóli létrehozása nélkül. Ha rendelkezik olyan Automation-fiókkal, amely még nem titkosított bizalmas adatokat tárol, akkor törölnie kell őket, és újra létre kell hoznia őket titkosított változókként. Azure Security Center javasoljuk, hogy titkosítsa az összes Azure Automation változót az [Automation-fiók változói](../../security-center/recommendations-reference.md#recs-compute)között leírt módon. Ha olyan titkosítatlan változókkal rendelkezik, amelyeket ki szeretne zárni ebből a biztonsági javaslatból, tekintse meg a mentesítési szabály létrehozásával kapcsolatos tudnivalókat [és a biztonságos pontszámokat](../../security-center/exempt-resource.md) .
 
 >[!NOTE]
 >Azure Automation a biztonságos adategységek közé tartoznak a hitelesítő adatok, a tanúsítványok, a kapcsolatok és a titkosított változók. Ezeket az eszközöket a rendszer titkosítja és tárolja Azure Automation az egyes Automation-fiókokhoz generált egyedi kulcs használatával. Azure Automation a kulcsot a rendszerfelügyelt Key Vault tárolja. A biztonságos eszköz tárolása előtt az Automation betölti a kulcsot Key Vault, majd a használatával titkosítja az eszközt.
@@ -38,7 +38,7 @@ Ha a Azure Portal változót hoz létre, meg kell adnia egy adattípust a legör
 * Sztring
 * Egész szám
 * DateTime
-* Logikai
+* Logikai érték
 * Null
 
 A változó nem korlátozódik a megadott adattípusra. A változót a Windows PowerShell használatával kell beállítani, ha más típusú értéket szeretne megadni. Ha a jelzést adja meg `Not defined` , a változó értéke null. Az értéket a [set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) parancsmaggal vagy a belső `Set-AutomationVariable` parancsmaggal kell beállítani.
@@ -215,7 +215,7 @@ Az alábbi képen egy egyszerű értékkel rendelkező változó egy grafikus ru
 
 ![Egyszerű változó beállítása](../media/variables/runbook-set-simple-variable.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a változók eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
 * A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).

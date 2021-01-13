@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845477"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131448"
 ---
-# <a name="receipt-concepts"></a>Nyugtákra vonatkozó fogalmak
+# <a name="form-recognizer-prebuilt-receipt-model"></a>Űrlap-felismerő előre összeépített bevételezési modellje
 
-Az Azure-űrlap felismerője az előre elkészített modellek egyikével elemezheti a nyugtákat. A beérkezési API Kinyeri a legfontosabb információkat az értékesítési visszaigazolásokból az angol nyelven, például a kereskedelmi név, a tranzakció dátuma, a tranzakciók összege, a sorok és egyebek. 
+Az Azure-űrlap felismerője az előre elkészített beérkezési modell használatával elemezheti és kinyerheti az értékesítési nyugták adatait. A nagy teljesítményű [optikai karakterfelismerési (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) képességeket kombinálja a részletes tanulási modellek bevezetésével, hogy kinyerje a legfontosabb információkat a nyugták angol nyelven. A beérkezési API Kinyeri a legfontosabb információkat az értékesítési visszaigazolásokból az angol nyelven, például a kereskedelmi név, a tranzakció dátuma, a tranzakciók összege, a sorok és egyebek. 
 
 ## <a name="understanding-receipts"></a>A visszaigazolások ismertetése 
 
@@ -27,37 +27,44 @@ Számos vállalat és személy továbbra is az értékesítési visszaigazoláso
 
 Az adatok e nyugtából való automatikus kinyerése bonyolult lehet. A visszaigazolások lehetnek gyűrött és nehezen olvasható, nyomtatott vagy kézírásos részek, valamint a beérkezések smartphone-képei alacsony színvonalúak lehetnek. Emellett a beérkezési sablonok és a mezők nagy mértékben a piac, a régió és a kereskedő szerint változhatnak. Ezek a kihívások mind az kinyerési, mind a helyszíni észlelési folyamat során egyedi problémát jelentenek.  
 
-Az optikai karakterfelismerés (OCR) és az előre összevont beérkezési modell használatával a beérkezési API lehetővé teszi ezen bevételezés-feldolgozási forgatókönyvek és az adatok kinyerését a visszaigazolásokból, például a kereskedelmi név, a tipp, a Total, a line Item és egyebek. Ezzel az API-val nincs szükség a modell betanítására, csak küldje el a nyugtát az elemzés visszaigazolási API-nak, és kinyeri az adatgyűjtést.
+Az optikai karakterfelismerés (OCR) és az előre összevont beérkezési modell használatával a beérkezési API lehetővé teszi ezen bevételezés-feldolgozási forgatókönyvek és az adatok kinyerését a visszaigazolásokból, például a kereskedelmi név, a tipp, a Total, a line Item és egyebek. Ezzel az API-val nincs szükség a modell betanítására, csak küldje el a beérkezési képet az elemzési beérkezési API-nak, és kinyeri az adatok kinyerését.
 
-![minta nyugtája](./media/contoso-receipt-small.png)
+![minta nyugtája](./media/receipts-example.jpg)
 
-## <a name="what-does-the-receipt-api-do"></a>Mit tesz a beérkezési API? 
 
-Az előre létrehozott beérkezési API kibontja az értékesítési nyugták tartalmát &mdash; , amelyet általában egy étteremben, a kereskedőn vagy egy élelmiszerboltban szereztek be.
+## <a name="what-does-the-receipt-service-do"></a>Mire szolgál a beérkezési szolgáltatás? 
+
+Az előre elkészített bevételezési szolgáltatás kibontja az értékesítési nyugták tartalmát &mdash; , amelyet általában egy étterem, kiskereskedő vagy élelmiszerbolt tárol.
 
 ### <a name="fields-extracted"></a>Kinyert mezők
 
-* Kereskedő neve 
-* Kereskedelmi címe 
-* Kereskedő telefonszáma 
-* Tranzakció dátuma 
-* Tranzakciós idő 
-* Részösszeg 
-* Adó 
-* Összesen 
-* Tipp 
-* Sorok kinyerése (például cikkmennyiség, elem ára, elem neve)
+|Név| Típus | Leírás | Szöveg | Érték (szabványosított kimenet) |
+|:-----|:----|:----|:----| :----|
+| ReceiptType | sztring | Az értékesítési visszaigazolás típusa | Elkülönül |  |
+| MerchantName | sztring | A nyugtát kiállító kereskedő neve | Contoso |  |
+| MerchantPhoneNumber | Telefonszám | A felsorolt telefonszámok száma | 987-654-3210 | + 19876543210 |
+| MerchantAddress | sztring | Kereskedők listázott címe | 123 Main St Redmond WA 98052 |  |
+| TransactionDate | dátum | A visszaigazolás kiállításának dátuma | 2019. június 06. | 2019-06-26  |
+| TransactionTime | time | A visszaigazolás kiállításának időpontja | 4:49 PM | 16:49:00  |
+| Összesen | szám | Teljes tranzakció összes nyugtája | $14,34 | 14,34 |
+| Részösszeg | szám | Beérkezési részösszegek – gyakran az adók alkalmazása előtt | $12,34 | 12.34 |
+| Adó | szám | Beérkezési adó, gyakran forgalmi adó vagy ezzel egyenértékű | 2 USD | 2.00 |
+| Tipp | szám | A vásárló által tartalmazott tipp | $1,00 | 1,00 |
+| Elemek | objektumok tömbje | Kinyert elemek, a név, a mennyiség, az egység ára és a kinyert teljes összeg | |
+| Name | sztring | Elemnév | 6. felszíni Pro | |
+| Mennyiség | szám | Az egyes elemek mennyisége | 1 | |
+| Ár | szám | Minden egyes elemszintű egység ára | $999,00 | 999,00 |
+| Teljes díj | szám | Sor teljes díja | $999,00 | 999,00 |
 
 ### <a name="additional-features"></a>További funkciók
 
 A beérkezési API a következő információkat is megadja:
 
-* Bevételezés típusa (például a részletezett, a bankkártya stb.)
 * Mező megbízhatósági szintje (minden mező a hozzá tartozó megbízhatósági értéket adja vissza)
 * OCR nyers szöveg (OCR – kinyert szöveges kimenet a teljes bevételezéshez)
 * Az egyes értékek, sorok és szavak határoló mezője
 
-## <a name="try-it-out"></a>Próbálja ki
+## <a name="try-it-out"></a>Próba
 
 Az űrlap-felismerő beérkezési szolgáltatás kipróbálásához nyissa meg az online minta felhasználói felület eszközét:
 
@@ -458,7 +465,7 @@ A nyugták hasznos információkat tartalmaznak, amelyek segítségével elemezh
 
 A beérkezési API a [mesterséges intelligencia-készítő bevételezés feldolgozási funkcióját](/ai-builder/prebuilt-receipt-processing)is felhasználja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egy [űrlap-felismerő](quickstarts/client-library.md) gyors üzembe helyezésével megkezdheti a nyugták feldolgozására szolgáló alkalmazás megírását a választott nyelven.
 

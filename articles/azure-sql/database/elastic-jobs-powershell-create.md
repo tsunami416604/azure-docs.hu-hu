@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427290"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131933"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Rugalmas feladatok ügynökének létrehozása a PowerShell használatával (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,19 +123,11 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>Rugalmas feladatok használata
-
-Rugalmas feladatok használatához regisztrálja a szolgáltatást az Azure-előfizetésben a következő parancs futtatásával. Egyszer futtassa ezt a parancsot ahhoz az előfizetéshez, amelyben létre kívánja hozni a rugalmas feladatokhoz tartozó ügynököt. Azokat az előfizetéseket, amelyek csak a feladatütemezés adatbázisait tartalmazzák, nem kell regisztrálniuk.
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
-```
-
 ### <a name="create-the-elastic-job-agent"></a>Rugalmasfeladat-ügynök létrehozása
 
 A rugalmasfeladat-ügynök a feladatok létrehozásához, futtatásához és kezeléséhez használt Azure-erőforrás. Az ügynök ütemezés szerint vagy egyszeri alkalommal hajtja végre a feladatokat.
 
-A **New-AzSqlElasticJobAgent** parancsmagnak már léteznie kell egy Azure SQL Database adatbázisa, így a *resourceGroupName*, a *serverName*és a *databaseName* paraméternek mind a meglévő erőforrásokra kell mutatnia.
+A **New-AzSqlElasticJobAgent** parancsmagnak már léteznie kell egy Azure SQL Database adatbázisa, így a *resourceGroupName*, a *serverName* és a *databaseName* paraméternek mind a meglévő erőforrásokra kell mutatnia.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -205,7 +197,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 A [célcsoport](job-automation-overview.md#target-group) határozza meg azt az egy vagy több adatbázist, amely(ek)en az adott feladatlépés végre lesz hajtva.
 
-A következő kódrészlet két célcsoportot hoz létre: *serverGroup*és *serverGroupExcludingDb2*. a *serverGroup* a kiszolgálón található összes adatbázist megcélozza a végrehajtás során, és a *serverGroupExcludingDb2* a kiszolgálón lévő összes adatbázist megcélozza, a *targetDb2*kivételével:
+A következő kódrészlet két célcsoportot hoz létre: *serverGroup* és *serverGroupExcludingDb2*. a *serverGroup* a kiszolgálón található összes adatbázist megcélozza a végrehajtás során, és a *serverGroupExcludingDb2* a kiszolgálón lévő összes adatbázist megcélozza, a *targetDb2* kivételével:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -299,7 +291,7 @@ A jelen oktatóanyagban létrehozott erőforrásokat az erőforráscsoport törl
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban több adatbázisban fog futtatni egy Transact-SQL-szkriptet. Megismerte, hogyan hajthatja végre a következő feladatokat:
 

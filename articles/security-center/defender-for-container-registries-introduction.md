@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
-ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
+ms.openlocfilehash: 79a428c322b65bfbb982be7a7e0c8b9fab7eed18
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96310391"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132732"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>A tárolóregisztrációs adatbázisokhoz készült Azure Defender bemutatása
 
@@ -28,7 +28,7 @@ Security Center az előfizetésében Azure Resource Manager alapú ACR-jegyzéke
 
 Az **Azure Defender for Container** -beállításjegyzékek egy sebezhetőségi ellenőrzőeszközt tartalmaznak a Azure Resource Manager-alapú Azure Container Registry-jegyzékekben található rendszerképek vizsgálatához, és mélyebb láthatóságot biztosítanak a lemezképek biztonsági rései számára. Az integrált képolvasót a Qualys, az iparág vezető sebezhetőségének vizsgálatára szolgáló gyártó látja el.
 
-Ha problémák merülnek fel, a Qualys vagy a Security Center – értesítést kap a Security Center irányítópulton. Security Center a biztonsági rések esetében gyakorlati ajánlásokat és súlyossági besorolást biztosít, valamint útmutatást nyújt a probléma megoldásához. A Security Center a tárolókkal kapcsolatos javaslatairól a [javaslatok hivatkozási listájában](recommendations-reference.md#recs-containers)talál további információt.
+Ha problémák merülnek fel, a Qualys vagy a Security Center – értesítést kap a Security Center irányítópulton. Security Center a biztonsági rések esetében gyakorlati ajánlásokat és súlyossági besorolást biztosít, valamint útmutatást nyújt a probléma megoldásához. A Security Center a tárolókkal kapcsolatos javaslatairól a [javaslatok hivatkozási listájában](recommendations-reference.md#recs-compute)talál további információt.
 
 Security Center szűrők és a vizsgálati eredmények osztályozása. Ha egy rendszerkép kifogástalan állapotú, Security Center megjelöli. A Security Center csak olyan rendszerképekhez hoz létre biztonsági javaslatokat, amelyeknek feloldhatók a problémák. Security Center részletesen ismerteti az egyes jelentett biztonsági réseket és a súlyossági besorolást. Emellett útmutatást nyújt az egyes rendszerképeken talált biztonsági rések szervizeléséhez.
 
@@ -89,7 +89,7 @@ Igen. Ha a szervezetnek figyelmen kívül kell hagynia egy megállapítást, és
 A Security Center biztonsági réseket biztosít a beállításjegyzékben leküldett vagy lehúzott összes rendszerképhez. Egyes képek a már beolvasott képekből is felhasználhatnak címkéket. Előfordulhat például, hogy a "legutóbbi" címkét újra hozzá kell rendelnie, amikor egy képet vesz fel egy kivonatba. Ilyen esetekben a régi rendszerkép továbbra is létezik a beállításjegyzékben, és a kivonata továbbra is lekérhető. Ha a rendszerkép biztonsági megállapításokkal rendelkezik, és leállt, biztonsági rések jelennek meg.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Biztonsági rések ellenőrzése a lemezképekben](defender-for-container-registries-usage.md)

@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607898"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133242"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Hibaelhárítás és Q és A for Application Insights for Java SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "97607898"
 ## <a name="build-errors"></a>Felépítési hibák
 **Az Eclipse-ben vagy a IntelliJ-ben, ha a Application Insights SDK-t Maven-vagy Gradle-n keresztül adja hozzá, a Build vagy az ellenőrzőösszeg érvényesítési hibáit.**
 
-* Ha a függőségi `<version>` elem helyettesítő karakterekkel (például Maven) `<version>[2.0,)</version>` vagy (Gradle) rendelkező mintázatot használ `version:'2.0.+'` , próbáljon meg inkább egy adott verziót megadni, például: `2.0.1` . Tekintse meg a legújabb verzió [kibocsátási megjegyzéseit](https://github.com/Microsoft/ApplicationInsights-Java/releases) .
+* Ha a függőségi `<version>` elem helyettesítő karakterekkel (például Maven) `<version>[2.0,)</version>` vagy (Gradle) rendelkező mintázatot használ `version:'2.+'` , próbáljon meg inkább egy adott verziót megadni, például: `2.6.2` .
 
 ## <a name="no-data"></a>Nincsenek adatkészletek
 **Felvettem Application Insights sikeresen, és futtattam az alkalmazást, de még soha nem láttam az adataim a portálon.**
@@ -36,7 +36,7 @@ ms.locfileid: "97607898"
 * A [naplózás bekapcsolásához](#debug-data-from-the-sdk) `<SDKLogger />` vegyen fel egy elemet a legfelső csomópont alatt a ApplicationInsights.xml fájlban (a projekt erőforrások mappájába), és keresse meg az AI: info/Warning/Error utasításban található bejegyzéseket a gyanús naplókhoz. 
 * Győződjön meg arról, hogy a Java SDK sikeresen betöltötte a helyes ApplicationInsights.xml fájlt, a "konfigurációs fájl sikeresen megtalálva" utasításban megtekintve a konzol kimeneti üzeneteit.
 * Ha a konfigurációs fájl nem található, tekintse meg a kimeneti üzeneteket, ahol megtekintheti a konfigurációs fájl keresésének helyét, és győződjön meg arról, hogy a ApplicationInsights.xml az egyik keresési helyen található. Az általános szabály, hogy a konfigurációs fájlt a Application Insights SDK-tégelyek közelében helyezheti el. Például: a Tomcat-ben ez a WEB-INF/classs mappát jelenti. A fejlesztés során elhelyezheti ApplicationInsights.xml a webes projekt erőforrások mappájába.
-* Tekintse meg a [GitHub-problémák oldalát](https://github.com/Microsoft/ApplicationInsights-Java/issues) is, amely az SDK ismert problémáit tartalmazza.
+* Tekintse meg a [GitHub-problémák oldalát](https://github.com/microsoft/ApplicationInsights-Java/issues) is, amely az SDK ismert problémáit tartalmazza.
 * A verziók ütközésével kapcsolatos problémák elkerülése érdekében győződjön meg arról, hogy az Application Insights Core, web, Agent és naplózási hozzáfűzése azonos verzióját használja.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Felhasználtam az adatmegjelenítést, de leállt
@@ -183,7 +183,7 @@ Application Insights használja `org.apache.http` . Ez a névtér alatt Applicat
 >[!NOTE]
 >Ha engedélyezi a HIBAKERESÉSi szintű naplózást az alkalmazás összes névterében, a rendszer az összes végrehajtó modult tiszteletben tartja, beleértve a `org.apache.http` nevet is `com.microsoft.applicationinsights.core.dependencies.http` . A Application Insights nem fogja tudni alkalmazni ezeket a hívásokat, mert az Apache Library a napló hívását végzi. A HIBAKERESÉSi szint naplózása jelentős mennyiségű naplófájlt eredményez, és nem ajánlott éles üzemi példányok esetén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 **Beállítottam Application Insights a Java Server-alkalmazáshoz. Mit tehetek?**
 
 * [Weblapok rendelkezésre állásának monitorozása][availability]
@@ -194,7 +194,7 @@ Application Insights használja `org.apache.http` . Ez a névtér alatt Applicat
 
 ## <a name="get-help"></a>Segítség kérése
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-* [Probléma fájl a GitHubon](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [Probléma fájl a GitHubon](https://github.com/microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

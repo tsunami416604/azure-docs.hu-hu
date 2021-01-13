@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71a83a8d119e5fd8c18b7b21abe4a0a07ba9c67a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 30cc917e2db3a7c4c6d5d6ebd5a8a47afff5d505
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116551"
+ms.locfileid: "98133140"
 ---
 # <a name="synapse-access-control"></a>A szinapszis hozzáférés-vezérlése 
 
@@ -30,7 +30,7 @@ A szinapszis átfogó és részletes hozzáférés-vezérlési rendszereket bizt
 
 A szinapszis-szerepkörök a különböző hatókörökön alkalmazható engedélyek készleteit biztosítják. Ez a részletesség lehetővé teszi a rendszergazdák, a fejlesztők, a biztonsági személyzet és a kezelők számára megfelelő hozzáférés megadását az erőforrások és az adatok kiszámításához.
 
-A hozzáférés-vezérlést olyan biztonsági csoportok használatával lehet egyszerűsíteni, amelyek illeszkednek a felhasználók szerepköreihez.  A hozzáférés kezeléséhez csak a megfelelő biztonsági csoportokból származó felhasználókat kell felvennie és eltávolítania.
+A hozzáférés-vezérlést olyan biztonsági csoportok használatával lehet egyszerűsíteni, amelyek illeszkednek a felhasználók szerepköreihez. A hozzáférés kezeléséhez csak a megfelelő biztonsági csoportokból származó felhasználókat kell felvennie és eltávolítania.
 
 ## <a name="access-control-elements"></a>Hozzáférés-vezérlési elemek
 
@@ -41,16 +41,16 @@ Az Azure-szerepkörök a következők felügyeletének vezérlésére használha
 - Apache Spark készletek és 
 - Integrációs modulok. 
 
-Ezen erőforrások *létrehozásához* Azure-beli tulajdonosnak vagy közreműködőnek kell lennie az erőforráscsoporthoz.  A  létrehozásuk után az erőforráscsoport vagy az egyes erőforrások Azure-tulajdonosának vagy közreműködőinek kell lennie. 
+Ezen erőforrások *létrehozásához* Azure-beli tulajdonosnak vagy közreműködőnek kell lennie az erőforráscsoporthoz. A  létrehozásuk után az erőforráscsoport vagy az egyes erőforrások Azure-tulajdonosának vagy közreműködőinek kell lennie. 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>A kód fejlesztése és végrehajtása a Szinapszisban 
 
 A szinapszis két fejlesztési modellt támogat.
 
-- **Szinapszis élő fejlesztés**.  A rendszer fejleszti és hibakeresési kódot készít a szinapszis Studióban, majd **közzéteszi** a Mentés és a végrehajtás során.  A szinapszis szolgáltatás az igazság forrása a kód szerkesztéséhez és végrehajtásához.  A nem közzétett munkák elvesznek a szinapszis Studio bezárásával.  
-- **Git-kompatibilis fejlesztés**. A rendszer fejleszti és hibakeresési kódot készít a szinapszis Studióban, és végrehajtja a git-tárházban lévő munkaág **módosításait** . Egy vagy több ág munkája integrálva van egy együttműködési ágban, ahonnan a szolgáltatásba **közzéteszi** .  A git-tárház az igazság forrása a kód szerkesztéséhez, míg a szolgáltatás az igazság forrása a végrehajtáshoz. A módosításokat véglegesíteni kell a git-tárházban, vagy közzé kell tenni a szolgáltatásban a szinapszis Studio bezárása előtt. [További](../cicd/continuous-integration-deployment.md) információ a szinapszis Analytics és a git használatával történő használatáról.
+- **Szinapszis élő fejlesztés**. A rendszer fejleszti és hibakeresési kódot készít a szinapszis Studióban, majd **közzéteszi** a Mentés és a végrehajtás során.  A szinapszis szolgáltatás az igazság forrása a kód szerkesztéséhez és végrehajtásához.  A nem közzétett munkák elvesznek a szinapszis Studio bezárásával.  
+- **Git-kompatibilis fejlesztés**. A rendszer fejleszti és hibakeresési kódot készít a szinapszis Studióban, és végrehajtja a git-tárházban lévő munkaág **módosításait** . Egy vagy több ág munkája integrálva van egy együttműködési ágban, ahonnan a szolgáltatásba **közzéteszi** . A git-tárház az igazság forrása a kód szerkesztéséhez, míg a szolgáltatás az igazság forrása a végrehajtáshoz. A módosításokat véglegesíteni kell a git-tárházban, vagy közzé kell tenni a szolgáltatásban a szinapszis Studio bezárása előtt. [További](../cicd/continuous-integration-deployment.md) információ a szinapszis Analytics és a git használatával történő használatáról.
 
-Mindkét fejlesztési modellben a szinapszis studióhoz hozzáféréssel rendelkező felhasználók programkódot hozhatnak létre.  Azonban további engedélyekre van szüksége az összetevők a szolgáltatásban való közzétételéhez, a közzétett összetevők olvasásához, a git-módosítások elvégzéséhez, a kód végrehajtásához és a hitelesítő adatok által védett csatolt adatok eléréséhez.
+Mindkét fejlesztési modellben a szinapszis studióhoz hozzáféréssel rendelkező felhasználók programkódot hozhatnak létre. Azonban további engedélyekre van szüksége az összetevők a szolgáltatásban való közzétételéhez, a közzétett összetevők olvasásához, a git-módosítások elvégzéséhez, a kód végrehajtásához és a hitelesítő adatok által védett csatolt adatok eléréséhez.
 
 ### <a name="synapse-roles"></a>Szinapszis-szerepkörök
 
@@ -72,7 +72,7 @@ A git-alapú fejlesztés git módban való használata esetén a git-engedélyek
 
 Dedikált és kiszolgáló nélküli SQL-készletek használata esetén az adatsíkok hozzáférését az SQL-engedélyek vezérlik. 
 
-A munkaterület létrehozója Active Directory rendszergazdaként van hozzárendelve a munkaterületen.  A létrehozást követően ezt a szerepkört hozzárendelheti egy másik felhasználóhoz vagy egy biztonsági csoporthoz is a Azure Portal.
+A munkaterület létrehozója Active Directory rendszergazdaként van hozzárendelve a munkaterületen. A létrehozást követően ezt a szerepkört hozzárendelheti egy másik felhasználóhoz vagy egy biztonsági csoporthoz is a Azure Portal.
 
 **Kiszolgáló nélküli SQL-készletek**: a szinapszis-rendszergazdák a `db_owner` `DBO` "beépített" kiszolgáló nélküli SQL-készletre vonatkozó engedélyeket kapnak (). Ahhoz, hogy más felhasználók is hozzáférhessenek a kiszolgáló nélküli SQL-készletekhez, a szinapszis-rendszergazdáknak az SQL-parancsfájlokat kell futtatniuk minden kiszolgáló nélküli készleten.  
 
@@ -82,7 +82,7 @@ Lásd: a [szinapszisok beállítása Access Control](./how-to-set-up-access-cont
 
  ### <a name="accessing-system-managed-data-in-storage"></a>A rendszerfelügyelt adatok elérése a Storage szolgáltatásban
 
-A kiszolgáló nélküli SQL-készletek és a Apache Spark táblák az adataikat a munkaterület felhasználó által telepített Apache Spark könyvtáraihoz társított ADLS Gen2 tárolóban tárolják, és ugyanabban a Storage-fiókban is kezelhetők.  A használati esetek engedélyezéséhez a felhasználóknak és a munkaterület MSI-nek meg kell adni a **Storage blob-adatközreműködői** hozzáférést ehhez a munkaterülethez ADLS Gen2 Storage-tárolóhoz.  
+A kiszolgáló nélküli SQL-készletek és a Apache Spark táblák a munkaterülethez társított ADLS Gen2 tárolóban tárolják az adataikat. A felhasználó által telepített Apache Spark kódtárakat is ugyanabban a Storage-fiókban felügyeli a rendszer. A használati esetek engedélyezéséhez a felhasználóknak és a munkaterület MSI-nek meg kell adni a **Storage blob-adatközreműködői** hozzáférést ehhez a munkaterülethez ADLS Gen2 Storage-tárolóhoz.  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>Biztonsági csoportok használata ajánlott eljárásként
 
@@ -97,9 +97,9 @@ A szinapszis Studio az engedélyei és a jelenlegi mód alapján eltérően fog 
 - **Szinapszis élő üzemmód:** A szinapszis Studio megakadályozza a közzétett tartalom megtekintését, a tartalmak közzétételét, vagy egyéb műveletek elvégzését, ha nem rendelkezik a szükséges engedéllyel.  Bizonyos esetekben megakadályozható a nem használható vagy menthető kód-összetevők létrehozása. 
 - **Git mód:** Ha olyan git-engedélyekkel rendelkezik, amelyek segítségével véglegesítheti az aktuális ág módosításait, akkor a commit művelet akkor is engedélyezett lesz, ha nincs engedélye az élő szolgáltatás módosításának közzétételére.  
 
-Bizonyos esetekben lehetőség van a kód-összetevők létrehozására vagy közzétételre vagy végrehajtásra való jogosultság nélkül is.  Ez lehetővé teszi a kód futtatását (a szükséges végrehajtási engedélyekkel). [További](./synapse-workspace-understand-what-role-you-need.md) információ a gyakori feladatokhoz szükséges szerepkörökről. 
+Bizonyos esetekben lehetőség van a kód-összetevők létrehozására vagy közzétételre vagy végrehajtásra való jogosultság nélkül is. Ez lehetővé teszi a kód futtatását (a szükséges végrehajtási engedélyekkel). [További](./synapse-workspace-understand-what-role-you-need.md) információ a gyakori feladatokhoz szükséges szerepkörökről. 
 
-Ha egy szolgáltatás le van tiltva a szinapszis Studióban, egy elemleírás jelzi a szükséges engedélyt.  A [SZINAPSZIS RBAC szerepkör-útmutató](./synapse-workspace-synapse-rbac-roles.md#synapse-rbac-actions-and-the-roles-that-permit-them) segítségével megkeresheti, hogy melyik szerepkörre van szükség a hiányzó engedély megadásához.
+Ha egy szolgáltatás le van tiltva a szinapszis Studióban, egy elemleírás jelzi a szükséges engedélyt. A [SZINAPSZIS RBAC szerepkör-útmutató](./synapse-workspace-synapse-rbac-roles.md#synapse-rbac-actions-and-the-roles-that-permit-them) segítségével megkeresheti, hogy melyik szerepkörre van szükség a hiányzó engedély megadásához.
 
 
 ## <a name="next-steps"></a>Következő lépések

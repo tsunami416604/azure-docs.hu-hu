@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
-ms.date: 10/01/2020
+ms.date: 01/12/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dbbde397ab235068ea90280da721e3e3dc38866a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ef2c42ae76dc5e1511494635904228a8b574d483
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792361"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132188"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>A Azure Key Vault újdonságai
 
@@ -37,7 +37,7 @@ A (z) alapértelmezés szerint az [azonnali törlés](#soft-delete-on-by-default
 
 ### <a name="soft-delete-on-by-default"></a>Alapértelmezés szerint nem kötelező törlés
 
-A 2020 végére a **Soft-delete alapértelmezés szerint be lesz kapcsolva minden kulcstartónál, amely** új és már meglévő is. Az esetlegesen feltörhető változásokról, valamint az érintett kulcstartók megkeresésének lépéseiről és az azok előzetes frissítéséről a következő cikkben talál további információt: a [Soft-delete minden kulcstartón engedélyezve lesz](soft-delete-change.md).
+A **Soft delete szükséges az összes kulcstartó engedélyezéséhez**, amely új és már meglévő is. A következő néhány hónap során a rendszer elavult törlési lehetőséget is kikapcsol. Az esetlegesen feltörhető változásokról, valamint az érintett kulcstartók megkeresésének lépéseiről és az azok előzetes frissítéséről a következő cikkben talál további információt: a [Soft-delete minden kulcstartón engedélyezve lesz](soft-delete-change.md).
 
 ### <a name="azure-tls-certificate-changes"></a>Az Azure TLS-tanúsítvány változásai
 

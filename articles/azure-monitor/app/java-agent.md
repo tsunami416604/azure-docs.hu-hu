@@ -6,12 +6,12 @@ ms.date: 01/10/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 299e9010b74c8363cacd1c20044d183dc1def6a6
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 50c5a8a0c1e7c5d554e19ffcbc9a78bc0a385a5c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601288"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131729"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kifogott kivételek és metódus-végrehajtási idők figyelése Java-webalkalmazásokban
 
@@ -37,7 +37,7 @@ Ha a [Java-webalkalmazását Application INSIGHTS SDK-val][java]állította be, 
 A Java-ügynök használatához telepítenie kell a-kiszolgálóra. A webalkalmazásokat a [Application Insights Java SDK][java]-val kell kiépíteni. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>A Javához készült Application Insights-ügynök telepítése
-1. [Töltse le az ügynököt](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a Java-kiszolgálót futtató számítógépre. Ügyeljen rá, hogy a Java ügynök verziója és az Application Insights Java SDK core és web csomagok verziója azonos legyen.
+1. A Java-kiszolgálót futtató gépen [töltse le a 2. x ügynököt](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/2.6.2). Győződjön meg arról, hogy a használt 2. x Java-ügynök verziója megegyezik a használt 2. x Application Insights Java SDK-verzióval.
 2. Szerkessze az alkalmazáskiszolgáló indítási parancsfájlját, és adja hozzá a következő JVM argumentumot:
    
     `-javaagent:<full path to the agent JAR file>`
@@ -89,12 +89,9 @@ Az Azure App Services esetében tegye a következőket:
 * Válassza a Beállítások > Alkalmazásbeállítások lehetőséget.
 * Az alkalmazásbeállításoknál adjon meg egy új kulcs-érték párt:
 
-Kulcs: `JAVA_OPTS` érték: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+Kulcs: `JAVA_OPTS` érték: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.6.2.jar`
 
-A Java-ügynök legújabb verziójáért tekintse meg a kiadásokat [itt](https://github.com/Microsoft/ApplicationInsights-Java/releases
-). 
-
-Az ügynököt erőforrásként kell csomagolni a projektben úgy, hogy az a D:/Home/site/wwwroot/könyvtárban végződik. A **fejlesztői eszközök** speciális eszközök hibakeresési konzolján ellenőrizheti, hogy az ügynök a megfelelő app Service könyvtárban található-e,  >  **Advanced Tools**  >  **Debug Console** és megvizsgálja a hely könyvtárának tartalmát.    
+Az ügynököt erőforrásként kell csomagolni a projektben úgy, hogy az a D:/Home/site/wwwroot/könyvtárban végződik. A **fejlesztői eszközök** speciális eszközök hibakeresési konzolján ellenőrizheti, hogy az ügynök a megfelelő app Service könyvtárban található-e,  >    >   és megvizsgálja a hely könyvtárának tartalmát.    
 
 * Mentse a beállításokat, és indítsa újra az alkalmazást. (Ezek a lépések csak Windows rendszeren futó App Services vonatkoznak.)
 

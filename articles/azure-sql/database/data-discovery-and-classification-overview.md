@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462077"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132035"
 ---
 # <a name="data-discovery--classification"></a>Adatfelderítés és -besorolás
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -28,7 +28,7 @@ Az adatfelderítési & besorolása Azure SQL Databaseba, az Azure SQL felügyelt
 A legérzékenyebb adatok lehetnek például az üzleti, pénzügyi, egészségügyi vagy személyes adatok. Az adatok felfedezése és besorolása kulcsfontosságú szerepet játszik a szervezet Information Protection-megközelítésében. Infrastruktúraként alkalmas lehet az alábbiakra:
 
 - Az adatvédelemre vonatkozó szabványok és a szabályozásoknak való megfelelőség követelményeinek való megfelelés elősegítése.
-- Különböző biztonsági forgatókönyvek, például a figyelés (naplózás) és a bizalmas adatok rendellenes hozzáférésének riasztása.
+- Különböző biztonsági forgatókönyvek, például a figyelés (naplózás) bizalmas adatokhoz való hozzáférése.
 - A szigorúan bizalmas adatokat tartalmazó adatbázisok biztonságának szabályozása és a hozzáférés megerősítése.
 
 > [!NOTE]
@@ -112,7 +112,7 @@ Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Bizalmas adatokhoz való hozzáférés naplózása
 
-Az Information-Protection paradigma fontos aspektusa a bizalmas adatokhoz való hozzáférés figyelése. Az [Azure SQL audit](../../azure-sql/database/auditing-overview.md) továbbfejlesztett funkciója, hogy egy új mezőt tartalmazzon a naplóban `data_sensitivity_information` . Ez a mező a lekérdezés által visszaadott adatérzékeny besorolásokat (címkéket) naplózza. Például:
+Az Information-Protection paradigma fontos aspektusa a bizalmas adatokhoz való hozzáférés figyelése. Az [Azure SQL audit](../../azure-sql/database/auditing-overview.md) továbbfejlesztett funkciója, hogy egy új mezőt tartalmazzon a naplóban `data_sensitivity_information` . Ez a mező a lekérdezés által visszaadott adatérzékeny besorolásokat (címkéket) naplózza. Bemutatunk egy példát:
 
 ![Az auditnaplóban](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 
@@ -184,7 +184,7 @@ A REST API használatával programozott módon kezelheti a besorolásokat és a 
 - [Aktuális adatbázis listázása](/rest/api/sql/sensitivitylabels/listcurrentbydatabase): lekéri a megadott adatbázis aktuális érzékenységi címkéit.
 - Az [adatbázis által ajánlott lista](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): lekéri a megadott adatbázis javasolt érzékenységi címkéit.
 
-## <a name="next-steps"></a><a id="next-steps"></a>További lépések
+## <a name="next-steps"></a><a id="next-steps"></a>Következő lépések
 
 - Érdemes lehet az [Azure SQL auditot](../../azure-sql/database/auditing-overview.md) beállítani a minősített bizalmas adatokhoz való hozzáférés figyelésére és naplózására.
 - Adatfelderítési & besorolást tartalmazó bemutató esetén tekintse meg a következőt: az [SQL-adatok védelmének észlelése, osztályozása, címkézése & | Az elérhető adatvédelem](https://www.youtube.com/watch?v=itVi9bkJUNc).

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: d4f5d4b7fed8f14f048794616ee272342d1e8343
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915555"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133990"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Az Azure Bastion hibaelhárítása
 
@@ -22,11 +22,7 @@ Ez a cikk bemutatja, hogyan lehet elhárítani az Azure Bastion-t.
 
 **K:** Amikor megpróbálok létrehozni egy NSG az Azure-beli megerősített alhálózaton, a következő hibaüzenet jelenik meg: *"a hálózati biztonsági csoport <NSG name> nem rendelkezik az Azure-beli megerősített alhálózat AzureBastionSubnet szükséges szabályokkal"*.
 
-**A:** Ha NSG hoz létre és alkalmaz *AzureBastionSubnet*, győződjön meg arról, hogy az alábbi szabályokat adta hozzá a NSG. Ha nem adja hozzá ezeket a szabályokat, a NSG létrehozása/frissítése sikertelen lesz.
-
-1. Vezérlési sík kapcsolat – 443-es bejövő GatewayManager
-2. A diagnosztikai naplózás és egyebek – a AzureCloud a 443-es kimenő forgalom (a szolgáltatási címkén belüli regionális címkék még nem támogatottak.)
-3. Cél virtuális gép – 3389-es és 22-es VirtualNetwork
+**A:** Ha NSG hoz létre és alkalmaz *AzureBastionSubnet*, győződjön meg arról, hogy a szükséges szabályokat felvette a NSG. A szükséges szabályok listáját lásd: [a NSG-hozzáférés és az Azure Bastion használata](./bastion-nsg.md). Ha nem adja hozzá ezeket a szabályokat, a NSG létrehozása/frissítése sikertelen lesz.
 
 A NSG-szabályokra például a gyors útmutató [sablonjában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)van lehetőség.
 További információ: [NSG útmutató az Azure Bastion-hez](bastion-nsg.md).

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 4b44a8375bc13709959e2401f9d772fdeab00f52
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 9befe33f70341f218c3339a13dcc1d31dc452d34
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808606"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132324"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
@@ -113,8 +113,8 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 `FormRecognizerClient` a következő műveleteit biztosítja:
 
  - Az űrlap mezőinek és tartalmának felismerése az egyéni űrlapok felismerése céljából betanított egyéni modellek használatával.  Ezeket az értékeket az objektumok egy gyűjteménye adja vissza `RecognizedForm` . Tekintse meg a példa [Egyéni űrlapok elemzése](#analyze-forms-with-a-custom-model)című témakört.
- - Űrlap tartalmának felismerése, beleértve a táblákat, a sorokat és a szavakat, anélkül, hogy be kellene tanítani a modellt.  Az űrlap tartalma objektumok gyűjteményében lesz visszaadva `FormPage` . Lásd: példa az [űrlap tartalmának felismerésére](#recognize-form-content).
- - Az Egyesült államokbeli nyugták általános mezőinek felismerése egy előre képzett beérkezési modell használatával az űrlap-felismerő szolgáltatásban. Ezeket a mezőket és a metaadatokat az objektumok egy gyűjteménye adja vissza `RecognizedForm` . Lásd: példa [felismerési visszaigazolások](#recognize-receipts).
+ - Űrlap tartalmának felismerése, beleértve a táblákat, a sorokat és a szavakat, anélkül, hogy be kellene tanítani a modellt.  Az űrlap tartalma objektumok gyűjteményében lesz visszaadva `FormPage` . Lásd: példa [elemzése elrendezés](#analyze-layout).
+ - Az Egyesült államokbeli nyugták általános mezőinek felismerése egy előre képzett beérkezési modell használatával az űrlap-felismerő szolgáltatásban. Ezeket a mezőket és a metaadatokat az objektumok egy gyűjteménye adja vissza `RecognizedForm` . Lásd: példák [elemzése nyugták](#analyze-receipts).
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -137,8 +137,8 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 #### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Űrlap tartalmának felismerése](#recognize-form-content)
-* [Visszaigazolások felismerése](#recognize-receipts)
+* [Elrendezés elemzése](#analyze-layout)
+* [Visszaigazolások elemzése](#analyze-receipts)
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
@@ -146,10 +146,10 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 #### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Űrlap tartalmának felismerése](#recognize-form-content)
-* [Visszaigazolások felismerése](#recognize-receipts)
-* [Névjegykártyák felismerése](#recognize-business-cards)
-* [Számlák felismerése](#recognize-invoices)
+* [Elrendezés elemzése](#analyze-layout)
+* [Visszaigazolások elemzése](#analyze-receipts)
+* [Üzleti kártyák elemzése](#analyze-business-cards)
+* [Számlák elemzése](#analyze-invoices)
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
@@ -189,7 +189,7 @@ Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a
 ---
 
 
-## <a name="recognize-form-content"></a>Űrlap tartalmának felismerése
+## <a name="analyze-layout"></a>Elrendezés elemzése
 
 Az űrlap-felismerő használatával felismerheti a dokumentumokban szereplő táblákat, vonalakat és szavakat, anélkül, hogy egy modellt kellene betanítania. A visszaadott érték egy **FormPage** -objektum gyűjteménye: egy a beküldött dokumentum minden oldalához. 
 
@@ -239,7 +239,7 @@ Table 0 has 2 rows and 6 columns.
     Cell (1, 5) contains text: 'PT'.
 ```
 
-## <a name="recognize-receipts"></a>Visszaigazolások felismerése
+## <a name="analyze-receipts"></a>Visszaigazolások elemzése
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az Egyesült államokbeli nyugták közös mezőit egy előre képzett beérkezési modell használatával.
 
@@ -298,7 +298,7 @@ Item:
 Total: '1203.39', with confidence '0.774'
 ```
 
-## <a name="recognize-business-cards"></a>Névjegykártyák felismerése
+## <a name="analyze-business-cards"></a>Üzleti kártyák elemzése
 
 #### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
@@ -323,7 +323,7 @@ A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egy a dokument
 
 ---
 
-## <a name="recognize-invoices"></a>Számlák felismerése
+## <a name="analyze-invoices"></a>Számlák elemzése
 
 #### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
@@ -707,7 +707,7 @@ Headers:
     Content-Type: application/json; charset=utf-8
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő .NET ügyféloldali kódtárat használta a modellek betanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

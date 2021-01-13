@@ -4,14 +4,14 @@ description: Az SDK-k, a REST API-k, a CLI, a programozási nyelvben Language Un
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 05/19/2020
+ms.date: 01/12/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8641235fb754080303a9a463d0964e5655234ff2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0e8da4d490ef5c9afb2ac363b62f0f1a4fe66f5e
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024551"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133310"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK, REST és CLI fejlesztői erőforrások a Language Understandinghoz (LUIS)
 
@@ -119,14 +119,10 @@ Ezen formátumok importálása és exportálása az API-kon és a LUIS-portálon
 A bot Framework számos különböző nyelven és szolgáltatásként, [Azure bot Service](https://dev.botframework.com/)használatával érhető el [SDK](https://github.com/Microsoft/botframework) -val.
 
 A bot Framework [számos eszközt](https://github.com/microsoft/botbuilder-tools) biztosít a Language Understandinghoz, beleértve a következőket:
-
-* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown) – Luis Language Understanding models – Markdown-fájlok használatával
-* [Luis CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) – a Luis.ai-alkalmazások létrehozása és kezelése
-* [Feladás](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)– szülő és gyermek alkalmazások kezelése
-* [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) – automatikusan előkészíti a C#/Typescript-osztályokat a Luis-szándékok és entitások számára.
 * [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) – egy asztali alkalmazás, amely lehetővé teszi a robot-fejlesztők számára a bot Framework SDK használatával létrehozott robotok tesztelését és hibakeresését
 * A [robot Framework zeneszerzője](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) – integrált fejlesztői eszköz a fejlesztők és a több-fegyelmi csapatok számára a robotok és a társalgási tapasztalatok létrehozásához a Microsoft bot Framework használatával
 * [Robot Framework-minták](https://github.com/microsoft/botbuilder-samples) – #C, JavaScript, írógéppel és Python
+
 ## <a name="next-steps"></a>Következő lépések
 
 * A gyakori http- [hibakódok](luis-reference-response-codes.md) ismertetése

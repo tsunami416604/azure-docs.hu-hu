@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 200753c6458698d515b02252933e4fdf6d88df55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 460380d9435528dcd8cbb3f877c8034fdc34f50c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019091"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134148"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Gyakori kérdések a Azure Database Migration Service használatáról
 
@@ -109,7 +109,7 @@ Egy tipikus, egyszerű adatbázis-áttelepítés során a következőket végezh
 ## <a name="troubleshooting-and-optimization"></a>Hibaelhárítás és optimalizálás
 
 **Q. Egy áttelepítési projektet állítok be a DMS-ben, és nehezen tudok csatlakozni a forrás-adatbázishoz. Mit tegyek?**
-Ha nem sikerül csatlakoznia a forrás-adatbázis rendszeréhez az áttelepítés során, hozzon létre egy virtuális gépet a virtuális hálózaton, amellyel beállíthatja a DMS-példányt. A virtuális gépen képesnek kell lennie egy csatlakozási teszt futtatására, például egy UDL-fájl használatával SQL Server vagy a Robo 3T letöltésére a MongoDB-kapcsolatok teszteléséhez. Ha a kapcsolat tesztelése sikeres, a forrás-adatbázishoz való csatlakozás nem jelent problémát. Ha a kapcsolat tesztelése nem sikerül, forduljon a hálózati rendszergazdához.
+Ha nem tud csatlakozni a forrás-adatbázis rendszeréhez az áttelepítés során, hozzon létre egy virtuális gépet a virtuális hálózat ugyanazon alhálózatán, amellyel beállíthatja a DMS-példányt. A virtuális gépen képesnek kell lennie egy csatlakozási teszt futtatására, például egy UDL-fájl használatával SQL Server vagy a Robo 3T letöltésére a MongoDB-kapcsolatok teszteléséhez. Ha a kapcsolat tesztelése sikeres, a forrás-adatbázishoz való csatlakozás nem jelent problémát. Ha a kapcsolat tesztelése nem sikerül, forduljon a hálózati rendszergazdához.
 
 **Q. Miért nem érhető el vagy leáll a Azure Database Migration Service?**
 Ha a felhasználó explicit módon leállítja Azure Database Migration Service (DMS) szolgáltatást, vagy ha a szolgáltatás 24 órán keresztül inaktív, a szolgáltatás leállított vagy automatikusan szüneteltetve állapotba kerül. A szolgáltatás minden esetben elérhetetlenné válik, és leállított állapotban van.  Az aktív Migrálás folytatásához indítsa újra a szolgáltatást.
@@ -120,6 +120,6 @@ A szolgáltatás használatával felgyorsíthatja az adatbázis áttelepítésé
 * Használja a többprocesszoros általános célú díjszabását a szolgáltatási példány létrehozásakor, hogy a szolgáltatás kihasználja a párhuzamos és gyorsabb adatátvitelt biztosító több vCPU előnyeit.
 * Az adatáttelepítési művelet során átmenetileg felskálázás a Azure SQL Database Target-példányról a prémium szintű SKU-ra, hogy csökkentse Azure SQL Database szabályozást, amely hatással lehet az adatátviteli tevékenységekre, amikor alacsonyabb szintű SKU-ket használ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Database Migration Service és a regionális elérhetőség áttekintését lásd: [Mi a Azure Database Migration Service](dms-overview.md).

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 01/12/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d21f7c4e74a87e409a73b22fc6b316e97e24a4e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: beadd250ec4472b894f0f474b1057ad44cf474ed
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122367"
+ms.locfileid: "98133514"
 ---
 # <a name="how-azure-netapp-files-snapshots-work"></a>A Azure NetApp Files-Pillanatképek működése
 
@@ -37,11 +37,11 @@ Az alábbi ábrák a fogalmakat szemléltetik:
 
 ![A pillanatképek legfontosabb fogalmait bemutató diagramok](../media/azure-netapp-files/snapshot-concepts.png)
 
-A fenti ábrán a pillanatkép az 1a. ábrán látható. Az 1b. ábrán a módosított adat *új blokkba* kerül, és a mutató frissül. A pillanatkép mutatója azonban továbbra is a *korábban írt blokkra* mutat, így élő és az adatok előzményeit is megtekintheti. Egy másik pillanatkép az 1c. ábrán látható. Most már elérheti az adatok három generációját (az élő adatok, a Snapshot 2 és az 1. pillanatkép, az életkor szerinti sorrendben), anélkül, hogy el kellene végeznie a három teljes másolathoz szükséges lemezterületet. 
+A diagramokon pillanatképet készítünk az 1a. ábrán. Az 1b. ábrán a módosított adat *új blokkba* kerül, és a mutató frissül. A pillanatkép mutatója azonban továbbra is a *korábban írt blokkra* mutat, így élő és az adatok előzményeit is megtekintheti. Egy másik pillanatkép az 1c. ábrán látható. Most már elérheti az adatok három generációját (az élő adatok, a Snapshot 2 és az 1. pillanatkép, az életkor szerinti sorrendben), anélkül, hogy el kellene végeznie a három teljes másolathoz szükséges lemezterületet. 
 
 A pillanatkép csak a mennyiségi metaadatok (*inode tábla*) másolatát veszi át. Mindössze néhány másodpercet vesz igénybe, függetlenül a kötet méretétől, a felhasznált kapacitástól, illetve a kötet tevékenységének szintjétől. Ezért a 100-TiB-kötet pillanatképének elkészítésekor a rendszer a 100-GiB kötet pillanatképének elkészítésekor megegyező (nulla) időt vesz igénybe. A pillanatkép létrehozása után az adatfájlok módosításai a normál módon megjelennek a fájlok aktív verziójában.
 
-Eközben a pillanatképből kimutatott adatblokkok stabilak és nem változtathatók meg. Az Azure NetApp Files-Pillanatképek "írás közbeni átirányítása" természete miatt egy pillanatkép nem tartalmaz teljesítménybeli terhelést, és önmagában nem használ szóközt. Az idő múlásával akár 255 pillanatképet is tárolhat, amelyek mindegyike csak olvashatóként és online verzióként érhető el, így kevesebb kapacitást használ, mint a megváltoztatott blokkok száma az egyes Pillanatképek között. A módosított blokkokat az aktív kötet tárolja. A pillanatképekre rámutató blokkok (csak olvashatóként) a köteten a megőrzéshez szükségesek, hogy csak akkor legyenek felhasználva, ha az összes pillanatkép (mutató) törölve lett. Ezért a kötetek kihasználtsága a pillanatképekben tárolt új adatblokkok vagy (módosított) adatblokkok idővel növekedni fog.
+Eközben a pillanatképből kimutatott adatblokkok stabilak és nem változtathatók meg. A Azure NetApp Files kötetek "írás közbeni átirányítása" jellegéből adódóan a pillanatkép nem tartalmaz teljesítménybeli terhelést, és önmagában nem használ szóközt. Az idő múlásával akár 255 pillanatképet is tárolhat, amelyek mindegyike csak olvashatóként és online verzióként érhető el, így kevesebb kapacitást használ, mint a megváltoztatott blokkok száma az egyes Pillanatképek között. A módosított blokkokat az aktív kötet tárolja. A pillanatképekre rámutató blokkok (csak olvashatóként) a köteten a megőrzéshez szükségesek, hogy csak akkor legyenek felhasználva, ha az összes mutatót (az aktív kötetben és a pillanatképekben) törölve lettek. Ezért a kötetek kihasználtsága a pillanatképekben tárolt új adatblokkok vagy (módosított) adatblokkok idővel növekedni fog.
 
  Az alábbi ábra a kötetek pillanatképeit és a felhasznált terület időbeli alakulását mutatja be: 
 
@@ -56,7 +56,7 @@ Mivel a kötet-pillanatkép csak a legutóbbi pillanatkép óta megjelenő blokk
     Csak néhány másodpercet vesz igénybe a pillanatképek létrehozása, replikálása, visszaállítása vagy klónozása, a kötet méretétől és a tevékenységek szintjétől függetlenül. [Igény szerint](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume)mennyiségi pillanatképet is létrehozhat. A [Pillanatkép-szabályzatok](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) segítségével megadhatja, mikor Azure NetApp Files automatikusan hozzon létre egy pillanatképet, és hány pillanatképet kell megőrizni egy köteten.  Az alkalmazás konzisztenciája úgy érhető el, ha a pillanatképeket az alkalmazás réteggel összehangolja, például a SAP HANA [AzAcSnap eszközének](azacsnap-introduction.md) használatával.
 
 _ A pillanatképek nincsenek hatással a Volume ***Performance** _-re.   
-    A kiállított technológia "írásra való átirányításának" jellegéből adódóan az Azure NetApp Files Pillanatképek tárolása vagy megőrzése nem befolyásolja a teljesítményt, még a nagy adattevékenységek esetében is. A pillanatképek törlése sok esetben még nem befolyásolja a teljesítményt. 
+    A kiállított technológia "írásra való átirányításának" jellegéből adódóan az Azure NetApp Files Pillanatképek tárolása vagy megőrzése nem befolyásolja a teljesítményt, még a nagy adattevékenységek esetében is. A pillanatképek törlése a legtöbb esetben nem befolyásolja a teljesítményt. 
 
 A pillanatképek a ***skálázhatóságot** is lehetővé teszik, mivel ezek gyakran hozhatók létre, és számos megtartható.   
     Azure NetApp Files kötetek akár 255 pillanatképet is támogatnak. Az alacsony hatású, gyakran létrehozott Pillanatképek nagy mennyiségű tárolásának lehetősége növeli annak valószínűségét, hogy a kívánt verzió sikeresen helyreállítható.
@@ -66,7 +66,7 @@ Azure NetApp Files Snapshot Technology nagy teljesítményének, méretezhetős�
 
 ## <a name="ways-to-create-snapshots"></a>Pillanatképek létrehozásának módjai   
 
-Azure NetApp Files Pillanatképek sokoldalú használatban vannak. Így több módszer is elérhető a pillanatképek létrehozásához és karbantartásához:
+A pillanatképek létrehozásához és karbantartásához több módszert is használhat:
 
 _ Manuálisan (igény szerint), a következő használatával:   
     * A [Azure Portal](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume), a [REST API](/rest/api/netapp/snapshots), az [Azure CLI](/cli/azure/netappfiles/snapshot)vagy a [PowerShell](/powershell/module/az.netappfiles/new-aznetappfilessnapshot) -eszközök
@@ -78,7 +78,7 @@ _ Manuálisan (igény szerint), a következő használatával:
 
 ## <a name="how-volumes-and-snapshots-are-replicated-cross-region-for-dr"></a>A kötetek és Pillanatképek replikálásának módja a DR  
 
-Azure NetApp Files támogatja a [régiók közötti replikációt](cross-region-replication-introduction.md) a vész-helyreállítási (Dr) célokra. Azure NetApp Files régiók közötti replikáció SnapMirror technológiát használ. A rendszer csak a megváltozott blokkokat tömörített, hatékony formátumban továbbítja a hálózaton. Ha a kötetek között a régiók közötti replikációt kezdeményezik, a teljes kötet tartalma (azaz a tényleges tárolt adatblokkok) csak egyszer lesznek átadva. Ezt a műveletet alapkonfigurációnak *nevezzük.* A kezdeti átvitel után a rendszer csak a megváltozott blokkokat (a pillanatképekben rögzítettek szerint) helyezi át. A rendszer létrehoz egy aszinkron 1:1-replikát a forrás kötetről (az összes pillanatképet is beleértve).  Ez a viselkedés teljes és növekményes – örökre replikációs mechanizmust követ. Ez a szabadalmaztatott technológia minimálisra csökkenti a régiók közötti replikáláshoz szükséges adatok mennyiségét, így az adatátviteli költségeket is megtakaríthatja. Emellett lerövidíti a replikálási időt is. Egy kisebb helyreállítási időkorlátot (RPO) érhet el, mivel a rendszer több pillanatképet is létrehozhat, és gyakrabban, korlátozott adatátvitelsel.
+Azure NetApp Files támogatja a [régiók közötti replikációt](cross-region-replication-introduction.md) a vész-helyreállítási (Dr) célokra. Azure NetApp Files régiók közötti replikáció SnapMirror technológiát használ. A rendszer csak a megváltozott blokkokat tömörített, hatékony formátumban továbbítja a hálózaton. Ha a kötetek között a régiók közötti replikációt kezdeményezik, a teljes kötet tartalma (azaz a tényleges tárolt adatblokkok) csak egyszer lesznek átadva. Ezt a műveletet alapkonfigurációnak *nevezzük.* A kezdeti átvitel után a rendszer csak a megváltozott blokkokat (a pillanatképekben rögzítettek szerint) helyezi át. Az eredmény a forrás kötet aszinkron 1:1-replikája, beleértve az összes pillanatképet. Ez a viselkedés teljes és növekményes – örökre replikációs mechanizmust követ. Ez a technológia minimálisra csökkenti a régiók közötti replikáláshoz szükséges adatok mennyiségét, így az adatátviteli költségek megtakarítását. Emellett lerövidíti a replikálási időt is. Egy kisebb helyreállítási időkorlátot (RPO) érhet el, mivel a rendszer több pillanatképet is létrehozhat, és gyakrabban, korlátozott adatátvitelsel. Továbbra is igénybe veszi a gazdagép-alapú replikációs mechanizmusokat, elkerülve a virtuális gépek és a szoftverlicenc-költségeket.
 
 A következő ábra a régiók közötti replikációs helyzetekben a pillanatképek forgalmát mutatja be: 
 
@@ -90,7 +90,7 @@ A Azure NetApp Files Snapshot Technology nagy mértékben javítja a biztonsági
 
 ### <a name="restoring-files-or-directories-from-snapshots"></a>Fájlok vagy könyvtárak visszaállítása pillanatképből 
 
-Ha a [Pillanatkép-útvonal láthatósága](azure-netapp-files-manage-snapshots.md#edit-the-hide-snapshot-path-option) nem rejtett, a felhasználók közvetlenül hozzáférhetnek a pillanatképekhez a véletlen törléstől, sérüléstől vagy az adatok módosításának helyreállításához. A fájlok és könyvtárak biztonsága megmarad a pillanatképben, és a pillanatképek csak olvashatók a terv alapján. Így a helyreállítás biztonságos és egyszerű. 
+Ha a [Pillanatkép elérési útjának láthatósága](azure-netapp-files-manage-snapshots.md#edit-the-hide-snapshot-path-option) nem értékre van állítva `hidden` , a felhasználók közvetlenül hozzáférhetnek a pillanatképekhez a véletlen törlés, a sérülés vagy az adatok módosításának helyreállításához. A fájlok és könyvtárak biztonsága megmarad a pillanatképben, és a pillanatképek csak olvashatók a terv alapján. Így a helyreállítás biztonságos és egyszerű. 
 
 A következő ábrán egy pillanatképhez tartozó fájl-vagy könyvtár-hozzáférés látható: 
 
@@ -108,7 +108,7 @@ Lásd: [fájl visszaállítása pillanatképből](azure-netapp-files-manage-snap
 
 ### <a name="restoring-cloning-a-snapshot-to-a-new-volume"></a>Pillanatkép visszaállítása (klónozása) új kötetre
 
-Azure NetApp Files Pillanatképek visszaállíthatók egy különálló, független kötetre. Ez a művelet majdnem azonnali, a kötet méretétől és a felhasznált kapacitástól függetlenül. Az újonnan létrehozott kötet szinte azonnal elérhető a hozzáféréshez, míg a tényleges kötet és a pillanatkép adatblokkok át lesznek másolva. A kötet méretétől és a kapacitástól függően ez a folyamat jelentős időt vehet igénybe, amíg a fölérendelt kötet és a pillanatkép nem törölhető. A kötet azonban már a kezdeti létrehozás után is elérhető, míg a másolási folyamat folyamatban van a háttérben. Ez a funkció lehetővé teszi a gyors mennyiségi létrehozást az adathelyreállításhoz vagy a kötetek klónozásához a tesztelés és a fejlesztés érdekében. Az adatmásolási folyamat jellegéből adódóan a tárolási kapacitás készletének használata a visszaállítás befejeződése után megduplázódik, az új kötet pedig az eredeti pillanatkép teljes aktív kapacitását mutatja. A folyamat befejezése után a kötet független lesz, és az eredeti kötethez való társítása megtörténik, a forrás-és a pillanatképek pedig az új kötettől függetlenül kezelhetők vagy eltávolíthatók.
+Azure NetApp Files pillanatképeket egy különálló, független kötetre is visszaállíthatja. Ez a művelet majdnem azonnali, a kötet méretétől és a felhasznált kapacitástól függetlenül. Az újonnan létrehozott kötet szinte azonnal elérhető a hozzáféréshez, míg a tényleges kötet és a pillanatkép adatblokkok át lesznek másolva. A kötet méretétől és a kapacitástól függően ez a folyamat jelentős időt vehet igénybe, amíg a fölérendelt kötet és a pillanatkép nem törölhető. A kötet azonban már a kezdeti létrehozás után is elérhető, míg a másolási folyamat folyamatban van a háttérben. Ez a funkció lehetővé teszi a gyors mennyiségi létrehozást az adathelyreállításhoz vagy a kötetek klónozásához a tesztelés és a fejlesztés érdekében. Az adatmásolási folyamat jellegéből adódóan a tárolási kapacitás készletének használata a visszaállítás befejeződése után megduplázódik, az új kötet pedig az eredeti pillanatkép teljes aktív kapacitását mutatja. A folyamat befejezése után a kötet független lesz, és az eredeti kötethez való társítása megtörténik, a forrás-és a pillanatképek pedig az új kötettől függetlenül kezelhetők vagy eltávolíthatók.
 
 Az alábbi ábrán egy pillanatkép (klónozás) visszaállításával létrehozott új kötet látható:   
 
@@ -124,7 +124,7 @@ Lásd: [Pillanatkép visszaállítása új kötetre](azure-netapp-files-manage-s
 
 ### <a name="restoring-reverting-a-snapshot-in-place"></a>Pillanatkép visszaállítása (visszaállítás folyamatban)
 
-Bizonyos esetekben, mivel az új kötet tárolási kapacitást fog használni, előfordulhat, hogy a pillanatképből új kötetet nem szükséges vagy nem lehet létrehozni. Ha gyorsan helyre szeretné állítani az adatsérülést (például adatbázis-sérüléseket vagy ransomware-támadásokat), lehet, hogy a köteten lévő pillanatkép visszaállítása megfelelőbb lehet. Ezt a műveletet a Azure NetApp Files pillanatkép-visszavonási funkciója segítségével végezheti el. Ez a funkció lehetővé teszi, hogy gyorsan visszaállítson egy kötetet arra az állapotba, amely egy adott pillanatkép készítésekor megtörtént. A legtöbb esetben a kötetek visszafordítása sokkal gyorsabb, mint az egyes fájlok egy pillanatképből az aktív fájlrendszerre való visszaállítása, különösen nagy méretű, több TiB-os köteteken. 
+Bizonyos esetekben, mivel az új kötet tárolási kapacitást fog használni, előfordulhat, hogy a pillanatképből új kötetet nem szükséges vagy nem lehet létrehozni. Ha gyorsan helyre szeretné állítani az adatsérülést (például adatbázis-sérüléseket vagy ransomware támadásokat), akkor megfelelőbb lehet a köteten belüli pillanatkép visszaállítása. Ezt a műveletet a Azure NetApp Files pillanatkép-visszavonási funkciója segítségével végezheti el. Ez a funkció lehetővé teszi, hogy gyorsan visszaállítson egy kötetet arra az állapotba, amely egy adott pillanatkép készítésekor megtörtént. A legtöbb esetben a kötetek visszafordítása sokkal gyorsabb, mint az egyes fájlok egy pillanatképből az aktív fájlrendszerre való visszaállítása, különösen nagy méretű, több TiB-os köteteken. 
 
 A kötet-Pillanatképek visszaállítása majdnem azonnali, és csak néhány másodpercig tart, még a legnagyobb kötetek esetében is. Az aktív kötet metaadatainak (*inode-tábla*) helyére a pillanatkép-metaadatokat a pillanatkép-létrehozás időpontjában kell cserélni, így a kötet visszaállítható az adott időpontra. Nem kell átmásolni az adatblokkokat a visszaállított állapotra a hatályba léptetéshez. Ezért sokkal hatékonyabb, mint a pillanatképek visszaállítása egy új kötetre. 
 
@@ -142,11 +142,11 @@ Tekintse meg a kötet visszavonása a [Pillanatkép használatával](azure-netap
 A pillanatképek tárolási kapacitást használnak. Így általában nem maradnak meg határozatlan ideig. Az adatvédelem, az adatmegőrzés és a helyreállítás érdekében a különböző időpontokban létrehozott Pillanatképek általában online állapotban vannak, a RPO, a RTO és az adatmegőrzési SLA-követelményektől függően. A régebbi pillanatképeket azonban gyakran nem kell megőrizni a Storage szolgáltatásban, és előfordulhat, hogy törölni kell a tárterület felszabadításához. Bármely pillanatkép törölhető (nem feltétlenül a létrehozás sorrendjében) egy rendszergazdától bármikor. 
 
 > [!IMPORTANT]
-> A pillanatkép törlési művelete nem vonható vissza. 
+> A pillanatkép törlési művelete nem vonható vissza. Meg kell őriznie a kötet offline példányait az adatvédelem és a megőrzés céljából. 
 
 Pillanatkép törlésekor a rendszer a pillanatképből származó összes mutatót eltávolítja a meglévő adatblokkokra. Ha egy adatblokknak nincs több mutatója (az aktív kötet vagy a köteten lévő egyéb Pillanatképek), a rendszer visszaküldi az adatblokkot a kötet szabad területére a későbbi használat érdekében. Ezért a pillanatképek eltávolítása általában nagyobb kapacitást szabadít fel egy köteten, mint az aktív kötet adatainak törlése, mert az adatblokkok gyakran a korábban létrehozott pillanatképekben vannak rögzítve. 
 
-A következő ábrán látható, hogy milyen hatással van a pillanatkép-törlés a köteten:  
+Az alábbi ábrán látható, hogy milyen hatással van a pillanatkép 3 törlésének a kötetről való törlése:  
 
 ![A pillanatkép törlésének tárolási felhasználási hatását bemutató diagram](../media/azure-netapp-files/snapshot-delete-storage-consumption.png)
 

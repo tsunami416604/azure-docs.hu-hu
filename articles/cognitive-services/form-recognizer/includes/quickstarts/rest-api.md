@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: a677623c030ff26567f14a4526f6d07bc6631a37
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 31e1a0d912c6623f57d4ea256968102604ce42ff
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97853697"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132346"
 ---
 > [!NOTE]
 > Ez az útmutató a cURL használatával REST API hívásokat hajt végre. A [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) is szerepel egy mintakód, amely bemutatja, hogyan hívhatja meg a REST API-kat a Python használatával.
@@ -32,7 +32,7 @@ ms.locfileid: "97853697"
 * Egy számla rendszerképének URL-címe. Ehhez a rövid útmutatóhoz [minta dokumentumot](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) is használhat.
 
 
-## <a name="recognize-form-content"></a>Űrlap tartalmának felismerése
+## <a name="analyze-layout"></a>Elrendezés elemzése
 
 Az űrlap-felismerő használatával táblákat, vonalakat és szavakat is felismerheti és kinyerheti a dokumentumokban anélkül, hogy egy modellt kellene betanítania. A parancs futtatása előtt végezze el a következő módosításokat:
 
@@ -319,7 +319,7 @@ Tekintse meg a következő számla képét és a hozzá tartozó JSON-kimenetet.
 
 ---
 
-## <a name="recognize-receipts"></a>Visszaigazolások felismerése
+## <a name="analyze-receipts"></a>Visszaigazolások elemzése
 
 A nyugták elemzésének megkezdéséhez hívja meg az **[elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** API-t az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
 
@@ -699,7 +699,7 @@ A `"readResults"` csomópont tartalmazza az összes felismert szöveget (ha a v�
 }
 ```
 
-## <a name="recognize-business-cards"></a>Névjegykártyák felismerése
+## <a name="analyze-business-cards"></a>Üzleti kártyák elemzése
 
 # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)  
 
@@ -861,7 +861,7 @@ A parancsfájl addig kinyomtatja a válaszokat a konzolra, amíg be nem fejeződ
 
 ---
 
-## <a name="recognize-invoices"></a>Számlák felismerése
+## <a name="analyze-invoices"></a>Számlák elemzése
 
 # <a name="version-20"></a>[2,0-es verzió](#tab/v2-0)
 
@@ -1620,7 +1620,7 @@ A `200` következőhöz hasonló JSON-adatkérések sikeresek lesznek.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST API használatával különböző módokon taníthatja ki a modelleket és elemezheti az űrlapokat. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 

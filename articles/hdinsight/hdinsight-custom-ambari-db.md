@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
-ms.date: 06/24/2019
+ms.date: 01/12/2021
 ms.author: hrasheed
-ms.openlocfilehash: d6dd67e9e0cd9dcd4afb8f1ae2cc32ccf30617fd
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 87d8074772863d0ca1cbf98220e5ca9b027fb085
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704945"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134296"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>HDInsight-fürtök beállítása egyéni Ambari-ADATBÁZISsal
 
@@ -65,6 +65,20 @@ az deployment group create --name HDInsightAmbariDBDeployment \
     --parameters azuredeploy.parameters.json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="database-sizing"></a>Adatbázis méretezése
+
+Az alábbi táblázat a HDInsight-fürt méretétől függően az Azure SQL DB-rétegek kiválasztására vonatkozó irányelveket tartalmazza.
+
+| Munkavégző csomópontok száma | Szükséges adatbázis-szintek |
+|---|---|
+| <= 4 | S0 |
+| >4 && <= 8 | S1 |
+| >8 && <= 16 | S2 |
+| >16 && <= 32 | S3 |
+| >32 && <= 64 | S4 |
+| >64 && <= 128 | P2 |
+| >128 | Kapcsolatfelvétel a támogatási szolgáltatással |
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Külső metaadattárak használata az Azure HDInsightban](hdinsight-use-external-metadata-stores.md)

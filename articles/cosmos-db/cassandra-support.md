@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 8c51450fb6ce5c381784e6aaf9b1a66c3c4ff153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188547"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134228"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -45,33 +45,33 @@ Az Azure Cosmos DB Cassandra API a következő CQL-adattípusokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-| ascii  | Igen |
-| bigint  | Igen |
-| blob  | Igen |
-| boolean  | Igen |
-| számláló  | Igen |
-| dátum  | Igen |
-| tizedes tört  | Igen |
-| double  | Igen |
-| float  | Igen |
-| kimerevítve  | Igen |
-| inet  | Igen |
-| int  | Igen |
-| list  | Igen |
-| halmaz  | Igen |
-| smallint  | Igen |
-| szöveg  | Igen |
-| time  | Igen |
-| időbélyeg  | Igen |
-| timeuuid  | Igen |
-| tinyint  | Igen |
-| rekord  | Igen |
-| uuid  | Igen |
-| varchar  | Igen |
-| varint  | Igen |
-| rekordok | Igen | 
-| udts  | Igen |
-| map | Igen |
+| ascii  | Yes |
+| bigint  | Yes |
+| blob  | Yes |
+| boolean  | Yes |
+| számláló  | Yes |
+| dátum  | Yes |
+| tizedes tört  | Yes |
+| double  | Yes |
+| float  | Yes |
+| kimerevítve  | Yes |
+| inet  | Yes |
+| int  | Yes |
+| list  | Yes |
+| halmaz  | Yes |
+| smallint  | Yes |
+| szöveg  | Yes |
+| time  | Yes |
+| időbélyeg  | Yes |
+| timeuuid  | Yes |
+| tinyint  | Yes |
+| rekord  | Yes |
+| uuid  | Yes |
+| varchar  | Yes |
+| varint  | Yes |
+| rekordok | Yes | 
+| udts  | Yes |
+| map | Yes |
 
 Az adattípusok deklarációjában a statikus érték is támogatott.
 
@@ -81,13 +81,14 @@ Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-| Jogkivonat | Igen |
-| ttl | Igen |
-| writetime | Igen |
-| típuskonverzió | Nem |
+| Jogkivonat | Yes |
+| ttl | Yes |
+| writetime | Yes |
+| Cast * * | Yes |
 
-> [!NOTE]
-> \* Cassandra API a tokent kivetítési/választóként támogatja, és csak a tokent (PK) engedélyezi egy WHERE záradék bal oldalán. Például `WHERE token(pk) > 1024` támogatott, de `WHERE token(pk) > token(100)` **nem** támogatott.
+> [!NOTE] 
+> \* Cassandra API a tokent kivetítési/választóként támogatja, és csak a tokent (PK) engedélyezi egy WHERE záradék bal oldalán. Például `WHERE token(pk) > 1024` támogatott, de `WHERE token(pk) > token(100)` **nem** támogatott.  
+> \*\* A `cast()` függvény nem ágyazható be Cassandra APIba. Például `SELECT cast(count as double) FROM myTable` támogatott, de `SELECT avg(cast(count as double)) FROM myTable` **nem** támogatott.
 
 
 
@@ -95,11 +96,11 @@ Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-| AVG | Igen |
-| count | Igen |
-| p | Igen |
-| max. | Igen |
-| Sum | Igen |
+| AVG | Yes |
+| count | Yes |
+| p | Yes |
+| max. | Yes |
+| Sum | Yes |
 
 > [!NOTE]
 > Az összesítő függvények normál oszlopokon működnek, de a fürtözési oszlopok összesítései **nem** támogatottak.
@@ -109,25 +110,25 @@ BLOB-átalakítási függvények:
  
 |Parancs  |Támogatott |
 |---------|---------|
-| typeAsBlob(value)   | Igen |
-| blobAsType(value) | Igen |
+| typeAsBlob(value)   | Yes |
+| blobAsType(value) | Yes |
 
 
 UUID és timeuuid függvények:
  
 |Parancs  |Támogatott |
 |---------|---------|
-| dateOf()  | Igen |
-| now()  | Igen |
-| minTimeuuid()  | Igen |
-| unixTimestampOf()  | Igen |
-| toDate(timeuuid)  | Igen |
-| toTimestamp(timeuuid)  | Igen |
-| toUnixTimestamp(timeuuid)  | Igen |
-| toDate(timestamp)  | Igen |
-| toUnixTimestamp(timestamp)  | Igen |
-| toTimestamp(date)  | Igen |
-| toUnixTimestamp(date) | Igen |
+| dateOf()  | Yes |
+| now()  | Yes |
+| minTimeuuid()  | Yes |
+| unixTimestampOf()  | Yes |
+| toDate(timeuuid)  | Yes |
+| toTimestamp(timeuuid)  | Yes |
+| toUnixTimestamp(timeuuid)  | Yes |
+| toDate(timestamp)  | Yes |
+| toUnixTimestamp(timestamp)  | Yes |
+| toTimestamp(date)  | Yes |
+| toUnixTimestamp(date) | Yes |
 
 
   
@@ -137,60 +138,84 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 
 |Parancs  |Támogatott |
 |---------|---------|
-| SZŰRÉS ENGEDÉLYEZÉSE | Igen |
+| SZŰRÉS ENGEDÉLYEZÉSE | Yes |
 | LEMEZTERÜLET MÓDOSÍTÁSA | N/A (Pásti szolgáltatás, belső replikáció felügyelt)|
-| MÓDOSÍTHATÓ ANYAGÚ NÉZET | Nem |
-| SZEREPKÖR MÓDOSÍTÁSA | Nem |
-| ALTER TABLE | Igen |
-| MÓDOSÍTÁS TÍPUSA | Nem |
-| FELHASZNÁLÓ MÓDOSÍTÁSA | Nem |
+| MÓDOSÍTHATÓ ANYAGÚ NÉZET | No |
+| SZEREPKÖR MÓDOSÍTÁSA | No |
+| ALTER TABLE | Yes |
+| MÓDOSÍTÁS TÍPUSA | No |
+| FELHASZNÁLÓ MÓDOSÍTÁSA | No |
 | BATCH | Igen (csak nem naplózott köteg)|
 | KOMPAKT TÁROLÓ | N/A (Pásti szolgáltatás) |
-| ÖSSZESÍTÉS LÉTREHOZÁSA | Nem | 
-| EGYÉNI INDEX LÉTREHOZÁSA (SASI) | Nem |
+| ÖSSZESÍTÉS LÉTREHOZÁSA | No | 
+| EGYÉNI INDEX LÉTREHOZÁSA (SASI) | No |
 | CREATE INDEX | Igen (az [index nevének megadása](cassandra-secondary-index.md)és a fürtözési kulcsok indexelése nélkül, vagy a teljes fagyasztott gyűjtemény nem támogatott) |
-| CREATE FUNCTION | Nem |
-| SZÓKÖZ létrehozása (replikációs beállítások figyelmen kívül hagyva) | Igen |
-| ANYAGELSZÁMOLÁSÚ NÉZET LÉTREHOZÁSA | Nem |
-| CREATE TABLE | Igen |
-| TRIGGER LÉTREHOZÁSA | Nem |
-| LÉTREHOZÁS TÍPUSA | Igen |
-| SZEREPKÖR LÉTREHOZÁSA | Nem |
-| FELHASZNÁLÓ létrehozása (natív Apache Cassandra-ban elavult) | Nem |
-| DELETE | Igen |
-| Törlés (az IF feltétellel rendelkező könnyű tranzakciók)| Igen |
-| DISTINCT | Nem |
-| ÖSSZESÍTÉS ELDOBÁSA | Nem |
-| DROP FUNCTION | Nem |
-| DROP INDEX | Igen |
-| SZÓKÖZ ELDOBÁSA | Igen |
-| ANYAGOS NÉZET ELDOBÁSA | Nem |
-| SZEREPKÖR ELDOBÁSA | Nem |
-| DROP TABLE | Igen |
-| TRIGGER ELDOBÁSA | Nem | 
-| DROP TYPE | Igen |
-| FELHASZNÁLÓ eldobása (elavult, natív Apache Cassandra) | Nem |
-| GRANT | Nem |
-| INSERT | Igen |
-| INSERT (könnyű tranzakciók IF feltétellel)| Igen |
-| ENGEDÉLYEK LISTÁZÁSA | Nem |
-| SZEREPKÖRÖK LISTÁZÁSA | Nem |
-| FELHASZNÁLÓK LISTÁZÁSa (a natív Apache Cassandra-ban elavult) | Nem |
-| REVOKE | Nem |
-| SELECT | Igen |
-| SELECT (könnyűsúlyú tranzakciók IF feltétellel)| Nem |
-| UPDATE | Igen |
-| FRISSÍTÉS (kis-és nagyméretű tranzakciók, ha feltétellel)| Nem |
-| TRUNCATE | Nem |
-| USE | Igen |
+| CREATE FUNCTION | No |
+| SZÓKÖZ létrehozása (replikációs beállítások figyelmen kívül hagyva) | Yes |
+| ANYAGELSZÁMOLÁSÚ NÉZET LÉTREHOZÁSA | No |
+| CREATE TABLE | Yes |
+| TRIGGER LÉTREHOZÁSA | No |
+| LÉTREHOZÁS TÍPUSA | Yes |
+| SZEREPKÖR LÉTREHOZÁSA | No |
+| FELHASZNÁLÓ létrehozása (natív Apache Cassandra-ban elavult) | No |
+| DELETE | Yes |
+| Törlés (az IF feltétellel rendelkező könnyű tranzakciók)| Yes |
+| DISTINCT | No |
+| ÖSSZESÍTÉS ELDOBÁSA | No |
+| DROP FUNCTION | No |
+| DROP INDEX | Yes |
+| SZÓKÖZ ELDOBÁSA | Yes |
+| ANYAGOS NÉZET ELDOBÁSA | No |
+| SZEREPKÖR ELDOBÁSA | No |
+| DROP TABLE | Yes |
+| TRIGGER ELDOBÁSA | No | 
+| DROP TYPE | Yes |
+| FELHASZNÁLÓ eldobása (elavult, natív Apache Cassandra) | No |
+| GRANT | No |
+| INSERT | Yes |
+| INSERT (könnyű tranzakciók IF feltétellel)| Yes |
+| ENGEDÉLYEK LISTÁZÁSA | No |
+| SZEREPKÖRÖK LISTÁZÁSA | No |
+| FELHASZNÁLÓK LISTÁZÁSa (a natív Apache Cassandra-ban elavult) | No |
+| REVOKE | No |
+| SELECT | Yes |
+| SELECT (könnyűsúlyú tranzakciók IF feltétellel)| No |
+| UPDATE | Yes |
+| FRISSÍTÉS (kis-és nagyméretű tranzakciók, ha feltétellel)| No |
+| TRUNCATE | No |
+| USE | Yes |
+
+## <a name="cql-shell-commands"></a>CQL-rendszerhéj parancsai
+
+Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra API-fiókok esetében.
+
+|Parancs  |Támogatott |
+|---------|---------|
+| RÖGZÍTÉSE | Yes |
+| EGYÉRTELMŰ | Yes |
+| KONZISZTENCIA | N.A. |
+| MÁSOLJA | No |
+| ISMERTETIK | Yes |
+| cqlshExpand | No |
+| KILÉPÉSI | Yes |
+| BEJELENTKEZÉSI | N/A (a CQL függvény `USER` nem támogatott, ezért `LOGIN` redundáns) |
+| LAPOZÓFÁJL | Yes |
+| SOROS KONZISZTENCIA * | N.A. |
+| MEGJELENÍTÉSE | Yes |
+| FORRÁS | Yes |
+| NYOMKÖVETÉS | N/A (Cassandra API Azure Cosmos DB biztonsági mentést végez – [diagnosztikai naplózás](cosmosdb-monitor-resource-logs.md) használata a hibaelhárításhoz) |
+
+> [!NOTE] 
+> \* A konzisztencia a Azure Cosmos DBban eltérően működik, további információért lásd [itt](cassandra-consistency.md) .  
+
 
 ## <a name="json-support"></a>JSON-támogatás
 |Parancs  |Támogatott |
 |---------|---------|
-| JSON KIVÁLASZTÁSA | Igen |
-| JSON BESZÚRÁSA | Igen |
-| fromJson() | Nem |
-| toJson() | Nem |
+| JSON KIVÁLASZTÁSA | Yes |
+| JSON BESZÚRÁSA | Yes |
+| fromJson() | No |
+| toJson() | No |
 
 
 ## <a name="cassandra-api-limits"></a>A Cassandra API korlátai

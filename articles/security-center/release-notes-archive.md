@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/07/2020
 ms.author: memildin
-ms.openlocfilehash: 7325ba1a8a90fec90182f9780c1fb18d29d3c0f1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 835950cc68ca22ea3958d614d669d7a105fefe62
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955263"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132919"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archiválja a Azure Security Center újdonságait?
 
@@ -110,7 +110,7 @@ A Security Center tárolójának biztonságáról a következő cikkekben tájé
 - [Útmutató a beállításjegyzékek vizsgálatához és a Docker-gazdagépek megerősítéséhez](container-security.md)
 - [Biztonsági riasztások az Azure Kubernetes Service-fürtök veszélyforrások elleni védelmi funkcióiról](alerts-reference.md#alerts-akscluster)
 - [Biztonsági riasztások az Azure Kubernetes Service-gazdagépek veszélyforrások elleni védelmi funkcióiról](alerts-reference.md#alerts-containerhost)
-- [Biztonsági javaslatok tárolók számára](recommendations-reference.md#recs-containers)
+- [Biztonsági javaslatok tárolók számára](recommendations-reference.md#recs-compute)
 
 
 
@@ -195,7 +195,7 @@ Ezek az új javaslatok ugyanabban a négy biztonsági vezérlőben jelennek meg,
 
 A javaslatok az üzembe helyezési folyamat felgyorsításához szükséges gyors javítási képességgel is rendelkeznek. 
 
-Ebből a két új javaslatból megismerheti a [számítási és alkalmazási javaslatok](recommendations-reference.md#recs-computeapp) táblázatát.
+Ebből a két új javaslatból megismerheti a [számítási és alkalmazási javaslatok](recommendations-reference.md#recs-compute) táblázatát.
 
 További információ arról, hogy a Azure Security Center hogyan használja az ügynököt a [log Analytics Agent](faq-data-collection-agents.md#what-is-the-log-analytics-agent)ügynökben?.
 
@@ -232,7 +232,7 @@ Az "ajánlott biztonsági eljárások implementálása" biztonsági vezérlő mo
 
 Egy meglévő, **internetre irányuló virtuális gépet védeni kell a hálózati biztonsági csoportokkal**, nem kell különbséget tenni az internetre irányuló és a nem internetkapcsolattal rendelkező virtuális gépek között. Mindkét esetben magas súlyosságú javaslat jön létre, ha egy virtuális gépet nem hálózati biztonsági csoporthoz rendeltek hozzá. Ez az új javaslat elkülöníti a nem internetkapcsolattal rendelkező gépeket a téves pozitív problémák csökkentése és a szükségtelen magas súlyosságú riasztások elkerülése érdekében.
 
-További információ a [hálózati javaslatok](recommendations-reference.md#recs-network) táblázatban található.
+További információ a [hálózati javaslatok](recommendations-reference.md#recs-networking) táblázatban található.
 
 
 
@@ -432,7 +432,7 @@ Az identitásra és a hozzáférésre vonatkozó javaslatok például a követke
 
 Ha előfizetése van az ingyenes díjszabási szinten, a biztonsági pontszámok hatással lesznek a változásokra, mivel soha nem értékelték a személyazonosságát és a hozzáférés biztonságát.
 
-További információ az [identitással és a hozzáférési javaslatokkal](recommendations-reference.md#recs-identity)kapcsolatban.
+További információ az [identitással és a hozzáférési javaslatokkal](recommendations-reference.md#recs-identityandaccess)kapcsolatban.
 
 További információ az [identitás és a hozzáférés figyeléséről](security-center-identity-access.md).
 
@@ -737,7 +737,7 @@ A Security Center mostantól támogatja a több-bérlős felügyeleti forgatók�
 
 A Azure Security Center (ASC) új hálózatkezelési ajánlásokat indított, és bizonyos meglévőket fejlesztett ki. Mostantól a Security Center használatával még nagyobb hálózati védelmet biztosíthat az erőforrásai számára. 
 
-[További információ a hálózati javaslatokról](recommendations-reference.md#recs-network).
+[További információ a hálózati javaslatokról](recommendations-reference.md#recs-networking).
 
 
 ## <a name="june-2019"></a>2019. június

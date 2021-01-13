@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
-ms.openlocfilehash: b483ffc480f9ad750f8d9901d6bec382db2378c2
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 675c4f04ece322000ae0ebb44d6291c455db9397
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368919"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133276"
 ---
 # <a name="key-types-algorithms-and-operations"></a>Kulcstípusok, algoritmusok és műveletek
 
@@ -26,7 +26,7 @@ A következő táblázat a kulcstárolók és a támogatott algoritmusok összef
 | --- | --- | --- |
 |EC-P256, EC-P256K, EC-P384, EC-521|NA|ES256<br>ES256K<br>ES384<br>ES512|
 |RSA 2K, 3K, 4K| RSA1_5<br>RSA – OAEP<br>RSA-OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
-|AES 128 bites, 256 bites| AES-KW<br>AES – GCM<br>AES – CBC| NA| 
+|AES 128 bites, 256 bites <br/>(Csak felügyelt HSM)| AES-KW<br>AES – GCM<br>AES – CBC| NA| 
 |||
 
 ##  <a name="ec-algorithms"></a>EK-algoritmusok
@@ -65,7 +65,7 @@ A következő táblázat a kulcstárolók és a támogatott algoritmusok összef
 -   **RS512** -RSASSA-PKCS-V1_5 az SHA-512 használatával. Az alkalmazás által biztosított kivonatoló értéket az SHA-512 értékkel kell kiszámítani, és 64 bájt hosszúságú kell lennie.  
 -   **RSNULL** – lásd: [RFC2437](https://tools.ietf.org/html/rfc2437), speciális használati eset, hogy bizonyos TLS-forgatókönyvek engedélyezve legyenek.  
 
-##  <a name="symmetric-key-algorithms"></a>Szimmetrikus kulcsú algoritmusok
+##  <a name="symmetric-key-algorithms-managed-hsm-only"></a>Szimmetrikus kulcsú algoritmusok (csak felügyelt HSM esetén)
 - **AES-kW** -AES-kulcs becsomagolása ([RFC3394](https://tools.ietf.org/html/rfc3394)).
 - **AES-GCM** -AES titkosítás a Galois Counter mode-ban ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800))
 - **AES-CBC** -AES titkosítás titkosított blokkos láncolási módban ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800))

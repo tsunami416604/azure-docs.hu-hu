@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: fb9d74da6030c430cce4a2a3c4c5e4299183ca15
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808657"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132305"
 ---
 > [!IMPORTANT]
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
@@ -100,8 +100,8 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 #### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Űrlap tartalmának felismerése](#recognize-form-content)
-* [Visszaigazolások felismerése](#recognize-receipts)
+* [Elrendezés elemzése](#analyze-layout)
+* [Visszaigazolások elemzése](#analyze-receipts)
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
@@ -109,10 +109,10 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 #### <a name="version-21-preview"></a>[2,1-es verzió előnézet](#tab/preview)
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
-* [Űrlap tartalmának felismerése](#recognize-form-content)
-* [Visszaigazolások felismerése](#recognize-receipts)
-* [Névjegykártyák felismerése](#recognize-business-cards)
-* [Számlák felismerése](#recognize-invoices)
+* [Elrendezés elemzése](#analyze-layout)
+* [Visszaigazolások elemzése](#analyze-receipts)
+* [Üzleti kártyák elemzése](#analyze-business-cards)
+* [Számlák elemzése](#analyze-invoices)
 * [Egyéni modell betanítása](#train-a-custom-model)
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
@@ -137,7 +137,7 @@ Hozzá kell adnia a képzési és tesztelési adatok URL-címeire mutató hivatk
 > [!NOTE]
 > Az útmutatóban szereplő kódrészletek az URL-címek által elért távoli űrlapokat használják. Ha ehelyett a helyi űrlapos dokumentumokat szeretné feldolgozni, tekintse meg a kapcsolódó módszereket a [dokumentációban](/python/api/azure-ai-formrecognizer) és a [mintákban](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
-## <a name="recognize-form-content"></a>Űrlap tartalmának felismerése
+## <a name="analyze-layout"></a>Elrendezés elemzése
 
 Az űrlap-felismerő használatával felismerheti a dokumentumokban szereplő táblákat, vonalakat és szavakat, anélkül, hogy egy modellt kellene betanítania.
 
@@ -171,7 +171,7 @@ Confidence score: 1.0
 
 ```
 
-## <a name="recognize-receipts"></a>Visszaigazolások felismerése
+## <a name="analyze-receipts"></a>Visszaigazolások elemzése
 
 Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az Egyesült államokbeli nyugták közös mezőit egy előre képzett beérkezési modell használatával. A beérkezések URL-címről való felismeréséhez használja a `begin_recognize_receipts_from_url` metódust. 
 
@@ -203,7 +203,7 @@ Total: 1203.39 has confidence 0.774
 ```
 
 
-## <a name="recognize-business-cards"></a>Névjegykártyák felismerése
+## <a name="analyze-business-cards"></a>Üzleti kártyák elemzése
 
 #### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
@@ -221,7 +221,7 @@ Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az angol üzleti ká
 
 ---
 
-## <a name="recognize-invoices"></a>Számlák felismerése
+## <a name="analyze-invoices"></a>Számlák elemzése
 
 #### <a name="version-20"></a>[2,0-es verzió](#tab/ga)
 
@@ -467,7 +467,7 @@ Hasonlóképpen, `logging_enable` egy művelet részletes naplózását is enged
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_example)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap felismerő Python ügyféloldali függvénytárát használta a modellek tanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

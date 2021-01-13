@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan írhat kódot az Azure Event Hubs a
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4f95abe3668bb400d84e354c3bca9eac289c5795
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108687"
+ms.locfileid: "98131236"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET programozási útmutató az Azure Event Hubshoz (örökölt Microsoft. Azure. EventHubs csomag)
 Ez a cikk néhány gyakori forgatókönyvet ismertet a kód az Azure Event Hubs használatával történő írásához. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](./event-hubs-about.md).
@@ -77,7 +77,7 @@ Az események küldésekor megadhat egy olyan értéket, amely kivonattal létre
 
 ### <a name="availability-considerations"></a>Rendelkezésre állási szempontok
 
-A partíciós kulcs használata nem kötelező, és körültekintően kell megfontolnia, hogy használja-e az egyiket. Ha nem ad meg partíciókulcsot az események közzétételekor, a rendszer ciklikus időszeleteléses hozzárendelést használ. Sok esetben a partíciós kulcs használata jó választás, ha az események rendezése fontos. Partíciós kulcs használatakor ezek a partíciók egy adott csomóponton rendelkezésre állást igényelnek, és időbeli kimaradások léphetnek fel. például a számítási csomópontok újraindításakor és javításakor. Így ha egy partíció-azonosítót állít be, és a partíció valamilyen okból elérhetetlenné válik, akkor a partíción lévő adat elérésére tett kísérlet sikertelen lesz. Ha a magas rendelkezésre állás a legfontosabb, ne határozzon meg partíciós kulcsot; Ebben az esetben az eseményeket a korábban ismertetett ciklikus multiplexelés használatával küldik el a partícióknak. Ebben az esetben a rendelkezésre állás (partíció-azonosító nélkül) és a konzisztencia (a partíciós azonosító rögzítése) között explicit módon választhat.
+A partíciós kulcs használata nem kötelező, és körültekintően kell megfontolnia, hogy használja-e az egyiket. Ha nem ad meg partíciós kulcsot egy esemény közzétételekor, Event Hubs terheléselosztást végez a partíciók között. Sok esetben a partíciós kulcs használata jó választás, ha az események rendezése fontos. Partíciós kulcs használatakor ezek a partíciók egy adott csomóponton rendelkezésre állást igényelnek, és időbeli kimaradások léphetnek fel. például a számítási csomópontok újraindításakor és javításakor. Így ha egy partíció-azonosítót állít be, és a partíció valamilyen okból elérhetetlenné válik, akkor a partíción lévő adat elérésére tett kísérlet sikertelen lesz. Ha a magas rendelkezésre állás a legfontosabb, ne határozzon meg partíciós kulcsot. Ebben az esetben az eseményeket egy belső terheléselosztási algoritmus használatával küldik el a partícióknak. Ebben az esetben a rendelkezésre állás (partíció-azonosító nélkül) és a konzisztencia (a partíciós azonosító rögzítése) között explicit módon választhat.
 
 Egy másik szempont a feldolgozási események késésének kezelése. Bizonyos esetekben érdemes lehet eldobni az adatvesztést, és újra kell próbálkoznia, mint a feldolgozás megtartása, ami esetleg további alsóbb rétegbeli feldolgozási késéseket eredményezhet. Egy tőzsdei ticker esetében például érdemes megvárni a teljes naprakész adatok megjelenítését, azonban egy élő csevegésben vagy VOIP-forgatókönyvben inkább az adatok gyors, még akkor is, ha nem fejeződött be.
 

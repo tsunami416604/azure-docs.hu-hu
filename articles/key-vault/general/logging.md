@@ -10,21 +10,21 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5fcb3226eebf39ab18fb3bb24f0521a0523748d4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883384"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134177"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
 Egy vagy több kulcstartó létrehozása után valószínűleg figyelnie kell a kulcstartók elérésének módját és időpontját. Ezt úgy teheti meg, hogy engedélyezi a Azure Key Vault naplózását, amely az Ön által megadott Azure Storage-fiókban tárolja az adatokat. További információ a beállításáról: a [Key Vault naplózásának engedélyezése](howto-logging.md).
 
-A naplózási adatokat a Key Vault művelet után 10 perccel (legfeljebb) érheti el. A legtöbb esetben azonban ez nem fog ennyi ideig tartani.  A tárfiók naplófájljait Önnek kell kezelnie:
+A naplózási adatokat a Key Vault művelet után 10 perccel (legfeljebb) érheti el. A legtöbb esetben azonban ez nem fog ennyi ideig tartani.  A naplókat a tárfiókban kezelheti:
 
 * A Storage-fiókban a szabványos Azure-hozzáférés-vezérlési módszerekkel biztonságossá teheti a naplókat, és korlátozhatja, hogy ki férhet hozzá.
-* Törölje azokat a naplókat, amelyeket nem kíván megőrizni a tárfiókban.
+* Ha már nincs szüksége a tárfiókban tárolt naplókra, törölje azokat.
 
 További információ a Key Vaultről: [Mi az Azure Key Vault?](overview.md). További információ a Key Vault rendelkezésre állásáról: [díjszabási oldal](https://azure.microsoft.com/pricing/details/key-vault/). További információ a [Key Vault Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md)használatáról.
 
@@ -182,6 +182,7 @@ A következő táblázat felsorolja a **operationName** és a hozzá tartozó RE
 | **CertificatePendingDelete** |Függőben lévő tanúsítvány törlése |
 | **CertificateNearExpiryEventGridNotification** |Tanúsítvány közel lejárati eseménye közzétéve |
 | **CertificateExpiredEventGridNotification** |A tanúsítvány lejárt esemény közzétéve |
+
 ---
 
 ## <a name="use-azure-monitor-logs"></a>Az Azure Monitor-naplók használata
@@ -190,7 +191,7 @@ A Key Vault naplók áttekintéséhez használhatja a Azure Monitor naplók Key 
 
 További információk, például a beállításának módja: [Azure Key Vault Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Key Vault naplózás engedélyezése](howto-logging.md)
 - [Azure-figyelő](https://docs.microsoft.com/azure/azure-monitor/)

@@ -10,39 +10,43 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845618"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131125"
 ---
-# <a name="business-card-concepts"></a>Névjegykártyákra vonatkozó fogalmak
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>Űrlap-felismerő előre elkészített névjegykártya-modellje 
 
-Az Azure-űrlap felismerője az előre elkészített modellek egyikének használatával elemezheti és kinyerheti a kapcsolattartási adatokat az üzleti kártyáról. A Business Card API ötvözi a hatékony optikai karakterfelismerési (OCR) képességeket a Business Card Understanding modell segítségével, hogy az üzleti kártyákról angol nyelven kinyerje a legfontosabb információkat. Kigyűjti a személyes kapcsolattartási adatokat, a vállalat nevét, a munkakör címét és egyebeket. Az előre elkészített névjegykártya API nyilvánosan elérhető a Form felismerő v 2.1 előzetes verziójában. 
+Az Azure-űrlap felismerője az előre elkészített névjegykártya-modell használatával elemezheti és kinyerheti a kapcsolattartási adatokat az üzleti kártyáról. A hatékony optikai karakterfelismerési (OCR) képességeket kombinálja az üzleti kártyák megismerésére szolgáló modellel, amellyel kinyerheti a legfontosabb információkat az üzleti kártyáról az angol nyelven. Kigyűjti a személyes kapcsolattartási adatokat, a vállalat nevét, a munkakör címét és egyebeket. Az előre elkészített névjegykártya API nyilvánosan elérhető a Form felismerő v 2.1 előzetes verziójában. 
 
-## <a name="what-does-the-business-card-api-do"></a>Mit tesz a Business Card API?
+## <a name="what-does-the-business-card-service-do"></a>Mit tesz a Business Card szolgáltatás?
 
-A Business Card API Kinyeri a legfontosabb mezőket az üzleti kártyákból, és visszaadja őket egy szervezett JSON-válaszban.
+Az előre elkészített Business Card API Kinyeri a legfontosabb mezőket az üzleti kártyákból, és visszaadja őket egy szervezett JSON-válaszban.
 
-![Contoso részletezett rendszerkép a FOTT + JSON kimenetből](./media/business-card-english.jpg)
+![Contoso részletezett rendszerkép a FOTT + JSON kimenetből](./media/business-card-example.jpg)
+
+
 
 ### <a name="fields-extracted"></a>Kinyert mezők:
 
-* Kapcsolattartók nevei 
-  * Utónév
-  * Vezetéknév
-* Vállalati nevek 
-* Részlegek 
-* Feladatok címei 
-* E-mail-címek 
-* Webhelyek 
-* Címek 
-* Telefonszámok 
-  * Mobiltelefonok 
-  * Faxok 
-  * Munkahelyi telefonok 
-  * Egyéb telefonok 
+|Név| Típus | Leírás | Szöveg | 
+|:-----|:----|:----|:----|
+| ContactNames | objektumok tömbje | A névjegykártyából kinyert kapcsolattartó neve | [{"FirstName": "John", "LastName": "DOE"}] |
+| FirstName | sztring | A partner első (megadott) neve | John | 
+| LastName | sztring | A partner utolsó (családi) neve |   DOE | 
+| CompanyNames | sztringek tömbje | Vállalati név kinyerve a vállalati kártyáról | ["Contoso"] | 
+| Részlegek | sztringek tömbje | Kapcsolattartó részleg vagy szervezet | ["R&D"] | 
+| JobTitles | sztringek tömbje | Kapcsolattartó neve | ["Informatikus mérnök"] | 
+| E-mail-címek | sztringek tömbje | Névjegykártyából kinyert e-mail cím | ["johndoe@contoso.com"] | 
+| Webhelyek | sztringek tömbje | A vállalati kártyáról kinyert webhely | ["https://www.contoso.com"] | 
+| Címek | sztringek tömbje | A névjegykártyából kinyert címek | ["123 Main Street, Redmond, WA 98052"] | 
+| MobilePhones | telefonszámok tömbje | A névjegykártyából kinyert mobil telefonszám | ["+ 19876543210"] |
+| Faxok | telefonszámok tömbje | A névjegykártyából kinyert fax telefonszáma | ["+ 19876543211"] |
+| WorkPhones | telefonszámok tömbje | A névjegykártyából kinyert munkahelyi telefonszám | ["+ 19876543231"] |
+| OtherPhones    | telefonszámok tömbje | A névjegykártyából kinyert egyéb telefonszám | ["+ 19876543233"] |
+
 
 A Business Card API az összes felismert szöveget visszaküldheti a névjegykártyából. Ez az OCR-kimenet szerepel a JSON-válaszban.  
 
@@ -387,7 +391,7 @@ A Business Card API-val kinyert adatok különféle feladatok elvégzésére has
 
 A Business Card API a [mesterséges intelligencia-készítő névjegykártya-feldolgozási funkciót](/ai-builder/prebuilt-business-card)is felhasználja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A gyors üzembe helyezéshez [kövesse az üzleti](./quickstarts/client-library.md) kártyák felismerésének első lépéseit.
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 94db8ce46fc240a6c48c0919b6d2c2cd148522ac
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6e3333ac780cfca02a6ce4f28d2b0e312016f713
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976050"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131508"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Általános VHD feltöltése, majd azzal új Azure-beli virtuális gép létrehozása
 
@@ -38,13 +38,15 @@ Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kisz
 > 
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
-2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a%WINDIR%\system32\sysprep értékre, majd futtassa a parancsot `sysprep.exe` .
-3. A **rendszer-előkészítő eszköz** párbeszédpanelen jelölje be a rendszerindítási folyamat **megadása (OOBE)** jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** jelölőnégyzet be van jelölve.
-4. A **leállítási beállításoknál**válassza a **Leállítás**lehetőséget.
-5. Válassza az **OK** lehetőséget.
+1. Nyissa meg a parancsablakot rendszergazdaként. 
+1. Törölje a Panther könyvtárat (C:\Windows\Panther).
+1. Módosítsa a könyvtárat a%WINDIR%\system32\sysprep értékre, majd futtassa a parancsot `sysprep.exe` .
+1. A **rendszer-előkészítő eszköz** párbeszédpanelen jelölje be a rendszerindítási folyamat **megadása (OOBE)** jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** jelölőnégyzet be van jelölve.
+1. A **leállítási beállításoknál** válassza a **Leállítás** lehetőséget.
+1. Válassza az **OK** lehetőséget.
    
     ![A Sysprep elindítása](./media/upload-generalized-managed/sysprepgeneral.png)
-6. A Sysprep befejezésekor a rendszer leállítja a virtuális gépet. Ne indítsa újra a virtuális gépet.
+1. A Sysprep befejezésekor a rendszer leállítja a virtuális gépet. Ne indítsa újra a virtuális gépet.
 
 
 ## <a name="upload-the-vhd"></a>A VHD feltöltése 
